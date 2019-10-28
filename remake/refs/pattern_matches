@@ -1,0 +1,6 @@
+<dec f='remake/variable.h' l='134' type='int pattern_matches(const char * pattern, const char * percent, const char * str)'/>
+<def f='remake/function.c' l='287' ll='311' type='int pattern_matches(const char * pattern, const char * percent, const char * str)'/>
+<use f='remake/function.c' l='1034' u='c' c='func_filter_filterout'/>
+<doc f='remake/function.c' l='285'>/* Return 1 if PATTERN matches STR, 0 if not.  */</doc>
+<use f='remake/read.c' l='2097' u='c' c='record_files'/>
+<use f='remake/vpath.c' l='568' u='c' c='vpath_search'/>

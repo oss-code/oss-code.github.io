@@ -1,0 +1,17 @@
+<dec f='remake/rule.h' l='55' type='struct file *'/>
+<use f='remake/default.c' l='673' u='w' c='set_default_suffixes'/>
+<use f='remake/default.c' l='674' u='r' c='set_default_suffixes'/>
+<use f='remake/default.c' l='682' u='r' c='set_default_suffixes'/>
+<use f='remake/default.c' l='684' u='r' c='set_default_suffixes'/>
+<use f='remake/main.c' l='1982' u='r' c='main'/>
+<use f='remake/main.c' l='1984' u='r' c='main'/>
+<use f='remake/main.c' l='1985' u='r' c='main'/>
+<use f='remake/read.c' l='1348' u='r' c='eval'/>
+<use f='remake/read.c' l='1356' u='r' c='eval'/>
+<use f='remake/read.c' l='2149' u='r' c='record_files'/>
+<def f='remake/rule.c' l='57' type='struct file *'/>
+<use f='remake/rule.c' l='215' u='r' c='convert_to_pattern'/>
+<use f='remake/rule.c' l='225' u='r' c='convert_to_pattern'/>
+<use f='remake/rule.c' l='242' u='r' c='convert_to_pattern'/>
+<doc f='remake/rule.c' l='54'>/* Pointer to structure for the file .SUFFIXES
+   whose dependencies are the suffixes to be searched.  */</doc>

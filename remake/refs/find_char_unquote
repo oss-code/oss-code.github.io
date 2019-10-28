@@ -1,0 +1,6 @@
+<dec f='remake/read.h' l='40' type='char * find_char_unquote(char * string, int stop1, int stop2, int blank)'/>
+<doc f='remake/read.h' l='34'>/*! Search STRING for an unquoted STOPCHAR or blank (if BLANK is nonzero).
+   Backslashes quote STOPCHAR, blanks if BLANK is nonzero, and backslash.
+   Quoting backslashes are removed from STRING by compacting it into
+   itself.  Returns a pointer to the first unquoted STOPCHAR if there is
+   one, or nil if there are none.  */</doc>

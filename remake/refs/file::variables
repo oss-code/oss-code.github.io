@@ -1,0 +1,40 @@
+<dec f='remake/filedef.h' l='55' type='struct variable_set_list *'/>
+<offset>1024</offset>
+<doc f='remake/filedef.h' l='54'>/* List of variable sets used for this file.  */</doc>
+<use f='remake/commands.c' l='152' macro='1' u='r'/>
+<use f='remake/commands.c' l='153' macro='1' u='r'/>
+<use f='remake/commands.c' l='154' macro='1' u='r'/>
+<use f='remake/commands.c' l='155' macro='1' u='r'/>
+<use f='remake/commands.c' l='226' macro='1' u='r'/>
+<use f='remake/commands.c' l='310' macro='1' u='r'/>
+<use f='remake/commands.c' l='313' macro='1' u='r'/>
+<use f='remake/commands.c' l='316' macro='1' u='r'/>
+<use f='remake/commands.c' l='806' u='r' c='print_commands'/>
+<use f='remake/debugger/command/break.h' l='57' u='r' c='dbg_cmd_break'/>
+<use f='remake/debugger/command/continue.h' l='31' u='r' c='dbg_cmd_continue'/>
+<use f='remake/debugger/command/info.h' l='284' u='r' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='287' u='r' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='297' u='r' c='dbg_cmd_info'/>
+<use f='remake/debugger/fns.c' l='431' u='r' c='dbg_cmd_show_exp'/>
+<use f='remake/expand.c' l='133' u='r' c='recursively_expand_for_file'/>
+<use f='remake/expand.c' l='467' u='r' c='variable_expand_for_file'/>
+<use f='remake/file.c' l='142' u='a' c='rehash_file'/>
+<use f='remake/file.c' l='142' u='r' c='rehash_file'/>
+<use f='remake/file.c' l='868' u='r' c='print_target_props'/>
+<use f='remake/file.c' l='930' u='r' c='print_file'/>
+<use f='remake/file.c' l='1010' u='r' c='print_file'/>
+<use f='remake/implicit.c' l='634' macro='1' u='r'/>
+<use f='remake/implicit.c' l='789' u='r' c='pattern_search'/>
+<use f='remake/implicit.c' l='790' u='r' c='pattern_search'/>
+<use f='remake/implicit.c' l='876' u='w' c='pattern_search'/>
+<use f='remake/implicit.c' l='876' u='r' c='pattern_search'/>
+<use f='remake/read.c' l='1902' u='r' c='record_target_var'/>
+<use f='remake/variable.c' l='612' u='r' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='621' u='w' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='631' u='r' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='641' u='r' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='1034' u='r' c='target_environment'/>
+<use f='remake/variable.c' l='1850' u='r' c='print_file_variables'/>
+<use f='remake/variable.c' l='1851' u='r' c='print_file_variables'/>
+<use f='remake/variable.c' l='1857' u='r' c='print_target_variables'/>
+<use f='remake/variable.c' l='1867' u='r' c='print_target_variables'/>

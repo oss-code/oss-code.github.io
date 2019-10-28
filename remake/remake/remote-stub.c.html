@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>remote-stub.c source code [remake/remote-stub.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/remote-stub.c'; var root_path = '..'; var data_path = '../../data';</script>
+<script src='../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='./'>remake</a>/<a href='remote-stub.c.html'>remote-stub.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Template for the remote job exportation interface to GNU Make.</i></td></tr>
+<tr><th id="2">2</th><td><i>Copyright (C) 1988-2016 Free Software Foundation, Inc.</i></td></tr>
+<tr><th id="3">3</th><td><i>This file is part of GNU Make.</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>GNU Make is free software; you can redistribute it and/or modify it under the</i></td></tr>
+<tr><th id="6">6</th><td><i>terms of the GNU General Public License as published by the Free Software</i></td></tr>
+<tr><th id="7">7</th><td><i>Foundation; either version 3 of the License, or (at your option) any later</i></td></tr>
+<tr><th id="8">8</th><td><i>version.</i></td></tr>
+<tr><th id="9">9</th><td><i></i></td></tr>
+<tr><th id="10">10</th><td><i>GNU Make is distributed in the hope that it will be useful, but WITHOUT ANY</i></td></tr>
+<tr><th id="11">11</th><td><i>WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR</i></td></tr>
+<tr><th id="12">12</th><td><i>A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</i></td></tr>
+<tr><th id="13">13</th><td><i></i></td></tr>
+<tr><th id="14">14</th><td><i>You should have received a copy of the GNU General Public License along with</i></td></tr>
+<tr><th id="15">15</th><td><i>this program.  If not, see &lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.  */</i></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><u>#include <a href="makeint.h.html">"makeint.h"</a></u></td></tr>
+<tr><th id="18">18</th><td><u>#include <a href="filedef.h.html">"filedef.h"</a></u></td></tr>
+<tr><th id="19">19</th><td><u>#include <a href="job.h.html">"job.h"</a></u></td></tr>
+<tr><th id="20">20</th><td><u>#include <a href="commands.h.html">"commands.h"</a></u></td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><i>/* Call once at startup even if no commands are run.  */</i></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><em>void</em></td></tr>
+<tr><th id="26">26</th><td><dfn class="decl def" id="remote_setup" title='remote_setup' data-ref="remote_setup">remote_setup</dfn> (<em>void</em>)</td></tr>
+<tr><th id="27">27</th><td>{</td></tr>
+<tr><th id="28">28</th><td>}</td></tr>
+<tr><th id="29">29</th><td></td></tr>
+<tr><th id="30">30</th><td><i>/* Called before exit.  */</i></td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><em>void</em></td></tr>
+<tr><th id="33">33</th><td><dfn class="decl def" id="remote_cleanup" title='remote_cleanup' data-ref="remote_cleanup">remote_cleanup</dfn> (<em>void</em>)</td></tr>
+<tr><th id="34">34</th><td>{</td></tr>
+<tr><th id="35">35</th><td>}</td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td><i>/* Return nonzero if the next job should be done remotely.  */</i></td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td><em>int</em></td></tr>
+<tr><th id="40">40</th><td><dfn class="decl def" id="start_remote_job_p" title='start_remote_job_p' data-ref="start_remote_job_p">start_remote_job_p</dfn> (<em>int</em> <dfn class="local col1 decl" id="1first_p" title='first_p' data-type='int' data-ref="1first_p">first_p</dfn> <a class="macro" href="make.h.html#201" title="__attribute__ ((unused))" data-ref="_M/UNUSED">UNUSED</a>)</td></tr>
+<tr><th id="41">41</th><td>{</td></tr>
+<tr><th id="42">42</th><td>  <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="43">43</th><td>}</td></tr>
+<tr><th id="44">44</th><td></td></tr>
+<tr><th id="45">45</th><td><i>/* Start a remote job running the command in ARGV,</i></td></tr>
+<tr><th id="46">46</th><td><i>   with environment from ENVP.  It gets standard input from STDIN_FD.  On</i></td></tr>
+<tr><th id="47">47</th><td><i>   failure, return nonzero.  On success, return zero, and set *USED_STDIN</i></td></tr>
+<tr><th id="48">48</th><td><i>   to nonzero if it will actually use STDIN_FD, zero if not, set *ID_PTR to</i></td></tr>
+<tr><th id="49">49</th><td><i>   a unique identification, and set *IS_REMOTE to zero if the job is local,</i></td></tr>
+<tr><th id="50">50</th><td><i>   nonzero if it is remote (meaning *ID_PTR is a process ID).  */</i></td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td><em>int</em></td></tr>
+<tr><th id="53">53</th><td><dfn class="decl def" id="start_remote_job" title='start_remote_job' data-ref="start_remote_job">start_remote_job</dfn> (<em>char</em> **<dfn class="local col2 decl" id="2argv" title='argv' data-type='char **' data-ref="2argv">argv</dfn> <a class="macro" href="make.h.html#201" title="__attribute__ ((unused))" data-ref="_M/UNUSED">UNUSED</a>, <em>char</em> **<dfn class="local col3 decl" id="3envp" title='envp' data-type='char **' data-ref="3envp">envp</dfn> <a class="macro" href="make.h.html#201" title="__attribute__ ((unused))" data-ref="_M/UNUSED">UNUSED</a>, <em>int</em> <dfn class="local col4 decl" id="4stdin_fd" title='stdin_fd' data-type='int' data-ref="4stdin_fd">stdin_fd</dfn> <a class="macro" href="make.h.html#201" title="__attribute__ ((unused))" data-ref="_M/UNUSED">UNUSED</a>,</td></tr>
+<tr><th id="54">54</th><td>                  <em>int</em> *<dfn class="local col5 decl" id="5is_remote" title='is_remote' data-type='int *' data-ref="5is_remote">is_remote</dfn> <a class="macro" href="make.h.html#201" title="__attribute__ ((unused))" data-ref="_M/UNUSED">UNUSED</a>, <em>int</em> *<dfn class="local col6 decl" id="6id_ptr" title='id_ptr' data-type='int *' data-ref="6id_ptr">id_ptr</dfn> <a class="macro" href="make.h.html#201" title="__attribute__ ((unused))" data-ref="_M/UNUSED">UNUSED</a>,</td></tr>
+<tr><th id="55">55</th><td>                  <em>int</em> *<dfn class="local col7 decl" id="7used_stdin" title='used_stdin' data-type='int *' data-ref="7used_stdin">used_stdin</dfn> <a class="macro" href="make.h.html#201" title="__attribute__ ((unused))" data-ref="_M/UNUSED">UNUSED</a>)</td></tr>
+<tr><th id="56">56</th><td>{</td></tr>
+<tr><th id="57">57</th><td>  <b>return</b> -<var>1</var>;</td></tr>
+<tr><th id="58">58</th><td>}</td></tr>
+<tr><th id="59">59</th><td></td></tr>
+<tr><th id="60">60</th><td><i>/* Get the status of a dead remote child.  Block waiting for one to die</i></td></tr>
+<tr><th id="61">61</th><td><i>   if BLOCK is nonzero.  Set *EXIT_CODE_PTR to the exit status, *SIGNAL_PTR</i></td></tr>
+<tr><th id="62">62</th><td><i>   to the termination signal or zero if it exited normally, and *COREDUMP_PTR</i></td></tr>
+<tr><th id="63">63</th><td><i>   nonzero if it dumped core.  Return the ID of the child that died,</i></td></tr>
+<tr><th id="64">64</th><td><i>   0 if we would have to block and !BLOCK, or &lt; 0 if there were none.  */</i></td></tr>
+<tr><th id="65">65</th><td></td></tr>
+<tr><th id="66">66</th><td><em>int</em></td></tr>
+<tr><th id="67">67</th><td><dfn class="decl def" id="remote_status" title='remote_status' data-ref="remote_status">remote_status</dfn> (<em>int</em> *<dfn class="local col8 decl" id="8exit_code_ptr" title='exit_code_ptr' data-type='int *' data-ref="8exit_code_ptr">exit_code_ptr</dfn> <a class="macro" href="make.h.html#201" title="__attribute__ ((unused))" data-ref="_M/UNUSED">UNUSED</a>, <em>int</em> *<dfn class="local col9 decl" id="9signal_ptr" title='signal_ptr' data-type='int *' data-ref="9signal_ptr">signal_ptr</dfn> <a class="macro" href="make.h.html#201" title="__attribute__ ((unused))" data-ref="_M/UNUSED">UNUSED</a>,</td></tr>
+<tr><th id="68">68</th><td>               <em>int</em> *<dfn class="local col0 decl" id="10coredump_ptr" title='coredump_ptr' data-type='int *' data-ref="10coredump_ptr">coredump_ptr</dfn> <a class="macro" href="make.h.html#201" title="__attribute__ ((unused))" data-ref="_M/UNUSED">UNUSED</a>, <em>int</em> <dfn class="local col1 decl" id="11block" title='block' data-type='int' data-ref="11block">block</dfn> <a class="macro" href="make.h.html#201" title="__attribute__ ((unused))" data-ref="_M/UNUSED">UNUSED</a>)</td></tr>
+<tr><th id="69">69</th><td>{</td></tr>
+<tr><th id="70">70</th><td>  <a class="macro" href="../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a> = <a class="macro" href="../include/asm-generic/errno-base.h.html#13" title="10" data-ref="_M/ECHILD">ECHILD</a>;</td></tr>
+<tr><th id="71">71</th><td>  <b>return</b> -<var>1</var>;</td></tr>
+<tr><th id="72">72</th><td>}</td></tr>
+<tr><th id="73">73</th><td></td></tr>
+<tr><th id="74">74</th><td><i>/* Block asynchronous notification of remote child death.</i></td></tr>
+<tr><th id="75">75</th><td><i>   If this notification is done by raising the child termination</i></td></tr>
+<tr><th id="76">76</th><td><i>   signal, do not block that signal.  */</i></td></tr>
+<tr><th id="77">77</th><td><em>void</em></td></tr>
+<tr><th id="78">78</th><td><dfn class="decl def" id="block_remote_children" title='block_remote_children' data-ref="block_remote_children">block_remote_children</dfn> (<em>void</em>)</td></tr>
+<tr><th id="79">79</th><td>{</td></tr>
+<tr><th id="80">80</th><td>  <b>return</b>;</td></tr>
+<tr><th id="81">81</th><td>}</td></tr>
+<tr><th id="82">82</th><td></td></tr>
+<tr><th id="83">83</th><td><i>/* Restore asynchronous notification of remote child death.</i></td></tr>
+<tr><th id="84">84</th><td><i>   If this is done by raising the child termination signal,</i></td></tr>
+<tr><th id="85">85</th><td><i>   do not unblock that signal.  */</i></td></tr>
+<tr><th id="86">86</th><td><em>void</em></td></tr>
+<tr><th id="87">87</th><td><dfn class="decl def" id="unblock_remote_children" title='unblock_remote_children' data-ref="unblock_remote_children">unblock_remote_children</dfn> (<em>void</em>)</td></tr>
+<tr><th id="88">88</th><td>{</td></tr>
+<tr><th id="89">89</th><td>  <b>return</b>;</td></tr>
+<tr><th id="90">90</th><td>}</td></tr>
+<tr><th id="91">91</th><td></td></tr>
+<tr><th id="92">92</th><td><i>/* Send signal SIG to child ID.  Return 0 if successful, -1 if not.  */</i></td></tr>
+<tr><th id="93">93</th><td><em>int</em></td></tr>
+<tr><th id="94">94</th><td><dfn class="decl def" id="remote_kill" title='remote_kill' data-ref="remote_kill">remote_kill</dfn> (<em>int</em> <dfn class="local col2 decl" id="12id" title='id' data-type='int' data-ref="12id">id</dfn> <a class="macro" href="make.h.html#201" title="__attribute__ ((unused))" data-ref="_M/UNUSED">UNUSED</a>, <em>int</em> <dfn class="local col3 decl" id="13sig" title='sig' data-type='int' data-ref="13sig">sig</dfn> <a class="macro" href="make.h.html#201" title="__attribute__ ((unused))" data-ref="_M/UNUSED">UNUSED</a>)</td></tr>
+<tr><th id="95">95</th><td>{</td></tr>
+<tr><th id="96">96</th><td>  <b>return</b> -<var>1</var>;</td></tr>
+<tr><th id="97">97</th><td>}</td></tr>
+<tr><th id="98">98</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

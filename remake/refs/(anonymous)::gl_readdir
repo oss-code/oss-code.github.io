@@ -1,0 +1,4 @@
+<dec f='include/glob.h' l='93' type='struct dirent *(*)(void *)'/>
+<dec f='include/glob.h' l='122' type='struct dirent64 *(*)(void *)'/>
+<offset>320</offset>
+<use f='remake/dir.c' l='1337' u='w' c='dir_setup_glob'/>

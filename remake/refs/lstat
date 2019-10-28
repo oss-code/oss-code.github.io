@@ -1,0 +1,6 @@
+<dec f='include/x86_64-linux-gnu/sys/stat.h' l='262' type='int lstat(const char *restrict __file, struct stat *restrict __buf)'/>
+<def f='include/x86_64-linux-gnu/sys/stat.h' l='458' ll='462' macro='1' type='int lstat(const char * __path, struct stat * __statbuf)'/>
+<doc f='include/x86_64-linux-gnu/sys/stat.h' l='260'>/* Get file attributes about FILE and put them in BUF.
+   If FILE is a symbolic link, do not follow it.  */</doc>
+<use f='remake/dir.c' l='1319' u='r' c='dir_setup_glob'/>
+<use f='remake/remake.c' l='1607' u='c' c='name_mtime'/>

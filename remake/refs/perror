@@ -1,0 +1,11 @@
+<dec f='include/stdio.h' l='846' type='void perror(const char * __s)'/>
+<doc f='include/stdio.h' l='842'>/* Print a message describing the meaning of the value of errno.
+
+   This function is a possible cancellation point and therefore not
+   marked with __THROW.  */</doc>
+<use f='remake/debugger/command/write.h' l='94' u='c' c='dbg_cmd_write'/>
+<use f='remake/output.c' l='233' u='c' c='pump_from_tmp'/>
+<use f='remake/output.c' l='240' u='c' c='pump_from_tmp'/>
+<use f='remake/output.c' l='245' u='c' c='pump_from_tmp'/>
+<use f='remake/output.c' l='270' u='c' c='acquire_semaphore'/>
+<use f='remake/output.c' l='281' u='c' c='release_semaphore'/>

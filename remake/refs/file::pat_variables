@@ -1,0 +1,14 @@
+<dec f='remake/filedef.h' l='59' type='struct variable_set_list *'/>
+<offset>1088</offset>
+<doc f='remake/filedef.h' l='57'>/* Pattern-specific variable reference for this target, or null if there
+       isn&apos;t one.  Also see the pat_searched flag, below.  */</doc>
+<use f='remake/implicit.c' l='791' u='r' c='pattern_search'/>
+<use f='remake/implicit.c' l='792' u='r' c='pattern_search'/>
+<use f='remake/implicit.c' l='877' u='w' c='pattern_search'/>
+<use f='remake/implicit.c' l='877' u='r' c='pattern_search'/>
+<use f='remake/variable.c' l='660' u='w' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='661' u='r' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='700' u='r' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='702' u='r' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='703' u='r' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='704' u='r' c='initialize_file_variables'/>

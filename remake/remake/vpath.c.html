@@ -1,0 +1,656 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>vpath.c source code [remake/vpath.c] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="vpath "/>
+<link rel="stylesheet" href="../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/vpath.c'; var root_path = '..'; var data_path = '../../data';</script>
+<script src='../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='./'>remake</a>/<a href='vpath.c.html'>vpath.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Implementation of pattern-matching file search paths for GNU Make.</i></td></tr>
+<tr><th id="2">2</th><td><i>Copyright (C) 1988-2016 Free Software Foundation, Inc.</i></td></tr>
+<tr><th id="3">3</th><td><i>This file is part of GNU Make.</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>GNU Make is free software; you can redistribute it and/or modify it under the</i></td></tr>
+<tr><th id="6">6</th><td><i>terms of the GNU General Public License as published by the Free Software</i></td></tr>
+<tr><th id="7">7</th><td><i>Foundation; either version 3 of the License, or (at your option) any later</i></td></tr>
+<tr><th id="8">8</th><td><i>version.</i></td></tr>
+<tr><th id="9">9</th><td><i></i></td></tr>
+<tr><th id="10">10</th><td><i>GNU Make is distributed in the hope that it will be useful, but WITHOUT ANY</i></td></tr>
+<tr><th id="11">11</th><td><i>WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR</i></td></tr>
+<tr><th id="12">12</th><td><i>A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</i></td></tr>
+<tr><th id="13">13</th><td><i></i></td></tr>
+<tr><th id="14">14</th><td><i>You should have received a copy of the GNU General Public License along with</i></td></tr>
+<tr><th id="15">15</th><td><i>this program.  If not, see &lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.  */</i></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><u>#include <a href="makeint.h.html">"makeint.h"</a></u></td></tr>
+<tr><th id="18">18</th><td><u>#include <a href="filedef.h.html">"filedef.h"</a></u></td></tr>
+<tr><th id="19">19</th><td><u>#include <a href="variable.h.html">"variable.h"</a></u></td></tr>
+<tr><th id="20">20</th><td><u>#<span data-ppcond="20">ifdef</span> <span class="macro" data-ref="_M/WINDOWS32">WINDOWS32</span></u></td></tr>
+<tr><th id="21">21</th><td><u>#include "pathstuff.h"</u></td></tr>
+<tr><th id="22">22</th><td><u>#<span data-ppcond="20">endif</span></u></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><i>/* Structure used to represent a selective VPATH searchpath.  */</i></td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><b>struct</b> <dfn class="type def" id="vpath" title='vpath' data-ref="vpath">vpath</dfn></td></tr>
+<tr><th id="28">28</th><td>  {</td></tr>
+<tr><th id="29">29</th><td>    <b>struct</b> <a class="type" href="#vpath" title='vpath' data-ref="vpath">vpath</a> *<dfn class="tu decl" id="vpath::next" title='vpath::next' data-type='struct vpath *' data-ref="vpath::next">next</dfn>; <i  data-doc="vpath::next">/* Pointer to next struct in the linked list.  */</i></td></tr>
+<tr><th id="30">30</th><td>    <em>const</em> <em>char</em> *<dfn class="tu decl" id="vpath::pattern" title='vpath::pattern' data-type='const char *' data-ref="vpath::pattern">pattern</dfn>;<i  data-doc="vpath::pattern">/* The pattern to match.  */</i></td></tr>
+<tr><th id="31">31</th><td>    <em>const</em> <em>char</em> *<dfn class="tu decl" id="vpath::percent" title='vpath::percent' data-type='const char *' data-ref="vpath::percent">percent</dfn>;<i  data-doc="vpath::percent">/* Pointer into 'pattern' where the '%' is.  */</i></td></tr>
+<tr><th id="32">32</th><td>    <em>unsigned</em> <em>int</em> <dfn class="tu decl" id="vpath::patlen" title='vpath::patlen' data-type='unsigned int' data-ref="vpath::patlen">patlen</dfn>;<i  data-doc="vpath::patlen">/* Length of the pattern.  */</i></td></tr>
+<tr><th id="33">33</th><td>    <em>const</em> <em>char</em> **<dfn class="tu decl" id="vpath::searchpath" title='vpath::searchpath' data-type='const char **' data-ref="vpath::searchpath">searchpath</dfn>; <i  data-doc="vpath::searchpath">/* Null-terminated list of directories.  */</i></td></tr>
+<tr><th id="34">34</th><td>    <em>unsigned</em> <em>int</em> <dfn class="tu decl" id="vpath::maxlen" title='vpath::maxlen' data-type='unsigned int' data-ref="vpath::maxlen">maxlen</dfn>;<i  data-doc="vpath::maxlen">/* Maximum length of any entry in the list.  */</i></td></tr>
+<tr><th id="35">35</th><td>  };</td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td><i  data-doc="vpaths">/* Linked-list of all selective VPATHs.  */</i></td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td><em>static</em> <b>struct</b> <a class="type" href="#vpath" title='vpath' data-ref="vpath">vpath</a> *<dfn class="tu decl def" id="vpaths" title='vpaths' data-type='struct vpath *' data-ref="vpaths">vpaths</dfn>;</td></tr>
+<tr><th id="40">40</th><td></td></tr>
+<tr><th id="41">41</th><td><i  data-doc="general_vpath">/* Structure for the general VPATH given in the variable.  */</i></td></tr>
+<tr><th id="42">42</th><td></td></tr>
+<tr><th id="43">43</th><td><em>static</em> <b>struct</b> <a class="type" href="#vpath" title='vpath' data-ref="vpath">vpath</a> *<dfn class="tu decl def" id="general_vpath" title='general_vpath' data-type='struct vpath *' data-ref="general_vpath">general_vpath</dfn>;</td></tr>
+<tr><th id="44">44</th><td></td></tr>
+<tr><th id="45">45</th><td><i  data-doc="gpaths">/* Structure for GPATH given in the variable.  */</i></td></tr>
+<tr><th id="46">46</th><td></td></tr>
+<tr><th id="47">47</th><td><em>static</em> <b>struct</b> <a class="type" href="#vpath" title='vpath' data-ref="vpath">vpath</a> *<dfn class="tu decl def" id="gpaths" title='gpaths' data-type='struct vpath *' data-ref="gpaths">gpaths</dfn>;</td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td><i>/* Reverse the chain of selective VPATH lists so they will be searched in the</i></td></tr>
+<tr><th id="51">51</th><td><i>   order given in the makefiles and construct the list from the VPATH</i></td></tr>
+<tr><th id="52">52</th><td><i>   variable.  */</i></td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td><em>void</em></td></tr>
+<tr><th id="55">55</th><td><dfn class="decl def" id="build_vpath_lists" title='build_vpath_lists' data-ref="build_vpath_lists">build_vpath_lists</dfn> (<em>void</em>)</td></tr>
+<tr><th id="56">56</th><td>{</td></tr>
+<tr><th id="57">57</th><td>  <em>register</em> <b>struct</b> <a class="type" href="#vpath" title='vpath' data-ref="vpath">vpath</a> *<dfn class="local col1 decl" id="1new" title='new' data-type='struct vpath *' data-ref="1new">new</dfn> = <var>0</var>;</td></tr>
+<tr><th id="58">58</th><td>  <em>register</em> <b>struct</b> <a class="type" href="#vpath" title='vpath' data-ref="vpath">vpath</a> *<dfn class="local col2 decl" id="2old" title='old' data-type='struct vpath *' data-ref="2old">old</dfn>, *<dfn class="local col3 decl" id="3nexto" title='nexto' data-type='struct vpath *' data-ref="3nexto">nexto</dfn>;</td></tr>
+<tr><th id="59">59</th><td>  <em>register</em> <em>char</em> *<dfn class="local col4 decl" id="4p" title='p' data-type='char *' data-ref="4p">p</dfn>;</td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td>  <i>/* Reverse the chain.  */</i></td></tr>
+<tr><th id="62">62</th><td>  <b>for</b> (<a class="local col2 ref" href="#2old" title='old' data-ref="2old">old</a> = <a class="tu ref" href="#vpaths" title='vpaths' data-use='r' data-ref="vpaths">vpaths</a>; <a class="local col2 ref" href="#2old" title='old' data-ref="2old">old</a> != <var>0</var>; <a class="local col2 ref" href="#2old" title='old' data-ref="2old">old</a> = <a class="local col3 ref" href="#3nexto" title='nexto' data-ref="3nexto">nexto</a>)</td></tr>
+<tr><th id="63">63</th><td>    {</td></tr>
+<tr><th id="64">64</th><td>      <a class="local col3 ref" href="#3nexto" title='nexto' data-ref="3nexto">nexto</a> = <a class="local col2 ref" href="#2old" title='old' data-ref="2old">old</a>-&gt;<a class="tu ref" href="#vpath::next" title='vpath::next' data-use='r' data-ref="vpath::next">next</a>;</td></tr>
+<tr><th id="65">65</th><td>      <a class="local col2 ref" href="#2old" title='old' data-ref="2old">old</a>-&gt;<a class="tu ref" href="#vpath::next" title='vpath::next' data-use='w' data-ref="vpath::next">next</a> = <a class="local col1 ref" href="#1new" title='new' data-ref="1new">new</a>;</td></tr>
+<tr><th id="66">66</th><td>      <a class="local col1 ref" href="#1new" title='new' data-ref="1new">new</a> = <a class="local col2 ref" href="#2old" title='old' data-ref="2old">old</a>;</td></tr>
+<tr><th id="67">67</th><td>    }</td></tr>
+<tr><th id="68">68</th><td></td></tr>
+<tr><th id="69">69</th><td>  <a class="tu ref" href="#vpaths" title='vpaths' data-use='w' data-ref="vpaths">vpaths</a> = <a class="local col1 ref" href="#1new" title='new' data-ref="1new">new</a>;</td></tr>
+<tr><th id="70">70</th><td></td></tr>
+<tr><th id="71">71</th><td>  <i>/* If there is a VPATH variable with a nonnull value, construct the</i></td></tr>
+<tr><th id="72">72</th><td><i>     general VPATH list from it.  We use variable_expand rather than just</i></td></tr>
+<tr><th id="73">73</th><td><i>     calling lookup_variable so that it will be recursively expanded.  */</i></td></tr>
+<tr><th id="74">74</th><td></td></tr>
+<tr><th id="75">75</th><td>  {</td></tr>
+<tr><th id="76">76</th><td>    <i>/* Turn off --warn-undefined-variables while we expand SHELL and IFS.  */</i></td></tr>
+<tr><th id="77">77</th><td>    <em>int</em> <dfn class="local col5 decl" id="5save" title='save' data-type='int' data-ref="5save">save</dfn> = <a class="ref" href="makeint.h.html#warn_undefined_variables_flag" title='warn_undefined_variables_flag' data-ref="warn_undefined_variables_flag">warn_undefined_variables_flag</a>;</td></tr>
+<tr><th id="78">78</th><td>    <a class="ref" href="makeint.h.html#warn_undefined_variables_flag" title='warn_undefined_variables_flag' data-ref="warn_undefined_variables_flag">warn_undefined_variables_flag</a> = <var>0</var>;</td></tr>
+<tr><th id="79">79</th><td></td></tr>
+<tr><th id="80">80</th><td>    <a class="local col4 ref" href="#4p" title='p' data-ref="4p">p</a> = <a class="ref" href="variable.h.html#variable_expand" title='variable_expand' data-ref="variable_expand">variable_expand</a> (<q>"$(strip $(VPATH))"</q>);</td></tr>
+<tr><th id="81">81</th><td></td></tr>
+<tr><th id="82">82</th><td>    <a class="ref" href="makeint.h.html#warn_undefined_variables_flag" title='warn_undefined_variables_flag' data-ref="warn_undefined_variables_flag">warn_undefined_variables_flag</a> = <a class="local col5 ref" href="#5save" title='save' data-ref="5save">save</a>;</td></tr>
+<tr><th id="83">83</th><td>  }</td></tr>
+<tr><th id="84">84</th><td></td></tr>
+<tr><th id="85">85</th><td>  <b>if</b> (*<a class="local col4 ref" href="#4p" title='p' data-ref="4p">p</a> != <kbd>'\0'</kbd>)</td></tr>
+<tr><th id="86">86</th><td>    {</td></tr>
+<tr><th id="87">87</th><td>      <i>/* Save the list of vpaths.  */</i></td></tr>
+<tr><th id="88">88</th><td>      <b>struct</b> <a class="type" href="#vpath" title='vpath' data-ref="vpath">vpath</a> *<dfn class="local col6 decl" id="6save_vpaths" title='save_vpaths' data-type='struct vpath *' data-ref="6save_vpaths">save_vpaths</dfn> = <a class="tu ref" href="#vpaths" title='vpaths' data-use='r' data-ref="vpaths">vpaths</a>;</td></tr>
+<tr><th id="89">89</th><td>      <em>char</em> <dfn class="local col7 decl" id="7gp" title='gp' data-type='char [2]' data-ref="7gp">gp</dfn>[] = <q>"%"</q>;</td></tr>
+<tr><th id="90">90</th><td></td></tr>
+<tr><th id="91">91</th><td>      <i>/* Empty 'vpaths' so the new one will have no next, and 'vpaths'</i></td></tr>
+<tr><th id="92">92</th><td><i>         will still be nil if P contains no existing directories.  */</i></td></tr>
+<tr><th id="93">93</th><td>      <a class="tu ref" href="#vpaths" title='vpaths' data-use='w' data-ref="vpaths">vpaths</a> = <var>0</var>;</td></tr>
+<tr><th id="94">94</th><td></td></tr>
+<tr><th id="95">95</th><td>      <i>/* Parse P.  */</i></td></tr>
+<tr><th id="96">96</th><td>      <a class="ref" href="#construct_vpath_list" title='construct_vpath_list' data-ref="construct_vpath_list">construct_vpath_list</a> (<a class="local col7 ref" href="#7gp" title='gp' data-ref="7gp">gp</a>, <a class="local col4 ref" href="#4p" title='p' data-ref="4p">p</a>);</td></tr>
+<tr><th id="97">97</th><td></td></tr>
+<tr><th id="98">98</th><td>      <i>/* Store the created path as the general path,</i></td></tr>
+<tr><th id="99">99</th><td><i>         and restore the old list of vpaths.  */</i></td></tr>
+<tr><th id="100">100</th><td>      <a class="tu ref" href="#general_vpath" title='general_vpath' data-use='w' data-ref="general_vpath">general_vpath</a> = <a class="tu ref" href="#vpaths" title='vpaths' data-use='r' data-ref="vpaths">vpaths</a>;</td></tr>
+<tr><th id="101">101</th><td>      <a class="tu ref" href="#vpaths" title='vpaths' data-use='w' data-ref="vpaths">vpaths</a> = <a class="local col6 ref" href="#6save_vpaths" title='save_vpaths' data-ref="6save_vpaths">save_vpaths</a>;</td></tr>
+<tr><th id="102">102</th><td>    }</td></tr>
+<tr><th id="103">103</th><td></td></tr>
+<tr><th id="104">104</th><td>  <i>/* If there is a GPATH variable with a nonnull value, construct the</i></td></tr>
+<tr><th id="105">105</th><td><i>     GPATH list from it.  We use variable_expand rather than just</i></td></tr>
+<tr><th id="106">106</th><td><i>     calling lookup_variable so that it will be recursively expanded.  */</i></td></tr>
+<tr><th id="107">107</th><td></td></tr>
+<tr><th id="108">108</th><td>  {</td></tr>
+<tr><th id="109">109</th><td>    <i>/* Turn off --warn-undefined-variables while we expand SHELL and IFS.  */</i></td></tr>
+<tr><th id="110">110</th><td>    <em>int</em> <dfn class="local col8 decl" id="8save" title='save' data-type='int' data-ref="8save">save</dfn> = <a class="ref" href="makeint.h.html#warn_undefined_variables_flag" title='warn_undefined_variables_flag' data-ref="warn_undefined_variables_flag">warn_undefined_variables_flag</a>;</td></tr>
+<tr><th id="111">111</th><td>    <a class="ref" href="makeint.h.html#warn_undefined_variables_flag" title='warn_undefined_variables_flag' data-ref="warn_undefined_variables_flag">warn_undefined_variables_flag</a> = <var>0</var>;</td></tr>
+<tr><th id="112">112</th><td></td></tr>
+<tr><th id="113">113</th><td>    <a class="local col4 ref" href="#4p" title='p' data-ref="4p">p</a> = <a class="ref" href="variable.h.html#variable_expand" title='variable_expand' data-ref="variable_expand">variable_expand</a> (<q>"$(strip $(GPATH))"</q>);</td></tr>
+<tr><th id="114">114</th><td></td></tr>
+<tr><th id="115">115</th><td>    <a class="ref" href="makeint.h.html#warn_undefined_variables_flag" title='warn_undefined_variables_flag' data-ref="warn_undefined_variables_flag">warn_undefined_variables_flag</a> = <a class="local col8 ref" href="#8save" title='save' data-ref="8save">save</a>;</td></tr>
+<tr><th id="116">116</th><td>  }</td></tr>
+<tr><th id="117">117</th><td></td></tr>
+<tr><th id="118">118</th><td>  <b>if</b> (*<a class="local col4 ref" href="#4p" title='p' data-ref="4p">p</a> != <kbd>'\0'</kbd>)</td></tr>
+<tr><th id="119">119</th><td>    {</td></tr>
+<tr><th id="120">120</th><td>      <i>/* Save the list of vpaths.  */</i></td></tr>
+<tr><th id="121">121</th><td>      <b>struct</b> <a class="type" href="#vpath" title='vpath' data-ref="vpath">vpath</a> *<dfn class="local col9 decl" id="9save_vpaths" title='save_vpaths' data-type='struct vpath *' data-ref="9save_vpaths">save_vpaths</dfn> = <a class="tu ref" href="#vpaths" title='vpaths' data-use='r' data-ref="vpaths">vpaths</a>;</td></tr>
+<tr><th id="122">122</th><td>      <em>char</em> <dfn class="local col0 decl" id="10gp" title='gp' data-type='char [2]' data-ref="10gp">gp</dfn>[] = <q>"%"</q>;</td></tr>
+<tr><th id="123">123</th><td></td></tr>
+<tr><th id="124">124</th><td>      <i>/* Empty 'vpaths' so the new one will have no next, and 'vpaths'</i></td></tr>
+<tr><th id="125">125</th><td><i>         will still be nil if P contains no existing directories.  */</i></td></tr>
+<tr><th id="126">126</th><td>      <a class="tu ref" href="#vpaths" title='vpaths' data-use='w' data-ref="vpaths">vpaths</a> = <var>0</var>;</td></tr>
+<tr><th id="127">127</th><td></td></tr>
+<tr><th id="128">128</th><td>      <i>/* Parse P.  */</i></td></tr>
+<tr><th id="129">129</th><td>      <a class="ref" href="#construct_vpath_list" title='construct_vpath_list' data-ref="construct_vpath_list">construct_vpath_list</a> (<a class="local col0 ref" href="#10gp" title='gp' data-ref="10gp">gp</a>, <a class="local col4 ref" href="#4p" title='p' data-ref="4p">p</a>);</td></tr>
+<tr><th id="130">130</th><td></td></tr>
+<tr><th id="131">131</th><td>      <i>/* Store the created path as the GPATH,</i></td></tr>
+<tr><th id="132">132</th><td><i>         and restore the old list of vpaths.  */</i></td></tr>
+<tr><th id="133">133</th><td>      <a class="tu ref" href="#gpaths" title='gpaths' data-use='w' data-ref="gpaths">gpaths</a> = <a class="tu ref" href="#vpaths" title='vpaths' data-use='r' data-ref="vpaths">vpaths</a>;</td></tr>
+<tr><th id="134">134</th><td>      <a class="tu ref" href="#vpaths" title='vpaths' data-use='w' data-ref="vpaths">vpaths</a> = <a class="local col9 ref" href="#9save_vpaths" title='save_vpaths' data-ref="9save_vpaths">save_vpaths</a>;</td></tr>
+<tr><th id="135">135</th><td>    }</td></tr>
+<tr><th id="136">136</th><td>}</td></tr>
+<tr><th id="137">137</th><td></td></tr>
+<tr><th id="138">138</th><td><i>/* Construct the VPATH listing for the PATTERN and DIRPATH given.</i></td></tr>
+<tr><th id="139">139</th><td><i></i></td></tr>
+<tr><th id="140">140</th><td><i>   This function is called to generate selective VPATH lists and also for</i></td></tr>
+<tr><th id="141">141</th><td><i>   the general VPATH list (which is in fact just a selective VPATH that</i></td></tr>
+<tr><th id="142">142</th><td><i>   is applied to everything).  The returned pointer is either put in the</i></td></tr>
+<tr><th id="143">143</th><td><i>   linked list of all selective VPATH lists or in the GENERAL_VPATH</i></td></tr>
+<tr><th id="144">144</th><td><i>   variable.</i></td></tr>
+<tr><th id="145">145</th><td><i></i></td></tr>
+<tr><th id="146">146</th><td><i>   If DIRPATH is nil, remove all previous listings with the same</i></td></tr>
+<tr><th id="147">147</th><td><i>   pattern.  If PATTERN is nil, remove all VPATH listings.  Existing</i></td></tr>
+<tr><th id="148">148</th><td><i>   and readable directories that are not "." given in the DIRPATH</i></td></tr>
+<tr><th id="149">149</th><td><i>   separated by the path element separator (defined in makeint.h) are</i></td></tr>
+<tr><th id="150">150</th><td><i>   loaded into the directory hash table if they are not there already</i></td></tr>
+<tr><th id="151">151</th><td><i>   and put in the VPATH searchpath for the given pattern with trailing</i></td></tr>
+<tr><th id="152">152</th><td><i>   slashes stripped off if present (and if the directory is not the</i></td></tr>
+<tr><th id="153">153</th><td><i>   root, "/").  The length of the longest entry in the list is put in</i></td></tr>
+<tr><th id="154">154</th><td><i>   the structure as well.  The new entry will be at the head of the</i></td></tr>
+<tr><th id="155">155</th><td><i>   VPATHS chain.  */</i></td></tr>
+<tr><th id="156">156</th><td></td></tr>
+<tr><th id="157">157</th><td><em>void</em></td></tr>
+<tr><th id="158">158</th><td><dfn class="decl def" id="construct_vpath_list" title='construct_vpath_list' data-ref="construct_vpath_list">construct_vpath_list</dfn> (<em>char</em> *<dfn class="local col1 decl" id="11pattern" title='pattern' data-type='char *' data-ref="11pattern">pattern</dfn>, <em>char</em> *<dfn class="local col2 decl" id="12dirpath" title='dirpath' data-type='char *' data-ref="12dirpath">dirpath</dfn>)</td></tr>
+<tr><th id="159">159</th><td>{</td></tr>
+<tr><th id="160">160</th><td>  <em>unsigned</em> <em>int</em> <dfn class="local col3 decl" id="13elem" title='elem' data-type='unsigned int' data-ref="13elem">elem</dfn>;</td></tr>
+<tr><th id="161">161</th><td>  <em>char</em> *<dfn class="local col4 decl" id="14p" title='p' data-type='char *' data-ref="14p">p</dfn>;</td></tr>
+<tr><th id="162">162</th><td>  <em>const</em> <em>char</em> **<dfn class="local col5 decl" id="15vpath" title='vpath' data-type='const char **' data-ref="15vpath">vpath</dfn>;</td></tr>
+<tr><th id="163">163</th><td>  <em>unsigned</em> <em>int</em> <dfn class="local col6 decl" id="16maxvpath" title='maxvpath' data-type='unsigned int' data-ref="16maxvpath">maxvpath</dfn>;</td></tr>
+<tr><th id="164">164</th><td>  <em>unsigned</em> <em>int</em> <dfn class="local col7 decl" id="17maxelem" title='maxelem' data-type='unsigned int' data-ref="17maxelem">maxelem</dfn>;</td></tr>
+<tr><th id="165">165</th><td>  <em>const</em> <em>char</em> *<dfn class="local col8 decl" id="18percent" title='percent' data-type='const char *' data-ref="18percent">percent</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="166">166</th><td></td></tr>
+<tr><th id="167">167</th><td>  <b>if</b> (<a class="local col1 ref" href="#11pattern" title='pattern' data-ref="11pattern">pattern</a> != <var>0</var>)</td></tr>
+<tr><th id="168">168</th><td>    <a class="local col8 ref" href="#18percent" title='percent' data-ref="18percent">percent</a> = <a class="ref" href="makeint.h.html#find_percent" title='find_percent' data-ref="find_percent">find_percent</a> (<a class="local col1 ref" href="#11pattern" title='pattern' data-ref="11pattern">pattern</a>);</td></tr>
+<tr><th id="169">169</th><td></td></tr>
+<tr><th id="170">170</th><td>  <b>if</b> (<a class="local col2 ref" href="#12dirpath" title='dirpath' data-ref="12dirpath">dirpath</a> == <var>0</var>)</td></tr>
+<tr><th id="171">171</th><td>    {</td></tr>
+<tr><th id="172">172</th><td>      <i>/* Remove matching listings.  */</i></td></tr>
+<tr><th id="173">173</th><td>      <b>struct</b> <a class="type" href="#vpath" title='vpath' data-ref="vpath">vpath</a> *<dfn class="local col9 decl" id="19path" title='path' data-type='struct vpath *' data-ref="19path">path</dfn>, *<dfn class="local col0 decl" id="20lastpath" title='lastpath' data-type='struct vpath *' data-ref="20lastpath">lastpath</dfn>;</td></tr>
+<tr><th id="174">174</th><td></td></tr>
+<tr><th id="175">175</th><td>      <a class="local col0 ref" href="#20lastpath" title='lastpath' data-ref="20lastpath">lastpath</a> = <var>0</var>;</td></tr>
+<tr><th id="176">176</th><td>      <a class="local col9 ref" href="#19path" title='path' data-ref="19path">path</a> = <a class="tu ref" href="#vpaths" title='vpaths' data-use='r' data-ref="vpaths">vpaths</a>;</td></tr>
+<tr><th id="177">177</th><td>      <b>while</b> (<a class="local col9 ref" href="#19path" title='path' data-ref="19path">path</a> != <var>0</var>)</td></tr>
+<tr><th id="178">178</th><td>        {</td></tr>
+<tr><th id="179">179</th><td>          <b>struct</b> <a class="type" href="#vpath" title='vpath' data-ref="vpath">vpath</a> *<dfn class="local col1 decl" id="21next" title='next' data-type='struct vpath *' data-ref="21next">next</dfn> = <a class="local col9 ref" href="#19path" title='path' data-ref="19path">path</a>-&gt;<a class="tu ref" href="#vpath::next" title='vpath::next' data-use='r' data-ref="vpath::next">next</a>;</td></tr>
+<tr><th id="180">180</th><td></td></tr>
+<tr><th id="181">181</th><td>          <b>if</b> (<a class="local col1 ref" href="#11pattern" title='pattern' data-ref="11pattern">pattern</a> == <var>0</var></td></tr>
+<tr><th id="182">182</th><td>              || (((<a class="local col8 ref" href="#18percent" title='percent' data-ref="18percent">percent</a> == <var>0</var> &amp;&amp; <a class="local col9 ref" href="#19path" title='path' data-ref="19path">path</a>-&gt;<a class="tu ref" href="#vpath::percent" title='vpath::percent' data-use='r' data-ref="vpath::percent">percent</a> == <var>0</var>)</td></tr>
+<tr><th id="183">183</th><td>                   || (<a class="local col8 ref" href="#18percent" title='percent' data-ref="18percent">percent</a> - <a class="local col1 ref" href="#11pattern" title='pattern' data-ref="11pattern">pattern</a> == <a class="local col9 ref" href="#19path" title='path' data-ref="19path">path</a>-&gt;<a class="tu ref" href="#vpath::percent" title='vpath::percent' data-use='r' data-ref="vpath::percent">percent</a> - <a class="local col9 ref" href="#19path" title='path' data-ref="19path">path</a>-&gt;<a class="tu ref" href="#vpath::pattern" title='vpath::pattern' data-use='r' data-ref="vpath::pattern">pattern</a>))</td></tr>
+<tr><th id="184">184</th><td>                  &amp;&amp; <a class="macro" href="make.h.html#259" title="((pattern) == (path-&gt;pattern) || (*(pattern) == *(path-&gt;pattern) &amp;&amp; (*(pattern) == &apos;\0&apos; || !__extension__ ({ size_t __s1_len, __s2_len; (__builtin_constant_p ((pattern) + 1) &amp;&amp; __builtin_constant_p ((path-&gt;pattern) + 1) &amp;&amp; (__s1_len = __builtin_strlen ((pattern) + 1), __s2_len = __builtin_strlen ((path-&gt;pattern) + 1), (!((size_t)(const void *)(((pattern) + 1) + 1) - (size_t)(const void *)((pattern) + 1) == 1) || __s1_len &gt;= 4) &amp;&amp; (!((size_t)(const void *)(((path-&gt;pattern) + 1) + 1) - (size_t)(const void *)((path-&gt;pattern) + 1) == 1) || __s2_len &gt;= 4)) ? __builtin_strcmp ((pattern) + 1, (path-&gt;pattern) + 1) : (__builtin_constant_p ((pattern) + 1) &amp;&amp; ((size_t)(const void *)(((pattern) + 1) + 1) - (size_t)(const void *)((pattern) + 1) == 1) &amp;&amp; (__s1_len = __builtin_strlen ((pattern) + 1), __s1_len &lt; 4) ? (__builtin_constant_p ((path-&gt;pattern) + 1) &amp;&amp; ((size_t)(const void *)(((path-&gt;pattern) + 1) + 1) - (size_t)(const void *)((path-&gt;pattern) + 1) == 1) ? __builtin_strcmp ((pattern) + 1, (path-&gt;pattern) + 1) : (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) ((path-&gt;pattern) + 1); int __result = (((const unsigned char *) (const char *) ((pattern) + 1))[0] - __s2[0]); if (__s1_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((pattern) + 1))[1] - __s2[1]); if (__s1_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((pattern) + 1))[2] - __s2[2]); if (__s1_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) ((pattern) + 1))[3] - __s2[3]); } } __result; }))) : (__builtin_constant_p ((path-&gt;pattern) + 1) &amp;&amp; ((size_t)(const void *)(((path-&gt;pattern) + 1) + 1) - (size_t)(const void *)((path-&gt;pattern) + 1) == 1) &amp;&amp; (__s2_len = __builtin_strlen ((path-&gt;pattern) + 1), __s2_len &lt; 4) ? (__builtin_constant_p ((pattern) + 1) &amp;&amp; ((size_t)(const void *)(((pattern) + 1) + 1) - (size_t)(const void *)((pattern) + 1) == 1) ? __builtin_strcmp ((pattern) + 1, (path-&gt;pattern) + 1) : (- (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) ((pattern) + 1); int __result = (((const unsigned char *) (const char *) ((path-&gt;pattern) + 1))[0] - __s2[0]); if (__s2_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((path-&gt;pattern) + 1))[1] - __s2[1]); if (__s2_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((path-&gt;pattern) + 1))[2] - __s2[2]); if (__s2_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) ((path-&gt;pattern) + 1))[3] - __s2[3]); } } __result; })))) : __builtin_strcmp ((pattern) + 1, (path-&gt;pattern) + 1)))); }))))" data-ref="_M/streq">streq</a> (<a class="local col1 ref" href="#11pattern" title='pattern' data-ref="11pattern">pattern</a>, <a class="local col9 ref" href="#19path" title='path' data-ref="19path">path</a>-&gt;<a class="tu ref" href="#vpath::pattern" title='vpath::pattern' data-use='r' data-ref="vpath::pattern">pattern</a>)))</td></tr>
+<tr><th id="185">185</th><td>            {</td></tr>
+<tr><th id="186">186</th><td>              <i>/* Remove it from the linked list.  */</i></td></tr>
+<tr><th id="187">187</th><td>              <b>if</b> (<a class="local col0 ref" href="#20lastpath" title='lastpath' data-ref="20lastpath">lastpath</a> == <var>0</var>)</td></tr>
+<tr><th id="188">188</th><td>                <a class="tu ref" href="#vpaths" title='vpaths' data-use='w' data-ref="vpaths">vpaths</a> = <a class="local col9 ref" href="#19path" title='path' data-ref="19path">path</a>-&gt;<a class="tu ref" href="#vpath::next" title='vpath::next' data-use='r' data-ref="vpath::next">next</a>;</td></tr>
+<tr><th id="189">189</th><td>              <b>else</b></td></tr>
+<tr><th id="190">190</th><td>                <a class="local col0 ref" href="#20lastpath" title='lastpath' data-ref="20lastpath">lastpath</a>-&gt;<a class="tu ref" href="#vpath::next" title='vpath::next' data-use='w' data-ref="vpath::next">next</a> = <a class="local col1 ref" href="#21next" title='next' data-ref="21next">next</a>;</td></tr>
+<tr><th id="191">191</th><td></td></tr>
+<tr><th id="192">192</th><td>              <i>/* Free its unused storage.  */</i></td></tr>
+<tr><th id="193">193</th><td>              <i>/* MSVC erroneously warns without a cast here.  */</i></td></tr>
+<tr><th id="194">194</th><td>              <a class="ref" href="../include/stdlib.h.html#free" title='free' data-ref="free">free</a> ((<em>void</em> *)<a class="local col9 ref" href="#19path" title='path' data-ref="19path">path</a>-&gt;<a class="tu ref" href="#vpath::searchpath" title='vpath::searchpath' data-use='r' data-ref="vpath::searchpath">searchpath</a>);</td></tr>
+<tr><th id="195">195</th><td>              <a class="ref" href="../include/stdlib.h.html#free" title='free' data-ref="free">free</a> (<a class="local col9 ref" href="#19path" title='path' data-ref="19path">path</a>);</td></tr>
+<tr><th id="196">196</th><td>            }</td></tr>
+<tr><th id="197">197</th><td>          <b>else</b></td></tr>
+<tr><th id="198">198</th><td>            <a class="local col0 ref" href="#20lastpath" title='lastpath' data-ref="20lastpath">lastpath</a> = <a class="local col9 ref" href="#19path" title='path' data-ref="19path">path</a>;</td></tr>
+<tr><th id="199">199</th><td></td></tr>
+<tr><th id="200">200</th><td>          <a class="local col9 ref" href="#19path" title='path' data-ref="19path">path</a> = <a class="local col1 ref" href="#21next" title='next' data-ref="21next">next</a>;</td></tr>
+<tr><th id="201">201</th><td>        }</td></tr>
+<tr><th id="202">202</th><td></td></tr>
+<tr><th id="203">203</th><td>      <b>return</b>;</td></tr>
+<tr><th id="204">204</th><td>    }</td></tr>
+<tr><th id="205">205</th><td></td></tr>
+<tr><th id="206">206</th><td><u>#<span data-ppcond="206">ifdef</span> <span class="macro" data-ref="_M/WINDOWS32">WINDOWS32</span></u></td></tr>
+<tr><th id="207">207</th><td>    convert_vpath_to_windows32 (dirpath, <kbd>';'</kbd>);</td></tr>
+<tr><th id="208">208</th><td><u>#<span data-ppcond="206">endif</span></u></td></tr>
+<tr><th id="209">209</th><td></td></tr>
+<tr><th id="210">210</th><td>  <i>/* Skip over any initial separators and blanks.  */</i></td></tr>
+<tr><th id="211">211</th><td>  <b>while</b> (<a class="macro" href="makeint.h.html#434" title="(((stopchar_map[(unsigned char)(*dirpath)])&amp;((0x0002|0x0040))) != 0)" data-ref="_M/STOP_SET">STOP_SET</a> (*<a class="local col2 ref" href="#12dirpath" title='dirpath' data-ref="12dirpath">dirpath</a>, <a class="macro" href="makeint.h.html#393" title="0x0002" data-ref="_M/MAP_BLANK">MAP_BLANK</a>|<a class="macro" href="makeint.h.html#425" title="0x0040" data-ref="_M/MAP_PATHSEP">MAP_PATHSEP</a>))</td></tr>
+<tr><th id="212">212</th><td>    ++<a class="local col2 ref" href="#12dirpath" title='dirpath' data-ref="12dirpath">dirpath</a>;</td></tr>
+<tr><th id="213">213</th><td></td></tr>
+<tr><th id="214">214</th><td>  <i>/* Figure out the maximum number of VPATH entries and put it in</i></td></tr>
+<tr><th id="215">215</th><td><i>     MAXELEM.  We start with 2, one before the first separator and one</i></td></tr>
+<tr><th id="216">216</th><td><i>     nil (the list terminator) and increment our estimated number for</i></td></tr>
+<tr><th id="217">217</th><td><i>     each separator or blank we find.  */</i></td></tr>
+<tr><th id="218">218</th><td>  <a class="local col7 ref" href="#17maxelem" title='maxelem' data-ref="17maxelem">maxelem</a> = <var>2</var>;</td></tr>
+<tr><th id="219">219</th><td>  <a class="local col4 ref" href="#14p" title='p' data-ref="14p">p</a> = <a class="local col2 ref" href="#12dirpath" title='dirpath' data-ref="12dirpath">dirpath</a>;</td></tr>
+<tr><th id="220">220</th><td>  <b>while</b> (*<a class="local col4 ref" href="#14p" title='p' data-ref="14p">p</a> != <kbd>'\0'</kbd>)</td></tr>
+<tr><th id="221">221</th><td>    <b>if</b> (<a class="macro" href="makeint.h.html#434" title="(((stopchar_map[(unsigned char)(*p++)])&amp;((0x0002|0x0040))) != 0)" data-ref="_M/STOP_SET">STOP_SET</a> (*<a class="local col4 ref" href="#14p" title='p' data-ref="14p">p</a>++, <a class="macro" href="makeint.h.html#393" title="0x0002" data-ref="_M/MAP_BLANK">MAP_BLANK</a>|<a class="macro" href="makeint.h.html#425" title="0x0040" data-ref="_M/MAP_PATHSEP">MAP_PATHSEP</a>))</td></tr>
+<tr><th id="222">222</th><td>      ++<a class="local col7 ref" href="#17maxelem" title='maxelem' data-ref="17maxelem">maxelem</a>;</td></tr>
+<tr><th id="223">223</th><td></td></tr>
+<tr><th id="224">224</th><td>  <a class="local col5 ref" href="#15vpath" title='vpath' data-ref="15vpath">vpath</a> = <a class="ref" href="makeint.h.html#xmalloc" title='xmalloc' data-ref="xmalloc">xmalloc</a> (<a class="local col7 ref" href="#17maxelem" title='maxelem' data-ref="17maxelem">maxelem</a> * <b>sizeof</b> (<em>const</em> <em>char</em> *));</td></tr>
+<tr><th id="225">225</th><td>  <a class="local col6 ref" href="#16maxvpath" title='maxvpath' data-ref="16maxvpath">maxvpath</a> = <var>0</var>;</td></tr>
+<tr><th id="226">226</th><td></td></tr>
+<tr><th id="227">227</th><td>  <a class="local col3 ref" href="#13elem" title='elem' data-ref="13elem">elem</a> = <var>0</var>;</td></tr>
+<tr><th id="228">228</th><td>  <a class="local col4 ref" href="#14p" title='p' data-ref="14p">p</a> = <a class="local col2 ref" href="#12dirpath" title='dirpath' data-ref="12dirpath">dirpath</a>;</td></tr>
+<tr><th id="229">229</th><td>  <b>while</b> (*<a class="local col4 ref" href="#14p" title='p' data-ref="14p">p</a> != <kbd>'\0'</kbd>)</td></tr>
+<tr><th id="230">230</th><td>    {</td></tr>
+<tr><th id="231">231</th><td>      <em>char</em> *<dfn class="local col2 decl" id="22v" title='v' data-type='char *' data-ref="22v">v</dfn>;</td></tr>
+<tr><th id="232">232</th><td>      <em>unsigned</em> <em>int</em> <dfn class="local col3 decl" id="23len" title='len' data-type='unsigned int' data-ref="23len">len</dfn>;</td></tr>
+<tr><th id="233">233</th><td></td></tr>
+<tr><th id="234">234</th><td>      <i>/* Find the end of this entry.  */</i></td></tr>
+<tr><th id="235">235</th><td>      <a class="local col2 ref" href="#22v" title='v' data-ref="22v">v</a> = <a class="local col4 ref" href="#14p" title='p' data-ref="14p">p</a>;</td></tr>
+<tr><th id="236">236</th><td>      <b>while</b> (*<a class="local col4 ref" href="#14p" title='p' data-ref="14p">p</a> != <kbd>'\0'</kbd></td></tr>
+<tr><th id="237">237</th><td><u>#<span data-ppcond="237">if</span> defined(<span class="macro" data-ref="_M/HAVE_DOS_PATHS">HAVE_DOS_PATHS</span>) &amp;&amp; (<a class="macro" href="config.h.html#412" title="&apos;:&apos;" data-ref="_M/PATH_SEPARATOR_CHAR">PATH_SEPARATOR_CHAR</a> == ':')</u></td></tr>
+<tr><th id="238">238</th><td>             <i>/* Platforms whose PATH_SEPARATOR_CHAR is ':' and which</i></td></tr>
+<tr><th id="239">239</th><td><i>                also define HAVE_DOS_PATHS would like us to recognize</i></td></tr>
+<tr><th id="240">240</th><td><i>                colons after the drive letter in the likes of</i></td></tr>
+<tr><th id="241">241</th><td><i>                "D:/foo/bar:C:/xyzzy".  */</i></td></tr>
+<tr><th id="242">242</th><td>             &amp;&amp; (*p != PATH_SEPARATOR_CHAR</td></tr>
+<tr><th id="243">243</th><td>                 || (p == v + <var>1</var> &amp;&amp; (p[<var>1</var>] == <kbd>'/'</kbd> || p[<var>1</var>] == <kbd>'\\'</kbd>)))</td></tr>
+<tr><th id="244">244</th><td><u>#<span data-ppcond="237">else</span></u></td></tr>
+<tr><th id="245">245</th><td>             &amp;&amp; *<a class="local col4 ref" href="#14p" title='p' data-ref="14p">p</a> != <a class="macro" href="config.h.html#412" title="&apos;:&apos;" data-ref="_M/PATH_SEPARATOR_CHAR">PATH_SEPARATOR_CHAR</a></td></tr>
+<tr><th id="246">246</th><td><u>#<span data-ppcond="237">endif</span></u></td></tr>
+<tr><th id="247">247</th><td>             &amp;&amp; !<a class="macro" href="makeint.h.html#436" title="(((stopchar_map[(unsigned char)((*p))])&amp;((0x0002))) != 0)" data-ref="_M/ISBLANK">ISBLANK</a> (*<a class="local col4 ref" href="#14p" title='p' data-ref="14p">p</a>))</td></tr>
+<tr><th id="248">248</th><td>        ++<a class="local col4 ref" href="#14p" title='p' data-ref="14p">p</a>;</td></tr>
+<tr><th id="249">249</th><td></td></tr>
+<tr><th id="250">250</th><td>      <a class="local col3 ref" href="#23len" title='len' data-ref="23len">len</a> = <a class="local col4 ref" href="#14p" title='p' data-ref="14p">p</a> - <a class="local col2 ref" href="#22v" title='v' data-ref="22v">v</a>;</td></tr>
+<tr><th id="251">251</th><td>      <i>/* Make sure there's no trailing slash,</i></td></tr>
+<tr><th id="252">252</th><td><i>         but still allow "/" as a directory.  */</i></td></tr>
+<tr><th id="253">253</th><td><u>#<span data-ppcond="253">if</span> defined(<span class="macro" data-ref="_M/__MSDOS__">__MSDOS__</span>) || defined(<span class="macro" data-ref="_M/__EMX__">__EMX__</span>) || defined(<span class="macro" data-ref="_M/HAVE_DOS_PATHS">HAVE_DOS_PATHS</span>)</u></td></tr>
+<tr><th id="254">254</th><td>      <i>/* We need also to leave alone a trailing slash in "d:/".  */</i></td></tr>
+<tr><th id="255">255</th><td>      <b>if</b> (len &gt; <var>3</var> || (len &gt; <var>1</var> &amp;&amp; v[<var>1</var>] != <kbd>':'</kbd>))</td></tr>
+<tr><th id="256">256</th><td><u>#<span data-ppcond="253">endif</span></u></td></tr>
+<tr><th id="257">257</th><td>      <b>if</b> (<a class="local col3 ref" href="#23len" title='len' data-ref="23len">len</a> &gt; <var>1</var> &amp;&amp; <a class="local col4 ref" href="#14p" title='p' data-ref="14p">p</a>[-<var>1</var>] == <kbd>'/'</kbd>)</td></tr>
+<tr><th id="258">258</th><td>        --<a class="local col3 ref" href="#23len" title='len' data-ref="23len">len</a>;</td></tr>
+<tr><th id="259">259</th><td></td></tr>
+<tr><th id="260">260</th><td>      <i>/* Put the directory on the vpath list.  */</i></td></tr>
+<tr><th id="261">261</th><td>      <b>if</b> (<a class="local col3 ref" href="#23len" title='len' data-ref="23len">len</a> &gt; <var>1</var> || *<a class="local col2 ref" href="#22v" title='v' data-ref="22v">v</a> != <kbd>'.'</kbd>)</td></tr>
+<tr><th id="262">262</th><td>        {</td></tr>
+<tr><th id="263">263</th><td>          <a class="local col5 ref" href="#15vpath" title='vpath' data-ref="15vpath">vpath</a>[<a class="local col3 ref" href="#13elem" title='elem' data-ref="13elem">elem</a>++] = <a class="ref" href="makeint.h.html#dir_name" title='dir_name' data-ref="dir_name">dir_name</a> (<a class="ref" href="makeint.h.html#strcache_add_len" title='strcache_add_len' data-ref="strcache_add_len">strcache_add_len</a> (<a class="local col2 ref" href="#22v" title='v' data-ref="22v">v</a>, <a class="local col3 ref" href="#23len" title='len' data-ref="23len">len</a>));</td></tr>
+<tr><th id="264">264</th><td>          <b>if</b> (<a class="local col3 ref" href="#23len" title='len' data-ref="23len">len</a> &gt; <a class="local col6 ref" href="#16maxvpath" title='maxvpath' data-ref="16maxvpath">maxvpath</a>)</td></tr>
+<tr><th id="265">265</th><td>            <a class="local col6 ref" href="#16maxvpath" title='maxvpath' data-ref="16maxvpath">maxvpath</a> = <a class="local col3 ref" href="#23len" title='len' data-ref="23len">len</a>;</td></tr>
+<tr><th id="266">266</th><td>        }</td></tr>
+<tr><th id="267">267</th><td></td></tr>
+<tr><th id="268">268</th><td>      <i>/* Skip over separators and blanks between entries.  */</i></td></tr>
+<tr><th id="269">269</th><td>      <b>while</b> (<a class="macro" href="makeint.h.html#434" title="(((stopchar_map[(unsigned char)(*p)])&amp;((0x0002|0x0040))) != 0)" data-ref="_M/STOP_SET">STOP_SET</a> (*<a class="local col4 ref" href="#14p" title='p' data-ref="14p">p</a>, <a class="macro" href="makeint.h.html#393" title="0x0002" data-ref="_M/MAP_BLANK">MAP_BLANK</a>|<a class="macro" href="makeint.h.html#425" title="0x0040" data-ref="_M/MAP_PATHSEP">MAP_PATHSEP</a>))</td></tr>
+<tr><th id="270">270</th><td>        ++<a class="local col4 ref" href="#14p" title='p' data-ref="14p">p</a>;</td></tr>
+<tr><th id="271">271</th><td>    }</td></tr>
+<tr><th id="272">272</th><td></td></tr>
+<tr><th id="273">273</th><td>  <b>if</b> (<a class="local col3 ref" href="#13elem" title='elem' data-ref="13elem">elem</a> &gt; <var>0</var>)</td></tr>
+<tr><th id="274">274</th><td>    {</td></tr>
+<tr><th id="275">275</th><td>      <b>struct</b> <a class="type" href="#vpath" title='vpath' data-ref="vpath">vpath</a> *<dfn class="local col4 decl" id="24path" title='path' data-type='struct vpath *' data-ref="24path">path</dfn>;</td></tr>
+<tr><th id="276">276</th><td>      <i>/* ELEM is now incremented one element past the last</i></td></tr>
+<tr><th id="277">277</th><td><i>         entry, to where the nil-pointer terminator goes.</i></td></tr>
+<tr><th id="278">278</th><td><i>         Usually this is maxelem - 1.  If not, shrink down.  */</i></td></tr>
+<tr><th id="279">279</th><td>      <b>if</b> (<a class="local col3 ref" href="#13elem" title='elem' data-ref="13elem">elem</a> &lt; (<a class="local col7 ref" href="#17maxelem" title='maxelem' data-ref="17maxelem">maxelem</a> - <var>1</var>))</td></tr>
+<tr><th id="280">280</th><td>        <a class="local col5 ref" href="#15vpath" title='vpath' data-ref="15vpath">vpath</a> = <a class="ref" href="makeint.h.html#xrealloc" title='xrealloc' data-ref="xrealloc">xrealloc</a> (<a class="local col5 ref" href="#15vpath" title='vpath' data-ref="15vpath">vpath</a>, (<a class="local col3 ref" href="#13elem" title='elem' data-ref="13elem">elem</a>+<var>1</var>) * <b>sizeof</b> (<em>const</em> <em>char</em> *));</td></tr>
+<tr><th id="281">281</th><td></td></tr>
+<tr><th id="282">282</th><td>      <i>/* Put the nil-pointer terminator on the end of the VPATH list.  */</i></td></tr>
+<tr><th id="283">283</th><td>      <a class="local col5 ref" href="#15vpath" title='vpath' data-ref="15vpath">vpath</a>[<a class="local col3 ref" href="#13elem" title='elem' data-ref="13elem">elem</a>] = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="284">284</th><td></td></tr>
+<tr><th id="285">285</th><td>      <i>/* Construct the vpath structure and put it into the linked list.  */</i></td></tr>
+<tr><th id="286">286</th><td>      <a class="local col4 ref" href="#24path" title='path' data-ref="24path">path</a> = <a class="ref" href="makeint.h.html#xmalloc" title='xmalloc' data-ref="xmalloc">xmalloc</a> (<b>sizeof</b> (<b>struct</b> <a class="type" href="#vpath" title='vpath' data-ref="vpath">vpath</a>));</td></tr>
+<tr><th id="287">287</th><td>      <a class="local col4 ref" href="#24path" title='path' data-ref="24path">path</a>-&gt;<a class="tu ref" href="#vpath::searchpath" title='vpath::searchpath' data-use='w' data-ref="vpath::searchpath">searchpath</a> = <a class="local col5 ref" href="#15vpath" title='vpath' data-ref="15vpath">vpath</a>;</td></tr>
+<tr><th id="288">288</th><td>      <a class="local col4 ref" href="#24path" title='path' data-ref="24path">path</a>-&gt;<a class="tu ref" href="#vpath::maxlen" title='vpath::maxlen' data-use='w' data-ref="vpath::maxlen">maxlen</a> = <a class="local col6 ref" href="#16maxvpath" title='maxvpath' data-ref="16maxvpath">maxvpath</a>;</td></tr>
+<tr><th id="289">289</th><td>      <a class="local col4 ref" href="#24path" title='path' data-ref="24path">path</a>-&gt;<a class="tu ref" href="#vpath::next" title='vpath::next' data-use='w' data-ref="vpath::next">next</a> = <a class="tu ref" href="#vpaths" title='vpaths' data-use='r' data-ref="vpaths">vpaths</a>;</td></tr>
+<tr><th id="290">290</th><td>      <a class="tu ref" href="#vpaths" title='vpaths' data-use='w' data-ref="vpaths">vpaths</a> = <a class="local col4 ref" href="#24path" title='path' data-ref="24path">path</a>;</td></tr>
+<tr><th id="291">291</th><td></td></tr>
+<tr><th id="292">292</th><td>      <i>/* Set up the members.  */</i></td></tr>
+<tr><th id="293">293</th><td>      <a class="local col4 ref" href="#24path" title='path' data-ref="24path">path</a>-&gt;<a class="tu ref" href="#vpath::pattern" title='vpath::pattern' data-use='w' data-ref="vpath::pattern">pattern</a> = <a class="ref" href="makeint.h.html#strcache_add" title='strcache_add' data-ref="strcache_add">strcache_add</a> (<a class="local col1 ref" href="#11pattern" title='pattern' data-ref="11pattern">pattern</a>);</td></tr>
+<tr><th id="294">294</th><td>      <a class="local col4 ref" href="#24path" title='path' data-ref="24path">path</a>-&gt;<a class="tu ref" href="#vpath::patlen" title='vpath::patlen' data-use='w' data-ref="vpath::patlen">patlen</a> = <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col1 ref" href="#11pattern" title='pattern' data-ref="11pattern">pattern</a>);</td></tr>
+<tr><th id="295">295</th><td>      <a class="local col4 ref" href="#24path" title='path' data-ref="24path">path</a>-&gt;<a class="tu ref" href="#vpath::percent" title='vpath::percent' data-use='w' data-ref="vpath::percent">percent</a> = <a class="local col8 ref" href="#18percent" title='percent' data-ref="18percent">percent</a> ? <a class="local col4 ref" href="#24path" title='path' data-ref="24path">path</a>-&gt;<a class="tu ref" href="#vpath::pattern" title='vpath::pattern' data-use='r' data-ref="vpath::pattern">pattern</a> + (<a class="local col8 ref" href="#18percent" title='percent' data-ref="18percent">percent</a> - <a class="local col1 ref" href="#11pattern" title='pattern' data-ref="11pattern">pattern</a>) : <var>0</var>;</td></tr>
+<tr><th id="296">296</th><td>    }</td></tr>
+<tr><th id="297">297</th><td>  <b>else</b></td></tr>
+<tr><th id="298">298</th><td>    <i>/* There were no entries, so free whatever space we allocated.  */</i></td></tr>
+<tr><th id="299">299</th><td>    <i>/* MSVC erroneously warns without a cast here.  */</i></td></tr>
+<tr><th id="300">300</th><td>    <a class="ref" href="../include/stdlib.h.html#free" title='free' data-ref="free">free</a> ((<em>void</em> *)<a class="local col5 ref" href="#15vpath" title='vpath' data-ref="15vpath">vpath</a>);</td></tr>
+<tr><th id="301">301</th><td>}</td></tr>
+<tr><th id="302">302</th><td></td></tr>
+<tr><th id="303">303</th><td><i>/* Search the GPATH list for a pathname string that matches the one passed</i></td></tr>
+<tr><th id="304">304</th><td><i>   in.  If it is found, return 1.  Otherwise we return 0.  */</i></td></tr>
+<tr><th id="305">305</th><td></td></tr>
+<tr><th id="306">306</th><td><em>int</em></td></tr>
+<tr><th id="307">307</th><td><dfn class="decl def" id="gpath_search" title='gpath_search' data-ref="gpath_search">gpath_search</dfn> (<em>const</em> <em>char</em> *<dfn class="local col5 decl" id="25file" title='file' data-type='const char *' data-ref="25file">file</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col6 decl" id="26len" title='len' data-type='unsigned int' data-ref="26len">len</dfn>)</td></tr>
+<tr><th id="308">308</th><td>{</td></tr>
+<tr><th id="309">309</th><td>  <b>if</b> (<a class="tu ref" href="#gpaths" title='gpaths' data-use='r' data-ref="gpaths">gpaths</a> &amp;&amp; (<a class="local col6 ref" href="#26len" title='len' data-ref="26len">len</a> &lt;= <a class="tu ref" href="#gpaths" title='gpaths' data-use='r' data-ref="gpaths">gpaths</a>-&gt;<a class="tu ref" href="#vpath::maxlen" title='vpath::maxlen' data-use='r' data-ref="vpath::maxlen">maxlen</a>))</td></tr>
+<tr><th id="310">310</th><td>    {</td></tr>
+<tr><th id="311">311</th><td>      <em>const</em> <em>char</em> **<dfn class="local col7 decl" id="27gp" title='gp' data-type='const char **' data-ref="27gp">gp</dfn>;</td></tr>
+<tr><th id="312">312</th><td>      <b>for</b> (<a class="local col7 ref" href="#27gp" title='gp' data-ref="27gp">gp</a> = <a class="tu ref" href="#gpaths" title='gpaths' data-use='r' data-ref="gpaths">gpaths</a>-&gt;<a class="tu ref" href="#vpath::searchpath" title='vpath::searchpath' data-use='r' data-ref="vpath::searchpath">searchpath</a>; *<a class="local col7 ref" href="#27gp" title='gp' data-ref="27gp">gp</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>; ++<a class="local col7 ref" href="#27gp" title='gp' data-ref="27gp">gp</a>)</td></tr>
+<tr><th id="313">313</th><td>        <b>if</b> (<a class="macro" href="make.h.html#275" title="((__extension__ (__builtin_constant_p ((len)) &amp;&amp; ((__builtin_constant_p ((*gp)) &amp;&amp; strlen ((*gp)) &lt; ((size_t) ((len)))) || (__builtin_constant_p ((file)) &amp;&amp; strlen ((file)) &lt; ((size_t) ((len))))) ? __extension__ ({ size_t __s1_len, __s2_len; (__builtin_constant_p ((*gp)) &amp;&amp; __builtin_constant_p ((file)) &amp;&amp; (__s1_len = __builtin_strlen ((*gp)), __s2_len = __builtin_strlen ((file)), (!((size_t)(const void *)(((*gp)) + 1) - (size_t)(const void *)((*gp)) == 1) || __s1_len &gt;= 4) &amp;&amp; (!((size_t)(const void *)(((file)) + 1) - (size_t)(const void *)((file)) == 1) || __s2_len &gt;= 4)) ? __builtin_strcmp ((*gp), (file)) : (__builtin_constant_p ((*gp)) &amp;&amp; ((size_t)(const void *)(((*gp)) + 1) - (size_t)(const void *)((*gp)) == 1) &amp;&amp; (__s1_len = __builtin_strlen ((*gp)), __s1_len &lt; 4) ? (__builtin_constant_p ((file)) &amp;&amp; ((size_t)(const void *)(((file)) + 1) - (size_t)(const void *)((file)) == 1) ? __builtin_strcmp ((*gp), (file)) : (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) ((file)); int __result = (((const unsigned char *) (const char *) ((*gp)))[0] - __s2[0]); if (__s1_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((*gp)))[1] - __s2[1]); if (__s1_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((*gp)))[2] - __s2[2]); if (__s1_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) ((*gp)))[3] - __s2[3]); } } __result; }))) : (__builtin_constant_p ((file)) &amp;&amp; ((size_t)(const void *)(((file)) + 1) - (size_t)(const void *)((file)) == 1) &amp;&amp; (__s2_len = __builtin_strlen ((file)), __s2_len &lt; 4) ? (__builtin_constant_p ((*gp)) &amp;&amp; ((size_t)(const void *)(((*gp)) + 1) - (size_t)(const void *)((*gp)) == 1) ? __builtin_strcmp ((*gp), (file)) : (- (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) ((*gp)); int __result = (((const unsigned char *) (const char *) ((file)))[0] - __s2[0]); if (__s2_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((file)))[1] - __s2[1]); if (__s2_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((file)))[2] - __s2[2]); if (__s2_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) ((file)))[3] - __s2[3]); } } __result; })))) : __builtin_strcmp ((*gp), (file))))); }) : strncmp ((*gp), (file), (len)))) == 0)" data-ref="_M/strneq">strneq</a> (*<a class="local col7 ref" href="#27gp" title='gp' data-ref="27gp">gp</a>, <a class="local col5 ref" href="#25file" title='file' data-ref="25file">file</a>, <a class="local col6 ref" href="#26len" title='len' data-ref="26len">len</a>) &amp;&amp; (*<a class="local col7 ref" href="#27gp" title='gp' data-ref="27gp">gp</a>)[<a class="local col6 ref" href="#26len" title='len' data-ref="26len">len</a>] == <kbd>'\0'</kbd>)</td></tr>
+<tr><th id="314">314</th><td>          <b>return</b> <var>1</var>;</td></tr>
+<tr><th id="315">315</th><td>    }</td></tr>
+<tr><th id="316">316</th><td></td></tr>
+<tr><th id="317">317</th><td>  <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="318">318</th><td>}</td></tr>
+<tr><th id="319">319</th><td></td></tr>
+<tr><th id="320">320</th><td></td></tr>
+<tr><th id="321">321</th><td><i  data-doc="selective_vpath_search">/* Search the given VPATH list for a directory where the name pointed to by</i></td></tr>
+<tr><th id="322">322</th><td><i  data-doc="selective_vpath_search">   FILE exists.  If it is found, we return a cached name of the existing file</i></td></tr>
+<tr><th id="323">323</th><td><i  data-doc="selective_vpath_search">   and set *MTIME_PTR (if MTIME_PTR is not NULL) to its modtime (or zero if no</i></td></tr>
+<tr><th id="324">324</th><td><i  data-doc="selective_vpath_search">   stat call was done). Also set the matching directory index in PATH_INDEX</i></td></tr>
+<tr><th id="325">325</th><td><i  data-doc="selective_vpath_search">   if it is not NULL. Otherwise we return NULL.  */</i></td></tr>
+<tr><th id="326">326</th><td></td></tr>
+<tr><th id="327">327</th><td><em>static</em> <em>const</em> <em>char</em> *</td></tr>
+<tr><th id="328">328</th><td><dfn class="tu decl def" id="selective_vpath_search" title='selective_vpath_search' data-type='const char * selective_vpath_search(struct vpath * path, const char * file, uintmax_t * mtime_ptr, unsigned int * path_index)' data-ref="selective_vpath_search">selective_vpath_search</dfn> (<b>struct</b> <a class="type" href="#vpath" title='vpath' data-ref="vpath">vpath</a> *<dfn class="local col8 decl" id="28path" title='path' data-type='struct vpath *' data-ref="28path">path</dfn>, <em>const</em> <em>char</em> *<dfn class="local col9 decl" id="29file" title='file' data-type='const char *' data-ref="29file">file</dfn>,</td></tr>
+<tr><th id="329">329</th><td>                        <a class="macro" href="make.h.html#252" title="uintmax_t" data-ref="_M/FILE_TIMESTAMP">FILE_TIMESTAMP</a> *<dfn class="local col0 decl" id="30mtime_ptr" title='mtime_ptr' data-type='uintmax_t *' data-ref="30mtime_ptr">mtime_ptr</dfn>, <em>unsigned</em> <em>int</em>* <dfn class="local col1 decl" id="31path_index" title='path_index' data-type='unsigned int *' data-ref="31path_index">path_index</dfn>)</td></tr>
+<tr><th id="330">330</th><td>{</td></tr>
+<tr><th id="331">331</th><td>  <em>int</em> <dfn class="local col2 decl" id="32not_target" title='not_target' data-type='int' data-ref="32not_target">not_target</dfn>;</td></tr>
+<tr><th id="332">332</th><td>  <em>char</em> *<dfn class="local col3 decl" id="33name" title='name' data-type='char *' data-ref="33name">name</dfn>;</td></tr>
+<tr><th id="333">333</th><td>  <em>const</em> <em>char</em> *<dfn class="local col4 decl" id="34n" title='n' data-type='const char *' data-ref="34n">n</dfn>;</td></tr>
+<tr><th id="334">334</th><td>  <em>const</em> <em>char</em> *<dfn class="local col5 decl" id="35filename" title='filename' data-type='const char *' data-ref="35filename">filename</dfn>;</td></tr>
+<tr><th id="335">335</th><td>  <em>const</em> <em>char</em> **<dfn class="local col6 decl" id="36vpath" title='vpath' data-type='const char **' data-ref="36vpath">vpath</dfn> = <a class="local col8 ref" href="#28path" title='path' data-ref="28path">path</a>-&gt;<a class="tu ref" href="#vpath::searchpath" title='vpath::searchpath' data-use='r' data-ref="vpath::searchpath">searchpath</a>;</td></tr>
+<tr><th id="336">336</th><td>  <em>unsigned</em> <em>int</em> <dfn class="local col7 decl" id="37maxvpath" title='maxvpath' data-type='unsigned int' data-ref="37maxvpath">maxvpath</dfn> = <a class="local col8 ref" href="#28path" title='path' data-ref="28path">path</a>-&gt;<a class="tu ref" href="#vpath::maxlen" title='vpath::maxlen' data-use='r' data-ref="vpath::maxlen">maxlen</a>;</td></tr>
+<tr><th id="337">337</th><td>  <em>unsigned</em> <em>int</em> <dfn class="local col8 decl" id="38i" title='i' data-type='unsigned int' data-ref="38i">i</dfn>;</td></tr>
+<tr><th id="338">338</th><td>  <em>unsigned</em> <em>int</em> <dfn class="local col9 decl" id="39flen" title='flen' data-type='unsigned int' data-ref="39flen">flen</dfn>, <dfn class="local col0 decl" id="40name_dplen" title='name_dplen' data-type='unsigned int' data-ref="40name_dplen">name_dplen</dfn>;</td></tr>
+<tr><th id="339">339</th><td>  <em>int</em> <dfn class="local col1 decl" id="41exists" title='exists' data-type='int' data-ref="41exists">exists</dfn> = <var>0</var>;</td></tr>
+<tr><th id="340">340</th><td></td></tr>
+<tr><th id="341">341</th><td>  <i>/* Find out if *FILE is a target.</i></td></tr>
+<tr><th id="342">342</th><td><i>     If and only if it is NOT a target, we will accept prospective</i></td></tr>
+<tr><th id="343">343</th><td><i>     files that don't exist but are mentioned in a makefile.  */</i></td></tr>
+<tr><th id="344">344</th><td>  {</td></tr>
+<tr><th id="345">345</th><td>    <b>struct</b> <a class="type" href="filedef.h.html#file" title='file' data-ref="file">file</a> *<dfn class="local col2 decl" id="42f" title='f' data-type='struct file *' data-ref="42f">f</dfn> = <a class="ref" href="filedef.h.html#lookup_file" title='lookup_file' data-ref="lookup_file">lookup_file</a> (<a class="local col9 ref" href="#29file" title='file' data-ref="29file">file</a>);</td></tr>
+<tr><th id="346">346</th><td>    <a class="local col2 ref" href="#32not_target" title='not_target' data-ref="32not_target">not_target</a> = <a class="local col2 ref" href="#42f" title='f' data-ref="42f">f</a> == <var>0</var> || !<a class="local col2 ref" href="#42f" title='f' data-ref="42f">f</a>-&gt;<a class="ref" href="filedef.h.html#file::is_target" title='file::is_target' data-ref="file::is_target">is_target</a>;</td></tr>
+<tr><th id="347">347</th><td>  }</td></tr>
+<tr><th id="348">348</th><td></td></tr>
+<tr><th id="349">349</th><td>  <a class="local col9 ref" href="#39flen" title='flen' data-ref="39flen">flen</a> = <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col9 ref" href="#29file" title='file' data-ref="29file">file</a>);</td></tr>
+<tr><th id="350">350</th><td></td></tr>
+<tr><th id="351">351</th><td>  <i>/* Split *FILE into a directory prefix and a name-within-directory.</i></td></tr>
+<tr><th id="352">352</th><td><i>     NAME_DPLEN gets the length of the prefix; FILENAME gets the pointer to</i></td></tr>
+<tr><th id="353">353</th><td><i>     the name-within-directory and FLEN is its length.  */</i></td></tr>
+<tr><th id="354">354</th><td></td></tr>
+<tr><th id="355">355</th><td>  <a class="local col4 ref" href="#34n" title='n' data-ref="34n">n</a> = <a class="ref" href="../include/string.h.html#strrchr" title='strrchr' data-ref="strrchr">strrchr</a> (<a class="local col9 ref" href="#29file" title='file' data-ref="29file">file</a>, <kbd>'/'</kbd>);</td></tr>
+<tr><th id="356">356</th><td><u>#<span data-ppcond="356">ifdef</span> <span class="macro" data-ref="_M/HAVE_DOS_PATHS">HAVE_DOS_PATHS</span></u></td></tr>
+<tr><th id="357">357</th><td>  <i>/* We need the rightmost slash or backslash.  */</i></td></tr>
+<tr><th id="358">358</th><td>  {</td></tr>
+<tr><th id="359">359</th><td>    <em>const</em> <em>char</em> *bslash = strrchr (file, <kbd>'\\'</kbd>);</td></tr>
+<tr><th id="360">360</th><td>    <b>if</b> (!n || bslash &gt; n)</td></tr>
+<tr><th id="361">361</th><td>      n = bslash;</td></tr>
+<tr><th id="362">362</th><td>  }</td></tr>
+<tr><th id="363">363</th><td><u>#<span data-ppcond="356">endif</span></u></td></tr>
+<tr><th id="364">364</th><td>  <a class="local col0 ref" href="#40name_dplen" title='name_dplen' data-ref="40name_dplen">name_dplen</a> = <a class="local col4 ref" href="#34n" title='n' data-ref="34n">n</a> != <var>0</var> ? <a class="local col4 ref" href="#34n" title='n' data-ref="34n">n</a> - <a class="local col9 ref" href="#29file" title='file' data-ref="29file">file</a> : <var>0</var>;</td></tr>
+<tr><th id="365">365</th><td>  <a class="local col5 ref" href="#35filename" title='filename' data-ref="35filename">filename</a> = <a class="local col0 ref" href="#40name_dplen" title='name_dplen' data-ref="40name_dplen">name_dplen</a> &gt; <var>0</var> ? <a class="local col4 ref" href="#34n" title='n' data-ref="34n">n</a> + <var>1</var> : <a class="local col9 ref" href="#29file" title='file' data-ref="29file">file</a>;</td></tr>
+<tr><th id="366">366</th><td>  <b>if</b> (<a class="local col0 ref" href="#40name_dplen" title='name_dplen' data-ref="40name_dplen">name_dplen</a> &gt; <var>0</var>)</td></tr>
+<tr><th id="367">367</th><td>    <a class="local col9 ref" href="#39flen" title='flen' data-ref="39flen">flen</a> -= <a class="local col0 ref" href="#40name_dplen" title='name_dplen' data-ref="40name_dplen">name_dplen</a> + <var>1</var>;</td></tr>
+<tr><th id="368">368</th><td></td></tr>
+<tr><th id="369">369</th><td>  <i>/* Get enough space for the biggest VPATH entry, a slash, the directory</i></td></tr>
+<tr><th id="370">370</th><td><i>     prefix that came with FILE, another slash (although this one may not</i></td></tr>
+<tr><th id="371">371</th><td><i>     always be necessary), the filename, and a null terminator.  */</i></td></tr>
+<tr><th id="372">372</th><td>  <a class="local col3 ref" href="#33name" title='name' data-ref="33name">name</a> = <a class="macro" href="../include/alloca.h.html#35" title="__builtin_alloca (maxvpath + 1 + name_dplen + 1 + flen + 1)" data-ref="_M/alloca">alloca</a> (<a class="local col7 ref" href="#37maxvpath" title='maxvpath' data-ref="37maxvpath">maxvpath</a> + <var>1</var> + <a class="local col0 ref" href="#40name_dplen" title='name_dplen' data-ref="40name_dplen">name_dplen</a> + <var>1</var> + <a class="local col9 ref" href="#39flen" title='flen' data-ref="39flen">flen</a> + <var>1</var>);</td></tr>
+<tr><th id="373">373</th><td></td></tr>
+<tr><th id="374">374</th><td>  <i>/* Try each VPATH entry.  */</i></td></tr>
+<tr><th id="375">375</th><td>  <b>for</b> (<a class="local col8 ref" href="#38i" title='i' data-ref="38i">i</a> = <var>0</var>; <a class="local col6 ref" href="#36vpath" title='vpath' data-ref="36vpath">vpath</a>[<a class="local col8 ref" href="#38i" title='i' data-ref="38i">i</a>] != <var>0</var>; ++<a class="local col8 ref" href="#38i" title='i' data-ref="38i">i</a>)</td></tr>
+<tr><th id="376">376</th><td>    {</td></tr>
+<tr><th id="377">377</th><td>      <em>int</em> <dfn class="local col3 decl" id="43exists_in_cache" title='exists_in_cache' data-type='int' data-ref="43exists_in_cache">exists_in_cache</dfn> = <var>0</var>;</td></tr>
+<tr><th id="378">378</th><td>      <em>char</em> *<dfn class="local col4 decl" id="44p" title='p' data-type='char *' data-ref="44p">p</dfn> = <a class="local col3 ref" href="#33name" title='name' data-ref="33name">name</a>;</td></tr>
+<tr><th id="379">379</th><td>      <em>unsigned</em> <em>int</em> <dfn class="local col5 decl" id="45vlen" title='vlen' data-type='unsigned int' data-ref="45vlen">vlen</dfn> = <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col6 ref" href="#36vpath" title='vpath' data-ref="36vpath">vpath</a>[<a class="local col8 ref" href="#38i" title='i' data-ref="38i">i</a>]);</td></tr>
+<tr><th id="380">380</th><td></td></tr>
+<tr><th id="381">381</th><td>      <i>/* Put the next VPATH entry into NAME at P and increment P past it.  */</i></td></tr>
+<tr><th id="382">382</th><td>      <a class="ref" href="../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a> (<a class="local col4 ref" href="#44p" title='p' data-ref="44p">p</a>, <a class="local col6 ref" href="#36vpath" title='vpath' data-ref="36vpath">vpath</a>[<a class="local col8 ref" href="#38i" title='i' data-ref="38i">i</a>], <a class="local col5 ref" href="#45vlen" title='vlen' data-ref="45vlen">vlen</a>);</td></tr>
+<tr><th id="383">383</th><td>      <a class="local col4 ref" href="#44p" title='p' data-ref="44p">p</a> += <a class="local col5 ref" href="#45vlen" title='vlen' data-ref="45vlen">vlen</a>;</td></tr>
+<tr><th id="384">384</th><td></td></tr>
+<tr><th id="385">385</th><td>      <i>/* Add the directory prefix already in *FILE.  */</i></td></tr>
+<tr><th id="386">386</th><td>      <b>if</b> (<a class="local col0 ref" href="#40name_dplen" title='name_dplen' data-ref="40name_dplen">name_dplen</a> &gt; <var>0</var>)</td></tr>
+<tr><th id="387">387</th><td>        {</td></tr>
+<tr><th id="388">388</th><td><u>#<span data-ppcond="388">ifndef</span> <span class="macro" data-ref="_M/VMS">VMS</span></u></td></tr>
+<tr><th id="389">389</th><td>          *<a class="local col4 ref" href="#44p" title='p' data-ref="44p">p</a>++ = <kbd>'/'</kbd>;</td></tr>
+<tr><th id="390">390</th><td><u>#<span data-ppcond="388">else</span></u></td></tr>
+<tr><th id="391">391</th><td>          <i>/* VMS: if this is not in VMS format, treat as Unix format */</i></td></tr>
+<tr><th id="392">392</th><td>          <b>if</b> ((*p != <kbd>':'</kbd>) &amp;&amp; (*p != <kbd>']'</kbd>) &amp;&amp; (*p != <kbd>'&gt;'</kbd>))</td></tr>
+<tr><th id="393">393</th><td>            *p++ = <kbd>'/'</kbd>;</td></tr>
+<tr><th id="394">394</th><td><u>#<span data-ppcond="388">endif</span></u></td></tr>
+<tr><th id="395">395</th><td>          <a class="ref" href="../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a> (<a class="local col4 ref" href="#44p" title='p' data-ref="44p">p</a>, <a class="local col9 ref" href="#29file" title='file' data-ref="29file">file</a>, <a class="local col0 ref" href="#40name_dplen" title='name_dplen' data-ref="40name_dplen">name_dplen</a>);</td></tr>
+<tr><th id="396">396</th><td>          <a class="local col4 ref" href="#44p" title='p' data-ref="44p">p</a> += <a class="local col0 ref" href="#40name_dplen" title='name_dplen' data-ref="40name_dplen">name_dplen</a>;</td></tr>
+<tr><th id="397">397</th><td>        }</td></tr>
+<tr><th id="398">398</th><td></td></tr>
+<tr><th id="399">399</th><td><u>#<span data-ppcond="399">ifdef</span> <span class="macro" data-ref="_M/HAVE_DOS_PATHS">HAVE_DOS_PATHS</span></u></td></tr>
+<tr><th id="400">400</th><td>      <i>/* Cause the next if to treat backslash and slash alike.  */</i></td></tr>
+<tr><th id="401">401</th><td>      <b>if</b> (p != name &amp;&amp; p[-<var>1</var>] == <kbd>'\\'</kbd> )</td></tr>
+<tr><th id="402">402</th><td>        p[-<var>1</var>] = <kbd>'/'</kbd>;</td></tr>
+<tr><th id="403">403</th><td><u>#<span data-ppcond="399">endif</span></u></td></tr>
+<tr><th id="404">404</th><td>      <i>/* Now add the name-within-directory at the end of NAME.  */</i></td></tr>
+<tr><th id="405">405</th><td><u>#<span data-ppcond="405">ifndef</span> <span class="macro" data-ref="_M/VMS">VMS</span></u></td></tr>
+<tr><th id="406">406</th><td>      <b>if</b> (<a class="local col4 ref" href="#44p" title='p' data-ref="44p">p</a> != <a class="local col3 ref" href="#33name" title='name' data-ref="33name">name</a> &amp;&amp; <a class="local col4 ref" href="#44p" title='p' data-ref="44p">p</a>[-<var>1</var>] != <kbd>'/'</kbd>)</td></tr>
+<tr><th id="407">407</th><td>        {</td></tr>
+<tr><th id="408">408</th><td>          *<a class="local col4 ref" href="#44p" title='p' data-ref="44p">p</a> = <kbd>'/'</kbd>;</td></tr>
+<tr><th id="409">409</th><td>          <a class="ref" href="../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a> (<a class="local col4 ref" href="#44p" title='p' data-ref="44p">p</a> + <var>1</var>, <a class="local col5 ref" href="#35filename" title='filename' data-ref="35filename">filename</a>, <a class="local col9 ref" href="#39flen" title='flen' data-ref="39flen">flen</a> + <var>1</var>);</td></tr>
+<tr><th id="410">410</th><td>        }</td></tr>
+<tr><th id="411">411</th><td>      <b>else</b></td></tr>
+<tr><th id="412">412</th><td><u>#<span data-ppcond="405">else</span></u></td></tr>
+<tr><th id="413">413</th><td>      <i>/* VMS use a slash if no directory terminator present */</i></td></tr>
+<tr><th id="414">414</th><td>      <b>if</b> (p != name &amp;&amp; p[-<var>1</var>] != <kbd>'/'</kbd> &amp;&amp; p[-<var>1</var>] != <kbd>':'</kbd> &amp;&amp;</td></tr>
+<tr><th id="415">415</th><td>          p[-<var>1</var>] != <kbd>'&gt;'</kbd> &amp;&amp; p[-<var>1</var>] != <kbd>']'</kbd>)</td></tr>
+<tr><th id="416">416</th><td>        {</td></tr>
+<tr><th id="417">417</th><td>          *p = <kbd>'/'</kbd>;</td></tr>
+<tr><th id="418">418</th><td>          memcpy (p + <var>1</var>, filename, flen + <var>1</var>);</td></tr>
+<tr><th id="419">419</th><td>        }</td></tr>
+<tr><th id="420">420</th><td>      <b>else</b></td></tr>
+<tr><th id="421">421</th><td><u>#<span data-ppcond="405">endif</span></u></td></tr>
+<tr><th id="422">422</th><td>        <a class="ref" href="../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a> (<a class="local col4 ref" href="#44p" title='p' data-ref="44p">p</a>, <a class="local col5 ref" href="#35filename" title='filename' data-ref="35filename">filename</a>, <a class="local col9 ref" href="#39flen" title='flen' data-ref="39flen">flen</a> + <var>1</var>);</td></tr>
+<tr><th id="423">423</th><td></td></tr>
+<tr><th id="424">424</th><td>      <i>/* Check if the file is mentioned in a makefile.  If *FILE is not</i></td></tr>
+<tr><th id="425">425</th><td><i>         a target, that is enough for us to decide this file exists.</i></td></tr>
+<tr><th id="426">426</th><td><i>         If *FILE is a target, then the file must be mentioned in the</i></td></tr>
+<tr><th id="427">427</th><td><i>         makefile also as a target to be chosen.</i></td></tr>
+<tr><th id="428">428</th><td><i></i></td></tr>
+<tr><th id="429">429</th><td><i>         The restriction that *FILE must not be a target for a</i></td></tr>
+<tr><th id="430">430</th><td><i>         makefile-mentioned file to be chosen was added by an</i></td></tr>
+<tr><th id="431">431</th><td><i>         inadequately commented change in July 1990; I am not sure off</i></td></tr>
+<tr><th id="432">432</th><td><i>         hand what problem it fixes.</i></td></tr>
+<tr><th id="433">433</th><td><i></i></td></tr>
+<tr><th id="434">434</th><td><i>         In December 1993 I loosened this restriction to allow a file</i></td></tr>
+<tr><th id="435">435</th><td><i>         to be chosen if it is mentioned as a target in a makefile.  This</i></td></tr>
+<tr><th id="436">436</th><td><i>         seem logical.</i></td></tr>
+<tr><th id="437">437</th><td><i></i></td></tr>
+<tr><th id="438">438</th><td><i>         Special handling for -W / -o: make sure we preserve the special</i></td></tr>
+<tr><th id="439">439</th><td><i>         values here.  Actually this whole thing is a little bogus: I think</i></td></tr>
+<tr><th id="440">440</th><td><i>         we should ditch the name/hname thing and look into the renamed</i></td></tr>
+<tr><th id="441">441</th><td><i>         capability that already exists for files: that is, have a new struct</i></td></tr>
+<tr><th id="442">442</th><td><i>         file* entry for the VPATH-found file, and set the renamed field if</i></td></tr>
+<tr><th id="443">443</th><td><i>         we use it.</i></td></tr>
+<tr><th id="444">444</th><td><i>      */</i></td></tr>
+<tr><th id="445">445</th><td>      {</td></tr>
+<tr><th id="446">446</th><td>        <b>struct</b> <a class="type" href="filedef.h.html#file" title='file' data-ref="file">file</a> *<dfn class="local col6 decl" id="46f" title='f' data-type='struct file *' data-ref="46f">f</dfn> = <a class="ref" href="filedef.h.html#lookup_file" title='lookup_file' data-ref="lookup_file">lookup_file</a> (<a class="local col3 ref" href="#33name" title='name' data-ref="33name">name</a>);</td></tr>
+<tr><th id="447">447</th><td>        <b>if</b> (<a class="local col6 ref" href="#46f" title='f' data-ref="46f">f</a> != <var>0</var>)</td></tr>
+<tr><th id="448">448</th><td>          {</td></tr>
+<tr><th id="449">449</th><td>            <a class="local col1 ref" href="#41exists" title='exists' data-ref="41exists">exists</a> = <a class="local col2 ref" href="#32not_target" title='not_target' data-ref="32not_target">not_target</a> || <a class="local col6 ref" href="#46f" title='f' data-ref="46f">f</a>-&gt;<a class="ref" href="filedef.h.html#file::is_target" title='file::is_target' data-ref="file::is_target">is_target</a>;</td></tr>
+<tr><th id="450">450</th><td>            <b>if</b> (<a class="local col1 ref" href="#41exists" title='exists' data-ref="41exists">exists</a> &amp;&amp; <a class="local col0 ref" href="#30mtime_ptr" title='mtime_ptr' data-ref="30mtime_ptr">mtime_ptr</a></td></tr>
+<tr><th id="451">451</th><td>                &amp;&amp; (<a class="local col6 ref" href="#46f" title='f' data-ref="46f">f</a>-&gt;<a class="ref" href="filedef.h.html#file::last_mtime" title='file::last_mtime' data-ref="file::last_mtime">last_mtime</a> == <a class="macro" href="filedef.h.html#219" title="2" data-ref="_M/OLD_MTIME">OLD_MTIME</a> || <a class="local col6 ref" href="#46f" title='f' data-ref="46f">f</a>-&gt;<a class="ref" href="filedef.h.html#file::last_mtime" title='file::last_mtime' data-ref="file::last_mtime">last_mtime</a> == <a class="macro" href="filedef.h.html#233" title="(~ (uintmax_t) 0 - (! ((uintmax_t) -1 &lt;= 0) ? (uintmax_t) 0 : ~ (uintmax_t) 0 &lt;&lt; (sizeof (uintmax_t) * 8 - 1)))" data-ref="_M/NEW_MTIME">NEW_MTIME</a>))</td></tr>
+<tr><th id="452">452</th><td>              {</td></tr>
+<tr><th id="453">453</th><td>                *<a class="local col0 ref" href="#30mtime_ptr" title='mtime_ptr' data-ref="30mtime_ptr">mtime_ptr</a> = <a class="local col6 ref" href="#46f" title='f' data-ref="46f">f</a>-&gt;<a class="ref" href="filedef.h.html#file::last_mtime" title='file::last_mtime' data-ref="file::last_mtime">last_mtime</a>;</td></tr>
+<tr><th id="454">454</th><td>                <a class="local col0 ref" href="#30mtime_ptr" title='mtime_ptr' data-ref="30mtime_ptr">mtime_ptr</a> = <var>0</var>;</td></tr>
+<tr><th id="455">455</th><td>              }</td></tr>
+<tr><th id="456">456</th><td>          }</td></tr>
+<tr><th id="457">457</th><td>      }</td></tr>
+<tr><th id="458">458</th><td></td></tr>
+<tr><th id="459">459</th><td>      <b>if</b> (!<a class="local col1 ref" href="#41exists" title='exists' data-ref="41exists">exists</a>)</td></tr>
+<tr><th id="460">460</th><td>        {</td></tr>
+<tr><th id="461">461</th><td>          <i>/* That file wasn't mentioned in the makefile.</i></td></tr>
+<tr><th id="462">462</th><td><i>             See if it actually exists.  */</i></td></tr>
+<tr><th id="463">463</th><td></td></tr>
+<tr><th id="464">464</th><td><u>#<span data-ppcond="464">ifdef</span> <span class="macro" data-ref="_M/VMS">VMS</span></u></td></tr>
+<tr><th id="465">465</th><td>          <i>/* For VMS syntax just use the original vpath */</i></td></tr>
+<tr><th id="466">466</th><td>          <b>if</b> (*p != <kbd>'/'</kbd>)</td></tr>
+<tr><th id="467">467</th><td>            exists_in_cache = exists = dir_file_exists_p (vpath[i], filename);</td></tr>
+<tr><th id="468">468</th><td>          <b>else</b></td></tr>
+<tr><th id="469">469</th><td><u>#<span data-ppcond="464">endif</span></u></td></tr>
+<tr><th id="470">470</th><td>            {</td></tr>
+<tr><th id="471">471</th><td>              <i>/* Clobber a null into the name at the last slash.</i></td></tr>
+<tr><th id="472">472</th><td><i>                 Now NAME is the name of the directory to look in.  */</i></td></tr>
+<tr><th id="473">473</th><td>              *<a class="local col4 ref" href="#44p" title='p' data-ref="44p">p</a> = <kbd>'\0'</kbd>;</td></tr>
+<tr><th id="474">474</th><td>              <i>/* We know the directory is in the hash table now because either</i></td></tr>
+<tr><th id="475">475</th><td><i>                 construct_vpath_list or the code just above put it there.</i></td></tr>
+<tr><th id="476">476</th><td><i>                 Does the file we seek exist in it?  */</i></td></tr>
+<tr><th id="477">477</th><td>              <a class="local col3 ref" href="#43exists_in_cache" title='exists_in_cache' data-ref="43exists_in_cache">exists_in_cache</a> = <a class="local col1 ref" href="#41exists" title='exists' data-ref="41exists">exists</a> = <a class="ref" href="makeint.h.html#dir_file_exists_p" title='dir_file_exists_p' data-ref="dir_file_exists_p">dir_file_exists_p</a> (<a class="local col3 ref" href="#33name" title='name' data-ref="33name">name</a>, <a class="local col5 ref" href="#35filename" title='filename' data-ref="35filename">filename</a>);</td></tr>
+<tr><th id="478">478</th><td>            }</td></tr>
+<tr><th id="479">479</th><td>        }</td></tr>
+<tr><th id="480">480</th><td></td></tr>
+<tr><th id="481">481</th><td>      <b>if</b> (<a class="local col1 ref" href="#41exists" title='exists' data-ref="41exists">exists</a>)</td></tr>
+<tr><th id="482">482</th><td>        {</td></tr>
+<tr><th id="483">483</th><td>          <i>/* The file is in the directory cache.</i></td></tr>
+<tr><th id="484">484</th><td><i>             Now check that it actually exists in the filesystem.</i></td></tr>
+<tr><th id="485">485</th><td><i>             The cache may be out of date.  When vpath thinks a file</i></td></tr>
+<tr><th id="486">486</th><td><i>             exists, but stat fails for it, confusion results in the</i></td></tr>
+<tr><th id="487">487</th><td><i>             higher levels.  */</i></td></tr>
+<tr><th id="488">488</th><td></td></tr>
+<tr><th id="489">489</th><td>          <b>struct</b> <a class="type" href="../include/x86_64-linux-gnu/bits/stat.h.html#stat" title='stat' data-ref="stat">stat</a> <dfn class="local col7 decl" id="47st" title='st' data-type='struct stat' data-ref="47st">st</dfn>;</td></tr>
+<tr><th id="490">490</th><td></td></tr>
+<tr><th id="491">491</th><td><u>#<span data-ppcond="491">ifndef</span> <span class="macro" data-ref="_M/VMS">VMS</span></u></td></tr>
+<tr><th id="492">492</th><td>          <i>/* Put the slash back in NAME.  */</i></td></tr>
+<tr><th id="493">493</th><td>          *<a class="local col4 ref" href="#44p" title='p' data-ref="44p">p</a> = <kbd>'/'</kbd>;</td></tr>
+<tr><th id="494">494</th><td><u>#<span data-ppcond="491">else</span></u></td></tr>
+<tr><th id="495">495</th><td>          <i>/* If the slash was removed, put it back */</i></td></tr>
+<tr><th id="496">496</th><td>          <b>if</b> (*p == <var>0</var>)</td></tr>
+<tr><th id="497">497</th><td>            *p = <kbd>'/'</kbd>;</td></tr>
+<tr><th id="498">498</th><td><u>#<span data-ppcond="491">endif</span></u></td></tr>
+<tr><th id="499">499</th><td></td></tr>
+<tr><th id="500">500</th><td>          <b>if</b> (<a class="local col3 ref" href="#43exists_in_cache" title='exists_in_cache' data-ref="43exists_in_cache">exists_in_cache</a>)  <i>/* Makefile-mentioned file need not exist.  */</i></td></tr>
+<tr><th id="501">501</th><td>            {</td></tr>
+<tr><th id="502">502</th><td>              <em>int</em> <dfn class="local col8 decl" id="48e" title='e' data-type='int' data-ref="48e">e</dfn>;</td></tr>
+<tr><th id="503">503</th><td></td></tr>
+<tr><th id="504">504</th><td>              <a class="macro" href="make.h.html#558" title="while (((e)=stat (name, &amp;st))==-1 &amp;&amp; (*__errno_location ())==4)" data-ref="_M/EINTRLOOP">EINTRLOOP</a> (<a class="local col8 ref" href="#48e" title='e' data-ref="48e">e</a>, <a class="ref" href="../include/x86_64-linux-gnu/sys/stat.h.html#stat" title='stat' data-ref="stat">stat</a> (<a class="local col3 ref" href="#33name" title='name' data-ref="33name">name</a>, &amp;<a class="local col7 ref" href="#47st" title='st' data-ref="47st">st</a>)); <i>/* Does it really exist?  */</i></td></tr>
+<tr><th id="505">505</th><td>              <b>if</b> (<a class="local col8 ref" href="#48e" title='e' data-ref="48e">e</a> != <var>0</var>)</td></tr>
+<tr><th id="506">506</th><td>                {</td></tr>
+<tr><th id="507">507</th><td>                  <a class="local col1 ref" href="#41exists" title='exists' data-ref="41exists">exists</a> = <var>0</var>;</td></tr>
+<tr><th id="508">508</th><td>                  <b>continue</b>;</td></tr>
+<tr><th id="509">509</th><td>                }</td></tr>
+<tr><th id="510">510</th><td></td></tr>
+<tr><th id="511">511</th><td>              <i>/* Store the modtime into *MTIME_PTR for the caller.  */</i></td></tr>
+<tr><th id="512">512</th><td>              <b>if</b> (<a class="local col0 ref" href="#30mtime_ptr" title='mtime_ptr' data-ref="30mtime_ptr">mtime_ptr</a> != <var>0</var>)</td></tr>
+<tr><th id="513">513</th><td>                {</td></tr>
+<tr><th id="514">514</th><td>                  *<a class="local col0 ref" href="#30mtime_ptr" title='mtime_ptr' data-ref="30mtime_ptr">mtime_ptr</a> = <a class="macro" href="filedef.h.html#143" title="file_timestamp_cons (name, (st).st_mtim.tv_sec, (st).st_mtim.tv_nsec)" data-ref="_M/FILE_TIMESTAMP_STAT_MODTIME">FILE_TIMESTAMP_STAT_MODTIME</a> (<a class="local col3 ref" href="#33name" title='name' data-ref="33name">name</a>, <a class="local col7 ref" href="#47st" title='st' data-ref="47st">st</a>);</td></tr>
+<tr><th id="515">515</th><td>                  <a class="local col0 ref" href="#30mtime_ptr" title='mtime_ptr' data-ref="30mtime_ptr">mtime_ptr</a> = <var>0</var>;</td></tr>
+<tr><th id="516">516</th><td>                }</td></tr>
+<tr><th id="517">517</th><td>            }</td></tr>
+<tr><th id="518">518</th><td></td></tr>
+<tr><th id="519">519</th><td>          <i>/* We have found a file.</i></td></tr>
+<tr><th id="520">520</th><td><i>             If we get here and mtime_ptr hasn't been set, record</i></td></tr>
+<tr><th id="521">521</th><td><i>             UNKNOWN_MTIME to indicate this.  */</i></td></tr>
+<tr><th id="522">522</th><td>          <b>if</b> (<a class="local col0 ref" href="#30mtime_ptr" title='mtime_ptr' data-ref="30mtime_ptr">mtime_ptr</a> != <var>0</var>)</td></tr>
+<tr><th id="523">523</th><td>            *<a class="local col0 ref" href="#30mtime_ptr" title='mtime_ptr' data-ref="30mtime_ptr">mtime_ptr</a> = <a class="macro" href="filedef.h.html#212" title="0" data-ref="_M/UNKNOWN_MTIME">UNKNOWN_MTIME</a>;</td></tr>
+<tr><th id="524">524</th><td></td></tr>
+<tr><th id="525">525</th><td>          <i>/* Store the name we found and return it.  */</i></td></tr>
+<tr><th id="526">526</th><td></td></tr>
+<tr><th id="527">527</th><td>          <b>if</b> (<a class="local col1 ref" href="#31path_index" title='path_index' data-ref="31path_index">path_index</a>)</td></tr>
+<tr><th id="528">528</th><td>            *<a class="local col1 ref" href="#31path_index" title='path_index' data-ref="31path_index">path_index</a> = <a class="local col8 ref" href="#38i" title='i' data-ref="38i">i</a>;</td></tr>
+<tr><th id="529">529</th><td></td></tr>
+<tr><th id="530">530</th><td>          <b>return</b> <a class="ref" href="makeint.h.html#strcache_add_len" title='strcache_add_len' data-ref="strcache_add_len">strcache_add_len</a> (<a class="local col3 ref" href="#33name" title='name' data-ref="33name">name</a>, (<a class="local col4 ref" href="#44p" title='p' data-ref="44p">p</a> + <var>1</var> - <a class="local col3 ref" href="#33name" title='name' data-ref="33name">name</a>) + <a class="local col9 ref" href="#39flen" title='flen' data-ref="39flen">flen</a>);</td></tr>
+<tr><th id="531">531</th><td>        }</td></tr>
+<tr><th id="532">532</th><td>    }</td></tr>
+<tr><th id="533">533</th><td></td></tr>
+<tr><th id="534">534</th><td>  <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="535">535</th><td>}</td></tr>
+<tr><th id="536">536</th><td></td></tr>
+<tr><th id="537">537</th><td></td></tr>
+<tr><th id="538">538</th><td><i>/* Search the VPATH list whose pattern matches FILE for a directory where FILE</i></td></tr>
+<tr><th id="539">539</th><td><i>   exists.  If it is found, return the cached name of an existing file, and</i></td></tr>
+<tr><th id="540">540</th><td><i>   set *MTIME_PTR (if MTIME_PTR is not NULL) to its modtime (or zero if no</i></td></tr>
+<tr><th id="541">541</th><td><i>   stat call was done). Also set the matching directory index in VPATH_INDEX</i></td></tr>
+<tr><th id="542">542</th><td><i>   and PATH_INDEX if they are not NULL.  Otherwise we return 0.  */</i></td></tr>
+<tr><th id="543">543</th><td></td></tr>
+<tr><th id="544">544</th><td><em>const</em> <em>char</em> *</td></tr>
+<tr><th id="545">545</th><td><dfn class="decl def" id="vpath_search" title='vpath_search' data-ref="vpath_search">vpath_search</dfn> (<em>const</em> <em>char</em> *<dfn class="local col9 decl" id="49file" title='file' data-type='const char *' data-ref="49file">file</dfn>, <a class="macro" href="make.h.html#252" title="uintmax_t" data-ref="_M/FILE_TIMESTAMP">FILE_TIMESTAMP</a> *<dfn class="local col0 decl" id="50mtime_ptr" title='mtime_ptr' data-type='uintmax_t *' data-ref="50mtime_ptr">mtime_ptr</dfn>,</td></tr>
+<tr><th id="546">546</th><td>              <em>unsigned</em> <em>int</em>* <dfn class="local col1 decl" id="51vpath_index" title='vpath_index' data-type='unsigned int *' data-ref="51vpath_index">vpath_index</dfn>, <em>unsigned</em> <em>int</em>* <dfn class="local col2 decl" id="52path_index" title='path_index' data-type='unsigned int *' data-ref="52path_index">path_index</dfn>)</td></tr>
+<tr><th id="547">547</th><td>{</td></tr>
+<tr><th id="548">548</th><td>  <b>struct</b> <a class="type" href="#vpath" title='vpath' data-ref="vpath">vpath</a> *<dfn class="local col3 decl" id="53v" title='v' data-type='struct vpath *' data-ref="53v">v</dfn>;</td></tr>
+<tr><th id="549">549</th><td></td></tr>
+<tr><th id="550">550</th><td>  <i>/* If there are no VPATH entries or FILENAME starts at the root,</i></td></tr>
+<tr><th id="551">551</th><td><i>     there is nothing we can do.  */</i></td></tr>
+<tr><th id="552">552</th><td></td></tr>
+<tr><th id="553">553</th><td>  <b>if</b> (<a class="local col9 ref" href="#49file" title='file' data-ref="49file">file</a>[<var>0</var>] == <kbd>'/'</kbd></td></tr>
+<tr><th id="554">554</th><td><u>#<span data-ppcond="554">ifdef</span> <span class="macro" data-ref="_M/HAVE_DOS_PATHS">HAVE_DOS_PATHS</span></u></td></tr>
+<tr><th id="555">555</th><td>      || file[<var>0</var>] == <kbd>'\\'</kbd> || file[<var>1</var>] == <kbd>':'</kbd></td></tr>
+<tr><th id="556">556</th><td><u>#<span data-ppcond="554">endif</span></u></td></tr>
+<tr><th id="557">557</th><td>      || (<a class="tu ref" href="#vpaths" title='vpaths' data-use='r' data-ref="vpaths">vpaths</a> == <var>0</var> &amp;&amp; <a class="tu ref" href="#general_vpath" title='general_vpath' data-use='r' data-ref="general_vpath">general_vpath</a> == <var>0</var>))</td></tr>
+<tr><th id="558">558</th><td>    <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="559">559</th><td></td></tr>
+<tr><th id="560">560</th><td>  <b>if</b> (<a class="local col1 ref" href="#51vpath_index" title='vpath_index' data-ref="51vpath_index">vpath_index</a>)</td></tr>
+<tr><th id="561">561</th><td>    {</td></tr>
+<tr><th id="562">562</th><td>      *<a class="local col1 ref" href="#51vpath_index" title='vpath_index' data-ref="51vpath_index">vpath_index</a> = <var>0</var>;</td></tr>
+<tr><th id="563">563</th><td>      *<a class="local col2 ref" href="#52path_index" title='path_index' data-ref="52path_index">path_index</a> = <var>0</var>;</td></tr>
+<tr><th id="564">564</th><td>    }</td></tr>
+<tr><th id="565">565</th><td></td></tr>
+<tr><th id="566">566</th><td>  <b>for</b> (<a class="local col3 ref" href="#53v" title='v' data-ref="53v">v</a> = <a class="tu ref" href="#vpaths" title='vpaths' data-use='r' data-ref="vpaths">vpaths</a>; <a class="local col3 ref" href="#53v" title='v' data-ref="53v">v</a> != <var>0</var>; <a class="local col3 ref" href="#53v" title='v' data-ref="53v">v</a> = <a class="local col3 ref" href="#53v" title='v' data-ref="53v">v</a>-&gt;<a class="tu ref" href="#vpath::next" title='vpath::next' data-use='r' data-ref="vpath::next">next</a>)</td></tr>
+<tr><th id="567">567</th><td>    {</td></tr>
+<tr><th id="568">568</th><td>      <b>if</b> (<a class="ref" href="variable.h.html#pattern_matches" title='pattern_matches' data-ref="pattern_matches">pattern_matches</a> (<a class="local col3 ref" href="#53v" title='v' data-ref="53v">v</a>-&gt;<a class="tu ref" href="#vpath::pattern" title='vpath::pattern' data-use='r' data-ref="vpath::pattern">pattern</a>, <a class="local col3 ref" href="#53v" title='v' data-ref="53v">v</a>-&gt;<a class="tu ref" href="#vpath::percent" title='vpath::percent' data-use='r' data-ref="vpath::percent">percent</a>, <a class="local col9 ref" href="#49file" title='file' data-ref="49file">file</a>))</td></tr>
+<tr><th id="569">569</th><td>        {</td></tr>
+<tr><th id="570">570</th><td>          <em>const</em> <em>char</em> *<dfn class="local col4 decl" id="54p" title='p' data-type='const char *' data-ref="54p">p</dfn> = <a class="tu ref" href="#selective_vpath_search" title='selective_vpath_search' data-use='c' data-ref="selective_vpath_search">selective_vpath_search</a> (</td></tr>
+<tr><th id="571">571</th><td>            <a class="local col3 ref" href="#53v" title='v' data-ref="53v">v</a>, <a class="local col9 ref" href="#49file" title='file' data-ref="49file">file</a>, <a class="local col0 ref" href="#50mtime_ptr" title='mtime_ptr' data-ref="50mtime_ptr">mtime_ptr</a>, <a class="local col2 ref" href="#52path_index" title='path_index' data-ref="52path_index">path_index</a>);</td></tr>
+<tr><th id="572">572</th><td>          <b>if</b> (<a class="local col4 ref" href="#54p" title='p' data-ref="54p">p</a>)</td></tr>
+<tr><th id="573">573</th><td>            <b>return</b> <a class="local col4 ref" href="#54p" title='p' data-ref="54p">p</a>;</td></tr>
+<tr><th id="574">574</th><td>        }</td></tr>
+<tr><th id="575">575</th><td></td></tr>
+<tr><th id="576">576</th><td>      <b>if</b> (<a class="local col1 ref" href="#51vpath_index" title='vpath_index' data-ref="51vpath_index">vpath_index</a>)</td></tr>
+<tr><th id="577">577</th><td>        ++*<a class="local col1 ref" href="#51vpath_index" title='vpath_index' data-ref="51vpath_index">vpath_index</a>;</td></tr>
+<tr><th id="578">578</th><td>    }</td></tr>
+<tr><th id="579">579</th><td></td></tr>
+<tr><th id="580">580</th><td></td></tr>
+<tr><th id="581">581</th><td>  <b>if</b> (<a class="tu ref" href="#general_vpath" title='general_vpath' data-use='r' data-ref="general_vpath">general_vpath</a> != <var>0</var>)</td></tr>
+<tr><th id="582">582</th><td>    {</td></tr>
+<tr><th id="583">583</th><td>      <em>const</em> <em>char</em> *<dfn class="local col5 decl" id="55p" title='p' data-type='const char *' data-ref="55p">p</dfn> = <a class="tu ref" href="#selective_vpath_search" title='selective_vpath_search' data-use='c' data-ref="selective_vpath_search">selective_vpath_search</a> (</td></tr>
+<tr><th id="584">584</th><td>        <a class="tu ref" href="#general_vpath" title='general_vpath' data-use='r' data-ref="general_vpath">general_vpath</a>, <a class="local col9 ref" href="#49file" title='file' data-ref="49file">file</a>, <a class="local col0 ref" href="#50mtime_ptr" title='mtime_ptr' data-ref="50mtime_ptr">mtime_ptr</a>, <a class="local col2 ref" href="#52path_index" title='path_index' data-ref="52path_index">path_index</a>);</td></tr>
+<tr><th id="585">585</th><td>      <b>if</b> (<a class="local col5 ref" href="#55p" title='p' data-ref="55p">p</a>)</td></tr>
+<tr><th id="586">586</th><td>        <b>return</b> <a class="local col5 ref" href="#55p" title='p' data-ref="55p">p</a>;</td></tr>
+<tr><th id="587">587</th><td>    }</td></tr>
+<tr><th id="588">588</th><td></td></tr>
+<tr><th id="589">589</th><td>  <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="590">590</th><td>}</td></tr>
+<tr><th id="591">591</th><td></td></tr>
+<tr><th id="592">592</th><td></td></tr>
+<tr><th id="593">593</th><td></td></tr>
+<tr><th id="594">594</th><td></td></tr>
+<tr><th id="595">595</th><td><i>/* Print the data base of VPATH search paths.  */</i></td></tr>
+<tr><th id="596">596</th><td></td></tr>
+<tr><th id="597">597</th><td><em>void</em></td></tr>
+<tr><th id="598">598</th><td><dfn class="decl def" id="print_vpath_data_base" title='print_vpath_data_base' data-ref="print_vpath_data_base">print_vpath_data_base</dfn> (<em>void</em>)</td></tr>
+<tr><th id="599">599</th><td>{</td></tr>
+<tr><th id="600">600</th><td>  <em>unsigned</em> <em>int</em> <dfn class="local col6 decl" id="56nvpaths" title='nvpaths' data-type='unsigned int' data-ref="56nvpaths">nvpaths</dfn>;</td></tr>
+<tr><th id="601">601</th><td>  <b>struct</b> <a class="type" href="#vpath" title='vpath' data-ref="vpath">vpath</a> *<dfn class="local col7 decl" id="57v" title='v' data-type='struct vpath *' data-ref="57v">v</dfn>;</td></tr>
+<tr><th id="602">602</th><td></td></tr>
+<tr><th id="603">603</th><td>  <a class="ref" href="../include/stdio.h.html#puts" title='puts' data-ref="puts">puts</a> (<a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;\n# VPATH Search Paths\n&quot;, 5)" data-ref="_M/_">_</a>(<q>"\n# VPATH Search Paths\n"</q>));</td></tr>
+<tr><th id="604">604</th><td></td></tr>
+<tr><th id="605">605</th><td>  <a class="local col6 ref" href="#56nvpaths" title='nvpaths' data-ref="56nvpaths">nvpaths</a> = <var>0</var>;</td></tr>
+<tr><th id="606">606</th><td>  <b>for</b> (<a class="local col7 ref" href="#57v" title='v' data-ref="57v">v</a> = <a class="tu ref" href="#vpaths" title='vpaths' data-use='r' data-ref="vpaths">vpaths</a>; <a class="local col7 ref" href="#57v" title='v' data-ref="57v">v</a> != <var>0</var>; <a class="local col7 ref" href="#57v" title='v' data-ref="57v">v</a> = <a class="local col7 ref" href="#57v" title='v' data-ref="57v">v</a>-&gt;<a class="tu ref" href="#vpath::next" title='vpath::next' data-use='r' data-ref="vpath::next">next</a>)</td></tr>
+<tr><th id="607">607</th><td>    {</td></tr>
+<tr><th id="608">608</th><td>      <em>register</em> <em>unsigned</em> <em>int</em> <dfn class="local col8 decl" id="58i" title='i' data-type='unsigned int' data-ref="58i">i</dfn>;</td></tr>
+<tr><th id="609">609</th><td></td></tr>
+<tr><th id="610">610</th><td>      ++<a class="local col6 ref" href="#56nvpaths" title='nvpaths' data-ref="56nvpaths">nvpaths</a>;</td></tr>
+<tr><th id="611">611</th><td></td></tr>
+<tr><th id="612">612</th><td>      <a class="ref" href="../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a> (<q>"vpath %s "</q>, <a class="local col7 ref" href="#57v" title='v' data-ref="57v">v</a>-&gt;<a class="tu ref" href="#vpath::pattern" title='vpath::pattern' data-use='r' data-ref="vpath::pattern">pattern</a>);</td></tr>
+<tr><th id="613">613</th><td></td></tr>
+<tr><th id="614">614</th><td>      <b>for</b> (<a class="local col8 ref" href="#58i" title='i' data-ref="58i">i</a> = <var>0</var>; <a class="local col7 ref" href="#57v" title='v' data-ref="57v">v</a>-&gt;<a class="tu ref" href="#vpath::searchpath" title='vpath::searchpath' data-use='r' data-ref="vpath::searchpath">searchpath</a>[<a class="local col8 ref" href="#58i" title='i' data-ref="58i">i</a>] != <var>0</var>; ++<a class="local col8 ref" href="#58i" title='i' data-ref="58i">i</a>)</td></tr>
+<tr><th id="615">615</th><td>        <a class="ref" href="../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a> (<q>"%s%c"</q>, <a class="local col7 ref" href="#57v" title='v' data-ref="57v">v</a>-&gt;<a class="tu ref" href="#vpath::searchpath" title='vpath::searchpath' data-use='r' data-ref="vpath::searchpath">searchpath</a>[<a class="local col8 ref" href="#58i" title='i' data-ref="58i">i</a>],</td></tr>
+<tr><th id="616">616</th><td>                <a class="local col7 ref" href="#57v" title='v' data-ref="57v">v</a>-&gt;<a class="tu ref" href="#vpath::searchpath" title='vpath::searchpath' data-use='r' data-ref="vpath::searchpath">searchpath</a>[<a class="local col8 ref" href="#58i" title='i' data-ref="58i">i</a> + <var>1</var>] == <var>0</var> ? <kbd>'\n'</kbd> : <a class="macro" href="config.h.html#412" title="&apos;:&apos;" data-ref="_M/PATH_SEPARATOR_CHAR">PATH_SEPARATOR_CHAR</a>);</td></tr>
+<tr><th id="617">617</th><td>    }</td></tr>
+<tr><th id="618">618</th><td></td></tr>
+<tr><th id="619">619</th><td>  <b>if</b> (<a class="tu ref" href="#vpaths" title='vpaths' data-use='r' data-ref="vpaths">vpaths</a> == <var>0</var>)</td></tr>
+<tr><th id="620">620</th><td>    <a class="ref" href="../include/stdio.h.html#puts" title='puts' data-ref="puts">puts</a> (<a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;# No &apos;vpath&apos; search paths.&quot;, 5)" data-ref="_M/_">_</a>(<q>"# No 'vpath' search paths."</q>));</td></tr>
+<tr><th id="621">621</th><td>  <b>else</b></td></tr>
+<tr><th id="622">622</th><td>    <a class="ref" href="../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a> (<a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;\n# %u &apos;vpath&apos; search paths.\n&quot;, 5)" data-ref="_M/_">_</a>(<q>"\n# %u 'vpath' search paths.\n"</q>), <a class="local col6 ref" href="#56nvpaths" title='nvpaths' data-ref="56nvpaths">nvpaths</a>);</td></tr>
+<tr><th id="623">623</th><td></td></tr>
+<tr><th id="624">624</th><td>  <b>if</b> (<a class="tu ref" href="#general_vpath" title='general_vpath' data-use='r' data-ref="general_vpath">general_vpath</a> == <var>0</var>)</td></tr>
+<tr><th id="625">625</th><td>    <a class="ref" href="../include/stdio.h.html#puts" title='puts' data-ref="puts">puts</a> (<a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;\n# No general (&apos;VPATH&apos; variable) search path.&quot;, 5)" data-ref="_M/_">_</a>(<q>"\n# No general ('VPATH' variable) search path."</q>));</td></tr>
+<tr><th id="626">626</th><td>  <b>else</b></td></tr>
+<tr><th id="627">627</th><td>    {</td></tr>
+<tr><th id="628">628</th><td>      <em>const</em> <em>char</em> **<dfn class="local col9 decl" id="59path" title='path' data-type='const char **' data-ref="59path">path</dfn> = <a class="tu ref" href="#general_vpath" title='general_vpath' data-use='r' data-ref="general_vpath">general_vpath</a>-&gt;<a class="tu ref" href="#vpath::searchpath" title='vpath::searchpath' data-use='r' data-ref="vpath::searchpath">searchpath</a>;</td></tr>
+<tr><th id="629">629</th><td>      <em>unsigned</em> <em>int</em> <dfn class="local col0 decl" id="60i" title='i' data-type='unsigned int' data-ref="60i">i</dfn>;</td></tr>
+<tr><th id="630">630</th><td></td></tr>
+<tr><th id="631">631</th><td>      <a class="ref" href="../include/stdio.h.html#fputs" title='fputs' data-ref="fputs">fputs</a> (<a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;\n# General (&apos;VPATH&apos; variable) search path:\n# &quot;, 5)" data-ref="_M/_">_</a>(<q>"\n# General ('VPATH' variable) search path:\n# "</q>), <a class="macro" href="../include/stdio.h.html#173" title="stdout" data-ref="_M/stdout">stdout</a>);</td></tr>
+<tr><th id="632">632</th><td></td></tr>
+<tr><th id="633">633</th><td>      <b>for</b> (<a class="local col0 ref" href="#60i" title='i' data-ref="60i">i</a> = <var>0</var>; <a class="local col9 ref" href="#59path" title='path' data-ref="59path">path</a>[<a class="local col0 ref" href="#60i" title='i' data-ref="60i">i</a>] != <var>0</var>; ++<a class="local col0 ref" href="#60i" title='i' data-ref="60i">i</a>)</td></tr>
+<tr><th id="634">634</th><td>        <a class="ref" href="../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a> (<q>"%s%c"</q>, <a class="local col9 ref" href="#59path" title='path' data-ref="59path">path</a>[<a class="local col0 ref" href="#60i" title='i' data-ref="60i">i</a>],</td></tr>
+<tr><th id="635">635</th><td>                <a class="local col9 ref" href="#59path" title='path' data-ref="59path">path</a>[<a class="local col0 ref" href="#60i" title='i' data-ref="60i">i</a> + <var>1</var>] == <var>0</var> ? <kbd>'\n'</kbd> : <a class="macro" href="config.h.html#412" title="&apos;:&apos;" data-ref="_M/PATH_SEPARATOR_CHAR">PATH_SEPARATOR_CHAR</a>);</td></tr>
+<tr><th id="636">636</th><td>    }</td></tr>
+<tr><th id="637">637</th><td>}</td></tr>
+<tr><th id="638">638</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

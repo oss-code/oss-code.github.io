@@ -1,0 +1,44 @@
+<def f='remake/filedef.h' l='29' ll='118'/>
+<size>200</size>
+<mbr r='file::name' o='0' t='const char *'/>
+<mbr r='file::hname' o='64' t='const char *'/>
+<mbr r='file::vpath' o='128' t='const char *'/>
+<mbr r='file::floc' o='192' t='gmk_floc'/>
+<mbr r='file::elapsed_time' o='384' t='uint64_t'/>
+<mbr r='file::nlines' o='448' t='unsigned int'/>
+<mbr r='file::description' o='512' t='const char *'/>
+<mbr r='file::deps' o='576' t='struct dep *'/>
+<mbr r='file::cmds' o='640' t='struct commands *'/>
+<mbr r='file::stem' o='704' t='const char *'/>
+<mbr r='file::also_make' o='768' t='struct dep *'/>
+<mbr r='file::prev' o='832' t='struct file *'/>
+<mbr r='file::last' o='896' t='struct file *'/>
+<mbr r='file::renamed' o='960' t='struct file *'/>
+<mbr r='file::variables' o='1024' t='struct variable_set_list *'/>
+<mbr r='file::pat_variables' o='1088' t='struct variable_set_list *'/>
+<mbr r='file::parent' o='1152' t='struct file *'/>
+<mbr r='file::double_colon' o='1216' t='struct file *'/>
+<mbr r='file::last_mtime' o='1280' t='uintmax_t'/>
+<mbr r='file::mtime_before_update' o='1344' t='uintmax_t'/>
+<mbr r='file::considered' o='1408' t='unsigned int'/>
+<mbr r='file::command_flags' o='1440' t='int'/>
+<mbr r='file::update_status' o='1472' t='enum update_status'/>
+<mbr r='file::command_state' o='1474' t='enum cmd_state'/>
+<mbr r='file::tracing' o='1504' t='breakpoint_mask_t'/>
+<mbr r='file::builtin' o='1536' t='unsigned int'/>
+<mbr r='file::precious' o='1537' t='unsigned int'/>
+<mbr r='file::loaded' o='1538' t='unsigned int'/>
+<mbr r='file::low_resolution_time' o='1539' t='unsigned int'/>
+<mbr r='file::tried_implicit' o='1540' t='unsigned int'/>
+<mbr r='file::updating' o='1541' t='unsigned int'/>
+<mbr r='file::updated' o='1542' t='unsigned int'/>
+<mbr r='file::is_target' o='1543' t='unsigned int'/>
+<mbr r='file::cmd_target' o='1544' t='unsigned int'/>
+<mbr r='file::phony' o='1545' t='unsigned int'/>
+<mbr r='file::intermediate' o='1546' t='unsigned int'/>
+<mbr r='file::secondary' o='1547' t='unsigned int'/>
+<mbr r='file::dontcare' o='1548' t='unsigned int'/>
+<mbr r='file::ignore_vpath' o='1549' t='unsigned int'/>
+<mbr r='file::pat_searched' o='1550' t='unsigned int'/>
+<mbr r='file::no_diag' o='1551' t='unsigned int'/>
+<mbr r='file::file_profiled' o='1552' t='unsigned int'/>

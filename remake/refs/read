@@ -1,0 +1,16 @@
+<dec f='include/unistd.h' l='363' type='ssize_t read(int __fd, void * __buf, size_t __nbytes)'/>
+<doc f='include/unistd.h' l='358'>/* Read NBYTES into BUF from FD.  Return the
+   number read, -1 for errors or 0 for EOF.
+
+   This function is a cancellation point and therefore not marked with
+   __THROW.  */</doc>
+<use f='remake/arscan.c' l='300' u='c' c='ar_scan'/>
+<use f='remake/arscan.c' l='509' u='c' c='ar_scan'/>
+<use f='remake/arscan.c' l='578' u='c' c='ar_scan'/>
+<use f='remake/arscan.c' l='638' u='c' c='ar_scan'/>
+<use f='remake/arscan.c' l='773' u='c' c='ar_member_touch'/>
+<use f='remake/function.c' l='1850' u='c' c='func_shell_base'/>
+<use f='remake/output.c' l='238' u='c' c='pump_from_tmp'/>
+<use f='remake/posixos.c' l='172' u='c' c='jobserver_acquire_all'/>
+<use f='remake/posixos.c' l='277' u='c' c='jobserver_acquire'/>
+<use f='remake/remake.c' l='1262' u='c' c='touch_file'/>

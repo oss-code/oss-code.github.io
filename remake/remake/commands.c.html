@@ -1,0 +1,848 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>commands.c source code [remake/commands.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/commands.c'; var root_path = '..'; var data_path = '../../data';</script>
+<script src='../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='./'>remake</a>/<a href='commands.c.html'>commands.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Command processing for GNU Make.</i></td></tr>
+<tr><th id="2">2</th><td><i>Copyright (C) 1988-2016 Free Software Foundation, Inc.</i></td></tr>
+<tr><th id="3">3</th><td><i>This file is part of GNU Make.</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>GNU Make is free software; you can redistribute it and/or modify it under the</i></td></tr>
+<tr><th id="6">6</th><td><i>terms of the GNU General Public License as published by the Free Software</i></td></tr>
+<tr><th id="7">7</th><td><i>Foundation; either version 3 of the License, or (at your option) any later</i></td></tr>
+<tr><th id="8">8</th><td><i>version.</i></td></tr>
+<tr><th id="9">9</th><td><i></i></td></tr>
+<tr><th id="10">10</th><td><i>GNU Make is distributed in the hope that it will be useful, but WITHOUT ANY</i></td></tr>
+<tr><th id="11">11</th><td><i>WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR</i></td></tr>
+<tr><th id="12">12</th><td><i>A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</i></td></tr>
+<tr><th id="13">13</th><td><i></i></td></tr>
+<tr><th id="14">14</th><td><i>You should have received a copy of the GNU General Public License along with</i></td></tr>
+<tr><th id="15">15</th><td><i>this program.  If not, see &lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.  */</i></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><u>#include <a href="makeint.h.html">"makeint.h"</a></u></td></tr>
+<tr><th id="18">18</th><td><u>#include <a href="filedef.h.html">"filedef.h"</a></u></td></tr>
+<tr><th id="19">19</th><td><u>#include <a href="dep.h.html">"dep.h"</a></u></td></tr>
+<tr><th id="20">20</th><td><u>#include <a href="variable.h.html">"variable.h"</a></u></td></tr>
+<tr><th id="21">21</th><td><u>#include <a href="job.h.html">"job.h"</a></u></td></tr>
+<tr><th id="22">22</th><td><u>#include <a href="commands.h.html">"commands.h"</a></u></td></tr>
+<tr><th id="23">23</th><td><u>#include <a href="expand.h.html">"expand.h"</a></u></td></tr>
+<tr><th id="24">24</th><td><u>#<span data-ppcond="24">ifdef</span> <span class="macro" data-ref="_M/WINDOWS32">WINDOWS32</span></u></td></tr>
+<tr><th id="25">25</th><td><u>#include &lt;windows.h&gt;</u></td></tr>
+<tr><th id="26">26</th><td><u>#include "w32err.h"</u></td></tr>
+<tr><th id="27">27</th><td><u>#<span data-ppcond="24">endif</span></u></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><u>#define <dfn class="macro" id="_M/FILE_LIST_SEPARATOR" data-ref="_M/FILE_LIST_SEPARATOR">FILE_LIST_SEPARATOR</dfn> ' '</u></td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><em>int</em> <a class="decl" href="makeint.h.html#remote_kill" title='remote_kill' data-ref="remote_kill" id="remote_kill">remote_kill</a> (<em>int</em> <dfn class="local col9 decl" id="149id" title='id' data-type='int' data-ref="149id">id</dfn>, <em>int</em> <dfn class="local col0 decl" id="150sig" title='sig' data-type='int' data-ref="150sig">sig</dfn>);</td></tr>
+<tr><th id="32">32</th><td></td></tr>
+<tr><th id="33">33</th><td><u>#<span data-ppcond="33">ifndef</span> <a class="macro" href="config.h.html#345" data-ref="_M/HAVE_UNISTD_H">HAVE_UNISTD_H</a></u></td></tr>
+<tr><th id="34">34</th><td><em>int</em> getpid ();</td></tr>
+<tr><th id="35">35</th><td><u>#<span data-ppcond="33">endif</span></u></td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td><em>static</em> <em>unsigned</em> <em>long</em></td></tr>
+<tr><th id="39">39</th><td><dfn class="tu decl def" id="dep_hash_1" title='dep_hash_1' data-type='unsigned long dep_hash_1(const void * key)' data-ref="dep_hash_1">dep_hash_1</dfn> (<em>const</em> <em>void</em> *<dfn class="local col1 decl" id="151key" title='key' data-type='const void *' data-ref="151key">key</dfn>)</td></tr>
+<tr><th id="40">40</th><td>{</td></tr>
+<tr><th id="41">41</th><td>  <em>const</em> <b>struct</b> <a class="type" href="dep.h.html#dep" title='dep' data-ref="dep">dep</a> *<dfn class="local col2 decl" id="152d" title='d' data-type='const struct dep *' data-ref="152d">d</dfn> = <a class="local col1 ref" href="#151key" title='key' data-ref="151key">key</a>;</td></tr>
+<tr><th id="42">42</th><td>  <a class="macro" href="hash.h.html#90" title="do { unsigned long _result_ = 0; do { unsigned char const *_key_ = (unsigned char const *) ((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name))) - 1; while (*++_key_) (_result_) += (*_key_ &lt;&lt; (_key_[1] &amp; 0xf)); } while (0); return _result_; } while (0)" data-ref="_M/return_STRING_HASH_1">return_STRING_HASH_1</a> (<a class="macro" href="dep.h.html#99" title="((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name)" data-ref="_M/dep_name">dep_name</a> (<a class="local col2 ref" href="#152d" title='d' data-ref="152d">d</a>));</td></tr>
+<tr><th id="43">43</th><td>}</td></tr>
+<tr><th id="44">44</th><td></td></tr>
+<tr><th id="45">45</th><td><em>static</em> <em>unsigned</em> <em>long</em></td></tr>
+<tr><th id="46">46</th><td><dfn class="tu decl def" id="dep_hash_2" title='dep_hash_2' data-type='unsigned long dep_hash_2(const void * key)' data-ref="dep_hash_2">dep_hash_2</dfn> (<em>const</em> <em>void</em> *<dfn class="local col3 decl" id="153key" title='key' data-type='const void *' data-ref="153key">key</dfn>)</td></tr>
+<tr><th id="47">47</th><td>{</td></tr>
+<tr><th id="48">48</th><td>  <em>const</em> <b>struct</b> <a class="type" href="dep.h.html#dep" title='dep' data-ref="dep">dep</a> *<dfn class="local col4 decl" id="154d" title='d' data-type='const struct dep *' data-ref="154d">d</dfn> = <a class="local col3 ref" href="#153key" title='key' data-ref="153key">key</a>;</td></tr>
+<tr><th id="49">49</th><td>  <a class="macro" href="hash.h.html#101" title="do { unsigned long _result_ = 0; do { unsigned char const *_key_ = (unsigned char const *) ((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name))) - 1; while (*++_key_) (_result_) += (*_key_ &lt;&lt; (_key_[1] &amp; 0x7)); } while (0); return _result_; } while (0)" data-ref="_M/return_STRING_HASH_2">return_STRING_HASH_2</a> (<a class="macro" href="dep.h.html#99" title="((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name)" data-ref="_M/dep_name">dep_name</a> (<a class="local col4 ref" href="#154d" title='d' data-ref="154d">d</a>));</td></tr>
+<tr><th id="50">50</th><td>}</td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td><em>static</em> <em>int</em></td></tr>
+<tr><th id="53">53</th><td><dfn class="tu decl def" id="dep_hash_cmp" title='dep_hash_cmp' data-type='int dep_hash_cmp(const void * x, const void * y)' data-ref="dep_hash_cmp">dep_hash_cmp</dfn> (<em>const</em> <em>void</em> *<dfn class="local col5 decl" id="155x" title='x' data-type='const void *' data-ref="155x">x</dfn>, <em>const</em> <em>void</em> *<dfn class="local col6 decl" id="156y" title='y' data-type='const void *' data-ref="156y">y</dfn>)</td></tr>
+<tr><th id="54">54</th><td>{</td></tr>
+<tr><th id="55">55</th><td>  <em>const</em> <b>struct</b> <a class="type" href="dep.h.html#dep" title='dep' data-ref="dep">dep</a> *<dfn class="local col7 decl" id="157dx" title='dx' data-type='const struct dep *' data-ref="157dx">dx</dfn> = <a class="local col5 ref" href="#155x" title='x' data-ref="155x">x</a>;</td></tr>
+<tr><th id="56">56</th><td>  <em>const</em> <b>struct</b> <a class="type" href="dep.h.html#dep" title='dep' data-ref="dep">dep</a> *<dfn class="local col8 decl" id="158dy" title='dy' data-type='const struct dep *' data-ref="158dy">dy</dfn> = <a class="local col6 ref" href="#156y" title='y' data-ref="156y">y</a>;</td></tr>
+<tr><th id="57">57</th><td>  <b>return</b> <a class="macro" href="../include/x86_64-linux-gnu/bits/string2.h.html#799" title="__extension__ ({ size_t __s1_len, __s2_len; (__builtin_constant_p (((dx)-&gt;name == 0 ? (dx)-&gt;file-&gt;name : (dx)-&gt;name)) &amp;&amp; __builtin_constant_p (((dy)-&gt;name == 0 ? (dy)-&gt;file-&gt;name : (dy)-&gt;name)) &amp;&amp; (__s1_len = __builtin_strlen (((dx)-&gt;name == 0 ? (dx)-&gt;file-&gt;name : (dx)-&gt;name)), __s2_len = __builtin_strlen (((dy)-&gt;name == 0 ? (dy)-&gt;file-&gt;name : (dy)-&gt;name)), (!((size_t)(const void *)((((dx)-&gt;name == 0 ? (dx)-&gt;file-&gt;name : (dx)-&gt;name)) + 1) - (size_t)(const void *)(((dx)-&gt;name == 0 ? (dx)-&gt;file-&gt;name : (dx)-&gt;name)) == 1) || __s1_len &gt;= 4) &amp;&amp; (!((size_t)(const void *)((((dy)-&gt;name == 0 ? (dy)-&gt;file-&gt;name : (dy)-&gt;name)) + 1) - (size_t)(const void *)(((dy)-&gt;name == 0 ? (dy)-&gt;file-&gt;name : (dy)-&gt;name)) == 1) || __s2_len &gt;= 4)) ? __builtin_strcmp (((dx)-&gt;name == 0 ? (dx)-&gt;file-&gt;name : (dx)-&gt;name), ((dy)-&gt;name == 0 ? (dy)-&gt;file-&gt;name : (dy)-&gt;name)) : (__builtin_constant_p (((dx)-&gt;name == 0 ? (dx)-&gt;file-&gt;name : (dx)-&gt;name)) &amp;&amp; ((size_t)(const void *)((((dx)-&gt;name == 0 ? (dx)-&gt;file-&gt;name : (dx)-&gt;name)) + 1) - (size_t)(const void *)(((dx)-&gt;name == 0 ? (dx)-&gt;file-&gt;name : (dx)-&gt;name)) == 1) &amp;&amp; (__s1_len = __builtin_strlen (((dx)-&gt;name == 0 ? (dx)-&gt;file-&gt;name : (dx)-&gt;name)), __s1_len &lt; 4) ? (__builtin_constant_p (((dy)-&gt;name == 0 ? (dy)-&gt;file-&gt;name : (dy)-&gt;name)) &amp;&amp; ((size_t)(const void *)((((dy)-&gt;name == 0 ? (dy)-&gt;file-&gt;name : (dy)-&gt;name)) + 1) - (size_t)(const void *)(((dy)-&gt;name == 0 ? (dy)-&gt;file-&gt;name : (dy)-&gt;name)) == 1) ? __builtin_strcmp (((dx)-&gt;name == 0 ? (dx)-&gt;file-&gt;name : (dx)-&gt;name), ((dy)-&gt;name == 0 ? (dy)-&gt;file-&gt;name : (dy)-&gt;name)) : (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) (((dy)-&gt;name == 0 ? (dy)-&gt;file-&gt;name : (dy)-&gt;name)); int __result = (((const unsigned char *) (const char *) (((dx)-&gt;name == 0 ? (dx)-&gt;file-&gt;name : (dx)-&gt;name)))[0] - __s2[0]); if (__s1_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) (((dx)-&gt;name == 0 ? (dx)-&gt;file-&gt;name : (dx)-&gt;name)))[1] - __s2[1]); if (__s1_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) (((dx)-&gt;name == 0 ? (dx)-&gt;file-&gt;name : (dx)-&gt;name)))[2] - __s2[2]); if (__s1_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) (((dx)-&gt;name == 0 ? (dx)-&gt;file-&gt;name : (dx)-&gt;name)))[3] - __s2[3]); } } __result; }))) : (__builtin_constant_p (((dy)-&gt;name == 0 ? (dy)-&gt;file-&gt;name : (dy)-&gt;name)) &amp;&amp; ((size_t)(const void *)((((dy)-&gt;name == 0 ? (dy)-&gt;file-&gt;name : (dy)-&gt;name)) + 1) - (size_t)(const void *)(((dy)-&gt;name == 0 ? (dy)-&gt;file-&gt;name : (dy)-&gt;name)) == 1) &amp;&amp; (__s2_len = __builtin_strlen (((dy)-&gt;name == 0 ? (dy)-&gt;file-&gt;name : (dy)-&gt;name)), __s2_len &lt; 4) ? (__builtin_constant_p (((dx)-&gt;name == 0 ? (dx)-&gt;file-&gt;name : (dx)-&gt;name)) &amp;&amp; ((size_t)(const void *)((((dx)-&gt;name == 0 ? (dx)-&gt;file-&gt;name : (dx)-&gt;name)) + 1) - (size_t)(const void *)(((dx)-&gt;name == 0 ? (dx)-&gt;file-&gt;name : (dx)-&gt;name)) == 1) ? __builtin_strcmp (((dx)-&gt;name == 0 ? (dx)-&gt;file-&gt;name : (dx)-&gt;name), ((dy)-&gt;name == 0 ? (dy)-&gt;file-&gt;name : (dy)-&gt;name)) : (- (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) (((dx)-&gt;name == 0 ? (dx)-&gt;file-&gt;name : (dx)-&gt;name)); int __result = (((const unsigned char *) (const char *) (((dy)-&gt;name == 0 ? (dy)-&gt;file-&gt;name : (dy)-&gt;name)))[0] - __s2[0]); if (__s2_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) (((dy)-&gt;name == 0 ? (dy)-&gt;file-&gt;name : (dy)-&gt;name)))[1] - __s2[1]); if (__s2_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) (((dy)-&gt;name == 0 ? (dy)-&gt;file-&gt;name : (dy)-&gt;name)))[2] - __s2[2]); if (__s2_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) (((dy)-&gt;name == 0 ? (dy)-&gt;file-&gt;name : (dy)-&gt;name)))[3] - __s2[3]); } } __result; })))) : __builtin_strcmp (((dx)-&gt;name == 0 ? (dx)-&gt;file-&gt;name : (dx)-&gt;name), ((dy)-&gt;name == 0 ? (dy)-&gt;file-&gt;name : (dy)-&gt;name))))); })" data-ref="_M/strcmp">strcmp</a> (<a class="macro" href="dep.h.html#99" title="((dx)-&gt;name == 0 ? (dx)-&gt;file-&gt;name : (dx)-&gt;name)" data-ref="_M/dep_name">dep_name</a> (<a class="local col7 ref" href="#157dx" title='dx' data-ref="157dx">dx</a>), <a class="macro" href="dep.h.html#99" title="((dy)-&gt;name == 0 ? (dy)-&gt;file-&gt;name : (dy)-&gt;name)" data-ref="_M/dep_name">dep_name</a> (<a class="local col8 ref" href="#158dy" title='dy' data-ref="158dy">dy</a>));</td></tr>
+<tr><th id="58">58</th><td>}</td></tr>
+<tr><th id="59">59</th><td></td></tr>
+<tr><th id="60">60</th><td><i>/* Set FILE's automatic variables up.  */</i></td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td><em>void</em></td></tr>
+<tr><th id="63">63</th><td><dfn class="decl def" id="set_file_variables" title='set_file_variables' data-ref="set_file_variables">set_file_variables</dfn> (<b>struct</b> <a class="type" href="filedef.h.html#file" title='file' data-ref="file">file</a> *<dfn class="local col9 decl" id="159file" title='file' data-type='struct file *' data-ref="159file">file</dfn>)</td></tr>
+<tr><th id="64">64</th><td>{</td></tr>
+<tr><th id="65">65</th><td>  <b>struct</b> <a class="type" href="dep.h.html#dep" title='dep' data-ref="dep">dep</a> *<dfn class="local col0 decl" id="160d" title='d' data-type='struct dep *' data-ref="160d">d</dfn>;</td></tr>
+<tr><th id="66">66</th><td>  <em>const</em> <em>char</em> *<dfn class="local col1 decl" id="161at" title='at' data-type='const char *' data-ref="161at">at</dfn>, *<dfn class="local col2 decl" id="162percent" title='percent' data-type='const char *' data-ref="162percent">percent</dfn>, *<dfn class="local col3 decl" id="163star" title='star' data-type='const char *' data-ref="163star">star</dfn>, *<dfn class="local col4 decl" id="164less" title='less' data-type='const char *' data-ref="164less">less</dfn>;</td></tr>
+<tr><th id="67">67</th><td></td></tr>
+<tr><th id="68">68</th><td><u>#<span data-ppcond="68">ifndef</span> <span class="macro" data-ref="_M/NO_ARCHIVES">NO_ARCHIVES</span></u></td></tr>
+<tr><th id="69">69</th><td>  <i>/* If the target is an archive member 'lib(member)',</i></td></tr>
+<tr><th id="70">70</th><td><i>     then $@ is 'lib' and $% is 'member'.  */</i></td></tr>
+<tr><th id="71">71</th><td></td></tr>
+<tr><th id="72">72</th><td>  <b>if</b> (<a class="ref" href="makeint.h.html#ar_name" title='ar_name' data-ref="ar_name">ar_name</a> (<a class="local col9 ref" href="#159file" title='file' data-ref="159file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a>))</td></tr>
+<tr><th id="73">73</th><td>    {</td></tr>
+<tr><th id="74">74</th><td>      <em>unsigned</em> <em>int</em> <dfn class="local col5 decl" id="165len" title='len' data-type='unsigned int' data-ref="165len">len</dfn>;</td></tr>
+<tr><th id="75">75</th><td>      <em>const</em> <em>char</em> *<dfn class="local col6 decl" id="166cp" title='cp' data-type='const char *' data-ref="166cp">cp</dfn>;</td></tr>
+<tr><th id="76">76</th><td>      <em>char</em> *<dfn class="local col7 decl" id="167p" title='p' data-type='char *' data-ref="167p">p</dfn>;</td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td>      <a class="local col6 ref" href="#166cp" title='cp' data-ref="166cp">cp</a> = <a class="macro" href="../include/x86_64-linux-gnu/bits/string2.h.html#395" title="(__extension__ (__builtin_constant_p (&apos;(&apos;) &amp;&amp; !__builtin_constant_p (file-&gt;name) &amp;&amp; (&apos;(&apos;) == &apos;\0&apos; ? (char *) __rawmemchr (file-&gt;name, &apos;(&apos;) : __builtin_strchr (file-&gt;name, &apos;(&apos;)))" data-ref="_M/strchr">strchr</a> (<a class="local col9 ref" href="#159file" title='file' data-ref="159file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a>, <kbd>'('</kbd>);</td></tr>
+<tr><th id="79">79</th><td>      <a class="local col7 ref" href="#167p" title='p' data-ref="167p">p</a> = <a class="macro" href="../include/alloca.h.html#35" title="__builtin_alloca (cp - file-&gt;name + 1)" data-ref="_M/alloca">alloca</a> (<a class="local col6 ref" href="#166cp" title='cp' data-ref="166cp">cp</a> - <a class="local col9 ref" href="#159file" title='file' data-ref="159file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a> + <var>1</var>);</td></tr>
+<tr><th id="80">80</th><td>      <a class="ref" href="../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a> (<a class="local col7 ref" href="#167p" title='p' data-ref="167p">p</a>, <a class="local col9 ref" href="#159file" title='file' data-ref="159file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a>, <a class="local col6 ref" href="#166cp" title='cp' data-ref="166cp">cp</a> - <a class="local col9 ref" href="#159file" title='file' data-ref="159file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a>);</td></tr>
+<tr><th id="81">81</th><td>      <a class="local col7 ref" href="#167p" title='p' data-ref="167p">p</a>[<a class="local col6 ref" href="#166cp" title='cp' data-ref="166cp">cp</a> - <a class="local col9 ref" href="#159file" title='file' data-ref="159file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a>] = <kbd>'\0'</kbd>;</td></tr>
+<tr><th id="82">82</th><td>      <a class="local col1 ref" href="#161at" title='at' data-ref="161at">at</a> = <a class="local col7 ref" href="#167p" title='p' data-ref="167p">p</a>;</td></tr>
+<tr><th id="83">83</th><td>      <a class="local col5 ref" href="#165len" title='len' data-ref="165len">len</a> = <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col6 ref" href="#166cp" title='cp' data-ref="166cp">cp</a> + <var>1</var>);</td></tr>
+<tr><th id="84">84</th><td>      <a class="local col7 ref" href="#167p" title='p' data-ref="167p">p</a> = <a class="macro" href="../include/alloca.h.html#35" title="__builtin_alloca (len)" data-ref="_M/alloca">alloca</a> (<a class="local col5 ref" href="#165len" title='len' data-ref="165len">len</a>);</td></tr>
+<tr><th id="85">85</th><td>      <a class="ref" href="../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a> (<a class="local col7 ref" href="#167p" title='p' data-ref="167p">p</a>, <a class="local col6 ref" href="#166cp" title='cp' data-ref="166cp">cp</a> + <var>1</var>, <a class="local col5 ref" href="#165len" title='len' data-ref="165len">len</a> - <var>1</var>);</td></tr>
+<tr><th id="86">86</th><td>      <a class="local col7 ref" href="#167p" title='p' data-ref="167p">p</a>[<a class="local col5 ref" href="#165len" title='len' data-ref="165len">len</a> - <var>1</var>] = <kbd>'\0'</kbd>;</td></tr>
+<tr><th id="87">87</th><td>      <a class="local col2 ref" href="#162percent" title='percent' data-ref="162percent">percent</a> = <a class="local col7 ref" href="#167p" title='p' data-ref="167p">p</a>;</td></tr>
+<tr><th id="88">88</th><td>    }</td></tr>
+<tr><th id="89">89</th><td>  <b>else</b></td></tr>
+<tr><th id="90">90</th><td><u>#<span data-ppcond="68">endif</span>  /* NO_ARCHIVES.  */</u></td></tr>
+<tr><th id="91">91</th><td>    {</td></tr>
+<tr><th id="92">92</th><td>      <a class="local col1 ref" href="#161at" title='at' data-ref="161at">at</a> = <a class="local col9 ref" href="#159file" title='file' data-ref="159file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a>;</td></tr>
+<tr><th id="93">93</th><td>      <a class="local col2 ref" href="#162percent" title='percent' data-ref="162percent">percent</a> = <q>""</q>;</td></tr>
+<tr><th id="94">94</th><td>    }</td></tr>
+<tr><th id="95">95</th><td></td></tr>
+<tr><th id="96">96</th><td>  <i>/* $* is the stem from an implicit or static pattern rule.  */</i></td></tr>
+<tr><th id="97">97</th><td>  <b>if</b> (<a class="local col9 ref" href="#159file" title='file' data-ref="159file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::stem" title='file::stem' data-ref="file::stem">stem</a> == <var>0</var>)</td></tr>
+<tr><th id="98">98</th><td>    {</td></tr>
+<tr><th id="99">99</th><td>      <i>/* In Unix make, $* is set to the target name with</i></td></tr>
+<tr><th id="100">100</th><td><i>         any suffix in the .SUFFIXES list stripped off for</i></td></tr>
+<tr><th id="101">101</th><td><i>         explicit rules.  We store this in the 'stem' member.  */</i></td></tr>
+<tr><th id="102">102</th><td>      <em>const</em> <em>char</em> *<dfn class="local col8 decl" id="168name" title='name' data-type='const char *' data-ref="168name">name</dfn>;</td></tr>
+<tr><th id="103">103</th><td>      <em>unsigned</em> <em>int</em> <dfn class="local col9 decl" id="169len" title='len' data-type='unsigned int' data-ref="169len">len</dfn>;</td></tr>
+<tr><th id="104">104</th><td></td></tr>
+<tr><th id="105">105</th><td><u>#<span data-ppcond="105">ifndef</span> <span class="macro" data-ref="_M/NO_ARCHIVES">NO_ARCHIVES</span></u></td></tr>
+<tr><th id="106">106</th><td>      <b>if</b> (<a class="ref" href="makeint.h.html#ar_name" title='ar_name' data-ref="ar_name">ar_name</a> (<a class="local col9 ref" href="#159file" title='file' data-ref="159file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a>))</td></tr>
+<tr><th id="107">107</th><td>        {</td></tr>
+<tr><th id="108">108</th><td>          <a class="local col8 ref" href="#168name" title='name' data-ref="168name">name</a> = <a class="macro" href="../include/x86_64-linux-gnu/bits/string2.h.html#395" title="(__extension__ (__builtin_constant_p (&apos;(&apos;) &amp;&amp; !__builtin_constant_p (file-&gt;name) &amp;&amp; (&apos;(&apos;) == &apos;\0&apos; ? (char *) __rawmemchr (file-&gt;name, &apos;(&apos;) : __builtin_strchr (file-&gt;name, &apos;(&apos;)))" data-ref="_M/strchr">strchr</a> (<a class="local col9 ref" href="#159file" title='file' data-ref="159file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a>, <kbd>'('</kbd>) + <var>1</var>;</td></tr>
+<tr><th id="109">109</th><td>          <a class="local col9 ref" href="#169len" title='len' data-ref="169len">len</a> = <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col8 ref" href="#168name" title='name' data-ref="168name">name</a>) - <var>1</var>;</td></tr>
+<tr><th id="110">110</th><td>        }</td></tr>
+<tr><th id="111">111</th><td>      <b>else</b></td></tr>
+<tr><th id="112">112</th><td><u>#<span data-ppcond="105">endif</span></u></td></tr>
+<tr><th id="113">113</th><td>        {</td></tr>
+<tr><th id="114">114</th><td>          <a class="local col8 ref" href="#168name" title='name' data-ref="168name">name</a> = <a class="local col9 ref" href="#159file" title='file' data-ref="159file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a>;</td></tr>
+<tr><th id="115">115</th><td>          <a class="local col9 ref" href="#169len" title='len' data-ref="169len">len</a> = <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col8 ref" href="#168name" title='name' data-ref="168name">name</a>);</td></tr>
+<tr><th id="116">116</th><td>        }</td></tr>
+<tr><th id="117">117</th><td></td></tr>
+<tr><th id="118">118</th><td>      <b>for</b> (<a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a> = <a class="ref" href="filedef.h.html#enter_file" title='enter_file' data-ref="enter_file">enter_file</a> (<a class="ref" href="makeint.h.html#strcache_add" title='strcache_add' data-ref="strcache_add">strcache_add</a> (<q>".SUFFIXES"</q>))-&gt;<a class="ref" href="filedef.h.html#file::deps" title='file::deps' data-ref="file::deps">deps</a>; <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a> ; <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a> = <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::next' data-ref="dep::next">next</a>)</td></tr>
+<tr><th id="119">119</th><td>        {</td></tr>
+<tr><th id="120">120</th><td>          <em>unsigned</em> <em>int</em> <dfn class="local col0 decl" id="170slen" title='slen' data-type='unsigned int' data-ref="170slen">slen</dfn> = <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="macro" href="dep.h.html#99" title="((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name)" data-ref="_M/dep_name">dep_name</a> (<a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>));</td></tr>
+<tr><th id="121">121</th><td>          <b>if</b> (<a class="local col9 ref" href="#169len" title='len' data-ref="169len">len</a> &gt; <a class="local col0 ref" href="#170slen" title='slen' data-ref="170slen">slen</a> &amp;&amp; <a class="macro" href="make.h.html#275" title="((__extension__ (__builtin_constant_p ((slen)) &amp;&amp; ((__builtin_constant_p ((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name))) &amp;&amp; strlen ((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name))) &lt; ((size_t) ((slen)))) || (__builtin_constant_p ((name + (len - slen))) &amp;&amp; strlen ((name + (len - slen))) &lt; ((size_t) ((slen))))) ? __extension__ ({ size_t __s1_len, __s2_len; (__builtin_constant_p ((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name))) &amp;&amp; __builtin_constant_p ((name + (len - slen))) &amp;&amp; (__s1_len = __builtin_strlen ((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name))), __s2_len = __builtin_strlen ((name + (len - slen))), (!((size_t)(const void *)(((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name))) + 1) - (size_t)(const void *)((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name))) == 1) || __s1_len &gt;= 4) &amp;&amp; (!((size_t)(const void *)(((name + (len - slen))) + 1) - (size_t)(const void *)((name + (len - slen))) == 1) || __s2_len &gt;= 4)) ? __builtin_strcmp ((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name)), (name + (len - slen))) : (__builtin_constant_p ((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name))) &amp;&amp; ((size_t)(const void *)(((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name))) + 1) - (size_t)(const void *)((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name))) == 1) &amp;&amp; (__s1_len = __builtin_strlen ((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name))), __s1_len &lt; 4) ? (__builtin_constant_p ((name + (len - slen))) &amp;&amp; ((size_t)(const void *)(((name + (len - slen))) + 1) - (size_t)(const void *)((name + (len - slen))) == 1) ? __builtin_strcmp ((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name)), (name + (len - slen))) : (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) ((name + (len - slen))); int __result = (((const unsigned char *) (const char *) ((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name))))[0] - __s2[0]); if (__s1_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name))))[1] - __s2[1]); if (__s1_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name))))[2] - __s2[2]); if (__s1_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) ((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name))))[3] - __s2[3]); } } __result; }))) : (__builtin_constant_p ((name + (len - slen))) &amp;&amp; ((size_t)(const void *)(((name + (len - slen))) + 1) - (size_t)(const void *)((name + (len - slen))) == 1) &amp;&amp; (__s2_len = __builtin_strlen ((name + (len - slen))), __s2_len &lt; 4) ? (__builtin_constant_p ((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name))) &amp;&amp; ((size_t)(const void *)(((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name))) + 1) - (size_t)(const void *)((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name))) == 1) ? __builtin_strcmp ((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name)), (name + (len - slen))) : (- (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) ((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name))); int __result = (((const unsigned char *) (const char *) ((name + (len - slen))))[0] - __s2[0]); if (__s2_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((name + (len - slen))))[1] - __s2[1]); if (__s2_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((name + (len - slen))))[2] - __s2[2]); if (__s2_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) ((name + (len - slen))))[3] - __s2[3]); } } __result; })))) : __builtin_strcmp ((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name)), (name + (len - slen)))))); }) : strncmp ((((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name)), (name + (len - slen)), (slen)))) == 0)" data-ref="_M/strneq">strneq</a> (<a class="macro" href="dep.h.html#99" title="((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name)" data-ref="_M/dep_name">dep_name</a> (<a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>), <a class="local col8 ref" href="#168name" title='name' data-ref="168name">name</a> + (<a class="local col9 ref" href="#169len" title='len' data-ref="169len">len</a> - <a class="local col0 ref" href="#170slen" title='slen' data-ref="170slen">slen</a>), <a class="local col0 ref" href="#170slen" title='slen' data-ref="170slen">slen</a>))</td></tr>
+<tr><th id="122">122</th><td>            {</td></tr>
+<tr><th id="123">123</th><td>              <a class="local col9 ref" href="#159file" title='file' data-ref="159file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::stem" title='file::stem' data-ref="file::stem">stem</a> = <a class="ref" href="makeint.h.html#strcache_add_len" title='strcache_add_len' data-ref="strcache_add_len">strcache_add_len</a> (<a class="local col8 ref" href="#168name" title='name' data-ref="168name">name</a>, <a class="local col9 ref" href="#169len" title='len' data-ref="169len">len</a> - <a class="local col0 ref" href="#170slen" title='slen' data-ref="170slen">slen</a>);</td></tr>
+<tr><th id="124">124</th><td>              <b>break</b>;</td></tr>
+<tr><th id="125">125</th><td>            }</td></tr>
+<tr><th id="126">126</th><td>        }</td></tr>
+<tr><th id="127">127</th><td>      <b>if</b> (<a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a> == <var>0</var>)</td></tr>
+<tr><th id="128">128</th><td>        <a class="local col9 ref" href="#159file" title='file' data-ref="159file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::stem" title='file::stem' data-ref="file::stem">stem</a> = <q>""</q>;</td></tr>
+<tr><th id="129">129</th><td>    }</td></tr>
+<tr><th id="130">130</th><td>  <a class="local col3 ref" href="#163star" title='star' data-ref="163star">star</a> = <a class="local col9 ref" href="#159file" title='file' data-ref="159file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::stem" title='file::stem' data-ref="file::stem">stem</a>;</td></tr>
+<tr><th id="131">131</th><td></td></tr>
+<tr><th id="132">132</th><td>  <i>/* $&lt; is the first not order-only dependency.  */</i></td></tr>
+<tr><th id="133">133</th><td>  <a class="local col4 ref" href="#164less" title='less' data-ref="164less">less</a> = <q>""</q>;</td></tr>
+<tr><th id="134">134</th><td>  <b>for</b> (<a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a> = <a class="local col9 ref" href="#159file" title='file' data-ref="159file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::deps" title='file::deps' data-ref="file::deps">deps</a>; <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a> != <var>0</var>; <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a> = <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::next' data-ref="dep::next">next</a>)</td></tr>
+<tr><th id="135">135</th><td>    <b>if</b> (!<a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::ignore_mtime' data-ref="dep::ignore_mtime">ignore_mtime</a>)</td></tr>
+<tr><th id="136">136</th><td>      {</td></tr>
+<tr><th id="137">137</th><td>        <b>if</b> (!<a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::need_2nd_expansion' data-ref="dep::need_2nd_expansion">need_2nd_expansion</a>)</td></tr>
+<tr><th id="138">138</th><td>          <a class="local col4 ref" href="#164less" title='less' data-ref="164less">less</a> = <a class="macro" href="dep.h.html#99" title="((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name)" data-ref="_M/dep_name">dep_name</a> (<a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>);</td></tr>
+<tr><th id="139">139</th><td>        <b>break</b>;</td></tr>
+<tr><th id="140">140</th><td>      }</td></tr>
+<tr><th id="141">141</th><td></td></tr>
+<tr><th id="142">142</th><td>  <b>if</b> (<a class="local col9 ref" href="#159file" title='file' data-ref="159file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::cmds" title='file::cmds' data-ref="file::cmds">cmds</a> == <a class="ref" href="filedef.h.html#default_file" title='default_file' data-ref="default_file">default_file</a>-&gt;<a class="ref" href="filedef.h.html#file::cmds" title='file::cmds' data-ref="file::cmds">cmds</a>)</td></tr>
+<tr><th id="143">143</th><td>    <i>/* This file got its commands from .DEFAULT.</i></td></tr>
+<tr><th id="144">144</th><td><i>       In this case $&lt; is the same as $@.  */</i></td></tr>
+<tr><th id="145">145</th><td>    <a class="local col4 ref" href="#164less" title='less' data-ref="164less">less</a> = <a class="local col1 ref" href="#161at" title='at' data-ref="161at">at</a>;</td></tr>
+<tr><th id="146">146</th><td></td></tr>
+<tr><th id="147">147</th><td><u>#define <dfn class="macro" id="_M/DEFINE_VARIABLE" data-ref="_M/DEFINE_VARIABLE">DEFINE_VARIABLE</dfn>(name, len, value) \</u></td></tr>
+<tr><th id="148">148</th><td><u>  (void) define_variable_for_file (name,len,value,<a class="enum" href="variable.h.html#variable_origin::o_automatic" title='variable_origin::o_automatic' data-ref="variable_origin::o_automatic">o_automatic</a>,0,<a class="local col9 ref" href="#159file" title='file' data-ref="159file">file</a>)</u></td></tr>
+<tr><th id="149">149</th><td></td></tr>
+<tr><th id="150">150</th><td>  <i>/* Define the variables.  */</i></td></tr>
+<tr><th id="151">151</th><td></td></tr>
+<tr><th id="152">152</th><td>  <a class="macro" href="#147" title="(void) define_variable_in_set((&quot;&lt;&quot;),(1),(less),(o_automatic),(0),(file)-&gt;variables-&gt;set,((gmk_floc *)0))" data-ref="_M/DEFINE_VARIABLE">DEFINE_VARIABLE</a> (<q>"&lt;"</q>, <var>1</var>, <a class="local col4 ref" href="#164less" title='less' data-ref="164less">less</a>);</td></tr>
+<tr><th id="153">153</th><td>  <a class="macro" href="#147" title="(void) define_variable_in_set((&quot;*&quot;),(1),(star),(o_automatic),(0),(file)-&gt;variables-&gt;set,((gmk_floc *)0))" data-ref="_M/DEFINE_VARIABLE">DEFINE_VARIABLE</a> (<q>"*"</q>, <var>1</var>, <a class="local col3 ref" href="#163star" title='star' data-ref="163star">star</a>);</td></tr>
+<tr><th id="154">154</th><td>  <a class="macro" href="#147" title="(void) define_variable_in_set((&quot;@&quot;),(1),(at),(o_automatic),(0),(file)-&gt;variables-&gt;set,((gmk_floc *)0))" data-ref="_M/DEFINE_VARIABLE">DEFINE_VARIABLE</a> (<q>"@"</q>, <var>1</var>, <a class="local col1 ref" href="#161at" title='at' data-ref="161at">at</a>);</td></tr>
+<tr><th id="155">155</th><td>  <a class="macro" href="#147" title="(void) define_variable_in_set((&quot;%&quot;),(1),(percent),(o_automatic),(0),(file)-&gt;variables-&gt;set,((gmk_floc *)0))" data-ref="_M/DEFINE_VARIABLE">DEFINE_VARIABLE</a> (<q>"%"</q>, <var>1</var>, <a class="local col2 ref" href="#162percent" title='percent' data-ref="162percent">percent</a>);</td></tr>
+<tr><th id="156">156</th><td></td></tr>
+<tr><th id="157">157</th><td>  <i>/* Compute the values for $^, $+, $?, and $|.  */</i></td></tr>
+<tr><th id="158">158</th><td></td></tr>
+<tr><th id="159">159</th><td>  {</td></tr>
+<tr><th id="160">160</th><td>    <em>static</em> <em>char</em> *<dfn class="local col1 decl" id="171plus_value" title='plus_value' data-type='char *' data-ref="171plus_value">plus_value</dfn>=<var>0</var>, *<dfn class="local col2 decl" id="172bar_value" title='bar_value' data-type='char *' data-ref="172bar_value">bar_value</dfn>=<var>0</var>, *<dfn class="local col3 decl" id="173qmark_value" title='qmark_value' data-type='char *' data-ref="173qmark_value">qmark_value</dfn>=<var>0</var>;</td></tr>
+<tr><th id="161">161</th><td>    <em>static</em> <em>unsigned</em> <em>int</em> <dfn class="local col4 decl" id="174plus_max" title='plus_max' data-type='unsigned int' data-ref="174plus_max">plus_max</dfn>=<var>0</var>, <dfn class="local col5 decl" id="175bar_max" title='bar_max' data-type='unsigned int' data-ref="175bar_max">bar_max</dfn>=<var>0</var>, <dfn class="local col6 decl" id="176qmark_max" title='qmark_max' data-type='unsigned int' data-ref="176qmark_max">qmark_max</dfn>=<var>0</var>;</td></tr>
+<tr><th id="162">162</th><td></td></tr>
+<tr><th id="163">163</th><td>    <em>unsigned</em> <em>int</em> <dfn class="local col7 decl" id="177qmark_len" title='qmark_len' data-type='unsigned int' data-ref="177qmark_len">qmark_len</dfn>, <dfn class="local col8 decl" id="178plus_len" title='plus_len' data-type='unsigned int' data-ref="178plus_len">plus_len</dfn>, <dfn class="local col9 decl" id="179bar_len" title='bar_len' data-type='unsigned int' data-ref="179bar_len">bar_len</dfn>;</td></tr>
+<tr><th id="164">164</th><td>    <em>char</em> *<dfn class="local col0 decl" id="180cp" title='cp' data-type='char *' data-ref="180cp">cp</dfn>;</td></tr>
+<tr><th id="165">165</th><td>    <em>char</em> *<dfn class="local col1 decl" id="181caret_value" title='caret_value' data-type='char *' data-ref="181caret_value">caret_value</dfn>;</td></tr>
+<tr><th id="166">166</th><td>    <em>char</em> *<dfn class="local col2 decl" id="182qp" title='qp' data-type='char *' data-ref="182qp">qp</dfn>;</td></tr>
+<tr><th id="167">167</th><td>    <em>char</em> *<dfn class="local col3 decl" id="183bp" title='bp' data-type='char *' data-ref="183bp">bp</dfn>;</td></tr>
+<tr><th id="168">168</th><td>    <em>unsigned</em> <em>int</em> <dfn class="local col4 decl" id="184len" title='len' data-type='unsigned int' data-ref="184len">len</dfn>;</td></tr>
+<tr><th id="169">169</th><td></td></tr>
+<tr><th id="170">170</th><td>    <b>struct</b> <a class="type" href="hash.h.html#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> <dfn class="local col5 decl" id="185dep_hash" title='dep_hash' data-type='struct hash_table' data-ref="185dep_hash">dep_hash</dfn>;</td></tr>
+<tr><th id="171">171</th><td>    <em>void</em> **<dfn class="local col6 decl" id="186slot" title='slot' data-type='void **' data-ref="186slot">slot</dfn>;</td></tr>
+<tr><th id="172">172</th><td></td></tr>
+<tr><th id="173">173</th><td>    <i>/* Compute first the value for $+, which is supposed to contain</i></td></tr>
+<tr><th id="174">174</th><td><i>       duplicate dependencies as they were listed in the makefile.  */</i></td></tr>
+<tr><th id="175">175</th><td></td></tr>
+<tr><th id="176">176</th><td>    <a class="local col8 ref" href="#178plus_len" title='plus_len' data-ref="178plus_len">plus_len</a> = <var>0</var>;</td></tr>
+<tr><th id="177">177</th><td>    <a class="local col9 ref" href="#179bar_len" title='bar_len' data-ref="179bar_len">bar_len</a> = <var>0</var>;</td></tr>
+<tr><th id="178">178</th><td>    <b>for</b> (<a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a> = <a class="local col9 ref" href="#159file" title='file' data-ref="159file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::deps" title='file::deps' data-ref="file::deps">deps</a>; <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a> != <var>0</var>; <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a> = <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::next' data-ref="dep::next">next</a>)</td></tr>
+<tr><th id="179">179</th><td>      {</td></tr>
+<tr><th id="180">180</th><td>        <b>if</b> (!<a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::need_2nd_expansion' data-ref="dep::need_2nd_expansion">need_2nd_expansion</a>)</td></tr>
+<tr><th id="181">181</th><td>          {</td></tr>
+<tr><th id="182">182</th><td>            <b>if</b> (<a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::ignore_mtime' data-ref="dep::ignore_mtime">ignore_mtime</a>)</td></tr>
+<tr><th id="183">183</th><td>              <a class="local col9 ref" href="#179bar_len" title='bar_len' data-ref="179bar_len">bar_len</a> += <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="macro" href="dep.h.html#99" title="((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name)" data-ref="_M/dep_name">dep_name</a> (<a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>)) + <var>1</var>;</td></tr>
+<tr><th id="184">184</th><td>            <b>else</b></td></tr>
+<tr><th id="185">185</th><td>              <a class="local col8 ref" href="#178plus_len" title='plus_len' data-ref="178plus_len">plus_len</a> += <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="macro" href="dep.h.html#99" title="((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name)" data-ref="_M/dep_name">dep_name</a> (<a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>)) + <var>1</var>;</td></tr>
+<tr><th id="186">186</th><td>          }</td></tr>
+<tr><th id="187">187</th><td>      }</td></tr>
+<tr><th id="188">188</th><td></td></tr>
+<tr><th id="189">189</th><td>    <b>if</b> (<a class="local col9 ref" href="#179bar_len" title='bar_len' data-ref="179bar_len">bar_len</a> == <var>0</var>)</td></tr>
+<tr><th id="190">190</th><td>      <a class="local col9 ref" href="#179bar_len" title='bar_len' data-ref="179bar_len">bar_len</a>++;</td></tr>
+<tr><th id="191">191</th><td></td></tr>
+<tr><th id="192">192</th><td>    <b>if</b> (<a class="local col8 ref" href="#178plus_len" title='plus_len' data-ref="178plus_len">plus_len</a> == <var>0</var>)</td></tr>
+<tr><th id="193">193</th><td>      <a class="local col8 ref" href="#178plus_len" title='plus_len' data-ref="178plus_len">plus_len</a>++;</td></tr>
+<tr><th id="194">194</th><td></td></tr>
+<tr><th id="195">195</th><td>    <b>if</b> (<a class="local col8 ref" href="#178plus_len" title='plus_len' data-ref="178plus_len">plus_len</a> &gt; <a class="local col4 ref" href="#174plus_max" title='plus_max' data-ref="174plus_max">plus_max</a>)</td></tr>
+<tr><th id="196">196</th><td>      <a class="local col1 ref" href="#171plus_value" title='plus_value' data-ref="171plus_value">plus_value</a> = <a class="ref" href="makeint.h.html#xrealloc" title='xrealloc' data-ref="xrealloc">xrealloc</a> (<a class="local col1 ref" href="#171plus_value" title='plus_value' data-ref="171plus_value">plus_value</a>, <a class="local col4 ref" href="#174plus_max" title='plus_max' data-ref="174plus_max">plus_max</a> = <a class="local col8 ref" href="#178plus_len" title='plus_len' data-ref="178plus_len">plus_len</a>);</td></tr>
+<tr><th id="197">197</th><td></td></tr>
+<tr><th id="198">198</th><td>    <a class="local col0 ref" href="#180cp" title='cp' data-ref="180cp">cp</a> = <a class="local col1 ref" href="#171plus_value" title='plus_value' data-ref="171plus_value">plus_value</a>;</td></tr>
+<tr><th id="199">199</th><td></td></tr>
+<tr><th id="200">200</th><td>    <a class="local col7 ref" href="#177qmark_len" title='qmark_len' data-ref="177qmark_len">qmark_len</a> = <a class="local col8 ref" href="#178plus_len" title='plus_len' data-ref="178plus_len">plus_len</a> + <var>1</var>;   <i>/* Will be this or less.  */</i></td></tr>
+<tr><th id="201">201</th><td>    <b>for</b> (<a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a> = <a class="local col9 ref" href="#159file" title='file' data-ref="159file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::deps" title='file::deps' data-ref="file::deps">deps</a>; <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a> != <var>0</var>; <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a> = <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::next' data-ref="dep::next">next</a>)</td></tr>
+<tr><th id="202">202</th><td>      <b>if</b> (! <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::ignore_mtime' data-ref="dep::ignore_mtime">ignore_mtime</a> &amp;&amp; ! <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::need_2nd_expansion' data-ref="dep::need_2nd_expansion">need_2nd_expansion</a>)</td></tr>
+<tr><th id="203">203</th><td>        {</td></tr>
+<tr><th id="204">204</th><td>          <em>const</em> <em>char</em> *<dfn class="local col7 decl" id="187c" title='c' data-type='const char *' data-ref="187c">c</dfn> = <a class="macro" href="dep.h.html#99" title="((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name)" data-ref="_M/dep_name">dep_name</a> (<a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>);</td></tr>
+<tr><th id="205">205</th><td></td></tr>
+<tr><th id="206">206</th><td><u>#<span data-ppcond="206">ifndef</span> <span class="macro" data-ref="_M/NO_ARCHIVES">NO_ARCHIVES</span></u></td></tr>
+<tr><th id="207">207</th><td>          <b>if</b> (<a class="ref" href="makeint.h.html#ar_name" title='ar_name' data-ref="ar_name">ar_name</a> (<a class="local col7 ref" href="#187c" title='c' data-ref="187c">c</a>))</td></tr>
+<tr><th id="208">208</th><td>            {</td></tr>
+<tr><th id="209">209</th><td>              <a class="local col7 ref" href="#187c" title='c' data-ref="187c">c</a> = <a class="macro" href="../include/x86_64-linux-gnu/bits/string2.h.html#395" title="(__extension__ (__builtin_constant_p (&apos;(&apos;) &amp;&amp; !__builtin_constant_p (c) &amp;&amp; (&apos;(&apos;) == &apos;\0&apos; ? (char *) __rawmemchr (c, &apos;(&apos;) : __builtin_strchr (c, &apos;(&apos;)))" data-ref="_M/strchr">strchr</a> (<a class="local col7 ref" href="#187c" title='c' data-ref="187c">c</a>, <kbd>'('</kbd>) + <var>1</var>;</td></tr>
+<tr><th id="210">210</th><td>              <a class="local col4 ref" href="#184len" title='len' data-ref="184len">len</a> = <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col7 ref" href="#187c" title='c' data-ref="187c">c</a>) - <var>1</var>;</td></tr>
+<tr><th id="211">211</th><td>            }</td></tr>
+<tr><th id="212">212</th><td>          <b>else</b></td></tr>
+<tr><th id="213">213</th><td><u>#<span data-ppcond="206">endif</span></u></td></tr>
+<tr><th id="214">214</th><td>            <a class="local col4 ref" href="#184len" title='len' data-ref="184len">len</a> = <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col7 ref" href="#187c" title='c' data-ref="187c">c</a>);</td></tr>
+<tr><th id="215">215</th><td></td></tr>
+<tr><th id="216">216</th><td>          <a class="ref" href="../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a> (<a class="local col0 ref" href="#180cp" title='cp' data-ref="180cp">cp</a>, <a class="local col7 ref" href="#187c" title='c' data-ref="187c">c</a>, <a class="local col4 ref" href="#184len" title='len' data-ref="184len">len</a>);</td></tr>
+<tr><th id="217">217</th><td>          <a class="local col0 ref" href="#180cp" title='cp' data-ref="180cp">cp</a> += <a class="local col4 ref" href="#184len" title='len' data-ref="184len">len</a>;</td></tr>
+<tr><th id="218">218</th><td>          *<a class="local col0 ref" href="#180cp" title='cp' data-ref="180cp">cp</a>++ = <a class="macro" href="#29" title="&apos; &apos;" data-ref="_M/FILE_LIST_SEPARATOR">FILE_LIST_SEPARATOR</a>;</td></tr>
+<tr><th id="219">219</th><td>          <b>if</b> (! (<a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::changed' data-ref="dep::changed">changed</a> || <a class="ref" href="makeint.h.html#always_make_flag" title='always_make_flag' data-ref="always_make_flag">always_make_flag</a>))</td></tr>
+<tr><th id="220">220</th><td>            <a class="local col7 ref" href="#177qmark_len" title='qmark_len' data-ref="177qmark_len">qmark_len</a> -= <a class="local col4 ref" href="#184len" title='len' data-ref="184len">len</a> + <var>1</var>;       <i>/* Don't space in $? for this one.  */</i></td></tr>
+<tr><th id="221">221</th><td>        }</td></tr>
+<tr><th id="222">222</th><td></td></tr>
+<tr><th id="223">223</th><td>    <i>/* Kill the last space and define the variable.  */</i></td></tr>
+<tr><th id="224">224</th><td></td></tr>
+<tr><th id="225">225</th><td>    <a class="local col0 ref" href="#180cp" title='cp' data-ref="180cp">cp</a>[<a class="local col0 ref" href="#180cp" title='cp' data-ref="180cp">cp</a> &gt; <a class="local col1 ref" href="#171plus_value" title='plus_value' data-ref="171plus_value">plus_value</a> ? -<var>1</var> : <var>0</var>] = <kbd>'\0'</kbd>;</td></tr>
+<tr><th id="226">226</th><td>    <a class="macro" href="#147" title="(void) define_variable_in_set((&quot;+&quot;),(1),(plus_value),(o_automatic),(0),(file)-&gt;variables-&gt;set,((gmk_floc *)0))" data-ref="_M/DEFINE_VARIABLE">DEFINE_VARIABLE</a> (<q>"+"</q>, <var>1</var>, <a class="local col1 ref" href="#171plus_value" title='plus_value' data-ref="171plus_value">plus_value</a>);</td></tr>
+<tr><th id="227">227</th><td></td></tr>
+<tr><th id="228">228</th><td>    <i>/* Compute the values for $^, $?, and $|.  */</i></td></tr>
+<tr><th id="229">229</th><td></td></tr>
+<tr><th id="230">230</th><td>    <a class="local col0 ref" href="#180cp" title='cp' data-ref="180cp">cp</a> = <a class="local col1 ref" href="#181caret_value" title='caret_value' data-ref="181caret_value">caret_value</a> = <a class="local col1 ref" href="#171plus_value" title='plus_value' data-ref="171plus_value">plus_value</a>; <i>/* Reuse the buffer; it's big enough.  */</i></td></tr>
+<tr><th id="231">231</th><td></td></tr>
+<tr><th id="232">232</th><td>    <b>if</b> (<a class="local col7 ref" href="#177qmark_len" title='qmark_len' data-ref="177qmark_len">qmark_len</a> &gt; <a class="local col6 ref" href="#176qmark_max" title='qmark_max' data-ref="176qmark_max">qmark_max</a>)</td></tr>
+<tr><th id="233">233</th><td>      <a class="local col3 ref" href="#173qmark_value" title='qmark_value' data-ref="173qmark_value">qmark_value</a> = <a class="ref" href="makeint.h.html#xrealloc" title='xrealloc' data-ref="xrealloc">xrealloc</a> (<a class="local col3 ref" href="#173qmark_value" title='qmark_value' data-ref="173qmark_value">qmark_value</a>, <a class="local col6 ref" href="#176qmark_max" title='qmark_max' data-ref="176qmark_max">qmark_max</a> = <a class="local col7 ref" href="#177qmark_len" title='qmark_len' data-ref="177qmark_len">qmark_len</a>);</td></tr>
+<tr><th id="234">234</th><td>    <a class="local col2 ref" href="#182qp" title='qp' data-ref="182qp">qp</a> = <a class="local col3 ref" href="#173qmark_value" title='qmark_value' data-ref="173qmark_value">qmark_value</a>;</td></tr>
+<tr><th id="235">235</th><td></td></tr>
+<tr><th id="236">236</th><td>    <b>if</b> (<a class="local col9 ref" href="#179bar_len" title='bar_len' data-ref="179bar_len">bar_len</a> &gt; <a class="local col5 ref" href="#175bar_max" title='bar_max' data-ref="175bar_max">bar_max</a>)</td></tr>
+<tr><th id="237">237</th><td>      <a class="local col2 ref" href="#172bar_value" title='bar_value' data-ref="172bar_value">bar_value</a> = <a class="ref" href="makeint.h.html#xrealloc" title='xrealloc' data-ref="xrealloc">xrealloc</a> (<a class="local col2 ref" href="#172bar_value" title='bar_value' data-ref="172bar_value">bar_value</a>, <a class="local col5 ref" href="#175bar_max" title='bar_max' data-ref="175bar_max">bar_max</a> = <a class="local col9 ref" href="#179bar_len" title='bar_len' data-ref="179bar_len">bar_len</a>);</td></tr>
+<tr><th id="238">238</th><td>    <a class="local col3 ref" href="#183bp" title='bp' data-ref="183bp">bp</a> = <a class="local col2 ref" href="#172bar_value" title='bar_value' data-ref="172bar_value">bar_value</a>;</td></tr>
+<tr><th id="239">239</th><td></td></tr>
+<tr><th id="240">240</th><td>    <i>/* Make sure that no dependencies are repeated in $^, $?, and $|.  It</i></td></tr>
+<tr><th id="241">241</th><td><i>       would be natural to combine the next two loops but we can't do it</i></td></tr>
+<tr><th id="242">242</th><td><i>       because of a situation where we have two dep entries, the first</i></td></tr>
+<tr><th id="243">243</th><td><i>       is order-only and the second is normal (see below).  */</i></td></tr>
+<tr><th id="244">244</th><td></td></tr>
+<tr><th id="245">245</th><td>    <a class="ref" href="hash.h.html#hash_init" title='hash_init' data-ref="hash_init">hash_init</a> (&amp;<a class="local col5 ref" href="#185dep_hash" title='dep_hash' data-ref="185dep_hash">dep_hash</a>, <var>500</var>, <a class="tu ref" href="#dep_hash_1" title='dep_hash_1' data-use='r' data-ref="dep_hash_1">dep_hash_1</a>, <a class="tu ref" href="#dep_hash_2" title='dep_hash_2' data-use='r' data-ref="dep_hash_2">dep_hash_2</a>, <a class="tu ref" href="#dep_hash_cmp" title='dep_hash_cmp' data-use='r' data-ref="dep_hash_cmp">dep_hash_cmp</a>);</td></tr>
+<tr><th id="246">246</th><td></td></tr>
+<tr><th id="247">247</th><td>    <b>for</b> (<a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a> = <a class="local col9 ref" href="#159file" title='file' data-ref="159file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::deps" title='file::deps' data-ref="file::deps">deps</a>; <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a> != <var>0</var>; <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a> = <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::next' data-ref="dep::next">next</a>)</td></tr>
+<tr><th id="248">248</th><td>      {</td></tr>
+<tr><th id="249">249</th><td>        <b>if</b> (<a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::need_2nd_expansion' data-ref="dep::need_2nd_expansion">need_2nd_expansion</a>)</td></tr>
+<tr><th id="250">250</th><td>          <b>continue</b>;</td></tr>
+<tr><th id="251">251</th><td></td></tr>
+<tr><th id="252">252</th><td>        <a class="local col6 ref" href="#186slot" title='slot' data-ref="186slot">slot</a> = <a class="ref" href="hash.h.html#hash_find_slot" title='hash_find_slot' data-ref="hash_find_slot">hash_find_slot</a> (&amp;<a class="local col5 ref" href="#185dep_hash" title='dep_hash' data-ref="185dep_hash">dep_hash</a>, <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>);</td></tr>
+<tr><th id="253">253</th><td>        <b>if</b> (<a class="macro" href="hash.h.html#77" title="((*slot) == 0 || (void *) (*slot) == hash_deleted_item)" data-ref="_M/HASH_VACANT">HASH_VACANT</a> (*<a class="local col6 ref" href="#186slot" title='slot' data-ref="186slot">slot</a>))</td></tr>
+<tr><th id="254">254</th><td>          <a class="ref" href="hash.h.html#hash_insert_at" title='hash_insert_at' data-ref="hash_insert_at">hash_insert_at</a> (&amp;<a class="local col5 ref" href="#185dep_hash" title='dep_hash' data-ref="185dep_hash">dep_hash</a>, <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>, <a class="local col6 ref" href="#186slot" title='slot' data-ref="186slot">slot</a>);</td></tr>
+<tr><th id="255">255</th><td>        <b>else</b></td></tr>
+<tr><th id="256">256</th><td>          {</td></tr>
+<tr><th id="257">257</th><td>            <i>/* Check if the two prerequisites have different ignore_mtime.</i></td></tr>
+<tr><th id="258">258</th><td><i>               If so then we need to "upgrade" one that is order-only.  */</i></td></tr>
+<tr><th id="259">259</th><td></td></tr>
+<tr><th id="260">260</th><td>            <b>struct</b> <a class="type" href="dep.h.html#dep" title='dep' data-ref="dep">dep</a>* <dfn class="local col8 decl" id="188hd" title='hd' data-type='struct dep *' data-ref="188hd">hd</dfn> = (<b>struct</b> <a class="type" href="dep.h.html#dep" title='dep' data-ref="dep">dep</a>*) *<a class="local col6 ref" href="#186slot" title='slot' data-ref="186slot">slot</a>;</td></tr>
+<tr><th id="261">261</th><td></td></tr>
+<tr><th id="262">262</th><td>            <b>if</b> (<a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::ignore_mtime' data-ref="dep::ignore_mtime">ignore_mtime</a> != <a class="local col8 ref" href="#188hd" title='hd' data-ref="188hd">hd</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::ignore_mtime' data-ref="dep::ignore_mtime">ignore_mtime</a>)</td></tr>
+<tr><th id="263">263</th><td>              <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::ignore_mtime' data-ref="dep::ignore_mtime">ignore_mtime</a> = <a class="local col8 ref" href="#188hd" title='hd' data-ref="188hd">hd</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::ignore_mtime' data-ref="dep::ignore_mtime">ignore_mtime</a> = <var>0</var>;</td></tr>
+<tr><th id="264">264</th><td>          }</td></tr>
+<tr><th id="265">265</th><td>      }</td></tr>
+<tr><th id="266">266</th><td></td></tr>
+<tr><th id="267">267</th><td>    <b>for</b> (<a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a> = <a class="local col9 ref" href="#159file" title='file' data-ref="159file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::deps" title='file::deps' data-ref="file::deps">deps</a>; <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a> != <var>0</var>; <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a> = <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::next' data-ref="dep::next">next</a>)</td></tr>
+<tr><th id="268">268</th><td>      {</td></tr>
+<tr><th id="269">269</th><td>        <em>const</em> <em>char</em> *<dfn class="local col9 decl" id="189c" title='c' data-type='const char *' data-ref="189c">c</dfn>;</td></tr>
+<tr><th id="270">270</th><td></td></tr>
+<tr><th id="271">271</th><td>        <b>if</b> (<a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::need_2nd_expansion' data-ref="dep::need_2nd_expansion">need_2nd_expansion</a> || <a class="ref" href="hash.h.html#hash_find_item" title='hash_find_item' data-ref="hash_find_item">hash_find_item</a> (&amp;<a class="local col5 ref" href="#185dep_hash" title='dep_hash' data-ref="185dep_hash">dep_hash</a>, <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>) != <a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>)</td></tr>
+<tr><th id="272">272</th><td>          <b>continue</b>;</td></tr>
+<tr><th id="273">273</th><td></td></tr>
+<tr><th id="274">274</th><td>        <a class="local col9 ref" href="#189c" title='c' data-ref="189c">c</a> = <a class="macro" href="dep.h.html#99" title="((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name)" data-ref="_M/dep_name">dep_name</a> (<a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>);</td></tr>
+<tr><th id="275">275</th><td><u>#<span data-ppcond="275">ifndef</span> <span class="macro" data-ref="_M/NO_ARCHIVES">NO_ARCHIVES</span></u></td></tr>
+<tr><th id="276">276</th><td>        <b>if</b> (<a class="ref" href="makeint.h.html#ar_name" title='ar_name' data-ref="ar_name">ar_name</a> (<a class="local col9 ref" href="#189c" title='c' data-ref="189c">c</a>))</td></tr>
+<tr><th id="277">277</th><td>          {</td></tr>
+<tr><th id="278">278</th><td>            <a class="local col9 ref" href="#189c" title='c' data-ref="189c">c</a> = <a class="macro" href="../include/x86_64-linux-gnu/bits/string2.h.html#395" title="(__extension__ (__builtin_constant_p (&apos;(&apos;) &amp;&amp; !__builtin_constant_p (c) &amp;&amp; (&apos;(&apos;) == &apos;\0&apos; ? (char *) __rawmemchr (c, &apos;(&apos;) : __builtin_strchr (c, &apos;(&apos;)))" data-ref="_M/strchr">strchr</a> (<a class="local col9 ref" href="#189c" title='c' data-ref="189c">c</a>, <kbd>'('</kbd>) + <var>1</var>;</td></tr>
+<tr><th id="279">279</th><td>            <a class="local col4 ref" href="#184len" title='len' data-ref="184len">len</a> = <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col9 ref" href="#189c" title='c' data-ref="189c">c</a>) - <var>1</var>;</td></tr>
+<tr><th id="280">280</th><td>          }</td></tr>
+<tr><th id="281">281</th><td>        <b>else</b></td></tr>
+<tr><th id="282">282</th><td><u>#<span data-ppcond="275">endif</span></u></td></tr>
+<tr><th id="283">283</th><td>          <a class="local col4 ref" href="#184len" title='len' data-ref="184len">len</a> = <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col9 ref" href="#189c" title='c' data-ref="189c">c</a>);</td></tr>
+<tr><th id="284">284</th><td></td></tr>
+<tr><th id="285">285</th><td>        <b>if</b> (<a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::ignore_mtime' data-ref="dep::ignore_mtime">ignore_mtime</a>)</td></tr>
+<tr><th id="286">286</th><td>          {</td></tr>
+<tr><th id="287">287</th><td>            <a class="ref" href="../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a> (<a class="local col3 ref" href="#183bp" title='bp' data-ref="183bp">bp</a>, <a class="local col9 ref" href="#189c" title='c' data-ref="189c">c</a>, <a class="local col4 ref" href="#184len" title='len' data-ref="184len">len</a>);</td></tr>
+<tr><th id="288">288</th><td>            <a class="local col3 ref" href="#183bp" title='bp' data-ref="183bp">bp</a> += <a class="local col4 ref" href="#184len" title='len' data-ref="184len">len</a>;</td></tr>
+<tr><th id="289">289</th><td>            *<a class="local col3 ref" href="#183bp" title='bp' data-ref="183bp">bp</a>++ = <a class="macro" href="#29" title="&apos; &apos;" data-ref="_M/FILE_LIST_SEPARATOR">FILE_LIST_SEPARATOR</a>;</td></tr>
+<tr><th id="290">290</th><td>          }</td></tr>
+<tr><th id="291">291</th><td>        <b>else</b></td></tr>
+<tr><th id="292">292</th><td>          {</td></tr>
+<tr><th id="293">293</th><td>            <a class="ref" href="../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a> (<a class="local col0 ref" href="#180cp" title='cp' data-ref="180cp">cp</a>, <a class="local col9 ref" href="#189c" title='c' data-ref="189c">c</a>, <a class="local col4 ref" href="#184len" title='len' data-ref="184len">len</a>);</td></tr>
+<tr><th id="294">294</th><td>            <a class="local col0 ref" href="#180cp" title='cp' data-ref="180cp">cp</a> += <a class="local col4 ref" href="#184len" title='len' data-ref="184len">len</a>;</td></tr>
+<tr><th id="295">295</th><td>            *<a class="local col0 ref" href="#180cp" title='cp' data-ref="180cp">cp</a>++ = <a class="macro" href="#29" title="&apos; &apos;" data-ref="_M/FILE_LIST_SEPARATOR">FILE_LIST_SEPARATOR</a>;</td></tr>
+<tr><th id="296">296</th><td>            <b>if</b> (<a class="local col0 ref" href="#160d" title='d' data-ref="160d">d</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::changed' data-ref="dep::changed">changed</a> || <a class="ref" href="makeint.h.html#always_make_flag" title='always_make_flag' data-ref="always_make_flag">always_make_flag</a>)</td></tr>
+<tr><th id="297">297</th><td>              {</td></tr>
+<tr><th id="298">298</th><td>                <a class="ref" href="../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a> (<a class="local col2 ref" href="#182qp" title='qp' data-ref="182qp">qp</a>, <a class="local col9 ref" href="#189c" title='c' data-ref="189c">c</a>, <a class="local col4 ref" href="#184len" title='len' data-ref="184len">len</a>);</td></tr>
+<tr><th id="299">299</th><td>                <a class="local col2 ref" href="#182qp" title='qp' data-ref="182qp">qp</a> += <a class="local col4 ref" href="#184len" title='len' data-ref="184len">len</a>;</td></tr>
+<tr><th id="300">300</th><td>                *<a class="local col2 ref" href="#182qp" title='qp' data-ref="182qp">qp</a>++ = <a class="macro" href="#29" title="&apos; &apos;" data-ref="_M/FILE_LIST_SEPARATOR">FILE_LIST_SEPARATOR</a>;</td></tr>
+<tr><th id="301">301</th><td>              }</td></tr>
+<tr><th id="302">302</th><td>          }</td></tr>
+<tr><th id="303">303</th><td>      }</td></tr>
+<tr><th id="304">304</th><td></td></tr>
+<tr><th id="305">305</th><td>    <a class="ref" href="hash.h.html#hash_free" title='hash_free' data-ref="hash_free">hash_free</a> (&amp;<a class="local col5 ref" href="#185dep_hash" title='dep_hash' data-ref="185dep_hash">dep_hash</a>, <var>0</var>);</td></tr>
+<tr><th id="306">306</th><td></td></tr>
+<tr><th id="307">307</th><td>    <i>/* Kill the last spaces and define the variables.  */</i></td></tr>
+<tr><th id="308">308</th><td></td></tr>
+<tr><th id="309">309</th><td>    <a class="local col0 ref" href="#180cp" title='cp' data-ref="180cp">cp</a>[<a class="local col0 ref" href="#180cp" title='cp' data-ref="180cp">cp</a> &gt; <a class="local col1 ref" href="#181caret_value" title='caret_value' data-ref="181caret_value">caret_value</a> ? -<var>1</var> : <var>0</var>] = <kbd>'\0'</kbd>;</td></tr>
+<tr><th id="310">310</th><td>    <a class="macro" href="#147" title="(void) define_variable_in_set((&quot;^&quot;),(1),(caret_value),(o_automatic),(0),(file)-&gt;variables-&gt;set,((gmk_floc *)0))" data-ref="_M/DEFINE_VARIABLE">DEFINE_VARIABLE</a> (<q>"^"</q>, <var>1</var>, <a class="local col1 ref" href="#181caret_value" title='caret_value' data-ref="181caret_value">caret_value</a>);</td></tr>
+<tr><th id="311">311</th><td></td></tr>
+<tr><th id="312">312</th><td>    <a class="local col2 ref" href="#182qp" title='qp' data-ref="182qp">qp</a>[<a class="local col2 ref" href="#182qp" title='qp' data-ref="182qp">qp</a> &gt; <a class="local col3 ref" href="#173qmark_value" title='qmark_value' data-ref="173qmark_value">qmark_value</a> ? -<var>1</var> : <var>0</var>] = <kbd>'\0'</kbd>;</td></tr>
+<tr><th id="313">313</th><td>    <a class="macro" href="#147" title="(void) define_variable_in_set((&quot;?&quot;),(1),(qmark_value),(o_automatic),(0),(file)-&gt;variables-&gt;set,((gmk_floc *)0))" data-ref="_M/DEFINE_VARIABLE">DEFINE_VARIABLE</a> (<q>"?"</q>, <var>1</var>, <a class="local col3 ref" href="#173qmark_value" title='qmark_value' data-ref="173qmark_value">qmark_value</a>);</td></tr>
+<tr><th id="314">314</th><td></td></tr>
+<tr><th id="315">315</th><td>    <a class="local col3 ref" href="#183bp" title='bp' data-ref="183bp">bp</a>[<a class="local col3 ref" href="#183bp" title='bp' data-ref="183bp">bp</a> &gt; <a class="local col2 ref" href="#172bar_value" title='bar_value' data-ref="172bar_value">bar_value</a> ? -<var>1</var> : <var>0</var>] = <kbd>'\0'</kbd>;</td></tr>
+<tr><th id="316">316</th><td>    <a class="macro" href="#147" title="(void) define_variable_in_set((&quot;|&quot;),(1),(bar_value),(o_automatic),(0),(file)-&gt;variables-&gt;set,((gmk_floc *)0))" data-ref="_M/DEFINE_VARIABLE">DEFINE_VARIABLE</a> (<q>"|"</q>, <var>1</var>, <a class="local col2 ref" href="#172bar_value" title='bar_value' data-ref="172bar_value">bar_value</a>);</td></tr>
+<tr><th id="317">317</th><td>  }</td></tr>
+<tr><th id="318">318</th><td></td></tr>
+<tr><th id="319">319</th><td><u>#undef  <a class="macro" href="#147" data-ref="_M/DEFINE_VARIABLE">DEFINE_VARIABLE</a></u></td></tr>
+<tr><th id="320">320</th><td>}</td></tr>
+<tr><th id="321">321</th><td></td></tr>
+<tr><th id="322">322</th><td><i>/* Chop CMDS up into individual command lines if necessary.</i></td></tr>
+<tr><th id="323">323</th><td><i>   Also set the 'lines_flags' and 'any_recurse' members.  */</i></td></tr>
+<tr><th id="324">324</th><td></td></tr>
+<tr><th id="325">325</th><td><em>void</em></td></tr>
+<tr><th id="326">326</th><td><dfn class="decl def" id="chop_commands" title='chop_commands' data-ref="chop_commands">chop_commands</dfn> (<b>struct</b> <a class="type" href="commands.h.html#commands" title='commands' data-ref="commands">commands</a> *<dfn class="local col0 decl" id="190cmds" title='cmds' data-type='struct commands *' data-ref="190cmds">cmds</dfn>)</td></tr>
+<tr><th id="327">327</th><td>{</td></tr>
+<tr><th id="328">328</th><td>  <em>unsigned</em> <em>int</em> <dfn class="local col1 decl" id="191nlines" title='nlines' data-type='unsigned int' data-ref="191nlines">nlines</dfn>, <dfn class="local col2 decl" id="192idx" title='idx' data-type='unsigned int' data-ref="192idx">idx</dfn>;</td></tr>
+<tr><th id="329">329</th><td>  <em>char</em> **<dfn class="local col3 decl" id="193lines" title='lines' data-type='char **' data-ref="193lines">lines</dfn>;</td></tr>
+<tr><th id="330">330</th><td></td></tr>
+<tr><th id="331">331</th><td>  <i>/* If we don't have any commands,</i></td></tr>
+<tr><th id="332">332</th><td><i>     or we already parsed them, never mind.  */</i></td></tr>
+<tr><th id="333">333</th><td></td></tr>
+<tr><th id="334">334</th><td>  <b>if</b> (!<a class="local col0 ref" href="#190cmds" title='cmds' data-ref="190cmds">cmds</a> || <a class="local col0 ref" href="#190cmds" title='cmds' data-ref="190cmds">cmds</a>-&gt;<a class="ref" href="commands.h.html#commands::command_lines" title='commands::command_lines' data-ref="commands::command_lines">command_lines</a> != <var>0</var>)</td></tr>
+<tr><th id="335">335</th><td>    <b>return</b>;</td></tr>
+<tr><th id="336">336</th><td></td></tr>
+<tr><th id="337">337</th><td>  <i>/* Chop CMDS-&gt;commands up into lines in CMDS-&gt;command_lines.  */</i></td></tr>
+<tr><th id="338">338</th><td></td></tr>
+<tr><th id="339">339</th><td>  <b>if</b> (<a class="ref" href="makeint.h.html#one_shell" title='one_shell' data-ref="one_shell">one_shell</a>)</td></tr>
+<tr><th id="340">340</th><td>    {</td></tr>
+<tr><th id="341">341</th><td>      <em>int</em> <dfn class="local col4 decl" id="194l" title='l' data-type='int' data-ref="194l">l</dfn> = <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col0 ref" href="#190cmds" title='cmds' data-ref="190cmds">cmds</a>-&gt;<a class="ref" href="commands.h.html#commands::commands" title='commands::commands' data-ref="commands::commands">commands</a>);</td></tr>
+<tr><th id="342">342</th><td></td></tr>
+<tr><th id="343">343</th><td>      <a class="local col1 ref" href="#191nlines" title='nlines' data-ref="191nlines">nlines</a> = <var>1</var>;</td></tr>
+<tr><th id="344">344</th><td>      <a class="local col3 ref" href="#193lines" title='lines' data-ref="193lines">lines</a> = <a class="ref" href="makeint.h.html#xmalloc" title='xmalloc' data-ref="xmalloc">xmalloc</a> (<a class="local col1 ref" href="#191nlines" title='nlines' data-ref="191nlines">nlines</a> * <b>sizeof</b> (<em>char</em> *));</td></tr>
+<tr><th id="345">345</th><td>      <a class="local col3 ref" href="#193lines" title='lines' data-ref="193lines">lines</a>[<var>0</var>] = <a class="ref" href="makeint.h.html#xstrdup" title='xstrdup' data-ref="xstrdup">xstrdup</a> (<a class="local col0 ref" href="#190cmds" title='cmds' data-ref="190cmds">cmds</a>-&gt;<a class="ref" href="commands.h.html#commands::commands" title='commands::commands' data-ref="commands::commands">commands</a>);</td></tr>
+<tr><th id="346">346</th><td></td></tr>
+<tr><th id="347">347</th><td>      <i>/* Strip the trailing newline.  */</i></td></tr>
+<tr><th id="348">348</th><td>      <b>if</b> (<a class="local col4 ref" href="#194l" title='l' data-ref="194l">l</a> &gt; <var>0</var> &amp;&amp; <a class="local col3 ref" href="#193lines" title='lines' data-ref="193lines">lines</a>[<var>0</var>][<a class="local col4 ref" href="#194l" title='l' data-ref="194l">l</a>-<var>1</var>] == <kbd>'\n'</kbd>)</td></tr>
+<tr><th id="349">349</th><td>        <a class="local col3 ref" href="#193lines" title='lines' data-ref="193lines">lines</a>[<var>0</var>][<a class="local col4 ref" href="#194l" title='l' data-ref="194l">l</a>-<var>1</var>] = <kbd>'\0'</kbd>;</td></tr>
+<tr><th id="350">350</th><td>    }</td></tr>
+<tr><th id="351">351</th><td>  <b>else</b></td></tr>
+<tr><th id="352">352</th><td>    {</td></tr>
+<tr><th id="353">353</th><td>      <em>const</em> <em>char</em> *<dfn class="local col5 decl" id="195p" title='p' data-type='const char *' data-ref="195p">p</dfn>;</td></tr>
+<tr><th id="354">354</th><td></td></tr>
+<tr><th id="355">355</th><td>      <a class="local col1 ref" href="#191nlines" title='nlines' data-ref="191nlines">nlines</a> = <var>5</var>;</td></tr>
+<tr><th id="356">356</th><td>      <a class="local col3 ref" href="#193lines" title='lines' data-ref="193lines">lines</a> = <a class="ref" href="makeint.h.html#xmalloc" title='xmalloc' data-ref="xmalloc">xmalloc</a> (<a class="local col1 ref" href="#191nlines" title='nlines' data-ref="191nlines">nlines</a> * <b>sizeof</b> (<em>char</em> *));</td></tr>
+<tr><th id="357">357</th><td>      <a class="local col2 ref" href="#192idx" title='idx' data-ref="192idx">idx</a> = <var>0</var>;</td></tr>
+<tr><th id="358">358</th><td>      <a class="local col5 ref" href="#195p" title='p' data-ref="195p">p</a> = <a class="local col0 ref" href="#190cmds" title='cmds' data-ref="190cmds">cmds</a>-&gt;<a class="ref" href="commands.h.html#commands::commands" title='commands::commands' data-ref="commands::commands">commands</a>;</td></tr>
+<tr><th id="359">359</th><td>      <b>while</b> (*<a class="local col5 ref" href="#195p" title='p' data-ref="195p">p</a> != <kbd>'\0'</kbd>)</td></tr>
+<tr><th id="360">360</th><td>        {</td></tr>
+<tr><th id="361">361</th><td>          <em>const</em> <em>char</em> *<dfn class="local col6 decl" id="196end" title='end' data-type='const char *' data-ref="196end">end</dfn> = <a class="local col5 ref" href="#195p" title='p' data-ref="195p">p</a>;</td></tr>
+<tr><th id="362">362</th><td>        <dfn class="lbl" id="197find_end" data-ref="197find_end">find_end</dfn>:;</td></tr>
+<tr><th id="363">363</th><td>          <a class="local col6 ref" href="#196end" title='end' data-ref="196end">end</a> = <a class="macro" href="../include/x86_64-linux-gnu/bits/string2.h.html#395" title="(__extension__ (__builtin_constant_p (&apos;\n&apos;) &amp;&amp; !__builtin_constant_p (end) &amp;&amp; (&apos;\n&apos;) == &apos;\0&apos; ? (char *) __rawmemchr (end, &apos;\n&apos;) : __builtin_strchr (end, &apos;\n&apos;)))" data-ref="_M/strchr">strchr</a> (<a class="local col6 ref" href="#196end" title='end' data-ref="196end">end</a>, <kbd>'\n'</kbd>);</td></tr>
+<tr><th id="364">364</th><td>          <b>if</b> (<a class="local col6 ref" href="#196end" title='end' data-ref="196end">end</a> == <var>0</var>)</td></tr>
+<tr><th id="365">365</th><td>            <a class="local col6 ref" href="#196end" title='end' data-ref="196end">end</a> = <a class="local col5 ref" href="#195p" title='p' data-ref="195p">p</a> + <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col5 ref" href="#195p" title='p' data-ref="195p">p</a>);</td></tr>
+<tr><th id="366">366</th><td>          <b>else</b> <b>if</b> (<a class="local col6 ref" href="#196end" title='end' data-ref="196end">end</a> &gt; <a class="local col5 ref" href="#195p" title='p' data-ref="195p">p</a> &amp;&amp; <a class="local col6 ref" href="#196end" title='end' data-ref="196end">end</a>[-<var>1</var>] == <kbd>'\\'</kbd>)</td></tr>
+<tr><th id="367">367</th><td>            {</td></tr>
+<tr><th id="368">368</th><td>              <em>int</em> <dfn class="local col8 decl" id="198backslash" title='backslash' data-type='int' data-ref="198backslash">backslash</dfn> = <var>1</var>;</td></tr>
+<tr><th id="369">369</th><td>              <em>const</em> <em>char</em> *<dfn class="local col9 decl" id="199b" title='b' data-type='const char *' data-ref="199b">b</dfn>;</td></tr>
+<tr><th id="370">370</th><td>              <b>for</b> (<a class="local col9 ref" href="#199b" title='b' data-ref="199b">b</a> = <a class="local col6 ref" href="#196end" title='end' data-ref="196end">end</a> - <var>2</var>; <a class="local col9 ref" href="#199b" title='b' data-ref="199b">b</a> &gt;= <a class="local col5 ref" href="#195p" title='p' data-ref="195p">p</a> &amp;&amp; *<a class="local col9 ref" href="#199b" title='b' data-ref="199b">b</a> == <kbd>'\\'</kbd>; --<a class="local col9 ref" href="#199b" title='b' data-ref="199b">b</a>)</td></tr>
+<tr><th id="371">371</th><td>                <a class="local col8 ref" href="#198backslash" title='backslash' data-ref="198backslash">backslash</a> = !<a class="local col8 ref" href="#198backslash" title='backslash' data-ref="198backslash">backslash</a>;</td></tr>
+<tr><th id="372">372</th><td>              <b>if</b> (<a class="local col8 ref" href="#198backslash" title='backslash' data-ref="198backslash">backslash</a>)</td></tr>
+<tr><th id="373">373</th><td>                {</td></tr>
+<tr><th id="374">374</th><td>                  ++<a class="local col6 ref" href="#196end" title='end' data-ref="196end">end</a>;</td></tr>
+<tr><th id="375">375</th><td>                  <b>goto</b> <a class="lbl" href="#197find_end" data-ref="197find_end">find_end</a>;</td></tr>
+<tr><th id="376">376</th><td>                }</td></tr>
+<tr><th id="377">377</th><td>            }</td></tr>
+<tr><th id="378">378</th><td></td></tr>
+<tr><th id="379">379</th><td>          <b>if</b> (<a class="local col2 ref" href="#192idx" title='idx' data-ref="192idx">idx</a> == <a class="local col1 ref" href="#191nlines" title='nlines' data-ref="191nlines">nlines</a>)</td></tr>
+<tr><th id="380">380</th><td>            {</td></tr>
+<tr><th id="381">381</th><td>              <a class="local col1 ref" href="#191nlines" title='nlines' data-ref="191nlines">nlines</a> += <var>2</var>;</td></tr>
+<tr><th id="382">382</th><td>              <a class="local col3 ref" href="#193lines" title='lines' data-ref="193lines">lines</a> = <a class="ref" href="makeint.h.html#xrealloc" title='xrealloc' data-ref="xrealloc">xrealloc</a> (<a class="local col3 ref" href="#193lines" title='lines' data-ref="193lines">lines</a>, <a class="local col1 ref" href="#191nlines" title='nlines' data-ref="191nlines">nlines</a> * <b>sizeof</b> (<em>char</em> *));</td></tr>
+<tr><th id="383">383</th><td>            }</td></tr>
+<tr><th id="384">384</th><td>          <a class="local col3 ref" href="#193lines" title='lines' data-ref="193lines">lines</a>[<a class="local col2 ref" href="#192idx" title='idx' data-ref="192idx">idx</a>++] = <a class="ref" href="makeint.h.html#xstrndup" title='xstrndup' data-ref="xstrndup">xstrndup</a> (<a class="local col5 ref" href="#195p" title='p' data-ref="195p">p</a>, <a class="local col6 ref" href="#196end" title='end' data-ref="196end">end</a> - <a class="local col5 ref" href="#195p" title='p' data-ref="195p">p</a>);</td></tr>
+<tr><th id="385">385</th><td>          <a class="local col5 ref" href="#195p" title='p' data-ref="195p">p</a> = <a class="local col6 ref" href="#196end" title='end' data-ref="196end">end</a>;</td></tr>
+<tr><th id="386">386</th><td>          <b>if</b> (*<a class="local col5 ref" href="#195p" title='p' data-ref="195p">p</a> != <kbd>'\0'</kbd>)</td></tr>
+<tr><th id="387">387</th><td>            ++<a class="local col5 ref" href="#195p" title='p' data-ref="195p">p</a>;</td></tr>
+<tr><th id="388">388</th><td>        }</td></tr>
+<tr><th id="389">389</th><td></td></tr>
+<tr><th id="390">390</th><td>      <b>if</b> (<a class="local col2 ref" href="#192idx" title='idx' data-ref="192idx">idx</a> != <a class="local col1 ref" href="#191nlines" title='nlines' data-ref="191nlines">nlines</a>)</td></tr>
+<tr><th id="391">391</th><td>        {</td></tr>
+<tr><th id="392">392</th><td>          <a class="local col1 ref" href="#191nlines" title='nlines' data-ref="191nlines">nlines</a> = <a class="local col2 ref" href="#192idx" title='idx' data-ref="192idx">idx</a>;</td></tr>
+<tr><th id="393">393</th><td>          <a class="local col3 ref" href="#193lines" title='lines' data-ref="193lines">lines</a> = <a class="ref" href="makeint.h.html#xrealloc" title='xrealloc' data-ref="xrealloc">xrealloc</a> (<a class="local col3 ref" href="#193lines" title='lines' data-ref="193lines">lines</a>, <a class="local col1 ref" href="#191nlines" title='nlines' data-ref="191nlines">nlines</a> * <b>sizeof</b> (<em>char</em> *));</td></tr>
+<tr><th id="394">394</th><td>        }</td></tr>
+<tr><th id="395">395</th><td>    }</td></tr>
+<tr><th id="396">396</th><td></td></tr>
+<tr><th id="397">397</th><td>  <i>/* Finally, set the corresponding CMDS-&gt;lines_flags elements and the</i></td></tr>
+<tr><th id="398">398</th><td><i>     CMDS-&gt;any_recurse flag.  */</i></td></tr>
+<tr><th id="399">399</th><td></td></tr>
+<tr><th id="400">400</th><td>  <b>if</b> (<a class="local col1 ref" href="#191nlines" title='nlines' data-ref="191nlines">nlines</a> &gt; <span class="macro" title="(32767 *2 +1)" data-ref="_M/USHRT_MAX">USHRT_MAX</span>)</td></tr>
+<tr><th id="401">401</th><td>    <a class="macro" href="makeint.h.html#481" title="fatal((&amp;cmds-&gt;fileinfo), (sizeof (&quot;18446744073709551616&quot;)-1), (dcgettext (((void*)0), &quot;Recipe has too many lines (%ud)&quot;, 5)), (nlines))" data-ref="_M/ON">ON</a> (<a class="ref" href="makeint.h.html#fatal" title='fatal' data-ref="fatal">fatal</a>, &amp;<a class="local col0 ref" href="#190cmds" title='cmds' data-ref="190cmds">cmds</a>-&gt;<a class="ref" href="commands.h.html#commands::fileinfo" title='commands::fileinfo' data-ref="commands::fileinfo">fileinfo</a>, <a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;Recipe has too many lines (%ud)&quot;, 5)" data-ref="_M/_">_</a>(<q>"Recipe has too many lines (%ud)"</q>), <a class="local col1 ref" href="#191nlines" title='nlines' data-ref="191nlines">nlines</a>);</td></tr>
+<tr><th id="402">402</th><td></td></tr>
+<tr><th id="403">403</th><td>  <a class="local col0 ref" href="#190cmds" title='cmds' data-ref="190cmds">cmds</a>-&gt;<a class="ref" href="commands.h.html#commands::ncommand_lines" title='commands::ncommand_lines' data-ref="commands::ncommand_lines">ncommand_lines</a> = <a class="local col1 ref" href="#191nlines" title='nlines' data-ref="191nlines">nlines</a>;</td></tr>
+<tr><th id="404">404</th><td>  <a class="local col0 ref" href="#190cmds" title='cmds' data-ref="190cmds">cmds</a>-&gt;<a class="ref" href="commands.h.html#commands::command_lines" title='commands::command_lines' data-ref="commands::command_lines">command_lines</a> = <a class="local col3 ref" href="#193lines" title='lines' data-ref="193lines">lines</a>;</td></tr>
+<tr><th id="405">405</th><td></td></tr>
+<tr><th id="406">406</th><td>  <a class="local col0 ref" href="#190cmds" title='cmds' data-ref="190cmds">cmds</a>-&gt;<a class="ref" href="commands.h.html#commands::any_recurse" title='commands::any_recurse' data-ref="commands::any_recurse">any_recurse</a> = <var>0</var>;</td></tr>
+<tr><th id="407">407</th><td>  <a class="local col0 ref" href="#190cmds" title='cmds' data-ref="190cmds">cmds</a>-&gt;<a class="ref" href="commands.h.html#commands::lines_flags" title='commands::lines_flags' data-ref="commands::lines_flags">lines_flags</a> = <a class="ref" href="makeint.h.html#xmalloc" title='xmalloc' data-ref="xmalloc">xmalloc</a> (<a class="local col1 ref" href="#191nlines" title='nlines' data-ref="191nlines">nlines</a>);</td></tr>
+<tr><th id="408">408</th><td></td></tr>
+<tr><th id="409">409</th><td>  <b>for</b> (<a class="local col2 ref" href="#192idx" title='idx' data-ref="192idx">idx</a> = <var>0</var>; <a class="local col2 ref" href="#192idx" title='idx' data-ref="192idx">idx</a> &lt; <a class="local col1 ref" href="#191nlines" title='nlines' data-ref="191nlines">nlines</a>; ++<a class="local col2 ref" href="#192idx" title='idx' data-ref="192idx">idx</a>)</td></tr>
+<tr><th id="410">410</th><td>    {</td></tr>
+<tr><th id="411">411</th><td>      <em>unsigned</em> <em>char</em> <dfn class="local col0 decl" id="200flags" title='flags' data-type='unsigned char' data-ref="200flags">flags</dfn> = <var>0</var>;</td></tr>
+<tr><th id="412">412</th><td>      <em>const</em> <em>char</em> *<dfn class="local col1 decl" id="201p" title='p' data-type='const char *' data-ref="201p">p</dfn> = <a class="local col3 ref" href="#193lines" title='lines' data-ref="193lines">lines</a>[<a class="local col2 ref" href="#192idx" title='idx' data-ref="192idx">idx</a>];</td></tr>
+<tr><th id="413">413</th><td></td></tr>
+<tr><th id="414">414</th><td>      <b>while</b> (<a class="macro" href="makeint.h.html#436" title="(((stopchar_map[(unsigned char)((*p))])&amp;((0x0002))) != 0)" data-ref="_M/ISBLANK">ISBLANK</a> (*<a class="local col1 ref" href="#201p" title='p' data-ref="201p">p</a>) || *<a class="local col1 ref" href="#201p" title='p' data-ref="201p">p</a> == <kbd>'-'</kbd> || *<a class="local col1 ref" href="#201p" title='p' data-ref="201p">p</a> == <kbd>'@'</kbd> || *<a class="local col1 ref" href="#201p" title='p' data-ref="201p">p</a> == <kbd>'+'</kbd>)</td></tr>
+<tr><th id="415">415</th><td>        <b>switch</b> (*(<a class="local col1 ref" href="#201p" title='p' data-ref="201p">p</a>++))</td></tr>
+<tr><th id="416">416</th><td>          {</td></tr>
+<tr><th id="417">417</th><td>          <b>case</b> <kbd>'+'</kbd>:</td></tr>
+<tr><th id="418">418</th><td>            <a class="local col0 ref" href="#200flags" title='flags' data-ref="200flags">flags</a> |= <a class="macro" href="commands.h.html#40" title="1" data-ref="_M/COMMANDS_RECURSE">COMMANDS_RECURSE</a>;</td></tr>
+<tr><th id="419">419</th><td>            <b>break</b>;</td></tr>
+<tr><th id="420">420</th><td>          <b>case</b> <kbd>'@'</kbd>:</td></tr>
+<tr><th id="421">421</th><td>            <a class="local col0 ref" href="#200flags" title='flags' data-ref="200flags">flags</a> |= <a class="macro" href="commands.h.html#41" title="2" data-ref="_M/COMMANDS_SILENT">COMMANDS_SILENT</a>;</td></tr>
+<tr><th id="422">422</th><td>            <b>break</b>;</td></tr>
+<tr><th id="423">423</th><td>          <b>case</b> <kbd>'-'</kbd>:</td></tr>
+<tr><th id="424">424</th><td>            <a class="local col0 ref" href="#200flags" title='flags' data-ref="200flags">flags</a> |= <a class="macro" href="commands.h.html#42" title="4" data-ref="_M/COMMANDS_NOERROR">COMMANDS_NOERROR</a>;</td></tr>
+<tr><th id="425">425</th><td>            <b>break</b>;</td></tr>
+<tr><th id="426">426</th><td>          }</td></tr>
+<tr><th id="427">427</th><td></td></tr>
+<tr><th id="428">428</th><td>      <i>/* If no explicit '+' was given, look for MAKE variable references.  */</i></td></tr>
+<tr><th id="429">429</th><td>      <b>if</b> (!(<a class="local col0 ref" href="#200flags" title='flags' data-ref="200flags">flags</a> &amp; <a class="macro" href="commands.h.html#40" title="1" data-ref="_M/COMMANDS_RECURSE">COMMANDS_RECURSE</a>)</td></tr>
+<tr><th id="430">430</th><td>          &amp;&amp; (<a class="ref" href="../include/string.h.html#strstr" title='strstr' data-ref="strstr">strstr</a> (<a class="local col1 ref" href="#201p" title='p' data-ref="201p">p</a>, <q>"$(MAKE)"</q>) != <var>0</var> || <a class="ref" href="../include/string.h.html#strstr" title='strstr' data-ref="strstr">strstr</a> (<a class="local col1 ref" href="#201p" title='p' data-ref="201p">p</a>, <q>"${MAKE}"</q>) != <var>0</var>))</td></tr>
+<tr><th id="431">431</th><td>        <a class="local col0 ref" href="#200flags" title='flags' data-ref="200flags">flags</a> |= <a class="macro" href="commands.h.html#40" title="1" data-ref="_M/COMMANDS_RECURSE">COMMANDS_RECURSE</a>;</td></tr>
+<tr><th id="432">432</th><td></td></tr>
+<tr><th id="433">433</th><td>      <a class="local col0 ref" href="#190cmds" title='cmds' data-ref="190cmds">cmds</a>-&gt;<a class="ref" href="commands.h.html#commands::lines_flags" title='commands::lines_flags' data-ref="commands::lines_flags">lines_flags</a>[<a class="local col2 ref" href="#192idx" title='idx' data-ref="192idx">idx</a>] = <a class="local col0 ref" href="#200flags" title='flags' data-ref="200flags">flags</a>;</td></tr>
+<tr><th id="434">434</th><td>      <a class="local col0 ref" href="#190cmds" title='cmds' data-ref="190cmds">cmds</a>-&gt;<a class="ref" href="commands.h.html#commands::any_recurse" title='commands::any_recurse' data-ref="commands::any_recurse">any_recurse</a> |= <a class="local col0 ref" href="#200flags" title='flags' data-ref="200flags">flags</a> &amp; <a class="macro" href="commands.h.html#40" title="1" data-ref="_M/COMMANDS_RECURSE">COMMANDS_RECURSE</a> ? <var>1</var> : <var>0</var>;</td></tr>
+<tr><th id="435">435</th><td>    }</td></tr>
+<tr><th id="436">436</th><td>}</td></tr>
+<tr><th id="437">437</th><td></td></tr>
+<tr><th id="438">438</th><td><i>/* Expand the command lines and store the results in LINES.  */</i></td></tr>
+<tr><th id="439">439</th><td><em>void</em> <dfn class="decl def" id="expand_command_lines" title='expand_command_lines' data-ref="expand_command_lines">expand_command_lines</dfn>(<b>struct</b> <a class="type" href="commands.h.html#commands" title='commands' data-ref="commands">commands</a> *<dfn class="local col2 decl" id="202cmds" title='cmds' data-type='struct commands *' data-ref="202cmds">cmds</dfn>, <i>/*out*/</i> <em>char</em> **<dfn class="local col3 decl" id="203lines" title='lines' data-type='char **' data-ref="203lines">lines</dfn>,</td></tr>
+<tr><th id="440">440</th><td>			  <b>struct</b> <a class="type" href="filedef.h.html#file" title='file' data-ref="file">file</a> *<dfn class="local col4 decl" id="204file" title='file' data-type='struct file *' data-ref="204file">file</dfn>)</td></tr>
+<tr><th id="441">441</th><td>{</td></tr>
+<tr><th id="442">442</th><td>  <em>unsigned</em> <em>int</em> <dfn class="local col5 decl" id="205i" title='i' data-type='unsigned int' data-ref="205i">i</dfn>;</td></tr>
+<tr><th id="443">443</th><td></td></tr>
+<tr><th id="444">444</th><td>  <b>for</b> (<a class="local col5 ref" href="#205i" title='i' data-ref="205i">i</a> = <var>0</var>; <a class="local col5 ref" href="#205i" title='i' data-ref="205i">i</a> &lt; <a class="local col2 ref" href="#202cmds" title='cmds' data-ref="202cmds">cmds</a>-&gt;<a class="ref" href="commands.h.html#commands::ncommand_lines" title='commands::ncommand_lines' data-ref="commands::ncommand_lines">ncommand_lines</a>; ++<a class="local col5 ref" href="#205i" title='i' data-ref="205i">i</a>)</td></tr>
+<tr><th id="445">445</th><td>    {</td></tr>
+<tr><th id="446">446</th><td>      <i>/* Collapse backslash-newline combinations that are inside variable</i></td></tr>
+<tr><th id="447">447</th><td><i>	 or function references.  These are left alone by the parser so</i></td></tr>
+<tr><th id="448">448</th><td><i>	 that they will appear in the echoing of commands (where they look</i></td></tr>
+<tr><th id="449">449</th><td><i>	 nice); and collapsed by construct_command_argv when it tokenizes.</i></td></tr>
+<tr><th id="450">450</th><td><i>	 But letting them survive inside function invocations loses because</i></td></tr>
+<tr><th id="451">451</th><td><i>	 we don't want the functions to see them as part of the text.  */</i></td></tr>
+<tr><th id="452">452</th><td></td></tr>
+<tr><th id="453">453</th><td>      <em>char</em> *<dfn class="local col6 decl" id="206in" title='in' data-type='char *' data-ref="206in">in</dfn>, *<dfn class="local col7 decl" id="207out" title='out' data-type='char *' data-ref="207out">out</dfn>, *<dfn class="local col8 decl" id="208ref" title='ref' data-type='char *' data-ref="208ref">ref</dfn>;</td></tr>
+<tr><th id="454">454</th><td></td></tr>
+<tr><th id="455">455</th><td>      <i>/* IN points to where in the line we are scanning.</i></td></tr>
+<tr><th id="456">456</th><td><i>	 OUT points to where in the line we are writing.</i></td></tr>
+<tr><th id="457">457</th><td><i>	 When we collapse a backslash-newline combination,</i></td></tr>
+<tr><th id="458">458</th><td><i>	 IN gets ahead of OUT.  */</i></td></tr>
+<tr><th id="459">459</th><td></td></tr>
+<tr><th id="460">460</th><td>      <a class="local col6 ref" href="#206in" title='in' data-ref="206in">in</a> = <a class="local col7 ref" href="#207out" title='out' data-ref="207out">out</a> = <a class="local col2 ref" href="#202cmds" title='cmds' data-ref="202cmds">cmds</a>-&gt;<a class="ref" href="commands.h.html#commands::command_lines" title='commands::command_lines' data-ref="commands::command_lines">command_lines</a>[<a class="local col5 ref" href="#205i" title='i' data-ref="205i">i</a>];</td></tr>
+<tr><th id="461">461</th><td>      <b>while</b> ((<a class="local col8 ref" href="#208ref" title='ref' data-ref="208ref">ref</a> = <a class="macro" href="../include/x86_64-linux-gnu/bits/string2.h.html#395" title="(__extension__ (__builtin_constant_p (&apos;$&apos;) &amp;&amp; !__builtin_constant_p (in) &amp;&amp; (&apos;$&apos;) == &apos;\0&apos; ? (char *) __rawmemchr (in, &apos;$&apos;) : __builtin_strchr (in, &apos;$&apos;)))" data-ref="_M/strchr">strchr</a> (<a class="local col6 ref" href="#206in" title='in' data-ref="206in">in</a>, <kbd>'$'</kbd>)) != <var>0</var>)</td></tr>
+<tr><th id="462">462</th><td>	{</td></tr>
+<tr><th id="463">463</th><td>	  ++<a class="local col8 ref" href="#208ref" title='ref' data-ref="208ref">ref</a>;		<i>/* Move past the $.  */</i></td></tr>
+<tr><th id="464">464</th><td></td></tr>
+<tr><th id="465">465</th><td>	  <b>if</b> (<a class="local col7 ref" href="#207out" title='out' data-ref="207out">out</a> != <a class="local col6 ref" href="#206in" title='in' data-ref="206in">in</a>)</td></tr>
+<tr><th id="466">466</th><td>	    <i>/* Copy the text between the end of the last chunk</i></td></tr>
+<tr><th id="467">467</th><td><i>	       we processed (where IN points) and the new chunk</i></td></tr>
+<tr><th id="468">468</th><td><i>	       we are about to process (where REF points).  */</i></td></tr>
+<tr><th id="469">469</th><td>	    <a class="ref" href="../include/string.h.html#memmove" title='memmove' data-ref="memmove">memmove</a> (<a class="local col7 ref" href="#207out" title='out' data-ref="207out">out</a>, <a class="local col6 ref" href="#206in" title='in' data-ref="206in">in</a>, <a class="local col8 ref" href="#208ref" title='ref' data-ref="208ref">ref</a> - <a class="local col6 ref" href="#206in" title='in' data-ref="206in">in</a>);</td></tr>
+<tr><th id="470">470</th><td></td></tr>
+<tr><th id="471">471</th><td>	  <i>/* Move both pointers past the boring stuff.  */</i></td></tr>
+<tr><th id="472">472</th><td>	  <a class="local col7 ref" href="#207out" title='out' data-ref="207out">out</a> += <a class="local col8 ref" href="#208ref" title='ref' data-ref="208ref">ref</a> - <a class="local col6 ref" href="#206in" title='in' data-ref="206in">in</a>;</td></tr>
+<tr><th id="473">473</th><td>	  <a class="local col6 ref" href="#206in" title='in' data-ref="206in">in</a> = <a class="local col8 ref" href="#208ref" title='ref' data-ref="208ref">ref</a>;</td></tr>
+<tr><th id="474">474</th><td></td></tr>
+<tr><th id="475">475</th><td>	  <b>if</b> (*<a class="local col8 ref" href="#208ref" title='ref' data-ref="208ref">ref</a> == <kbd>'('</kbd> || *<a class="local col8 ref" href="#208ref" title='ref' data-ref="208ref">ref</a> == <kbd>'{'</kbd>)</td></tr>
+<tr><th id="476">476</th><td>	    {</td></tr>
+<tr><th id="477">477</th><td>	      <em>char</em> <dfn class="local col9 decl" id="209openparen" title='openparen' data-type='char' data-ref="209openparen">openparen</dfn> = *<a class="local col8 ref" href="#208ref" title='ref' data-ref="208ref">ref</a>;</td></tr>
+<tr><th id="478">478</th><td>	      <em>char</em> <dfn class="local col0 decl" id="210closeparen" title='closeparen' data-type='char' data-ref="210closeparen">closeparen</dfn> = <a class="local col9 ref" href="#209openparen" title='openparen' data-ref="209openparen">openparen</a> == <kbd>'('</kbd> ? <kbd>')'</kbd> : <kbd>'}'</kbd>;</td></tr>
+<tr><th id="479">479</th><td>	      <em>int</em> <dfn class="local col1 decl" id="211count" title='count' data-type='int' data-ref="211count">count</dfn>;</td></tr>
+<tr><th id="480">480</th><td>	      <em>char</em> *<dfn class="local col2 decl" id="212p" title='p' data-type='char *' data-ref="212p">p</dfn>;</td></tr>
+<tr><th id="481">481</th><td></td></tr>
+<tr><th id="482">482</th><td>	      *<a class="local col7 ref" href="#207out" title='out' data-ref="207out">out</a>++ = *<a class="local col6 ref" href="#206in" title='in' data-ref="206in">in</a>++;	<i>/* Copy OPENPAREN.  */</i></td></tr>
+<tr><th id="483">483</th><td>	      <i>/* IN now points past the opening paren or brace.</i></td></tr>
+<tr><th id="484">484</th><td><i>		 Count parens or braces until it is matched.  */</i></td></tr>
+<tr><th id="485">485</th><td>	      <a class="local col1 ref" href="#211count" title='count' data-ref="211count">count</a> = <var>0</var>;</td></tr>
+<tr><th id="486">486</th><td>	      <b>while</b> (*<a class="local col6 ref" href="#206in" title='in' data-ref="206in">in</a> != <kbd>'\0'</kbd>)</td></tr>
+<tr><th id="487">487</th><td>		{</td></tr>
+<tr><th id="488">488</th><td>		  <b>if</b> (*<a class="local col6 ref" href="#206in" title='in' data-ref="206in">in</a> == <a class="local col0 ref" href="#210closeparen" title='closeparen' data-ref="210closeparen">closeparen</a> &amp;&amp; --<a class="local col1 ref" href="#211count" title='count' data-ref="211count">count</a> &lt; <var>0</var>)</td></tr>
+<tr><th id="489">489</th><td>		    <b>break</b>;</td></tr>
+<tr><th id="490">490</th><td>		  <b>else</b> <b>if</b> (*<a class="local col6 ref" href="#206in" title='in' data-ref="206in">in</a> == <kbd>'\\'</kbd> &amp;&amp; <a class="local col6 ref" href="#206in" title='in' data-ref="206in">in</a>[<var>1</var>] == <kbd>'\n'</kbd>)</td></tr>
+<tr><th id="491">491</th><td>		    {</td></tr>
+<tr><th id="492">492</th><td>		      <i>/* We have found a backslash-newline inside a</i></td></tr>
+<tr><th id="493">493</th><td><i>			 variable or function reference.  Eat it and</i></td></tr>
+<tr><th id="494">494</th><td><i>			 any following whitespace.  */</i></td></tr>
+<tr><th id="495">495</th><td></td></tr>
+<tr><th id="496">496</th><td>		      <em>int</em> <dfn class="local col3 decl" id="213quoted" title='quoted' data-type='int' data-ref="213quoted">quoted</dfn> = <var>0</var>;</td></tr>
+<tr><th id="497">497</th><td>		      <b>for</b> (<a class="local col2 ref" href="#212p" title='p' data-ref="212p">p</a> = <a class="local col6 ref" href="#206in" title='in' data-ref="206in">in</a> - <var>1</var>; <a class="local col2 ref" href="#212p" title='p' data-ref="212p">p</a> &gt; <a class="local col8 ref" href="#208ref" title='ref' data-ref="208ref">ref</a> &amp;&amp; *<a class="local col2 ref" href="#212p" title='p' data-ref="212p">p</a> == <kbd>'\\'</kbd>; --<a class="local col2 ref" href="#212p" title='p' data-ref="212p">p</a>)</td></tr>
+<tr><th id="498">498</th><td>			<a class="local col3 ref" href="#213quoted" title='quoted' data-ref="213quoted">quoted</a> = !<a class="local col3 ref" href="#213quoted" title='quoted' data-ref="213quoted">quoted</a>;</td></tr>
+<tr><th id="499">499</th><td></td></tr>
+<tr><th id="500">500</th><td>		      <b>if</b> (<a class="local col3 ref" href="#213quoted" title='quoted' data-ref="213quoted">quoted</a>)</td></tr>
+<tr><th id="501">501</th><td>			<i>/* There were two or more backslashes, so this is</i></td></tr>
+<tr><th id="502">502</th><td><i>			   not really a continuation line.  We don't collapse</i></td></tr>
+<tr><th id="503">503</th><td><i>			   the quoting backslashes here as is done in</i></td></tr>
+<tr><th id="504">504</th><td><i>			   collapse_continuations, because the line will</i></td></tr>
+<tr><th id="505">505</th><td><i>			   be collapsed again after expansion.  */</i></td></tr>
+<tr><th id="506">506</th><td>			*<a class="local col7 ref" href="#207out" title='out' data-ref="207out">out</a>++ = *<a class="local col6 ref" href="#206in" title='in' data-ref="206in">in</a>++;</td></tr>
+<tr><th id="507">507</th><td>		      <b>else</b></td></tr>
+<tr><th id="508">508</th><td>			{</td></tr>
+<tr><th id="509">509</th><td>			  <i>/* Skip the backslash, newline and</i></td></tr>
+<tr><th id="510">510</th><td><i>			     any following whitespace.  */</i></td></tr>
+<tr><th id="511">511</th><td>			  <a class="local col6 ref" href="#206in" title='in' data-ref="206in">in</a> = <a class="ref" href="makeint.h.html#next_token" title='next_token' data-ref="next_token">next_token</a> (<a class="local col6 ref" href="#206in" title='in' data-ref="206in">in</a> + <var>2</var>);</td></tr>
+<tr><th id="512">512</th><td></td></tr>
+<tr><th id="513">513</th><td>			  <i>/* Discard any preceding whitespace that has</i></td></tr>
+<tr><th id="514">514</th><td><i>			     already been written to the output.  */</i></td></tr>
+<tr><th id="515">515</th><td>			  <b>while</b> (<a class="local col7 ref" href="#207out" title='out' data-ref="207out">out</a> &gt; <a class="local col8 ref" href="#208ref" title='ref' data-ref="208ref">ref</a></td></tr>
+<tr><th id="516">516</th><td>				 &amp;&amp; <a class="macro" href="../include/ctype.h.html#209" title="((*__ctype_b_loc ())[(int) (((unsigned char)out[-1]))] &amp; (unsigned short int) _ISblank)" data-ref="_M/isblank">isblank</a> ((<em>unsigned</em> <em>char</em>)<a class="local col7 ref" href="#207out" title='out' data-ref="207out">out</a>[-<var>1</var>]))</td></tr>
+<tr><th id="517">517</th><td>			    --<a class="local col7 ref" href="#207out" title='out' data-ref="207out">out</a>;</td></tr>
+<tr><th id="518">518</th><td></td></tr>
+<tr><th id="519">519</th><td>			  <i>/* Replace it all with a single space.  */</i></td></tr>
+<tr><th id="520">520</th><td>			  *<a class="local col7 ref" href="#207out" title='out' data-ref="207out">out</a>++ = <kbd>' '</kbd>;</td></tr>
+<tr><th id="521">521</th><td>			}</td></tr>
+<tr><th id="522">522</th><td>		    }</td></tr>
+<tr><th id="523">523</th><td>		  <b>else</b></td></tr>
+<tr><th id="524">524</th><td>		    {</td></tr>
+<tr><th id="525">525</th><td>		      <b>if</b> (*<a class="local col6 ref" href="#206in" title='in' data-ref="206in">in</a> == <a class="local col9 ref" href="#209openparen" title='openparen' data-ref="209openparen">openparen</a>)</td></tr>
+<tr><th id="526">526</th><td>			++<a class="local col1 ref" href="#211count" title='count' data-ref="211count">count</a>;</td></tr>
+<tr><th id="527">527</th><td></td></tr>
+<tr><th id="528">528</th><td>		      *<a class="local col7 ref" href="#207out" title='out' data-ref="207out">out</a>++ = *<a class="local col6 ref" href="#206in" title='in' data-ref="206in">in</a>++;</td></tr>
+<tr><th id="529">529</th><td>		    }</td></tr>
+<tr><th id="530">530</th><td>		}</td></tr>
+<tr><th id="531">531</th><td>	    }</td></tr>
+<tr><th id="532">532</th><td>	}</td></tr>
+<tr><th id="533">533</th><td></td></tr>
+<tr><th id="534">534</th><td>      <i>/* There are no more references in this line to worry about.</i></td></tr>
+<tr><th id="535">535</th><td><i>	 Copy the remaining uninteresting text to the output.  */</i></td></tr>
+<tr><th id="536">536</th><td>      <b>if</b> (<a class="local col7 ref" href="#207out" title='out' data-ref="207out">out</a> != <a class="local col6 ref" href="#206in" title='in' data-ref="206in">in</a>)</td></tr>
+<tr><th id="537">537</th><td>	<a class="ref" href="../include/string.h.html#memmove" title='memmove' data-ref="memmove">memmove</a> (<a class="local col7 ref" href="#207out" title='out' data-ref="207out">out</a>, <a class="local col6 ref" href="#206in" title='in' data-ref="206in">in</a>, <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col6 ref" href="#206in" title='in' data-ref="206in">in</a>) + <var>1</var>);</td></tr>
+<tr><th id="538">538</th><td></td></tr>
+<tr><th id="539">539</th><td>      <i>/* Finally, expand the line.  */</i></td></tr>
+<tr><th id="540">540</th><td>      <a class="local col3 ref" href="#203lines" title='lines' data-ref="203lines">lines</a>[<a class="local col5 ref" href="#205i" title='i' data-ref="205i">i</a>] = <a class="ref" href="variable.h.html#allocated_variable_expand_for_file" title='allocated_variable_expand_for_file' data-ref="allocated_variable_expand_for_file">allocated_variable_expand_for_file</a> (<a class="local col2 ref" href="#202cmds" title='cmds' data-ref="202cmds">cmds</a>-&gt;<a class="ref" href="commands.h.html#commands::command_lines" title='commands::command_lines' data-ref="commands::command_lines">command_lines</a>[<a class="local col5 ref" href="#205i" title='i' data-ref="205i">i</a>],</td></tr>
+<tr><th id="541">541</th><td>						     <a class="local col4 ref" href="#204file" title='file' data-ref="204file">file</a>);</td></tr>
+<tr><th id="542">542</th><td>    }</td></tr>
+<tr><th id="543">543</th><td></td></tr>
+<tr><th id="544">544</th><td>}</td></tr>
+<tr><th id="545">545</th><td></td></tr>
+<tr><th id="546">546</th><td></td></tr>
+<tr><th id="547">547</th><td></td></tr>
+<tr><th id="548">548</th><td><i>/* Execute the commands to remake FILE.  If they are currently executing,</i></td></tr>
+<tr><th id="549">549</th><td><i>   return or have already finished executing, just return.  Otherwise,</i></td></tr>
+<tr><th id="550">550</th><td><i>   fork off a child process to run the first command line in the sequence.  */</i></td></tr>
+<tr><th id="551">551</th><td></td></tr>
+<tr><th id="552">552</th><td><em>void</em></td></tr>
+<tr><th id="553">553</th><td><dfn class="decl def" id="execute_file_commands" title='execute_file_commands' data-ref="execute_file_commands">execute_file_commands</dfn> (<a class="typedef" href="types.h.html#file_t" title='file_t' data-type='struct file' data-ref="file_t">file_t</a> *<dfn class="local col4 decl" id="214file" title='file' data-type='file_t *' data-ref="214file">file</dfn>, <a class="typedef" href="trace.h.html#target_stack_node_t" title='target_stack_node_t' data-type='struct target_stack_node' data-ref="target_stack_node_t">target_stack_node_t</a> *<dfn class="local col5 decl" id="215p_call_stack" title='p_call_stack' data-type='target_stack_node_t *' data-ref="215p_call_stack">p_call_stack</dfn>)</td></tr>
+<tr><th id="554">554</th><td>{</td></tr>
+<tr><th id="555">555</th><td>  <em>const</em> <em>char</em> *<dfn class="local col6 decl" id="216p" title='p' data-type='const char *' data-ref="216p">p</dfn>;</td></tr>
+<tr><th id="556">556</th><td></td></tr>
+<tr><th id="557">557</th><td>  <i>/* Don't go through all the preparations if</i></td></tr>
+<tr><th id="558">558</th><td><i>     the commands are nothing but whitespace.  */</i></td></tr>
+<tr><th id="559">559</th><td></td></tr>
+<tr><th id="560">560</th><td>  <b>for</b> (<a class="local col6 ref" href="#216p" title='p' data-ref="216p">p</a> = <a class="local col4 ref" href="#214file" title='file' data-ref="214file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::cmds" title='file::cmds' data-ref="file::cmds">cmds</a>-&gt;<a class="ref" href="commands.h.html#commands::commands" title='commands::commands' data-ref="commands::commands">commands</a>; *<a class="local col6 ref" href="#216p" title='p' data-ref="216p">p</a> != <kbd>'\0'</kbd>; ++<a class="local col6 ref" href="#216p" title='p' data-ref="216p">p</a>)</td></tr>
+<tr><th id="561">561</th><td>    <b>if</b> (!<a class="macro" href="makeint.h.html#437" title="(((stopchar_map[(unsigned char)((*p))])&amp;(((0x0002|0x0004)))) != 0)" data-ref="_M/ISSPACE">ISSPACE</a> (*<a class="local col6 ref" href="#216p" title='p' data-ref="216p">p</a>) &amp;&amp; *<a class="local col6 ref" href="#216p" title='p' data-ref="216p">p</a> != <kbd>'-'</kbd> &amp;&amp; *<a class="local col6 ref" href="#216p" title='p' data-ref="216p">p</a> != <kbd>'@'</kbd> &amp;&amp; *<a class="local col6 ref" href="#216p" title='p' data-ref="216p">p</a> != <kbd>'+'</kbd>)</td></tr>
+<tr><th id="562">562</th><td>      <b>break</b>;</td></tr>
+<tr><th id="563">563</th><td>  <b>if</b> (*<a class="local col6 ref" href="#216p" title='p' data-ref="216p">p</a> == <kbd>'\0'</kbd>)</td></tr>
+<tr><th id="564">564</th><td>    {</td></tr>
+<tr><th id="565">565</th><td>      <i>/* If there are no commands, assume everything worked.  */</i></td></tr>
+<tr><th id="566">566</th><td>      <a class="ref" href="filedef.h.html#set_command_state" title='set_command_state' data-ref="set_command_state">set_command_state</a> (<a class="local col4 ref" href="#214file" title='file' data-ref="214file">file</a>, <a class="enum" href="filedef.h.html#cmd_state::cs_running" title='cmd_state::cs_running' data-ref="cmd_state::cs_running">cs_running</a>);</td></tr>
+<tr><th id="567">567</th><td>      <a class="local col4 ref" href="#214file" title='file' data-ref="214file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::update_status" title='file::update_status' data-ref="file::update_status">update_status</a> = <a class="enum" href="filedef.h.html#update_status::us_success" title='update_status::us_success' data-ref="update_status::us_success">us_success</a>;</td></tr>
+<tr><th id="568">568</th><td>      <a class="ref" href="filedef.h.html#notice_finished_file" title='notice_finished_file' data-ref="notice_finished_file">notice_finished_file</a> (<a class="local col4 ref" href="#214file" title='file' data-ref="214file">file</a>);</td></tr>
+<tr><th id="569">569</th><td>      <b>return</b>;</td></tr>
+<tr><th id="570">570</th><td>    }</td></tr>
+<tr><th id="571">571</th><td></td></tr>
+<tr><th id="572">572</th><td>  <i>/* First set the automatic variables according to this file.  */</i></td></tr>
+<tr><th id="573">573</th><td></td></tr>
+<tr><th id="574">574</th><td>  <a class="ref" href="variable.h.html#initialize_file_variables" title='initialize_file_variables' data-ref="initialize_file_variables">initialize_file_variables</a> (<a class="local col4 ref" href="#214file" title='file' data-ref="214file">file</a>, <var>0</var>);</td></tr>
+<tr><th id="575">575</th><td></td></tr>
+<tr><th id="576">576</th><td>  <a class="ref" href="#set_file_variables" title='set_file_variables' data-ref="set_file_variables">set_file_variables</a> (<a class="local col4 ref" href="#214file" title='file' data-ref="214file">file</a>);</td></tr>
+<tr><th id="577">577</th><td></td></tr>
+<tr><th id="578">578</th><td>  <i>/* If this is a loaded dynamic object, unload it before remaking.</i></td></tr>
+<tr><th id="579">579</th><td><i>     Some systems don't support overwriting a loaded object.  */</i></td></tr>
+<tr><th id="580">580</th><td>  <b>if</b> (<a class="local col4 ref" href="#214file" title='file' data-ref="214file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::loaded" title='file::loaded' data-ref="file::loaded">loaded</a>)</td></tr>
+<tr><th id="581">581</th><td>    <a class="ref" href="makeint.h.html#unload_file" title='unload_file' data-ref="unload_file">unload_file</a> (<a class="local col4 ref" href="#214file" title='file' data-ref="214file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a>);</td></tr>
+<tr><th id="582">582</th><td></td></tr>
+<tr><th id="583">583</th><td>  <i>/* Start the commands running.  */</i></td></tr>
+<tr><th id="584">584</th><td>  <a class="ref" href="job.h.html#new_job" title='new_job' data-ref="new_job">new_job</a> (<a class="local col4 ref" href="#214file" title='file' data-ref="214file">file</a>, <a class="local col5 ref" href="#215p_call_stack" title='p_call_stack' data-ref="215p_call_stack">p_call_stack</a>);</td></tr>
+<tr><th id="585">585</th><td>}</td></tr>
+<tr><th id="586">586</th><td></td></tr>
+<tr><th id="587">587</th><td><i>/* This is set while we are inside fatal_error_signal,</i></td></tr>
+<tr><th id="588">588</th><td><i>   so things can avoid nonreentrant operations.  */</i></td></tr>
+<tr><th id="589">589</th><td></td></tr>
+<tr><th id="590">590</th><td><em>int</em> <dfn class="decl def" id="handling_fatal_signal" title='handling_fatal_signal' data-ref="handling_fatal_signal">handling_fatal_signal</dfn> = <var>0</var>;</td></tr>
+<tr><th id="591">591</th><td></td></tr>
+<tr><th id="592">592</th><td><i>/* Handle fatal signals.  */</i></td></tr>
+<tr><th id="593">593</th><td></td></tr>
+<tr><th id="594">594</th><td><a class="macro" href="config.h.html#418" title="void" data-ref="_M/RETSIGTYPE">RETSIGTYPE</a></td></tr>
+<tr><th id="595">595</th><td><dfn class="decl def" id="fatal_error_signal" title='fatal_error_signal' data-ref="fatal_error_signal">fatal_error_signal</dfn> (<em>int</em> <dfn class="local col7 decl" id="217sig" title='sig' data-type='int' data-ref="217sig">sig</dfn>)</td></tr>
+<tr><th id="596">596</th><td>{</td></tr>
+<tr><th id="597">597</th><td><u>#<span data-ppcond="597">ifdef</span> <span class="macro" data-ref="_M/__MSDOS__">__MSDOS__</span></u></td></tr>
+<tr><th id="598">598</th><td>  <b>extern</b> <em>int</em> dos_status, dos_command_running;</td></tr>
+<tr><th id="599">599</th><td></td></tr>
+<tr><th id="600">600</th><td>  <b>if</b> (dos_command_running)</td></tr>
+<tr><th id="601">601</th><td>    {</td></tr>
+<tr><th id="602">602</th><td>      <i>/* That was the child who got the signal, not us.  */</i></td></tr>
+<tr><th id="603">603</th><td>      dos_status |= (sig &lt;&lt; <var>8</var>);</td></tr>
+<tr><th id="604">604</th><td>      <b>return</b>;</td></tr>
+<tr><th id="605">605</th><td>    }</td></tr>
+<tr><th id="606">606</th><td>  remove_intermediates (<var>1</var>);</td></tr>
+<tr><th id="607">607</th><td>  exit (EXIT_FAILURE);</td></tr>
+<tr><th id="608">608</th><td><u>#<span data-ppcond="597">else</span> /* not __MSDOS__ */</u></td></tr>
+<tr><th id="609">609</th><td><u>#<span data-ppcond="609">ifdef</span> <span class="macro" data-ref="_M/WINDOWS32">WINDOWS32</span></u></td></tr>
+<tr><th id="610">610</th><td>  <b>extern</b> HANDLE main_thread;</td></tr>
+<tr><th id="611">611</th><td></td></tr>
+<tr><th id="612">612</th><td>  <i>/* Windows creates a sperate thread for handling Ctrl+C, so we need</i></td></tr>
+<tr><th id="613">613</th><td><i>     to suspend the main thread, or else we will have race conditions</i></td></tr>
+<tr><th id="614">614</th><td><i>     when both threads call reap_children.  */</i></td></tr>
+<tr><th id="615">615</th><td>  <b>if</b> (main_thread)</td></tr>
+<tr><th id="616">616</th><td>    {</td></tr>
+<tr><th id="617">617</th><td>      DWORD susp_count = SuspendThread (main_thread);</td></tr>
+<tr><th id="618">618</th><td></td></tr>
+<tr><th id="619">619</th><td>      <b>if</b> (susp_count != <var>0</var>)</td></tr>
+<tr><th id="620">620</th><td>        fprintf (stderr, <q>"SuspendThread: suspend count = %ld\n"</q>, susp_count);</td></tr>
+<tr><th id="621">621</th><td>      <b>else</b> <b>if</b> (susp_count == (DWORD)-<var>1</var>)</td></tr>
+<tr><th id="622">622</th><td>        {</td></tr>
+<tr><th id="623">623</th><td>          DWORD ierr = GetLastError ();</td></tr>
+<tr><th id="624">624</th><td></td></tr>
+<tr><th id="625">625</th><td>          fprintf (stderr, <q>"SuspendThread: error %ld: %s\n"</q>,</td></tr>
+<tr><th id="626">626</th><td>                   ierr, map_windows32_error_to_string (ierr));</td></tr>
+<tr><th id="627">627</th><td>        }</td></tr>
+<tr><th id="628">628</th><td>    }</td></tr>
+<tr><th id="629">629</th><td><u>#<span data-ppcond="609">endif</span></u></td></tr>
+<tr><th id="630">630</th><td>  <a class="ref" href="makeint.h.html#handling_fatal_signal" title='handling_fatal_signal' data-ref="handling_fatal_signal">handling_fatal_signal</a> = <var>1</var>;</td></tr>
+<tr><th id="631">631</th><td></td></tr>
+<tr><th id="632">632</th><td>  <i>/* Set the handling for this signal to the default.</i></td></tr>
+<tr><th id="633">633</th><td><i>     It is blocked now while we run this handler.  */</i></td></tr>
+<tr><th id="634">634</th><td>  <a class="ref" href="../include/signal.h.html#signal" title='signal' data-ref="signal">signal</a> (<a class="local col7 ref" href="#217sig" title='sig' data-ref="217sig">sig</a>, <a class="macro" href="../include/x86_64-linux-gnu/bits/signum.h.html#23" title="((__sighandler_t) 0)" data-ref="_M/SIG_DFL">SIG_DFL</a>);</td></tr>
+<tr><th id="635">635</th><td></td></tr>
+<tr><th id="636">636</th><td>  <i>/* A termination signal won't be sent to the entire</i></td></tr>
+<tr><th id="637">637</th><td><i>     process group, but it means we want to kill the children.  */</i></td></tr>
+<tr><th id="638">638</th><td></td></tr>
+<tr><th id="639">639</th><td>  <b>if</b> (<a class="local col7 ref" href="#217sig" title='sig' data-ref="217sig">sig</a> == <a class="macro" href="../include/x86_64-linux-gnu/bits/signum.h.html#47" title="15" data-ref="_M/SIGTERM">SIGTERM</a>)</td></tr>
+<tr><th id="640">640</th><td>    {</td></tr>
+<tr><th id="641">641</th><td>      <b>struct</b> <a class="type" href="job.h.html#child" title='child' data-ref="child">child</a> *<dfn class="local col8 decl" id="218c" title='c' data-type='struct child *' data-ref="218c">c</dfn>;</td></tr>
+<tr><th id="642">642</th><td>      <b>for</b> (<a class="local col8 ref" href="#218c" title='c' data-ref="218c">c</a> = <a class="ref" href="job.h.html#children" title='children' data-ref="children">children</a>; <a class="local col8 ref" href="#218c" title='c' data-ref="218c">c</a> != <var>0</var>; <a class="local col8 ref" href="#218c" title='c' data-ref="218c">c</a> = <a class="local col8 ref" href="#218c" title='c' data-ref="218c">c</a>-&gt;<a class="ref" href="job.h.html#child::next" title='child::next' data-ref="child::next">next</a>)</td></tr>
+<tr><th id="643">643</th><td>        <b>if</b> (!<a class="local col8 ref" href="#218c" title='c' data-ref="218c">c</a>-&gt;<a class="ref" href="job.h.html#child::remote" title='child::remote' data-ref="child::remote">remote</a>)</td></tr>
+<tr><th id="644">644</th><td>          (<em>void</em>) <a class="ref" href="../include/signal.h.html#kill" title='kill' data-ref="kill">kill</a> (<a class="local col8 ref" href="#218c" title='c' data-ref="218c">c</a>-&gt;<a class="ref" href="job.h.html#child::pid" title='child::pid' data-ref="child::pid">pid</a>, <a class="macro" href="../include/x86_64-linux-gnu/bits/signum.h.html#47" title="15" data-ref="_M/SIGTERM">SIGTERM</a>);</td></tr>
+<tr><th id="645">645</th><td>    }</td></tr>
+<tr><th id="646">646</th><td></td></tr>
+<tr><th id="647">647</th><td>  <i>/* If we got a signal that means the user</i></td></tr>
+<tr><th id="648">648</th><td><i>     wanted to kill make, remove pending targets.  */</i></td></tr>
+<tr><th id="649">649</th><td></td></tr>
+<tr><th id="650">650</th><td>  <b>if</b> (<a class="local col7 ref" href="#217sig" title='sig' data-ref="217sig">sig</a> == <a class="macro" href="../include/x86_64-linux-gnu/bits/signum.h.html#47" title="15" data-ref="_M/SIGTERM">SIGTERM</a> || <a class="local col7 ref" href="#217sig" title='sig' data-ref="217sig">sig</a> == <a class="macro" href="../include/x86_64-linux-gnu/bits/signum.h.html#33" title="2" data-ref="_M/SIGINT">SIGINT</a></td></tr>
+<tr><th id="651">651</th><td><u>#<span data-ppcond="651">ifdef</span> <a class="macro" href="../include/x86_64-linux-gnu/bits/signum.h.html#32" data-ref="_M/SIGHUP">SIGHUP</a></u></td></tr>
+<tr><th id="652">652</th><td>    || <a class="local col7 ref" href="#217sig" title='sig' data-ref="217sig">sig</a> == <a class="macro" href="../include/x86_64-linux-gnu/bits/signum.h.html#32" title="1" data-ref="_M/SIGHUP">SIGHUP</a></td></tr>
+<tr><th id="653">653</th><td><u>#<span data-ppcond="651">endif</span></u></td></tr>
+<tr><th id="654">654</th><td><u>#<span data-ppcond="654">ifdef</span> <a class="macro" href="../include/x86_64-linux-gnu/bits/signum.h.html#34" data-ref="_M/SIGQUIT">SIGQUIT</a></u></td></tr>
+<tr><th id="655">655</th><td>    || <a class="local col7 ref" href="#217sig" title='sig' data-ref="217sig">sig</a> == <a class="macro" href="../include/x86_64-linux-gnu/bits/signum.h.html#34" title="3" data-ref="_M/SIGQUIT">SIGQUIT</a></td></tr>
+<tr><th id="656">656</th><td><u>#<span data-ppcond="654">endif</span></u></td></tr>
+<tr><th id="657">657</th><td>    )</td></tr>
+<tr><th id="658">658</th><td>    {</td></tr>
+<tr><th id="659">659</th><td>      <b>struct</b> <a class="type" href="job.h.html#child" title='child' data-ref="child">child</a> *<dfn class="local col9 decl" id="219c" title='c' data-type='struct child *' data-ref="219c">c</dfn>;</td></tr>
+<tr><th id="660">660</th><td></td></tr>
+<tr><th id="661">661</th><td>      <i>/* Remote children won't automatically get signals sent</i></td></tr>
+<tr><th id="662">662</th><td><i>         to the process group, so we must send them.  */</i></td></tr>
+<tr><th id="663">663</th><td>      <b>for</b> (<a class="local col9 ref" href="#219c" title='c' data-ref="219c">c</a> = <a class="ref" href="job.h.html#children" title='children' data-ref="children">children</a>; <a class="local col9 ref" href="#219c" title='c' data-ref="219c">c</a> != <var>0</var>; <a class="local col9 ref" href="#219c" title='c' data-ref="219c">c</a> = <a class="local col9 ref" href="#219c" title='c' data-ref="219c">c</a>-&gt;<a class="ref" href="job.h.html#child::next" title='child::next' data-ref="child::next">next</a>)</td></tr>
+<tr><th id="664">664</th><td>        <b>if</b> (<a class="local col9 ref" href="#219c" title='c' data-ref="219c">c</a>-&gt;<a class="ref" href="job.h.html#child::remote" title='child::remote' data-ref="child::remote">remote</a>)</td></tr>
+<tr><th id="665">665</th><td>          (<em>void</em>) <a class="ref" href="makeint.h.html#remote_kill" title='remote_kill' data-ref="remote_kill">remote_kill</a> (<a class="local col9 ref" href="#219c" title='c' data-ref="219c">c</a>-&gt;<a class="ref" href="job.h.html#child::pid" title='child::pid' data-ref="child::pid">pid</a>, <a class="local col7 ref" href="#217sig" title='sig' data-ref="217sig">sig</a>);</td></tr>
+<tr><th id="666">666</th><td></td></tr>
+<tr><th id="667">667</th><td>      <b>for</b> (<a class="local col9 ref" href="#219c" title='c' data-ref="219c">c</a> = <a class="ref" href="job.h.html#children" title='children' data-ref="children">children</a>; <a class="local col9 ref" href="#219c" title='c' data-ref="219c">c</a> != <var>0</var>; <a class="local col9 ref" href="#219c" title='c' data-ref="219c">c</a> = <a class="local col9 ref" href="#219c" title='c' data-ref="219c">c</a>-&gt;<a class="ref" href="job.h.html#child::next" title='child::next' data-ref="child::next">next</a>)</td></tr>
+<tr><th id="668">668</th><td>        <a class="ref" href="#delete_child_targets" title='delete_child_targets' data-ref="delete_child_targets">delete_child_targets</a> (<a class="local col9 ref" href="#219c" title='c' data-ref="219c">c</a>);</td></tr>
+<tr><th id="669">669</th><td></td></tr>
+<tr><th id="670">670</th><td>      <i>/* Clean up the children.  We don't just use the call below because</i></td></tr>
+<tr><th id="671">671</th><td><i>         we don't want to print the "Waiting for children" message.  */</i></td></tr>
+<tr><th id="672">672</th><td>      <b>while</b> (<a class="ref" href="job.h.html#job_slots_used" title='job_slots_used' data-ref="job_slots_used">job_slots_used</a> &gt; <var>0</var>)</td></tr>
+<tr><th id="673">673</th><td>	<a class="ref" href="job.h.html#reap_children" title='reap_children' data-ref="reap_children">reap_children</a> (<var>1</var>, <var>0</var>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="674">674</th><td>    }</td></tr>
+<tr><th id="675">675</th><td>  <b>else</b></td></tr>
+<tr><th id="676">676</th><td>    <i>/* Wait for our children to die.  */</i></td></tr>
+<tr><th id="677">677</th><td>    <b>while</b> (<a class="ref" href="job.h.html#job_slots_used" title='job_slots_used' data-ref="job_slots_used">job_slots_used</a> &gt; <var>0</var>)</td></tr>
+<tr><th id="678">678</th><td>      <a class="ref" href="job.h.html#reap_children" title='reap_children' data-ref="reap_children">reap_children</a> (<var>1</var>, <var>1</var>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="679">679</th><td></td></tr>
+<tr><th id="680">680</th><td>  <i>/* Delete any non-precious intermediate files that were made.  */</i></td></tr>
+<tr><th id="681">681</th><td></td></tr>
+<tr><th id="682">682</th><td>  <a class="ref" href="filedef.h.html#remove_intermediates" title='remove_intermediates' data-ref="remove_intermediates">remove_intermediates</a> (<var>1</var>);</td></tr>
+<tr><th id="683">683</th><td></td></tr>
+<tr><th id="684">684</th><td><u>#<span data-ppcond="684">ifdef</span> <a class="macro" href="../include/x86_64-linux-gnu/bits/signum.h.html#34" data-ref="_M/SIGQUIT">SIGQUIT</a></u></td></tr>
+<tr><th id="685">685</th><td>  <b>if</b> (<a class="local col7 ref" href="#217sig" title='sig' data-ref="217sig">sig</a> == <a class="macro" href="../include/x86_64-linux-gnu/bits/signum.h.html#34" title="3" data-ref="_M/SIGQUIT">SIGQUIT</a>)</td></tr>
+<tr><th id="686">686</th><td>    <i>/* We don't want to send ourselves SIGQUIT, because it will</i></td></tr>
+<tr><th id="687">687</th><td><i>       cause a core dump.  Just exit instead.  */</i></td></tr>
+<tr><th id="688">688</th><td>    <a class="ref" href="../include/stdlib.h.html#exit" title='exit' data-ref="exit">exit</a> (<a class="macro" href="makeint.h.html#684" title="1" data-ref="_M/MAKE_TROUBLE">MAKE_TROUBLE</a>);</td></tr>
+<tr><th id="689">689</th><td><u>#<span data-ppcond="684">endif</span></u></td></tr>
+<tr><th id="690">690</th><td></td></tr>
+<tr><th id="691">691</th><td><u>#<span data-ppcond="691">ifdef</span> <span class="macro" data-ref="_M/WINDOWS32">WINDOWS32</span></u></td></tr>
+<tr><th id="692">692</th><td>  <b>if</b> (main_thread)</td></tr>
+<tr><th id="693">693</th><td>    CloseHandle (main_thread);</td></tr>
+<tr><th id="694">694</th><td>  <i>/* Cannot call W32_kill with a pid (it needs a handle).  The exit</i></td></tr>
+<tr><th id="695">695</th><td><i>     status of 130 emulates what happens in Bash.  */</i></td></tr>
+<tr><th id="696">696</th><td>  exit (<var>130</var>);</td></tr>
+<tr><th id="697">697</th><td><u>#<span data-ppcond="691">else</span></u></td></tr>
+<tr><th id="698">698</th><td>  <i>/* Signal the same code; this time it will really be fatal.  The signal</i></td></tr>
+<tr><th id="699">699</th><td><i>     will be unblocked when we return and arrive then to kill us.  */</i></td></tr>
+<tr><th id="700">700</th><td>  <b>if</b> (<a class="ref" href="../include/signal.h.html#kill" title='kill' data-ref="kill">kill</a> (<a class="ref" href="../include/unistd.h.html#getpid" title='getpid' data-ref="getpid">getpid</a> (), <a class="local col7 ref" href="#217sig" title='sig' data-ref="217sig">sig</a>) &lt; <var>0</var>)</td></tr>
+<tr><th id="701">701</th><td>    <a class="ref" href="makeint.h.html#pfatal_with_name" title='pfatal_with_name' data-ref="pfatal_with_name">pfatal_with_name</a> (<q>"kill"</q>);</td></tr>
+<tr><th id="702">702</th><td><u>#<span data-ppcond="691">endif</span> /* not WINDOWS32 */</u></td></tr>
+<tr><th id="703">703</th><td><u>#<span data-ppcond="597">endif</span> /* not __MSDOS__  */</u></td></tr>
+<tr><th id="704">704</th><td>}</td></tr>
+<tr><th id="705">705</th><td></td></tr>
+<tr><th id="706">706</th><td><i  data-doc="delete_target">/* Delete FILE unless it's precious or not actually a file (phony),</i></td></tr>
+<tr><th id="707">707</th><td><i  data-doc="delete_target">   and it has changed on disk since we last stat'd it.  */</i></td></tr>
+<tr><th id="708">708</th><td></td></tr>
+<tr><th id="709">709</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="710">710</th><td><dfn class="tu decl def" id="delete_target" title='delete_target' data-type='void delete_target(struct file * file, const char * on_behalf_of)' data-ref="delete_target">delete_target</dfn> (<b>struct</b> <a class="type" href="filedef.h.html#file" title='file' data-ref="file">file</a> *<dfn class="local col0 decl" id="220file" title='file' data-type='struct file *' data-ref="220file">file</dfn>, <em>const</em> <em>char</em> *<dfn class="local col1 decl" id="221on_behalf_of" title='on_behalf_of' data-type='const char *' data-ref="221on_behalf_of">on_behalf_of</dfn>)</td></tr>
+<tr><th id="711">711</th><td>{</td></tr>
+<tr><th id="712">712</th><td>  <b>struct</b> <a class="type" href="../include/x86_64-linux-gnu/bits/stat.h.html#stat" title='stat' data-ref="stat">stat</a> <dfn class="local col2 decl" id="222st" title='st' data-type='struct stat' data-ref="222st">st</dfn>;</td></tr>
+<tr><th id="713">713</th><td>  <em>int</em> <dfn class="local col3 decl" id="223e" title='e' data-type='int' data-ref="223e">e</dfn>;</td></tr>
+<tr><th id="714">714</th><td></td></tr>
+<tr><th id="715">715</th><td>  <b>if</b> (<a class="local col0 ref" href="#220file" title='file' data-ref="220file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::precious" title='file::precious' data-ref="file::precious">precious</a> || <a class="local col0 ref" href="#220file" title='file' data-ref="220file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::phony" title='file::phony' data-ref="file::phony">phony</a>)</td></tr>
+<tr><th id="716">716</th><td>    <b>return</b>;</td></tr>
+<tr><th id="717">717</th><td></td></tr>
+<tr><th id="718">718</th><td><u>#<span data-ppcond="718">ifndef</span> <span class="macro" data-ref="_M/NO_ARCHIVES">NO_ARCHIVES</span></u></td></tr>
+<tr><th id="719">719</th><td>  <b>if</b> (<a class="ref" href="makeint.h.html#ar_name" title='ar_name' data-ref="ar_name">ar_name</a> (<a class="local col0 ref" href="#220file" title='file' data-ref="220file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a>))</td></tr>
+<tr><th id="720">720</th><td>    {</td></tr>
+<tr><th id="721">721</th><td>      <a class="typedef" href="../include/time.h.html#time_t" title='time_t' data-type='__time_t' data-ref="time_t">time_t</a> <dfn class="local col4 decl" id="224file_date" title='file_date' data-type='time_t' data-ref="224file_date">file_date</dfn> = (<a class="local col0 ref" href="#220file" title='file' data-ref="220file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::last_mtime" title='file::last_mtime' data-ref="file::last_mtime">last_mtime</a> == <a class="macro" href="filedef.h.html#215" title="1" data-ref="_M/NONEXISTENT_MTIME">NONEXISTENT_MTIME</a></td></tr>
+<tr><th id="722">722</th><td>                          ? (<a class="typedef" href="../include/time.h.html#time_t" title='time_t' data-type='__time_t' data-ref="time_t">time_t</a>) -<var>1</var></td></tr>
+<tr><th id="723">723</th><td>                          : (<a class="typedef" href="../include/time.h.html#time_t" title='time_t' data-type='__time_t' data-ref="time_t">time_t</a>) <a class="macro" href="filedef.h.html#158" title="(((file-&gt;last_mtime) - (2 + 1)) &gt;&gt; (1 ? 30 : 0))" data-ref="_M/FILE_TIMESTAMP_S">FILE_TIMESTAMP_S</a> (<a class="local col0 ref" href="#220file" title='file' data-ref="220file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::last_mtime" title='file::last_mtime' data-ref="file::last_mtime">last_mtime</a>));</td></tr>
+<tr><th id="724">724</th><td>      <a class="typedef" href="../include/time.h.html#time_t" title='time_t' data-type='__time_t' data-ref="time_t">time_t</a> <dfn class="local col5 decl" id="225member_date" title='member_date' data-type='time_t' data-ref="225member_date">member_date</dfn> = <a class="macro" href="filedef.h.html#215" title="1" data-ref="_M/NONEXISTENT_MTIME">NONEXISTENT_MTIME</a>;</td></tr>
+<tr><th id="725">725</th><td>      <em>int</em> <dfn class="local col6 decl" id="226found" title='found' data-type='int' data-ref="226found">found</dfn>;</td></tr>
+<tr><th id="726">726</th><td>      <a class="local col6 ref" href="#226found" title='found' data-ref="226found">found</a> = <a class="ref" href="makeint.h.html#ar_member_date" title='ar_member_date' data-ref="ar_member_date">ar_member_date</a> (<a class="local col0 ref" href="#220file" title='file' data-ref="220file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a>, &amp;<a class="local col5 ref" href="#225member_date" title='member_date' data-ref="225member_date">member_date</a>);</td></tr>
+<tr><th id="727">727</th><td>      <b>if</b> (<a class="local col6 ref" href="#226found" title='found' data-ref="226found">found</a> &amp;&amp; <a class="local col5 ref" href="#225member_date" title='member_date' data-ref="225member_date">member_date</a> != <a class="local col4 ref" href="#224file_date" title='file_date' data-ref="224file_date">file_date</a>)</td></tr>
+<tr><th id="728">728</th><td>        {</td></tr>
+<tr><th id="729">729</th><td>          <b>if</b> (<a class="local col1 ref" href="#221on_behalf_of" title='on_behalf_of' data-ref="221on_behalf_of">on_behalf_of</a>)</td></tr>
+<tr><th id="730">730</th><td>            <a class="macro" href="makeint.h.html#477" title="error((((gmk_floc *)0)), strlen (on_behalf_of) + strlen (file-&gt;name), (dcgettext (((void*)0), &quot;*** [%s] Archive member &apos;%s&apos; may be bogus; not deleted&quot;, 5)), (on_behalf_of), (file-&gt;name))" data-ref="_M/OSS">OSS</a> (<a class="ref" href="makeint.h.html#error" title='error' data-ref="error">error</a>, <a class="macro" href="makeint.h.html#451" title="((gmk_floc *)0)" data-ref="_M/NILF">NILF</a>,</td></tr>
+<tr><th id="731">731</th><td>                 <a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;*** [%s] Archive member &apos;%s&apos; may be bogus; not deleted&quot;, 5)" data-ref="_M/_">_</a>(<q>"*** [%s] Archive member '%s' may be bogus; not deleted"</q>),</td></tr>
+<tr><th id="732">732</th><td>                 <a class="local col1 ref" href="#221on_behalf_of" title='on_behalf_of' data-ref="221on_behalf_of">on_behalf_of</a>, <a class="local col0 ref" href="#220file" title='file' data-ref="220file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a>);</td></tr>
+<tr><th id="733">733</th><td>          <b>else</b></td></tr>
+<tr><th id="734">734</th><td>            <a class="macro" href="makeint.h.html#476" title="error((((gmk_floc *)0)), strlen (file-&gt;name), (dcgettext (((void*)0), &quot;*** Archive member &apos;%s&apos; may be bogus; not deleted&quot;, 5)), (file-&gt;name))" data-ref="_M/OS">OS</a> (<a class="ref" href="makeint.h.html#error" title='error' data-ref="error">error</a>, <a class="macro" href="makeint.h.html#451" title="((gmk_floc *)0)" data-ref="_M/NILF">NILF</a>,</td></tr>
+<tr><th id="735">735</th><td>                <a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;*** Archive member &apos;%s&apos; may be bogus; not deleted&quot;, 5)" data-ref="_M/_">_</a>(<q>"*** Archive member '%s' may be bogus; not deleted"</q>),</td></tr>
+<tr><th id="736">736</th><td>                <a class="local col0 ref" href="#220file" title='file' data-ref="220file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a>);</td></tr>
+<tr><th id="737">737</th><td>        }</td></tr>
+<tr><th id="738">738</th><td>      <b>return</b>;</td></tr>
+<tr><th id="739">739</th><td>    }</td></tr>
+<tr><th id="740">740</th><td><u>#<span data-ppcond="718">endif</span></u></td></tr>
+<tr><th id="741">741</th><td></td></tr>
+<tr><th id="742">742</th><td>  <a class="macro" href="make.h.html#558" title="while (((e)=stat (file-&gt;name, &amp;st))==-1 &amp;&amp; (*__errno_location ())==4)" data-ref="_M/EINTRLOOP">EINTRLOOP</a> (<a class="local col3 ref" href="#223e" title='e' data-ref="223e">e</a>, <a class="ref" href="../include/x86_64-linux-gnu/sys/stat.h.html#stat" title='stat' data-ref="stat">stat</a> (<a class="local col0 ref" href="#220file" title='file' data-ref="220file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a>, &amp;<a class="local col2 ref" href="#222st" title='st' data-ref="222st">st</a>));</td></tr>
+<tr><th id="743">743</th><td>  <b>if</b> (<a class="local col3 ref" href="#223e" title='e' data-ref="223e">e</a> == <var>0</var></td></tr>
+<tr><th id="744">744</th><td>      &amp;&amp; <a class="macro" href="../include/x86_64-linux-gnu/sys/stat.h.html#131" title="((((st.st_mode)) &amp; 0170000) == (0100000))" data-ref="_M/S_ISREG">S_ISREG</a> (<a class="local col2 ref" href="#222st" title='st' data-ref="222st">st</a>.<a class="ref" href="../include/x86_64-linux-gnu/bits/stat.h.html#stat::st_mode" title='stat::st_mode' data-ref="stat::st_mode">st_mode</a>)</td></tr>
+<tr><th id="745">745</th><td>      &amp;&amp; <a class="macro" href="filedef.h.html#143" title="file_timestamp_cons (file-&gt;name, (st).st_mtim.tv_sec, (st).st_mtim.tv_nsec)" data-ref="_M/FILE_TIMESTAMP_STAT_MODTIME">FILE_TIMESTAMP_STAT_MODTIME</a> (<a class="local col0 ref" href="#220file" title='file' data-ref="220file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a>, <a class="local col2 ref" href="#222st" title='st' data-ref="222st">st</a>) != <a class="local col0 ref" href="#220file" title='file' data-ref="220file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::last_mtime" title='file::last_mtime' data-ref="file::last_mtime">last_mtime</a>)</td></tr>
+<tr><th id="746">746</th><td>    {</td></tr>
+<tr><th id="747">747</th><td>      <b>if</b> (<a class="local col1 ref" href="#221on_behalf_of" title='on_behalf_of' data-ref="221on_behalf_of">on_behalf_of</a>)</td></tr>
+<tr><th id="748">748</th><td>        <a class="macro" href="makeint.h.html#477" title="error((((gmk_floc *)0)), strlen (on_behalf_of) + strlen (file-&gt;name), (dcgettext (((void*)0), &quot;*** [%s] Deleting file &apos;%s&apos;&quot;, 5)), (on_behalf_of), (file-&gt;name))" data-ref="_M/OSS">OSS</a> (<a class="ref" href="makeint.h.html#error" title='error' data-ref="error">error</a>, <a class="macro" href="makeint.h.html#451" title="((gmk_floc *)0)" data-ref="_M/NILF">NILF</a>,</td></tr>
+<tr><th id="749">749</th><td>             <a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;*** [%s] Deleting file &apos;%s&apos;&quot;, 5)" data-ref="_M/_">_</a>(<q>"*** [%s] Deleting file '%s'"</q>), <a class="local col1 ref" href="#221on_behalf_of" title='on_behalf_of' data-ref="221on_behalf_of">on_behalf_of</a>, <a class="local col0 ref" href="#220file" title='file' data-ref="220file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a>);</td></tr>
+<tr><th id="750">750</th><td>      <b>else</b></td></tr>
+<tr><th id="751">751</th><td>        <a class="macro" href="makeint.h.html#476" title="error((((gmk_floc *)0)), strlen (file-&gt;name), (dcgettext (((void*)0), &quot;*** Deleting file &apos;%s&apos;&quot;, 5)), (file-&gt;name))" data-ref="_M/OS">OS</a> (<a class="ref" href="makeint.h.html#error" title='error' data-ref="error">error</a>, <a class="macro" href="makeint.h.html#451" title="((gmk_floc *)0)" data-ref="_M/NILF">NILF</a>, <a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;*** Deleting file &apos;%s&apos;&quot;, 5)" data-ref="_M/_">_</a>(<q>"*** Deleting file '%s'"</q>), <a class="local col0 ref" href="#220file" title='file' data-ref="220file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a>);</td></tr>
+<tr><th id="752">752</th><td>      <b>if</b> (<a class="ref" href="../include/unistd.h.html#unlink" title='unlink' data-ref="unlink">unlink</a> (<a class="local col0 ref" href="#220file" title='file' data-ref="220file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a>) &lt; <var>0</var></td></tr>
+<tr><th id="753">753</th><td>          &amp;&amp; <a class="macro" href="../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a> != <a class="macro" href="../include/asm-generic/errno-base.h.html#5" title="2" data-ref="_M/ENOENT">ENOENT</a>)   <i>/* It disappeared; so what.  */</i></td></tr>
+<tr><th id="754">754</th><td>        <a class="ref" href="makeint.h.html#perror_with_name" title='perror_with_name' data-ref="perror_with_name">perror_with_name</a> (<q>"unlink: "</q>, <a class="local col0 ref" href="#220file" title='file' data-ref="220file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a>);</td></tr>
+<tr><th id="755">755</th><td>    }</td></tr>
+<tr><th id="756">756</th><td>}</td></tr>
+<tr><th id="757">757</th><td></td></tr>
+<tr><th id="758">758</th><td></td></tr>
+<tr><th id="759">759</th><td><i>/* Delete all non-precious targets of CHILD unless they were already deleted.</i></td></tr>
+<tr><th id="760">760</th><td><i>   Set the flag in CHILD to say they've been deleted.  */</i></td></tr>
+<tr><th id="761">761</th><td></td></tr>
+<tr><th id="762">762</th><td><em>void</em></td></tr>
+<tr><th id="763">763</th><td><dfn class="decl def" id="delete_child_targets" title='delete_child_targets' data-ref="delete_child_targets">delete_child_targets</dfn> (<b>struct</b> <a class="type" href="job.h.html#child" title='child' data-ref="child">child</a> *<dfn class="local col7 decl" id="227child" title='child' data-type='struct child *' data-ref="227child">child</dfn>)</td></tr>
+<tr><th id="764">764</th><td>{</td></tr>
+<tr><th id="765">765</th><td>  <b>struct</b> <a class="type" href="dep.h.html#dep" title='dep' data-ref="dep">dep</a> *<dfn class="local col8 decl" id="228d" title='d' data-type='struct dep *' data-ref="228d">d</dfn>;</td></tr>
+<tr><th id="766">766</th><td></td></tr>
+<tr><th id="767">767</th><td>  <b>if</b> (<a class="local col7 ref" href="#227child" title='child' data-ref="227child">child</a>-&gt;<a class="ref" href="job.h.html#child::deleted" title='child::deleted' data-ref="child::deleted">deleted</a>)</td></tr>
+<tr><th id="768">768</th><td>    <b>return</b>;</td></tr>
+<tr><th id="769">769</th><td></td></tr>
+<tr><th id="770">770</th><td>  <i>/* Delete the target file if it changed.  */</i></td></tr>
+<tr><th id="771">771</th><td>  <a class="tu ref" href="#delete_target" title='delete_target' data-use='c' data-ref="delete_target">delete_target</a> (<a class="local col7 ref" href="#227child" title='child' data-ref="227child">child</a>-&gt;<a class="ref" href="job.h.html#child::file" title='child::file' data-ref="child::file">file</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="772">772</th><td></td></tr>
+<tr><th id="773">773</th><td>  <i>/* Also remove any non-precious targets listed in the 'also_make' member.  */</i></td></tr>
+<tr><th id="774">774</th><td>  <b>for</b> (<a class="local col8 ref" href="#228d" title='d' data-ref="228d">d</a> = <a class="local col7 ref" href="#227child" title='child' data-ref="227child">child</a>-&gt;<a class="ref" href="job.h.html#child::file" title='child::file' data-ref="child::file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::also_make" title='file::also_make' data-ref="file::also_make">also_make</a>; <a class="local col8 ref" href="#228d" title='d' data-ref="228d">d</a> != <var>0</var>; <a class="local col8 ref" href="#228d" title='d' data-ref="228d">d</a> = <a class="local col8 ref" href="#228d" title='d' data-ref="228d">d</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::next' data-ref="dep::next">next</a>)</td></tr>
+<tr><th id="775">775</th><td>    <a class="tu ref" href="#delete_target" title='delete_target' data-use='c' data-ref="delete_target">delete_target</a> (<a class="local col8 ref" href="#228d" title='d' data-ref="228d">d</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::file' data-ref="dep::file">file</a>, <a class="local col7 ref" href="#227child" title='child' data-ref="227child">child</a>-&gt;<a class="ref" href="job.h.html#child::file" title='child::file' data-ref="child::file">file</a>-&gt;<a class="ref" href="filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a>);</td></tr>
+<tr><th id="776">776</th><td></td></tr>
+<tr><th id="777">777</th><td>  <a class="local col7 ref" href="#227child" title='child' data-ref="227child">child</a>-&gt;<a class="ref" href="job.h.html#child::deleted" title='child::deleted' data-ref="child::deleted">deleted</a> = <var>1</var>;</td></tr>
+<tr><th id="778">778</th><td>}</td></tr>
+<tr><th id="779">779</th><td></td></tr>
+<tr><th id="780">780</th><td><i>/* Print out the commands in CMDS.  */</i></td></tr>
+<tr><th id="781">781</th><td></td></tr>
+<tr><th id="782">782</th><td><i class="doc">/*!</i></td></tr>
+<tr><th id="783">783</th><td><i class="doc">  Print out the commands.</i></td></tr>
+<tr><th id="784">784</th><td><i class="doc"></i></td></tr>
+<tr><th id="785">785</th><td><i class="doc">  <span class="command">@param</span> <span class="arg">p_cmds</span> location of commands to print out.</i></td></tr>
+<tr><th id="786">786</th><td><i class="doc">  <span class="command">@param</span> <span class="arg">p_target</span> used to set automatic variables if it is non-null.</i></td></tr>
+<tr><th id="787">787</th><td><i class="doc">  <span class="command">@param</span> <span class="arg">b_expand</span> if true, expand the commands to remove MAKE variables.</i></td></tr>
+<tr><th id="788">788</th><td><i class="doc">*/</i></td></tr>
+<tr><th id="789">789</th><td><em>void</em></td></tr>
+<tr><th id="790">790</th><td><dfn class="decl def" id="print_commands" title='print_commands' data-ref="print_commands">print_commands</dfn> (<a class="typedef" href="types.h.html#file_t" title='file_t' data-type='struct file' data-ref="file_t">file_t</a> *<dfn class="local col9 decl" id="229p_target" title='p_target' data-type='file_t *' data-ref="229p_target">p_target</dfn>, <a class="typedef" href="types.h.html#commands_t" title='commands_t' data-type='struct commands' data-ref="commands_t">commands_t</a> *<dfn class="local col0 decl" id="230p_cmds" title='p_cmds' data-type='commands_t *' data-ref="230p_cmds">p_cmds</dfn>, <a class="macro" href="types.h.html#50" title="uint8_t" data-ref="_M/bool">bool</a> <dfn class="local col1 decl" id="231b_expand" title='b_expand' data-type='uint8_t' data-ref="231b_expand">b_expand</dfn>)</td></tr>
+<tr><th id="791">791</th><td>{</td></tr>
+<tr><th id="792">792</th><td>  <em>const</em> <em>char</em> *<dfn class="local col2 decl" id="232s" title='s' data-type='const char *' data-ref="232s">s</dfn>;</td></tr>
+<tr><th id="793">793</th><td></td></tr>
+<tr><th id="794">794</th><td>  <a class="ref" href="../include/stdio.h.html#fputs" title='fputs' data-ref="fputs">fputs</a> (<a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;#  recipe to execute&quot;, 5)" data-ref="_M/_">_</a>(<q>"#  recipe to execute"</q>), <a class="macro" href="../include/stdio.h.html#173" title="stdout" data-ref="_M/stdout">stdout</a>);</td></tr>
+<tr><th id="795">795</th><td></td></tr>
+<tr><th id="796">796</th><td>  <b>if</b> (<a class="local col0 ref" href="#230p_cmds" title='p_cmds' data-ref="230p_cmds">p_cmds</a>-&gt;<a class="ref" href="commands.h.html#commands::fileinfo" title='commands::fileinfo' data-ref="commands::fileinfo">fileinfo</a>.<a class="ref" href="gnuremake.h.html#(anonymous)::filenm" title='(anonymous struct)::filenm' data-ref="(anonymous)::filenm">filenm</a> == <var>0</var>)</td></tr>
+<tr><th id="797">797</th><td>    <a class="ref" href="../include/stdio.h.html#puts" title='puts' data-ref="puts">puts</a> (<a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot; (built-in):&quot;, 5)" data-ref="_M/_">_</a>(<q>" (built-in):"</q>));</td></tr>
+<tr><th id="798">798</th><td>  <b>else</b></td></tr>
+<tr><th id="799">799</th><td>    <a class="ref" href="../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a> (<a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot; (from &apos;%s&apos;, line %lu):\n&quot;, 5)" data-ref="_M/_">_</a>(<q>" (from '%s', line %lu):\n"</q>),</td></tr>
+<tr><th id="800">800</th><td>            <a class="local col0 ref" href="#230p_cmds" title='p_cmds' data-ref="230p_cmds">p_cmds</a>-&gt;<a class="ref" href="commands.h.html#commands::fileinfo" title='commands::fileinfo' data-ref="commands::fileinfo">fileinfo</a>.<a class="ref" href="gnuremake.h.html#(anonymous)::filenm" title='(anonymous struct)::filenm' data-ref="(anonymous)::filenm">filenm</a>, <a class="local col0 ref" href="#230p_cmds" title='p_cmds' data-ref="230p_cmds">p_cmds</a>-&gt;<a class="ref" href="commands.h.html#commands::fileinfo" title='commands::fileinfo' data-ref="commands::fileinfo">fileinfo</a>.<a class="ref" href="gnuremake.h.html#(anonymous)::lineno" title='(anonymous struct)::lineno' data-ref="(anonymous)::lineno">lineno</a>);</td></tr>
+<tr><th id="801">801</th><td></td></tr>
+<tr><th id="802">802</th><td>  <b>if</b> (<a class="local col1 ref" href="#231b_expand" title='b_expand' data-ref="231b_expand">b_expand</a> &amp;&amp; <a class="local col9 ref" href="#229p_target" title='p_target' data-ref="229p_target">p_target</a>) {</td></tr>
+<tr><th id="803">803</th><td>    <a class="typedef" href="types.h.html#variable_set_list_t" title='variable_set_list_t' data-type='struct variable_set_list' data-ref="variable_set_list_t">variable_set_list_t</a> *<dfn class="local col3 decl" id="233p_file_vars" title='p_file_vars' data-type='variable_set_list_t *' data-ref="233p_file_vars">p_file_vars</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="804">804</th><td>    <a class="ref" href="variable.h.html#initialize_file_variables" title='initialize_file_variables' data-ref="initialize_file_variables">initialize_file_variables</a> (<a class="local col9 ref" href="#229p_target" title='p_target' data-ref="229p_target">p_target</a>, <var>0</var>);</td></tr>
+<tr><th id="805">805</th><td>    <a class="ref" href="#set_file_variables" title='set_file_variables' data-ref="set_file_variables">set_file_variables</a> (<a class="local col9 ref" href="#229p_target" title='p_target' data-ref="229p_target">p_target</a>);</td></tr>
+<tr><th id="806">806</th><td>    <a class="local col3 ref" href="#233p_file_vars" title='p_file_vars' data-ref="233p_file_vars">p_file_vars</a> = <a class="local col9 ref" href="#229p_target" title='p_target' data-ref="229p_target">p_target</a>-&gt;<a class="ref" href="filedef.h.html#file::variables" title='file::variables' data-ref="file::variables">variables</a>;</td></tr>
+<tr><th id="807">807</th><td>    <a class="local col2 ref" href="#232s" title='s' data-ref="232s">s</a> = <a class="ref" href="expand.h.html#variable_expand_set" title='variable_expand_set' data-ref="variable_expand_set">variable_expand_set</a>(<a class="local col0 ref" href="#230p_cmds" title='p_cmds' data-ref="230p_cmds">p_cmds</a>-&gt;<a class="ref" href="commands.h.html#commands::commands" title='commands::commands' data-ref="commands::commands">commands</a>, <a class="local col3 ref" href="#233p_file_vars" title='p_file_vars' data-ref="233p_file_vars">p_file_vars</a>);</td></tr>
+<tr><th id="808">808</th><td>  } <b>else</b> {</td></tr>
+<tr><th id="809">809</th><td>    <a class="local col2 ref" href="#232s" title='s' data-ref="232s">s</a> = <a class="local col0 ref" href="#230p_cmds" title='p_cmds' data-ref="230p_cmds">p_cmds</a>-&gt;<a class="ref" href="commands.h.html#commands::commands" title='commands::commands' data-ref="commands::commands">commands</a>;</td></tr>
+<tr><th id="810">810</th><td>  }</td></tr>
+<tr><th id="811">811</th><td></td></tr>
+<tr><th id="812">812</th><td>  <b>while</b> (*<a class="local col2 ref" href="#232s" title='s' data-ref="232s">s</a> != <kbd>'\0'</kbd>)</td></tr>
+<tr><th id="813">813</th><td>    {</td></tr>
+<tr><th id="814">814</th><td>      <em>const</em> <em>char</em> *<dfn class="local col4 decl" id="234end" title='end' data-type='const char *' data-ref="234end">end</dfn>;</td></tr>
+<tr><th id="815">815</th><td>      <em>int</em> <dfn class="local col5 decl" id="235bs" title='bs' data-type='int' data-ref="235bs">bs</dfn>;</td></tr>
+<tr><th id="816">816</th><td></td></tr>
+<tr><th id="817">817</th><td>      <i>/* Print one full logical recipe line: find a non-escaped newline.  */</i></td></tr>
+<tr><th id="818">818</th><td>      <b>for</b> (<a class="local col4 ref" href="#234end" title='end' data-ref="234end">end</a> = <a class="local col2 ref" href="#232s" title='s' data-ref="232s">s</a>, <a class="local col5 ref" href="#235bs" title='bs' data-ref="235bs">bs</a> = <var>0</var>; *<a class="local col4 ref" href="#234end" title='end' data-ref="234end">end</a> != <kbd>'\0'</kbd>; ++<a class="local col4 ref" href="#234end" title='end' data-ref="234end">end</a>)</td></tr>
+<tr><th id="819">819</th><td>        {</td></tr>
+<tr><th id="820">820</th><td>          <b>if</b> (*<a class="local col4 ref" href="#234end" title='end' data-ref="234end">end</a> == <kbd>'\n'</kbd> &amp;&amp; !<a class="local col5 ref" href="#235bs" title='bs' data-ref="235bs">bs</a>)</td></tr>
+<tr><th id="821">821</th><td>            <b>break</b>;</td></tr>
+<tr><th id="822">822</th><td></td></tr>
+<tr><th id="823">823</th><td>          <a class="local col5 ref" href="#235bs" title='bs' data-ref="235bs">bs</a> = *<a class="local col4 ref" href="#234end" title='end' data-ref="234end">end</a> == <kbd>'\\'</kbd> ? !<a class="local col5 ref" href="#235bs" title='bs' data-ref="235bs">bs</a> : <var>0</var>;</td></tr>
+<tr><th id="824">824</th><td>        }</td></tr>
+<tr><th id="825">825</th><td></td></tr>
+<tr><th id="826">826</th><td>      <a class="ref" href="../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a> (<q>"%c%.*s\n"</q>, <a class="ref" href="makeint.h.html#cmd_prefix" title='cmd_prefix' data-ref="cmd_prefix">cmd_prefix</a>, (<em>int</em>) (<a class="local col4 ref" href="#234end" title='end' data-ref="234end">end</a> - <a class="local col2 ref" href="#232s" title='s' data-ref="232s">s</a>), <a class="local col2 ref" href="#232s" title='s' data-ref="232s">s</a>);</td></tr>
+<tr><th id="827">827</th><td></td></tr>
+<tr><th id="828">828</th><td>      <a class="local col2 ref" href="#232s" title='s' data-ref="232s">s</a> = <a class="local col4 ref" href="#234end" title='end' data-ref="234end">end</a> + (<a class="local col4 ref" href="#234end" title='end' data-ref="234end">end</a>[<var>0</var>] == <kbd>'\n'</kbd>);</td></tr>
+<tr><th id="829">829</th><td>    }</td></tr>
+<tr><th id="830">830</th><td>}</td></tr>
+<tr><th id="831">831</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

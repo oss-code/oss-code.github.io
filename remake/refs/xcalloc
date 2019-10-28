@@ -1,0 +1,16 @@
+<dec f='remake/makeint.h' l='496' type='void * xcalloc(unsigned int )'/>
+<def f='remake/alloc.c' l='41' ll='49' type='void * xcalloc(unsigned int size)'/>
+<dec f='remake/make.h' l='352' type='void * xcalloc(unsigned int )'/>
+<use f='remake/dep.h' l='101' u='c' c='alloc_ns'/>
+<use f='remake/dep.h' l='101' u='c' c='alloc_dep'/>
+<use f='remake/dep.h' l='101' u='c' c='alloc_goaldep'/>
+<use f='remake/ar.c' l='224' u='c' c='ar_glob_match'/>
+<use f='remake/dir.c' l='934' u='c' c='file_impossible'/>
+<use f='remake/file_basic.c' l='167' u='c' c='enter_file'/>
+<use f='remake/hash.c' l='20' u='c' c='hash_init'/>
+<use f='remake/hash.c' l='20' u='c' c='hash_rehash'/>
+<use f='remake/job.c' l='1520' u='c' c='new_job'/>
+<use f='remake/profile.c' l='79' u='c' c='add_profile_entry'/>
+<use f='remake/read.c' l='3040' u='c' c='parse_file_seq'/>
+<use f='remake/read.c' l='3040' u='c' c='parse_file_seq'/>
+<use f='remake/read.c' l='3040' u='c' c='parse_file_seq'/>

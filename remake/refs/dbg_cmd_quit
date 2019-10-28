@@ -1,0 +1,4 @@
+<def f='remake/debugger/command/quit.h' l='21' ll='36' type='debug_return_t dbg_cmd_quit(char * psz_arg)'/>
+<use f='remake/debugger/command/quit.h' l='41' u='a' c='dbg_cmd_quit_init'/>
+<use f='remake/debugger/cmd.c' l='509' u='c' c='enter_debugger'/>
+<doc f='remake/debugger/command/quit.h' l='20'>/* Terminate execution. */</doc>

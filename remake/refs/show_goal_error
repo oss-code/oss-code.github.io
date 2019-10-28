@@ -1,0 +1,6 @@
+<dec f='remake/makeint.h' l='556' type='void show_goal_error()'/>
+<use f='remake/job.c' l='404' u='c' c='child_error'/>
+<def f='remake/remake.c' l='280' ll='299' type='void show_goal_error()'/>
+<use f='remake/remake.c' l='411' u='c' c='complain'/>
+<doc f='remake/remake.c' l='277'>/* If we&apos;re rebuilding an included makefile that failed, and we care
+   about errors, show an error message the first time.  */</doc>

@@ -1,0 +1,14 @@
+<dec f='remake/filedef.h' l='121' type='struct file *'/>
+<use f='remake/commands.c' l='142' u='r' c='set_file_variables'/>
+<def f='remake/main.c' l='501' type='struct file *'/>
+<use f='remake/main.c' l='1888' u='w' c='main'/>
+<doc f='remake/main.c' l='498'>/*! Pointer to structure for the file .DEFAULT
+   whose commands are used for any file that has none of its own.
+   This is zero if the makefiles do not define .DEFAULT.  */</doc>
+<use f='remake/read.c' l='2142' u='r' c='record_files'/>
+<use f='remake/remake.c' l='579' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='579' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='582' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='1132' u='r' c='check_dep'/>
+<use f='remake/remake.c' l='1132' u='r' c='check_dep'/>
+<use f='remake/remake.c' l='1135' u='r' c='check_dep'/>

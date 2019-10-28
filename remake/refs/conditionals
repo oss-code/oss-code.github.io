@@ -1,0 +1,9 @@
+<def f='remake/read.c' l='82' ll='90'/>
+<size>24</size>
+<doc f='remake/read.c' l='74'>/* A &apos;struct conditionals&apos; contains the information describing
+   all the active conditionals in a makefile.
+
+   The global variable &apos;conditionals&apos; contains the conditionals
+   information for the current makefile.  It is initialized from
+   the static structure &apos;toplevel_conditionals&apos; and is later changed
+   to new structures for included makefiles.  */</doc>

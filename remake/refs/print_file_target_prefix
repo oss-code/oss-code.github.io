@@ -1,0 +1,5 @@
+<dec f='remake/print.h' l='69' type='void print_file_target_prefix(const file_t * p_target)'/>
+<doc f='remake/print.h' l='68'>/*! Display common file target prefix message output file target. */</doc>
+<def f='remake/print.c' l='265' ll='270' type='void print_file_target_prefix(const file_t * p_target)'/>
+<doc f='remake/print.c' l='264'>/*! Show target information: location and name. */</doc>
+<use f='remake/trace.c' l='60' u='c' c='trace_push_target'/>

@@ -1,0 +1,6 @@
+<dec f='include/signal.h' l='213' type='int sigemptyset(sigset_t * __set)'/>
+<doc f='include/signal.h' l='212'>/* Clear all signals from SET.  */</doc>
+<use f='remake/job.c' l='958' u='c' c='unblock_sigs'/>
+<use f='remake/main.c' l='1076' u='c' c='main'/>
+<use f='remake/main.c' l='1853' u='c' c='main'/>
+<use f='remake/posixos.c' l='249' u='c' c='jobserver_acquire'/>

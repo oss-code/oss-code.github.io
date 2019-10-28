@@ -1,0 +1,7 @@
+<dec f='remake/trace.h' l='92' type='target_stack_node_t * trace_push_target(target_stack_node_t * p, file_t * p_target)'/>
+<doc f='remake/trace.h' l='89'>/*! Push &quot;p_target&quot; to the call stack. Return the new stack top.
+    if b_debugger is true we might enter the debugger.
+*/</doc>
+<use f='remake/remake.c' l='475' u='c' c='update_file_1'/>
+<def f='remake/trace.c' l='41' ll='66' type='target_stack_node_t * trace_push_target(target_stack_node_t * p, file_t * p_target)'/>
+<doc f='remake/trace.c' l='40'>/*! Push &quot;target&quot; to the call stack. */</doc>

@@ -1,0 +1,6 @@
+<dec f='remake/debugger/fns.h' l='108' type='variable_t * try_without_dollar(const char * psz_varname)'/>
+<use f='remake/debugger/cmd.c' l='332' u='c' c='dbg_cmd_set_var'/>
+<doc f='remake/debugger/fns.h' l='107'>/*! See if psz_varname is $varname or $(varname) */</doc>
+<def f='remake/debugger/fns.c' l='389' ll='410' type='variable_t * try_without_dollar(const char * psz_varname)'/>
+<use f='remake/debugger/fns.c' l='452' u='c' c='dbg_cmd_show_exp'/>
+<doc f='remake/debugger/fns.c' l='388'>/*! See if psz_varname is $varname or $(varname) */</doc>

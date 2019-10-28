@@ -1,0 +1,34 @@
+<dec f='remake/makeint.h' l='497' type='void * xrealloc(void * , unsigned int )'/>
+<def f='remake/alloc.c' l='52' ll='64' type='void * xrealloc(void * ptr, unsigned int size)'/>
+<dec f='remake/make.h' l='353' type='void * xrealloc(void * , unsigned int )'/>
+<use f='remake/commands.c' l='196' u='c' c='set_file_variables'/>
+<use f='remake/commands.c' l='233' u='c' c='set_file_variables'/>
+<use f='remake/commands.c' l='237' u='c' c='set_file_variables'/>
+<use f='remake/commands.c' l='382' u='c' c='chop_commands'/>
+<use f='remake/commands.c' l='393' u='c' c='chop_commands'/>
+<use f='remake/dir.c' l='1236' u='c' c='read_dirstream'/>
+<use f='remake/expand.c' l='66' u='c' c='variable_buffer_output'/>
+<use f='remake/file.c' l='1094' u='c' c='build_target_list'/>
+<use f='remake/file.c' l='1110' u='c' c='build_target_list'/>
+<use f='remake/function.c' l='378' u='c' c='string_glob'/>
+<use f='remake/function.c' l='1847' u='c' c='func_shell_base'/>
+<use f='remake/implicit.c' l='679' u='c' c='pattern_search'/>
+<use f='remake/main.c' l='2169' u='c' c='main'/>
+<use f='remake/main.c' l='2862' u='c' c='decode_switches'/>
+<use f='remake/misc.c' l='165' u='c' c='concat'/>
+<use f='remake/misc.c' l='179' u='c' c='concat'/>
+<use f='remake/output.c' l='129' u='c' c='log_working_directory'/>
+<use f='remake/output.c' l='603' u='c' c='get_buffer'/>
+<use f='remake/print.c' l='72' u='c' c='err_log_working_directory'/>
+<use f='remake/read.c' l='708' u='c' c='eval'/>
+<use f='remake/read.c' l='1300' u='c' c='eval'/>
+<use f='remake/read.c' l='1541' u='c' c='do_define'/>
+<use f='remake/read.c' l='1687' u='c' c='conditional_line'/>
+<use f='remake/read.c' l='1689' u='c' c='conditional_line'/>
+<use f='remake/read.c' l='2614' u='c' c='readline'/>
+<use f='remake/read.c' l='3064' u='c' c='parse_file_seq'/>
+<use f='remake/remake.c' l='1782' u='c' c='library_search'/>
+<use f='remake/rule.c' l='121' u='c' c='count_implicit_rule_limits'/>
+<use f='remake/variable.c' l='461' u='c' c='lookup_special_var'/>
+<use f='remake/variable.c' l='478' u='c' c='lookup_special_var'/>
+<use f='remake/vpath.c' l='280' u='c' c='construct_vpath_list'/>

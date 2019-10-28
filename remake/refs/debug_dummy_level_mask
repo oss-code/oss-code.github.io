@@ -1,0 +1,6 @@
+<dec f='remake/debug.h' l='66' type='debug_level_mask_t'/>
+<def f='remake/debug.c' l='24' type='debug_level_mask_t'/>
+<doc f='remake/debug.h' l='62'>/** These variables are trickery to force the above enum symbol values to
+    be recorded in debug symbol tables. It is used to allow one refer
+    to above enumeration values in a debugger and debugger
+    expressions */</doc>

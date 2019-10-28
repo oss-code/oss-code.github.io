@@ -1,0 +1,10 @@
+<dec f='remake/makeint.h' l='512' type='void ar_parse_name(const char * , char ** , char ** )'/>
+<dec f='remake/make.h' l='369' type='void ar_parse_name(const char * , char ** , char ** )'/>
+<def f='remake/ar.c' l='56' ll='66' type='void ar_parse_name(const char * name, char ** arname_p, char ** memname_p)'/>
+<use f='remake/ar.c' l='104' u='c' c='ar_member_date'/>
+<use f='remake/ar.c' l='149' u='c' c='ar_touch'/>
+<doc f='remake/ar.c' l='52'>/* Parse the archive-member reference NAME into the archive and member names.
+   Creates one allocated string containing both names, pointed to by ARNAME_P.
+   MEMNAME_P points to the member.  */</doc>
+<use f='remake/read.c' l='3244' u='c' c='parse_file_seq'/>
+<use f='remake/remake.c' l='1360' u='c' c='f_mtime'/>

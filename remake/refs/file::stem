@@ -1,0 +1,31 @@
+<dec f='remake/filedef.h' l='42' type='const char *'/>
+<offset>704</offset>
+<doc f='remake/filedef.h' l='42'>/* Implicit stem, if an implicit
+                                   rule has been used */</doc>
+<use f='remake/commands.c' l='97' u='r' c='set_file_variables'/>
+<use f='remake/commands.c' l='123' u='w' c='set_file_variables'/>
+<use f='remake/commands.c' l='128' u='w' c='set_file_variables'/>
+<use f='remake/commands.c' l='130' u='r' c='set_file_variables'/>
+<use f='remake/file.c' l='403' u='r' c='expand_deps'/>
+<use f='remake/file.c' l='448' u='w' c='expand_deps'/>
+<use f='remake/file.c' l='455' u='w' c='expand_deps'/>
+<use f='remake/file.c' l='792' u='r' c='print_target_props'/>
+<use f='remake/file.c' l='793' u='r' c='print_target_props'/>
+<use f='remake/file.c' l='951' u='r' c='print_file'/>
+<use f='remake/file.c' l='952' u='r' c='print_file'/>
+<use f='remake/file.c' l='1061' u='r' c='verify_file'/>
+<use f='remake/file.c' l='1061' u='r' c='verify_file'/>
+<use f='remake/file.c' l='1061' u='r' c='verify_file'/>
+<use f='remake/file.c' l='1061' u='r' c='verify_file'/>
+<use f='remake/file.c' l='1061' u='r' c='verify_file'/>
+<use f='remake/implicit.c' l='503' u='w' c='pattern_search'/>
+<use f='remake/implicit.c' l='635' u='r' c='pattern_search'/>
+<use f='remake/implicit.c' l='811' u='w' c='pattern_search'/>
+<use f='remake/implicit.c' l='875' u='w' c='pattern_search'/>
+<use f='remake/implicit.c' l='875' u='r' c='pattern_search'/>
+<use f='remake/implicit.c' l='929' u='w' c='pattern_search'/>
+<use f='remake/implicit.c' l='944' u='w' c='pattern_search'/>
+<use f='remake/implicit.c' l='973' u='r' c='pattern_search'/>
+<use f='remake/read.c' l='2193' u='w' c='record_files'/>
+<use f='remake/read.c' l='2197' u='r' c='record_files'/>
+<use f='remake/read.c' l='2199' u='r' c='record_files'/>

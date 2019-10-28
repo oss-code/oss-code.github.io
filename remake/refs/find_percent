@@ -1,0 +1,15 @@
+<dec f='remake/makeint.h' l='507' type='char * find_percent(char * )'/>
+<dec f='remake/make.h' l='363' type='char * find_percent(char * )'/>
+<dec f='remake/read.h' l='44' type='char * find_percent(char * pattern)'/>
+<doc f='remake/read.h' l='43'>/*! Search PATTERN for an unquoted %.  */</doc>
+<use f='remake/expand.c' l='352' u='c' c='variable_expand_string'/>
+<use f='remake/expand.c' l='356' u='c' c='variable_expand_string'/>
+<use f='remake/file.c' l='333' u='c' c='enter_prereqs'/>
+<use f='remake/function.c' l='250' u='c' c='patsubst_expand'/>
+<use f='remake/function.c' l='251' u='c' c='patsubst_expand'/>
+<use f='remake/function.c' l='297' u='c' c='pattern_matches'/>
+<use f='remake/function.c' l='980' u='c' c='func_filter_filterout'/>
+<def f='remake/read.c' l='2389' ll='2393' type='char * find_percent(char * pattern)'/>
+<doc f='remake/read.c' l='2387'>/* Search PATTERN for an unquoted % and handle quoting.  */</doc>
+<use f='remake/remake.c' l='1716' u='c' c='library_search'/>
+<use f='remake/vpath.c' l='168' u='c' c='construct_vpath_list'/>

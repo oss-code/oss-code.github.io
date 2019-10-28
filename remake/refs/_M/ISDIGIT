@@ -1,0 +1,16 @@
+<dec f='remake/makeint.h' l='295'/>
+<doc f='remake/makeint.h' l='286'>/* ISDIGIT offers the following features:
+   - Its arg may be any int or unsigned int; it need not be an unsigned char.
+   - It&apos;s guaranteed to evaluate its argument exactly once.
+      NOTE!  Make relies on this behavior, don&apos;t change it!
+   - It&apos;s typically faster.
+   POSIX 1003.2-1992 section 2.5.2.1 page 50 lines 1556-1558 says that
+   only &apos;0&apos; through &apos;9&apos; are digits.  Prefer ISDIGIT to isdigit() unless
+   it&apos;s important to use the locale&apos;s definition of &apos;digit&apos; even when the
+   host does not conform to POSIX.  */</doc>
+<dec f='include/readline/chardefs.h' l='80'/>
+<use f='remake/function.c' l='770' u='c'/>
+<use f='remake/main.c' l='2878' u='c'/>
+<use f='remake/main.c' l='2893' u='c'/>
+<use f='remake/main.c' l='2914' u='c'/>
+<use f='remake/variable.c' l='339' u='c'/>

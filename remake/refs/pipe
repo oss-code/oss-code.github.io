@@ -1,0 +1,8 @@
+<dec f='include/unistd.h' l='420' type='int pipe(int * __pipedes)'/>
+<doc f='include/unistd.h' l='416'>/* Create a one-way communication channel (pipe).
+   If successful, two file descriptors are stored in PIPEDES;
+   bytes written on PIPEDES[1] can be read from PIPEDES[0].
+   Returns 0 if successful, -1 if not.  */</doc>
+<use f='remake/function.c' l='1789' u='c' c='func_shell_base'/>
+<use f='remake/posixos.c' l='67' u='c' c='jobserver_setup'/>
+<use f='remake/posixos.c' l='416' u='c' c='get_bad_stdin'/>

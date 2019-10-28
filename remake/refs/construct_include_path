@@ -1,0 +1,9 @@
+<dec f='remake/makeint.h' l='548' type='void construct_include_path(const char ** arg_dirs)'/>
+<dec f='remake/make.h' l='397' type='void construct_include_path(const char ** arg_dirs)'/>
+<doc f='remake/make.h' l='394'>/*! Construct the list of include directories
+   from the arguments and the default list.
+*/</doc>
+<use f='remake/main.c' l='1718' u='c' c='main'/>
+<def f='remake/read.c' l='2823' ll='2931' type='void construct_include_path(const char ** arg_dirs)'/>
+<doc f='remake/read.c' l='2820'>/* Construct the list of include directories
+   from the arguments and the default list.  */</doc>

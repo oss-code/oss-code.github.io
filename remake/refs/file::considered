@@ -1,0 +1,9 @@
+<dec f='remake/filedef.h' l='72' type='unsigned int'/>
+<offset>1408</offset>
+<doc f='remake/filedef.h' l='72'>/* equal to &apos;considered&apos; if file has been
+                                   considered on current scan of goal chain */</doc>
+<use f='remake/remake.c' l='326' u='r' c='update_file'/>
+<use f='remake/remake.c' l='345' u='w' c='update_file'/>
+<use f='remake/remake.c' l='374' u='w' c='update_file'/>
+<use f='remake/remake.c' l='704' u='w' c='update_file_1'/>
+<use f='remake/remake.c' l='1161' u='w' c='check_dep'/>

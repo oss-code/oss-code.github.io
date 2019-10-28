@@ -1,0 +1,32 @@
+<dec f='remake/makeint.h' l='500' type='char * find_next_token(const char ** , unsigned int * )'/>
+<dec f='remake/make.h' l='356' type='char * find_next_token(const char ** , unsigned int * )'/>
+<use f='remake/function.c' l='176' u='c' c='patsubst_expand_pat'/>
+<use f='remake/function.c' l='428' u='c' c='func_join'/>
+<use f='remake/function.c' l='432' u='c' c='func_join'/>
+<use f='remake/function.c' l='536' u='c' c='func_notdir_suffix'/>
+<use f='remake/function.c' l='608' u='c' c='func_basename_dir'/>
+<use f='remake/function.c' l='673' u='c' c='func_addsuffix_addprefix'/>
+<use f='remake/function.c' l='706' u='c' c='func_firstword'/>
+<use f='remake/function.c' l='722' u='c' c='func_lastword'/>
+<use f='remake/function.c' l='738' u='c' c='func_words'/>
+<use f='remake/function.c' l='795' u='c' c='func_word'/>
+<use f='remake/function.c' l='829' u='c' c='func_wordlist'/>
+<use f='remake/function.c' l='835' u='c' c='func_wordlist'/>
+<use f='remake/function.c' l='878' u='c' c='func_foreach'/>
+<use f='remake/function.c' l='968' u='c' c='func_filter_filterout'/>
+<use f='remake/function.c' l='992' u='c' c='func_filter_filterout'/>
+<use f='remake/function.c' l='1168' u='c' c='func_sort'/>
+<use f='remake/function.c' l='1179' u='c' c='func_sort'/>
+<use f='remake/function.c' l='2172' u='c' c='func_realpath'/>
+<use f='remake/function.c' l='2305' u='c' c='func_abspath'/>
+<use f='remake/job.c' l='2962' u='c' c='construct_command_argv_internal'/>
+<def f='remake/misc.c' l='246' ll='259' type='char * find_next_token(const char ** ptr, unsigned int * lengthptr)'/>
+<doc f='remake/misc.c' l='242'>/* Find the next token in PTR; return the address of it, and store the length
+   of the token into *LENGTHPTR if LENGTHPTR is not nil.  Set *PTR to the end
+   of the token, so this function can be called repeatedly in a loop.  */</doc>
+<use f='remake/read.c' l='195' u='c' c='read_all_makefiles'/>
+<use f='remake/read.c' l='835' u='c' c='eval'/>
+<use f='remake/read.c' l='836' u='c' c='eval'/>
+<use f='remake/read.c' l='860' u='c' c='eval'/>
+<use f='remake/read.c' l='864' u='c' c='eval'/>
+<use f='remake/remake.c' l='1702' u='c' c='library_search'/>

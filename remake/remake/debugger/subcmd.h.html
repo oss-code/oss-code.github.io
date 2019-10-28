@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>subcmd.h source code [remake/debugger/subcmd.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/debugger/subcmd.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>remake</a>/<a href='./'>debugger</a>/<a href='subcmd.h.html'>subcmd.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><u>#<span data-ppcond="1">ifndef</span> <span class="macro" data-ref="_M/REMAKE_DBG_SUBCMD_H">REMAKE_DBG_SUBCMD_H</span></u></td></tr>
+<tr><th id="2">2</th><td><u>#define <dfn class="macro" id="_M/REMAKE_DBG_SUBCMD_H" data-ref="_M/REMAKE_DBG_SUBCMD_H">REMAKE_DBG_SUBCMD_H</dfn></u></td></tr>
+<tr><th id="3">3</th><td></td></tr>
+<tr><th id="4">4</th><td><b>typedef</b> <b>struct</b> {</td></tr>
+<tr><th id="5">5</th><td>  <em>const</em> <em>char</em> *<dfn class="decl" id="(anonymous)::name" title='(anonymous struct)::name' data-ref="(anonymous)::name">name</dfn>;	  <i>/* name of subcommand command. */</i></td></tr>
+<tr><th id="6">6</th><td>  <em>const</em> <em>char</em> *<dfn class="decl" id="(anonymous)::short_doc" title='(anonymous struct)::short_doc' data-ref="(anonymous)::short_doc">short_doc</dfn>;  <i>/* short description of subcommand */</i></td></tr>
+<tr><th id="7">7</th><td>  <em>const</em> <em>char</em> *<dfn class="decl" id="(anonymous)::doc" title='(anonymous struct)::doc' data-ref="(anonymous)::doc">doc</dfn>;	  <i>/* full description of subcommand */</i> </td></tr>
+<tr><th id="8">8</th><td>  <em>int</em> *<dfn class="decl" id="(anonymous)::var" title='(anonymous struct)::var' data-ref="(anonymous)::var">var</dfn>;	          <i>/* address of variable setting. NULL if no</i></td></tr>
+<tr><th id="9">9</th><td><i>			     setting. */</i></td></tr>
+<tr><th id="10">10</th><td>  <a class="macro" href="../types.h.html#50" title="uint8_t" data-ref="_M/bool">bool</a> <dfn class="decl" id="(anonymous)::b_onoff" title='(anonymous struct)::b_onoff' data-ref="(anonymous)::b_onoff">b_onoff</dfn>;           <i>/* True if on/off variable, false if int. </i></td></tr>
+<tr><th id="11">11</th><td><i>			     FIXME: generalize into enumeration.</i></td></tr>
+<tr><th id="12">12</th><td><i>			   */</i></td></tr>
+<tr><th id="13">13</th><td>  <em>unsigned</em> <em>int</em> <dfn class="decl" id="(anonymous)::min_abbrev" title='(anonymous struct)::min_abbrev' data-ref="(anonymous)::min_abbrev">min_abbrev</dfn>; <i>/* Fewest number of characters needed</i></td></tr>
+<tr><th id="14">14</th><td><i>                              to match name. */</i></td></tr>
+<tr><th id="15">15</th><td>} <dfn class="typedef" id="subcommand_var_info_t" title='subcommand_var_info_t' data-type='struct subcommand_var_info_t' data-ref="subcommand_var_info_t">subcommand_var_info_t</dfn>;</td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><b>extern</b> <em>void</em> <a class="decl" href="command/help.h.html#dbg_help_subcmd_entry" title='dbg_help_subcmd_entry' data-ref="dbg_help_subcmd_entry" id="dbg_help_subcmd_entry">dbg_help_subcmd_entry</a>(<em>const</em> <em>char</em> *<dfn class="local col5 decl" id="125psz_subcmd_name" title='psz_subcmd_name' data-type='const char *' data-ref="125psz_subcmd_name">psz_subcmd_name</dfn>, </td></tr>
+<tr><th id="18">18</th><td>				  <em>const</em> <em>char</em> *<dfn class="local col6 decl" id="126psz_fmt" title='psz_fmt' data-type='const char *' data-ref="126psz_fmt">psz_fmt</dfn>,</td></tr>
+<tr><th id="19">19</th><td>				  <a class="typedef" href="#subcommand_var_info_t" title='subcommand_var_info_t' data-type='struct subcommand_var_info_t' data-ref="subcommand_var_info_t">subcommand_var_info_t</a> *<dfn class="local col7 decl" id="127p_subcmd" title='p_subcmd' data-type='subcommand_var_info_t *' data-ref="127p_subcmd">p_subcmd</dfn>, </td></tr>
+<tr><th id="20">20</th><td>				  <a class="macro" href="../types.h.html#50" title="uint8_t" data-ref="_M/bool">bool</a> <dfn class="local col8 decl" id="128full_info" title='full_info' data-type='uint8_t' data-ref="128full_info">full_info</dfn>);</td></tr>
+<tr><th id="21">21</th><td><u>#<span data-ppcond="1">endif</span> /* DBG_CMD_H*/</u></td></tr>
+<tr><th id="22">22</th><td><i>/* </i></td></tr>
+<tr><th id="23">23</th><td><i> * Local variables:</i></td></tr>
+<tr><th id="24">24</th><td><i> *  c-file-style: "gnu"</i></td></tr>
+<tr><th id="25">25</th><td><i> *  indent-tabs-mode: nil</i></td></tr>
+<tr><th id="26">26</th><td><i> * End:</i></td></tr>
+<tr><th id="27">27</th><td><i> */</i></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='cmd.c.html'>remake/debugger/cmd.c</a><br/>Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

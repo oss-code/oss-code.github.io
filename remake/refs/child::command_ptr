@@ -1,0 +1,11 @@
+<dec f='remake/job.h' l='100' type='char *'/>
+<offset>320</offset>
+<doc f='remake/job.h' l='100'>/* Ptr into command_lines[command_line].  */</doc>
+<use f='remake/job.c' l='984' u='r' c='start_job_command'/>
+<use f='remake/job.c' l='992' u='r' c='start_job_command'/>
+<use f='remake/job.c' l='1083' u='w' c='start_job_command'/>
+<use f='remake/job.c' l='1087' u='w' c='start_job_command'/>
+<use f='remake/job.c' l='1774' u='r' c='job_next_command'/>
+<use f='remake/job.c' l='1774' u='r' c='job_next_command'/>
+<use f='remake/job.c' l='1780' u='w' c='job_next_command'/>
+<use f='remake/job.c' l='1786' u='w' c='job_next_command'/>

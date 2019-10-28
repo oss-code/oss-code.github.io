@@ -1,0 +1,12 @@
+<dec f='remake/commands.h' l='31' type='char **'/>
+<use f='remake/commands.c' l='334' u='r' c='chop_commands'/>
+<use f='remake/commands.c' l='404' u='w' c='chop_commands'/>
+<use f='remake/commands.c' l='460' u='r' c='expand_command_lines'/>
+<use f='remake/commands.c' l='540' u='r' c='expand_command_lines'/>
+<offset>256</offset>
+<doc f='remake/commands.h' l='31'>/* Commands chopped up into lines.  */</doc>
+<use f='remake/default.c' l='712' u='w' c='install_default_suffix_rules'/>
+<use f='remake/job.c' l='1551' u='r' c='new_job'/>
+<use f='remake/job.c' l='1639' u='r' c='new_job'/>
+<use f='remake/read.c' l='1978' u='w' c='record_files'/>
+<use f='remake/rule.c' l='389' u='w' c='install_pattern_rule'/>

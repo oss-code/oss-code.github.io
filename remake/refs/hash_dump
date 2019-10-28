@@ -1,0 +1,6 @@
+<dec f='remake/hash.h' l='74' type='void ** hash_dump(struct hash_table * ht, void ** vector_0, qsort_cmp_t compare)'/>
+<use f='remake/debugger/command/info.h' l='176' u='c' c='dbg_cmd_info_targets'/>
+<use f='remake/file.c' l='519' u='c' c='snap_deps'/>
+<def f='remake/hash.c' l='292' ll='311' type='void ** hash_dump(struct hash_table * ht, void ** vector_0, qsort_cmp_t compare)'/>
+<doc f='remake/hash.c' l='289'>/* Dump all items into a NULL-terminated vector.  Use the
+   user-supplied vector, or malloc one.  */</doc>

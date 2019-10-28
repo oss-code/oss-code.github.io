@@ -1,0 +1,41 @@
+<dec f='remake/makeint.h' l='498' type='char * xstrdup(const char * )'/>
+<def f='remake/alloc.c' l='67' ll='86' type='char * xstrdup(const char * ptr)'/>
+<dec f='remake/make.h' l='354' type='char * xstrdup(const char * )'/>
+<use f='remake/ar.c' l='61' u='c' c='ar_parse_name'/>
+<use f='remake/commands.c' l='345' u='c' c='chop_commands'/>
+<use f='remake/default.c' l='711' u='c' c='install_default_suffix_rules'/>
+<use f='remake/expand.c' l='216' u='c' c='variable_expand_string'/>
+<use f='remake/expand.c' l='433' u='c' c='expand_argument'/>
+<use f='remake/file.c' l='434' u='c' c='expand_deps'/>
+<use f='remake/job.c' l='2952' u='c' c='construct_command_argv_internal'/>
+<use f='remake/job.c' l='2956' u='c' c='construct_command_argv_internal'/>
+<use f='remake/load.c' l='112' u='c' c='load_object'/>
+<use f='remake/loadapi.c' l='61' u='c' c='gmk_eval'/>
+<use f='remake/main.c' l='1202' u='c' c='main'/>
+<use f='remake/main.c' l='1308' u='c' c='main'/>
+<use f='remake/main.c' l='1310' u='c' c='main'/>
+<use f='remake/main.c' l='1558' u='c' c='main'/>
+<use f='remake/main.c' l='1903' u='c' c='main'/>
+<use f='remake/main.c' l='2296' u='c' c='main'/>
+<use f='remake/main.c' l='2308' u='c' c='main'/>
+<use f='remake/main.c' l='2823' u='c' c='decode_switches'/>
+<use f='remake/main.c' l='2845' u='c' c='decode_switches'/>
+<use f='remake/main.c' l='2868' u='c' c='decode_switches'/>
+<use f='remake/misc.c' l='276' u='c' c='copy_dep_chain'/>
+<use f='remake/read.c' l='1419' u='c' c='remove_comments'/>
+<use f='remake/read.c' l='1884' u='c' c='record_target_var'/>
+<use f='remake/read.c' l='1926' u='c' c='record_target_var'/>
+<use f='remake/read.c' l='2975' u='c' c='remake_tilde_expand'/>
+<use f='remake/read.c' l='2992' u='c' c='remake_tilde_expand'/>
+<use f='remake/read.c' l='2994' u='c' c='remake_tilde_expand'/>
+<use f='remake/read.c' l='3041' u='c' c='parse_file_seq'/>
+<use f='remake/read.c' l='3041' u='c' c='parse_file_seq'/>
+<use f='remake/read.c' l='3306' u='c' c='parse_file_seq'/>
+<use f='remake/read.c' l='3041' u='c' c='parse_file_seq'/>
+<use f='remake/remake.c' l='1692' u='c' c='library_search'/>
+<use f='remake/rule.c' l='388' u='c' c='install_pattern_rule'/>
+<use f='remake/variable.c' l='296' u='c' c='define_variable_in_set'/>
+<use f='remake/variable.c' l='316' u='c' c='define_variable_in_set'/>
+<use f='remake/variable.c' l='968' u='c' c='define_automatic_variables'/>
+<use f='remake/variable.c' l='1135' u='c' c='target_environment'/>
+<use f='remake/variable.c' l='1145' u='c' c='target_environment'/>

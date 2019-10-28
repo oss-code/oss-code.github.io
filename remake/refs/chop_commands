@@ -1,0 +1,6 @@
+<dec f='remake/commands.h' l='70' type='void chop_commands(struct commands * cmds)'/>
+<def f='remake/commands.c' l='325' ll='436' type='void chop_commands(struct commands * cmds)'/>
+<doc f='remake/commands.c' l='322'>/* Chop CMDS up into individual command lines if necessary.
+   Also set the &apos;lines_flags&apos; and &apos;any_recurse&apos; members.  */</doc>
+<use f='remake/job.c' l='1515' u='c' c='new_job'/>
+<use f='remake/remake.c' l='1316' u='c' c='remake_file'/>

@@ -1,0 +1,36 @@
+<dec f='remake/filedef.h' l='45' type='struct file *'/>
+<offset>832</offset>
+<doc f='remake/filedef.h' l='45'>/* Previous entry for same file name;
+                                   used when there are multiple double-colon
+                                   entries for the same file.  */</doc>
+<use f='remake/file.c' l='87' u='r' c='rehash_file'/>
+<use f='remake/file.c' l='190' u='r' c='rename_file'/>
+<use f='remake/file.c' l='527' u='r' c='snap_deps'/>
+<use f='remake/file.c' l='533' u='r' c='snap_deps'/>
+<use f='remake/file.c' l='544' u='r' c='snap_deps'/>
+<use f='remake/file.c' l='546' u='r' c='snap_deps'/>
+<use f='remake/file.c' l='549' u='r' c='snap_deps'/>
+<use f='remake/file.c' l='551' u='r' c='snap_deps'/>
+<use f='remake/file.c' l='554' u='r' c='snap_deps'/>
+<use f='remake/file.c' l='556' u='r' c='snap_deps'/>
+<use f='remake/file.c' l='565' u='r' c='snap_deps'/>
+<use f='remake/file.c' l='568' u='r' c='snap_deps'/>
+<use f='remake/file.c' l='574' u='r' c='snap_deps'/>
+<use f='remake/file.c' l='578' u='r' c='snap_deps'/>
+<use f='remake/file.c' l='598' u='r' c='snap_deps'/>
+<use f='remake/file.c' l='609' u='r' c='snap_deps'/>
+<use f='remake/file.c' l='877' u='r' c='print_target_props'/>
+<use f='remake/file.c' l='878' u='r' c='print_target_props'/>
+<use f='remake/file.c' l='1018' u='r' c='print_file'/>
+<use f='remake/file.c' l='1019' u='r' c='print_file'/>
+<use f='remake/file_basic.c' l='180' u='w' c='enter_file'/>
+<use f='remake/main.c' l='2137' u='r' c='main'/>
+<use f='remake/remake.c' l='133' u='r' c='update_goal_chain'/>
+<use f='remake/remake.c' l='341' u='r' c='update_file'/>
+<use f='remake/remake.c' l='370' u='r' c='update_file'/>
+<use f='remake/remake.c' l='660' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='724' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='894' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='1050' u='r' c='notice_finished_file'/>
+<use f='remake/remake.c' l='1056' u='r' c='notice_finished_file'/>
+<use f='remake/remake.c' l='1548' u='r' c='f_mtime'/>

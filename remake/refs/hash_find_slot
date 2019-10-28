@@ -1,0 +1,26 @@
+<dec f='remake/hash.h' l='62' type='void ** hash_find_slot(struct hash_table * ht, const void * key)'/>
+<use f='remake/commands.c' l='252' u='c' c='set_file_variables'/>
+<use f='remake/debugger/file2line.c' l='66' u='c' c='target_for_file_and_line'/>
+<use f='remake/debugger/file2line.c' l='84' u='c' c='enter_target_lineno'/>
+<use f='remake/debugger/file2line.c' l='133' u='c' c='enter_rule_lineno'/>
+<use f='remake/dir.c' l='453' u='c' c='find_directory'/>
+<use f='remake/dir.c' l='529' u='c' c='find_directory'/>
+<use f='remake/dir.c' l='718' u='c' c='dir_contents_file_exists_p'/>
+<use f='remake/file.c' l='82' u='c' c='rehash_file'/>
+<use f='remake/file_basic.c' l='159' u='c' c='enter_file'/>
+<def f='remake/hash.c' l='83' ll='116' type='void ** hash_find_slot(struct hash_table * ht, const void * key)'/>
+<use f='remake/hash.c' l='121' u='c' c='hash_find_item'/>
+<use f='remake/hash.c' l='128' u='c' c='hash_insert'/>
+<use f='remake/hash.c' l='149' u='c' c='hash_insert_at'/>
+<use f='remake/hash.c' l='158' u='c' c='hash_delete'/>
+<use f='remake/hash.c' l='268' u='c' c='hash_rehash'/>
+<doc f='remake/hash.c' l='78'>/* Returns the address of the table slot matching &apos;key&apos;.  If &apos;key&apos; is
+   not found, return the address of an empty slot suitable for
+   inserting &apos;key&apos;.  The caller is responsible for incrementing
+   ht_fill on insertion.  */</doc>
+<use f='remake/profile.c' l='82' u='c' c='add_profile_entry'/>
+<use f='remake/strcache.c' l='193' u='c' c='add_hash'/>
+<use f='remake/variable.c' l='249' u='c' c='define_variable_in_set'/>
+<use f='remake/variable.c' l='385' u='c' c='undefine_variable_in_set'/>
+<use f='remake/variable.c' l='807' u='c' c='merge_variable_sets'/>
+<use f='remake/variable.c' l='1104' u='c' c='target_environment'/>

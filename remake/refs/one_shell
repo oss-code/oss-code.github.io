@@ -1,0 +1,10 @@
+<dec f='remake/makeint.h' l='630' type='int'/>
+<dec f='remake/make.h' l='466' type='int'/>
+<use f='remake/commands.c' l='339' u='r' c='chop_commands'/>
+<use f='remake/job.c' l='2569' u='r' c='construct_command_argv_internal'/>
+<use f='remake/job.c' l='2818' u='r' c='construct_command_argv_internal'/>
+<def f='remake/main.c' l='512' type='int'/>
+<doc f='remake/main.c' l='508'>/* Nonzero if we have seen the &apos;.ONESHELL&apos; target.
+   This causes the entire recipe to be handed to SHELL
+   as a single string, potentially containing newlines.  */</doc>
+<use f='remake/read.c' l='2091' u='w' c='record_files'/>

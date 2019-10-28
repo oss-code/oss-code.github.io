@@ -1,0 +1,7 @@
+<dec f='remake/variable.h' l='69' type='unsigned int'/>
+<offset>358</offset>
+<doc f='remake/variable.h' l='69'>/* Nonzero if currently being expanded.  */</doc>
+<use f='remake/expand.c' l='120' u='r' c='recursively_expand_for_file'/>
+<use f='remake/expand.c' l='136' u='w' c='recursively_expand_for_file'/>
+<use f='remake/expand.c' l='141' u='w' c='recursively_expand_for_file'/>
+<use f='remake/variable.c' l='324' u='w' c='define_variable_in_set'/>

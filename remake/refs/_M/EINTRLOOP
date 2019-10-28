@@ -1,0 +1,59 @@
+<dec f='remake/makeint.h' l='732'/>
+<doc f='remake/makeint.h' l='725'>/* Some systems (like Solaris, PTX, etc.) do not support the SA_RESTART flag
+   properly according to POSIX.  So, we try to wrap common system calls with
+   checks for EINTR.  Note that there are still plenty of system calls that
+   can fail with EINTR but this, reportedly, gets the vast majority of
+   failure cases.  If you still experience failures you&apos;ll need to either get
+   a system where SA_RESTART works, or you need to avoid -j.  */</doc>
+<dec f='remake/make.h' l='558'/>
+<doc f='remake/make.h' l='551'>/* Some systems (like Solaris, PTX, etc.) do not support the SA_RESTART flag
+   properly according to POSIX.  So, we try to wrap common system calls with
+   checks for EINTR.  Note that there are still plenty of system calls that
+   can fail with EINTR but this, reportedly, gets the vast majority of
+   failure cases.  If you still experience failures you&apos;ll need to either get
+   a system where SA_RESTART works, or you need to avoid -j.  */</doc>
+<use f='remake/arscan.c' l='300' u='c'/>
+<use f='remake/arscan.c' l='426' u='c'/>
+<use f='remake/arscan.c' l='509' u='c'/>
+<use f='remake/arscan.c' l='578' u='c'/>
+<use f='remake/arscan.c' l='638' u='c'/>
+<use f='remake/arscan.c' l='766' u='c'/>
+<use f='remake/arscan.c' l='770' u='c'/>
+<use f='remake/arscan.c' l='773' u='c'/>
+<use f='remake/arscan.c' l='777' u='c'/>
+<use f='remake/arscan.c' l='780' u='c'/>
+<use f='remake/arscan.c' l='784' u='c'/>
+<use f='remake/arscan.c' l='799' u='c'/>
+<use f='remake/arscan.c' l='802' u='c'/>
+<use f='remake/commands.c' l='742' u='c'/>
+<use f='remake/dir.c' l='496' u='c'/>
+<use f='remake/function.c' l='1850' u='c'/>
+<use f='remake/function.c' l='2193' u='c'/>
+<use f='remake/job.c' l='559' u='c'/>
+<use f='remake/job.c' l='2060' u='c'/>
+<use f='remake/job.c' l='2062' u='c'/>
+<use f='remake/job.c' l='2064' u='c'/>
+<use f='remake/output.c' l='72' u='c'/>
+<use f='remake/output.c' l='75' u='c'/>
+<use f='remake/output.c' l='238' u='c'/>
+<use f='remake/output.c' l='392' u='c'/>
+<use f='remake/output.c' l='398' u='c'/>
+<use f='remake/posixos.c' l='67' u='c'/>
+<use f='remake/posixos.c' l='76' u='c'/>
+<use f='remake/posixos.c' l='150' u='c'/>
+<use f='remake/posixos.c' l='172' u='c'/>
+<use f='remake/posixos.c' l='201' u='c'/>
+<use f='remake/posixos.c' l='205' u='c'/>
+<use f='remake/posixos.c' l='277' u='c'/>
+<use f='remake/read.c' l='2868' u='c'/>
+<use f='remake/read.c' l='2909' u='c'/>
+<use f='remake/remake.c' l='1249' u='c'/>
+<use f='remake/remake.c' l='1258' u='c'/>
+<use f='remake/remake.c' l='1262' u='c'/>
+<use f='remake/remake.c' l='1267' u='c'/>
+<use f='remake/remake.c' l='1271' u='c'/>
+<use f='remake/remake.c' l='1279' u='c'/>
+<use f='remake/remake.c' l='1571' u='c'/>
+<use f='remake/remake.c' l='1607' u='c'/>
+<use f='remake/remake.c' l='1627' u='c'/>
+<use f='remake/vpath.c' l='504' u='c'/>

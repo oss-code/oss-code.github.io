@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>dep.h source code [remake/dep.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="dep,goaldep,nameseq "/>
+<link rel="stylesheet" href="../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/dep.h'; var root_path = '..'; var data_path = '../../data';</script>
+<script src='../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='./'>remake</a>/<a href='dep.h.html'>dep.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Definitions of dependency data structures for GNU Make.</i></td></tr>
+<tr><th id="2">2</th><td><i>Copyright (C) 1988-2016 Free Software Foundation, Inc.</i></td></tr>
+<tr><th id="3">3</th><td><i>This file is part of GNU Make.</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>GNU Make is free software; you can redistribute it and/or modify it under the</i></td></tr>
+<tr><th id="6">6</th><td><i>terms of the GNU General Public License as published by the Free Software</i></td></tr>
+<tr><th id="7">7</th><td><i>Foundation; either version 3 of the License, or (at your option) any later</i></td></tr>
+<tr><th id="8">8</th><td><i>version.</i></td></tr>
+<tr><th id="9">9</th><td><i></i></td></tr>
+<tr><th id="10">10</th><td><i>GNU Make is distributed in the hope that it will be useful, but WITHOUT ANY</i></td></tr>
+<tr><th id="11">11</th><td><i>WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR</i></td></tr>
+<tr><th id="12">12</th><td><i>A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</i></td></tr>
+<tr><th id="13">13</th><td><i></i></td></tr>
+<tr><th id="14">14</th><td><i>You should have received a copy of the GNU General Public License along with</i></td></tr>
+<tr><th id="15">15</th><td><i>this program.  If not, see &lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.  */</i></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><u>#<span data-ppcond="17">ifndef</span> <span class="macro" data-ref="_M/REMAKE_DEP_H">REMAKE_DEP_H</span></u></td></tr>
+<tr><th id="18">18</th><td><u>#define <dfn class="macro" id="_M/REMAKE_DEP_H" data-ref="_M/REMAKE_DEP_H">REMAKE_DEP_H</dfn></u></td></tr>
+<tr><th id="19">19</th><td></td></tr>
+<tr><th id="20">20</th><td><u>#include <a href="gnuremake.h.html">"gnuremake.h"</a></u></td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><u>#define <dfn class="macro" id="_M/NAMESEQ" data-ref="_M/NAMESEQ">NAMESEQ</dfn>(_t)     \</u></td></tr>
+<tr><th id="23">23</th><td><u>    _t *<dfn class="decl" id="nameseq::next" title='nameseq::next' data-ref="nameseq::next"><dfn class="decl" id="dep::next" title='dep::next' data-ref="dep::next"><dfn class="decl" id="goaldep::next" title='goaldep::next' data-ref="goaldep::next">next</dfn></dfn></dfn>;           \</u></td></tr>
+<tr><th id="24">24</th><td><u>    const char *<dfn class="decl" id="nameseq::name" title='nameseq::name' data-ref="nameseq::name"><dfn class="decl" id="dep::name" title='dep::name' data-ref="dep::name"><dfn class="decl" id="goaldep::name" title='goaldep::name' data-ref="goaldep::name">name</dfn></dfn></dfn></u></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><b>struct</b> <dfn class="type def" id="nameseq" title='nameseq' data-ref="nameseq">nameseq</dfn></td></tr>
+<tr><th id="27">27</th><td>  {</td></tr>
+<tr><th id="28">28</th><td>    <a class="macro" href="#22" title="struct nameseq *next; const char *name" data-ref="_M/NAMESEQ">NAMESEQ</a> (<b>struct</b> <a class="type" href="#nameseq" title='nameseq' data-ref="nameseq">nameseq</a>);</td></tr>
+<tr><th id="29">29</th><td>  };</td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><i>/* Flag bits for the second argument to 'read_makefile'.</i></td></tr>
+<tr><th id="32">32</th><td><i>   These flags are saved in the 'flags' field of each</i></td></tr>
+<tr><th id="33">33</th><td><i>   'struct goaldep' in the chain returned by 'read_all_makefiles'.  */</i></td></tr>
+<tr><th id="34">34</th><td></td></tr>
+<tr><th id="35">35</th><td><u>#define <dfn class="macro" id="_M/RM_NO_DEFAULT_GOAL" data-ref="_M/RM_NO_DEFAULT_GOAL">RM_NO_DEFAULT_GOAL</dfn>      (1 &lt;&lt; 0) /* Do not set default goal.  */</u></td></tr>
+<tr><th id="36">36</th><td><u>#define <dfn class="macro" id="_M/RM_INCLUDED" data-ref="_M/RM_INCLUDED">RM_INCLUDED</dfn>             (1 &lt;&lt; 1) /* Search makefile search path.  */</u></td></tr>
+<tr><th id="37">37</th><td><u>#define <dfn class="macro" id="_M/RM_DONTCARE" data-ref="_M/RM_DONTCARE">RM_DONTCARE</dfn>             (1 &lt;&lt; 2) /* No error if it doesn't exist.  */</u></td></tr>
+<tr><th id="38">38</th><td><u>#define <dfn class="macro" id="_M/RM_NO_TILDE" data-ref="_M/RM_NO_TILDE">RM_NO_TILDE</dfn>             (1 &lt;&lt; 3) /* Don't expand ~ in file name.  */</u></td></tr>
+<tr><th id="39">39</th><td><u>#define <dfn class="macro" id="_M/RM_NOFLAG" data-ref="_M/RM_NOFLAG">RM_NOFLAG</dfn>               0</u></td></tr>
+<tr><th id="40">40</th><td></td></tr>
+<tr><th id="41">41</th><td><i>/* Structure representing one dependency of a file.</i></td></tr>
+<tr><th id="42">42</th><td><i>   Each struct file's 'deps' points to a chain of these,</i></td></tr>
+<tr><th id="43">43</th><td><i>   chained through the 'next'. 'stem' is the stem for this</i></td></tr>
+<tr><th id="44">44</th><td><i>   dep line of static pattern rule or NULL.</i></td></tr>
+<tr><th id="45">45</th><td><i></i></td></tr>
+<tr><th id="46">46</th><td><i>   Note that the first two words of this match a struct nameseq.  */</i></td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td><u>#define <dfn class="macro" id="_M/DEP" data-ref="_M/DEP">DEP</dfn>(_t)                                 \</u></td></tr>
+<tr><th id="49">49</th><td><u>    NAMESEQ (_t);                               \</u></td></tr>
+<tr><th id="50">50</th><td><u>    struct <a class="type" href="filedef.h.html#file" title='file' data-ref="file">file</a> *<dfn class="decl" id="dep::file" title='dep::file' data-ref="dep::file"><dfn class="decl" id="goaldep::file" title='goaldep::file' data-ref="goaldep::file">file</dfn></dfn>;                          \</u></td></tr>
+<tr><th id="51">51</th><td><u>    const char *<dfn class="decl" id="dep::stem" title='dep::stem' data-ref="dep::stem"><dfn class="decl" id="goaldep::stem" title='goaldep::stem' data-ref="goaldep::stem">stem</dfn></dfn>;                           \</u></td></tr>
+<tr><th id="52">52</th><td><u>    unsigned short <dfn class="decl" id="dep::flags" title='dep::flags' data-ref="dep::flags"><dfn class="decl" id="goaldep::flags" title='goaldep::flags' data-ref="goaldep::flags">flags</dfn></dfn> : 8;                   \</u></td></tr>
+<tr><th id="53">53</th><td><u>    unsigned short <dfn class="decl" id="dep::changed" title='dep::changed' data-ref="dep::changed"><dfn class="decl" id="goaldep::changed" title='goaldep::changed' data-ref="goaldep::changed">changed</dfn></dfn> : 1;                 \</u></td></tr>
+<tr><th id="54">54</th><td><u>    unsigned short <dfn class="decl" id="dep::ignore_mtime" title='dep::ignore_mtime' data-ref="dep::ignore_mtime"><dfn class="decl" id="goaldep::ignore_mtime" title='goaldep::ignore_mtime' data-ref="goaldep::ignore_mtime">ignore_mtime</dfn></dfn> : 1;            \</u></td></tr>
+<tr><th id="55">55</th><td><u>    unsigned short <dfn class="decl" id="dep::staticpattern" title='dep::staticpattern' data-ref="dep::staticpattern"><dfn class="decl" id="goaldep::staticpattern" title='goaldep::staticpattern' data-ref="goaldep::staticpattern">staticpattern</dfn></dfn> : 1;           \</u></td></tr>
+<tr><th id="56">56</th><td><u>    unsigned short <dfn class="decl" id="dep::need_2nd_expansion" title='dep::need_2nd_expansion' data-ref="dep::need_2nd_expansion"><dfn class="decl" id="goaldep::need_2nd_expansion" title='goaldep::need_2nd_expansion' data-ref="goaldep::need_2nd_expansion">need_2nd_expansion</dfn></dfn> : 1</u></td></tr>
+<tr><th id="57">57</th><td></td></tr>
+<tr><th id="58">58</th><td><b>struct</b> <dfn class="type def" id="dep" title='dep' data-ref="dep">dep</dfn></td></tr>
+<tr><th id="59">59</th><td>  {</td></tr>
+<tr><th id="60">60</th><td>    <a class="macro" href="#48" title="struct dep *next; const char *name; struct file *file; const char *stem; unsigned short flags : 8; unsigned short changed : 1; unsigned short ignore_mtime : 1; unsigned short staticpattern : 1; unsigned short need_2nd_expansion : 1" data-ref="_M/DEP">DEP</a> (<b>struct</b> <a class="type" href="#dep" title='dep' data-ref="dep">dep</a>);</td></tr>
+<tr><th id="61">61</th><td>  };</td></tr>
+<tr><th id="62">62</th><td></td></tr>
+<tr><th id="63">63</th><td><i>/* Structure representing one goal.</i></td></tr>
+<tr><th id="64">64</th><td><i>   The goals to be built constitute a chain of these, chained through 'next'.</i></td></tr>
+<tr><th id="65">65</th><td><i>   'stem' is not used, but it's simpler to include and ignore it.  */</i></td></tr>
+<tr><th id="66">66</th><td></td></tr>
+<tr><th id="67">67</th><td><b>struct</b> <dfn class="type def" id="goaldep" title='goaldep' data-ref="goaldep">goaldep</dfn></td></tr>
+<tr><th id="68">68</th><td>  {</td></tr>
+<tr><th id="69">69</th><td>    <a class="macro" href="#48" title="struct goaldep *next; const char *name; struct file *file; const char *stem; unsigned short flags : 8; unsigned short changed : 1; unsigned short ignore_mtime : 1; unsigned short staticpattern : 1; unsigned short need_2nd_expansion : 1" data-ref="_M/DEP">DEP</a> (<b>struct</b> <a class="type" href="#goaldep" title='goaldep' data-ref="goaldep">goaldep</a>);</td></tr>
+<tr><th id="70">70</th><td>    <em>unsigned</em> <em>short</em> <dfn class="decl" id="goaldep::error" title='goaldep::error' data-ref="goaldep::error">error</dfn>;</td></tr>
+<tr><th id="71">71</th><td>    <a class="typedef" href="gnuremake.h.html#gmk_floc" title='gmk_floc' data-type='struct gmk_floc' data-ref="gmk_floc">gmk_floc</a> <dfn class="decl" id="goaldep::floc" title='goaldep::floc' data-ref="goaldep::floc">floc</dfn>;</td></tr>
+<tr><th id="72">72</th><td>  };</td></tr>
+<tr><th id="73">73</th><td></td></tr>
+<tr><th id="74">74</th><td><u>#define <dfn class="macro" id="_M/PARSEFS_NONE" data-ref="_M/PARSEFS_NONE">PARSEFS_NONE</dfn>    0x0000</u></td></tr>
+<tr><th id="75">75</th><td><u>#define <dfn class="macro" id="_M/PARSEFS_NOSTRIP" data-ref="_M/PARSEFS_NOSTRIP">PARSEFS_NOSTRIP</dfn> 0x0001</u></td></tr>
+<tr><th id="76">76</th><td><u>#define <dfn class="macro" id="_M/PARSEFS_NOAR" data-ref="_M/PARSEFS_NOAR">PARSEFS_NOAR</dfn>    0x0002</u></td></tr>
+<tr><th id="77">77</th><td><u>#define <dfn class="macro" id="_M/PARSEFS_NOGLOB" data-ref="_M/PARSEFS_NOGLOB">PARSEFS_NOGLOB</dfn>  0x0004</u></td></tr>
+<tr><th id="78">78</th><td><u>#define <dfn class="macro" id="_M/PARSEFS_EXISTS" data-ref="_M/PARSEFS_EXISTS">PARSEFS_EXISTS</dfn>  0x0008</u></td></tr>
+<tr><th id="79">79</th><td><u>#define <dfn class="macro" id="_M/PARSEFS_NOCACHE" data-ref="_M/PARSEFS_NOCACHE">PARSEFS_NOCACHE</dfn> 0x0010</u></td></tr>
+<tr><th id="80">80</th><td></td></tr>
+<tr><th id="81">81</th><td><u>#define <dfn class="macro" id="_M/PARSE_FILE_SEQ" data-ref="_M/PARSE_FILE_SEQ">PARSE_FILE_SEQ</dfn>(_s,_t,_c,_p,_f) \</u></td></tr>
+<tr><th id="82">82</th><td><u>            (_t *)parse_file_seq ((_s),sizeof (_t),(_c),(_p),(_f))</u></td></tr>
+<tr><th id="83">83</th><td><u>#define <dfn class="macro" id="_M/PARSE_SIMPLE_SEQ" data-ref="_M/PARSE_SIMPLE_SEQ">PARSE_SIMPLE_SEQ</dfn>(_s,_t) \</u></td></tr>
+<tr><th id="84">84</th><td><u>            (_t *)parse_file_seq ((_s),sizeof (_t),MAP_NUL,NULL,PARSEFS_NONE)</u></td></tr>
+<tr><th id="85">85</th><td></td></tr>
+<tr><th id="86">86</th><td><u>#<span data-ppcond="86">ifdef</span> <span class="macro" data-ref="_M/VMS">VMS</span></u></td></tr>
+<tr><th id="87">87</th><td><em>void</em> *parse_file_seq ();</td></tr>
+<tr><th id="88">88</th><td><u>#<span data-ppcond="86">else</span></u></td></tr>
+<tr><th id="89">89</th><td><em>void</em> *<dfn class="decl" id="parse_file_seq" title='parse_file_seq' data-ref="parse_file_seq">parse_file_seq</dfn> (<em>char</em> **<dfn class="local col0 decl" id="80stringp" title='stringp' data-type='char **' data-ref="80stringp">stringp</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col1 decl" id="81size" title='size' data-type='unsigned int' data-ref="81size">size</dfn>,</td></tr>
+<tr><th id="90">90</th><td>                      <em>int</em> <dfn class="local col2 decl" id="82stopmap" title='stopmap' data-type='int' data-ref="82stopmap">stopmap</dfn>, <em>const</em> <em>char</em> *<dfn class="local col3 decl" id="83prefix" title='prefix' data-type='const char *' data-ref="83prefix">prefix</dfn>, <em>int</em> <dfn class="local col4 decl" id="84flags" title='flags' data-type='int' data-ref="84flags">flags</dfn>);</td></tr>
+<tr><th id="91">91</th><td><u>#<span data-ppcond="86">endif</span></u></td></tr>
+<tr><th id="92">92</th><td></td></tr>
+<tr><th id="93">93</th><td><em>char</em> *<dfn class="decl" id="remake_tilde_expand" title='remake_tilde_expand' data-ref="remake_tilde_expand">remake_tilde_expand</dfn> (<em>const</em> <em>char</em> *<dfn class="local col5 decl" id="85name" title='name' data-type='const char *' data-ref="85name">name</dfn>);</td></tr>
+<tr><th id="94">94</th><td></td></tr>
+<tr><th id="95">95</th><td><u>#<span data-ppcond="95">ifndef</span> <span class="macro" data-ref="_M/NO_ARCHIVES">NO_ARCHIVES</span></u></td></tr>
+<tr><th id="96">96</th><td><b>struct</b> <a class="type" href="#nameseq" title='nameseq' data-ref="nameseq">nameseq</a> *<a class="decl" href="ar.c.html#ar_glob" title='ar_glob' data-ref="ar_glob" id="ar_glob">ar_glob</a> (<em>const</em> <em>char</em> *<dfn class="local col6 decl" id="86arname" title='arname' data-type='const char *' data-ref="86arname">arname</dfn>, <em>const</em> <em>char</em> *<dfn class="local col7 decl" id="87member_pattern" title='member_pattern' data-type='const char *' data-ref="87member_pattern">member_pattern</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col8 decl" id="88size" title='size' data-type='unsigned int' data-ref="88size">size</dfn>);</td></tr>
+<tr><th id="97">97</th><td><u>#<span data-ppcond="95">endif</span></u></td></tr>
+<tr><th id="98">98</th><td></td></tr>
+<tr><th id="99">99</th><td><u>#define <dfn class="macro" id="_M/dep_name" data-ref="_M/dep_name">dep_name</dfn>(d)     ((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name)</u></td></tr>
+<tr><th id="100">100</th><td></td></tr>
+<tr><th id="101">101</th><td><u>#define <dfn class="macro" id="_M/alloc_seq_elt" data-ref="_M/alloc_seq_elt">alloc_seq_elt</dfn>(_t)   <a class="ref" href="makeint.h.html#xcalloc" title='xcalloc' data-ref="xcalloc">xcalloc</a> (sizeof (_t))</u></td></tr>
+<tr><th id="102">102</th><td></td></tr>
+<tr><th id="103">103</th><td><b>struct</b> <a class="type" href="#dep" title='dep' data-ref="dep">dep</a> *<dfn class="decl" id="copy_dep_chain" title='copy_dep_chain' data-ref="copy_dep_chain">copy_dep_chain</dfn> (<em>const</em> <b>struct</b> <a class="type" href="#dep" title='dep' data-ref="dep">dep</a> *<dfn class="local col9 decl" id="89d" title='d' data-type='const struct dep *' data-ref="89d">d</dfn>);</td></tr>
+<tr><th id="104">104</th><td><em>void</em> <dfn class="decl" id="free_ns_chain" title='free_ns_chain' data-ref="free_ns_chain">free_ns_chain</dfn> (<b>struct</b> <a class="type" href="#nameseq" title='nameseq' data-ref="nameseq">nameseq</a> *<dfn class="local col0 decl" id="90n" title='n' data-type='struct nameseq *' data-ref="90n">n</dfn>);</td></tr>
+<tr><th id="105">105</th><td></td></tr>
+<tr><th id="106">106</th><td><u>#<span data-ppcond="106">if</span> defined(<span class="macro" data-ref="_M/MAKE_MAINTAINER_MODE">MAKE_MAINTAINER_MODE</span>) &amp;&amp; defined(<span class="macro" data-ref="_M/__GNUC__">__GNUC__</span>)</u></td></tr>
+<tr><th id="107">107</th><td><i>/* Use inline to get real type-checking.  */</i></td></tr>
+<tr><th id="108">108</th><td><u>#define <dfn class="macro" id="_M/SI" data-ref="_M/SI">SI</dfn> static inline</u></td></tr>
+<tr><th id="109">109</th><td><a class="macro" href="#108" title="static inline" data-ref="_M/SI">SI</a> <b>struct</b> <a class="type" href="#nameseq" title='nameseq' data-ref="nameseq">nameseq</a> *<dfn class="decl def" id="alloc_ns" title='alloc_ns' data-ref="alloc_ns">alloc_ns</dfn>()      { <b>return</b> <a class="macro" href="#101" title="xcalloc (sizeof (struct nameseq))" data-ref="_M/alloc_seq_elt">alloc_seq_elt</a> (<b>struct</b> <a class="type" href="#nameseq" title='nameseq' data-ref="nameseq">nameseq</a>); }</td></tr>
+<tr><th id="110">110</th><td><a class="macro" href="#108" title="static inline" data-ref="_M/SI">SI</a> <b>struct</b> <a class="type" href="#dep" title='dep' data-ref="dep">dep</a> *<dfn class="decl def" id="alloc_dep" title='alloc_dep' data-ref="alloc_dep">alloc_dep</dfn>()         { <b>return</b> <a class="macro" href="#101" title="xcalloc (sizeof (struct dep))" data-ref="_M/alloc_seq_elt">alloc_seq_elt</a> (<b>struct</b> <a class="type" href="#dep" title='dep' data-ref="dep">dep</a>); }</td></tr>
+<tr><th id="111">111</th><td><a class="macro" href="#108" title="static inline" data-ref="_M/SI">SI</a> <b>struct</b> <a class="type" href="#goaldep" title='goaldep' data-ref="goaldep">goaldep</a> *<dfn class="decl def" id="alloc_goaldep" title='alloc_goaldep' data-ref="alloc_goaldep">alloc_goaldep</dfn>() { <b>return</b> <a class="macro" href="#101" title="xcalloc (sizeof (struct goaldep))" data-ref="_M/alloc_seq_elt">alloc_seq_elt</a> (<b>struct</b> <a class="type" href="#goaldep" title='goaldep' data-ref="goaldep">goaldep</a>); }</td></tr>
+<tr><th id="112">112</th><td></td></tr>
+<tr><th id="113">113</th><td><a class="macro" href="#108" title="static inline" data-ref="_M/SI">SI</a> <em>void</em> <dfn class="decl def" id="free_ns" title='free_ns' data-ref="free_ns">free_ns</dfn>(<b>struct</b> <a class="type" href="#nameseq" title='nameseq' data-ref="nameseq">nameseq</a> *<dfn class="local col1 decl" id="91n" title='n' data-type='struct nameseq *' data-ref="91n">n</dfn>)      { <a class="ref" href="../include/stdlib.h.html#free" title='free' data-ref="free">free</a> (<a class="local col1 ref" href="#91n" title='n' data-ref="91n">n</a>); }</td></tr>
+<tr><th id="114">114</th><td><a class="macro" href="#108" title="static inline" data-ref="_M/SI">SI</a> <em>void</em> <dfn class="decl def" id="free_dep" title='free_dep' data-ref="free_dep">free_dep</dfn>(<b>struct</b> <a class="type" href="#dep" title='dep' data-ref="dep">dep</a> *<dfn class="local col2 decl" id="92d" title='d' data-type='struct dep *' data-ref="92d">d</dfn>)         { <a class="ref" href="#free_ns" title='free_ns' data-ref="free_ns">free_ns</a> ((<b>struct</b> <a class="type" href="#nameseq" title='nameseq' data-ref="nameseq">nameseq</a> *)<a class="local col2 ref" href="#92d" title='d' data-ref="92d">d</a>); }</td></tr>
+<tr><th id="115">115</th><td><a class="macro" href="#108" title="static inline" data-ref="_M/SI">SI</a> <em>void</em> <dfn class="decl def" id="free_goaldep" title='free_goaldep' data-ref="free_goaldep">free_goaldep</dfn>(<b>struct</b> <a class="type" href="#goaldep" title='goaldep' data-ref="goaldep">goaldep</a> *<dfn class="local col3 decl" id="93g" title='g' data-type='struct goaldep *' data-ref="93g">g</dfn>) { <a class="ref" href="#free_dep" title='free_dep' data-ref="free_dep">free_dep</a> ((<b>struct</b> <a class="type" href="#dep" title='dep' data-ref="dep">dep</a> *)<a class="local col3 ref" href="#93g" title='g' data-ref="93g">g</a>); }</td></tr>
+<tr><th id="116">116</th><td></td></tr>
+<tr><th id="117">117</th><td><a class="macro" href="#108" title="static inline" data-ref="_M/SI">SI</a> <em>void</em> <dfn class="decl def" id="free_dep_chain" title='free_dep_chain' data-ref="free_dep_chain">free_dep_chain</dfn>(<b>struct</b> <a class="type" href="#dep" title='dep' data-ref="dep">dep</a> *<dfn class="local col4 decl" id="94d" title='d' data-type='struct dep *' data-ref="94d">d</dfn>)      { <a class="ref" href="#free_ns_chain" title='free_ns_chain' data-ref="free_ns_chain">free_ns_chain</a>((<b>struct</b> <a class="type" href="#nameseq" title='nameseq' data-ref="nameseq">nameseq</a> *)<a class="local col4 ref" href="#94d" title='d' data-ref="94d">d</a>); }</td></tr>
+<tr><th id="118">118</th><td><a class="macro" href="#108" title="static inline" data-ref="_M/SI">SI</a> <em>void</em> <dfn class="decl def" id="free_goal_chain" title='free_goal_chain' data-ref="free_goal_chain">free_goal_chain</dfn>(<b>struct</b> <a class="type" href="#goaldep" title='goaldep' data-ref="goaldep">goaldep</a> *<dfn class="local col5 decl" id="95g" title='g' data-type='struct goaldep *' data-ref="95g">g</dfn>) { <a class="ref" href="#free_dep_chain" title='free_dep_chain' data-ref="free_dep_chain">free_dep_chain</a>((<b>struct</b> <a class="type" href="#dep" title='dep' data-ref="dep">dep</a> *)<a class="local col5 ref" href="#95g" title='g' data-ref="95g">g</a>); }</td></tr>
+<tr><th id="119">119</th><td><u>#<span data-ppcond="106">else</span></u></td></tr>
+<tr><th id="120">120</th><td><u># define alloc_ns()          alloc_seq_elt (struct nameseq)</u></td></tr>
+<tr><th id="121">121</th><td><u># define alloc_dep()         alloc_seq_elt (struct dep)</u></td></tr>
+<tr><th id="122">122</th><td><u># define alloc_goaldep()     alloc_seq_elt (struct goaldep)</u></td></tr>
+<tr><th id="123">123</th><td></td></tr>
+<tr><th id="124">124</th><td><u># define free_ns(_n)         free (_n)</u></td></tr>
+<tr><th id="125">125</th><td><u># define free_dep(_d)        free_ns (_d)</u></td></tr>
+<tr><th id="126">126</th><td><u># define free_goaldep(_g)    free_dep (_g)</u></td></tr>
+<tr><th id="127">127</th><td></td></tr>
+<tr><th id="128">128</th><td><u># define free_dep_chain(_d)  free_ns_chain ((struct nameseq *)(_d))</u></td></tr>
+<tr><th id="129">129</th><td><u># define free_goal_chain(_g) free_ns_chain ((struct nameseq *)(_g))</u></td></tr>
+<tr><th id="130">130</th><td><u>#<span data-ppcond="106">endif</span></u></td></tr>
+<tr><th id="131">131</th><td></td></tr>
+<tr><th id="132">132</th><td><b>struct</b> <a class="type" href="#dep" title='dep' data-ref="dep">dep</a> *<a class="decl" href="#copy_dep_chain" title='copy_dep_chain' data-ref="copy_dep_chain">copy_dep_chain</a> (<em>const</em> <b>struct</b> <a class="type" href="#dep" title='dep' data-ref="dep">dep</a> *<dfn class="local col6 decl" id="96d" title='d' data-type='const struct dep *' data-ref="96d">d</dfn>);</td></tr>
+<tr><th id="133">133</th><td></td></tr>
+<tr><th id="134">134</th><td><b>struct</b> <a class="type" href="#goaldep" title='goaldep' data-ref="goaldep">goaldep</a> *<dfn class="decl" id="read_all_makefiles" title='read_all_makefiles' data-ref="read_all_makefiles">read_all_makefiles</dfn> (<em>const</em> <em>char</em> **<dfn class="local col7 decl" id="97makefiles" title='makefiles' data-type='const char **' data-ref="97makefiles">makefiles</dfn>);</td></tr>
+<tr><th id="135">135</th><td></td></tr>
+<tr><th id="136">136</th><td><i class="doc">/*! The chain of makefiles read by read_makefile.  */</i></td></tr>
+<tr><th id="137">137</th><td><b>struct</b> <a class="type" href="#goaldep" title='goaldep' data-ref="goaldep">goaldep</a> *<dfn class="decl def" id="read_makefiles" title='read_makefiles' data-ref="read_makefiles">read_makefiles</dfn>;</td></tr>
+<tr><th id="138">138</th><td></td></tr>
+<tr><th id="139">139</th><td><em>void</em> <dfn class="decl" id="eval_buffer" title='eval_buffer' data-ref="eval_buffer">eval_buffer</dfn> (<em>char</em> *<dfn class="local col8 decl" id="98buffer" title='buffer' data-type='char *' data-ref="98buffer">buffer</dfn>, <em>const</em> <a class="typedef" href="gnuremake.h.html#gmk_floc" title='gmk_floc' data-type='struct gmk_floc' data-ref="gmk_floc">gmk_floc</a> *<dfn class="local col9 decl" id="99floc" title='floc' data-type='const gmk_floc *' data-ref="99floc">floc</dfn>);</td></tr>
+<tr><th id="140">140</th><td><b>enum</b> <a class="type" href="filedef.h.html#update_status" title='update_status' data-ref="update_status">update_status</a> <dfn class="decl" id="update_goal_chain" title='update_goal_chain' data-ref="update_goal_chain">update_goal_chain</dfn> (<b>struct</b> <a class="type" href="#goaldep" title='goaldep' data-ref="goaldep">goaldep</a> *<dfn class="local col0 decl" id="100goals" title='goals' data-type='struct goaldep *' data-ref="100goals">goals</dfn>);</td></tr>
+<tr><th id="141">141</th><td></td></tr>
+<tr><th id="142">142</th><td><u>#<span data-ppcond="17">endif</span> /*REMAKE_DEP_H*/</u></td></tr>
+<tr><th id="143">143</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='ar.c.html'>remake/ar.c</a><br/>Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

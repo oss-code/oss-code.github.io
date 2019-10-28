@@ -1,0 +1,7 @@
+<dec f='remake/debugger/fns.h' l='88' type='void print_debugger_location(const file_t * p_target, debug_enter_reason_t reason, const floc_stack_node_t * p_stack_floc)'/>
+<use f='remake/debugger/cmd.c' l='469' u='c' c='enter_debugger'/>
+<doc f='remake/debugger/fns.h' l='87'>/** Print where we are in the Makefile. */</doc>
+<def f='remake/debugger/fns.c' l='301' ll='358' type='void print_debugger_location(const file_t * p_target, debug_enter_reason_t reason, const floc_stack_node_t * p_stack_floc)'/>
+<doc f='remake/debugger/fns.c' l='300'>/** Print where we are in the Makefile. */</doc>
+<use f='remake/debugger/stack.c' l='97' u='c' c='dbg_adjust_frame'/>
+<use f='remake/debugger/stack.c' l='115' u='c' c='dbg_adjust_frame'/>

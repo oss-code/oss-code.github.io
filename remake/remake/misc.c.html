@@ -1,0 +1,687 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>misc.c source code [remake/misc.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/misc.c'; var root_path = '..'; var data_path = '../../data';</script>
+<script src='../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='./'>remake</a>/<a href='misc.c.html'>misc.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Miscellaneous generic support functions for GNU Make.</i></td></tr>
+<tr><th id="2">2</th><td><i>Copyright (C) 1988-2016 Free Software Foundation, Inc.</i></td></tr>
+<tr><th id="3">3</th><td><i>This file is part of GNU Make.</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>GNU Make is free software; you can redistribute it and/or modify it under the</i></td></tr>
+<tr><th id="6">6</th><td><i>terms of the GNU General Public License as published by the Free Software</i></td></tr>
+<tr><th id="7">7</th><td><i>Foundation; either version 3 of the License, or (at your option) any later</i></td></tr>
+<tr><th id="8">8</th><td><i>version.</i></td></tr>
+<tr><th id="9">9</th><td><i></i></td></tr>
+<tr><th id="10">10</th><td><i>GNU Make is distributed in the hope that it will be useful, but WITHOUT ANY</i></td></tr>
+<tr><th id="11">11</th><td><i>WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR</i></td></tr>
+<tr><th id="12">12</th><td><i>A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</i></td></tr>
+<tr><th id="13">13</th><td><i></i></td></tr>
+<tr><th id="14">14</th><td><i>You should have received a copy of the GNU General Public License along with</i></td></tr>
+<tr><th id="15">15</th><td><i>this program.  If not, see &lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.  */</i></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><u>#include <a href="makeint.h.html">"makeint.h"</a></u></td></tr>
+<tr><th id="18">18</th><td><u>#include <a href="filedef.h.html">"filedef.h"</a></u></td></tr>
+<tr><th id="19">19</th><td><u>#include <a href="dep.h.html">"dep.h"</a></u></td></tr>
+<tr><th id="20">20</th><td><u>#include <a href="debug.h.html">"debug.h"</a></u></td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><i>/* GNU make no longer supports pre-ANSI89 environments.  */</i></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><u>#include &lt;stdarg.h&gt;</u></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><u>#<span data-ppcond="26">ifdef</span> <a class="macro" href="config.h.html#108" data-ref="_M/HAVE_FCNTL_H">HAVE_FCNTL_H</a></u></td></tr>
+<tr><th id="27">27</th><td><u># include <a href="../include/fcntl.h.html">&lt;fcntl.h&gt;</a></u></td></tr>
+<tr><th id="28">28</th><td><u>#<span data-ppcond="26">else</span></u></td></tr>
+<tr><th id="29">29</th><td><u># include &lt;sys/file.h&gt;</u></td></tr>
+<tr><th id="30">30</th><td><u>#<span data-ppcond="26">endif</span></u></td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><i>/* Compare strings *S1 and *S2.</i></td></tr>
+<tr><th id="33">33</th><td><i>   Return negative if the first is less, positive if it is greater,</i></td></tr>
+<tr><th id="34">34</th><td><i>   zero if they are equal.  */</i></td></tr>
+<tr><th id="35">35</th><td></td></tr>
+<tr><th id="36">36</th><td><em>int</em></td></tr>
+<tr><th id="37">37</th><td><dfn class="decl def" id="alpha_compare" title='alpha_compare' data-ref="alpha_compare">alpha_compare</dfn> (<em>const</em> <em>void</em> *<dfn class="local col1 decl" id="1v1" title='v1' data-type='const void *' data-ref="1v1">v1</dfn>, <em>const</em> <em>void</em> *<dfn class="local col2 decl" id="2v2" title='v2' data-type='const void *' data-ref="2v2">v2</dfn>)</td></tr>
+<tr><th id="38">38</th><td>{</td></tr>
+<tr><th id="39">39</th><td>  <em>const</em> <em>char</em> *<dfn class="local col3 decl" id="3s1" title='s1' data-type='const char *' data-ref="3s1">s1</dfn> = *((<em>char</em> **)<a class="local col1 ref" href="#1v1" title='v1' data-ref="1v1">v1</a>);</td></tr>
+<tr><th id="40">40</th><td>  <em>const</em> <em>char</em> *<dfn class="local col4 decl" id="4s2" title='s2' data-type='const char *' data-ref="4s2">s2</dfn> = *((<em>char</em> **)<a class="local col2 ref" href="#2v2" title='v2' data-ref="2v2">v2</a>);</td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td>  <b>if</b> (*<a class="local col3 ref" href="#3s1" title='s1' data-ref="3s1">s1</a> != *<a class="local col4 ref" href="#4s2" title='s2' data-ref="4s2">s2</a>)</td></tr>
+<tr><th id="43">43</th><td>    <b>return</b> *<a class="local col3 ref" href="#3s1" title='s1' data-ref="3s1">s1</a> - *<a class="local col4 ref" href="#4s2" title='s2' data-ref="4s2">s2</a>;</td></tr>
+<tr><th id="44">44</th><td>  <b>return</b> <a class="macro" href="../include/x86_64-linux-gnu/bits/string2.h.html#799" title="__extension__ ({ size_t __s1_len, __s2_len; (__builtin_constant_p (s1) &amp;&amp; __builtin_constant_p (s2) &amp;&amp; (__s1_len = __builtin_strlen (s1), __s2_len = __builtin_strlen (s2), (!((size_t)(const void *)((s1) + 1) - (size_t)(const void *)(s1) == 1) || __s1_len &gt;= 4) &amp;&amp; (!((size_t)(const void *)((s2) + 1) - (size_t)(const void *)(s2) == 1) || __s2_len &gt;= 4)) ? __builtin_strcmp (s1, s2) : (__builtin_constant_p (s1) &amp;&amp; ((size_t)(const void *)((s1) + 1) - (size_t)(const void *)(s1) == 1) &amp;&amp; (__s1_len = __builtin_strlen (s1), __s1_len &lt; 4) ? (__builtin_constant_p (s2) &amp;&amp; ((size_t)(const void *)((s2) + 1) - (size_t)(const void *)(s2) == 1) ? __builtin_strcmp (s1, s2) : (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) (s2); int __result = (((const unsigned char *) (const char *) (s1))[0] - __s2[0]); if (__s1_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) (s1))[1] - __s2[1]); if (__s1_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) (s1))[2] - __s2[2]); if (__s1_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) (s1))[3] - __s2[3]); } } __result; }))) : (__builtin_constant_p (s2) &amp;&amp; ((size_t)(const void *)((s2) + 1) - (size_t)(const void *)(s2) == 1) &amp;&amp; (__s2_len = __builtin_strlen (s2), __s2_len &lt; 4) ? (__builtin_constant_p (s1) &amp;&amp; ((size_t)(const void *)((s1) + 1) - (size_t)(const void *)(s1) == 1) ? __builtin_strcmp (s1, s2) : (- (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) (s1); int __result = (((const unsigned char *) (const char *) (s2))[0] - __s2[0]); if (__s2_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) (s2))[1] - __s2[1]); if (__s2_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) (s2))[2] - __s2[2]); if (__s2_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) (s2))[3] - __s2[3]); } } __result; })))) : __builtin_strcmp (s1, s2)))); })" data-ref="_M/strcmp">strcmp</a> (<a class="local col3 ref" href="#3s1" title='s1' data-ref="3s1">s1</a>, <a class="local col4 ref" href="#4s2" title='s2' data-ref="4s2">s2</a>);</td></tr>
+<tr><th id="45">45</th><td>}</td></tr>
+<tr><th id="46">46</th><td></td></tr>
+<tr><th id="47">47</th><td><i>/* Discard each backslash-newline combination from LINE.</i></td></tr>
+<tr><th id="48">48</th><td><i>   Backslash-backslash-newline combinations become backslash-newlines.</i></td></tr>
+<tr><th id="49">49</th><td><i>   This is done by copying the text at LINE into itself.  */</i></td></tr>
+<tr><th id="50">50</th><td></td></tr>
+<tr><th id="51">51</th><td><em>void</em></td></tr>
+<tr><th id="52">52</th><td><dfn class="decl def" id="collapse_continuations" title='collapse_continuations' data-ref="collapse_continuations">collapse_continuations</dfn> (<em>char</em> *<dfn class="local col5 decl" id="5line" title='line' data-type='char *' data-ref="5line">line</dfn>)</td></tr>
+<tr><th id="53">53</th><td>{</td></tr>
+<tr><th id="54">54</th><td>  <em>char</em> *<dfn class="local col6 decl" id="6in" title='in' data-type='char *' data-ref="6in">in</dfn>, *<dfn class="local col7 decl" id="7out" title='out' data-type='char *' data-ref="7out">out</dfn>, *<dfn class="local col8 decl" id="8p" title='p' data-type='char *' data-ref="8p">p</dfn>;</td></tr>
+<tr><th id="55">55</th><td></td></tr>
+<tr><th id="56">56</th><td>  <a class="local col6 ref" href="#6in" title='in' data-ref="6in">in</a> = <a class="macro" href="../include/x86_64-linux-gnu/bits/string2.h.html#395" title="(__extension__ (__builtin_constant_p (&apos;\n&apos;) &amp;&amp; !__builtin_constant_p (line) &amp;&amp; (&apos;\n&apos;) == &apos;\0&apos; ? (char *) __rawmemchr (line, &apos;\n&apos;) : __builtin_strchr (line, &apos;\n&apos;)))" data-ref="_M/strchr">strchr</a> (<a class="local col5 ref" href="#5line" title='line' data-ref="5line">line</a>, <kbd>'\n'</kbd>);</td></tr>
+<tr><th id="57">57</th><td>  <b>if</b> (<a class="local col6 ref" href="#6in" title='in' data-ref="6in">in</a> == <var>0</var>)</td></tr>
+<tr><th id="58">58</th><td>    <b>return</b>;</td></tr>
+<tr><th id="59">59</th><td></td></tr>
+<tr><th id="60">60</th><td>  <a class="local col7 ref" href="#7out" title='out' data-ref="7out">out</a> = <a class="local col6 ref" href="#6in" title='in' data-ref="6in">in</a>;</td></tr>
+<tr><th id="61">61</th><td>  <b>while</b> (<a class="local col7 ref" href="#7out" title='out' data-ref="7out">out</a> &gt; <a class="local col5 ref" href="#5line" title='line' data-ref="5line">line</a> &amp;&amp; <a class="local col7 ref" href="#7out" title='out' data-ref="7out">out</a>[-<var>1</var>] == <kbd>'\\'</kbd>)</td></tr>
+<tr><th id="62">62</th><td>    --<a class="local col7 ref" href="#7out" title='out' data-ref="7out">out</a>;</td></tr>
+<tr><th id="63">63</th><td></td></tr>
+<tr><th id="64">64</th><td>  <b>while</b> (*<a class="local col6 ref" href="#6in" title='in' data-ref="6in">in</a> != <kbd>'\0'</kbd>)</td></tr>
+<tr><th id="65">65</th><td>    {</td></tr>
+<tr><th id="66">66</th><td>      <i>/* BS_WRITE gets the number of quoted backslashes at</i></td></tr>
+<tr><th id="67">67</th><td><i>         the end just before IN, and BACKSLASH gets nonzero</i></td></tr>
+<tr><th id="68">68</th><td><i>         if the next character is quoted.  */</i></td></tr>
+<tr><th id="69">69</th><td>      <em>unsigned</em> <em>int</em> <dfn class="local col9 decl" id="9backslash" title='backslash' data-type='unsigned int' data-ref="9backslash">backslash</dfn> = <var>0</var>;</td></tr>
+<tr><th id="70">70</th><td>      <em>unsigned</em> <em>int</em> <dfn class="local col0 decl" id="10bs_write" title='bs_write' data-type='unsigned int' data-ref="10bs_write">bs_write</dfn> = <var>0</var>;</td></tr>
+<tr><th id="71">71</th><td>      <b>for</b> (<a class="local col8 ref" href="#8p" title='p' data-ref="8p">p</a> = <a class="local col6 ref" href="#6in" title='in' data-ref="6in">in</a> - <var>1</var>; <a class="local col8 ref" href="#8p" title='p' data-ref="8p">p</a> &gt;= <a class="local col5 ref" href="#5line" title='line' data-ref="5line">line</a> &amp;&amp; *<a class="local col8 ref" href="#8p" title='p' data-ref="8p">p</a> == <kbd>'\\'</kbd>; --<a class="local col8 ref" href="#8p" title='p' data-ref="8p">p</a>)</td></tr>
+<tr><th id="72">72</th><td>        {</td></tr>
+<tr><th id="73">73</th><td>          <b>if</b> (<a class="local col9 ref" href="#9backslash" title='backslash' data-ref="9backslash">backslash</a>)</td></tr>
+<tr><th id="74">74</th><td>            ++<a class="local col0 ref" href="#10bs_write" title='bs_write' data-ref="10bs_write">bs_write</a>;</td></tr>
+<tr><th id="75">75</th><td>          <a class="local col9 ref" href="#9backslash" title='backslash' data-ref="9backslash">backslash</a> = !<a class="local col9 ref" href="#9backslash" title='backslash' data-ref="9backslash">backslash</a>;</td></tr>
+<tr><th id="76">76</th><td></td></tr>
+<tr><th id="77">77</th><td>          <i>/* It should be impossible to go back this far without exiting,</i></td></tr>
+<tr><th id="78">78</th><td><i>             but if we do, we can't get the right answer.  */</i></td></tr>
+<tr><th id="79">79</th><td>          <b>if</b> (<a class="local col6 ref" href="#6in" title='in' data-ref="6in">in</a> == <a class="local col7 ref" href="#7out" title='out' data-ref="7out">out</a> - <var>1</var>)</td></tr>
+<tr><th id="80">80</th><td>            <a class="ref" href="../include/stdlib.h.html#abort" title='abort' data-ref="abort">abort</a> ();</td></tr>
+<tr><th id="81">81</th><td>        }</td></tr>
+<tr><th id="82">82</th><td></td></tr>
+<tr><th id="83">83</th><td>      <i>/* Output the appropriate number of backslashes.  */</i></td></tr>
+<tr><th id="84">84</th><td>      <b>while</b> (<a class="local col0 ref" href="#10bs_write" title='bs_write' data-ref="10bs_write">bs_write</a>-- &gt; <var>0</var>)</td></tr>
+<tr><th id="85">85</th><td>        *<a class="local col7 ref" href="#7out" title='out' data-ref="7out">out</a>++ = <kbd>'\\'</kbd>;</td></tr>
+<tr><th id="86">86</th><td></td></tr>
+<tr><th id="87">87</th><td>      <i>/* Skip the newline.  */</i></td></tr>
+<tr><th id="88">88</th><td>      ++<a class="local col6 ref" href="#6in" title='in' data-ref="6in">in</a>;</td></tr>
+<tr><th id="89">89</th><td></td></tr>
+<tr><th id="90">90</th><td>      <b>if</b> (<a class="local col9 ref" href="#9backslash" title='backslash' data-ref="9backslash">backslash</a>)</td></tr>
+<tr><th id="91">91</th><td>        {</td></tr>
+<tr><th id="92">92</th><td>          <i>/* Backslash/newline handling:</i></td></tr>
+<tr><th id="93">93</th><td><i>             In traditional GNU make all trailing whitespace, consecutive</i></td></tr>
+<tr><th id="94">94</th><td><i>             backslash/newlines, and any leading non-newline whitespace on the</i></td></tr>
+<tr><th id="95">95</th><td><i>             next line is reduced to a single space.</i></td></tr>
+<tr><th id="96">96</th><td><i>             In POSIX, each backslash/newline and is replaced by a space.  */</i></td></tr>
+<tr><th id="97">97</th><td>          <b>while</b> (<a class="macro" href="makeint.h.html#436" title="(((stopchar_map[(unsigned char)((*in))])&amp;((0x0002))) != 0)" data-ref="_M/ISBLANK">ISBLANK</a> (*<a class="local col6 ref" href="#6in" title='in' data-ref="6in">in</a>))</td></tr>
+<tr><th id="98">98</th><td>            ++<a class="local col6 ref" href="#6in" title='in' data-ref="6in">in</a>;</td></tr>
+<tr><th id="99">99</th><td>          <b>if</b> (! <a class="ref" href="makeint.h.html#posix_pedantic" title='posix_pedantic' data-ref="posix_pedantic">posix_pedantic</a>)</td></tr>
+<tr><th id="100">100</th><td>            <b>while</b> (<a class="local col7 ref" href="#7out" title='out' data-ref="7out">out</a> &gt; <a class="local col5 ref" href="#5line" title='line' data-ref="5line">line</a> &amp;&amp; <a class="macro" href="makeint.h.html#436" title="(((stopchar_map[(unsigned char)((out[-1]))])&amp;((0x0002))) != 0)" data-ref="_M/ISBLANK">ISBLANK</a> (<a class="local col7 ref" href="#7out" title='out' data-ref="7out">out</a>[-<var>1</var>]))</td></tr>
+<tr><th id="101">101</th><td>              --<a class="local col7 ref" href="#7out" title='out' data-ref="7out">out</a>;</td></tr>
+<tr><th id="102">102</th><td>          *<a class="local col7 ref" href="#7out" title='out' data-ref="7out">out</a>++ = <kbd>' '</kbd>;</td></tr>
+<tr><th id="103">103</th><td>        }</td></tr>
+<tr><th id="104">104</th><td>      <b>else</b></td></tr>
+<tr><th id="105">105</th><td>        <i>/* If the newline isn't quoted, put it in the output.  */</i></td></tr>
+<tr><th id="106">106</th><td>        *<a class="local col7 ref" href="#7out" title='out' data-ref="7out">out</a>++ = <kbd>'\n'</kbd>;</td></tr>
+<tr><th id="107">107</th><td></td></tr>
+<tr><th id="108">108</th><td>      <i>/* Now copy the following line to the output.</i></td></tr>
+<tr><th id="109">109</th><td><i>         Stop when we find backslashes followed by a newline.  */</i></td></tr>
+<tr><th id="110">110</th><td>      <b>while</b> (*<a class="local col6 ref" href="#6in" title='in' data-ref="6in">in</a> != <kbd>'\0'</kbd>)</td></tr>
+<tr><th id="111">111</th><td>        <b>if</b> (*<a class="local col6 ref" href="#6in" title='in' data-ref="6in">in</a> == <kbd>'\\'</kbd>)</td></tr>
+<tr><th id="112">112</th><td>          {</td></tr>
+<tr><th id="113">113</th><td>            <a class="local col8 ref" href="#8p" title='p' data-ref="8p">p</a> = <a class="local col6 ref" href="#6in" title='in' data-ref="6in">in</a> + <var>1</var>;</td></tr>
+<tr><th id="114">114</th><td>            <b>while</b> (*<a class="local col8 ref" href="#8p" title='p' data-ref="8p">p</a> == <kbd>'\\'</kbd>)</td></tr>
+<tr><th id="115">115</th><td>              ++<a class="local col8 ref" href="#8p" title='p' data-ref="8p">p</a>;</td></tr>
+<tr><th id="116">116</th><td>            <b>if</b> (*<a class="local col8 ref" href="#8p" title='p' data-ref="8p">p</a> == <kbd>'\n'</kbd>)</td></tr>
+<tr><th id="117">117</th><td>              {</td></tr>
+<tr><th id="118">118</th><td>                <a class="local col6 ref" href="#6in" title='in' data-ref="6in">in</a> = <a class="local col8 ref" href="#8p" title='p' data-ref="8p">p</a>;</td></tr>
+<tr><th id="119">119</th><td>                <b>break</b>;</td></tr>
+<tr><th id="120">120</th><td>              }</td></tr>
+<tr><th id="121">121</th><td>            <b>while</b> (<a class="local col6 ref" href="#6in" title='in' data-ref="6in">in</a> &lt; <a class="local col8 ref" href="#8p" title='p' data-ref="8p">p</a>)</td></tr>
+<tr><th id="122">122</th><td>              *<a class="local col7 ref" href="#7out" title='out' data-ref="7out">out</a>++ = *<a class="local col6 ref" href="#6in" title='in' data-ref="6in">in</a>++;</td></tr>
+<tr><th id="123">123</th><td>          }</td></tr>
+<tr><th id="124">124</th><td>        <b>else</b></td></tr>
+<tr><th id="125">125</th><td>          *<a class="local col7 ref" href="#7out" title='out' data-ref="7out">out</a>++ = *<a class="local col6 ref" href="#6in" title='in' data-ref="6in">in</a>++;</td></tr>
+<tr><th id="126">126</th><td>    }</td></tr>
+<tr><th id="127">127</th><td></td></tr>
+<tr><th id="128">128</th><td>  *<a class="local col7 ref" href="#7out" title='out' data-ref="7out">out</a> = <kbd>'\0'</kbd>;</td></tr>
+<tr><th id="129">129</th><td>}</td></tr>
+<tr><th id="130">130</th><td></td></tr>
+<tr><th id="131">131</th><td><i>/* Print N spaces (used in debug for target-depth).  */</i></td></tr>
+<tr><th id="132">132</th><td></td></tr>
+<tr><th id="133">133</th><td><em>void</em></td></tr>
+<tr><th id="134">134</th><td><dfn class="decl def" id="print_spaces" title='print_spaces' data-ref="print_spaces">print_spaces</dfn> (<em>unsigned</em> <em>int</em> <dfn class="local col1 decl" id="11n" title='n' data-type='unsigned int' data-ref="11n">n</dfn>)</td></tr>
+<tr><th id="135">135</th><td>{</td></tr>
+<tr><th id="136">136</th><td>  <b>while</b> (<a class="local col1 ref" href="#11n" title='n' data-ref="11n">n</a>-- &gt; <var>0</var>)</td></tr>
+<tr><th id="137">137</th><td>    <a class="ref" href="../include/stdio.h.html#putchar" title='putchar' data-ref="putchar">putchar</a> (<kbd>' '</kbd>);</td></tr>
+<tr><th id="138">138</th><td>}</td></tr>
+<tr><th id="139">139</th><td></td></tr>
+<tr><th id="140">140</th><td></td></tr>
+<tr><th id="141">141</th><td><i>/* Return a string whose contents concatenate the NUM strings provided</i></td></tr>
+<tr><th id="142">142</th><td><i>   This string lives in static, re-used memory.  */</i></td></tr>
+<tr><th id="143">143</th><td></td></tr>
+<tr><th id="144">144</th><td><em>const</em> <em>char</em> *</td></tr>
+<tr><th id="145">145</th><td><dfn class="decl def" id="concat" title='concat' data-ref="concat">concat</dfn> (<em>unsigned</em> <em>int</em> <dfn class="local col2 decl" id="12num" title='num' data-type='unsigned int' data-ref="12num">num</dfn>, ...)</td></tr>
+<tr><th id="146">146</th><td>{</td></tr>
+<tr><th id="147">147</th><td>  <em>static</em> <em>unsigned</em> <em>int</em> <dfn class="local col3 decl" id="13rlen" title='rlen' data-type='unsigned int' data-ref="13rlen">rlen</dfn> = <var>0</var>;</td></tr>
+<tr><th id="148">148</th><td>  <em>static</em> <em>char</em> *<dfn class="local col4 decl" id="14result" title='result' data-type='char *' data-ref="14result">result</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="149">149</th><td>  <em>unsigned</em> <em>int</em> <dfn class="local col5 decl" id="15ri" title='ri' data-type='unsigned int' data-ref="15ri">ri</dfn> = <var>0</var>;</td></tr>
+<tr><th id="150">150</th><td>  <span class='typedef' title='va_list' data-type='__gnuc_va_list' data-ref="va_list">va_list</span> <dfn class="local col6 decl" id="16args" title='args' data-type='va_list' data-ref="16args">args</dfn>;</td></tr>
+<tr><th id="151">151</th><td></td></tr>
+<tr><th id="152">152</th><td>  <span class="macro" title="__builtin_va_start(args, num)" data-ref="_M/va_start">va_start</span> (<a class="local col6 ref" href="#16args" title='args' data-ref="16args">args</a>, <a class="local col2 ref" href="#12num" title='num' data-ref="12num">num</a>);</td></tr>
+<tr><th id="153">153</th><td></td></tr>
+<tr><th id="154">154</th><td>  <b>while</b> (<a class="local col2 ref" href="#12num" title='num' data-ref="12num">num</a>-- &gt; <var>0</var>)</td></tr>
+<tr><th id="155">155</th><td>    {</td></tr>
+<tr><th id="156">156</th><td>      <em>const</em> <em>char</em> *<dfn class="local col7 decl" id="17s" title='s' data-type='const char *' data-ref="17s">s</dfn> = <span class="macro" title="__builtin_va_arg(args, const char *)" data-ref="_M/va_arg">va_arg</span> (<a class="local col6 ref" href="#16args" title='args' data-ref="16args">args</a>, <em>const</em> <em>char</em> *);</td></tr>
+<tr><th id="157">157</th><td>      <em>unsigned</em> <em>int</em> <dfn class="local col8 decl" id="18l" title='l' data-type='unsigned int' data-ref="18l">l</dfn> = <a class="macro" href="makeint.h.html#494" title="((s)==((void*)0) ? 0 : strlen (s))" data-ref="_M/xstrlen">xstrlen</a> (<a class="local col7 ref" href="#17s" title='s' data-ref="17s">s</a>);</td></tr>
+<tr><th id="158">158</th><td></td></tr>
+<tr><th id="159">159</th><td>      <b>if</b> (<a class="local col8 ref" href="#18l" title='l' data-ref="18l">l</a> == <var>0</var>)</td></tr>
+<tr><th id="160">160</th><td>        <b>continue</b>;</td></tr>
+<tr><th id="161">161</th><td></td></tr>
+<tr><th id="162">162</th><td>      <b>if</b> (<a class="local col5 ref" href="#15ri" title='ri' data-ref="15ri">ri</a> + <a class="local col8 ref" href="#18l" title='l' data-ref="18l">l</a> &gt; <a class="local col3 ref" href="#13rlen" title='rlen' data-ref="13rlen">rlen</a>)</td></tr>
+<tr><th id="163">163</th><td>        {</td></tr>
+<tr><th id="164">164</th><td>          <a class="local col3 ref" href="#13rlen" title='rlen' data-ref="13rlen">rlen</a> = ((<a class="local col3 ref" href="#13rlen" title='rlen' data-ref="13rlen">rlen</a> ? <a class="local col3 ref" href="#13rlen" title='rlen' data-ref="13rlen">rlen</a> : <var>60</var>) + <a class="local col8 ref" href="#18l" title='l' data-ref="18l">l</a>) * <var>2</var>;</td></tr>
+<tr><th id="165">165</th><td>          <a class="local col4 ref" href="#14result" title='result' data-ref="14result">result</a> = <a class="ref" href="makeint.h.html#xrealloc" title='xrealloc' data-ref="xrealloc">xrealloc</a> (<a class="local col4 ref" href="#14result" title='result' data-ref="14result">result</a>, <a class="local col3 ref" href="#13rlen" title='rlen' data-ref="13rlen">rlen</a>);</td></tr>
+<tr><th id="166">166</th><td>        }</td></tr>
+<tr><th id="167">167</th><td></td></tr>
+<tr><th id="168">168</th><td>      <a class="ref" href="../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a> (<a class="local col4 ref" href="#14result" title='result' data-ref="14result">result</a> + <a class="local col5 ref" href="#15ri" title='ri' data-ref="15ri">ri</a>, <a class="local col7 ref" href="#17s" title='s' data-ref="17s">s</a>, <a class="local col8 ref" href="#18l" title='l' data-ref="18l">l</a>);</td></tr>
+<tr><th id="169">169</th><td>      <a class="local col5 ref" href="#15ri" title='ri' data-ref="15ri">ri</a> += <a class="local col8 ref" href="#18l" title='l' data-ref="18l">l</a>;</td></tr>
+<tr><th id="170">170</th><td>    }</td></tr>
+<tr><th id="171">171</th><td></td></tr>
+<tr><th id="172">172</th><td>  <span class="macro" title="__builtin_va_end(args)" data-ref="_M/va_end">va_end</span> (<a class="local col6 ref" href="#16args" title='args' data-ref="16args">args</a>);</td></tr>
+<tr><th id="173">173</th><td></td></tr>
+<tr><th id="174">174</th><td>  <i>/* Get some more memory if we don't have enough space for the</i></td></tr>
+<tr><th id="175">175</th><td><i>     terminating '\0'.   */</i></td></tr>
+<tr><th id="176">176</th><td>  <b>if</b> (<a class="local col5 ref" href="#15ri" title='ri' data-ref="15ri">ri</a> == <a class="local col3 ref" href="#13rlen" title='rlen' data-ref="13rlen">rlen</a>)</td></tr>
+<tr><th id="177">177</th><td>    {</td></tr>
+<tr><th id="178">178</th><td>      <a class="local col3 ref" href="#13rlen" title='rlen' data-ref="13rlen">rlen</a> = (<a class="local col3 ref" href="#13rlen" title='rlen' data-ref="13rlen">rlen</a> ? <a class="local col3 ref" href="#13rlen" title='rlen' data-ref="13rlen">rlen</a> : <var>60</var>) * <var>2</var>;</td></tr>
+<tr><th id="179">179</th><td>      <a class="local col4 ref" href="#14result" title='result' data-ref="14result">result</a> = <a class="ref" href="makeint.h.html#xrealloc" title='xrealloc' data-ref="xrealloc">xrealloc</a> (<a class="local col4 ref" href="#14result" title='result' data-ref="14result">result</a>, <a class="local col3 ref" href="#13rlen" title='rlen' data-ref="13rlen">rlen</a>);</td></tr>
+<tr><th id="180">180</th><td>    }</td></tr>
+<tr><th id="181">181</th><td></td></tr>
+<tr><th id="182">182</th><td>  <a class="local col4 ref" href="#14result" title='result' data-ref="14result">result</a>[<a class="local col5 ref" href="#15ri" title='ri' data-ref="15ri">ri</a>] = <kbd>'\0'</kbd>;</td></tr>
+<tr><th id="183">183</th><td></td></tr>
+<tr><th id="184">184</th><td>  <b>return</b> <a class="local col4 ref" href="#14result" title='result' data-ref="14result">result</a>;</td></tr>
+<tr><th id="185">185</th><td>}</td></tr>
+<tr><th id="186">186</th><td></td></tr>
+<tr><th id="187">187</th><td></td></tr>
+<tr><th id="188">188</th><td><u>#<span data-ppcond="188">ifndef</span> <a class="macro" href="config.h.html#265" data-ref="_M/HAVE_STRERROR">HAVE_STRERROR</a></u></td></tr>
+<tr><th id="189">189</th><td><u>#undef  strerror</u></td></tr>
+<tr><th id="190">190</th><td><em>char</em> *</td></tr>
+<tr><th id="191">191</th><td>strerror (<em>int</em> errnum)</td></tr>
+<tr><th id="192">192</th><td>{</td></tr>
+<tr><th id="193">193</th><td>  <b>extern</b> <em>int</em> errno, sys_nerr;</td></tr>
+<tr><th id="194">194</th><td><u>#ifndef __DECC</u></td></tr>
+<tr><th id="195">195</th><td>  <b>extern</b> <em>char</em> *sys_errlist[];</td></tr>
+<tr><th id="196">196</th><td><u>#endif</u></td></tr>
+<tr><th id="197">197</th><td>  <em>static</em> <em>char</em> buf[] = <q>"Unknown error 12345678901234567890"</q>;</td></tr>
+<tr><th id="198">198</th><td></td></tr>
+<tr><th id="199">199</th><td>  <b>if</b> (errno &lt; sys_nerr)</td></tr>
+<tr><th id="200">200</th><td>    <b>return</b> sys_errlist[errnum];</td></tr>
+<tr><th id="201">201</th><td></td></tr>
+<tr><th id="202">202</th><td>  sprintf (buf, _(<q>"Unknown error %d"</q>), errnum);</td></tr>
+<tr><th id="203">203</th><td>  <b>return</b> buf;</td></tr>
+<tr><th id="204">204</th><td>}</td></tr>
+<tr><th id="205">205</th><td><u>#<span data-ppcond="188">endif</span></u></td></tr>
+<tr><th id="206">206</th><td></td></tr>
+<tr><th id="207">207</th><td></td></tr>
+<tr><th id="208">208</th><td><i>/* Limited INDEX:</i></td></tr>
+<tr><th id="209">209</th><td><i>   Search through the string STRING, which ends at LIMIT, for the character C.</i></td></tr>
+<tr><th id="210">210</th><td><i>   Returns a pointer to the first occurrence, or nil if none is found.</i></td></tr>
+<tr><th id="211">211</th><td><i>   Like INDEX except that the string searched ends where specified</i></td></tr>
+<tr><th id="212">212</th><td><i>   instead of at the first null.  */</i></td></tr>
+<tr><th id="213">213</th><td></td></tr>
+<tr><th id="214">214</th><td><em>char</em> *</td></tr>
+<tr><th id="215">215</th><td><dfn class="decl def" id="lindex" title='lindex' data-ref="lindex">lindex</dfn> (<em>const</em> <em>char</em> *<dfn class="local col9 decl" id="19s" title='s' data-type='const char *' data-ref="19s">s</dfn>, <em>const</em> <em>char</em> *<dfn class="local col0 decl" id="20limit" title='limit' data-type='const char *' data-ref="20limit">limit</dfn>, <em>int</em> <dfn class="local col1 decl" id="21c" title='c' data-type='int' data-ref="21c">c</dfn>)</td></tr>
+<tr><th id="216">216</th><td>{</td></tr>
+<tr><th id="217">217</th><td>  <b>while</b> (<a class="local col9 ref" href="#19s" title='s' data-ref="19s">s</a> &lt; <a class="local col0 ref" href="#20limit" title='limit' data-ref="20limit">limit</a>)</td></tr>
+<tr><th id="218">218</th><td>    <b>if</b> (*<a class="local col9 ref" href="#19s" title='s' data-ref="19s">s</a>++ == <a class="local col1 ref" href="#21c" title='c' data-ref="21c">c</a>)</td></tr>
+<tr><th id="219">219</th><td>      <b>return</b> (<em>char</em> *)(<a class="local col9 ref" href="#19s" title='s' data-ref="19s">s</a> - <var>1</var>);</td></tr>
+<tr><th id="220">220</th><td></td></tr>
+<tr><th id="221">221</th><td>  <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="222">222</th><td>}</td></tr>
+<tr><th id="223">223</th><td></td></tr>
+<tr><th id="224">224</th><td><i>/* Return the address of the first whitespace or null in the string S.  */</i></td></tr>
+<tr><th id="225">225</th><td></td></tr>
+<tr><th id="226">226</th><td><em>char</em> *</td></tr>
+<tr><th id="227">227</th><td><dfn class="decl def" id="end_of_token" title='end_of_token' data-ref="end_of_token">end_of_token</dfn> (<em>const</em> <em>char</em> *<dfn class="local col2 decl" id="22s" title='s' data-type='const char *' data-ref="22s">s</dfn>)</td></tr>
+<tr><th id="228">228</th><td>{</td></tr>
+<tr><th id="229">229</th><td>  <a class="macro" href="makeint.h.html#439" title="while (! (((stopchar_map[(unsigned char)(*(s))])&amp;(((0x0002|0x0004)|0x0001))) != 0)) ++(s)" data-ref="_M/END_OF_TOKEN">END_OF_TOKEN</a> (<a class="local col2 ref" href="#22s" title='s' data-ref="22s">s</a>);</td></tr>
+<tr><th id="230">230</th><td>  <b>return</b> (<em>char</em> *)<a class="local col2 ref" href="#22s" title='s' data-ref="22s">s</a>;</td></tr>
+<tr><th id="231">231</th><td>}</td></tr>
+<tr><th id="232">232</th><td></td></tr>
+<tr><th id="233">233</th><td><i>/* Return the address of the first nonwhitespace or null in the string S.  */</i></td></tr>
+<tr><th id="234">234</th><td></td></tr>
+<tr><th id="235">235</th><td><em>char</em> *</td></tr>
+<tr><th id="236">236</th><td><dfn class="decl def" id="next_token" title='next_token' data-ref="next_token">next_token</dfn> (<em>const</em> <em>char</em> *<dfn class="local col3 decl" id="23s" title='s' data-type='const char *' data-ref="23s">s</dfn>)</td></tr>
+<tr><th id="237">237</th><td>{</td></tr>
+<tr><th id="238">238</th><td>  <a class="macro" href="makeint.h.html#438" title="while ((((stopchar_map[(unsigned char)((*(s)))])&amp;(((0x0002|0x0004)))) != 0)) ++(s)" data-ref="_M/NEXT_TOKEN">NEXT_TOKEN</a> (<a class="local col3 ref" href="#23s" title='s' data-ref="23s">s</a>);</td></tr>
+<tr><th id="239">239</th><td>  <b>return</b> (<em>char</em> *)<a class="local col3 ref" href="#23s" title='s' data-ref="23s">s</a>;</td></tr>
+<tr><th id="240">240</th><td>}</td></tr>
+<tr><th id="241">241</th><td></td></tr>
+<tr><th id="242">242</th><td><i>/* Find the next token in PTR; return the address of it, and store the length</i></td></tr>
+<tr><th id="243">243</th><td><i>   of the token into *LENGTHPTR if LENGTHPTR is not nil.  Set *PTR to the end</i></td></tr>
+<tr><th id="244">244</th><td><i>   of the token, so this function can be called repeatedly in a loop.  */</i></td></tr>
+<tr><th id="245">245</th><td></td></tr>
+<tr><th id="246">246</th><td><em>char</em> *</td></tr>
+<tr><th id="247">247</th><td><dfn class="decl def" id="find_next_token" title='find_next_token' data-ref="find_next_token">find_next_token</dfn> (<em>const</em> <em>char</em> **<dfn class="local col4 decl" id="24ptr" title='ptr' data-type='const char **' data-ref="24ptr">ptr</dfn>, <em>unsigned</em> <em>int</em> *<dfn class="local col5 decl" id="25lengthptr" title='lengthptr' data-type='unsigned int *' data-ref="25lengthptr">lengthptr</dfn>)</td></tr>
+<tr><th id="248">248</th><td>{</td></tr>
+<tr><th id="249">249</th><td>  <em>const</em> <em>char</em> *<dfn class="local col6 decl" id="26p" title='p' data-type='const char *' data-ref="26p">p</dfn> = <a class="ref" href="#next_token" title='next_token' data-ref="next_token">next_token</a> (*<a class="local col4 ref" href="#24ptr" title='ptr' data-ref="24ptr">ptr</a>);</td></tr>
+<tr><th id="250">250</th><td></td></tr>
+<tr><th id="251">251</th><td>  <b>if</b> (*<a class="local col6 ref" href="#26p" title='p' data-ref="26p">p</a> == <kbd>'\0'</kbd>)</td></tr>
+<tr><th id="252">252</th><td>    <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="253">253</th><td></td></tr>
+<tr><th id="254">254</th><td>  *<a class="local col4 ref" href="#24ptr" title='ptr' data-ref="24ptr">ptr</a> = <a class="ref" href="#end_of_token" title='end_of_token' data-ref="end_of_token">end_of_token</a> (<a class="local col6 ref" href="#26p" title='p' data-ref="26p">p</a>);</td></tr>
+<tr><th id="255">255</th><td>  <b>if</b> (<a class="local col5 ref" href="#25lengthptr" title='lengthptr' data-ref="25lengthptr">lengthptr</a> != <var>0</var>)</td></tr>
+<tr><th id="256">256</th><td>    *<a class="local col5 ref" href="#25lengthptr" title='lengthptr' data-ref="25lengthptr">lengthptr</a> = *<a class="local col4 ref" href="#24ptr" title='ptr' data-ref="24ptr">ptr</a> - <a class="local col6 ref" href="#26p" title='p' data-ref="26p">p</a>;</td></tr>
+<tr><th id="257">257</th><td></td></tr>
+<tr><th id="258">258</th><td>  <b>return</b> (<em>char</em> *)<a class="local col6 ref" href="#26p" title='p' data-ref="26p">p</a>;</td></tr>
+<tr><th id="259">259</th><td>}</td></tr>
+<tr><th id="260">260</th><td></td></tr>
+<tr><th id="261">261</th><td></td></tr>
+<tr><th id="262">262</th><td><i>/* Copy a chain of 'struct dep'.  For 2nd expansion deps, dup the name.  */</i></td></tr>
+<tr><th id="263">263</th><td></td></tr>
+<tr><th id="264">264</th><td><b>struct</b> <a class="type" href="dep.h.html#dep" title='dep' data-ref="dep">dep</a> *</td></tr>
+<tr><th id="265">265</th><td><dfn class="decl def" id="copy_dep_chain" title='copy_dep_chain' data-ref="copy_dep_chain">copy_dep_chain</dfn> (<em>const</em> <b>struct</b> <a class="type" href="dep.h.html#dep" title='dep' data-ref="dep">dep</a> *<dfn class="local col7 decl" id="27d" title='d' data-type='const struct dep *' data-ref="27d">d</dfn>)</td></tr>
+<tr><th id="266">266</th><td>{</td></tr>
+<tr><th id="267">267</th><td>  <b>struct</b> <a class="type" href="dep.h.html#dep" title='dep' data-ref="dep">dep</a> *<dfn class="local col8 decl" id="28firstnew" title='firstnew' data-type='struct dep *' data-ref="28firstnew">firstnew</dfn> = <var>0</var>;</td></tr>
+<tr><th id="268">268</th><td>  <b>struct</b> <a class="type" href="dep.h.html#dep" title='dep' data-ref="dep">dep</a> *<dfn class="local col9 decl" id="29lastnew" title='lastnew' data-type='struct dep *' data-ref="29lastnew">lastnew</dfn> = <var>0</var>;</td></tr>
+<tr><th id="269">269</th><td></td></tr>
+<tr><th id="270">270</th><td>  <b>while</b> (<a class="local col7 ref" href="#27d" title='d' data-ref="27d">d</a> != <var>0</var>)</td></tr>
+<tr><th id="271">271</th><td>    {</td></tr>
+<tr><th id="272">272</th><td>      <b>struct</b> <a class="type" href="dep.h.html#dep" title='dep' data-ref="dep">dep</a> *<dfn class="local col0 decl" id="30c" title='c' data-type='struct dep *' data-ref="30c">c</dfn> = <a class="ref" href="makeint.h.html#xmalloc" title='xmalloc' data-ref="xmalloc">xmalloc</a> (<b>sizeof</b> (<b>struct</b> <a class="type" href="dep.h.html#dep" title='dep' data-ref="dep">dep</a>));</td></tr>
+<tr><th id="273">273</th><td>      <a class="ref" href="../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a> (<a class="local col0 ref" href="#30c" title='c' data-ref="30c">c</a>, <a class="local col7 ref" href="#27d" title='d' data-ref="27d">d</a>, <b>sizeof</b> (<b>struct</b> <a class="type" href="dep.h.html#dep" title='dep' data-ref="dep">dep</a>));</td></tr>
+<tr><th id="274">274</th><td></td></tr>
+<tr><th id="275">275</th><td>      <b>if</b> (<a class="local col0 ref" href="#30c" title='c' data-ref="30c">c</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::need_2nd_expansion' data-ref="dep::need_2nd_expansion">need_2nd_expansion</a>)</td></tr>
+<tr><th id="276">276</th><td>        <a class="local col0 ref" href="#30c" title='c' data-ref="30c">c</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::name' data-ref="dep::name">name</a> = <a class="ref" href="makeint.h.html#xstrdup" title='xstrdup' data-ref="xstrdup">xstrdup</a> (<a class="local col0 ref" href="#30c" title='c' data-ref="30c">c</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::name' data-ref="dep::name">name</a>);</td></tr>
+<tr><th id="277">277</th><td></td></tr>
+<tr><th id="278">278</th><td>      <a class="local col0 ref" href="#30c" title='c' data-ref="30c">c</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::next' data-ref="dep::next">next</a> = <var>0</var>;</td></tr>
+<tr><th id="279">279</th><td>      <b>if</b> (<a class="local col8 ref" href="#28firstnew" title='firstnew' data-ref="28firstnew">firstnew</a> == <var>0</var>)</td></tr>
+<tr><th id="280">280</th><td>        <a class="local col8 ref" href="#28firstnew" title='firstnew' data-ref="28firstnew">firstnew</a> = <a class="local col9 ref" href="#29lastnew" title='lastnew' data-ref="29lastnew">lastnew</a> = <a class="local col0 ref" href="#30c" title='c' data-ref="30c">c</a>;</td></tr>
+<tr><th id="281">281</th><td>      <b>else</b></td></tr>
+<tr><th id="282">282</th><td>        <a class="local col9 ref" href="#29lastnew" title='lastnew' data-ref="29lastnew">lastnew</a> = <a class="local col9 ref" href="#29lastnew" title='lastnew' data-ref="29lastnew">lastnew</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::next' data-ref="dep::next">next</a> = <a class="local col0 ref" href="#30c" title='c' data-ref="30c">c</a>;</td></tr>
+<tr><th id="283">283</th><td></td></tr>
+<tr><th id="284">284</th><td>      <a class="local col7 ref" href="#27d" title='d' data-ref="27d">d</a> = <a class="local col7 ref" href="#27d" title='d' data-ref="27d">d</a>-&gt;<a class="ref" href="dep.h.html#60" title='dep::next' data-ref="dep::next">next</a>;</td></tr>
+<tr><th id="285">285</th><td>    }</td></tr>
+<tr><th id="286">286</th><td></td></tr>
+<tr><th id="287">287</th><td>  <b>return</b> <a class="local col8 ref" href="#28firstnew" title='firstnew' data-ref="28firstnew">firstnew</a>;</td></tr>
+<tr><th id="288">288</th><td>}</td></tr>
+<tr><th id="289">289</th><td></td></tr>
+<tr><th id="290">290</th><td><i>/* Free a chain of struct nameseq.</i></td></tr>
+<tr><th id="291">291</th><td><i>   For struct dep chains use free_dep_chain.  */</i></td></tr>
+<tr><th id="292">292</th><td></td></tr>
+<tr><th id="293">293</th><td><em>void</em></td></tr>
+<tr><th id="294">294</th><td><dfn class="decl def" id="free_ns_chain" title='free_ns_chain' data-ref="free_ns_chain">free_ns_chain</dfn> (<b>struct</b> <a class="type" href="dep.h.html#nameseq" title='nameseq' data-ref="nameseq">nameseq</a> *<dfn class="local col1 decl" id="31ns" title='ns' data-type='struct nameseq *' data-ref="31ns">ns</dfn>)</td></tr>
+<tr><th id="295">295</th><td>{</td></tr>
+<tr><th id="296">296</th><td>  <b>while</b> (<a class="local col1 ref" href="#31ns" title='ns' data-ref="31ns">ns</a> != <var>0</var>)</td></tr>
+<tr><th id="297">297</th><td>    {</td></tr>
+<tr><th id="298">298</th><td>      <b>struct</b> <a class="type" href="dep.h.html#nameseq" title='nameseq' data-ref="nameseq">nameseq</a> *<dfn class="local col2 decl" id="32t" title='t' data-type='struct nameseq *' data-ref="32t">t</dfn> = <a class="local col1 ref" href="#31ns" title='ns' data-ref="31ns">ns</a>;</td></tr>
+<tr><th id="299">299</th><td>      <a class="local col1 ref" href="#31ns" title='ns' data-ref="31ns">ns</a> = <a class="local col1 ref" href="#31ns" title='ns' data-ref="31ns">ns</a>-&gt;<a class="ref" href="dep.h.html#28" title='nameseq::next' data-ref="nameseq::next">next</a>;</td></tr>
+<tr><th id="300">300</th><td>      <a class="ref" href="dep.h.html#free_ns" title='free_ns' data-ref="free_ns">free_ns</a> (<a class="local col2 ref" href="#32t" title='t' data-ref="32t">t</a>);</td></tr>
+<tr><th id="301">301</th><td>    }</td></tr>
+<tr><th id="302">302</th><td>}</td></tr>
+<tr><th id="303">303</th><td></td></tr>
+<tr><th id="304">304</th><td></td></tr>
+<tr><th id="305">305</th><td><u>#<span data-ppcond="305">if</span> !<a class="macro" href="config.h.html#252" title="1" data-ref="_M/HAVE_STRCASECMP">HAVE_STRCASECMP</a> &amp;&amp; !HAVE_STRICMP &amp;&amp; !HAVE_STRCMPI</u></td></tr>
+<tr><th id="306">306</th><td><i>/* If we don't have strcasecmp() (from POSIX), or anything that can substitute</i></td></tr>
+<tr><th id="307">307</th><td><i>   for it, define our own version.  */</i></td></tr>
+<tr><th id="308">308</th><td></td></tr>
+<tr><th id="309">309</th><td><em>int</em></td></tr>
+<tr><th id="310">310</th><td>strcasecmp (<em>const</em> <em>char</em> *s1, <em>const</em> <em>char</em> *s2)</td></tr>
+<tr><th id="311">311</th><td>{</td></tr>
+<tr><th id="312">312</th><td>  <b>while</b> (<var>1</var>)</td></tr>
+<tr><th id="313">313</th><td>    {</td></tr>
+<tr><th id="314">314</th><td>      <em>int</em> c1 = (<em>int</em>) *(s1++);</td></tr>
+<tr><th id="315">315</th><td>      <em>int</em> c2 = (<em>int</em>) *(s2++);</td></tr>
+<tr><th id="316">316</th><td></td></tr>
+<tr><th id="317">317</th><td>      <b>if</b> (isalpha (c1))</td></tr>
+<tr><th id="318">318</th><td>        c1 = tolower (c1);</td></tr>
+<tr><th id="319">319</th><td>      <b>if</b> (isalpha (c2))</td></tr>
+<tr><th id="320">320</th><td>        c2 = tolower (c2);</td></tr>
+<tr><th id="321">321</th><td></td></tr>
+<tr><th id="322">322</th><td>      <b>if</b> (c1 != <kbd>'\0'</kbd> &amp;&amp; c1 == c2)</td></tr>
+<tr><th id="323">323</th><td>        <b>continue</b>;</td></tr>
+<tr><th id="324">324</th><td></td></tr>
+<tr><th id="325">325</th><td>      <b>return</b> (c1 - c2);</td></tr>
+<tr><th id="326">326</th><td>    }</td></tr>
+<tr><th id="327">327</th><td>}</td></tr>
+<tr><th id="328">328</th><td><u>#<span data-ppcond="305">endif</span></u></td></tr>
+<tr><th id="329">329</th><td></td></tr>
+<tr><th id="330">330</th><td><u>#<span data-ppcond="330">if</span> !<a class="macro" href="config.h.html#277" title="1" data-ref="_M/HAVE_STRNCASECMP">HAVE_STRNCASECMP</a> &amp;&amp; !HAVE_STRNICMP &amp;&amp; !HAVE_STRNCMPI</u></td></tr>
+<tr><th id="331">331</th><td><i>/* If we don't have strncasecmp() (from POSIX), or anything that can</i></td></tr>
+<tr><th id="332">332</th><td><i>   substitute for it, define our own version.  */</i></td></tr>
+<tr><th id="333">333</th><td></td></tr>
+<tr><th id="334">334</th><td><em>int</em></td></tr>
+<tr><th id="335">335</th><td>strncasecmp (<em>const</em> <em>char</em> *s1, <em>const</em> <em>char</em> *s2, <em>int</em> n)</td></tr>
+<tr><th id="336">336</th><td>{</td></tr>
+<tr><th id="337">337</th><td>  <b>while</b> (n-- &gt; <var>0</var>)</td></tr>
+<tr><th id="338">338</th><td>    {</td></tr>
+<tr><th id="339">339</th><td>      <em>int</em> c1 = (<em>int</em>) *(s1++);</td></tr>
+<tr><th id="340">340</th><td>      <em>int</em> c2 = (<em>int</em>) *(s2++);</td></tr>
+<tr><th id="341">341</th><td></td></tr>
+<tr><th id="342">342</th><td>      <b>if</b> (isalpha (c1))</td></tr>
+<tr><th id="343">343</th><td>        c1 = tolower (c1);</td></tr>
+<tr><th id="344">344</th><td>      <b>if</b> (isalpha (c2))</td></tr>
+<tr><th id="345">345</th><td>        c2 = tolower (c2);</td></tr>
+<tr><th id="346">346</th><td></td></tr>
+<tr><th id="347">347</th><td>      <b>if</b> (c1 != <kbd>'\0'</kbd> &amp;&amp; c1 == c2)</td></tr>
+<tr><th id="348">348</th><td>        <b>continue</b>;</td></tr>
+<tr><th id="349">349</th><td></td></tr>
+<tr><th id="350">350</th><td>      <b>return</b> (c1 - c2);</td></tr>
+<tr><th id="351">351</th><td>    }</td></tr>
+<tr><th id="352">352</th><td></td></tr>
+<tr><th id="353">353</th><td>  <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="354">354</th><td>}</td></tr>
+<tr><th id="355">355</th><td><u>#<span data-ppcond="330">endif</span></u></td></tr>
+<tr><th id="356">356</th><td></td></tr>
+<tr><th id="357">357</th><td><u>#<span data-ppcond="357">ifdef</span>  <span class="macro" data-ref="_M/GETLOADAVG_PRIVILEGED">GETLOADAVG_PRIVILEGED</span></u></td></tr>
+<tr><th id="358">358</th><td></td></tr>
+<tr><th id="359">359</th><td><u>#ifdef POSIX</u></td></tr>
+<tr><th id="360">360</th><td></td></tr>
+<tr><th id="361">361</th><td><i>/* Hopefully if a system says it's POSIX.1 and has the setuid and setgid</i></td></tr>
+<tr><th id="362">362</th><td><i>   functions, they work as POSIX.1 says.  Some systems (Alpha OSF/1 1.2,</i></td></tr>
+<tr><th id="363">363</th><td><i>   for example) which claim to be POSIX.1 also have the BSD setreuid and</i></td></tr>
+<tr><th id="364">364</th><td><i>   setregid functions, but they don't work as in BSD and only the POSIX.1</i></td></tr>
+<tr><th id="365">365</th><td><i>   way works.  */</i></td></tr>
+<tr><th id="366">366</th><td></td></tr>
+<tr><th id="367">367</th><td><u>#undef HAVE_SETREUID</u></td></tr>
+<tr><th id="368">368</th><td><u>#undef HAVE_SETREGID</u></td></tr>
+<tr><th id="369">369</th><td></td></tr>
+<tr><th id="370">370</th><td><u>#else   /* Not POSIX.  */</u></td></tr>
+<tr><th id="371">371</th><td></td></tr>
+<tr><th id="372">372</th><td><i>/* Some POSIX.1 systems have the seteuid and setegid functions.  In a</i></td></tr>
+<tr><th id="373">373</th><td><i>   POSIX-like system, they are the best thing to use.  However, some</i></td></tr>
+<tr><th id="374">374</th><td><i>   non-POSIX systems have them too but they do not work in the POSIX style</i></td></tr>
+<tr><th id="375">375</th><td><i>   and we must use setreuid and setregid instead.  */</i></td></tr>
+<tr><th id="376">376</th><td></td></tr>
+<tr><th id="377">377</th><td><u>#undef HAVE_SETEUID</u></td></tr>
+<tr><th id="378">378</th><td><u>#undef HAVE_SETEGID</u></td></tr>
+<tr><th id="379">379</th><td></td></tr>
+<tr><th id="380">380</th><td><u>#endif  /* POSIX.  */</u></td></tr>
+<tr><th id="381">381</th><td></td></tr>
+<tr><th id="382">382</th><td><u>#ifndef HAVE_UNISTD_H</u></td></tr>
+<tr><th id="383">383</th><td><b>extern</b> <em>int</em> getuid (), getgid (), geteuid (), getegid ();</td></tr>
+<tr><th id="384">384</th><td><b>extern</b> <em>int</em> setuid (), setgid ();</td></tr>
+<tr><th id="385">385</th><td><u>#ifdef HAVE_SETEUID</u></td></tr>
+<tr><th id="386">386</th><td><b>extern</b> <em>int</em> seteuid ();</td></tr>
+<tr><th id="387">387</th><td><u>#else</u></td></tr>
+<tr><th id="388">388</th><td><u>#ifdef  HAVE_SETREUID</u></td></tr>
+<tr><th id="389">389</th><td><b>extern</b> <em>int</em> setreuid ();</td></tr>
+<tr><th id="390">390</th><td><u>#endif  /* Have setreuid.  */</u></td></tr>
+<tr><th id="391">391</th><td><u>#endif  /* Have seteuid.  */</u></td></tr>
+<tr><th id="392">392</th><td><u>#ifdef HAVE_SETEGID</u></td></tr>
+<tr><th id="393">393</th><td><b>extern</b> <em>int</em> setegid ();</td></tr>
+<tr><th id="394">394</th><td><u>#else</u></td></tr>
+<tr><th id="395">395</th><td><u>#ifdef  HAVE_SETREGID</u></td></tr>
+<tr><th id="396">396</th><td><b>extern</b> <em>int</em> setregid ();</td></tr>
+<tr><th id="397">397</th><td><u>#endif  /* Have setregid.  */</u></td></tr>
+<tr><th id="398">398</th><td><u>#endif  /* Have setegid.  */</u></td></tr>
+<tr><th id="399">399</th><td><u>#endif  /* No &lt;unistd.h&gt;.  */</u></td></tr>
+<tr><th id="400">400</th><td></td></tr>
+<tr><th id="401">401</th><td><i>/* Keep track of the user and group IDs for user- and make- access.  */</i></td></tr>
+<tr><th id="402">402</th><td><em>static</em> <em>int</em> user_uid = -<var>1</var>, user_gid = -<var>1</var>, make_uid = -<var>1</var>, make_gid = -<var>1</var>;</td></tr>
+<tr><th id="403">403</th><td><u>#define access_inited   (user_uid != -1)</u></td></tr>
+<tr><th id="404">404</th><td><em>static</em> <b>enum</b> { make, user } current_access;</td></tr>
+<tr><th id="405">405</th><td></td></tr>
+<tr><th id="406">406</th><td></td></tr>
+<tr><th id="407">407</th><td><i>/* Under -d, write a message describing the current IDs.  */</i></td></tr>
+<tr><th id="408">408</th><td></td></tr>
+<tr><th id="409">409</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="410">410</th><td>log_access (<em>const</em> <em>char</em> *flavor)</td></tr>
+<tr><th id="411">411</th><td>{</td></tr>
+<tr><th id="412">412</th><td>  <b>if</b> (! ISDB (DB_JOBS))</td></tr>
+<tr><th id="413">413</th><td>    <b>return</b>;</td></tr>
+<tr><th id="414">414</th><td></td></tr>
+<tr><th id="415">415</th><td>  <i>/* All the other debugging messages go to stdout,</i></td></tr>
+<tr><th id="416">416</th><td><i>     but we write this one to stderr because it might be</i></td></tr>
+<tr><th id="417">417</th><td><i>     run in a child fork whose stdout is piped.  */</i></td></tr>
+<tr><th id="418">418</th><td></td></tr>
+<tr><th id="419">419</th><td>  fprintf (stderr, _(<q>"%s: user %lu (real %lu), group %lu (real %lu)\n"</q>),</td></tr>
+<tr><th id="420">420</th><td>           flavor, (<em>unsigned</em> <em>long</em>) geteuid (), (<em>unsigned</em> <em>long</em>) getuid (),</td></tr>
+<tr><th id="421">421</th><td>           (<em>unsigned</em> <em>long</em>) getegid (), (<em>unsigned</em> <em>long</em>) getgid ());</td></tr>
+<tr><th id="422">422</th><td>  fflush (stderr);</td></tr>
+<tr><th id="423">423</th><td>}</td></tr>
+<tr><th id="424">424</th><td></td></tr>
+<tr><th id="425">425</th><td></td></tr>
+<tr><th id="426">426</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="427">427</th><td>init_access (<em>void</em>)</td></tr>
+<tr><th id="428">428</th><td>{</td></tr>
+<tr><th id="429">429</th><td><u>#ifndef VMS</u></td></tr>
+<tr><th id="430">430</th><td>  user_uid = getuid ();</td></tr>
+<tr><th id="431">431</th><td>  user_gid = getgid ();</td></tr>
+<tr><th id="432">432</th><td></td></tr>
+<tr><th id="433">433</th><td>  make_uid = geteuid ();</td></tr>
+<tr><th id="434">434</th><td>  make_gid = getegid ();</td></tr>
+<tr><th id="435">435</th><td></td></tr>
+<tr><th id="436">436</th><td>  <i>/* Do these ever fail?  */</i></td></tr>
+<tr><th id="437">437</th><td>  <b>if</b> (user_uid == -<var>1</var> || user_gid == -<var>1</var> || make_uid == -<var>1</var> || make_gid == -<var>1</var>)</td></tr>
+<tr><th id="438">438</th><td>    pfatal_with_name (<q>"get{e}[gu]id"</q>);</td></tr>
+<tr><th id="439">439</th><td></td></tr>
+<tr><th id="440">440</th><td>  log_access (_(<q>"Initialized access"</q>));</td></tr>
+<tr><th id="441">441</th><td></td></tr>
+<tr><th id="442">442</th><td>  current_access = make;</td></tr>
+<tr><th id="443">443</th><td><u>#endif</u></td></tr>
+<tr><th id="444">444</th><td>}</td></tr>
+<tr><th id="445">445</th><td></td></tr>
+<tr><th id="446">446</th><td><u>#<span data-ppcond="357">endif</span>  /* GETLOADAVG_PRIVILEGED */</u></td></tr>
+<tr><th id="447">447</th><td></td></tr>
+<tr><th id="448">448</th><td><i>/* Give the process appropriate permissions for access to</i></td></tr>
+<tr><th id="449">449</th><td><i>   user data (i.e., to stat files, or to spawn a child process).  */</i></td></tr>
+<tr><th id="450">450</th><td><em>void</em></td></tr>
+<tr><th id="451">451</th><td><dfn class="decl def" id="user_access" title='user_access' data-ref="user_access">user_access</dfn> (<em>void</em>)</td></tr>
+<tr><th id="452">452</th><td>{</td></tr>
+<tr><th id="453">453</th><td><u>#<span data-ppcond="453">ifdef</span>  <span class="macro" data-ref="_M/GETLOADAVG_PRIVILEGED">GETLOADAVG_PRIVILEGED</span></u></td></tr>
+<tr><th id="454">454</th><td></td></tr>
+<tr><th id="455">455</th><td>  <b>if</b> (!access_inited)</td></tr>
+<tr><th id="456">456</th><td>    init_access ();</td></tr>
+<tr><th id="457">457</th><td></td></tr>
+<tr><th id="458">458</th><td>  <b>if</b> (current_access == user)</td></tr>
+<tr><th id="459">459</th><td>    <b>return</b>;</td></tr>
+<tr><th id="460">460</th><td></td></tr>
+<tr><th id="461">461</th><td>  <i>/* We are in "make access" mode.  This means that the effective user and</i></td></tr>
+<tr><th id="462">462</th><td><i>     group IDs are those of make (if it was installed setuid or setgid).</i></td></tr>
+<tr><th id="463">463</th><td><i>     We now want to set the effective user and group IDs to the real IDs,</i></td></tr>
+<tr><th id="464">464</th><td><i>     which are the IDs of the process that exec'd make.  */</i></td></tr>
+<tr><th id="465">465</th><td></td></tr>
+<tr><th id="466">466</th><td><u>#ifdef  HAVE_SETEUID</u></td></tr>
+<tr><th id="467">467</th><td></td></tr>
+<tr><th id="468">468</th><td>  <i>/* Modern systems have the seteuid/setegid calls which set only the</i></td></tr>
+<tr><th id="469">469</th><td><i>     effective IDs, which is ideal.  */</i></td></tr>
+<tr><th id="470">470</th><td></td></tr>
+<tr><th id="471">471</th><td>  <b>if</b> (seteuid (user_uid) &lt; <var>0</var>)</td></tr>
+<tr><th id="472">472</th><td>    pfatal_with_name (<q>"user_access: seteuid"</q>);</td></tr>
+<tr><th id="473">473</th><td></td></tr>
+<tr><th id="474">474</th><td><u>#else   /* Not HAVE_SETEUID.  */</u></td></tr>
+<tr><th id="475">475</th><td></td></tr>
+<tr><th id="476">476</th><td><u>#ifndef HAVE_SETREUID</u></td></tr>
+<tr><th id="477">477</th><td></td></tr>
+<tr><th id="478">478</th><td>  <i>/* System V has only the setuid/setgid calls to set user/group IDs.</i></td></tr>
+<tr><th id="479">479</th><td><i>     There is an effective ID, which can be set by setuid/setgid.</i></td></tr>
+<tr><th id="480">480</th><td><i>     It can be set (unless you are root) only to either what it already is</i></td></tr>
+<tr><th id="481">481</th><td><i>     (returned by geteuid/getegid, now in make_uid/make_gid),</i></td></tr>
+<tr><th id="482">482</th><td><i>     the real ID (return by getuid/getgid, now in user_uid/user_gid),</i></td></tr>
+<tr><th id="483">483</th><td><i>     or the saved set ID (what the effective ID was before this set-ID</i></td></tr>
+<tr><th id="484">484</th><td><i>     executable (make) was exec'd).  */</i></td></tr>
+<tr><th id="485">485</th><td></td></tr>
+<tr><th id="486">486</th><td>  <b>if</b> (setuid (user_uid) &lt; <var>0</var>)</td></tr>
+<tr><th id="487">487</th><td>    pfatal_with_name (<q>"user_access: setuid"</q>);</td></tr>
+<tr><th id="488">488</th><td></td></tr>
+<tr><th id="489">489</th><td><u>#else   /* HAVE_SETREUID.  */</u></td></tr>
+<tr><th id="490">490</th><td></td></tr>
+<tr><th id="491">491</th><td>  <i>/* In 4BSD, the setreuid/setregid calls set both the real and effective IDs.</i></td></tr>
+<tr><th id="492">492</th><td><i>     They may be set to themselves or each other.  So you have two alternatives</i></td></tr>
+<tr><th id="493">493</th><td><i>     at any one time.  If you use setuid/setgid, the effective will be set to</i></td></tr>
+<tr><th id="494">494</th><td><i>     the real, leaving only one alternative.  Using setreuid/setregid, however,</i></td></tr>
+<tr><th id="495">495</th><td><i>     you can toggle between your two alternatives by swapping the values in a</i></td></tr>
+<tr><th id="496">496</th><td><i>     single setreuid or setregid call.  */</i></td></tr>
+<tr><th id="497">497</th><td></td></tr>
+<tr><th id="498">498</th><td>  <b>if</b> (setreuid (make_uid, user_uid) &lt; <var>0</var>)</td></tr>
+<tr><th id="499">499</th><td>    pfatal_with_name (<q>"user_access: setreuid"</q>);</td></tr>
+<tr><th id="500">500</th><td></td></tr>
+<tr><th id="501">501</th><td><u>#endif  /* Not HAVE_SETREUID.  */</u></td></tr>
+<tr><th id="502">502</th><td><u>#endif  /* HAVE_SETEUID.  */</u></td></tr>
+<tr><th id="503">503</th><td></td></tr>
+<tr><th id="504">504</th><td><u>#ifdef  HAVE_SETEGID</u></td></tr>
+<tr><th id="505">505</th><td>  <b>if</b> (setegid (user_gid) &lt; <var>0</var>)</td></tr>
+<tr><th id="506">506</th><td>    pfatal_with_name (<q>"user_access: setegid"</q>);</td></tr>
+<tr><th id="507">507</th><td><u>#else</u></td></tr>
+<tr><th id="508">508</th><td><u>#ifndef HAVE_SETREGID</u></td></tr>
+<tr><th id="509">509</th><td>  <b>if</b> (setgid (user_gid) &lt; <var>0</var>)</td></tr>
+<tr><th id="510">510</th><td>    pfatal_with_name (<q>"user_access: setgid"</q>);</td></tr>
+<tr><th id="511">511</th><td><u>#else</u></td></tr>
+<tr><th id="512">512</th><td>  <b>if</b> (setregid (make_gid, user_gid) &lt; <var>0</var>)</td></tr>
+<tr><th id="513">513</th><td>    pfatal_with_name (<q>"user_access: setregid"</q>);</td></tr>
+<tr><th id="514">514</th><td><u>#endif</u></td></tr>
+<tr><th id="515">515</th><td><u>#endif</u></td></tr>
+<tr><th id="516">516</th><td></td></tr>
+<tr><th id="517">517</th><td>  current_access = user;</td></tr>
+<tr><th id="518">518</th><td></td></tr>
+<tr><th id="519">519</th><td>  log_access (_(<q>"User access"</q>));</td></tr>
+<tr><th id="520">520</th><td></td></tr>
+<tr><th id="521">521</th><td><u>#<span data-ppcond="453">endif</span>  /* GETLOADAVG_PRIVILEGED */</u></td></tr>
+<tr><th id="522">522</th><td>}</td></tr>
+<tr><th id="523">523</th><td></td></tr>
+<tr><th id="524">524</th><td><i>/* Give the process appropriate permissions for access to</i></td></tr>
+<tr><th id="525">525</th><td><i>   make data (i.e., the load average).  */</i></td></tr>
+<tr><th id="526">526</th><td><em>void</em></td></tr>
+<tr><th id="527">527</th><td><dfn class="decl def" id="make_access" title='make_access' data-ref="make_access">make_access</dfn> (<em>void</em>)</td></tr>
+<tr><th id="528">528</th><td>{</td></tr>
+<tr><th id="529">529</th><td><u>#<span data-ppcond="529">ifdef</span>  <span class="macro" data-ref="_M/GETLOADAVG_PRIVILEGED">GETLOADAVG_PRIVILEGED</span></u></td></tr>
+<tr><th id="530">530</th><td></td></tr>
+<tr><th id="531">531</th><td>  <b>if</b> (!access_inited)</td></tr>
+<tr><th id="532">532</th><td>    init_access ();</td></tr>
+<tr><th id="533">533</th><td></td></tr>
+<tr><th id="534">534</th><td>  <b>if</b> (current_access == make)</td></tr>
+<tr><th id="535">535</th><td>    <b>return</b>;</td></tr>
+<tr><th id="536">536</th><td></td></tr>
+<tr><th id="537">537</th><td>  <i>/* See comments in user_access, above.  */</i></td></tr>
+<tr><th id="538">538</th><td></td></tr>
+<tr><th id="539">539</th><td><u>#ifdef  HAVE_SETEUID</u></td></tr>
+<tr><th id="540">540</th><td>  <b>if</b> (seteuid (make_uid) &lt; <var>0</var>)</td></tr>
+<tr><th id="541">541</th><td>    pfatal_with_name (<q>"make_access: seteuid"</q>);</td></tr>
+<tr><th id="542">542</th><td><u>#else</u></td></tr>
+<tr><th id="543">543</th><td><u>#ifndef HAVE_SETREUID</u></td></tr>
+<tr><th id="544">544</th><td>  <b>if</b> (setuid (make_uid) &lt; <var>0</var>)</td></tr>
+<tr><th id="545">545</th><td>    pfatal_with_name (<q>"make_access: setuid"</q>);</td></tr>
+<tr><th id="546">546</th><td><u>#else</u></td></tr>
+<tr><th id="547">547</th><td>  <b>if</b> (setreuid (user_uid, make_uid) &lt; <var>0</var>)</td></tr>
+<tr><th id="548">548</th><td>    pfatal_with_name (<q>"make_access: setreuid"</q>);</td></tr>
+<tr><th id="549">549</th><td><u>#endif</u></td></tr>
+<tr><th id="550">550</th><td><u>#endif</u></td></tr>
+<tr><th id="551">551</th><td></td></tr>
+<tr><th id="552">552</th><td><u>#ifdef  HAVE_SETEGID</u></td></tr>
+<tr><th id="553">553</th><td>  <b>if</b> (setegid (make_gid) &lt; <var>0</var>)</td></tr>
+<tr><th id="554">554</th><td>    pfatal_with_name (<q>"make_access: setegid"</q>);</td></tr>
+<tr><th id="555">555</th><td><u>#else</u></td></tr>
+<tr><th id="556">556</th><td><u>#ifndef HAVE_SETREGID</u></td></tr>
+<tr><th id="557">557</th><td>  <b>if</b> (setgid (make_gid) &lt; <var>0</var>)</td></tr>
+<tr><th id="558">558</th><td>    pfatal_with_name (<q>"make_access: setgid"</q>);</td></tr>
+<tr><th id="559">559</th><td><u>#else</u></td></tr>
+<tr><th id="560">560</th><td>  <b>if</b> (setregid (user_gid, make_gid) &lt; <var>0</var>)</td></tr>
+<tr><th id="561">561</th><td>    pfatal_with_name (<q>"make_access: setregid"</q>);</td></tr>
+<tr><th id="562">562</th><td><u>#endif</u></td></tr>
+<tr><th id="563">563</th><td><u>#endif</u></td></tr>
+<tr><th id="564">564</th><td></td></tr>
+<tr><th id="565">565</th><td>  current_access = make;</td></tr>
+<tr><th id="566">566</th><td></td></tr>
+<tr><th id="567">567</th><td>  log_access (_(<q>"Make access"</q>));</td></tr>
+<tr><th id="568">568</th><td></td></tr>
+<tr><th id="569">569</th><td><u>#<span data-ppcond="529">endif</span>  /* GETLOADAVG_PRIVILEGED */</u></td></tr>
+<tr><th id="570">570</th><td>}</td></tr>
+<tr><th id="571">571</th><td></td></tr>
+<tr><th id="572">572</th><td><i>/* Give the process appropriate permissions for a child process.</i></td></tr>
+<tr><th id="573">573</th><td><i>   This is like user_access, but you can't get back to make_access.  */</i></td></tr>
+<tr><th id="574">574</th><td><em>void</em></td></tr>
+<tr><th id="575">575</th><td><dfn class="decl def" id="child_access" title='child_access' data-ref="child_access">child_access</dfn> (<em>void</em>)</td></tr>
+<tr><th id="576">576</th><td>{</td></tr>
+<tr><th id="577">577</th><td><u>#<span data-ppcond="577">ifdef</span>  <span class="macro" data-ref="_M/GETLOADAVG_PRIVILEGED">GETLOADAVG_PRIVILEGED</span></u></td></tr>
+<tr><th id="578">578</th><td></td></tr>
+<tr><th id="579">579</th><td>  <b>if</b> (!access_inited)</td></tr>
+<tr><th id="580">580</th><td>    abort ();</td></tr>
+<tr><th id="581">581</th><td></td></tr>
+<tr><th id="582">582</th><td>  <i>/* Set both the real and effective UID and GID to the user's.</i></td></tr>
+<tr><th id="583">583</th><td><i>     They cannot be changed back to make's.  */</i></td></tr>
+<tr><th id="584">584</th><td></td></tr>
+<tr><th id="585">585</th><td><u>#ifndef HAVE_SETREUID</u></td></tr>
+<tr><th id="586">586</th><td>  <b>if</b> (setuid (user_uid) &lt; <var>0</var>)</td></tr>
+<tr><th id="587">587</th><td>    pfatal_with_name (<q>"child_access: setuid"</q>);</td></tr>
+<tr><th id="588">588</th><td><u>#else</u></td></tr>
+<tr><th id="589">589</th><td>  <b>if</b> (setreuid (user_uid, user_uid) &lt; <var>0</var>)</td></tr>
+<tr><th id="590">590</th><td>    pfatal_with_name (<q>"child_access: setreuid"</q>);</td></tr>
+<tr><th id="591">591</th><td><u>#endif</u></td></tr>
+<tr><th id="592">592</th><td></td></tr>
+<tr><th id="593">593</th><td><u>#ifndef HAVE_SETREGID</u></td></tr>
+<tr><th id="594">594</th><td>  <b>if</b> (setgid (user_gid) &lt; <var>0</var>)</td></tr>
+<tr><th id="595">595</th><td>    pfatal_with_name (<q>"child_access: setgid"</q>);</td></tr>
+<tr><th id="596">596</th><td><u>#else</u></td></tr>
+<tr><th id="597">597</th><td>  <b>if</b> (setregid (user_gid, user_gid) &lt; <var>0</var>)</td></tr>
+<tr><th id="598">598</th><td>    pfatal_with_name (<q>"child_access: setregid"</q>);</td></tr>
+<tr><th id="599">599</th><td><u>#endif</u></td></tr>
+<tr><th id="600">600</th><td></td></tr>
+<tr><th id="601">601</th><td>  log_access (_(<q>"Child access"</q>));</td></tr>
+<tr><th id="602">602</th><td></td></tr>
+<tr><th id="603">603</th><td><u>#<span data-ppcond="577">endif</span>  /* GETLOADAVG_PRIVILEGED */</u></td></tr>
+<tr><th id="604">604</th><td>}</td></tr>
+<tr><th id="605">605</th><td></td></tr>
+<tr><th id="606">606</th><td><u>#<span data-ppcond="606">ifdef</span> <span class="macro" data-ref="_M/NEED_GET_PATH_MAX">NEED_GET_PATH_MAX</span></u></td></tr>
+<tr><th id="607">607</th><td><em>unsigned</em> <em>int</em></td></tr>
+<tr><th id="608">608</th><td>get_path_max (<em>void</em>)</td></tr>
+<tr><th id="609">609</th><td>{</td></tr>
+<tr><th id="610">610</th><td>  <em>static</em> <em>unsigned</em> <em>int</em> value;</td></tr>
+<tr><th id="611">611</th><td></td></tr>
+<tr><th id="612">612</th><td>  <b>if</b> (value == <var>0</var>)</td></tr>
+<tr><th id="613">613</th><td>    {</td></tr>
+<tr><th id="614">614</th><td>      <em>long</em> <em>int</em> x = pathconf (<q>"/"</q>, _PC_PATH_MAX);</td></tr>
+<tr><th id="615">615</th><td>      <b>if</b> (x &gt; <var>0</var>)</td></tr>
+<tr><th id="616">616</th><td>        value = x;</td></tr>
+<tr><th id="617">617</th><td>      <b>else</b></td></tr>
+<tr><th id="618">618</th><td>        <b>return</b> MAXPATHLEN;</td></tr>
+<tr><th id="619">619</th><td>    }</td></tr>
+<tr><th id="620">620</th><td></td></tr>
+<tr><th id="621">621</th><td>  <b>return</b> value;</td></tr>
+<tr><th id="622">622</th><td>}</td></tr>
+<tr><th id="623">623</th><td><u>#<span data-ppcond="606">endif</span></u></td></tr>
+<tr><th id="624">624</th><td></td></tr>
+<tr><th id="625">625</th><td><i>/* Map of possible stop characters for searching strings.  */</i></td></tr>
+<tr><th id="626">626</th><td><u>#<span data-ppcond="626">ifndef</span> <span class="macro" data-ref="_M/UCHAR_MAX">UCHAR_MAX</span></u></td></tr>
+<tr><th id="627">627</th><td><u># define UCHAR_MAX 255</u></td></tr>
+<tr><th id="628">628</th><td><u>#<span data-ppcond="626">endif</span></u></td></tr>
+<tr><th id="629">629</th><td><em>unsigned</em> <em>short</em> <dfn class="decl def" id="stopchar_map" title='stopchar_map' data-ref="stopchar_map">stopchar_map</dfn>[<span class="macro" title="(127*2 +1)" data-ref="_M/UCHAR_MAX">UCHAR_MAX</span> + <var>1</var>] = {<var>0</var>};</td></tr>
+<tr><th id="630">630</th><td></td></tr>
+<tr><th id="631">631</th><td><i>/* This character map locate stop chars when parsing GNU makefiles.</i></td></tr>
+<tr><th id="632">632</th><td><i>   Each element is true if we should stop parsing on that character.  */</i></td></tr>
+<tr><th id="633">633</th><td></td></tr>
+<tr><th id="634">634</th><td><b>extern</b> <em>void</em></td></tr>
+<tr><th id="635">635</th><td><dfn class="decl def" id="initialize_stopchar_map" title='initialize_stopchar_map' data-ref="initialize_stopchar_map">initialize_stopchar_map</dfn> (<em>void</em>)</td></tr>
+<tr><th id="636">636</th><td>{</td></tr>
+<tr><th id="637">637</th><td>  <em>int</em> <dfn class="local col3 decl" id="33i" title='i' data-type='int' data-ref="33i">i</dfn>;</td></tr>
+<tr><th id="638">638</th><td></td></tr>
+<tr><th id="639">639</th><td>  <a class="ref" href="makeint.h.html#stopchar_map" title='stopchar_map' data-ref="stopchar_map">stopchar_map</a>[(<em>int</em>)<kbd>'\0'</kbd>] = <a class="macro" href="makeint.h.html#392" title="0x0001" data-ref="_M/MAP_NUL">MAP_NUL</a>;</td></tr>
+<tr><th id="640">640</th><td>  <a class="ref" href="makeint.h.html#stopchar_map" title='stopchar_map' data-ref="stopchar_map">stopchar_map</a>[(<em>int</em>)<kbd>'#'</kbd>] = <a class="macro" href="makeint.h.html#395" title="0x0008" data-ref="_M/MAP_COMMENT">MAP_COMMENT</a>;</td></tr>
+<tr><th id="641">641</th><td>  <a class="ref" href="makeint.h.html#stopchar_map" title='stopchar_map' data-ref="stopchar_map">stopchar_map</a>[(<em>int</em>)<kbd>';'</kbd>] = <a class="macro" href="makeint.h.html#396" title="0x0010" data-ref="_M/MAP_SEMI">MAP_SEMI</a>;</td></tr>
+<tr><th id="642">642</th><td>  <a class="ref" href="makeint.h.html#stopchar_map" title='stopchar_map' data-ref="stopchar_map">stopchar_map</a>[(<em>int</em>)<kbd>'='</kbd>] = <a class="macro" href="makeint.h.html#397" title="0x0020" data-ref="_M/MAP_EQUALS">MAP_EQUALS</a>;</td></tr>
+<tr><th id="643">643</th><td>  <a class="ref" href="makeint.h.html#stopchar_map" title='stopchar_map' data-ref="stopchar_map">stopchar_map</a>[(<em>int</em>)<kbd>':'</kbd>] = <a class="macro" href="makeint.h.html#398" title="0x0040" data-ref="_M/MAP_COLON">MAP_COLON</a>;</td></tr>
+<tr><th id="644">644</th><td>  <a class="ref" href="makeint.h.html#stopchar_map" title='stopchar_map' data-ref="stopchar_map">stopchar_map</a>[(<em>int</em>)<kbd>'%'</kbd>] = <a class="macro" href="makeint.h.html#399" title="0x0080" data-ref="_M/MAP_PERCENT">MAP_PERCENT</a>;</td></tr>
+<tr><th id="645">645</th><td>  <a class="ref" href="makeint.h.html#stopchar_map" title='stopchar_map' data-ref="stopchar_map">stopchar_map</a>[(<em>int</em>)<kbd>'|'</kbd>] = <a class="macro" href="makeint.h.html#400" title="0x0100" data-ref="_M/MAP_PIPE">MAP_PIPE</a>;</td></tr>
+<tr><th id="646">646</th><td>  <a class="ref" href="makeint.h.html#stopchar_map" title='stopchar_map' data-ref="stopchar_map">stopchar_map</a>[(<em>int</em>)<kbd>'.'</kbd>] = <a class="macro" href="makeint.h.html#401" title="0x0200" data-ref="_M/MAP_DOT">MAP_DOT</a> | <a class="macro" href="makeint.h.html#405" title="0x2000" data-ref="_M/MAP_USERFUNC">MAP_USERFUNC</a>;</td></tr>
+<tr><th id="647">647</th><td>  <a class="ref" href="makeint.h.html#stopchar_map" title='stopchar_map' data-ref="stopchar_map">stopchar_map</a>[(<em>int</em>)<kbd>','</kbd>] = <a class="macro" href="makeint.h.html#402" title="0x0400" data-ref="_M/MAP_COMMA">MAP_COMMA</a>;</td></tr>
+<tr><th id="648">648</th><td>  <a class="ref" href="makeint.h.html#stopchar_map" title='stopchar_map' data-ref="stopchar_map">stopchar_map</a>[(<em>int</em>)<kbd>'$'</kbd>] = <a class="macro" href="makeint.h.html#407" title="0x4000" data-ref="_M/MAP_VARIABLE">MAP_VARIABLE</a>;</td></tr>
+<tr><th id="649">649</th><td></td></tr>
+<tr><th id="650">650</th><td>  <a class="ref" href="makeint.h.html#stopchar_map" title='stopchar_map' data-ref="stopchar_map">stopchar_map</a>[(<em>int</em>)<kbd>'-'</kbd>] = <a class="macro" href="makeint.h.html#405" title="0x2000" data-ref="_M/MAP_USERFUNC">MAP_USERFUNC</a>;</td></tr>
+<tr><th id="651">651</th><td>  <a class="ref" href="makeint.h.html#stopchar_map" title='stopchar_map' data-ref="stopchar_map">stopchar_map</a>[(<em>int</em>)<kbd>'_'</kbd>] = <a class="macro" href="makeint.h.html#405" title="0x2000" data-ref="_M/MAP_USERFUNC">MAP_USERFUNC</a>;</td></tr>
+<tr><th id="652">652</th><td></td></tr>
+<tr><th id="653">653</th><td>  <a class="ref" href="makeint.h.html#stopchar_map" title='stopchar_map' data-ref="stopchar_map">stopchar_map</a>[(<em>int</em>)<kbd>' '</kbd>] = <a class="macro" href="makeint.h.html#393" title="0x0002" data-ref="_M/MAP_BLANK">MAP_BLANK</a>;</td></tr>
+<tr><th id="654">654</th><td>  <a class="ref" href="makeint.h.html#stopchar_map" title='stopchar_map' data-ref="stopchar_map">stopchar_map</a>[(<em>int</em>)<kbd>'\t'</kbd>] = <a class="macro" href="makeint.h.html#393" title="0x0002" data-ref="_M/MAP_BLANK">MAP_BLANK</a>;</td></tr>
+<tr><th id="655">655</th><td></td></tr>
+<tr><th id="656">656</th><td>  <a class="ref" href="makeint.h.html#stopchar_map" title='stopchar_map' data-ref="stopchar_map">stopchar_map</a>[(<em>int</em>)<kbd>'/'</kbd>] = <a class="macro" href="makeint.h.html#409" title="0x8000" data-ref="_M/MAP_DIRSEP">MAP_DIRSEP</a>;</td></tr>
+<tr><th id="657">657</th><td><u>#<span data-ppcond="657">if</span> defined(<span class="macro" data-ref="_M/HAVE_DOS_PATHS">HAVE_DOS_PATHS</span>)</u></td></tr>
+<tr><th id="658">658</th><td>  stopchar_map[(<em>int</em>)<kbd>'\\'</kbd>] = MAP_DIRSEP;</td></tr>
+<tr><th id="659">659</th><td><u>#<span data-ppcond="657">endif</span></u></td></tr>
+<tr><th id="660">660</th><td></td></tr>
+<tr><th id="661">661</th><td>  <b>for</b> (<a class="local col3 ref" href="#33i" title='i' data-ref="33i">i</a> = <var>1</var>; <a class="local col3 ref" href="#33i" title='i' data-ref="33i">i</a> &lt;= <span class="macro" title="(127*2 +1)" data-ref="_M/UCHAR_MAX">UCHAR_MAX</span>; ++<a class="local col3 ref" href="#33i" title='i' data-ref="33i">i</a>)</td></tr>
+<tr><th id="662">662</th><td>    {</td></tr>
+<tr><th id="663">663</th><td>      <b>if</b> (<a class="macro" href="../include/ctype.h.html#205" title="((*__ctype_b_loc ())[(int) ((i))] &amp; (unsigned short int) _ISspace)" data-ref="_M/isspace">isspace</a> (<a class="local col3 ref" href="#33i" title='i' data-ref="33i">i</a>) &amp;&amp; <a class="macro" href="makeint.h.html#390" title="(! ((((stopchar_map[i]))&amp;((0x0002))) != 0))" data-ref="_M/NONE_SET">NONE_SET</a> (<a class="ref" href="makeint.h.html#stopchar_map" title='stopchar_map' data-ref="stopchar_map">stopchar_map</a>[<a class="local col3 ref" href="#33i" title='i' data-ref="33i">i</a>], <a class="macro" href="makeint.h.html#393" title="0x0002" data-ref="_M/MAP_BLANK">MAP_BLANK</a>))</td></tr>
+<tr><th id="664">664</th><td>        <i>/* Don't mark blank characters as newline characters.  */</i></td></tr>
+<tr><th id="665">665</th><td>        <a class="ref" href="makeint.h.html#stopchar_map" title='stopchar_map' data-ref="stopchar_map">stopchar_map</a>[<a class="local col3 ref" href="#33i" title='i' data-ref="33i">i</a>] |= <a class="macro" href="makeint.h.html#394" title="0x0004" data-ref="_M/MAP_NEWLINE">MAP_NEWLINE</a>;</td></tr>
+<tr><th id="666">666</th><td>      <b>else</b> <b>if</b> (<a class="macro" href="../include/ctype.h.html#197" title="((*__ctype_b_loc ())[(int) ((i))] &amp; (unsigned short int) _ISalnum)" data-ref="_M/isalnum">isalnum</a> (<a class="local col3 ref" href="#33i" title='i' data-ref="33i">i</a>))</td></tr>
+<tr><th id="667">667</th><td>        <a class="ref" href="makeint.h.html#stopchar_map" title='stopchar_map' data-ref="stopchar_map">stopchar_map</a>[<a class="local col3 ref" href="#33i" title='i' data-ref="33i">i</a>] |= <a class="macro" href="makeint.h.html#405" title="0x2000" data-ref="_M/MAP_USERFUNC">MAP_USERFUNC</a>;</td></tr>
+<tr><th id="668">668</th><td>    }</td></tr>
+<tr><th id="669">669</th><td>}</td></tr>
+<tr><th id="670">670</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

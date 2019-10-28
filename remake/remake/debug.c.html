@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>debug.c source code [remake/debug.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/debug.c'; var root_path = '..'; var data_path = '../../data';</script>
+<script src='../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='./'>remake</a>/<a href='debug.c.html'>debug.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Debugging macros and interface.</i></td></tr>
+<tr><th id="2">2</th><td><i>  Copyright (c) 2005, 2011 Rocky Bernstein &lt;rocky@gnu.org&gt;</i></td></tr>
+<tr><th id="3">3</th><td><i></i></td></tr>
+<tr><th id="4">4</th><td><i>GNU Make is free software; you can redistribute it and/or modify</i></td></tr>
+<tr><th id="5">5</th><td><i>it under the terms of the GNU General Public License as published by</i></td></tr>
+<tr><th id="6">6</th><td><i>the Free Software Foundation; either version 2, or (at your option)</i></td></tr>
+<tr><th id="7">7</th><td><i>any later version.</i></td></tr>
+<tr><th id="8">8</th><td><i></i></td></tr>
+<tr><th id="9">9</th><td><i>GNU Make is distributed in the hope that it will be useful,</i></td></tr>
+<tr><th id="10">10</th><td><i>but WITHOUT ANY WARRANTY; without even the implied warranty of</i></td></tr>
+<tr><th id="11">11</th><td><i>MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</i></td></tr>
+<tr><th id="12">12</th><td><i>GNU General Public License for more details.</i></td></tr>
+<tr><th id="13">13</th><td><i></i></td></tr>
+<tr><th id="14">14</th><td><i>You should have received a copy of the GNU General Public License</i></td></tr>
+<tr><th id="15">15</th><td><i>along with GNU Make; see the file COPYING.  If not, write to</i></td></tr>
+<tr><th id="16">16</th><td><i>the Free Software Foundation, Inc., 59 Temple Place - Suite 330,</i></td></tr>
+<tr><th id="17">17</th><td><i>Boston, MA 02111-1307, USA.  */</i></td></tr>
+<tr><th id="18">18</th><td></td></tr>
+<tr><th id="19">19</th><td><u>#include <a href="makeint.h.html">"makeint.h"</a></u></td></tr>
+<tr><th id="20">20</th><td><u>#include <a href="make.h.html">"make.h"</a></u></td></tr>
+<tr><th id="21">21</th><td><u>#include <a href="debug.h.html">"debug.h"</a></u></td></tr>
+<tr><th id="22">22</th><td><u>#include <a href="print.h.html">"print.h"</a></u></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><a class="typedef" href="debug.h.html#debug_level_mask_t" title='debug_level_mask_t' data-type='enum debug_level_mask_t' data-ref="debug_level_mask_t">debug_level_mask_t</a> <dfn class="decl def" id="debug_dummy_level_mask" title='debug_dummy_level_mask' data-ref="debug_dummy_level_mask">debug_dummy_level_mask</dfn>;</td></tr>
+<tr><th id="25">25</th><td><a class="typedef" href="debug.h.html#debug_enter_debugger_t" title='debug_enter_debugger_t' data-type='enum debug_enter_debugger_t' data-ref="debug_enter_debugger_t">debug_enter_debugger_t</a> <dfn class="decl def" id="debug_dummy_enter_debugger_mask" title='debug_dummy_enter_debugger_mask' data-ref="debug_dummy_enter_debugger_mask">debug_dummy_enter_debugger_mask</dfn>;</td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><em>int</em> <dfn class="decl def" id="debug_flag" title='debug_flag' data-ref="debug_flag">debug_flag</dfn> = <var>0</var>;</td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><i class="doc">/*! If true, enter the debugger before updating goal. */</i></td></tr>
+<tr><th id="30">30</th><td><a class="macro" href="types.h.html#50" title="uint8_t" data-ref="_M/bool">bool</a> <dfn class="decl def" id="b_debugger_goal" title='b_debugger_goal' data-ref="b_debugger_goal">b_debugger_goal</dfn> = <a class="macro" href="types.h.html#47" title="0" data-ref="_M/false">false</a>;</td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><a class="typedef" href="types.h.html#stringlist_t" title='stringlist_t' data-type='struct stringlist' data-ref="stringlist_t">stringlist_t</a> *<dfn class="decl def" id="db_flags" title='db_flags' data-ref="db_flags">db_flags</dfn>;</td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><i class="doc">/** Toggle -d on receipt of SIGUSR1.  */</i></td></tr>
+<tr><th id="35">35</th><td><u>#<span data-ppcond="35">ifdef</span> <a class="macro" href="../include/x86_64-linux-gnu/bits/signum.h.html#42" data-ref="_M/SIGUSR1">SIGUSR1</a></u></td></tr>
+<tr><th id="36">36</th><td><a class="macro" href="config.h.html#418" title="void" data-ref="_M/RETSIGTYPE">RETSIGTYPE</a></td></tr>
+<tr><th id="37">37</th><td><dfn class="decl def" id="debug_signal_handler" title='debug_signal_handler' data-ref="debug_signal_handler">debug_signal_handler</dfn> (<em>int</em> <dfn class="local col5 decl" id="35sig" title='sig' data-type='int' data-ref="35sig">sig</dfn>)</td></tr>
+<tr><th id="38">38</th><td>{</td></tr>
+<tr><th id="39">39</th><td>  <a class="macro" href="types.h.html#34" title="(void)sig" data-ref="_M/UNUSED_ARGUMENT">UNUSED_ARGUMENT</a>(<a class="local col5 ref" href="#35sig" title='sig' data-ref="35sig">sig</a>);</td></tr>
+<tr><th id="40">40</th><td>  <a class="ref" href="debug.h.html#db_level" title='db_level' data-ref="db_level">db_level</a> = <a class="ref" href="debug.h.html#db_level" title='db_level' data-ref="db_level">db_level</a> ? <a class="enum" href="debug.h.html#DB_NONE" title='DB_NONE' data-ref="DB_NONE">DB_NONE</a> : <a class="enum" href="debug.h.html#DB_BASIC" title='DB_BASIC' data-ref="DB_BASIC">DB_BASIC</a>;</td></tr>
+<tr><th id="41">41</th><td>}</td></tr>
+<tr><th id="42">42</th><td><u>#<span data-ppcond="35">endif</span></u></td></tr>
+<tr><th id="43">43</th><td></td></tr>
+<tr><th id="44">44</th><td><i class="doc">/*! Set the global db_level mask based on the command option list</i></td></tr>
+<tr><th id="45">45</th><td><i class="doc">  db_flags.</i></td></tr>
+<tr><th id="46">46</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="47">47</th><td><em>void</em></td></tr>
+<tr><th id="48">48</th><td><dfn class="decl def" id="decode_debug_flags" title='decode_debug_flags' data-ref="decode_debug_flags">decode_debug_flags</dfn> (<em>int</em> <dfn class="local col6 decl" id="36b_debug_flag" title='b_debug_flag' data-type='int' data-ref="36b_debug_flag">b_debug_flag</dfn>, <a class="typedef" href="types.h.html#stringlist_t" title='stringlist_t' data-type='struct stringlist' data-ref="stringlist_t">stringlist_t</a> *<dfn class="local col7 decl" id="37ppsz_db_flags" title='ppsz_db_flags' data-type='stringlist_t *' data-ref="37ppsz_db_flags">ppsz_db_flags</dfn>)</td></tr>
+<tr><th id="49">49</th><td>{</td></tr>
+<tr><th id="50">50</th><td>  <em>const</em> <em>char</em> **<dfn class="local col8 decl" id="38pp" title='pp' data-type='const char **' data-ref="38pp">pp</dfn>;</td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td>  <b>if</b> (<a class="local col6 ref" href="#36b_debug_flag" title='b_debug_flag' data-ref="36b_debug_flag">b_debug_flag</a>)</td></tr>
+<tr><th id="53">53</th><td>    <a class="ref" href="debug.h.html#db_level" title='db_level' data-ref="db_level">db_level</a> = <a class="enum" href="debug.h.html#DB_ALL" title='DB_ALL' data-ref="DB_ALL">DB_ALL</a>;</td></tr>
+<tr><th id="54">54</th><td></td></tr>
+<tr><th id="55">55</th><td>  <b>if</b> (!<a class="local col7 ref" href="#37ppsz_db_flags" title='ppsz_db_flags' data-ref="37ppsz_db_flags">ppsz_db_flags</a>)</td></tr>
+<tr><th id="56">56</th><td>    <b>return</b>;</td></tr>
+<tr><th id="57">57</th><td></td></tr>
+<tr><th id="58">58</th><td>  <b>for</b> (<a class="local col8 ref" href="#38pp" title='pp' data-ref="38pp">pp</a>=<a class="local col7 ref" href="#37ppsz_db_flags" title='ppsz_db_flags' data-ref="37ppsz_db_flags">ppsz_db_flags</a>-&gt;<a class="ref" href="debug.h.html#stringlist::list" title='stringlist::list' data-ref="stringlist::list">list</a>; *<a class="local col8 ref" href="#38pp" title='pp' data-ref="38pp">pp</a>; ++<a class="local col8 ref" href="#38pp" title='pp' data-ref="38pp">pp</a>)</td></tr>
+<tr><th id="59">59</th><td>    {</td></tr>
+<tr><th id="60">60</th><td>      <em>const</em> <em>char</em> *<dfn class="local col9 decl" id="39p" title='p' data-type='const char *' data-ref="39p">p</dfn> = *<a class="local col8 ref" href="#38pp" title='pp' data-ref="38pp">pp</a>;</td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td>      <b>while</b> (<var>1</var>)</td></tr>
+<tr><th id="63">63</th><td>        {</td></tr>
+<tr><th id="64">64</th><td>          <b>switch</b> (<a class="macro" href="../include/ctype.h.html#228" title="(__extension__ ({ int __res; if (sizeof (p[0]) &gt; 1) { if (__builtin_constant_p (p[0])) { int __c = (p[0]); __res = __c &lt; -128 || __c &gt; 255 ? __c : (*__ctype_tolower_loc ())[__c]; } else __res = tolower (p[0]); } else __res = (*__ctype_tolower_loc ())[(int) (p[0])]; __res; }))" data-ref="_M/tolower">tolower</a> (<a class="local col9 ref" href="#39p" title='p' data-ref="39p">p</a>[<var>0</var>]))</td></tr>
+<tr><th id="65">65</th><td>            {</td></tr>
+<tr><th id="66">66</th><td>            <b>case</b> <kbd>'a'</kbd>:</td></tr>
+<tr><th id="67">67</th><td>              <a class="ref" href="debug.h.html#db_level" title='db_level' data-ref="db_level">db_level</a> |= <a class="enum" href="debug.h.html#DB_ALL" title='DB_ALL' data-ref="DB_ALL">DB_ALL</a>;</td></tr>
+<tr><th id="68">68</th><td>              <b>break</b>;</td></tr>
+<tr><th id="69">69</th><td>            <b>case</b> <kbd>'b'</kbd>:</td></tr>
+<tr><th id="70">70</th><td>              <a class="ref" href="debug.h.html#db_level" title='db_level' data-ref="db_level">db_level</a> |= <a class="enum" href="debug.h.html#DB_BASIC" title='DB_BASIC' data-ref="DB_BASIC">DB_BASIC</a>;</td></tr>
+<tr><th id="71">71</th><td>              <b>break</b>;</td></tr>
+<tr><th id="72">72</th><td>            <b>case</b> <kbd>'i'</kbd>:</td></tr>
+<tr><th id="73">73</th><td>              <a class="ref" href="debug.h.html#db_level" title='db_level' data-ref="db_level">db_level</a> |= <a class="enum" href="debug.h.html#DB_BASIC" title='DB_BASIC' data-ref="DB_BASIC">DB_BASIC</a> | <a class="enum" href="debug.h.html#DB_IMPLICIT" title='DB_IMPLICIT' data-ref="DB_IMPLICIT">DB_IMPLICIT</a>;</td></tr>
+<tr><th id="74">74</th><td>              <b>break</b>;</td></tr>
+<tr><th id="75">75</th><td>            <b>case</b> <kbd>'j'</kbd>:</td></tr>
+<tr><th id="76">76</th><td>              <a class="ref" href="debug.h.html#db_level" title='db_level' data-ref="db_level">db_level</a> |= <a class="enum" href="debug.h.html#DB_JOBS" title='DB_JOBS' data-ref="DB_JOBS">DB_JOBS</a>;</td></tr>
+<tr><th id="77">77</th><td>              <b>break</b>;</td></tr>
+<tr><th id="78">78</th><td>            <b>case</b> <kbd>'m'</kbd>:</td></tr>
+<tr><th id="79">79</th><td>              <a class="ref" href="debug.h.html#db_level" title='db_level' data-ref="db_level">db_level</a> |= <a class="enum" href="debug.h.html#DB_BASIC" title='DB_BASIC' data-ref="DB_BASIC">DB_BASIC</a> | <a class="enum" href="debug.h.html#DB_MAKEFILES" title='DB_MAKEFILES' data-ref="DB_MAKEFILES">DB_MAKEFILES</a>;</td></tr>
+<tr><th id="80">80</th><td>              <b>break</b>;</td></tr>
+<tr><th id="81">81</th><td>            <b>case</b> <kbd>'r'</kbd>:</td></tr>
+<tr><th id="82">82</th><td>              <a class="ref" href="debug.h.html#db_level" title='db_level' data-ref="db_level">db_level</a> |= <a class="enum" href="debug.h.html#DB_BASIC" title='DB_BASIC' data-ref="DB_BASIC">DB_BASIC</a> | <a class="enum" href="debug.h.html#DB_READ_MAKEFILES" title='DB_READ_MAKEFILES' data-ref="DB_READ_MAKEFILES">DB_READ_MAKEFILES</a>;</td></tr>
+<tr><th id="83">83</th><td>              <b>break</b>;</td></tr>
+<tr><th id="84">84</th><td>            <b>case</b> <kbd>'v'</kbd>:</td></tr>
+<tr><th id="85">85</th><td>              <a class="ref" href="debug.h.html#db_level" title='db_level' data-ref="db_level">db_level</a> |= <a class="enum" href="debug.h.html#DB_BASIC" title='DB_BASIC' data-ref="DB_BASIC">DB_BASIC</a> | <a class="enum" href="debug.h.html#DB_VERBOSE" title='DB_VERBOSE' data-ref="DB_VERBOSE">DB_VERBOSE</a>;</td></tr>
+<tr><th id="86">86</th><td>              <b>break</b>;</td></tr>
+<tr><th id="87">87</th><td>            <b>default</b>:</td></tr>
+<tr><th id="88">88</th><td>              <a class="macro" href="makeint.h.html#476" title="fatal((((gmk_floc *)0)), strlen (p), (dcgettext (((void*)0), &quot;unknown debug level specification `%s&apos;&quot;, 5)), (p))" data-ref="_M/OS">OS</a> ( <a class="ref" href="makeint.h.html#fatal" title='fatal' data-ref="fatal">fatal</a>, <a class="macro" href="makeint.h.html#451" title="((gmk_floc *)0)" data-ref="_M/NILF">NILF</a>, <a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;unknown debug level specification `%s&apos;&quot;, 5)" data-ref="_M/_">_</a>(<q>"unknown debug level specification `%s'"</q>), <a class="local col9 ref" href="#39p" title='p' data-ref="39p">p</a>);</td></tr>
+<tr><th id="89">89</th><td>            }</td></tr>
+<tr><th id="90">90</th><td></td></tr>
+<tr><th id="91">91</th><td>          <b>while</b> (*(++<a class="local col9 ref" href="#39p" title='p' data-ref="39p">p</a>) != <kbd>'\0'</kbd>)</td></tr>
+<tr><th id="92">92</th><td>            <b>if</b> (*<a class="local col9 ref" href="#39p" title='p' data-ref="39p">p</a> == <kbd>','</kbd> || *<a class="local col9 ref" href="#39p" title='p' data-ref="39p">p</a> == <kbd>' '</kbd>)</td></tr>
+<tr><th id="93">93</th><td>              <b>break</b>;</td></tr>
+<tr><th id="94">94</th><td></td></tr>
+<tr><th id="95">95</th><td>          <b>if</b> (*<a class="local col9 ref" href="#39p" title='p' data-ref="39p">p</a> == <kbd>'\0'</kbd>)</td></tr>
+<tr><th id="96">96</th><td>            <b>break</b>;</td></tr>
+<tr><th id="97">97</th><td></td></tr>
+<tr><th id="98">98</th><td>          ++<a class="local col9 ref" href="#39p" title='p' data-ref="39p">p</a>;</td></tr>
+<tr><th id="99">99</th><td>        }</td></tr>
+<tr><th id="100">100</th><td>    }</td></tr>
+<tr><th id="101">101</th><td>}</td></tr>
+<tr><th id="102">102</th><td></td></tr>
+<tr><th id="103">103</th><td><i>/*</i></td></tr>
+<tr><th id="104">104</th><td><i> * Local variables:</i></td></tr>
+<tr><th id="105">105</th><td><i> * eval: (c-set-style "gnu")</i></td></tr>
+<tr><th id="106">106</th><td><i> * indent-tabs-mode: nil</i></td></tr>
+<tr><th id="107">107</th><td><i> * End:</i></td></tr>
+<tr><th id="108">108</th><td><i> */</i></td></tr>
+<tr><th id="109">109</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

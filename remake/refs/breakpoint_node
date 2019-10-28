@@ -1,0 +1,7 @@
+<def f='remake/debugger/break.c' l='29' ll='35'/>
+<size>24</size>
+<doc f='remake/debugger/break.c' l='28'>/*! Node for an item in the target call stack */</doc>
+<mbr r='breakpoint_node::p_target' o='0' t='file_t *'/>
+<mbr r='breakpoint_node::i_num' o='64' t='unsigned int'/>
+<mbr r='breakpoint_node::brkpt_mask' o='96' t='brkpt_mask_t'/>
+<mbr r='breakpoint_node::p_next' o='128' t='breakpoint_node_t *'/>

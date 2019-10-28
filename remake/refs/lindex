@@ -1,0 +1,12 @@
+<dec f='remake/makeint.h' l='504' type='char * lindex(const char * , const char * , int )'/>
+<dec f='remake/make.h' l='360' type='char * lindex(const char * , const char * , int )'/>
+<use f='remake/expand.c' l='272' u='c' c='variable_expand_string'/>
+<use f='remake/expand.c' l='305' u='c' c='variable_expand_string'/>
+<use f='remake/expand.c' l='310' u='c' c='variable_expand_string'/>
+<use f='remake/implicit.c' l='602' u='c' c='pattern_search'/>
+<def f='remake/misc.c' l='214' ll='222' type='char * lindex(const char * s, const char * limit, int c)'/>
+<doc f='remake/misc.c' l='208'>/* Limited INDEX:
+   Search through the string STRING, which ends at LIMIT, for the character C.
+   Returns a pointer to the first occurrence, or nil if none is found.
+   Like INDEX except that the string searched ends where specified
+   instead of at the first null.  */</doc>

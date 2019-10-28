@@ -1,0 +1,19 @@
+<dec f='remake/makeint.h' l='554' type='char * strip_whitespace(const char ** begpp, const char ** endpp)'/>
+<dec f='remake/make.h' l='403' type='char * strip_whitespace(const char ** begpp, const char ** endpp)'/>
+<dec f='remake/function.h' l='47' type='char * strip_whitespace(const char ** begpp, const char ** endpp)'/>
+<doc f='remake/function.h' l='42'>/*! Set begpp to point to the first non-whitespace character of the string,
+  and endpp to point to the last non-whitespace character of the string.
+  If the string is empty or contains nothing but whitespace, endpp will be
+  begpp-1.
+ */</doc>
+<def f='remake/function.c' l='752' ll='760' type='char * strip_whitespace(const char ** begpp, const char ** endpp)'/>
+<use f='remake/function.c' l='767' u='c' c='check_numeric'/>
+<use f='remake/function.c' l='1237' u='c' c='func_if'/>
+<use f='remake/function.c' l='1291' u='c' c='func_or'/>
+<use f='remake/function.c' l='1341' u='c' c='func_and'/>
+<doc f='remake/function.c' l='747'>/* Set begpp to point to the first non-whitespace character of the string,
+ * and endpp to point to the last non-whitespace character of the string.
+ * If the string is empty or contains nothing but whitespace, endpp will be
+ * begpp-1.
+ */</doc>
+<use f='remake/read.c' l='1280' u='c' c='eval'/>

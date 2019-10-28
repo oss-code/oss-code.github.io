@@ -1,0 +1,18 @@
+<def f='remake/variable.h' l='55' ll='86'/>
+<size>56</size>
+<mbr r='variable::name' o='0' t='char *'/>
+<mbr r='variable::value' o='64' t='char *'/>
+<mbr r='variable::fileinfo' o='128' t='gmk_floc'/>
+<mbr r='variable::length' o='320' t='int'/>
+<mbr r='variable::recursive' o='352' t='unsigned int'/>
+<mbr r='variable::append' o='353' t='unsigned int'/>
+<mbr r='variable::conditional' o='354' t='unsigned int'/>
+<mbr r='variable::per_target' o='355' t='unsigned int'/>
+<mbr r='variable::special' o='356' t='unsigned int'/>
+<mbr r='variable::exportable' o='357' t='unsigned int'/>
+<mbr r='variable::expanding' o='358' t='unsigned int'/>
+<mbr r='variable::private_var' o='359' t='unsigned int'/>
+<mbr r='variable::exp_count' o='360' t='unsigned int'/>
+<mbr r='variable::flavor' o='375' t='enum variable_flavor'/>
+<mbr r='variable::origin' o='379' t='enum variable_origin'/>
+<mbr r='variable::export' o='384' t='enum variable_export'/>

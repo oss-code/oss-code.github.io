@@ -1,0 +1,10 @@
+<dec f='remake/makeint.h' l='527' type='int dir_file_exists_p(const char * , const char * )'/>
+<dec f='remake/make.h' l='376' type='int dir_file_exists_p(const char * , const char * )'/>
+<def f='remake/dir.c' l='758' ll='772' type='int dir_file_exists_p(const char * dirname, const char * filename)'/>
+<use f='remake/dir.c' l='822' u='c' c='file_exists_p'/>
+<use f='remake/dir.c' l='850' u='c' c='file_exists_p'/>
+<doc f='remake/dir.c' l='754'>/* Return 1 if the name FILENAME in directory DIRNAME
+   is entered in the dir hash table.
+   FILENAME must contain no slashes.  */</doc>
+<use f='remake/rule.c' l='130' u='c' c='count_implicit_rule_limits'/>
+<use f='remake/vpath.c' l='477' u='c' c='selective_vpath_search'/>

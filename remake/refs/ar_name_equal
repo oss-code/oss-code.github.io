@@ -1,0 +1,7 @@
+<dec f='remake/makeint.h' l='523' type='int ar_name_equal(const char * name, const char * mem, int truncated)'/>
+<use f='remake/ar.c' l='86' u='c' c='ar_member_date_1'/>
+<def f='remake/arscan.c' l='678' ll='728' type='int ar_name_equal(const char * name, const char * mem, int truncated)'/>
+<use f='remake/arscan.c' l='738' u='c' c='ar_member_pos'/>
+<doc f='remake/arscan.c' l='674'>/* Return nonzero iff NAME matches MEM.
+   If TRUNCATED is nonzero, MEM may be truncated to
+   sizeof (struct ar_hdr.ar_name) - 1.  */</doc>

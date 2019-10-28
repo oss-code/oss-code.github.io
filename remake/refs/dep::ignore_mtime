@@ -1,0 +1,26 @@
+<dec f='remake/dep.h' l='54' type='unsigned short'/>
+<offset>265</offset>
+<use f='remake/commands.c' l='135' u='r' c='set_file_variables'/>
+<use f='remake/commands.c' l='182' u='r' c='set_file_variables'/>
+<use f='remake/commands.c' l='202' u='r' c='set_file_variables'/>
+<use f='remake/commands.c' l='262' u='r' c='set_file_variables'/>
+<use f='remake/commands.c' l='262' u='r' c='set_file_variables'/>
+<use f='remake/commands.c' l='263' u='w' c='set_file_variables'/>
+<use f='remake/commands.c' l='263' u='w' c='set_file_variables'/>
+<use f='remake/commands.c' l='285' u='r' c='set_file_variables'/>
+<use f='remake/debugger/command/write.h' l='122' u='r' c='dbg_cmd_write'/>
+<use f='remake/debugger/command/write.h' l='132' u='r' c='dbg_cmd_write'/>
+<use f='remake/file.c' l='303' u='w' c='split_prereqs'/>
+<use f='remake/file.c' l='760' u='r' c='print_target_props'/>
+<use f='remake/file.c' l='772' u='r' c='print_target_props'/>
+<use f='remake/file.c' l='890' u='r' c='print_prereqs'/>
+<use f='remake/file.c' l='900' u='r' c='print_prereqs'/>
+<use f='remake/implicit.c' l='557' u='w' c='pattern_search'/>
+<use f='remake/implicit.c' l='557' u='r' c='pattern_search'/>
+<use f='remake/implicit.c' l='656' u='w' c='pattern_search'/>
+<use f='remake/implicit.c' l='707' u='r' c='pattern_search'/>
+<use f='remake/implicit.c' l='897' u='w' c='pattern_search'/>
+<use f='remake/remake.c' l='647' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='798' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='822' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='1198' u='r' c='check_dep'/>

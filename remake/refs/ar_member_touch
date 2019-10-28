@@ -1,0 +1,9 @@
+<dec f='remake/makeint.h' l='524' type='int ar_member_touch(const char * arname, const char * memname)'/>
+<use f='remake/ar.c' l='160' u='c' c='ar_touch'/>
+<def f='remake/arscan.c' l='750' ll='813' type='int ar_member_touch(const char * arname, const char * memname)'/>
+<doc f='remake/arscan.c' l='743'>/* Set date of member MEMNAME in archive ARNAME to current time.
+   Returns 0 if successful,
+   -1 if file ARNAME does not exist,
+   -2 if not a valid archive,
+   -3 if other random system call error (including file read-only),
+   1 if valid but member MEMNAME does not exist.  */</doc>

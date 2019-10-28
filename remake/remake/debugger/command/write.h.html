@@ -1,0 +1,229 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>write.h source code [remake/debugger/command/write.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/debugger/command/write.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>remake</a>/<a href='..'>debugger</a>/<a href='./'>command</a>/<a href='write.h.html'>write.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Write commands associated with a given target. */</i></td></tr>
+<tr><th id="2">2</th><td><i>/*</i></td></tr>
+<tr><th id="3">3</th><td><i>Copyright (C) 2011, 2017 R. Bernstein  &lt;rocky@gnu.org&gt;</i></td></tr>
+<tr><th id="4">4</th><td><i>This file is part of GNU Make (remake variant).</i></td></tr>
+<tr><th id="5">5</th><td><i></i></td></tr>
+<tr><th id="6">6</th><td><i>GNU Make is free software; you can redistribute it and/or modify</i></td></tr>
+<tr><th id="7">7</th><td><i>it under the terms of the GNU General Public License as published by</i></td></tr>
+<tr><th id="8">8</th><td><i>the Free Software Foundation; either version 2, or (at your option)</i></td></tr>
+<tr><th id="9">9</th><td><i>any later version.</i></td></tr>
+<tr><th id="10">10</th><td><i></i></td></tr>
+<tr><th id="11">11</th><td><i>GNU Make is distributed in the hope that it will be useful,</i></td></tr>
+<tr><th id="12">12</th><td><i>but WITHOUT ANY WARRANTY; without even the implied warranty of</i></td></tr>
+<tr><th id="13">13</th><td><i>MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</i></td></tr>
+<tr><th id="14">14</th><td><i>GNU General Public License for more details.</i></td></tr>
+<tr><th id="15">15</th><td><i></i></td></tr>
+<tr><th id="16">16</th><td><i>You should have received a copy of the GNU General Public License</i></td></tr>
+<tr><th id="17">17</th><td><i>along with GNU Make; see the file COPYING.  If not, write to</i></td></tr>
+<tr><th id="18">18</th><td><i>the Free Software Foundation, Inc., 59 Temple Place - Suite 330,</i></td></tr>
+<tr><th id="19">19</th><td><i>Boston, MA 02111-1307, USA.  */</i></td></tr>
+<tr><th id="20">20</th><td></td></tr>
+<tr><th id="21">21</th><td><u>#include <a href="../../dep.h.html">"../../dep.h"</a></u></td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><em>static</em> <a class="typedef" href="../../trace.h.html#debug_return_t" title='debug_return_t' data-type='enum debug_return_t' data-ref="debug_return_t">debug_return_t</a></td></tr>
+<tr><th id="24">24</th><td><dfn class="decl def" id="dbg_cmd_write" title='dbg_cmd_write' data-ref="dbg_cmd_write">dbg_cmd_write</dfn>(<em>char</em> *<dfn class="local col9 decl" id="229psz_args" title='psz_args' data-type='char *' data-ref="229psz_args">psz_args</dfn>)</td></tr>
+<tr><th id="25">25</th><td>{</td></tr>
+<tr><th id="26">26</th><td>  <a class="typedef" href="../../types.h.html#file_t" title='file_t' data-type='struct file' data-ref="file_t">file_t</a> *<dfn class="local col0 decl" id="230p_target" title='p_target' data-type='file_t *' data-ref="230p_target">p_target</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="27">27</th><td>  <em>const</em> <em>char</em> *<dfn class="local col1 decl" id="231psz_target" title='psz_target' data-type='const char *' data-ref="231psz_target">psz_target</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="28">28</th><td>  <em>int</em> <dfn class="local col2 decl" id="232b_stdout" title='b_stdout' data-type='int' data-ref="232b_stdout">b_stdout</dfn> = <var>0</var>;</td></tr>
+<tr><th id="29">29</th><td></td></tr>
+<tr><th id="30">30</th><td>  <a class="local col0 ref" href="#230p_target" title='p_target' data-ref="230p_target">p_target</a> = <a class="ref" href="../fns.h.html#get_target" title='get_target' data-ref="get_target">get_target</a>(&amp;<a class="local col9 ref" href="#229psz_args" title='psz_args' data-ref="229psz_args">psz_args</a>, &amp;<a class="local col1 ref" href="#231psz_target" title='psz_target' data-ref="231psz_target">psz_target</a>);</td></tr>
+<tr><th id="31">31</th><td>  <b>if</b> (<a class="local col0 ref" href="#230p_target" title='p_target' data-ref="230p_target">p_target</a>) {</td></tr>
+<tr><th id="32">32</th><td>    <a class="typedef" href="../../types.h.html#variable_t" title='variable_t' data-type='struct variable' data-ref="variable_t">variable_t</a> *<dfn class="local col3 decl" id="233p_v" title='p_v' data-type='variable_t *' data-ref="233p_v">p_v</dfn> = <a class="ref" href="../../variable.h.html#lookup_variable" title='lookup_variable' data-ref="lookup_variable">lookup_variable</a> (<q>"SHELL"</q>, <a class="ref" href="../../../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<q>"SHELL"</q>));</td></tr>
+<tr><th id="33">33</th><td>    <em>char</em> *<dfn class="local col4 decl" id="234psz_filename" title='psz_filename' data-type='char *' data-ref="234psz_filename">psz_filename</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="34">34</th><td>    <a class="typedef" href="../../../include/stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> *<dfn class="local col5 decl" id="235outfd" title='outfd' data-type='FILE *' data-ref="235outfd">outfd</dfn>;</td></tr>
+<tr><th id="35">35</th><td>    <em>char</em> *<dfn class="local col6 decl" id="236s" title='s' data-type='char *' data-ref="236s">s</dfn>;</td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td>    <b>if</b> (! <a class="local col0 ref" href="#230p_target" title='p_target' data-ref="230p_target">p_target</a>-&gt;<a class="ref" href="../../filedef.h.html#file::cmds" title='file::cmds' data-ref="file::cmds">cmds</a> || ! <a class="local col0 ref" href="#230p_target" title='p_target' data-ref="230p_target">p_target</a>-&gt;<a class="ref" href="../../filedef.h.html#file::cmds" title='file::cmds' data-ref="file::cmds">cmds</a>-&gt;<a class="ref" href="../../commands.h.html#commands::commands" title='commands::commands' data-ref="commands::commands">commands</a>) {</td></tr>
+<tr><th id="38">38</th><td>      <a class="ref" href="../../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<a class="macro" href="../../make.h.html#293" title="dcgettext (((void*)0), &quot;Target \&quot;%s\&quot; doesn&apos;t have commands associated with it.\n&quot;, 5)" data-ref="_M/_">_</a>(<q>"Target \"%s\" doesn't have commands associated with it.\n"</q>),</td></tr>
+<tr><th id="39">39</th><td>	     <a class="local col1 ref" href="#231psz_target" title='psz_target' data-ref="231psz_target">psz_target</a>);</td></tr>
+<tr><th id="40">40</th><td>      <b>return</b> <a class="enum" href="../../trace.h.html#debug_readloop" title='debug_readloop' data-ref="debug_readloop">debug_readloop</a>;</td></tr>
+<tr><th id="41">41</th><td>    }</td></tr>
+<tr><th id="42">42</th><td></td></tr>
+<tr><th id="43">43</th><td>    <a class="local col6 ref" href="#236s" title='s' data-ref="236s">s</a> = <a class="local col0 ref" href="#230p_target" title='p_target' data-ref="230p_target">p_target</a>-&gt;<a class="ref" href="../../filedef.h.html#file::cmds" title='file::cmds' data-ref="file::cmds">cmds</a>-&gt;<a class="ref" href="../../commands.h.html#commands::commands" title='commands::commands' data-ref="commands::commands">commands</a>;</td></tr>
+<tr><th id="44">44</th><td></td></tr>
+<tr><th id="45">45</th><td>    <i>/* FIXME: should get directory from a variable, e.g. TMPDIR */</i></td></tr>
+<tr><th id="46">46</th><td></td></tr>
+<tr><th id="47">47</th><td>    <b>if</b> (<a class="local col9 ref" href="#229psz_args" title='psz_args' data-ref="229psz_args">psz_args</a> &amp;&amp; *<a class="local col9 ref" href="#229psz_args" title='psz_args' data-ref="229psz_args">psz_args</a>) {</td></tr>
+<tr><th id="48">48</th><td>      <b>if</b> (<a class="macro" href="../../../include/x86_64-linux-gnu/bits/string2.h.html#799" title="__extension__ ({ size_t __s1_len, __s2_len; (__builtin_constant_p (psz_args) &amp;&amp; __builtin_constant_p (&quot;here&quot;) &amp;&amp; (__s1_len = __builtin_strlen (psz_args), __s2_len = __builtin_strlen (&quot;here&quot;), (!((size_t)(const void *)((psz_args) + 1) - (size_t)(const void *)(psz_args) == 1) || __s1_len &gt;= 4) &amp;&amp; (!((size_t)(const void *)((&quot;here&quot;) + 1) - (size_t)(const void *)(&quot;here&quot;) == 1) || __s2_len &gt;= 4)) ? __builtin_strcmp (psz_args, &quot;here&quot;) : (__builtin_constant_p (psz_args) &amp;&amp; ((size_t)(const void *)((psz_args) + 1) - (size_t)(const void *)(psz_args) == 1) &amp;&amp; (__s1_len = __builtin_strlen (psz_args), __s1_len &lt; 4) ? (__builtin_constant_p (&quot;here&quot;) &amp;&amp; ((size_t)(const void *)((&quot;here&quot;) + 1) - (size_t)(const void *)(&quot;here&quot;) == 1) ? __builtin_strcmp (psz_args, &quot;here&quot;) : (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) (&quot;here&quot;); int __result = (((const unsigned char *) (const char *) (psz_args))[0] - __s2[0]); if (__s1_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) (psz_args))[1] - __s2[1]); if (__s1_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) (psz_args))[2] - __s2[2]); if (__s1_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) (psz_args))[3] - __s2[3]); } } __result; }))) : (__builtin_constant_p (&quot;here&quot;) &amp;&amp; ((size_t)(const void *)((&quot;here&quot;) + 1) - (size_t)(const void *)(&quot;here&quot;) == 1) &amp;&amp; (__s2_len = __builtin_strlen (&quot;here&quot;), __s2_len &lt; 4) ? (__builtin_constant_p (psz_args) &amp;&amp; ((size_t)(const void *)((psz_args) + 1) - (size_t)(const void *)(psz_args) == 1) ? __builtin_strcmp (psz_args, &quot;here&quot;) : (- (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) (psz_args); int __result = (((const unsigned char *) (const char *) (&quot;here&quot;))[0] - __s2[0]); if (__s2_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) (&quot;here&quot;))[1] - __s2[1]); if (__s2_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) (&quot;here&quot;))[2] - __s2[2]); if (__s2_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) (&quot;here&quot;))[3] - __s2[3]); } } __result; })))) : __builtin_strcmp (psz_args, &quot;here&quot;)))); })" data-ref="_M/strcmp">strcmp</a> (<a class="local col9 ref" href="#229psz_args" title='psz_args' data-ref="229psz_args">psz_args</a>, <q>"here"</q>) == <var>0</var>)</td></tr>
+<tr><th id="49">49</th><td>	<a class="local col2 ref" href="#232b_stdout" title='b_stdout' data-ref="232b_stdout">b_stdout</a> = <var>1</var>;</td></tr>
+<tr><th id="50">50</th><td>      <b>else</b></td></tr>
+<tr><th id="51">51</th><td>	<a class="local col4 ref" href="#234psz_filename" title='psz_filename' data-ref="234psz_filename">psz_filename</a> = <a class="macro" href="../../../include/x86_64-linux-gnu/bits/string2.h.html#1291" title="(__extension__ (__builtin_constant_p (psz_args) &amp;&amp; ((size_t)(const void *)((psz_args) + 1) - (size_t)(const void *)(psz_args) == 1) ? (((const char *) (psz_args))[0] == &apos;\0&apos; ? (char *) calloc ((size_t) 1, (size_t) 1) : ({ size_t __len = strlen (psz_args) + 1; char *__retval = (char *) malloc (__len); if (__retval != ((void*)0)) __retval = (char *) memcpy (__retval, psz_args, __len); __retval; })) : __strdup (psz_args)))" data-ref="_M/strdup">strdup</a>(<a class="local col9 ref" href="#229psz_args" title='psz_args' data-ref="229psz_args">psz_args</a>);</td></tr>
+<tr><th id="52">52</th><td>    } <b>else</b> {</td></tr>
+<tr><th id="53">53</th><td>      <i>/* Create target from the basename of the target name. */</i></td></tr>
+<tr><th id="54">54</th><td>      <em>char</em> *<dfn class="local col7 decl" id="237psz_target_basename" title='psz_target_basename' data-type='char *' data-ref="237psz_target_basename">psz_target_basename</dfn> = <a class="ref" href="../../../include/string.h.html#strrchr" title='strrchr' data-ref="strrchr">strrchr</a>(<a class="local col1 ref" href="#231psz_target" title='psz_target' data-ref="231psz_target">psz_target</a>, <kbd>'/'</kbd>);</td></tr>
+<tr><th id="55">55</th><td>      <b>if</b> (!<a class="local col7 ref" href="#237psz_target_basename" title='psz_target_basename' data-ref="237psz_target_basename">psz_target_basename</a>)</td></tr>
+<tr><th id="56">56</th><td>	<a class="local col7 ref" href="#237psz_target_basename" title='psz_target_basename' data-ref="237psz_target_basename">psz_target_basename</a> = (<em>char</em> *) <a class="local col1 ref" href="#231psz_target" title='psz_target' data-ref="231psz_target">psz_target</a>;</td></tr>
+<tr><th id="57">57</th><td>      <b>else</b></td></tr>
+<tr><th id="58">58</th><td>	<a class="local col7 ref" href="#237psz_target_basename" title='psz_target_basename' data-ref="237psz_target_basename">psz_target_basename</a>++; <i>/* Skip delimiter */</i></td></tr>
+<tr><th id="59">59</th><td>      <a class="local col4 ref" href="#234psz_filename" title='psz_filename' data-ref="234psz_filename">psz_filename</a> = <a class="macro" href="../../types.h.html#83" title="((char *) calloc (sizeof (char), (strlen(psz_target_basename) + 10)))" data-ref="_M/CALLOC">CALLOC</a>(<em>char</em>, <a class="ref" href="../../../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a>(<a class="local col7 ref" href="#237psz_target_basename" title='psz_target_basename' data-ref="237psz_target_basename">psz_target_basename</a>) + <var>10</var>);</td></tr>
+<tr><th id="60">60</th><td>      <a class="ref" href="../../../include/stdio.h.html#snprintf" title='snprintf' data-ref="snprintf">snprintf</a>(<a class="local col4 ref" href="#234psz_filename" title='psz_filename' data-ref="234psz_filename">psz_filename</a>, <a class="enum" href="../cmd.c.html#MAX_FILE_LENGTH" title='MAX_FILE_LENGTH' data-ref="MAX_FILE_LENGTH">MAX_FILE_LENGTH</a>, <q>"/tmp/%s.sh"</q>,</td></tr>
+<tr><th id="61">61</th><td>	       <a class="local col7 ref" href="#237psz_target_basename" title='psz_target_basename' data-ref="237psz_target_basename">psz_target_basename</a>);</td></tr>
+<tr><th id="62">62</th><td>    }</td></tr>
+<tr><th id="63">63</th><td></td></tr>
+<tr><th id="64">64</th><td>    <i>/* Skip leading space, MAKE's command prefixes:</i></td></tr>
+<tr><th id="65">65</th><td><i>          echo suppression  @,</i></td></tr>
+<tr><th id="66">66</th><td><i>	  ignore-error  -,</i></td></tr>
+<tr><th id="67">67</th><td><i>	  and recursion +</i></td></tr>
+<tr><th id="68">68</th><td><i>    */</i></td></tr>
+<tr><th id="69">69</th><td>    <b>while</b> (*<a class="local col6 ref" href="#236s" title='s' data-ref="236s">s</a> != <kbd>'\0'</kbd>)</td></tr>
+<tr><th id="70">70</th><td>      {</td></tr>
+<tr><th id="71">71</th><td>	<b>switch</b> (*<a class="local col6 ref" href="#236s" title='s' data-ref="236s">s</a>) {</td></tr>
+<tr><th id="72">72</th><td>	<b>case</b> <kbd>'@'</kbd>:</td></tr>
+<tr><th id="73">73</th><td>	<b>case</b> <kbd>'+'</kbd>:</td></tr>
+<tr><th id="74">74</th><td>	<b>case</b> <kbd>'-'</kbd>:</td></tr>
+<tr><th id="75">75</th><td>	  ++<a class="local col6 ref" href="#236s" title='s' data-ref="236s">s</a>;</td></tr>
+<tr><th id="76">76</th><td>	  <b>break</b>;</td></tr>
+<tr><th id="77">77</th><td>	<b>default</b>:</td></tr>
+<tr><th id="78">78</th><td>	  <b>if</b> (!<a class="macro" href="../../../include/ctype.h.html#209" title="((*__ctype_b_loc ())[(int) (((unsigned char)*s))] &amp; (unsigned short int) _ISblank)" data-ref="_M/isblank">isblank</a> ((<em>unsigned</em> <em>char</em>)*<a class="local col6 ref" href="#236s" title='s' data-ref="236s">s</a>))</td></tr>
+<tr><th id="79">79</th><td>	    <b>goto</b> <a class="lbl" href="#238found_begin" data-ref="238found_begin">found_begin</a>;</td></tr>
+<tr><th id="80">80</th><td>	  ++<a class="local col6 ref" href="#236s" title='s' data-ref="236s">s</a>;</td></tr>
+<tr><th id="81">81</th><td>	}</td></tr>
+<tr><th id="82">82</th><td>      }</td></tr>
+<tr><th id="83">83</th><td></td></tr>
+<tr><th id="84">84</th><td>  <dfn class="lbl" id="238found_begin" data-ref="238found_begin">found_begin</dfn>:</td></tr>
+<tr><th id="85">85</th><td>    <b>if</b> ( <kbd>'\0'</kbd> == *<a class="local col6 ref" href="#236s" title='s' data-ref="236s">s</a> ) {</td></tr>
+<tr><th id="86">86</th><td>      <a class="ref" href="../../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<a class="macro" href="../../make.h.html#293" title="dcgettext (((void*)0), &quot;Null command string parsed\n&quot;, 5)" data-ref="_M/_">_</a>(<q>"Null command string parsed\n"</q>));</td></tr>
+<tr><th id="87">87</th><td>    } <b>else</b> {</td></tr>
+<tr><th id="88">88</th><td>      <a class="typedef" href="../../types.h.html#dep_t" title='dep_t' data-type='struct dep' data-ref="dep_t">dep_t</a> *<dfn class="local col9 decl" id="239d" title='d' data-type='dep_t *' data-ref="239d">d</dfn>;</td></tr>
+<tr><th id="89">89</th><td>      <a class="typedef" href="../../types.h.html#dep_t" title='dep_t' data-type='struct dep' data-ref="dep_t">dep_t</a> *<dfn class="local col0 decl" id="240ood" title='ood' data-type='dep_t *' data-ref="240ood">ood</dfn> = <var>0</var>;</td></tr>
+<tr><th id="90">90</th><td></td></tr>
+<tr><th id="91">91</th><td>      <b>if</b> (<a class="local col2 ref" href="#232b_stdout" title='b_stdout' data-ref="232b_stdout">b_stdout</a>)</td></tr>
+<tr><th id="92">92</th><td>	<a class="local col5 ref" href="#235outfd" title='outfd' data-ref="235outfd">outfd</a> = <a class="macro" href="../../../include/stdio.h.html#173" title="stdout" data-ref="_M/stdout">stdout</a>;</td></tr>
+<tr><th id="93">93</th><td>      <b>else</b> <b>if</b> (!(<a class="local col5 ref" href="#235outfd" title='outfd' data-ref="235outfd">outfd</a> = <a class="ref" href="../../../include/stdio.h.html#fopen" title='fopen' data-ref="fopen">fopen</a> (<a class="local col4 ref" href="#234psz_filename" title='psz_filename' data-ref="234psz_filename">psz_filename</a>, <q>"w"</q>))) {</td></tr>
+<tr><th id="94">94</th><td>	<a class="ref" href="../../../include/stdio.h.html#perror" title='perror' data-ref="perror">perror</a> (<q>"write target"</q>);</td></tr>
+<tr><th id="95">95</th><td>	<a class="ref" href="../../../include/stdlib.h.html#free" title='free' data-ref="free">free</a>(<a class="local col4 ref" href="#234psz_filename" title='psz_filename' data-ref="234psz_filename">psz_filename</a>);</td></tr>
+<tr><th id="96">96</th><td>	<b>return</b> <a class="enum" href="../../trace.h.html#debug_readloop" title='debug_readloop' data-ref="debug_readloop">debug_readloop</a>;</td></tr>
+<tr><th id="97">97</th><td>      }</td></tr>
+<tr><th id="98">98</th><td></td></tr>
+<tr><th id="99">99</th><td>      <b>if</b> (<a class="local col3 ref" href="#233p_v" title='p_v' data-ref="233p_v">p_v</a>) {</td></tr>
+<tr><th id="100">100</th><td>	<a class="ref" href="../../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col5 ref" href="#235outfd" title='outfd' data-ref="235outfd">outfd</a>, <q>"#!%s\n"</q>, <a class="ref" href="../../variable.h.html#variable_expand" title='variable_expand' data-ref="variable_expand">variable_expand</a>(<a class="local col3 ref" href="#233p_v" title='p_v' data-ref="233p_v">p_v</a>-&gt;<a class="ref" href="../../variable.h.html#variable::value" title='variable::value' data-ref="variable::value">value</a>));</td></tr>
+<tr><th id="101">101</th><td>      }</td></tr>
+<tr><th id="102">102</th><td></td></tr>
+<tr><th id="103">103</th><td>      <b>if</b> (!<a class="local col0 ref" href="#230p_target" title='p_target' data-ref="230p_target">p_target</a>-&gt;<a class="ref" href="../../filedef.h.html#file::floc" title='file::floc' data-ref="file::floc">floc</a>.<a class="ref" href="../../gnuremake.h.html#(anonymous)::filenm" title='(anonymous struct)::filenm' data-ref="(anonymous)::filenm">filenm</a> &amp;&amp; <a class="local col0 ref" href="#230p_target" title='p_target' data-ref="230p_target">p_target</a>-&gt;<a class="ref" href="../../filedef.h.html#file::cmds" title='file::cmds' data-ref="file::cmds">cmds</a>-&gt;<a class="ref" href="../../commands.h.html#commands::fileinfo" title='commands::fileinfo' data-ref="commands::fileinfo">fileinfo</a>.<a class="ref" href="../../gnuremake.h.html#(anonymous)::filenm" title='(anonymous struct)::filenm' data-ref="(anonymous)::filenm">filenm</a>) {</td></tr>
+<tr><th id="104">104</th><td>	<i>/* Fake the location based on the commands - it's better than</i></td></tr>
+<tr><th id="105">105</th><td><i>	   nothing...</i></td></tr>
+<tr><th id="106">106</th><td><i>	*/</i></td></tr>
+<tr><th id="107">107</th><td>	<a class="ref" href="../../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col5 ref" href="#235outfd" title='outfd' data-ref="235outfd">outfd</a>, <q>"## %s/%s:%lu\n"</q>, <a class="ref" href="../../makeint.h.html#starting_directory" title='starting_directory' data-ref="starting_directory">starting_directory</a>,</td></tr>
+<tr><th id="108">108</th><td>		<a class="local col0 ref" href="#230p_target" title='p_target' data-ref="230p_target">p_target</a>-&gt;<a class="ref" href="../../filedef.h.html#file::cmds" title='file::cmds' data-ref="file::cmds">cmds</a>-&gt;<a class="ref" href="../../commands.h.html#commands::fileinfo" title='commands::fileinfo' data-ref="commands::fileinfo">fileinfo</a>.<a class="ref" href="../../gnuremake.h.html#(anonymous)::filenm" title='(anonymous struct)::filenm' data-ref="(anonymous)::filenm">filenm</a>,</td></tr>
+<tr><th id="109">109</th><td>		<a class="local col0 ref" href="#230p_target" title='p_target' data-ref="230p_target">p_target</a>-&gt;<a class="ref" href="../../filedef.h.html#file::cmds" title='file::cmds' data-ref="file::cmds">cmds</a>-&gt;<a class="ref" href="../../commands.h.html#commands::fileinfo" title='commands::fileinfo' data-ref="commands::fileinfo">fileinfo</a>.<a class="ref" href="../../gnuremake.h.html#(anonymous)::lineno" title='(anonymous struct)::lineno' data-ref="(anonymous)::lineno">lineno</a>-<var>1</var>);</td></tr>
+<tr><th id="110">110</th><td>      } <b>else</b> {</td></tr>
+<tr><th id="111">111</th><td>	<a class="ref" href="../../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col5 ref" href="#235outfd" title='outfd' data-ref="235outfd">outfd</a>, <q>"## %s/%s:%lu\n"</q>, <a class="ref" href="../../makeint.h.html#starting_directory" title='starting_directory' data-ref="starting_directory">starting_directory</a>,</td></tr>
+<tr><th id="112">112</th><td>		<a class="local col0 ref" href="#230p_target" title='p_target' data-ref="230p_target">p_target</a>-&gt;<a class="ref" href="../../filedef.h.html#file::floc" title='file::floc' data-ref="file::floc">floc</a>.<a class="ref" href="../../gnuremake.h.html#(anonymous)::filenm" title='(anonymous struct)::filenm' data-ref="(anonymous)::filenm">filenm</a>, <a class="local col0 ref" href="#230p_target" title='p_target' data-ref="230p_target">p_target</a>-&gt;<a class="ref" href="../../filedef.h.html#file::floc" title='file::floc' data-ref="file::floc">floc</a>.<a class="ref" href="../../gnuremake.h.html#(anonymous)::lineno" title='(anonymous struct)::lineno' data-ref="(anonymous)::lineno">lineno</a>);</td></tr>
+<tr><th id="113">113</th><td>      }</td></tr>
+<tr><th id="114">114</th><td></td></tr>
+<tr><th id="115">115</th><td>      <i>/* FIXME: this code duplicaes some code in file.c: print_target_props. DRY. */</i></td></tr>
+<tr><th id="116">116</th><td>      <a class="ref" href="../../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a> (<a class="local col5 ref" href="#235outfd" title='outfd' data-ref="235outfd">outfd</a>,</td></tr>
+<tr><th id="117">117</th><td>               <q>"## %s:%s"</q>, <a class="local col0 ref" href="#230p_target" title='p_target' data-ref="230p_target">p_target</a>-&gt;<a class="ref" href="../../filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a>,</td></tr>
+<tr><th id="118">118</th><td>               <a class="local col0 ref" href="#230p_target" title='p_target' data-ref="230p_target">p_target</a>-&gt;<a class="ref" href="../../filedef.h.html#file::double_colon" title='file::double_colon' data-ref="file::double_colon">double_colon</a> ? <q>":"</q> : <q>""</q>);</td></tr>
+<tr><th id="119">119</th><td></td></tr>
+<tr><th id="120">120</th><td>      <i>/* Print all normal dependencies; note any order-only deps.  */</i></td></tr>
+<tr><th id="121">121</th><td>      <b>for</b> (<a class="local col9 ref" href="#239d" title='d' data-ref="239d">d</a> = <a class="local col0 ref" href="#230p_target" title='p_target' data-ref="230p_target">p_target</a>-&gt;<a class="ref" href="../../filedef.h.html#file::deps" title='file::deps' data-ref="file::deps">deps</a>; <a class="local col9 ref" href="#239d" title='d' data-ref="239d">d</a> != <var>0</var>; <a class="local col9 ref" href="#239d" title='d' data-ref="239d">d</a> = <a class="local col9 ref" href="#239d" title='d' data-ref="239d">d</a>-&gt;<a class="ref" href="../../dep.h.html#60" title='dep::next' data-ref="dep::next">next</a>)</td></tr>
+<tr><th id="122">122</th><td>        <b>if</b> (! <a class="local col9 ref" href="#239d" title='d' data-ref="239d">d</a>-&gt;<a class="ref" href="../../dep.h.html#60" title='dep::ignore_mtime' data-ref="dep::ignore_mtime">ignore_mtime</a>) {</td></tr>
+<tr><th id="123">123</th><td>          <a class="ref" href="../../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a> (<a class="local col5 ref" href="#235outfd" title='outfd' data-ref="235outfd">outfd</a>, <q>" %s"</q>, <a class="macro" href="../../dep.h.html#99" title="((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name)" data-ref="_M/dep_name">dep_name</a> (<a class="local col9 ref" href="#239d" title='d' data-ref="239d">d</a>));</td></tr>
+<tr><th id="124">124</th><td>        } <b>else</b> <b>if</b> (! <a class="local col0 ref" href="#240ood" title='ood' data-ref="240ood">ood</a>)</td></tr>
+<tr><th id="125">125</th><td>          <a class="local col0 ref" href="#240ood" title='ood' data-ref="240ood">ood</a> = <a class="local col9 ref" href="#239d" title='d' data-ref="239d">d</a>;</td></tr>
+<tr><th id="126">126</th><td></td></tr>
+<tr><th id="127">127</th><td>      <i>/* Print order-only deps, if we have any.  */</i></td></tr>
+<tr><th id="128">128</th><td>      <b>if</b> (<a class="local col0 ref" href="#240ood" title='ood' data-ref="240ood">ood</a>)</td></tr>
+<tr><th id="129">129</th><td>        {</td></tr>
+<tr><th id="130">130</th><td>          <a class="ref" href="../../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a> (<a class="local col5 ref" href="#235outfd" title='outfd' data-ref="235outfd">outfd</a>, <q>" | %s"</q>, <a class="macro" href="../../dep.h.html#99" title="((ood)-&gt;name == 0 ? (ood)-&gt;file-&gt;name : (ood)-&gt;name)" data-ref="_M/dep_name">dep_name</a> (<a class="local col0 ref" href="#240ood" title='ood' data-ref="240ood">ood</a>));</td></tr>
+<tr><th id="131">131</th><td>          <b>for</b> (<a class="local col9 ref" href="#239d" title='d' data-ref="239d">d</a> = <a class="local col0 ref" href="#240ood" title='ood' data-ref="240ood">ood</a>-&gt;<a class="ref" href="../../dep.h.html#60" title='dep::next' data-ref="dep::next">next</a>; <a class="local col9 ref" href="#239d" title='d' data-ref="239d">d</a> != <var>0</var>; <a class="local col9 ref" href="#239d" title='d' data-ref="239d">d</a> = <a class="local col9 ref" href="#239d" title='d' data-ref="239d">d</a>-&gt;<a class="ref" href="../../dep.h.html#60" title='dep::next' data-ref="dep::next">next</a>)</td></tr>
+<tr><th id="132">132</th><td>            <b>if</b> (<a class="local col9 ref" href="#239d" title='d' data-ref="239d">d</a>-&gt;<a class="ref" href="../../dep.h.html#60" title='dep::ignore_mtime' data-ref="dep::ignore_mtime">ignore_mtime</a>)</td></tr>
+<tr><th id="133">133</th><td>              <a class="ref" href="../../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a> (<a class="local col5 ref" href="#235outfd" title='outfd' data-ref="235outfd">outfd</a>, <q>" %s"</q>, <a class="macro" href="../../dep.h.html#99" title="((d)-&gt;name == 0 ? (d)-&gt;file-&gt;name : (d)-&gt;name)" data-ref="_M/dep_name">dep_name</a> (<a class="local col9 ref" href="#239d" title='d' data-ref="239d">d</a>));</td></tr>
+<tr><th id="134">134</th><td>        }</td></tr>
+<tr><th id="135">135</th><td></td></tr>
+<tr><th id="136">136</th><td>      <a class="ref" href="../../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a> (<a class="local col5 ref" href="#235outfd" title='outfd' data-ref="235outfd">outfd</a>, <q>"\n"</q>);</td></tr>
+<tr><th id="137">137</th><td></td></tr>
+<tr><th id="138">138</th><td>      {</td></tr>
+<tr><th id="139">139</th><td>	<em>char</em> <dfn class="local col1 decl" id="241wd" title='wd' data-type='char [300]' data-ref="241wd">wd</dfn>[<var>300</var>];</td></tr>
+<tr><th id="140">140</th><td>	<b>if</b> (<a class="ref" href="../../../include/unistd.h.html#getcwd" title='getcwd' data-ref="getcwd">getcwd</a> (<a class="local col1 ref" href="#241wd" title='wd' data-ref="241wd">wd</a>, <b>sizeof</b>(<a class="local col1 ref" href="#241wd" title='wd' data-ref="241wd">wd</a>))) {</td></tr>
+<tr><th id="141">141</th><td>	  <a class="ref" href="../../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col5 ref" href="#235outfd" title='outfd' data-ref="235outfd">outfd</a>, <q>"\n#cd %s\n"</q>, <a class="local col1 ref" href="#241wd" title='wd' data-ref="241wd">wd</a>);</td></tr>
+<tr><th id="142">142</th><td>	}</td></tr>
+<tr><th id="143">143</th><td>      }</td></tr>
+<tr><th id="144">144</th><td></td></tr>
+<tr><th id="145">145</th><td>      <a class="ref" href="../../variable.h.html#initialize_file_variables" title='initialize_file_variables' data-ref="initialize_file_variables">initialize_file_variables</a> (<a class="local col0 ref" href="#230p_target" title='p_target' data-ref="230p_target">p_target</a>, <var>0</var>);</td></tr>
+<tr><th id="146">146</th><td>      <a class="ref" href="../../commands.h.html#set_file_variables" title='set_file_variables' data-ref="set_file_variables">set_file_variables</a> (<a class="local col0 ref" href="#230p_target" title='p_target' data-ref="230p_target">p_target</a>);</td></tr>
+<tr><th id="147">147</th><td></td></tr>
+<tr><th id="148">148</th><td>      {</td></tr>
+<tr><th id="149">149</th><td><u>#<span data-ppcond="149">if</span> 0</u></td></tr>
+<tr><th id="150">150</th><td>	commands_t cmds;</td></tr>
+<tr><th id="151">151</th><td>	<em>char</em> **lines;</td></tr>
+<tr><th id="152">152</th><td>	<em>unsigned</em> <em>int</em> i;</td></tr>
+<tr><th id="153">153</th><td>	memcpy(&amp;cmds, p_target-&gt;cmds, <b>sizeof</b>(cmds));</td></tr>
+<tr><th id="154">154</th><td>	cmds.command_lines = NULL;</td></tr>
+<tr><th id="155">155</th><td>	chop_commands (&amp;cmds);</td></tr>
+<tr><th id="156">156</th><td>	lines = xmalloc (cmds.ncommand_lines * <b>sizeof</b> (<em>char</em> *));</td></tr>
+<tr><th id="157">157</th><td>	expand_command_lines(&amp;cmds, lines, p_target);</td></tr>
+<tr><th id="158">158</th><td>	<b>for</b> (i = <var>0</var>; i &lt; cmds.ncommand_lines; ++i)</td></tr>
+<tr><th id="159">159</th><td>	  {</td></tr>
+<tr><th id="160">160</th><td>	    fprintf (outfd, <q>"%s\n"</q>, lines[i]);</td></tr>
+<tr><th id="161">161</th><td>	    free (lines[i]);</td></tr>
+<tr><th id="162">162</th><td>	  }</td></tr>
+<tr><th id="163">163</th><td>	free (lines);</td></tr>
+<tr><th id="164">164</th><td><u>#<span data-ppcond="149">else</span></u></td></tr>
+<tr><th id="165">165</th><td>	<em>char</em> *<dfn class="local col2 decl" id="242line" title='line' data-type='char *' data-ref="242line">line</dfn> = <a class="ref" href="../../variable.h.html#allocated_variable_expand_for_file" title='allocated_variable_expand_for_file' data-ref="allocated_variable_expand_for_file">allocated_variable_expand_for_file</a> (<a class="local col6 ref" href="#236s" title='s' data-ref="236s">s</a>, <a class="local col0 ref" href="#230p_target" title='p_target' data-ref="230p_target">p_target</a>);</td></tr>
+<tr><th id="166">166</th><td>	<a class="ref" href="../../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a> (<a class="local col5 ref" href="#235outfd" title='outfd' data-ref="235outfd">outfd</a>, <q>"%s\n"</q>, <a class="local col2 ref" href="#242line" title='line' data-ref="242line">line</a>);</td></tr>
+<tr><th id="167">167</th><td>	<a class="ref" href="../../../include/stdlib.h.html#free" title='free' data-ref="free">free</a>(<a class="local col2 ref" href="#242line" title='line' data-ref="242line">line</a>);</td></tr>
+<tr><th id="168">168</th><td><u>#<span data-ppcond="149">endif</span></u></td></tr>
+<tr><th id="169">169</th><td>      }</td></tr>
+<tr><th id="170">170</th><td></td></tr>
+<tr><th id="171">171</th><td>      <b>if</b> (!<a class="local col2 ref" href="#232b_stdout" title='b_stdout' data-ref="232b_stdout">b_stdout</a>) {</td></tr>
+<tr><th id="172">172</th><td>	<b>struct</b> <a class="type" href="../../../include/x86_64-linux-gnu/bits/stat.h.html#stat" title='stat' data-ref="stat">stat</a> <dfn class="local col3 decl" id="243buf" title='buf' data-type='struct stat' data-ref="243buf">buf</dfn>;</td></tr>
+<tr><th id="173">173</th><td>	<b>if</b> (<var>0</var> == <a class="ref" href="../../../include/x86_64-linux-gnu/sys/stat.h.html#fstat" title='fstat' data-ref="fstat">fstat</a>(<a class="ref" href="../../../include/stdio.h.html#fileno" title='fileno' data-ref="fileno">fileno</a>(<a class="local col5 ref" href="#235outfd" title='outfd' data-ref="235outfd">outfd</a>), &amp;<a class="local col3 ref" href="#243buf" title='buf' data-ref="243buf">buf</a>)) {</td></tr>
+<tr><th id="174">174</th><td>	  <a class="typedef" href="../../../include/x86_64-linux-gnu/sys/types.h.html#mode_t" title='mode_t' data-type='__mode_t' data-ref="mode_t">mode_t</a> <dfn class="local col4 decl" id="244mode" title='mode' data-type='mode_t' data-ref="244mode">mode</dfn> = <a class="local col3 ref" href="#243buf" title='buf' data-ref="243buf">buf</a>.<a class="ref" href="../../../include/x86_64-linux-gnu/bits/stat.h.html#stat::st_mode" title='stat::st_mode' data-ref="stat::st_mode">st_mode</a>;</td></tr>
+<tr><th id="175">175</th><td>	  <b>if</b> (<a class="local col3 ref" href="#243buf" title='buf' data-ref="243buf">buf</a>.<a class="ref" href="../../../include/x86_64-linux-gnu/bits/stat.h.html#stat::st_mode" title='stat::st_mode' data-ref="stat::st_mode">st_mode</a> &amp; <a class="macro" href="../../../include/fcntl.h.html#104" title="0400" data-ref="_M/S_IRUSR">S_IRUSR</a>) <a class="local col4 ref" href="#244mode" title='mode' data-ref="244mode">mode</a> |= <a class="macro" href="../../../include/fcntl.h.html#106" title="0100" data-ref="_M/S_IXUSR">S_IXUSR</a>;</td></tr>
+<tr><th id="176">176</th><td>	  <b>if</b> (<a class="local col3 ref" href="#243buf" title='buf' data-ref="243buf">buf</a>.<a class="ref" href="../../../include/x86_64-linux-gnu/bits/stat.h.html#stat::st_mode" title='stat::st_mode' data-ref="stat::st_mode">st_mode</a> &amp; <a class="macro" href="../../../include/fcntl.h.html#110" title="(0400 &gt;&gt; 3)" data-ref="_M/S_IRGRP">S_IRGRP</a>) <a class="local col4 ref" href="#244mode" title='mode' data-ref="244mode">mode</a> |= <a class="macro" href="../../../include/fcntl.h.html#112" title="(0100 &gt;&gt; 3)" data-ref="_M/S_IXGRP">S_IXGRP</a>;</td></tr>
+<tr><th id="177">177</th><td>	  <b>if</b> (<a class="local col3 ref" href="#243buf" title='buf' data-ref="243buf">buf</a>.<a class="ref" href="../../../include/x86_64-linux-gnu/bits/stat.h.html#stat::st_mode" title='stat::st_mode' data-ref="stat::st_mode">st_mode</a> &amp; <a class="macro" href="../../../include/fcntl.h.html#116" title="((0400 &gt;&gt; 3) &gt;&gt; 3)" data-ref="_M/S_IROTH">S_IROTH</a>) <a class="local col4 ref" href="#244mode" title='mode' data-ref="244mode">mode</a> |= <a class="macro" href="../../../include/fcntl.h.html#118" title="((0100 &gt;&gt; 3) &gt;&gt; 3)" data-ref="_M/S_IXOTH">S_IXOTH</a>;</td></tr>
+<tr><th id="178">178</th><td>	  <b>if</b> (<var>0</var> != <a class="ref" href="../../../include/x86_64-linux-gnu/sys/stat.h.html#fchmod" title='fchmod' data-ref="fchmod">fchmod</a>(<a class="ref" href="../../../include/stdio.h.html#fileno" title='fileno' data-ref="fileno">fileno</a>(<a class="local col5 ref" href="#235outfd" title='outfd' data-ref="235outfd">outfd</a>), <a class="local col4 ref" href="#244mode" title='mode' data-ref="244mode">mode</a>)) {</td></tr>
+<tr><th id="179">179</th><td>	    <a class="ref" href="../../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<a class="macro" href="../../make.h.html#293" title="dcgettext (((void*)0), &quot;Can&apos;t set execute mode on \&quot;%s\&quot;.\n&quot;, 5)" data-ref="_M/_">_</a>(<q>"Can't set execute mode on \"%s\".\n"</q>), <a class="local col4 ref" href="#234psz_filename" title='psz_filename' data-ref="234psz_filename">psz_filename</a>);</td></tr>
+<tr><th id="180">180</th><td>	  }</td></tr>
+<tr><th id="181">181</th><td>	}</td></tr>
+<tr><th id="182">182</th><td>	<a class="ref" href="../../../include/stdio.h.html#fclose" title='fclose' data-ref="fclose">fclose</a>(<a class="local col5 ref" href="#235outfd" title='outfd' data-ref="235outfd">outfd</a>);</td></tr>
+<tr><th id="183">183</th><td>	<a class="ref" href="../../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<a class="macro" href="../../make.h.html#293" title="dcgettext (((void*)0), &quot;File \&quot;%s\&quot; written.\n&quot;, 5)" data-ref="_M/_">_</a>(<q>"File \"%s\" written.\n"</q>), <a class="local col4 ref" href="#234psz_filename" title='psz_filename' data-ref="234psz_filename">psz_filename</a>);</td></tr>
+<tr><th id="184">184</th><td>	<a class="ref" href="../../../include/stdlib.h.html#free" title='free' data-ref="free">free</a>(<a class="local col4 ref" href="#234psz_filename" title='psz_filename' data-ref="234psz_filename">psz_filename</a>);</td></tr>
+<tr><th id="185">185</th><td>      }</td></tr>
+<tr><th id="186">186</th><td>    }</td></tr>
+<tr><th id="187">187</th><td>  }</td></tr>
+<tr><th id="188">188</th><td>  <b>return</b> <a class="enum" href="../../trace.h.html#debug_readloop" title='debug_readloop' data-ref="debug_readloop">debug_readloop</a>;</td></tr>
+<tr><th id="189">189</th><td>}</td></tr>
+<tr><th id="190">190</th><td></td></tr>
+<tr><th id="191">191</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="192">192</th><td><dfn class="decl def" id="dbg_cmd_write_init" title='dbg_cmd_write_init' data-ref="dbg_cmd_write_init">dbg_cmd_write_init</dfn>(<em>unsigned</em> <em>int</em> <dfn class="local col5 decl" id="245c" title='c' data-type='unsigned int' data-ref="245c">c</dfn>)</td></tr>
+<tr><th id="193">193</th><td>{</td></tr>
+<tr><th id="194">194</th><td>  <a class="ref" href="../cmd.c.html#short_command" title='short_command' data-ref="short_command">short_command</a>[<a class="local col5 ref" href="#245c" title='c' data-ref="245c">c</a>].<a class="ref" href="../../debugger.h.html#(anonymous)::func" title='(anonymous struct)::func' data-ref="(anonymous)::func">func</a> = &amp;<a class="ref" href="#dbg_cmd_write" title='dbg_cmd_write' data-ref="dbg_cmd_write">dbg_cmd_write</a>;</td></tr>
+<tr><th id="195">195</th><td>  <a class="ref" href="../cmd.c.html#short_command" title='short_command' data-ref="short_command">short_command</a>[<a class="local col5 ref" href="#245c" title='c' data-ref="245c">c</a>].<a class="ref" href="../../debugger.h.html#(anonymous)::use" title='(anonymous struct)::use' data-ref="(anonymous)::use">use</a> =  <a class="macro" href="../../make.h.html#293" title="dcgettext (((void*)0), &quot;write [TARGET [FILENAME]]&quot;, 5)" data-ref="_M/_">_</a>(<q>"write [TARGET [FILENAME]]"</q>);</td></tr>
+<tr><th id="196">196</th><td>  <a class="ref" href="../cmd.c.html#short_command" title='short_command' data-ref="short_command">short_command</a>[<a class="local col5 ref" href="#245c" title='c' data-ref="245c">c</a>].<a class="ref" href="../../debugger.h.html#(anonymous)::doc" title='(anonymous struct)::doc' data-ref="(anonymous)::doc">doc</a>  =</td></tr>
+<tr><th id="197">197</th><td>    <a class="macro" href="../../make.h.html#293" title="dcgettext (((void*)0), &quot;writes the commands associated of a target to a file with MAKE\n&quot; &quot;variables expanded. If no target given, the basename of the current\n&quot; &quot;is used. If a filename is supplied it is used. If it is the string\n&quot; &quot;\&quot;here\&quot;, we write the output to stdout. If no filename is\n&quot; &quot;given then create the filename by prepending a directory name to\n&quot; &quot;the target name and then append \&quot;.sh\&quot;.&quot;, 5)" data-ref="_M/_">_</a>(<q>"writes the commands associated of a target to a file with MAKE\n"</q></td></tr>
+<tr><th id="198">198</th><td>      <q>"variables expanded. If no target given, the basename of the current\n"</q></td></tr>
+<tr><th id="199">199</th><td>      <q>"is used. If a filename is supplied it is used. If it is the string\n"</q></td></tr>
+<tr><th id="200">200</th><td>      <q>"\"here\", we write the output to stdout. If no filename is\n"</q></td></tr>
+<tr><th id="201">201</th><td>      <q>"given then create the filename by prepending a directory name to\n"</q></td></tr>
+<tr><th id="202">202</th><td>      <q>"the target name and then append \".sh\"."</q>);</td></tr>
+<tr><th id="203">203</th><td>}</td></tr>
+<tr><th id="204">204</th><td></td></tr>
+<tr><th id="205">205</th><td></td></tr>
+<tr><th id="206">206</th><td><i>/*</i></td></tr>
+<tr><th id="207">207</th><td><i> * Local variables:</i></td></tr>
+<tr><th id="208">208</th><td><i> * eval: (c-set-style "gnu")</i></td></tr>
+<tr><th id="209">209</th><td><i> * indent-tabs-mode: nil</i></td></tr>
+<tr><th id="210">210</th><td><i> * End:</i></td></tr>
+<tr><th id="211">211</th><td><i> */</i></td></tr>
+<tr><th id="212">212</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../cmd.c.html'>remake/debugger/cmd.c</a><br/>Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

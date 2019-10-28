@@ -1,0 +1,51 @@
+<dec f='include/stdio.h' l='356' type='int fprintf(FILE *restrict __stream, const char *restrict __format)'/>
+<doc f='include/stdio.h' l='352'>/* Write formatted output to STREAM.
+
+   This function is a possible cancellation point and therefore not
+   marked with __THROW.  */</doc>
+<use f='remake/debugger/command/run.h' l='11' u='c' c='dbg_cmd_run'/>
+<use f='remake/debugger/command/write.h' l='100' u='c' c='dbg_cmd_write'/>
+<use f='remake/debugger/command/write.h' l='107' u='c' c='dbg_cmd_write'/>
+<use f='remake/debugger/command/write.h' l='111' u='c' c='dbg_cmd_write'/>
+<use f='remake/debugger/command/write.h' l='116' u='c' c='dbg_cmd_write'/>
+<use f='remake/debugger/command/write.h' l='123' u='c' c='dbg_cmd_write'/>
+<use f='remake/debugger/command/write.h' l='130' u='c' c='dbg_cmd_write'/>
+<use f='remake/debugger/command/write.h' l='133' u='c' c='dbg_cmd_write'/>
+<use f='remake/debugger/command/write.h' l='136' u='c' c='dbg_cmd_write'/>
+<use f='remake/debugger/command/write.h' l='141' u='c' c='dbg_cmd_write'/>
+<use f='remake/debugger/command/write.h' l='166' u='c' c='dbg_cmd_write'/>
+<use f='remake/debugger/msg.c' l='59' u='c' c='dbg_errmsg'/>
+<use f='remake/debugger/msg.c' l='63' u='c' c='dbg_errmsg'/>
+<use f='remake/debugger/msg.c' l='81' u='c' c='dbg_msg'/>
+<use f='remake/hash.c' l='49' u='c' c='hash_init'/>
+<use f='remake/hash.c' l='280' u='c' c='hash_print_stats'/>
+<use f='remake/hash.c' l='282' u='c' c='hash_print_stats'/>
+<use f='remake/hash.c' l='283' u='c' c='hash_print_stats'/>
+<use f='remake/job.c' l='2183' u='c' c='exec_command'/>
+<use f='remake/job.c' l='2185' u='c' c='exec_command'/>
+<use f='remake/main.c' l='2738' u='c' c='print_usage'/>
+<use f='remake/main.c' l='2744' u='c' c='print_usage'/>
+<use f='remake/main.c' l='2746' u='c' c='print_usage'/>
+<use f='remake/main.c' l='2749' u='c' c='print_usage'/>
+<use f='remake/print.c' l='111' u='c' c='err_with_stack'/>
+<use f='remake/print.c' l='113' u='c' c='err_with_stack'/>
+<use f='remake/print.c' l='117' u='c' c='err_with_stack'/>
+<use f='remake/print.c' l='119' u='c' c='err_with_stack'/>
+<use f='remake/print.c' l='158' u='c' c='fatal_err'/>
+<use f='remake/print.c' l='160' u='c' c='fatal_err'/>
+<use f='remake/print.c' l='162' u='c' c='fatal_err'/>
+<use f='remake/print.c' l='213' u='c' c='log_access'/>
+<use f='remake/profile.c' l='169' u='c' c='init_callgrind'/>
+<use f='remake/profile.c' l='171' u='c' c='init_callgrind'/>
+<use f='remake/profile.c' l='173' u='c' c='init_callgrind'/>
+<use f='remake/profile.c' l='175' u='c' c='init_callgrind'/>
+<use f='remake/profile.c' l='226' u='c' c='callgrind_profile_entry'/>
+<use f='remake/profile.c' l='227' u='c' c='callgrind_profile_entry'/>
+<use f='remake/profile.c' l='228' u='c' c='callgrind_profile_entry'/>
+<use f='remake/profile.c' l='233' u='c' c='callgrind_profile_entry'/>
+<use f='remake/profile.c' l='234' u='c' c='callgrind_profile_entry'/>
+<use f='remake/profile.c' l='235' u='c' c='callgrind_profile_entry'/>
+<use f='remake/profile.c' l='237' u='c' c='callgrind_profile_entry'/>
+<use f='remake/profile.c' l='241' u='c' c='callgrind_profile_entry'/>
+<use f='remake/profile.c' l='253' u='c' c='close_callgrind'/>
+<use f='remake/profile.c' l='260' u='c' c='close_callgrind'/>

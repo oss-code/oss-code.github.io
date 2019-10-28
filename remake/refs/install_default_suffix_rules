@@ -1,0 +1,8 @@
+<dec f='remake/makeint.h' l='539' type='void install_default_suffix_rules()'/>
+<dec f='remake/make.h' l='385' type='void install_default_suffix_rules()'/>
+<def f='remake/default.c' l='696' ll='716' type='void install_default_suffix_rules()'/>
+<doc f='remake/default.c' l='691'>/* Enter the default suffix rules as file rules.  This used to be done in
+   install_default_implicit_rules, but that loses because we want the
+   suffix rules installed before reading makefiles, and the pattern rules
+   installed after.  */</doc>
+<use f='remake/main.c' l='1876' u='c' c='main'/>

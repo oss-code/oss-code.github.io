@@ -1,0 +1,9 @@
+<dec f='remake/print.h' l='90' type='void print_floc_stack(int i_pos, int i_max)'/>
+<doc f='remake/print.h' l='88'>/*! Display the Makefile read stack. i_pos is the position we are currently.
+  i_max is the maximum number of entries to show. */</doc>
+<use f='remake/debugger/command/where.h' l='37' u='c' c='dbg_cmd_where'/>
+<use f='remake/print.c' l='133' u='c' c='err_with_stack'/>
+<use f='remake/print.c' l='173' u='c' c='fatal_err'/>
+<def f='remake/print.c' l='372' ll='389' type='void print_floc_stack(int i_pos, int i_max)'/>
+<doc f='remake/print.c' l='370'>/*! Display the Makefile read stack. i_pos is the position we are currently.
+  i_max is the maximum number of entries to show. */</doc>

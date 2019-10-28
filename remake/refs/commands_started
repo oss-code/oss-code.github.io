@@ -1,0 +1,8 @@
+<dec f='remake/makeint.h' l='670' type='unsigned int'/>
+<dec f='remake/make.h' l='501' type='unsigned int'/>
+<use f='remake/job.c' l='1194' u='w' c='start_job_command'/>
+<def f='remake/remake.c' l='57' type='unsigned int'/>
+<use f='remake/remake.c' l='156' u='r' c='update_goal_chain'/>
+<use f='remake/remake.c' l='164' u='r' c='update_goal_chain'/>
+<use f='remake/remake.c' l='995' u='w' c='notice_finished_file'/>
+<doc f='remake/remake.c' l='56'>/* Incremented when a command is started (under -n, when one would be).  */</doc>

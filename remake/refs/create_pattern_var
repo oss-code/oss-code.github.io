@@ -1,0 +1,9 @@
+<dec f='remake/variable.h' l='283' type='struct pattern_var * create_pattern_var(const char * target, const char * suffix)'/>
+<use f='remake/read.c' l='1873' u='c' c='record_target_var'/>
+<def f='remake/variable.c' l='89' ll='135' type='struct pattern_var * create_pattern_var(const char * target, const char * suffix)'/>
+<doc f='remake/variable.c' l='82'>/* Create a new pattern-specific variable struct. The new variable is
+   inserted into the PATTERN_VARS list in the shortest patterns first
+   order to support the shortest stem matching (the variables are
+   matched in the reverse order so the ones with the longest pattern
+   will be considered first). Variables with the same pattern length
+   are inserted in the definition order. */</doc>

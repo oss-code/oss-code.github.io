@@ -1,0 +1,12 @@
+<dec f='remake/variable.h' l='162' type='struct variable_set_list * push_new_variable_scope()'/>
+<doc f='remake/variable.h' l='159'>/*! Create a new variable set, push it on the current setlist,
+  and assign current_variable_set_list to it.
+ */</doc>
+<use f='remake/function.c' l='874' u='c' c='func_foreach'/>
+<use f='remake/function.c' l='2613' u='c' c='func_call'/>
+<def f='remake/variable.c' l='737' ll='754' type='struct variable_set_list * push_new_variable_scope()'/>
+<doc f='remake/variable.c' l='731'>/* Create a new variable set and push it on the current setlist.
+   If we&apos;re pushing a global scope (that is, the current scope is the global
+   scope) then we need to &quot;push&quot; it the other way: file variable sets point
+   directly to the global_setlist so we need to replace that with the new one.
+ */</doc>

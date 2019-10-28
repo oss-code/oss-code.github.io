@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>set.h source code [remake/debugger/command/set.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/debugger/command/set.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>remake</a>/<a href='..'>debugger</a>/<a href='./'>command</a>/<a href='set.h.html'>set.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Set a variable definition with all variable references in the value</i></td></tr>
+<tr><th id="2">2</th><td><i>   part of psz_string expanded. */</i></td></tr>
+<tr><th id="3">3</th><td><i>/*</i></td></tr>
+<tr><th id="4">4</th><td><i>Copyright (C) 2011, 2015 R. Bernstein &lt;rocky@gnu.org&gt;</i></td></tr>
+<tr><th id="5">5</th><td><i>This file is part of GNU Make (remake variant).</i></td></tr>
+<tr><th id="6">6</th><td><i></i></td></tr>
+<tr><th id="7">7</th><td><i>GNU Make is free software; you can redistribute it and/or modify</i></td></tr>
+<tr><th id="8">8</th><td><i>it under the terms of the GNU General Public License as published by</i></td></tr>
+<tr><th id="9">9</th><td><i>the Free Software Foundation; either version 2, or (at your option)</i></td></tr>
+<tr><th id="10">10</th><td><i>any later version.</i></td></tr>
+<tr><th id="11">11</th><td><i></i></td></tr>
+<tr><th id="12">12</th><td><i>GNU Make is distributed in the hope that it will be useful,</i></td></tr>
+<tr><th id="13">13</th><td><i>but WITHOUT ANY WARRANTY; without even the implied warranty of</i></td></tr>
+<tr><th id="14">14</th><td><i>MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</i></td></tr>
+<tr><th id="15">15</th><td><i>GNU General Public License for more details.</i></td></tr>
+<tr><th id="16">16</th><td><i></i></td></tr>
+<tr><th id="17">17</th><td><i>You should have received a copy of the GNU General Public License</i></td></tr>
+<tr><th id="18">18</th><td><i>along with GNU Make; see the file COPYING.  If not, write to</i></td></tr>
+<tr><th id="19">19</th><td><i>the Free Software Foundation, Inc., 59 Temple Place - Suite 330,</i></td></tr>
+<tr><th id="20">20</th><td><i>Boston, MA 02111-1307, USA.  */</i></td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><i>/* Documentation for help set, and help set xxx. Note the format has</i></td></tr>
+<tr><th id="23">23</th><td><i>   been customized to make ddd work. In particular for "basename" it should</i></td></tr>
+<tr><th id="24">24</th><td><i>   be</i></td></tr>
+<tr><th id="25">25</th><td><i>     set basename -- Set if were are to show shor or long filenames is off.</i></td></tr>
+<tr><th id="26">26</th><td><i>   (or "is on").</i></td></tr>
+<tr><th id="27">27</th><td><i>*/</i></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><u>#include <a href="../subcmd.h.html">"../subcmd.h"</a></u></td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><a class="typedef" href="../subcmd.h.html#subcommand_var_info_t" title='subcommand_var_info_t' data-type='struct subcommand_var_info_t' data-ref="subcommand_var_info_t">subcommand_var_info_t</a> <dfn class="decl def" id="set_subcommands" title='set_subcommands' data-ref="set_subcommands">set_subcommands</dfn>[] = {</td></tr>
+<tr><th id="32">32</th><td>  { <q>"basename"</q>,</td></tr>
+<tr><th id="33">33</th><td>    <q>"Set if we are to show short or long filenames"</q>,</td></tr>
+<tr><th id="34">34</th><td>    <q>" {on|off|toggle} \n\nSet if we are to show short or long filenames."</q>,</td></tr>
+<tr><th id="35">35</th><td>    &amp;<a class="ref" href="../../main.h.html#basename_filenames" title='basename_filenames' data-ref="basename_filenames">basename_filenames</a>, <a class="macro" href="../../types.h.html#48" title="1" data-ref="_M/true">true</a>, <var>1</var>},</td></tr>
+<tr><th id="36">36</th><td>  { <q>"debug"</q>,</td></tr>
+<tr><th id="37">37</th><td>    <q>"Set GNU Make debug mask (set via --debug or -d)"</q>,</td></tr>
+<tr><th id="38">38</th><td>    <q>" VALUE \n\nSet GNU Make debug mask (set via --debug or -d)."</q>,</td></tr>
+<tr><th id="39">39</th><td>    &amp;<a class="ref" href="../../debug.h.html#db_level" title='db_level' data-ref="db_level">db_level</a>, <a class="macro" href="../../types.h.html#47" title="0" data-ref="_M/false">false</a>, <var>3</var>},</td></tr>
+<tr><th id="40">40</th><td>  { <q>"ignore-errors"</q>,</td></tr>
+<tr><th id="41">41</th><td>    <q>"Set value of GNU Make --ignore-errors (or -i) flag"</q>,</td></tr>
+<tr><th id="42">42</th><td>    <q>" {on|off|toggle} \n\nSet value of GNU Make --ignore-errors (or -i) flag."</q>,</td></tr>
+<tr><th id="43">43</th><td>    &amp;<a class="ref" href="../../makeint.h.html#ignore_errors_flag" title='ignore_errors_flag' data-ref="ignore_errors_flag">ignore_errors_flag</a>, <a class="macro" href="../../types.h.html#48" title="1" data-ref="_M/true">true</a>, <var>3</var>},</td></tr>
+<tr><th id="44">44</th><td>  { <q>"keep-going"</q>,</td></tr>
+<tr><th id="45">45</th><td>    <q>"Set value of GNU Make --keep-going (or -k) flag"</q>,</td></tr>
+<tr><th id="46">46</th><td>    <q>" {on|off|toggle}\n\nSet value of GNU Make --keep-going (or -k) flag."</q>,</td></tr>
+<tr><th id="47">47</th><td>    &amp;<a class="ref" href="../../makeint.h.html#keep_going_flag" title='keep_going_flag' data-ref="keep_going_flag">keep_going_flag</a>,    <a class="macro" href="../../types.h.html#48" title="1" data-ref="_M/true">true</a>, <var>1</var>},</td></tr>
+<tr><th id="48">48</th><td>  { <q>"silent"</q>,</td></tr>
+<tr><th id="49">49</th><td>    <q>"Set value of GNU Make --silent (or -s) flags."</q>,</td></tr>
+<tr><th id="50">50</th><td>    <q>" {on|off|toggle} \n\nSet value of GNU Make --silent (or -s) flags."</q>,</td></tr>
+<tr><th id="51">51</th><td>    &amp;<a class="ref" href="../../makeint.h.html#silent_flag" title='silent_flag' data-ref="silent_flag">silent_flag</a>,        <a class="macro" href="../../types.h.html#48" title="1" data-ref="_M/true">true</a>, <var>1</var>},</td></tr>
+<tr><th id="52">52</th><td><u>#<span data-ppcond="52">ifdef</span> <span class="macro" data-ref="_M/FIXED">FIXED</span></u></td></tr>
+<tr><th id="53">53</th><td>  { <q>"trace"</q>,</td></tr>
+<tr><th id="54">54</th><td>    <q>"Set value of shell_tracing."</q>,</td></tr>
+<tr><th id="55">55</th><td>    NULL,</td></tr>
+<tr><th id="56">56</th><td>    &amp;no_shell_trace,    false, <var>3</var>},</td></tr>
+<tr><th id="57">57</th><td><u>#<span data-ppcond="52">endif</span></u></td></tr>
+<tr><th id="58">58</th><td>  { <q>"variable"</q>,</td></tr>
+<tr><th id="59">59</th><td>    <q>"Change a debugger setting"</q>,</td></tr>
+<tr><th id="60">60</th><td>    <q>" OPTION is one of: basename, debug, ignore-errors, keep-going, or silent\n\n"</q></td></tr>
+<tr><th id="61">61</th><td><q>"\n"</q></td></tr>
+<tr><th id="62">62</th><td><q>"See also 'setq' and 'setqx' for setting a GNU Make variable."</q>,</td></tr>
+<tr><th id="63">63</th><td>    <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,</td></tr>
+<tr><th id="64">64</th><td>    <a class="macro" href="../../types.h.html#47" title="0" data-ref="_M/false">false</a>, <var>0</var>},</td></tr>
+<tr><th id="65">65</th><td>  { <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <a class="macro" href="../../types.h.html#47" title="0" data-ref="_M/false">false</a>, <var>0</var>}</td></tr>
+<tr><th id="66">66</th><td>};</td></tr>
+<tr><th id="67">67</th><td></td></tr>
+<tr><th id="68">68</th><td><em>static</em> <a class="macro" href="../../types.h.html#50" title="uint8_t" data-ref="_M/bool">bool</a></td></tr>
+<tr><th id="69">69</th><td><dfn class="decl def" id="dbg_cmd_set_bool" title='dbg_cmd_set_bool' data-ref="dbg_cmd_set_bool">dbg_cmd_set_bool</dfn>(<em>const</em> <em>char</em> *<dfn class="local col7 decl" id="177psz_varname" title='psz_varname' data-type='const char *' data-ref="177psz_varname">psz_varname</dfn>, <em>const</em> <em>char</em> *<dfn class="local col8 decl" id="178psz_flag_name" title='psz_flag_name' data-type='const char *' data-ref="178psz_flag_name">psz_flag_name</dfn>,</td></tr>
+<tr><th id="70">70</th><td>                 <em>const</em> <em>char</em> *<dfn class="local col9 decl" id="179psz_flag_value" title='psz_flag_value' data-type='const char *' data-ref="179psz_flag_value">psz_flag_value</dfn>,</td></tr>
+<tr><th id="71">71</th><td>                 <em>unsigned</em> <em>int</em> <dfn class="local col0 decl" id="180min" title='min' data-type='unsigned int' data-ref="180min">min</dfn>, <em>int</em> *<dfn class="local col1 decl" id="181p_bool_flag" title='p_bool_flag' data-type='int *' data-ref="181p_bool_flag">p_bool_flag</dfn>)</td></tr>
+<tr><th id="72">72</th><td>{</td></tr>
+<tr><th id="73">73</th><td>  <b>if</b> (<a class="ref" href="../fns.h.html#is_abbrev_of" title='is_abbrev_of' data-ref="is_abbrev_of">is_abbrev_of</a> (<a class="local col7 ref" href="#177psz_varname" title='psz_varname' data-ref="177psz_varname">psz_varname</a>, <a class="local col8 ref" href="#178psz_flag_name" title='psz_flag_name' data-ref="178psz_flag_name">psz_flag_name</a>, <a class="local col0 ref" href="#180min" title='min' data-ref="180min">min</a>)) {</td></tr>
+<tr><th id="74">74</th><td>      <b>if</b> (!<a class="local col9 ref" href="#179psz_flag_value" title='psz_flag_value' data-ref="179psz_flag_value">psz_flag_value</a> || <var>0</var>==<a class="ref" href="../../../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a>(<a class="local col9 ref" href="#179psz_flag_value" title='psz_flag_value' data-ref="179psz_flag_value">psz_flag_value</a>))</td></tr>
+<tr><th id="75">75</th><td>	<a class="ref" href="../fns.h.html#on_off_toggle" title='on_off_toggle' data-ref="on_off_toggle">on_off_toggle</a>(<a class="local col9 ref" href="#179psz_flag_value" title='psz_flag_value' data-ref="179psz_flag_value">psz_flag_value</a>, <a class="local col1 ref" href="#181p_bool_flag" title='p_bool_flag' data-ref="181p_bool_flag">p_bool_flag</a>);</td></tr>
+<tr><th id="76">76</th><td>      <b>else</b></td></tr>
+<tr><th id="77">77</th><td>	<a class="ref" href="../fns.h.html#on_off_toggle" title='on_off_toggle' data-ref="on_off_toggle">on_off_toggle</a>(<a class="local col9 ref" href="#179psz_flag_value" title='psz_flag_value' data-ref="179psz_flag_value">psz_flag_value</a>, <a class="local col1 ref" href="#181p_bool_flag" title='p_bool_flag' data-ref="181p_bool_flag">p_bool_flag</a>);</td></tr>
+<tr><th id="78">78</th><td>      <a class="ref" href="show.h.html#dbg_cmd_show" title='dbg_cmd_show' data-ref="dbg_cmd_show">dbg_cmd_show</a>((<em>char</em> *) <a class="local col8 ref" href="#178psz_flag_name" title='psz_flag_name' data-ref="178psz_flag_name">psz_flag_name</a>);</td></tr>
+<tr><th id="79">79</th><td>      <b>return</b> <a class="macro" href="../../types.h.html#48" title="1" data-ref="_M/true">true</a>;</td></tr>
+<tr><th id="80">80</th><td>  }</td></tr>
+<tr><th id="81">81</th><td>  <b>return</b> <a class="macro" href="../../types.h.html#47" title="0" data-ref="_M/false">false</a>;</td></tr>
+<tr><th id="82">82</th><td>}</td></tr>
+<tr><th id="83">83</th><td></td></tr>
+<tr><th id="84">84</th><td></td></tr>
+<tr><th id="85">85</th><td><em>static</em> <a class="typedef" href="../../trace.h.html#debug_return_t" title='debug_return_t' data-type='enum debug_return_t' data-ref="debug_return_t">debug_return_t</a></td></tr>
+<tr><th id="86">86</th><td><dfn class="decl def" id="dbg_cmd_set" title='dbg_cmd_set' data-ref="dbg_cmd_set">dbg_cmd_set</dfn>(<em>char</em> *<dfn class="local col2 decl" id="182psz_args" title='psz_args' data-type='char *' data-ref="182psz_args">psz_args</dfn>)</td></tr>
+<tr><th id="87">87</th><td>{</td></tr>
+<tr><th id="88">88</th><td>  <b>if</b> (!<a class="local col2 ref" href="#182psz_args" title='psz_args' data-ref="182psz_args">psz_args</a> || <var>0</var>==<a class="ref" href="../../../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a>(<a class="local col2 ref" href="#182psz_args" title='psz_args' data-ref="182psz_args">psz_args</a>)) {</td></tr>
+<tr><th id="89">89</th><td>    <em>unsigned</em> <em>int</em> <dfn class="local col3 decl" id="183i" title='i' data-type='unsigned int' data-ref="183i">i</dfn>;</td></tr>
+<tr><th id="90">90</th><td>    <b>for</b> (<a class="local col3 ref" href="#183i" title='i' data-ref="183i">i</a> = <var>0</var>; <a class="ref" href="#set_subcommands" title='set_subcommands' data-ref="set_subcommands">set_subcommands</a>[<a class="local col3 ref" href="#183i" title='i' data-ref="183i">i</a>].<a class="ref" href="../subcmd.h.html#(anonymous)::name" title='(anonymous struct)::name' data-ref="(anonymous)::name">name</a>; <a class="local col3 ref" href="#183i" title='i' data-ref="183i">i</a>++) {</td></tr>
+<tr><th id="91">91</th><td>      <a class="ref" href="help.h.html#dbg_help_subcmd_entry" title='dbg_help_subcmd_entry' data-ref="dbg_help_subcmd_entry">dbg_help_subcmd_entry</a>(<q>"set"</q>, <q>"%-10s -- %s"</q>,</td></tr>
+<tr><th id="92">92</th><td>                            &amp;(<a class="ref" href="#set_subcommands" title='set_subcommands' data-ref="set_subcommands">set_subcommands</a>[<a class="local col3 ref" href="#183i" title='i' data-ref="183i">i</a>]), <a class="macro" href="../../types.h.html#47" title="0" data-ref="_M/false">false</a>);</td></tr>
+<tr><th id="93">93</th><td>    }</td></tr>
+<tr><th id="94">94</th><td>    <b>return</b> <a class="enum" href="../../trace.h.html#debug_readloop" title='debug_readloop' data-ref="debug_readloop">debug_readloop</a>;</td></tr>
+<tr><th id="95">95</th><td>  } <b>else</b> {</td></tr>
+<tr><th id="96">96</th><td>    <em>char</em> *<dfn class="local col4 decl" id="184psz_varname" title='psz_varname' data-type='char *' data-ref="184psz_varname">psz_varname</dfn> = <a class="ref" href="../fns.h.html#get_word" title='get_word' data-ref="get_word">get_word</a>(&amp;<a class="local col2 ref" href="#182psz_args" title='psz_args' data-ref="182psz_args">psz_args</a>);</td></tr>
+<tr><th id="97">97</th><td>    <a class="typedef" href="../subcmd.h.html#subcommand_var_info_t" title='subcommand_var_info_t' data-type='struct subcommand_var_info_t' data-ref="subcommand_var_info_t">subcommand_var_info_t</a> *<dfn class="local col5 decl" id="185p_subcmd_info" title='p_subcmd_info' data-type='subcommand_var_info_t *' data-ref="185p_subcmd_info">p_subcmd_info</dfn>;</td></tr>
+<tr><th id="98">98</th><td></td></tr>
+<tr><th id="99">99</th><td>    <b>while</b> (*<a class="local col2 ref" href="#182psz_args" title='psz_args' data-ref="182psz_args">psz_args</a> &amp;&amp; <a class="macro" href="../../../include/readline/chardefs.h.html#30" title="(((*psz_args) == &apos; &apos;) || ((*psz_args) == &apos;\t&apos;))" data-ref="_M/whitespace">whitespace</a> (*<a class="local col2 ref" href="#182psz_args" title='psz_args' data-ref="182psz_args">psz_args</a>))</td></tr>
+<tr><th id="100">100</th><td>      *<a class="local col2 ref" href="#182psz_args" title='psz_args' data-ref="182psz_args">psz_args</a> +=<var>1</var>;</td></tr>
+<tr><th id="101">101</th><td></td></tr>
+<tr><th id="102">102</th><td>    <i>/* FIXME, add min to above table and DRY below code. */</i></td></tr>
+<tr><th id="103">103</th><td>    <b>if</b> (<a class="ref" href="../fns.h.html#is_abbrev_of" title='is_abbrev_of' data-ref="is_abbrev_of">is_abbrev_of</a> (<a class="local col4 ref" href="#184psz_varname" title='psz_varname' data-ref="184psz_varname">psz_varname</a>, <q>"debug"</q>, <var>3</var>)) {</td></tr>
+<tr><th id="104">104</th><td>      <em>int</em> <dfn class="local col6 decl" id="186dbg_mask" title='dbg_mask' data-type='int' data-ref="186dbg_mask">dbg_mask</dfn>;</td></tr>
+<tr><th id="105">105</th><td>      <b>if</b> (<a class="ref" href="../fns.h.html#get_int" title='get_int' data-ref="get_int">get_int</a>(<a class="local col2 ref" href="#182psz_args" title='psz_args' data-ref="182psz_args">psz_args</a>, &amp;<a class="local col6 ref" href="#186dbg_mask" title='dbg_mask' data-ref="186dbg_mask">dbg_mask</a>, <a class="macro" href="../../types.h.html#48" title="1" data-ref="_M/true">true</a>)) {</td></tr>
+<tr><th id="106">106</th><td>	<a class="ref" href="../../debug.h.html#db_level" title='db_level' data-ref="db_level">db_level</a> = <a class="local col6 ref" href="#186dbg_mask" title='dbg_mask' data-ref="186dbg_mask">dbg_mask</a>;</td></tr>
+<tr><th id="107">107</th><td>      }</td></tr>
+<tr><th id="108">108</th><td>      <a class="ref" href="show.h.html#dbg_cmd_show" title='dbg_cmd_show' data-ref="dbg_cmd_show">dbg_cmd_show</a>(<a class="local col4 ref" href="#184psz_varname" title='psz_varname' data-ref="184psz_varname">psz_varname</a>);</td></tr>
+<tr><th id="109">109</th><td>      <b>return</b> <a class="enum" href="../../trace.h.html#debug_readloop" title='debug_readloop' data-ref="debug_readloop">debug_readloop</a>;</td></tr>
+<tr><th id="110">110</th><td>    } <b>else</b> <b>if</b> (<a class="ref" href="../fns.h.html#is_abbrev_of" title='is_abbrev_of' data-ref="is_abbrev_of">is_abbrev_of</a> (<a class="local col4 ref" href="#184psz_varname" title='psz_varname' data-ref="184psz_varname">psz_varname</a>, <q>"variable"</q>, <var>3</var>)) {</td></tr>
+<tr><th id="111">111</th><td>      <i>/* Treat as set variable */</i></td></tr>
+<tr><th id="112">112</th><td>      <b>return</b> <a class="tu ref" href="../cmd.c.html#dbg_cmd_set_var" title='dbg_cmd_set_var' data-use='c' data-ref="dbg_cmd_set_var">dbg_cmd_set_var</a>(<a class="local col2 ref" href="#182psz_args" title='psz_args' data-ref="182psz_args">psz_args</a>, <var>1</var>);</td></tr>
+<tr><th id="113">113</th><td><u>#<span data-ppcond="113">if</span> FIXME_SET_ARGS</u></td></tr>
+<tr><th id="114">114</th><td>    } <b>else</b> <b>if</b> (is_abbrev_of (psz_varname, <q>"args"</q>, <var>3</var>)) {</td></tr>
+<tr><th id="115">115</th><td>        ...</td></tr>
+<tr><th id="116">116</th><td><u>#<span data-ppcond="113">endif</span></u></td></tr>
+<tr><th id="117">117</th><td>    } <b>else</b></td></tr>
+<tr><th id="118">118</th><td>      <b>for</b> (<a class="local col5 ref" href="#185p_subcmd_info" title='p_subcmd_info' data-ref="185p_subcmd_info">p_subcmd_info</a> = <a class="ref" href="#set_subcommands" title='set_subcommands' data-ref="set_subcommands">set_subcommands</a>; <a class="local col5 ref" href="#185p_subcmd_info" title='p_subcmd_info' data-ref="185p_subcmd_info">p_subcmd_info</a> &amp;&amp; <a class="local col5 ref" href="#185p_subcmd_info" title='p_subcmd_info' data-ref="185p_subcmd_info">p_subcmd_info</a>-&gt;<a class="ref" href="../subcmd.h.html#(anonymous)::name" title='(anonymous struct)::name' data-ref="(anonymous)::name">name</a>;</td></tr>
+<tr><th id="119">119</th><td>           <a class="local col5 ref" href="#185p_subcmd_info" title='p_subcmd_info' data-ref="185p_subcmd_info">p_subcmd_info</a>++) {</td></tr>
+<tr><th id="120">120</th><td>        <b>if</b> (<a class="ref" href="#dbg_cmd_set_bool" title='dbg_cmd_set_bool' data-ref="dbg_cmd_set_bool">dbg_cmd_set_bool</a>(<a class="local col4 ref" href="#184psz_varname" title='psz_varname' data-ref="184psz_varname">psz_varname</a>, <a class="local col5 ref" href="#185p_subcmd_info" title='p_subcmd_info' data-ref="185p_subcmd_info">p_subcmd_info</a>-&gt;<a class="ref" href="../subcmd.h.html#(anonymous)::name" title='(anonymous struct)::name' data-ref="(anonymous)::name">name</a>,</td></tr>
+<tr><th id="121">121</th><td>                             <a class="local col2 ref" href="#182psz_args" title='psz_args' data-ref="182psz_args">psz_args</a>, <a class="local col5 ref" href="#185p_subcmd_info" title='p_subcmd_info' data-ref="185p_subcmd_info">p_subcmd_info</a>-&gt;<a class="ref" href="../subcmd.h.html#(anonymous)::min_abbrev" title='(anonymous struct)::min_abbrev' data-ref="(anonymous)::min_abbrev">min_abbrev</a>,</td></tr>
+<tr><th id="122">122</th><td>                             <a class="local col5 ref" href="#185p_subcmd_info" title='p_subcmd_info' data-ref="185p_subcmd_info">p_subcmd_info</a>-&gt;<a class="ref" href="../subcmd.h.html#(anonymous)::var" title='(anonymous struct)::var' data-ref="(anonymous)::var">var</a>))</td></tr>
+<tr><th id="123">123</th><td>          <b>return</b> <a class="enum" href="../../trace.h.html#debug_readloop" title='debug_readloop' data-ref="debug_readloop">debug_readloop</a>;</td></tr>
+<tr><th id="124">124</th><td>      }</td></tr>
+<tr><th id="125">125</th><td>    <a class="ref" href="../msg.h.html#dbg_errmsg" title='dbg_errmsg' data-ref="dbg_errmsg">dbg_errmsg</a>(<q>"Unknown set option %s\nSee 'help set' for options. Or did you mean setq?\n"</q>,</td></tr>
+<tr><th id="126">126</th><td>               <a class="local col4 ref" href="#184psz_varname" title='psz_varname' data-ref="184psz_varname">psz_varname</a>);</td></tr>
+<tr><th id="127">127</th><td>    <b>return</b> <a class="enum" href="../../trace.h.html#debug_cmd_error" title='debug_cmd_error' data-ref="debug_cmd_error">debug_cmd_error</a>;</td></tr>
+<tr><th id="128">128</th><td>  }</td></tr>
+<tr><th id="129">129</th><td>}</td></tr>
+<tr><th id="130">130</th><td></td></tr>
+<tr><th id="131">131</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="132">132</th><td><dfn class="decl def" id="dbg_cmd_set_init" title='dbg_cmd_set_init' data-ref="dbg_cmd_set_init">dbg_cmd_set_init</dfn>(<em>unsigned</em> <em>int</em> <dfn class="local col7 decl" id="187c" title='c' data-type='unsigned int' data-ref="187c">c</dfn>)</td></tr>
+<tr><th id="133">133</th><td>{</td></tr>
+<tr><th id="134">134</th><td></td></tr>
+<tr><th id="135">135</th><td>  <a class="ref" href="../cmd.c.html#short_command" title='short_command' data-ref="short_command">short_command</a>[<a class="local col7 ref" href="#187c" title='c' data-ref="187c">c</a>].<a class="ref" href="../../debugger.h.html#(anonymous)::func" title='(anonymous struct)::func' data-ref="(anonymous)::func">func</a> = &amp;<a class="ref" href="#dbg_cmd_set" title='dbg_cmd_set' data-ref="dbg_cmd_set">dbg_cmd_set</a>;</td></tr>
+<tr><th id="136">136</th><td>  <a class="ref" href="../cmd.c.html#short_command" title='short_command' data-ref="short_command">short_command</a>[<a class="local col7 ref" href="#187c" title='c' data-ref="187c">c</a>].<a class="ref" href="../../debugger.h.html#(anonymous)::use" title='(anonymous struct)::use' data-ref="(anonymous)::use">use</a> =</td></tr>
+<tr><th id="137">137</th><td>    <a class="macro" href="../../make.h.html#293" title="dcgettext (((void*)0), &quot;set OPTION {on|off|toggle}&quot;, 5)" data-ref="_M/_">_</a>(<q>"set OPTION {on|off|toggle}"</q>);</td></tr>
+<tr><th id="138">138</th><td>  <a class="ref" href="../cmd.c.html#short_command" title='short_command' data-ref="short_command">short_command</a>[<a class="local col7 ref" href="#187c" title='c' data-ref="187c">c</a>].<a class="ref" href="../../debugger.h.html#(anonymous)::doc" title='(anonymous struct)::doc' data-ref="(anonymous)::doc">doc</a>  =</td></tr>
+<tr><th id="139">139</th><td>    <a class="macro" href="../../make.h.html#293" title="dcgettext (((void*)0), &quot;Set debugger boolean value for OPTION.\n&quot;&quot;Run `set&apos; for a list of options and current values\n&quot;&quot;\n&quot;&quot;See also &apos;setq&apos;.&quot;, 5)" data-ref="_M/_">_</a>(<q>"Set debugger boolean value for OPTION.\n"</q></td></tr>
+<tr><th id="140">140</th><td><q>"Run `set' for a list of options and current values\n"</q></td></tr>
+<tr><th id="141">141</th><td><q>"\n"</q></td></tr>
+<tr><th id="142">142</th><td><q>"See also 'setq'."</q></td></tr>
+<tr><th id="143">143</th><td>      );</td></tr>
+<tr><th id="144">144</th><td>}</td></tr>
+<tr><th id="145">145</th><td></td></tr>
+<tr><th id="146">146</th><td><i>/*</i></td></tr>
+<tr><th id="147">147</th><td><i> * Local variables:</i></td></tr>
+<tr><th id="148">148</th><td><i> * eval: (c-set-style "gnu")</i></td></tr>
+<tr><th id="149">149</th><td><i> * indent-tabs-mode: nil</i></td></tr>
+<tr><th id="150">150</th><td><i> * End:</i></td></tr>
+<tr><th id="151">151</th><td><i> */</i></td></tr>
+<tr><th id="152">152</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../cmd.c.html'>remake/debugger/cmd.c</a><br/>Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

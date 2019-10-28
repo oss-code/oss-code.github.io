@@ -1,0 +1,7 @@
+<dec f='remake/hash.h' l='53' type='unsigned int'/>
+<offset>640</offset>
+<doc f='remake/hash.h' l='53'>/* # of times we&apos;ve expanded table */</doc>
+<use f='remake/hash.c' l='58' u='w' c='hash_init'/>
+<use f='remake/hash.c' l='202' u='w' c='hash_delete_items'/>
+<use f='remake/hash.c' l='261' u='w' c='hash_rehash'/>
+<use f='remake/hash.c' l='282' u='r' c='hash_print_stats'/>

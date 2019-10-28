@@ -1,0 +1,11 @@
+<dec f='remake/makeint.h' l='502' type='char * end_of_token(const char * )'/>
+<dec f='remake/make.h' l='358' type='char * end_of_token(const char * )'/>
+<use f='remake/function.c' l='96' u='c' c='subst_expand'/>
+<use f='remake/function.c' l='872' u='c' c='func_foreach'/>
+<use f='remake/function.c' l='2575' u='c' c='func_call'/>
+<def f='remake/misc.c' l='226' ll='231' type='char * end_of_token(const char * s)'/>
+<use f='remake/misc.c' l='254' u='c' c='find_next_token'/>
+<doc f='remake/misc.c' l='224'>/* Return the address of the first whitespace or null in the string S.  */</doc>
+<use f='remake/read.c' l='512' u='c' c='parse_var_assignment'/>
+<use f='remake/read.c' l='782' u='c' c='eval'/>
+<use f='remake/read.c' l='1718' u='c' c='conditional_line'/>

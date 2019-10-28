@@ -1,0 +1,28 @@
+<dec f='remake/debugger/msg.h' l='7' type='void dbg_msg(const char * fmt)'/>
+<use f='remake/debugger/break.c' l='68' u='c' c='add_breakpoint'/>
+<use f='remake/debugger/break.c' l='72' u='c' c='add_breakpoint'/>
+<use f='remake/debugger/break.c' l='76' u='c' c='add_breakpoint'/>
+<use f='remake/debugger/break.c' l='83' u='c' c='add_breakpoint'/>
+<use f='remake/debugger/break.c' l='88' u='c' c='add_breakpoint'/>
+<use f='remake/debugger/break.c' l='90' u='c' c='add_breakpoint'/>
+<use f='remake/debugger/break.c' l='91' u='c' c='add_breakpoint'/>
+<use f='remake/debugger/break.c' l='104' u='c' c='remove_breakpoint'/>
+<use f='remake/debugger/break.c' l='108' u='c' c='remove_breakpoint'/>
+<use f='remake/debugger/break.c' l='128' u='c' c='remove_breakpoint'/>
+<use f='remake/debugger/break.c' l='133' u='c' c='remove_breakpoint'/>
+<use f='remake/debugger/break.c' l='139' u='c' c='remove_breakpoint'/>
+<use f='remake/debugger/break.c' l='152' u='c' c='list_breakpoints'/>
+<use f='remake/debugger/break.c' l='156' u='c' c='list_breakpoints'/>
+<use f='remake/debugger/command/info.h' l='197' u='c' c='dbg_cmd_info_line'/>
+<use f='remake/debugger/command/info.h' l='201' u='c' c='dbg_cmd_info_line'/>
+<use f='remake/debugger/command/info.h' l='203' u='c' c='dbg_cmd_info_line'/>
+<use f='remake/debugger/command/quit.h' l='26' u='c' c='dbg_cmd_quit'/>
+<use f='remake/debugger/command/quit.h' l='31' u='c' c='dbg_cmd_quit'/>
+<use f='remake/debugger/cmd.c' l='300' u='c' c='dbg_cmd_show_command'/>
+<use f='remake/debugger/cmd.c' l='312' u='c' c='dbg_cmd_set_var'/>
+<use f='remake/debugger/cmd.c' l='329' u='c' c='dbg_cmd_set_var'/>
+<use f='remake/debugger/cmd.c' l='338' u='c' c='dbg_cmd_set_var'/>
+<use f='remake/debugger/cmd.c' l='454' u='c' c='enter_debugger'/>
+<use f='remake/debugger/cmd.c' l='458' u='c' c='enter_debugger'/>
+<def f='remake/debugger/msg.c' l='68' ll='83' type='void dbg_msg(const char * fmt)'/>
+<doc f='remake/debugger/msg.c' l='67'>/* Print a message on stdout.  */</doc>

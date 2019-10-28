@@ -1,0 +1,44 @@
+<dec f='remake/commands.h' l='29' type='gmk_floc'/>
+<use f='remake/commands.c' l='401' u='a' c='chop_commands'/>
+<use f='remake/commands.c' l='796' u='m' c='print_commands'/>
+<use f='remake/commands.c' l='800' u='m' c='print_commands'/>
+<use f='remake/commands.c' l='800' u='m' c='print_commands'/>
+<offset>0</offset>
+<doc f='remake/commands.h' l='29'>/* Where commands were defined.  */</doc>
+<use f='remake/debugger/command/write.h' l='103' u='m' c='dbg_cmd_write'/>
+<use f='remake/debugger/command/write.h' l='108' u='m' c='dbg_cmd_write'/>
+<use f='remake/debugger/command/write.h' l='109' u='m' c='dbg_cmd_write'/>
+<use f='remake/debugger/fns.c' l='317' u='m' c='print_debugger_location'/>
+<use f='remake/default.c' l='710' u='m' c='install_default_suffix_rules'/>
+<use f='remake/expand.c' l='470' u='m' c='variable_expand_for_file'/>
+<use f='remake/expand.c' l='471' u='a' c='variable_expand_for_file'/>
+<use f='remake/file.c' l='110' u='m' c='rehash_file'/>
+<use f='remake/file.c' l='111' u='a' c='rehash_file'/>
+<use f='remake/file.c' l='112' u='m' c='rehash_file'/>
+<use f='remake/file.c' l='114' u='m' c='rehash_file'/>
+<use f='remake/file.c' l='115' u='m' c='rehash_file'/>
+<use f='remake/file.c' l='117' u='a' c='rehash_file'/>
+<use f='remake/file.c' l='121' u='a' c='rehash_file'/>
+<use f='remake/file.c' l='124' u='a' c='rehash_file'/>
+<use f='remake/job.c' l='1633' u='m' c='new_job'/>
+<use f='remake/job.c' l='1643' u='m' c='new_job'/>
+<use f='remake/job.c' l='1722' u='m' c='new_job'/>
+<use f='remake/job.c' l='1726' u='m' c='new_job'/>
+<use f='remake/job.c' l='1727' u='m' c='new_job'/>
+<use f='remake/job.c' l='1727' u='m' c='new_job'/>
+<use f='remake/job.c' l='1743' u='m' c='new_job'/>
+<use f='remake/job.c' l='1745' u='m' c='new_job'/>
+<use f='remake/job.c' l='1746' u='m' c='new_job'/>
+<use f='remake/job.c' l='1781' u='m' c='job_next_command'/>
+<use f='remake/job.c' l='1789' u='m' c='job_next_command'/>
+<use f='remake/print.c' l='327' u='m' c='print_target_stack_entry'/>
+<use f='remake/read.c' l='1974' u='m' c='record_files'/>
+<use f='remake/read.c' l='1975' u='m' c='record_files'/>
+<use f='remake/read.c' l='1976' u='m' c='record_files'/>
+<use f='remake/read.c' l='2133' u='a' c='record_files'/>
+<use f='remake/read.c' l='2136' u='a' c='record_files'/>
+<use f='remake/rule.c' l='383' u='m' c='install_pattern_rule'/>
+<use f='remake/rule.c' l='384' u='m' c='install_pattern_rule'/>
+<use f='remake/rule.c' l='385' u='m' c='install_pattern_rule'/>
+<use f='remake/rule.c' l='462' u='m' c='create_pattern_rule'/>
+<use f='remake/rule.c' l='463' u='m' c='create_pattern_rule'/>

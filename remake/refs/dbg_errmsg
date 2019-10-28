@@ -1,0 +1,30 @@
+<dec f='remake/debugger/msg.h' l='9' type='void dbg_errmsg(const char * fmt)'/>
+<use f='remake/debugger/command/break.h' l='45' u='c' c='dbg_cmd_break'/>
+<use f='remake/debugger/command/break.h' l='51' u='c' c='dbg_cmd_break'/>
+<use f='remake/debugger/command/break.h' l='63' u='c' c='dbg_cmd_break'/>
+<use f='remake/debugger/command/info.h' l='294' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='307' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='324' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='368' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/list.h' l='17' u='c' c='dbg_cmd_list'/>
+<use f='remake/debugger/command/list.h' l='23' u='c' c='dbg_cmd_list'/>
+<use f='remake/debugger/command/list.h' l='29' u='c' c='dbg_cmd_list'/>
+<use f='remake/debugger/command/list.h' l='40' u='c' c='dbg_cmd_list'/>
+<use f='remake/debugger/command/list.h' l='47' u='c' c='dbg_cmd_list'/>
+<use f='remake/debugger/command/list.h' l='55' u='c' c='dbg_cmd_list'/>
+<use f='remake/debugger/command/set.h' l='125' u='c' c='dbg_cmd_set'/>
+<use f='remake/debugger/command/source.h' l='19' u='c' c='dbg_cmd_source'/>
+<use f='remake/debugger/command/source.h' l='25' u='c' c='dbg_cmd_source'/>
+<use f='remake/debugger/command/source.h' l='49' u='c' c='dbg_cmd_source'/>
+<use f='remake/debugger/command/source.h' l='53' u='c' c='dbg_cmd_source'/>
+<use f='remake/debugger/cmd.c' l='270' u='c' c='execute_line'/>
+<use f='remake/debugger/cmd.c' l='464' u='c' c='enter_debugger'/>
+<use f='remake/debugger/cmd.c' l='479' u='c' c='enter_debugger'/>
+<use f='remake/debugger/fns.c' l='87' u='c' c='get_brkpt_option'/>
+<use f='remake/debugger/fns.c' l='108' u='c' c='get_int'/>
+<use f='remake/debugger/fns.c' l='126' u='c' c='get_uint'/>
+<def f='remake/debugger/msg.c' l='49' ll='65' type='void dbg_errmsg(const char * fmt)'/>
+<doc f='remake/debugger/msg.c' l='48'>/* Print an error message on stdout.  */</doc>
+<use f='remake/debugger/stack.c' l='73' u='c' c='dbg_adjust_frame'/>
+<use f='remake/debugger/stack.c' l='87' u='c' c='dbg_adjust_frame'/>
+<use f='remake/debugger/stack.c' l='108' u='c' c='dbg_adjust_frame'/>

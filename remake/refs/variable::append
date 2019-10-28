@@ -1,0 +1,13 @@
+<dec f='remake/variable.h' l='62' type='unsigned int'/>
+<offset>353</offset>
+<doc f='remake/variable.h' l='62'>/* Nonzero if an appending target-specific
+                                   variable.  */</doc>
+<use f='remake/expand.c' l='137' u='r' c='recursively_expand_for_file'/>
+<use f='remake/expand.c' l='171' u='r' c='reference_variable'/>
+<use f='remake/expand.c' l='525' u='r' c='variable_append'/>
+<use f='remake/read.c' l='1929' u='w' c='record_target_var'/>
+<use f='remake/variable.c' l='327' u='w' c='define_variable_in_set'/>
+<use f='remake/variable.c' l='1261' u='r' c='do_variable_definition'/>
+<use f='remake/variable.c' l='1444' u='w' c='do_variable_definition'/>
+<use f='remake/variable.c' l='1709' u='r' c='print_variable'/>
+<use f='remake/variable.c' l='1759' u='r' c='print_variable_info'/>

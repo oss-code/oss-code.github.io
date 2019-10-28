@@ -1,0 +1,21 @@
+<dec f='remake/variable.h' l='127' type='char * expand_argument(const char * str, const char * end)'/>
+<dec f='remake/expand.h' l='44' type='char * expand_argument(const char * str, const char * end)'/>
+<doc f='remake/expand.h' l='38'>/*! Expand an argument for an expansion function.  The text starting
+   at STR and ending at END is variable-expanded into a
+   null-terminated string that is returned as the value.  This is done
+   without clobbering `variable_buffer&apos; or the current
+   variable-expansion that is in progress.  */</doc>
+<use f='remake/expand.c' l='290' u='c' c='variable_expand_string'/>
+<def f='remake/expand.c' l='426' ll='451' type='char * expand_argument(const char * str, const char * end)'/>
+<doc f='remake/expand.c' l='420'>/* Expand an argument for an expansion function.
+   The text starting at STR and ending at END is variable-expanded
+   into a null-terminated string that is returned as the value.
+   This is done without clobbering &apos;variable_buffer&apos; or the current
+   variable-expansion that is in progress.  */</doc>
+<use f='remake/function.c' l='860' u='c' c='func_foreach'/>
+<use f='remake/function.c' l='861' u='c' c='func_foreach'/>
+<use f='remake/function.c' l='1241' u='c' c='func_if'/>
+<use f='remake/function.c' l='1255' u='c' c='func_if'/>
+<use f='remake/function.c' l='1296' u='c' c='func_or'/>
+<use f='remake/function.c' l='1345' u='c' c='func_and'/>
+<use f='remake/function.c' l='2512' u='c' c='handle_function'/>

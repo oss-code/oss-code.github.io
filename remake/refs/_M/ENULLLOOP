@@ -1,0 +1,13 @@
+<dec f='remake/makeint.h' l='741'/>
+<doc f='remake/makeint.h' l='734'>/* While system calls that return integers are pretty consistent about
+   returning -1 on failure and setting errno in that case, functions that
+   return pointers are not always so well behaved.  Sometimes they return
+   NULL for expected behavior: one good example is readdir() which returns
+   NULL at the end of the directory--and _doesn&apos;t_ reset errno.  So, we have
+   to do it ourselves here.  */</doc>
+<use f='remake/dir.c' l='575' u='c'/>
+<use f='remake/dir.c' l='694' u='c'/>
+<use f='remake/function.c' l='2185' u='c'/>
+<use f='remake/function.c' l='2233' u='c'/>
+<use f='remake/function.c' l='2261' u='c'/>
+<use f='remake/read.c' l='334' u='c'/>

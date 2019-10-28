@@ -1,0 +1,25 @@
+<dec f='remake/variable.h' l='60' type='int'/>
+<offset>320</offset>
+<doc f='remake/variable.h' l='60'>/* strlen (name) */</doc>
+<use f='remake/main.c' l='1309' u='w' c='main'/>
+<use f='remake/read.c' l='1479' u='r' c='do_define'/>
+<use f='remake/variable.c' l='182' u='r' c='variable_hash_1'/>
+<use f='remake/variable.c' l='189' u='r' c='variable_hash_2'/>
+<use f='remake/variable.c' l='197' u='r' c='variable_hash_cmp'/>
+<use f='remake/variable.c' l='197' u='r' c='variable_hash_cmp'/>
+<use f='remake/variable.c' l='200' c='variable_hash_cmp'/>
+<use f='remake/variable.c' l='200' u='r' c='variable_hash_cmp'/>
+<use f='remake/variable.c' l='200' u='r' c='variable_hash_cmp'/>
+<use f='remake/variable.c' l='200' u='r' c='variable_hash_cmp'/>
+<use f='remake/variable.c' l='248' u='w' c='define_variable_in_set'/>
+<use f='remake/variable.c' l='311' u='w' c='define_variable_in_set'/>
+<use f='remake/variable.c' l='384' u='w' c='undefine_variable_in_set'/>
+<use f='remake/variable.c' l='470' u='r' c='lookup_special_var'/>
+<use f='remake/variable.c' l='509' u='w' c='lookup_variable'/>
+<use f='remake/variable.c' l='595' u='w' c='lookup_variable_in_set'/>
+<use f='remake/variable.c' l='1111' u='w' c='target_environment'/>
+<use f='remake/variable.c' l='1474' u='w' c='parse_variable_definition'/>
+<use f='remake/variable.c' l='1589' u='w' c='parse_variable_definition'/>
+<use f='remake/variable.c' l='1609' u='r' c='assign_variable_definition'/>
+<use f='remake/variable.c' l='1610' u='r' c='assign_variable_definition'/>
+<use f='remake/variable.c' l='1611' u='r' c='assign_variable_definition'/>

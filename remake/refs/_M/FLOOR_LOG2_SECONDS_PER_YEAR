@@ -1,0 +1,13 @@
+<dec f='remake/filedef.h' l='175'/>
+<doc f='remake/filedef.h' l='163'>/* Upper bound on length of string &quot;YYYY-MM-DD HH:MM:SS.NNNNNNNNN&quot;
+   representing a file timestamp.  The upper bound is not necessarily 29,
+   since the year might be less than -999 or greater than 9999.
+
+   Subtract one for the sign bit if in case file timestamps can be negative;
+   subtract FLOOR_LOG2_SECONDS_PER_YEAR to yield an upper bound on how many
+   file timestamp bits might affect the year;
+   302 / 1000 is log10 (2) rounded up;
+   add one for integer division truncation;
+   add one more for a minus sign if file timestamps can be negative;
+   add 4 to allow for any 4-digit epoch year (e.g. 1970);
+   add 25 to allow for &quot;-MM-DD HH:MM:SS.NNNNNNNNN&quot;.  */</doc>

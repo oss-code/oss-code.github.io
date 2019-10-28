@@ -1,0 +1,8 @@
+<dec f='remake/output.h' l='45' type='void output_start()'/>
+<doc f='remake/output.h' l='43'>/* In situations where output may be about to be displayed but we&apos;re not
+   sure if we&apos;ve set it up yet, call this.  */</doc>
+<use f='remake/function.c' l='1762' u='c' c='func_shell_base'/>
+<use f='remake/job.c' l='1231' u='c' c='start_job_command'/>
+<def f='remake/output.c' l='561' ll='576' type='void output_start()'/>
+<use f='remake/output.c' l='584' u='c' c='outputs'/>
+<doc f='remake/output.c' l='560'>/* We&apos;re about to generate output: be sure it&apos;s set up.  */</doc>

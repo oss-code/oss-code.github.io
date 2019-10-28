@@ -1,0 +1,8 @@
+<dec f='include/stdio.h' l='622' type='char * fgets(char *restrict __s, int __n, FILE *restrict __stream)'/>
+<doc f='include/stdio.h' l='618'>/* Get a newline-terminated string of finite length from STREAM.
+
+   This function is a possible cancellation point and therefore not
+   marked with __THROW.  */</doc>
+<use f='remake/debugger/command/source.h' l='42' u='c' c='dbg_cmd_source'/>
+<use f='remake/debugger/cmd.c' l='495' u='c' c='enter_debugger'/>
+<use f='remake/read.c' l='2548' u='c' c='readline'/>

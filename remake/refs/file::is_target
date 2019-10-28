@@ -1,0 +1,29 @@
+<dec f='remake/filedef.h' l='102' type='unsigned int'/>
+<offset>1543</offset>
+<doc f='remake/filedef.h' l='102'>/* Nonzero if file is described as target.  */</doc>
+<use f='remake/file.c' l='144' u='r' c='rehash_file'/>
+<use f='remake/file.c' l='149' u='r' c='rehash_file'/>
+<use f='remake/file.c' l='168' u='w' c='rehash_file'/>
+<use f='remake/file.c' l='168' u='r' c='rehash_file'/>
+<use f='remake/file.c' l='560' u='w' c='snap_deps'/>
+<use f='remake/file.c' l='588' u='r' c='snap_deps'/>
+<use f='remake/file.c' l='592' u='r' c='snap_deps'/>
+<use f='remake/file.c' l='603' u='r' c='snap_deps'/>
+<use f='remake/file.c' l='614' u='r' c='snap_deps'/>
+<use f='remake/file.c' l='754' u='r' c='print_target_props'/>
+<use f='remake/file.c' l='933' u='r' c='print_file'/>
+<use f='remake/file.c' l='1099' u='r' c='build_target_list'/>
+<use f='remake/implicit.c' l='880' u='w' c='pattern_search'/>
+<use f='remake/implicit.c' l='948' u='w' c='pattern_search'/>
+<use f='remake/implicit.c' l='989' u='w' c='pattern_search'/>
+<use f='remake/job.c' l='754' u='r' c='reap_children'/>
+<use f='remake/read.c' l='2130' u='r' c='record_files'/>
+<use f='remake/read.c' l='2162' u='r' c='record_files'/>
+<use f='remake/read.c' l='2182' u='w' c='record_files'/>
+<use f='remake/remake.c' l='578' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='858' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='1026' u='r' c='notice_finished_file'/>
+<use f='remake/remake.c' l='1131' u='r' c='check_dep'/>
+<use f='remake/remake.c' l='1302' u='r' c='remake_file'/>
+<use f='remake/vpath.c' l='346' u='r' c='selective_vpath_search'/>
+<use f='remake/vpath.c' l='449' u='r' c='selective_vpath_search'/>

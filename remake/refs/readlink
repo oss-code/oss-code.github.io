@@ -1,0 +1,5 @@
+<dec f='include/unistd.h' l='812' type='ssize_t readlink(const char *restrict __path, char *restrict __buf, size_t __len)'/>
+<doc f='include/unistd.h' l='809'>/* Read the contents of the symbolic link PATH into no more than
+   LEN bytes of BUF.  The contents are not null-terminated.
+   Returns the number of characters read, or -1 for errors.  */</doc>
+<use f='remake/remake.c' l='1627' u='c' c='name_mtime'/>

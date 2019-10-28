@@ -1,0 +1,13 @@
+<dec f='remake/rule.h' l='27' type='struct rule *'/>
+<offset>0</offset>
+<use f='remake/debugger/file2line.c' l='173' u='r' c='file2lines_init'/>
+<use f='remake/debugger/fns.c' l='474' u='r' c='find_rule'/>
+<use f='remake/implicit.c' l='298' u='r' c='pattern_search'/>
+<use f='remake/rule.c' l='85' u='r' c='count_implicit_rule_limits'/>
+<use f='remake/rule.c' l='289' u='w' c='new_pattern_rule'/>
+<use f='remake/rule.c' l='293' u='r' c='new_pattern_rule'/>
+<use f='remake/rule.c' l='318' u='w' c='new_pattern_rule'/>
+<use f='remake/rule.c' l='342' u='w' c='new_pattern_rule'/>
+<use f='remake/rule.c' l='402' u='r' c='freerule'/>
+<use f='remake/rule.c' l='430' u='w' c='freerule'/>
+<use f='remake/rule.c' l='512' u='r' c='print_rule_data_base'/>

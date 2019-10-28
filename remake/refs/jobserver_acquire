@@ -1,0 +1,15 @@
+<dec f='remake/os.h' l='60' type='unsigned int jobserver_acquire(int timeout)'/>
+<use f='remake/job.c' l='1701' u='c' c='new_job'/>
+<doc f='remake/os.h' l='55'>/* Wait until we can acquire a jobserver token.
+   TIMEOUT is 1 if we have other jobs waiting for the load to go down;
+   in this case we won&apos;t wait forever, so we can check the load.
+   Returns 1 if we got a token, or 0 if we stopped waiting due to a child
+   exiting or a timeout.    */</doc>
+<def f='remake/posixos.c' l='239' ll='284' type='unsigned int jobserver_acquire(int timeout)'/>
+<doc f='remake/posixos.c' l='232'>/* Use pselect() to atomically wait for both a signal and a file descriptor.
+   It also provides a timeout facility so we don&apos;t need to use SIGALRM.
+
+   This method relies on the fact that SIGCHLD will be blocked everywhere,
+   and only unblocked (atomically) within the pselect() call, so we can
+   never miss a SIGCHLD.
+ */</doc>

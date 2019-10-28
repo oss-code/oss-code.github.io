@@ -1,0 +1,9 @@
+<dec f='remake/variable.h' l='189' type='void print_file_variables(const file_t * p_target, uint8_t b_hash_stats)'/>
+<doc f='remake/variable.h' l='185'>/*! Print all the local variables of P_TARGET.  Lines output have &quot;# &quot;
+    prepended. If you want hash table statistics too, set b_hash_stats
+    true.
+*/</doc>
+<use f='remake/file.c' l='869' u='c' c='print_target_props'/>
+<use f='remake/file.c' l='1011' u='c' c='print_file'/>
+<def f='remake/variable.c' l='1847' ll='1852' type='void print_file_variables(const file_t * p_target, uint8_t b_hash_stats)'/>
+<doc f='remake/variable.c' l='1845'>/* Print all the local variables of FILE.  */</doc>

@@ -1,0 +1,8 @@
+<dec f='remake/gettext.h' l='55'/>
+<doc f='remake/gettext.h' l='48'>/* A pseudo function call that serves as a marker for the automated
+   extraction of messages, but does not call gettext().  The run-time
+   translation is done at a different place in the code.
+   The argument, String, should be a literal string.  Concatenated strings
+   and other string expressions won&apos;t work.
+   The macro&apos;s expansion is not parenthesized, so that it is suitable as
+   initializer for static &apos;char[]&apos; or &apos;const char[]&apos; variables.  */</doc>

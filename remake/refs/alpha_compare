@@ -1,0 +1,8 @@
+<dec f='remake/makeint.h' l='505' type='int alpha_compare(const void * , const void * )'/>
+<dec f='remake/make.h' l='361' type='int alpha_compare(const void * , const void * )'/>
+<use f='remake/ar.c' l='306' u='r' c='ar_glob'/>
+<use f='remake/function.c' l='1191' u='r' c='func_sort'/>
+<def f='remake/misc.c' l='36' ll='45' type='int alpha_compare(const void * v1, const void * v2)'/>
+<doc f='remake/misc.c' l='32'>/* Compare strings *S1 and *S2.
+   Return negative if the first is less, positive if it is greater,
+   zero if they are equal.  */</doc>

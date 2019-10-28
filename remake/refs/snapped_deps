@@ -1,0 +1,12 @@
+<dec f='remake/filedef.h' l='239' type='int'/>
+<doc f='remake/filedef.h' l='238'>/* Have we snapped deps yet?  */</doc>
+<def f='remake/file.c' l='39' type='int'/>
+<use f='remake/file.c' l='506' u='w' c='snap_deps'/>
+<doc f='remake/file.c' l='32'>/* Remember whether snap_deps has been invoked: we need this to be sure we
+   don&apos;t add new rules (via $(eval ...)) afterwards.  In the future it would
+   be nice to support this, but it means we&apos;d need to re-run snap_deps() or
+   at least its functionality... it might mean changing snap_deps() to be run
+   per-file, so we can invoke it after the eval... or remembering which files
+   in the hash have been snapped (a new boolean flag?) and having snap_deps()
+   only work on files which have not yet been snapped. */</doc>
+<use f='remake/read.c' l='1963' u='r' c='record_files'/>

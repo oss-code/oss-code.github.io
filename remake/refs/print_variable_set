@@ -1,0 +1,10 @@
+<dec f='remake/variable.h' l='204' type='void print_variable_set(struct variable_set * set, const char * prefix, int pauto)'/>
+<doc f='remake/variable.h' l='200'>/*! Print all the variables in SET.  PREFIX is printed before the
+   actual variable definitions (everything else is comments).  If you
+   want hash table statistics too, set b_hash_stats true.
+*/</doc>
+<def f='remake/variable.c' l='1803' ll='1813' type='void print_variable_set(struct variable_set * set, const char * prefix, int pauto)'/>
+<use f='remake/variable.c' l='1822' u='c' c='print_variable_data_base'/>
+<use f='remake/variable.c' l='1851' u='c' c='print_file_variables'/>
+<doc f='remake/variable.c' l='1800'>/* Print all the variables in SET.  PREFIX is printed before
+   the actual variable definitions (everything else is comments).  */</doc>

@@ -1,0 +1,10 @@
+<dec f='remake/commands.h' l='32' type='unsigned char *'/>
+<use f='remake/commands.c' l='407' u='w' c='chop_commands'/>
+<use f='remake/commands.c' l='433' u='r' c='chop_commands'/>
+<offset>320</offset>
+<doc f='remake/commands.h' l='32'>/* One set of flag bits for each line.  */</doc>
+<use f='remake/job.c' l='990' u='r' c='start_job_command'/>
+<use f='remake/job.c' l='1017' u='r' c='start_job_command'/>
+<use f='remake/job.c' l='1079' u='r' c='start_job_command'/>
+<use f='remake/remake.c' l='979' u='r' c='notice_finished_file'/>
+<use f='remake/remake.c' l='1020' u='r' c='notice_finished_file'/>

@@ -1,0 +1,16 @@
+<dec f='remake/job.h' l='130' type='char ** construct_command_argv(char * line, char ** restp, struct file * file, int cmd_flags, char ** batch_file)'/>
+<use f='remake/function.c' l='1725' u='c' c='func_shell_base'/>
+<use f='remake/job.c' l='1078' u='c' c='start_job_command'/>
+<def f='remake/job.c' l='3218' ll='3255' type='char ** construct_command_argv(char * line, char ** restp, struct file * file, int cmd_flags, char ** batch_filename)'/>
+<doc f='remake/job.c' l='3205'>/* Figure out the argument list necessary to run LINE as a command.  Try to
+   avoid using a shell.  This routine handles only &apos; quoting, and &quot; quoting
+   when no backslash, $ or &apos; characters are seen in the quotes.  Starting
+   quotes may be escaped with a backslash.  If any of the characters in
+   sh_chars is seen, or any of the builtin commands listed in sh_cmds
+   is the first word of a line, the shell is used.
+
+   If RESTP is not NULL, *RESTP is set to point to the first newline in LINE.
+   If *RESTP is NULL, newlines will be ignored.
+
+   FILE is the target whose commands these are.  It is used for
+   variable expansion for $(SHELL) and $(IFS).  */</doc>

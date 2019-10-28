@@ -1,0 +1,7 @@
+<dec f='remake/filedef.h' l='95' type='unsigned int'/>
+<offset>1539</offset>
+<doc f='remake/filedef.h' l='95'>/* Nonzero if this file&apos;s time stamp
+                                           has only one-second resolution.  */</doc>
+<use f='remake/file.c' l='552' u='w' c='snap_deps'/>
+<use f='remake/remake.c' l='554' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='1398' u='w' c='f_mtime'/>

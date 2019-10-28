@@ -1,0 +1,12 @@
+<dec f='include/x86_64-linux-gnu/bits/time.h' l='33' type='__suseconds_t'/>
+<offset>64</offset>
+<doc f='include/x86_64-linux-gnu/bits/time.h' l='33'>/* Microseconds.  */</doc>
+<use f='remake/file.c' l='695' u='r' c='file_timestamp_now'/>
+<use f='remake/profile.c' l='128' u='r' c='time_in_100micro'/>
+<use f='remake/profile.c' l='135' u='w' c='time_diff'/>
+<use f='remake/profile.c' l='135' u='r' c='time_diff'/>
+<use f='remake/profile.c' l='136' u='r' c='time_diff'/>
+<use f='remake/profile.c' l='136' u='r' c='time_diff'/>
+<use f='remake/profile.c' l='137' u='w' c='time_diff'/>
+<use f='remake/profile.c' l='140' u='w' c='time_diff'/>
+<use f='remake/profile.c' l='140' u='r' c='time_diff'/>

@@ -1,0 +1,348 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>hash.c source code [remake/hash.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/hash.c'; var root_path = '..'; var data_path = '../../data';</script>
+<script src='../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='./'>remake</a>/<a href='hash.c.html'>hash.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* hash.c -- hash table maintenance</i></td></tr>
+<tr><th id="2">2</th><td><i>Copyright (C) 1995, 1999, 2002, 2010 Free Software Foundation, Inc.</i></td></tr>
+<tr><th id="3">3</th><td><i>Written by Greg McGary &lt;gkm@gnu.org&gt; &lt;greg@mcgary.org&gt;</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>GNU Make is free software; you can redistribute it and/or modify it under the</i></td></tr>
+<tr><th id="6">6</th><td><i>terms of the GNU General Public License as published by the Free Software</i></td></tr>
+<tr><th id="7">7</th><td><i>Foundation; either version 3 of the License, or (at your option) any later</i></td></tr>
+<tr><th id="8">8</th><td><i>version.</i></td></tr>
+<tr><th id="9">9</th><td><i></i></td></tr>
+<tr><th id="10">10</th><td><i>GNU Make is distributed in the hope that it will be useful, but WITHOUT ANY</i></td></tr>
+<tr><th id="11">11</th><td><i>WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR</i></td></tr>
+<tr><th id="12">12</th><td><i>A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</i></td></tr>
+<tr><th id="13">13</th><td><i></i></td></tr>
+<tr><th id="14">14</th><td><i>You should have received a copy of the GNU General Public License along with</i></td></tr>
+<tr><th id="15">15</th><td><i>this program.  If not, see &lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.  */</i></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><u>#include <a href="makeint.h.html">"makeint.h"</a></u></td></tr>
+<tr><th id="18">18</th><td><u>#include <a href="hash.h.html">"hash.h"</a></u></td></tr>
+<tr><th id="19">19</th><td></td></tr>
+<tr><th id="20">20</th><td><u>#define	<dfn class="macro" id="_M/CALLOC" data-ref="_M/CALLOC">CALLOC</dfn>(t, n) ((t *) <a class="ref" href="makeint.h.html#xcalloc" title='xcalloc' data-ref="xcalloc">xcalloc</a> (sizeof (t) * (n)))</u></td></tr>
+<tr><th id="21">21</th><td><u>#define <dfn class="macro" id="_M/MALLOC" data-ref="_M/MALLOC">MALLOC</dfn>(t, n) ((t *) <a class="ref" href="makeint.h.html#xmalloc" title='xmalloc' data-ref="xmalloc">xmalloc</a> (sizeof (t) * (n)))</u></td></tr>
+<tr><th id="22">22</th><td><u>#define <dfn class="macro" id="_M/REALLOC" data-ref="_M/REALLOC">REALLOC</dfn>(o, t, n) ((t *) xrealloc ((o), sizeof (t) * (n)))</u></td></tr>
+<tr><th id="23">23</th><td><u>#define <dfn class="macro" id="_M/CLONE" data-ref="_M/CLONE">CLONE</dfn>(o, t, n) ((t *) memcpy (MALLOC (t, (n)), (o), sizeof (t) * (n)))</u></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><em>static</em> <em>void</em> <a class="tu decl" href="#hash_rehash" title='hash_rehash' data-type='void hash_rehash(struct hash_table * ht)' data-ref="hash_rehash">hash_rehash</a> <a class="macro" href="../include/x86_64-linux-gnu/sys/cdefs.h.html#82" title="(struct hash_table* ht)" data-ref="_M/__P">__P</a>((<b>struct</b> <a class="type" href="hash.h.html#hash_table" title='hash_table' data-ref="hash_table">hash_table</a>* <dfn class="local col1 decl" id="1ht" title='ht' data-type='struct hash_table *' data-ref="1ht">ht</dfn>));</td></tr>
+<tr><th id="26">26</th><td><em>static</em> <em>unsigned</em> <em>long</em> <a class="tu decl" href="#round_up_2" title='round_up_2' data-type='unsigned long round_up_2(unsigned long rough)' data-ref="round_up_2">round_up_2</a> <a class="macro" href="../include/x86_64-linux-gnu/sys/cdefs.h.html#82" title="(unsigned long rough)" data-ref="_M/__P">__P</a>((<em>unsigned</em> <em>long</em> <dfn class="local col2 decl" id="2rough" title='rough' data-type='unsigned long' data-ref="2rough">rough</dfn>));</td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><i>/* Implement double hashing with open addressing.  The table size is</i></td></tr>
+<tr><th id="29">29</th><td><i>   always a power of two.  The secondary ('increment') hash function</i></td></tr>
+<tr><th id="30">30</th><td><i>   is forced to return an odd-value, in order to be relatively prime</i></td></tr>
+<tr><th id="31">31</th><td><i>   to the table size.  This guarantees that the increment can</i></td></tr>
+<tr><th id="32">32</th><td><i>   potentially hit every slot in the table during collision</i></td></tr>
+<tr><th id="33">33</th><td><i>   resolution.  */</i></td></tr>
+<tr><th id="34">34</th><td></td></tr>
+<tr><th id="35">35</th><td><em>void</em> *<dfn class="decl def" id="hash_deleted_item" title='hash_deleted_item' data-ref="hash_deleted_item">hash_deleted_item</dfn> = &amp;<a class="ref" href="hash.h.html#hash_deleted_item" title='hash_deleted_item' data-ref="hash_deleted_item">hash_deleted_item</a>;</td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td><i>/* Force the table size to be a power of two, possibly rounding up the</i></td></tr>
+<tr><th id="38">38</th><td><i>   given size.  */</i></td></tr>
+<tr><th id="39">39</th><td></td></tr>
+<tr><th id="40">40</th><td><em>void</em></td></tr>
+<tr><th id="41">41</th><td><dfn class="decl def" id="hash_init" title='hash_init' data-ref="hash_init">hash_init</dfn> (<b>struct</b> <a class="type" href="hash.h.html#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col3 decl" id="3ht" title='ht' data-type='struct hash_table *' data-ref="3ht">ht</dfn>, <em>unsigned</em> <em>long</em> <dfn class="local col4 decl" id="4size" title='size' data-type='unsigned long' data-ref="4size">size</dfn>,</td></tr>
+<tr><th id="42">42</th><td>           <a class="typedef" href="hash.h.html#hash_func_t" title='hash_func_t' data-type='unsigned long (*)(const void *)' data-ref="hash_func_t">hash_func_t</a> <dfn class="local col5 decl" id="5hash_1" title='hash_1' data-type='hash_func_t' data-ref="5hash_1">hash_1</dfn>, <a class="typedef" href="hash.h.html#hash_func_t" title='hash_func_t' data-type='unsigned long (*)(const void *)' data-ref="hash_func_t">hash_func_t</a> <dfn class="local col6 decl" id="6hash_2" title='hash_2' data-type='hash_func_t' data-ref="6hash_2">hash_2</dfn>, <a class="typedef" href="hash.h.html#hash_cmp_func_t" title='hash_cmp_func_t' data-type='int (*)(const void *, const void *)' data-ref="hash_cmp_func_t">hash_cmp_func_t</a> <dfn class="local col7 decl" id="7hash_cmp" title='hash_cmp' data-type='hash_cmp_func_t' data-ref="7hash_cmp">hash_cmp</dfn>)</td></tr>
+<tr><th id="43">43</th><td>{</td></tr>
+<tr><th id="44">44</th><td>  <a class="local col3 ref" href="#3ht" title='ht' data-ref="3ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a> = <a class="tu ref" href="#round_up_2" title='round_up_2' data-use='c' data-ref="round_up_2">round_up_2</a> (<a class="local col4 ref" href="#4size" title='size' data-ref="4size">size</a>);</td></tr>
+<tr><th id="45">45</th><td>  <a class="local col3 ref" href="#3ht" title='ht' data-ref="3ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_empty_slots" title='hash_table::ht_empty_slots' data-ref="hash_table::ht_empty_slots">ht_empty_slots</a> = <a class="local col3 ref" href="#3ht" title='ht' data-ref="3ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a>;</td></tr>
+<tr><th id="46">46</th><td>  <a class="local col3 ref" href="#3ht" title='ht' data-ref="3ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_vec" title='hash_table::ht_vec' data-ref="hash_table::ht_vec">ht_vec</a> = (<em>void</em>**) <a class="macro" href="#20" title="((struct token * *) xcalloc (sizeof (struct token *) * (ht-&gt;ht_size)))" data-ref="_M/CALLOC">CALLOC</a> (<b>struct</b> <a class="local col8 type" href="#46" title='token' data-ref="8token">token</a> *, <a class="local col3 ref" href="#3ht" title='ht' data-ref="3ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a>);</td></tr>
+<tr><th id="47">47</th><td>  <b>if</b> (<a class="local col3 ref" href="#3ht" title='ht' data-ref="3ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_vec" title='hash_table::ht_vec' data-ref="hash_table::ht_vec">ht_vec</a> == <var>0</var>)</td></tr>
+<tr><th id="48">48</th><td>    {</td></tr>
+<tr><th id="49">49</th><td>      <a class="ref" href="../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a> (<a class="macro" href="../include/stdio.h.html#174" title="stderr" data-ref="_M/stderr">stderr</a>, <a class="macro" href="makeint.h.html#332" title="dcgettext (((void*)0), &quot;can&apos;t allocate %lu bytes for hash table: memory exhausted&quot;, 5)" data-ref="_M/_">_</a>(<q>"can't allocate %lu bytes for hash table: memory exhausted"</q>),</td></tr>
+<tr><th id="50">50</th><td>	       <a class="local col3 ref" href="#3ht" title='ht' data-ref="3ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a> * (<em>unsigned</em> <em>long</em>) <b>sizeof</b> (<b>struct</b> <a class="local col8 type" href="#46" title='token' data-ref="8token">token</a> *));</td></tr>
+<tr><th id="51">51</th><td>      <a class="ref" href="../include/stdlib.h.html#exit" title='exit' data-ref="exit">exit</a> (<a class="macro" href="makeint.h.html#684" title="1" data-ref="_M/MAKE_TROUBLE">MAKE_TROUBLE</a>);</td></tr>
+<tr><th id="52">52</th><td>    }</td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td>  <a class="local col3 ref" href="#3ht" title='ht' data-ref="3ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_capacity" title='hash_table::ht_capacity' data-ref="hash_table::ht_capacity">ht_capacity</a> = <a class="local col3 ref" href="#3ht" title='ht' data-ref="3ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a> - (<a class="local col3 ref" href="#3ht" title='ht' data-ref="3ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a> / <var>16</var>); <i>/* 93.75% loading factor */</i></td></tr>
+<tr><th id="55">55</th><td>  <a class="local col3 ref" href="#3ht" title='ht' data-ref="3ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_fill" title='hash_table::ht_fill' data-ref="hash_table::ht_fill">ht_fill</a> = <var>0</var>;</td></tr>
+<tr><th id="56">56</th><td>  <a class="local col3 ref" href="#3ht" title='ht' data-ref="3ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_collisions" title='hash_table::ht_collisions' data-ref="hash_table::ht_collisions">ht_collisions</a> = <var>0</var>;</td></tr>
+<tr><th id="57">57</th><td>  <a class="local col3 ref" href="#3ht" title='ht' data-ref="3ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_lookups" title='hash_table::ht_lookups' data-ref="hash_table::ht_lookups">ht_lookups</a> = <var>0</var>;</td></tr>
+<tr><th id="58">58</th><td>  <a class="local col3 ref" href="#3ht" title='ht' data-ref="3ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_rehashes" title='hash_table::ht_rehashes' data-ref="hash_table::ht_rehashes">ht_rehashes</a> = <var>0</var>;</td></tr>
+<tr><th id="59">59</th><td>  <a class="local col3 ref" href="#3ht" title='ht' data-ref="3ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_hash_1" title='hash_table::ht_hash_1' data-ref="hash_table::ht_hash_1">ht_hash_1</a> = <a class="local col5 ref" href="#5hash_1" title='hash_1' data-ref="5hash_1">hash_1</a>;</td></tr>
+<tr><th id="60">60</th><td>  <a class="local col3 ref" href="#3ht" title='ht' data-ref="3ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_hash_2" title='hash_table::ht_hash_2' data-ref="hash_table::ht_hash_2">ht_hash_2</a> = <a class="local col6 ref" href="#6hash_2" title='hash_2' data-ref="6hash_2">hash_2</a>;</td></tr>
+<tr><th id="61">61</th><td>  <a class="local col3 ref" href="#3ht" title='ht' data-ref="3ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_compare" title='hash_table::ht_compare' data-ref="hash_table::ht_compare">ht_compare</a> = <a class="local col7 ref" href="#7hash_cmp" title='hash_cmp' data-ref="7hash_cmp">hash_cmp</a>;</td></tr>
+<tr><th id="62">62</th><td>}</td></tr>
+<tr><th id="63">63</th><td></td></tr>
+<tr><th id="64">64</th><td><i>/* Load an array of items into 'ht'.  */</i></td></tr>
+<tr><th id="65">65</th><td></td></tr>
+<tr><th id="66">66</th><td><em>void</em></td></tr>
+<tr><th id="67">67</th><td><dfn class="decl def" id="hash_load" title='hash_load' data-ref="hash_load">hash_load</dfn> (<b>struct</b> <a class="type" href="hash.h.html#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col9 decl" id="9ht" title='ht' data-type='struct hash_table *' data-ref="9ht">ht</dfn>, <em>void</em> *<dfn class="local col0 decl" id="10item_table" title='item_table' data-type='void *' data-ref="10item_table">item_table</dfn>,</td></tr>
+<tr><th id="68">68</th><td>           <em>unsigned</em> <em>long</em> <dfn class="local col1 decl" id="11cardinality" title='cardinality' data-type='unsigned long' data-ref="11cardinality">cardinality</dfn>, <em>unsigned</em> <em>long</em> <dfn class="local col2 decl" id="12size" title='size' data-type='unsigned long' data-ref="12size">size</dfn>)</td></tr>
+<tr><th id="69">69</th><td>{</td></tr>
+<tr><th id="70">70</th><td>  <em>char</em> *<dfn class="local col3 decl" id="13items" title='items' data-type='char *' data-ref="13items">items</dfn> = (<em>char</em> *) <a class="local col0 ref" href="#10item_table" title='item_table' data-ref="10item_table">item_table</a>;</td></tr>
+<tr><th id="71">71</th><td>  <b>while</b> (<a class="local col1 ref" href="#11cardinality" title='cardinality' data-ref="11cardinality">cardinality</a>--)</td></tr>
+<tr><th id="72">72</th><td>    {</td></tr>
+<tr><th id="73">73</th><td>      <a class="ref" href="#hash_insert" title='hash_insert' data-ref="hash_insert">hash_insert</a> (<a class="local col9 ref" href="#9ht" title='ht' data-ref="9ht">ht</a>, <a class="local col3 ref" href="#13items" title='items' data-ref="13items">items</a>);</td></tr>
+<tr><th id="74">74</th><td>      <a class="local col3 ref" href="#13items" title='items' data-ref="13items">items</a> += <a class="local col2 ref" href="#12size" title='size' data-ref="12size">size</a>;</td></tr>
+<tr><th id="75">75</th><td>    }</td></tr>
+<tr><th id="76">76</th><td>}</td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td><i>/* Returns the address of the table slot matching 'key'.  If 'key' is</i></td></tr>
+<tr><th id="79">79</th><td><i>   not found, return the address of an empty slot suitable for</i></td></tr>
+<tr><th id="80">80</th><td><i>   inserting 'key'.  The caller is responsible for incrementing</i></td></tr>
+<tr><th id="81">81</th><td><i>   ht_fill on insertion.  */</i></td></tr>
+<tr><th id="82">82</th><td></td></tr>
+<tr><th id="83">83</th><td><em>void</em> **</td></tr>
+<tr><th id="84">84</th><td><dfn class="decl def" id="hash_find_slot" title='hash_find_slot' data-ref="hash_find_slot">hash_find_slot</dfn> (<b>struct</b> <a class="type" href="hash.h.html#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col4 decl" id="14ht" title='ht' data-type='struct hash_table *' data-ref="14ht">ht</dfn>, <em>const</em> <em>void</em> *<dfn class="local col5 decl" id="15key" title='key' data-type='const void *' data-ref="15key">key</dfn>)</td></tr>
+<tr><th id="85">85</th><td>{</td></tr>
+<tr><th id="86">86</th><td>  <em>void</em> **<dfn class="local col6 decl" id="16slot" title='slot' data-type='void **' data-ref="16slot">slot</dfn>;</td></tr>
+<tr><th id="87">87</th><td>  <em>void</em> **<dfn class="local col7 decl" id="17deleted_slot" title='deleted_slot' data-type='void **' data-ref="17deleted_slot">deleted_slot</dfn> = <var>0</var>;</td></tr>
+<tr><th id="88">88</th><td>  <em>unsigned</em> <em>int</em> <dfn class="local col8 decl" id="18hash_2" title='hash_2' data-type='unsigned int' data-ref="18hash_2">hash_2</dfn> = <var>0</var>;</td></tr>
+<tr><th id="89">89</th><td>  <em>unsigned</em> <em>int</em> <dfn class="local col9 decl" id="19hash_1" title='hash_1' data-type='unsigned int' data-ref="19hash_1">hash_1</dfn> = (*<a class="local col4 ref" href="#14ht" title='ht' data-ref="14ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_hash_1" title='hash_table::ht_hash_1' data-ref="hash_table::ht_hash_1">ht_hash_1</a>) (<a class="local col5 ref" href="#15key" title='key' data-ref="15key">key</a>);</td></tr>
+<tr><th id="90">90</th><td></td></tr>
+<tr><th id="91">91</th><td>  <a class="local col4 ref" href="#14ht" title='ht' data-ref="14ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_lookups" title='hash_table::ht_lookups' data-ref="hash_table::ht_lookups">ht_lookups</a>++;</td></tr>
+<tr><th id="92">92</th><td>  <b>for</b> (;;)</td></tr>
+<tr><th id="93">93</th><td>    {</td></tr>
+<tr><th id="94">94</th><td>      <a class="local col9 ref" href="#19hash_1" title='hash_1' data-ref="19hash_1">hash_1</a> &amp;= (<a class="local col4 ref" href="#14ht" title='ht' data-ref="14ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a> - <var>1</var>);</td></tr>
+<tr><th id="95">95</th><td>      <a class="local col6 ref" href="#16slot" title='slot' data-ref="16slot">slot</a> = &amp;<a class="local col4 ref" href="#14ht" title='ht' data-ref="14ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_vec" title='hash_table::ht_vec' data-ref="hash_table::ht_vec">ht_vec</a>[<a class="local col9 ref" href="#19hash_1" title='hash_1' data-ref="19hash_1">hash_1</a>];</td></tr>
+<tr><th id="96">96</th><td></td></tr>
+<tr><th id="97">97</th><td>      <b>if</b> (*<a class="local col6 ref" href="#16slot" title='slot' data-ref="16slot">slot</a> == <var>0</var>)</td></tr>
+<tr><th id="98">98</th><td>	<b>return</b> (<a class="local col7 ref" href="#17deleted_slot" title='deleted_slot' data-ref="17deleted_slot">deleted_slot</a> ? <a class="local col7 ref" href="#17deleted_slot" title='deleted_slot' data-ref="17deleted_slot">deleted_slot</a> : <a class="local col6 ref" href="#16slot" title='slot' data-ref="16slot">slot</a>);</td></tr>
+<tr><th id="99">99</th><td>      <b>if</b> (*<a class="local col6 ref" href="#16slot" title='slot' data-ref="16slot">slot</a> == <a class="ref" href="hash.h.html#hash_deleted_item" title='hash_deleted_item' data-ref="hash_deleted_item">hash_deleted_item</a>)</td></tr>
+<tr><th id="100">100</th><td>	{</td></tr>
+<tr><th id="101">101</th><td>	  <b>if</b> (<a class="local col7 ref" href="#17deleted_slot" title='deleted_slot' data-ref="17deleted_slot">deleted_slot</a> == <var>0</var>)</td></tr>
+<tr><th id="102">102</th><td>	    <a class="local col7 ref" href="#17deleted_slot" title='deleted_slot' data-ref="17deleted_slot">deleted_slot</a> = <a class="local col6 ref" href="#16slot" title='slot' data-ref="16slot">slot</a>;</td></tr>
+<tr><th id="103">103</th><td>	}</td></tr>
+<tr><th id="104">104</th><td>      <b>else</b></td></tr>
+<tr><th id="105">105</th><td>	{</td></tr>
+<tr><th id="106">106</th><td>	  <b>if</b> (<a class="local col5 ref" href="#15key" title='key' data-ref="15key">key</a> == *<a class="local col6 ref" href="#16slot" title='slot' data-ref="16slot">slot</a>)</td></tr>
+<tr><th id="107">107</th><td>	    <b>return</b> <a class="local col6 ref" href="#16slot" title='slot' data-ref="16slot">slot</a>;</td></tr>
+<tr><th id="108">108</th><td>	  <b>if</b> ((*<a class="local col4 ref" href="#14ht" title='ht' data-ref="14ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_compare" title='hash_table::ht_compare' data-ref="hash_table::ht_compare">ht_compare</a>) (<a class="local col5 ref" href="#15key" title='key' data-ref="15key">key</a>, *<a class="local col6 ref" href="#16slot" title='slot' data-ref="16slot">slot</a>) == <var>0</var>)</td></tr>
+<tr><th id="109">109</th><td>	    <b>return</b> <a class="local col6 ref" href="#16slot" title='slot' data-ref="16slot">slot</a>;</td></tr>
+<tr><th id="110">110</th><td>	  <a class="local col4 ref" href="#14ht" title='ht' data-ref="14ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_collisions" title='hash_table::ht_collisions' data-ref="hash_table::ht_collisions">ht_collisions</a>++;</td></tr>
+<tr><th id="111">111</th><td>	}</td></tr>
+<tr><th id="112">112</th><td>      <b>if</b> (!<a class="local col8 ref" href="#18hash_2" title='hash_2' data-ref="18hash_2">hash_2</a>)</td></tr>
+<tr><th id="113">113</th><td>	  <a class="local col8 ref" href="#18hash_2" title='hash_2' data-ref="18hash_2">hash_2</a> = (*<a class="local col4 ref" href="#14ht" title='ht' data-ref="14ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_hash_2" title='hash_table::ht_hash_2' data-ref="hash_table::ht_hash_2">ht_hash_2</a>) (<a class="local col5 ref" href="#15key" title='key' data-ref="15key">key</a>) | <var>1</var>;</td></tr>
+<tr><th id="114">114</th><td>      <a class="local col9 ref" href="#19hash_1" title='hash_1' data-ref="19hash_1">hash_1</a> += <a class="local col8 ref" href="#18hash_2" title='hash_2' data-ref="18hash_2">hash_2</a>;</td></tr>
+<tr><th id="115">115</th><td>    }</td></tr>
+<tr><th id="116">116</th><td>}</td></tr>
+<tr><th id="117">117</th><td></td></tr>
+<tr><th id="118">118</th><td><em>void</em> *</td></tr>
+<tr><th id="119">119</th><td><dfn class="decl def" id="hash_find_item" title='hash_find_item' data-ref="hash_find_item">hash_find_item</dfn> (<b>struct</b> <a class="type" href="hash.h.html#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col0 decl" id="20ht" title='ht' data-type='struct hash_table *' data-ref="20ht">ht</dfn>, <em>const</em> <em>void</em> *<dfn class="local col1 decl" id="21key" title='key' data-type='const void *' data-ref="21key">key</dfn>)</td></tr>
+<tr><th id="120">120</th><td>{</td></tr>
+<tr><th id="121">121</th><td>  <em>void</em> **<dfn class="local col2 decl" id="22slot" title='slot' data-type='void **' data-ref="22slot">slot</dfn> = <a class="ref" href="#hash_find_slot" title='hash_find_slot' data-ref="hash_find_slot">hash_find_slot</a> (<a class="local col0 ref" href="#20ht" title='ht' data-ref="20ht">ht</a>, <a class="local col1 ref" href="#21key" title='key' data-ref="21key">key</a>);</td></tr>
+<tr><th id="122">122</th><td>  <b>return</b> ((<a class="macro" href="hash.h.html#77" title="((*slot) == 0 || (void *) (*slot) == hash_deleted_item)" data-ref="_M/HASH_VACANT">HASH_VACANT</a> (*<a class="local col2 ref" href="#22slot" title='slot' data-ref="22slot">slot</a>)) ? <var>0</var> : *<a class="local col2 ref" href="#22slot" title='slot' data-ref="22slot">slot</a>);</td></tr>
+<tr><th id="123">123</th><td>}</td></tr>
+<tr><th id="124">124</th><td></td></tr>
+<tr><th id="125">125</th><td><em>void</em> *</td></tr>
+<tr><th id="126">126</th><td><dfn class="decl def" id="hash_insert" title='hash_insert' data-ref="hash_insert">hash_insert</dfn> (<b>struct</b> <a class="type" href="hash.h.html#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col3 decl" id="23ht" title='ht' data-type='struct hash_table *' data-ref="23ht">ht</dfn>, <em>const</em> <em>void</em> *<dfn class="local col4 decl" id="24item" title='item' data-type='const void *' data-ref="24item">item</dfn>)</td></tr>
+<tr><th id="127">127</th><td>{</td></tr>
+<tr><th id="128">128</th><td>  <em>void</em> **<dfn class="local col5 decl" id="25slot" title='slot' data-type='void **' data-ref="25slot">slot</dfn> = <a class="ref" href="#hash_find_slot" title='hash_find_slot' data-ref="hash_find_slot">hash_find_slot</a> (<a class="local col3 ref" href="#23ht" title='ht' data-ref="23ht">ht</a>, <a class="local col4 ref" href="#24item" title='item' data-ref="24item">item</a>);</td></tr>
+<tr><th id="129">129</th><td>  <em>const</em> <em>void</em> *<dfn class="local col6 decl" id="26old_item" title='old_item' data-type='const void *' data-ref="26old_item">old_item</dfn> = *<a class="local col5 ref" href="#25slot" title='slot' data-ref="25slot">slot</a>;</td></tr>
+<tr><th id="130">130</th><td>  <a class="ref" href="#hash_insert_at" title='hash_insert_at' data-ref="hash_insert_at">hash_insert_at</a> (<a class="local col3 ref" href="#23ht" title='ht' data-ref="23ht">ht</a>, <a class="local col4 ref" href="#24item" title='item' data-ref="24item">item</a>, <a class="local col5 ref" href="#25slot" title='slot' data-ref="25slot">slot</a>);</td></tr>
+<tr><th id="131">131</th><td>  <b>return</b> (<em>void</em> *)((<a class="macro" href="hash.h.html#77" title="((old_item) == 0 || (void *) (old_item) == hash_deleted_item)" data-ref="_M/HASH_VACANT">HASH_VACANT</a> (<a class="local col6 ref" href="#26old_item" title='old_item' data-ref="26old_item">old_item</a>)) ? <var>0</var> : <a class="local col6 ref" href="#26old_item" title='old_item' data-ref="26old_item">old_item</a>);</td></tr>
+<tr><th id="132">132</th><td>}</td></tr>
+<tr><th id="133">133</th><td></td></tr>
+<tr><th id="134">134</th><td><em>void</em> *</td></tr>
+<tr><th id="135">135</th><td><dfn class="decl def" id="hash_insert_at" title='hash_insert_at' data-ref="hash_insert_at">hash_insert_at</dfn> (<b>struct</b> <a class="type" href="hash.h.html#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col7 decl" id="27ht" title='ht' data-type='struct hash_table *' data-ref="27ht">ht</dfn>, <em>const</em> <em>void</em> *<dfn class="local col8 decl" id="28item" title='item' data-type='const void *' data-ref="28item">item</dfn>, <em>const</em> <em>void</em> *<dfn class="local col9 decl" id="29slot" title='slot' data-type='const void *' data-ref="29slot">slot</dfn>)</td></tr>
+<tr><th id="136">136</th><td>{</td></tr>
+<tr><th id="137">137</th><td>  <em>const</em> <em>void</em> *<dfn class="local col0 decl" id="30old_item" title='old_item' data-type='const void *' data-ref="30old_item">old_item</dfn> = *(<em>void</em> **) <a class="local col9 ref" href="#29slot" title='slot' data-ref="29slot">slot</a>;</td></tr>
+<tr><th id="138">138</th><td>  <b>if</b> (<a class="macro" href="hash.h.html#77" title="((old_item) == 0 || (void *) (old_item) == hash_deleted_item)" data-ref="_M/HASH_VACANT">HASH_VACANT</a> (<a class="local col0 ref" href="#30old_item" title='old_item' data-ref="30old_item">old_item</a>))</td></tr>
+<tr><th id="139">139</th><td>    {</td></tr>
+<tr><th id="140">140</th><td>      <a class="local col7 ref" href="#27ht" title='ht' data-ref="27ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_fill" title='hash_table::ht_fill' data-ref="hash_table::ht_fill">ht_fill</a>++;</td></tr>
+<tr><th id="141">141</th><td>      <b>if</b> (<a class="local col0 ref" href="#30old_item" title='old_item' data-ref="30old_item">old_item</a> == <var>0</var>)</td></tr>
+<tr><th id="142">142</th><td>	<a class="local col7 ref" href="#27ht" title='ht' data-ref="27ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_empty_slots" title='hash_table::ht_empty_slots' data-ref="hash_table::ht_empty_slots">ht_empty_slots</a>--;</td></tr>
+<tr><th id="143">143</th><td>      <a class="local col0 ref" href="#30old_item" title='old_item' data-ref="30old_item">old_item</a> = <a class="local col8 ref" href="#28item" title='item' data-ref="28item">item</a>;</td></tr>
+<tr><th id="144">144</th><td>    }</td></tr>
+<tr><th id="145">145</th><td>  *(<em>void</em> <em>const</em> **) <a class="local col9 ref" href="#29slot" title='slot' data-ref="29slot">slot</a> = <a class="local col8 ref" href="#28item" title='item' data-ref="28item">item</a>;</td></tr>
+<tr><th id="146">146</th><td>  <b>if</b> (<a class="local col7 ref" href="#27ht" title='ht' data-ref="27ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_empty_slots" title='hash_table::ht_empty_slots' data-ref="hash_table::ht_empty_slots">ht_empty_slots</a> &lt; <a class="local col7 ref" href="#27ht" title='ht' data-ref="27ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a> - <a class="local col7 ref" href="#27ht" title='ht' data-ref="27ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_capacity" title='hash_table::ht_capacity' data-ref="hash_table::ht_capacity">ht_capacity</a>)</td></tr>
+<tr><th id="147">147</th><td>    {</td></tr>
+<tr><th id="148">148</th><td>      <a class="tu ref" href="#hash_rehash" title='hash_rehash' data-use='c' data-ref="hash_rehash">hash_rehash</a> (<a class="local col7 ref" href="#27ht" title='ht' data-ref="27ht">ht</a>);</td></tr>
+<tr><th id="149">149</th><td>      <b>return</b> (<em>void</em> *) <a class="ref" href="#hash_find_slot" title='hash_find_slot' data-ref="hash_find_slot">hash_find_slot</a> (<a class="local col7 ref" href="#27ht" title='ht' data-ref="27ht">ht</a>, <a class="local col8 ref" href="#28item" title='item' data-ref="28item">item</a>);</td></tr>
+<tr><th id="150">150</th><td>    }</td></tr>
+<tr><th id="151">151</th><td>  <b>else</b></td></tr>
+<tr><th id="152">152</th><td>    <b>return</b> (<em>void</em> *) <a class="local col9 ref" href="#29slot" title='slot' data-ref="29slot">slot</a>;</td></tr>
+<tr><th id="153">153</th><td>}</td></tr>
+<tr><th id="154">154</th><td></td></tr>
+<tr><th id="155">155</th><td><em>void</em> *</td></tr>
+<tr><th id="156">156</th><td><dfn class="decl def" id="hash_delete" title='hash_delete' data-ref="hash_delete">hash_delete</dfn> (<b>struct</b> <a class="type" href="hash.h.html#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col1 decl" id="31ht" title='ht' data-type='struct hash_table *' data-ref="31ht">ht</dfn>, <em>const</em> <em>void</em> *<dfn class="local col2 decl" id="32item" title='item' data-type='const void *' data-ref="32item">item</dfn>)</td></tr>
+<tr><th id="157">157</th><td>{</td></tr>
+<tr><th id="158">158</th><td>  <em>void</em> **<dfn class="local col3 decl" id="33slot" title='slot' data-type='void **' data-ref="33slot">slot</dfn> = <a class="ref" href="#hash_find_slot" title='hash_find_slot' data-ref="hash_find_slot">hash_find_slot</a> (<a class="local col1 ref" href="#31ht" title='ht' data-ref="31ht">ht</a>, <a class="local col2 ref" href="#32item" title='item' data-ref="32item">item</a>);</td></tr>
+<tr><th id="159">159</th><td>  <b>return</b> <a class="ref" href="#hash_delete_at" title='hash_delete_at' data-ref="hash_delete_at">hash_delete_at</a> (<a class="local col1 ref" href="#31ht" title='ht' data-ref="31ht">ht</a>, <a class="local col3 ref" href="#33slot" title='slot' data-ref="33slot">slot</a>);</td></tr>
+<tr><th id="160">160</th><td>}</td></tr>
+<tr><th id="161">161</th><td></td></tr>
+<tr><th id="162">162</th><td><em>void</em> *</td></tr>
+<tr><th id="163">163</th><td><dfn class="decl def" id="hash_delete_at" title='hash_delete_at' data-ref="hash_delete_at">hash_delete_at</dfn> (<b>struct</b> <a class="type" href="hash.h.html#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col4 decl" id="34ht" title='ht' data-type='struct hash_table *' data-ref="34ht">ht</dfn>, <em>const</em> <em>void</em> *<dfn class="local col5 decl" id="35slot" title='slot' data-type='const void *' data-ref="35slot">slot</dfn>)</td></tr>
+<tr><th id="164">164</th><td>{</td></tr>
+<tr><th id="165">165</th><td>  <em>void</em> *<dfn class="local col6 decl" id="36item" title='item' data-type='void *' data-ref="36item">item</dfn> = *(<em>void</em> **) <a class="local col5 ref" href="#35slot" title='slot' data-ref="35slot">slot</a>;</td></tr>
+<tr><th id="166">166</th><td>  <b>if</b> (!<a class="macro" href="hash.h.html#77" title="((item) == 0 || (void *) (item) == hash_deleted_item)" data-ref="_M/HASH_VACANT">HASH_VACANT</a> (<a class="local col6 ref" href="#36item" title='item' data-ref="36item">item</a>))</td></tr>
+<tr><th id="167">167</th><td>    {</td></tr>
+<tr><th id="168">168</th><td>      *(<em>void</em> <em>const</em> **) <a class="local col5 ref" href="#35slot" title='slot' data-ref="35slot">slot</a> = <a class="ref" href="hash.h.html#hash_deleted_item" title='hash_deleted_item' data-ref="hash_deleted_item">hash_deleted_item</a>;</td></tr>
+<tr><th id="169">169</th><td>      <a class="local col4 ref" href="#34ht" title='ht' data-ref="34ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_fill" title='hash_table::ht_fill' data-ref="hash_table::ht_fill">ht_fill</a>--;</td></tr>
+<tr><th id="170">170</th><td>      <b>return</b> <a class="local col6 ref" href="#36item" title='item' data-ref="36item">item</a>;</td></tr>
+<tr><th id="171">171</th><td>    }</td></tr>
+<tr><th id="172">172</th><td>  <b>else</b></td></tr>
+<tr><th id="173">173</th><td>    <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="174">174</th><td>}</td></tr>
+<tr><th id="175">175</th><td></td></tr>
+<tr><th id="176">176</th><td><em>void</em></td></tr>
+<tr><th id="177">177</th><td><dfn class="decl def" id="hash_free_items" title='hash_free_items' data-ref="hash_free_items">hash_free_items</dfn> (<b>struct</b> <a class="type" href="hash.h.html#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col7 decl" id="37ht" title='ht' data-type='struct hash_table *' data-ref="37ht">ht</dfn>)</td></tr>
+<tr><th id="178">178</th><td>{</td></tr>
+<tr><th id="179">179</th><td>  <em>void</em> **<dfn class="local col8 decl" id="38vec" title='vec' data-type='void **' data-ref="38vec">vec</dfn> = <a class="local col7 ref" href="#37ht" title='ht' data-ref="37ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_vec" title='hash_table::ht_vec' data-ref="hash_table::ht_vec">ht_vec</a>;</td></tr>
+<tr><th id="180">180</th><td>  <em>void</em> **<dfn class="local col9 decl" id="39end" title='end' data-type='void **' data-ref="39end">end</dfn> = &amp;<a class="local col8 ref" href="#38vec" title='vec' data-ref="38vec">vec</a>[<a class="local col7 ref" href="#37ht" title='ht' data-ref="37ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a>];</td></tr>
+<tr><th id="181">181</th><td>  <b>for</b> (; <a class="local col8 ref" href="#38vec" title='vec' data-ref="38vec">vec</a> &lt; <a class="local col9 ref" href="#39end" title='end' data-ref="39end">end</a>; <a class="local col8 ref" href="#38vec" title='vec' data-ref="38vec">vec</a>++)</td></tr>
+<tr><th id="182">182</th><td>    {</td></tr>
+<tr><th id="183">183</th><td>      <em>void</em> *<dfn class="local col0 decl" id="40item" title='item' data-type='void *' data-ref="40item">item</dfn> = *<a class="local col8 ref" href="#38vec" title='vec' data-ref="38vec">vec</a>;</td></tr>
+<tr><th id="184">184</th><td>      <b>if</b> (!<a class="macro" href="hash.h.html#77" title="((item) == 0 || (void *) (item) == hash_deleted_item)" data-ref="_M/HASH_VACANT">HASH_VACANT</a> (<a class="local col0 ref" href="#40item" title='item' data-ref="40item">item</a>))</td></tr>
+<tr><th id="185">185</th><td>	<a class="ref" href="../include/stdlib.h.html#free" title='free' data-ref="free">free</a> (<a class="local col0 ref" href="#40item" title='item' data-ref="40item">item</a>);</td></tr>
+<tr><th id="186">186</th><td>      *<a class="local col8 ref" href="#38vec" title='vec' data-ref="38vec">vec</a> = <var>0</var>;</td></tr>
+<tr><th id="187">187</th><td>    }</td></tr>
+<tr><th id="188">188</th><td>  <a class="local col7 ref" href="#37ht" title='ht' data-ref="37ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_fill" title='hash_table::ht_fill' data-ref="hash_table::ht_fill">ht_fill</a> = <var>0</var>;</td></tr>
+<tr><th id="189">189</th><td>  <a class="local col7 ref" href="#37ht" title='ht' data-ref="37ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_empty_slots" title='hash_table::ht_empty_slots' data-ref="hash_table::ht_empty_slots">ht_empty_slots</a> = <a class="local col7 ref" href="#37ht" title='ht' data-ref="37ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a>;</td></tr>
+<tr><th id="190">190</th><td>}</td></tr>
+<tr><th id="191">191</th><td></td></tr>
+<tr><th id="192">192</th><td><em>void</em></td></tr>
+<tr><th id="193">193</th><td><dfn class="decl def" id="hash_delete_items" title='hash_delete_items' data-ref="hash_delete_items">hash_delete_items</dfn> (<b>struct</b> <a class="type" href="hash.h.html#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col1 decl" id="41ht" title='ht' data-type='struct hash_table *' data-ref="41ht">ht</dfn>)</td></tr>
+<tr><th id="194">194</th><td>{</td></tr>
+<tr><th id="195">195</th><td>  <em>void</em> **<dfn class="local col2 decl" id="42vec" title='vec' data-type='void **' data-ref="42vec">vec</dfn> = <a class="local col1 ref" href="#41ht" title='ht' data-ref="41ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_vec" title='hash_table::ht_vec' data-ref="hash_table::ht_vec">ht_vec</a>;</td></tr>
+<tr><th id="196">196</th><td>  <em>void</em> **<dfn class="local col3 decl" id="43end" title='end' data-type='void **' data-ref="43end">end</dfn> = &amp;<a class="local col2 ref" href="#42vec" title='vec' data-ref="42vec">vec</a>[<a class="local col1 ref" href="#41ht" title='ht' data-ref="41ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a>];</td></tr>
+<tr><th id="197">197</th><td>  <b>for</b> (; <a class="local col2 ref" href="#42vec" title='vec' data-ref="42vec">vec</a> &lt; <a class="local col3 ref" href="#43end" title='end' data-ref="43end">end</a>; <a class="local col2 ref" href="#42vec" title='vec' data-ref="42vec">vec</a>++)</td></tr>
+<tr><th id="198">198</th><td>    *<a class="local col2 ref" href="#42vec" title='vec' data-ref="42vec">vec</a> = <var>0</var>;</td></tr>
+<tr><th id="199">199</th><td>  <a class="local col1 ref" href="#41ht" title='ht' data-ref="41ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_fill" title='hash_table::ht_fill' data-ref="hash_table::ht_fill">ht_fill</a> = <var>0</var>;</td></tr>
+<tr><th id="200">200</th><td>  <a class="local col1 ref" href="#41ht" title='ht' data-ref="41ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_collisions" title='hash_table::ht_collisions' data-ref="hash_table::ht_collisions">ht_collisions</a> = <var>0</var>;</td></tr>
+<tr><th id="201">201</th><td>  <a class="local col1 ref" href="#41ht" title='ht' data-ref="41ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_lookups" title='hash_table::ht_lookups' data-ref="hash_table::ht_lookups">ht_lookups</a> = <var>0</var>;</td></tr>
+<tr><th id="202">202</th><td>  <a class="local col1 ref" href="#41ht" title='ht' data-ref="41ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_rehashes" title='hash_table::ht_rehashes' data-ref="hash_table::ht_rehashes">ht_rehashes</a> = <var>0</var>;</td></tr>
+<tr><th id="203">203</th><td>  <a class="local col1 ref" href="#41ht" title='ht' data-ref="41ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_empty_slots" title='hash_table::ht_empty_slots' data-ref="hash_table::ht_empty_slots">ht_empty_slots</a> = <a class="local col1 ref" href="#41ht" title='ht' data-ref="41ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a>;</td></tr>
+<tr><th id="204">204</th><td>}</td></tr>
+<tr><th id="205">205</th><td></td></tr>
+<tr><th id="206">206</th><td><em>void</em></td></tr>
+<tr><th id="207">207</th><td><dfn class="decl def" id="hash_free" title='hash_free' data-ref="hash_free">hash_free</dfn> (<b>struct</b> <a class="type" href="hash.h.html#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col4 decl" id="44ht" title='ht' data-type='struct hash_table *' data-ref="44ht">ht</dfn>, <em>int</em> <dfn class="local col5 decl" id="45free_items" title='free_items' data-type='int' data-ref="45free_items">free_items</dfn>)</td></tr>
+<tr><th id="208">208</th><td>{</td></tr>
+<tr><th id="209">209</th><td>  <b>if</b> (<a class="local col5 ref" href="#45free_items" title='free_items' data-ref="45free_items">free_items</a>)</td></tr>
+<tr><th id="210">210</th><td>    <a class="ref" href="#hash_free_items" title='hash_free_items' data-ref="hash_free_items">hash_free_items</a> (<a class="local col4 ref" href="#44ht" title='ht' data-ref="44ht">ht</a>);</td></tr>
+<tr><th id="211">211</th><td>  <b>else</b></td></tr>
+<tr><th id="212">212</th><td>    {</td></tr>
+<tr><th id="213">213</th><td>      <a class="local col4 ref" href="#44ht" title='ht' data-ref="44ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_fill" title='hash_table::ht_fill' data-ref="hash_table::ht_fill">ht_fill</a> = <var>0</var>;</td></tr>
+<tr><th id="214">214</th><td>      <a class="local col4 ref" href="#44ht" title='ht' data-ref="44ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_empty_slots" title='hash_table::ht_empty_slots' data-ref="hash_table::ht_empty_slots">ht_empty_slots</a> = <a class="local col4 ref" href="#44ht" title='ht' data-ref="44ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a>;</td></tr>
+<tr><th id="215">215</th><td>    }</td></tr>
+<tr><th id="216">216</th><td>  <a class="ref" href="../include/stdlib.h.html#free" title='free' data-ref="free">free</a> (<a class="local col4 ref" href="#44ht" title='ht' data-ref="44ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_vec" title='hash_table::ht_vec' data-ref="hash_table::ht_vec">ht_vec</a>);</td></tr>
+<tr><th id="217">217</th><td>  <a class="local col4 ref" href="#44ht" title='ht' data-ref="44ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_vec" title='hash_table::ht_vec' data-ref="hash_table::ht_vec">ht_vec</a> = <var>0</var>;</td></tr>
+<tr><th id="218">218</th><td>  <a class="local col4 ref" href="#44ht" title='ht' data-ref="44ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_capacity" title='hash_table::ht_capacity' data-ref="hash_table::ht_capacity">ht_capacity</a> = <var>0</var>;</td></tr>
+<tr><th id="219">219</th><td>}</td></tr>
+<tr><th id="220">220</th><td></td></tr>
+<tr><th id="221">221</th><td><em>void</em></td></tr>
+<tr><th id="222">222</th><td><dfn class="decl def" id="hash_map" title='hash_map' data-ref="hash_map">hash_map</dfn> (<b>struct</b> <a class="type" href="hash.h.html#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col6 decl" id="46ht" title='ht' data-type='struct hash_table *' data-ref="46ht">ht</dfn>, <a class="typedef" href="hash.h.html#hash_map_func_t" title='hash_map_func_t' data-type='void (*)(const void *)' data-ref="hash_map_func_t">hash_map_func_t</a> <dfn class="local col7 decl" id="47map" title='map' data-type='hash_map_func_t' data-ref="47map">map</dfn>)</td></tr>
+<tr><th id="223">223</th><td>{</td></tr>
+<tr><th id="224">224</th><td>  <em>void</em> **<dfn class="local col8 decl" id="48slot" title='slot' data-type='void **' data-ref="48slot">slot</dfn>;</td></tr>
+<tr><th id="225">225</th><td>  <em>void</em> **<dfn class="local col9 decl" id="49end" title='end' data-type='void **' data-ref="49end">end</dfn> = &amp;<a class="local col6 ref" href="#46ht" title='ht' data-ref="46ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_vec" title='hash_table::ht_vec' data-ref="hash_table::ht_vec">ht_vec</a>[<a class="local col6 ref" href="#46ht" title='ht' data-ref="46ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a>];</td></tr>
+<tr><th id="226">226</th><td></td></tr>
+<tr><th id="227">227</th><td>  <b>for</b> (<a class="local col8 ref" href="#48slot" title='slot' data-ref="48slot">slot</a> = <a class="local col6 ref" href="#46ht" title='ht' data-ref="46ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_vec" title='hash_table::ht_vec' data-ref="hash_table::ht_vec">ht_vec</a>; <a class="local col8 ref" href="#48slot" title='slot' data-ref="48slot">slot</a> &lt; <a class="local col9 ref" href="#49end" title='end' data-ref="49end">end</a>; <a class="local col8 ref" href="#48slot" title='slot' data-ref="48slot">slot</a>++)</td></tr>
+<tr><th id="228">228</th><td>    {</td></tr>
+<tr><th id="229">229</th><td>      <b>if</b> (!<a class="macro" href="hash.h.html#77" title="((*slot) == 0 || (void *) (*slot) == hash_deleted_item)" data-ref="_M/HASH_VACANT">HASH_VACANT</a> (*<a class="local col8 ref" href="#48slot" title='slot' data-ref="48slot">slot</a>))</td></tr>
+<tr><th id="230">230</th><td>	(*<a class="local col7 ref" href="#47map" title='map' data-ref="47map">map</a>) (*<a class="local col8 ref" href="#48slot" title='slot' data-ref="48slot">slot</a>);</td></tr>
+<tr><th id="231">231</th><td>    }</td></tr>
+<tr><th id="232">232</th><td>}</td></tr>
+<tr><th id="233">233</th><td></td></tr>
+<tr><th id="234">234</th><td><em>void</em></td></tr>
+<tr><th id="235">235</th><td><dfn class="decl def" id="hash_map_arg" title='hash_map_arg' data-ref="hash_map_arg">hash_map_arg</dfn> (<b>struct</b> <a class="type" href="hash.h.html#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col0 decl" id="50ht" title='ht' data-type='struct hash_table *' data-ref="50ht">ht</dfn>, <a class="typedef" href="hash.h.html#hash_map_arg_func_t" title='hash_map_arg_func_t' data-type='void (*)(const void *, void *)' data-ref="hash_map_arg_func_t">hash_map_arg_func_t</a> <dfn class="local col1 decl" id="51map" title='map' data-type='hash_map_arg_func_t' data-ref="51map">map</dfn>, <em>void</em> *<dfn class="local col2 decl" id="52arg" title='arg' data-type='void *' data-ref="52arg">arg</dfn>)</td></tr>
+<tr><th id="236">236</th><td>{</td></tr>
+<tr><th id="237">237</th><td>  <em>void</em> **<dfn class="local col3 decl" id="53slot" title='slot' data-type='void **' data-ref="53slot">slot</dfn>;</td></tr>
+<tr><th id="238">238</th><td>  <em>void</em> **<dfn class="local col4 decl" id="54end" title='end' data-type='void **' data-ref="54end">end</dfn> = &amp;<a class="local col0 ref" href="#50ht" title='ht' data-ref="50ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_vec" title='hash_table::ht_vec' data-ref="hash_table::ht_vec">ht_vec</a>[<a class="local col0 ref" href="#50ht" title='ht' data-ref="50ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a>];</td></tr>
+<tr><th id="239">239</th><td></td></tr>
+<tr><th id="240">240</th><td>  <b>for</b> (<a class="local col3 ref" href="#53slot" title='slot' data-ref="53slot">slot</a> = <a class="local col0 ref" href="#50ht" title='ht' data-ref="50ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_vec" title='hash_table::ht_vec' data-ref="hash_table::ht_vec">ht_vec</a>; <a class="local col3 ref" href="#53slot" title='slot' data-ref="53slot">slot</a> &lt; <a class="local col4 ref" href="#54end" title='end' data-ref="54end">end</a>; <a class="local col3 ref" href="#53slot" title='slot' data-ref="53slot">slot</a>++)</td></tr>
+<tr><th id="241">241</th><td>    {</td></tr>
+<tr><th id="242">242</th><td>      <b>if</b> (!<a class="macro" href="hash.h.html#77" title="((*slot) == 0 || (void *) (*slot) == hash_deleted_item)" data-ref="_M/HASH_VACANT">HASH_VACANT</a> (*<a class="local col3 ref" href="#53slot" title='slot' data-ref="53slot">slot</a>))</td></tr>
+<tr><th id="243">243</th><td>	(*<a class="local col1 ref" href="#51map" title='map' data-ref="51map">map</a>) (*<a class="local col3 ref" href="#53slot" title='slot' data-ref="53slot">slot</a>, <a class="local col2 ref" href="#52arg" title='arg' data-ref="52arg">arg</a>);</td></tr>
+<tr><th id="244">244</th><td>    }</td></tr>
+<tr><th id="245">245</th><td>}</td></tr>
+<tr><th id="246">246</th><td></td></tr>
+<tr><th id="247">247</th><td><i  data-doc="hash_rehash">/* Double the size of the hash table in the event of overflow... */</i></td></tr>
+<tr><th id="248">248</th><td></td></tr>
+<tr><th id="249">249</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="250">250</th><td><dfn class="tu decl def" id="hash_rehash" title='hash_rehash' data-type='void hash_rehash(struct hash_table * ht)' data-ref="hash_rehash">hash_rehash</dfn> (<b>struct</b> <a class="type" href="hash.h.html#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col5 decl" id="55ht" title='ht' data-type='struct hash_table *' data-ref="55ht">ht</dfn>)</td></tr>
+<tr><th id="251">251</th><td>{</td></tr>
+<tr><th id="252">252</th><td>  <em>unsigned</em> <em>long</em> <dfn class="local col6 decl" id="56old_ht_size" title='old_ht_size' data-type='unsigned long' data-ref="56old_ht_size">old_ht_size</dfn> = <a class="local col5 ref" href="#55ht" title='ht' data-ref="55ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a>;</td></tr>
+<tr><th id="253">253</th><td>  <em>void</em> **<dfn class="local col7 decl" id="57old_vec" title='old_vec' data-type='void **' data-ref="57old_vec">old_vec</dfn> = <a class="local col5 ref" href="#55ht" title='ht' data-ref="55ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_vec" title='hash_table::ht_vec' data-ref="hash_table::ht_vec">ht_vec</a>;</td></tr>
+<tr><th id="254">254</th><td>  <em>void</em> **<dfn class="local col8 decl" id="58ovp" title='ovp' data-type='void **' data-ref="58ovp">ovp</dfn>;</td></tr>
+<tr><th id="255">255</th><td></td></tr>
+<tr><th id="256">256</th><td>  <b>if</b> (<a class="local col5 ref" href="#55ht" title='ht' data-ref="55ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_fill" title='hash_table::ht_fill' data-ref="hash_table::ht_fill">ht_fill</a> &gt;= <a class="local col5 ref" href="#55ht" title='ht' data-ref="55ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_capacity" title='hash_table::ht_capacity' data-ref="hash_table::ht_capacity">ht_capacity</a>)</td></tr>
+<tr><th id="257">257</th><td>    {</td></tr>
+<tr><th id="258">258</th><td>      <a class="local col5 ref" href="#55ht" title='ht' data-ref="55ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a> *= <var>2</var>;</td></tr>
+<tr><th id="259">259</th><td>      <a class="local col5 ref" href="#55ht" title='ht' data-ref="55ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_capacity" title='hash_table::ht_capacity' data-ref="hash_table::ht_capacity">ht_capacity</a> = <a class="local col5 ref" href="#55ht" title='ht' data-ref="55ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a> - (<a class="local col5 ref" href="#55ht" title='ht' data-ref="55ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a> &gt;&gt; <var>4</var>);</td></tr>
+<tr><th id="260">260</th><td>    }</td></tr>
+<tr><th id="261">261</th><td>  <a class="local col5 ref" href="#55ht" title='ht' data-ref="55ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_rehashes" title='hash_table::ht_rehashes' data-ref="hash_table::ht_rehashes">ht_rehashes</a>++;</td></tr>
+<tr><th id="262">262</th><td>  <a class="local col5 ref" href="#55ht" title='ht' data-ref="55ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_vec" title='hash_table::ht_vec' data-ref="hash_table::ht_vec">ht_vec</a> = (<em>void</em> **) <a class="macro" href="#20" title="((struct token * *) xcalloc (sizeof (struct token *) * (ht-&gt;ht_size)))" data-ref="_M/CALLOC">CALLOC</a> (<b>struct</b> <a class="local col9 type" href="#262" title='token' data-ref="59token">token</a> *, <a class="local col5 ref" href="#55ht" title='ht' data-ref="55ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a>);</td></tr>
+<tr><th id="263">263</th><td></td></tr>
+<tr><th id="264">264</th><td>  <b>for</b> (<a class="local col8 ref" href="#58ovp" title='ovp' data-ref="58ovp">ovp</a> = <a class="local col7 ref" href="#57old_vec" title='old_vec' data-ref="57old_vec">old_vec</a>; <a class="local col8 ref" href="#58ovp" title='ovp' data-ref="58ovp">ovp</a> &lt; &amp;<a class="local col7 ref" href="#57old_vec" title='old_vec' data-ref="57old_vec">old_vec</a>[<a class="local col6 ref" href="#56old_ht_size" title='old_ht_size' data-ref="56old_ht_size">old_ht_size</a>]; <a class="local col8 ref" href="#58ovp" title='ovp' data-ref="58ovp">ovp</a>++)</td></tr>
+<tr><th id="265">265</th><td>    {</td></tr>
+<tr><th id="266">266</th><td>      <b>if</b> (! <a class="macro" href="hash.h.html#77" title="((*ovp) == 0 || (void *) (*ovp) == hash_deleted_item)" data-ref="_M/HASH_VACANT">HASH_VACANT</a> (*<a class="local col8 ref" href="#58ovp" title='ovp' data-ref="58ovp">ovp</a>))</td></tr>
+<tr><th id="267">267</th><td>	{</td></tr>
+<tr><th id="268">268</th><td>	  <em>void</em> **<dfn class="local col0 decl" id="60slot" title='slot' data-type='void **' data-ref="60slot">slot</dfn> = <a class="ref" href="#hash_find_slot" title='hash_find_slot' data-ref="hash_find_slot">hash_find_slot</a> (<a class="local col5 ref" href="#55ht" title='ht' data-ref="55ht">ht</a>, *<a class="local col8 ref" href="#58ovp" title='ovp' data-ref="58ovp">ovp</a>);</td></tr>
+<tr><th id="269">269</th><td>	  *<a class="local col0 ref" href="#60slot" title='slot' data-ref="60slot">slot</a> = *<a class="local col8 ref" href="#58ovp" title='ovp' data-ref="58ovp">ovp</a>;</td></tr>
+<tr><th id="270">270</th><td>	}</td></tr>
+<tr><th id="271">271</th><td>    }</td></tr>
+<tr><th id="272">272</th><td>  <a class="local col5 ref" href="#55ht" title='ht' data-ref="55ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_empty_slots" title='hash_table::ht_empty_slots' data-ref="hash_table::ht_empty_slots">ht_empty_slots</a> = <a class="local col5 ref" href="#55ht" title='ht' data-ref="55ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a> - <a class="local col5 ref" href="#55ht" title='ht' data-ref="55ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_fill" title='hash_table::ht_fill' data-ref="hash_table::ht_fill">ht_fill</a>;</td></tr>
+<tr><th id="273">273</th><td>  <a class="ref" href="../include/stdlib.h.html#free" title='free' data-ref="free">free</a> (<a class="local col7 ref" href="#57old_vec" title='old_vec' data-ref="57old_vec">old_vec</a>);</td></tr>
+<tr><th id="274">274</th><td>}</td></tr>
+<tr><th id="275">275</th><td></td></tr>
+<tr><th id="276">276</th><td><em>void</em></td></tr>
+<tr><th id="277">277</th><td><dfn class="decl def" id="hash_print_stats" title='hash_print_stats' data-ref="hash_print_stats">hash_print_stats</dfn> (<b>struct</b> <a class="type" href="hash.h.html#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col1 decl" id="61ht" title='ht' data-type='struct hash_table *' data-ref="61ht">ht</dfn>, <a class="typedef" href="../include/stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> *<dfn class="local col2 decl" id="62out_FILE" title='out_FILE' data-type='FILE *' data-ref="62out_FILE">out_FILE</dfn>)</td></tr>
+<tr><th id="278">278</th><td>{</td></tr>
+<tr><th id="279">279</th><td>  <i>/* GKM FIXME: honor NO_FLOAT */</i></td></tr>
+<tr><th id="280">280</th><td>  <a class="ref" href="../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a> (<a class="local col2 ref" href="#62out_FILE" title='out_FILE' data-ref="62out_FILE">out_FILE</a>, <a class="macro" href="makeint.h.html#332" title="dcgettext (((void*)0), &quot;Load=%lu/%lu=%.0f%%, &quot;, 5)" data-ref="_M/_">_</a>(<q>"Load=%lu/%lu=%.0f%%, "</q>), <a class="local col1 ref" href="#61ht" title='ht' data-ref="61ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_fill" title='hash_table::ht_fill' data-ref="hash_table::ht_fill">ht_fill</a>, <a class="local col1 ref" href="#61ht" title='ht' data-ref="61ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a>,</td></tr>
+<tr><th id="281">281</th><td>	   <var>100.0</var> * (<em>double</em>) <a class="local col1 ref" href="#61ht" title='ht' data-ref="61ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_fill" title='hash_table::ht_fill' data-ref="hash_table::ht_fill">ht_fill</a> / (<em>double</em>) <a class="local col1 ref" href="#61ht" title='ht' data-ref="61ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a>);</td></tr>
+<tr><th id="282">282</th><td>  <a class="ref" href="../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a> (<a class="local col2 ref" href="#62out_FILE" title='out_FILE' data-ref="62out_FILE">out_FILE</a>, <a class="macro" href="makeint.h.html#332" title="dcgettext (((void*)0), &quot;Rehash=%u, &quot;, 5)" data-ref="_M/_">_</a>(<q>"Rehash=%u, "</q>), <a class="local col1 ref" href="#61ht" title='ht' data-ref="61ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_rehashes" title='hash_table::ht_rehashes' data-ref="hash_table::ht_rehashes">ht_rehashes</a>);</td></tr>
+<tr><th id="283">283</th><td>  <a class="ref" href="../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a> (<a class="local col2 ref" href="#62out_FILE" title='out_FILE' data-ref="62out_FILE">out_FILE</a>, <a class="macro" href="makeint.h.html#332" title="dcgettext (((void*)0), &quot;Collisions=%lu/%lu=%.0f%%&quot;, 5)" data-ref="_M/_">_</a>(<q>"Collisions=%lu/%lu=%.0f%%"</q>), <a class="local col1 ref" href="#61ht" title='ht' data-ref="61ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_collisions" title='hash_table::ht_collisions' data-ref="hash_table::ht_collisions">ht_collisions</a>, <a class="local col1 ref" href="#61ht" title='ht' data-ref="61ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_lookups" title='hash_table::ht_lookups' data-ref="hash_table::ht_lookups">ht_lookups</a>,</td></tr>
+<tr><th id="284">284</th><td>	   (<a class="local col1 ref" href="#61ht" title='ht' data-ref="61ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_lookups" title='hash_table::ht_lookups' data-ref="hash_table::ht_lookups">ht_lookups</a></td></tr>
+<tr><th id="285">285</th><td>	    ? (<var>100.0</var> * (<em>double</em>) <a class="local col1 ref" href="#61ht" title='ht' data-ref="61ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_collisions" title='hash_table::ht_collisions' data-ref="hash_table::ht_collisions">ht_collisions</a> / (<em>double</em>) <a class="local col1 ref" href="#61ht" title='ht' data-ref="61ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_lookups" title='hash_table::ht_lookups' data-ref="hash_table::ht_lookups">ht_lookups</a>)</td></tr>
+<tr><th id="286">286</th><td>	    : <var>0</var>));</td></tr>
+<tr><th id="287">287</th><td>}</td></tr>
+<tr><th id="288">288</th><td></td></tr>
+<tr><th id="289">289</th><td><i>/* Dump all items into a NULL-terminated vector.  Use the</i></td></tr>
+<tr><th id="290">290</th><td><i>   user-supplied vector, or malloc one.  */</i></td></tr>
+<tr><th id="291">291</th><td></td></tr>
+<tr><th id="292">292</th><td><em>void</em> **</td></tr>
+<tr><th id="293">293</th><td><dfn class="decl def" id="hash_dump" title='hash_dump' data-ref="hash_dump">hash_dump</dfn> (<b>struct</b> <a class="type" href="hash.h.html#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col3 decl" id="63ht" title='ht' data-type='struct hash_table *' data-ref="63ht">ht</dfn>, <em>void</em> **<dfn class="local col4 decl" id="64vector_0" title='vector_0' data-type='void **' data-ref="64vector_0">vector_0</dfn>, <a class="typedef" href="hash.h.html#qsort_cmp_t" title='qsort_cmp_t' data-type='int (*)(const void *, const void *)' data-ref="qsort_cmp_t">qsort_cmp_t</a> <dfn class="local col5 decl" id="65compare" title='compare' data-type='qsort_cmp_t' data-ref="65compare">compare</dfn>)</td></tr>
+<tr><th id="294">294</th><td>{</td></tr>
+<tr><th id="295">295</th><td>  <em>void</em> **<dfn class="local col6 decl" id="66vector" title='vector' data-type='void **' data-ref="66vector">vector</dfn>;</td></tr>
+<tr><th id="296">296</th><td>  <em>void</em> **<dfn class="local col7 decl" id="67slot" title='slot' data-type='void **' data-ref="67slot">slot</dfn>;</td></tr>
+<tr><th id="297">297</th><td>  <em>void</em> **<dfn class="local col8 decl" id="68end" title='end' data-type='void **' data-ref="68end">end</dfn> = &amp;<a class="local col3 ref" href="#63ht" title='ht' data-ref="63ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_vec" title='hash_table::ht_vec' data-ref="hash_table::ht_vec">ht_vec</a>[<a class="local col3 ref" href="#63ht" title='ht' data-ref="63ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a>];</td></tr>
+<tr><th id="298">298</th><td></td></tr>
+<tr><th id="299">299</th><td>  <b>if</b> (<a class="local col4 ref" href="#64vector_0" title='vector_0' data-ref="64vector_0">vector_0</a> == <var>0</var>)</td></tr>
+<tr><th id="300">300</th><td>    <a class="local col4 ref" href="#64vector_0" title='vector_0' data-ref="64vector_0">vector_0</a> = <a class="macro" href="#21" title="((void * *) xmalloc (sizeof (void *) * (ht-&gt;ht_fill + 1)))" data-ref="_M/MALLOC">MALLOC</a> (<em>void</em> *, <a class="local col3 ref" href="#63ht" title='ht' data-ref="63ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_fill" title='hash_table::ht_fill' data-ref="hash_table::ht_fill">ht_fill</a> + <var>1</var>);</td></tr>
+<tr><th id="301">301</th><td>  <a class="local col6 ref" href="#66vector" title='vector' data-ref="66vector">vector</a> = <a class="local col4 ref" href="#64vector_0" title='vector_0' data-ref="64vector_0">vector_0</a>;</td></tr>
+<tr><th id="302">302</th><td></td></tr>
+<tr><th id="303">303</th><td>  <b>for</b> (<a class="local col7 ref" href="#67slot" title='slot' data-ref="67slot">slot</a> = <a class="local col3 ref" href="#63ht" title='ht' data-ref="63ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_vec" title='hash_table::ht_vec' data-ref="hash_table::ht_vec">ht_vec</a>; <a class="local col7 ref" href="#67slot" title='slot' data-ref="67slot">slot</a> &lt; <a class="local col8 ref" href="#68end" title='end' data-ref="68end">end</a>; <a class="local col7 ref" href="#67slot" title='slot' data-ref="67slot">slot</a>++)</td></tr>
+<tr><th id="304">304</th><td>    <b>if</b> (!<a class="macro" href="hash.h.html#77" title="((*slot) == 0 || (void *) (*slot) == hash_deleted_item)" data-ref="_M/HASH_VACANT">HASH_VACANT</a> (*<a class="local col7 ref" href="#67slot" title='slot' data-ref="67slot">slot</a>))</td></tr>
+<tr><th id="305">305</th><td>      *<a class="local col6 ref" href="#66vector" title='vector' data-ref="66vector">vector</a>++ = *<a class="local col7 ref" href="#67slot" title='slot' data-ref="67slot">slot</a>;</td></tr>
+<tr><th id="306">306</th><td>  *<a class="local col6 ref" href="#66vector" title='vector' data-ref="66vector">vector</a> = <var>0</var>;</td></tr>
+<tr><th id="307">307</th><td></td></tr>
+<tr><th id="308">308</th><td>  <b>if</b> (<a class="local col5 ref" href="#65compare" title='compare' data-ref="65compare">compare</a>)</td></tr>
+<tr><th id="309">309</th><td>    <a class="ref" href="../include/stdlib.h.html#qsort" title='qsort' data-ref="qsort">qsort</a> (<a class="local col4 ref" href="#64vector_0" title='vector_0' data-ref="64vector_0">vector_0</a>, <a class="local col3 ref" href="#63ht" title='ht' data-ref="63ht">ht</a>-&gt;<a class="ref" href="hash.h.html#hash_table::ht_fill" title='hash_table::ht_fill' data-ref="hash_table::ht_fill">ht_fill</a>, <b>sizeof</b> (<em>void</em> *), <a class="local col5 ref" href="#65compare" title='compare' data-ref="65compare">compare</a>);</td></tr>
+<tr><th id="310">310</th><td>  <b>return</b> <a class="local col4 ref" href="#64vector_0" title='vector_0' data-ref="64vector_0">vector_0</a>;</td></tr>
+<tr><th id="311">311</th><td>}</td></tr>
+<tr><th id="312">312</th><td></td></tr>
+<tr><th id="313">313</th><td><i  data-doc="round_up_2">/* Round a given number up to the nearest power of 2. */</i></td></tr>
+<tr><th id="314">314</th><td></td></tr>
+<tr><th id="315">315</th><td><em>static</em> <em>unsigned</em> <em>long</em></td></tr>
+<tr><th id="316">316</th><td><dfn class="tu decl def" id="round_up_2" title='round_up_2' data-type='unsigned long round_up_2(unsigned long n)' data-ref="round_up_2">round_up_2</dfn> (<em>unsigned</em> <em>long</em> <dfn class="local col9 decl" id="69n" title='n' data-type='unsigned long' data-ref="69n">n</dfn>)</td></tr>
+<tr><th id="317">317</th><td>{</td></tr>
+<tr><th id="318">318</th><td>  <a class="local col9 ref" href="#69n" title='n' data-ref="69n">n</a> |= (<a class="local col9 ref" href="#69n" title='n' data-ref="69n">n</a> &gt;&gt; <var>1</var>);</td></tr>
+<tr><th id="319">319</th><td>  <a class="local col9 ref" href="#69n" title='n' data-ref="69n">n</a> |= (<a class="local col9 ref" href="#69n" title='n' data-ref="69n">n</a> &gt;&gt; <var>2</var>);</td></tr>
+<tr><th id="320">320</th><td>  <a class="local col9 ref" href="#69n" title='n' data-ref="69n">n</a> |= (<a class="local col9 ref" href="#69n" title='n' data-ref="69n">n</a> &gt;&gt; <var>4</var>);</td></tr>
+<tr><th id="321">321</th><td>  <a class="local col9 ref" href="#69n" title='n' data-ref="69n">n</a> |= (<a class="local col9 ref" href="#69n" title='n' data-ref="69n">n</a> &gt;&gt; <var>8</var>);</td></tr>
+<tr><th id="322">322</th><td>  <a class="local col9 ref" href="#69n" title='n' data-ref="69n">n</a> |= (<a class="local col9 ref" href="#69n" title='n' data-ref="69n">n</a> &gt;&gt; <var>16</var>);</td></tr>
+<tr><th id="323">323</th><td></td></tr>
+<tr><th id="324">324</th><td><u>#<span data-ppcond="324">if</span> !defined(<a class="macro" href="config.h.html#168" data-ref="_M/HAVE_LIMITS_H">HAVE_LIMITS_H</a>) || <span class="macro" title="(9223372036854775807L *2UL+1UL)" data-ref="_M/ULONG_MAX">ULONG_MAX</span> &gt; 4294967295</u></td></tr>
+<tr><th id="325">325</th><td>  <i>/* We only need this on systems where unsigned long is &gt;32 bits.  */</i></td></tr>
+<tr><th id="326">326</th><td>  <a class="local col9 ref" href="#69n" title='n' data-ref="69n">n</a> |= (<a class="local col9 ref" href="#69n" title='n' data-ref="69n">n</a> &gt;&gt; <var>32</var>);</td></tr>
+<tr><th id="327">327</th><td><u>#<span data-ppcond="324">endif</span></u></td></tr>
+<tr><th id="328">328</th><td></td></tr>
+<tr><th id="329">329</th><td>  <b>return</b> <a class="local col9 ref" href="#69n" title='n' data-ref="69n">n</a> + <var>1</var>;</td></tr>
+<tr><th id="330">330</th><td>}</td></tr>
+<tr><th id="331">331</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

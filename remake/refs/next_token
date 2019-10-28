@@ -1,0 +1,21 @@
+<dec f='remake/makeint.h' l='501' type='char * next_token(const char * )'/>
+<dec f='remake/make.h' l='357' type='char * next_token(const char * )'/>
+<use f='remake/commands.c' l='511' u='c' c='expand_command_lines'/>
+<use f='remake/function.c' l='96' u='c' c='subst_expand'/>
+<use f='remake/function.c' l='871' u='c' c='func_foreach'/>
+<use f='remake/function.c' l='2574' u='c' c='func_call'/>
+<def f='remake/misc.c' l='235' ll='240' type='char * next_token(const char * s)'/>
+<use f='remake/misc.c' l='249' u='c' c='find_next_token'/>
+<doc f='remake/misc.c' l='233'>/* Return the address of the first nonwhitespace or null in the string S.  */</doc>
+<use f='remake/read.c' l='525' u='c' c='parse_var_assignment'/>
+<use f='remake/read.c' l='532' u='c' c='parse_var_assignment'/>
+<use f='remake/read.c' l='540' u='c' c='parse_var_assignment'/>
+<use f='remake/read.c' l='1130' u='c' c='eval'/>
+<use f='remake/read.c' l='1439' u='c' c='do_undefine'/>
+<use f='remake/read.c' l='1484' u='c' c='do_define'/>
+<use f='remake/read.c' l='1512' u='c' c='do_define'/>
+<use f='remake/read.c' l='1527' u='c' c='do_define'/>
+<use f='remake/read.c' l='1792' u='c' c='conditional_line'/>
+<use f='remake/variable.c' l='1590' u='c' c='parse_variable_definition'/>
+<use f='remake/variable.c' l='1712' u='c' c='print_variable'/>
+<use f='remake/variable.c' l='1762' u='c' c='print_variable_info'/>

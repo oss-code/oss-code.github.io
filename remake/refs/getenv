@@ -1,0 +1,6 @@
+<dec f='include/stdlib.h' l='564' type='char * getenv(const char * __name)'/>
+<doc f='include/stdlib.h' l='563'>/* Return the value of envariable NAME, or NULL if it doesn&apos;t exist.  */</doc>
+<use f='remake/debugger/command/edit.h' l='26' u='c' c='dbg_cmd_edit'/>
+<use f='remake/job.c' l='2204' u='c' c='exec_command'/>
+<use f='remake/main.c' l='1773' u='c' c='main'/>
+<use f='remake/read.c' l='2958' u='c' c='remake_tilde_expand'/>

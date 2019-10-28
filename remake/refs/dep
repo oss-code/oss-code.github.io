@@ -1,0 +1,11 @@
+<def f='remake/dep.h' l='58' ll='61'/>
+<size>40</size>
+<mbr r='dep::next' o='0' t='struct dep *'/>
+<mbr r='dep::name' o='64' t='const char *'/>
+<mbr r='dep::file' o='128' t='struct file *'/>
+<mbr r='dep::stem' o='192' t='const char *'/>
+<mbr r='dep::flags' o='256' t='unsigned short'/>
+<mbr r='dep::changed' o='264' t='unsigned short'/>
+<mbr r='dep::ignore_mtime' o='265' t='unsigned short'/>
+<mbr r='dep::staticpattern' o='266' t='unsigned short'/>
+<mbr r='dep::need_2nd_expansion' o='267' t='unsigned short'/>

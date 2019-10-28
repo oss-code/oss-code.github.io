@@ -1,0 +1,8 @@
+<dec f='remake/filedef.h' l='112' type='unsigned int'/>
+<offset>1550</offset>
+<doc f='remake/filedef.h' l='112'>/* Nonzero if we already searched for
+                                   pattern-specific variables.  */</doc>
+<use f='remake/implicit.c' l='878' u='w' c='pattern_search'/>
+<use f='remake/implicit.c' l='878' u='r' c='pattern_search'/>
+<use f='remake/variable.c' l='648' u='r' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='695' u='w' c='initialize_file_variables'/>

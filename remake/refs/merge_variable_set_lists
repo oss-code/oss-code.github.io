@@ -1,0 +1,4 @@
+<dec f='remake/variable.h' l='206' type='void merge_variable_set_lists(struct variable_set_list ** to_list, struct variable_set_list * from_list)'/>
+<use f='remake/file.c' l='142' u='c' c='rehash_file'/>
+<def f='remake/variable.c' l='824' ll='856' type='void merge_variable_set_lists(struct variable_set_list ** setlist0, struct variable_set_list * setlist1)'/>
+<doc f='remake/variable.c' l='822'>/* Merge SETLIST1 into SETLIST0, freeing unused storage in SETLIST1.  */</doc>

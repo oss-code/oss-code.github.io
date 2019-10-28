@@ -1,0 +1,743 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>output.c source code [remake/output.c] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="fmtstring "/>
+<link rel="stylesheet" href="../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/output.c'; var root_path = '..'; var data_path = '../../data';</script>
+<script src='../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='./'>remake</a>/<a href='output.c.html'>output.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Output to stdout / stderr for GNU make</i></td></tr>
+<tr><th id="2">2</th><td><i>Copyright (C) 2013-2016 Free Software Foundation, Inc.</i></td></tr>
+<tr><th id="3">3</th><td><i>This file is part of GNU Make.</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>GNU Make is free software; you can redistribute it and/or modify it under the</i></td></tr>
+<tr><th id="6">6</th><td><i>terms of the GNU General Public License as published by the Free Software</i></td></tr>
+<tr><th id="7">7</th><td><i>Foundation; either version 3 of the License, or (at your option) any later</i></td></tr>
+<tr><th id="8">8</th><td><i>version.</i></td></tr>
+<tr><th id="9">9</th><td><i></i></td></tr>
+<tr><th id="10">10</th><td><i>GNU Make is distributed in the hope that it will be useful, but WITHOUT ANY</i></td></tr>
+<tr><th id="11">11</th><td><i>WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR</i></td></tr>
+<tr><th id="12">12</th><td><i>A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</i></td></tr>
+<tr><th id="13">13</th><td><i></i></td></tr>
+<tr><th id="14">14</th><td><i>You should have received a copy of the GNU General Public License along with</i></td></tr>
+<tr><th id="15">15</th><td><i>this program.  If not, see &lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.  */</i></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><u>#include <a href="makeint.h.html">"makeint.h"</a></u></td></tr>
+<tr><th id="18">18</th><td><u>#include <a href="globals.h.html">"globals.h"</a></u></td></tr>
+<tr><th id="19">19</th><td><u>#include <a href="job.h.html">"job.h"</a></u></td></tr>
+<tr><th id="20">20</th><td></td></tr>
+<tr><th id="21">21</th><td><i>/* GNU make no longer supports pre-ANSI89 environments.  */</i></td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><u>#include <a href="../include/assert.h.html">&lt;assert.h&gt;</a></u></td></tr>
+<tr><th id="24">24</th><td><u>#include <a href="../include/stdio.h.html">&lt;stdio.h&gt;</a></u></td></tr>
+<tr><th id="25">25</th><td><u>#include &lt;stdarg.h&gt;</u></td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><u>#<span data-ppcond="27">ifdef</span> <a class="macro" href="config.h.html#345" data-ref="_M/HAVE_UNISTD_H">HAVE_UNISTD_H</a></u></td></tr>
+<tr><th id="28">28</th><td><u># include <a href="../include/unistd.h.html">&lt;unistd.h&gt;</a></u></td></tr>
+<tr><th id="29">29</th><td><u>#<span data-ppcond="27">endif</span></u></td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><u>#<span data-ppcond="31">ifdef</span> <a class="macro" href="config.h.html#108" data-ref="_M/HAVE_FCNTL_H">HAVE_FCNTL_H</a></u></td></tr>
+<tr><th id="32">32</th><td><u># include <a href="../include/fcntl.h.html">&lt;fcntl.h&gt;</a></u></td></tr>
+<tr><th id="33">33</th><td><u>#<span data-ppcond="31">else</span></u></td></tr>
+<tr><th id="34">34</th><td><u># include &lt;sys/file.h&gt;</u></td></tr>
+<tr><th id="35">35</th><td><u>#<span data-ppcond="31">endif</span></u></td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td><u>#<span data-ppcond="37">ifdef</span> <span class="macro" data-ref="_M/WINDOWS32">WINDOWS32</span></u></td></tr>
+<tr><th id="38">38</th><td><u># include &lt;windows.h&gt;</u></td></tr>
+<tr><th id="39">39</th><td><u># include &lt;io.h&gt;</u></td></tr>
+<tr><th id="40">40</th><td><u># include "sub_proc.h"</u></td></tr>
+<tr><th id="41">41</th><td><u>#<span data-ppcond="37">endif</span> /* WINDOWS32 */</u></td></tr>
+<tr><th id="42">42</th><td></td></tr>
+<tr><th id="43">43</th><td><b>struct</b> <a class="type" href="output.h.html#output" title='output' data-ref="output">output</a> *<dfn class="decl def" id="output_context" title='output_context' data-ref="output_context">output_context</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="44">44</th><td><em>unsigned</em> <em>int</em> <dfn class="decl def" id="stdio_traced" title='stdio_traced' data-ref="stdio_traced">stdio_traced</dfn> = <var>0</var>;</td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td><u>#define <dfn class="macro" id="_M/OUTPUT_NONE" data-ref="_M/OUTPUT_NONE">OUTPUT_NONE</dfn> (-1)</u></td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td><u>#define <dfn class="macro" id="_M/OUTPUT_ISSET" data-ref="_M/OUTPUT_ISSET">OUTPUT_ISSET</dfn>(_out) ((_out)-&gt;<a class="ref" href="output.h.html#output::out" title='output::out' data-ref="output::out">out</a> &gt;= 0 || (_out)-&gt;<a class="ref" href="output.h.html#output::err" title='output::err' data-ref="output::err">err</a> &gt;= 0)</u></td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td><u>#<span data-ppcond="50">ifdef</span> <a class="macro" href="config.h.html#108" data-ref="_M/HAVE_FCNTL_H">HAVE_FCNTL_H</a></u></td></tr>
+<tr><th id="51">51</th><td><u># define <dfn class="macro" id="_M/STREAM_OK" data-ref="_M/STREAM_OK">STREAM_OK</dfn>(_s) ((<a class="ref" href="../include/fcntl.h.html#fcntl" title='fcntl' data-ref="fcntl">fcntl</a> (<a class="ref" href="../include/stdio.h.html#fileno" title='fileno' data-ref="fileno">fileno</a> (_s), F_GETFD) != -1) || (errno != EBADF))</u></td></tr>
+<tr><th id="52">52</th><td><u>#<span data-ppcond="50">else</span></u></td></tr>
+<tr><th id="53">53</th><td><u># define STREAM_OK(_s) 1</u></td></tr>
+<tr><th id="54">54</th><td><u>#<span data-ppcond="50">endif</span></u></td></tr>
+<tr><th id="55">55</th><td></td></tr>
+<tr><th id="56">56</th><td><i  data-doc="_outputs">/* Write a string to the current STDOUT or STDERR.  */</i></td></tr>
+<tr><th id="57">57</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="58">58</th><td><dfn class="tu decl def" id="_outputs" title='_outputs' data-type='void _outputs(struct output * out, int is_err, const char * msg)' data-ref="_outputs">_outputs</dfn> (<b>struct</b> <a class="type" href="output.h.html#output" title='output' data-ref="output">output</a> *<dfn class="local col1 decl" id="1out" title='out' data-type='struct output *' data-ref="1out">out</dfn>, <em>int</em> <dfn class="local col2 decl" id="2is_err" title='is_err' data-type='int' data-ref="2is_err">is_err</dfn>, <em>const</em> <em>char</em> *<dfn class="local col3 decl" id="3msg" title='msg' data-type='const char *' data-ref="3msg">msg</dfn>)</td></tr>
+<tr><th id="59">59</th><td>{</td></tr>
+<tr><th id="60">60</th><td>  <b>if</b> (! <a class="local col1 ref" href="#1out" title='out' data-ref="1out">out</a> || ! <a class="local col1 ref" href="#1out" title='out' data-ref="1out">out</a>-&gt;<a class="ref" href="output.h.html#output::syncout" title='output::syncout' data-ref="output::syncout">syncout</a>)</td></tr>
+<tr><th id="61">61</th><td>    {</td></tr>
+<tr><th id="62">62</th><td>      <a class="typedef" href="../include/stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> *<dfn class="local col4 decl" id="4f" title='f' data-type='FILE *' data-ref="4f">f</dfn> = <a class="local col2 ref" href="#2is_err" title='is_err' data-ref="2is_err">is_err</a> ? <a class="macro" href="../include/stdio.h.html#174" title="stderr" data-ref="_M/stderr">stderr</a> : <a class="macro" href="../include/stdio.h.html#173" title="stdout" data-ref="_M/stdout">stdout</a>;</td></tr>
+<tr><th id="63">63</th><td>      <a class="ref" href="../include/stdio.h.html#fputs" title='fputs' data-ref="fputs">fputs</a> (<a class="local col3 ref" href="#3msg" title='msg' data-ref="3msg">msg</a>, <a class="local col4 ref" href="#4f" title='f' data-ref="4f">f</a>);</td></tr>
+<tr><th id="64">64</th><td>      <a class="ref" href="../include/stdio.h.html#fflush" title='fflush' data-ref="fflush">fflush</a> (<a class="local col4 ref" href="#4f" title='f' data-ref="4f">f</a>);</td></tr>
+<tr><th id="65">65</th><td>    }</td></tr>
+<tr><th id="66">66</th><td>  <b>else</b></td></tr>
+<tr><th id="67">67</th><td>    {</td></tr>
+<tr><th id="68">68</th><td>      <em>int</em> <dfn class="local col5 decl" id="5fd" title='fd' data-type='int' data-ref="5fd">fd</dfn> = <a class="local col2 ref" href="#2is_err" title='is_err' data-ref="2is_err">is_err</a> ? <a class="local col1 ref" href="#1out" title='out' data-ref="1out">out</a>-&gt;<a class="ref" href="output.h.html#output::err" title='output::err' data-ref="output::err">err</a> : <a class="local col1 ref" href="#1out" title='out' data-ref="1out">out</a>-&gt;<a class="ref" href="output.h.html#output::out" title='output::out' data-ref="output::out">out</a>;</td></tr>
+<tr><th id="69">69</th><td>      <em>int</em> <dfn class="local col6 decl" id="6len" title='len' data-type='int' data-ref="6len">len</dfn> = <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col3 ref" href="#3msg" title='msg' data-ref="3msg">msg</a>);</td></tr>
+<tr><th id="70">70</th><td>      <em>int</em> <dfn class="local col7 decl" id="7r" title='r' data-type='int' data-ref="7r">r</dfn>;</td></tr>
+<tr><th id="71">71</th><td></td></tr>
+<tr><th id="72">72</th><td>      <a class="macro" href="make.h.html#558" title="while (((r)=lseek (fd, 0, 2))==-1 &amp;&amp; (*__errno_location ())==4)" data-ref="_M/EINTRLOOP">EINTRLOOP</a> (<a class="local col7 ref" href="#7r" title='r' data-ref="7r">r</a>, <a class="ref" href="../include/unistd.h.html#lseek" title='lseek' data-ref="lseek">lseek</a> (<a class="local col5 ref" href="#5fd" title='fd' data-ref="5fd">fd</a>, <var>0</var>, <a class="macro" href="../include/fcntl.h.html#138" title="2" data-ref="_M/SEEK_END">SEEK_END</a>));</td></tr>
+<tr><th id="73">73</th><td>      <b>while</b> (<var>1</var>)</td></tr>
+<tr><th id="74">74</th><td>        {</td></tr>
+<tr><th id="75">75</th><td>          <a class="macro" href="make.h.html#558" title="while (((r)=write (fd, msg, len))==-1 &amp;&amp; (*__errno_location ())==4)" data-ref="_M/EINTRLOOP">EINTRLOOP</a> (<a class="local col7 ref" href="#7r" title='r' data-ref="7r">r</a>, <a class="ref" href="../include/unistd.h.html#write" title='write' data-ref="write">write</a> (<a class="local col5 ref" href="#5fd" title='fd' data-ref="5fd">fd</a>, <a class="local col3 ref" href="#3msg" title='msg' data-ref="3msg">msg</a>, <a class="local col6 ref" href="#6len" title='len' data-ref="6len">len</a>));</td></tr>
+<tr><th id="76">76</th><td>          <b>if</b> (<a class="local col7 ref" href="#7r" title='r' data-ref="7r">r</a> == <a class="local col6 ref" href="#6len" title='len' data-ref="6len">len</a> || <a class="local col7 ref" href="#7r" title='r' data-ref="7r">r</a> &lt;= <var>0</var>)</td></tr>
+<tr><th id="77">77</th><td>            <b>break</b>;</td></tr>
+<tr><th id="78">78</th><td>          <a class="local col6 ref" href="#6len" title='len' data-ref="6len">len</a> -= <a class="local col7 ref" href="#7r" title='r' data-ref="7r">r</a>;</td></tr>
+<tr><th id="79">79</th><td>          <a class="local col3 ref" href="#3msg" title='msg' data-ref="3msg">msg</a> += <a class="local col7 ref" href="#7r" title='r' data-ref="7r">r</a>;</td></tr>
+<tr><th id="80">80</th><td>        }</td></tr>
+<tr><th id="81">81</th><td>    }</td></tr>
+<tr><th id="82">82</th><td>}</td></tr>
+<tr><th id="83">83</th><td></td></tr>
+<tr><th id="84">84</th><td><i>/* Write a message indicating that we've just entered or</i></td></tr>
+<tr><th id="85">85</th><td><i>   left (according to ENTERING) the current directory.  */</i></td></tr>
+<tr><th id="86">86</th><td></td></tr>
+<tr><th id="87">87</th><td><em>int</em></td></tr>
+<tr><th id="88">88</th><td><dfn class="decl def" id="log_working_directory" title='log_working_directory' data-ref="log_working_directory">log_working_directory</dfn> (<em>int</em> <dfn class="local col8 decl" id="8entering" title='entering' data-type='int' data-ref="8entering">entering</dfn>)</td></tr>
+<tr><th id="89">89</th><td>{</td></tr>
+<tr><th id="90">90</th><td>  <em>static</em> <em>char</em> *<dfn class="local col9 decl" id="9buf" title='buf' data-type='char *' data-ref="9buf">buf</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="91">91</th><td>  <em>static</em> <em>unsigned</em> <em>int</em> <dfn class="local col0 decl" id="10len" title='len' data-type='unsigned int' data-ref="10len">len</dfn> = <var>0</var>;</td></tr>
+<tr><th id="92">92</th><td>  <em>unsigned</em> <em>int</em> <dfn class="local col1 decl" id="11need" title='need' data-type='unsigned int' data-ref="11need">need</dfn>;</td></tr>
+<tr><th id="93">93</th><td>  <em>const</em> <em>char</em> *<dfn class="local col2 decl" id="12fmt" title='fmt' data-type='const char *' data-ref="12fmt">fmt</dfn>;</td></tr>
+<tr><th id="94">94</th><td>  <em>char</em> *<dfn class="local col3 decl" id="13p" title='p' data-type='char *' data-ref="13p">p</dfn>;</td></tr>
+<tr><th id="95">95</th><td></td></tr>
+<tr><th id="96">96</th><td>  <i>/* Get enough space for the longest possible output.  */</i></td></tr>
+<tr><th id="97">97</th><td>  <a class="local col1 ref" href="#11need" title='need' data-ref="11need">need</a> = <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="ref" href="makeint.h.html#program" title='program' data-ref="program">program</a>) + <a class="macro" href="makeint.h.html#457" title="(sizeof (&quot;18446744073709551616&quot;)-1)" data-ref="_M/INTSTR_LENGTH">INTSTR_LENGTH</a> + <var>2</var> + <var>1</var>;</td></tr>
+<tr><th id="98">98</th><td>  <b>if</b> (<a class="ref" href="makeint.h.html#starting_directory" title='starting_directory' data-ref="starting_directory">starting_directory</a>)</td></tr>
+<tr><th id="99">99</th><td>    <a class="local col1 ref" href="#11need" title='need' data-ref="11need">need</a> += <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="ref" href="makeint.h.html#starting_directory" title='starting_directory' data-ref="starting_directory">starting_directory</a>);</td></tr>
+<tr><th id="100">100</th><td></td></tr>
+<tr><th id="101">101</th><td>  <i>/* Use entire sentences to give the translators a fighting chance.  */</i></td></tr>
+<tr><th id="102">102</th><td>  <b>if</b> (<a class="ref" href="makeint.h.html#makelevel" title='makelevel' data-ref="makelevel">makelevel</a> == <var>0</var>)</td></tr>
+<tr><th id="103">103</th><td>    <b>if</b> (<a class="ref" href="makeint.h.html#starting_directory" title='starting_directory' data-ref="starting_directory">starting_directory</a> == <var>0</var>)</td></tr>
+<tr><th id="104">104</th><td>      <b>if</b> (<a class="local col8 ref" href="#8entering" title='entering' data-ref="8entering">entering</a>)</td></tr>
+<tr><th id="105">105</th><td>        <a class="local col2 ref" href="#12fmt" title='fmt' data-ref="12fmt">fmt</a> = <a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;%s: Entering an unknown directory\n&quot;, 5)" data-ref="_M/_">_</a>(<q>"%s: Entering an unknown directory\n"</q>);</td></tr>
+<tr><th id="106">106</th><td>      <b>else</b></td></tr>
+<tr><th id="107">107</th><td>        <a class="local col2 ref" href="#12fmt" title='fmt' data-ref="12fmt">fmt</a> = <a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;%s: Leaving an unknown directory\n&quot;, 5)" data-ref="_M/_">_</a>(<q>"%s: Leaving an unknown directory\n"</q>);</td></tr>
+<tr><th id="108">108</th><td>    <b>else</b></td></tr>
+<tr><th id="109">109</th><td>      <b>if</b> (<a class="local col8 ref" href="#8entering" title='entering' data-ref="8entering">entering</a>)</td></tr>
+<tr><th id="110">110</th><td>        <a class="local col2 ref" href="#12fmt" title='fmt' data-ref="12fmt">fmt</a> = <a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;%s: Entering directory &apos;%s&apos;\n&quot;, 5)" data-ref="_M/_">_</a>(<q>"%s: Entering directory '%s'\n"</q>);</td></tr>
+<tr><th id="111">111</th><td>      <b>else</b></td></tr>
+<tr><th id="112">112</th><td>        <a class="local col2 ref" href="#12fmt" title='fmt' data-ref="12fmt">fmt</a> = <a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;%s: Leaving directory &apos;%s&apos;\n&quot;, 5)" data-ref="_M/_">_</a>(<q>"%s: Leaving directory '%s'\n"</q>);</td></tr>
+<tr><th id="113">113</th><td>  <b>else</b></td></tr>
+<tr><th id="114">114</th><td>    <b>if</b> (<a class="ref" href="makeint.h.html#starting_directory" title='starting_directory' data-ref="starting_directory">starting_directory</a> == <var>0</var>)</td></tr>
+<tr><th id="115">115</th><td>      <b>if</b> (<a class="local col8 ref" href="#8entering" title='entering' data-ref="8entering">entering</a>)</td></tr>
+<tr><th id="116">116</th><td>        <a class="local col2 ref" href="#12fmt" title='fmt' data-ref="12fmt">fmt</a> = <a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;%s[%u]: Entering an unknown directory\n&quot;, 5)" data-ref="_M/_">_</a>(<q>"%s[%u]: Entering an unknown directory\n"</q>);</td></tr>
+<tr><th id="117">117</th><td>      <b>else</b></td></tr>
+<tr><th id="118">118</th><td>        <a class="local col2 ref" href="#12fmt" title='fmt' data-ref="12fmt">fmt</a> = <a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;%s[%u]: Leaving an unknown directory\n&quot;, 5)" data-ref="_M/_">_</a>(<q>"%s[%u]: Leaving an unknown directory\n"</q>);</td></tr>
+<tr><th id="119">119</th><td>    <b>else</b></td></tr>
+<tr><th id="120">120</th><td>      <b>if</b> (<a class="local col8 ref" href="#8entering" title='entering' data-ref="8entering">entering</a>)</td></tr>
+<tr><th id="121">121</th><td>        <a class="local col2 ref" href="#12fmt" title='fmt' data-ref="12fmt">fmt</a> = <a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;%s[%u]: Entering directory &apos;%s&apos;\n&quot;, 5)" data-ref="_M/_">_</a>(<q>"%s[%u]: Entering directory '%s'\n"</q>);</td></tr>
+<tr><th id="122">122</th><td>      <b>else</b></td></tr>
+<tr><th id="123">123</th><td>        <a class="local col2 ref" href="#12fmt" title='fmt' data-ref="12fmt">fmt</a> = <a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;%s[%u]: Leaving directory &apos;%s&apos;\n&quot;, 5)" data-ref="_M/_">_</a>(<q>"%s[%u]: Leaving directory '%s'\n"</q>);</td></tr>
+<tr><th id="124">124</th><td></td></tr>
+<tr><th id="125">125</th><td>  <a class="local col1 ref" href="#11need" title='need' data-ref="11need">need</a> += <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col2 ref" href="#12fmt" title='fmt' data-ref="12fmt">fmt</a>);</td></tr>
+<tr><th id="126">126</th><td></td></tr>
+<tr><th id="127">127</th><td>  <b>if</b> (<a class="local col1 ref" href="#11need" title='need' data-ref="11need">need</a> &gt; <a class="local col0 ref" href="#10len" title='len' data-ref="10len">len</a>)</td></tr>
+<tr><th id="128">128</th><td>    {</td></tr>
+<tr><th id="129">129</th><td>      <a class="local col9 ref" href="#9buf" title='buf' data-ref="9buf">buf</a> = <a class="ref" href="makeint.h.html#xrealloc" title='xrealloc' data-ref="xrealloc">xrealloc</a> (<a class="local col9 ref" href="#9buf" title='buf' data-ref="9buf">buf</a>, <a class="local col1 ref" href="#11need" title='need' data-ref="11need">need</a>);</td></tr>
+<tr><th id="130">130</th><td>      <a class="local col0 ref" href="#10len" title='len' data-ref="10len">len</a> = <a class="local col1 ref" href="#11need" title='need' data-ref="11need">need</a>;</td></tr>
+<tr><th id="131">131</th><td>    }</td></tr>
+<tr><th id="132">132</th><td></td></tr>
+<tr><th id="133">133</th><td>  <a class="local col3 ref" href="#13p" title='p' data-ref="13p">p</a> = <a class="local col9 ref" href="#9buf" title='buf' data-ref="9buf">buf</a>;</td></tr>
+<tr><th id="134">134</th><td>  <b>if</b> (<a class="ref" href="makeint.h.html#print_data_base_flag" title='print_data_base_flag' data-ref="print_data_base_flag">print_data_base_flag</a>)</td></tr>
+<tr><th id="135">135</th><td>    {</td></tr>
+<tr><th id="136">136</th><td>      *(<a class="local col3 ref" href="#13p" title='p' data-ref="13p">p</a>++) = <kbd>'#'</kbd>;</td></tr>
+<tr><th id="137">137</th><td>      *(<a class="local col3 ref" href="#13p" title='p' data-ref="13p">p</a>++) = <kbd>' '</kbd>;</td></tr>
+<tr><th id="138">138</th><td>    }</td></tr>
+<tr><th id="139">139</th><td></td></tr>
+<tr><th id="140">140</th><td>  <b>if</b> (<a class="ref" href="makeint.h.html#makelevel" title='makelevel' data-ref="makelevel">makelevel</a> == <var>0</var>)</td></tr>
+<tr><th id="141">141</th><td>    <b>if</b> (<a class="ref" href="makeint.h.html#starting_directory" title='starting_directory' data-ref="starting_directory">starting_directory</a> == <var>0</var>)</td></tr>
+<tr><th id="142">142</th><td>      <a class="ref" href="../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a> (<a class="local col3 ref" href="#13p" title='p' data-ref="13p">p</a>, <a class="local col2 ref" href="#12fmt" title='fmt' data-ref="12fmt">fmt</a> , <a class="ref" href="makeint.h.html#program" title='program' data-ref="program">program</a>);</td></tr>
+<tr><th id="143">143</th><td>    <b>else</b></td></tr>
+<tr><th id="144">144</th><td>      <a class="ref" href="../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a> (<a class="local col3 ref" href="#13p" title='p' data-ref="13p">p</a>, <a class="local col2 ref" href="#12fmt" title='fmt' data-ref="12fmt">fmt</a>, <a class="ref" href="makeint.h.html#program" title='program' data-ref="program">program</a>, <a class="ref" href="makeint.h.html#starting_directory" title='starting_directory' data-ref="starting_directory">starting_directory</a>);</td></tr>
+<tr><th id="145">145</th><td>  <b>else</b> <b>if</b> (<a class="ref" href="makeint.h.html#starting_directory" title='starting_directory' data-ref="starting_directory">starting_directory</a> == <var>0</var>)</td></tr>
+<tr><th id="146">146</th><td>    <a class="ref" href="../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a> (<a class="local col3 ref" href="#13p" title='p' data-ref="13p">p</a>, <a class="local col2 ref" href="#12fmt" title='fmt' data-ref="12fmt">fmt</a>, <a class="ref" href="makeint.h.html#program" title='program' data-ref="program">program</a>, <a class="ref" href="makeint.h.html#makelevel" title='makelevel' data-ref="makelevel">makelevel</a>);</td></tr>
+<tr><th id="147">147</th><td>  <b>else</b></td></tr>
+<tr><th id="148">148</th><td>    <a class="ref" href="../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a> (<a class="local col3 ref" href="#13p" title='p' data-ref="13p">p</a>, <a class="local col2 ref" href="#12fmt" title='fmt' data-ref="12fmt">fmt</a>, <a class="ref" href="makeint.h.html#program" title='program' data-ref="program">program</a>, <a class="ref" href="makeint.h.html#makelevel" title='makelevel' data-ref="makelevel">makelevel</a>, <a class="ref" href="makeint.h.html#starting_directory" title='starting_directory' data-ref="starting_directory">starting_directory</a>);</td></tr>
+<tr><th id="149">149</th><td></td></tr>
+<tr><th id="150">150</th><td>  <a class="tu ref" href="#_outputs" title='_outputs' data-use='c' data-ref="_outputs">_outputs</a> (<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <var>0</var>, <a class="local col9 ref" href="#9buf" title='buf' data-ref="9buf">buf</a>);</td></tr>
+<tr><th id="151">151</th><td></td></tr>
+<tr><th id="152">152</th><td>  <b>return</b> <var>1</var>;</td></tr>
+<tr><th id="153">153</th><td>}</td></tr>
+<tr><th id="154">154</th><td></td></tr>
+<tr><th id="155">155</th><td><i  data-doc="set_append_mode">/* Set a file descriptor to be in O_APPEND mode.</i></td></tr>
+<tr><th id="156">156</th><td><i  data-doc="set_append_mode">   If it fails, just ignore it.  */</i></td></tr>
+<tr><th id="157">157</th><td></td></tr>
+<tr><th id="158">158</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="159">159</th><td><dfn class="tu decl def" id="set_append_mode" title='set_append_mode' data-type='void set_append_mode(int fd)' data-ref="set_append_mode">set_append_mode</dfn> (<em>int</em> <dfn class="local col4 decl" id="14fd" title='fd' data-type='int' data-ref="14fd">fd</dfn>)</td></tr>
+<tr><th id="160">160</th><td>{</td></tr>
+<tr><th id="161">161</th><td><u>#<span data-ppcond="161">if</span> defined(<a class="macro" href="../include/x86_64-linux-gnu/bits/fcntl-linux.h.html#170" data-ref="_M/F_GETFL">F_GETFL</a>) &amp;&amp; defined(<a class="macro" href="../include/x86_64-linux-gnu/bits/fcntl-linux.h.html#171" data-ref="_M/F_SETFL">F_SETFL</a>) &amp;&amp; defined(<a class="macro" href="../include/x86_64-linux-gnu/bits/fcntl-linux.h.html#59" data-ref="_M/O_APPEND">O_APPEND</a>)</u></td></tr>
+<tr><th id="162">162</th><td>  <em>int</em> <dfn class="local col5 decl" id="15flags" title='flags' data-type='int' data-ref="15flags">flags</dfn> = <a class="ref" href="../include/fcntl.h.html#fcntl" title='fcntl' data-ref="fcntl">fcntl</a> (<a class="local col4 ref" href="#14fd" title='fd' data-ref="14fd">fd</a>, <a class="macro" href="../include/x86_64-linux-gnu/bits/fcntl-linux.h.html#170" title="3" data-ref="_M/F_GETFL">F_GETFL</a>, <var>0</var>);</td></tr>
+<tr><th id="163">163</th><td>  <b>if</b> (<a class="local col5 ref" href="#15flags" title='flags' data-ref="15flags">flags</a> &gt;= <var>0</var>)</td></tr>
+<tr><th id="164">164</th><td>    <a class="ref" href="../include/fcntl.h.html#fcntl" title='fcntl' data-ref="fcntl">fcntl</a> (<a class="local col4 ref" href="#14fd" title='fd' data-ref="14fd">fd</a>, <a class="macro" href="../include/x86_64-linux-gnu/bits/fcntl-linux.h.html#171" title="4" data-ref="_M/F_SETFL">F_SETFL</a>, <a class="local col5 ref" href="#15flags" title='flags' data-ref="15flags">flags</a> | <a class="macro" href="../include/x86_64-linux-gnu/bits/fcntl-linux.h.html#59" title="02000" data-ref="_M/O_APPEND">O_APPEND</a>);</td></tr>
+<tr><th id="165">165</th><td><u>#<span data-ppcond="161">endif</span></u></td></tr>
+<tr><th id="166">166</th><td>}</td></tr>
+<tr><th id="167">167</th><td></td></tr>
+<tr><th id="168">168</th><td></td></tr>
+<tr><th id="169">169</th><td><u>#<span data-ppcond="169">ifndef</span> <span class="macro" data-ref="_M/NO_OUTPUT_SYNC">NO_OUTPUT_SYNC</span></u></td></tr>
+<tr><th id="170">170</th><td></td></tr>
+<tr><th id="171">171</th><td><i  data-doc="sync_handle">/* Semaphore for use in -j mode with output_sync. */</i></td></tr>
+<tr><th id="172">172</th><td><em>static</em> <a class="typedef" href="job.h.html#sync_handle_t" title='sync_handle_t' data-type='int' data-ref="sync_handle_t">sync_handle_t</a> <dfn class="tu decl def" id="sync_handle" title='sync_handle' data-type='sync_handle_t' data-ref="sync_handle">sync_handle</dfn> = -<var>1</var>;</td></tr>
+<tr><th id="173">173</th><td></td></tr>
+<tr><th id="174">174</th><td><u>#define <dfn class="macro" id="_M/FD_NOT_EMPTY" data-ref="_M/FD_NOT_EMPTY">FD_NOT_EMPTY</dfn>(_f) ((_f) != OUTPUT_NONE &amp;&amp; <a class="ref" href="../include/unistd.h.html#lseek" title='lseek' data-ref="lseek">lseek</a> ((_f), 0, SEEK_END) &gt; 0)</u></td></tr>
+<tr><th id="175">175</th><td></td></tr>
+<tr><th id="176">176</th><td><i  data-doc="sync_init">/* Set up the sync handle.  Disables output_sync on error.  */</i></td></tr>
+<tr><th id="177">177</th><td><em>static</em> <em>int</em></td></tr>
+<tr><th id="178">178</th><td><dfn class="tu decl def" id="sync_init" title='sync_init' data-type='int sync_init()' data-ref="sync_init">sync_init</dfn> (<em>void</em>)</td></tr>
+<tr><th id="179">179</th><td>{</td></tr>
+<tr><th id="180">180</th><td>  <em>int</em> <dfn class="local col6 decl" id="16combined_output" title='combined_output' data-type='int' data-ref="16combined_output">combined_output</dfn> = <var>0</var>;</td></tr>
+<tr><th id="181">181</th><td></td></tr>
+<tr><th id="182">182</th><td><u>#<span data-ppcond="182">ifdef</span> <span class="macro" data-ref="_M/WINDOWS32">WINDOWS32</span></u></td></tr>
+<tr><th id="183">183</th><td>  <b>if</b> ((!STREAM_OK (stdout) &amp;&amp; !STREAM_OK (stderr))</td></tr>
+<tr><th id="184">184</th><td>      || (sync_handle = create_mutex ()) == -<var>1</var>)</td></tr>
+<tr><th id="185">185</th><td>    {</td></tr>
+<tr><th id="186">186</th><td>      perror_with_name (<q>"output-sync suppressed: "</q>, <q>"stderr"</q>);</td></tr>
+<tr><th id="187">187</th><td>      output_sync = <var>0</var>;</td></tr>
+<tr><th id="188">188</th><td>    }</td></tr>
+<tr><th id="189">189</th><td>  <b>else</b></td></tr>
+<tr><th id="190">190</th><td>    {</td></tr>
+<tr><th id="191">191</th><td>      combined_output = same_stream (stdout, stderr);</td></tr>
+<tr><th id="192">192</th><td>      prepare_mutex_handle_string (sync_handle);</td></tr>
+<tr><th id="193">193</th><td>    }</td></tr>
+<tr><th id="194">194</th><td></td></tr>
+<tr><th id="195">195</th><td><u>#<span data-ppcond="182">else</span></u></td></tr>
+<tr><th id="196">196</th><td>  <b>if</b> (<a class="macro" href="#51" title="((fcntl (fileno (stdout), 1) != -1) || ((*__errno_location ()) != 9))" data-ref="_M/STREAM_OK">STREAM_OK</a> (<a class="macro" href="../include/stdio.h.html#173" title="stdout" data-ref="_M/stdout">stdout</a>))</td></tr>
+<tr><th id="197">197</th><td>    {</td></tr>
+<tr><th id="198">198</th><td>      <b>struct</b> <a class="type" href="../include/x86_64-linux-gnu/bits/stat.h.html#stat" title='stat' data-ref="stat">stat</a> <dfn class="local col7 decl" id="17stbuf_o" title='stbuf_o' data-type='struct stat' data-ref="17stbuf_o">stbuf_o</dfn>, <dfn class="local col8 decl" id="18stbuf_e" title='stbuf_e' data-type='struct stat' data-ref="18stbuf_e">stbuf_e</dfn>;</td></tr>
+<tr><th id="199">199</th><td></td></tr>
+<tr><th id="200">200</th><td>      <a class="tu ref" href="#sync_handle" title='sync_handle' data-use='w' data-ref="sync_handle">sync_handle</a> = <a class="ref" href="../include/stdio.h.html#fileno" title='fileno' data-ref="fileno">fileno</a> (<a class="macro" href="../include/stdio.h.html#173" title="stdout" data-ref="_M/stdout">stdout</a>);</td></tr>
+<tr><th id="201">201</th><td>      <a class="local col6 ref" href="#16combined_output" title='combined_output' data-ref="16combined_output">combined_output</a> = (<a class="ref" href="../include/x86_64-linux-gnu/sys/stat.h.html#fstat" title='fstat' data-ref="fstat">fstat</a> (<a class="ref" href="../include/stdio.h.html#fileno" title='fileno' data-ref="fileno">fileno</a> (<a class="macro" href="../include/stdio.h.html#173" title="stdout" data-ref="_M/stdout">stdout</a>), &amp;<a class="local col7 ref" href="#17stbuf_o" title='stbuf_o' data-ref="17stbuf_o">stbuf_o</a>) == <var>0</var></td></tr>
+<tr><th id="202">202</th><td>                         &amp;&amp; <a class="ref" href="../include/x86_64-linux-gnu/sys/stat.h.html#fstat" title='fstat' data-ref="fstat">fstat</a> (<a class="ref" href="../include/stdio.h.html#fileno" title='fileno' data-ref="fileno">fileno</a> (<a class="macro" href="../include/stdio.h.html#174" title="stderr" data-ref="_M/stderr">stderr</a>), &amp;<a class="local col8 ref" href="#18stbuf_e" title='stbuf_e' data-ref="18stbuf_e">stbuf_e</a>) == <var>0</var></td></tr>
+<tr><th id="203">203</th><td>                         &amp;&amp; <a class="local col7 ref" href="#17stbuf_o" title='stbuf_o' data-ref="17stbuf_o">stbuf_o</a>.<a class="ref" href="../include/x86_64-linux-gnu/bits/stat.h.html#stat::st_dev" title='stat::st_dev' data-ref="stat::st_dev">st_dev</a> == <a class="local col8 ref" href="#18stbuf_e" title='stbuf_e' data-ref="18stbuf_e">stbuf_e</a>.<a class="ref" href="../include/x86_64-linux-gnu/bits/stat.h.html#stat::st_dev" title='stat::st_dev' data-ref="stat::st_dev">st_dev</a></td></tr>
+<tr><th id="204">204</th><td>                         &amp;&amp; <a class="local col7 ref" href="#17stbuf_o" title='stbuf_o' data-ref="17stbuf_o">stbuf_o</a>.<a class="ref" href="../include/x86_64-linux-gnu/bits/stat.h.html#stat::st_ino" title='stat::st_ino' data-ref="stat::st_ino">st_ino</a> == <a class="local col8 ref" href="#18stbuf_e" title='stbuf_e' data-ref="18stbuf_e">stbuf_e</a>.<a class="ref" href="../include/x86_64-linux-gnu/bits/stat.h.html#stat::st_ino" title='stat::st_ino' data-ref="stat::st_ino">st_ino</a>);</td></tr>
+<tr><th id="205">205</th><td>    }</td></tr>
+<tr><th id="206">206</th><td>  <b>else</b> <b>if</b> (<a class="macro" href="#51" title="((fcntl (fileno (stderr), 1) != -1) || ((*__errno_location ()) != 9))" data-ref="_M/STREAM_OK">STREAM_OK</a> (<a class="macro" href="../include/stdio.h.html#174" title="stderr" data-ref="_M/stderr">stderr</a>))</td></tr>
+<tr><th id="207">207</th><td>    <a class="tu ref" href="#sync_handle" title='sync_handle' data-use='w' data-ref="sync_handle">sync_handle</a> = <a class="ref" href="../include/stdio.h.html#fileno" title='fileno' data-ref="fileno">fileno</a> (<a class="macro" href="../include/stdio.h.html#174" title="stderr" data-ref="_M/stderr">stderr</a>);</td></tr>
+<tr><th id="208">208</th><td>  <b>else</b></td></tr>
+<tr><th id="209">209</th><td>    {</td></tr>
+<tr><th id="210">210</th><td>      <a class="ref" href="#perror_with_name" title='perror_with_name' data-ref="perror_with_name">perror_with_name</a> (<q>"output-sync suppressed: "</q>, <q>"stderr"</q>);</td></tr>
+<tr><th id="211">211</th><td>      <a class="ref" href="makeint.h.html#output_sync" title='output_sync' data-ref="output_sync">output_sync</a> = <var>0</var>;</td></tr>
+<tr><th id="212">212</th><td>    }</td></tr>
+<tr><th id="213">213</th><td><u>#<span data-ppcond="182">endif</span></u></td></tr>
+<tr><th id="214">214</th><td></td></tr>
+<tr><th id="215">215</th><td>  <b>return</b> <a class="local col6 ref" href="#16combined_output" title='combined_output' data-ref="16combined_output">combined_output</a>;</td></tr>
+<tr><th id="216">216</th><td>}</td></tr>
+<tr><th id="217">217</th><td></td></tr>
+<tr><th id="218">218</th><td><i  data-doc="pump_from_tmp">/* Support routine for output_sync() */</i></td></tr>
+<tr><th id="219">219</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="220">220</th><td><dfn class="tu decl def" id="pump_from_tmp" title='pump_from_tmp' data-type='void pump_from_tmp(int from, FILE * to)' data-ref="pump_from_tmp">pump_from_tmp</dfn> (<em>int</em> <dfn class="local col9 decl" id="19from" title='from' data-type='int' data-ref="19from">from</dfn>, <a class="typedef" href="../include/stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> *<dfn class="local col0 decl" id="20to" title='to' data-type='FILE *' data-ref="20to">to</dfn>)</td></tr>
+<tr><th id="221">221</th><td>{</td></tr>
+<tr><th id="222">222</th><td>  <em>static</em> <em>char</em> <dfn class="local col1 decl" id="21buffer" title='buffer' data-type='char [8192]' data-ref="21buffer">buffer</dfn>[<var>8192</var>];</td></tr>
+<tr><th id="223">223</th><td></td></tr>
+<tr><th id="224">224</th><td><u>#<span data-ppcond="224">ifdef</span> <span class="macro" data-ref="_M/WINDOWS32">WINDOWS32</span></u></td></tr>
+<tr><th id="225">225</th><td>  <em>int</em> prev_mode;</td></tr>
+<tr><th id="226">226</th><td></td></tr>
+<tr><th id="227">227</th><td>  <i>/* "from" is opened by open_tmpfd, which does it in binary mode, so</i></td></tr>
+<tr><th id="228">228</th><td><i>     we need the mode of "to" to match that.  */</i></td></tr>
+<tr><th id="229">229</th><td>  prev_mode = _setmode (fileno (to), _O_BINARY);</td></tr>
+<tr><th id="230">230</th><td><u>#<span data-ppcond="224">endif</span></u></td></tr>
+<tr><th id="231">231</th><td></td></tr>
+<tr><th id="232">232</th><td>  <b>if</b> (<a class="ref" href="../include/unistd.h.html#lseek" title='lseek' data-ref="lseek">lseek</a> (<a class="local col9 ref" href="#19from" title='from' data-ref="19from">from</a>, <var>0</var>, <a class="macro" href="../include/fcntl.h.html#136" title="0" data-ref="_M/SEEK_SET">SEEK_SET</a>) == -<var>1</var>)</td></tr>
+<tr><th id="233">233</th><td>    <a class="ref" href="../include/stdio.h.html#perror" title='perror' data-ref="perror">perror</a> (<q>"lseek()"</q>);</td></tr>
+<tr><th id="234">234</th><td></td></tr>
+<tr><th id="235">235</th><td>  <b>while</b> (<var>1</var>)</td></tr>
+<tr><th id="236">236</th><td>    {</td></tr>
+<tr><th id="237">237</th><td>      <em>int</em> <dfn class="local col2 decl" id="22len" title='len' data-type='int' data-ref="22len">len</dfn>;</td></tr>
+<tr><th id="238">238</th><td>      <a class="macro" href="make.h.html#558" title="while (((len)=read (from, buffer, sizeof (buffer)))==-1 &amp;&amp; (*__errno_location ())==4)" data-ref="_M/EINTRLOOP">EINTRLOOP</a> (<a class="local col2 ref" href="#22len" title='len' data-ref="22len">len</a>, <a class="ref" href="../include/unistd.h.html#read" title='read' data-ref="read">read</a> (<a class="local col9 ref" href="#19from" title='from' data-ref="19from">from</a>, <a class="local col1 ref" href="#21buffer" title='buffer' data-ref="21buffer">buffer</a>, <b>sizeof</b> (<a class="local col1 ref" href="#21buffer" title='buffer' data-ref="21buffer">buffer</a>)));</td></tr>
+<tr><th id="239">239</th><td>      <b>if</b> (<a class="local col2 ref" href="#22len" title='len' data-ref="22len">len</a> &lt; <var>0</var>)</td></tr>
+<tr><th id="240">240</th><td>        <a class="ref" href="../include/stdio.h.html#perror" title='perror' data-ref="perror">perror</a> (<q>"read()"</q>);</td></tr>
+<tr><th id="241">241</th><td>      <b>if</b> (<a class="local col2 ref" href="#22len" title='len' data-ref="22len">len</a> &lt;= <var>0</var>)</td></tr>
+<tr><th id="242">242</th><td>        <b>break</b>;</td></tr>
+<tr><th id="243">243</th><td>      <b>if</b> (<a class="ref" href="../include/stdio.h.html#fwrite" title='fwrite' data-ref="fwrite">fwrite</a> (<a class="local col1 ref" href="#21buffer" title='buffer' data-ref="21buffer">buffer</a>, <a class="local col2 ref" href="#22len" title='len' data-ref="22len">len</a>, <var>1</var>, <a class="local col0 ref" href="#20to" title='to' data-ref="20to">to</a>) &lt; <var>1</var>)</td></tr>
+<tr><th id="244">244</th><td>        {</td></tr>
+<tr><th id="245">245</th><td>          <a class="ref" href="../include/stdio.h.html#perror" title='perror' data-ref="perror">perror</a> (<q>"fwrite()"</q>);</td></tr>
+<tr><th id="246">246</th><td>          <b>break</b>;</td></tr>
+<tr><th id="247">247</th><td>        }</td></tr>
+<tr><th id="248">248</th><td>      <a class="ref" href="../include/stdio.h.html#fflush" title='fflush' data-ref="fflush">fflush</a> (<a class="local col0 ref" href="#20to" title='to' data-ref="20to">to</a>);</td></tr>
+<tr><th id="249">249</th><td>    }</td></tr>
+<tr><th id="250">250</th><td></td></tr>
+<tr><th id="251">251</th><td><u>#<span data-ppcond="251">ifdef</span> <span class="macro" data-ref="_M/WINDOWS32">WINDOWS32</span></u></td></tr>
+<tr><th id="252">252</th><td>  <i>/* Switch "to" back to its original mode, so that log messages by</i></td></tr>
+<tr><th id="253">253</th><td><i>     Make have the same EOL format as without --output-sync.  */</i></td></tr>
+<tr><th id="254">254</th><td>  _setmode (fileno (to), prev_mode);</td></tr>
+<tr><th id="255">255</th><td><u>#<span data-ppcond="251">endif</span></u></td></tr>
+<tr><th id="256">256</th><td>}</td></tr>
+<tr><th id="257">257</th><td></td></tr>
+<tr><th id="258">258</th><td><i  data-doc="acquire_semaphore">/* Obtain the lock for writing output.  */</i></td></tr>
+<tr><th id="259">259</th><td><em>static</em> <em>void</em> *</td></tr>
+<tr><th id="260">260</th><td><dfn class="tu decl def" id="acquire_semaphore" title='acquire_semaphore' data-type='void * acquire_semaphore()' data-ref="acquire_semaphore">acquire_semaphore</dfn> (<em>void</em>)</td></tr>
+<tr><th id="261">261</th><td>{</td></tr>
+<tr><th id="262">262</th><td>  <em>static</em> <b>struct</b> <a class="type" href="../include/x86_64-linux-gnu/bits/fcntl.h.html#flock" title='flock' data-ref="flock">flock</a> <dfn class="local col3 decl" id="23fl" title='fl' data-type='struct flock' data-ref="23fl">fl</dfn>;</td></tr>
+<tr><th id="263">263</th><td></td></tr>
+<tr><th id="264">264</th><td>  <a class="local col3 ref" href="#23fl" title='fl' data-ref="23fl">fl</a>.<a class="ref" href="../include/x86_64-linux-gnu/bits/fcntl.h.html#flock::l_type" title='flock::l_type' data-ref="flock::l_type">l_type</a> = <a class="macro" href="../include/x86_64-linux-gnu/bits/fcntl-linux.h.html#217" title="1" data-ref="_M/F_WRLCK">F_WRLCK</a>;</td></tr>
+<tr><th id="265">265</th><td>  <a class="local col3 ref" href="#23fl" title='fl' data-ref="23fl">fl</a>.<a class="ref" href="../include/x86_64-linux-gnu/bits/fcntl.h.html#flock::l_whence" title='flock::l_whence' data-ref="flock::l_whence">l_whence</a> = <a class="macro" href="../include/fcntl.h.html#136" title="0" data-ref="_M/SEEK_SET">SEEK_SET</a>;</td></tr>
+<tr><th id="266">266</th><td>  <a class="local col3 ref" href="#23fl" title='fl' data-ref="23fl">fl</a>.<a class="ref" href="../include/x86_64-linux-gnu/bits/fcntl.h.html#flock::l_start" title='flock::l_start' data-ref="flock::l_start">l_start</a> = <var>0</var>;</td></tr>
+<tr><th id="267">267</th><td>  <a class="local col3 ref" href="#23fl" title='fl' data-ref="23fl">fl</a>.<a class="ref" href="../include/x86_64-linux-gnu/bits/fcntl.h.html#flock::l_len" title='flock::l_len' data-ref="flock::l_len">l_len</a> = <var>1</var>;</td></tr>
+<tr><th id="268">268</th><td>  <b>if</b> (<a class="ref" href="../include/fcntl.h.html#fcntl" title='fcntl' data-ref="fcntl">fcntl</a> (<a class="tu ref" href="#sync_handle" title='sync_handle' data-use='r' data-ref="sync_handle">sync_handle</a>, <a class="macro" href="../include/x86_64-linux-gnu/bits/fcntl-linux.h.html#107" title="7" data-ref="_M/F_SETLKW">F_SETLKW</a>, &amp;<a class="local col3 ref" href="#23fl" title='fl' data-ref="23fl">fl</a>) != -<var>1</var>)</td></tr>
+<tr><th id="269">269</th><td>    <b>return</b> &amp;<a class="local col3 ref" href="#23fl" title='fl' data-ref="23fl">fl</a>;</td></tr>
+<tr><th id="270">270</th><td>  <a class="ref" href="../include/stdio.h.html#perror" title='perror' data-ref="perror">perror</a> (<q>"fcntl()"</q>);</td></tr>
+<tr><th id="271">271</th><td>  <b>return</b> <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="272">272</th><td>}</td></tr>
+<tr><th id="273">273</th><td></td></tr>
+<tr><th id="274">274</th><td><i  data-doc="release_semaphore">/* Release the lock for writing output.  */</i></td></tr>
+<tr><th id="275">275</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="276">276</th><td><dfn class="tu decl def" id="release_semaphore" title='release_semaphore' data-type='void release_semaphore(void * sem)' data-ref="release_semaphore">release_semaphore</dfn> (<em>void</em> *<dfn class="local col4 decl" id="24sem" title='sem' data-type='void *' data-ref="24sem">sem</dfn>)</td></tr>
+<tr><th id="277">277</th><td>{</td></tr>
+<tr><th id="278">278</th><td>  <b>struct</b> <a class="type" href="../include/x86_64-linux-gnu/bits/fcntl.h.html#flock" title='flock' data-ref="flock">flock</a> *<dfn class="local col5 decl" id="25flp" title='flp' data-type='struct flock *' data-ref="25flp">flp</dfn> = (<b>struct</b> <a class="type" href="../include/x86_64-linux-gnu/bits/fcntl.h.html#flock" title='flock' data-ref="flock">flock</a> *)<a class="local col4 ref" href="#24sem" title='sem' data-ref="24sem">sem</a>;</td></tr>
+<tr><th id="279">279</th><td>  <a class="local col5 ref" href="#25flp" title='flp' data-ref="25flp">flp</a>-&gt;<a class="ref" href="../include/x86_64-linux-gnu/bits/fcntl.h.html#flock::l_type" title='flock::l_type' data-ref="flock::l_type">l_type</a> = <a class="macro" href="../include/x86_64-linux-gnu/bits/fcntl-linux.h.html#218" title="2" data-ref="_M/F_UNLCK">F_UNLCK</a>;</td></tr>
+<tr><th id="280">280</th><td>  <b>if</b> (<a class="ref" href="../include/fcntl.h.html#fcntl" title='fcntl' data-ref="fcntl">fcntl</a> (<a class="tu ref" href="#sync_handle" title='sync_handle' data-use='r' data-ref="sync_handle">sync_handle</a>, <a class="macro" href="../include/x86_64-linux-gnu/bits/fcntl-linux.h.html#107" title="7" data-ref="_M/F_SETLKW">F_SETLKW</a>, <a class="local col5 ref" href="#25flp" title='flp' data-ref="25flp">flp</a>) == -<var>1</var>)</td></tr>
+<tr><th id="281">281</th><td>    <a class="ref" href="../include/stdio.h.html#perror" title='perror' data-ref="perror">perror</a> (<q>"fcntl()"</q>);</td></tr>
+<tr><th id="282">282</th><td>}</td></tr>
+<tr><th id="283">283</th><td></td></tr>
+<tr><th id="284">284</th><td><i>/* Returns a file descriptor to a temporary file.  The file is automatically</i></td></tr>
+<tr><th id="285">285</th><td><i>   closed/deleted on exit.  Don't use a FILE* stream.  */</i></td></tr>
+<tr><th id="286">286</th><td><em>int</em></td></tr>
+<tr><th id="287">287</th><td><dfn class="decl def" id="output_tmpfd" title='output_tmpfd' data-ref="output_tmpfd">output_tmpfd</dfn> (<em>void</em>)</td></tr>
+<tr><th id="288">288</th><td>{</td></tr>
+<tr><th id="289">289</th><td>  <em>int</em> <dfn class="local col6 decl" id="26fd" title='fd' data-type='int' data-ref="26fd">fd</dfn> = -<var>1</var>;</td></tr>
+<tr><th id="290">290</th><td>  <a class="typedef" href="../include/stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> *<dfn class="local col7 decl" id="27tfile" title='tfile' data-type='FILE *' data-ref="27tfile">tfile</dfn> = <a class="ref" href="../include/stdio.h.html#tmpfile" title='tmpfile' data-ref="tmpfile">tmpfile</a> ();</td></tr>
+<tr><th id="291">291</th><td></td></tr>
+<tr><th id="292">292</th><td>  <b>if</b> (! <a class="local col7 ref" href="#27tfile" title='tfile' data-ref="27tfile">tfile</a>)</td></tr>
+<tr><th id="293">293</th><td>    <a class="ref" href="#pfatal_with_name" title='pfatal_with_name' data-ref="pfatal_with_name">pfatal_with_name</a> (<q>"tmpfile"</q>);</td></tr>
+<tr><th id="294">294</th><td></td></tr>
+<tr><th id="295">295</th><td>  <i>/* Create a duplicate so we can close the stream.  */</i></td></tr>
+<tr><th id="296">296</th><td>  <a class="local col6 ref" href="#26fd" title='fd' data-ref="26fd">fd</a> = <a class="ref" href="../include/unistd.h.html#dup" title='dup' data-ref="dup">dup</a> (<a class="ref" href="../include/stdio.h.html#fileno" title='fileno' data-ref="fileno">fileno</a> (<a class="local col7 ref" href="#27tfile" title='tfile' data-ref="27tfile">tfile</a>));</td></tr>
+<tr><th id="297">297</th><td>  <b>if</b> (<a class="local col6 ref" href="#26fd" title='fd' data-ref="26fd">fd</a> &lt; <var>0</var>)</td></tr>
+<tr><th id="298">298</th><td>    <a class="ref" href="#pfatal_with_name" title='pfatal_with_name' data-ref="pfatal_with_name">pfatal_with_name</a> (<q>"dup"</q>);</td></tr>
+<tr><th id="299">299</th><td></td></tr>
+<tr><th id="300">300</th><td>  <a class="ref" href="../include/stdio.h.html#fclose" title='fclose' data-ref="fclose">fclose</a> (<a class="local col7 ref" href="#27tfile" title='tfile' data-ref="27tfile">tfile</a>);</td></tr>
+<tr><th id="301">301</th><td></td></tr>
+<tr><th id="302">302</th><td>  <a class="tu ref" href="#set_append_mode" title='set_append_mode' data-use='c' data-ref="set_append_mode">set_append_mode</a> (<a class="local col6 ref" href="#26fd" title='fd' data-ref="26fd">fd</a>);</td></tr>
+<tr><th id="303">303</th><td></td></tr>
+<tr><th id="304">304</th><td>  <b>return</b> <a class="local col6 ref" href="#26fd" title='fd' data-ref="26fd">fd</a>;</td></tr>
+<tr><th id="305">305</th><td>}</td></tr>
+<tr><th id="306">306</th><td></td></tr>
+<tr><th id="307">307</th><td><i  data-doc="setup_tmpfile">/* Adds file descriptors to the child structure to support output_sync; one</i></td></tr>
+<tr><th id="308">308</th><td><i  data-doc="setup_tmpfile">   for stdout and one for stderr as long as they are open.  If stdout and</i></td></tr>
+<tr><th id="309">309</th><td><i  data-doc="setup_tmpfile">   stderr share a device they can share a temp file too.</i></td></tr>
+<tr><th id="310">310</th><td><i  data-doc="setup_tmpfile">   Will reset output_sync on error.  */</i></td></tr>
+<tr><th id="311">311</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="312">312</th><td><dfn class="tu decl def" id="setup_tmpfile" title='setup_tmpfile' data-type='void setup_tmpfile(struct output * out)' data-ref="setup_tmpfile">setup_tmpfile</dfn> (<b>struct</b> <a class="type" href="output.h.html#output" title='output' data-ref="output">output</a> *<dfn class="local col8 decl" id="28out" title='out' data-type='struct output *' data-ref="28out">out</dfn>)</td></tr>
+<tr><th id="313">313</th><td>{</td></tr>
+<tr><th id="314">314</th><td>  <i>/* Is make's stdout going to the same place as stderr?  */</i></td></tr>
+<tr><th id="315">315</th><td>  <em>static</em> <em>int</em> <dfn class="local col9 decl" id="29combined_output" title='combined_output' data-type='int' data-ref="29combined_output">combined_output</dfn> = -<var>1</var>;</td></tr>
+<tr><th id="316">316</th><td></td></tr>
+<tr><th id="317">317</th><td>  <b>if</b> (<a class="local col9 ref" href="#29combined_output" title='combined_output' data-ref="29combined_output">combined_output</a> &lt; <var>0</var>)</td></tr>
+<tr><th id="318">318</th><td>    <a class="local col9 ref" href="#29combined_output" title='combined_output' data-ref="29combined_output">combined_output</a> = <a class="tu ref" href="#sync_init" title='sync_init' data-use='c' data-ref="sync_init">sync_init</a> ();</td></tr>
+<tr><th id="319">319</th><td></td></tr>
+<tr><th id="320">320</th><td>  <b>if</b> (<a class="macro" href="#51" title="((fcntl (fileno (stdout), 1) != -1) || ((*__errno_location ()) != 9))" data-ref="_M/STREAM_OK">STREAM_OK</a> (<a class="macro" href="../include/stdio.h.html#173" title="stdout" data-ref="_M/stdout">stdout</a>))</td></tr>
+<tr><th id="321">321</th><td>    {</td></tr>
+<tr><th id="322">322</th><td>      <em>int</em> <dfn class="local col0 decl" id="30fd" title='fd' data-type='int' data-ref="30fd">fd</dfn> = <a class="ref" href="#output_tmpfd" title='output_tmpfd' data-ref="output_tmpfd">output_tmpfd</a> ();</td></tr>
+<tr><th id="323">323</th><td>      <b>if</b> (<a class="local col0 ref" href="#30fd" title='fd' data-ref="30fd">fd</a> &lt; <var>0</var>)</td></tr>
+<tr><th id="324">324</th><td>        <b>goto</b> <a class="lbl" href="#31error" data-ref="31error">error</a>;</td></tr>
+<tr><th id="325">325</th><td>      <a class="macro" href="job.h.html#41" title="(void) fcntl ((fd), 2, 1)" data-ref="_M/CLOSE_ON_EXEC">CLOSE_ON_EXEC</a> (<a class="local col0 ref" href="#30fd" title='fd' data-ref="30fd">fd</a>);</td></tr>
+<tr><th id="326">326</th><td>      <a class="local col8 ref" href="#28out" title='out' data-ref="28out">out</a>-&gt;<a class="ref" href="output.h.html#output::out" title='output::out' data-ref="output::out">out</a> = <a class="local col0 ref" href="#30fd" title='fd' data-ref="30fd">fd</a>;</td></tr>
+<tr><th id="327">327</th><td>    }</td></tr>
+<tr><th id="328">328</th><td></td></tr>
+<tr><th id="329">329</th><td>  <b>if</b> (<a class="macro" href="#51" title="((fcntl (fileno (stderr), 1) != -1) || ((*__errno_location ()) != 9))" data-ref="_M/STREAM_OK">STREAM_OK</a> (<a class="macro" href="../include/stdio.h.html#174" title="stderr" data-ref="_M/stderr">stderr</a>))</td></tr>
+<tr><th id="330">330</th><td>    {</td></tr>
+<tr><th id="331">331</th><td>      <b>if</b> (<a class="local col8 ref" href="#28out" title='out' data-ref="28out">out</a>-&gt;<a class="ref" href="output.h.html#output::out" title='output::out' data-ref="output::out">out</a> != <a class="macro" href="#46" title="(-1)" data-ref="_M/OUTPUT_NONE">OUTPUT_NONE</a> &amp;&amp; <a class="local col9 ref" href="#29combined_output" title='combined_output' data-ref="29combined_output">combined_output</a>)</td></tr>
+<tr><th id="332">332</th><td>        <a class="local col8 ref" href="#28out" title='out' data-ref="28out">out</a>-&gt;<a class="ref" href="output.h.html#output::err" title='output::err' data-ref="output::err">err</a> = <a class="local col8 ref" href="#28out" title='out' data-ref="28out">out</a>-&gt;<a class="ref" href="output.h.html#output::out" title='output::out' data-ref="output::out">out</a>;</td></tr>
+<tr><th id="333">333</th><td>      <b>else</b></td></tr>
+<tr><th id="334">334</th><td>        {</td></tr>
+<tr><th id="335">335</th><td>          <em>int</em> <dfn class="local col2 decl" id="32fd" title='fd' data-type='int' data-ref="32fd">fd</dfn> = <a class="ref" href="#output_tmpfd" title='output_tmpfd' data-ref="output_tmpfd">output_tmpfd</a> ();</td></tr>
+<tr><th id="336">336</th><td>          <b>if</b> (<a class="local col2 ref" href="#32fd" title='fd' data-ref="32fd">fd</a> &lt; <var>0</var>)</td></tr>
+<tr><th id="337">337</th><td>            <b>goto</b> <a class="lbl" href="#31error" data-ref="31error">error</a>;</td></tr>
+<tr><th id="338">338</th><td>          <a class="macro" href="job.h.html#41" title="(void) fcntl ((fd), 2, 1)" data-ref="_M/CLOSE_ON_EXEC">CLOSE_ON_EXEC</a> (<a class="local col2 ref" href="#32fd" title='fd' data-ref="32fd">fd</a>);</td></tr>
+<tr><th id="339">339</th><td>          <a class="local col8 ref" href="#28out" title='out' data-ref="28out">out</a>-&gt;<a class="ref" href="output.h.html#output::err" title='output::err' data-ref="output::err">err</a> = <a class="local col2 ref" href="#32fd" title='fd' data-ref="32fd">fd</a>;</td></tr>
+<tr><th id="340">340</th><td>        }</td></tr>
+<tr><th id="341">341</th><td>    }</td></tr>
+<tr><th id="342">342</th><td></td></tr>
+<tr><th id="343">343</th><td>  <b>return</b>;</td></tr>
+<tr><th id="344">344</th><td></td></tr>
+<tr><th id="345">345</th><td>  <i>/* If we failed to create a temp file, disable output sync going forward.  */</i></td></tr>
+<tr><th id="346">346</th><td> <dfn class="lbl" id="31error" data-ref="31error">error</dfn>:</td></tr>
+<tr><th id="347">347</th><td>  <a class="ref" href="#output_close" title='output_close' data-ref="output_close">output_close</a> (<a class="local col8 ref" href="#28out" title='out' data-ref="28out">out</a>);</td></tr>
+<tr><th id="348">348</th><td>  <a class="ref" href="makeint.h.html#output_sync" title='output_sync' data-ref="output_sync">output_sync</a> = <a class="macro" href="globals.h.html#7" title="0" data-ref="_M/OUTPUT_SYNC_NONE">OUTPUT_SYNC_NONE</a>;</td></tr>
+<tr><th id="349">349</th><td>}</td></tr>
+<tr><th id="350">350</th><td></td></tr>
+<tr><th id="351">351</th><td><i>/* Synchronize the output of jobs in -j mode to keep the results of</i></td></tr>
+<tr><th id="352">352</th><td><i>   each job together. This is done by holding the results in temp files,</i></td></tr>
+<tr><th id="353">353</th><td><i>   one for stdout and potentially another for stderr, and only releasing</i></td></tr>
+<tr><th id="354">354</th><td><i>   them to "real" stdout/stderr when a semaphore can be obtained. */</i></td></tr>
+<tr><th id="355">355</th><td></td></tr>
+<tr><th id="356">356</th><td><em>void</em></td></tr>
+<tr><th id="357">357</th><td><dfn class="decl def" id="output_dump" title='output_dump' data-ref="output_dump">output_dump</dfn> (<b>struct</b> <a class="type" href="output.h.html#output" title='output' data-ref="output">output</a> *<dfn class="local col3 decl" id="33out" title='out' data-type='struct output *' data-ref="33out">out</dfn>)</td></tr>
+<tr><th id="358">358</th><td>{</td></tr>
+<tr><th id="359">359</th><td>  <em>int</em> <dfn class="local col4 decl" id="34outfd_not_empty" title='outfd_not_empty' data-type='int' data-ref="34outfd_not_empty">outfd_not_empty</dfn> = <a class="macro" href="#174" title="((out-&gt;out) != (-1) &amp;&amp; lseek ((out-&gt;out), 0, 2) &gt; 0)" data-ref="_M/FD_NOT_EMPTY">FD_NOT_EMPTY</a> (<a class="local col3 ref" href="#33out" title='out' data-ref="33out">out</a>-&gt;<a class="ref" href="output.h.html#output::out" title='output::out' data-ref="output::out">out</a>);</td></tr>
+<tr><th id="360">360</th><td>  <em>int</em> <dfn class="local col5 decl" id="35errfd_not_empty" title='errfd_not_empty' data-type='int' data-ref="35errfd_not_empty">errfd_not_empty</dfn> = <a class="macro" href="#174" title="((out-&gt;err) != (-1) &amp;&amp; lseek ((out-&gt;err), 0, 2) &gt; 0)" data-ref="_M/FD_NOT_EMPTY">FD_NOT_EMPTY</a> (<a class="local col3 ref" href="#33out" title='out' data-ref="33out">out</a>-&gt;<a class="ref" href="output.h.html#output::err" title='output::err' data-ref="output::err">err</a>);</td></tr>
+<tr><th id="361">361</th><td></td></tr>
+<tr><th id="362">362</th><td>  <b>if</b> (<a class="local col4 ref" href="#34outfd_not_empty" title='outfd_not_empty' data-ref="34outfd_not_empty">outfd_not_empty</a> || <a class="local col5 ref" href="#35errfd_not_empty" title='errfd_not_empty' data-ref="35errfd_not_empty">errfd_not_empty</a>)</td></tr>
+<tr><th id="363">363</th><td>    {</td></tr>
+<tr><th id="364">364</th><td>      <em>int</em> <dfn class="local col6 decl" id="36traced" title='traced' data-type='int' data-ref="36traced">traced</dfn> = <var>0</var>;</td></tr>
+<tr><th id="365">365</th><td></td></tr>
+<tr><th id="366">366</th><td>      <i>/* Try to acquire the semaphore.  If it fails, dump the output</i></td></tr>
+<tr><th id="367">367</th><td><i>         unsynchronized; still better than silently discarding it.</i></td></tr>
+<tr><th id="368">368</th><td><i>         We want to keep this lock for as little time as possible.  */</i></td></tr>
+<tr><th id="369">369</th><td>      <em>void</em> *<dfn class="local col7 decl" id="37sem" title='sem' data-type='void *' data-ref="37sem">sem</dfn> = <a class="tu ref" href="#acquire_semaphore" title='acquire_semaphore' data-use='c' data-ref="acquire_semaphore">acquire_semaphore</a> ();</td></tr>
+<tr><th id="370">370</th><td></td></tr>
+<tr><th id="371">371</th><td>      <i>/* Log the working directory for this dump.  */</i></td></tr>
+<tr><th id="372">372</th><td>      <b>if</b> (<a class="ref" href="makeint.h.html#print_directory_flag" title='print_directory_flag' data-ref="print_directory_flag">print_directory_flag</a> &amp;&amp; <a class="ref" href="makeint.h.html#output_sync" title='output_sync' data-ref="output_sync">output_sync</a> != <a class="macro" href="globals.h.html#10" title="3" data-ref="_M/OUTPUT_SYNC_RECURSE">OUTPUT_SYNC_RECURSE</a>)</td></tr>
+<tr><th id="373">373</th><td>        <a class="local col6 ref" href="#36traced" title='traced' data-ref="36traced">traced</a> = <a class="ref" href="#log_working_directory" title='log_working_directory' data-ref="log_working_directory">log_working_directory</a> (<var>1</var>);</td></tr>
+<tr><th id="374">374</th><td></td></tr>
+<tr><th id="375">375</th><td>      <b>if</b> (<a class="local col4 ref" href="#34outfd_not_empty" title='outfd_not_empty' data-ref="34outfd_not_empty">outfd_not_empty</a>)</td></tr>
+<tr><th id="376">376</th><td>        <a class="tu ref" href="#pump_from_tmp" title='pump_from_tmp' data-use='c' data-ref="pump_from_tmp">pump_from_tmp</a> (<a class="local col3 ref" href="#33out" title='out' data-ref="33out">out</a>-&gt;<a class="ref" href="output.h.html#output::out" title='output::out' data-ref="output::out">out</a>, <a class="macro" href="../include/stdio.h.html#173" title="stdout" data-ref="_M/stdout">stdout</a>);</td></tr>
+<tr><th id="377">377</th><td>      <b>if</b> (<a class="local col5 ref" href="#35errfd_not_empty" title='errfd_not_empty' data-ref="35errfd_not_empty">errfd_not_empty</a> &amp;&amp; <a class="local col3 ref" href="#33out" title='out' data-ref="33out">out</a>-&gt;<a class="ref" href="output.h.html#output::err" title='output::err' data-ref="output::err">err</a> != <a class="local col3 ref" href="#33out" title='out' data-ref="33out">out</a>-&gt;<a class="ref" href="output.h.html#output::out" title='output::out' data-ref="output::out">out</a>)</td></tr>
+<tr><th id="378">378</th><td>        <a class="tu ref" href="#pump_from_tmp" title='pump_from_tmp' data-use='c' data-ref="pump_from_tmp">pump_from_tmp</a> (<a class="local col3 ref" href="#33out" title='out' data-ref="33out">out</a>-&gt;<a class="ref" href="output.h.html#output::err" title='output::err' data-ref="output::err">err</a>, <a class="macro" href="../include/stdio.h.html#174" title="stderr" data-ref="_M/stderr">stderr</a>);</td></tr>
+<tr><th id="379">379</th><td></td></tr>
+<tr><th id="380">380</th><td>      <b>if</b> (<a class="local col6 ref" href="#36traced" title='traced' data-ref="36traced">traced</a>)</td></tr>
+<tr><th id="381">381</th><td>        <a class="ref" href="#log_working_directory" title='log_working_directory' data-ref="log_working_directory">log_working_directory</a> (<var>0</var>);</td></tr>
+<tr><th id="382">382</th><td></td></tr>
+<tr><th id="383">383</th><td>      <i>/* Exit the critical section.  */</i></td></tr>
+<tr><th id="384">384</th><td>      <b>if</b> (<a class="local col7 ref" href="#37sem" title='sem' data-ref="37sem">sem</a>)</td></tr>
+<tr><th id="385">385</th><td>        <a class="tu ref" href="#release_semaphore" title='release_semaphore' data-use='c' data-ref="release_semaphore">release_semaphore</a> (<a class="local col7 ref" href="#37sem" title='sem' data-ref="37sem">sem</a>);</td></tr>
+<tr><th id="386">386</th><td></td></tr>
+<tr><th id="387">387</th><td>      <i>/* Truncate and reset the output, in case we use it again.  */</i></td></tr>
+<tr><th id="388">388</th><td>      <b>if</b> (<a class="local col3 ref" href="#33out" title='out' data-ref="33out">out</a>-&gt;<a class="ref" href="output.h.html#output::out" title='output::out' data-ref="output::out">out</a> != <a class="macro" href="#46" title="(-1)" data-ref="_M/OUTPUT_NONE">OUTPUT_NONE</a>)</td></tr>
+<tr><th id="389">389</th><td>        {</td></tr>
+<tr><th id="390">390</th><td>          <em>int</em> <dfn class="local col8 decl" id="38e" title='e' data-type='int' data-ref="38e">e</dfn>;</td></tr>
+<tr><th id="391">391</th><td>          <a class="ref" href="../include/unistd.h.html#lseek" title='lseek' data-ref="lseek">lseek</a> (<a class="local col3 ref" href="#33out" title='out' data-ref="33out">out</a>-&gt;<a class="ref" href="output.h.html#output::out" title='output::out' data-ref="output::out">out</a>, <var>0</var>, <a class="macro" href="../include/fcntl.h.html#136" title="0" data-ref="_M/SEEK_SET">SEEK_SET</a>);</td></tr>
+<tr><th id="392">392</th><td>          <a class="macro" href="make.h.html#558" title="while (((e)=ftruncate (out-&gt;out, 0))==-1 &amp;&amp; (*__errno_location ())==4)" data-ref="_M/EINTRLOOP">EINTRLOOP</a> (<a class="local col8 ref" href="#38e" title='e' data-ref="38e">e</a>, <a class="ref" href="../include/unistd.h.html#ftruncate" title='ftruncate' data-ref="ftruncate">ftruncate</a> (<a class="local col3 ref" href="#33out" title='out' data-ref="33out">out</a>-&gt;<a class="ref" href="output.h.html#output::out" title='output::out' data-ref="output::out">out</a>, <var>0</var>));</td></tr>
+<tr><th id="393">393</th><td>        }</td></tr>
+<tr><th id="394">394</th><td>      <b>if</b> (<a class="local col3 ref" href="#33out" title='out' data-ref="33out">out</a>-&gt;<a class="ref" href="output.h.html#output::err" title='output::err' data-ref="output::err">err</a> != <a class="macro" href="#46" title="(-1)" data-ref="_M/OUTPUT_NONE">OUTPUT_NONE</a> &amp;&amp; <a class="local col3 ref" href="#33out" title='out' data-ref="33out">out</a>-&gt;<a class="ref" href="output.h.html#output::err" title='output::err' data-ref="output::err">err</a> != <a class="local col3 ref" href="#33out" title='out' data-ref="33out">out</a>-&gt;<a class="ref" href="output.h.html#output::out" title='output::out' data-ref="output::out">out</a>)</td></tr>
+<tr><th id="395">395</th><td>        {</td></tr>
+<tr><th id="396">396</th><td>          <em>int</em> <dfn class="local col9 decl" id="39e" title='e' data-type='int' data-ref="39e">e</dfn>;</td></tr>
+<tr><th id="397">397</th><td>          <a class="ref" href="../include/unistd.h.html#lseek" title='lseek' data-ref="lseek">lseek</a> (<a class="local col3 ref" href="#33out" title='out' data-ref="33out">out</a>-&gt;<a class="ref" href="output.h.html#output::err" title='output::err' data-ref="output::err">err</a>, <var>0</var>, <a class="macro" href="../include/fcntl.h.html#136" title="0" data-ref="_M/SEEK_SET">SEEK_SET</a>);</td></tr>
+<tr><th id="398">398</th><td>          <a class="macro" href="make.h.html#558" title="while (((e)=ftruncate (out-&gt;err, 0))==-1 &amp;&amp; (*__errno_location ())==4)" data-ref="_M/EINTRLOOP">EINTRLOOP</a> (<a class="local col9 ref" href="#39e" title='e' data-ref="39e">e</a>, <a class="ref" href="../include/unistd.h.html#ftruncate" title='ftruncate' data-ref="ftruncate">ftruncate</a> (<a class="local col3 ref" href="#33out" title='out' data-ref="33out">out</a>-&gt;<a class="ref" href="output.h.html#output::err" title='output::err' data-ref="output::err">err</a>, <var>0</var>));</td></tr>
+<tr><th id="399">399</th><td>        }</td></tr>
+<tr><th id="400">400</th><td>    }</td></tr>
+<tr><th id="401">401</th><td>}</td></tr>
+<tr><th id="402">402</th><td><u>#<span data-ppcond="169">endif</span> /* NO_OUTPUT_SYNC */</u></td></tr>
+<tr><th id="403">403</th><td></td></tr>
+<tr><th id="404">404</th><td></td></tr>
+<tr><th id="405">405</th><td><i>/* Provide support for temporary files.  */</i></td></tr>
+<tr><th id="406">406</th><td></td></tr>
+<tr><th id="407">407</th><td><u>#<span data-ppcond="407">ifndef</span> <a class="macro" href="config.h.html#249" data-ref="_M/HAVE_STDLIB_H">HAVE_STDLIB_H</a></u></td></tr>
+<tr><th id="408">408</th><td><u># ifdef HAVE_MKSTEMP</u></td></tr>
+<tr><th id="409">409</th><td><em>int</em> mkstemp (<em>char</em> *template);</td></tr>
+<tr><th id="410">410</th><td><u># else</u></td></tr>
+<tr><th id="411">411</th><td><em>char</em> *mktemp (<em>char</em> *template);</td></tr>
+<tr><th id="412">412</th><td><u># endif</u></td></tr>
+<tr><th id="413">413</th><td><u>#<span data-ppcond="407">endif</span></u></td></tr>
+<tr><th id="414">414</th><td></td></tr>
+<tr><th id="415">415</th><td><a class="typedef" href="../include/stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> *</td></tr>
+<tr><th id="416">416</th><td><dfn class="decl def" id="output_tmpfile" title='output_tmpfile' data-ref="output_tmpfile">output_tmpfile</dfn> (<em>char</em> **<dfn class="local col0 decl" id="40name" title='name' data-type='char **' data-ref="40name">name</dfn>, <em>const</em> <em>char</em> *<dfn class="local col1 decl" id="41template" title='template' data-type='const char *' data-ref="41template">template</dfn>)</td></tr>
+<tr><th id="417">417</th><td>{</td></tr>
+<tr><th id="418">418</th><td><u>#<span data-ppcond="418">ifdef</span> <a class="macro" href="config.h.html#111" data-ref="_M/HAVE_FDOPEN">HAVE_FDOPEN</a></u></td></tr>
+<tr><th id="419">419</th><td>  <em>int</em> <dfn class="local col2 decl" id="42fd" title='fd' data-type='int' data-ref="42fd">fd</dfn>;</td></tr>
+<tr><th id="420">420</th><td><u>#<span data-ppcond="418">endif</span></u></td></tr>
+<tr><th id="421">421</th><td></td></tr>
+<tr><th id="422">422</th><td><u>#<span data-ppcond="422">if</span> defined <a class="macro" href="config.h.html#183" data-ref="_M/HAVE_MKSTEMP">HAVE_MKSTEMP</a> || defined <a class="macro" href="config.h.html#186" data-ref="_M/HAVE_MKTEMP">HAVE_MKTEMP</a></u></td></tr>
+<tr><th id="423">423</th><td><u># define <dfn class="macro" id="_M/TEMPLATE_LEN" data-ref="_M/TEMPLATE_LEN">TEMPLATE_LEN</dfn>   <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col1 ref" href="#41template" title='template' data-ref="41template">template</a>)</u></td></tr>
+<tr><th id="424">424</th><td><u>#<span data-ppcond="422">else</span></u></td></tr>
+<tr><th id="425">425</th><td><u># define TEMPLATE_LEN   L_tmpnam</u></td></tr>
+<tr><th id="426">426</th><td><u>#<span data-ppcond="422">endif</span></u></td></tr>
+<tr><th id="427">427</th><td>  *<a class="local col0 ref" href="#40name" title='name' data-ref="40name">name</a> = <a class="ref" href="makeint.h.html#xmalloc" title='xmalloc' data-ref="xmalloc">xmalloc</a> (<a class="macro" href="#423" title="strlen (template)" data-ref="_M/TEMPLATE_LEN">TEMPLATE_LEN</a> + <var>1</var>);</td></tr>
+<tr><th id="428">428</th><td>  <a class="ref" href="../include/string.h.html#strcpy" title='strcpy' data-ref="strcpy">strcpy</a> (*<a class="local col0 ref" href="#40name" title='name' data-ref="40name">name</a>, <a class="local col1 ref" href="#41template" title='template' data-ref="41template">template</a>);</td></tr>
+<tr><th id="429">429</th><td></td></tr>
+<tr><th id="430">430</th><td><u>#<span data-ppcond="430">if</span> defined <a class="macro" href="config.h.html#183" data-ref="_M/HAVE_MKSTEMP">HAVE_MKSTEMP</a> &amp;&amp; defined <a class="macro" href="config.h.html#111" data-ref="_M/HAVE_FDOPEN">HAVE_FDOPEN</a></u></td></tr>
+<tr><th id="431">431</th><td>  <i>/* It's safest to use mkstemp(), if we can.  */</i></td></tr>
+<tr><th id="432">432</th><td>  <a class="local col2 ref" href="#42fd" title='fd' data-ref="42fd">fd</a> = <a class="ref" href="../include/stdlib.h.html#mkstemp" title='mkstemp' data-ref="mkstemp">mkstemp</a> (*<a class="local col0 ref" href="#40name" title='name' data-ref="40name">name</a>);</td></tr>
+<tr><th id="433">433</th><td>  <b>if</b> (<a class="local col2 ref" href="#42fd" title='fd' data-ref="42fd">fd</a> == -<var>1</var>)</td></tr>
+<tr><th id="434">434</th><td>    <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="435">435</th><td>  <b>return</b> <a class="ref" href="../include/stdio.h.html#fdopen" title='fdopen' data-ref="fdopen">fdopen</a> (<a class="local col2 ref" href="#42fd" title='fd' data-ref="42fd">fd</a>, <q>"w"</q>);</td></tr>
+<tr><th id="436">436</th><td><u>#<span data-ppcond="430">else</span></u></td></tr>
+<tr><th id="437">437</th><td><u># ifdef HAVE_MKTEMP</u></td></tr>
+<tr><th id="438">438</th><td>  (<em>void</em>) mktemp (*name);</td></tr>
+<tr><th id="439">439</th><td><u># else</u></td></tr>
+<tr><th id="440">440</th><td>  (<em>void</em>) tmpnam (*name);</td></tr>
+<tr><th id="441">441</th><td><u># endif</u></td></tr>
+<tr><th id="442">442</th><td></td></tr>
+<tr><th id="443">443</th><td><u># ifdef HAVE_FDOPEN</u></td></tr>
+<tr><th id="444">444</th><td>  <i>/* Can't use mkstemp(), but guard against a race condition.  */</i></td></tr>
+<tr><th id="445">445</th><td>  EINTRLOOP (fd, open (*name, O_CREAT|O_EXCL|O_WRONLY, <var>0600</var>));</td></tr>
+<tr><th id="446">446</th><td>  <b>if</b> (fd == -<var>1</var>)</td></tr>
+<tr><th id="447">447</th><td>    <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="448">448</th><td>  <b>return</b> fdopen (fd, <q>"w"</q>);</td></tr>
+<tr><th id="449">449</th><td><u># else</u></td></tr>
+<tr><th id="450">450</th><td>  <i>/* Not secure, but what can we do?  */</i></td></tr>
+<tr><th id="451">451</th><td>  <b>return</b> fopen (*name, <q>"w"</q>);</td></tr>
+<tr><th id="452">452</th><td><u># endif</u></td></tr>
+<tr><th id="453">453</th><td><u>#<span data-ppcond="430">endif</span></u></td></tr>
+<tr><th id="454">454</th><td>}</td></tr>
+<tr><th id="455">455</th><td></td></tr>
+<tr><th id="456">456</th><td></td></tr>
+<tr><th id="457">457</th><td><i>/* This code is stolen from gnulib.</i></td></tr>
+<tr><th id="458">458</th><td><i>   If/when we abandon the requirement to work with K&amp;R compilers, we can</i></td></tr>
+<tr><th id="459">459</th><td><i>   remove this (and perhaps other parts of GNU make!) and migrate to using</i></td></tr>
+<tr><th id="460">460</th><td><i>   gnulib directly.</i></td></tr>
+<tr><th id="461">461</th><td><i></i></td></tr>
+<tr><th id="462">462</th><td><i>   This is called only through atexit(), which means die() has already been</i></td></tr>
+<tr><th id="463">463</th><td><i>   invoked.  So, call exit() here directly.  Apparently that works...?</i></td></tr>
+<tr><th id="464">464</th><td><i>*/</i></td></tr>
+<tr><th id="465">465</th><td></td></tr>
+<tr><th id="466">466</th><td><i  data-doc="close_stdout">/* Close standard output, exiting with status 'exit_failure' on failure.</i></td></tr>
+<tr><th id="467">467</th><td><i  data-doc="close_stdout">   If a program writes *anything* to stdout, that program should close</i></td></tr>
+<tr><th id="468">468</th><td><i  data-doc="close_stdout">   stdout and make sure that it succeeds before exiting.  Otherwise,</i></td></tr>
+<tr><th id="469">469</th><td><i  data-doc="close_stdout">   suppose that you go to the extreme of checking the return status</i></td></tr>
+<tr><th id="470">470</th><td><i  data-doc="close_stdout">   of every function that does an explicit write to stdout.  The last</i></td></tr>
+<tr><th id="471">471</th><td><i  data-doc="close_stdout">   printf can succeed in writing to the internal stream buffer, and yet</i></td></tr>
+<tr><th id="472">472</th><td><i  data-doc="close_stdout">   the fclose(stdout) could still fail (due e.g., to a disk full error)</i></td></tr>
+<tr><th id="473">473</th><td><i  data-doc="close_stdout">   when it tries to write out that buffered data.  Thus, you would be</i></td></tr>
+<tr><th id="474">474</th><td><i  data-doc="close_stdout">   left with an incomplete output file and the offending program would</i></td></tr>
+<tr><th id="475">475</th><td><i  data-doc="close_stdout">   exit successfully.  Even calling fflush is not always sufficient,</i></td></tr>
+<tr><th id="476">476</th><td><i  data-doc="close_stdout">   since some file systems (NFS and CODA) buffer written/flushed data</i></td></tr>
+<tr><th id="477">477</th><td><i  data-doc="close_stdout">   until an actual close call.</i></td></tr>
+<tr><th id="478">478</th><td><i  data-doc="close_stdout"></i></td></tr>
+<tr><th id="479">479</th><td><i  data-doc="close_stdout">   Besides, it's wasteful to check the return value from every call</i></td></tr>
+<tr><th id="480">480</th><td><i  data-doc="close_stdout">   that writes to stdout -- just let the internal stream state record</i></td></tr>
+<tr><th id="481">481</th><td><i  data-doc="close_stdout">   the failure.  That's what the ferror test is checking below.</i></td></tr>
+<tr><th id="482">482</th><td><i  data-doc="close_stdout"></i></td></tr>
+<tr><th id="483">483</th><td><i  data-doc="close_stdout">   It's important to detect such failures and exit nonzero because many</i></td></tr>
+<tr><th id="484">484</th><td><i  data-doc="close_stdout">   tools (most notably 'make' and other build-management systems) depend</i></td></tr>
+<tr><th id="485">485</th><td><i  data-doc="close_stdout">   on being able to detect failure in other tools via their exit status.  */</i></td></tr>
+<tr><th id="486">486</th><td></td></tr>
+<tr><th id="487">487</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="488">488</th><td><dfn class="tu decl def" id="close_stdout" title='close_stdout' data-type='void close_stdout()' data-ref="close_stdout">close_stdout</dfn> (<em>void</em>)</td></tr>
+<tr><th id="489">489</th><td>{</td></tr>
+<tr><th id="490">490</th><td>  <em>int</em> <dfn class="local col3 decl" id="43prev_fail" title='prev_fail' data-type='int' data-ref="43prev_fail">prev_fail</dfn> = <a class="ref" href="../include/stdio.h.html#ferror" title='ferror' data-ref="ferror">ferror</a> (<a class="macro" href="../include/stdio.h.html#173" title="stdout" data-ref="_M/stdout">stdout</a>);</td></tr>
+<tr><th id="491">491</th><td>  <em>int</em> <dfn class="local col4 decl" id="44fclose_fail" title='fclose_fail' data-type='int' data-ref="44fclose_fail">fclose_fail</dfn> = <a class="ref" href="../include/stdio.h.html#fclose" title='fclose' data-ref="fclose">fclose</a> (<a class="macro" href="../include/stdio.h.html#173" title="stdout" data-ref="_M/stdout">stdout</a>);</td></tr>
+<tr><th id="492">492</th><td></td></tr>
+<tr><th id="493">493</th><td>  <b>if</b> (<a class="local col3 ref" href="#43prev_fail" title='prev_fail' data-ref="43prev_fail">prev_fail</a> || <a class="local col4 ref" href="#44fclose_fail" title='fclose_fail' data-ref="44fclose_fail">fclose_fail</a>)</td></tr>
+<tr><th id="494">494</th><td>    {</td></tr>
+<tr><th id="495">495</th><td>      <b>if</b> (<a class="local col4 ref" href="#44fclose_fail" title='fclose_fail' data-ref="44fclose_fail">fclose_fail</a>)</td></tr>
+<tr><th id="496">496</th><td>        <a class="ref" href="#perror_with_name" title='perror_with_name' data-ref="perror_with_name">perror_with_name</a> (<a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;write error: stdout&quot;, 5)" data-ref="_M/_">_</a>(<q>"write error: stdout"</q>), <q>""</q>);</td></tr>
+<tr><th id="497">497</th><td>      <b>else</b></td></tr>
+<tr><th id="498">498</th><td>        <a class="macro" href="makeint.h.html#475" title="error((((gmk_floc *)0)), 0, (dcgettext (((void*)0), &quot;write error: stdout&quot;, 5)))" data-ref="_M/O">O</a> (<a class="ref" href="#error" title='error' data-ref="error">error</a>, <a class="macro" href="makeint.h.html#451" title="((gmk_floc *)0)" data-ref="_M/NILF">NILF</a>, <a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;write error: stdout&quot;, 5)" data-ref="_M/_">_</a>(<q>"write error: stdout"</q>));</td></tr>
+<tr><th id="499">499</th><td>      <a class="ref" href="../include/stdlib.h.html#exit" title='exit' data-ref="exit">exit</a> (<a class="macro" href="makeint.h.html#684" title="1" data-ref="_M/MAKE_TROUBLE">MAKE_TROUBLE</a>);</td></tr>
+<tr><th id="500">500</th><td>    }</td></tr>
+<tr><th id="501">501</th><td>}</td></tr>
+<tr><th id="502">502</th><td></td></tr>
+<tr><th id="503">503</th><td></td></tr>
+<tr><th id="504">504</th><td><em>void</em></td></tr>
+<tr><th id="505">505</th><td><dfn class="decl def" id="output_init" title='output_init' data-ref="output_init">output_init</dfn> (<b>struct</b> <a class="type" href="output.h.html#output" title='output' data-ref="output">output</a> *<dfn class="local col5 decl" id="45out" title='out' data-type='struct output *' data-ref="45out">out</dfn>)</td></tr>
+<tr><th id="506">506</th><td>{</td></tr>
+<tr><th id="507">507</th><td>  <b>if</b> (<a class="local col5 ref" href="#45out" title='out' data-ref="45out">out</a>)</td></tr>
+<tr><th id="508">508</th><td>    {</td></tr>
+<tr><th id="509">509</th><td>      <a class="local col5 ref" href="#45out" title='out' data-ref="45out">out</a>-&gt;<a class="ref" href="output.h.html#output::out" title='output::out' data-ref="output::out">out</a> = <a class="local col5 ref" href="#45out" title='out' data-ref="45out">out</a>-&gt;<a class="ref" href="output.h.html#output::err" title='output::err' data-ref="output::err">err</a> = <a class="macro" href="#46" title="(-1)" data-ref="_M/OUTPUT_NONE">OUTPUT_NONE</a>;</td></tr>
+<tr><th id="510">510</th><td>      <a class="local col5 ref" href="#45out" title='out' data-ref="45out">out</a>-&gt;<a class="ref" href="output.h.html#output::syncout" title='output::syncout' data-ref="output::syncout">syncout</a> = !!<a class="ref" href="makeint.h.html#output_sync" title='output_sync' data-ref="output_sync">output_sync</a>;</td></tr>
+<tr><th id="511">511</th><td>      <b>return</b>;</td></tr>
+<tr><th id="512">512</th><td>    }</td></tr>
+<tr><th id="513">513</th><td></td></tr>
+<tr><th id="514">514</th><td>  <i>/* Configure this instance of make.  Be sure stdout is line-buffered.  */</i></td></tr>
+<tr><th id="515">515</th><td></td></tr>
+<tr><th id="516">516</th><td><u>#<span data-ppcond="516">ifdef</span> <a class="macro" href="config.h.html#234" data-ref="_M/HAVE_SETVBUF">HAVE_SETVBUF</a></u></td></tr>
+<tr><th id="517">517</th><td><u># <span data-ppcond="517">ifdef</span> <span class="macro" data-ref="_M/SETVBUF_REVERSED">SETVBUF_REVERSED</span></u></td></tr>
+<tr><th id="518">518</th><td>  setvbuf (stdout, _IOLBF, xmalloc (BUFSIZ), BUFSIZ);</td></tr>
+<tr><th id="519">519</th><td><u># <span data-ppcond="517">else</span>  /* setvbuf not reversed.  */</u></td></tr>
+<tr><th id="520">520</th><td>  <i>/* Some buggy systems lose if we pass 0 instead of allocating ourselves.  */</i></td></tr>
+<tr><th id="521">521</th><td>  <a class="ref" href="../include/stdio.h.html#setvbuf" title='setvbuf' data-ref="setvbuf">setvbuf</a> (<a class="macro" href="../include/stdio.h.html#173" title="stdout" data-ref="_M/stdout">stdout</a>, <var>0</var>, <a class="macro" href="../include/stdio.h.html#121" title="1" data-ref="_M/_IOLBF">_IOLBF</a>, <a class="macro" href="../include/stdio.h.html#127" title="8192" data-ref="_M/BUFSIZ">BUFSIZ</a>);</td></tr>
+<tr><th id="522">522</th><td><u># <span data-ppcond="517">endif</span> /* setvbuf reversed.  */</u></td></tr>
+<tr><th id="523">523</th><td><u>#<span data-ppcond="516">elif</span> HAVE_SETLINEBUF</u></td></tr>
+<tr><th id="524">524</th><td>  setlinebuf (stdout);</td></tr>
+<tr><th id="525">525</th><td><u>#<span data-ppcond="516">endif</span>  /* setlinebuf missing.  */</u></td></tr>
+<tr><th id="526">526</th><td></td></tr>
+<tr><th id="527">527</th><td>  <i>/* Force stdout/stderr into append mode.  This ensures parallel jobs won't</i></td></tr>
+<tr><th id="528">528</th><td><i>     lose output due to overlapping writes.  */</i></td></tr>
+<tr><th id="529">529</th><td>  <a class="tu ref" href="#set_append_mode" title='set_append_mode' data-use='c' data-ref="set_append_mode">set_append_mode</a> (<a class="ref" href="../include/stdio.h.html#fileno" title='fileno' data-ref="fileno">fileno</a> (<a class="macro" href="../include/stdio.h.html#173" title="stdout" data-ref="_M/stdout">stdout</a>));</td></tr>
+<tr><th id="530">530</th><td>  <a class="tu ref" href="#set_append_mode" title='set_append_mode' data-use='c' data-ref="set_append_mode">set_append_mode</a> (<a class="ref" href="../include/stdio.h.html#fileno" title='fileno' data-ref="fileno">fileno</a> (<a class="macro" href="../include/stdio.h.html#174" title="stderr" data-ref="_M/stderr">stderr</a>));</td></tr>
+<tr><th id="531">531</th><td></td></tr>
+<tr><th id="532">532</th><td><u>#<span data-ppcond="532">ifdef</span> <a class="macro" href="config.h.html#43" data-ref="_M/HAVE_ATEXIT">HAVE_ATEXIT</a></u></td></tr>
+<tr><th id="533">533</th><td>  <b>if</b> (<a class="macro" href="#51" title="((fcntl (fileno (stdout), 1) != -1) || ((*__errno_location ()) != 9))" data-ref="_M/STREAM_OK">STREAM_OK</a> (<a class="macro" href="../include/stdio.h.html#173" title="stdout" data-ref="_M/stdout">stdout</a>))</td></tr>
+<tr><th id="534">534</th><td>    <a class="ref" href="../include/stdlib.h.html#atexit" title='atexit' data-ref="atexit">atexit</a> (<a class="tu ref" href="#close_stdout" title='close_stdout' data-use='r' data-ref="close_stdout">close_stdout</a>);</td></tr>
+<tr><th id="535">535</th><td><u>#<span data-ppcond="532">endif</span></u></td></tr>
+<tr><th id="536">536</th><td>}</td></tr>
+<tr><th id="537">537</th><td></td></tr>
+<tr><th id="538">538</th><td><em>void</em></td></tr>
+<tr><th id="539">539</th><td><dfn class="decl def" id="output_close" title='output_close' data-ref="output_close">output_close</dfn> (<b>struct</b> <a class="type" href="output.h.html#output" title='output' data-ref="output">output</a> *<dfn class="local col6 decl" id="46out" title='out' data-type='struct output *' data-ref="46out">out</dfn>)</td></tr>
+<tr><th id="540">540</th><td>{</td></tr>
+<tr><th id="541">541</th><td>  <b>if</b> (! <a class="local col6 ref" href="#46out" title='out' data-ref="46out">out</a>)</td></tr>
+<tr><th id="542">542</th><td>    {</td></tr>
+<tr><th id="543">543</th><td>      <b>if</b> (<a class="ref" href="output.h.html#stdio_traced" title='stdio_traced' data-ref="stdio_traced">stdio_traced</a>)</td></tr>
+<tr><th id="544">544</th><td>        <a class="ref" href="#log_working_directory" title='log_working_directory' data-ref="log_working_directory">log_working_directory</a> (<var>0</var>);</td></tr>
+<tr><th id="545">545</th><td>      <b>return</b>;</td></tr>
+<tr><th id="546">546</th><td>    }</td></tr>
+<tr><th id="547">547</th><td></td></tr>
+<tr><th id="548">548</th><td><u>#<span data-ppcond="548">ifndef</span> <span class="macro" data-ref="_M/NO_OUTPUT_SYNC">NO_OUTPUT_SYNC</span></u></td></tr>
+<tr><th id="549">549</th><td>  <a class="ref" href="#output_dump" title='output_dump' data-ref="output_dump">output_dump</a> (<a class="local col6 ref" href="#46out" title='out' data-ref="46out">out</a>);</td></tr>
+<tr><th id="550">550</th><td><u>#<span data-ppcond="548">endif</span></u></td></tr>
+<tr><th id="551">551</th><td></td></tr>
+<tr><th id="552">552</th><td>  <b>if</b> (<a class="local col6 ref" href="#46out" title='out' data-ref="46out">out</a>-&gt;<a class="ref" href="output.h.html#output::out" title='output::out' data-ref="output::out">out</a> &gt;= <var>0</var>)</td></tr>
+<tr><th id="553">553</th><td>    <a class="ref" href="../include/unistd.h.html#close" title='close' data-ref="close">close</a> (<a class="local col6 ref" href="#46out" title='out' data-ref="46out">out</a>-&gt;<a class="ref" href="output.h.html#output::out" title='output::out' data-ref="output::out">out</a>);</td></tr>
+<tr><th id="554">554</th><td>  <b>if</b> (<a class="local col6 ref" href="#46out" title='out' data-ref="46out">out</a>-&gt;<a class="ref" href="output.h.html#output::err" title='output::err' data-ref="output::err">err</a> &gt;= <var>0</var> &amp;&amp; <a class="local col6 ref" href="#46out" title='out' data-ref="46out">out</a>-&gt;<a class="ref" href="output.h.html#output::err" title='output::err' data-ref="output::err">err</a> != <a class="local col6 ref" href="#46out" title='out' data-ref="46out">out</a>-&gt;<a class="ref" href="output.h.html#output::out" title='output::out' data-ref="output::out">out</a>)</td></tr>
+<tr><th id="555">555</th><td>    <a class="ref" href="../include/unistd.h.html#close" title='close' data-ref="close">close</a> (<a class="local col6 ref" href="#46out" title='out' data-ref="46out">out</a>-&gt;<a class="ref" href="output.h.html#output::err" title='output::err' data-ref="output::err">err</a>);</td></tr>
+<tr><th id="556">556</th><td></td></tr>
+<tr><th id="557">557</th><td>  <a class="ref" href="#output_init" title='output_init' data-ref="output_init">output_init</a> (<a class="local col6 ref" href="#46out" title='out' data-ref="46out">out</a>);</td></tr>
+<tr><th id="558">558</th><td>}</td></tr>
+<tr><th id="559">559</th><td></td></tr>
+<tr><th id="560">560</th><td><i>/* We're about to generate output: be sure it's set up.  */</i></td></tr>
+<tr><th id="561">561</th><td><em>void</em></td></tr>
+<tr><th id="562">562</th><td><dfn class="decl def" id="output_start" title='output_start' data-ref="output_start">output_start</dfn> (<em>void</em>)</td></tr>
+<tr><th id="563">563</th><td>{</td></tr>
+<tr><th id="564">564</th><td><u>#<span data-ppcond="564">ifndef</span> <span class="macro" data-ref="_M/NO_OUTPUT_SYNC">NO_OUTPUT_SYNC</span></u></td></tr>
+<tr><th id="565">565</th><td>  <i>/* If we're syncing output make sure the temporary file is set up.  */</i></td></tr>
+<tr><th id="566">566</th><td>  <b>if</b> (<a class="ref" href="output.h.html#output_context" title='output_context' data-ref="output_context">output_context</a> &amp;&amp; <a class="ref" href="output.h.html#output_context" title='output_context' data-ref="output_context">output_context</a>-&gt;<a class="ref" href="output.h.html#output::syncout" title='output::syncout' data-ref="output::syncout">syncout</a>)</td></tr>
+<tr><th id="567">567</th><td>    <b>if</b> (! <a class="macro" href="#48" title="((output_context)-&gt;out &gt;= 0 || (output_context)-&gt;err &gt;= 0)" data-ref="_M/OUTPUT_ISSET">OUTPUT_ISSET</a>(<a class="ref" href="output.h.html#output_context" title='output_context' data-ref="output_context">output_context</a>))</td></tr>
+<tr><th id="568">568</th><td>      <a class="tu ref" href="#setup_tmpfile" title='setup_tmpfile' data-use='c' data-ref="setup_tmpfile">setup_tmpfile</a> (<a class="ref" href="output.h.html#output_context" title='output_context' data-ref="output_context">output_context</a>);</td></tr>
+<tr><th id="569">569</th><td><u>#<span data-ppcond="564">endif</span></u></td></tr>
+<tr><th id="570">570</th><td></td></tr>
+<tr><th id="571">571</th><td>  <i>/* If we're not syncing this output per-line or per-target, make sure we emit</i></td></tr>
+<tr><th id="572">572</th><td><i>     the "Entering..." message where appropriate.  */</i></td></tr>
+<tr><th id="573">573</th><td>  <b>if</b> (<a class="ref" href="makeint.h.html#output_sync" title='output_sync' data-ref="output_sync">output_sync</a> == <a class="macro" href="globals.h.html#7" title="0" data-ref="_M/OUTPUT_SYNC_NONE">OUTPUT_SYNC_NONE</a> || <a class="ref" href="makeint.h.html#output_sync" title='output_sync' data-ref="output_sync">output_sync</a> == <a class="macro" href="globals.h.html#10" title="3" data-ref="_M/OUTPUT_SYNC_RECURSE">OUTPUT_SYNC_RECURSE</a>)</td></tr>
+<tr><th id="574">574</th><td>    <b>if</b> (! <a class="ref" href="output.h.html#stdio_traced" title='stdio_traced' data-ref="stdio_traced">stdio_traced</a> &amp;&amp; <a class="ref" href="makeint.h.html#print_directory_flag" title='print_directory_flag' data-ref="print_directory_flag">print_directory_flag</a>)</td></tr>
+<tr><th id="575">575</th><td>      <a class="ref" href="output.h.html#stdio_traced" title='stdio_traced' data-ref="stdio_traced">stdio_traced</a> = <a class="ref" href="#log_working_directory" title='log_working_directory' data-ref="log_working_directory">log_working_directory</a> (<var>1</var>);</td></tr>
+<tr><th id="576">576</th><td>}</td></tr>
+<tr><th id="577">577</th><td></td></tr>
+<tr><th id="578">578</th><td><em>void</em></td></tr>
+<tr><th id="579">579</th><td><dfn class="decl def" id="outputs" title='outputs' data-ref="outputs">outputs</dfn> (<em>int</em> <dfn class="local col7 decl" id="47is_err" title='is_err' data-type='int' data-ref="47is_err">is_err</dfn>, <em>const</em> <em>char</em> *<dfn class="local col8 decl" id="48msg" title='msg' data-type='const char *' data-ref="48msg">msg</dfn>)</td></tr>
+<tr><th id="580">580</th><td>{</td></tr>
+<tr><th id="581">581</th><td>  <b>if</b> (! <a class="local col8 ref" href="#48msg" title='msg' data-ref="48msg">msg</a> || *<a class="local col8 ref" href="#48msg" title='msg' data-ref="48msg">msg</a> == <kbd>'\0'</kbd>)</td></tr>
+<tr><th id="582">582</th><td>    <b>return</b>;</td></tr>
+<tr><th id="583">583</th><td></td></tr>
+<tr><th id="584">584</th><td>  <a class="ref" href="#output_start" title='output_start' data-ref="output_start">output_start</a> ();</td></tr>
+<tr><th id="585">585</th><td></td></tr>
+<tr><th id="586">586</th><td>  <a class="tu ref" href="#_outputs" title='_outputs' data-use='c' data-ref="_outputs">_outputs</a> (<a class="ref" href="output.h.html#output_context" title='output_context' data-ref="output_context">output_context</a>, <a class="local col7 ref" href="#47is_err" title='is_err' data-ref="47is_err">is_err</a>, <a class="local col8 ref" href="#48msg" title='msg' data-ref="48msg">msg</a>);</td></tr>
+<tr><th id="587">587</th><td>}</td></tr>
+<tr><th id="588">588</th><td></td></tr>
+<tr><th id="589">589</th><td></td></tr>
+<tr><th id="590">590</th><td><em>static</em> <b>struct</b> <dfn class="type def" id="fmtstring" title='fmtstring' data-ref="fmtstring"><a class="type" href="#fmtstring" title='fmtstring' data-ref="fmtstring">fmtstring</a></dfn></td></tr>
+<tr><th id="591">591</th><td>  {</td></tr>
+<tr><th id="592">592</th><td>    <em>char</em> *<dfn class="tu decl" id="fmtstring::buffer" title='fmtstring::buffer' data-type='char *' data-ref="fmtstring::buffer">buffer</dfn>;</td></tr>
+<tr><th id="593">593</th><td>    <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="tu decl" id="fmtstring::size" title='fmtstring::size' data-type='size_t' data-ref="fmtstring::size">size</dfn>;</td></tr>
+<tr><th id="594">594</th><td>  } <dfn class="tu decl def" id="fmtbuf" title='fmtbuf' data-type='struct fmtstring' data-ref="fmtbuf">fmtbuf</dfn> = { <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <var>0</var> };</td></tr>
+<tr><th id="595">595</th><td></td></tr>
+<tr><th id="596">596</th><td><em>static</em> <em>char</em> *</td></tr>
+<tr><th id="597">597</th><td><dfn class="tu decl def" id="get_buffer" title='get_buffer' data-type='char * get_buffer(size_t need)' data-ref="get_buffer">get_buffer</dfn> (<span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col9 decl" id="49need" title='need' data-type='size_t' data-ref="49need">need</dfn>)</td></tr>
+<tr><th id="598">598</th><td>{</td></tr>
+<tr><th id="599">599</th><td>  <i>/* Make sure we have room.  NEED includes space for \0.  */</i></td></tr>
+<tr><th id="600">600</th><td>  <b>if</b> (<a class="local col9 ref" href="#49need" title='need' data-ref="49need">need</a> &gt; <a class="tu ref" href="#fmtbuf" title='fmtbuf' data-use='m' data-ref="fmtbuf">fmtbuf</a>.<a class="tu ref" href="#fmtstring::size" title='fmtstring::size' data-use='r' data-ref="fmtstring::size">size</a>)</td></tr>
+<tr><th id="601">601</th><td>    {</td></tr>
+<tr><th id="602">602</th><td>      <a class="tu ref" href="#fmtbuf" title='fmtbuf' data-use='m' data-ref="fmtbuf">fmtbuf</a>.<a class="tu ref" href="#fmtstring::size" title='fmtstring::size' data-use='w' data-ref="fmtstring::size">size</a> += <a class="local col9 ref" href="#49need" title='need' data-ref="49need">need</a> * <var>2</var>;</td></tr>
+<tr><th id="603">603</th><td>      <a class="tu ref" href="#fmtbuf" title='fmtbuf' data-use='m' data-ref="fmtbuf">fmtbuf</a>.<a class="tu ref" href="#fmtstring::buffer" title='fmtstring::buffer' data-use='w' data-ref="fmtstring::buffer">buffer</a> = <a class="ref" href="makeint.h.html#xrealloc" title='xrealloc' data-ref="xrealloc">xrealloc</a> (<a class="tu ref" href="#fmtbuf" title='fmtbuf' data-use='m' data-ref="fmtbuf">fmtbuf</a>.<a class="tu ref" href="#fmtstring::buffer" title='fmtstring::buffer' data-use='r' data-ref="fmtstring::buffer">buffer</a>, <a class="tu ref" href="#fmtbuf" title='fmtbuf' data-use='m' data-ref="fmtbuf">fmtbuf</a>.<a class="tu ref" href="#fmtstring::size" title='fmtstring::size' data-use='r' data-ref="fmtstring::size">size</a>);</td></tr>
+<tr><th id="604">604</th><td>    }</td></tr>
+<tr><th id="605">605</th><td></td></tr>
+<tr><th id="606">606</th><td>  <a class="tu ref" href="#fmtbuf" title='fmtbuf' data-use='m' data-ref="fmtbuf">fmtbuf</a>.<a class="tu ref" href="#fmtstring::buffer" title='fmtstring::buffer' data-use='r' data-ref="fmtstring::buffer">buffer</a>[<a class="local col9 ref" href="#49need" title='need' data-ref="49need">need</a>-<var>1</var>] = <kbd>'\0'</kbd>;</td></tr>
+<tr><th id="607">607</th><td></td></tr>
+<tr><th id="608">608</th><td>  <b>return</b> <a class="tu ref" href="#fmtbuf" title='fmtbuf' data-use='m' data-ref="fmtbuf">fmtbuf</a>.<a class="tu ref" href="#fmtstring::buffer" title='fmtstring::buffer' data-use='r' data-ref="fmtstring::buffer">buffer</a>;</td></tr>
+<tr><th id="609">609</th><td>}</td></tr>
+<tr><th id="610">610</th><td></td></tr>
+<tr><th id="611">611</th><td><i>/* Print a message on stdout.  */</i></td></tr>
+<tr><th id="612">612</th><td></td></tr>
+<tr><th id="613">613</th><td><em>void</em></td></tr>
+<tr><th id="614">614</th><td><dfn class="decl def" id="message" title='message' data-ref="message">message</dfn> (<em>int</em> <dfn class="local col0 decl" id="50prefix" title='prefix' data-type='int' data-ref="50prefix">prefix</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col1 decl" id="51len" title='len' data-type='size_t' data-ref="51len">len</dfn>, <em>const</em> <em>char</em> *<dfn class="local col2 decl" id="52fmt" title='fmt' data-type='const char *' data-ref="52fmt">fmt</dfn>, ...)</td></tr>
+<tr><th id="615">615</th><td>{</td></tr>
+<tr><th id="616">616</th><td>  <span class='typedef' title='va_list' data-type='__gnuc_va_list' data-ref="va_list">va_list</span> <dfn class="local col3 decl" id="53args" title='args' data-type='va_list' data-ref="53args">args</dfn>;</td></tr>
+<tr><th id="617">617</th><td>  <em>char</em> *<dfn class="local col4 decl" id="54p" title='p' data-type='char *' data-ref="54p">p</dfn>;</td></tr>
+<tr><th id="618">618</th><td></td></tr>
+<tr><th id="619">619</th><td>  <a class="local col1 ref" href="#51len" title='len' data-ref="51len">len</a> += <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col2 ref" href="#52fmt" title='fmt' data-ref="52fmt">fmt</a>) + <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="ref" href="makeint.h.html#program" title='program' data-ref="program">program</a>) + <a class="macro" href="makeint.h.html#457" title="(sizeof (&quot;18446744073709551616&quot;)-1)" data-ref="_M/INTSTR_LENGTH">INTSTR_LENGTH</a> + <var>4</var> + <var>1</var> + <var>1</var>;</td></tr>
+<tr><th id="620">620</th><td>  <a class="local col4 ref" href="#54p" title='p' data-ref="54p">p</a> = <a class="tu ref" href="#get_buffer" title='get_buffer' data-use='c' data-ref="get_buffer">get_buffer</a> (<a class="local col1 ref" href="#51len" title='len' data-ref="51len">len</a>);</td></tr>
+<tr><th id="621">621</th><td></td></tr>
+<tr><th id="622">622</th><td>  <b>if</b> (<a class="local col0 ref" href="#50prefix" title='prefix' data-ref="50prefix">prefix</a>)</td></tr>
+<tr><th id="623">623</th><td>    {</td></tr>
+<tr><th id="624">624</th><td>      <b>if</b> (<a class="ref" href="makeint.h.html#makelevel" title='makelevel' data-ref="makelevel">makelevel</a> == <var>0</var>)</td></tr>
+<tr><th id="625">625</th><td>        <a class="ref" href="../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a> (<a class="local col4 ref" href="#54p" title='p' data-ref="54p">p</a>, <q>"%s: "</q>, <a class="ref" href="makeint.h.html#program" title='program' data-ref="program">program</a>);</td></tr>
+<tr><th id="626">626</th><td>      <b>else</b></td></tr>
+<tr><th id="627">627</th><td>        <a class="ref" href="../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a> (<a class="local col4 ref" href="#54p" title='p' data-ref="54p">p</a>, <q>"%s[%u]: "</q>, <a class="ref" href="makeint.h.html#program" title='program' data-ref="program">program</a>, <a class="ref" href="makeint.h.html#makelevel" title='makelevel' data-ref="makelevel">makelevel</a>);</td></tr>
+<tr><th id="628">628</th><td>      <a class="local col4 ref" href="#54p" title='p' data-ref="54p">p</a> += <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col4 ref" href="#54p" title='p' data-ref="54p">p</a>);</td></tr>
+<tr><th id="629">629</th><td>    }</td></tr>
+<tr><th id="630">630</th><td></td></tr>
+<tr><th id="631">631</th><td>  <span class="macro" title="__builtin_va_start(args, fmt)" data-ref="_M/va_start">va_start</span> (<a class="local col3 ref" href="#53args" title='args' data-ref="53args">args</a>, <a class="local col2 ref" href="#52fmt" title='fmt' data-ref="52fmt">fmt</a>);</td></tr>
+<tr><th id="632">632</th><td>  <a class="ref" href="../include/stdio.h.html#vsprintf" title='vsprintf' data-ref="vsprintf">vsprintf</a> (<a class="local col4 ref" href="#54p" title='p' data-ref="54p">p</a>, <a class="local col2 ref" href="#52fmt" title='fmt' data-ref="52fmt">fmt</a>, <a class="local col3 ref" href="#53args" title='args' data-ref="53args">args</a>);</td></tr>
+<tr><th id="633">633</th><td>  <span class="macro" title="__builtin_va_end(args)" data-ref="_M/va_end">va_end</span> (<a class="local col3 ref" href="#53args" title='args' data-ref="53args">args</a>);</td></tr>
+<tr><th id="634">634</th><td></td></tr>
+<tr><th id="635">635</th><td>  <a class="ref" href="../include/string.h.html#strcat" title='strcat' data-ref="strcat">strcat</a> (<a class="local col4 ref" href="#54p" title='p' data-ref="54p">p</a>, <q>"\n"</q>);</td></tr>
+<tr><th id="636">636</th><td></td></tr>
+<tr><th id="637">637</th><td>  <a class="macro" href="../include/assert.h.html#88" title="((fmtbuf.buffer[len-1] == &apos;\0&apos;) ? (void) (0) : __assert_fail (&quot;fmtbuf.buffer[len-1] == &apos;\\0&apos;&quot;, &quot;/opt/src/oss-code.github.io/src/remake/output.c&quot;, 637, __PRETTY_FUNCTION__))" data-ref="_M/assert">assert</a> (<a class="tu ref" href="#fmtbuf" title='fmtbuf' data-use='m' data-ref="fmtbuf">fmtbuf</a>.<a class="tu ref" href="#fmtstring::buffer" title='fmtstring::buffer' data-use='r' data-ref="fmtstring::buffer">buffer</a>[<a class="local col1 ref" href="#51len" title='len' data-ref="51len">len</a>-<var>1</var>] == <kbd>'\0'</kbd>);</td></tr>
+<tr><th id="638">638</th><td>  <a class="ref" href="#outputs" title='outputs' data-ref="outputs">outputs</a> (<var>0</var>, <a class="tu ref" href="#fmtbuf" title='fmtbuf' data-use='m' data-ref="fmtbuf">fmtbuf</a>.<a class="tu ref" href="#fmtstring::buffer" title='fmtstring::buffer' data-use='r' data-ref="fmtstring::buffer">buffer</a>);</td></tr>
+<tr><th id="639">639</th><td>}</td></tr>
+<tr><th id="640">640</th><td></td></tr>
+<tr><th id="641">641</th><td><i>/* Print an error message.  */</i></td></tr>
+<tr><th id="642">642</th><td></td></tr>
+<tr><th id="643">643</th><td><em>void</em></td></tr>
+<tr><th id="644">644</th><td><dfn class="decl def" id="error" title='error' data-ref="error">error</dfn> (<em>const</em> <a class="typedef" href="gnuremake.h.html#gmk_floc" title='gmk_floc' data-type='struct gmk_floc' data-ref="gmk_floc">gmk_floc</a> *<dfn class="local col5 decl" id="55flocp" title='flocp' data-type='const gmk_floc *' data-ref="55flocp">flocp</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col6 decl" id="56len" title='len' data-type='size_t' data-ref="56len">len</dfn>, <em>const</em> <em>char</em> *<dfn class="local col7 decl" id="57fmt" title='fmt' data-type='const char *' data-ref="57fmt">fmt</dfn>, ...)</td></tr>
+<tr><th id="645">645</th><td>{</td></tr>
+<tr><th id="646">646</th><td>  <span class='typedef' title='va_list' data-type='__gnuc_va_list' data-ref="va_list">va_list</span> <dfn class="local col8 decl" id="58args" title='args' data-type='va_list' data-ref="58args">args</dfn>;</td></tr>
+<tr><th id="647">647</th><td>  <em>char</em> *<dfn class="local col9 decl" id="59p" title='p' data-type='char *' data-ref="59p">p</dfn>;</td></tr>
+<tr><th id="648">648</th><td></td></tr>
+<tr><th id="649">649</th><td>  <a class="local col6 ref" href="#56len" title='len' data-ref="56len">len</a> += (<a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col7 ref" href="#57fmt" title='fmt' data-ref="57fmt">fmt</a>) + <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="ref" href="makeint.h.html#program" title='program' data-ref="program">program</a>)</td></tr>
+<tr><th id="650">650</th><td>          + (<a class="local col5 ref" href="#55flocp" title='flocp' data-ref="55flocp">flocp</a> &amp;&amp; <a class="local col5 ref" href="#55flocp" title='flocp' data-ref="55flocp">flocp</a>-&gt;<a class="ref" href="gnuremake.h.html#(anonymous)::filenm" title='(anonymous struct)::filenm' data-ref="(anonymous)::filenm">filenm</a> ? <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col5 ref" href="#55flocp" title='flocp' data-ref="55flocp">flocp</a>-&gt;<a class="ref" href="gnuremake.h.html#(anonymous)::filenm" title='(anonymous struct)::filenm' data-ref="(anonymous)::filenm">filenm</a>) : <var>0</var>)</td></tr>
+<tr><th id="651">651</th><td>          + <a class="macro" href="makeint.h.html#457" title="(sizeof (&quot;18446744073709551616&quot;)-1)" data-ref="_M/INTSTR_LENGTH">INTSTR_LENGTH</a> + <var>4</var> + <var>1</var> + <var>1</var>);</td></tr>
+<tr><th id="652">652</th><td>  <a class="local col9 ref" href="#59p" title='p' data-ref="59p">p</a> = <a class="tu ref" href="#get_buffer" title='get_buffer' data-use='c' data-ref="get_buffer">get_buffer</a> (<a class="local col6 ref" href="#56len" title='len' data-ref="56len">len</a>);</td></tr>
+<tr><th id="653">653</th><td></td></tr>
+<tr><th id="654">654</th><td>  <b>if</b> (<a class="local col5 ref" href="#55flocp" title='flocp' data-ref="55flocp">flocp</a> &amp;&amp; <a class="local col5 ref" href="#55flocp" title='flocp' data-ref="55flocp">flocp</a>-&gt;<a class="ref" href="gnuremake.h.html#(anonymous)::filenm" title='(anonymous struct)::filenm' data-ref="(anonymous)::filenm">filenm</a>)</td></tr>
+<tr><th id="655">655</th><td>    <a class="ref" href="../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a> (<a class="local col9 ref" href="#59p" title='p' data-ref="59p">p</a>, <q>"%s:%lu: "</q>, <a class="local col5 ref" href="#55flocp" title='flocp' data-ref="55flocp">flocp</a>-&gt;<a class="ref" href="gnuremake.h.html#(anonymous)::filenm" title='(anonymous struct)::filenm' data-ref="(anonymous)::filenm">filenm</a>, <a class="local col5 ref" href="#55flocp" title='flocp' data-ref="55flocp">flocp</a>-&gt;<a class="ref" href="gnuremake.h.html#(anonymous)::lineno" title='(anonymous struct)::lineno' data-ref="(anonymous)::lineno">lineno</a> + <a class="local col5 ref" href="#55flocp" title='flocp' data-ref="55flocp">flocp</a>-&gt;<a class="ref" href="gnuremake.h.html#(anonymous)::offset" title='(anonymous struct)::offset' data-ref="(anonymous)::offset">offset</a>);</td></tr>
+<tr><th id="656">656</th><td>  <b>else</b> <b>if</b> (<a class="ref" href="makeint.h.html#makelevel" title='makelevel' data-ref="makelevel">makelevel</a> == <var>0</var>)</td></tr>
+<tr><th id="657">657</th><td>    <a class="ref" href="../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a> (<a class="local col9 ref" href="#59p" title='p' data-ref="59p">p</a>, <q>"%s: "</q>, <a class="ref" href="makeint.h.html#program" title='program' data-ref="program">program</a>);</td></tr>
+<tr><th id="658">658</th><td>  <b>else</b></td></tr>
+<tr><th id="659">659</th><td>    <a class="ref" href="../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a> (<a class="local col9 ref" href="#59p" title='p' data-ref="59p">p</a>, <q>"%s[%u]: "</q>, <a class="ref" href="makeint.h.html#program" title='program' data-ref="program">program</a>, <a class="ref" href="makeint.h.html#makelevel" title='makelevel' data-ref="makelevel">makelevel</a>);</td></tr>
+<tr><th id="660">660</th><td>  <a class="local col9 ref" href="#59p" title='p' data-ref="59p">p</a> += <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col9 ref" href="#59p" title='p' data-ref="59p">p</a>);</td></tr>
+<tr><th id="661">661</th><td></td></tr>
+<tr><th id="662">662</th><td>  <span class="macro" title="__builtin_va_start(args, fmt)" data-ref="_M/va_start">va_start</span> (<a class="local col8 ref" href="#58args" title='args' data-ref="58args">args</a>, <a class="local col7 ref" href="#57fmt" title='fmt' data-ref="57fmt">fmt</a>);</td></tr>
+<tr><th id="663">663</th><td>  <a class="ref" href="../include/stdio.h.html#vsprintf" title='vsprintf' data-ref="vsprintf">vsprintf</a> (<a class="local col9 ref" href="#59p" title='p' data-ref="59p">p</a>, <a class="local col7 ref" href="#57fmt" title='fmt' data-ref="57fmt">fmt</a>, <a class="local col8 ref" href="#58args" title='args' data-ref="58args">args</a>);</td></tr>
+<tr><th id="664">664</th><td>  <span class="macro" title="__builtin_va_end(args)" data-ref="_M/va_end">va_end</span> (<a class="local col8 ref" href="#58args" title='args' data-ref="58args">args</a>);</td></tr>
+<tr><th id="665">665</th><td></td></tr>
+<tr><th id="666">666</th><td>  <a class="ref" href="../include/string.h.html#strcat" title='strcat' data-ref="strcat">strcat</a> (<a class="local col9 ref" href="#59p" title='p' data-ref="59p">p</a>, <q>"\n"</q>);</td></tr>
+<tr><th id="667">667</th><td></td></tr>
+<tr><th id="668">668</th><td>  <a class="macro" href="../include/assert.h.html#88" title="((fmtbuf.buffer[len-1] == &apos;\0&apos;) ? (void) (0) : __assert_fail (&quot;fmtbuf.buffer[len-1] == &apos;\\0&apos;&quot;, &quot;/opt/src/oss-code.github.io/src/remake/output.c&quot;, 668, __PRETTY_FUNCTION__))" data-ref="_M/assert">assert</a> (<a class="tu ref" href="#fmtbuf" title='fmtbuf' data-use='m' data-ref="fmtbuf">fmtbuf</a>.<a class="tu ref" href="#fmtstring::buffer" title='fmtstring::buffer' data-use='r' data-ref="fmtstring::buffer">buffer</a>[<a class="local col6 ref" href="#56len" title='len' data-ref="56len">len</a>-<var>1</var>] == <kbd>'\0'</kbd>);</td></tr>
+<tr><th id="669">669</th><td>  <a class="ref" href="#outputs" title='outputs' data-ref="outputs">outputs</a> (<var>1</var>, <a class="tu ref" href="#fmtbuf" title='fmtbuf' data-use='m' data-ref="fmtbuf">fmtbuf</a>.<a class="tu ref" href="#fmtstring::buffer" title='fmtstring::buffer' data-use='r' data-ref="fmtstring::buffer">buffer</a>);</td></tr>
+<tr><th id="670">670</th><td>}</td></tr>
+<tr><th id="671">671</th><td></td></tr>
+<tr><th id="672">672</th><td><i>/* Print an error message and exit.  */</i></td></tr>
+<tr><th id="673">673</th><td></td></tr>
+<tr><th id="674">674</th><td><em>void</em></td></tr>
+<tr><th id="675">675</th><td><dfn class="decl def" id="fatal" title='fatal' data-ref="fatal">fatal</dfn> (<em>const</em> <a class="typedef" href="gnuremake.h.html#gmk_floc" title='gmk_floc' data-type='struct gmk_floc' data-ref="gmk_floc">gmk_floc</a> *<dfn class="local col0 decl" id="60flocp" title='flocp' data-type='const gmk_floc *' data-ref="60flocp">flocp</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col1 decl" id="61len" title='len' data-type='size_t' data-ref="61len">len</dfn>, <em>const</em> <em>char</em> *<dfn class="local col2 decl" id="62fmt" title='fmt' data-type='const char *' data-ref="62fmt">fmt</dfn>, ...)</td></tr>
+<tr><th id="676">676</th><td>{</td></tr>
+<tr><th id="677">677</th><td>  <span class='typedef' title='va_list' data-type='__gnuc_va_list' data-ref="va_list">va_list</span> <dfn class="local col3 decl" id="63args" title='args' data-type='va_list' data-ref="63args">args</dfn>;</td></tr>
+<tr><th id="678">678</th><td>  <em>const</em> <em>char</em> *<dfn class="local col4 decl" id="64stop" title='stop' data-type='const char *' data-ref="64stop">stop</dfn> = <a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;.  Stop.\n&quot;, 5)" data-ref="_M/_">_</a>(<q>".  Stop.\n"</q>);</td></tr>
+<tr><th id="679">679</th><td>  <em>char</em> *<dfn class="local col5 decl" id="65p" title='p' data-type='char *' data-ref="65p">p</dfn>;</td></tr>
+<tr><th id="680">680</th><td></td></tr>
+<tr><th id="681">681</th><td>  <a class="local col1 ref" href="#61len" title='len' data-ref="61len">len</a> += (<a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col2 ref" href="#62fmt" title='fmt' data-ref="62fmt">fmt</a>) + <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="ref" href="makeint.h.html#program" title='program' data-ref="program">program</a>)</td></tr>
+<tr><th id="682">682</th><td>          + (<a class="local col0 ref" href="#60flocp" title='flocp' data-ref="60flocp">flocp</a> &amp;&amp; <a class="local col0 ref" href="#60flocp" title='flocp' data-ref="60flocp">flocp</a>-&gt;<a class="ref" href="gnuremake.h.html#(anonymous)::filenm" title='(anonymous struct)::filenm' data-ref="(anonymous)::filenm">filenm</a> ? <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col0 ref" href="#60flocp" title='flocp' data-ref="60flocp">flocp</a>-&gt;<a class="ref" href="gnuremake.h.html#(anonymous)::filenm" title='(anonymous struct)::filenm' data-ref="(anonymous)::filenm">filenm</a>) : <var>0</var>)</td></tr>
+<tr><th id="683">683</th><td>          + <a class="macro" href="makeint.h.html#457" title="(sizeof (&quot;18446744073709551616&quot;)-1)" data-ref="_M/INTSTR_LENGTH">INTSTR_LENGTH</a> + <var>8</var> + <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col4 ref" href="#64stop" title='stop' data-ref="64stop">stop</a>) + <var>1</var>);</td></tr>
+<tr><th id="684">684</th><td>  <a class="local col5 ref" href="#65p" title='p' data-ref="65p">p</a> = <a class="tu ref" href="#get_buffer" title='get_buffer' data-use='c' data-ref="get_buffer">get_buffer</a> (<a class="local col1 ref" href="#61len" title='len' data-ref="61len">len</a>);</td></tr>
+<tr><th id="685">685</th><td></td></tr>
+<tr><th id="686">686</th><td>  <b>if</b> (<a class="local col0 ref" href="#60flocp" title='flocp' data-ref="60flocp">flocp</a> &amp;&amp; <a class="local col0 ref" href="#60flocp" title='flocp' data-ref="60flocp">flocp</a>-&gt;<a class="ref" href="gnuremake.h.html#(anonymous)::filenm" title='(anonymous struct)::filenm' data-ref="(anonymous)::filenm">filenm</a>)</td></tr>
+<tr><th id="687">687</th><td>    <a class="ref" href="../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a> (<a class="local col5 ref" href="#65p" title='p' data-ref="65p">p</a>, <q>"%s:%lu: *** "</q>, <a class="local col0 ref" href="#60flocp" title='flocp' data-ref="60flocp">flocp</a>-&gt;<a class="ref" href="gnuremake.h.html#(anonymous)::filenm" title='(anonymous struct)::filenm' data-ref="(anonymous)::filenm">filenm</a>, <a class="local col0 ref" href="#60flocp" title='flocp' data-ref="60flocp">flocp</a>-&gt;<a class="ref" href="gnuremake.h.html#(anonymous)::lineno" title='(anonymous struct)::lineno' data-ref="(anonymous)::lineno">lineno</a> + <a class="local col0 ref" href="#60flocp" title='flocp' data-ref="60flocp">flocp</a>-&gt;<a class="ref" href="gnuremake.h.html#(anonymous)::offset" title='(anonymous struct)::offset' data-ref="(anonymous)::offset">offset</a>);</td></tr>
+<tr><th id="688">688</th><td>  <b>else</b> <b>if</b> (<a class="ref" href="makeint.h.html#makelevel" title='makelevel' data-ref="makelevel">makelevel</a> == <var>0</var>)</td></tr>
+<tr><th id="689">689</th><td>    <a class="ref" href="../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a> (<a class="local col5 ref" href="#65p" title='p' data-ref="65p">p</a>, <q>"%s: *** "</q>, <a class="ref" href="makeint.h.html#program" title='program' data-ref="program">program</a>);</td></tr>
+<tr><th id="690">690</th><td>  <b>else</b></td></tr>
+<tr><th id="691">691</th><td>    <a class="ref" href="../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a> (<a class="local col5 ref" href="#65p" title='p' data-ref="65p">p</a>, <q>"%s[%u]: *** "</q>, <a class="ref" href="makeint.h.html#program" title='program' data-ref="program">program</a>, <a class="ref" href="makeint.h.html#makelevel" title='makelevel' data-ref="makelevel">makelevel</a>);</td></tr>
+<tr><th id="692">692</th><td>  <a class="local col5 ref" href="#65p" title='p' data-ref="65p">p</a> += <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col5 ref" href="#65p" title='p' data-ref="65p">p</a>);</td></tr>
+<tr><th id="693">693</th><td></td></tr>
+<tr><th id="694">694</th><td>  <span class="macro" title="__builtin_va_start(args, fmt)" data-ref="_M/va_start">va_start</span> (<a class="local col3 ref" href="#63args" title='args' data-ref="63args">args</a>, <a class="local col2 ref" href="#62fmt" title='fmt' data-ref="62fmt">fmt</a>);</td></tr>
+<tr><th id="695">695</th><td>  <a class="ref" href="../include/stdio.h.html#vsprintf" title='vsprintf' data-ref="vsprintf">vsprintf</a> (<a class="local col5 ref" href="#65p" title='p' data-ref="65p">p</a>, <a class="local col2 ref" href="#62fmt" title='fmt' data-ref="62fmt">fmt</a>, <a class="local col3 ref" href="#63args" title='args' data-ref="63args">args</a>);</td></tr>
+<tr><th id="696">696</th><td>  <span class="macro" title="__builtin_va_end(args)" data-ref="_M/va_end">va_end</span> (<a class="local col3 ref" href="#63args" title='args' data-ref="63args">args</a>);</td></tr>
+<tr><th id="697">697</th><td></td></tr>
+<tr><th id="698">698</th><td>  <a class="ref" href="../include/string.h.html#strcat" title='strcat' data-ref="strcat">strcat</a> (<a class="local col5 ref" href="#65p" title='p' data-ref="65p">p</a>, <a class="local col4 ref" href="#64stop" title='stop' data-ref="64stop">stop</a>);</td></tr>
+<tr><th id="699">699</th><td></td></tr>
+<tr><th id="700">700</th><td>  <a class="macro" href="../include/assert.h.html#88" title="((fmtbuf.buffer[len-1] == &apos;\0&apos;) ? (void) (0) : __assert_fail (&quot;fmtbuf.buffer[len-1] == &apos;\\0&apos;&quot;, &quot;/opt/src/oss-code.github.io/src/remake/output.c&quot;, 700, __PRETTY_FUNCTION__))" data-ref="_M/assert">assert</a> (<a class="tu ref" href="#fmtbuf" title='fmtbuf' data-use='m' data-ref="fmtbuf">fmtbuf</a>.<a class="tu ref" href="#fmtstring::buffer" title='fmtstring::buffer' data-use='r' data-ref="fmtstring::buffer">buffer</a>[<a class="local col1 ref" href="#61len" title='len' data-ref="61len">len</a>-<var>1</var>] == <kbd>'\0'</kbd>);</td></tr>
+<tr><th id="701">701</th><td>  <a class="ref" href="#outputs" title='outputs' data-ref="outputs">outputs</a> (<var>1</var>, <a class="tu ref" href="#fmtbuf" title='fmtbuf' data-use='m' data-ref="fmtbuf">fmtbuf</a>.<a class="tu ref" href="#fmtstring::buffer" title='fmtstring::buffer' data-use='r' data-ref="fmtstring::buffer">buffer</a>);</td></tr>
+<tr><th id="702">702</th><td></td></tr>
+<tr><th id="703">703</th><td>  <a class="ref" href="makeint.h.html#die" title='die' data-ref="die">die</a> (<a class="macro" href="makeint.h.html#685" title="2" data-ref="_M/MAKE_FAILURE">MAKE_FAILURE</a>);</td></tr>
+<tr><th id="704">704</th><td>}</td></tr>
+<tr><th id="705">705</th><td></td></tr>
+<tr><th id="706">706</th><td><i>/* Print an error message from errno.  */</i></td></tr>
+<tr><th id="707">707</th><td></td></tr>
+<tr><th id="708">708</th><td><em>void</em></td></tr>
+<tr><th id="709">709</th><td><dfn class="decl def" id="perror_with_name" title='perror_with_name' data-ref="perror_with_name">perror_with_name</dfn> (<em>const</em> <em>char</em> *<dfn class="local col6 decl" id="66str" title='str' data-type='const char *' data-ref="66str">str</dfn>, <em>const</em> <em>char</em> *<dfn class="local col7 decl" id="67name" title='name' data-type='const char *' data-ref="67name">name</dfn>)</td></tr>
+<tr><th id="710">710</th><td>{</td></tr>
+<tr><th id="711">711</th><td>  <em>const</em> <em>char</em> *<dfn class="local col8 decl" id="68err" title='err' data-type='const char *' data-ref="68err">err</dfn> = <a class="ref" href="../include/string.h.html#strerror" title='strerror' data-ref="strerror">strerror</a> (<a class="macro" href="../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>);</td></tr>
+<tr><th id="712">712</th><td>  <a class="macro" href="makeint.h.html#479" title="error((((gmk_floc *)0)), strlen (str) + strlen (name) + strlen (err), (dcgettext (((void*)0), &quot;%s%s: %s&quot;, 5)), (str), (name), (err))" data-ref="_M/OSSS">OSSS</a> (<a class="ref" href="#error" title='error' data-ref="error">error</a>, <a class="macro" href="makeint.h.html#451" title="((gmk_floc *)0)" data-ref="_M/NILF">NILF</a>, <a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;%s%s: %s&quot;, 5)" data-ref="_M/_">_</a>(<q>"%s%s: %s"</q>), <a class="local col6 ref" href="#66str" title='str' data-ref="66str">str</a>, <a class="local col7 ref" href="#67name" title='name' data-ref="67name">name</a>, <a class="local col8 ref" href="#68err" title='err' data-ref="68err">err</a>);</td></tr>
+<tr><th id="713">713</th><td>}</td></tr>
+<tr><th id="714">714</th><td></td></tr>
+<tr><th id="715">715</th><td><i>/* Print an error message from errno and exit.  */</i></td></tr>
+<tr><th id="716">716</th><td></td></tr>
+<tr><th id="717">717</th><td><em>void</em></td></tr>
+<tr><th id="718">718</th><td><dfn class="decl def" id="pfatal_with_name" title='pfatal_with_name' data-ref="pfatal_with_name">pfatal_with_name</dfn> (<em>const</em> <em>char</em> *<dfn class="local col9 decl" id="69name" title='name' data-type='const char *' data-ref="69name">name</dfn>)</td></tr>
+<tr><th id="719">719</th><td>{</td></tr>
+<tr><th id="720">720</th><td>  <em>const</em> <em>char</em> *<dfn class="local col0 decl" id="70err" title='err' data-type='const char *' data-ref="70err">err</dfn> = <a class="ref" href="../include/string.h.html#strerror" title='strerror' data-ref="strerror">strerror</a> (<a class="macro" href="../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>);</td></tr>
+<tr><th id="721">721</th><td>  <a class="macro" href="makeint.h.html#477" title="fatal((((gmk_floc *)0)), strlen (name) + strlen (err), (dcgettext (((void*)0), &quot;%s: %s&quot;, 5)), (name), (err))" data-ref="_M/OSS">OSS</a> (<a class="ref" href="#fatal" title='fatal' data-ref="fatal">fatal</a>, <a class="macro" href="makeint.h.html#451" title="((gmk_floc *)0)" data-ref="_M/NILF">NILF</a>, <a class="macro" href="make.h.html#293" title="dcgettext (((void*)0), &quot;%s: %s&quot;, 5)" data-ref="_M/_">_</a>(<q>"%s: %s"</q>), <a class="local col9 ref" href="#69name" title='name' data-ref="69name">name</a>, <a class="local col0 ref" href="#70err" title='err' data-ref="70err">err</a>);</td></tr>
+<tr><th id="722">722</th><td></td></tr>
+<tr><th id="723">723</th><td>  <i>/* NOTREACHED */</i></td></tr>
+<tr><th id="724">724</th><td>}</td></tr>
+<tr><th id="725">725</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

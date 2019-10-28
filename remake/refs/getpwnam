@@ -1,0 +1,7 @@
+<dec f='include/pwd.h' l='116' type='struct passwd * getpwnam(const char * __name)'/>
+<use f='remake/read.c' l='2967' u='c' c='remake_tilde_expand'/>
+<use f='remake/read.c' l='2988' u='c' c='remake_tilde_expand'/>
+<doc f='include/pwd.h' l='112'>/* Search for an entry with a matching username.
+
+   This function is a possible cancellation point and therefore not
+   marked with __THROW.  */</doc>

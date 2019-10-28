@@ -1,0 +1,24 @@
+<dec f='remake/variable.h' l='61' type='unsigned int'/>
+<offset>352</offset>
+<doc f='remake/variable.h' l='61'>/* Gets recursively re-evaluated.  */</doc>
+<use f='remake/expand.c' l='174' u='r' c='reference_variable'/>
+<use f='remake/expand.c' l='178' u='r' c='reference_variable'/>
+<use f='remake/expand.c' l='332' u='r' c='variable_expand_string'/>
+<use f='remake/expand.c' l='371' u='r' c='variable_expand_string'/>
+<use f='remake/expand.c' l='536' u='r' c='variable_append'/>
+<use f='remake/function.c' l='499' u='r' c='func_flavor'/>
+<use f='remake/main.c' l='1631' u='r' c='main'/>
+<use f='remake/main.c' l='1644' u='r' c='main'/>
+<use f='remake/main.c' l='2454' u='r' c='main'/>
+<use f='remake/read.c' l='1928' u='w' c='record_target_var'/>
+<use f='remake/read.c' l='1928' u='r' c='record_target_var'/>
+<use f='remake/variable.c' l='302' u='w' c='define_variable_in_set'/>
+<use f='remake/variable.c' l='322' u='w' c='define_variable_in_set'/>
+<use f='remake/variable.c' l='1126' u='r' c='target_environment'/>
+<use f='remake/variable.c' l='1283' u='r' c='do_variable_definition'/>
+<use f='remake/variable.c' l='1703' u='r' c='print_variable'/>
+<use f='remake/variable.c' l='1709' u='r' c='print_variable'/>
+<use f='remake/variable.c' l='1716' u='r' c='print_variable'/>
+<use f='remake/variable.c' l='1753' u='r' c='print_variable_info'/>
+<use f='remake/variable.c' l='1759' u='r' c='print_variable_info'/>
+<use f='remake/variable.c' l='1766' u='r' c='print_variable_info'/>

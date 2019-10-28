@@ -1,0 +1,38 @@
+<dec f='remake/makeint.h' l='562' type='const char * strcache_add(const char * str)'/>
+<dec f='remake/make.h' l='409' type='const char * strcache_add(const char * str)'/>
+<use f='remake/ar.c' l='117' u='c' c='ar_member_date'/>
+<use f='remake/ar.c' l='155' u='c' c='ar_touch'/>
+<use f='remake/ar.c' l='231' u='c' c='ar_glob_match'/>
+<use f='remake/commands.c' l='118' u='c' c='set_file_variables'/>
+<use f='remake/default.c' l='673' u='c' c='set_default_suffixes'/>
+<use f='remake/default.c' l='706' u='c' c='install_default_suffix_rules'/>
+<use f='remake/implicit.c' l='898' u='c' c='pattern_search'/>
+<use f='remake/implicit.c' l='944' u='c' c='pattern_search'/>
+<use f='remake/implicit.c' l='977' u='c' c='pattern_search'/>
+<use f='remake/load.c' l='165' u='c' c='load_file'/>
+<use f='remake/main.c' l='652' u='c' c='expand_command_line_file'/>
+<use f='remake/main.c' l='1810' u='c' c='main'/>
+<use f='remake/main.c' l='1814' u='c' c='main'/>
+<use f='remake/main.c' l='1888' u='c' c='main'/>
+<use f='remake/main.c' l='2482' u='c' c='main'/>
+<use f='remake/main.c' l='2682' u='c' c='handle_non_switch_argument'/>
+<use f='remake/read.c' l='252' u='c' c='read_all_makefiles'/>
+<use f='remake/read.c' l='376' u='c' c='eval_makefile'/>
+<use f='remake/read.c' l='1896' u='c' c='record_target_var'/>
+<use f='remake/read.c' l='2111' u='c' c='record_files'/>
+<use f='remake/read.c' l='2166' u='c' c='record_files'/>
+<use f='remake/read.c' l='2463' u='c' c='find_percent_cached'/>
+<use f='remake/read.c' l='3041' u='c' c='parse_file_seq'/>
+<use f='remake/read.c' l='3041' u='c' c='parse_file_seq'/>
+<use f='remake/read.c' l='3308' u='c' c='parse_file_seq'/>
+<use f='remake/read.c' l='3041' u='c' c='parse_file_seq'/>
+<use f='remake/remake.c' l='1366' u='c' c='f_mtime'/>
+<use f='remake/remake.c' l='1390' u='c' c='f_mtime'/>
+<use f='remake/remake.c' l='1392' u='c' c='f_mtime'/>
+<use f='remake/remake.c' l='1737' u='c' c='library_search'/>
+<use f='remake/remake.c' l='1798' u='c' c='library_search'/>
+<def f='remake/strcache.c' l='234' ll='238' type='const char * strcache_add(const char * str)'/>
+<doc f='remake/strcache.c' l='231'>/* If the string is already in the cache, return a pointer to the cached
+   version.  If not, add it then return a pointer to the cached version.
+   Note we do NOT take control of the string passed in.  */</doc>
+<use f='remake/vpath.c' l='293' u='c' c='construct_vpath_list'/>

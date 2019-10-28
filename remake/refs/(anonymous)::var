@@ -1,0 +1,8 @@
+<dec f='remake/debugger/subcmd.h' l='8' type='int *'/>
+<use f='remake/debugger/command/set.h' l='122' u='r' c='dbg_cmd_set'/>
+<use f='remake/debugger/command/help.h' l='35' u='r' c='dbg_help_subcmd_entry'/>
+<use f='remake/debugger/command/help.h' l='38' u='r' c='dbg_help_subcmd_entry'/>
+<use f='remake/debugger/command/help.h' l='40' u='r' c='dbg_help_subcmd_entry'/>
+<offset>192</offset>
+<doc f='remake/debugger/subcmd.h' l='8'>/* address of variable setting. NULL if no
+			     setting. */</doc>

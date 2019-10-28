@@ -1,0 +1,6 @@
+<dec f='remake/dep.h' l='103' type='struct dep * copy_dep_chain(const struct dep * d)'/>
+<dec f='remake/dep.h' l='132' type='struct dep * copy_dep_chain(const struct dep * d)'/>
+<def f='remake/misc.c' l='264' ll='288' type='struct dep * copy_dep_chain(const struct dep * d)'/>
+<doc f='remake/misc.c' l='262'>/* Copy a chain of &apos;struct dep&apos;.  For 2nd expansion deps, dup the name.  */</doc>
+<use f='remake/read.c' l='2104' u='c' c='record_files'/>
+<use f='remake/remake.c' l='97' u='c' c='update_goal_chain'/>

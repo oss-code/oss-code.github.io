@@ -1,0 +1,8 @@
+<dec f='remake/variable.h' l='65' type='unsigned int'/>
+<offset>355</offset>
+<doc f='remake/variable.h' l='65'>/* Nonzero if a target-specific variable.  */</doc>
+<use f='remake/read.c' l='1910' u='w' c='record_target_var'/>
+<use f='remake/variable.c' l='326' u='w' c='define_variable_in_set'/>
+<use f='remake/variable.c' l='687' u='w' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='687' u='r' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='1055' u='r' c='target_environment'/>

@@ -1,0 +1,7 @@
+<dec f='remake/filedef.h' l='94' type='unsigned int'/>
+<offset>1538</offset>
+<doc f='remake/filedef.h' l='94'>/* True if the file is a loaded object. */</doc>
+<use f='remake/commands.c' l='580' u='r' c='execute_file_commands'/>
+<use f='remake/file.c' l='171' u='w' c='rehash_file'/>
+<use f='remake/file.c' l='171' u='r' c='rehash_file'/>
+<use f='remake/read.c' l='994' u='w' c='eval'/>

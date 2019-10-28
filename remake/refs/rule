@@ -1,0 +1,13 @@
+<def f='remake/rule.h' l='25' ll='38'/>
+<size>88</size>
+<mbr r='rule::next' o='0' t='struct rule *'/>
+<mbr r='rule::targets' o='64' t='const char **'/>
+<mbr r='rule::lens' o='128' t='unsigned int *'/>
+<mbr r='rule::suffixes' o='192' t='const char **'/>
+<mbr r='rule::deps' o='256' t='struct dep *'/>
+<mbr r='rule::cmds' o='320' t='struct commands *'/>
+<mbr r='rule::num' o='384' t='unsigned short'/>
+<mbr r='rule::terminal' o='400' t='char'/>
+<mbr r='rule::in_use' o='408' t='char'/>
+<mbr r='rule::floc' o='448' t='gmk_floc'/>
+<mbr r='rule::tracing' o='640' t='breakpoint_mask_t'/>

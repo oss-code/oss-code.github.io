@@ -1,0 +1,7 @@
+<dec f='remake/trace.h' l='102' type='struct floc_stack_node *'/>
+<offset>64</offset>
+<use f='remake/debugger/stack.c' l='49' u='r' c='dbg_stack_size'/>
+<use f='remake/debugger/stack.c' l='101' u='r' c='dbg_adjust_frame'/>
+<use f='remake/print.c' l='379' u='r' c='print_floc_stack'/>
+<use f='remake/trace.c' l='89' u='w' c='trace_push_floc'/>
+<use f='remake/trace.c' l='99' u='r' c='trace_pop_floc'/>

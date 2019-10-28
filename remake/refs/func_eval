@@ -1,0 +1,25 @@
+<dec f='remake/function.h' l='56' type='char * func_eval(char * o, char ** argv, const char * funcname)'/>
+<use f='remake/debugger/command/eval.h' l='43' u='c' c='dbg_cmd_eval'/>
+<doc f='remake/function.h' l='49'>/*!
+  $(eval *makefile-string*)
+
+  Always resolves to the empty string.
+
+  Treat the arguments as a segment of makefile, and parse them.
+*/</doc>
+<def f='remake/function.c' l='1389' ll='1405' type='char * func_eval(char * o, char ** argv, const char * funcname)'/>
+<use f='remake/function.c' l='2385'/>
+<use f='remake/function.c' l='2385'/>
+<use f='remake/function.c' l='2385'/>
+<use f='remake/function.c' l='2385'/>
+<use f='remake/function.c' l='2385'/>
+<use f='remake/function.c' l='2385'/>
+<use f='remake/function.c' l='2385'/>
+<use f='remake/function.c' l='2385'/>
+<doc f='remake/function.c' l='1381'>/*
+  $(eval &lt;makefile string&gt;)
+
+  Always resolves to the empty string.
+
+  Treat the arguments as a segment of makefile, and parse them.
+*/</doc>

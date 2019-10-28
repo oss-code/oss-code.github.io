@@ -1,0 +1,25 @@
+<dec f='remake/trace.h' l='87' type='target_stack_node_t *'/>
+<doc f='remake/trace.h' l='86'>/** Pointer to top of current target call stack */</doc>
+<use f='remake/debugger/command/finish.h' l='31' u='r' c='dbg_cmd_finish'/>
+<use f='remake/debugger/command/info.h' l='192' u='r' c='dbg_cmd_info_line'/>
+<use f='remake/debugger/command/info.h' l='192' u='r' c='dbg_cmd_info_line'/>
+<use f='remake/debugger/command/info.h' l='193' u='r' c='dbg_cmd_info_line'/>
+<use f='remake/debugger/command/info.h' l='194' u='r' c='dbg_cmd_info_line'/>
+<use f='remake/debugger/command/info.h' l='327' u='r' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='350' u='r' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='350' u='r' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='351' u='r' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='352' u='r' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/list.h' l='12' u='r' c='dbg_cmd_list'/>
+<use f='remake/debugger/command/where.h' l='33' u='r' c='dbg_cmd_where'/>
+<use f='remake/debugger/command/where.h' l='34' u='r' c='dbg_cmd_where'/>
+<use f='remake/debugger/cmd.c' l='419' u='w' c='enter_debugger'/>
+<use f='remake/debugger/stack.c' l='41' u='r' c='dbg_stack_size'/>
+<use f='remake/debugger/stack.c' l='42' u='r' c='dbg_stack_size'/>
+<use f='remake/debugger/stack.c' l='79' u='r' c='dbg_adjust_frame'/>
+<use f='remake/debugger/stack.c' l='80' u='r' c='dbg_adjust_frame'/>
+<use f='remake/function.c' l='1421' u='r' c='func_debugger'/>
+<use f='remake/job.c' l='1233' u='w' c='start_job_command'/>
+<use f='remake/remake.c' l='475' u='w' c='update_file_1'/>
+<def f='remake/trace.c' l='35' type='target_stack_node_t *'/>
+<doc f='remake/trace.c' l='34'>/** Pointer to top of current target call stack */</doc>

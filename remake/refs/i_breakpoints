@@ -1,0 +1,9 @@
+<dec f='remake/debugger/break.h' l='41' type='unsigned int'/>
+<def f='remake/debugger/break.c' l='41' type='brkpt_mask_t'/>
+<use f='remake/debugger/break.c' l='62' u='w' c='add_breakpoint'/>
+<use f='remake/debugger/break.c' l='80' u='r' c='add_breakpoint'/>
+<use f='remake/debugger/break.c' l='107' u='r' c='remove_breakpoint'/>
+<use f='remake/debugger/break.c' l='109' u='r' c='remove_breakpoint'/>
+<doc f='remake/debugger/break.h' l='39'>/** The largest breakpoint number previously given. When a new
+    breakpoint is set it will be i_breakpoints+1. */</doc>
+<use f='remake/debugger/command/delete.h' l='30' u='r' c='dbg_cmd_delete'/>

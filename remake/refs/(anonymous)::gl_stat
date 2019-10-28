@@ -1,0 +1,4 @@
+<dec f='include/glob.h' l='100' type='int (*)(const char *restrict, struct stat *restrict)'/>
+<dec f='include/glob.h' l='129' type='int (*)(const char *restrict, struct stat64 *restrict)'/>
+<offset>512</offset>
+<use f='remake/dir.c' l='1340' u='w' c='dir_setup_glob'/>

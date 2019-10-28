@@ -1,0 +1,11 @@
+<dec f='remake/commands.h' l='33' type='unsigned short'/>
+<use f='remake/commands.c' l='403' u='w' c='chop_commands'/>
+<use f='remake/commands.c' l='444' u='r' c='expand_command_lines'/>
+<offset>384</offset>
+<doc f='remake/commands.h' l='33'>/* Number of command lines.  */</doc>
+<use f='remake/job.c' l='921' u='r' c='free_child'/>
+<use f='remake/job.c' l='1534' u='r' c='new_job'/>
+<use f='remake/job.c' l='1535' u='r' c='new_job'/>
+<use f='remake/job.c' l='1777' u='r' c='job_next_command'/>
+<use f='remake/remake.c' l='978' u='r' c='notice_finished_file'/>
+<use f='remake/remake.c' l='1019' u='r' c='notice_finished_file'/>

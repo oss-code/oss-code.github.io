@@ -1,0 +1,14 @@
+<dec f='remake/debug.h' l='125' type='unsigned int'/>
+<doc f='remake/debug.h' l='123'>/*! If nonzero, we have requested some sort of debugging.
+*/</doc>
+<def f='remake/globals.c' l='107' type='unsigned int'/>
+<doc f='remake/globals.c' l='105'>/*! If nonzero, we have requested some sort of debugging.
+*/</doc>
+<use f='remake/job.c' l='421' u='r' c='child_error'/>
+<use f='remake/job.c' l='733' u='r' c='reap_children'/>
+<use f='remake/job.c' l='867' u='r' c='reap_children'/>
+<use f='remake/main.c' l='1441' u='w' c='main'/>
+<use f='remake/main.c' l='1447' u='w' c='main'/>
+<use f='remake/main.c' l='1475' u='w' c='main'/>
+<use f='remake/print.c' l='175' u='r' c='fatal_err'/>
+<use f='remake/remake.c' l='236' u='r' c='update_goal_chain'/>

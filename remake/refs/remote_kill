@@ -1,0 +1,5 @@
+<dec f='remake/makeint.h' l='662' type='int remote_kill(int id, int sig)'/>
+<dec f='remake/commands.c' l='31' type='int remote_kill(int id, int sig)'/>
+<use f='remake/commands.c' l='665' u='c' c='fatal_error_signal'/>
+<def f='remake/remote-stub.c' l='93' ll='97' type='int remote_kill(int id, int sig)'/>
+<doc f='remake/remote-stub.c' l='92'>/* Send signal SIG to child ID.  Return 0 if successful, -1 if not.  */</doc>

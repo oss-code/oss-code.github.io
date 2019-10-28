@@ -1,0 +1,19 @@
+<dec f='remake/makeint.h' l='467' type='const char * concat(unsigned int )'/>
+<use f='remake/ar.c' l='231' u='c' c='ar_glob_match'/>
+<use f='remake/load.c' l='76' u='c' c='load_object'/>
+<use f='remake/main.c' l='1558' u='c' c='main'/>
+<use f='remake/main.c' l='2296' u='c' c='main'/>
+<use f='remake/main.c' l='2308' u='c' c='main'/>
+<def f='remake/misc.c' l='144' ll='185' type='const char * concat(unsigned int num)'/>
+<doc f='remake/misc.c' l='141'>/* Return a string whose contents concatenate the NUM strings provided
+   This string lives in static, re-used memory.  */</doc>
+<use f='remake/read.c' l='363' u='c' c='eval_makefile'/>
+<use f='remake/read.c' l='2975' u='c' c='remake_tilde_expand'/>
+<use f='remake/read.c' l='2994' u='c' c='remake_tilde_expand'/>
+<use f='remake/read.c' l='3221' u='c' c='parse_file_seq'/>
+<use f='remake/read.c' l='3293' u='c' c='parse_file_seq'/>
+<use f='remake/read.c' l='3306' u='c' c='parse_file_seq'/>
+<use f='remake/read.c' l='3308' u='c' c='parse_file_seq'/>
+<use f='remake/read.c' l='3320' u='c' c='parse_file_seq'/>
+<use f='remake/variable.c' l='1135' u='c' c='target_environment'/>
+<use f='remake/variable.c' l='1145' u='c' c='target_environment'/>

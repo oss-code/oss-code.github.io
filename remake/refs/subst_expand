@@ -1,0 +1,10 @@
+<dec f='remake/variable.h' l='135' type='char * subst_expand(char * o, const char * text, const char * subst, const char * replace, unsigned int slen, unsigned int rlen, int by_word)'/>
+<use f='remake/file.c' l='431' u='c' c='expand_deps'/>
+<def f='remake/function.c' l='75' ll='129' type='char * subst_expand(char * o, const char * text, const char * subst, const char * replace, unsigned int slen, unsigned int rlen, int by_word)'/>
+<use f='remake/function.c' l='168' u='c' c='patsubst_expand_pat'/>
+<use f='remake/function.c' l='694' u='c' c='func_subst'/>
+<doc f='remake/function.c' l='69'>/* Store into VARIABLE_BUFFER at O the result of scanning TEXT and replacing
+   each occurrence of SUBST with REPLACE. TEXT is null-terminated.  SLEN is
+   the length of SUBST and RLEN is the length of REPLACE.  If BY_WORD is
+   nonzero, substitutions are done only on matches which are complete
+   whitespace-delimited words.  */</doc>

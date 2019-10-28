@@ -1,0 +1,5 @@
+<dec f='remake/debug.h' l='100' type='uint8_t'/>
+<def f='remake/debug.c' l='30' macro='1' type='uint8_t'/>
+<doc f='remake/debug.h' l='99'>/*! If true, enter the debugger before updating goal target. */</doc>
+<use f='remake/main.c' l='1466' u='w' c='main'/>
+<use f='remake/remake.c' l='236' u='r' c='update_goal_chain'/>

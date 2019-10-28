@@ -1,0 +1,9 @@
+<dec f='remake/filedef.h' l='182' type='uintmax_t file_timestamp_cons(const char * , time_t , long )'/>
+<doc f='remake/filedef.h' l='181'>/** Convert an external file timestamp to internal form.  */</doc>
+<use f='remake/commands.c' l='745' macro='1' u='c'/>
+<def f='remake/file.c' l='641' ll='661' macro='1' type='uintmax_t file_timestamp_cons(const char * fname, time_t stamp, long ns)'/>
+<use f='remake/file.c' l='710' u='c' c='file_timestamp_now'/>
+<use f='remake/remake.c' l='1412' u='c' c='f_mtime'/>
+<use f='remake/remake.c' l='1573' macro='1' u='c'/>
+<use f='remake/remake.c' l='1622' macro='1' u='c'/>
+<use f='remake/vpath.c' l='514' macro='1' u='c'/>

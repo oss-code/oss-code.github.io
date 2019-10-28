@@ -1,0 +1,12 @@
+<dec f='remake/debugger/fns.h' l='60' type='uint8_t get_uint(const char * psz_arg, unsigned int * pi_result, uint8_t b_warn)'/>
+<use f='remake/debugger/command/break.h' l='40' u='c' c='dbg_cmd_break'/>
+<use f='remake/debugger/command/finish.h' l='28' u='c' c='dbg_cmd_finish'/>
+<use f='remake/debugger/command/next.h' l='31' u='c' c='dbg_cmd_next'/>
+<use f='remake/debugger/command/list.h' l='35' u='c' c='dbg_cmd_list'/>
+<use f='remake/debugger/command/step.h' l='33' u='c' c='dbg_cmd_step'/>
+<use f='remake/debugger/command/up.h' l='28' u='c' c='dbg_cmd_up'/>
+<doc f='remake/debugger/fns.h' l='57'>/*! Parse psz_arg for a unsigned integer. The value is returned in
+    *pi_result. The retun value is true if parsing succeeded.
+ */</doc>
+<doc f='remake/debugger/fns.h' l='60'>/*out*/</doc>
+<def f='remake/debugger/fns.c' l='115' ll='131' macro='1' type='uint8_t get_uint(const char * psz_arg, unsigned int * result, uint8_t b_warn)'/>

@@ -1,0 +1,16 @@
+<dec f='remake/makeint.h' l='563' type='const char * strcache_add_len(const char * str, unsigned int len)'/>
+<use f='remake/commands.c' l='123' u='c' c='set_file_variables'/>
+<use f='remake/dir.c' l='472' u='c' c='find_directory'/>
+<use f='remake/dir.c' l='732' u='c' c='dir_contents_file_exists_p'/>
+<use f='remake/dir.c' l='950' u='c' c='file_impossible'/>
+<use f='remake/file.c' l='363' u='c' c='enter_prereqs'/>
+<use f='remake/implicit.c' l='929' u='c' c='pattern_search'/>
+<use f='remake/read.c' l='2193' u='c' c='record_files'/>
+<use f='remake/read.c' l='2877' u='c' c='construct_include_path'/>
+<use f='remake/read.c' l='2918' u='c' c='construct_include_path'/>
+<use f='remake/rule.c' l='169' u='c' c='convert_suffix_rule'/>
+<use f='remake/rule.c' l='180' u='c' c='convert_suffix_rule'/>
+<use f='remake/rule.c' l='194' u='c' c='convert_suffix_rule'/>
+<def f='remake/strcache.c' l='240' ll='254' type='const char * strcache_add_len(const char * str, unsigned int len)'/>
+<use f='remake/vpath.c' l='263' u='c' c='construct_vpath_list'/>
+<use f='remake/vpath.c' l='530' u='c' c='selective_vpath_search'/>

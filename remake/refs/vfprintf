@@ -1,0 +1,10 @@
+<dec f='include/stdio.h' l='371' type='int vfprintf(FILE *restrict __s, const char *restrict __format, struct __va_list_tag * __arg)'/>
+<use f='include/x86_64-linux-gnu/bits/stdio.h' l='38' u='c' c='vprintf'/>
+<doc f='include/stdio.h' l='367'>/* Write formatted output to S from argument list ARG.
+
+   This function is a possible cancellation point and therefore not
+   marked with __THROW.  */</doc>
+<use f='remake/debugger/msg.c' l='34' u='c' c='dbg_errmsg'/>
+<use f='remake/debugger/msg.c' l='34' u='c' c='dbg_msg'/>
+<use f='remake/print.c' l='123' u='c' c='err_with_stack'/>
+<use f='remake/print.c' l='165' u='c' c='fatal_err'/>

@@ -1,0 +1,14 @@
+<dec f='remake/commands.h' l='30' type='char *'/>
+<use f='remake/commands.c' l='341' u='r' c='chop_commands'/>
+<use f='remake/commands.c' l='345' u='r' c='chop_commands'/>
+<use f='remake/commands.c' l='358' u='r' c='chop_commands'/>
+<use f='remake/commands.c' l='560' u='r' c='execute_file_commands'/>
+<use f='remake/commands.c' l='807' u='r' c='print_commands'/>
+<use f='remake/commands.c' l='809' u='r' c='print_commands'/>
+<offset>192</offset>
+<doc f='remake/commands.h' l='30'>/* Commands text.  */</doc>
+<use f='remake/debugger/command/write.h' l='37' u='r' c='dbg_cmd_write'/>
+<use f='remake/debugger/command/write.h' l='43' u='r' c='dbg_cmd_write'/>
+<use f='remake/default.c' l='711' u='w' c='install_default_suffix_rules'/>
+<use f='remake/read.c' l='1977' u='w' c='record_files'/>
+<use f='remake/rule.c' l='388' u='w' c='install_pattern_rule'/>

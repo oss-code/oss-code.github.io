@@ -1,0 +1,40 @@
+<dec f='remake/debugger.h' l='11' type='dbg_cmd_t'/>
+<use f='remake/debugger/command/break.h' l='85' u='w' c='dbg_cmd_break_init'/>
+<use f='remake/debugger/command/chdir.h' l='39' u='w' c='dbg_cmd_chdir_init'/>
+<use f='remake/debugger/command/comment.h' l='30' u='w' c='dbg_cmd_comment_init'/>
+<use f='remake/debugger/command/continue.h' l='72' u='w' c='dbg_cmd_continue_init'/>
+<use f='remake/debugger/command/delete.h' l='49' u='w' c='dbg_cmd_delete_init'/>
+<use f='remake/debugger/command/down.h' l='36' u='w' c='dbg_cmd_down_init'/>
+<use f='remake/debugger/command/edit.h' l='54' u='w' c='dbg_cmd_edit_init'/>
+<use f='remake/debugger/command/eval.h' l='54' u='w' c='dbg_cmd_eval_init'/>
+<use f='remake/debugger/command/expand.h' l='46' u='w' c='dbg_cmd_expand_init'/>
+<use f='remake/debugger/command/finish.h' l='61' u='w' c='dbg_cmd_finish_init'/>
+<use f='remake/debugger/command/frame.h' l='37' u='w' c='dbg_cmd_frame_init'/>
+<use f='remake/debugger/command/info.h' l='379' u='w' c='dbg_cmd_info_init'/>
+<use f='remake/debugger/command/next.h' l='42' u='w' c='dbg_cmd_next_init'/>
+<use f='remake/debugger/command/list.h' l='67' u='w' c='dbg_cmd_list_init'/>
+<use f='remake/debugger/command/print.h' l='50' u='w' c='dbg_cmd_print_init'/>
+<use f='remake/debugger/command/pwd.h' l='40' u='w' c='dbg_cmd_pwd_init'/>
+<use f='remake/debugger/command/quit.h' l='41' u='w' c='dbg_cmd_quit_init'/>
+<use f='remake/debugger/command/run.h' l='29' u='w' c='dbg_cmd_run_init'/>
+<use f='remake/debugger/command/set.h' l='135' u='w' c='dbg_cmd_set_init'/>
+<use f='remake/debugger/command/setq.h' l='31' u='w' c='dbg_cmd_setq_init'/>
+<use f='remake/debugger/command/setqx.h' l='31' u='w' c='dbg_cmd_setqx_init'/>
+<use f='remake/debugger/command/shell.h' l='33' u='w' c='dbg_cmd_shell_init'/>
+<use f='remake/debugger/command/show.h' l='119' u='w' c='dbg_cmd_show_init'/>
+<use f='remake/debugger/command/skip.h' l='30' u='w' c='dbg_cmd_skip_init'/>
+<use f='remake/debugger/command/source.h' l='62' u='w' c='dbg_cmd_source_init'/>
+<use f='remake/debugger/command/step.h' l='45' u='w' c='dbg_cmd_step_init'/>
+<use f='remake/debugger/command/target.h' l='74' u='w' c='dbg_cmd_target_init'/>
+<use f='remake/debugger/command/up.h' l='37' u='w' c='dbg_cmd_up_init'/>
+<use f='remake/debugger/command/where.h' l='51' u='w' c='dbg_cmd_where_init'/>
+<use f='remake/debugger/command/write.h' l='194' u='w' c='dbg_cmd_write_init'/>
+<use f='remake/debugger/command/help.h' l='105' u='r' c='dbg_cmd_help'/>
+<use f='remake/debugger/command/help.h' l='114' u='r' c='dbg_cmd_help'/>
+<use f='remake/debugger/command/help.h' l='116' u='r' c='dbg_cmd_help'/>
+<use f='remake/debugger/command/help.h' l='118' u='r' c='dbg_cmd_help'/>
+<use f='remake/debugger/command/help.h' l='136' u='w' c='dbg_cmd_help_init'/>
+<use f='remake/debugger/cmd.c' l='261' u='r' c='execute_line'/>
+<use f='remake/debugger/cmd.c' l='281' u='r' c='execute_line'/>
+<offset>0</offset>
+<doc f='remake/debugger.h' l='11'>/* Function to call to do the job. */</doc>

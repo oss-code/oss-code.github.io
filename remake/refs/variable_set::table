@@ -1,0 +1,28 @@
+<dec f='remake/variable.h' l='92' type='struct hash_table'/>
+<offset>0</offset>
+<doc f='remake/variable.h' l='92'>/* Hash table of variables.  */</doc>
+<use f='remake/debugger/command/info.h' l='297' u='a' c='dbg_cmd_info'/>
+<use f='remake/variable.c' l='223' u='a' c='init_hash_global_variable_set'/>
+<use f='remake/variable.c' l='249' u='a' c='define_variable_in_set'/>
+<use f='remake/variable.c' l='312' u='a' c='define_variable_in_set'/>
+<use f='remake/variable.c' l='365' u='a' c='free_variable_set'/>
+<use f='remake/variable.c' l='366' u='a' c='free_variable_set'/>
+<use f='remake/variable.c' l='385' u='a' c='undefine_variable_in_set'/>
+<use f='remake/variable.c' l='402' u='a' c='undefine_variable_in_set'/>
+<use f='remake/variable.c' l='457' u='m' c='lookup_special_var'/>
+<use f='remake/variable.c' l='458' u='m' c='lookup_special_var'/>
+<use f='remake/variable.c' l='517' u='a' c='lookup_variable'/>
+<use f='remake/variable.c' l='597' u='a' c='lookup_variable_in_set'/>
+<use f='remake/variable.c' l='619' u='a' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='719' u='a' c='create_new_variable_set'/>
+<use f='remake/variable.c' l='786' u='a' c='pop_variable_scope'/>
+<use f='remake/variable.c' l='787' u='a' c='pop_variable_scope'/>
+<use f='remake/variable.c' l='797' u='m' c='merge_variable_sets'/>
+<use f='remake/variable.c' l='798' u='m' c='merge_variable_sets'/>
+<use f='remake/variable.c' l='807' u='a' c='merge_variable_sets'/>
+<use f='remake/variable.c' l='810' u='a' c='merge_variable_sets'/>
+<use f='remake/variable.c' l='1044' u='m' c='target_environment'/>
+<use f='remake/variable.c' l='1045' u='m' c='target_environment'/>
+<use f='remake/variable.c' l='1806' u='a' c='print_variable_set'/>
+<use f='remake/variable.c' l='1811' u='a' c='print_variable_set'/>
+<use f='remake/variable.c' l='1867' u='a' c='print_target_variables'/>

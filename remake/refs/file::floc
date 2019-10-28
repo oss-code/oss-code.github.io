@@ -1,0 +1,45 @@
+<dec f='remake/filedef.h' l='34' type='gmk_floc'/>
+<offset>192</offset>
+<doc f='remake/filedef.h' l='34'>/* location in Makefile - for tracing */</doc>
+<use f='remake/debugger/break.c' l='82' u='m' c='add_breakpoint'/>
+<use f='remake/debugger/break.c' l='83' u='m' c='add_breakpoint'/>
+<use f='remake/debugger/break.c' l='84' u='m' c='add_breakpoint'/>
+<use f='remake/debugger/break.c' l='162' u='m' c='list_breakpoints'/>
+<use f='remake/debugger/break.c' l='164' u='a' c='list_breakpoints'/>
+<use f='remake/debugger/command/break.h' l='41' u='m' c='dbg_cmd_break'/>
+<use f='remake/debugger/command/info.h' l='136' u='a' c='dbg_cmd_info_target_entry'/>
+<use f='remake/debugger/command/info.h' l='193' u='m' c='dbg_cmd_info_line'/>
+<use f='remake/debugger/command/info.h' l='194' u='a' c='dbg_cmd_info_line'/>
+<use f='remake/debugger/command/list.h' l='37' u='m' c='dbg_cmd_list'/>
+<use f='remake/debugger/command/list.h' l='58' u='a' c='dbg_cmd_list'/>
+<use f='remake/debugger/command/write.h' l='103' u='m' c='dbg_cmd_write'/>
+<use f='remake/debugger/command/write.h' l='112' u='m' c='dbg_cmd_write'/>
+<use f='remake/debugger/command/write.h' l='112' u='m' c='dbg_cmd_write'/>
+<use f='remake/debugger/cmd.c' l='426' u='a' c='enter_debugger'/>
+<use f='remake/debugger/cmd.c' l='429' u='a' c='enter_debugger'/>
+<use f='remake/debugger/file2line.c' l='115' u='a' c='file2line_init'/>
+<use f='remake/debugger/file2line.c' l='193' u='m' c='file2lines_print_entry'/>
+<use f='remake/debugger/fns.c' l='184' u='a' c='get_current_floc'/>
+<use f='remake/debugger/stack.c' l='94' u='a' c='dbg_adjust_frame'/>
+<use f='remake/job.c' l='1635' u='a' c='new_job'/>
+<use f='remake/job.c' l='1744' u='m' c='new_job'/>
+<use f='remake/job.c' l='1745' u='m' c='new_job'/>
+<use f='remake/job.c' l='1746' u='m' c='new_job'/>
+<use f='remake/job.c' l='1747' u='m' c='new_job'/>
+<use f='remake/job.c' l='1748' u='m' c='new_job'/>
+<use f='remake/job.c' l='1748' u='m' c='new_job'/>
+<use f='remake/job.c' l='1749' u='m' c='new_job'/>
+<use f='remake/job.c' l='1749' u='m' c='new_job'/>
+<use f='remake/print.c' l='106' u='a' c='err_with_stack'/>
+<use f='remake/print.c' l='154' u='a' c='fatal_err'/>
+<use f='remake/print.c' l='268' u='a' c='print_file_target_prefix'/>
+<use f='remake/print.c' l='324' u='m' c='print_target_stack_entry'/>
+<use f='remake/print.c' l='325' u='a' c='print_target_stack_entry'/>
+<use f='remake/profile.c' l='92' u='a' c='add_profile_entry'/>
+<use f='remake/profile.c' l='232' u='m' c='callgrind_profile_entry'/>
+<use f='remake/profile.c' l='233' u='m' c='callgrind_profile_entry'/>
+<use f='remake/read.c' l='2113' u='m' c='record_files'/>
+<use f='remake/read.c' l='2114' u='m' c='record_files'/>
+<use f='remake/read.c' l='2168' u='m' c='record_files'/>
+<use f='remake/read.c' l='2169' u='m' c='record_files'/>
+<use f='remake/trace.c' l='57' u='m' c='trace_push_target'/>

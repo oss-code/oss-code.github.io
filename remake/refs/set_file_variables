@@ -1,0 +1,11 @@
+<dec f='remake/commands.h' l='71' type='void set_file_variables(struct file * file)'/>
+<def f='remake/commands.c' l='62' ll='320' type='void set_file_variables(struct file * file)'/>
+<use f='remake/commands.c' l='576' u='c' c='execute_file_commands'/>
+<use f='remake/commands.c' l='805' u='c' c='print_commands'/>
+<doc f='remake/commands.c' l='60'>/* Set FILE&apos;s automatic variables up.  */</doc>
+<use f='remake/debugger/command/info.h' l='286' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/target.h' l='63' u='c' c='dbg_cmd_target'/>
+<use f='remake/debugger/command/write.h' l='146' u='c' c='dbg_cmd_write'/>
+<use f='remake/debugger/fns.c' l='430' u='c' c='dbg_cmd_show_exp'/>
+<use f='remake/file.c' l='450' u='c' c='expand_deps'/>
+<use f='remake/implicit.c' l='628' u='c' c='pattern_search'/>

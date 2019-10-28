@@ -1,0 +1,6 @@
+<dec f='include/dlfcn.h' l='56' type='void * dlopen(const char * __file, int __mode)'/>
+<use f='remake/load.c' l='56' u='c' c='load_object'/>
+<use f='remake/load.c' l='76' u='c' c='load_object'/>
+<use f='remake/load.c' l='80' u='c' c='load_object'/>
+<doc f='include/dlfcn.h' l='54'>/* Open the shared object FILE and map it in; return a handle that can be
+   passed to `dlsym&apos; to get symbol values from it.  */</doc>

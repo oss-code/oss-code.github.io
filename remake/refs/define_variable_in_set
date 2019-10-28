@@ -1,0 +1,84 @@
+<dec f='remake/variable.h' l='228' type='struct variable * define_variable_in_set(const char * name, unsigned int length, const char * value, enum variable_origin origin, int recursive, struct variable_set * set, const gmk_floc * flocp)'/>
+<use f='remake/commands.c' l='152' macro='1' u='c'/>
+<use f='remake/commands.c' l='153' macro='1' u='c'/>
+<use f='remake/commands.c' l='154' macro='1' u='c'/>
+<use f='remake/commands.c' l='155' macro='1' u='c'/>
+<use f='remake/commands.c' l='226' macro='1' u='c'/>
+<use f='remake/commands.c' l='310' macro='1' u='c'/>
+<use f='remake/commands.c' l='313' macro='1' u='c'/>
+<use f='remake/commands.c' l='316' macro='1' u='c'/>
+<use f='remake/debugger/command/continue.h' l='64' u='c' c='dbg_cmd_continue'/>
+<use f='remake/debugger/command/finish.h' l='44' u='c' c='dbg_cmd_finish'/>
+<use f='remake/debugger/command/next.h' l='27' u='c' c='dbg_cmd_next'/>
+<use f='remake/debugger/command/step.h' l='29' u='c' c='dbg_cmd_step'/>
+<use f='remake/debugger/command/step.h' l='34' u='c' c='dbg_cmd_step'/>
+<use f='remake/debugger/cmd.c' l='326' u='c' c='dbg_cmd_set_var'/>
+<use f='remake/debugger/cmd.c' l='335' u='c' c='dbg_cmd_set_var'/>
+<use f='remake/debugger/fns.c' l='406' macro='1' u='c'/>
+<use f='remake/default.c' l='677' macro='1' u='c'/>
+<use f='remake/default.c' l='687' macro='1' u='c'/>
+<use f='remake/default.c' l='745' macro='1' u='c'/>
+<use f='remake/function.c' l='875' macro='1' u='c'/>
+<use f='remake/function.c' l='1487' macro='1' u='c'/>
+<use f='remake/function.c' l='2620' macro='1' u='c'/>
+<use f='remake/function.c' l='2633' macro='1' u='c'/>
+<use f='remake/implicit.c' l='634' macro='1' u='c'/>
+<use f='remake/main.c' l='1210' macro='1' u='c'/>
+<use f='remake/main.c' l='1212' macro='1' u='c'/>
+<use f='remake/main.c' l='1213' macro='1' u='c'/>
+<use f='remake/main.c' l='1214' macro='1' u='c'/>
+<use f='remake/main.c' l='1242' macro='1' u='c'/>
+<use f='remake/main.c' l='1299' macro='1' u='c'/>
+<use f='remake/main.c' l='1358' macro='1' u='c'/>
+<use f='remake/main.c' l='1394' macro='1' u='c'/>
+<use f='remake/main.c' l='1401' macro='1' u='c'/>
+<use f='remake/main.c' l='1614' macro='1' u='c'/>
+<use f='remake/main.c' l='1616' macro='1' u='c'/>
+<use f='remake/main.c' l='1654' macro='1' u='c'/>
+<use f='remake/main.c' l='1662' macro='1' u='c'/>
+<use f='remake/main.c' l='1741' macro='1' u='c'/>
+<use f='remake/main.c' l='1890' macro='1' u='c'/>
+<use f='remake/main.c' l='1919' macro='1' u='c'/>
+<use f='remake/main.c' l='1962' macro='1' u='c'/>
+<use f='remake/main.c' l='1987' macro='1' u='c'/>
+<use f='remake/main.c' l='2720' macro='1' u='c'/>
+<use f='remake/main.c' l='3234' macro='1' u='c'/>
+<use f='remake/main.c' l='3279' macro='1' u='c'/>
+<use f='remake/read.c' l='165' macro='1' u='c'/>
+<use f='remake/read.c' l='840' macro='1' u='c'/>
+<use f='remake/read.c' l='1374' macro='1' u='c'/>
+<use f='remake/read.c' l='2078' macro='1' u='c'/>
+<use f='remake/read.c' l='2080' macro='1' u='c'/>
+<use f='remake/read.c' l='2081' macro='1' u='c'/>
+<use f='remake/read.c' l='2082' macro='1' u='c'/>
+<use f='remake/read.c' l='2083' macro='1' u='c'/>
+<use f='remake/read.c' l='2084' macro='1' u='c'/>
+<use f='remake/read.c' l='2085' macro='1' u='c'/>
+<def f='remake/variable.c' l='234' ll='347' type='struct variable * define_variable_in_set(const char * name, unsigned int length, const char * value, enum variable_origin origin, int recursive, struct variable_set * set, const gmk_floc * flocp)'/>
+<use f='remake/variable.c' l='671' macro='1' u='c'/>
+<use f='remake/variable.c' l='868' macro='1' u='c'/>
+<use f='remake/variable.c' l='876' macro='1' u='c'/>
+<use f='remake/variable.c' l='877' macro='1' u='c'/>
+<use f='remake/variable.c' l='953' macro='1' u='c'/>
+<use f='remake/variable.c' l='973' macro='1' u='c'/>
+<use f='remake/variable.c' l='996' macro='1' u='c'/>
+<use f='remake/variable.c' l='997' macro='1' u='c'/>
+<use f='remake/variable.c' l='998' macro='1' u='c'/>
+<use f='remake/variable.c' l='999' macro='1' u='c'/>
+<use f='remake/variable.c' l='1000' macro='1' u='c'/>
+<use f='remake/variable.c' l='1001' macro='1' u='c'/>
+<use f='remake/variable.c' l='1002' macro='1' u='c'/>
+<use f='remake/variable.c' l='1004' macro='1' u='c'/>
+<use f='remake/variable.c' l='1005' macro='1' u='c'/>
+<use f='remake/variable.c' l='1006' macro='1' u='c'/>
+<use f='remake/variable.c' l='1007' macro='1' u='c'/>
+<use f='remake/variable.c' l='1008' macro='1' u='c'/>
+<use f='remake/variable.c' l='1009' macro='1' u='c'/>
+<use f='remake/variable.c' l='1010' macro='1' u='c'/>
+<use f='remake/variable.c' l='1439' u='c' c='do_variable_definition'/>
+<doc f='remake/variable.c' l='227'>/* Define variable named NAME with value VALUE in SET.  VALUE is copied.
+   LENGTH is the length of NAME, which does not need to be null-terminated.
+   ORIGIN specifies the origin of the variable (makefile, command line
+   or environment).
+   If RECURSIVE is nonzero a flag is set in the variable saying
+   that it should be recursively re-expanded.  */</doc>

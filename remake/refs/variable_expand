@@ -1,0 +1,26 @@
+<dec f='remake/variable.h' l='122' type='char * variable_expand(const char * line)'/>
+<use f='remake/debugger/command/write.h' l='100' u='c' c='dbg_cmd_write'/>
+<use f='remake/debugger/cmd.c' l='324' u='c' c='dbg_cmd_set_var'/>
+<use f='remake/debugger/cmd.c' l='334' u='c' c='dbg_cmd_set_var'/>
+<def f='remake/expand.c' l='414' ll='418' type='char * variable_expand(const char * line)'/>
+<use f='remake/expand.c' l='464' u='c' c='variable_expand_for_file'/>
+<use f='remake/expand.c' l='475' u='c' c='variable_expand_for_file'/>
+<use f='remake/expand.c' l='493' u='c' c='variable_expand_set'/>
+<doc f='remake/expand.c' l='409'>/* Scan LINE for variable references and expansion-function calls.
+   Build in &apos;variable_buffer&apos; the result of expanding the references and calls.
+   Return the address of the resulting string, which is null-terminated
+   and is valid only until the next time this function is called.  */</doc>
+<use f='remake/file.c' l='324' u='c' c='enter_prereqs'/>
+<use f='remake/file.c' l='430' u='c' c='expand_deps'/>
+<use f='remake/main.c' l='2455' u='c' c='main'/>
+<use f='remake/main.c' l='2968' u='c' c='decode_env_switches'/>
+<use f='remake/print.c' l='246' u='c' c='print_variable_expand'/>
+<use f='remake/print.c' l='249' u='c' c='print_variable_expand'/>
+<use f='remake/read.c' l='859' u='c' c='eval'/>
+<use f='remake/read.c' l='1773' u='c' c='conditional_line'/>
+<use f='remake/read.c' l='1822' u='c' c='conditional_line'/>
+<use f='remake/read.c' l='2190' u='c' c='record_files'/>
+<use f='remake/remake.c' l='1692' u='c' c='library_search'/>
+<use f='remake/remake.c' l='1708' u='c' c='library_search'/>
+<use f='remake/vpath.c' l='80' u='c' c='build_vpath_lists'/>
+<use f='remake/vpath.c' l='113' u='c' c='build_vpath_lists'/>

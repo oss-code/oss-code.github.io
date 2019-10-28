@@ -1,0 +1,543 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>cmd.c source code [remake/debugger/cmd.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/debugger/cmd.c'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>remake</a>/<a href='./'>debugger</a>/<a href='cmd.c.html'>cmd.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*</i></td></tr>
+<tr><th id="2">2</th><td><i>Copyright (C) 2004-2005, 2007-2009, 2011, 2014-2015 R. Bernstein</i></td></tr>
+<tr><th id="3">3</th><td><i>&lt;rocky@gnu.org&gt;</i></td></tr>
+<tr><th id="4">4</th><td><i>This file is part of GNU Make (remake variant).</i></td></tr>
+<tr><th id="5">5</th><td><i></i></td></tr>
+<tr><th id="6">6</th><td><i>GNU Make is free software; you can redistribute it and/or modify</i></td></tr>
+<tr><th id="7">7</th><td><i>it under the terms of the GNU General Public License as published by</i></td></tr>
+<tr><th id="8">8</th><td><i>the Free Software Foundation; either version 2, or (at your option)</i></td></tr>
+<tr><th id="9">9</th><td><i>any later version.</i></td></tr>
+<tr><th id="10">10</th><td><i></i></td></tr>
+<tr><th id="11">11</th><td><i>GNU Make is distributed in the hope that it will be useful,</i></td></tr>
+<tr><th id="12">12</th><td><i>but WITHOUT ANY WARRANTY; without even the implied warranty of</i></td></tr>
+<tr><th id="13">13</th><td><i>MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</i></td></tr>
+<tr><th id="14">14</th><td><i>GNU General Public License for more details.</i></td></tr>
+<tr><th id="15">15</th><td><i></i></td></tr>
+<tr><th id="16">16</th><td><i>You should have received a copy of the GNU General Public License</i></td></tr>
+<tr><th id="17">17</th><td><i>along with GNU Make; see the file COPYING.  If not, write to</i></td></tr>
+<tr><th id="18">18</th><td><i>the Free Software Foundation, Inc., 59 Temple Place - Suite 330,</i></td></tr>
+<tr><th id="19">19</th><td><i>Boston, MA 02111-1307, USA.  */</i></td></tr>
+<tr><th id="20">20</th><td></td></tr>
+<tr><th id="21">21</th><td><i>/* debugger command interface. */</i></td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><u>#include <a href="../makeint.h.html">"makeint.h"</a></u></td></tr>
+<tr><th id="24">24</th><td><u>#include <a href="msg.h.html">"msg.h"</a></u></td></tr>
+<tr><th id="25">25</th><td><u>#include <a href="../debug.h.html">"debug.h"</a></u></td></tr>
+<tr><th id="26">26</th><td><u>#include <a href="../debugger.h.html">"debugger.h"</a></u></td></tr>
+<tr><th id="27">27</th><td><u>#include <a href="../file.h.html">"file.h"</a></u></td></tr>
+<tr><th id="28">28</th><td><u>#include <a href="../print.h.html">"print.h"</a></u></td></tr>
+<tr><th id="29">29</th><td><u>#include <a href="break.h.html">"break.h"</a></u></td></tr>
+<tr><th id="30">30</th><td><u>#include <a href="cmd.h.html">"cmd.h"</a></u></td></tr>
+<tr><th id="31">31</th><td><u>#include <a href="fns.h.html">"fns.h"</a></u></td></tr>
+<tr><th id="32">32</th><td><u>#include <a href="../function.h.html">"function.h"</a></u></td></tr>
+<tr><th id="33">33</th><td><u>#include <a href="info.h.html">"info.h"</a></u></td></tr>
+<tr><th id="34">34</th><td><u>#include <a href="stack.h.html">"stack.h"</a></u></td></tr>
+<tr><th id="35">35</th><td><u>#include <a href="../commands.h.html">"commands.h"</a></u></td></tr>
+<tr><th id="36">36</th><td><u>#include <a href="../expand.h.html">"expand.h"</a></u></td></tr>
+<tr><th id="37">37</th><td><u>#include <a href="../debug.h.html">"debug.h"</a></u></td></tr>
+<tr><th id="38">38</th><td><u>#include <a href="file2line.h.html">"file2line.h"</a></u></td></tr>
+<tr><th id="39">39</th><td></td></tr>
+<tr><th id="40">40</th><td><u>#<span data-ppcond="40">ifdef</span> <span class="macro" data-ref="_M/HAVE_READLINE_READLINE_H">HAVE_READLINE_READLINE_H</span></u></td></tr>
+<tr><th id="41">41</th><td><u>#include &lt;readline/readline.h&gt;</u></td></tr>
+<tr><th id="42">42</th><td><u>#<span data-ppcond="40">endif</span></u></td></tr>
+<tr><th id="43">43</th><td></td></tr>
+<tr><th id="44">44</th><td><u>#<span data-ppcond="44">ifdef</span> <a class="macro" href="../config.h.html#147" data-ref="_M/HAVE_HISTORY_LIST">HAVE_HISTORY_LIST</a></u></td></tr>
+<tr><th id="45">45</th><td><u>#include <a href="../../include/readline/history.h.html">&lt;readline/history.h&gt;</a></u></td></tr>
+<tr><th id="46">46</th><td><u>#<span data-ppcond="44">endif</span></u></td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td><u>#<span data-ppcond="49">ifdef</span> <a class="macro" href="../make.h.html#32" data-ref="_M/_GNU_SOURCE">_GNU_SOURCE</a></u></td></tr>
+<tr><th id="50">50</th><td><u># define <dfn class="macro" id="_M/ATTRIBUTE_UNUSED" data-ref="_M/ATTRIBUTE_UNUSED">ATTRIBUTE_UNUSED</dfn> __attribute__((unused))</u></td></tr>
+<tr><th id="51">51</th><td><u>#<span data-ppcond="49">else</span></u></td></tr>
+<tr><th id="52">52</th><td><u># define ATTRIBUTE_UNUSED</u></td></tr>
+<tr><th id="53">53</th><td><u>#<span data-ppcond="49">endif</span></u></td></tr>
+<tr><th id="54">54</th><td></td></tr>
+<tr><th id="55">55</th><td><i class="doc">/**</i></td></tr>
+<tr><th id="56">56</th><td><i class="doc">   Think of the below not as an enumeration but as #defines done in a</i></td></tr>
+<tr><th id="57">57</th><td><i class="doc">   way that we'll be able to use the value in a gdb.</i></td></tr>
+<tr><th id="58">58</th><td><i class="doc"> **/</i></td></tr>
+<tr><th id="59">59</th><td><b>enum</b> {</td></tr>
+<tr><th id="60">60</th><td>  <dfn class="enum" id="MAX_FILE_LENGTH" title='MAX_FILE_LENGTH' data-ref="MAX_FILE_LENGTH">MAX_FILE_LENGTH</dfn>   = <var>1000</var>,</td></tr>
+<tr><th id="61">61</th><td>} <dfn class="decl def" id="debugger_enum1" title='debugger_enum1' data-ref="debugger_enum1">debugger_enum1</dfn>;</td></tr>
+<tr><th id="62">62</th><td></td></tr>
+<tr><th id="63">63</th><td></td></tr>
+<tr><th id="64">64</th><td><i class="doc">/**</i></td></tr>
+<tr><th id="65">65</th><td><i class="doc">   Command-line args after the command-name part. For example in:</i></td></tr>
+<tr><th id="66">66</th><td><i class="doc">   break foo</i></td></tr>
+<tr><th id="67">67</th><td><i class="doc">   the below will be "foo".</i></td></tr>
+<tr><th id="68">68</th><td><i class="doc"> **/</i></td></tr>
+<tr><th id="69">69</th><td><em>char</em> *<dfn class="decl def" id="psz_debugger_args" title='psz_debugger_args' data-ref="psz_debugger_args">psz_debugger_args</dfn>;</td></tr>
+<tr><th id="70">70</th><td></td></tr>
+<tr><th id="71">71</th><td><a class="typedef" href="../trace.h.html#debug_enter_reason_t" title='debug_enter_reason_t' data-type='enum debug_enter_reason_t' data-ref="debug_enter_reason_t">debug_enter_reason_t</a> <dfn class="decl def" id="last_stop_reason" title='last_stop_reason' data-ref="last_stop_reason">last_stop_reason</dfn>;</td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td><u>#<span data-ppcond="73">ifdef</span> <a class="macro" href="../config.h.html#165" data-ref="_M/HAVE_LIBREADLINE">HAVE_LIBREADLINE</a></u></td></tr>
+<tr><th id="74">74</th><td><u>#include <a href="../../include/stdio.h.html">&lt;stdio.h&gt;</a></u></td></tr>
+<tr><th id="75">75</th><td><u>#include <a href="../../include/stdlib.h.html">&lt;stdlib.h&gt;</a></u></td></tr>
+<tr><th id="76">76</th><td><i>/* The following line makes Solaris' gcc/cpp not puke. */</i></td></tr>
+<tr><th id="77">77</th><td><u>#undef <span class="macro" data-ref="_M/HAVE_READLINE_READLINE_H">HAVE_READLINE_READLINE_H</span></u></td></tr>
+<tr><th id="78">78</th><td><u>#include <a href="../../include/readline/readline.h.html">&lt;readline/readline.h&gt;</a></u></td></tr>
+<tr><th id="79">79</th><td></td></tr>
+<tr><th id="80">80</th><td><i>/* From readline. ?? Should this be in configure?  */</i></td></tr>
+<tr><th id="81">81</th><td><u>#<span data-ppcond="81">ifndef</span> <a class="macro" href="../../include/readline/chardefs.h.html#30" data-ref="_M/whitespace">whitespace</a></u></td></tr>
+<tr><th id="82">82</th><td><u>#define whitespace(c) (((c) == ' ') || ((c) == '\t'))</u></td></tr>
+<tr><th id="83">83</th><td><u>#<span data-ppcond="81">endif</span></u></td></tr>
+<tr><th id="84">84</th><td></td></tr>
+<tr><th id="85">85</th><td><i  data-doc="dbg_cmd_set_var">/* A structure which contains information on the commands this program</i></td></tr>
+<tr><th id="86">86</th><td><i  data-doc="dbg_cmd_set_var">   can understand. */</i></td></tr>
+<tr><th id="87">87</th><td></td></tr>
+<tr><th id="88">88</th><td><em>static</em> <a class="typedef" href="../trace.h.html#debug_return_t" title='debug_return_t' data-type='enum debug_return_t' data-ref="debug_return_t">debug_return_t</a> <a class="tu decl" href="#dbg_cmd_set_var" title='dbg_cmd_set_var' data-type='debug_return_t dbg_cmd_set_var(char * psz_arg, int expand)' data-ref="dbg_cmd_set_var">dbg_cmd_set_var</a> (<em>char</em> *<dfn class="local col1 decl" id="71psz_arg" title='psz_arg' data-type='char *' data-ref="71psz_arg">psz_arg</dfn>, <em>int</em> <dfn class="local col2 decl" id="72expand" title='expand' data-type='int' data-ref="72expand">expand</dfn>);</td></tr>
+<tr><th id="89">89</th><td></td></tr>
+<tr><th id="90">90</th><td><i>/* Should be in alphabetic order by command name. */</i></td></tr>
+<tr><th id="91">91</th><td><a class="typedef" href="../debugger.h.html#long_cmd_t" title='long_cmd_t' data-type='struct long_cmd_t' data-ref="long_cmd_t">long_cmd_t</a> <dfn class="decl def" id="commands" title='commands' data-ref="commands">commands</dfn>[] = {</td></tr>
+<tr><th id="92">92</th><td>  { <q>"break"</q>,    <kbd>'b'</kbd> },</td></tr>
+<tr><th id="93">93</th><td>  { <q>"cd"</q>,       <kbd>'C'</kbd> },</td></tr>
+<tr><th id="94">94</th><td>  { <q>"comment"</q>,  <kbd>'#'</kbd> },</td></tr>
+<tr><th id="95">95</th><td>  { <q>"continue"</q>, <kbd>'c'</kbd> },</td></tr>
+<tr><th id="96">96</th><td>  { <q>"delete"</q>,   <kbd>'d'</kbd> },</td></tr>
+<tr><th id="97">97</th><td>  { <q>"down"</q>,     <kbd>'D'</kbd> },</td></tr>
+<tr><th id="98">98</th><td>  { <q>"edit"</q> ,    <kbd>'e'</kbd> },</td></tr>
+<tr><th id="99">99</th><td>  { <q>"eval"</q> ,    <kbd>'E'</kbd> },</td></tr>
+<tr><th id="100">100</th><td>  { <q>"expand"</q> ,  <kbd>'x'</kbd> },</td></tr>
+<tr><th id="101">101</th><td>  { <q>"finish"</q>  , <kbd>'F'</kbd> },</td></tr>
+<tr><th id="102">102</th><td>  { <q>"frame"</q>   , <kbd>'f'</kbd> },</td></tr>
+<tr><th id="103">103</th><td>  { <q>"help"</q>    , <kbd>'h'</kbd> },</td></tr>
+<tr><th id="104">104</th><td>  { <q>"info"</q>    , <kbd>'i'</kbd> },</td></tr>
+<tr><th id="105">105</th><td>  { <q>"list"</q>    , <kbd>'l'</kbd> },</td></tr>
+<tr><th id="106">106</th><td>  { <q>"next"</q>    , <kbd>'n'</kbd> },</td></tr>
+<tr><th id="107">107</th><td>  { <q>"print"</q>   , <kbd>'p'</kbd> },</td></tr>
+<tr><th id="108">108</th><td>  { <q>"pwd"</q>     , <kbd>'P'</kbd> },</td></tr>
+<tr><th id="109">109</th><td>  { <q>"quit"</q>    , <kbd>'q'</kbd> },</td></tr>
+<tr><th id="110">110</th><td>  { <q>"run"</q>     , <kbd>'R'</kbd> },</td></tr>
+<tr><th id="111">111</th><td>  { <q>"set"</q>     , <kbd>'='</kbd> },</td></tr>
+<tr><th id="112">112</th><td>  { <q>"setq"</q>    , <kbd>'"'</kbd> },</td></tr>
+<tr><th id="113">113</th><td>  { <q>"setqx"</q>   , <kbd>'`'</kbd> },</td></tr>
+<tr><th id="114">114</th><td>  { <q>"shell"</q>   , <kbd>'!'</kbd> },</td></tr>
+<tr><th id="115">115</th><td>  { <q>"show"</q>    , <kbd>'S'</kbd> },</td></tr>
+<tr><th id="116">116</th><td>  { <q>"source"</q>  , <kbd>'&lt;'</kbd> },</td></tr>
+<tr><th id="117">117</th><td>  { <q>"skip"</q>    , <kbd>'k'</kbd> },</td></tr>
+<tr><th id="118">118</th><td>  { <q>"step"</q>    , <kbd>'s'</kbd> },</td></tr>
+<tr><th id="119">119</th><td>  { <q>"target"</q>  , <kbd>'t'</kbd> },</td></tr>
+<tr><th id="120">120</th><td>  { <q>"up"</q>      , <kbd>'u'</kbd> },</td></tr>
+<tr><th id="121">121</th><td>  { <q>"where"</q>   , <kbd>'T'</kbd> },</td></tr>
+<tr><th id="122">122</th><td>  { <q>"write"</q>   , <kbd>'w'</kbd> },</td></tr>
+<tr><th id="123">123</th><td>  { (<em>char</em> *)<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <kbd>' '</kbd>}</td></tr>
+<tr><th id="124">124</th><td>};</td></tr>
+<tr><th id="125">125</th><td></td></tr>
+<tr><th id="126">126</th><td><b>typedef</b> <b>struct</b> {</td></tr>
+<tr><th id="127">127</th><td>  <em>const</em> <em>char</em> *<dfn class="tu decl" id="(anonymous)::command" title='(anonymous struct)::command' data-type='const char *' data-ref="(anonymous)::command">command</dfn>;	        <i  data-doc="(anonymous)::command">/* real command name. */</i></td></tr>
+<tr><th id="128">128</th><td>  <em>const</em> <em>char</em> *<dfn class="tu decl" id="(anonymous)::alias" title='(anonymous struct)::alias' data-type='const char *' data-ref="(anonymous)::alias">alias</dfn>;	        <i  data-doc="(anonymous)::alias">/* alias for command. */</i></td></tr>
+<tr><th id="129">129</th><td>} <dfn class="typedef" id="alias_cmd_t" title='alias_cmd_t' data-type='struct alias_cmd_t' data-ref="alias_cmd_t">alias_cmd_t</dfn>;</td></tr>
+<tr><th id="130">130</th><td></td></tr>
+<tr><th id="131">131</th><td><i>/* Should be in alphabetic order by ALIAS name. */</i></td></tr>
+<tr><th id="132">132</th><td></td></tr>
+<tr><th id="133">133</th><td><a class="typedef" href="#alias_cmd_t" title='alias_cmd_t' data-type='struct alias_cmd_t' data-ref="alias_cmd_t">alias_cmd_t</a> <dfn class="decl def" id="aliases" title='aliases' data-ref="aliases">aliases</dfn>[] = {</td></tr>
+<tr><th id="134">134</th><td>  { <q>"shell"</q>,    <q>"!!"</q> },</td></tr>
+<tr><th id="135">135</th><td>  { <q>"help"</q>,     <q>"?"</q> },</td></tr>
+<tr><th id="136">136</th><td>  { <q>"help"</q>,     <q>"??"</q> },</td></tr>
+<tr><th id="137">137</th><td>  { <q>"break"</q>,    <q>"L"</q> },</td></tr>
+<tr><th id="138">138</th><td>  { <q>"where"</q>,    <q>"backtrace"</q> },</td></tr>
+<tr><th id="139">139</th><td>  { <q>"where"</q>,    <q>"bt"</q> },</td></tr>
+<tr><th id="140">140</th><td>  { <q>"quit"</q>,     <q>"exit"</q> },</td></tr>
+<tr><th id="141">141</th><td>  { <q>"run"</q>,      <q>"restart"</q> },</td></tr>
+<tr><th id="142">142</th><td>  { <q>"quit"</q>,     <q>"return"</q> },</td></tr>
+<tr><th id="143">143</th><td>  { (<em>char</em> *)<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, (<em>char</em> *) <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>}</td></tr>
+<tr><th id="144">144</th><td>};</td></tr>
+<tr><th id="145">145</th><td></td></tr>
+<tr><th id="146">146</th><td></td></tr>
+<tr><th id="147">147</th><td><a class="typedef" href="../debugger.h.html#short_cmd_t" title='short_cmd_t' data-type='struct short_cmd_t' data-ref="short_cmd_t">short_cmd_t</a> <dfn class="decl def" id="short_command" title='short_command' data-ref="short_command">short_command</dfn>[<var>256</var>] = { { <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,</td></tr>
+<tr><th id="148">148</th><td>                                     (<em>const</em> <em>char</em> *) <kbd>'\0'</kbd>,</td></tr>
+<tr><th id="149">149</th><td>                                     (<em>const</em> <em>char</em> *) <kbd>'\0'</kbd> }, };</td></tr>
+<tr><th id="150">150</th><td></td></tr>
+<tr><th id="151">151</th><td><i  data-doc="find_command">/* Look up NAME as the name of a command, and return a pointer to that</i></td></tr>
+<tr><th id="152">152</th><td><i  data-doc="find_command">   command.  Return a NULL pointer if NAME isn't a command name. */</i></td></tr>
+<tr><th id="153">153</th><td><em>static</em> <a class="typedef" href="../debugger.h.html#short_cmd_t" title='short_cmd_t' data-type='struct short_cmd_t' data-ref="short_cmd_t">short_cmd_t</a> *</td></tr>
+<tr><th id="154">154</th><td><dfn class="tu decl def" id="find_command" title='find_command' data-type='short_cmd_t * find_command(const char * psz_name)' data-ref="find_command">find_command</dfn> (<em>const</em> <em>char</em> *<dfn class="local col3 decl" id="73psz_name" title='psz_name' data-type='const char *' data-ref="73psz_name">psz_name</dfn>)</td></tr>
+<tr><th id="155">155</th><td>{</td></tr>
+<tr><th id="156">156</th><td>  <em>unsigned</em> <em>int</em> <dfn class="local col4 decl" id="74i" title='i' data-type='unsigned int' data-ref="74i">i</dfn>;</td></tr>
+<tr><th id="157">157</th><td></td></tr>
+<tr><th id="158">158</th><td>  <b>for</b> (<a class="local col4 ref" href="#74i" title='i' data-ref="74i">i</a> = <var>0</var>; <a class="ref" href="#aliases" title='aliases' data-ref="aliases">aliases</a>[<a class="local col4 ref" href="#74i" title='i' data-ref="74i">i</a>].<a class="tu ref" href="#(anonymous)::alias" title='(anonymous struct)::alias' data-use='r' data-ref="(anonymous)::alias">alias</a>; <a class="local col4 ref" href="#74i" title='i' data-ref="74i">i</a>++) {</td></tr>
+<tr><th id="159">159</th><td>    <em>const</em> <em>int</em> <dfn class="local col5 decl" id="75cmp" title='cmp' data-type='const int' data-ref="75cmp">cmp</dfn> = <a class="macro" href="../../include/x86_64-linux-gnu/bits/string2.h.html#799" title="__extension__ ({ size_t __s1_len, __s2_len; (__builtin_constant_p (psz_name) &amp;&amp; __builtin_constant_p (aliases[i].alias) &amp;&amp; (__s1_len = __builtin_strlen (psz_name), __s2_len = __builtin_strlen (aliases[i].alias), (!((size_t)(const void *)((psz_name) + 1) - (size_t)(const void *)(psz_name) == 1) || __s1_len &gt;= 4) &amp;&amp; (!((size_t)(const void *)((aliases[i].alias) + 1) - (size_t)(const void *)(aliases[i].alias) == 1) || __s2_len &gt;= 4)) ? __builtin_strcmp (psz_name, aliases[i].alias) : (__builtin_constant_p (psz_name) &amp;&amp; ((size_t)(const void *)((psz_name) + 1) - (size_t)(const void *)(psz_name) == 1) &amp;&amp; (__s1_len = __builtin_strlen (psz_name), __s1_len &lt; 4) ? (__builtin_constant_p (aliases[i].alias) &amp;&amp; ((size_t)(const void *)((aliases[i].alias) + 1) - (size_t)(const void *)(aliases[i].alias) == 1) ? __builtin_strcmp (psz_name, aliases[i].alias) : (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) (aliases[i].alias); int __result = (((const unsigned char *) (const char *) (psz_name))[0] - __s2[0]); if (__s1_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) (psz_name))[1] - __s2[1]); if (__s1_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) (psz_name))[2] - __s2[2]); if (__s1_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) (psz_name))[3] - __s2[3]); } } __result; }))) : (__builtin_constant_p (aliases[i].alias) &amp;&amp; ((size_t)(const void *)((aliases[i].alias) + 1) - (size_t)(const void *)(aliases[i].alias) == 1) &amp;&amp; (__s2_len = __builtin_strlen (aliases[i].alias), __s2_len &lt; 4) ? (__builtin_constant_p (psz_name) &amp;&amp; ((size_t)(const void *)((psz_name) + 1) - (size_t)(const void *)(psz_name) == 1) ? __builtin_strcmp (psz_name, aliases[i].alias) : (- (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) (psz_name); int __result = (((const unsigned char *) (const char *) (aliases[i].alias))[0] - __s2[0]); if (__s2_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) (aliases[i].alias))[1] - __s2[1]); if (__s2_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) (aliases[i].alias))[2] - __s2[2]); if (__s2_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) (aliases[i].alias))[3] - __s2[3]); } } __result; })))) : __builtin_strcmp (psz_name, aliases[i].alias)))); })" data-ref="_M/strcmp">strcmp</a> (<a class="local col3 ref" href="#73psz_name" title='psz_name' data-ref="73psz_name">psz_name</a>, <a class="ref" href="#aliases" title='aliases' data-ref="aliases">aliases</a>[<a class="local col4 ref" href="#74i" title='i' data-ref="74i">i</a>].<a class="tu ref" href="#(anonymous)::alias" title='(anonymous struct)::alias' data-ref="(anonymous)::alias"><a class="tu ref" href="#(anonymous)::alias" title='(anonymous struct)::alias' data-use='r' data-ref="(anonymous)::alias"><a class="tu ref" href="#(anonymous)::alias" title='(anonymous struct)::alias' data-use='r' data-ref="(anonymous)::alias"><a class="tu ref" href="#(anonymous)::alias" title='(anonymous struct)::alias' data-use='r' data-ref="(anonymous)::alias"><a class="tu ref" href="#(anonymous)::alias" title='(anonymous struct)::alias' data-use='r' data-ref="(anonymous)::alias"><a class="tu ref" href="#(anonymous)::alias" title='(anonymous struct)::alias' data-use='r' data-ref="(anonymous)::alias"><a class="tu ref" href="#(anonymous)::alias" title='(anonymous struct)::alias' data-use='r' data-ref="(anonymous)::alias"><a class="tu ref" href="#(anonymous)::alias" title='(anonymous struct)::alias' data-use='r' data-ref="(anonymous)::alias"><a class="tu ref" href="#(anonymous)::alias" title='(anonymous struct)::alias' data-use='r' data-ref="(anonymous)::alias"><a class="tu ref" href="#(anonymous)::alias" title='(anonymous struct)::alias' data-use='r' data-ref="(anonymous)::alias"><a class="tu ref" href="#(anonymous)::alias" title='(anonymous struct)::alias' data-use='r' data-ref="(anonymous)::alias"><a class="tu ref" href="#(anonymous)::alias" title='(anonymous struct)::alias' data-use='r' data-ref="(anonymous)::alias"><a class="tu ref" href="#(anonymous)::alias" title='(anonymous struct)::alias' data-use='r' data-ref="(anonymous)::alias"><a class="tu ref" href="#(anonymous)::alias" title='(anonymous struct)::alias' data-use='r' data-ref="(anonymous)::alias"><a class="tu ref" href="#(anonymous)::alias" title='(anonymous struct)::alias' data-use='r' data-ref="(anonymous)::alias"><a class="tu ref" href="#(anonymous)::alias" title='(anonymous struct)::alias' data-use='r' data-ref="(anonymous)::alias"><a class="tu ref" href="#(anonymous)::alias" title='(anonymous struct)::alias' data-use='r' data-ref="(anonymous)::alias"><a class="tu ref" href="#(anonymous)::alias" title='(anonymous struct)::alias' data-use='r' data-ref="(anonymous)::alias">alias</a></a></a></a></a></a></a></a></a></a></a></a></a></a></a></a></a></a>);</td></tr>
+<tr><th id="160">160</th><td>    <b>if</b> ( <var>0</var> == <a class="local col5 ref" href="#75cmp" title='cmp' data-ref="75cmp">cmp</a> ) {</td></tr>
+<tr><th id="161">161</th><td>      <a class="local col3 ref" href="#73psz_name" title='psz_name' data-ref="73psz_name">psz_name</a> = <a class="ref" href="#aliases" title='aliases' data-ref="aliases">aliases</a>[<a class="local col4 ref" href="#74i" title='i' data-ref="74i">i</a>].<a class="tu ref" href="#(anonymous)::command" title='(anonymous struct)::command' data-use='r' data-ref="(anonymous)::command">command</a>;</td></tr>
+<tr><th id="162">162</th><td>      <b>break</b>;</td></tr>
+<tr><th id="163">163</th><td>    } <b>else</b></td></tr>
+<tr><th id="164">164</th><td>      <i>/* Words should be in alphabetic order by alias name.</i></td></tr>
+<tr><th id="165">165</th><td><i>	 Have we gone too far? */</i></td></tr>
+<tr><th id="166">166</th><td>      <b>if</b> (<a class="local col5 ref" href="#75cmp" title='cmp' data-ref="75cmp">cmp</a> &lt; <var>0</var>) <b>break</b>;</td></tr>
+<tr><th id="167">167</th><td>  }</td></tr>
+<tr><th id="168">168</th><td></td></tr>
+<tr><th id="169">169</th><td>  <b>for</b> (<a class="local col4 ref" href="#74i" title='i' data-ref="74i">i</a> = <var>0</var>; <a class="ref" href="#commands" title='commands' data-ref="commands">commands</a>[<a class="local col4 ref" href="#74i" title='i' data-ref="74i">i</a>].<a class="ref" href="../debugger.h.html#(anonymous)::long_name" title='(anonymous struct)::long_name' data-ref="(anonymous)::long_name">long_name</a>; <a class="local col4 ref" href="#74i" title='i' data-ref="74i">i</a>++) {</td></tr>
+<tr><th id="170">170</th><td>    <em>const</em> <em>int</em> <dfn class="local col6 decl" id="76cmp" title='cmp' data-type='const int' data-ref="76cmp">cmp</dfn> = <a class="macro" href="../../include/x86_64-linux-gnu/bits/string2.h.html#799" title="__extension__ ({ size_t __s1_len, __s2_len; (__builtin_constant_p (psz_name) &amp;&amp; __builtin_constant_p (commands[i].long_name) &amp;&amp; (__s1_len = __builtin_strlen (psz_name), __s2_len = __builtin_strlen (commands[i].long_name), (!((size_t)(const void *)((psz_name) + 1) - (size_t)(const void *)(psz_name) == 1) || __s1_len &gt;= 4) &amp;&amp; (!((size_t)(const void *)((commands[i].long_name) + 1) - (size_t)(const void *)(commands[i].long_name) == 1) || __s2_len &gt;= 4)) ? __builtin_strcmp (psz_name, commands[i].long_name) : (__builtin_constant_p (psz_name) &amp;&amp; ((size_t)(const void *)((psz_name) + 1) - (size_t)(const void *)(psz_name) == 1) &amp;&amp; (__s1_len = __builtin_strlen (psz_name), __s1_len &lt; 4) ? (__builtin_constant_p (commands[i].long_name) &amp;&amp; ((size_t)(const void *)((commands[i].long_name) + 1) - (size_t)(const void *)(commands[i].long_name) == 1) ? __builtin_strcmp (psz_name, commands[i].long_name) : (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) (commands[i].long_name); int __result = (((const unsigned char *) (const char *) (psz_name))[0] - __s2[0]); if (__s1_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) (psz_name))[1] - __s2[1]); if (__s1_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) (psz_name))[2] - __s2[2]); if (__s1_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) (psz_name))[3] - __s2[3]); } } __result; }))) : (__builtin_constant_p (commands[i].long_name) &amp;&amp; ((size_t)(const void *)((commands[i].long_name) + 1) - (size_t)(const void *)(commands[i].long_name) == 1) &amp;&amp; (__s2_len = __builtin_strlen (commands[i].long_name), __s2_len &lt; 4) ? (__builtin_constant_p (psz_name) &amp;&amp; ((size_t)(const void *)((psz_name) + 1) - (size_t)(const void *)(psz_name) == 1) ? __builtin_strcmp (psz_name, commands[i].long_name) : (- (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) (psz_name); int __result = (((const unsigned char *) (const char *) (commands[i].long_name))[0] - __s2[0]); if (__s2_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) (commands[i].long_name))[1] - __s2[1]); if (__s2_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) (commands[i].long_name))[2] - __s2[2]); if (__s2_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) (commands[i].long_name))[3] - __s2[3]); } } __result; })))) : __builtin_strcmp (psz_name, commands[i].long_name)))); })" data-ref="_M/strcmp">strcmp</a> (<a class="local col3 ref" href="#73psz_name" title='psz_name' data-ref="73psz_name">psz_name</a>, <a class="ref" href="#commands" title='commands' data-ref="commands">commands</a>[<a class="local col4 ref" href="#74i" title='i' data-ref="74i">i</a>].<a class="ref" href="../debugger.h.html#(anonymous)::long_name" title='(anonymous struct)::long_name' data-ref="(anonymous)::long_name">long_name</a>);</td></tr>
+<tr><th id="171">171</th><td>    <b>if</b> ( <var>0</var> == <a class="local col6 ref" href="#76cmp" title='cmp' data-ref="76cmp">cmp</a> ) {</td></tr>
+<tr><th id="172">172</th><td>      <b>return</b> (&amp;<a class="ref" href="#short_command" title='short_command' data-ref="short_command">short_command</a>[(<a class="typedef" href="../../include/stdint.h.html#uint8_t" title='uint8_t' data-type='unsigned char' data-ref="uint8_t">uint8_t</a>) <a class="ref" href="#commands" title='commands' data-ref="commands">commands</a>[<a class="local col4 ref" href="#74i" title='i' data-ref="74i">i</a>].<a class="ref" href="../debugger.h.html#(anonymous)::short_name" title='(anonymous struct)::short_name' data-ref="(anonymous)::short_name">short_name</a>]);</td></tr>
+<tr><th id="173">173</th><td>    } <b>else</b></td></tr>
+<tr><th id="174">174</th><td>      <i>/* Words should be in alphabetic order by command name.</i></td></tr>
+<tr><th id="175">175</th><td><i>	 Have we gone too far? */</i></td></tr>
+<tr><th id="176">176</th><td>      <b>if</b> (<a class="local col6 ref" href="#76cmp" title='cmp' data-ref="76cmp">cmp</a> &lt; <var>0</var>) <b>break</b>;</td></tr>
+<tr><th id="177">177</th><td>  }</td></tr>
+<tr><th id="178">178</th><td></td></tr>
+<tr><th id="179">179</th><td>  <b>return</b> ((<a class="typedef" href="../debugger.h.html#short_cmd_t" title='short_cmd_t' data-type='struct short_cmd_t' data-ref="short_cmd_t">short_cmd_t</a> *)<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="180">180</th><td>}</td></tr>
+<tr><th id="181">181</th><td></td></tr>
+<tr><th id="182">182</th><td><u>#include <a href="command/break.h.html">"command/break.h"</a></u></td></tr>
+<tr><th id="183">183</th><td><u>#include <a href="command/chdir.h.html">"command/chdir.h"</a></u></td></tr>
+<tr><th id="184">184</th><td><u>#include <a href="command/comment.h.html">"command/comment.h"</a></u></td></tr>
+<tr><th id="185">185</th><td><u>#include <a href="command/continue.h.html">"command/continue.h"</a></u></td></tr>
+<tr><th id="186">186</th><td><u>#include <a href="command/delete.h.html">"command/delete.h"</a></u></td></tr>
+<tr><th id="187">187</th><td><u>#include <a href="command/down.h.html">"command/down.h"</a></u></td></tr>
+<tr><th id="188">188</th><td><u>#include <a href="command/edit.h.html">"command/edit.h"</a></u></td></tr>
+<tr><th id="189">189</th><td><u>#include <a href="command/eval.h.html">"command/eval.h"</a></u></td></tr>
+<tr><th id="190">190</th><td><u>#include <a href="command/expand.h.html">"command/expand.h"</a></u></td></tr>
+<tr><th id="191">191</th><td><u>#include <a href="command/finish.h.html">"command/finish.h"</a></u></td></tr>
+<tr><th id="192">192</th><td><u>#include <a href="command/frame.h.html">"command/frame.h"</a></u></td></tr>
+<tr><th id="193">193</th><td><u>#include <a href="command/info.h.html">"command/info.h"</a></u></td></tr>
+<tr><th id="194">194</th><td><u>#include <a href="command/next.h.html">"command/next.h"</a></u></td></tr>
+<tr><th id="195">195</th><td><u>#include <a href="command/list.h.html">"command/list.h"</a></u></td></tr>
+<tr><th id="196">196</th><td><u>#include <a href="command/print.h.html">"command/print.h"</a></u></td></tr>
+<tr><th id="197">197</th><td><u>#include <a href="command/pwd.h.html">"command/pwd.h"</a></u></td></tr>
+<tr><th id="198">198</th><td><u>#include <a href="command/quit.h.html">"command/quit.h"</a></u></td></tr>
+<tr><th id="199">199</th><td><u>#include <a href="command/run.h.html">"command/run.h"</a></u></td></tr>
+<tr><th id="200">200</th><td><u>#include <a href="command/set.h.html">"command/set.h"</a></u></td></tr>
+<tr><th id="201">201</th><td><u>#include <a href="command/setq.h.html">"command/setq.h"</a></u></td></tr>
+<tr><th id="202">202</th><td><u>#include <a href="command/setqx.h.html">"command/setqx.h"</a></u></td></tr>
+<tr><th id="203">203</th><td><u>#include <a href="command/shell.h.html">"command/shell.h"</a></u></td></tr>
+<tr><th id="204">204</th><td><u>#include <a href="command/show.h.html">"command/show.h"</a></u></td></tr>
+<tr><th id="205">205</th><td><u>#include <a href="command/skip.h.html">"command/skip.h"</a></u></td></tr>
+<tr><th id="206">206</th><td><u>#include <a href="command/source.h.html">"command/source.h"</a></u></td></tr>
+<tr><th id="207">207</th><td><u>#include <a href="command/step.h.html">"command/step.h"</a></u></td></tr>
+<tr><th id="208">208</th><td><u>#include <a href="command/target.h.html">"command/target.h"</a></u></td></tr>
+<tr><th id="209">209</th><td><u>#include <a href="command/up.h.html">"command/up.h"</a></u></td></tr>
+<tr><th id="210">210</th><td><u>#include <a href="command/where.h.html">"command/where.h"</a></u></td></tr>
+<tr><th id="211">211</th><td><u>#include <a href="command/write.h.html">"command/write.h"</a></u></td></tr>
+<tr><th id="212">212</th><td></td></tr>
+<tr><th id="213">213</th><td><i>/* Needs to come after dbg_cmd_show */</i></td></tr>
+<tr><th id="214">214</th><td><u>#include <a href="command/help.h.html">"command/help.h"</a></u></td></tr>
+<tr><th id="215">215</th><td></td></tr>
+<tr><th id="216">216</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="217">217</th><td><dfn class="tu decl def" id="cmd_initialize" title='cmd_initialize' data-type='void cmd_initialize()' data-ref="cmd_initialize">cmd_initialize</dfn>(<em>void</em>)</td></tr>
+<tr><th id="218">218</th><td>{</td></tr>
+<tr><th id="219">219</th><td>  <a class="ref" href="command/break.h.html#dbg_cmd_break_init" title='dbg_cmd_break_init' data-ref="dbg_cmd_break_init">dbg_cmd_break_init</a>   (<kbd>'b'</kbd>);</td></tr>
+<tr><th id="220">220</th><td>  <a class="ref" href="command/chdir.h.html#dbg_cmd_chdir_init" title='dbg_cmd_chdir_init' data-ref="dbg_cmd_chdir_init">dbg_cmd_chdir_init</a>   (<kbd>'C'</kbd>);</td></tr>
+<tr><th id="221">221</th><td>  <a class="ref" href="command/continue.h.html#dbg_cmd_continue_init" title='dbg_cmd_continue_init' data-ref="dbg_cmd_continue_init">dbg_cmd_continue_init</a>(<kbd>'c'</kbd>);</td></tr>
+<tr><th id="222">222</th><td>  <a class="ref" href="command/delete.h.html#dbg_cmd_delete_init" title='dbg_cmd_delete_init' data-ref="dbg_cmd_delete_init">dbg_cmd_delete_init</a>  (<kbd>'d'</kbd>);</td></tr>
+<tr><th id="223">223</th><td>  <a class="ref" href="command/down.h.html#dbg_cmd_down_init" title='dbg_cmd_down_init' data-ref="dbg_cmd_down_init">dbg_cmd_down_init</a>    (<kbd>'D'</kbd>);</td></tr>
+<tr><th id="224">224</th><td>  <a class="ref" href="command/edit.h.html#dbg_cmd_edit_init" title='dbg_cmd_edit_init' data-ref="dbg_cmd_edit_init">dbg_cmd_edit_init</a>    (<kbd>'e'</kbd>);</td></tr>
+<tr><th id="225">225</th><td>  <a class="ref" href="command/eval.h.html#dbg_cmd_eval_init" title='dbg_cmd_eval_init' data-ref="dbg_cmd_eval_init">dbg_cmd_eval_init</a>    (<kbd>'E'</kbd>);</td></tr>
+<tr><th id="226">226</th><td>  <a class="ref" href="command/finish.h.html#dbg_cmd_finish_init" title='dbg_cmd_finish_init' data-ref="dbg_cmd_finish_init">dbg_cmd_finish_init</a>  (<kbd>'F'</kbd>);</td></tr>
+<tr><th id="227">227</th><td>  <a class="ref" href="command/frame.h.html#dbg_cmd_frame_init" title='dbg_cmd_frame_init' data-ref="dbg_cmd_frame_init">dbg_cmd_frame_init</a>   (<kbd>'f'</kbd>);</td></tr>
+<tr><th id="228">228</th><td>  <a class="ref" href="command/help.h.html#dbg_cmd_help_init" title='dbg_cmd_help_init' data-ref="dbg_cmd_help_init">dbg_cmd_help_init</a>    (<kbd>'h'</kbd>);</td></tr>
+<tr><th id="229">229</th><td>  <a class="ref" href="command/info.h.html#dbg_cmd_info_init" title='dbg_cmd_info_init' data-ref="dbg_cmd_info_init">dbg_cmd_info_init</a>    (<kbd>'i'</kbd>);</td></tr>
+<tr><th id="230">230</th><td>  <a class="ref" href="command/skip.h.html#dbg_cmd_skip_init" title='dbg_cmd_skip_init' data-ref="dbg_cmd_skip_init">dbg_cmd_skip_init</a>    (<kbd>'k'</kbd>);</td></tr>
+<tr><th id="231">231</th><td>  <a class="ref" href="command/list.h.html#dbg_cmd_list_init" title='dbg_cmd_list_init' data-ref="dbg_cmd_list_init">dbg_cmd_list_init</a>    (<kbd>'l'</kbd>);</td></tr>
+<tr><th id="232">232</th><td>  <a class="ref" href="command/next.h.html#dbg_cmd_next_init" title='dbg_cmd_next_init' data-ref="dbg_cmd_next_init">dbg_cmd_next_init</a>    (<kbd>'n'</kbd>);</td></tr>
+<tr><th id="233">233</th><td>  <a class="ref" href="command/print.h.html#dbg_cmd_print_init" title='dbg_cmd_print_init' data-ref="dbg_cmd_print_init">dbg_cmd_print_init</a>   (<kbd>'p'</kbd>);</td></tr>
+<tr><th id="234">234</th><td>  <a class="ref" href="command/pwd.h.html#dbg_cmd_pwd_init" title='dbg_cmd_pwd_init' data-ref="dbg_cmd_pwd_init">dbg_cmd_pwd_init</a>     (<kbd>'P'</kbd>);</td></tr>
+<tr><th id="235">235</th><td>  <a class="ref" href="command/quit.h.html#dbg_cmd_quit_init" title='dbg_cmd_quit_init' data-ref="dbg_cmd_quit_init">dbg_cmd_quit_init</a>    (<kbd>'q'</kbd>);</td></tr>
+<tr><th id="236">236</th><td>  <a class="ref" href="command/run.h.html#dbg_cmd_run_init" title='dbg_cmd_run_init' data-ref="dbg_cmd_run_init">dbg_cmd_run_init</a>     (<kbd>'R'</kbd>);</td></tr>
+<tr><th id="237">237</th><td>  <a class="ref" href="command/source.h.html#dbg_cmd_source_init" title='dbg_cmd_source_init' data-ref="dbg_cmd_source_init">dbg_cmd_source_init</a>  (<kbd>'&lt;'</kbd>);</td></tr>
+<tr><th id="238">238</th><td>  <a class="ref" href="command/show.h.html#dbg_cmd_show_init" title='dbg_cmd_show_init' data-ref="dbg_cmd_show_init">dbg_cmd_show_init</a>    (<kbd>'S'</kbd>);</td></tr>
+<tr><th id="239">239</th><td>  <a class="ref" href="command/step.h.html#dbg_cmd_step_init" title='dbg_cmd_step_init' data-ref="dbg_cmd_step_init">dbg_cmd_step_init</a>    (<kbd>'s'</kbd>);</td></tr>
+<tr><th id="240">240</th><td>  <a class="ref" href="command/target.h.html#dbg_cmd_target_init" title='dbg_cmd_target_init' data-ref="dbg_cmd_target_init">dbg_cmd_target_init</a>  (<kbd>'t'</kbd>);</td></tr>
+<tr><th id="241">241</th><td>  <a class="ref" href="command/up.h.html#dbg_cmd_up_init" title='dbg_cmd_up_init' data-ref="dbg_cmd_up_init">dbg_cmd_up_init</a>      (<kbd>'u'</kbd>);</td></tr>
+<tr><th id="242">242</th><td>  <a class="ref" href="command/where.h.html#dbg_cmd_where_init" title='dbg_cmd_where_init' data-ref="dbg_cmd_where_init">dbg_cmd_where_init</a>   (<kbd>'T'</kbd>);</td></tr>
+<tr><th id="243">243</th><td>  <a class="ref" href="command/write.h.html#dbg_cmd_write_init" title='dbg_cmd_write_init' data-ref="dbg_cmd_write_init">dbg_cmd_write_init</a>   (<kbd>'w'</kbd>);</td></tr>
+<tr><th id="244">244</th><td>  <a class="ref" href="command/expand.h.html#dbg_cmd_expand_init" title='dbg_cmd_expand_init' data-ref="dbg_cmd_expand_init">dbg_cmd_expand_init</a>  (<kbd>'x'</kbd>);</td></tr>
+<tr><th id="245">245</th><td>  <a class="ref" href="command/comment.h.html#dbg_cmd_comment_init" title='dbg_cmd_comment_init' data-ref="dbg_cmd_comment_init">dbg_cmd_comment_init</a> (<kbd>'#'</kbd>);</td></tr>
+<tr><th id="246">246</th><td>  <a class="ref" href="command/set.h.html#dbg_cmd_set_init" title='dbg_cmd_set_init' data-ref="dbg_cmd_set_init">dbg_cmd_set_init</a>     (<kbd>'='</kbd>);</td></tr>
+<tr><th id="247">247</th><td>  <a class="ref" href="command/setq.h.html#dbg_cmd_setq_init" title='dbg_cmd_setq_init' data-ref="dbg_cmd_setq_init">dbg_cmd_setq_init</a>    (<kbd>'"'</kbd>);</td></tr>
+<tr><th id="248">248</th><td>  <a class="ref" href="command/setqx.h.html#dbg_cmd_setqx_init" title='dbg_cmd_setqx_init' data-ref="dbg_cmd_setqx_init">dbg_cmd_setqx_init</a>   (<kbd>'`'</kbd>);</td></tr>
+<tr><th id="249">249</th><td>  <a class="ref" href="command/shell.h.html#dbg_cmd_shell_init" title='dbg_cmd_shell_init' data-ref="dbg_cmd_shell_init">dbg_cmd_shell_init</a>   (<kbd>'!'</kbd>);</td></tr>
+<tr><th id="250">250</th><td>}</td></tr>
+<tr><th id="251">251</th><td></td></tr>
+<tr><th id="252">252</th><td><i>/* Execute a command line. */</i></td></tr>
+<tr><th id="253">253</th><td><b>extern</b> <a class="typedef" href="../trace.h.html#debug_return_t" title='debug_return_t' data-type='enum debug_return_t' data-ref="debug_return_t">debug_return_t</a></td></tr>
+<tr><th id="254">254</th><td><dfn class="decl def" id="execute_line" title='execute_line' data-ref="execute_line">execute_line</dfn> (<em>char</em> *<dfn class="local col4 decl" id="264psz_line" title='psz_line' data-type='char *' data-ref="264psz_line">psz_line</dfn>)</td></tr>
+<tr><th id="255">255</th><td>{</td></tr>
+<tr><th id="256">256</th><td>  <em>unsigned</em> <em>int</em> <dfn class="local col5 decl" id="265i" title='i' data-type='unsigned int' data-ref="265i">i</dfn> = <var>0</var>;</td></tr>
+<tr><th id="257">257</th><td>  <a class="typedef" href="../debugger.h.html#short_cmd_t" title='short_cmd_t' data-type='struct short_cmd_t' data-ref="short_cmd_t">short_cmd_t</a> *<dfn class="local col6 decl" id="266command" title='command' data-type='short_cmd_t *' data-ref="266command">command</dfn>;</td></tr>
+<tr><th id="258">258</th><td>  <em>char</em> *<dfn class="local col7 decl" id="267psz_word" title='psz_word' data-type='char *' data-ref="267psz_word">psz_word</dfn> = <a class="ref" href="fns.h.html#get_word" title='get_word' data-ref="get_word">get_word</a>(&amp;<a class="local col4 ref" href="#264psz_line" title='psz_line' data-ref="264psz_line">psz_line</a>);</td></tr>
+<tr><th id="259">259</th><td></td></tr>
+<tr><th id="260">260</th><td>  <b>if</b> (<var>1</var> == <a class="ref" href="../../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a>(<a class="local col7 ref" href="#267psz_word" title='psz_word' data-ref="267psz_word">psz_word</a>)) {</td></tr>
+<tr><th id="261">261</th><td>    <b>if</b> ( <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span> != <a class="ref" href="#short_command" title='short_command' data-ref="short_command">short_command</a>[(<a class="typedef" href="../../include/stdint.h.html#uint8_t" title='uint8_t' data-type='unsigned char' data-ref="uint8_t">uint8_t</a>) <a class="local col7 ref" href="#267psz_word" title='psz_word' data-ref="267psz_word">psz_word</a>[<var>0</var>]].<a class="ref" href="../debugger.h.html#(anonymous)::func" title='(anonymous struct)::func' data-ref="(anonymous)::func">func</a> )</td></tr>
+<tr><th id="262">262</th><td>      <a class="local col6 ref" href="#266command" title='command' data-ref="266command">command</a> = &amp;<a class="ref" href="#short_command" title='short_command' data-ref="short_command">short_command</a>[(<a class="typedef" href="../../include/stdint.h.html#uint8_t" title='uint8_t' data-type='unsigned char' data-ref="uint8_t">uint8_t</a>) <a class="local col7 ref" href="#267psz_word" title='psz_word' data-ref="267psz_word">psz_word</a>[<var>0</var>]];</td></tr>
+<tr><th id="263">263</th><td>    <b>else</b></td></tr>
+<tr><th id="264">264</th><td>      <a class="local col6 ref" href="#266command" title='command' data-ref="266command">command</a> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="265">265</th><td>  } <b>else</b> {</td></tr>
+<tr><th id="266">266</th><td>    <a class="local col6 ref" href="#266command" title='command' data-ref="266command">command</a> = <a class="tu ref" href="#find_command" title='find_command' data-use='c' data-ref="find_command">find_command</a> (<a class="local col7 ref" href="#267psz_word" title='psz_word' data-ref="267psz_word">psz_word</a>);</td></tr>
+<tr><th id="267">267</th><td>  }</td></tr>
+<tr><th id="268">268</th><td>  <b>if</b> (!<a class="local col6 ref" href="#266command" title='command' data-ref="266command">command</a>)</td></tr>
+<tr><th id="269">269</th><td>    {</td></tr>
+<tr><th id="270">270</th><td>      <a class="ref" href="msg.h.html#dbg_errmsg" title='dbg_errmsg' data-ref="dbg_errmsg">dbg_errmsg</a>(<a class="macro" href="../make.h.html#293" title="dcgettext (((void*)0), &quot;No such debugger command: %s.&quot;, 5)" data-ref="_M/_">_</a>(<q>"No such debugger command: %s."</q>), <a class="local col7 ref" href="#267psz_word" title='psz_word' data-ref="267psz_word">psz_word</a>);</td></tr>
+<tr><th id="271">271</th><td>      <b>return</b> <a class="enum" href="../trace.h.html#debug_readloop" title='debug_readloop' data-ref="debug_readloop">debug_readloop</a>;</td></tr>
+<tr><th id="272">272</th><td>    }</td></tr>
+<tr><th id="273">273</th><td></td></tr>
+<tr><th id="274">274</th><td>  <i>/* Get argument to command, if any. */</i></td></tr>
+<tr><th id="275">275</th><td>  <b>while</b> (<a class="macro" href="../../include/readline/chardefs.h.html#30" title="(((psz_line[i]) == &apos; &apos;) || ((psz_line[i]) == &apos;\t&apos;))" data-ref="_M/whitespace">whitespace</a> (<a class="local col4 ref" href="#264psz_line" title='psz_line' data-ref="264psz_line">psz_line</a>[<a class="local col5 ref" href="#265i" title='i' data-ref="265i">i</a>]))</td></tr>
+<tr><th id="276">276</th><td>    <a class="local col5 ref" href="#265i" title='i' data-ref="265i">i</a>++;</td></tr>
+<tr><th id="277">277</th><td></td></tr>
+<tr><th id="278">278</th><td>  <a class="ref" href="#psz_debugger_args" title='psz_debugger_args' data-ref="psz_debugger_args">psz_debugger_args</a> = <a class="local col4 ref" href="#264psz_line" title='psz_line' data-ref="264psz_line">psz_line</a> + <a class="local col5 ref" href="#265i" title='i' data-ref="265i">i</a>;</td></tr>
+<tr><th id="279">279</th><td></td></tr>
+<tr><th id="280">280</th><td>  <i>/* Call the function. */</i></td></tr>
+<tr><th id="281">281</th><td>  <b>return</b> ((*(<a class="local col6 ref" href="#266command" title='command' data-ref="266command">command</a>-&gt;<a class="ref" href="../debugger.h.html#(anonymous)::func" title='(anonymous struct)::func' data-ref="(anonymous)::func">func</a>)) (<a class="ref" href="#psz_debugger_args" title='psz_debugger_args' data-ref="psz_debugger_args">psz_debugger_args</a>));</td></tr>
+<tr><th id="282">282</th><td>}</td></tr>
+<tr><th id="283">283</th><td></td></tr>
+<tr><th id="284">284</th><td><i>/* Show history. */</i></td></tr>
+<tr><th id="285">285</th><td><a class="typedef" href="../trace.h.html#debug_return_t" title='debug_return_t' data-type='enum debug_return_t' data-ref="debug_return_t">debug_return_t</a></td></tr>
+<tr><th id="286">286</th><td><dfn class="decl def" id="dbg_cmd_show_command" title='dbg_cmd_show_command' data-ref="dbg_cmd_show_command">dbg_cmd_show_command</dfn> (<em>const</em> <em>char</em></td></tr>
+<tr><th id="287">287</th><td>                      *<dfn class="local col8 decl" id="268psz_args" title='psz_args' data-type='const char *' data-ref="268psz_args">psz_args</dfn> <a class="macro" href="#50" title="__attribute__((unused))" data-ref="_M/ATTRIBUTE_UNUSED">ATTRIBUTE_UNUSED</a>)</td></tr>
+<tr><th id="288">288</th><td>{</td></tr>
+<tr><th id="289">289</th><td> <i>/*</i></td></tr>
+<tr><th id="290">290</th><td><i>  if (!psz_arg || *psz_arg) {</i></td></tr>
+<tr><th id="291">291</th><td><i>    ;</i></td></tr>
+<tr><th id="292">292</th><td><i>    } */</i></td></tr>
+<tr><th id="293">293</th><td></td></tr>
+<tr><th id="294">294</th><td><u>#<span data-ppcond="294">ifdef</span> <a class="macro" href="../config.h.html#147" data-ref="_M/HAVE_HISTORY_LIST">HAVE_HISTORY_LIST</a></u></td></tr>
+<tr><th id="295">295</th><td>  <a class="typedef" href="../../include/readline/history.h.html#HIST_ENTRY" title='HIST_ENTRY' data-type='struct _hist_entry' data-ref="HIST_ENTRY">HIST_ENTRY</a> **<dfn class="local col9 decl" id="269hist_list" title='hist_list' data-type='HIST_ENTRY **' data-ref="269hist_list">hist_list</dfn> = <a class="ref" href="../../include/readline/history.h.html#history_list" title='history_list' data-ref="history_list">history_list</a>();</td></tr>
+<tr><th id="296">296</th><td>  <em>unsigned</em> <em>int</em> <dfn class="local col0 decl" id="270i" title='i' data-type='unsigned int' data-ref="270i">i</dfn>;</td></tr>
+<tr><th id="297">297</th><td>  <a class="macro" href="../types.h.html#34" title="(void)psz_args" data-ref="_M/UNUSED_ARGUMENT">UNUSED_ARGUMENT</a>(<a class="local col8 ref" href="#268psz_args" title='psz_args' data-ref="268psz_args">psz_args</a>);</td></tr>
+<tr><th id="298">298</th><td>  <b>if</b> (!<a class="local col9 ref" href="#269hist_list" title='hist_list' data-ref="269hist_list">hist_list</a>) <b>return</b> <a class="enum" href="../trace.h.html#debug_readloop" title='debug_readloop' data-ref="debug_readloop">debug_readloop</a>;</td></tr>
+<tr><th id="299">299</th><td>  <b>for</b> (<a class="local col0 ref" href="#270i" title='i' data-ref="270i">i</a>=<var>0</var>; <a class="local col9 ref" href="#269hist_list" title='hist_list' data-ref="269hist_list">hist_list</a>[<a class="local col0 ref" href="#270i" title='i' data-ref="270i">i</a>]; <a class="local col0 ref" href="#270i" title='i' data-ref="270i">i</a>++) {</td></tr>
+<tr><th id="300">300</th><td>    <a class="ref" href="msg.h.html#dbg_msg" title='dbg_msg' data-ref="dbg_msg">dbg_msg</a>(<q>"%5u  %s"</q>, <a class="local col0 ref" href="#270i" title='i' data-ref="270i">i</a>, <a class="local col9 ref" href="#269hist_list" title='hist_list' data-ref="269hist_list">hist_list</a>[<a class="local col0 ref" href="#270i" title='i' data-ref="270i">i</a>]-&gt;<a class="ref" href="../../include/readline/history.h.html#_hist_entry::line" title='_hist_entry::line' data-ref="_hist_entry::line">line</a>);</td></tr>
+<tr><th id="301">301</th><td>  }</td></tr>
+<tr><th id="302">302</th><td><u>#<span data-ppcond="294">endif</span></u></td></tr>
+<tr><th id="303">303</th><td>  <b>return</b> <a class="enum" href="../trace.h.html#debug_readloop" title='debug_readloop' data-ref="debug_readloop">debug_readloop</a>;</td></tr>
+<tr><th id="304">304</th><td>}</td></tr>
+<tr><th id="305">305</th><td></td></tr>
+<tr><th id="306">306</th><td><i  data-doc="dbg_cmd_set_var">/* Set a variable. Set "expand' to 1 if you want variable</i></td></tr>
+<tr><th id="307">307</th><td><i  data-doc="dbg_cmd_set_var">   definitions inside the value getting passed in to be expanded</i></td></tr>
+<tr><th id="308">308</th><td><i  data-doc="dbg_cmd_set_var">   before assigment. */</i></td></tr>
+<tr><th id="309">309</th><td><em>static</em> <a class="typedef" href="../trace.h.html#debug_return_t" title='debug_return_t' data-type='enum debug_return_t' data-ref="debug_return_t">debug_return_t</a> <dfn class="tu decl def" id="dbg_cmd_set_var" title='dbg_cmd_set_var' data-type='debug_return_t dbg_cmd_set_var(char * psz_args, int expand)' data-ref="dbg_cmd_set_var">dbg_cmd_set_var</dfn> (<em>char</em> *<dfn class="local col1 decl" id="271psz_args" title='psz_args' data-type='char *' data-ref="271psz_args">psz_args</dfn>, <em>int</em> <dfn class="local col2 decl" id="272expand" title='expand' data-type='int' data-ref="272expand">expand</dfn>)</td></tr>
+<tr><th id="310">310</th><td>{</td></tr>
+<tr><th id="311">311</th><td>  <b>if</b> (!<a class="local col1 ref" href="#271psz_args" title='psz_args' data-ref="271psz_args">psz_args</a> || <var>0</var>==<a class="ref" href="../../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a>(<a class="local col1 ref" href="#271psz_args" title='psz_args' data-ref="271psz_args">psz_args</a>)) {</td></tr>
+<tr><th id="312">312</th><td>    <a class="ref" href="msg.h.html#dbg_msg" title='dbg_msg' data-ref="dbg_msg">dbg_msg</a>(<a class="macro" href="../make.h.html#293" title="dcgettext (((void*)0), &quot;You need to supply a variable name.&quot;, 5)" data-ref="_M/_">_</a>(<q>"You need to supply a variable name."</q>));</td></tr>
+<tr><th id="313">313</th><td>  } <b>else</b> {</td></tr>
+<tr><th id="314">314</th><td>    <a class="typedef" href="../types.h.html#variable_t" title='variable_t' data-type='struct variable' data-ref="variable_t">variable_t</a> *<dfn class="local col3 decl" id="273p_v" title='p_v' data-type='variable_t *' data-ref="273p_v">p_v</dfn>;</td></tr>
+<tr><th id="315">315</th><td>    <em>char</em> *<dfn class="local col4 decl" id="274psz_varname" title='psz_varname' data-type='char *' data-ref="274psz_varname">psz_varname</dfn> = <a class="ref" href="fns.h.html#get_word" title='get_word' data-ref="get_word">get_word</a>(&amp;<a class="local col1 ref" href="#271psz_args" title='psz_args' data-ref="271psz_args">psz_args</a>);</td></tr>
+<tr><th id="316">316</th><td>    <em>unsigned</em> <em>int</em> <dfn class="local col5 decl" id="275u_len" title='u_len' data-type='unsigned int' data-ref="275u_len">u_len</dfn> = <a class="ref" href="../../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a>(<a class="local col4 ref" href="#274psz_varname" title='psz_varname' data-ref="274psz_varname">psz_varname</a>);</td></tr>
+<tr><th id="317">317</th><td></td></tr>
+<tr><th id="318">318</th><td>    <b>while</b> (*<a class="local col1 ref" href="#271psz_args" title='psz_args' data-ref="271psz_args">psz_args</a> &amp;&amp; <a class="macro" href="../../include/readline/chardefs.h.html#30" title="(((*psz_args) == &apos; &apos;) || ((*psz_args) == &apos;\t&apos;))" data-ref="_M/whitespace">whitespace</a> (*<a class="local col1 ref" href="#271psz_args" title='psz_args' data-ref="271psz_args">psz_args</a>))</td></tr>
+<tr><th id="319">319</th><td>      *<a class="local col1 ref" href="#271psz_args" title='psz_args' data-ref="271psz_args">psz_args</a> +=<var>1</var>;</td></tr>
+<tr><th id="320">320</th><td></td></tr>
+<tr><th id="321">321</th><td>    <a class="local col3 ref" href="#273p_v" title='p_v' data-ref="273p_v">p_v</a> = <a class="ref" href="../variable.h.html#lookup_variable" title='lookup_variable' data-ref="lookup_variable">lookup_variable</a> (<a class="local col4 ref" href="#274psz_varname" title='psz_varname' data-ref="274psz_varname">psz_varname</a>, <a class="local col5 ref" href="#275u_len" title='u_len' data-ref="275u_len">u_len</a>);</td></tr>
+<tr><th id="322">322</th><td></td></tr>
+<tr><th id="323">323</th><td>    <b>if</b> (<a class="local col3 ref" href="#273p_v" title='p_v' data-ref="273p_v">p_v</a>) {</td></tr>
+<tr><th id="324">324</th><td>      <em>char</em> *<dfn class="local col6 decl" id="276psz_value" title='psz_value' data-type='char *' data-ref="276psz_value">psz_value</dfn> =  <a class="local col2 ref" href="#272expand" title='expand' data-ref="272expand">expand</a> ? <a class="ref" href="../variable.h.html#variable_expand" title='variable_expand' data-ref="variable_expand">variable_expand</a>(<a class="local col1 ref" href="#271psz_args" title='psz_args' data-ref="271psz_args">psz_args</a>) : <a class="local col1 ref" href="#271psz_args" title='psz_args' data-ref="271psz_args">psz_args</a>;</td></tr>
+<tr><th id="325">325</th><td></td></tr>
+<tr><th id="326">326</th><td>      <a class="ref" href="../variable.h.html#define_variable_in_set" title='define_variable_in_set' data-ref="define_variable_in_set">define_variable_in_set</a>(<a class="local col3 ref" href="#273p_v" title='p_v' data-ref="273p_v">p_v</a>-&gt;<a class="ref" href="../variable.h.html#variable::name" title='variable::name' data-ref="variable::name">name</a>, <a class="local col5 ref" href="#275u_len" title='u_len' data-ref="275u_len">u_len</a>, <a class="local col6 ref" href="#276psz_value" title='psz_value' data-ref="276psz_value">psz_value</a>,</td></tr>
+<tr><th id="327">327</th><td>			     <a class="enum" href="../variable.h.html#variable_origin::o_debugger" title='variable_origin::o_debugger' data-ref="variable_origin::o_debugger">o_debugger</a>, <var>0</var>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,</td></tr>
+<tr><th id="328">328</th><td>			     &amp;(<a class="local col3 ref" href="#273p_v" title='p_v' data-ref="273p_v">p_v</a>-&gt;<a class="ref" href="../variable.h.html#variable::fileinfo" title='variable::fileinfo' data-ref="variable::fileinfo">fileinfo</a>));</td></tr>
+<tr><th id="329">329</th><td>      <a class="ref" href="msg.h.html#dbg_msg" title='dbg_msg' data-ref="dbg_msg">dbg_msg</a>(<a class="macro" href="../make.h.html#293" title="dcgettext (((void*)0), &quot;Variable %s now has value &apos;%s&apos;&quot;, 5)" data-ref="_M/_">_</a>(<q>"Variable %s now has value '%s'"</q>), <a class="local col4 ref" href="#274psz_varname" title='psz_varname' data-ref="274psz_varname">psz_varname</a>,</td></tr>
+<tr><th id="330">330</th><td>	     <a class="local col6 ref" href="#276psz_value" title='psz_value' data-ref="276psz_value">psz_value</a>);</td></tr>
+<tr><th id="331">331</th><td>    } <b>else</b> {</td></tr>
+<tr><th id="332">332</th><td>      <a class="local col3 ref" href="#273p_v" title='p_v' data-ref="273p_v">p_v</a> = <a class="ref" href="fns.h.html#try_without_dollar" title='try_without_dollar' data-ref="try_without_dollar">try_without_dollar</a>(<a class="local col4 ref" href="#274psz_varname" title='psz_varname' data-ref="274psz_varname">psz_varname</a>);</td></tr>
+<tr><th id="333">333</th><td>      <b>if</b> (<a class="local col3 ref" href="#273p_v" title='p_v' data-ref="273p_v">p_v</a>) {</td></tr>
+<tr><th id="334">334</th><td>        <em>char</em> *<dfn class="local col7 decl" id="277psz_value" title='psz_value' data-type='char *' data-ref="277psz_value">psz_value</dfn> =  <a class="local col2 ref" href="#272expand" title='expand' data-ref="272expand">expand</a> ? <a class="ref" href="../variable.h.html#variable_expand" title='variable_expand' data-ref="variable_expand">variable_expand</a>(<a class="local col1 ref" href="#271psz_args" title='psz_args' data-ref="271psz_args">psz_args</a>) : <a class="local col1 ref" href="#271psz_args" title='psz_args' data-ref="271psz_args">psz_args</a>;</td></tr>
+<tr><th id="335">335</th><td>        <a class="ref" href="../variable.h.html#define_variable_in_set" title='define_variable_in_set' data-ref="define_variable_in_set">define_variable_in_set</a>(<a class="local col3 ref" href="#273p_v" title='p_v' data-ref="273p_v">p_v</a>-&gt;<a class="ref" href="../variable.h.html#variable::name" title='variable::name' data-ref="variable::name">name</a>, <a class="local col5 ref" href="#275u_len" title='u_len' data-ref="275u_len">u_len</a>, <a class="local col7 ref" href="#277psz_value" title='psz_value' data-ref="277psz_value">psz_value</a>,</td></tr>
+<tr><th id="336">336</th><td>                               <a class="enum" href="../variable.h.html#variable_origin::o_debugger" title='variable_origin::o_debugger' data-ref="variable_origin::o_debugger">o_debugger</a>, <var>0</var>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,</td></tr>
+<tr><th id="337">337</th><td>                               &amp;(<a class="local col3 ref" href="#273p_v" title='p_v' data-ref="273p_v">p_v</a>-&gt;<a class="ref" href="../variable.h.html#variable::fileinfo" title='variable::fileinfo' data-ref="variable::fileinfo">fileinfo</a>));</td></tr>
+<tr><th id="338">338</th><td>        <a class="ref" href="msg.h.html#dbg_msg" title='dbg_msg' data-ref="dbg_msg">dbg_msg</a>(<a class="macro" href="../make.h.html#293" title="dcgettext (((void*)0), &quot;Variable %s now has value &apos;%s&apos;&quot;, 5)" data-ref="_M/_">_</a>(<q>"Variable %s now has value '%s'"</q>), <a class="local col4 ref" href="#274psz_varname" title='psz_varname' data-ref="274psz_varname">psz_varname</a>,</td></tr>
+<tr><th id="339">339</th><td>                <a class="local col7 ref" href="#277psz_value" title='psz_value' data-ref="277psz_value">psz_value</a>);</td></tr>
+<tr><th id="340">340</th><td>      }</td></tr>
+<tr><th id="341">341</th><td>    }</td></tr>
+<tr><th id="342">342</th><td>  }</td></tr>
+<tr><th id="343">343</th><td>  <b>return</b> <a class="enum" href="../trace.h.html#debug_readloop" title='debug_readloop' data-ref="debug_readloop">debug_readloop</a>;</td></tr>
+<tr><th id="344">344</th><td>}</td></tr>
+<tr><th id="345">345</th><td></td></tr>
+<tr><th id="346">346</th><td><u>#<span data-ppcond="73">endif</span> /* HAVE_LIBREADLINE */</u></td></tr>
+<tr><th id="347">347</th><td></td></tr>
+<tr><th id="348">348</th><td><u>#define <dfn class="macro" id="_M/PROMPT_LENGTH" data-ref="_M/PROMPT_LENGTH">PROMPT_LENGTH</dfn> 300</u></td></tr>
+<tr><th id="349">349</th><td></td></tr>
+<tr><th id="350">350</th><td><u>#include <a href="../../include/setjmp.h.html">&lt;setjmp.h&gt;</a></u></td></tr>
+<tr><th id="351">351</th><td><a class="typedef" href="../../include/setjmp.h.html#jmp_buf" title='jmp_buf' data-type='struct __jmp_buf_tag [1]' data-ref="jmp_buf">jmp_buf</a> <dfn class="decl def" id="debugger_loop" title='debugger_loop' data-ref="debugger_loop">debugger_loop</dfn>;</td></tr>
+<tr><th id="352">352</th><td></td></tr>
+<tr><th id="353">353</th><td><i>/* Should be less that PROMPT_LENGTH / 2 - strlen("remake ") + log(history)</i></td></tr>
+<tr><th id="354">354</th><td><i>   We will make it much less that since people can't count more than</i></td></tr>
+<tr><th id="355">355</th><td><i>   10 or so nested &lt;&lt;&lt;&lt;&gt;&gt;&gt;&gt;'s easily.</i></td></tr>
+<tr><th id="356">356</th><td><i>*/</i></td></tr>
+<tr><th id="357">357</th><td><u>#define <dfn class="macro" id="_M/MAX_NEST_DEPTH" data-ref="_M/MAX_NEST_DEPTH">MAX_NEST_DEPTH</dfn> 10</u></td></tr>
+<tr><th id="358">358</th><td></td></tr>
+<tr><th id="359">359</th><td><a class="typedef" href="../trace.h.html#debug_return_t" title='debug_return_t' data-type='enum debug_return_t' data-ref="debug_return_t">debug_return_t</a> <dfn class="decl def" id="enter_debugger" title='enter_debugger' data-ref="enter_debugger">enter_debugger</dfn> (<a class="typedef" href="../trace.h.html#target_stack_node_t" title='target_stack_node_t' data-type='struct target_stack_node' data-ref="target_stack_node_t">target_stack_node_t</a> *<dfn class="local col8 decl" id="278p" title='p' data-type='target_stack_node_t *' data-ref="278p">p</dfn>,</td></tr>
+<tr><th id="360">360</th><td>			       <a class="typedef" href="../types.h.html#file_t" title='file_t' data-type='struct file' data-ref="file_t">file_t</a> *<dfn class="local col9 decl" id="279p_target" title='p_target' data-type='file_t *' data-ref="279p_target">p_target</dfn>, <em>int</em> <dfn class="local col0 decl" id="280errcode" title='errcode' data-type='int' data-ref="280errcode">errcode</dfn>,</td></tr>
+<tr><th id="361">361</th><td>			       <a class="typedef" href="../trace.h.html#debug_enter_reason_t" title='debug_enter_reason_t' data-type='enum debug_enter_reason_t' data-ref="debug_enter_reason_t">debug_enter_reason_t</a> <dfn class="local col1 decl" id="281reason" title='reason' data-type='debug_enter_reason_t' data-ref="281reason">reason</dfn>)</td></tr>
+<tr><th id="362">362</th><td>{</td></tr>
+<tr><th id="363">363</th><td>  <em>volatile</em> <a class="typedef" href="../trace.h.html#debug_return_t" title='debug_return_t' data-type='enum debug_return_t' data-ref="debug_return_t">debug_return_t</a> <dfn class="local col2 decl" id="282debug_return" title='debug_return' data-type='volatile debug_return_t' data-ref="282debug_return">debug_return</dfn> = <a class="enum" href="../trace.h.html#debug_readloop" title='debug_readloop' data-ref="debug_readloop">debug_readloop</a>;</td></tr>
+<tr><th id="364">364</th><td>  <em>static</em> <a class="macro" href="../types.h.html#50" title="uint8_t" data-ref="_M/bool">bool</a> <dfn class="local col3 decl" id="283b_init" title='b_init' data-type='uint8_t' data-ref="283b_init">b_init</dfn> = <a class="macro" href="../types.h.html#47" title="0" data-ref="_M/false">false</a>;</td></tr>
+<tr><th id="365">365</th><td>  <em>static</em> <a class="macro" href="../types.h.html#50" title="uint8_t" data-ref="_M/bool">bool</a> <dfn class="local col4 decl" id="284b_readline_init" title='b_readline_init' data-type='uint8_t' data-ref="284b_readline_init">b_readline_init</dfn> = <a class="macro" href="../types.h.html#47" title="0" data-ref="_M/false">false</a>;</td></tr>
+<tr><th id="366">366</th><td>  <em>char</em> <dfn class="local col5 decl" id="285open_depth" title='open_depth' data-type='char [10]' data-ref="285open_depth">open_depth</dfn>[<a class="macro" href="#357" title="10" data-ref="_M/MAX_NEST_DEPTH">MAX_NEST_DEPTH</a>];</td></tr>
+<tr><th id="367">367</th><td>  <em>char</em> <dfn class="local col6 decl" id="286close_depth" title='close_depth' data-type='char [10]' data-ref="286close_depth">close_depth</dfn>[<a class="macro" href="#357" title="10" data-ref="_M/MAX_NEST_DEPTH">MAX_NEST_DEPTH</a>];</td></tr>
+<tr><th id="368">368</th><td>  <em>unsigned</em> <em>int</em> <dfn class="local col7 decl" id="287i" title='i' data-type='unsigned int' data-ref="287i">i</dfn> = <var>0</var>;</td></tr>
+<tr><th id="369">369</th><td></td></tr>
+<tr><th id="370">370</th><td>  <a class="ref" href="info.h.html#last_stop_reason" title='last_stop_reason' data-ref="last_stop_reason">last_stop_reason</a> = <a class="local col1 ref" href="#281reason" title='reason' data-ref="281reason">reason</a>;</td></tr>
+<tr><th id="371">371</th><td></td></tr>
+<tr><th id="372">372</th><td>  <b>if</b> ( <a class="ref" href="../debug.h.html#in_debugger" title='in_debugger' data-ref="in_debugger">in_debugger</a> == <a class="enum" href="../debug.h.html#DEBUGGER_QUIT_RC" title='DEBUGGER_QUIT_RC' data-ref="DEBUGGER_QUIT_RC">DEBUGGER_QUIT_RC</a> ) {</td></tr>
+<tr><th id="373">373</th><td>    <b>return</b> <a class="enum" href="../trace.h.html#continue_execution" title='continue_execution' data-ref="continue_execution">continue_execution</a>;</td></tr>
+<tr><th id="374">374</th><td>  }</td></tr>
+<tr><th id="375">375</th><td></td></tr>
+<tr><th id="376">376</th><td>  <b>if</b> ( <a class="ref" href="../debug.h.html#i_debugger_stepping" title='i_debugger_stepping' data-ref="i_debugger_stepping">i_debugger_stepping</a> &gt; <var>1</var> || <a class="ref" href="../debug.h.html#i_debugger_nexting" title='i_debugger_nexting' data-ref="i_debugger_nexting">i_debugger_nexting</a> &gt; <var>1</var> ) {</td></tr>
+<tr><th id="377">377</th><td>    <i>/* Don't stop unless we are here from a breakpoint. But</i></td></tr>
+<tr><th id="378">378</th><td><i>       do decrement the step count. */</i></td></tr>
+<tr><th id="379">379</th><td>    <b>if</b> (<a class="ref" href="../debug.h.html#i_debugger_stepping" title='i_debugger_stepping' data-ref="i_debugger_stepping">i_debugger_stepping</a>)  <a class="ref" href="../debug.h.html#i_debugger_stepping" title='i_debugger_stepping' data-ref="i_debugger_stepping">i_debugger_stepping</a>--;</td></tr>
+<tr><th id="380">380</th><td>    <b>if</b> (<a class="ref" href="../debug.h.html#i_debugger_nexting" title='i_debugger_nexting' data-ref="i_debugger_nexting">i_debugger_nexting</a>)   <a class="ref" href="../debug.h.html#i_debugger_nexting" title='i_debugger_nexting' data-ref="i_debugger_nexting">i_debugger_nexting</a>--;</td></tr>
+<tr><th id="381">381</th><td>    <b>if</b> (!<a class="local col9 ref" href="#279p_target" title='p_target' data-ref="279p_target">p_target</a>-&gt;<a class="ref" href="../filedef.h.html#file::tracing" title='file::tracing' data-ref="file::tracing">tracing</a>) <b>return</b> <a class="enum" href="../trace.h.html#continue_execution" title='continue_execution' data-ref="continue_execution">continue_execution</a>;</td></tr>
+<tr><th id="382">382</th><td>  } <b>else</b> <b>if</b> ( !<a class="ref" href="../debug.h.html#debugger_on_error" title='debugger_on_error' data-ref="debugger_on_error">debugger_on_error</a></td></tr>
+<tr><th id="383">383</th><td>	      &amp;&amp; !(<a class="ref" href="../debug.h.html#i_debugger_stepping" title='i_debugger_stepping' data-ref="i_debugger_stepping">i_debugger_stepping</a> || <a class="ref" href="../debug.h.html#i_debugger_nexting" title='i_debugger_nexting' data-ref="i_debugger_nexting">i_debugger_nexting</a>)</td></tr>
+<tr><th id="384">384</th><td>	      &amp;&amp; <a class="local col9 ref" href="#279p_target" title='p_target' data-ref="279p_target">p_target</a> &amp;&amp; !<a class="local col9 ref" href="#279p_target" title='p_target' data-ref="279p_target">p_target</a>-&gt;<a class="ref" href="../filedef.h.html#file::tracing" title='file::tracing' data-ref="file::tracing">tracing</a> &amp;&amp; -<var>2</var> != <a class="local col0 ref" href="#280errcode" title='errcode' data-ref="280errcode">errcode</a> )</td></tr>
+<tr><th id="385">385</th><td>    <b>return</b> <a class="enum" href="../trace.h.html#continue_execution" title='continue_execution' data-ref="continue_execution">continue_execution</a>;</td></tr>
+<tr><th id="386">386</th><td></td></tr>
+<tr><th id="387">387</th><td>  <i>/* Clear temporary breakpoints. */</i></td></tr>
+<tr><th id="388">388</th><td>  <b>if</b> (<a class="local col9 ref" href="#279p_target" title='p_target' data-ref="279p_target">p_target</a> &amp;&amp; <a class="local col9 ref" href="#279p_target" title='p_target' data-ref="279p_target">p_target</a>-&gt;<a class="ref" href="../filedef.h.html#file::tracing" title='file::tracing' data-ref="file::tracing">tracing</a> &amp; <a class="enum" href="../types.h.html#BRK_TEMP" title='BRK_TEMP' data-ref="BRK_TEMP">BRK_TEMP</a>)</td></tr>
+<tr><th id="389">389</th><td>    <b>switch</b>(<a class="ref" href="info.h.html#last_stop_reason" title='last_stop_reason' data-ref="last_stop_reason">last_stop_reason</a>)</td></tr>
+<tr><th id="390">390</th><td>      {</td></tr>
+<tr><th id="391">391</th><td>      <b>case</b> <a class="enum" href="../trace.h.html#DEBUG_BRKPT_AFTER_CMD" title='DEBUG_BRKPT_AFTER_CMD' data-ref="DEBUG_BRKPT_AFTER_CMD">DEBUG_BRKPT_AFTER_CMD</a>:</td></tr>
+<tr><th id="392">392</th><td>      <b>case</b> <a class="enum" href="../trace.h.html#DEBUG_BRKPT_BEFORE_PREREQ" title='DEBUG_BRKPT_BEFORE_PREREQ' data-ref="DEBUG_BRKPT_BEFORE_PREREQ">DEBUG_BRKPT_BEFORE_PREREQ</a>:</td></tr>
+<tr><th id="393">393</th><td>      <b>case</b> <a class="enum" href="../trace.h.html#DEBUG_BRKPT_AFTER_PREREQ" title='DEBUG_BRKPT_AFTER_PREREQ' data-ref="DEBUG_BRKPT_AFTER_PREREQ">DEBUG_BRKPT_AFTER_PREREQ</a>:</td></tr>
+<tr><th id="394">394</th><td>        <a class="local col9 ref" href="#279p_target" title='p_target' data-ref="279p_target">p_target</a>-&gt;<a class="ref" href="../filedef.h.html#file::tracing" title='file::tracing' data-ref="file::tracing">tracing</a> = <a class="enum" href="../types.h.html#BRK_NONE" title='BRK_NONE' data-ref="BRK_NONE">BRK_NONE</a>;</td></tr>
+<tr><th id="395">395</th><td>      <b>default</b>:</td></tr>
+<tr><th id="396">396</th><td>        ;</td></tr>
+<tr><th id="397">397</th><td>      }</td></tr>
+<tr><th id="398">398</th><td></td></tr>
+<tr><th id="399">399</th><td><u>#<span data-ppcond="399">ifdef</span> <a class="macro" href="../config.h.html#165" data-ref="_M/HAVE_LIBREADLINE">HAVE_LIBREADLINE</a></u></td></tr>
+<tr><th id="400">400</th><td>  <b>if</b> (<a class="ref" href="../main.h.html#use_readline_flag" title='use_readline_flag' data-ref="use_readline_flag">use_readline_flag</a> &amp;&amp; !<a class="local col4 ref" href="#284b_readline_init" title='b_readline_init' data-ref="284b_readline_init">b_readline_init</a>) {</td></tr>
+<tr><th id="401">401</th><td>      <a class="ref" href="../../include/readline/readline.h.html#rl_initialize" title='rl_initialize' data-ref="rl_initialize">rl_initialize</a> ();</td></tr>
+<tr><th id="402">402</th><td>      <a class="ref" href="../../include/readline/history.h.html#using_history" title='using_history' data-ref="using_history">using_history</a> ();</td></tr>
+<tr><th id="403">403</th><td>      <a class="ref" href="../../include/readline/history.h.html#add_history" title='add_history' data-ref="add_history">add_history</a> (<q>""</q>);</td></tr>
+<tr><th id="404">404</th><td>      <a class="local col4 ref" href="#284b_readline_init" title='b_readline_init' data-ref="284b_readline_init">b_readline_init</a> = <a class="macro" href="../types.h.html#48" title="1" data-ref="_M/true">true</a>;</td></tr>
+<tr><th id="405">405</th><td>  }</td></tr>
+<tr><th id="406">406</th><td><u>#<span data-ppcond="399">endif</span></u></td></tr>
+<tr><th id="407">407</th><td>  <b>if</b> (!<a class="local col3 ref" href="#283b_init" title='b_init' data-ref="283b_init">b_init</a>) {</td></tr>
+<tr><th id="408">408</th><td>    <a class="tu ref" href="#cmd_initialize" title='cmd_initialize' data-use='c' data-ref="cmd_initialize">cmd_initialize</a>();</td></tr>
+<tr><th id="409">409</th><td>    <a class="ref" href="file2line.h.html#file2lines" title='file2lines' data-ref="file2lines">file2lines</a>.<a class="ref" href="../hash.h.html#hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</a> = <var>0</var>;</td></tr>
+<tr><th id="410">410</th><td>    <a class="local col3 ref" href="#283b_init" title='b_init' data-ref="283b_init">b_init</a> = <a class="macro" href="../types.h.html#48" title="1" data-ref="_M/true">true</a>;</td></tr>
+<tr><th id="411">411</th><td>  }</td></tr>
+<tr><th id="412">412</th><td></td></tr>
+<tr><th id="413">413</th><td></td></tr>
+<tr><th id="414">414</th><td>  <i>/* Set initial frame position reporting area: 0 is bottom. */</i></td></tr>
+<tr><th id="415">415</th><td>  <a class="ref" href="fns.h.html#p_target_loc" title='p_target_loc' data-ref="p_target_loc">p_target_loc</a>    = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="416">416</th><td>  <a class="ref" href="fns.h.html#psz_target_name" title='psz_target_name' data-ref="psz_target_name">psz_target_name</a> = (<em>char</em> *) <q>""</q>;</td></tr>
+<tr><th id="417">417</th><td>  <a class="ref" href="stack.h.html#i_stack_pos" title='i_stack_pos' data-ref="i_stack_pos">i_stack_pos</a>      = <var>0</var>;</td></tr>
+<tr><th id="418">418</th><td></td></tr>
+<tr><th id="419">419</th><td>  <a class="ref" href="stack.h.html#p_stack" title='p_stack' data-ref="p_stack">p_stack</a> = <a class="ref" href="../trace.h.html#p_stack_top" title='p_stack_top' data-ref="p_stack_top">p_stack_top</a> = <a class="local col8 ref" href="#278p" title='p' data-ref="278p">p</a>;</td></tr>
+<tr><th id="420">420</th><td>  <a class="ref" href="stack.h.html#p_floc_stack" title='p_floc_stack' data-ref="p_floc_stack">p_floc_stack</a> = <a class="ref" href="../trace.h.html#p_stack_floc_top" title='p_stack_floc_top' data-ref="p_stack_floc_top">p_stack_floc_top</a>;</td></tr>
+<tr><th id="421">421</th><td></td></tr>
+<tr><th id="422">422</th><td>  <i>/* Get the target name either from the stack top (preferred) or</i></td></tr>
+<tr><th id="423">423</th><td><i>     the passed in target.</i></td></tr>
+<tr><th id="424">424</th><td><i>   */</i></td></tr>
+<tr><th id="425">425</th><td>  <b>if</b> (<a class="local col8 ref" href="#278p" title='p' data-ref="278p">p</a> &amp;&amp; <a class="local col8 ref" href="#278p" title='p' data-ref="278p">p</a>-&gt;<a class="ref" href="../trace.h.html#target_stack_node::p_target" title='target_stack_node::p_target' data-ref="target_stack_node::p_target">p_target</a>) {</td></tr>
+<tr><th id="426">426</th><td>    <a class="ref" href="fns.h.html#p_target_loc" title='p_target_loc' data-ref="p_target_loc">p_target_loc</a>    = &amp;(<a class="local col8 ref" href="#278p" title='p' data-ref="278p">p</a>-&gt;<a class="ref" href="../trace.h.html#target_stack_node::p_target" title='target_stack_node::p_target' data-ref="target_stack_node::p_target">p_target</a>-&gt;<a class="ref" href="../filedef.h.html#file::floc" title='file::floc' data-ref="file::floc">floc</a>);</td></tr>
+<tr><th id="427">427</th><td>    <a class="ref" href="fns.h.html#psz_target_name" title='psz_target_name' data-ref="psz_target_name">psz_target_name</a> = (<em>char</em> *) <a class="local col8 ref" href="#278p" title='p' data-ref="278p">p</a>-&gt;<a class="ref" href="../trace.h.html#target_stack_node::p_target" title='target_stack_node::p_target' data-ref="target_stack_node::p_target">p_target</a>-&gt;<a class="ref" href="../filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a>;</td></tr>
+<tr><th id="428">428</th><td>  } <b>else</b> <b>if</b> (<a class="local col9 ref" href="#279p_target" title='p_target' data-ref="279p_target">p_target</a>) {</td></tr>
+<tr><th id="429">429</th><td>    <a class="ref" href="fns.h.html#p_target_loc" title='p_target_loc' data-ref="p_target_loc">p_target_loc</a>    = &amp;(<a class="local col9 ref" href="#279p_target" title='p_target' data-ref="279p_target">p_target</a>-&gt;<a class="ref" href="../filedef.h.html#file::floc" title='file::floc' data-ref="file::floc">floc</a>);</td></tr>
+<tr><th id="430">430</th><td>    <a class="ref" href="fns.h.html#psz_target_name" title='psz_target_name' data-ref="psz_target_name">psz_target_name</a> = (<em>char</em> *) <a class="local col9 ref" href="#279p_target" title='p_target' data-ref="279p_target">p_target</a>-&gt;<a class="ref" href="../filedef.h.html#file::name" title='file::name' data-ref="file::name">name</a>;</td></tr>
+<tr><th id="431">431</th><td>  }</td></tr>
+<tr><th id="432">432</th><td></td></tr>
+<tr><th id="433">433</th><td>  <b>for</b> (<a class="local col7 ref" href="#287i" title='i' data-ref="287i">i</a>=<var>0</var>; <a class="local col7 ref" href="#287i" title='i' data-ref="287i">i</a>&lt;=<a class="ref" href="../makeint.h.html#makelevel" title='makelevel' data-ref="makelevel">makelevel</a> &amp;&amp; <a class="local col7 ref" href="#287i" title='i' data-ref="287i">i</a> &lt; <a class="macro" href="#357" title="10" data-ref="_M/MAX_NEST_DEPTH">MAX_NEST_DEPTH</a>-<var>5</var>; <a class="local col7 ref" href="#287i" title='i' data-ref="287i">i</a>++) {</td></tr>
+<tr><th id="434">434</th><td>    <a class="local col5 ref" href="#285open_depth" title='open_depth' data-ref="285open_depth">open_depth</a>[<a class="local col7 ref" href="#287i" title='i' data-ref="287i">i</a>]  = <kbd>'&lt;'</kbd>;</td></tr>
+<tr><th id="435">435</th><td>    <a class="local col6 ref" href="#286close_depth" title='close_depth' data-ref="286close_depth">close_depth</a>[<a class="local col7 ref" href="#287i" title='i' data-ref="287i">i</a>] = <kbd>'&gt;'</kbd>;</td></tr>
+<tr><th id="436">436</th><td>  }</td></tr>
+<tr><th id="437">437</th><td></td></tr>
+<tr><th id="438">438</th><td>  <b>if</b> ( <a class="macro" href="#357" title="10" data-ref="_M/MAX_NEST_DEPTH">MAX_NEST_DEPTH</a> - <var>5</var> == <a class="local col7 ref" href="#287i" title='i' data-ref="287i">i</a> ) {</td></tr>
+<tr><th id="439">439</th><td>    <a class="local col6 ref" href="#286close_depth" title='close_depth' data-ref="286close_depth">close_depth</a>[<a class="local col7 ref" href="#287i" title='i' data-ref="287i">i</a>] = <a class="local col5 ref" href="#285open_depth" title='open_depth' data-ref="285open_depth">open_depth</a>[<a class="local col7 ref" href="#287i" title='i' data-ref="287i">i</a>]  = <kbd>'.'</kbd>; <a class="local col7 ref" href="#287i" title='i' data-ref="287i">i</a>++;</td></tr>
+<tr><th id="440">440</th><td>    <a class="local col6 ref" href="#286close_depth" title='close_depth' data-ref="286close_depth">close_depth</a>[<a class="local col7 ref" href="#287i" title='i' data-ref="287i">i</a>] = <a class="local col5 ref" href="#285open_depth" title='open_depth' data-ref="285open_depth">open_depth</a>[<a class="local col7 ref" href="#287i" title='i' data-ref="287i">i</a>]  = <kbd>'.'</kbd>; <a class="local col7 ref" href="#287i" title='i' data-ref="287i">i</a>++;</td></tr>
+<tr><th id="441">441</th><td>    <a class="local col6 ref" href="#286close_depth" title='close_depth' data-ref="286close_depth">close_depth</a>[<a class="local col7 ref" href="#287i" title='i' data-ref="287i">i</a>] = <a class="local col5 ref" href="#285open_depth" title='open_depth' data-ref="285open_depth">open_depth</a>[<a class="local col7 ref" href="#287i" title='i' data-ref="287i">i</a>]  = <kbd>'.'</kbd>; <a class="local col7 ref" href="#287i" title='i' data-ref="287i">i</a>++;</td></tr>
+<tr><th id="442">442</th><td>  }</td></tr>
+<tr><th id="443">443</th><td></td></tr>
+<tr><th id="444">444</th><td>  <a class="local col5 ref" href="#285open_depth" title='open_depth' data-ref="285open_depth">open_depth</a>[<a class="local col7 ref" href="#287i" title='i' data-ref="287i">i</a>] = <a class="local col6 ref" href="#286close_depth" title='close_depth' data-ref="286close_depth">close_depth</a>[<a class="local col7 ref" href="#287i" title='i' data-ref="287i">i</a>] = <kbd>'\0'</kbd>;</td></tr>
+<tr><th id="445">445</th><td></td></tr>
+<tr><th id="446">446</th><td>  <a class="ref" href="../debug.h.html#in_debugger" title='in_debugger' data-ref="in_debugger">in_debugger</a> = <a class="macro" href="../types.h.html#48" title="1" data-ref="_M/true">true</a>;</td></tr>
+<tr><th id="447">447</th><td></td></tr>
+<tr><th id="448">448</th><td>  <b>if</b> (<a class="local col0 ref" href="#280errcode" title='errcode' data-ref="280errcode">errcode</a>) {</td></tr>
+<tr><th id="449">449</th><td>    <b>if</b> (-<var>1</var> == <a class="local col0 ref" href="#280errcode" title='errcode' data-ref="280errcode">errcode</a>) {</td></tr>
+<tr><th id="450">450</th><td>      <a class="ref" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"\n***Entering debugger because we encountered an error.\n"</q>);</td></tr>
+<tr><th id="451">451</th><td>    } <b>else</b> <b>if</b> (-<var>2</var> == <a class="local col0 ref" href="#280errcode" title='errcode' data-ref="280errcode">errcode</a>) {</td></tr>
+<tr><th id="452">452</th><td>      <b>if</b> (<var>0</var> == <a class="ref" href="../makeint.h.html#makelevel" title='makelevel' data-ref="makelevel">makelevel</a>) {</td></tr>
+<tr><th id="453">453</th><td>	<a class="ref" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"\nMakefile terminated.\n"</q>);</td></tr>
+<tr><th id="454">454</th><td>	<a class="ref" href="msg.h.html#dbg_msg" title='dbg_msg' data-ref="dbg_msg">dbg_msg</a>(<q>"Use q to quit or R to restart"</q>);</td></tr>
+<tr><th id="455">455</th><td>      } <b>else</b> {</td></tr>
+<tr><th id="456">456</th><td>	<a class="ref" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"\nMakefile finished at level %u. Use R to restart\n"</q>,</td></tr>
+<tr><th id="457">457</th><td>	       <a class="ref" href="../makeint.h.html#makelevel" title='makelevel' data-ref="makelevel">makelevel</a>);</td></tr>
+<tr><th id="458">458</th><td>	<a class="ref" href="msg.h.html#dbg_msg" title='dbg_msg' data-ref="dbg_msg">dbg_msg</a>(<q>"the makefile at this level or 's', 'n', or 'F' to continue "</q></td></tr>
+<tr><th id="459">459</th><td>	       <q>"in parent"</q>);</td></tr>
+<tr><th id="460">460</th><td>	<a class="ref" href="../debug.h.html#in_debugger" title='in_debugger' data-ref="in_debugger">in_debugger</a> = <a class="enum" href="../debug.h.html#DEBUGGER_QUIT_RC" title='DEBUGGER_QUIT_RC' data-ref="DEBUGGER_QUIT_RC">DEBUGGER_QUIT_RC</a>;</td></tr>
+<tr><th id="461">461</th><td>      }</td></tr>
+<tr><th id="462">462</th><td>    } <b>else</b> {</td></tr>
+<tr><th id="463">463</th><td>      <a class="ref" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"\n***Entering debugger because we encountered a fatal error.\n"</q>);</td></tr>
+<tr><th id="464">464</th><td>      <a class="ref" href="msg.h.html#dbg_errmsg" title='dbg_errmsg' data-ref="dbg_errmsg">dbg_errmsg</a>(<q>"Exiting the debugger will exit make with exit code %d."</q>,</td></tr>
+<tr><th id="465">465</th><td>                 <a class="local col0 ref" href="#280errcode" title='errcode' data-ref="280errcode">errcode</a>);</td></tr>
+<tr><th id="466">466</th><td>    }</td></tr>
+<tr><th id="467">467</th><td>  }</td></tr>
+<tr><th id="468">468</th><td></td></tr>
+<tr><th id="469">469</th><td>  <a class="ref" href="fns.h.html#print_debugger_location" title='print_debugger_location' data-ref="print_debugger_location">print_debugger_location</a>(<a class="local col9 ref" href="#279p_target" title='p_target' data-ref="279p_target">p_target</a>, <a class="local col1 ref" href="#281reason" title='reason' data-ref="281reason">reason</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="470">470</th><td></td></tr>
+<tr><th id="471">471</th><td>  <i>/* Loop reading and executing lines until the user quits. */</i></td></tr>
+<tr><th id="472">472</th><td>  <b>for</b> ( <a class="local col2 ref" href="#282debug_return" title='debug_return' data-ref="282debug_return">debug_return</a> = <a class="enum" href="../trace.h.html#debug_readloop" title='debug_readloop' data-ref="debug_readloop">debug_readloop</a>;</td></tr>
+<tr><th id="473">473</th><td>	<a class="local col2 ref" href="#282debug_return" title='debug_return' data-ref="282debug_return">debug_return</a> == <a class="enum" href="../trace.h.html#debug_readloop" title='debug_readloop' data-ref="debug_readloop">debug_readloop</a> || <a class="local col2 ref" href="#282debug_return" title='debug_return' data-ref="282debug_return">debug_return</a> == <a class="enum" href="../trace.h.html#debug_cmd_error" title='debug_cmd_error' data-ref="debug_cmd_error">debug_cmd_error</a>; ) {</td></tr>
+<tr><th id="474">474</th><td>    <em>char</em> <dfn class="local col8 decl" id="288prompt" title='prompt' data-type='char [300]' data-ref="288prompt">prompt</dfn>[<a class="macro" href="#348" title="300" data-ref="_M/PROMPT_LENGTH">PROMPT_LENGTH</a>];</td></tr>
+<tr><th id="475">475</th><td>    <em>char</em> *<dfn class="local col9 decl" id="289line" title='line' data-type='char *' data-ref="289line">line</dfn>=<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="476">476</th><td>    <em>char</em> *<dfn class="local col0 decl" id="290s" title='s' data-type='char *' data-ref="290s">s</dfn>;</td></tr>
+<tr><th id="477">477</th><td></td></tr>
+<tr><th id="478">478</th><td>    <b>if</b> (<a class="macro" href="../../include/setjmp.h.html#67" title="_setjmp (debugger_loop)" data-ref="_M/setjmp">setjmp</a>(<a class="ref" href="../debug.h.html#debugger_loop" title='debugger_loop' data-ref="debugger_loop">debugger_loop</a>))</td></tr>
+<tr><th id="479">479</th><td>      <a class="ref" href="msg.h.html#dbg_errmsg" title='dbg_errmsg' data-ref="dbg_errmsg">dbg_errmsg</a>(<q>"Internal error jumped back to debugger loop"</q>);</td></tr>
+<tr><th id="480">480</th><td>    <b>else</b> {</td></tr>
+<tr><th id="481">481</th><td></td></tr>
+<tr><th id="482">482</th><td><u>#<span data-ppcond="482">ifdef</span> <a class="macro" href="../config.h.html#165" data-ref="_M/HAVE_LIBREADLINE">HAVE_LIBREADLINE</a></u></td></tr>
+<tr><th id="483">483</th><td>      <b>if</b> (<a class="ref" href="../main.h.html#use_readline_flag" title='use_readline_flag' data-ref="use_readline_flag">use_readline_flag</a>) {</td></tr>
+<tr><th id="484">484</th><td>        <a class="ref" href="../../include/stdio.h.html#snprintf" title='snprintf' data-ref="snprintf">snprintf</a>(<a class="local col8 ref" href="#288prompt" title='prompt' data-ref="288prompt">prompt</a>, <a class="macro" href="#348" title="300" data-ref="_M/PROMPT_LENGTH">PROMPT_LENGTH</a>, <q>"remake%s%d%s "</q>,</td></tr>
+<tr><th id="485">485</th><td>                 <a class="local col5 ref" href="#285open_depth" title='open_depth' data-ref="285open_depth">open_depth</a>, <a class="ref" href="../../include/readline/history.h.html#where_history" title='where_history' data-ref="where_history">where_history</a>(), <a class="local col6 ref" href="#286close_depth" title='close_depth' data-ref="286close_depth">close_depth</a>);</td></tr>
+<tr><th id="486">486</th><td></td></tr>
+<tr><th id="487">487</th><td>        <a class="local col9 ref" href="#289line" title='line' data-ref="289line">line</a> = <a class="ref" href="../../include/readline/readline.h.html#readline" title='readline' data-ref="readline">readline</a> (<a class="local col8 ref" href="#288prompt" title='prompt' data-ref="288prompt">prompt</a>);</td></tr>
+<tr><th id="488">488</th><td>      } <b>else</b></td></tr>
+<tr><th id="489">489</th><td><u>#<span data-ppcond="482">endif</span></u></td></tr>
+<tr><th id="490">490</th><td>        {</td></tr>
+<tr><th id="491">491</th><td>          <a class="ref" href="../../include/stdio.h.html#snprintf" title='snprintf' data-ref="snprintf">snprintf</a>(<a class="local col8 ref" href="#288prompt" title='prompt' data-ref="288prompt">prompt</a>, <a class="macro" href="#348" title="300" data-ref="_M/PROMPT_LENGTH">PROMPT_LENGTH</a>, <q>"remake%s0%s "</q>, <a class="local col5 ref" href="#285open_depth" title='open_depth' data-ref="285open_depth">open_depth</a>,</td></tr>
+<tr><th id="492">492</th><td>                   <a class="local col6 ref" href="#286close_depth" title='close_depth' data-ref="286close_depth">close_depth</a>);</td></tr>
+<tr><th id="493">493</th><td>          <a class="ref" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"%s"</q>, <a class="local col8 ref" href="#288prompt" title='prompt' data-ref="288prompt">prompt</a>);</td></tr>
+<tr><th id="494">494</th><td>          <b>if</b> (<a class="local col9 ref" href="#289line" title='line' data-ref="289line">line</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) <a class="local col9 ref" href="#289line" title='line' data-ref="289line">line</a> = <a class="ref" href="../../include/stdlib.h.html#calloc" title='calloc' data-ref="calloc">calloc</a>(<var>1</var>, <var>2048</var>);</td></tr>
+<tr><th id="495">495</th><td>          <a class="local col9 ref" href="#289line" title='line' data-ref="289line">line</a> = <a class="ref" href="../../include/stdio.h.html#fgets" title='fgets' data-ref="fgets">fgets</a>(<a class="local col9 ref" href="#289line" title='line' data-ref="289line">line</a>, <var>2048</var>, <a class="macro" href="../../include/stdio.h.html#172" title="stdin" data-ref="_M/stdin">stdin</a>);</td></tr>
+<tr><th id="496">496</th><td>          <b>if</b> (<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span> != <a class="local col9 ref" href="#289line" title='line' data-ref="289line">line</a>) <a class="ref" href="fns.h.html#chomp" title='chomp' data-ref="chomp">chomp</a>(<a class="local col9 ref" href="#289line" title='line' data-ref="289line">line</a>);</td></tr>
+<tr><th id="497">497</th><td>        }</td></tr>
+<tr><th id="498">498</th><td></td></tr>
+<tr><th id="499">499</th><td>      <b>if</b> ( <a class="local col9 ref" href="#289line" title='line' data-ref="289line">line</a> ) {</td></tr>
+<tr><th id="500">500</th><td>        <b>if</b> ( *(<a class="local col0 ref" href="#290s" title='s' data-ref="290s">s</a>=<a class="ref" href="fns.h.html#stripwhite" title='stripwhite' data-ref="stripwhite">stripwhite</a>(<a class="local col9 ref" href="#289line" title='line' data-ref="289line">line</a>)) ) {</td></tr>
+<tr><th id="501">501</th><td>          <a class="ref" href="../../include/readline/history.h.html#add_history" title='add_history' data-ref="add_history">add_history</a> (<a class="local col0 ref" href="#290s" title='s' data-ref="290s">s</a>);</td></tr>
+<tr><th id="502">502</th><td>          <a class="local col2 ref" href="#282debug_return" title='debug_return' data-ref="282debug_return">debug_return</a>=<a class="ref" href="#execute_line" title='execute_line' data-ref="execute_line">execute_line</a>(<a class="local col0 ref" href="#290s" title='s' data-ref="290s">s</a>);</td></tr>
+<tr><th id="503">503</th><td>        } <b>else</b> {</td></tr>
+<tr><th id="504">504</th><td>          <a class="ref" href="../../include/readline/history.h.html#add_history" title='add_history' data-ref="add_history">add_history</a> (<q>"step"</q>);</td></tr>
+<tr><th id="505">505</th><td>          <a class="local col2 ref" href="#282debug_return" title='debug_return' data-ref="282debug_return">debug_return</a>=<a class="ref" href="command/step.h.html#dbg_cmd_step" title='dbg_cmd_step' data-ref="dbg_cmd_step">dbg_cmd_step</a>((<em>char</em> *) <q>""</q>);</td></tr>
+<tr><th id="506">506</th><td>        }</td></tr>
+<tr><th id="507">507</th><td>        <a class="ref" href="../../include/stdlib.h.html#free" title='free' data-ref="free">free</a> (<a class="local col9 ref" href="#289line" title='line' data-ref="289line">line</a>);</td></tr>
+<tr><th id="508">508</th><td>      } <b>else</b> {</td></tr>
+<tr><th id="509">509</th><td>        <a class="ref" href="command/quit.h.html#dbg_cmd_quit" title='dbg_cmd_quit' data-ref="dbg_cmd_quit">dbg_cmd_quit</a>(<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="510">510</th><td>      }</td></tr>
+<tr><th id="511">511</th><td>    }</td></tr>
+<tr><th id="512">512</th><td>  }</td></tr>
+<tr><th id="513">513</th><td></td></tr>
+<tr><th id="514">514</th><td>  <b>if</b> (<a class="ref" href="../debug.h.html#in_debugger" title='in_debugger' data-ref="in_debugger">in_debugger</a> != <a class="enum" href="../debug.h.html#DEBUGGER_QUIT_RC" title='DEBUGGER_QUIT_RC' data-ref="DEBUGGER_QUIT_RC">DEBUGGER_QUIT_RC</a>)</td></tr>
+<tr><th id="515">515</th><td>    <a class="ref" href="../debug.h.html#in_debugger" title='in_debugger' data-ref="in_debugger">in_debugger</a>=<a class="macro" href="../types.h.html#47" title="0" data-ref="_M/false">false</a>;</td></tr>
+<tr><th id="516">516</th><td></td></tr>
+<tr><th id="517">517</th><td>  <b>return</b> <a class="local col2 ref" href="#282debug_return" title='debug_return' data-ref="282debug_return">debug_return</a>;</td></tr>
+<tr><th id="518">518</th><td>}</td></tr>
+<tr><th id="519">519</th><td></td></tr>
+<tr><th id="520">520</th><td><i>/*</i></td></tr>
+<tr><th id="521">521</th><td><i> * Local variables:</i></td></tr>
+<tr><th id="522">522</th><td><i> * eval: (c-set-style "gnu")</i></td></tr>
+<tr><th id="523">523</th><td><i> * indent-tabs-mode: nil</i></td></tr>
+<tr><th id="524">524</th><td><i> * End:</i></td></tr>
+<tr><th id="525">525</th><td><i> */</i></td></tr>
+<tr><th id="526">526</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

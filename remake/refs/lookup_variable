@@ -1,0 +1,25 @@
+<dec f='remake/variable.h' l='224' type='struct variable * lookup_variable(const char * name, unsigned int length)'/>
+<use f='remake/debugger/command/write.h' l='32' u='c' c='dbg_cmd_write'/>
+<use f='remake/debugger/cmd.c' l='321' u='c' c='dbg_cmd_set_var'/>
+<use f='remake/debugger/fns.c' l='439' u='c' c='dbg_cmd_show_exp'/>
+<use f='remake/debugger/fns.c' l='441' u='c' c='dbg_cmd_show_exp'/>
+<use f='remake/expand.c' l='165' u='c' c='reference_variable'/>
+<use f='remake/expand.c' l='323' u='c' c='variable_expand_string'/>
+<use f='remake/function.c' l='455' u='c' c='func_origin'/>
+<use f='remake/function.c' l='494' u='c' c='func_flavor'/>
+<use f='remake/function.c' l='1431' u='c' c='func_value'/>
+<use f='remake/function.c' l='2596' u='c' c='func_call'/>
+<use f='remake/main.c' l='1391' u='c' c='main'/>
+<use f='remake/main.c' l='1398' u='c' c='main'/>
+<use f='remake/main.c' l='1418' u='c' c='main'/>
+<use f='remake/main.c' l='2703' u='c' c='handle_non_switch_argument'/>
+<use f='remake/read.c' l='838' u='c' c='eval'/>
+<use f='remake/read.c' l='1725' u='c' c='conditional_line'/>
+<use f='remake/read.c' l='1921' u='c' c='record_target_var'/>
+<def f='remake/variable.c' l='501' ll='581' type='struct variable * lookup_variable(const char * name, unsigned int length)'/>
+<use f='remake/variable.c' l='1237' u='c' c='do_variable_definition'/>
+<use f='remake/variable.c' l='1265' u='c' c='do_variable_definition'/>
+<doc f='remake/variable.c' l='496'>/* Lookup a variable whose name is a string starting at NAME
+   and with LENGTH chars.  NAME need not be null-terminated.
+   Returns address of the &apos;struct variable&apos; containing all info
+   on the variable, or nil if no such variable is defined.  */</doc>

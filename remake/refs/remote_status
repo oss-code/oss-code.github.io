@@ -1,0 +1,9 @@
+<dec f='remake/makeint.h' l='659' type='int remote_status(int * , int * , int * , int )'/>
+<use f='remake/job.c' l='535' u='c' c='reap_children'/>
+<use f='remake/job.c' l='589' u='c' c='reap_children'/>
+<def f='remake/remote-stub.c' l='66' ll='72' type='int remote_status(int * exit_code_ptr, int * signal_ptr, int * coredump_ptr, int block)'/>
+<doc f='remake/remote-stub.c' l='60'>/* Get the status of a dead remote child.  Block waiting for one to die
+   if BLOCK is nonzero.  Set *EXIT_CODE_PTR to the exit status, *SIGNAL_PTR
+   to the termination signal or zero if it exited normally, and *COREDUMP_PTR
+   nonzero if it dumped core.  Return the ID of the child that died,
+   0 if we would have to block and !BLOCK, or &lt; 0 if there were none.  */</doc>

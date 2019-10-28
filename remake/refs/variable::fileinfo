@@ -1,0 +1,31 @@
+<dec f='remake/variable.h' l='59' type='gmk_floc'/>
+<offset>128</offset>
+<doc f='remake/variable.h' l='59'>/* Where the variable was defined.  */</doc>
+<use f='remake/debugger/cmd.c' l='328' u='a' c='dbg_cmd_set_var'/>
+<use f='remake/debugger/cmd.c' l='337' u='a' c='dbg_cmd_set_var'/>
+<use f='remake/expand.c' l='107' u='m' c='recursively_expand_for_file'/>
+<use f='remake/expand.c' l='109' u='a' c='recursively_expand_for_file'/>
+<use f='remake/expand.c' l='117' u='a' c='recursively_expand_for_file'/>
+<use f='remake/print.c' l='225' u='m' c='print_variable'/>
+<use f='remake/print.c' l='227' u='m' c='print_variable'/>
+<use f='remake/print.c' l='227' u='m' c='print_variable'/>
+<use f='remake/print.c' l='242' u='m' c='print_variable_expand'/>
+<use f='remake/print.c' l='244' u='m' c='print_variable_expand'/>
+<use f='remake/print.c' l='244' u='m' c='print_variable_expand'/>
+<use f='remake/read.c' l='1874' u='w' c='record_target_var'/>
+<use f='remake/variable.c' l='298' u='w' c='define_variable_in_set'/>
+<use f='remake/variable.c' l='300' u='m' c='define_variable_in_set'/>
+<use f='remake/variable.c' l='318' u='w' c='define_variable_in_set'/>
+<use f='remake/variable.c' l='320' u='m' c='define_variable_in_set'/>
+<use f='remake/variable.c' l='674' u='a' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='681' u='a' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='1615' u='a' c='assign_variable_definition'/>
+<use f='remake/variable.c' l='1641' u='w' c='try_variable_definition'/>
+<use f='remake/variable.c' l='1643' u='m' c='try_variable_definition'/>
+<use f='remake/variable.c' l='1696' u='m' c='print_variable'/>
+<use f='remake/variable.c' l='1698' u='m' c='print_variable'/>
+<use f='remake/variable.c' l='1698' u='m' c='print_variable'/>
+<use f='remake/variable.c' l='1698' u='m' c='print_variable'/>
+<use f='remake/variable.c' l='1745' u='m' c='print_variable_info'/>
+<use f='remake/variable.c' l='1747' u='m' c='print_variable_info'/>
+<use f='remake/variable.c' l='1747' u='m' c='print_variable_info'/>

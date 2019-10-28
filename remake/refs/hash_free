@@ -1,0 +1,7 @@
+<dec f='remake/hash.h' l='70' type='void hash_free(struct hash_table * ht, int free_items)'/>
+<use f='remake/commands.c' l='305' u='c' c='set_file_variables'/>
+<use f='remake/function.c' l='1068' u='c' c='func_filter_filterout'/>
+<def f='remake/hash.c' l='206' ll='219' type='void hash_free(struct hash_table * ht, int free_items)'/>
+<use f='remake/variable.c' l='366' u='c' c='free_variable_set'/>
+<use f='remake/variable.c' l='787' u='c' c='pop_variable_scope'/>
+<use f='remake/variable.c' l='1153' u='c' c='target_environment'/>

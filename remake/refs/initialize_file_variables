@@ -1,0 +1,30 @@
+<dec f='remake/variable.h' l='183' type='void initialize_file_variables(struct file * file, int reading)'/>
+<use f='remake/commands.c' l='574' u='c' c='execute_file_commands'/>
+<use f='remake/commands.c' l='804' u='c' c='print_commands'/>
+<doc f='remake/variable.h' l='174'>/*! Initialize FILE&apos;s variable set list.  If FILE already has a
+   variable set list, the topmost variable set is left intact, but the
+   the rest of the chain is replaced with FILE-&gt;parent&apos;s setlist.  If
+   FILE is a double-colon rule, then we will use the &quot;root&quot;
+   double-colon target&apos;s variable set as the parent of FILE&apos;s variable
+   set.
+
+   If we&apos;re READing a makefile, don&apos;t do the pattern variable search now,
+   since the pattern variable might not have been defined yet.  */</doc>
+<use f='remake/debugger/command/info.h' l='285' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/target.h' l='62' u='c' c='dbg_cmd_target'/>
+<use f='remake/debugger/command/write.h' l='145' u='c' c='dbg_cmd_write'/>
+<use f='remake/debugger/fns.c' l='429' u='c' c='dbg_cmd_show_exp'/>
+<use f='remake/file.c' l='443' u='c' c='expand_deps'/>
+<use f='remake/implicit.c' l='627' u='c' c='pattern_search'/>
+<use f='remake/read.c' l='1900' u='c' c='record_target_var'/>
+<def f='remake/variable.c' l='609' ll='707' type='void initialize_file_variables(struct file * file, int reading)'/>
+<use f='remake/variable.c' l='630' u='c' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='640' u='c' c='initialize_file_variables'/>
+<doc f='remake/variable.c' l='600'>/* Initialize FILE&apos;s variable set list.  If FILE already has a variable set
+   list, the topmost variable set is left intact, but the the rest of the
+   chain is replaced with FILE-&gt;parent&apos;s setlist.  If FILE is a double-colon
+   rule, then we will use the &quot;root&quot; double-colon target&apos;s variable set as the
+   parent of FILE&apos;s variable set.
+
+   If we&apos;re READING a makefile, don&apos;t do the pattern variable search now,
+   since the pattern variable might not have been defined yet.  */</doc>

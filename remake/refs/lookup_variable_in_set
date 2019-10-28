@@ -1,0 +1,10 @@
+<dec f='remake/variable.h' l='225' type='struct variable * lookup_variable_in_set(const char * name, unsigned int length, const struct variable_set * set)'/>
+<use f='remake/debugger/fns.c' l='436' u='c' c='dbg_cmd_show_exp'/>
+<use f='remake/expand.c' l='517' u='c' c='variable_append'/>
+<def f='remake/variable.c' l='588' ll='598' type='struct variable * lookup_variable_in_set(const char * name, unsigned int length, const struct variable_set * set)'/>
+<use f='remake/variable.c' l='1059' u='c' c='target_environment'/>
+<use f='remake/variable.c' l='1256' u='c' c='do_variable_definition'/>
+<doc f='remake/variable.c' l='583'>/* Lookup a variable whose name is a string starting at NAME
+   and with LENGTH chars in set SET.  NAME need not be null-terminated.
+   Returns address of the &apos;struct variable&apos; containing all info
+   on the variable, or nil if no such variable is defined.  */</doc>

@@ -1,0 +1,11 @@
+<dec f='remake/hash.h' l='63' type='void * hash_find_item(struct hash_table * ht, const void * key)'/>
+<use f='remake/commands.c' l='271' u='c' c='set_file_variables'/>
+<use f='remake/debugger/file2line.c' l='52' u='c' c='lookup_file2lines'/>
+<use f='remake/dir.c' l='642' u='c' c='dir_contents_file_exists_p'/>
+<use f='remake/dir.c' l='1046' u='c' c='file_impossible_p'/>
+<use f='remake/file_basic.c' l='120' u='c' c='lookup_file'/>
+<use f='remake/function.c' l='281' u='c' c='lookup_function'/>
+<use f='remake/function.c' l='1040' u='c' c='func_filter_filterout'/>
+<def f='remake/hash.c' l='118' ll='123' type='void * hash_find_item(struct hash_table * ht, const void * key)'/>
+<use f='remake/variable.c' l='517' u='c' c='lookup_variable'/>
+<use f='remake/variable.c' l='597' u='c' c='lookup_variable_in_set'/>

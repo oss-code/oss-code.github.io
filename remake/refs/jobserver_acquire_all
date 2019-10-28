@@ -1,0 +1,4 @@
+<dec f='remake/os.h' l='38' type='unsigned int jobserver_acquire_all()'/>
+<doc f='remake/os.h' l='37'>/* Recover all the jobserver tokens and return the number we got.  */</doc>
+<use f='remake/main.c' l='3373' u='c' c='clean_jobserver'/>
+<def f='remake/posixos.c' l='159' ll='177' type='unsigned int jobserver_acquire_all()'/>

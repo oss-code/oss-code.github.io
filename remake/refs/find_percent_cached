@@ -1,0 +1,14 @@
+<dec f='remake/makeint.h' l='508' type='const char * find_percent_cached(const char ** )'/>
+<dec f='remake/make.h' l='364' type='const char * find_percent_cached(const char ** )'/>
+<use f='remake/read.c' l='1268' u='c' c='eval'/>
+<use f='remake/read.c' l='1869' u='c' c='record_target_var'/>
+<use f='remake/read.c' l='1968' u='c' c='record_files'/>
+<use f='remake/read.c' l='2043' u='c' c='record_files'/>
+<use f='remake/read.c' l='2242' u='c' c='record_files'/>
+<def f='remake/read.c' l='2401' ll='2469' type='const char * find_percent_cached(const char ** string)'/>
+<doc f='remake/read.c' l='2395'>/* Search STRING for an unquoted % and handle quoting.  Returns a pointer to
+   the % or NULL if no % was found.
+   This version is used with strings in the string cache: if there&apos;s a need to
+   modify the string a new version will be added to the string cache and
+   *STRING will be set to that.  */</doc>
+<use f='remake/rule.c' l='370' u='c' c='install_pattern_rule'/>

@@ -1,0 +1,18 @@
+<dec f='remake/variable.h' l='128' type='char * variable_expand_string(char * line, const char * string, long length)'/>
+<def f='remake/expand.c' l='193' ll='407' type='char * variable_expand_string(char * line, const char * string, long length)'/>
+<use f='remake/expand.c' l='417' u='c' c='variable_expand'/>
+<use f='remake/expand.c' l='539' u='c' c='variable_append'/>
+<doc f='remake/expand.c' l='184'>/* Scan STRING for variable references and expansion-function calls.  Only
+   LENGTH bytes of STRING are actually scanned.  If LENGTH is -1, scan until
+   a null byte is found.
+
+   Write the results to LINE, which must point into &apos;variable_buffer&apos;.  If
+   LINE is NULL, start at the beginning of the buffer.
+   Return a pointer to LINE, or to the beginning of the buffer if LINE is
+   NULL.
+ */</doc>
+<use f='remake/function.c' l='2643' u='c' c='func_call'/>
+<use f='remake/read.c' l='1069' u='c' c='eval'/>
+<use f='remake/read.c' l='1097' u='c' c='eval'/>
+<use f='remake/read.c' l='1124' u='c' c='eval'/>
+<use f='remake/read.c' l='1218' u='c' c='eval'/>

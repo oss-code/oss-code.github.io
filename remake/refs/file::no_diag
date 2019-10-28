@@ -1,0 +1,9 @@
+<dec f='remake/filedef.h' l='114' type='unsigned int'/>
+<offset>1551</offset>
+<doc f='remake/filedef.h' l='114'>/* True if the file failed to update and no
+                                   diagnostics has been issued (dontcare). */</doc>
+<use f='remake/remake.c' l='332' u='r' c='update_file'/>
+<use f='remake/remake.c' l='402' u='r' c='complain'/>
+<use f='remake/remake.c' l='435' u='w' c='complain'/>
+<use f='remake/remake.c' l='495' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='528' u='w' c='update_file_1'/>

@@ -1,0 +1,260 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>filedef.h source code [remake/filedef.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="cmd_state,file,update_status "/>
+<link rel="stylesheet" href="../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/filedef.h'; var root_path = '..'; var data_path = '../../data';</script>
+<script src='../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='./'>remake</a>/<a href='filedef.h.html'>filedef.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Definition of target file data structures for GNU Make.</i></td></tr>
+<tr><th id="2">2</th><td><i>Copyright (C) 1988-2016 Free Software Foundation, Inc.</i></td></tr>
+<tr><th id="3">3</th><td><i>This file is part of GNU Make.</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>GNU Make is free software; you can redistribute it and/or modify it under the</i></td></tr>
+<tr><th id="6">6</th><td><i>terms of the GNU General Public License as published by the Free Software</i></td></tr>
+<tr><th id="7">7</th><td><i>Foundation; either version 3 of the License, or (at your option) any later</i></td></tr>
+<tr><th id="8">8</th><td><i>version.</i></td></tr>
+<tr><th id="9">9</th><td><i></i></td></tr>
+<tr><th id="10">10</th><td><i>GNU Make is distributed in the hope that it will be useful, but WITHOUT ANY</i></td></tr>
+<tr><th id="11">11</th><td><i>WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR</i></td></tr>
+<tr><th id="12">12</th><td><i>A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</i></td></tr>
+<tr><th id="13">13</th><td><i></i></td></tr>
+<tr><th id="14">14</th><td><i>You should have received a copy of the GNU General Public License along with</i></td></tr>
+<tr><th id="15">15</th><td><i>this program.  If not, see &lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.  */</i></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><i>/* Structure that represents the info on one file</i></td></tr>
+<tr><th id="19">19</th><td><i>   that the makefile says how to make.</i></td></tr>
+<tr><th id="20">20</th><td><i>   All of these are chained together through 'next'.  */</i></td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><u>#<span data-ppcond="22">ifndef</span> <span class="macro" data-ref="_M/_REMAKE_FILEDEF_H">_REMAKE_FILEDEF_H</span></u></td></tr>
+<tr><th id="23">23</th><td><u>#define <dfn class="macro" id="_M/_REMAKE_FILEDEF_H" data-ref="_M/_REMAKE_FILEDEF_H">_REMAKE_FILEDEF_H</dfn></u></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><u>#include <a href="hash.h.html">"hash.h"</a></u></td></tr>
+<tr><th id="26">26</th><td><u>#include <a href="gnuremake.h.html">"gnuremake.h"</a></u></td></tr>
+<tr><th id="27">27</th><td><u>#include <a href="types.h.html">"types.h"</a></u></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><b>struct</b> <dfn class="type def" id="file" title='file' data-ref="file">file</dfn></td></tr>
+<tr><th id="30">30</th><td>  {</td></tr>
+<tr><th id="31">31</th><td>    <em>const</em> <em>char</em> *<dfn class="decl" id="file::name" title='file::name' data-ref="file::name">name</dfn>;</td></tr>
+<tr><th id="32">32</th><td>    <em>const</em> <em>char</em> *<dfn class="decl" id="file::hname" title='file::hname' data-ref="file::hname">hname</dfn>;          <i>/* Hashed filename */</i></td></tr>
+<tr><th id="33">33</th><td>    <em>const</em> <em>char</em> *<dfn class="decl" id="file::vpath" title='file::vpath' data-ref="file::vpath">vpath</dfn>;          <i>/* VPATH/vpath pathname */</i></td></tr>
+<tr><th id="34">34</th><td>    <a class="typedef" href="gnuremake.h.html#gmk_floc" title='gmk_floc' data-type='struct gmk_floc' data-ref="gmk_floc">gmk_floc</a> <dfn class="decl" id="file::floc" title='file::floc' data-ref="file::floc">floc</dfn>;              <i>/* location in Makefile - for tracing */</i></td></tr>
+<tr><th id="35">35</th><td>    <a class="typedef" href="../include/stdint.h.html#uint64_t" title='uint64_t' data-type='unsigned long' data-ref="uint64_t">uint64_t</a> <dfn class="decl" id="file::elapsed_time" title='file::elapsed_time' data-ref="file::elapsed_time">elapsed_time</dfn>;      <i>/* Runtime in 100microsec to build target */</i></td></tr>
+<tr><th id="36">36</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="file::nlines" title='file::nlines' data-ref="file::nlines">nlines</dfn>;	<i>/* Number of lines in file - for debugging. */</i></td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td>    <em>const</em> <em>char</em> *<dfn class="decl" id="file::description" title='file::description' data-ref="file::description">description</dfn>;    <i>/* Description of target taken from comment.</i></td></tr>
+<tr><th id="39">39</th><td><i>				   Part after #:  */</i></td></tr>
+<tr><th id="40">40</th><td>    <b>struct</b> <a class="type" href="dep.h.html#dep" title='dep' data-ref="dep">dep</a> *<dfn class="decl" id="file::deps" title='file::deps' data-ref="file::deps">deps</dfn>;           <i>/* all dependencies, including duplicates */</i></td></tr>
+<tr><th id="41">41</th><td>    <b>struct</b> <a class="type" href="types.h.html#commands" title='commands' data-ref="commands">commands</a> *<dfn class="decl" id="file::cmds" title='file::cmds' data-ref="file::cmds">cmds</dfn>;      <i>/* Commands to execute for this target.  */</i></td></tr>
+<tr><th id="42">42</th><td>    <em>const</em> <em>char</em> *<dfn class="decl" id="file::stem" title='file::stem' data-ref="file::stem">stem</dfn>;           <i>/* Implicit stem, if an implicit</i></td></tr>
+<tr><th id="43">43</th><td><i>                                   rule has been used */</i></td></tr>
+<tr><th id="44">44</th><td>    <b>struct</b> <a class="type" href="dep.h.html#dep" title='dep' data-ref="dep">dep</a> *<dfn class="decl" id="file::also_make" title='file::also_make' data-ref="file::also_make">also_make</dfn>;      <i>/* Targets that are made by making this.  */</i></td></tr>
+<tr><th id="45">45</th><td>    <b>struct</b> <a class="type" href="#file" title='file' data-ref="file">file</a> *<dfn class="decl" id="file::prev" title='file::prev' data-ref="file::prev">prev</dfn>;          <i>/* Previous entry for same file name;</i></td></tr>
+<tr><th id="46">46</th><td><i>                                   used when there are multiple double-colon</i></td></tr>
+<tr><th id="47">47</th><td><i>                                   entries for the same file.  */</i></td></tr>
+<tr><th id="48">48</th><td>    <b>struct</b> <a class="type" href="#file" title='file' data-ref="file">file</a> *<dfn class="decl" id="file::last" title='file::last' data-ref="file::last">last</dfn>;          <i>/* Last entry for the same file name.  */</i></td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td>    <i>/* File that this file was renamed to.  After any time that a</i></td></tr>
+<tr><th id="51">51</th><td><i>       file could be renamed, call 'check_renamed' (below).  */</i></td></tr>
+<tr><th id="52">52</th><td>    <b>struct</b> <a class="type" href="#file" title='file' data-ref="file">file</a> *<dfn class="decl" id="file::renamed" title='file::renamed' data-ref="file::renamed">renamed</dfn>;</td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td>    <i>/* List of variable sets used for this file.  */</i></td></tr>
+<tr><th id="55">55</th><td>    <b>struct</b> <a class="type" href="types.h.html#variable_set_list" title='variable_set_list' data-ref="variable_set_list">variable_set_list</a> *<dfn class="decl" id="file::variables" title='file::variables' data-ref="file::variables">variables</dfn>;</td></tr>
+<tr><th id="56">56</th><td></td></tr>
+<tr><th id="57">57</th><td>    <i>/* Pattern-specific variable reference for this target, or null if there</i></td></tr>
+<tr><th id="58">58</th><td><i>       isn't one.  Also see the pat_searched flag, below.  */</i></td></tr>
+<tr><th id="59">59</th><td>    <b>struct</b> <a class="type" href="types.h.html#variable_set_list" title='variable_set_list' data-ref="variable_set_list">variable_set_list</a> *<dfn class="decl" id="file::pat_variables" title='file::pat_variables' data-ref="file::pat_variables">pat_variables</dfn>;</td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td>    <i>/* Immediate dependent that caused this target to be remade,</i></td></tr>
+<tr><th id="62">62</th><td><i>       or nil if there isn't one.  */</i></td></tr>
+<tr><th id="63">63</th><td>    <b>struct</b> <a class="type" href="#file" title='file' data-ref="file">file</a> *<dfn class="decl" id="file::parent" title='file::parent' data-ref="file::parent">parent</dfn>;</td></tr>
+<tr><th id="64">64</th><td></td></tr>
+<tr><th id="65">65</th><td>    <i>/* For a double-colon entry, this is the first double-colon entry for</i></td></tr>
+<tr><th id="66">66</th><td><i>       the same file.  Otherwise this is null.  */</i></td></tr>
+<tr><th id="67">67</th><td>    <b>struct</b> <a class="type" href="#file" title='file' data-ref="file">file</a> *<dfn class="decl" id="file::double_colon" title='file::double_colon' data-ref="file::double_colon">double_colon</dfn>;</td></tr>
+<tr><th id="68">68</th><td></td></tr>
+<tr><th id="69">69</th><td>    <a class="macro" href="make.h.html#252" title="uintmax_t" data-ref="_M/FILE_TIMESTAMP">FILE_TIMESTAMP</a> <dfn class="decl" id="file::last_mtime" title='file::last_mtime' data-ref="file::last_mtime">last_mtime</dfn>;  <i>/* File's modtime, if already known.  */</i></td></tr>
+<tr><th id="70">70</th><td>    <a class="macro" href="make.h.html#252" title="uintmax_t" data-ref="_M/FILE_TIMESTAMP">FILE_TIMESTAMP</a> <dfn class="decl" id="file::mtime_before_update" title='file::mtime_before_update' data-ref="file::mtime_before_update">mtime_before_update</dfn>; <i>/* File's modtime before any updating</i></td></tr>
+<tr><th id="71">71</th><td><i>                                           has been performed.  */</i></td></tr>
+<tr><th id="72">72</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="file::considered" title='file::considered' data-ref="file::considered">considered</dfn>;    <i>/* equal to 'considered' if file has been</i></td></tr>
+<tr><th id="73">73</th><td><i>                                   considered on current scan of goal chain */</i></td></tr>
+<tr><th id="74">74</th><td>    <em>int</em> <dfn class="decl" id="file::command_flags" title='file::command_flags' data-ref="file::command_flags">command_flags</dfn>;          <i>/* Flags OR'd in for cmds; see commands.h.  */</i></td></tr>
+<tr><th id="75">75</th><td>    <b>enum</b> <dfn class="type def" id="update_status" title='update_status' data-ref="update_status"><a class="type" href="#update_status" title='update_status' data-ref="update_status">update_status</a></dfn>          <i>/* Status of the last attempt to update.  */</i></td></tr>
+<tr><th id="76">76</th><td>      {</td></tr>
+<tr><th id="77">77</th><td>        <dfn class="enum" id="update_status::us_success" title='update_status::us_success' data-ref="update_status::us_success">us_success</dfn> = <var>0</var>,         <i>/* Successfully updated.  Must be 0!  */</i></td></tr>
+<tr><th id="78">78</th><td>        <dfn class="enum" id="update_status::us_none" title='update_status::us_none' data-ref="update_status::us_none">us_none</dfn>,                <i>/* No attempt to update has been made.  */</i></td></tr>
+<tr><th id="79">79</th><td>        <dfn class="enum" id="update_status::us_question" title='update_status::us_question' data-ref="update_status::us_question">us_question</dfn>,            <i>/* Needs to be updated (-q is is set).  */</i></td></tr>
+<tr><th id="80">80</th><td>        <dfn class="enum" id="update_status::us_failed" title='update_status::us_failed' data-ref="update_status::us_failed">us_failed</dfn>               <i>/* Update failed.  */</i></td></tr>
+<tr><th id="81">81</th><td>      } <dfn class="decl" id="file::update_status" title='file::update_status' data-ref="file::update_status">update_status</dfn> <a class="macro" href="make.h.html#278" title=":2" data-ref="_M/ENUM_BITFIELD">ENUM_BITFIELD</a> (<var>2</var>);</td></tr>
+<tr><th id="82">82</th><td>    <b>enum</b> <dfn class="type def" id="cmd_state" title='cmd_state' data-ref="cmd_state"><a class="type" href="#cmd_state" title='cmd_state' data-ref="cmd_state">cmd_state</a></dfn>              <i>/* State of the commands.  */</i></td></tr>
+<tr><th id="83">83</th><td>      {</td></tr>
+<tr><th id="84">84</th><td>        <dfn class="enum" id="cmd_state::cs_not_started" title='cmd_state::cs_not_started' data-ref="cmd_state::cs_not_started">cs_not_started</dfn> = <var>0</var>,     <i>/* Not yet started.  Must be 0!  */</i></td></tr>
+<tr><th id="85">85</th><td>        <dfn class="enum" id="cmd_state::cs_deps_running" title='cmd_state::cs_deps_running' data-ref="cmd_state::cs_deps_running">cs_deps_running</dfn>,        <i>/* Dep commands running.  */</i></td></tr>
+<tr><th id="86">86</th><td>        <dfn class="enum" id="cmd_state::cs_running" title='cmd_state::cs_running' data-ref="cmd_state::cs_running">cs_running</dfn>,             <i>/* Commands running.  */</i></td></tr>
+<tr><th id="87">87</th><td>        <dfn class="enum" id="cmd_state::cs_finished" title='cmd_state::cs_finished' data-ref="cmd_state::cs_finished">cs_finished</dfn>             <i>/* Commands finished.  */</i></td></tr>
+<tr><th id="88">88</th><td>      } <dfn class="decl" id="file::command_state" title='file::command_state' data-ref="file::command_state">command_state</dfn> <a class="macro" href="make.h.html#278" title=":2" data-ref="_M/ENUM_BITFIELD">ENUM_BITFIELD</a> (<var>2</var>);</td></tr>
+<tr><th id="89">89</th><td></td></tr>
+<tr><th id="90">90</th><td>    <a class="typedef" href="types.h.html#breakpoint_mask_t" title='breakpoint_mask_t' data-type='enum breakpoint_mask_t' data-ref="breakpoint_mask_t">breakpoint_mask_t</a> <dfn class="decl" id="file::tracing" title='file::tracing' data-ref="file::tracing">tracing</dfn>;  <i>/* breakpoint status of target. */</i></td></tr>
+<tr><th id="91">91</th><td></td></tr>
+<tr><th id="92">92</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="file::builtin" title='file::builtin' data-ref="file::builtin">builtin</dfn>:<var>1</var>;     <i>/* True if the file is a builtin rule. */</i></td></tr>
+<tr><th id="93">93</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="file::precious" title='file::precious' data-ref="file::precious">precious</dfn>:<var>1</var>;    <i>/* Non-0 means don't delete file on quit */</i></td></tr>
+<tr><th id="94">94</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="file::loaded" title='file::loaded' data-ref="file::loaded">loaded</dfn>:<var>1</var>;      <i>/* True if the file is a loaded object. */</i></td></tr>
+<tr><th id="95">95</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="file::low_resolution_time" title='file::low_resolution_time' data-ref="file::low_resolution_time">low_resolution_time</dfn>:<var>1</var>; <i>/* Nonzero if this file's time stamp</i></td></tr>
+<tr><th id="96">96</th><td><i>                                           has only one-second resolution.  */</i></td></tr>
+<tr><th id="97">97</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="file::tried_implicit" title='file::tried_implicit' data-ref="file::tried_implicit">tried_implicit</dfn>:<var>1</var>; <i>/* Nonzero if have searched</i></td></tr>
+<tr><th id="98">98</th><td><i>                                      for implicit rule for making</i></td></tr>
+<tr><th id="99">99</th><td><i>                                      this file; don't search again.  */</i></td></tr>
+<tr><th id="100">100</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="file::updating" title='file::updating' data-ref="file::updating">updating</dfn>:<var>1</var>;    <i>/* Nonzero while updating deps of this file */</i></td></tr>
+<tr><th id="101">101</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="file::updated" title='file::updated' data-ref="file::updated">updated</dfn>:<var>1</var>;     <i>/* Nonzero if this file has been remade.  */</i></td></tr>
+<tr><th id="102">102</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="file::is_target" title='file::is_target' data-ref="file::is_target">is_target</dfn>:<var>1</var>;   <i>/* Nonzero if file is described as target.  */</i></td></tr>
+<tr><th id="103">103</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="file::cmd_target" title='file::cmd_target' data-ref="file::cmd_target">cmd_target</dfn>:<var>1</var>;  <i>/* Nonzero if file was given on cmd line.  */</i></td></tr>
+<tr><th id="104">104</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="file::phony" title='file::phony' data-ref="file::phony">phony</dfn>:<var>1</var>;       <i>/* Nonzero if this is a phony file</i></td></tr>
+<tr><th id="105">105</th><td><i>                                   i.e., a prerequisite of .PHONY.  */</i></td></tr>
+<tr><th id="106">106</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="file::intermediate" title='file::intermediate' data-ref="file::intermediate">intermediate</dfn>:<var>1</var>;<i>/* Nonzero if this is an intermediate file.  */</i></td></tr>
+<tr><th id="107">107</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="file::secondary" title='file::secondary' data-ref="file::secondary">secondary</dfn>:<var>1</var>;   <i>/* Nonzero means remove_intermediates should</i></td></tr>
+<tr><th id="108">108</th><td><i>                                   not delete it.  */</i></td></tr>
+<tr><th id="109">109</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="file::dontcare" title='file::dontcare' data-ref="file::dontcare">dontcare</dfn>:<var>1</var>;    <i>/* Nonzero if no complaint is to be made if</i></td></tr>
+<tr><th id="110">110</th><td><i>                                   this target cannot be remade.  */</i></td></tr>
+<tr><th id="111">111</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="file::ignore_vpath" title='file::ignore_vpath' data-ref="file::ignore_vpath">ignore_vpath</dfn>:<var>1</var>;<i>/* Nonzero if we threw out VPATH name.  */</i></td></tr>
+<tr><th id="112">112</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="file::pat_searched" title='file::pat_searched' data-ref="file::pat_searched">pat_searched</dfn>:<var>1</var>;<i>/* Nonzero if we already searched for</i></td></tr>
+<tr><th id="113">113</th><td><i>                                   pattern-specific variables.  */</i></td></tr>
+<tr><th id="114">114</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="file::no_diag" title='file::no_diag' data-ref="file::no_diag">no_diag</dfn>:<var>1</var>;     <i>/* True if the file failed to update and no</i></td></tr>
+<tr><th id="115">115</th><td><i>                                   diagnostics has been issued (dontcare). */</i></td></tr>
+<tr><th id="116">116</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="file::file_profiled" title='file::file_profiled' data-ref="file::file_profiled">file_profiled</dfn>:<var>1</var>;  <i>/* True if --profile has been set and</i></td></tr>
+<tr><th id="117">117</th><td><i>				      we have emitted a callgrind file line. */</i></td></tr>
+<tr><th id="118">118</th><td>  };</td></tr>
+<tr><th id="119">119</th><td></td></tr>
+<tr><th id="120">120</th><td></td></tr>
+<tr><th id="121">121</th><td><b>extern</b> <b>struct</b> <a class="type" href="#file" title='file' data-ref="file">file</a> *<dfn class="decl" id="default_file" title='default_file' data-ref="default_file">default_file</dfn>;</td></tr>
+<tr><th id="122">122</th><td></td></tr>
+<tr><th id="123">123</th><td></td></tr>
+<tr><th id="124">124</th><td><b>struct</b> <a class="type" href="#file" title='file' data-ref="file">file</a> *<dfn class="decl" id="lookup_file" title='lookup_file' data-ref="lookup_file">lookup_file</dfn> (<em>const</em> <em>char</em> *<dfn class="local col7 decl" id="57name" title='name' data-type='const char *' data-ref="57name">name</dfn>);</td></tr>
+<tr><th id="125">125</th><td><b>struct</b> <a class="type" href="#file" title='file' data-ref="file">file</a> *<dfn class="decl" id="enter_file" title='enter_file' data-ref="enter_file">enter_file</dfn> (<em>const</em> <em>char</em> *<dfn class="local col8 decl" id="58name" title='name' data-type='const char *' data-ref="58name">name</dfn>);</td></tr>
+<tr><th id="126">126</th><td><b>struct</b> <a class="type" href="dep.h.html#dep" title='dep' data-ref="dep">dep</a> *<dfn class="decl" id="split_prereqs" title='split_prereqs' data-ref="split_prereqs">split_prereqs</dfn> (<em>char</em> *<dfn class="local col9 decl" id="59prereqstr" title='prereqstr' data-type='char *' data-ref="59prereqstr">prereqstr</dfn>);</td></tr>
+<tr><th id="127">127</th><td><b>struct</b> <a class="type" href="dep.h.html#dep" title='dep' data-ref="dep">dep</a> *<dfn class="decl" id="enter_prereqs" title='enter_prereqs' data-ref="enter_prereqs">enter_prereqs</dfn> (<b>struct</b> <a class="type" href="dep.h.html#dep" title='dep' data-ref="dep">dep</a> *<dfn class="local col0 decl" id="60prereqs" title='prereqs' data-type='struct dep *' data-ref="60prereqs">prereqs</dfn>, <em>const</em> <em>char</em> *<dfn class="local col1 decl" id="61stem" title='stem' data-type='const char *' data-ref="61stem">stem</dfn>);</td></tr>
+<tr><th id="128">128</th><td><em>void</em> <dfn class="decl" id="remove_intermediates" title='remove_intermediates' data-ref="remove_intermediates">remove_intermediates</dfn> (<em>int</em> <dfn class="local col2 decl" id="62sig" title='sig' data-type='int' data-ref="62sig">sig</dfn>);</td></tr>
+<tr><th id="129">129</th><td><em>void</em> <dfn class="decl" id="snap_deps" title='snap_deps' data-ref="snap_deps">snap_deps</dfn> (<em>void</em>);</td></tr>
+<tr><th id="130">130</th><td><em>void</em> <dfn class="decl" id="rename_file" title='rename_file' data-ref="rename_file">rename_file</dfn> (<b>struct</b> <a class="type" href="#file" title='file' data-ref="file">file</a> *<dfn class="local col3 decl" id="63file" title='file' data-type='struct file *' data-ref="63file">file</dfn>, <em>const</em> <em>char</em> *<dfn class="local col4 decl" id="64name" title='name' data-type='const char *' data-ref="64name">name</dfn>);</td></tr>
+<tr><th id="131">131</th><td><em>void</em> <dfn class="decl" id="rehash_file" title='rehash_file' data-ref="rehash_file">rehash_file</dfn> (<b>struct</b> <a class="type" href="#file" title='file' data-ref="file">file</a> *<dfn class="local col5 decl" id="65file" title='file' data-type='struct file *' data-ref="65file">file</dfn>, <em>const</em> <em>char</em> *<dfn class="local col6 decl" id="66name" title='name' data-type='const char *' data-ref="66name">name</dfn>);</td></tr>
+<tr><th id="132">132</th><td><em>void</em> <dfn class="decl" id="set_command_state" title='set_command_state' data-ref="set_command_state">set_command_state</dfn> (<b>struct</b> <a class="type" href="#file" title='file' data-ref="file">file</a> *<dfn class="local col7 decl" id="67file" title='file' data-type='struct file *' data-ref="67file">file</dfn>, <b>enum</b> <a class="type" href="#cmd_state" title='cmd_state' data-ref="cmd_state">cmd_state</a> <dfn class="local col8 decl" id="68state" title='state' data-type='enum cmd_state' data-ref="68state">state</dfn>);</td></tr>
+<tr><th id="133">133</th><td><em>void</em> <dfn class="decl" id="notice_finished_file" title='notice_finished_file' data-ref="notice_finished_file">notice_finished_file</dfn> (<b>struct</b> <a class="type" href="#file" title='file' data-ref="file">file</a> *<dfn class="local col9 decl" id="69file" title='file' data-type='struct file *' data-ref="69file">file</dfn>);</td></tr>
+<tr><th id="134">134</th><td><em>void</em> <dfn class="decl" id="init_hash_files" title='init_hash_files' data-ref="init_hash_files">init_hash_files</dfn> (<em>void</em>);</td></tr>
+<tr><th id="135">135</th><td><em>void</em> <dfn class="decl" id="verify_file_data_base" title='verify_file_data_base' data-ref="verify_file_data_base">verify_file_data_base</dfn> (<em>void</em>);</td></tr>
+<tr><th id="136">136</th><td><em>char</em> *<dfn class="decl" id="build_target_list" title='build_target_list' data-ref="build_target_list">build_target_list</dfn> (<em>char</em> *<dfn class="local col0 decl" id="70old_list" title='old_list' data-type='char *' data-ref="70old_list">old_list</dfn>);</td></tr>
+<tr><th id="137">137</th><td><em>void</em> <dfn class="decl" id="print_prereqs" title='print_prereqs' data-ref="print_prereqs">print_prereqs</dfn> (<em>const</em> <b>struct</b> <a class="type" href="dep.h.html#dep" title='dep' data-ref="dep">dep</a> *<dfn class="local col1 decl" id="71deps" title='deps' data-type='const struct dep *' data-ref="71deps">deps</dfn>);</td></tr>
+<tr><th id="138">138</th><td><em>void</em> <dfn class="decl" id="print_file_data_base" title='print_file_data_base' data-ref="print_file_data_base">print_file_data_base</dfn> (<em>void</em>);</td></tr>
+<tr><th id="139">139</th><td><em>int</em> <dfn class="decl" id="try_implicit_rule" title='try_implicit_rule' data-ref="try_implicit_rule">try_implicit_rule</dfn> (<b>struct</b> <a class="type" href="#file" title='file' data-ref="file">file</a> *<dfn class="local col2 decl" id="72file" title='file' data-type='struct file *' data-ref="72file">file</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col3 decl" id="73depth" title='depth' data-type='unsigned int' data-ref="73depth">depth</dfn>);</td></tr>
+<tr><th id="140">140</th><td><em>int</em> <dfn class="decl" id="stemlen_compare" title='stemlen_compare' data-ref="stemlen_compare">stemlen_compare</dfn> (<em>const</em> <em>void</em> *<dfn class="local col4 decl" id="74v1" title='v1' data-type='const void *' data-ref="74v1">v1</dfn>, <em>const</em> <em>void</em> *<dfn class="local col5 decl" id="75v2" title='v2' data-type='const void *' data-ref="75v2">v2</dfn>);</td></tr>
+<tr><th id="141">141</th><td></td></tr>
+<tr><th id="142">142</th><td><u>#<span data-ppcond="142">if</span> <a class="macro" href="config.h.html#29" title="1" data-ref="_M/FILE_TIMESTAMP_HI_RES">FILE_TIMESTAMP_HI_RES</a></u></td></tr>
+<tr><th id="143">143</th><td><u># define <dfn class="macro" id="_M/FILE_TIMESTAMP_STAT_MODTIME" data-ref="_M/FILE_TIMESTAMP_STAT_MODTIME">FILE_TIMESTAMP_STAT_MODTIME</dfn>(fname, st) \</u></td></tr>
+<tr><th id="144">144</th><td><u>    file_timestamp_cons (fname, (st).st_mtime, (st).ST_MTIM_NSEC)</u></td></tr>
+<tr><th id="145">145</th><td><u>#<span data-ppcond="142">else</span></u></td></tr>
+<tr><th id="146">146</th><td><u># define FILE_TIMESTAMP_STAT_MODTIME(fname, st) \</u></td></tr>
+<tr><th id="147">147</th><td><u>    file_timestamp_cons (fname, (st).st_mtime, 0)</u></td></tr>
+<tr><th id="148">148</th><td><u>#<span data-ppcond="142">endif</span></u></td></tr>
+<tr><th id="149">149</th><td></td></tr>
+<tr><th id="150">150</th><td><i>/* If FILE_TIMESTAMP is 64 bits (or more), use nanosecond resolution.</i></td></tr>
+<tr><th id="151">151</th><td><i>   (Multiply by 2**30 instead of by 10**9 to save time at the cost of</i></td></tr>
+<tr><th id="152">152</th><td><i>   slightly decreasing the number of available timestamps.)  With</i></td></tr>
+<tr><th id="153">153</th><td><i>   64-bit FILE_TIMESTAMP, this stops working on 2514-05-30 01:53:04</i></td></tr>
+<tr><th id="154">154</th><td><i>   UTC, but by then uintmax_t should be larger than 64 bits.  */</i></td></tr>
+<tr><th id="155">155</th><td><u>#define <dfn class="macro" id="_M/FILE_TIMESTAMPS_PER_S" data-ref="_M/FILE_TIMESTAMPS_PER_S">FILE_TIMESTAMPS_PER_S</dfn> (FILE_TIMESTAMP_HI_RES ? 1000000000 : 1)</u></td></tr>
+<tr><th id="156">156</th><td><u>#define <dfn class="macro" id="_M/FILE_TIMESTAMP_LO_BITS" data-ref="_M/FILE_TIMESTAMP_LO_BITS">FILE_TIMESTAMP_LO_BITS</dfn> (FILE_TIMESTAMP_HI_RES ? 30 : 0)</u></td></tr>
+<tr><th id="157">157</th><td></td></tr>
+<tr><th id="158">158</th><td><u>#define <dfn class="macro" id="_M/FILE_TIMESTAMP_S" data-ref="_M/FILE_TIMESTAMP_S">FILE_TIMESTAMP_S</dfn>(ts) (((ts) - ORDINARY_MTIME_MIN) \</u></td></tr>
+<tr><th id="159">159</th><td><u>                              &gt;&gt; FILE_TIMESTAMP_LO_BITS)</u></td></tr>
+<tr><th id="160">160</th><td><u>#define <dfn class="macro" id="_M/FILE_TIMESTAMP_NS" data-ref="_M/FILE_TIMESTAMP_NS">FILE_TIMESTAMP_NS</dfn>(ts) ((int) (((ts) - ORDINARY_MTIME_MIN) \</u></td></tr>
+<tr><th id="161">161</th><td><u>                                      &amp; ((1 &lt;&lt; FILE_TIMESTAMP_LO_BITS) - 1)))</u></td></tr>
+<tr><th id="162">162</th><td></td></tr>
+<tr><th id="163">163</th><td><i>/* Upper bound on length of string "YYYY-MM-DD HH:MM:SS.NNNNNNNNN"</i></td></tr>
+<tr><th id="164">164</th><td><i>   representing a file timestamp.  The upper bound is not necessarily 29,</i></td></tr>
+<tr><th id="165">165</th><td><i>   since the year might be less than -999 or greater than 9999.</i></td></tr>
+<tr><th id="166">166</th><td><i></i></td></tr>
+<tr><th id="167">167</th><td><i>   Subtract one for the sign bit if in case file timestamps can be negative;</i></td></tr>
+<tr><th id="168">168</th><td><i>   subtract FLOOR_LOG2_SECONDS_PER_YEAR to yield an upper bound on how many</i></td></tr>
+<tr><th id="169">169</th><td><i>   file timestamp bits might affect the year;</i></td></tr>
+<tr><th id="170">170</th><td><i>   302 / 1000 is log10 (2) rounded up;</i></td></tr>
+<tr><th id="171">171</th><td><i>   add one for integer division truncation;</i></td></tr>
+<tr><th id="172">172</th><td><i>   add one more for a minus sign if file timestamps can be negative;</i></td></tr>
+<tr><th id="173">173</th><td><i>   add 4 to allow for any 4-digit epoch year (e.g. 1970);</i></td></tr>
+<tr><th id="174">174</th><td><i>   add 25 to allow for "-MM-DD HH:MM:SS.NNNNNNNNN".  */</i></td></tr>
+<tr><th id="175">175</th><td><u>#define <dfn class="macro" id="_M/FLOOR_LOG2_SECONDS_PER_YEAR" data-ref="_M/FLOOR_LOG2_SECONDS_PER_YEAR">FLOOR_LOG2_SECONDS_PER_YEAR</dfn> 24</u></td></tr>
+<tr><th id="176">176</th><td><u>#define <dfn class="macro" id="_M/FILE_TIMESTAMP_PRINT_LEN_BOUND" data-ref="_M/FILE_TIMESTAMP_PRINT_LEN_BOUND">FILE_TIMESTAMP_PRINT_LEN_BOUND</dfn> \</u></td></tr>
+<tr><th id="177">177</th><td><u>  (((sizeof (FILE_TIMESTAMP) * CHAR_BIT - 1 - FLOOR_LOG2_SECONDS_PER_YEAR) \</u></td></tr>
+<tr><th id="178">178</th><td><u>    * 302 / 1000) \</u></td></tr>
+<tr><th id="179">179</th><td><u>   + 1 + 1 + 4 + 25)</u></td></tr>
+<tr><th id="180">180</th><td></td></tr>
+<tr><th id="181">181</th><td><i class="doc">/** Convert an external file timestamp to internal form.  */</i></td></tr>
+<tr><th id="182">182</th><td><b>extern</b> <a class="macro" href="make.h.html#252" title="uintmax_t" data-ref="_M/FILE_TIMESTAMP">FILE_TIMESTAMP</a> <dfn class="decl" id="file_timestamp_cons" title='file_timestamp_cons' data-ref="file_timestamp_cons">file_timestamp_cons</dfn> (<em>char</em> <em>const</em> *, <a class="typedef" href="../include/time.h.html#time_t" title='time_t' data-type='__time_t' data-ref="time_t">time_t</a>, <em>long</em> <em>int</em>);</td></tr>
+<tr><th id="183">183</th><td></td></tr>
+<tr><th id="184">184</th><td><i class="doc">/** Return the current time as a file timestamp, setting *RESOLUTION to</i></td></tr>
+<tr><th id="185">185</th><td><i class="doc">   its resolution.  */</i></td></tr>
+<tr><th id="186">186</th><td><b>extern</b> <a class="macro" href="make.h.html#252" title="uintmax_t" data-ref="_M/FILE_TIMESTAMP">FILE_TIMESTAMP</a> <dfn class="decl" id="file_timestamp_now" title='file_timestamp_now' data-ref="file_timestamp_now">file_timestamp_now</dfn> (<em>int</em> *);</td></tr>
+<tr><th id="187">187</th><td></td></tr>
+<tr><th id="188">188</th><td><i class="doc">/**</i></td></tr>
+<tr><th id="189">189</th><td><i class="doc">    Place into the buffer P a printable representation of the file</i></td></tr>
+<tr><th id="190">190</th><td><i class="doc">    timestamp TS.</i></td></tr>
+<tr><th id="191">191</th><td><i class="doc"></i></td></tr>
+<tr><th id="192">192</th><td><i class="doc">    <span class="command">@param</span> <span class="arg">p</span> output buffer for printable timestamp</i></td></tr>
+<tr><th id="193">193</th><td><i class="doc">    <span class="command">@param</span> <span class="arg">ts</span> timestamp to convert.</i></td></tr>
+<tr><th id="194">194</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="195">195</th><td><em>void</em> <dfn class="decl" id="file_timestamp_sprintf" title='file_timestamp_sprintf' data-ref="file_timestamp_sprintf">file_timestamp_sprintf</dfn> (<em>char</em> *<dfn class="local col6 decl" id="76p" title='p' data-type='char *' data-ref="76p">p</dfn>, <a class="macro" href="make.h.html#252" title="uintmax_t" data-ref="_M/FILE_TIMESTAMP">FILE_TIMESTAMP</a> <dfn class="local col7 decl" id="77ts" title='ts' data-type='uintmax_t' data-ref="77ts">ts</dfn>);</td></tr>
+<tr><th id="196">196</th><td></td></tr>
+<tr><th id="197">197</th><td><i>/* Return the mtime of file F (a struct file *), caching it.</i></td></tr>
+<tr><th id="198">198</th><td><i>   The value is NONEXISTENT_MTIME if the file does not exist.  */</i></td></tr>
+<tr><th id="199">199</th><td><u>#define <dfn class="macro" id="_M/file_mtime" data-ref="_M/file_mtime">file_mtime</dfn>(f) file_mtime_1 ((f), 1)</u></td></tr>
+<tr><th id="200">200</th><td><i>/* Return the mtime of file F (a struct file *), caching it.</i></td></tr>
+<tr><th id="201">201</th><td><i>   Don't search using vpath for the file--if it doesn't actually exist,</i></td></tr>
+<tr><th id="202">202</th><td><i>   we don't find it.</i></td></tr>
+<tr><th id="203">203</th><td><i>   The value is NONEXISTENT_MTIME if the file does not exist.  */</i></td></tr>
+<tr><th id="204">204</th><td><u>#define <dfn class="macro" id="_M/file_mtime_no_search" data-ref="_M/file_mtime_no_search">file_mtime_no_search</dfn>(f) file_mtime_1 ((f), 0)</u></td></tr>
+<tr><th id="205">205</th><td><a class="macro" href="make.h.html#252" title="uintmax_t" data-ref="_M/FILE_TIMESTAMP">FILE_TIMESTAMP</a> <dfn class="decl" id="f_mtime" title='f_mtime' data-ref="f_mtime">f_mtime</dfn> (<b>struct</b> <a class="type" href="#file" title='file' data-ref="file">file</a> *<dfn class="local col8 decl" id="78file" title='file' data-type='struct file *' data-ref="78file">file</dfn>, <em>int</em> <dfn class="local col9 decl" id="79search" title='search' data-type='int' data-ref="79search">search</dfn>);</td></tr>
+<tr><th id="206">206</th><td><u>#define <dfn class="macro" id="_M/file_mtime_1" data-ref="_M/file_mtime_1">file_mtime_1</dfn>(f, v) \</u></td></tr>
+<tr><th id="207">207</th><td><u>  ((f)-&gt;last_mtime == UNKNOWN_MTIME ? f_mtime ((f), v) : (f)-&gt;last_mtime)</u></td></tr>
+<tr><th id="208">208</th><td></td></tr>
+<tr><th id="209">209</th><td><i>/* Special timestamp values.  */</i></td></tr>
+<tr><th id="210">210</th><td></td></tr>
+<tr><th id="211">211</th><td><i>/* The file's timestamp is not yet known.  */</i></td></tr>
+<tr><th id="212">212</th><td><u>#define <dfn class="macro" id="_M/UNKNOWN_MTIME" data-ref="_M/UNKNOWN_MTIME">UNKNOWN_MTIME</dfn> 0</u></td></tr>
+<tr><th id="213">213</th><td></td></tr>
+<tr><th id="214">214</th><td><i>/* The file does not exist.  */</i></td></tr>
+<tr><th id="215">215</th><td><u>#define <dfn class="macro" id="_M/NONEXISTENT_MTIME" data-ref="_M/NONEXISTENT_MTIME">NONEXISTENT_MTIME</dfn> 1</u></td></tr>
+<tr><th id="216">216</th><td></td></tr>
+<tr><th id="217">217</th><td><i>/* The file does not exist, and we assume that it is older than any</i></td></tr>
+<tr><th id="218">218</th><td><i>   actual file.  */</i></td></tr>
+<tr><th id="219">219</th><td><u>#define <dfn class="macro" id="_M/OLD_MTIME" data-ref="_M/OLD_MTIME">OLD_MTIME</dfn> 2</u></td></tr>
+<tr><th id="220">220</th><td></td></tr>
+<tr><th id="221">221</th><td><i>/* The smallest and largest ordinary timestamps.  */</i></td></tr>
+<tr><th id="222">222</th><td><u>#define <dfn class="macro" id="_M/ORDINARY_MTIME_MIN" data-ref="_M/ORDINARY_MTIME_MIN">ORDINARY_MTIME_MIN</dfn> (OLD_MTIME + 1)</u></td></tr>
+<tr><th id="223">223</th><td><u>#define <dfn class="macro" id="_M/ORDINARY_MTIME_MAX" data-ref="_M/ORDINARY_MTIME_MAX">ORDINARY_MTIME_MAX</dfn> ((FILE_TIMESTAMP_S (NEW_MTIME) \</u></td></tr>
+<tr><th id="224">224</th><td><u>                             &lt;&lt; FILE_TIMESTAMP_LO_BITS) \</u></td></tr>
+<tr><th id="225">225</th><td><u>                            + ORDINARY_MTIME_MIN + FILE_TIMESTAMPS_PER_S - 1)</u></td></tr>
+<tr><th id="226">226</th><td></td></tr>
+<tr><th id="227">227</th><td><i>/* Modtime value to use for 'infinitely new'.  We used to get the current time</i></td></tr>
+<tr><th id="228">228</th><td><i>   from the system and use that whenever we wanted 'new'.  But that causes</i></td></tr>
+<tr><th id="229">229</th><td><i>   trouble when the machine running make and the machine holding a file have</i></td></tr>
+<tr><th id="230">230</th><td><i>   different ideas about what time it is; and can also lose for 'force'</i></td></tr>
+<tr><th id="231">231</th><td><i>   targets, which need to be considered newer than anything that depends on</i></td></tr>
+<tr><th id="232">232</th><td><i>   them, even if said dependents' modtimes are in the future.  */</i></td></tr>
+<tr><th id="233">233</th><td><u>#define <dfn class="macro" id="_M/NEW_MTIME" data-ref="_M/NEW_MTIME">NEW_MTIME</dfn> INTEGER_TYPE_MAXIMUM (FILE_TIMESTAMP)</u></td></tr>
+<tr><th id="234">234</th><td></td></tr>
+<tr><th id="235">235</th><td><u>#define <dfn class="macro" id="_M/check_renamed" data-ref="_M/check_renamed">check_renamed</dfn>(file) \</u></td></tr>
+<tr><th id="236">236</th><td><u>  while ((file)-&gt;renamed != 0) (file) = (file)-&gt;renamed /* No ; here.  */</u></td></tr>
+<tr><th id="237">237</th><td></td></tr>
+<tr><th id="238">238</th><td><i>/* Have we snapped deps yet?  */</i></td></tr>
+<tr><th id="239">239</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="snapped_deps" title='snapped_deps' data-ref="snapped_deps">snapped_deps</dfn>;</td></tr>
+<tr><th id="240">240</th><td></td></tr>
+<tr><th id="241">241</th><td><u>#<span data-ppcond="22">endif</span> /*FILEDEF_H*/</u></td></tr>
+<tr><th id="242">242</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='ar.c.html'>remake/ar.c</a><br/>Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

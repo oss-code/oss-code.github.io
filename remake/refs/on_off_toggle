@@ -1,0 +1,6 @@
+<dec f='remake/debugger/fns.h' l='85' type='void on_off_toggle(const char * psz_onoff, int * var)'/>
+<use f='remake/debugger/command/set.h' l='75' u='c' c='dbg_cmd_set_bool'/>
+<use f='remake/debugger/command/set.h' l='77' u='c' c='dbg_cmd_set_bool'/>
+<doc f='remake/debugger/fns.h' l='84'>/*! toggle var on or on or off depending on psz_onoff */</doc>
+<def f='remake/debugger/fns.c' l='250' ll='262' type='void on_off_toggle(const char * psz_onoff, int * var)'/>
+<doc f='remake/debugger/fns.c' l='249'>/*! toggle var on or on or off depending on psz_onoff */</doc>

@@ -1,0 +1,10 @@
+<dec f='remake/variable.h' l='208' type='struct variable * do_variable_definition(const gmk_floc * flocp, const char * name, const char * value, enum variable_origin origin, enum variable_flavor flavor, int target_var)'/>
+<use f='remake/load.c' l='226' u='c' c='load_file'/>
+<use f='remake/read.c' l='408' u='c' c='eval_makefile'/>
+<use f='remake/read.c' l='1556' u='c' c='do_define'/>
+<use f='remake/read.c' l='2927' u='c' c='construct_include_path'/>
+<use f='remake/variable.c' l='680' u='c' c='initialize_file_variables'/>
+<def f='remake/variable.c' l='1198' ll='1450' type='struct variable * do_variable_definition(const gmk_floc * flocp, const char * varname, const char * value, enum variable_origin origin, enum variable_flavor flavor, int target_var)'/>
+<use f='remake/variable.c' l='1648' u='c' c='try_variable_definition'/>
+<doc f='remake/variable.c' l='1195'>/* Given a variable, a value, and a flavor, define the variable.
+   See the try_variable_definition() function for details on the parameters. */</doc>

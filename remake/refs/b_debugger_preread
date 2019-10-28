@@ -1,0 +1,10 @@
+<dec f='remake/debug.h' l='103' type='uint8_t'/>
+<doc f='remake/debug.h' l='102'>/*! If true, enter the debugger before reading any makefiles. */</doc>
+<dec f='remake/globals.h' l='85' type='uint8_t'/>
+<def f='remake/globals.c' l='110' macro='1' type='uint8_t'/>
+<doc f='remake/globals.h' l='84'>/*! If true, enter the debugger before reading any makefiles. */</doc>
+<use f='remake/main.c' l='1443' u='w' c='main'/>
+<use f='remake/main.c' l='1461' u='w' c='main'/>
+<use f='remake/main.c' l='1470' u='r' c='main'/>
+<use f='remake/read.c' l='167' u='r' c='read_all_makefiles'/>
+<use f='remake/read.c' l='411' u='r' c='eval_makefile'/>

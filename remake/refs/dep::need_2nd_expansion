@@ -1,0 +1,14 @@
+<dec f='remake/dep.h' l='56' type='unsigned short'/>
+<offset>267</offset>
+<use f='remake/commands.c' l='137' u='r' c='set_file_variables'/>
+<use f='remake/commands.c' l='180' u='r' c='set_file_variables'/>
+<use f='remake/commands.c' l='202' u='r' c='set_file_variables'/>
+<use f='remake/commands.c' l='249' u='r' c='set_file_variables'/>
+<use f='remake/commands.c' l='271' u='r' c='set_file_variables'/>
+<use f='remake/file.c' l='375' u='r' c='enter_prereqs'/>
+<use f='remake/file.c' l='418' u='r' c='expand_deps'/>
+<use f='remake/file.c' l='1066' u='r' c='verify_file'/>
+<use f='remake/implicit.c' l='531' u='r' c='pattern_search'/>
+<use f='remake/misc.c' l='275' u='r' c='copy_dep_chain'/>
+<use f='remake/read.c' l='1995' u='w' c='record_files'/>
+<use f='remake/read.c' l='2196' u='r' c='record_files'/>

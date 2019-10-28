@@ -1,0 +1,5 @@
+<dec f='remake/filedef.h' l='137' type='void print_prereqs(const struct dep * deps)'/>
+<def f='remake/file.c' l='883' ll='905' type='void print_prereqs(const struct dep * deps)'/>
+<use f='remake/file.c' l='936' u='c' c='print_file'/>
+<doc f='remake/file.c' l='881'>/* Print the data base of files.  */</doc>
+<use f='remake/rule.c' l='494' u='c' c='print_rule'/>

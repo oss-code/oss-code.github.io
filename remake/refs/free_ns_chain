@@ -1,0 +1,6 @@
+<dec f='remake/dep.h' l='104' type='void free_ns_chain(struct nameseq * n)'/>
+<use f='remake/dep.h' l='117' u='c' c='free_dep_chain'/>
+<use f='remake/main.c' l='2485' u='c' c='main'/>
+<def f='remake/misc.c' l='293' ll='302' type='void free_ns_chain(struct nameseq * ns)'/>
+<doc f='remake/misc.c' l='290'>/* Free a chain of struct nameseq.
+   For struct dep chains use free_dep_chain.  */</doc>

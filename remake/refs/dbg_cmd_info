@@ -1,0 +1,5 @@
+<dec f='remake/debugger/cmd.h' l='37' type='debug_return_t dbg_cmd_info(char * psz_args)'/>
+<def f='remake/debugger/command/info.h' l='262' ll='374' type='debug_return_t dbg_cmd_info(char * psz_args)'/>
+<use f='remake/debugger/command/info.h' l='379' u='a' c='dbg_cmd_info_init'/>
+<use f='remake/debugger/command/help.h' l='114' u='a' c='dbg_cmd_help'/>
+<doc f='remake/debugger/command/info.h' l='261'>/* Give some info regarding the running program. */</doc>

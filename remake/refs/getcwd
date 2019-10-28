@@ -1,0 +1,14 @@
+<dec f='include/unistd.h' l='514' type='char * getcwd(char * __buf, size_t __size)'/>
+<dec f='remake/makeint.h' l='588' type='char * getcwd(char * , unsigned long )'/>
+<doc f='include/unistd.h' l='507'>/* Get the pathname of the current working directory,
+   and put it in SIZE bytes of BUF.  Returns NULL if the
+   directory couldn&apos;t be determined or SIZE was too small.
+   If successful, returns BUF.  In GNU, if BUF is NULL,
+   an array is allocated with `malloc&apos;; the array is SIZE
+   bytes long, unless SIZE == 0, in which case it is as
+   big as necessary.  */</doc>
+<dec f='remake/make.h' l='429' type='char * getcwd(char * , unsigned long )'/>
+<use f='remake/debugger/command/pwd.h' l='25' u='c' c='dbg_cmd_pwd'/>
+<use f='remake/debugger/command/write.h' l='140' u='c' c='dbg_cmd_write'/>
+<use f='remake/main.c' l='1190' u='c' c='main'/>
+<use f='remake/main.c' l='1727' u='c' c='main'/>

@@ -1,0 +1,7 @@
+<dec f='remake/debugger/break.h' l='51' type='uint8_t remove_breakpoint(unsigned int i)'/>
+<def f='remake/debugger/break.c' l='100' ll='143' macro='1' type='uint8_t remove_breakpoint(unsigned int i)'/>
+<doc f='remake/debugger/break.h' l='48'>/*! Remove breakpoint i from the list of breakpoints. Return true if 
+    there were no errors
+*/</doc>
+<use f='remake/debugger/command/delete.h' l='31' u='c' c='dbg_cmd_delete'/>
+<use f='remake/debugger/command/delete.h' l='38' u='c' c='dbg_cmd_delete'/>

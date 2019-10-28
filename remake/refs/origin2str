@@ -1,0 +1,11 @@
+<dec f='remake/variable.h' l='155' type='const char * origin2str(variable_origin_t origin)'/>
+<doc f='remake/variable.h' l='152'>/*!
+  Return a string describing origin.
+ */</doc>
+<use f='remake/print.c' l='224' u='c' c='print_variable'/>
+<use f='remake/print.c' l='241' u='c' c='print_variable_expand'/>
+<def f='remake/variable.c' l='47' ll='80' type='const char * origin2str(variable_origin_t origin)'/>
+<use f='remake/variable.c' l='1740' u='c' c='print_variable_info'/>
+<doc f='remake/variable.c' l='44'>/*!
+  Return a string describing origin.
+ */</doc>

@@ -1,0 +1,8 @@
+<dec f='remake/hash.h' l='48' type='unsigned long'/>
+<offset>320</offset>
+<doc f='remake/hash.h' l='48'>/* usable slots, limited by loading-factor */</doc>
+<use f='remake/hash.c' l='54' u='w' c='hash_init'/>
+<use f='remake/hash.c' l='146' u='r' c='hash_insert_at'/>
+<use f='remake/hash.c' l='218' u='w' c='hash_free'/>
+<use f='remake/hash.c' l='256' u='r' c='hash_rehash'/>
+<use f='remake/hash.c' l='259' u='w' c='hash_rehash'/>

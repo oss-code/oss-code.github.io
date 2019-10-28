@@ -1,0 +1,6 @@
+<dec f='remake/makeint.h' l='546' type='int gpath_search(const char * file, unsigned int len)'/>
+<dec f='remake/make.h' l='392' type='int gpath_search(const char * file, unsigned int len)'/>
+<use f='remake/remake.c' l='1445' u='c' c='f_mtime'/>
+<def f='remake/vpath.c' l='306' ll='318' type='int gpath_search(const char * file, unsigned int len)'/>
+<doc f='remake/vpath.c' l='303'>/* Search the GPATH list for a pathname string that matches the one passed
+   in.  If it is found, return 1.  Otherwise we return 0.  */</doc>

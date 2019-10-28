@@ -1,0 +1,16 @@
+<dec f='remake/filedef.h' l='106' type='unsigned int'/>
+<offset>1546</offset>
+<doc f='remake/filedef.h' l='106'>/* Nonzero if this is an intermediate file.  */</doc>
+<use f='remake/file.c' l='223' u='r' c='remove_intermediates'/>
+<use f='remake/file.c' l='394' u='w' c='set_intermediate'/>
+<use f='remake/file.c' l='569' u='w' c='snap_deps'/>
+<use f='remake/file.c' l='579' u='w' c='snap_deps'/>
+<use f='remake/file.c' l='794' u='r' c='print_target_props'/>
+<use f='remake/file.c' l='953' u='r' c='print_file'/>
+<use f='remake/implicit.c' l='881' u='w' c='pattern_search'/>
+<use f='remake/main.c' l='1820' u='w' c='main'/>
+<use f='remake/remake.c' l='685' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='804' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='1106' u='r' c='check_dep'/>
+<use f='remake/remake.c' l='1543' u='r' c='f_mtime'/>
+<use f='remake/remake.c' l='1544' u='w' c='f_mtime'/>

@@ -1,0 +1,21 @@
+<dec f='remake/filedef.h' l='90' type='breakpoint_mask_t'/>
+<offset>1504</offset>
+<doc f='remake/filedef.h' l='90'>/* breakpoint status of target. */</doc>
+<use f='remake/debugger/break.c' l='67' u='r' c='add_breakpoint'/>
+<use f='remake/debugger/break.c' l='71' u='r' c='add_breakpoint'/>
+<use f='remake/debugger/break.c' l='75' u='r' c='add_breakpoint'/>
+<use f='remake/debugger/break.c' l='79' u='w' c='add_breakpoint'/>
+<use f='remake/debugger/break.c' l='126' u='r' c='remove_breakpoint'/>
+<use f='remake/debugger/break.c' l='127' u='w' c='remove_breakpoint'/>
+<use f='remake/debugger/command/finish.h' l='43' u='w' c='dbg_cmd_finish'/>
+<use f='remake/debugger/cmd.c' l='381' u='r' c='enter_debugger'/>
+<use f='remake/debugger/cmd.c' l='384' u='r' c='enter_debugger'/>
+<use f='remake/debugger/cmd.c' l='388' u='r' c='enter_debugger'/>
+<use f='remake/debugger/cmd.c' l='394' u='w' c='enter_debugger'/>
+<use f='remake/print.c' l='298' u='r' c='print_child_cmd'/>
+<use f='remake/print.c' l='302' u='r' c='print_child_cmd'/>
+<use f='remake/print.c' l='304' u='r' c='print_child_cmd'/>
+<use f='remake/remake.c' l='481' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='743' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='917' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='940' u='r' c='update_file_1'/>

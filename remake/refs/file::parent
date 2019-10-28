@@ -1,0 +1,14 @@
+<dec f='remake/filedef.h' l='63' type='struct file *'/>
+<offset>1152</offset>
+<doc f='remake/filedef.h' l='61'>/* Immediate dependent that caused this target to be remade,
+       or nil if there isn&apos;t one.  */</doc>
+<use f='remake/remake.c' l='414' u='r' c='complain'/>
+<use f='remake/remake.c' l='416' u='r' c='complain'/>
+<use f='remake/remake.c' l='420' u='r' c='complain'/>
+<use f='remake/remake.c' l='422' u='r' c='complain'/>
+<use f='remake/remake.c' l='628' u='w' c='update_file_1'/>
+<use f='remake/remake.c' l='692' u='w' c='update_file_1'/>
+<use f='remake/remake.c' l='1192' u='w' c='check_dep'/>
+<use f='remake/variable.c' l='636' u='r' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='640' u='r' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='641' u='r' c='initialize_file_variables'/>

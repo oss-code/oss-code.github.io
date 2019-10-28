@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>buildargv.h source code [remake/buildargv.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/buildargv.h'; var root_path = '..'; var data_path = '../../data';</script>
+<script src='../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='./'>remake</a>/<a href='buildargv.h.html'>buildargv.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* $Id: buildargv.h,v 1.1 2006/01/21 13:40:21 rockyb Exp $ */</i></td></tr>
+<tr><th id="2">2</th><td><i>/* Create and destroy argument vectors (argv's)</i></td></tr>
+<tr><th id="3">3</th><td><i>   Copyright (C) 1992, 2001 Free Software Foundation, Inc.</i></td></tr>
+<tr><th id="4">4</th><td><i>   Written by Fred Fish @ Cygnus Support</i></td></tr>
+<tr><th id="5">5</th><td><i></i></td></tr>
+<tr><th id="6">6</th><td><i>   Copyright (C) 2008 R. Bernstein rocky@gnu.org</i></td></tr>
+<tr><th id="7">7</th><td><i></i></td></tr>
+<tr><th id="8">8</th><td><i>This file is part of the libiberty library.</i></td></tr>
+<tr><th id="9">9</th><td><i>Libiberty is free software; you can redistribute it and/or</i></td></tr>
+<tr><th id="10">10</th><td><i>modify it under the terms of the GNU Library General Public</i></td></tr>
+<tr><th id="11">11</th><td><i>License as published by the Free Software Foundation; either</i></td></tr>
+<tr><th id="12">12</th><td><i>version 2 of the License, or (at your option) any later version.</i></td></tr>
+<tr><th id="13">13</th><td><i></i></td></tr>
+<tr><th id="14">14</th><td><i>Libiberty is distributed in the hope that it will be useful,</i></td></tr>
+<tr><th id="15">15</th><td><i>but WITHOUT ANY WARRANTY; without even the implied warranty of</i></td></tr>
+<tr><th id="16">16</th><td><i>MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</i></td></tr>
+<tr><th id="17">17</th><td><i>Library General Public License for more details.</i></td></tr>
+<tr><th id="18">18</th><td><i></i></td></tr>
+<tr><th id="19">19</th><td><i>You should have received a copy of the GNU Library General Public</i></td></tr>
+<tr><th id="20">20</th><td><i>License along with libiberty; see the file COPYING.LIB.  If</i></td></tr>
+<tr><th id="21">21</th><td><i>not, write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,</i></td></tr>
+<tr><th id="22">22</th><td><i>Boston, MA 02111-1307, USA.  */</i></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><i>/* rocky: Below we only need/use the freeargv and buildargv routine</i></td></tr>
+<tr><th id="25">25</th><td><i>   from the above.  Some small adaption was made to include outside of</i></td></tr>
+<tr><th id="26">26</th><td><i>   libiberty.</i></td></tr>
+<tr><th id="27">27</th><td><i>*/</i></td></tr>
+<tr><th id="28">28</th><td><i>/*</i></td></tr>
+<tr><th id="29">29</th><td><i></i></td></tr>
+<tr><th id="30">30</th><td><i>@deftypefn Extension void freeargv (char **@var{vector})</i></td></tr>
+<tr><th id="31">31</th><td><i></i></td></tr>
+<tr><th id="32">32</th><td><i>Free an argument vector that was built using @code{buildargv}.  Simply</i></td></tr>
+<tr><th id="33">33</th><td><i>scans through @var{vector}, freeing the memory for each argument until</i></td></tr>
+<tr><th id="34">34</th><td><i>the terminating @code{NULL} is found, and then frees @var{vector}</i></td></tr>
+<tr><th id="35">35</th><td><i>itself.</i></td></tr>
+<tr><th id="36">36</th><td><i></i></td></tr>
+<tr><th id="37">37</th><td><i>@end deftypefn</i></td></tr>
+<tr><th id="38">38</th><td><i></i></td></tr>
+<tr><th id="39">39</th><td><i>*/</i></td></tr>
+<tr><th id="40">40</th><td><em>void</em> <a class="decl" href="buildargv.c.html#freeargv" title='freeargv' data-ref="freeargv" id="freeargv">freeargv</a> (<em>char</em> **<dfn class="local col1 decl" id="1vector" title='vector' data-type='char **' data-ref="1vector">vector</dfn>);</td></tr>
+<tr><th id="41">41</th><td><i>/*</i></td></tr>
+<tr><th id="42">42</th><td><i></i></td></tr>
+<tr><th id="43">43</th><td><i>@deftypefn Extension char** buildargv (char *@var{sp})</i></td></tr>
+<tr><th id="44">44</th><td><i></i></td></tr>
+<tr><th id="45">45</th><td><i>Given a pointer to a string, parse the string extracting fields</i></td></tr>
+<tr><th id="46">46</th><td><i>separated by whitespace and optionally enclosed within either single</i></td></tr>
+<tr><th id="47">47</th><td><i>or double quotes (which are stripped off), and build a vector of</i></td></tr>
+<tr><th id="48">48</th><td><i>pointers to copies of the string for each field.  The input string</i></td></tr>
+<tr><th id="49">49</th><td><i>remains unchanged.  The last element of the vector is followed by a</i></td></tr>
+<tr><th id="50">50</th><td><i>@code{NULL} element.</i></td></tr>
+<tr><th id="51">51</th><td><i></i></td></tr>
+<tr><th id="52">52</th><td><i>All of the memory for the pointer array and copies of the string</i></td></tr>
+<tr><th id="53">53</th><td><i>is obtained from @code{malloc}.  All of the memory can be returned to the</i></td></tr>
+<tr><th id="54">54</th><td><i>system with the single function call @code{freeargv}, which takes the</i></td></tr>
+<tr><th id="55">55</th><td><i>returned result of @code{buildargv}, as it's argument.</i></td></tr>
+<tr><th id="56">56</th><td><i></i></td></tr>
+<tr><th id="57">57</th><td><i>Returns a pointer to the argument vector if successful.  Returns</i></td></tr>
+<tr><th id="58">58</th><td><i>@code{NULL} if @var{sp} is @code{NULL} or if there is insufficient</i></td></tr>
+<tr><th id="59">59</th><td><i>memory to complete building the argument vector.</i></td></tr>
+<tr><th id="60">60</th><td><i></i></td></tr>
+<tr><th id="61">61</th><td><i>If the input is a null string (as opposed to a @code{NULL} pointer),</i></td></tr>
+<tr><th id="62">62</th><td><i>then buildarg returns an argument vector that has one arg, a null</i></td></tr>
+<tr><th id="63">63</th><td><i>string.</i></td></tr>
+<tr><th id="64">64</th><td><i></i></td></tr>
+<tr><th id="65">65</th><td><i>@end deftypefn</i></td></tr>
+<tr><th id="66">66</th><td><i></i></td></tr>
+<tr><th id="67">67</th><td><i>The memory for the argv array is dynamically expanded as necessary.</i></td></tr>
+<tr><th id="68">68</th><td><i></i></td></tr>
+<tr><th id="69">69</th><td><i>In order to provide a working buffer for extracting arguments into,</i></td></tr>
+<tr><th id="70">70</th><td><i>with appropriate stripping of quotes and translation of backslash</i></td></tr>
+<tr><th id="71">71</th><td><i>sequences, we allocate a working buffer at least as long as the input</i></td></tr>
+<tr><th id="72">72</th><td><i>string.  This ensures that we always have enough space in which to</i></td></tr>
+<tr><th id="73">73</th><td><i>work, since the extracted arg is never larger than the input string.</i></td></tr>
+<tr><th id="74">74</th><td><i></i></td></tr>
+<tr><th id="75">75</th><td><i>The argument vector is always kept terminated with a @code{NULL} arg</i></td></tr>
+<tr><th id="76">76</th><td><i>pointer, so it can be passed to @code{freeargv} at any time, or</i></td></tr>
+<tr><th id="77">77</th><td><i>returned, as appropriate.</i></td></tr>
+<tr><th id="78">78</th><td><i></i></td></tr>
+<tr><th id="79">79</th><td><i>*/</i></td></tr>
+<tr><th id="80">80</th><td><em>char</em> **<a class="decl" href="buildargv.c.html#buildargv" title='buildargv' data-ref="buildargv" id="buildargv">buildargv</a> (<em>const</em> <em>char</em> *<dfn class="local col2 decl" id="2input" title='input' data-type='const char *' data-ref="2input">input</dfn>);</td></tr>
+<tr><th id="81">81</th><td></td></tr>
+<tr><th id="82">82</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='buildargv.c.html'>remake/buildargv.c</a><br/>Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

@@ -1,0 +1,6 @@
+<dec f='remake/makeint.h' l='531' type='const char * dir_name(const char * )'/>
+<dec f='remake/make.h' l='380' type='const char * dir_name(const char * )'/>
+<def f='remake/dir.c' l='1056' ll='1060' type='const char * dir_name(const char * dir)'/>
+<doc f='remake/dir.c' l='1053'>/* Return the already allocated name in the
+   directory hash table that matches DIR.  */</doc>
+<use f='remake/vpath.c' l='263' u='c' c='construct_vpath_list'/>

@@ -1,0 +1,12 @@
+<dec f='remake/variable.h' l='70' type='unsigned int'/>
+<offset>359</offset>
+<doc f='remake/variable.h' l='70'>/* Nonzero avoids inheritance of this
+                                   target-specific variable.  */</doc>
+<use f='remake/expand.c' l='520' u='r' c='variable_append'/>
+<use f='remake/read.c' l='772' u='w' c='eval'/>
+<use f='remake/read.c' l='1911' u='w' c='record_target_var'/>
+<use f='remake/variable.c' l='328' u='w' c='define_variable_in_set'/>
+<use f='remake/variable.c' l='518' u='r' c='lookup_variable'/>
+<use f='remake/variable.c' l='689' u='w' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='689' u='r' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='1694' u='r' c='print_variable'/>

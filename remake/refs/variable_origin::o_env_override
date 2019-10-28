@@ -1,0 +1,14 @@
+<dec f='remake/variable.h' l='30' type='3'/>
+<doc f='remake/variable.h' l='30'>/* Variable from environment, if -e.  */</doc>
+<use f='remake/function.c' l='474' c='func_origin'/>
+<use f='remake/main.c' l='3280' u='r' c='define_makeflags'/>
+<use f='remake/read.c' l='1923' u='r' c='record_target_var'/>
+<use f='remake/variable.c' l='61' c='origin2str'/>
+<use f='remake/variable.c' l='281' u='r' c='define_variable_in_set'/>
+<use f='remake/variable.c' l='288' u='r' c='define_variable_in_set'/>
+<use f='remake/variable.c' l='388' u='r' c='undefine_variable_in_set'/>
+<use f='remake/variable.c' l='396' u='r' c='undefine_variable_in_set'/>
+<use f='remake/variable.c' l='964' u='r' c='define_automatic_variables'/>
+<use f='remake/variable.c' l='1078' u='r' c='target_environment'/>
+<use f='remake/variable.c' l='1127' u='r' c='target_environment'/>
+<use f='remake/variable.c' l='1679' c='print_variable'/>

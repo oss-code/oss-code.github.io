@@ -1,0 +1,7 @@
+<dec f='remake/variable.h' l='150' type='struct variable_set_list * create_new_variable_set()'/>
+<doc f='remake/variable.h' l='149'>/* variable.c */</doc>
+<use f='remake/variable.c' l='660' u='c' c='initialize_file_variables'/>
+<def f='remake/variable.c' l='712' ll='729' type='struct variable_set_list * create_new_variable_set()'/>
+<use f='remake/variable.c' l='740' u='c' c='push_new_variable_scope'/>
+<doc f='remake/variable.c' l='709'>/* Pop the top set off the current variable set list,
+   and free all its storage.  */</doc>

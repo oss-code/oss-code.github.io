@@ -1,0 +1,9 @@
+<dec f='remake/makeint.h' l='629' type='int'/>
+<dec f='remake/make.h' l='465' type='int'/>
+<def f='remake/main.c' l='523' type='int'/>
+<use f='remake/main.c' l='2542' u='r' c='main'/>
+<doc f='remake/main.c' l='519'>/* Nonzero if some rule detected clock skew; we keep track so (a) we only
+   print one warning about it during the run, and (b) we can print a final
+   warning at the end of the run. */</doc>
+<use f='remake/remake.c' l='1468' u='r' c='f_mtime'/>
+<use f='remake/remake.c' l='1523' u='w' c='f_mtime'/>

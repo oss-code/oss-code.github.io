@@ -1,0 +1,43 @@
+<dec f='remake/hash.h' l='76' type='void *'/>
+<use f='remake/commands.c' l='253' macro='1' u='r'/>
+<use f='remake/debugger/file2line.c' l='95' macro='1' u='r'/>
+<use f='remake/debugger/file2line.c' l='144' macro='1' u='r'/>
+<use f='remake/dir.c' l='456' macro='1' u='r'/>
+<use f='remake/dir.c' l='532' macro='1' u='r'/>
+<use f='remake/dir.c' l='1081' macro='1' u='r'/>
+<use f='remake/dir.c' l='1116' macro='1' u='r'/>
+<use f='remake/dir.c' l='1225' macro='1' u='r'/>
+<use f='remake/file.c' l='91' macro='1' u='r'/>
+<use f='remake/file.c' l='216' macro='1' u='r'/>
+<use f='remake/file.c' l='1099' macro='1' u='r'/>
+<use f='remake/file_basic.c' l='161' macro='1' u='r'/>
+<use f='remake/file_basic.c' l='171' macro='1' u='r'/>
+<def f='remake/hash.c' l='35' type='void *'/>
+<use f='remake/hash.c' l='35' u='a'/>
+<use f='remake/hash.c' l='99' u='r' c='hash_find_slot'/>
+<use f='remake/hash.c' l='122' macro='1' u='r'/>
+<use f='remake/hash.c' l='131' macro='1' u='r'/>
+<use f='remake/hash.c' l='138' macro='1' u='r'/>
+<use f='remake/hash.c' l='166' macro='1' u='r'/>
+<use f='remake/hash.c' l='168' u='r' c='hash_delete_at'/>
+<use f='remake/hash.c' l='184' macro='1' u='r'/>
+<use f='remake/hash.c' l='229' macro='1' u='r'/>
+<use f='remake/hash.c' l='242' macro='1' u='r'/>
+<use f='remake/hash.c' l='266' macro='1' u='r'/>
+<use f='remake/hash.c' l='304' macro='1' u='r'/>
+<doc f='remake/hash.c' l='28'>/* Implement double hashing with open addressing.  The table size is
+   always a power of two.  The secondary (&apos;increment&apos;) hash function
+   is forced to return an odd-value, in order to be relatively prime
+   to the table size.  This guarantees that the increment can
+   potentially hit every slot in the table during collision
+   resolution.  */</doc>
+<use f='remake/profile.c' l='84' macro='1' u='r'/>
+<use f='remake/strcache.c' l='199' macro='1' u='r'/>
+<use f='remake/variable.c' l='283' macro='1' u='r'/>
+<use f='remake/variable.c' l='391' macro='1' u='r'/>
+<use f='remake/variable.c' l='467' macro='1' u='r'/>
+<use f='remake/variable.c' l='803' macro='1' u='r'/>
+<use f='remake/variable.c' l='808' macro='1' u='r'/>
+<use f='remake/variable.c' l='1047' macro='1' u='r'/>
+<use f='remake/variable.c' l='1105' macro='1' u='r'/>
+<use f='remake/variable.c' l='1119' macro='1' u='r'/>

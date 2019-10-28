@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>debug.h source code [remake/debug.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="stringlist "/>
+<link rel="stylesheet" href="../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/debug.h'; var root_path = '..'; var data_path = '../../data';</script>
+<script src='../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='./'>remake</a>/<a href='debug.h.html'>debug.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Debugging macros and interface.</i></td></tr>
+<tr><th id="2">2</th><td><i>Copyright (C) 1999-2016 Free Software Foundation, Inc.</i></td></tr>
+<tr><th id="3">3</th><td><i>This file is part of GNU Make.</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>GNU Make is free software; you can redistribute it and/or modify it under the</i></td></tr>
+<tr><th id="6">6</th><td><i>terms of the GNU General Public License as published by the Free Software</i></td></tr>
+<tr><th id="7">7</th><td><i>Foundation; either version 3 of the License, or (at your option) any later</i></td></tr>
+<tr><th id="8">8</th><td><i>version.</i></td></tr>
+<tr><th id="9">9</th><td><i></i></td></tr>
+<tr><th id="10">10</th><td><i>GNU Make is distributed in the hope that it will be useful, but WITHOUT ANY</i></td></tr>
+<tr><th id="11">11</th><td><i>WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR</i></td></tr>
+<tr><th id="12">12</th><td><i>A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</i></td></tr>
+<tr><th id="13">13</th><td><i></i></td></tr>
+<tr><th id="14">14</th><td><i>You should have received a copy of the GNU General Public License along with</i></td></tr>
+<tr><th id="15">15</th><td><i>this program.  If not, see &lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.  */</i></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><u>#<span data-ppcond="17">ifndef</span> <span class="macro" data-ref="_M/DEBUG_H">DEBUG_H</span></u></td></tr>
+<tr><th id="18">18</th><td><u>#define <dfn class="macro" id="_M/DEBUG_H" data-ref="_M/DEBUG_H">DEBUG_H</dfn></u></td></tr>
+<tr><th id="19">19</th><td></td></tr>
+<tr><th id="20">20</th><td><u>#include <a href="types.h.html">"types.h"</a></u></td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><i class="doc">/**</i></td></tr>
+<tr><th id="23">23</th><td><i class="doc">  <span class="command">\brief</span> debug masks which control tracing output.</i></td></tr>
+<tr><th id="24">24</th><td><i class="doc"></i></td></tr>
+<tr><th id="25">25</th><td><i class="doc">  Imagine the below enums values as define'd values rather than</i></td></tr>
+<tr><th id="26">26</th><td><i class="doc">  distinct values of an enum. The enum is more (gdb) debugger friendly</i></td></tr>
+<tr><th id="27">27</th><td><i class="doc">  in showing what's set (e.g. DB_NONE, DB_ALL, or a single value</i></td></tr>
+<tr><th id="28">28</th><td><i class="doc">  and in entering expressons (e.g print db_level &amp; DB_BASIC).</i></td></tr>
+<tr><th id="29">29</th><td><i class="doc">*/</i></td></tr>
+<tr><th id="30">30</th><td><b>typedef</b> <b>enum</b> {</td></tr>
+<tr><th id="31">31</th><td>  <dfn class="enum" id="DB_NONE" title='DB_NONE' data-ref="DB_NONE">DB_NONE</dfn>           = <var>0x000</var>, <i class="doc">/**&lt; Mask when none of the below are set. */</i></td></tr>
+<tr><th id="32">32</th><td>  <dfn class="enum" id="DB_BASIC" title='DB_BASIC' data-ref="DB_BASIC">DB_BASIC</dfn>          = <var>0x001</var>, <i class="doc">/**&lt; targets which need to be made and status;</i></td></tr>
+<tr><th id="33">33</th><td><i class="doc">				 also set when tracing or debugging */</i></td></tr>
+<tr><th id="34">34</th><td>  <dfn class="enum" id="DB_VERBOSE" title='DB_VERBOSE' data-ref="DB_VERBOSE">DB_VERBOSE</dfn>        = <var>0x002</var>, <i class="doc">/**&lt; A more verbose trace */</i></td></tr>
+<tr><th id="35">35</th><td>  <dfn class="enum" id="DB_JOBS" title='DB_JOBS' data-ref="DB_JOBS">DB_JOBS</dfn>           = <var>0x004</var>, <i class="doc">/**&lt; Prints messages giving details on the</i></td></tr>
+<tr><th id="36">36</th><td><i class="doc">				  invocation of specific subcommands.</i></td></tr>
+<tr><th id="37">37</th><td><i class="doc">				  Can be set via --debug=jobs</i></td></tr>
+<tr><th id="38">38</th><td><i class="doc">			     */</i></td></tr>
+<tr><th id="39">39</th><td>  <dfn class="enum" id="DB_IMPLICIT" title='DB_IMPLICIT' data-ref="DB_IMPLICIT">DB_IMPLICIT</dfn>       = <var>0x008</var>, <i class="doc">/**&lt; Prints messages describing the implicit</i></td></tr>
+<tr><th id="40">40</th><td><i class="doc">				  rule searches for each target. Can be</i></td></tr>
+<tr><th id="41">41</th><td><i class="doc">				  set via --debug=implicit</i></td></tr>
+<tr><th id="42">42</th><td><i class="doc">			     */</i></td></tr>
+<tr><th id="43">43</th><td>  <dfn class="enum" id="DB_TRACE" title='DB_TRACE' data-ref="DB_TRACE">DB_TRACE</dfn>          = <var>0x010</var>, <i class="doc">/**&lt; tracing */</i></td></tr>
+<tr><th id="44">44</th><td>  <dfn class="enum" id="DB_SHELL" title='DB_SHELL' data-ref="DB_SHELL">DB_SHELL</dfn>          = <var>0x020</var>, <i class="doc">/**&lt; add +x to SHELL invocations */</i></td></tr>
+<tr><th id="45">45</th><td>  <dfn class="enum" id="DB_MAKEFILES" title='DB_MAKEFILES' data-ref="DB_MAKEFILES">DB_MAKEFILES</dfn>      = <var>0x100</var>,</td></tr>
+<tr><th id="46">46</th><td>  <dfn class="enum" id="DB_READ_MAKEFILES" title='DB_READ_MAKEFILES' data-ref="DB_READ_MAKEFILES">DB_READ_MAKEFILES</dfn> = <var>0x200</var>, <i class="doc">/**&lt; Reading makefiles */</i></td></tr>
+<tr><th id="47">47</th><td>  <dfn class="enum" id="DB_CALL" title='DB_CALL' data-ref="DB_CALL">DB_CALL</dfn>           = <var>0x400</var>, <i class="doc">/**&lt; GNU Make function call and returns */</i></td></tr>
+<tr><th id="48">48</th><td>  <dfn class="enum" id="DB_UPDATE_GOAL" title='DB_UPDATE_GOAL' data-ref="DB_UPDATE_GOAL">DB_UPDATE_GOAL</dfn>    = <var>0x800</var>, <i class="doc">/**&lt; GNU Make function call and returns */</i></td></tr>
+<tr><th id="49">49</th><td>  <dfn class="enum" id="DB_ALL" title='DB_ALL' data-ref="DB_ALL">DB_ALL</dfn>            = <var>0xfff</var>  <i class="doc">/**&lt; Bitmask for all of the above. */</i></td></tr>
+<tr><th id="50">50</th><td>} <dfn class="typedef" id="debug_level_mask_t" title='debug_level_mask_t' data-type='enum debug_level_mask_t' data-ref="debug_level_mask_t">debug_level_mask_t</dfn>;</td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td><b>typedef</b> <b>enum</b> {</td></tr>
+<tr><th id="53">53</th><td>  <dfn class="enum" id="DEBUGGER_ON_ERROR" title='DEBUGGER_ON_ERROR' data-ref="DEBUGGER_ON_ERROR">DEBUGGER_ON_ERROR</dfn>  = <var>0x1</var>,   <i class="doc">/**&lt; Enter debugger on any error */</i></td></tr>
+<tr><th id="54">54</th><td>  <dfn class="enum" id="DEBUGGER_ON_FATAL" title='DEBUGGER_ON_FATAL' data-ref="DEBUGGER_ON_FATAL">DEBUGGER_ON_FATAL</dfn>  = <var>0x2</var>,   <i class="doc">/**&lt; Enter debugger on a fatal error */</i></td></tr>
+<tr><th id="55">55</th><td>  <dfn class="enum" id="DEBUGGER_ON_SIG" title='DEBUGGER_ON_SIG' data-ref="DEBUGGER_ON_SIG">DEBUGGER_ON_SIG</dfn>    = <var>0x4</var>    <i class="doc">/**&lt; Enter debugger on getting a signal */</i></td></tr>
+<tr><th id="56">56</th><td>} <dfn class="typedef" id="debug_enter_debugger_t" title='debug_enter_debugger_t' data-type='enum debug_enter_debugger_t' data-ref="debug_enter_debugger_t">debug_enter_debugger_t</dfn>;</td></tr>
+<tr><th id="57">57</th><td></td></tr>
+<tr><th id="58">58</th><td><b>typedef</b> <b>enum</b> {</td></tr>
+<tr><th id="59">59</th><td>  <dfn class="enum" id="DEBUGGER_QUIT_RC" title='DEBUGGER_QUIT_RC' data-ref="DEBUGGER_QUIT_RC">DEBUGGER_QUIT_RC</dfn>   = <var>77</var>,    <i class="doc">/**&lt; debugger issued a "quit" command. */</i></td></tr>
+<tr><th id="60">60</th><td>} <dfn class="typedef" id="debug_dummy_t" title='debug_dummy_t' data-type='enum debug_dummy_t' data-ref="debug_dummy_t">debug_dummy_t</dfn>;</td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td><i class="doc">/** These variables are trickery to force the above enum symbol values to</i></td></tr>
+<tr><th id="63">63</th><td><i class="doc">    be recorded in debug symbol tables. It is used to allow one refer</i></td></tr>
+<tr><th id="64">64</th><td><i class="doc">    to above enumeration values in a debugger and debugger</i></td></tr>
+<tr><th id="65">65</th><td><i class="doc">    expressions */</i></td></tr>
+<tr><th id="66">66</th><td><b>extern</b> <a class="typedef" href="#debug_level_mask_t" title='debug_level_mask_t' data-type='enum debug_level_mask_t' data-ref="debug_level_mask_t">debug_level_mask_t</a> <dfn class="decl" id="debug_dummy_level_mask" title='debug_dummy_level_mask' data-ref="debug_dummy_level_mask">debug_dummy_level_mask</dfn>;</td></tr>
+<tr><th id="67">67</th><td><b>extern</b> <a class="typedef" href="#debug_enter_debugger_t" title='debug_enter_debugger_t' data-type='enum debug_enter_debugger_t' data-ref="debug_enter_debugger_t">debug_enter_debugger_t</a> <dfn class="decl" id="debug_dummy_enter_debugger_mask" title='debug_dummy_enter_debugger_mask' data-ref="debug_dummy_enter_debugger_mask">debug_dummy_enter_debugger_mask</dfn>;</td></tr>
+<tr><th id="68">68</th><td></td></tr>
+<tr><th id="69">69</th><td><i class="doc">/** bitmask of debug_level_mask values. */</i></td></tr>
+<tr><th id="70">70</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="db_level" title='db_level' data-ref="db_level">db_level</dfn>;</td></tr>
+<tr><th id="71">71</th><td></td></tr>
+<tr><th id="72">72</th><td><i class="doc">/*!</i></td></tr>
+<tr><th id="73">73</th><td><i class="doc">  If 0 (or false) we are not in the debugger command read loop.</i></td></tr>
+<tr><th id="74">74</th><td><i class="doc">  If 1 (or true) we are in the debugger command read loop.</i></td></tr>
+<tr><th id="75">75</th><td><i class="doc">  If DEBUGGER_QUIT_RC we've requested to quit.</i></td></tr>
+<tr><th id="76">76</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="77">77</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="in_debugger" title='in_debugger' data-ref="in_debugger">in_debugger</dfn>;</td></tr>
+<tr><th id="78">78</th><td></td></tr>
+<tr><th id="79">79</th><td><u>#include <a href="../include/setjmp.h.html">&lt;setjmp.h&gt;</a></u></td></tr>
+<tr><th id="80">80</th><td><b>extern</b> <a class="typedef" href="../include/setjmp.h.html#jmp_buf" title='jmp_buf' data-type='struct __jmp_buf_tag [1]' data-ref="jmp_buf">jmp_buf</a> <dfn class="decl" id="debugger_loop" title='debugger_loop' data-ref="debugger_loop">debugger_loop</dfn>;</td></tr>
+<tr><th id="81">81</th><td></td></tr>
+<tr><th id="82">82</th><td><i class="doc">/** <span class="command">\brief</span> The structure used to hold the list of strings given</i></td></tr>
+<tr><th id="83">83</th><td><i class="doc">    in command switches of a type that takes string arguments.  */</i></td></tr>
+<tr><th id="84">84</th><td><b>struct</b> <dfn class="type def" id="stringlist" title='stringlist' data-ref="stringlist">stringlist</dfn></td></tr>
+<tr><th id="85">85</th><td>{</td></tr>
+<tr><th id="86">86</th><td>  <em>const</em> <em>char</em> **<dfn class="decl" id="stringlist::list" title='stringlist::list' data-ref="stringlist::list">list</dfn>;	<i class="doc">/**&lt; Nil-terminated list of strings.  */</i></td></tr>
+<tr><th id="87">87</th><td>  <em>unsigned</em> <em>int</em> <dfn class="decl" id="stringlist::idx" title='stringlist::idx' data-ref="stringlist::idx">idx</dfn>;	<i class="doc">/**&lt; Index into above.  */</i></td></tr>
+<tr><th id="88">88</th><td>  <em>unsigned</em> <em>int</em> <dfn class="decl" id="stringlist::max" title='stringlist::max' data-ref="stringlist::max">max</dfn>;	<i class="doc">/**&lt; Number of pointers allocated.  */</i></td></tr>
+<tr><th id="89">89</th><td>};</td></tr>
+<tr><th id="90">90</th><td></td></tr>
+<tr><th id="91">91</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="debug_flag" title='debug_flag' data-ref="debug_flag">debug_flag</dfn>;</td></tr>
+<tr><th id="92">92</th><td></td></tr>
+<tr><th id="93">93</th><td><i class="doc">/*! If 1, we don't give additional error reporting information. */</i></td></tr>
+<tr><th id="94">94</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="no_extended_errors" title='no_extended_errors' data-ref="no_extended_errors">no_extended_errors</dfn>;</td></tr>
+<tr><th id="95">95</th><td></td></tr>
+<tr><th id="96">96</th><td><i class="doc">/*! If 1, we show variable definitions */</i></td></tr>
+<tr><th id="97">97</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="show_variable_definitions" title='show_variable_definitions' data-ref="show_variable_definitions">show_variable_definitions</dfn>;</td></tr>
+<tr><th id="98">98</th><td></td></tr>
+<tr><th id="99">99</th><td><i class="doc">/*! If true, enter the debugger before updating goal target. */</i></td></tr>
+<tr><th id="100">100</th><td><b>extern</b> <a class="macro" href="types.h.html#50" title="uint8_t" data-ref="_M/bool">bool</a> <dfn class="decl" id="b_debugger_goal" title='b_debugger_goal' data-ref="b_debugger_goal">b_debugger_goal</dfn>;</td></tr>
+<tr><th id="101">101</th><td></td></tr>
+<tr><th id="102">102</th><td><i class="doc">/*! If true, enter the debugger before reading any makefiles. */</i></td></tr>
+<tr><th id="103">103</th><td><b>extern</b> <a class="macro" href="types.h.html#50" title="uint8_t" data-ref="_M/bool">bool</a> <dfn class="decl" id="b_debugger_preread" title='b_debugger_preread' data-ref="b_debugger_preread">b_debugger_preread</dfn>;</td></tr>
+<tr><th id="104">104</th><td></td></tr>
+<tr><th id="105">105</th><td><i class="doc">/*! If nonzero, we are debugging after each "step" for that many times.</i></td></tr>
+<tr><th id="106">106</th><td><i class="doc">  When we have a value 1, then we actually run the debugger read loop.</i></td></tr>
+<tr><th id="107">107</th><td><i class="doc">  Otherwise we decrement the step count.</i></td></tr>
+<tr><th id="108">108</th><td><i class="doc"></i></td></tr>
+<tr><th id="109">109</th><td><i class="doc">*/</i></td></tr>
+<tr><th id="110">110</th><td><b>extern</b> <em>unsigned</em> <em>int</em> <dfn class="decl" id="i_debugger_stepping" title='i_debugger_stepping' data-ref="i_debugger_stepping">i_debugger_stepping</dfn>;</td></tr>
+<tr><th id="111">111</th><td></td></tr>
+<tr><th id="112">112</th><td><i class="doc">/*! If nonzero, we are debugging after each "next" for that many times.</i></td></tr>
+<tr><th id="113">113</th><td><i class="doc">  When we have a value 1, then we actually run the debugger read loop.</i></td></tr>
+<tr><th id="114">114</th><td><i class="doc">  Otherwise we decrement the step count.</i></td></tr>
+<tr><th id="115">115</th><td><i class="doc"></i></td></tr>
+<tr><th id="116">116</th><td><i class="doc">*/</i></td></tr>
+<tr><th id="117">117</th><td><b>extern</b> <em>unsigned</em> <em>int</em> <dfn class="decl" id="i_debugger_nexting" title='i_debugger_nexting' data-ref="i_debugger_nexting">i_debugger_nexting</dfn>;</td></tr>
+<tr><th id="118">118</th><td></td></tr>
+<tr><th id="119">119</th><td><i class="doc">/*! If nonzero, enter the debugger if we hit a fatal error.</i></td></tr>
+<tr><th id="120">120</th><td><i class="doc">*/</i></td></tr>
+<tr><th id="121">121</th><td><b>extern</b> <em>unsigned</em> <em>int</em> <dfn class="decl" id="debugger_on_error" title='debugger_on_error' data-ref="debugger_on_error">debugger_on_error</dfn>;</td></tr>
+<tr><th id="122">122</th><td></td></tr>
+<tr><th id="123">123</th><td><i class="doc">/*! If nonzero, we have requested some sort of debugging.</i></td></tr>
+<tr><th id="124">124</th><td><i class="doc">*/</i></td></tr>
+<tr><th id="125">125</th><td><b>extern</b> <em>unsigned</em> <em>int</em> <dfn class="decl" id="debugger_enabled" title='debugger_enabled' data-ref="debugger_enabled">debugger_enabled</dfn>;</td></tr>
+<tr><th id="126">126</th><td></td></tr>
+<tr><th id="127">127</th><td><b>extern</b> <a class="typedef" href="types.h.html#stringlist_t" title='stringlist_t' data-type='struct stringlist' data-ref="stringlist_t">stringlist_t</a> *<dfn class="decl" id="db_flags" title='db_flags' data-ref="db_flags">db_flags</dfn>;</td></tr>
+<tr><th id="128">128</th><td></td></tr>
+<tr><th id="129">129</th><td><u>#define <dfn class="macro" id="_M/ISDB" data-ref="_M/ISDB">ISDB</dfn>(_l)    ((_l)&amp;db_level)</u></td></tr>
+<tr><th id="130">130</th><td></td></tr>
+<tr><th id="131">131</th><td><i class="doc">/*! Debugged print */</i></td></tr>
+<tr><th id="132">132</th><td><u>#define <dfn class="macro" id="_M/DBPRINT" data-ref="_M/DBPRINT">DBPRINT</dfn>(_x)           \</u></td></tr>
+<tr><th id="133">133</th><td><u>   printf _x; fflush (stdout)</u></td></tr>
+<tr><th id="134">134</th><td></td></tr>
+<tr><th id="135">135</th><td><i class="doc">/*! Debugged print indented a number of spaces given by "_depth" */</i></td></tr>
+<tr><th id="136">136</th><td><u>#define <dfn class="macro" id="_M/DBPRINTS" data-ref="_M/DBPRINTS">DBPRINTS</dfn>(_x, _depth) \</u></td></tr>
+<tr><th id="137">137</th><td><u>   print_spaces (_depth);    \</u></td></tr>
+<tr><th id="138">138</th><td><u>   DBPRINT(_x)</u></td></tr>
+<tr><th id="139">139</th><td></td></tr>
+<tr><th id="140">140</th><td><i class="doc">/*! Debugged print if debug mask is set indented a number of spaces</i></td></tr>
+<tr><th id="141">141</th><td><i class="doc">    implied by global variable "depth"</i></td></tr>
+<tr><th id="142">142</th><td><i class="doc">*/</i></td></tr>
+<tr><th id="143">143</th><td><u>#define <dfn class="macro" id="_M/DBS" data-ref="_M/DBS">DBS</dfn>(_l,_x)           \</u></td></tr>
+<tr><th id="144">144</th><td><u>  do {                       \</u></td></tr>
+<tr><th id="145">145</th><td><u>    if(ISDB(_l)) {           \</u></td></tr>
+<tr><th id="146">146</th><td><u>       DBPRINTS(_x, depth);  \</u></td></tr>
+<tr><th id="147">147</th><td><u>    }                        \</u></td></tr>
+<tr><th id="148">148</th><td><u>  } while(0)</u></td></tr>
+<tr><th id="149">149</th><td></td></tr>
+<tr><th id="150">150</th><td><i class="doc">/*! Debugged print if debug mask is set indented a number of spaces</i></td></tr>
+<tr><th id="151">151</th><td><i class="doc">    given by "_depth"</i></td></tr>
+<tr><th id="152">152</th><td><i class="doc">*/</i></td></tr>
+<tr><th id="153">153</th><td><u>#define <dfn class="macro" id="_M/DBSD" data-ref="_M/DBSD">DBSD</dfn>(_l,_x,_depth)   \</u></td></tr>
+<tr><th id="154">154</th><td><u>  do {                       \</u></td></tr>
+<tr><th id="155">155</th><td><u>    if(ISDB(_l)) {           \</u></td></tr>
+<tr><th id="156">156</th><td><u>      DBPRINTS(_x, _depth);   \</u></td></tr>
+<tr><th id="157">157</th><td><u>    }                        \</u></td></tr>
+<tr><th id="158">158</th><td><u>  } while(0)</u></td></tr>
+<tr><th id="159">159</th><td></td></tr>
+<tr><th id="160">160</th><td><b>extern</b> <em>int</em> <a class="decl" href="#db_level" title='db_level' data-ref="db_level">db_level</a>;</td></tr>
+<tr><th id="161">161</th><td></td></tr>
+<tr><th id="162">162</th><td><u>#define <dfn class="macro" id="_M/ISDB" data-ref="_M/ISDB">ISDB</dfn>(_l)    ((_l)&amp;db_level)</u></td></tr>
+<tr><th id="163">163</th><td></td></tr>
+<tr><th id="164">164</th><td><u>#define <dfn class="macro" id="_M/DBF" data-ref="_M/DBF">DBF</dfn>(_l,_x)  do{ if(ISDB(_l)) {print_spaces (depth); \</u></td></tr>
+<tr><th id="165">165</th><td><u>                                      printf (_x, file-&gt;name); \</u></td></tr>
+<tr><th id="166">166</th><td><u>                                      fflush (stdout);} }while(0)</u></td></tr>
+<tr><th id="167">167</th><td></td></tr>
+<tr><th id="168">168</th><td><u>#define <dfn class="macro" id="_M/DB" data-ref="_M/DB">DB</dfn>(_l,_x)   do{ if(ISDB(_l)) {printf _x; fflush (stdout);} }while(0)</u></td></tr>
+<tr><th id="169">169</th><td></td></tr>
+<tr><th id="170">170</th><td></td></tr>
+<tr><th id="171">171</th><td><u>#<span data-ppcond="17">endif</span> /*DEBUG_H*/</u></td></tr>
+<tr><th id="172">172</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='debug.c.html'>remake/debug.c</a><br/>Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

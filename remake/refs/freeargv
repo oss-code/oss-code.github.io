@@ -1,0 +1,28 @@
+<dec f='remake/buildargv.h' l='40' type='void freeargv(char ** vector)'/>
+<def f='remake/buildargv.c' l='56' ll='69' type='void freeargv(char ** vector)'/>
+<use f='remake/buildargv.c' l='153' u='c' c='buildargv'/>
+<use f='remake/buildargv.c' l='224' u='c' c='buildargv'/>
+<doc f='remake/buildargv.c' l='43'>/*
+
+@deftypefn Extension void freeargv (char **@var{vector})
+
+Free an argument vector that was built using @code{buildargv}.  Simply
+scans through @var{vector}, freeing the memory for each argument until
+the terminating @code{NULL} is found, and then frees @var{vector}
+itself.
+
+@end deftypefn
+
+*/</doc>
+<doc f='remake/buildargv.h' l='28'>/*
+
+@deftypefn Extension void freeargv (char **@var{vector})
+
+Free an argument vector that was built using @code{buildargv}.  Simply
+scans through @var{vector}, freeing the memory for each argument until
+the terminating @code{NULL} is found, and then frees @var{vector}
+itself.
+
+@end deftypefn
+
+*/</doc>

@@ -1,0 +1,8 @@
+<dec f='remake/debugger/break.h' l='37' type='breakpoint_node_t *'/>
+<def f='remake/debugger/break.c' l='39' type='breakpoint_node_t *'/>
+<use f='remake/debugger/break.c' l='55' u='r' c='add_breakpoint'/>
+<use f='remake/debugger/break.c' l='56' u='w' c='add_breakpoint'/>
+<use f='remake/debugger/break.c' l='58' u='r' c='add_breakpoint'/>
+<use f='remake/debugger/break.c' l='60' u='w' c='add_breakpoint'/>
+<use f='remake/debugger/break.c' l='121' u='w' c='remove_breakpoint'/>
+<doc f='remake/debugger/break.h' l='36'>/** Pointers to bottom of current breakpoint list. */</doc>

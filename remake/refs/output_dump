@@ -1,0 +1,11 @@
+<dec f='remake/output.h' l='53' type='void output_dump(struct output * out)'/>
+<doc f='remake/output.h' l='52'>/* Dump any child output content to stdout, and reset it.  */</doc>
+<use f='remake/job.c' l='785' u='c' c='reap_children'/>
+<use f='remake/job.c' l='819' u='c' c='reap_children'/>
+<use f='remake/job.c' l='1162' u='c' c='start_job_command'/>
+<def f='remake/output.c' l='356' ll='401' type='void output_dump(struct output * out)'/>
+<use f='remake/output.c' l='549' u='c' c='output_close'/>
+<doc f='remake/output.c' l='351'>/* Synchronize the output of jobs in -j mode to keep the results of
+   each job together. This is done by holding the results in temp files,
+   one for stdout and potentially another for stderr, and only releasing
+   them to &quot;real&quot; stdout/stderr when a semaphore can be obtained. */</doc>

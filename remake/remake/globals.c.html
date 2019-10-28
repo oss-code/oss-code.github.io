@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>globals.c source code [remake/globals.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/globals.c'; var root_path = '..'; var data_path = '../../data';</script>
+<script src='../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='./'>remake</a>/<a href='globals.c.html'>globals.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><u>#include <a href="types.h.html">"types.h"</a></u></td></tr>
+<tr><th id="2">2</th><td><u>#include <a href="globals.h.html">"globals.h"</a></u></td></tr>
+<tr><th id="3">3</th><td></td></tr>
+<tr><th id="4">4</th><td><em>int</em> <dfn class="decl def" id="env_overrides" title='env_overrides' data-ref="env_overrides">env_overrides</dfn> = <var>0</var>;</td></tr>
+<tr><th id="5">5</th><td></td></tr>
+<tr><th id="6">6</th><td><i>/* Nonzero means ignore status codes returned by commands</i></td></tr>
+<tr><th id="7">7</th><td><i>   executed to remake files.  Just treat them all as successful (-i).  */</i></td></tr>
+<tr><th id="8">8</th><td></td></tr>
+<tr><th id="9">9</th><td><em>int</em> <dfn class="decl def" id="ignore_errors_flag" title='ignore_errors_flag' data-ref="ignore_errors_flag">ignore_errors_flag</dfn> = <var>0</var>;</td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td><i>/* Nonzero means don't remake anything, just print the data base</i></td></tr>
+<tr><th id="12">12</th><td><i>   that results from reading the makefile (-p).  */</i></td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td><em>int</em> <dfn class="decl def" id="print_data_base_flag" title='print_data_base_flag' data-ref="print_data_base_flag">print_data_base_flag</dfn> = <var>0</var>;</td></tr>
+<tr><th id="15">15</th><td></td></tr>
+<tr><th id="16">16</th><td><i>/* Nonzero means don't remake anything; just return a nonzero status</i></td></tr>
+<tr><th id="17">17</th><td><i>   if the specified targets are not up to date (-q).  */</i></td></tr>
+<tr><th id="18">18</th><td></td></tr>
+<tr><th id="19">19</th><td><em>int</em> <dfn class="decl def" id="question_flag" title='question_flag' data-ref="question_flag">question_flag</dfn> = <var>0</var>;</td></tr>
+<tr><th id="20">20</th><td></td></tr>
+<tr><th id="21">21</th><td><i>/* Nonzero means do not use any of the builtin rules (-r) / variables (-R).  */</i></td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><em>int</em> <dfn class="decl def" id="no_builtin_rules_flag" title='no_builtin_rules_flag' data-ref="no_builtin_rules_flag">no_builtin_rules_flag</dfn> = <var>0</var>;</td></tr>
+<tr><th id="24">24</th><td><em>int</em> <dfn class="decl def" id="no_builtin_variables_flag" title='no_builtin_variables_flag' data-ref="no_builtin_variables_flag">no_builtin_variables_flag</dfn> = <var>0</var>;</td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><i>/* Nonzero means check symlink mtimes.  */</i></td></tr>
+<tr><th id="27">27</th><td><em>int</em> <dfn class="decl def" id="check_symlink_flag" title='check_symlink_flag' data-ref="check_symlink_flag">check_symlink_flag</dfn> = <var>0</var>;</td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><i>/* Nonzero means print directory before starting and when done (-w).  */</i></td></tr>
+<tr><th id="30">30</th><td><em>int</em> <dfn class="decl def" id="print_directory_flag" title='print_directory_flag' data-ref="print_directory_flag">print_directory_flag</dfn> = <var>0</var>;</td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><i>/* Nonzero means print version information.  */</i></td></tr>
+<tr><th id="33">33</th><td><em>int</em> <dfn class="decl def" id="print_version_flag" title='print_version_flag' data-ref="print_version_flag">print_version_flag</dfn> = <var>0</var>;</td></tr>
+<tr><th id="34">34</th><td></td></tr>
+<tr><th id="35">35</th><td><i class="doc">/*! Nonzero means --trace and shell trace with input.  */</i></td></tr>
+<tr><th id="36">36</th><td><em>int</em> <dfn class="decl def" id="shell_trace" title='shell_trace' data-ref="shell_trace">shell_trace</dfn> = <var>0</var>;</td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td><i>/* Nonzero means profile calls (option --profile).  */</i></td></tr>
+<tr><th id="39">39</th><td><em>int</em> <dfn class="decl def" id="profile_flag" title='profile_flag' data-ref="profile_flag">profile_flag</dfn> = <var>0</var>;</td></tr>
+<tr><th id="40">40</th><td></td></tr>
+<tr><th id="41">41</th><td><i>/* Nonzero means do extra verification (that may slow things down).  */</i></td></tr>
+<tr><th id="42">42</th><td><em>int</em> <dfn class="decl def" id="verify_flag" title='verify_flag' data-ref="verify_flag">verify_flag</dfn>;</td></tr>
+<tr><th id="43">43</th><td></td></tr>
+<tr><th id="44">44</th><td><i>/* Nonzero means do not print commands to be executed (-s).  */</i></td></tr>
+<tr><th id="45">45</th><td><em>int</em> <dfn class="decl def" id="silent_flag" title='silent_flag' data-ref="silent_flag">silent_flag</dfn>;</td></tr>
+<tr><th id="46">46</th><td></td></tr>
+<tr><th id="47">47</th><td><i>/* Nonzero means just touch the files</i></td></tr>
+<tr><th id="48">48</th><td><i>   that would appear to need remaking (-t)  */</i></td></tr>
+<tr><th id="49">49</th><td><em>int</em> <dfn class="decl def" id="touch_flag" title='touch_flag' data-ref="touch_flag">touch_flag</dfn>;</td></tr>
+<tr><th id="50">50</th><td></td></tr>
+<tr><th id="51">51</th><td><i>/* Nonzero means just print what commands would need to be executed,</i></td></tr>
+<tr><th id="52">52</th><td><i>   don't actually execute them (-n).  */</i></td></tr>
+<tr><th id="53">53</th><td><em>int</em> <dfn class="decl def" id="just_print_flag" title='just_print_flag' data-ref="just_print_flag">just_print_flag</dfn>;</td></tr>
+<tr><th id="54">54</th><td></td></tr>
+<tr><th id="55">55</th><td><i class="doc">/*! If 1, we don't give additional error reporting information. */</i></td></tr>
+<tr><th id="56">56</th><td><em>int</em> <dfn class="decl def" id="no_extended_errors" title='no_extended_errors' data-ref="no_extended_errors">no_extended_errors</dfn> = <var>0</var>;</td></tr>
+<tr><th id="57">57</th><td></td></tr>
+<tr><th id="58">58</th><td><em>int</em> <dfn class="decl def" id="db_level" title='db_level' data-ref="db_level">db_level</dfn> = <var>0</var>;</td></tr>
+<tr><th id="59">59</th><td></td></tr>
+<tr><th id="60">60</th><td><i class="doc">/*! Value of the MAKELEVEL variable at startup (or 0).  */</i></td></tr>
+<tr><th id="61">61</th><td><em>unsigned</em> <em>int</em> <dfn class="decl def" id="makelevel" title='makelevel' data-ref="makelevel">makelevel</dfn>;</td></tr>
+<tr><th id="62">62</th><td></td></tr>
+<tr><th id="63">63</th><td><i class="doc">/*! Nonzero gives a list of explicit target names and exits. Set by option</i></td></tr>
+<tr><th id="64">64</th><td><i class="doc">  --targets</i></td></tr>
+<tr><th id="65">65</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="66">66</th><td><em>int</em> <dfn class="decl def" id="show_targets_flag" title='show_targets_flag' data-ref="show_targets_flag">show_targets_flag</dfn> = <var>0</var>;</td></tr>
+<tr><th id="67">67</th><td></td></tr>
+<tr><th id="68">68</th><td><i class="doc">/*! Nonzero gives a list of explicit target names that have commands</i></td></tr>
+<tr><th id="69">69</th><td><i class="doc">  associated with them and exits. Set by option --tasks</i></td></tr>
+<tr><th id="70">70</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="71">71</th><td><em>int</em> <dfn class="decl def" id="show_tasks_flag" title='show_tasks_flag' data-ref="show_tasks_flag">show_tasks_flag</dfn> = <var>0</var>;</td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td><i class="doc">/*! If 1, same as --debugger=preaction */</i></td></tr>
+<tr><th id="74">74</th><td><em>int</em> <dfn class="decl def" id="debugger_flag" title='debugger_flag' data-ref="debugger_flag">debugger_flag</dfn>;</td></tr>
+<tr><th id="75">75</th><td></td></tr>
+<tr><th id="76">76</th><td><i>/* If nonzero, we should print a warning message</i></td></tr>
+<tr><th id="77">77</th><td><i>   for each reference to an undefined variable.  */</i></td></tr>
+<tr><th id="78">78</th><td><em>int</em> <dfn class="decl def" id="warn_undefined_variables_flag" title='warn_undefined_variables_flag' data-ref="warn_undefined_variables_flag">warn_undefined_variables_flag</dfn>;</td></tr>
+<tr><th id="79">79</th><td></td></tr>
+<tr><th id="80">80</th><td><i class="doc">/** True if we are inside the debugger, false otherwise. */</i></td></tr>
+<tr><th id="81">81</th><td><em>int</em> <dfn class="decl def" id="in_debugger" title='in_debugger' data-ref="in_debugger">in_debugger</dfn> = <a class="macro" href="types.h.html#47" title="0" data-ref="_M/false">false</a>;</td></tr>
+<tr><th id="82">82</th><td></td></tr>
+<tr><th id="83">83</th><td><i class="doc">/*! Nonzero if we have seen the magic '.POSIX' target.</i></td></tr>
+<tr><th id="84">84</th><td><i class="doc">   This turns on pedantic compliance with POSIX.2.  */</i></td></tr>
+<tr><th id="85">85</th><td><em>int</em> <dfn class="decl def" id="posix_pedantic" title='posix_pedantic' data-ref="posix_pedantic">posix_pedantic</dfn>;</td></tr>
+<tr><th id="86">86</th><td></td></tr>
+<tr><th id="87">87</th><td><i class="doc">/*! If nonzero, we are debugging after each "step" for that many times.</i></td></tr>
+<tr><th id="88">88</th><td><i class="doc">  When we have a value 1, then we actually run the debugger read loop.</i></td></tr>
+<tr><th id="89">89</th><td><i class="doc">  Otherwise we decrement the step count.</i></td></tr>
+<tr><th id="90">90</th><td><i class="doc"></i></td></tr>
+<tr><th id="91">91</th><td><i class="doc">*/</i></td></tr>
+<tr><th id="92">92</th><td><em>unsigned</em> <em>int</em> <dfn class="decl def" id="i_debugger_stepping" title='i_debugger_stepping' data-ref="i_debugger_stepping">i_debugger_stepping</dfn> = <var>0</var>;</td></tr>
+<tr><th id="93">93</th><td></td></tr>
+<tr><th id="94">94</th><td><i class="doc">/*! If nonzero, we are debugging after each "next" for that many times.</i></td></tr>
+<tr><th id="95">95</th><td><i class="doc">  When we have a value 1, then we actually run the debugger read loop.</i></td></tr>
+<tr><th id="96">96</th><td><i class="doc">  Otherwise we decrement the step count.</i></td></tr>
+<tr><th id="97">97</th><td><i class="doc"></i></td></tr>
+<tr><th id="98">98</th><td><i class="doc">*/</i></td></tr>
+<tr><th id="99">99</th><td><em>unsigned</em> <em>int</em> <dfn class="decl def" id="i_debugger_nexting" title='i_debugger_nexting' data-ref="i_debugger_nexting">i_debugger_nexting</dfn> = <var>0</var>;</td></tr>
+<tr><th id="100">100</th><td></td></tr>
+<tr><th id="101">101</th><td><i class="doc">/*! If nonzero, enter the debugger if we hit a fatal error.</i></td></tr>
+<tr><th id="102">102</th><td><i class="doc">*/</i></td></tr>
+<tr><th id="103">103</th><td><em>unsigned</em> <em>int</em> <dfn class="decl def" id="debugger_on_error" title='debugger_on_error' data-ref="debugger_on_error">debugger_on_error</dfn> = <var>0</var>;</td></tr>
+<tr><th id="104">104</th><td></td></tr>
+<tr><th id="105">105</th><td><i class="doc">/*! If nonzero, we have requested some sort of debugging.</i></td></tr>
+<tr><th id="106">106</th><td><i class="doc">*/</i></td></tr>
+<tr><th id="107">107</th><td><em>unsigned</em> <em>int</em> <dfn class="decl def" id="debugger_enabled" title='debugger_enabled' data-ref="debugger_enabled">debugger_enabled</dfn>;</td></tr>
+<tr><th id="108">108</th><td></td></tr>
+<tr><th id="109">109</th><td><i class="doc">/*! If true, enter the debugger before reading any makefiles. */</i></td></tr>
+<tr><th id="110">110</th><td><a class="macro" href="types.h.html#50" title="uint8_t" data-ref="_M/bool">bool</a> <dfn class="decl def" id="b_debugger_preread" title='b_debugger_preread' data-ref="b_debugger_preread">b_debugger_preread</dfn> = <a class="macro" href="types.h.html#47" title="0" data-ref="_M/false">false</a>;</td></tr>
+<tr><th id="111">111</th><td></td></tr>
+<tr><th id="112">112</th><td><i>/* This character introduces a command: it's the first char on the line.  */</i></td></tr>
+<tr><th id="113">113</th><td><em>char</em> <dfn class="decl def" id="cmd_prefix" title='cmd_prefix' data-ref="cmd_prefix">cmd_prefix</dfn> = <kbd>'\t'</kbd>;</td></tr>
+<tr><th id="114">114</th><td></td></tr>
+<tr><th id="115">115</th><td><i class="doc">/*! Our current directory after processing all -C options.  */</i></td></tr>
+<tr><th id="116">116</th><td><em>char</em> *<dfn class="decl def" id="starting_directory" title='starting_directory' data-ref="starting_directory">starting_directory</dfn>;</td></tr>
+<tr><th id="117">117</th><td></td></tr>
+<tr><th id="118">118</th><td><i>/* One of OUTPUT_SYNC_* if the "--output-sync" option was given.  This</i></td></tr>
+<tr><th id="119">119</th><td><i>   attempts to synchronize the output of parallel jobs such that the results</i></td></tr>
+<tr><th id="120">120</th><td><i>   of each job stay together.  */</i></td></tr>
+<tr><th id="121">121</th><td><em>int</em> <dfn class="decl def" id="output_sync" title='output_sync' data-ref="output_sync">output_sync</dfn> = <a class="macro" href="globals.h.html#7" title="0" data-ref="_M/OUTPUT_SYNC_NONE">OUTPUT_SYNC_NONE</a>;</td></tr>
+<tr><th id="122">122</th><td></td></tr>
+<tr><th id="123">123</th><td><em>const</em> <em>char</em> *<dfn class="decl def" id="default_shell" title='default_shell' data-ref="default_shell">default_shell</dfn>;</td></tr>
+<tr><th id="124">124</th><td></td></tr>
+<tr><th id="125">125</th><td><em>char</em> *<dfn class="decl def" id="remote_description" title='remote_description' data-ref="remote_description">remote_description</dfn> = <var>0</var>;</td></tr>
+<tr><th id="126">126</th><td></td></tr>
+<tr><th id="127">127</th><td><i>/* Remember the original value of the SHELL variable, from the environment.  */</i></td></tr>
+<tr><th id="128">128</th><td><b>struct</b> <a class="type" href="variable.h.html#variable" title='variable' data-ref="variable">variable</a> <dfn class="decl def" id="shell_var" title='shell_var' data-ref="shell_var">shell_var</dfn>;</td></tr>
+<tr><th id="129">129</th><td></td></tr>
+<tr><th id="130">130</th><td><i>/* The filename and pointer to line number of the</i></td></tr>
+<tr><th id="131">131</th><td><i>   makefile currently being read in.  */</i></td></tr>
+<tr><th id="132">132</th><td><em>const</em> <a class="typedef" href="gnuremake.h.html#gmk_floc" title='gmk_floc' data-type='struct gmk_floc' data-ref="gmk_floc">gmk_floc</a> *<dfn class="decl def" id="reading_file" title='reading_file' data-ref="reading_file">reading_file</dfn> = <var>0</var>;</td></tr>
+<tr><th id="133">133</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

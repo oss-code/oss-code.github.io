@@ -1,0 +1,10 @@
+<dec f='remake/variable.h' l='129' type='void install_variable_buffer(char ** bufp, unsigned int * lenp)'/>
+<dec f='remake/expand.h' l='49' type='void install_variable_buffer(char ** pp_buf, unsigned int * pi_len)'/>
+<doc f='remake/expand.h' l='46'>/*! Install a new variable_buffer context, returning the current one for
+   safe-keeping.  */</doc>
+<def f='remake/expand.c' l='591' ll='599' type='void install_variable_buffer(char ** bufp, unsigned int * lenp)'/>
+<doc f='remake/expand.c' l='588'>/* Install a new variable_buffer context, returning the current one for
+   safe-keeping.  */</doc>
+<use f='remake/function.c' l='1398' u='c' c='func_eval'/>
+<use f='remake/loadapi.c' l='59' u='c' c='gmk_eval'/>
+<use f='remake/variable.c' l='1184' u='c' c='shell_result'/>

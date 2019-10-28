@@ -1,0 +1,15 @@
+<dec f='remake/filedef.h' l='139' type='int try_implicit_rule(struct file * file, unsigned int depth)'/>
+<dec f='remake/implicit.h' l='15' type='int try_implicit_rule(file_t * file, unsigned int depth)'/>
+<doc f='remake/implicit.h' l='10'>/* For a FILE which has no commands specified, try to figure out some
+   from the implicit pattern rules.
+   Returns 1 if a suitable implicit rule was found,
+   after modifying FILE to contain the appropriate commands and deps,
+   or returns 0 if no implicit rule was found.  */</doc>
+<def f='remake/implicit.c' l='35' ll='61' type='int try_implicit_rule(struct file * file, unsigned int depth)'/>
+<doc f='remake/implicit.c' l='29'>/* For a FILE which has no commands specified, try to figure out some
+   from the implicit pattern rules.
+   Returns 1 if a suitable implicit rule was found,
+   after modifying FILE to contain the appropriate commands and deps,
+   or returns 0 if no implicit rule was found.  */</doc>
+<use f='remake/remake.c' l='572' u='c' c='update_file_1'/>
+<use f='remake/remake.c' l='1125' u='c' c='check_dep'/>

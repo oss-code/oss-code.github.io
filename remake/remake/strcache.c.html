@@ -1,0 +1,349 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>strcache.c source code [remake/strcache.c] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="hugestring,strcache "/>
+<link rel="stylesheet" href="../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/strcache.c'; var root_path = '..'; var data_path = '../../data';</script>
+<script src='../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='./'>remake</a>/<a href='strcache.c.html'>strcache.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Constant string caching for GNU Make.</i></td></tr>
+<tr><th id="2">2</th><td><i>Copyright (C) 2006-2016 Free Software Foundation, Inc.</i></td></tr>
+<tr><th id="3">3</th><td><i>This file is part of GNU Make.</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>GNU Make is free software; you can redistribute it and/or modify it under the</i></td></tr>
+<tr><th id="6">6</th><td><i>terms of the GNU General Public License as published by the Free Software</i></td></tr>
+<tr><th id="7">7</th><td><i>Foundation; either version 3 of the License, or (at your option) any later</i></td></tr>
+<tr><th id="8">8</th><td><i>version.</i></td></tr>
+<tr><th id="9">9</th><td><i></i></td></tr>
+<tr><th id="10">10</th><td><i>GNU Make is distributed in the hope that it will be useful, but WITHOUT ANY</i></td></tr>
+<tr><th id="11">11</th><td><i>WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR</i></td></tr>
+<tr><th id="12">12</th><td><i>A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</i></td></tr>
+<tr><th id="13">13</th><td><i></i></td></tr>
+<tr><th id="14">14</th><td><i>You should have received a copy of the GNU General Public License along with</i></td></tr>
+<tr><th id="15">15</th><td><i>this program.  If not, see &lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.  */</i></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><u>#include <a href="makeint.h.html">"makeint.h"</a></u></td></tr>
+<tr><th id="18">18</th><td></td></tr>
+<tr><th id="19">19</th><td><u>#include &lt;stddef.h&gt;</u></td></tr>
+<tr><th id="20">20</th><td><u>#include <a href="../include/assert.h.html">&lt;assert.h&gt;</a></u></td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><u>#include <a href="hash.h.html">"hash.h"</a></u></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><i>/* A string cached here will never be freed, so we don't need to worry about</i></td></tr>
+<tr><th id="25">25</th><td><i>   reference counting.  We just store the string, and then remember it in a</i></td></tr>
+<tr><th id="26">26</th><td><i>   hash so it can be looked up again. */</i></td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><b>typedef</b> <em>unsigned</em> <em>short</em> <em>int</em> <dfn class="typedef" id="sc_buflen_t" title='sc_buflen_t' data-type='unsigned short' data-ref="sc_buflen_t">sc_buflen_t</dfn>;</td></tr>
+<tr><th id="29">29</th><td></td></tr>
+<tr><th id="30">30</th><td><b>struct</b> <dfn class="type def" id="strcache" title='strcache' data-ref="strcache">strcache</dfn> {</td></tr>
+<tr><th id="31">31</th><td>  <b>struct</b> <a class="type" href="#strcache" title='strcache' data-ref="strcache">strcache</a> *<dfn class="tu decl" id="strcache::next" title='strcache::next' data-type='struct strcache *' data-ref="strcache::next">next</dfn>;    <i  data-doc="strcache::next">/* The next block of strings.  Must be first!  */</i></td></tr>
+<tr><th id="32">32</th><td>  <a class="typedef" href="#sc_buflen_t" title='sc_buflen_t' data-type='unsigned short' data-ref="sc_buflen_t">sc_buflen_t</a> <dfn class="tu decl" id="strcache::end" title='strcache::end' data-type='sc_buflen_t' data-ref="strcache::end">end</dfn>;          <i  data-doc="strcache::end">/* Offset to the beginning of free space.  */</i></td></tr>
+<tr><th id="33">33</th><td>  <a class="typedef" href="#sc_buflen_t" title='sc_buflen_t' data-type='unsigned short' data-ref="sc_buflen_t">sc_buflen_t</a> <dfn class="tu decl" id="strcache::bytesfree" title='strcache::bytesfree' data-type='sc_buflen_t' data-ref="strcache::bytesfree">bytesfree</dfn>;    <i  data-doc="strcache::bytesfree">/* Free space left in this buffer.  */</i></td></tr>
+<tr><th id="34">34</th><td>  <a class="typedef" href="#sc_buflen_t" title='sc_buflen_t' data-type='unsigned short' data-ref="sc_buflen_t">sc_buflen_t</a> <dfn class="tu decl" id="strcache::count" title='strcache::count' data-type='sc_buflen_t' data-ref="strcache::count">count</dfn>;        <i  data-doc="strcache::count">/* # of strings in this buffer (for stats).  */</i></td></tr>
+<tr><th id="35">35</th><td>  <em>char</em> <dfn class="tu decl" id="strcache::buffer" title='strcache::buffer' data-type='char [1]' data-ref="strcache::buffer">buffer</dfn>[<var>1</var>];           <i  data-doc="strcache::buffer">/* The buffer comes after this.  */</i></td></tr>
+<tr><th id="36">36</th><td>};</td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td><i>/* The size (in bytes) of each cache buffer.</i></td></tr>
+<tr><th id="39">39</th><td><i>   Try to pick something that will map well into the heap.</i></td></tr>
+<tr><th id="40">40</th><td><i>   This must be able to be represented by a short int (&lt;=65535).  */</i></td></tr>
+<tr><th id="41">41</th><td><u>#define <dfn class="macro" id="_M/CACHE_BUFFER_BASE" data-ref="_M/CACHE_BUFFER_BASE">CACHE_BUFFER_BASE</dfn>       (8192)</u></td></tr>
+<tr><th id="42">42</th><td><u>#define <dfn class="macro" id="_M/CACHE_BUFFER_ALLOC" data-ref="_M/CACHE_BUFFER_ALLOC">CACHE_BUFFER_ALLOC</dfn>(_s)  ((_s) - (2 * sizeof (<span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span>)))</u></td></tr>
+<tr><th id="43">43</th><td><u>#define <dfn class="macro" id="_M/CACHE_BUFFER_OFFSET" data-ref="_M/CACHE_BUFFER_OFFSET">CACHE_BUFFER_OFFSET</dfn>     (offsetof (struct <a class="type" href="#strcache" title='strcache' data-ref="strcache">strcache</a>, buffer))</u></td></tr>
+<tr><th id="44">44</th><td><u>#define <dfn class="macro" id="_M/CACHE_BUFFER_SIZE" data-ref="_M/CACHE_BUFFER_SIZE">CACHE_BUFFER_SIZE</dfn>(_s)   (CACHE_BUFFER_ALLOC(_s) - CACHE_BUFFER_OFFSET)</u></td></tr>
+<tr><th id="45">45</th><td><u>#define <dfn class="macro" id="_M/BUFSIZE" data-ref="_M/BUFSIZE">BUFSIZE</dfn>                 CACHE_BUFFER_SIZE (CACHE_BUFFER_BASE)</u></td></tr>
+<tr><th id="46">46</th><td></td></tr>
+<tr><th id="47">47</th><td><em>static</em> <b>struct</b> <a class="type" href="#strcache" title='strcache' data-ref="strcache">strcache</a> *<dfn class="tu decl def" id="strcache" title='strcache' data-type='struct strcache *' data-ref="strcache">strcache</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="48">48</th><td><em>static</em> <b>struct</b> <a class="type" href="#strcache" title='strcache' data-ref="strcache">strcache</a> *<dfn class="tu decl def" id="fullcache" title='fullcache' data-type='struct strcache *' data-ref="fullcache">fullcache</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td><em>static</em> <em>unsigned</em> <em>long</em> <dfn class="tu decl def" id="total_buffers" title='total_buffers' data-type='unsigned long' data-ref="total_buffers">total_buffers</dfn> = <var>0</var>;</td></tr>
+<tr><th id="51">51</th><td><em>static</em> <em>unsigned</em> <em>long</em> <dfn class="tu decl def" id="total_strings" title='total_strings' data-type='unsigned long' data-ref="total_strings">total_strings</dfn> = <var>0</var>;</td></tr>
+<tr><th id="52">52</th><td><em>static</em> <em>unsigned</em> <em>long</em> <dfn class="tu decl def" id="total_size" title='total_size' data-type='unsigned long' data-ref="total_size">total_size</dfn> = <var>0</var>;</td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td><i  data-doc="new_cache">/* Add a new buffer to the cache.  Add it at the front to reduce search time.</i></td></tr>
+<tr><th id="55">55</th><td><i  data-doc="new_cache">   This can also increase the overhead, since it's less likely that older</i></td></tr>
+<tr><th id="56">56</th><td><i  data-doc="new_cache">   buffers will be filled in.  However, GNU make has so many smaller strings</i></td></tr>
+<tr><th id="57">57</th><td><i  data-doc="new_cache">   that this doesn't seem to be much of an issue in practice.</i></td></tr>
+<tr><th id="58">58</th><td><i  data-doc="new_cache"> */</i></td></tr>
+<tr><th id="59">59</th><td><em>static</em> <b>struct</b> <a class="type" href="#strcache" title='strcache' data-ref="strcache">strcache</a> *</td></tr>
+<tr><th id="60">60</th><td><dfn class="tu decl def" id="new_cache" title='new_cache' data-type='struct strcache * new_cache(struct strcache ** head, sc_buflen_t buflen)' data-ref="new_cache">new_cache</dfn> (<b>struct</b> <a class="type" href="#strcache" title='strcache' data-ref="strcache">strcache</a> **<dfn class="local col1 decl" id="1head" title='head' data-type='struct strcache **' data-ref="1head">head</dfn>, <a class="typedef" href="#sc_buflen_t" title='sc_buflen_t' data-type='unsigned short' data-ref="sc_buflen_t">sc_buflen_t</a> <dfn class="local col2 decl" id="2buflen" title='buflen' data-type='sc_buflen_t' data-ref="2buflen">buflen</dfn>)</td></tr>
+<tr><th id="61">61</th><td>{</td></tr>
+<tr><th id="62">62</th><td>  <b>struct</b> <a class="type" href="#strcache" title='strcache' data-ref="strcache">strcache</a> *<dfn class="local col3 decl" id="3new" title='new' data-type='struct strcache *' data-ref="3new">new</dfn> = <a class="ref" href="makeint.h.html#xmalloc" title='xmalloc' data-ref="xmalloc">xmalloc</a> (<a class="local col2 ref" href="#2buflen" title='buflen' data-ref="2buflen">buflen</a> + <a class="macro" href="#43" title="(__builtin_offsetof(struct strcache, buffer))" data-ref="_M/CACHE_BUFFER_OFFSET">CACHE_BUFFER_OFFSET</a>);</td></tr>
+<tr><th id="63">63</th><td>  <a class="local col3 ref" href="#3new" title='new' data-ref="3new">new</a>-&gt;<a class="tu ref" href="#strcache::end" title='strcache::end' data-use='w' data-ref="strcache::end">end</a> = <var>0</var>;</td></tr>
+<tr><th id="64">64</th><td>  <a class="local col3 ref" href="#3new" title='new' data-ref="3new">new</a>-&gt;<a class="tu ref" href="#strcache::count" title='strcache::count' data-use='w' data-ref="strcache::count">count</a> = <var>0</var>;</td></tr>
+<tr><th id="65">65</th><td>  <a class="local col3 ref" href="#3new" title='new' data-ref="3new">new</a>-&gt;<a class="tu ref" href="#strcache::bytesfree" title='strcache::bytesfree' data-use='w' data-ref="strcache::bytesfree">bytesfree</a> = <a class="local col2 ref" href="#2buflen" title='buflen' data-ref="2buflen">buflen</a>;</td></tr>
+<tr><th id="66">66</th><td></td></tr>
+<tr><th id="67">67</th><td>  <a class="local col3 ref" href="#3new" title='new' data-ref="3new">new</a>-&gt;<a class="tu ref" href="#strcache::next" title='strcache::next' data-use='w' data-ref="strcache::next">next</a> = *<a class="local col1 ref" href="#1head" title='head' data-ref="1head">head</a>;</td></tr>
+<tr><th id="68">68</th><td>  *<a class="local col1 ref" href="#1head" title='head' data-ref="1head">head</a> = <a class="local col3 ref" href="#3new" title='new' data-ref="3new">new</a>;</td></tr>
+<tr><th id="69">69</th><td></td></tr>
+<tr><th id="70">70</th><td>  ++<a class="tu ref" href="#total_buffers" title='total_buffers' data-use='w' data-ref="total_buffers">total_buffers</a>;</td></tr>
+<tr><th id="71">71</th><td>  <b>return</b> <a class="local col3 ref" href="#3new" title='new' data-ref="3new">new</a>;</td></tr>
+<tr><th id="72">72</th><td>}</td></tr>
+<tr><th id="73">73</th><td></td></tr>
+<tr><th id="74">74</th><td><em>static</em> <em>const</em> <em>char</em> *</td></tr>
+<tr><th id="75">75</th><td><dfn class="tu decl def" id="copy_string" title='copy_string' data-type='const char * copy_string(struct strcache * sp, const char * str, unsigned int len)' data-ref="copy_string">copy_string</dfn> (<b>struct</b> <a class="type" href="#strcache" title='strcache' data-ref="strcache">strcache</a> *<dfn class="local col4 decl" id="4sp" title='sp' data-type='struct strcache *' data-ref="4sp">sp</dfn>, <em>const</em> <em>char</em> *<dfn class="local col5 decl" id="5str" title='str' data-type='const char *' data-ref="5str">str</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col6 decl" id="6len" title='len' data-type='unsigned int' data-ref="6len">len</dfn>)</td></tr>
+<tr><th id="76">76</th><td>{</td></tr>
+<tr><th id="77">77</th><td>  <i>/* Add the string to this cache.  */</i></td></tr>
+<tr><th id="78">78</th><td>  <em>char</em> *<dfn class="local col7 decl" id="7res" title='res' data-type='char *' data-ref="7res">res</dfn> = &amp;<a class="local col4 ref" href="#4sp" title='sp' data-ref="4sp">sp</a>-&gt;<a class="tu ref" href="#strcache::buffer" title='strcache::buffer' data-use='a' data-ref="strcache::buffer">buffer</a>[<a class="local col4 ref" href="#4sp" title='sp' data-ref="4sp">sp</a>-&gt;<a class="tu ref" href="#strcache::end" title='strcache::end' data-use='r' data-ref="strcache::end">end</a>];</td></tr>
+<tr><th id="79">79</th><td></td></tr>
+<tr><th id="80">80</th><td>  <a class="ref" href="../include/string.h.html#memmove" title='memmove' data-ref="memmove">memmove</a> (<a class="local col7 ref" href="#7res" title='res' data-ref="7res">res</a>, <a class="local col5 ref" href="#5str" title='str' data-ref="5str">str</a>, <a class="local col6 ref" href="#6len" title='len' data-ref="6len">len</a>);</td></tr>
+<tr><th id="81">81</th><td>  <a class="local col7 ref" href="#7res" title='res' data-ref="7res">res</a>[<a class="local col6 ref" href="#6len" title='len' data-ref="6len">len</a>++] = <kbd>'\0'</kbd>;</td></tr>
+<tr><th id="82">82</th><td>  <a class="local col4 ref" href="#4sp" title='sp' data-ref="4sp">sp</a>-&gt;<a class="tu ref" href="#strcache::end" title='strcache::end' data-use='w' data-ref="strcache::end">end</a> += <a class="local col6 ref" href="#6len" title='len' data-ref="6len">len</a>;</td></tr>
+<tr><th id="83">83</th><td>  <a class="local col4 ref" href="#4sp" title='sp' data-ref="4sp">sp</a>-&gt;<a class="tu ref" href="#strcache::bytesfree" title='strcache::bytesfree' data-use='w' data-ref="strcache::bytesfree">bytesfree</a> -= <a class="local col6 ref" href="#6len" title='len' data-ref="6len">len</a>;</td></tr>
+<tr><th id="84">84</th><td>  ++<a class="local col4 ref" href="#4sp" title='sp' data-ref="4sp">sp</a>-&gt;<a class="tu ref" href="#strcache::count" title='strcache::count' data-use='w' data-ref="strcache::count">count</a>;</td></tr>
+<tr><th id="85">85</th><td></td></tr>
+<tr><th id="86">86</th><td>  <b>return</b> <a class="local col7 ref" href="#7res" title='res' data-ref="7res">res</a>;</td></tr>
+<tr><th id="87">87</th><td>}</td></tr>
+<tr><th id="88">88</th><td></td></tr>
+<tr><th id="89">89</th><td><em>static</em> <em>const</em> <em>char</em> *</td></tr>
+<tr><th id="90">90</th><td><dfn class="tu decl def" id="add_string" title='add_string' data-type='const char * add_string(const char * str, unsigned int len)' data-ref="add_string">add_string</dfn> (<em>const</em> <em>char</em> *<dfn class="local col8 decl" id="8str" title='str' data-type='const char *' data-ref="8str">str</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col9 decl" id="9len" title='len' data-type='unsigned int' data-ref="9len">len</dfn>)</td></tr>
+<tr><th id="91">91</th><td>{</td></tr>
+<tr><th id="92">92</th><td>  <em>const</em> <em>char</em> *<dfn class="local col0 decl" id="10res" title='res' data-type='const char *' data-ref="10res">res</dfn>;</td></tr>
+<tr><th id="93">93</th><td>  <b>struct</b> <a class="type" href="#strcache" title='strcache' data-ref="strcache">strcache</a> *<dfn class="local col1 decl" id="11sp" title='sp' data-type='struct strcache *' data-ref="11sp">sp</dfn>;</td></tr>
+<tr><th id="94">94</th><td>  <b>struct</b> <a class="type" href="#strcache" title='strcache' data-ref="strcache">strcache</a> **<dfn class="local col2 decl" id="12spp" title='spp' data-type='struct strcache **' data-ref="12spp">spp</dfn> = &amp;<a class="tu ref" href="#strcache" title='strcache' data-use='a' data-ref="strcache">strcache</a>;</td></tr>
+<tr><th id="95">95</th><td>  <i>/* We need space for the nul char.  */</i></td></tr>
+<tr><th id="96">96</th><td>  <em>unsigned</em> <em>int</em> <dfn class="local col3 decl" id="13sz" title='sz' data-type='unsigned int' data-ref="13sz">sz</dfn> = <a class="local col9 ref" href="#9len" title='len' data-ref="9len">len</a> + <var>1</var>;</td></tr>
+<tr><th id="97">97</th><td></td></tr>
+<tr><th id="98">98</th><td>  ++<a class="tu ref" href="#total_strings" title='total_strings' data-use='w' data-ref="total_strings">total_strings</a>;</td></tr>
+<tr><th id="99">99</th><td>  <a class="tu ref" href="#total_size" title='total_size' data-use='w' data-ref="total_size">total_size</a> += <a class="local col3 ref" href="#13sz" title='sz' data-ref="13sz">sz</a>;</td></tr>
+<tr><th id="100">100</th><td></td></tr>
+<tr><th id="101">101</th><td>  <i>/* If the string we want is too large to fit into a single buffer, then</i></td></tr>
+<tr><th id="102">102</th><td><i>     no existing cache is large enough.  Add it directly to the fullcache.  */</i></td></tr>
+<tr><th id="103">103</th><td>  <b>if</b> (<a class="local col3 ref" href="#13sz" title='sz' data-ref="13sz">sz</a> &gt; <a class="macro" href="#45" title="((((8192)) - (2 * sizeof (size_t))) - (__builtin_offsetof(struct strcache, buffer)))" data-ref="_M/BUFSIZE">BUFSIZE</a>)</td></tr>
+<tr><th id="104">104</th><td>    {</td></tr>
+<tr><th id="105">105</th><td>      <a class="local col1 ref" href="#11sp" title='sp' data-ref="11sp">sp</a> = <a class="tu ref" href="#new_cache" title='new_cache' data-use='c' data-ref="new_cache">new_cache</a> (&amp;<a class="tu ref" href="#fullcache" title='fullcache' data-use='a' data-ref="fullcache">fullcache</a>, <a class="local col3 ref" href="#13sz" title='sz' data-ref="13sz">sz</a>);</td></tr>
+<tr><th id="106">106</th><td>      <b>return</b> <a class="tu ref" href="#copy_string" title='copy_string' data-use='c' data-ref="copy_string">copy_string</a> (<a class="local col1 ref" href="#11sp" title='sp' data-ref="11sp">sp</a>, <a class="local col8 ref" href="#8str" title='str' data-ref="8str">str</a>, <a class="local col9 ref" href="#9len" title='len' data-ref="9len">len</a>);</td></tr>
+<tr><th id="107">107</th><td>    }</td></tr>
+<tr><th id="108">108</th><td></td></tr>
+<tr><th id="109">109</th><td>  <i>/* Find the first cache with enough free space.  */</i></td></tr>
+<tr><th id="110">110</th><td>  <b>for</b> (; *<a class="local col2 ref" href="#12spp" title='spp' data-ref="12spp">spp</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>; <a class="local col2 ref" href="#12spp" title='spp' data-ref="12spp">spp</a> = &amp;(*<a class="local col2 ref" href="#12spp" title='spp' data-ref="12spp">spp</a>)-&gt;<a class="tu ref" href="#strcache::next" title='strcache::next' data-use='a' data-ref="strcache::next">next</a>)</td></tr>
+<tr><th id="111">111</th><td>    <b>if</b> ((*<a class="local col2 ref" href="#12spp" title='spp' data-ref="12spp">spp</a>)-&gt;<a class="tu ref" href="#strcache::bytesfree" title='strcache::bytesfree' data-use='r' data-ref="strcache::bytesfree">bytesfree</a> &gt; <a class="local col3 ref" href="#13sz" title='sz' data-ref="13sz">sz</a>)</td></tr>
+<tr><th id="112">112</th><td>      <b>break</b>;</td></tr>
+<tr><th id="113">113</th><td>  <a class="local col1 ref" href="#11sp" title='sp' data-ref="11sp">sp</a> = *<a class="local col2 ref" href="#12spp" title='spp' data-ref="12spp">spp</a>;</td></tr>
+<tr><th id="114">114</th><td></td></tr>
+<tr><th id="115">115</th><td>  <i>/* If nothing is big enough, make a new cache at the front.  */</i></td></tr>
+<tr><th id="116">116</th><td>  <b>if</b> (<a class="local col1 ref" href="#11sp" title='sp' data-ref="11sp">sp</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="117">117</th><td>    {</td></tr>
+<tr><th id="118">118</th><td>      <a class="local col1 ref" href="#11sp" title='sp' data-ref="11sp">sp</a> = <a class="tu ref" href="#new_cache" title='new_cache' data-use='c' data-ref="new_cache">new_cache</a> (&amp;<a class="tu ref" href="#strcache" title='strcache' data-use='a' data-ref="strcache">strcache</a>, <a class="macro" href="#45" title="((((8192)) - (2 * sizeof (size_t))) - (__builtin_offsetof(struct strcache, buffer)))" data-ref="_M/BUFSIZE">BUFSIZE</a>);</td></tr>
+<tr><th id="119">119</th><td>      <a class="local col2 ref" href="#12spp" title='spp' data-ref="12spp">spp</a> = &amp;<a class="tu ref" href="#strcache" title='strcache' data-use='a' data-ref="strcache">strcache</a>;</td></tr>
+<tr><th id="120">120</th><td>    }</td></tr>
+<tr><th id="121">121</th><td></td></tr>
+<tr><th id="122">122</th><td>  <i>/* Add the string to this cache.  */</i></td></tr>
+<tr><th id="123">123</th><td>  <a class="local col0 ref" href="#10res" title='res' data-ref="10res">res</a> = <a class="tu ref" href="#copy_string" title='copy_string' data-use='c' data-ref="copy_string">copy_string</a> (<a class="local col1 ref" href="#11sp" title='sp' data-ref="11sp">sp</a>, <a class="local col8 ref" href="#8str" title='str' data-ref="8str">str</a>, <a class="local col9 ref" href="#9len" title='len' data-ref="9len">len</a>);</td></tr>
+<tr><th id="124">124</th><td></td></tr>
+<tr><th id="125">125</th><td>  <i>/* If the amount free in this cache is less than the average string size,</i></td></tr>
+<tr><th id="126">126</th><td><i>     consider it full and move it to the full list.  */</i></td></tr>
+<tr><th id="127">127</th><td>  <b>if</b> (<a class="tu ref" href="#total_strings" title='total_strings' data-use='r' data-ref="total_strings">total_strings</a> &gt; <var>20</var> &amp;&amp; <a class="local col1 ref" href="#11sp" title='sp' data-ref="11sp">sp</a>-&gt;<a class="tu ref" href="#strcache::bytesfree" title='strcache::bytesfree' data-use='r' data-ref="strcache::bytesfree">bytesfree</a> &lt; (<a class="tu ref" href="#total_size" title='total_size' data-use='r' data-ref="total_size">total_size</a> / <a class="tu ref" href="#total_strings" title='total_strings' data-use='r' data-ref="total_strings">total_strings</a>) + <var>1</var>)</td></tr>
+<tr><th id="128">128</th><td>    {</td></tr>
+<tr><th id="129">129</th><td>      *<a class="local col2 ref" href="#12spp" title='spp' data-ref="12spp">spp</a> = <a class="local col1 ref" href="#11sp" title='sp' data-ref="11sp">sp</a>-&gt;<a class="tu ref" href="#strcache::next" title='strcache::next' data-use='r' data-ref="strcache::next">next</a>;</td></tr>
+<tr><th id="130">130</th><td>      <a class="local col1 ref" href="#11sp" title='sp' data-ref="11sp">sp</a>-&gt;<a class="tu ref" href="#strcache::next" title='strcache::next' data-use='w' data-ref="strcache::next">next</a> = <a class="tu ref" href="#fullcache" title='fullcache' data-use='r' data-ref="fullcache">fullcache</a>;</td></tr>
+<tr><th id="131">131</th><td>      <a class="tu ref" href="#fullcache" title='fullcache' data-use='w' data-ref="fullcache">fullcache</a> = <a class="local col1 ref" href="#11sp" title='sp' data-ref="11sp">sp</a>;</td></tr>
+<tr><th id="132">132</th><td>    }</td></tr>
+<tr><th id="133">133</th><td></td></tr>
+<tr><th id="134">134</th><td>  <b>return</b> <a class="local col0 ref" href="#10res" title='res' data-ref="10res">res</a>;</td></tr>
+<tr><th id="135">135</th><td>}</td></tr>
+<tr><th id="136">136</th><td></td></tr>
+<tr><th id="137">137</th><td><i>/* For strings too large for the strcache, we just save them in a list.  */</i></td></tr>
+<tr><th id="138">138</th><td><b>struct</b> <dfn class="type def" id="hugestring" title='hugestring' data-ref="hugestring">hugestring</dfn> {</td></tr>
+<tr><th id="139">139</th><td>  <b>struct</b> <a class="type" href="#hugestring" title='hugestring' data-ref="hugestring">hugestring</a> *<dfn class="tu decl" id="hugestring::next" title='hugestring::next' data-type='struct hugestring *' data-ref="hugestring::next">next</dfn>;  <i  data-doc="hugestring::next">/* The next string.  */</i></td></tr>
+<tr><th id="140">140</th><td>  <em>char</em> <dfn class="tu decl" id="hugestring::buffer" title='hugestring::buffer' data-type='char [1]' data-ref="hugestring::buffer">buffer</dfn>[<var>1</var>];           <i  data-doc="hugestring::buffer">/* The string.  */</i></td></tr>
+<tr><th id="141">141</th><td>};</td></tr>
+<tr><th id="142">142</th><td></td></tr>
+<tr><th id="143">143</th><td><em>static</em> <b>struct</b> <a class="type" href="#hugestring" title='hugestring' data-ref="hugestring">hugestring</a> *<dfn class="tu decl def" id="hugestrings" title='hugestrings' data-type='struct hugestring *' data-ref="hugestrings">hugestrings</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="144">144</th><td></td></tr>
+<tr><th id="145">145</th><td><em>static</em> <em>const</em> <em>char</em> *</td></tr>
+<tr><th id="146">146</th><td><dfn class="tu decl def" id="add_hugestring" title='add_hugestring' data-type='const char * add_hugestring(const char * str, unsigned int len)' data-ref="add_hugestring">add_hugestring</dfn> (<em>const</em> <em>char</em> *<dfn class="local col4 decl" id="14str" title='str' data-type='const char *' data-ref="14str">str</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col5 decl" id="15len" title='len' data-type='unsigned int' data-ref="15len">len</dfn>)</td></tr>
+<tr><th id="147">147</th><td>{</td></tr>
+<tr><th id="148">148</th><td>  <b>struct</b> <a class="type" href="#hugestring" title='hugestring' data-ref="hugestring">hugestring</a> *<dfn class="local col6 decl" id="16new" title='new' data-type='struct hugestring *' data-ref="16new">new</dfn> = <a class="ref" href="makeint.h.html#xmalloc" title='xmalloc' data-ref="xmalloc">xmalloc</a> (<b>sizeof</b> (<b>struct</b> <a class="type" href="#hugestring" title='hugestring' data-ref="hugestring">hugestring</a>) + <a class="local col5 ref" href="#15len" title='len' data-ref="15len">len</a>);</td></tr>
+<tr><th id="149">149</th><td>  <a class="ref" href="../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a> (<a class="local col6 ref" href="#16new" title='new' data-ref="16new">new</a>-&gt;<a class="tu ref" href="#hugestring::buffer" title='hugestring::buffer' data-use='r' data-ref="hugestring::buffer">buffer</a>, <a class="local col4 ref" href="#14str" title='str' data-ref="14str">str</a>, <a class="local col5 ref" href="#15len" title='len' data-ref="15len">len</a>);</td></tr>
+<tr><th id="150">150</th><td>  <a class="local col6 ref" href="#16new" title='new' data-ref="16new">new</a>-&gt;<a class="tu ref" href="#hugestring::buffer" title='hugestring::buffer' data-use='w' data-ref="hugestring::buffer">buffer</a>[<a class="local col5 ref" href="#15len" title='len' data-ref="15len">len</a>] = <kbd>'\0'</kbd>;</td></tr>
+<tr><th id="151">151</th><td></td></tr>
+<tr><th id="152">152</th><td>  <a class="local col6 ref" href="#16new" title='new' data-ref="16new">new</a>-&gt;<a class="tu ref" href="#hugestring::next" title='hugestring::next' data-use='w' data-ref="hugestring::next">next</a> = <a class="tu ref" href="#hugestrings" title='hugestrings' data-use='r' data-ref="hugestrings">hugestrings</a>;</td></tr>
+<tr><th id="153">153</th><td>  <a class="tu ref" href="#hugestrings" title='hugestrings' data-use='w' data-ref="hugestrings">hugestrings</a> = <a class="local col6 ref" href="#16new" title='new' data-ref="16new">new</a>;</td></tr>
+<tr><th id="154">154</th><td></td></tr>
+<tr><th id="155">155</th><td>  <b>return</b> <a class="local col6 ref" href="#16new" title='new' data-ref="16new">new</a>-&gt;<a class="tu ref" href="#hugestring::buffer" title='hugestring::buffer' data-use='r' data-ref="hugestring::buffer">buffer</a>;</td></tr>
+<tr><th id="156">156</th><td>}</td></tr>
+<tr><th id="157">157</th><td></td></tr>
+<tr><th id="158">158</th><td><i  data-doc="str_hash_1">/* Hash table of strings in the cache.  */</i></td></tr>
+<tr><th id="159">159</th><td></td></tr>
+<tr><th id="160">160</th><td><em>static</em> <em>unsigned</em> <em>long</em></td></tr>
+<tr><th id="161">161</th><td><dfn class="tu decl def" id="str_hash_1" title='str_hash_1' data-type='unsigned long str_hash_1(const void * key)' data-ref="str_hash_1">str_hash_1</dfn> (<em>const</em> <em>void</em> *<dfn class="local col7 decl" id="17key" title='key' data-type='const void *' data-ref="17key">key</dfn>)</td></tr>
+<tr><th id="162">162</th><td>{</td></tr>
+<tr><th id="163">163</th><td>  <a class="macro" href="hash.h.html#186" title="do { unsigned long _result_ = 0; do { unsigned char const *_key_ = (unsigned char const *) (((const char *) key)) - 1; while (*++_key_) (_result_) += (*_key_ &lt;&lt; (_key_[1] &amp; 0xf)); } while (0); return _result_; } while (0)" data-ref="_M/return_ISTRING_HASH_1">return_ISTRING_HASH_1</a> ((<em>const</em> <em>char</em> *) <a class="local col7 ref" href="#17key" title='key' data-ref="17key">key</a>);</td></tr>
+<tr><th id="164">164</th><td>}</td></tr>
+<tr><th id="165">165</th><td></td></tr>
+<tr><th id="166">166</th><td><em>static</em> <em>unsigned</em> <em>long</em></td></tr>
+<tr><th id="167">167</th><td><dfn class="tu decl def" id="str_hash_2" title='str_hash_2' data-type='unsigned long str_hash_2(const void * key)' data-ref="str_hash_2">str_hash_2</dfn> (<em>const</em> <em>void</em> *<dfn class="local col8 decl" id="18key" title='key' data-type='const void *' data-ref="18key">key</dfn>)</td></tr>
+<tr><th id="168">168</th><td>{</td></tr>
+<tr><th id="169">169</th><td>  <a class="macro" href="hash.h.html#189" title="do { unsigned long _result_ = 0; do { unsigned char const *_key_ = (unsigned char const *) (((const char *) key)) - 1; while (*++_key_) (_result_) += (*_key_ &lt;&lt; (_key_[1] &amp; 0x7)); } while (0); return _result_; } while (0)" data-ref="_M/return_ISTRING_HASH_2">return_ISTRING_HASH_2</a> ((<em>const</em> <em>char</em> *) <a class="local col8 ref" href="#18key" title='key' data-ref="18key">key</a>);</td></tr>
+<tr><th id="170">170</th><td>}</td></tr>
+<tr><th id="171">171</th><td></td></tr>
+<tr><th id="172">172</th><td><em>static</em> <em>int</em></td></tr>
+<tr><th id="173">173</th><td><dfn class="tu decl def" id="str_hash_cmp" title='str_hash_cmp' data-type='int str_hash_cmp(const void * x, const void * y)' data-ref="str_hash_cmp">str_hash_cmp</dfn> (<em>const</em> <em>void</em> *<dfn class="local col9 decl" id="19x" title='x' data-type='const void *' data-ref="19x">x</dfn>, <em>const</em> <em>void</em> *<dfn class="local col0 decl" id="20y" title='y' data-type='const void *' data-ref="20y">y</dfn>)</td></tr>
+<tr><th id="174">174</th><td>{</td></tr>
+<tr><th id="175">175</th><td>  <a class="macro" href="hash.h.html#192" title="do { return (((const char *) x)) == (((const char *) y)) ? 0 : __extension__ ({ size_t __s1_len, __s2_len; (__builtin_constant_p ((((const char *) x))) &amp;&amp; __builtin_constant_p ((((const char *) y))) &amp;&amp; (__s1_len = __builtin_strlen ((((const char *) x))), __s2_len = __builtin_strlen ((((const char *) y))), (!((size_t)(const void *)(((((const char *) x))) + 1) - (size_t)(const void *)((((const char *) x))) == 1) || __s1_len &gt;= 4) &amp;&amp; (!((size_t)(const void *)(((((const char *) y))) + 1) - (size_t)(const void *)((((const char *) y))) == 1) || __s2_len &gt;= 4)) ? __builtin_strcmp ((((const char *) x)), (((const char *) y))) : (__builtin_constant_p ((((const char *) x))) &amp;&amp; ((size_t)(const void *)(((((const char *) x))) + 1) - (size_t)(const void *)((((const char *) x))) == 1) &amp;&amp; (__s1_len = __builtin_strlen ((((const char *) x))), __s1_len &lt; 4) ? (__builtin_constant_p ((((const char *) y))) &amp;&amp; ((size_t)(const void *)(((((const char *) y))) + 1) - (size_t)(const void *)((((const char *) y))) == 1) ? __builtin_strcmp ((((const char *) x)), (((const char *) y))) : (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) ((((const char *) y))); int __result = (((const unsigned char *) (const char *) ((((const char *) x))))[0] - __s2[0]); if (__s1_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((((const char *) x))))[1] - __s2[1]); if (__s1_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((((const char *) x))))[2] - __s2[2]); if (__s1_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) ((((const char *) x))))[3] - __s2[3]); } } __result; }))) : (__builtin_constant_p ((((const char *) y))) &amp;&amp; ((size_t)(const void *)(((((const char *) y))) + 1) - (size_t)(const void *)((((const char *) y))) == 1) &amp;&amp; (__s2_len = __builtin_strlen ((((const char *) y))), __s2_len &lt; 4) ? (__builtin_constant_p ((((const char *) x))) &amp;&amp; ((size_t)(const void *)(((((const char *) x))) + 1) - (size_t)(const void *)((((const char *) x))) == 1) ? __builtin_strcmp ((((const char *) x)), (((const char *) y))) : (- (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) ((((const char *) x))); int __result = (((const unsigned char *) (const char *) ((((const char *) y))))[0] - __s2[0]); if (__s2_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((((const char *) y))))[1] - __s2[1]); if (__s2_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((((const char *) y))))[2] - __s2[2]); if (__s2_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) ((((const char *) y))))[3] - __s2[3]); } } __result; })))) : __builtin_strcmp ((((const char *) x)), (((const char *) y)))))); }); } while (0)" data-ref="_M/return_ISTRING_COMPARE">return_ISTRING_COMPARE</a> ((<em>const</em> <em>char</em> *) <a class="local col9 ref" href="#19x" title='x' data-ref="19x">x</a>, (<em>const</em> <em>char</em> *) <a class="local col0 ref" href="#20y" title='y' data-ref="20y">y</a>);</td></tr>
+<tr><th id="176">176</th><td>}</td></tr>
+<tr><th id="177">177</th><td></td></tr>
+<tr><th id="178">178</th><td><em>static</em> <b>struct</b> <a class="type" href="hash.h.html#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> <dfn class="tu decl def" id="strings" title='strings' data-type='struct hash_table' data-ref="strings">strings</dfn>;</td></tr>
+<tr><th id="179">179</th><td><em>static</em> <em>unsigned</em> <em>long</em> <dfn class="tu decl def" id="total_adds" title='total_adds' data-type='unsigned long' data-ref="total_adds">total_adds</dfn> = <var>0</var>;</td></tr>
+<tr><th id="180">180</th><td></td></tr>
+<tr><th id="181">181</th><td><em>static</em> <em>const</em> <em>char</em> *</td></tr>
+<tr><th id="182">182</th><td><dfn class="tu decl def" id="add_hash" title='add_hash' data-type='const char * add_hash(const char * str, unsigned int len)' data-ref="add_hash">add_hash</dfn> (<em>const</em> <em>char</em> *<dfn class="local col1 decl" id="21str" title='str' data-type='const char *' data-ref="21str">str</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col2 decl" id="22len" title='len' data-type='unsigned int' data-ref="22len">len</dfn>)</td></tr>
+<tr><th id="183">183</th><td>{</td></tr>
+<tr><th id="184">184</th><td>  <em>char</em> *<em>const</em> *<dfn class="local col3 decl" id="23slot" title='slot' data-type='char *const *' data-ref="23slot">slot</dfn>;</td></tr>
+<tr><th id="185">185</th><td>  <em>const</em> <em>char</em> *<dfn class="local col4 decl" id="24key" title='key' data-type='const char *' data-ref="24key">key</dfn>;</td></tr>
+<tr><th id="186">186</th><td></td></tr>
+<tr><th id="187">187</th><td>  <i>/* If it's too large for the string cache, just copy it.</i></td></tr>
+<tr><th id="188">188</th><td><i>     We don't bother trying to match these.  */</i></td></tr>
+<tr><th id="189">189</th><td>  <b>if</b> (<a class="local col2 ref" href="#22len" title='len' data-ref="22len">len</a> &gt; <span class="macro" title="(32767 *2 +1)" data-ref="_M/USHRT_MAX">USHRT_MAX</span> - <var>1</var>)</td></tr>
+<tr><th id="190">190</th><td>    <b>return</b> <a class="tu ref" href="#add_hugestring" title='add_hugestring' data-use='c' data-ref="add_hugestring">add_hugestring</a> (<a class="local col1 ref" href="#21str" title='str' data-ref="21str">str</a>, <a class="local col2 ref" href="#22len" title='len' data-ref="22len">len</a>);</td></tr>
+<tr><th id="191">191</th><td></td></tr>
+<tr><th id="192">192</th><td>  <i>/* Look up the string in the hash.  If it's there, return it.  */</i></td></tr>
+<tr><th id="193">193</th><td>  <a class="local col3 ref" href="#23slot" title='slot' data-ref="23slot">slot</a> = (<em>char</em> *<em>const</em> *) <a class="ref" href="hash.h.html#hash_find_slot" title='hash_find_slot' data-ref="hash_find_slot">hash_find_slot</a> (&amp;<a class="tu ref" href="#strings" title='strings' data-use='a' data-ref="strings">strings</a>, <a class="local col1 ref" href="#21str" title='str' data-ref="21str">str</a>);</td></tr>
+<tr><th id="194">194</th><td>  <a class="local col4 ref" href="#24key" title='key' data-ref="24key">key</a> = *<a class="local col3 ref" href="#23slot" title='slot' data-ref="23slot">slot</a>;</td></tr>
+<tr><th id="195">195</th><td></td></tr>
+<tr><th id="196">196</th><td>  <i>/* Count the total number of add operations we performed.  */</i></td></tr>
+<tr><th id="197">197</th><td>  ++<a class="tu ref" href="#total_adds" title='total_adds' data-use='w' data-ref="total_adds">total_adds</a>;</td></tr>
+<tr><th id="198">198</th><td></td></tr>
+<tr><th id="199">199</th><td>  <b>if</b> (!<a class="macro" href="hash.h.html#77" title="((key) == 0 || (void *) (key) == hash_deleted_item)" data-ref="_M/HASH_VACANT">HASH_VACANT</a> (<a class="local col4 ref" href="#24key" title='key' data-ref="24key">key</a>))</td></tr>
+<tr><th id="200">200</th><td>    <b>return</b> <a class="local col4 ref" href="#24key" title='key' data-ref="24key">key</a>;</td></tr>
+<tr><th id="201">201</th><td></td></tr>
+<tr><th id="202">202</th><td>  <i>/* Not there yet so add it to a buffer, then into the hash table.  */</i></td></tr>
+<tr><th id="203">203</th><td>  <a class="local col4 ref" href="#24key" title='key' data-ref="24key">key</a> = <a class="tu ref" href="#add_string" title='add_string' data-use='c' data-ref="add_string">add_string</a> (<a class="local col1 ref" href="#21str" title='str' data-ref="21str">str</a>, <a class="local col2 ref" href="#22len" title='len' data-ref="22len">len</a>);</td></tr>
+<tr><th id="204">204</th><td>  <a class="ref" href="hash.h.html#hash_insert_at" title='hash_insert_at' data-ref="hash_insert_at">hash_insert_at</a> (&amp;<a class="tu ref" href="#strings" title='strings' data-use='a' data-ref="strings">strings</a>, <a class="local col4 ref" href="#24key" title='key' data-ref="24key">key</a>, <a class="local col3 ref" href="#23slot" title='slot' data-ref="23slot">slot</a>);</td></tr>
+<tr><th id="205">205</th><td>  <b>return</b> <a class="local col4 ref" href="#24key" title='key' data-ref="24key">key</a>;</td></tr>
+<tr><th id="206">206</th><td>}</td></tr>
+<tr><th id="207">207</th><td></td></tr>
+<tr><th id="208">208</th><td><i>/* Returns true if the string is in the cache; false if not.  */</i></td></tr>
+<tr><th id="209">209</th><td><em>int</em></td></tr>
+<tr><th id="210">210</th><td><dfn class="decl def" id="strcache_iscached" title='strcache_iscached' data-ref="strcache_iscached">strcache_iscached</dfn> (<em>const</em> <em>char</em> *<dfn class="local col5 decl" id="25str" title='str' data-type='const char *' data-ref="25str">str</dfn>)</td></tr>
+<tr><th id="211">211</th><td>{</td></tr>
+<tr><th id="212">212</th><td>  <b>struct</b> <a class="type" href="#strcache" title='strcache' data-ref="strcache">strcache</a> *<dfn class="local col6 decl" id="26sp" title='sp' data-type='struct strcache *' data-ref="26sp">sp</dfn>;</td></tr>
+<tr><th id="213">213</th><td></td></tr>
+<tr><th id="214">214</th><td>  <b>for</b> (<a class="local col6 ref" href="#26sp" title='sp' data-ref="26sp">sp</a> = <a class="tu ref" href="#strcache" title='strcache' data-use='r' data-ref="strcache">strcache</a>; <a class="local col6 ref" href="#26sp" title='sp' data-ref="26sp">sp</a> != <var>0</var>; <a class="local col6 ref" href="#26sp" title='sp' data-ref="26sp">sp</a> = <a class="local col6 ref" href="#26sp" title='sp' data-ref="26sp">sp</a>-&gt;<a class="tu ref" href="#strcache::next" title='strcache::next' data-use='r' data-ref="strcache::next">next</a>)</td></tr>
+<tr><th id="215">215</th><td>    <b>if</b> (<a class="local col5 ref" href="#25str" title='str' data-ref="25str">str</a> &gt;= <a class="local col6 ref" href="#26sp" title='sp' data-ref="26sp">sp</a>-&gt;<a class="tu ref" href="#strcache::buffer" title='strcache::buffer' data-use='r' data-ref="strcache::buffer">buffer</a> &amp;&amp; <a class="local col5 ref" href="#25str" title='str' data-ref="25str">str</a> &lt; <a class="local col6 ref" href="#26sp" title='sp' data-ref="26sp">sp</a>-&gt;<a class="tu ref" href="#strcache::buffer" title='strcache::buffer' data-use='r' data-ref="strcache::buffer">buffer</a> + <a class="local col6 ref" href="#26sp" title='sp' data-ref="26sp">sp</a>-&gt;<a class="tu ref" href="#strcache::end" title='strcache::end' data-use='r' data-ref="strcache::end">end</a>)</td></tr>
+<tr><th id="216">216</th><td>      <b>return</b> <var>1</var>;</td></tr>
+<tr><th id="217">217</th><td>  <b>for</b> (<a class="local col6 ref" href="#26sp" title='sp' data-ref="26sp">sp</a> = <a class="tu ref" href="#fullcache" title='fullcache' data-use='r' data-ref="fullcache">fullcache</a>; <a class="local col6 ref" href="#26sp" title='sp' data-ref="26sp">sp</a> != <var>0</var>; <a class="local col6 ref" href="#26sp" title='sp' data-ref="26sp">sp</a> = <a class="local col6 ref" href="#26sp" title='sp' data-ref="26sp">sp</a>-&gt;<a class="tu ref" href="#strcache::next" title='strcache::next' data-use='r' data-ref="strcache::next">next</a>)</td></tr>
+<tr><th id="218">218</th><td>    <b>if</b> (<a class="local col5 ref" href="#25str" title='str' data-ref="25str">str</a> &gt;= <a class="local col6 ref" href="#26sp" title='sp' data-ref="26sp">sp</a>-&gt;<a class="tu ref" href="#strcache::buffer" title='strcache::buffer' data-use='r' data-ref="strcache::buffer">buffer</a> &amp;&amp; <a class="local col5 ref" href="#25str" title='str' data-ref="25str">str</a> &lt; <a class="local col6 ref" href="#26sp" title='sp' data-ref="26sp">sp</a>-&gt;<a class="tu ref" href="#strcache::buffer" title='strcache::buffer' data-use='r' data-ref="strcache::buffer">buffer</a> + <a class="local col6 ref" href="#26sp" title='sp' data-ref="26sp">sp</a>-&gt;<a class="tu ref" href="#strcache::end" title='strcache::end' data-use='r' data-ref="strcache::end">end</a>)</td></tr>
+<tr><th id="219">219</th><td>      <b>return</b> <var>1</var>;</td></tr>
+<tr><th id="220">220</th><td></td></tr>
+<tr><th id="221">221</th><td>  {</td></tr>
+<tr><th id="222">222</th><td>    <b>struct</b> <a class="type" href="#hugestring" title='hugestring' data-ref="hugestring">hugestring</a> *<dfn class="local col7 decl" id="27hp" title='hp' data-type='struct hugestring *' data-ref="27hp">hp</dfn>;</td></tr>
+<tr><th id="223">223</th><td>    <b>for</b> (<a class="local col7 ref" href="#27hp" title='hp' data-ref="27hp">hp</a> = <a class="tu ref" href="#hugestrings" title='hugestrings' data-use='r' data-ref="hugestrings">hugestrings</a>; <a class="local col7 ref" href="#27hp" title='hp' data-ref="27hp">hp</a> != <var>0</var>; <a class="local col7 ref" href="#27hp" title='hp' data-ref="27hp">hp</a> = <a class="local col7 ref" href="#27hp" title='hp' data-ref="27hp">hp</a>-&gt;<a class="tu ref" href="#hugestring::next" title='hugestring::next' data-use='r' data-ref="hugestring::next">next</a>)</td></tr>
+<tr><th id="224">224</th><td>      <b>if</b> (<a class="local col5 ref" href="#25str" title='str' data-ref="25str">str</a> == <a class="local col7 ref" href="#27hp" title='hp' data-ref="27hp">hp</a>-&gt;<a class="tu ref" href="#hugestring::buffer" title='hugestring::buffer' data-use='r' data-ref="hugestring::buffer">buffer</a>)</td></tr>
+<tr><th id="225">225</th><td>        <b>return</b> <var>1</var>;</td></tr>
+<tr><th id="226">226</th><td>  }</td></tr>
+<tr><th id="227">227</th><td></td></tr>
+<tr><th id="228">228</th><td>  <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="229">229</th><td>}</td></tr>
+<tr><th id="230">230</th><td></td></tr>
+<tr><th id="231">231</th><td><i>/* If the string is already in the cache, return a pointer to the cached</i></td></tr>
+<tr><th id="232">232</th><td><i>   version.  If not, add it then return a pointer to the cached version.</i></td></tr>
+<tr><th id="233">233</th><td><i>   Note we do NOT take control of the string passed in.  */</i></td></tr>
+<tr><th id="234">234</th><td><em>const</em> <em>char</em> *</td></tr>
+<tr><th id="235">235</th><td><dfn class="decl def" id="strcache_add" title='strcache_add' data-ref="strcache_add">strcache_add</dfn> (<em>const</em> <em>char</em> *<dfn class="local col8 decl" id="28str" title='str' data-type='const char *' data-ref="28str">str</dfn>)</td></tr>
+<tr><th id="236">236</th><td>{</td></tr>
+<tr><th id="237">237</th><td>  <b>return</b> <a class="tu ref" href="#add_hash" title='add_hash' data-use='c' data-ref="add_hash">add_hash</a> (<a class="local col8 ref" href="#28str" title='str' data-ref="28str">str</a>, <a class="ref" href="../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col8 ref" href="#28str" title='str' data-ref="28str">str</a>));</td></tr>
+<tr><th id="238">238</th><td>}</td></tr>
+<tr><th id="239">239</th><td></td></tr>
+<tr><th id="240">240</th><td><em>const</em> <em>char</em> *</td></tr>
+<tr><th id="241">241</th><td><dfn class="decl def" id="strcache_add_len" title='strcache_add_len' data-ref="strcache_add_len">strcache_add_len</dfn> (<em>const</em> <em>char</em> *<dfn class="local col9 decl" id="29str" title='str' data-type='const char *' data-ref="29str">str</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col0 decl" id="30len" title='len' data-type='unsigned int' data-ref="30len">len</dfn>)</td></tr>
+<tr><th id="242">242</th><td>{</td></tr>
+<tr><th id="243">243</th><td>  <i>/* If we're not given a nul-terminated string we have to create one, because</i></td></tr>
+<tr><th id="244">244</th><td><i>     the hashing functions expect it.  */</i></td></tr>
+<tr><th id="245">245</th><td>  <b>if</b> (<a class="local col9 ref" href="#29str" title='str' data-ref="29str">str</a>[<a class="local col0 ref" href="#30len" title='len' data-ref="30len">len</a>] != <kbd>'\0'</kbd>)</td></tr>
+<tr><th id="246">246</th><td>    {</td></tr>
+<tr><th id="247">247</th><td>      <em>char</em> *<dfn class="local col1 decl" id="31key" title='key' data-type='char *' data-ref="31key">key</dfn> = <a class="macro" href="../include/alloca.h.html#35" title="__builtin_alloca (len + 1)" data-ref="_M/alloca">alloca</a> (<a class="local col0 ref" href="#30len" title='len' data-ref="30len">len</a> + <var>1</var>);</td></tr>
+<tr><th id="248">248</th><td>      <a class="ref" href="../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a> (<a class="local col1 ref" href="#31key" title='key' data-ref="31key">key</a>, <a class="local col9 ref" href="#29str" title='str' data-ref="29str">str</a>, <a class="local col0 ref" href="#30len" title='len' data-ref="30len">len</a>);</td></tr>
+<tr><th id="249">249</th><td>      <a class="local col1 ref" href="#31key" title='key' data-ref="31key">key</a>[<a class="local col0 ref" href="#30len" title='len' data-ref="30len">len</a>] = <kbd>'\0'</kbd>;</td></tr>
+<tr><th id="250">250</th><td>      <a class="local col9 ref" href="#29str" title='str' data-ref="29str">str</a> = <a class="local col1 ref" href="#31key" title='key' data-ref="31key">key</a>;</td></tr>
+<tr><th id="251">251</th><td>    }</td></tr>
+<tr><th id="252">252</th><td></td></tr>
+<tr><th id="253">253</th><td>  <b>return</b> <a class="tu ref" href="#add_hash" title='add_hash' data-use='c' data-ref="add_hash">add_hash</a> (<a class="local col9 ref" href="#29str" title='str' data-ref="29str">str</a>, <a class="local col0 ref" href="#30len" title='len' data-ref="30len">len</a>);</td></tr>
+<tr><th id="254">254</th><td>}</td></tr>
+<tr><th id="255">255</th><td></td></tr>
+<tr><th id="256">256</th><td><em>void</em></td></tr>
+<tr><th id="257">257</th><td><dfn class="decl def" id="strcache_init" title='strcache_init' data-ref="strcache_init">strcache_init</dfn> (<em>void</em>)</td></tr>
+<tr><th id="258">258</th><td>{</td></tr>
+<tr><th id="259">259</th><td>  <a class="ref" href="hash.h.html#hash_init" title='hash_init' data-ref="hash_init">hash_init</a> (&amp;<a class="tu ref" href="#strings" title='strings' data-use='a' data-ref="strings">strings</a>, <var>8000</var>, <a class="tu ref" href="#str_hash_1" title='str_hash_1' data-use='r' data-ref="str_hash_1">str_hash_1</a>, <a class="tu ref" href="#str_hash_2" title='str_hash_2' data-use='r' data-ref="str_hash_2">str_hash_2</a>, <a class="tu ref" href="#str_hash_cmp" title='str_hash_cmp' data-use='r' data-ref="str_hash_cmp">str_hash_cmp</a>);</td></tr>
+<tr><th id="260">260</th><td>}</td></tr>
+<tr><th id="261">261</th><td></td></tr>
+<tr><th id="262">262</th><td></td></tr>
+<tr><th id="263">263</th><td><i>/* Generate some stats output.  */</i></td></tr>
+<tr><th id="264">264</th><td></td></tr>
+<tr><th id="265">265</th><td><em>void</em></td></tr>
+<tr><th id="266">266</th><td><dfn class="decl def" id="strcache_print_stats" title='strcache_print_stats' data-ref="strcache_print_stats">strcache_print_stats</dfn> (<em>const</em> <em>char</em> *<dfn class="local col2 decl" id="32prefix" title='prefix' data-type='const char *' data-ref="32prefix">prefix</dfn>)</td></tr>
+<tr><th id="267">267</th><td>{</td></tr>
+<tr><th id="268">268</th><td>  <em>const</em> <b>struct</b> <a class="type" href="#strcache" title='strcache' data-ref="strcache">strcache</a> *<dfn class="local col3 decl" id="33sp" title='sp' data-type='const struct strcache *' data-ref="33sp">sp</dfn>;</td></tr>
+<tr><th id="269">269</th><td>  <em>unsigned</em> <em>long</em> <dfn class="local col4 decl" id="34numbuffs" title='numbuffs' data-type='unsigned long' data-ref="34numbuffs">numbuffs</dfn> = <var>0</var>, <dfn class="local col5 decl" id="35fullbuffs" title='fullbuffs' data-type='unsigned long' data-ref="35fullbuffs">fullbuffs</dfn> = <var>0</var>;</td></tr>
+<tr><th id="270">270</th><td>  <em>unsigned</em> <em>long</em> <dfn class="local col6 decl" id="36totfree" title='totfree' data-type='unsigned long' data-ref="36totfree">totfree</dfn> = <var>0</var>, <dfn class="local col7 decl" id="37maxfree" title='maxfree' data-type='unsigned long' data-ref="37maxfree">maxfree</dfn> = <var>0</var>, <dfn class="local col8 decl" id="38minfree" title='minfree' data-type='unsigned long' data-ref="38minfree">minfree</dfn> = <a class="macro" href="#45" title="((((8192)) - (2 * sizeof (size_t))) - (__builtin_offsetof(struct strcache, buffer)))" data-ref="_M/BUFSIZE">BUFSIZE</a>;</td></tr>
+<tr><th id="271">271</th><td></td></tr>
+<tr><th id="272">272</th><td>  <b>if</b> (! <a class="tu ref" href="#strcache" title='strcache' data-use='r' data-ref="strcache">strcache</a>)</td></tr>
+<tr><th id="273">273</th><td>    {</td></tr>
+<tr><th id="274">274</th><td>      <a class="ref" href="../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a> (<a class="macro" href="makeint.h.html#332" title="dcgettext (((void*)0), &quot;\n%s No strcache buffers\n&quot;, 5)" data-ref="_M/_">_</a>(<q>"\n%s No strcache buffers\n"</q>), <a class="local col2 ref" href="#32prefix" title='prefix' data-ref="32prefix">prefix</a>);</td></tr>
+<tr><th id="275">275</th><td>      <b>return</b>;</td></tr>
+<tr><th id="276">276</th><td>    }</td></tr>
+<tr><th id="277">277</th><td></td></tr>
+<tr><th id="278">278</th><td>  <i>/* Count the first buffer separately since it's not full.  */</i></td></tr>
+<tr><th id="279">279</th><td>  <b>for</b> (<a class="local col3 ref" href="#33sp" title='sp' data-ref="33sp">sp</a> = <a class="tu ref" href="#strcache" title='strcache' data-use='r' data-ref="strcache">strcache</a>-&gt;<a class="tu ref" href="#strcache::next" title='strcache::next' data-use='r' data-ref="strcache::next">next</a>; <a class="local col3 ref" href="#33sp" title='sp' data-ref="33sp">sp</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>; <a class="local col3 ref" href="#33sp" title='sp' data-ref="33sp">sp</a> = <a class="local col3 ref" href="#33sp" title='sp' data-ref="33sp">sp</a>-&gt;<a class="tu ref" href="#strcache::next" title='strcache::next' data-use='r' data-ref="strcache::next">next</a>)</td></tr>
+<tr><th id="280">280</th><td>    {</td></tr>
+<tr><th id="281">281</th><td>      <a class="typedef" href="#sc_buflen_t" title='sc_buflen_t' data-type='unsigned short' data-ref="sc_buflen_t">sc_buflen_t</a> <dfn class="local col9 decl" id="39bf" title='bf' data-type='sc_buflen_t' data-ref="39bf">bf</dfn> = <a class="local col3 ref" href="#33sp" title='sp' data-ref="33sp">sp</a>-&gt;<a class="tu ref" href="#strcache::bytesfree" title='strcache::bytesfree' data-use='r' data-ref="strcache::bytesfree">bytesfree</a>;</td></tr>
+<tr><th id="282">282</th><td></td></tr>
+<tr><th id="283">283</th><td>      <a class="local col6 ref" href="#36totfree" title='totfree' data-ref="36totfree">totfree</a> += <a class="local col9 ref" href="#39bf" title='bf' data-ref="39bf">bf</a>;</td></tr>
+<tr><th id="284">284</th><td>      <a class="local col7 ref" href="#37maxfree" title='maxfree' data-ref="37maxfree">maxfree</a> = (<a class="local col9 ref" href="#39bf" title='bf' data-ref="39bf">bf</a> &gt; <a class="local col7 ref" href="#37maxfree" title='maxfree' data-ref="37maxfree">maxfree</a> ? <a class="local col9 ref" href="#39bf" title='bf' data-ref="39bf">bf</a> : <a class="local col7 ref" href="#37maxfree" title='maxfree' data-ref="37maxfree">maxfree</a>);</td></tr>
+<tr><th id="285">285</th><td>      <a class="local col8 ref" href="#38minfree" title='minfree' data-ref="38minfree">minfree</a> = (<a class="local col9 ref" href="#39bf" title='bf' data-ref="39bf">bf</a> &lt; <a class="local col8 ref" href="#38minfree" title='minfree' data-ref="38minfree">minfree</a> ? <a class="local col9 ref" href="#39bf" title='bf' data-ref="39bf">bf</a> : <a class="local col8 ref" href="#38minfree" title='minfree' data-ref="38minfree">minfree</a>);</td></tr>
+<tr><th id="286">286</th><td></td></tr>
+<tr><th id="287">287</th><td>      ++<a class="local col4 ref" href="#34numbuffs" title='numbuffs' data-ref="34numbuffs">numbuffs</a>;</td></tr>
+<tr><th id="288">288</th><td>    }</td></tr>
+<tr><th id="289">289</th><td>  <b>for</b> (<a class="local col3 ref" href="#33sp" title='sp' data-ref="33sp">sp</a> = <a class="tu ref" href="#fullcache" title='fullcache' data-use='r' data-ref="fullcache">fullcache</a>; <a class="local col3 ref" href="#33sp" title='sp' data-ref="33sp">sp</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>; <a class="local col3 ref" href="#33sp" title='sp' data-ref="33sp">sp</a> = <a class="local col3 ref" href="#33sp" title='sp' data-ref="33sp">sp</a>-&gt;<a class="tu ref" href="#strcache::next" title='strcache::next' data-use='r' data-ref="strcache::next">next</a>)</td></tr>
+<tr><th id="290">290</th><td>    {</td></tr>
+<tr><th id="291">291</th><td>      <a class="typedef" href="#sc_buflen_t" title='sc_buflen_t' data-type='unsigned short' data-ref="sc_buflen_t">sc_buflen_t</a> <dfn class="local col0 decl" id="40bf" title='bf' data-type='sc_buflen_t' data-ref="40bf">bf</dfn> = <a class="local col3 ref" href="#33sp" title='sp' data-ref="33sp">sp</a>-&gt;<a class="tu ref" href="#strcache::bytesfree" title='strcache::bytesfree' data-use='r' data-ref="strcache::bytesfree">bytesfree</a>;</td></tr>
+<tr><th id="292">292</th><td></td></tr>
+<tr><th id="293">293</th><td>      <a class="local col6 ref" href="#36totfree" title='totfree' data-ref="36totfree">totfree</a> += <a class="local col0 ref" href="#40bf" title='bf' data-ref="40bf">bf</a>;</td></tr>
+<tr><th id="294">294</th><td>      <a class="local col7 ref" href="#37maxfree" title='maxfree' data-ref="37maxfree">maxfree</a> = (<a class="local col0 ref" href="#40bf" title='bf' data-ref="40bf">bf</a> &gt; <a class="local col7 ref" href="#37maxfree" title='maxfree' data-ref="37maxfree">maxfree</a> ? <a class="local col0 ref" href="#40bf" title='bf' data-ref="40bf">bf</a> : <a class="local col7 ref" href="#37maxfree" title='maxfree' data-ref="37maxfree">maxfree</a>);</td></tr>
+<tr><th id="295">295</th><td>      <a class="local col8 ref" href="#38minfree" title='minfree' data-ref="38minfree">minfree</a> = (<a class="local col0 ref" href="#40bf" title='bf' data-ref="40bf">bf</a> &lt; <a class="local col8 ref" href="#38minfree" title='minfree' data-ref="38minfree">minfree</a> ? <a class="local col0 ref" href="#40bf" title='bf' data-ref="40bf">bf</a> : <a class="local col8 ref" href="#38minfree" title='minfree' data-ref="38minfree">minfree</a>);</td></tr>
+<tr><th id="296">296</th><td></td></tr>
+<tr><th id="297">297</th><td>      ++<a class="local col4 ref" href="#34numbuffs" title='numbuffs' data-ref="34numbuffs">numbuffs</a>;</td></tr>
+<tr><th id="298">298</th><td>      ++<a class="local col5 ref" href="#35fullbuffs" title='fullbuffs' data-ref="35fullbuffs">fullbuffs</a>;</td></tr>
+<tr><th id="299">299</th><td>    }</td></tr>
+<tr><th id="300">300</th><td></td></tr>
+<tr><th id="301">301</th><td>  <i>/* Make sure we didn't lose any buffers.  */</i></td></tr>
+<tr><th id="302">302</th><td>  <a class="macro" href="../include/assert.h.html#88" title="((total_buffers == numbuffs + 1) ? (void) (0) : __assert_fail (&quot;total_buffers == numbuffs + 1&quot;, &quot;/opt/src/oss-code.github.io/src/remake/strcache.c&quot;, 302, __PRETTY_FUNCTION__))" data-ref="_M/assert">assert</a> (<a class="tu ref" href="#total_buffers" title='total_buffers' data-use='r' data-ref="total_buffers">total_buffers</a> == <a class="local col4 ref" href="#34numbuffs" title='numbuffs' data-ref="34numbuffs">numbuffs</a> + <var>1</var>);</td></tr>
+<tr><th id="303">303</th><td></td></tr>
+<tr><th id="304">304</th><td>  <a class="ref" href="../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a> (<a class="macro" href="makeint.h.html#332" title="dcgettext (((void*)0), &quot;\n%s strcache buffers: %lu (%lu) / strings = %lu / storage = %lu B / avg = %lu B\n&quot;, 5)" data-ref="_M/_">_</a>(<q>"\n%s strcache buffers: %lu (%lu) / strings = %lu / storage = %lu B / avg = %lu B\n"</q>),</td></tr>
+<tr><th id="305">305</th><td>          <a class="local col2 ref" href="#32prefix" title='prefix' data-ref="32prefix">prefix</a>, <a class="local col4 ref" href="#34numbuffs" title='numbuffs' data-ref="34numbuffs">numbuffs</a> + <var>1</var>, <a class="local col5 ref" href="#35fullbuffs" title='fullbuffs' data-ref="35fullbuffs">fullbuffs</a>, <a class="tu ref" href="#total_strings" title='total_strings' data-use='r' data-ref="total_strings">total_strings</a>, <a class="tu ref" href="#total_size" title='total_size' data-use='r' data-ref="total_size">total_size</a>,</td></tr>
+<tr><th id="306">306</th><td>          (<a class="tu ref" href="#total_size" title='total_size' data-use='r' data-ref="total_size">total_size</a> / <a class="tu ref" href="#total_strings" title='total_strings' data-use='r' data-ref="total_strings">total_strings</a>));</td></tr>
+<tr><th id="307">307</th><td></td></tr>
+<tr><th id="308">308</th><td>  <a class="ref" href="../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a> (<a class="macro" href="makeint.h.html#332" title="dcgettext (((void*)0), &quot;%s current buf: size = %hu B / used = %hu B / count = %hu / avg = %hu B\n&quot;, 5)" data-ref="_M/_">_</a>(<q>"%s current buf: size = %hu B / used = %hu B / count = %hu / avg = %hu B\n"</q>),</td></tr>
+<tr><th id="309">309</th><td>          <a class="local col2 ref" href="#32prefix" title='prefix' data-ref="32prefix">prefix</a>, (<a class="typedef" href="#sc_buflen_t" title='sc_buflen_t' data-type='unsigned short' data-ref="sc_buflen_t">sc_buflen_t</a>)<a class="macro" href="#45" title="((((8192)) - (2 * sizeof (size_t))) - (__builtin_offsetof(struct strcache, buffer)))" data-ref="_M/BUFSIZE">BUFSIZE</a>, <a class="tu ref" href="#strcache" title='strcache' data-use='r' data-ref="strcache">strcache</a>-&gt;<a class="tu ref" href="#strcache::end" title='strcache::end' data-use='r' data-ref="strcache::end">end</a>, <a class="tu ref" href="#strcache" title='strcache' data-use='r' data-ref="strcache">strcache</a>-&gt;<a class="tu ref" href="#strcache::count" title='strcache::count' data-use='r' data-ref="strcache::count">count</a>,</td></tr>
+<tr><th id="310">310</th><td>          (<em>unsigned</em> <em>short</em>) (<a class="tu ref" href="#strcache" title='strcache' data-use='r' data-ref="strcache">strcache</a>-&gt;<a class="tu ref" href="#strcache::end" title='strcache::end' data-use='r' data-ref="strcache::end">end</a> / <a class="tu ref" href="#strcache" title='strcache' data-use='r' data-ref="strcache">strcache</a>-&gt;<a class="tu ref" href="#strcache::count" title='strcache::count' data-use='r' data-ref="strcache::count">count</a>));</td></tr>
+<tr><th id="311">311</th><td></td></tr>
+<tr><th id="312">312</th><td>  <b>if</b> (<a class="local col4 ref" href="#34numbuffs" title='numbuffs' data-ref="34numbuffs">numbuffs</a>)</td></tr>
+<tr><th id="313">313</th><td>    {</td></tr>
+<tr><th id="314">314</th><td>      <i>/* Show information about non-current buffers.  */</i></td></tr>
+<tr><th id="315">315</th><td>      <em>unsigned</em> <em>long</em> <dfn class="local col1 decl" id="41sz" title='sz' data-type='unsigned long' data-ref="41sz">sz</dfn> = <a class="tu ref" href="#total_size" title='total_size' data-use='r' data-ref="total_size">total_size</a> - <a class="tu ref" href="#strcache" title='strcache' data-use='r' data-ref="strcache">strcache</a>-&gt;<a class="tu ref" href="#strcache::end" title='strcache::end' data-use='r' data-ref="strcache::end">end</a>;</td></tr>
+<tr><th id="316">316</th><td>      <em>unsigned</em> <em>long</em> <dfn class="local col2 decl" id="42cnt" title='cnt' data-type='unsigned long' data-ref="42cnt">cnt</dfn> = <a class="tu ref" href="#total_strings" title='total_strings' data-use='r' data-ref="total_strings">total_strings</a> - <a class="tu ref" href="#strcache" title='strcache' data-use='r' data-ref="strcache">strcache</a>-&gt;<a class="tu ref" href="#strcache::count" title='strcache::count' data-use='r' data-ref="strcache::count">count</a>;</td></tr>
+<tr><th id="317">317</th><td>      <a class="typedef" href="#sc_buflen_t" title='sc_buflen_t' data-type='unsigned short' data-ref="sc_buflen_t">sc_buflen_t</a> <dfn class="local col3 decl" id="43avgfree" title='avgfree' data-type='sc_buflen_t' data-ref="43avgfree">avgfree</dfn> = <a class="local col6 ref" href="#36totfree" title='totfree' data-ref="36totfree">totfree</a> / <a class="local col4 ref" href="#34numbuffs" title='numbuffs' data-ref="34numbuffs">numbuffs</a>;</td></tr>
+<tr><th id="318">318</th><td></td></tr>
+<tr><th id="319">319</th><td>      <a class="ref" href="../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a> (<a class="macro" href="makeint.h.html#332" title="dcgettext (((void*)0), &quot;%s other used: total = %lu B / count = %lu / avg = %lu B\n&quot;, 5)" data-ref="_M/_">_</a>(<q>"%s other used: total = %lu B / count = %lu / avg = %lu B\n"</q>),</td></tr>
+<tr><th id="320">320</th><td>              <a class="local col2 ref" href="#32prefix" title='prefix' data-ref="32prefix">prefix</a>, <a class="local col1 ref" href="#41sz" title='sz' data-ref="41sz">sz</a>, <a class="local col2 ref" href="#42cnt" title='cnt' data-ref="42cnt">cnt</a>, <a class="local col1 ref" href="#41sz" title='sz' data-ref="41sz">sz</a> / <a class="local col2 ref" href="#42cnt" title='cnt' data-ref="42cnt">cnt</a>);</td></tr>
+<tr><th id="321">321</th><td></td></tr>
+<tr><th id="322">322</th><td>      <a class="ref" href="../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a> (<a class="macro" href="makeint.h.html#332" title="dcgettext (((void*)0), &quot;%s other free: total = %lu B / max = %lu B / min = %lu B / avg = %hu B\n&quot;, 5)" data-ref="_M/_">_</a>(<q>"%s other free: total = %lu B / max = %lu B / min = %lu B / avg = %hu B\n"</q>),</td></tr>
+<tr><th id="323">323</th><td>              <a class="local col2 ref" href="#32prefix" title='prefix' data-ref="32prefix">prefix</a>, <a class="local col6 ref" href="#36totfree" title='totfree' data-ref="36totfree">totfree</a>, <a class="local col7 ref" href="#37maxfree" title='maxfree' data-ref="37maxfree">maxfree</a>, <a class="local col8 ref" href="#38minfree" title='minfree' data-ref="38minfree">minfree</a>, <a class="local col3 ref" href="#43avgfree" title='avgfree' data-ref="43avgfree">avgfree</a>);</td></tr>
+<tr><th id="324">324</th><td>    }</td></tr>
+<tr><th id="325">325</th><td></td></tr>
+<tr><th id="326">326</th><td>  <a class="ref" href="../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a> (<a class="macro" href="makeint.h.html#332" title="dcgettext (((void*)0), &quot;\n%s strcache performance: lookups = %lu / hit rate = %lu%%\n&quot;, 5)" data-ref="_M/_">_</a>(<q>"\n%s strcache performance: lookups = %lu / hit rate = %lu%%\n"</q>),</td></tr>
+<tr><th id="327">327</th><td>          <a class="local col2 ref" href="#32prefix" title='prefix' data-ref="32prefix">prefix</a>, <a class="tu ref" href="#total_adds" title='total_adds' data-use='r' data-ref="total_adds">total_adds</a>, (<em>long</em> <em>unsigned</em>)(<var>100.0</var> * (<a class="tu ref" href="#total_adds" title='total_adds' data-use='r' data-ref="total_adds">total_adds</a> - <a class="tu ref" href="#total_strings" title='total_strings' data-use='r' data-ref="total_strings">total_strings</a>) / <a class="tu ref" href="#total_adds" title='total_adds' data-use='r' data-ref="total_adds">total_adds</a>));</td></tr>
+<tr><th id="328">328</th><td>  <a class="ref" href="../include/stdio.h.html#fputs" title='fputs' data-ref="fputs">fputs</a> (<a class="macro" href="makeint.h.html#332" title="dcgettext (((void*)0), &quot;# hash-table stats:\n# &quot;, 5)" data-ref="_M/_">_</a>(<q>"# hash-table stats:\n# "</q>), <a class="macro" href="../include/stdio.h.html#173" title="stdout" data-ref="_M/stdout">stdout</a>);</td></tr>
+<tr><th id="329">329</th><td>  <a class="ref" href="hash.h.html#hash_print_stats" title='hash_print_stats' data-ref="hash_print_stats">hash_print_stats</a> (&amp;<a class="tu ref" href="#strings" title='strings' data-use='a' data-ref="strings">strings</a>, <a class="macro" href="../include/stdio.h.html#173" title="stdout" data-ref="_M/stdout">stdout</a>);</td></tr>
+<tr><th id="330">330</th><td>}</td></tr>
+<tr><th id="331">331</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

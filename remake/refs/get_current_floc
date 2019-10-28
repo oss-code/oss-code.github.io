@@ -1,0 +1,7 @@
+<dec f='remake/debugger/fns.h' l='41' type='const gmk_floc * get_current_floc()'/>
+<use f='remake/debugger/command/edit.h' l='30' u='c' c='dbg_cmd_edit'/>
+<def f='remake/debugger/fns.c' l='178' ll='190' type='const gmk_floc * get_current_floc()'/>
+<doc f='remake/debugger/fns.c' l='174'>/*!
+  Return the current target from the stack or NULL
+  if none set.
+ */</doc>

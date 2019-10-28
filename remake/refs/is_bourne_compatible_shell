@@ -1,0 +1,5 @@
+<dec f='remake/job.h' l='124' type='int is_bourne_compatible_shell(const char * path)'/>
+<def f='remake/job.c' l='329' ll='374' type='int is_bourne_compatible_shell(const char * path)'/>
+<use f='remake/job.c' l='1206' u='c' c='start_job_command'/>
+<use f='remake/job.c' l='2833' u='c' c='construct_command_argv_internal'/>
+<doc f='remake/job.c' l='328'>/* determines whether path looks to be a Bourne-like shell. */</doc>

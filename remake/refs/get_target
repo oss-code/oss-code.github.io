@@ -1,0 +1,18 @@
+<dec f='remake/debugger/fns.h' l='78' type='file_t * get_target(char ** ppsz_args, const char ** ppsz_target)'/>
+<use f='remake/debugger/command/info.h' l='281' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/list.h' l='51' u='c' c='dbg_cmd_list'/>
+<use f='remake/debugger/command/target.h' l='24' u='c' c='dbg_cmd_target'/>
+<use f='remake/debugger/command/write.h' l='30' u='c' c='dbg_cmd_write'/>
+<doc f='remake/debugger/fns.h' l='71'>/*! Find the target in first word of psz_args or use $@ (the current
+    stack) if none.  We also allow $@ or @ explicitly as a target name
+    to mean the current target on the stack. NULL is returned if a lookup
+    of the target name was not found. ppsz_target is to the name
+    looked up.
+ */</doc>
+<def f='remake/debugger/fns.c' l='199' ll='233' type='file_t * get_target(char ** ppsz_args, const char ** ppsz_target)'/>
+<doc f='remake/debugger/fns.c' l='193'>/*! Find the target in first word of psz_args or use $@ (the current
+    stack) if none.  We also allow $@ or @ explicitly as a target name
+    to mean the current target on the stack. NULL is returned if a lookup
+    of the target name was not found. ppsz_target is to the name
+    looked up.
+ */</doc>

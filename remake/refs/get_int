@@ -1,0 +1,14 @@
+<dec f='remake/debugger/fns.h' l='54' type='uint8_t get_int(const char * psz_arg, int * pi_result, uint8_t b_warn)'/>
+<use f='remake/debugger/command/delete.h' l='37' u='c' c='dbg_cmd_delete'/>
+<use f='remake/debugger/command/down.h' l='27' u='c' c='dbg_cmd_frame_down'/>
+<use f='remake/debugger/command/frame.h' l='28' u='c' c='dbg_cmd_frame'/>
+<use f='remake/debugger/command/quit.h' l='30' u='c' c='dbg_cmd_quit'/>
+<use f='remake/debugger/command/set.h' l='105' u='c' c='dbg_cmd_set'/>
+<use f='remake/debugger/command/where.h' l='29' u='c' c='dbg_cmd_where'/>
+<doc f='remake/debugger/fns.h' l='49'>/*! Parse psz_arg for a signed integer. The value is returned in
+    *pi_result. If warn is true, then we&apos;ll give a warning if no
+    integer found. The return value is true if parsing succeeded in
+    any event..
+ */</doc>
+<doc f='remake/debugger/fns.h' l='54'>/*out*/</doc>
+<def f='remake/debugger/fns.c' l='97' ll='113' macro='1' type='uint8_t get_int(const char * psz_arg, int * pi_result, uint8_t b_warn)'/>

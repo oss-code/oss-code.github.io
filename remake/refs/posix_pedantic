@@ -1,0 +1,9 @@
+<dec f='remake/makeint.h' l='628' type='int'/>
+<dec f='remake/make.h' l='464' type='int'/>
+<def f='remake/globals.c' l='85' type='int'/>
+<doc f='remake/globals.c' l='83'>/*! Nonzero if we have seen the magic &apos;.POSIX&apos; target.
+   This turns on pedantic compliance with POSIX.2.  */</doc>
+<use f='remake/job.c' l='2431' u='r' c='construct_command_argv_internal'/>
+<use f='remake/main.c' l='3257' u='r' c='define_makeflags'/>
+<use f='remake/misc.c' l='99' u='r' c='collapse_continuations'/>
+<use f='remake/read.c' l='2077' u='w' c='record_files'/>

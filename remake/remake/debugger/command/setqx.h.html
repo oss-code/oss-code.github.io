@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>setqx.h source code [remake/debugger/command/setqx.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/debugger/command/setqx.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>remake</a>/<a href='..'>debugger</a>/<a href='./'>command</a>/<a href='setqx.h.html'>setqx.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Copyright (C) 2011, 2015 R. Bernstein  &lt;rocky@gnu.org&gt;</i></td></tr>
+<tr><th id="2">2</th><td><i>This file is part of GNU Make (remake variant).</i></td></tr>
+<tr><th id="3">3</th><td><i></i></td></tr>
+<tr><th id="4">4</th><td><i>GNU Make is free software; you can redistribute it and/or modify</i></td></tr>
+<tr><th id="5">5</th><td><i>it under the terms of the GNU General Public License as published by</i></td></tr>
+<tr><th id="6">6</th><td><i>the Free Software Foundation; either version 2, or (at your option)</i></td></tr>
+<tr><th id="7">7</th><td><i>any later version.</i></td></tr>
+<tr><th id="8">8</th><td><i></i></td></tr>
+<tr><th id="9">9</th><td><i>GNU Make is distributed in the hope that it will be useful,</i></td></tr>
+<tr><th id="10">10</th><td><i>but WITHOUT ANY WARRANTY; without even the implied warranty of</i></td></tr>
+<tr><th id="11">11</th><td><i>MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</i></td></tr>
+<tr><th id="12">12</th><td><i>GNU General Public License for more details.</i></td></tr>
+<tr><th id="13">13</th><td><i></i></td></tr>
+<tr><th id="14">14</th><td><i>You should have received a copy of the GNU General Public License</i></td></tr>
+<tr><th id="15">15</th><td><i>along with GNU Make; see the file COPYING.  If not, write to</i></td></tr>
+<tr><th id="16">16</th><td><i>the Free Software Foundation, Inc., 59 Temple Place - Suite 330,</i></td></tr>
+<tr><th id="17">17</th><td><i>Boston, MA 02111-1307, USA.  */</i></td></tr>
+<tr><th id="18">18</th><td></td></tr>
+<tr><th id="19">19</th><td><i>/* Set a variable definition without variable references but don't</i></td></tr>
+<tr><th id="20">20</th><td><i>   expand variable references in the value part of psz_string. */</i></td></tr>
+<tr><th id="21">21</th><td><em>static</em> <a class="typedef" href="../../trace.h.html#debug_return_t" title='debug_return_t' data-type='enum debug_return_t' data-ref="debug_return_t">debug_return_t</a></td></tr>
+<tr><th id="22">22</th><td><dfn class="decl def" id="dbg_cmd_setqx" title='dbg_cmd_setqx' data-ref="dbg_cmd_setqx">dbg_cmd_setqx</dfn>(<em>char</em> *<dfn class="local col0 decl" id="190psz_string" title='psz_string' data-type='char *' data-ref="190psz_string">psz_string</dfn>)</td></tr>
+<tr><th id="23">23</th><td>{</td></tr>
+<tr><th id="24">24</th><td>  <a class="tu ref" href="../cmd.c.html#dbg_cmd_set_var" title='dbg_cmd_set_var' data-use='c' data-ref="dbg_cmd_set_var">dbg_cmd_set_var</a>(<a class="local col0 ref" href="#190psz_string" title='psz_string' data-ref="190psz_string">psz_string</a>, <var>1</var>);</td></tr>
+<tr><th id="25">25</th><td>  <b>return</b> <a class="enum" href="../../trace.h.html#debug_readloop" title='debug_readloop' data-ref="debug_readloop">debug_readloop</a>;</td></tr>
+<tr><th id="26">26</th><td>}</td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="29">29</th><td><dfn class="decl def" id="dbg_cmd_setqx_init" title='dbg_cmd_setqx_init' data-ref="dbg_cmd_setqx_init">dbg_cmd_setqx_init</dfn>(<em>unsigned</em> <em>int</em> <dfn class="local col1 decl" id="191c" title='c' data-type='unsigned int' data-ref="191c">c</dfn>)</td></tr>
+<tr><th id="30">30</th><td>{</td></tr>
+<tr><th id="31">31</th><td>  <a class="ref" href="../cmd.c.html#short_command" title='short_command' data-ref="short_command">short_command</a>[<a class="local col1 ref" href="#191c" title='c' data-ref="191c">c</a>].<a class="ref" href="../../debugger.h.html#(anonymous)::func" title='(anonymous struct)::func' data-ref="(anonymous)::func">func</a> = &amp;<a class="ref" href="#dbg_cmd_setqx" title='dbg_cmd_setqx' data-ref="dbg_cmd_setqx">dbg_cmd_setqx</a>;</td></tr>
+<tr><th id="32">32</th><td>  <a class="ref" href="../cmd.c.html#short_command" title='short_command' data-ref="short_command">short_command</a>[<a class="local col1 ref" href="#191c" title='c' data-ref="191c">c</a>].<a class="ref" href="../../debugger.h.html#(anonymous)::use" title='(anonymous struct)::use' data-ref="(anonymous)::use">use</a>  = <a class="macro" href="../../make.h.html#293" title="dcgettext (((void*)0), &quot;setqx VARIABLE VALUE&quot;, 5)" data-ref="_M/_">_</a>(<q>"setqx VARIABLE VALUE"</q>);</td></tr>
+<tr><th id="33">33</th><td>  <a class="ref" href="../cmd.c.html#short_command" title='short_command' data-ref="short_command">short_command</a>[<a class="local col1 ref" href="#191c" title='c' data-ref="191c">c</a>].<a class="ref" href="../../debugger.h.html#(anonymous)::doc" title='(anonymous struct)::doc' data-ref="(anonymous)::doc">doc</a>  =</td></tr>
+<tr><th id="34">34</th><td>    <a class="macro" href="../../make.h.html#293" title="dcgettext (((void*)0), &quot;Set MAKE variable VARIABLE to VALUE. Variable definitions\n&quot; &quot;\tinside VALUE is expanded before assignment occurs.&quot;&quot;\nSee also &apos;setq&apos;.&quot;, 5)" data-ref="_M/_">_</a>(<q>"Set MAKE variable VARIABLE to VALUE. Variable definitions\n"</q></td></tr>
+<tr><th id="35">35</th><td>      <q>"\tinside VALUE is expanded before assignment occurs."</q></td></tr>
+<tr><th id="36">36</th><td><q>"\nSee also 'setq'."</q>);</td></tr>
+<tr><th id="37">37</th><td>}</td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td></td></tr>
+<tr><th id="40">40</th><td></td></tr>
+<tr><th id="41">41</th><td><i>/*</i></td></tr>
+<tr><th id="42">42</th><td><i> * Local variables:</i></td></tr>
+<tr><th id="43">43</th><td><i> * eval: (c-set-style "gnu")</i></td></tr>
+<tr><th id="44">44</th><td><i> * indent-tabs-mode: nil</i></td></tr>
+<tr><th id="45">45</th><td><i> * End:</i></td></tr>
+<tr><th id="46">46</th><td><i> */</i></td></tr>
+<tr><th id="47">47</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../cmd.c.html'>remake/debugger/cmd.c</a><br/>Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

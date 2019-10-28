@@ -1,0 +1,39 @@
+<dec f='include/stdio.h' l='689' type='int fputs(const char *restrict __s, FILE *restrict __stream)'/>
+<doc f='include/stdio.h' l='685'>/* Write a string to STREAM.
+
+   This function is a possible cancellation point and therefore not
+   marked with __THROW.  */</doc>
+<use f='remake/commands.c' l='794' u='c' c='print_commands'/>
+<use f='remake/dir.c' l='1141' u='c' c='print_dir_data_base'/>
+<use f='remake/dir.c' l='1144' u='c' c='print_dir_data_base'/>
+<use f='remake/dir.c' l='1146' u='c' c='print_dir_data_base'/>
+<use f='remake/dir.c' l='1149' u='c' c='print_dir_data_base'/>
+<use f='remake/dir.c' l='1160' u='c' c='print_dir_data_base'/>
+<use f='remake/dir.c' l='1162' u='c' c='print_dir_data_base'/>
+<use f='remake/dir.c' l='1165' u='c' c='print_dir_data_base'/>
+<use f='remake/dir.c' l='1167' u='c' c='print_dir_data_base'/>
+<use f='remake/file.c' l='252' u='c' c='remove_intermediates'/>
+<use f='remake/file.c' l='257' u='c' c='remove_intermediates'/>
+<use f='remake/file.c' l='798' u='c' c='print_target_props'/>
+<use f='remake/file.c' l='923' u='c' c='print_file'/>
+<use f='remake/file.c' l='958' u='c' c='print_file'/>
+<use f='remake/file.c' l='1039' u='c' c='print_file_data_base'/>
+<use f='remake/function.c' l='1889' u='c' c='func_shell_base'/>
+<use f='remake/function.c' l='2242' u='c' c='func_file'/>
+<use f='remake/main.c' l='2741' u='c' c='print_usage'/>
+<use f='remake/output.c' l='63' u='c' c='_outputs'/>
+<use f='remake/print.c' l='168' u='c' c='fatal_err'/>
+<use f='remake/rule.c' l='488' u='c' c='print_rule'/>
+<use f='remake/strcache.c' l='328' u='c' c='strcache_print_stats'/>
+<use f='remake/variable.c' l='1692' u='c' c='print_variable'/>
+<use f='remake/variable.c' l='1693' u='c' c='print_variable'/>
+<use f='remake/variable.c' l='1695' u='c' c='print_variable'/>
+<use f='remake/variable.c' l='1700' u='c' c='print_variable'/>
+<use f='remake/variable.c' l='1717' u='c' c='print_variable'/>
+<use f='remake/variable.c' l='1743' u='c' c='print_variable_info'/>
+<use f='remake/variable.c' l='1744' u='c' c='print_variable_info'/>
+<use f='remake/variable.c' l='1749' u='c' c='print_variable_info'/>
+<use f='remake/variable.c' l='1767' u='c' c='print_variable_info'/>
+<use f='remake/variable.c' l='1809' u='c' c='print_variable_set'/>
+<use f='remake/variable.c' l='1810' u='c' c='print_variable_set'/>
+<use f='remake/vpath.c' l='631' u='c' c='print_vpath_data_base'/>

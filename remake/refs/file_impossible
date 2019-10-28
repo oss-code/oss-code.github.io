@@ -1,0 +1,7 @@
+<dec f='remake/makeint.h' l='530' type='void file_impossible(const char * )'/>
+<dec f='remake/make.h' l='379' type='void file_impossible(const char * )'/>
+<def f='remake/dir.c' l='857' ll='954' type='void file_impossible(const char * filename)'/>
+<doc f='remake/dir.c' l='853'>/* Mark FILENAME as &apos;impossible&apos; for &apos;file_impossible_p&apos;.
+   This means an attempt has been made to search for FILENAME
+   as an intermediate file, and it has failed.  */</doc>
+<use f='remake/implicit.c' l='793' u='c' c='pattern_search'/>

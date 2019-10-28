@@ -1,0 +1,18 @@
+<def f='remake/job.h' l='91' ll='118'/>
+<size>72</size>
+<doc f='remake/job.h' l='89'>/* Structure describing a running or dead child process.  */</doc>
+<mbr r='child::next' o='0' t='struct child *'/>
+<mbr r='child::file' o='64' t='struct file *'/>
+<mbr r='child::environment' o='128' t='char **'/>
+<mbr r='child::sh_batch_file' o='192' t='char *'/>
+<mbr r='child::command_lines' o='256' t='char **'/>
+<mbr r='child::command_ptr' o='320' t='char *'/>
+<mbr r='child::command_line' o='384' t='unsigned int'/>
+<mbr r='child::output' o='416' t='struct output'/>
+<mbr r='child::pid' o='512' t='pid_t'/>
+<mbr r='child::remote' o='544' t='unsigned int'/>
+<mbr r='child::noerror' o='545' t='unsigned int'/>
+<mbr r='child::good_stdin' o='546' t='unsigned int'/>
+<mbr r='child::deleted' o='547' t='unsigned int'/>
+<mbr r='child::recursive' o='548' t='unsigned int'/>
+<mbr r='child::dontcare' o='549' t='unsigned int'/>

@@ -1,0 +1,11 @@
+<dec f='remake/makeint.h' l='468' type='void message(int prefix, size_t length, const char * fmt)'/>
+<use f='remake/job.c' l='1177' u='c' c='start_job_command'/>
+<use f='remake/job.c' l='1179' u='c' c='start_job_command'/>
+<use f='remake/job.c' l='1180' u='c' c='start_job_command'/>
+<use f='remake/job.c' l='1183' u='c' c='start_job_command'/>
+<use f='remake/job.c' l='1732' u='c' c='new_job'/>
+<use f='remake/job.c' l='1735' u='c' c='new_job'/>
+<def f='remake/output.c' l='613' ll='639' type='void message(int prefix, size_t len, const char * fmt)'/>
+<doc f='remake/output.c' l='611'>/* Print a message on stdout.  */</doc>
+<use f='remake/remake.c' l='232' u='c' c='update_goal_chain'/>
+<use f='remake/remake.c' l='1235' u='c' c='touch_file'/>

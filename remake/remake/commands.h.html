@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>commands.h source code [remake/commands.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="commands "/>
+<link rel="stylesheet" href="../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/commands.h'; var root_path = '..'; var data_path = '../../data';</script>
+<script src='../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='./'>remake</a>/<a href='commands.h.html'>commands.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Definition of data structures describing shell commands for GNU Make.</i></td></tr>
+<tr><th id="2">2</th><td><i>Copyright (C) 1988-2016 Free Software Foundation, Inc.</i></td></tr>
+<tr><th id="3">3</th><td><i>This file is part of GNU Make.</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>GNU Make is free software; you can redistribute it and/or modify it under the</i></td></tr>
+<tr><th id="6">6</th><td><i>terms of the GNU General Public License as published by the Free Software</i></td></tr>
+<tr><th id="7">7</th><td><i>Foundation; either version 3 of the License, or (at your option) any later</i></td></tr>
+<tr><th id="8">8</th><td><i>version.</i></td></tr>
+<tr><th id="9">9</th><td><i></i></td></tr>
+<tr><th id="10">10</th><td><i>GNU Make is distributed in the hope that it will be useful, but WITHOUT ANY</i></td></tr>
+<tr><th id="11">11</th><td><i>WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR</i></td></tr>
+<tr><th id="12">12</th><td><i>A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</i></td></tr>
+<tr><th id="13">13</th><td><i></i></td></tr>
+<tr><th id="14">14</th><td><i>You should have received a copy of the GNU General Public License along with</i></td></tr>
+<tr><th id="15">15</th><td><i>this program.  If not, see &lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.  */</i></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><i>/* Structure that gives the commands to make a file</i></td></tr>
+<tr><th id="18">18</th><td><i>   and information about where these commands came from.  */</i></td></tr>
+<tr><th id="19">19</th><td></td></tr>
+<tr><th id="20">20</th><td><u>#<span data-ppcond="20">ifndef</span> <span class="macro" data-ref="_M/REMAKE_COMMANDS_H">REMAKE_COMMANDS_H</span></u></td></tr>
+<tr><th id="21">21</th><td><u>#define <dfn class="macro" id="_M/REMAKE_COMMANDS_H" data-ref="_M/REMAKE_COMMANDS_H">REMAKE_COMMANDS_H</dfn></u></td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><u>#include <a href="makeint.h.html">"makeint.h"</a></u></td></tr>
+<tr><th id="24">24</th><td><u>#include <a href="filedef.h.html">"filedef.h"</a></u></td></tr>
+<tr><th id="25">25</th><td><u>#include <a href="trace.h.html">"trace.h"</a></u></td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><b>struct</b> <dfn class="type def" id="commands" title='commands' data-ref="commands">commands</dfn></td></tr>
+<tr><th id="28">28</th><td>  {</td></tr>
+<tr><th id="29">29</th><td>    <a class="typedef" href="gnuremake.h.html#gmk_floc" title='gmk_floc' data-type='struct gmk_floc' data-ref="gmk_floc">gmk_floc</a> <dfn class="decl" id="commands::fileinfo" title='commands::fileinfo' data-ref="commands::fileinfo">fileinfo</dfn>;          <i>/* Where commands were defined.  */</i></td></tr>
+<tr><th id="30">30</th><td>    <em>char</em> *<dfn class="decl" id="commands::commands" title='commands::commands' data-ref="commands::commands">commands</dfn>;             <i>/* Commands text.  */</i></td></tr>
+<tr><th id="31">31</th><td>    <em>char</em> **<dfn class="decl" id="commands::command_lines" title='commands::command_lines' data-ref="commands::command_lines">command_lines</dfn>;       <i>/* Commands chopped up into lines.  */</i></td></tr>
+<tr><th id="32">32</th><td>    <em>unsigned</em> <em>char</em> *<dfn class="decl" id="commands::lines_flags" title='commands::lines_flags' data-ref="commands::lines_flags">lines_flags</dfn>; <i>/* One set of flag bits for each line.  */</i></td></tr>
+<tr><th id="33">33</th><td>    <em>unsigned</em> <em>short</em> <dfn class="decl" id="commands::ncommand_lines" title='commands::ncommand_lines' data-ref="commands::ncommand_lines">ncommand_lines</dfn>;<i>/* Number of command lines.  */</i></td></tr>
+<tr><th id="34">34</th><td>    <em>char</em> <dfn class="decl" id="commands::recipe_prefix" title='commands::recipe_prefix' data-ref="commands::recipe_prefix">recipe_prefix</dfn>;         <i>/* Recipe prefix for this command set.  */</i></td></tr>
+<tr><th id="35">35</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="commands::any_recurse" title='commands::any_recurse' data-ref="commands::any_recurse">any_recurse</dfn>:<var>1</var>; <i>/* Nonzero if any 'lines_flags' elt has */</i></td></tr>
+<tr><th id="36">36</th><td>                                <i>/* the COMMANDS_RECURSE bit set.  */</i></td></tr>
+<tr><th id="37">37</th><td>  };</td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td><i>/* Bits in 'lines_flags'.  */</i></td></tr>
+<tr><th id="40">40</th><td><u>#define <dfn class="macro" id="_M/COMMANDS_RECURSE" data-ref="_M/COMMANDS_RECURSE">COMMANDS_RECURSE</dfn>        1 /* Recurses: + or $(MAKE).  */</u></td></tr>
+<tr><th id="41">41</th><td><u>#define <dfn class="macro" id="_M/COMMANDS_SILENT" data-ref="_M/COMMANDS_SILENT">COMMANDS_SILENT</dfn>         2 /* Silent: @.  */</u></td></tr>
+<tr><th id="42">42</th><td><u>#define <dfn class="macro" id="_M/COMMANDS_NOERROR" data-ref="_M/COMMANDS_NOERROR">COMMANDS_NOERROR</dfn>        4 /* No errors: -.  */</u></td></tr>
+<tr><th id="43">43</th><td></td></tr>
+<tr><th id="44">44</th><td><a class="macro" href="config.h.html#418" title="void" data-ref="_M/RETSIGTYPE">RETSIGTYPE</a> <a class="decl" href="commands.c.html#fatal_error_signal" title='fatal_error_signal' data-ref="fatal_error_signal" id="fatal_error_signal">fatal_error_signal</a> (<em>int</em> <dfn class="local col8 decl" id="128sig" title='sig' data-type='int' data-ref="128sig">sig</dfn>);</td></tr>
+<tr><th id="45">45</th><td><i class="doc">/*!</i></td></tr>
+<tr><th id="46">46</th><td><i class="doc">  Execute the commands to remake P_FILE.  If they are currently</i></td></tr>
+<tr><th id="47">47</th><td><i class="doc">  executing, return or have already finished executing, just return.</i></td></tr>
+<tr><th id="48">48</th><td><i class="doc">  Otherwise, fork off a child process to run the first command line</i></td></tr>
+<tr><th id="49">49</th><td><i class="doc">  in the sequence.</i></td></tr>
+<tr><th id="50">50</th><td><i class="doc"></i></td></tr>
+<tr><th id="51">51</th><td><i class="doc">  <span class="command">@param</span> <span class="arg">p_file</span>  pointer to file to remake.</i></td></tr>
+<tr><th id="52">52</th><td><i class="doc"></i></td></tr>
+<tr><th id="53">53</th><td><i class="doc">  <span class="command">@param</span> <span class="arg">p_call_stack</span> pointer to current target call stack. This is</i></td></tr>
+<tr><th id="54">54</th><td><i class="doc">  passed down for information reporting.</i></td></tr>
+<tr><th id="55">55</th><td><i class="doc"></i></td></tr>
+<tr><th id="56">56</th><td><i class="doc">*/</i></td></tr>
+<tr><th id="57">57</th><td><b>extern</b> <em>void</em> <a class="decl" href="commands.c.html#execute_file_commands" title='execute_file_commands' data-ref="execute_file_commands" id="execute_file_commands">execute_file_commands</a> (<a class="typedef" href="types.h.html#file_t" title='file_t' data-type='struct file' data-ref="file_t">file_t</a> *<dfn class="local col9 decl" id="129p_file" title='p_file' data-type='file_t *' data-ref="129p_file">p_file</dfn>,</td></tr>
+<tr><th id="58">58</th><td>				   <a class="typedef" href="trace.h.html#target_stack_node_t" title='target_stack_node_t' data-type='struct target_stack_node' data-ref="target_stack_node_t">target_stack_node_t</a> *<dfn class="local col0 decl" id="130p_call_stack" title='p_call_stack' data-type='target_stack_node_t *' data-ref="130p_call_stack">p_call_stack</dfn>);</td></tr>
+<tr><th id="59">59</th><td></td></tr>
+<tr><th id="60">60</th><td><i class="doc">/*!</i></td></tr>
+<tr><th id="61">61</th><td><i class="doc">+  Print out the commands.</i></td></tr>
+<tr><th id="62">62</th><td><i class="doc">+</i></td></tr>
+<tr><th id="63">63</th><td><i class="doc">+  <span class="command">@param</span> <span class="arg">p_cmds</span> location of commands to print out.</i></td></tr>
+<tr><th id="64">64</th><td><i class="doc">+  <span class="command">@param</span> <span class="arg">p_target</span> used to set automatic variables if it is non-null.</i></td></tr>
+<tr><th id="65">65</th><td><i class="doc">+  <span class="command">@param</span> <span class="arg">b_expand</span> if true, expand the commands to remove MAKE variables.</i></td></tr>
+<tr><th id="66">66</th><td><i class="doc">+*/</i></td></tr>
+<tr><th id="67">67</th><td><b>extern</b> <em>void</em> <a class="decl" href="commands.c.html#print_commands" title='print_commands' data-ref="print_commands" id="print_commands">print_commands</a> (<a class="typedef" href="types.h.html#file_t" title='file_t' data-type='struct file' data-ref="file_t">file_t</a> *<dfn class="local col1 decl" id="131p_target" title='p_target' data-type='file_t *' data-ref="131p_target">p_target</dfn>, <a class="typedef" href="types.h.html#commands_t" title='commands_t' data-type='struct commands' data-ref="commands_t">commands_t</a> *<dfn class="local col2 decl" id="132p_cmds" title='p_cmds' data-type='commands_t *' data-ref="132p_cmds">p_cmds</dfn>, <a class="macro" href="types.h.html#50" title="uint8_t" data-ref="_M/bool">bool</a> <dfn class="local col3 decl" id="133b_expand" title='b_expand' data-type='uint8_t' data-ref="133b_expand">b_expand</dfn>);</td></tr>
+<tr><th id="68">68</th><td></td></tr>
+<tr><th id="69">69</th><td><em>void</em> <a class="decl" href="commands.c.html#delete_child_targets" title='delete_child_targets' data-ref="delete_child_targets" id="delete_child_targets">delete_child_targets</a> (<b>struct</b> <a class="type" href="job.h.html#child" title='child' data-ref="child">child</a> *<dfn class="local col4 decl" id="134child" title='child' data-type='struct child *' data-ref="134child">child</dfn>);</td></tr>
+<tr><th id="70">70</th><td><em>void</em> <a class="decl" href="commands.c.html#chop_commands" title='chop_commands' data-ref="chop_commands" id="chop_commands">chop_commands</a> (<b>struct</b> <a class="type" href="#commands" title='commands' data-ref="commands">commands</a> *<dfn class="local col5 decl" id="135cmds" title='cmds' data-type='struct commands *' data-ref="135cmds">cmds</dfn>);</td></tr>
+<tr><th id="71">71</th><td><em>void</em> <a class="decl" href="commands.c.html#set_file_variables" title='set_file_variables' data-ref="set_file_variables" id="set_file_variables">set_file_variables</a> (<b>struct</b> <a class="type" href="filedef.h.html#file" title='file' data-ref="file">file</a> *<dfn class="local col6 decl" id="136file" title='file' data-type='struct file *' data-ref="136file">file</dfn>);</td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td><u>#<span data-ppcond="20">endif</span> /*REMAKE_COMMANDS_H*/</u></td></tr>
+<tr><th id="74">74</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='commands.c.html'>remake/commands.c</a><br/>Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

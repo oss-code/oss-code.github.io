@@ -1,0 +1,15 @@
+<dec f='remake/rule.h' l='47' type='struct rule *'/>
+<use f='remake/debugger/file2line.c' l='173' u='r' c='file2lines_init'/>
+<use f='remake/debugger/fns.c' l='474' u='r' c='find_rule'/>
+<use f='remake/implicit.c' l='298' u='r' c='pattern_search'/>
+<def f='remake/rule.c' l='32' type='struct rule *'/>
+<use f='remake/rule.c' l='80' u='r' c='count_implicit_rule_limits'/>
+<use f='remake/rule.c' l='293' u='r' c='new_pattern_rule'/>
+<use f='remake/rule.c' l='315' u='r' c='new_pattern_rule'/>
+<use f='remake/rule.c' l='316' u='w' c='new_pattern_rule'/>
+<use f='remake/rule.c' l='339' u='r' c='new_pattern_rule'/>
+<use f='remake/rule.c' l='340' u='w' c='new_pattern_rule'/>
+<use f='remake/rule.c' l='424' u='r' c='freerule'/>
+<use f='remake/rule.c' l='428' u='w' c='freerule'/>
+<use f='remake/rule.c' l='512' u='r' c='print_rule_data_base'/>
+<doc f='remake/rule.c' l='30'>/* Chain of all pattern rules.  */</doc>

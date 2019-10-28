@@ -1,0 +1,5 @@
+<dec f='remake/print.h' l='36' type='void err_with_stack(target_stack_node_t * p_call, const char * fmt)'/>
+<doc f='remake/print.h' l='35'>/*! Versions of error and fatal with the ability to show call-stack. */</doc>
+<use f='remake/job.c' l='407' u='c' c='child_error'/>
+<use f='remake/job.c' l='411' u='c' c='child_error'/>
+<def f='remake/print.c' l='97' ll='140' type='void err_with_stack(target_stack_node_t * p_call, const char * fmt)'/>

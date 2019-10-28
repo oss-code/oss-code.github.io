@@ -1,0 +1,16 @@
+<dec f='remake/makeint.h' l='638' type='char'/>
+<dec f='remake/make.h' l='474' type='char'/>
+<use f='remake/commands.c' l='826' u='r' c='print_commands'/>
+<use f='remake/file.c' l='921' u='r' c='print_file'/>
+<use f='remake/file.c' l='924' u='w' c='print_file'/>
+<use f='remake/file.c' l='925' u='r' c='print_file'/>
+<use f='remake/file.c' l='926' u='r' c='print_file'/>
+<def f='remake/globals.c' l='113' type='char'/>
+<doc f='remake/globals.c' l='112'>/* This character introduces a command: it&apos;s the first char on the line.  */</doc>
+<use f='remake/read.c' l='573' u='r' c='eval'/>
+<use f='remake/read.c' l='684' u='r' c='eval'/>
+<use f='remake/read.c' l='1003' u='r' c='eval'/>
+<use f='remake/read.c' l='1142' u='r' c='eval'/>
+<use f='remake/read.c' l='1209' u='r' c='eval'/>
+<use f='remake/read.c' l='1510' u='r' c='do_define'/>
+<use f='remake/variable.c' l='1166' u='w' c='set_special_var'/>

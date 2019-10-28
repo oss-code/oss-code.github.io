@@ -1,0 +1,11 @@
+<dec f='remake/read.h' l='61' type='nameseq_t * multi_glob(struct nameseq * chain, unsigned int size)'/>
+<doc f='remake/read.h' l='51'>/*! Given a chain of struct nameseq&apos;s describing a sequence of filenames,
+   in reverse of the intended order, return a new chain describing the
+   result of globbing the filenames.  The new chain is in forward order.
+   The links of the old chain are freed or used in the new chain.
+   Likewise for the names in the old chain.
+
+   SIZE is how big to construct chain elements.
+   This is useful if we want them actually to be other structures
+   that have room for additional info.
+*/</doc>

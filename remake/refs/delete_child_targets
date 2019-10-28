@@ -1,0 +1,7 @@
+<dec f='remake/commands.h' l='69' type='void delete_child_targets(struct child * child)'/>
+<use f='remake/commands.c' l='668' u='c' c='fatal_error_signal'/>
+<def f='remake/commands.c' l='762' ll='778' type='void delete_child_targets(struct child * child)'/>
+<doc f='remake/commands.c' l='759'>/* Delete all non-precious targets of CHILD unless they were already deleted.
+   Set the flag in CHILD to say they&apos;ve been deleted.  */</doc>
+<use f='remake/job.c' l='757' u='c' c='reap_children'/>
+<use f='remake/job.c' l='806' u='c' c='reap_children'/>

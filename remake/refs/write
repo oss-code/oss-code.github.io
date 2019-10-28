@@ -1,0 +1,11 @@
+<dec f='include/unistd.h' l='369' type='ssize_t write(int __fd, const void * __buf, size_t __n)'/>
+<doc f='include/unistd.h' l='365'>/* Write N bytes of BUF to FD.  Return the number written, or -1.
+
+   This function is a cancellation point and therefore not marked with
+   __THROW.  */</doc>
+<use f='remake/arscan.c' l='780' u='c' c='ar_member_touch'/>
+<use f='remake/arscan.c' l='802' u='c' c='ar_member_touch'/>
+<use f='remake/output.c' l='75' u='c' c='_outputs'/>
+<use f='remake/posixos.c' l='76' u='c' c='jobserver_setup'/>
+<use f='remake/posixos.c' l='150' u='c' c='jobserver_release'/>
+<use f='remake/remake.c' l='1271' u='c' c='touch_file'/>

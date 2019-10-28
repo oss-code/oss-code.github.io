@@ -1,0 +1,4 @@
+<dec f='remake/hash.h' l='60' type='void hash_load(struct hash_table * ht, void * item_table, unsigned long cardinality, unsigned long size)'/>
+<use f='remake/function.c' l='2697' u='c' c='hash_init_function_table'/>
+<def f='remake/hash.c' l='66' ll='76' type='void hash_load(struct hash_table * ht, void * item_table, unsigned long cardinality, unsigned long size)'/>
+<doc f='remake/hash.c' l='64'>/* Load an array of items into &apos;ht&apos;.  */</doc>

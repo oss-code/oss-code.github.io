@@ -1,0 +1,10 @@
+<dec f='remake/print.h' l='51' type='void log_working_directory(int )'/>
+<doc f='remake/print.h' l='49'>/*! Write a message indicating that we&apos;ve just entered or
+  left (according to ENTERING) the current directory.  */</doc>
+<def f='remake/output.c' l='87' ll='153' type='int log_working_directory(int entering)'/>
+<use f='remake/output.c' l='373' u='c' c='output_dump'/>
+<use f='remake/output.c' l='381' u='c' c='output_dump'/>
+<use f='remake/output.c' l='544' u='c' c='output_close'/>
+<use f='remake/output.c' l='575' u='c' c='output_start'/>
+<doc f='remake/output.c' l='84'>/* Write a message indicating that we&apos;ve just entered or
+   left (according to ENTERING) the current directory.  */</doc>

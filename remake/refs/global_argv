@@ -1,0 +1,15 @@
+<dec f='remake/make.h' l='490' type='const char *const *'/>
+<doc f='remake/make.h' l='489'>/*! Our initial arguments -- used for debugger restart execvp.  */</doc>
+<use f='remake/debugger/command/run.h' l='5' u='r' c='dbg_cmd_run'/>
+<use f='remake/debugger/command/run.h' l='6' u='r' c='dbg_cmd_run'/>
+<use f='remake/debugger/command/run.h' l='15' u='r' c='dbg_cmd_run'/>
+<use f='remake/debugger/command/run.h' l='17' u='r' c='dbg_cmd_run'/>
+<use f='remake/debugger/fns.c' l='463' u='r' c='dbg_print_invocation'/>
+<use f='remake/debugger/fns.c' l='464' u='r' c='dbg_print_invocation'/>
+<use f='remake/debugger/fns.c' l='465' u='r' c='dbg_print_invocation'/>
+<def f='remake/main.c' l='486' type='const char *const *'/>
+<use f='remake/main.c' l='1047' u='w' c='main'/>
+<doc f='remake/main.c' l='485'>/*! Our initial arguments -- used for debugger restart execvp.  */</doc>
+<use f='remake/print.c' l='434' u='r' c='print_cmdline'/>
+<use f='remake/print.c' l='436' u='r' c='print_cmdline'/>
+<use f='remake/print.c' l='437' u='r' c='print_cmdline'/>

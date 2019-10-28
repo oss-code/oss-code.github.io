@@ -1,0 +1,9 @@
+<dec f='include/stdio.h' l='386' type='int snprintf(char *restrict __s, size_t __maxlen, const char *restrict __format)'/>
+<doc f='include/stdio.h' l='385'>/* Maximum chars of output to write in MAXLEN.  */</doc>
+<use f='remake/debugger/command/edit.h' l='37' u='c' c='dbg_cmd_edit'/>
+<use f='remake/debugger/command/run.h' l='17' u='c' c='dbg_cmd_run'/>
+<use f='remake/debugger/command/write.h' l='60' u='c' c='dbg_cmd_write'/>
+<use f='remake/debugger/cmd.c' l='484' u='c' c='enter_debugger'/>
+<use f='remake/debugger/cmd.c' l='491' u='c' c='enter_debugger'/>
+<use f='remake/function.c' l='1422' u='c' c='func_debugger'/>
+<use f='remake/job.c' l='1176' u='c' c='start_job_command'/>

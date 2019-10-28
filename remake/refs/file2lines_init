@@ -1,0 +1,8 @@
+<dec f='remake/debugger/file2line.h' l='42' type='uint8_t file2lines_init()'/>
+<doc f='remake/debugger/file2line.h' l='38'>/*!
+  Initializes hash table file2lines. file2lines is used in breakpoints
+  only. So we do this on demand.
+*/</doc>
+<use f='remake/debugger/file2line.c' l='64' u='c' c='target_for_file_and_line'/>
+<def f='remake/debugger/file2line.c' l='164' ll='179' macro='1' type='uint8_t file2lines_init()'/>
+<use f='remake/debugger/file2line.c' l='205' u='c' c='file2lines_dump'/>

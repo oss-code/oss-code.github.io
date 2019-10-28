@@ -1,0 +1,12 @@
+<dec f='remake/variable.h' l='141' type='char * patsubst_expand(char * o, const char * text, char * pattern, char * replace)'/>
+<def f='remake/function.c' l='247' ll='261' type='char * patsubst_expand(char * o, const char * text, char * pattern, char * replace)'/>
+<use f='remake/function.c' l='406' u='c' c='func_patsubst'/>
+<doc f='remake/function.c' l='237'>/* Store into VARIABLE_BUFFER at O the result of scanning TEXT
+   and replacing strings matching PATTERN with REPLACE.
+   If PATTERN_PERCENT is not nil, PATTERN has already been
+   run through find_percent, and PATTERN_PERCENT is the result.
+   If REPLACE_PERCENT is not nil, REPLACE has already been
+   run through find_percent, and REPLACE_PERCENT is the result.
+   Note that we expect PATTERN_PERCENT and REPLACE_PERCENT to point to the
+   character _AFTER_ the %, not to the % itself.
+*/</doc>

@@ -1,0 +1,9 @@
+<dec f='remake/filedef.h' l='36' type='unsigned int'/>
+<offset>448</offset>
+<doc f='remake/filedef.h' l='36'>/* Number of lines in file - for debugging. */</doc>
+<use f='remake/debugger/file2line.c' l='91' u='r' c='enter_target_lineno'/>
+<use f='remake/debugger/file2line.c' l='96' u='r' c='enter_target_lineno'/>
+<use f='remake/debugger/file2line.c' l='140' u='r' c='enter_rule_lineno'/>
+<use f='remake/debugger/file2line.c' l='145' u='r' c='enter_rule_lineno'/>
+<use f='remake/print.c' l='402' u='r' c='print_file'/>
+<use f='remake/read.c' l='426' u='w' c='eval_makefile'/>

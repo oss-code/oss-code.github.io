@@ -1,0 +1,13 @@
+<dec f='remake/print.h' l='75' type='void print_floc_prefix(const gmk_floc * p_floc)'/>
+<doc f='remake/print.h' l='74'>/*! Display common prefix message output file target. */</doc>
+<use f='remake/debugger/break.c' l='164' u='c' c='list_breakpoints'/>
+<use f='remake/debugger/command/list.h' l='58' u='c' c='dbg_cmd_list'/>
+<use f='remake/debugger/fns.c' l='325' u='c' c='print_debugger_location'/>
+<use f='remake/debugger/fns.c' l='332' u='c' c='print_debugger_location'/>
+<use f='remake/debugger/fns.c' l='337' u='c' c='print_debugger_location'/>
+<use f='remake/debugger/fns.c' l='341' u='c' c='print_debugger_location'/>
+<use f='remake/print.c' l='268' u='c' c='print_file_target_prefix'/>
+<def f='remake/print.c' l='273' ll='287' type='void print_floc_prefix(const gmk_floc * p_floc)'/>
+<use f='remake/print.c' l='342' u='c' c='print_target_stack_entry'/>
+<use f='remake/print.c' l='385' u='c' c='print_floc_stack'/>
+<doc f='remake/print.c' l='272'>/*! Show a command before executing it. */</doc>

@@ -1,0 +1,5 @@
+<dec f='remake/filedef.h' l='186' type='uintmax_t file_timestamp_now(int * )'/>
+<doc f='remake/filedef.h' l='184'>/** Return the current time as a file timestamp, setting *RESOLUTION to
+   its resolution.  */</doc>
+<def f='remake/file.c' l='665' ll='711' macro='1' type='uintmax_t file_timestamp_now(int * resolution)'/>
+<use f='remake/remake.c' l='1500' u='c' c='f_mtime'/>

@@ -1,0 +1,18 @@
+<dec f='remake/commands.h' l='57' type='void execute_file_commands(file_t * p_file, target_stack_node_t * p_call_stack)'/>
+<def f='remake/commands.c' l='552' ll='585' type='void execute_file_commands(file_t * file, target_stack_node_t * p_call_stack)'/>
+<doc f='remake/commands.c' l='548'>/* Execute the commands to remake FILE.  If they are currently executing,
+   return or have already finished executing, just return.  Otherwise,
+   fork off a child process to run the first command line in the sequence.  */</doc>
+<doc f='remake/commands.h' l='45'>/*!
+  Execute the commands to remake P_FILE.  If they are currently
+  executing, return or have already finished executing, just return.
+  Otherwise, fork off a child process to run the first command line
+  in the sequence.
+
+  @param p_file  pointer to file to remake.
+
+  @param p_call_stack pointer to current target call stack. This is
+  passed down for information reporting.
+
+*/</doc>
+<use f='remake/remake.c' l='1321' u='c' c='remake_file'/>

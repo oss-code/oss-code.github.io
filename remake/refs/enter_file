@@ -1,0 +1,27 @@
+<dec f='remake/filedef.h' l='125' type='struct file * enter_file(const char * name)'/>
+<use f='remake/ar.c' l='117' u='c' c='ar_member_date'/>
+<use f='remake/ar.c' l='155' u='c' c='ar_touch'/>
+<use f='remake/commands.c' l='118' u='c' c='set_file_variables'/>
+<use f='remake/default.c' l='673' u='c' c='set_default_suffixes'/>
+<use f='remake/default.c' l='706' u='c' c='install_default_suffix_rules'/>
+<dec f='remake/file_basic.h' l='8' type='struct file * enter_file(const char * name)'/>
+<use f='remake/file.c' l='380' u='c' c='enter_prereqs'/>
+<def f='remake/file_basic.c' l='129' ll='185' type='struct file * enter_file(const char * name)'/>
+<use f='remake/implicit.c' l='871' u='c' c='pattern_search'/>
+<use f='remake/implicit.c' l='890' u='c' c='pattern_search'/>
+<use f='remake/implicit.c' l='905' u='c' c='pattern_search'/>
+<use f='remake/implicit.c' l='978' u='c' c='pattern_search'/>
+<use f='remake/main.c' l='1814' u='c' c='main'/>
+<use f='remake/main.c' l='1888' u='c' c='main'/>
+<use f='remake/main.c' l='2088' u='c' c='main'/>
+<use f='remake/main.c' l='2101' u='c' c='main'/>
+<use f='remake/main.c' l='2439' u='c' c='main'/>
+<use f='remake/main.c' l='2482' u='c' c='main'/>
+<use f='remake/main.c' l='2682' u='c' c='handle_non_switch_argument'/>
+<use f='remake/read.c' l='252' u='c' c='read_all_makefiles'/>
+<use f='remake/read.c' l='384' u='c' c='eval_makefile'/>
+<use f='remake/read.c' l='993' u='c' c='eval'/>
+<use f='remake/read.c' l='1896' u='c' c='record_target_var'/>
+<use f='remake/read.c' l='2111' u='c' c='record_files'/>
+<use f='remake/read.c' l='2166' u='c' c='record_files'/>
+<use f='remake/remake.c' l='1366' u='c' c='f_mtime'/>

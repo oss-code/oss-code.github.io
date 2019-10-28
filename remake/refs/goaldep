@@ -1,0 +1,16 @@
+<def f='remake/dep.h' l='67' ll='72'/>
+<size>64</size>
+<doc f='remake/dep.h' l='63'>/* Structure representing one goal.
+   The goals to be built constitute a chain of these, chained through &apos;next&apos;.
+   &apos;stem&apos; is not used, but it&apos;s simpler to include and ignore it.  */</doc>
+<mbr r='goaldep::next' o='0' t='struct goaldep *'/>
+<mbr r='goaldep::name' o='64' t='const char *'/>
+<mbr r='goaldep::file' o='128' t='struct file *'/>
+<mbr r='goaldep::stem' o='192' t='const char *'/>
+<mbr r='goaldep::flags' o='256' t='unsigned short'/>
+<mbr r='goaldep::changed' o='264' t='unsigned short'/>
+<mbr r='goaldep::ignore_mtime' o='265' t='unsigned short'/>
+<mbr r='goaldep::staticpattern' o='266' t='unsigned short'/>
+<mbr r='goaldep::need_2nd_expansion' o='267' t='unsigned short'/>
+<mbr r='goaldep::error' o='272' t='unsigned short'/>
+<mbr r='goaldep::floc' o='320' t='gmk_floc'/>

@@ -1,0 +1,9 @@
+<dec f='remake/debugger/fns.h' l='102' type='uint8_t dbg_cmd_show_exp(char * psz_arg, uint8_t expand)'/>
+<use f='remake/debugger/command/expand.h' l='36' u='c' c='dbg_cmd_expand'/>
+<use f='remake/debugger/command/print.h' l='39' u='c' c='dbg_cmd_print'/>
+<doc f='remake/debugger/fns.h' l='99'>/*! Show a expression. Set &quot;expand&quot; to 1 if you want variable
+   definitions inside the displayed value expanded.
+*/</doc>
+<use f='remake/debugger/fns.c' l='350' u='c' c='print_debugger_location'/>
+<use f='remake/debugger/fns.c' l='355' u='c' c='print_debugger_location'/>
+<def f='remake/debugger/fns.c' l='415' ll='458' macro='1' type='uint8_t dbg_cmd_show_exp(char * psz_varname, uint8_t expand)'/>

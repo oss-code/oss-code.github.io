@@ -1,0 +1,26 @@
+<dec f='include/unistd.h' l='356' type='int close(int __fd)'/>
+<doc f='include/unistd.h' l='352'>/* Close the file descriptor FD.
+
+   This function is a cancellation point and therefore not marked with
+   __THROW.  */</doc>
+<use f='remake/arscan.c' l='303' u='c' c='ar_scan'/>
+<use f='remake/arscan.c' l='429' u='c' c='ar_scan'/>
+<use f='remake/arscan.c' l='532' u='c' c='ar_scan'/>
+<use f='remake/arscan.c' l='581' u='c' c='ar_scan'/>
+<use f='remake/arscan.c' l='606' u='c' c='ar_scan'/>
+<use f='remake/arscan.c' l='641' u='c' c='ar_scan'/>
+<use f='remake/arscan.c' l='669' u='c' c='ar_scan'/>
+<use f='remake/arscan.c' l='805' u='c' c='ar_member_touch'/>
+<use f='remake/arscan.c' l='810' u='c' c='ar_member_touch'/>
+<use f='remake/function.c' l='1833' u='c' c='func_shell_base'/>
+<use f='remake/function.c' l='1864' u='c' c='func_shell_base'/>
+<use f='remake/output.c' l='553' u='c' c='output_close'/>
+<use f='remake/output.c' l='555' u='c' c='output_close'/>
+<use f='remake/posixos.c' l='137' u='c' c='jobserver_clear'/>
+<use f='remake/posixos.c' l='139' u='c' c='jobserver_clear'/>
+<use f='remake/posixos.c' l='141' u='c' c='jobserver_clear'/>
+<use f='remake/posixos.c' l='165' u='c' c='jobserver_acquire_all'/>
+<use f='remake/posixos.c' l='217' u='c' c='jobserver_signal'/>
+<use f='remake/posixos.c' l='419' u='c' c='get_bad_stdin'/>
+<use f='remake/remake.c' l='1278' u='c' c='touch_file'/>
+<use f='remake/remake.c' l='1283' u='c' c='touch_file'/>

@@ -1,0 +1,12 @@
+<dec f='remake/debugger/fns.h' l='47' type='const file_t * get_current_target()'/>
+<doc f='remake/debugger/fns.h' l='43'>/*!
+  Return the current target from the stack or NULL
+  if none set.
+ */</doc>
+<def f='remake/debugger/fns.c' l='164' ll='171' type='const file_t * get_current_target()'/>
+<use f='remake/debugger/fns.c' l='181' u='c' c='get_current_floc'/>
+<use f='remake/debugger/fns.c' l='203' u='c' c='get_target'/>
+<doc f='remake/debugger/fns.c' l='160'>/*!
+  Return the current target from the stack or NULL
+  if none set.
+ */</doc>

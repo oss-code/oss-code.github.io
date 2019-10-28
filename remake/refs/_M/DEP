@@ -1,0 +1,9 @@
+<dec f='remake/dep.h' l='48'/>
+<use f='remake/dep.h' l='60' u='c'/>
+<use f='remake/dep.h' l='69' u='c'/>
+<doc f='remake/dep.h' l='41'>/* Structure representing one dependency of a file.
+   Each struct file&apos;s &apos;deps&apos; points to a chain of these,
+   chained through the &apos;next&apos;. &apos;stem&apos; is the stem for this
+   dep line of static pattern rule or NULL.
+
+   Note that the first two words of this match a struct nameseq.  */</doc>

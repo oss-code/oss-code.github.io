@@ -1,0 +1,8 @@
+<dec f='remake/hash.h' l='51' type='unsigned long'/>
+<offset>512</offset>
+<doc f='remake/hash.h' l='51'>/* # of failed calls to comparison function */</doc>
+<use f='remake/hash.c' l='56' u='w' c='hash_init'/>
+<use f='remake/hash.c' l='110' u='w' c='hash_find_slot'/>
+<use f='remake/hash.c' l='200' u='w' c='hash_delete_items'/>
+<use f='remake/hash.c' l='283' u='r' c='hash_print_stats'/>
+<use f='remake/hash.c' l='285' u='r' c='hash_print_stats'/>

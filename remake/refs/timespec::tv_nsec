@@ -1,0 +1,8 @@
+<dec f='include/time.h' l='123' type='__syscall_slong_t'/>
+<offset>64</offset>
+<use f='remake/commands.c' l='745' macro='1' u='r'/>
+<use f='remake/file.c' l='683' u='r' c='file_timestamp_now'/>
+<use f='remake/posixos.c' l='258' u='w' c='jobserver_acquire'/>
+<use f='remake/remake.c' l='1573' macro='1' u='r'/>
+<use f='remake/remake.c' l='1622' macro='1' u='r'/>
+<use f='remake/vpath.c' l='514' macro='1' u='r'/>

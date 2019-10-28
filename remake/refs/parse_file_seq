@@ -1,0 +1,36 @@
+<dec f='remake/dep.h' l='89' type='void * parse_file_seq(char ** stringp, unsigned int size, int stopmap, const char * prefix, int flags)'/>
+<use f='remake/default.c' l='682' macro='1' u='c'/>
+<use f='remake/file.c' l='280' macro='1' u='c'/>
+<use f='remake/file.c' l='290' macro='1' u='c'/>
+<use f='remake/function.c' l='357' macro='1' u='c'/>
+<use f='remake/implicit.c' l='553' macro='1' u='c'/>
+<use f='remake/implicit.c' l='647' macro='1' u='c'/>
+<use f='remake/main.c' l='2474' macro='1' u='c'/>
+<use f='remake/read.c' l='903' macro='1' u='c'/>
+<use f='remake/read.c' l='963' macro='1' u='c'/>
+<use f='remake/read.c' l='1151' macro='1' u='c'/>
+<use f='remake/read.c' l='1261' macro='1' u='c'/>
+<def f='remake/read.c' l='3026' ll='3334' type='void * parse_file_seq(char ** stringp, unsigned int size, int stopmap, const char * prefix, int flags)'/>
+<doc f='remake/read.c' l='3003'>/* Parse a string into a sequence of filenames represented as a chain of
+   struct nameseq&apos;s and return that chain.  Optionally expand the strings via
+   glob().
+
+   The string is passed as STRINGP, the address of a string pointer.
+   The string pointer is updated to point at the first character
+   not parsed, which either is a null char or equals STOPCHAR.
+
+   SIZE is how big to construct chain elements.
+   This is useful if we want them actually to be other structures
+   that have room for additional info.
+
+   PREFIX, if non-null, is added to the beginning of each filename.
+
+   FLAGS allows one or more of the following bitflags to be set:
+        PARSEFS_NOSTRIP - Do no strip &apos;./&apos;s off the beginning
+        PARSEFS_NOAR    - Do not check filenames for archive references
+        PARSEFS_NOGLOB  - Do not expand globbing characters
+        PARSEFS_EXISTS  - Only return globbed files that actually exist
+                          (cannot also set NOGLOB)
+        PARSEFS_NOCACHE - Do not add filenames to the strcache (caller frees)
+  */</doc>
+<use f='remake/rule.c' l='377' macro='1' u='c'/>

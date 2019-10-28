@@ -1,0 +1,8 @@
+<dec f='remake/filedef.h' l='204'/>
+<doc f='remake/filedef.h' l='200'>/* Return the mtime of file F (a struct file *), caching it.
+   Don&apos;t search using vpath for the file--if it doesn&apos;t actually exist,
+   we don&apos;t find it.
+   The value is NONEXISTENT_MTIME if the file does not exist.  */</doc>
+<use f='remake/main.c' l='2172' u='c'/>
+<use f='remake/main.c' l='2226' u='c'/>
+<use f='remake/main.c' l='2236' u='c'/>

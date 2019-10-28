@@ -1,0 +1,16 @@
+<dec f='remake/filedef.h' l='133' type='void notice_finished_file(struct file * file)'/>
+<use f='remake/commands.c' l='568' u='c' c='execute_file_commands'/>
+<use f='remake/job.c' l='831' u='c' c='reap_children'/>
+<use f='remake/job.c' l='1107' u='c' c='start_job_command'/>
+<use f='remake/job.c' l='1143' u='c' c='start_job_command'/>
+<use f='remake/job.c' l='1427' u='c' c='start_job_command'/>
+<use f='remake/job.c' l='1485' u='c' c='start_waiting_job'/>
+<use f='remake/remake.c' l='762' u='c' c='update_file_1'/>
+<use f='remake/remake.c' l='883' u='c' c='update_file_1'/>
+<def f='remake/remake.c' l='954' ll='1082' type='void notice_finished_file(struct file * file)'/>
+<use f='remake/remake.c' l='1330' u='c' c='remake_file'/>
+<doc f='remake/remake.c' l='948'>/* Set FILE&apos;s &apos;updated&apos; flag and re-check its mtime and the mtime&apos;s of all
+   files listed in its &apos;also_make&apos; member.  Under -t, this function also
+   touches FILE.
+
+   On return, FILE-&gt;update_status will no longer be us_none if it was.  */</doc>

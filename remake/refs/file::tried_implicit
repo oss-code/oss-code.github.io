@@ -1,0 +1,17 @@
+<dec f='remake/filedef.h' l='97' type='unsigned int'/>
+<offset>1540</offset>
+<doc f='remake/filedef.h' l='97'>/* Nonzero if have searched
+                                      for implicit rule for making
+                                      this file; don&apos;t search again.  */</doc>
+<use f='remake/file.c' l='165' u='w' c='rehash_file'/>
+<use f='remake/file.c' l='165' u='r' c='rehash_file'/>
+<use f='remake/file.c' l='789' u='r' c='print_target_props'/>
+<use f='remake/file.c' l='948' u='r' c='print_file'/>
+<use f='remake/implicit.c' l='882' u='w' c='pattern_search'/>
+<use f='remake/implicit.c' l='892' u='w' c='pattern_search'/>
+<use f='remake/implicit.c' l='918' u='w' c='pattern_search'/>
+<use f='remake/remake.c' l='570' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='576' u='w' c='update_file_1'/>
+<use f='remake/remake.c' l='1123' u='r' c='check_dep'/>
+<use f='remake/remake.c' l='1129' u='w' c='check_dep'/>
+<use f='remake/remake.c' l='1543' u='r' c='f_mtime'/>

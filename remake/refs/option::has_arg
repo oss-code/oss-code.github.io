@@ -1,0 +1,7 @@
+<dec f='remake/getopt.h' l='87' type='int'/>
+<offset>64</offset>
+<doc f='remake/getopt.h' l='85'>/* has_arg can&apos;t be an enum because some compilers complain about
+     type mismatches in all the code that assumes it is an int.  */</doc>
+<use f='remake/main.c' l='2592' u='w' c='init_switches'/>
+<use f='remake/main.c' l='2606' u='w' c='init_switches'/>
+<use f='remake/main.c' l='2609' u='w' c='init_switches'/>

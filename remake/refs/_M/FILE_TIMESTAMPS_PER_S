@@ -1,0 +1,7 @@
+<dec f='remake/filedef.h' l='155'/>
+<doc f='remake/filedef.h' l='150'>/* If FILE_TIMESTAMP is 64 bits (or more), use nanosecond resolution.
+   (Multiply by 2**30 instead of by 10**9 to save time at the cost of
+   slightly decreasing the number of available timestamps.)  With
+   64-bit FILE_TIMESTAMP, this stops working on 2514-05-30 01:53:04
+   UTC, but by then uintmax_t should be larger than 64 bits.  */</doc>
+<use f='remake/remake.c' l='562' u='c'/>

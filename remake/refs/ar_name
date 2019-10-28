@@ -1,0 +1,19 @@
+<dec f='remake/makeint.h' l='511' type='int ar_name(const char * )'/>
+<dec f='remake/make.h' l='368' type='int ar_name(const char * )'/>
+<def f='remake/ar.c' l='32' ll='49' type='int ar_name(const char * name)'/>
+<doc f='remake/ar.c' l='26'>/* Return nonzero if NAME is an archive-member reference, zero if not.  An
+   archive-member reference is a name like &apos;lib(member)&apos; where member is a
+   non-empty string.
+   If a name like &apos;lib((entry))&apos; is used, a fatal error is signaled at
+   the attempt to use this unsupported feature.  */</doc>
+<use f='remake/commands.c' l='72' u='c' c='set_file_variables'/>
+<use f='remake/commands.c' l='106' u='c' c='set_file_variables'/>
+<use f='remake/commands.c' l='207' u='c' c='set_file_variables'/>
+<use f='remake/commands.c' l='276' u='c' c='set_file_variables'/>
+<use f='remake/commands.c' l='719' u='c' c='delete_target'/>
+<use f='remake/dir.c' l='786' u='c' c='file_exists_p'/>
+<use f='remake/implicit.c' l='51' u='c' c='try_implicit_rule'/>
+<use f='remake/implicit.c' l='260' u='c' c='pattern_search'/>
+<use f='remake/read.c' l='3242' u='c' c='parse_file_seq'/>
+<use f='remake/remake.c' l='1242' u='c' c='touch_file'/>
+<use f='remake/remake.c' l='1350' u='c' c='f_mtime'/>

@@ -1,0 +1,25 @@
+<dec f='remake/makeint.h' l='630' type='int'/>
+<def f='remake/globals.c' l='121' type='int'/>
+<doc f='remake/globals.c' l='118'>/* One of OUTPUT_SYNC_* if the &quot;--output-sync&quot; option was given.  This
+   attempts to synchronize the output of parallel jobs such that the results
+   of each job stay together.  */</doc>
+<use f='remake/job.c' l='784' u='r' c='reap_children'/>
+<use f='remake/job.c' l='1153' u='r' c='start_job_command'/>
+<use f='remake/job.c' l='1153' u='r' c='start_job_command'/>
+<use f='remake/main.c' l='740' u='w' c='decode_output_sync_flags'/>
+<use f='remake/main.c' l='742' u='w' c='decode_output_sync_flags'/>
+<use f='remake/main.c' l='744' u='w' c='decode_output_sync_flags'/>
+<use f='remake/main.c' l='746' u='w' c='decode_output_sync_flags'/>
+<use f='remake/main.c' l='1372' u='r' c='main'/>
+<use f='remake/main.c' l='1373' u='r' c='main'/>
+<use f='remake/main.c' l='1407' u='r' c='main'/>
+<use f='remake/main.c' l='1408' u='r' c='main'/>
+<use f='remake/main.c' l='1970' u='r' c='main'/>
+<use f='remake/main.c' l='1971' u='r' c='main'/>
+<use f='remake/main.c' l='2037' u='w' c='main'/>
+<use f='remake/output.c' l='211' u='w' c='sync_init'/>
+<use f='remake/output.c' l='348' u='w' c='setup_tmpfile'/>
+<use f='remake/output.c' l='372' u='r' c='output_dump'/>
+<use f='remake/output.c' l='510' u='r' c='output_init'/>
+<use f='remake/output.c' l='573' u='r' c='output_start'/>
+<use f='remake/output.c' l='573' u='r' c='output_start'/>

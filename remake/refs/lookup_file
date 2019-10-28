@@ -1,0 +1,43 @@
+<dec f='remake/filedef.h' l='124' type='struct file * lookup_file(const char * name)'/>
+<use f='remake/ar.c' l='115' u='c' c='ar_member_date'/>
+<use f='remake/debugger/command/break.h' l='56' u='c' c='dbg_cmd_break'/>
+<use f='remake/debugger/command/break.h' l='59' u='c' c='dbg_cmd_break'/>
+<use f='remake/debugger/command/continue.h' l='33' u='c' c='dbg_cmd_continue'/>
+<use f='remake/debugger/command/continue.h' l='36' u='c' c='dbg_cmd_continue'/>
+<use f='remake/debugger/file2line.c' l='85' u='c' c='enter_target_lineno'/>
+<use f='remake/debugger/file2line.c' l='134' u='c' c='enter_rule_lineno'/>
+<use f='remake/debugger/fns.c' l='226' u='c' c='get_target'/>
+<use f='remake/debugger/fns.c' l='427' u='c' c='dbg_cmd_show_exp'/>
+<dec f='remake/file_basic.h' l='7' type='struct file * lookup_file(const char * name)'/>
+<use f='remake/file.c' l='378' u='c' c='enter_prereqs'/>
+<use f='remake/file.c' l='525' u='c' c='snap_deps'/>
+<use f='remake/file.c' l='544' u='c' c='snap_deps'/>
+<use f='remake/file.c' l='549' u='c' c='snap_deps'/>
+<use f='remake/file.c' l='554' u='c' c='snap_deps'/>
+<use f='remake/file.c' l='565' u='c' c='snap_deps'/>
+<use f='remake/file.c' l='574' u='c' c='snap_deps'/>
+<use f='remake/file.c' l='587' u='c' c='snap_deps'/>
+<use f='remake/file.c' l='591' u='c' c='snap_deps'/>
+<use f='remake/file.c' l='602' u='c' c='snap_deps'/>
+<use f='remake/file.c' l='613' u='c' c='snap_deps'/>
+<def f='remake/file_basic.c' l='60' ll='127' type='struct file * lookup_file(const char * name)'/>
+<doc f='remake/file_basic.c' l='55'>/* Access the hash table of all file records.
+   lookup_file  given a name, return the struct file * for that name,
+                or nil if there is none.
+*/</doc>
+<use f='remake/implicit.c' l='735' u='c' c='pattern_search'/>
+<use f='remake/implicit.c' l='862' u='c' c='pattern_search'/>
+<use f='remake/implicit.c' l='884' u='c' c='pattern_search'/>
+<use f='remake/implicit.c' l='903' u='c' c='pattern_search'/>
+<use f='remake/implicit.c' l='952' u='c' c='pattern_search'/>
+<use f='remake/implicit.c' l='982' u='c' c='pattern_search'/>
+<use f='remake/job.c' l='753' u='c' c='reap_children'/>
+<use f='remake/main.c' l='2466' u='c' c='main'/>
+<use f='remake/read.c' l='382' u='c' c='eval_makefile'/>
+<use f='remake/read.c' l='991' u='c' c='eval'/>
+<use f='remake/read.c' l='1894' u='c' c='record_target_var'/>
+<use f='remake/read.c' l='2158' u='c' c='record_files'/>
+<use f='remake/remake.c' l='1364' u='c' c='f_mtime'/>
+<use f='remake/rule.c' l='254' u='c' c='convert_to_pattern'/>
+<use f='remake/vpath.c' l='345' u='c' c='selective_vpath_search'/>
+<use f='remake/vpath.c' l='446' u='c' c='selective_vpath_search'/>

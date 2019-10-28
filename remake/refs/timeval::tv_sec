@@ -1,0 +1,9 @@
+<dec f='include/x86_64-linux-gnu/bits/time.h' l='32' type='__time_t'/>
+<offset>0</offset>
+<doc f='include/x86_64-linux-gnu/bits/time.h' l='32'>/* Seconds.  */</doc>
+<use f='remake/file.c' l='694' u='r' c='file_timestamp_now'/>
+<use f='remake/profile.c' l='127' u='r' c='time_in_100micro'/>
+<use f='remake/profile.c' l='134' u='w' c='time_diff'/>
+<use f='remake/profile.c' l='134' u='r' c='time_diff'/>
+<use f='remake/profile.c' l='134' u='r' c='time_diff'/>
+<use f='remake/profile.c' l='138' u='w' c='time_diff'/>

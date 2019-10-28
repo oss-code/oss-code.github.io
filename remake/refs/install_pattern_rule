@@ -1,0 +1,8 @@
+<dec f='remake/rule.h' l='61' type='void install_pattern_rule(struct pspec * p, int terminal)'/>
+<use f='remake/default.c' l='730' u='c' c='install_default_implicit_rules'/>
+<use f='remake/default.c' l='733' u='c' c='install_default_implicit_rules'/>
+<def f='remake/rule.c' l='355' ll='392' type='void install_pattern_rule(struct pspec * p, int terminal)'/>
+<doc f='remake/rule.c' l='350'>/* Install an implicit pattern rule based on the three text strings
+   in the structure P points to.  These strings come from one of
+   the arrays of default implicit pattern rules.
+   TERMINAL specifies what the &apos;terminal&apos; field of the rule should be.  */</doc>

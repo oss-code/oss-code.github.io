@@ -1,0 +1,6 @@
+<dec f='remake/rule.h' l='67' type='void print_rule(rule_t * r, uint8_t b_verbose)'/>
+<use f='remake/debugger/command/info.h' l='322' u='c' c='dbg_cmd_info'/>
+<doc f='remake/rule.h' l='66'>/*! Show information about a given rule. Useful from the debugger or gdb.  */</doc>
+<def f='remake/rule.c' l='481' ll='500' type='void print_rule(rule_t * r, uint8_t b_verbose)'/>
+<use f='remake/rule.c' l='516' u='c' c='print_rule_data_base'/>
+<doc f='remake/rule.c' l='480'>/*! Show information about a given rule. Useful from the debugger or gdb.  */</doc>

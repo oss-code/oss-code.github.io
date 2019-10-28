@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>expand.h source code [remake/expand.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/expand.h'; var root_path = '..'; var data_path = '../../data';</script>
+<script src='../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='./'>remake</a>/<a href='expand.h.html'>expand.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* $Id: expand.h,v 1.9 2006/12/18 10:12:25 rockyb Exp $</i></td></tr>
+<tr><th id="2">2</th><td><i>Copyright (C) 2005 R. Bernstein &lt;rocky@gnu.org&gt;</i></td></tr>
+<tr><th id="3">3</th><td><i>This file is part of GNU Make (remake variant).</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>GNU Make is free software; you can redistribute it and/or modify</i></td></tr>
+<tr><th id="6">6</th><td><i>it under the terms of the GNU General Public License as published by</i></td></tr>
+<tr><th id="7">7</th><td><i>the Free Software Foundation; either version 2, or (at your option)</i></td></tr>
+<tr><th id="8">8</th><td><i>any later version.</i></td></tr>
+<tr><th id="9">9</th><td><i></i></td></tr>
+<tr><th id="10">10</th><td><i>GNU Make is distributed in the hope that it will be useful,</i></td></tr>
+<tr><th id="11">11</th><td><i>but WITHOUT ANY WARRANTY; without even the implied warranty of</i></td></tr>
+<tr><th id="12">12</th><td><i>MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</i></td></tr>
+<tr><th id="13">13</th><td><i>GNU General Public License for more details.</i></td></tr>
+<tr><th id="14">14</th><td><i></i></td></tr>
+<tr><th id="15">15</th><td><i>You should have received a copy of the GNU General Public License</i></td></tr>
+<tr><th id="16">16</th><td><i>along with GNU Make; see the file COPYING.  If not, write to</i></td></tr>
+<tr><th id="17">17</th><td><i>the Free Software Foundation, Inc., 59 Temple Place - Suite 330,</i></td></tr>
+<tr><th id="18">18</th><td><i>Boston, MA 02111-1307, USA.  */</i></td></tr>
+<tr><th id="19">19</th><td></td></tr>
+<tr><th id="20">20</th><td><i class="doc">/**<span class="command"> \file</span> expand.h</i></td></tr>
+<tr><th id="21">21</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="22">22</th><td><i class="doc"> *  <span class="command">\brief</span> Header for variable expansion functions for GNU Make.</i></td></tr>
+<tr><th id="23">23</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><u>#<span data-ppcond="25">ifndef</span> <span class="macro" data-ref="_M/REMAKE_EXPAND_H">REMAKE_EXPAND_H</span></u></td></tr>
+<tr><th id="26">26</th><td><u>#define <dfn class="macro" id="_M/REMAKE_EXPAND_H" data-ref="_M/REMAKE_EXPAND_H">REMAKE_EXPAND_H</dfn></u></td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><u>#include <a href="variable.h.html">"variable.h"</a></u></td></tr>
+<tr><th id="29">29</th><td><u>#include <a href="filedef.h.html">"filedef.h"</a></u></td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><i class="doc">/*! Like variable_expand_for_file, but the returned string is malloc'd.</i></td></tr>
+<tr><th id="32">32</th><td><i class="doc">   This function is called a lot.  It wants to be efficient.  */</i></td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><b>extern</b> <em>char</em> *<a class="decl" href="variable.h.html#allocated_variable_expand_for_file" title='allocated_variable_expand_for_file' data-ref="allocated_variable_expand_for_file" id="allocated_variable_expand_for_file">allocated_variable_expand_for_file</a>(<em>const</em> <em>char</em> *<dfn class="local col7 decl" id="137psz_line" title='psz_line' data-type='const char *' data-ref="137psz_line">psz_line</dfn>, </td></tr>
+<tr><th id="35">35</th><td>						<a class="typedef" href="types.h.html#file_t" title='file_t' data-type='struct file' data-ref="file_t">file_t</a> *<dfn class="local col8 decl" id="138p_file" title='p_file' data-type='file_t *' data-ref="138p_file">p_file</dfn>);</td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td><i class="doc">/*! Expand an argument for an expansion function.  The text starting</i></td></tr>
+<tr><th id="39">39</th><td><i class="doc">   at STR and ending at END is variable-expanded into a</i></td></tr>
+<tr><th id="40">40</th><td><i class="doc">   null-terminated string that is returned as the value.  This is done</i></td></tr>
+<tr><th id="41">41</th><td><i class="doc">   without clobbering `variable_buffer' or the current</i></td></tr>
+<tr><th id="42">42</th><td><i class="doc">   variable-expansion that is in progress.  */</i></td></tr>
+<tr><th id="43">43</th><td></td></tr>
+<tr><th id="44">44</th><td><b>extern</b> <em>char</em> *<a class="decl" href="variable.h.html#expand_argument" title='expand_argument' data-ref="expand_argument" id="expand_argument">expand_argument</a>(<em>const</em> <em>char</em> *<dfn class="local col9 decl" id="139str" title='str' data-type='const char *' data-ref="139str">str</dfn>, <em>const</em> <em>char</em> *<dfn class="local col0 decl" id="140end" title='end' data-type='const char *' data-ref="140end">end</dfn>);</td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td><i class="doc">/*! Install a new variable_buffer context, returning the current one for</i></td></tr>
+<tr><th id="47">47</th><td><i class="doc">   safe-keeping.  */</i></td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td><b>extern</b> <em>void</em> <a class="decl" href="variable.h.html#install_variable_buffer" title='install_variable_buffer' data-ref="install_variable_buffer" id="install_variable_buffer">install_variable_buffer</a> (<em>char</em> **<dfn class="local col1 decl" id="141pp_buf" title='pp_buf' data-type='char **' data-ref="141pp_buf">pp_buf</dfn>, <em>unsigned</em> <em>int</em> *<dfn class="local col2 decl" id="142pi_len" title='pi_len' data-type='unsigned int *' data-ref="142pi_len">pi_len</dfn>);</td></tr>
+<tr><th id="50">50</th><td></td></tr>
+<tr><th id="51">51</th><td><i class="doc">/*! Restore a previously-saved variable_buffer setting (free the current one).</i></td></tr>
+<tr><th id="52">52</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td><u>#define <dfn class="macro" id="_M/recursively_expand" data-ref="_M/recursively_expand">recursively_expand</dfn>(v)   recursively_expand_for_file (v, NULL)</u></td></tr>
+<tr><th id="55">55</th><td></td></tr>
+<tr><th id="56">56</th><td><i class="doc">/*! Recursively expand V.  The returned string is malloc'd.  */</i></td></tr>
+<tr><th id="57">57</th><td><b>extern</b> <em>char</em> *<a class="decl" href="variable.h.html#recursively_expand_for_file" title='recursively_expand_for_file' data-ref="recursively_expand_for_file" id="recursively_expand_for_file">recursively_expand_for_file</a>(<a class="typedef" href="types.h.html#variable_t" title='variable_t' data-type='struct variable' data-ref="variable_t">variable_t</a> *<dfn class="local col3 decl" id="143v" title='v' data-type='variable_t *' data-ref="143v">v</dfn>, <a class="typedef" href="types.h.html#file_t" title='file_t' data-type='struct file' data-ref="file_t">file_t</a> *<dfn class="local col4 decl" id="144file" title='file' data-type='file_t *' data-ref="144file">file</dfn>);</td></tr>
+<tr><th id="58">58</th><td></td></tr>
+<tr><th id="59">59</th><td><i class="doc">/*! Subroutine of variable_expand and friends:</i></td></tr>
+<tr><th id="60">60</th><td><i class="doc">   The text to add is LENGTH chars starting at STRING to the variable_buffer.</i></td></tr>
+<tr><th id="61">61</th><td><i class="doc">   The text is added to the buffer at PTR, and the updated pointer into</i></td></tr>
+<tr><th id="62">62</th><td><i class="doc">   the buffer is returned as the value.  Thus, the value returned by</i></td></tr>
+<tr><th id="63">63</th><td><i class="doc">   each call to variable_buffer_output should be the first argument to</i></td></tr>
+<tr><th id="64">64</th><td><i class="doc">   the following call.  */</i></td></tr>
+<tr><th id="65">65</th><td></td></tr>
+<tr><th id="66">66</th><td><b>extern</b> <em>void</em> <a class="decl" href="variable.h.html#restore_variable_buffer" title='restore_variable_buffer' data-ref="restore_variable_buffer" id="restore_variable_buffer">restore_variable_buffer</a>(<em>char</em> *<dfn class="local col5 decl" id="145p_buf" title='p_buf' data-type='char *' data-ref="145p_buf">p_buf</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col6 decl" id="146len" title='len' data-type='unsigned int' data-ref="146len">len</dfn>);</td></tr>
+<tr><th id="67">67</th><td></td></tr>
+<tr><th id="68">68</th><td><i class="doc">/** Expand PSZ_LINE. Expansion uses P_FILE_SET if it is not NULL. */</i></td></tr>
+<tr><th id="69">69</th><td><b>extern</b> <em>char</em> *<dfn class="decl" id="variable_expand_set" title='variable_expand_set' data-ref="variable_expand_set">variable_expand_set</dfn> (<em>char</em> *<dfn class="local col7 decl" id="147psz_line" title='psz_line' data-type='char *' data-ref="147psz_line">psz_line</dfn>, </td></tr>
+<tr><th id="70">70</th><td>				  <a class="typedef" href="types.h.html#variable_set_list_t" title='variable_set_list_t' data-type='struct variable_set_list' data-ref="variable_set_list_t">variable_set_list_t</a> *<dfn class="local col8 decl" id="148p_file_set" title='p_file_set' data-type='variable_set_list_t *' data-ref="148p_file_set">p_file_set</dfn>);</td></tr>
+<tr><th id="71">71</th><td></td></tr>
+<tr><th id="72">72</th><td><u>#<span data-ppcond="25">endif</span> /*REMAKE_EXPAND_H*/</u></td></tr>
+<tr><th id="73">73</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='commands.c.html'>remake/commands.c</a><br/>Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

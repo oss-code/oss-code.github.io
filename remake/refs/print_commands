@@ -1,0 +1,20 @@
+<dec f='remake/commands.h' l='67' type='void print_commands(file_t * p_target, commands_t * p_cmds, uint8_t b_expand)'/>
+<def f='remake/commands.c' l='789' ll='830' type='void print_commands(file_t * p_target, commands_t * p_cmds, uint8_t b_expand)'/>
+<doc f='remake/commands.c' l='782'>/*!
+  Print out the commands.
+
+  @param p_cmds location of commands to print out.
+  @param p_target used to set automatic variables if it is non-null.
+  @param b_expand if true, expand the commands to remove MAKE variables.
+*/</doc>
+<doc f='remake/commands.h' l='60'>/*!
++  Print out the commands.
++
++  @param p_cmds location of commands to print out.
++  @param p_target used to set automatic variables if it is non-null.
++  @param b_expand if true, expand the commands to remove MAKE variables.
++*/</doc>
+<use f='remake/file.c' l='872' u='c' c='print_target_props'/>
+<use f='remake/file.c' l='875' u='c' c='print_target_props'/>
+<use f='remake/file.c' l='1014' u='c' c='print_file'/>
+<use f='remake/rule.c' l='499' u='c' c='print_rule'/>

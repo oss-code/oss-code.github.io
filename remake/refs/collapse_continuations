@@ -1,0 +1,10 @@
+<dec f='remake/makeint.h' l='503' type='void collapse_continuations(char * )'/>
+<dec f='remake/make.h' l='359' type='void collapse_continuations(char * )'/>
+<def f='remake/misc.c' l='51' ll='129' type='void collapse_continuations(char * line)'/>
+<doc f='remake/misc.c' l='47'>/* Discard each backslash-newline combination from LINE.
+   Backslash-backslash-newline combinations become backslash-newlines.
+   This is done by copying the text at LINE into itself.  */</doc>
+<use f='remake/read.c' l='730' u='c' c='eval'/>
+<use f='remake/read.c' l='1042' u='c' c='eval'/>
+<use f='remake/read.c' l='1192' u='c' c='eval'/>
+<use f='remake/read.c' l='1506' u='c' c='do_define'/>

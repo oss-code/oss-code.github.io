@@ -1,0 +1,6 @@
+<dec f='include/unistd.h' l='852' type='char * getlogin()'/>
+<doc f='include/unistd.h' l='848'>/* Return the login name of the user.
+
+   This function is a possible cancellation point and therefore not
+   marked with __THROW.  */</doc>
+<use f='remake/read.c' l='2963' u='c' c='remake_tilde_expand'/>

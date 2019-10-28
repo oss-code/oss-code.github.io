@@ -1,0 +1,585 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>make.h source code [remake/make.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/make.h'; var root_path = '..'; var data_path = '../../data';</script>
+<script src='../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='./'>remake</a>/<a href='make.h.html'>make.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Miscellaneous global declarations and portability cruft for GNU Make.</i></td></tr>
+<tr><th id="2">2</th><td><i>Copyright (C) 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997,</i></td></tr>
+<tr><th id="3">3</th><td><i>1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009,</i></td></tr>
+<tr><th id="4">4</th><td><i>2010 Free Software Foundation, Inc.</i></td></tr>
+<tr><th id="5">5</th><td><i>This file is part of GNU Make.</i></td></tr>
+<tr><th id="6">6</th><td><i></i></td></tr>
+<tr><th id="7">7</th><td><i>GNU Make is free software; you can redistribute it and/or modify it under the</i></td></tr>
+<tr><th id="8">8</th><td><i>terms of the GNU General Public License as published by the Free Software</i></td></tr>
+<tr><th id="9">9</th><td><i>Foundation; either version 3 of the License, or (at your option) any later</i></td></tr>
+<tr><th id="10">10</th><td><i>version.</i></td></tr>
+<tr><th id="11">11</th><td><i></i></td></tr>
+<tr><th id="12">12</th><td><i>GNU Make is distributed in the hope that it will be useful, but WITHOUT ANY</i></td></tr>
+<tr><th id="13">13</th><td><i>WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR</i></td></tr>
+<tr><th id="14">14</th><td><i>A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</i></td></tr>
+<tr><th id="15">15</th><td><i></i></td></tr>
+<tr><th id="16">16</th><td><i>You should have received a copy of the GNU General Public License along with</i></td></tr>
+<tr><th id="17">17</th><td><i>this program.  If not, see &lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.  */</i></td></tr>
+<tr><th id="18">18</th><td></td></tr>
+<tr><th id="19">19</th><td><i>/* We use &lt;config.h&gt; instead of "config.h" so that a compilation</i></td></tr>
+<tr><th id="20">20</th><td><i>   using -I. -I$srcdir will use ./config.h rather than $srcdir/config.h</i></td></tr>
+<tr><th id="21">21</th><td><i>   (which it would do because make.h was found in $srcdir).  */</i></td></tr>
+<tr><th id="22">22</th><td><u>#<span data-ppcond="22">ifndef</span> <span class="macro" data-ref="_M/MAKE_H">MAKE_H</span></u></td></tr>
+<tr><th id="23">23</th><td><u>#define <dfn class="macro" id="_M/MAKE_H" data-ref="_M/MAKE_H">MAKE_H</dfn></u></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><u>#include <a href="config.h.html">&lt;config.h&gt;</a></u></td></tr>
+<tr><th id="26">26</th><td><u>#undef  <a class="macro" href="makeint.h.html#26" data-ref="_M/HAVE_CONFIG_H">HAVE_CONFIG_H</a></u></td></tr>
+<tr><th id="27">27</th><td><u>#define <dfn class="macro" id="_M/HAVE_CONFIG_H" data-ref="_M/HAVE_CONFIG_H">HAVE_CONFIG_H</dfn> 1</u></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><i>/* Specify we want GNU source code.  This must be defined before any</i></td></tr>
+<tr><th id="30">30</th><td><i>   system headers are included.  */</i></td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><u>#define <dfn class="macro" id="_M/_GNU_SOURCE" data-ref="_M/_GNU_SOURCE">_GNU_SOURCE</dfn> 1</u></td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><i>/* AIX requires this to be the first thing in the file.  */</i></td></tr>
+<tr><th id="35">35</th><td><u>#<span data-ppcond="35">if</span> <a class="macro" href="config.h.html#40" title="1" data-ref="_M/HAVE_ALLOCA_H">HAVE_ALLOCA_H</a></u></td></tr>
+<tr><th id="36">36</th><td><u># include <a href="../include/alloca.h.html">&lt;alloca.h&gt;</a></u></td></tr>
+<tr><th id="37">37</th><td><u>#<span data-ppcond="35">else</span></u></td></tr>
+<tr><th id="38">38</th><td><u># ifdef _AIX</u></td></tr>
+<tr><th id="39">39</th><td> <u>#pragma alloca</u></td></tr>
+<tr><th id="40">40</th><td><u># else</u></td></tr>
+<tr><th id="41">41</th><td><u>#  if !defined(__GNUC__) &amp;&amp; !defined(WINDOWS32)</u></td></tr>
+<tr><th id="42">42</th><td><u>#   ifndef alloca /* predefined by HP cc +Olibcalls */</u></td></tr>
+<tr><th id="43">43</th><td><em>char</em> *alloca ();</td></tr>
+<tr><th id="44">44</th><td><u>#   endif</u></td></tr>
+<tr><th id="45">45</th><td><u>#  endif</u></td></tr>
+<tr><th id="46">46</th><td><u># endif</u></td></tr>
+<tr><th id="47">47</th><td><u>#<span data-ppcond="35">endif</span></u></td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td><u>#<span data-ppcond="50">ifdef</span>  <span class="macro" data-ref="_M/CRAY">CRAY</span></u></td></tr>
+<tr><th id="51">51</th><td><i>/* This must happen before #include &lt;signal.h&gt; so</i></td></tr>
+<tr><th id="52">52</th><td><i>   that the declaration therein is changed.  */</i></td></tr>
+<tr><th id="53">53</th><td><u># define signal bsdsignal</u></td></tr>
+<tr><th id="54">54</th><td><u>#<span data-ppcond="50">endif</span></u></td></tr>
+<tr><th id="55">55</th><td></td></tr>
+<tr><th id="56">56</th><td><i>/* If we're compiling for the dmalloc debugger, turn off string inlining.  */</i></td></tr>
+<tr><th id="57">57</th><td><u>#<span data-ppcond="57">if</span> defined(<span class="macro" data-ref="_M/HAVE_DMALLOC_H">HAVE_DMALLOC_H</span>) &amp;&amp; defined(<span class="macro" data-ref="_M/__GNUC__">__GNUC__</span>)</u></td></tr>
+<tr><th id="58">58</th><td><u># define __NO_STRING_INLINES</u></td></tr>
+<tr><th id="59">59</th><td><u>#<span data-ppcond="57">endif</span></u></td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td><u>#include <a href="../include/x86_64-linux-gnu/sys/types.h.html">&lt;sys/types.h&gt;</a></u></td></tr>
+<tr><th id="62">62</th><td><u>#include <a href="../include/x86_64-linux-gnu/sys/stat.h.html">&lt;sys/stat.h&gt;</a></u></td></tr>
+<tr><th id="63">63</th><td><u>#include <a href="../include/signal.h.html">&lt;signal.h&gt;</a></u></td></tr>
+<tr><th id="64">64</th><td><u>#include <a href="../include/stdio.h.html">&lt;stdio.h&gt;</a></u></td></tr>
+<tr><th id="65">65</th><td><u>#include <a href="../include/ctype.h.html">&lt;ctype.h&gt;</a></u></td></tr>
+<tr><th id="66">66</th><td><u>#<span data-ppcond="66">ifdef</span> <a class="macro" href="config.h.html#318" data-ref="_M/HAVE_SYS_TIMEB_H">HAVE_SYS_TIMEB_H</a></u></td></tr>
+<tr><th id="67">67</th><td><i>/* SCO 3.2 "devsys 4.2" has a prototype for `ftime' in &lt;time.h&gt; that bombs</i></td></tr>
+<tr><th id="68">68</th><td><i>   unless &lt;sys/timeb.h&gt; has been included first.  Does every system have a</i></td></tr>
+<tr><th id="69">69</th><td><i>   &lt;sys/timeb.h&gt;?  If any does not, configure should check for it.  */</i></td></tr>
+<tr><th id="70">70</th><td><u># include <a href="../include/x86_64-linux-gnu/sys/timeb.h.html">&lt;sys/timeb.h&gt;</a></u></td></tr>
+<tr><th id="71">71</th><td><u>#<span data-ppcond="66">endif</span></u></td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td><u>#<span data-ppcond="73">if</span> <a class="macro" href="config.h.html#450" title="1" data-ref="_M/TIME_WITH_SYS_TIME">TIME_WITH_SYS_TIME</a></u></td></tr>
+<tr><th id="74">74</th><td><u># include <a href="../include/x86_64-linux-gnu/sys/time.h.html">&lt;sys/time.h&gt;</a></u></td></tr>
+<tr><th id="75">75</th><td><u># include <a href="../include/time.h.html">&lt;time.h&gt;</a></u></td></tr>
+<tr><th id="76">76</th><td><u>#<span data-ppcond="73">else</span></u></td></tr>
+<tr><th id="77">77</th><td><u># if HAVE_SYS_TIME_H</u></td></tr>
+<tr><th id="78">78</th><td><u>#  include &lt;sys/time.h&gt;</u></td></tr>
+<tr><th id="79">79</th><td><u># else</u></td></tr>
+<tr><th id="80">80</th><td><u>#  include &lt;time.h&gt;</u></td></tr>
+<tr><th id="81">81</th><td><u># endif</u></td></tr>
+<tr><th id="82">82</th><td><u>#<span data-ppcond="73">endif</span></u></td></tr>
+<tr><th id="83">83</th><td></td></tr>
+<tr><th id="84">84</th><td><u>#include <a href="../include/errno.h.html">&lt;errno.h&gt;</a></u></td></tr>
+<tr><th id="85">85</th><td></td></tr>
+<tr><th id="86">86</th><td><u>#<span data-ppcond="86">ifndef</span> <a class="macro" href="../include/x86_64-linux-gnu/bits/errno.h.html#54" data-ref="_M/errno">errno</a></u></td></tr>
+<tr><th id="87">87</th><td><b>extern</b> <em>int</em> errno;</td></tr>
+<tr><th id="88">88</th><td><u>#<span data-ppcond="86">endif</span></u></td></tr>
+<tr><th id="89">89</th><td></td></tr>
+<tr><th id="90">90</th><td><u>#<span data-ppcond="90">ifndef</span> <a class="macro" href="../include/ctype.h.html#209" data-ref="_M/isblank">isblank</a></u></td></tr>
+<tr><th id="91">91</th><td><u># define isblank(c)     ((c) == ' ' || (c) == '\t')</u></td></tr>
+<tr><th id="92">92</th><td><u>#<span data-ppcond="90">endif</span></u></td></tr>
+<tr><th id="93">93</th><td></td></tr>
+<tr><th id="94">94</th><td><u>#<span data-ppcond="94">ifdef</span>  <a class="macro" href="config.h.html#345" data-ref="_M/HAVE_UNISTD_H">HAVE_UNISTD_H</a></u></td></tr>
+<tr><th id="95">95</th><td><u># include <a href="../include/unistd.h.html">&lt;unistd.h&gt;</a></u></td></tr>
+<tr><th id="96">96</th><td><i>/* Ultrix's unistd.h always defines _POSIX_VERSION, but you only get</i></td></tr>
+<tr><th id="97">97</th><td><i>   POSIX.1 behavior with `cc -YPOSIX', which predefines POSIX itself!  */</i></td></tr>
+<tr><th id="98">98</th><td><u># <span data-ppcond="98">if</span> defined (<a class="macro" href="../include/unistd.h.html#34" data-ref="_M/_POSIX_VERSION">_POSIX_VERSION</a>) &amp;&amp; !defined (<span class="macro" data-ref="_M/ultrix">ultrix</span>) &amp;&amp; !defined (<span class="macro" data-ref="_M/VMS">VMS</span>)</u></td></tr>
+<tr><th id="99">99</th><td><u>#  define <dfn class="macro" id="_M/POSIX" data-ref="_M/POSIX">POSIX</dfn> 1</u></td></tr>
+<tr><th id="100">100</th><td><u># <span data-ppcond="98">endif</span></u></td></tr>
+<tr><th id="101">101</th><td><u>#<span data-ppcond="94">endif</span></u></td></tr>
+<tr><th id="102">102</th><td></td></tr>
+<tr><th id="103">103</th><td><i>/* Some systems define _POSIX_VERSION but are not really POSIX.1.  */</i></td></tr>
+<tr><th id="104">104</th><td><u>#<span data-ppcond="104">if</span> (defined (<span class="macro" data-ref="_M/butterfly">butterfly</span>) || defined (<span class="macro" data-ref="_M/__arm">__arm</span>) || (defined (<span class="macro" data-ref="_M/__mips">__mips</span>) &amp;&amp; defined (<span class="macro" data-ref="_M/_SYSTYPE_SVR3">_SYSTYPE_SVR3</span>)) || (defined (<span class="macro" data-ref="_M/sequent">sequent</span>) &amp;&amp; defined (<span class="macro" data-ref="_M/i386">i386</span>)))</u></td></tr>
+<tr><th id="105">105</th><td><u># undef POSIX</u></td></tr>
+<tr><th id="106">106</th><td><u>#<span data-ppcond="104">endif</span></u></td></tr>
+<tr><th id="107">107</th><td></td></tr>
+<tr><th id="108">108</th><td><u>#<span data-ppcond="108">if</span> !defined (<a class="macro" href="#99" data-ref="_M/POSIX">POSIX</a>) &amp;&amp; defined (<span class="macro" data-ref="_M/_AIX">_AIX</span>) &amp;&amp; defined (<a class="macro" href="../include/features.h.html#226" data-ref="_M/_POSIX_SOURCE">_POSIX_SOURCE</a>)</u></td></tr>
+<tr><th id="109">109</th><td><u># define POSIX 1</u></td></tr>
+<tr><th id="110">110</th><td><u>#<span data-ppcond="108">endif</span></u></td></tr>
+<tr><th id="111">111</th><td></td></tr>
+<tr><th id="112">112</th><td><u>#<span data-ppcond="112">ifndef</span> <a class="macro" href="config.h.html#418" data-ref="_M/RETSIGTYPE">RETSIGTYPE</a></u></td></tr>
+<tr><th id="113">113</th><td><u># define RETSIGTYPE     void</u></td></tr>
+<tr><th id="114">114</th><td><u>#<span data-ppcond="112">endif</span></u></td></tr>
+<tr><th id="115">115</th><td></td></tr>
+<tr><th id="116">116</th><td><u>#<span data-ppcond="116">ifndef</span> <a class="macro" href="../include/signal.h.html#184" data-ref="_M/sigmask">sigmask</a></u></td></tr>
+<tr><th id="117">117</th><td><u># define sigmask(sig)   (1 &lt;&lt; ((sig) - 1))</u></td></tr>
+<tr><th id="118">118</th><td><u>#<span data-ppcond="116">endif</span></u></td></tr>
+<tr><th id="119">119</th><td></td></tr>
+<tr><th id="120">120</th><td><u>#<span data-ppcond="120">ifndef</span> <a class="macro" href="config.h.html#210" data-ref="_M/HAVE_SA_RESTART">HAVE_SA_RESTART</a></u></td></tr>
+<tr><th id="121">121</th><td><u># define SA_RESTART 0</u></td></tr>
+<tr><th id="122">122</th><td><u>#<span data-ppcond="120">endif</span></u></td></tr>
+<tr><th id="123">123</th><td></td></tr>
+<tr><th id="124">124</th><td><u>#<span data-ppcond="124">ifdef</span>  <a class="macro" href="config.h.html#168" data-ref="_M/HAVE_LIMITS_H">HAVE_LIMITS_H</a></u></td></tr>
+<tr><th id="125">125</th><td><u># include &lt;limits.h&gt;</u></td></tr>
+<tr><th id="126">126</th><td><u>#<span data-ppcond="124">endif</span></u></td></tr>
+<tr><th id="127">127</th><td><u>#<span data-ppcond="127">ifdef</span>  <a class="macro" href="config.h.html#306" data-ref="_M/HAVE_SYS_PARAM_H">HAVE_SYS_PARAM_H</a></u></td></tr>
+<tr><th id="128">128</th><td><u># include <a href="../include/x86_64-linux-gnu/sys/param.h.html">&lt;sys/param.h&gt;</a></u></td></tr>
+<tr><th id="129">129</th><td><u>#<span data-ppcond="127">endif</span></u></td></tr>
+<tr><th id="130">130</th><td></td></tr>
+<tr><th id="131">131</th><td><u>#<span data-ppcond="131">ifndef</span> <a class="macro" href="../include/linux/limits.h.html#12" data-ref="_M/PATH_MAX">PATH_MAX</a></u></td></tr>
+<tr><th id="132">132</th><td><u># ifndef POSIX</u></td></tr>
+<tr><th id="133">133</th><td><u>#  define PATH_MAX      MAXPATHLEN</u></td></tr>
+<tr><th id="134">134</th><td><u># endif</u></td></tr>
+<tr><th id="135">135</th><td><u>#<span data-ppcond="131">endif</span></u></td></tr>
+<tr><th id="136">136</th><td><u>#<span data-ppcond="136">ifndef</span> <a class="macro" href="../include/x86_64-linux-gnu/sys/param.h.html#48" data-ref="_M/MAXPATHLEN">MAXPATHLEN</a></u></td></tr>
+<tr><th id="137">137</th><td><u># define MAXPATHLEN 1024</u></td></tr>
+<tr><th id="138">138</th><td><u>#<span data-ppcond="136">endif</span></u></td></tr>
+<tr><th id="139">139</th><td></td></tr>
+<tr><th id="140">140</th><td><u>#<span data-ppcond="140">ifdef</span>  <a class="macro" href="../include/linux/limits.h.html#12" data-ref="_M/PATH_MAX">PATH_MAX</a></u></td></tr>
+<tr><th id="141">141</th><td><u># define <dfn class="macro" id="_M/GET_PATH_MAX" data-ref="_M/GET_PATH_MAX">GET_PATH_MAX</dfn>   PATH_MAX</u></td></tr>
+<tr><th id="142">142</th><td><u># define <dfn class="macro" id="_M/PATH_VAR" data-ref="_M/PATH_VAR">PATH_VAR</dfn>(var)  char var[PATH_MAX]</u></td></tr>
+<tr><th id="143">143</th><td><u>#<span data-ppcond="140">else</span></u></td></tr>
+<tr><th id="144">144</th><td><u># define NEED_GET_PATH_MAX 1</u></td></tr>
+<tr><th id="145">145</th><td><u># define GET_PATH_MAX   (get_path_max ())</u></td></tr>
+<tr><th id="146">146</th><td><u># define PATH_VAR(var)  char *var = alloca (GET_PATH_MAX)</u></td></tr>
+<tr><th id="147">147</th><td><em>unsigned</em> <em>int</em> get_path_max (<em>void</em>);</td></tr>
+<tr><th id="148">148</th><td><u>#<span data-ppcond="140">endif</span></u></td></tr>
+<tr><th id="149">149</th><td></td></tr>
+<tr><th id="150">150</th><td><u>#<span data-ppcond="150">ifndef</span> <span class="macro" data-ref="_M/CHAR_BIT">CHAR_BIT</span></u></td></tr>
+<tr><th id="151">151</th><td><u># define CHAR_BIT 8</u></td></tr>
+<tr><th id="152">152</th><td><u>#<span data-ppcond="150">endif</span></u></td></tr>
+<tr><th id="153">153</th><td></td></tr>
+<tr><th id="154">154</th><td><i>/* The minimum and maximum values for the integer type T.</i></td></tr>
+<tr><th id="155">155</th><td><i>   Use ~ (t) 0, not -1, for portability to 1's complement hosts.  */</i></td></tr>
+<tr><th id="156">156</th><td><u>#define <dfn class="macro" id="_M/INTEGER_TYPE_MINIMUM" data-ref="_M/INTEGER_TYPE_MINIMUM">INTEGER_TYPE_MINIMUM</dfn>(t) \</u></td></tr>
+<tr><th id="157">157</th><td><u>  (! INTEGER_TYPE_SIGNED (t) ? (t) 0 : ~ (t) 0 &lt;&lt; (sizeof (t) * CHAR_BIT - 1))</u></td></tr>
+<tr><th id="158">158</th><td><u>#define <dfn class="macro" id="_M/INTEGER_TYPE_MAXIMUM" data-ref="_M/INTEGER_TYPE_MAXIMUM">INTEGER_TYPE_MAXIMUM</dfn>(t) (~ (t) 0 - INTEGER_TYPE_MINIMUM (t))</u></td></tr>
+<tr><th id="159">159</th><td></td></tr>
+<tr><th id="160">160</th><td><u>#<span data-ppcond="160">ifndef</span> <span class="macro" data-ref="_M/CHAR_MAX">CHAR_MAX</span></u></td></tr>
+<tr><th id="161">161</th><td><u># define CHAR_MAX INTEGER_TYPE_MAXIMUM (char)</u></td></tr>
+<tr><th id="162">162</th><td><u>#<span data-ppcond="160">endif</span></u></td></tr>
+<tr><th id="163">163</th><td></td></tr>
+<tr><th id="164">164</th><td><u>#<span data-ppcond="164">ifdef</span> <span class="macro" data-ref="_M/STAT_MACROS_BROKEN">STAT_MACROS_BROKEN</span></u></td></tr>
+<tr><th id="165">165</th><td><u># ifdef S_ISREG</u></td></tr>
+<tr><th id="166">166</th><td><u>#  undef S_ISREG</u></td></tr>
+<tr><th id="167">167</th><td><u># endif</u></td></tr>
+<tr><th id="168">168</th><td><u># ifdef S_ISDIR</u></td></tr>
+<tr><th id="169">169</th><td><u>#  undef S_ISDIR</u></td></tr>
+<tr><th id="170">170</th><td><u># endif</u></td></tr>
+<tr><th id="171">171</th><td><u>#<span data-ppcond="164">endif</span>  /* STAT_MACROS_BROKEN.  */</u></td></tr>
+<tr><th id="172">172</th><td></td></tr>
+<tr><th id="173">173</th><td><u>#<span data-ppcond="173">ifndef</span> <a class="macro" href="../include/x86_64-linux-gnu/sys/stat.h.html#131" data-ref="_M/S_ISREG">S_ISREG</a></u></td></tr>
+<tr><th id="174">174</th><td><u># define S_ISREG(mode)  (((mode) &amp; S_IFMT) == S_IFREG)</u></td></tr>
+<tr><th id="175">175</th><td><u>#<span data-ppcond="173">endif</span></u></td></tr>
+<tr><th id="176">176</th><td><u>#<span data-ppcond="176">ifndef</span> <a class="macro" href="../include/x86_64-linux-gnu/sys/stat.h.html#128" data-ref="_M/S_ISDIR">S_ISDIR</a></u></td></tr>
+<tr><th id="177">177</th><td><u># define S_ISDIR(mode)  (((mode) &amp; S_IFMT) == S_IFDIR)</u></td></tr>
+<tr><th id="178">178</th><td><u>#<span data-ppcond="176">endif</span></u></td></tr>
+<tr><th id="179">179</th><td></td></tr>
+<tr><th id="180">180</th><td><u>#<span data-ppcond="180">ifdef</span> <span class="macro" data-ref="_M/VMS">VMS</span></u></td></tr>
+<tr><th id="181">181</th><td><u># include &lt;types.h&gt;</u></td></tr>
+<tr><th id="182">182</th><td><u># include &lt;unixlib.h&gt;</u></td></tr>
+<tr><th id="183">183</th><td><u># include &lt;unixio.h&gt;</u></td></tr>
+<tr><th id="184">184</th><td><u># include &lt;perror.h&gt;</u></td></tr>
+<tr><th id="185">185</th><td><i>/* Needed to use alloca on VMS.  */</i></td></tr>
+<tr><th id="186">186</th><td><u># include &lt;builtins.h&gt;</u></td></tr>
+<tr><th id="187">187</th><td><u>#<span data-ppcond="180">endif</span></u></td></tr>
+<tr><th id="188">188</th><td></td></tr>
+<tr><th id="189">189</th><td><u>#<span data-ppcond="189">ifndef</span> <span class="macro" data-ref="_M/__attribute__">__attribute__</span></u></td></tr>
+<tr><th id="190">190</th><td><i>/* This feature is available in gcc versions 2.5 and later.  */</i></td></tr>
+<tr><th id="191">191</th><td><u># <span data-ppcond="191">if</span> <span class="macro" title="4" data-ref="_M/__GNUC__">__GNUC__</span> &lt; 2 || (<span class="macro" title="4" data-ref="_M/__GNUC__">__GNUC__</span> == 2 &amp;&amp; <span class="macro" title="2" data-ref="_M/__GNUC_MINOR__">__GNUC_MINOR__</span> &lt; 5) || __STRICT_ANSI__</u></td></tr>
+<tr><th id="192">192</th><td><u>#  define __attribute__(x)</u></td></tr>
+<tr><th id="193">193</th><td><u># <span data-ppcond="191">endif</span></u></td></tr>
+<tr><th id="194">194</th><td><i>/* The __-protected variants of `format' and `printf' attributes</i></td></tr>
+<tr><th id="195">195</th><td><i>   are accepted by gcc versions 2.6.4 (effectively 2.7) and later.  */</i></td></tr>
+<tr><th id="196">196</th><td><u># <span data-ppcond="196">if</span> <span class="macro" title="4" data-ref="_M/__GNUC__">__GNUC__</span> &lt; 2 || (<span class="macro" title="4" data-ref="_M/__GNUC__">__GNUC__</span> == 2 &amp;&amp; <span class="macro" title="2" data-ref="_M/__GNUC_MINOR__">__GNUC_MINOR__</span> &lt; 7)</u></td></tr>
+<tr><th id="197">197</th><td><u>#  define __format__ format</u></td></tr>
+<tr><th id="198">198</th><td><u>#  define __printf__ printf</u></td></tr>
+<tr><th id="199">199</th><td><u># <span data-ppcond="196">endif</span></u></td></tr>
+<tr><th id="200">200</th><td><u>#<span data-ppcond="189">endif</span></u></td></tr>
+<tr><th id="201">201</th><td><u>#define <dfn class="macro" id="_M/UNUSED" data-ref="_M/UNUSED">UNUSED</dfn>  __attribute__ ((unused))</u></td></tr>
+<tr><th id="202">202</th><td></td></tr>
+<tr><th id="203">203</th><td><u>#<span data-ppcond="203">if</span> defined (<a class="macro" href="config.h.html#441" data-ref="_M/STDC_HEADERS">STDC_HEADERS</a>) || defined (<a class="macro" href="../include/features.h.html#354" data-ref="_M/__GNU_LIBRARY__">__GNU_LIBRARY__</a>)</u></td></tr>
+<tr><th id="204">204</th><td><u># include <a href="../include/stdlib.h.html">&lt;stdlib.h&gt;</a></u></td></tr>
+<tr><th id="205">205</th><td><u># include <a href="../include/string.h.html">&lt;string.h&gt;</a></u></td></tr>
+<tr><th id="206">206</th><td><u># define <dfn class="macro" id="_M/ANSI_STRING" data-ref="_M/ANSI_STRING">ANSI_STRING</dfn> 1</u></td></tr>
+<tr><th id="207">207</th><td><u>#<span data-ppcond="203">else</span>   /* No standard headers.  */</u></td></tr>
+<tr><th id="208">208</th><td><u># ifdef HAVE_STRING_H</u></td></tr>
+<tr><th id="209">209</th><td><u>#  include &lt;string.h&gt;</u></td></tr>
+<tr><th id="210">210</th><td><u>#  define ANSI_STRING 1</u></td></tr>
+<tr><th id="211">211</th><td><u># else</u></td></tr>
+<tr><th id="212">212</th><td><u>#  include &lt;strings.h&gt;</u></td></tr>
+<tr><th id="213">213</th><td><u># endif</u></td></tr>
+<tr><th id="214">214</th><td><u># ifdef HAVE_MEMORY_H</u></td></tr>
+<tr><th id="215">215</th><td><u>#  include &lt;memory.h&gt;</u></td></tr>
+<tr><th id="216">216</th><td><u># endif</u></td></tr>
+<tr><th id="217">217</th><td><u># ifdef HAVE_STDLIB_H</u></td></tr>
+<tr><th id="218">218</th><td><u>#  include &lt;stdlib.h&gt;</u></td></tr>
+<tr><th id="219">219</th><td><u># else</u></td></tr>
+<tr><th id="220">220</th><td><em>void</em> *malloc (<em>int</em>);</td></tr>
+<tr><th id="221">221</th><td><em>void</em> *realloc (<em>void</em> *, <em>int</em>);</td></tr>
+<tr><th id="222">222</th><td><em>void</em> free (<em>void</em> *);</td></tr>
+<tr><th id="223">223</th><td></td></tr>
+<tr><th id="224">224</th><td><em>void</em> abort (<em>void</em>) <b>__attribute__</b> ((noreturn));</td></tr>
+<tr><th id="225">225</th><td><em>void</em> exit (<em>int</em>) <b>__attribute__</b> ((noreturn));</td></tr>
+<tr><th id="226">226</th><td><u># endif /* HAVE_STDLIB_H.  */</u></td></tr>
+<tr><th id="227">227</th><td></td></tr>
+<tr><th id="228">228</th><td><u>#<span data-ppcond="203">endif</span> /* Standard headers.  */</u></td></tr>
+<tr><th id="229">229</th><td></td></tr>
+<tr><th id="230">230</th><td><i>/* These should be in stdlib.h.  Make sure we have them.  */</i></td></tr>
+<tr><th id="231">231</th><td><u>#<span data-ppcond="231">ifndef</span> <a class="macro" href="../include/stdlib.h.html#134" data-ref="_M/EXIT_SUCCESS">EXIT_SUCCESS</a></u></td></tr>
+<tr><th id="232">232</th><td><u># define EXIT_SUCCESS 0</u></td></tr>
+<tr><th id="233">233</th><td><u>#<span data-ppcond="231">endif</span></u></td></tr>
+<tr><th id="234">234</th><td><u>#<span data-ppcond="234">ifndef</span> <a class="macro" href="../include/stdlib.h.html#133" data-ref="_M/EXIT_FAILURE">EXIT_FAILURE</a></u></td></tr>
+<tr><th id="235">235</th><td><u># define EXIT_FAILURE 1</u></td></tr>
+<tr><th id="236">236</th><td><u>#<span data-ppcond="234">endif</span></u></td></tr>
+<tr><th id="237">237</th><td></td></tr>
+<tr><th id="238">238</th><td><u>#<span data-ppcond="238">ifndef</span>  <a class="macro" href="#206" data-ref="_M/ANSI_STRING">ANSI_STRING</a></u></td></tr>
+<tr><th id="239">239</th><td></td></tr>
+<tr><th id="240">240</th><td><i>/* SCO Xenix has a buggy macro definition in &lt;string.h&gt;.  */</i></td></tr>
+<tr><th id="241">241</th><td><u>#undef  strerror</u></td></tr>
+<tr><th id="242">242</th><td><u>#if !defined(__DECC)</u></td></tr>
+<tr><th id="243">243</th><td><em>char</em> *strerror (<em>int</em> errnum);</td></tr>
+<tr><th id="244">244</th><td><u>#endif</u></td></tr>
+<tr><th id="245">245</th><td></td></tr>
+<tr><th id="246">246</th><td><u>#<span data-ppcond="238">endif</span>  /* !ANSI_STRING.  */</u></td></tr>
+<tr><th id="247">247</th><td><u>#undef  <a class="macro" href="#206" data-ref="_M/ANSI_STRING">ANSI_STRING</a></u></td></tr>
+<tr><th id="248">248</th><td></td></tr>
+<tr><th id="249">249</th><td><u>#<span data-ppcond="249">if</span> <a class="macro" href="config.h.html#153" title="1" data-ref="_M/HAVE_INTTYPES_H">HAVE_INTTYPES_H</a></u></td></tr>
+<tr><th id="250">250</th><td><u># include &lt;inttypes.h&gt;</u></td></tr>
+<tr><th id="251">251</th><td><u>#<span data-ppcond="249">endif</span></u></td></tr>
+<tr><th id="252">252</th><td><u>#define <dfn class="macro" id="_M/FILE_TIMESTAMP" data-ref="_M/FILE_TIMESTAMP">FILE_TIMESTAMP</dfn> <a class="typedef" href="../include/stdint.h.html#uintmax_t" title='uintmax_t' data-type='unsigned long' data-ref="uintmax_t">uintmax_t</a></u></td></tr>
+<tr><th id="253">253</th><td></td></tr>
+<tr><th id="254">254</th><td><u>#<span data-ppcond="254">if</span> !defined(<a class="macro" href="config.h.html#289" data-ref="_M/HAVE_STRSIGNAL">HAVE_STRSIGNAL</a>)</u></td></tr>
+<tr><th id="255">255</th><td><em>char</em> *strsignal (<em>int</em> signum);</td></tr>
+<tr><th id="256">256</th><td><u>#<span data-ppcond="254">endif</span></u></td></tr>
+<tr><th id="257">257</th><td></td></tr>
+<tr><th id="258">258</th><td><i>/* Test if two strings are equal. Is this worthwhile?  Should be profiled.  */</i></td></tr>
+<tr><th id="259">259</th><td><u>#define <dfn class="macro" id="_M/streq" data-ref="_M/streq">streq</dfn>(a, b) \</u></td></tr>
+<tr><th id="260">260</th><td><u>   ((a) == (b) || \</u></td></tr>
+<tr><th id="261">261</th><td><u>    (*(a) == *(b) &amp;&amp; (*(a) == '\0' || !strcmp ((a) + 1, (b) + 1))))</u></td></tr>
+<tr><th id="262">262</th><td></td></tr>
+<tr><th id="263">263</th><td><i>/* Test if two strings are equal, but match case-insensitively on systems</i></td></tr>
+<tr><th id="264">264</th><td><i>   which have case-insensitive filesystems.  Should only be used for</i></td></tr>
+<tr><th id="265">265</th><td><i>   filenames!  */</i></td></tr>
+<tr><th id="266">266</th><td><u>#<span data-ppcond="266">ifdef</span> <span class="macro" data-ref="_M/HAVE_CASE_INSENSITIVE_FS">HAVE_CASE_INSENSITIVE_FS</span></u></td></tr>
+<tr><th id="267">267</th><td><u># define patheq(a, b) \</u></td></tr>
+<tr><th id="268">268</th><td><u>    ((a) == (b) \</u></td></tr>
+<tr><th id="269">269</th><td><u>     || (tolower((unsigned char)*(a)) == tolower((unsigned char)*(b)) \</u></td></tr>
+<tr><th id="270">270</th><td><u>         &amp;&amp; (*(a) == '\0' || !strcasecmp ((a) + 1, (b) + 1))))</u></td></tr>
+<tr><th id="271">271</th><td><u>#<span data-ppcond="266">else</span></u></td></tr>
+<tr><th id="272">272</th><td><u># define <dfn class="macro" id="_M/patheq" data-ref="_M/patheq">patheq</dfn>(a, b) streq(a, b)</u></td></tr>
+<tr><th id="273">273</th><td><u>#<span data-ppcond="266">endif</span></u></td></tr>
+<tr><th id="274">274</th><td></td></tr>
+<tr><th id="275">275</th><td><u>#define <dfn class="macro" id="_M/strneq" data-ref="_M/strneq">strneq</dfn>(a, b, l) (strncmp ((a), (b), (l)) == 0)</u></td></tr>
+<tr><th id="276">276</th><td></td></tr>
+<tr><th id="277">277</th><td><u>#<span data-ppcond="277">if</span> defined(<span class="macro" data-ref="_M/__GNUC__">__GNUC__</span>) || defined(<span class="macro" data-ref="_M/ENUM_BITFIELDS">ENUM_BITFIELDS</span>)</u></td></tr>
+<tr><th id="278">278</th><td><u># define <dfn class="macro" id="_M/ENUM_BITFIELD" data-ref="_M/ENUM_BITFIELD">ENUM_BITFIELD</dfn>(bits)    :bits</u></td></tr>
+<tr><th id="279">279</th><td><u>#<span data-ppcond="277">else</span></u></td></tr>
+<tr><th id="280">280</th><td><u># define ENUM_BITFIELD(bits)</u></td></tr>
+<tr><th id="281">281</th><td><u>#<span data-ppcond="277">endif</span></u></td></tr>
+<tr><th id="282">282</th><td></td></tr>
+<tr><th id="283">283</th><td><i>/* Handle gettext and locales.  */</i></td></tr>
+<tr><th id="284">284</th><td></td></tr>
+<tr><th id="285">285</th><td><u>#<span data-ppcond="285">if</span> <a class="macro" href="config.h.html#171" title="1" data-ref="_M/HAVE_LOCALE_H">HAVE_LOCALE_H</a></u></td></tr>
+<tr><th id="286">286</th><td><u># include <a href="../include/locale.h.html">&lt;locale.h&gt;</a></u></td></tr>
+<tr><th id="287">287</th><td><u>#<span data-ppcond="285">else</span></u></td></tr>
+<tr><th id="288">288</th><td><u># define setlocale(category, locale)</u></td></tr>
+<tr><th id="289">289</th><td><u>#<span data-ppcond="285">endif</span></u></td></tr>
+<tr><th id="290">290</th><td></td></tr>
+<tr><th id="291">291</th><td><u>#include <a href="gettext.h.html">&lt;gettext.h&gt;</a></u></td></tr>
+<tr><th id="292">292</th><td></td></tr>
+<tr><th id="293">293</th><td><u>#define <dfn class="macro" id="_M/_" data-ref="_M/_">_</dfn>(msgid)            gettext (msgid)</u></td></tr>
+<tr><th id="294">294</th><td><u>#define <dfn class="macro" id="_M/N_" data-ref="_M/N_">N_</dfn>(msgid)           gettext_noop (msgid)</u></td></tr>
+<tr><th id="295">295</th><td><u>#define <dfn class="macro" id="_M/S_" data-ref="_M/S_">S_</dfn>(msg1,msg2,num)   ngettext (msg1,msg2,num)</u></td></tr>
+<tr><th id="296">296</th><td></td></tr>
+<tr><th id="297">297</th><td><i>/* Handle other OSs.  */</i></td></tr>
+<tr><th id="298">298</th><td><u>#<span data-ppcond="298">ifndef</span> <a class="macro" href="config.h.html#412" data-ref="_M/PATH_SEPARATOR_CHAR">PATH_SEPARATOR_CHAR</a></u></td></tr>
+<tr><th id="299">299</th><td><u># if defined(HAVE_DOS_PATHS)</u></td></tr>
+<tr><th id="300">300</th><td><u>#  define PATH_SEPARATOR_CHAR ';'</u></td></tr>
+<tr><th id="301">301</th><td><u># elif defined(VMS)</u></td></tr>
+<tr><th id="302">302</th><td><u>#  define PATH_SEPARATOR_CHAR ','</u></td></tr>
+<tr><th id="303">303</th><td><u># else</u></td></tr>
+<tr><th id="304">304</th><td><u>#  define PATH_SEPARATOR_CHAR ':'</u></td></tr>
+<tr><th id="305">305</th><td><u># endif</u></td></tr>
+<tr><th id="306">306</th><td><u>#<span data-ppcond="298">endif</span></u></td></tr>
+<tr><th id="307">307</th><td></td></tr>
+<tr><th id="308">308</th><td><i>/* This is needed for getcwd() and chdir(), on some W32 systems.  */</i></td></tr>
+<tr><th id="309">309</th><td><u>#<span data-ppcond="309">if</span> defined(<span class="macro" data-ref="_M/HAVE_DIRECT_H">HAVE_DIRECT_H</span>)</u></td></tr>
+<tr><th id="310">310</th><td><u># include &lt;direct.h&gt;</u></td></tr>
+<tr><th id="311">311</th><td><u>#<span data-ppcond="309">endif</span></u></td></tr>
+<tr><th id="312">312</th><td></td></tr>
+<tr><th id="313">313</th><td><u>#<span data-ppcond="313">ifdef</span> <span class="macro" data-ref="_M/WINDOWS32">WINDOWS32</span></u></td></tr>
+<tr><th id="314">314</th><td><u># include &lt;fcntl.h&gt;</u></td></tr>
+<tr><th id="315">315</th><td><u># include &lt;malloc.h&gt;</u></td></tr>
+<tr><th id="316">316</th><td><u># define pipe(_p)        _pipe((_p), 512, O_BINARY)</u></td></tr>
+<tr><th id="317">317</th><td><u># define kill(_pid,_sig) w32_kill((_pid),(_sig))</u></td></tr>
+<tr><th id="318">318</th><td></td></tr>
+<tr><th id="319">319</th><td><em>void</em> sync_Path_environment (<em>void</em>);</td></tr>
+<tr><th id="320">320</th><td><em>int</em> w32_kill (pid_t pid, <em>int</em> sig);</td></tr>
+<tr><th id="321">321</th><td><em>char</em> *end_of_token_w32 (<em>const</em> <em>char</em> *s, <em>char</em> stopchar);</td></tr>
+<tr><th id="322">322</th><td><em>int</em> find_and_set_default_shell (<em>const</em> <em>char</em> *token);</td></tr>
+<tr><th id="323">323</th><td></td></tr>
+<tr><th id="324">324</th><td><i>/* indicates whether or not we have Bourne shell */</i></td></tr>
+<tr><th id="325">325</th><td><b>extern</b> <em>int</em> no_default_sh_exe;</td></tr>
+<tr><th id="326">326</th><td></td></tr>
+<tr><th id="327">327</th><td><i>/* is default_shell unixy? */</i></td></tr>
+<tr><th id="328">328</th><td><b>extern</b> <em>int</em> unixy_shell;</td></tr>
+<tr><th id="329">329</th><td><u>#<span data-ppcond="313">endif</span>  /* WINDOWS32 */</u></td></tr>
+<tr><th id="330">330</th><td></td></tr>
+<tr><th id="331">331</th><td><u>#<span data-ppcond="331">if</span> defined(<a class="macro" href="config.h.html#309" data-ref="_M/HAVE_SYS_RESOURCE_H">HAVE_SYS_RESOURCE_H</a>) &amp;&amp; defined(<a class="macro" href="config.h.html#135" data-ref="_M/HAVE_GETRLIMIT">HAVE_GETRLIMIT</a>) &amp;&amp; defined(<a class="macro" href="config.h.html#231" data-ref="_M/HAVE_SETRLIMIT">HAVE_SETRLIMIT</a>)</u></td></tr>
+<tr><th id="332">332</th><td><u># define <dfn class="macro" id="_M/SET_STACK_SIZE" data-ref="_M/SET_STACK_SIZE">SET_STACK_SIZE</dfn></u></td></tr>
+<tr><th id="333">333</th><td><u>#<span data-ppcond="331">endif</span></u></td></tr>
+<tr><th id="334">334</th><td><u>#<span data-ppcond="334">ifdef</span> <a class="macro" href="#332" data-ref="_M/SET_STACK_SIZE">SET_STACK_SIZE</a></u></td></tr>
+<tr><th id="335">335</th><td><u># include <a href="../include/x86_64-linux-gnu/sys/resource.h.html">&lt;sys/resource.h&gt;</a></u></td></tr>
+<tr><th id="336">336</th><td><b>struct</b> <a class="type" href="../include/x86_64-linux-gnu/bits/resource.h.html#rlimit" title='rlimit' data-ref="rlimit">rlimit</a> <dfn class="decl def" id="stack_limit" title='stack_limit' data-ref="stack_limit">stack_limit</dfn>;</td></tr>
+<tr><th id="337">337</th><td><u>#<span data-ppcond="334">endif</span></u></td></tr>
+<tr><th id="338">338</th><td></td></tr>
+<tr><th id="339">339</th><td><i>/* We have to have stdarg.h or varargs.h AND v*printf or doprnt to use</i></td></tr>
+<tr><th id="340">340</th><td><i>   variadic versions of these functions.  */</i></td></tr>
+<tr><th id="341">341</th><td></td></tr>
+<tr><th id="342">342</th><td><u>#<span data-ppcond="342">if</span> HAVE_STDARG_H || HAVE_VARARGS_H</u></td></tr>
+<tr><th id="343">343</th><td><u># if HAVE_VPRINTF || HAVE_DOPRNT</u></td></tr>
+<tr><th id="344">344</th><td><u>#  define USE_VARIADIC 1</u></td></tr>
+<tr><th id="345">345</th><td><u># endif</u></td></tr>
+<tr><th id="346">346</th><td><u>#<span data-ppcond="342">endif</span></u></td></tr>
+<tr><th id="347">347</th><td></td></tr>
+<tr><th id="348">348</th><td><em>void</em> <a class="decl" href="makeint.h.html#die" title='die' data-ref="die" id="die">die</a> (<em>int</em>);</td></tr>
+<tr><th id="349">349</th><td><em>void</em> <a class="decl" href="makeint.h.html#pfatal_with_name" title='pfatal_with_name' data-ref="pfatal_with_name" id="pfatal_with_name">pfatal_with_name</a> (<em>const</em> <em>char</em> *);</td></tr>
+<tr><th id="350">350</th><td><em>void</em> <a class="decl" href="makeint.h.html#perror_with_name" title='perror_with_name' data-ref="perror_with_name" id="perror_with_name">perror_with_name</a> (<em>const</em> <em>char</em> *, <em>const</em> <em>char</em> *);</td></tr>
+<tr><th id="351">351</th><td><em>void</em> *<a class="decl" href="makeint.h.html#xmalloc" title='xmalloc' data-ref="xmalloc" id="xmalloc">xmalloc</a> (<em>unsigned</em> <em>int</em>);</td></tr>
+<tr><th id="352">352</th><td><em>void</em> *<a class="decl" href="makeint.h.html#xcalloc" title='xcalloc' data-ref="xcalloc" id="xcalloc">xcalloc</a> (<em>unsigned</em> <em>int</em>);</td></tr>
+<tr><th id="353">353</th><td><em>void</em> *<a class="decl" href="makeint.h.html#xrealloc" title='xrealloc' data-ref="xrealloc" id="xrealloc">xrealloc</a> (<em>void</em> *, <em>unsigned</em> <em>int</em>);</td></tr>
+<tr><th id="354">354</th><td><em>char</em> *<a class="decl" href="makeint.h.html#xstrdup" title='xstrdup' data-ref="xstrdup" id="xstrdup">xstrdup</a> (<em>const</em> <em>char</em> *);</td></tr>
+<tr><th id="355">355</th><td><em>char</em> *<a class="decl" href="makeint.h.html#xstrndup" title='xstrndup' data-ref="xstrndup" id="xstrndup">xstrndup</a> (<em>const</em> <em>char</em> *, <em>unsigned</em> <em>int</em>);</td></tr>
+<tr><th id="356">356</th><td><em>char</em> *<a class="decl" href="makeint.h.html#find_next_token" title='find_next_token' data-ref="find_next_token" id="find_next_token">find_next_token</a> (<em>const</em> <em>char</em> **, <em>unsigned</em> <em>int</em> *);</td></tr>
+<tr><th id="357">357</th><td><em>char</em> *<a class="decl" href="makeint.h.html#next_token" title='next_token' data-ref="next_token" id="next_token">next_token</a> (<em>const</em> <em>char</em> *);</td></tr>
+<tr><th id="358">358</th><td><em>char</em> *<a class="decl" href="makeint.h.html#end_of_token" title='end_of_token' data-ref="end_of_token" id="end_of_token">end_of_token</a> (<em>const</em> <em>char</em> *);</td></tr>
+<tr><th id="359">359</th><td><em>void</em> <a class="decl" href="makeint.h.html#collapse_continuations" title='collapse_continuations' data-ref="collapse_continuations" id="collapse_continuations">collapse_continuations</a> (<em>char</em> *);</td></tr>
+<tr><th id="360">360</th><td><em>char</em> *<a class="decl" href="makeint.h.html#lindex" title='lindex' data-ref="lindex" id="lindex">lindex</a> (<em>const</em> <em>char</em> *, <em>const</em> <em>char</em> *, <em>int</em>);</td></tr>
+<tr><th id="361">361</th><td><em>int</em> <a class="decl" href="makeint.h.html#alpha_compare" title='alpha_compare' data-ref="alpha_compare" id="alpha_compare">alpha_compare</a> (<em>const</em> <em>void</em> *, <em>const</em> <em>void</em> *);</td></tr>
+<tr><th id="362">362</th><td><em>void</em> <a class="decl" href="makeint.h.html#print_spaces" title='print_spaces' data-ref="print_spaces" id="print_spaces">print_spaces</a> (<em>unsigned</em> <em>int</em>);</td></tr>
+<tr><th id="363">363</th><td><em>char</em> *<a class="decl" href="makeint.h.html#find_percent" title='find_percent' data-ref="find_percent" id="find_percent">find_percent</a> (<em>char</em> *);</td></tr>
+<tr><th id="364">364</th><td><em>const</em> <em>char</em> *<a class="decl" href="makeint.h.html#find_percent_cached" title='find_percent_cached' data-ref="find_percent_cached" id="find_percent_cached">find_percent_cached</a> (<em>const</em> <em>char</em> **);</td></tr>
+<tr><th id="365">365</th><td><a class="typedef" href="../include/stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> *<dfn class="decl" id="open_tmpfile" title='open_tmpfile' data-ref="open_tmpfile">open_tmpfile</dfn> (<em>char</em> **, <em>const</em> <em>char</em> *);</td></tr>
+<tr><th id="366">366</th><td></td></tr>
+<tr><th id="367">367</th><td><u>#<span data-ppcond="367">ifndef</span> <span class="macro" data-ref="_M/NO_ARCHIVES">NO_ARCHIVES</span></u></td></tr>
+<tr><th id="368">368</th><td><em>int</em> <a class="decl" href="ar.c.html#ar_name" title='ar_name' data-ref="ar_name" id="ar_name">ar_name</a> (<em>const</em> <em>char</em> *);</td></tr>
+<tr><th id="369">369</th><td><em>void</em> <a class="decl" href="ar.c.html#ar_parse_name" title='ar_parse_name' data-ref="ar_parse_name" id="ar_parse_name">ar_parse_name</a> (<em>const</em> <em>char</em> *, <em>char</em> **, <em>char</em> **);</td></tr>
+<tr><th id="370">370</th><td><em>int</em> <a class="decl" href="ar.c.html#ar_touch" title='ar_touch' data-ref="ar_touch" id="ar_touch">ar_touch</a> (<em>const</em> <em>char</em> *);</td></tr>
+<tr><th id="371">371</th><td><em>int</em> <a class="decl" href="ar.c.html#ar_member_date" title='ar_member_date' data-ref="ar_member_date" id="ar_member_date">ar_member_date</a> (<em>const</em> <em>char</em> *, <a class="typedef" href="../include/time.h.html#time_t" title='time_t' data-type='__time_t' data-ref="time_t">time_t</a> *);</td></tr>
+<tr><th id="372">372</th><td></td></tr>
+<tr><th id="373">373</th><td></td></tr>
+<tr><th id="374">374</th><td><u>#<span data-ppcond="367">endif</span></u></td></tr>
+<tr><th id="375">375</th><td></td></tr>
+<tr><th id="376">376</th><td><em>int</em> <a class="decl" href="makeint.h.html#dir_file_exists_p" title='dir_file_exists_p' data-ref="dir_file_exists_p" id="dir_file_exists_p">dir_file_exists_p</a> (<em>const</em> <em>char</em> *, <em>const</em> <em>char</em> *);</td></tr>
+<tr><th id="377">377</th><td><em>int</em> <a class="decl" href="makeint.h.html#file_exists_p" title='file_exists_p' data-ref="file_exists_p" id="file_exists_p">file_exists_p</a> (<em>const</em> <em>char</em> *);</td></tr>
+<tr><th id="378">378</th><td><em>int</em> <a class="decl" href="makeint.h.html#file_impossible_p" title='file_impossible_p' data-ref="file_impossible_p" id="file_impossible_p">file_impossible_p</a> (<em>const</em> <em>char</em> *);</td></tr>
+<tr><th id="379">379</th><td><em>void</em> <a class="decl" href="makeint.h.html#file_impossible" title='file_impossible' data-ref="file_impossible" id="file_impossible">file_impossible</a> (<em>const</em> <em>char</em> *);</td></tr>
+<tr><th id="380">380</th><td><em>const</em> <em>char</em> *<a class="decl" href="makeint.h.html#dir_name" title='dir_name' data-ref="dir_name" id="dir_name">dir_name</a> (<em>const</em> <em>char</em> *);</td></tr>
+<tr><th id="381">381</th><td><em>void</em> <a class="decl" href="makeint.h.html#hash_init_directories" title='hash_init_directories' data-ref="hash_init_directories" id="hash_init_directories">hash_init_directories</a> (<em>void</em>);</td></tr>
+<tr><th id="382">382</th><td></td></tr>
+<tr><th id="383">383</th><td><em>void</em> <a class="decl" href="makeint.h.html#define_default_variables" title='define_default_variables' data-ref="define_default_variables" id="define_default_variables">define_default_variables</a> (<em>void</em>);</td></tr>
+<tr><th id="384">384</th><td><em>void</em> <a class="decl" href="makeint.h.html#set_default_suffixes" title='set_default_suffixes' data-ref="set_default_suffixes" id="set_default_suffixes">set_default_suffixes</a> (<em>void</em>);</td></tr>
+<tr><th id="385">385</th><td><em>void</em> <a class="decl" href="makeint.h.html#install_default_suffix_rules" title='install_default_suffix_rules' data-ref="install_default_suffix_rules" id="install_default_suffix_rules">install_default_suffix_rules</a> (<em>void</em>);</td></tr>
+<tr><th id="386">386</th><td><em>void</em> <a class="decl" href="makeint.h.html#install_default_implicit_rules" title='install_default_implicit_rules' data-ref="install_default_implicit_rules" id="install_default_implicit_rules">install_default_implicit_rules</a> (<em>void</em>);</td></tr>
+<tr><th id="387">387</th><td></td></tr>
+<tr><th id="388">388</th><td><em>void</em> <a class="decl" href="makeint.h.html#build_vpath_lists" title='build_vpath_lists' data-ref="build_vpath_lists" id="build_vpath_lists">build_vpath_lists</a> (<em>void</em>);</td></tr>
+<tr><th id="389">389</th><td><em>void</em> <a class="decl" href="makeint.h.html#construct_vpath_list" title='construct_vpath_list' data-ref="construct_vpath_list" id="construct_vpath_list">construct_vpath_list</a> (<em>char</em> *<dfn class="local col3 decl" id="43pattern" title='pattern' data-type='char *' data-ref="43pattern">pattern</dfn>, <em>char</em> *<dfn class="local col4 decl" id="44dirpath" title='dirpath' data-type='char *' data-ref="44dirpath">dirpath</dfn>);</td></tr>
+<tr><th id="390">390</th><td><em>const</em> <em>char</em> *<a class="decl" href="makeint.h.html#vpath_search" title='vpath_search' data-ref="vpath_search" id="vpath_search">vpath_search</a> (<em>const</em> <em>char</em> *<dfn class="local col5 decl" id="45file" title='file' data-type='const char *' data-ref="45file">file</dfn>, <a class="macro" href="#252" title="uintmax_t" data-ref="_M/FILE_TIMESTAMP">FILE_TIMESTAMP</a> *<dfn class="local col6 decl" id="46mtime_ptr" title='mtime_ptr' data-type='uintmax_t *' data-ref="46mtime_ptr">mtime_ptr</dfn>,</td></tr>
+<tr><th id="391">391</th><td>                          <em>unsigned</em> <em>int</em>* <dfn class="local col7 decl" id="47vpath_index" title='vpath_index' data-type='unsigned int *' data-ref="47vpath_index">vpath_index</dfn>, <em>unsigned</em> <em>int</em>* <dfn class="local col8 decl" id="48path_index" title='path_index' data-type='unsigned int *' data-ref="48path_index">path_index</dfn>);</td></tr>
+<tr><th id="392">392</th><td><em>int</em> <a class="decl" href="makeint.h.html#gpath_search" title='gpath_search' data-ref="gpath_search" id="gpath_search">gpath_search</a> (<em>const</em> <em>char</em> *<dfn class="local col9 decl" id="49file" title='file' data-type='const char *' data-ref="49file">file</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col0 decl" id="50len" title='len' data-type='unsigned int' data-ref="50len">len</dfn>);</td></tr>
+<tr><th id="393">393</th><td></td></tr>
+<tr><th id="394">394</th><td><i class="doc">/*! Construct the list of include directories</i></td></tr>
+<tr><th id="395">395</th><td><i class="doc">   from the arguments and the default list.</i></td></tr>
+<tr><th id="396">396</th><td><i class="doc">*/</i></td></tr>
+<tr><th id="397">397</th><td><b>extern</b> <em>void</em> <a class="decl" href="makeint.h.html#construct_include_path" title='construct_include_path' data-ref="construct_include_path" id="construct_include_path">construct_include_path</a> (<em>const</em> <em>char</em> **<dfn class="local col1 decl" id="51arg_dirs" title='arg_dirs' data-type='const char **' data-ref="51arg_dirs">arg_dirs</dfn>);</td></tr>
+<tr><th id="398">398</th><td></td></tr>
+<tr><th id="399">399</th><td><em>void</em> <a class="decl" href="makeint.h.html#user_access" title='user_access' data-ref="user_access" id="user_access">user_access</a> (<em>void</em>);</td></tr>
+<tr><th id="400">400</th><td><em>void</em> <a class="decl" href="makeint.h.html#make_access" title='make_access' data-ref="make_access" id="make_access">make_access</a> (<em>void</em>);</td></tr>
+<tr><th id="401">401</th><td><em>void</em> <a class="decl" href="makeint.h.html#child_access" title='child_access' data-ref="child_access" id="child_access">child_access</a> (<em>void</em>);</td></tr>
+<tr><th id="402">402</th><td></td></tr>
+<tr><th id="403">403</th><td><em>char</em> *<a class="decl" href="makeint.h.html#strip_whitespace" title='strip_whitespace' data-ref="strip_whitespace" id="strip_whitespace">strip_whitespace</a> (<em>const</em> <em>char</em> **<dfn class="local col2 decl" id="52begpp" title='begpp' data-type='const char **' data-ref="52begpp">begpp</dfn>, <em>const</em> <em>char</em> **<dfn class="local col3 decl" id="53endpp" title='endpp' data-type='const char **' data-ref="53endpp">endpp</dfn>);</td></tr>
+<tr><th id="404">404</th><td></td></tr>
+<tr><th id="405">405</th><td><i>/* String caching  */</i></td></tr>
+<tr><th id="406">406</th><td><em>void</em> <a class="decl" href="makeint.h.html#strcache_init" title='strcache_init' data-ref="strcache_init" id="strcache_init">strcache_init</a> (<em>void</em>);</td></tr>
+<tr><th id="407">407</th><td><em>void</em> <a class="decl" href="makeint.h.html#strcache_print_stats" title='strcache_print_stats' data-ref="strcache_print_stats" id="strcache_print_stats">strcache_print_stats</a> (<em>const</em> <em>char</em> *<dfn class="local col4 decl" id="54prefix" title='prefix' data-type='const char *' data-ref="54prefix">prefix</dfn>);</td></tr>
+<tr><th id="408">408</th><td><em>int</em> <a class="decl" href="makeint.h.html#strcache_iscached" title='strcache_iscached' data-ref="strcache_iscached" id="strcache_iscached">strcache_iscached</a> (<em>const</em> <em>char</em> *<dfn class="local col5 decl" id="55str" title='str' data-type='const char *' data-ref="55str">str</dfn>);</td></tr>
+<tr><th id="409">409</th><td><em>const</em> <em>char</em> *<a class="decl" href="makeint.h.html#strcache_add" title='strcache_add' data-ref="strcache_add" id="strcache_add">strcache_add</a> (<em>const</em> <em>char</em> *<dfn class="local col6 decl" id="56str" title='str' data-type='const char *' data-ref="56str">str</dfn>);</td></tr>
+<tr><th id="410">410</th><td></td></tr>
+<tr><th id="411">411</th><td><u>#<span data-ppcond="411">ifdef</span>  <span class="macro" data-ref="_M/HAVE_VFORK_H">HAVE_VFORK_H</span></u></td></tr>
+<tr><th id="412">412</th><td><u># include &lt;vfork.h&gt;</u></td></tr>
+<tr><th id="413">413</th><td><u>#<span data-ppcond="411">endif</span></u></td></tr>
+<tr><th id="414">414</th><td></td></tr>
+<tr><th id="415">415</th><td><i>/* We omit these declarations on non-POSIX systems which define _POSIX_VERSION,</i></td></tr>
+<tr><th id="416">416</th><td><i>   because such systems often declare them in header files anyway.  */</i></td></tr>
+<tr><th id="417">417</th><td></td></tr>
+<tr><th id="418">418</th><td><u>#<span data-ppcond="418">if</span> !defined (<a class="macro" href="../include/features.h.html#354" data-ref="_M/__GNU_LIBRARY__">__GNU_LIBRARY__</a>) &amp;&amp; !defined (<a class="macro" href="#99" data-ref="_M/POSIX">POSIX</a>) &amp;&amp; !defined (<a class="macro" href="../include/unistd.h.html#34" data-ref="_M/_POSIX_VERSION">_POSIX_VERSION</a>) &amp;&amp; !defined(<span class="macro" data-ref="_M/WINDOWS32">WINDOWS32</span>)</u></td></tr>
+<tr><th id="419">419</th><td></td></tr>
+<tr><th id="420">420</th><td><em>long</em> <em>int</em> atol ();</td></tr>
+<tr><th id="421">421</th><td><u># ifndef VMS</u></td></tr>
+<tr><th id="422">422</th><td><em>long</em> <em>int</em> lseek ();</td></tr>
+<tr><th id="423">423</th><td><u># endif</u></td></tr>
+<tr><th id="424">424</th><td></td></tr>
+<tr><th id="425">425</th><td><u>#<span data-ppcond="418">endif</span>  /* Not GNU C library or POSIX.  */</u></td></tr>
+<tr><th id="426">426</th><td></td></tr>
+<tr><th id="427">427</th><td><u>#<span data-ppcond="427">ifdef</span>  <a class="macro" href="config.h.html#120" data-ref="_M/HAVE_GETCWD">HAVE_GETCWD</a></u></td></tr>
+<tr><th id="428">428</th><td><u># <span data-ppcond="428">if</span> !defined(<span class="macro" data-ref="_M/VMS">VMS</span>) &amp;&amp; !defined(<span class="macro" data-ref="_M/__DECC">__DECC</span>)</u></td></tr>
+<tr><th id="429">429</th><td><em>char</em> *<a class="decl" href="../include/unistd.h.html#getcwd" title='getcwd' data-ref="getcwd" id="getcwd">getcwd</a> ();</td></tr>
+<tr><th id="430">430</th><td><u># <span data-ppcond="428">endif</span></u></td></tr>
+<tr><th id="431">431</th><td><u>#<span data-ppcond="427">else</span></u></td></tr>
+<tr><th id="432">432</th><td><em>char</em> *getwd ();</td></tr>
+<tr><th id="433">433</th><td><u># define getcwd(buf, len)       getwd (buf)</u></td></tr>
+<tr><th id="434">434</th><td><u>#<span data-ppcond="427">endif</span></u></td></tr>
+<tr><th id="435">435</th><td></td></tr>
+<tr><th id="436">436</th><td><u>#<span data-ppcond="436">if</span> !<a class="macro" href="config.h.html#252" title="1" data-ref="_M/HAVE_STRCASECMP">HAVE_STRCASECMP</a></u></td></tr>
+<tr><th id="437">437</th><td><u># if HAVE_STRICMP</u></td></tr>
+<tr><th id="438">438</th><td><u>#  define strcasecmp stricmp</u></td></tr>
+<tr><th id="439">439</th><td><u># elif HAVE_STRCMPI</u></td></tr>
+<tr><th id="440">440</th><td><u>#  define strcasecmp strcmpi</u></td></tr>
+<tr><th id="441">441</th><td><u># else</u></td></tr>
+<tr><th id="442">442</th><td><i>/* Create our own, in misc.c */</i></td></tr>
+<tr><th id="443">443</th><td><em>int</em> strcasecmp (<em>const</em> <em>char</em> *s1, <em>const</em> <em>char</em> *s2);</td></tr>
+<tr><th id="444">444</th><td><u># endif</u></td></tr>
+<tr><th id="445">445</th><td><u>#<span data-ppcond="436">endif</span></u></td></tr>
+<tr><th id="446">446</th><td></td></tr>
+<tr><th id="447">447</th><td><u>#<span data-ppcond="447">if</span> !<a class="macro" href="config.h.html#277" title="1" data-ref="_M/HAVE_STRNCASECMP">HAVE_STRNCASECMP</a></u></td></tr>
+<tr><th id="448">448</th><td><u># if HAVE_STRNICMP</u></td></tr>
+<tr><th id="449">449</th><td><u>#  define strncasecmp strnicmp</u></td></tr>
+<tr><th id="450">450</th><td><u># elif HAVE_STRNCMPI</u></td></tr>
+<tr><th id="451">451</th><td><u>#  define strncasecmp strncmpi</u></td></tr>
+<tr><th id="452">452</th><td><u># else</u></td></tr>
+<tr><th id="453">453</th><td><i>/* Create our own, in misc.c */</i></td></tr>
+<tr><th id="454">454</th><td><em>int</em> strncasecmp (<em>const</em> <em>char</em> *s1, <em>const</em> <em>char</em> *s2, <em>int</em> n);</td></tr>
+<tr><th id="455">455</th><td><u># endif</u></td></tr>
+<tr><th id="456">456</th><td><u>#<span data-ppcond="447">endif</span></u></td></tr>
+<tr><th id="457">457</th><td></td></tr>
+<tr><th id="458">458</th><td><b>extern</b> <em>char</em> **<a class="decl" href="../include/unistd.h.html#environ" title='environ' data-ref="environ" id="environ">environ</a>;</td></tr>
+<tr><th id="459">459</th><td></td></tr>
+<tr><th id="460">460</th><td><b>extern</b> <em>int</em> <a class="decl" href="makeint.h.html#just_print_flag" title='just_print_flag' data-ref="just_print_flag" id="just_print_flag">just_print_flag</a>, <a class="decl" href="makeint.h.html#silent_flag" title='silent_flag' data-ref="silent_flag" id="silent_flag">silent_flag</a>, <a class="decl" href="makeint.h.html#ignore_errors_flag" title='ignore_errors_flag' data-ref="ignore_errors_flag" id="ignore_errors_flag">ignore_errors_flag</a>, <a class="decl" href="makeint.h.html#keep_going_flag" title='keep_going_flag' data-ref="keep_going_flag" id="keep_going_flag">keep_going_flag</a>;</td></tr>
+<tr><th id="461">461</th><td><b>extern</b> <em>int</em> <a class="decl" href="makeint.h.html#print_data_base_flag" title='print_data_base_flag' data-ref="print_data_base_flag" id="print_data_base_flag">print_data_base_flag</a>, <a class="decl" href="makeint.h.html#question_flag" title='question_flag' data-ref="question_flag" id="question_flag">question_flag</a>, <a class="decl" href="makeint.h.html#touch_flag" title='touch_flag' data-ref="touch_flag" id="touch_flag">touch_flag</a>, <a class="decl" href="makeint.h.html#always_make_flag" title='always_make_flag' data-ref="always_make_flag" id="always_make_flag">always_make_flag</a>;</td></tr>
+<tr><th id="462">462</th><td><b>extern</b> <em>int</em> <a class="decl" href="makeint.h.html#env_overrides" title='env_overrides' data-ref="env_overrides" id="env_overrides">env_overrides</a>, <a class="decl" href="makeint.h.html#no_builtin_rules_flag" title='no_builtin_rules_flag' data-ref="no_builtin_rules_flag" id="no_builtin_rules_flag">no_builtin_rules_flag</a>, <a class="decl" href="makeint.h.html#no_builtin_variables_flag" title='no_builtin_variables_flag' data-ref="no_builtin_variables_flag" id="no_builtin_variables_flag">no_builtin_variables_flag</a>;</td></tr>
+<tr><th id="463">463</th><td><b>extern</b> <em>int</em> <a class="decl" href="makeint.h.html#print_version_flag" title='print_version_flag' data-ref="print_version_flag" id="print_version_flag">print_version_flag</a>, <a class="decl" href="makeint.h.html#print_directory_flag" title='print_directory_flag' data-ref="print_directory_flag" id="print_directory_flag">print_directory_flag</a>, <a class="decl" href="makeint.h.html#check_symlink_flag" title='check_symlink_flag' data-ref="check_symlink_flag" id="check_symlink_flag">check_symlink_flag</a>;</td></tr>
+<tr><th id="464">464</th><td><b>extern</b> <em>int</em> <a class="decl" href="makeint.h.html#warn_undefined_variables_flag" title='warn_undefined_variables_flag' data-ref="warn_undefined_variables_flag" id="warn_undefined_variables_flag">warn_undefined_variables_flag</a>, <a class="decl" href="makeint.h.html#posix_pedantic" title='posix_pedantic' data-ref="posix_pedantic" id="posix_pedantic">posix_pedantic</a>, <a class="decl" href="makeint.h.html#not_parallel" title='not_parallel' data-ref="not_parallel" id="not_parallel">not_parallel</a>;</td></tr>
+<tr><th id="465">465</th><td><b>extern</b> <em>int</em> <a class="decl" href="makeint.h.html#second_expansion" title='second_expansion' data-ref="second_expansion" id="second_expansion">second_expansion</a>, <a class="decl" href="makeint.h.html#clock_skew_detected" title='clock_skew_detected' data-ref="clock_skew_detected" id="clock_skew_detected">clock_skew_detected</a>, <a class="decl" href="makeint.h.html#rebuilding_makefiles" title='rebuilding_makefiles' data-ref="rebuilding_makefiles" id="rebuilding_makefiles">rebuilding_makefiles</a>;</td></tr>
+<tr><th id="466">466</th><td><b>extern</b> <em>int</em> <a class="decl" href="makeint.h.html#one_shell" title='one_shell' data-ref="one_shell" id="one_shell">one_shell</a>;</td></tr>
+<tr><th id="467">467</th><td></td></tr>
+<tr><th id="468">468</th><td><i>/* can we run commands via 'sh -c xxx' or must we use batch files? */</i></td></tr>
+<tr><th id="469">469</th><td><b>extern</b> <em>int</em> <a class="decl" href="makeint.h.html#batch_mode_shell" title='batch_mode_shell' data-ref="batch_mode_shell" id="batch_mode_shell">batch_mode_shell</a>;</td></tr>
+<tr><th id="470">470</th><td></td></tr>
+<tr><th id="471">471</th><td><i>/* Resetting the command script introduction prefix character.  */</i></td></tr>
+<tr><th id="472">472</th><td><u>#define <dfn class="macro" id="_M/RECIPEPREFIX_NAME" data-ref="_M/RECIPEPREFIX_NAME">RECIPEPREFIX_NAME</dfn>          ".RECIPEPREFIX"</u></td></tr>
+<tr><th id="473">473</th><td><u>#define <dfn class="macro" id="_M/RECIPEPREFIX_DEFAULT" data-ref="_M/RECIPEPREFIX_DEFAULT">RECIPEPREFIX_DEFAULT</dfn>       '\t'</u></td></tr>
+<tr><th id="474">474</th><td><b>extern</b> <em>char</em> <a class="decl" href="makeint.h.html#cmd_prefix" title='cmd_prefix' data-ref="cmd_prefix" id="cmd_prefix">cmd_prefix</a>;</td></tr>
+<tr><th id="475">475</th><td></td></tr>
+<tr><th id="476">476</th><td><b>extern</b> <em>unsigned</em> <em>int</em> <a class="decl" href="makeint.h.html#job_slots" title='job_slots' data-ref="job_slots" id="job_slots">job_slots</a>;</td></tr>
+<tr><th id="477">477</th><td><b>extern</b> <em>int</em> <a class="decl" href="makeint.h.html#job_fds" title='job_fds' data-ref="job_fds" id="job_fds">job_fds</a>[<var>2</var>];</td></tr>
+<tr><th id="478">478</th><td><b>extern</b> <em>int</em> <a class="decl" href="makeint.h.html#job_rfd" title='job_rfd' data-ref="job_rfd" id="job_rfd">job_rfd</a>;</td></tr>
+<tr><th id="479">479</th><td><u>#<span data-ppcond="479">ifndef</span> <span class="macro" data-ref="_M/NO_FLOAT">NO_FLOAT</span></u></td></tr>
+<tr><th id="480">480</th><td><b>extern</b> <em>double</em> <a class="decl" href="makeint.h.html#max_load_average" title='max_load_average' data-ref="max_load_average" id="max_load_average">max_load_average</a>;</td></tr>
+<tr><th id="481">481</th><td><u>#<span data-ppcond="479">else</span></u></td></tr>
+<tr><th id="482">482</th><td><b>extern</b> <em>int</em> max_load_average;</td></tr>
+<tr><th id="483">483</th><td><u>#<span data-ppcond="479">endif</span></u></td></tr>
+<tr><th id="484">484</th><td></td></tr>
+<tr><th id="485">485</th><td><i class="doc">/*! Value of argv[0] which seems to get modified. Can we merge this with</i></td></tr>
+<tr><th id="486">486</th><td><i class="doc">    program below? */</i></td></tr>
+<tr><th id="487">487</th><td><b>extern</b> <em>char</em> *<dfn class="decl" id="argv0" title='argv0' data-ref="argv0">argv0</dfn>;</td></tr>
+<tr><th id="488">488</th><td></td></tr>
+<tr><th id="489">489</th><td><i class="doc">/*! Our initial arguments -- used for debugger restart execvp.  */</i></td></tr>
+<tr><th id="490">490</th><td><b>extern</b> <em>const</em> <em>char</em> * <em>const</em> *<dfn class="decl" id="global_argv" title='global_argv' data-ref="global_argv">global_argv</dfn>;</td></tr>
+<tr><th id="491">491</th><td></td></tr>
+<tr><th id="492">492</th><td><b>extern</b> <em>char</em> *<a class="decl" href="makeint.h.html#starting_directory" title='starting_directory' data-ref="starting_directory" id="starting_directory">starting_directory</a>;</td></tr>
+<tr><th id="493">493</th><td></td></tr>
+<tr><th id="494">494</th><td><i class="doc">/*! Our current directory before processing any -C options.  */</i></td></tr>
+<tr><th id="495">495</th><td><b>extern</b> <em>char</em> *<dfn class="decl" id="directory_before_chdir" title='directory_before_chdir' data-ref="directory_before_chdir">directory_before_chdir</dfn>;</td></tr>
+<tr><th id="496">496</th><td></td></tr>
+<tr><th id="497">497</th><td><i class="doc">/*! Value of the MAKELEVEL variable at startup (or 0).  */</i></td></tr>
+<tr><th id="498">498</th><td><b>extern</b> <em>unsigned</em> <em>int</em> <a class="decl" href="makeint.h.html#makelevel" title='makelevel' data-ref="makelevel" id="makelevel">makelevel</a>;</td></tr>
+<tr><th id="499">499</th><td><b>extern</b> <em>char</em> *<a class="decl" href="makeint.h.html#version_string" title='version_string' data-ref="version_string" id="version_string">version_string</a>, *<a class="decl" href="makeint.h.html#remote_description" title='remote_description' data-ref="remote_description" id="remote_description">remote_description</a>, *<a class="decl" href="makeint.h.html#make_host" title='make_host' data-ref="make_host" id="make_host">make_host</a>;</td></tr>
+<tr><th id="500">500</th><td></td></tr>
+<tr><th id="501">501</th><td><b>extern</b> <em>unsigned</em> <em>int</em> <a class="decl" href="makeint.h.html#commands_started" title='commands_started' data-ref="commands_started" id="commands_started">commands_started</a>;</td></tr>
+<tr><th id="502">502</th><td></td></tr>
+<tr><th id="503">503</th><td><b>extern</b> <em>int</em> <a class="decl" href="makeint.h.html#handling_fatal_signal" title='handling_fatal_signal' data-ref="handling_fatal_signal" id="handling_fatal_signal">handling_fatal_signal</a>;</td></tr>
+<tr><th id="504">504</th><td></td></tr>
+<tr><th id="505">505</th><td></td></tr>
+<tr><th id="506">506</th><td><u>#<span data-ppcond="506">ifndef</span> <a class="macro" href="../include/x86_64-linux-gnu/sys/param.h.html#102" data-ref="_M/MIN">MIN</a></u></td></tr>
+<tr><th id="507">507</th><td><u>#define MIN(_a,_b) ((_a)&lt;(_b)?(_a):(_b))</u></td></tr>
+<tr><th id="508">508</th><td><u>#<span data-ppcond="506">endif</span></u></td></tr>
+<tr><th id="509">509</th><td><u>#<span data-ppcond="509">ifndef</span> <a class="macro" href="../include/x86_64-linux-gnu/sys/param.h.html#103" data-ref="_M/MAX">MAX</a></u></td></tr>
+<tr><th id="510">510</th><td><u>#define MAX(_a,_b) ((_a)&gt;(_b)?(_a):(_b))</u></td></tr>
+<tr><th id="511">511</th><td><u>#<span data-ppcond="509">endif</span></u></td></tr>
+<tr><th id="512">512</th><td></td></tr>
+<tr><th id="513">513</th><td><i>/* Set up heap debugging library dmalloc.  */</i></td></tr>
+<tr><th id="514">514</th><td></td></tr>
+<tr><th id="515">515</th><td><u>#<span data-ppcond="515">ifdef</span> <span class="macro" data-ref="_M/HAVE_DMALLOC_H">HAVE_DMALLOC_H</span></u></td></tr>
+<tr><th id="516">516</th><td><u>#include &lt;dmalloc.h&gt;</u></td></tr>
+<tr><th id="517">517</th><td><u>#<span data-ppcond="515">endif</span></u></td></tr>
+<tr><th id="518">518</th><td></td></tr>
+<tr><th id="519">519</th><td><u>#<span data-ppcond="519">ifndef</span> <a class="macro" href="makeint.h.html#698" data-ref="_M/initialize_main">initialize_main</a></u></td></tr>
+<tr><th id="520">520</th><td><u># ifdef __EMX__</u></td></tr>
+<tr><th id="521">521</th><td><u>#  define initialize_main(pargc, pargv) \</u></td></tr>
+<tr><th id="522">522</th><td><u>                          { _wildcard(pargc, pargv); _response(pargc, pargv); }</u></td></tr>
+<tr><th id="523">523</th><td><u># else</u></td></tr>
+<tr><th id="524">524</th><td><u>#  define initialize_main(pargc, pargv)</u></td></tr>
+<tr><th id="525">525</th><td><u># endif</u></td></tr>
+<tr><th id="526">526</th><td><u>#<span data-ppcond="519">endif</span></u></td></tr>
+<tr><th id="527">527</th><td></td></tr>
+<tr><th id="528">528</th><td><u>#<span data-ppcond="528">ifdef</span> <span class="macro" data-ref="_M/__EMX__">__EMX__</span></u></td></tr>
+<tr><th id="529">529</th><td><u># if !defined chdir</u></td></tr>
+<tr><th id="530">530</th><td><u>#  define chdir _chdir2</u></td></tr>
+<tr><th id="531">531</th><td><u># endif</u></td></tr>
+<tr><th id="532">532</th><td><u># if !defined getcwd</u></td></tr>
+<tr><th id="533">533</th><td><u>#  define getcwd _getcwd2</u></td></tr>
+<tr><th id="534">534</th><td><u># endif</u></td></tr>
+<tr><th id="535">535</th><td></td></tr>
+<tr><th id="536">536</th><td><i>/* NO_CHDIR2 causes make not to use _chdir2() and _getcwd2() instead of</i></td></tr>
+<tr><th id="537">537</th><td><i>   chdir() and getcwd(). This avoids some error messages for the</i></td></tr>
+<tr><th id="538">538</th><td><i>   make testsuite but restricts the drive letter support. */</i></td></tr>
+<tr><th id="539">539</th><td><u># ifdef NO_CHDIR2</u></td></tr>
+<tr><th id="540">540</th><td><u>#  warning NO_CHDIR2: usage of drive letters restricted</u></td></tr>
+<tr><th id="541">541</th><td><u>#  undef chdir</u></td></tr>
+<tr><th id="542">542</th><td><u>#  undef getcwd</u></td></tr>
+<tr><th id="543">543</th><td><u># endif</u></td></tr>
+<tr><th id="544">544</th><td><u>#<span data-ppcond="528">endif</span></u></td></tr>
+<tr><th id="545">545</th><td></td></tr>
+<tr><th id="546">546</th><td><u>#<span data-ppcond="546">ifndef</span> <a class="macro" href="makeint.h.html#698" data-ref="_M/initialize_main">initialize_main</a></u></td></tr>
+<tr><th id="547">547</th><td><u># define initialize_main(pargc, pargv)</u></td></tr>
+<tr><th id="548">548</th><td><u>#<span data-ppcond="546">endif</span></u></td></tr>
+<tr><th id="549">549</th><td></td></tr>
+<tr><th id="550">550</th><td></td></tr>
+<tr><th id="551">551</th><td><i>/* Some systems (like Solaris, PTX, etc.) do not support the SA_RESTART flag</i></td></tr>
+<tr><th id="552">552</th><td><i>   properly according to POSIX.  So, we try to wrap common system calls with</i></td></tr>
+<tr><th id="553">553</th><td><i>   checks for EINTR.  Note that there are still plenty of system calls that</i></td></tr>
+<tr><th id="554">554</th><td><i>   can fail with EINTR but this, reportedly, gets the vast majority of</i></td></tr>
+<tr><th id="555">555</th><td><i>   failure cases.  If you still experience failures you'll need to either get</i></td></tr>
+<tr><th id="556">556</th><td><i>   a system where SA_RESTART works, or you need to avoid -j.  */</i></td></tr>
+<tr><th id="557">557</th><td></td></tr>
+<tr><th id="558">558</th><td><u>#define <dfn class="macro" id="_M/EINTRLOOP" data-ref="_M/EINTRLOOP">EINTRLOOP</dfn>(_v,_c)   while (((_v)=_c)==-1 &amp;&amp; errno==EINTR)</u></td></tr>
+<tr><th id="559">559</th><td></td></tr>
+<tr><th id="560">560</th><td><i>/* While system calls that return integers are pretty consistent about</i></td></tr>
+<tr><th id="561">561</th><td><i>   returning -1 on failure and setting errno in that case, functions that</i></td></tr>
+<tr><th id="562">562</th><td><i>   return pointers are not always so well behaved.  Sometimes they return</i></td></tr>
+<tr><th id="563">563</th><td><i>   NULL for expected behavior: one good example is readdir() which returns</i></td></tr>
+<tr><th id="564">564</th><td><i>   NULL at the end of the directory--and _doesn't_ reset errno.  So, we have</i></td></tr>
+<tr><th id="565">565</th><td><i>   to do it ourselves here.  */</i></td></tr>
+<tr><th id="566">566</th><td></td></tr>
+<tr><th id="567">567</th><td><u>#<span data-ppcond="22">endif</span> /*MAKE_H*/</u></td></tr>
+<tr><th id="568">568</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='ar.c.html'>remake/ar.c</a><br/>Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

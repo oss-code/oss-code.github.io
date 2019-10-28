@@ -1,0 +1,24 @@
+<dec f='remake/makeint.h' l='543' type='void construct_vpath_list(char * pattern, char * dirpath)'/>
+<dec f='remake/make.h' l='389' type='void construct_vpath_list(char * pattern, char * dirpath)'/>
+<use f='remake/read.c' l='871' u='c' c='eval'/>
+<use f='remake/vpath.c' l='96' u='c' c='build_vpath_lists'/>
+<use f='remake/vpath.c' l='129' u='c' c='build_vpath_lists'/>
+<def f='remake/vpath.c' l='157' ll='301' type='void construct_vpath_list(char * pattern, char * dirpath)'/>
+<doc f='remake/vpath.c' l='138'>/* Construct the VPATH listing for the PATTERN and DIRPATH given.
+
+   This function is called to generate selective VPATH lists and also for
+   the general VPATH list (which is in fact just a selective VPATH that
+   is applied to everything).  The returned pointer is either put in the
+   linked list of all selective VPATH lists or in the GENERAL_VPATH
+   variable.
+
+   If DIRPATH is nil, remove all previous listings with the same
+   pattern.  If PATTERN is nil, remove all VPATH listings.  Existing
+   and readable directories that are not &quot;.&quot; given in the DIRPATH
+   separated by the path element separator (defined in makeint.h) are
+   loaded into the directory hash table if they are not there already
+   and put in the VPATH searchpath for the given pattern with trailing
+   slashes stripped off if present (and if the directory is not the
+   root, &quot;/&quot;).  The length of the longest entry in the list is put in
+   the structure as well.  The new entry will be at the head of the
+   VPATHS chain.  */</doc>

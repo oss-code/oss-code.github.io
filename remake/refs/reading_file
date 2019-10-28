@@ -1,0 +1,40 @@
+<dec f='remake/makeint.h' l='617' type='const gmk_floc *'/>
+<use f='remake/debugger/command/eval.h' l='44' u='w' c='dbg_cmd_eval'/>
+<use f='remake/expand.c' l='29' u='a'/>
+<use f='remake/expand.c' l='114' u='r' c='recursively_expand_for_file'/>
+<use f='remake/expand.c' l='117' u='w' c='recursively_expand_for_file'/>
+<use f='remake/expand.c' l='144' u='w' c='recursively_expand_for_file'/>
+<use f='remake/expand.c' l='168' macro='1' u='r'/>
+<use f='remake/expand.c' l='325' macro='1' u='r'/>
+<use f='remake/expand.c' l='469' u='r' c='variable_expand_for_file'/>
+<use f='remake/expand.c' l='471' u='w' c='variable_expand_for_file'/>
+<use f='remake/expand.c' l='473' u='w' c='variable_expand_for_file'/>
+<use f='remake/expand.c' l='478' u='w' c='variable_expand_for_file'/>
+<use f='remake/function.c' l='1133' u='r' c='func_error'/>
+<use f='remake/function.c' l='1136' u='r' c='func_error'/>
+<use f='remake/function.c' l='1751' u='r' c='func_shell_base'/>
+<use f='remake/function.c' l='1751' u='r' c='func_shell_base'/>
+<use f='remake/function.c' l='1753' u='r' c='func_shell_base'/>
+<use f='remake/function.c' l='1754' u='r' c='func_shell_base'/>
+<use f='remake/function.c' l='1755' u='r' c='func_shell_base'/>
+<use f='remake/function.c' l='1755' u='r' c='func_shell_base'/>
+<use f='remake/function.c' l='2235' u='r' c='func_file'/>
+<use f='remake/function.c' l='2243' u='r' c='func_file'/>
+<use f='remake/function.c' l='2246' u='r' c='func_file'/>
+<use f='remake/function.c' l='2266' u='r' c='func_file'/>
+<use f='remake/function.c' l='2278' u='r' c='func_file'/>
+<use f='remake/function.c' l='2283' u='r' c='func_file'/>
+<use f='remake/function.c' l='2599' macro='1' u='r'/>
+<def f='remake/globals.c' l='132' type='const gmk_floc *'/>
+<doc f='remake/globals.c' l='130'>/* The filename and pointer to line number of the
+   makefile currently being read in.  */</doc>
+<use f='remake/loadapi.c' l='81' u='r' c='gmk_add_function'/>
+<use f='remake/read.c' l='351' u='r' c='eval_makefile'/>
+<use f='remake/read.c' l='420' u='r' c='eval_makefile'/>
+<use f='remake/read.c' l='421' u='w' c='eval_makefile'/>
+<use f='remake/read.c' l='425' u='w' c='eval_makefile'/>
+<use f='remake/read.c' l='453' u='r' c='eval_buffer'/>
+<use f='remake/read.c' l='454' u='r' c='eval_buffer'/>
+<use f='remake/read.c' l='462' u='r' c='eval_buffer'/>
+<use f='remake/read.c' l='463' u='w' c='eval_buffer'/>
+<use f='remake/read.c' l='471' u='w' c='eval_buffer'/>

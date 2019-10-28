@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>break.h source code [remake/debugger/command/break.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/debugger/command/break.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>remake</a>/<a href='..'>debugger</a>/<a href='./'>command</a>/<a href='break.h.html'>break.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* </i></td></tr>
+<tr><th id="2">2</th><td><i>Set a breakpoint at a target.  With a target name, set a break before</i></td></tr>
+<tr><th id="3">3</th><td><i>running commands of that target.  Without argument, list all breaks.</i></td></tr>
+<tr><th id="4">4</th><td><i>*/</i></td></tr>
+<tr><th id="5">5</th><td><i>/* </i></td></tr>
+<tr><th id="6">6</th><td><i>Copyright (C) 2004, 2005, 2007, 2008, 2009, 2011 R. Bernstein </i></td></tr>
+<tr><th id="7">7</th><td><i>&lt;rocky@gnu.org&gt;</i></td></tr>
+<tr><th id="8">8</th><td><i>This file is part of GNU Make (remake variant).</i></td></tr>
+<tr><th id="9">9</th><td><i></i></td></tr>
+<tr><th id="10">10</th><td><i>GNU Make is free software; you can redistribute it and/or modify</i></td></tr>
+<tr><th id="11">11</th><td><i>it under the terms of the GNU General Public License as published by</i></td></tr>
+<tr><th id="12">12</th><td><i>the Free Software Foundation; either version 2, or (at your option)</i></td></tr>
+<tr><th id="13">13</th><td><i>any later version.</i></td></tr>
+<tr><th id="14">14</th><td><i></i></td></tr>
+<tr><th id="15">15</th><td><i>GNU Make is distributed in the hope that it will be useful,</i></td></tr>
+<tr><th id="16">16</th><td><i>but WITHOUT ANY WARRANTY; without even the implied warranty of</i></td></tr>
+<tr><th id="17">17</th><td><i>MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</i></td></tr>
+<tr><th id="18">18</th><td><i>GNU General Public License for more details.</i></td></tr>
+<tr><th id="19">19</th><td><i></i></td></tr>
+<tr><th id="20">20</th><td><i>You should have received a copy of the GNU General Public License</i></td></tr>
+<tr><th id="21">21</th><td><i>along with GNU Make; see the file COPYING.  If not, write to</i></td></tr>
+<tr><th id="22">22</th><td><i>the Free Software Foundation, Inc., 59 Temple Place - Suite 330,</i></td></tr>
+<tr><th id="23">23</th><td><i>Boston, MA 02111-1307, USA.  */</i></td></tr>
+<tr><th id="24">24</th><td><em>static</em> <a class="typedef" href="../../trace.h.html#debug_return_t" title='debug_return_t' data-type='enum debug_return_t' data-ref="debug_return_t">debug_return_t</a> </td></tr>
+<tr><th id="25">25</th><td><dfn class="decl def" id="dbg_cmd_break" title='dbg_cmd_break' data-ref="dbg_cmd_break">dbg_cmd_break</dfn> (<em>char</em> *<dfn class="local col7 decl" id="77psz_args" title='psz_args' data-type='char *' data-ref="77psz_args">psz_args</dfn>)</td></tr>
+<tr><th id="26">26</th><td>{</td></tr>
+<tr><th id="27">27</th><td>  <b>if</b> (!<a class="local col7 ref" href="#77psz_args" title='psz_args' data-ref="77psz_args">psz_args</a> || !*<a class="local col7 ref" href="#77psz_args" title='psz_args' data-ref="77psz_args">psz_args</a>) {</td></tr>
+<tr><th id="28">28</th><td>    <a class="ref" href="../break.h.html#list_breakpoints" title='list_breakpoints' data-ref="list_breakpoints">list_breakpoints</a>();</td></tr>
+<tr><th id="29">29</th><td>    <b>return</b> <a class="enum" href="../../trace.h.html#debug_readloop" title='debug_readloop' data-ref="debug_readloop">debug_readloop</a>;</td></tr>
+<tr><th id="30">30</th><td>  } <b>else</b> {</td></tr>
+<tr><th id="31">31</th><td>    <em>char</em> *<dfn class="local col8 decl" id="78psz_target" title='psz_target' data-type='char *' data-ref="78psz_target">psz_target</dfn> = <a class="ref" href="../fns.h.html#get_word" title='get_word' data-ref="get_word">get_word</a>(&amp;<a class="local col7 ref" href="#77psz_args" title='psz_args' data-ref="77psz_args">psz_args</a>);</td></tr>
+<tr><th id="32">32</th><td>    <em>char</em> *<dfn class="local col9 decl" id="79psz_break_type" title='psz_break_type' data-type='char *' data-ref="79psz_break_type">psz_break_type</dfn>; </td></tr>
+<tr><th id="33">33</th><td>    <a class="typedef" href="../../types.h.html#file_t" title='file_t' data-type='struct file' data-ref="file_t">file_t</a> *<dfn class="local col0 decl" id="80p_target" title='p_target' data-type='file_t *' data-ref="80p_target">p_target</dfn>;</td></tr>
+<tr><th id="34">34</th><td>    <em>unsigned</em> <em>int</em> <dfn class="local col1 decl" id="81i_brkpt_mask" title='i_brkpt_mask' data-type='unsigned int' data-ref="81i_brkpt_mask">i_brkpt_mask</dfn> = <a class="enum" href="../../types.h.html#BRK_NONE" title='BRK_NONE' data-ref="BRK_NONE">BRK_NONE</a>;</td></tr>
+<tr><th id="35">35</th><td></td></tr>
+<tr><th id="36">36</th><td>    <i class="doc">/** FIXME: DRY with code in continue.h **/</i></td></tr>
+<tr><th id="37">37</th><td>    <b>if</b> (<a class="ref" href="../stack.h.html#p_stack" title='p_stack' data-ref="p_stack">p_stack</a> &amp;&amp; <a class="ref" href="../stack.h.html#p_stack" title='p_stack' data-ref="p_stack">p_stack</a>-&gt;<a class="ref" href="../../trace.h.html#target_stack_node::p_target" title='target_stack_node::p_target' data-ref="target_stack_node::p_target">p_target</a>) {</td></tr>
+<tr><th id="38">38</th><td>      <em>unsigned</em> <em>int</em> <dfn class="local col2 decl" id="82u_lineno" title='u_lineno' data-type='unsigned int' data-ref="82u_lineno">u_lineno</dfn>=<var>0</var>;</td></tr>
+<tr><th id="39">39</th><td>      <a class="typedef" href="../file2line.h.html#f2l_entry_t" title='f2l_entry_t' data-type='enum f2l_entry_t' data-ref="f2l_entry_t">f2l_entry_t</a> <dfn class="local col3 decl" id="83entry_type" title='entry_type' data-type='f2l_entry_t' data-ref="83entry_type">entry_type</dfn>;</td></tr>
+<tr><th id="40">40</th><td>      <b>if</b> (<a class="ref" href="../fns.h.html#get_uint" title='get_uint' data-ref="get_uint">get_uint</a>(<a class="local col8 ref" href="#78psz_target" title='psz_target' data-ref="78psz_target">psz_target</a>, &amp;<a class="local col2 ref" href="#82u_lineno" title='u_lineno' data-ref="82u_lineno">u_lineno</a>, <a class="macro" href="../../types.h.html#47" title="0" data-ref="_M/false">false</a>)) {</td></tr>
+<tr><th id="41">41</th><td>          <a class="local col0 ref" href="#80p_target" title='p_target' data-ref="80p_target">p_target</a> = <a class="ref" href="../file2line.h.html#target_for_file_and_line" title='target_for_file_and_line' data-ref="target_for_file_and_line">target_for_file_and_line</a>(<a class="ref" href="../stack.h.html#p_stack" title='p_stack' data-ref="p_stack">p_stack</a>-&gt;<a class="ref" href="../../trace.h.html#target_stack_node::p_target" title='target_stack_node::p_target' data-ref="target_stack_node::p_target">p_target</a>-&gt;<a class="ref" href="../../filedef.h.html#file::floc" title='file::floc' data-ref="file::floc">floc</a>.<a class="ref" href="../../gnuremake.h.html#(anonymous)::filenm" title='(anonymous struct)::filenm' data-ref="(anonymous)::filenm">filenm</a>,</td></tr>
+<tr><th id="42">42</th><td>                                              <a class="local col2 ref" href="#82u_lineno" title='u_lineno' data-ref="82u_lineno">u_lineno</a>, &amp;<a class="local col3 ref" href="#83entry_type" title='entry_type' data-ref="83entry_type">entry_type</a>);</td></tr>
+<tr><th id="43">43</th><td>          <b>if</b> (<a class="enum" href="../file2line.h.html#F2L_TARGET" title='F2L_TARGET' data-ref="F2L_TARGET">F2L_TARGET</a> == <a class="local col3 ref" href="#83entry_type" title='entry_type' data-ref="83entry_type">entry_type</a>) {</td></tr>
+<tr><th id="44">44</th><td>            <b>if</b> (!<a class="local col0 ref" href="#80p_target" title='p_target' data-ref="80p_target">p_target</a>) {</td></tr>
+<tr><th id="45">45</th><td>              <a class="ref" href="../msg.h.html#dbg_errmsg" title='dbg_errmsg' data-ref="dbg_errmsg">dbg_errmsg</a>(<q>"Can't find target or pattern on line %s.\n"</q> </td></tr>
+<tr><th id="46">46</th><td>                         <q>"Use 'info lines' to get a list of breakpoint lines."</q>, </td></tr>
+<tr><th id="47">47</th><td>                         <a class="local col8 ref" href="#78psz_target" title='psz_target' data-ref="78psz_target">psz_target</a>);</td></tr>
+<tr><th id="48">48</th><td>              <b>return</b> <a class="enum" href="../../trace.h.html#debug_cmd_error" title='debug_cmd_error' data-ref="debug_cmd_error">debug_cmd_error</a>;</td></tr>
+<tr><th id="49">49</th><td>            }</td></tr>
+<tr><th id="50">50</th><td>          } <b>else</b> {</td></tr>
+<tr><th id="51">51</th><td>            <a class="ref" href="../msg.h.html#dbg_errmsg" title='dbg_errmsg' data-ref="dbg_errmsg">dbg_errmsg</a>(<q>"No support of breakpoints on target patterns yet."</q>);</td></tr>
+<tr><th id="52">52</th><td>            <b>return</b> <a class="enum" href="../../trace.h.html#debug_cmd_error" title='debug_cmd_error' data-ref="debug_cmd_error">debug_cmd_error</a>;</td></tr>
+<tr><th id="53">53</th><td>          }</td></tr>
+<tr><th id="54">54</th><td>      } <b>else</b></td></tr>
+<tr><th id="55">55</th><td>        <a class="local col0 ref" href="#80p_target" title='p_target' data-ref="80p_target">p_target</a> = </td></tr>
+<tr><th id="56">56</th><td>          <a class="ref" href="../../filedef.h.html#lookup_file" title='lookup_file' data-ref="lookup_file">lookup_file</a>(<a class="ref" href="../../expand.h.html#variable_expand_set" title='variable_expand_set' data-ref="variable_expand_set">variable_expand_set</a>(<a class="local col8 ref" href="#78psz_target" title='psz_target' data-ref="78psz_target">psz_target</a>, </td></tr>
+<tr><th id="57">57</th><td>                                            <a class="ref" href="../stack.h.html#p_stack" title='p_stack' data-ref="p_stack">p_stack</a>-&gt;<a class="ref" href="../../trace.h.html#target_stack_node::p_target" title='target_stack_node::p_target' data-ref="target_stack_node::p_target">p_target</a>-&gt;<a class="ref" href="../../filedef.h.html#file::variables" title='file::variables' data-ref="file::variables">variables</a>));</td></tr>
+<tr><th id="58">58</th><td>    } <b>else</b> {</td></tr>
+<tr><th id="59">59</th><td>      <a class="local col0 ref" href="#80p_target" title='p_target' data-ref="80p_target">p_target</a> = <a class="ref" href="../../filedef.h.html#lookup_file" title='lookup_file' data-ref="lookup_file">lookup_file</a>(<a class="local col8 ref" href="#78psz_target" title='psz_target' data-ref="78psz_target">psz_target</a>);</td></tr>
+<tr><th id="60">60</th><td>    }</td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td>    <b>if</b> (!<a class="local col0 ref" href="#80p_target" title='p_target' data-ref="80p_target">p_target</a>) {</td></tr>
+<tr><th id="63">63</th><td>	<a class="ref" href="../msg.h.html#dbg_errmsg" title='dbg_errmsg' data-ref="dbg_errmsg">dbg_errmsg</a>(<q>"Can't find target %s; breakpoint not set."</q>, <a class="local col8 ref" href="#78psz_target" title='psz_target' data-ref="78psz_target">psz_target</a>);</td></tr>
+<tr><th id="64">64</th><td>	<b>return</b> <a class="enum" href="../../trace.h.html#debug_cmd_error" title='debug_cmd_error' data-ref="debug_cmd_error">debug_cmd_error</a>;</td></tr>
+<tr><th id="65">65</th><td>    }</td></tr>
+<tr><th id="66">66</th><td></td></tr>
+<tr><th id="67">67</th><td>    <i>/* FIXME: Combine with code in continue. */</i></td></tr>
+<tr><th id="68">68</th><td>    <b>if</b> (!(<a class="local col7 ref" href="#77psz_args" title='psz_args' data-ref="77psz_args">psz_args</a> &amp;&amp; *<a class="local col7 ref" href="#77psz_args" title='psz_args' data-ref="77psz_args">psz_args</a>))</td></tr>
+<tr><th id="69">69</th><td>      <a class="local col1 ref" href="#81i_brkpt_mask" title='i_brkpt_mask' data-ref="81i_brkpt_mask">i_brkpt_mask</a> = <a class="enum" href="../../types.h.html#BRK_ALL" title='BRK_ALL' data-ref="BRK_ALL">BRK_ALL</a>;</td></tr>
+<tr><th id="70">70</th><td>    <b>else</b> {</td></tr>
+<tr><th id="71">71</th><td>      <b>while</b> ((<a class="local col9 ref" href="#79psz_break_type" title='psz_break_type' data-ref="79psz_break_type">psz_break_type</a> = <a class="ref" href="../fns.h.html#get_word" title='get_word' data-ref="get_word">get_word</a>(&amp;<a class="local col7 ref" href="#77psz_args" title='psz_args' data-ref="77psz_args">psz_args</a>))) {</td></tr>
+<tr><th id="72">72</th><td>        <b>if</b> (!(<a class="local col9 ref" href="#79psz_break_type" title='psz_break_type' data-ref="79psz_break_type">psz_break_type</a> &amp;&amp; *<a class="local col9 ref" href="#79psz_break_type" title='psz_break_type' data-ref="79psz_break_type">psz_break_type</a>)) <b>break</b>;</td></tr>
+<tr><th id="73">73</th><td>        <a class="local col1 ref" href="#81i_brkpt_mask" title='i_brkpt_mask' data-ref="81i_brkpt_mask">i_brkpt_mask</a> |= <a class="ref" href="../fns.h.html#get_brkpt_option" title='get_brkpt_option' data-ref="get_brkpt_option">get_brkpt_option</a>(<a class="local col9 ref" href="#79psz_break_type" title='psz_break_type' data-ref="79psz_break_type">psz_break_type</a>) ;</td></tr>
+<tr><th id="74">74</th><td>      }</td></tr>
+<tr><th id="75">75</th><td>    }</td></tr>
+<tr><th id="76">76</th><td>    <a class="ref" href="../break.h.html#add_breakpoint" title='add_breakpoint' data-ref="add_breakpoint">add_breakpoint</a>(<a class="local col0 ref" href="#80p_target" title='p_target' data-ref="80p_target">p_target</a>, <a class="local col1 ref" href="#81i_brkpt_mask" title='i_brkpt_mask' data-ref="81i_brkpt_mask">i_brkpt_mask</a>);</td></tr>
+<tr><th id="77">77</th><td>  }</td></tr>
+<tr><th id="78">78</th><td></td></tr>
+<tr><th id="79">79</th><td>  <b>return</b> <a class="enum" href="../../trace.h.html#debug_readloop" title='debug_readloop' data-ref="debug_readloop">debug_readloop</a>;</td></tr>
+<tr><th id="80">80</th><td>};</td></tr>
+<tr><th id="81">81</th><td></td></tr>
+<tr><th id="82">82</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="83">83</th><td><dfn class="decl def" id="dbg_cmd_break_init" title='dbg_cmd_break_init' data-ref="dbg_cmd_break_init">dbg_cmd_break_init</dfn>(<em>unsigned</em> <em>int</em> <dfn class="local col4 decl" id="84c" title='c' data-type='unsigned int' data-ref="84c">c</dfn>) </td></tr>
+<tr><th id="84">84</th><td>{</td></tr>
+<tr><th id="85">85</th><td>  <a class="ref" href="../cmd.c.html#short_command" title='short_command' data-ref="short_command">short_command</a>[<a class="local col4 ref" href="#84c" title='c' data-ref="84c">c</a>].<a class="ref" href="../../debugger.h.html#(anonymous)::func" title='(anonymous struct)::func' data-ref="(anonymous)::func">func</a> = &amp;<a class="ref" href="#dbg_cmd_break" title='dbg_cmd_break' data-ref="dbg_cmd_break">dbg_cmd_break</a>;</td></tr>
+<tr><th id="86">86</th><td>  <a class="ref" href="../cmd.c.html#short_command" title='short_command' data-ref="short_command">short_command</a>[<a class="local col4 ref" href="#84c" title='c' data-ref="84c">c</a>].<a class="ref" href="../../debugger.h.html#(anonymous)::use" title='(anonymous struct)::use' data-ref="(anonymous)::use">use</a>  = <a class="macro" href="../../make.h.html#293" title="dcgettext (((void*)0), &quot;break [TARGET|LINENUM] [all|run|prereq|end]*&quot;, 5)" data-ref="_M/_">_</a>(<q>"break [TARGET|LINENUM] [all|run|prereq|end]*"</q>);</td></tr>
+<tr><th id="87">87</th><td>  <a class="ref" href="../cmd.c.html#short_command" title='short_command' data-ref="short_command">short_command</a>[<a class="local col4 ref" href="#84c" title='c' data-ref="84c">c</a>].<a class="ref" href="../../debugger.h.html#(anonymous)::doc" title='(anonymous struct)::doc' data-ref="(anonymous)::doc">doc</a>  = <a class="macro" href="../../make.h.html#293" title="dcgettext (((void*)0), &quot;Set a breakpoint at a target.\n&quot;&quot;With a target name or a line number, set a break before running commands\n&quot;&quot;of that target or line number.  Without argument, list all breakpoints.\n&quot;&quot;There are 3 place where one may want to stop at and that name can\n&quot;&quot;be given as a last option. The stopping points are:\n&quot;&quot; - before prerequisite checking (prereq)\n&quot;&quot; - after prerequisite checking but before running commands (run)\n&quot;&quot; - after target is complete (end)\n&quot;&quot;\n&quot;&quot;To see a list of targets run \&quot;info targets\&quot;\n&quot;&quot;See also \&quot;continue\&quot;.\n&quot;, 5)" data-ref="_M/_">_</a>(<q>"Set a breakpoint at a target.\n"</q></td></tr>
+<tr><th id="88">88</th><td><q>"With a target name or a line number, set a break before running commands\n"</q></td></tr>
+<tr><th id="89">89</th><td><q>"of that target or line number.  Without argument, list all breakpoints.\n"</q></td></tr>
+<tr><th id="90">90</th><td><q>"There are 3 place where one may want to stop at and that name can\n"</q></td></tr>
+<tr><th id="91">91</th><td><q>"be given as a last option. The stopping points are:\n"</q></td></tr>
+<tr><th id="92">92</th><td><q>" - before prerequisite checking (prereq)\n"</q></td></tr>
+<tr><th id="93">93</th><td><q>" - after prerequisite checking but before running commands (run)\n"</q></td></tr>
+<tr><th id="94">94</th><td><q>" - after target is complete (end)\n"</q></td></tr>
+<tr><th id="95">95</th><td><q>"\n"</q></td></tr>
+<tr><th id="96">96</th><td><q>"To see a list of targets run \"info targets\"\n"</q></td></tr>
+<tr><th id="97">97</th><td><q>"See also \"continue\".\n"</q>);</td></tr>
+<tr><th id="98">98</th><td>}</td></tr>
+<tr><th id="99">99</th><td></td></tr>
+<tr><th id="100">100</th><td><i>/* </i></td></tr>
+<tr><th id="101">101</th><td><i> * Local variables:</i></td></tr>
+<tr><th id="102">102</th><td><i> * eval: (c-set-style "gnu")</i></td></tr>
+<tr><th id="103">103</th><td><i> * indent-tabs-mode: nil</i></td></tr>
+<tr><th id="104">104</th><td><i> * End:</i></td></tr>
+<tr><th id="105">105</th><td><i> */</i></td></tr>
+<tr><th id="106">106</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../cmd.c.html'>remake/debugger/cmd.c</a><br/>Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

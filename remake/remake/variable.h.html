@@ -1,0 +1,310 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>variable.h source code [remake/variable.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="pattern_var,variable,variable_export,variable_flavor,variable_origin,variable_set,variable_set_list "/>
+<link rel="stylesheet" href="../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/variable.h'; var root_path = '..'; var data_path = '../../data';</script>
+<script src='../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='./'>remake</a>/<a href='variable.h.html'>variable.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Definitions for using variables in GNU Make.</i></td></tr>
+<tr><th id="2">2</th><td><i>Copyright (C) 1988-2016 Free Software Foundation, Inc.</i></td></tr>
+<tr><th id="3">3</th><td><i>This file is part of GNU Make.</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>GNU Make is free software; you can redistribute it and/or modify it under the</i></td></tr>
+<tr><th id="6">6</th><td><i>terms of the GNU General Public License as published by the Free Software</i></td></tr>
+<tr><th id="7">7</th><td><i>Foundation; either version 3 of the License, or (at your option) any later</i></td></tr>
+<tr><th id="8">8</th><td><i>version.</i></td></tr>
+<tr><th id="9">9</th><td><i></i></td></tr>
+<tr><th id="10">10</th><td><i>GNU Make is distributed in the hope that it will be useful, but WITHOUT ANY</i></td></tr>
+<tr><th id="11">11</th><td><i>WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR</i></td></tr>
+<tr><th id="12">12</th><td><i>A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</i></td></tr>
+<tr><th id="13">13</th><td><i></i></td></tr>
+<tr><th id="14">14</th><td><i>You should have received a copy of the GNU General Public License along with</i></td></tr>
+<tr><th id="15">15</th><td><i>this program.  If not, see &lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.  */</i></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><u>#<span data-ppcond="17">ifndef</span> <span class="macro" data-ref="_M/VARIABLE_H">VARIABLE_H</span></u></td></tr>
+<tr><th id="18">18</th><td><u>#define <dfn class="macro" id="_M/VARIABLE_H" data-ref="_M/VARIABLE_H">VARIABLE_H</dfn></u></td></tr>
+<tr><th id="19">19</th><td></td></tr>
+<tr><th id="20">20</th><td><u>#include <a href="gnuremake.h.html">"gnuremake.h"</a></u></td></tr>
+<tr><th id="21">21</th><td><u>#include <a href="hash.h.html">"hash.h"</a></u></td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><i>/* Codes in a variable definition saying where the definition came from.</i></td></tr>
+<tr><th id="24">24</th><td><i>   Increasing numeric values signify less-overridable definitions.  */</i></td></tr>
+<tr><th id="25">25</th><td><b>enum</b> <dfn class="type def" id="variable_origin" title='variable_origin' data-ref="variable_origin">variable_origin</dfn></td></tr>
+<tr><th id="26">26</th><td>  {</td></tr>
+<tr><th id="27">27</th><td>    <dfn class="enum" id="variable_origin::o_default" title='variable_origin::o_default' data-ref="variable_origin::o_default">o_default</dfn>,          <i>/* Variable from the default set.  */</i></td></tr>
+<tr><th id="28">28</th><td>    <dfn class="enum" id="variable_origin::o_env" title='variable_origin::o_env' data-ref="variable_origin::o_env">o_env</dfn>,              <i>/* Variable from environment.  */</i></td></tr>
+<tr><th id="29">29</th><td>    <dfn class="enum" id="variable_origin::o_file" title='variable_origin::o_file' data-ref="variable_origin::o_file">o_file</dfn>,             <i>/* Variable given in a makefile.  */</i></td></tr>
+<tr><th id="30">30</th><td>    <dfn class="enum" id="variable_origin::o_env_override" title='variable_origin::o_env_override' data-ref="variable_origin::o_env_override">o_env_override</dfn>,     <i>/* Variable from environment, if -e.  */</i></td></tr>
+<tr><th id="31">31</th><td>    <dfn class="enum" id="variable_origin::o_command" title='variable_origin::o_command' data-ref="variable_origin::o_command">o_command</dfn>,          <i>/* Variable given by user.  */</i></td></tr>
+<tr><th id="32">32</th><td>    <dfn class="enum" id="variable_origin::o_override" title='variable_origin::o_override' data-ref="variable_origin::o_override">o_override</dfn>,         <i>/* Variable from an 'override' directive.  */</i></td></tr>
+<tr><th id="33">33</th><td>    <dfn class="enum" id="variable_origin::o_automatic" title='variable_origin::o_automatic' data-ref="variable_origin::o_automatic">o_automatic</dfn>,        <i>/* Automatic variable -- cannot be set.  */</i></td></tr>
+<tr><th id="34">34</th><td>    <dfn class="enum" id="variable_origin::o_debugger" title='variable_origin::o_debugger' data-ref="variable_origin::o_debugger">o_debugger</dfn>,  	<i>/* Set inside debugger.  */</i></td></tr>
+<tr><th id="35">35</th><td>    <dfn class="enum" id="variable_origin::o_invalid" title='variable_origin::o_invalid' data-ref="variable_origin::o_invalid">o_invalid</dfn>           <i>/* Core dump time.  */</i></td></tr>
+<tr><th id="36">36</th><td>  };</td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td><b>enum</b> <dfn class="type def" id="variable_flavor" title='variable_flavor' data-ref="variable_flavor">variable_flavor</dfn></td></tr>
+<tr><th id="39">39</th><td>  {</td></tr>
+<tr><th id="40">40</th><td>    <dfn class="enum" id="variable_flavor::f_bogus" title='variable_flavor::f_bogus' data-ref="variable_flavor::f_bogus">f_bogus</dfn>,            <i>/* Bogus (error) */</i></td></tr>
+<tr><th id="41">41</th><td>    <dfn class="enum" id="variable_flavor::f_simple" title='variable_flavor::f_simple' data-ref="variable_flavor::f_simple">f_simple</dfn>,           <i>/* Simple definition (:= or ::=) */</i></td></tr>
+<tr><th id="42">42</th><td>    <dfn class="enum" id="variable_flavor::f_recursive" title='variable_flavor::f_recursive' data-ref="variable_flavor::f_recursive">f_recursive</dfn>,        <i>/* Recursive definition (=) */</i></td></tr>
+<tr><th id="43">43</th><td>    <dfn class="enum" id="variable_flavor::f_append" title='variable_flavor::f_append' data-ref="variable_flavor::f_append">f_append</dfn>,           <i>/* Appending definition (+=) */</i></td></tr>
+<tr><th id="44">44</th><td>    <dfn class="enum" id="variable_flavor::f_conditional" title='variable_flavor::f_conditional' data-ref="variable_flavor::f_conditional">f_conditional</dfn>,      <i>/* Conditional definition (?=) */</i></td></tr>
+<tr><th id="45">45</th><td>    <dfn class="enum" id="variable_flavor::f_shell" title='variable_flavor::f_shell' data-ref="variable_flavor::f_shell">f_shell</dfn>             <i>/* Shell assignment (!=) */</i></td></tr>
+<tr><th id="46">46</th><td>  };</td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td><i>/* Structure that represents one variable definition.</i></td></tr>
+<tr><th id="49">49</th><td><i>   Each bucket of the hash table is a chain of these,</i></td></tr>
+<tr><th id="50">50</th><td><i>   chained through 'next'.  */</i></td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td><u>#define <dfn class="macro" id="_M/EXP_COUNT_BITS" data-ref="_M/EXP_COUNT_BITS">EXP_COUNT_BITS</dfn>  15      /* This gets all the bitfields into 32 bits */</u></td></tr>
+<tr><th id="53">53</th><td><u>#define <dfn class="macro" id="_M/EXP_COUNT_MAX" data-ref="_M/EXP_COUNT_MAX">EXP_COUNT_MAX</dfn>   ((1&lt;&lt;EXP_COUNT_BITS)-1)</u></td></tr>
+<tr><th id="54">54</th><td></td></tr>
+<tr><th id="55">55</th><td><b>struct</b> <dfn class="type def" id="variable" title='variable' data-ref="variable">variable</dfn></td></tr>
+<tr><th id="56">56</th><td>  {</td></tr>
+<tr><th id="57">57</th><td>    <em>char</em> *<dfn class="decl" id="variable::name" title='variable::name' data-ref="variable::name">name</dfn>;                 <i>/* Variable name.  */</i></td></tr>
+<tr><th id="58">58</th><td>    <em>char</em> *<dfn class="decl" id="variable::value" title='variable::value' data-ref="variable::value">value</dfn>;                <i>/* Variable value.  */</i></td></tr>
+<tr><th id="59">59</th><td>    <a class="typedef" href="gnuremake.h.html#gmk_floc" title='gmk_floc' data-type='struct gmk_floc' data-ref="gmk_floc">gmk_floc</a> <dfn class="decl" id="variable::fileinfo" title='variable::fileinfo' data-ref="variable::fileinfo">fileinfo</dfn>;          <i>/* Where the variable was defined.  */</i></td></tr>
+<tr><th id="60">60</th><td>    <em>int</em> <dfn class="decl" id="variable::length" title='variable::length' data-ref="variable::length">length</dfn>;                 <i>/* strlen (name) */</i></td></tr>
+<tr><th id="61">61</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="variable::recursive" title='variable::recursive' data-ref="variable::recursive">recursive</dfn>:<var>1</var>;   <i>/* Gets recursively re-evaluated.  */</i></td></tr>
+<tr><th id="62">62</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="variable::append" title='variable::append' data-ref="variable::append">append</dfn>:<var>1</var>;      <i>/* Nonzero if an appending target-specific</i></td></tr>
+<tr><th id="63">63</th><td><i>                                   variable.  */</i></td></tr>
+<tr><th id="64">64</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="variable::conditional" title='variable::conditional' data-ref="variable::conditional">conditional</dfn>:<var>1</var>; <i>/* Nonzero if set with a ?=. */</i></td></tr>
+<tr><th id="65">65</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="variable::per_target" title='variable::per_target' data-ref="variable::per_target">per_target</dfn>:<var>1</var>;  <i>/* Nonzero if a target-specific variable.  */</i></td></tr>
+<tr><th id="66">66</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="variable::special" title='variable::special' data-ref="variable::special">special</dfn>:<var>1</var>;     <i>/* Nonzero if this is a special variable.  */</i></td></tr>
+<tr><th id="67">67</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="variable::exportable" title='variable::exportable' data-ref="variable::exportable">exportable</dfn>:<var>1</var>;  <i>/* Nonzero if the variable _could_ be</i></td></tr>
+<tr><th id="68">68</th><td><i>                                   exported.  */</i></td></tr>
+<tr><th id="69">69</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="variable::expanding" title='variable::expanding' data-ref="variable::expanding">expanding</dfn>:<var>1</var>;   <i>/* Nonzero if currently being expanded.  */</i></td></tr>
+<tr><th id="70">70</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="variable::private_var" title='variable::private_var' data-ref="variable::private_var">private_var</dfn>:<var>1</var>; <i>/* Nonzero avoids inheritance of this</i></td></tr>
+<tr><th id="71">71</th><td><i>                                   target-specific variable.  */</i></td></tr>
+<tr><th id="72">72</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="variable::exp_count" title='variable::exp_count' data-ref="variable::exp_count">exp_count</dfn>:<a class="macro" href="#52" title="15" data-ref="_M/EXP_COUNT_BITS">EXP_COUNT_BITS</a>;</td></tr>
+<tr><th id="73">73</th><td>                                <i>/* If &gt;1, allow this many self-referential</i></td></tr>
+<tr><th id="74">74</th><td><i>                                   expansions.  */</i></td></tr>
+<tr><th id="75">75</th><td>    <b>enum</b> <a class="type" href="#variable_flavor" title='variable_flavor' data-ref="variable_flavor">variable_flavor</a></td></tr>
+<tr><th id="76">76</th><td>      <dfn class="decl" id="variable::flavor" title='variable::flavor' data-ref="variable::flavor">flavor</dfn> <a class="macro" href="make.h.html#278" title=":4" data-ref="_M/ENUM_BITFIELD">ENUM_BITFIELD</a> (<var>4</var>); <i>/* Variable flavor.  */</i></td></tr>
+<tr><th id="77">77</th><td>    <b>enum</b> <a class="type" href="types.h.html#variable_origin" title='variable_origin' data-ref="variable_origin">variable_origin</a></td></tr>
+<tr><th id="78">78</th><td>      <dfn class="decl" id="variable::origin" title='variable::origin' data-ref="variable::origin">origin</dfn> <a class="macro" href="make.h.html#278" title=":4" data-ref="_M/ENUM_BITFIELD">ENUM_BITFIELD</a> (<var>4</var>); <i>/* Variable origin.  */</i></td></tr>
+<tr><th id="79">79</th><td>    <b>enum</b> <dfn class="type def" id="variable_export" title='variable_export' data-ref="variable_export"><a class="type" href="#variable_export" title='variable_export' data-ref="variable_export">variable_export</a></dfn></td></tr>
+<tr><th id="80">80</th><td>      {</td></tr>
+<tr><th id="81">81</th><td>        <dfn class="enum" id="variable_export::v_export" title='variable_export::v_export' data-ref="variable_export::v_export">v_export</dfn>,               <i>/* Export this variable.  */</i></td></tr>
+<tr><th id="82">82</th><td>        <dfn class="enum" id="variable_export::v_noexport" title='variable_export::v_noexport' data-ref="variable_export::v_noexport">v_noexport</dfn>,             <i>/* Don't export this variable.  */</i></td></tr>
+<tr><th id="83">83</th><td>        <dfn class="enum" id="variable_export::v_ifset" title='variable_export::v_ifset' data-ref="variable_export::v_ifset">v_ifset</dfn>,                <i>/* Export it if it has a non-default value.  */</i></td></tr>
+<tr><th id="84">84</th><td>        <dfn class="enum" id="variable_export::v_default" title='variable_export::v_default' data-ref="variable_export::v_default">v_default</dfn>               <i>/* Decide in target_environment.  */</i></td></tr>
+<tr><th id="85">85</th><td>      } <dfn class="decl" id="variable::export" title='variable::export' data-ref="variable::export">export</dfn> <a class="macro" href="make.h.html#278" title=":2" data-ref="_M/ENUM_BITFIELD">ENUM_BITFIELD</a> (<var>2</var>);</td></tr>
+<tr><th id="86">86</th><td>  };</td></tr>
+<tr><th id="87">87</th><td></td></tr>
+<tr><th id="88">88</th><td><i>/* Structure that represents a variable set.  */</i></td></tr>
+<tr><th id="89">89</th><td></td></tr>
+<tr><th id="90">90</th><td><b>struct</b> <dfn class="type def" id="variable_set" title='variable_set' data-ref="variable_set">variable_set</dfn></td></tr>
+<tr><th id="91">91</th><td>  {</td></tr>
+<tr><th id="92">92</th><td>    <b>struct</b> <a class="type" href="hash.h.html#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> <dfn class="decl" id="variable_set::table" title='variable_set::table' data-ref="variable_set::table">table</dfn>;    <i>/* Hash table of variables.  */</i></td></tr>
+<tr><th id="93">93</th><td>  };</td></tr>
+<tr><th id="94">94</th><td></td></tr>
+<tr><th id="95">95</th><td><i>/* Structure that represents a list of variable sets.  */</i></td></tr>
+<tr><th id="96">96</th><td></td></tr>
+<tr><th id="97">97</th><td><b>struct</b> <dfn class="type def" id="variable_set_list" title='variable_set_list' data-ref="variable_set_list">variable_set_list</dfn></td></tr>
+<tr><th id="98">98</th><td>  {</td></tr>
+<tr><th id="99">99</th><td>    <b>struct</b> <a class="type" href="#variable_set_list" title='variable_set_list' data-ref="variable_set_list">variable_set_list</a> *<dfn class="decl" id="variable_set_list::next" title='variable_set_list::next' data-ref="variable_set_list::next">next</dfn>;     <i>/* Link in the chain.  */</i></td></tr>
+<tr><th id="100">100</th><td>    <b>struct</b> <a class="type" href="#variable_set" title='variable_set' data-ref="variable_set">variable_set</a> *<dfn class="decl" id="variable_set_list::set" title='variable_set_list::set' data-ref="variable_set_list::set">set</dfn>;           <i>/* Variable set.  */</i></td></tr>
+<tr><th id="101">101</th><td>    <em>int</em> <dfn class="decl" id="variable_set_list::next_is_parent" title='variable_set_list::next_is_parent' data-ref="variable_set_list::next_is_parent">next_is_parent</dfn>;                 <i>/* True if next is a parent target.  */</i></td></tr>
+<tr><th id="102">102</th><td>  };</td></tr>
+<tr><th id="103">103</th><td></td></tr>
+<tr><th id="104">104</th><td><i>/* Structure used for pattern-specific variables.  */</i></td></tr>
+<tr><th id="105">105</th><td></td></tr>
+<tr><th id="106">106</th><td><b>struct</b> <dfn class="type def" id="pattern_var" title='pattern_var' data-ref="pattern_var">pattern_var</dfn></td></tr>
+<tr><th id="107">107</th><td>  {</td></tr>
+<tr><th id="108">108</th><td>    <b>struct</b> <a class="type" href="#pattern_var" title='pattern_var' data-ref="pattern_var">pattern_var</a> *<dfn class="decl" id="pattern_var::next" title='pattern_var::next' data-ref="pattern_var::next">next</dfn>;</td></tr>
+<tr><th id="109">109</th><td>    <em>const</em> <em>char</em> *<dfn class="decl" id="pattern_var::suffix" title='pattern_var::suffix' data-ref="pattern_var::suffix">suffix</dfn>;</td></tr>
+<tr><th id="110">110</th><td>    <em>const</em> <em>char</em> *<dfn class="decl" id="pattern_var::target" title='pattern_var::target' data-ref="pattern_var::target">target</dfn>;</td></tr>
+<tr><th id="111">111</th><td>    <em>unsigned</em> <em>int</em> <dfn class="decl" id="pattern_var::len" title='pattern_var::len' data-ref="pattern_var::len">len</dfn>;</td></tr>
+<tr><th id="112">112</th><td>    <b>struct</b> <a class="type" href="#variable" title='variable' data-ref="variable">variable</a> <dfn class="decl" id="pattern_var::variable" title='pattern_var::variable' data-ref="pattern_var::variable">variable</dfn>;</td></tr>
+<tr><th id="113">113</th><td>  };</td></tr>
+<tr><th id="114">114</th><td></td></tr>
+<tr><th id="115">115</th><td><b>extern</b> <em>char</em> *<dfn class="decl" id="variable_buffer" title='variable_buffer' data-ref="variable_buffer">variable_buffer</dfn>;</td></tr>
+<tr><th id="116">116</th><td><b>extern</b> <b>struct</b> <a class="type" href="#variable_set_list" title='variable_set_list' data-ref="variable_set_list">variable_set_list</a> *<dfn class="decl" id="current_variable_set_list" title='current_variable_set_list' data-ref="current_variable_set_list">current_variable_set_list</dfn>;</td></tr>
+<tr><th id="117">117</th><td><b>extern</b> <b>struct</b> <a class="type" href="#variable" title='variable' data-ref="variable">variable</a> *<dfn class="decl" id="default_goal_var" title='default_goal_var' data-ref="default_goal_var">default_goal_var</dfn>;</td></tr>
+<tr><th id="118">118</th><td><b>extern</b> <b>struct</b> <a class="type" href="#variable" title='variable' data-ref="variable">variable</a> <dfn class="decl" id="shell_var" title='shell_var' data-ref="shell_var">shell_var</dfn>;</td></tr>
+<tr><th id="119">119</th><td></td></tr>
+<tr><th id="120">120</th><td><i>/* expand.c */</i></td></tr>
+<tr><th id="121">121</th><td><em>char</em> *<dfn class="decl" id="variable_buffer_output" title='variable_buffer_output' data-ref="variable_buffer_output">variable_buffer_output</dfn> (<em>char</em> *<dfn class="local col1 decl" id="1ptr" title='ptr' data-type='char *' data-ref="1ptr">ptr</dfn>, <em>const</em> <em>char</em> *<dfn class="local col2 decl" id="2string" title='string' data-type='const char *' data-ref="2string">string</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col3 decl" id="3length" title='length' data-type='unsigned int' data-ref="3length">length</dfn>);</td></tr>
+<tr><th id="122">122</th><td><em>char</em> *<dfn class="decl" id="variable_expand" title='variable_expand' data-ref="variable_expand">variable_expand</dfn> (<em>const</em> <em>char</em> *<dfn class="local col4 decl" id="4line" title='line' data-type='const char *' data-ref="4line">line</dfn>);</td></tr>
+<tr><th id="123">123</th><td><em>char</em> *<dfn class="decl" id="variable_expand_for_file" title='variable_expand_for_file' data-ref="variable_expand_for_file">variable_expand_for_file</dfn> (<em>const</em> <em>char</em> *<dfn class="local col5 decl" id="5line" title='line' data-type='const char *' data-ref="5line">line</dfn>, <b>struct</b> <a class="type" href="filedef.h.html#file" title='file' data-ref="file">file</a> *<dfn class="local col6 decl" id="6file" title='file' data-type='struct file *' data-ref="6file">file</dfn>);</td></tr>
+<tr><th id="124">124</th><td><em>char</em> *<dfn class="decl" id="allocated_variable_expand_for_file" title='allocated_variable_expand_for_file' data-ref="allocated_variable_expand_for_file">allocated_variable_expand_for_file</dfn> (<em>const</em> <em>char</em> *<dfn class="local col7 decl" id="7line" title='line' data-type='const char *' data-ref="7line">line</dfn>, <b>struct</b> <a class="type" href="filedef.h.html#file" title='file' data-ref="file">file</a> *<dfn class="local col8 decl" id="8file" title='file' data-type='struct file *' data-ref="8file">file</dfn>);</td></tr>
+<tr><th id="125">125</th><td><u>#define <dfn class="macro" id="_M/allocated_variable_expand" data-ref="_M/allocated_variable_expand">allocated_variable_expand</dfn>(line) \</u></td></tr>
+<tr><th id="126">126</th><td><u>  allocated_variable_expand_for_file (line, (struct file *) 0)</u></td></tr>
+<tr><th id="127">127</th><td><em>char</em> *<dfn class="decl" id="expand_argument" title='expand_argument' data-ref="expand_argument">expand_argument</dfn> (<em>const</em> <em>char</em> *<dfn class="local col9 decl" id="9str" title='str' data-type='const char *' data-ref="9str">str</dfn>, <em>const</em> <em>char</em> *<dfn class="local col0 decl" id="10end" title='end' data-type='const char *' data-ref="10end">end</dfn>);</td></tr>
+<tr><th id="128">128</th><td><em>char</em> *<dfn class="decl" id="variable_expand_string" title='variable_expand_string' data-ref="variable_expand_string">variable_expand_string</dfn> (<em>char</em> *<dfn class="local col1 decl" id="11line" title='line' data-type='char *' data-ref="11line">line</dfn>, <em>const</em> <em>char</em> *<dfn class="local col2 decl" id="12string" title='string' data-type='const char *' data-ref="12string">string</dfn>, <em>long</em> <dfn class="local col3 decl" id="13length" title='length' data-type='long' data-ref="13length">length</dfn>);</td></tr>
+<tr><th id="129">129</th><td><em>void</em> <dfn class="decl" id="install_variable_buffer" title='install_variable_buffer' data-ref="install_variable_buffer">install_variable_buffer</dfn> (<em>char</em> **<dfn class="local col4 decl" id="14bufp" title='bufp' data-type='char **' data-ref="14bufp">bufp</dfn>, <em>unsigned</em> <em>int</em> *<dfn class="local col5 decl" id="15lenp" title='lenp' data-type='unsigned int *' data-ref="15lenp">lenp</dfn>);</td></tr>
+<tr><th id="130">130</th><td><em>void</em> <dfn class="decl" id="restore_variable_buffer" title='restore_variable_buffer' data-ref="restore_variable_buffer">restore_variable_buffer</dfn> (<em>char</em> *<dfn class="local col6 decl" id="16buf" title='buf' data-type='char *' data-ref="16buf">buf</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col7 decl" id="17len" title='len' data-type='unsigned int' data-ref="17len">len</dfn>);</td></tr>
+<tr><th id="131">131</th><td></td></tr>
+<tr><th id="132">132</th><td><i>/* function.c */</i></td></tr>
+<tr><th id="133">133</th><td><em>int</em> <dfn class="decl" id="handle_function" title='handle_function' data-ref="handle_function">handle_function</dfn> (<em>char</em> **<dfn class="local col8 decl" id="18op" title='op' data-type='char **' data-ref="18op">op</dfn>, <em>const</em> <em>char</em> **<dfn class="local col9 decl" id="19stringp" title='stringp' data-type='const char **' data-ref="19stringp">stringp</dfn>);</td></tr>
+<tr><th id="134">134</th><td><em>int</em> <dfn class="decl" id="pattern_matches" title='pattern_matches' data-ref="pattern_matches">pattern_matches</dfn> (<em>const</em> <em>char</em> *<dfn class="local col0 decl" id="20pattern" title='pattern' data-type='const char *' data-ref="20pattern">pattern</dfn>, <em>const</em> <em>char</em> *<dfn class="local col1 decl" id="21percent" title='percent' data-type='const char *' data-ref="21percent">percent</dfn>, <em>const</em> <em>char</em> *<dfn class="local col2 decl" id="22str" title='str' data-type='const char *' data-ref="22str">str</dfn>);</td></tr>
+<tr><th id="135">135</th><td><em>char</em> *<dfn class="decl" id="subst_expand" title='subst_expand' data-ref="subst_expand">subst_expand</dfn> (<em>char</em> *<dfn class="local col3 decl" id="23o" title='o' data-type='char *' data-ref="23o">o</dfn>, <em>const</em> <em>char</em> *<dfn class="local col4 decl" id="24text" title='text' data-type='const char *' data-ref="24text">text</dfn>, <em>const</em> <em>char</em> *<dfn class="local col5 decl" id="25subst" title='subst' data-type='const char *' data-ref="25subst">subst</dfn>,</td></tr>
+<tr><th id="136">136</th><td>                    <em>const</em> <em>char</em> *<dfn class="local col6 decl" id="26replace" title='replace' data-type='const char *' data-ref="26replace">replace</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col7 decl" id="27slen" title='slen' data-type='unsigned int' data-ref="27slen">slen</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col8 decl" id="28rlen" title='rlen' data-type='unsigned int' data-ref="28rlen">rlen</dfn>,</td></tr>
+<tr><th id="137">137</th><td>                    <em>int</em> <dfn class="local col9 decl" id="29by_word" title='by_word' data-type='int' data-ref="29by_word">by_word</dfn>);</td></tr>
+<tr><th id="138">138</th><td><em>char</em> *<dfn class="decl" id="patsubst_expand_pat" title='patsubst_expand_pat' data-ref="patsubst_expand_pat">patsubst_expand_pat</dfn> (<em>char</em> *<dfn class="local col0 decl" id="30o" title='o' data-type='char *' data-ref="30o">o</dfn>, <em>const</em> <em>char</em> *<dfn class="local col1 decl" id="31text" title='text' data-type='const char *' data-ref="31text">text</dfn>, <em>const</em> <em>char</em> *<dfn class="local col2 decl" id="32pattern" title='pattern' data-type='const char *' data-ref="32pattern">pattern</dfn>,</td></tr>
+<tr><th id="139">139</th><td>                           <em>const</em> <em>char</em> *<dfn class="local col3 decl" id="33replace" title='replace' data-type='const char *' data-ref="33replace">replace</dfn>, <em>const</em> <em>char</em> *<dfn class="local col4 decl" id="34pattern_percent" title='pattern_percent' data-type='const char *' data-ref="34pattern_percent">pattern_percent</dfn>,</td></tr>
+<tr><th id="140">140</th><td>                           <em>const</em> <em>char</em> *<dfn class="local col5 decl" id="35replace_percent" title='replace_percent' data-type='const char *' data-ref="35replace_percent">replace_percent</dfn>);</td></tr>
+<tr><th id="141">141</th><td><em>char</em> *<dfn class="decl" id="patsubst_expand" title='patsubst_expand' data-ref="patsubst_expand">patsubst_expand</dfn> (<em>char</em> *<dfn class="local col6 decl" id="36o" title='o' data-type='char *' data-ref="36o">o</dfn>, <em>const</em> <em>char</em> *<dfn class="local col7 decl" id="37text" title='text' data-type='const char *' data-ref="37text">text</dfn>, <em>char</em> *<dfn class="local col8 decl" id="38pattern" title='pattern' data-type='char *' data-ref="38pattern">pattern</dfn>, <em>char</em> *<dfn class="local col9 decl" id="39replace" title='replace' data-type='char *' data-ref="39replace">replace</dfn>);</td></tr>
+<tr><th id="142">142</th><td><em>char</em> *<dfn class="decl" id="func_shell_base" title='func_shell_base' data-ref="func_shell_base">func_shell_base</dfn> (<em>char</em> *<dfn class="local col0 decl" id="40o" title='o' data-type='char *' data-ref="40o">o</dfn>, <em>char</em> **<dfn class="local col1 decl" id="41argv" title='argv' data-type='char **' data-ref="41argv">argv</dfn>, <em>int</em> <dfn class="local col2 decl" id="42trim_newlines" title='trim_newlines' data-type='int' data-ref="42trim_newlines">trim_newlines</dfn>);</td></tr>
+<tr><th id="143">143</th><td><em>void</em> <dfn class="decl" id="shell_completed" title='shell_completed' data-ref="shell_completed">shell_completed</dfn> (<em>int</em> <dfn class="local col3 decl" id="43exit_code" title='exit_code' data-type='int' data-ref="43exit_code">exit_code</dfn>, <em>int</em> <dfn class="local col4 decl" id="44exit_sig" title='exit_sig' data-type='int' data-ref="44exit_sig">exit_sig</dfn>);</td></tr>
+<tr><th id="144">144</th><td></td></tr>
+<tr><th id="145">145</th><td><i>/* expand.c */</i></td></tr>
+<tr><th id="146">146</th><td><em>char</em> *<dfn class="decl" id="recursively_expand_for_file" title='recursively_expand_for_file' data-ref="recursively_expand_for_file">recursively_expand_for_file</dfn> (<b>struct</b> <a class="type" href="#variable" title='variable' data-ref="variable">variable</a> *<dfn class="local col5 decl" id="45v" title='v' data-type='struct variable *' data-ref="45v">v</dfn>, <b>struct</b> <a class="type" href="filedef.h.html#file" title='file' data-ref="file">file</a> *<dfn class="local col6 decl" id="46file" title='file' data-type='struct file *' data-ref="46file">file</dfn>);</td></tr>
+<tr><th id="147">147</th><td><u>#define <dfn class="macro" id="_M/recursively_expand" data-ref="_M/recursively_expand">recursively_expand</dfn>(v)   recursively_expand_for_file (v, NULL)</u></td></tr>
+<tr><th id="148">148</th><td></td></tr>
+<tr><th id="149">149</th><td><i>/* variable.c */</i></td></tr>
+<tr><th id="150">150</th><td><b>struct</b> <a class="type" href="#variable_set_list" title='variable_set_list' data-ref="variable_set_list">variable_set_list</a> *<dfn class="decl" id="create_new_variable_set" title='create_new_variable_set' data-ref="create_new_variable_set">create_new_variable_set</dfn> (<em>void</em>);</td></tr>
+<tr><th id="151">151</th><td></td></tr>
+<tr><th id="152">152</th><td><i class="doc">/*!</i></td></tr>
+<tr><th id="153">153</th><td><i class="doc">  Return a string describing origin.</i></td></tr>
+<tr><th id="154">154</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="155">155</th><td><em>const</em> <em>char</em> *<dfn class="decl" id="origin2str" title='origin2str' data-ref="origin2str">origin2str</dfn>(<a class="typedef" href="types.h.html#variable_origin_t" title='variable_origin_t' data-type='enum variable_origin' data-ref="variable_origin_t">variable_origin_t</a> <dfn class="local col7 decl" id="47origin" title='origin' data-type='variable_origin_t' data-ref="47origin">origin</dfn>);</td></tr>
+<tr><th id="156">156</th><td></td></tr>
+<tr><th id="157">157</th><td><em>void</em> <dfn class="decl" id="free_variable_set" title='free_variable_set' data-ref="free_variable_set">free_variable_set</dfn> (<b>struct</b> <a class="type" href="#variable_set_list" title='variable_set_list' data-ref="variable_set_list">variable_set_list</a> *);</td></tr>
+<tr><th id="158">158</th><td></td></tr>
+<tr><th id="159">159</th><td><i class="doc">/*! Create a new variable set, push it on the current setlist,</i></td></tr>
+<tr><th id="160">160</th><td><i class="doc">  and assign current_variable_set_list to it.</i></td></tr>
+<tr><th id="161">161</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="162">162</th><td><b>struct</b> <a class="type" href="#variable_set_list" title='variable_set_list' data-ref="variable_set_list">variable_set_list</a> *<dfn class="decl" id="push_new_variable_scope" title='push_new_variable_scope' data-ref="push_new_variable_scope">push_new_variable_scope</dfn> (<em>void</em>);</td></tr>
+<tr><th id="163">163</th><td></td></tr>
+<tr><th id="164">164</th><td><i class="doc">/*! Pop the top set off the current_variable_set_list, and free all</i></td></tr>
+<tr><th id="165">165</th><td><i class="doc">   its storage.  If b_toplevel set we have the top-most global scope</i></td></tr>
+<tr><th id="166">166</th><td><i class="doc">   and some things don't get freed because they weren't malloc'd.</i></td></tr>
+<tr><th id="167">167</th><td><i class="doc">*/</i></td></tr>
+<tr><th id="168">168</th><td><em>void</em> <dfn class="decl" id="pop_variable_scope" title='pop_variable_scope' data-ref="pop_variable_scope">pop_variable_scope</dfn> (<em>void</em>);</td></tr>
+<tr><th id="169">169</th><td></td></tr>
+<tr><th id="170">170</th><td><i class="doc">/*! Define the automatic variables, and record the addresses of their</i></td></tr>
+<tr><th id="171">171</th><td><i class="doc">  structures so we can change their values quickly.  */</i></td></tr>
+<tr><th id="172">172</th><td><em>void</em> <dfn class="decl" id="define_automatic_variables" title='define_automatic_variables' data-ref="define_automatic_variables">define_automatic_variables</dfn> (<em>void</em>);</td></tr>
+<tr><th id="173">173</th><td></td></tr>
+<tr><th id="174">174</th><td><i class="doc">/*! Initialize FILE's variable set list.  If FILE already has a</i></td></tr>
+<tr><th id="175">175</th><td><i class="doc">   variable set list, the topmost variable set is left intact, but the</i></td></tr>
+<tr><th id="176">176</th><td><i class="doc">   the rest of the chain is replaced with FILE-&gt;parent's setlist.  If</i></td></tr>
+<tr><th id="177">177</th><td><i class="doc">   FILE is a double-colon rule, then we will use the "root"</i></td></tr>
+<tr><th id="178">178</th><td><i class="doc">   double-colon target's variable set as the parent of FILE's variable</i></td></tr>
+<tr><th id="179">179</th><td><i class="doc">   set.</i></td></tr>
+<tr><th id="180">180</th><td><i class="doc"></i></td></tr>
+<tr><th id="181">181</th><td><i class="doc">   If we're READing a makefile, don't do the pattern variable search now,</i></td></tr>
+<tr><th id="182">182</th><td><i class="doc">   since the pattern variable might not have been defined yet.  */</i></td></tr>
+<tr><th id="183">183</th><td><em>void</em> <dfn class="decl" id="initialize_file_variables" title='initialize_file_variables' data-ref="initialize_file_variables">initialize_file_variables</dfn> (<b>struct</b> <a class="type" href="filedef.h.html#file" title='file' data-ref="file">file</a> *<dfn class="local col8 decl" id="48file" title='file' data-type='struct file *' data-ref="48file">file</dfn>, <em>int</em> <dfn class="local col9 decl" id="49reading" title='reading' data-type='int' data-ref="49reading">reading</dfn>);</td></tr>
+<tr><th id="184">184</th><td></td></tr>
+<tr><th id="185">185</th><td><i class="doc">/*! Print all the local variables of P_TARGET.  Lines output have "# "</i></td></tr>
+<tr><th id="186">186</th><td><i class="doc">    prepended. If you want hash table statistics too, set b_hash_stats</i></td></tr>
+<tr><th id="187">187</th><td><i class="doc">    true.</i></td></tr>
+<tr><th id="188">188</th><td><i class="doc">*/</i></td></tr>
+<tr><th id="189">189</th><td><b>extern</b> <em>void</em> <dfn class="decl" id="print_file_variables" title='print_file_variables' data-ref="print_file_variables">print_file_variables</dfn>(<em>const</em> <a class="typedef" href="types.h.html#file_t" title='file_t' data-type='struct file' data-ref="file_t">file_t</a> *<dfn class="local col0 decl" id="50p_target" title='p_target' data-type='const file_t *' data-ref="50p_target">p_target</dfn>, <a class="macro" href="types.h.html#50" title="uint8_t" data-ref="_M/bool">bool</a> <dfn class="local col1 decl" id="51b_hash_stats" title='b_hash_stats' data-type='uint8_t' data-ref="51b_hash_stats">b_hash_stats</dfn>);</td></tr>
+<tr><th id="190">190</th><td></td></tr>
+<tr><th id="191">191</th><td><i class="doc">/*! Print the data base of variables.  */</i></td></tr>
+<tr><th id="192">192</th><td></td></tr>
+<tr><th id="193">193</th><td><b>extern</b> <em>void</em> <a class="decl" href="makeint.h.html#print_variable_data_base" title='print_variable_data_base' data-ref="print_variable_data_base" id="print_variable_data_base">print_variable_data_base</a> (<em>void</em>);</td></tr>
+<tr><th id="194">194</th><td></td></tr>
+<tr><th id="195">195</th><td><i class="doc">/** Print information for variable V, prefixing it with PREFIX.  */</i></td></tr>
+<tr><th id="196">196</th><td><b>extern</b> <em>void</em> <dfn class="decl" id="print_variable_info" title='print_variable_info' data-ref="print_variable_info">print_variable_info</dfn> (<em>const</em> <em>void</em> *<dfn class="local col2 decl" id="52item" title='item' data-type='const void *' data-ref="52item">item</dfn>, <em>void</em> *<dfn class="local col3 decl" id="53arg" title='arg' data-type='void *' data-ref="53arg">arg</dfn>);</td></tr>
+<tr><th id="197">197</th><td></td></tr>
+<tr><th id="198">198</th><td><em>void</em> <dfn class="decl" id="print_target_variables" title='print_target_variables' data-ref="print_target_variables">print_target_variables</dfn> (<em>const</em> <b>struct</b> <a class="type" href="filedef.h.html#file" title='file' data-ref="file">file</a> *<dfn class="local col4 decl" id="54file" title='file' data-type='const struct file *' data-ref="54file">file</dfn>);</td></tr>
+<tr><th id="199">199</th><td></td></tr>
+<tr><th id="200">200</th><td><i class="doc">/*! Print all the variables in SET.  PREFIX is printed before the</i></td></tr>
+<tr><th id="201">201</th><td><i class="doc">   actual variable definitions (everything else is comments).  If you</i></td></tr>
+<tr><th id="202">202</th><td><i class="doc">   want hash table statistics too, set b_hash_stats true.</i></td></tr>
+<tr><th id="203">203</th><td><i class="doc">*/</i></td></tr>
+<tr><th id="204">204</th><td><em>void</em> <dfn class="decl" id="print_variable_set" title='print_variable_set' data-ref="print_variable_set">print_variable_set</dfn> (<b>struct</b> <a class="type" href="#variable_set" title='variable_set' data-ref="variable_set">variable_set</a> *<dfn class="local col5 decl" id="55set" title='set' data-type='struct variable_set *' data-ref="55set">set</dfn>, <em>const</em> <em>char</em> *<dfn class="local col6 decl" id="56prefix" title='prefix' data-type='const char *' data-ref="56prefix">prefix</dfn>, <em>int</em> <dfn class="local col7 decl" id="57pauto" title='pauto' data-type='int' data-ref="57pauto">pauto</dfn>);</td></tr>
+<tr><th id="205">205</th><td></td></tr>
+<tr><th id="206">206</th><td><em>void</em> <dfn class="decl" id="merge_variable_set_lists" title='merge_variable_set_lists' data-ref="merge_variable_set_lists">merge_variable_set_lists</dfn> (<b>struct</b> <a class="type" href="#variable_set_list" title='variable_set_list' data-ref="variable_set_list">variable_set_list</a> **<dfn class="local col8 decl" id="58to_list" title='to_list' data-type='struct variable_set_list **' data-ref="58to_list">to_list</dfn>,</td></tr>
+<tr><th id="207">207</th><td>                               <b>struct</b> <a class="type" href="#variable_set_list" title='variable_set_list' data-ref="variable_set_list">variable_set_list</a> *<dfn class="local col9 decl" id="59from_list" title='from_list' data-type='struct variable_set_list *' data-ref="59from_list">from_list</dfn>);</td></tr>
+<tr><th id="208">208</th><td><b>struct</b> <a class="type" href="#variable" title='variable' data-ref="variable">variable</a> *<dfn class="decl" id="do_variable_definition" title='do_variable_definition' data-ref="do_variable_definition">do_variable_definition</dfn> (<em>const</em> <a class="typedef" href="gnuremake.h.html#gmk_floc" title='gmk_floc' data-type='struct gmk_floc' data-ref="gmk_floc">gmk_floc</a> *<dfn class="local col0 decl" id="60flocp" title='flocp' data-type='const gmk_floc *' data-ref="60flocp">flocp</dfn>,</td></tr>
+<tr><th id="209">209</th><td>                                         <em>const</em> <em>char</em> *<dfn class="local col1 decl" id="61name" title='name' data-type='const char *' data-ref="61name">name</dfn>, <em>const</em> <em>char</em> *<dfn class="local col2 decl" id="62value" title='value' data-type='const char *' data-ref="62value">value</dfn>,</td></tr>
+<tr><th id="210">210</th><td>                                         <b>enum</b> <a class="type" href="types.h.html#variable_origin" title='variable_origin' data-ref="variable_origin">variable_origin</a> <dfn class="local col3 decl" id="63origin" title='origin' data-type='enum variable_origin' data-ref="63origin">origin</dfn>,</td></tr>
+<tr><th id="211">211</th><td>                                         <b>enum</b> <a class="type" href="#variable_flavor" title='variable_flavor' data-ref="variable_flavor">variable_flavor</a> <dfn class="local col4 decl" id="64flavor" title='flavor' data-type='enum variable_flavor' data-ref="64flavor">flavor</dfn>,</td></tr>
+<tr><th id="212">212</th><td>                                         <em>int</em> <dfn class="local col5 decl" id="65target_var" title='target_var' data-type='int' data-ref="65target_var">target_var</dfn>);</td></tr>
+<tr><th id="213">213</th><td><em>char</em> *<dfn class="decl" id="parse_variable_definition" title='parse_variable_definition' data-ref="parse_variable_definition">parse_variable_definition</dfn> (<em>const</em> <em>char</em> *<dfn class="local col6 decl" id="66line" title='line' data-type='const char *' data-ref="66line">line</dfn>,</td></tr>
+<tr><th id="214">214</th><td>                                 <b>struct</b> <a class="type" href="#variable" title='variable' data-ref="variable">variable</a> *<dfn class="local col7 decl" id="67v" title='v' data-type='struct variable *' data-ref="67v">v</dfn>);</td></tr>
+<tr><th id="215">215</th><td><b>struct</b> <a class="type" href="#variable" title='variable' data-ref="variable">variable</a> *<dfn class="decl" id="assign_variable_definition" title='assign_variable_definition' data-ref="assign_variable_definition">assign_variable_definition</dfn> (<b>struct</b> <a class="type" href="#variable" title='variable' data-ref="variable">variable</a> *<dfn class="local col8 decl" id="68v" title='v' data-type='struct variable *' data-ref="68v">v</dfn>, <em>const</em> <em>char</em> *<dfn class="local col9 decl" id="69line" title='line' data-type='const char *' data-ref="69line">line</dfn>);</td></tr>
+<tr><th id="216">216</th><td><b>struct</b> <a class="type" href="#variable" title='variable' data-ref="variable">variable</a> *<dfn class="decl" id="try_variable_definition" title='try_variable_definition' data-ref="try_variable_definition">try_variable_definition</dfn> (<em>const</em> <a class="typedef" href="gnuremake.h.html#gmk_floc" title='gmk_floc' data-type='struct gmk_floc' data-ref="gmk_floc">gmk_floc</a> *<dfn class="local col0 decl" id="70flocp" title='flocp' data-type='const gmk_floc *' data-ref="70flocp">flocp</dfn>, <em>const</em> <em>char</em> *<dfn class="local col1 decl" id="71line" title='line' data-type='const char *' data-ref="71line">line</dfn>,</td></tr>
+<tr><th id="217">217</th><td>                                          <b>enum</b> <a class="type" href="types.h.html#variable_origin" title='variable_origin' data-ref="variable_origin">variable_origin</a> <dfn class="local col2 decl" id="72origin" title='origin' data-type='enum variable_origin' data-ref="72origin">origin</dfn>,</td></tr>
+<tr><th id="218">218</th><td>                                          <em>int</em> <dfn class="local col3 decl" id="73target_var" title='target_var' data-type='int' data-ref="73target_var">target_var</dfn>);</td></tr>
+<tr><th id="219">219</th><td><em>void</em> <dfn class="decl" id="init_hash_global_variable_set" title='init_hash_global_variable_set' data-ref="init_hash_global_variable_set">init_hash_global_variable_set</dfn> (<em>void</em>);</td></tr>
+<tr><th id="220">220</th><td><em>void</em> <dfn class="decl" id="hash_init_function_table" title='hash_init_function_table' data-ref="hash_init_function_table">hash_init_function_table</dfn> (<em>void</em>);</td></tr>
+<tr><th id="221">221</th><td><em>void</em> <dfn class="decl" id="define_new_function" title='define_new_function' data-ref="define_new_function">define_new_function</dfn>(<em>const</em> <a class="typedef" href="gnuremake.h.html#gmk_floc" title='gmk_floc' data-type='struct gmk_floc' data-ref="gmk_floc">gmk_floc</a> *<dfn class="local col4 decl" id="74flocp" title='flocp' data-type='const gmk_floc *' data-ref="74flocp">flocp</dfn>, <em>const</em> <em>char</em> *<dfn class="local col5 decl" id="75name" title='name' data-type='const char *' data-ref="75name">name</dfn>,</td></tr>
+<tr><th id="222">222</th><td>                         <em>unsigned</em> <em>int</em> <dfn class="local col6 decl" id="76min" title='min' data-type='unsigned int' data-ref="76min">min</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col7 decl" id="77max" title='max' data-type='unsigned int' data-ref="77max">max</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col8 decl" id="78flags" title='flags' data-type='unsigned int' data-ref="78flags">flags</dfn>,</td></tr>
+<tr><th id="223">223</th><td>                         <a class="typedef" href="gnuremake.h.html#gmk_func_ptr" title='gmk_func_ptr' data-type='char *(*)(const char *, unsigned int, char **)' data-ref="gmk_func_ptr">gmk_func_ptr</a> <dfn class="local col9 decl" id="79func" title='func' data-type='gmk_func_ptr' data-ref="79func">func</dfn>);</td></tr>
+<tr><th id="224">224</th><td><b>struct</b> <a class="type" href="#variable" title='variable' data-ref="variable">variable</a> *<dfn class="decl" id="lookup_variable" title='lookup_variable' data-ref="lookup_variable">lookup_variable</dfn> (<em>const</em> <em>char</em> *<dfn class="local col0 decl" id="80name" title='name' data-type='const char *' data-ref="80name">name</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col1 decl" id="81length" title='length' data-type='unsigned int' data-ref="81length">length</dfn>);</td></tr>
+<tr><th id="225">225</th><td><b>struct</b> <a class="type" href="#variable" title='variable' data-ref="variable">variable</a> *<dfn class="decl" id="lookup_variable_in_set" title='lookup_variable_in_set' data-ref="lookup_variable_in_set">lookup_variable_in_set</dfn> (<em>const</em> <em>char</em> *<dfn class="local col2 decl" id="82name" title='name' data-type='const char *' data-ref="82name">name</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col3 decl" id="83length" title='length' data-type='unsigned int' data-ref="83length">length</dfn>,</td></tr>
+<tr><th id="226">226</th><td>                                         <em>const</em> <b>struct</b> <a class="type" href="#variable_set" title='variable_set' data-ref="variable_set">variable_set</a> *<dfn class="local col4 decl" id="84set" title='set' data-type='const struct variable_set *' data-ref="84set">set</dfn>);</td></tr>
+<tr><th id="227">227</th><td></td></tr>
+<tr><th id="228">228</th><td><b>struct</b> <a class="type" href="#variable" title='variable' data-ref="variable">variable</a> *<dfn class="decl" id="define_variable_in_set" title='define_variable_in_set' data-ref="define_variable_in_set">define_variable_in_set</dfn> (<em>const</em> <em>char</em> *<dfn class="local col5 decl" id="85name" title='name' data-type='const char *' data-ref="85name">name</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col6 decl" id="86length" title='length' data-type='unsigned int' data-ref="86length">length</dfn>,</td></tr>
+<tr><th id="229">229</th><td>                                         <em>const</em> <em>char</em> *<dfn class="local col7 decl" id="87value" title='value' data-type='const char *' data-ref="87value">value</dfn>,</td></tr>
+<tr><th id="230">230</th><td>                                         <b>enum</b> <a class="type" href="types.h.html#variable_origin" title='variable_origin' data-ref="variable_origin">variable_origin</a> <dfn class="local col8 decl" id="88origin" title='origin' data-type='enum variable_origin' data-ref="88origin">origin</dfn>,</td></tr>
+<tr><th id="231">231</th><td>                                         <em>int</em> <dfn class="local col9 decl" id="89recursive" title='recursive' data-type='int' data-ref="89recursive">recursive</dfn>,</td></tr>
+<tr><th id="232">232</th><td>                                         <b>struct</b> <a class="type" href="#variable_set" title='variable_set' data-ref="variable_set">variable_set</a> *<dfn class="local col0 decl" id="90set" title='set' data-type='struct variable_set *' data-ref="90set">set</dfn>,</td></tr>
+<tr><th id="233">233</th><td>                                         <em>const</em> <a class="typedef" href="gnuremake.h.html#gmk_floc" title='gmk_floc' data-type='struct gmk_floc' data-ref="gmk_floc">gmk_floc</a> *<dfn class="local col1 decl" id="91flocp" title='flocp' data-type='const gmk_floc *' data-ref="91flocp">flocp</dfn>);</td></tr>
+<tr><th id="234">234</th><td></td></tr>
+<tr><th id="235">235</th><td><i>/* Define a variable in the current variable set.  */</i></td></tr>
+<tr><th id="236">236</th><td></td></tr>
+<tr><th id="237">237</th><td><u>#define <dfn class="macro" id="_M/define_variable" data-ref="_M/define_variable">define_variable</dfn>(n,l,v,o,r) \</u></td></tr>
+<tr><th id="238">238</th><td><u>          define_variable_in_set((n),(l),(v),(o),(r),\</u></td></tr>
+<tr><th id="239">239</th><td><u>                                 current_variable_set_list-&gt;set,NILF)</u></td></tr>
+<tr><th id="240">240</th><td></td></tr>
+<tr><th id="241">241</th><td><i>/* Define a variable with a constant name in the current variable set.  */</i></td></tr>
+<tr><th id="242">242</th><td></td></tr>
+<tr><th id="243">243</th><td><u>#define <dfn class="macro" id="_M/define_variable_cname" data-ref="_M/define_variable_cname">define_variable_cname</dfn>(n,v,o,r) \</u></td></tr>
+<tr><th id="244">244</th><td><u>          define_variable_in_set((n),(sizeof (n) - 1),(v),(o),(r),\</u></td></tr>
+<tr><th id="245">245</th><td><u>                                 current_variable_set_list-&gt;set,NILF)</u></td></tr>
+<tr><th id="246">246</th><td></td></tr>
+<tr><th id="247">247</th><td><i>/* Define a variable with a location in the current variable set.  */</i></td></tr>
+<tr><th id="248">248</th><td></td></tr>
+<tr><th id="249">249</th><td><u>#define <dfn class="macro" id="_M/define_variable_loc" data-ref="_M/define_variable_loc">define_variable_loc</dfn>(n,l,v,o,r,f) \</u></td></tr>
+<tr><th id="250">250</th><td><u>          define_variable_in_set((n),(l),(v),(o),(r),\</u></td></tr>
+<tr><th id="251">251</th><td><u>                                 current_variable_set_list-&gt;set,(f))</u></td></tr>
+<tr><th id="252">252</th><td></td></tr>
+<tr><th id="253">253</th><td><i>/* Define a variable with a location in the global variable set.  */</i></td></tr>
+<tr><th id="254">254</th><td></td></tr>
+<tr><th id="255">255</th><td><u>#define <dfn class="macro" id="_M/define_variable_global" data-ref="_M/define_variable_global">define_variable_global</dfn>(n,l,v,o,r,f) \</u></td></tr>
+<tr><th id="256">256</th><td><u>          define_variable_in_set((n),(l),(v),(o),(r),NULL,(f))</u></td></tr>
+<tr><th id="257">257</th><td></td></tr>
+<tr><th id="258">258</th><td><i>/* Define a variable in FILE's variable set.  */</i></td></tr>
+<tr><th id="259">259</th><td></td></tr>
+<tr><th id="260">260</th><td><u>#define <dfn class="macro" id="_M/define_variable_for_file" data-ref="_M/define_variable_for_file">define_variable_for_file</dfn>(n,l,v,o,r,f) \</u></td></tr>
+<tr><th id="261">261</th><td><u>          define_variable_in_set((n),(l),(v),(o),(r),(f)-&gt;variables-&gt;set,NILF)</u></td></tr>
+<tr><th id="262">262</th><td></td></tr>
+<tr><th id="263">263</th><td><em>void</em> <dfn class="decl" id="undefine_variable_in_set" title='undefine_variable_in_set' data-ref="undefine_variable_in_set">undefine_variable_in_set</dfn> (<em>const</em> <em>char</em> *<dfn class="local col2 decl" id="92name" title='name' data-type='const char *' data-ref="92name">name</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col3 decl" id="93length" title='length' data-type='unsigned int' data-ref="93length">length</dfn>,</td></tr>
+<tr><th id="264">264</th><td>                               <b>enum</b> <a class="type" href="types.h.html#variable_origin" title='variable_origin' data-ref="variable_origin">variable_origin</a> <dfn class="local col4 decl" id="94origin" title='origin' data-type='enum variable_origin' data-ref="94origin">origin</dfn>,</td></tr>
+<tr><th id="265">265</th><td>                               <b>struct</b> <a class="type" href="#variable_set" title='variable_set' data-ref="variable_set">variable_set</a> *<dfn class="local col5 decl" id="95set" title='set' data-type='struct variable_set *' data-ref="95set">set</dfn>);</td></tr>
+<tr><th id="266">266</th><td></td></tr>
+<tr><th id="267">267</th><td><i>/* Remove variable from the current variable set. */</i></td></tr>
+<tr><th id="268">268</th><td></td></tr>
+<tr><th id="269">269</th><td><u>#define <dfn class="macro" id="_M/undefine_variable_global" data-ref="_M/undefine_variable_global">undefine_variable_global</dfn>(n,l,o) \</u></td></tr>
+<tr><th id="270">270</th><td><u>          undefine_variable_in_set((n),(l),(o),NULL)</u></td></tr>
+<tr><th id="271">271</th><td></td></tr>
+<tr><th id="272">272</th><td><i>/* Warn that NAME is an undefined variable.  */</i></td></tr>
+<tr><th id="273">273</th><td></td></tr>
+<tr><th id="274">274</th><td><u>#define <dfn class="macro" id="_M/warn_undefined" data-ref="_M/warn_undefined">warn_undefined</dfn>(n,l) do{\</u></td></tr>
+<tr><th id="275">275</th><td><u>                              if (warn_undefined_variables_flag)        \</u></td></tr>
+<tr><th id="276">276</th><td><u>                                error (reading_file, (l),               \</u></td></tr>
+<tr><th id="277">277</th><td><u>                                       _("warning: undefined variable '%.*s'"), \</u></td></tr>
+<tr><th id="278">278</th><td><u>                                       (int)(l), (n));                  \</u></td></tr>
+<tr><th id="279">279</th><td><u>                              }while(0)</u></td></tr>
+<tr><th id="280">280</th><td></td></tr>
+<tr><th id="281">281</th><td><em>char</em> **<dfn class="decl" id="target_environment" title='target_environment' data-ref="target_environment">target_environment</dfn> (<b>struct</b> <a class="type" href="filedef.h.html#file" title='file' data-ref="file">file</a> *<dfn class="local col6 decl" id="96file" title='file' data-type='struct file *' data-ref="96file">file</dfn>);</td></tr>
+<tr><th id="282">282</th><td></td></tr>
+<tr><th id="283">283</th><td><b>struct</b> <a class="type" href="#pattern_var" title='pattern_var' data-ref="pattern_var">pattern_var</a> *<dfn class="decl" id="create_pattern_var" title='create_pattern_var' data-ref="create_pattern_var">create_pattern_var</dfn> (<em>const</em> <em>char</em> *<dfn class="local col7 decl" id="97target" title='target' data-type='const char *' data-ref="97target">target</dfn>,</td></tr>
+<tr><th id="284">284</th><td>                                        <em>const</em> <em>char</em> *<dfn class="local col8 decl" id="98suffix" title='suffix' data-type='const char *' data-ref="98suffix">suffix</dfn>);</td></tr>
+<tr><th id="285">285</th><td></td></tr>
+<tr><th id="286">286</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="export_all_variables" title='export_all_variables' data-ref="export_all_variables">export_all_variables</dfn>;</td></tr>
+<tr><th id="287">287</th><td></td></tr>
+<tr><th id="288">288</th><td><u>#define <dfn class="macro" id="_M/MAKELEVEL_NAME" data-ref="_M/MAKELEVEL_NAME">MAKELEVEL_NAME</dfn> "MAKELEVEL"</u></td></tr>
+<tr><th id="289">289</th><td><u>#define <dfn class="macro" id="_M/MAKELEVEL_LENGTH" data-ref="_M/MAKELEVEL_LENGTH">MAKELEVEL_LENGTH</dfn> (CSTRLEN (MAKELEVEL_NAME))</u></td></tr>
+<tr><th id="290">290</th><td></td></tr>
+<tr><th id="291">291</th><td><u>#<span data-ppcond="17">endif</span> /*VARIABLE_H*/</u></td></tr>
+<tr><th id="292">292</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='commands.c.html'>remake/commands.c</a><br/>Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

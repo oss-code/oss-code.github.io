@@ -1,0 +1,11 @@
+<dec f='remake/dep.h' l='140' type='enum update_status update_goal_chain(struct goaldep * goals)'/>
+<use f='remake/main.c' l='2189' u='c' c='main'/>
+<use f='remake/main.c' l='2523' u='c' c='main'/>
+<def f='remake/remake.c' l='89' ll='275' type='enum update_status update_goal_chain(struct goaldep * goaldeps)'/>
+<doc f='remake/remake.c' l='81'>/* Remake all the goals in the &apos;struct dep&apos; chain GOALS.  Return -1 if nothing
+   was done, 0 if all goals were updated successfully, or 1 if a goal failed.
+
+   If rebuilding_makefiles is nonzero, these goals are makefiles, so -t, -q,
+   and -n should be disabled for them unless they were also command-line
+   targets, and we should only make one goal at a time and return as soon as
+   one goal whose &apos;changed&apos; member is nonzero is successfully made.  */</doc>

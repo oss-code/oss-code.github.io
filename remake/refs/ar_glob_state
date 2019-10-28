@@ -1,0 +1,8 @@
+<def f='remake/ar.c' l='198' ll='208'/>
+<size>40</size>
+<doc f='remake/ar.c' l='191'>/* On VMS, (object) modules in libraries do not have suffixes. That is, to
+   find a match for a pattern, the pattern must not have any suffix. So the
+   suffix of the pattern is saved and the pattern is stripped (ar_glob).
+   If there is a match and the match, which is a module name, is added to
+   the chain, the saved suffix is added back to construct a source filename
+   (ar_glob_match). */</doc>

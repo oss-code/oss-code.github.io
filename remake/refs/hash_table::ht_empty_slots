@@ -1,0 +1,10 @@
+<dec f='remake/hash.h' l='50' type='unsigned long'/>
+<offset>448</offset>
+<doc f='remake/hash.h' l='50'>/* empty slots not including deleted slots */</doc>
+<use f='remake/hash.c' l='45' u='w' c='hash_init'/>
+<use f='remake/hash.c' l='142' u='w' c='hash_insert_at'/>
+<use f='remake/hash.c' l='146' u='r' c='hash_insert_at'/>
+<use f='remake/hash.c' l='189' u='w' c='hash_free_items'/>
+<use f='remake/hash.c' l='203' u='w' c='hash_delete_items'/>
+<use f='remake/hash.c' l='214' u='w' c='hash_free'/>
+<use f='remake/hash.c' l='272' u='w' c='hash_rehash'/>

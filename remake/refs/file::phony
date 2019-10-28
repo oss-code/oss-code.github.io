@@ -1,0 +1,22 @@
+<dec f='remake/filedef.h' l='104' type='unsigned int'/>
+<offset>1545</offset>
+<doc f='remake/filedef.h' l='104'>/* Nonzero if this is a phony file
+                                   i.e., a prerequisite of .PHONY.  */</doc>
+<use f='remake/commands.c' l='715' u='r' c='delete_target'/>
+<use f='remake/debugger/command/info.h' l='153' u='r' c='dbg_cmd_info_target_entry'/>
+<use f='remake/debugger/fns.c' l='327' u='r' c='print_debugger_location'/>
+<use f='remake/file.c' l='170' u='w' c='rehash_file'/>
+<use f='remake/file.c' l='170' u='r' c='rehash_file'/>
+<use f='remake/file.c' l='559' u='w' c='snap_deps'/>
+<use f='remake/file.c' l='783' u='r' c='print_target_props'/>
+<use f='remake/file.c' l='940' u='r' c='print_file'/>
+<use f='remake/print.c' l='347' u='r' c='print_target_stack_entry'/>
+<use f='remake/remake.c' l='232' u='r' c='update_goal_chain'/>
+<use f='remake/remake.c' l='570' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='733' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='985' u='r' c='notice_finished_file'/>
+<use f='remake/remake.c' l='1009' u='r' c='notice_finished_file'/>
+<use f='remake/remake.c' l='1071' u='r' c='notice_finished_file'/>
+<use f='remake/remake.c' l='1106' u='r' c='check_dep'/>
+<use f='remake/remake.c' l='1123' u='r' c='check_dep'/>
+<use f='remake/remake.c' l='1299' u='r' c='remake_file'/>

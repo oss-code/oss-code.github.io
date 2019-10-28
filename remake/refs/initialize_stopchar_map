@@ -1,0 +1,5 @@
+<dec f='remake/main.c' l='43' type='void initialize_stopchar_map()'/>
+<use f='remake/main.c' l='1027' u='c' c='main'/>
+<def f='remake/misc.c' l='634' ll='669' type='void initialize_stopchar_map()'/>
+<doc f='remake/misc.c' l='631'>/* This character map locate stop chars when parsing GNU makefiles.
+   Each element is true if we should stop parsing on that character.  */</doc>

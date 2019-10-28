@@ -1,0 +1,9 @@
+<dec f='remake/variable.h' l='215' type='struct variable * assign_variable_definition(struct variable * v, const char * line)'/>
+<use f='remake/read.c' l='1877' u='c' c='record_target_var'/>
+<def f='remake/variable.c' l='1600' ll='1618' type='struct variable * assign_variable_definition(struct variable * v, const char * line)'/>
+<use f='remake/variable.c' l='1645' u='c' c='try_variable_definition'/>
+<doc f='remake/variable.c' l='1594'>/* Try to interpret LINE (a null-terminated string) as a variable definition.
+
+   If LINE was recognized as a variable definition, a pointer to its &apos;struct
+   variable&apos; is returned.  If LINE is not a variable definition, NULL is
+   returned.  */</doc>

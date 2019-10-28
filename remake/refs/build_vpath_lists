@@ -1,0 +1,7 @@
+<dec f='remake/makeint.h' l='542' type='void build_vpath_lists()'/>
+<dec f='remake/make.h' l='388' type='void build_vpath_lists()'/>
+<use f='remake/main.c' l='2077' u='c' c='main'/>
+<def f='remake/vpath.c' l='54' ll='136' type='void build_vpath_lists()'/>
+<doc f='remake/vpath.c' l='50'>/* Reverse the chain of selective VPATH lists so they will be searched in the
+   order given in the makefiles and construct the list from the VPATH
+   variable.  */</doc>

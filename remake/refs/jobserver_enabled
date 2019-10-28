@@ -1,0 +1,6 @@
+<dec f='remake/os.h' l='23' type='unsigned int jobserver_enabled()'/>
+<use f='remake/job.c' l='906' u='c' c='free_child'/>
+<use f='remake/job.c' l='1669' u='c' c='new_job'/>
+<doc f='remake/os.h' l='22'>/* Returns 1 if the jobserver is enabled, else 0.  */</doc>
+<use f='remake/main.c' l='3355' u='c' c='clean_jobserver'/>
+<def f='remake/posixos.c' l='127' ll='131' type='unsigned int jobserver_enabled()'/>

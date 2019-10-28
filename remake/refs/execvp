@@ -1,0 +1,6 @@
+<dec f='include/unistd.h' l='581' type='int execvp(const char * __file, char *const * __argv)'/>
+<doc f='include/unistd.h' l='579'>/* Execute FILE, searching in the `PATH&apos; environment variable if it contains
+   no slashes, with arguments ARGV and environment from `environ&apos;.  */</doc>
+<use f='remake/debugger/command/run.h' l='21' u='c' c='dbg_cmd_run'/>
+<use f='remake/job.c' l='2173' u='c' c='exec_command'/>
+<use f='remake/job.c' l='2242' u='c' c='exec_command'/>

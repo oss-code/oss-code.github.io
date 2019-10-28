@@ -1,0 +1,14 @@
+<dec f='remake/hash.h' l='65' type='void * hash_insert_at(struct hash_table * ht, const void * item, const void * slot)'/>
+<use f='remake/commands.c' l='254' u='c' c='set_file_variables'/>
+<use f='remake/dir.c' l='474' u='c' c='find_directory'/>
+<use f='remake/dir.c' l='574' u='c' c='find_directory'/>
+<use f='remake/dir.c' l='736' u='c' c='dir_contents_file_exists_p'/>
+<use f='remake/file.c' l='93' u='c' c='rehash_file'/>
+<use f='remake/file_basic.c' l='174' u='c' c='enter_file'/>
+<use f='remake/hash.c' l='130' u='c' c='hash_insert'/>
+<def f='remake/hash.c' l='134' ll='153' type='void * hash_insert_at(struct hash_table * ht, const void * item, const void * slot)'/>
+<use f='remake/profile.c' l='93' u='c' c='add_profile_entry'/>
+<use f='remake/strcache.c' l='204' u='c' c='add_hash'/>
+<use f='remake/variable.c' l='312' u='c' c='define_variable_in_set'/>
+<use f='remake/variable.c' l='810' u='c' c='merge_variable_sets'/>
+<use f='remake/variable.c' l='1106' u='c' c='target_environment'/>

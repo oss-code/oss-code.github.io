@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>gnuremake.h source code [remake/gnuremake.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/gnuremake.h'; var root_path = '..'; var data_path = '../../data';</script>
+<script src='../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='./'>remake</a>/<a href='gnuremake.h.html'>gnuremake.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* External interfaces usable by dynamic objects loaded into GNU Make.</i></td></tr>
+<tr><th id="2">2</th><td><i>   --THIS API IS A "TECHNOLOGY PREVIEW" ONLY.  IT IS NOT A STABLE INTERFACE--</i></td></tr>
+<tr><th id="3">3</th><td><i></i></td></tr>
+<tr><th id="4">4</th><td><i>Copyright (C) 2013-2016 Free Software Foundation, Inc.</i></td></tr>
+<tr><th id="5">5</th><td><i>This file is part of GNU Make.</i></td></tr>
+<tr><th id="6">6</th><td><i></i></td></tr>
+<tr><th id="7">7</th><td><i>GNU Make is free software; you can redistribute it and/or modify it under the</i></td></tr>
+<tr><th id="8">8</th><td><i>terms of the GNU General Public License as published by the Free Software</i></td></tr>
+<tr><th id="9">9</th><td><i>Foundation; either version 3 of the License, or (at your option) any later</i></td></tr>
+<tr><th id="10">10</th><td><i>version.</i></td></tr>
+<tr><th id="11">11</th><td><i></i></td></tr>
+<tr><th id="12">12</th><td><i>GNU Make is distributed in the hope that it will be useful, but WITHOUT ANY</i></td></tr>
+<tr><th id="13">13</th><td><i>WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR</i></td></tr>
+<tr><th id="14">14</th><td><i>A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</i></td></tr>
+<tr><th id="15">15</th><td><i></i></td></tr>
+<tr><th id="16">16</th><td><i>You should have received a copy of the GNU General Public License along with</i></td></tr>
+<tr><th id="17">17</th><td><i>this program.  If not, see &lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.  */</i></td></tr>
+<tr><th id="18">18</th><td></td></tr>
+<tr><th id="19">19</th><td><u>#<span data-ppcond="19">ifndef</span> <span class="macro" data-ref="_M/_REMAKE_GNUMAKE_H_">_REMAKE_GNUMAKE_H_</span></u></td></tr>
+<tr><th id="20">20</th><td><u>#define <dfn class="macro" id="_M/_REMAKE_GNUMAKE_H_" data-ref="_M/_REMAKE_GNUMAKE_H_">_REMAKE_GNUMAKE_H_</dfn></u></td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><i>/* Specify the location of elements read from makefiles.  */</i></td></tr>
+<tr><th id="23">23</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="24">24</th><td>  {</td></tr>
+<tr><th id="25">25</th><td>    <em>const</em> <em>char</em> *<dfn class="decl" id="(anonymous)::filenm" title='(anonymous struct)::filenm' data-ref="(anonymous)::filenm">filenm</dfn>;</td></tr>
+<tr><th id="26">26</th><td>    <em>unsigned</em> <em>long</em> <dfn class="decl" id="(anonymous)::lineno" title='(anonymous struct)::lineno' data-ref="(anonymous)::lineno">lineno</dfn>;</td></tr>
+<tr><th id="27">27</th><td>    <em>unsigned</em> <em>long</em> <dfn class="decl" id="(anonymous)::offset" title='(anonymous struct)::offset' data-ref="(anonymous)::offset">offset</dfn>;</td></tr>
+<tr><th id="28">28</th><td>  } <dfn class="typedef" id="gmk_floc" title='gmk_floc' data-type='struct gmk_floc' data-ref="gmk_floc">gmk_floc</dfn>;</td></tr>
+<tr><th id="29">29</th><td></td></tr>
+<tr><th id="30">30</th><td><b>typedef</b> <em>char</em> *(*<dfn class="typedef" id="gmk_func_ptr" title='gmk_func_ptr' data-type='char *(*)(const char *, unsigned int, char **)' data-ref="gmk_func_ptr">gmk_func_ptr</dfn>)(<em>const</em> <em>char</em> *<dfn class="local col2 decl" id="2nm" title='nm' data-type='const char *' data-ref="2nm">nm</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col3 decl" id="3argc" title='argc' data-type='unsigned int' data-ref="3argc">argc</dfn>, <em>char</em> **<dfn class="local col4 decl" id="4argv" title='argv' data-type='char **' data-ref="4argv">argv</dfn>);</td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><u>#<span data-ppcond="32">ifdef</span> <span class="macro" data-ref="_M/_WIN32">_WIN32</span></u></td></tr>
+<tr><th id="33">33</th><td><u># ifdef GMK_BUILDING_MAKE</u></td></tr>
+<tr><th id="34">34</th><td><u>#  define GMK_EXPORT  __declspec(dllexport)</u></td></tr>
+<tr><th id="35">35</th><td><u># else</u></td></tr>
+<tr><th id="36">36</th><td><u>#  define GMK_EXPORT  __declspec(dllimport)</u></td></tr>
+<tr><th id="37">37</th><td><u># endif</u></td></tr>
+<tr><th id="38">38</th><td><u>#<span data-ppcond="32">else</span></u></td></tr>
+<tr><th id="39">39</th><td><u># define <dfn class="macro" id="_M/GMK_EXPORT" data-ref="_M/GMK_EXPORT">GMK_EXPORT</dfn></u></td></tr>
+<tr><th id="40">40</th><td><u>#<span data-ppcond="32">endif</span></u></td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td><i>/* Free memory returned by the gmk_expand() function.  */</i></td></tr>
+<tr><th id="43">43</th><td><a class="macro" href="#39" title="" data-ref="_M/GMK_EXPORT">GMK_EXPORT</a> <em>void</em> <dfn class="decl" id="gmk_free" title='gmk_free' data-ref="gmk_free">gmk_free</dfn> (<em>char</em> *<dfn class="local col5 decl" id="5str" title='str' data-type='char *' data-ref="5str">str</dfn>);</td></tr>
+<tr><th id="44">44</th><td></td></tr>
+<tr><th id="45">45</th><td><i>/* Allocate memory in GNU make's context.  */</i></td></tr>
+<tr><th id="46">46</th><td><a class="macro" href="#39" title="" data-ref="_M/GMK_EXPORT">GMK_EXPORT</a> <em>char</em> *<dfn class="decl" id="gmk_alloc" title='gmk_alloc' data-ref="gmk_alloc">gmk_alloc</dfn> (<em>unsigned</em> <em>int</em> <dfn class="local col6 decl" id="6len" title='len' data-type='unsigned int' data-ref="6len">len</dfn>);</td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td><i>/* Run $(eval ...) on the provided string BUFFER.  */</i></td></tr>
+<tr><th id="49">49</th><td><a class="macro" href="#39" title="" data-ref="_M/GMK_EXPORT">GMK_EXPORT</a> <em>void</em> <dfn class="decl" id="gmk_eval" title='gmk_eval' data-ref="gmk_eval">gmk_eval</dfn> (<em>const</em> <em>char</em> *<dfn class="local col7 decl" id="7buffer" title='buffer' data-type='const char *' data-ref="7buffer">buffer</dfn>, <em>const</em> <a class="typedef" href="#gmk_floc" title='gmk_floc' data-type='struct gmk_floc' data-ref="gmk_floc">gmk_floc</a> *<dfn class="local col8 decl" id="8floc" title='floc' data-type='const gmk_floc *' data-ref="8floc">floc</dfn>);</td></tr>
+<tr><th id="50">50</th><td></td></tr>
+<tr><th id="51">51</th><td><i>/* Run GNU make expansion on the provided string STR.</i></td></tr>
+<tr><th id="52">52</th><td><i>   Returns an allocated buffer that the caller must free with gmk_free().  */</i></td></tr>
+<tr><th id="53">53</th><td><a class="macro" href="#39" title="" data-ref="_M/GMK_EXPORT">GMK_EXPORT</a> <em>char</em> *<dfn class="decl" id="gmk_expand" title='gmk_expand' data-ref="gmk_expand">gmk_expand</dfn> (<em>const</em> <em>char</em> *<dfn class="local col9 decl" id="9str" title='str' data-type='const char *' data-ref="9str">str</dfn>);</td></tr>
+<tr><th id="54">54</th><td></td></tr>
+<tr><th id="55">55</th><td><i>/* Register a new GNU make function NAME (maximum of 255 chars long).</i></td></tr>
+<tr><th id="56">56</th><td><i>   When the function is expanded in the makefile, FUNC will be invoked with</i></td></tr>
+<tr><th id="57">57</th><td><i>   the appropriate arguments.</i></td></tr>
+<tr><th id="58">58</th><td><i></i></td></tr>
+<tr><th id="59">59</th><td><i>   The return value of FUNC must be either NULL, in which case it expands to</i></td></tr>
+<tr><th id="60">60</th><td><i>   the empty string, or a pointer to the result of the expansion in a string</i></td></tr>
+<tr><th id="61">61</th><td><i>   created by gmk_alloc().  GNU make will free the memory when it's done.</i></td></tr>
+<tr><th id="62">62</th><td><i></i></td></tr>
+<tr><th id="63">63</th><td><i>   MIN_ARGS is the minimum number of arguments the function requires.</i></td></tr>
+<tr><th id="64">64</th><td><i>   MAX_ARGS is the maximum number of arguments (or 0 if there's no maximum).</i></td></tr>
+<tr><th id="65">65</th><td><i>   MIN_ARGS and MAX_ARGS may not exceed 255.</i></td></tr>
+<tr><th id="66">66</th><td><i></i></td></tr>
+<tr><th id="67">67</th><td><i>   The FLAGS value may be GMK_FUNC_DEFAULT, or one or more of the following</i></td></tr>
+<tr><th id="68">68</th><td><i>   flags OR'd together:</i></td></tr>
+<tr><th id="69">69</th><td><i></i></td></tr>
+<tr><th id="70">70</th><td><i>     GMK_FUNC_NOEXPAND: the arguments to the function will be not be expanded</i></td></tr>
+<tr><th id="71">71</th><td><i>                        before FUNC is called.</i></td></tr>
+<tr><th id="72">72</th><td><i>*/</i></td></tr>
+<tr><th id="73">73</th><td><a class="macro" href="#39" title="" data-ref="_M/GMK_EXPORT">GMK_EXPORT</a> <em>void</em> <dfn class="decl" id="gmk_add_function" title='gmk_add_function' data-ref="gmk_add_function">gmk_add_function</dfn> (<em>const</em> <em>char</em> *<dfn class="local col0 decl" id="10name" title='name' data-type='const char *' data-ref="10name">name</dfn>, <a class="typedef" href="#gmk_func_ptr" title='gmk_func_ptr' data-type='char *(*)(const char *, unsigned int, char **)' data-ref="gmk_func_ptr">gmk_func_ptr</a> <dfn class="local col1 decl" id="11func" title='func' data-type='gmk_func_ptr' data-ref="11func">func</dfn>,</td></tr>
+<tr><th id="74">74</th><td>                                  <em>unsigned</em> <em>int</em> <dfn class="local col2 decl" id="12min_args" title='min_args' data-type='unsigned int' data-ref="12min_args">min_args</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col3 decl" id="13max_args" title='max_args' data-type='unsigned int' data-ref="13max_args">max_args</dfn>,</td></tr>
+<tr><th id="75">75</th><td>                                  <em>unsigned</em> <em>int</em> <dfn class="local col4 decl" id="14flags" title='flags' data-type='unsigned int' data-ref="14flags">flags</dfn>);</td></tr>
+<tr><th id="76">76</th><td></td></tr>
+<tr><th id="77">77</th><td><u>#define <dfn class="macro" id="_M/GMK_FUNC_DEFAULT" data-ref="_M/GMK_FUNC_DEFAULT">GMK_FUNC_DEFAULT</dfn>    0x00</u></td></tr>
+<tr><th id="78">78</th><td><u>#define <dfn class="macro" id="_M/GMK_FUNC_NOEXPAND" data-ref="_M/GMK_FUNC_NOEXPAND">GMK_FUNC_NOEXPAND</dfn>   0x01</u></td></tr>
+<tr><th id="79">79</th><td></td></tr>
+<tr><th id="80">80</th><td><u>#<span data-ppcond="19">endif</span>  /* _REMAKE_GNUMAKE_H_ */</u></td></tr>
+<tr><th id="81">81</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='alloc.c.html'>remake/alloc.c</a><br/>Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

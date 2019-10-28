@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>gettext.h source code [remake/gettext.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/gettext.h'; var root_path = '..'; var data_path = '../../data';</script>
+<script src='../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='./'>remake</a>/<a href='gettext.h.html'>gettext.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Convenience header for conditional use of GNU &lt;libintl.h&gt;.</i></td></tr>
+<tr><th id="2">2</th><td><i>Copyright (C) 1995-2016 Free Software Foundation, Inc.</i></td></tr>
+<tr><th id="3">3</th><td><i>This file is part of GNU Make.</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>GNU Make is free software; you can redistribute it and/or modify it under the</i></td></tr>
+<tr><th id="6">6</th><td><i>terms of the GNU General Public License as published by the Free Software</i></td></tr>
+<tr><th id="7">7</th><td><i>Foundation; either version 3 of the License, or (at your option) any later</i></td></tr>
+<tr><th id="8">8</th><td><i>version.</i></td></tr>
+<tr><th id="9">9</th><td><i></i></td></tr>
+<tr><th id="10">10</th><td><i>GNU Make is distributed in the hope that it will be useful, but WITHOUT ANY</i></td></tr>
+<tr><th id="11">11</th><td><i>WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR</i></td></tr>
+<tr><th id="12">12</th><td><i>A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</i></td></tr>
+<tr><th id="13">13</th><td><i></i></td></tr>
+<tr><th id="14">14</th><td><i>You should have received a copy of the GNU General Public License along with</i></td></tr>
+<tr><th id="15">15</th><td><i>this program.  If not, see &lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.  */</i></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><u>#<span data-ppcond="17">ifndef</span> <span class="macro" data-ref="_M/_LIBGETTEXT_H">_LIBGETTEXT_H</span></u></td></tr>
+<tr><th id="18">18</th><td><u>#define <dfn class="macro" id="_M/_LIBGETTEXT_H" data-ref="_M/_LIBGETTEXT_H">_LIBGETTEXT_H</dfn> 1</u></td></tr>
+<tr><th id="19">19</th><td></td></tr>
+<tr><th id="20">20</th><td><i>/* NLS can be disabled through the configure --disable-nls option.  */</i></td></tr>
+<tr><th id="21">21</th><td><u>#<span data-ppcond="21">if</span> <a class="macro" href="config.h.html#26" title="1" data-ref="_M/ENABLE_NLS">ENABLE_NLS</a></u></td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><i>/* Get declarations of GNU message catalog functions.  */</i></td></tr>
+<tr><th id="24">24</th><td><u># include <a href="../include/libintl.h.html">&lt;libintl.h&gt;</a></u></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><u>#<span data-ppcond="21">else</span></u></td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><i>/* Disabled NLS.</i></td></tr>
+<tr><th id="29">29</th><td><i>   The casts to 'const char *' serve the purpose of producing warnings</i></td></tr>
+<tr><th id="30">30</th><td><i>   for invalid uses of the value returned from these functions.</i></td></tr>
+<tr><th id="31">31</th><td><i>   On pre-ANSI systems without 'const', the config.h file is supposed to</i></td></tr>
+<tr><th id="32">32</th><td><i>   contain "#define const".  */</i></td></tr>
+<tr><th id="33">33</th><td><u># define gettext(Msgid) ((const char *) (Msgid))</u></td></tr>
+<tr><th id="34">34</th><td><u># define dgettext(Domainname, Msgid) ((const char *) (Msgid))</u></td></tr>
+<tr><th id="35">35</th><td><u># define dcgettext(Domainname, Msgid, Category) ((const char *) (Msgid))</u></td></tr>
+<tr><th id="36">36</th><td><u># define ngettext(Msgid1, Msgid2, N) \</u></td></tr>
+<tr><th id="37">37</th><td><u>    ((N) == 1 ? (const char *) (Msgid1) : (const char *) (Msgid2))</u></td></tr>
+<tr><th id="38">38</th><td><u># define dngettext(Domainname, Msgid1, Msgid2, N) \</u></td></tr>
+<tr><th id="39">39</th><td><u>    ((N) == 1 ? (const char *) (Msgid1) : (const char *) (Msgid2))</u></td></tr>
+<tr><th id="40">40</th><td><u># define dcngettext(Domainname, Msgid1, Msgid2, N, Category) \</u></td></tr>
+<tr><th id="41">41</th><td><u>    ((N) == 1 ? (const char *) (Msgid1) : (const char *) (Msgid2))</u></td></tr>
+<tr><th id="42">42</th><td><u># define textdomain(Domainname) ((const char *) (Domainname))</u></td></tr>
+<tr><th id="43">43</th><td><u># define bindtextdomain(Domainname, Dirname) ((const char *) (Dirname))</u></td></tr>
+<tr><th id="44">44</th><td><u># define bind_textdomain_codeset(Domainname, Codeset) ((const char *) (Codeset))</u></td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td><u>#<span data-ppcond="21">endif</span></u></td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td><i>/* A pseudo function call that serves as a marker for the automated</i></td></tr>
+<tr><th id="49">49</th><td><i>   extraction of messages, but does not call gettext().  The run-time</i></td></tr>
+<tr><th id="50">50</th><td><i>   translation is done at a different place in the code.</i></td></tr>
+<tr><th id="51">51</th><td><i>   The argument, String, should be a literal string.  Concatenated strings</i></td></tr>
+<tr><th id="52">52</th><td><i>   and other string expressions won't work.</i></td></tr>
+<tr><th id="53">53</th><td><i>   The macro's expansion is not parenthesized, so that it is suitable as</i></td></tr>
+<tr><th id="54">54</th><td><i>   initializer for static 'char[]' or 'const char[]' variables.  */</i></td></tr>
+<tr><th id="55">55</th><td><u>#define <dfn class="macro" id="_M/gettext_noop" data-ref="_M/gettext_noop">gettext_noop</dfn>(String) String</u></td></tr>
+<tr><th id="56">56</th><td></td></tr>
+<tr><th id="57">57</th><td><u>#<span data-ppcond="17">endif</span> /* _LIBGETTEXT_H */</u></td></tr>
+<tr><th id="58">58</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='alloc.c.html'>remake/alloc.c</a><br/>Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

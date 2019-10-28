@@ -1,0 +1,8 @@
+<dec f='remake/expand.h' l='69' type='char * variable_expand_set(char * psz_line, variable_set_list_t * p_file_set)'/>
+<use f='remake/commands.c' l='807' u='c' c='print_commands'/>
+<doc f='remake/expand.h' l='68'>/** Expand PSZ_LINE. Expansion uses P_FILE_SET if it is not NULL. */</doc>
+<use f='remake/debugger/command/break.h' l='56' u='c' c='dbg_cmd_break'/>
+<use f='remake/debugger/command/continue.h' l='31' u='c' c='dbg_cmd_continue'/>
+<use f='remake/debugger/fns.c' l='450' u='c' c='dbg_cmd_show_exp'/>
+<def f='remake/expand.c' l='484' ll='497' type='char * variable_expand_set(char * psz_line, variable_set_list_t * p_file_vars)'/>
+<doc f='remake/expand.c' l='483'>/** Expand PSZ_LINE. Expansion uses P_FILE_SET if it is not NULL. */</doc>

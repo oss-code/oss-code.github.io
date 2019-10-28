@@ -1,0 +1,11 @@
+<dec f='remake/filedef.h' l='132' type='void set_command_state(struct file * file, enum cmd_state state)'/>
+<use f='remake/commands.c' l='566' u='c' c='execute_file_commands'/>
+<def f='remake/file.c' l='628' ll='637' type='void set_command_state(struct file * file, enum cmd_state state)'/>
+<doc f='remake/file.c' l='626'>/* Set the &apos;command_state&apos; member of FILE and all its &apos;also_make&apos;s.  */</doc>
+<use f='remake/job.c' l='1141' u='c' c='start_job_command'/>
+<use f='remake/job.c' l='1420' u='c' c='start_job_command'/>
+<use f='remake/job.c' l='1457' u='c' c='start_waiting_job'/>
+<use f='remake/remake.c' l='748' u='c' c='update_file_1'/>
+<use f='remake/remake.c' l='787' u='c' c='update_file_1'/>
+<use f='remake/remake.c' l='1163' u='c' c='check_dep'/>
+<use f='remake/remake.c' l='1216' u='c' c='check_dep'/>

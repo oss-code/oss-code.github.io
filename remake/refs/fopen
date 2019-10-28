@@ -1,0 +1,12 @@
+<dec f='include/stdio.h' l='272' type='FILE * fopen(const char *restrict __filename, const char *restrict __modes)'/>
+<doc f='include/stdio.h' l='268'>/* Open a file and create a new stream for it.
+
+   This function is a possible cancellation point and therefore not
+   marked with __THROW.  */</doc>
+<use f='remake/debugger/command/source.h' l='34' u='c' c='dbg_cmd_source'/>
+<use f='remake/debugger/command/write.h' l='93' u='c' c='dbg_cmd_write'/>
+<use f='remake/function.c' l='2233' u='c' c='func_file'/>
+<use f='remake/function.c' l='2261' u='c' c='func_file'/>
+<use f='remake/profile.c' l='162' u='c' c='init_callgrind'/>
+<use f='remake/read.c' l='334' u='c' c='eval_makefile'/>
+<use f='remake/read.c' l='365' u='c' c='eval_makefile'/>

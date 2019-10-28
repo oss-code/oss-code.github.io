@@ -1,0 +1,17 @@
+<dec f='remake/filedef.h' l='128' type='void remove_intermediates(int sig)'/>
+<use f='remake/commands.c' l='682' u='c' c='fatal_error_signal'/>
+<dec f='remake/file.h' l='45' type='void remove_intermediates(int sig)'/>
+<doc f='remake/file.h' l='38'>/*!
+  Remove all nonprecious intermediate files.
+
+  @param sig if is nonzero, this was caused by a fatal signal,
+  meaning that a different message will be printed, and
+  the message will go to stderr rather than stdout.
+*/</doc>
+<def f='remake/file.c' l='199' ll='272' type='void remove_intermediates(int sig)'/>
+<doc f='remake/file.c' l='194'>/* Remove all nonprecious intermediate files.
+   If SIG is nonzero, this was caused by a fatal signal,
+   meaning that a different message will be printed, and
+   the message will go to stderr rather than stdout.  */</doc>
+<use f='remake/main.c' l='2278' u='c' c='main'/>
+<use f='remake/main.c' l='3409' u='c' c='die'/>

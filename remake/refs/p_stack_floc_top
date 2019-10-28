@@ -1,0 +1,22 @@
+<dec f='remake/trace.h' l='106' type='floc_stack_node_t *'/>
+<doc f='remake/trace.h' l='105'>/** Pointer to top of current target floc stack */</doc>
+<use f='remake/debugger/command/where.h' l='36' u='r' c='dbg_cmd_where'/>
+<use f='remake/debugger/cmd.c' l='420' u='r' c='enter_debugger'/>
+<use f='remake/debugger/fns.c' l='339' u='r' c='print_debugger_location'/>
+<use f='remake/debugger/fns.c' l='339' u='r' c='print_debugger_location'/>
+<use f='remake/debugger/fns.c' l='341' u='r' c='print_debugger_location'/>
+<use f='remake/debugger/stack.c' l='46' u='r' c='dbg_stack_size'/>
+<use f='remake/debugger/stack.c' l='48' u='r' c='dbg_stack_size'/>
+<use f='remake/debugger/stack.c' l='98' u='r' c='dbg_adjust_frame'/>
+<use f='remake/debugger/stack.c' l='100' u='r' c='dbg_adjust_frame'/>
+<use f='remake/print.c' l='131' u='r' c='err_with_stack'/>
+<use f='remake/print.c' l='172' u='r' c='fatal_err'/>
+<use f='remake/print.c' l='378' u='r' c='print_floc_stack'/>
+<def f='remake/trace.c' l='38' type='floc_stack_node_t *'/>
+<use f='remake/trace.c' l='89' u='r' c='trace_push_floc'/>
+<use f='remake/trace.c' l='90' u='w' c='trace_push_floc'/>
+<use f='remake/trace.c' l='97' u='r' c='trace_pop_floc'/>
+<use f='remake/trace.c' l='99' u='r' c='trace_pop_floc'/>
+<use f='remake/trace.c' l='100' u='r' c='trace_pop_floc'/>
+<use f='remake/trace.c' l='101' u='w' c='trace_pop_floc'/>
+<doc f='remake/trace.c' l='37'>/** Pointer to top of current target floc stack */</doc>

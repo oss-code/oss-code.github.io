@@ -1,0 +1,25 @@
+<dec f='include/string.h' l='408' type='char * strerror(int __errnum)'/>
+<doc f='include/string.h' l='407'>/* Return a string describing the meaning of the `errno&apos; code in ERRNUM.  */</doc>
+<use f='remake/debugger/command/chdir.h' l='28' u='c' c='dbg_cmd_chdir'/>
+<use f='remake/debugger/command/pwd.h' l='26' u='c' c='dbg_cmd_pwd'/>
+<use f='remake/debugger/command/run.h' l='12' u='c' c='dbg_cmd_run'/>
+<use f='remake/debugger/command/source.h' l='19' u='c' c='dbg_cmd_source'/>
+<use f='remake/debugger/command/source.h' l='50' u='c' c='dbg_cmd_source'/>
+<use f='remake/debugger/fns.c' l='493' u='c' c='shell_rc_status'/>
+<use f='remake/function.c' l='2235' u='c' c='func_file'/>
+<use f='remake/function.c' l='2235' u='c' c='func_file'/>
+<use f='remake/function.c' l='2243' u='c' c='func_file'/>
+<use f='remake/function.c' l='2243' u='c' c='func_file'/>
+<use f='remake/function.c' l='2246' u='c' c='func_file'/>
+<use f='remake/function.c' l='2246' u='c' c='func_file'/>
+<use f='remake/function.c' l='2266' u='c' c='func_file'/>
+<use f='remake/function.c' l='2266' u='c' c='func_file'/>
+<use f='remake/function.c' l='2278' u='c' c='func_file'/>
+<use f='remake/function.c' l='2278' u='c' c='func_file'/>
+<use f='remake/function.c' l='2283' u='c' c='func_file'/>
+<use f='remake/function.c' l='2283' u='c' c='func_file'/>
+<use f='remake/output.c' l='711' u='c' c='perror_with_name'/>
+<use f='remake/output.c' l='720' u='c' c='pfatal_with_name'/>
+<use f='remake/read.c' l='350' u='c' c='eval_makefile'/>
+<use f='remake/remake.c' l='294' u='c' c='show_goal_error'/>
+<use f='remake/remake.c' l='294' u='c' c='show_goal_error'/>

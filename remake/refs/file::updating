@@ -1,0 +1,16 @@
+<dec f='remake/filedef.h' l='100' type='unsigned int'/>
+<offset>1541</offset>
+<doc f='remake/filedef.h' l='100'>/* Nonzero while updating deps of this file */</doc>
+<use f='remake/debugger/break.c' l='89' u='r' c='add_breakpoint'/>
+<use f='remake/file.c' l='166' u='w' c='rehash_file'/>
+<use f='remake/file.c' l='166' u='r' c='rehash_file'/>
+<use f='remake/file.c' l='406' u='w' c='expand_deps'/>
+<use f='remake/file.c' l='488' u='w' c='reset_updating'/>
+<use f='remake/remake.c' l='49' u='w' c='update_file_1'/>
+<use f='remake/remake.c' l='53' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='51' u='w' c='update_file_1'/>
+<use f='remake/remake.c' l='51' u='w' c='update_file_1'/>
+<use f='remake/remake.c' l='49' u='w' c='check_dep'/>
+<use f='remake/remake.c' l='53' u='r' c='check_dep'/>
+<use f='remake/remake.c' l='51' u='w' c='check_dep'/>
+<use f='remake/remake.c' l='51' u='w' c='check_dep'/>

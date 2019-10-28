@@ -1,0 +1,6 @@
+<dec f='remake/variable.h' l='281' type='char ** target_environment(struct file * file)'/>
+<use f='remake/job.c' l='1254' u='c' c='start_job_command'/>
+<def f='remake/variable.c' l='1019' ll='1156' type='char ** target_environment(struct file * file)'/>
+<doc f='remake/variable.c' l='1015'>/* Create a new environment for FILE&apos;s commands.
+   If FILE is nil, this is for the &apos;shell&apos; function.
+   The child&apos;s MAKELEVEL variable is incremented.  */</doc>

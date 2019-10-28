@@ -1,0 +1,20 @@
+<dec f='remake/debug.h' l='77' type='int'/>
+<doc f='remake/debug.h' l='72'>/*!
+  If 0 (or false) we are not in the debugger command read loop.
+  If 1 (or true) we are in the debugger command read loop.
+  If DEBUGGER_QUIT_RC we&apos;ve requested to quit.
+ */</doc>
+<use f='remake/debugger/command/quit.h' l='25' u='w' c='dbg_cmd_quit'/>
+<use f='remake/debugger/cmd.c' l='372' u='r' c='enter_debugger'/>
+<use f='remake/debugger/cmd.c' l='446' u='w' c='enter_debugger'/>
+<use f='remake/debugger/cmd.c' l='460' u='w' c='enter_debugger'/>
+<use f='remake/debugger/cmd.c' l='514' u='r' c='enter_debugger'/>
+<use f='remake/debugger/cmd.c' l='515' u='w' c='enter_debugger'/>
+<dec f='remake/globals.h' l='82' type='int'/>
+<def f='remake/globals.c' l='81' type='int'/>
+<doc f='remake/globals.c' l='80'>/** True if we are inside the debugger, false otherwise. */</doc>
+<doc f='remake/globals.h' l='81'>/** True if we are inside the debugger, false otherwise. */</doc>
+<use f='remake/job.c' l='737' u='w' c='reap_children'/>
+<use f='remake/job.c' l='869' u='w' c='reap_children'/>
+<use f='remake/read.c' l='167' u='r' c='read_all_makefiles'/>
+<use f='remake/read.c' l='411' u='r' c='eval_makefile'/>

@@ -1,0 +1,5 @@
+<dec f='remake/makeint.h' l='660' type='void block_remote_children()'/>
+<def f='remake/remote-stub.c' l='77' ll='81' type='void block_remote_children()'/>
+<doc f='remake/remote-stub.c' l='74'>/* Block asynchronous notification of remote child death.
+   If this notification is done by raising the child termination
+   signal, do not block that signal.  */</doc>

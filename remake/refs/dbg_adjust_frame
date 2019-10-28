@@ -1,0 +1,5 @@
+<dec f='remake/debugger/stack.h' l='38' type='debug_return_t dbg_adjust_frame(int i_amount, int b_absolute)'/>
+<use f='remake/debugger/command/down.h' l='30' u='c' c='dbg_cmd_frame_down'/>
+<use f='remake/debugger/command/frame.h' l='31' u='c' c='dbg_cmd_frame'/>
+<use f='remake/debugger/command/up.h' l='31' u='c' c='dbg_cmd_up'/>
+<def f='remake/debugger/stack.c' l='58' ll='119' type='debug_return_t dbg_adjust_frame(int i_amount, int b_absolute)'/>

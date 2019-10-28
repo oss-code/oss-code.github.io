@@ -1,0 +1,8 @@
+<dec f='remake/filedef.h' l='129' type='void snap_deps()'/>
+<def f='remake/file.c' l='497' ll='624' type='void snap_deps()'/>
+<doc f='remake/file.c' l='491'>/* For each dependency of each file, make the &apos;struct dep&apos; point
+   at the appropriate &apos;struct file&apos; (which may have to be created).
+
+   Also mark the files depended on by .PRECIOUS, .PHONY, .SILENT,
+   and various other special targets.  */</doc>
+<use f='remake/main.c' l='2055' u='c' c='main'/>

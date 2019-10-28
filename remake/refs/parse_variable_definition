@@ -1,0 +1,18 @@
+<dec f='remake/variable.h' l='213' type='char * parse_variable_definition(const char * line, struct variable * v)'/>
+<use f='remake/read.c' l='505' u='c' c='parse_var_assignment'/>
+<use f='remake/read.c' l='1469' u='c' c='do_define'/>
+<def f='remake/variable.c' l='1466' ll='1592' type='char * parse_variable_definition(const char * p, struct variable * var)'/>
+<use f='remake/variable.c' l='1605' u='c' c='assign_variable_definition'/>
+<doc f='remake/variable.c' l='1452'>/* Parse P (a null-terminated string) as a variable definition.
+
+   If it is not a variable definition, return NULL and the contents of *VAR
+   are undefined, except NAME is set to the first non-space character or NIL.
+
+   If it is a variable definition, return a pointer to the char after the
+   assignment token and set the following fields (only) of *VAR:
+    name   : name of the variable (ALWAYS SET) (NOT NUL-TERMINATED!)
+    length : length of the variable name
+    value  : value of the variable (nul-terminated)
+    flavor : flavor of the variable
+   Other values in *VAR are unchanged.
+  */</doc>

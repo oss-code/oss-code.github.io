@@ -1,0 +1,4 @@
+<dec f='remake/getopt.h' l='103' type='int getopt(int argc, char *const * argv, const char * shortopts)'/>
+<doc f='remake/getopt.h' l='100'>/* Many other libraries have conflicting prototypes for getopt, with
+   differences in the consts, in stdlib.h.  To avoid compilation
+   errors, only prototype getopt for the GNU C library.  */</doc>

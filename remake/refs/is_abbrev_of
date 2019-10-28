@@ -1,0 +1,49 @@
+<dec f='remake/debugger/fns.h' l='82' type='uint8_t is_abbrev_of(const char * psz_substr, const char * psz_word, unsigned int i_min)'/>
+<use f='remake/debugger/command/info.h' l='276' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='278' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='299' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='301' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='302' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='309' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='311' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='313' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='326' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='333' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='335' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='337' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='339' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='348' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='361' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='363' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/info.h' l='365' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/set.h' l='73' u='c' c='dbg_cmd_set_bool'/>
+<use f='remake/debugger/command/set.h' l='103' u='c' c='dbg_cmd_set'/>
+<use f='remake/debugger/command/set.h' l='110' u='c' c='dbg_cmd_set'/>
+<use f='remake/debugger/command/show.h' l='88' u='c' c='dbg_cmd_show'/>
+<use f='remake/debugger/command/show.h' l='90' u='c' c='dbg_cmd_show'/>
+<use f='remake/debugger/command/show.h' l='92' u='c' c='dbg_cmd_show'/>
+<use f='remake/debugger/command/show.h' l='95' u='c' c='dbg_cmd_show'/>
+<use f='remake/debugger/command/show.h' l='97' u='c' c='dbg_cmd_show'/>
+<use f='remake/debugger/command/show.h' l='99' u='c' c='dbg_cmd_show'/>
+<use f='remake/debugger/command/show.h' l='101' u='c' c='dbg_cmd_show'/>
+<use f='remake/debugger/command/show.h' l='103' u='c' c='dbg_cmd_show'/>
+<use f='remake/debugger/command/show.h' l='105' u='c' c='dbg_cmd_show'/>
+<use f='remake/debugger/command/target.h' l='33' u='c' c='dbg_cmd_target'/>
+<use f='remake/debugger/command/target.h' l='35' u='c' c='dbg_cmd_target'/>
+<use f='remake/debugger/command/target.h' l='37' u='c' c='dbg_cmd_target'/>
+<use f='remake/debugger/command/target.h' l='39' u='c' c='dbg_cmd_target'/>
+<use f='remake/debugger/command/target.h' l='41' u='c' c='dbg_cmd_target'/>
+<use f='remake/debugger/command/target.h' l='43' u='c' c='dbg_cmd_target'/>
+<use f='remake/debugger/command/target.h' l='45' u='c' c='dbg_cmd_target'/>
+<use f='remake/debugger/command/target.h' l='47' u='c' c='dbg_cmd_target'/>
+<use f='remake/debugger/command/target.h' l='49' u='c' c='dbg_cmd_target'/>
+<use f='remake/debugger/command/target.h' l='51' u='c' c='dbg_cmd_target'/>
+<use f='remake/debugger/command/help.h' l='57' u='c' c='dbg_help_subcmd'/>
+<doc f='remake/debugger/fns.h' l='80'>/*! Return true if psz_substr is an initial prefix (abbreviation) of
+    psz_word. The empty string is not a valid abbreviation. */</doc>
+<use f='remake/debugger/fns.c' l='76' u='c' c='get_brkpt_option'/>
+<use f='remake/debugger/fns.c' l='78' u='c' c='get_brkpt_option'/>
+<use f='remake/debugger/fns.c' l='80' u='c' c='get_brkpt_option'/>
+<use f='remake/debugger/fns.c' l='82' u='c' c='get_brkpt_option'/>
+<use f='remake/debugger/fns.c' l='84' u='c' c='get_brkpt_option'/>
+<def f='remake/debugger/fns.c' l='237' ll='247' macro='1' type='uint8_t is_abbrev_of(const char * psz_substr, const char * psz_word, unsigned int i_min)'/>

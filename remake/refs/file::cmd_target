@@ -1,0 +1,10 @@
+<dec f='remake/filedef.h' l='103' type='unsigned int'/>
+<offset>1544</offset>
+<doc f='remake/filedef.h' l='103'>/* Nonzero if file was given on cmd line.  */</doc>
+<use f='remake/file.c' l='169' u='w' c='rehash_file'/>
+<use f='remake/file.c' l='169' u='r' c='rehash_file'/>
+<use f='remake/file.c' l='224' u='r' c='remove_intermediates'/>
+<use f='remake/file.c' l='785' u='r' c='print_target_props'/>
+<use f='remake/file.c' l='942' u='r' c='print_file'/>
+<use f='remake/main.c' l='2683' u='w' c='handle_non_switch_argument'/>
+<use f='remake/remake.c' l='143' u='r' c='update_goal_chain'/>

@@ -1,0 +1,21 @@
+<dec f='remake/output.h' l='24' type='unsigned int'/>
+<offset>64</offset>
+<doc f='remake/output.h' l='24'>/* True if we want to synchronize output.  */</doc>
+<use f='remake/function.c' l='1801' u='w' c='func_shell_base'/>
+<use f='remake/job.c' l='402' macro='1' u='r'/>
+<use f='remake/job.c' l='1153' u='w' c='start_job_command'/>
+<use f='remake/job.c' l='1156' macro='1' u='r'/>
+<use f='remake/job.c' l='1159' u='r' c='start_job_command'/>
+<use f='remake/job.c' l='1531' macro='1' u='r'/>
+<use f='remake/job.c' l='2036' u='r' c='child_execute_job'/>
+<use f='remake/main.c' l='1372' u='w' c='main'/>
+<use f='remake/main.c' l='1374' macro='1' u='r'/>
+<use f='remake/main.c' l='1410' u='r' c='main'/>
+<use f='remake/main.c' l='1413' u='w' c='main'/>
+<use f='remake/main.c' l='1414' macro='1' u='r'/>
+<use f='remake/main.c' l='1973' u='r' c='main'/>
+<use f='remake/main.c' l='1976' u='w' c='main'/>
+<use f='remake/main.c' l='1977' macro='1' u='r'/>
+<use f='remake/output.c' l='60' u='r' c='_outputs'/>
+<use f='remake/output.c' l='510' u='w' c='output_init'/>
+<use f='remake/output.c' l='566' u='r' c='output_start'/>

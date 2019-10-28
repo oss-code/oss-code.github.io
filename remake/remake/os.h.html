@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>os.h source code [remake/os.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/os.h'; var root_path = '..'; var data_path = '../../data';</script>
+<script src='../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='./'>remake</a>/<a href='os.h.html'>os.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Declarations for operating system interfaces for GNU Make.</i></td></tr>
+<tr><th id="2">2</th><td><i>Copyright (C) 2016 Free Software Foundation, Inc.</i></td></tr>
+<tr><th id="3">3</th><td><i>This file is part of GNU Make.</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>GNU Make is free software; you can redistribute it and/or modify it under the</i></td></tr>
+<tr><th id="6">6</th><td><i>terms of the GNU General Public License as published by the Free Software</i></td></tr>
+<tr><th id="7">7</th><td><i>Foundation; either version 3 of the License, or (at your option) any later</i></td></tr>
+<tr><th id="8">8</th><td><i>version.</i></td></tr>
+<tr><th id="9">9</th><td><i></i></td></tr>
+<tr><th id="10">10</th><td><i>GNU Make is distributed in the hope that it will be useful, but WITHOUT ANY</i></td></tr>
+<tr><th id="11">11</th><td><i>WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR</i></td></tr>
+<tr><th id="12">12</th><td><i>A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</i></td></tr>
+<tr><th id="13">13</th><td><i></i></td></tr>
+<tr><th id="14">14</th><td><i>You should have received a copy of the GNU General Public License along with</i></td></tr>
+<tr><th id="15">15</th><td><i>this program.  If not, see &lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.  */</i></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><i>/* This section provides OS-specific functions to support the jobserver.  */</i></td></tr>
+<tr><th id="19">19</th><td></td></tr>
+<tr><th id="20">20</th><td><u>#<span data-ppcond="20">ifdef</span> <a class="macro" href="config.h.html#375" data-ref="_M/MAKE_JOBSERVER">MAKE_JOBSERVER</a></u></td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><i>/* Returns 1 if the jobserver is enabled, else 0.  */</i></td></tr>
+<tr><th id="23">23</th><td><em>unsigned</em> <em>int</em> <dfn class="decl" id="jobserver_enabled" title='jobserver_enabled' data-ref="jobserver_enabled">jobserver_enabled</dfn> (<em>void</em>);</td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><i>/* Called in the master instance to set up the jobserver initially.  */</i></td></tr>
+<tr><th id="26">26</th><td><em>unsigned</em> <em>int</em> <dfn class="decl" id="jobserver_setup" title='jobserver_setup' data-ref="jobserver_setup">jobserver_setup</dfn> (<em>int</em> <dfn class="local col1 decl" id="1job_slots" title='job_slots' data-type='int' data-ref="1job_slots">job_slots</dfn>);</td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><i>/* Called in a child instance to connect to the jobserver.  */</i></td></tr>
+<tr><th id="29">29</th><td><em>unsigned</em> <em>int</em> <dfn class="decl" id="jobserver_parse_auth" title='jobserver_parse_auth' data-ref="jobserver_parse_auth">jobserver_parse_auth</dfn> (<em>const</em> <em>char</em>* <dfn class="local col2 decl" id="2auth" title='auth' data-type='const char *' data-ref="2auth">auth</dfn>);</td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><i>/* Returns an allocated buffer used to pass to child instances.  */</i></td></tr>
+<tr><th id="32">32</th><td><em>char</em> *<dfn class="decl" id="jobserver_get_auth" title='jobserver_get_auth' data-ref="jobserver_get_auth">jobserver_get_auth</dfn> (<em>void</em>);</td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><i>/* Clear this instance's jobserver configuration.  */</i></td></tr>
+<tr><th id="35">35</th><td><em>void</em> <dfn class="decl" id="jobserver_clear" title='jobserver_clear' data-ref="jobserver_clear">jobserver_clear</dfn> (<em>void</em>);</td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td><i>/* Recover all the jobserver tokens and return the number we got.  */</i></td></tr>
+<tr><th id="38">38</th><td><em>unsigned</em> <em>int</em> <dfn class="decl" id="jobserver_acquire_all" title='jobserver_acquire_all' data-ref="jobserver_acquire_all">jobserver_acquire_all</dfn> (<em>void</em>);</td></tr>
+<tr><th id="39">39</th><td></td></tr>
+<tr><th id="40">40</th><td><i>/* Release a jobserver token.  If it fails and is_fatal is 1, fatal.  */</i></td></tr>
+<tr><th id="41">41</th><td><em>void</em> <dfn class="decl" id="jobserver_release" title='jobserver_release' data-ref="jobserver_release">jobserver_release</dfn> (<em>int</em> <dfn class="local col3 decl" id="3is_fatal" title='is_fatal' data-type='int' data-ref="3is_fatal">is_fatal</dfn>);</td></tr>
+<tr><th id="42">42</th><td></td></tr>
+<tr><th id="43">43</th><td><i>/* Notify the jobserver that a child exited.  */</i></td></tr>
+<tr><th id="44">44</th><td><em>void</em> <dfn class="decl" id="jobserver_signal" title='jobserver_signal' data-ref="jobserver_signal">jobserver_signal</dfn> (<em>void</em>);</td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td><i>/* Get ready to start a non-recursive child.  */</i></td></tr>
+<tr><th id="47">47</th><td><em>void</em> <dfn class="decl" id="jobserver_pre_child" title='jobserver_pre_child' data-ref="jobserver_pre_child">jobserver_pre_child</dfn> (<em>int</em>);</td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td><i>/* Complete starting a non-recursive child.  */</i></td></tr>
+<tr><th id="50">50</th><td><em>void</em> <dfn class="decl" id="jobserver_post_child" title='jobserver_post_child' data-ref="jobserver_post_child">jobserver_post_child</dfn> (<em>int</em>);</td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td><i>/* Set up to acquire a new token.  */</i></td></tr>
+<tr><th id="53">53</th><td><em>void</em> <dfn class="decl" id="jobserver_pre_acquire" title='jobserver_pre_acquire' data-ref="jobserver_pre_acquire">jobserver_pre_acquire</dfn> (<em>void</em>);</td></tr>
+<tr><th id="54">54</th><td></td></tr>
+<tr><th id="55">55</th><td><i>/* Wait until we can acquire a jobserver token.</i></td></tr>
+<tr><th id="56">56</th><td><i>   TIMEOUT is 1 if we have other jobs waiting for the load to go down;</i></td></tr>
+<tr><th id="57">57</th><td><i>   in this case we won't wait forever, so we can check the load.</i></td></tr>
+<tr><th id="58">58</th><td><i>   Returns 1 if we got a token, or 0 if we stopped waiting due to a child</i></td></tr>
+<tr><th id="59">59</th><td><i>   exiting or a timeout.    */</i></td></tr>
+<tr><th id="60">60</th><td><em>unsigned</em> <em>int</em> <dfn class="decl" id="jobserver_acquire" title='jobserver_acquire' data-ref="jobserver_acquire">jobserver_acquire</dfn> (<em>int</em> <dfn class="local col4 decl" id="4timeout" title='timeout' data-type='int' data-ref="4timeout">timeout</dfn>);</td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td><u>#<span data-ppcond="20">else</span></u></td></tr>
+<tr><th id="63">63</th><td></td></tr>
+<tr><th id="64">64</th><td><u>#define jobserver_enabled()         (0)</u></td></tr>
+<tr><th id="65">65</th><td><u>#define jobserver_setup(_slots)     (0)</u></td></tr>
+<tr><th id="66">66</th><td><u>#define jobserver_parse_auth(_auth) (0)</u></td></tr>
+<tr><th id="67">67</th><td><u>#define jobserver_get_auth()        (NULL)</u></td></tr>
+<tr><th id="68">68</th><td><u>#define jobserver_clear()           (void)(0)</u></td></tr>
+<tr><th id="69">69</th><td><u>#define jobserver_release(_fatal)   (void)(0)</u></td></tr>
+<tr><th id="70">70</th><td><u>#define jobserver_acquire_all()     (0)</u></td></tr>
+<tr><th id="71">71</th><td><u>#define jobserver_signal()          (void)(0)</u></td></tr>
+<tr><th id="72">72</th><td><u>#define jobserver_pre_child(_r)     (void)(0)</u></td></tr>
+<tr><th id="73">73</th><td><u>#define jobserver_post_child(_r)    (void)(0)</u></td></tr>
+<tr><th id="74">74</th><td><u>#define jobserver_pre_acquire()     (void)(0)</u></td></tr>
+<tr><th id="75">75</th><td><u>#define jobserver_acquire(_tmout)   (0)</u></td></tr>
+<tr><th id="76">76</th><td></td></tr>
+<tr><th id="77">77</th><td><u>#<span data-ppcond="20">endif</span></u></td></tr>
+<tr><th id="78">78</th><td></td></tr>
+<tr><th id="79">79</th><td><i>/* Create a "bad" file descriptor for stdin when parallel jobs are run.  */</i></td></tr>
+<tr><th id="80">80</th><td><u>#<span data-ppcond="80">if</span> !defined(<span class="macro" data-ref="_M/VMD">VMD</span>) &amp;&amp; !defined(<span class="macro" data-ref="_M/WINDOWS32">WINDOWS32</span>) &amp;&amp; !defined(<span class="macro" data-ref="_M/_AMIGA">_AMIGA</span>) &amp;&amp; !defined(<span class="macro" data-ref="_M/__MSDOS__">__MSDOS__</span>)</u></td></tr>
+<tr><th id="81">81</th><td><em>int</em> <dfn class="decl" id="get_bad_stdin" title='get_bad_stdin' data-ref="get_bad_stdin">get_bad_stdin</dfn> (<em>void</em>);</td></tr>
+<tr><th id="82">82</th><td><u>#<span data-ppcond="80">else</span></u></td></tr>
+<tr><th id="83">83</th><td><u># define get_bad_stdin() (-1)</u></td></tr>
+<tr><th id="84">84</th><td><u>#<span data-ppcond="80">endif</span></u></td></tr>
+<tr><th id="85">85</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='job.c.html'>remake/job.c</a><br/>Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

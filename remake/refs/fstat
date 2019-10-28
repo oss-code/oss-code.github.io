@@ -1,0 +1,9 @@
+<dec f='include/x86_64-linux-gnu/sys/stat.h' l='213' type='int fstat(int __fd, struct stat * __buf)'/>
+<def f='include/x86_64-linux-gnu/sys/stat.h' l='465' ll='469' macro='1' type='int fstat(int __fd, struct stat * __statbuf)'/>
+<doc f='include/x86_64-linux-gnu/sys/stat.h' l='211'>/* Get file attributes for the file, device, pipe, or socket
+   that file descriptor FD is open on and put them in BUF.  */</doc>
+<use f='remake/arscan.c' l='784' u='c' c='ar_member_touch'/>
+<use f='remake/debugger/command/write.h' l='173' u='c' c='dbg_cmd_write'/>
+<use f='remake/output.c' l='201' u='c' c='sync_init'/>
+<use f='remake/output.c' l='202' u='c' c='sync_init'/>
+<use f='remake/remake.c' l='1258' u='c' c='touch_file'/>

@@ -1,0 +1,13 @@
+<def f='remake/hash.h' l='41' ll='54'/>
+<size>88</size>
+<mbr r='hash_table::ht_vec' o='0' t='void **'/>
+<mbr r='hash_table::ht_hash_1' o='64' t='hash_func_t'/>
+<mbr r='hash_table::ht_hash_2' o='128' t='hash_func_t'/>
+<mbr r='hash_table::ht_compare' o='192' t='hash_cmp_func_t'/>
+<mbr r='hash_table::ht_size' o='256' t='unsigned long'/>
+<mbr r='hash_table::ht_capacity' o='320' t='unsigned long'/>
+<mbr r='hash_table::ht_fill' o='384' t='unsigned long'/>
+<mbr r='hash_table::ht_empty_slots' o='448' t='unsigned long'/>
+<mbr r='hash_table::ht_collisions' o='512' t='unsigned long'/>
+<mbr r='hash_table::ht_lookups' o='576' t='unsigned long'/>
+<mbr r='hash_table::ht_rehashes' o='640' t='unsigned int'/>

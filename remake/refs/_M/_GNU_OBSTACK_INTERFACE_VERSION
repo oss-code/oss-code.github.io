@@ -1,0 +1,24 @@
+<dec f='include/gnu-versions.h' l='46'/>
+<doc f='include/gnu-versions.h' l='22'>/* This file exists to define these few macros.  Each specifies a version
+   number associated with the library interface of a piece of the C library
+   which is also distributed with other GNU packages.  These pieces are
+   both part of the GNU C library and also distributed with other GNU
+   packages so those packages may use their facilities on systems lacking
+   the GNU C library.  The source files for each piece surround all their
+   code with `#ifndef ELIDE_CODE&apos; after defining it with this:
+
+   #define OBSTACK_INTERFACE_VERSION 1
+   #if !defined (_LIBC) &amp;&amp; defined (__GNU_LIBRARY__) &amp;&amp; __GNU_LIBRARY__ &gt; 1
+   #include &lt;gnu-versions.h&gt;
+   #if _GNU_OBSTACK_INTERFACE_VERSION == OBSTACK_INTERFACE_VERSION
+   #define ELIDE_CODE
+   #endif
+   #endif
+
+   This allows those one to avoid compiling those files when part of a GNU
+   package not libc, on a system using a GNU C library that supports the
+   same interface.
+
+   Please preserve the format of the comments after each macro.  And
+   remember, if any of these versions change, the libc.so major version
+   number must change too (so avoid it)!  */</doc>

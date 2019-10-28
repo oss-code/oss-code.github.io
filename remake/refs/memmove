@@ -1,0 +1,14 @@
+<dec f='include/string.h' l='46' type='void * memmove(void * __dest, const void * __src, size_t __n)'/>
+<doc f='include/string.h' l='44'>/* Copy N bytes of SRC to DEST, guaranteeing
+   correct behavior for overlapping strings.  */</doc>
+<use f='remake/commands.c' l='469' u='c' c='expand_command_lines'/>
+<use f='remake/commands.c' l='537' u='c' c='expand_command_lines'/>
+<use f='remake/file.c' l='343' u='c' c='enter_prereqs'/>
+<use f='remake/job.c' l='1560' u='c' c='new_job'/>
+<use f='remake/job.c' l='1629' u='c' c='new_job'/>
+<use f='remake/read.c' l='2321' u='c' c='find_char_unquote'/>
+<use f='remake/read.c' l='2362' u='c' c='unescape_char'/>
+<use f='remake/read.c' l='2373' u='c' c='unescape_char'/>
+<use f='remake/read.c' l='2451' u='c' c='find_percent_cached'/>
+<use f='remake/read.c' l='2585' u='c' c='readline'/>
+<use f='remake/strcache.c' l='80' u='c' c='copy_string'/>

@@ -1,0 +1,21 @@
+<dec f='remake/gnuremake.h' l='73' type='void gmk_add_function(const char * name, gmk_func_ptr func, unsigned int min_args, unsigned int max_args, unsigned int flags)'/>
+<doc f='remake/gnuremake.h' l='55'>/* Register a new GNU make function NAME (maximum of 255 chars long).
+   When the function is expanded in the makefile, FUNC will be invoked with
+   the appropriate arguments.
+
+   The return value of FUNC must be either NULL, in which case it expands to
+   the empty string, or a pointer to the result of the expansion in a string
+   created by gmk_alloc().  GNU make will free the memory when it&apos;s done.
+
+   MIN_ARGS is the minimum number of arguments the function requires.
+   MAX_ARGS is the maximum number of arguments (or 0 if there&apos;s no maximum).
+   MIN_ARGS and MAX_ARGS may not exceed 255.
+
+   The FLAGS value may be GMK_FUNC_DEFAULT, or one or more of the following
+   flags OR&apos;d together:
+
+     GMK_FUNC_NOEXPAND: the arguments to the function will be not be expanded
+                        before FUNC is called.
+*/</doc>
+<def f='remake/loadapi.c' l='77' ll='82' type='void gmk_add_function(const char * name, gmk_func_ptr func, unsigned int min, unsigned int max, unsigned int flags)'/>
+<doc f='remake/loadapi.c' l='76'>/* Register a function to be called from makefiles.  */</doc>

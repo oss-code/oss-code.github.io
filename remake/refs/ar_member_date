@@ -1,0 +1,8 @@
+<dec f='remake/makeint.h' l='514' type='int ar_member_date(const char * , time_t * )'/>
+<dec f='remake/make.h' l='371' type='int ar_member_date(const char * , time_t * )'/>
+<def f='remake/ar.c' l='96' ll='131' type='int ar_member_date(const char * name, time_t * member_date)'/>
+<doc f='remake/ar.c' l='94'>/* Read the modtime of NAME in MEMBER_DATE.
+   Returns 1 if NAME exists, 0 otherwise.  */</doc>
+<use f='remake/commands.c' l='726' u='c' c='delete_target'/>
+<use f='remake/dir.c' l='787' u='c' c='file_exists_p'/>
+<use f='remake/remake.c' l='1404' u='c' c='f_mtime'/>

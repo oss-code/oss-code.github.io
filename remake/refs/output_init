@@ -1,0 +1,8 @@
+<dec f='remake/output.h' l='40' type='void output_init(struct output * out)'/>
+<doc f='remake/output.h' l='38'>/* Initialize and close a child output structure: if NULL do this program&apos;s
+   output (this should only be done once).  */</doc>
+<use f='remake/job.c' l='1521' u='c' c='new_job'/>
+<use f='remake/main.c' l='1025' u='c' c='main'/>
+<use f='remake/main.c' l='1135' u='c' c='main'/>
+<def f='remake/output.c' l='504' ll='536' type='void output_init(struct output * out)'/>
+<use f='remake/output.c' l='557' u='c' c='output_close'/>

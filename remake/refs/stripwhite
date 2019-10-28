@@ -1,0 +1,8 @@
+<dec f='remake/debugger/fns.h' l='94' type='char * stripwhite(char * string)'/>
+<use f='remake/debugger/command/source.h' l='45' u='c' c='dbg_cmd_source'/>
+<use f='remake/debugger/cmd.c' l='500' u='c' c='enter_debugger'/>
+<doc f='remake/debugger/fns.h' l='92'>/** Strip whitespace from the start and end of STRING.  Return a pointer
+   into STRING. */</doc>
+<def f='remake/debugger/fns.c' l='362' ll='379' type='char * stripwhite(char * string)'/>
+<doc f='remake/debugger/fns.c' l='360'>/** Strip whitespace from the start and end of STRING.  Return a pointer
+   into STRING. */</doc>

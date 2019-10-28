@@ -1,0 +1,8 @@
+<dec f='remake/file.h' l='80' type='void print_target_props(file_t * p_target, print_target_mask_t i_mask)'/>
+<use f='remake/debugger/command/target.h' l='66' u='c' c='dbg_cmd_target'/>
+<doc f='remake/file.h' l='79'>/*! Print some or all properties of the data base of files.  */</doc>
+<def f='remake/file.c' l='747' ll='879' type='void print_target_props(file_t * p_target, print_target_mask_t i_mask)'/>
+<use f='remake/file.c' l='878' u='c' c='print_target_props'/>
+<use f='remake/file.c' l='1029' u='c' c='print_target'/>
+<doc f='remake/file.c' l='745'>/*! Print some or all properties of the data base of files.
+*/</doc>

@@ -1,0 +1,9 @@
+<def f='remake/debugger/cmd.c' l='69' type='char *'/>
+<use f='remake/debugger/command/finish.h' l='27' u='r' c='dbg_cmd_finish'/>
+<use f='remake/debugger/cmd.c' l='278' u='w' c='execute_line'/>
+<use f='remake/debugger/cmd.c' l='281' u='r' c='execute_line'/>
+<doc f='remake/debugger/cmd.c' l='64'>/**
+   Command-line args after the command-name part. For example in:
+   break foo
+   the below will be &quot;foo&quot;.
+ **/</doc>

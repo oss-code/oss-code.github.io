@@ -1,0 +1,31 @@
+<dec f='remake/makeint.h' l='522' type='long ar_scan(const char * archive, ar_member_func_t function, const void * arg)'/>
+<use f='remake/ar.c' l='125' u='c' c='ar_member_date'/>
+<use f='remake/ar.c' l='293' u='c' c='ar_glob'/>
+<def f='remake/arscan.c' l='282' ll='671' type='long ar_scan(const char * archive, ar_member_func_t function, const void * arg)'/>
+<use f='remake/arscan.c' l='753' u='c' c='ar_member_touch'/>
+<doc f='remake/arscan.c' l='255'>/* Takes three arguments ARCHIVE, FUNCTION and ARG.
+
+   Open the archive named ARCHIVE, find its members one by one,
+   and for each one call FUNCTION with the following arguments:
+     archive file descriptor for reading the data,
+     member name,
+     member name might be truncated flag,
+     member header position in file,
+     member data position in file,
+     member data size,
+     member date,
+     member uid,
+     member gid,
+     member protection mode,
+     ARG.
+
+   The descriptor is poised to read the data of the member
+   when FUNCTION is called.  It does not matter how much
+   data FUNCTION reads.
+
+   If FUNCTION returns nonzero, we immediately return
+   what FUNCTION returned.
+
+   Returns -1 if archive does not exist,
+   Returns -2 if archive has invalid format.
+   Returns 0 if have scanned successfully.  */</doc>

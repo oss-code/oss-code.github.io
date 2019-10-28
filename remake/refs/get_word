@@ -1,0 +1,29 @@
+<dec f='remake/debugger/fns.h' l='69' type='char * get_word(char ** ppsz_str)'/>
+<use f='remake/debugger/command/break.h' l='31' u='c' c='dbg_cmd_break'/>
+<use f='remake/debugger/command/break.h' l='71' u='c' c='dbg_cmd_break'/>
+<use f='remake/debugger/command/continue.h' l='24' u='c' c='dbg_cmd_continue'/>
+<use f='remake/debugger/command/continue.h' l='44' u='c' c='dbg_cmd_continue'/>
+<use f='remake/debugger/command/continue.h' l='50' u='c' c='dbg_cmd_continue'/>
+<use f='remake/debugger/command/delete.h' l='35' u='c' c='dbg_cmd_delete'/>
+<use f='remake/debugger/command/delete.h' l='40' u='c' c='dbg_cmd_delete'/>
+<use f='remake/debugger/command/info.h' l='273' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/print.h' l='36' u='c' c='dbg_cmd_print'/>
+<use f='remake/debugger/command/set.h' l='96' u='c' c='dbg_cmd_set'/>
+<use f='remake/debugger/command/target.h' l='30' u='c' c='dbg_cmd_target'/>
+<use f='remake/debugger/command/help.h' l='110' u='c' c='dbg_cmd_help'/>
+<use f='remake/debugger/cmd.c' l='258' u='c' c='execute_line'/>
+<use f='remake/debugger/cmd.c' l='315' u='c' c='dbg_cmd_set_var'/>
+<doc f='remake/debugger/fns.h' l='63'>/*! Find the next &quot;word&quot; - skip leading blanks and the &quot;word&quot; is the
+   largest non-blank characters after that. ppsz_str is modified to
+   point after the portion returned and also the region initially
+   pointed to by ppsz_str is modified so that word is zero-byte
+   termintated.
+ */</doc>
+<def f='remake/debugger/fns.c' l='139' ll='158' type='char * get_word(char ** ppsz_str)'/>
+<use f='remake/debugger/fns.c' l='213' u='c' c='get_target'/>
+<doc f='remake/debugger/fns.c' l='133'>/* Find the next &quot;word&quot; - skip leading blanks and the &quot;word&quot; is the
+   largest non-blank characters after that. ppsz_str is modified to
+   point after the portion returned and also the region initially
+   pointed to by ppsz_str is modified so that word is zero-byte
+   termintated.
+ */</doc>

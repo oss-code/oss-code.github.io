@@ -1,0 +1,11 @@
+<dec f='remake/makeint.h' l='544' type='const char * vpath_search(const char * file, uintmax_t * mtime_ptr, unsigned int * vpath_index, unsigned int * path_index)'/>
+<dec f='remake/make.h' l='390' type='const char * vpath_search(const char * file, uintmax_t * mtime_ptr, unsigned int * vpath_index, unsigned int * path_index)'/>
+<use f='remake/implicit.c' l='747' u='c' c='pattern_search'/>
+<use f='remake/remake.c' l='1422' u='c' c='f_mtime'/>
+<use f='remake/remake.c' l='1746' u='c' c='library_search'/>
+<def f='remake/vpath.c' l='544' ll='590' type='const char * vpath_search(const char * file, uintmax_t * mtime_ptr, unsigned int * vpath_index, unsigned int * path_index)'/>
+<doc f='remake/vpath.c' l='538'>/* Search the VPATH list whose pattern matches FILE for a directory where FILE
+   exists.  If it is found, return the cached name of an existing file, and
+   set *MTIME_PTR (if MTIME_PTR is not NULL) to its modtime (or zero if no
+   stat call was done). Also set the matching directory index in VPATH_INDEX
+   and PATH_INDEX if they are not NULL.  Otherwise we return 0.  */</doc>

@@ -1,0 +1,5 @@
+<dec f='remake/makeint.h' l='657' type='int start_remote_job_p(int )'/>
+<use f='remake/job.c' l='791' u='c' c='reap_children'/>
+<use f='remake/job.c' l='1444' u='c' c='start_waiting_job'/>
+<def f='remake/remote-stub.c' l='39' ll='43' type='int start_remote_job_p(int first_p)'/>
+<doc f='remake/remote-stub.c' l='37'>/* Return nonzero if the next job should be done remotely.  */</doc>

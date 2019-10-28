@@ -1,0 +1,39 @@
+<dec f='remake/debug.h' l='32' type='1'/>
+<use f='remake/debug.c' l='40' u='r' c='debug_signal_handler'/>
+<use f='remake/debug.c' l='70' u='r' c='decode_debug_flags'/>
+<use f='remake/debug.c' l='73' u='r' c='decode_debug_flags'/>
+<use f='remake/debug.c' l='79' u='r' c='decode_debug_flags'/>
+<use f='remake/debug.c' l='82' u='r' c='decode_debug_flags'/>
+<use f='remake/debug.c' l='85' u='r' c='decode_debug_flags'/>
+<doc f='remake/debug.h' l='32'>/**&lt; targets which need to be made and status;
+				 also set when tracing or debugging */</doc>
+<use f='remake/debugger/fns.c' l='268' u='r' c='print_db_level'/>
+<use f='remake/debugger/fns.c' l='269' c='print_db_level'/>
+<use f='remake/file.c' l='247' u='r' c='remove_intermediates'/>
+<use f='remake/load.c' l='87' u='r' c='load_object'/>
+<use f='remake/main.c' l='569' u='r' c='decode_trace_flags'/>
+<use f='remake/main.c' l='577' u='r' c='decode_trace_flags'/>
+<use f='remake/main.c' l='579' u='r' c='decode_trace_flags'/>
+<use f='remake/main.c' l='665' u='r' c='debug_signal_handler'/>
+<use f='remake/main.c' l='690' u='r' c='decode_debug_flags'/>
+<use f='remake/main.c' l='693' u='r' c='decode_debug_flags'/>
+<use f='remake/main.c' l='699' u='r' c='decode_debug_flags'/>
+<use f='remake/main.c' l='705' u='r' c='decode_debug_flags'/>
+<use f='remake/main.c' l='1451' u='r' c='main'/>
+<use f='remake/main.c' l='1479' u='r' c='main'/>
+<use f='remake/main.c' l='1508' u='r' c='main'/>
+<use f='remake/main.c' l='2125' u='r' c='main'/>
+<use f='remake/main.c' l='2332' u='r' c='main'/>
+<use f='remake/main.c' l='2520' u='r' c='main'/>
+<use f='remake/read.c' l='170' u='r' c='read_all_makefiles'/>
+<use f='remake/read.c' l='666' u='r' c='eval'/>
+<use f='remake/remake.c' l='549' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='818' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='829' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='834' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='855' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='901' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='907' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='927' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='930' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='933' u='r' c='update_file_1'/>

@@ -1,0 +1,16 @@
+<dec f='remake/filedef.h' l='195' type='void file_timestamp_sprintf(char * p, uintmax_t ts)'/>
+<doc f='remake/filedef.h' l='188'>/**
+    Place into the buffer P a printable representation of the file
+    timestamp TS.
+
+    @param p output buffer for printable timestamp
+    @param ts timestamp to convert.
+ */</doc>
+<use f='remake/file.c' l='655' u='c' c='file_timestamp_cons'/>
+<def f='remake/file.c' l='715' ll='742' type='void file_timestamp_sprintf(char * p, uintmax_t ts)'/>
+<use f='remake/file.c' l='816' u='c' c='print_target_props'/>
+<use f='remake/file.c' l='972' u='c' c='print_file'/>
+<doc f='remake/file.c' l='713'>/* Place into the buffer P a printable representation of the file
+   timestamp TS.  */</doc>
+<use f='remake/print.c' l='396' u='c' c='print_file'/>
+<use f='remake/print.c' l='399' u='c' c='print_file'/>

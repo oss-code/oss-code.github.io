@@ -1,0 +1,15 @@
+<dec f='remake/trace.h' l='33' type='0'/>
+<doc f='remake/trace.h' l='33'>/**&lt; Get out of debug read loop and continue execution
+			     as normal.  */</doc>
+<use f='remake/debugger/command/continue.h' l='66' u='r' c='dbg_cmd_continue'/>
+<use f='remake/debugger/command/finish.h' l='46' u='r' c='dbg_cmd_finish'/>
+<use f='remake/debugger/command/next.h' l='29' u='r' c='dbg_cmd_next'/>
+<use f='remake/debugger/command/next.h' l='32' u='r' c='dbg_cmd_next'/>
+<use f='remake/debugger/command/next.h' l='34' u='r' c='dbg_cmd_next'/>
+<use f='remake/debugger/command/step.h' l='31' u='r' c='dbg_cmd_step'/>
+<use f='remake/debugger/command/step.h' l='37' u='r' c='dbg_cmd_step'/>
+<use f='remake/debugger/cmd.c' l='373' u='r' c='enter_debugger'/>
+<use f='remake/debugger/cmd.c' l='381' u='r' c='enter_debugger'/>
+<use f='remake/debugger/cmd.c' l='385' u='r' c='enter_debugger'/>
+<use f='remake/print.c' l='293' u='r' c='print_child_cmd'/>
+<use f='remake/print.c' l='296' u='r' c='print_child_cmd'/>

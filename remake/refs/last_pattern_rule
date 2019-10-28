@@ -1,0 +1,9 @@
+<dec f='remake/rule.h' l='48' type='struct rule *'/>
+<def f='remake/rule.c' l='36' type='struct rule *'/>
+<use f='remake/rule.c' l='318' u='r' c='new_pattern_rule'/>
+<use f='remake/rule.c' l='319' u='w' c='new_pattern_rule'/>
+<use f='remake/rule.c' l='342' u='r' c='new_pattern_rule'/>
+<use f='remake/rule.c' l='343' u='w' c='new_pattern_rule'/>
+<use f='remake/rule.c' l='431' u='r' c='freerule'/>
+<use f='remake/rule.c' l='432' u='w' c='freerule'/>
+<doc f='remake/rule.c' l='34'>/* Pointer to last rule in the chain, so we can add onto the end.  */</doc>

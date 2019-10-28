@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>trace.h source code [remake/trace.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="floc_stack_node,target_stack_node "/>
+<link rel="stylesheet" href="../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/trace.h'; var root_path = '..'; var data_path = '../../data';</script>
+<script src='../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='./'>remake</a>/<a href='trace.h.html'>trace.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*</i></td></tr>
+<tr><th id="2">2</th><td><i>Copyright (C) 2004, 2005, 2007, 2008 Rocky Bernstein &lt;rocky@gnu.org&gt;</i></td></tr>
+<tr><th id="3">3</th><td><i></i></td></tr>
+<tr><th id="4">4</th><td><i>This file is part of GNU Make (remake variant).</i></td></tr>
+<tr><th id="5">5</th><td><i></i></td></tr>
+<tr><th id="6">6</th><td><i>GNU Make is free software; you can redistribute it and/or modify</i></td></tr>
+<tr><th id="7">7</th><td><i>it under the terms of the GNU General Public License as published by</i></td></tr>
+<tr><th id="8">8</th><td><i>the Free Software Foundation; either version 2, or (at your option)</i></td></tr>
+<tr><th id="9">9</th><td><i>any later version.</i></td></tr>
+<tr><th id="10">10</th><td><i></i></td></tr>
+<tr><th id="11">11</th><td><i>GNU Make is distributed in the hope that it will be useful,</i></td></tr>
+<tr><th id="12">12</th><td><i>but WITHOUT ANY WARRANTY; without even the implied warranty of</i></td></tr>
+<tr><th id="13">13</th><td><i>MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</i></td></tr>
+<tr><th id="14">14</th><td><i>GNU General Public License for more details.</i></td></tr>
+<tr><th id="15">15</th><td><i></i></td></tr>
+<tr><th id="16">16</th><td><i>You should have received a copy of the GNU General Public License</i></td></tr>
+<tr><th id="17">17</th><td><i>along with GNU Make; see the file COPYING.  If not, write to</i></td></tr>
+<tr><th id="18">18</th><td><i>the Free Software Foundation, Inc., 59 Temple Place - Suite 330,</i></td></tr>
+<tr><th id="19">19</th><td><i>Boston, MA 02111-1307, USA.  */</i></td></tr>
+<tr><th id="20">20</th><td></td></tr>
+<tr><th id="21">21</th><td><i class="doc">/**<span class="command"> \file</span> trace.h</i></td></tr>
+<tr><th id="22">22</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="23">23</th><td><i class="doc"> *  <span class="command">\brief</span> Header for routines related to tracing and debugging support.</i></td></tr>
+<tr><th id="24">24</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><u>#<span data-ppcond="26">ifndef</span> <span class="macro" data-ref="_M/REMAKE_TRACE_H">REMAKE_TRACE_H</span></u></td></tr>
+<tr><th id="27">27</th><td><u>#define <dfn class="macro" id="_M/REMAKE_TRACE_H" data-ref="_M/REMAKE_TRACE_H">REMAKE_TRACE_H</dfn></u></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><u>#include <a href="types.h.html">"types.h"</a></u></td></tr>
+<tr><th id="30">30</th><td><u>#include <a href="filedef.h.html">"filedef.h"</a></u></td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><b>typedef</b> <b>enum</b> {</td></tr>
+<tr><th id="33">33</th><td>  <dfn class="enum" id="continue_execution" title='continue_execution' data-ref="continue_execution">continue_execution</dfn>,   <i class="doc">/**&lt; Get out of debug read loop and continue execution</i></td></tr>
+<tr><th id="34">34</th><td><i class="doc">			     as normal.  */</i></td></tr>
+<tr><th id="35">35</th><td>  <dfn class="enum" id="next_execution" title='next_execution' data-ref="next_execution">next_execution</dfn>,       <i class="doc">/**&lt; Get out of debug read loop and continue execution</i></td></tr>
+<tr><th id="36">36</th><td><i class="doc">			     as but don't enter debugger for the any remaining</i></td></tr>
+<tr><th id="37">37</th><td><i class="doc">			     commands.  */</i></td></tr>
+<tr><th id="38">38</th><td>  <dfn class="enum" id="skip_execution" title='skip_execution' data-ref="skip_execution">skip_execution</dfn>,       <i class="doc">/**&lt; Get out of debug read loop, but skip execution</i></td></tr>
+<tr><th id="39">39</th><td><i class="doc">			     of next command or action. */</i></td></tr>
+<tr><th id="40">40</th><td>  <dfn class="enum" id="debug_readloop" title='debug_readloop' data-ref="debug_readloop">debug_readloop</dfn>,       <i class="doc">/**&lt; Stay in debugger read loop - used only</i></td></tr>
+<tr><th id="41">41</th><td><i class="doc">			   inside debugger read loop. */</i></td></tr>
+<tr><th id="42">42</th><td>  <dfn class="enum" id="debug_cmd_error" title='debug_cmd_error' data-ref="debug_cmd_error">debug_cmd_error</dfn>       <i class="doc">/**&lt; Command error but stay in debugger read loop -</i></td></tr>
+<tr><th id="43">43</th><td><i class="doc">                             used only inside debugger read loop. */</i></td></tr>
+<tr><th id="44">44</th><td>} <dfn class="typedef" id="debug_return_t" title='debug_return_t' data-type='enum debug_return_t' data-ref="debug_return_t">debug_return_t</dfn>;</td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td><b>typedef</b> <b>enum</b></td></tr>
+<tr><th id="47">47</th><td>  {</td></tr>
+<tr><th id="48">48</th><td>    <dfn class="enum" id="DEBUG_BRKPT_BEFORE_PREREQ" title='DEBUG_BRKPT_BEFORE_PREREQ' data-ref="DEBUG_BRKPT_BEFORE_PREREQ">DEBUG_BRKPT_BEFORE_PREREQ</dfn>     = <var>0</var>,</td></tr>
+<tr><th id="49">49</th><td>    <dfn class="enum" id="DEBUG_BRKPT_AFTER_PREREQ" title='DEBUG_BRKPT_AFTER_PREREQ' data-ref="DEBUG_BRKPT_AFTER_PREREQ">DEBUG_BRKPT_AFTER_PREREQ</dfn>      = <var>1</var>,</td></tr>
+<tr><th id="50">50</th><td>    <dfn class="enum" id="DEBUG_BRKPT_AFTER_CMD" title='DEBUG_BRKPT_AFTER_CMD' data-ref="DEBUG_BRKPT_AFTER_CMD">DEBUG_BRKPT_AFTER_CMD</dfn>         = <var>2</var>,</td></tr>
+<tr><th id="51">51</th><td>    <dfn class="enum" id="DEBUG_GOAL_UPDATED_HIT" title='DEBUG_GOAL_UPDATED_HIT' data-ref="DEBUG_GOAL_UPDATED_HIT">DEBUG_GOAL_UPDATED_HIT</dfn>        = <var>3</var>,</td></tr>
+<tr><th id="52">52</th><td>    <dfn class="enum" id="DEBUG_READ_HIT" title='DEBUG_READ_HIT' data-ref="DEBUG_READ_HIT">DEBUG_READ_HIT</dfn>                = <var>4</var>,</td></tr>
+<tr><th id="53">53</th><td>    <dfn class="enum" id="DEBUG_ERROR_HIT" title='DEBUG_ERROR_HIT' data-ref="DEBUG_ERROR_HIT">DEBUG_ERROR_HIT</dfn>               = <var>5</var>,</td></tr>
+<tr><th id="54">54</th><td>    <dfn class="enum" id="DEBUG_STEP_HIT" title='DEBUG_STEP_HIT' data-ref="DEBUG_STEP_HIT">DEBUG_STEP_HIT</dfn>                = <var>6</var>,</td></tr>
+<tr><th id="55">55</th><td>    <dfn class="enum" id="DEBUG_STEP_COMMAND" title='DEBUG_STEP_COMMAND' data-ref="DEBUG_STEP_COMMAND">DEBUG_STEP_COMMAND</dfn>            = <var>7</var>,</td></tr>
+<tr><th id="56">56</th><td>    <dfn class="enum" id="DEBUG_EXPLICIT_CALL" title='DEBUG_EXPLICIT_CALL' data-ref="DEBUG_EXPLICIT_CALL">DEBUG_EXPLICIT_CALL</dfn>           = <var>8</var>,</td></tr>
+<tr><th id="57">57</th><td>    <dfn class="enum" id="DEBUG_STACK_CHANGING" title='DEBUG_STACK_CHANGING' data-ref="DEBUG_STACK_CHANGING">DEBUG_STACK_CHANGING</dfn>          = <var>99</var>,</td></tr>
+<tr><th id="58">58</th><td>    <dfn class="enum" id="DEBUG_NOT_GIVEN" title='DEBUG_NOT_GIVEN' data-ref="DEBUG_NOT_GIVEN">DEBUG_NOT_GIVEN</dfn>               = <var>100</var></td></tr>
+<tr><th id="59">59</th><td>  } <dfn class="typedef" id="debug_enter_reason_t" title='debug_enter_reason_t' data-type='enum debug_enter_reason_t' data-ref="debug_enter_reason_t">debug_enter_reason_t</dfn>;</td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td><b>typedef</b> <b>enum</b> {</td></tr>
+<tr><th id="62">62</th><td>    <dfn class="enum" id="INFO_TARGET_POSITION" title='INFO_TARGET_POSITION' data-ref="INFO_TARGET_POSITION">INFO_TARGET_POSITION</dfn> = <var>1</var>,</td></tr>
+<tr><th id="63">63</th><td>    <dfn class="enum" id="INFO_TARGET_NAME" title='INFO_TARGET_NAME' data-ref="INFO_TARGET_NAME">INFO_TARGET_NAME</dfn>     = <var>2</var>,</td></tr>
+<tr><th id="64">64</th><td>    <dfn class="enum" id="INFO_TARGET_POSITION_AND_NAME" title='INFO_TARGET_POSITION_AND_NAME' data-ref="INFO_TARGET_POSITION_AND_NAME">INFO_TARGET_POSITION_AND_NAME</dfn>   = <var>3</var>, <i>/* 1 &amp; 2 */</i></td></tr>
+<tr><th id="65">65</th><td>    <dfn class="enum" id="INFO_TARGET_TASKS" title='INFO_TARGET_TASKS' data-ref="INFO_TARGET_TASKS">INFO_TARGET_TASKS</dfn>               = <var>4</var>,</td></tr>
+<tr><th id="66">66</th><td>    <dfn class="enum" id="INFO_TARGET_TASK_COMMENT" title='INFO_TARGET_TASK_COMMENT' data-ref="INFO_TARGET_TASK_COMMENT">INFO_TARGET_TASK_COMMENT</dfn>        = <var>8</var>,</td></tr>
+<tr><th id="67">67</th><td>    <dfn class="enum" id="INFO_TARGET_TASKS_WITH_COMMENTS" title='INFO_TARGET_TASKS_WITH_COMMENTS' data-ref="INFO_TARGET_TASKS_WITH_COMMENTS">INFO_TARGET_TASKS_WITH_COMMENTS</dfn> = <var>12</var>, <i>/* 4 &amp; 8 */</i></td></tr>
+<tr><th id="68">68</th><td>} <dfn class="typedef" id="info_target_output_mask_t" title='info_target_output_mask_t' data-type='enum info_target_output_mask_t' data-ref="info_target_output_mask_t">info_target_output_mask_t</dfn>;</td></tr>
+<tr><th id="69">69</th><td></td></tr>
+<tr><th id="70">70</th><td><i class="doc">/*!</i></td></tr>
+<tr><th id="71">71</th><td><i class="doc">  debugger command interface.</i></td></tr>
+<tr><th id="72">72</th><td><i class="doc">*/</i></td></tr>
+<tr><th id="73">73</th><td></td></tr>
+<tr><th id="74">74</th><td><i class="doc">/*! A call "stack". Well, since we'll have to deal with multiple child</i></td></tr>
+<tr><th id="75">75</th><td><i class="doc">   "jobs" it's not really a stack but a tree.</i></td></tr>
+<tr><th id="76">76</th><td><i class="doc">*/</i></td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td><i class="doc">/*! <span class="command">\brief</span> Node for an item in the target call stack */</i></td></tr>
+<tr><th id="79">79</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="target_stack_node" title='target_stack_node' data-ref="target_stack_node"><a class="type" href="#target_stack_node" title='target_stack_node' data-ref="target_stack_node">target_stack_node</a></dfn></td></tr>
+<tr><th id="80">80</th><td>  {</td></tr>
+<tr><th id="81">81</th><td>    <a class="typedef" href="types.h.html#file_t" title='file_t' data-type='struct file' data-ref="file_t">file_t</a>                   *<dfn class="decl" id="target_stack_node::p_target" title='target_stack_node::p_target' data-ref="target_stack_node::p_target">p_target</dfn>;</td></tr>
+<tr><th id="82">82</th><td>    <a class="typedef" href="types.h.html#file_t" title='file_t' data-type='struct file' data-ref="file_t">file_t</a>                   *<dfn class="decl" id="target_stack_node::p_shared_target" title='target_stack_node::p_shared_target' data-ref="target_stack_node::p_shared_target">p_shared_target</dfn>;</td></tr>
+<tr><th id="83">83</th><td>    <b>struct</b> <a class="type" href="#target_stack_node" title='target_stack_node' data-ref="target_stack_node">target_stack_node</a> *<dfn class="decl" id="target_stack_node::p_parent" title='target_stack_node::p_parent' data-ref="target_stack_node::p_parent">p_parent</dfn>;</td></tr>
+<tr><th id="84">84</th><td>  } <dfn class="typedef" id="target_stack_node_t" title='target_stack_node_t' data-type='struct target_stack_node' data-ref="target_stack_node_t">target_stack_node_t</dfn>;</td></tr>
+<tr><th id="85">85</th><td></td></tr>
+<tr><th id="86">86</th><td><i class="doc">/** Pointer to top of current target call stack */</i></td></tr>
+<tr><th id="87">87</th><td><b>extern</b> <a class="typedef" href="#target_stack_node_t" title='target_stack_node_t' data-type='struct target_stack_node' data-ref="target_stack_node_t">target_stack_node_t</a> *<dfn class="decl" id="p_stack_top" title='p_stack_top' data-ref="p_stack_top">p_stack_top</dfn>;</td></tr>
+<tr><th id="88">88</th><td></td></tr>
+<tr><th id="89">89</th><td><i class="doc">/*! Push "p_target" to the call stack. Return the new stack top.</i></td></tr>
+<tr><th id="90">90</th><td><i class="doc">    if b_debugger is true we might enter the debugger.</i></td></tr>
+<tr><th id="91">91</th><td><i class="doc">*/</i></td></tr>
+<tr><th id="92">92</th><td><b>extern</b> <a class="typedef" href="#target_stack_node_t" title='target_stack_node_t' data-type='struct target_stack_node' data-ref="target_stack_node_t">target_stack_node_t</a> *<dfn class="decl" id="trace_push_target" title='trace_push_target' data-ref="trace_push_target">trace_push_target</dfn> (<a class="typedef" href="#target_stack_node_t" title='target_stack_node_t' data-type='struct target_stack_node' data-ref="target_stack_node_t">target_stack_node_t</a> *<dfn class="local col4 decl" id="104p" title='p' data-type='target_stack_node_t *' data-ref="104p">p</dfn>,</td></tr>
+<tr><th id="93">93</th><td>					       <a class="typedef" href="types.h.html#file_t" title='file_t' data-type='struct file' data-ref="file_t">file_t</a> *<dfn class="local col5 decl" id="105p_target" title='p_target' data-type='file_t *' data-ref="105p_target">p_target</dfn>);</td></tr>
+<tr><th id="94">94</th><td></td></tr>
+<tr><th id="95">95</th><td><i class="doc">/*! Pop the next target from the call stack.. */</i></td></tr>
+<tr><th id="96">96</th><td><b>extern</b> <em>void</em> <dfn class="decl" id="trace_pop_target" title='trace_pop_target' data-ref="trace_pop_target">trace_pop_target</dfn> (<a class="typedef" href="#target_stack_node_t" title='target_stack_node_t' data-type='struct target_stack_node' data-ref="target_stack_node_t">target_stack_node_t</a> *<dfn class="local col6 decl" id="106p" title='p' data-type='target_stack_node_t *' data-ref="106p">p</dfn>);</td></tr>
+<tr><th id="97">97</th><td></td></tr>
+<tr><th id="98">98</th><td><i class="doc">/*! <span class="command">\brief</span> Node for an item in the "include Makefile" stack */</i></td></tr>
+<tr><th id="99">99</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="floc_stack_node" title='floc_stack_node' data-ref="floc_stack_node"><a class="type" href="#floc_stack_node" title='floc_stack_node' data-ref="floc_stack_node">floc_stack_node</a></dfn></td></tr>
+<tr><th id="100">100</th><td>  {</td></tr>
+<tr><th id="101">101</th><td>    <a class="typedef" href="gnuremake.h.html#gmk_floc" title='gmk_floc' data-type='struct gmk_floc' data-ref="gmk_floc">gmk_floc</a>               *<dfn class="decl" id="floc_stack_node::p_floc" title='floc_stack_node::p_floc' data-ref="floc_stack_node::p_floc">p_floc</dfn>;</td></tr>
+<tr><th id="102">102</th><td>    <b>struct</b> <a class="type" href="#floc_stack_node" title='floc_stack_node' data-ref="floc_stack_node">floc_stack_node</a> *<dfn class="decl" id="floc_stack_node::p_parent" title='floc_stack_node::p_parent' data-ref="floc_stack_node::p_parent">p_parent</dfn>;</td></tr>
+<tr><th id="103">103</th><td>  } <dfn class="typedef" id="floc_stack_node_t" title='floc_stack_node_t' data-type='struct floc_stack_node' data-ref="floc_stack_node_t">floc_stack_node_t</dfn>;</td></tr>
+<tr><th id="104">104</th><td></td></tr>
+<tr><th id="105">105</th><td><i class="doc">/** Pointer to top of current target floc stack */</i></td></tr>
+<tr><th id="106">106</th><td><b>extern</b> <a class="typedef" href="#floc_stack_node_t" title='floc_stack_node_t' data-type='struct floc_stack_node' data-ref="floc_stack_node_t">floc_stack_node_t</a> *<dfn class="decl" id="p_stack_floc_top" title='p_stack_floc_top' data-ref="p_stack_floc_top">p_stack_floc_top</dfn>;</td></tr>
+<tr><th id="107">107</th><td></td></tr>
+<tr><th id="108">108</th><td><i class="doc">/*! Push "p_floc" to the floc stack. Return the new stack top.</i></td></tr>
+<tr><th id="109">109</th><td><i class="doc">*/</i></td></tr>
+<tr><th id="110">110</th><td><b>extern</b> <em>void</em> <dfn class="decl" id="trace_push_floc" title='trace_push_floc' data-ref="trace_push_floc">trace_push_floc</dfn> (<a class="typedef" href="gnuremake.h.html#gmk_floc" title='gmk_floc' data-type='struct gmk_floc' data-ref="gmk_floc">gmk_floc</a> *<dfn class="local col7 decl" id="107p_floc" title='p_floc' data-type='gmk_floc *' data-ref="107p_floc">p_floc</dfn>);</td></tr>
+<tr><th id="111">111</th><td></td></tr>
+<tr><th id="112">112</th><td><i class="doc">/*! Pop the next floc from the call stack.. */</i></td></tr>
+<tr><th id="113">113</th><td><b>extern</b> <em>void</em> <dfn class="decl" id="trace_pop_floc" title='trace_pop_floc' data-ref="trace_pop_floc">trace_pop_floc</dfn> (<em>void</em>);</td></tr>
+<tr><th id="114">114</th><td></td></tr>
+<tr><th id="115">115</th><td><i class="doc">/*! Show just a list of targets */</i></td></tr>
+<tr><th id="116">116</th><td><b>extern</b> <em>void</em> <dfn class="decl" id="dbg_cmd_info_targets" title='dbg_cmd_info_targets' data-ref="dbg_cmd_info_targets">dbg_cmd_info_targets</dfn>(<a class="typedef" href="#info_target_output_mask_t" title='info_target_output_mask_t' data-type='enum info_target_output_mask_t' data-ref="info_target_output_mask_t">info_target_output_mask_t</a> <dfn class="local col8 decl" id="108output_mask" title='output_mask' data-type='info_target_output_mask_t' data-ref="108output_mask">output_mask</dfn>);</td></tr>
+<tr><th id="117">117</th><td></td></tr>
+<tr><th id="118">118</th><td><u>#<span data-ppcond="26">endif</span> /*REMAKE_TRACE_H*/</u></td></tr>
+<tr><th id="119">119</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='commands.c.html'>remake/commands.c</a><br/>Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

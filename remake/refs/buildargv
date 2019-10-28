@@ -1,0 +1,81 @@
+<dec f='remake/buildargv.h' l='80' type='char ** buildargv(const char * input)'/>
+<def f='remake/buildargv.c' l='111' ll='239' type='char ** buildargv(const char * input)'/>
+<doc f='remake/buildargv.c' l='71'>/*
+
+@deftypefn Extension char** buildargv (char *@var{sp})
+
+Given a pointer to a string, parse the string extracting fields
+separated by whitespace and optionally enclosed within either single
+or double quotes (which are stripped off), and build a vector of
+pointers to copies of the string for each field.  The input string
+remains unchanged.  The last element of the vector is followed by a
+@code{NULL} element.
+
+All of the memory for the pointer array and copies of the string
+is obtained from @code{malloc}.  All of the memory can be returned to the
+system with the single function call @code{freeargv}, which takes the
+returned result of @code{buildargv}, as it&apos;s argument.
+
+Returns a pointer to the argument vector if successful.  Returns
+@code{NULL} if @var{sp} is @code{NULL} or if there is insufficient
+memory to complete building the argument vector.
+
+If the input is a null string (as opposed to a @code{NULL} pointer),
+then buildarg returns an argument vector that has one arg, a null
+string.
+
+@end deftypefn
+
+The memory for the argv array is dynamically expanded as necessary.
+
+In order to provide a working buffer for extracting arguments into,
+with appropriate stripping of quotes and translation of backslash
+sequences, we allocate a working buffer at least as long as the input
+string.  This ensures that we always have enough space in which to
+work, since the extracted arg is never larger than the input string.
+
+The argument vector is always kept terminated with a @code{NULL} arg
+pointer, so it can be passed to @code{freeargv} at any time, or
+returned, as appropriate.
+
+*/</doc>
+<doc f='remake/buildargv.h' l='41'>/*
+
+@deftypefn Extension char** buildargv (char *@var{sp})
+
+Given a pointer to a string, parse the string extracting fields
+separated by whitespace and optionally enclosed within either single
+or double quotes (which are stripped off), and build a vector of
+pointers to copies of the string for each field.  The input string
+remains unchanged.  The last element of the vector is followed by a
+@code{NULL} element.
+
+All of the memory for the pointer array and copies of the string
+is obtained from @code{malloc}.  All of the memory can be returned to the
+system with the single function call @code{freeargv}, which takes the
+returned result of @code{buildargv}, as it&apos;s argument.
+
+Returns a pointer to the argument vector if successful.  Returns
+@code{NULL} if @var{sp} is @code{NULL} or if there is insufficient
+memory to complete building the argument vector.
+
+If the input is a null string (as opposed to a @code{NULL} pointer),
+then buildarg returns an argument vector that has one arg, a null
+string.
+
+@end deftypefn
+
+The memory for the argv array is dynamically expanded as necessary.
+
+In order to provide a working buffer for extracting arguments into,
+with appropriate stripping of quotes and translation of backslash
+sequences, we allocate a working buffer at least as long as the input
+string.  This ensures that we always have enough space in which to
+work, since the extracted arg is never larger than the input string.
+
+The argument vector is always kept terminated with a @code{NULL} arg
+pointer, so it can be passed to @code{freeargv} at any time, or
+returned, as appropriate.
+
+*/</doc>
+<use f='remake/debugger/command/run.h' l='18' u='c' c='dbg_cmd_run'/>

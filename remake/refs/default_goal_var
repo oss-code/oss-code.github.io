@@ -1,0 +1,13 @@
+<dec f='remake/variable.h' l='117' type='struct variable *'/>
+<def f='remake/main.c' l='496' type='struct variable *'/>
+<use f='remake/main.c' l='1890' u='w' c='main'/>
+<use f='remake/main.c' l='2454' u='r' c='main'/>
+<use f='remake/main.c' l='2455' u='r' c='main'/>
+<use f='remake/main.c' l='2458' u='r' c='main'/>
+<use f='remake/main.c' l='2459' u='r' c='main'/>
+<doc f='remake/main.c' l='491'>/*! Pointer to the value of the .DEFAULT_GOAL special variable.
+  The value will be the name of the goal to remake if the command line
+  does not override it.  It can be set by the makefile, or else it&apos;s
+  the first target defined in the makefile whose name does not start
+  with &apos;.&apos;.  */</doc>
+<use f='remake/read.c' l='1322' u='r' c='eval'/>

@@ -1,0 +1,8 @@
+<dec f='remake/dep.h' l='93' type='char * remake_tilde_expand(const char * name)'/>
+<use f='remake/main.c' l='630' u='c' c='expand_command_line_file'/>
+<use f='remake/read.c' l='329' u='c' c='eval_makefile'/>
+<use f='remake/read.c' l='2863' u='c' c='construct_include_path'/>
+<def f='remake/read.c' l='2936' ll='3001' type='char * remake_tilde_expand(const char * name)'/>
+<use f='remake/read.c' l='3233' u='c' c='parse_file_seq'/>
+<doc f='remake/read.c' l='2933'>/* Expand ~ or ~USER at the beginning of NAME.
+   Return a newly malloc&apos;d string or 0.  */</doc>

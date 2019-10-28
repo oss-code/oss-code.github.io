@@ -1,0 +1,11 @@
+<dec f='remake/hash.h' l='71' type='void hash_map(struct hash_table * ht, hash_map_func_t map)'/>
+<use f='remake/debugger/file2line.c' l='169' u='c' c='file2lines_init'/>
+<use f='remake/debugger/file2line.c' l='206' u='c' c='file2lines_dump'/>
+<use f='remake/file.c' l='540' u='c' c='snap_deps'/>
+<use f='remake/file.c' l='584' u='c' c='snap_deps'/>
+<use f='remake/file.c' l='1037' u='c' c='print_file_data_base'/>
+<use f='remake/file.c' l='1075' u='c' c='verify_file_data_base'/>
+<def f='remake/hash.c' l='221' ll='232' type='void hash_map(struct hash_table * ht, hash_map_func_t map)'/>
+<use f='remake/profile.c' l='248' u='c' c='callgrind_profile_data'/>
+<use f='remake/variable.c' l='365' u='c' c='free_variable_set'/>
+<use f='remake/variable.c' l='786' u='c' c='pop_variable_scope'/>

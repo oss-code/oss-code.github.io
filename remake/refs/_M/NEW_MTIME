@@ -1,0 +1,13 @@
+<dec f='remake/filedef.h' l='233'/>
+<doc f='remake/filedef.h' l='227'>/* Modtime value to use for &apos;infinitely new&apos;.  We used to get the current time
+   from the system and use that whenever we wanted &apos;new&apos;.  But that causes
+   trouble when the machine running make and the machine holding a file have
+   different ideas about what time it is; and can also lose for &apos;force&apos;
+   targets, which need to be considered newer than anything that depends on
+   them, even if said dependents&apos; modtimes are in the future.  */</doc>
+<use f='remake/main.c' l='2102' u='c'/>
+<use f='remake/main.c' l='2440' u='c'/>
+<use f='remake/remake.c' l='1029' u='c'/>
+<use f='remake/remake.c' l='1456' u='c'/>
+<use f='remake/remake.c' l='1469' u='c'/>
+<use f='remake/vpath.c' l='451' u='c'/>

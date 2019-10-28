@@ -1,0 +1,8 @@
+<dec f='remake/variable.h' l='133' type='int handle_function(char ** op, const char ** stringp)'/>
+<doc f='remake/variable.h' l='132'>/* function.c */</doc>
+<use f='remake/expand.c' l='258' u='c' c='variable_expand_string'/>
+<def f='remake/function.c' l='2442' ll='2554' type='int handle_function(char ** op, const char ** stringp)'/>
+<doc f='remake/function.c' l='2437'>/* Check for a function invocation in *STRINGP.  *STRINGP points at the
+   opening ( or { and is not null-terminated.  If a function invocation
+   is found, expand it into the buffer at *OP, updating *OP, incrementing
+   *STRINGP past the reference and returning nonzero.  If not, return zero.  */</doc>

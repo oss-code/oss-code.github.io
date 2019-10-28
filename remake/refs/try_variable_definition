@@ -1,0 +1,17 @@
+<dec f='remake/variable.h' l='216' type='struct variable * try_variable_definition(const gmk_floc * flocp, const char * line, enum variable_origin origin, int target_var)'/>
+<use f='remake/main.c' l='2657' u='c' c='handle_non_switch_argument'/>
+<use f='remake/read.c' l='765' u='c' c='eval'/>
+<use f='remake/read.c' l='1903' u='c' c='record_target_var'/>
+<def f='remake/variable.c' l='1633' ll='1654' type='struct variable * try_variable_definition(const gmk_floc * flocp, const char * line, enum variable_origin origin, int target_var)'/>
+<doc f='remake/variable.c' l='1620'>/* Try to interpret LINE (a null-terminated string) as a variable definition.
+
+   ORIGIN may be o_file, o_override, o_env, o_env_override,
+   or o_command specifying that the variable definition comes
+   from a makefile, an override directive, the environment with
+   or without the -e switch, or the command line.
+
+   See the comments for assign_variable_definition().
+
+   If LINE was recognized as a variable definition, a pointer to its &apos;struct
+   variable&apos; is returned.  If LINE is not a variable definition, NULL is
+   returned.  */</doc>

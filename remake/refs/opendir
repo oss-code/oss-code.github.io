@@ -1,0 +1,7 @@
+<dec f='include/dirent.h' l='134' type='DIR * opendir(const char * __name)'/>
+<use f='remake/dir.c' l='575' u='c' c='find_directory'/>
+<doc f='include/dirent.h' l='129'>/* Open a directory stream on NAME.
+   Return a DIR stream on the directory, or NULL if it could not be opened.
+
+   This function is a possible cancellation point and therefore not
+   marked with __THROW.  */</doc>

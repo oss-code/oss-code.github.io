@@ -1,0 +1,9 @@
+<dec f='remake/makeint.h' l='630' type='int'/>
+<use f='remake/file_basic.c' l='138' u='r' c='enter_file'/>
+<dec f='remake/globals.h' l='47' type='int'/>
+<def f='remake/globals.c' l='42' type='int'/>
+<doc f='remake/globals.c' l='41'>/* Nonzero means do extra verification (that may slow things down).  */</doc>
+<doc f='remake/globals.h' l='46'>/* Nonzero means do extra verification (that may slow things down).  */</doc>
+<use f='remake/main.c' l='725' u='w' c='decode_debug_flags'/>
+<use f='remake/main.c' l='1053' u='w' c='main'/>
+<use f='remake/main.c' l='3414' u='r' c='die'/>

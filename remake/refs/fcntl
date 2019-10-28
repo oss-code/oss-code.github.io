@@ -1,0 +1,27 @@
+<dec f='include/fcntl.h' l='146' type='int fcntl(int __fd, int __cmd)'/>
+<doc f='include/fcntl.h' l='141'>/* Do the file control operation described by CMD on FD.
+   The remaining arguments are interpreted depending on CMD.
+
+   This function is a cancellation point and therefore not marked with
+   __THROW.  */</doc>
+<use f='remake/function.c' l='1796' macro='1' u='c'/>
+<use f='remake/function.c' l='1797' macro='1' u='c'/>
+<use f='remake/output.c' l='162' u='c' c='set_append_mode'/>
+<use f='remake/output.c' l='164' u='c' c='set_append_mode'/>
+<use f='remake/output.c' l='51' u='c' c='sync_init'/>
+<use f='remake/output.c' l='51' u='c' c='sync_init'/>
+<use f='remake/output.c' l='268' u='c' c='acquire_semaphore'/>
+<use f='remake/output.c' l='280' u='c' c='release_semaphore'/>
+<use f='remake/output.c' l='51' u='c' c='setup_tmpfile'/>
+<use f='remake/output.c' l='325' macro='1' u='c'/>
+<use f='remake/output.c' l='51' u='c' c='setup_tmpfile'/>
+<use f='remake/output.c' l='338' macro='1' u='c'/>
+<use f='remake/output.c' l='51' u='c' c='output_init'/>
+<use f='remake/posixos.c' l='96' u='c' c='jobserver_parse_auth'/>
+<use f='remake/posixos.c' l='96' u='c' c='jobserver_parse_auth'/>
+<use f='remake/posixos.c' l='186' macro='1' u='c'/>
+<use f='remake/posixos.c' l='187' macro='1' u='c'/>
+<use f='remake/posixos.c' l='201' u='c' c='jobserver_post_child'/>
+<use f='remake/posixos.c' l='205' u='c' c='jobserver_post_child'/>
+<use f='remake/posixos.c' l='426' macro='1' u='c'/>
+<use f='remake/read.c' l='404' macro='1' u='c'/>

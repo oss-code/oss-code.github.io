@@ -1,0 +1,5 @@
+<dec f='remake/dep.h' l='96' type='struct nameseq * ar_glob(const char * arname, const char * member_pattern, unsigned int size)'/>
+<def f='remake/ar.c' l='276' ll='314' type='struct nameseq * ar_glob(const char * arname, const char * member_pattern, unsigned int size)'/>
+<doc f='remake/ar.c' l='273'>/* Glob for MEMBER_PATTERN in archive ARNAME.
+   Return a malloc&apos;d chain of matching elements (or nil if none).  */</doc>
+<use f='remake/read.c' l='3290' u='c' c='parse_file_seq'/>

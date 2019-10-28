@@ -1,0 +1,5 @@
+<dec f='remake/debugger/file2line.h' l='43' type='file_t * target_for_file_and_line(const char * psz_filename, unsigned int lineno, f2l_entry_t * entry_type)'/>
+<use f='remake/debugger/command/break.h' l='41' u='c' c='dbg_cmd_break'/>
+<use f='remake/debugger/command/list.h' l='37' u='c' c='dbg_cmd_list'/>
+<def f='remake/debugger/file2line.c' l='56' ll='72' type='file_t * target_for_file_and_line(const char * psz_filename, unsigned int lineno, f2l_entry_t * entry_type)'/>
+<doc f='remake/debugger/file2line.c' l='55'>/* FIXME return a status code when we fail. */</doc>

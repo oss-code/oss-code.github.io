@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>run.h source code [remake/debugger/command/run.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/debugger/command/run.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>remake</a>/<a href='..'>debugger</a>/<a href='./'>command</a>/<a href='run.h.html'>run.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Restart/run program. */</i></td></tr>
+<tr><th id="2">2</th><td><em>static</em> <a class="typedef" href="../../trace.h.html#debug_return_t" title='debug_return_t' data-type='enum debug_return_t' data-ref="debug_return_t">debug_return_t</a></td></tr>
+<tr><th id="3">3</th><td><dfn class="decl def" id="dbg_cmd_run" title='dbg_cmd_run' data-ref="dbg_cmd_run">dbg_cmd_run</dfn>(<em>char</em> *<dfn class="local col1 decl" id="171psz_arg" title='psz_arg' data-type='char *' data-ref="171psz_arg">psz_arg</dfn>)</td></tr>
+<tr><th id="4">4</th><td>{</td></tr>
+<tr><th id="5">5</th><td>  <em>char</em> * <em>const</em> *<dfn class="local col2 decl" id="172ppsz_argv" title='ppsz_argv' data-type='char *const *' data-ref="172ppsz_argv">ppsz_argv</dfn> = (<em>char</em> * <em>const</em> *)<a class="ref" href="../../make.h.html#global_argv" title='global_argv' data-ref="global_argv">global_argv</a>;</td></tr>
+<tr><th id="6">6</th><td>  <em>const</em> <em>char</em> *<dfn class="local col3 decl" id="173psz_make_cmd" title='psz_make_cmd' data-type='const char *' data-ref="173psz_make_cmd">psz_make_cmd</dfn> = <a class="ref" href="../../make.h.html#global_argv" title='global_argv' data-ref="global_argv">global_argv</a>[<var>0</var>];</td></tr>
+<tr><th id="7">7</th><td>  <a class="ref" href="../../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"Changing directory to %s and restarting...\n"</q>,</td></tr>
+<tr><th id="8">8</th><td>	 <a class="ref" href="../../make.h.html#directory_before_chdir" title='directory_before_chdir' data-ref="directory_before_chdir">directory_before_chdir</a>);</td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td>  <b>if</b> (<a class="ref" href="../../../include/unistd.h.html#chdir" title='chdir' data-ref="chdir">chdir</a>(<a class="ref" href="../../make.h.html#directory_before_chdir" title='directory_before_chdir' data-ref="directory_before_chdir">directory_before_chdir</a>) == -<var>1</var>)</td></tr>
+<tr><th id="11">11</th><td>    <a class="ref" href="../../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="macro" href="../../../include/stdio.h.html#174" title="stderr" data-ref="_M/stderr">stderr</a>, <q>"changing working directory; %s\n"</q>,</td></tr>
+<tr><th id="12">12</th><td>            <a class="ref" href="../../../include/string.h.html#strerror" title='strerror' data-ref="strerror">strerror</a>(<a class="macro" href="../../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>));</td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td>  <b>if</b> (<a class="local col1 ref" href="#171psz_arg" title='psz_arg' data-ref="171psz_arg">psz_arg</a> &amp;&amp; <a class="ref" href="../../../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a>(<a class="local col1 ref" href="#171psz_arg" title='psz_arg' data-ref="171psz_arg">psz_arg</a>)) {</td></tr>
+<tr><th id="15">15</th><td>    <em>unsigned</em> <em>int</em> <dfn class="local col4 decl" id="174len" title='len' data-type='unsigned int' data-ref="174len">len</dfn> = <a class="ref" href="../../../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a>(<a class="ref" href="../../make.h.html#global_argv" title='global_argv' data-ref="global_argv">global_argv</a>[<var>0</var>]) + <a class="ref" href="../../../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a>(<a class="local col1 ref" href="#171psz_arg" title='psz_arg' data-ref="171psz_arg">psz_arg</a>) + <var>2</var>;</td></tr>
+<tr><th id="16">16</th><td>    <em>char</em> *<dfn class="local col5 decl" id="175psz_full_args" title='psz_full_args' data-type='char *' data-ref="175psz_full_args">psz_full_args</dfn> = <a class="macro" href="../../types.h.html#83" title="((char *) calloc (sizeof (char), (len)))" data-ref="_M/CALLOC">CALLOC</a>(<em>char</em>, <a class="local col4 ref" href="#174len" title='len' data-ref="174len">len</a>);</td></tr>
+<tr><th id="17">17</th><td>    <a class="ref" href="../../../include/stdio.h.html#snprintf" title='snprintf' data-ref="snprintf">snprintf</a>(<a class="local col5 ref" href="#175psz_full_args" title='psz_full_args' data-ref="175psz_full_args">psz_full_args</a>, <a class="local col4 ref" href="#174len" title='len' data-ref="174len">len</a>, <q>"%s %s"</q>, <a class="ref" href="../../make.h.html#global_argv" title='global_argv' data-ref="global_argv">global_argv</a>[<var>0</var>], <a class="local col1 ref" href="#171psz_arg" title='psz_arg' data-ref="171psz_arg">psz_arg</a>);</td></tr>
+<tr><th id="18">18</th><td>    <a class="local col2 ref" href="#172ppsz_argv" title='ppsz_argv' data-ref="172ppsz_argv">ppsz_argv</a> = <a class="ref" href="../../buildargv.h.html#buildargv" title='buildargv' data-ref="buildargv">buildargv</a>(<a class="local col5 ref" href="#175psz_full_args" title='psz_full_args' data-ref="175psz_full_args">psz_full_args</a>);</td></tr>
+<tr><th id="19">19</th><td>    <a class="ref" href="../../../include/stdlib.h.html#free" title='free' data-ref="free">free</a>(<a class="local col5 ref" href="#175psz_full_args" title='psz_full_args' data-ref="175psz_full_args">psz_full_args</a>);</td></tr>
+<tr><th id="20">20</th><td>  }</td></tr>
+<tr><th id="21">21</th><td>  <a class="ref" href="../../../include/unistd.h.html#execvp" title='execvp' data-ref="execvp">execvp</a> (<a class="local col3 ref" href="#173psz_make_cmd" title='psz_make_cmd' data-ref="173psz_make_cmd">psz_make_cmd</a>, <a class="local col2 ref" href="#172ppsz_argv" title='ppsz_argv' data-ref="172ppsz_argv">ppsz_argv</a>);</td></tr>
+<tr><th id="22">22</th><td>  <i>/* NOT USED: */</i></td></tr>
+<tr><th id="23">23</th><td>  <b>return</b> <a class="enum" href="../../trace.h.html#debug_readloop" title='debug_readloop' data-ref="debug_readloop">debug_readloop</a>;</td></tr>
+<tr><th id="24">24</th><td>}</td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="27">27</th><td><dfn class="decl def" id="dbg_cmd_run_init" title='dbg_cmd_run_init' data-ref="dbg_cmd_run_init">dbg_cmd_run_init</dfn>(<em>unsigned</em> <em>int</em> <dfn class="local col6 decl" id="176c" title='c' data-type='unsigned int' data-ref="176c">c</dfn>)</td></tr>
+<tr><th id="28">28</th><td>{</td></tr>
+<tr><th id="29">29</th><td>  <a class="ref" href="../cmd.c.html#short_command" title='short_command' data-ref="short_command">short_command</a>[<a class="local col6 ref" href="#176c" title='c' data-ref="176c">c</a>].<a class="ref" href="../../debugger.h.html#(anonymous)::func" title='(anonymous struct)::func' data-ref="(anonymous)::func">func</a> = &amp;<a class="ref" href="#dbg_cmd_run" title='dbg_cmd_run' data-ref="dbg_cmd_run">dbg_cmd_run</a>;</td></tr>
+<tr><th id="30">30</th><td>  <a class="ref" href="../cmd.c.html#short_command" title='short_command' data-ref="short_command">short_command</a>[<a class="local col6 ref" href="#176c" title='c' data-ref="176c">c</a>].<a class="ref" href="../../debugger.h.html#(anonymous)::use" title='(anonymous struct)::use' data-ref="(anonymous)::use">use</a> = <a class="macro" href="../../make.h.html#293" title="dcgettext (((void*)0), &quot;run [ARGS]&quot;, 5)" data-ref="_M/_">_</a>(<q>"run [ARGS]"</q>);</td></tr>
+<tr><th id="31">31</th><td>  <a class="ref" href="../cmd.c.html#short_command" title='short_command' data-ref="short_command">short_command</a>[<a class="local col6 ref" href="#176c" title='c' data-ref="176c">c</a>].<a class="ref" href="../../debugger.h.html#(anonymous)::doc" title='(anonymous struct)::doc' data-ref="(anonymous)::doc">doc</a> =</td></tr>
+<tr><th id="32">32</th><td>    <a class="macro" href="../../make.h.html#293" title="dcgettext (((void*)0), &quot;Run Makefile from the beginning.\n&quot; &quot;You may specify arguments to give it.\n&quot; &quot;With no arguments, uses arguments last specified (with \&quot;run\&quot;)&quot;, 5)" data-ref="_M/_">_</a>(<q>"Run Makefile from the beginning.\n"</q></td></tr>
+<tr><th id="33">33</th><td>      <q>"You may specify arguments to give it.\n"</q></td></tr>
+<tr><th id="34">34</th><td>      <q>"With no arguments, uses arguments last specified (with \"run\")"</q>);</td></tr>
+<tr><th id="35">35</th><td>}</td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td><i>/*</i></td></tr>
+<tr><th id="38">38</th><td><i> * Local variables:</i></td></tr>
+<tr><th id="39">39</th><td><i> *  c-file-style: "gnu"</i></td></tr>
+<tr><th id="40">40</th><td><i> *  indent-tabs-mode: nil</i></td></tr>
+<tr><th id="41">41</th><td><i> * End:</i></td></tr>
+<tr><th id="42">42</th><td><i> */</i></td></tr>
+<tr><th id="43">43</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../cmd.c.html'>remake/debugger/cmd.c</a><br/>Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

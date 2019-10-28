@@ -1,0 +1,42 @@
+<dec f='remake/debugger/stack.h' l='35' type='target_stack_node_t *'/>
+<use f='remake/debugger/command/break.h' l='37' u='r' c='dbg_cmd_break'/>
+<use f='remake/debugger/command/break.h' l='37' u='r' c='dbg_cmd_break'/>
+<use f='remake/debugger/command/break.h' l='41' u='r' c='dbg_cmd_break'/>
+<use f='remake/debugger/command/break.h' l='57' u='r' c='dbg_cmd_break'/>
+<use f='remake/debugger/command/continue.h' l='29' u='r' c='dbg_cmd_continue'/>
+<use f='remake/debugger/command/continue.h' l='29' u='r' c='dbg_cmd_continue'/>
+<use f='remake/debugger/command/continue.h' l='31' u='r' c='dbg_cmd_continue'/>
+<use f='remake/debugger/command/finish.h' l='24' u='r' c='dbg_cmd_finish'/>
+<use f='remake/debugger/command/list.h' l='14' u='r' c='dbg_cmd_list'/>
+<use f='remake/debugger/command/list.h' l='36' u='r' c='dbg_cmd_list'/>
+<use f='remake/debugger/command/list.h' l='37' u='r' c='dbg_cmd_list'/>
+<use f='remake/debugger/cmd.c' l='419' u='w' c='enter_debugger'/>
+<doc f='remake/debugger/stack.h' l='32'>/** Pointer to current target call stack at the place we are currently
+   focused on.
+ */</doc>
+<use f='remake/debugger/fns.c' l='167' u='r' c='get_current_target'/>
+<use f='remake/debugger/fns.c' l='167' u='r' c='get_current_target'/>
+<use f='remake/debugger/fns.c' l='168' u='r' c='get_current_target'/>
+<use f='remake/debugger/fns.c' l='217' u='r' c='get_target'/>
+<use f='remake/debugger/fns.c' l='217' u='r' c='get_target'/>
+<use f='remake/debugger/fns.c' l='217' u='r' c='get_target'/>
+<use f='remake/debugger/fns.c' l='218' u='r' c='get_target'/>
+<use f='remake/debugger/fns.c' l='425' u='r' c='dbg_cmd_show_exp'/>
+<use f='remake/debugger/fns.c' l='425' u='r' c='dbg_cmd_show_exp'/>
+<use f='remake/debugger/fns.c' l='425' u='r' c='dbg_cmd_show_exp'/>
+<use f='remake/debugger/fns.c' l='426' u='r' c='dbg_cmd_show_exp'/>
+<def f='remake/debugger/stack.c' l='33' type='target_stack_node_t *'/>
+<use f='remake/debugger/stack.c' l='42' u='w' c='dbg_stack_size'/>
+<use f='remake/debugger/stack.c' l='42' u='r' c='dbg_stack_size'/>
+<use f='remake/debugger/stack.c' l='42' u='w' c='dbg_stack_size'/>
+<use f='remake/debugger/stack.c' l='42' u='r' c='dbg_stack_size'/>
+<use f='remake/debugger/stack.c' l='80' u='w' c='dbg_adjust_frame'/>
+<use f='remake/debugger/stack.c' l='80' u='r' c='dbg_adjust_frame'/>
+<use f='remake/debugger/stack.c' l='80' u='w' c='dbg_adjust_frame'/>
+<use f='remake/debugger/stack.c' l='80' u='r' c='dbg_adjust_frame'/>
+<use f='remake/debugger/stack.c' l='94' u='r' c='dbg_adjust_frame'/>
+<use f='remake/debugger/stack.c' l='96' u='r' c='dbg_adjust_frame'/>
+<use f='remake/debugger/stack.c' l='97' u='r' c='dbg_adjust_frame'/>
+<doc f='remake/debugger/stack.c' l='30'>/** Pointer to current target call stack at the place we are currently
+   focused on.
+ */</doc>

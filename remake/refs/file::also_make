@@ -1,0 +1,15 @@
+<dec f='remake/filedef.h' l='44' type='struct dep *'/>
+<offset>768</offset>
+<doc f='remake/filedef.h' l='44'>/* Targets that are made by making this.  */</doc>
+<use f='remake/commands.c' l='774' u='r' c='delete_child_targets'/>
+<use f='remake/file.c' l='635' u='r' c='set_command_state'/>
+<use f='remake/file.c' l='796' u='r' c='print_target_props'/>
+<use f='remake/file.c' l='799' u='r' c='print_target_props'/>
+<use f='remake/file.c' l='955' u='r' c='print_file'/>
+<use f='remake/file.c' l='959' u='r' c='print_file'/>
+<use f='remake/implicit.c' l='879' u='w' c='pattern_search'/>
+<use f='remake/implicit.c' l='879' u='r' c='pattern_search'/>
+<use f='remake/implicit.c' l='979' u='r' c='pattern_search'/>
+<use f='remake/implicit.c' l='991' u='w' c='pattern_search'/>
+<use f='remake/remake.c' l='591' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='1065' u='r' c='notice_finished_file'/>

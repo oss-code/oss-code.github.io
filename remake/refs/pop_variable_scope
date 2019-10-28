@@ -1,0 +1,8 @@
+<dec f='remake/variable.h' l='168' type='void pop_variable_scope()'/>
+<doc f='remake/variable.h' l='164'>/*! Pop the top set off the current_variable_set_list, and free all
+   its storage.  If b_toplevel set we have the top-most global scope
+   and some things don&apos;t get freed because they weren&apos;t malloc&apos;d.
+*/</doc>
+<use f='remake/function.c' l='897' u='c' c='func_foreach'/>
+<use f='remake/function.c' l='2648' u='c' c='func_call'/>
+<def f='remake/variable.c' l='756' ll='789' type='void pop_variable_scope()'/>

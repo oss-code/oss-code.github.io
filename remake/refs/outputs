@@ -1,0 +1,9 @@
+<dec f='remake/output.h' l='48' type='void outputs(int is_err, const char * msg)'/>
+<doc f='remake/output.h' l='47'>/* Show a message on stdout or stderr.  Will start the output if needed.  */</doc>
+<use f='remake/function.c' l='1140' u='c' c='func_error'/>
+<use f='remake/function.c' l='1141' u='c' c='func_error'/>
+<def f='remake/output.c' l='578' ll='587' type='void outputs(int is_err, const char * msg)'/>
+<use f='remake/output.c' l='638' u='c' c='message'/>
+<use f='remake/output.c' l='669' u='c' c='error'/>
+<use f='remake/output.c' l='701' u='c' c='fatal'/>
+<use f='remake/print.c' l='93' u='c' c='err_log_working_directory'/>

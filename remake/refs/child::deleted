@@ -1,0 +1,6 @@
+<dec f='remake/job.h' l='115' type='unsigned int'/>
+<use f='remake/commands.c' l='767' u='r' c='delete_child_targets'/>
+<use f='remake/commands.c' l='777' u='w' c='delete_child_targets'/>
+<offset>547</offset>
+<doc f='remake/job.h' l='115'>/* Nonzero if targets have been deleted.  */</doc>
+<use f='remake/job.c' l='1250' u='w' c='start_job_command'/>

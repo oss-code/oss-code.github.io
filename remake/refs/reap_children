@@ -1,0 +1,18 @@
+<dec f='remake/job.h' l='126' type='void reap_children(int block, int err, target_stack_node_t * p_call_stack)'/>
+<use f='remake/commands.c' l='673' u='c' c='fatal_error_signal'/>
+<use f='remake/commands.c' l='678' u='c' c='fatal_error_signal'/>
+<use f='remake/function.c' l='1870' u='c' c='func_shell_base'/>
+<def f='remake/job.c' l='456' ll='890' type='void reap_children(int block, int err, target_stack_node_t * p_call_stack)'/>
+<use f='remake/job.c' l='1512' u='c' c='new_job'/>
+<use f='remake/job.c' l='1654' u='c' c='new_job'/>
+<use f='remake/job.c' l='1685' u='c' c='new_job'/>
+<use f='remake/job.c' l='1762' u='c' c='new_job'/>
+<use f='remake/job.c' l='1910' u='c' c='start_waiting_jobs'/>
+<doc f='remake/job.c' l='449'>/* Reap all dead children, storing the returned status and the new command
+   state (&apos;cs_finished&apos;) in the &apos;file&apos; member of the &apos;struct child&apos; for the
+   dead child, and removing the child from the chain.  In addition, if BLOCK
+   nonzero, we block in this function until we&apos;ve reaped at least one
+   complete child, waiting for it to die if necessary.  If ERR is nonzero,
+   print an error message first.  */</doc>
+<use f='remake/main.c' l='3403' u='c' c='die'/>
+<use f='remake/remake.c' l='119' u='c' c='update_goal_chain'/>

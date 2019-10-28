@@ -1,0 +1,5 @@
+<dec f='remake/hash.h' l='73' type='void hash_print_stats(struct hash_table * ht, FILE * out_FILE)'/>
+<use f='remake/file.c' l='1040' u='c' c='print_file_data_base'/>
+<def f='remake/hash.c' l='276' ll='287' type='void hash_print_stats(struct hash_table * ht, FILE * out_FILE)'/>
+<use f='remake/strcache.c' l='329' u='c' c='strcache_print_stats'/>
+<use f='remake/variable.c' l='1811' u='c' c='print_variable_set'/>

@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>hash.h source code [remake/hash.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="hash_table "/>
+<link rel="stylesheet" href="../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/hash.h'; var root_path = '..'; var data_path = '../../data';</script>
+<script src='../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='./'>remake</a>/<a href='hash.h.html'>hash.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* hash.h -- decls for hash table</i></td></tr>
+<tr><th id="2">2</th><td><i>Copyright (C) 1995, 1999, 2002, 2010 Free Software Foundation, Inc.</i></td></tr>
+<tr><th id="3">3</th><td><i>Written by Greg McGary &lt;gkm@gnu.org&gt; &lt;greg@mcgary.org&gt;</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>GNU Make is free software; you can redistribute it and/or modify it under the</i></td></tr>
+<tr><th id="6">6</th><td><i>terms of the GNU General Public License as published by the Free Software</i></td></tr>
+<tr><th id="7">7</th><td><i>Foundation; either version 3 of the License, or (at your option) any later</i></td></tr>
+<tr><th id="8">8</th><td><i>version.</i></td></tr>
+<tr><th id="9">9</th><td><i></i></td></tr>
+<tr><th id="10">10</th><td><i>GNU Make is distributed in the hope that it will be useful, but WITHOUT ANY</i></td></tr>
+<tr><th id="11">11</th><td><i>WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR</i></td></tr>
+<tr><th id="12">12</th><td><i>A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</i></td></tr>
+<tr><th id="13">13</th><td><i></i></td></tr>
+<tr><th id="14">14</th><td><i>You should have received a copy of the GNU General Public License along with</i></td></tr>
+<tr><th id="15">15</th><td><i>this program.  If not, see &lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.  */</i></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><u>#<span data-ppcond="17">ifndef</span> <span class="macro" data-ref="_M/_hash_h_">_hash_h_</span></u></td></tr>
+<tr><th id="18">18</th><td><u>#define <dfn class="macro" id="_M/_hash_h_" data-ref="_M/_hash_h_">_hash_h_</dfn></u></td></tr>
+<tr><th id="19">19</th><td></td></tr>
+<tr><th id="20">20</th><td><u>#include <a href="../include/stdio.h.html">&lt;stdio.h&gt;</a></u></td></tr>
+<tr><th id="21">21</th><td><u>#include <a href="../include/ctype.h.html">&lt;ctype.h&gt;</a></u></td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><u>#<span data-ppcond="23">if</span> defined <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span> || (defined <span class="macro" data-ref="_M/__STDC__">__STDC__</span> &amp;&amp; <span class="macro" title="1" data-ref="_M/__STDC__">__STDC__</span>) || defined <span class="macro" data-ref="_M/WINDOWS32">WINDOWS32</span></u></td></tr>
+<tr><th id="24">24</th><td><u># <span data-ppcond="24">if</span> !defined <a class="macro" href="../include/features.h.html#358" data-ref="_M/__GLIBC__">__GLIBC__</a> || !defined <a class="macro" href="../include/x86_64-linux-gnu/sys/cdefs.h.html#82" data-ref="_M/__P">__P</a></u></td></tr>
+<tr><th id="25">25</th><td><u>#  undef	__P</u></td></tr>
+<tr><th id="26">26</th><td><u>#  define __P(protos)	protos</u></td></tr>
+<tr><th id="27">27</th><td><u># <span data-ppcond="24">endif</span></u></td></tr>
+<tr><th id="28">28</th><td><u>#<span data-ppcond="23">else</span> /* Not C++ or ANSI C.  */</u></td></tr>
+<tr><th id="29">29</th><td><u># undef	__P</u></td></tr>
+<tr><th id="30">30</th><td><u># define __P(protos)	()</u></td></tr>
+<tr><th id="31">31</th><td><i>/* We can get away without defining 'const' here only because in this file</i></td></tr>
+<tr><th id="32">32</th><td><i>   it is used only inside the prototype for 'fnmatch', which is elided in</i></td></tr>
+<tr><th id="33">33</th><td><i>   non-ANSI C where 'const' is problematical.  */</i></td></tr>
+<tr><th id="34">34</th><td><u>#<span data-ppcond="23">endif</span> /* C++ or ANSI C.  */</u></td></tr>
+<tr><th id="35">35</th><td></td></tr>
+<tr><th id="36">36</th><td><b>typedef</b> <em>unsigned</em> <em>long</em> (*<dfn class="typedef" id="hash_func_t" title='hash_func_t' data-type='unsigned long (*)(const void *)' data-ref="hash_func_t">hash_func_t</dfn>) <a class="macro" href="../include/x86_64-linux-gnu/sys/cdefs.h.html#82" title="(void const *key)" data-ref="_M/__P">__P</a>((<em>void</em> <em>const</em> *<dfn class="local col1 decl" id="1key" title='key' data-type='const void *' data-ref="1key">key</dfn>));</td></tr>
+<tr><th id="37">37</th><td><b>typedef</b> <em>int</em> (*<dfn class="typedef" id="hash_cmp_func_t" title='hash_cmp_func_t' data-type='int (*)(const void *, const void *)' data-ref="hash_cmp_func_t">hash_cmp_func_t</dfn>) <a class="macro" href="../include/x86_64-linux-gnu/sys/cdefs.h.html#82" title="(void const *x, void const *y)" data-ref="_M/__P">__P</a>((<em>void</em> <em>const</em> *<dfn class="local col2 decl" id="2x" title='x' data-type='const void *' data-ref="2x">x</dfn>, <em>void</em> <em>const</em> *<dfn class="local col3 decl" id="3y" title='y' data-type='const void *' data-ref="3y">y</dfn>));</td></tr>
+<tr><th id="38">38</th><td><b>typedef</b> <em>void</em> (*<dfn class="typedef" id="hash_map_func_t" title='hash_map_func_t' data-type='void (*)(const void *)' data-ref="hash_map_func_t">hash_map_func_t</dfn>) <a class="macro" href="../include/x86_64-linux-gnu/sys/cdefs.h.html#82" title="(void const *item)" data-ref="_M/__P">__P</a>((<em>void</em> <em>const</em> *<dfn class="local col4 decl" id="4item" title='item' data-type='const void *' data-ref="4item">item</dfn>));</td></tr>
+<tr><th id="39">39</th><td><b>typedef</b> <em>void</em> (*<dfn class="typedef" id="hash_map_arg_func_t" title='hash_map_arg_func_t' data-type='void (*)(const void *, void *)' data-ref="hash_map_arg_func_t">hash_map_arg_func_t</dfn>) <a class="macro" href="../include/x86_64-linux-gnu/sys/cdefs.h.html#82" title="(void const *item, void *arg)" data-ref="_M/__P">__P</a>((<em>void</em> <em>const</em> *<dfn class="local col5 decl" id="5item" title='item' data-type='const void *' data-ref="5item">item</dfn>, <em>void</em> *<dfn class="local col6 decl" id="6arg" title='arg' data-type='void *' data-ref="6arg">arg</dfn>));</td></tr>
+<tr><th id="40">40</th><td></td></tr>
+<tr><th id="41">41</th><td><b>struct</b> <dfn class="type def" id="hash_table" title='hash_table' data-ref="hash_table">hash_table</dfn></td></tr>
+<tr><th id="42">42</th><td>{</td></tr>
+<tr><th id="43">43</th><td>  <em>void</em> **<dfn class="decl" id="hash_table::ht_vec" title='hash_table::ht_vec' data-ref="hash_table::ht_vec">ht_vec</dfn>;</td></tr>
+<tr><th id="44">44</th><td>  <a class="typedef" href="#hash_func_t" title='hash_func_t' data-type='unsigned long (*)(const void *)' data-ref="hash_func_t">hash_func_t</a> <dfn class="decl" id="hash_table::ht_hash_1" title='hash_table::ht_hash_1' data-ref="hash_table::ht_hash_1">ht_hash_1</dfn>;	<i>/* primary hash function */</i></td></tr>
+<tr><th id="45">45</th><td>  <a class="typedef" href="#hash_func_t" title='hash_func_t' data-type='unsigned long (*)(const void *)' data-ref="hash_func_t">hash_func_t</a> <dfn class="decl" id="hash_table::ht_hash_2" title='hash_table::ht_hash_2' data-ref="hash_table::ht_hash_2">ht_hash_2</dfn>;	<i>/* secondary hash function */</i></td></tr>
+<tr><th id="46">46</th><td>  <a class="typedef" href="#hash_cmp_func_t" title='hash_cmp_func_t' data-type='int (*)(const void *, const void *)' data-ref="hash_cmp_func_t">hash_cmp_func_t</a> <dfn class="decl" id="hash_table::ht_compare" title='hash_table::ht_compare' data-ref="hash_table::ht_compare">ht_compare</dfn>;	<i>/* comparison function */</i></td></tr>
+<tr><th id="47">47</th><td>  <em>unsigned</em> <em>long</em> <dfn class="decl" id="hash_table::ht_size" title='hash_table::ht_size' data-ref="hash_table::ht_size">ht_size</dfn>;	<i>/* total number of slots (power of 2) */</i></td></tr>
+<tr><th id="48">48</th><td>  <em>unsigned</em> <em>long</em> <dfn class="decl" id="hash_table::ht_capacity" title='hash_table::ht_capacity' data-ref="hash_table::ht_capacity">ht_capacity</dfn>;	<i>/* usable slots, limited by loading-factor */</i></td></tr>
+<tr><th id="49">49</th><td>  <em>unsigned</em> <em>long</em> <dfn class="decl" id="hash_table::ht_fill" title='hash_table::ht_fill' data-ref="hash_table::ht_fill">ht_fill</dfn>;	<i>/* items in table */</i></td></tr>
+<tr><th id="50">50</th><td>  <em>unsigned</em> <em>long</em> <dfn class="decl" id="hash_table::ht_empty_slots" title='hash_table::ht_empty_slots' data-ref="hash_table::ht_empty_slots">ht_empty_slots</dfn>;	<i>/* empty slots not including deleted slots */</i></td></tr>
+<tr><th id="51">51</th><td>  <em>unsigned</em> <em>long</em> <dfn class="decl" id="hash_table::ht_collisions" title='hash_table::ht_collisions' data-ref="hash_table::ht_collisions">ht_collisions</dfn>;	<i>/* # of failed calls to comparison function */</i></td></tr>
+<tr><th id="52">52</th><td>  <em>unsigned</em> <em>long</em> <dfn class="decl" id="hash_table::ht_lookups" title='hash_table::ht_lookups' data-ref="hash_table::ht_lookups">ht_lookups</dfn>;	<i>/* # of queries */</i></td></tr>
+<tr><th id="53">53</th><td>  <em>unsigned</em> <em>int</em> <dfn class="decl" id="hash_table::ht_rehashes" title='hash_table::ht_rehashes' data-ref="hash_table::ht_rehashes">ht_rehashes</dfn>;	<i>/* # of times we've expanded table */</i></td></tr>
+<tr><th id="54">54</th><td>};</td></tr>
+<tr><th id="55">55</th><td></td></tr>
+<tr><th id="56">56</th><td><b>typedef</b> <em>int</em> (*<dfn class="typedef" id="qsort_cmp_t" title='qsort_cmp_t' data-type='int (*)(const void *, const void *)' data-ref="qsort_cmp_t">qsort_cmp_t</dfn>) <a class="macro" href="../include/x86_64-linux-gnu/sys/cdefs.h.html#82" title="(void const *, void const *)" data-ref="_M/__P">__P</a>((<em>void</em> <em>const</em> *, <em>void</em> <em>const</em> *));</td></tr>
+<tr><th id="57">57</th><td></td></tr>
+<tr><th id="58">58</th><td><em>void</em> <dfn class="decl" id="hash_init" title='hash_init' data-ref="hash_init">hash_init</dfn> <a class="macro" href="../include/x86_64-linux-gnu/sys/cdefs.h.html#82" title="(struct hash_table *ht, unsigned long size, hash_func_t hash_1, hash_func_t hash_2, hash_cmp_func_t hash_cmp)" data-ref="_M/__P">__P</a>((<b>struct</b> <a class="type" href="#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col7 decl" id="7ht" title='ht' data-type='struct hash_table *' data-ref="7ht">ht</dfn>, <em>unsigned</em> <em>long</em> <dfn class="local col8 decl" id="8size" title='size' data-type='unsigned long' data-ref="8size">size</dfn>,</td></tr>
+<tr><th id="59">59</th><td>		    <a class="typedef" href="#hash_func_t" title='hash_func_t' data-type='unsigned long (*)(const void *)' data-ref="hash_func_t">hash_func_t</a> <dfn class="local col9 decl" id="9hash_1" title='hash_1' data-type='hash_func_t' data-ref="9hash_1">hash_1</dfn>, <a class="typedef" href="#hash_func_t" title='hash_func_t' data-type='unsigned long (*)(const void *)' data-ref="hash_func_t">hash_func_t</a> <dfn class="local col0 decl" id="10hash_2" title='hash_2' data-type='hash_func_t' data-ref="10hash_2">hash_2</dfn>, <a class="typedef" href="#hash_cmp_func_t" title='hash_cmp_func_t' data-type='int (*)(const void *, const void *)' data-ref="hash_cmp_func_t">hash_cmp_func_t</a> <dfn class="local col1 decl" id="11hash_cmp" title='hash_cmp' data-type='hash_cmp_func_t' data-ref="11hash_cmp">hash_cmp</dfn>));</td></tr>
+<tr><th id="60">60</th><td><em>void</em> <dfn class="decl" id="hash_load" title='hash_load' data-ref="hash_load">hash_load</dfn> <a class="macro" href="../include/x86_64-linux-gnu/sys/cdefs.h.html#82" title="(struct hash_table *ht, void *item_table, unsigned long cardinality, unsigned long size)" data-ref="_M/__P">__P</a>((<b>struct</b> <a class="type" href="#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col2 decl" id="12ht" title='ht' data-type='struct hash_table *' data-ref="12ht">ht</dfn>, <em>void</em> *<dfn class="local col3 decl" id="13item_table" title='item_table' data-type='void *' data-ref="13item_table">item_table</dfn>,</td></tr>
+<tr><th id="61">61</th><td>		    <em>unsigned</em> <em>long</em> <dfn class="local col4 decl" id="14cardinality" title='cardinality' data-type='unsigned long' data-ref="14cardinality">cardinality</dfn>, <em>unsigned</em> <em>long</em> <dfn class="local col5 decl" id="15size" title='size' data-type='unsigned long' data-ref="15size">size</dfn>));</td></tr>
+<tr><th id="62">62</th><td><em>void</em> **<dfn class="decl" id="hash_find_slot" title='hash_find_slot' data-ref="hash_find_slot">hash_find_slot</dfn> <a class="macro" href="../include/x86_64-linux-gnu/sys/cdefs.h.html#82" title="(struct hash_table *ht, void const *key)" data-ref="_M/__P">__P</a>((<b>struct</b> <a class="type" href="#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col6 decl" id="16ht" title='ht' data-type='struct hash_table *' data-ref="16ht">ht</dfn>, <em>void</em> <em>const</em> *<dfn class="local col7 decl" id="17key" title='key' data-type='const void *' data-ref="17key">key</dfn>));</td></tr>
+<tr><th id="63">63</th><td><em>void</em> *<dfn class="decl" id="hash_find_item" title='hash_find_item' data-ref="hash_find_item">hash_find_item</dfn> <a class="macro" href="../include/x86_64-linux-gnu/sys/cdefs.h.html#82" title="(struct hash_table *ht, void const *key)" data-ref="_M/__P">__P</a>((<b>struct</b> <a class="type" href="#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col8 decl" id="18ht" title='ht' data-type='struct hash_table *' data-ref="18ht">ht</dfn>, <em>void</em> <em>const</em> *<dfn class="local col9 decl" id="19key" title='key' data-type='const void *' data-ref="19key">key</dfn>));</td></tr>
+<tr><th id="64">64</th><td><em>void</em> *<dfn class="decl" id="hash_insert" title='hash_insert' data-ref="hash_insert">hash_insert</dfn> <a class="macro" href="../include/x86_64-linux-gnu/sys/cdefs.h.html#82" title="(struct hash_table *ht, const void *item)" data-ref="_M/__P">__P</a>((<b>struct</b> <a class="type" href="#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col0 decl" id="20ht" title='ht' data-type='struct hash_table *' data-ref="20ht">ht</dfn>, <em>const</em> <em>void</em> *<dfn class="local col1 decl" id="21item" title='item' data-type='const void *' data-ref="21item">item</dfn>));</td></tr>
+<tr><th id="65">65</th><td><em>void</em> *<dfn class="decl" id="hash_insert_at" title='hash_insert_at' data-ref="hash_insert_at">hash_insert_at</dfn> <a class="macro" href="../include/x86_64-linux-gnu/sys/cdefs.h.html#82" title="(struct hash_table *ht, const void *item, void const *slot)" data-ref="_M/__P">__P</a>((<b>struct</b> <a class="type" href="#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col2 decl" id="22ht" title='ht' data-type='struct hash_table *' data-ref="22ht">ht</dfn>, <em>const</em> <em>void</em> *<dfn class="local col3 decl" id="23item" title='item' data-type='const void *' data-ref="23item">item</dfn>, <em>void</em> <em>const</em> *<dfn class="local col4 decl" id="24slot" title='slot' data-type='const void *' data-ref="24slot">slot</dfn>));</td></tr>
+<tr><th id="66">66</th><td><em>void</em> *<dfn class="decl" id="hash_delete" title='hash_delete' data-ref="hash_delete">hash_delete</dfn> <a class="macro" href="../include/x86_64-linux-gnu/sys/cdefs.h.html#82" title="(struct hash_table *ht, void const *item)" data-ref="_M/__P">__P</a>((<b>struct</b> <a class="type" href="#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col5 decl" id="25ht" title='ht' data-type='struct hash_table *' data-ref="25ht">ht</dfn>, <em>void</em> <em>const</em> *<dfn class="local col6 decl" id="26item" title='item' data-type='const void *' data-ref="26item">item</dfn>));</td></tr>
+<tr><th id="67">67</th><td><em>void</em> *<dfn class="decl" id="hash_delete_at" title='hash_delete_at' data-ref="hash_delete_at">hash_delete_at</dfn> <a class="macro" href="../include/x86_64-linux-gnu/sys/cdefs.h.html#82" title="(struct hash_table *ht, void const *slot)" data-ref="_M/__P">__P</a>((<b>struct</b> <a class="type" href="#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col7 decl" id="27ht" title='ht' data-type='struct hash_table *' data-ref="27ht">ht</dfn>, <em>void</em> <em>const</em> *<dfn class="local col8 decl" id="28slot" title='slot' data-type='const void *' data-ref="28slot">slot</dfn>));</td></tr>
+<tr><th id="68">68</th><td><em>void</em> <dfn class="decl" id="hash_delete_items" title='hash_delete_items' data-ref="hash_delete_items">hash_delete_items</dfn> <a class="macro" href="../include/x86_64-linux-gnu/sys/cdefs.h.html#82" title="(struct hash_table *ht)" data-ref="_M/__P">__P</a>((<b>struct</b> <a class="type" href="#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col9 decl" id="29ht" title='ht' data-type='struct hash_table *' data-ref="29ht">ht</dfn>));</td></tr>
+<tr><th id="69">69</th><td><em>void</em> <dfn class="decl" id="hash_free_items" title='hash_free_items' data-ref="hash_free_items">hash_free_items</dfn> <a class="macro" href="../include/x86_64-linux-gnu/sys/cdefs.h.html#82" title="(struct hash_table *ht)" data-ref="_M/__P">__P</a>((<b>struct</b> <a class="type" href="#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col0 decl" id="30ht" title='ht' data-type='struct hash_table *' data-ref="30ht">ht</dfn>));</td></tr>
+<tr><th id="70">70</th><td><em>void</em> <dfn class="decl" id="hash_free" title='hash_free' data-ref="hash_free">hash_free</dfn> <a class="macro" href="../include/x86_64-linux-gnu/sys/cdefs.h.html#82" title="(struct hash_table *ht, int free_items)" data-ref="_M/__P">__P</a>((<b>struct</b> <a class="type" href="#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col1 decl" id="31ht" title='ht' data-type='struct hash_table *' data-ref="31ht">ht</dfn>, <em>int</em> <dfn class="local col2 decl" id="32free_items" title='free_items' data-type='int' data-ref="32free_items">free_items</dfn>));</td></tr>
+<tr><th id="71">71</th><td><em>void</em> <dfn class="decl" id="hash_map" title='hash_map' data-ref="hash_map">hash_map</dfn> <a class="macro" href="../include/x86_64-linux-gnu/sys/cdefs.h.html#82" title="(struct hash_table *ht, hash_map_func_t map)" data-ref="_M/__P">__P</a>((<b>struct</b> <a class="type" href="#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col3 decl" id="33ht" title='ht' data-type='struct hash_table *' data-ref="33ht">ht</dfn>, <a class="typedef" href="#hash_map_func_t" title='hash_map_func_t' data-type='void (*)(const void *)' data-ref="hash_map_func_t">hash_map_func_t</a> <dfn class="local col4 decl" id="34map" title='map' data-type='hash_map_func_t' data-ref="34map">map</dfn>));</td></tr>
+<tr><th id="72">72</th><td><em>void</em> <dfn class="decl" id="hash_map_arg" title='hash_map_arg' data-ref="hash_map_arg">hash_map_arg</dfn> <a class="macro" href="../include/x86_64-linux-gnu/sys/cdefs.h.html#82" title="(struct hash_table *ht, hash_map_arg_func_t map, void *arg)" data-ref="_M/__P">__P</a>((<b>struct</b> <a class="type" href="#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col5 decl" id="35ht" title='ht' data-type='struct hash_table *' data-ref="35ht">ht</dfn>, <a class="typedef" href="#hash_map_arg_func_t" title='hash_map_arg_func_t' data-type='void (*)(const void *, void *)' data-ref="hash_map_arg_func_t">hash_map_arg_func_t</a> <dfn class="local col6 decl" id="36map" title='map' data-type='hash_map_arg_func_t' data-ref="36map">map</dfn>, <em>void</em> *<dfn class="local col7 decl" id="37arg" title='arg' data-type='void *' data-ref="37arg">arg</dfn>));</td></tr>
+<tr><th id="73">73</th><td><em>void</em> <dfn class="decl" id="hash_print_stats" title='hash_print_stats' data-ref="hash_print_stats">hash_print_stats</dfn> <a class="macro" href="../include/x86_64-linux-gnu/sys/cdefs.h.html#82" title="(struct hash_table *ht, FILE *out_FILE)" data-ref="_M/__P">__P</a>((<b>struct</b> <a class="type" href="#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col8 decl" id="38ht" title='ht' data-type='struct hash_table *' data-ref="38ht">ht</dfn>, <a class="typedef" href="../include/stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> *<dfn class="local col9 decl" id="39out_FILE" title='out_FILE' data-type='FILE *' data-ref="39out_FILE">out_FILE</dfn>));</td></tr>
+<tr><th id="74">74</th><td><em>void</em> **<dfn class="decl" id="hash_dump" title='hash_dump' data-ref="hash_dump">hash_dump</dfn> <a class="macro" href="../include/x86_64-linux-gnu/sys/cdefs.h.html#82" title="(struct hash_table *ht, void **vector_0, qsort_cmp_t compare)" data-ref="_M/__P">__P</a>((<b>struct</b> <a class="type" href="#hash_table" title='hash_table' data-ref="hash_table">hash_table</a> *<dfn class="local col0 decl" id="40ht" title='ht' data-type='struct hash_table *' data-ref="40ht">ht</dfn>, <em>void</em> **<dfn class="local col1 decl" id="41vector_0" title='vector_0' data-type='void **' data-ref="41vector_0">vector_0</dfn>, <a class="typedef" href="#qsort_cmp_t" title='qsort_cmp_t' data-type='int (*)(const void *, const void *)' data-ref="qsort_cmp_t">qsort_cmp_t</a> <dfn class="local col2 decl" id="42compare" title='compare' data-type='qsort_cmp_t' data-ref="42compare">compare</dfn>));</td></tr>
+<tr><th id="75">75</th><td></td></tr>
+<tr><th id="76">76</th><td><b>extern</b> <em>void</em> *<dfn class="decl" id="hash_deleted_item" title='hash_deleted_item' data-ref="hash_deleted_item">hash_deleted_item</dfn>;</td></tr>
+<tr><th id="77">77</th><td><u>#define <dfn class="macro" id="_M/HASH_VACANT" data-ref="_M/HASH_VACANT">HASH_VACANT</dfn>(item) ((item) == 0 || (void *) (item) == hash_deleted_item)</u></td></tr>
+<tr><th id="78">78</th><td></td></tr>
+<tr><th id="79">79</th><td></td></tr>
+<tr><th id="80">80</th><td><i>/* hash and comparison macros for case-sensitive string keys. */</i></td></tr>
+<tr><th id="81">81</th><td></td></tr>
+<tr><th id="82">82</th><td><i>/* Due to the strcache, it's not uncommon for the string pointers to</i></td></tr>
+<tr><th id="83">83</th><td><i>   be identical.  Take advantage of that to short-circuit string compares.  */</i></td></tr>
+<tr><th id="84">84</th><td></td></tr>
+<tr><th id="85">85</th><td><u>#define <dfn class="macro" id="_M/STRING_HASH_1" data-ref="_M/STRING_HASH_1">STRING_HASH_1</dfn>(KEY, RESULT) do { \</u></td></tr>
+<tr><th id="86">86</th><td><u>  unsigned char const *_key_ = (unsigned char const *) (KEY) - 1; \</u></td></tr>
+<tr><th id="87">87</th><td><u>  while (*++_key_) \</u></td></tr>
+<tr><th id="88">88</th><td><u>    (RESULT) += (*_key_ &lt;&lt; (_key_[1] &amp; 0xf)); \</u></td></tr>
+<tr><th id="89">89</th><td><u>} while (0)</u></td></tr>
+<tr><th id="90">90</th><td><u>#define <dfn class="macro" id="_M/return_STRING_HASH_1" data-ref="_M/return_STRING_HASH_1">return_STRING_HASH_1</dfn>(KEY) do { \</u></td></tr>
+<tr><th id="91">91</th><td><u>  unsigned long _result_ = 0; \</u></td></tr>
+<tr><th id="92">92</th><td><u>  STRING_HASH_1 ((KEY), _result_); \</u></td></tr>
+<tr><th id="93">93</th><td><u>  return _result_; \</u></td></tr>
+<tr><th id="94">94</th><td><u>} while (0)</u></td></tr>
+<tr><th id="95">95</th><td></td></tr>
+<tr><th id="96">96</th><td><u>#define <dfn class="macro" id="_M/STRING_HASH_2" data-ref="_M/STRING_HASH_2">STRING_HASH_2</dfn>(KEY, RESULT) do { \</u></td></tr>
+<tr><th id="97">97</th><td><u>  unsigned char const *_key_ = (unsigned char const *) (KEY) - 1; \</u></td></tr>
+<tr><th id="98">98</th><td><u>  while (*++_key_) \</u></td></tr>
+<tr><th id="99">99</th><td><u>    (RESULT) += (*_key_ &lt;&lt; (_key_[1] &amp; 0x7)); \</u></td></tr>
+<tr><th id="100">100</th><td><u>} while (0)</u></td></tr>
+<tr><th id="101">101</th><td><u>#define <dfn class="macro" id="_M/return_STRING_HASH_2" data-ref="_M/return_STRING_HASH_2">return_STRING_HASH_2</dfn>(KEY) do { \</u></td></tr>
+<tr><th id="102">102</th><td><u>  unsigned long _result_ = 0; \</u></td></tr>
+<tr><th id="103">103</th><td><u>  STRING_HASH_2 ((KEY), _result_); \</u></td></tr>
+<tr><th id="104">104</th><td><u>  return _result_; \</u></td></tr>
+<tr><th id="105">105</th><td><u>} while (0)</u></td></tr>
+<tr><th id="106">106</th><td></td></tr>
+<tr><th id="107">107</th><td><u>#define <dfn class="macro" id="_M/STRING_COMPARE" data-ref="_M/STRING_COMPARE">STRING_COMPARE</dfn>(X, Y, RESULT) do { \</u></td></tr>
+<tr><th id="108">108</th><td><u>    RESULT = (X) == (Y) ? 0 : strcmp ((X), (Y)); \</u></td></tr>
+<tr><th id="109">109</th><td><u>} while (0)</u></td></tr>
+<tr><th id="110">110</th><td><u>#define <dfn class="macro" id="_M/return_STRING_COMPARE" data-ref="_M/return_STRING_COMPARE">return_STRING_COMPARE</dfn>(X, Y) do { \</u></td></tr>
+<tr><th id="111">111</th><td><u>  return (X) == (Y) ? 0 : strcmp ((X), (Y)); \</u></td></tr>
+<tr><th id="112">112</th><td><u>} while (0)</u></td></tr>
+<tr><th id="113">113</th><td></td></tr>
+<tr><th id="114">114</th><td></td></tr>
+<tr><th id="115">115</th><td><u>#define <dfn class="macro" id="_M/STRING_N_HASH_1" data-ref="_M/STRING_N_HASH_1">STRING_N_HASH_1</dfn>(KEY, N, RESULT) do { \</u></td></tr>
+<tr><th id="116">116</th><td><u>  unsigned char const *_key_ = (unsigned char const *) (KEY) - 1; \</u></td></tr>
+<tr><th id="117">117</th><td><u>  int _n_ = (N); \</u></td></tr>
+<tr><th id="118">118</th><td><u>  if (_n_) \</u></td></tr>
+<tr><th id="119">119</th><td><u>    while (--_n_ &amp;&amp; *++_key_) \</u></td></tr>
+<tr><th id="120">120</th><td><u>      (RESULT) += (*_key_ &lt;&lt; (_key_[1] &amp; 0xf)); \</u></td></tr>
+<tr><th id="121">121</th><td><u>  (RESULT) += *++_key_; \</u></td></tr>
+<tr><th id="122">122</th><td><u>} while (0)</u></td></tr>
+<tr><th id="123">123</th><td><u>#define <dfn class="macro" id="_M/return_STRING_N_HASH_1" data-ref="_M/return_STRING_N_HASH_1">return_STRING_N_HASH_1</dfn>(KEY, N) do { \</u></td></tr>
+<tr><th id="124">124</th><td><u>  unsigned long _result_ = 0; \</u></td></tr>
+<tr><th id="125">125</th><td><u>  STRING_N_HASH_1 ((KEY), (N), _result_); \</u></td></tr>
+<tr><th id="126">126</th><td><u>  return _result_; \</u></td></tr>
+<tr><th id="127">127</th><td><u>} while (0)</u></td></tr>
+<tr><th id="128">128</th><td></td></tr>
+<tr><th id="129">129</th><td><u>#define <dfn class="macro" id="_M/STRING_N_HASH_2" data-ref="_M/STRING_N_HASH_2">STRING_N_HASH_2</dfn>(KEY, N, RESULT) do { \</u></td></tr>
+<tr><th id="130">130</th><td><u>  unsigned char const *_key_ = (unsigned char const *) (KEY) - 1; \</u></td></tr>
+<tr><th id="131">131</th><td><u>  int _n_ = (N); \</u></td></tr>
+<tr><th id="132">132</th><td><u>  if (_n_) \</u></td></tr>
+<tr><th id="133">133</th><td><u>    while (--_n_ &amp;&amp; *++_key_) \</u></td></tr>
+<tr><th id="134">134</th><td><u>      (RESULT) += (*_key_ &lt;&lt; (_key_[1] &amp; 0x7)); \</u></td></tr>
+<tr><th id="135">135</th><td><u>  (RESULT) += *++_key_; \</u></td></tr>
+<tr><th id="136">136</th><td><u>} while (0)</u></td></tr>
+<tr><th id="137">137</th><td><u>#define <dfn class="macro" id="_M/return_STRING_N_HASH_2" data-ref="_M/return_STRING_N_HASH_2">return_STRING_N_HASH_2</dfn>(KEY, N) do { \</u></td></tr>
+<tr><th id="138">138</th><td><u>  unsigned long _result_ = 0; \</u></td></tr>
+<tr><th id="139">139</th><td><u>  STRING_N_HASH_2 ((KEY), (N), _result_); \</u></td></tr>
+<tr><th id="140">140</th><td><u>  return _result_; \</u></td></tr>
+<tr><th id="141">141</th><td><u>} while (0)</u></td></tr>
+<tr><th id="142">142</th><td></td></tr>
+<tr><th id="143">143</th><td><u>#define <dfn class="macro" id="_M/STRING_N_COMPARE" data-ref="_M/STRING_N_COMPARE">STRING_N_COMPARE</dfn>(X, Y, N, RESULT) do { \</u></td></tr>
+<tr><th id="144">144</th><td><u>  RESULT = (X) == (Y) ? 0 : strncmp ((X), (Y), (N)); \</u></td></tr>
+<tr><th id="145">145</th><td><u>} while (0)</u></td></tr>
+<tr><th id="146">146</th><td><u>#define <dfn class="macro" id="_M/return_STRING_N_COMPARE" data-ref="_M/return_STRING_N_COMPARE">return_STRING_N_COMPARE</dfn>(X, Y, N) do { \</u></td></tr>
+<tr><th id="147">147</th><td><u>  return (X) == (Y) ? 0 : strncmp ((X), (Y), (N)); \</u></td></tr>
+<tr><th id="148">148</th><td><u>} while (0)</u></td></tr>
+<tr><th id="149">149</th><td></td></tr>
+<tr><th id="150">150</th><td><u>#<span data-ppcond="150">ifdef</span> <span class="macro" data-ref="_M/HAVE_CASE_INSENSITIVE_FS">HAVE_CASE_INSENSITIVE_FS</span></u></td></tr>
+<tr><th id="151">151</th><td></td></tr>
+<tr><th id="152">152</th><td><i>/* hash and comparison macros for case-insensitive string _key_s. */</i></td></tr>
+<tr><th id="153">153</th><td></td></tr>
+<tr><th id="154">154</th><td><u>#define ISTRING_HASH_1(KEY, RESULT) do { \</u></td></tr>
+<tr><th id="155">155</th><td><u>  unsigned char const *_key_ = (unsigned char const *) (KEY) - 1; \</u></td></tr>
+<tr><th id="156">156</th><td><u>  while (*++_key_) \</u></td></tr>
+<tr><th id="157">157</th><td><u>    (RESULT) += ((isupper (*_key_) ? tolower (*_key_) : *_key_) &lt;&lt; (_key_[1] &amp; 0xf)); \</u></td></tr>
+<tr><th id="158">158</th><td><u>} while (0)</u></td></tr>
+<tr><th id="159">159</th><td><u>#define return_ISTRING_HASH_1(KEY) do { \</u></td></tr>
+<tr><th id="160">160</th><td><u>  unsigned long _result_ = 0; \</u></td></tr>
+<tr><th id="161">161</th><td><u>  ISTRING_HASH_1 ((KEY), _result_); \</u></td></tr>
+<tr><th id="162">162</th><td><u>  return _result_; \</u></td></tr>
+<tr><th id="163">163</th><td><u>} while (0)</u></td></tr>
+<tr><th id="164">164</th><td></td></tr>
+<tr><th id="165">165</th><td><u>#define ISTRING_HASH_2(KEY, RESULT) do { \</u></td></tr>
+<tr><th id="166">166</th><td><u>  unsigned char const *_key_ = (unsigned char const *) (KEY) - 1; \</u></td></tr>
+<tr><th id="167">167</th><td><u>  while (*++_key_) \</u></td></tr>
+<tr><th id="168">168</th><td><u>    (RESULT) += ((isupper (*_key_) ? tolower (*_key_) : *_key_) &lt;&lt; (_key_[1] &amp; 0x7)); \</u></td></tr>
+<tr><th id="169">169</th><td><u>} while (0)</u></td></tr>
+<tr><th id="170">170</th><td><u>#define return_ISTRING_HASH_2(KEY) do { \</u></td></tr>
+<tr><th id="171">171</th><td><u>  unsigned long _result_ = 0; \</u></td></tr>
+<tr><th id="172">172</th><td><u>  ISTRING_HASH_2 ((KEY), _result_); \</u></td></tr>
+<tr><th id="173">173</th><td><u>  return _result_; \</u></td></tr>
+<tr><th id="174">174</th><td><u>} while (0)</u></td></tr>
+<tr><th id="175">175</th><td></td></tr>
+<tr><th id="176">176</th><td><u>#define ISTRING_COMPARE(X, Y, RESULT) do { \</u></td></tr>
+<tr><th id="177">177</th><td><u>  RESULT = (X) == (Y) ? 0 : strcasecmp ((X), (Y)); \</u></td></tr>
+<tr><th id="178">178</th><td><u>} while (0)</u></td></tr>
+<tr><th id="179">179</th><td><u>#define return_ISTRING_COMPARE(X, Y) do { \</u></td></tr>
+<tr><th id="180">180</th><td><u>  return (X) == (Y) ? 0 : strcasecmp ((X), (Y)); \</u></td></tr>
+<tr><th id="181">181</th><td><u>} while (0)</u></td></tr>
+<tr><th id="182">182</th><td></td></tr>
+<tr><th id="183">183</th><td><u>#<span data-ppcond="150">else</span></u></td></tr>
+<tr><th id="184">184</th><td></td></tr>
+<tr><th id="185">185</th><td><u>#define <dfn class="macro" id="_M/ISTRING_HASH_1" data-ref="_M/ISTRING_HASH_1">ISTRING_HASH_1</dfn>(KEY, RESULT) STRING_HASH_1 ((KEY), (RESULT))</u></td></tr>
+<tr><th id="186">186</th><td><u>#define <dfn class="macro" id="_M/return_ISTRING_HASH_1" data-ref="_M/return_ISTRING_HASH_1">return_ISTRING_HASH_1</dfn>(KEY) return_STRING_HASH_1 (KEY)</u></td></tr>
+<tr><th id="187">187</th><td></td></tr>
+<tr><th id="188">188</th><td><u>#define <dfn class="macro" id="_M/ISTRING_HASH_2" data-ref="_M/ISTRING_HASH_2">ISTRING_HASH_2</dfn>(KEY, RESULT) STRING_HASH_2 ((KEY), (RESULT))</u></td></tr>
+<tr><th id="189">189</th><td><u>#define <dfn class="macro" id="_M/return_ISTRING_HASH_2" data-ref="_M/return_ISTRING_HASH_2">return_ISTRING_HASH_2</dfn>(KEY) return_STRING_HASH_2 (KEY)</u></td></tr>
+<tr><th id="190">190</th><td></td></tr>
+<tr><th id="191">191</th><td><u>#define <dfn class="macro" id="_M/ISTRING_COMPARE" data-ref="_M/ISTRING_COMPARE">ISTRING_COMPARE</dfn>(X, Y, RESULT) STRING_COMPARE ((X), (Y), (RESULT))</u></td></tr>
+<tr><th id="192">192</th><td><u>#define <dfn class="macro" id="_M/return_ISTRING_COMPARE" data-ref="_M/return_ISTRING_COMPARE">return_ISTRING_COMPARE</dfn>(X, Y) return_STRING_COMPARE ((X), (Y))</u></td></tr>
+<tr><th id="193">193</th><td></td></tr>
+<tr><th id="194">194</th><td><u>#<span data-ppcond="150">endif</span></u></td></tr>
+<tr><th id="195">195</th><td></td></tr>
+<tr><th id="196">196</th><td><i>/* hash and comparison macros for integer _key_s. */</i></td></tr>
+<tr><th id="197">197</th><td></td></tr>
+<tr><th id="198">198</th><td><u>#define <dfn class="macro" id="_M/INTEGER_HASH_1" data-ref="_M/INTEGER_HASH_1">INTEGER_HASH_1</dfn>(KEY, RESULT) do { \</u></td></tr>
+<tr><th id="199">199</th><td><u>  (RESULT) += ((unsigned long)(KEY)); \</u></td></tr>
+<tr><th id="200">200</th><td><u>} while (0)</u></td></tr>
+<tr><th id="201">201</th><td><u>#define <dfn class="macro" id="_M/return_INTEGER_HASH_1" data-ref="_M/return_INTEGER_HASH_1">return_INTEGER_HASH_1</dfn>(KEY) do { \</u></td></tr>
+<tr><th id="202">202</th><td><u>  unsigned long _result_ = 0; \</u></td></tr>
+<tr><th id="203">203</th><td><u>  INTEGER_HASH_1 ((KEY), _result_); \</u></td></tr>
+<tr><th id="204">204</th><td><u>  return _result_; \</u></td></tr>
+<tr><th id="205">205</th><td><u>} while (0)</u></td></tr>
+<tr><th id="206">206</th><td></td></tr>
+<tr><th id="207">207</th><td><u>#define <dfn class="macro" id="_M/INTEGER_HASH_2" data-ref="_M/INTEGER_HASH_2">INTEGER_HASH_2</dfn>(KEY, RESULT) do { \</u></td></tr>
+<tr><th id="208">208</th><td><u>  (RESULT) += ~((unsigned long)(KEY)); \</u></td></tr>
+<tr><th id="209">209</th><td><u>} while (0)</u></td></tr>
+<tr><th id="210">210</th><td><u>#define <dfn class="macro" id="_M/return_INTEGER_HASH_2" data-ref="_M/return_INTEGER_HASH_2">return_INTEGER_HASH_2</dfn>(KEY) do { \</u></td></tr>
+<tr><th id="211">211</th><td><u>  unsigned long _result_ = 0; \</u></td></tr>
+<tr><th id="212">212</th><td><u>  INTEGER_HASH_2 ((KEY), _result_); \</u></td></tr>
+<tr><th id="213">213</th><td><u>  return _result_; \</u></td></tr>
+<tr><th id="214">214</th><td><u>} while (0)</u></td></tr>
+<tr><th id="215">215</th><td></td></tr>
+<tr><th id="216">216</th><td><u>#define <dfn class="macro" id="_M/INTEGER_COMPARE" data-ref="_M/INTEGER_COMPARE">INTEGER_COMPARE</dfn>(X, Y, RESULT) do { \</u></td></tr>
+<tr><th id="217">217</th><td><u>  (RESULT) = X - Y; \</u></td></tr>
+<tr><th id="218">218</th><td><u>} while (0)</u></td></tr>
+<tr><th id="219">219</th><td><u>#define <dfn class="macro" id="_M/return_INTEGER_COMPARE" data-ref="_M/return_INTEGER_COMPARE">return_INTEGER_COMPARE</dfn>(X, Y) do { \</u></td></tr>
+<tr><th id="220">220</th><td><u>  int _result_; \</u></td></tr>
+<tr><th id="221">221</th><td><u>  INTEGER_COMPARE (X, Y, _result_); \</u></td></tr>
+<tr><th id="222">222</th><td><u>  return _result_; \</u></td></tr>
+<tr><th id="223">223</th><td><u>} while (0)</u></td></tr>
+<tr><th id="224">224</th><td></td></tr>
+<tr><th id="225">225</th><td><i>/* hash and comparison macros for address keys. */</i></td></tr>
+<tr><th id="226">226</th><td></td></tr>
+<tr><th id="227">227</th><td><u>#define <dfn class="macro" id="_M/ADDRESS_HASH_1" data-ref="_M/ADDRESS_HASH_1">ADDRESS_HASH_1</dfn>(KEY, RESULT) INTEGER_HASH_1 (((unsigned long)(KEY)) &gt;&gt; 3, (RESULT))</u></td></tr>
+<tr><th id="228">228</th><td><u>#define <dfn class="macro" id="_M/ADDRESS_HASH_2" data-ref="_M/ADDRESS_HASH_2">ADDRESS_HASH_2</dfn>(KEY, RESULT) INTEGER_HASH_2 (((unsigned long)(KEY)) &gt;&gt; 3, (RESULT))</u></td></tr>
+<tr><th id="229">229</th><td><u>#define <dfn class="macro" id="_M/ADDRESS_COMPARE" data-ref="_M/ADDRESS_COMPARE">ADDRESS_COMPARE</dfn>(X, Y, RESULT) INTEGER_COMPARE ((X), (Y), (RESULT))</u></td></tr>
+<tr><th id="230">230</th><td><u>#define <dfn class="macro" id="_M/return_ADDRESS_HASH_1" data-ref="_M/return_ADDRESS_HASH_1">return_ADDRESS_HASH_1</dfn>(KEY) return_INTEGER_HASH_1 (((unsigned long)(KEY)) &gt;&gt; 3)</u></td></tr>
+<tr><th id="231">231</th><td><u>#define <dfn class="macro" id="_M/return_ADDRESS_HASH_2" data-ref="_M/return_ADDRESS_HASH_2">return_ADDRESS_HASH_2</dfn>(KEY) return_INTEGER_HASH_2 (((unsigned long)(KEY)) &gt;&gt; 3)</u></td></tr>
+<tr><th id="232">232</th><td><u>#define <dfn class="macro" id="_M/return_ADDRESS_COMPARE" data-ref="_M/return_ADDRESS_COMPARE">return_ADDRESS_COMPARE</dfn>(X, Y) return_INTEGER_COMPARE ((X), (Y))</u></td></tr>
+<tr><th id="233">233</th><td></td></tr>
+<tr><th id="234">234</th><td><u>#<span data-ppcond="17">endif</span> /* not _hash_h_ */</u></td></tr>
+<tr><th id="235">235</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='ar.c.html'>remake/ar.c</a><br/>Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

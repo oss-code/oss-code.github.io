@@ -1,0 +1,5 @@
+<dec f='remake/gnuremake.h' l='49' type='void gmk_eval(const char * buffer, const gmk_floc * floc)'/>
+<doc f='remake/gnuremake.h' l='48'>/* Run $(eval ...) on the provided string BUFFER.  */</doc>
+<def f='remake/loadapi.c' l='39' ll='66' type='void gmk_eval(const char * buffer, const gmk_floc * gfloc)'/>
+<doc f='remake/loadapi.c' l='37'>/* Evaluate a buffer as make syntax.
+   Ideally eval_buffer() will take const char *, but not yet.  */</doc>

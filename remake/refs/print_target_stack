@@ -1,0 +1,12 @@
+<dec f='remake/print.h' l='86' type='void print_target_stack(target_stack_node_t * p, int i_pos, int i_max)'/>
+<doc f='remake/print.h' l='83'>/*! Display the target stack i_pos is the position we are currently.
+  i_max is the maximum number of entries to show.
+ */</doc>
+<use f='remake/debugger/command/info.h' l='327' u='c' c='dbg_cmd_info'/>
+<use f='remake/debugger/command/where.h' l='34' u='c' c='dbg_cmd_where'/>
+<use f='remake/print.c' l='130' u='c' c='err_with_stack'/>
+<use f='remake/print.c' l='171' u='c' c='fatal_err'/>
+<def f='remake/print.c' l='360' ll='368' type='void print_target_stack(target_stack_node_t * p, int i_pos, int i_max)'/>
+<doc f='remake/print.c' l='357'>/*! Display the target stack. i_pos is the position we are currently.
+  i_max is the maximum number of entries to show.
+ */</doc>

@@ -1,0 +1,6 @@
+<dec f='remake/makeint.h' l='552' type='void child_access()'/>
+<dec f='remake/make.h' l='401' type='void child_access()'/>
+<use f='remake/job.c' l='2158' u='c' c='exec_command'/>
+<def f='remake/misc.c' l='574' ll='604' type='void child_access()'/>
+<doc f='remake/misc.c' l='572'>/* Give the process appropriate permissions for a child process.
+   This is like user_access, but you can&apos;t get back to make_access.  */</doc>

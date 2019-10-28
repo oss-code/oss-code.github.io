@@ -1,0 +1,6 @@
+<dec f='remake/output.h' l='51' type='int output_tmpfd()'/>
+<def f='remake/output.c' l='286' ll='305' type='int output_tmpfd()'/>
+<use f='remake/output.c' l='322' u='c' c='setup_tmpfile'/>
+<use f='remake/output.c' l='335' u='c' c='setup_tmpfile'/>
+<doc f='remake/output.c' l='284'>/* Returns a file descriptor to a temporary file.  The file is automatically
+   closed/deleted on exit.  Don&apos;t use a FILE* stream.  */</doc>

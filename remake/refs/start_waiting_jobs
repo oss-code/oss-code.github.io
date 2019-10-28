@@ -1,0 +1,6 @@
+<dec f='remake/job.h' l='128' type='void start_waiting_jobs(target_stack_node_t * p_call_stack)'/>
+<use f='remake/job.c' l='1509' u='c' c='new_job'/>
+<use f='remake/job.c' l='1689' u='c' c='new_job'/>
+<def f='remake/job.c' l='1899' ll='1922' type='void start_waiting_jobs(target_stack_node_t * p_call_stack)'/>
+<doc f='remake/job.c' l='1897'>/* Start jobs that are waiting for the load to be lower.  */</doc>
+<use f='remake/remake.c' l='115' u='c' c='update_goal_chain'/>

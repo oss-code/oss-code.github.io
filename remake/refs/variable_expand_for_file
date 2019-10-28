@@ -1,0 +1,7 @@
+<dec f='remake/variable.h' l='123' type='char * variable_expand_for_file(const char * line, struct file * file)'/>
+<def f='remake/expand.c' l='456' ll='481' type='char * variable_expand_for_file(const char * line, struct file * file)'/>
+<use f='remake/expand.c' l='580' u='c' c='allocated_variable_expand_for_file'/>
+<doc f='remake/expand.c' l='453'>/* Expand LINE for FILE.  Error messages refer to the file and line where
+   FILE&apos;s commands were found.  Expansion uses FILE&apos;s variable set list.  */</doc>
+<use f='remake/file.c' l='452' u='c' c='expand_deps'/>
+<use f='remake/implicit.c' l='640' u='c' c='pattern_search'/>

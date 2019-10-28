@@ -1,0 +1,5 @@
+<dec f='remake/os.h' l='47' type='void jobserver_pre_child(int )'/>
+<use f='remake/job.c' l='1292' u='c' c='start_job_command'/>
+<doc f='remake/os.h' l='46'>/* Get ready to start a non-recursive child.  */</doc>
+<def f='remake/posixos.c' l='180' ll='189' type='void jobserver_pre_child(int recursive)'/>
+<doc f='remake/posixos.c' l='179'>/* Prepare the jobserver to start a child process.  */</doc>

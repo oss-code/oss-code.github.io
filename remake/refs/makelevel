@@ -1,0 +1,42 @@
+<dec f='remake/makeint.h' l='667' type='unsigned int'/>
+<dec f='remake/make.h' l='498' type='unsigned int'/>
+<doc f='remake/make.h' l='497'>/*! Value of the MAKELEVEL variable at startup (or 0).  */</doc>
+<use f='remake/debugger/command/info.h' l='214' u='r' c='dbg_cmd_info_program'/>
+<use f='remake/debugger/command/where.h' l='40' u='r' c='dbg_cmd_where'/>
+<use f='remake/debugger/command/where.h' l='42' u='r' c='dbg_cmd_where'/>
+<use f='remake/debugger/cmd.c' l='433' u='r' c='enter_debugger'/>
+<use f='remake/debugger/cmd.c' l='452' u='r' c='enter_debugger'/>
+<use f='remake/debugger/cmd.c' l='457' u='r' c='enter_debugger'/>
+<dec f='remake/globals.h' l='66' type='unsigned int'/>
+<def f='remake/globals.c' l='61' type='unsigned int'/>
+<doc f='remake/globals.c' l='60'>/*! Value of the MAKELEVEL variable at startup (or 0).  */</doc>
+<doc f='remake/globals.h' l='65'>/*! Value of the MAKELEVEL variable at startup (or 0).  */</doc>
+<use f='remake/job.c' l='2182' u='r' c='exec_command'/>
+<use f='remake/job.c' l='2186' u='r' c='exec_command'/>
+<use f='remake/main.c' l='1420' u='w' c='main'/>
+<use f='remake/main.c' l='1422' u='w' c='main'/>
+<use f='remake/main.c' l='1508' u='r' c='main'/>
+<use f='remake/main.c' l='1705' u='r' c='main'/>
+<use f='remake/main.c' l='2350' u='r' c='main'/>
+<use f='remake/output.c' l='102' u='r' c='log_working_directory'/>
+<use f='remake/output.c' l='140' u='r' c='log_working_directory'/>
+<use f='remake/output.c' l='146' u='r' c='log_working_directory'/>
+<use f='remake/output.c' l='148' u='r' c='log_working_directory'/>
+<use f='remake/output.c' l='624' u='r' c='message'/>
+<use f='remake/output.c' l='627' u='r' c='message'/>
+<use f='remake/output.c' l='656' u='r' c='error'/>
+<use f='remake/output.c' l='659' u='r' c='error'/>
+<use f='remake/output.c' l='688' u='r' c='fatal'/>
+<use f='remake/output.c' l='691' u='r' c='fatal'/>
+<use f='remake/print.c' l='57' u='r' c='err_log_working_directory'/>
+<use f='remake/print.c' l='83' u='r' c='err_log_working_directory'/>
+<use f='remake/print.c' l='89' u='r' c='err_log_working_directory'/>
+<use f='remake/print.c' l='91' u='r' c='err_log_working_directory'/>
+<use f='remake/print.c' l='116' u='r' c='err_with_stack'/>
+<use f='remake/print.c' l='119' u='r' c='err_with_stack'/>
+<use f='remake/print.c' l='159' u='r' c='fatal_err'/>
+<use f='remake/print.c' l='162' u='r' c='fatal_err'/>
+<use f='remake/print.c' l='259' u='r' c='print_target_prefix'/>
+<use f='remake/print.c' l='260' u='r' c='print_target_prefix'/>
+<use f='remake/variable.c' l='867' u='r' c='define_automatic_variables'/>
+<use f='remake/variable.c' l='1150' u='r' c='target_environment'/>

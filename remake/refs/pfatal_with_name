@@ -1,0 +1,25 @@
+<dec f='remake/makeint.h' l='492' type='void pfatal_with_name(const char * )'/>
+<dec f='remake/make.h' l='349' type='void pfatal_with_name(const char * )'/>
+<use f='remake/commands.c' l='701' u='c' c='fatal_error_signal'/>
+<dec f='remake/print.h' l='60' type='void pfatal_with_name(const char * psz_name)'/>
+<doc f='remake/print.h' l='59'>/*! Print an error message from errno and exit.  */</doc>
+<use f='remake/dir.c' l='698' u='c' c='dir_contents_file_exists_p'/>
+<use f='remake/job.c' l='546' u='c' c='reap_children'/>
+<use f='remake/job.c' l='567' u='c' c='reap_children'/>
+<use f='remake/main.c' l='1687' u='c' c='main'/>
+<use f='remake/main.c' l='1798' u='c' c='main'/>
+<use f='remake/main.c' l='1804' u='c' c='main'/>
+<use f='remake/main.c' l='1856' u='c' c='main'/>
+<use f='remake/output.c' l='293' u='c' c='output_tmpfd'/>
+<use f='remake/output.c' l='298' u='c' c='output_tmpfd'/>
+<def f='remake/output.c' l='717' ll='724' type='void pfatal_with_name(const char * name)'/>
+<doc f='remake/output.c' l='715'>/* Print an error message from errno and exit.  */</doc>
+<use f='remake/posixos.c' l='69' u='c' c='jobserver_setup'/>
+<use f='remake/posixos.c' l='72' u='c' c='jobserver_setup'/>
+<use f='remake/posixos.c' l='78' u='c' c='jobserver_setup'/>
+<use f='remake/posixos.c' l='109' u='c' c='jobserver_parse_auth'/>
+<use f='remake/posixos.c' l='154' u='c' c='jobserver_release'/>
+<use f='remake/posixos.c' l='227' u='c' c='jobserver_pre_acquire'/>
+<use f='remake/posixos.c' l='268' u='c' c='jobserver_acquire'/>
+<use f='remake/posixos.c' l='279' u='c' c='jobserver_acquire'/>
+<use f='remake/read.c' l='2622' u='c' c='readline'/>

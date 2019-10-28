@@ -1,0 +1,8 @@
+<dec f='remake/filedef.h' l='131' type='void rehash_file(struct file * file, const char * name)'/>
+<def f='remake/file.c' l='51' ll='177' type='void rehash_file(struct file * from_file, const char * to_hname)'/>
+<use f='remake/file.c' l='186' u='c' c='rename_file'/>
+<doc f='remake/file.c' l='47'>/* Rehash FILE to NAME.  This is not as simple as resetting
+   the &apos;hname&apos; member, since it must be put in a new hash bucket,
+   and possibly merged with an existing file called NAME.  */</doc>
+<use f='remake/remake.c' l='1392' u='c' c='f_mtime'/>
+<use f='remake/remake.c' l='1452' u='c' c='f_mtime'/>

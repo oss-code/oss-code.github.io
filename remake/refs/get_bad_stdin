@@ -1,0 +1,5 @@
+<dec f='remake/os.h' l='81' type='int get_bad_stdin()'/>
+<use f='remake/job.c' l='1263' u='c' c='start_job_command'/>
+<use f='remake/job.c' l='2031' u='c' c='child_execute_job'/>
+<def f='remake/posixos.c' l='404' ll='431' type='int get_bad_stdin()'/>
+<doc f='remake/posixos.c' l='403'>/* Create a &quot;bad&quot; file descriptor for stdin when parallel jobs are run.  */</doc>

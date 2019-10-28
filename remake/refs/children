@@ -1,0 +1,14 @@
+<dec f='remake/job.h' l='120' type='struct child *'/>
+<use f='remake/commands.c' l='642' u='r' c='fatal_error_signal'/>
+<use f='remake/commands.c' l='663' u='r' c='fatal_error_signal'/>
+<use f='remake/commands.c' l='667' u='r' c='fatal_error_signal'/>
+<def f='remake/job.c' l='179' type='struct child *'/>
+<use f='remake/job.c' l='479' u='r' c='reap_children'/>
+<use f='remake/job.c' l='524' u='r' c='reap_children'/>
+<use f='remake/job.c' l='686' u='r' c='reap_children'/>
+<use f='remake/job.c' l='849' u='w' c='reap_children'/>
+<use f='remake/job.c' l='1469' u='r' c='start_waiting_job'/>
+<use f='remake/job.c' l='1473' u='w' c='start_waiting_job'/>
+<use f='remake/job.c' l='1675' u='r' c='new_job'/>
+<use f='remake/job.c' l='1697' u='r' c='new_job'/>
+<doc f='remake/job.c' l='177'>/* Chain of all live (or recently deceased) children.  */</doc>

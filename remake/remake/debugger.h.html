@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>debugger.h source code [remake/debugger.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/debugger.h'; var root_path = '..'; var data_path = '../../data';</script>
+<script src='../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='./'>remake</a>/<a href='debugger.h.html'>debugger.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><u>#include <a href="debug.h.html">"debug.h"</a></u></td></tr>
+<tr><th id="2">2</th><td><u>#include <a href="trace.h.html">"trace.h"</a></u></td></tr>
+<tr><th id="3">3</th><td></td></tr>
+<tr><th id="4">4</th><td><i>/* Common debugger command function prototype */</i></td></tr>
+<tr><th id="5">5</th><td><b>typedef</b> <a class="typedef" href="trace.h.html#debug_return_t" title='debug_return_t' data-type='enum debug_return_t' data-ref="debug_return_t">debug_return_t</a> (*<dfn class="typedef" id="dbg_cmd_t" title='dbg_cmd_t' data-type='debug_return_t (*)(char *)' data-ref="dbg_cmd_t">dbg_cmd_t</dfn>) (<em>char</em> *<dfn class="local col1 decl" id="1psz_args" title='psz_args' data-type='char *' data-ref="1psz_args">psz_args</dfn>);</td></tr>
+<tr><th id="6">6</th><td></td></tr>
+<tr><th id="7">7</th><td><i>/* A structure which contains information on the commands this program</i></td></tr>
+<tr><th id="8">8</th><td><i>   can understand. */</i></td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td><b>typedef</b> <b>struct</b> {</td></tr>
+<tr><th id="11">11</th><td>  <a class="typedef" href="#dbg_cmd_t" title='dbg_cmd_t' data-type='debug_return_t (*)(char *)' data-ref="dbg_cmd_t">dbg_cmd_t</a> <dfn class="decl" id="(anonymous)::func" title='(anonymous struct)::func' data-ref="(anonymous)::func">func</dfn>;               <i>/* Function to call to do the job. */</i></td></tr>
+<tr><th id="12">12</th><td>  <em>const</em> <em>char</em> *<dfn class="decl" id="(anonymous)::doc" title='(anonymous struct)::doc' data-ref="(anonymous)::doc">doc</dfn>;		<i>/* Documentation for this function.  */</i></td></tr>
+<tr><th id="13">13</th><td>  <em>const</em> <em>char</em> *<dfn class="decl" id="(anonymous)::use" title='(anonymous struct)::use' data-ref="(anonymous)::use">use</dfn>;		<i>/* short command usage.  */</i></td></tr>
+<tr><th id="14">14</th><td>} <dfn class="typedef" id="short_cmd_t" title='short_cmd_t' data-type='struct short_cmd_t' data-ref="short_cmd_t">short_cmd_t</dfn>;</td></tr>
+<tr><th id="15">15</th><td></td></tr>
+<tr><th id="16">16</th><td><b>typedef</b> <b>struct</b> {</td></tr>
+<tr><th id="17">17</th><td>  <em>const</em> <em>char</em> *<dfn class="decl" id="(anonymous)::long_name" title='(anonymous struct)::long_name' data-ref="(anonymous)::long_name">long_name</dfn>;	<i>/* long name of command. */</i></td></tr>
+<tr><th id="18">18</th><td>  <em>const</em> <em>char</em> <dfn class="decl" id="(anonymous)::short_name" title='(anonymous struct)::short_name' data-ref="(anonymous)::short_name">short_name</dfn>;	<i>/* Index into short_cmd array. */</i></td></tr>
+<tr><th id="19">19</th><td>} <dfn class="typedef" id="long_cmd_t" title='long_cmd_t' data-type='struct long_cmd_t' data-ref="long_cmd_t">long_cmd_t</dfn>;</td></tr>
+<tr><th id="20">20</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='debugger/cmd.c.html'>remake/debugger/cmd.c</a><br/>Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

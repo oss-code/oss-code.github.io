@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>globals.h source code [remake/globals.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'remake/globals.h'; var root_path = '..'; var data_path = '../../data';</script>
+<script src='../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='./'>remake</a>/<a href='globals.h.html'>globals.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><u>#<span data-ppcond="1">ifndef</span> <span class="macro" data-ref="_M/GLOBALS_H">GLOBALS_H</span></u></td></tr>
+<tr><th id="2">2</th><td><u>#define <dfn class="macro" id="_M/GLOBALS_H" data-ref="_M/GLOBALS_H">GLOBALS_H</dfn></u></td></tr>
+<tr><th id="3">3</th><td></td></tr>
+<tr><th id="4">4</th><td><u>#include <a href="types.h.html">"types.h"</a></u></td></tr>
+<tr><th id="5">5</th><td><u>#include <a href="variable.h.html">"variable.h"</a></u></td></tr>
+<tr><th id="6">6</th><td></td></tr>
+<tr><th id="7">7</th><td><u>#define <dfn class="macro" id="_M/OUTPUT_SYNC_NONE" data-ref="_M/OUTPUT_SYNC_NONE">OUTPUT_SYNC_NONE</dfn>    0</u></td></tr>
+<tr><th id="8">8</th><td><u>#define <dfn class="macro" id="_M/OUTPUT_SYNC_LINE" data-ref="_M/OUTPUT_SYNC_LINE">OUTPUT_SYNC_LINE</dfn>    1</u></td></tr>
+<tr><th id="9">9</th><td><u>#define <dfn class="macro" id="_M/OUTPUT_SYNC_TARGET" data-ref="_M/OUTPUT_SYNC_TARGET">OUTPUT_SYNC_TARGET</dfn>  2</u></td></tr>
+<tr><th id="10">10</th><td><u>#define <dfn class="macro" id="_M/OUTPUT_SYNC_RECURSE" data-ref="_M/OUTPUT_SYNC_RECURSE">OUTPUT_SYNC_RECURSE</dfn> 3</u></td></tr>
+<tr><th id="11">11</th><td></td></tr>
+<tr><th id="12">12</th><td><b>extern</b> <em>int</em> <a class="decl" href="make.h.html#env_overrides" title='env_overrides' data-ref="env_overrides" id="env_overrides">env_overrides</a>;</td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td><i>/* Nonzero means ignore status codes returned by commands</i></td></tr>
+<tr><th id="15">15</th><td><i>   executed to remake files.  Just treat them all as successful (-i).  */</i></td></tr>
+<tr><th id="16">16</th><td><b>extern</b> <em>int</em> <a class="decl" href="make.h.html#ignore_errors_flag" title='ignore_errors_flag' data-ref="ignore_errors_flag" id="ignore_errors_flag">ignore_errors_flag</a>;</td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><i>/* Nonzero means don't remake anything, just print the data base</i></td></tr>
+<tr><th id="19">19</th><td><i>   that results from reading the makefile (-p).  */</i></td></tr>
+<tr><th id="20">20</th><td><b>extern</b> <em>int</em> <a class="decl" href="make.h.html#print_data_base_flag" title='print_data_base_flag' data-ref="print_data_base_flag" id="print_data_base_flag">print_data_base_flag</a>;</td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><i>/* Nonzero means don't remake anything; just return a nonzero status</i></td></tr>
+<tr><th id="23">23</th><td><i>   if the specified targets are not up to date (-q).  */</i></td></tr>
+<tr><th id="24">24</th><td><b>extern</b> <em>int</em> <a class="decl" href="make.h.html#question_flag" title='question_flag' data-ref="question_flag" id="question_flag">question_flag</a>;</td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><i>/* Nonzero means do not use any of the builtin rules (-r) / variables (-R).  */</i></td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><b>extern</b> <em>int</em> <a class="decl" href="make.h.html#no_builtin_rules_flag" title='no_builtin_rules_flag' data-ref="no_builtin_rules_flag" id="no_builtin_rules_flag">no_builtin_rules_flag</a>;</td></tr>
+<tr><th id="29">29</th><td><b>extern</b> <em>int</em> <a class="decl" href="make.h.html#no_builtin_variables_flag" title='no_builtin_variables_flag' data-ref="no_builtin_variables_flag" id="no_builtin_variables_flag">no_builtin_variables_flag</a>;</td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><i>/* Nonzero means check symlink mtimes.  */</i></td></tr>
+<tr><th id="32">32</th><td><b>extern</b> <em>int</em> <a class="decl" href="make.h.html#check_symlink_flag" title='check_symlink_flag' data-ref="check_symlink_flag" id="check_symlink_flag">check_symlink_flag</a>;</td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><i>/* Nonzero means print directory before starting and when done (-w).  */</i></td></tr>
+<tr><th id="35">35</th><td><b>extern</b> <em>int</em> <a class="decl" href="make.h.html#print_directory_flag" title='print_directory_flag' data-ref="print_directory_flag" id="print_directory_flag">print_directory_flag</a>;</td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td><i>/* Nonzero means print version information.  */</i></td></tr>
+<tr><th id="38">38</th><td><b>extern</b> <em>int</em> <a class="decl" href="make.h.html#print_version_flag" title='print_version_flag' data-ref="print_version_flag" id="print_version_flag">print_version_flag</a>;</td></tr>
+<tr><th id="39">39</th><td></td></tr>
+<tr><th id="40">40</th><td><i class="doc">/*! Nonzero means --trace and shell trace with input.  */</i></td></tr>
+<tr><th id="41">41</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="shell_trace" title='shell_trace' data-ref="shell_trace">shell_trace</dfn>;</td></tr>
+<tr><th id="42">42</th><td></td></tr>
+<tr><th id="43">43</th><td><i>/* Nonzero means profile calls (option --profile).  */</i></td></tr>
+<tr><th id="44">44</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="profile_flag" title='profile_flag' data-ref="profile_flag">profile_flag</dfn>;</td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td><i>/* Nonzero means do extra verification (that may slow things down).  */</i></td></tr>
+<tr><th id="47">47</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="verify_flag" title='verify_flag' data-ref="verify_flag">verify_flag</dfn>;</td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td><i>/* Nonzero means do not print commands to be executed (-s).  */</i></td></tr>
+<tr><th id="50">50</th><td><b>extern</b> <em>int</em> <a class="decl" href="make.h.html#silent_flag" title='silent_flag' data-ref="silent_flag" id="silent_flag">silent_flag</a>;</td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td><i>/* Nonzero means just touch the files</i></td></tr>
+<tr><th id="53">53</th><td><i>   that would appear to need remaking (-t)  */</i></td></tr>
+<tr><th id="54">54</th><td><b>extern</b> <em>int</em> <a class="decl" href="make.h.html#touch_flag" title='touch_flag' data-ref="touch_flag" id="touch_flag">touch_flag</a>;</td></tr>
+<tr><th id="55">55</th><td></td></tr>
+<tr><th id="56">56</th><td><i>/* Nonzero means just print what commands would need to be executed,</i></td></tr>
+<tr><th id="57">57</th><td><i>   don't actually execute them (-n).  */</i></td></tr>
+<tr><th id="58">58</th><td><b>extern</b> <em>int</em> <a class="decl" href="make.h.html#just_print_flag" title='just_print_flag' data-ref="just_print_flag" id="just_print_flag">just_print_flag</a>;</td></tr>
+<tr><th id="59">59</th><td></td></tr>
+<tr><th id="60">60</th><td><i class="doc">/*! If 1, we don't give additional error reporting information. */</i></td></tr>
+<tr><th id="61">61</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="no_extended_errors" title='no_extended_errors' data-ref="no_extended_errors">no_extended_errors</dfn>;</td></tr>
+<tr><th id="62">62</th><td></td></tr>
+<tr><th id="63">63</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="db_level" title='db_level' data-ref="db_level">db_level</dfn>;</td></tr>
+<tr><th id="64">64</th><td></td></tr>
+<tr><th id="65">65</th><td><i class="doc">/*! Value of the MAKELEVEL variable at startup (or 0).  */</i></td></tr>
+<tr><th id="66">66</th><td><b>extern</b> <em>unsigned</em> <em>int</em> <a class="decl" href="make.h.html#makelevel" title='makelevel' data-ref="makelevel" id="makelevel">makelevel</a>;</td></tr>
+<tr><th id="67">67</th><td></td></tr>
+<tr><th id="68">68</th><td><i class="doc">/*! Nonzero gives a list of explicit target names and exits. Set by option</i></td></tr>
+<tr><th id="69">69</th><td><i class="doc">  --targets</i></td></tr>
+<tr><th id="70">70</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="71">71</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="show_targets_flag" title='show_targets_flag' data-ref="show_targets_flag">show_targets_flag</dfn>;</td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td><i class="doc">/*! Nonzero gives a list of explicit target names that have commands</i></td></tr>
+<tr><th id="74">74</th><td><i class="doc">  associated with them and exits. Set by option --tasks</i></td></tr>
+<tr><th id="75">75</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="76">76</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="show_tasks_flag" title='show_tasks_flag' data-ref="show_tasks_flag">show_tasks_flag</dfn>;</td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td><i class="doc">/*! If 1, same as --debugger=preaction */</i></td></tr>
+<tr><th id="79">79</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="debugger_flag" title='debugger_flag' data-ref="debugger_flag">debugger_flag</dfn>;</td></tr>
+<tr><th id="80">80</th><td></td></tr>
+<tr><th id="81">81</th><td><i class="doc">/** True if we are inside the debugger, false otherwise. */</i></td></tr>
+<tr><th id="82">82</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="in_debugger" title='in_debugger' data-ref="in_debugger">in_debugger</dfn>;</td></tr>
+<tr><th id="83">83</th><td></td></tr>
+<tr><th id="84">84</th><td><i class="doc">/*! If true, enter the debugger before reading any makefiles. */</i></td></tr>
+<tr><th id="85">85</th><td><b>extern</b> <a class="macro" href="types.h.html#50" title="uint8_t" data-ref="_M/bool">bool</a> <dfn class="decl" id="b_debugger_preread" title='b_debugger_preread' data-ref="b_debugger_preread">b_debugger_preread</dfn>;</td></tr>
+<tr><th id="86">86</th><td></td></tr>
+<tr><th id="87">87</th><td><i>/* Remember the original value of the SHELL variable, from the environment.  */</i></td></tr>
+<tr><th id="88">88</th><td><b>struct</b> <a class="type" href="variable.h.html#variable" title='variable' data-ref="variable">variable</a> <dfn class="decl def" id="shell_var" title='shell_var' data-ref="shell_var">shell_var</dfn>;</td></tr>
+<tr><th id="89">89</th><td></td></tr>
+<tr><th id="90">90</th><td><u>#<span data-ppcond="1">endif</span> /*GLOBALS_H*/</u></td></tr>
+<tr><th id="91">91</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='globals.c.html'>remake/globals.c</a><br/>Generated on <em>2019-Oct-28</em> from project remake revision <em>release-remake-4.2.1+dbg-1.4-17-g8630dee</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

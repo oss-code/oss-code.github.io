@@ -1,0 +1,11 @@
+<dec f='remake/makeint.h' l='499' type='char * xstrndup(const char * , unsigned int )'/>
+<def f='remake/alloc.c' l='90' ll='107' type='char * xstrndup(const char * str, unsigned int length)'/>
+<dec f='remake/make.h' l='355' type='char * xstrndup(const char * , unsigned int )'/>
+<use f='remake/commands.c' l='384' u='c' c='chop_commands'/>
+<use f='remake/expand.c' l='216' u='c' c='variable_expand_string'/>
+<use f='remake/function.c' l='883' u='c' c='func_foreach'/>
+<use f='remake/job.c' l='2963' u='c' c='construct_command_argv_internal'/>
+<use f='remake/read.c' l='863' u='c' c='eval'/>
+<use f='remake/read.c' l='1284' u='c' c='eval'/>
+<use f='remake/read.c' l='1977' u='c' c='record_files'/>
+<use f='remake/variable.c' l='310' u='c' c='define_variable_in_set'/>

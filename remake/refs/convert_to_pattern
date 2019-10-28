@@ -1,0 +1,6 @@
+<dec f='remake/rule.h' l='60' type='void convert_to_pattern()'/>
+<use f='remake/main.c' l='2062' u='c' c='main'/>
+<def f='remake/rule.c' l='204' ll='270' type='void convert_to_pattern()'/>
+<doc f='remake/rule.c' l='200'>/* Convert old-style suffix rules to pattern rules.
+   All rules for the suffixes on the .SUFFIXES list are converted and added to
+   the chain of pattern rules.  */</doc>

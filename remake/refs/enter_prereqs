@@ -1,0 +1,8 @@
+<dec f='remake/filedef.h' l='127' type='struct dep * enter_prereqs(struct dep * prereqs, const char * stem)'/>
+<use f='remake/default.c' l='682' u='c' c='set_default_suffixes'/>
+<def f='remake/file.c' l='311' ll='386' type='struct dep * enter_prereqs(struct dep * deps, const char * stem)'/>
+<use f='remake/file.c' l='461' u='c' c='expand_deps'/>
+<doc f='remake/file.c' l='309'>/* Given a list of prerequisites, enter them into the file database.
+   If STEM is set then first expand patterns using STEM.  */</doc>
+<use f='remake/read.c' l='2008' u='c' c='record_files'/>
+<use f='remake/read.c' l='2197' u='c' c='record_files'/>

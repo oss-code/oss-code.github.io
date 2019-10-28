@@ -1,0 +1,24 @@
+<dec f='remake/makeint.h' l='624' type='int'/>
+<dec f='remake/make.h' l='460' type='int'/>
+<use f='remake/file.c' l='210' u='r' c='remove_intermediates'/>
+<use f='remake/file.c' l='231' u='r' c='remove_intermediates'/>
+<dec f='remake/globals.h' l='58' type='int'/>
+<def f='remake/globals.c' l='53' type='int'/>
+<doc f='remake/globals.c' l='51'>/* Nonzero means just print what commands would need to be executed,
+   don&apos;t actually execute them (-n).  */</doc>
+<doc f='remake/globals.h' l='56'>/* Nonzero means just print what commands would need to be executed,
+   don&apos;t actually execute them (-n).  */</doc>
+<use f='remake/job.c' l='1168' u='r' c='start_job_command'/>
+<use f='remake/job.c' l='1223' u='r' c='start_job_command'/>
+<use f='remake/main.c' l='390' u='a'/>
+<use f='remake/main.c' l='390' u='a'/>
+<use f='remake/main.c' l='390' u='a'/>
+<use f='remake/main.c' l='390' u='a'/>
+<use f='remake/remake.c' l='92' u='r' c='update_goal_chain'/>
+<use f='remake/remake.c' l='147' u='w' c='update_goal_chain'/>
+<use f='remake/remake.c' l='150' u='w' c='update_goal_chain'/>
+<use f='remake/remake.c' l='198' u='r' c='update_goal_chain'/>
+<use f='remake/remake.c' l='271' u='w' c='update_goal_chain'/>
+<use f='remake/remake.c' l='770' u='r' c='update_file_1'/>
+<use f='remake/remake.c' l='1017' u='r' c='notice_finished_file'/>
+<use f='remake/remake.c' l='1238' u='r' c='touch_file'/>

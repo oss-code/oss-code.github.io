@@ -1,0 +1,26 @@
+<dec f='remake/variable.h' l='99' type='struct variable_set_list *'/>
+<offset>0</offset>
+<doc f='remake/variable.h' l='99'>/* Link in the chain.  */</doc>
+<use f='remake/expand.c' l='521' u='r' c='variable_append'/>
+<use f='remake/expand.c' l='526' u='r' c='variable_append'/>
+<use f='remake/variable.c' l='512' u='r' c='lookup_variable'/>
+<use f='remake/variable.c' l='631' u='w' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='637' u='w' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='641' u='w' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='702' u='w' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='702' u='r' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='704' u='w' c='initialize_file_variables'/>
+<use f='remake/variable.c' l='725' u='w' c='create_new_variable_set'/>
+<use f='remake/variable.c' l='741' u='r' c='push_new_variable_scope'/>
+<use f='remake/variable.c' l='749' u='w' c='push_new_variable_scope'/>
+<use f='remake/variable.c' l='749' u='r' c='push_new_variable_scope'/>
+<use f='remake/variable.c' l='750' u='w' c='push_new_variable_scope'/>
+<use f='remake/variable.c' l='763' u='r' c='pop_variable_scope'/>
+<use f='remake/variable.c' l='770' u='r' c='pop_variable_scope'/>
+<use f='remake/variable.c' l='777' u='r' c='pop_variable_scope'/>
+<use f='remake/variable.c' l='780' u='w' c='pop_variable_scope'/>
+<use f='remake/variable.c' l='780' u='r' c='pop_variable_scope'/>
+<use f='remake/variable.c' l='841' u='r' c='merge_variable_set_lists'/>
+<use f='remake/variable.c' l='846' u='r' c='merge_variable_set_lists'/>
+<use f='remake/variable.c' l='854' u='w' c='merge_variable_set_lists'/>
+<use f='remake/variable.c' l='1041' u='r' c='target_environment'/>

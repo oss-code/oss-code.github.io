@@ -1,0 +1,14 @@
+<dec f='remake/rule.h' l='31' type='struct dep *'/>
+<offset>256</offset>
+<doc f='remake/rule.h' l='31'>/* Dependencies of the rule.  */</doc>
+<use f='remake/implicit.c' l='304' u='r' c='pattern_search'/>
+<use f='remake/implicit.c' l='391' u='r' c='pattern_search'/>
+<use f='remake/implicit.c' l='498' u='r' c='pattern_search'/>
+<use f='remake/implicit.c' l='514' u='r' c='pattern_search'/>
+<use f='remake/rule.c' l='92' u='r' c='count_implicit_rule_limits'/>
+<use f='remake/rule.c' l='303' u='r' c='new_pattern_rule'/>
+<use f='remake/rule.c' l='303' u='r' c='new_pattern_rule'/>
+<use f='remake/rule.c' l='377' u='w' c='install_pattern_rule'/>
+<use f='remake/rule.c' l='404' u='r' c='freerule'/>
+<use f='remake/rule.c' l='455' u='w' c='create_pattern_rule'/>
+<use f='remake/rule.c' l='494' u='r' c='print_rule'/>

@@ -1,0 +1,13 @@
+<dec f='remake/rule.h' l='62' type='void create_pattern_rule(const char ** targets, const char ** target_percents, unsigned int num, int terminal, struct dep * deps, struct commands * commands, int override)'/>
+<use f='remake/read.c' l='2057' u='c' c='record_files'/>
+<use f='remake/rule.c' l='197' u='c' c='convert_suffix_rule'/>
+<def f='remake/rule.c' l='445' ll='478' type='void create_pattern_rule(const char ** targets, const char ** target_percents, unsigned int n, int terminal, struct dep * deps, struct commands * commands, int override)'/>
+<doc f='remake/rule.c' l='435'>/* Create a new pattern rule with the targets in the nil-terminated array
+   TARGETS.  TARGET_PERCENTS is an array of pointers to the % in each element
+   of TARGETS.  N is the number of items in the array (not counting the nil
+   element).  The new rule has dependencies DEPS and commands from COMMANDS.
+   It is a terminal rule if TERMINAL is nonzero.  This rule overrides
+   identical rules with different commands if OVERRIDE is nonzero.
+
+   The storage for TARGETS and its elements and TARGET_PERCENTS is used and
+   must not be freed until the rule is destroyed.  */</doc>

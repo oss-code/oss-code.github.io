@@ -1,0 +1,17 @@
+<dec f='remake/debugger/cmd.h' l='31' type='debug_return_t enter_debugger(target_stack_node_t * p, file_t * p_target, int errcode, debug_enter_reason_t reason)'/>
+<def f='remake/debugger/cmd.c' l='359' ll='518' type='debug_return_t enter_debugger(target_stack_node_t * p, file_t * p_target, int errcode, debug_enter_reason_t reason)'/>
+<use f='remake/function.c' l='1421' u='c' c='func_debugger'/>
+<use f='remake/job.c' l='422' u='c' c='child_error'/>
+<use f='remake/job.c' l='880' u='c' c='reap_children'/>
+<use f='remake/job.c' l='1235' u='c' c='start_job_command'/>
+<use f='remake/print.c' l='139' u='c' c='err_with_stack'/>
+<use f='remake/print.c' l='176' u='c' c='fatal_err'/>
+<use f='remake/print.c' l='307' u='c' c='print_child_cmd'/>
+<use f='remake/read.c' l='168' u='c' c='read_all_makefiles'/>
+<use f='remake/read.c' l='412' u='c' c='eval_makefile'/>
+<use f='remake/remake.c' l='237' u='c' c='update_goal_chain'/>
+<use f='remake/remake.c' l='482' u='c' c='update_file_1'/>
+<use f='remake/remake.c' l='551' u='c' c='update_file_1'/>
+<use f='remake/remake.c' l='744' u='c' c='update_file_1'/>
+<use f='remake/remake.c' l='918' u='c' c='update_file_1'/>
+<use f='remake/remake.c' l='941' u='c' c='update_file_1'/>

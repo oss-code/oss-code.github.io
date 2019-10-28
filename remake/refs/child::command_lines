@@ -1,0 +1,8 @@
+<dec f='remake/job.h' l='99' type='char **'/>
+<offset>256</offset>
+<doc f='remake/job.h' l='99'>/* Array of variable-expanded cmd lines.  */</doc>
+<use f='remake/job.c' l='918' u='r' c='free_child'/>
+<use f='remake/job.c' l='922' u='r' c='free_child'/>
+<use f='remake/job.c' l='923' u='r' c='free_child'/>
+<use f='remake/job.c' l='1644' u='w' c='new_job'/>
+<use f='remake/job.c' l='1786' u='r' c='job_next_command'/>

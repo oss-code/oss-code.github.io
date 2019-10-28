@@ -1,0 +1,7 @@
+<dec f='remake/filedef.h' l='126' type='struct dep * split_prereqs(char * prereqstr)'/>
+<def f='remake/file.c' l='277' ll='307' type='struct dep * split_prereqs(char * p)'/>
+<use f='remake/file.c' l='461' u='c' c='expand_deps'/>
+<doc f='remake/file.c' l='274'>/* Given a string containing prerequisites (fully expanded), break it up into
+   a struct dep list.  Enter each of these prereqs into the file database.
+ */</doc>
+<use f='remake/read.c' l='2000' u='c' c='record_files'/>

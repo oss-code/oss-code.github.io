@@ -1,0 +1,10 @@
+<dec f='remake/makeint.h' l='672' type='int'/>
+<dec f='remake/make.h' l='503' type='int'/>
+<def f='remake/commands.c' l='590' type='int'/>
+<use f='remake/commands.c' l='630' u='w' c='fatal_error_signal'/>
+<doc f='remake/commands.c' l='587'>/* This is set while we are inside fatal_error_signal,
+   so things can avoid nonreentrant operations.  */</doc>
+<use f='remake/job.c' l='771' u='r' c='reap_children'/>
+<use f='remake/job.c' l='827' u='r' c='reap_children'/>
+<use f='remake/job.c' l='877' u='r' c='reap_children'/>
+<use f='remake/job.c' l='915' u='r' c='free_child'/>
