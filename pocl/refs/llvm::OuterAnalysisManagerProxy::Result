@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/IR/PassManager.h' l='1067' ll='1129'/>
+<doc f='include/llvm-6.0/llvm/IR/PassManager.h' l='1066'>/// \brief Result proxy object for \c OuterAnalysisManagerProxy.</doc>
+<fun r='_ZN4llvm25OuterAnalysisManagerProxy6ResultC1ERKT_'/>
+<fun r='_ZNK4llvm25OuterAnalysisManagerProxy6Result10getManagerEv'/>
+<fun r='_ZN4llvm25OuterAnalysisManagerProxy6Result10invalidateERT0_RKNS_17PreservedAnalysesERNS_15AnalysisManagerIS2_JDpT1_EE11InvalidatorE'/>
+<fun r='_ZN4llvm25OuterAnalysisManagerProxy6Result33registerOuterAnalysisInvalidationEv'/>
+<fun r='_ZNK4llvm25OuterAnalysisManagerProxy6Result21getOuterInvalidationsEv'/>
+<mbr r='llvm::OuterAnalysisManagerProxy::Result::AM' t='const AnalysisManagerT *'/>
+<mbr r='llvm::OuterAnalysisManagerProxy::Result::OuterAnalysisInvalidationMap' t='SmallDenseMap&lt;llvm::AnalysisKey *, TinyPtrVector&lt;llvm::AnalysisKey *&gt;, 2&gt;'/>

@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1530' type='llvm::ScalarEvolution::ExitLimit llvm::ScalarEvolution::howFarToZero(const llvm::SCEV * V, const llvm::Loop * L, bool IsSubExpr, bool AllowPredicates = false)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1526'>/// Return the number of times an exit condition comparing the specified
+  /// value to zero will execute.  If not computable, return CouldNotCompute.
+  /// If AllowPredicates is set, this call will try to use a minimal set of
+  /// SCEV predicates in order to return an exact answer.</doc>

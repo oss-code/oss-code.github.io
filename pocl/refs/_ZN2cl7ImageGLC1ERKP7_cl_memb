@@ -1,0 +1,8 @@
+<def f='pocl/include/CL/cl2.hpp' l='5339' ll='5340' type='void cl::ImageGL::ImageGL(const cl_mem &amp; image, bool retainObject = false)'/>
+<doc f='pocl/include/CL/cl2.hpp' l='5332'>/*! \brief Constructor from cl_mem - takes ownership.
+     *
+     * \param retainObject will cause the constructor to retain its cl object.
+     *                     Defaults to false to maintain compatibility with
+     *                     earlier versions.
+     *  See Memory for further details.
+     */</doc>

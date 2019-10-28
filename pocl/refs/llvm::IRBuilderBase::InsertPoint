@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='169' ll='186'/>
+<size>16</size>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='168'>/// InsertPoint - A saved insertion point.</doc>
+<mbr r='llvm::IRBuilderBase::InsertPoint::Block' o='0' t='llvm::BasicBlock *'/>
+<mbr r='llvm::IRBuilderBase::InsertPoint::Point' o='64' t='BasicBlock::iterator'/>
+<fun r='_ZN4llvm13IRBuilderBase11InsertPointC1Ev'/>
+<fun r='_ZN4llvm13IRBuilderBase11InsertPointC1EPNS_10BasicBlockENS_14ilist_iteratorINS_12ilist_detail12node_optionsINS_11InstructionELb0ELb0EvEELb0ELb0EEE'/>
+<fun r='_ZNK4llvm13IRBuilderBase11InsertPoint5isSetEv'/>
+<fun r='_ZNK4llvm13IRBuilderBase11InsertPoint8getBlockEv'/>
+<fun r='_ZNK4llvm13IRBuilderBase11InsertPoint8getPointEv'/>

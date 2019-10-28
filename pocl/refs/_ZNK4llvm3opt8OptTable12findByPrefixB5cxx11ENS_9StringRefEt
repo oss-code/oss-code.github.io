@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Option/OptTable.h' l='143' type='std::vector&lt;std::string&gt; llvm::opt::OptTable::findByPrefix(llvm::StringRef Cur, unsigned short DisableFlags) const'/>
+<doc f='include/llvm-6.0/llvm/Option/OptTable.h' l='137'>/// Find flags from OptTable which starts with Cur.
+  ///
+  /// \param [in] Cur - String prefix that all returned flags need
+  //  to start with.
+  ///
+  /// \return The vector of flags which start with Cur.</doc>

@@ -1,0 +1,7 @@
+<use f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='139' u='c' c='_ZNK4llvm11GlobalValue14mayBeDerefinedEv'/>
+<def f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='411' type='bool llvm::GlobalValue::isInterposable() const'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalVariable.h' l='108' u='c' c='_ZNK4llvm14GlobalVariable24hasDefinitiveInitializerEv'/>
+<doc f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='407'>/// Return true if this global&apos;s definition can be substituted with an
+  /// *arbitrary* definition at link time.  We cannot do any IPO or inlinining
+  /// across interposable call edges, since the callee can be replaced with
+  /// something arbitrary at link time.</doc>

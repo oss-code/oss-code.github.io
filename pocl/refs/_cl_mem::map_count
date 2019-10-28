@@ -1,0 +1,10 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='983' type='cl_uint'/>
+<offset>704</offset>
+<use f='pocl/lib/CL/clCreateBuffer.c' l='106' u='w' c='POclCreateBuffer'/>
+<use f='pocl/lib/CL/clGetMemObjectInfo.c' l='53' u='r' c='POclGetMemObjectInfo'/>
+<use f='pocl/lib/CL/clSetKernelArgSVMPointer.c' l='43' u='w' c='POclSetKernelArgSVMPointer'/>
+<use f='pocl/lib/CL/devices/common.c' l='514' u='w' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='625' u='w' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='653' u='w' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1194' u='w' c='pocl_cuda_submit_node'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1330' u='w' c='pocl_cuda_finalize_command'/>

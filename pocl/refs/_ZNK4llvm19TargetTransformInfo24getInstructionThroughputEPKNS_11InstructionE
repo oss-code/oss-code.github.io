@@ -1,0 +1,4 @@
+<use f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='137' u='c' c='_ZNK4llvm19TargetTransformInfo18getInstructionCostEPKNS_11InstructionENS0_14TargetCostKindE'/>
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='927' type='int llvm::TargetTransformInfo::getInstructionThroughput(const llvm::Instruction * I) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='925'>/// \brief Returns the expected throughput cost of the instruction.
+  /// Returns -1 if the cost is unknown.</doc>

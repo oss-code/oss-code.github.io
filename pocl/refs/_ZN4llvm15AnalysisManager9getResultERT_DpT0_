@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/IR/PassManager.h' l='687' ll='698' type='typename PassT::Result &amp; llvm::AnalysisManager::getResult(IRUnitT &amp; IR, ExtraArgTs... ExtraArgs)'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='1193' u='c' c='_ZN4llvm27ModuleToFunctionPassAdaptor3runERNS_6ModuleERNS_15AnalysisManagerIS1_JEEE'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='1015' u='c' c='_ZN4llvm9AAManager3runERNS_8FunctionERNS_15AnalysisManagerIS1_JEEE'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='1041' u='c' c='_ZN4llvm9AAManager21getModuleAAResultImplERNS_8FunctionERNS_15AnalysisManagerIS1_JEEERNS_9AAResultsE'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1256' u='c' c='_ZN4llvm21LazyCallGraphAnalysis3runERNS_6ModuleERNS_15AnalysisManagerIS1_JEEE'/>
+<use f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='345' u='c' c='_ZN4llvm33ModuleToPostOrderCGSCCPassAdaptor3runERNS_6ModuleERNS_15AnalysisManagerIS1_JEEE'/>
+<use f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='348' u='c' c='_ZN4llvm33ModuleToPostOrderCGSCCPassAdaptor3runERNS_6ModuleERNS_15AnalysisManagerIS1_JEEE'/>
+<use f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='593' u='c' c='_ZN4llvm26CGSCCToFunctionPassAdaptor3runERNS_13LazyCallGraph3SCCERNS_15AnalysisManagerIS2_JRS1_EEES5_RNS_17CGSCCUpdateResultE'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='116' u='c' c='_ZN10WorkItemAA3runERN4llvm8FunctionEPNS0_15AnalysisManagerIS1_JEEE'/>

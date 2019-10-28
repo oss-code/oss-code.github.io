@@ -1,0 +1,10 @@
+<dec f='include/hwloc.h' l='784' type='16'/>
+<use f='pocl/lib/CL/devices/topology/pocl_topology.c' l='101' u='r' c='pocl_topology_detect_device_info'/>
+<doc f='include/hwloc.h' l='776'>/** \brief Detect the whole PCI hierarchy.
+   *
+   * This flag enables detection of all I/O devices (even the uncommon ones
+   * such as DMA channels) and bridges (even those that have no device behind
+   * them) using the pci backend.
+   * This implies ::HWLOC_TOPOLOGY_FLAG_IO_DEVICES.
+   * \hideinitializer
+   */</doc>

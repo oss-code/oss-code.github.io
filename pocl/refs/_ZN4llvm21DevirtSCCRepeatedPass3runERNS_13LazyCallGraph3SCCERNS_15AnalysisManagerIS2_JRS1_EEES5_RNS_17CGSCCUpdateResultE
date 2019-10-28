@@ -1,0 +1,3 @@
+<def f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='686' ll='820' type='llvm::PreservedAnalyses llvm::DevirtSCCRepeatedPass::run(LazyCallGraph::SCC &amp; InitialC, CGSCCAnalysisManager &amp; AM, llvm::LazyCallGraph &amp; CG, llvm::CGSCCUpdateResult &amp; UR)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='684'>/// Runs the wrapped pass up to \c MaxIterations on the SCC, iterating
+  /// whenever an indirect call is refined.</doc>

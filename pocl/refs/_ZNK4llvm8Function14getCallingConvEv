@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/IR/Function.h' l='194' ll='197' type='CallingConv::ID llvm::Function::getCallingConv() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Function.h' l='191'>/// getCallingConv()/setCallingConv(CC) - These method get and set the
+  /// calling convention of this function.  The enum values for the known
+  /// calling conventions are defined in CallingConv.h.</doc>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='522' u='c' c='_ZL18replacePrintfCallsPN4llvm5ValueES1_S1_bPNS_8FunctionERNS_6ModuleES3_RSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='736' u='c' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1247' u='c' c='_ZN4pocl9Workgroup32createArgBufferWorkgroupLauncherEPN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>

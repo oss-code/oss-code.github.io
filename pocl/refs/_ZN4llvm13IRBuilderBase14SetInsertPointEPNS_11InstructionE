@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='135' ll='140' type='void llvm::IRBuilderBase::SetInsertPoint(llvm::Instruction * I)'/>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='133'>/// \brief This specifies that created instructions should be inserted before
+  /// the specified instruction.</doc>
+<use f='pocl/lib/llvmopencl/PHIsToAllocas.cc' l='134' u='c' c='_ZN4pocl13PHIsToAllocas17BreakPHIToAllocasEPN4llvm7PHINodeE'/>
+<use f='pocl/lib/llvmopencl/PHIsToAllocas.cc' l='139' u='c' c='_ZN4pocl13PHIsToAllocas17BreakPHIToAllocasEPN4llvm7PHINodeE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='605' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='793' u='c' c='_ZN4pocl13WorkitemLoops17AddContextRestoreEPN4llvm5ValueEPNS1_11InstructionEbS5_b'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='797' u='c' c='_ZN4pocl13WorkitemLoops17AddContextRestoreEPN4llvm5ValueEPNS1_11InstructionEbS5_b'/>

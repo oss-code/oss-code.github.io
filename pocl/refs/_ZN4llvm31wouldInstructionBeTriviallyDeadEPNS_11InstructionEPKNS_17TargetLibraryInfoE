@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='134' type='bool llvm::wouldInstructionBeTriviallyDead(llvm::Instruction * I, const llvm::TargetLibraryInfo * TLI = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='131'>/// Return true if the result produced by the instruction would have no side
+/// effects if it was not used. This is equivalent to checking whether
+/// isInstructionTriviallyDead would be true if the use count was 0.</doc>

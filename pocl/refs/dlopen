@@ -1,0 +1,4 @@
+<dec f='include/dlfcn.h' l='56' type='void * dlopen(const char * __file, int __mode)'/>
+<use f='pocl/lib/CL/devices/common.c' l='1083' u='c' c='pocl_check_kernel_dlhandle_cache'/>
+<doc f='include/dlfcn.h' l='54'>/* Open the shared object FILE and map it in; return a handle that can be
+   passed to `dlsym&apos; to get symbol values from it.  */</doc>

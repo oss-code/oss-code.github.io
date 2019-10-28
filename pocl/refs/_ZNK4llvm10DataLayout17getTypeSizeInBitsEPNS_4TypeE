@@ -1,0 +1,27 @@
+<dec f='include/llvm-6.0/llvm/IR/DataLayout.h' l='380' type='uint64_t llvm::DataLayout::getTypeSizeInBits(llvm::Type * Ty) const'/>
+<use f='include/llvm-6.0/llvm/IR/DataLayout.h' l='387' u='c' c='_ZNK4llvm10DataLayout16getTypeStoreSizeEPNS_4TypeE'/>
+<def f='include/llvm-6.0/llvm/IR/DataLayout.h' l='530' ll='568' type='uint64_t llvm::DataLayout::getTypeSizeInBits(llvm::Type * Ty) const'/>
+<use f='include/llvm-6.0/llvm/IR/DataLayout.h' l='563' u='c' c='_ZNK4llvm10DataLayout17getTypeSizeInBitsEPNS_4TypeE'/>
+<doc f='include/llvm-6.0/llvm/IR/DataLayout.h' l='359'>/// Size examples:
+  ///
+  /// Type        SizeInBits  StoreSizeInBits  AllocSizeInBits[*]
+  /// ----        ----------  ---------------  ---------------
+  ///  i1            1           8                8
+  ///  i8            8           8                8
+  ///  i19          19          24               32
+  ///  i32          32          32               32
+  ///  i100        100         104              128
+  ///  i128        128         128              128
+  ///  Float        32          32               32
+  ///  Double       64          64               64
+  ///  X86_FP80     80          80               96
+  ///
+  /// [*] The alloc size depends on the alignment, and thus on the target.
+  ///     These values are for x86-32 linux.
+
+  /// \brief Returns the number of bits necessary to hold the specified type.
+  ///
+  /// For example, returns 36 for i36 and 80 for x86_fp80. The type passed must
+  /// have a size (Type::isSized() must return true).</doc>
+<doc f='include/llvm-6.0/llvm/IR/DataLayout.h' l='528'>// The implementation of this method is provided inline as it is particularly
+// well suited to constant folding when called on a specific Type subclass.</doc>

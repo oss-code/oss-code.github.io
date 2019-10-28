@@ -1,0 +1,8 @@
+<def f='include/c++/7/bits/shared_ptr.h' l='244' ll='245' type='void std::shared_ptr::shared_ptr&lt;_Tp&gt;(shared_ptr&lt;_Tp&gt; &amp;&amp; __r)'/>
+<def f='include/c++/7/bits/shared_ptr.h' l='253' ll='254' type='void std::shared_ptr::shared_ptr&lt;_Tp&gt;(shared_ptr&lt;_Yp&gt; &amp;&amp; __r)'/>
+<use f='include/llvm-6.0/llvm/Support/FileSystem.h' l='987' u='c' c='_ZN4llvm3sys2fs28recursive_directory_iteratorC1ERKNS_5TwineERSt10error_codeb'/>
+<doc f='include/c++/7/bits/shared_ptr.h' l='239'>/**
+       *  @brief  Move-constructs a %shared_ptr instance from @a __r.
+       *  @param  __r  A %shared_ptr rvalue.
+       *  @post   *this contains the old value of @a __r, @a __r is empty.
+       */</doc>

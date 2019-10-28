@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/Support/Regex.h' l='74' type='bool llvm::Regex::match(llvm::StringRef String, SmallVectorImpl&lt;llvm::StringRef&gt; * Matches = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/Support/Regex.h' l='67'>/// matches - Match the regex against a given \p String.
+    ///
+    /// \param Matches - If given, on a successful match this will be filled in
+    /// with references to the matched group expressions (inside \p String),
+    /// the first group is always the entire pattern.
+    ///
+    /// This returns true on a successful match.</doc>
+<use f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='475' u='c' c='_ZN4llvm4yaml8isNumberENS_9StringRefE'/>

@@ -1,0 +1,15 @@
+<dec f='include/string.h' l='125' type='char * strcpy(char *restrict __dest, const char *restrict __src)'/>
+<use f='pocl/bin/poclcc.c' l='102' u='c' c='process_kernel_file'/>
+<doc f='include/string.h' l='124'>/* Copy SRC to DEST.  */</doc>
+<use f='pocl/examples/matrix1/matrix1.c' l='319' u='c' c='main'/>
+<use f='pocl/lib/CL/clGetProgramInfo.c' l='212' u='c' c='POclGetProgramInfo'/>
+<use f='pocl/lib/CL/devices/common.c' l='228' u='c' c='llvm_codegen'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='801' u='c' c='load_or_generate_kernel'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='329' u='c' c='recursively_serialize_path'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='446' u='c' c='deserialize_file'/>
+<use f='pocl/lib/CL/pocl_build.c' l='231' u='c' c='process_options'/>
+<use f='pocl/lib/CL/pocl_build.c' l='549' u='c' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='160' u='c' c='_ZL35pocl_get_kernel_arg_module_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='178' u='c' c='_ZL35pocl_get_kernel_arg_module_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='388' u='c' c='_ZL37pocl_get_kernel_arg_function_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='429' u='c' c='_ZL37pocl_get_kernel_arg_function_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>

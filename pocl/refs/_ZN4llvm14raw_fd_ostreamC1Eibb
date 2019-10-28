@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='401' type='void llvm::raw_fd_ostream::raw_fd_ostream(int fd, bool shouldClose, bool unbuffered = false)'/>
+<doc f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='398'>/// FD is the file descriptor that this writes to.  If ShouldClose is true,
+  /// this closes the file when the stream is destroyed. If FD is for stdout or
+  /// stderr, it will not be closed.</doc>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='415' u='c' c='pocl_write_module'/>

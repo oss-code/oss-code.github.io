@@ -1,0 +1,8 @@
+<dec f='pocl/lib/llvmopencl/VariableUniformityAnalysis.h' l='67' type='void pocl::VariableUniformityAnalysis::markInductionVariables(llvm::Function &amp; F, llvm::Loop &amp; L)'/>
+<def f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='86' ll='99' type='void pocl::VariableUniformityAnalysis::markInductionVariables(llvm::Function &amp; F, llvm::Loop &amp; L)'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='97' u='c' c='_ZN4pocl26VariableUniformityAnalysis22markInductionVariablesERN4llvm8FunctionERNS1_4LoopE'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='121' u='c' c='_ZN4pocl26VariableUniformityAnalysis13runOnFunctionERN4llvm8FunctionE'/>
+<doc f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='82'>// Recursively mark the canonical induction variable PHI as uniform.
+// If there&apos;s a canonical induction variable in loops, the variable
+// update for each iteration should be uniform. Note: this does not yet
+// imply all the work-items execute the loop same number of times!</doc>

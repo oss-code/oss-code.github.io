@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/Attributes.h' l='571' type='llvm::Attribute llvm::AttributeList::getAttribute(unsigned int Index, Attribute::AttrKind Kind) const'/>
+<use f='include/llvm-6.0/llvm/IR/Attributes.h' l='578' u='c' c='_ZNK4llvm13AttributeList12getParamAttrEjNS_9Attribute8AttrKindE'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='352' u='c' c='_ZNK4llvm8Function12getAttributeEjNS_9Attribute8AttrKindE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1693' u='c' c='_ZNK4llvm8CallInst12getAttributeEjNS_9Attribute8AttrKindE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='3810' u='c' c='_ZNK4llvm10InvokeInst12getAttributeEjNS_9Attribute8AttrKindE'/>
+<doc f='include/llvm-6.0/llvm/IR/Attributes.h' l='570'>/// \brief Return the attribute object that exists at the given index.</doc>

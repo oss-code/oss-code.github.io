@@ -1,0 +1,6 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='1537' type='LLVMValueRef LLVMConstIntOfArbitraryPrecision(LLVMTypeRef IntTy, unsigned int NumWords, const uint64_t * Words)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='1532'>/**
+ * Obtain a constant value for an integer of arbitrary precision.
+ *
+ * @see llvm::ConstantInt::get()
+ */</doc>

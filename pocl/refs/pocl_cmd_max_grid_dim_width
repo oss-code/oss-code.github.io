@@ -1,0 +1,8 @@
+<dec f='pocl/lib/CL/devices/common.h' l='99' type='size_t pocl_cmd_max_grid_dim_width(_cl_command_run * cmd)'/>
+<def f='pocl/lib/CL/devices/common.c' l='998' ll='1004' type='size_t pocl_cmd_max_grid_dim_width(_cl_command_run * cmd)'/>
+<use f='pocl/lib/CL/devices/common.c' l='1014' u='c' c='fetch_dlhandle_cache_item'/>
+<use f='pocl/lib/CL/devices/common.c' l='1078' u='c' c='pocl_check_kernel_dlhandle_cache'/>
+<doc f='pocl/lib/CL/devices/common.c' l='996'>/* Returns the width of the widest dimension in the grid of the given
+   run command. */</doc>
+<use f='pocl/lib/CL/pocl_cache.c' l='133' u='c' c='pocl_cache_kernel_cachedir_path'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='408' u='c' c='pocl_llvm_generate_workgroup_function_nowrite'/>

@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='737' ll='745' type='void llvm::LoopInfoBase::removeBlock(BlockT * BB)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='734'>/// This method completely removes BB from all data structures,
+  /// including all of the Loop objects it is nested in and our mapping from
+  /// BasicBlocks to loops.</doc>

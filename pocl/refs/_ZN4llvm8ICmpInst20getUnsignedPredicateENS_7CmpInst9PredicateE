@@ -1,0 +1,4 @@
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1188' u='c' c='_ZNK4llvm8ICmpInst20getUnsignedPredicateEv'/>
+<dec f='include/llvm-6.0/llvm/IR/Instructions.h' l='1193' type='static llvm::CmpInst::Predicate llvm::ICmpInst::getUnsignedPredicate(llvm::CmpInst::Predicate pred)'/>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='1191'>/// This is a static version that you can use without an instruction.
+  /// Return the unsigned version of the predicate.</doc>

@@ -1,0 +1,28 @@
+<inh f='pocl/include/CL/cl2.hpp' l='1713' c='cl::detail::Wrapper'/>
+<def f='pocl/include/CL/cl2.hpp' l='5794' ll='6121'/>
+<size>8</size>
+<doc f='pocl/include/CL/cl2.hpp' l='5786'>/*! \brief Class interface for cl_kernel.
+ *
+ *  \note Copies of these objects are shallow, meaning that the copy will refer
+ *        to the same underlying cl_kernel as the original.  For details, see
+ *        clRetainKernel() and clReleaseKernel().
+ *
+ *  \see cl_kernel
+ */</doc>
+<fun r='_ZN2cl6KernelC1ERKNS_7ProgramEPKcPi'/>
+<fun r='_ZN2cl6KernelC1Ev'/>
+<fun r='_ZN2cl6KernelC1ERKP10_cl_kernelb'/>
+<fun r='_ZN2cl6KernelaSERKP10_cl_kernel'/>
+<fun r='_ZN2cl6KernelC1ERKS0_'/>
+<fun r='_ZN2cl6KernelaSERKS0_'/>
+<fun r='_ZN2cl6KernelC1EOS0_'/>
+<fun r='_ZN2cl6KernelaSEOS0_'/>
+<fun r='_ZNK2cl6Kernel7getInfoEjPT_'/>
+<fun r='_ZNK2cl6Kernel7getInfoEPi'/>
+<fun r='_ZNK2cl6Kernel10getArgInfoEjjPT_'/>
+<fun r='_ZNK2cl6Kernel10getArgInfoEjPi'/>
+<fun r='_ZNK2cl6Kernel16getWorkGroupInfoERKNS_6DeviceEjPT_'/>
+<fun r='_ZNK2cl6Kernel16getWorkGroupInfoERKNS_6DeviceEPi'/>
+<fun r='_ZN2cl6Kernel6setArgEjRKT_'/>
+<fun r='_ZN2cl6Kernel6setArgEjmPKv'/>
+<fun r='_ZN2cl6KernelC1ERKNS_7ProgramEPKcPi'/>

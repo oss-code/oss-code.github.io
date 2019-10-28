@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1416' type='llvm::ScalarEvolution::BackedgeTakenInfo llvm::ScalarEvolution::computeBackedgeTakenCount(const llvm::Loop * L, bool AllowPredicates = false)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1413'>/// Compute the number of times the specified loop will iterate.
+  /// If AllowPredicates is set, we will create new SCEV predicates as
+  /// necessary in order to return an exact answer.</doc>

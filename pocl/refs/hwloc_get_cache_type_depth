@@ -1,0 +1,20 @@
+<def f='include/hwloc/helper.h' l='459' ll='487' type='int hwloc_get_cache_type_depth(hwloc_topology_t topology, unsigned int cachelevel, hwloc_obj_cache_type_t cachetype)'/>
+<doc f='include/hwloc/helper.h' l='440'>/** \brief Find the depth of cache objects matching cache depth and type.
+ *
+ * Return the depth of the topology level that contains cache objects
+ * whose attributes match \p cachedepth and \p cachetype. This function
+ * intends to disambiguate the case where hwloc_get_type_depth() returns
+ * ::HWLOC_TYPE_DEPTH_MULTIPLE.
+ *
+ * If no cache level matches, ::HWLOC_TYPE_DEPTH_UNKNOWN is returned.
+ *
+ * If \p cachetype is ::HWLOC_OBJ_CACHE_UNIFIED, the depth of the
+ * unique matching unified cache level is returned.
+ *
+ * If \p cachetype is ::HWLOC_OBJ_CACHE_DATA or ::HWLOC_OBJ_CACHE_INSTRUCTION,
+ * either a matching cache, or a unified cache is returned.
+ *
+ * If \p cachetype is \c -1, it is ignored and multiple levels may
+ * match. The function returns either the depth of a uniquely matching
+ * level or ::HWLOC_TYPE_DEPTH_MULTIPLE.
+ */</doc>

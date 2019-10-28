@@ -1,0 +1,58 @@
+<inh f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='420' c='llvm::DIScope'/>
+<def f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1050' ll='1227'/>
+<size>56</size>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1049'>/// Compile unit.</doc>
+<fun r='_ZN4llvm13DICompileUnit15getEmissionKindENS_9StringRefE'/>
+<fun r='_ZN4llvm13DICompileUnit18EmissionKindStringENS0_17DebugEmissionKindE'/>
+<mbr r='llvm::DICompileUnit::SourceLanguage' o='192' t='unsigned int'/>
+<mbr r='llvm::DICompileUnit::IsOptimized' o='224' t='bool'/>
+<mbr r='llvm::DICompileUnit::RuntimeVersion' o='256' t='unsigned int'/>
+<mbr r='llvm::DICompileUnit::EmissionKind' o='288' t='unsigned int'/>
+<mbr r='llvm::DICompileUnit::DWOId' o='320' t='uint64_t'/>
+<mbr r='llvm::DICompileUnit::SplitDebugInlining' o='384' t='bool'/>
+<mbr r='llvm::DICompileUnit::DebugInfoForProfiling' o='392' t='bool'/>
+<mbr r='llvm::DICompileUnit::GnuPubnames' o='400' t='bool'/>
+<fun r='_ZN4llvm13DICompileUnitC1ERNS_11LLVMContextENS_8Metadata11StorageTypeEjbjjmbbbNS_8ArrayRefIPS3_EE'/>
+<fun r='_ZN4llvm13DICompileUnitD1Ev'/>
+<fun r='_ZN4llvm13DICompileUnit7getImplERNS_11LLVMContextEjPNS_6DIFileENS_9StringRefEbS5_jS5_jNS_24MDTupleTypedArrayWrapperINS_15DICompositeTypeEEENS6_INS_7DI4769453'/>
+<fun r='_ZN4llvm13DICompileUnit7getImplERNS_11LLVMContextEjPNS_8MetadataEPNS_8MDStringEbS6_jS6_jS4_S4_S4_S4_S4_mbbbNS3_11StorageTypeEb'/>
+<fun r='_ZNK4llvm13DICompileUnit9cloneImplEv'/>
+<fun r='_ZN4llvm13DICompileUnit3getEv'/>
+<fun r='_ZN4llvm13DICompileUnit11getIfExistsEv'/>
+<fun r='_ZN4llvm13DICompileUnit11getDistinctERNS_11LLVMContextEjPNS_6DIFileENS_9StringRefEbS5_jS5_NS0_17DebugEmissionKindENS_24MDTupleTypedArrayWrapperINS_15D14248293'/>
+<fun r='_ZN4llvm13DICompileUnit12getTemporaryERNS_11LLVMContextEjPNS_6DIFileENS_9StringRefEbS5_jS5_NS0_17DebugEmissionKindENS_24MDTupleTypedArrayWrapperINS_154794105'/>
+<fun r='_ZN4llvm13DICompileUnit11getDistinctERNS_11LLVMContextEjPNS_8MetadataEPNS_8MDStringEbS6_jS6_jS4_S4_S4_S4_S4_mbbb'/>
+<fun r='_ZN4llvm13DICompileUnit12getTemporaryERNS_11LLVMContextEjPNS_8MetadataEPNS_8MDStringEbS6_jS6_jS4_S4_S4_S4_S4_mbbb'/>
+<fun r='_ZNK4llvm13DICompileUnit5cloneEv'/>
+<fun r='_ZNK4llvm13DICompileUnit17getSourceLanguageEv'/>
+<fun r='_ZNK4llvm13DICompileUnit11isOptimizedEv'/>
+<fun r='_ZNK4llvm13DICompileUnit17getRuntimeVersionEv'/>
+<fun r='_ZNK4llvm13DICompileUnit15getEmissionKindEv'/>
+<fun r='_ZNK4llvm13DICompileUnit24getDebugInfoForProfilingEv'/>
+<fun r='_ZNK4llvm13DICompileUnit14getGnuPubnamesEv'/>
+<fun r='_ZNK4llvm13DICompileUnit11getProducerEv'/>
+<fun r='_ZNK4llvm13DICompileUnit8getFlagsEv'/>
+<fun r='_ZNK4llvm13DICompileUnit21getSplitDebugFilenameEv'/>
+<fun r='_ZNK4llvm13DICompileUnit12getEnumTypesEv'/>
+<fun r='_ZNK4llvm13DICompileUnit16getRetainedTypesEv'/>
+<fun r='_ZNK4llvm13DICompileUnit18getGlobalVariablesEv'/>
+<fun r='_ZNK4llvm13DICompileUnit19getImportedEntitiesEv'/>
+<fun r='_ZNK4llvm13DICompileUnit9getMacrosEv'/>
+<fun r='_ZNK4llvm13DICompileUnit8getDWOIdEv'/>
+<fun r='_ZN4llvm13DICompileUnit8setDWOIdEm'/>
+<fun r='_ZNK4llvm13DICompileUnit21getSplitDebugInliningEv'/>
+<fun r='_ZN4llvm13DICompileUnit21setSplitDebugInliningEb'/>
+<fun r='_ZNK4llvm13DICompileUnit14getRawProducerEv'/>
+<fun r='_ZNK4llvm13DICompileUnit11getRawFlagsEv'/>
+<fun r='_ZNK4llvm13DICompileUnit24getRawSplitDebugFilenameEv'/>
+<fun r='_ZNK4llvm13DICompileUnit15getRawEnumTypesEv'/>
+<fun r='_ZNK4llvm13DICompileUnit19getRawRetainedTypesEv'/>
+<fun r='_ZNK4llvm13DICompileUnit21getRawGlobalVariablesEv'/>
+<fun r='_ZNK4llvm13DICompileUnit22getRawImportedEntitiesEv'/>
+<fun r='_ZNK4llvm13DICompileUnit12getRawMacrosEv'/>
+<fun r='_ZN4llvm13DICompileUnit16replaceEnumTypesENS_24MDTupleTypedArrayWrapperINS_15DICompositeTypeEEE'/>
+<fun r='_ZN4llvm13DICompileUnit20replaceRetainedTypesENS_24MDTupleTypedArrayWrapperINS_6DITypeEEE'/>
+<fun r='_ZN4llvm13DICompileUnit22replaceGlobalVariablesENS_24MDTupleTypedArrayWrapperINS_26DIGlobalVariableExpressionEEE'/>
+<fun r='_ZN4llvm13DICompileUnit23replaceImportedEntitiesENS_24MDTupleTypedArrayWrapperINS_16DIImportedEntityEEE'/>
+<fun r='_ZN4llvm13DICompileUnit13replaceMacrosENS_24MDTupleTypedArrayWrapperINS_11DIMacroNodeEEE'/>
+<fun r='_ZN4llvm13DICompileUnit7classofEPKNS_8MetadataE'/>

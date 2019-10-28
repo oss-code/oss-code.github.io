@@ -1,0 +1,4 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='3192' type='LLVMBool LLVMFinalizeFunctionPassManager(LLVMPassManagerRef FPM)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='3189'>/** Finalizes all of the function passes scheduled in in the function pass
+    manager. Returns 1 if any of the passes modified the module, 0 otherwise.
+    @see llvm::FunctionPassManager::doFinalization */</doc>

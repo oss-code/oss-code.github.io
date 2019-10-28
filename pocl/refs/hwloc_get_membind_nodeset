@@ -1,0 +1,41 @@
+<dec f='include/hwloc.h' l='1801' type='int hwloc_get_membind_nodeset(hwloc_topology_t topology, hwloc_nodeset_t nodeset, hwloc_membind_policy_t * policy, int flags)'/>
+<doc f='include/hwloc.h' l='1761'>/** \brief Query the default memory binding policy and physical locality of the
+ * current process or thread.
+ *
+ * This function has two output parameters: \p nodeset and \p policy.
+ * The values returned in these parameters depend on both the \p flags
+ * passed in and the current memory binding policies and nodesets in
+ * the queried target.
+ *
+ * Passing the ::HWLOC_MEMBIND_PROCESS flag specifies that the query
+ * target is the current policies and nodesets for all the threads in
+ * the current process.  Passing ::HWLOC_MEMBIND_THREAD specifies that
+ * the query target is the current policy and nodeset for only the
+ * thread invoking this function.
+ *
+ * If neither of these flags are passed (which is the most portable
+ * method), the process is assumed to be single threaded.  This allows
+ * hwloc to use either process-based OS functions or thread-based OS
+ * functions, depending on which are available.
+ *
+ * ::HWLOC_MEMBIND_STRICT is only meaningful when ::HWLOC_MEMBIND_PROCESS
+ * is also specified.  In this case, hwloc will check the default
+ * memory policies and nodesets for all threads in the process.  If
+ * they are not identical, -1 is returned and errno is set to EXDEV.
+ * If they are identical, the values are returned in \p nodeset and \p
+ * policy.
+ *
+ * Otherwise, if ::HWLOC_MEMBIND_PROCESS is specified (and
+ * ::HWLOC_MEMBIND_STRICT is \em not specified), \p nodeset is set to
+ * the logical OR of all threads&apos; default nodeset.  If all threads&apos;
+ * default policies are the same, \p policy is set to that policy.  If
+ * they are different, \p policy is set to ::HWLOC_MEMBIND_MIXED.
+ *
+ * In the ::HWLOC_MEMBIND_THREAD case (or when neither
+ * ::HWLOC_MEMBIND_PROCESS or ::HWLOC_MEMBIND_THREAD is specified), there
+ * is only one nodeset and policy; they are returned in \p nodeset and
+ * \p policy, respectively.
+ *
+ * If any other flags are specified, -1 is returned and errno is set
+ * to EINVAL.
+ */</doc>

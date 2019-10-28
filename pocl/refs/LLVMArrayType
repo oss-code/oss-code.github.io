@@ -1,0 +1,9 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='1064' type='LLVMTypeRef LLVMArrayType(LLVMTypeRef ElementType, unsigned int ElementCount)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='1056'>/**
+ * Create a fixed size array type that refers to a specific type.
+ *
+ * The created type will exist in the context that its element type
+ * exists in.
+ *
+ * @see llvm::ArrayType::get()
+ */</doc>

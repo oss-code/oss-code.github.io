@@ -1,0 +1,11 @@
+<def f='include/c++/7/bits/basic_string.h' l='1020' ll='1022' type='bool std::__cxx11::basic_string::empty() const'/>
+<use f='include/llvm-6.0/llvm/IR/DataLayout.h' l='229' u='c' c='_ZNK4llvm10DataLayout9isDefaultEv'/>
+<use f='include/llvm-6.0/llvm/IR/Module.h' l='275' u='c' c='_ZN4llvm6Module18setModuleInlineAsmENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/IR/Module.h' l='283' u='c' c='_ZN4llvm6Module21appendModuleInlineAsmENS_9StringRefE'/>
+<doc f='include/c++/7/bits/basic_string.h' l='1016'>/**
+       *  Returns true if the %string is empty.  Equivalent to 
+       *  &lt;code&gt;*this == &quot;&quot;&lt;/code&gt;.
+       */</doc>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='131' u='c' c='_ZL23appendToProgramBuildLogP11_cl_programjRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='289' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='437' u='c' c='pocl_llvm_build_program'/>

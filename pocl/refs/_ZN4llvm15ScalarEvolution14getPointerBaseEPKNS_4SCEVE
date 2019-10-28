@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='657' type='const llvm::SCEV * llvm::ScalarEvolution::getPointerBase(const llvm::SCEV * V)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='653'>/// Transitively follow the chain of pointer-type operands until reaching a
+  /// SCEV that does not have a single pointer operand. This returns a
+  /// SCEVUnknown pointer for well-formed pointer-type expressions, but corner
+  /// cases do exist.</doc>

@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1544' type='llvm::Value * llvm::IRBuilder::CreateIntCast(llvm::Value * , llvm::Type * , const char * )'/>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1541'>// \brief Provided to resolve &apos;CreateIntCast(Ptr, Ptr, &quot;...&quot;)&apos;, giving a
+  // compile time error, instead of converting the string to bool for the
+  // isSigned parameter.</doc>

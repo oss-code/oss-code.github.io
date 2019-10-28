@@ -1,0 +1,11 @@
+<dec f='pocl/include/CL/cl.h' l='1715' type='void * clGetExtensionFunctionAddressForPlatform(cl_platform_id platform, const char * func_name)'/>
+<doc f='pocl/include/CL/cl.h' l='1707'>/* Extension function access
+ *
+ * Returns the extension function address for the given function name,
+ * or NULL if a valid function can not be found.  The client must
+ * check to make sure the address is not NULL, before using or
+ * calling the returned function address.
+ */</doc>
+<use f='pocl/lib/CL/pocl_intfn.h' l='86' c='POclGetExtensionFunctionAddressForPlatform'/>
+<def f='pocl/lib/CL/clGetExtensionFunctionAddressForPlatform.c' l='58' macro='1' type='void * clGetExtensionFunctionAddressForPlatform(cl_platform_id , const char * )'/>
+<use f='pocl/lib/CL/clGetExtensionFunctionAddressForPlatform.c' l='58' c='clGetExtensionFunctionAddressForPlatform'/>

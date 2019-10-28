@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/ADT/Statistic.h' l='184' type='void llvm::PrintStatisticsJSON(llvm::raw_ostream &amp; OS)'/>
+<doc f='include/llvm-6.0/llvm/ADT/Statistic.h' l='180'>/// Print statistics in JSON format. This does include all global timers (\see
+/// Timer, TimerGroup). Note that the timers are cleared after printing and will
+/// not be printed in human readable form or in a second call of
+/// PrintStatisticsJSON().</doc>

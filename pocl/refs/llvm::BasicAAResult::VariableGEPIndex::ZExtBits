@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Analysis/BasicAliasAnalysis.h' l='110' type='unsigned int'/>
+<use f='include/llvm-6.0/llvm/Analysis/BasicAliasAnalysis.h' l='116' u='r' c='_ZNK4llvm13BasicAAResult16VariableGEPIndexeqERKS1_'/>
+<use f='include/llvm-6.0/llvm/Analysis/BasicAliasAnalysis.h' l='116' u='r' c='_ZNK4llvm13BasicAAResult16VariableGEPIndexeqERKS1_'/>
+<offset>64</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/BasicAliasAnalysis.h' l='106'>// We need to track what extensions we&apos;ve done as we consider the same Value
+    // with different extensions as different variables in a GEP&apos;s linear
+    // expression;
+    // e.g.: if V == -1, then sext(x) != zext(x).</doc>

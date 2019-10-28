@@ -1,0 +1,13 @@
+<dec f='pocl/include/pocl.h' l='161' type='size_t [3]'/>
+<dec f='pocl/include/pocl.h' l='175' type='size_t [3]'/>
+<offset>128</offset>
+<use f='pocl/lib/CL/clEnqueueReadBufferRect.c' l='105' u='w' c='POclEnqueueReadBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueReadBufferRect.c' l='106' u='w' c='POclEnqueueReadBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueReadBufferRect.c' l='107' u='w' c='POclEnqueueReadBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueWriteBufferRect.c' l='103' u='w' c='POclEnqueueWriteBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueWriteBufferRect.c' l='104' u='w' c='POclEnqueueWriteBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueWriteBufferRect.c' l='105' u='w' c='POclEnqueueWriteBufferRect'/>
+<use f='pocl/lib/CL/devices/common.c' l='453' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='490' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1131' u='r' c='pocl_cuda_submit_node'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1144' u='r' c='pocl_cuda_submit_node'/>

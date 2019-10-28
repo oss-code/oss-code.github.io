@@ -1,0 +1,8 @@
+<def f='pocl/include/CL/cl2.hpp' l='2429' ll='2434' type='static cl::Platform cl::Platform::setDefault(const cl::Platform &amp; default_platform)'/>
+<doc f='pocl/include/CL/cl2.hpp' l='2422'>/**
+     * Modify the default platform to be used by
+     * subsequent operations.
+     * Will only set the default if no default was previously created.
+     * @return updated default platform.
+     *         Should be compared to the passed value to ensure that it was updated.
+     */</doc>

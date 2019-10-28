@@ -1,0 +1,38 @@
+<inh f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='857' c='llvm::AAResultBase'/>
+<def f='include/llvm-6.0/llvm/Analysis/BasicAliasAnalysis.h' l='54' ll='212'/>
+<size>1016</size>
+<doc f='include/llvm-6.0/llvm/Analysis/BasicAliasAnalysis.h' l='48'>/// This is the AA result object for the basic, local, and stateless alias
+/// analysis. It implements the AA query interface in an entirely stateless
+/// manner. As one consequence, it is never invalidated due to IR changes.
+/// While it does retain some storage, that is used as an optimization and not
+/// to preserve information from query to query. However it does retain handles
+/// to various other analyses and must be recomputed when those analyses are.</doc>
+<mbr r='llvm::BasicAAResult::DL' o='64' t='const llvm::DataLayout &amp;'/>
+<mbr r='llvm::BasicAAResult::TLI' o='128' t='const llvm::TargetLibraryInfo &amp;'/>
+<mbr r='llvm::BasicAAResult::AC' o='192' t='llvm::AssumptionCache &amp;'/>
+<mbr r='llvm::BasicAAResult::DT' o='256' t='llvm::DominatorTree *'/>
+<mbr r='llvm::BasicAAResult::LI' o='320' t='llvm::LoopInfo *'/>
+<fun r='_ZN4llvm13BasicAAResultC1ERKNS_10DataLayoutERKNS_17TargetLibraryInfoERNS_15AssumptionCacheEPNS_13DominatorTreeEPNS_8LoopInfoE'/>
+<fun r='_ZN4llvm13BasicAAResultC1ERKS0_'/>
+<fun r='_ZN4llvm13BasicAAResultC1EOS0_'/>
+<fun r='_ZN4llvm13BasicAAResult10invalidateERNS_8FunctionERKNS_17PreservedAnalysesERNS_15AnalysisManagerIS1_JEE11InvalidatorE'/>
+<fun r='_ZN4llvm13BasicAAResult5aliasERKNS_14MemoryLocationES3_'/>
+<fun r='_ZN4llvm13BasicAAResult13getModRefInfoENS_17ImmutableCallSiteERKNS_14MemoryLocationE'/>
+<fun r='_ZN4llvm13BasicAAResult13getModRefInfoENS_17ImmutableCallSiteES1_'/>
+<fun r='_ZN4llvm13BasicAAResult22pointsToConstantMemoryERKNS_14MemoryLocationEb'/>
+<fun r='_ZN4llvm13BasicAAResult16getArgModRefInfoENS_17ImmutableCallSiteEj'/>
+<fun r='_ZN4llvm13BasicAAResult17getModRefBehaviorENS_17ImmutableCallSiteE'/>
+<fun r='_ZN4llvm13BasicAAResult17getModRefBehaviorEPKNS_8FunctionE'/>
+<mbr r='llvm::BasicAAResult::AliasCache' o='384' t='AliasCacheTy'/>
+<mbr r='llvm::BasicAAResult::VisitedPhiBBs' o='6080' t='SmallPtrSet&lt;const llvm::BasicBlock *, 8&gt;'/>
+<mbr r='llvm::BasicAAResult::Visited' o='6848' t='SmallPtrSet&lt;const llvm::Value *, 16&gt;'/>
+<fun r='_ZN4llvm13BasicAAResult19GetLinearExpressionEPKNS_5ValueERNS_5APIntES5_RjS6_RKNS_10DataLayoutEjPNS_15AssumptionCacheEPNS_13DominatorTreeERbSE_'/>
+<fun r='_ZN4llvm13BasicAAResult22DecomposeGEPExpressionEPKNS_5ValueERNS0_13DecomposedGEPERKNS_10DataLayoutEPNS_15AssumptionCacheEPNS_13DominatorTreeE'/>
+<fun r='_ZN4llvm13BasicAAResult25isGEPBaseAtNegativeOffsetEPKNS_11GEPOperatorERKNS0_13DecomposedGEPES6_m'/>
+<fun r='_ZN4llvm13BasicAAResult23constantOffsetHeuristicERKNS_15SmallVectorImplINS0_16VariableGEPIndexEEEmmlPNS_15AssumptionCacheEPNS_13DominatorTreeE'/>
+<fun r='_ZN4llvm13BasicAAResult29isValueEqualInPotentialCyclesEPKNS_5ValueES3_'/>
+<fun r='_ZN4llvm13BasicAAResult18GetIndexDifferenceERNS_15SmallVectorImplINS0_16VariableGEPIndexEEERKS3_'/>
+<fun r='_ZN4llvm13BasicAAResult8aliasGEPEPKNS_11GEPOperatorEmRKNS_9AAMDNodesEPKNS_5ValueEmS6_S9_S9_'/>
+<fun r='_ZN4llvm13BasicAAResult8aliasPHIEPKNS_7PHINodeEmRKNS_9AAMDNodesEPKNS_5ValueEmS6_S9_'/>
+<fun r='_ZN4llvm13BasicAAResult11aliasSelectEPKNS_10SelectInstEmRKNS_9AAMDNodesEPKNS_5ValueEmS6_S9_'/>
+<fun r='_ZN4llvm13BasicAAResult10aliasCheckEPKNS_5ValueEmNS_9AAMDNodesES3_mS4_S3_S3_'/>

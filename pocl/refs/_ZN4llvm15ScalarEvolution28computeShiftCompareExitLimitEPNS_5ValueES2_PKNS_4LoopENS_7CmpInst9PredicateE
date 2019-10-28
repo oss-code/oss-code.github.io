@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1515' type='llvm::ScalarEvolution::ExitLimit llvm::ScalarEvolution::computeShiftCompareExitLimit(llvm::Value * LHS, llvm::Value * RHS, const llvm::Loop * L, ICmpInst::Predicate Pred)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1508'>/// Compute the exit limit of a loop that is controlled by a
+  /// &quot;(IV &gt;&gt; 1) != 0&quot; type comparison.  We cannot compute the exact trip
+  /// count in these cases (since SCEV has no way of expressing them), but we
+  /// can still sometimes compute an upper bound.
+  ///
+  /// Return an ExitLimit for a loop whose backedge is guarded by `LHS Pred
+  /// RHS`.</doc>

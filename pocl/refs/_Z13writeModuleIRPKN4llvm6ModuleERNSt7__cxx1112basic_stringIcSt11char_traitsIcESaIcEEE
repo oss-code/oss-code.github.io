@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/pocl_llvm_api.h' l='75' type='void writeModuleIR(const llvm::Module * mod, std::string &amp; str)'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='591' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='736' u='c' c='pocl_llvm_link_program'/>
+<def f='pocl/lib/CL/pocl_llvm_utils.cc' l='71' ll='79' type='void writeModuleIR(const llvm::Module * mod, std::string &amp; str)'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='556' u='c' c='pocl_llvm_update_binaries'/>

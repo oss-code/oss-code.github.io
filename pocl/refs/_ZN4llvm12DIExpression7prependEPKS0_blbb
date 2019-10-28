@@ -1,0 +1,3 @@
+<dec f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2300' type='static llvm::DIExpression * llvm::DIExpression::prepend(const llvm::DIExpression * DIExpr, bool DerefBefore, int64_t Offset = 0, bool DerefAfter = false, bool StackValue = false)'/>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2298'>/// Prepend \p DIExpr with a deref and offset operation and optionally turn it
+  /// into a stack value.</doc>

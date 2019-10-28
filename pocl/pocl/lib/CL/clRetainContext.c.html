@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>clRetainContext.c source code [pocl/lib/CL/clRetainContext.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/CL/clRetainContext.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>CL</a>/<a href='clRetainContext.c.html'>clRetainContext.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* OpenCL runtime library: clRetainContext()</i></td></tr>
+<tr><th id="2">2</th><td><i></i></td></tr>
+<tr><th id="3">3</th><td><i>   Copyright (c) 2012 Tampere University of Technology</i></td></tr>
+<tr><th id="4">4</th><td><i>   </i></td></tr>
+<tr><th id="5">5</th><td><i>   Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="6">6</th><td><i>   of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="7">7</th><td><i>   in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="8">8</th><td><i>   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="9">9</th><td><i>   copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="10">10</th><td><i>   furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="11">11</th><td><i>   </i></td></tr>
+<tr><th id="12">12</th><td><i>   The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="13">13</th><td><i>   all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="14">14</th><td><i>   </i></td></tr>
+<tr><th id="15">15</th><td><i>   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="16">16</th><td><i>   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="17">17</th><td><i>   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="18">18</th><td><i>   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="19">19</th><td><i>   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="20">20</th><td><i>   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="21">21</th><td><i>   THE SOFTWARE.</i></td></tr>
+<tr><th id="22">22</th><td><i>*/</i></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><u>#include <a href="pocl_cl.h.html">"pocl_cl.h"</a></u></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><a class="macro" href="../../include/CL/cl_platform.h.html#43" title="" data-ref="_M/CL_API_ENTRY">CL_API_ENTRY</a> <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <a class="macro" href="../../include/CL/cl_platform.h.html#44" title="" data-ref="_M/CL_API_CALL">CL_API_CALL</a></td></tr>
+<tr><th id="27">27</th><td><a class="macro" href="pocl_cl.h.html#225" title="POclRetainContext" data-ref="_M/POname">POname</a>(clRetainContext)(<a class="typedef" href="../../include/CL/cl.h.html#cl_context" title='cl_context' data-type='struct _cl_context *' data-ref="cl_context">cl_context</a> <dfn class="local col1 decl" id="1context" title='context' data-type='cl_context' data-ref="1context">context</dfn>) <a class="macro" href="../../include/CL/cl_platform.h.html#57" title="" data-ref="_M/CL_API_SUFFIX__VERSION_1_0">CL_API_SUFFIX__VERSION_1_0</a></td></tr>
+<tr><th id="28">28</th><td>{</td></tr>
+<tr><th id="29">29</th><td>  <a class="macro" href="pocl_debug.h.html#277" title="do { if ((context == ((void*)0))) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 29, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_INVALID_CONTEXT&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_INVALID_CONTEXT&quot; &quot; &quot;); fprintf (stderr, &quot;%s\n&quot;, &quot;(context == NULL)&quot;); pocl_debug_output_unlock (); } } while (0); return -34; } } while (0)" data-ref="_M/POCL_RETURN_ERROR_COND">POCL_RETURN_ERROR_COND</a>((<a class="local col1 ref" href="#1context" title='context' data-ref="1context">context</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>), <a class="macro" href="../../include/CL/cl.h.html#203" title="-34" data-ref="_M/CL_INVALID_CONTEXT">CL_INVALID_CONTEXT</a>);</td></tr>
+<tr><th id="30">30</th><td>  <em>int</em> <dfn class="local col2 decl" id="2refc" title='refc' data-type='int' data-ref="2refc">refc</dfn>;</td></tr>
+<tr><th id="31">31</th><td>  <a class="macro" href="pocl_cl.h.html#151" title="do { do { do { int r = pthread_mutex_lock (&amp;((context)-&gt;pocl_lock)); ((r == 0) ? (void) (0) : __assert_fail (&quot;r == 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/clRetainContext.c&quot;, 31, __PRETTY_FUNCTION__)); } while (0); (((context)-&gt;pocl_refcount &gt; 0) ? (void) (0) : __assert_fail (&quot;(context)-&gt;pocl_refcount &gt; 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/clRetainContext.c&quot;, 31, __PRETTY_FUNCTION__)); } while (0); refc = ++((context)-&gt;pocl_refcount);; do { (((context)-&gt;pocl_refcount &gt;= 0) ? (void) (0) : __assert_fail (&quot;(context)-&gt;pocl_refcount &gt;= 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/clRetainContext.c&quot;, 31, __PRETTY_FUNCTION__)); do { int r = pthread_mutex_unlock (&amp;((context)-&gt;pocl_lock)); ((r == 0) ? (void) (0) : __assert_fail (&quot;r == 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/clRetainContext.c&quot;, 31, __PRETTY_FUNCTION__)); } while (0); } while (0); } while (0)" data-ref="_M/POCL_RETAIN_OBJECT_REFCOUNT">POCL_RETAIN_OBJECT_REFCOUNT</a> (<a class="local col1 ref" href="#1context" title='context' data-ref="1context">context</a>, <a class="local col2 ref" href="#2refc" title='refc' data-ref="2refc">refc</a>);</td></tr>
+<tr><th id="32">32</th><td>  <a class="macro" href="pocl_debug.h.html#200" title="do { if (pocl_debug_messages_filter &amp; 0x40) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 32, &quot;REFCOUNTS&quot;, 1); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;&quot; &quot; &quot;); fprintf (stderr, &quot;Retain Context %p  : %d\n&quot;, context, refc); pocl_debug_output_unlock (); } } while (0)" data-ref="_M/POCL_MSG_PRINT_REFCOUNTS">POCL_MSG_PRINT_REFCOUNTS</a> (<q>"Retain Context %p  : %d\n"</q>, <a class="local col1 ref" href="#1context" title='context' data-ref="1context">context</a>, <a class="local col2 ref" href="#2refc" title='refc' data-ref="2refc">refc</a>);</td></tr>
+<tr><th id="33">33</th><td>  <b>return</b> <a class="macro" href="../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>;</td></tr>
+<tr><th id="34">34</th><td>}</td></tr>
+<tr><th id="35">35</th><td><a class="macro" href="pocl_cl.h.html#234" title="" data-ref="_M/POsym">POsym</a>(clRetainContext)</td></tr>
+<tr><th id="36">36</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

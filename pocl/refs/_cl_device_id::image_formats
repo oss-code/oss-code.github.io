@@ -1,0 +1,6 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='815' type='const cl_image_format *[6]'/>
+<offset>5952</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='814'>/* image formats supported by the device, per image type */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='254' u='w' c='pocl_init_cpu_device_infos'/>
+<use f='pocl/lib/CL/pocl_image_util.c' l='194' u='r' c='pocl_check_device_supports_image'/>
+<use f='pocl/lib/CL/pocl_util.c' l='974' u='r' c='pocl_setup_context'/>

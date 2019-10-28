@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='54' type='llvm::Constant * llvm::ConstantFoldConstant(const llvm::Constant * C, const llvm::DataLayout &amp; DL, const llvm::TargetLibraryInfo * TLI = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='51'>/// ConstantFoldConstant - Attempt to fold the constant using the
+/// specified DataLayout.
+/// If successful, the constant result is returned, if not, null is returned.</doc>

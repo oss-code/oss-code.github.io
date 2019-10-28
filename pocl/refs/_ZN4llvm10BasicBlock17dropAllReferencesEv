@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='341' type='void llvm::BasicBlock::dropAllReferences()'/>
+<doc f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='333'>/// \brief Cause all subinstructions to &quot;let go&quot; of all the references that
+  /// said subinstructions are maintaining.
+  ///
+  /// This allows one to &apos;delete&apos; a whole class at a time, even though there may
+  /// be circular references... first all references are dropped, and all use
+  /// counts go to zero.  Then everything is delete&apos;d for real.  Note that no
+  /// operations are valid on an object that has &quot;dropped all references&quot;,
+  /// except operator delete.</doc>

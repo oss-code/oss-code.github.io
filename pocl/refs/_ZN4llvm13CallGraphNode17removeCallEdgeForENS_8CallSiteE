@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='250' type='void llvm::CallGraphNode::removeCallEdgeFor(llvm::CallSite CS)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='247'>/// \brief Removes the edge in the node for the specified call site.
+  ///
+  /// Note that this method takes linear time, so it should be used sparingly.</doc>

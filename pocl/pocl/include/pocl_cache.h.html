@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>pocl_cache.h source code [pocl/include/pocl_cache.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/include/pocl_cache.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>pocl</a>/<a href='./'>include</a>/<a href='pocl_cache.h.html'>pocl_cache.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* pocl_cache.h: global declarations of caching functions used mostly in runtime</i></td></tr>
+<tr><th id="2">2</th><td><i></i></td></tr>
+<tr><th id="3">3</th><td><i>   Copyright (c) 2015 pocl developers</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>   Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="6">6</th><td><i>   of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="7">7</th><td><i>   in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="8">8</th><td><i>   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="9">9</th><td><i>   copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="10">10</th><td><i>   furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="11">11</th><td><i></i></td></tr>
+<tr><th id="12">12</th><td><i>   The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="13">13</th><td><i>   all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="14">14</th><td><i></i></td></tr>
+<tr><th id="15">15</th><td><i>   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="16">16</th><td><i>   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="17">17</th><td><i>   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="18">18</th><td><i>   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="19">19</th><td><i>   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="20">20</th><td><i>   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="21">21</th><td><i>   THE SOFTWARE.</i></td></tr>
+<tr><th id="22">22</th><td><i>*/</i></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><u>#<span data-ppcond="24">ifndef</span> <span class="macro" data-ref="_M/POCL_CACHE_H">POCL_CACHE_H</span></u></td></tr>
+<tr><th id="25">25</th><td><u>#define <dfn class="macro" id="_M/POCL_CACHE_H" data-ref="_M/POCL_CACHE_H">POCL_CACHE_H</dfn></u></td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><u>#include <a href="../lib/CL/pocl_cl.h.html">"pocl_cl.h"</a></u></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><i>/* The filename in which the work group (parallelizable) kernel LLVM bc is stored in</i></td></tr>
+<tr><th id="30">30</th><td><i>   the kernel's temp dir. */</i></td></tr>
+<tr><th id="31">31</th><td><u>#define <dfn class="macro" id="_M/POCL_PARALLEL_BC_FILENAME" data-ref="_M/POCL_PARALLEL_BC_FILENAME">POCL_PARALLEL_BC_FILENAME</dfn>   "/parallel.bc"</u></td></tr>
+<tr><th id="32">32</th><td></td></tr>
+<tr><th id="33">33</th><td><u>#<span data-ppcond="33">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="34">34</th><td><b>extern</b> <q>"C"</q> {</td></tr>
+<tr><th id="35">35</th><td><u>#<span data-ppcond="33">endif</span></u></td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td><u>#include <a href="CL/cl.h.html">&lt;CL/cl.h&gt;</a></u></td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td><u>#<span data-ppcond="39">ifdef</span> <span class="macro" data-ref="_M/__GNUC__">__GNUC__</span></u></td></tr>
+<tr><th id="40">40</th><td><u>#pragma GCC visibility push(hidden)</u></td></tr>
+<tr><th id="41">41</th><td><u>#<span data-ppcond="39">endif</span></u></td></tr>
+<tr><th id="42">42</th><td></td></tr>
+<tr><th id="43">43</th><td><em>int</em> <dfn class="decl" id="pocl_cache_init_topdir" title='pocl_cache_init_topdir' data-ref="pocl_cache_init_topdir">pocl_cache_init_topdir</dfn> ();</td></tr>
+<tr><th id="44">44</th><td></td></tr>
+<tr><th id="45">45</th><td><em>int</em></td></tr>
+<tr><th id="46">46</th><td><dfn class="decl" id="pocl_cache_create_program_cachedir" title='pocl_cache_create_program_cachedir' data-ref="pocl_cache_create_program_cachedir">pocl_cache_create_program_cachedir</dfn>(<a class="typedef" href="CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col0 decl" id="260program" title='program' data-type='cl_program' data-ref="260program">program</dfn>, <em>unsigned</em> <dfn class="local col1 decl" id="261device_i" title='device_i' data-type='unsigned int' data-ref="261device_i">device_i</dfn>,</td></tr>
+<tr><th id="47">47</th><td>                                   <em>const</em> <em>char</em>* <dfn class="local col2 decl" id="262preprocessed_source" title='preprocessed_source' data-type='const char *' data-ref="262preprocessed_source">preprocessed_source</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col3 decl" id="263source_len" title='source_len' data-type='size_t' data-ref="263source_len">source_len</dfn>,</td></tr>
+<tr><th id="48">48</th><td>                                   <em>char</em> *<dfn class="local col4 decl" id="264program_bc_path" title='program_bc_path' data-type='char *' data-ref="264program_bc_path">program_bc_path</dfn>);</td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td><em>void</em> <dfn class="decl" id="pocl_cache_cleanup_cachedir" title='pocl_cache_cleanup_cachedir' data-ref="pocl_cache_cleanup_cachedir">pocl_cache_cleanup_cachedir</dfn>(<a class="typedef" href="CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col5 decl" id="265program" title='program' data-type='cl_program' data-ref="265program">program</dfn>);</td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td><em>int</em> <dfn class="decl" id="pocl_cl_device_to_index" title='pocl_cl_device_to_index' data-ref="pocl_cl_device_to_index">pocl_cl_device_to_index</dfn>(<a class="typedef" href="CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a>   <dfn class="local col6 decl" id="266program" title='program' data-type='cl_program' data-ref="266program">program</dfn>,</td></tr>
+<tr><th id="53">53</th><td>                            <a class="typedef" href="CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="local col7 decl" id="267device" title='device' data-type='cl_device_id' data-ref="267device">device</dfn>);</td></tr>
+<tr><th id="54">54</th><td></td></tr>
+<tr><th id="55">55</th><td><em>int</em> <dfn class="decl" id="pocl_cache_tempname" title='pocl_cache_tempname' data-ref="pocl_cache_tempname">pocl_cache_tempname</dfn> (<em>char</em> *<dfn class="local col8 decl" id="268path_template" title='path_template' data-type='char *' data-ref="268path_template">path_template</dfn>, <em>const</em> <em>char</em> *<dfn class="local col9 decl" id="269suffix" title='suffix' data-type='const char *' data-ref="269suffix">suffix</dfn>, <em>int</em> *<dfn class="local col0 decl" id="270fd" title='fd' data-type='int *' data-ref="270fd">fd</dfn>);</td></tr>
+<tr><th id="56">56</th><td></td></tr>
+<tr><th id="57">57</th><td><em>int</em> <dfn class="decl" id="pocl_cache_create_tempdir" title='pocl_cache_create_tempdir' data-ref="pocl_cache_create_tempdir">pocl_cache_create_tempdir</dfn>(<em>char</em>* <dfn class="local col1 decl" id="271path" title='path' data-type='char *' data-ref="271path">path</dfn>);</td></tr>
+<tr><th id="58">58</th><td></td></tr>
+<tr><th id="59">59</th><td><em>int</em> <dfn class="decl" id="pocl_cache_write_program_source" title='pocl_cache_write_program_source' data-ref="pocl_cache_write_program_source">pocl_cache_write_program_source</dfn>(<em>char</em> *<dfn class="local col2 decl" id="272program_cl_path" title='program_cl_path' data-type='char *' data-ref="272program_cl_path">program_cl_path</dfn>,</td></tr>
+<tr><th id="60">60</th><td>                                    <a class="typedef" href="CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col3 decl" id="273program" title='program' data-type='cl_program' data-ref="273program">program</dfn>);</td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td><em>int</em> <dfn class="decl" id="pocl_cache_write_kernel_objfile" title='pocl_cache_write_kernel_objfile' data-ref="pocl_cache_write_kernel_objfile">pocl_cache_write_kernel_objfile</dfn> (<em>char</em> *<dfn class="local col4 decl" id="274objfile_path" title='objfile_path' data-type='char *' data-ref="274objfile_path">objfile_path</dfn>,</td></tr>
+<tr><th id="63">63</th><td>                                     <em>const</em> <em>char</em> *<dfn class="local col5 decl" id="275objfile_content" title='objfile_content' data-type='const char *' data-ref="275objfile_content">objfile_content</dfn>,</td></tr>
+<tr><th id="64">64</th><td>                                     <a class="typedef" href="../../include/stdint.h.html#uint64_t" title='uint64_t' data-type='unsigned long' data-ref="uint64_t">uint64_t</a> <dfn class="local col6 decl" id="276objfile_size" title='objfile_size' data-type='uint64_t' data-ref="276objfile_size">objfile_size</dfn>);</td></tr>
+<tr><th id="65">65</th><td></td></tr>
+<tr><th id="66">66</th><td><em>int</em> <dfn class="decl" id="pocl_cache_write_spirv" title='pocl_cache_write_spirv' data-ref="pocl_cache_write_spirv">pocl_cache_write_spirv</dfn> (<em>char</em> *<dfn class="local col7 decl" id="277spirv_path" title='spirv_path' data-type='char *' data-ref="277spirv_path">spirv_path</dfn>,</td></tr>
+<tr><th id="67">67</th><td>                            <em>const</em> <em>char</em> *<dfn class="local col8 decl" id="278spirv_content" title='spirv_content' data-type='const char *' data-ref="278spirv_content">spirv_content</dfn>,</td></tr>
+<tr><th id="68">68</th><td>                            <a class="typedef" href="../../include/stdint.h.html#uint64_t" title='uint64_t' data-type='unsigned long' data-ref="uint64_t">uint64_t</a> <dfn class="local col9 decl" id="279file_size" title='file_size' data-type='uint64_t' data-ref="279file_size">file_size</dfn>);</td></tr>
+<tr><th id="69">69</th><td></td></tr>
+<tr><th id="70">70</th><td><em>int</em> <dfn class="decl" id="pocl_cache_update_program_last_access" title='pocl_cache_update_program_last_access' data-ref="pocl_cache_update_program_last_access">pocl_cache_update_program_last_access</dfn>(<a class="typedef" href="CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col0 decl" id="280program" title='program' data-type='cl_program' data-ref="280program">program</dfn>,</td></tr>
+<tr><th id="71">71</th><td>                                          <em>unsigned</em> <dfn class="local col1 decl" id="281device_i" title='device_i' data-type='unsigned int' data-ref="281device_i">device_i</dfn>);</td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td></td></tr>
+<tr><th id="74">74</th><td><em>char</em>* <dfn class="decl" id="pocl_cache_read_buildlog" title='pocl_cache_read_buildlog' data-ref="pocl_cache_read_buildlog">pocl_cache_read_buildlog</dfn>(<a class="typedef" href="CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col2 decl" id="282program" title='program' data-type='cl_program' data-ref="282program">program</dfn>, <em>unsigned</em> <dfn class="local col3 decl" id="283device_i" title='device_i' data-type='unsigned int' data-ref="283device_i">device_i</dfn>);</td></tr>
+<tr><th id="75">75</th><td></td></tr>
+<tr><th id="76">76</th><td><em>int</em> <dfn class="decl" id="pocl_cache_append_to_buildlog" title='pocl_cache_append_to_buildlog' data-ref="pocl_cache_append_to_buildlog">pocl_cache_append_to_buildlog</dfn>(<a class="typedef" href="CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a>  <dfn class="local col4 decl" id="284program" title='program' data-type='cl_program' data-ref="284program">program</dfn>,</td></tr>
+<tr><th id="77">77</th><td>                                  <em>unsigned</em>    <dfn class="local col5 decl" id="285device_i" title='device_i' data-type='unsigned int' data-ref="285device_i">device_i</dfn>,</td></tr>
+<tr><th id="78">78</th><td>                                  <em>const</em> <em>char</em> *<dfn class="local col6 decl" id="286content" title='content' data-type='const char *' data-ref="286content">content</dfn>,</td></tr>
+<tr><th id="79">79</th><td>                                  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span>      <dfn class="local col7 decl" id="287size" title='size' data-type='size_t' data-ref="287size">size</dfn>);</td></tr>
+<tr><th id="80">80</th><td></td></tr>
+<tr><th id="81">81</th><td></td></tr>
+<tr><th id="82">82</th><td><em>int</em> <dfn class="decl" id="pocl_cache_device_cachedir_exists" title='pocl_cache_device_cachedir_exists' data-ref="pocl_cache_device_cachedir_exists">pocl_cache_device_cachedir_exists</dfn>(<a class="typedef" href="CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a>   <dfn class="local col8 decl" id="288program" title='program' data-type='cl_program' data-ref="288program">program</dfn>,</td></tr>
+<tr><th id="83">83</th><td>                                      <em>unsigned</em> <dfn class="local col9 decl" id="289device_i" title='device_i' data-type='unsigned int' data-ref="289device_i">device_i</dfn>);</td></tr>
+<tr><th id="84">84</th><td></td></tr>
+<tr><th id="85">85</th><td><em>int</em> <dfn class="decl" id="pocl_cache_write_descriptor" title='pocl_cache_write_descriptor' data-ref="pocl_cache_write_descriptor">pocl_cache_write_descriptor</dfn>(<a class="typedef" href="CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a>   <dfn class="local col0 decl" id="290program" title='program' data-type='cl_program' data-ref="290program">program</dfn>,</td></tr>
+<tr><th id="86">86</th><td>                                <em>unsigned</em>     <dfn class="local col1 decl" id="291device_i" title='device_i' data-type='unsigned int' data-ref="291device_i">device_i</dfn>,</td></tr>
+<tr><th id="87">87</th><td>                                <em>const</em> <em>char</em>*  <dfn class="local col2 decl" id="292kernel_name" title='kernel_name' data-type='const char *' data-ref="292kernel_name">kernel_name</dfn>,</td></tr>
+<tr><th id="88">88</th><td>                                <em>const</em> <em>char</em>*  <dfn class="local col3 decl" id="293content" title='content' data-type='const char *' data-ref="293content">content</dfn>,</td></tr>
+<tr><th id="89">89</th><td>                                <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span>       <dfn class="local col4 decl" id="294size" title='size' data-type='size_t' data-ref="294size">size</dfn>);</td></tr>
+<tr><th id="90">90</th><td></td></tr>
+<tr><th id="91">91</th><td><em>void</em> <dfn class="decl" id="pocl_cache_kernel_cachedir_path" title='pocl_cache_kernel_cachedir_path' data-ref="pocl_cache_kernel_cachedir_path">pocl_cache_kernel_cachedir_path</dfn> (<em>char</em> *<dfn class="local col5 decl" id="295kernel_cachedir_path" title='kernel_cachedir_path' data-type='char *' data-ref="295kernel_cachedir_path">kernel_cachedir_path</dfn>,</td></tr>
+<tr><th id="92">92</th><td>                                      <a class="typedef" href="CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col6 decl" id="296program" title='program' data-type='cl_program' data-ref="296program">program</dfn>, <em>unsigned</em> <dfn class="local col7 decl" id="297device_i" title='device_i' data-type='unsigned int' data-ref="297device_i">device_i</dfn>,</td></tr>
+<tr><th id="93">93</th><td>                                      <a class="typedef" href="CL/cl.h.html#cl_kernel" title='cl_kernel' data-type='struct _cl_kernel *' data-ref="cl_kernel">cl_kernel</a> <dfn class="local col8 decl" id="298kernel" title='kernel' data-type='cl_kernel' data-ref="298kernel">kernel</dfn>, <em>const</em> <em>char</em> *<dfn class="local col9 decl" id="299append_str" title='append_str' data-type='const char *' data-ref="299append_str">append_str</dfn>,</td></tr>
+<tr><th id="94">94</th><td>                                      <a class="typedef" href="pocl.h.html#_cl_command_node" title='_cl_command_node' data-type='struct _cl_command_node' data-ref="_cl_command_node">_cl_command_node</a> *<dfn class="local col0 decl" id="300command" title='command' data-type='_cl_command_node *' data-ref="300command">command</dfn>,</td></tr>
+<tr><th id="95">95</th><td>                                      <em>int</em> <dfn class="local col1 decl" id="301specialize" title='specialize' data-type='int' data-ref="301specialize">specialize</dfn>);</td></tr>
+<tr><th id="96">96</th><td></td></tr>
+<tr><th id="97">97</th><td><em>int</em> <dfn class="decl" id="pocl_cache_write_kernel_parallel_bc" title='pocl_cache_write_kernel_parallel_bc' data-ref="pocl_cache_write_kernel_parallel_bc">pocl_cache_write_kernel_parallel_bc</dfn> (<em>void</em> *<dfn class="local col2 decl" id="302bc" title='bc' data-type='void *' data-ref="302bc">bc</dfn>, <a class="typedef" href="CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col3 decl" id="303program" title='program' data-type='cl_program' data-ref="303program">program</dfn>,</td></tr>
+<tr><th id="98">98</th><td>                                         <em>int</em> <dfn class="local col4 decl" id="304device_i" title='device_i' data-type='int' data-ref="304device_i">device_i</dfn>, <a class="typedef" href="CL/cl.h.html#cl_kernel" title='cl_kernel' data-type='struct _cl_kernel *' data-ref="cl_kernel">cl_kernel</a> <dfn class="local col5 decl" id="305kernel" title='kernel' data-type='cl_kernel' data-ref="305kernel">kernel</dfn>,</td></tr>
+<tr><th id="99">99</th><td>                                         <a class="typedef" href="pocl.h.html#_cl_command_node" title='_cl_command_node' data-type='struct _cl_command_node' data-ref="_cl_command_node">_cl_command_node</a> *<dfn class="local col6 decl" id="306command" title='command' data-type='_cl_command_node *' data-ref="306command">command</dfn>,</td></tr>
+<tr><th id="100">100</th><td>                                         <em>int</em> <dfn class="local col7 decl" id="307specialize" title='specialize' data-type='int' data-ref="307specialize">specialize</dfn>);</td></tr>
+<tr><th id="101">101</th><td></td></tr>
+<tr><th id="102">102</th><td><i>// required by pocl_binary.c</i></td></tr>
+<tr><th id="103">103</th><td></td></tr>
+<tr><th id="104">104</th><td><em>void</em> <dfn class="decl" id="pocl_cache_program_path" title='pocl_cache_program_path' data-ref="pocl_cache_program_path">pocl_cache_program_path</dfn> (<em>char</em> *<dfn class="local col8 decl" id="308path" title='path' data-type='char *' data-ref="308path">path</dfn>, <a class="typedef" href="CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col9 decl" id="309program" title='program' data-type='cl_program' data-ref="309program">program</dfn>,</td></tr>
+<tr><th id="105">105</th><td>                              <em>unsigned</em> <dfn class="local col0 decl" id="310device_i" title='device_i' data-type='unsigned int' data-ref="310device_i">device_i</dfn>);</td></tr>
+<tr><th id="106">106</th><td></td></tr>
+<tr><th id="107">107</th><td><em>void</em> <dfn class="decl" id="pocl_cache_kernel_cachedir" title='pocl_cache_kernel_cachedir' data-ref="pocl_cache_kernel_cachedir">pocl_cache_kernel_cachedir</dfn> (<em>char</em> *<dfn class="local col1 decl" id="311kernel_cachedir_path" title='kernel_cachedir_path' data-type='char *' data-ref="311kernel_cachedir_path">kernel_cachedir_path</dfn>,</td></tr>
+<tr><th id="108">108</th><td>                                 <a class="typedef" href="CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col2 decl" id="312program" title='program' data-type='cl_program' data-ref="312program">program</dfn>, <em>unsigned</em> <dfn class="local col3 decl" id="313device_i" title='device_i' data-type='unsigned int' data-ref="313device_i">device_i</dfn>,</td></tr>
+<tr><th id="109">109</th><td>                                 <em>const</em> <em>char</em> *<dfn class="local col4 decl" id="314kernel_name" title='kernel_name' data-type='const char *' data-ref="314kernel_name">kernel_name</dfn>);</td></tr>
+<tr><th id="110">110</th><td></td></tr>
+<tr><th id="111">111</th><td><i>// these two required by llvm API</i></td></tr>
+<tr><th id="112">112</th><td></td></tr>
+<tr><th id="113">113</th><td><em>void</em> <dfn class="decl" id="pocl_cache_program_bc_path" title='pocl_cache_program_bc_path' data-ref="pocl_cache_program_bc_path">pocl_cache_program_bc_path</dfn>(<em>char</em>*       <dfn class="local col5 decl" id="315program_bc_path" title='program_bc_path' data-type='char *' data-ref="315program_bc_path">program_bc_path</dfn>,</td></tr>
+<tr><th id="114">114</th><td>                               <a class="typedef" href="CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a>   <dfn class="local col6 decl" id="316program" title='program' data-type='cl_program' data-ref="316program">program</dfn>,</td></tr>
+<tr><th id="115">115</th><td>                               <em>unsigned</em>     <dfn class="local col7 decl" id="317device_i" title='device_i' data-type='unsigned int' data-ref="317device_i">device_i</dfn>);</td></tr>
+<tr><th id="116">116</th><td></td></tr>
+<tr><th id="117">117</th><td><em>void</em> <dfn class="decl" id="pocl_cache_work_group_function_path" title='pocl_cache_work_group_function_path' data-ref="pocl_cache_work_group_function_path">pocl_cache_work_group_function_path</dfn> (<em>char</em> *<dfn class="local col8 decl" id="318parallel_bc_path" title='parallel_bc_path' data-type='char *' data-ref="318parallel_bc_path">parallel_bc_path</dfn>,</td></tr>
+<tr><th id="118">118</th><td>                                          <a class="typedef" href="CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col9 decl" id="319program" title='program' data-type='cl_program' data-ref="319program">program</dfn>,</td></tr>
+<tr><th id="119">119</th><td>                                          <em>unsigned</em> <dfn class="local col0 decl" id="320device_i" title='device_i' data-type='unsigned int' data-ref="320device_i">device_i</dfn>, <a class="typedef" href="CL/cl.h.html#cl_kernel" title='cl_kernel' data-type='struct _cl_kernel *' data-ref="cl_kernel">cl_kernel</a> <dfn class="local col1 decl" id="321kernel" title='kernel' data-type='cl_kernel' data-ref="321kernel">kernel</dfn>,</td></tr>
+<tr><th id="120">120</th><td>                                          <a class="typedef" href="pocl.h.html#_cl_command_node" title='_cl_command_node' data-type='struct _cl_command_node' data-ref="_cl_command_node">_cl_command_node</a> *<dfn class="local col2 decl" id="322command" title='command' data-type='_cl_command_node *' data-ref="322command">command</dfn>,</td></tr>
+<tr><th id="121">121</th><td>                                          <em>int</em> <dfn class="local col3 decl" id="323specialize" title='specialize' data-type='int' data-ref="323specialize">specialize</dfn>);</td></tr>
+<tr><th id="122">122</th><td></td></tr>
+<tr><th id="123">123</th><td><em>void</em> <dfn class="decl" id="pocl_cache_final_binary_path" title='pocl_cache_final_binary_path' data-ref="pocl_cache_final_binary_path">pocl_cache_final_binary_path</dfn> (<em>char</em> *<dfn class="local col4 decl" id="324final_binary_path" title='final_binary_path' data-type='char *' data-ref="324final_binary_path">final_binary_path</dfn>, <a class="typedef" href="CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col5 decl" id="325program" title='program' data-type='cl_program' data-ref="325program">program</dfn>,</td></tr>
+<tr><th id="124">124</th><td>                                   <em>unsigned</em> <dfn class="local col6 decl" id="326device_i" title='device_i' data-type='unsigned int' data-ref="326device_i">device_i</dfn>, <a class="typedef" href="CL/cl.h.html#cl_kernel" title='cl_kernel' data-type='struct _cl_kernel *' data-ref="cl_kernel">cl_kernel</a> <dfn class="local col7 decl" id="327kernel" title='kernel' data-type='cl_kernel' data-ref="327kernel">kernel</dfn>,</td></tr>
+<tr><th id="125">125</th><td>                                   <a class="typedef" href="pocl.h.html#_cl_command_node" title='_cl_command_node' data-type='struct _cl_command_node' data-ref="_cl_command_node">_cl_command_node</a> *<dfn class="local col8 decl" id="328command" title='command' data-type='_cl_command_node *' data-ref="328command">command</dfn>, <em>int</em> <dfn class="local col9 decl" id="329specialize" title='specialize' data-type='int' data-ref="329specialize">specialize</dfn>);</td></tr>
+<tr><th id="126">126</th><td></td></tr>
+<tr><th id="127">127</th><td><u>#<span data-ppcond="127">ifdef</span> <span class="macro" data-ref="_M/__GNUC__">__GNUC__</span></u></td></tr>
+<tr><th id="128">128</th><td><u>#pragma GCC visibility pop</u></td></tr>
+<tr><th id="129">129</th><td><u>#<span data-ppcond="127">endif</span></u></td></tr>
+<tr><th id="130">130</th><td></td></tr>
+<tr><th id="131">131</th><td></td></tr>
+<tr><th id="132">132</th><td><u>#<span data-ppcond="132">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="133">133</th><td>}</td></tr>
+<tr><th id="134">134</th><td><u>#<span data-ppcond="132">endif</span></u></td></tr>
+<tr><th id="135">135</th><td></td></tr>
+<tr><th id="136">136</th><td></td></tr>
+<tr><th id="137">137</th><td><u>#<span data-ppcond="24">endif</span></u></td></tr>
+<tr><th id="138">138</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../lib/CL/clCreateKernel.c.html'>pocl/lib/CL/clCreateKernel.c</a><br/>Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

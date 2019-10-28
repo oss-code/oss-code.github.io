@@ -1,0 +1,16 @@
+<def f='include/llvm-6.0/llvm/ADT/StringRef.h' l='875' ll='878' macro='1' type='bool llvm::operator==(llvm::StringRef LHS, llvm::StringRef RHS)'/>
+<use f='include/llvm-6.0/llvm/ADT/StringRef.h' l='881' u='c' c='_ZN4llvmneENS_9StringRefES0_'/>
+<use f='include/llvm-6.0/llvm/ADT/DenseMapInfo.h' l='233' u='c' c='_ZN4llvm12DenseMapInfoINS_9StringRefEE7isEqualES1_S1_'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='721' u='c' c='_ZNK4llvm18ModuleSummaryIndex19findSummaryInModuleEmNS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1368' u='c' c='_ZNK4llvm17OperandBundleUser16getOperandBundleENS_9StringRefE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='562' u='c' c='_ZL13linkLibDevicePN4llvm6ModuleEPKcS3_'/>
+<use f='include/llvm-6.0/llvm/Option/Arg.h' l='105' u='c' c='_ZNK4llvm3opt3Arg13containsValueENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/ADT/CachedHashString.h' l='178' u='c' c='_ZN4llvm12DenseMapInfoINS_16CachedHashStringEE7isEqualERKS1_S4_'/>
+<use f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='780' u='c' c='_ZNK4llvm26OptimizationRemarkAnalysis17shouldAlwaysPrintEv'/>
+<use f='pocl/lib/llvmopencl/Barrier.h' l='81' u='c' c='_ZN4pocl7Barrier7classofEPKN4llvm8CallInstE'/>
+<use f='pocl/lib/llvmopencl/Flatten.cc' l='87' u='c' c='_ZN12_GLOBAL__N_17Flatten11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/FlattenBarrierSubs.cc' l='116' u='c' c='_ZN12_GLOBAL__N_118FlattenBarrierSubs11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/HandleSamplerInitialization.cc' l='69' u='c' c='_ZN4pocl27HandleSamplerInitialization13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1441' u='c' c='_ZN4pocl9Workgroup17isKernelToProcessERKN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='70' u='c' c='_ZL14find_from_listN4llvm9StringRefERNSt7__cxx114listIS0_SaIS0_EEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='330' u='c' c='_ZL11shared_copyPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERNS_8ValueMapIPKNS_5ValueENS_14WeakTrackingVHENS_14ValueMapCo8254284'/>

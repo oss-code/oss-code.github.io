@@ -1,0 +1,11 @@
+<dec f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='180' type='llvm::StringRef'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='212' u='w' c='_ZN4llvm18GlobalValueSummary13setModulePathENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='215' u='r' c='_ZNK4llvm18GlobalValueSummary10modulePathEv'/>
+<offset>192</offset>
+<doc f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='173'>/// \brief Path of module IR containing value&apos;s definition, used to locate
+  /// module during importing.
+  ///
+  /// This is only used during parsing of the combined index, or when
+  /// parsing the per-module index for creation of the combined summary index,
+  /// not during writing of the per-module index which doesn&apos;t contain a
+  /// module path string table.</doc>

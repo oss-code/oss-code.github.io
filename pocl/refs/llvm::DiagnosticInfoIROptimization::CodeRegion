@@ -1,0 +1,7 @@
+<use f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='609' u='w' c='_ZN4llvm28DiagnosticInfoIROptimizationC1ENS_14DiagnosticKindENS_18DiagnosticSeverityEPKcNS_9StringRefERKNS_8FunctionERKNS_18DiagnosticLocationEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='623' u='w' c='_ZN4llvm28DiagnosticInfoIROptimizationC1EPKcNS_9StringRefERKS0_'/>
+<use f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='644' u='r' c='_ZNK4llvm28DiagnosticInfoIROptimization13getCodeRegionEv'/>
+<dec f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='653' type='const llvm::Value *'/>
+<offset>3776</offset>
+<doc f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='651'>/// The IR value (currently basic block) that the optimization operates on.
+  /// This is currently used to provide run-time hotness information with PGO.</doc>

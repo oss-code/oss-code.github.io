@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='243' type='llvm::FunctionPass * llvm::createDemoteRegisterToMemoryPass()'/>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='143' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='237'>//===----------------------------------------------------------------------===//
+//
+// DemoteRegisterToMemoryPass - This pass is used to demote registers to memory
+// references. In basically undoes the PromoteMemoryToRegister pass to make cfg
+// hacking easier.
+//</doc>

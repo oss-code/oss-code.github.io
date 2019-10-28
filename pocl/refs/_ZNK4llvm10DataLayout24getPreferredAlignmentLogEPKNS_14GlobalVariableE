@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/DataLayout.h' l='478' type='unsigned int llvm::DataLayout::getPreferredAlignmentLog(const llvm::GlobalVariable * GV) const'/>
+<doc f='include/llvm-6.0/llvm/IR/DataLayout.h' l='474'>/// \brief Returns the preferred alignment of the specified global, returned
+  /// in log form.
+  ///
+  /// This includes an explicitly requested alignment (if the global has one).</doc>

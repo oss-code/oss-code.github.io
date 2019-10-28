@@ -1,0 +1,15 @@
+<dec f='pocl/lib/CL/pocl_intfn.h' l='92' macro='1' type='cl_int POclGetPlatformIDs(cl_uint , cl_platform_id * , cl_uint * )'/>
+<use f='pocl/lib/CL/clCreateContext.c' l='52' macro='1' u='c'/>
+<use f='pocl/lib/CL/clGetDeviceIDs.c' l='46' macro='1' u='c'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='223' macro='1' u='c'/>
+<use f='pocl/lib/CL/clGetExtensionFunctionAddressForPlatform.c' l='35' macro='1' u='c'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='40' macro='1' u='a'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='40' macro='1' u='a'/>
+<def f='pocl/lib/CL/clGetPlatformIDs.c' l='243' macro='1' type='cl_int POclGetPlatformIDs(cl_uint num_entries, cl_platform_id * platforms, cl_uint * num_platforms)'/>
+<doc f='pocl/lib/CL/clGetPlatformIDs.c' l='238'>/*
+ * Get the number of supported platforms on this system. 
+ * On POCL, this trivially reduces to 1 - POCL itself.
+ */</doc>
+<use f='pocl/lib/CL/clGetPlatformInfo.c' l='41' macro='1' u='c'/>
+<use f='pocl/lib/CL/clIcdGetPlatformIDsKHR.c' l='16' macro='1' u='c'/>
+<use f='pocl/lib/CL/clUnloadPlatformCompiler.c' l='34' macro='1' u='c'/>

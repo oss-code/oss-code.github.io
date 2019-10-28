@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='394' type='RegionT * llvm::RegionBase::getExpandedRegion() const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='388'>/// @brief Return a new (non-canonical) region, that is obtained by joining
+  ///        this region with its predecessors.
+  ///
+  /// @return A region also starting at getEntry(), but reaching to the next
+  ///         basic block that forms with getEntry() a (non-canonical) region.
+  ///         NULL if such a basic block does not exist.</doc>

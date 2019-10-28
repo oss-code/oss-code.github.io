@@ -1,0 +1,4 @@
+<dec f='pocl/lib/CL/pocl_intfn.h' l='125' macro='1' type='cl_int POclEnqueueSVMMemFill(cl_command_queue , void * , const void * , size_t , size_t , cl_uint , const cl_event * , cl_event * )'/>
+<def f='pocl/lib/CL/clEnqueueSVMMemFill.c' l='28' macro='1' type='cl_int POclEnqueueSVMMemFill(cl_command_queue command_queue, void * svm_ptr, const void * pattern, size_t pattern_size, size_t size, cl_uint num_events_in_wait_list, const cl_event * event_wait_list, cl_event * event)'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='171' macro='1' u='a'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='171' macro='1' u='a'/>

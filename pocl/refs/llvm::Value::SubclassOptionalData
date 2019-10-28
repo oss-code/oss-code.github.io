@@ -1,0 +1,56 @@
+<dec f='include/llvm-6.0/llvm/IR/Value.h' l='91' type='unsigned char'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='477' u='r' c='_ZNK4llvm5Value26getRawSubclassOptionalDataEv'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='482' u='w' c='_ZN4llvm5Value25clearSubclassOptionalDataEv'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='487' u='r' c='_ZNK4llvm5Value27hasSameSubclassOptionalDataEPKS0_'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='487' u='r' c='_ZNK4llvm5Value27hasSameSubclassOptionalDataEPKS0_'/>
+<offset>137</offset>
+<doc f='include/llvm-6.0/llvm/IR/Value.h' l='86'>/// \brief Hold subclass data that can be dropped.
+  ///
+  /// This member is similar to SubclassData, however it is for holding
+  /// information which may be used to aid optimization, but which may be
+  /// cleared to zero without affecting conservative interpretation.</doc>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='79' u='w' c='_ZN4llvm25OverflowingBinaryOperator20setHasNoUnsignedWrapEb'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='80' u='r' c='_ZN4llvm25OverflowingBinaryOperator20setHasNoUnsignedWrapEb'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='83' u='w' c='_ZN4llvm25OverflowingBinaryOperator18setHasNoSignedWrapEb'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='84' u='r' c='_ZN4llvm25OverflowingBinaryOperator18setHasNoSignedWrapEb'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='91' u='r' c='_ZNK4llvm25OverflowingBinaryOperator17hasNoUnsignedWrapEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='97' u='r' c='_ZNK4llvm25OverflowingBinaryOperator15hasNoSignedWrapEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='131' u='w' c='_ZN4llvm21PossiblyExactOperator10setIsExactEb'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='131' u='r' c='_ZN4llvm21PossiblyExactOperator10setIsExactEb'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='137' u='r' c='_ZNK4llvm21PossiblyExactOperator7isExactEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='245' u='w' c='_ZN4llvm14FPMathOperator18setHasAllowReassocEb'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='246' u='r' c='_ZN4llvm14FPMathOperator18setHasAllowReassocEb'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='251' u='w' c='_ZN4llvm14FPMathOperator12setHasNoNaNsEb'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='252' u='r' c='_ZN4llvm14FPMathOperator12setHasNoNaNsEb'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='257' u='w' c='_ZN4llvm14FPMathOperator12setHasNoInfsEb'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='258' u='r' c='_ZN4llvm14FPMathOperator12setHasNoInfsEb'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='263' u='w' c='_ZN4llvm14FPMathOperator19setHasNoSignedZerosEb'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='264' u='r' c='_ZN4llvm14FPMathOperator19setHasNoSignedZerosEb'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='269' u='w' c='_ZN4llvm14FPMathOperator21setHasAllowReciprocalEb'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='270' u='r' c='_ZN4llvm14FPMathOperator21setHasAllowReciprocalEb'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='275' u='w' c='_ZN4llvm14FPMathOperator19setHasAllowContractEb'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='276' u='r' c='_ZN4llvm14FPMathOperator19setHasAllowContractEb'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='281' u='w' c='_ZN4llvm14FPMathOperator16setHasApproxFuncEb'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='282' u='r' c='_ZN4llvm14FPMathOperator16setHasApproxFuncEb'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='289' u='w' c='_ZN4llvm14FPMathOperator16setFastMathFlagsENS_13FastMathFlagsE'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='295' u='w' c='_ZN4llvm14FPMathOperator17copyFastMathFlagsENS_13FastMathFlagsE'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='301' u='r' c='_ZNK4llvm14FPMathOperator6isFastEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='302' u='r' c='_ZNK4llvm14FPMathOperator6isFastEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='303' u='r' c='_ZNK4llvm14FPMathOperator6isFastEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='304' u='r' c='_ZNK4llvm14FPMathOperator6isFastEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='305' u='r' c='_ZNK4llvm14FPMathOperator6isFastEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='306' u='r' c='_ZNK4llvm14FPMathOperator6isFastEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='307' u='r' c='_ZNK4llvm14FPMathOperator6isFastEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='312' u='r' c='_ZNK4llvm14FPMathOperator15hasAllowReassocEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='317' u='r' c='_ZNK4llvm14FPMathOperator9hasNoNaNsEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='322' u='r' c='_ZNK4llvm14FPMathOperator9hasNoInfsEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='327' u='r' c='_ZNK4llvm14FPMathOperator16hasNoSignedZerosEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='332' u='r' c='_ZNK4llvm14FPMathOperator18hasAllowReciprocalEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='337' u='r' c='_ZNK4llvm14FPMathOperator16hasAllowContractEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='343' u='r' c='_ZNK4llvm14FPMathOperator13hasApproxFuncEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='348' u='r' c='_ZNK4llvm14FPMathOperator16getFastMathFlagsEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='427' u='w' c='_ZN4llvm11GEPOperator13setIsInBoundsEb'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='428' u='r' c='_ZN4llvm11GEPOperator13setIsInBoundsEb'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='434' u='r' c='_ZNK4llvm11GEPOperator10isInBoundsEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='440' u='r' c='_ZNK4llvm11GEPOperator15getInRangeIndexEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='441' u='r' c='_ZNK4llvm11GEPOperator15getInRangeIndexEv'/>

@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1497' type='llvm::ScalarEvolution::ExitLimit llvm::ScalarEvolution::computeExitLimitFromSingleExitSwitch(const llvm::Loop * L, llvm::SwitchInst * Switch, llvm::BasicBlock * ExitingBB, bool IsSubExpr)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1494'>/// Compute the number of times the backedge of the specified loop will
+  /// execute if its exit condition were a switch with a single exiting case
+  /// to ExitingBB.</doc>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>pocl_llvm.h source code [pocl/lib/CL/pocl_llvm.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/CL/pocl_llvm.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>CL</a>/<a href='pocl_llvm.h.html'>pocl_llvm.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* pocl_llvm.h: interface to call LLVM and Clang.</i></td></tr>
+<tr><th id="2">2</th><td><i></i></td></tr>
+<tr><th id="3">3</th><td><i>   Copyright (c) 2013 Kalle Raiskila and</i></td></tr>
+<tr><th id="4">4</th><td><i>                 2013-2019 Pekka Jääskeläinen</i></td></tr>
+<tr><th id="5">5</th><td><i></i></td></tr>
+<tr><th id="6">6</th><td><i>   Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="7">7</th><td><i>   of this software and associated documentation files (the "Software"), to</i></td></tr>
+<tr><th id="8">8</th><td><i>   deal in the Software without restriction, including without limitation the</i></td></tr>
+<tr><th id="9">9</th><td><i>   rights to use, copy, modify, merge, publish, distribute, sublicense, and/or</i></td></tr>
+<tr><th id="10">10</th><td><i>   sell copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="11">11</th><td><i>   furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="12">12</th><td><i></i></td></tr>
+<tr><th id="13">13</th><td><i>   The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="14">14</th><td><i>   all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="15">15</th><td><i></i></td></tr>
+<tr><th id="16">16</th><td><i>   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="17">17</th><td><i>   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="18">18</th><td><i>   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="19">19</th><td><i>   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="20">20</th><td><i>   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING</i></td></tr>
+<tr><th id="21">21</th><td><i>   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS</i></td></tr>
+<tr><th id="22">22</th><td><i>   IN THE SOFTWARE.</i></td></tr>
+<tr><th id="23">23</th><td><i>*/</i></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><u>#pragma once</u></td></tr>
+<tr><th id="26">26</th><td><u>#include <a href="pocl_cl.h.html">"pocl_cl.h"</a></u></td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><u>#<span data-ppcond="28">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="29">29</th><td><b>extern</b> <q>"C"</q> {</td></tr>
+<tr><th id="30">30</th><td><u>#<span data-ppcond="28">endif</span></u></td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><u>#<span data-ppcond="32">ifdef</span> <span class="macro" data-ref="_M/__GNUC__">__GNUC__</span></u></td></tr>
+<tr><th id="33">33</th><td><u>#pragma GCC visibility push(hidden)</u></td></tr>
+<tr><th id="34">34</th><td><u>#<span data-ppcond="32">endif</span></u></td></tr>
+<tr><th id="35">35</th><td></td></tr>
+<tr><th id="36">36</th><td><i>/* Returns the cpu name as reported by LLVM. */</i></td></tr>
+<tr><th id="37">37</th><td><em>char</em> *<dfn class="decl" id="get_llvm_cpu_name" title='get_llvm_cpu_name' data-ref="get_llvm_cpu_name">get_llvm_cpu_name</dfn> ();</td></tr>
+<tr><th id="38">38</th><td><i>/* Returns if the cpu supports FMA instruction (uses LLVM). */</i></td></tr>
+<tr><th id="39">39</th><td><em>int</em> <dfn class="decl" id="cpu_has_fma" title='cpu_has_fma' data-ref="cpu_has_fma">cpu_has_fma</dfn>();</td></tr>
+<tr><th id="40">40</th><td></td></tr>
+<tr><th id="41">41</th><td><em>int</em> <dfn class="decl" id="bitcode_is_spir" title='bitcode_is_spir' data-ref="bitcode_is_spir">bitcode_is_spir</dfn>(<em>const</em> <em>char</em> *<dfn class="local col1 decl" id="1bitcode" title='bitcode' data-type='const char *' data-ref="1bitcode">bitcode</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col2 decl" id="2size" title='size' data-type='size_t' data-ref="2size">size</dfn>);</td></tr>
+<tr><th id="42">42</th><td></td></tr>
+<tr><th id="43">43</th><td><em>int</em> <dfn class="decl" id="bitcode_is_spirv" title='bitcode_is_spirv' data-ref="bitcode_is_spirv">bitcode_is_spirv</dfn>(<em>const</em> <em>char</em> *<dfn class="local col3 decl" id="3bitcode" title='bitcode' data-type='const char *' data-ref="3bitcode">bitcode</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col4 decl" id="4size" title='size' data-type='size_t' data-ref="4size">size</dfn>, <em>int</em> *<dfn class="local col5 decl" id="5is_opencl" title='is_opencl' data-type='int *' data-ref="5is_opencl">is_opencl</dfn>);</td></tr>
+<tr><th id="44">44</th><td></td></tr>
+<tr><th id="45">45</th><td><i>/* Sets up the native/preferred vector widths at runtime (using LLVM). */</i></td></tr>
+<tr><th id="46">46</th><td><em>void</em> <dfn class="decl" id="cpu_setup_vector_widths" title='cpu_setup_vector_widths' data-ref="cpu_setup_vector_widths">cpu_setup_vector_widths</dfn>(<a class="typedef" href="../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="local col6 decl" id="6dev" title='dev' data-type='cl_device_id' data-ref="6dev">dev</dfn>);</td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td><i>/* Compiles an .cl file into LLVM IR.</i></td></tr>
+<tr><th id="49">49</th><td><i> */</i></td></tr>
+<tr><th id="50">50</th><td><em>int</em> <dfn class="decl" id="pocl_llvm_build_program" title='pocl_llvm_build_program' data-ref="pocl_llvm_build_program">pocl_llvm_build_program</dfn>(<a class="typedef" href="../../include/CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col7 decl" id="7program" title='program' data-type='cl_program' data-ref="7program">program</dfn>,</td></tr>
+<tr><th id="51">51</th><td>                            <em>unsigned</em> <dfn class="local col8 decl" id="8device_i" title='device_i' data-type='unsigned int' data-ref="8device_i">device_i</dfn>,</td></tr>
+<tr><th id="52">52</th><td>                            <em>const</em> <em>char</em> *<dfn class="local col9 decl" id="9user_options_cstr" title='user_options_cstr' data-type='const char *' data-ref="9user_options_cstr">user_options_cstr</dfn>,</td></tr>
+<tr><th id="53">53</th><td>                            <em>char</em> *<dfn class="local col0 decl" id="10program_bc_path" title='program_bc_path' data-type='char *' data-ref="10program_bc_path">program_bc_path</dfn>,</td></tr>
+<tr><th id="54">54</th><td>                            <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a> <dfn class="local col1 decl" id="11num_input_headers" title='num_input_headers' data-type='cl_uint' data-ref="11num_input_headers">num_input_headers</dfn>,</td></tr>
+<tr><th id="55">55</th><td>                            <em>const</em> <a class="typedef" href="../../include/CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> *<dfn class="local col2 decl" id="12input_headers" title='input_headers' data-type='const cl_program *' data-ref="12input_headers">input_headers</dfn>,</td></tr>
+<tr><th id="56">56</th><td>                            <em>const</em> <em>char</em> **<dfn class="local col3 decl" id="13header_include_names" title='header_include_names' data-type='const char **' data-ref="13header_include_names">header_include_names</dfn>,</td></tr>
+<tr><th id="57">57</th><td>                            <em>int</em> <dfn class="local col4 decl" id="14linking_program" title='linking_program' data-type='int' data-ref="14linking_program">linking_program</dfn>);</td></tr>
+<tr><th id="58">58</th><td></td></tr>
+<tr><th id="59">59</th><td><i>/* Retrieve metadata of the given kernel in the program to populate the</i></td></tr>
+<tr><th id="60">60</th><td><i> * cl_kernel object.</i></td></tr>
+<tr><th id="61">61</th><td><i> */</i></td></tr>
+<tr><th id="62">62</th><td><em>int</em> <dfn class="decl" id="pocl_llvm_get_kernels_metadata" title='pocl_llvm_get_kernels_metadata' data-ref="pocl_llvm_get_kernels_metadata">pocl_llvm_get_kernels_metadata</dfn>(<a class="typedef" href="../../include/CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col5 decl" id="15program" title='program' data-type='cl_program' data-ref="15program">program</dfn>, <em>unsigned</em> <dfn class="local col6 decl" id="16device_i" title='device_i' data-type='unsigned int' data-ref="16device_i">device_i</dfn>);</td></tr>
+<tr><th id="63">63</th><td></td></tr>
+<tr><th id="64">64</th><td><i>/* This function links the input kernel LLVM bitcode and the OpenCL kernel</i></td></tr>
+<tr><th id="65">65</th><td><i> * runtime library into one LLVM module, then runs pocl's kernel compiler</i></td></tr>
+<tr><th id="66">66</th><td><i> * passes on that module to produce a function that executes all work-items in</i></td></tr>
+<tr><th id="67">67</th><td><i> * a work-group.</i></td></tr>
+<tr><th id="68">68</th><td><i> *</i></td></tr>
+<tr><th id="69">69</th><td><i> * Output is a LLVM bitcode file that contains a work-group function and its</i></td></tr>
+<tr><th id="70">70</th><td><i> * associated launchers. If @param Specialize is set to true, generates a</i></td></tr>
+<tr><th id="71">71</th><td><i> * WG function that might be specialized according to the properties of</i></td></tr>
+<tr><th id="72">72</th><td><i> * the given Command.</i></td></tr>
+<tr><th id="73">73</th><td><i> */</i></td></tr>
+<tr><th id="74">74</th><td><em>int</em> <dfn class="decl" id="pocl_llvm_generate_workgroup_function" title='pocl_llvm_generate_workgroup_function' data-ref="pocl_llvm_generate_workgroup_function">pocl_llvm_generate_workgroup_function</dfn> (<em>unsigned</em> <dfn class="local col7 decl" id="17DeviceI" title='DeviceI' data-type='unsigned int' data-ref="17DeviceI">DeviceI</dfn>,</td></tr>
+<tr><th id="75">75</th><td>                                           <a class="typedef" href="../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="local col8 decl" id="18Device" title='Device' data-type='cl_device_id' data-ref="18Device">Device</dfn>,</td></tr>
+<tr><th id="76">76</th><td>                                           <a class="typedef" href="../../include/CL/cl.h.html#cl_kernel" title='cl_kernel' data-type='struct _cl_kernel *' data-ref="cl_kernel">cl_kernel</a> <dfn class="local col9 decl" id="19Kernel" title='Kernel' data-type='cl_kernel' data-ref="19Kernel">Kernel</dfn>,</td></tr>
+<tr><th id="77">77</th><td>                                           <a class="typedef" href="../../include/pocl.h.html#_cl_command_node" title='_cl_command_node' data-type='struct _cl_command_node' data-ref="_cl_command_node">_cl_command_node</a> *<dfn class="local col0 decl" id="20Command" title='Command' data-type='_cl_command_node *' data-ref="20Command">Command</dfn>,</td></tr>
+<tr><th id="78">78</th><td>                                           <em>int</em> <dfn class="local col1 decl" id="21Specialize" title='Specialize' data-type='int' data-ref="21Specialize">Specialize</dfn>);</td></tr>
+<tr><th id="79">79</th><td></td></tr>
+<tr><th id="80">80</th><td><em>int</em> <dfn class="decl" id="pocl_llvm_generate_workgroup_function_nowrite" title='pocl_llvm_generate_workgroup_function_nowrite' data-ref="pocl_llvm_generate_workgroup_function_nowrite">pocl_llvm_generate_workgroup_function_nowrite</dfn> (</td></tr>
+<tr><th id="81">81</th><td>    <em>unsigned</em> <dfn class="local col2 decl" id="22DeviceI" title='DeviceI' data-type='unsigned int' data-ref="22DeviceI">DeviceI</dfn>, <a class="typedef" href="../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="local col3 decl" id="23Device" title='Device' data-type='cl_device_id' data-ref="23Device">Device</dfn>, <a class="typedef" href="../../include/CL/cl.h.html#cl_kernel" title='cl_kernel' data-type='struct _cl_kernel *' data-ref="cl_kernel">cl_kernel</a> <dfn class="local col4 decl" id="24Kernel" title='Kernel' data-type='cl_kernel' data-ref="24Kernel">Kernel</dfn>,</td></tr>
+<tr><th id="82">82</th><td>    <a class="typedef" href="../../include/pocl.h.html#_cl_command_node" title='_cl_command_node' data-type='struct _cl_command_node' data-ref="_cl_command_node">_cl_command_node</a> *<dfn class="local col5 decl" id="25Command" title='Command' data-type='_cl_command_node *' data-ref="25Command">Command</dfn>, <em>void</em> **<dfn class="local col6 decl" id="26output" title='output' data-type='void **' data-ref="26output">output</dfn>, <em>int</em> <dfn class="local col7 decl" id="27Specialize" title='Specialize' data-type='int' data-ref="27Specialize">Specialize</dfn>);</td></tr>
+<tr><th id="83">83</th><td><i class="doc">/**</i></td></tr>
+<tr><th id="84">84</th><td><i class="doc"> * Free the LLVM IR of a program for a given device</i></td></tr>
+<tr><th id="85">85</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="86">86</th><td><em>void</em> <dfn class="decl" id="pocl_free_llvm_irs" title='pocl_free_llvm_irs' data-ref="pocl_free_llvm_irs">pocl_free_llvm_irs</dfn>(<a class="typedef" href="../../include/CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col8 decl" id="28program" title='program' data-type='cl_program' data-ref="28program">program</dfn>, <em>unsigned</em> <dfn class="local col9 decl" id="29device_i" title='device_i' data-type='unsigned int' data-ref="29device_i">device_i</dfn>);</td></tr>
+<tr><th id="87">87</th><td></td></tr>
+<tr><th id="88">88</th><td><i>/* calls delete on the module. */</i></td></tr>
+<tr><th id="89">89</th><td><em>void</em> <dfn class="decl" id="pocl_destroy_llvm_module" title='pocl_destroy_llvm_module' data-ref="pocl_destroy_llvm_module">pocl_destroy_llvm_module</dfn>(<em>void</em> *<dfn class="local col0 decl" id="30modp" title='modp' data-type='void *' data-ref="30modp">modp</dfn>);</td></tr>
+<tr><th id="90">90</th><td></td></tr>
+<tr><th id="91">91</th><td><em>int</em> <dfn class="decl" id="pocl_llvm_remove_file_on_signal" title='pocl_llvm_remove_file_on_signal' data-ref="pocl_llvm_remove_file_on_signal">pocl_llvm_remove_file_on_signal</dfn> (<em>const</em> <em>char</em> *<dfn class="local col1 decl" id="31file" title='file' data-type='const char *' data-ref="31file">file</dfn>);</td></tr>
+<tr><th id="92">92</th><td></td></tr>
+<tr><th id="93">93</th><td><em>void</em> <dfn class="decl" id="pocl_llvm_release" title='pocl_llvm_release' data-ref="pocl_llvm_release">pocl_llvm_release</dfn>();</td></tr>
+<tr><th id="94">94</th><td><i class="doc">/**</i></td></tr>
+<tr><th id="95">95</th><td><i class="doc"> * Update the program-&gt;binaries[] representation of the kernels</i></td></tr>
+<tr><th id="96">96</th><td><i class="doc"> * from the program-&gt;llvm_irs[] representation.</i></td></tr>
+<tr><th id="97">97</th><td><i class="doc"> * Also updates the 'program.bc' file in the POCL_TEMP_DIR cache.</i></td></tr>
+<tr><th id="98">98</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="99">99</th><td><em>void</em> <dfn class="decl" id="pocl_llvm_update_binaries" title='pocl_llvm_update_binaries' data-ref="pocl_llvm_update_binaries">pocl_llvm_update_binaries</dfn> (<a class="typedef" href="../../include/CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col2 decl" id="32program" title='program' data-type='cl_program' data-ref="32program">program</dfn>);</td></tr>
+<tr><th id="100">100</th><td></td></tr>
+<tr><th id="101">101</th><td><i class="doc">/**</i></td></tr>
+<tr><th id="102">102</th><td><i class="doc"> * Count the number of "__kernel" functions in 'program'.</i></td></tr>
+<tr><th id="103">103</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="104">104</th><td><i class="doc"> * Results are valid as long as program binary is not modified.</i></td></tr>
+<tr><th id="105">105</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="106">106</th><td><em>unsigned</em> <dfn class="decl" id="pocl_llvm_get_kernel_count" title='pocl_llvm_get_kernel_count' data-ref="pocl_llvm_get_kernel_count">pocl_llvm_get_kernel_count</dfn>(<a class="typedef" href="../../include/CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col3 decl" id="33program" title='program' data-type='cl_program' data-ref="33program">program</dfn>, <em>unsigned</em> <dfn class="local col4 decl" id="34device_i" title='device_i' data-type='unsigned int' data-ref="34device_i">device_i</dfn>);</td></tr>
+<tr><th id="107">107</th><td></td></tr>
+<tr><th id="108">108</th><td><i class="doc">/** Compile the kernel in infile from LLVM bitcode to native object file for</i></td></tr>
+<tr><th id="109">109</th><td><i class="doc"> * device, into outfile.</i></td></tr>
+<tr><th id="110">110</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="111">111</th><td><em>int</em> <dfn class="decl" id="pocl_llvm_codegen" title='pocl_llvm_codegen' data-ref="pocl_llvm_codegen">pocl_llvm_codegen</dfn>(<a class="typedef" href="../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="local col5 decl" id="35device" title='device' data-type='cl_device_id' data-ref="35device">device</dfn>, <em>void</em> *<dfn class="local col6 decl" id="36modp" title='modp' data-type='void *' data-ref="36modp">modp</dfn>,</td></tr>
+<tr><th id="112">112</th><td>                      <em>char</em> **<dfn class="local col7 decl" id="37output" title='output' data-type='char **' data-ref="37output">output</dfn>, <a class="typedef" href="../../../include/stdint.h.html#uint64_t" title='uint64_t' data-type='unsigned long' data-ref="uint64_t">uint64_t</a> *<dfn class="local col8 decl" id="38output_size" title='output_size' data-type='uint64_t *' data-ref="38output_size">output_size</dfn>);</td></tr>
+<tr><th id="113">113</th><td></td></tr>
+<tr><th id="114">114</th><td><i>/* Parse program file and populate program's llvm_irs */</i></td></tr>
+<tr><th id="115">115</th><td><em>int</em></td></tr>
+<tr><th id="116">116</th><td><dfn class="decl" id="pocl_update_program_llvm_irs" title='pocl_update_program_llvm_irs' data-ref="pocl_update_program_llvm_irs">pocl_update_program_llvm_irs</dfn>(<a class="typedef" href="../../include/CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col9 decl" id="39program" title='program' data-type='cl_program' data-ref="39program">program</dfn>, <em>unsigned</em> <dfn class="local col0 decl" id="40device_i" title='device_i' data-type='unsigned int' data-ref="40device_i">device_i</dfn>);</td></tr>
+<tr><th id="117">117</th><td></td></tr>
+<tr><th id="118">118</th><td></td></tr>
+<tr><th id="119">119</th><td><em>int</em> <dfn class="decl" id="pocl_llvm_link_program" title='pocl_llvm_link_program' data-ref="pocl_llvm_link_program">pocl_llvm_link_program</dfn>(<a class="typedef" href="../../include/CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col1 decl" id="41program" title='program' data-type='cl_program' data-ref="41program">program</dfn>,</td></tr>
+<tr><th id="120">120</th><td>                           <em>unsigned</em> <dfn class="local col2 decl" id="42device_i" title='device_i' data-type='unsigned int' data-ref="42device_i">device_i</dfn>,</td></tr>
+<tr><th id="121">121</th><td>                           <em>char</em> *<dfn class="local col3 decl" id="43program_bc_path" title='program_bc_path' data-type='char *' data-ref="43program_bc_path">program_bc_path</dfn>,</td></tr>
+<tr><th id="122">122</th><td>                           <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a> <dfn class="local col4 decl" id="44num_input_programs" title='num_input_programs' data-type='cl_uint' data-ref="44num_input_programs">num_input_programs</dfn>,</td></tr>
+<tr><th id="123">123</th><td>                           <em>unsigned</em> <em>char</em> **<dfn class="local col5 decl" id="45cur_device_binaries" title='cur_device_binaries' data-type='unsigned char **' data-ref="45cur_device_binaries">cur_device_binaries</dfn>,</td></tr>
+<tr><th id="124">124</th><td>                           <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> *<dfn class="local col6 decl" id="46cur_device_binary_sizes" title='cur_device_binary_sizes' data-type='size_t *' data-ref="46cur_device_binary_sizes">cur_device_binary_sizes</dfn>,</td></tr>
+<tr><th id="125">125</th><td>                           <em>void</em> **<dfn class="local col7 decl" id="47cur_llvm_irs" title='cur_llvm_irs' data-type='void **' data-ref="47cur_llvm_irs">cur_llvm_irs</dfn>, <em>int</em> <dfn class="local col8 decl" id="48create_library" title='create_library' data-type='int' data-ref="48create_library">create_library</dfn>, <em>int</em> <dfn class="local col9 decl" id="49spir" title='spir' data-type='int' data-ref="49spir">spir</dfn>);</td></tr>
+<tr><th id="126">126</th><td></td></tr>
+<tr><th id="127">127</th><td><em>int</em> <dfn class="decl" id="pocl_invoke_clang" title='pocl_invoke_clang' data-ref="pocl_invoke_clang">pocl_invoke_clang</dfn>(<a class="typedef" href="../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="local col0 decl" id="50Device" title='Device' data-type='cl_device_id' data-ref="50Device">Device</dfn>, <em>const</em> <em>char</em>** <dfn class="local col1 decl" id="51Args" title='Args' data-type='const char **' data-ref="51Args">Args</dfn>);</td></tr>
+<tr><th id="128">128</th><td></td></tr>
+<tr><th id="129">129</th><td><u>#<span data-ppcond="129">ifdef</span> <span class="macro" data-ref="_M/__GNUC__">__GNUC__</span></u></td></tr>
+<tr><th id="130">130</th><td><u>#pragma GCC visibility pop</u></td></tr>
+<tr><th id="131">131</th><td><u>#<span data-ppcond="129">endif</span></u></td></tr>
+<tr><th id="132">132</th><td></td></tr>
+<tr><th id="133">133</th><td></td></tr>
+<tr><th id="134">134</th><td><u>#<span data-ppcond="134">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="135">135</th><td>}</td></tr>
+<tr><th id="136">136</th><td><u>#<span data-ppcond="134">endif</span></u></td></tr>
+<tr><th id="137">137</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='clCreateKernelsInProgram.c.html'>pocl/lib/CL/clCreateKernelsInProgram.c</a><br/>Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

@@ -1,0 +1,6 @@
+<use f='include/llvm-6.0/llvm/Analysis/AliasSetTracker.h' l='110' u='c' c='_ZN4llvm8AliasSet10PointerRec11getAliasSetERNS_15AliasSetTrackerE'/>
+<def f='include/llvm-6.0/llvm/Analysis/AliasSetTracker.h' l='276' ll='286' type='llvm::AliasSet * llvm::AliasSet::getForwardedTarget(llvm::AliasSetTracker &amp; AST)'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasSetTracker.h' l='279' u='c' c='_ZN4llvm8AliasSet18getForwardedTargetERNS_15AliasSetTrackerE'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasSetTracker.h' l='273'>/// Return the real alias set this represents. If this has been merged with
+  /// another set and is forwarding, return the ultimate destination set. This
+  /// also implements the union-find collapsing as well.</doc>

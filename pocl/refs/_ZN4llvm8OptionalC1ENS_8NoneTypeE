@@ -1,0 +1,18 @@
+<def f='include/llvm-6.0/llvm/ADT/Optional.h' l='37' type='void llvm::Optional::Optional&lt;T&gt;(llvm::NoneType )'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='1118' u='c' c='_ZN4llvm12ConstantExpr16getGetElementPtrEPNS_4TypeEPNS_8ConstantENS_8ArrayRefIS4_EEbNS_8OptionalIjEES2_'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='1126' u='c' c='_ZN4llvm12ConstantExpr16getGetElementPtrEPNS_4TypeEPNS_8ConstantES4_bNS_8OptionalIjEES2_'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='1137' u='c' c='_ZN4llvm12ConstantExpr16getGetElementPtrEPNS_4TypeEPNS_8ConstantENS_8ArrayRefIPNS_5ValueEEEbNS_8OptionalIjEES2_'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1372' u='c' c='_ZNK4llvm17OperandBundleUser16getOperandBundleENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1388' u='c' c='_ZNK4llvm17OperandBundleUser16getOperandBundleEj'/>
+<use f='include/llvm-6.0/llvm/Support/NativeFormatting.h' l='43' u='c' c='_ZN4llvm9write_hexERNS_11raw_ostreamEmNS_13HexPrintStyleENS_8OptionalImEE'/>
+<use f='include/llvm-6.0/llvm/Support/NativeFormatting.h' l='45' u='c' c='_ZN4llvm12write_doubleERNS_11raw_ostreamEdNS_10FloatStyleENS_8OptionalImEE'/>
+<use f='include/llvm-6.0/llvm/Support/FormatProviders.h' l='67' u='c' c='_ZN4llvm6detail15HelperFunctions21parseNumericPrecisionENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/Support/FormatProviders.h' l='70' u='c' c='_ZN4llvm6detail15HelperFunctions21parseNumericPrecisionENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='374' u='c' c='_ZNK4llvm6Target19createTargetMachineENS_9StringRefES1_S1_RKNS_13TargetOptionsENS_8OptionalINS_5Reloc5ModelEEENS5_INS_9CodeModel5ModelEEENS_10CodeGenOpt5LevelEb'/>
+<use f='include/llvm-6.0/llvm/Analysis/MemoryLocation.h' l='87' u='c' c='_ZN4llvm14MemoryLocation9getOrNoneEPKNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/ValueMap.h' l='127' u='c' c='_ZNK4llvm8ValueMap11getMappedMDEPKNS_8MetadataE'/>
+<use f='include/llvm-6.0/llvm/IR/ValueMap.h' l='130' u='c' c='_ZNK4llvm8ValueMap11getMappedMDEPKNS_8MetadataE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='127' u='c' c='pocl_ptx_gen'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='440' u='c' c='_ZNK4llvm11GEPOperator15getInRangeIndexEv'/>
+<use f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='197' u='c' c='_ZN4llvm9DIBuilder17createPointerTypeEPNS_6DITypeEmjNS_8OptionalIjEENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='216' u='c' c='_ZN4llvm9DIBuilder19createReferenceTypeEjPNS_6DITypeEmjNS_8OptionalIjEE'/>

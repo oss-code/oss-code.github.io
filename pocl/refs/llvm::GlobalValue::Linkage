@@ -1,0 +1,8 @@
+<use f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='80' u='w' c='_ZN4llvm11GlobalValueC1EPNS_4TypeENS_5Value7ValueTyEPNS_3UseEjNS0_12LinkageTypesERKNS_5TwineEj'/>
+<dec f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='94' type='unsigned int'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='439' u='w' c='_ZN4llvm11GlobalValue10setLinkageENS0_12LinkageTypesE'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='441' u='r' c='_ZNK4llvm11GlobalValue10getLinkageEv'/>
+<offset>256</offset>
+<doc f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='92'>// All bitfields use unsigned as the underlying type so that MSVC will pack
+  // them.</doc>
+<doc f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='94'>// The linkage of this global</doc>

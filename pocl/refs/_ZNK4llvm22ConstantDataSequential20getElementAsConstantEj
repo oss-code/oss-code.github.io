@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='620' type='llvm::Constant * llvm::ConstantDataSequential::getElementAsConstant(unsigned int i) const'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='617'>/// Return a Constant for a specified index&apos;s element.
+  /// Note that this has to compute a new constant to return, so it isn&apos;t as
+  /// efficient as getElementAsInteger/Float/Double.</doc>

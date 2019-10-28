@@ -1,0 +1,17 @@
+<dec f='pocl/include/CL/cl_ext.h' l='617' type='cl_mem clImportMemoryARM(cl_context context, cl_mem_flags flags, const cl_import_properties_arm * properties, void * memory, size_t size, cl_int * errcode_ret)'/>
+<doc f='pocl/include/CL/cl_ext.h' l='600'>/* This extension adds a new function that allows for direct memory import into
+ * OpenCL via the clImportMemoryARM function.
+ *
+ * Memory imported through this interface will be mapped into the device&apos;s page
+ * tables directly, providing zero copy access. It will never fall back to copy
+ * operations and aliased buffers.
+ *
+ * Types of memory supported for import are specified as additional extension
+ * strings.
+ *
+ * This extension produces cl_mem allocations which are compatible with all other
+ * users of cl_mem in the standard API.
+ *
+ * This extension maps pages with the same properties as the normal buffer creation
+ * function clCreateBuffer.
+ */</doc>

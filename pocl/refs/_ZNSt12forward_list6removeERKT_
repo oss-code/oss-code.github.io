@@ -1,0 +1,13 @@
+<dec f='include/c++/7/bits/forward_list.h' l='1137' type='void std::forward_list::remove(const _Tp &amp; __val)'/>
+<def f='include/c++/7/bits/forward_list.tcc' l='285' ll='310' type='void std::forward_list::remove(const _Tp &amp; __val)'/>
+<doc f='include/c++/7/bits/forward_list.h' l='1125'>/**
+       *  @brief  Remove all elements equal to value.
+       *  @param  __val  The value to remove.
+       *
+       *  Removes every element in the list equal to @a __val.
+       *  Remaining elements stay in list order.  Note that this
+       *  function only erases the elements, and that if the elements
+       *  themselves are pointers, the pointed-to memory is not
+       *  touched in any way.  Managing the pointer is the user&apos;s
+       *  responsibility.
+       */</doc>

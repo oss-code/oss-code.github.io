@@ -1,0 +1,21 @@
+<inh f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='182' c='llvm::SCEVPredicate'/>
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='381' ll='420'/>
+<size>216</size>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='375'>/// This class represents a composition of other SCEV predicates, and is the
+/// class that most clients will interact with.  This is equivalent to a
+/// logical &quot;AND&quot; of all the predicates in the union.
+///
+/// NB! Unlike other SCEVPredicate sub-classes this class does not live in the
+/// ScalarEvolution::Preds folding set.  This is why the \c add function is sound.</doc>
+<mbr r='llvm::SCEVUnionPredicate::Preds' o='320' t='SmallVector&lt;const llvm::SCEVPredicate *, 16&gt;'/>
+<mbr r='llvm::SCEVUnionPredicate::SCEVToPreds' o='1536' t='PredicateMap'/>
+<fun r='_ZN4llvm18SCEVUnionPredicateC1Ev'/>
+<fun r='_ZNK4llvm18SCEVUnionPredicate13getPredicatesEv'/>
+<fun r='_ZN4llvm18SCEVUnionPredicate3addEPKNS_13SCEVPredicateE'/>
+<fun r='_ZN4llvm18SCEVUnionPredicate20getPredicatesForExprEPKNS_4SCEVE'/>
+<fun r='_ZNK4llvm18SCEVUnionPredicate12isAlwaysTrueEv'/>
+<fun r='_ZNK4llvm18SCEVUnionPredicate7impliesEPKNS_13SCEVPredicateE'/>
+<fun r='_ZNK4llvm18SCEVUnionPredicate5printERNS_11raw_ostreamEj'/>
+<fun r='_ZNK4llvm18SCEVUnionPredicate7getExprEv'/>
+<fun r='_ZNK4llvm18SCEVUnionPredicate13getComplexityEv'/>
+<fun r='_ZN4llvm18SCEVUnionPredicate7classofEPKNS_13SCEVPredicateE'/>

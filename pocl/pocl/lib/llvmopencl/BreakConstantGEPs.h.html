@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>BreakConstantGEPs.h source code [pocl/lib/llvmopencl/BreakConstantGEPs.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="BreakConstantGEPs "/>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/llvmopencl/BreakConstantGEPs.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>llvmopencl</a>/<a href='BreakConstantGEPs.h.html'>BreakConstantGEPs.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>//===- BreakConstantGEPs.h - Change constant GEPs into GEP instructions --- --//</i></td></tr>
+<tr><th id="2">2</th><td><i>// </i></td></tr>
+<tr><th id="3">3</th><td><i>// pocl note: This pass is taken from The SAFECode project with trivial modifications.</i></td></tr>
+<tr><th id="4">4</th><td><i>//            Automatic locals might cause constant GEPs which cause problems during </i></td></tr>
+<tr><th id="5">5</th><td><i>//            converting the locals to kernel function arguments for thread safety.</i></td></tr>
+<tr><th id="6">6</th><td><i>//</i></td></tr>
+<tr><th id="7">7</th><td><i>//                          The SAFECode Compiler </i></td></tr>
+<tr><th id="8">8</th><td><i>//</i></td></tr>
+<tr><th id="9">9</th><td><i>// This file was developed by the LLVM research group and is distributed under</i></td></tr>
+<tr><th id="10">10</th><td><i>// the University of Illinois Open Source License. See LICENSE.TXT for details.</i></td></tr>
+<tr><th id="11">11</th><td><i>// </i></td></tr>
+<tr><th id="12">12</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="13">13</th><td><i>//</i></td></tr>
+<tr><th id="14">14</th><td><i>// This pass changes all GEP constant expressions into GEP instructions.  This</i></td></tr>
+<tr><th id="15">15</th><td><i>// permits the rest of SAFECode to put run-time checks on them if necessary.</i></td></tr>
+<tr><th id="16">16</th><td><i>//</i></td></tr>
+<tr><th id="17">17</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="18">18</th><td></td></tr>
+<tr><th id="19">19</th><td><u>#<span data-ppcond="19">ifndef</span> <span class="macro" data-ref="_M/BREAKCONSTANTGEPS_H">BREAKCONSTANTGEPS_H</span></u></td></tr>
+<tr><th id="20">20</th><td><u>#define <dfn class="macro" id="_M/BREAKCONSTANTGEPS_H" data-ref="_M/BREAKCONSTANTGEPS_H">BREAKCONSTANTGEPS_H</dfn></u></td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><u>#include <a href="../../config.h.html">"config.h"</a></u></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><u>#include <a href="../../../include/llvm-6.0/llvm/IR/Module.h.html">"llvm/IR/Module.h"</a></u></td></tr>
+<tr><th id="25">25</th><td><u>#include <a href="../../../include/llvm-6.0/llvm/Pass.h.html">"llvm/Pass.h"</a></u></td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><b>using</b> <b>namespace</b> <span class="namespace">llvm</span>;</td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><i>//</i></td></tr>
+<tr><th id="30">30</th><td><i>// Pass: BreakConstantGEPs</i></td></tr>
+<tr><th id="31">31</th><td><i>//</i></td></tr>
+<tr><th id="32">32</th><td><i>// Description:</i></td></tr>
+<tr><th id="33">33</th><td><i>//  This pass modifies a function so that it uses GEP instructions instead of</i></td></tr>
+<tr><th id="34">34</th><td><i>//  GEP constant expressions.</i></td></tr>
+<tr><th id="35">35</th><td><i>//</i></td></tr>
+<tr><th id="36">36</th><td><b>struct</b> <dfn class="type def" id="BreakConstantGEPs" title='BreakConstantGEPs' data-ref="BreakConstantGEPs">BreakConstantGEPs</dfn> : <b>public</b> <a class="type" href="../../../include/llvm-6.0/llvm/Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> {</td></tr>
+<tr><th id="37">37</th><td>  <b>private</b>:</td></tr>
+<tr><th id="38">38</th><td>    <i>// Private methods</i></td></tr>
+<tr><th id="39">39</th><td><i></i></td></tr>
+<tr><th id="40">40</th><td><i>    // Private variables</i></td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td>  <b>public</b>:</td></tr>
+<tr><th id="43">43</th><td>    <em>static</em> <em>char</em> <dfn class="decl" id="BreakConstantGEPs::ID" title='BreakConstantGEPs::ID' data-ref="BreakConstantGEPs::ID">ID</dfn>;</td></tr>
+<tr><th id="44">44</th><td>    <dfn class="decl def" id="_ZN17BreakConstantGEPsC1Ev" title='BreakConstantGEPs::BreakConstantGEPs' data-ref="_ZN17BreakConstantGEPsC1Ev">BreakConstantGEPs</dfn>() : <a class="type" href="../../../include/llvm-6.0/llvm/Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a><a class="ref" href="../../../include/llvm-6.0/llvm/Pass.h.html#_ZN4llvm12FunctionPassC1ERc" title='llvm::FunctionPass::FunctionPass' data-ref="_ZN4llvm12FunctionPassC1ERc">(</a><a class="member" href="#BreakConstantGEPs::ID" title='BreakConstantGEPs::ID' data-ref="BreakConstantGEPs::ID">ID</a>) {}</td></tr>
+<tr><th id="45">45</th><td>    <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="virtual decl def" id="_ZNK17BreakConstantGEPs11getPassNameEv" title='BreakConstantGEPs::getPassName' data-ref="_ZNK17BreakConstantGEPs11getPassNameEv">getPassName</dfn>() <em>const</em> override {<b>return</b> <a class="ref fake" href="../../../include/llvm-6.0/llvm/ADT/StringRef.h.html#_ZN4llvm9StringRefC1EPKc" title='llvm::StringRef::StringRef' data-ref="_ZN4llvm9StringRefC1EPKc"></a><q>"Remove Constant GEP Expressions"</q>;}</td></tr>
+<tr><th id="46">46</th><td>    <b>virtual</b> <em>bool</em> <a class="virtual decl" href="BreakConstantGEPs.cpp.html#_ZN17BreakConstantGEPs13runOnFunctionERN4llvm8FunctionE" title='BreakConstantGEPs::runOnFunction' data-ref="_ZN17BreakConstantGEPs13runOnFunctionERN4llvm8FunctionE" id="_ZN17BreakConstantGEPs13runOnFunctionERN4llvm8FunctionE">runOnFunction</a> (<a class="type" href="../../../include/llvm-6.0/llvm/IR/Function.h.html#llvm::Function" title='llvm::Function' data-ref="llvm::Function">Function</a> &amp; <dfn class="local col1 decl" id="1F" title='F' data-type='llvm::Function &amp;' data-ref="1F">F</dfn>) override;</td></tr>
+<tr><th id="47">47</th><td>    <b>virtual</b> <em>void</em> <dfn class="virtual decl def" id="_ZNK17BreakConstantGEPs16getAnalysisUsageERN4llvm13AnalysisUsageE" title='BreakConstantGEPs::getAnalysisUsage' data-ref="_ZNK17BreakConstantGEPs16getAnalysisUsageERN4llvm13AnalysisUsageE">getAnalysisUsage</dfn>(<a class="type" href="../../../include/llvm-6.0/llvm/PassAnalysisSupport.h.html#llvm::AnalysisUsage" title='llvm::AnalysisUsage' data-ref="llvm::AnalysisUsage">AnalysisUsage</a> &amp;<dfn class="local col2 decl" id="2AU" title='AU' data-type='llvm::AnalysisUsage &amp;' data-ref="2AU">AU</dfn>) <em>const</em> override {</td></tr>
+<tr><th id="48">48</th><td>      <i>// This pass does not modify the control-flow graph of the function</i></td></tr>
+<tr><th id="49">49</th><td>      <a class="local col2 ref" href="#2AU" title='AU' data-ref="2AU">AU</a>.<a class="ref" href="../../../include/llvm-6.0/llvm/PassAnalysisSupport.h.html#_ZN4llvm13AnalysisUsage15setPreservesCFGEv" title='llvm::AnalysisUsage::setPreservesCFG' data-ref="_ZN4llvm13AnalysisUsage15setPreservesCFGEv">setPreservesCFG</a>();</td></tr>
+<tr><th id="50">50</th><td>    }</td></tr>
+<tr><th id="51">51</th><td>};</td></tr>
+<tr><th id="52">52</th><td></td></tr>
+<tr><th id="53">53</th><td><u>#<span data-ppcond="19">endif</span></u></td></tr>
+<tr><th id="54">54</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='BreakConstantGEPs.cpp.html'>pocl/lib/llvmopencl/BreakConstantGEPs.cpp</a><br/>Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

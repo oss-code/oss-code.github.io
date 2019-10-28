@@ -1,0 +1,10 @@
+<use f='pocl/include/CL/cl2.hpp' l='2357' u='c' c='_ZN2cl8Platform11makeDefaultEv'/>
+<def f='pocl/include/CL/cl2.hpp' l='2398' ll='2399' type='void cl::Platform::Platform(const cl_platform_id &amp; platform, bool retainObject = false)'/>
+<use f='pocl/include/CL/cl2.hpp' l='2615' u='c' c='_ZN2cl8Platform3getEPSt6vectorIS0_SaIS0_EE'/>
+<doc f='pocl/include/CL/cl2.hpp' l='2391'>/*! \brief Constructor from cl_platform_id.
+     *
+     * \param retainObject will cause the constructor to retain its cl object.
+     *                     Defaults to false to maintain compatibility with
+     *                     earlier versions.
+     *  This simply copies the platform ID value, which is an inexpensive operation.
+     */</doc>

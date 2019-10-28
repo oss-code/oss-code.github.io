@@ -1,0 +1,4 @@
+<dec f='include/dlfcn.h' l='60' type='int dlclose(void * __handle)'/>
+<use f='pocl/lib/CL/devices/common.c' l='880' u='c' c='get_new_dlhandle_cache_item'/>
+<doc f='include/dlfcn.h' l='58'>/* Unmap and close a shared object opened by `dlopen&apos;.
+   The handle cannot be used again after calling `dlclose&apos;.  */</doc>

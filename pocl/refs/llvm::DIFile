@@ -1,0 +1,32 @@
+<inh f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='420' c='llvm::DIScope'/>
+<def f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='471' ll='537'/>
+<size>32</size>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='467'>/// File.
+///
+/// TODO: Merge with directory/file node (including users).
+/// TODO: Canonicalize paths on creation.</doc>
+<mbr r='llvm::DIFile::CSKind' o='192' t='llvm::DIFile::ChecksumKind'/>
+<fun r='_ZN4llvm6DIFileC1ERNS_11LLVMContextENS_8Metadata11StorageTypeENS0_12ChecksumKindENS_8ArrayRefIPS3_EE'/>
+<fun r='_ZN4llvm6DIFileD1Ev'/>
+<fun r='_ZN4llvm6DIFile7getImplERNS_11LLVMContextENS_9StringRefES3_NS0_12ChecksumKindES3_NS_8Metadata11StorageTypeEb'/>
+<fun r='_ZN4llvm6DIFile7getImplERNS_11LLVMContextEPNS_8MDStringES4_NS0_12ChecksumKindES4_NS_8Metadata11StorageTypeEb'/>
+<fun r='_ZNK4llvm6DIFile9cloneImplEv'/>
+<fun r='_ZN4llvm6DIFile3getERNS_11LLVMContextENS_9StringRefES3_NS0_12ChecksumKindES3_'/>
+<fun r='_ZN4llvm6DIFile11getIfExistsERNS_11LLVMContextENS_9StringRefES3_NS0_12ChecksumKindES3_'/>
+<fun r='_ZN4llvm6DIFile11getDistinctERNS_11LLVMContextENS_9StringRefES3_NS0_12ChecksumKindES3_'/>
+<fun r='_ZN4llvm6DIFile12getTemporaryERNS_11LLVMContextENS_9StringRefES3_NS0_12ChecksumKindES3_'/>
+<fun r='_ZN4llvm6DIFile3getERNS_11LLVMContextEPNS_8MDStringES4_NS0_12ChecksumKindES4_'/>
+<fun r='_ZN4llvm6DIFile11getIfExistsERNS_11LLVMContextEPNS_8MDStringES4_NS0_12ChecksumKindES4_'/>
+<fun r='_ZN4llvm6DIFile11getDistinctERNS_11LLVMContextEPNS_8MDStringES4_NS0_12ChecksumKindES4_'/>
+<fun r='_ZN4llvm6DIFile12getTemporaryERNS_11LLVMContextEPNS_8MDStringES4_NS0_12ChecksumKindES4_'/>
+<fun r='_ZNK4llvm6DIFile5cloneEv'/>
+<fun r='_ZNK4llvm6DIFile11getFilenameEv'/>
+<fun r='_ZNK4llvm6DIFile12getDirectoryEv'/>
+<fun r='_ZNK4llvm6DIFile11getChecksumEv'/>
+<fun r='_ZNK4llvm6DIFile15getChecksumKindEv'/>
+<fun r='_ZNK4llvm6DIFile23getChecksumKindAsStringEv'/>
+<fun r='_ZNK4llvm6DIFile14getRawFilenameEv'/>
+<fun r='_ZNK4llvm6DIFile15getRawDirectoryEv'/>
+<fun r='_ZNK4llvm6DIFile14getRawChecksumEv'/>
+<fun r='_ZN4llvm6DIFile15getChecksumKindENS_9StringRefE'/>
+<fun r='_ZN4llvm6DIFile7classofEPKNS_8MetadataE'/>

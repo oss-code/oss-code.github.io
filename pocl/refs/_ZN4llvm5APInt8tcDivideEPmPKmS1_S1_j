@@ -1,0 +1,10 @@
+<dec f='include/llvm-6.0/llvm/ADT/APInt.h' l='1893' type='static int llvm::APInt::tcDivide(WordType * lhs, const WordType * rhs, WordType * remainder, WordType * scratch, unsigned int parts)'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='1884'>/// If RHS is zero LHS and REMAINDER are left unchanged, return one.
+  /// Otherwise set LHS to LHS / RHS with the fractional part discarded, set
+  /// REMAINDER to the remainder, return zero.  i.e.
+  ///
+  ///  OLD_LHS = RHS * LHS + REMAINDER
+  ///
+  /// SCRATCH is a bignum of the same size as the operands and result for use by
+  /// the routine; its contents need not be initialized and are destroyed.  LHS,
+  /// REMAINDER and SCRATCH must be distinct.</doc>

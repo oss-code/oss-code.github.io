@@ -1,0 +1,18 @@
+<dec f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='75' type='std::vector&lt;BlockT *&gt;'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='151' u='r' c='_ZNK4llvm8LoopBase9getBlocksEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='165' u='c' c='_ZNK4llvm8LoopBase12getNumBlocksEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='172' u='a' c='_ZN4llvm8LoopBase15getBlocksVectorEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='341' u='c' c='_ZN4llvm8LoopBase13addBlockEntryEPT_'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='348' u='c' c='_ZN4llvm8LoopBase12reverseBlockEj'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='348' u='c' c='_ZN4llvm8LoopBase12reverseBlockEj'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='354' u='c' c='_ZN4llvm8LoopBase13reserveBlocksEj'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='361' c='_ZN4llvm8LoopBase12moveToHeaderEPT_'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='365' c='_ZN4llvm8LoopBase12moveToHeaderEPT_'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='366' u='w' c='_ZN4llvm8LoopBase12moveToHeaderEPT_'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='366' u='r' c='_ZN4llvm8LoopBase12moveToHeaderEPT_'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='367' u='w' c='_ZN4llvm8LoopBase12moveToHeaderEPT_'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='378' c='_ZN4llvm8LoopBase19removeBlockFromLoopEPT_'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='380' u='c' c='_ZN4llvm8LoopBase19removeBlockFromLoopEPT_'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='401' u='c' c='_ZN4llvm8LoopBaseC1EPT_'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='422' u='c' c='_ZN4llvm8LoopBaseD1Ev'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='74'>// The list of blocks in this loop. First entry is the header node.</doc>

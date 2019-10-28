@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='686' type='bool llvm::AAResults::canBasicBlockModify(const llvm::BasicBlock &amp; BB, const llvm::MemoryLocation &amp; Loc)'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='691' u='c' c='_ZN4llvm9AAResults19canBasicBlockModifyERKNS_10BasicBlockEPKNS_5ValueEm'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='679'>/// @}
+  //===--------------------------------------------------------------------===//
+  /// \name Higher level methods for querying mod/ref information.
+  /// @{
+
+  /// Check if it is possible for execution of the specified basic block to
+  /// modify the location Loc.</doc>

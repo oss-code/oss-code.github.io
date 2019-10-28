@@ -1,0 +1,56 @@
+<dec f='include/hwloc.h' l='394' type='hwloc_cpuset_t'/>
+<use f='include/hwloc/helper.h' l='48' u='r' c='hwloc_get_first_largest_obj_inside_cpuset'/>
+<use f='include/hwloc/helper.h' l='48' u='r' c='hwloc_get_first_largest_obj_inside_cpuset'/>
+<use f='include/hwloc/helper.h' l='50' u='r' c='hwloc_get_first_largest_obj_inside_cpuset'/>
+<use f='include/hwloc/helper.h' l='54' u='r' c='hwloc_get_first_largest_obj_inside_cpuset'/>
+<use f='include/hwloc/helper.h' l='54' u='r' c='hwloc_get_first_largest_obj_inside_cpuset'/>
+<use f='include/hwloc/helper.h' l='92' u='r' c='hwloc_get_next_obj_inside_cpuset_by_depth'/>
+<use f='include/hwloc/helper.h' l='94' u='r' c='hwloc_get_next_obj_inside_cpuset_by_depth'/>
+<use f='include/hwloc/helper.h' l='132' u='r' c='hwloc_get_obj_inside_cpuset_by_depth'/>
+<use f='include/hwloc/helper.h' l='135' u='r' c='hwloc_get_obj_inside_cpuset_by_depth'/>
+<use f='include/hwloc/helper.h' l='181' u='r' c='hwloc_get_nbobjs_inside_cpuset_by_depth'/>
+<use f='include/hwloc/helper.h' l='184' u='r' c='hwloc_get_nbobjs_inside_cpuset_by_depth'/>
+<use f='include/hwloc/helper.h' l='231' u='r' c='hwloc_get_obj_index_inside_cpuset'/>
+<use f='include/hwloc/helper.h' l='235' u='r' c='hwloc_get_obj_index_inside_cpuset'/>
+<use f='include/hwloc/helper.h' l='262' u='r' c='hwloc_get_child_covering_cpuset'/>
+<use f='include/hwloc/helper.h' l='266' u='r' c='hwloc_get_child_covering_cpuset'/>
+<use f='include/hwloc/helper.h' l='266' u='r' c='hwloc_get_child_covering_cpuset'/>
+<use f='include/hwloc/helper.h' l='286' u='r' c='hwloc_get_obj_covering_cpuset'/>
+<use f='include/hwloc/helper.h' l='286' u='r' c='hwloc_get_obj_covering_cpuset'/>
+<use f='include/hwloc/helper.h' l='311' u='r' c='hwloc_get_next_obj_covering_cpuset_by_depth'/>
+<use f='include/hwloc/helper.h' l='313' u='r' c='hwloc_get_next_obj_covering_cpuset_by_depth'/>
+<use f='include/hwloc/helper.h' l='415' u='r' c='hwloc_obj_is_in_subtree'/>
+<use f='include/hwloc/helper.h' l='415' u='r' c='hwloc_obj_is_in_subtree'/>
+<use f='include/hwloc/helper.h' l='520' u='r' c='hwloc_get_shared_cache_covering_obj'/>
+<use f='include/hwloc/helper.h' l='522' u='r' c='hwloc_get_shared_cache_covering_obj'/>
+<use f='include/hwloc/helper.h' l='523' u='r' c='hwloc_get_shared_cache_covering_obj'/>
+<use f='include/hwloc/helper.h' l='523' u='r' c='hwloc_get_shared_cache_covering_obj'/>
+<use f='include/hwloc/helper.h' l='623' u='r' c='hwloc_get_obj_below_by_type'/>
+<use f='include/hwloc/helper.h' l='625' u='r' c='hwloc_get_obj_below_by_type'/>
+<use f='include/hwloc/helper.h' l='654' u='r' c='hwloc_get_obj_below_array_by_type'/>
+<use f='include/hwloc/helper.h' l='656' u='r' c='hwloc_get_obj_below_array_by_type'/>
+<use f='include/hwloc/helper.h' l='720' u='r' c='hwloc_distrib'/>
+<use f='include/hwloc/helper.h' l='721' u='r' c='hwloc_distrib'/>
+<use f='include/hwloc/helper.h' l='726' u='r' c='hwloc_distrib'/>
+<use f='include/hwloc/helper.h' l='802' u='r' c='hwloc_topology_get_topology_cpuset'/>
+<use f='include/hwloc/helper.h' l='990' u='r' c='hwloc_cpuset_from_nodeset'/>
+<use f='include/hwloc/helper.h' l='1013' u='r' c='hwloc_cpuset_from_nodeset_strict'/>
+<use f='include/hwloc/helper.h' l='1100' u='r' c='hwloc_get_distance_matrix_covering_obj_by_depth'/>
+<use f='include/hwloc/helper.h' l='1106' u='r' c='hwloc_get_distance_matrix_covering_obj_by_depth'/>
+<use f='include/hwloc/helper.h' l='1174' u='r' c='hwloc_get_non_io_ancestor_obj'/>
+<use f='include/hwloc/helper.h' l='1274' u='r' c='hwloc_get_hostbridge_by_pcibus'/>
+<offset>1280</offset>
+<doc f='include/hwloc.h' l='393'>/* cpusets and nodesets */</doc>
+<doc f='include/hwloc.h' l='394'>/**&lt; \brief CPUs covered by this object
+                                          *
+                                          * This is the set of CPUs for which there are PU objects in the topology
+                                          * under this object, i.e. which are known to be physically contained in this
+                                          * object and known how (the children path between this object and the PU
+                                          * objects).
+                                          *
+                                          * If the ::HWLOC_TOPOLOGY_FLAG_WHOLE_SYSTEM configuration flag is set, some of
+                                          * these CPUs may be offline, or not allowed for binding, see online_cpuset
+                                          * and allowed_cpuset.
+                                          *
+                                          * \note Its value must not be changed, hwloc_bitmap_dup() must be used instead.
+                                          */</doc>

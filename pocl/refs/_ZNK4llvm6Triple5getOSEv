@@ -1,0 +1,32 @@
+<def f='include/llvm-6.0/llvm/ADT/Triple.h' l='294' type='llvm::Triple::OSType llvm::Triple::getOS() const'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='432' u='c' c='_ZNK4llvm6Triple17isMacOSXVersionLTEjjj'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='443' u='c' c='_ZNK4llvm6Triple8isMacOSXEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='443' u='c' c='_ZNK4llvm6Triple8isMacOSXEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='452' u='c' c='_ZNK4llvm6Triple5isiOSEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='457' u='c' c='_ZNK4llvm6Triple6isTvOSEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='462' u='c' c='_ZNK4llvm6Triple9isWatchOSEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='479' u='c' c='_ZNK4llvm6Triple10isOSNetBSDEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='483' u='c' c='_ZNK4llvm6Triple11isOSOpenBSDEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='487' u='c' c='_ZNK4llvm6Triple11isOSFreeBSDEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='491' u='c' c='_ZNK4llvm6Triple11isOSFuchsiaEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='494' u='c' c='_ZNK4llvm6Triple13isOSDragonFlyEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='497' u='c' c='_ZNK4llvm6Triple11isOSSolarisEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='501' u='c' c='_ZNK4llvm6Triple9isOSIAMCUEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='504' u='c' c='_ZNK4llvm6Triple11isOSUnknownEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='514' u='c' c='_ZNK4llvm6Triple11isOSContikiEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='519' u='c' c='_ZNK4llvm6Triple9isOSHaikuEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='524' u='c' c='_ZNK4llvm6Triple24isWindowsMSVCEnvironmentEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='531' u='c' c='_ZNK4llvm6Triple29isKnownWindowsMSVCEnvironmentEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='535' u='c' c='_ZNK4llvm6Triple27isWindowsCoreCLREnvironmentEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='539' u='c' c='_ZNK4llvm6Triple27isWindowsItaniumEnvironmentEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='543' u='c' c='_ZNK4llvm6Triple26isWindowsCygwinEnvironmentEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='547' u='c' c='_ZNK4llvm6Triple23isWindowsGNUEnvironmentEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='563' u='c' c='_ZNK4llvm6Triple11isOSWindowsEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='568' u='c' c='_ZNK4llvm6Triple8isOSNaClEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='573' u='c' c='_ZNK4llvm6Triple9isOSLinuxEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='578' u='c' c='_ZNK4llvm6Triple12isOSKFreeBSDEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='583' u='c' c='_ZNK4llvm6Triple9isOSGlibcEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='583' u='c' c='_ZNK4llvm6Triple9isOSGlibcEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='611' u='c' c='_ZNK4llvm6Triple8isPS4CPUEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='617' u='c' c='_ZNK4llvm6Triple5isPS4Ev'/>
+<doc f='include/llvm-6.0/llvm/ADT/Triple.h' l='293'>/// getOS - Get the parsed operating system type of this triple.</doc>

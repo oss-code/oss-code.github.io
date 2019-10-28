@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Attributes.h' l='440' type='llvm::AttributeList llvm::AttributeList::removeAttributes(llvm::LLVMContext &amp; C, unsigned int Index) const'/>
+<use f='include/llvm-6.0/llvm/IR/Attributes.h' l='466' u='c' c='_ZNK4llvm13AttributeList21removeParamAttributesERNS_11LLVMContextEj'/>
+<doc f='include/llvm-6.0/llvm/IR/Attributes.h' l='438'>/// \brief Remove all attributes at the specified index from this
+  /// attribute list. Returns a new list because attribute lists are immutable.</doc>

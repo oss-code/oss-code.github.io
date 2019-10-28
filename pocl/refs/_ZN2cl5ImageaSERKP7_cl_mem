@@ -1,0 +1,12 @@
+<def f='pocl/include/CL/cl2.hpp' l='4309' ll='4313' type='cl::Image &amp; cl::Image::operator=(const cl_mem &amp; rhs)'/>
+<use f='pocl/include/CL/cl2.hpp' l='4431' u='c' c='_ZN2cl7Image1DaSERKP7_cl_mem'/>
+<use f='pocl/include/CL/cl2.hpp' l='4515' u='c' c='_ZN2cl13Image1DBufferaSERKP7_cl_mem'/>
+<use f='pocl/include/CL/cl2.hpp' l='4604' u='c' c='_ZN2cl12Image1DArrayaSERKP7_cl_mem'/>
+<use f='pocl/include/CL/cl2.hpp' l='4846' u='c' c='_ZN2cl7Image2DaSERKP7_cl_mem'/>
+<use f='pocl/include/CL/cl2.hpp' l='5035' u='c' c='_ZN2cl12Image2DArrayaSERKP7_cl_mem'/>
+<use f='pocl/include/CL/cl2.hpp' l='5171' u='c' c='_ZN2cl7Image3DaSERKP7_cl_mem'/>
+<use f='pocl/include/CL/cl2.hpp' l='5344' u='c' c='_ZN2cl7ImageGLaSERKP7_cl_mem'/>
+<doc f='pocl/include/CL/cl2.hpp' l='4305'>/*! \brief Assignment from cl_mem - performs shallow copy.
+     *
+     *  See Memory for further details.
+     */</doc>

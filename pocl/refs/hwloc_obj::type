@@ -1,0 +1,10 @@
+<dec f='include/hwloc.h' l='347' type='hwloc_obj_type_t'/>
+<use f='include/hwloc/helper.h' l='377' u='r' c='hwloc_get_ancestor_obj_by_type'/>
+<use f='include/hwloc/helper.h' l='469' u='r' c='hwloc_get_cache_type_depth'/>
+<use f='include/hwloc/helper.h' l='503' u='r' c='hwloc_get_cache_covering_cpuset'/>
+<use f='include/hwloc/helper.h' l='524' u='r' c='hwloc_get_shared_cache_covering_obj'/>
+<use f='include/hwloc/helper.h' l='1252' u='r' c='hwloc_bridge_covers_pcibus'/>
+<use f='include/hwloc/helper.h' l='1273' u='r' c='hwloc_get_hostbridge_by_pcibus'/>
+<offset>0</offset>
+<doc f='include/hwloc.h' l='346'>/* physical information */</doc>
+<doc f='include/hwloc.h' l='347'>/**&lt; \brief Type of object */</doc>

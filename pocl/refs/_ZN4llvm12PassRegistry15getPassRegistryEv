@@ -1,0 +1,13 @@
+<dec f='include/llvm-6.0/llvm/PassRegistry.h' l='59' type='static llvm::PassRegistry * llvm::PassRegistry::getPassRegistry()'/>
+<use f='include/llvm-6.0/llvm/PassSupport.h' l='98' u='c' c='_ZN4llvm12RegisterPassC1ENS_9StringRefES1_bb'/>
+<doc f='include/llvm-6.0/llvm/PassRegistry.h' l='56'>/// getPassRegistry - Access the global registry object, which is
+  /// automatically initialized at application launch and destroyed by
+  /// llvm_shutdown.</doc>
+<use f='include/llvm-6.0/llvm/Analysis/IntervalPartition.h' l='55' u='c' c='_ZN4llvm17IntervalPartitionC1Ev'/>
+<use f='include/llvm-6.0/llvm/IR/Dominators.h' l='274' u='c' c='_ZN4llvm24DominatorTreeWrapperPassC1Ev'/>
+<use f='include/llvm-6.0/llvm/Analysis/PostDominators.h' l='70' u='c' c='_ZN4llvm28PostDominatorTreeWrapperPassC1Ev'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='965' u='c' c='_ZN4llvm19LoopInfoWrapperPassC1Ev'/>
+<use f='include/llvm-6.0/llvm/Transforms/Utils/UnifyFunctionExitNodes.h' l='34' u='c' c='_ZN4llvm22UnifyFunctionExitNodesC1Ev'/>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='282' u='c' c='_Z14InitializeLLVMv'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='176' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopPass.h' l='167' u='c' c='_ZN4llvm21LCSSAVerificationPassC1Ev'/>

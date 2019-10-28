@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1288' ll='1291' type='static unsigned int llvm::DILocation::getPrefixEncodingFromUnsigned(unsigned int U)'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1842' u='c' c='_ZNK4llvm10DILocation20setBaseDiscriminatorEj'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1852' u='c' c='_ZNK4llvm10DILocation26cloneWithDuplicationFactorEj'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1857' u='c' c='_ZNK4llvm10DILocation26cloneWithDuplicationFactorEj'/>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1284'>/// With a given unsigned int \p U, use up to 13 bits to represent it.
+  /// old_bit 1~5  --&gt; new_bit 1~5
+  /// old_bit 6~12 --&gt; new_bit 7~13
+  /// new_bit_6 is 0 if higher bits (7~13) are all 0</doc>

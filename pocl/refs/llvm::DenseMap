@@ -1,0 +1,24 @@
+<def f='include/llvm-6.0/llvm/ADT/DenseMap.h' l='645' ll='797'/>
+<mbr r='llvm::DenseMap::Buckets' t='BucketT *'/>
+<mbr r='llvm::DenseMap::NumEntries' t='unsigned int'/>
+<mbr r='llvm::DenseMap::NumTombstones' t='unsigned int'/>
+<mbr r='llvm::DenseMap::NumBuckets' t='unsigned int'/>
+<fun r='_ZN4llvm8DenseMapC1Ej'/>
+<fun r='_ZN4llvm8DenseMapC1ERKNS_8DenseMapIT_T0_T1_T2_EE'/>
+<fun r='_ZN4llvm8DenseMapC1EONS_8DenseMapIT_T0_T1_T2_EE'/>
+<fun r='_ZN4llvm8DenseMapC1ERKT_S3_'/>
+<fun r='_ZN4llvm8DenseMapD1Ev'/>
+<fun r='_ZN4llvm8DenseMap4swapERNS_8DenseMapIT_T0_T1_T2_EE'/>
+<fun r='_ZN4llvm8DenseMapaSERKNS_8DenseMapIT_T0_T1_T2_EE'/>
+<fun r='_ZN4llvm8DenseMapaSEONS_8DenseMapIT_T0_T1_T2_EE'/>
+<fun r='_ZN4llvm8DenseMap8copyFromERKNS_8DenseMapIT_T0_T1_T2_EE'/>
+<fun r='_ZN4llvm8DenseMap4initEj'/>
+<fun r='_ZN4llvm8DenseMap4growEj'/>
+<fun r='_ZN4llvm8DenseMap16shrink_and_clearEv'/>
+<fun r='_ZNK4llvm8DenseMap13getNumEntriesEv'/>
+<fun r='_ZN4llvm8DenseMap13setNumEntriesEj'/>
+<fun r='_ZNK4llvm8DenseMap16getNumTombstonesEv'/>
+<fun r='_ZN4llvm8DenseMap16setNumTombstonesEj'/>
+<fun r='_ZNK4llvm8DenseMap10getBucketsEv'/>
+<fun r='_ZNK4llvm8DenseMap13getNumBucketsEv'/>
+<fun r='_ZN4llvm8DenseMap15allocateBucketsEj'/>

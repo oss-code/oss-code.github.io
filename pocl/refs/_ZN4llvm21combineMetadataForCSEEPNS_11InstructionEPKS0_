@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='416' type='void llvm::combineMetadataForCSE(llvm::Instruction * K, const llvm::Instruction * J)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='412'>/// Combine the metadata of two instructions so that K can replace J. This
+/// specifically handles the case of CSE-like transformations.
+///
+/// Unknown metadata is removed.</doc>

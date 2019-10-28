@@ -1,0 +1,19 @@
+<dec f='include/hwloc.h' l='376' type='struct hwloc_obj *'/>
+<use f='include/hwloc/helper.h' l='366' u='r' c='hwloc_get_ancestor_obj_by_depth'/>
+<use f='include/hwloc/helper.h' l='376' u='r' c='hwloc_get_ancestor_obj_by_type'/>
+<use f='include/hwloc/helper.h' l='378' u='r' c='hwloc_get_ancestor_obj_by_type'/>
+<use f='include/hwloc/helper.h' l='395' u='r' c='hwloc_get_common_ancestor_obj'/>
+<use f='include/hwloc/helper.h' l='397' u='r' c='hwloc_get_common_ancestor_obj'/>
+<use f='include/hwloc/helper.h' l='399' u='r' c='hwloc_get_common_ancestor_obj'/>
+<use f='include/hwloc/helper.h' l='400' u='r' c='hwloc_get_common_ancestor_obj'/>
+<use f='include/hwloc/helper.h' l='427' u='r' c='hwloc_get_next_child'/>
+<use f='include/hwloc/helper.h' l='505' u='r' c='hwloc_get_cache_covering_cpuset'/>
+<use f='include/hwloc/helper.h' l='519' u='r' c='hwloc_get_shared_cache_covering_obj'/>
+<use f='include/hwloc/helper.h' l='526' u='r' c='hwloc_get_shared_cache_covering_obj'/>
+<use f='include/hwloc/helper.h' l='1109' u='r' c='hwloc_get_distance_matrix_covering_obj_by_depth'/>
+<use f='include/hwloc/helper.h' l='1175' u='r' c='hwloc_get_non_io_ancestor_obj'/>
+<use f='include/hwloc/helper.h' l='1273' u='r' c='hwloc_get_hostbridge_by_pcibus'/>
+<use f='include/hwloc/helper.h' l='1274' u='r' c='hwloc_get_hostbridge_by_pcibus'/>
+<offset>704</offset>
+<doc f='include/hwloc.h' l='375'>/* children of the same parent are siblings, even if they may have different type and depth */</doc>
+<doc f='include/hwloc.h' l='376'>/**&lt; \brief Parent, \c NULL if root (system object) */</doc>

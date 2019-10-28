@@ -1,0 +1,6 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='1640' type='LLVMBool LLVMIsConstantString(LLVMValueRef c)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='1635'>/**
+ * Returns true if the specified constant is an array of i8.
+ *
+ * @see ConstantDataSequential::getAsString()
+ */</doc>

@@ -1,0 +1,32 @@
+<def f='include/c++/7/bits/stl_vector.h' l='812' ll='817' type='const_reference std::vector::operator[](size_type __n) const'/>
+<doc f='include/c++/7/bits/stl_vector.h' l='801'>/**
+       *  @brief  Subscript access to the data contained in the %vector.
+       *  @param __n The index of the element for which data should be
+       *  accessed.
+       *  @return  Read-only (constant) reference to data.
+       *
+       *  This operator allows for easy, array-style, data access.
+       *  Note that data access with this operator is unchecked and
+       *  out_of_range lookups are not defined. (For checked lookups
+       *  see at().)
+       */</doc>
+<use f='include/llvm-6.0/llvm/Option/OptTable.h' l='80' u='c' c='_ZNK4llvm3opt8OptTable7getInfoENS0_12OptSpecifierE'/>
+<use f='include/llvm-6.0/llvm/Support/SourceMgr.h' l='101' u='c' c='_ZNK4llvm9SourceMgr13getBufferInfoEj'/>
+<use f='include/llvm-6.0/llvm/Support/SourceMgr.h' l='106' u='c' c='_ZNK4llvm9SourceMgr15getMemoryBufferEj'/>
+<use f='include/llvm-6.0/llvm/Support/SourceMgr.h' l='120' u='c' c='_ZNK4llvm9SourceMgr19getParentIncludeLocEj'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasSetTracker.h' l='193' u='c' c='_ZNK4llvm8AliasSet14getUnknownInstEj'/>
+<use f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='204' u='c' c='_ZNK4llvm13CallGraphNodeixEj'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2159' u='c' c='_ZNK4llvm12DIExpression10getElementEj'/>
+<use f='pocl/include/CL/cl2.hpp' l='2784' u='c' c='_ZN2cl7ContextC1ERKSt6vectorINS_6DeviceESaIS2_EEPlPFvPKcPKvmPvESC_Pi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6231' u='c' c='_ZN2cl7ProgramC1ERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS7_EEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6232' u='c' c='_ZN2cl7ProgramC1ERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS7_EEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6266' u='c' c='_ZN2cl7ProgramC1ERKNS_7ContextERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaISA_EEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6267' u='c' c='_ZN2cl7ProgramC1ERKNS_7ContextERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaISA_EEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6438' u='c' c='_ZN2cl7ProgramC1ERKNS_7ContextERKSt6vectorINS_6DeviceESaIS5_EERKS4_IS4_IhSaIhEESaISB_EEPS4_IiSaIiEEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6439' u='c' c='_ZN2cl7ProgramC1ERKNS_7ContextERKSt6vectorINS_6DeviceESaIS5_EERKS4_IS4_IhSaIhEESaISB_EEPS4_IiSaIiEEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6450' u='c' c='_ZN2cl7ProgramC1ERKNS_7ContextERKSt6vectorINS_6DeviceESaIS5_EERKS4_IS4_IhSaIhEESaISB_EEPS4_IiSaIiEEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6488' u='c' c='_ZN2cl7ProgramC1ERKNS_7ContextERKSt6vectorINS_6DeviceESaIS5_EERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6561' u='c' c='_ZNK2cl7Program5buildERKSt6vectorINS_6DeviceESaIS2_EEPKcPFvP11_cl_programPvESB_'/>
+<use f='pocl/include/CL/cl2.hpp' l='8206' u='c' c='_ZNK2cl12CommandQueue24enqueueMigrateMemObjectsERKSt6vectorINS_6MemoryESaIS2_EEmPKS1_INS_5EventESaIS7_EEPS7_'/>
+<use f='pocl/include/CL/cl2.hpp' l='8413' u='c' c='_ZNK2cl12CommandQueue19enqueueNativeKernelEPFvPvESt4pairIS1_mEPKSt6vectorINS_6MemoryESaIS7_EEPKS6_IPKvSaISD_EEPKS6_INS_5EventESaISI_EEPSI_'/>
+<use f='pocl/tests/regression/test_flatten_barrier_subs.cpp' l='93' u='c' c='_Z18exclusive_scan_cpuRKSt6vectorIiSaIiEERS1_'/>

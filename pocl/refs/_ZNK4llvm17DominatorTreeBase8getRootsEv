@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='308' type='const SmallVectorImpl&lt;NodeT *&gt; &amp; llvm::DominatorTreeBase::getRoots() const'/>
+<doc f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='304'>/// getRoots - Return the root blocks of the current CFG.  This may include
+  /// multiple blocks if we are computing post dominators.  For forward
+  /// dominators, this will always be a single block (the entry node).
+  ///</doc>

@@ -1,0 +1,20 @@
+<dec f='include/hwloc.h' l='962' type='int hwloc_topology_set_custom(hwloc_topology_t topology)'/>
+<doc f='include/hwloc.h' l='943'>/** \brief Prepare the topology for custom assembly.
+ *
+ * The topology then contains a single root object.
+ * It must then be built by inserting other topologies with
+ * hwloc_custom_insert_topology() or single objects with
+ * hwloc_custom_insert_group_object_by_parent().
+ * hwloc_topology_load() must be called to finalize the new
+ * topology as usual.
+ *
+ * \note If nothing is inserted in the topology,
+ * hwloc_topology_load() will fail with errno set to EINVAL.
+ *
+ * \note The cpuset and nodeset of the root object are NULL because
+ * these sets are meaningless when assembling multiple topologies.
+ *
+ * \note On success, the custom component replaces the previously enabled
+ * component (if any), but the topology is not actually modified until
+ * hwloc_topology_load().
+ */</doc>

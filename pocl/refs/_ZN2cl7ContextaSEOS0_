@@ -1,0 +1,6 @@
+<use f='pocl/include/CL/cl2.hpp' l='2726' u='c' c='_ZN2cl7Context11makeDefaultEv'/>
+<def f='pocl/include/CL/cl2.hpp' l='2933' ll='2937' type='cl::Context &amp; cl::Context::operator=(cl::Context &amp;&amp; ctx)'/>
+<use f='pocl/include/CL/cl2.hpp' l='6786' u='c' c='_ZN2cl11linkProgramESt6vectorINS_7ProgramESaIS1_EEPKcPFvP11_cl_programPvES8_Pi'/>
+<doc f='pocl/include/CL/cl2.hpp' l='2930'>/*! \brief Move assignment to forward move to the superclass correctly.
+     * Required for MSVC.
+     */</doc>

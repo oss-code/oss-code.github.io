@@ -1,0 +1,6 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='751' type='int'/>
+<offset>4928</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='751'>/* Does the device have 64bit longs */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='357' u='w' c='pocl_init_cpu_device_infos'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='194' u='w' c='pocl_cuda_init'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='297' u='r' c='pocl_llvm_build_program'/>

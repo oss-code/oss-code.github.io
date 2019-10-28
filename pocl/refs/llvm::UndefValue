@@ -1,0 +1,23 @@
+<inh f='include/llvm-6.0/llvm/IR/Constants.h' l='58' c='llvm::ConstantData'/>
+<def f='include/llvm-6.0/llvm/IR/Constants.h' l='1247' ll='1282'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='1237'>//===----------------------------------------------------------------------===//
+/// &apos;undef&apos; values are things that do not have specified contents.
+/// These are used for a variety of purposes, including global variable
+/// initializers and operands to instructions.  &apos;undef&apos; values can occur with
+/// any first-class type.
+///
+/// Undef values aren&apos;t exactly constants; if they have multiple uses, they
+/// can appear to have different bit patterns at each use. See
+/// LangRef.html#undefvalues for details.
+///</doc>
+<fun r='_ZN4llvm10UndefValueC1EPNS_4TypeE'/>
+<fun r='_ZN4llvm10UndefValue19destroyConstantImplEv'/>
+<fun r='_ZN4llvm10UndefValueC1ERKS0_'/>
+<fun r='_ZN4llvm10UndefValue3getEPNS_4TypeE'/>
+<fun r='_ZNK4llvm10UndefValue20getSequentialElementEv'/>
+<fun r='_ZNK4llvm10UndefValue16getStructElementEj'/>
+<fun r='_ZNK4llvm10UndefValue15getElementValueEPNS_8ConstantE'/>
+<fun r='_ZNK4llvm10UndefValue15getElementValueEj'/>
+<fun r='_ZNK4llvm10UndefValue14getNumElementsEv'/>
+<fun r='_ZN4llvm10UndefValue7classofEPKNS_5ValueE'/>

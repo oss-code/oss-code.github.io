@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/Metadata.h' l='1027' type='void llvm::MDNode::makeUniqued()'/>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='1022'>/// \brief Mutate this to be &quot;uniqued&quot;.
+  ///
+  /// Mutate this so that \a isUniqued().
+  /// \pre \a isTemporary().
+  /// \pre already added to uniquing set.</doc>

@@ -1,0 +1,4 @@
+<use f='include/llvm-6.0/llvm/ADT/DenseMap.h' l='101' u='c' c='_ZN4llvm12DenseMapBase7reserveEj'/>
+<def f='include/llvm-6.0/llvm/ADT/DenseMap.h' l='352' ll='359' type='unsigned int llvm::DenseMapBase::getMinBucketToReserveForEntries(unsigned int NumEntries)'/>
+<doc f='include/llvm-6.0/llvm/ADT/DenseMap.h' l='350'>/// Returns the number of buckets to allocate to ensure that the DenseMap can
+  /// accommodate \p NumEntries without need to grow().</doc>

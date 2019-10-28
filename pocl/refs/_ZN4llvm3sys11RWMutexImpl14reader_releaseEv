@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Support/RWMutex.h' l='61' type='bool llvm::sys::RWMutexImpl::reader_release()'/>
+<use f='include/llvm-6.0/llvm/Support/RWMutex.h' l='110' u='c' c='_ZN4llvm3sys12SmartRWMutex13unlock_sharedEv'/>
+<doc f='include/llvm-6.0/llvm/Support/RWMutex.h' l='58'>/// Attempts to release the lock in reader mode.
+      /// @returns false if any kind of error occurs, true otherwise.
+      /// @brief Unconditionally release the lock in reader mode.</doc>

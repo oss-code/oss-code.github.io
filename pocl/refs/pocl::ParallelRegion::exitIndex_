@@ -1,0 +1,11 @@
+<use f='pocl/lib/llvmopencl/ParallelRegion.h' l='70' u='w' c='_ZN4pocl14ParallelRegion14setExitBBIndexEm'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.h' l='75' u='r' c='_ZN4pocl14ParallelRegion6exitBBEv'/>
+<dec f='pocl/lib/llvmopencl/ParallelRegion.h' l='115' type='std::size_t'/>
+<offset>384</offset>
+<doc f='pocl/lib/llvmopencl/ParallelRegion.h' l='113'>/// The indices of entry and exit, not pointers, for finding the BBs in the
+    /// replicated PRs too.</doc>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='63' u='w' c='_ZN4pocl14ParallelRegionC1Ei'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='141' u='w' c='_ZN4pocl14ParallelRegion9replicateERN4llvm8ValueMapIPKNS1_5ValueENS1_14WeakTrackingVHENS1_14ValueMapConfigIS5_NS1_3sys10SmartMutexILb0EEEEEEERKNS1_5TwineE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='141' u='r' c='_ZN4pocl14ParallelRegion9replicateERN4llvm8ValueMapIPKNS1_5ValueENS1_14WeakTrackingVHENS1_14ValueMapConfigIS5_NS1_3sys10SmartMutexILb0EEEEEEERKNS1_5TwineE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='553' u='w' c='_ZN4pocl14ParallelRegion14AddBlockBeforeEPN4llvm10BasicBlockES3_'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='573' u='w' c='_ZN4pocl14ParallelRegion13AddBlockAfterEPN4llvm10BasicBlockES3_'/>

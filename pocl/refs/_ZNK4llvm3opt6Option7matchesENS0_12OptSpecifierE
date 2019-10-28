@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Option/Option.h' l='195' type='bool llvm::opt::Option::matches(llvm::opt::OptSpecifier ID) const'/>
+<use f='include/llvm-6.0/llvm/Option/ArgList.h' l='64' u='c' c='_ZN4llvm3opt12arg_iterator13SkipToNextArgEv'/>
+<doc f='include/llvm-6.0/llvm/Option/Option.h' l='189'>/// matches - Predicate for whether this option is part of the
+  /// given option (which may be a group).
+  ///
+  /// Note that matches against options which are an alias should never be
+  /// done -- aliases do not participate in matching and so such a query will
+  /// always be false.</doc>

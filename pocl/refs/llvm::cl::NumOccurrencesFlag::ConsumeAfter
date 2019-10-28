@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/Support/CommandLine.h' l='123' type='4'/>
+<use f='include/llvm-6.0/llvm/Support/CommandLine.h' l='297' u='r' c='_ZNK4llvm2cl6Option14isConsumeAfterEv'/>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='116'>// ConsumeAfter - Indicates that this option is fed anything that follows the
+  // last positional argument required by the application (it is an error if
+  // there are zero positional arguments, and a ConsumeAfter option is used).
+  // Thus, for example, all arguments to LLI are processed until a filename is
+  // found.  Once a filename is found, all of the succeeding arguments are
+  // passed, unprocessed, to the ConsumeAfter option.
+  //</doc>

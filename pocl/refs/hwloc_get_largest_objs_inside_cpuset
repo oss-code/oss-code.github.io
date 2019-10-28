@@ -1,0 +1,8 @@
+<dec f='include/hwloc/helper.h' l='75' type='int hwloc_get_largest_objs_inside_cpuset(hwloc_topology_t topology, hwloc_const_cpuset_t set, hwloc_obj_t *restrict objs, int max)'/>
+<doc f='include/hwloc/helper.h' l='68'>/** \brief Get the set of largest objects covering exactly a given cpuset \p set
+ *
+ * \return the number of objects returned in \p objs.
+ *
+ * \note This function cannot work if the root object does not have a CPU set,
+ * e.g. if the topology is made of different machines.
+ */</doc>

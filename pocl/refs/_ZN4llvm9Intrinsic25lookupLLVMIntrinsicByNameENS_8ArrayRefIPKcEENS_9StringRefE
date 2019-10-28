@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/Intrinsics.h' l='87' type='int llvm::Intrinsic::lookupLLVMIntrinsicByName(ArrayRef&lt;const char *&gt; NameTable, llvm::StringRef Name)'/>
+<doc f='include/llvm-6.0/llvm/IR/Intrinsics.h' l='83'>/// Looks up Name in NameTable via binary search. NameTable must be sorted
+  /// and all entries must start with &quot;llvm.&quot;.  If NameTable contains an exact
+  /// match for Name or a prefix of Name followed by a dot, its index in
+  /// NameTable is returned. Otherwise, -1 is returned.</doc>

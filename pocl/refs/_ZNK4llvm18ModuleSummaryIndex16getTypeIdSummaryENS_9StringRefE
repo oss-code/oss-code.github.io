@@ -1,0 +1,3 @@
+<def f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='810' ll='815' type='const llvm::TypeIdSummary * llvm::ModuleSummaryIndex::getTypeIdSummary(llvm::StringRef TypeId) const'/>
+<doc f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='808'>/// This returns either a pointer to the type id summary (if present in the
+  /// summary map) or null (if not present). This may be used when importing.</doc>

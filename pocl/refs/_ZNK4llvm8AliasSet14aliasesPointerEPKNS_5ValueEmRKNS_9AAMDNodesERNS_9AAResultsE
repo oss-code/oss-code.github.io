@@ -1,0 +1,3 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasSetTracker.h' l='312' type='bool llvm::AliasSet::aliasesPointer(const llvm::Value * Ptr, uint64_t Size, const llvm::AAMDNodes &amp; AAInfo, AliasAnalysis &amp; AA) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasSetTracker.h' l='310'>/// Return true if the specified pointer &quot;may&quot; (or must) alias one of the
+  /// members in the set.</doc>

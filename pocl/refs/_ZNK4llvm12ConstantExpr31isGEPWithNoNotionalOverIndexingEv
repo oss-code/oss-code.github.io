@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='1081' type='bool llvm::ConstantExpr::isGEPWithNoNotionalOverIndexing() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='1076'>/// @brief Return true if this is a getelementptr expression and all
+  /// the index operands are compile-time known integers within the
+  /// corresponding notional static array extents. Note that this is
+  /// not equivalant to, a subset of, or a superset of the &quot;inbounds&quot;
+  /// property.</doc>

@@ -1,0 +1,11 @@
+<dec f='pocl/include/poclu.h' l='49' type='cl_int poclu_bswap_cl_int(cl_device_id device, cl_int original)'/>
+<doc f='pocl/include/poclu.h' l='41'>/**
+ * Byte swap functions for endianness swapping between the host
+ * (current CPU) and a target device.
+ *
+ * Queries the target device using the OpenCL API for the endianness
+ * and swaps if it differs from the host&apos;s.
+ */</doc>
+<def f='pocl/lib/poclu/bswap.c' l='58' ll='64' type='cl_int poclu_bswap_cl_int(cl_device_id device, cl_int original)'/>
+<use f='pocl/tests/regression/test_barrier_between_for_loops.cpp' l='170' u='c' c='main'/>
+<use f='pocl/tests/regression/test_locals.cpp' l='85' u='c' c='main'/>

@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='53' ll='74'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='52'>/// \brief Information about a load/store intrinsic defined by the target.</doc>
+<mbr r='llvm::MemIntrinsicInfo::PtrVal' o='0' t='llvm::Value *'/>
+<mbr r='llvm::MemIntrinsicInfo::Ordering' o='64' t='llvm::AtomicOrdering'/>
+<mbr r='llvm::MemIntrinsicInfo::MatchingId' o='96' t='unsigned short'/>
+<mbr r='llvm::MemIntrinsicInfo::ReadMem' o='112' t='bool'/>
+<mbr r='llvm::MemIntrinsicInfo::WriteMem' o='120' t='bool'/>
+<mbr r='llvm::MemIntrinsicInfo::IsVolatile' o='128' t='bool'/>
+<fun r='_ZNK4llvm16MemIntrinsicInfo11isUnorderedEv'/>

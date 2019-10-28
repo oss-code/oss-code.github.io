@@ -1,0 +1,62 @@
+<inh f='pocl/include/CL/cl2.hpp' l='1713' c='cl::detail::Wrapper'/>
+<def f='pocl/include/CL/cl2.hpp' l='6879' ll='8609'/>
+<size>8</size>
+<doc f='pocl/include/CL/cl2.hpp' l='6876'>/*! \class CommandQueue
+ * \brief CommandQueue interface for cl_command_queue.
+ */</doc>
+<smbr r='cl::CommandQueue::default_initialized_' t='std::once_flag'/>
+<smbr r='cl::CommandQueue::default_' t='cl::CommandQueue'/>
+<smbr r='cl::CommandQueue::default_error_' t='cl_int'/>
+<fun r='_ZN2cl12CommandQueue11makeDefaultEv'/>
+<fun r='_ZN2cl12CommandQueue19makeDefaultProvidedERKS0_'/>
+<fun r='_ZN2cl12CommandQueueC1EmPi'/>
+<fun r='_ZN2cl12CommandQueueC1ENS_15QueuePropertiesEPi'/>
+<fun r='_ZN2cl12CommandQueueC1ERKNS_7ContextEmPi'/>
+<fun r='_ZN2cl12CommandQueueC1ERKNS_7ContextENS_15QueuePropertiesEPi'/>
+<fun r='_ZN2cl12CommandQueueC1ERKNS_7ContextERKNS_6DeviceEmPi'/>
+<fun r='_ZN2cl12CommandQueueC1ERKNS_7ContextERKNS_6DeviceENS_15QueuePropertiesEPi'/>
+<fun r='_ZN2cl12CommandQueue10getDefaultEPi'/>
+<fun r='_ZN2cl12CommandQueue10setDefaultERKS0_'/>
+<fun r='_ZN2cl12CommandQueueC1Ev'/>
+<fun r='_ZN2cl12CommandQueueC1ERKP17_cl_command_queueb'/>
+<fun r='_ZN2cl12CommandQueueaSERKP17_cl_command_queue'/>
+<fun r='_ZN2cl12CommandQueueC1ERKS0_'/>
+<fun r='_ZN2cl12CommandQueueaSERKS0_'/>
+<fun r='_ZN2cl12CommandQueueC1EOS0_'/>
+<fun r='_ZN2cl12CommandQueueaSEOS0_'/>
+<fun r='_ZNK2cl12CommandQueue7getInfoEjPT_'/>
+<fun r='_ZNK2cl12CommandQueue7getInfoEPi'/>
+<fun r='_ZNK2cl12CommandQueue17enqueueReadBufferERKNS_6BufferEjmmPvPKSt6vectorINS_5EventESaIS6_EEPS6_'/>
+<fun r='_ZNK2cl12CommandQueue18enqueueWriteBufferERKNS_6BufferEjmmPKvPKSt6vectorINS_5EventESaIS7_EEPS7_'/>
+<fun r='_ZNK2cl12CommandQueue17enqueueCopyBufferERKNS_6BufferES3_mmmPKSt6vectorINS_5EventESaIS5_EEPS5_'/>
+<fun r='_ZNK2cl12CommandQueue21enqueueReadBufferRectERKNS_6BufferEjRKSt5arrayImLm3EES7_S7_mmmmPvPKSt6vectorINS_5EventESaISA_EEPSA_'/>
+<fun r='_ZNK2cl12CommandQueue22enqueueWriteBufferRectERKNS_6BufferEjRKSt5arrayImLm3EES7_S7_mmmmPKvPKSt6vectorINS_5EventESaISB_EEPSB_'/>
+<fun r='_ZNK2cl12CommandQueue21enqueueCopyBufferRectERKNS_6BufferES3_RKSt5arrayImLm3EES7_S7_mmmmPKSt6vectorINS_5EventESaIS9_EEPS9_'/>
+<fun r='_ZNK2cl12CommandQueue17enqueueFillBufferERKNS_6BufferET_mmPKSt6vectorINS_5EventESaIS6_EEPS6_'/>
+<fun r='_ZNK2cl12CommandQueue16enqueueReadImageERKNS_5ImageEjRKSt5arrayImLm3EES7_mmPvPKSt6vectorINS_5EventESaISA_EEPSA_'/>
+<fun r='_ZNK2cl12CommandQueue17enqueueWriteImageERKNS_5ImageEjRKSt5arrayImLm3EES7_mmPKvPKSt6vectorINS_5EventESaISB_EEPSB_'/>
+<fun r='_ZNK2cl12CommandQueue16enqueueCopyImageERKNS_5ImageES3_RKSt5arrayImLm3EES7_S7_PKSt6vectorINS_5EventESaIS9_EEPS9_'/>
+<fun r='_ZNK2cl12CommandQueue16enqueueFillImageERKNS_5ImageE9cl_float4RKSt5arrayImLm3EES8_PKSt6vectorINS_5EventESaISA_EEPSA_'/>
+<fun r='_ZNK2cl12CommandQueue16enqueueFillImageERKNS_5ImageE7cl_int4RKSt5arrayImLm3EES8_PKSt6vectorINS_5EventESaISA_EEPSA_'/>
+<fun r='_ZNK2cl12CommandQueue16enqueueFillImageERKNS_5ImageE8cl_uint4RKSt5arrayImLm3EES8_PKSt6vectorINS_5EventESaISA_EEPSA_'/>
+<fun r='_ZNK2cl12CommandQueue24enqueueCopyImageToBufferERKNS_5ImageERKNS_6BufferERKSt5arrayImLm3EESA_mPKSt6vectorINS_5EventESaISC_EEPSC_'/>
+<fun r='_ZNK2cl12CommandQueue24enqueueCopyBufferToImageERKNS_6BufferERKNS_5ImageEmRKSt5arrayImLm3EESA_PKSt6vectorINS_5EventESaISC_EEPSC_'/>
+<fun r='_ZNK2cl12CommandQueue16enqueueMapBufferERKNS_6BufferEjmmmPKSt6vectorINS_5EventESaIS5_EEPS5_Pi'/>
+<fun r='_ZNK2cl12CommandQueue15enqueueMapImageERKNS_5ImageEjmRKSt5arrayImLm3EES7_PmS8_PKSt6vectorINS_5EventESaISA_EEPSA_Pi'/>
+<fun r='_ZNK2cl12CommandQueue21enqueueUnmapMemObjectERKNS_6MemoryEPvPKSt6vectorINS_5EventESaIS6_EEPS6_'/>
+<fun r='_ZNK2cl12CommandQueue25enqueueMarkerWithWaitListEPKSt6vectorINS_5EventESaIS2_EEPS2_'/>
+<fun r='_ZNK2cl12CommandQueue26enqueueBarrierWithWaitListEPKSt6vectorINS_5EventESaIS2_EEPS2_'/>
+<fun r='_ZNK2cl12CommandQueue24enqueueMigrateMemObjectsERKSt6vectorINS_6MemoryESaIS2_EEmPKS1_INS_5EventESaIS7_EEPS7_'/>
+<fun r='_ZNK2cl12CommandQueue20enqueueNDRangeKernelERKNS_6KernelERKNS_7NDRangeES6_S6_PKSt6vectorINS_5EventESaIS8_EEPS8_'/>
+<fun r='_ZNK2cl12CommandQueue11enqueueTaskERKNS_6KernelEPKSt6vectorINS_5EventESaIS5_EEPS5_'/>
+<fun r='_ZNK2cl12CommandQueue19enqueueNativeKernelEPFvPvESt4pairIS1_mEPKSt6vectorINS_6MemoryESaIS7_EEPKS6_IPKvSaISD_EEPKS6_INS_5EventESaISI_EEPSI_'/>
+<fun r='_ZNK2cl12CommandQueue13enqueueMarkerEPNS_5EventE'/>
+<fun r='_ZNK2cl12CommandQueue20enqueueWaitForEventsERKSt6vectorINS_5EventESaIS2_EE'/>
+<fun r='_ZNK2cl12CommandQueue23enqueueAcquireGLObjectsEPKSt6vectorINS_6MemoryESaIS2_EEPKS1_INS_5EventESaIS7_EEPS7_'/>
+<fun r='_ZNK2cl12CommandQueue23enqueueReleaseGLObjectsEPKSt6vectorINS_6MemoryESaIS2_EEPKS1_INS_5EventESaIS7_EEPS7_'/>
+<fun r='_ZNK2cl12CommandQueue14enqueueBarrierEv'/>
+<fun r='_ZNK2cl12CommandQueue5flushEv'/>
+<fun r='_ZNK2cl12CommandQueue6finishEv'/>
+<smbr r='cl::CommandQueue::default_initialized_' t='std::once_flag'/>
+<smbr r='cl::CommandQueue::default_' t='cl::CommandQueue'/>
+<smbr r='cl::CommandQueue::default_error_' t='cl_int'/>

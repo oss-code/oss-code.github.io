@@ -1,0 +1,9 @@
+<dec f='include/hwloc.h' l='372' type='struct hwloc_obj *'/>
+<use f='include/hwloc/helper.h' l='95' u='r' c='hwloc_get_next_obj_inside_cpuset_by_depth'/>
+<use f='include/hwloc/helper.h' l='140' u='r' c='hwloc_get_obj_inside_cpuset_by_depth'/>
+<use f='include/hwloc/helper.h' l='186' u='r' c='hwloc_get_nbobjs_inside_cpuset_by_depth'/>
+<use f='include/hwloc/helper.h' l='314' u='r' c='hwloc_get_next_obj_covering_cpuset_by_depth'/>
+<use f='include/hwloc/inlines.h' l='91' u='r' c='hwloc_get_next_obj_by_depth'/>
+<offset>576</offset>
+<doc f='include/hwloc.h' l='371'>/* cousins are all objects of the same type (and depth) across the entire topology */</doc>
+<doc f='include/hwloc.h' l='372'>/**&lt; \brief Next object of same type and depth */</doc>

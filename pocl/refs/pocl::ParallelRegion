@@ -1,0 +1,43 @@
+<inh f='include/c++/7/bits/stl_vector.h' l='216' c='std::vector'/>
+<def f='pocl/lib/llvmopencl/ParallelRegion.h' l='50' ll='122'/>
+<size>72</size>
+<doc f='pocl/lib/llvmopencl/ParallelRegion.h' l='47'>// TODO Cleanup: this should not inherit vector but contain it.
+  // It now exposes too much to the clients and leads to hard
+  // to track errors when the API is changed.</doc>
+<fun r='_ZN4pocl14ParallelRegionC1Ei'/>
+<fun r='_ZN4pocl14ParallelRegion9replicateERN4llvm8ValueMapIPKNS1_5ValueENS1_14WeakTrackingVHENS1_14ValueMapConfigIS5_NS1_3sys10SmartMutexILb0EEEEEEERKNS1_5TwineE'/>
+<fun r='_ZN4pocl14ParallelRegion5remapERN4llvm8ValueMapIPKNS1_5ValueENS1_14WeakTrackingVHENS1_14ValueMapConfigIS5_NS1_3sys10SmartMutexILb0EEEEEEE'/>
+<fun r='_ZN4pocl14ParallelRegion5purgeEv'/>
+<fun r='_ZN4pocl14ParallelRegion10chainAfterEPS0_'/>
+<fun r='_ZN4pocl14ParallelRegion14insertPrologueEjjj'/>
+<fun r='_ZN4pocl14ParallelRegion17insertLocalIdInitEPN4llvm10BasicBlockEjjj'/>
+<fun r='_ZN4pocl14ParallelRegion4dumpEv'/>
+<fun r='_ZN4pocl14ParallelRegion9dumpNamesEv'/>
+<fun r='_ZN4pocl14ParallelRegion15setEntryBBIndexEm'/>
+<fun r='_ZN4pocl14ParallelRegion14setExitBBIndexEm'/>
+<fun r='_ZN4pocl14ParallelRegion9SetExitBBEPN4llvm10BasicBlockE'/>
+<fun r='_ZN4pocl14ParallelRegion14AddBlockBeforeEPN4llvm10BasicBlockES3_'/>
+<fun r='_ZN4pocl14ParallelRegion13AddBlockAfterEPN4llvm10BasicBlockES3_'/>
+<fun r='_ZN4pocl14ParallelRegion6exitBBEv'/>
+<fun r='_ZN4pocl14ParallelRegion7entryBBEv'/>
+<fun r='_ZN4pocl14ParallelRegion13AddIDMetadataERN4llvm11LLVMContextEmmm'/>
+<fun r='_ZN4pocl14ParallelRegion23AddParallelLoopMetadataEPN4llvm6MDNodeE'/>
+<fun r='_ZN4pocl14ParallelRegion8HasBlockEPN4llvm10BasicBlockE'/>
+<fun r='_ZN4pocl14ParallelRegion18InjectRegionPrintFEv'/>
+<fun r='_ZN4pocl14ParallelRegion23InjectVariablePrintoutsEv'/>
+<fun r='_ZN4pocl14ParallelRegion12InjectPrintFEPN4llvm11InstructionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIPNS1_5ValueESaISC_EE'/>
+<fun r='_ZN4pocl14ParallelRegion6CreateERKN4llvm11SmallPtrSetIPNS1_10BasicBlockELj8EEES4_S4_'/>
+<fun r='_ZN4pocl14ParallelRegion17GenerateTempNamesEPN4llvm10BasicBlockE'/>
+<fun r='_ZN4pocl14ParallelRegion12LocalIDXLoadEv'/>
+<fun r='_ZN4pocl14ParallelRegion12LocalIDYLoadEv'/>
+<fun r='_ZN4pocl14ParallelRegion12LocalIDZLoadEv'/>
+<fun r='_ZN4pocl14ParallelRegion15LocalizeIDLoadsEv'/>
+<fun r='_ZNK4pocl14ParallelRegion5GetIDEv'/>
+<mbr r='pocl::ParallelRegion::LocalIDXLoadInstr' o='192' t='llvm::Instruction *'/>
+<mbr r='pocl::ParallelRegion::LocalIDYLoadInstr' o='256' t='llvm::Instruction *'/>
+<mbr r='pocl::ParallelRegion::LocalIDZLoadInstr' o='320' t='llvm::Instruction *'/>
+<fun r='_ZN4pocl14ParallelRegion6VerifyEv'/>
+<mbr r='pocl::ParallelRegion::exitIndex_' o='384' t='std::size_t'/>
+<mbr r='pocl::ParallelRegion::entryIndex_' o='448' t='std::size_t'/>
+<mbr r='pocl::ParallelRegion::pRegionId' o='512' t='int'/>
+<smbr r='pocl::ParallelRegion::idGen' t='int'/>

@@ -1,0 +1,10 @@
+<dec f='pocl/include/pocl_file_util.h' l='65' type='int pocl_read_file(const char * path, char ** content, uint64_t * filesize)'/>
+<doc f='pocl/include/pocl_file_util.h' l='63'>/* Allocates memory and places file contents in it.
+ * Returns negative errno on error, zero otherwise. */</doc>
+<use f='pocl/lib/CL/clCreateProgramWithBinary.c' l='167' u='c' c='create_program_skeleton'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='296' u='c' c='serialize_file'/>
+<use f='pocl/lib/CL/pocl_build.c' l='768' u='c' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='321' u='c' c='pocl_cache_read_buildlog'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='503' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='681' u='c' c='pocl_llvm_codegen'/>
+<def f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='238' ll='290' type='int pocl_read_file(const char * path, char ** content, uint64_t * filesize)'/>

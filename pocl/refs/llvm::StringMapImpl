@@ -1,0 +1,25 @@
+<def f='include/llvm-6.0/llvm/ADT/StringMap.h' l='50' ll='120'/>
+<ovr f='include/llvm-6.0/llvm/ADT/StringMap.h' l='224' c='llvm::StringMap'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/ADT/StringMap.h' l='48'>/// StringMapImpl - This is the base class of StringMap that is shared among
+/// all of its instantiations.</doc>
+<mbr r='llvm::StringMapImpl::TheTable' o='0' t='llvm::StringMapEntryBase **'/>
+<mbr r='llvm::StringMapImpl::NumBuckets' o='64' t='unsigned int'/>
+<mbr r='llvm::StringMapImpl::NumItems' o='96' t='unsigned int'/>
+<mbr r='llvm::StringMapImpl::NumTombstones' o='128' t='unsigned int'/>
+<mbr r='llvm::StringMapImpl::ItemSize' o='160' t='unsigned int'/>
+<fun r='_ZN4llvm13StringMapImplC1Ej'/>
+<fun r='_ZN4llvm13StringMapImplC1EOS0_'/>
+<fun r='_ZN4llvm13StringMapImplC1Ejj'/>
+<fun r='_ZN4llvm13StringMapImpl11RehashTableEj'/>
+<fun r='_ZN4llvm13StringMapImpl15LookupBucketForENS_9StringRefE'/>
+<fun r='_ZNK4llvm13StringMapImpl7FindKeyENS_9StringRefE'/>
+<fun r='_ZN4llvm13StringMapImpl9RemoveKeyEPNS_18StringMapEntryBaseE'/>
+<fun r='_ZN4llvm13StringMapImpl9RemoveKeyENS_9StringRefE'/>
+<fun r='_ZN4llvm13StringMapImpl4initEj'/>
+<fun r='_ZN4llvm13StringMapImpl15getTombstoneValEv'/>
+<fun r='_ZNK4llvm13StringMapImpl13getNumBucketsEv'/>
+<fun r='_ZNK4llvm13StringMapImpl11getNumItemsEv'/>
+<fun r='_ZNK4llvm13StringMapImpl5emptyEv'/>
+<fun r='_ZNK4llvm13StringMapImpl4sizeEv'/>
+<fun r='_ZN4llvm13StringMapImpl4swapERS0_'/>

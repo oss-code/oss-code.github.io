@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/Metadata.h' l='318' type='static llvm::ReplaceableMetadataImpl * llvm::ReplaceableMetadataImpl::getOrCreate(llvm::Metadata &amp; MD)'/>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='314'>/// Lazily construct RAUW support on MD.
+  ///
+  /// If this is an unresolved MDNode, RAUW support will be created on-demand.
+  /// ValueAsMetadata always has RAUW support.</doc>

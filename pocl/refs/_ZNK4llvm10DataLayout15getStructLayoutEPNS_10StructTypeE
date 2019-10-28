@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/DataLayout.h' l='467' type='const llvm::StructLayout * llvm::DataLayout::getStructLayout(llvm::StructType * Ty) const'/>
+<use f='include/llvm-6.0/llvm/IR/DataLayout.h' l='544' u='c' c='_ZNK4llvm10DataLayout17getTypeSizeInBitsEPNS_4TypeE'/>
+<doc f='include/llvm-6.0/llvm/IR/DataLayout.h' l='463'>/// \brief Returns a StructLayout object, indicating the alignment of the
+  /// struct, its size, and the offsets of its fields.
+  ///
+  /// Note that this information is lazily cached.</doc>
+<use f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='285' u='c' c='_ZN4llvm13EmitGEPOffsetEPT_RKNS_10DataLayoutEPNS_4UserEb'/>

@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/ADT/DenseMap.h' l='198' ll='200' type='std::pair&lt;iterator, bool&gt; llvm::DenseMapBase::insert(std::pair&lt;KeyT, ValueT&gt; &amp;&amp; KV)'/>
+<doc f='include/llvm-6.0/llvm/ADT/DenseMap.h' l='195'>// Inserts key,value pair into the map if the key isn&apos;t already in the map.
+  // If the key is already in the map, it returns false and doesn&apos;t update the
+  // value.</doc>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='525' u='c' c='_ZL18replacePrintfCallsPN4llvm5ValueES1_S1_bPNS_8FunctionERNS_6ModuleES3_RSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='587' u='c' c='_ZL18replacePrintfCallsPN4llvm5ValueES1_S1_bPNS_8FunctionERNS_6ModuleES3_RSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>

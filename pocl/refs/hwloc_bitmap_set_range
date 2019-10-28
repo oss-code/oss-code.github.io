@@ -1,0 +1,6 @@
+<dec f='include/hwloc/bitmap.h' l='190' type='void hwloc_bitmap_set_range(hwloc_bitmap_t bitmap, unsigned int begin, int end)'/>
+<use f='include/hwloc/cpuset.h' l='45' u='c' c='hwloc_cpuset_set_range'/>
+<doc f='include/hwloc/bitmap.h' l='186'>/** \brief Add indexes from \p begin to \p end in bitmap \p bitmap.
+ *
+ * If \p end is \c -1, the range is infinite.
+ */</doc>

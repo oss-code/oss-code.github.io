@@ -1,0 +1,11 @@
+<dec f='include/hwloc/helper.h' l='575' type='hwloc_obj_t hwloc_get_numanode_obj_by_os_index(hwloc_topology_t topology, unsigned int os_index)'/>
+<def f='include/hwloc/helper.h' l='576' ll='584' type='hwloc_obj_t hwloc_get_numanode_obj_by_os_index(hwloc_topology_t topology, unsigned int os_index)'/>
+<doc f='include/hwloc/helper.h' l='565'>/** \brief Returns the object of type ::HWLOC_OBJ_NUMANODE with \p os_index.
+ *
+ * This function is useful for converting a nodeset into the NUMA node
+ * objects it contains.
+ * When retrieving the current binding (e.g. with hwloc_get_membind_nodeset()),
+ * one may iterate over the bits of the resulting nodeset with
+ * hwloc_bitmap_foreach_begin(), and find the corresponding NUMA nodes
+ * with this function.
+ */</doc>

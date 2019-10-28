@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/Attributes.h' l='530' type='bool llvm::AttributeList::hasAttribute(unsigned int Index, Attribute::AttrKind Kind) const'/>
+<use f='include/llvm-6.0/llvm/IR/Attributes.h' l='540' u='c' c='_ZNK4llvm13AttributeList12hasParamAttrEjNS_9Attribute8AttrKindE'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='342' u='c' c='_ZNK4llvm8Function12hasAttributeEjNS_9Attribute8AttrKindE'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='532' u='c' c='_ZNK4llvm8Function18returnDoesNotAliasEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1750' u='c' c='_ZNK4llvm8CallInst18returnDoesNotAliasEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='3856' u='c' c='_ZNK4llvm10InvokeInst18returnDoesNotAliasEv'/>
+<doc f='include/llvm-6.0/llvm/IR/Attributes.h' l='529'>/// \brief Return true if the attribute exists at the given index.</doc>

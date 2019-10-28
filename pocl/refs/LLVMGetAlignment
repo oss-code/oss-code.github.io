@@ -1,0 +1,8 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='1843' type='unsigned int LLVMGetAlignment(LLVMValueRef V)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='1836'>/**
+ * Obtain the preferred alignment of the value.
+ * @see llvm::AllocaInst::getAlignment()
+ * @see llvm::LoadInst::getAlignment()
+ * @see llvm::StoreInst::getAlignment()
+ * @see llvm::GlobalValue::getAlignment()
+ */</doc>

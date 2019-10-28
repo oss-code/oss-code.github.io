@@ -1,0 +1,9 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2334' type='LLVMBasicBlockRef LLVMInsertBasicBlockInContext(LLVMContextRef C, LLVMBasicBlockRef BB, const char * Name)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2326'>/**
+ * Insert a basic block in a function before another basic block.
+ *
+ * The function to add to is determined by the function of the
+ * passed basic block.
+ *
+ * @see llvm::BasicBlock::Create()
+ */</doc>

@@ -1,0 +1,41 @@
+<def f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='598' ll='783'/>
+<def f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='786'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='788' c='llvm::LoopInfo'/>
+<size>192</size>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='593'>//===----------------------------------------------------------------------===//
+/// This class builds and contains all of the top-level loop
+/// structures in the specified function.
+///</doc>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='785'>// Implementation in LoopInfoImpl.h</doc>
+<mbr r='llvm::LoopInfoBase::BBMap' t='DenseMap&lt;const BlockT *, LoopT *&gt;'/>
+<mbr r='llvm::LoopInfoBase::TopLevelLoops' t='std::vector&lt;LoopT *&gt;'/>
+<mbr r='llvm::LoopInfoBase::LoopAllocator' t='BumpPtrAllocator'/>
+<fun r='_ZN4llvm12LoopInfoBaseaSERKNS_12LoopInfoBaseIT_T0_EE'/>
+<fun r='_ZN4llvm12LoopInfoBaseC1ERKNS_12LoopInfoBaseIT_T0_EE'/>
+<fun r='_ZN4llvm12LoopInfoBaseC1Ev'/>
+<fun r='_ZN4llvm12LoopInfoBaseD1Ev'/>
+<fun r='_ZN4llvm12LoopInfoBaseC1EONS_12LoopInfoBaseIT_T0_EE'/>
+<fun r='_ZN4llvm12LoopInfoBaseaSEONS_12LoopInfoBaseIT_T0_EE'/>
+<fun r='_ZN4llvm12LoopInfoBase13releaseMemoryEv'/>
+<fun r='_ZN4llvm12LoopInfoBase12AllocateLoopEDpOT_'/>
+<fun r='_ZNK4llvm12LoopInfoBase5beginEv'/>
+<fun r='_ZNK4llvm12LoopInfoBase3endEv'/>
+<fun r='_ZNK4llvm12LoopInfoBase6rbeginEv'/>
+<fun r='_ZNK4llvm12LoopInfoBase4rendEv'/>
+<fun r='_ZNK4llvm12LoopInfoBase5emptyEv'/>
+<fun r='_ZN4llvm12LoopInfoBase18getLoopsInPreorderEv'/>
+<fun r='_ZN4llvm12LoopInfoBase32getLoopsInReverseSiblingPreorderEv'/>
+<fun r='_ZNK4llvm12LoopInfoBase10getLoopForEPKT_'/>
+<fun r='_ZNK4llvm12LoopInfoBaseixEPKT_'/>
+<fun r='_ZNK4llvm12LoopInfoBase12getLoopDepthEPKT_'/>
+<fun r='_ZNK4llvm12LoopInfoBase12isLoopHeaderEPKT_'/>
+<fun r='_ZN4llvm12LoopInfoBase10removeLoopENSt6vectorIPT0_SaIS3_EE14const_iteratorE'/>
+<fun r='_ZN4llvm12LoopInfoBase13changeLoopForEPT_PT0_'/>
+<fun r='_ZN4llvm12LoopInfoBase18changeTopLevelLoopEPT0_S2_'/>
+<fun r='_ZN4llvm12LoopInfoBase15addTopLevelLoopEPT0_'/>
+<fun r='_ZN4llvm12LoopInfoBase11removeBlockEPT_'/>
+<fun r='_ZN4llvm12LoopInfoBase23isNotAlreadyContainedInEPKT0_S3_'/>
+<fun r='_ZN4llvm12LoopInfoBase7analyzeERKNS_17DominatorTreeBaseIT_Lb0EEE'/>
+<fun r='_ZNK4llvm12LoopInfoBase5printERNS_11raw_ostreamE'/>
+<fun r='_ZNK4llvm12LoopInfoBase6verifyERKNS_17DominatorTreeBaseIT_Lb0EEE'/>
+<fun r='_ZN4llvm12LoopInfoBase7destroyEPT0_'/>

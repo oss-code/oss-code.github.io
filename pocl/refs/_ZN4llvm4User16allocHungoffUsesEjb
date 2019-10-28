@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/User.h' l='88' type='void llvm::User::allocHungoffUses(unsigned int N, bool IsPhi = false)'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='2614' u='c' c='_ZN4llvm7PHINode16allocHungoffUsesEj'/>
+<doc f='include/llvm-6.0/llvm/IR/User.h' l='84'>/// \brief Allocate the array of Uses, followed by a pointer
+  /// (with bottom bit set) to the User.
+  /// \param IsPhi identifies callers which are phi nodes and which need
+  /// N BasicBlock* allocated along with N</doc>

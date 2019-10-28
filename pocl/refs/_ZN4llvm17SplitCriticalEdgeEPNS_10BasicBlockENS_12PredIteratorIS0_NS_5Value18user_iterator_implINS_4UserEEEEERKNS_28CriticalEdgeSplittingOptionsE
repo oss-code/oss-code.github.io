@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='141' ll='150' type='bool llvm::SplitCriticalEdge(llvm::BasicBlock * Succ, pred_iterator PI, const llvm::CriticalEdgeSplittingOptions &amp; Options = llvm::CriticalEdgeSplittingOptions())'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='137'>/// If the edge from *PI to BB is not critical, return false. Otherwise, split
+/// all edges between the two blocks and return true. This updates all of the
+/// same analyses as the other SplitCriticalEdge function. If P is specified, it
+/// updates the analyses described above.</doc>

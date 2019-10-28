@@ -1,0 +1,6 @@
+<dec f='pocl/lib/CL/devices/devices.h' l='81' type='int pocl_get_unique_global_mem_id()'/>
+<doc f='pocl/lib/CL/devices/devices.h' l='77'>/**
+ * \brief Unique global memory id for devices with distinct memory from the system memory
+ * \return Unique global mem id, id &gt; 0. Zero is reserved for shared system memory
+ */</doc>
+<def f='pocl/lib/CL/devices/devices.c' l='566' ll='570' type='int pocl_get_unique_global_mem_id()'/>

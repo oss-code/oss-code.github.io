@@ -1,0 +1,4 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='3214' type='LLVMBool LLVMStartMultithreaded()'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='3211'>/** Deprecated: Multi-threading can only be enabled/disabled with the compile
+    time define LLVM_ENABLE_THREADS.  This function always returns
+    LLVMIsMultithreaded(). */</doc>

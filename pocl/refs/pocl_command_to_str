@@ -1,0 +1,6 @@
+<dec f='pocl/lib/CL/pocl_util.h' l='211' type='const char * pocl_command_to_str(cl_command_type cmd)'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1233' u='c' c='pocl_cuda_submit_node'/>
+<use f='pocl/lib/CL/pocl_tracing.c' l='197' u='c' c='text_tracer_event_updated'/>
+<def f='pocl/lib/CL/pocl_util.c' l='1043' ll='1111' type='const char * pocl_command_to_str(cl_command_type cmd)'/>
+<doc f='pocl/lib/CL/pocl_util.c' l='1041'>/* Convert a command type to its representation string
+ */</doc>

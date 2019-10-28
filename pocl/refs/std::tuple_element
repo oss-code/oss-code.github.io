@@ -1,0 +1,22 @@
+<def f='include/c++/7/utility' l='135' ll='139'/>
+<def f='include/c++/7/utility' l='141' ll='145'/>
+<def f='include/c++/7/utility' l='147' ll='151'/>
+<def f='include/c++/7/utility' l='173' ll='175'/>
+<def f='include/c++/7/utility' l='178' ll='180'/>
+<def f='include/c++/7/array' l='354' ll='359'/>
+<def f='include/c++/7/tuple' l='1278' ll='1280'/>
+<def f='include/c++/7/tuple' l='1285' ll='1289'/>
+<def f='include/c++/7/tuple' l='1294' ll='1299'/>
+<doc f='include/c++/7/tuple' l='1274'>/**
+   * Recursive case for tuple_element: strip off the first element in
+   * the tuple and retrieve the (i-1)th element of the remaining tuple.
+   */</doc>
+<doc f='include/c++/7/tuple' l='1282'>/**
+   * Basis case for tuple_element: The first element is the one we&apos;re seeking.
+   */</doc>
+<doc f='include/c++/7/tuple' l='1291'>/**
+   * Error case for tuple_element: invalid index.
+   */</doc>
+<doc f='include/c++/7/utility' l='172'>/// Partial specialization for std::pair</doc>
+<doc f='include/c++/7/utility' l='177'>/// Partial specialization for std::pair</doc>
+<doc f='include/c++/7/array' l='353'>/// Partial specialization for std::array</doc>

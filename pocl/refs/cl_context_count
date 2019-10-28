@@ -1,0 +1,8 @@
+<def f='pocl/lib/CL/clCreateContext.c' l='119' type='unsigned int'/>
+<use f='pocl/lib/CL/clCreateContext.c' l='220' u='w' c='POclCreateContext'/>
+<dec f='pocl/lib/CL/clCreateContextFromType.c' l='32' type='unsigned int'/>
+<use f='pocl/lib/CL/clCreateContextFromType.c' l='121' u='w' c='POclCreateContextFromType'/>
+<dec f='pocl/lib/CL/clReleaseContext.c' l='31' type='unsigned int'/>
+<use f='pocl/lib/CL/clReleaseContext.c' l='69' u='w' c='POclReleaseContext'/>
+<use f='pocl/lib/CL/clReleaseContext.c' l='70' u='a' c='POclReleaseContext'/>
+<use f='pocl/lib/CL/clReleaseContext.c' l='102' u='r' c='pocl_check_uninit_devices'/>

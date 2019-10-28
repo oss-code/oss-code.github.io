@@ -1,0 +1,17 @@
+<dec f='include/stdio.h' l='749' type='int fseek(FILE * __stream, long __off, int __whence)'/>
+<doc f='include/stdio.h' l='745'>/* Seek to a certain position on STREAM.
+
+   This function is a possible cancellation point and therefore not
+   marked with __THROW.  */</doc>
+<use f='pocl/examples/EinsteinToolkit/EinsteinToolkit.c' l='1420' u='c' c='main'/>
+<use f='pocl/examples/EinsteinToolkit/EinsteinToolkit.c' l='1422' u='c' c='main'/>
+<use f='pocl/examples/EinsteinToolkit/EinsteinToolkit.c' l='1430' u='c' c='main'/>
+<use f='pocl/examples/EinsteinToolkit/EinsteinToolkit.c' l='1432' u='c' c='main'/>
+<use f='pocl/examples/scalarwave/scalarwave.c' l='157' u='c' c='main'/>
+<use f='pocl/examples/scalarwave/scalarwave.c' l='159' u='c' c='main'/>
+<use f='pocl/examples/trig/trig.c' l='52' u='c' c='main'/>
+<use f='pocl/examples/trig/trig.c' l='54' u='c' c='main'/>
+<use f='pocl/lib/poclu/misc.c' l='151' u='c' c='poclu_read_binfile'/>
+<use f='pocl/lib/poclu/misc.c' l='160' u='c' c='poclu_read_binfile'/>
+<use f='pocl/tests/regression/test_flatten_barrier_subs.cpp' l='40' u='c' c='_Z14read_text_fileRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/tests/regression/test_flatten_barrier_subs.cpp' l='42' u='c' c='_Z14read_text_fileRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>

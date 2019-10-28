@@ -1,0 +1,10 @@
+<inh f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='857' c='llvm::AAResultBase'/>
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionAliasAnalysis.h' l='27' ll='38'/>
+<size>16</size>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionAliasAnalysis.h' l='25'>/// A simple alias analysis implementation that uses ScalarEvolution to answer
+/// queries.</doc>
+<mbr r='llvm::SCEVAAResult::SE' o='64' t='llvm::ScalarEvolution &amp;'/>
+<fun r='_ZN4llvm12SCEVAAResultC1ERNS_15ScalarEvolutionE'/>
+<fun r='_ZN4llvm12SCEVAAResultC1EOS0_'/>
+<fun r='_ZN4llvm12SCEVAAResult5aliasERKNS_14MemoryLocationES3_'/>
+<fun r='_ZN4llvm12SCEVAAResult12GetBaseValueEPKNS_4SCEVE'/>

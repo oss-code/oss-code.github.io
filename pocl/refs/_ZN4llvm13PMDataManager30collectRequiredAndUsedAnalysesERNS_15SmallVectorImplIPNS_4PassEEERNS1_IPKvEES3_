@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='355' type='void llvm::PMDataManager::collectRequiredAndUsedAnalyses(SmallVectorImpl&lt;llvm::Pass *&gt; &amp; UsedPasses, SmallVectorImpl&lt;AnalysisID&gt; &amp; ReqPassNotAvailable, llvm::Pass * P)'/>
+<doc f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='352'>/// Populate UsedPasses with analysis pass that are used or required by pass
+  /// P and are available. Populate ReqPassNotAvailable with analysis pass that
+  /// are required by pass P but are not available.</doc>

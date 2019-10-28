@@ -1,0 +1,11 @@
+<inh f='include/llvm-6.0/llvm/Pass.h' l='256' c='llvm::ImmutablePass'/>
+<def f='include/llvm-6.0/llvm/Analysis/CFLAndersAliasAnalysis.h' l='105' ll='118'/>
+<size>40</size>
+<doc f='include/llvm-6.0/llvm/Analysis/CFLAndersAliasAnalysis.h' l='104'>/// Legacy wrapper pass to provide the CFLAndersAAResult object.</doc>
+<mbr r='llvm::CFLAndersAAWrapperPass::Result' o='256' t='std::unique_ptr&lt;CFLAndersAAResult&gt;'/>
+<smbr r='llvm::CFLAndersAAWrapperPass::ID' t='char'/>
+<fun r='_ZN4llvm22CFLAndersAAWrapperPassC1Ev'/>
+<fun r='_ZN4llvm22CFLAndersAAWrapperPass9getResultEv'/>
+<fun r='_ZNK4llvm22CFLAndersAAWrapperPass9getResultEv'/>
+<fun r='_ZN4llvm22CFLAndersAAWrapperPass14initializePassEv'/>
+<fun r='_ZNK4llvm22CFLAndersAAWrapperPass16getAnalysisUsageERNS_13AnalysisUsageE'/>

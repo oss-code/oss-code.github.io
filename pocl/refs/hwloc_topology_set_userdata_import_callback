@@ -1,0 +1,23 @@
+<dec f='include/hwloc.h' l='2351' type='void hwloc_topology_set_userdata_import_callback(hwloc_topology_t topology, void (*)(hwloc_topology_t, hwloc_obj_t, const char *, const void *, size_t) import_cb)'/>
+<doc f='include/hwloc.h' l='2329'>/** \brief Set the application-specific callback for importing userdata
+ *
+ * On XML import, userdata is ignored by default because hwloc does not know
+ * how to store it in memory.
+ *
+ * This function lets applications set \p import_cb to a callback function
+ * that will get the XML-stored userdata and store it in the object as expected
+ * by the application.
+ *
+ * \p import_cb is called during hwloc_topology_load() as many times as
+ * hwloc_export_obj_userdata() was called during export. The topology
+ * is not entirely setup yet. Object attributes are ready to consult,
+ * but links between objects are not.
+ *
+ * \p import_cb may be \c NULL if userdata should be ignored during import.
+ *
+ * \note \p buffer contains \p length characters followed by a null byte (&apos;\0&apos;).
+ *
+ * \note This function should be called before hwloc_topology_load().
+ *
+ * \note The topology-specific userdata pointer is ignored when importing from XML.
+ */</doc>

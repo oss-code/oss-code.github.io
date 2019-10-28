@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1129' type='void (*)(cl_event, cl_int, void *)'/>
+<offset>0</offset>
+<use f='pocl/lib/CL/clSetEventCallback.c' l='25' u='w' c='POclSetEventCallback'/>
+<use f='pocl/lib/CL/clSetEventCallback.c' l='39' u='r' c='POclSetEventCallback'/>
+<use f='pocl/lib/CL/pocl_tracing.c' l='69' u='r' c='pocl_event_updated'/>

@@ -1,0 +1,7 @@
+<dec f='pocl/lib/CL/pocl_intfn.h' l='82' macro='1' type='cl_int POclGetDeviceInfo(cl_device_id , cl_device_info , size_t , void * , size_t * )'/>
+<def f='pocl/lib/CL/clGetDeviceInfo.c' l='56' macro='1' type='cl_int POclGetDeviceInfo(cl_device_id device, cl_device_info param_name, size_t param_value_size, void * param_value, size_t * param_value_size_ret)'/>
+<use f='pocl/lib/CL/clGetKernelWorkGroupInfo.c' l='66' macro='1' u='c'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='43' macro='1' u='a'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='43' macro='1' u='a'/>
+<use f='pocl/lib/CL/pocl_image_util.c' l='173' macro='1' u='c'/>
+<use f='pocl/lib/CL/pocl_image_util.c' l='182' macro='1' u='c'/>

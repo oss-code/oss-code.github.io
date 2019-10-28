@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/Support/TargetSelect.h' l='63' ll='69' type='void llvm::InitializeAllTargets()'/>
+<doc f='include/llvm-6.0/llvm/Support/TargetSelect.h' l='58'>/// InitializeAllTargets - The main program should call this function if it
+  /// wants access to all available target machines that LLVM is configured to
+  /// support, to make them available via the TargetRegistry.
+  ///
+  /// It is legal for a client to make multiple calls to this function.</doc>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='277' u='c' c='_Z14InitializeLLVMv'/>

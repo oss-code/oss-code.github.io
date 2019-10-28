@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='111' type='void llvm::ValueHandleBase::clearValPtr()'/>
+<doc f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='107'>/// \brief Clear the underlying pointer without clearing the use list.
+  ///
+  /// This should only be used if a derived class has manually removed the
+  /// handle from the use list.</doc>

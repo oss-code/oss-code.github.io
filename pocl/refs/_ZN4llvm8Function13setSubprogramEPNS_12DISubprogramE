@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/Function.h' l='732' type='void llvm::Function::setSubprogram(llvm::DISubprogram * SP)'/>
+<doc f='include/llvm-6.0/llvm/IR/Function.h' l='729'>/// \brief Set the attached subprogram.
+  ///
+  /// Calls \a setMetadata() with \a LLVMContext::MD_dbg.</doc>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='729' u='c' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>

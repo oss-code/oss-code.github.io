@@ -1,0 +1,33 @@
+<inh f='include/llvm-6.0/llvm/ADT/iterator.h' l='68' c='llvm::iterator_facade_base'/>
+<def f='include/llvm-6.0/llvm/Support/Path.h' l='52' ll='71'/>
+<size>48</size>
+<doc f='include/llvm-6.0/llvm/Support/Path.h' l='30'>/// @name Lexical Component Iterator
+/// @{
+
+/// @brief Path iterator.
+///
+/// This is an input iterator that iterates over the individual components in
+/// \a path. The traversal order is as follows:
+/// * The root-name element, if present.
+/// * The root-directory element, if present.
+/// * Each successive filename element, if present.
+/// * Dot, if one or more trailing non-root slash characters are present.
+/// Traversing backwards is possible with \a reverse_iterator
+///
+/// Iteration examples. Each component is separated by &apos;,&apos;:
+/// @code
+///   /          =&gt; /
+///   /foo       =&gt; /,foo
+///   foo/       =&gt; foo,.
+///   /foo/bar   =&gt; /,foo,bar
+///   ../        =&gt; ..,.
+///   C:\foo\bar =&gt; C:,/,foo,bar
+/// @endcode</doc>
+<mbr r='llvm::sys::path::const_iterator::Path' o='0' t='llvm::StringRef'/>
+<mbr r='llvm::sys::path::const_iterator::Component' o='128' t='llvm::StringRef'/>
+<mbr r='llvm::sys::path::const_iterator::Position' o='256' t='size_t'/>
+<mbr r='llvm::sys::path::const_iterator::S' o='320' t='llvm::sys::path::Style'/>
+<fun r='_ZNK4llvm3sys4path14const_iteratordeEv'/>
+<fun r='_ZN4llvm3sys4path14const_iteratorppEv'/>
+<fun r='_ZNK4llvm3sys4path14const_iteratoreqERKS2_'/>
+<fun r='_ZNK4llvm3sys4path14const_iteratormiERKS2_'/>

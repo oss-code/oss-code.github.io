@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Support/CommandLine.h' l='661' type='unsigned int llvm::cl::generic_parser_base::getNumOptions() const'/>
+<use f='include/llvm-6.0/llvm/Support/CommandLine.h' l='701' u='c' c='_ZN4llvm2cl19generic_parser_base19getExtraOptionNamesERNS_15SmallVectorImplINS_9StringRefEEE'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='755' c='_ZNK4llvm2cl6parser13getNumOptionsEv'/>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='656'>// Base class should have virtual-destructor
+
+  // getNumOptions - Virtual function implemented by generic subclass to
+  // indicate how many entries are in Values.
+  //</doc>

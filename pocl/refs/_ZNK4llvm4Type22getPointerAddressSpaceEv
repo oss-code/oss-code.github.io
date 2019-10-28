@@ -1,0 +1,22 @@
+<dec f='include/llvm-6.0/llvm/IR/Type.h' l='379' type='unsigned int llvm::Type::getPointerAddressSpace() const'/>
+<def f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='503' ll='505' type='unsigned int llvm::Type::getPointerAddressSpace() const'/>
+<use f='include/llvm-6.0/llvm/IR/DataLayout.h' l='536' u='c' c='_ZNK4llvm10DataLayout17getTypeSizeInBitsEPNS_4TypeE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='277' u='c' c='_ZNK4llvm8LoadInst22getPointerAddressSpaceEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='405' u='c' c='_ZNK4llvm9StoreInst22getPointerAddressSpaceEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='615' u='c' c='_ZNK4llvm17AtomicCmpXchgInst22getPointerAddressSpaceEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='788' u='c' c='_ZNK4llvm13AtomicRMWInst22getPointerAddressSpaceEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='993' u='c' c='_ZNK4llvm17GetElementPtrInst22getPointerAddressSpaceEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1006' u='c' c='_ZN4llvm17GetElementPtrInst16getGEPReturnTypeEPNS_4TypeEPNS_5ValueENS_8ArrayRefIS4_EE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='5026' u='c' c='_ZNK4llvm12IntToPtrInst15getAddressSpaceEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='5077' u='c' c='_ZNK4llvm12PtrToIntInst22getPointerAddressSpaceEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='5184' u='c' c='_ZNK4llvm17AddrSpaceCastInst18getSrcAddressSpaceEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='5189' u='c' c='_ZNK4llvm17AddrSpaceCastInst19getDestAddressSpaceEv'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='297' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='353' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='373' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='614' u='c' c='_Z23convertPtrArgsToOffsetsPN4llvm6ModuleEPKcjPNS_14GlobalVariableE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='689' u='c' c='_ZL18fixConstantMemArgsPN4llvm6ModuleEPKc'/>
+<doc f='include/llvm-6.0/llvm/IR/Type.h' l='378'>/// Get the address space of this pointer or pointer vector type.</doc>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='469' u='c' c='_ZNK4llvm11GEPOperator22getPointerAddressSpaceEv'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1820' u='c' c='_ZN4llvm9IRBuilder27CreateInvariantGroupBarrierEPNS_5ValueE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='119' u='c' c='_ZL24CloneFuncFixOpenCLImageTPN4llvm6ModuleEPNS_8FunctionE'/>

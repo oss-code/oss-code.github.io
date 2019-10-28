@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='545' type='void llvm::RegionBase::verifyRegion() const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='541'>/// @brief Verify if the region is a correct region.
+  ///
+  /// Check if this is a correctly build Region. This is an expensive check, as
+  /// the complete CFG of the Region will be walked.</doc>

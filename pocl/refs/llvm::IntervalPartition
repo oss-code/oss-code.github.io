@@ -1,0 +1,27 @@
+<inh f='include/llvm-6.0/llvm/Pass.h' l='285' c='llvm::FunctionPass'/>
+<def f='include/llvm-6.0/llvm/Analysis/IntervalPartition.h' l='43' ll='107'/>
+<size>112</size>
+<doc f='include/llvm-6.0/llvm/Analysis/IntervalPartition.h' l='35'>//===----------------------------------------------------------------------===//
+//
+// IntervalPartition - This class builds and holds an &quot;interval partition&quot; for
+// a function.  This partition divides the control flow graph into a set of
+// maximal intervals, as defined with the properties above.  Intuitively, an
+// interval is a (possibly nonexistent) loop with a &quot;tail&quot; of non-looping
+// nodes following it.
+//</doc>
+<mbr r='llvm::IntervalPartition::IntervalMap' o='256' t='IntervalMapTy'/>
+<mbr r='llvm::IntervalPartition::RootInterval' o='640' t='llvm::Interval *'/>
+<mbr r='llvm::IntervalPartition::Intervals' o='704' t='std::vector&lt;Interval *&gt;'/>
+<smbr r='llvm::IntervalPartition::ID' t='char'/>
+<fun r='_ZN4llvm17IntervalPartitionC1Ev'/>
+<fun r='_ZN4llvm17IntervalPartition13runOnFunctionERNS_8FunctionE'/>
+<fun r='_ZN4llvm17IntervalPartitionC1ERS0_b'/>
+<fun r='_ZNK4llvm17IntervalPartition5printERNS_11raw_ostreamEPKNS_6ModuleE'/>
+<fun r='_ZN4llvm17IntervalPartition15getRootIntervalEv'/>
+<fun r='_ZN4llvm17IntervalPartition21isDegeneratePartitionEv'/>
+<fun r='_ZN4llvm17IntervalPartition16getBlockIntervalEPNS_10BasicBlockE'/>
+<fun r='_ZNK4llvm17IntervalPartition16getAnalysisUsageERNS_13AnalysisUsageE'/>
+<fun r='_ZNK4llvm17IntervalPartition12getIntervalsEv'/>
+<fun r='_ZN4llvm17IntervalPartition13releaseMemoryEv'/>
+<fun r='_ZN4llvm17IntervalPartition22addIntervalToPartitionEPNS_8IntervalE'/>
+<fun r='_ZN4llvm17IntervalPartition18updatePredecessorsEPNS_8IntervalE'/>

@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='532' type='llvm::ModRefInfo llvm::AAResults::getModRefInfo(const llvm::LoadInst * L, const llvm::MemoryLocation &amp; Loc)'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='536' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_8LoadInstEPKNS_5ValueEm'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='629' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_11InstructionERKNS_8OptionalINS_14MemoryLocationEEE'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='530'>/// getModRefInfo (for loads) - Return information about whether
+  /// a particular load modifies or reads the specified memory location.</doc>

@@ -1,0 +1,9 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='1666' type='LLVMValueRef LLVMConstStruct(LLVMValueRef * ConstantVals, unsigned int Count, LLVMBool Packed)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='1658'>/**
+ * Create a ConstantStruct in the global Context.
+ *
+ * This is the same as LLVMConstStructInContext except it operates on the
+ * global Context.
+ *
+ * @see LLVMConstStructInContext()
+ */</doc>

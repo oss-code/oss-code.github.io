@@ -1,0 +1,9 @@
+<inh f='include/llvm-6.0/llvm/IR/PassManager.h' l='382' c='llvm::AnalysisInfoMixin'/>
+<def f='include/llvm-6.0/llvm/Analysis/MemoryDependenceAnalysis.h' l='503' ll='513'/>
+<size>1</size>
+<doc f='include/llvm-6.0/llvm/Analysis/MemoryDependenceAnalysis.h' l='499'>/// An analysis that produces \c MemoryDependenceResults for a function.
+///
+/// This is essentially a no-op because the results are computed entirely
+/// lazily.</doc>
+<smbr r='llvm::MemoryDependenceAnalysis::Key' t='llvm::AnalysisKey'/>
+<fun r='_ZN4llvm24MemoryDependenceAnalysis3runERNS_8FunctionERNS_15AnalysisManagerIS1_JEEE'/>

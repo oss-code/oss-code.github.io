@@ -1,0 +1,16 @@
+<def f='include/c++/7/bits/stl_map.h' l='347' ll='349' type='iterator std::map::begin()'/>
+<use f='include/llvm-6.0/llvm/IR/Attributes.h' l='803' u='c' c='_ZN4llvm11AttrBuilder8td_beginB5cxx11Ev'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='634' u='c' c='_ZN4llvm18ModuleSummaryIndex5beginEv'/>
+<doc f='include/c++/7/bits/stl_map.h' l='342'>/**
+       *  Returns a read/write iterator that points to the first pair in the
+       *  %map.
+       *  Iteration is done in ascending order according to the keys.
+       */</doc>
+<use f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='116' u='c' c='_ZN4llvm9CallGraph5beginEv'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='878' u='c' c='_Z18cleanKernelLibraryv'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='106' u='c' c='_Z19clearTargetMachinesv'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='113' u='c' c='_Z17clearKernelPassesv'/>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='108' u='c' c='_ZN12_GLOBAL__N_115AutomaticLocals11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/LLVMUtils.cc' l='57' u='c' c='_ZN4pocl26regenerate_kernel_metadataERN4llvm6ModuleERSt3mapIPNS0_8FunctionES5_St4lessIS5_ESaISt4pairIKS5_S5_EEE'/>
+<use f='pocl/lib/llvmopencl/LLVMUtils.cc' l='90' u='c' c='_ZN4pocl26regenerate_kernel_metadataERN4llvm6ModuleERSt3mapIPNS0_8FunctionES5_St4lessIS5_ESaISt4pairIKS5_S5_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='261' u='c' c='_ZN4pocl9Workgroup11runOnModuleERN4llvm6ModuleE'/>

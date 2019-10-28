@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1187' ll='1193' type='int llvm::LazyCallGraph::getRefSCCIndex(llvm::LazyCallGraph::RefSCC &amp; RC)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1183'>/// Get the index of a RefSCC within the postorder traversal.
+  ///
+  /// Requires that this RefSCC is a valid one in the (perhaps partial)
+  /// postorder traversed part of the graph.</doc>

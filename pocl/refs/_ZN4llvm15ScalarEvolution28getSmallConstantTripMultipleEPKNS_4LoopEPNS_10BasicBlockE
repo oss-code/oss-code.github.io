@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='720' type='unsigned int llvm::ScalarEvolution::getSmallConstantTripMultiple(const llvm::Loop * L, llvm::BasicBlock * ExitingBlock)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='714'>/// Returns the largest constant divisor of the trip count of this loop as a
+  /// normal unsigned value, if possible. This means that the actual trip
+  /// count is always a multiple of the returned value (don&apos;t forget the trip
+  /// count could very well be zero as well!). As explained in the comments
+  /// for getSmallConstantTripCount, this assumes that control exits the loop
+  /// via ExitingBlock.</doc>

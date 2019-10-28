@@ -1,0 +1,6 @@
+<def f='pocl/include/CL/cl2.hpp' l='5818' ll='5822' type='cl::Kernel &amp; cl::Kernel::operator=(const cl_kernel &amp; rhs)'/>
+<doc f='pocl/include/CL/cl2.hpp' l='5813'>/*! \brief Assignment operator from cl_kernel - takes ownership.
+     *
+     *  This effectively transfers ownership of a refcount on the rhs and calls
+     *  clReleaseKernel() on the value previously held by this instance.
+     */</doc>

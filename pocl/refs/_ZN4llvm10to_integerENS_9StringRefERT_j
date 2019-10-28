@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/ADT/StringExtras.h' l='163' ll='165' type='bool llvm::to_integer(llvm::StringRef S, N &amp; Num, unsigned int Base = 0)'/>
+<doc f='include/llvm-6.0/llvm/ADT/StringExtras.h' l='160'>/// \brief Convert the string \p S to an integer of the specified type using
+/// the radix \p Base.  If \p Base is 0, auto-detects the radix.
+/// Returns true if the number was successfully converted, false otherwise.</doc>

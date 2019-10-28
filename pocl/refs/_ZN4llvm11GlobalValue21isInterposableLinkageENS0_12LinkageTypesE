@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='328' ll='348' type='static bool llvm::GlobalValue::isInterposableLinkage(llvm::GlobalValue::LinkageTypes Linkage)'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='411' u='c' c='_ZNK4llvm11GlobalValue14isInterposableEv'/>
+<doc f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='325'>/// Whether the definition of this global may be replaced by something
+  /// non-equivalent at link time. For example, if a function has weak linkage
+  /// then the code defining it may be replaced by different code.</doc>

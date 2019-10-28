@@ -1,0 +1,8 @@
+<dec f='pocl/lib/CL/devices/common.h' l='76' type='void fill_dev_sampler_t(dev_sampler_t * ds, struct pocl_argument * parg)'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='635' u='c' c='pocl_basic_run'/>
+<def f='pocl/lib/CL/devices/common.c' l='791' ll='820' type='void fill_dev_sampler_t(dev_sampler_t * ds, struct pocl_argument * parg)'/>
+<doc f='pocl/lib/CL/devices/common.c' l='787'>/**
+ * Populates the device specific sampler data structure used by kernel
+ * from given kernel sampler argument
+ */</doc>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='159' u='c' c='setup_kernel_arg_array'/>

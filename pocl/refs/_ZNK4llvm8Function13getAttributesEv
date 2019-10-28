@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/IR/Function.h' l='205' type='llvm::AttributeList llvm::Function::getAttributes() const'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='233' u='c' c='_ZN4llvm8Function12removeFnAttrENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='342' u='c' c='_ZNK4llvm8Function12hasAttributeEjNS_9Attribute8AttrKindE'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='347' u='c' c='_ZNK4llvm8Function17hasParamAttributeEjNS_9Attribute8AttrKindE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1919' u='c' c='_ZNK4llvm8CallInst13hasFnAttrImplET_'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='4044' u='c' c='_ZNK4llvm10InvokeInst13hasFnAttrImplET_'/>
+<doc f='include/llvm-6.0/llvm/IR/Function.h' l='204'>/// @brief Return the attribute list for this Function.</doc>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='661' u='c' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>

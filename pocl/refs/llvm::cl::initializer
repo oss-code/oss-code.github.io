@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/Support/CommandLine.h' l='399' ll='404'/>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='395'>// init - Specify a default (initial) value for the command line argument, if
+// the default constructor for the argument type does not give you what you
+// want.  This is only valid on &quot;opt&quot; arguments, not on &quot;list&quot; arguments.
+//</doc>
+<mbr r='llvm::cl::initializer::Init' t='const Ty &amp;'/>
+<fun r='_ZN4llvm2cl11initializerC1ERKT_'/>
+<fun r='_ZNK4llvm2cl11initializer5applyERT_'/>

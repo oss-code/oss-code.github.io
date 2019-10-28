@@ -1,0 +1,5 @@
+<dec f='include/hwloc/bitmap.h' l='224' type='int hwloc_bitmap_isset(hwloc_const_bitmap_t bitmap, unsigned int id)'/>
+<use f='include/hwloc/cpuset.h' l='49' u='c' c='hwloc_cpuset_isset'/>
+<use f='include/hwloc/helper.h' l='988' u='c' c='hwloc_cpuset_from_nodeset'/>
+<use f='include/hwloc/helper.h' l='1011' u='c' c='hwloc_cpuset_from_nodeset_strict'/>
+<doc f='include/hwloc/bitmap.h' l='223'>/** \brief Test whether index \p id is part of bitmap \p bitmap */</doc>

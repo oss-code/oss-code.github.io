@@ -1,0 +1,48 @@
+<def f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='303' ll='437'/>
+<ovr f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='446' c='llvm::FPPassManager'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/RegionPass.h' l='89' c='llvm::RGPassManager'/>
+<size>408</size>
+<doc f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='298'>//===----------------------------------------------------------------------===//
+// PMDataManager
+
+/// PMDataManager provides the common place to manage the analysis data
+/// used by pass managers.</doc>
+<fun r='_ZN4llvm13PMDataManagerC1Ev'/>
+<fun r='_ZN4llvm13PMDataManagerD1Ev'/>
+<fun r='_ZN4llvm13PMDataManager9getAsPassEv'/>
+<fun r='_ZN4llvm13PMDataManager23recordAvailableAnalysisEPNS_4PassE'/>
+<fun r='_ZN4llvm13PMDataManager23verifyPreservedAnalysisEPNS_4PassE'/>
+<fun r='_ZN4llvm13PMDataManager26removeNotPreservedAnalysisEPNS_4PassE'/>
+<fun r='_ZN4llvm13PMDataManager16removeDeadPassesEPNS_4PassENS_9StringRefENS_19PassDebuggingStringE'/>
+<fun r='_ZN4llvm13PMDataManager8freePassEPNS_4PassENS_9StringRefENS_19PassDebuggingStringE'/>
+<fun r='_ZN4llvm13PMDataManager3addEPNS_4PassEb'/>
+<fun r='_ZN4llvm13PMDataManager25addLowerLevelRequiredPassEPNS_4PassES2_'/>
+<fun r='_ZN4llvm13PMDataManager15getOnTheFlyPassEPNS_4PassEPKvRNS_8FunctionE'/>
+<fun r='_ZN4llvm13PMDataManager22initializeAnalysisInfoEv'/>
+<fun r='_ZN4llvm13PMDataManager27preserveHigherLevelAnalysisEPNS_4PassE'/>
+<fun r='_ZN4llvm13PMDataManager30collectRequiredAndUsedAnalysesERNS_15SmallVectorImplIPNS_4PassEEERNS1_IPKvEES3_'/>
+<fun r='_ZN4llvm13PMDataManager22initializeAnalysisImplEPNS_4PassE'/>
+<fun r='_ZN4llvm13PMDataManager16findAnalysisPassEPKvb'/>
+<fun r='_ZN4llvm13PMDataManager18getTopLevelManagerEv'/>
+<fun r='_ZN4llvm13PMDataManager18setTopLevelManagerEPNS_17PMTopLevelManagerE'/>
+<fun r='_ZNK4llvm13PMDataManager8getDepthEv'/>
+<fun r='_ZN4llvm13PMDataManager8setDepthEj'/>
+<fun r='_ZNK4llvm13PMDataManager12dumpLastUsesEPNS_4PassEj'/>
+<fun r='_ZNK4llvm13PMDataManager17dumpPassArgumentsEv'/>
+<fun r='_ZN4llvm13PMDataManager12dumpPassInfoEPNS_4PassENS_19PassDebuggingStringES3_NS_9StringRefE'/>
+<fun r='_ZNK4llvm13PMDataManager15dumpRequiredSetEPKNS_4PassE'/>
+<fun r='_ZNK4llvm13PMDataManager16dumpPreservedSetEPKNS_4PassE'/>
+<fun r='_ZNK4llvm13PMDataManager11dumpUsedSetEPKNS_4PassE'/>
+<fun r='_ZNK4llvm13PMDataManager21getNumContainedPassesEv'/>
+<fun r='_ZNK4llvm13PMDataManager18getPassManagerTypeEv'/>
+<fun r='_ZN4llvm13PMDataManager20getAvailableAnalysisEv'/>
+<fun r='_ZN4llvm13PMDataManager25populateInheritedAnalysisERNS_7PMStackE'/>
+<mbr r='llvm::PMDataManager::TPM' o='64' t='llvm::PMTopLevelManager *'/>
+<mbr r='llvm::PMDataManager::PassVector' o='128' t='SmallVector&lt;llvm::Pass *, 16&gt;'/>
+<mbr r='llvm::PMDataManager::InheritedAnalysis' o='1344' t='DenseMap&lt;AnalysisID, llvm::Pass *&gt; *[7]'/>
+<fun r='_ZNK4llvm13PMDataManager31isPassDebuggingExecutionsOrMoreEv'/>
+<fun r='_ZNK4llvm13PMDataManager17dumpAnalysisUsageENS_9StringRefEPKNS_4PassERKNS_15SmallVectorImplIPKvEE'/>
+<mbr r='llvm::PMDataManager::AvailableAnalysis' o='1792' t='DenseMap&lt;AnalysisID, llvm::Pass *&gt;'/>
+<mbr r='llvm::PMDataManager::HigherLevelAnalysis' o='1984' t='SmallVector&lt;llvm::Pass *, 16&gt;'/>
+<mbr r='llvm::PMDataManager::Depth' o='3200' t='unsigned int'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/LoopPass.h' l='97' c='llvm::LPPassManager'/>

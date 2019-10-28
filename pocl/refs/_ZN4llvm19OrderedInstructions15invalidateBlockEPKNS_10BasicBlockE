@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Transforms/Utils/OrderedInstructions.h' l='49' type='void llvm::OrderedInstructions::invalidateBlock(const llvm::BasicBlock * BB)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/OrderedInstructions.h' l='45'>/// Invalidate the OrderedBasicBlock cache when its basic block changes.
+  /// i.e. If an instruction is deleted or added to the basic block, the user
+  /// should call this function to invalidate the OrderedBasicBlock cache for
+  /// this basic block.</doc>

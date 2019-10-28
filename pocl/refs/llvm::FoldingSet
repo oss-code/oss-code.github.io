@@ -1,0 +1,16 @@
+<def f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='474' ll='504'/>
+<doc f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='465'>//===----------------------------------------------------------------------===//
+/// FoldingSet - This template class is used to instantiate a specialized
+/// implementation of the folding set to the node class T.  T must be a
+/// subclass of FoldingSetNode and implement a Profile function.
+///
+/// Note that this set type is movable and move-assignable. However, its
+/// moved-from state is not a valid state for anything other than
+/// move-assigning and destroying. This is primarily to enable movable APIs
+/// that incorporate these objects.</doc>
+<fun r='_ZNK4llvm10FoldingSet14GetNodeProfileEPNS_14FoldingSetImplIT_E4NodeERNS_16FoldingSetNodeIDE'/>
+<fun r='_ZNK4llvm10FoldingSet10NodeEqualsEPNS_14FoldingSetImplIT_E4NodeERKNS_16FoldingSetNodeIDEjRS6_'/>
+<fun r='_ZNK4llvm10FoldingSet15ComputeNodeHashEPNS_14FoldingSetImplIT_E4NodeERNS_16FoldingSetNodeIDE'/>
+<fun r='_ZN4llvm10FoldingSetC1Ej'/>
+<fun r='_ZN4llvm10FoldingSetC1EONS_10FoldingSetIT_EE'/>
+<fun r='_ZN4llvm10FoldingSetaSEONS_10FoldingSetIT_EE'/>

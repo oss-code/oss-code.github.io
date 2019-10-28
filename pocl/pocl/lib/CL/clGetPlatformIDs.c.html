@@ -1,0 +1,283 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>clGetPlatformIDs.c source code [pocl/lib/CL/clGetPlatformIDs.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/CL/clGetPlatformIDs.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>CL</a>/<a href='clGetPlatformIDs.c.html'>clGetPlatformIDs.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* OpenCL runtime library: clGetPlatformIDs()</i></td></tr>
+<tr><th id="2">2</th><td><i></i></td></tr>
+<tr><th id="3">3</th><td><i>   Copyright (c) 2011 Kalle Raiskila </i></td></tr>
+<tr><th id="4">4</th><td><i>   </i></td></tr>
+<tr><th id="5">5</th><td><i>   Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="6">6</th><td><i>   of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="7">7</th><td><i>   in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="8">8</th><td><i>   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="9">9</th><td><i>   copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="10">10</th><td><i>   furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="11">11</th><td><i>   </i></td></tr>
+<tr><th id="12">12</th><td><i>   The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="13">13</th><td><i>   all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="14">14</th><td><i>   </i></td></tr>
+<tr><th id="15">15</th><td><i>   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="16">16</th><td><i>   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="17">17</th><td><i>   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="18">18</th><td><i>   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="19">19</th><td><i>   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="20">20</th><td><i>   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="21">21</th><td><i>   THE SOFTWARE.</i></td></tr>
+<tr><th id="22">22</th><td><i>*/</i></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><u>#include <a href="../../../include/assert.h.html">&lt;assert.h&gt;</a></u></td></tr>
+<tr><th id="25">25</th><td><u>#include <a href="../../../include/string.h.html">&lt;string.h&gt;</a></u></td></tr>
+<tr><th id="26">26</th><td><u>#include <a href="pocl_cl.h.html">"pocl_cl.h"</a></u></td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><u>#<span data-ppcond="28">ifdef</span> <span class="macro" data-ref="_M/__GNUC__">__GNUC__</span></u></td></tr>
+<tr><th id="29">29</th><td><u>#pragma GCC visibility push(hidden)</u></td></tr>
+<tr><th id="30">30</th><td><u>#<span data-ppcond="28">endif</span></u></td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><i>/* The "implementation" of the _cl_device_id struct.</i></td></tr>
+<tr><th id="33">33</th><td><i>* Instantiated in clGetPlatformIDs.c</i></td></tr>
+<tr><th id="34">34</th><td><i>*</i></td></tr>
+<tr><th id="35">35</th><td><i>* TODO: the NULL entries are functions that lack implementation</i></td></tr>
+<tr><th id="36">36</th><td><i>* (or even stubs) in pocl</i></td></tr>
+<tr><th id="37">37</th><td><i>*/</i></td></tr>
+<tr><th id="38">38</th><td><u>#<span data-ppcond="38">ifdef</span> <a class="macro" href="../../config.h.html#11" data-ref="_M/BUILD_ICD">BUILD_ICD</a></u></td></tr>
+<tr><th id="39">39</th><td><b>struct</b> <a class="type" href="../../../include/ocl_icd.h.html#_cl_icd_dispatch" title='_cl_icd_dispatch' data-ref="_cl_icd_dispatch">_cl_icd_dispatch</a> <dfn class="decl def" id="pocl_dispatch" title='pocl_dispatch' data-ref="pocl_dispatch">pocl_dispatch</dfn> = {</td></tr>
+<tr><th id="40">40</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclGetPlatformIDs" data-ref="_M/POname">POname</a>(clGetPlatformIDs),</td></tr>
+<tr><th id="41">41</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclGetPlatformInfo" data-ref="_M/POname">POname</a>(clGetPlatformInfo),</td></tr>
+<tr><th id="42">42</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclGetDeviceIDs" data-ref="_M/POname">POname</a>(clGetDeviceIDs),</td></tr>
+<tr><th id="43">43</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclGetDeviceInfo" data-ref="_M/POname">POname</a>(clGetDeviceInfo),</td></tr>
+<tr><th id="44">44</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclCreateContext" data-ref="_M/POname">POname</a>(clCreateContext),</td></tr>
+<tr><th id="45">45</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclCreateContextFromType" data-ref="_M/POname">POname</a>(clCreateContextFromType),</td></tr>
+<tr><th id="46">46</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclRetainContext" data-ref="_M/POname">POname</a>(clRetainContext),</td></tr>
+<tr><th id="47">47</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclReleaseContext" data-ref="_M/POname">POname</a>(clReleaseContext),</td></tr>
+<tr><th id="48">48</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclGetContextInfo" data-ref="_M/POname">POname</a>(clGetContextInfo),</td></tr>
+<tr><th id="49">49</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclCreateCommandQueue" data-ref="_M/POname">POname</a>(clCreateCommandQueue),</td></tr>
+<tr><th id="50">50</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclRetainCommandQueue" data-ref="_M/POname">POname</a>(clRetainCommandQueue), <i>/* 10 */</i></td></tr>
+<tr><th id="51">51</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclReleaseCommandQueue" data-ref="_M/POname">POname</a>(clReleaseCommandQueue),</td></tr>
+<tr><th id="52">52</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclGetCommandQueueInfo" data-ref="_M/POname">POname</a>(clGetCommandQueueInfo),</td></tr>
+<tr><th id="53">53</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span> <i>/*clSetCommandQueueProperty*/</i>,</td></tr>
+<tr><th id="54">54</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclCreateBuffer" data-ref="_M/POname">POname</a>(clCreateBuffer),</td></tr>
+<tr><th id="55">55</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclCreateImage2D" data-ref="_M/POname">POname</a>(clCreateImage2D),</td></tr>
+<tr><th id="56">56</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclCreateImage3D" data-ref="_M/POname">POname</a>(clCreateImage3D),</td></tr>
+<tr><th id="57">57</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclRetainMemObject" data-ref="_M/POname">POname</a>(clRetainMemObject),</td></tr>
+<tr><th id="58">58</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclReleaseMemObject" data-ref="_M/POname">POname</a>(clReleaseMemObject),</td></tr>
+<tr><th id="59">59</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclGetSupportedImageFormats" data-ref="_M/POname">POname</a>(clGetSupportedImageFormats),</td></tr>
+<tr><th id="60">60</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclGetMemObjectInfo" data-ref="_M/POname">POname</a>(clGetMemObjectInfo), <i>/* 20 */</i></td></tr>
+<tr><th id="61">61</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclGetImageInfo" data-ref="_M/POname">POname</a>(clGetImageInfo),</td></tr>
+<tr><th id="62">62</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclCreateSampler" data-ref="_M/POname">POname</a>(clCreateSampler),</td></tr>
+<tr><th id="63">63</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclRetainSampler" data-ref="_M/POname">POname</a>(clRetainSampler),</td></tr>
+<tr><th id="64">64</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclReleaseSampler" data-ref="_M/POname">POname</a>(clReleaseSampler),</td></tr>
+<tr><th id="65">65</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclGetSamplerInfo" data-ref="_M/POname">POname</a>(clGetSamplerInfo),</td></tr>
+<tr><th id="66">66</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclCreateProgramWithSource" data-ref="_M/POname">POname</a>(clCreateProgramWithSource),</td></tr>
+<tr><th id="67">67</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclCreateProgramWithBinary" data-ref="_M/POname">POname</a>(clCreateProgramWithBinary),</td></tr>
+<tr><th id="68">68</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclRetainProgram" data-ref="_M/POname">POname</a>(clRetainProgram),</td></tr>
+<tr><th id="69">69</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclReleaseProgram" data-ref="_M/POname">POname</a>(clReleaseProgram),</td></tr>
+<tr><th id="70">70</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclBuildProgram" data-ref="_M/POname">POname</a>(clBuildProgram), <i>/* 30 */</i></td></tr>
+<tr><th id="71">71</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclUnloadCompiler" data-ref="_M/POname">POname</a>(clUnloadCompiler),</td></tr>
+<tr><th id="72">72</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclGetProgramInfo" data-ref="_M/POname">POname</a>(clGetProgramInfo),</td></tr>
+<tr><th id="73">73</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclGetProgramBuildInfo" data-ref="_M/POname">POname</a>(clGetProgramBuildInfo),</td></tr>
+<tr><th id="74">74</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclCreateKernel" data-ref="_M/POname">POname</a>(clCreateKernel),</td></tr>
+<tr><th id="75">75</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclCreateKernelsInProgram" data-ref="_M/POname">POname</a>(clCreateKernelsInProgram),</td></tr>
+<tr><th id="76">76</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclRetainKernel" data-ref="_M/POname">POname</a>(clRetainKernel),</td></tr>
+<tr><th id="77">77</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclReleaseKernel" data-ref="_M/POname">POname</a>(clReleaseKernel),</td></tr>
+<tr><th id="78">78</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclSetKernelArg" data-ref="_M/POname">POname</a>(clSetKernelArg),</td></tr>
+<tr><th id="79">79</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclGetKernelInfo" data-ref="_M/POname">POname</a>(clGetKernelInfo),</td></tr>
+<tr><th id="80">80</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclGetKernelWorkGroupInfo" data-ref="_M/POname">POname</a>(clGetKernelWorkGroupInfo), <i>/* 40 */</i></td></tr>
+<tr><th id="81">81</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclWaitForEvents" data-ref="_M/POname">POname</a>(clWaitForEvents),</td></tr>
+<tr><th id="82">82</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclGetEventInfo" data-ref="_M/POname">POname</a>(clGetEventInfo),</td></tr>
+<tr><th id="83">83</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclRetainEvent" data-ref="_M/POname">POname</a>(clRetainEvent),</td></tr>
+<tr><th id="84">84</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclReleaseEvent" data-ref="_M/POname">POname</a>(clReleaseEvent),</td></tr>
+<tr><th id="85">85</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclGetEventProfilingInfo" data-ref="_M/POname">POname</a>(clGetEventProfilingInfo),</td></tr>
+<tr><th id="86">86</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclFlush" data-ref="_M/POname">POname</a>(clFlush),</td></tr>
+<tr><th id="87">87</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclFinish" data-ref="_M/POname">POname</a>(clFinish),</td></tr>
+<tr><th id="88">88</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueReadBuffer" data-ref="_M/POname">POname</a>(clEnqueueReadBuffer),</td></tr>
+<tr><th id="89">89</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueWriteBuffer" data-ref="_M/POname">POname</a>(clEnqueueWriteBuffer),</td></tr>
+<tr><th id="90">90</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueCopyBuffer" data-ref="_M/POname">POname</a>(clEnqueueCopyBuffer), <i>/* 50 */</i></td></tr>
+<tr><th id="91">91</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueReadImage" data-ref="_M/POname">POname</a>(clEnqueueReadImage),</td></tr>
+<tr><th id="92">92</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueWriteImage" data-ref="_M/POname">POname</a>(clEnqueueWriteImage),</td></tr>
+<tr><th id="93">93</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueCopyImage" data-ref="_M/POname">POname</a>(clEnqueueCopyImage),</td></tr>
+<tr><th id="94">94</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueCopyImageToBuffer" data-ref="_M/POname">POname</a>(clEnqueueCopyImageToBuffer),</td></tr>
+<tr><th id="95">95</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueCopyBufferToImage" data-ref="_M/POname">POname</a>(clEnqueueCopyBufferToImage),</td></tr>
+<tr><th id="96">96</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueMapBuffer" data-ref="_M/POname">POname</a>(clEnqueueMapBuffer),</td></tr>
+<tr><th id="97">97</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueMapImage" data-ref="_M/POname">POname</a>(clEnqueueMapImage),</td></tr>
+<tr><th id="98">98</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueUnmapMemObject" data-ref="_M/POname">POname</a>(clEnqueueUnmapMemObject),</td></tr>
+<tr><th id="99">99</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueNDRangeKernel" data-ref="_M/POname">POname</a>(clEnqueueNDRangeKernel),</td></tr>
+<tr><th id="100">100</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueTask" data-ref="_M/POname">POname</a>(clEnqueueTask), <i>/* 60 */</i></td></tr>
+<tr><th id="101">101</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueNativeKernel" data-ref="_M/POname">POname</a>(clEnqueueNativeKernel),</td></tr>
+<tr><th id="102">102</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueMarker" data-ref="_M/POname">POname</a>(clEnqueueMarker),</td></tr>
+<tr><th id="103">103</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueWaitForEvents" data-ref="_M/POname">POname</a>(clEnqueueWaitForEvents),</td></tr>
+<tr><th id="104">104</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueBarrier" data-ref="_M/POname">POname</a>(clEnqueueBarrier),</td></tr>
+<tr><th id="105">105</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclGetExtensionFunctionAddress" data-ref="_M/POname">POname</a>(clGetExtensionFunctionAddress),</td></tr>
+<tr><th id="106">106</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclCreateFromGLBuffer" data-ref="_M/POname">POname</a>(clCreateFromGLBuffer),</td></tr>
+<tr><th id="107">107</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclCreateFromGLTexture2D" data-ref="_M/POname">POname</a>(clCreateFromGLTexture2D),</td></tr>
+<tr><th id="108">108</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclCreateFromGLTexture3D" data-ref="_M/POname">POname</a>(clCreateFromGLTexture3D),</td></tr>
+<tr><th id="109">109</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclCreateFromGLRenderbuffer" data-ref="_M/POname">POname</a>(clCreateFromGLRenderbuffer),</td></tr>
+<tr><th id="110">110</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclGetGLObjectInfo" data-ref="_M/POname">POname</a>(clGetGLObjectInfo),</td></tr>
+<tr><th id="111">111</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclGetGLTextureInfo" data-ref="_M/POname">POname</a>(clGetGLTextureInfo),</td></tr>
+<tr><th id="112">112</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueAcquireGLObjects" data-ref="_M/POname">POname</a>(clEnqueueAcquireGLObjects),</td></tr>
+<tr><th id="113">113</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueReleaseGLObjects" data-ref="_M/POname">POname</a>(clEnqueueReleaseGLObjects),</td></tr>
+<tr><th id="114">114</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclGetGLContextInfoKHR" data-ref="_M/POname">POname</a>(clGetGLContextInfoKHR),</td></tr>
+<tr><th id="115">115</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown75 */</i></td></tr>
+<tr><th id="116">116</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown76 */</i></td></tr>
+<tr><th id="117">117</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown77 */</i></td></tr>
+<tr><th id="118">118</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown78 */</i></td></tr>
+<tr><th id="119">119</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown79 */</i></td></tr>
+<tr><th id="120">120</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown80 */</i></td></tr>
+<tr><th id="121">121</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclSetEventCallback" data-ref="_M/POname">POname</a>(clSetEventCallback),</td></tr>
+<tr><th id="122">122</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclCreateSubBuffer" data-ref="_M/POname">POname</a>(clCreateSubBuffer),</td></tr>
+<tr><th id="123">123</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclSetMemObjectDestructorCallback" data-ref="_M/POname">POname</a>(clSetMemObjectDestructorCallback),</td></tr>
+<tr><th id="124">124</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclCreateUserEvent" data-ref="_M/POname">POname</a>(clCreateUserEvent),</td></tr>
+<tr><th id="125">125</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclSetUserEventStatus" data-ref="_M/POname">POname</a>(clSetUserEventStatus),</td></tr>
+<tr><th id="126">126</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueReadBufferRect" data-ref="_M/POname">POname</a>(clEnqueueReadBufferRect),</td></tr>
+<tr><th id="127">127</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueWriteBufferRect" data-ref="_M/POname">POname</a>(clEnqueueWriteBufferRect),</td></tr>
+<tr><th id="128">128</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueCopyBufferRect" data-ref="_M/POname">POname</a>(clEnqueueCopyBufferRect),</td></tr>
+<tr><th id="129">129</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;POname(clCreateSubDevicesEXT),     */</i></td></tr>
+<tr><th id="130">130</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclRetainDevice" data-ref="_M/POname">POname</a>(clRetainDevice), <i>/* &amp;POname(clRetainDeviceEXT),         */</i></td></tr>
+<tr><th id="131">131</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclReleaseDevice" data-ref="_M/POname">POname</a>(clReleaseDevice), <i>/* &amp;POname(clReleaseDeviceEXT),        */</i></td></tr>
+<tr><th id="132">132</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown92 */</i></td></tr>
+<tr><th id="133">133</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclCreateSubDevices" data-ref="_M/POname">POname</a>(clCreateSubDevices),</td></tr>
+<tr><th id="134">134</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclRetainDevice" data-ref="_M/POname">POname</a>(clRetainDevice),</td></tr>
+<tr><th id="135">135</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclReleaseDevice" data-ref="_M/POname">POname</a>(clReleaseDevice),</td></tr>
+<tr><th id="136">136</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclCreateImage" data-ref="_M/POname">POname</a>(clCreateImage),</td></tr>
+<tr><th id="137">137</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclCreateProgramWithBuiltInKernels" data-ref="_M/POname">POname</a>(clCreateProgramWithBuiltInKernels),</td></tr>
+<tr><th id="138">138</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclCompileProgram" data-ref="_M/POname">POname</a>(clCompileProgram),</td></tr>
+<tr><th id="139">139</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclLinkProgram" data-ref="_M/POname">POname</a>(clLinkProgram),</td></tr>
+<tr><th id="140">140</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclUnloadPlatformCompiler" data-ref="_M/POname">POname</a>(clUnloadPlatformCompiler),</td></tr>
+<tr><th id="141">141</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclGetKernelArgInfo" data-ref="_M/POname">POname</a>(clGetKernelArgInfo),</td></tr>
+<tr><th id="142">142</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueFillBuffer" data-ref="_M/POname">POname</a>(clEnqueueFillBuffer),</td></tr>
+<tr><th id="143">143</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueFillImage" data-ref="_M/POname">POname</a>(clEnqueueFillImage),</td></tr>
+<tr><th id="144">144</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueMigrateMemObjects" data-ref="_M/POname">POname</a>(clEnqueueMigrateMemObjects),</td></tr>
+<tr><th id="145">145</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueMarkerWithWaitList" data-ref="_M/POname">POname</a>(clEnqueueMarkerWithWaitList),</td></tr>
+<tr><th id="146">146</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueBarrierWithWaitList" data-ref="_M/POname">POname</a>(clEnqueueBarrierWithWaitList),</td></tr>
+<tr><th id="147">147</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclGetExtensionFunctionAddressForPlatform" data-ref="_M/POname">POname</a>(clGetExtensionFunctionAddressForPlatform),</td></tr>
+<tr><th id="148">148</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclCreateFromGLTexture" data-ref="_M/POname">POname</a>(clCreateFromGLTexture),</td></tr>
+<tr><th id="149">149</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown109 */</i></td></tr>
+<tr><th id="150">150</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown110 */</i></td></tr>
+<tr><th id="151">151</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown111 */</i></td></tr>
+<tr><th id="152">152</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown112 */</i></td></tr>
+<tr><th id="153">153</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown113 */</i></td></tr>
+<tr><th id="154">154</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown114 */</i></td></tr>
+<tr><th id="155">155</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown115 */</i></td></tr>
+<tr><th id="156">156</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown116 */</i></td></tr>
+<tr><th id="157">157</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown117 */</i></td></tr>
+<tr><th id="158">158</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown118 */</i></td></tr>
+<tr><th id="159">159</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown119 */</i></td></tr>
+<tr><th id="160">160</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown120 */</i></td></tr>
+<tr><th id="161">161</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown121 */</i></td></tr>
+<tr><th id="162">162</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown122 */</i></td></tr>
+<tr><th id="163">163</th><td><u>#<span data-ppcond="163">if</span> (<a class="macro" href="../../../include/ocl_icd.h.html#46" title="128" data-ref="_M/OCL_ICD_IDENTIFIED_FUNCTIONS">OCL_ICD_IDENTIFIED_FUNCTIONS</a> &gt; 110)</u></td></tr>
+<tr><th id="164">164</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclCreateCommandQueueWithProperties" data-ref="_M/POname">POname</a>(clCreateCommandQueueWithProperties),</td></tr>
+<tr><th id="165">165</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;POname(clCreatePipe),*/</i></td></tr>
+<tr><th id="166">166</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;POname(clGetPipeInfo),*/</i></td></tr>
+<tr><th id="167">167</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclSVMAlloc" data-ref="_M/POname">POname</a>(clSVMAlloc),</td></tr>
+<tr><th id="168">168</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclSVMFree" data-ref="_M/POname">POname</a>(clSVMFree),</td></tr>
+<tr><th id="169">169</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueSVMFree" data-ref="_M/POname">POname</a>(clEnqueueSVMFree),</td></tr>
+<tr><th id="170">170</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueSVMMemcpy" data-ref="_M/POname">POname</a>(clEnqueueSVMMemcpy),</td></tr>
+<tr><th id="171">171</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueSVMMemFill" data-ref="_M/POname">POname</a>(clEnqueueSVMMemFill),</td></tr>
+<tr><th id="172">172</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueSVMMap" data-ref="_M/POname">POname</a>(clEnqueueSVMMap),</td></tr>
+<tr><th id="173">173</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueSVMUnmap" data-ref="_M/POname">POname</a>(clEnqueueSVMUnmap),</td></tr>
+<tr><th id="174">174</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* clCreateSamplerWithProperties */</i></td></tr>
+<tr><th id="175">175</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclSetKernelArgSVMPointer" data-ref="_M/POname">POname</a>(clSetKernelArgSVMPointer),</td></tr>
+<tr><th id="176">176</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclSetKernelExecInfo" data-ref="_M/POname">POname</a>(clSetKernelExecInfo),</td></tr>
+<tr><th id="177">177</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* clGetKernelSubGroupInfoKHR */</i></td></tr>
+<tr><th id="178">178</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* clCloneKernel */</i></td></tr>
+<tr><th id="179">179</th><td>  &amp;<a class="macro" href="pocl_cl.h.html#225" title="POclCreateProgramWithIL" data-ref="_M/POname">POname</a>(clCreateProgramWithIL),</td></tr>
+<tr><th id="180">180</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown139 */</i></td></tr>
+<tr><th id="181">181</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown140 */</i></td></tr>
+<tr><th id="182">182</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown141 */</i></td></tr>
+<tr><th id="183">183</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown142 */</i></td></tr>
+<tr><th id="184">184</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown143 */</i></td></tr>
+<tr><th id="185">185</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown144 */</i></td></tr>
+<tr><th id="186">186</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown145 */</i></td></tr>
+<tr><th id="187">187</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown146 */</i></td></tr>
+<tr><th id="188">188</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown147 */</i></td></tr>
+<tr><th id="189">189</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown148 */</i></td></tr>
+<tr><th id="190">190</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown149 */</i></td></tr>
+<tr><th id="191">191</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown150 */</i></td></tr>
+<tr><th id="192">192</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown151 */</i></td></tr>
+<tr><th id="193">193</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown152 */</i></td></tr>
+<tr><th id="194">194</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown153 */</i></td></tr>
+<tr><th id="195">195</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown154 */</i></td></tr>
+<tr><th id="196">196</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown155 */</i></td></tr>
+<tr><th id="197">197</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown156 */</i></td></tr>
+<tr><th id="198">198</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown157 */</i></td></tr>
+<tr><th id="199">199</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown158 */</i></td></tr>
+<tr><th id="200">200</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown159 */</i></td></tr>
+<tr><th id="201">201</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown160 */</i></td></tr>
+<tr><th id="202">202</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown161 */</i></td></tr>
+<tr><th id="203">203</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown162 */</i></td></tr>
+<tr><th id="204">204</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown163 */</i></td></tr>
+<tr><th id="205">205</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown164 */</i></td></tr>
+<tr><th id="206">206</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown165 */</i></td></tr>
+<tr><th id="207">207</th><td><u>#<span data-ppcond="163">endif</span></u></td></tr>
+<tr><th id="208">208</th><td><u>#<span data-ppcond="208">if</span> (<a class="macro" href="../../../include/ocl_icd.h.html#46" title="128" data-ref="_M/OCL_ICD_IDENTIFIED_FUNCTIONS">OCL_ICD_IDENTIFIED_FUNCTIONS</a> &gt; 127)</u></td></tr>
+<tr><th id="209">209</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown166 */</i></td></tr>
+<tr><th id="210">210</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown167 */</i></td></tr>
+<tr><th id="211">211</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown168 */</i></td></tr>
+<tr><th id="212">212</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown169 */</i></td></tr>
+<tr><th id="213">213</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown170 */</i></td></tr>
+<tr><th id="214">214</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown171 */</i></td></tr>
+<tr><th id="215">215</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown172 */</i></td></tr>
+<tr><th id="216">216</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown173 */</i></td></tr>
+<tr><th id="217">217</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown174 */</i></td></tr>
+<tr><th id="218">218</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown175 */</i></td></tr>
+<tr><th id="219">219</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown176 */</i></td></tr>
+<tr><th id="220">220</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <i>/* &amp;clUnknown177 */</i></td></tr>
+<tr><th id="221">221</th><td><u>#<span data-ppcond="208">endif</span></u></td></tr>
+<tr><th id="222">222</th><td><u>#<span data-ppcond="222">if</span> (<a class="macro" href="../../../include/ocl_icd.h.html#46" title="128" data-ref="_M/OCL_ICD_IDENTIFIED_FUNCTIONS">OCL_ICD_IDENTIFIED_FUNCTIONS</a> &gt; 129)</u></td></tr>
+<tr><th id="223">223</th><td>  NULL, <i>/* &amp;clUnknown178 */</i></td></tr>
+<tr><th id="224">224</th><td>  NULL, <i>/* &amp;clUnknown179 */</i></td></tr>
+<tr><th id="225">225</th><td><u>#<span data-ppcond="222">endif</span></u></td></tr>
+<tr><th id="226">226</th><td>};</td></tr>
+<tr><th id="227">227</th><td></td></tr>
+<tr><th id="228">228</th><td><em>static</em> <b>struct</b> <a class="type" href="pocl_cl.h.html#_cl_platform_id" title='_cl_platform_id' data-ref="_cl_platform_id">_cl_platform_id</a> <dfn class="tu decl def" id="_platforms" title='_platforms' data-type='struct _cl_platform_id [1]' data-ref="_platforms">_platforms</dfn>[<var>1</var>]  = {{&amp;<a class="ref" href="pocl_icd.h.html#pocl_dispatch" title='pocl_dispatch' data-ref="pocl_dispatch">pocl_dispatch</a>}};</td></tr>
+<tr><th id="229">229</th><td><u>#<span data-ppcond="38">else</span></u></td></tr>
+<tr><th id="230">230</th><td></td></tr>
+<tr><th id="231">231</th><td><em>static</em> <b>struct</b> _cl_platform_id _platforms[<var>1</var>] = {{ <var>1</var> }};</td></tr>
+<tr><th id="232">232</th><td><u>#<span data-ppcond="38">endif</span></u></td></tr>
+<tr><th id="233">233</th><td></td></tr>
+<tr><th id="234">234</th><td><u>#<span data-ppcond="234">ifdef</span> <span class="macro" data-ref="_M/__GNUC__">__GNUC__</span></u></td></tr>
+<tr><th id="235">235</th><td><u>#pragma GCC visibility pop</u></td></tr>
+<tr><th id="236">236</th><td><u>#<span data-ppcond="234">endif</span></u></td></tr>
+<tr><th id="237">237</th><td></td></tr>
+<tr><th id="238">238</th><td><i>/*</i></td></tr>
+<tr><th id="239">239</th><td><i> * Get the number of supported platforms on this system. </i></td></tr>
+<tr><th id="240">240</th><td><i> * On POCL, this trivially reduces to 1 - POCL itself.</i></td></tr>
+<tr><th id="241">241</th><td><i> */</i> </td></tr>
+<tr><th id="242">242</th><td><a class="macro" href="../../include/CL/cl_platform.h.html#43" title="" data-ref="_M/CL_API_ENTRY">CL_API_ENTRY</a> <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <a class="macro" href="../../include/CL/cl_platform.h.html#44" title="" data-ref="_M/CL_API_CALL">CL_API_CALL</a></td></tr>
+<tr><th id="243">243</th><td><a class="macro" href="pocl_cl.h.html#225" title="POclGetPlatformIDs" data-ref="_M/POname">POname</a>(clGetPlatformIDs)(<a class="typedef" href="../../include/CL/cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a>           <dfn class="local col1 decl" id="1num_entries" title='num_entries' data-type='cl_uint' data-ref="1num_entries">num_entries</dfn>,</td></tr>
+<tr><th id="244">244</th><td>                         <a class="typedef" href="../../include/CL/cl.h.html#cl_platform_id" title='cl_platform_id' data-type='struct _cl_platform_id *' data-ref="cl_platform_id">cl_platform_id</a> *  <dfn class="local col2 decl" id="2platforms" title='platforms' data-type='cl_platform_id *' data-ref="2platforms">platforms</dfn>,</td></tr>
+<tr><th id="245">245</th><td>                         <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a> *         <dfn class="local col3 decl" id="3num_platforms" title='num_platforms' data-type='cl_uint *' data-ref="3num_platforms">num_platforms</dfn>) <a class="macro" href="../../include/CL/cl_platform.h.html#57" title="" data-ref="_M/CL_API_SUFFIX__VERSION_1_0">CL_API_SUFFIX__VERSION_1_0</a></td></tr>
+<tr><th id="246">246</th><td>{</td></tr>
+<tr><th id="247">247</th><td>  <a class="macro" href="pocl_debug.h.html#277" title="do { if ((platforms == ((void*)0) &amp;&amp; num_entries &gt; 0)) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 248, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_INVALID_VALUE&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_INVALID_VALUE&quot; &quot; &quot;); fprintf (stderr, &quot;%s\n&quot;, &quot;(platforms == NULL &amp;&amp; num_entries &gt; 0)&quot;); pocl_debug_output_unlock (); } } while (0); return -30; } } while (0)" data-ref="_M/POCL_RETURN_ERROR_COND">POCL_RETURN_ERROR_COND</a> ((<a class="local col2 ref" href="#2platforms" title='platforms' data-ref="2platforms">platforms</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span> &amp;&amp; <a class="local col1 ref" href="#1num_entries" title='num_entries' data-ref="1num_entries">num_entries</a> &gt; <var>0</var>),</td></tr>
+<tr><th id="248">248</th><td>                          <a class="macro" href="../../include/CL/cl.h.html#199" title="-30" data-ref="_M/CL_INVALID_VALUE">CL_INVALID_VALUE</a>);</td></tr>
+<tr><th id="249">249</th><td></td></tr>
+<tr><th id="250">250</th><td>  <a class="macro" href="pocl_debug.h.html#277" title="do { if ((platforms != ((void*)0) &amp;&amp; num_entries == 0)) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 251, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_INVALID_VALUE&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_INVALID_VALUE&quot; &quot; &quot;); fprintf (stderr, &quot;%s\n&quot;, &quot;(platforms != NULL &amp;&amp; num_entries == 0)&quot;); pocl_debug_output_unlock (); } } while (0); return -30; } } while (0)" data-ref="_M/POCL_RETURN_ERROR_COND">POCL_RETURN_ERROR_COND</a> ((<a class="local col2 ref" href="#2platforms" title='platforms' data-ref="2platforms">platforms</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span> &amp;&amp; <a class="local col1 ref" href="#1num_entries" title='num_entries' data-ref="1num_entries">num_entries</a> == <var>0</var>),</td></tr>
+<tr><th id="251">251</th><td>                          <a class="macro" href="../../include/CL/cl.h.html#199" title="-30" data-ref="_M/CL_INVALID_VALUE">CL_INVALID_VALUE</a>);</td></tr>
+<tr><th id="252">252</th><td></td></tr>
+<tr><th id="253">253</th><td>  <a class="macro" href="pocl_debug.h.html#277" title="do { if ((num_platforms == ((void*)0) &amp;&amp; num_entries == 0)) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 254, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_INVALID_VALUE&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_INVALID_VALUE&quot; &quot; &quot;); fprintf (stderr, &quot;%s\n&quot;, &quot;(num_platforms == NULL &amp;&amp; num_entries == 0)&quot;); pocl_debug_output_unlock (); } } while (0); return -30; } } while (0)" data-ref="_M/POCL_RETURN_ERROR_COND">POCL_RETURN_ERROR_COND</a> ((<a class="local col3 ref" href="#3num_platforms" title='num_platforms' data-ref="3num_platforms">num_platforms</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span> &amp;&amp; <a class="local col1 ref" href="#1num_entries" title='num_entries' data-ref="1num_entries">num_entries</a> == <var>0</var>),</td></tr>
+<tr><th id="254">254</th><td>                          <a class="macro" href="../../include/CL/cl.h.html#199" title="-30" data-ref="_M/CL_INVALID_VALUE">CL_INVALID_VALUE</a>);</td></tr>
+<tr><th id="255">255</th><td></td></tr>
+<tr><th id="256">256</th><td>  <b>if</b> (<a class="local col2 ref" href="#2platforms" title='platforms' data-ref="2platforms">platforms</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) {</td></tr>
+<tr><th id="257">257</th><td>      <a class="local col2 ref" href="#2platforms" title='platforms' data-ref="2platforms">platforms</a>[<var>0</var>] = &amp;<a class="tu ref" href="#_platforms" title='_platforms' data-use='a' data-ref="_platforms">_platforms</a>[<var>0</var>];</td></tr>
+<tr><th id="258">258</th><td>  }</td></tr>
+<tr><th id="259">259</th><td>  </td></tr>
+<tr><th id="260">260</th><td>  <b>if</b> (<a class="local col3 ref" href="#3num_platforms" title='num_platforms' data-ref="3num_platforms">num_platforms</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="261">261</th><td>    *<a class="local col3 ref" href="#3num_platforms" title='num_platforms' data-ref="3num_platforms">num_platforms</a> = <var>1</var>;</td></tr>
+<tr><th id="262">262</th><td></td></tr>
+<tr><th id="263">263</th><td>  <b>return</b> <a class="macro" href="../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>;</td></tr>
+<tr><th id="264">264</th><td>}</td></tr>
+<tr><th id="265">265</th><td><a class="macro" href="pocl_cl.h.html#234" title="" data-ref="_M/POsym">POsym</a>(clGetPlatformIDs)</td></tr>
+<tr><th id="266">266</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

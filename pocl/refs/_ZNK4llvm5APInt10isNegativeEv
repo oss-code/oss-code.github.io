@@ -1,0 +1,21 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='357' type='bool llvm::APInt::isNegative() const'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='362' u='c' c='_ZNK4llvm5APInt13isNonNegativeEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='423' u='c' c='_ZNK4llvm5APInt16isMaxSignedValueEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='439' u='c' c='_ZNK4llvm5APInt16isMinSignedValueEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1192' u='c' c='_ZNK4llvm5APInt3sltEl'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1262' u='c' c='_ZNK4llvm5APInt3sgtEl'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1532' u='c' c='_ZNK4llvm5APInt16getMinSignedBitsEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1600' u='c' c='_ZNK4llvm5APInt14getNumSignBitsEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1780' u='c' c='_ZNK4llvm5APInt3absEv'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='188' u='c' c='_ZNK4llvm11ConstantInt10isNegativeEv'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='348'>/// @}
+  /// \name Value Tests
+  /// @{
+
+  /// \brief Determine sign of this APInt.
+  ///
+  /// This tests the high bit of this APInt to determine if it is set.
+  ///
+  /// \returns true if this APInt is negative, false otherwise</doc>
+<use f='include/llvm-6.0/llvm/ADT/APSInt.h' l='303' u='c' c='_ZN4llvm6APSInt13compareValuesERKS0_S2_'/>
+<use f='include/llvm-6.0/llvm/ADT/APSInt.h' l='307' u='c' c='_ZN4llvm6APSInt13compareValuesERKS0_S2_'/>

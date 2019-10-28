@@ -1,0 +1,54 @@
+<inh f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='162' c='llvm::CompositeType'/>
+<def f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='201' ll='323'/>
+<size>32</size>
+<doc f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='181'>/// Class to represent struct types. There are two different kinds of struct
+/// types: Literal structs and Identified structs.
+///
+/// Literal struct types (e.g. { i32, i32 }) are uniqued structurally, and must
+/// always have a body when created.  You can get one of these by using one of
+/// the StructType::get() forms.
+///
+/// Identified structs (e.g. %foo or %42) may optionally have a name and are not
+/// uniqued.  The names for identified structs are managed at the LLVMContext
+/// level, so there can only be a single identified struct with a given name in
+/// a particular LLVMContext.  Identified structs may also optionally be opaque
+/// (have no body specified).  You get one of these by using one of the
+/// StructType::create() forms.
+///
+/// Independent of what kind of struct you have, the body of a struct type are
+/// laid out in memory consequtively with the elements directly one after the
+/// other (if the struct is packed) or (if not packed) with padding between the
+/// elements as defined by DataLayout (which is required to match what the code
+/// generator for a target expects).
+///</doc>
+<fun r='_ZN4llvm10StructTypeC1ERNS_11LLVMContextE'/>
+<mbr r='llvm::StructType::SymbolTableEntry' o='192' t='void *'/>
+<fun r='_ZN4llvm10StructTypeC1ERKS0_'/>
+<fun r='_ZN4llvm10StructTypeaSERKS0_'/>
+<fun r='_ZN4llvm10StructType6createERNS_11LLVMContextENS_9StringRefE'/>
+<fun r='_ZN4llvm10StructType6createERNS_11LLVMContextE'/>
+<fun r='_ZN4llvm10StructType6createENS_8ArrayRefIPNS_4TypeEEENS_9StringRefEb'/>
+<fun r='_ZN4llvm10StructType6createENS_8ArrayRefIPNS_4TypeEEE'/>
+<fun r='_ZN4llvm10StructType6createERNS_11LLVMContextENS_8ArrayRefIPNS_4TypeEEENS_9StringRefEb'/>
+<fun r='_ZN4llvm10StructType6createERNS_11LLVMContextENS_8ArrayRefIPNS_4TypeEEE'/>
+<fun r='_ZN4llvm10StructType6createENS_9StringRefEPNS_4TypeEDpPT_'/>
+<fun r='_ZN4llvm10StructType3getERNS_11LLVMContextENS_8ArrayRefIPNS_4TypeEEEb'/>
+<fun r='_ZN4llvm10StructType3getERNS_11LLVMContextEb'/>
+<fun r='_ZN4llvm10StructType3getEPNS_4TypeEDpPT_'/>
+<fun r='_ZNK4llvm10StructType8isPackedEv'/>
+<fun r='_ZNK4llvm10StructType9isLiteralEv'/>
+<fun r='_ZNK4llvm10StructType8isOpaqueEv'/>
+<fun r='_ZNK4llvm10StructType7isSizedEPNS_15SmallPtrSetImplIPNS_4TypeEEE'/>
+<fun r='_ZNK4llvm10StructType7hasNameEv'/>
+<fun r='_ZNK4llvm10StructType7getNameEv'/>
+<fun r='_ZN4llvm10StructType7setNameENS_9StringRefE'/>
+<fun r='_ZN4llvm10StructType7setBodyENS_8ArrayRefIPNS_4TypeEEEb'/>
+<fun r='_ZN4llvm10StructType7setBodyEPNS_4TypeEDpPT_'/>
+<fun r='_ZN4llvm10StructType18isValidElementTypeEPNS_4TypeE'/>
+<fun r='_ZNK4llvm10StructType13element_beginEv'/>
+<fun r='_ZNK4llvm10StructType11element_endEv'/>
+<fun r='_ZNK4llvm10StructType8elementsEv'/>
+<fun r='_ZNK4llvm10StructType17isLayoutIdenticalEPS0_'/>
+<fun r='_ZNK4llvm10StructType14getNumElementsEv'/>
+<fun r='_ZNK4llvm10StructType14getElementTypeEj'/>
+<fun r='_ZN4llvm10StructType7classofEPKNS_4TypeE'/>

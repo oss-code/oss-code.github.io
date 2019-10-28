@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='370' ll='381' type='llvm::TargetMachine * llvm::Target::createTargetMachine(llvm::StringRef TT, llvm::StringRef CPU, llvm::StringRef Features, const llvm::TargetOptions &amp; Options, Optional&lt;Reloc::Model&gt; RM, Optional&lt;CodeModel::Model&gt; CM = None, CodeGenOpt::Level OL = CodeGenOpt::Default, bool JIT = false) const'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='127' u='c' c='pocl_ptx_gen'/>
+<doc f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='363'>/// createTargetMachine - Create a target specific machine implementation
+  /// for the specified \p Triple.
+  ///
+  /// \param TT This argument is used to determine the target machine
+  /// feature set; it should always be provided. Generally this should be
+  /// either the target triple from the module, or the target triple of the
+  /// host if that does not exist.</doc>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='149' u='c' c='_ZL16GetTargetMachineP13_cl_device_idRN4llvm6TripleE'/>

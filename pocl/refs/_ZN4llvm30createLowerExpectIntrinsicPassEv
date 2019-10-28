@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='463' type='llvm::FunctionPass * llvm::createLowerExpectIntrinsicPass()'/>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='132' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='459'>//===----------------------------------------------------------------------===//
+//
+// LowerExpectIntrinsics - Removes llvm.expect intrinsics and creates
+// &quot;block_weights&quot; metadata.</doc>

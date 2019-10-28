@@ -1,0 +1,12 @@
+<def f='include/hwloc/helper.h' l='1125' ll='1153' type='int hwloc_get_latency(hwloc_topology_t topology, hwloc_obj_t obj1, hwloc_obj_t obj2, float * latency, float * reverse_latency)'/>
+<doc f='include/hwloc/helper.h' l='1114'>/** \brief Get the latency in both directions between two objects.
+ *
+ * Look at ancestor objects from the bottom to the top until one of them
+ * contains a distance matrix that matches the objects exactly.
+ *
+ * \p latency gets the value from object \p obj1 to \p obj2, while
+ * \p reverse_latency gets the reverse-direction value, which
+ * may be different on some architectures.
+ *
+ * \return -1 if no ancestor contains a matching latency matrix.
+ */</doc>

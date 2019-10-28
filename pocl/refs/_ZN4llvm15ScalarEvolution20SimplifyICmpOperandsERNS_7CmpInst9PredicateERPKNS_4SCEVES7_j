@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='863' type='bool llvm::ScalarEvolution::SimplifyICmpOperands(ICmpInst::Predicate &amp; Pred, const llvm::SCEV *&amp; LHS, const llvm::SCEV *&amp; RHS, unsigned int Depth = 0)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='859'>/// Simplify LHS and RHS in a comparison with predicate Pred. Return true
+  /// iff any changes were made. If the operands are provably equal or
+  /// unequal, LHS and RHS are set to the same value and Pred is set to either
+  /// ICMP_EQ or ICMP_NE.</doc>

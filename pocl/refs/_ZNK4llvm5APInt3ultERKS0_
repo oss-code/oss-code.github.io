@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='1164' type='bool llvm::APInt::ult(const llvm::APInt &amp; RHS) const'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1272' u='c' c='_ZNK4llvm5APInt3ugeERKS0_'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='2095' u='c' c='_ZN4llvm8APIntOps4uminERKNS_5APIntES3_'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='1158'>/// \brief Unsigned less than comparison
+  ///
+  /// Regards both *this and RHS as unsigned quantities and compares them for
+  /// the validity of the less-than relationship.
+  ///
+  /// \returns true if *this &lt; RHS when both are considered unsigned.</doc>
+<use f='include/llvm-6.0/llvm/ADT/APSInt.h' l='137' u='c' c='_ZNK4llvm6APSIntltERKS0_'/>

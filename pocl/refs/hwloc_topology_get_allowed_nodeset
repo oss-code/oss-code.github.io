@@ -1,0 +1,11 @@
+<dec f='include/hwloc/helper.h' l='884' type='hwloc_const_nodeset_t hwloc_topology_get_allowed_nodeset(hwloc_topology_t topology)'/>
+<def f='include/hwloc/helper.h' l='885' ll='889' type='hwloc_const_nodeset_t hwloc_topology_get_allowed_nodeset(hwloc_topology_t topology)'/>
+<doc f='include/hwloc/helper.h' l='874'>/** \brief Get allowed node set
+ *
+ * \return the node set of allowed memory of the system. If the
+ * topology is the result of a combination of several systems, NULL is
+ * returned.
+ *
+ * \note The returned nodeset is not newly allocated and should thus not be
+ * changed or freed, hwloc_bitmap_dup() must be used to obtain a local copy.
+ */</doc>

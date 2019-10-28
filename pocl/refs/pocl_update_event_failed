@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/pocl_util.h' l='205' type='void pocl_update_event_failed(cl_event event)'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='1176' u='c' c='pocl_basic_notify'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1374' u='c' c='pocl_cuda_finalize_command'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='297' u='c' c='pocl_pthread_notify'/>
+<def f='pocl/lib/CL/pocl_util.c' l='1281' ll='1287' type='void pocl_update_event_failed(cl_event event)'/>

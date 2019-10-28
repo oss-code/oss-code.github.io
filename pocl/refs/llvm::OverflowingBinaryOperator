@@ -1,0 +1,13 @@
+<inh f='include/llvm-6.0/llvm/IR/Operator.h' l='31' c='llvm::Operator'/>
+<def f='include/llvm-6.0/llvm/IR/Operator.h' l='67' ll='116'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/IR/Operator.h' l='64'>/// Utility class for integer operators which may exhibit overflow - Add, Sub,
+/// Mul, and Shl. It does not include SDiv, despite that operator having the
+/// potential for overflow.</doc>
+<fun r='_ZN4llvm25OverflowingBinaryOperator20setHasNoUnsignedWrapEb'/>
+<fun r='_ZN4llvm25OverflowingBinaryOperator18setHasNoSignedWrapEb'/>
+<fun r='_ZNK4llvm25OverflowingBinaryOperator17hasNoUnsignedWrapEv'/>
+<fun r='_ZNK4llvm25OverflowingBinaryOperator15hasNoSignedWrapEv'/>
+<fun r='_ZN4llvm25OverflowingBinaryOperator7classofEPKNS_11InstructionE'/>
+<fun r='_ZN4llvm25OverflowingBinaryOperator7classofEPKNS_12ConstantExprE'/>
+<fun r='_ZN4llvm25OverflowingBinaryOperator7classofEPKNS_5ValueE'/>

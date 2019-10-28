@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Target/TargetMachine.h' l='321' type='bool llvm::LLVMTargetMachine::isMachineVerifierClean() const'/>
+<doc f='include/llvm-6.0/llvm/Target/TargetMachine.h' l='317'>/// Returns true if the target is expected to pass all machine verifier
+  /// checks. This is a stopgap measure to fix targets one by one. We will
+  /// remove this at some point and always enable the verifier when
+  /// EXPENSIVE_CHECKS is enabled.</doc>

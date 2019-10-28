@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/DataLayout.h' l='394' ll='396' type='uint64_t llvm::DataLayout::getTypeStoreSizeInBits(llvm::Type * Ty) const'/>
+<doc f='include/llvm-6.0/llvm/IR/DataLayout.h' l='390'>/// \brief Returns the maximum number of bits that may be overwritten by
+  /// storing the specified type; always a multiple of 8.
+  ///
+  /// For example, returns 40 for i36 and 80 for x86_fp80.</doc>

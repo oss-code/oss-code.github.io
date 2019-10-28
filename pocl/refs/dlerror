@@ -1,0 +1,8 @@
+<dec f='include/dlfcn.h' l='82' type='char * dlerror()'/>
+<use f='pocl/lib/CL/devices/common.c' l='881' u='c' c='get_new_dlhandle_cache_item'/>
+<use f='pocl/lib/CL/devices/common.c' l='1084' u='c' c='pocl_check_kernel_dlhandle_cache'/>
+<use f='pocl/lib/CL/devices/common.c' l='1096' u='c' c='pocl_check_kernel_dlhandle_cache'/>
+<use f='pocl/lib/CL/devices/common.c' l='1104' u='c' c='pocl_check_kernel_dlhandle_cache'/>
+<doc f='include/dlfcn.h' l='79'>/* When any of the above functions fails, call this function
+   to return a string describing the error.  Each call resets
+   the error string so that a following call returns null.  */</doc>

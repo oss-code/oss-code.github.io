@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='447' ll='491' type='llvm::MCStreamer * llvm::Target::createMCObjectStreamer(const llvm::Triple &amp; T, llvm::MCContext &amp; Ctx, std::unique_ptr&lt;MCAsmBackend&gt; &amp;&amp; TAB, llvm::raw_pwrite_stream &amp; OS, std::unique_ptr&lt;MCCodeEmitter&gt; &amp;&amp; Emitter, const llvm::MCSubtargetInfo &amp; STI, bool RelaxAll, bool IncrementalLinkerCompatible, bool DWARFMustBeAtTheEnd) const'/>
+<doc f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='439'>/// Create a target specific MCStreamer.
+  ///
+  /// \param T The target triple.
+  /// \param Ctx The target context.
+  /// \param TAB The target assembler backend object. Takes ownership.
+  /// \param OS The stream object.
+  /// \param Emitter The target independent assembler object.Takes ownership.
+  /// \param RelaxAll Relax all fixups?</doc>

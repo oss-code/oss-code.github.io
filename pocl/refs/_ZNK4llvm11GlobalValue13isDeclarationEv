@@ -1,0 +1,20 @@
+<use f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='404' u='c' c='_ZNK4llvm11GlobalValue18hasExactDefinitionEv'/>
+<dec f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='512' type='bool llvm::GlobalValue::isDeclaration() const'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='518' u='c' c='_ZNK4llvm11GlobalValue22isDeclarationForLinkerEv'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalVariable.h' l='86' u='c' c='_ZNK4llvm14GlobalVariable14hasInitializerEv'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='1197' u='c' c='_ZN4llvm27ModuleToFunctionPassAdaptor3runERNS_6ModuleERNS_15AnalysisManagerIS1_JEEE'/>
+<doc f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='508'>/// @}
+
+  /// Return true if the primary definition of this global value is outside of
+  /// the current translation unit.</doc>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1081' u='c' c='_ZN4llvm13LazyCallGraph15visitReferencesERNS_15SmallVectorImplIPNS_8ConstantEEERNS_15SmallPtrSetImplIS3_EET_'/>
+<use f='pocl/lib/llvmopencl/Flatten.cc' l='84' u='c' c='_ZN12_GLOBAL__N_17Flatten11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/FlattenBarrierSubs.cc' l='113' u='c' c='_ZN12_GLOBAL__N_118FlattenBarrierSubs11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/FlattenGlobals.cc' l='130' u='c' c='_ZN12_GLOBAL__N_114FlattenGlobals11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='218' u='c' c='_ZN4pocl9Workgroup11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='165' u='c' c='_ZL21find_called_functionsPN4llvm8FunctionERNSt7__cxx114listINS_9StringRefESaIS4_EEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='236' u='c' c='_ZL8CopyFuncN4llvm9StringRefEPKNS_6ModuleEPS1_RNS_8ValueMapIPKNS_5ValueENS_14WeakTrackingVHENS_14ValueMapConfigIS8_NS_3sys10SmartMutexILb0EEEEEEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='270' u='c' c='_ZL19copy_func_callgraphN4llvm9StringRefEPKNS_6ModuleEPS1_RNS_8ValueMapIPKNS_5ValueENS_14WeakTrackingVHENS_14ValueMapConfigIS8_NS_3sys10SmartMutexILb0EEEEEEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='363' u='c' c='_Z4linkPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='373' u='c' c='_Z4linkPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='428' u='c' c='_Z4linkPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>

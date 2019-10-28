@@ -1,0 +1,39 @@
+<inh f='include/llvm-6.0/llvm/IR/Value.h' l='73' c='llvm::Value'/>
+<def f='include/llvm-6.0/llvm/IR/Argument.h' l='30' ll='126'/>
+<size>40</size>
+<doc f='include/llvm-6.0/llvm/IR/Argument.h' l='24'>/// This class represents an incoming formal argument to a Function. A formal
+/// argument, since it is ``formal&apos;&apos;, does not contain an actual value but
+/// instead represents the type, argument number, and attributes of an argument
+/// for a specific function. When used in the body of said function, the
+/// argument of course represents the value of the actual argument that the
+/// function was called with.</doc>
+<mbr r='llvm::Argument::Parent' o='192' t='llvm::Function *'/>
+<mbr r='llvm::Argument::ArgNo' o='256' t='unsigned int'/>
+<fun r='_ZN4llvm8Argument9setParentEPNS_8FunctionE'/>
+<fun r='_ZN4llvm8ArgumentC1EPNS_4TypeERKNS_5TwineEPNS_8FunctionEj'/>
+<fun r='_ZNK4llvm8Argument9getParentEv'/>
+<fun r='_ZN4llvm8Argument9getParentEv'/>
+<fun r='_ZNK4llvm8Argument8getArgNoEv'/>
+<fun r='_ZNK4llvm8Argument14hasNonNullAttrEv'/>
+<fun r='_ZNK4llvm8Argument23getDereferenceableBytesEv'/>
+<fun r='_ZNK4llvm8Argument29getDereferenceableOrNullBytesEv'/>
+<fun r='_ZNK4llvm8Argument12hasByValAttrEv'/>
+<fun r='_ZNK4llvm8Argument16hasSwiftSelfAttrEv'/>
+<fun r='_ZNK4llvm8Argument17hasSwiftErrorAttrEv'/>
+<fun r='_ZNK4llvm8Argument22hasByValOrInAllocaAttrEv'/>
+<fun r='_ZNK4llvm8Argument17getParamAlignmentEv'/>
+<fun r='_ZNK4llvm8Argument11hasNestAttrEv'/>
+<fun r='_ZNK4llvm8Argument14hasNoAliasAttrEv'/>
+<fun r='_ZNK4llvm8Argument16hasNoCaptureAttrEv'/>
+<fun r='_ZNK4llvm8Argument16hasStructRetAttrEv'/>
+<fun r='_ZNK4llvm8Argument15hasReturnedAttrEv'/>
+<fun r='_ZNK4llvm8Argument15onlyReadsMemoryEv'/>
+<fun r='_ZNK4llvm8Argument15hasInAllocaAttrEv'/>
+<fun r='_ZNK4llvm8Argument11hasZExtAttrEv'/>
+<fun r='_ZNK4llvm8Argument11hasSExtAttrEv'/>
+<fun r='_ZN4llvm8Argument8addAttrsERNS_11AttrBuilderE'/>
+<fun r='_ZN4llvm8Argument7addAttrENS_9Attribute8AttrKindE'/>
+<fun r='_ZN4llvm8Argument7addAttrENS_9AttributeE'/>
+<fun r='_ZN4llvm8Argument10removeAttrENS_9Attribute8AttrKindE'/>
+<fun r='_ZNK4llvm8Argument12hasAttributeENS_9Attribute8AttrKindE'/>
+<fun r='_ZN4llvm8Argument7classofEPKNS_5ValueE'/>

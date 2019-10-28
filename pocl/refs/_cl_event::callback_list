@@ -1,0 +1,9 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1161' type='event_callback_item *volatile'/>
+<offset>768</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='1160'>/* list of callback functions */</doc>
+<use f='pocl/lib/CL/clReleaseEvent.c' l='41' u='r' c='POclReleaseEvent'/>
+<use f='pocl/lib/CL/clSetEventCallback.c' l='33' c='POclSetEventCallback'/>
+<use f='pocl/lib/CL/clSetEventCallback.c' l='33' u='r' c='POclSetEventCallback'/>
+<use f='pocl/lib/CL/clSetEventCallback.c' l='33' u='r' c='POclSetEventCallback'/>
+<use f='pocl/lib/CL/clSetEventCallback.c' l='33' u='w' c='POclSetEventCallback'/>
+<use f='pocl/lib/CL/pocl_tracing.c' l='64' u='r' c='pocl_event_updated'/>

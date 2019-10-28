@@ -1,0 +1,10 @@
+<dec f='include/llvm-6.0/llvm/IR/Type.h' l='104' type='unsigned int'/>
+<use f='include/llvm-6.0/llvm/IR/Type.h' l='313' u='r' c='_ZNK4llvm4Type11subtype_endEv'/>
+<use f='include/llvm-6.0/llvm/IR/Type.h' l='336' u='r' c='_ZNK4llvm4Type20getNumContainedTypesEv'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='129' u='r' c='_ZNK4llvm12FunctionType9param_endEv'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='139' u='r' c='_ZNK4llvm12FunctionType12getNumParamsEv'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='304' u='r' c='_ZNK4llvm10StructType11element_endEv'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='313' u='r' c='_ZNK4llvm10StructType14getNumElementsEv'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='352' u='w' c='_ZN4llvm14SequentialTypeC1ENS_4Type6TypeIDEPS1_m'/>
+<offset>96</offset>
+<doc f='include/llvm-6.0/llvm/IR/Type.h' l='103'>/// Keeps track of how many Type*&apos;s there are in the ContainedTys list.</doc>

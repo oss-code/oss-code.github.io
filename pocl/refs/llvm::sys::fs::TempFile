@@ -1,0 +1,20 @@
+<def f='include/llvm-6.0/llvm/Support/FileSystem.h' l='729' ll='758'/>
+<size>48</size>
+<doc f='include/llvm-6.0/llvm/Support/FileSystem.h' l='722'>/// Represents a temporary file.
+///
+/// The temporary file must be eventually discarded or given a final name and
+/// kept.
+///
+/// The destructor doesn&apos;t implicitly discard because there is no way to
+/// properly handle errors in a destructor.</doc>
+<mbr r='llvm::sys::fs::TempFile::Done' o='0' t='bool'/>
+<fun r='_ZN4llvm3sys2fs8TempFileC1ENS_9StringRefEi'/>
+<fun r='_ZN4llvm3sys2fs8TempFile6createERKNS_5TwineEj'/>
+<fun r='_ZN4llvm3sys2fs8TempFileC1EOS2_'/>
+<fun r='_ZN4llvm3sys2fs8TempFileaSEOS2_'/>
+<mbr r='llvm::sys::fs::TempFile::TmpName' o='64' t='std::string'/>
+<mbr r='llvm::sys::fs::TempFile::FD' o='320' t='int'/>
+<fun r='_ZN4llvm3sys2fs8TempFile4keepERKNS_5TwineE'/>
+<fun r='_ZN4llvm3sys2fs8TempFile4keepEv'/>
+<fun r='_ZN4llvm3sys2fs8TempFile7discardEv'/>
+<fun r='_ZN4llvm3sys2fs8TempFileD1Ev'/>

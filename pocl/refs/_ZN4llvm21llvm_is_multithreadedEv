@@ -1,0 +1,10 @@
+<dec f='include/llvm-6.0/llvm/Support/Threading.h' l='50' type='bool llvm::llvm_is_multithreaded()'/>
+<use f='include/llvm-6.0/llvm/Support/RWMutex.h' l='99' u='c' c='_ZN4llvm3sys12SmartRWMutex11lock_sharedEv'/>
+<use f='include/llvm-6.0/llvm/Support/RWMutex.h' l='109' u='c' c='_ZN4llvm3sys12SmartRWMutex13unlock_sharedEv'/>
+<use f='include/llvm-6.0/llvm/Support/RWMutex.h' l='120' u='c' c='_ZN4llvm3sys12SmartRWMutex4lockEv'/>
+<use f='include/llvm-6.0/llvm/Support/RWMutex.h' l='131' u='c' c='_ZN4llvm3sys12SmartRWMutex6unlockEv'/>
+<use f='include/llvm-6.0/llvm/Support/Mutex.h' l='100' u='c' c='_ZN4llvm3sys10SmartMutex4lockEv'/>
+<use f='include/llvm-6.0/llvm/Support/Mutex.h' l='113' u='c' c='_ZN4llvm3sys10SmartMutex6unlockEv'/>
+<use f='include/llvm-6.0/llvm/Support/Mutex.h' l='127' u='c' c='_ZN4llvm3sys10SmartMutex8try_lockEv'/>
+<doc f='include/llvm-6.0/llvm/Support/Threading.h' l='48'>/// Returns true if LLVM is compiled with support for multi-threading, and
+/// false otherwise.</doc>

@@ -1,0 +1,251 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>pocl_debug.c source code [pocl/lib/CL/pocl_debug.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/CL/pocl_debug.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>CL</a>/<a href='pocl_debug.c.html'>pocl_debug.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><u>#include <a href="pocl_debug.h.html">"pocl_debug.h"</a></u></td></tr>
+<tr><th id="2">2</th><td><u>#include <a href="pocl_timing.h.html">"pocl_timing.h"</a></u></td></tr>
+<tr><th id="3">3</th><td></td></tr>
+<tr><th id="4">4</th><td><u>#include <a href="../../../include/string.h.html">&lt;string.h&gt;</a></u></td></tr>
+<tr><th id="5">5</th><td><u>#include <a href="../../../include/stdlib.h.html">&lt;stdlib.h&gt;</a></u></td></tr>
+<tr><th id="6">6</th><td><u>#include <a href="../../../include/stdio.h.html">&lt;stdio.h&gt;</a></u></td></tr>
+<tr><th id="7">7</th><td><u>#include <a href="../../../include/pthread.h.html">&lt;pthread.h&gt;</a></u></td></tr>
+<tr><th id="8">8</th><td><u>#include <a href="../../../include/unistd.h.html">&lt;unistd.h&gt;</a></u></td></tr>
+<tr><th id="9">9</th><td><u>#include &lt;stdarg.h&gt;</u></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td><u>#<span data-ppcond="11">ifdef</span> <a class="macro" href="../../config.h.html#179" data-ref="_M/POCL_DEBUG_MESSAGES">POCL_DEBUG_MESSAGES</a></u></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td><a class="typedef" href="../../../include/stdint.h.html#uint64_t" title='uint64_t' data-type='unsigned long' data-ref="uint64_t">uint64_t</a> <dfn class="decl def" id="pocl_debug_messages_filter" title='pocl_debug_messages_filter' data-ref="pocl_debug_messages_filter">pocl_debug_messages_filter</dfn>; <i>/* Bitfield */</i></td></tr>
+<tr><th id="14">14</th><td><em>int</em> <dfn class="decl def" id="stderr_is_a_tty" title='stderr_is_a_tty' data-ref="stderr_is_a_tty">stderr_is_a_tty</dfn>;</td></tr>
+<tr><th id="15">15</th><td></td></tr>
+<tr><th id="16">16</th><td><em>static</em> <a class="typedef" href="../../../include/x86_64-linux-gnu/bits/pthreadtypes.h.html#pthread_mutex_t" title='pthread_mutex_t' data-type='union pthread_mutex_t' data-ref="pthread_mutex_t">pthread_mutex_t</a> <dfn class="tu decl def" id="console_mutex" title='console_mutex' data-type='pthread_mutex_t' data-ref="console_mutex">console_mutex</dfn> = <a class="macro" href="../../../include/pthread.h.html#86" title="{ { 0, 0, 0, 0, 0, 0, 0, { 0, 0 } } }" data-ref="_M/PTHREAD_MUTEX_INITIALIZER">PTHREAD_MUTEX_INITIALIZER</a>;</td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td>  <u>#<span data-ppcond="18">if</span> !defined(<span class="macro" data-ref="_M/_MSC_VER">_MSC_VER</span>) &amp;&amp; !defined(<span class="macro" data-ref="_M/__MINGW32__">__MINGW32__</span>)</u></td></tr>
+<tr><th id="19">19</th><td></td></tr>
+<tr><th id="20">20</th><td>    <em>void</em></td></tr>
+<tr><th id="21">21</th><td>    <dfn class="decl def" id="pocl_debug_output_lock" title='pocl_debug_output_lock' data-ref="pocl_debug_output_lock">pocl_debug_output_lock</dfn> ()</td></tr>
+<tr><th id="22">22</th><td>    {</td></tr>
+<tr><th id="23">23</th><td>      <a class="ref" href="../../../include/pthread.h.html#pthread_mutex_lock" title='pthread_mutex_lock' data-ref="pthread_mutex_lock">pthread_mutex_lock</a> (&amp;<a class="tu ref" href="#console_mutex" title='console_mutex' data-use='a' data-ref="console_mutex">console_mutex</a>);</td></tr>
+<tr><th id="24">24</th><td>    }</td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td>    <em>void</em></td></tr>
+<tr><th id="27">27</th><td>    <dfn class="decl def" id="pocl_debug_output_unlock" title='pocl_debug_output_unlock' data-ref="pocl_debug_output_unlock">pocl_debug_output_unlock</dfn> ()</td></tr>
+<tr><th id="28">28</th><td>    {</td></tr>
+<tr><th id="29">29</th><td>      <a class="ref" href="../../../include/pthread.h.html#pthread_mutex_unlock" title='pthread_mutex_unlock' data-ref="pthread_mutex_unlock">pthread_mutex_unlock</a> (&amp;<a class="tu ref" href="#console_mutex" title='console_mutex' data-use='a' data-ref="console_mutex">console_mutex</a>);</td></tr>
+<tr><th id="30">30</th><td>    }</td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td>    <em>void</em></td></tr>
+<tr><th id="33">33</th><td>    <dfn class="decl def" id="pocl_debug_messages_setup" title='pocl_debug_messages_setup' data-ref="pocl_debug_messages_setup">pocl_debug_messages_setup</dfn> (<em>const</em> <em>char</em>* <dfn class="local col1 decl" id="1debug" title='debug' data-type='const char *' data-ref="1debug">debug</dfn>)</td></tr>
+<tr><th id="34">34</th><td>    {</td></tr>
+<tr><th id="35">35</th><td>      <a class="ref" href="pocl_debug.h.html#pocl_debug_messages_filter" title='pocl_debug_messages_filter' data-ref="pocl_debug_messages_filter">pocl_debug_messages_filter</a> = <var>0</var>;</td></tr>
+<tr><th id="36">36</th><td>      <b>if</b> (<a class="ref" href="../../../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col1 ref" href="#1debug" title='debug' data-ref="1debug">debug</a>) == <var>1</var>)</td></tr>
+<tr><th id="37">37</th><td>        {</td></tr>
+<tr><th id="38">38</th><td>          <b>if</b> (<a class="local col1 ref" href="#1debug" title='debug' data-ref="1debug">debug</a>[<var>0</var>] == <kbd>'1'</kbd>)</td></tr>
+<tr><th id="39">39</th><td>            <a class="ref" href="pocl_debug.h.html#pocl_debug_messages_filter" title='pocl_debug_messages_filter' data-ref="pocl_debug_messages_filter">pocl_debug_messages_filter</a> = <a class="macro" href="pocl_debug.h.html#47" title="0x1" data-ref="_M/POCL_DEBUG_FLAG_GENERAL">POCL_DEBUG_FLAG_GENERAL</a></td></tr>
+<tr><th id="40">40</th><td>                                         | <a class="macro" href="pocl_debug.h.html#58" title="0x800" data-ref="_M/POCL_DEBUG_FLAG_WARNING">POCL_DEBUG_FLAG_WARNING</a></td></tr>
+<tr><th id="41">41</th><td>                                         | <a class="macro" href="pocl_debug.h.html#59" title="0x1000" data-ref="_M/POCL_DEBUG_FLAG_ERROR">POCL_DEBUG_FLAG_ERROR</a>;</td></tr>
+<tr><th id="42">42</th><td>          <b>return</b>;</td></tr>
+<tr><th id="43">43</th><td>        }</td></tr>
+<tr><th id="44">44</th><td>      <i>/* else parse */</i></td></tr>
+<tr><th id="45">45</th><td>      <em>char</em>* <dfn class="local col2 decl" id="2tokenize" title='tokenize' data-type='char *' data-ref="2tokenize">tokenize</dfn> = <a class="ref" href="../../../include/string.h.html#strdup" title='strdup' data-ref="strdup">strdup</a> (<a class="local col1 ref" href="#1debug" title='debug' data-ref="1debug">debug</a>);</td></tr>
+<tr><th id="46">46</th><td>      <em>char</em>* <dfn class="local col3 decl" id="3ptr" title='ptr' data-type='char *' data-ref="3ptr">ptr</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="47">47</th><td>      <a class="local col3 ref" href="#3ptr" title='ptr' data-ref="3ptr">ptr</a> = <a class="ref" href="../../../include/string.h.html#strtok" title='strtok' data-ref="strtok">strtok</a> (<a class="local col2 ref" href="#2tokenize" title='tokenize' data-ref="2tokenize">tokenize</a>, <q>","</q>);</td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td>      <b>while</b> (<a class="local col3 ref" href="#3ptr" title='ptr' data-ref="3ptr">ptr</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="50">50</th><td>      {</td></tr>
+<tr><th id="51">51</th><td>        <b>if</b> (<a class="ref" href="../../../include/string.h.html#strncmp" title='strncmp' data-ref="strncmp">strncmp</a> (<a class="local col3 ref" href="#3ptr" title='ptr' data-ref="3ptr">ptr</a>, <q>"general"</q>, <var>7</var>) == <var>0</var>)</td></tr>
+<tr><th id="52">52</th><td>          <a class="ref" href="pocl_debug.h.html#pocl_debug_messages_filter" title='pocl_debug_messages_filter' data-ref="pocl_debug_messages_filter">pocl_debug_messages_filter</a> |= <a class="macro" href="pocl_debug.h.html#47" title="0x1" data-ref="_M/POCL_DEBUG_FLAG_GENERAL">POCL_DEBUG_FLAG_GENERAL</a>;</td></tr>
+<tr><th id="53">53</th><td>        <b>else</b> <b>if</b> (<a class="ref" href="../../../include/string.h.html#strncmp" title='strncmp' data-ref="strncmp">strncmp</a> (<a class="local col3 ref" href="#3ptr" title='ptr' data-ref="3ptr">ptr</a>, <q>"event"</q>, <var>5</var>) == <var>0</var>)</td></tr>
+<tr><th id="54">54</th><td>          <a class="ref" href="pocl_debug.h.html#pocl_debug_messages_filter" title='pocl_debug_messages_filter' data-ref="pocl_debug_messages_filter">pocl_debug_messages_filter</a> |= <a class="macro" href="pocl_debug.h.html#50" title="0x8" data-ref="_M/POCL_DEBUG_FLAG_EVENTS">POCL_DEBUG_FLAG_EVENTS</a>;</td></tr>
+<tr><th id="55">55</th><td>        <b>else</b> <b>if</b> (<a class="ref" href="../../../include/string.h.html#strncmp" title='strncmp' data-ref="strncmp">strncmp</a> (<a class="local col3 ref" href="#3ptr" title='ptr' data-ref="3ptr">ptr</a>, <q>"cache"</q>, <var>5</var>) == <var>0</var>)</td></tr>
+<tr><th id="56">56</th><td>          <a class="ref" href="pocl_debug.h.html#pocl_debug_messages_filter" title='pocl_debug_messages_filter' data-ref="pocl_debug_messages_filter">pocl_debug_messages_filter</a> |= <a class="macro" href="pocl_debug.h.html#51" title="0x10" data-ref="_M/POCL_DEBUG_FLAG_CACHE">POCL_DEBUG_FLAG_CACHE</a>;</td></tr>
+<tr><th id="57">57</th><td>        <b>else</b> <b>if</b> (<a class="ref" href="../../../include/string.h.html#strncmp" title='strncmp' data-ref="strncmp">strncmp</a> (<a class="local col3 ref" href="#3ptr" title='ptr' data-ref="3ptr">ptr</a>, <q>"llvm"</q>, <var>4</var>) == <var>0</var>)</td></tr>
+<tr><th id="58">58</th><td>          <a class="ref" href="pocl_debug.h.html#pocl_debug_messages_filter" title='pocl_debug_messages_filter' data-ref="pocl_debug_messages_filter">pocl_debug_messages_filter</a> |= <a class="macro" href="pocl_debug.h.html#49" title="0x4" data-ref="_M/POCL_DEBUG_FLAG_LLVM">POCL_DEBUG_FLAG_LLVM</a>;</td></tr>
+<tr><th id="59">59</th><td>        <b>else</b> <b>if</b> (<a class="ref" href="../../../include/string.h.html#strncmp" title='strncmp' data-ref="strncmp">strncmp</a> (<a class="local col3 ref" href="#3ptr" title='ptr' data-ref="3ptr">ptr</a>, <q>"refc"</q>, <var>4</var>) == <var>0</var>)</td></tr>
+<tr><th id="60">60</th><td>          <a class="ref" href="pocl_debug.h.html#pocl_debug_messages_filter" title='pocl_debug_messages_filter' data-ref="pocl_debug_messages_filter">pocl_debug_messages_filter</a> |= <a class="macro" href="pocl_debug.h.html#53" title="0x40" data-ref="_M/POCL_DEBUG_FLAG_REFCOUNTS">POCL_DEBUG_FLAG_REFCOUNTS</a>;</td></tr>
+<tr><th id="61">61</th><td>        <b>else</b> <b>if</b> (<a class="ref" href="../../../include/string.h.html#strncmp" title='strncmp' data-ref="strncmp">strncmp</a> (<a class="local col3 ref" href="#3ptr" title='ptr' data-ref="3ptr">ptr</a>, <q>"lock"</q>, <var>4</var>) == <var>0</var>)</td></tr>
+<tr><th id="62">62</th><td>          <a class="ref" href="pocl_debug.h.html#pocl_debug_messages_filter" title='pocl_debug_messages_filter' data-ref="pocl_debug_messages_filter">pocl_debug_messages_filter</a> |= <a class="macro" href="pocl_debug.h.html#52" title="0x20" data-ref="_M/POCL_DEBUG_FLAG_LOCKING">POCL_DEBUG_FLAG_LOCKING</a>;</td></tr>
+<tr><th id="63">63</th><td>        <b>else</b> <b>if</b> (<a class="ref" href="../../../include/string.h.html#strncmp" title='strncmp' data-ref="strncmp">strncmp</a> (<a class="local col3 ref" href="#3ptr" title='ptr' data-ref="3ptr">ptr</a>, <q>"cuda"</q>, <var>4</var>) == <var>0</var>)</td></tr>
+<tr><th id="64">64</th><td>          <a class="ref" href="pocl_debug.h.html#pocl_debug_messages_filter" title='pocl_debug_messages_filter' data-ref="pocl_debug_messages_filter">pocl_debug_messages_filter</a> |= <a class="macro" href="pocl_debug.h.html#57" title="0x400" data-ref="_M/POCL_DEBUG_FLAG_CUDA">POCL_DEBUG_FLAG_CUDA</a>;</td></tr>
+<tr><th id="65">65</th><td>        <b>else</b> <b>if</b> (<a class="ref" href="../../../include/string.h.html#strncmp" title='strncmp' data-ref="strncmp">strncmp</a> (<a class="local col3 ref" href="#3ptr" title='ptr' data-ref="3ptr">ptr</a>, <q>"warn"</q>, <var>4</var>) == <var>0</var>)</td></tr>
+<tr><th id="66">66</th><td>          <a class="ref" href="pocl_debug.h.html#pocl_debug_messages_filter" title='pocl_debug_messages_filter' data-ref="pocl_debug_messages_filter">pocl_debug_messages_filter</a> |= (<a class="macro" href="pocl_debug.h.html#58" title="0x800" data-ref="_M/POCL_DEBUG_FLAG_WARNING">POCL_DEBUG_FLAG_WARNING</a> | <a class="macro" href="pocl_debug.h.html#59" title="0x1000" data-ref="_M/POCL_DEBUG_FLAG_ERROR">POCL_DEBUG_FLAG_ERROR</a>);</td></tr>
+<tr><th id="67">67</th><td>        <b>else</b> <b>if</b> (<a class="ref" href="../../../include/string.h.html#strncmp" title='strncmp' data-ref="strncmp">strncmp</a> (<a class="local col3 ref" href="#3ptr" title='ptr' data-ref="3ptr">ptr</a>, <q>"hsa"</q>, <var>3</var>) == <var>0</var>)</td></tr>
+<tr><th id="68">68</th><td>          <a class="ref" href="pocl_debug.h.html#pocl_debug_messages_filter" title='pocl_debug_messages_filter' data-ref="pocl_debug_messages_filter">pocl_debug_messages_filter</a> |= <a class="macro" href="pocl_debug.h.html#55" title="0x100" data-ref="_M/POCL_DEBUG_FLAG_HSA">POCL_DEBUG_FLAG_HSA</a>;</td></tr>
+<tr><th id="69">69</th><td>        <b>else</b> <b>if</b> (<a class="ref" href="../../../include/string.h.html#strncmp" title='strncmp' data-ref="strncmp">strncmp</a> (<a class="local col3 ref" href="#3ptr" title='ptr' data-ref="3ptr">ptr</a>, <q>"tce"</q>, <var>3</var>) == <var>0</var>)</td></tr>
+<tr><th id="70">70</th><td>          <a class="ref" href="pocl_debug.h.html#pocl_debug_messages_filter" title='pocl_debug_messages_filter' data-ref="pocl_debug_messages_filter">pocl_debug_messages_filter</a> |= <a class="macro" href="pocl_debug.h.html#56" title="0x200" data-ref="_M/POCL_DEBUG_FLAG_TCE">POCL_DEBUG_FLAG_TCE</a>;</td></tr>
+<tr><th id="71">71</th><td>        <b>else</b> <b>if</b> (<a class="ref" href="../../../include/string.h.html#strncmp" title='strncmp' data-ref="strncmp">strncmp</a> (<a class="local col3 ref" href="#3ptr" title='ptr' data-ref="3ptr">ptr</a>, <q>"mem"</q>, <var>3</var>) == <var>0</var>)</td></tr>
+<tr><th id="72">72</th><td>          <a class="ref" href="pocl_debug.h.html#pocl_debug_messages_filter" title='pocl_debug_messages_filter' data-ref="pocl_debug_messages_filter">pocl_debug_messages_filter</a> |= <a class="macro" href="pocl_debug.h.html#48" title="0x2" data-ref="_M/POCL_DEBUG_FLAG_MEMORY">POCL_DEBUG_FLAG_MEMORY</a>;</td></tr>
+<tr><th id="73">73</th><td>        <b>else</b> <b>if</b> (<a class="ref" href="../../../include/string.h.html#strncmp" title='strncmp' data-ref="strncmp">strncmp</a> (<a class="local col3 ref" href="#3ptr" title='ptr' data-ref="3ptr">ptr</a>, <q>"tim"</q>, <var>3</var>) == <var>0</var>)</td></tr>
+<tr><th id="74">74</th><td>          <a class="ref" href="pocl_debug.h.html#pocl_debug_messages_filter" title='pocl_debug_messages_filter' data-ref="pocl_debug_messages_filter">pocl_debug_messages_filter</a> |= <a class="macro" href="pocl_debug.h.html#54" title="0x80" data-ref="_M/POCL_DEBUG_FLAG_TIMING">POCL_DEBUG_FLAG_TIMING</a>;</td></tr>
+<tr><th id="75">75</th><td>        <b>else</b> <b>if</b> (<a class="ref" href="../../../include/string.h.html#strncmp" title='strncmp' data-ref="strncmp">strncmp</a> (<a class="local col3 ref" href="#3ptr" title='ptr' data-ref="3ptr">ptr</a>, <q>"all"</q>, <var>3</var>) == <var>0</var>)</td></tr>
+<tr><th id="76">76</th><td>          <a class="ref" href="pocl_debug.h.html#pocl_debug_messages_filter" title='pocl_debug_messages_filter' data-ref="pocl_debug_messages_filter">pocl_debug_messages_filter</a> |= <a class="macro" href="pocl_debug.h.html#60" title="(uint64_t)(-1)" data-ref="_M/POCL_DEBUG_FLAG_ALL">POCL_DEBUG_FLAG_ALL</a>;</td></tr>
+<tr><th id="77">77</th><td>        <b>else</b> <b>if</b> (<a class="ref" href="../../../include/string.h.html#strncmp" title='strncmp' data-ref="strncmp">strncmp</a> (<a class="local col3 ref" href="#3ptr" title='ptr' data-ref="3ptr">ptr</a>, <q>"err"</q>, <var>3</var>) == <var>0</var>)</td></tr>
+<tr><th id="78">78</th><td>          <a class="ref" href="pocl_debug.h.html#pocl_debug_messages_filter" title='pocl_debug_messages_filter' data-ref="pocl_debug_messages_filter">pocl_debug_messages_filter</a> |= <a class="macro" href="pocl_debug.h.html#59" title="0x1000" data-ref="_M/POCL_DEBUG_FLAG_ERROR">POCL_DEBUG_FLAG_ERROR</a>;</td></tr>
+<tr><th id="79">79</th><td>        <b>else</b></td></tr>
+<tr><th id="80">80</th><td>          <a class="macro" href="pocl_debug.h.html#178" title="do { if (pocl_debug_messages_filter &amp; 0x800) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 80, &quot;WARNING&quot;, 2); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;&quot; &quot; &quot;); fprintf (stderr, &quot;Unknown token in POCL_DEBUG env var: %s&quot;, ptr); pocl_debug_output_unlock (); } } while (0)" data-ref="_M/POCL_MSG_WARN">POCL_MSG_WARN</a> (<q>"Unknown token in POCL_DEBUG env var: %s"</q>, <a class="local col3 ref" href="#3ptr" title='ptr' data-ref="3ptr">ptr</a>);</td></tr>
+<tr><th id="81">81</th><td></td></tr>
+<tr><th id="82">82</th><td>        <a class="local col3 ref" href="#3ptr" title='ptr' data-ref="3ptr">ptr</a> = <a class="ref" href="../../../include/string.h.html#strtok" title='strtok' data-ref="strtok">strtok</a> (<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,<q>","</q>);</td></tr>
+<tr><th id="83">83</th><td>      }</td></tr>
+<tr><th id="84">84</th><td></td></tr>
+<tr><th id="85">85</th><td>      <a class="ref" href="../../../include/stdlib.h.html#free" title='free' data-ref="free">free</a> (<a class="local col2 ref" href="#2tokenize" title='tokenize' data-ref="2tokenize">tokenize</a>);</td></tr>
+<tr><th id="86">86</th><td>      <b>if</b> (<a class="ref" href="pocl_debug.h.html#pocl_debug_messages_filter" title='pocl_debug_messages_filter' data-ref="pocl_debug_messages_filter">pocl_debug_messages_filter</a>)</td></tr>
+<tr><th id="87">87</th><td>        <a class="ref" href="../../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a> (<a class="macro" href="../../../include/stdio.h.html#174" title="stderr" data-ref="_M/stderr">stderr</a>, <q>"** Final POCL_DEBUG flags: %"</q> <a class="macro" href="../../../include/inttypes.h.html#137" title="&quot;l&quot; &quot;X&quot;" data-ref="_M/PRIX64">PRIX64</a> <q>" \n"</q>,</td></tr>
+<tr><th id="88">88</th><td>                 <a class="ref" href="pocl_debug.h.html#pocl_debug_messages_filter" title='pocl_debug_messages_filter' data-ref="pocl_debug_messages_filter">pocl_debug_messages_filter</a>);</td></tr>
+<tr><th id="89">89</th><td>    }</td></tr>
+<tr><th id="90">90</th><td></td></tr>
+<tr><th id="91">91</th><td>    <em>void</em></td></tr>
+<tr><th id="92">92</th><td>    <dfn class="decl def" id="pocl_debug_print_header" title='pocl_debug_print_header' data-ref="pocl_debug_print_header">pocl_debug_print_header</dfn> (<em>const</em> <em>char</em>* <dfn class="local col4 decl" id="4func" title='func' data-type='const char *' data-ref="4func">func</dfn>, <em>unsigned</em> <dfn class="local col5 decl" id="5line" title='line' data-type='unsigned int' data-ref="5line">line</dfn>,</td></tr>
+<tr><th id="93">93</th><td>                             <em>const</em> <em>char</em> *<dfn class="local col6 decl" id="6filter" title='filter' data-type='const char *' data-ref="6filter">filter</dfn>, <em>int</em> <dfn class="local col7 decl" id="7filter_type" title='filter_type' data-type='int' data-ref="7filter_type">filter_type</dfn>)</td></tr>
+<tr><th id="94">94</th><td>    {</td></tr>
+<tr><th id="95">95</th><td></td></tr>
+<tr><th id="96">96</th><td>        <em>int</em> <dfn class="local col8 decl" id="8year" title='year' data-type='int' data-ref="8year">year</dfn>, <dfn class="local col9 decl" id="9mon" title='mon' data-type='int' data-ref="9mon">mon</dfn>, <dfn class="local col0 decl" id="10day" title='day' data-type='int' data-ref="10day">day</dfn>, <dfn class="local col1 decl" id="11hour" title='hour' data-type='int' data-ref="11hour">hour</dfn>, <dfn class="local col2 decl" id="12min" title='min' data-type='int' data-ref="12min">min</dfn>, <dfn class="local col3 decl" id="13sec" title='sec' data-type='int' data-ref="13sec">sec</dfn>, <dfn class="local col4 decl" id="14nanosec" title='nanosec' data-type='int' data-ref="14nanosec">nanosec</dfn>;</td></tr>
+<tr><th id="97">97</th><td>        <a class="ref" href="pocl_timing.h.html#pocl_gettimereal" title='pocl_gettimereal' data-ref="pocl_gettimereal">pocl_gettimereal</a>(&amp;<a class="local col8 ref" href="#8year" title='year' data-ref="8year">year</a>, &amp;<a class="local col9 ref" href="#9mon" title='mon' data-ref="9mon">mon</a>, &amp;<a class="local col0 ref" href="#10day" title='day' data-ref="10day">day</a>, &amp;<a class="local col1 ref" href="#11hour" title='hour' data-ref="11hour">hour</a>, &amp;<a class="local col2 ref" href="#12min" title='min' data-ref="12min">min</a>, &amp;<a class="local col3 ref" href="#13sec" title='sec' data-ref="13sec">sec</a>, &amp;<a class="local col4 ref" href="#14nanosec" title='nanosec' data-ref="14nanosec">nanosec</a>);</td></tr>
+<tr><th id="98">98</th><td></td></tr>
+<tr><th id="99">99</th><td>        <em>const</em> <em>char</em> *<dfn class="local col5 decl" id="15filter_type_str" title='filter_type_str' data-type='const char *' data-ref="15filter_type_str">filter_type_str</dfn>;</td></tr>
+<tr><th id="100">100</th><td>        <em>const</em> <em>char</em> *<dfn class="local col6 decl" id="16formatstring" title='formatstring' data-type='const char *' data-ref="16formatstring">formatstring</dfn>;</td></tr>
+<tr><th id="101">101</th><td></td></tr>
+<tr><th id="102">102</th><td>        <b>if</b> (<a class="local col7 ref" href="#7filter_type" title='filter_type' data-ref="7filter_type">filter_type</a> == <a class="macro" href="pocl_debug.h.html#64" title="3" data-ref="_M/POCL_FILTER_TYPE_ERR">POCL_FILTER_TYPE_ERR</a>)</td></tr>
+<tr><th id="103">103</th><td>          <a class="local col5 ref" href="#15filter_type_str" title='filter_type_str' data-ref="15filter_type_str">filter_type_str</a> = (<a class="ref" href="pocl_debug.h.html#stderr_is_a_tty" title='stderr_is_a_tty' data-ref="stderr_is_a_tty">stderr_is_a_tty</a> ? <a class="macro" href="pocl_debug.h.html#30" title="&quot;\033[31m&quot;" data-ref="_M/POCL_COLOR_RED">POCL_COLOR_RED</a> : <q>" *** ERROR *** "</q>);</td></tr>
+<tr><th id="104">104</th><td>        <b>else</b> <b>if</b> (<a class="local col7 ref" href="#7filter_type" title='filter_type' data-ref="7filter_type">filter_type</a> == <a class="macro" href="pocl_debug.h.html#63" title="2" data-ref="_M/POCL_FILTER_TYPE_WARN">POCL_FILTER_TYPE_WARN</a>)</td></tr>
+<tr><th id="105">105</th><td>          <a class="local col5 ref" href="#15filter_type_str" title='filter_type_str' data-ref="15filter_type_str">filter_type_str</a> = (<a class="ref" href="pocl_debug.h.html#stderr_is_a_tty" title='stderr_is_a_tty' data-ref="stderr_is_a_tty">stderr_is_a_tty</a> ? <a class="macro" href="pocl_debug.h.html#32" title="&quot;\033[33m&quot;" data-ref="_M/POCL_COLOR_YELLOW">POCL_COLOR_YELLOW</a> : <q>" *** WARNING *** "</q>);</td></tr>
+<tr><th id="106">106</th><td>        <b>else</b> <b>if</b> (<a class="local col7 ref" href="#7filter_type" title='filter_type' data-ref="7filter_type">filter_type</a> == <a class="macro" href="pocl_debug.h.html#62" title="1" data-ref="_M/POCL_FILTER_TYPE_INFO">POCL_FILTER_TYPE_INFO</a>)</td></tr>
+<tr><th id="107">107</th><td>          <a class="local col5 ref" href="#15filter_type_str" title='filter_type_str' data-ref="15filter_type_str">filter_type_str</a> = (<a class="ref" href="pocl_debug.h.html#stderr_is_a_tty" title='stderr_is_a_tty' data-ref="stderr_is_a_tty">stderr_is_a_tty</a> ? <a class="macro" href="pocl_debug.h.html#31" title="&quot;\033[32m&quot;" data-ref="_M/POCL_COLOR_GREEN">POCL_COLOR_GREEN</a> : <q>" *** INFO *** "</q>);</td></tr>
+<tr><th id="108">108</th><td>        <b>else</b></td></tr>
+<tr><th id="109">109</th><td>          <a class="local col5 ref" href="#15filter_type_str" title='filter_type_str' data-ref="15filter_type_str">filter_type_str</a> = (<a class="ref" href="pocl_debug.h.html#stderr_is_a_tty" title='stderr_is_a_tty' data-ref="stderr_is_a_tty">stderr_is_a_tty</a> ? <a class="macro" href="pocl_debug.h.html#31" title="&quot;\033[32m&quot;" data-ref="_M/POCL_COLOR_GREEN">POCL_COLOR_GREEN</a> : <q>" *** UNKNOWN *** "</q>);</td></tr>
+<tr><th id="110">110</th><td></td></tr>
+<tr><th id="111">111</th><td>        <b>if</b> (<a class="ref" href="pocl_debug.h.html#stderr_is_a_tty" title='stderr_is_a_tty' data-ref="stderr_is_a_tty">stderr_is_a_tty</a>)</td></tr>
+<tr><th id="112">112</th><td>          <a class="local col6 ref" href="#16formatstring" title='formatstring' data-ref="16formatstring">formatstring</a> = <a class="macro" href="pocl_debug.h.html#33" title="&quot;\033[34m&quot;" data-ref="_M/POCL_COLOR_BLUE">POCL_COLOR_BLUE</a></td></tr>
+<tr><th id="113">113</th><td>              <q>"[%04i-%02i-%02i %02i:%02i:%02i.%09li]"</q></td></tr>
+<tr><th id="114">114</th><td>              <a class="macro" href="pocl_debug.h.html#28" title="&quot;\033[0m&quot;" data-ref="_M/POCL_COLOR_RESET">POCL_COLOR_RESET</a> <q>"POCL: in fn %s "</q></td></tr>
+<tr><th id="115">115</th><td>              <a class="macro" href="pocl_debug.h.html#28" title="&quot;\033[0m&quot;" data-ref="_M/POCL_COLOR_RESET">POCL_COLOR_RESET</a> <q>"at line %u:\n %s | %9s | "</q>;</td></tr>
+<tr><th id="116">116</th><td>        <b>else</b></td></tr>
+<tr><th id="117">117</th><td>          <a class="local col6 ref" href="#16formatstring" title='formatstring' data-ref="16formatstring">formatstring</a> = <q>"[%04i-%02i-%02i %02i:%02i:%02i.%09i] "</q></td></tr>
+<tr><th id="118">118</th><td>              <q>"POCL: in fn %s at line %u:\n %s | %9s | "</q>;</td></tr>
+<tr><th id="119">119</th><td></td></tr>
+<tr><th id="120">120</th><td>        <a class="ref" href="../../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a> (<a class="macro" href="../../../include/stdio.h.html#174" title="stderr" data-ref="_M/stderr">stderr</a>, <a class="local col6 ref" href="#16formatstring" title='formatstring' data-ref="16formatstring">formatstring</a>, <a class="local col8 ref" href="#8year" title='year' data-ref="8year">year</a>, <a class="local col9 ref" href="#9mon" title='mon' data-ref="9mon">mon</a>, <a class="local col0 ref" href="#10day" title='day' data-ref="10day">day</a>, <a class="local col1 ref" href="#11hour" title='hour' data-ref="11hour">hour</a>, <a class="local col2 ref" href="#12min" title='min' data-ref="12min">min</a>, <a class="local col3 ref" href="#13sec" title='sec' data-ref="13sec">sec</a>,</td></tr>
+<tr><th id="121">121</th><td>                 <a class="local col4 ref" href="#14nanosec" title='nanosec' data-ref="14nanosec">nanosec</a>, <a class="local col4 ref" href="#4func" title='func' data-ref="4func">func</a>, <a class="local col5 ref" href="#5line" title='line' data-ref="5line">line</a>, <a class="local col5 ref" href="#15filter_type_str" title='filter_type_str' data-ref="15filter_type_str">filter_type_str</a>, <a class="local col6 ref" href="#6filter" title='filter' data-ref="6filter">filter</a>);</td></tr>
+<tr><th id="122">122</th><td>    }</td></tr>
+<tr><th id="123">123</th><td></td></tr>
+<tr><th id="124">124</th><td>    <em>void</em> <dfn class="decl def" id="pocl_debug_measure_start" title='pocl_debug_measure_start' data-ref="pocl_debug_measure_start">pocl_debug_measure_start</dfn>(<a class="typedef" href="../../../include/stdint.h.html#uint64_t" title='uint64_t' data-type='unsigned long' data-ref="uint64_t">uint64_t</a> *<dfn class="local col7 decl" id="17start" title='start' data-type='uint64_t *' data-ref="17start">start</dfn>) {</td></tr>
+<tr><th id="125">125</th><td>      *<a class="local col7 ref" href="#17start" title='start' data-ref="17start">start</a> = <a class="ref" href="pocl_timing.h.html#pocl_gettimemono_ns" title='pocl_gettimemono_ns' data-ref="pocl_gettimemono_ns">pocl_gettimemono_ns</a>();</td></tr>
+<tr><th id="126">126</th><td>    }</td></tr>
+<tr><th id="127">127</th><td></td></tr>
+<tr><th id="128">128</th><td>    <u>#define <dfn class="macro" id="_M/PRINT_DURATION" data-ref="_M/PRINT_DURATION">PRINT_DURATION</dfn>(func, line, ...)                                   \</u></td></tr>
+<tr><th id="129">129</th><td><u>      do                                                                      \</u></td></tr>
+<tr><th id="130">130</th><td><u>        {                                                                     \</u></td></tr>
+<tr><th id="131">131</th><td><u>          <a class="ref" href="#pocl_debug_output_lock" title='pocl_debug_output_lock' data-ref="pocl_debug_output_lock">pocl_debug_output_lock</a> ();                                          \</u></td></tr>
+<tr><th id="132">132</th><td><u>          <a class="ref" href="#pocl_debug_print_header" title='pocl_debug_print_header' data-ref="pocl_debug_print_header">pocl_debug_print_header</a> (func, line,                                \</u></td></tr>
+<tr><th id="133">133</th><td><u>                                   "TIMING", POCL_FILTER_TYPE_INFO);          \</u></td></tr>
+<tr><th id="134">134</th><td><u>          <a class="ref" href="../../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a> (stderr, __VA_ARGS__);                                      \</u></td></tr>
+<tr><th id="135">135</th><td><u>          <a class="ref" href="#pocl_debug_output_unlock" title='pocl_debug_output_unlock' data-ref="pocl_debug_output_unlock">pocl_debug_output_unlock</a> ();                                        \</u></td></tr>
+<tr><th id="136">136</th><td><u>        }                                                                     \</u></td></tr>
+<tr><th id="137">137</th><td><u>      while (0)</u></td></tr>
+<tr><th id="138">138</th><td></td></tr>
+<tr><th id="139">139</th><td></td></tr>
+<tr><th id="140">140</th><td>    <em>void</em> <dfn class="decl def" id="pocl_debug_print_duration" title='pocl_debug_print_duration' data-ref="pocl_debug_print_duration">pocl_debug_print_duration</dfn>(<em>const</em> <em>char</em>* <dfn class="local col8 decl" id="18func" title='func' data-type='const char *' data-ref="18func">func</dfn>, <em>unsigned</em> <dfn class="local col9 decl" id="19line" title='line' data-type='unsigned int' data-ref="19line">line</dfn>,</td></tr>
+<tr><th id="141">141</th><td>                                   <em>const</em> <em>char</em>* <dfn class="local col0 decl" id="20msg" title='msg' data-type='const char *' data-ref="20msg">msg</dfn>, <a class="typedef" href="../../../include/stdint.h.html#uint64_t" title='uint64_t' data-type='unsigned long' data-ref="uint64_t">uint64_t</a> <dfn class="local col1 decl" id="21nanosecs" title='nanosecs' data-type='uint64_t' data-ref="21nanosecs">nanosecs</dfn>)</td></tr>
+<tr><th id="142">142</th><td>    {</td></tr>
+<tr><th id="143">143</th><td>      <b>if</b> (!(<a class="ref" href="pocl_debug.h.html#pocl_debug_messages_filter" title='pocl_debug_messages_filter' data-ref="pocl_debug_messages_filter">pocl_debug_messages_filter</a> &amp; <a class="macro" href="pocl_debug.h.html#54" title="0x80" data-ref="_M/POCL_DEBUG_FLAG_TIMING">POCL_DEBUG_FLAG_TIMING</a>))</td></tr>
+<tr><th id="144">144</th><td>        <b>return</b>;</td></tr>
+<tr><th id="145">145</th><td>      <em>const</em> <em>char</em>* <dfn class="local col2 decl" id="22formatstring" title='formatstring' data-type='const char *' data-ref="22formatstring">formatstring</dfn>;</td></tr>
+<tr><th id="146">146</th><td>      <b>if</b> (<a class="ref" href="pocl_debug.h.html#stderr_is_a_tty" title='stderr_is_a_tty' data-ref="stderr_is_a_tty">stderr_is_a_tty</a>)</td></tr>
+<tr><th id="147">147</th><td>        <a class="local col2 ref" href="#22formatstring" title='formatstring' data-ref="22formatstring">formatstring</a> = <q>"      &gt;&gt;&gt;  "</q> <a class="macro" href="pocl_debug.h.html#34" title="&quot;\033[35m&quot;" data-ref="_M/POCL_COLOR_MAGENTA">POCL_COLOR_MAGENTA</a> <q>"     %3"</q> <a class="macro" href="../../../include/inttypes.h.html#105" title="&quot;l&quot; &quot;u&quot;" data-ref="_M/PRIu64">PRIu64</a></td></tr>
+<tr><th id="148">148</th><td>                       <q>".%03"</q> <a class="macro" href="../../../include/inttypes.h.html#105" title="&quot;l&quot; &quot;u&quot;" data-ref="_M/PRIu64">PRIu64</a> <q>" "</q> <a class="macro" href="pocl_debug.h.html#28" title="&quot;\033[0m&quot;" data-ref="_M/POCL_COLOR_RESET">POCL_COLOR_RESET</a> <q>" %s    %s\n"</q>;</td></tr>
+<tr><th id="149">149</th><td>      <b>else</b></td></tr>
+<tr><th id="150">150</th><td>        <a class="local col2 ref" href="#22formatstring" title='formatstring' data-ref="22formatstring">formatstring</a> = <q>"      &gt;&gt;&gt;       %3"</q> <a class="macro" href="../../../include/inttypes.h.html#105" title="&quot;l&quot; &quot;u&quot;" data-ref="_M/PRIu64">PRIu64</a> <q>".%03"</q></td></tr>
+<tr><th id="151">151</th><td>                       <a class="macro" href="../../../include/inttypes.h.html#105" title="&quot;l&quot; &quot;u&quot;" data-ref="_M/PRIu64">PRIu64</a> <q>"  %s    %s\n"</q>;</td></tr>
+<tr><th id="152">152</th><td></td></tr>
+<tr><th id="153">153</th><td>      <a class="typedef" href="../../../include/stdint.h.html#uint64_t" title='uint64_t' data-type='unsigned long' data-ref="uint64_t">uint64_t</a> <dfn class="local col3 decl" id="23nsec" title='nsec' data-type='uint64_t' data-ref="23nsec">nsec</dfn> = <a class="local col1 ref" href="#21nanosecs" title='nanosecs' data-ref="21nanosecs">nanosecs</a> % <var>1000000000</var>;</td></tr>
+<tr><th id="154">154</th><td>      <a class="typedef" href="../../../include/stdint.h.html#uint64_t" title='uint64_t' data-type='unsigned long' data-ref="uint64_t">uint64_t</a> <dfn class="local col4 decl" id="24sec" title='sec' data-type='uint64_t' data-ref="24sec">sec</dfn> = <a class="local col1 ref" href="#21nanosecs" title='nanosecs' data-ref="21nanosecs">nanosecs</a> / <var>1000000000</var>;</td></tr>
+<tr><th id="155">155</th><td>      <a class="typedef" href="../../../include/stdint.h.html#uint64_t" title='uint64_t' data-type='unsigned long' data-ref="uint64_t">uint64_t</a> <dfn class="local col5 decl" id="25a" title='a' data-type='uint64_t' data-ref="25a">a</dfn>, <dfn class="local col6 decl" id="26b" title='b' data-type='uint64_t' data-ref="26b">b</dfn>;</td></tr>
+<tr><th id="156">156</th><td></td></tr>
+<tr><th id="157">157</th><td>      <b>if</b> ((<a class="local col4 ref" href="#24sec" title='sec' data-ref="24sec">sec</a> == <var>0</var>) &amp;&amp; (<a class="local col3 ref" href="#23nsec" title='nsec' data-ref="23nsec">nsec</a> &lt; <var>1000</var>))</td></tr>
+<tr><th id="158">158</th><td>        {</td></tr>
+<tr><th id="159">159</th><td>          <a class="local col6 ref" href="#26b" title='b' data-ref="26b">b</a> = <a class="local col3 ref" href="#23nsec" title='nsec' data-ref="23nsec">nsec</a> % <var>1000</var>;</td></tr>
+<tr><th id="160">160</th><td>          <b>if</b> (<a class="ref" href="pocl_debug.h.html#stderr_is_a_tty" title='stderr_is_a_tty' data-ref="stderr_is_a_tty">stderr_is_a_tty</a>)</td></tr>
+<tr><th id="161">161</th><td>            <a class="local col2 ref" href="#22formatstring" title='formatstring' data-ref="22formatstring">formatstring</a> = <q>"      &gt;&gt;&gt;      "</q> <a class="macro" href="pocl_debug.h.html#34" title="&quot;\033[35m&quot;" data-ref="_M/POCL_COLOR_MAGENTA">POCL_COLOR_MAGENTA</a></td></tr>
+<tr><th id="162">162</th><td>                    <q>"     %3"</q> <a class="macro" href="../../../include/inttypes.h.html#105" title="&quot;l&quot; &quot;u&quot;" data-ref="_M/PRIu64">PRIu64</a> <q>" "</q> <a class="macro" href="pocl_debug.h.html#28" title="&quot;\033[0m&quot;" data-ref="_M/POCL_COLOR_RESET">POCL_COLOR_RESET</a> <q>" ns    %s\n"</q>;</td></tr>
+<tr><th id="163">163</th><td>          <b>else</b></td></tr>
+<tr><th id="164">164</th><td>            <a class="local col2 ref" href="#22formatstring" title='formatstring' data-ref="22formatstring">formatstring</a> = <q>"      &gt;&gt;&gt;           %3"</q> <a class="macro" href="../../../include/inttypes.h.html#105" title="&quot;l&quot; &quot;u&quot;" data-ref="_M/PRIu64">PRIu64</a> <q>"  ns    %s\n"</q>;</td></tr>
+<tr><th id="165">165</th><td>          <a class="macro" href="#128" title="do { pocl_debug_output_lock (); pocl_debug_print_header (func, line, &quot;TIMING&quot;, 1); fprintf (stderr, formatstring, b, msg); pocl_debug_output_unlock (); } while (0)" data-ref="_M/PRINT_DURATION">PRINT_DURATION</a> (<a class="local col8 ref" href="#18func" title='func' data-ref="18func">func</a>, <a class="local col9 ref" href="#19line" title='line' data-ref="19line">line</a>, <a class="local col2 ref" href="#22formatstring" title='formatstring' data-ref="22formatstring">formatstring</a>, <a class="local col6 ref" href="#26b" title='b' data-ref="26b">b</a>, <a class="local col0 ref" href="#20msg" title='msg' data-ref="20msg">msg</a>);</td></tr>
+<tr><th id="166">166</th><td>        }</td></tr>
+<tr><th id="167">167</th><td>      <b>else</b> <b>if</b> ((<a class="local col4 ref" href="#24sec" title='sec' data-ref="24sec">sec</a> == <var>0</var>) &amp;&amp; (<a class="local col3 ref" href="#23nsec" title='nsec' data-ref="23nsec">nsec</a> &lt; <var>1000000</var>))</td></tr>
+<tr><th id="168">168</th><td>        {</td></tr>
+<tr><th id="169">169</th><td>          <a class="local col5 ref" href="#25a" title='a' data-ref="25a">a</a> = <a class="local col3 ref" href="#23nsec" title='nsec' data-ref="23nsec">nsec</a> / <var>1000</var>;</td></tr>
+<tr><th id="170">170</th><td>          <a class="local col6 ref" href="#26b" title='b' data-ref="26b">b</a> = <a class="local col3 ref" href="#23nsec" title='nsec' data-ref="23nsec">nsec</a> % <var>1000</var>;</td></tr>
+<tr><th id="171">171</th><td>          <a class="macro" href="#128" title="do { pocl_debug_output_lock (); pocl_debug_print_header (func, line, &quot;TIMING&quot;, 1); fprintf (stderr, formatstring, a, b, &quot;us&quot;, msg); pocl_debug_output_unlock (); } while (0)" data-ref="_M/PRINT_DURATION">PRINT_DURATION</a> (<a class="local col8 ref" href="#18func" title='func' data-ref="18func">func</a>, <a class="local col9 ref" href="#19line" title='line' data-ref="19line">line</a>, <a class="local col2 ref" href="#22formatstring" title='formatstring' data-ref="22formatstring">formatstring</a>, <a class="local col5 ref" href="#25a" title='a' data-ref="25a">a</a>, <a class="local col6 ref" href="#26b" title='b' data-ref="26b">b</a>, <q>"us"</q>, <a class="local col0 ref" href="#20msg" title='msg' data-ref="20msg">msg</a>);</td></tr>
+<tr><th id="172">172</th><td>        }</td></tr>
+<tr><th id="173">173</th><td>      <b>else</b> <b>if</b> (<a class="local col4 ref" href="#24sec" title='sec' data-ref="24sec">sec</a> == <var>0</var>)</td></tr>
+<tr><th id="174">174</th><td>        {</td></tr>
+<tr><th id="175">175</th><td>          <a class="local col5 ref" href="#25a" title='a' data-ref="25a">a</a> = <a class="local col3 ref" href="#23nsec" title='nsec' data-ref="23nsec">nsec</a> / <var>1000000</var>;</td></tr>
+<tr><th id="176">176</th><td>          <a class="local col6 ref" href="#26b" title='b' data-ref="26b">b</a> = (<a class="local col3 ref" href="#23nsec" title='nsec' data-ref="23nsec">nsec</a> % <var>1000000</var>) / <var>1000</var>;</td></tr>
+<tr><th id="177">177</th><td>          <a class="macro" href="#128" title="do { pocl_debug_output_lock (); pocl_debug_print_header (func, line, &quot;TIMING&quot;, 1); fprintf (stderr, formatstring, a, b, &quot;ms&quot;, msg); pocl_debug_output_unlock (); } while (0)" data-ref="_M/PRINT_DURATION">PRINT_DURATION</a> (<a class="local col8 ref" href="#18func" title='func' data-ref="18func">func</a>, <a class="local col9 ref" href="#19line" title='line' data-ref="19line">line</a>, <a class="local col2 ref" href="#22formatstring" title='formatstring' data-ref="22formatstring">formatstring</a>, <a class="local col5 ref" href="#25a" title='a' data-ref="25a">a</a>, <a class="local col6 ref" href="#26b" title='b' data-ref="26b">b</a>, <q>"ms"</q>, <a class="local col0 ref" href="#20msg" title='msg' data-ref="20msg">msg</a>);</td></tr>
+<tr><th id="178">178</th><td>        }</td></tr>
+<tr><th id="179">179</th><td>      <b>else</b></td></tr>
+<tr><th id="180">180</th><td>        {</td></tr>
+<tr><th id="181">181</th><td>          <b>if</b> (<a class="ref" href="pocl_debug.h.html#stderr_is_a_tty" title='stderr_is_a_tty' data-ref="stderr_is_a_tty">stderr_is_a_tty</a>)</td></tr>
+<tr><th id="182">182</th><td>            <a class="local col2 ref" href="#22formatstring" title='formatstring' data-ref="22formatstring">formatstring</a> = <q>"      &gt;&gt;&gt;  "</q> <a class="macro" href="pocl_debug.h.html#34" title="&quot;\033[35m&quot;" data-ref="_M/POCL_COLOR_MAGENTA">POCL_COLOR_MAGENTA</a> <q>"     %3"</q> <a class="macro" href="../../../include/inttypes.h.html#105" title="&quot;l&quot; &quot;u&quot;" data-ref="_M/PRIu64">PRIu64</a></td></tr>
+<tr><th id="183">183</th><td>                           <q>".%09"</q> <a class="macro" href="../../../include/inttypes.h.html#105" title="&quot;l&quot; &quot;u&quot;" data-ref="_M/PRIu64">PRIu64</a> <q>" "</q> <a class="macro" href="pocl_debug.h.html#28" title="&quot;\033[0m&quot;" data-ref="_M/POCL_COLOR_RESET">POCL_COLOR_RESET</a> <q>" %s    %s\n"</q>;</td></tr>
+<tr><th id="184">184</th><td>          <b>else</b></td></tr>
+<tr><th id="185">185</th><td>            <a class="local col2 ref" href="#22formatstring" title='formatstring' data-ref="22formatstring">formatstring</a> = <q>"      &gt;&gt;&gt;       %3"</q> <a class="macro" href="../../../include/inttypes.h.html#105" title="&quot;l&quot; &quot;u&quot;" data-ref="_M/PRIu64">PRIu64</a> <q>".%09"</q></td></tr>
+<tr><th id="186">186</th><td>                           <a class="macro" href="../../../include/inttypes.h.html#105" title="&quot;l&quot; &quot;u&quot;" data-ref="_M/PRIu64">PRIu64</a> <q>"  %s    %s\n"</q>;</td></tr>
+<tr><th id="187">187</th><td></td></tr>
+<tr><th id="188">188</th><td>          <a class="macro" href="#128" title="do { pocl_debug_output_lock (); pocl_debug_print_header (func, line, &quot;TIMING&quot;, 1); fprintf (stderr, formatstring, sec, nsec, &quot;s&quot;, msg); pocl_debug_output_unlock (); } while (0)" data-ref="_M/PRINT_DURATION">PRINT_DURATION</a> (<a class="local col8 ref" href="#18func" title='func' data-ref="18func">func</a>, <a class="local col9 ref" href="#19line" title='line' data-ref="19line">line</a>, <a class="local col2 ref" href="#22formatstring" title='formatstring' data-ref="22formatstring">formatstring</a>, <a class="local col4 ref" href="#24sec" title='sec' data-ref="24sec">sec</a>, <a class="local col3 ref" href="#23nsec" title='nsec' data-ref="23nsec">nsec</a>, <q>"s"</q>, <a class="local col0 ref" href="#20msg" title='msg' data-ref="20msg">msg</a>);</td></tr>
+<tr><th id="189">189</th><td>        }</td></tr>
+<tr><th id="190">190</th><td></td></tr>
+<tr><th id="191">191</th><td>    }</td></tr>
+<tr><th id="192">192</th><td></td></tr>
+<tr><th id="193">193</th><td></td></tr>
+<tr><th id="194">194</th><td></td></tr>
+<tr><th id="195">195</th><td>    <em>void</em> <dfn class="decl def" id="pocl_debug_measure_finish" title='pocl_debug_measure_finish' data-ref="pocl_debug_measure_finish">pocl_debug_measure_finish</dfn>(<a class="typedef" href="../../../include/stdint.h.html#uint64_t" title='uint64_t' data-type='unsigned long' data-ref="uint64_t">uint64_t</a> *<dfn class="local col7 decl" id="27start" title='start' data-type='uint64_t *' data-ref="27start">start</dfn>, <a class="typedef" href="../../../include/stdint.h.html#uint64_t" title='uint64_t' data-type='unsigned long' data-ref="uint64_t">uint64_t</a> *<dfn class="local col8 decl" id="28finish" title='finish' data-type='uint64_t *' data-ref="28finish">finish</dfn>,</td></tr>
+<tr><th id="196">196</th><td>                                   <em>const</em> <em>char</em>* <dfn class="local col9 decl" id="29msg" title='msg' data-type='const char *' data-ref="29msg">msg</dfn>,</td></tr>
+<tr><th id="197">197</th><td>                                   <em>const</em> <em>char</em>* <dfn class="local col0 decl" id="30func" title='func' data-type='const char *' data-ref="30func">func</dfn>,</td></tr>
+<tr><th id="198">198</th><td>                                   <em>unsigned</em> <dfn class="local col1 decl" id="31line" title='line' data-type='unsigned int' data-ref="31line">line</dfn>) {</td></tr>
+<tr><th id="199">199</th><td>      *<a class="local col8 ref" href="#28finish" title='finish' data-ref="28finish">finish</a> = <a class="ref" href="pocl_timing.h.html#pocl_gettimemono_ns" title='pocl_gettimemono_ns' data-ref="pocl_gettimemono_ns">pocl_gettimemono_ns</a>();</td></tr>
+<tr><th id="200">200</th><td>      <a class="ref" href="#pocl_debug_print_duration" title='pocl_debug_print_duration' data-ref="pocl_debug_print_duration">pocl_debug_print_duration</a>(<a class="local col0 ref" href="#30func" title='func' data-ref="30func">func</a>, <a class="local col1 ref" href="#31line" title='line' data-ref="31line">line</a>, <a class="local col9 ref" href="#29msg" title='msg' data-ref="29msg">msg</a>, (*<a class="local col8 ref" href="#28finish" title='finish' data-ref="28finish">finish</a> - *<a class="local col7 ref" href="#27start" title='start' data-ref="27start">start</a>) );</td></tr>
+<tr><th id="201">201</th><td>    }</td></tr>
+<tr><th id="202">202</th><td></td></tr>
+<tr><th id="203">203</th><td>  <u>#<span data-ppcond="18">else</span></u></td></tr>
+<tr><th id="204">204</th><td></td></tr>
+<tr><th id="205">205</th><td><i>/* Doesn't work, haven't been able to get it working.</i></td></tr>
+<tr><th id="206">206</th><td><i> * Needs someone with experience in Win programming. */</i></td></tr>
+<tr><th id="207">207</th><td></td></tr>
+<tr><th id="208">208</th><td>    <u>#include &lt;windows.h&gt;</u></td></tr>
+<tr><th id="209">209</th><td>    <u>#include &lt;stdio.h&gt;</u></td></tr>
+<tr><th id="210">210</th><td></td></tr>
+<tr><th id="211">211</th><td>    <em>void</em> pocl_debug_print_header(<em>const</em> <em>char</em>* func, <em>unsigned</em> line) {</td></tr>
+<tr><th id="212">212</th><td>        SYSTEMTIME st;</td></tr>
+<tr><th id="213">213</th><td>        FILETIME t;</td></tr>
+<tr><th id="214">214</th><td>        <em>unsigned</em> <em>long</em> st_nanosec;</td></tr>
+<tr><th id="215">215</th><td>        GetSystemTimeAsFileTime(&amp;t);</td></tr>
+<tr><th id="216">216</th><td>        FileTimeToSystemTime(&amp;t, &amp;st);</td></tr>
+<tr><th id="217">217</th><td>        st_nanosec = (t.dwLowDateTime % <var>10000000</var>) * <var>100</var>;</td></tr>
+<tr><th id="218">218</th><td></td></tr>
+<tr><th id="219">219</th><td>        fprintf(stderr,</td></tr>
+<tr><th id="220">220</th><td>            <q>"[%04u-%02u-%02u %02u:%02u:%02u.%09lu] POCL: "</q></td></tr>
+<tr><th id="221">221</th><td>            <q>"in fn %s at line %u:\n"</q>,</td></tr>
+<tr><th id="222">222</th><td>            (<em>unsigned</em> <em>int</em>)st.wYear, (<em>unsigned</em> <em>int</em>)st.wMonth,</td></tr>
+<tr><th id="223">223</th><td>            (<em>unsigned</em> <em>int</em>)st.wDay, (<em>unsigned</em> <em>int</em>)st.wHour,</td></tr>
+<tr><th id="224">224</th><td>            (<em>unsigned</em> <em>int</em>)st.wMinute, (<em>unsigned</em> <em>int</em>)st.wSecond,</td></tr>
+<tr><th id="225">225</th><td>            (<em>unsigned</em> <em>long</em>)st_nanosec, func, line);</td></tr>
+<tr><th id="226">226</th><td>    }</td></tr>
+<tr><th id="227">227</th><td></td></tr>
+<tr><th id="228">228</th><td></td></tr>
+<tr><th id="229">229</th><td>  <u>#<span data-ppcond="18">endif</span></u></td></tr>
+<tr><th id="230">230</th><td></td></tr>
+<tr><th id="231">231</th><td></td></tr>
+<tr><th id="232">232</th><td></td></tr>
+<tr><th id="233">233</th><td><u>#<span data-ppcond="11">endif</span></u></td></tr>
+<tr><th id="234">234</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

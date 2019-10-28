@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/Value.h' l='573' type='uint64_t llvm::Value::getPointerDereferenceableBytes(const llvm::DataLayout &amp; DL, bool &amp; CanBeNull) const'/>
+<doc f='include/llvm-6.0/llvm/IR/Value.h' l='568'>/// \brief Returns the number of bytes known to be dereferenceable for the
+  /// pointer value.
+  ///
+  /// If CanBeNull is set by this function the pointer can either be null or be
+  /// dereferenceable up to the returned number of bytes.</doc>

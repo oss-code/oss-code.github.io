@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='98' type='uint64_t llvm::raw_ostream::tell() const'/>
+<use f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='345' u='c' c='_ZN4llvm17raw_pwrite_stream6pwriteEPKcmm'/>
+<use f='include/llvm-6.0/llvm/Support/FormattedStream.h' l='52' u='c' c='_ZNK4llvm21formatted_raw_ostream11current_posEv'/>
+<doc f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='97'>/// tell - Return the current offset with the file.</doc>

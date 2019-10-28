@@ -1,0 +1,13 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='655' type='size_t [3]'/>
+<offset>768</offset>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='159' u='r' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='161' u='r' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='163' u='r' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='101' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='203' u='w' c='pocl_init_cpu_device_infos'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='203' u='w' c='pocl_init_cpu_device_infos'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='204' u='w' c='pocl_init_cpu_device_infos'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='229' u='w' c='pocl_cuda_init'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='230' u='w' c='pocl_cuda_init'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='231' u='w' c='pocl_cuda_init'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='349' u='r' c='_ZL26addRangeMetadataForPCFieldPN4llvm11InstructionEii'/>

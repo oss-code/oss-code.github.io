@@ -1,0 +1,9 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1132' type='struct event_callback_item *'/>
+<offset>192</offset>
+<use f='pocl/lib/CL/clReleaseEvent.c' l='43' u='r' c='POclReleaseEvent'/>
+<use f='pocl/lib/CL/clSetEventCallback.c' l='28' u='w' c='POclSetEventCallback'/>
+<use f='pocl/lib/CL/clSetEventCallback.c' l='33' macro='1' u='w'/>
+<use f='pocl/lib/CL/clSetEventCallback.c' l='33' macro='1' u='r'/>
+<use f='pocl/lib/CL/clSetEventCallback.c' l='33' macro='1' u='r'/>
+<use f='pocl/lib/CL/clSetEventCallback.c' l='33' macro='1' u='w'/>
+<use f='pocl/lib/CL/pocl_tracing.c' l='64' u='r' c='pocl_event_updated'/>

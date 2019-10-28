@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/ADT/Twine.h' l='355' ll='360' type='void llvm::Twine::Twine(const char * LHS, const llvm::StringRef &amp; RHS)'/>
+<use f='include/llvm-6.0/llvm/ADT/Twine.h' l='523' u='c' c='_ZN4llvmplEPKcRKNS_9StringRefE'/>
+<doc f='include/llvm-6.0/llvm/ADT/Twine.h' l='349'>// FIXME: Unfortunately, to make sure this is as efficient as possible we
+    // need extra binary constructors from particular types. We can&apos;t rely on
+    // the compiler to be smart enough to fold operator+()/concat() down to the
+    // right thing. Yet.
+
+    /// Construct as the concatenation of a C string and a StringRef.</doc>
+<doc f='include/llvm-6.0/llvm/ADT/Twine.h' l='355'>/*implicit*/</doc>

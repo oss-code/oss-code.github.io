@@ -1,0 +1,9 @@
+<inh f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='136' c='llvm::FoldingSetBase::Node'/>
+<def f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='256' ll='276'/>
+<size>224</size>
+<doc f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='254'>/// A wrapper around AnalysisUsage for the purpose of uniqueing.  The wrapper
+  /// is used to avoid needing to make AnalysisUsage itself a folding set node.</doc>
+<mbr r='llvm::PMTopLevelManager::AUFoldingSetNode::AU' o='64' t='llvm::AnalysisUsage'/>
+<fun r='_ZN4llvm17PMTopLevelManager16AUFoldingSetNodeC1ERKNS_13AnalysisUsageE'/>
+<fun r='_ZNK4llvm17PMTopLevelManager16AUFoldingSetNode7ProfileERNS_16FoldingSetNodeIDE'/>
+<fun r='_ZN4llvm17PMTopLevelManager16AUFoldingSetNode7ProfileERNS_16FoldingSetNodeIDERKNS_13AnalysisUsageE'/>

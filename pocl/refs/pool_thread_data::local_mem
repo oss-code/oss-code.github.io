@@ -1,0 +1,8 @@
+<dec f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='52' type='void *'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='258' u='r' c='work_group_scheduler'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='511' u='w' c='pocl_pthread_driver_thread'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='513' u='r' c='pocl_pthread_driver_thread'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='530' u='r' c='pocl_pthread_driver_thread'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='530' u='w' c='pocl_pthread_driver_thread'/>
+<offset>128</offset>
+<doc f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='51'>/* per-CU (= per-thread) local memory */</doc>

@@ -1,0 +1,47 @@
+<dec f='pocl/include/CL/cl.h' l='1227' type='cl_kernel clCreateKernel(cl_program program, const char * kernel_name, cl_int * errcode_ret)'/>
+<doc f='pocl/include/CL/cl.h' l='1225'>/* Kernel Object APIs */</doc>
+<use f='pocl/examples/EinsteinToolkit/EinsteinToolkit.c' l='611' u='c' c='setup'/>
+<use f='pocl/examples/EinsteinToolkit/EinsteinToolkit.c' l='622' u='c' c='setup'/>
+<use f='pocl/examples/boxadd/boxadd_exec.c' l='77' u='c' c='exec_matadd_kernel'/>
+<use f='pocl/examples/example0/example0_exec.c' l='48' u='c' c='exec_integer_mad_kernel'/>
+<use f='pocl/examples/example1/example1_exec.c' l='41' u='c' c='exec_dot_product_kernel'/>
+<use f='pocl/examples/example2/example2.c' l='90' u='c' c='main'/>
+<use f='pocl/examples/example2a/example2a.c' l='90' u='c' c='main'/>
+<use f='pocl/examples/matadd/matadd_exec.c' l='63' u='c' c='exec_matadd_kernel'/>
+<use f='pocl/examples/matrix1/matrix1.c' l='69' u='c' c='exec_matrix_kernel'/>
+<use f='pocl/examples/matrix1/matrix1.c' l='103' u='c' c='exec_matrix_kernel'/>
+<use f='pocl/examples/scalarwave/scalarwave.c' l='76' u='c' c='exec_scalarwave_kernel'/>
+<use f='pocl/examples/trig/trig_exec.c' l='95' u='c' c='exec_trig_kernel'/>
+<use f='pocl/examples/vecadd/vecadd_exec.c' l='41' u='c' c='exec_vecadd_kernel'/>
+<use f='pocl/lib/CL/pocl_intfn.h' l='41' c='POclCreateKernel'/>
+<use f='pocl/tests/kernel/image_query_funcs.c' l='104' u='c' c='main'/>
+<use f='pocl/tests/kernel/kernel.c' l='83' u='c' c='call_test'/>
+<use f='pocl/tests/kernel/sampler_address_clamp.c' l='116' u='c' c='main'/>
+<use f='pocl/include/CL/cl2.hpp' l='6855' u='c' c='_ZN2cl6KernelC1ERKNS_7ProgramEPKcPi'/>
+<use f='pocl/tests/regression/test_assign_loop_variable_to_privvar_makes_it_local.c' l='74' u='c' c='main'/>
+<use f='pocl/tests/regression/test_assign_loop_variable_to_privvar_makes_it_local_2.c' l='69' u='c' c='main'/>
+<use f='pocl/tests/regression/test_program_from_binary_with_local_1_1_1.c' l='110' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='206' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='236' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='265' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='336' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='365' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='394' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateKernel.c' l='32' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateKernel.c' l='36' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateSubDevices.c' l='61' u='c' c='test_context'/>
+<use f='pocl/tests/runtime/test_clFinish.c' l='127' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clFinish.c' l='131' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clFinish.c' l='135' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clGetKernelArgInfo.c' l='76' u='c' c='test_program'/>
+<use f='pocl/tests/runtime/test_clGetKernelArgInfo.c' l='79' u='c' c='test_program'/>
+<use f='pocl/tests/runtime/test_clSetEventCallback.c' l='121' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_enqueue_kernel_from_binary.c' l='259' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_enqueue_kernel_from_binary.c' l='267' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_enqueue_kernel_from_binary.c' l='272' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_enqueue_kernel_from_binary.c' l='280' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_enqueue_kernel_from_binary.c' l='286' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_enqueue_kernel_from_binary.c' l='295' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_kernel_cache_includes.c' l='45' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_kernel_cache_includes.c' l='69' u='c' c='main'/>
+<use f='pocl/tests/workgroup/run_kernel.c' l='100' u='c' c='main'/>

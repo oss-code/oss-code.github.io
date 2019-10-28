@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='1001' type='static llvm::Constant * llvm::ConstantExpr::getBinOpIdentity(unsigned int Opcode, llvm::Type * Ty)'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='998'>/// Return the identity for the given binary operation,
+  /// i.e. a constant C such that X op C = X and C op X = X for every X.  It
+  /// returns null if the operator doesn&apos;t have an identity.</doc>

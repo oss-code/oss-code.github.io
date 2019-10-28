@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>pocl_llvm_api.h source code [pocl/lib/CL/pocl_llvm_api.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="PoclCompilerMutexGuard "/>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/CL/pocl_llvm_api.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>CL</a>/<a href='pocl_llvm_api.h.html'>pocl_llvm_api.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* pocl_llvm_api.cc: internally used header for pocl's LLVM API sources.</i></td></tr>
+<tr><th id="2">2</th><td><i></i></td></tr>
+<tr><th id="3">3</th><td><i>   Copyright (c) 2013 Kalle Raiskila</i></td></tr>
+<tr><th id="4">4</th><td><i>                 2013-2017 Pekka Jääskeläinen</i></td></tr>
+<tr><th id="5">5</th><td><i></i></td></tr>
+<tr><th id="6">6</th><td><i>   Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="7">7</th><td><i>   of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="8">8</th><td><i>   in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="9">9</th><td><i>   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="10">10</th><td><i>   copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="11">11</th><td><i>   furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="12">12</th><td><i></i></td></tr>
+<tr><th id="13">13</th><td><i>   The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="14">14</th><td><i>   all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="15">15</th><td><i></i></td></tr>
+<tr><th id="16">16</th><td><i>   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="17">17</th><td><i>   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="18">18</th><td><i>   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="19">19</th><td><i>   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="20">20</th><td><i>   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="21">21</th><td><i>   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="22">22</th><td><i>   THE SOFTWARE.</i></td></tr>
+<tr><th id="23">23</th><td><i>*/</i></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><u>#include <a href="pocl_llvm.h.html">"pocl_llvm.h"</a></u></td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><u>#include <a href="../llvmopencl/CompilerWarnings.h.html">"CompilerWarnings.h"</a></u></td></tr>
+<tr><th id="28">28</th><td><a class="macro" href="../llvmopencl/CompilerWarnings.h.html#29" title="" data-ref="_M/IGNORE_COMPILER_WARNING">IGNORE_COMPILER_WARNING</a> (<q>"-Wunused-parameter"</q>)</td></tr>
+<tr><th id="29">29</th><td></td></tr>
+<tr><th id="30">30</th><td><u>#include <a href="../../../include/llvm-6.0/llvm/IR/Module.h.html">&lt;llvm/IR/Module.h&gt;</a></u></td></tr>
+<tr><th id="31">31</th><td><u>#include <a href="../../../include/c++/7/map.html">&lt;map&gt;</a></u></td></tr>
+<tr><th id="32">32</th><td><u>#include <a href="../../../include/c++/7/string.html">&lt;string&gt;</a></u></td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><b>typedef</b> <b>struct</b> <a class="type" href="pocl_cl.h.html#_cl_device_id" title='_cl_device_id' data-ref="_cl_device_id">_cl_device_id</a> *<a class="typedef" href="../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id" id="cl_device_id">cl_device_id</a>;</td></tr>
+<tr><th id="35">35</th><td></td></tr>
+<tr><th id="36">36</th><td><u>#<span data-ppcond="36">ifdef</span> <span class="macro" data-ref="_M/__GNUC__">__GNUC__</span></u></td></tr>
+<tr><th id="37">37</th><td><u>#pragma GCC visibility push(hidden)</u></td></tr>
+<tr><th id="38">38</th><td><u>#<span data-ppcond="36">endif</span></u></td></tr>
+<tr><th id="39">39</th><td></td></tr>
+<tr><th id="40">40</th><td><i>/* The LLVM API interface functions are not thread safe at the moment;</i></td></tr>
+<tr><th id="41">41</th><td><i> * Pocl needs to ensure only one thread is using this layer at the time.</i></td></tr>
+<tr><th id="42">42</th><td><i> *</i></td></tr>
+<tr><th id="43">43</th><td><i> * Pocl used a llvm::sys::Mutex class variable before, unfortunately,</i></td></tr>
+<tr><th id="44">44</th><td><i> * using llvm::sys::Mutex is not safe. Reason:</i></td></tr>
+<tr><th id="45">45</th><td><i> *</i></td></tr>
+<tr><th id="46">46</th><td><i> * if pocl is dlopened from a C++ program, pocl's C++ object destructors</i></td></tr>
+<tr><th id="47">47</th><td><i> * are called before the program's dtors. This causes the Mutex to be destroyed,</i></td></tr>
+<tr><th id="48">48</th><td><i> * and if the program's dtors call clReleaseProgram()</i></td></tr>
+<tr><th id="49">49</th><td><i> * -&gt; pocl_free_llvm_irs() -&gt; llvm::PoclMutexGuard guard_variable(Mutex)</i></td></tr>
+<tr><th id="50">50</th><td><i> * ... the program will freeze/segfault.</i></td></tr>
+<tr><th id="51">51</th><td><i> *</i></td></tr>
+<tr><th id="52">52</th><td><i> * This happens with many ViennaCL examples.</i></td></tr>
+<tr><th id="53">53</th><td><i> *</i></td></tr>
+<tr><th id="54">54</th><td><i> * This class is a replacement that uses a simple pthread lock</i></td></tr>
+<tr><th id="55">55</th><td><i> */</i></td></tr>
+<tr><th id="56">56</th><td></td></tr>
+<tr><th id="57">57</th><td><b>class</b> <dfn class="type def" id="PoclCompilerMutexGuard" title='PoclCompilerMutexGuard' data-ref="PoclCompilerMutexGuard">PoclCompilerMutexGuard</dfn> {</td></tr>
+<tr><th id="58">58</th><td>  <dfn class="decl def" id="_ZN22PoclCompilerMutexGuardC1ERKS_" title='PoclCompilerMutexGuard::PoclCompilerMutexGuard' data-ref="_ZN22PoclCompilerMutexGuardC1ERKS_">PoclCompilerMutexGuard</dfn>(<em>const</em> <a class="type" href="#PoclCompilerMutexGuard" title='PoclCompilerMutexGuard' data-ref="PoclCompilerMutexGuard">PoclCompilerMutexGuard</a> &amp;) = <b>delete</b>;</td></tr>
+<tr><th id="59">59</th><td>  <em>void</em> <dfn class="decl def" id="_ZN22PoclCompilerMutexGuardaSERKS_" title='PoclCompilerMutexGuard::operator=' data-ref="_ZN22PoclCompilerMutexGuardaSERKS_"><b>operator</b>=</dfn>(<em>const</em> <a class="type" href="#PoclCompilerMutexGuard" title='PoclCompilerMutexGuard' data-ref="PoclCompilerMutexGuard">PoclCompilerMutexGuard</a> &amp;) = <b>delete</b>;</td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td><b>public</b>:</td></tr>
+<tr><th id="62">62</th><td>  <i>// an unused argument is required, otherwise compiler optimizes out the object</i></td></tr>
+<tr><th id="63">63</th><td>  <dfn class="decl" id="_ZN22PoclCompilerMutexGuardC1EPv" title='PoclCompilerMutexGuard::PoclCompilerMutexGuard' data-ref="_ZN22PoclCompilerMutexGuardC1EPv">PoclCompilerMutexGuard</dfn>(<em>void</em> *<dfn class="local col3 decl" id="4253unused" title='unused' data-type='void *' data-ref="4253unused">unused</dfn>);</td></tr>
+<tr><th id="64">64</th><td>  <dfn class="decl" id="_ZN22PoclCompilerMutexGuardD1Ev" title='PoclCompilerMutexGuard::~PoclCompilerMutexGuard' data-ref="_ZN22PoclCompilerMutexGuardD1Ev">~PoclCompilerMutexGuard</dfn>();</td></tr>
+<tr><th id="65">65</th><td>};</td></tr>
+<tr><th id="66">66</th><td></td></tr>
+<tr><th id="67">67</th><td></td></tr>
+<tr><th id="68">68</th><td><b>extern</b> <a class="typedef" href="../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="decl" id="currentPoclDevice" title='currentPoclDevice' data-ref="currentPoclDevice">currentPoclDevice</dfn>;</td></tr>
+<tr><th id="69">69</th><td></td></tr>
+<tr><th id="70">70</th><td><em>void</em> <dfn class="decl" id="_Z14InitializeLLVMv" title='InitializeLLVM' data-ref="_Z14InitializeLLVMv">InitializeLLVM</dfn>();</td></tr>
+<tr><th id="71">71</th><td><span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/LLVMContext.h.html#llvm::LLVMContext" title='llvm::LLVMContext' data-ref="llvm::LLVMContext">LLVMContext</a> &amp;<dfn class="decl" id="_Z13GlobalContextv" title='GlobalContext' data-ref="_Z13GlobalContextv">GlobalContext</dfn>();</td></tr>
+<tr><th id="72">72</th><td><b>extern</b> <em>long</em> <dfn class="decl" id="numberOfIRs" title='numberOfIRs' data-ref="numberOfIRs">numberOfIRs</dfn>;</td></tr>
+<tr><th id="73">73</th><td></td></tr>
+<tr><th id="74">74</th><td><span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/Module.h.html#llvm::Module" title='llvm::Module' data-ref="llvm::Module">Module</a> *<dfn class="decl" id="_Z13parseModuleIRPKc" title='parseModuleIR' data-ref="_Z13parseModuleIRPKc">parseModuleIR</dfn>(<em>const</em> <em>char</em> *<dfn class="local col4 decl" id="4254path" title='path' data-type='const char *' data-ref="4254path">path</dfn>);</td></tr>
+<tr><th id="75">75</th><td><em>void</em> <dfn class="decl" id="_Z13writeModuleIRPKN4llvm6ModuleERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE" title='writeModuleIR' data-ref="_Z13writeModuleIRPKN4llvm6ModuleERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE">writeModuleIR</dfn>(<em>const</em> <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/Module.h.html#llvm::Module" title='llvm::Module' data-ref="llvm::Module">Module</a> *<dfn class="local col5 decl" id="4255mod" title='mod' data-type='const llvm::Module *' data-ref="4255mod">mod</dfn>, <span class="namespace">std::</span><a class="typedef" href="../../../include/c++/7/bits/stringfwd.h.html#std::__cxx11::string" title='std::__cxx11::string' data-type='basic_string&lt;char&gt;' data-ref="std::__cxx11::string">string</a> &amp;<dfn class="local col6 decl" id="4256str" title='str' data-type='std::string &amp;' data-ref="4256str">str</dfn>);</td></tr>
+<tr><th id="76">76</th><td><span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/Module.h.html#llvm::Module" title='llvm::Module' data-ref="llvm::Module">Module</a> *<dfn class="decl" id="_Z16parseModuleIRMemPKcm" title='parseModuleIRMem' data-ref="_Z16parseModuleIRMemPKcm">parseModuleIRMem</dfn>(<em>const</em> <em>char</em> *<dfn class="local col7 decl" id="4257input_stream" title='input_stream' data-type='const char *' data-ref="4257input_stream">input_stream</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col8 decl" id="4258size" title='size' data-type='size_t' data-ref="4258size">size</dfn>);</td></tr>
+<tr><th id="77">77</th><td><em>int</em> <dfn class="decl" id="_Z15getModuleTriplePKcmRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE" title='getModuleTriple' data-ref="_Z15getModuleTriplePKcmRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE">getModuleTriple</dfn>(<em>const</em> <em>char</em> *<dfn class="local col9 decl" id="4259input_stream" title='input_stream' data-type='const char *' data-ref="4259input_stream">input_stream</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col0 decl" id="4260size" title='size' data-type='size_t' data-ref="4260size">size</dfn>, <span class="namespace">std::</span><a class="typedef" href="../../../include/c++/7/bits/stringfwd.h.html#std::__cxx11::string" title='std::__cxx11::string' data-type='basic_string&lt;char&gt;' data-ref="std::__cxx11::string">string</a> &amp;<dfn class="local col1 decl" id="4261triple" title='triple' data-type='std::string &amp;' data-ref="4261triple">triple</dfn>);</td></tr>
+<tr><th id="78">78</th><td><span class="namespace">std::</span><a class="typedef" href="../../../include/c++/7/bits/stringfwd.h.html#std::__cxx11::string" title='std::__cxx11::string' data-type='basic_string&lt;char&gt;' data-ref="std::__cxx11::string">string</a> <dfn class="decl" id="_Z13getDiagStringB5cxx11v" title='getDiagString' data-ref="_Z13getDiagStringB5cxx11v">getDiagString</dfn>();</td></tr>
+<tr><th id="79">79</th><td></td></tr>
+<tr><th id="80">80</th><td><em>void</em> <dfn class="decl" id="_Z17clearKernelPassesv" title='clearKernelPasses' data-ref="_Z17clearKernelPassesv">clearKernelPasses</dfn>();</td></tr>
+<tr><th id="81">81</th><td><em>void</em> <dfn class="decl" id="_Z19clearTargetMachinesv" title='clearTargetMachines' data-ref="_Z19clearTargetMachinesv">clearTargetMachines</dfn>();</td></tr>
+<tr><th id="82">82</th><td><em>void</em> <a class="decl" href="pocl_llvm_build.cc.html#_Z18cleanKernelLibraryv" title='cleanKernelLibrary' data-ref="_Z18cleanKernelLibraryv" id="_Z18cleanKernelLibraryv">cleanKernelLibrary</a>();</td></tr>
+<tr><th id="83">83</th><td></td></tr>
+<tr><th id="84">84</th><td><b>extern</b> <span class="namespace">std::</span><a class="typedef" href="../../../include/c++/7/bits/stringfwd.h.html#std::__cxx11::string" title='std::__cxx11::string' data-type='basic_string&lt;char&gt;' data-ref="std::__cxx11::string">string</a> <dfn class="decl" id="currentWgMethod" title='currentWgMethod' data-ref="currentWgMethod">currentWgMethod</dfn>;</td></tr>
+<tr><th id="85">85</th><td></td></tr>
+<tr><th id="86">86</th><td><u>#<span data-ppcond="86">ifdef</span> <span class="macro" data-ref="_M/__GNUC__">__GNUC__</span></u></td></tr>
+<tr><th id="87">87</th><td><u>#pragma GCC visibility pop</u></td></tr>
+<tr><th id="88">88</th><td><u>#<span data-ppcond="86">endif</span></u></td></tr>
+<tr><th id="89">89</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='pocl_llvm_build.cc.html'>pocl/lib/CL/pocl_llvm_build.cc</a><br/>Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

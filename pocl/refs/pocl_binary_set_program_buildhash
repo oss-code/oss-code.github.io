@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/pocl_binary.h' l='54' type='void pocl_binary_set_program_buildhash(cl_program program, unsigned int device_i, const unsigned char * binary)'/>
+<doc f='pocl/lib/CL/pocl_binary.h' l='53'>/* sets the program&apos;s build_hash[device_i] for creating a program directory */</doc>
+<use f='pocl/lib/CL/clCreateProgramWithBinary.c' l='156' u='c' c='create_program_skeleton'/>
+<def f='pocl/lib/CL/pocl_binary.c' l='267' ll='276' type='void pocl_binary_set_program_buildhash(cl_program program, unsigned int device_i, const unsigned char * binary)'/>
+<doc f='pocl/lib/CL/pocl_binary.c' l='265'>/*****************************************************************************/</doc>

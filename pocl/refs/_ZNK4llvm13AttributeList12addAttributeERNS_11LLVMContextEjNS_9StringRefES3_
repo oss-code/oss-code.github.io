@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Attributes.h' l='384' type='llvm::AttributeList llvm::AttributeList::addAttribute(llvm::LLVMContext &amp; C, unsigned int Index, llvm::StringRef Kind, llvm::StringRef Value = llvm::StringRef()) const'/>
+<use f='include/llvm-6.0/llvm/IR/Attributes.h' l='408' u='c' c='_ZNK4llvm13AttributeList17addParamAttributeERNS_11LLVMContextEjNS_9StringRefES3_'/>
+<doc f='include/llvm-6.0/llvm/IR/Attributes.h' l='382'>/// \brief Add an attribute to the attribute set at the given index.
+  /// Returns a new list because attribute lists are immutable.</doc>

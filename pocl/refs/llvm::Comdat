@@ -1,0 +1,16 @@
+<def f='include/llvm-6.0/llvm/IR/Comdat.h' l='29' ll='56'/>
+<size>16</size>
+<doc f='include/llvm-6.0/llvm/IR/Comdat.h' l='25'>// This is a Name X SelectionKind pair. The reason for having this be an
+// independent object instead of just adding the name and the SelectionKind
+// to a GlobalObject is that it is invalid to have two Comdats with the same
+// name but different SelectionKind. This structure makes that unrepresentable.</doc>
+<fun r='_ZN4llvm6ComdatC1ERKS0_'/>
+<fun r='_ZN4llvm6ComdatC1EOS0_'/>
+<fun r='_ZNK4llvm6Comdat16getSelectionKindEv'/>
+<fun r='_ZN4llvm6Comdat16setSelectionKindENS0_13SelectionKindE'/>
+<fun r='_ZNK4llvm6Comdat7getNameEv'/>
+<fun r='_ZNK4llvm6Comdat5printERNS_11raw_ostreamEb'/>
+<fun r='_ZNK4llvm6Comdat4dumpEv'/>
+<fun r='_ZN4llvm6ComdatC1Ev'/>
+<mbr r='llvm::Comdat::Name' o='0' t='StringMapEntry&lt;llvm::Comdat&gt; *'/>
+<mbr r='llvm::Comdat::SK' o='64' t='llvm::Comdat::SelectionKind'/>

@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='842' ll='846' type='void llvm::DominatorTreeBase::wipe()'/>
+<doc f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='838'>/// \brief Wipe this tree&apos;s state without releasing any resources.
+  ///
+  /// This is essentially a post-move helper only. It leaves the object in an
+  /// assignable and destroyable state, but otherwise invalid.</doc>

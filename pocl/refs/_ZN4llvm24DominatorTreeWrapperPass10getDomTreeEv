@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/IR/Dominators.h' l='277' type='llvm::DominatorTree &amp; llvm::DominatorTreeWrapperPass::getDomTree()'/>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='81' u='c' c='_ZN4pocl22BarrierTailReplication13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='106' u='c' c='_ZN4pocl20CanonicalizeBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/ImplicitConditionalBarriers.cc' l='78' u='c' c='_ZN4pocl27ImplicitConditionalBarriers27firstNonBackedgePredecessorEPN4llvm10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/LoopBarriers.cc' l='77' u='c' c='_ZN4pocl12LoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='100' u='c' c='_ZN4pocl15WorkitemHandler12dominatesUseEPN4llvm24DominatorTreeWrapperPassERNS1_11InstructionEj'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='102' u='c' c='_ZN4pocl13WorkitemLoops13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemReplication.cc' l='99' u='c' c='_ZN4pocl19WorkitemReplication13runOnFunctionERN4llvm8FunctionE'/>

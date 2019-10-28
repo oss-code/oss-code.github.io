@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Support/TrigramIndex.h' l='65' type='std::unordered_map&lt;unsigned int, SmallVector&lt;size_t, 4&gt; &gt;'/>
+<offset>256</offset>
+<doc f='include/llvm-6.0/llvm/Support/TrigramIndex.h' l='60'>// Index holds a list of rules indices for each trigram. The same indices
+  // are used in Counts to store per-rule limits.
+  // If a trigram is too common (&gt;4 rules with it), we stop tracking it,
+  // which increases the probability for a need to match using regex, but
+  // decreases the costs in the regular case.</doc>

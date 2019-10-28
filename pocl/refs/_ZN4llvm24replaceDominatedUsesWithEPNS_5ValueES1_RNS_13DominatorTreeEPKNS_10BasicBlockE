@@ -1,0 +1,3 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='428' type='unsigned int llvm::replaceDominatedUsesWith(llvm::Value * From, llvm::Value * To, llvm::DominatorTree &amp; DT, const llvm::BasicBlock * BB)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='426'>/// Replace each use of &apos;From&apos; with &apos;To&apos; if that use is dominated by
+/// the end of the given BasicBlock. Returns the number of replacements made.</doc>

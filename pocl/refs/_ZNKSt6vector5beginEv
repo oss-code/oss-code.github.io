@@ -1,0 +1,8 @@
+<def f='include/c++/7/bits/stl_vector.h' l='571' ll='573' type='const_iterator std::vector::begin() const'/>
+<doc f='include/c++/7/bits/stl_vector.h' l='566'>/**
+       *  Returns a read-only (constant) iterator that points to the
+       *  first element in the %vector.  Iteration is done in ordinary
+       *  element order.
+       */</doc>
+<use f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='192' u='c' c='_ZNK4llvm13CallGraphNode5beginEv'/>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='406' u='c' c='_ZN4pocl22BarrierTailReplication16UpdateReferencesERKSt6vectorIPN4llvm10BasicBlockESaIS4_EERNS2_8ValueMapIPKNS2_5ValueENS2_14WeakTrackingVHENS2_14Valu1035321'/>

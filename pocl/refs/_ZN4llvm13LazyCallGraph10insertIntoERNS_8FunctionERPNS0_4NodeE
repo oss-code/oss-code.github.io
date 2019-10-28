@@ -1,0 +1,4 @@
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='989' u='c' c='_ZN4llvm13LazyCallGraph3getERNS_8FunctionE'/>
+<dec f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1144' type='llvm::LazyCallGraph::Node &amp; llvm::LazyCallGraph::insertInto(llvm::Function &amp; F, llvm::LazyCallGraph::Node *&amp; MappedN)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1142'>/// Helper to insert a new function, with an already looked-up entry in
+  /// the NodeMap.</doc>

@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/ADT/SmallVector.h' l='61' type='bool llvm::SmallVectorBase::empty() const'/>
+<use f='include/llvm-6.0/llvm/Support/Allocator.h' l='197' u='c' c='_ZN4llvm20BumpPtrAllocatorImpl5ResetEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1219' u='c' c='_ZNK4llvm15ScalarEvolution17BackedgeTakenInfo10hasAnyInfoEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='508' u='c' c='_ZN4llvm13SCEVTraversal8visitAllEPKNS_4SCEVE'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1077' u='c' c='_ZN4llvm13LazyCallGraph15visitReferencesERNS_15SmallVectorImplIPNS_8ConstantEEERNS_15SmallPtrSetImplIS3_EET_'/>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='167' u='c' c='_ZN12_GLOBAL__N_115AutomaticLocals22processAutomaticLocalsEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/FlattenGlobals.cc' l='96' u='c' c='_ZN12_GLOBAL__N_114FlattenGlobals11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/Kernel.cc' l='79' u='c' c='_ZN4pocl6Kernel26createParallelRegionBeforeEPN4llvm10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/Kernel.cc' l='182' u='c' c='_ZN4pocl6Kernel18getParallelRegionsEPN4llvm8LoopInfoE'/>

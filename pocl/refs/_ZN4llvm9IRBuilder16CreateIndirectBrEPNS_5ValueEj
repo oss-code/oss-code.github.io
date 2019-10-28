@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='812' ll='814' type='llvm::IndirectBrInst * llvm::IRBuilder::CreateIndirectBr(llvm::Value * Addr, unsigned int NumDests = 10)'/>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='809'>/// \brief Create an indirect branch instruction with the specified address
+  /// operand, with an optional hint for the number of destinations that will be
+  /// added (for efficient allocation).</doc>

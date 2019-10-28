@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='384' type='bool llvm::APInt::isStrictlyPositive() const'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='378'>/// \brief Determine if this APInt Value is positive.
+  ///
+  /// This tests if the value of this APInt is positive (&gt; 0). Note
+  /// that 0 is not a positive value.
+  ///
+  /// \returns true if this APInt is positive.</doc>

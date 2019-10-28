@@ -1,0 +1,10 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='1103' type='LLVMTypeRef LLVMVectorType(LLVMTypeRef ElementType, unsigned int ElementCount)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='1094'>/**
+ * Create a vector type that contains a defined type and has a specific
+ * number of elements.
+ *
+ * The created type will exist in the context thats its element type
+ * exists in.
+ *
+ * @see llvm::VectorType::get()
+ */</doc>

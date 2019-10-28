@@ -1,0 +1,121 @@
+<def f='pocl/lib/CL/pocl_cl.h' l='635' ll='820'/>
+<size>824</size>
+<mbr r='_cl_device_id::dispatch' o='0' t='struct _cl_icd_dispatch *'/>
+<mbr r='_cl_device_id::pocl_lock' o='64' t='pocl_lock_t'/>
+<mbr r='_cl_device_id::pocl_refcount' o='384' t='volatile int'/>
+<mbr r='_cl_device_id::type' o='448' t='cl_device_type'/>
+<mbr r='_cl_device_id::vendor_id' o='512' t='cl_uint'/>
+<mbr r='_cl_device_id::max_compute_units' o='544' t='cl_uint'/>
+<mbr r='_cl_device_id::parent_device' o='576' t='cl_device_id'/>
+<mbr r='_cl_device_id::core_start' o='640' t='unsigned int'/>
+<mbr r='_cl_device_id::core_count' o='672' t='unsigned int'/>
+<mbr r='_cl_device_id::max_work_item_dimensions' o='704' t='cl_uint'/>
+<mbr r='_cl_device_id::device_side_printf' o='736' t='int'/>
+<mbr r='_cl_device_id::max_work_item_sizes' o='768' t='size_t [3]'/>
+<mbr r='_cl_device_id::max_work_group_size' o='960' t='size_t'/>
+<mbr r='_cl_device_id::preferred_wg_size_multiple' o='1024' t='size_t'/>
+<mbr r='_cl_device_id::preferred_vector_width_char' o='1088' t='cl_uint'/>
+<mbr r='_cl_device_id::preferred_vector_width_short' o='1120' t='cl_uint'/>
+<mbr r='_cl_device_id::preferred_vector_width_int' o='1152' t='cl_uint'/>
+<mbr r='_cl_device_id::preferred_vector_width_long' o='1184' t='cl_uint'/>
+<mbr r='_cl_device_id::preferred_vector_width_float' o='1216' t='cl_uint'/>
+<mbr r='_cl_device_id::preferred_vector_width_double' o='1248' t='cl_uint'/>
+<mbr r='_cl_device_id::preferred_vector_width_half' o='1280' t='cl_uint'/>
+<mbr r='_cl_device_id::native_vector_width_char' o='1312' t='cl_uint'/>
+<mbr r='_cl_device_id::native_vector_width_short' o='1344' t='cl_uint'/>
+<mbr r='_cl_device_id::native_vector_width_int' o='1376' t='cl_uint'/>
+<mbr r='_cl_device_id::native_vector_width_long' o='1408' t='cl_uint'/>
+<mbr r='_cl_device_id::native_vector_width_float' o='1440' t='cl_uint'/>
+<mbr r='_cl_device_id::native_vector_width_double' o='1472' t='cl_uint'/>
+<mbr r='_cl_device_id::native_vector_width_half' o='1504' t='cl_uint'/>
+<mbr r='_cl_device_id::max_clock_frequency' o='1536' t='cl_uint'/>
+<mbr r='_cl_device_id::address_bits' o='1568' t='cl_uint'/>
+<mbr r='_cl_device_id::max_mem_alloc_size' o='1600' t='cl_ulong'/>
+<mbr r='_cl_device_id::image_support' o='1664' t='cl_bool'/>
+<mbr r='_cl_device_id::max_read_image_args' o='1696' t='cl_uint'/>
+<mbr r='_cl_device_id::max_write_image_args' o='1728' t='cl_uint'/>
+<mbr r='_cl_device_id::max_read_write_image_args' o='1760' t='cl_uint'/>
+<mbr r='_cl_device_id::image2d_max_width' o='1792' t='size_t'/>
+<mbr r='_cl_device_id::image2d_max_height' o='1856' t='size_t'/>
+<mbr r='_cl_device_id::image3d_max_width' o='1920' t='size_t'/>
+<mbr r='_cl_device_id::image3d_max_height' o='1984' t='size_t'/>
+<mbr r='_cl_device_id::image3d_max_depth' o='2048' t='size_t'/>
+<mbr r='_cl_device_id::image_max_buffer_size' o='2112' t='size_t'/>
+<mbr r='_cl_device_id::image_max_array_size' o='2176' t='size_t'/>
+<mbr r='_cl_device_id::max_samplers' o='2240' t='cl_uint'/>
+<mbr r='_cl_device_id::max_parameter_size' o='2304' t='size_t'/>
+<mbr r='_cl_device_id::mem_base_addr_align' o='2368' t='cl_uint'/>
+<mbr r='_cl_device_id::min_data_type_align_size' o='2400' t='cl_uint'/>
+<mbr r='_cl_device_id::half_fp_config' o='2432' t='cl_device_fp_config'/>
+<mbr r='_cl_device_id::single_fp_config' o='2496' t='cl_device_fp_config'/>
+<mbr r='_cl_device_id::double_fp_config' o='2560' t='cl_device_fp_config'/>
+<mbr r='_cl_device_id::global_mem_cache_type' o='2624' t='cl_device_mem_cache_type'/>
+<mbr r='_cl_device_id::global_mem_cacheline_size' o='2656' t='cl_uint'/>
+<mbr r='_cl_device_id::global_mem_cache_size' o='2688' t='cl_ulong'/>
+<mbr r='_cl_device_id::global_mem_size' o='2752' t='cl_ulong'/>
+<mbr r='_cl_device_id::global_var_pref_size' o='2816' t='size_t'/>
+<mbr r='_cl_device_id::global_var_max_size' o='2880' t='size_t'/>
+<mbr r='_cl_device_id::max_constant_buffer_size' o='2944' t='cl_ulong'/>
+<mbr r='_cl_device_id::max_constant_args' o='3008' t='cl_uint'/>
+<mbr r='_cl_device_id::local_mem_type' o='3040' t='cl_device_local_mem_type'/>
+<mbr r='_cl_device_id::local_mem_size' o='3072' t='cl_ulong'/>
+<mbr r='_cl_device_id::error_correction_support' o='3136' t='cl_bool'/>
+<mbr r='_cl_device_id::host_unified_memory' o='3168' t='cl_bool'/>
+<mbr r='_cl_device_id::profiling_timer_resolution' o='3200' t='size_t'/>
+<mbr r='_cl_device_id::endian_little' o='3264' t='cl_bool'/>
+<mbr r='_cl_device_id::available' o='3296' t='cl_bool'/>
+<mbr r='_cl_device_id::compiler_available' o='3328' t='cl_bool'/>
+<mbr r='_cl_device_id::spmd' o='3360' t='cl_bool'/>
+<mbr r='_cl_device_id::arg_buffer_launcher' o='3392' t='cl_bool'/>
+<mbr r='_cl_device_id::workgroup_pass' o='3424' t='cl_bool'/>
+<mbr r='_cl_device_id::execution_capabilities' o='3456' t='cl_device_exec_capabilities'/>
+<mbr r='_cl_device_id::queue_properties' o='3520' t='cl_command_queue_properties'/>
+<mbr r='_cl_device_id::platform' o='3584' t='cl_platform_id'/>
+<mbr r='_cl_device_id::max_sub_devices' o='3648' t='cl_uint'/>
+<mbr r='_cl_device_id::num_partition_properties' o='3712' t='size_t'/>
+<mbr r='_cl_device_id::partition_properties' o='3776' t='cl_device_partition_property *'/>
+<mbr r='_cl_device_id::num_partition_types' o='3840' t='size_t'/>
+<mbr r='_cl_device_id::partition_type' o='3904' t='cl_device_partition_property *'/>
+<mbr r='_cl_device_id::printf_buffer_size' o='3968' t='size_t'/>
+<mbr r='_cl_device_id::short_name' o='4032' t='char *'/>
+<mbr r='_cl_device_id::long_name' o='4096' t='char *'/>
+<mbr r='_cl_device_id::vendor' o='4160' t='const char *'/>
+<mbr r='_cl_device_id::driver_version' o='4224' t='const char *'/>
+<mbr r='_cl_device_id::profile' o='4288' t='const char *'/>
+<mbr r='_cl_device_id::version' o='4352' t='const char *'/>
+<mbr r='_cl_device_id::extensions' o='4416' t='const char *'/>
+<mbr r='_cl_device_id::cl_version_std' o='4480' t='const char *'/>
+<mbr r='_cl_device_id::cl_version_int' o='4544' t='cl_ulong'/>
+<mbr r='_cl_device_id::data' o='4608' t='void *'/>
+<mbr r='_cl_device_id::llvm_target_triplet' o='4672' t='const char *'/>
+<mbr r='_cl_device_id::llvm_cpu' o='4736' t='const char *'/>
+<mbr r='_cl_device_id::dev_id' o='4800' t='int'/>
+<mbr r='_cl_device_id::global_mem_id' o='4832' t='int'/>
+<mbr r='_cl_device_id::global_memory' o='4864' t='pocl_global_mem_t *'/>
+<mbr r='_cl_device_id::has_64bit_long' o='4928' t='int'/>
+<mbr r='_cl_device_id::has_own_timer' o='4960' t='int'/>
+<mbr r='_cl_device_id::autolocals_to_args' o='4992' t='int'/>
+<mbr r='_cl_device_id::device_alloca_locals' o='5024' t='int'/>
+<mbr r='_cl_device_id::grid_width_specialization_limit' o='5056' t='size_t'/>
+<mbr r='_cl_device_id::final_linkage_flags' o='5120' t='const char **'/>
+<mbr r='_cl_device_id::device_aux_functions' o='5184' t='const char **'/>
+<mbr r='_cl_device_id::global_as_id' o='5248' t='unsigned int'/>
+<mbr r='_cl_device_id::local_as_id' o='5280' t='unsigned int'/>
+<mbr r='_cl_device_id::constant_as_id' o='5312' t='unsigned int'/>
+<mbr r='_cl_device_id::args_as_id' o='5344' t='unsigned int'/>
+<mbr r='_cl_device_id::context_as_id' o='5376' t='unsigned int'/>
+<mbr r='_cl_device_id::should_allocate_svm' o='5408' t='cl_bool'/>
+<mbr r='_cl_device_id::svm_caps' o='5440' t='cl_device_svm_capabilities'/>
+<mbr r='_cl_device_id::max_events' o='5504' t='cl_uint'/>
+<mbr r='_cl_device_id::max_queues' o='5536' t='cl_uint'/>
+<mbr r='_cl_device_id::max_pipe_args' o='5568' t='cl_uint'/>
+<mbr r='_cl_device_id::max_pipe_active_res' o='5600' t='cl_uint'/>
+<mbr r='_cl_device_id::max_pipe_packet_size' o='5632' t='cl_uint'/>
+<mbr r='_cl_device_id::dev_queue_pref_size' o='5664' t='cl_uint'/>
+<mbr r='_cl_device_id::dev_queue_max_size' o='5696' t='cl_uint'/>
+<mbr r='_cl_device_id::on_dev_queue_props' o='5760' t='cl_command_queue_properties'/>
+<mbr r='_cl_device_id::on_host_queue_props' o='5824' t='cl_command_queue_properties'/>
+<mbr r='_cl_device_id::spirv_version' o='5888' t='char *'/>
+<mbr r='_cl_device_id::image_formats' o='5952' t='const cl_image_format *[6]'/>
+<mbr r='_cl_device_id::num_image_formats' o='6336' t='cl_uint [6]'/>
+<mbr r='_cl_device_id::ops' o='6528' t='struct pocl_device_ops *'/>

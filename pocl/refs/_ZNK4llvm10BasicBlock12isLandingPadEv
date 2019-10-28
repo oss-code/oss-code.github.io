@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='389' type='bool llvm::BasicBlock::isLandingPad() const'/>
+<doc f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='385'>/// \brief Return true if this basic block is a landing pad.
+  ///
+  /// Being a ``landing pad&apos;&apos; means that the basic block is the destination of
+  /// the &apos;unwind&apos; edge of an invoke instruction.</doc>

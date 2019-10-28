@@ -1,0 +1,22 @@
+<def f='include/c++/7/bits/stl_vector.h' l='326' ll='334' type='void std::vector::vector&lt;_Tp, _Alloc&gt;(const vector&lt;_Tp, _Alloc&gt; &amp; __x)'/>
+<doc f='include/c++/7/bits/stl_vector.h' l='315'>/**
+       *  @brief  %Vector copy constructor.
+       *  @param  __x  A %vector of identical element and allocator types.
+       *
+       *  All the elements of @a __x are copied, but any unused capacity in
+       *  @a __x  will not be copied
+       *  (i.e. capacity() == size() in the new %vector).
+       *
+       *  The newly-created %vector uses a copy of the allocator object used
+       *  by @a __x (unless the allocator traits dictate a different object).
+       */</doc>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='122' u='c' c='_ZN4pocl25OptimizeWorkItemFuncCalls13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='893' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/include/CL/cl2.hpp' l='1964' u='c' c='_ZN2cl10BuildErrorC1EiPKcRKSt6vectorISt4pairINS_6DeviceENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEESaISC_EE'/>
+<use f='pocl/include/CL/cl2.hpp' l='1970' u='c' c='_ZNK2cl10BuildError11getBuildLogB5cxx11Ev'/>
+<use f='pocl/include/CL/cl2.hpp' l='9737' u='c' c='_ZN2cl11EnqueueArgsC1ERKSt6vectorINS_5EventESaIS2_EENS_7NDRangeE'/>
+<use f='pocl/include/CL/cl2.hpp' l='9747' u='c' c='_ZN2cl11EnqueueArgsC1ERKSt6vectorINS_5EventESaIS2_EENS_7NDRangeES7_'/>
+<use f='pocl/include/CL/cl2.hpp' l='9757' u='c' c='_ZN2cl11EnqueueArgsC1ERKSt6vectorINS_5EventESaIS2_EENS_7NDRangeES7_S7_'/>
+<use f='pocl/include/CL/cl2.hpp' l='9821' u='c' c='_ZN2cl11EnqueueArgsC1ERNS_12CommandQueueERKSt6vectorINS_5EventESaIS4_EENS_7NDRangeE'/>
+<use f='pocl/include/CL/cl2.hpp' l='9831' u='c' c='_ZN2cl11EnqueueArgsC1ERNS_12CommandQueueERKSt6vectorINS_5EventESaIS4_EENS_7NDRangeES9_'/>
+<use f='pocl/include/CL/cl2.hpp' l='9841' u='c' c='_ZN2cl11EnqueueArgsC1ERNS_12CommandQueueERKSt6vectorINS_5EventESaIS4_EENS_7NDRangeES9_S9_'/>

@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1168' ll='1170' type='llvm::LoadInst * llvm::IRBuilder::CreateLoad(llvm::Value * Ptr, const char * Name)'/>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1166'>// \brief Provided to resolve &apos;CreateLoad(Ptr, &quot;...&quot;)&apos; correctly, instead of
+  // converting the string to &apos;bool&apos; for the isVolatile parameter.</doc>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='710' u='c' c='_ZN4pocl13WorkitemLoops16GetLinearWiIndexERN4llvm9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEPNS1_6ModuleEPNS_14ParallelRegionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='711' u='c' c='_ZN4pocl13WorkitemLoops16GetLinearWiIndexERN4llvm9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEPNS1_6ModuleEPNS_14ParallelRegionE'/>

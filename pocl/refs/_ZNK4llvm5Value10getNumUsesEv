@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/Value.h' l='439' type='unsigned int llvm::Value::getNumUses() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Value.h' l='435'>/// \brief This method computes the number of uses of this Value.
+  ///
+  /// This is a linear time operation.  Use hasOneUse, hasNUses, or
+  /// hasNUsesOrMore to check for specific values.</doc>

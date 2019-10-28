@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/IR/PassManager.h' l='80'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/IR/PassManager.h' l='72'>/// A special type used to provide an address that identifies a set of related
+/// analyses.  These sets are primarily used below to mark sets of analyses as
+/// preserved.
+///
+/// For example, a transformation can indicate that it preserves the CFG of a
+/// function by preserving the appropriate AnalysisSetKey.  An analysis that
+/// depends only on the CFG can then check if that AnalysisSetKey is preserved;
+/// if it is, the analysis knows that it itself is preserved.</doc>

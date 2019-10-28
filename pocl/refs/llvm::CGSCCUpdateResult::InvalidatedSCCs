@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='273' type='SmallPtrSetImpl&lt;LazyCallGraph::SCC *&gt; &amp;'/>
+<use f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='438' u='m' c='_ZN4llvm33ModuleToPostOrderCGSCCPassAdaptor3runERNS_6ModuleERNS_15AnalysisManagerIS1_JEEE'/>
+<offset>192</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='267'>/// The set of invalidated SCCs which should be skipped if they are found
+  /// in \c CWorklist.
+  ///
+  /// This is used to quickly prune out SCCs when they get deleted and happen
+  /// to already be on the worklist. We use this primarily to avoid scanning
+  /// the list and removing entries from it.</doc>

@@ -1,0 +1,14 @@
+<dec f='include/hwloc/bitmap.h' l='123' type='int hwloc_bitmap_list_snprintf(char *restrict buf, size_t buflen, hwloc_const_bitmap_t bitmap)'/>
+<doc f='include/hwloc/bitmap.h' l='110'>/** \brief Stringify a bitmap in the list format.
+ *
+ * Lists are comma-separated indexes or ranges.
+ * Ranges are dash separated indexes.
+ * The last range may not have a ending indexes if the bitmap is infinite.
+ *
+ * Up to \p buflen characters may be written in buffer \p buf.
+ *
+ * If \p buflen is 0, \p buf may safely be \c NULL.
+ *
+ * \return the number of character that were actually written if not truncating,
+ * or that would have been written (not including the ending \\0).
+ */</doc>

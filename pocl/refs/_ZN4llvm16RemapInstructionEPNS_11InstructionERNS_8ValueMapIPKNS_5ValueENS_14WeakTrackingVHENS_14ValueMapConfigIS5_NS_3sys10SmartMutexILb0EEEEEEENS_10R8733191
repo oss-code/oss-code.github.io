@@ -1,0 +1,11 @@
+<def f='include/llvm-6.0/llvm/Transforms/Utils/ValueMapper.h' l='251' ll='256' type='void llvm::RemapInstruction(llvm::Instruction * I, ValueToValueMapTy &amp; VM, llvm::RemapFlags Flags = RF_None, llvm::ValueMapTypeRemapper * TypeMapper = nullptr, llvm::ValueMaterializer * Materializer = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/ValueMapper.h' l='243'>/// Convert the instruction operands from referencing the current values into
+/// those specified by VM.
+///
+/// If \a RF_IgnoreMissingLocals is set and an operand can&apos;t be found via \a
+/// MapValue(), use the old value.  Otherwise assert that this doesn&apos;t happen.
+///
+/// Note that \a MapValue() only returns \c nullptr for SSA values missing from
+/// \c VM.</doc>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='413' u='c' c='_ZN4pocl22BarrierTailReplication16UpdateReferencesERKSt6vectorIPN4llvm10BasicBlockESaIS4_EERNS2_8ValueMapIPKNS2_5ValueENS2_14WeakTrackingVHENS2_14Valu1035321'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='168' u='c' c='_ZN4pocl14ParallelRegion5remapERN4llvm8ValueMapIPKNS1_5ValueENS1_14WeakTrackingVHENS1_14ValueMapConfigIS5_NS1_3sys10SmartMutexILb0EEEEEEE'/>

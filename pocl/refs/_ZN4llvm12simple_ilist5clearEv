@@ -1,0 +1,5 @@
+<use f='include/llvm-6.0/llvm/ADT/simple_ilist.h' l='113' u='c' c='_ZN4llvm12simple_ilistaSEONS_12simple_ilistIT_JDpT0_EEE'/>
+<def f='include/llvm-6.0/llvm/ADT/simple_ilist.h' l='231' type='void llvm::simple_ilist::clear()'/>
+<doc f='include/llvm-6.0/llvm/ADT/simple_ilist.h' l='228'>/// Clear the list; never deletes.
+  ///
+  /// \see \a clearAndDispose() if the nodes should be deleted.</doc>

@@ -1,0 +1,100 @@
+<def f='include/llvm-6.0/llvm/Support/Casting.h' l='57' ll='61'/>
+<def f='include/llvm-6.0/llvm/Support/Casting.h' l='64' ll='68'/>
+<def f='include/llvm-6.0/llvm/IR/Type.h' l='447' ll='451'/>
+<def f='include/llvm-6.0/llvm/IR/Value.h' l='761' ll='766'/>
+<def f='include/llvm-6.0/llvm/IR/Value.h' l='768' ll='773'/>
+<def f='include/llvm-6.0/llvm/IR/Value.h' l='775' ll='780'/>
+<def f='include/llvm-6.0/llvm/IR/Value.h' l='782' ll='786'/>
+<def f='include/llvm-6.0/llvm/IR/Value.h' l='788' ll='792'/>
+<def f='include/llvm-6.0/llvm/IR/Value.h' l='794' ll='798'/>
+<def f='include/llvm-6.0/llvm/IR/Value.h' l='800' ll='804'/>
+<def f='include/llvm-6.0/llvm/IR/Value.h' l='806' ll='810'/>
+<def f='include/llvm-6.0/llvm/IR/Value.h' l='812' ll='816'/>
+<def f='include/llvm-6.0/llvm/IR/Value.h' l='818' ll='822'/>
+<def f='include/llvm-6.0/llvm/IR/Value.h' l='824' ll='828'/>
+<def f='include/llvm-6.0/llvm/IR/Value.h' l='830' ll='834'/>
+<def f='include/llvm-6.0/llvm/IR/Value.h' l='836' ll='840'/>
+<def f='include/llvm-6.0/llvm/IR/Value.h' l='842' ll='846'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='76' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='78' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='79' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='80' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='82' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='83' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='84' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='85' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='87' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='88' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='89' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='92' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='93' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='94' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='95' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='96' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='97' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='99' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='101' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='102' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='103' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='104' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='106' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='107' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='109' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='110' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='111' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='112' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='114' macro='1'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.def' l='115' macro='1'/>
+<size>1</size>
+<doc f='include/llvm-6.0/llvm/IR/Type.h' l='446'>// allow isa&lt;PointerType&gt;(x) to work without DerivedTypes.h included.</doc>
+<doc f='include/llvm-6.0/llvm/Support/Casting.h' l='63'>/// \brief Always allow upcasts, and perform no dynamic check for them.</doc>
+<doc f='include/llvm-6.0/llvm/IR/Value.h' l='758'>// isa - Provide some specializations of isa so that we don&apos;t have to include
+// the subtype header files to test to see if the value is a subclass...
+//</doc>
+<fun r='_ZN4llvm8isa_impl4doitERKT0_'/>
+<fun r='_ZN4llvm8isa_implIT_T0_NSt9enable_ifIXsr3std10is_base_ofIS1_S2_EE5valueEvE4typeEE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_11PointerTypeENS_4TypeEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_8ConstantENS_5ValueEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_12ConstantDataENS_5ValueEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_17ConstantAggregateENS_5ValueEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_8ArgumentENS_5ValueEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_9InlineAsmENS_5ValueEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_11InstructionENS_5ValueEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_10BasicBlockENS_5ValueEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_8FunctionENS_5ValueEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_14GlobalVariableENS_5ValueEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_11GlobalAliasENS_5ValueEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_11GlobalIFuncENS_5ValueEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_20GlobalIndirectSymbolENS_5ValueEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_11GlobalValueENS_5ValueEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_12GlobalObjectENS_5ValueEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_8MDStringENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_18ConstantAsMetadataENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_15LocalAsMetadataENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_28DistinctMDOperandPlaceholderENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_7MDTupleENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_10DILocationENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_12DIExpressionENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_26DIGlobalVariableExpressionENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_13GenericDINodeENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_10DISubrangeENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_12DIEnumeratorENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_11DIBasicTypeENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_13DIDerivedTypeENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_15DICompositeTypeENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_16DISubroutineTypeENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_6DIFileENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_13DICompileUnitENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_12DISubprogramENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_14DILexicalBlockENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_18DILexicalBlockFileENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_11DINamespaceENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_8DIModuleENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_23DITemplateTypeParameterENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_24DITemplateValueParameterENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_16DIGlobalVariableENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_15DILocalVariableENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_14DIObjCPropertyENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_16DIImportedEntityENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_7DIMacroENS_8MetadataEvE4doitERKS2_'/>
+<fun r='_ZN4llvm8isa_implINS_11DIMacroFileENS_8MetadataEvE4doitERKS2_'/>

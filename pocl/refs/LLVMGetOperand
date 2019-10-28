@@ -1,0 +1,6 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='1426' type='LLVMValueRef LLVMGetOperand(LLVMValueRef Val, unsigned int Index)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='1421'>/**
+ * Obtain an operand at a specific index in a llvm::User value.
+ *
+ * @see llvm::User::getOperand()
+ */</doc>

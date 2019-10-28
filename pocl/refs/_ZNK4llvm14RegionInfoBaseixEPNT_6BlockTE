@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='832' type='RegionT * llvm::RegionInfoBase::operator[](BlockT * BB) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='827'>/// @brief A shortcut for getRegionFor().
+  ///
+  /// @param BB The basic block.
+  /// @return The smallest region, that contains BB or NULL, if there is no
+  /// region containing BB.</doc>

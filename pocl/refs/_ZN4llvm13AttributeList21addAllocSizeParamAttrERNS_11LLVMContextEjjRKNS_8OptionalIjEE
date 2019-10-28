@@ -1,0 +1,3 @@
+<def f='include/llvm-6.0/llvm/IR/Attributes.h' l='503' ll='507' type='llvm::AttributeList llvm::AttributeList::addAllocSizeParamAttr(llvm::LLVMContext &amp; C, unsigned int ArgNo, unsigned int ElemSizeArg, const Optional&lt;unsigned int&gt; &amp; NumElemsArg)'/>
+<doc f='include/llvm-6.0/llvm/IR/Attributes.h' l='501'>/// Add the allocsize attribute to the attribute set at the given arg index.
+  /// Returns a new list because attribute lists are immutable.</doc>

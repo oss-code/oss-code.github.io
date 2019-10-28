@@ -1,0 +1,23 @@
+<def f='include/c++/7/bits/stl_map.h' l='1161' ll='1163' type='iterator std::map::find(const key_type &amp; __x)'/>
+<doc f='include/c++/7/bits/stl_map.h' l='1149'>/**
+       *  @brief Tries to locate an element in a %map.
+       *  @param  __x  Key of (key, value) %pair to be located.
+       *  @return  Iterator pointing to sought-after element, or end() if not
+       *           found.
+       *
+       *  This function takes a key and tries to locate the element with which
+       *  the key matches.  If successful the function returns an iterator
+       *  pointing to the sought after %pair.  If unsuccessful it returns the
+       *  past-the-end ( @c end() ) iterator.
+       */</doc>
+<use f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='130' u='c' c='_ZN4llvm9CallGraphixEPKNS_8FunctionE'/>
+<use f='include/llvm-6.0/llvm/Analysis/IntervalPartition.h' l='81' u='c' c='_ZN4llvm17IntervalPartition16getBlockIntervalEPNS_10BasicBlockE'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='793' u='c' c='_ZL16getKernelLibraryP13_cl_device_id'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='384' u='c' c='_ZL37pocl_get_kernel_arg_function_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='125' u='c' c='_ZL16GetTargetMachineP13_cl_device_idRN4llvm6TripleE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='170' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='258' u='c' c='_ZNK4pocl26VariableUniformityAnalysis20isUniformityAnalyzedEPN4llvm8FunctionEPNS1_5ValueE'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='280' u='c' c='_ZN4pocl26VariableUniformityAnalysis9isUniformEPN4llvm8FunctionEPNS1_5ValueE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='558' u='c' c='_ZL18replacePrintfCallsPN4llvm5ValueES1_S1_bPNS_8FunctionERNS_6ModuleES3_RSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='860' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='873' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>

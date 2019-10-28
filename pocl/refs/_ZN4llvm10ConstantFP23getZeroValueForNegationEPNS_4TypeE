@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='279' type='static llvm::Constant * llvm::ConstantFP::getZeroValueForNegation(llvm::Type * Ty)'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='276'>/// Floating point negation must be implemented with f(x) = -0.0 - x. This
+  /// method returns the negative zero constant for floating point or vector
+  /// floating point types; for all other types, it returns the null value.</doc>

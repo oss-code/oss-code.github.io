@@ -1,0 +1,8 @@
+<dec f='pocl/lib/CL/pocl_util.h' l='140' type='void pocl_command_push(_cl_command_node * node, _cl_command_node *volatile * ready_list, _cl_command_node *volatile * pending_list)'/>
+<doc f='pocl/lib/CL/pocl_util.h' l='135'>/**
+ * Push a command into ready list if all previous events are completed or
+ * in pending_list if the command still has pending dependencies
+ */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='1138' u='c' c='pocl_basic_submit'/>
+<def f='pocl/lib/CL/pocl_util.c' l='580' ll='604' type='void pocl_command_push(_cl_command_node * node, _cl_command_node *volatile * ready_list, _cl_command_node *volatile * pending_list)'/>
+<doc f='pocl/lib/CL/pocl_util.c' l='579'>/* call (and return) with node-&gt;event locked */</doc>

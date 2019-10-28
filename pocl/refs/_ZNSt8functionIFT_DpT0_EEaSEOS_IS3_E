@@ -1,0 +1,14 @@
+<def f='include/c++/7/bits/std_function.h' l='497' ll='502' type='function&lt;type-parameter-0-0 (type-parameter-0-1...)&gt; &amp; std::function&lt;type-parameter-0-0 (type-parameter-0-1...)&gt;::operator=(function&lt;type-parameter-0-0 (type-parameter-0-1...)&gt; &amp;&amp; __x)'/>
+<use f='include/llvm-6.0/llvm/Support/Error.h' l='1120' u='c' c='_ZN4llvm11ExitOnError17setExitCodeMapperESt8functionIFiRKNS_5ErrorEEE'/>
+<doc f='include/c++/7/bits/std_function.h' l='486'>/**
+       *  @brief %Function move-assignment operator.
+       *  @param __x A %function rvalue with identical call signature.
+       *  @returns @c *this
+       *
+       *  The target of @a __x is moved to @c *this. If @a __x has no
+       *  target, then @c *this will be empty.
+       *
+       *  If @a __x targets a function pointer or a reference to a function
+       *  object, then this operation will not throw an %exception.
+       */</doc>
+<use f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='1529' u='c' c='_ZN4llvm16TargetIRAnalysisaSEOS0_'/>

@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='382' type='unsigned int'/>
+<offset>160</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='378'>/// A forced unrolling factor (the number of concatenated bodies of the
+    /// original loop in the unrolled loop body). When set to 0, the unrolling
+    /// transformation will select an unrolling factor based on the current cost
+    /// threshold and other factors.</doc>

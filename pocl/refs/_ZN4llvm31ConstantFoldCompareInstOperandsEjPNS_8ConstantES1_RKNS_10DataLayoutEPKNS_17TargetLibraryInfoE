@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='72' type='llvm::Constant * llvm::ConstantFoldCompareInstOperands(unsigned int Predicate, llvm::Constant * LHS, llvm::Constant * RHS, const llvm::DataLayout &amp; DL, const llvm::TargetLibraryInfo * TLI = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='67'>/// ConstantFoldCompareInstOperands - Attempt to constant fold a compare
+/// instruction (icmp/fcmp) with the specified operands.  If it fails, it
+/// returns a constant expression of the specified operands.
+///</doc>

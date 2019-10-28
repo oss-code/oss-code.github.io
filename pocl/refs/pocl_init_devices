@@ -1,0 +1,12 @@
+<dec f='pocl/lib/CL/devices/devices.h' l='48' type='cl_int pocl_init_devices()'/>
+<doc f='pocl/lib/CL/devices/devices.h' l='41'>/**
+ * Populates the pocl_devices with the wanted device types.
+ *
+ * Should be called before accessing the device list. Can be called repeatedly.
+ * The devices are shared across contexts, thus must implement resource
+ * management internally also across multiple contexts.
+ */</doc>
+<use f='pocl/lib/CL/clCreateContext.c' l='143' u='c' c='POclCreateContext'/>
+<use f='pocl/lib/CL/clCreateContextFromType.c' l='56' u='c' c='POclCreateContextFromType'/>
+<use f='pocl/lib/CL/clGetDeviceIDs.c' l='50' u='c' c='POclGetDeviceIDs'/>
+<def f='pocl/lib/CL/devices/devices.c' l='414' ll='564' type='cl_int pocl_init_devices()'/>

@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='132' type='const llvm::CallInst * llvm::BasicBlock::getTerminatingDeoptimizeCall() const'/>
+<use f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='135' u='c' c='_ZN4llvm10BasicBlock28getTerminatingDeoptimizeCallEv'/>
+<doc f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='129'>/// \brief Returns the call instruction calling @llvm.experimental.deoptimize
+  /// prior to the terminating return instruction of this basic block, if such a
+  /// call is present.  Otherwise, returns null.</doc>

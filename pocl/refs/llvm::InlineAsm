@@ -1,0 +1,40 @@
+<inh f='include/llvm-6.0/llvm/IR/Value.h' l='73' c='llvm::Value'/>
+<def f='include/llvm-6.0/llvm/IR/InlineAsm.h' l='31' ll='362'/>
+<size>104</size>
+<mbr r='llvm::InlineAsm::AsmString' o='192' t='std::string'/>
+<mbr r='llvm::InlineAsm::Constraints' o='448' t='std::string'/>
+<mbr r='llvm::InlineAsm::FTy' o='704' t='llvm::FunctionType *'/>
+<mbr r='llvm::InlineAsm::HasSideEffects' o='768' t='bool'/>
+<mbr r='llvm::InlineAsm::IsAlignStack' o='776' t='bool'/>
+<mbr r='llvm::InlineAsm::Dialect' o='800' t='llvm::InlineAsm::AsmDialect'/>
+<fun r='_ZN4llvm9InlineAsmC1EPNS_12FunctionTypeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_bbNS0_10AsmDialectE'/>
+<fun r='_ZN4llvm9InlineAsm15destroyConstantEv'/>
+<fun r='_ZN4llvm9InlineAsmC1ERKS0_'/>
+<fun r='_ZN4llvm9InlineAsmaSERKS0_'/>
+<fun r='_ZN4llvm9InlineAsm3getEPNS_12FunctionTypeENS_9StringRefES3_bbNS0_10AsmDialectE'/>
+<fun r='_ZNK4llvm9InlineAsm14hasSideEffectsEv'/>
+<fun r='_ZNK4llvm9InlineAsm12isAlignStackEv'/>
+<fun r='_ZNK4llvm9InlineAsm10getDialectEv'/>
+<fun r='_ZNK4llvm9InlineAsm7getTypeEv'/>
+<fun r='_ZNK4llvm9InlineAsm15getFunctionTypeEv'/>
+<fun r='_ZNK4llvm9InlineAsm12getAsmStringB5cxx11Ev'/>
+<fun r='_ZNK4llvm9InlineAsm19getConstraintStringB5cxx11Ev'/>
+<fun r='_ZN4llvm9InlineAsm6VerifyEPNS_12FunctionTypeENS_9StringRefE'/>
+<fun r='_ZN4llvm9InlineAsm16ParseConstraintsENS_9StringRefE'/>
+<fun r='_ZNK4llvm9InlineAsm16ParseConstraintsEv'/>
+<fun r='_ZN4llvm9InlineAsm7classofEPKNS_5ValueE'/>
+<fun r='_ZN4llvm9InlineAsm11getFlagWordEjj'/>
+<fun r='_ZN4llvm9InlineAsm12isRegDefKindEj'/>
+<fun r='_ZN4llvm9InlineAsm9isImmKindEj'/>
+<fun r='_ZN4llvm9InlineAsm9isMemKindEj'/>
+<fun r='_ZN4llvm9InlineAsm24isRegDefEarlyClobberKindEj'/>
+<fun r='_ZN4llvm9InlineAsm13isClobberKindEj'/>
+<fun r='_ZN4llvm9InlineAsm24getFlagWordForMatchingOpEjj'/>
+<fun r='_ZN4llvm9InlineAsm22getFlagWordForRegClassEjj'/>
+<fun r='_ZN4llvm9InlineAsm17getFlagWordForMemEjj'/>
+<fun r='_ZN4llvm9InlineAsm36convertMemFlagWordToMatchingFlagWordEj'/>
+<fun r='_ZN4llvm9InlineAsm7getKindEj'/>
+<fun r='_ZN4llvm9InlineAsm21getMemoryConstraintIDEj'/>
+<fun r='_ZN4llvm9InlineAsm22getNumOperandRegistersEj'/>
+<fun r='_ZN4llvm9InlineAsm21isUseOperandTiedToDefEjRj'/>
+<fun r='_ZN4llvm9InlineAsm21hasRegClassConstraintEjRj'/>

@@ -1,0 +1,6 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2436' type='LLVMBasicBlockRef LLVMGetInstructionParent(LLVMValueRef Inst)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2431'>/**
+ * Obtain the basic block to which an instruction belongs.
+ *
+ * @see llvm::Instruction::getParent()
+ */</doc>

@@ -1,0 +1,8 @@
+<dec f='include/hwloc/helper.h' l='173' type='unsigned int hwloc_get_nbobjs_inside_cpuset_by_depth(hwloc_topology_t topology, hwloc_const_cpuset_t set, unsigned int depth)'/>
+<def f='include/hwloc/helper.h' l='175' ll='189' type='unsigned int hwloc_get_nbobjs_inside_cpuset_by_depth(hwloc_topology_t topology, hwloc_const_cpuset_t set, unsigned int depth)'/>
+<use f='include/hwloc/helper.h' l='212' u='c' c='hwloc_get_nbobjs_inside_cpuset_by_type'/>
+<doc f='include/hwloc/helper.h' l='167'>/** \brief Return the number of objects at depth \p depth included in CPU set \p set.
+ *
+ * \note This function cannot work if objects at the given depth do
+ * not have CPU sets or if the topology is made of different machines.
+ */</doc>

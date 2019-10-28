@@ -1,0 +1,49 @@
+<inh f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='54' c='llvm::TerminatorInst'/>
+<def f='include/llvm-6.0/llvm/IR/Instructions.h' l='2990' ll='3080'/>
+<size>56</size>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='2983'>//===----------------------------------------------------------------------===//
+//                               BranchInst Class
+//===----------------------------------------------------------------------===//
+
+//===---------------------------------------------------------------------------
+/// Conditional or Unconditional Branch instruction.
+///</doc>
+<fun r='_ZN4llvm10BranchInstC1ERKS0_'/>
+<fun r='_ZN4llvm10BranchInstC1EPNS_10BasicBlockEPNS_11InstructionE'/>
+<fun r='_ZN4llvm10BranchInstC1EPNS_10BasicBlockES2_PNS_5ValueEPNS_11InstructionE'/>
+<fun r='_ZN4llvm10BranchInstC1EPNS_10BasicBlockES2_'/>
+<fun r='_ZN4llvm10BranchInstC1EPNS_10BasicBlockES2_PNS_5ValueES2_'/>
+<fun r='_ZN4llvm10BranchInst8AssertOKEv'/>
+<fun r='_ZNK4llvm10BranchInst9cloneImplEv'/>
+<fun r='_ZN4llvm10BranchInst6CreateEPNS_10BasicBlockEPNS_11InstructionE'/>
+<fun r='_ZN4llvm10BranchInst6CreateEPNS_10BasicBlockES2_PNS_5ValueEPNS_11InstructionE'/>
+<fun r='_ZN4llvm10BranchInst6CreateEPNS_10BasicBlockES2_'/>
+<fun r='_ZN4llvm10BranchInst6CreateEPNS_10BasicBlockES2_PNS_5ValueES2_'/>
+<fun r='_ZNK4llvm10BranchInst10getOperandEj'/>
+<fun r='_ZN4llvm10BranchInst10setOperandEjPNS_5ValueE'/>
+<fun r='_ZN4llvm10BranchInst8op_beginEv'/>
+<fun r='_ZNK4llvm10BranchInst8op_beginEv'/>
+<fun r='_ZN4llvm10BranchInst6op_endEv'/>
+<fun r='_ZNK4llvm10BranchInst6op_endEv'/>
+<fun r='_ZN4llvm10BranchInst2OpEv'/>
+<fun r='_ZNK4llvm10BranchInst2OpEv'/>
+<fun r='_ZNK4llvm10BranchInst14getNumOperandsEv'/>
+<fun r='_ZNK4llvm10BranchInst15isUnconditionalEv'/>
+<fun r='_ZNK4llvm10BranchInst13isConditionalEv'/>
+<fun r='_ZNK4llvm10BranchInst12getConditionEv'/>
+<fun r='_ZN4llvm10BranchInst12setConditionEPNS_5ValueE'/>
+<fun r='_ZNK4llvm10BranchInst16getNumSuccessorsEv'/>
+<fun r='_ZNK4llvm10BranchInst12getSuccessorEj'/>
+<fun r='_ZN4llvm10BranchInst12setSuccessorEjPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm10BranchInst14swapSuccessorsEv'/>
+<fun r='_ZN4llvm10BranchInst7classofEPKNS_11InstructionE'/>
+<fun r='_ZN4llvm10BranchInst7classofEPKNS_5ValueE'/>
+<fun r='_ZN4llvm10BranchInst8op_beginEv'/>
+<fun r='_ZNK4llvm10BranchInst8op_beginEv'/>
+<fun r='_ZN4llvm10BranchInst6op_endEv'/>
+<fun r='_ZNK4llvm10BranchInst6op_endEv'/>
+<fun r='_ZNK4llvm10BranchInst10getOperandEj'/>
+<fun r='_ZN4llvm10BranchInst10setOperandEjPNS_5ValueE'/>
+<fun r='_ZNK4llvm10BranchInst14getNumOperandsEv'/>
+<fun r='_ZN4llvm10BranchInst2OpEv'/>
+<fun r='_ZNK4llvm10BranchInst2OpEv'/>

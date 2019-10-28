@@ -1,0 +1,26 @@
+<inh f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='136' c='llvm::FoldingSetBase::Node'/>
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='77' ll='147'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='173' c='llvm::SCEVCouldNotCompute'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='48' c='llvm::SCEVConstant'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='69' c='llvm::SCEVCastExpr'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='136' c='llvm::SCEVNAryExpr'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='254' c='llvm::SCEVUDivExpr'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='402' c='llvm::SCEVUnknown'/>
+<size>32</size>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='74'>/// This class represents an analyzed expression in the program.  These are
+/// opaque objects that the client is not allowed to do much with directly.
+///</doc>
+<mbr r='llvm::SCEV::FastID' o='64' t='llvm::FoldingSetNodeIDRef'/>
+<mbr r='llvm::SCEV::SCEVType' o='192' t='const unsigned short'/>
+<mbr r='llvm::SCEV::SubclassData' o='208' t='unsigned short'/>
+<fun r='_ZN4llvm4SCEVC1ENS_19FoldingSetNodeIDRefEj'/>
+<fun r='_ZN4llvm4SCEVC1ERKS0_'/>
+<fun r='_ZN4llvm4SCEVaSERKS0_'/>
+<fun r='_ZNK4llvm4SCEV11getSCEVTypeEv'/>
+<fun r='_ZNK4llvm4SCEV7getTypeEv'/>
+<fun r='_ZNK4llvm4SCEV6isZeroEv'/>
+<fun r='_ZNK4llvm4SCEV5isOneEv'/>
+<fun r='_ZNK4llvm4SCEV14isAllOnesValueEv'/>
+<fun r='_ZNK4llvm4SCEV21isNonConstantNegativeEv'/>
+<fun r='_ZNK4llvm4SCEV5printERNS_11raw_ostreamE'/>
+<fun r='_ZNK4llvm4SCEV4dumpEv'/>

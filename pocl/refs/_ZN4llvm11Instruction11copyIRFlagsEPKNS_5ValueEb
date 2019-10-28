@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Instruction.h' l='391' type='void llvm::Instruction::copyIRFlags(const llvm::Value * V, bool IncludeWrapFlags = true)'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='390' u='c' c='_ZN4llvm14BinaryOperator21CreateWithCopiedFlagsENS_11Instruction9BinaryOpsEPNS_5ValueES4_PS0_RKNS_5TwineE'/>
+<doc f='include/llvm-6.0/llvm/IR/Instruction.h' l='389'>/// Convenience method to copy supported exact, fast-math, and (optionally)
+  /// wrapping flags from V to this instruction.</doc>

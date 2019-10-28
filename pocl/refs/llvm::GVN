@@ -1,0 +1,55 @@
+<inh f='include/llvm-6.0/llvm/IR/PassManager.h' l='365' c='llvm::PassInfoMixin'/>
+<def f='include/llvm-6.0/llvm/Transforms/Scalar/GVN.h' l='68' ll='288'/>
+<size>832</size>
+<doc f='include/llvm-6.0/llvm/Transforms/Scalar/GVN.h' l='64'>/// The core GVN pass object.
+///
+/// FIXME: We should have a good summary of the GVN algorithm implemented by
+/// this particular pass here.</doc>
+<fun r='_ZN4llvm3GVN3runERNS_8FunctionERNS_15AnalysisManagerIS1_JEEE'/>
+<fun r='_ZN4llvm3GVN26markInstructionForDeletionEPNS_11InstructionE'/>
+<fun r='_ZNK4llvm3GVN16getDominatorTreeEv'/>
+<fun r='_ZNK4llvm3GVN16getAliasAnalysisEv'/>
+<fun r='_ZNK4llvm3GVN9getMemDepEv'/>
+<mbr r='llvm::GVN::MD' o='0' t='llvm::MemoryDependenceResults *'/>
+<mbr r='llvm::GVN::DT' o='64' t='llvm::DominatorTree *'/>
+<mbr r='llvm::GVN::TLI' o='128' t='const llvm::TargetLibraryInfo *'/>
+<mbr r='llvm::GVN::AC' o='192' t='llvm::AssumptionCache *'/>
+<mbr r='llvm::GVN::DeadBlocks' o='256' t='SetVector&lt;llvm::BasicBlock *&gt;'/>
+<mbr r='llvm::GVN::ORE' o='640' t='llvm::OptimizationRemarkEmitter *'/>
+<mbr r='llvm::GVN::FirstImplicitControlFlowInsts' o='704' t='DenseMap&lt;const llvm::BasicBlock *, const llvm::Instruction *&gt;'/>
+<mbr r='llvm::GVN::OI' o='896' t='llvm::OrderedInstructions *'/>
+<mbr r='llvm::GVN::VN' o='960' t='llvm::GVN::ValueTable'/>
+<mbr r='llvm::GVN::LeaderTable' o='2432' t='DenseMap&lt;uint32_t, llvm::GVN::LeaderTableEntry&gt;'/>
+<mbr r='llvm::GVN::TableAllocator' o='2624' t='BumpPtrAllocator'/>
+<mbr r='llvm::GVN::ReplaceWithConstMap' o='3776' t='SmallMapVector&lt;llvm::Value *, llvm::Constant *, 4&gt;'/>
+<mbr r='llvm::GVN::InstrsToErase' o='5056' t='SmallVector&lt;llvm::Instruction *, 8&gt;'/>
+<mbr r='llvm::GVN::BlockRPONumber' o='5760' t='DenseMap&lt;const llvm::BasicBlock *, uint32_t&gt;'/>
+<fun r='_ZN4llvm3GVN7runImplERNS_8FunctionERNS_15AssumptionCacheERNS_13DominatorTreeERKNS_17TargetLibraryInfoERNS_9AAResultsEPNS_23MemoryDependenceResultsEPNS14269626'/>
+<fun r='_ZN4llvm3GVN16addToLeaderTableEjPNS_5ValueEPKNS_10BasicBlockE'/>
+<fun r='_ZN4llvm3GVN21removeFromLeaderTableEjPNS_11InstructionEPNS_10BasicBlockE'/>
+<mbr r='llvm::GVN::toSplit' o='5952' t='SmallVector&lt;std::pair&lt;TerminatorInst *, unsigned int&gt;, 4&gt;'/>
+<fun r='_ZN4llvm3GVN11processLoadEPNS_8LoadInstE'/>
+<fun r='_ZN4llvm3GVN19processNonLocalLoadEPNS_8LoadInstE'/>
+<fun r='_ZN4llvm3GVN22processAssumeIntrinsicEPNS_13IntrinsicInstE'/>
+<fun r='_ZN4llvm3GVN23AnalyzeLoadAvailabilityEPNS_8LoadInstENS_12MemDepResultEPNS_5ValueERNS_3gvn14AvailableValueE'/>
+<fun r='_ZN4llvm3GVN23AnalyzeLoadAvailabilityEPNS_8LoadInstERNS_11SmallVectorINS_17NonLocalDepResultELj64EEERNS3_INS_3gvn21AvailableValueInBlockELj64EEERNS3_I5374941'/>
+<fun r='_ZN4llvm3GVN14PerformLoadPREEPNS_8LoadInstERNS_11SmallVectorINS_3gvn21AvailableValueInBlockELj64EEERNS3_IPNS_10BasicBlockELj64EEE'/>
+<fun r='_ZN4llvm3GVN18processInstructionEPNS_11InstructionE'/>
+<fun r='_ZN4llvm3GVN12processBlockEPNS_10BasicBlockE'/>
+<fun r='_ZNK4llvm3GVN4dumpERNS_8DenseMapIjPNS_5ValueENS_12DenseMapInfoIjEENS_6detail12DenseMapPairIjS3_EEEE'/>
+<fun r='_ZN4llvm3GVN17iterateOnFunctionERNS_8FunctionE'/>
+<fun r='_ZN4llvm3GVN10performPREERNS_8FunctionE'/>
+<fun r='_ZN4llvm3GVN16performScalarPREEPNS_11InstructionE'/>
+<fun r='_ZN4llvm3GVN25performScalarPREInsertionEPNS_11InstructionEPNS_10BasicBlockES4_j'/>
+<fun r='_ZN4llvm3GVN10findLeaderEPKNS_10BasicBlockEj'/>
+<fun r='_ZN4llvm3GVN17cleanupGlobalSetsEv'/>
+<fun r='_ZN4llvm3GVN27fillImplicitControlFlowInfoEPNS_10BasicBlockE'/>
+<fun r='_ZNK4llvm3GVN13verifyRemovedEPKNS_11InstructionE'/>
+<fun r='_ZN4llvm3GVN18splitCriticalEdgesEv'/>
+<fun r='_ZN4llvm3GVN18splitCriticalEdgesEPNS_10BasicBlockES2_'/>
+<fun r='_ZNK4llvm3GVN25replaceOperandsWithConstsEPNS_11InstructionE'/>
+<fun r='_ZN4llvm3GVN17propagateEqualityEPNS_5ValueES2_RKNS_14BasicBlockEdgeEb'/>
+<fun r='_ZN4llvm3GVN21processFoldableCondBrEPNS_10BranchInstE'/>
+<fun r='_ZN4llvm3GVN12addDeadBlockEPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm3GVN23assignValNumForDeadCodeEv'/>
+<fun r='_ZN4llvm3GVN20assignBlockRPONumberERNS_8FunctionE'/>

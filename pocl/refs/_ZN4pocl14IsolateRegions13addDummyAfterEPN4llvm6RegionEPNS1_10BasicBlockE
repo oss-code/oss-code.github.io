@@ -1,0 +1,6 @@
+<dec f='pocl/lib/llvmopencl/IsolateRegions.h' l='38' type='void pocl::IsolateRegions::addDummyAfter(llvm::Region * R, llvm::BasicBlock * bb)'/>
+<use f='pocl/lib/llvmopencl/IsolateRegions.cc' l='124' u='c' c='_ZN4pocl14IsolateRegions11runOnRegionEPN4llvm6RegionERNS1_13RGPassManagerE'/>
+<def f='pocl/lib/llvmopencl/IsolateRegions.cc' l='135' ll='150' type='void pocl::IsolateRegions::addDummyAfter(llvm::Region * R, llvm::BasicBlock * bb)'/>
+<doc f='pocl/lib/llvmopencl/IsolateRegions.cc' l='132'>/**
+ * Adds a dummy node after the given basic block.
+ */</doc>

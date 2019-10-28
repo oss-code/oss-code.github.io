@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/IR/Value.h' l='608' ll='610' type='void llvm::Value::mutateType(llvm::Type * Ty)'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1526' u='c' c='_ZN4llvm8CallInst18mutateFunctionTypeEPNS_12FunctionTypeE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='3683' u='c' c='_ZN4llvm10InvokeInst18mutateFunctionTypeEPNS_12FunctionTypeE'/>
+<doc f='include/llvm-6.0/llvm/IR/Value.h' l='602'>/// \brief Mutate the type of this Value to be of the specified type.
+  ///
+  /// Note that this is an extremely dangerous operation which can create
+  /// completely invalid IR very easily.  It is strongly recommended that you
+  /// recreate IR objects with the right types instead of mutating them in
+  /// place.</doc>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='91' u='c' c='_ZL23fixOpenCLimageArgumentsPN4llvm8FunctionE'/>

@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='201' type='int llvm::TargetTransformInfo::getExtCost(const llvm::Instruction * I, const llvm::Value * Src) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='196'>/// \brief Estimate the cost of a EXT operation when lowered.
+  ///
+  /// The contract for this function is the same as \c getOperationCost except
+  /// that it supports an interface that provides extra information specific to
+  /// the EXT operation.</doc>

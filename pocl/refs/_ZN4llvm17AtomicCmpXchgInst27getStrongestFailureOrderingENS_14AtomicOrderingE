@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/IR/Instructions.h' l='625' ll='639' type='static llvm::AtomicOrdering llvm::AtomicCmpXchgInst::getStrongestFailureOrdering(llvm::AtomicOrdering SuccessOrdering)'/>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='618'>/// Returns the strongest permitted ordering on failure, given the
+  /// desired ordering on success.
+  ///
+  /// If the comparison in a cmpxchg operation fails, there is no atomic store
+  /// so release semantics cannot be provided. So this function drops explicit
+  /// Release requests from the AtomicOrdering. A SequentiallyConsistent
+  /// operation would remain SequentiallyConsistent.</doc>

@@ -1,0 +1,12 @@
+<dec f='include/llvm-6.0/llvm/IR/Verifier.h' l='101' type='bool llvm::verifyModule(const llvm::Module &amp; M, llvm::raw_ostream * OS = nullptr, bool * BrokenDebugInfo = nullptr)'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='104' u='c' c='pocl_ptx_gen'/>
+<doc f='include/llvm-6.0/llvm/IR/Verifier.h' l='91'>/// \brief Check a module for errors.
+///
+/// If there are no errors, the function returns false. If an error is
+/// found, a message describing the error is written to OS (if
+/// non-null) and true is returned.
+///
+/// \return true if the module is broken. If BrokenDebugInfo is
+/// supplied, DebugInfo verification failures won&apos;t be considered as
+/// error and instead *BrokenDebugInfo will be set to true. Debug
+/// info errors can be &quot;recovered&quot; from by stripping the debug info.</doc>

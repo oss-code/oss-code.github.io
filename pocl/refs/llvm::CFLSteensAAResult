@@ -1,0 +1,17 @@
+<inh f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='857' c='llvm::AAResultBase'/>
+<def f='include/llvm-6.0/llvm/Analysis/CFLSteensAliasAnalysis.h' l='40' ll='104'/>
+<size>48</size>
+<fun r='_ZN4llvm17CFLSteensAAResultC1ERKNS_17TargetLibraryInfoE'/>
+<fun r='_ZN4llvm17CFLSteensAAResultC1EOS0_'/>
+<fun r='_ZN4llvm17CFLSteensAAResultD1Ev'/>
+<fun r='_ZN4llvm17CFLSteensAAResult10invalidateERNS_8FunctionERKNS_17PreservedAnalysesERNS_15AnalysisManagerIS1_JEE11InvalidatorE'/>
+<fun r='_ZN4llvm17CFLSteensAAResult4scanEPNS_8FunctionE'/>
+<fun r='_ZN4llvm17CFLSteensAAResult5evictEPNS_8FunctionE'/>
+<fun r='_ZN4llvm17CFLSteensAAResult12ensureCachedEPNS_8FunctionE'/>
+<fun r='_ZN4llvm17CFLSteensAAResult15getAliasSummaryERNS_8FunctionE'/>
+<fun r='_ZN4llvm17CFLSteensAAResult5queryERKNS_14MemoryLocationES3_'/>
+<fun r='_ZN4llvm17CFLSteensAAResult5aliasERKNS_14MemoryLocationES3_'/>
+<mbr r='llvm::CFLSteensAAResult::TLI' o='64' t='const llvm::TargetLibraryInfo &amp;'/>
+<mbr r='llvm::CFLSteensAAResult::Cache' o='128' t='DenseMap&lt;llvm::Function *, Optional&lt;llvm::CFLSteensAAResult::FunctionInfo&gt; &gt;'/>
+<mbr r='llvm::CFLSteensAAResult::Handles' o='320' t='std::forward_list&lt;cflaa::FunctionHandle&lt;CFLSteensAAResult&gt; &gt;'/>
+<fun r='_ZN4llvm17CFLSteensAAResult13buildSetsFromEPNS_8FunctionE'/>

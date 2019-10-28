@@ -1,0 +1,16 @@
+<dec f='include/hwloc.h' l='1447' type='8'/>
+<doc f='include/hwloc.h' l='1432'>/** \brief Avoid any effect on memory binding
+   *
+   * On some operating systems, some CPU binding function would also
+   * bind the memory on the corresponding NUMA node.  It is often not
+   * a problem for the application, but if it is, setting this flag
+   * will make hwloc avoid using OS functions that would also bind
+   * memory.  This will however reduce the support of CPU bindings,
+   * i.e. potentially return -1 with errno set to ENOSYS in some
+   * cases.
+   *
+   * This flag is only meaningful when used with functions that set
+   * the CPU binding.  It is ignored when used with functions that get
+   * CPU binding information.
+   * \hideinitializer
+   */</doc>

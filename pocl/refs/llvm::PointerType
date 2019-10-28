@@ -1,0 +1,15 @@
+<inh f='include/llvm-6.0/llvm/IR/Type.h' l='46' c='llvm::Type'/>
+<def f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='467' ll='501'/>
+<size>32</size>
+<doc f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='466'>/// Class to represent pointers.</doc>
+<fun r='_ZN4llvm11PointerTypeC1EPNS_4TypeEj'/>
+<mbr r='llvm::PointerType::PointeeTy' o='192' t='llvm::Type *'/>
+<fun r='_ZN4llvm11PointerTypeC1ERKS0_'/>
+<fun r='_ZN4llvm11PointerTypeaSERKS0_'/>
+<fun r='_ZN4llvm11PointerType3getEPNS_4TypeEj'/>
+<fun r='_ZN4llvm11PointerType9getUnqualEPNS_4TypeE'/>
+<fun r='_ZNK4llvm11PointerType14getElementTypeEv'/>
+<fun r='_ZN4llvm11PointerType18isValidElementTypeEPNS_4TypeE'/>
+<fun r='_ZN4llvm11PointerType24isLoadableOrStorableTypeEPNS_4TypeE'/>
+<fun r='_ZNK4llvm11PointerType15getAddressSpaceEv'/>
+<fun r='_ZN4llvm11PointerType7classofEPKNS_4TypeE'/>

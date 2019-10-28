@@ -1,0 +1,26 @@
+<inh f='include/llvm-6.0/llvm/IR/Metadata.h' l='58' c='llvm::Metadata'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='1279' ll='1314'/>
+<size>16</size>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='1264'>/// Placeholder metadata for operands of distinct MDNodes.
+///
+/// This is a lightweight placeholder for an operand of a distinct node.  It&apos;s
+/// purpose is to help track forward references when creating a distinct node.
+/// This allows distinct nodes involved in a cycle to be constructed before
+/// their operands without requiring a heavyweight temporary node with
+/// full-blown RAUW support.
+///
+/// Each placeholder supports only a single MDNode user.  Clients should pass
+/// an ID, retrieved via \a getID(), to indicate the &quot;real&quot; operand that this
+/// should be replaced with.
+///
+/// While it would be possible to implement move operators, they would be
+/// fairly expensive.  Leave them unimplemented to discourage their use
+/// (clients can use std::deque, std::list, BumpPtrAllocator, etc.).</doc>
+<mbr r='llvm::DistinctMDOperandPlaceholder::Use' o='64' t='llvm::Metadata **'/>
+<fun r='_ZN4llvm28DistinctMDOperandPlaceholderC1Ej'/>
+<fun r='_ZN4llvm28DistinctMDOperandPlaceholderC1Ev'/>
+<fun r='_ZN4llvm28DistinctMDOperandPlaceholderC1EOS0_'/>
+<fun r='_ZN4llvm28DistinctMDOperandPlaceholderC1ERKS0_'/>
+<fun r='_ZN4llvm28DistinctMDOperandPlaceholderD1Ev'/>
+<fun r='_ZNK4llvm28DistinctMDOperandPlaceholder5getIDEv'/>
+<fun r='_ZN4llvm28DistinctMDOperandPlaceholder14replaceUseWithEPNS_8MetadataE'/>

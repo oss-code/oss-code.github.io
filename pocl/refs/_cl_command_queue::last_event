@@ -1,0 +1,10 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='899' type='volatile pocl_data_sync_item'/>
+<offset>832</offset>
+<use f='pocl/lib/CL/clCreateCommandQueue.c' l='75' u='m' c='POclCreateCommandQueue'/>
+<use f='pocl/lib/CL/clCreateCommandQueue.c' l='76' u='m' c='POclCreateCommandQueue'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1468' u='m' c='pocl_cuda_join'/>
+<use f='pocl/lib/CL/pocl_util.c' l='518' u='m' c='pocl_create_command'/>
+<use f='pocl/lib/CL/pocl_util.c' l='521' u='m' c='pocl_create_command'/>
+<use f='pocl/lib/CL/pocl_util.c' l='569' u='m' c='pocl_command_enqueue'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1252' u='m' c='pocl_update_event_finished_msg'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1253' u='m' c='pocl_update_event_finished_msg'/>

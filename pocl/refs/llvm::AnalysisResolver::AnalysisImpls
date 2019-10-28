@@ -1,0 +1,7 @@
+<use f='include/llvm-6.0/llvm/PassAnalysisSupport.h' l='158' c='_ZN4llvm16AnalysisResolver12findImplPassEPKv'/>
+<use f='include/llvm-6.0/llvm/PassAnalysisSupport.h' l='174' u='m' c='_ZN4llvm16AnalysisResolver20addAnalysisImplsPairEPKvPNS_4PassE'/>
+<use f='include/llvm-6.0/llvm/PassAnalysisSupport.h' l='179' u='m' c='_ZN4llvm16AnalysisResolver18clearAnalysisImplsEv'/>
+<dec f='include/llvm-6.0/llvm/PassAnalysisSupport.h' l='188' type='std::vector&lt;std::pair&lt;AnalysisID, Pass *&gt; &gt;'/>
+<offset>0</offset>
+<doc f='include/llvm-6.0/llvm/PassAnalysisSupport.h' l='186'>/// This keeps track of which passes implements the interfaces that are
+  /// required by the current pass (to implement getAnalysis()).</doc>

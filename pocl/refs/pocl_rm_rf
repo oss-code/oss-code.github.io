@@ -1,0 +1,6 @@
+<dec f='pocl/include/pocl_file_util.h' l='39' type='int pocl_rm_rf(const char * path)'/>
+<doc f='pocl/include/pocl_file_util.h' l='38'>/* Remove a directory, recursively */</doc>
+<use f='pocl/lib/CL/pocl_cache.c' l='626' u='c' c='pocl_cache_cleanup_cachedir'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='510' u='c' c='pocl_llvm_build_program'/>
+<def f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='98' ll='133' type='int pocl_rm_rf(const char * path)'/>
+<doc f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='96'>/*****************************************************************************/</doc>

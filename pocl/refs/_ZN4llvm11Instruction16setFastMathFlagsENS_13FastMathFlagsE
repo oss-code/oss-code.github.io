@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/Instruction.h' l='350' type='void llvm::Instruction::setFastMathFlags(llvm::FastMathFlags FMF)'/>
+<doc f='include/llvm-6.0/llvm/IR/Instruction.h' l='347'>/// Convenience function for setting multiple fast-math flags on this
+  /// instruction, which must be an operator which supports these flags. See
+  /// LangRef.html for the meaning of these flags.</doc>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='888' u='c' c='_ZNK4llvm9IRBuilder19AddFPMathAttributesEPNS_11InstructionEPNS_6MDNodeENS_13FastMathFlagsE'/>

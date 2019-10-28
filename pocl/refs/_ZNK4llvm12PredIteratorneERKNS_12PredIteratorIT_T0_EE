@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/IR/CFG.h' l='62' type='bool llvm::PredIterator::operator!=(const Self &amp; x) const'/>
+<use f='pocl/lib/llvmopencl/ImplicitConditionalBarriers.cc' l='82' u='c' c='_ZN4pocl27ImplicitConditionalBarriers27firstNonBackedgePredecessorEPN4llvm10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/IsolateRegions.cc' l='164' u='c' c='_ZN4pocl14IsolateRegions14addDummyBeforeEPN4llvm6RegionEPNS1_10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/Kernel.cc' l='149' u='c' c='_ZL16add_predecessorsRN4llvm15SmallVectorImplIPNS_10BasicBlockEEES2_'/>
+<use f='pocl/lib/llvmopencl/Kernel.cc' l='200' u='c' c='_ZN4pocl6Kernel18getParallelRegionsEPN4llvm8LoopInfoE'/>
+<use f='pocl/lib/llvmopencl/LoopBarriers.cc' l='155' u='c' c='_ZN4pocl12LoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='385' u='c' c='_ZN4pocl14ParallelRegion6VerifyEv'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='224' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='476' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>

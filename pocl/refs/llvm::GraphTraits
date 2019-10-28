@@ -1,0 +1,144 @@
+<def f='include/llvm-6.0/llvm/IR/Type.h' l='457' ll='464'/>
+<def f='include/llvm-6.0/llvm/IR/Type.h' l='466' ll='473'/>
+<size>1</size>
+<doc f='include/llvm-6.0/llvm/IR/Type.h' l='453'>//===----------------------------------------------------------------------===//
+// Provide specializations of GraphTraits to be able to treat a type as a
+// graph of sub types.</doc>
+<fun r='_ZN4llvm11GraphTraitsIPNS_4TypeEE12getEntryNodeES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_4TypeEE11child_beginES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_4TypeEE9child_endES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPKNS_4TypeEE12getEntryNodeES3_'/>
+<fun r='_ZN4llvm11GraphTraitsIPKNS_4TypeEE11child_beginES3_'/>
+<fun r='_ZN4llvm11GraphTraitsIPKNS_4TypeEE9child_endES3_'/>
+<def f='include/llvm-6.0/llvm/ADT/GraphTraits.h' l='29' ll='60'/>
+<def f='include/llvm-6.0/llvm/ADT/GraphTraits.h' l='84'/>
+<def f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='407' ll='424'/>
+<def f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='426' ll='443'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='446' c='llvm::GraphTraits'/>
+<inh f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='407' c='llvm::GraphTraits'/>
+<def f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='445' ll='469'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='472' c='llvm::GraphTraits'/>
+<inh f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='426' c='llvm::GraphTraits'/>
+<def f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='471' ll='496'/>
+<def f='include/llvm-6.0/llvm/IR/CFG.h' l='162' ll='169'/>
+<def f='include/llvm-6.0/llvm/IR/CFG.h' l='171' ll='179'/>
+<def f='include/llvm-6.0/llvm/IR/CFG.h' l='186' ll='193'/>
+<def f='include/llvm-6.0/llvm/IR/CFG.h' l='195' ll='202'/>
+<ovr f='include/llvm-6.0/llvm/IR/CFG.h' l='212' c='llvm::GraphTraits'/>
+<inh f='include/llvm-6.0/llvm/IR/CFG.h' l='162' c='llvm::GraphTraits'/>
+<def f='include/llvm-6.0/llvm/IR/CFG.h' l='212' ll='227'/>
+<ovr f='include/llvm-6.0/llvm/IR/CFG.h' l='228' c='llvm::GraphTraits'/>
+<inh f='include/llvm-6.0/llvm/IR/CFG.h' l='171' c='llvm::GraphTraits'/>
+<def f='include/llvm-6.0/llvm/IR/CFG.h' l='228' ll='244'/>
+<ovr f='include/llvm-6.0/llvm/IR/CFG.h' l='251' c='llvm::GraphTraits'/>
+<inh f='include/llvm-6.0/llvm/IR/CFG.h' l='186' c='llvm::GraphTraits'/>
+<def f='include/llvm-6.0/llvm/IR/CFG.h' l='251' ll='256'/>
+<ovr f='include/llvm-6.0/llvm/IR/CFG.h' l='257' c='llvm::GraphTraits'/>
+<inh f='include/llvm-6.0/llvm/IR/CFG.h' l='195' c='llvm::GraphTraits'/>
+<def f='include/llvm-6.0/llvm/IR/CFG.h' l='257' ll='262'/>
+<inh f='include/llvm-6.0/llvm/IR/Dominators.h' l='199' c='llvm::DomTreeGraphTraitsBase'/>
+<def f='include/llvm-6.0/llvm/IR/Dominators.h' l='215' ll='217'/>
+<inh f='include/llvm-6.0/llvm/IR/Dominators.h' l='199' c='llvm::DomTreeGraphTraitsBase'/>
+<def f='include/llvm-6.0/llvm/IR/Dominators.h' l='219' ll='222'/>
+<ovr f='include/llvm-6.0/llvm/IR/Dominators.h' l='224' c='llvm::GraphTraits'/>
+<inh f='include/llvm-6.0/llvm/IR/Dominators.h' l='216' c='llvm::GraphTraits'/>
+<def f='include/llvm-6.0/llvm/IR/Dominators.h' l='224' ll='235'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/PostDominators.h' l='91' c='llvm::GraphTraits'/>
+<inh f='include/llvm-6.0/llvm/IR/Dominators.h' l='216' c='llvm::GraphTraits'/>
+<def f='include/llvm-6.0/llvm/Analysis/PostDominators.h' l='91' ll='107'/>
+<def f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='914' ll='921'/>
+<def f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='923' ll='930'/>
+<def f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1224' ll='1231'/>
+<def f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1232' ll='1239'/>
+<size>1</size>
+<doc f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='400'>//===----------------------------------------------------------------------===//
+// GraphTraits specializations for call graphs so that they can be treated as
+// graphs by the generic graph algorithms.
+//
+
+// Provide graph traits for tranversing call graphs using standard graph
+// traversals.</doc>
+<doc f='include/llvm-6.0/llvm/ADT/GraphTraits.h' l='82'>// Provide a partial specialization of GraphTraits so that the inverse of an
+// inverse falls back to the original graph.</doc>
+<doc f='include/llvm-6.0/llvm/IR/CFG.h' l='155'>//===--------------------------------------------------------------------===//
+// GraphTraits specializations for basic block graphs (CFGs)
+//===--------------------------------------------------------------------===//
+
+// Provide specializations of GraphTraits to be able to treat a function as a
+// graph of basic blocks...</doc>
+<doc f='include/llvm-6.0/llvm/IR/CFG.h' l='181'>// Provide specializations of GraphTraits to be able to treat a function as a
+// graph of basic blocks... and to walk it in inverse order.  Inverse order for
+// a function is considered to be when traversing the predecessor edges of a BB
+// instead of the successor edges.
+//</doc>
+<doc f='include/llvm-6.0/llvm/IR/CFG.h' l='204'>//===--------------------------------------------------------------------===//
+// GraphTraits specializations for function basic block graphs (CFGs)
+//===--------------------------------------------------------------------===//
+
+// Provide specializations of GraphTraits to be able to treat a function as a
+// graph of basic blocks... these are the same as the basic block iterators,
+// except that the root node is implicitly the first node of the function.
+//</doc>
+<doc f='include/llvm-6.0/llvm/IR/CFG.h' l='246'>// Provide specializations of GraphTraits to be able to treat a function as a
+// graph of basic blocks... and to walk it in inverse order.  Inverse order for
+// a function is considered to be when traversing the predecessor edges of a BB
+// instead of the successor edges.
+//</doc>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='913'>// Allow clients to walk the list of nested loops...</doc>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1223'>// Provide GraphTraits specializations for call graphs.</doc>
+<fun r='_ZN4llvm11GraphTraitsIPNS_13CallGraphNodeEE12getEntryNodeES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_13CallGraphNodeEE11CGNGetValueESt4pairINS_14WeakTrackingVHES2_E'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_13CallGraphNodeEE11child_beginES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_13CallGraphNodeEE9child_endES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPKNS_13CallGraphNodeEE12getEntryNodeES3_'/>
+<fun r='_ZN4llvm11GraphTraitsIPKNS_13CallGraphNodeEE11CGNGetValueESt4pairINS_14WeakTrackingVHEPS1_E'/>
+<fun r='_ZN4llvm11GraphTraitsIPKNS_13CallGraphNodeEE11child_beginES3_'/>
+<fun r='_ZN4llvm11GraphTraitsIPKNS_13CallGraphNodeEE9child_endES3_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_9CallGraphEE12getEntryNodeES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_9CallGraphEE13CGGetValuePtrERKSt4pairIKPKNS_8FunctionESt10unique_ptrINS_13CallGraphNodeESt14default_deleteISA_EEE'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_9CallGraphEE11nodes_beginES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_9CallGraphEE9nodes_endES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPKNS_9CallGraphEE12getEntryNodeES3_'/>
+<fun r='_ZN4llvm11GraphTraitsIPKNS_9CallGraphEE13CGGetValuePtrERKSt4pairIKPKNS_8FunctionESt10unique_ptrINS_13CallGraphNodeESt14default_deleteISB_EEE'/>
+<fun r='_ZN4llvm11GraphTraitsIPKNS_9CallGraphEE11nodes_beginES3_'/>
+<fun r='_ZN4llvm11GraphTraitsIPKNS_9CallGraphEE9nodes_endES3_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_10BasicBlockEE12getEntryNodeES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_10BasicBlockEE11child_beginES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_10BasicBlockEE9child_endES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPKNS_10BasicBlockEE12getEntryNodeES3_'/>
+<fun r='_ZN4llvm11GraphTraitsIPKNS_10BasicBlockEE11child_beginES3_'/>
+<fun r='_ZN4llvm11GraphTraitsIPKNS_10BasicBlockEE9child_endES3_'/>
+<fun r='_ZN4llvm11GraphTraitsINS_7InverseIPNS_10BasicBlockEEEE12getEntryNodeES4_'/>
+<fun r='_ZN4llvm11GraphTraitsINS_7InverseIPNS_10BasicBlockEEEE11child_beginES3_'/>
+<fun r='_ZN4llvm11GraphTraitsINS_7InverseIPNS_10BasicBlockEEEE9child_endES3_'/>
+<fun r='_ZN4llvm11GraphTraitsINS_7InverseIPKNS_10BasicBlockEEEE12getEntryNodeES5_'/>
+<fun r='_ZN4llvm11GraphTraitsINS_7InverseIPKNS_10BasicBlockEEEE11child_beginES4_'/>
+<fun r='_ZN4llvm11GraphTraitsINS_7InverseIPKNS_10BasicBlockEEEE9child_endES4_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_8FunctionEE12getEntryNodeES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_8FunctionEE11nodes_beginES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_8FunctionEE9nodes_endES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_8FunctionEE4sizeES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPKNS_8FunctionEE12getEntryNodeES3_'/>
+<fun r='_ZN4llvm11GraphTraitsIPKNS_8FunctionEE11nodes_beginES3_'/>
+<fun r='_ZN4llvm11GraphTraitsIPKNS_8FunctionEE9nodes_endES3_'/>
+<fun r='_ZN4llvm11GraphTraitsIPKNS_8FunctionEE4sizeES3_'/>
+<fun r='_ZN4llvm11GraphTraitsINS_7InverseIPNS_8FunctionEEEE12getEntryNodeES4_'/>
+<fun r='_ZN4llvm11GraphTraitsINS_7InverseIPKNS_8FunctionEEEE12getEntryNodeES5_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_13DominatorTreeEE12getEntryNodeES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_13DominatorTreeEE11nodes_beginES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_13DominatorTreeEE9nodes_endES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_17PostDominatorTreeEE12getEntryNodeES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_17PostDominatorTreeEE11nodes_beginES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_17PostDominatorTreeEE9nodes_endES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPKNS_4LoopEE12getEntryNodeES3_'/>
+<fun r='_ZN4llvm11GraphTraitsIPKNS_4LoopEE11child_beginES3_'/>
+<fun r='_ZN4llvm11GraphTraitsIPKNS_4LoopEE9child_endES3_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_4LoopEE12getEntryNodeES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_4LoopEE11child_beginES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_4LoopEE9child_endES2_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_13LazyCallGraph4NodeEE12getEntryNodeES3_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_13LazyCallGraph4NodeEE11child_beginES3_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_13LazyCallGraph4NodeEE9child_endES3_'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_13LazyCallGraphEE12getEntryNodeEPNS1_4NodeE'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_13LazyCallGraphEE11child_beginEPNS1_4NodeE'/>
+<fun r='_ZN4llvm11GraphTraitsIPNS_13LazyCallGraphEE9child_endEPNS1_4NodeE'/>

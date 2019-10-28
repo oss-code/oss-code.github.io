@@ -1,0 +1,11 @@
+<def f='include/llvm-6.0/llvm/ADT/APFloat.h' l='319' type='bool llvm::detail::IEEEFloat::isNegative() const'/>
+<use f='include/llvm-6.0/llvm/ADT/APFloat.h' l='358' u='c' c='_ZNK4llvm6detail9IEEEFloat9isPosZeroEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APFloat.h' l='359' u='c' c='_ZNK4llvm6detail9IEEEFloat9isNegZeroEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APFloat.h' l='1147' u='c' c='_ZNK4llvm7APFloat10isNegativeEv'/>
+<doc f='include/llvm-6.0/llvm/ADT/APFloat.h' l='312'>/// \name IEEE-754R 5.7.2 General operations.
+  /// @{
+
+  /// IEEE-754R isSignMinus: Returns true if and only if the current value is
+  /// negative.
+  ///
+  /// This applies to zeros and NaNs as well.</doc>

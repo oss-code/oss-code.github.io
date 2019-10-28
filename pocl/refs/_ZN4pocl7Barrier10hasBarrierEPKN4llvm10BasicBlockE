@@ -1,0 +1,9 @@
+<def f='pocl/lib/llvmopencl/Barrier.h' l='102' ll='110' type='static bool pocl::Barrier::hasBarrier(const llvm::BasicBlock * bb)'/>
+<use f='pocl/lib/llvmopencl/DebugHelpers.cc' l='73' u='c' c='_ZN4poclL15printBasicBlockEPN4llvm10BasicBlockERSob'/>
+<use f='pocl/lib/llvmopencl/ImplicitConditionalBarriers.cc' l='102' u='c' c='_ZN4pocl27ImplicitConditionalBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/IsolateRegions.cc' l='113' u='c' c='_ZN4pocl14IsolateRegions11runOnRegionEPN4llvm6RegionERNS1_13RGPassManagerE'/>
+<use f='pocl/lib/llvmopencl/IsolateRegions.cc' l='123' u='c' c='_ZN4pocl14IsolateRegions11runOnRegionEPN4llvm6RegionERNS1_13RGPassManagerE'/>
+<use f='pocl/lib/llvmopencl/Kernel.cc' l='58' u='c' c='_ZN4pocl6Kernel13getExitBlocksERN4llvm15SmallVectorImplIPNS1_10BasicBlockEEE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='402' u='c' c='_ZN4pocl14ParallelRegion6VerifyEv'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1469' u='c' c='_ZN4pocl9Workgroup20hasWorkgroupBarriersERKN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemReplication.cc' l='131' u='c' c='_ZN4pocl19WorkitemReplication15ProcessFunctionERN4llvm8FunctionE'/>

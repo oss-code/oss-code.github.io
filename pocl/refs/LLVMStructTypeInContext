@@ -1,0 +1,9 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='947' type='LLVMTypeRef LLVMStructTypeInContext(LLVMContextRef C, LLVMTypeRef * ElementTypes, unsigned int ElementCount, LLVMBool Packed)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='939'>/**
+ * Create a new structure type in a context.
+ *
+ * A structure is specified by a list of inner elements/types and
+ * whether these can be packed together.
+ *
+ * @see llvm::StructType::create()
+ */</doc>

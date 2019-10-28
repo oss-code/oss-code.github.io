@@ -1,0 +1,9 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='331' type='void (*)(cl_device_id, cl_event, cl_event)'/>
+<offset>256</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='328'>/* notify is used to communicate to a device driver that an event, it has
+     been waiting, has been completed. Upon call, both events are locked, and
+     must be locked also on return.*/</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='135' u='w' c='pocl_basic_init_device_ops'/>
+<use f='pocl/lib/CL/devices/common.c' l='777' u='r' c='pocl_broadcast'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='144' u='w' c='pocl_cuda_init_device_ops'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='90' u='w' c='pocl_pthread_init_device_ops'/>

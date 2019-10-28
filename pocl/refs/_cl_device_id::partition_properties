@@ -1,0 +1,7 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='726' type='cl_device_partition_property *'/>
+<offset>3776</offset>
+<use f='pocl/lib/CL/clCreateSubDevices.c' l='67' u='r' c='POclCreateSubDevices'/>
+<use f='pocl/lib/CL/clCreateSubDevices.c' l='157' u='w' c='POclCreateSubDevices'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='263' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='323' u='w' c='pocl_init_cpu_device_infos'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='190' u='w' c='pocl_pthread_init'/>

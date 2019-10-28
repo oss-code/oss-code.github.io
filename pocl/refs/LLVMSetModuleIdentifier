@@ -1,0 +1,9 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='566' type='void LLVMSetModuleIdentifier(LLVMModuleRef M, const char * Ident, size_t Len)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='558'>/**
+ * Set the identifier of a module to a string Ident with length Len.
+ *
+ * @param M The module to set identifier
+ * @param Ident The string to set M&apos;s identifier to
+ * @param Len Length of Ident
+ * @see Module::setModuleIdentifier()
+ */</doc>

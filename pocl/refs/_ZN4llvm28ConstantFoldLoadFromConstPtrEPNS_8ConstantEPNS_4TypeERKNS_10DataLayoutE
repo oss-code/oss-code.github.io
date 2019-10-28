@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='126' type='llvm::Constant * llvm::ConstantFoldLoadFromConstPtr(llvm::Constant * C, llvm::Type * Ty, const llvm::DataLayout &amp; DL)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='123'>/// ConstantFoldLoadFromConstPtr - Return the value that a load from C would
+/// produce if it is constant and determinable.  If this is not determinable,
+/// return null.</doc>

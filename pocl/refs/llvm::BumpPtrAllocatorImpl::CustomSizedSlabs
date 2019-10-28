@@ -1,0 +1,10 @@
+<use f='include/llvm-6.0/llvm/Support/Allocator.h' l='157' u='w' c='_ZN4llvm20BumpPtrAllocatorImplC1EONS_20BumpPtrAllocatorImplIT_XT0_EXT1_EEE'/>
+<use f='include/llvm-6.0/llvm/Support/Allocator.h' l='180' u='w' c='_ZN4llvm20BumpPtrAllocatorImplaSEONS_20BumpPtrAllocatorImplIT_XT0_EXT1_EEE'/>
+<use f='include/llvm-6.0/llvm/Support/Allocator.h' l='195' u='m' c='_ZN4llvm20BumpPtrAllocatorImpl5ResetEv'/>
+<use f='include/llvm-6.0/llvm/Support/Allocator.h' l='247' u='m' c='_ZN4llvm20BumpPtrAllocatorImpl8AllocateEmm'/>
+<use f='include/llvm-6.0/llvm/Support/Allocator.h' l='282' u='m' c='_ZNK4llvm20BumpPtrAllocatorImpl11GetNumSlabsEv'/>
+<use f='include/llvm-6.0/llvm/Support/Allocator.h' l='288' c='_ZNK4llvm20BumpPtrAllocatorImpl14getTotalMemoryEv'/>
+<dec f='include/llvm-6.0/llvm/Support/Allocator.h' l='317' type='SmallVector&lt;std::pair&lt;void *, size_t&gt;, 0&gt;'/>
+<use f='include/llvm-6.0/llvm/Support/Allocator.h' l='366' c='_ZN4llvm20BumpPtrAllocatorImpl26DeallocateCustomSizedSlabsEv'/>
+<use f='include/llvm-6.0/llvm/Support/Allocator.h' l='424' c='_ZN4llvm24SpecificBumpPtrAllocator10DestroyAllEv'/>
+<doc f='include/llvm-6.0/llvm/Support/Allocator.h' l='316'>/// \brief Custom-sized slabs allocated for too-large allocation requests.</doc>

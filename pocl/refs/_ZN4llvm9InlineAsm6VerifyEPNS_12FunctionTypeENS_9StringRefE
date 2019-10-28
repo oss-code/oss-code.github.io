@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/InlineAsm.h' l='88' type='static bool llvm::InlineAsm::Verify(llvm::FunctionType * Ty, llvm::StringRef Constraints)'/>
+<doc f='include/llvm-6.0/llvm/IR/InlineAsm.h' l='84'>/// Verify - This static method can be used by the parser to check to see if
+  /// the specified constraint string is legal for the type.  This returns true
+  /// if legal, false if not.
+  ///</doc>

@@ -1,0 +1,33 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1002' type='mem_mapping_t *'/>
+<offset>1024</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='1000'>/* A linked list of regions of the buffer mapped to the 
+     host memory */</doc>
+<use f='pocl/lib/CL/clCreateBuffer.c' l='107' u='w' c='POclCreateBuffer'/>
+<use f='pocl/lib/CL/clEnqueueMapBuffer.c' l='140' u='r' c='POclEnqueueMapBuffer'/>
+<use f='pocl/lib/CL/clEnqueueMapBuffer.c' l='140' u='r' c='POclEnqueueMapBuffer'/>
+<use f='pocl/lib/CL/clEnqueueMapBuffer.c' l='140' u='r' c='POclEnqueueMapBuffer'/>
+<use f='pocl/lib/CL/clEnqueueMapBuffer.c' l='140' u='r' c='POclEnqueueMapBuffer'/>
+<use f='pocl/lib/CL/clEnqueueMapBuffer.c' l='140' u='w' c='POclEnqueueMapBuffer'/>
+<use f='pocl/lib/CL/clEnqueueMapBuffer.c' l='140' u='r' c='POclEnqueueMapBuffer'/>
+<use f='pocl/lib/CL/clEnqueueMapBuffer.c' l='140' u='r' c='POclEnqueueMapBuffer'/>
+<use f='pocl/lib/CL/clEnqueueMapBuffer.c' l='140' u='r' c='POclEnqueueMapBuffer'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='184' u='r' c='POclEnqueueMapImage'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='184' u='r' c='POclEnqueueMapImage'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='184' u='r' c='POclEnqueueMapImage'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='184' u='r' c='POclEnqueueMapImage'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='184' u='w' c='POclEnqueueMapImage'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='184' u='r' c='POclEnqueueMapImage'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='184' u='r' c='POclEnqueueMapImage'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='184' u='r' c='POclEnqueueMapImage'/>
+<use f='pocl/lib/CL/clEnqueueUnmapMemObject.c' l='67' u='r' c='POclEnqueueUnmapMemObject'/>
+<use f='pocl/lib/CL/clReleaseMemObject.c' l='87' u='r' c='POclReleaseMemObject'/>
+<use f='pocl/lib/CL/clReleaseMemObject.c' l='91' u='w' c='POclReleaseMemObject'/>
+<use f='pocl/lib/CL/clSetKernelArgSVMPointer.c' l='44' u='w' c='POclSetKernelArgSVMPointer'/>
+<use f='pocl/lib/CL/devices/common.c' l='651' u='w' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='651' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='651' u='w' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='651' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1329' u='w' c='pocl_cuda_finalize_command'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1329' u='r' c='pocl_cuda_finalize_command'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1329' u='w' c='pocl_cuda_finalize_command'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1329' u='r' c='pocl_cuda_finalize_command'/>

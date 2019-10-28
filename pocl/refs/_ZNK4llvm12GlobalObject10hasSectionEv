@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/IR/GlobalObject.h' l='82' ll='84' type='bool llvm::GlobalObject::hasSection() const'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalObject.h' l='91' u='c' c='_ZNK4llvm12GlobalObject10getSectionEv'/>
+<doc f='include/llvm-6.0/llvm/IR/GlobalObject.h' l='78'>/// Check if this global has a custom object file section.
+  ///
+  /// This is more efficient than calling getSection() and checking for an empty
+  /// string.</doc>

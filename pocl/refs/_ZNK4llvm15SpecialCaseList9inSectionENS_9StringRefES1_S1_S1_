@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Support/SpecialCaseList.h' l='89' type='bool llvm::SpecialCaseList::inSection(llvm::StringRef Section, llvm::StringRef Prefix, llvm::StringRef Query, llvm::StringRef Category = llvm::StringRef()) const'/>
+<doc f='include/llvm-6.0/llvm/Support/SpecialCaseList.h' l='84'>/// Returns true, if special case list contains a line
+  /// \code
+  ///   @Prefix:&lt;E&gt;=@Category
+  /// \endcode
+  /// where @Query satisfies wildcard expression &lt;E&gt; in a given @Section.</doc>

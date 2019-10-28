@@ -1,0 +1,9 @@
+<def f='pocl/include/CL/cl2.hpp' l='6514' ll='6515' type='void cl::Program::Program(const cl_program &amp; program, bool retainObject = false)'/>
+<use f='pocl/include/CL/cl2.hpp' l='6766' u='c' c='_ZN2cl11linkProgramENS_7ProgramES0_PKcPFvP11_cl_programPvES5_Pi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6807' u='c' c='_ZN2cl11linkProgramESt6vectorINS_7ProgramESaIS1_EEPKcPFvP11_cl_programPvES8_Pi'/>
+<doc f='pocl/include/CL/cl2.hpp' l='6508'>/*! \brief Constructor from cl_mem - takes ownership.
+     *
+     * \param retainObject will cause the constructor to retain its cl object.
+     *                     Defaults to false to maintain compatibility with
+     *                     earlier versions.
+     */</doc>

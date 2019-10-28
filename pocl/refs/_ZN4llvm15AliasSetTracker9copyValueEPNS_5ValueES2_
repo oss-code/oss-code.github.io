@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasSetTracker.h' l='414' type='void llvm::AliasSetTracker::copyValue(llvm::Value * From, llvm::Value * To)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasSetTracker.h' l='410'>/// This method should be used whenever a preexisting value in the program is
+  /// copied or cloned, introducing a new value.  Note that it is ok for clients
+  /// that use this method to introduce the same value multiple times: if the
+  /// tracker already knows about a value, it will ignore the request.</doc>

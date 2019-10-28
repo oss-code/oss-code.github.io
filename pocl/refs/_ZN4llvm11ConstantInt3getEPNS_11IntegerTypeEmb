@@ -1,0 +1,29 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='111' type='static llvm::ConstantInt * llvm::ConstantInt::get(llvm::IntegerType * Ty, uint64_t V, bool isSigned = false)'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='105'>/// Return a ConstantInt with the specified integer value for the specified
+  /// type. If the type is wider than 64 bits, the value will be zero-extended
+  /// to fit the type, unless isSigned is true, in which case the value will
+  /// be interpreted as a 64-bit signed integer and sign-extended to fit
+  /// the type.
+  /// @brief Get a ConstantInt for a specific value.</doc>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='284' u='c' c='_ZN4llvm13IRBuilderBase7getInt1Eb'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='299' u='c' c='_ZN4llvm13IRBuilderBase7getInt8Eh'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='304' u='c' c='_ZN4llvm13IRBuilderBase8getInt16Et'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='309' u='c' c='_ZN4llvm13IRBuilderBase8getInt32Ej'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='314' u='c' c='_ZN4llvm13IRBuilderBase8getInt64Em'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='320' u='c' c='_ZN4llvm13IRBuilderBase7getIntNEjm'/>
+<use f='pocl/lib/llvmopencl/HandleSamplerInitialization.cc' l='95' u='c' c='_ZN4pocl27HandleSamplerInitialization13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/LLVMUtils.cc' l='127' u='c' c='_ZN4pocl19createConstantIntMDERN4llvm11LLVMContextEi'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='499' u='c' c='_ZN4pocl14ParallelRegion13AddIDMetadataERN4llvm11LLVMContextEmmm'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='499' u='c' c='_ZN4pocl14ParallelRegion13AddIDMetadataERN4llvm11LLVMContextEmmm'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='505' u='c' c='_ZN4pocl14ParallelRegion13AddIDMetadataERN4llvm11LLVMContextEmmm'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='507' u='c' c='_ZN4pocl14ParallelRegion13AddIDMetadataERN4llvm11LLVMContextEmmm'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='509' u='c' c='_ZN4pocl14ParallelRegion13AddIDMetadataERN4llvm11LLVMContextEmmm'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='505' u='c' c='_ZN4pocl14ParallelRegion13AddIDMetadataERN4llvm11LLVMContextEmmm'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='507' u='c' c='_ZN4pocl14ParallelRegion13AddIDMetadataERN4llvm11LLVMContextEmmm'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='509' u='c' c='_ZN4pocl14ParallelRegion13AddIDMetadataERN4llvm11LLVMContextEmmm'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='524' u='c' c='_ZN4pocl14ParallelRegion13AddIDMetadataERN4llvm11LLVMContextEmmm'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='524' u='c' c='_ZN4pocl14ParallelRegion13AddIDMetadataERN4llvm11LLVMContextEmmm'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='977' u='c' c='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='990' u='c' c='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1382' u='c' c='_ZN4pocl9Workgroup27createFastWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='828' u='c' c='_ZN4pocl13WorkitemLoops17AddContextRestoreEPN4llvm5ValueEPNS1_11InstructionEbS5_b'/>

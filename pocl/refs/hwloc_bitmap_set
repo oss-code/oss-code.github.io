@@ -1,0 +1,5 @@
+<dec f='include/hwloc/bitmap.h' l='184' type='void hwloc_bitmap_set(hwloc_bitmap_t bitmap, unsigned int id)'/>
+<use f='include/hwloc/cpuset.h' l='44' u='c' c='hwloc_cpuset_set'/>
+<use f='include/hwloc/helper.h' l='939' u='c' c='hwloc_cpuset_to_nodeset'/>
+<use f='include/hwloc/helper.h' l='959' u='c' c='hwloc_cpuset_to_nodeset_strict'/>
+<doc f='include/hwloc/bitmap.h' l='183'>/** \brief Add index \p id in bitmap \p bitmap */</doc>

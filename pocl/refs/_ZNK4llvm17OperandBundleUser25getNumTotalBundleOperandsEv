@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1320' ll='1329' type='unsigned int llvm::OperandBundleUser::getNumTotalBundleOperands() const'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1566' u='c' c='_ZNK4llvm8CallInst17getNumArgOperandsEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1586' u='c' c='_ZN4llvm8CallInst7arg_endEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1600' u='c' c='_ZNK4llvm8CallInst7arg_endEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='3690' u='c' c='_ZNK4llvm10InvokeInst17getNumArgOperandsEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='3710' u='c' c='_ZN4llvm10InvokeInst7arg_endEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='3724' u='c' c='_ZNK4llvm10InvokeInst7arg_endEv'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1318'>/// \brief Return the total number operands (not operand bundles) used by
+  /// every operand bundle in this OperandBundleUser.</doc>

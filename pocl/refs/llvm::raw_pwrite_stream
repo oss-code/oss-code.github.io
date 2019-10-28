@@ -1,0 +1,12 @@
+<inh f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='44' c='llvm::raw_ostream'/>
+<def f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='337' ll='353'/>
+<ovr f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='361' c='llvm::raw_fd_ostream'/>
+<ovr f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='489' c='llvm::raw_svector_ostream'/>
+<ovr f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='518' c='llvm::raw_null_ostream'/>
+<size>40</size>
+<doc f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='334'>/// An abstract base class for streams implementations that also support a
+/// pwrite operation. This is useful for code that can mostly stream out data,
+/// but needs to patch in a header that needs to know the output size.</doc>
+<fun r='_ZN4llvm17raw_pwrite_stream11pwrite_implEPKcmm'/>
+<fun r='_ZN4llvm17raw_pwrite_streamC1Eb'/>
+<fun r='_ZN4llvm17raw_pwrite_stream6pwriteEPKcmm'/>

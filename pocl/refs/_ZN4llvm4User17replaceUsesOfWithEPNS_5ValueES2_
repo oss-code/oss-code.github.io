@@ -1,0 +1,13 @@
+<dec f='include/llvm-6.0/llvm/IR/User.h' l='288' type='void llvm::User::replaceUsesOfWith(llvm::Value * From, llvm::Value * To)'/>
+<doc f='include/llvm-6.0/llvm/IR/User.h' l='284'>/// \brief Replace uses of one Value with another.
+  ///
+  /// Replaces all references to the &quot;From&quot; definition with references to the
+  /// &quot;To&quot; definition.</doc>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='322' u='c' c='_ZN17BreakConstantGEPs13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='828' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='853' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='238' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='262' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='587' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='1097' u='c' c='_ZN4pocl13WorkitemLoops21AddContextSaveRestoreEPN4llvm11InstructionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='1165' u='c' c='_ZN4pocl13WorkitemLoops14AppendIncBlockEPN4llvm10BasicBlockEPNS1_5ValueE'/>

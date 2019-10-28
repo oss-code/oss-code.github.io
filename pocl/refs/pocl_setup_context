@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/pocl_util.h' l='159' type='void pocl_setup_context(cl_context context)'/>
+<use f='pocl/lib/CL/clCreateContext.c' l='212' u='c' c='POclCreateContext'/>
+<use f='pocl/lib/CL/clCreateContextFromType.c' l='113' u='c' c='POclCreateContextFromType'/>
+<def f='pocl/lib/CL/pocl_util.c' l='945' ll='989' type='void pocl_setup_context(cl_context context)'/>
+<doc f='pocl/lib/CL/pocl_util.c' l='944'>/* Setup certain info about context that comes up later in API calls */</doc>

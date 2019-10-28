@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='361' ll='365' type='static bool llvm::GlobalValue::isWeakForLinker(llvm::GlobalValue::LinkageTypes Linkage)'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='447' u='c' c='_ZNK4llvm11GlobalValue15isWeakForLinkerEv'/>
+<doc f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='357'>/// Whether the definition of this global may be replaced at link time.  NB:
+  /// Using this method outside of the code generators is almost always a
+  /// mistake: when working at the IR level use isInterposable instead as it
+  /// knows about ODR semantics.</doc>

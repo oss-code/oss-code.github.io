@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='454' type='bool llvm::DiagnosticInfoOptimizationBase::isEnabled() const'/>
+<doc f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='449'>/// Return true if this optimization remark is enabled by one of
+  /// of the LLVM command line flags (-pass-remarks, -pass-remarks-missed,
+  /// or -pass-remarks-analysis). Note that this only handles the LLVM
+  /// flags. We cannot access Clang flags from here (they are handled
+  /// in BackendConsumer::OptimizationRemarkHandler).</doc>

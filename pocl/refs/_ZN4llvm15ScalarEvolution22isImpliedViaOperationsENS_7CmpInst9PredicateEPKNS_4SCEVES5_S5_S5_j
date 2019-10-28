@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1587' type='bool llvm::ScalarEvolution::isImpliedViaOperations(ICmpInst::Predicate Pred, const llvm::SCEV * LHS, const llvm::SCEV * RHS, const llvm::SCEV * FoundLHS, const llvm::SCEV * FoundRHS, unsigned int Depth = 0)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1583'>/// Test whether the condition described by Pred, LHS, and RHS is true
+  /// whenever the condition described by Pred, FoundLHS, and FoundRHS is
+  /// true. Here LHS is an operation that includes FoundLHS as one of its
+  /// arguments.</doc>

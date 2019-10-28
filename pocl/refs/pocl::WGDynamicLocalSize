@@ -1,0 +1,23 @@
+<dec f='pocl/lib/CL/pocl_llvm_wg.cc' l='360' type='bool'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='400' u='w' c='pocl_llvm_generate_workgroup_function_nowrite'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='416' u='w' c='pocl_llvm_generate_workgroup_function_nowrite'/>
+<dec f='pocl/lib/llvmopencl/WorkitemHandler.h' l='78' type='bool'/>
+<doc f='pocl/lib/llvmopencl/WorkitemHandler.h' l='76'>// If set to true, the next 3 parameters define the local size to specialize
+  // for.</doc>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='316' u='r' c='_ZL26addRangeMetadataForPCFieldPN4llvm11InstructionEii'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='346' u='r' c='_ZL26addRangeMetadataForPCFieldPN4llvm11InstructionEii'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='857' u='r' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<def f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='59' type='bool'/>
+<doc f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='54'>/* These are used to communicate the work-group function specialization
+   properites of the currently compiled kernel command.
+
+   TODO: Something cleaner than global values. */</doc>
+<use f='pocl/lib/llvmopencl/WorkitemHandlerChooser.cc' l='68' u='r' c='_ZN4pocl22WorkitemHandlerChooser13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandlerChooser.cc' l='106' u='r' c='_ZN4pocl22WorkitemHandlerChooser13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='247' u='r' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='271' u='r' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='529' u='r' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='609' u='r' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='766' u='r' c='_ZN4pocl13WorkitemLoops14AddContextSaveEPN4llvm11InstructionES3_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='813' u='r' c='_ZN4pocl13WorkitemLoops17AddContextRestoreEPN4llvm5ValueEPNS1_11InstructionEbS5_b'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='956' u='r' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>

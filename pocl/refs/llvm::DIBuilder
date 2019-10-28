@@ -1,0 +1,90 @@
+<def f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='42' ll='791'/>
+<size>456</size>
+<mbr r='llvm::DIBuilder::M' o='0' t='llvm::Module &amp;'/>
+<mbr r='llvm::DIBuilder::VMContext' o='64' t='llvm::LLVMContext &amp;'/>
+<mbr r='llvm::DIBuilder::CUNode' o='128' t='llvm::DICompileUnit *'/>
+<mbr r='llvm::DIBuilder::DeclareFn' o='192' t='llvm::Function *'/>
+<mbr r='llvm::DIBuilder::ValueFn' o='256' t='llvm::Function *'/>
+<mbr r='llvm::DIBuilder::AllEnumTypes' o='320' t='SmallVector&lt;llvm::Metadata *, 4&gt;'/>
+<mbr r='llvm::DIBuilder::AllRetainTypes' o='768' t='SmallVector&lt;TrackingMDNodeRef, 4&gt;'/>
+<mbr r='llvm::DIBuilder::AllSubprograms' o='1216' t='SmallVector&lt;llvm::Metadata *, 4&gt;'/>
+<mbr r='llvm::DIBuilder::AllGVs' o='1664' t='SmallVector&lt;llvm::Metadata *, 4&gt;'/>
+<mbr r='llvm::DIBuilder::AllImportedModules' o='2112' t='SmallVector&lt;TrackingMDNodeRef, 4&gt;'/>
+<mbr r='llvm::DIBuilder::AllMacrosPerParent' o='2560' t='MapVector&lt;llvm::MDNode *, SetVector&lt;llvm::Metadata *&gt; &gt;'/>
+<mbr r='llvm::DIBuilder::UnresolvedNodes' o='2944' t='SmallVector&lt;TrackingMDNodeRef, 4&gt;'/>
+<mbr r='llvm::DIBuilder::AllowUnresolvedNodes' o='3392' t='bool'/>
+<mbr r='llvm::DIBuilder::PreservedVariables' o='3456' t='DenseMap&lt;llvm::MDNode *, SmallVector&lt;TrackingMDNodeRef, 1&gt; &gt;'/>
+<fun r='_ZN4llvm9DIBuilder17trackIfUnresolvedEPNS_6MDNodeE'/>
+<fun r='_ZN4llvm9DIBuilder13insertDeclareEPNS_5ValueEPNS_15DILocalVariableEPNS_12DIExpressionEPKNS_10DILocationEPNS_10BasicBlockEPNS_11InstructionE'/>
+<fun r='_ZN4llvm9DIBuilder23insertDbgValueIntrinsicEPNS_5ValueEPNS_15DILocalVariableEPNS_12DIExpressionEPKNS_10DILocationEPNS_10BasicBlockEPNS_11InstructionE'/>
+<fun r='_ZN4llvm9DIBuilderC1ERNS_6ModuleEb'/>
+<fun r='_ZN4llvm9DIBuilderC1ERKS0_'/>
+<fun r='_ZN4llvm9DIBuilderaSERKS0_'/>
+<fun r='_ZN4llvm9DIBuilder8finalizeEv'/>
+<fun r='_ZN4llvm9DIBuilder18finalizeSubprogramEPNS_12DISubprogramE'/>
+<fun r='_ZN4llvm9DIBuilder17createCompileUnitEjPNS_6DIFileENS_9StringRefEbS3_jS3_NS_13DICompileUnit17DebugEmissionKindEmbbb'/>
+<fun r='_ZN4llvm9DIBuilder10createFileENS_9StringRefES1_NS_6DIFile12ChecksumKindES1_'/>
+<fun r='_ZN4llvm9DIBuilder11createMacroEPNS_11DIMacroFileEjjNS_9StringRefES3_'/>
+<fun r='_ZN4llvm9DIBuilder19createTempMacroFileEPNS_11DIMacroFileEjPNS_6DIFileE'/>
+<fun r='_ZN4llvm9DIBuilder16createEnumeratorENS_9StringRefEl'/>
+<fun r='_ZN4llvm9DIBuilder21createUnspecifiedTypeENS_9StringRefE'/>
+<fun r='_ZN4llvm9DIBuilder17createNullPtrTypeEv'/>
+<fun r='_ZN4llvm9DIBuilder15createBasicTypeENS_9StringRefEmj'/>
+<fun r='_ZN4llvm9DIBuilder19createQualifiedTypeEjPNS_6DITypeE'/>
+<fun r='_ZN4llvm9DIBuilder17createPointerTypeEPNS_6DITypeEmjNS_8OptionalIjEENS_9StringRefE'/>
+<fun r='_ZN4llvm9DIBuilder23createMemberPointerTypeEPNS_6DITypeES2_mjNS_6DINode7DIFlagsE'/>
+<fun r='_ZN4llvm9DIBuilder19createReferenceTypeEjPNS_6DITypeEmjNS_8OptionalIjEE'/>
+<fun r='_ZN4llvm9DIBuilder13createTypedefEPNS_6DITypeENS_9StringRefEPNS_6DIFileEjPNS_7DIScopeE'/>
+<fun r='_ZN4llvm9DIBuilder12createFriendEPNS_6DITypeES2_'/>
+<fun r='_ZN4llvm9DIBuilder17createInheritanceEPNS_6DITypeES2_mNS_6DINode7DIFlagsE'/>
+<fun r='_ZN4llvm9DIBuilder16createMemberTypeEPNS_7DIScopeENS_9StringRefEPNS_6DIFileEjmjmNS_6DINode7DIFlagsEPNS_6DITypeE'/>
+<fun r='_ZN4llvm9DIBuilder24createBitFieldMemberTypeEPNS_7DIScopeENS_9StringRefEPNS_6DIFileEjmmmNS_6DINode7DIFlagsEPNS_6DITypeE'/>
+<fun r='_ZN4llvm9DIBuilder22createStaticMemberTypeEPNS_7DIScopeENS_9StringRefEPNS_6DIFileEjPNS_6DITypeENS_6DINode7DIFlagsEPNS_8ConstantEj'/>
+<fun r='_ZN4llvm9DIBuilder14createObjCIVarENS_9StringRefEPNS_6DIFileEjmjmNS_6DINode7DIFlagsEPNS_6DITypeEPNS_6MDNodeE'/>
+<fun r='_ZN4llvm9DIBuilder18createObjCPropertyENS_9StringRefEPNS_6DIFileEjS1_S1_jPNS_6DITypeE'/>
+<fun r='_ZN4llvm9DIBuilder15createClassTypeEPNS_7DIScopeENS_9StringRefEPNS_6DIFileEjmjmNS_6DINode7DIFlagsEPNS_6DITypeENS_24MDTupleTypedArrayWrapperIS6_EES9_PNS_6MDNodeES3_'/>
+<fun r='_ZN4llvm9DIBuilder16createStructTypeEPNS_7DIScopeENS_9StringRefEPNS_6DIFileEjmjNS_6DINode7DIFlagsEPNS_6DITypeENS_24MDTupleTypedArrayWrapperIS6_EEjS9_S3_'/>
+<fun r='_ZN4llvm9DIBuilder15createUnionTypeEPNS_7DIScopeENS_9StringRefEPNS_6DIFileEjmjNS_6DINode7DIFlagsENS_24MDTupleTypedArrayWrapperIS6_EEjS3_'/>
+<fun r='_ZN4llvm9DIBuilder27createTemplateTypeParameterEPNS_7DIScopeENS_9StringRefEPNS_6DITypeE'/>
+<fun r='_ZN4llvm9DIBuilder28createTemplateValueParameterEPNS_7DIScopeENS_9StringRefEPNS_6DITypeEPNS_8ConstantE'/>
+<fun r='_ZN4llvm9DIBuilder31createTemplateTemplateParameterEPNS_7DIScopeENS_9StringRefEPNS_6DITypeES3_'/>
+<fun r='_ZN4llvm9DIBuilder27createTemplateParameterPackEPNS_7DIScopeENS_9StringRefEPNS_6DITypeENS_24MDTupleTypedArrayWrapperINS_6DINodeEEE'/>
+<fun r='_ZN4llvm9DIBuilder15createArrayTypeEmjPNS_6DITypeENS_24MDTupleTypedArrayWrapperINS_6DINodeEEE'/>
+<fun r='_ZN4llvm9DIBuilder16createVectorTypeEmjPNS_6DITypeENS_24MDTupleTypedArrayWrapperINS_6DINodeEEE'/>
+<fun r='_ZN4llvm9DIBuilder21createEnumerationTypeEPNS_7DIScopeENS_9StringRefEPNS_6DIFileEjmjNS_24MDTupleTypedArrayWrapperINS_6DINodeEEEPNS_6DITypeES3_'/>
+<fun r='_ZN4llvm9DIBuilder20createSubroutineTypeENS_14DITypeRefArrayENS_6DINode7DIFlagsEj'/>
+<fun r='_ZN4llvm9DIBuilder20createArtificialTypeEPNS_6DITypeE'/>
+<fun r='_ZN4llvm9DIBuilder23createObjectPointerTypeEPNS_6DITypeE'/>
+<fun r='_ZN4llvm9DIBuilder17createForwardDeclEjNS_9StringRefEPNS_7DIScopeEPNS_6DIFileEjjmjS1_'/>
+<fun r='_ZN4llvm9DIBuilder30createReplaceableCompositeTypeEjNS_9StringRefEPNS_7DIScopeEPNS_6DIFileEjjmjNS_6DINode7DIFlagsES1_'/>
+<fun r='_ZN4llvm9DIBuilder10retainTypeEPNS_7DIScopeE'/>
+<fun r='_ZN4llvm9DIBuilder26createUnspecifiedParameterEv'/>
+<fun r='_ZN4llvm9DIBuilder16getOrCreateArrayENS_8ArrayRefIPNS_8MetadataEEE'/>
+<fun r='_ZN4llvm9DIBuilder21getOrCreateMacroArrayENS_8ArrayRefIPNS_8MetadataEEE'/>
+<fun r='_ZN4llvm9DIBuilder20getOrCreateTypeArrayENS_8ArrayRefIPNS_8MetadataEEE'/>
+<fun r='_ZN4llvm9DIBuilder19getOrCreateSubrangeEll'/>
+<fun r='_ZN4llvm9DIBuilder30createGlobalVariableExpressionEPNS_7DIScopeENS_9StringRefES3_PNS_6DIFileEjPNS_6DITypeEbPNS_12DIExpressionEPNS_6MDNodeEj'/>
+<fun r='_ZN4llvm9DIBuilder31createTempGlobalVariableFwdDeclEPNS_7DIScopeENS_9StringRefES3_PNS_6DIFileEjPNS_6DITypeEbPNS_6MDNodeEj'/>
+<fun r='_ZN4llvm9DIBuilder18createAutoVariableEPNS_7DIScopeENS_9StringRefEPNS_6DIFileEjPNS_6DITypeEbNS_6DINode7DIFlagsEj'/>
+<fun r='_ZN4llvm9DIBuilder23createParameterVariableEPNS_7DIScopeENS_9StringRefEjPNS_6DIFileEjPNS_6DITypeEbNS_6DINode7DIFlagsE'/>
+<fun r='_ZN4llvm9DIBuilder16createExpressionENS_8ArrayRefImEE'/>
+<fun r='_ZN4llvm9DIBuilder16createExpressionENS_8ArrayRefIlEE'/>
+<fun r='_ZN4llvm9DIBuilder29createConstantValueExpressionEm'/>
+<fun r='_ZN4llvm9DIBuilder14createFunctionEPNS_7DIScopeENS_9StringRefES3_PNS_6DIFileEjPNS_16DISubroutineTypeEbbjNS_6DINode7DIFlagsEbNS_24MDTupleTypedArrayWrap416335'/>
+<fun r='_ZN4llvm9DIBuilder25createTempFunctionFwdDeclEPNS_7DIScopeENS_9StringRefES3_PNS_6DIFileEjPNS_16DISubroutineTypeEbbjNS_6DINode7DIFlagsEbNS_24MDTupleTyp5195654'/>
+<fun r='_ZN4llvm9DIBuilder12createMethodEPNS_7DIScopeENS_9StringRefES3_PNS_6DIFileEjPNS_16DISubroutineTypeEbbjjiPNS_6DITypeENS_6DINode7DIFlagsEbNS_24MDTupleTy5452039'/>
+<fun r='_ZN4llvm9DIBuilder15createNameSpaceEPNS_7DIScopeENS_9StringRefEb'/>
+<fun r='_ZN4llvm9DIBuilder12createModuleEPNS_7DIScopeENS_9StringRefES3_S3_S3_'/>
+<fun r='_ZN4llvm9DIBuilder22createLexicalBlockFileEPNS_7DIScopeEPNS_6DIFileEj'/>
+<fun r='_ZN4llvm9DIBuilder18createLexicalBlockEPNS_7DIScopeEPNS_6DIFileEjj'/>
+<fun r='_ZN4llvm9DIBuilder20createImportedModuleEPNS_7DIScopeEPNS_11DINamespaceEPNS_6DIFileEj'/>
+<fun r='_ZN4llvm9DIBuilder20createImportedModuleEPNS_7DIScopeEPNS_16DIImportedEntityEPNS_6DIFileEj'/>
+<fun r='_ZN4llvm9DIBuilder20createImportedModuleEPNS_7DIScopeEPNS_8DIModuleEPNS_6DIFileEj'/>
+<fun r='_ZN4llvm9DIBuilder25createImportedDeclarationEPNS_7DIScopeEPNS_6DINodeEPNS_6DIFileEjNS_9StringRefE'/>
+<fun r='_ZN4llvm9DIBuilder13insertDeclareEPNS_5ValueEPNS_15DILocalVariableEPNS_12DIExpressionEPKNS_10DILocationEPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm9DIBuilder13insertDeclareEPNS_5ValueEPNS_15DILocalVariableEPNS_12DIExpressionEPKNS_10DILocationEPNS_11InstructionE'/>
+<fun r='_ZN4llvm9DIBuilder23insertDbgValueIntrinsicEPNS_5ValueEPNS_15DILocalVariableEPNS_12DIExpressionEPKNS_10DILocationEPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm9DIBuilder23insertDbgValueIntrinsicEPNS_5ValueEPNS_15DILocalVariableEPNS_12DIExpressionEPKNS_10DILocationEPNS_11InstructionE'/>
+<fun r='_ZN4llvm9DIBuilder19replaceVTableHolderERPNS_15DICompositeTypeEPNS_6DITypeE'/>
+<fun r='_ZN4llvm9DIBuilder13replaceArraysERPNS_15DICompositeTypeENS_24MDTupleTypedArrayWrapperINS_6DINodeEEES6_'/>
+<fun r='_ZN4llvm9DIBuilder16replaceTemporaryEOSt10unique_ptrINS_6MDNodeENS_17TempMDNodeDeleterEEPT_'/>

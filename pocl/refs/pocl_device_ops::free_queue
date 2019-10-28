@@ -1,0 +1,6 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='394' type='void (*)(cl_command_queue)'/>
+<offset>1024</offset>
+<use f='pocl/lib/CL/clReleaseCommandQueue.c' l='44' u='r' c='POclReleaseCommandQueue'/>
+<use f='pocl/lib/CL/clReleaseCommandQueue.c' l='45' u='r' c='POclReleaseCommandQueue'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='139' u='w' c='pocl_cuda_init_device_ops'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='101' u='w' c='pocl_pthread_init_device_ops'/>

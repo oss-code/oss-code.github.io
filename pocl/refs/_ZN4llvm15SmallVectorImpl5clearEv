@@ -1,0 +1,18 @@
+<def f='include/llvm-6.0/llvm/ADT/SmallVector.h' l='350' ll='353' type='void llvm::SmallVectorImpl::clear()'/>
+<use f='include/llvm-6.0/llvm/ADT/SmallVector.h' l='428' u='c' c='_ZN4llvm15SmallVectorImpl6assignENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE9size_typeERKS2_'/>
+<use f='include/llvm-6.0/llvm/ADT/SmallVector.h' l='440' u='c' c='_ZN4llvm15SmallVectorImpl6assignET_S1_'/>
+<use f='include/llvm-6.0/llvm/ADT/SmallVector.h' l='445' u='c' c='_ZN4llvm15SmallVectorImpl6assignESt16initializer_listIT_E'/>
+<use f='include/llvm-6.0/llvm/Support/Allocator.h' l='195' u='c' c='_ZN4llvm20BumpPtrAllocatorImpl5ResetEv'/>
+<use f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='334' u='c' c='_ZN4llvm16FoldingSetNodeID5clearEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/AssumptionCache.h' l='115' u='c' c='_ZN4llvm15AssumptionCache5clearEv'/>
+<use f='include/llvm-6.0/llvm/Transforms/Utils/Cloning.h' l='210' u='c' c='_ZN4llvm18InlineFunctionInfo5resetEv'/>
+<use f='include/llvm-6.0/llvm/Transforms/Utils/Cloning.h' l='211' u='c' c='_ZN4llvm18InlineFunctionInfo5resetEv'/>
+<use f='include/llvm-6.0/llvm/Transforms/Utils/Cloning.h' l='212' u='c' c='_ZN4llvm18InlineFunctionInfo5resetEv'/>
+<use f='include/llvm-6.0/llvm/Option/ArgList.h' l='161' u='c' c='_ZN4llvm3opt7ArgListC1EOS1_'/>
+<use f='include/llvm-6.0/llvm/Option/ArgList.h' l='167' u='c' c='_ZN4llvm3opt7ArgListaSEOS1_'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='444' u='c' c='_ZN4llvm13LazyCallGraph3SCC5clearEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='564' u='c' c='_ZN4llvm13LazyCallGraph6RefSCC5clearEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='773' u='c' c='_ZN4llvm21DevirtSCCRepeatedPass3runERNS_13LazyCallGraph3SCCERNS_15AnalysisManagerIS2_JRS1_EEES5_RNS_17CGSCCUpdateResultE'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='518' u='c' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='511' u='c' c='_ZL18replacePrintfCallsPN4llvm5ValueES1_S1_bPNS_8FunctionERNS_6ModuleES3_RSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='578' u='c' c='_ZL18replacePrintfCallsPN4llvm5ValueES1_S1_bPNS_8FunctionERNS_6ModuleES3_RSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>

@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='322' ll='325'/>
+<size>40</size>
+<doc f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='319'>/// A specification for a virtual function call with all constant integer
+  /// arguments. This is used to perform virtual constant propagation on the
+  /// summary.</doc>
+<mbr r='llvm::FunctionSummary::ConstVCall::VFunc' o='0' t='llvm::FunctionSummary::VFuncId'/>
+<mbr r='llvm::FunctionSummary::ConstVCall::Args' o='128' t='std::vector&lt;uint64_t&gt;'/>

@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='532' type='bool llvm::BinaryOperator::swapOperands()'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='527'>/// Exchange the two operands to this instruction.
+  /// This instruction is safe to use on any binary instruction and
+  /// does not modify the semantics of the instruction.  If the instruction
+  /// cannot be reversed (ie, it&apos;s a Div), then return true.
+  ///</doc>

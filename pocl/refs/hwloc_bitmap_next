@@ -1,0 +1,8 @@
+<dec f='include/hwloc/bitmap.h' l='244' type='int hwloc_bitmap_next(hwloc_const_bitmap_t bitmap, int prev)'/>
+<use f='include/hwloc/cpuset.h' l='62' u='c' c='hwloc_cpuset_next'/>
+<doc f='include/hwloc/bitmap.h' l='238'>/** \brief Compute the next index in bitmap \p bitmap which is after index \p prev
+ *
+ * If \p prev is -1, the first index is returned.
+ *
+ * \return -1 if no index with higher index is bitmap.
+ */</doc>

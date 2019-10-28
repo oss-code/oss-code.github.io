@@ -1,0 +1,13 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='644' type='cl_device_id'/>
+<offset>576</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='643'>/* for subdevice support */</doc>
+<use f='pocl/lib/CL/clCreateSubDevices.c' l='144' u='w' c='POclCreateSubDevices'/>
+<use f='pocl/lib/CL/clCreateSubDevices.c' l='168' u='r' c='POclCreateSubDevices'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='254' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/clReleaseDevice.c' l='31' u='r' c='POclReleaseDevice'/>
+<use f='pocl/lib/CL/clRetainDevice.c' l='28' u='r' c='POclRetainDevice'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='311' u='w' c='pocl_init_cpu_device_infos'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='168' u='r' c='shall_we_run_this'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='76' u='r' c='pocl_cl_device_to_index'/>
+<use f='pocl/lib/CL/pocl_util.c' l='856' u='r' c='pocl_real_dev'/>
+<use f='pocl/lib/CL/pocl_util.c' l='857' u='r' c='pocl_real_dev'/>

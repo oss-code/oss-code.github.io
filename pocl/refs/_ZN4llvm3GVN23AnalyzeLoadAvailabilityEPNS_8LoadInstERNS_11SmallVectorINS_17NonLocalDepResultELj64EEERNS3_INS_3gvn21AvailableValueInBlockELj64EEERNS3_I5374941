@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Scalar/GVN.h' l='259' type='void llvm::GVN::AnalyzeLoadAvailability(llvm::LoadInst * LI, LoadDepVect &amp; Deps, AvailValInBlkVect &amp; ValuesPerBlock, UnavailBlkVect &amp; UnavailableBlocks)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Scalar/GVN.h' l='256'>/// Given a list of non-local dependencies, determine if a value is
+  /// available for the load in each specified block.  If it is, add it to
+  /// ValuesPerBlock.  If not, add it to UnavailableBlocks.</doc>

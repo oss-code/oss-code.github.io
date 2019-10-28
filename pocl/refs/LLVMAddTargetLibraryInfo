@@ -1,0 +1,4 @@
+<dec f='include/llvm-c-6.0/llvm-c/Target.h' l='211' type='void LLVMAddTargetLibraryInfo(LLVMTargetLibraryInfoRef TLI, LLVMPassManagerRef PM)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Target.h' l='208'>/** Adds target library information to a pass manager. This does not take
+    ownership of the target library info.
+    See the method llvm::PassManagerBase::add. */</doc>

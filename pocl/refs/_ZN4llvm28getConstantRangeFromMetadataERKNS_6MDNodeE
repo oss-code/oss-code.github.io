@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/ConstantRange.h' l='342' type='llvm::ConstantRange llvm::getConstantRangeFromMetadata(const llvm::MDNode &amp; RangeMD)'/>
+<doc f='include/llvm-6.0/llvm/IR/ConstantRange.h' l='339'>/// Parse out a conservative ConstantRange from !range metadata.
+///
+/// E.g. if RangeMD is !{i32 0, i32 10, i32 15, i32 20} then return [0, 20).</doc>

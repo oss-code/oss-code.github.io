@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Transforms/IPO/PassManagerBuilder.h' l='197' type='void llvm::PassManagerBuilder::populateFunctionPassManager(legacy::FunctionPassManager &amp; FPM)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/IPO/PassManagerBuilder.h' l='194'>/// populateFunctionPassManager - This fills in the function pass manager,
+  /// which is expected to be run on each function immediately as it is
+  /// generated.  The idea is to reduce the size of the IR in memory.</doc>

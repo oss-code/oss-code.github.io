@@ -1,0 +1,16 @@
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='416' ll='418' type='llvm::Constant * llvm::ConstantAsMetadata::getValue() const'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='812' u='c' c='_ZNK4llvm13DIDerivedType22getStorageOffsetInBitsEv'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='819' u='c' c='_ZNK4llvm13DIDerivedType11getConstantEv'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='108' u='c' c='_ZL35pocl_get_kernel_arg_module_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='315' u='c' c='_ZL37pocl_get_kernel_arg_function_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='577' u='c' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='580' u='c' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='583' u='c' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='170' u='c' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='172' u='c' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='184' u='c' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='188' u='c' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='193' u='c' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='197' u='c' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='202' u='c' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='206' u='c' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>

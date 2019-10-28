@@ -1,0 +1,5 @@
+<dec f='include/hwloc/bitmap.h' l='164' type='void hwloc_bitmap_fill(hwloc_bitmap_t bitmap)'/>
+<use f='include/hwloc/cpuset.h' l='37' u='c' c='hwloc_cpuset_fill'/>
+<use f='include/hwloc/helper.h' l='932' u='c' c='hwloc_cpuset_to_nodeset'/>
+<use f='include/hwloc/helper.h' l='981' u='c' c='hwloc_cpuset_from_nodeset'/>
+<doc f='include/hwloc/bitmap.h' l='163'>/** \brief Fill bitmap \p bitmap with all possible indexes (even if those objects don&apos;t exist or are otherwise unavailable) */</doc>

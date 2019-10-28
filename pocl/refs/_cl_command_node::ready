@@ -1,0 +1,6 @@
+<dec f='pocl/include/pocl.h' l='369' type='cl_int'/>
+<offset>1632</offset>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='1136' u='w' c='pocl_basic_submit'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='1180' u='r' c='pocl_basic_notify'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='252' u='w' c='pocl_pthread_submit'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='301' u='r' c='pocl_pthread_notify'/>

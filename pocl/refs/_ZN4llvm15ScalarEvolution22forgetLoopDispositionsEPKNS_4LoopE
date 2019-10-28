@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='777' type='void llvm::ScalarEvolution::forgetLoopDispositions(const llvm::Loop * L)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='772'>/// Called when the client has changed the disposition of values in
+  /// this loop.
+  ///
+  /// We don&apos;t have a way to invalidate per-loop dispositions. Clear and
+  /// recompute is simpler.</doc>

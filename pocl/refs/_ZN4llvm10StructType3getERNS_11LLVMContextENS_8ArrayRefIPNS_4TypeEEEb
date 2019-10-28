@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='242' type='static llvm::StructType * llvm::StructType::get(llvm::LLVMContext &amp; Context, ArrayRef&lt;llvm::Type *&gt; Elements, bool isPacked = false)'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='258' u='c' c='_ZN4llvm10StructType3getEPNS_4TypeEDpPT_'/>
+<doc f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='241'>/// This static method is the primary way to create a literal StructType.</doc>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='110' u='c' c='_ZN4llvm11TypeBuilderINS_13_pocl_contextEXT_EE3getERNS_11LLVMContextE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='129' u='c' c='_ZN4llvm11TypeBuilderINS_13_pocl_contextEXT_EE3getERNS_11LLVMContextE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='932' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='947' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>

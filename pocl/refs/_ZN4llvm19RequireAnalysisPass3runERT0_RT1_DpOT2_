@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/IR/PassManager.h' l='1255' ll='1261' type='llvm::PreservedAnalyses llvm::RequireAnalysisPass::run(IRUnitT &amp; Arg, AnalysisManagerT &amp; AM, ExtraArgTs &amp;&amp;... Args)'/>
+<doc f='include/llvm-6.0/llvm/IR/PassManager.h' l='1249'>/// \brief Run this pass over some unit of IR.
+  ///
+  /// This pass can be run over any unit of IR and use any analysis manager
+  /// provided they satisfy the basic API requirements. When this pass is
+  /// created, these methods can be instantiated to satisfy whatever the
+  /// context requires.</doc>

@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/CallSite.h' l='636' ll='644' type='bool llvm::CallSiteBase::isReturnNonNull() const'/>
+<doc f='include/llvm-6.0/llvm/IR/CallSite.h' l='633'>/// Return true if the return value is known to be not null.
+  /// This may be because it has the nonnull attribute, or because at least
+  /// one byte is dereferenceable and the pointer is in addrspace(0).</doc>

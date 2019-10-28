@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='261' type='llvm::FunctionPass * llvm::createJumpThreadingPass(int Threshold = -1)'/>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='164' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='255'>//===----------------------------------------------------------------------===//
+//
+// JumpThreading - Thread control through mult-pred/multi-succ blocks where some
+// preds always go to some succ. Thresholds other than minus one override the
+// internal BB duplication default threshold.
+//</doc>

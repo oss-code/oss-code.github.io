@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Option/ArgList.h' l='305' type='bool llvm::opt::ArgList::hasFlag(llvm::opt::OptSpecifier Pos, llvm::opt::OptSpecifier PosAlias, llvm::opt::OptSpecifier Neg, bool Default = true) const'/>
+<doc f='include/llvm-6.0/llvm/Option/ArgList.h' l='301'>/// hasFlag - Given an option \p Pos, an alias \p PosAlias and its negative
+  /// form \p Neg, return true if the option or its alias is present, false if
+  /// the negation is present, and \p Default if none of the options are
+  /// given. If multiple options are present, the last one wins.</doc>

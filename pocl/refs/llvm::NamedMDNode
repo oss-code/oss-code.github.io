@@ -1,0 +1,36 @@
+<inh f='include/llvm-6.0/llvm/ADT/ilist_node.h' l='149' c='llvm::ilist_node'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='1323' ll='1421'/>
+<size>64</size>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='1316'>//===----------------------------------------------------------------------===//
+/// \brief A tuple of MDNodes.
+///
+/// Despite its name, a NamedMDNode isn&apos;t itself an MDNode. NamedMDNodes belong
+/// to modules, have names, and contain lists of MDNodes.
+///
+/// TODO: Inherit from Metadata.</doc>
+<mbr r='llvm::NamedMDNode::Name' o='128' t='std::string'/>
+<mbr r='llvm::NamedMDNode::Parent' o='384' t='llvm::Module *'/>
+<mbr r='llvm::NamedMDNode::Operands' o='448' t='void *'/>
+<fun r='_ZN4llvm11NamedMDNode9setParentEPNS_6ModuleE'/>
+<fun r='_ZN4llvm11NamedMDNodeC1ERKNS_5TwineE'/>
+<fun r='_ZN4llvm11NamedMDNodeC1ERKS0_'/>
+<fun r='_ZN4llvm11NamedMDNodeD1Ev'/>
+<fun r='_ZN4llvm11NamedMDNode15eraseFromParentEv'/>
+<fun r='_ZN4llvm11NamedMDNode17dropAllReferencesEv'/>
+<fun r='_ZN4llvm11NamedMDNode13clearOperandsEv'/>
+<fun r='_ZN4llvm11NamedMDNode9getParentEv'/>
+<fun r='_ZNK4llvm11NamedMDNode9getParentEv'/>
+<fun r='_ZNK4llvm11NamedMDNode10getOperandEj'/>
+<fun r='_ZNK4llvm11NamedMDNode14getNumOperandsEv'/>
+<fun r='_ZN4llvm11NamedMDNode10addOperandEPNS_6MDNodeE'/>
+<fun r='_ZN4llvm11NamedMDNode10setOperandEjPNS_6MDNodeE'/>
+<fun r='_ZNK4llvm11NamedMDNode7getNameEv'/>
+<fun r='_ZNK4llvm11NamedMDNode5printERNS_11raw_ostreamEb'/>
+<fun r='_ZNK4llvm11NamedMDNode5printERNS_11raw_ostreamERNS_17ModuleSlotTrackerEb'/>
+<fun r='_ZNK4llvm11NamedMDNode4dumpEv'/>
+<fun r='_ZN4llvm11NamedMDNode8op_beginEv'/>
+<fun r='_ZN4llvm11NamedMDNode6op_endEv'/>
+<fun r='_ZNK4llvm11NamedMDNode8op_beginEv'/>
+<fun r='_ZNK4llvm11NamedMDNode6op_endEv'/>
+<fun r='_ZN4llvm11NamedMDNode8operandsEv'/>
+<fun r='_ZNK4llvm11NamedMDNode8operandsEv'/>

@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1816' ll='1837' type='llvm::Value * llvm::IRBuilder::CreateInvariantGroupBarrier(llvm::Value * Ptr)'/>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1811'>/// \brief Create an invariant.group.barrier intrinsic call, that stops
+  /// optimizer to propagate equality using invariant.group metadata.
+  /// If Ptr type is different from pointer to i8, it&apos;s casted to pointer to i8
+  /// in the same address space before call and casted back to Ptr type after
+  /// call.</doc>

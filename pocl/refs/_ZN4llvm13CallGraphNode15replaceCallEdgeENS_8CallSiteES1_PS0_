@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='267' type='void llvm::CallGraphNode::replaceCallEdge(llvm::CallSite CS, llvm::CallSite NewCS, llvm::CallGraphNode * NewNode)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='263'>/// \brief Replaces the edge in the node for the specified call site with a
+  /// new one.
+  ///
+  /// Note that this method takes linear time, so it should be used sparingly.</doc>

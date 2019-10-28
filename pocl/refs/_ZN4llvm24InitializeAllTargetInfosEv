@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/Support/TargetSelect.h' l='53' ll='56' type='void llvm::InitializeAllTargetInfos()'/>
+<use f='include/llvm-6.0/llvm/Support/TargetSelect.h' l='65' u='c' c='_ZN4llvm20InitializeAllTargetsEv'/>
+<doc f='include/llvm-6.0/llvm/Support/TargetSelect.h' l='48'>/// InitializeAllTargetInfos - The main program should call this function if
+  /// it wants access to all available targets that LLVM is configured to
+  /// support, to make them available via the TargetRegistry.
+  ///
+  /// It is legal for a client to make multiple calls to this function.</doc>

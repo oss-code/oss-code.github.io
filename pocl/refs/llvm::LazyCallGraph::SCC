@@ -1,0 +1,27 @@
+<def f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='431' ll='532'/>
+<size>48</size>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='420'>/// An SCC of the call graph.
+  ///
+  /// This represents a Strongly Connected Component of the direct call graph
+  /// -- ignoring indirect calls and function references. It stores this as
+  /// a collection of call graph nodes. While the order of nodes in the SCC is
+  /// stable, it is not any particular order.
+  ///
+  /// The SCCs are nested within a \c RefSCC, see below for details about that
+  /// outer structure. SCCs do not support mutation of the call graph, that
+  /// must be done through the containing \c RefSCC in order to fully reason
+  /// about the ordering and connections of the graph.</doc>
+<mbr r='llvm::LazyCallGraph::SCC::OuterRefSCC' o='0' t='llvm::LazyCallGraph::RefSCC *'/>
+<mbr r='llvm::LazyCallGraph::SCC::Nodes' o='64' t='SmallVector&lt;llvm::LazyCallGraph::Node *, 1&gt;'/>
+<fun r='_ZN4llvm13LazyCallGraph3SCCC1ERNS0_6RefSCCEOT_'/>
+<fun r='_ZN4llvm13LazyCallGraph3SCC5clearEv'/>
+<fun r='_ZNK4llvm13LazyCallGraph3SCC4dumpEv'/>
+<fun r='_ZNK4llvm13LazyCallGraph3SCC5beginEv'/>
+<fun r='_ZNK4llvm13LazyCallGraph3SCC3endEv'/>
+<fun r='_ZNK4llvm13LazyCallGraph3SCC4sizeEv'/>
+<fun r='_ZNK4llvm13LazyCallGraph3SCC14getOuterRefSCCEv'/>
+<fun r='_ZNK4llvm13LazyCallGraph3SCC10isParentOfERKS1_'/>
+<fun r='_ZNK4llvm13LazyCallGraph3SCC12isAncestorOfERKS1_'/>
+<fun r='_ZNK4llvm13LazyCallGraph3SCC9isChildOfERKS1_'/>
+<fun r='_ZNK4llvm13LazyCallGraph3SCC14isDescendantOfERKS1_'/>
+<fun r='_ZNK4llvm13LazyCallGraph3SCC7getNameB5cxx11Ev'/>

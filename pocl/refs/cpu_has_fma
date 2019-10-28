@@ -1,0 +1,6 @@
+<dec f='pocl/lib/CL/pocl_llvm.h' l='39' type='int cpu_has_fma()'/>
+<doc f='pocl/lib/CL/pocl_llvm.h' l='38'>/* Returns if the cpu supports FMA instruction (uses LLVM). */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='271' u='c' c='pocl_init_cpu_device_infos'/>
+<def f='pocl/lib/CL/pocl_llvm_utils.cc' l='164' ll='169' type='int cpu_has_fma()'/>
+<doc f='pocl/lib/CL/pocl_llvm_utils.cc' l='162'>// TODO this should be fixed to not require LLVM eventually,
+// so that LLVM-less builds also report FMA correctly.</doc>

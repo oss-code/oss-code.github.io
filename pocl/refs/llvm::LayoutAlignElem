@@ -1,0 +1,20 @@
+<def f='include/llvm-6.0/llvm/IR/DataLayout.h' l='71' ll='82'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/IR/DataLayout.h' l='59'>// FIXME: Currently the DataLayout string carries a &quot;preferred alignment&quot;
+// for types. As the DataLayout is module/global, this should likely be
+// sunk down to an FTTI element that is queried rather than a global
+// preference.
+
+/// \brief Layout alignment element.
+///
+/// Stores the alignment data associated with a given alignment type (integer,
+/// vector, float) and type bit width.
+///
+/// \note The unusual order of elements in the structure attempts to reduce
+/// padding and make the structure slightly more cache friendly.</doc>
+<mbr r='llvm::LayoutAlignElem::AlignType' o='0' t='unsigned int'/>
+<mbr r='llvm::LayoutAlignElem::TypeBitWidth' o='8' t='unsigned int'/>
+<mbr r='llvm::LayoutAlignElem::ABIAlign' o='32' t='unsigned int'/>
+<mbr r='llvm::LayoutAlignElem::PrefAlign' o='48' t='unsigned int'/>
+<fun r='_ZN4llvm15LayoutAlignElem3getENS_13AlignTypeEnumEjjj'/>
+<fun r='_ZNK4llvm15LayoutAlignElemeqERKS0_'/>

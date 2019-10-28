@@ -1,0 +1,18 @@
+<def f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='278' ll='300'/>
+<size>16</size>
+<doc f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='272'>//===--------------------------------------------------------------------===//
+/// FoldingSetNodeIDRef - This class describes a reference to an interned
+/// FoldingSetNodeID, which can be a useful to store node id data rather
+/// than using plain FoldingSetNodeIDs, since the 32-element SmallVector
+/// is often much larger than necessary, and the possibility of heap
+/// allocation means it requires a non-trivial destructor call.</doc>
+<mbr r='llvm::FoldingSetNodeIDRef::Data' o='0' t='const unsigned int *'/>
+<mbr r='llvm::FoldingSetNodeIDRef::Size' o='64' t='size_t'/>
+<fun r='_ZN4llvm19FoldingSetNodeIDRefC1Ev'/>
+<fun r='_ZN4llvm19FoldingSetNodeIDRefC1EPKjm'/>
+<fun r='_ZNK4llvm19FoldingSetNodeIDRef11ComputeHashEv'/>
+<fun r='_ZNK4llvm19FoldingSetNodeIDRefeqES0_'/>
+<fun r='_ZNK4llvm19FoldingSetNodeIDRefneES0_'/>
+<fun r='_ZNK4llvm19FoldingSetNodeIDRefltES0_'/>
+<fun r='_ZNK4llvm19FoldingSetNodeIDRef7getDataEv'/>
+<fun r='_ZNK4llvm19FoldingSetNodeIDRef7getSizeEv'/>

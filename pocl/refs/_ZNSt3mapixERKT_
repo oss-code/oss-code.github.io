@@ -1,0 +1,41 @@
+<def f='include/c++/7/bits/stl_map.h' l='483' ll='500' type='mapped_type &amp; std::map::operator[](const key_type &amp; __k)'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='704' u='c' c='_ZN4llvm18ModuleSummaryIndex15addOriginalNameEmm'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='705' u='c' c='_ZN4llvm18ModuleSummaryIndex15addOriginalNameEmm'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='707' u='c' c='_ZN4llvm18ModuleSummaryIndex15addOriginalNameEmm'/>
+<doc f='include/c++/7/bits/stl_map.h' l='471'>/**
+       *  @brief  Subscript ( @c [] ) access to %map data.
+       *  @param  __k  The key for which data should be retrieved.
+       *  @return  A reference to the data of the (key,data) %pair.
+       *
+       *  Allows for easy lookup with the subscript ( @c [] )
+       *  operator.  Returns data associated with the key specified in
+       *  subscript.  If the key does not exist, a pair with that key
+       *  is created using default values, which is then returned.
+       *
+       *  Lookup requires logarithmic time.
+       */</doc>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='794' u='c' c='_ZL16getKernelLibraryP13_cl_device_id'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='872' u='c' c='_ZL16getKernelLibraryP13_cl_device_id'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='385' u='c' c='_ZL37pocl_get_kernel_arg_function_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='126' u='c' c='_ZL16GetTargetMachineP13_cl_device_idRN4llvm6TripleE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='157' u='c' c='_ZL16GetTargetMachineP13_cl_device_idRN4llvm6TripleE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='171' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='338' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='100' u='c' c='_ZN12_GLOBAL__N_115AutomaticLocals11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='114' u='c' c='_ZN4pocl25OptimizeWorkItemFuncCalls13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='127' u='c' c='_ZN4pocl25OptimizeWorkItemFuncCalls13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='159' u='c' c='_ZN4pocl25OptimizeWorkItemFuncCalls13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='123' u='c' c='_ZN4pocl14ParallelRegion9replicateERN4llvm8ValueMapIPKNS1_5ValueENS1_14WeakTrackingVHENS1_14ValueMapConfigIS5_NS1_3sys10SmartMutexILb0EEEEEEERKNS1_5TwineE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='125' u='c' c='_ZN4pocl14ParallelRegion9replicateERN4llvm8ValueMapIPKNS1_5ValueENS1_14WeakTrackingVHENS1_14ValueMapConfigIS5_NS1_3sys10SmartMutexILb0EEEEEEERKNS1_5TwineE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='128' u='c' c='_ZN4pocl14ParallelRegion9replicateERN4llvm8ValueMapIPKNS1_5ValueENS1_14WeakTrackingVHENS1_14ValueMapConfigIS5_NS1_3sys10SmartMutexILb0EEEEEEERKNS1_5TwineE'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='257' u='c' c='_ZNK4pocl26VariableUniformityAnalysis20isUniformityAnalyzedEPN4llvm8FunctionEPNS1_5ValueE'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='279' u='c' c='_ZN4pocl26VariableUniformityAnalysis9isUniformEPN4llvm8FunctionEPNS1_5ValueE'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='447' u='c' c='_ZN4pocl26VariableUniformityAnalysis10setUniformEPN4llvm8FunctionEPNS1_5ValueEb'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='448' u='c' c='_ZN4pocl26VariableUniformityAnalysis10setUniformEPN4llvm8FunctionEPNS1_5ValueEb'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='450' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='603' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='862' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='866' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='867' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='874' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='993' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>

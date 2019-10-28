@@ -1,0 +1,6 @@
+<dec f='include/hwloc/bitmap.h' l='236' type='int hwloc_bitmap_first(hwloc_const_bitmap_t bitmap)'/>
+<use f='include/hwloc/cpuset.h' l='60' u='c' c='hwloc_cpuset_first'/>
+<doc f='include/hwloc/bitmap.h' l='232'>/** \brief Compute the first index (least significant bit) in bitmap \p bitmap
+ *
+ * \return -1 if no index is set.
+ */</doc>

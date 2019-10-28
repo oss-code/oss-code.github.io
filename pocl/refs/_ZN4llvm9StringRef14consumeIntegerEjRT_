@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/ADT/StringRef.h' l='530' ll='538' type='typename std::enable_if&lt;std::numeric_limits&lt;T&gt;::is_signed, bool&gt;::type llvm::StringRef::consumeInteger(unsigned int Radix, T &amp; Result)'/>
+<def f='include/llvm-6.0/llvm/ADT/StringRef.h' l='541' ll='549' type='typename std::enable_if&lt;!std::numeric_limits&lt;T&gt;::is_signed, bool&gt;::type llvm::StringRef::consumeInteger(unsigned int Radix, T &amp; Result)'/>
+<use f='include/llvm-6.0/llvm/Support/FormatProviders.h' l='95' u='c' c='_ZN4llvm6detail15HelperFunctions19consumeNumHexDigitsERNS_9StringRefENS_13HexPrintStyleEm'/>
+<use f='include/llvm-6.0/llvm/Support/FormatProviders.h' l='147' u='c' c='_ZN4llvm15format_providerIT_NSt9enable_ifIXsr6detail22use_integral_formatterIS1_EE5valueEvE4typeEE6formatERKS1_RNS_11raw_ostreamENS_9StringRefE'/>

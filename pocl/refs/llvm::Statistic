@@ -1,0 +1,23 @@
+<def f='include/llvm-6.0/llvm/ADT/Statistic.h' l='39' ll='158'/>
+<size>32</size>
+<mbr r='llvm::Statistic::DebugType' o='0' t='const char *'/>
+<mbr r='llvm::Statistic::Name' o='64' t='const char *'/>
+<mbr r='llvm::Statistic::Desc' o='128' t='const char *'/>
+<mbr r='llvm::Statistic::Value' o='192' t='std::atomic&lt;unsigned int&gt;'/>
+<mbr r='llvm::Statistic::Initialized' o='224' t='bool'/>
+<fun r='_ZNK4llvm9Statistic8getValueEv'/>
+<fun r='_ZNK4llvm9Statistic12getDebugTypeEv'/>
+<fun r='_ZNK4llvm9Statistic7getNameEv'/>
+<fun r='_ZNK4llvm9Statistic7getDescEv'/>
+<fun r='_ZN4llvm9Statistic9constructEPKcS2_S2_'/>
+<fun r='_ZNK4llvm9StatisticcvjEv'/>
+<fun r='_ZN4llvm9StatisticaSEj'/>
+<fun r='_ZN4llvm9StatisticppEv'/>
+<fun r='_ZN4llvm9StatisticppEi'/>
+<fun r='_ZN4llvm9StatisticmmEv'/>
+<fun r='_ZN4llvm9StatisticmmEi'/>
+<fun r='_ZN4llvm9StatisticpLERKj'/>
+<fun r='_ZN4llvm9StatisticmIERKj'/>
+<fun r='_ZN4llvm9Statistic9updateMaxEj'/>
+<fun r='_ZN4llvm9Statistic4initEv'/>
+<fun r='_ZN4llvm9Statistic17RegisterStatisticEv'/>

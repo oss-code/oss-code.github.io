@@ -1,0 +1,5 @@
+<dec f='pocl/include/pocl_cache.h' l='55' type='int pocl_cache_tempname(char * path_template, const char * suffix, int * fd)'/>
+<use f='pocl/lib/CL/devices/common.c' l='186' u='c' c='llvm_codegen'/>
+<use f='pocl/lib/CL/devices/devices.c' l='485' u='c' c='pocl_init_devices'/>
+<def f='pocl/lib/CL/pocl_cache.c' l='221' ll='228' type='int pocl_cache_tempname(char * path, const char * suffix, int * fd)'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='493' u='c' c='pocl_llvm_build_program'/>

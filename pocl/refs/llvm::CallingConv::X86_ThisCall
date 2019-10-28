@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/CallingConv.h' l='111' type='70'/>
+<doc f='include/llvm-6.0/llvm/IR/CallingConv.h' l='108'>/// X86_ThisCall - Similar to X86_StdCall. Passes first argument in ECX,
+    /// others via stack. Callee is responsible for stack cleaning. MSVC uses
+    /// this by default for methods in its ABI.</doc>

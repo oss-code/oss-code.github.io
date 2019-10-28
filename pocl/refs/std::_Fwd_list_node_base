@@ -1,0 +1,12 @@
+<def f='include/c++/7/bits/forward_list.h' l='53' ll='89'/>
+<ovr f='include/c++/7/bits/forward_list.h' l='98' c='std::_Fwd_list_node'/>
+<size>8</size>
+<doc f='include/c++/7/bits/forward_list.h' l='48'>/**
+   *  @brief  A helper basic node class for %forward_list.
+   *          This is just a linked list with nothing inside it.
+   *          There are purely list shuffling utility methods here.
+   */</doc>
+<fun r='_ZNSt19_Fwd_list_node_baseC1Ev'/>
+<mbr r='std::_Fwd_list_node_base::_M_next' o='0' t='std::_Fwd_list_node_base *'/>
+<fun r='_ZNSt19_Fwd_list_node_base17_M_transfer_afterEPS_S0_'/>
+<fun r='_ZNSt19_Fwd_list_node_base16_M_reverse_afterEv'/>

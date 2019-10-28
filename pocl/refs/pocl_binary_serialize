@@ -1,0 +1,6 @@
+<dec f='pocl/lib/CL/pocl_binary.h' l='50' type='cl_int pocl_binary_serialize(cl_program program, unsigned int device_i, size_t * size)'/>
+<doc f='pocl/lib/CL/pocl_binary.h' l='49'>/* pocl cache -&gt; program-&gt;pocl_binaries[device_i] */</doc>
+<use f='pocl/lib/CL/clGetProgramInfo.c' l='69' u='c' c='get_binaries'/>
+<def f='pocl/lib/CL/pocl_binary.c' l='597' ll='641' type='cl_int pocl_binary_serialize(cl_program program, unsigned int device_i, size_t * size)'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='697' u='c' c='pocl_binary_sizeof_binary'/>
+<doc f='pocl/lib/CL/pocl_binary.c' l='595'>/***********************************************************/</doc>

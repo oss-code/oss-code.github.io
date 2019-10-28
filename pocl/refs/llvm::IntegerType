@@ -1,0 +1,15 @@
+<inh f='include/llvm-6.0/llvm/IR/Type.h' l='46' c='llvm::Type'/>
+<def f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='40' ll='95'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='36'>/// Class to represent integer types. Note that this class is also used to
+/// represent the built-in integer types: Int1Ty, Int8Ty, Int16Ty, Int32Ty and
+/// Int64Ty.
+/// @brief Integer representation type</doc>
+<fun r='_ZN4llvm11IntegerTypeC1ERNS_11LLVMContextEj'/>
+<fun r='_ZN4llvm11IntegerType3getERNS_11LLVMContextEj'/>
+<fun r='_ZNK4llvm11IntegerType11getBitWidthEv'/>
+<fun r='_ZNK4llvm11IntegerType10getBitMaskEv'/>
+<fun r='_ZNK4llvm11IntegerType10getSignBitEv'/>
+<fun r='_ZNK4llvm11IntegerType7getMaskEv'/>
+<fun r='_ZNK4llvm11IntegerType19isPowerOf2ByteWidthEv'/>
+<fun r='_ZN4llvm11IntegerType7classofEPKNS_4TypeE'/>

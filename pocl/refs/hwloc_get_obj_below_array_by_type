@@ -1,0 +1,20 @@
+<dec f='include/hwloc/helper.h' l='647' type='hwloc_obj_t hwloc_get_obj_below_array_by_type(hwloc_topology_t topology, int nr, hwloc_obj_type_t * typev, unsigned int * idxv)'/>
+<def f='include/hwloc/helper.h' l='648' ll='659' type='hwloc_obj_t hwloc_get_obj_below_array_by_type(hwloc_topology_t topology, int nr, hwloc_obj_type_t * typev, unsigned int * idxv)'/>
+<doc f='include/hwloc/helper.h' l='628'>/** \brief Find an object below a chain of objects specified by types and indexes.
+ *
+ * This is a generalized version of hwloc_get_obj_below_by_type().
+ *
+ * Arrays \p typev and \p idxv must contain \p nr types and indexes.
+ *
+ * Start from the top system object and walk the arrays \p typev and \p idxv.
+ * For each type and logical index couple in the arrays, look under the previously found
+ * object to find the index-th object of the given type.
+ * Indexes are specified within the parent, not withing the entire system.
+ *
+ * For instance, if nr is 3, typev contains NODE, PACKAGE and CORE,
+ * and idxv contains 0, 1 and 2, return the third core object below
+ * the second package below the first NUMA node.
+ *
+ * \note This function requires all these objects and the root object
+ * to have a CPU set.
+ */</doc>

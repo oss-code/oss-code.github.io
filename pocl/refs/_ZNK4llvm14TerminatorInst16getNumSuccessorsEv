@@ -1,0 +1,21 @@
+<dec f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='67' type='unsigned int llvm::TerminatorInst::getNumSuccessors() const'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='66'>/// Return the number of successors that this terminator has.</doc>
+<use f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='101' u='c' c='_ZN4llvm12RegionTraitsINS_8FunctionEE16getNumSuccessorsEPNS_10BasicBlockE'/>
+<use f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='146' u='c' c='_ZN4llvm17SplitCriticalEdgeEPNS_10BasicBlockENS_12PredIteratorIS0_NS_5Value18user_iterator_implINS_4UserEEEEERKNS_28CriticalEdgeSplittingOptionsE'/>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='146' u='c' c='_ZN4pocl22BarrierTailReplication15FindBarriersDFSEPN4llvm10BasicBlockERSt3setIS3_St4lessIS3_ESaIS3_EE'/>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='168' u='c' c='_ZN4pocl22BarrierTailReplication24ReplicateJoinedSubgraphsEPN4llvm10BasicBlockES3_RSt3setIS3_St4lessIS3_ESaIS3_EE'/>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='248' u='c' c='_ZN4pocl22BarrierTailReplication11CleanupPHIsEPN4llvm10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='319' u='c' c='_ZN4pocl22BarrierTailReplication12FindSubgraphERSt6vectorIPN4llvm10BasicBlockESaIS4_EES4_'/>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='361' u='c' c='_ZN4pocl22BarrierTailReplication20ReplicateBasicBlocksERSt6vectorIPN4llvm10BasicBlockESaIS4_EERNS2_8ValueMapIPKNS2_5ValueENS2_14WeakTrackingVHENS2_14V12045754'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='83' u='c' c='_ZN4pocl20CanonicalizeBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='160' u='c' c='_ZN4pocl20CanonicalizeBarriers15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='192' u='c' c='_ZN4pocl20CanonicalizeBarriers15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/DebugHelpers.cc' l='59' u='c' c='_ZN4poclL13printBranchesEPN4llvm10BasicBlockERSob'/>
+<use f='pocl/lib/llvmopencl/IsolateRegions.cc' l='109' u='c' c='_ZN4pocl14IsolateRegions11runOnRegionEPN4llvm6RegionERNS1_13RGPassManagerE'/>
+<use f='pocl/lib/llvmopencl/Kernel.cc' l='55' u='c' c='_ZN4pocl6Kernel13getExitBlocksERN4llvm15SmallVectorImplIPNS1_10BasicBlockEEE'/>
+<use f='pocl/lib/llvmopencl/Kernel.cc' l='129' u='c' c='_ZN4pocl6Kernel26createParallelRegionBeforeEPN4llvm10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='251' u='c' c='_ZN4pocl14ParallelRegion5purgeEv'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='415' u='c' c='_ZN4pocl14ParallelRegion6VerifyEv'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='218' u='c' c='_ZN4pocl26VariableUniformityAnalysis19analyzeBBDivergenceEPN4llvm8FunctionEPNS1_10BasicBlockES5_'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='245' u='c' c='_ZN4pocl26VariableUniformityAnalysis19analyzeBBDivergenceEPN4llvm8FunctionEPNS1_10BasicBlockES5_'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1476' u='c' c='_ZN4pocl9Workgroup20hasWorkgroupBarriersERKN4llvm8FunctionE'/>

@@ -1,0 +1,10 @@
+<dec f='include/hwloc/helper.h' l='224' type='int hwloc_get_obj_index_inside_cpuset(hwloc_topology_t topology, hwloc_const_cpuset_t set, hwloc_obj_t obj)'/>
+<def f='include/hwloc/helper.h' l='226' ll='238' type='int hwloc_get_obj_index_inside_cpuset(hwloc_topology_t topology, hwloc_const_cpuset_t set, hwloc_obj_t obj)'/>
+<doc f='include/hwloc/helper.h' l='215'>/** \brief Return the logical index among the objects included in CPU set \p set.
+ *
+ * Consult all objects in the same level as \p obj and inside CPU set \p set
+ * in the logical order, and return the index of \p obj within them.
+ * If \p set covers the entire topology, this is the logical index of \p obj.
+ * Otherwise, this is similar to a logical index within the part of the topology
+ * defined by CPU set \p set.
+ */</doc>

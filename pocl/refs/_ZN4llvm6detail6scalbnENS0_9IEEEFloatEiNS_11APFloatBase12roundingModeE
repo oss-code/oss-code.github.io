@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/ADT/APFloat.h' l='433' type='llvm::detail::IEEEFloat llvm::detail::scalbn(llvm::detail::IEEEFloat X, int Exp, llvm::APFloatBase::roundingMode )'/>
+<dec f='include/llvm-6.0/llvm/ADT/APFloat.h' l='567' type='llvm::detail::IEEEFloat llvm::detail::scalbn(llvm::detail::IEEEFloat X, int Exp, IEEEFloat::roundingMode )'/>
+<use f='include/llvm-6.0/llvm/ADT/APFloat.h' l='1195' u='c' c='_ZN4llvm6scalbnENS_7APFloatEiNS_11APFloatBase12roundingModeE'/>
+<doc f='include/llvm-6.0/llvm/ADT/APFloat.h' l='432'>/// Returns: X * 2^Exp for integral exponents.</doc>

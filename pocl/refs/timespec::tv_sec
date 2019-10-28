@@ -1,0 +1,5 @@
+<dec f='include/time.h' l='122' type='__time_t'/>
+<offset>0</offset>
+<use f='pocl/lib/CL/clWaitForEvents.c' l='74' u='w' c='POclWaitForEvents'/>
+<use f='pocl/lib/CL/pocl_timing.c' l='83' u='r' c='pocl_gettimemono_ns'/>
+<use f='pocl/lib/CL/pocl_timing.c' l='122' u='r' c='pocl_gettimereal'/>

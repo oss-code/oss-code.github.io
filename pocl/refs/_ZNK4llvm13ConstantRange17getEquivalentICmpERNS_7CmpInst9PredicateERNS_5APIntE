@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/ConstantRange.h' l='123' type='bool llvm::ConstantRange::getEquivalentICmp(CmpInst::Predicate &amp; Pred, llvm::APInt &amp; RHS) const'/>
+<doc f='include/llvm-6.0/llvm/IR/ConstantRange.h' l='120'>/// Set up \p Pred and \p RHS such that
+  /// ConstantRange::makeExactICmpRegion(Pred, RHS) == *this.  Return true if
+  /// successful.</doc>

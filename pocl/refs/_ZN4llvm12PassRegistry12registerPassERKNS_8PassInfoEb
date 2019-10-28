@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/PassRegistry.h' l='71' type='void llvm::PassRegistry::registerPass(const llvm::PassInfo &amp; PI, bool ShouldFree = false)'/>
+<use f='include/llvm-6.0/llvm/PassSupport.h' l='98' u='c' c='_ZN4llvm12RegisterPassC1ENS_9StringRefES1_bb'/>
+<doc f='include/llvm-6.0/llvm/PassRegistry.h' l='69'>/// registerPass - Register a pass (by means of its PassInfo) with the
+  /// registry.  Required in order to use the pass with a PassManager.</doc>

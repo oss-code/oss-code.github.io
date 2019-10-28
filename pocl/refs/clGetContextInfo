@@ -1,0 +1,16 @@
+<dec f='pocl/include/CL/cl.h' l='943' type='cl_int clGetContextInfo(cl_context context, cl_context_info param_name, size_t param_value_size, void * param_value, size_t * param_value_size_ret)'/>
+<use f='pocl/examples/EinsteinToolkit/EinsteinToolkit.c' l='521' u='c' c='setup'/>
+<use f='pocl/examples/EinsteinToolkit/EinsteinToolkit.c' l='524' u='c' c='setup'/>
+<use f='pocl/examples/scalarwave/scalarwave.c' l='57' u='c' c='exec_scalarwave_kernel'/>
+<use f='pocl/examples/scalarwave/scalarwave.c' l='60' u='c' c='exec_scalarwave_kernel'/>
+<use f='pocl/examples/trig/trig_exec.c' l='36' u='c' c='exec_trig_kernel'/>
+<use f='pocl/examples/trig/trig_exec.c' l='38' u='c' c='exec_trig_kernel'/>
+<use f='pocl/lib/CL/pocl_intfn.h' l='80' c='POclGetContextInfo'/>
+<use f='pocl/tests/kernel/image_query_funcs.c' l='72' u='c' c='main'/>
+<use f='pocl/tests/kernel/kernel.c' l='55' u='c' c='call_test'/>
+<use f='pocl/tests/kernel/sampler_address_clamp.c' l='73' u='c' c='main'/>
+<use f='pocl/include/CL/cl2.hpp' l='2995' u='a' c='_ZNK2cl7Context7getInfoEjPT_'/>
+<use f='pocl/tests/runtime/test_clFinish.c' l='81' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clSetEventCallback.c' l='103' u='c' c='main'/>
+<use f='pocl/tests/workgroup/run_kernel.c' l='84' u='c' c='main'/>
+<use f='pocl/tests/workgroup/run_kernel.c' l='87' u='c' c='main'/>

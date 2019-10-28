@@ -1,0 +1,23 @@
+<inh f='include/llvm-6.0/llvm/Pass.h' l='285' c='llvm::FunctionPass'/>
+<inh f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='303' c='llvm::PMDataManager'/>
+<def f='include/llvm-6.0/llvm/Analysis/LoopPass.h' l='97' ll='159'/>
+<size>544</size>
+<smbr r='llvm::LPPassManager::ID' t='char'/>
+<fun r='_ZN4llvm13LPPassManagerC1Ev'/>
+<fun r='_ZN4llvm13LPPassManager13runOnFunctionERNS_8FunctionE'/>
+<fun r='_ZNK4llvm13LPPassManager16getAnalysisUsageERNS_13AnalysisUsageE'/>
+<fun r='_ZNK4llvm13LPPassManager11getPassNameEv'/>
+<fun r='_ZN4llvm13LPPassManager18getAsPMDataManagerEv'/>
+<fun r='_ZN4llvm13LPPassManager9getAsPassEv'/>
+<fun r='_ZN4llvm13LPPassManager17dumpPassStructureEj'/>
+<fun r='_ZN4llvm13LPPassManager16getContainedPassEj'/>
+<fun r='_ZNK4llvm13LPPassManager18getPassManagerTypeEv'/>
+<fun r='_ZN4llvm13LPPassManager7addLoopERNS_4LoopE'/>
+<fun r='_ZN4llvm13LPPassManager17markLoopAsDeletedERNS_4LoopE'/>
+<fun r='_ZN4llvm13LPPassManager29cloneBasicBlockSimpleAnalysisEPNS_10BasicBlockES2_PNS_4LoopE'/>
+<fun r='_ZN4llvm13LPPassManager25deleteSimpleAnalysisValueEPNS_5ValueEPNS_4LoopE'/>
+<fun r='_ZN4llvm13LPPassManager24deleteSimpleAnalysisLoopEPNS_4LoopE'/>
+<mbr r='llvm::LPPassManager::LQ' o='3520' t='std::deque&lt;Loop *&gt;'/>
+<mbr r='llvm::LPPassManager::LI' o='4160' t='llvm::LoopInfo *'/>
+<mbr r='llvm::LPPassManager::CurrentLoop' o='4224' t='llvm::Loop *'/>
+<mbr r='llvm::LPPassManager::CurrentLoopDeleted' o='4288' t='bool'/>

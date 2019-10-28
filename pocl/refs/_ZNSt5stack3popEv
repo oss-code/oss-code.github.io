@@ -1,0 +1,15 @@
+<def f='include/c++/7/bits/stl_stack.h' l='257' ll='262' type='void std::stack::pop()'/>
+<use f='include/llvm-6.0/llvm/Support/FileSystem.h' l='1010' u='c' c='_ZN4llvm3sys2fs28recursive_directory_iterator9incrementERSt10error_code'/>
+<use f='include/llvm-6.0/llvm/Support/FileSystem.h' l='1016' u='c' c='_ZN4llvm3sys2fs28recursive_directory_iterator9incrementERSt10error_code'/>
+<use f='include/llvm-6.0/llvm/Support/FileSystem.h' l='1048' u='c' c='_ZN4llvm3sys2fs28recursive_directory_iterator3popEv'/>
+<doc f='include/c++/7/bits/stl_stack.h' l='246'>/**
+       *  @brief  Removes first element.
+       *
+       *  This is a typical %stack operation.  It shrinks the %stack
+       *  by one.  The time complexity of the operation depends on the
+       *  underlying sequence.
+       *
+       *  Note that no data is returned, and if the first element&apos;s
+       *  data is needed, it should be retrieved before pop() is
+       *  called.
+       */</doc>

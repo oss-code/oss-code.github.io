@@ -1,0 +1,5 @@
+<def f='pocl/include/CL/cl2.hpp' l='7011' ll='7068' type='void cl::CommandQueue::CommandQueue(cl::QueueProperties properties, cl_int * err = __null)'/>
+<doc f='pocl/include/CL/cl2.hpp' l='7007'>/*!
+    * \brief Constructs a CommandQueue based on passed properties.
+    * Will return an CL_INVALID_QUEUE_PROPERTIES error if CL_QUEUE_ON_DEVICE is specified.
+    */</doc>

@@ -1,0 +1,18 @@
+<dec f='include/llvm-6.0/llvm/IR/Value.h' l='280' type='void llvm::Value::takeName(llvm::Value * V)'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='210' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='340' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='362' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='423' u='c' c='_ZL16handleGetWorkDimPN4llvm6ModuleEPKc'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='431' u='c' c='_ZL16handleGetWorkDimPN4llvm6ModuleEPKc'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='652' u='c' c='_Z23convertPtrArgsToOffsetsPN4llvm6ModuleEPKcjPNS_14GlobalVariableE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='659' u='c' c='_Z23convertPtrArgsToOffsetsPN4llvm6ModuleEPKcjPNS_14GlobalVariableE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='821' u='c' c='_ZL17mapLibDeviceCallsPN4llvm6ModuleE'/>
+<doc f='include/llvm-6.0/llvm/IR/Value.h' l='275'>/// \brief Transfer the name from V to this value.
+  ///
+  /// After taking V&apos;s name, sets V&apos;s name to empty.
+  ///
+  /// \note It is an error to call V-&gt;takeName(V).</doc>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='176' u='c' c='_ZN12_GLOBAL__N_115AutomaticLocals22processAutomaticLocalsEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='72' u='c' c='_ZN4pocl20CanonicalizeBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='178' u='c' c='_ZN4pocl20CanonicalizeBarriers15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='442' u='c' c='_ZL27cloneFunctionWithPrintfArgsPN4llvm5ValueES1_S1_PNS_8FunctionEPNS_6ModuleE'/>

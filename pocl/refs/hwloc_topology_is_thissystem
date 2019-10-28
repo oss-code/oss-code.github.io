@@ -1,0 +1,8 @@
+<dec f='include/hwloc.h' l='992' type='int hwloc_topology_is_thissystem(restrict hwloc_topology_t topology)'/>
+<doc f='include/hwloc.h' l='985'>/** \brief Does the topology context come from this system?
+ *
+ * \return 1 if this topology context was built using the system
+ * running this program.
+ * \return 0 instead (for instance if using another file-system root,
+ * a XML topology file, or a synthetic topology).
+ */</doc>

@@ -1,0 +1,54 @@
+<inh f='include/llvm-6.0/llvm/IR/Metadata.h' l='862' c='llvm::MDNode'/>
+<def f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1264' ll='1466'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1261'>/// Debug location.
+///
+/// A debug location in source code, used for debug info and otherwise.</doc>
+<fun r='_ZN4llvm10DILocationC1ERNS_11LLVMContextENS_8Metadata11StorageTypeEjjNS_8ArrayRefIPS3_EE'/>
+<fun r='_ZN4llvm10DILocationD1Ev'/>
+<fun r='_ZN4llvm10DILocation7getImplERNS_11LLVMContextEjjPNS_8MetadataES4_NS3_11StorageTypeEb'/>
+<fun r='_ZN4llvm10DILocation7getImplERNS_11LLVMContextEjjPNS_12DILocalScopeEPS0_NS_8Metadata11StorageTypeEb'/>
+<fun r='_ZN4llvm10DILocation29getPrefixEncodingFromUnsignedEj'/>
+<fun r='_ZN4llvm10DILocation29getUnsignedFromPrefixEncodingEj'/>
+<fun r='_ZN4llvm10DILocation31getNextComponentInDiscriminatorEj'/>
+<fun r='_ZNK4llvm10DILocation9cloneImplEv'/>
+<fun r='_ZN4llvm10DILocation18replaceOperandWithEjPNS_8MetadataE'/>
+<fun r='_ZN4llvm10DILocation3getERNS_11LLVMContextEjjPNS_8MetadataES4_'/>
+<fun r='_ZN4llvm10DILocation11getIfExistsERNS_11LLVMContextEjjPNS_8MetadataES4_'/>
+<fun r='_ZN4llvm10DILocation11getDistinctERNS_11LLVMContextEjjPNS_8MetadataES4_'/>
+<fun r='_ZN4llvm10DILocation12getTemporaryERNS_11LLVMContextEjjPNS_8MetadataES4_'/>
+<fun r='_ZN4llvm10DILocation3getERNS_11LLVMContextEjjPNS_12DILocalScopeEPS0_'/>
+<fun r='_ZN4llvm10DILocation11getIfExistsERNS_11LLVMContextEjjPNS_12DILocalScopeEPS0_'/>
+<fun r='_ZN4llvm10DILocation11getDistinctERNS_11LLVMContextEjjPNS_12DILocalScopeEPS0_'/>
+<fun r='_ZN4llvm10DILocation12getTemporaryERNS_11LLVMContextEjjPNS_12DILocalScopeEPS0_'/>
+<fun r='_ZNK4llvm10DILocation5cloneEv'/>
+<fun r='_ZNK4llvm10DILocation7getLineEv'/>
+<fun r='_ZNK4llvm10DILocation9getColumnEv'/>
+<fun r='_ZNK4llvm10DILocation8getScopeEv'/>
+<fun r='_ZNK4llvm10DILocation12getInlinedAtEv'/>
+<fun r='_ZNK4llvm10DILocation7getFileEv'/>
+<fun r='_ZNK4llvm10DILocation11getFilenameEv'/>
+<fun r='_ZNK4llvm10DILocation12getDirectoryEv'/>
+<fun r='_ZNK4llvm10DILocation17getInlinedAtScopeEv'/>
+<fun r='_ZNK4llvm10DILocation15canDiscriminateERKS0_'/>
+<fun r='_ZNK4llvm10DILocation16getDiscriminatorEv'/>
+<fun r='_ZNK4llvm10DILocation22cloneWithDiscriminatorEj'/>
+<fun r='_ZNK4llvm10DILocation20setBaseDiscriminatorEj'/>
+<fun r='_ZNK4llvm10DILocation20getDuplicationFactorEv'/>
+<fun r='_ZNK4llvm10DILocation17getCopyIdentifierEv'/>
+<fun r='_ZNK4llvm10DILocation20getBaseDiscriminatorEv'/>
+<fun r='_ZNK4llvm10DILocation26cloneWithDuplicationFactorEj'/>
+<fun r='_ZN4llvm10DILocation17getMergedLocationEPKS0_S2_PKNS_11InstructionE'/>
+<fun r='_ZN4llvm10DILocation37getBaseDiscriminatorFromDiscriminatorEj'/>
+<fun r='_ZN4llvm10DILocation37getDuplicationFactorFromDiscriminatorEj'/>
+<fun r='_ZN4llvm10DILocation34getCopyIdentifierFromDiscriminatorEj'/>
+<fun r='_ZNK4llvm10DILocation11getRawScopeEv'/>
+<fun r='_ZNK4llvm10DILocation15getRawInlinedAtEv'/>
+<fun r='_ZN4llvm10DILocation7classofEPKNS_8MetadataE'/>
+<fun r='_ZNK4llvm10DILocation16getDiscriminatorEv'/>
+<fun r='_ZNK4llvm10DILocation22cloneWithDiscriminatorEj'/>
+<fun r='_ZNK4llvm10DILocation20getBaseDiscriminatorEv'/>
+<fun r='_ZNK4llvm10DILocation20getDuplicationFactorEv'/>
+<fun r='_ZNK4llvm10DILocation17getCopyIdentifierEv'/>
+<fun r='_ZNK4llvm10DILocation20setBaseDiscriminatorEj'/>
+<fun r='_ZNK4llvm10DILocation26cloneWithDuplicationFactorEj'/>

@@ -1,0 +1,19 @@
+<dec f='pocl/lib/llvmopencl/ImplicitLoopBarriers.h' l='41' type='bool pocl::ImplicitLoopBarriers::AddInnerLoopBarrier(llvm::Loop * L, llvm::LPPassManager &amp; LPM)'/>
+<use f='pocl/lib/llvmopencl/ImplicitLoopBarriers.cc' l='101' u='c' c='_ZN4pocl20ImplicitLoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<def f='pocl/lib/llvmopencl/ImplicitLoopBarriers.cc' l='120' ll='186' type='bool pocl::ImplicitLoopBarriers::AddInnerLoopBarrier(llvm::Loop * L, llvm::LPPassManager &amp; LPM)'/>
+<doc f='pocl/lib/llvmopencl/ImplicitLoopBarriers.cc' l='104'>/**
+ * Adds a barrier to the beginning of the loop body to force its treatment 
+ * similarly to a loop with work-group barriers.
+ *
+ * This allows parallelizing work-items across the work-group per kernel
+ * for-loop iteration, potentially leading to easier horizontal vectorization.
+ * The idea is similar to loop switching where the work-item loop is 
+ * switched with the kernel for-loop.
+ *
+ * We need to make sure it is legal to add the barrier, though. The
+ * OpenCL barrier semantics require either all or none of the WIs to
+ * reach the barrier at each iteration. This is satisfied at least when
+ *
+ * a) loop exit condition does not depend on the WI and 
+ * b) all or none of the WIs always enter the loop
+ */</doc>

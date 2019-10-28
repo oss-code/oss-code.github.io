@@ -1,0 +1,4 @@
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1001' u='c' c='_ZNK4llvm7CmpInst10isUnsignedEv'/>
+<dec f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1031' type='static bool llvm::CmpInst::isUnsigned(llvm::CmpInst::Predicate predicate)'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1029'>/// @returns true if the predicate is unsigned, false otherwise.
+  /// @brief Determine if the predicate is an unsigned operation.</doc>

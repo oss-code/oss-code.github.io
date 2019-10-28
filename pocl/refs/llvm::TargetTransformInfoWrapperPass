@@ -1,0 +1,14 @@
+<inh f='include/llvm-6.0/llvm/Pass.h' l='256' c='llvm::ImmutablePass'/>
+<def f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='1559' ll='1577'/>
+<size>80</size>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='1555'>/// \brief Wrapper pass for TargetTransformInfo.
+///
+/// This pass can be constructed from a TTI object which it stores internally
+/// and is queried by passes.</doc>
+<mbr r='llvm::TargetTransformInfoWrapperPass::TIRA' o='256' t='llvm::TargetIRAnalysis'/>
+<mbr r='llvm::TargetTransformInfoWrapperPass::TTI' o='512' t='Optional&lt;llvm::TargetTransformInfo&gt;'/>
+<fun r='_ZN4llvm30TargetTransformInfoWrapperPass6anchorEv'/>
+<smbr r='llvm::TargetTransformInfoWrapperPass::ID' t='char'/>
+<fun r='_ZN4llvm30TargetTransformInfoWrapperPassC1Ev'/>
+<fun r='_ZN4llvm30TargetTransformInfoWrapperPassC1ENS_16TargetIRAnalysisE'/>
+<fun r='_ZN4llvm30TargetTransformInfoWrapperPass6getTTIERKNS_8FunctionE'/>

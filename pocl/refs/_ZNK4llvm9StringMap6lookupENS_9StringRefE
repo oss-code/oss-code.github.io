@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/ADT/StringMap.h' l='351' ll='356' type='ValueTy llvm::StringMap::lookup(llvm::StringRef Key) const'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='755' u='c' c='_ZNK4llvm18ModuleSummaryIndex11getModuleIdENS_9StringRefE'/>
+<doc f='include/llvm-6.0/llvm/ADT/StringMap.h' l='349'>/// lookup - Return the entry for the specified key, or a default
+  /// constructed value if no such entry exists.</doc>
+<use f='include/llvm-6.0/llvm/IR/ValueSymbolTable.h' l='75' u='c' c='_ZNK4llvm16ValueSymbolTable6lookupENS_9StringRefE'/>

@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Support/RWMutex.h' l='68' type='bool llvm::sys::RWMutexImpl::writer_acquire()'/>
+<use f='include/llvm-6.0/llvm/Support/RWMutex.h' l='121' u='c' c='_ZN4llvm3sys12SmartRWMutex4lockEv'/>
+<doc f='include/llvm-6.0/llvm/Support/RWMutex.h' l='63'>/// Attempts to unconditionally acquire the lock in reader mode. If the
+      /// lock is held by any readers, this method will wait until it can
+      /// acquire the lock.
+      /// @returns false if any kind of error occurs, true otherwise.
+      /// @brief Unconditionally acquire the lock in writer mode.</doc>

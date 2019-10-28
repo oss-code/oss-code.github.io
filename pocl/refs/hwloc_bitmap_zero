@@ -1,0 +1,9 @@
+<dec f='include/hwloc/bitmap.h' l='161' type='void hwloc_bitmap_zero(hwloc_bitmap_t bitmap)'/>
+<use f='include/hwloc/cpuset.h' l='36' u='c' c='hwloc_cpuset_zero'/>
+<use f='include/hwloc/helper.h' l='929' u='c' c='hwloc_cpuset_to_nodeset'/>
+<use f='include/hwloc/helper.h' l='936' u='c' c='hwloc_cpuset_to_nodeset'/>
+<use f='include/hwloc/helper.h' l='956' u='c' c='hwloc_cpuset_to_nodeset_strict'/>
+<use f='include/hwloc/helper.h' l='978' u='c' c='hwloc_cpuset_from_nodeset'/>
+<use f='include/hwloc/helper.h' l='985' u='c' c='hwloc_cpuset_from_nodeset'/>
+<use f='include/hwloc/helper.h' l='1008' u='c' c='hwloc_cpuset_from_nodeset_strict'/>
+<doc f='include/hwloc/bitmap.h' l='160'>/** \brief Empty the bitmap \p bitmap */</doc>

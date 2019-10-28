@@ -1,0 +1,14 @@
+<dec f='pocl/lib/CL/pocl_runtime_config.h' l='35' type='const char * pocl_get_string_option(const char * key, const char * default_value)'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='281' u='c' c='pocl_cuda_init'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='481' u='c' c='findLibDevice'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='481' u='c' c='findLibDevice'/>
+<use f='pocl/lib/CL/devices/devices.c' l='450' u='c' c='pocl_init_devices'/>
+<use f='pocl/lib/CL/devices/devices.c' l='512' u='c' c='pocl_init_devices'/>
+<use f='pocl/lib/CL/pocl_build.c' l='502' u='c' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='412' u='c' c='build_program_compute_hash'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='459' u='c' c='pocl_cache_init_topdir'/>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='302' u='c' c='_Z14InitializeLLVMv'/>
+<def f='pocl/lib/CL/pocl_runtime_config.c' l='96' ll='100' type='const char * pocl_get_string_option(const char * key, const char * default_value)'/>
+<use f='pocl/lib/CL/pocl_tracing.c' l='86' u='c' c='pocl_parse_event_filter'/>
+<use f='pocl/lib/CL/pocl_tracing.c' l='125' u='c' c='pocl_tracing_init'/>
+<use f='pocl/lib/CL/pocl_tracing.c' l='160' u='c' c='text_tracer_init'/>

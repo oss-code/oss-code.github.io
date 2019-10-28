@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/ADT/IntrusiveRefCntPtr.h' l='88' ll='103'/>
+<doc f='include/llvm-6.0/llvm/ADT/IntrusiveRefCntPtr.h' l='87'>/// A thread-safe version of \c RefCountedBase.</doc>
+<mbr r='llvm::ThreadSafeRefCountedBase::RefCount' t='std::atomic&lt;int&gt;'/>
+<fun r='_ZN4llvm24ThreadSafeRefCountedBaseC1Ev'/>
+<fun r='_ZNK4llvm24ThreadSafeRefCountedBase6RetainEv'/>
+<fun r='_ZNK4llvm24ThreadSafeRefCountedBase7ReleaseEv'/>

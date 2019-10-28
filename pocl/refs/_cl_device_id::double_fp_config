@@ -1,0 +1,6 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='692' type='cl_device_fp_config'/>
+<offset>2560</offset>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='227' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='281' u='w' c='pocl_init_cpu_device_infos'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='286' u='w' c='pocl_init_cpu_device_infos'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='264' u='w' c='pocl_cuda_init'/>

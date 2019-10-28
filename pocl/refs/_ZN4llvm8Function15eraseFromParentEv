@@ -1,0 +1,13 @@
+<dec f='include/llvm-6.0/llvm/IR/Function.h' l='567' type='void llvm::Function::eraseFromParent()'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='270' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='344' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='385' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='439' u='c' c='_ZL16handleGetWorkDimPN4llvm6ModuleEPKc'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='679' u='c' c='_Z23convertPtrArgsToOffsetsPN4llvm6ModuleEPKcjPNS_14GlobalVariableE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='827' u='c' c='_ZL17mapLibDeviceCallsPN4llvm6ModuleE'/>
+<doc f='include/llvm-6.0/llvm/IR/Function.h' l='564'>/// eraseFromParent - This method unlinks &apos;this&apos; from the containing module
+  /// and deletes it.
+  ///</doc>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='114' u='c' c='_ZN12_GLOBAL__N_115AutomaticLocals11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/LLVMUtils.cc' l='113' u='c' c='_ZN4pocl23eraseFunctionAndCallersEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='266' u='c' c='_ZN4pocl9Workgroup11runOnModuleERN4llvm6ModuleE'/>

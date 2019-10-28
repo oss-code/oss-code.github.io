@@ -1,0 +1,20 @@
+<dec f='include/hwloc.h' l='437' type='hwloc_nodeset_t'/>
+<use f='include/hwloc/helper.h' l='871' u='r' c='hwloc_topology_get_topology_nodeset'/>
+<offset>1536</offset>
+<doc f='include/hwloc.h' l='437'>/**&lt; \brief NUMA nodes covered by this object or containing this object
+                                          *
+                                          * This is the set of NUMA nodes for which there are NODE objects in the
+                                          * topology under or above this object, i.e. which are known to be physically
+                                          * contained in this object or containing it and known how (the children path
+                                          * between this object and the NODE objects).
+                                          *
+                                          * In the end, these nodes are those that are close to the current object.
+                                          *
+                                          * If the ::HWLOC_TOPOLOGY_FLAG_WHOLE_SYSTEM configuration flag is set, some of
+                                          * these nodes may not be allowed for allocation, see allowed_nodeset.
+                                          *
+                                          * If there are no NUMA nodes in the machine, all the memory is close to this
+                                          * object, so \p nodeset is full.
+                                          *
+                                          * \note Its value must not be changed, hwloc_bitmap_dup() must be used instead.
+                                          */</doc>

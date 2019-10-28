@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Support/PrettyStackTrace.h' l='92' type='void llvm::RestorePrettyStackState(const void * State)'/>
+<doc f='include/llvm-6.0/llvm/Support/PrettyStackTrace.h' l='85'>/// Restores the topmost element of the &quot;pretty&quot; stack state to State, which
+  /// should come from a previous call to SavePrettyStackState().  This is
+  /// useful when using a CrashRecoveryContext in code that also uses
+  /// PrettyStackTraceEntries, to make sure the stack that&apos;s printed if a crash
+  /// happens after a crash that&apos;s been recovered by CrashRecoveryContext
+  /// doesn&apos;t have frames on it that were added in code unwound by the
+  /// CrashRecoveryContext.</doc>

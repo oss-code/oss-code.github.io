@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1128' type='llvm::Value * llvm::FuncletPadInst::getParentPad() const'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1122'>/// Convenience accessors
+
+  /// \brief Return the outer EH-pad this funclet is nested within.
+  ///
+  /// Note: This returns the associated CatchSwitchInst if this FuncletPadInst
+  /// is a CatchPadInst.</doc>

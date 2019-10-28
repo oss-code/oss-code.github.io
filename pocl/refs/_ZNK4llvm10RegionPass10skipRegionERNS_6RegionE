@@ -1,0 +1,3 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionPass.h' l='85' type='bool llvm::RegionPass::skipRegion(llvm::Region &amp; R) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionPass.h' l='83'>/// Optional passes call this function to check whether the pass should be
+  /// skipped. This is the case when optimization bisect is over the limit.</doc>

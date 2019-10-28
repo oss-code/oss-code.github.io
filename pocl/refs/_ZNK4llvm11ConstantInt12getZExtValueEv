@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/IR/Constants.h' l='149' ll='151' type='uint64_t llvm::ConstantInt::getZExtValue() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='145'>/// Return the constant as a 64-bit unsigned integer value after it
+  /// has been zero extended as appropriate for the type of this constant. Note
+  /// that this method can assert if the value does not fit in 64 bits.
+  /// @brief Return the zero extended value.</doc>
+<use f='pocl/lib/llvmopencl/HandleSamplerInitialization.cc' l='95' u='c' c='_ZN4pocl27HandleSamplerInitialization13runOnFunctionERN4llvm8FunctionE'/>
+<use f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='284' u='c' c='_ZN4llvm13EmitGEPOffsetEPT_RKNS_10DataLayoutEPNS_4UserEb'/>

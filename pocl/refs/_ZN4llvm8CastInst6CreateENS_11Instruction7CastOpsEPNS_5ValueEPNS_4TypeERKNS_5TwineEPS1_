@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='582' type='static llvm::CastInst * llvm::CastInst::Create(Instruction::CastOps , llvm::Value * S, llvm::Type * Ty, const llvm::Twine &amp; Name = &quot;&quot;, llvm::Instruction * InsertBefore = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='576'>/// Provides a way to construct any of the CastInst subclasses using an
+  /// opcode instead of the subclass&apos;s constructor. The opcode must be in the
+  /// CastOps category (Instruction::isCast(opcode) returns true). This
+  /// constructor has insert-before-instruction semantics to automatically
+  /// insert the new CastInst before InsertBefore (if it is non-null).
+  /// @brief Construct any of the CastInst subclasses</doc>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1486' u='c' c='_ZN4llvm9IRBuilder10CreateCastENS_11Instruction7CastOpsEPNS_5ValueEPNS_4TypeERKNS_5TwineE'/>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='189' u='c' c='_ZL17convertExpressionPN4llvm12ConstantExprEPNS_11InstructionE'/>

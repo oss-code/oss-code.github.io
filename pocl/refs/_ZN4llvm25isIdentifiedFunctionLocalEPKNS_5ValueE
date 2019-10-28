@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='986' type='bool llvm::isIdentifiedFunctionLocal(const llvm::Value * V)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='981'>/// Return true if V is umabigously identified at the function-level.
+/// Different IdentifiedFunctionLocals can&apos;t alias.
+/// Further, an IdentifiedFunctionLocal can not alias with any function
+/// arguments other than itself, which is not necessarily true for
+/// IdentifiedObjects.</doc>

@@ -1,0 +1,16 @@
+<def f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='678' type='LoopT * llvm::LoopInfoBase::getLoopFor(const BlockT * BB) const'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='681' u='c' c='_ZNK4llvm12LoopInfoBaseixEPKT_'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='686' u='c' c='_ZNK4llvm12LoopInfoBase12getLoopDepthEPKT_'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='692' u='c' c='_ZNK4llvm12LoopInfoBase12isLoopHeaderEPKT_'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='832' u='c' c='_ZN4llvm8LoopInfo29replacementPreservesLCSSAFormEPNS_11InstructionEPNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='838' u='c' c='_ZN4llvm8LoopInfo29replacementPreservesLCSSAFormEPNS_11InstructionEPNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='858' u='c' c='_ZN4llvm8LoopInfo26movementPreservesLCSSAFormEPNS_11InstructionES2_'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='859' u='c' c='_ZN4llvm8LoopInfo26movementPreservesLCSSAFormEPNS_11InstructionES2_'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='882' u='c' c='_ZN4llvm8LoopInfo26movementPreservesLCSSAFormEPNS_11InstructionES2_'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='904' u='c' c='_ZN4llvm8LoopInfo26movementPreservesLCSSAFormEPNS_11InstructionES2_'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='676'>/// Return the inner most loop that BB lives in. If a basic block is in no
+  /// loop (for example the entry node), null is returned.</doc>
+<use f='pocl/lib/llvmopencl/Kernel.cc' l='209' u='c' c='_ZN4pocl6Kernel18getParallelRegionsEPN4llvm8LoopInfoE'/>
+<use f='pocl/lib/llvmopencl/Kernel.cc' l='210' u='c' c='_ZN4pocl6Kernel18getParallelRegionsEPN4llvm8LoopInfoE'/>
+<use f='pocl/lib/llvmopencl/Kernel.cc' l='211' u='c' c='_ZN4pocl6Kernel18getParallelRegionsEPN4llvm8LoopInfoE'/>
+<use f='pocl/lib/llvmopencl/Kernel.cc' l='211' u='c' c='_ZN4pocl6Kernel18getParallelRegionsEPN4llvm8LoopInfoE'/>

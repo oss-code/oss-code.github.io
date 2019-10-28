@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='128' ll='131' type='void llvm::IRBuilderBase::SetInsertPoint(llvm::BasicBlock * TheBB)'/>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='126'>/// \brief This specifies that created instructions should be appended to the
+  /// end of the specified block.</doc>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='962' u='c' c='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1368' u='c' c='_ZN4pocl9Workgroup27createFastWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='268' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='317' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='1169' u='c' c='_ZN4pocl13WorkitemLoops14AppendIncBlockEPN4llvm10BasicBlockEPNS1_5ValueE'/>

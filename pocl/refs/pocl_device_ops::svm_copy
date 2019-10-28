@@ -1,0 +1,7 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='409' type='void (*)(cl_device_id, void *restrict, const void *restrict, size_t)'/>
+<offset>1472</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='407'>/* we can use restrict here, because Spec says overlapping copy should return
+   * with CL_MEM_COPY_OVERLAP error. */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='145' u='w' c='pocl_basic_init_device_ops'/>
+<use f='pocl/lib/CL/devices/common.c' l='726' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='727' u='r' c='pocl_exec_command'/>

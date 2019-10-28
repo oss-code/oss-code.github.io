@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Target/TargetMachine.h' l='305' type='bool llvm::LLVMTargetMachine::addPassesToEmitFile(llvm::legacy::PassManagerBase &amp; PM, llvm::raw_pwrite_stream &amp; Out, llvm::TargetMachine::CodeGenFileType FileType, bool DisableVerify = true, llvm::MachineModuleInfo * MMI = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/Target/TargetMachine.h' l='301'>/// Add passes to the specified pass manager to get the specified file
+  /// emitted.  Typically this will involve several steps of code generation.
+  /// \p MMI is an optional parameter that, if set to non-nullptr,
+  /// will be used to set the MachineModuloInfofor this PM.</doc>

@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/IR/DataLayout.h' l='238' ll='243' type='bool llvm::DataLayout::isLegalInteger(uint64_t Width) const'/>
+<use f='include/llvm-6.0/llvm/IR/DataLayout.h' l='245' u='c' c='_ZNK4llvm10DataLayout16isIllegalIntegerEm'/>
+<doc f='include/llvm-6.0/llvm/IR/DataLayout.h' l='231'>/// \brief Returns true if the specified type is known to be a native integer
+  /// type supported by the CPU.
+  ///
+  /// For example, i64 is not native on most 32-bit CPUs and i37 is not native
+  /// on any known one. This returns false if the integer width is not legal.
+  ///
+  /// The width is specified in bits.</doc>

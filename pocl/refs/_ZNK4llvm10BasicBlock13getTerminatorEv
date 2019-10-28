@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='123' type='const llvm::TerminatorInst * llvm::BasicBlock::getTerminator() const'/>
+<use f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='126' u='c' c='_ZN4llvm10BasicBlock13getTerminatorEv'/>
+<doc f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='121'>/// \brief Returns the terminator instruction if the block is well formed or
+  /// null if the block is not well formed.</doc>
+<use f='include/llvm-6.0/llvm/IR/CFG.h' l='132' u='c' c='_ZN4llvm10succ_beginEPKNS_10BasicBlockE'/>
+<use f='include/llvm-6.0/llvm/IR/CFG.h' l='138' u='c' c='_ZN4llvm8succ_endEPKNS_10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/Barrier.h' l='124' u='c' c='_ZN4pocl7Barrier15endsWithBarrierEPKN4llvm10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1476' u='c' c='_ZN4pocl9Workgroup20hasWorkgroupBarriersERKN4llvm8FunctionE'/>

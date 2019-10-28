@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Support/FileSystem.h' l='653' type='std::error_code llvm::sys::fs::setLastModificationAndAccessTime(int FD, TimePoint&lt;&gt; Time)'/>
+<doc f='include/llvm-6.0/llvm/Support/FileSystem.h' l='648'>/// @brief Set the file modification and access time.
+///
+/// @returns errc::success if the file times were successfully set, otherwise a
+///          platform-specific error_code or errc::function_not_supported on
+///          platforms where the functionality isn&apos;t available.</doc>

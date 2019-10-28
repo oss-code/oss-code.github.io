@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/IR/Value.h' l='849' macro='1' type='llvm::Value * llvm::unwrap(LLVMValueRef P)'/>
+<def f='include/llvm-6.0/llvm/IR/Value.h' l='849' macro='1' type='T * llvm::unwrap(LLVMValueRef P)'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='849' macro='1' u='c'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1074' u='c' c='_ZL23computeArgBufferOffsetsP15LLVMOpaqueValuePm'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1101' u='c' c='_ZL19createArgBufferLoadP17LLVMOpaqueBuilderP15LLVMOpaqueValuePmS2_j'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1198' u='c' c='_ZN4pocl9Workgroup32createArgBufferWorkgroupLauncherEPN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1225' u='c' c='_ZN4pocl9Workgroup32createArgBufferWorkgroupLauncherEPN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1246' u='c' c='_ZN4pocl9Workgroup32createArgBufferWorkgroupLauncherEPN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1249' u='c' c='_ZN4pocl9Workgroup32createArgBufferWorkgroupLauncherEPN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1333' u='c' c='_ZN4pocl9Workgroup18createGridLauncherEPN4llvm8FunctionES3_NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>

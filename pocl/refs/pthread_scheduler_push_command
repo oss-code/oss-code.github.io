@@ -1,0 +1,7 @@
+<dec f='pocl/lib/CL/devices/pthread/pocl-pthread_scheduler.h' l='44' type='void pthread_scheduler_push_command(_cl_command_node * cmd)'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='256' u='c' c='pocl_pthread_submit'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='314' u='c' c='pocl_pthread_notify'/>
+<doc f='pocl/lib/CL/devices/pthread/pocl-pthread_scheduler.h' l='43'>/* Gives ready-to-execute command for scheduler */</doc>
+<def f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='143' ll='149' type='void pthread_scheduler_push_command(_cl_command_node * cmd)'/>
+<doc f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='141'>/* push_command and push_kernel MUST use broadcast and wake up all threads,
+   because commands can be for subdevices (= not all threads) */</doc>

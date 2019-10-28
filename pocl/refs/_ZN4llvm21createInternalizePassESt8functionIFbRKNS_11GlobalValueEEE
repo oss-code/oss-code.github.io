@@ -1,0 +1,14 @@
+<dec f='include/llvm-6.0/llvm/Transforms/IPO.h' l='134' type='llvm::ModulePass * llvm::createInternalizePass(std::function&lt;bool (const GlobalValue &amp;)&gt; MustPreserveGV)'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='564' u='c' c='_ZL13linkLibDevicePN4llvm6ModuleEPKcS3_'/>
+<doc f='include/llvm-6.0/llvm/Transforms/IPO.h' l='121'>//===----------------------------------------------------------------------===//
+/// createInternalizePass - This pass loops over all of the functions in the
+/// input module, internalizing all globals (functions and variables) it can.
+////
+/// Before internalizing a symbol, the callback \p MustPreserveGV is invoked and
+/// gives to the client the ability to prevent internalizing specific symbols.
+///
+/// The symbol in DSOList are internalized if it is safe to drop them from
+/// the symbol table.
+///
+/// Note that commandline options that are used with the above function are not
+/// used now!</doc>

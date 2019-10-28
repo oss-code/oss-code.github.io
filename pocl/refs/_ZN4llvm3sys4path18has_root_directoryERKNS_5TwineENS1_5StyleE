@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Support/Path.h' l='393' type='bool llvm::sys::path::has_root_directory(const llvm::Twine &amp; path, llvm::sys::path::Style style = Style::native)'/>
+<doc f='include/llvm-6.0/llvm/Support/Path.h' l='387'>/// @brief Has root directory?
+///
+/// root_directory != &quot;&quot;
+///
+/// @param path Input path.
+/// @result True if the path has a root directory, false otherwise.</doc>

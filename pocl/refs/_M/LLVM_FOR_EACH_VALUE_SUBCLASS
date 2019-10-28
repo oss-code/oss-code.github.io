@@ -1,0 +1,22 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='1186'/>
+<use f='include/llvm-c-6.0/llvm-c/Core.h' l='1349' u='c'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='1165'>/**
+ * @defgroup LLVMCCoreValues Values
+ *
+ * The bulk of LLVM&apos;s object model consists of values, which comprise a very
+ * rich type hierarchy.
+ *
+ * LLVMValueRef essentially represents llvm::Value. There is a rich
+ * hierarchy of classes within this type. Depending on the instance
+ * obtained, not all APIs are available.
+ *
+ * Callers can determine the type of an LLVMValueRef by calling the
+ * LLVMIsA* family of functions (e.g. LLVMIsAArgument()). These
+ * functions are defined by a macro, so it isn&apos;t obvious which are
+ * available by looking at the Doxygen source code. Instead, look at the
+ * source definition of LLVM_FOR_EACH_VALUE_SUBCLASS and note the list
+ * of value names given. These value names also correspond to classes in
+ * the llvm::Value hierarchy.
+ *
+ * @{
+ */</doc>

@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='119' type='void llvm::DiagnosticInfo::print(llvm::DiagnosticPrinter &amp; DP) const'/>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='233' u='c' c='_ZL11diagHandlerRKN4llvm14DiagnosticInfoEPv'/>
+<doc f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='113'>/// Print using the given \p DP a user-friendly message.
+  /// This is the default message that will be printed to the user.
+  /// It is used when the frontend does not directly take advantage
+  /// of the information contained in fields of the subclasses.
+  /// The printed message must not end with &apos;.&apos; nor start with a severity
+  /// keyword.</doc>

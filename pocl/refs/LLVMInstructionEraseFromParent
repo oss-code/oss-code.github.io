@@ -1,0 +1,9 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2474' type='void LLVMInstructionEraseFromParent(LLVMValueRef Inst)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2466'>/**
+ * Remove and delete an instruction.
+ *
+ * The instruction specified is removed from its containing building
+ * block and then deleted.
+ *
+ * @see llvm::Instruction::eraseFromParent()
+ */</doc>

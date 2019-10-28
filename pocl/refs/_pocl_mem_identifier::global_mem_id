@@ -1,0 +1,5 @@
+<dec f='pocl/include/pocl.h' l='76' type='int'/>
+<offset>32</offset>
+<use f='pocl/lib/CL/clCreateBuffer.c' l='132' u='w' c='POclCreateBuffer'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='467' u='r' c='pocl_basic_alloc_mem_obj'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='513' u='w' c='pocl_cuda_alloc_mem_obj'/>

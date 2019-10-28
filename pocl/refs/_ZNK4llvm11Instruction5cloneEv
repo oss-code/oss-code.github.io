@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/Instruction.h' l='556' type='llvm::Instruction * llvm::Instruction::clone() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Instruction.h' l='551'>/// Create a copy of &apos;this&apos; instruction that is identical in all ways except
+  /// the following:
+  ///   * The instruction has no parent
+  ///   * The instruction has no name
+  ///</doc>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='353' u='c' c='_ZN4pocl22BarrierTailReplication20ReplicateBasicBlocksERSt6vectorIPN4llvm10BasicBlockESaIS4_EERNS2_8ValueMapIPKNS2_5ValueENS2_14WeakTrackingVHENS2_14V12045754'/>

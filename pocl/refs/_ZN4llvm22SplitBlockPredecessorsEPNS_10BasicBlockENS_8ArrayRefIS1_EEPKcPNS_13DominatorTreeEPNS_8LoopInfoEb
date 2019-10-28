@@ -1,0 +1,16 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='200' type='llvm::BasicBlock * llvm::SplitBlockPredecessors(llvm::BasicBlock * BB, ArrayRef&lt;llvm::BasicBlock *&gt; Preds, const char * Suffix, llvm::DominatorTree * DT = nullptr, llvm::LoopInfo * LI = nullptr, bool PreserveLCSSA = false)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='186'>/// This method introduces at least one new basic block into the function and
+/// moves some of the predecessors of BB to be predecessors of the new block.
+/// The new predecessors are indicated by the Preds array. The new block is
+/// given a suffix of &apos;Suffix&apos;. Returns new basic block to which predecessors
+/// from Preds are now pointing.
+///
+/// If BB is a landingpad block then additional basicblock might be introduced.
+/// It will have Suffix+&quot;.split_lp&quot;. See SplitLandingPadPredecessors for more
+/// details on this case.
+///
+/// This currently updates the LLVM IR, DominatorTree, LoopInfo, and LCCSA but
+/// no other analyses. In particular, it does not preserve LoopSimplify
+/// (because it&apos;s complicated to handle the case where one of the edges being
+/// split is an exit of a loop with other exits).</doc>
+<use f='pocl/lib/llvmopencl/IsolateRegions.cc' l='170' u='c' c='_ZN4pocl14IsolateRegions14addDummyBeforeEPN4llvm6RegionEPNS1_10BasicBlockE'/>

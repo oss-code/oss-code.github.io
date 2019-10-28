@@ -1,0 +1,9 @@
+<dec f='pocl/include/poclu.h' l='79' type='cl_context poclu_create_any_context()'/>
+<doc f='pocl/include/poclu.h' l='77'>/* Create a context in the first platform found. */</doc>
+<use f='pocl/examples/scalarwave/scalarwave.c' l='53' u='c' c='exec_scalarwave_kernel'/>
+<use f='pocl/examples/trig/trig_exec.c' l='31' u='c' c='exec_trig_kernel'/>
+<def f='pocl/lib/poclu/misc.c' l='33' ll='54' type='cl_context poclu_create_any_context()'/>
+<use f='pocl/tests/kernel/image_query_funcs.c' l='65' u='c' c='main'/>
+<use f='pocl/tests/kernel/kernel.c' l='49' u='c' c='call_test'/>
+<use f='pocl/tests/kernel/sampler_address_clamp.c' l='66' u='c' c='main'/>
+<use f='pocl/tests/workgroup/run_kernel.c' l='81' u='c' c='main'/>

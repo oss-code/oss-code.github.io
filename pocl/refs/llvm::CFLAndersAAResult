@@ -1,0 +1,17 @@
+<inh f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='857' c='llvm::AAResultBase'/>
+<def f='include/llvm-6.0/llvm/Analysis/CFLAndersAliasAnalysis.h' l='39' ll='87'/>
+<size>48</size>
+<fun r='_ZN4llvm17CFLAndersAAResultC1ERKNS_17TargetLibraryInfoE'/>
+<fun r='_ZN4llvm17CFLAndersAAResultC1EOS0_'/>
+<fun r='_ZN4llvm17CFLAndersAAResultD1Ev'/>
+<fun r='_ZN4llvm17CFLAndersAAResult10invalidateERNS_8FunctionERKNS_17PreservedAnalysesERNS_15AnalysisManagerIS1_JEE11InvalidatorE'/>
+<fun r='_ZN4llvm17CFLAndersAAResult5evictEPKNS_8FunctionE'/>
+<fun r='_ZN4llvm17CFLAndersAAResult15getAliasSummaryERKNS_8FunctionE'/>
+<fun r='_ZN4llvm17CFLAndersAAResult5queryERKNS_14MemoryLocationES3_'/>
+<fun r='_ZN4llvm17CFLAndersAAResult5aliasERKNS_14MemoryLocationES3_'/>
+<fun r='_ZN4llvm17CFLAndersAAResult12ensureCachedERKNS_8FunctionE'/>
+<fun r='_ZN4llvm17CFLAndersAAResult4scanERKNS_8FunctionE'/>
+<fun r='_ZN4llvm17CFLAndersAAResult13buildInfoFromERKNS_8FunctionE'/>
+<mbr r='llvm::CFLAndersAAResult::TLI' o='64' t='const llvm::TargetLibraryInfo &amp;'/>
+<mbr r='llvm::CFLAndersAAResult::Cache' o='128' t='DenseMap&lt;const llvm::Function *, Optional&lt;llvm::CFLAndersAAResult::FunctionInfo&gt; &gt;'/>
+<mbr r='llvm::CFLAndersAAResult::Handles' o='320' t='std::forward_list&lt;cflaa::FunctionHandle&lt;CFLAndersAAResult&gt; &gt;'/>

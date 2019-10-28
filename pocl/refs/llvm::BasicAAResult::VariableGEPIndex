@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/Analysis/BasicAliasAnalysis.h' l='102' ll='123'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/Analysis/BasicAliasAnalysis.h' l='100'>// A linear transformation of a Value; this class represents ZExt(SExt(V,
+  // SExtBits), ZExtBits) * Scale + Offset.</doc>
+<mbr r='llvm::BasicAAResult::VariableGEPIndex::V' o='0' t='const llvm::Value *'/>
+<mbr r='llvm::BasicAAResult::VariableGEPIndex::ZExtBits' o='64' t='unsigned int'/>
+<mbr r='llvm::BasicAAResult::VariableGEPIndex::SExtBits' o='96' t='unsigned int'/>
+<mbr r='llvm::BasicAAResult::VariableGEPIndex::Scale' o='128' t='int64_t'/>
+<fun r='_ZNK4llvm13BasicAAResult16VariableGEPIndexeqERKS1_'/>
+<fun r='_ZNK4llvm13BasicAAResult16VariableGEPIndexneERKS1_'/>

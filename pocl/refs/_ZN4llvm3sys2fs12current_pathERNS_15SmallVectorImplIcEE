@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Support/FileSystem.h' l='347' type='std::error_code llvm::sys::fs::current_path(SmallVectorImpl&lt;char&gt; &amp; result)'/>
+<doc f='include/llvm-6.0/llvm/Support/FileSystem.h' l='342'>/// @brief Get the current path.
+///
+/// @param result Holds the current path on return.
+/// @returns errc::success if the current path has been stored in result,
+///          otherwise a platform-specific error_code.</doc>

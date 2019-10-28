@@ -1,0 +1,12 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='923' type='void LLVMGetParamTypes(LLVMTypeRef FunctionTy, LLVMTypeRef * Dest)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='912'>/**
+ * Obtain the types of a function&apos;s parameters.
+ *
+ * The Dest parameter should point to a pre-allocated array of
+ * LLVMTypeRef at least LLVMCountParamTypes() large. On return, the
+ * first LLVMCountParamTypes() entries in the array will be populated
+ * with LLVMTypeRef instances.
+ *
+ * @param FunctionTy The function type to operate on.
+ * @param Dest Memory address of an array to be filled with result.
+ */</doc>

@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='432' type='bool llvm::SCEVUnknown::isSizeOf(llvm::Type *&amp; AllocTy) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='425'>/// @{
+    /// Test whether this is a special constant representing a type
+    /// size, alignment, or field offset in a target-independent
+    /// manner, and hasn&apos;t happened to have been folded with other
+    /// operations into something unrecognizable. This is mainly only
+    /// useful for pretty-printing and other situations where it isn&apos;t
+    /// absolutely required for these to succeed.</doc>

@@ -1,0 +1,67 @@
+<def f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='287' ll='722'/>
+<size>56</size>
+<fun r='_ZN4llvm9AAResultsC1ERKNS_17TargetLibraryInfoE'/>
+<fun r='_ZN4llvm9AAResultsC1EOS0_'/>
+<fun r='_ZN4llvm9AAResultsD1Ev'/>
+<fun r='_ZN4llvm9AAResults11addAAResultERT_'/>
+<fun r='_ZN4llvm9AAResults17addAADependencyIDEPNS_11AnalysisKeyE'/>
+<fun r='_ZN4llvm9AAResults10invalidateERNS_8FunctionERKNS_17PreservedAnalysesERNS_15AnalysisManagerIS1_JEE11InvalidatorE'/>
+<fun r='_ZN4llvm9AAResults5aliasERKNS_14MemoryLocationES3_'/>
+<fun r='_ZN4llvm9AAResults5aliasEPKNS_5ValueEmS3_m'/>
+<fun r='_ZN4llvm9AAResults5aliasEPKNS_5ValueES3_'/>
+<fun r='_ZN4llvm9AAResults9isNoAliasERKNS_14MemoryLocationES3_'/>
+<fun r='_ZN4llvm9AAResults9isNoAliasEPKNS_5ValueEmS3_m'/>
+<fun r='_ZN4llvm9AAResults9isNoAliasEPKNS_5ValueES3_'/>
+<fun r='_ZN4llvm9AAResults11isMustAliasERKNS_14MemoryLocationES3_'/>
+<fun r='_ZN4llvm9AAResults11isMustAliasEPKNS_5ValueES3_'/>
+<fun r='_ZN4llvm9AAResults22pointsToConstantMemoryERKNS_14MemoryLocationEb'/>
+<fun r='_ZN4llvm9AAResults22pointsToConstantMemoryEPKNS_5ValueEb'/>
+<fun r='_ZN4llvm9AAResults16getArgModRefInfoENS_17ImmutableCallSiteEj'/>
+<fun r='_ZN4llvm9AAResults17getModRefBehaviorENS_17ImmutableCallSiteE'/>
+<fun r='_ZN4llvm9AAResults17getModRefBehaviorEPKNS_8FunctionE'/>
+<fun r='_ZN4llvm9AAResults19doesNotAccessMemoryENS_17ImmutableCallSiteE'/>
+<fun r='_ZN4llvm9AAResults19doesNotAccessMemoryEPKNS_8FunctionE'/>
+<fun r='_ZN4llvm9AAResults15onlyReadsMemoryENS_17ImmutableCallSiteE'/>
+<fun r='_ZN4llvm9AAResults15onlyReadsMemoryEPKNS_8FunctionE'/>
+<fun r='_ZN4llvm9AAResults15onlyReadsMemoryENS_22FunctionModRefBehaviorE'/>
+<fun r='_ZN4llvm9AAResults17doesNotReadMemoryENS_22FunctionModRefBehaviorE'/>
+<fun r='_ZN4llvm9AAResults23onlyAccessesArgPointeesENS_22FunctionModRefBehaviorE'/>
+<fun r='_ZN4llvm9AAResults21doesAccessArgPointeesENS_22FunctionModRefBehaviorE'/>
+<fun r='_ZN4llvm9AAResults27onlyAccessesInaccessibleMemENS_22FunctionModRefBehaviorE'/>
+<fun r='_ZN4llvm9AAResults25doesAccessInaccessibleMemENS_22FunctionModRefBehaviorE'/>
+<fun r='_ZN4llvm9AAResults32onlyAccessesInaccessibleOrArgMemENS_22FunctionModRefBehaviorE'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoENS_17ImmutableCallSiteERKNS_14MemoryLocationE'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoENS_17ImmutableCallSiteEPKNS_5ValueEm'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoEPKNS_8CallInstERKNS_14MemoryLocationE'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoEPKNS_8CallInstEPKNS_5ValueEm'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoEPKNS_10InvokeInstERKNS_14MemoryLocationE'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoEPKNS_10InvokeInstEPKNS_5ValueEm'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoEPKNS_8LoadInstERKNS_14MemoryLocationE'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoEPKNS_8LoadInstEPKNS_5ValueEm'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoEPKNS_9StoreInstERKNS_14MemoryLocationE'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoEPKNS_9StoreInstEPKNS_5ValueEm'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoEPKNS_9FenceInstERKNS_14MemoryLocationE'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoEPKNS_9FenceInstEPKNS_5ValueEm'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoEPKNS_17AtomicCmpXchgInstERKNS_14MemoryLocationE'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoEPKNS_17AtomicCmpXchgInstEPKNS_5ValueEj'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoEPKNS_13AtomicRMWInstERKNS_14MemoryLocationE'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoEPKNS_13AtomicRMWInstEPKNS_5ValueEj'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoEPKNS_9VAArgInstERKNS_14MemoryLocationE'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoEPKNS_9VAArgInstEPKNS_5ValueEm'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoEPKNS_12CatchPadInstERKNS_14MemoryLocationE'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoEPKNS_12CatchPadInstEPKNS_5ValueEm'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoEPKNS_15CatchReturnInstERKNS_14MemoryLocationE'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoEPKNS_15CatchReturnInstEPKNS_5ValueEm'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoEPKNS_11InstructionERKNS_8OptionalINS_14MemoryLocationEEE'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoEPKNS_11InstructionEPKNS_5ValueEm'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoEPNS_11InstructionENS_17ImmutableCallSiteE'/>
+<fun r='_ZN4llvm9AAResults13getModRefInfoENS_17ImmutableCallSiteES1_'/>
+<fun r='_ZN4llvm9AAResults18callCapturesBeforeEPKNS_11InstructionERKNS_14MemoryLocationEPNS_13DominatorTreeEPNS_17OrderedBasicBlockE'/>
+<fun r='_ZN4llvm9AAResults18callCapturesBeforeEPKNS_11InstructionEPKNS_5ValueEmPNS_13DominatorTreeEPNS_17OrderedBasicBlockE'/>
+<fun r='_ZN4llvm9AAResults19canBasicBlockModifyERKNS_10BasicBlockERKNS_14MemoryLocationE'/>
+<fun r='_ZN4llvm9AAResults19canBasicBlockModifyERKNS_10BasicBlockEPKNS_5ValueEm'/>
+<fun r='_ZN4llvm9AAResults25canInstructionRangeModRefERKNS_11InstructionES3_RKNS_14MemoryLocationENS_10ModRefInfoE'/>
+<fun r='_ZN4llvm9AAResults25canInstructionRangeModRefERKNS_11InstructionES3_PKNS_5ValueEmNS_10ModRefInfoE'/>
+<mbr r='llvm::AAResults::TLI' o='0' t='const llvm::TargetLibraryInfo &amp;'/>
+<mbr r='llvm::AAResults::AAs' o='64' t='std::vector&lt;std::unique_ptr&lt;Concept&gt; &gt;'/>
+<mbr r='llvm::AAResults::AADeps' o='256' t='std::vector&lt;AnalysisKey *&gt;'/>

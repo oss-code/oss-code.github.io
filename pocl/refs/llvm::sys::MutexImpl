@@ -1,0 +1,11 @@
+<def f='include/llvm-6.0/llvm/Support/Mutex.h' l='26' ll='84'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/Support/Mutex.h' l='25'>/// @brief Platform agnostic Mutex class.</doc>
+<fun r='_ZN4llvm3sys9MutexImplC1Eb'/>
+<fun r='_ZN4llvm3sys9MutexImplD1Ev'/>
+<fun r='_ZN4llvm3sys9MutexImpl7acquireEv'/>
+<fun r='_ZN4llvm3sys9MutexImpl7releaseEv'/>
+<fun r='_ZN4llvm3sys9MutexImpl10tryacquireEv'/>
+<mbr r='llvm::sys::MutexImpl::data_' o='0' t='void *'/>
+<fun r='_ZN4llvm3sys9MutexImplC1ERKS1_'/>
+<fun r='_ZN4llvm3sys9MutexImplaSERKS1_'/>

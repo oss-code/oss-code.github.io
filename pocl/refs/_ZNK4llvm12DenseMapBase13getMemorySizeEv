@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/ADT/DenseMap.h' l='637' ll='639' type='size_t llvm::DenseMapBase::getMemorySize() const'/>
+<doc f='include/llvm-6.0/llvm/ADT/DenseMap.h' l='633'>/// Return the approximate size (in bytes) of the actual map.
+  /// This is just the raw memory used by DenseMap.
+  /// If entries are pointers to objects, the size of the referenced objects
+  /// are not included.</doc>

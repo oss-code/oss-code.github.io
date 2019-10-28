@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='710' ll='716' type='void llvm::LoopInfoBase::changeLoopFor(BlockT * BB, LoopT * L)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='707'>/// Change the top-level loop that contains BB to the specified loop.
+  /// This should be used by transformations that restructure the loop hierarchy
+  /// tree.</doc>

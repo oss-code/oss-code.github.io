@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='525' ll='531' type='std::string llvm::LazyCallGraph::SCC::getName() const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='521'>/// Provide a short name by printing this SCC to a std::string.
+    ///
+    /// This copes with the fact that we don&apos;t have a name per-se for an SCC
+    /// while still making the use of this in debugging and logging useful.</doc>

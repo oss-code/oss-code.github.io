@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='214' ll='276'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='209'>/// Summary of how a function affects memory in the program.
+///
+/// Loads from constant globals are not considered memory accesses for this
+/// interface. Also, functions may freely modify stack space local to their
+/// invocation without having to report it through these interfaces.</doc>

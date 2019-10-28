@@ -1,0 +1,19 @@
+<dec f='include/hwloc.h' l='2261' type='int hwloc_topology_export_xmlbuffer(hwloc_topology_t topology, char ** xmlbuffer, int * buflen)'/>
+<doc f='include/hwloc.h' l='2243'>/** \brief Export the topology into a newly-allocated XML memory buffer.
+ *
+ * \p xmlbuffer is allocated by the callee and should be freed with
+ * hwloc_free_xmlbuffer() later in the caller.
+ *
+ * This memory buffer may be loaded later through hwloc_topology_set_xmlbuffer().
+ *
+ * \return -1 if a failure occured.
+ *
+ * \note See also hwloc_topology_set_userdata_export_callback()
+ * for exporting application-specific object userdata.
+ *
+ * \note The topology-specific userdata pointer is ignored when exporting to XML.
+ *
+ * \note Only printable characters may be exported to XML string attributes.
+ * Any other character, especially any non-ASCII character, will be silently
+ * dropped.
+ */</doc>

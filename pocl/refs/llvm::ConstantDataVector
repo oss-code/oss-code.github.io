@@ -1,0 +1,25 @@
+<inh f='include/llvm-6.0/llvm/IR/Constants.h' l='565' c='llvm::ConstantDataSequential'/>
+<def f='include/llvm-6.0/llvm/IR/Constants.h' l='735' ll='786'/>
+<size>40</size>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='729'>//===----------------------------------------------------------------------===//
+/// A vector constant whose element type is a simple 1/2/4/8-byte integer or
+/// float/double, and whose elements are just simple data values
+/// (i.e. ConstantInt/ConstantFP). This Constant node has no operands because it
+/// stores all of the elements of the constant as densely packed data, instead
+/// of as Value*&apos;s.</doc>
+<fun r='_ZN4llvm18ConstantDataVectorC1EPNS_4TypeEPKc'/>
+<fun r='_ZN4llvm18ConstantDataVectorC1ERKS0_'/>
+<fun r='_ZN4llvm18ConstantDataVector3getERNS_11LLVMContextENS_8ArrayRefIhEE'/>
+<fun r='_ZN4llvm18ConstantDataVector3getERNS_11LLVMContextENS_8ArrayRefItEE'/>
+<fun r='_ZN4llvm18ConstantDataVector3getERNS_11LLVMContextENS_8ArrayRefIjEE'/>
+<fun r='_ZN4llvm18ConstantDataVector3getERNS_11LLVMContextENS_8ArrayRefImEE'/>
+<fun r='_ZN4llvm18ConstantDataVector3getERNS_11LLVMContextENS_8ArrayRefIfEE'/>
+<fun r='_ZN4llvm18ConstantDataVector3getERNS_11LLVMContextENS_8ArrayRefIdEE'/>
+<fun r='_ZN4llvm18ConstantDataVector5getFPERNS_11LLVMContextENS_8ArrayRefItEE'/>
+<fun r='_ZN4llvm18ConstantDataVector5getFPERNS_11LLVMContextENS_8ArrayRefIjEE'/>
+<fun r='_ZN4llvm18ConstantDataVector5getFPERNS_11LLVMContextENS_8ArrayRefImEE'/>
+<fun r='_ZN4llvm18ConstantDataVector8getSplatEjPNS_8ConstantE'/>
+<fun r='_ZNK4llvm18ConstantDataVector7isSplatEv'/>
+<fun r='_ZNK4llvm18ConstantDataVector13getSplatValueEv'/>
+<fun r='_ZNK4llvm18ConstantDataVector7getTypeEv'/>
+<fun r='_ZN4llvm18ConstantDataVector7classofEPKNS_5ValueE'/>

@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='482' ll='484' type='static llvm::PointerType * llvm::PointerType::getUnqual(llvm::Type * ElementType)'/>
+<doc f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='480'>/// This constructs a pointer to an object of the specified type in the
+  /// generic address space (address space zero).</doc>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='674' u='c' c='_ZN4pocl14ParallelRegion12InjectPrintFEPN4llvm11InstructionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIPNS1_5ValueESaISC_EE'/>
+<use f='include/llvm-6.0/llvm/IR/TypeBuilder.h' l='115' u='c' c='_ZN4llvm11TypeBuilderIPT_XT0_EE3getERNS_11LLVMContextE'/>

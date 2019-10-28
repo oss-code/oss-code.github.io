@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/Support/FileSystem.h' l='969' ll='973'/>
+<size>32</size>
+<doc f='include/llvm-6.0/llvm/Support/FileSystem.h' l='968'>/// Keeps state for the recursive_directory_iterator.</doc>
+<mbr r='llvm::sys::fs::detail::RecDirIterState::Stack' o='0' t='std::stack&lt;directory_iterator, std::vector&lt;directory_iterator&gt; &gt;'/>
+<mbr r='llvm::sys::fs::detail::RecDirIterState::Level' o='192' t='uint16_t'/>
+<mbr r='llvm::sys::fs::detail::RecDirIterState::HasNoPushRequest' o='208' t='bool'/>

@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='779' ll='784' type='llvm::BranchInst * llvm::IRBuilder::CreateCondBr(llvm::Value * Cond, llvm::BasicBlock * True, llvm::BasicBlock * False, llvm::MDNode * BranchWeights = nullptr, llvm::MDNode * Unpredictable = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='777'>/// \brief Create a conditional &apos;br Cond, TrueDest, FalseDest&apos;
+  /// instruction.</doc>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='252' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='281' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>

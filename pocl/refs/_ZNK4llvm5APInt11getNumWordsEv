@@ -1,0 +1,11 @@
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='150' u='c' c='_ZN4llvm5APInt15clearUnusedBitsEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='769' u='c' c='_ZN4llvm5APIntaSEm'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='800' u='c' c='_ZN4llvm5APIntaNEm'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1374' u='c' c='_ZN4llvm5APInt10setAllBitsEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1435' u='c' c='_ZN4llvm5APInt12clearAllBitsEv'/>
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='1495' type='unsigned int llvm::APInt::getNumWords() const'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='1490'>/// \brief Get the number of words.
+  ///
+  /// Here one word&apos;s bitwidth equals to that of uint64_t.
+  ///
+  /// \returns the number of words to hold the integer value of this APInt.</doc>

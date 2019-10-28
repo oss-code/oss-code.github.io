@@ -1,0 +1,22 @@
+<dec f='include/llvm-6.0/llvm/IR/Module.h' l='358' type='llvm::Function * llvm::Module::getFunction(llvm::StringRef Name) const'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='163' u='c' c='_ZL20addKernelAnnotationsPN4llvm6ModuleEPKc'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='190' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='201' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='202' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='225' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='347' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='408' u='c' c='_ZL16handleGetWorkDimPN4llvm6ModuleEPKc'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='597' u='c' c='_Z23convertPtrArgsToOffsetsPN4llvm6ModuleEPKcjPNS_14GlobalVariableE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='797' u='c' c='_ZL17mapLibDeviceCallsPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='852' u='c' c='pocl_cuda_get_ptr_arg_alignment'/>
+<doc f='include/llvm-6.0/llvm/IR/Module.h' l='356'>/// Look up the specified function in the module symbol table. If it does not
+  /// exist, return null.</doc>
+<use f='pocl/lib/llvmopencl/Barrier.h' l='45' u='c' c='_ZN4pocl7Barrier11GetBarriersERN4llvm15SmallVectorImplIPS0_EERNS1_6ModuleE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='638' u='c' c='_ZN4pocl14ParallelRegion12InjectPrintFEPN4llvm11InstructionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIPNS1_5ValueESaISC_EE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='639' u='c' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='725' u='c' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='207' u='c' c='_ZL8CopyFuncN4llvm9StringRefEPKNS_6ModuleEPS1_RNS_8ValueMapIPKNS_5ValueENS_14WeakTrackingVHENS_14ValueMapConfigIS8_NS_3sys10SmartMutexILb0EEEEEEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='210' u='c' c='_ZL8CopyFuncN4llvm9StringRefEPKNS_6ModuleEPS1_RNS_8ValueMapIPKNS_5ValueENS_14WeakTrackingVHENS_14ValueMapConfigIS8_NS_3sys10SmartMutexILb0EEEEEEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='257' u='c' c='_ZL19copy_func_callgraphN4llvm9StringRefEPKNS_6ModuleEPS1_RNS_8ValueMapIPKNS_5ValueENS_14WeakTrackingVHENS_14ValueMapConfigIS8_NS_3sys10SmartMutexILb0EEEEEEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='269' u='c' c='_ZL19copy_func_callgraphN4llvm9StringRefEPKNS_6ModuleEPS1_RNS_8ValueMapIPKNS_5ValueENS_14WeakTrackingVHENS_14ValueMapConfigIS8_NS_3sys10SmartMutexILb0EEEEEEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='426' u='c' c='_Z4linkPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>

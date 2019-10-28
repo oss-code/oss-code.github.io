@@ -1,0 +1,12 @@
+<def f='include/hwloc/helper.h' l='87' ll='97' type='hwloc_obj_t hwloc_get_next_obj_inside_cpuset_by_depth(hwloc_topology_t topology, hwloc_const_cpuset_t set, unsigned int depth, hwloc_obj_t prev)'/>
+<use f='include/hwloc/helper.h' l='115' u='c' c='hwloc_get_next_obj_inside_cpuset_by_type'/>
+<use f='include/hwloc/helper.h' l='1106' u='c' c='hwloc_get_distance_matrix_covering_obj_by_depth'/>
+<doc f='include/hwloc/helper.h' l='78'>/** \brief Return the next object at depth \p depth included in CPU set \p set.
+ *
+ * If \p prev is \c NULL, return the first object at depth \p depth
+ * included in \p set.  The next invokation should pass the previous
+ * return value in \p prev so as to obtain the next object in \p set.
+ *
+ * \note This function cannot work if objects at the given depth do
+ * not have CPU sets or if the topology is made of different machines.
+ */</doc>

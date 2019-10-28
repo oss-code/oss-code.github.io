@@ -1,0 +1,7 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='711' type='LLVMValueRef LLVMGetNextFunction(LLVMValueRef Fn)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='705'>/**
+ * Advance a Function iterator to the next Function.
+ *
+ * Returns NULL if the iterator was already at the end and there are no more
+ * functions.
+ */</doc>

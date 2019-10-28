@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='204' type='llvm::FoldingSetBase::Node * llvm::FoldingSetBase::GetOrInsertNode(llvm::FoldingSetBase::Node * N)'/>
+<use f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='439' u='c' c='_ZN4llvm14FoldingSetImpl15GetOrInsertNodeEPT_'/>
+<doc f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='201'>/// GetOrInsertNode - If there is an existing simple Node exactly
+  /// equal to the specified node, return it.  Otherwise, insert &apos;N&apos; and return
+  /// it instead.</doc>

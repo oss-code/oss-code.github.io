@@ -1,0 +1,12 @@
+<inh f='include/llvm-6.0/llvm/Pass.h' l='225' c='llvm::ModulePass'/>
+<def f='include/llvm-6.0/llvm/Analysis/GlobalsModRef.h' l='132' ll='146'/>
+<size>40</size>
+<doc f='include/llvm-6.0/llvm/Analysis/GlobalsModRef.h' l='131'>/// Legacy wrapper pass to provide the GlobalsAAResult object.</doc>
+<mbr r='llvm::GlobalsAAWrapperPass::Result' o='256' t='std::unique_ptr&lt;GlobalsAAResult&gt;'/>
+<smbr r='llvm::GlobalsAAWrapperPass::ID' t='char'/>
+<fun r='_ZN4llvm20GlobalsAAWrapperPassC1Ev'/>
+<fun r='_ZN4llvm20GlobalsAAWrapperPass9getResultEv'/>
+<fun r='_ZNK4llvm20GlobalsAAWrapperPass9getResultEv'/>
+<fun r='_ZN4llvm20GlobalsAAWrapperPass11runOnModuleERNS_6ModuleE'/>
+<fun r='_ZN4llvm20GlobalsAAWrapperPass14doFinalizationERNS_6ModuleE'/>
+<fun r='_ZNK4llvm20GlobalsAAWrapperPass16getAnalysisUsageERNS_13AnalysisUsageE'/>

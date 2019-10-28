@@ -1,0 +1,11 @@
+<def f='pocl/include/CL/cl2.hpp' l='2086' ll='2095' type='static cl::Device cl::Device::getDefault(cl_int * errResult = __null)'/>
+<use f='pocl/include/CL/cl2.hpp' l='6907' u='c' c='_ZN2cl12CommandQueue11makeDefaultEv'/>
+<use f='pocl/tests/regression/test_alignment_with_dynamic_wg.cpp' l='108' u='c' c='main'/>
+<doc f='pocl/include/CL/cl2.hpp' l='2082'>/*! \brief Returns the first device on the default context.
+     *
+     *  \see Context::getDefault()
+     */</doc>
+<use f='pocl/tests/regression/test_alignment_with_dynamic_wg2.cpp' l='55' u='c' c='main'/>
+<use f='pocl/tests/regression/test_alignment_with_dynamic_wg3.cpp' l='40' u='c' c='main'/>
+<use f='pocl/tests/regression/test_issue_231.cpp' l='81' u='c' c='main'/>
+<use f='pocl/tests/regression/test_issue_553.cpp' l='55' u='c' c='main'/>

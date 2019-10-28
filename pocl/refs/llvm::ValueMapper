@@ -1,0 +1,57 @@
+<def f='include/llvm-6.0/llvm/Transforms/Utils/ValueMapper.h' l='142' ll='187'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/ValueMapper.h' l='106'>/// Context for (re-)mapping values (and metadata).
+///
+/// A shared context used for mapping and remapping of Value and Metadata
+/// instances using \a ValueToValueMapTy, \a RemapFlags, \a
+/// ValueMapTypeRemapper, and \a ValueMaterializer.
+///
+/// There are a number of top-level entry points:
+/// - \a mapValue() (and \a mapConstant());
+/// - \a mapMetadata() (and \a mapMDNode());
+/// - \a remapInstruction(); and
+/// - \a remapFunction().
+///
+/// The \a ValueMaterializer can be used as a callback, but cannot invoke any
+/// of these top-level functions recursively.  Instead, callbacks should use
+/// one of the following to schedule work lazily in the \a ValueMapper
+/// instance:
+/// - \a scheduleMapGlobalInitializer()
+/// - \a scheduleMapAppendingVariable()
+/// - \a scheduleMapGlobalAliasee()
+/// - \a scheduleRemapFunction()
+///
+/// Sometimes a callback needs a different mapping context.  Such a context can
+/// be registered using \a registerAlternateMappingContext(), which takes an
+/// alternate \a ValueToValueMapTy and \a ValueMaterializer and returns a ID to
+/// pass into the schedule*() functions.
+///
+/// TODO: lib/Linker really doesn&apos;t need the \a ValueHandle in the \a
+/// ValueToValueMapTy.  We should template \a ValueMapper (and its
+/// implementation classes), and explicitly instantiate on two concrete
+/// instances of \a ValueMap (one as \a ValueToValueMap, and one with raw \a
+/// Value pointers).  It may be viable to do away with \a TrackingMDRef in the
+/// \a Metadata side map for the lib/Linker case as well, in which case we&apos;ll
+/// need a new template parameter on \a ValueMap.
+///
+/// TODO: Update callers of \a RemapInstruction() and \a MapValue() (etc.) to
+/// use \a ValueMapper directly.</doc>
+<mbr r='llvm::ValueMapper::pImpl' o='0' t='void *'/>
+<fun r='_ZN4llvm11ValueMapperC1ERNS_8ValueMapIPKNS_5ValueENS_14WeakTrackingVHENS_14ValueMapConfigIS4_NS_3sys10SmartMutexILb0EEEEEEENS_10RemapFlagsEPNS_20Value4313396'/>
+<fun r='_ZN4llvm11ValueMapperC1EOS0_'/>
+<fun r='_ZN4llvm11ValueMapperC1ERKS0_'/>
+<fun r='_ZN4llvm11ValueMapperaSEOS0_'/>
+<fun r='_ZN4llvm11ValueMapperaSERKS0_'/>
+<fun r='_ZN4llvm11ValueMapperD1Ev'/>
+<fun r='_ZN4llvm11ValueMapper31registerAlternateMappingContextERNS_8ValueMapIPKNS_5ValueENS_14WeakTrackingVHENS_14ValueMapConfigIS4_NS_3sys10SmartMutexILb0EEE16259405'/>
+<fun r='_ZN4llvm11ValueMapper8addFlagsENS_10RemapFlagsE'/>
+<fun r='_ZN4llvm11ValueMapper11mapMetadataERKNS_8MetadataE'/>
+<fun r='_ZN4llvm11ValueMapper9mapMDNodeERKNS_6MDNodeE'/>
+<fun r='_ZN4llvm11ValueMapper8mapValueERKNS_5ValueE'/>
+<fun r='_ZN4llvm11ValueMapper11mapConstantERKNS_8ConstantE'/>
+<fun r='_ZN4llvm11ValueMapper16remapInstructionERNS_11InstructionE'/>
+<fun r='_ZN4llvm11ValueMapper13remapFunctionERNS_8FunctionE'/>
+<fun r='_ZN4llvm11ValueMapper28scheduleMapGlobalInitializerERNS_14GlobalVariableERNS_8ConstantEj'/>
+<fun r='_ZN4llvm11ValueMapper28scheduleMapAppendingVariableERNS_14GlobalVariableEPNS_8ConstantEbNS_8ArrayRefIS4_EEj'/>
+<fun r='_ZN4llvm11ValueMapper24scheduleMapGlobalAliaseeERNS_11GlobalAliasERNS_8ConstantEj'/>
+<fun r='_ZN4llvm11ValueMapper21scheduleRemapFunctionERNS_8FunctionEj'/>

@@ -1,0 +1,9 @@
+<def f='pocl/include/CL/cl2.hpp' l='2644' ll='2653' type='static cl::Platform cl::Platform::get(cl_int * errResult = __null)'/>
+<doc f='pocl/include/CL/cl2.hpp' l='2636'>/*! \brief Gets the first available platform, returning it by value.
+     *
+     * \return Returns a valid platform if one is available.
+     *         If no platform is available will return a null platform.
+     * Throws an exception if no platforms are available
+     * or an error condition occurs.
+     * Wraps clGetPlatformIDs(), returning the first result.
+     */</doc>

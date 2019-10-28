@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='85' type='llvm::Constant * llvm::ConstantFoldSelectInstruction(llvm::Constant * Cond, llvm::Constant * V1, llvm::Constant * V2)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='82'>/// \brief Attempt to constant fold a select instruction with the specified
+/// operands. The constant result is returned if successful; if not, null is
+/// returned.</doc>

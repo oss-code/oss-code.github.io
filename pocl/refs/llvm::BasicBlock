@@ -1,0 +1,96 @@
+<inh f='include/llvm-6.0/llvm/IR/Value.h' l='73' c='llvm::Value'/>
+<inh f='include/llvm-6.0/llvm/ADT/ilist_node.h' l='257' c='llvm::ilist_node_with_parent'/>
+<def f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='59' ll='420'/>
+<size>64</size>
+<doc f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='44'>/// \brief LLVM Basic Block Representation
+///
+/// This represents a single basic block in LLVM. A basic block is simply a
+/// container of instructions that execute sequentially. Basic blocks are Values
+/// because they are referenced by instructions such as branches and switch
+/// tables. The type of a BasicBlock is &quot;Type::LabelTy&quot; because the basic block
+/// represents a label to which a branch can jump.
+///
+/// A well formed basic block is formed of a list of non-terminating
+/// instructions followed by a single TerminatorInst instruction.
+/// TerminatorInst&apos;s may not occur in the middle of basic blocks, and must
+/// terminate the blocks. The BasicBlock class allows malformed basic blocks to
+/// occur because it may be useful in the intermediate stage of constructing or
+/// modifying a program. However, the verifier will ensure that basic blocks
+/// are &quot;well formed&quot;.</doc>
+<doc f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='59'>// Basic blocks are data objects also</doc>
+<mbr r='llvm::BasicBlock::InstList' o='320' t='InstListType'/>
+<mbr r='llvm::BasicBlock::Parent' o='448' t='llvm::Function *'/>
+<fun r='_ZN4llvm10BasicBlock9setParentEPNS_8FunctionE'/>
+<fun r='_ZN4llvm10BasicBlockC1ERNS_11LLVMContextERKNS_5TwineEPNS_8FunctionEPS0_'/>
+<fun r='_ZN4llvm10BasicBlockC1ERKS0_'/>
+<fun r='_ZN4llvm10BasicBlockaSERKS0_'/>
+<fun r='_ZN4llvm10BasicBlockD1Ev'/>
+<fun r='_ZNK4llvm10BasicBlock10getContextEv'/>
+<fun r='_ZN4llvm10BasicBlock6CreateERNS_11LLVMContextERKNS_5TwineEPNS_8FunctionEPS0_'/>
+<fun r='_ZNK4llvm10BasicBlock9getParentEv'/>
+<fun r='_ZN4llvm10BasicBlock9getParentEv'/>
+<fun r='_ZNK4llvm10BasicBlock9getModuleEv'/>
+<fun r='_ZN4llvm10BasicBlock9getModuleEv'/>
+<fun r='_ZNK4llvm10BasicBlock13getTerminatorEv'/>
+<fun r='_ZN4llvm10BasicBlock13getTerminatorEv'/>
+<fun r='_ZNK4llvm10BasicBlock28getTerminatingDeoptimizeCallEv'/>
+<fun r='_ZN4llvm10BasicBlock28getTerminatingDeoptimizeCallEv'/>
+<fun r='_ZNK4llvm10BasicBlock26getTerminatingMustTailCallEv'/>
+<fun r='_ZN4llvm10BasicBlock26getTerminatingMustTailCallEv'/>
+<fun r='_ZNK4llvm10BasicBlock14getFirstNonPHIEv'/>
+<fun r='_ZN4llvm10BasicBlock14getFirstNonPHIEv'/>
+<fun r='_ZNK4llvm10BasicBlock19getFirstNonPHIOrDbgEv'/>
+<fun r='_ZN4llvm10BasicBlock19getFirstNonPHIOrDbgEv'/>
+<fun r='_ZNK4llvm10BasicBlock29getFirstNonPHIOrDbgOrLifetimeEv'/>
+<fun r='_ZN4llvm10BasicBlock29getFirstNonPHIOrDbgOrLifetimeEv'/>
+<fun r='_ZNK4llvm10BasicBlock19getFirstInsertionPtEv'/>
+<fun r='_ZN4llvm10BasicBlock19getFirstInsertionPtEv'/>
+<fun r='_ZN4llvm10BasicBlock16removeFromParentEv'/>
+<fun r='_ZN4llvm10BasicBlock15eraseFromParentEv'/>
+<fun r='_ZN4llvm10BasicBlock10moveBeforeEPS0_'/>
+<fun r='_ZN4llvm10BasicBlock9moveAfterEPS0_'/>
+<fun r='_ZN4llvm10BasicBlock10insertIntoEPNS_8FunctionEPS0_'/>
+<fun r='_ZNK4llvm10BasicBlock20getSinglePredecessorEv'/>
+<fun r='_ZN4llvm10BasicBlock20getSinglePredecessorEv'/>
+<fun r='_ZNK4llvm10BasicBlock20getUniquePredecessorEv'/>
+<fun r='_ZN4llvm10BasicBlock20getUniquePredecessorEv'/>
+<fun r='_ZNK4llvm10BasicBlock18getSingleSuccessorEv'/>
+<fun r='_ZN4llvm10BasicBlock18getSingleSuccessorEv'/>
+<fun r='_ZNK4llvm10BasicBlock18getUniqueSuccessorEv'/>
+<fun r='_ZN4llvm10BasicBlock18getUniqueSuccessorEv'/>
+<fun r='_ZN4llvm10BasicBlock5beginEv'/>
+<fun r='_ZNK4llvm10BasicBlock5beginEv'/>
+<fun r='_ZN4llvm10BasicBlock3endEv'/>
+<fun r='_ZNK4llvm10BasicBlock3endEv'/>
+<fun r='_ZN4llvm10BasicBlock6rbeginEv'/>
+<fun r='_ZNK4llvm10BasicBlock6rbeginEv'/>
+<fun r='_ZN4llvm10BasicBlock4rendEv'/>
+<fun r='_ZNK4llvm10BasicBlock4rendEv'/>
+<fun r='_ZNK4llvm10BasicBlock4sizeEv'/>
+<fun r='_ZNK4llvm10BasicBlock5emptyEv'/>
+<fun r='_ZNK4llvm10BasicBlock5frontEv'/>
+<fun r='_ZN4llvm10BasicBlock5frontEv'/>
+<fun r='_ZNK4llvm10BasicBlock4backEv'/>
+<fun r='_ZN4llvm10BasicBlock4backEv'/>
+<fun r='_ZNK4llvm10BasicBlock4phisEv'/>
+<fun r='_ZN4llvm10BasicBlock4phisEv'/>
+<fun r='_ZNK4llvm10BasicBlock11getInstListEv'/>
+<fun r='_ZN4llvm10BasicBlock11getInstListEv'/>
+<fun r='_ZN4llvm10BasicBlock16getSublistAccessEPNS_11InstructionE'/>
+<fun r='_ZN4llvm10BasicBlock19getValueSymbolTableEv'/>
+<fun r='_ZN4llvm10BasicBlock7classofEPKNS_5ValueE'/>
+<fun r='_ZN4llvm10BasicBlock17dropAllReferencesEv'/>
+<fun r='_ZN4llvm10BasicBlock17removePredecessorEPS0_b'/>
+<fun r='_ZNK4llvm10BasicBlock20canSplitPredecessorsEv'/>
+<fun r='_ZN4llvm10BasicBlock15splitBasicBlockENS_14ilist_iteratorINS_12ilist_detail12node_optionsINS_11InstructionELb0ELb0EvEELb0ELb0EEERKNS_5TwineE'/>
+<fun r='_ZN4llvm10BasicBlock15splitBasicBlockEPNS_11InstructionERKNS_5TwineE'/>
+<fun r='_ZNK4llvm10BasicBlock15hasAddressTakenEv'/>
+<fun r='_ZN4llvm10BasicBlock28replaceSuccessorsPhiUsesWithEPS0_'/>
+<fun r='_ZNK4llvm10BasicBlock7isEHPadEv'/>
+<fun r='_ZNK4llvm10BasicBlock12isLandingPadEv'/>
+<fun r='_ZNK4llvm10BasicBlock17getLandingPadInstEv'/>
+<fun r='_ZN4llvm10BasicBlock17getLandingPadInstEv'/>
+<fun r='_ZNK4llvm10BasicBlock18isLegalToHoistIntoEv'/>
+<fun r='_ZNK4llvm10BasicBlock22getIrrLoopHeaderWeightEv'/>
+<fun r='_ZN4llvm10BasicBlock26AdjustBlockAddressRefCountEi'/>
+<fun r='_ZN4llvm10BasicBlock20setValueSubclassDataEt'/>

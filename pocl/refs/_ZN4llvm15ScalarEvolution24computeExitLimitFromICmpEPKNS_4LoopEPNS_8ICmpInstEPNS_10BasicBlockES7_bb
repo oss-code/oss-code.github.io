@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1489' type='llvm::ScalarEvolution::ExitLimit llvm::ScalarEvolution::computeExitLimitFromICmp(const llvm::Loop * L, llvm::ICmpInst * ExitCond, llvm::BasicBlock * TBB, llvm::BasicBlock * FBB, bool IsSubExpr, bool AllowPredicates = false)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1484'>/// Compute the number of times the backedge of the specified loop will
+  /// execute if its exit condition were a conditional branch of the ICmpInst
+  /// ExitCond, TBB, and FBB. If AllowPredicates is set, this call will try
+  /// to use a minimal set of SCEV predicates in order to return an exact
+  /// answer.</doc>

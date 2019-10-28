@@ -1,0 +1,14 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='235' type='llvm::FunctionPass * llvm::createPromoteMemoryToRegisterPass()'/>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='142' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='223'>//===----------------------------------------------------------------------===//
+//
+// PromoteMemoryToRegister - This pass is used to promote memory references to
+// be register references. A simple example of the transformation performed by
+// this pass is:
+//
+//        FROM CODE                           TO CODE
+//   %X = alloca i32, i32 1                 ret i32 42
+//   store i32 42, i32 *%X
+//   %Y = load i32* %X
+//   ret i32 %Y
+//</doc>

@@ -1,0 +1,4 @@
+<dec f='pocl/include/pocl_cache.h' l='97' type='int pocl_cache_write_kernel_parallel_bc(void * bc, cl_program program, int device_i, cl_kernel kernel, _cl_command_node * command, int specialize)'/>
+<use f='pocl/lib/CL/devices/common.c' l='136' u='c' c='llvm_codegen'/>
+<def f='pocl/lib/CL/pocl_cache.c' l='343' ll='360' type='int pocl_cache_write_kernel_parallel_bc(void * bc, cl_program program, int device_i, cl_kernel kernel, _cl_command_node * command, int specialize)'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='474' u='c' c='pocl_llvm_generate_workgroup_function'/>

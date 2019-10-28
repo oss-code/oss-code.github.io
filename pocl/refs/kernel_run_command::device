@@ -1,0 +1,9 @@
+<dec f='pocl/lib/CL/devices/pthread/pocl-pthread_utils.h' l='42' type='cl_device_id'/>
+<offset>128</offset>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='356' u='w' c='pocl_pthread_prepare_kernel'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='422' u='r' c='check_kernel_queue_for_device'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='139' u='r' c='setup_kernel_arg_array'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='149' u='r' c='setup_kernel_arg_array'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='193' u='r' c='setup_kernel_arg_array_with_locals'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='211' u='r' c='setup_kernel_arg_array_with_locals'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='240' u='r' c='free_kernel_arg_array'/>

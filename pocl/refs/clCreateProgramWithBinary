@@ -1,0 +1,12 @@
+<dec f='pocl/include/CL/cl.h' l='1115' type='cl_program clCreateProgramWithBinary(cl_context context, cl_uint num_devices, const cl_device_id * device_list, const size_t * lengths, const unsigned char ** binaries, cl_int * binary_status, cl_int * errcode_ret)'/>
+<use f='pocl/lib/CL/pocl_intfn.h' l='44' c='POclCreateProgramWithBinary'/>
+<use f='pocl/lib/poclu/misc.c' l='413' u='c' c='poclu_load_program_multidev'/>
+<use f='pocl/include/CL/cl2.hpp' l='6457' u='c' c='_ZN2cl7ProgramC1ERKNS_7ContextERKSt6vectorINS_6DeviceESaIS5_EERKS4_IS4_IhSaIhEESaISB_EEPS4_IiSaIiEEPi'/>
+<use f='pocl/tests/regression/test_program_from_binary_with_local_1_1_1.c' l='105' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateProgramWithBinary.c' l='79' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateProgramWithBinary.c' l='122' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateProgramWithBinary.c' l='160' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clGetKernelArgInfo.c' l='359' u='c' c='spir_program'/>
+<use f='pocl/tests/runtime/test_enqueue_kernel_from_binary.c' l='148' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_enqueue_kernel_from_binary.c' l='187' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_enqueue_kernel_from_binary.c' l='209' u='c' c='main'/>

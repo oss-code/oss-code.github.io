@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/devices/basic/basic.h' l='44' macro='1' type='void pocl_basic_submit(_cl_command_node * node, cl_command_queue cq)'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='133' u='r' c='pocl_basic_init_device_ops'/>
+<def f='pocl/lib/CL/devices/basic/basic.c' l='1128' ll='1145' type='void pocl_basic_submit(_cl_command_node * node, cl_command_queue cq)'/>
+<dec f='pocl/lib/CL/devices/pthread/pocl-pthread.h' l='35' macro='1' type='void pocl_basic_submit(_cl_command_node * node, cl_command_queue cq)'/>
+<dec f='pocl/lib/CL/devices/hsa/pocl-hsa.h' l='32' macro='1' type='void pocl_basic_submit(_cl_command_node * node, cl_command_queue cq)'/>

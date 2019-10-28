@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/ADT/Optional.h' l='94' ll='102' type='Optional&lt;T&gt; &amp; llvm::Optional::operator=(const T &amp; y)'/>
+<use f='include/llvm-6.0/llvm/Support/FormatProviders.h' l='73' u='c' c='_ZN4llvm6detail15HelperFunctions21parseNumericPrecisionENS_9StringRefE'/>
+<doc f='include/llvm-6.0/llvm/ADT/Optional.h' l='89'>// FIXME: these assignments (&amp; the equivalent const T&amp;/const Optional&amp; ctors)
+  // could be made more efficient by passing by value, possibly unifying them
+  // with the rvalue versions above - but this could place a different set of
+  // requirements (notably: the existence of a default ctor) when implemented
+  // in that way. Careful SFINAE to avoid such pitfalls would be required.</doc>

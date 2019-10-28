@@ -1,0 +1,19 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/ValueMapper.h' l='91' type='2'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/ValueMapper.h' l='75'>/// If this flag is set, the remapper ignores missing function-local entries
+  /// (Argument, Instruction, BasicBlock) that are not in the value map.  If it
+  /// is unset, it aborts if an operand is asked to be remapped which doesn&apos;t
+  /// exist in the mapping.
+  ///
+  /// There are no such assertions in MapValue(), whose results are almost
+  /// unchanged by this flag.  This flag mainly changes the assertion behaviour
+  /// in RemapInstruction().
+  ///
+  /// Since an Instruction&apos;s metadata operands (even that point to SSA values)
+  /// aren&apos;t guaranteed to be dominated by their definitions, MapMetadata will
+  /// return &quot;!{}&quot; instead of &quot;null&quot; for \a LocalAsMetadata instances whose SSA
+  /// values are unmapped when this flag is set.  Otherwise, \a MapValue()
+  /// completely ignores this flag.
+  ///
+  /// \a MapMetadata() always ignores this flag.</doc>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='414' u='r' c='_ZN4pocl22BarrierTailReplication16UpdateReferencesERKSt6vectorIPN4llvm10BasicBlockESaIS4_EERNS2_8ValueMapIPKNS2_5ValueENS2_14WeakTrackingVHENS2_14Valu1035321'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='169' u='r' c='_ZN4pocl14ParallelRegion5remapERN4llvm8ValueMapIPKNS1_5ValueENS1_14WeakTrackingVHENS1_14ValueMapConfigIS5_NS1_3sys10SmartMutexILb0EEEEEEE'/>

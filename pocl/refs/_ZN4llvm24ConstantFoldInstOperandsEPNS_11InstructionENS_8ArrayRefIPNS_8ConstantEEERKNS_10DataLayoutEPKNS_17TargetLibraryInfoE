@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='63' type='llvm::Constant * llvm::ConstantFoldInstOperands(llvm::Instruction * I, ArrayRef&lt;llvm::Constant *&gt; Ops, const llvm::DataLayout &amp; DL, const llvm::TargetLibraryInfo * TLI = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='57'>/// ConstantFoldInstOperands - Attempt to constant fold an instruction with the
+/// specified operands.  If successful, the constant result is returned, if not,
+/// null is returned.  Note that this function can fail when attempting to
+/// fold instructions like loads and stores, which have no constant expression
+/// form.
+///</doc>

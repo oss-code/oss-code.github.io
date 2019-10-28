@@ -1,0 +1,6 @@
+<def f='include/hwloc/helper.h' l='1240' ll='1244' type='hwloc_obj_t hwloc_get_next_bridge(hwloc_topology_t topology, hwloc_obj_t prev)'/>
+<use f='include/hwloc/helper.h' l='1269' u='c' c='hwloc_get_hostbridge_by_pcibus'/>
+<doc f='include/hwloc/helper.h' l='1236'>/** \brief Get the next bridge in the system.
+ *
+ * \return the first bridge if \p prev is \c NULL.
+ */</doc>

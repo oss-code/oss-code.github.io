@@ -1,0 +1,9 @@
+<dec f='pocl/lib/CL/devices/pthread/pocl-pthread_utils.h' l='80' type='void setup_kernel_arg_array_with_locals(void ** arguments, void ** arguments2, kernel_run_command * k, char * local_mem, size_t local_mem_size)'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='257' u='c' c='work_group_scheduler'/>
+<def f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='175' ll='224' type='void setup_kernel_arg_array_with_locals(void ** arguments, void ** arguments2, kernel_run_command * k, char * local_mem, size_t local_mem_size)'/>
+<doc f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='169'>/* called from each driver thread.
+ * &quot;arguments&quot; and &quot;arguments2&quot; are the output:
+ * driver-thread-local copies of kern args.
+ *
+ * they&apos;re set up by 1) memcpy from kernel_run_command, 2) all
+ * local args are set to thread-local &quot;local memory&quot; storage. */</doc>

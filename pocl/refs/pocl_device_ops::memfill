@@ -1,0 +1,6 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='479' type='void (*)(void *, pocl_mem_identifier *, cl_mem, size_t, size_t, const void *restrict, size_t)'/>
+<offset>1984</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='478'>/* clEnqFillBuffer */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='126' u='w' c='pocl_basic_init_device_ops'/>
+<use f='pocl/lib/CL/devices/common.c' l='432' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='433' u='r' c='pocl_exec_command'/>

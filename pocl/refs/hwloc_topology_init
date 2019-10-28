@@ -1,0 +1,8 @@
+<dec f='include/hwloc.h' l='610' type='int hwloc_topology_init(hwloc_topology_t * topologyp)'/>
+<use f='pocl/lib/CL/devices/topology/pocl_topology.c' l='85' u='c' c='pocl_topology_detect_device_info'/>
+<doc f='include/hwloc.h' l='604'>/** \brief Allocate a topology context.
+ *
+ * \param[out] topologyp is assigned a pointer to the new allocated context.
+ *
+ * \return 0 on success, -1 on error.
+ */</doc>

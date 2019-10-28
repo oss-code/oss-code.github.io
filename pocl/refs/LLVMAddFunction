@@ -1,0 +1,8 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='679' type='LLVMValueRef LLVMAddFunction(LLVMModuleRef M, const char * Name, LLVMTypeRef FunctionTy)'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1165' u='c' c='_ZN4pocl9Workgroup32createArgBufferWorkgroupLauncherEPN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1289' u='c' c='_ZN4pocl9Workgroup18createGridLauncherEPN4llvm8FunctionES3_NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='674'>/**
+ * Add a function to a module under a specified name.
+ *
+ * @see llvm::Function::Create()
+ */</doc>

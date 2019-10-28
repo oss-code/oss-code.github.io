@@ -1,0 +1,29 @@
+<def f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='306' ll='356'/>
+<size>152</size>
+<doc f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='302'>//===--------------------------------------------------------------------===//
+/// FoldingSetNodeID - This class is used to gather all the unique data bits of
+/// a node.  When all the bits are gathered this class is used to produce a
+/// hash value for the node.</doc>
+<mbr r='llvm::FoldingSetNodeID::Bits' o='0' t='SmallVector&lt;unsigned int, 32&gt;'/>
+<fun r='_ZN4llvm16FoldingSetNodeIDC1Ev'/>
+<fun r='_ZN4llvm16FoldingSetNodeIDC1ENS_19FoldingSetNodeIDRefE'/>
+<fun r='_ZN4llvm16FoldingSetNodeID10AddPointerEPKv'/>
+<fun r='_ZN4llvm16FoldingSetNodeID10AddIntegerEi'/>
+<fun r='_ZN4llvm16FoldingSetNodeID10AddIntegerEj'/>
+<fun r='_ZN4llvm16FoldingSetNodeID10AddIntegerEl'/>
+<fun r='_ZN4llvm16FoldingSetNodeID10AddIntegerEm'/>
+<fun r='_ZN4llvm16FoldingSetNodeID10AddIntegerEx'/>
+<fun r='_ZN4llvm16FoldingSetNodeID10AddIntegerEy'/>
+<fun r='_ZN4llvm16FoldingSetNodeID10AddBooleanEb'/>
+<fun r='_ZN4llvm16FoldingSetNodeID9AddStringENS_9StringRefE'/>
+<fun r='_ZN4llvm16FoldingSetNodeID9AddNodeIDERKS0_'/>
+<fun r='_ZN4llvm16FoldingSetNodeID3AddERKT_'/>
+<fun r='_ZN4llvm16FoldingSetNodeID5clearEv'/>
+<fun r='_ZNK4llvm16FoldingSetNodeID11ComputeHashEv'/>
+<fun r='_ZNK4llvm16FoldingSetNodeIDeqERKS0_'/>
+<fun r='_ZNK4llvm16FoldingSetNodeIDeqENS_19FoldingSetNodeIDRefE'/>
+<fun r='_ZNK4llvm16FoldingSetNodeIDneERKS0_'/>
+<fun r='_ZNK4llvm16FoldingSetNodeIDneENS_19FoldingSetNodeIDRefE'/>
+<fun r='_ZNK4llvm16FoldingSetNodeIDltERKS0_'/>
+<fun r='_ZNK4llvm16FoldingSetNodeIDltENS_19FoldingSetNodeIDRefE'/>
+<fun r='_ZNK4llvm16FoldingSetNodeID6InternERNS_20BumpPtrAllocatorImplINS_15MallocAllocatorELm4096ELm4096EEE'/>

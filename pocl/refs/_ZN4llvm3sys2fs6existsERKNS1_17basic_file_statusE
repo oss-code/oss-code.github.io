@@ -1,0 +1,10 @@
+<dec f='include/llvm-6.0/llvm/Support/FileSystem.h' l='414' type='bool llvm::sys::fs::exists(const llvm::sys::fs::basic_file_status &amp; status)'/>
+<doc f='include/llvm-6.0/llvm/Support/FileSystem.h' l='405'>/// @}
+/// @name Physical Observers
+/// @{
+
+/// @brief Does file exist?
+///
+/// @param status A basic_file_status previously returned from stat.
+/// @returns True if the file represented by status exists, false if it does
+///          not.</doc>

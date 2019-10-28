@@ -1,0 +1,21 @@
+<def f='include/llvm-6.0/llvm/PassSupport.h' l='93' ll='99' type='void llvm::RegisterPass::RegisterPass&lt;passName&gt;(llvm::StringRef PassArg, llvm::StringRef Name, bool CFGOnly = false, bool is_analysis = false)'/>
+<doc f='include/llvm-6.0/llvm/PassSupport.h' l='92'>// Register Pass using default constructor...</doc>
+<use f='pocl/lib/llvmopencl/AllocasToEntry.cc' l='42' u='c'/>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='53' u='c'/>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='51' u='c'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='48' u='c'/>
+<use f='pocl/lib/llvmopencl/HandleSamplerInitialization.cc' l='45' u='c'/>
+<use f='pocl/lib/llvmopencl/ImplicitConditionalBarriers.cc' l='53' u='c'/>
+<use f='pocl/lib/llvmopencl/ImplicitLoopBarriers.cc' l='51' u='c'/>
+<use f='pocl/lib/llvmopencl/IsolateRegions.cc' l='47' u='c'/>
+<use f='pocl/lib/llvmopencl/LoopBarriers.cc' l='50' u='c'/>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='43' u='c'/>
+<use f='pocl/lib/llvmopencl/PHIsToAllocas.cc' l='40' u='c'/>
+<use f='pocl/lib/llvmopencl/RemoveBarrierCalls.cc' l='40' u='c'/>
+<use f='pocl/lib/llvmopencl/RemoveOptnoneFromWIFunc.cc' l='41' u='c'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='61' u='c'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='128' u='c'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='163' u='c'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandlerChooser.cc' l='46' u='c'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='69' u='c'/>
+<use f='pocl/lib/llvmopencl/WorkitemReplication.cc' l='73' u='c'/>

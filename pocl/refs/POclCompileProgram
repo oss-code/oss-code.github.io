@@ -1,0 +1,4 @@
+<dec f='pocl/lib/CL/pocl_intfn.h' l='33' macro='1' type='cl_int POclCompileProgram(cl_program , cl_uint , const cl_device_id * , const char * , cl_uint , const cl_program * , const char ** , void (*)(cl_program, void *) , void * )'/>
+<def f='pocl/lib/CL/clCompileProgram.c' l='28' macro='1' type='cl_int POclCompileProgram(cl_program program, cl_uint num_devices, const cl_device_id * device_list, const char * options, cl_uint num_input_headers, const cl_program * input_headers, const char ** header_include_names, void (*)(cl_program, void *) pfn_notify, void * user_data)'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='138' macro='1' u='a'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='138' macro='1' u='a'/>

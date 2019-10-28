@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>IRReader.h source code [include/llvm-6.0/llvm/IRReader/IRReader.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'include/llvm-6.0/llvm/IRReader/IRReader.h'; var root_path = '../../../..'; var data_path = '../../../../../data';</script>
+<script src='../../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../../..'>include</a>/<a href='../..'>llvm-6.0</a>/<a href='..'>llvm</a>/<a href='./'>IRReader</a>/<a href='IRReader.h.html'>IRReader.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>//===---- llvm/IRReader/IRReader.h - Reader for LLVM IR files ---*- C++ -*-===//</i></td></tr>
+<tr><th id="2">2</th><td><i>//</i></td></tr>
+<tr><th id="3">3</th><td><i>//                     The LLVM Compiler Infrastructure</i></td></tr>
+<tr><th id="4">4</th><td><i>//</i></td></tr>
+<tr><th id="5">5</th><td><i>// This file is distributed under the University of Illinois Open Source</i></td></tr>
+<tr><th id="6">6</th><td><i>// License. See LICENSE.TXT for details.</i></td></tr>
+<tr><th id="7">7</th><td><i>//</i></td></tr>
+<tr><th id="8">8</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="9">9</th><td><i>//</i></td></tr>
+<tr><th id="10">10</th><td><i>// This file defines functions for reading LLVM IR. They support both</i></td></tr>
+<tr><th id="11">11</th><td><i>// Bitcode and Assembly, automatically detecting the input format.</i></td></tr>
+<tr><th id="12">12</th><td><i>//</i></td></tr>
+<tr><th id="13">13</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td><u>#<span data-ppcond="15">ifndef</span> <span class="macro" data-ref="_M/LLVM_IRREADER_IRREADER_H">LLVM_IRREADER_IRREADER_H</span></u></td></tr>
+<tr><th id="16">16</th><td><u>#define <dfn class="macro" id="_M/LLVM_IRREADER_IRREADER_H" data-ref="_M/LLVM_IRREADER_IRREADER_H">LLVM_IRREADER_IRREADER_H</dfn></u></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><u>#include <a href="../../../c++/7/memory.html">&lt;memory&gt;</a></u></td></tr>
+<tr><th id="19">19</th><td></td></tr>
+<tr><th id="20">20</th><td><b>namespace</b> <span class="namespace">llvm</span> {</td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><b>class</b> <a class="type" href="../ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef" id="llvm::StringRef">StringRef</a>;</td></tr>
+<tr><th id="23">23</th><td><b>class</b> <a class="type" href="../Support/MemoryBuffer.h.html#llvm::MemoryBufferRef" title='llvm::MemoryBufferRef' data-ref="llvm::MemoryBufferRef" id="llvm::MemoryBufferRef">MemoryBufferRef</a>;</td></tr>
+<tr><th id="24">24</th><td><b>class</b> <a class="type" href="../IR/Module.h.html#llvm::Module" title='llvm::Module' data-ref="llvm::Module" id="llvm::Module">Module</a>;</td></tr>
+<tr><th id="25">25</th><td><b>class</b> <a class="type" href="../Support/SourceMgr.h.html#llvm::SMDiagnostic" title='llvm::SMDiagnostic' data-ref="llvm::SMDiagnostic" id="llvm::SMDiagnostic">SMDiagnostic</a>;</td></tr>
+<tr><th id="26">26</th><td><b>class</b> <a class="type" href="../IR/LLVMContext.h.html#llvm::LLVMContext" title='llvm::LLVMContext' data-ref="llvm::LLVMContext" id="llvm::LLVMContext">LLVMContext</a>;</td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><i class="doc">/// If the given file holds a bitcode image, return a Module</i></td></tr>
+<tr><th id="29">29</th><td><i class="doc">/// for it which does lazy deserialization of function bodies.  Otherwise,</i></td></tr>
+<tr><th id="30">30</th><td><i class="doc">/// attempt to parse it as LLVM Assembly and return a fully populated</i></td></tr>
+<tr><th id="31">31</th><td><i class="doc">/// Module. The ShouldLazyLoadMetadata flag is passed down to the bitcode</i></td></tr>
+<tr><th id="32">32</th><td><i class="doc">/// reader to optionally enable lazy metadata loading.</i></td></tr>
+<tr><th id="33">33</th><td><span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/unique_ptr.h.html#std::unique_ptr" title='std::unique_ptr' data-ref="std::unique_ptr">unique_ptr</a>&lt;<a class="type" href="../IR/Module.h.html#llvm::Module" title='llvm::Module' data-ref="llvm::Module">Module</a>&gt;</td></tr>
+<tr><th id="34">34</th><td><dfn class="decl" id="_ZN4llvm19getLazyIRFileModuleENS_9StringRefERNS_12SMDiagnosticERNS_11LLVMContextEb" title='llvm::getLazyIRFileModule' data-ref="_ZN4llvm19getLazyIRFileModuleENS_9StringRefERNS_12SMDiagnosticERNS_11LLVMContextEb">getLazyIRFileModule</dfn>(<a class="type" href="../ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="local col7 decl" id="617Filename" title='Filename' data-type='llvm::StringRef' data-ref="617Filename">Filename</dfn>, <a class="type" href="../Support/SourceMgr.h.html#llvm::SMDiagnostic" title='llvm::SMDiagnostic' data-ref="llvm::SMDiagnostic">SMDiagnostic</a> &amp;<dfn class="local col8 decl" id="618Err" title='Err' data-type='llvm::SMDiagnostic &amp;' data-ref="618Err">Err</dfn>, <a class="type" href="../IR/LLVMContext.h.html#llvm::LLVMContext" title='llvm::LLVMContext' data-ref="llvm::LLVMContext">LLVMContext</a> &amp;<dfn class="local col9 decl" id="619Context" title='Context' data-type='llvm::LLVMContext &amp;' data-ref="619Context">Context</dfn>,</td></tr>
+<tr><th id="35">35</th><td>                    <em>bool</em> <dfn class="local col0 decl" id="620ShouldLazyLoadMetadata" title='ShouldLazyLoadMetadata' data-type='bool' data-ref="620ShouldLazyLoadMetadata">ShouldLazyLoadMetadata</dfn> = <b>false</b>);</td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td><i class="doc">/// If the given MemoryBuffer holds a bitcode image, return a Module</i></td></tr>
+<tr><th id="38">38</th><td><i class="doc">/// for it.  Otherwise, attempt to parse it as LLVM Assembly and return</i></td></tr>
+<tr><th id="39">39</th><td><i class="doc">/// a Module for it.</i></td></tr>
+<tr><th id="40">40</th><td><i class="doc">/// <span class="command">\param</span> <span class="arg">UpgradeDebugInfo</span> Run UpgradeDebugInfo, which runs the Verifier.</i></td></tr>
+<tr><th id="41">41</th><td><i class="doc">///                         This option should only be set to false by llvm-as</i></td></tr>
+<tr><th id="42">42</th><td><i class="doc">///                         for use inside the LLVM testuite!</i></td></tr>
+<tr><th id="43">43</th><td><span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/unique_ptr.h.html#std::unique_ptr" title='std::unique_ptr' data-ref="std::unique_ptr">unique_ptr</a>&lt;<a class="type" href="../IR/Module.h.html#llvm::Module" title='llvm::Module' data-ref="llvm::Module">Module</a>&gt; <dfn class="decl" id="_ZN4llvm7parseIRENS_15MemoryBufferRefERNS_12SMDiagnosticERNS_11LLVMContextEb" title='llvm::parseIR' data-ref="_ZN4llvm7parseIRENS_15MemoryBufferRefERNS_12SMDiagnosticERNS_11LLVMContextEb">parseIR</dfn>(<a class="type" href="../Support/MemoryBuffer.h.html#llvm::MemoryBufferRef" title='llvm::MemoryBufferRef' data-ref="llvm::MemoryBufferRef">MemoryBufferRef</a> <dfn class="local col1 decl" id="621Buffer" title='Buffer' data-type='llvm::MemoryBufferRef' data-ref="621Buffer">Buffer</dfn>, <a class="type" href="../Support/SourceMgr.h.html#llvm::SMDiagnostic" title='llvm::SMDiagnostic' data-ref="llvm::SMDiagnostic">SMDiagnostic</a> &amp;<dfn class="local col2 decl" id="622Err" title='Err' data-type='llvm::SMDiagnostic &amp;' data-ref="622Err">Err</dfn>,</td></tr>
+<tr><th id="44">44</th><td>                                <a class="type" href="../IR/LLVMContext.h.html#llvm::LLVMContext" title='llvm::LLVMContext' data-ref="llvm::LLVMContext">LLVMContext</a> &amp;<dfn class="local col3 decl" id="623Context" title='Context' data-type='llvm::LLVMContext &amp;' data-ref="623Context">Context</dfn>,</td></tr>
+<tr><th id="45">45</th><td>                                <em>bool</em> <dfn class="local col4 decl" id="624UpgradeDebugInfo" title='UpgradeDebugInfo' data-type='bool' data-ref="624UpgradeDebugInfo">UpgradeDebugInfo</dfn> = <b>true</b>);</td></tr>
+<tr><th id="46">46</th><td></td></tr>
+<tr><th id="47">47</th><td><i class="doc">/// If the given file holds a bitcode image, return a Module for it.</i></td></tr>
+<tr><th id="48">48</th><td><i class="doc">/// Otherwise, attempt to parse it as LLVM Assembly and return a Module</i></td></tr>
+<tr><th id="49">49</th><td><i class="doc">/// for it.</i></td></tr>
+<tr><th id="50">50</th><td><i class="doc">/// <span class="command">\param</span> <span class="arg">UpgradeDebugInfo</span> Run UpgradeDebugInfo, which runs the Verifier.</i></td></tr>
+<tr><th id="51">51</th><td><i class="doc">///                         This option should only be set to false by llvm-as</i></td></tr>
+<tr><th id="52">52</th><td><i class="doc">///                         for use inside the LLVM testuite!</i></td></tr>
+<tr><th id="53">53</th><td><span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/unique_ptr.h.html#std::unique_ptr" title='std::unique_ptr' data-ref="std::unique_ptr">unique_ptr</a>&lt;<a class="type" href="../IR/Module.h.html#llvm::Module" title='llvm::Module' data-ref="llvm::Module">Module</a>&gt; <dfn class="decl" id="_ZN4llvm11parseIRFileENS_9StringRefERNS_12SMDiagnosticERNS_11LLVMContextEb" title='llvm::parseIRFile' data-ref="_ZN4llvm11parseIRFileENS_9StringRefERNS_12SMDiagnosticERNS_11LLVMContextEb">parseIRFile</dfn>(<a class="type" href="../ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="local col5 decl" id="625Filename" title='Filename' data-type='llvm::StringRef' data-ref="625Filename">Filename</dfn>, <a class="type" href="../Support/SourceMgr.h.html#llvm::SMDiagnostic" title='llvm::SMDiagnostic' data-ref="llvm::SMDiagnostic">SMDiagnostic</a> &amp;<dfn class="local col6 decl" id="626Err" title='Err' data-type='llvm::SMDiagnostic &amp;' data-ref="626Err">Err</dfn>,</td></tr>
+<tr><th id="54">54</th><td>                                    <a class="type" href="../IR/LLVMContext.h.html#llvm::LLVMContext" title='llvm::LLVMContext' data-ref="llvm::LLVMContext">LLVMContext</a> &amp;<dfn class="local col7 decl" id="627Context" title='Context' data-type='llvm::LLVMContext &amp;' data-ref="627Context">Context</dfn>,</td></tr>
+<tr><th id="55">55</th><td>                                    <em>bool</em> <dfn class="local col8 decl" id="628UpgradeDebugInfo" title='UpgradeDebugInfo' data-type='bool' data-ref="628UpgradeDebugInfo">UpgradeDebugInfo</dfn> = <b>true</b>);</td></tr>
+<tr><th id="56">56</th><td>}</td></tr>
+<tr><th id="57">57</th><td></td></tr>
+<tr><th id="58">58</th><td><u>#<span data-ppcond="15">endif</span></u></td></tr>
+<tr><th id="59">59</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../../../pocl/lib/CL/pocl_llvm_utils.cc.html'>pocl/lib/CL/pocl_llvm_utils.cc</a><br/>Generated on <em>2019-Oct-28</em> from project include<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

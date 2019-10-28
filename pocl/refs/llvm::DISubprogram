@@ -1,0 +1,73 @@
+<inh f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1234' c='llvm::DILocalScope'/>
+<def f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1472' ll='1680'/>
+<size>48</size>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1468'>/// Subprogram description.
+///
+/// TODO: Remove DisplayName.  It&apos;s always equal to Name.
+/// TODO: Split up flags.</doc>
+<mbr r='llvm::DISubprogram::Line' o='192' t='unsigned int'/>
+<mbr r='llvm::DISubprogram::ScopeLine' o='224' t='unsigned int'/>
+<mbr r='llvm::DISubprogram::VirtualIndex' o='256' t='unsigned int'/>
+<mbr r='llvm::DISubprogram::ThisAdjustment' o='288' t='int'/>
+<mbr r='llvm::DISubprogram::Virtuality' o='320' t='unsigned int'/>
+<mbr r='llvm::DISubprogram::IsLocalToUnit' o='322' t='unsigned int'/>
+<mbr r='llvm::DISubprogram::IsDefinition' o='323' t='unsigned int'/>
+<mbr r='llvm::DISubprogram::IsOptimized' o='324' t='unsigned int'/>
+<mbr r='llvm::DISubprogram::Padding' o='325' t='unsigned int'/>
+<mbr r='llvm::DISubprogram::Flags' o='352' t='llvm::DINode::DIFlags'/>
+<fun r='_ZN4llvm12DISubprogramC1ERNS_11LLVMContextENS_8Metadata11StorageTypeEjjjjiNS_6DINode7DIFlagsEbbbNS_8ArrayRefIPS3_EE'/>
+<fun r='_ZN4llvm12DISubprogramD1Ev'/>
+<fun r='_ZN4llvm12DISubprogram7getImplERNS_11LLVMContextENS_14TypedDINodeRefINS_7DIScopeEEENS_9StringRefES6_PNS_6DIFileEjPNS_16DISubroutineTypeEbbjNS3_INS_6DI15623259'/>
+<fun r='_ZN4llvm12DISubprogram7getImplERNS_11LLVMContextEPNS_8MetadataEPNS_8MDStringES6_S4_jS4_bbjS4_jjiNS_6DINode7DIFlagsEbS4_S4_S4_S4_S4_NS3_11StorageTypeEb'/>
+<fun r='_ZNK4llvm12DISubprogram9cloneImplEv'/>
+<fun r='_ZN4llvm12DISubprogram3getERNS_11LLVMContextENS_14TypedDINodeRefINS_7DIScopeEEENS_9StringRefES6_PNS_6DIFileEjPNS_16DISubroutineTypeEbbjNS3_INS_6DIType6443294'/>
+<fun r='_ZN4llvm12DISubprogram11getIfExistsERNS_11LLVMContextENS_14TypedDINodeRefINS_7DIScopeEEENS_9StringRefES6_PNS_6DIFileEjPNS_16DISubroutineTypeEbbjNS3_IN11663908'/>
+<fun r='_ZN4llvm12DISubprogram11getDistinctERNS_11LLVMContextENS_14TypedDINodeRefINS_7DIScopeEEENS_9StringRefES6_PNS_6DIFileEjPNS_16DISubroutineTypeEbbjNS3_IN8124406'/>
+<fun r='_ZN4llvm12DISubprogram12getTemporaryERNS_11LLVMContextENS_14TypedDINodeRefINS_7DIScopeEEENS_9StringRefES6_PNS_6DIFileEjPNS_16DISubroutineTypeEbbjNS3_I1377339'/>
+<fun r='_ZN4llvm12DISubprogram3getERNS_11LLVMContextEPNS_8MetadataEPNS_8MDStringES6_S4_jS4_bbjS4_jjiNS_6DINode7DIFlagsEbS4_S4_S4_S4_S4_'/>
+<fun r='_ZN4llvm12DISubprogram11getIfExistsERNS_11LLVMContextEPNS_8MetadataEPNS_8MDStringES6_S4_jS4_bbjS4_jjiNS_6DINode7DIFlagsEbS4_S4_S4_S4_S4_'/>
+<fun r='_ZN4llvm12DISubprogram11getDistinctERNS_11LLVMContextEPNS_8MetadataEPNS_8MDStringES6_S4_jS4_bbjS4_jjiNS_6DINode7DIFlagsEbS4_S4_S4_S4_S4_'/>
+<fun r='_ZN4llvm12DISubprogram12getTemporaryERNS_11LLVMContextEPNS_8MetadataEPNS_8MDStringES6_S4_jS4_bbjS4_jjiNS_6DINode7DIFlagsEbS4_S4_S4_S4_S4_'/>
+<fun r='_ZNK4llvm12DISubprogram5cloneEv'/>
+<fun r='_ZNK4llvm12DISubprogram7getLineEv'/>
+<fun r='_ZNK4llvm12DISubprogram13getVirtualityEv'/>
+<fun r='_ZNK4llvm12DISubprogram15getVirtualIndexEv'/>
+<fun r='_ZNK4llvm12DISubprogram17getThisAdjustmentEv'/>
+<fun r='_ZNK4llvm12DISubprogram12getScopeLineEv'/>
+<fun r='_ZNK4llvm12DISubprogram8getFlagsEv'/>
+<fun r='_ZNK4llvm12DISubprogram13isLocalToUnitEv'/>
+<fun r='_ZNK4llvm12DISubprogram12isDefinitionEv'/>
+<fun r='_ZNK4llvm12DISubprogram11isOptimizedEv'/>
+<fun r='_ZNK4llvm12DISubprogram12isArtificialEv'/>
+<fun r='_ZNK4llvm12DISubprogram9isPrivateEv'/>
+<fun r='_ZNK4llvm12DISubprogram11isProtectedEv'/>
+<fun r='_ZNK4llvm12DISubprogram8isPublicEv'/>
+<fun r='_ZNK4llvm12DISubprogram10isExplicitEv'/>
+<fun r='_ZNK4llvm12DISubprogram12isPrototypedEv'/>
+<fun r='_ZNK4llvm12DISubprogram16isMainSubprogramEv'/>
+<fun r='_ZNK4llvm12DISubprogram17isLValueReferenceEv'/>
+<fun r='_ZNK4llvm12DISubprogram17isRValueReferenceEv'/>
+<fun r='_ZNK4llvm12DISubprogram10isNoReturnEv'/>
+<fun r='_ZNK4llvm12DISubprogram8getScopeEv'/>
+<fun r='_ZNK4llvm12DISubprogram7getNameEv'/>
+<fun r='_ZNK4llvm12DISubprogram14getLinkageNameEv'/>
+<fun r='_ZNK4llvm12DISubprogram7getTypeEv'/>
+<fun r='_ZNK4llvm12DISubprogram17getContainingTypeEv'/>
+<fun r='_ZNK4llvm12DISubprogram7getUnitEv'/>
+<fun r='_ZN4llvm12DISubprogram11replaceUnitEPNS_13DICompileUnitE'/>
+<fun r='_ZNK4llvm12DISubprogram17getTemplateParamsEv'/>
+<fun r='_ZNK4llvm12DISubprogram14getDeclarationEv'/>
+<fun r='_ZNK4llvm12DISubprogram12getVariablesEv'/>
+<fun r='_ZNK4llvm12DISubprogram14getThrownTypesEv'/>
+<fun r='_ZNK4llvm12DISubprogram11getRawScopeEv'/>
+<fun r='_ZNK4llvm12DISubprogram10getRawNameEv'/>
+<fun r='_ZNK4llvm12DISubprogram17getRawLinkageNameEv'/>
+<fun r='_ZNK4llvm12DISubprogram10getRawTypeEv'/>
+<fun r='_ZNK4llvm12DISubprogram10getRawUnitEv'/>
+<fun r='_ZNK4llvm12DISubprogram17getRawDeclarationEv'/>
+<fun r='_ZNK4llvm12DISubprogram15getRawVariablesEv'/>
+<fun r='_ZNK4llvm12DISubprogram20getRawContainingTypeEv'/>
+<fun r='_ZNK4llvm12DISubprogram20getRawTemplateParamsEv'/>
+<fun r='_ZNK4llvm12DISubprogram17getRawThrownTypesEv'/>
+<fun r='_ZNK4llvm12DISubprogram9describesEPKNS_8FunctionE'/>
+<fun r='_ZN4llvm12DISubprogram7classofEPKNS_8MetadataE'/>

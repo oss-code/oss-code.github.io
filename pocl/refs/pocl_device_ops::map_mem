@@ -1,0 +1,10 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='490' type='cl_int (*)(void *, pocl_mem_identifier *, cl_mem, mem_mapping_t *)'/>
+<offset>2048</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='487'>/* Maps &apos;size&apos; bytes of device global memory at  + offset to
+     host-accessible memory. This might or might not involve copying 
+     the block from the device. */</doc>
+<use f='pocl/lib/CL/clEnqueueMapBuffer.c' l='119' u='r' c='POclEnqueueMapBuffer'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='127' u='w' c='pocl_basic_init_device_ops'/>
+<use f='pocl/lib/CL/devices/common.c' l='508' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='510' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='152' u='w' c='pocl_cuda_init_device_ops'/>

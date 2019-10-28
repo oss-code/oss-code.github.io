@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Option/ArgList.h' l='335' type='void llvm::opt::ArgList::AddAllArgsTranslated(ArgStringList &amp; Output, llvm::opt::OptSpecifier Id0, const char * Translation, bool Joined = false) const'/>
+<doc f='include/llvm-6.0/llvm/Option/ArgList.h' l='329'>/// AddAllArgsTranslated - Render all the arguments matching the
+  /// given ids, but forced to separate args and using the provided
+  /// name instead of the first option value.
+  ///
+  /// \param Joined - If true, render the argument as joined with
+  /// the option specifier.</doc>

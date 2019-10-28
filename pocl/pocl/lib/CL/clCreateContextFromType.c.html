@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>clCreateContextFromType.c source code [pocl/lib/CL/clCreateContextFromType.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/CL/clCreateContextFromType.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>CL</a>/<a href='clCreateContextFromType.c.html'>clCreateContextFromType.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* OpenCL runtime library: clCreateContextFromType()</i></td></tr>
+<tr><th id="2">2</th><td><i></i></td></tr>
+<tr><th id="3">3</th><td><i>   Copyright (c) 2011 Universidad Rey Juan Carlos</i></td></tr>
+<tr><th id="4">4</th><td><i>   </i></td></tr>
+<tr><th id="5">5</th><td><i>   Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="6">6</th><td><i>   of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="7">7</th><td><i>   in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="8">8</th><td><i>   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="9">9</th><td><i>   copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="10">10</th><td><i>   furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="11">11</th><td><i>   </i></td></tr>
+<tr><th id="12">12</th><td><i>   The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="13">13</th><td><i>   all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="14">14</th><td><i>   </i></td></tr>
+<tr><th id="15">15</th><td><i>   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="16">16</th><td><i>   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="17">17</th><td><i>   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="18">18</th><td><i>   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="19">19</th><td><i>   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="20">20</th><td><i>   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="21">21</th><td><i>   THE SOFTWARE.</i></td></tr>
+<tr><th id="22">22</th><td><i>*/</i></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><u>#include <a href="devices/devices.h.html">"devices/devices.h"</a></u></td></tr>
+<tr><th id="25">25</th><td><u>#include <a href="pocl_cl.h.html">"pocl_cl.h"</a></u></td></tr>
+<tr><th id="26">26</th><td><u>#include <a href="pocl_util.h.html">"pocl_util.h"</a></u></td></tr>
+<tr><th id="27">27</th><td><u>#include <a href="pocl_mem_management.h.html">"pocl_mem_management.h"</a></u></td></tr>
+<tr><th id="28">28</th><td><u>#include <a href="pocl_shared.h.html">"pocl_shared.h"</a></u></td></tr>
+<tr><th id="29">29</th><td><u>#include <a href="../../../include/stdlib.h.html">&lt;stdlib.h&gt;</a></u></td></tr>
+<tr><th id="30">30</th><td><u>#include <a href="../../../include/string.h.html">&lt;string.h&gt;</a></u></td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><b>extern</b> <em>unsigned</em> <dfn class="decl" id="cl_context_count" title='cl_context_count' data-ref="cl_context_count">cl_context_count</dfn>;</td></tr>
+<tr><th id="33">33</th><td><b>extern</b> <a class="typedef" href="pocl_cl.h.html#pocl_lock_t" title='pocl_lock_t' data-type='pthread_mutex_t' data-ref="pocl_lock_t">pocl_lock_t</a> <dfn class="decl" id="pocl_context_handling_lock" title='pocl_context_handling_lock' data-ref="pocl_context_handling_lock">pocl_context_handling_lock</dfn>;</td></tr>
+<tr><th id="34">34</th><td></td></tr>
+<tr><th id="35">35</th><td><i>/* in clCreateContext.c */</i></td></tr>
+<tr><th id="36">36</th><td><em>int</em> <a class="decl" href="pocl_shared.h.html#context_set_properties" title='context_set_properties' data-ref="context_set_properties" id="context_set_properties">context_set_properties</a>(<a class="typedef" href="../../include/CL/cl.h.html#cl_context" title='cl_context' data-type='struct _cl_context *' data-ref="cl_context">cl_context</a>                    <dfn class="local col1 decl" id="1ctx" title='ctx' data-type='cl_context' data-ref="1ctx">ctx</dfn>,</td></tr>
+<tr><th id="37">37</th><td>                           <em>const</em> <a class="typedef" href="../../include/CL/cl.h.html#cl_context_properties" title='cl_context_properties' data-type='intptr_t' data-ref="cl_context_properties">cl_context_properties</a> * <dfn class="local col2 decl" id="2properties" title='properties' data-type='const cl_context_properties *' data-ref="2properties">properties</dfn>,</td></tr>
+<tr><th id="38">38</th><td>                           <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> *                      <dfn class="local col3 decl" id="3errcode_ret" title='errcode_ret' data-type='cl_int *' data-ref="3errcode_ret">errcode_ret</dfn>);</td></tr>
+<tr><th id="39">39</th><td></td></tr>
+<tr><th id="40">40</th><td><a class="macro" href="../../include/CL/cl_platform.h.html#43" title="" data-ref="_M/CL_API_ENTRY">CL_API_ENTRY</a> <a class="typedef" href="../../include/CL/cl.h.html#cl_context" title='cl_context' data-type='struct _cl_context *' data-ref="cl_context">cl_context</a> <a class="macro" href="../../include/CL/cl_platform.h.html#44" title="" data-ref="_M/CL_API_CALL">CL_API_CALL</a></td></tr>
+<tr><th id="41">41</th><td><a class="macro" href="pocl_cl.h.html#225" title="POclCreateContextFromType" data-ref="_M/POname">POname</a>(clCreateContextFromType)(<em>const</em> <a class="typedef" href="../../include/CL/cl.h.html#cl_context_properties" title='cl_context_properties' data-type='intptr_t' data-ref="cl_context_properties">cl_context_properties</a> *<dfn class="local col4 decl" id="4properties" title='properties' data-type='const cl_context_properties *' data-ref="4properties">properties</dfn>,</td></tr>
+<tr><th id="42">42</th><td>                        <a class="typedef" href="../../include/CL/cl.h.html#cl_device_type" title='cl_device_type' data-type='cl_bitfield' data-ref="cl_device_type">cl_device_type</a> <dfn class="local col5 decl" id="5device_type" title='device_type' data-type='cl_device_type' data-ref="5device_type">device_type</dfn>,</td></tr>
+<tr><th id="43">43</th><td>                        <em>void</em> (*<dfn class="local col6 decl" id="6pfn_notify" title='pfn_notify' data-type='void (*)(const char *, const void *, size_t, void *)' data-ref="6pfn_notify">pfn_notify</dfn>)(<em>const</em> <em>char</em> *, <em>const</em> <em>void</em> *, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span>, <em>void</em> *),</td></tr>
+<tr><th id="44">44</th><td>                        <em>void</em> *<dfn class="local col7 decl" id="7user_data" title='user_data' data-type='void *' data-ref="7user_data">user_data</dfn>,</td></tr>
+<tr><th id="45">45</th><td>                        <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> *<dfn class="local col8 decl" id="8errcode_ret" title='errcode_ret' data-type='cl_int *' data-ref="8errcode_ret">errcode_ret</dfn>) <a class="macro" href="../../include/CL/cl_platform.h.html#57" title="" data-ref="_M/CL_API_SUFFIX__VERSION_1_0">CL_API_SUFFIX__VERSION_1_0</a></td></tr>
+<tr><th id="46">46</th><td>{</td></tr>
+<tr><th id="47">47</th><td>  <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a> <dfn class="local col9 decl" id="9i" title='i' data-type='cl_uint' data-ref="9i">i</dfn>, <dfn class="local col0 decl" id="10num_devices" title='num_devices' data-type='cl_uint' data-ref="10num_devices">num_devices</dfn>;</td></tr>
+<tr><th id="48">48</th><td>  <a class="typedef" href="../../include/CL/cl.h.html#cl_context" title='cl_context' data-type='struct _cl_context *' data-ref="cl_context">cl_context</a> <dfn class="local col1 decl" id="11context" title='context' data-type='cl_context' data-ref="11context">context</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="49">49</th><td>  <em>int</em> <dfn class="local col2 decl" id="12errcode" title='errcode' data-type='int' data-ref="12errcode">errcode</dfn>;</td></tr>
+<tr><th id="50">50</th><td>  <a class="typedef" href="../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="local col3 decl" id="13device_ptr" title='device_ptr' data-type='cl_device_id' data-ref="13device_ptr">device_ptr</dfn>;</td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td>  <a class="macro" href="pocl_cl.h.html#70" title="do { int r = pthread_mutex_lock (&amp;(pocl_context_handling_lock)); ((r == 0) ? (void) (0) : __assert_fail (&quot;r == 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/clCreateContextFromType.c&quot;, 52, __PRETTY_FUNCTION__)); } while (0)" data-ref="_M/POCL_LOCK">POCL_LOCK</a> (<a class="ref" href="#pocl_context_handling_lock" title='pocl_context_handling_lock' data-ref="pocl_context_handling_lock">pocl_context_handling_lock</a>);</td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td>  <a class="macro" href="pocl_debug.h.html#288" title="do { if ((pfn_notify == ((void*)0) &amp;&amp; user_data != ((void*)0))) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 54, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_INVALID_VALUE&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_INVALID_VALUE&quot; &quot; &quot;); fprintf (stderr, &quot;%s\n&quot;, &quot;(pfn_notify == NULL &amp;&amp; user_data != NULL)&quot;); pocl_debug_output_unlock (); } } while (0); errcode = -30; goto ERROR; } } while (0)" data-ref="_M/POCL_GOTO_ERROR_COND">POCL_GOTO_ERROR_COND</a>((<a class="local col6 ref" href="#6pfn_notify" title='pfn_notify' data-ref="6pfn_notify">pfn_notify</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span> &amp;&amp; <a class="local col7 ref" href="#7user_data" title='user_data' data-ref="7user_data">user_data</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>), <a class="macro" href="../../include/CL/cl.h.html#199" title="-30" data-ref="_M/CL_INVALID_VALUE">CL_INVALID_VALUE</a>);</td></tr>
+<tr><th id="55">55</th><td></td></tr>
+<tr><th id="56">56</th><td>  <a class="local col2 ref" href="#12errcode" title='errcode' data-ref="12errcode">errcode</a> = <a class="ref" href="devices/devices.h.html#pocl_init_devices" title='pocl_init_devices' data-ref="pocl_init_devices">pocl_init_devices</a>();</td></tr>
+<tr><th id="57">57</th><td>  <i>/* see clCreateContext.c for explanation */</i></td></tr>
+<tr><th id="58">58</th><td>  <a class="macro" href="pocl_debug.h.html#254" title="do { if ((errcode != 0)) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 59, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;errcode&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;errcode&quot; &quot; &quot;); fprintf (stderr, &quot;Could not initialize devices\n&quot;); pocl_debug_output_unlock (); } } while (0); errcode = errcode; goto ERROR; } } while (0)" data-ref="_M/POCL_GOTO_ERROR_ON">POCL_GOTO_ERROR_ON</a> ((<a class="local col2 ref" href="#12errcode" title='errcode' data-ref="12errcode">errcode</a> != <a class="macro" href="../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>), <a class="local col2 ref" href="#12errcode" title='errcode' data-ref="12errcode">errcode</a>,</td></tr>
+<tr><th id="59">59</th><td>                      <q>"Could not initialize devices\n"</q>);</td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td>  <a class="local col1 ref" href="#11context" title='context' data-ref="11context">context</a> = (<a class="typedef" href="../../include/CL/cl.h.html#cl_context" title='cl_context' data-type='struct _cl_context *' data-ref="cl_context">cl_context</a>)<a class="ref" href="../../../include/stdlib.h.html#calloc" title='calloc' data-ref="calloc">calloc</a> (<var>1</var>, <b>sizeof</b> (<b>struct</b> <a class="type" href="pocl_cl.h.html#_cl_context" title='_cl_context' data-ref="_cl_context">_cl_context</a>));</td></tr>
+<tr><th id="62">62</th><td>  <b>if</b> (<a class="local col1 ref" href="#11context" title='context' data-ref="11context">context</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="63">63</th><td>  {</td></tr>
+<tr><th id="64">64</th><td>    <a class="local col2 ref" href="#12errcode" title='errcode' data-ref="12errcode">errcode</a> = <a class="macro" href="../../include/CL/cl.h.html#180" title="-6" data-ref="_M/CL_OUT_OF_HOST_MEMORY">CL_OUT_OF_HOST_MEMORY</a>;</td></tr>
+<tr><th id="65">65</th><td>    <b>goto</b> <a class="lbl" href="#14ERROR" data-ref="14ERROR">ERROR</a>;</td></tr>
+<tr><th id="66">66</th><td>  }</td></tr>
+<tr><th id="67">67</th><td></td></tr>
+<tr><th id="68">68</th><td>  <a class="macro" href="pocl_cl.h.html#181" title="do { do { do { int r = pthread_mutex_init (&amp;((context)-&gt;pocl_lock), ((void*)0)); ((r == 0) ? (void) (0) : __assert_fail (&quot;r == 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/clCreateContextFromType.c&quot;, 68, __PRETTY_FUNCTION__)); } while (0); (context)-&gt;pocl_refcount = 1; } while (0); (context)-&gt;dispatch=&amp;pocl_dispatch; } while (0)" data-ref="_M/POCL_INIT_OBJECT">POCL_INIT_OBJECT</a>(<a class="local col1 ref" href="#11context" title='context' data-ref="11context">context</a>);</td></tr>
+<tr><th id="69">69</th><td></td></tr>
+<tr><th id="70">70</th><td>  <a class="ref" href="pocl_shared.h.html#context_set_properties" title='context_set_properties' data-ref="context_set_properties">context_set_properties</a>(<a class="local col1 ref" href="#11context" title='context' data-ref="11context">context</a>, <a class="local col4 ref" href="#4properties" title='properties' data-ref="4properties">properties</a>, &amp;<a class="local col2 ref" href="#12errcode" title='errcode' data-ref="12errcode">errcode</a>);</td></tr>
+<tr><th id="71">71</th><td>  <b>if</b> (<a class="local col2 ref" href="#12errcode" title='errcode' data-ref="12errcode">errcode</a>)</td></tr>
+<tr><th id="72">72</th><td>    {</td></tr>
+<tr><th id="73">73</th><td>      <b>goto</b> <a class="lbl" href="#14ERROR" data-ref="14ERROR">ERROR</a>;</td></tr>
+<tr><th id="74">74</th><td>    }</td></tr>
+<tr><th id="75">75</th><td></td></tr>
+<tr><th id="76">76</th><td>  <a class="local col0 ref" href="#10num_devices" title='num_devices' data-ref="10num_devices">num_devices</a> = <a class="ref" href="devices/devices.h.html#pocl_get_device_type_count" title='pocl_get_device_type_count' data-ref="pocl_get_device_type_count">pocl_get_device_type_count</a>(<a class="local col5 ref" href="#5device_type" title='device_type' data-ref="5device_type">device_type</a>);</td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td>  <b>if</b> (<a class="local col0 ref" href="#10num_devices" title='num_devices' data-ref="10num_devices">num_devices</a> == <var>0</var>)</td></tr>
+<tr><th id="79">79</th><td>    {</td></tr>
+<tr><th id="80">80</th><td>      <b>if</b> (<a class="local col8 ref" href="#8errcode_ret" title='errcode_ret' data-ref="8errcode_ret">errcode_ret</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) </td></tr>
+<tr><th id="81">81</th><td>        {</td></tr>
+<tr><th id="82">82</th><td>          *<a class="local col8 ref" href="#8errcode_ret" title='errcode_ret' data-ref="8errcode_ret">errcode_ret</a> = (<a class="macro" href="../../include/CL/cl.h.html#175" title="-1" data-ref="_M/CL_DEVICE_NOT_FOUND">CL_DEVICE_NOT_FOUND</a>); </td></tr>
+<tr><th id="83">83</th><td>        } </td></tr>
+<tr><th id="84">84</th><td>      <i>/* Return a dummy context so icd call to clReleaseContext() still</i></td></tr>
+<tr><th id="85">85</th><td><i>         works. This fixes AMD SDK OpenCL samples to work (as of 2012-12-05). */</i></td></tr>
+<tr><th id="86">86</th><td>      <a class="macro" href="pocl_debug.h.html#178" title="do { if (pocl_debug_messages_filter &amp; 0x800) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 87, &quot;WARNING&quot;, 2); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;&quot; &quot; &quot;); fprintf (stderr, &quot;Couldn&apos;t find any device of type %lu; returning &quot; &quot;a dummy context with 0 devices\n&quot;, (unsigned long)device_type); pocl_debug_output_unlock (); } } while (0)" data-ref="_M/POCL_MSG_WARN">POCL_MSG_WARN</a>(<q>"Couldn't find any device of type %lu; returning "</q></td></tr>
+<tr><th id="87">87</th><td>                    <q>"a dummy context with 0 devices\n"</q>, (<em>unsigned</em> <em>long</em>)<a class="local col5 ref" href="#5device_type" title='device_type' data-ref="5device_type">device_type</a>);</td></tr>
+<tr><th id="88">88</th><td>      <a class="macro" href="pocl_cl.h.html#77" title="do { int r = pthread_mutex_unlock (&amp;(pocl_context_handling_lock)); ((r == 0) ? (void) (0) : __assert_fail (&quot;r == 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/clCreateContextFromType.c&quot;, 88, __PRETTY_FUNCTION__)); } while (0)" data-ref="_M/POCL_UNLOCK">POCL_UNLOCK</a> (<a class="ref" href="#pocl_context_handling_lock" title='pocl_context_handling_lock' data-ref="pocl_context_handling_lock">pocl_context_handling_lock</a>);</td></tr>
+<tr><th id="89">89</th><td>      <b>return</b> <a class="local col1 ref" href="#11context" title='context' data-ref="11context">context</a>;</td></tr>
+<tr><th id="90">90</th><td>    }</td></tr>
+<tr><th id="91">91</th><td></td></tr>
+<tr><th id="92">92</th><td>  <a class="local col1 ref" href="#11context" title='context' data-ref="11context">context</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_context::num_devices" title='_cl_context::num_devices' data-ref="_cl_context::num_devices">num_devices</a> = <a class="local col0 ref" href="#10num_devices" title='num_devices' data-ref="10num_devices">num_devices</a>;</td></tr>
+<tr><th id="93">93</th><td>  <a class="local col1 ref" href="#11context" title='context' data-ref="11context">context</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_context::devices" title='_cl_context::devices' data-ref="_cl_context::devices">devices</a> = (<a class="typedef" href="../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> *) <a class="ref" href="../../../include/stdlib.h.html#calloc" title='calloc' data-ref="calloc">calloc</a>(<a class="local col0 ref" href="#10num_devices" title='num_devices' data-ref="10num_devices">num_devices</a>, <b>sizeof</b>(<a class="typedef" href="../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a>));</td></tr>
+<tr><th id="94">94</th><td>  <b>if</b> (<a class="local col1 ref" href="#11context" title='context' data-ref="11context">context</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_context::devices" title='_cl_context::devices' data-ref="_cl_context::devices">devices</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="95">95</th><td>    {</td></tr>
+<tr><th id="96">96</th><td>        <a class="local col2 ref" href="#12errcode" title='errcode' data-ref="12errcode">errcode</a> = <a class="macro" href="../../include/CL/cl.h.html#180" title="-6" data-ref="_M/CL_OUT_OF_HOST_MEMORY">CL_OUT_OF_HOST_MEMORY</a>;</td></tr>
+<tr><th id="97">97</th><td>        <b>goto</b> <a class="lbl" href="#15ERROR_CLEAN_CONTEXT_AND_PROPERTIES" data-ref="15ERROR_CLEAN_CONTEXT_AND_PROPERTIES">ERROR_CLEAN_CONTEXT_AND_PROPERTIES</a>;</td></tr>
+<tr><th id="98">98</th><td>    }</td></tr>
+<tr><th id="99">99</th><td></td></tr>
+<tr><th id="100">100</th><td>  <a class="ref" href="devices/devices.h.html#pocl_get_devices" title='pocl_get_devices' data-ref="pocl_get_devices">pocl_get_devices</a>(<a class="local col5 ref" href="#5device_type" title='device_type' data-ref="5device_type">device_type</a>, <a class="local col1 ref" href="#11context" title='context' data-ref="11context">context</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_context::devices" title='_cl_context::devices' data-ref="_cl_context::devices">devices</a>, <a class="local col0 ref" href="#10num_devices" title='num_devices' data-ref="10num_devices">num_devices</a>);</td></tr>
+<tr><th id="101">101</th><td></td></tr>
+<tr><th id="102">102</th><td>  <b>for</b> (<a class="local col9 ref" href="#9i" title='i' data-ref="9i">i</a> = <var>0</var>; <a class="local col9 ref" href="#9i" title='i' data-ref="9i">i</a> &lt; <a class="local col0 ref" href="#10num_devices" title='num_devices' data-ref="10num_devices">num_devices</a>; ++<a class="local col9 ref" href="#9i" title='i' data-ref="9i">i</a>)</td></tr>
+<tr><th id="103">103</th><td>    {</td></tr>
+<tr><th id="104">104</th><td>      <a class="local col3 ref" href="#13device_ptr" title='device_ptr' data-ref="13device_ptr">device_ptr</a> = <a class="local col1 ref" href="#11context" title='context' data-ref="11context">context</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_context::devices" title='_cl_context::devices' data-ref="_cl_context::devices">devices</a>[<a class="local col9 ref" href="#9i" title='i' data-ref="9i">i</a>];</td></tr>
+<tr><th id="105">105</th><td>      <b>if</b> (<a class="local col3 ref" href="#13device_ptr" title='device_ptr' data-ref="13device_ptr">device_ptr</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="106">106</th><td>        {</td></tr>
+<tr><th id="107">107</th><td>          <b>break</b>;</td></tr>
+<tr><th id="108">108</th><td>        }</td></tr>
+<tr><th id="109">109</th><td></td></tr>
+<tr><th id="110">110</th><td>      <a class="macro" href="pocl_cl.h.html#225" title="POclRetainDevice" data-ref="_M/POname">POname</a>(clRetainDevice)(<a class="local col3 ref" href="#13device_ptr" title='device_ptr' data-ref="13device_ptr">device_ptr</a>);</td></tr>
+<tr><th id="111">111</th><td>    }</td></tr>
+<tr><th id="112">112</th><td></td></tr>
+<tr><th id="113">113</th><td>  <a class="ref" href="pocl_util.h.html#pocl_setup_context" title='pocl_setup_context' data-ref="pocl_setup_context">pocl_setup_context</a>(<a class="local col1 ref" href="#11context" title='context' data-ref="11context">context</a>);</td></tr>
+<tr><th id="114">114</th><td></td></tr>
+<tr><th id="115">115</th><td>  <a class="macro" href="pocl_mem_management.h.html#48" title="((void*)0)" data-ref="_M/pocl_init_mem_manager">pocl_init_mem_manager</a> ();</td></tr>
+<tr><th id="116">116</th><td></td></tr>
+<tr><th id="117">117</th><td>  <b>if</b> (<a class="local col8 ref" href="#8errcode_ret" title='errcode_ret' data-ref="8errcode_ret">errcode_ret</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="118">118</th><td>    *<a class="local col8 ref" href="#8errcode_ret" title='errcode_ret' data-ref="8errcode_ret">errcode_ret</a> = <a class="macro" href="../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>;</td></tr>
+<tr><th id="119">119</th><td>  <a class="local col1 ref" href="#11context" title='context' data-ref="11context">context</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_context::valid" title='_cl_context::valid' data-ref="_cl_context::valid">valid</a> = <var>1</var>;</td></tr>
+<tr><th id="120">120</th><td></td></tr>
+<tr><th id="121">121</th><td>  <a class="ref" href="#cl_context_count" title='cl_context_count' data-ref="cl_context_count">cl_context_count</a> += <var>1</var>;</td></tr>
+<tr><th id="122">122</th><td>  <a class="macro" href="pocl_cl.h.html#77" title="do { int r = pthread_mutex_unlock (&amp;(pocl_context_handling_lock)); ((r == 0) ? (void) (0) : __assert_fail (&quot;r == 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/clCreateContextFromType.c&quot;, 122, __PRETTY_FUNCTION__)); } while (0)" data-ref="_M/POCL_UNLOCK">POCL_UNLOCK</a> (<a class="ref" href="#pocl_context_handling_lock" title='pocl_context_handling_lock' data-ref="pocl_context_handling_lock">pocl_context_handling_lock</a>);</td></tr>
+<tr><th id="123">123</th><td></td></tr>
+<tr><th id="124">124</th><td>  <b>return</b> <a class="local col1 ref" href="#11context" title='context' data-ref="11context">context</a>;</td></tr>
+<tr><th id="125">125</th><td></td></tr>
+<tr><th id="126">126</th><td><dfn class="lbl" id="15ERROR_CLEAN_CONTEXT_AND_PROPERTIES" data-ref="15ERROR_CLEAN_CONTEXT_AND_PROPERTIES">ERROR_CLEAN_CONTEXT_AND_PROPERTIES</dfn>:</td></tr>
+<tr><th id="127">127</th><td>  <a class="macro" href="pocl_cl.h.html#173" title="do { free((context-&gt;devices)); (context-&gt;devices) = ((void*)0); } while (0)" data-ref="_M/POCL_MEM_FREE">POCL_MEM_FREE</a> (<a class="local col1 ref" href="#11context" title='context' data-ref="11context">context</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_context::devices" title='_cl_context::devices' data-ref="_cl_context::devices">devices</a>);</td></tr>
+<tr><th id="128">128</th><td>  <a class="macro" href="pocl_cl.h.html#173" title="do { free((context-&gt;properties)); (context-&gt;properties) = ((void*)0); } while (0)" data-ref="_M/POCL_MEM_FREE">POCL_MEM_FREE</a>(<a class="local col1 ref" href="#11context" title='context' data-ref="11context">context</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_context::properties" title='_cl_context::properties' data-ref="_cl_context::properties">properties</a>);</td></tr>
+<tr><th id="129">129</th><td><dfn class="lbl" id="14ERROR" data-ref="14ERROR">ERROR</dfn>:</td></tr>
+<tr><th id="130">130</th><td>  <a class="macro" href="pocl_cl.h.html#173" title="do { free((context)); (context) = ((void*)0); } while (0)" data-ref="_M/POCL_MEM_FREE">POCL_MEM_FREE</a> (<a class="local col1 ref" href="#11context" title='context' data-ref="11context">context</a>);</td></tr>
+<tr><th id="131">131</th><td>  <b>if</b>(<a class="local col8 ref" href="#8errcode_ret" title='errcode_ret' data-ref="8errcode_ret">errcode_ret</a>)</td></tr>
+<tr><th id="132">132</th><td>  {</td></tr>
+<tr><th id="133">133</th><td>    *<a class="local col8 ref" href="#8errcode_ret" title='errcode_ret' data-ref="8errcode_ret">errcode_ret</a> = <a class="local col2 ref" href="#12errcode" title='errcode' data-ref="12errcode">errcode</a>;</td></tr>
+<tr><th id="134">134</th><td>  }</td></tr>
+<tr><th id="135">135</th><td>  <a class="macro" href="pocl_cl.h.html#77" title="do { int r = pthread_mutex_unlock (&amp;(pocl_context_handling_lock)); ((r == 0) ? (void) (0) : __assert_fail (&quot;r == 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/clCreateContextFromType.c&quot;, 135, __PRETTY_FUNCTION__)); } while (0)" data-ref="_M/POCL_UNLOCK">POCL_UNLOCK</a> (<a class="ref" href="#pocl_context_handling_lock" title='pocl_context_handling_lock' data-ref="pocl_context_handling_lock">pocl_context_handling_lock</a>);</td></tr>
+<tr><th id="136">136</th><td>  <b>return</b> <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="137">137</th><td>}</td></tr>
+<tr><th id="138">138</th><td><a class="macro" href="pocl_cl.h.html#234" title="" data-ref="_M/POsym">POsym</a>(clCreateContextFromType)</td></tr>
+<tr><th id="139">139</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

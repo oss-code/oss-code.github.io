@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/IR/MDBuilder.h' l='54' type='llvm::MDNode * llvm::MDBuilder::createFPMath(float Accuracy)'/>
+<doc f='include/llvm-6.0/llvm/IR/MDBuilder.h' l='47'>//===------------------------------------------------------------------===//
+  // FPMath metadata.
+  //===------------------------------------------------------------------===//
+
+  /// \brief Return metadata with the given settings.  The special value 0.0
+  /// for the Accuracy parameter indicates the default (maximal precision)
+  /// setting.</doc>

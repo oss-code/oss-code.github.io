@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/IR/User.h' l='192' ll='195' type='void llvm::User::setGlobalVariableNumOperands(unsigned int NumOps)'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalVariable.h' l='73' u='c' c='_ZN4llvm14GlobalVariableD1Ev'/>
+<doc f='include/llvm-6.0/llvm/IR/User.h' l='184'>/// Set the number of operands on a GlobalVariable.
+  ///
+  /// GlobalVariable always allocates space for a single operands, but
+  /// doesn&apos;t always use it.
+  ///
+  /// FIXME: As that the number of operands is used to find the start of
+  /// the allocated memory in operator delete, we need to always think we have
+  /// 1 operand before delete.</doc>

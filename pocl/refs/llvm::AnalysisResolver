@@ -1,0 +1,17 @@
+<def f='include/llvm-6.0/llvm/PassAnalysisSupport.h' l='148' ll='192'/>
+<size>32</size>
+<doc f='include/llvm-6.0/llvm/PassAnalysisSupport.h' l='143'>//===----------------------------------------------------------------------===//
+/// AnalysisResolver - Simple interface used by Pass objects to pull all
+/// analysis information out of pass manager that is responsible to manage
+/// the pass.
+///</doc>
+<fun r='_ZN4llvm16AnalysisResolverC1Ev'/>
+<fun r='_ZN4llvm16AnalysisResolverC1ERNS_13PMDataManagerE'/>
+<fun r='_ZN4llvm16AnalysisResolver16getPMDataManagerEv'/>
+<fun r='_ZN4llvm16AnalysisResolver12findImplPassEPKv'/>
+<fun r='_ZN4llvm16AnalysisResolver12findImplPassEPNS_4PassEPKvRNS_8FunctionE'/>
+<fun r='_ZN4llvm16AnalysisResolver20addAnalysisImplsPairEPKvPNS_4PassE'/>
+<fun r='_ZN4llvm16AnalysisResolver18clearAnalysisImplsEv'/>
+<fun r='_ZNK4llvm16AnalysisResolver22getAnalysisIfAvailableEPKvb'/>
+<mbr r='llvm::AnalysisResolver::AnalysisImpls' o='0' t='std::vector&lt;std::pair&lt;AnalysisID, Pass *&gt; &gt;'/>
+<mbr r='llvm::AnalysisResolver::PM' o='192' t='llvm::PMDataManager &amp;'/>

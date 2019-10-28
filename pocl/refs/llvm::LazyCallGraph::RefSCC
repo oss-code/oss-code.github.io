@@ -1,0 +1,45 @@
+<def f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='547' ll='878'/>
+<size>136</size>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='534'>/// A RefSCC of the call graph.
+  ///
+  /// This models a Strongly Connected Component of function reference edges in
+  /// the call graph. As opposed to actual SCCs, these can be used to scope
+  /// subgraphs of the module which are independent from other subgraphs of the
+  /// module because they do not reference it in any way. This is also the unit
+  /// where we do mutation of the graph in order to restrict mutations to those
+  /// which don&apos;t violate this independence.
+  ///
+  /// A RefSCC contains a DAG of actual SCCs. All the nodes within the RefSCC
+  /// are necessarily within some actual SCC that nests within it. Since
+  /// a direct call *is* a reference, there will always be at least one RefSCC
+  /// around any SCC.</doc>
+<mbr r='llvm::LazyCallGraph::RefSCC::G' o='0' t='llvm::LazyCallGraph *'/>
+<mbr r='llvm::LazyCallGraph::RefSCC::SCCs' o='64' t='SmallVector&lt;llvm::LazyCallGraph::SCC *, 4&gt;'/>
+<mbr r='llvm::LazyCallGraph::RefSCC::SCCIndices' o='512' t='SmallDenseMap&lt;llvm::LazyCallGraph::SCC *, int, 4&gt;'/>
+<fun r='_ZN4llvm13LazyCallGraph6RefSCCC1ERS0_'/>
+<fun r='_ZN4llvm13LazyCallGraph6RefSCC5clearEv'/>
+<fun r='_ZNK4llvm13LazyCallGraph6RefSCC4dumpEv'/>
+<fun r='_ZN4llvm13LazyCallGraph6RefSCC26handleTrivialEdgeInsertionERNS0_4NodeES3_'/>
+<fun r='_ZNK4llvm13LazyCallGraph6RefSCC5beginEv'/>
+<fun r='_ZNK4llvm13LazyCallGraph6RefSCC3endEv'/>
+<fun r='_ZNK4llvm13LazyCallGraph6RefSCC4sizeEv'/>
+<fun r='_ZN4llvm13LazyCallGraph6RefSCCixEi'/>
+<fun r='_ZNK4llvm13LazyCallGraph6RefSCC4findERNS0_3SCCE'/>
+<fun r='_ZNK4llvm13LazyCallGraph6RefSCC10isParentOfERKS1_'/>
+<fun r='_ZNK4llvm13LazyCallGraph6RefSCC12isAncestorOfERKS1_'/>
+<fun r='_ZNK4llvm13LazyCallGraph6RefSCC9isChildOfERKS1_'/>
+<fun r='_ZNK4llvm13LazyCallGraph6RefSCC14isDescendantOfERKS1_'/>
+<fun r='_ZNK4llvm13LazyCallGraph6RefSCC7getNameB5cxx11Ev'/>
+<fun r='_ZN4llvm13LazyCallGraph6RefSCC24switchInternalEdgeToCallERNS0_4NodeES3_NS_12function_refIFvNS_8ArrayRefIPNS0_3SCCEEEEEE'/>
+<fun r='_ZN4llvm13LazyCallGraph6RefSCC30switchTrivialInternalEdgeToRefERNS0_4NodeES3_'/>
+<fun r='_ZN4llvm13LazyCallGraph6RefSCC23switchInternalEdgeToRefERNS0_4NodeES3_'/>
+<fun r='_ZN4llvm13LazyCallGraph6RefSCC24switchOutgoingEdgeToCallERNS0_4NodeES3_'/>
+<fun r='_ZN4llvm13LazyCallGraph6RefSCC23switchOutgoingEdgeToRefERNS0_4NodeES3_'/>
+<fun r='_ZN4llvm13LazyCallGraph6RefSCC21insertInternalRefEdgeERNS0_4NodeES3_'/>
+<fun r='_ZN4llvm13LazyCallGraph6RefSCC18insertOutgoingEdgeERNS0_4NodeES3_NS0_4Edge4KindE'/>
+<fun r='_ZN4llvm13LazyCallGraph6RefSCC21insertIncomingRefEdgeERNS0_4NodeES3_'/>
+<fun r='_ZN4llvm13LazyCallGraph6RefSCC18removeOutgoingEdgeERNS0_4NodeES3_'/>
+<fun r='_ZN4llvm13LazyCallGraph6RefSCC21removeInternalRefEdgeERNS0_4NodeENS_8ArrayRefIPS2_EE'/>
+<fun r='_ZN4llvm13LazyCallGraph6RefSCC21insertTrivialCallEdgeERNS0_4NodeES3_'/>
+<fun r='_ZN4llvm13LazyCallGraph6RefSCC20insertTrivialRefEdgeERNS0_4NodeES3_'/>
+<fun r='_ZN4llvm13LazyCallGraph6RefSCC19replaceNodeFunctionERNS0_4NodeERNS_8FunctionE'/>

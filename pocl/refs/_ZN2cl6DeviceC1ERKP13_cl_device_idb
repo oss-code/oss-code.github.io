@@ -1,0 +1,7 @@
+<def f='pocl/include/CL/cl2.hpp' l='2079' ll='2080' type='void cl::Device::Device(const cl_device_id &amp; device, bool retainObject = false)'/>
+<use f='pocl/include/CL/cl2.hpp' l='2250' u='c' c='_ZN2cl6Device16createSubDevicesEPKlPSt6vectorIS0_SaIS0_EE'/>
+<use f='pocl/include/CL/cl2.hpp' l='2491' u='c' c='_ZNK2cl8Platform10getDevicesEmPSt6vectorINS_6DeviceESaIS2_EE'/>
+<doc f='pocl/include/CL/cl2.hpp' l='2075'>/*! \brief Constructor from cl_device_id.
+     *
+     *  This simply copies the device ID value, which is an inexpensive operation.
+     */</doc>

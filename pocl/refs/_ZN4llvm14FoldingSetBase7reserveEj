@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='161' type='void llvm::FoldingSetBase::reserve(unsigned int EltCount)'/>
+<doc f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='158'>/// reserve - Increase the number of buckets such that adding the
+  /// EltCount-th node won&apos;t cause a rebucket operation. reserve is permitted
+  /// to allocate more space than requested by EltCount.</doc>

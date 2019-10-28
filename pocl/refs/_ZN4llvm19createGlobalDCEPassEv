@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Transforms/IPO.h' l='80' type='llvm::ModulePass * llvm::createGlobalDCEPass()'/>
+<doc f='include/llvm-6.0/llvm/Transforms/IPO.h' l='76'>//===----------------------------------------------------------------------===//
+/// createGlobalDCEPass - This transform is designed to eliminate unreachable
+/// internal globals (functions or global variables)
+///</doc>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='106' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>

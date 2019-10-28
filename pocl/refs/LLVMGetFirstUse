@@ -1,0 +1,11 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='1381' type='LLVMUseRef LLVMGetFirstUse(LLVMValueRef Val)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='1371'>/**
+ * Obtain the first use of a value.
+ *
+ * Uses are obtained in an iterator fashion. First, call this function
+ * to obtain a reference to the first use. Then, call LLVMGetNextUse()
+ * on that instance and all subsequently obtained instances until
+ * LLVMGetNextUse() returns NULL.
+ *
+ * @see llvm::Value::use_begin()
+ */</doc>

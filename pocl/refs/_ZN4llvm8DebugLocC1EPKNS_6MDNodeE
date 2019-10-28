@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/DebugLoc.h' l='49' type='void llvm::DebugLoc::DebugLoc(const llvm::MDNode * N)'/>
+<doc f='include/llvm-6.0/llvm/IR/DebugLoc.h' l='43'>/// \brief Construct from an \a MDNode.
+    ///
+    /// Note: if \c N is not an \a DILocation, a verifier check will fail, and
+    /// accessors will crash.  However, construction from other nodes is
+    /// supported in order to handle forward references when reading textual
+    /// IR.</doc>

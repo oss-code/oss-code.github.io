@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Support/FileSystem.h' l='515' type='bool llvm::sys::fs::is_directory(const llvm::sys::fs::basic_file_status &amp; status)'/>
+<use f='include/llvm-6.0/llvm/Support/FileSystem.h' l='1003' u='c' c='_ZN4llvm3sys2fs28recursive_directory_iterator9incrementERSt10error_code'/>
+<doc f='include/llvm-6.0/llvm/Support/FileSystem.h' l='511'>/// @brief Does status represent a directory?
+///
+/// @param status A basic_file_status previously returned from status.
+/// @returns status.type() == file_type::directory_file.</doc>

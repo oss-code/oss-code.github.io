@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/ADT/Twine.h' l='404' ll='417' type='bool llvm::Twine::isSingleStringRef() const'/>
+<use f='include/llvm-6.0/llvm/ADT/Twine.h' l='454' u='c' c='_ZNK4llvm5Twine11toStringRefERNS_15SmallVectorImplIcEE'/>
+<doc f='include/llvm-6.0/llvm/ADT/Twine.h' l='402'>/// Return true if this twine can be dynamically accessed as a single
+    /// StringRef value with getSingleStringRef().</doc>

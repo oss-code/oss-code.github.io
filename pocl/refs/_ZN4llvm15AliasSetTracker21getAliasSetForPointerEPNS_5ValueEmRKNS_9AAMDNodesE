@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasSetTracker.h' l='387' type='llvm::AliasSet &amp; llvm::AliasSetTracker::getAliasSetForPointer(llvm::Value * P, uint64_t Size, const llvm::AAMDNodes &amp; AAInfo)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasSetTracker.h' l='383'>/// Return the alias set that the specified pointer lives in. If the New
+  /// argument is non-null, this method sets the value to true if a new alias
+  /// set is created to contain the pointer (because the pointer didn&apos;t alias
+  /// anything).</doc>

@@ -1,0 +1,9 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2501' type='LLVMRealPredicate LLVMGetFCmpPredicate(LLVMValueRef Inst)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2493'>/**
+ * Obtain the float predicate of an instruction.
+ *
+ * This is only valid for instructions that correspond to llvm::FCmpInst
+ * or llvm::ConstantExpr whose opcode is llvm::Instruction::FCmp.
+ *
+ * @see llvm::FCmpInst::getPredicate()
+ */</doc>

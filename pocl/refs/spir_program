@@ -1,0 +1,41 @@
+<def f='pocl/tests/runtime/test_clGetKernelArgInfo.c' l='345' ll='370' type='int spir_program(const char * filename, cl_context ctx, cl_device_id did, cl_program * program)'/>
+<use f='pocl/tests/runtime/test_clGetKernelArgInfo.c' l='427' u='c' c='main'/>
+<doc f='pocl/tests/runtime/test_clGetKernelArgInfo.c' l='305'>/*
+int test_program_nometa(cl_program program) {
+
+  cl_int err;
+  size_t retsize;
+  cl_kernel test_kernel = NULL;
+  union {
+    cl_kernel_arg_address_qualifier address;
+    cl_kernel_arg_access_qualifier access;
+    cl_kernel_arg_type_qualifier type;
+    char string[BUF_LEN];
+  } kernel_arg;
+
+  test_kernel = clCreateKernel (program, &quot;test_kernel&quot;, &amp;err);
+  CHECK_OPENCL_ERROR_IN(&quot;clCreateKernel&quot;);
+
+
+  err = clGetKernelArgInfo(test_kernel, 0, CL_KERNEL_ARG_ADDRESS_QUALIFIER,
+                            BUF_LEN, &amp;kernel_arg.address, &amp;retsize);
+  TEST_ASSERT(err == CL_KERNEL_ARG_INFO_NOT_AVAILABLE);
+
+  err = clGetKernelArgInfo(test_kernel, 1, CL_KERNEL_ARG_ACCESS_QUALIFIER,
+                            BUF_LEN, &amp;kernel_arg.access, &amp;retsize);
+  TEST_ASSERT(err == CL_KERNEL_ARG_INFO_NOT_AVAILABLE);
+
+  err = clGetKernelArgInfo(test_kernel, 2, CL_KERNEL_ARG_TYPE_NAME,
+                            BUF_LEN, &amp;kernel_arg.string, &amp;retsize);
+  TEST_ASSERT(err == CL_KERNEL_ARG_INFO_NOT_AVAILABLE);
+
+  err = clGetKernelArgInfo(test_kernel, 1, CL_KERNEL_ARG_NAME,
+                            BUF_LEN, &amp;kernel_arg.string, &amp;retsize);
+  TEST_ASSERT(err == CL_KERNEL_ARG_INFO_NOT_AVAILABLE);
+
+  err = clReleaseKernel (test_kernel);
+  CHECK_OPENCL_ERROR_IN (&quot;clReleaseKernel&quot;);
+
+  return EXIT_SUCCESS;
+}
+*/</doc>

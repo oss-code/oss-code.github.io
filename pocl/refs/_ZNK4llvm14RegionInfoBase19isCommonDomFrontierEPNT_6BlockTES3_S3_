@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='762' type='bool llvm::RegionInfoBase::isCommonDomFrontier(BlockT * BB, BlockT * entry, BlockT * exit) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='759'>// Returns true if BB is in the dominance frontier of
+  // entry, because it was inherited from exit. In the other case there is an
+  // edge going from entry to BB without passing exit.</doc>

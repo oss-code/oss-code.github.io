@@ -1,0 +1,40 @@
+<def f='include/llvm-6.0/llvm/Support/Error.h' l='418' ll='668'/>
+<doc f='include/llvm-6.0/llvm/Support/Error.h' l='412'>/// Tagged union holding either a T or a Error.
+///
+/// This class parallels ErrorOr, but replaces error_code with Error. Since
+/// Error cannot be copied, this class replaces getError() with
+/// takeError(). It also adds an bool errorIsA&lt;ErrT&gt;() method for testing the
+/// error class type.</doc>
+<smbr r='llvm::Expected::isRef' t='const bool'/>
+<fun r='_ZN4llvm8ExpectedC1ENS_5ErrorE'/>
+<fun r='_ZN4llvm8ExpectedC1ENS_12ErrorSuccessE'/>
+<fun r='_ZN4llvm8ExpectedC1EOT_PNSt9enable_ifIXsr3std14is_convertibleIS1_T_EE5valueEvE4typeE'/>
+<fun r='_ZN4llvm8ExpectedC1EONS_8ExpectedIT_EE'/>
+<fun r='_ZN4llvm8ExpectedC1EONS_8ExpectedIT_EEPNSt9enable_ifIXsr3std14is_convertibleIS2_T_EE5valueEvE4typeE'/>
+<fun r='_ZN4llvm8ExpectedC1EONS_8ExpectedIT_EEPNSt9enable_ifIXntsr3std14is_convertibleIS2_T_EE5valueEvE4typeE'/>
+<fun r='_ZN4llvm8ExpectedaSEONS_8ExpectedIT_EE'/>
+<fun r='_ZN4llvm8ExpectedD1Ev'/>
+<fun r='_ZN4llvm8ExpectedcvbEv'/>
+<fun r='_ZN4llvm8Expected3getEv'/>
+<fun r='_ZNK4llvm8Expected3getEv'/>
+<fun r='_ZNK4llvm8Expected8errorIsAEv'/>
+<fun r='_ZN4llvm8Expected9takeErrorEv'/>
+<fun r='_ZN4llvm8ExpectedptEv'/>
+<fun r='_ZNK4llvm8ExpectedptEv'/>
+<fun r='_ZN4llvm8ExpecteddeEv'/>
+<fun r='_ZNK4llvm8ExpecteddeEv'/>
+<fun r='_ZN4llvm8Expected21compareThisIfSameTypeERKT_S3_'/>
+<fun r='_ZN4llvm8Expected21compareThisIfSameTypeERKT_RKT0_'/>
+<fun r='_ZN4llvm8Expected13moveConstructEONS_8ExpectedIT_EE'/>
+<fun r='_ZN4llvm8Expected10moveAssignEONS_8ExpectedIT_EE'/>
+<fun r='_ZN4llvm8Expected9toPointerEPNSt16remove_referenceIT_E4typeE'/>
+<fun r='_ZNK4llvm8Expected9toPointerEPKNSt16remove_referenceIT_E4typeE'/>
+<fun r='_ZN4llvm8Expected9toPointerEPNS_16ReferenceStorageINSt16remove_referenceIT_E4typeEEE'/>
+<fun r='_ZNK4llvm8Expected9toPointerEPKNS_16ReferenceStorageINSt16remove_referenceIT_E4typeEEE'/>
+<fun r='_ZN4llvm8Expected10getStorageEv'/>
+<fun r='_ZNK4llvm8Expected10getStorageEv'/>
+<fun r='_ZN4llvm8Expected15getErrorStorageEv'/>
+<fun r='_ZNK4llvm8Expected15getErrorStorageEv'/>
+<fun r='_ZN4llvm8Expected12setUncheckedEv'/>
+<fun r='_ZN4llvm8Expected15assertIsCheckedEv'/>
+<mbr r='llvm::Expected::HasError' t='bool'/>

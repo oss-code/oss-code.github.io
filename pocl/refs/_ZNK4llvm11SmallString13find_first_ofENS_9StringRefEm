@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/ADT/SmallString.h' l='185' ll='187' type='size_t llvm::SmallString::find_first_of(llvm::StringRef Chars, size_t From = 0) const'/>
+<doc f='include/llvm-6.0/llvm/ADT/SmallString.h' l='181'>/// Find the first character in the string that is in \p Chars, or npos if
+  /// not found.
+  ///
+  /// Complexity: O(size() + Chars.size())</doc>

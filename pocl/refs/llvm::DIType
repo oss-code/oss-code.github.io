@@ -1,0 +1,49 @@
+<inh f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='420' c='llvm::DIScope'/>
+<def f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='556' ll='648'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='654' c='llvm::DIBasicType'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='712' c='llvm::DIDerivedType'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='833' c='llvm::DICompositeType'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='996' c='llvm::DISubroutineType'/>
+<size>56</size>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='551'>/// Base class for types.
+///
+/// TODO: Remove the hardcoded name and context, since many types don&apos;t use
+/// them.
+/// TODO: Split up flags.</doc>
+<mbr r='llvm::DIType::Line' o='192' t='unsigned int'/>
+<mbr r='llvm::DIType::Flags' o='224' t='llvm::DINode::DIFlags'/>
+<mbr r='llvm::DIType::SizeInBits' o='256' t='uint64_t'/>
+<mbr r='llvm::DIType::OffsetInBits' o='320' t='uint64_t'/>
+<mbr r='llvm::DIType::AlignInBits' o='384' t='uint32_t'/>
+<fun r='_ZN4llvm6DITypeC1ERNS_11LLVMContextEjNS_8Metadata11StorageTypeEjjmjmNS_6DINode7DIFlagsENS_8ArrayRefIPS3_EE'/>
+<fun r='_ZN4llvm6DITypeD1Ev'/>
+<fun r='_ZN4llvm6DIType4initEjmjmNS_6DINode7DIFlagsE'/>
+<fun r='_ZN4llvm6DIType6mutateEjjmjmNS_6DINode7DIFlagsE'/>
+<fun r='_ZNK4llvm6DIType5cloneEv'/>
+<fun r='_ZNK4llvm6DIType7getLineEv'/>
+<fun r='_ZNK4llvm6DIType13getSizeInBitsEv'/>
+<fun r='_ZNK4llvm6DIType14getAlignInBitsEv'/>
+<fun r='_ZNK4llvm6DIType15getAlignInBytesEv'/>
+<fun r='_ZNK4llvm6DIType15getOffsetInBitsEv'/>
+<fun r='_ZNK4llvm6DIType8getFlagsEv'/>
+<fun r='_ZNK4llvm6DIType8getScopeEv'/>
+<fun r='_ZNK4llvm6DIType7getNameEv'/>
+<fun r='_ZNK4llvm6DIType11getRawScopeEv'/>
+<fun r='_ZNK4llvm6DIType10getRawNameEv'/>
+<fun r='_ZN4llvm6DIType8setFlagsENS_6DINode7DIFlagsE'/>
+<fun r='_ZNK4llvm6DIType9isPrivateEv'/>
+<fun r='_ZNK4llvm6DIType11isProtectedEv'/>
+<fun r='_ZNK4llvm6DIType8isPublicEv'/>
+<fun r='_ZNK4llvm6DIType13isForwardDeclEv'/>
+<fun r='_ZNK4llvm6DIType21isAppleBlockExtensionEv'/>
+<fun r='_ZNK4llvm6DIType18isBlockByrefStructEv'/>
+<fun r='_ZNK4llvm6DIType9isVirtualEv'/>
+<fun r='_ZNK4llvm6DIType12isArtificialEv'/>
+<fun r='_ZNK4llvm6DIType15isObjectPointerEv'/>
+<fun r='_ZNK4llvm6DIType19isObjcClassCompleteEv'/>
+<fun r='_ZNK4llvm6DIType8isVectorEv'/>
+<fun r='_ZNK4llvm6DIType10isBitFieldEv'/>
+<fun r='_ZNK4llvm6DIType14isStaticMemberEv'/>
+<fun r='_ZNK4llvm6DIType17isLValueReferenceEv'/>
+<fun r='_ZNK4llvm6DIType17isRValueReferenceEv'/>
+<fun r='_ZN4llvm6DIType7classofEPKNS_8MetadataE'/>

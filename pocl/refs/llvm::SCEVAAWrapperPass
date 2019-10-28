@@ -1,0 +1,11 @@
+<inh f='include/llvm-6.0/llvm/Pass.h' l='285' c='llvm::FunctionPass'/>
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionAliasAnalysis.h' l='52' ll='65'/>
+<size>40</size>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionAliasAnalysis.h' l='51'>/// Legacy wrapper pass to provide the SCEVAAResult object.</doc>
+<mbr r='llvm::SCEVAAWrapperPass::Result' o='256' t='std::unique_ptr&lt;SCEVAAResult&gt;'/>
+<smbr r='llvm::SCEVAAWrapperPass::ID' t='char'/>
+<fun r='_ZN4llvm17SCEVAAWrapperPassC1Ev'/>
+<fun r='_ZN4llvm17SCEVAAWrapperPass9getResultEv'/>
+<fun r='_ZNK4llvm17SCEVAAWrapperPass9getResultEv'/>
+<fun r='_ZN4llvm17SCEVAAWrapperPass13runOnFunctionERNS_8FunctionE'/>
+<fun r='_ZNK4llvm17SCEVAAWrapperPass16getAnalysisUsageERNS_13AnalysisUsageE'/>

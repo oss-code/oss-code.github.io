@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Target/TargetMachine.h' l='269' type='bool llvm::TargetMachine::usesPhysRegsForPEI() const'/>
+<doc f='include/llvm-6.0/llvm/Target/TargetMachine.h' l='265'>/// True if the target uses physical regs at Prolog/Epilog insertion
+  /// time. If true (most machines), all vregs must be allocated before
+  /// PEI. If false (virtual-register machines), then callee-save register
+  /// spilling and scavenging are not needed or used.</doc>

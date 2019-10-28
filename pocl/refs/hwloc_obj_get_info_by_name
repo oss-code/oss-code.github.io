@@ -1,0 +1,8 @@
+<dec f='include/hwloc.h' l='1312' type='const char * hwloc_obj_get_info_by_name(hwloc_obj_t obj, const char * name)'/>
+<def f='include/hwloc/inlines.h' l='110' ll='118' type='const char * hwloc_obj_get_info_by_name(hwloc_obj_t obj, const char * name)'/>
+<doc f='include/hwloc.h' l='1305'>/** \brief Search the given key name in object infos and return the corresponding value.
+ *
+ * If multiple keys match the given name, only the first one is returned.
+ *
+ * \return \c NULL if no such key exists.
+ */</doc>

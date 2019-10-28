@@ -1,0 +1,13 @@
+<dec f='pocl/lib/CL/pocl_llvm_wg.cc' l='91' type='cl::opt&lt;std::string&gt;'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='422' u='w' c='pocl_llvm_generate_workgroup_function_nowrite'/>
+<doc f='pocl/lib/CL/pocl_llvm_wg.cc' l='90'>// This is used to control the kernel we process in the kernel compilation.</doc>
+<dec f='pocl/lib/llvmopencl/Flatten.cc' l='59' type='cl::opt&lt;std::string&gt;'/>
+<use f='pocl/lib/llvmopencl/Flatten.cc' l='87' u='r' c='_ZN12_GLOBAL__N_17Flatten11runOnModuleERN4llvm6ModuleE'/>
+<dec f='pocl/lib/llvmopencl/FlattenBarrierSubs.cc' l='60' type='cl::opt&lt;std::string&gt;'/>
+<use f='pocl/lib/llvmopencl/FlattenBarrierSubs.cc' l='116' u='r' c='_ZN12_GLOBAL__N_118FlattenBarrierSubs11runOnModuleERN4llvm6ModuleE'/>
+<doc f='pocl/lib/llvmopencl/FlattenBarrierSubs.cc' l='58'>//#define DEBUG_FLATTEN_SUBS</doc>
+<dec f='pocl/lib/llvmopencl/FlattenGlobals.cc' l='56' type='cl::opt&lt;std::string&gt;'/>
+<def f='pocl/lib/llvmopencl/Workgroup.cc' l='86' ll='87' type='cl::opt&lt;string&gt;'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1439' u='r' c='_ZN4pocl9Workgroup17isKernelToProcessERKN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1441' u='r' c='_ZN4pocl9Workgroup17isKernelToProcessERKN4llvm8FunctionE'/>
+<doc f='pocl/lib/llvmopencl/Workgroup.cc' l='85'>/* The kernel to process in this kernel compiler launch. */</doc>

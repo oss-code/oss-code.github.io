@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='639' type='const llvm::SCEV * llvm::ScalarEvolution::getNoopOrAnyExtend(const llvm::SCEV * V, llvm::Type * Ty)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='636'>/// Return a SCEV corresponding to a conversion of the input value to the
+  /// specified type. If the type must be extended, it is extended with
+  /// unspecified bits. The conversion must not be narrowing.</doc>

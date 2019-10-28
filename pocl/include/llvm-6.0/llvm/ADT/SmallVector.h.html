@@ -1,0 +1,974 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>SmallVector.h source code [include/llvm-6.0/llvm/ADT/SmallVector.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="llvm::SmallVector,llvm::SmallVectorBase,llvm::SmallVectorImpl,llvm::SmallVectorStorage,llvm::SmallVectorTemplateBase,llvm::SmallVectorTemplateCommon "/>
+<link rel="stylesheet" href="../../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'include/llvm-6.0/llvm/ADT/SmallVector.h'; var root_path = '../../../..'; var data_path = '../../../../../data';</script>
+<script src='../../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../../..'>include</a>/<a href='../..'>llvm-6.0</a>/<a href='..'>llvm</a>/<a href='./'>ADT</a>/<a href='SmallVector.h.html'>SmallVector.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>//===- llvm/ADT/SmallVector.h - 'Normally small' vectors --------*- C++ -*-===//</i></td></tr>
+<tr><th id="2">2</th><td><i>//</i></td></tr>
+<tr><th id="3">3</th><td><i>//                     The LLVM Compiler Infrastructure</i></td></tr>
+<tr><th id="4">4</th><td><i>//</i></td></tr>
+<tr><th id="5">5</th><td><i>// This file is distributed under the University of Illinois Open Source</i></td></tr>
+<tr><th id="6">6</th><td><i>// License. See LICENSE.TXT for details.</i></td></tr>
+<tr><th id="7">7</th><td><i>//</i></td></tr>
+<tr><th id="8">8</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="9">9</th><td><i>//</i></td></tr>
+<tr><th id="10">10</th><td><i>// This file defines the SmallVector class.</i></td></tr>
+<tr><th id="11">11</th><td><i>//</i></td></tr>
+<tr><th id="12">12</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td><u>#<span data-ppcond="14">ifndef</span> <span class="macro" data-ref="_M/LLVM_ADT_SMALLVECTOR_H">LLVM_ADT_SMALLVECTOR_H</span></u></td></tr>
+<tr><th id="15">15</th><td><u>#define <dfn class="macro" id="_M/LLVM_ADT_SMALLVECTOR_H" data-ref="_M/LLVM_ADT_SMALLVECTOR_H">LLVM_ADT_SMALLVECTOR_H</dfn></u></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><u>#include <a href="iterator_range.h.html">"llvm/ADT/iterator_range.h"</a></u></td></tr>
+<tr><th id="18">18</th><td><u>#include <a href="../Support/AlignOf.h.html">"llvm/Support/AlignOf.h"</a></u></td></tr>
+<tr><th id="19">19</th><td><u>#include <a href="../Support/Compiler.h.html">"llvm/Support/Compiler.h"</a></u></td></tr>
+<tr><th id="20">20</th><td><u>#include <a href="../Support/MathExtras.h.html">"llvm/Support/MathExtras.h"</a></u></td></tr>
+<tr><th id="21">21</th><td><u>#include <a href="../Support/type_traits.h.html">"llvm/Support/type_traits.h"</a></u></td></tr>
+<tr><th id="22">22</th><td><u>#include <a href="../Support/ErrorHandling.h.html">"llvm/Support/ErrorHandling.h"</a></u></td></tr>
+<tr><th id="23">23</th><td><u>#include <a href="../../../c++/7/algorithm.html">&lt;algorithm&gt;</a></u></td></tr>
+<tr><th id="24">24</th><td><u>#include <a href="../../../c++/7/cassert.html">&lt;cassert&gt;</a></u></td></tr>
+<tr><th id="25">25</th><td><u>#include <a href="../../../c++/7/cstddef.html">&lt;cstddef&gt;</a></u></td></tr>
+<tr><th id="26">26</th><td><u>#include <a href="../../../c++/7/cstdlib.html">&lt;cstdlib&gt;</a></u></td></tr>
+<tr><th id="27">27</th><td><u>#include <a href="../../../c++/7/cstring.html">&lt;cstring&gt;</a></u></td></tr>
+<tr><th id="28">28</th><td><u>#include <a href="../../../c++/7/initializer_list.html">&lt;initializer_list&gt;</a></u></td></tr>
+<tr><th id="29">29</th><td><u>#include <a href="../../../c++/7/iterator.html">&lt;iterator&gt;</a></u></td></tr>
+<tr><th id="30">30</th><td><u>#include <a href="../../../c++/7/memory.html">&lt;memory&gt;</a></u></td></tr>
+<tr><th id="31">31</th><td><u>#include <a href="../../../c++/7/new.html">&lt;new&gt;</a></u></td></tr>
+<tr><th id="32">32</th><td><u>#include <a href="../../../c++/7/type_traits.html">&lt;type_traits&gt;</a></u></td></tr>
+<tr><th id="33">33</th><td><u>#include <a href="../../../c++/7/utility.html">&lt;utility&gt;</a></u></td></tr>
+<tr><th id="34">34</th><td></td></tr>
+<tr><th id="35">35</th><td><b>namespace</b> <span class="namespace">llvm</span> {</td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td><i class="doc">/// This is all the non-templated stuff common to all SmallVectors.</i></td></tr>
+<tr><th id="38">38</th><td><b>class</b> <dfn class="type def" id="llvm::SmallVectorBase" title='llvm::SmallVectorBase' data-ref="llvm::SmallVectorBase">SmallVectorBase</dfn> {</td></tr>
+<tr><th id="39">39</th><td><b>protected</b>:</td></tr>
+<tr><th id="40">40</th><td>  <em>void</em> *<dfn class="decl" id="llvm::SmallVectorBase::BeginX" title='llvm::SmallVectorBase::BeginX' data-ref="llvm::SmallVectorBase::BeginX">BeginX</dfn>, *<dfn class="decl" id="llvm::SmallVectorBase::EndX" title='llvm::SmallVectorBase::EndX' data-ref="llvm::SmallVectorBase::EndX">EndX</dfn>, *<dfn class="decl" id="llvm::SmallVectorBase::CapacityX" title='llvm::SmallVectorBase::CapacityX' data-ref="llvm::SmallVectorBase::CapacityX">CapacityX</dfn>;</td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td><b>protected</b>:</td></tr>
+<tr><th id="43">43</th><td>  <dfn class="decl def" id="_ZN4llvm15SmallVectorBaseC1EPvm" title='llvm::SmallVectorBase::SmallVectorBase' data-ref="_ZN4llvm15SmallVectorBaseC1EPvm">SmallVectorBase</dfn>(<em>void</em> *<dfn class="local col0 decl" id="6450FirstEl" title='FirstEl' data-type='void *' data-ref="6450FirstEl">FirstEl</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col1 decl" id="6451Size" title='Size' data-type='size_t' data-ref="6451Size">Size</dfn>)</td></tr>
+<tr><th id="44">44</th><td>    : <a class="member" href="#llvm::SmallVectorBase::BeginX" title='llvm::SmallVectorBase::BeginX' data-ref="llvm::SmallVectorBase::BeginX">BeginX</a>(<a class="local col0 ref" href="#6450FirstEl" title='FirstEl' data-ref="6450FirstEl">FirstEl</a>), <a class="member" href="#llvm::SmallVectorBase::EndX" title='llvm::SmallVectorBase::EndX' data-ref="llvm::SmallVectorBase::EndX">EndX</a>(<a class="local col0 ref" href="#6450FirstEl" title='FirstEl' data-ref="6450FirstEl">FirstEl</a>), <a class="member" href="#llvm::SmallVectorBase::CapacityX" title='llvm::SmallVectorBase::CapacityX' data-ref="llvm::SmallVectorBase::CapacityX">CapacityX</a>((<em>char</em>*)<a class="local col0 ref" href="#6450FirstEl" title='FirstEl' data-ref="6450FirstEl">FirstEl</a>+<a class="local col1 ref" href="#6451Size" title='Size' data-ref="6451Size">Size</a>) {}</td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td>  <i class="doc">/// This is an implementation of the grow() method which only works</i></td></tr>
+<tr><th id="47">47</th><td><i class="doc">  /// on POD-like data types and is out of line to reduce code duplication.</i></td></tr>
+<tr><th id="48">48</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm15SmallVectorBase8grow_podEPvmm" title='llvm::SmallVectorBase::grow_pod' data-ref="_ZN4llvm15SmallVectorBase8grow_podEPvmm">grow_pod</dfn>(<em>void</em> *<dfn class="local col2 decl" id="6452FirstEl" title='FirstEl' data-type='void *' data-ref="6452FirstEl">FirstEl</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col3 decl" id="6453MinSizeInBytes" title='MinSizeInBytes' data-type='size_t' data-ref="6453MinSizeInBytes">MinSizeInBytes</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col4 decl" id="6454TSize" title='TSize' data-type='size_t' data-ref="6454TSize">TSize</dfn>);</td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td><b>public</b>:</td></tr>
+<tr><th id="51">51</th><td>  <i class="doc">/// This returns size()*sizeof(T).</i></td></tr>
+<tr><th id="52">52</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl def" id="_ZNK4llvm15SmallVectorBase13size_in_bytesEv" title='llvm::SmallVectorBase::size_in_bytes' data-ref="_ZNK4llvm15SmallVectorBase13size_in_bytesEv">size_in_bytes</dfn>() <em>const</em> {</td></tr>
+<tr><th id="53">53</th><td>    <b>return</b> <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span>((<em>char</em>*)<a class="member" href="#llvm::SmallVectorBase::EndX" title='llvm::SmallVectorBase::EndX' data-ref="llvm::SmallVectorBase::EndX">EndX</a> - (<em>char</em>*)<a class="member" href="#llvm::SmallVectorBase::BeginX" title='llvm::SmallVectorBase::BeginX' data-ref="llvm::SmallVectorBase::BeginX">BeginX</a>);</td></tr>
+<tr><th id="54">54</th><td>  }</td></tr>
+<tr><th id="55">55</th><td></td></tr>
+<tr><th id="56">56</th><td>  <i class="doc">/// capacity_in_bytes - This returns capacity()*sizeof(T).</i></td></tr>
+<tr><th id="57">57</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl def" id="_ZNK4llvm15SmallVectorBase17capacity_in_bytesEv" title='llvm::SmallVectorBase::capacity_in_bytes' data-ref="_ZNK4llvm15SmallVectorBase17capacity_in_bytesEv">capacity_in_bytes</dfn>() <em>const</em> {</td></tr>
+<tr><th id="58">58</th><td>    <b>return</b> <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span>((<em>char</em>*)<a class="member" href="#llvm::SmallVectorBase::CapacityX" title='llvm::SmallVectorBase::CapacityX' data-ref="llvm::SmallVectorBase::CapacityX">CapacityX</a> - (<em>char</em>*)<a class="member" href="#llvm::SmallVectorBase::BeginX" title='llvm::SmallVectorBase::BeginX' data-ref="llvm::SmallVectorBase::BeginX">BeginX</a>);</td></tr>
+<tr><th id="59">59</th><td>  }</td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td>  <a class="macro" href="../Support/Compiler.h.html#128" title="[[clang::warn_unused_result]]" data-ref="_M/LLVM_NODISCARD">LLVM_NODISCARD</a> <em>bool</em> <dfn class="decl def" id="_ZNK4llvm15SmallVectorBase5emptyEv" title='llvm::SmallVectorBase::empty' data-ref="_ZNK4llvm15SmallVectorBase5emptyEv">empty</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::SmallVectorBase::BeginX" title='llvm::SmallVectorBase::BeginX' data-ref="llvm::SmallVectorBase::BeginX">BeginX</a> == <a class="member" href="#llvm::SmallVectorBase::EndX" title='llvm::SmallVectorBase::EndX' data-ref="llvm::SmallVectorBase::EndX">EndX</a>; }</td></tr>
+<tr><th id="62">62</th><td>};</td></tr>
+<tr><th id="63">63</th><td></td></tr>
+<tr><th id="64">64</th><td><i class="doc">/// This is the part of SmallVectorTemplateBase which does not depend on whether</i></td></tr>
+<tr><th id="65">65</th><td><i class="doc">/// the type T is a POD. The extra dummy template argument is used by ArrayRef</i></td></tr>
+<tr><th id="66">66</th><td><i class="doc">/// to avoid unnecessarily requiring T to be complete.</i></td></tr>
+<tr><th id="67">67</th><td><b>template</b> &lt;<b>typename</b> T, <b>typename</b> = <em>void</em>&gt;</td></tr>
+<tr><th id="68">68</th><td><b>class</b> <dfn class="type def" id="llvm::SmallVectorTemplateCommon" title='llvm::SmallVectorTemplateCommon' data-ref="llvm::SmallVectorTemplateCommon">SmallVectorTemplateCommon</dfn> : <b>public</b> <a class="type" href="#llvm::SmallVectorBase" title='llvm::SmallVectorBase' data-ref="llvm::SmallVectorBase">SmallVectorBase</a> {</td></tr>
+<tr><th id="69">69</th><td><b>private</b>:</td></tr>
+<tr><th id="70">70</th><td>  <b>template</b> &lt;<b>typename</b>, <em>unsigned</em>&gt; <b>friend</b> <b>struct</b> <dfn class="type" id="llvm::SmallVectorStorage" title='llvm::SmallVectorStorage' data-ref="llvm::SmallVectorStorage">SmallVectorStorage</dfn>;</td></tr>
+<tr><th id="71">71</th><td></td></tr>
+<tr><th id="72">72</th><td>  <i>// Allocate raw space for N elements of type T.  If T has a ctor or dtor, we</i></td></tr>
+<tr><th id="73">73</th><td><i>  // don't want it to be automatically run, so we need to represent the space as</i></td></tr>
+<tr><th id="74">74</th><td><i>  // something else.  Use an array of char of sufficient alignment.</i></td></tr>
+<tr><th id="75">75</th><td>  <b>using</b> <dfn class="typedef" id="llvm::SmallVectorTemplateCommon::U" title='llvm::SmallVectorTemplateCommon::U' data-type='AlignedCharArrayUnion&lt;T&gt;' data-ref="llvm::SmallVectorTemplateCommon::U">U</dfn> = <a class="type" href="../Support/AlignOf.h.html#llvm::AlignedCharArrayUnion" title='llvm::AlignedCharArrayUnion' data-ref="llvm::AlignedCharArrayUnion">AlignedCharArrayUnion</a>&lt;T&gt;;</td></tr>
+<tr><th id="76">76</th><td>  <a class="typedef" href="#llvm::SmallVectorTemplateCommon::U" title='llvm::SmallVectorTemplateCommon::U' data-type='AlignedCharArrayUnion&lt;T&gt;' data-ref="llvm::SmallVectorTemplateCommon::U">U</a> <dfn class="decl" id="llvm::SmallVectorTemplateCommon::FirstEl" title='llvm::SmallVectorTemplateCommon::FirstEl' data-ref="llvm::SmallVectorTemplateCommon::FirstEl">FirstEl</dfn>;</td></tr>
+<tr><th id="77">77</th><td>  <i>// Space after 'FirstEl' is clobbered, do not add any instance vars after it.</i></td></tr>
+<tr><th id="78">78</th><td></td></tr>
+<tr><th id="79">79</th><td><b>protected</b>:</td></tr>
+<tr><th id="80">80</th><td>  <dfn class="decl def" id="_ZN4llvm25SmallVectorTemplateCommonC1Em" title='llvm::SmallVectorTemplateCommon::SmallVectorTemplateCommon&lt;T, type-parameter-0-1&gt;' data-ref="_ZN4llvm25SmallVectorTemplateCommonC1Em">SmallVectorTemplateCommon</dfn>(<span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col5 decl" id="6455Size" title='Size' data-type='size_t' data-ref="6455Size">Size</dfn>) : <a class="type" href="#llvm::SmallVectorBase" title='llvm::SmallVectorBase' data-ref="llvm::SmallVectorBase">SmallVectorBase</a>(&amp;<a class="member" href="#llvm::SmallVectorTemplateCommon::FirstEl" title='llvm::SmallVectorTemplateCommon::FirstEl' data-ref="llvm::SmallVectorTemplateCommon::FirstEl">FirstEl</a>, <a class="local col5 ref" href="#6455Size" title='Size' data-ref="6455Size">Size</a>) {}</td></tr>
+<tr><th id="81">81</th><td></td></tr>
+<tr><th id="82">82</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm25SmallVectorTemplateCommon8grow_podEmm" title='llvm::SmallVectorTemplateCommon::grow_pod' data-ref="_ZN4llvm25SmallVectorTemplateCommon8grow_podEmm">grow_pod</dfn>(<span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col6 decl" id="6456MinSizeInBytes" title='MinSizeInBytes' data-type='size_t' data-ref="6456MinSizeInBytes">MinSizeInBytes</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col7 decl" id="6457TSize" title='TSize' data-type='size_t' data-ref="6457TSize">TSize</dfn>) {</td></tr>
+<tr><th id="83">83</th><td>    <a class="type" href="#llvm::SmallVectorBase" title='llvm::SmallVectorBase' data-ref="llvm::SmallVectorBase">SmallVectorBase</a>::<a class="member" href="#_ZN4llvm15SmallVectorBase8grow_podEPvmm" title='llvm::SmallVectorBase::grow_pod' data-ref="_ZN4llvm15SmallVectorBase8grow_podEPvmm">grow_pod</a>(&amp;<a class="member" href="#llvm::SmallVectorTemplateCommon::FirstEl" title='llvm::SmallVectorTemplateCommon::FirstEl' data-ref="llvm::SmallVectorTemplateCommon::FirstEl">FirstEl</a>, <a class="local col6 ref" href="#6456MinSizeInBytes" title='MinSizeInBytes' data-ref="6456MinSizeInBytes">MinSizeInBytes</a>, <a class="local col7 ref" href="#6457TSize" title='TSize' data-ref="6457TSize">TSize</a>);</td></tr>
+<tr><th id="84">84</th><td>  }</td></tr>
+<tr><th id="85">85</th><td></td></tr>
+<tr><th id="86">86</th><td>  <i class="doc">/// Return true if this is a smallvector which has not had dynamic</i></td></tr>
+<tr><th id="87">87</th><td><i class="doc">  /// memory allocated for it.</i></td></tr>
+<tr><th id="88">88</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm25SmallVectorTemplateCommon7isSmallEv" title='llvm::SmallVectorTemplateCommon::isSmall' data-ref="_ZNK4llvm25SmallVectorTemplateCommon7isSmallEv">isSmall</dfn>() <em>const</em> {</td></tr>
+<tr><th id="89">89</th><td>    <b>return</b> <a class="member" href="#llvm::SmallVectorBase::BeginX" title='llvm::SmallVectorBase::BeginX' data-ref="llvm::SmallVectorBase::BeginX">BeginX</a> == <b>static_cast</b>&lt;<em>const</em> <em>void</em>*&gt;(&amp;<a class="member" href="#llvm::SmallVectorTemplateCommon::FirstEl" title='llvm::SmallVectorTemplateCommon::FirstEl' data-ref="llvm::SmallVectorTemplateCommon::FirstEl">FirstEl</a>);</td></tr>
+<tr><th id="90">90</th><td>  }</td></tr>
+<tr><th id="91">91</th><td></td></tr>
+<tr><th id="92">92</th><td>  <i class="doc">/// Put this vector in a state of being small.</i></td></tr>
+<tr><th id="93">93</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm25SmallVectorTemplateCommon12resetToSmallEv" title='llvm::SmallVectorTemplateCommon::resetToSmall' data-ref="_ZN4llvm25SmallVectorTemplateCommon12resetToSmallEv">resetToSmall</dfn>() {</td></tr>
+<tr><th id="94">94</th><td>    <a class="member" href="#llvm::SmallVectorBase::BeginX" title='llvm::SmallVectorBase::BeginX' data-ref="llvm::SmallVectorBase::BeginX">BeginX</a> = <a class="member" href="#llvm::SmallVectorBase::EndX" title='llvm::SmallVectorBase::EndX' data-ref="llvm::SmallVectorBase::EndX">EndX</a> = <a class="member" href="#llvm::SmallVectorBase::CapacityX" title='llvm::SmallVectorBase::CapacityX' data-ref="llvm::SmallVectorBase::CapacityX">CapacityX</a> = &amp;<a class="member" href="#llvm::SmallVectorTemplateCommon::FirstEl" title='llvm::SmallVectorTemplateCommon::FirstEl' data-ref="llvm::SmallVectorTemplateCommon::FirstEl">FirstEl</a>;</td></tr>
+<tr><th id="95">95</th><td>  }</td></tr>
+<tr><th id="96">96</th><td></td></tr>
+<tr><th id="97">97</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm25SmallVectorTemplateCommon6setEndEPT_" title='llvm::SmallVectorTemplateCommon::setEnd' data-ref="_ZN4llvm25SmallVectorTemplateCommon6setEndEPT_">setEnd</dfn>(T *<dfn class="local col8 decl" id="6458P" title='P' data-type='T *' data-ref="6458P">P</dfn>) { <b>this</b>-&gt;EndX = <a class="local col8 ref" href="#6458P" title='P' data-ref="6458P">P</a>; }</td></tr>
+<tr><th id="98">98</th><td></td></tr>
+<tr><th id="99">99</th><td><b>public</b>:</td></tr>
+<tr><th id="100">100</th><td>  <b>using</b> <dfn class="typedef" id="llvm::SmallVectorTemplateCommon::size_type" title='llvm::SmallVectorTemplateCommon::size_type' data-type='size_t' data-ref="llvm::SmallVectorTemplateCommon::size_type">size_type</dfn> = <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span>;</td></tr>
+<tr><th id="101">101</th><td>  <b>using</b> <dfn class="typedef" id="llvm::SmallVectorTemplateCommon::difference_type" title='llvm::SmallVectorTemplateCommon::difference_type' data-type='ptrdiff_t' data-ref="llvm::SmallVectorTemplateCommon::difference_type">difference_type</dfn> = <span class='typedef' title='ptrdiff_t' data-type='long' data-ref="ptrdiff_t">ptrdiff_t</span>;</td></tr>
+<tr><th id="102">102</th><td>  <b>using</b> <dfn class="typedef" id="llvm::SmallVectorTemplateCommon::value_type" title='llvm::SmallVectorTemplateCommon::value_type' data-type='T' data-ref="llvm::SmallVectorTemplateCommon::value_type">value_type</dfn> = T;</td></tr>
+<tr><th id="103">103</th><td>  <b>using</b> <dfn class="typedef" id="llvm::SmallVectorTemplateCommon::iterator" title='llvm::SmallVectorTemplateCommon::iterator' data-type='T *' data-ref="llvm::SmallVectorTemplateCommon::iterator">iterator</dfn> = T *;</td></tr>
+<tr><th id="104">104</th><td>  <b>using</b> <dfn class="typedef" id="llvm::SmallVectorTemplateCommon::const_iterator" title='llvm::SmallVectorTemplateCommon::const_iterator' data-type='const T *' data-ref="llvm::SmallVectorTemplateCommon::const_iterator">const_iterator</dfn> = <em>const</em> T *;</td></tr>
+<tr><th id="105">105</th><td></td></tr>
+<tr><th id="106">106</th><td>  <b>using</b> <dfn class="typedef" id="llvm::SmallVectorTemplateCommon::const_reverse_iterator" title='llvm::SmallVectorTemplateCommon::const_reverse_iterator' data-type='std::reverse_iterator&lt;const_iterator&gt;' data-ref="llvm::SmallVectorTemplateCommon::const_reverse_iterator">const_reverse_iterator</dfn> = <span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/stl_iterator.h.html#std::reverse_iterator" title='std::reverse_iterator' data-ref="std::reverse_iterator">reverse_iterator</a>&lt;<a class="typedef" href="#llvm::SmallVectorTemplateCommon::const_iterator" title='llvm::SmallVectorTemplateCommon::const_iterator' data-type='const T *' data-ref="llvm::SmallVectorTemplateCommon::const_iterator">const_iterator</a>&gt;;</td></tr>
+<tr><th id="107">107</th><td>  <b>using</b> <dfn class="typedef" id="llvm::SmallVectorTemplateCommon::reverse_iterator" title='llvm::SmallVectorTemplateCommon::reverse_iterator' data-type='std::reverse_iterator&lt;iterator&gt;' data-ref="llvm::SmallVectorTemplateCommon::reverse_iterator">reverse_iterator</dfn> = <span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/stl_iterator.h.html#std::reverse_iterator" title='std::reverse_iterator' data-ref="std::reverse_iterator">reverse_iterator</a>&lt;<a class="typedef" href="#llvm::SmallVectorTemplateCommon::iterator" title='llvm::SmallVectorTemplateCommon::iterator' data-type='T *' data-ref="llvm::SmallVectorTemplateCommon::iterator">iterator</a>&gt;;</td></tr>
+<tr><th id="108">108</th><td></td></tr>
+<tr><th id="109">109</th><td>  <b>using</b> <dfn class="typedef" id="llvm::SmallVectorTemplateCommon::reference" title='llvm::SmallVectorTemplateCommon::reference' data-type='T &amp;' data-ref="llvm::SmallVectorTemplateCommon::reference">reference</dfn> = T &amp;;</td></tr>
+<tr><th id="110">110</th><td>  <b>using</b> <dfn class="typedef" id="llvm::SmallVectorTemplateCommon::const_reference" title='llvm::SmallVectorTemplateCommon::const_reference' data-type='const T &amp;' data-ref="llvm::SmallVectorTemplateCommon::const_reference">const_reference</dfn> = <em>const</em> T &amp;;</td></tr>
+<tr><th id="111">111</th><td>  <b>using</b> <dfn class="typedef" id="llvm::SmallVectorTemplateCommon::pointer" title='llvm::SmallVectorTemplateCommon::pointer' data-type='T *' data-ref="llvm::SmallVectorTemplateCommon::pointer">pointer</dfn> = T *;</td></tr>
+<tr><th id="112">112</th><td>  <b>using</b> <dfn class="typedef" id="llvm::SmallVectorTemplateCommon::const_pointer" title='llvm::SmallVectorTemplateCommon::const_pointer' data-type='const T *' data-ref="llvm::SmallVectorTemplateCommon::const_pointer">const_pointer</dfn> = <em>const</em> T *;</td></tr>
+<tr><th id="113">113</th><td></td></tr>
+<tr><th id="114">114</th><td>  <i>// forward iterator creation methods.</i></td></tr>
+<tr><th id="115">115</th><td>  <a class="macro" href="../Support/Compiler.h.html#194" title="__attribute__((always_inline))" data-ref="_M/LLVM_ATTRIBUTE_ALWAYS_INLINE">LLVM_ATTRIBUTE_ALWAYS_INLINE</a></td></tr>
+<tr><th id="116">116</th><td>  <a class="typedef" href="#llvm::SmallVectorTemplateCommon::iterator" title='llvm::SmallVectorTemplateCommon::iterator' data-type='T *' data-ref="llvm::SmallVectorTemplateCommon::iterator">iterator</a> <dfn class="decl def" id="_ZN4llvm25SmallVectorTemplateCommon5beginEv" title='llvm::SmallVectorTemplateCommon::begin' data-ref="_ZN4llvm25SmallVectorTemplateCommon5beginEv">begin</dfn>() { <b>return</b> (<a class="typedef" href="#llvm::SmallVectorTemplateCommon::iterator" title='llvm::SmallVectorTemplateCommon::iterator' data-type='T *' data-ref="llvm::SmallVectorTemplateCommon::iterator">iterator</a>)<b>this</b>-&gt;BeginX; }</td></tr>
+<tr><th id="117">117</th><td>  <a class="macro" href="../Support/Compiler.h.html#194" title="__attribute__((always_inline))" data-ref="_M/LLVM_ATTRIBUTE_ALWAYS_INLINE">LLVM_ATTRIBUTE_ALWAYS_INLINE</a></td></tr>
+<tr><th id="118">118</th><td>  <a class="typedef" href="#llvm::SmallVectorTemplateCommon::const_iterator" title='llvm::SmallVectorTemplateCommon::const_iterator' data-type='const T *' data-ref="llvm::SmallVectorTemplateCommon::const_iterator">const_iterator</a> <dfn class="decl def" id="_ZNK4llvm25SmallVectorTemplateCommon5beginEv" title='llvm::SmallVectorTemplateCommon::begin' data-ref="_ZNK4llvm25SmallVectorTemplateCommon5beginEv">begin</dfn>() <em>const</em> { <b>return</b> (<a class="typedef" href="#llvm::SmallVectorTemplateCommon::const_iterator" title='llvm::SmallVectorTemplateCommon::const_iterator' data-type='const T *' data-ref="llvm::SmallVectorTemplateCommon::const_iterator">const_iterator</a>)<b>this</b>-&gt;BeginX; }</td></tr>
+<tr><th id="119">119</th><td>  <a class="macro" href="../Support/Compiler.h.html#194" title="__attribute__((always_inline))" data-ref="_M/LLVM_ATTRIBUTE_ALWAYS_INLINE">LLVM_ATTRIBUTE_ALWAYS_INLINE</a></td></tr>
+<tr><th id="120">120</th><td>  <a class="typedef" href="#llvm::SmallVectorTemplateCommon::iterator" title='llvm::SmallVectorTemplateCommon::iterator' data-type='T *' data-ref="llvm::SmallVectorTemplateCommon::iterator">iterator</a> <dfn class="decl def" id="_ZN4llvm25SmallVectorTemplateCommon3endEv" title='llvm::SmallVectorTemplateCommon::end' data-ref="_ZN4llvm25SmallVectorTemplateCommon3endEv">end</dfn>() { <b>return</b> (<a class="typedef" href="#llvm::SmallVectorTemplateCommon::iterator" title='llvm::SmallVectorTemplateCommon::iterator' data-type='T *' data-ref="llvm::SmallVectorTemplateCommon::iterator">iterator</a>)<b>this</b>-&gt;EndX; }</td></tr>
+<tr><th id="121">121</th><td>  <a class="macro" href="../Support/Compiler.h.html#194" title="__attribute__((always_inline))" data-ref="_M/LLVM_ATTRIBUTE_ALWAYS_INLINE">LLVM_ATTRIBUTE_ALWAYS_INLINE</a></td></tr>
+<tr><th id="122">122</th><td>  <a class="typedef" href="#llvm::SmallVectorTemplateCommon::const_iterator" title='llvm::SmallVectorTemplateCommon::const_iterator' data-type='const T *' data-ref="llvm::SmallVectorTemplateCommon::const_iterator">const_iterator</a> <dfn class="decl def" id="_ZNK4llvm25SmallVectorTemplateCommon3endEv" title='llvm::SmallVectorTemplateCommon::end' data-ref="_ZNK4llvm25SmallVectorTemplateCommon3endEv">end</dfn>() <em>const</em> { <b>return</b> (<a class="typedef" href="#llvm::SmallVectorTemplateCommon::const_iterator" title='llvm::SmallVectorTemplateCommon::const_iterator' data-type='const T *' data-ref="llvm::SmallVectorTemplateCommon::const_iterator">const_iterator</a>)<b>this</b>-&gt;EndX; }</td></tr>
+<tr><th id="123">123</th><td></td></tr>
+<tr><th id="124">124</th><td><b>protected</b>:</td></tr>
+<tr><th id="125">125</th><td>  <a class="typedef" href="#llvm::SmallVectorTemplateCommon::iterator" title='llvm::SmallVectorTemplateCommon::iterator' data-type='T *' data-ref="llvm::SmallVectorTemplateCommon::iterator">iterator</a> <dfn class="decl def" id="_ZN4llvm25SmallVectorTemplateCommon12capacity_ptrEv" title='llvm::SmallVectorTemplateCommon::capacity_ptr' data-ref="_ZN4llvm25SmallVectorTemplateCommon12capacity_ptrEv">capacity_ptr</dfn>() { <b>return</b> (<a class="typedef" href="#llvm::SmallVectorTemplateCommon::iterator" title='llvm::SmallVectorTemplateCommon::iterator' data-type='T *' data-ref="llvm::SmallVectorTemplateCommon::iterator">iterator</a>)<b>this</b>-&gt;CapacityX; }</td></tr>
+<tr><th id="126">126</th><td>  <a class="typedef" href="#llvm::SmallVectorTemplateCommon::const_iterator" title='llvm::SmallVectorTemplateCommon::const_iterator' data-type='const T *' data-ref="llvm::SmallVectorTemplateCommon::const_iterator">const_iterator</a> <dfn class="decl def" id="_ZNK4llvm25SmallVectorTemplateCommon12capacity_ptrEv" title='llvm::SmallVectorTemplateCommon::capacity_ptr' data-ref="_ZNK4llvm25SmallVectorTemplateCommon12capacity_ptrEv">capacity_ptr</dfn>() <em>const</em> { <b>return</b> (<a class="typedef" href="#llvm::SmallVectorTemplateCommon::const_iterator" title='llvm::SmallVectorTemplateCommon::const_iterator' data-type='const T *' data-ref="llvm::SmallVectorTemplateCommon::const_iterator">const_iterator</a>)<b>this</b>-&gt;CapacityX;}</td></tr>
+<tr><th id="127">127</th><td></td></tr>
+<tr><th id="128">128</th><td><b>public</b>:</td></tr>
+<tr><th id="129">129</th><td>  <i>// reverse iterator creation methods.</i></td></tr>
+<tr><th id="130">130</th><td>  <a class="typedef" href="#llvm::SmallVectorTemplateCommon::reverse_iterator" title='llvm::SmallVectorTemplateCommon::reverse_iterator' data-type='std::reverse_iterator&lt;iterator&gt;' data-ref="llvm::SmallVectorTemplateCommon::reverse_iterator">reverse_iterator</a> <dfn class="decl def" id="_ZN4llvm25SmallVectorTemplateCommon6rbeginEv" title='llvm::SmallVectorTemplateCommon::rbegin' data-ref="_ZN4llvm25SmallVectorTemplateCommon6rbeginEv">rbegin</dfn>()            { <b>return</b> <a class="typedef" href="#llvm::SmallVectorTemplateCommon::reverse_iterator" title='llvm::SmallVectorTemplateCommon::reverse_iterator' data-type='std::reverse_iterator&lt;iterator&gt;' data-ref="llvm::SmallVectorTemplateCommon::reverse_iterator">reverse_iterator</a>(end()); }</td></tr>
+<tr><th id="131">131</th><td>  <a class="typedef" href="#llvm::SmallVectorTemplateCommon::const_reverse_iterator" title='llvm::SmallVectorTemplateCommon::const_reverse_iterator' data-type='std::reverse_iterator&lt;const_iterator&gt;' data-ref="llvm::SmallVectorTemplateCommon::const_reverse_iterator">const_reverse_iterator</a> <dfn class="decl def" id="_ZNK4llvm25SmallVectorTemplateCommon6rbeginEv" title='llvm::SmallVectorTemplateCommon::rbegin' data-ref="_ZNK4llvm25SmallVectorTemplateCommon6rbeginEv">rbegin</dfn>() <em>const</em>{ <b>return</b> <a class="typedef" href="#llvm::SmallVectorTemplateCommon::const_reverse_iterator" title='llvm::SmallVectorTemplateCommon::const_reverse_iterator' data-type='std::reverse_iterator&lt;const_iterator&gt;' data-ref="llvm::SmallVectorTemplateCommon::const_reverse_iterator">const_reverse_iterator</a>(end()); }</td></tr>
+<tr><th id="132">132</th><td>  <a class="typedef" href="#llvm::SmallVectorTemplateCommon::reverse_iterator" title='llvm::SmallVectorTemplateCommon::reverse_iterator' data-type='std::reverse_iterator&lt;iterator&gt;' data-ref="llvm::SmallVectorTemplateCommon::reverse_iterator">reverse_iterator</a> <dfn class="decl def" id="_ZN4llvm25SmallVectorTemplateCommon4rendEv" title='llvm::SmallVectorTemplateCommon::rend' data-ref="_ZN4llvm25SmallVectorTemplateCommon4rendEv">rend</dfn>()              { <b>return</b> <a class="typedef" href="#llvm::SmallVectorTemplateCommon::reverse_iterator" title='llvm::SmallVectorTemplateCommon::reverse_iterator' data-type='std::reverse_iterator&lt;iterator&gt;' data-ref="llvm::SmallVectorTemplateCommon::reverse_iterator">reverse_iterator</a>(begin()); }</td></tr>
+<tr><th id="133">133</th><td>  <a class="typedef" href="#llvm::SmallVectorTemplateCommon::const_reverse_iterator" title='llvm::SmallVectorTemplateCommon::const_reverse_iterator' data-type='std::reverse_iterator&lt;const_iterator&gt;' data-ref="llvm::SmallVectorTemplateCommon::const_reverse_iterator">const_reverse_iterator</a> <dfn class="decl def" id="_ZNK4llvm25SmallVectorTemplateCommon4rendEv" title='llvm::SmallVectorTemplateCommon::rend' data-ref="_ZNK4llvm25SmallVectorTemplateCommon4rendEv">rend</dfn>() <em>const</em> { <b>return</b> <a class="typedef" href="#llvm::SmallVectorTemplateCommon::const_reverse_iterator" title='llvm::SmallVectorTemplateCommon::const_reverse_iterator' data-type='std::reverse_iterator&lt;const_iterator&gt;' data-ref="llvm::SmallVectorTemplateCommon::const_reverse_iterator">const_reverse_iterator</a>(begin());}</td></tr>
+<tr><th id="134">134</th><td></td></tr>
+<tr><th id="135">135</th><td>  <a class="macro" href="../Support/Compiler.h.html#194" title="__attribute__((always_inline))" data-ref="_M/LLVM_ATTRIBUTE_ALWAYS_INLINE">LLVM_ATTRIBUTE_ALWAYS_INLINE</a></td></tr>
+<tr><th id="136">136</th><td>  <a class="typedef" href="#llvm::SmallVectorTemplateCommon::size_type" title='llvm::SmallVectorTemplateCommon::size_type' data-type='size_t' data-ref="llvm::SmallVectorTemplateCommon::size_type">size_type</a> <dfn class="decl def" id="_ZNK4llvm25SmallVectorTemplateCommon4sizeEv" title='llvm::SmallVectorTemplateCommon::size' data-ref="_ZNK4llvm25SmallVectorTemplateCommon4sizeEv">size</dfn>() <em>const</em> { <b>return</b> end()-begin(); }</td></tr>
+<tr><th id="137">137</th><td>  <a class="typedef" href="#llvm::SmallVectorTemplateCommon::size_type" title='llvm::SmallVectorTemplateCommon::size_type' data-type='size_t' data-ref="llvm::SmallVectorTemplateCommon::size_type">size_type</a> <dfn class="decl def" id="_ZNK4llvm25SmallVectorTemplateCommon8max_sizeEv" title='llvm::SmallVectorTemplateCommon::max_size' data-ref="_ZNK4llvm25SmallVectorTemplateCommon8max_sizeEv">max_size</dfn>() <em>const</em> { <b>return</b> <a class="typedef" href="#llvm::SmallVectorTemplateCommon::size_type" title='llvm::SmallVectorTemplateCommon::size_type' data-type='size_t' data-ref="llvm::SmallVectorTemplateCommon::size_type">size_type</a>(-<var>1</var>) / <b>sizeof</b>(T); }</td></tr>
+<tr><th id="138">138</th><td></td></tr>
+<tr><th id="139">139</th><td>  <i class="doc">/// Return the total number of elements in the currently allocated buffer.</i></td></tr>
+<tr><th id="140">140</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl def" id="_ZNK4llvm25SmallVectorTemplateCommon8capacityEv" title='llvm::SmallVectorTemplateCommon::capacity' data-ref="_ZNK4llvm25SmallVectorTemplateCommon8capacityEv">capacity</dfn>() <em>const</em> { <b>return</b> capacity_ptr() - begin(); }</td></tr>
+<tr><th id="141">141</th><td></td></tr>
+<tr><th id="142">142</th><td>  <i class="doc">/// Return a pointer to the vector's buffer, even if empty().</i></td></tr>
+<tr><th id="143">143</th><td>  <a class="typedef" href="#llvm::SmallVectorTemplateCommon::pointer" title='llvm::SmallVectorTemplateCommon::pointer' data-type='T *' data-ref="llvm::SmallVectorTemplateCommon::pointer">pointer</a> <dfn class="decl def" id="_ZN4llvm25SmallVectorTemplateCommon4dataEv" title='llvm::SmallVectorTemplateCommon::data' data-ref="_ZN4llvm25SmallVectorTemplateCommon4dataEv">data</dfn>() { <b>return</b> <a class="typedef" href="#llvm::SmallVectorTemplateCommon::pointer" title='llvm::SmallVectorTemplateCommon::pointer' data-type='T *' data-ref="llvm::SmallVectorTemplateCommon::pointer">pointer</a>(begin()); }</td></tr>
+<tr><th id="144">144</th><td>  <i class="doc">/// Return a pointer to the vector's buffer, even if empty().</i></td></tr>
+<tr><th id="145">145</th><td>  <a class="typedef" href="#llvm::SmallVectorTemplateCommon::const_pointer" title='llvm::SmallVectorTemplateCommon::const_pointer' data-type='const T *' data-ref="llvm::SmallVectorTemplateCommon::const_pointer">const_pointer</a> <dfn class="decl def" id="_ZNK4llvm25SmallVectorTemplateCommon4dataEv" title='llvm::SmallVectorTemplateCommon::data' data-ref="_ZNK4llvm25SmallVectorTemplateCommon4dataEv">data</dfn>() <em>const</em> { <b>return</b> <a class="typedef" href="#llvm::SmallVectorTemplateCommon::const_pointer" title='llvm::SmallVectorTemplateCommon::const_pointer' data-type='const T *' data-ref="llvm::SmallVectorTemplateCommon::const_pointer">const_pointer</a>(begin()); }</td></tr>
+<tr><th id="146">146</th><td></td></tr>
+<tr><th id="147">147</th><td>  <a class="macro" href="../Support/Compiler.h.html#194" title="__attribute__((always_inline))" data-ref="_M/LLVM_ATTRIBUTE_ALWAYS_INLINE">LLVM_ATTRIBUTE_ALWAYS_INLINE</a></td></tr>
+<tr><th id="148">148</th><td>  <a class="typedef" href="#llvm::SmallVectorTemplateCommon::reference" title='llvm::SmallVectorTemplateCommon::reference' data-type='T &amp;' data-ref="llvm::SmallVectorTemplateCommon::reference">reference</a> <dfn class="decl def" id="_ZN4llvm25SmallVectorTemplateCommonixEm" title='llvm::SmallVectorTemplateCommon::operator[]' data-ref="_ZN4llvm25SmallVectorTemplateCommonixEm"><b>operator</b>[]</dfn>(<a class="typedef" href="#llvm::SmallVectorTemplateCommon::size_type" title='llvm::SmallVectorTemplateCommon::size_type' data-type='size_t' data-ref="llvm::SmallVectorTemplateCommon::size_type">size_type</a> <dfn class="local col9 decl" id="6459idx" title='idx' data-type='size_type' data-ref="6459idx">idx</dfn>) {</td></tr>
+<tr><th id="149">149</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(idx &lt; size());</td></tr>
+<tr><th id="150">150</th><td>    <b>return</b> begin()[<a class="local col9 ref" href="#6459idx" title='idx' data-ref="6459idx">idx</a>];</td></tr>
+<tr><th id="151">151</th><td>  }</td></tr>
+<tr><th id="152">152</th><td>  <a class="macro" href="../Support/Compiler.h.html#194" title="__attribute__((always_inline))" data-ref="_M/LLVM_ATTRIBUTE_ALWAYS_INLINE">LLVM_ATTRIBUTE_ALWAYS_INLINE</a></td></tr>
+<tr><th id="153">153</th><td>  <a class="typedef" href="#llvm::SmallVectorTemplateCommon::const_reference" title='llvm::SmallVectorTemplateCommon::const_reference' data-type='const T &amp;' data-ref="llvm::SmallVectorTemplateCommon::const_reference">const_reference</a> <dfn class="decl def" id="_ZNK4llvm25SmallVectorTemplateCommonixEm" title='llvm::SmallVectorTemplateCommon::operator[]' data-ref="_ZNK4llvm25SmallVectorTemplateCommonixEm"><b>operator</b>[]</dfn>(<a class="typedef" href="#llvm::SmallVectorTemplateCommon::size_type" title='llvm::SmallVectorTemplateCommon::size_type' data-type='size_t' data-ref="llvm::SmallVectorTemplateCommon::size_type">size_type</a> <dfn class="local col0 decl" id="6460idx" title='idx' data-type='size_type' data-ref="6460idx">idx</dfn>) <em>const</em> {</td></tr>
+<tr><th id="154">154</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(idx &lt; size());</td></tr>
+<tr><th id="155">155</th><td>    <b>return</b> begin()[<a class="local col0 ref" href="#6460idx" title='idx' data-ref="6460idx">idx</a>];</td></tr>
+<tr><th id="156">156</th><td>  }</td></tr>
+<tr><th id="157">157</th><td></td></tr>
+<tr><th id="158">158</th><td>  <a class="typedef" href="#llvm::SmallVectorTemplateCommon::reference" title='llvm::SmallVectorTemplateCommon::reference' data-type='T &amp;' data-ref="llvm::SmallVectorTemplateCommon::reference">reference</a> <dfn class="decl def" id="_ZN4llvm25SmallVectorTemplateCommon5frontEv" title='llvm::SmallVectorTemplateCommon::front' data-ref="_ZN4llvm25SmallVectorTemplateCommon5frontEv">front</dfn>() {</td></tr>
+<tr><th id="159">159</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(!empty());</td></tr>
+<tr><th id="160">160</th><td>    <b>return</b> begin()[<var>0</var>];</td></tr>
+<tr><th id="161">161</th><td>  }</td></tr>
+<tr><th id="162">162</th><td>  <a class="typedef" href="#llvm::SmallVectorTemplateCommon::const_reference" title='llvm::SmallVectorTemplateCommon::const_reference' data-type='const T &amp;' data-ref="llvm::SmallVectorTemplateCommon::const_reference">const_reference</a> <dfn class="decl def" id="_ZNK4llvm25SmallVectorTemplateCommon5frontEv" title='llvm::SmallVectorTemplateCommon::front' data-ref="_ZNK4llvm25SmallVectorTemplateCommon5frontEv">front</dfn>() <em>const</em> {</td></tr>
+<tr><th id="163">163</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(!empty());</td></tr>
+<tr><th id="164">164</th><td>    <b>return</b> begin()[<var>0</var>];</td></tr>
+<tr><th id="165">165</th><td>  }</td></tr>
+<tr><th id="166">166</th><td></td></tr>
+<tr><th id="167">167</th><td>  <a class="typedef" href="#llvm::SmallVectorTemplateCommon::reference" title='llvm::SmallVectorTemplateCommon::reference' data-type='T &amp;' data-ref="llvm::SmallVectorTemplateCommon::reference">reference</a> <dfn class="decl def" id="_ZN4llvm25SmallVectorTemplateCommon4backEv" title='llvm::SmallVectorTemplateCommon::back' data-ref="_ZN4llvm25SmallVectorTemplateCommon4backEv">back</dfn>() {</td></tr>
+<tr><th id="168">168</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(!empty());</td></tr>
+<tr><th id="169">169</th><td>    <b>return</b> end()[-<var>1</var>];</td></tr>
+<tr><th id="170">170</th><td>  }</td></tr>
+<tr><th id="171">171</th><td>  <a class="typedef" href="#llvm::SmallVectorTemplateCommon::const_reference" title='llvm::SmallVectorTemplateCommon::const_reference' data-type='const T &amp;' data-ref="llvm::SmallVectorTemplateCommon::const_reference">const_reference</a> <dfn class="decl def" id="_ZNK4llvm25SmallVectorTemplateCommon4backEv" title='llvm::SmallVectorTemplateCommon::back' data-ref="_ZNK4llvm25SmallVectorTemplateCommon4backEv">back</dfn>() <em>const</em> {</td></tr>
+<tr><th id="172">172</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(!empty());</td></tr>
+<tr><th id="173">173</th><td>    <b>return</b> end()[-<var>1</var>];</td></tr>
+<tr><th id="174">174</th><td>  }</td></tr>
+<tr><th id="175">175</th><td>};</td></tr>
+<tr><th id="176">176</th><td></td></tr>
+<tr><th id="177">177</th><td><i class="doc">/// SmallVectorTemplateBase&lt;isPodLike = false&gt; - This is where we put method</i></td></tr>
+<tr><th id="178">178</th><td><i class="doc">/// implementations that are designed to work with non-POD-like T's.</i></td></tr>
+<tr><th id="179">179</th><td><b>template</b> &lt;<b>typename</b> T, <em>bool</em> isPodLike&gt;</td></tr>
+<tr><th id="180">180</th><td><b>class</b> <dfn class="type def" id="llvm::SmallVectorTemplateBase" title='llvm::SmallVectorTemplateBase' data-ref="llvm::SmallVectorTemplateBase">SmallVectorTemplateBase</dfn> : <b>public</b> <a class="type" href="#llvm::SmallVectorTemplateCommon" title='llvm::SmallVectorTemplateCommon' data-ref="llvm::SmallVectorTemplateCommon">SmallVectorTemplateCommon</a>&lt;T&gt; {</td></tr>
+<tr><th id="181">181</th><td><b>protected</b>:</td></tr>
+<tr><th id="182">182</th><td>  <dfn class="decl def" id="_ZN4llvm23SmallVectorTemplateBaseC1Em" title='llvm::SmallVectorTemplateBase::SmallVectorTemplateBase&lt;T, isPodLike&gt;' data-ref="_ZN4llvm23SmallVectorTemplateBaseC1Em">SmallVectorTemplateBase</dfn>(<span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col1 decl" id="6461Size" title='Size' data-type='size_t' data-ref="6461Size">Size</dfn>) : <a class="type" href="#llvm::SmallVectorTemplateCommon" title='llvm::SmallVectorTemplateCommon' data-ref="llvm::SmallVectorTemplateCommon">SmallVectorTemplateCommon</a>&lt;T&gt;(<a class="local col1 ref" href="#6461Size" title='Size' data-ref="6461Size">Size</a>) {}</td></tr>
+<tr><th id="183">183</th><td></td></tr>
+<tr><th id="184">184</th><td>  <em>static</em> <em>void</em> <dfn class="decl def" id="_ZN4llvm23SmallVectorTemplateBase13destroy_rangeEPT_S2_" title='llvm::SmallVectorTemplateBase::destroy_range' data-ref="_ZN4llvm23SmallVectorTemplateBase13destroy_rangeEPT_S2_">destroy_range</dfn>(T *<dfn class="local col2 decl" id="6462S" title='S' data-type='T *' data-ref="6462S">S</dfn>, T *<dfn class="local col3 decl" id="6463E" title='E' data-type='T *' data-ref="6463E">E</dfn>) {</td></tr>
+<tr><th id="185">185</th><td>    <b>while</b> (<a class="local col2 ref" href="#6462S" title='S' data-ref="6462S">S</a> != <a class="local col3 ref" href="#6463E" title='E' data-ref="6463E">E</a>) {</td></tr>
+<tr><th id="186">186</th><td>      --<a class="local col3 ref" href="#6463E" title='E' data-ref="6463E">E</a>;</td></tr>
+<tr><th id="187">187</th><td>      <a class="local col3 ref" href="#6463E" title='E' data-ref="6463E">E</a>-&gt;~T();</td></tr>
+<tr><th id="188">188</th><td>    }</td></tr>
+<tr><th id="189">189</th><td>  }</td></tr>
+<tr><th id="190">190</th><td></td></tr>
+<tr><th id="191">191</th><td>  <i class="doc">/// Move the range [I, E) into the uninitialized memory starting with "Dest",</i></td></tr>
+<tr><th id="192">192</th><td><i class="doc">  /// constructing elements as needed.</i></td></tr>
+<tr><th id="193">193</th><td>  <b>template</b>&lt;<b>typename</b> It1, <b>typename</b> It2&gt;</td></tr>
+<tr><th id="194">194</th><td>  <em>static</em> <em>void</em> <dfn class="decl def" id="_ZN4llvm23SmallVectorTemplateBase18uninitialized_moveET_S1_T0_" title='llvm::SmallVectorTemplateBase::uninitialized_move' data-ref="_ZN4llvm23SmallVectorTemplateBase18uninitialized_moveET_S1_T0_">uninitialized_move</dfn>(It1 <dfn class="local col4 decl" id="6464I" title='I' data-type='It1' data-ref="6464I">I</dfn>, It1 <dfn class="local col5 decl" id="6465E" title='E' data-type='It1' data-ref="6465E">E</dfn>, It2 <dfn class="local col6 decl" id="6466Dest" title='Dest' data-type='It2' data-ref="6466Dest">Dest</dfn>) {</td></tr>
+<tr><th id="195">195</th><td>    <span class="namespace">std::</span>uninitialized_copy(<span class="namespace">std::</span>make_move_iterator(<a class="local col4 ref" href="#6464I" title='I' data-ref="6464I">I</a>),</td></tr>
+<tr><th id="196">196</th><td>                            <span class="namespace">std::</span>make_move_iterator(<a class="local col5 ref" href="#6465E" title='E' data-ref="6465E">E</a>), <a class="local col6 ref" href="#6466Dest" title='Dest' data-ref="6466Dest">Dest</a>);</td></tr>
+<tr><th id="197">197</th><td>  }</td></tr>
+<tr><th id="198">198</th><td></td></tr>
+<tr><th id="199">199</th><td>  <i class="doc">/// Copy the range [I, E) onto the uninitialized memory starting with "Dest",</i></td></tr>
+<tr><th id="200">200</th><td><i class="doc">  /// constructing elements as needed.</i></td></tr>
+<tr><th id="201">201</th><td>  <b>template</b>&lt;<b>typename</b> It1, <b>typename</b> It2&gt;</td></tr>
+<tr><th id="202">202</th><td>  <em>static</em> <em>void</em> <dfn class="decl def" id="_ZN4llvm23SmallVectorTemplateBase18uninitialized_copyET_S1_T0_" title='llvm::SmallVectorTemplateBase::uninitialized_copy' data-ref="_ZN4llvm23SmallVectorTemplateBase18uninitialized_copyET_S1_T0_">uninitialized_copy</dfn>(It1 <dfn class="local col7 decl" id="6467I" title='I' data-type='It1' data-ref="6467I">I</dfn>, It1 <dfn class="local col8 decl" id="6468E" title='E' data-type='It1' data-ref="6468E">E</dfn>, It2 <dfn class="local col9 decl" id="6469Dest" title='Dest' data-type='It2' data-ref="6469Dest">Dest</dfn>) {</td></tr>
+<tr><th id="203">203</th><td>    <span class="namespace">std::</span>uninitialized_copy(<a class="local col7 ref" href="#6467I" title='I' data-ref="6467I">I</a>, <a class="local col8 ref" href="#6468E" title='E' data-ref="6468E">E</a>, <a class="local col9 ref" href="#6469Dest" title='Dest' data-ref="6469Dest">Dest</a>);</td></tr>
+<tr><th id="204">204</th><td>  }</td></tr>
+<tr><th id="205">205</th><td></td></tr>
+<tr><th id="206">206</th><td>  <i class="doc">/// Grow the allocated memory (without initializing new elements), doubling</i></td></tr>
+<tr><th id="207">207</th><td><i class="doc">  /// the size of the allocated memory. Guarantees space for at least one more</i></td></tr>
+<tr><th id="208">208</th><td><i class="doc">  /// element, or MinSize more elements if specified.</i></td></tr>
+<tr><th id="209">209</th><td>  <em>void</em> <a class="decl" href="#_ZN4llvm23SmallVectorTemplateBase4growEm" title='llvm::SmallVectorTemplateBase::grow' data-ref="_ZN4llvm23SmallVectorTemplateBase4growEm">grow</a>(<span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col0 decl" id="6470MinSize" title='MinSize' data-type='size_t' data-ref="6470MinSize">MinSize</dfn> = <var>0</var>);</td></tr>
+<tr><th id="210">210</th><td></td></tr>
+<tr><th id="211">211</th><td><b>public</b>:</td></tr>
+<tr><th id="212">212</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm23SmallVectorTemplateBase9push_backERKT_" title='llvm::SmallVectorTemplateBase::push_back' data-ref="_ZN4llvm23SmallVectorTemplateBase9push_backERKT_">push_back</dfn>(<em>const</em> T &amp;<dfn class="local col1 decl" id="6471Elt" title='Elt' data-type='const T &amp;' data-ref="6471Elt">Elt</dfn>) {</td></tr>
+<tr><th id="213">213</th><td>    <b>if</b> (<a class="macro" href="../Support/Compiler.h.html#173" title="__builtin_expect((bool)(this-&gt;EndX &gt;= this-&gt;CapacityX), false)" data-ref="_M/LLVM_UNLIKELY">LLVM_UNLIKELY</a>(<b>this</b>-&gt;EndX &gt;= <b>this</b>-&gt;CapacityX))</td></tr>
+<tr><th id="214">214</th><td>      <b>this</b>-&gt;grow();</td></tr>
+<tr><th id="215">215</th><td>    ::<b>new</b> ((<em>void</em>*) <b>this</b>-&gt;end()) T(<a class="local col1 ref" href="#6471Elt" title='Elt' data-ref="6471Elt">Elt</a>);</td></tr>
+<tr><th id="216">216</th><td>    <b>this</b>-&gt;setEnd(<b>this</b>-&gt;end()+<var>1</var>);</td></tr>
+<tr><th id="217">217</th><td>  }</td></tr>
+<tr><th id="218">218</th><td></td></tr>
+<tr><th id="219">219</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm23SmallVectorTemplateBase9push_backEOT_" title='llvm::SmallVectorTemplateBase::push_back' data-ref="_ZN4llvm23SmallVectorTemplateBase9push_backEOT_">push_back</dfn>(T &amp;&amp;<dfn class="local col2 decl" id="6472Elt" title='Elt' data-type='T &amp;&amp;' data-ref="6472Elt">Elt</dfn>) {</td></tr>
+<tr><th id="220">220</th><td>    <b>if</b> (<a class="macro" href="../Support/Compiler.h.html#173" title="__builtin_expect((bool)(this-&gt;EndX &gt;= this-&gt;CapacityX), false)" data-ref="_M/LLVM_UNLIKELY">LLVM_UNLIKELY</a>(<b>this</b>-&gt;EndX &gt;= <b>this</b>-&gt;CapacityX))</td></tr>
+<tr><th id="221">221</th><td>      <b>this</b>-&gt;grow();</td></tr>
+<tr><th id="222">222</th><td>    ::<b>new</b> ((<em>void</em>*) <b>this</b>-&gt;end()) T(<span class="namespace">::std::</span>move(<a class="local col2 ref" href="#6472Elt" title='Elt' data-ref="6472Elt">Elt</a>));</td></tr>
+<tr><th id="223">223</th><td>    <b>this</b>-&gt;setEnd(<b>this</b>-&gt;end()+<var>1</var>);</td></tr>
+<tr><th id="224">224</th><td>  }</td></tr>
+<tr><th id="225">225</th><td></td></tr>
+<tr><th id="226">226</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm23SmallVectorTemplateBase8pop_backEv" title='llvm::SmallVectorTemplateBase::pop_back' data-ref="_ZN4llvm23SmallVectorTemplateBase8pop_backEv">pop_back</dfn>() {</td></tr>
+<tr><th id="227">227</th><td>    <b>this</b>-&gt;setEnd(<b>this</b>-&gt;end()-<var>1</var>);</td></tr>
+<tr><th id="228">228</th><td>    <b>this</b>-&gt;end()-&gt;~T();</td></tr>
+<tr><th id="229">229</th><td>  }</td></tr>
+<tr><th id="230">230</th><td>};</td></tr>
+<tr><th id="231">231</th><td></td></tr>
+<tr><th id="232">232</th><td><i>// Define this out-of-line to dissuade the C++ compiler from inlining it.</i></td></tr>
+<tr><th id="233">233</th><td><b>template</b> &lt;<b>typename</b> T, <em>bool</em> isPodLike&gt;</td></tr>
+<tr><th id="234">234</th><td><em>void</em> <a class="type" href="#llvm::SmallVectorTemplateBase" title='llvm::SmallVectorTemplateBase' data-ref="llvm::SmallVectorTemplateBase">SmallVectorTemplateBase</a>&lt;T, <a class="tu ref" href="#isPodLike" title='isPodLike' data-ref="isPodLike">isPodLike</a>&gt;::<dfn class="decl def" id="_ZN4llvm23SmallVectorTemplateBase4growEm" title='llvm::SmallVectorTemplateBase::grow' data-ref="_ZN4llvm23SmallVectorTemplateBase4growEm">grow</dfn>(<span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col3 decl" id="6473MinSize" title='MinSize' data-type='size_t' data-ref="6473MinSize">MinSize</dfn>) {</td></tr>
+<tr><th id="235">235</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col4 decl" id="6474CurCapacity" title='CurCapacity' data-type='size_t' data-ref="6474CurCapacity">CurCapacity</dfn> = <b>this</b>-&gt;capacity();</td></tr>
+<tr><th id="236">236</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col5 decl" id="6475CurSize" title='CurSize' data-type='size_t' data-ref="6475CurSize">CurSize</dfn> = <b>this</b>-&gt;size();</td></tr>
+<tr><th id="237">237</th><td>  <i>// Always grow, even from zero.</i></td></tr>
+<tr><th id="238">238</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col6 decl" id="6476NewCapacity" title='NewCapacity' data-type='size_t' data-ref="6476NewCapacity">NewCapacity</dfn> = <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span>(<a class="ref" href="../Support/MathExtras.h.html#_ZN4llvm12NextPowerOf2Em" title='llvm::NextPowerOf2' data-ref="_ZN4llvm12NextPowerOf2Em">NextPowerOf2</a>(<a class="local col4 ref" href="#6474CurCapacity" title='CurCapacity' data-ref="6474CurCapacity">CurCapacity</a>+<var>2</var>));</td></tr>
+<tr><th id="239">239</th><td>  <b>if</b> (<a class="local col6 ref" href="#6476NewCapacity" title='NewCapacity' data-ref="6476NewCapacity">NewCapacity</a> &lt; <a class="local col3 ref" href="#6473MinSize" title='MinSize' data-ref="6473MinSize">MinSize</a>)</td></tr>
+<tr><th id="240">240</th><td>    <a class="local col6 ref" href="#6476NewCapacity" title='NewCapacity' data-ref="6476NewCapacity">NewCapacity</a> = <a class="local col3 ref" href="#6473MinSize" title='MinSize' data-ref="6473MinSize">MinSize</a>;</td></tr>
+<tr><th id="241">241</th><td>  T *<dfn class="local col7 decl" id="6477NewElts" title='NewElts' data-type='T *' data-ref="6477NewElts">NewElts</dfn> = <b>static_cast</b>&lt;T*&gt;(<a class="ref" href="../../../stdlib.h.html#malloc" title='malloc' data-ref="malloc">malloc</a>(<a class="local col6 ref" href="#6476NewCapacity" title='NewCapacity' data-ref="6476NewCapacity">NewCapacity</a>*<b>sizeof</b>(T)));</td></tr>
+<tr><th id="242">242</th><td>  <b>if</b> (<a class="local col7 ref" href="#6477NewElts" title='NewElts' data-ref="6477NewElts">NewElts</a> == <b>nullptr</b>)</td></tr>
+<tr><th id="243">243</th><td>    <a class="ref" href="../Support/ErrorHandling.h.html#_ZN4llvm22report_bad_alloc_errorEPKcb" title='llvm::report_bad_alloc_error' data-ref="_ZN4llvm22report_bad_alloc_errorEPKcb">report_bad_alloc_error</a>(<q>"Allocation of SmallVector element failed."</q>);</td></tr>
+<tr><th id="244">244</th><td></td></tr>
+<tr><th id="245">245</th><td>  <i>// Move the elements over.</i></td></tr>
+<tr><th id="246">246</th><td>  <b>this</b>-&gt;uninitialized_move(<b>this</b>-&gt;begin(), <b>this</b>-&gt;end(), <a class="local col7 ref" href="#6477NewElts" title='NewElts' data-ref="6477NewElts">NewElts</a>);</td></tr>
+<tr><th id="247">247</th><td></td></tr>
+<tr><th id="248">248</th><td>  <i>// Destroy the original elements.</i></td></tr>
+<tr><th id="249">249</th><td>  <a class="member" href="#_ZN4llvm23SmallVectorTemplateBase13destroy_rangeEPT_S2_" title='llvm::SmallVectorTemplateBase::destroy_range' data-ref="_ZN4llvm23SmallVectorTemplateBase13destroy_rangeEPT_S2_">destroy_range</a>(<b>this</b>-&gt;begin(), <b>this</b>-&gt;end());</td></tr>
+<tr><th id="250">250</th><td></td></tr>
+<tr><th id="251">251</th><td>  <i>// If this wasn't grown from the inline copy, deallocate the old space.</i></td></tr>
+<tr><th id="252">252</th><td>  <b>if</b> (!<b>this</b>-&gt;isSmall())</td></tr>
+<tr><th id="253">253</th><td>    free(<b>this</b>-&gt;begin());</td></tr>
+<tr><th id="254">254</th><td></td></tr>
+<tr><th id="255">255</th><td>  <b>this</b>-&gt;setEnd(<a class="local col7 ref" href="#6477NewElts" title='NewElts' data-ref="6477NewElts">NewElts</a>+<a class="local col5 ref" href="#6475CurSize" title='CurSize' data-ref="6475CurSize">CurSize</a>);</td></tr>
+<tr><th id="256">256</th><td>  <b>this</b>-&gt;BeginX = <a class="local col7 ref" href="#6477NewElts" title='NewElts' data-ref="6477NewElts">NewElts</a>;</td></tr>
+<tr><th id="257">257</th><td>  <b>this</b>-&gt;CapacityX = <b>this</b>-&gt;begin()+<a class="local col6 ref" href="#6476NewCapacity" title='NewCapacity' data-ref="6476NewCapacity">NewCapacity</a>;</td></tr>
+<tr><th id="258">258</th><td>}</td></tr>
+<tr><th id="259">259</th><td></td></tr>
+<tr><th id="260">260</th><td></td></tr>
+<tr><th id="261">261</th><td><i class="doc">/// SmallVectorTemplateBase&lt;isPodLike = true&gt; - This is where we put method</i></td></tr>
+<tr><th id="262">262</th><td><i class="doc">/// implementations that are designed to work with POD-like T's.</i></td></tr>
+<tr><th id="263">263</th><td><b>template</b> &lt;<b>typename</b> T&gt;</td></tr>
+<tr><th id="264">264</th><td><b>class</b> <dfn class="type def" id="llvm::SmallVectorTemplateBase" title='llvm::SmallVectorTemplateBase' data-ref="llvm::SmallVectorTemplateBase">SmallVectorTemplateBase</dfn>&lt;T, <b>true</b>&gt; : <b>public</b> <a class="type" href="#llvm::SmallVectorTemplateCommon" title='llvm::SmallVectorTemplateCommon' data-ref="llvm::SmallVectorTemplateCommon">SmallVectorTemplateCommon</a>&lt;T&gt; {</td></tr>
+<tr><th id="265">265</th><td><b>protected</b>:</td></tr>
+<tr><th id="266">266</th><td>  <dfn class="decl def" id="_ZN4llvm23SmallVectorTemplateBaseIT_Lb1EEC1Em" title='llvm::SmallVectorTemplateBase&lt;type-parameter-0-0, true&gt;::SmallVectorTemplateBase&lt;type-parameter-0-0, true&gt;' data-ref="_ZN4llvm23SmallVectorTemplateBaseIT_Lb1EEC1Em">SmallVectorTemplateBase</dfn>(<span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col8 decl" id="6478Size" title='Size' data-type='size_t' data-ref="6478Size">Size</dfn>) : <a class="type" href="#llvm::SmallVectorTemplateCommon" title='llvm::SmallVectorTemplateCommon' data-ref="llvm::SmallVectorTemplateCommon">SmallVectorTemplateCommon</a>&lt;T&gt;(<a class="local col8 ref" href="#6478Size" title='Size' data-ref="6478Size">Size</a>) {}</td></tr>
+<tr><th id="267">267</th><td></td></tr>
+<tr><th id="268">268</th><td>  <i>// No need to do a destroy loop for POD's.</i></td></tr>
+<tr><th id="269">269</th><td>  <em>static</em> <em>void</em> <dfn class="decl def" id="_ZN4llvm23SmallVectorTemplateBaseIT_Lb1EE13destroy_rangeEPS1_S3_" title='llvm::SmallVectorTemplateBase&lt;type-parameter-0-0, true&gt;::destroy_range' data-ref="_ZN4llvm23SmallVectorTemplateBaseIT_Lb1EE13destroy_rangeEPS1_S3_">destroy_range</dfn>(T *, T *) {}</td></tr>
+<tr><th id="270">270</th><td></td></tr>
+<tr><th id="271">271</th><td>  <i class="doc">/// Move the range [I, E) onto the uninitialized memory</i></td></tr>
+<tr><th id="272">272</th><td><i class="doc">  /// starting with "Dest", constructing elements into it as needed.</i></td></tr>
+<tr><th id="273">273</th><td>  <b>template</b>&lt;<b>typename</b> It1, <b>typename</b> It2&gt;</td></tr>
+<tr><th id="274">274</th><td>  <em>static</em> <em>void</em> <dfn class="decl def" id="_ZN4llvm23SmallVectorTemplateBaseIT_Lb1EE18uninitialized_moveET_S3_T0_" title='llvm::SmallVectorTemplateBase&lt;type-parameter-0-0, true&gt;::uninitialized_move' data-ref="_ZN4llvm23SmallVectorTemplateBaseIT_Lb1EE18uninitialized_moveET_S3_T0_">uninitialized_move</dfn>(It1 <dfn class="local col9 decl" id="6479I" title='I' data-type='It1' data-ref="6479I">I</dfn>, It1 <dfn class="local col0 decl" id="6480E" title='E' data-type='It1' data-ref="6480E">E</dfn>, It2 <dfn class="local col1 decl" id="6481Dest" title='Dest' data-type='It2' data-ref="6481Dest">Dest</dfn>) {</td></tr>
+<tr><th id="275">275</th><td>    <i>// Just do a copy.</i></td></tr>
+<tr><th id="276">276</th><td>    uninitialized_copy(<a class="local col9 ref" href="#6479I" title='I' data-ref="6479I">I</a>, <a class="local col0 ref" href="#6480E" title='E' data-ref="6480E">E</a>, <a class="local col1 ref" href="#6481Dest" title='Dest' data-ref="6481Dest">Dest</a>);</td></tr>
+<tr><th id="277">277</th><td>  }</td></tr>
+<tr><th id="278">278</th><td></td></tr>
+<tr><th id="279">279</th><td>  <i class="doc">/// Copy the range [I, E) onto the uninitialized memory</i></td></tr>
+<tr><th id="280">280</th><td><i class="doc">  /// starting with "Dest", constructing elements into it as needed.</i></td></tr>
+<tr><th id="281">281</th><td>  <b>template</b>&lt;<b>typename</b> It1, <b>typename</b> It2&gt;</td></tr>
+<tr><th id="282">282</th><td>  <em>static</em> <em>void</em> <dfn class="decl def" id="_ZN4llvm23SmallVectorTemplateBaseIT_Lb1EE18uninitialized_copyET_S3_T0_" title='llvm::SmallVectorTemplateBase&lt;type-parameter-0-0, true&gt;::uninitialized_copy' data-ref="_ZN4llvm23SmallVectorTemplateBaseIT_Lb1EE18uninitialized_copyET_S3_T0_">uninitialized_copy</dfn>(It1 <dfn class="local col2 decl" id="6482I" title='I' data-type='It1' data-ref="6482I">I</dfn>, It1 <dfn class="local col3 decl" id="6483E" title='E' data-type='It1' data-ref="6483E">E</dfn>, It2 <dfn class="local col4 decl" id="6484Dest" title='Dest' data-type='It2' data-ref="6484Dest">Dest</dfn>) {</td></tr>
+<tr><th id="283">283</th><td>    <i>// Arbitrary iterator types; just use the basic implementation.</i></td></tr>
+<tr><th id="284">284</th><td>    <span class="namespace">std::</span>uninitialized_copy(<a class="local col2 ref" href="#6482I" title='I' data-ref="6482I">I</a>, <a class="local col3 ref" href="#6483E" title='E' data-ref="6483E">E</a>, <a class="local col4 ref" href="#6484Dest" title='Dest' data-ref="6484Dest">Dest</a>);</td></tr>
+<tr><th id="285">285</th><td>  }</td></tr>
+<tr><th id="286">286</th><td></td></tr>
+<tr><th id="287">287</th><td>  <i class="doc">/// Copy the range [I, E) onto the uninitialized memory</i></td></tr>
+<tr><th id="288">288</th><td><i class="doc">  /// starting with "Dest", constructing elements into it as needed.</i></td></tr>
+<tr><th id="289">289</th><td>  <b>template</b> &lt;<b>typename</b> T1, <b>typename</b> T2&gt;</td></tr>
+<tr><th id="290">290</th><td>  <em>static</em> <em>void</em> <dfn class="decl def" id="_ZN4llvm23SmallVectorTemplateBaseIT_Lb1EE18uninitialized_copyEPT_S4_PT0_PNSt9enable_ifIXsr3std7is_sameINSt12remove_constIS3_E4typeES5_EE5valueEvE4typeE" title='llvm::SmallVectorTemplateBase&lt;type-parameter-0-0, true&gt;::uninitialized_copy' data-ref="_ZN4llvm23SmallVectorTemplateBaseIT_Lb1EE18uninitialized_copyEPT_S4_PT0_PNSt9enable_ifIXsr3std7is_sameINSt12remove_constIS3_E4typeES5_EE5valueEvE4typeE">uninitialized_copy</dfn>(</td></tr>
+<tr><th id="291">291</th><td>      T1 *<dfn class="local col5 decl" id="6485I" title='I' data-type='T1 *' data-ref="6485I">I</dfn>, T1 *<dfn class="local col6 decl" id="6486E" title='E' data-type='T1 *' data-ref="6486E">E</dfn>, T2 *<dfn class="local col7 decl" id="6487Dest" title='Dest' data-type='T2 *' data-ref="6487Dest">Dest</dfn>,</td></tr>
+<tr><th id="292">292</th><td>      <b>typename</b> <span class="namespace">std::</span><a class="type" href="../../../c++/7/type_traits.html#std::enable_if" title='std::enable_if' data-ref="std::enable_if">enable_if</a>&lt;<span class="namespace">std::</span><a class="type" href="../../../c++/7/type_traits.html#std::is_same" title='std::is_same' data-ref="std::is_same">is_same</a>&lt;<b>typename</b> <span class="namespace">std::</span><a class="type" href="../../../c++/7/type_traits.html#std::remove_const" title='std::remove_const' data-ref="std::remove_const">remove_const</a>&lt;T1&gt;::type,</td></tr>
+<tr><th id="293">293</th><td>                                           T2&gt;::value&gt;::type * = <b>nullptr</b>) {</td></tr>
+<tr><th id="294">294</th><td>    <i>// Use memcpy for PODs iterated by pointers (which includes SmallVector</i></td></tr>
+<tr><th id="295">295</th><td><i>    // iterators): std::uninitialized_copy optimizes to memmove, but we can</i></td></tr>
+<tr><th id="296">296</th><td><i>    // use memcpy here. Note that I and E are iterators and thus might be</i></td></tr>
+<tr><th id="297">297</th><td><i>    // invalid for memcpy if they are equal.</i></td></tr>
+<tr><th id="298">298</th><td>    <b>if</b> (<a class="local col5 ref" href="#6485I" title='I' data-ref="6485I">I</a> != <a class="local col6 ref" href="#6486E" title='E' data-ref="6486E">E</a>)</td></tr>
+<tr><th id="299">299</th><td>      memcpy(<a class="local col7 ref" href="#6487Dest" title='Dest' data-ref="6487Dest">Dest</a>, <a class="local col5 ref" href="#6485I" title='I' data-ref="6485I">I</a>, (<a class="local col6 ref" href="#6486E" title='E' data-ref="6486E">E</a> - <a class="local col5 ref" href="#6485I" title='I' data-ref="6485I">I</a>) * <b>sizeof</b>(T));</td></tr>
+<tr><th id="300">300</th><td>  }</td></tr>
+<tr><th id="301">301</th><td></td></tr>
+<tr><th id="302">302</th><td>  <i class="doc">/// Double the size of the allocated memory, guaranteeing space for at</i></td></tr>
+<tr><th id="303">303</th><td><i class="doc">  /// least one more element or MinSize if specified.</i></td></tr>
+<tr><th id="304">304</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm23SmallVectorTemplateBaseIT_Lb1EE4growEm" title='llvm::SmallVectorTemplateBase&lt;type-parameter-0-0, true&gt;::grow' data-ref="_ZN4llvm23SmallVectorTemplateBaseIT_Lb1EE4growEm">grow</dfn>(<span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col8 decl" id="6488MinSize" title='MinSize' data-type='size_t' data-ref="6488MinSize">MinSize</dfn> = <var>0</var>) {</td></tr>
+<tr><th id="305">305</th><td>    <b>this</b>-&gt;grow_pod(<a class="local col8 ref" href="#6488MinSize" title='MinSize' data-ref="6488MinSize">MinSize</a>*<b>sizeof</b>(T), <b>sizeof</b>(T));</td></tr>
+<tr><th id="306">306</th><td>  }</td></tr>
+<tr><th id="307">307</th><td></td></tr>
+<tr><th id="308">308</th><td><b>public</b>:</td></tr>
+<tr><th id="309">309</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm23SmallVectorTemplateBaseIT_Lb1EE9push_backERKS1_" title='llvm::SmallVectorTemplateBase&lt;type-parameter-0-0, true&gt;::push_back' data-ref="_ZN4llvm23SmallVectorTemplateBaseIT_Lb1EE9push_backERKS1_">push_back</dfn>(<em>const</em> T &amp;<dfn class="local col9 decl" id="6489Elt" title='Elt' data-type='const T &amp;' data-ref="6489Elt">Elt</dfn>) {</td></tr>
+<tr><th id="310">310</th><td>    <b>if</b> (<a class="macro" href="../Support/Compiler.h.html#173" title="__builtin_expect((bool)(this-&gt;EndX &gt;= this-&gt;CapacityX), false)" data-ref="_M/LLVM_UNLIKELY">LLVM_UNLIKELY</a>(<b>this</b>-&gt;EndX &gt;= <b>this</b>-&gt;CapacityX))</td></tr>
+<tr><th id="311">311</th><td>      <b>this</b>-&gt;grow();</td></tr>
+<tr><th id="312">312</th><td>    memcpy(<b>this</b>-&gt;end(), &amp;<a class="local col9 ref" href="#6489Elt" title='Elt' data-ref="6489Elt">Elt</a>, <b>sizeof</b>(T));</td></tr>
+<tr><th id="313">313</th><td>    <b>this</b>-&gt;setEnd(<b>this</b>-&gt;end()+<var>1</var>);</td></tr>
+<tr><th id="314">314</th><td>  }</td></tr>
+<tr><th id="315">315</th><td></td></tr>
+<tr><th id="316">316</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm23SmallVectorTemplateBaseIT_Lb1EE8pop_backEv" title='llvm::SmallVectorTemplateBase&lt;type-parameter-0-0, true&gt;::pop_back' data-ref="_ZN4llvm23SmallVectorTemplateBaseIT_Lb1EE8pop_backEv">pop_back</dfn>() {</td></tr>
+<tr><th id="317">317</th><td>    <b>this</b>-&gt;setEnd(<b>this</b>-&gt;end()-<var>1</var>);</td></tr>
+<tr><th id="318">318</th><td>  }</td></tr>
+<tr><th id="319">319</th><td>};</td></tr>
+<tr><th id="320">320</th><td></td></tr>
+<tr><th id="321">321</th><td><i class="doc">/// This class consists of common code factored out of the SmallVector class to</i></td></tr>
+<tr><th id="322">322</th><td><i class="doc">/// reduce code duplication based on the SmallVector 'N' template parameter.</i></td></tr>
+<tr><th id="323">323</th><td><b>template</b> &lt;<b>typename</b> T&gt;</td></tr>
+<tr><th id="324">324</th><td><b>class</b> <dfn class="type def" id="llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</dfn> : <b>public</b> <a class="type" href="#llvm::SmallVectorTemplateBase" title='llvm::SmallVectorTemplateBase' data-ref="llvm::SmallVectorTemplateBase">SmallVectorTemplateBase</a>&lt;T, <a class="type" href="../Support/type_traits.h.html#llvm::isPodLike" title='llvm::isPodLike' data-ref="llvm::isPodLike">isPodLike</a>&lt;T&gt;::value&gt; {</td></tr>
+<tr><th id="325">325</th><td>  <b>using</b> <dfn class="typedef" id="llvm::SmallVectorImpl::SuperClass" title='llvm::SmallVectorImpl::SuperClass' data-type='SmallVectorTemplateBase&lt;T, isPodLike&lt;T&gt;::value&gt;' data-ref="llvm::SmallVectorImpl::SuperClass">SuperClass</dfn> = <a class="type" href="#llvm::SmallVectorTemplateBase" title='llvm::SmallVectorTemplateBase' data-ref="llvm::SmallVectorTemplateBase">SmallVectorTemplateBase</a>&lt;T, <a class="type" href="../Support/type_traits.h.html#llvm::isPodLike" title='llvm::isPodLike' data-ref="llvm::isPodLike">isPodLike</a>&lt;T&gt;::value&gt;;</td></tr>
+<tr><th id="326">326</th><td></td></tr>
+<tr><th id="327">327</th><td><b>public</b>:</td></tr>
+<tr><th id="328">328</th><td>  <b>using</b> <dfn class="typedef" id="llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</dfn> = <b>typename</b> <a class="typedef" href="#llvm::SmallVectorImpl::SuperClass" title='llvm::SmallVectorImpl::SuperClass' data-type='SmallVectorTemplateBase&lt;T, isPodLike&lt;T&gt;::value&gt;' data-ref="llvm::SmallVectorImpl::SuperClass">SuperClass</a>::iterator;</td></tr>
+<tr><th id="329">329</th><td>  <b>using</b> <dfn class="typedef" id="llvm::SmallVectorImpl::const_iterator" title='llvm::SmallVectorImpl::const_iterator' data-type='typename SuperClass::const_iterator' data-ref="llvm::SmallVectorImpl::const_iterator">const_iterator</dfn> = <b>typename</b> <a class="typedef" href="#llvm::SmallVectorImpl::SuperClass" title='llvm::SmallVectorImpl::SuperClass' data-type='SmallVectorTemplateBase&lt;T, isPodLike&lt;T&gt;::value&gt;' data-ref="llvm::SmallVectorImpl::SuperClass">SuperClass</a>::const_iterator;</td></tr>
+<tr><th id="330">330</th><td>  <b>using</b> <dfn class="typedef" id="llvm::SmallVectorImpl::size_type" title='llvm::SmallVectorImpl::size_type' data-type='typename SuperClass::size_type' data-ref="llvm::SmallVectorImpl::size_type">size_type</dfn> = <b>typename</b> <a class="typedef" href="#llvm::SmallVectorImpl::SuperClass" title='llvm::SmallVectorImpl::SuperClass' data-type='SmallVectorTemplateBase&lt;T, isPodLike&lt;T&gt;::value&gt;' data-ref="llvm::SmallVectorImpl::SuperClass">SuperClass</a>::size_type;</td></tr>
+<tr><th id="331">331</th><td></td></tr>
+<tr><th id="332">332</th><td><b>protected</b>:</td></tr>
+<tr><th id="333">333</th><td>  <i>// Default ctor - Initialize to empty.</i></td></tr>
+<tr><th id="334">334</th><td>  <b>explicit</b> <dfn class="decl def" id="_ZN4llvm15SmallVectorImplC1Ej" title='llvm::SmallVectorImpl::SmallVectorImpl&lt;T&gt;' data-ref="_ZN4llvm15SmallVectorImplC1Ej">SmallVectorImpl</dfn>(<em>unsigned</em> <dfn class="local col0 decl" id="6490N" title='N' data-type='unsigned int' data-ref="6490N">N</dfn>)</td></tr>
+<tr><th id="335">335</th><td>    : <a class="type" href="#llvm::SmallVectorTemplateBase" title='llvm::SmallVectorTemplateBase' data-ref="llvm::SmallVectorTemplateBase">SmallVectorTemplateBase</a>&lt;T, <a class="type" href="../Support/type_traits.h.html#llvm::isPodLike" title='llvm::isPodLike' data-ref="llvm::isPodLike">isPodLike</a>&lt;T&gt;::value&gt;(<a class="local col0 ref" href="#6490N" title='N' data-ref="6490N">N</a>*<b>sizeof</b>(T)) {</td></tr>
+<tr><th id="336">336</th><td>  }</td></tr>
+<tr><th id="337">337</th><td></td></tr>
+<tr><th id="338">338</th><td><b>public</b>:</td></tr>
+<tr><th id="339">339</th><td>  <dfn class="decl def" id="_ZN4llvm15SmallVectorImplC1ERKNS_15SmallVectorImplIT_EE" title='llvm::SmallVectorImpl::SmallVectorImpl&lt;T&gt;' data-ref="_ZN4llvm15SmallVectorImplC1ERKNS_15SmallVectorImplIT_EE">SmallVectorImpl</dfn>(<em>const</em> SmallVectorImpl &amp;) = <b>delete</b>;</td></tr>
+<tr><th id="340">340</th><td></td></tr>
+<tr><th id="341">341</th><td>  <dfn class="decl def" id="_ZN4llvm15SmallVectorImplD1Ev" title='llvm::SmallVectorImpl::~SmallVectorImpl&lt;T&gt;' data-ref="_ZN4llvm15SmallVectorImplD1Ev">~SmallVectorImpl</dfn>() {</td></tr>
+<tr><th id="342">342</th><td>    <i>// Destroy the constructed elements in the vector.</i></td></tr>
+<tr><th id="343">343</th><td>    <b>this</b>-&gt;destroy_range(<b>this</b>-&gt;begin(), <b>this</b>-&gt;end());</td></tr>
+<tr><th id="344">344</th><td></td></tr>
+<tr><th id="345">345</th><td>    <i>// If this wasn't grown from the inline copy, deallocate the old space.</i></td></tr>
+<tr><th id="346">346</th><td>    <b>if</b> (!<b>this</b>-&gt;isSmall())</td></tr>
+<tr><th id="347">347</th><td>      free(<b>this</b>-&gt;begin());</td></tr>
+<tr><th id="348">348</th><td>  }</td></tr>
+<tr><th id="349">349</th><td></td></tr>
+<tr><th id="350">350</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm15SmallVectorImpl5clearEv" title='llvm::SmallVectorImpl::clear' data-ref="_ZN4llvm15SmallVectorImpl5clearEv">clear</dfn>() {</td></tr>
+<tr><th id="351">351</th><td>    <b>this</b>-&gt;destroy_range(<b>this</b>-&gt;begin(), <b>this</b>-&gt;end());</td></tr>
+<tr><th id="352">352</th><td>    <b>this</b>-&gt;EndX = <b>this</b>-&gt;BeginX;</td></tr>
+<tr><th id="353">353</th><td>  }</td></tr>
+<tr><th id="354">354</th><td></td></tr>
+<tr><th id="355">355</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm15SmallVectorImpl6resizeENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE9size_typeE" title='llvm::SmallVectorImpl::resize' data-ref="_ZN4llvm15SmallVectorImpl6resizeENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE9size_typeE">resize</dfn>(<a class="typedef" href="#llvm::SmallVectorImpl::size_type" title='llvm::SmallVectorImpl::size_type' data-type='typename SuperClass::size_type' data-ref="llvm::SmallVectorImpl::size_type">size_type</a> <dfn class="local col1 decl" id="6491N" title='N' data-type='size_type' data-ref="6491N">N</dfn>) {</td></tr>
+<tr><th id="356">356</th><td>    <b>if</b> (<a class="local col1 ref" href="#6491N" title='N' data-ref="6491N">N</a> &lt; <b>this</b>-&gt;size()) {</td></tr>
+<tr><th id="357">357</th><td>      <b>this</b>-&gt;destroy_range(<b>this</b>-&gt;begin()+<a class="local col1 ref" href="#6491N" title='N' data-ref="6491N">N</a>, <b>this</b>-&gt;end());</td></tr>
+<tr><th id="358">358</th><td>      <b>this</b>-&gt;setEnd(<b>this</b>-&gt;begin()+<a class="local col1 ref" href="#6491N" title='N' data-ref="6491N">N</a>);</td></tr>
+<tr><th id="359">359</th><td>    } <b>else</b> <b>if</b> (<a class="local col1 ref" href="#6491N" title='N' data-ref="6491N">N</a> &gt; <b>this</b>-&gt;size()) {</td></tr>
+<tr><th id="360">360</th><td>      <b>if</b> (<b>this</b>-&gt;capacity() &lt; <a class="local col1 ref" href="#6491N" title='N' data-ref="6491N">N</a>)</td></tr>
+<tr><th id="361">361</th><td>        <b>this</b>-&gt;grow(<a class="local col1 ref" href="#6491N" title='N' data-ref="6491N">N</a>);</td></tr>
+<tr><th id="362">362</th><td>      <b>for</b> (<em>auto</em> <dfn class="local col2 decl" id="6492I" title='I' data-type='auto' data-ref="6492I">I</dfn> = <b>this</b>-&gt;end(), <dfn class="local col3 decl" id="6493E" title='E' data-type='auto' data-ref="6493E">E</dfn> = <b>this</b>-&gt;begin() + <a class="local col1 ref" href="#6491N" title='N' data-ref="6491N">N</a>; <a class="local col2 ref" href="#6492I" title='I' data-ref="6492I">I</a> != <a class="local col3 ref" href="#6493E" title='E' data-ref="6493E">E</a>; ++<a class="local col2 ref" href="#6492I" title='I' data-ref="6492I">I</a>)</td></tr>
+<tr><th id="363">363</th><td>        <b>new</b> (&amp;*<a class="local col2 ref" href="#6492I" title='I' data-ref="6492I">I</a>) T();</td></tr>
+<tr><th id="364">364</th><td>      <b>this</b>-&gt;setEnd(<b>this</b>-&gt;begin()+<a class="local col1 ref" href="#6491N" title='N' data-ref="6491N">N</a>);</td></tr>
+<tr><th id="365">365</th><td>    }</td></tr>
+<tr><th id="366">366</th><td>  }</td></tr>
+<tr><th id="367">367</th><td></td></tr>
+<tr><th id="368">368</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm15SmallVectorImpl6resizeENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE9size_typeERKS2_" title='llvm::SmallVectorImpl::resize' data-ref="_ZN4llvm15SmallVectorImpl6resizeENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE9size_typeERKS2_">resize</dfn>(<a class="typedef" href="#llvm::SmallVectorImpl::size_type" title='llvm::SmallVectorImpl::size_type' data-type='typename SuperClass::size_type' data-ref="llvm::SmallVectorImpl::size_type">size_type</a> <dfn class="local col4 decl" id="6494N" title='N' data-type='size_type' data-ref="6494N">N</dfn>, <em>const</em> T &amp;<dfn class="local col5 decl" id="6495NV" title='NV' data-type='const T &amp;' data-ref="6495NV">NV</dfn>) {</td></tr>
+<tr><th id="369">369</th><td>    <b>if</b> (<a class="local col4 ref" href="#6494N" title='N' data-ref="6494N">N</a> &lt; <b>this</b>-&gt;size()) {</td></tr>
+<tr><th id="370">370</th><td>      <b>this</b>-&gt;destroy_range(<b>this</b>-&gt;begin()+<a class="local col4 ref" href="#6494N" title='N' data-ref="6494N">N</a>, <b>this</b>-&gt;end());</td></tr>
+<tr><th id="371">371</th><td>      <b>this</b>-&gt;setEnd(<b>this</b>-&gt;begin()+<a class="local col4 ref" href="#6494N" title='N' data-ref="6494N">N</a>);</td></tr>
+<tr><th id="372">372</th><td>    } <b>else</b> <b>if</b> (<a class="local col4 ref" href="#6494N" title='N' data-ref="6494N">N</a> &gt; <b>this</b>-&gt;size()) {</td></tr>
+<tr><th id="373">373</th><td>      <b>if</b> (<b>this</b>-&gt;capacity() &lt; <a class="local col4 ref" href="#6494N" title='N' data-ref="6494N">N</a>)</td></tr>
+<tr><th id="374">374</th><td>        <b>this</b>-&gt;grow(<a class="local col4 ref" href="#6494N" title='N' data-ref="6494N">N</a>);</td></tr>
+<tr><th id="375">375</th><td>      <span class="namespace">std::</span>uninitialized_fill(<b>this</b>-&gt;end(), <b>this</b>-&gt;begin()+<a class="local col4 ref" href="#6494N" title='N' data-ref="6494N">N</a>, <a class="local col5 ref" href="#6495NV" title='NV' data-ref="6495NV">NV</a>);</td></tr>
+<tr><th id="376">376</th><td>      <b>this</b>-&gt;setEnd(<b>this</b>-&gt;begin()+<a class="local col4 ref" href="#6494N" title='N' data-ref="6494N">N</a>);</td></tr>
+<tr><th id="377">377</th><td>    }</td></tr>
+<tr><th id="378">378</th><td>  }</td></tr>
+<tr><th id="379">379</th><td></td></tr>
+<tr><th id="380">380</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm15SmallVectorImpl7reserveENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE9size_typeE" title='llvm::SmallVectorImpl::reserve' data-ref="_ZN4llvm15SmallVectorImpl7reserveENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE9size_typeE">reserve</dfn>(<a class="typedef" href="#llvm::SmallVectorImpl::size_type" title='llvm::SmallVectorImpl::size_type' data-type='typename SuperClass::size_type' data-ref="llvm::SmallVectorImpl::size_type">size_type</a> <dfn class="local col6 decl" id="6496N" title='N' data-type='size_type' data-ref="6496N">N</dfn>) {</td></tr>
+<tr><th id="381">381</th><td>    <b>if</b> (<b>this</b>-&gt;capacity() &lt; <a class="local col6 ref" href="#6496N" title='N' data-ref="6496N">N</a>)</td></tr>
+<tr><th id="382">382</th><td>      <b>this</b>-&gt;grow(<a class="local col6 ref" href="#6496N" title='N' data-ref="6496N">N</a>);</td></tr>
+<tr><th id="383">383</th><td>  }</td></tr>
+<tr><th id="384">384</th><td></td></tr>
+<tr><th id="385">385</th><td>  <a class="macro" href="../Support/Compiler.h.html#128" title="[[clang::warn_unused_result]]" data-ref="_M/LLVM_NODISCARD">LLVM_NODISCARD</a> T <dfn class="decl def" id="_ZN4llvm15SmallVectorImpl12pop_back_valEv" title='llvm::SmallVectorImpl::pop_back_val' data-ref="_ZN4llvm15SmallVectorImpl12pop_back_valEv">pop_back_val</dfn>() {</td></tr>
+<tr><th id="386">386</th><td>    T <dfn class="local col7 decl" id="6497Result" title='Result' data-type='T' data-ref="6497Result">Result</dfn> = <span class="namespace">::std::</span>move(<b>this</b>-&gt;back());</td></tr>
+<tr><th id="387">387</th><td>    <b>this</b>-&gt;pop_back();</td></tr>
+<tr><th id="388">388</th><td>    <b>return</b> <a class="local col7 ref" href="#6497Result" title='Result' data-ref="6497Result">Result</a>;</td></tr>
+<tr><th id="389">389</th><td>  }</td></tr>
+<tr><th id="390">390</th><td></td></tr>
+<tr><th id="391">391</th><td>  <em>void</em> <a class="decl" href="#_ZN4llvm15SmallVectorImpl4swapERNS_15SmallVectorImplIT_EE" title='llvm::SmallVectorImpl::swap' data-ref="_ZN4llvm15SmallVectorImpl4swapERNS_15SmallVectorImplIT_EE">swap</a>(SmallVectorImpl &amp;<dfn class="local col8 decl" id="6498RHS" title='RHS' data-type='SmallVectorImpl&lt;T&gt; &amp;' data-ref="6498RHS">RHS</dfn>);</td></tr>
+<tr><th id="392">392</th><td></td></tr>
+<tr><th id="393">393</th><td>  <i class="doc">/// Add the specified range to the end of the SmallVector.</i></td></tr>
+<tr><th id="394">394</th><td>  <b>template</b> &lt;<b>typename</b> in_iter,</td></tr>
+<tr><th id="395">395</th><td>            <b>typename</b> = <b>typename</b> <span class="namespace">std::</span><a class="type" href="../../../c++/7/type_traits.html#std::enable_if" title='std::enable_if' data-ref="std::enable_if">enable_if</a>&lt;<span class="namespace">std::</span><a class="type" href="../../../c++/7/type_traits.html#std::is_convertible" title='std::is_convertible' data-ref="std::is_convertible">is_convertible</a>&lt;</td></tr>
+<tr><th id="396">396</th><td>                <b>typename</b> <span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/stl_iterator_base_types.h.html#std::iterator_traits" title='std::iterator_traits' data-ref="std::iterator_traits">iterator_traits</a>&lt;in_iter&gt;::iterator_category,</td></tr>
+<tr><th id="397">397</th><td>                <span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/stl_iterator_base_types.h.html#std::input_iterator_tag" title='std::input_iterator_tag' data-ref="std::input_iterator_tag">input_iterator_tag</a>&gt;::value&gt;::type&gt;</td></tr>
+<tr><th id="398">398</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm15SmallVectorImpl6appendET_S1_" title='llvm::SmallVectorImpl::append' data-ref="_ZN4llvm15SmallVectorImpl6appendET_S1_">append</dfn>(in_iter <dfn class="local col9 decl" id="6499in_start" title='in_start' data-type='in_iter' data-ref="6499in_start">in_start</dfn>, in_iter <dfn class="local col0 decl" id="6500in_end" title='in_end' data-type='in_iter' data-ref="6500in_end">in_end</dfn>) {</td></tr>
+<tr><th id="399">399</th><td>    <a class="typedef" href="#llvm::SmallVectorImpl::size_type" title='llvm::SmallVectorImpl::size_type' data-type='typename SuperClass::size_type' data-ref="llvm::SmallVectorImpl::size_type">size_type</a> <dfn class="local col1 decl" id="6501NumInputs" title='NumInputs' data-type='size_type' data-ref="6501NumInputs">NumInputs</dfn> = <span class="namespace">std::</span>distance(<a class="local col9 ref" href="#6499in_start" title='in_start' data-ref="6499in_start">in_start</a>, <a class="local col0 ref" href="#6500in_end" title='in_end' data-ref="6500in_end">in_end</a>);</td></tr>
+<tr><th id="400">400</th><td>    <i>// Grow allocated space if needed.</i></td></tr>
+<tr><th id="401">401</th><td>    <b>if</b> (<a class="local col1 ref" href="#6501NumInputs" title='NumInputs' data-ref="6501NumInputs">NumInputs</a> &gt; <a class="typedef" href="#llvm::SmallVectorImpl::size_type" title='llvm::SmallVectorImpl::size_type' data-type='typename SuperClass::size_type' data-ref="llvm::SmallVectorImpl::size_type">size_type</a>(<b>this</b>-&gt;capacity_ptr()-<b>this</b>-&gt;end()))</td></tr>
+<tr><th id="402">402</th><td>      <b>this</b>-&gt;grow(<b>this</b>-&gt;size()+<a class="local col1 ref" href="#6501NumInputs" title='NumInputs' data-ref="6501NumInputs">NumInputs</a>);</td></tr>
+<tr><th id="403">403</th><td></td></tr>
+<tr><th id="404">404</th><td>    <i>// Copy the new elements over.</i></td></tr>
+<tr><th id="405">405</th><td>    <b>this</b>-&gt;uninitialized_copy(<a class="local col9 ref" href="#6499in_start" title='in_start' data-ref="6499in_start">in_start</a>, <a class="local col0 ref" href="#6500in_end" title='in_end' data-ref="6500in_end">in_end</a>, <b>this</b>-&gt;end());</td></tr>
+<tr><th id="406">406</th><td>    <b>this</b>-&gt;setEnd(<b>this</b>-&gt;end() + <a class="local col1 ref" href="#6501NumInputs" title='NumInputs' data-ref="6501NumInputs">NumInputs</a>);</td></tr>
+<tr><th id="407">407</th><td>  }</td></tr>
+<tr><th id="408">408</th><td></td></tr>
+<tr><th id="409">409</th><td>  <i class="doc">/// Add the specified range to the end of the SmallVector.</i></td></tr>
+<tr><th id="410">410</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm15SmallVectorImpl6appendENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE9size_typeERKS2_" title='llvm::SmallVectorImpl::append' data-ref="_ZN4llvm15SmallVectorImpl6appendENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE9size_typeERKS2_">append</dfn>(<a class="typedef" href="#llvm::SmallVectorImpl::size_type" title='llvm::SmallVectorImpl::size_type' data-type='typename SuperClass::size_type' data-ref="llvm::SmallVectorImpl::size_type">size_type</a> <dfn class="local col2 decl" id="6502NumInputs" title='NumInputs' data-type='size_type' data-ref="6502NumInputs">NumInputs</dfn>, <em>const</em> T &amp;<dfn class="local col3 decl" id="6503Elt" title='Elt' data-type='const T &amp;' data-ref="6503Elt">Elt</dfn>) {</td></tr>
+<tr><th id="411">411</th><td>    <i>// Grow allocated space if needed.</i></td></tr>
+<tr><th id="412">412</th><td>    <b>if</b> (<a class="local col2 ref" href="#6502NumInputs" title='NumInputs' data-ref="6502NumInputs">NumInputs</a> &gt; <a class="typedef" href="#llvm::SmallVectorImpl::size_type" title='llvm::SmallVectorImpl::size_type' data-type='typename SuperClass::size_type' data-ref="llvm::SmallVectorImpl::size_type">size_type</a>(<b>this</b>-&gt;capacity_ptr()-<b>this</b>-&gt;end()))</td></tr>
+<tr><th id="413">413</th><td>      <b>this</b>-&gt;grow(<b>this</b>-&gt;size()+<a class="local col2 ref" href="#6502NumInputs" title='NumInputs' data-ref="6502NumInputs">NumInputs</a>);</td></tr>
+<tr><th id="414">414</th><td></td></tr>
+<tr><th id="415">415</th><td>    <i>// Copy the new elements over.</i></td></tr>
+<tr><th id="416">416</th><td>    <span class="namespace">std::</span>uninitialized_fill_n(<b>this</b>-&gt;end(), <a class="local col2 ref" href="#6502NumInputs" title='NumInputs' data-ref="6502NumInputs">NumInputs</a>, <a class="local col3 ref" href="#6503Elt" title='Elt' data-ref="6503Elt">Elt</a>);</td></tr>
+<tr><th id="417">417</th><td>    <b>this</b>-&gt;setEnd(<b>this</b>-&gt;end() + <a class="local col2 ref" href="#6502NumInputs" title='NumInputs' data-ref="6502NumInputs">NumInputs</a>);</td></tr>
+<tr><th id="418">418</th><td>  }</td></tr>
+<tr><th id="419">419</th><td></td></tr>
+<tr><th id="420">420</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm15SmallVectorImpl6appendESt16initializer_listIT_E" title='llvm::SmallVectorImpl::append' data-ref="_ZN4llvm15SmallVectorImpl6appendESt16initializer_listIT_E">append</dfn>(<span class="namespace">std::</span><a class="type" href="../../../c++/7/initializer_list.html#std::initializer_list" title='std::initializer_list' data-ref="std::initializer_list">initializer_list</a>&lt;T&gt; <dfn class="local col4 decl" id="6504IL" title='IL' data-type='std::initializer_list&lt;T&gt;' data-ref="6504IL">IL</dfn>) {</td></tr>
+<tr><th id="421">421</th><td>    append(<a class="local col4 ref" href="#6504IL" title='IL' data-ref="6504IL">IL</a>.begin(), <a class="local col4 ref" href="#6504IL" title='IL' data-ref="6504IL">IL</a>.end());</td></tr>
+<tr><th id="422">422</th><td>  }</td></tr>
+<tr><th id="423">423</th><td></td></tr>
+<tr><th id="424">424</th><td>  <i>// FIXME: Consider assigning over existing elements, rather than clearing &amp;</i></td></tr>
+<tr><th id="425">425</th><td><i>  // re-initializing them - for all assign(...) variants.</i></td></tr>
+<tr><th id="426">426</th><td></td></tr>
+<tr><th id="427">427</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm15SmallVectorImpl6assignENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE9size_typeERKS2_" title='llvm::SmallVectorImpl::assign' data-ref="_ZN4llvm15SmallVectorImpl6assignENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE9size_typeERKS2_">assign</dfn>(<a class="typedef" href="#llvm::SmallVectorImpl::size_type" title='llvm::SmallVectorImpl::size_type' data-type='typename SuperClass::size_type' data-ref="llvm::SmallVectorImpl::size_type">size_type</a> <dfn class="local col5 decl" id="6505NumElts" title='NumElts' data-type='size_type' data-ref="6505NumElts">NumElts</dfn>, <em>const</em> T &amp;<dfn class="local col6 decl" id="6506Elt" title='Elt' data-type='const T &amp;' data-ref="6506Elt">Elt</dfn>) {</td></tr>
+<tr><th id="428">428</th><td>    <a class="member" href="#_ZN4llvm15SmallVectorImpl5clearEv" title='llvm::SmallVectorImpl::clear' data-ref="_ZN4llvm15SmallVectorImpl5clearEv">clear</a>();</td></tr>
+<tr><th id="429">429</th><td>    <b>if</b> (<b>this</b>-&gt;capacity() &lt; <a class="local col5 ref" href="#6505NumElts" title='NumElts' data-ref="6505NumElts">NumElts</a>)</td></tr>
+<tr><th id="430">430</th><td>      <b>this</b>-&gt;grow(<a class="local col5 ref" href="#6505NumElts" title='NumElts' data-ref="6505NumElts">NumElts</a>);</td></tr>
+<tr><th id="431">431</th><td>    <b>this</b>-&gt;setEnd(<b>this</b>-&gt;begin()+<a class="local col5 ref" href="#6505NumElts" title='NumElts' data-ref="6505NumElts">NumElts</a>);</td></tr>
+<tr><th id="432">432</th><td>    <span class="namespace">std::</span>uninitialized_fill(<b>this</b>-&gt;begin(), <b>this</b>-&gt;end(), <a class="local col6 ref" href="#6506Elt" title='Elt' data-ref="6506Elt">Elt</a>);</td></tr>
+<tr><th id="433">433</th><td>  }</td></tr>
+<tr><th id="434">434</th><td></td></tr>
+<tr><th id="435">435</th><td>  <b>template</b> &lt;<b>typename</b> in_iter,</td></tr>
+<tr><th id="436">436</th><td>            <b>typename</b> = <b>typename</b> <span class="namespace">std::</span><a class="type" href="../../../c++/7/type_traits.html#std::enable_if" title='std::enable_if' data-ref="std::enable_if">enable_if</a>&lt;<span class="namespace">std::</span><a class="type" href="../../../c++/7/type_traits.html#std::is_convertible" title='std::is_convertible' data-ref="std::is_convertible">is_convertible</a>&lt;</td></tr>
+<tr><th id="437">437</th><td>                <b>typename</b> <span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/stl_iterator_base_types.h.html#std::iterator_traits" title='std::iterator_traits' data-ref="std::iterator_traits">iterator_traits</a>&lt;in_iter&gt;::iterator_category,</td></tr>
+<tr><th id="438">438</th><td>                <span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/stl_iterator_base_types.h.html#std::input_iterator_tag" title='std::input_iterator_tag' data-ref="std::input_iterator_tag">input_iterator_tag</a>&gt;::value&gt;::type&gt;</td></tr>
+<tr><th id="439">439</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm15SmallVectorImpl6assignET_S1_" title='llvm::SmallVectorImpl::assign' data-ref="_ZN4llvm15SmallVectorImpl6assignET_S1_">assign</dfn>(in_iter <dfn class="local col7 decl" id="6507in_start" title='in_start' data-type='in_iter' data-ref="6507in_start">in_start</dfn>, in_iter <dfn class="local col8 decl" id="6508in_end" title='in_end' data-type='in_iter' data-ref="6508in_end">in_end</dfn>) {</td></tr>
+<tr><th id="440">440</th><td>    <a class="member" href="#_ZN4llvm15SmallVectorImpl5clearEv" title='llvm::SmallVectorImpl::clear' data-ref="_ZN4llvm15SmallVectorImpl5clearEv">clear</a>();</td></tr>
+<tr><th id="441">441</th><td>    append(<a class="local col7 ref" href="#6507in_start" title='in_start' data-ref="6507in_start">in_start</a>, <a class="local col8 ref" href="#6508in_end" title='in_end' data-ref="6508in_end">in_end</a>);</td></tr>
+<tr><th id="442">442</th><td>  }</td></tr>
+<tr><th id="443">443</th><td></td></tr>
+<tr><th id="444">444</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm15SmallVectorImpl6assignESt16initializer_listIT_E" title='llvm::SmallVectorImpl::assign' data-ref="_ZN4llvm15SmallVectorImpl6assignESt16initializer_listIT_E">assign</dfn>(<span class="namespace">std::</span><a class="type" href="../../../c++/7/initializer_list.html#std::initializer_list" title='std::initializer_list' data-ref="std::initializer_list">initializer_list</a>&lt;T&gt; <dfn class="local col9 decl" id="6509IL" title='IL' data-type='std::initializer_list&lt;T&gt;' data-ref="6509IL">IL</dfn>) {</td></tr>
+<tr><th id="445">445</th><td>    <a class="member" href="#_ZN4llvm15SmallVectorImpl5clearEv" title='llvm::SmallVectorImpl::clear' data-ref="_ZN4llvm15SmallVectorImpl5clearEv">clear</a>();</td></tr>
+<tr><th id="446">446</th><td>    append(<a class="local col9 ref" href="#6509IL" title='IL' data-ref="6509IL">IL</a>);</td></tr>
+<tr><th id="447">447</th><td>  }</td></tr>
+<tr><th id="448">448</th><td></td></tr>
+<tr><th id="449">449</th><td>  <a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a> <dfn class="decl def" id="_ZN4llvm15SmallVectorImpl5eraseENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE14const_iteratorE" title='llvm::SmallVectorImpl::erase' data-ref="_ZN4llvm15SmallVectorImpl5eraseENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE14const_iteratorE">erase</dfn>(<a class="typedef" href="#llvm::SmallVectorImpl::const_iterator" title='llvm::SmallVectorImpl::const_iterator' data-type='typename SuperClass::const_iterator' data-ref="llvm::SmallVectorImpl::const_iterator">const_iterator</a> <dfn class="local col0 decl" id="6510CI" title='CI' data-type='const_iterator' data-ref="6510CI">CI</dfn>) {</td></tr>
+<tr><th id="450">450</th><td>    <i>// Just cast away constness because this is a non-const member function.</i></td></tr>
+<tr><th id="451">451</th><td>    <a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a> <dfn class="local col1 decl" id="6511I" title='I' data-type='iterator' data-ref="6511I">I</dfn> = <b>const_cast</b>&lt;<a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a>&gt;(<a class="local col0 ref" href="#6510CI" title='CI' data-ref="6510CI">CI</a>);</td></tr>
+<tr><th id="452">452</th><td></td></tr>
+<tr><th id="453">453</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(I &gt;= <b>this</b>-&gt;begin() &amp;&amp; <q>"Iterator to erase is out of bounds."</q>);</td></tr>
+<tr><th id="454">454</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(I &lt; <b>this</b>-&gt;end() &amp;&amp; <q>"Erasing at past-the-end iterator."</q>);</td></tr>
+<tr><th id="455">455</th><td></td></tr>
+<tr><th id="456">456</th><td>    <a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a> <dfn class="local col2 decl" id="6512N" title='N' data-type='iterator' data-ref="6512N">N</dfn> = <a class="local col1 ref" href="#6511I" title='I' data-ref="6511I">I</a>;</td></tr>
+<tr><th id="457">457</th><td>    <i>// Shift all elts down one.</i></td></tr>
+<tr><th id="458">458</th><td>    <span class="namespace">std::</span>move(<a class="local col1 ref" href="#6511I" title='I' data-ref="6511I">I</a>+<var>1</var>, <b>this</b>-&gt;end(), <a class="local col1 ref" href="#6511I" title='I' data-ref="6511I">I</a>);</td></tr>
+<tr><th id="459">459</th><td>    <i>// Drop the last elt.</i></td></tr>
+<tr><th id="460">460</th><td>    <b>this</b>-&gt;pop_back();</td></tr>
+<tr><th id="461">461</th><td>    <b>return</b>(<a class="local col2 ref" href="#6512N" title='N' data-ref="6512N">N</a>);</td></tr>
+<tr><th id="462">462</th><td>  }</td></tr>
+<tr><th id="463">463</th><td></td></tr>
+<tr><th id="464">464</th><td>  <a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a> <dfn class="decl def" id="_ZN4llvm15SmallVectorImpl5eraseENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE14const_iteratorES4_" title='llvm::SmallVectorImpl::erase' data-ref="_ZN4llvm15SmallVectorImpl5eraseENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE14const_iteratorES4_">erase</dfn>(<a class="typedef" href="#llvm::SmallVectorImpl::const_iterator" title='llvm::SmallVectorImpl::const_iterator' data-type='typename SuperClass::const_iterator' data-ref="llvm::SmallVectorImpl::const_iterator">const_iterator</a> <dfn class="local col3 decl" id="6513CS" title='CS' data-type='const_iterator' data-ref="6513CS">CS</dfn>, <a class="typedef" href="#llvm::SmallVectorImpl::const_iterator" title='llvm::SmallVectorImpl::const_iterator' data-type='typename SuperClass::const_iterator' data-ref="llvm::SmallVectorImpl::const_iterator">const_iterator</a> <dfn class="local col4 decl" id="6514CE" title='CE' data-type='const_iterator' data-ref="6514CE">CE</dfn>) {</td></tr>
+<tr><th id="465">465</th><td>    <i>// Just cast away constness because this is a non-const member function.</i></td></tr>
+<tr><th id="466">466</th><td>    <a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a> <dfn class="local col5 decl" id="6515S" title='S' data-type='iterator' data-ref="6515S">S</dfn> = <b>const_cast</b>&lt;<a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a>&gt;(<a class="local col3 ref" href="#6513CS" title='CS' data-ref="6513CS">CS</a>);</td></tr>
+<tr><th id="467">467</th><td>    <a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a> <dfn class="local col6 decl" id="6516E" title='E' data-type='iterator' data-ref="6516E">E</dfn> = <b>const_cast</b>&lt;<a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a>&gt;(<a class="local col4 ref" href="#6514CE" title='CE' data-ref="6514CE">CE</a>);</td></tr>
+<tr><th id="468">468</th><td></td></tr>
+<tr><th id="469">469</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(S &gt;= <b>this</b>-&gt;begin() &amp;&amp; <q>"Range to erase is out of bounds."</q>);</td></tr>
+<tr><th id="470">470</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(S &lt;= E &amp;&amp; <q>"Trying to erase invalid range."</q>);</td></tr>
+<tr><th id="471">471</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(E &lt;= <b>this</b>-&gt;end() &amp;&amp; <q>"Trying to erase past the end."</q>);</td></tr>
+<tr><th id="472">472</th><td></td></tr>
+<tr><th id="473">473</th><td>    <a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a> <dfn class="local col7 decl" id="6517N" title='N' data-type='iterator' data-ref="6517N">N</dfn> = <a class="local col5 ref" href="#6515S" title='S' data-ref="6515S">S</a>;</td></tr>
+<tr><th id="474">474</th><td>    <i>// Shift all elts down.</i></td></tr>
+<tr><th id="475">475</th><td>    <a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a> <dfn class="local col8 decl" id="6518I" title='I' data-type='iterator' data-ref="6518I">I</dfn> = <span class="namespace">std::</span>move(<a class="local col6 ref" href="#6516E" title='E' data-ref="6516E">E</a>, <b>this</b>-&gt;end(), <a class="local col5 ref" href="#6515S" title='S' data-ref="6515S">S</a>);</td></tr>
+<tr><th id="476">476</th><td>    <i>// Drop the last elts.</i></td></tr>
+<tr><th id="477">477</th><td>    <b>this</b>-&gt;destroy_range(<a class="local col8 ref" href="#6518I" title='I' data-ref="6518I">I</a>, <b>this</b>-&gt;end());</td></tr>
+<tr><th id="478">478</th><td>    <b>this</b>-&gt;setEnd(<a class="local col8 ref" href="#6518I" title='I' data-ref="6518I">I</a>);</td></tr>
+<tr><th id="479">479</th><td>    <b>return</b>(<a class="local col7 ref" href="#6517N" title='N' data-ref="6517N">N</a>);</td></tr>
+<tr><th id="480">480</th><td>  }</td></tr>
+<tr><th id="481">481</th><td></td></tr>
+<tr><th id="482">482</th><td>  <a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a> <dfn class="decl def" id="_ZN4llvm15SmallVectorImpl6insertENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE8iteratorEOS2_" title='llvm::SmallVectorImpl::insert' data-ref="_ZN4llvm15SmallVectorImpl6insertENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE8iteratorEOS2_">insert</dfn>(<a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a> <dfn class="local col9 decl" id="6519I" title='I' data-type='iterator' data-ref="6519I">I</dfn>, T &amp;&amp;<dfn class="local col0 decl" id="6520Elt" title='Elt' data-type='T &amp;&amp;' data-ref="6520Elt">Elt</dfn>) {</td></tr>
+<tr><th id="483">483</th><td>    <b>if</b> (<a class="local col9 ref" href="#6519I" title='I' data-ref="6519I">I</a> == <b>this</b>-&gt;end()) {  <i>// Important special case for empty vector.</i></td></tr>
+<tr><th id="484">484</th><td>      <b>this</b>-&gt;push_back(<span class="namespace">::std::</span>move(<a class="local col0 ref" href="#6520Elt" title='Elt' data-ref="6520Elt">Elt</a>));</td></tr>
+<tr><th id="485">485</th><td>      <b>return</b> <b>this</b>-&gt;end()-<var>1</var>;</td></tr>
+<tr><th id="486">486</th><td>    }</td></tr>
+<tr><th id="487">487</th><td></td></tr>
+<tr><th id="488">488</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(I &gt;= <b>this</b>-&gt;begin() &amp;&amp; <q>"Insertion iterator is out of bounds."</q>);</td></tr>
+<tr><th id="489">489</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(I &lt;= <b>this</b>-&gt;end() &amp;&amp; <q>"Inserting past the end of the vector."</q>);</td></tr>
+<tr><th id="490">490</th><td></td></tr>
+<tr><th id="491">491</th><td>    <b>if</b> (<b>this</b>-&gt;EndX &gt;= <b>this</b>-&gt;CapacityX) {</td></tr>
+<tr><th id="492">492</th><td>      <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col1 decl" id="6521EltNo" title='EltNo' data-type='size_t' data-ref="6521EltNo">EltNo</dfn> = <a class="local col9 ref" href="#6519I" title='I' data-ref="6519I">I</a>-<b>this</b>-&gt;begin();</td></tr>
+<tr><th id="493">493</th><td>      <b>this</b>-&gt;grow();</td></tr>
+<tr><th id="494">494</th><td>      <a class="local col9 ref" href="#6519I" title='I' data-ref="6519I">I</a> = <b>this</b>-&gt;begin()+<a class="local col1 ref" href="#6521EltNo" title='EltNo' data-ref="6521EltNo">EltNo</a>;</td></tr>
+<tr><th id="495">495</th><td>    }</td></tr>
+<tr><th id="496">496</th><td></td></tr>
+<tr><th id="497">497</th><td>    ::<b>new</b> ((<em>void</em>*) <b>this</b>-&gt;end()) T(<span class="namespace">::std::</span>move(<b>this</b>-&gt;back()));</td></tr>
+<tr><th id="498">498</th><td>    <i>// Push everything else over.</i></td></tr>
+<tr><th id="499">499</th><td>    <span class="namespace">std::</span>move_backward(<a class="local col9 ref" href="#6519I" title='I' data-ref="6519I">I</a>, <b>this</b>-&gt;end()-<var>1</var>, <b>this</b>-&gt;end());</td></tr>
+<tr><th id="500">500</th><td>    <b>this</b>-&gt;setEnd(<b>this</b>-&gt;end()+<var>1</var>);</td></tr>
+<tr><th id="501">501</th><td></td></tr>
+<tr><th id="502">502</th><td>    <i>// If we just moved the element we're inserting, be sure to update</i></td></tr>
+<tr><th id="503">503</th><td><i>    // the reference.</i></td></tr>
+<tr><th id="504">504</th><td>    T *<dfn class="local col2 decl" id="6522EltPtr" title='EltPtr' data-type='T *' data-ref="6522EltPtr">EltPtr</dfn> = &amp;<a class="local col0 ref" href="#6520Elt" title='Elt' data-ref="6520Elt">Elt</a>;</td></tr>
+<tr><th id="505">505</th><td>    <b>if</b> (<a class="local col9 ref" href="#6519I" title='I' data-ref="6519I">I</a> &lt;= <a class="local col2 ref" href="#6522EltPtr" title='EltPtr' data-ref="6522EltPtr">EltPtr</a> &amp;&amp; <a class="local col2 ref" href="#6522EltPtr" title='EltPtr' data-ref="6522EltPtr">EltPtr</a> &lt; <b>this</b>-&gt;EndX)</td></tr>
+<tr><th id="506">506</th><td>      ++<a class="local col2 ref" href="#6522EltPtr" title='EltPtr' data-ref="6522EltPtr">EltPtr</a>;</td></tr>
+<tr><th id="507">507</th><td></td></tr>
+<tr><th id="508">508</th><td>    *<a class="local col9 ref" href="#6519I" title='I' data-ref="6519I">I</a> = <span class="namespace">::std::</span>move(*<a class="local col2 ref" href="#6522EltPtr" title='EltPtr' data-ref="6522EltPtr">EltPtr</a>);</td></tr>
+<tr><th id="509">509</th><td>    <b>return</b> <a class="local col9 ref" href="#6519I" title='I' data-ref="6519I">I</a>;</td></tr>
+<tr><th id="510">510</th><td>  }</td></tr>
+<tr><th id="511">511</th><td></td></tr>
+<tr><th id="512">512</th><td>  <a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a> <dfn class="decl def" id="_ZN4llvm15SmallVectorImpl6insertENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE8iteratorERKS2_" title='llvm::SmallVectorImpl::insert' data-ref="_ZN4llvm15SmallVectorImpl6insertENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE8iteratorERKS2_">insert</dfn>(<a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a> <dfn class="local col3 decl" id="6523I" title='I' data-type='iterator' data-ref="6523I">I</dfn>, <em>const</em> T &amp;<dfn class="local col4 decl" id="6524Elt" title='Elt' data-type='const T &amp;' data-ref="6524Elt">Elt</dfn>) {</td></tr>
+<tr><th id="513">513</th><td>    <b>if</b> (<a class="local col3 ref" href="#6523I" title='I' data-ref="6523I">I</a> == <b>this</b>-&gt;end()) {  <i>// Important special case for empty vector.</i></td></tr>
+<tr><th id="514">514</th><td>      <b>this</b>-&gt;push_back(<a class="local col4 ref" href="#6524Elt" title='Elt' data-ref="6524Elt">Elt</a>);</td></tr>
+<tr><th id="515">515</th><td>      <b>return</b> <b>this</b>-&gt;end()-<var>1</var>;</td></tr>
+<tr><th id="516">516</th><td>    }</td></tr>
+<tr><th id="517">517</th><td></td></tr>
+<tr><th id="518">518</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(I &gt;= <b>this</b>-&gt;begin() &amp;&amp; <q>"Insertion iterator is out of bounds."</q>);</td></tr>
+<tr><th id="519">519</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(I &lt;= <b>this</b>-&gt;end() &amp;&amp; <q>"Inserting past the end of the vector."</q>);</td></tr>
+<tr><th id="520">520</th><td></td></tr>
+<tr><th id="521">521</th><td>    <b>if</b> (<b>this</b>-&gt;EndX &gt;= <b>this</b>-&gt;CapacityX) {</td></tr>
+<tr><th id="522">522</th><td>      <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col5 decl" id="6525EltNo" title='EltNo' data-type='size_t' data-ref="6525EltNo">EltNo</dfn> = <a class="local col3 ref" href="#6523I" title='I' data-ref="6523I">I</a>-<b>this</b>-&gt;begin();</td></tr>
+<tr><th id="523">523</th><td>      <b>this</b>-&gt;grow();</td></tr>
+<tr><th id="524">524</th><td>      <a class="local col3 ref" href="#6523I" title='I' data-ref="6523I">I</a> = <b>this</b>-&gt;begin()+<a class="local col5 ref" href="#6525EltNo" title='EltNo' data-ref="6525EltNo">EltNo</a>;</td></tr>
+<tr><th id="525">525</th><td>    }</td></tr>
+<tr><th id="526">526</th><td>    ::<b>new</b> ((<em>void</em>*) <b>this</b>-&gt;end()) T(<span class="namespace">std::</span>move(<b>this</b>-&gt;back()));</td></tr>
+<tr><th id="527">527</th><td>    <i>// Push everything else over.</i></td></tr>
+<tr><th id="528">528</th><td>    <span class="namespace">std::</span>move_backward(<a class="local col3 ref" href="#6523I" title='I' data-ref="6523I">I</a>, <b>this</b>-&gt;end()-<var>1</var>, <b>this</b>-&gt;end());</td></tr>
+<tr><th id="529">529</th><td>    <b>this</b>-&gt;setEnd(<b>this</b>-&gt;end()+<var>1</var>);</td></tr>
+<tr><th id="530">530</th><td></td></tr>
+<tr><th id="531">531</th><td>    <i>// If we just moved the element we're inserting, be sure to update</i></td></tr>
+<tr><th id="532">532</th><td><i>    // the reference.</i></td></tr>
+<tr><th id="533">533</th><td>    <em>const</em> T *<dfn class="local col6 decl" id="6526EltPtr" title='EltPtr' data-type='const T *' data-ref="6526EltPtr">EltPtr</dfn> = &amp;<a class="local col4 ref" href="#6524Elt" title='Elt' data-ref="6524Elt">Elt</a>;</td></tr>
+<tr><th id="534">534</th><td>    <b>if</b> (<a class="local col3 ref" href="#6523I" title='I' data-ref="6523I">I</a> &lt;= <a class="local col6 ref" href="#6526EltPtr" title='EltPtr' data-ref="6526EltPtr">EltPtr</a> &amp;&amp; <a class="local col6 ref" href="#6526EltPtr" title='EltPtr' data-ref="6526EltPtr">EltPtr</a> &lt; <b>this</b>-&gt;EndX)</td></tr>
+<tr><th id="535">535</th><td>      ++<a class="local col6 ref" href="#6526EltPtr" title='EltPtr' data-ref="6526EltPtr">EltPtr</a>;</td></tr>
+<tr><th id="536">536</th><td></td></tr>
+<tr><th id="537">537</th><td>    *<a class="local col3 ref" href="#6523I" title='I' data-ref="6523I">I</a> = *<a class="local col6 ref" href="#6526EltPtr" title='EltPtr' data-ref="6526EltPtr">EltPtr</a>;</td></tr>
+<tr><th id="538">538</th><td>    <b>return</b> <a class="local col3 ref" href="#6523I" title='I' data-ref="6523I">I</a>;</td></tr>
+<tr><th id="539">539</th><td>  }</td></tr>
+<tr><th id="540">540</th><td></td></tr>
+<tr><th id="541">541</th><td>  <a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a> <dfn class="decl def" id="_ZN4llvm15SmallVectorImpl6insertENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE8iteratorENS3_9size_typeERKS2_" title='llvm::SmallVectorImpl::insert' data-ref="_ZN4llvm15SmallVectorImpl6insertENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE8iteratorENS3_9size_typeERKS2_">insert</dfn>(<a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a> <dfn class="local col7 decl" id="6527I" title='I' data-type='iterator' data-ref="6527I">I</dfn>, <a class="typedef" href="#llvm::SmallVectorImpl::size_type" title='llvm::SmallVectorImpl::size_type' data-type='typename SuperClass::size_type' data-ref="llvm::SmallVectorImpl::size_type">size_type</a> <dfn class="local col8 decl" id="6528NumToInsert" title='NumToInsert' data-type='size_type' data-ref="6528NumToInsert">NumToInsert</dfn>, <em>const</em> T &amp;<dfn class="local col9 decl" id="6529Elt" title='Elt' data-type='const T &amp;' data-ref="6529Elt">Elt</dfn>) {</td></tr>
+<tr><th id="542">542</th><td>    <i>// Convert iterator to elt# to avoid invalidating iterator when we reserve()</i></td></tr>
+<tr><th id="543">543</th><td>    <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col0 decl" id="6530InsertElt" title='InsertElt' data-type='size_t' data-ref="6530InsertElt">InsertElt</dfn> = <a class="local col7 ref" href="#6527I" title='I' data-ref="6527I">I</a> - <b>this</b>-&gt;begin();</td></tr>
+<tr><th id="544">544</th><td></td></tr>
+<tr><th id="545">545</th><td>    <b>if</b> (<a class="local col7 ref" href="#6527I" title='I' data-ref="6527I">I</a> == <b>this</b>-&gt;end()) {  <i>// Important special case for empty vector.</i></td></tr>
+<tr><th id="546">546</th><td>      append(<a class="local col8 ref" href="#6528NumToInsert" title='NumToInsert' data-ref="6528NumToInsert">NumToInsert</a>, <a class="local col9 ref" href="#6529Elt" title='Elt' data-ref="6529Elt">Elt</a>);</td></tr>
+<tr><th id="547">547</th><td>      <b>return</b> <b>this</b>-&gt;begin()+<a class="local col0 ref" href="#6530InsertElt" title='InsertElt' data-ref="6530InsertElt">InsertElt</a>;</td></tr>
+<tr><th id="548">548</th><td>    }</td></tr>
+<tr><th id="549">549</th><td></td></tr>
+<tr><th id="550">550</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(I &gt;= <b>this</b>-&gt;begin() &amp;&amp; <q>"Insertion iterator is out of bounds."</q>);</td></tr>
+<tr><th id="551">551</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(I &lt;= <b>this</b>-&gt;end() &amp;&amp; <q>"Inserting past the end of the vector."</q>);</td></tr>
+<tr><th id="552">552</th><td></td></tr>
+<tr><th id="553">553</th><td>    <i>// Ensure there is enough space.</i></td></tr>
+<tr><th id="554">554</th><td>    <a class="member" href="#_ZN4llvm15SmallVectorImpl7reserveENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE9size_typeE" title='llvm::SmallVectorImpl::reserve' data-ref="_ZN4llvm15SmallVectorImpl7reserveENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE9size_typeE">reserve</a>(<b>this</b>-&gt;size() + <a class="local col8 ref" href="#6528NumToInsert" title='NumToInsert' data-ref="6528NumToInsert">NumToInsert</a>);</td></tr>
+<tr><th id="555">555</th><td></td></tr>
+<tr><th id="556">556</th><td>    <i>// Uninvalidate the iterator.</i></td></tr>
+<tr><th id="557">557</th><td>    <a class="local col7 ref" href="#6527I" title='I' data-ref="6527I">I</a> = <b>this</b>-&gt;begin()+<a class="local col0 ref" href="#6530InsertElt" title='InsertElt' data-ref="6530InsertElt">InsertElt</a>;</td></tr>
+<tr><th id="558">558</th><td></td></tr>
+<tr><th id="559">559</th><td>    <i>// If there are more elements between the insertion point and the end of the</i></td></tr>
+<tr><th id="560">560</th><td><i>    // range than there are being inserted, we can use a simple approach to</i></td></tr>
+<tr><th id="561">561</th><td><i>    // insertion.  Since we already reserved space, we know that this won't</i></td></tr>
+<tr><th id="562">562</th><td><i>    // reallocate the vector.</i></td></tr>
+<tr><th id="563">563</th><td>    <b>if</b> (<span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span>(<b>this</b>-&gt;end()-<a class="local col7 ref" href="#6527I" title='I' data-ref="6527I">I</a>) &gt;= <a class="local col8 ref" href="#6528NumToInsert" title='NumToInsert' data-ref="6528NumToInsert">NumToInsert</a>) {</td></tr>
+<tr><th id="564">564</th><td>      T *<dfn class="local col1 decl" id="6531OldEnd" title='OldEnd' data-type='T *' data-ref="6531OldEnd">OldEnd</dfn> = <b>this</b>-&gt;end();</td></tr>
+<tr><th id="565">565</th><td>      append(<span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/stl_iterator.h.html#std::move_iterator" title='std::move_iterator' data-ref="std::move_iterator">move_iterator</a>&lt;<a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a>&gt;(<b>this</b>-&gt;end() - <a class="local col8 ref" href="#6528NumToInsert" title='NumToInsert' data-ref="6528NumToInsert">NumToInsert</a>),</td></tr>
+<tr><th id="566">566</th><td>             <span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/stl_iterator.h.html#std::move_iterator" title='std::move_iterator' data-ref="std::move_iterator">move_iterator</a>&lt;<a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a>&gt;(<b>this</b>-&gt;end()));</td></tr>
+<tr><th id="567">567</th><td></td></tr>
+<tr><th id="568">568</th><td>      <i>// Copy the existing elements that get replaced.</i></td></tr>
+<tr><th id="569">569</th><td>      <span class="namespace">std::</span>move_backward(<a class="local col7 ref" href="#6527I" title='I' data-ref="6527I">I</a>, <a class="local col1 ref" href="#6531OldEnd" title='OldEnd' data-ref="6531OldEnd">OldEnd</a>-<a class="local col8 ref" href="#6528NumToInsert" title='NumToInsert' data-ref="6528NumToInsert">NumToInsert</a>, <a class="local col1 ref" href="#6531OldEnd" title='OldEnd' data-ref="6531OldEnd">OldEnd</a>);</td></tr>
+<tr><th id="570">570</th><td></td></tr>
+<tr><th id="571">571</th><td>      <span class="namespace">std::</span>fill_n(<a class="local col7 ref" href="#6527I" title='I' data-ref="6527I">I</a>, <a class="local col8 ref" href="#6528NumToInsert" title='NumToInsert' data-ref="6528NumToInsert">NumToInsert</a>, <a class="local col9 ref" href="#6529Elt" title='Elt' data-ref="6529Elt">Elt</a>);</td></tr>
+<tr><th id="572">572</th><td>      <b>return</b> <a class="local col7 ref" href="#6527I" title='I' data-ref="6527I">I</a>;</td></tr>
+<tr><th id="573">573</th><td>    }</td></tr>
+<tr><th id="574">574</th><td></td></tr>
+<tr><th id="575">575</th><td>    <i>// Otherwise, we're inserting more elements than exist already, and we're</i></td></tr>
+<tr><th id="576">576</th><td><i>    // not inserting at the end.</i></td></tr>
+<tr><th id="577">577</th><td><i></i></td></tr>
+<tr><th id="578">578</th><td><i>    // Move over the elements that we're about to overwrite.</i></td></tr>
+<tr><th id="579">579</th><td>    T *<dfn class="local col2 decl" id="6532OldEnd" title='OldEnd' data-type='T *' data-ref="6532OldEnd">OldEnd</dfn> = <b>this</b>-&gt;end();</td></tr>
+<tr><th id="580">580</th><td>    <b>this</b>-&gt;setEnd(<b>this</b>-&gt;end() + <a class="local col8 ref" href="#6528NumToInsert" title='NumToInsert' data-ref="6528NumToInsert">NumToInsert</a>);</td></tr>
+<tr><th id="581">581</th><td>    <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col3 decl" id="6533NumOverwritten" title='NumOverwritten' data-type='size_t' data-ref="6533NumOverwritten">NumOverwritten</dfn> = <a class="local col2 ref" href="#6532OldEnd" title='OldEnd' data-ref="6532OldEnd">OldEnd</a>-<a class="local col7 ref" href="#6527I" title='I' data-ref="6527I">I</a>;</td></tr>
+<tr><th id="582">582</th><td>    <b>this</b>-&gt;uninitialized_move(<a class="local col7 ref" href="#6527I" title='I' data-ref="6527I">I</a>, <a class="local col2 ref" href="#6532OldEnd" title='OldEnd' data-ref="6532OldEnd">OldEnd</a>, <b>this</b>-&gt;end()-<a class="local col3 ref" href="#6533NumOverwritten" title='NumOverwritten' data-ref="6533NumOverwritten">NumOverwritten</a>);</td></tr>
+<tr><th id="583">583</th><td></td></tr>
+<tr><th id="584">584</th><td>    <i>// Replace the overwritten part.</i></td></tr>
+<tr><th id="585">585</th><td>    <span class="namespace">std::</span>fill_n(<a class="local col7 ref" href="#6527I" title='I' data-ref="6527I">I</a>, <a class="local col3 ref" href="#6533NumOverwritten" title='NumOverwritten' data-ref="6533NumOverwritten">NumOverwritten</a>, <a class="local col9 ref" href="#6529Elt" title='Elt' data-ref="6529Elt">Elt</a>);</td></tr>
+<tr><th id="586">586</th><td></td></tr>
+<tr><th id="587">587</th><td>    <i>// Insert the non-overwritten middle part.</i></td></tr>
+<tr><th id="588">588</th><td>    <span class="namespace">std::</span>uninitialized_fill_n(<a class="local col2 ref" href="#6532OldEnd" title='OldEnd' data-ref="6532OldEnd">OldEnd</a>, <a class="local col8 ref" href="#6528NumToInsert" title='NumToInsert' data-ref="6528NumToInsert">NumToInsert</a>-<a class="local col3 ref" href="#6533NumOverwritten" title='NumOverwritten' data-ref="6533NumOverwritten">NumOverwritten</a>, <a class="local col9 ref" href="#6529Elt" title='Elt' data-ref="6529Elt">Elt</a>);</td></tr>
+<tr><th id="589">589</th><td>    <b>return</b> <a class="local col7 ref" href="#6527I" title='I' data-ref="6527I">I</a>;</td></tr>
+<tr><th id="590">590</th><td>  }</td></tr>
+<tr><th id="591">591</th><td></td></tr>
+<tr><th id="592">592</th><td>  <b>template</b> &lt;<b>typename</b> ItTy,</td></tr>
+<tr><th id="593">593</th><td>            <b>typename</b> = <b>typename</b> <span class="namespace">std::</span><a class="type" href="../../../c++/7/type_traits.html#std::enable_if" title='std::enable_if' data-ref="std::enable_if">enable_if</a>&lt;<span class="namespace">std::</span><a class="type" href="../../../c++/7/type_traits.html#std::is_convertible" title='std::is_convertible' data-ref="std::is_convertible">is_convertible</a>&lt;</td></tr>
+<tr><th id="594">594</th><td>                <b>typename</b> <span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/stl_iterator_base_types.h.html#std::iterator_traits" title='std::iterator_traits' data-ref="std::iterator_traits">iterator_traits</a>&lt;ItTy&gt;::iterator_category,</td></tr>
+<tr><th id="595">595</th><td>                <span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/stl_iterator_base_types.h.html#std::input_iterator_tag" title='std::input_iterator_tag' data-ref="std::input_iterator_tag">input_iterator_tag</a>&gt;::value&gt;::type&gt;</td></tr>
+<tr><th id="596">596</th><td>  <a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a> <dfn class="decl def" id="_ZN4llvm15SmallVectorImpl6insertENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE8iteratorET_S5_" title='llvm::SmallVectorImpl::insert' data-ref="_ZN4llvm15SmallVectorImpl6insertENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE8iteratorET_S5_">insert</dfn>(<a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a> <dfn class="local col4 decl" id="6534I" title='I' data-type='iterator' data-ref="6534I">I</dfn>, ItTy <dfn class="local col5 decl" id="6535From" title='From' data-type='ItTy' data-ref="6535From">From</dfn>, ItTy <dfn class="local col6 decl" id="6536To" title='To' data-type='ItTy' data-ref="6536To">To</dfn>) {</td></tr>
+<tr><th id="597">597</th><td>    <i>// Convert iterator to elt# to avoid invalidating iterator when we reserve()</i></td></tr>
+<tr><th id="598">598</th><td>    <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col7 decl" id="6537InsertElt" title='InsertElt' data-type='size_t' data-ref="6537InsertElt">InsertElt</dfn> = <a class="local col4 ref" href="#6534I" title='I' data-ref="6534I">I</a> - <b>this</b>-&gt;begin();</td></tr>
+<tr><th id="599">599</th><td></td></tr>
+<tr><th id="600">600</th><td>    <b>if</b> (<a class="local col4 ref" href="#6534I" title='I' data-ref="6534I">I</a> == <b>this</b>-&gt;end()) {  <i>// Important special case for empty vector.</i></td></tr>
+<tr><th id="601">601</th><td>      append(<a class="local col5 ref" href="#6535From" title='From' data-ref="6535From">From</a>, <a class="local col6 ref" href="#6536To" title='To' data-ref="6536To">To</a>);</td></tr>
+<tr><th id="602">602</th><td>      <b>return</b> <b>this</b>-&gt;begin()+<a class="local col7 ref" href="#6537InsertElt" title='InsertElt' data-ref="6537InsertElt">InsertElt</a>;</td></tr>
+<tr><th id="603">603</th><td>    }</td></tr>
+<tr><th id="604">604</th><td></td></tr>
+<tr><th id="605">605</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(I &gt;= <b>this</b>-&gt;begin() &amp;&amp; <q>"Insertion iterator is out of bounds."</q>);</td></tr>
+<tr><th id="606">606</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(I &lt;= <b>this</b>-&gt;end() &amp;&amp; <q>"Inserting past the end of the vector."</q>);</td></tr>
+<tr><th id="607">607</th><td></td></tr>
+<tr><th id="608">608</th><td>    <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col8 decl" id="6538NumToInsert" title='NumToInsert' data-type='size_t' data-ref="6538NumToInsert">NumToInsert</dfn> = <span class="namespace">std::</span>distance(<a class="local col5 ref" href="#6535From" title='From' data-ref="6535From">From</a>, <a class="local col6 ref" href="#6536To" title='To' data-ref="6536To">To</a>);</td></tr>
+<tr><th id="609">609</th><td></td></tr>
+<tr><th id="610">610</th><td>    <i>// Ensure there is enough space.</i></td></tr>
+<tr><th id="611">611</th><td>    <a class="member" href="#_ZN4llvm15SmallVectorImpl7reserveENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE9size_typeE" title='llvm::SmallVectorImpl::reserve' data-ref="_ZN4llvm15SmallVectorImpl7reserveENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE9size_typeE">reserve</a>(<b>this</b>-&gt;size() + <a class="local col8 ref" href="#6538NumToInsert" title='NumToInsert' data-ref="6538NumToInsert">NumToInsert</a>);</td></tr>
+<tr><th id="612">612</th><td></td></tr>
+<tr><th id="613">613</th><td>    <i>// Uninvalidate the iterator.</i></td></tr>
+<tr><th id="614">614</th><td>    <a class="local col4 ref" href="#6534I" title='I' data-ref="6534I">I</a> = <b>this</b>-&gt;begin()+<a class="local col7 ref" href="#6537InsertElt" title='InsertElt' data-ref="6537InsertElt">InsertElt</a>;</td></tr>
+<tr><th id="615">615</th><td></td></tr>
+<tr><th id="616">616</th><td>    <i>// If there are more elements between the insertion point and the end of the</i></td></tr>
+<tr><th id="617">617</th><td><i>    // range than there are being inserted, we can use a simple approach to</i></td></tr>
+<tr><th id="618">618</th><td><i>    // insertion.  Since we already reserved space, we know that this won't</i></td></tr>
+<tr><th id="619">619</th><td><i>    // reallocate the vector.</i></td></tr>
+<tr><th id="620">620</th><td>    <b>if</b> (<span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span>(<b>this</b>-&gt;end()-<a class="local col4 ref" href="#6534I" title='I' data-ref="6534I">I</a>) &gt;= <a class="local col8 ref" href="#6538NumToInsert" title='NumToInsert' data-ref="6538NumToInsert">NumToInsert</a>) {</td></tr>
+<tr><th id="621">621</th><td>      T *<dfn class="local col9 decl" id="6539OldEnd" title='OldEnd' data-type='T *' data-ref="6539OldEnd">OldEnd</dfn> = <b>this</b>-&gt;end();</td></tr>
+<tr><th id="622">622</th><td>      append(<span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/stl_iterator.h.html#std::move_iterator" title='std::move_iterator' data-ref="std::move_iterator">move_iterator</a>&lt;<a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a>&gt;(<b>this</b>-&gt;end() - <a class="local col8 ref" href="#6538NumToInsert" title='NumToInsert' data-ref="6538NumToInsert">NumToInsert</a>),</td></tr>
+<tr><th id="623">623</th><td>             <span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/stl_iterator.h.html#std::move_iterator" title='std::move_iterator' data-ref="std::move_iterator">move_iterator</a>&lt;<a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a>&gt;(<b>this</b>-&gt;end()));</td></tr>
+<tr><th id="624">624</th><td></td></tr>
+<tr><th id="625">625</th><td>      <i>// Copy the existing elements that get replaced.</i></td></tr>
+<tr><th id="626">626</th><td>      <span class="namespace">std::</span>move_backward(<a class="local col4 ref" href="#6534I" title='I' data-ref="6534I">I</a>, <a class="local col9 ref" href="#6539OldEnd" title='OldEnd' data-ref="6539OldEnd">OldEnd</a>-<a class="local col8 ref" href="#6538NumToInsert" title='NumToInsert' data-ref="6538NumToInsert">NumToInsert</a>, <a class="local col9 ref" href="#6539OldEnd" title='OldEnd' data-ref="6539OldEnd">OldEnd</a>);</td></tr>
+<tr><th id="627">627</th><td></td></tr>
+<tr><th id="628">628</th><td>      <span class="namespace">std::</span>copy(<a class="local col5 ref" href="#6535From" title='From' data-ref="6535From">From</a>, <a class="local col6 ref" href="#6536To" title='To' data-ref="6536To">To</a>, <a class="local col4 ref" href="#6534I" title='I' data-ref="6534I">I</a>);</td></tr>
+<tr><th id="629">629</th><td>      <b>return</b> <a class="local col4 ref" href="#6534I" title='I' data-ref="6534I">I</a>;</td></tr>
+<tr><th id="630">630</th><td>    }</td></tr>
+<tr><th id="631">631</th><td></td></tr>
+<tr><th id="632">632</th><td>    <i>// Otherwise, we're inserting more elements than exist already, and we're</i></td></tr>
+<tr><th id="633">633</th><td><i>    // not inserting at the end.</i></td></tr>
+<tr><th id="634">634</th><td><i></i></td></tr>
+<tr><th id="635">635</th><td><i>    // Move over the elements that we're about to overwrite.</i></td></tr>
+<tr><th id="636">636</th><td>    T *<dfn class="local col0 decl" id="6540OldEnd" title='OldEnd' data-type='T *' data-ref="6540OldEnd">OldEnd</dfn> = <b>this</b>-&gt;end();</td></tr>
+<tr><th id="637">637</th><td>    <b>this</b>-&gt;setEnd(<b>this</b>-&gt;end() + <a class="local col8 ref" href="#6538NumToInsert" title='NumToInsert' data-ref="6538NumToInsert">NumToInsert</a>);</td></tr>
+<tr><th id="638">638</th><td>    <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col1 decl" id="6541NumOverwritten" title='NumOverwritten' data-type='size_t' data-ref="6541NumOverwritten">NumOverwritten</dfn> = <a class="local col0 ref" href="#6540OldEnd" title='OldEnd' data-ref="6540OldEnd">OldEnd</a>-<a class="local col4 ref" href="#6534I" title='I' data-ref="6534I">I</a>;</td></tr>
+<tr><th id="639">639</th><td>    <b>this</b>-&gt;uninitialized_move(<a class="local col4 ref" href="#6534I" title='I' data-ref="6534I">I</a>, <a class="local col0 ref" href="#6540OldEnd" title='OldEnd' data-ref="6540OldEnd">OldEnd</a>, <b>this</b>-&gt;end()-<a class="local col1 ref" href="#6541NumOverwritten" title='NumOverwritten' data-ref="6541NumOverwritten">NumOverwritten</a>);</td></tr>
+<tr><th id="640">640</th><td></td></tr>
+<tr><th id="641">641</th><td>    <i>// Replace the overwritten part.</i></td></tr>
+<tr><th id="642">642</th><td>    <b>for</b> (T *<dfn class="local col2 decl" id="6542J" title='J' data-type='T *' data-ref="6542J">J</dfn> = <a class="local col4 ref" href="#6534I" title='I' data-ref="6534I">I</a>; <a class="local col1 ref" href="#6541NumOverwritten" title='NumOverwritten' data-ref="6541NumOverwritten">NumOverwritten</a> &gt; <var>0</var>; --<a class="local col1 ref" href="#6541NumOverwritten" title='NumOverwritten' data-ref="6541NumOverwritten">NumOverwritten</a>) {</td></tr>
+<tr><th id="643">643</th><td>      *<a class="local col2 ref" href="#6542J" title='J' data-ref="6542J">J</a> = *<a class="local col5 ref" href="#6535From" title='From' data-ref="6535From">From</a>;</td></tr>
+<tr><th id="644">644</th><td>      ++<a class="local col2 ref" href="#6542J" title='J' data-ref="6542J">J</a>; ++<a class="local col5 ref" href="#6535From" title='From' data-ref="6535From">From</a>;</td></tr>
+<tr><th id="645">645</th><td>    }</td></tr>
+<tr><th id="646">646</th><td></td></tr>
+<tr><th id="647">647</th><td>    <i>// Insert the non-overwritten middle part.</i></td></tr>
+<tr><th id="648">648</th><td>    <b>this</b>-&gt;uninitialized_copy(<a class="local col5 ref" href="#6535From" title='From' data-ref="6535From">From</a>, <a class="local col6 ref" href="#6536To" title='To' data-ref="6536To">To</a>, <a class="local col0 ref" href="#6540OldEnd" title='OldEnd' data-ref="6540OldEnd">OldEnd</a>);</td></tr>
+<tr><th id="649">649</th><td>    <b>return</b> <a class="local col4 ref" href="#6534I" title='I' data-ref="6534I">I</a>;</td></tr>
+<tr><th id="650">650</th><td>  }</td></tr>
+<tr><th id="651">651</th><td></td></tr>
+<tr><th id="652">652</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm15SmallVectorImpl6insertENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE8iteratorESt16initializer_listIS2_E" title='llvm::SmallVectorImpl::insert' data-ref="_ZN4llvm15SmallVectorImpl6insertENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE8iteratorESt16initializer_listIS2_E">insert</dfn>(<a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a> <dfn class="local col3 decl" id="6543I" title='I' data-type='iterator' data-ref="6543I">I</dfn>, <span class="namespace">std::</span><a class="type" href="../../../c++/7/initializer_list.html#std::initializer_list" title='std::initializer_list' data-ref="std::initializer_list">initializer_list</a>&lt;T&gt; <dfn class="local col4 decl" id="6544IL" title='IL' data-type='std::initializer_list&lt;T&gt;' data-ref="6544IL">IL</dfn>) {</td></tr>
+<tr><th id="653">653</th><td>    insert(<a class="local col3 ref" href="#6543I" title='I' data-ref="6543I">I</a>, <a class="local col4 ref" href="#6544IL" title='IL' data-ref="6544IL">IL</a>.begin(), <a class="local col4 ref" href="#6544IL" title='IL' data-ref="6544IL">IL</a>.end());</td></tr>
+<tr><th id="654">654</th><td>  }</td></tr>
+<tr><th id="655">655</th><td></td></tr>
+<tr><th id="656">656</th><td>  <b>template</b> &lt;<b>typename</b>... ArgTypes&gt; <em>void</em> <dfn class="decl def" id="_ZN4llvm15SmallVectorImpl12emplace_backEDpOT_" title='llvm::SmallVectorImpl::emplace_back' data-ref="_ZN4llvm15SmallVectorImpl12emplace_backEDpOT_">emplace_back</dfn>(ArgTypes &amp;&amp;... <dfn class="local col5 decl" id="6545Args" title='Args' data-type='ArgTypes &amp;&amp;...' data-ref="6545Args">Args</dfn>) {</td></tr>
+<tr><th id="657">657</th><td>    <b>if</b> (<a class="macro" href="../Support/Compiler.h.html#173" title="__builtin_expect((bool)(this-&gt;EndX &gt;= this-&gt;CapacityX), false)" data-ref="_M/LLVM_UNLIKELY">LLVM_UNLIKELY</a>(<b>this</b>-&gt;EndX &gt;= <b>this</b>-&gt;CapacityX))</td></tr>
+<tr><th id="658">658</th><td>      <b>this</b>-&gt;grow();</td></tr>
+<tr><th id="659">659</th><td>    ::<b>new</b> ((<em>void</em> *)<b>this</b>-&gt;end()) T(<span class="namespace">std::</span>forward&lt;ArgTypes&gt;(<a class="local col5 ref" href="#6545Args" title='Args' data-ref="6545Args">Args</a>)...);</td></tr>
+<tr><th id="660">660</th><td>    <b>this</b>-&gt;setEnd(<b>this</b>-&gt;end() + <var>1</var>);</td></tr>
+<tr><th id="661">661</th><td>  }</td></tr>
+<tr><th id="662">662</th><td></td></tr>
+<tr><th id="663">663</th><td>  SmallVectorImpl &amp;<a class="decl" href="#_ZN4llvm15SmallVectorImplaSERKNS_15SmallVectorImplIT_EE" title='llvm::SmallVectorImpl::operator=' data-ref="_ZN4llvm15SmallVectorImplaSERKNS_15SmallVectorImplIT_EE"><b>operator</b>=</a>(<em>const</em> SmallVectorImpl &amp;<dfn class="local col6 decl" id="6546RHS" title='RHS' data-type='const SmallVectorImpl&lt;T&gt; &amp;' data-ref="6546RHS">RHS</dfn>);</td></tr>
+<tr><th id="664">664</th><td></td></tr>
+<tr><th id="665">665</th><td>  SmallVectorImpl &amp;<a class="decl" href="#_ZN4llvm15SmallVectorImplaSEONS_15SmallVectorImplIT_EE" title='llvm::SmallVectorImpl::operator=' data-ref="_ZN4llvm15SmallVectorImplaSEONS_15SmallVectorImplIT_EE"><b>operator</b>=</a>(SmallVectorImpl &amp;&amp;<dfn class="local col7 decl" id="6547RHS" title='RHS' data-type='SmallVectorImpl&lt;T&gt; &amp;&amp;' data-ref="6547RHS">RHS</dfn>);</td></tr>
+<tr><th id="666">666</th><td></td></tr>
+<tr><th id="667">667</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm15SmallVectorImpleqERKNS_15SmallVectorImplIT_EE" title='llvm::SmallVectorImpl::operator==' data-ref="_ZNK4llvm15SmallVectorImpleqERKNS_15SmallVectorImplIT_EE"><b>operator</b>==</dfn>(<em>const</em> SmallVectorImpl &amp;<dfn class="local col8 decl" id="6548RHS" title='RHS' data-type='const SmallVectorImpl&lt;T&gt; &amp;' data-ref="6548RHS">RHS</dfn>) <em>const</em> {</td></tr>
+<tr><th id="668">668</th><td>    <b>if</b> (<b>this</b>-&gt;size() != <a class="local col8 ref" href="#6548RHS" title='RHS' data-ref="6548RHS">RHS</a>.size()) <b>return</b> <b>false</b>;</td></tr>
+<tr><th id="669">669</th><td>    <b>return</b> <span class="namespace">std::</span>equal(<b>this</b>-&gt;begin(), <b>this</b>-&gt;end(), <a class="local col8 ref" href="#6548RHS" title='RHS' data-ref="6548RHS">RHS</a>.begin());</td></tr>
+<tr><th id="670">670</th><td>  }</td></tr>
+<tr><th id="671">671</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm15SmallVectorImplneERKNS_15SmallVectorImplIT_EE" title='llvm::SmallVectorImpl::operator!=' data-ref="_ZNK4llvm15SmallVectorImplneERKNS_15SmallVectorImplIT_EE"><b>operator</b>!=</dfn>(<em>const</em> SmallVectorImpl &amp;<dfn class="local col9 decl" id="6549RHS" title='RHS' data-type='const SmallVectorImpl&lt;T&gt; &amp;' data-ref="6549RHS">RHS</dfn>) <em>const</em> {</td></tr>
+<tr><th id="672">672</th><td>    <b>return</b> !(*<b>this</b> == <a class="local col9 ref" href="#6549RHS" title='RHS' data-ref="6549RHS">RHS</a>);</td></tr>
+<tr><th id="673">673</th><td>  }</td></tr>
+<tr><th id="674">674</th><td></td></tr>
+<tr><th id="675">675</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm15SmallVectorImplltERKNS_15SmallVectorImplIT_EE" title='llvm::SmallVectorImpl::operator&lt;' data-ref="_ZNK4llvm15SmallVectorImplltERKNS_15SmallVectorImplIT_EE"><b>operator</b>&lt;</dfn>(<em>const</em> SmallVectorImpl &amp;<dfn class="local col0 decl" id="6550RHS" title='RHS' data-type='const SmallVectorImpl&lt;T&gt; &amp;' data-ref="6550RHS">RHS</dfn>) <em>const</em> {</td></tr>
+<tr><th id="676">676</th><td>    <b>return</b> <span class="namespace">std::</span>lexicographical_compare(<b>this</b>-&gt;begin(), <b>this</b>-&gt;end(),</td></tr>
+<tr><th id="677">677</th><td>                                        <a class="local col0 ref" href="#6550RHS" title='RHS' data-ref="6550RHS">RHS</a>.begin(), <a class="local col0 ref" href="#6550RHS" title='RHS' data-ref="6550RHS">RHS</a>.end());</td></tr>
+<tr><th id="678">678</th><td>  }</td></tr>
+<tr><th id="679">679</th><td></td></tr>
+<tr><th id="680">680</th><td>  <i class="doc">/// Set the array size to<span class="command"> \p</span> <span class="arg">N,</span> which the current array must have enough</i></td></tr>
+<tr><th id="681">681</th><td><i class="doc">  /// capacity for.</i></td></tr>
+<tr><th id="682">682</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="683">683</th><td><i class="doc">  /// This does not construct or destroy any elements in the vector.</i></td></tr>
+<tr><th id="684">684</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="685">685</th><td><i class="doc">  /// Clients can use this in conjunction with capacity() to write past the end</i></td></tr>
+<tr><th id="686">686</th><td><i class="doc">  /// of the buffer when they know that more elements are available, and only</i></td></tr>
+<tr><th id="687">687</th><td><i class="doc">  /// update the size later. This avoids the cost of value initializing elements</i></td></tr>
+<tr><th id="688">688</th><td><i class="doc">  /// which will only be overwritten.</i></td></tr>
+<tr><th id="689">689</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm15SmallVectorImpl8set_sizeENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE9size_typeE" title='llvm::SmallVectorImpl::set_size' data-ref="_ZN4llvm15SmallVectorImpl8set_sizeENS_23SmallVectorTemplateBaseIT_Xsr9isPodLikeIS2_EE5valueEE9size_typeE">set_size</dfn>(<a class="typedef" href="#llvm::SmallVectorImpl::size_type" title='llvm::SmallVectorImpl::size_type' data-type='typename SuperClass::size_type' data-ref="llvm::SmallVectorImpl::size_type">size_type</a> <dfn class="local col1 decl" id="6551N" title='N' data-type='size_type' data-ref="6551N">N</dfn>) {</td></tr>
+<tr><th id="690">690</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(N &lt;= <b>this</b>-&gt;capacity());</td></tr>
+<tr><th id="691">691</th><td>    <b>this</b>-&gt;setEnd(<b>this</b>-&gt;begin() + <a class="local col1 ref" href="#6551N" title='N' data-ref="6551N">N</a>);</td></tr>
+<tr><th id="692">692</th><td>  }</td></tr>
+<tr><th id="693">693</th><td>};</td></tr>
+<tr><th id="694">694</th><td></td></tr>
+<tr><th id="695">695</th><td><b>template</b> &lt;<b>typename</b> T&gt;</td></tr>
+<tr><th id="696">696</th><td><em>void</em> <a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt;::<dfn class="decl def" id="_ZN4llvm15SmallVectorImpl4swapERNS_15SmallVectorImplIT_EE" title='llvm::SmallVectorImpl::swap' data-ref="_ZN4llvm15SmallVectorImpl4swapERNS_15SmallVectorImplIT_EE">swap</dfn>(<a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt; &amp;<dfn class="local col2 decl" id="6552RHS" title='RHS' data-type='SmallVectorImpl&lt;T&gt; &amp;' data-ref="6552RHS">RHS</dfn>) {</td></tr>
+<tr><th id="697">697</th><td>  <b>if</b> (<b>this</b> == &amp;<a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>) <b>return</b>;</td></tr>
+<tr><th id="698">698</th><td></td></tr>
+<tr><th id="699">699</th><td>  <i>// We can only avoid copying elements if neither vector is small.</i></td></tr>
+<tr><th id="700">700</th><td>  <b>if</b> (!<b>this</b>-&gt;isSmall() &amp;&amp; !<a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>.isSmall()) {</td></tr>
+<tr><th id="701">701</th><td>    <span class="namespace">std::</span>swap(<b>this</b>-&gt;BeginX, <a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>.BeginX);</td></tr>
+<tr><th id="702">702</th><td>    <span class="namespace">std::</span>swap(<b>this</b>-&gt;EndX, <a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>.EndX);</td></tr>
+<tr><th id="703">703</th><td>    <span class="namespace">std::</span>swap(<b>this</b>-&gt;CapacityX, <a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>.CapacityX);</td></tr>
+<tr><th id="704">704</th><td>    <b>return</b>;</td></tr>
+<tr><th id="705">705</th><td>  }</td></tr>
+<tr><th id="706">706</th><td>  <b>if</b> (<a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>.size() &gt; <b>this</b>-&gt;capacity())</td></tr>
+<tr><th id="707">707</th><td>    <b>this</b>-&gt;grow(<a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>.size());</td></tr>
+<tr><th id="708">708</th><td>  <b>if</b> (<b>this</b>-&gt;size() &gt; <a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>.capacity())</td></tr>
+<tr><th id="709">709</th><td>    <a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>.grow(<b>this</b>-&gt;size());</td></tr>
+<tr><th id="710">710</th><td></td></tr>
+<tr><th id="711">711</th><td>  <i>// Swap the shared elements.</i></td></tr>
+<tr><th id="712">712</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col3 decl" id="6553NumShared" title='NumShared' data-type='size_t' data-ref="6553NumShared">NumShared</dfn> = <b>this</b>-&gt;size();</td></tr>
+<tr><th id="713">713</th><td>  <b>if</b> (<a class="local col3 ref" href="#6553NumShared" title='NumShared' data-ref="6553NumShared">NumShared</a> &gt; <a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>.size()) <a class="local col3 ref" href="#6553NumShared" title='NumShared' data-ref="6553NumShared">NumShared</a> = <a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>.size();</td></tr>
+<tr><th id="714">714</th><td>  <b>for</b> (<a class="typedef" href="#llvm::SmallVectorImpl::size_type" title='llvm::SmallVectorImpl::size_type' data-type='typename SuperClass::size_type' data-ref="llvm::SmallVectorImpl::size_type">size_type</a> <dfn class="local col4 decl" id="6554i" title='i' data-type='size_type' data-ref="6554i">i</dfn> = <var>0</var>; <a class="local col4 ref" href="#6554i" title='i' data-ref="6554i">i</a> != <a class="local col3 ref" href="#6553NumShared" title='NumShared' data-ref="6553NumShared">NumShared</a>; ++<a class="local col4 ref" href="#6554i" title='i' data-ref="6554i">i</a>)</td></tr>
+<tr><th id="715">715</th><td>    <span class="namespace">std::</span>swap((*<b>this</b>)[<a class="local col4 ref" href="#6554i" title='i' data-ref="6554i">i</a>], <a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>[<a class="local col4 ref" href="#6554i" title='i' data-ref="6554i">i</a>]);</td></tr>
+<tr><th id="716">716</th><td></td></tr>
+<tr><th id="717">717</th><td>  <i>// Copy over the extra elts.</i></td></tr>
+<tr><th id="718">718</th><td>  <b>if</b> (<b>this</b>-&gt;size() &gt; <a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>.size()) {</td></tr>
+<tr><th id="719">719</th><td>    <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col5 decl" id="6555EltDiff" title='EltDiff' data-type='size_t' data-ref="6555EltDiff">EltDiff</dfn> = <b>this</b>-&gt;size() - <a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>.size();</td></tr>
+<tr><th id="720">720</th><td>    <b>this</b>-&gt;uninitialized_copy(<b>this</b>-&gt;begin()+<a class="local col3 ref" href="#6553NumShared" title='NumShared' data-ref="6553NumShared">NumShared</a>, <b>this</b>-&gt;end(), <a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>.end());</td></tr>
+<tr><th id="721">721</th><td>    <a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>.setEnd(<a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>.end()+<a class="local col5 ref" href="#6555EltDiff" title='EltDiff' data-ref="6555EltDiff">EltDiff</a>);</td></tr>
+<tr><th id="722">722</th><td>    <b>this</b>-&gt;destroy_range(<b>this</b>-&gt;begin()+<a class="local col3 ref" href="#6553NumShared" title='NumShared' data-ref="6553NumShared">NumShared</a>, <b>this</b>-&gt;end());</td></tr>
+<tr><th id="723">723</th><td>    <b>this</b>-&gt;setEnd(<b>this</b>-&gt;begin()+<a class="local col3 ref" href="#6553NumShared" title='NumShared' data-ref="6553NumShared">NumShared</a>);</td></tr>
+<tr><th id="724">724</th><td>  } <b>else</b> <b>if</b> (<a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>.size() &gt; <b>this</b>-&gt;size()) {</td></tr>
+<tr><th id="725">725</th><td>    <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col6 decl" id="6556EltDiff" title='EltDiff' data-type='size_t' data-ref="6556EltDiff">EltDiff</dfn> = <a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>.size() - <b>this</b>-&gt;size();</td></tr>
+<tr><th id="726">726</th><td>    <b>this</b>-&gt;uninitialized_copy(<a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>.begin()+<a class="local col3 ref" href="#6553NumShared" title='NumShared' data-ref="6553NumShared">NumShared</a>, <a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>.end(), <b>this</b>-&gt;end());</td></tr>
+<tr><th id="727">727</th><td>    <b>this</b>-&gt;setEnd(<b>this</b>-&gt;end() + <a class="local col6 ref" href="#6556EltDiff" title='EltDiff' data-ref="6556EltDiff">EltDiff</a>);</td></tr>
+<tr><th id="728">728</th><td>    <b>this</b>-&gt;destroy_range(<a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>.begin()+<a class="local col3 ref" href="#6553NumShared" title='NumShared' data-ref="6553NumShared">NumShared</a>, <a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>.end());</td></tr>
+<tr><th id="729">729</th><td>    <a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>.setEnd(<a class="local col2 ref" href="#6552RHS" title='RHS' data-ref="6552RHS">RHS</a>.begin()+<a class="local col3 ref" href="#6553NumShared" title='NumShared' data-ref="6553NumShared">NumShared</a>);</td></tr>
+<tr><th id="730">730</th><td>  }</td></tr>
+<tr><th id="731">731</th><td>}</td></tr>
+<tr><th id="732">732</th><td></td></tr>
+<tr><th id="733">733</th><td><b>template</b> &lt;<b>typename</b> T&gt;</td></tr>
+<tr><th id="734">734</th><td><a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt; &amp;<a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt;::</td></tr>
+<tr><th id="735">735</th><td>  <dfn class="decl def" id="_ZN4llvm15SmallVectorImplaSERKNS_15SmallVectorImplIT_EE" title='llvm::SmallVectorImpl::operator=' data-ref="_ZN4llvm15SmallVectorImplaSERKNS_15SmallVectorImplIT_EE"><b>operator</b>=</dfn>(<em>const</em> <a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt; &amp;<dfn class="local col7 decl" id="6557RHS" title='RHS' data-type='const SmallVectorImpl&lt;T&gt; &amp;' data-ref="6557RHS">RHS</dfn>) {</td></tr>
+<tr><th id="736">736</th><td>  <i>// Avoid self-assignment.</i></td></tr>
+<tr><th id="737">737</th><td>  <b>if</b> (<b>this</b> == &amp;<a class="local col7 ref" href="#6557RHS" title='RHS' data-ref="6557RHS">RHS</a>) <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="738">738</th><td></td></tr>
+<tr><th id="739">739</th><td>  <i>// If we already have sufficient space, assign the common elements, then</i></td></tr>
+<tr><th id="740">740</th><td><i>  // destroy any excess.</i></td></tr>
+<tr><th id="741">741</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col8 decl" id="6558RHSSize" title='RHSSize' data-type='size_t' data-ref="6558RHSSize">RHSSize</dfn> = <a class="local col7 ref" href="#6557RHS" title='RHS' data-ref="6557RHS">RHS</a>.size();</td></tr>
+<tr><th id="742">742</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col9 decl" id="6559CurSize" title='CurSize' data-type='size_t' data-ref="6559CurSize">CurSize</dfn> = <b>this</b>-&gt;size();</td></tr>
+<tr><th id="743">743</th><td>  <b>if</b> (<a class="local col9 ref" href="#6559CurSize" title='CurSize' data-ref="6559CurSize">CurSize</a> &gt;= <a class="local col8 ref" href="#6558RHSSize" title='RHSSize' data-ref="6558RHSSize">RHSSize</a>) {</td></tr>
+<tr><th id="744">744</th><td>    <i>// Assign common elements.</i></td></tr>
+<tr><th id="745">745</th><td>    <a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a> <dfn class="local col0 decl" id="6560NewEnd" title='NewEnd' data-type='iterator' data-ref="6560NewEnd">NewEnd</dfn>;</td></tr>
+<tr><th id="746">746</th><td>    <b>if</b> (<a class="local col8 ref" href="#6558RHSSize" title='RHSSize' data-ref="6558RHSSize">RHSSize</a>)</td></tr>
+<tr><th id="747">747</th><td>      <a class="local col0 ref" href="#6560NewEnd" title='NewEnd' data-ref="6560NewEnd">NewEnd</a> = <span class="namespace">std::</span>copy(<a class="local col7 ref" href="#6557RHS" title='RHS' data-ref="6557RHS">RHS</a>.begin(), <a class="local col7 ref" href="#6557RHS" title='RHS' data-ref="6557RHS">RHS</a>.begin()+<a class="local col8 ref" href="#6558RHSSize" title='RHSSize' data-ref="6558RHSSize">RHSSize</a>, <b>this</b>-&gt;begin());</td></tr>
+<tr><th id="748">748</th><td>    <b>else</b></td></tr>
+<tr><th id="749">749</th><td>      <a class="local col0 ref" href="#6560NewEnd" title='NewEnd' data-ref="6560NewEnd">NewEnd</a> = <b>this</b>-&gt;begin();</td></tr>
+<tr><th id="750">750</th><td></td></tr>
+<tr><th id="751">751</th><td>    <i>// Destroy excess elements.</i></td></tr>
+<tr><th id="752">752</th><td>    <b>this</b>-&gt;destroy_range(<a class="local col0 ref" href="#6560NewEnd" title='NewEnd' data-ref="6560NewEnd">NewEnd</a>, <b>this</b>-&gt;end());</td></tr>
+<tr><th id="753">753</th><td></td></tr>
+<tr><th id="754">754</th><td>    <i>// Trim.</i></td></tr>
+<tr><th id="755">755</th><td>    <b>this</b>-&gt;setEnd(<a class="local col0 ref" href="#6560NewEnd" title='NewEnd' data-ref="6560NewEnd">NewEnd</a>);</td></tr>
+<tr><th id="756">756</th><td>    <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="757">757</th><td>  }</td></tr>
+<tr><th id="758">758</th><td></td></tr>
+<tr><th id="759">759</th><td>  <i>// If we have to grow to have enough elements, destroy the current elements.</i></td></tr>
+<tr><th id="760">760</th><td><i>  // This allows us to avoid copying them during the grow.</i></td></tr>
+<tr><th id="761">761</th><td><i>  // FIXME: don't do this if they're efficiently moveable.</i></td></tr>
+<tr><th id="762">762</th><td>  <b>if</b> (<b>this</b>-&gt;capacity() &lt; <a class="local col8 ref" href="#6558RHSSize" title='RHSSize' data-ref="6558RHSSize">RHSSize</a>) {</td></tr>
+<tr><th id="763">763</th><td>    <i>// Destroy current elements.</i></td></tr>
+<tr><th id="764">764</th><td>    <b>this</b>-&gt;destroy_range(<b>this</b>-&gt;begin(), <b>this</b>-&gt;end());</td></tr>
+<tr><th id="765">765</th><td>    <b>this</b>-&gt;setEnd(<b>this</b>-&gt;begin());</td></tr>
+<tr><th id="766">766</th><td>    <a class="local col9 ref" href="#6559CurSize" title='CurSize' data-ref="6559CurSize">CurSize</a> = <var>0</var>;</td></tr>
+<tr><th id="767">767</th><td>    <b>this</b>-&gt;grow(<a class="local col8 ref" href="#6558RHSSize" title='RHSSize' data-ref="6558RHSSize">RHSSize</a>);</td></tr>
+<tr><th id="768">768</th><td>  } <b>else</b> <b>if</b> (<a class="local col9 ref" href="#6559CurSize" title='CurSize' data-ref="6559CurSize">CurSize</a>) {</td></tr>
+<tr><th id="769">769</th><td>    <i>// Otherwise, use assignment for the already-constructed elements.</i></td></tr>
+<tr><th id="770">770</th><td>    <span class="namespace">std::</span>copy(<a class="local col7 ref" href="#6557RHS" title='RHS' data-ref="6557RHS">RHS</a>.begin(), <a class="local col7 ref" href="#6557RHS" title='RHS' data-ref="6557RHS">RHS</a>.begin()+<a class="local col9 ref" href="#6559CurSize" title='CurSize' data-ref="6559CurSize">CurSize</a>, <b>this</b>-&gt;begin());</td></tr>
+<tr><th id="771">771</th><td>  }</td></tr>
+<tr><th id="772">772</th><td></td></tr>
+<tr><th id="773">773</th><td>  <i>// Copy construct the new elements in place.</i></td></tr>
+<tr><th id="774">774</th><td>  <b>this</b>-&gt;uninitialized_copy(<a class="local col7 ref" href="#6557RHS" title='RHS' data-ref="6557RHS">RHS</a>.begin()+<a class="local col9 ref" href="#6559CurSize" title='CurSize' data-ref="6559CurSize">CurSize</a>, <a class="local col7 ref" href="#6557RHS" title='RHS' data-ref="6557RHS">RHS</a>.end(),</td></tr>
+<tr><th id="775">775</th><td>                           <b>this</b>-&gt;begin()+<a class="local col9 ref" href="#6559CurSize" title='CurSize' data-ref="6559CurSize">CurSize</a>);</td></tr>
+<tr><th id="776">776</th><td></td></tr>
+<tr><th id="777">777</th><td>  <i>// Set end.</i></td></tr>
+<tr><th id="778">778</th><td>  <b>this</b>-&gt;setEnd(<b>this</b>-&gt;begin()+<a class="local col8 ref" href="#6558RHSSize" title='RHSSize' data-ref="6558RHSSize">RHSSize</a>);</td></tr>
+<tr><th id="779">779</th><td>  <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="780">780</th><td>}</td></tr>
+<tr><th id="781">781</th><td></td></tr>
+<tr><th id="782">782</th><td><b>template</b> &lt;<b>typename</b> T&gt;</td></tr>
+<tr><th id="783">783</th><td><a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt; &amp;<a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt;::<dfn class="decl def" id="_ZN4llvm15SmallVectorImplaSEONS_15SmallVectorImplIT_EE" title='llvm::SmallVectorImpl::operator=' data-ref="_ZN4llvm15SmallVectorImplaSEONS_15SmallVectorImplIT_EE"><b>operator</b>=</dfn>(<a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt; &amp;&amp;<dfn class="local col1 decl" id="6561RHS" title='RHS' data-type='SmallVectorImpl&lt;T&gt; &amp;&amp;' data-ref="6561RHS">RHS</dfn>) {</td></tr>
+<tr><th id="784">784</th><td>  <i>// Avoid self-assignment.</i></td></tr>
+<tr><th id="785">785</th><td>  <b>if</b> (<b>this</b> == &amp;<a class="local col1 ref" href="#6561RHS" title='RHS' data-ref="6561RHS">RHS</a>) <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="786">786</th><td></td></tr>
+<tr><th id="787">787</th><td>  <i>// If the RHS isn't small, clear this vector and then steal its buffer.</i></td></tr>
+<tr><th id="788">788</th><td>  <b>if</b> (!<a class="local col1 ref" href="#6561RHS" title='RHS' data-ref="6561RHS">RHS</a>.isSmall()) {</td></tr>
+<tr><th id="789">789</th><td>    <b>this</b>-&gt;destroy_range(<b>this</b>-&gt;begin(), <b>this</b>-&gt;end());</td></tr>
+<tr><th id="790">790</th><td>    <b>if</b> (!<b>this</b>-&gt;isSmall()) free(<b>this</b>-&gt;begin());</td></tr>
+<tr><th id="791">791</th><td>    <b>this</b>-&gt;BeginX = <a class="local col1 ref" href="#6561RHS" title='RHS' data-ref="6561RHS">RHS</a>.BeginX;</td></tr>
+<tr><th id="792">792</th><td>    <b>this</b>-&gt;EndX = <a class="local col1 ref" href="#6561RHS" title='RHS' data-ref="6561RHS">RHS</a>.EndX;</td></tr>
+<tr><th id="793">793</th><td>    <b>this</b>-&gt;CapacityX = <a class="local col1 ref" href="#6561RHS" title='RHS' data-ref="6561RHS">RHS</a>.CapacityX;</td></tr>
+<tr><th id="794">794</th><td>    <a class="local col1 ref" href="#6561RHS" title='RHS' data-ref="6561RHS">RHS</a>.resetToSmall();</td></tr>
+<tr><th id="795">795</th><td>    <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="796">796</th><td>  }</td></tr>
+<tr><th id="797">797</th><td></td></tr>
+<tr><th id="798">798</th><td>  <i>// If we already have sufficient space, assign the common elements, then</i></td></tr>
+<tr><th id="799">799</th><td><i>  // destroy any excess.</i></td></tr>
+<tr><th id="800">800</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col2 decl" id="6562RHSSize" title='RHSSize' data-type='size_t' data-ref="6562RHSSize">RHSSize</dfn> = <a class="local col1 ref" href="#6561RHS" title='RHS' data-ref="6561RHS">RHS</a>.size();</td></tr>
+<tr><th id="801">801</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col3 decl" id="6563CurSize" title='CurSize' data-type='size_t' data-ref="6563CurSize">CurSize</dfn> = <b>this</b>-&gt;size();</td></tr>
+<tr><th id="802">802</th><td>  <b>if</b> (<a class="local col3 ref" href="#6563CurSize" title='CurSize' data-ref="6563CurSize">CurSize</a> &gt;= <a class="local col2 ref" href="#6562RHSSize" title='RHSSize' data-ref="6562RHSSize">RHSSize</a>) {</td></tr>
+<tr><th id="803">803</th><td>    <i>// Assign common elements.</i></td></tr>
+<tr><th id="804">804</th><td>    <a class="typedef" href="#llvm::SmallVectorImpl::iterator" title='llvm::SmallVectorImpl::iterator' data-type='typename SuperClass::iterator' data-ref="llvm::SmallVectorImpl::iterator">iterator</a> <dfn class="local col4 decl" id="6564NewEnd" title='NewEnd' data-type='iterator' data-ref="6564NewEnd">NewEnd</dfn> = <b>this</b>-&gt;begin();</td></tr>
+<tr><th id="805">805</th><td>    <b>if</b> (<a class="local col2 ref" href="#6562RHSSize" title='RHSSize' data-ref="6562RHSSize">RHSSize</a>)</td></tr>
+<tr><th id="806">806</th><td>      <a class="local col4 ref" href="#6564NewEnd" title='NewEnd' data-ref="6564NewEnd">NewEnd</a> = <span class="namespace">std::</span>move(<a class="local col1 ref" href="#6561RHS" title='RHS' data-ref="6561RHS">RHS</a>.begin(), <a class="local col1 ref" href="#6561RHS" title='RHS' data-ref="6561RHS">RHS</a>.end(), <a class="local col4 ref" href="#6564NewEnd" title='NewEnd' data-ref="6564NewEnd">NewEnd</a>);</td></tr>
+<tr><th id="807">807</th><td></td></tr>
+<tr><th id="808">808</th><td>    <i>// Destroy excess elements and trim the bounds.</i></td></tr>
+<tr><th id="809">809</th><td>    <b>this</b>-&gt;destroy_range(<a class="local col4 ref" href="#6564NewEnd" title='NewEnd' data-ref="6564NewEnd">NewEnd</a>, <b>this</b>-&gt;end());</td></tr>
+<tr><th id="810">810</th><td>    <b>this</b>-&gt;setEnd(<a class="local col4 ref" href="#6564NewEnd" title='NewEnd' data-ref="6564NewEnd">NewEnd</a>);</td></tr>
+<tr><th id="811">811</th><td></td></tr>
+<tr><th id="812">812</th><td>    <i>// Clear the RHS.</i></td></tr>
+<tr><th id="813">813</th><td>    <a class="local col1 ref" href="#6561RHS" title='RHS' data-ref="6561RHS">RHS</a>.clear();</td></tr>
+<tr><th id="814">814</th><td></td></tr>
+<tr><th id="815">815</th><td>    <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="816">816</th><td>  }</td></tr>
+<tr><th id="817">817</th><td></td></tr>
+<tr><th id="818">818</th><td>  <i>// If we have to grow to have enough elements, destroy the current elements.</i></td></tr>
+<tr><th id="819">819</th><td><i>  // This allows us to avoid copying them during the grow.</i></td></tr>
+<tr><th id="820">820</th><td><i>  // FIXME: this may not actually make any sense if we can efficiently move</i></td></tr>
+<tr><th id="821">821</th><td><i>  // elements.</i></td></tr>
+<tr><th id="822">822</th><td>  <b>if</b> (<b>this</b>-&gt;capacity() &lt; <a class="local col2 ref" href="#6562RHSSize" title='RHSSize' data-ref="6562RHSSize">RHSSize</a>) {</td></tr>
+<tr><th id="823">823</th><td>    <i>// Destroy current elements.</i></td></tr>
+<tr><th id="824">824</th><td>    <b>this</b>-&gt;destroy_range(<b>this</b>-&gt;begin(), <b>this</b>-&gt;end());</td></tr>
+<tr><th id="825">825</th><td>    <b>this</b>-&gt;setEnd(<b>this</b>-&gt;begin());</td></tr>
+<tr><th id="826">826</th><td>    <a class="local col3 ref" href="#6563CurSize" title='CurSize' data-ref="6563CurSize">CurSize</a> = <var>0</var>;</td></tr>
+<tr><th id="827">827</th><td>    <b>this</b>-&gt;grow(<a class="local col2 ref" href="#6562RHSSize" title='RHSSize' data-ref="6562RHSSize">RHSSize</a>);</td></tr>
+<tr><th id="828">828</th><td>  } <b>else</b> <b>if</b> (<a class="local col3 ref" href="#6563CurSize" title='CurSize' data-ref="6563CurSize">CurSize</a>) {</td></tr>
+<tr><th id="829">829</th><td>    <i>// Otherwise, use assignment for the already-constructed elements.</i></td></tr>
+<tr><th id="830">830</th><td>    <span class="namespace">std::</span>move(<a class="local col1 ref" href="#6561RHS" title='RHS' data-ref="6561RHS">RHS</a>.begin(), <a class="local col1 ref" href="#6561RHS" title='RHS' data-ref="6561RHS">RHS</a>.begin()+<a class="local col3 ref" href="#6563CurSize" title='CurSize' data-ref="6563CurSize">CurSize</a>, <b>this</b>-&gt;begin());</td></tr>
+<tr><th id="831">831</th><td>  }</td></tr>
+<tr><th id="832">832</th><td></td></tr>
+<tr><th id="833">833</th><td>  <i>// Move-construct the new elements in place.</i></td></tr>
+<tr><th id="834">834</th><td>  <b>this</b>-&gt;uninitialized_move(<a class="local col1 ref" href="#6561RHS" title='RHS' data-ref="6561RHS">RHS</a>.begin()+<a class="local col3 ref" href="#6563CurSize" title='CurSize' data-ref="6563CurSize">CurSize</a>, <a class="local col1 ref" href="#6561RHS" title='RHS' data-ref="6561RHS">RHS</a>.end(),</td></tr>
+<tr><th id="835">835</th><td>                           <b>this</b>-&gt;begin()+<a class="local col3 ref" href="#6563CurSize" title='CurSize' data-ref="6563CurSize">CurSize</a>);</td></tr>
+<tr><th id="836">836</th><td></td></tr>
+<tr><th id="837">837</th><td>  <i>// Set end.</i></td></tr>
+<tr><th id="838">838</th><td>  <b>this</b>-&gt;setEnd(<b>this</b>-&gt;begin()+<a class="local col2 ref" href="#6562RHSSize" title='RHSSize' data-ref="6562RHSSize">RHSSize</a>);</td></tr>
+<tr><th id="839">839</th><td></td></tr>
+<tr><th id="840">840</th><td>  <a class="local col1 ref" href="#6561RHS" title='RHS' data-ref="6561RHS">RHS</a>.clear();</td></tr>
+<tr><th id="841">841</th><td>  <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="842">842</th><td>}</td></tr>
+<tr><th id="843">843</th><td></td></tr>
+<tr><th id="844">844</th><td><i class="doc">/// Storage for the SmallVector elements which aren't contained in</i></td></tr>
+<tr><th id="845">845</th><td><i class="doc">/// SmallVectorTemplateCommon. There are 'N-1' elements here. The remaining '1'</i></td></tr>
+<tr><th id="846">846</th><td><i class="doc">/// element is in the base class. This is specialized for the N=1 and N=0 cases</i></td></tr>
+<tr><th id="847">847</th><td><i class="doc">/// to avoid allocating unnecessary storage.</i></td></tr>
+<tr><th id="848">848</th><td><b>template</b> &lt;<b>typename</b> T, <em>unsigned</em> N&gt;</td></tr>
+<tr><th id="849">849</th><td><b>struct</b> <dfn class="type def" id="llvm::SmallVectorStorage" title='llvm::SmallVectorStorage' data-ref="llvm::SmallVectorStorage">SmallVectorStorage</dfn> {</td></tr>
+<tr><th id="850">850</th><td>  <b>typename</b> <a class="type" href="#llvm::SmallVectorTemplateCommon" title='llvm::SmallVectorTemplateCommon' data-ref="llvm::SmallVectorTemplateCommon">SmallVectorTemplateCommon</a>&lt;T&gt;::U <dfn class="decl" id="llvm::SmallVectorStorage::InlineElts" title='llvm::SmallVectorStorage::InlineElts' data-ref="llvm::SmallVectorStorage::InlineElts">InlineElts</dfn>[<a class="tu ref" href="#llvm::SmallVectorStorage::N" title='llvm::SmallVectorStorage::N' data-use='r' data-ref="llvm::SmallVectorStorage::N">N</a> - <var>1</var>];</td></tr>
+<tr><th id="851">851</th><td>};</td></tr>
+<tr><th id="852">852</th><td><b>template</b> &lt;<b>typename</b> T&gt; <b>struct</b> <dfn class="type def" id="llvm::SmallVectorStorage" title='llvm::SmallVectorStorage' data-ref="llvm::SmallVectorStorage">SmallVectorStorage</dfn>&lt;T, <var>1</var>&gt; {};</td></tr>
+<tr><th id="853">853</th><td><b>template</b> &lt;<b>typename</b> T&gt; <b>struct</b> <dfn class="type def" id="llvm::SmallVectorStorage" title='llvm::SmallVectorStorage' data-ref="llvm::SmallVectorStorage">SmallVectorStorage</dfn>&lt;T, <var>0</var>&gt; {};</td></tr>
+<tr><th id="854">854</th><td></td></tr>
+<tr><th id="855">855</th><td><i class="doc">/// This is a 'vector' (really, a variable-sized array), optimized</i></td></tr>
+<tr><th id="856">856</th><td><i class="doc">/// for the case when the array is small.  It contains some number of elements</i></td></tr>
+<tr><th id="857">857</th><td><i class="doc">/// in-place, which allows it to avoid heap allocation when the actual number of</i></td></tr>
+<tr><th id="858">858</th><td><i class="doc">/// elements is below that threshold.  This allows normal "small" cases to be</i></td></tr>
+<tr><th id="859">859</th><td><i class="doc">/// fast without losing generality for large inputs.</i></td></tr>
+<tr><th id="860">860</th><td><i class="doc">///</i></td></tr>
+<tr><th id="861">861</th><td><i class="doc">/// Note that this does not attempt to be exception safe.</i></td></tr>
+<tr><th id="862">862</th><td><i class="doc">///</i></td></tr>
+<tr><th id="863">863</th><td><b>template</b> &lt;<b>typename</b> T, <em>unsigned</em> N&gt;</td></tr>
+<tr><th id="864">864</th><td><b>class</b> <dfn class="type def" id="llvm::SmallVector" title='llvm::SmallVector' data-ref="llvm::SmallVector">SmallVector</dfn> : <b>public</b> <a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt; {</td></tr>
+<tr><th id="865">865</th><td>  <i class="doc">/// Inline space for elements which aren't stored in the base class.</i></td></tr>
+<tr><th id="866">866</th><td>  <a class="type" href="#llvm::SmallVectorStorage" title='llvm::SmallVectorStorage' data-ref="llvm::SmallVectorStorage">SmallVectorStorage</a>&lt;T, <a class="tu ref" href="#llvm::SmallVector::N" title='llvm::SmallVector::N' data-ref="llvm::SmallVector::N">N</a>&gt; <dfn class="decl" id="llvm::SmallVector::Storage" title='llvm::SmallVector::Storage' data-ref="llvm::SmallVector::Storage">Storage</dfn>;</td></tr>
+<tr><th id="867">867</th><td></td></tr>
+<tr><th id="868">868</th><td><b>public</b>:</td></tr>
+<tr><th id="869">869</th><td>  <dfn class="decl def" id="_ZN4llvm11SmallVectorC1Ev" title='llvm::SmallVector::SmallVector&lt;T, N&gt;' data-ref="_ZN4llvm11SmallVectorC1Ev">SmallVector</dfn>() : <a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt;(<a class="tu member" href="#llvm::SmallVector::N" title='llvm::SmallVector::N' data-use='r' data-ref="llvm::SmallVector::N">N</a>) {}</td></tr>
+<tr><th id="870">870</th><td></td></tr>
+<tr><th id="871">871</th><td>  <b>explicit</b> <dfn class="decl def" id="_ZN4llvm11SmallVectorC1EmRKT_" title='llvm::SmallVector::SmallVector&lt;T, N&gt;' data-ref="_ZN4llvm11SmallVectorC1EmRKT_">SmallVector</dfn>(<span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col5 decl" id="6565Size" title='Size' data-type='size_t' data-ref="6565Size">Size</dfn>, <em>const</em> T &amp;<dfn class="local col6 decl" id="6566Value" title='Value' data-type='const T &amp;' data-ref="6566Value">Value</dfn> = T())</td></tr>
+<tr><th id="872">872</th><td>    : <a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt;(<a class="tu member" href="#llvm::SmallVector::N" title='llvm::SmallVector::N' data-use='r' data-ref="llvm::SmallVector::N">N</a>) {</td></tr>
+<tr><th id="873">873</th><td>    <b>this</b>-&gt;assign(<a class="local col5 ref" href="#6565Size" title='Size' data-ref="6565Size">Size</a>, <a class="local col6 ref" href="#6566Value" title='Value' data-ref="6566Value">Value</a>);</td></tr>
+<tr><th id="874">874</th><td>  }</td></tr>
+<tr><th id="875">875</th><td></td></tr>
+<tr><th id="876">876</th><td>  <b>template</b> &lt;<b>typename</b> ItTy,</td></tr>
+<tr><th id="877">877</th><td>            <b>typename</b> = <b>typename</b> <span class="namespace">std::</span><a class="type" href="../../../c++/7/type_traits.html#std::enable_if" title='std::enable_if' data-ref="std::enable_if">enable_if</a>&lt;<span class="namespace">std::</span><a class="type" href="../../../c++/7/type_traits.html#std::is_convertible" title='std::is_convertible' data-ref="std::is_convertible">is_convertible</a>&lt;</td></tr>
+<tr><th id="878">878</th><td>                <b>typename</b> <span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/stl_iterator_base_types.h.html#std::iterator_traits" title='std::iterator_traits' data-ref="std::iterator_traits">iterator_traits</a>&lt;ItTy&gt;::iterator_category,</td></tr>
+<tr><th id="879">879</th><td>                <span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/stl_iterator_base_types.h.html#std::input_iterator_tag" title='std::input_iterator_tag' data-ref="std::input_iterator_tag">input_iterator_tag</a>&gt;::value&gt;::type&gt;</td></tr>
+<tr><th id="880">880</th><td>  <dfn class="decl def" id="_ZN4llvm11SmallVectorC1ET_S1_" title='llvm::SmallVector::SmallVector&lt;T, N&gt;' data-ref="_ZN4llvm11SmallVectorC1ET_S1_">SmallVector</dfn>(ItTy <dfn class="local col7 decl" id="6567S" title='S' data-type='ItTy' data-ref="6567S">S</dfn>, ItTy <dfn class="local col8 decl" id="6568E" title='E' data-type='ItTy' data-ref="6568E">E</dfn>) : <a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt;(<a class="tu member" href="#llvm::SmallVector::N" title='llvm::SmallVector::N' data-use='r' data-ref="llvm::SmallVector::N">N</a>) {</td></tr>
+<tr><th id="881">881</th><td>    <b>this</b>-&gt;append(<a class="local col7 ref" href="#6567S" title='S' data-ref="6567S">S</a>, <a class="local col8 ref" href="#6568E" title='E' data-ref="6568E">E</a>);</td></tr>
+<tr><th id="882">882</th><td>  }</td></tr>
+<tr><th id="883">883</th><td></td></tr>
+<tr><th id="884">884</th><td>  <b>template</b> &lt;<b>typename</b> RangeTy&gt;</td></tr>
+<tr><th id="885">885</th><td>  <b>explicit</b> <dfn class="decl def" id="_ZN4llvm11SmallVectorC1ERKNS_14iterator_rangeIT_EE" title='llvm::SmallVector::SmallVector&lt;T, N&gt;' data-ref="_ZN4llvm11SmallVectorC1ERKNS_14iterator_rangeIT_EE">SmallVector</dfn>(<em>const</em> <a class="type" href="iterator_range.h.html#llvm::iterator_range" title='llvm::iterator_range' data-ref="llvm::iterator_range">iterator_range</a>&lt;RangeTy&gt; &amp;<dfn class="local col9 decl" id="6569R" title='R' data-type='const iterator_range&lt;RangeTy&gt; &amp;' data-ref="6569R">R</dfn>)</td></tr>
+<tr><th id="886">886</th><td>      : <a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt;(<a class="tu member" href="#llvm::SmallVector::N" title='llvm::SmallVector::N' data-use='r' data-ref="llvm::SmallVector::N">N</a>) {</td></tr>
+<tr><th id="887">887</th><td>    <b>this</b>-&gt;append(<a class="local col9 ref" href="#6569R" title='R' data-ref="6569R">R</a>.begin(), <a class="local col9 ref" href="#6569R" title='R' data-ref="6569R">R</a>.end());</td></tr>
+<tr><th id="888">888</th><td>  }</td></tr>
+<tr><th id="889">889</th><td></td></tr>
+<tr><th id="890">890</th><td>  <dfn class="decl def" id="_ZN4llvm11SmallVectorC1ESt16initializer_listIT_E" title='llvm::SmallVector::SmallVector&lt;T, N&gt;' data-ref="_ZN4llvm11SmallVectorC1ESt16initializer_listIT_E">SmallVector</dfn>(<span class="namespace">std::</span><a class="type" href="../../../c++/7/initializer_list.html#std::initializer_list" title='std::initializer_list' data-ref="std::initializer_list">initializer_list</a>&lt;T&gt; <dfn class="local col0 decl" id="6570IL" title='IL' data-type='std::initializer_list&lt;T&gt;' data-ref="6570IL">IL</dfn>) : <a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt;(<a class="tu member" href="#llvm::SmallVector::N" title='llvm::SmallVector::N' data-use='r' data-ref="llvm::SmallVector::N">N</a>) {</td></tr>
+<tr><th id="891">891</th><td>    <b>this</b>-&gt;assign(<a class="local col0 ref" href="#6570IL" title='IL' data-ref="6570IL">IL</a>);</td></tr>
+<tr><th id="892">892</th><td>  }</td></tr>
+<tr><th id="893">893</th><td></td></tr>
+<tr><th id="894">894</th><td>  <dfn class="decl def" id="_ZN4llvm11SmallVectorC1ERKNS_11SmallVectorIT_XT0_EEE" title='llvm::SmallVector::SmallVector&lt;T, N&gt;' data-ref="_ZN4llvm11SmallVectorC1ERKNS_11SmallVectorIT_XT0_EEE">SmallVector</dfn>(<em>const</em> SmallVector &amp;<dfn class="local col1 decl" id="6571RHS" title='RHS' data-type='const SmallVector&lt;T, N&gt; &amp;' data-ref="6571RHS">RHS</dfn>) : <a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt;(<a class="tu member" href="#llvm::SmallVector::N" title='llvm::SmallVector::N' data-use='r' data-ref="llvm::SmallVector::N">N</a>) {</td></tr>
+<tr><th id="895">895</th><td>    <b>if</b> (!<a class="local col1 ref" href="#6571RHS" title='RHS' data-ref="6571RHS">RHS</a>.empty())</td></tr>
+<tr><th id="896">896</th><td>      <a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt;::<b>operator</b>=(<a class="local col1 ref" href="#6571RHS" title='RHS' data-ref="6571RHS">RHS</a>);</td></tr>
+<tr><th id="897">897</th><td>  }</td></tr>
+<tr><th id="898">898</th><td></td></tr>
+<tr><th id="899">899</th><td>  <em>const</em> SmallVector &amp;<dfn class="decl def" id="_ZN4llvm11SmallVectoraSERKNS_11SmallVectorIT_XT0_EEE" title='llvm::SmallVector::operator=' data-ref="_ZN4llvm11SmallVectoraSERKNS_11SmallVectorIT_XT0_EEE"><b>operator</b>=</dfn>(<em>const</em> SmallVector &amp;<dfn class="local col2 decl" id="6572RHS" title='RHS' data-type='const SmallVector&lt;T, N&gt; &amp;' data-ref="6572RHS">RHS</dfn>) {</td></tr>
+<tr><th id="900">900</th><td>    <a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt;::<b>operator</b>=(<a class="local col2 ref" href="#6572RHS" title='RHS' data-ref="6572RHS">RHS</a>);</td></tr>
+<tr><th id="901">901</th><td>    <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="902">902</th><td>  }</td></tr>
+<tr><th id="903">903</th><td></td></tr>
+<tr><th id="904">904</th><td>  <dfn class="decl def" id="_ZN4llvm11SmallVectorC1EONS_11SmallVectorIT_XT0_EEE" title='llvm::SmallVector::SmallVector&lt;T, N&gt;' data-ref="_ZN4llvm11SmallVectorC1EONS_11SmallVectorIT_XT0_EEE">SmallVector</dfn>(SmallVector &amp;&amp;<dfn class="local col3 decl" id="6573RHS" title='RHS' data-type='SmallVector&lt;T, N&gt; &amp;&amp;' data-ref="6573RHS">RHS</dfn>) : <a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt;(<a class="tu member" href="#llvm::SmallVector::N" title='llvm::SmallVector::N' data-use='r' data-ref="llvm::SmallVector::N">N</a>) {</td></tr>
+<tr><th id="905">905</th><td>    <b>if</b> (!<a class="local col3 ref" href="#6573RHS" title='RHS' data-ref="6573RHS">RHS</a>.empty())</td></tr>
+<tr><th id="906">906</th><td>      <a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt;::<b>operator</b>=(<span class="namespace">::std::</span>move(<a class="local col3 ref" href="#6573RHS" title='RHS' data-ref="6573RHS">RHS</a>));</td></tr>
+<tr><th id="907">907</th><td>  }</td></tr>
+<tr><th id="908">908</th><td></td></tr>
+<tr><th id="909">909</th><td>  <dfn class="decl def" id="_ZN4llvm11SmallVectorC1EONS_15SmallVectorImplIT_EE" title='llvm::SmallVector::SmallVector&lt;T, N&gt;' data-ref="_ZN4llvm11SmallVectorC1EONS_15SmallVectorImplIT_EE">SmallVector</dfn>(<a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt; &amp;&amp;<dfn class="local col4 decl" id="6574RHS" title='RHS' data-type='SmallVectorImpl&lt;T&gt; &amp;&amp;' data-ref="6574RHS">RHS</dfn>) : <a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt;(<a class="tu member" href="#llvm::SmallVector::N" title='llvm::SmallVector::N' data-use='r' data-ref="llvm::SmallVector::N">N</a>) {</td></tr>
+<tr><th id="910">910</th><td>    <b>if</b> (!<a class="local col4 ref" href="#6574RHS" title='RHS' data-ref="6574RHS">RHS</a>.empty())</td></tr>
+<tr><th id="911">911</th><td>      <a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt;::<b>operator</b>=(<span class="namespace">::std::</span>move(<a class="local col4 ref" href="#6574RHS" title='RHS' data-ref="6574RHS">RHS</a>));</td></tr>
+<tr><th id="912">912</th><td>  }</td></tr>
+<tr><th id="913">913</th><td></td></tr>
+<tr><th id="914">914</th><td>  <em>const</em> SmallVector &amp;<dfn class="decl def" id="_ZN4llvm11SmallVectoraSEONS_11SmallVectorIT_XT0_EEE" title='llvm::SmallVector::operator=' data-ref="_ZN4llvm11SmallVectoraSEONS_11SmallVectorIT_XT0_EEE"><b>operator</b>=</dfn>(SmallVector &amp;&amp;<dfn class="local col5 decl" id="6575RHS" title='RHS' data-type='SmallVector&lt;T, N&gt; &amp;&amp;' data-ref="6575RHS">RHS</dfn>) {</td></tr>
+<tr><th id="915">915</th><td>    <a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt;::<b>operator</b>=(<span class="namespace">::std::</span>move(<a class="local col5 ref" href="#6575RHS" title='RHS' data-ref="6575RHS">RHS</a>));</td></tr>
+<tr><th id="916">916</th><td>    <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="917">917</th><td>  }</td></tr>
+<tr><th id="918">918</th><td></td></tr>
+<tr><th id="919">919</th><td>  <em>const</em> SmallVector &amp;<dfn class="decl def" id="_ZN4llvm11SmallVectoraSEONS_15SmallVectorImplIT_EE" title='llvm::SmallVector::operator=' data-ref="_ZN4llvm11SmallVectoraSEONS_15SmallVectorImplIT_EE"><b>operator</b>=</dfn>(<a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt; &amp;&amp;<dfn class="local col6 decl" id="6576RHS" title='RHS' data-type='SmallVectorImpl&lt;T&gt; &amp;&amp;' data-ref="6576RHS">RHS</dfn>) {</td></tr>
+<tr><th id="920">920</th><td>    <a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt;::<b>operator</b>=(<span class="namespace">::std::</span>move(<a class="local col6 ref" href="#6576RHS" title='RHS' data-ref="6576RHS">RHS</a>));</td></tr>
+<tr><th id="921">921</th><td>    <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="922">922</th><td>  }</td></tr>
+<tr><th id="923">923</th><td></td></tr>
+<tr><th id="924">924</th><td>  <em>const</em> SmallVector &amp;<dfn class="decl def" id="_ZN4llvm11SmallVectoraSESt16initializer_listIT_E" title='llvm::SmallVector::operator=' data-ref="_ZN4llvm11SmallVectoraSESt16initializer_listIT_E"><b>operator</b>=</dfn>(<span class="namespace">std::</span><a class="type" href="../../../c++/7/initializer_list.html#std::initializer_list" title='std::initializer_list' data-ref="std::initializer_list">initializer_list</a>&lt;T&gt; <dfn class="local col7 decl" id="6577IL" title='IL' data-type='std::initializer_list&lt;T&gt;' data-ref="6577IL">IL</dfn>) {</td></tr>
+<tr><th id="925">925</th><td>    <b>this</b>-&gt;assign(<a class="local col7 ref" href="#6577IL" title='IL' data-ref="6577IL">IL</a>);</td></tr>
+<tr><th id="926">926</th><td>    <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="927">927</th><td>  }</td></tr>
+<tr><th id="928">928</th><td>};</td></tr>
+<tr><th id="929">929</th><td></td></tr>
+<tr><th id="930">930</th><td><b>template</b> &lt;<b>typename</b> T, <em>unsigned</em> N&gt;</td></tr>
+<tr><th id="931">931</th><td><b>inline</b> <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl def" id="_ZN4llvm17capacity_in_bytesERKNS_11SmallVectorIT_XT0_EEE" title='llvm::capacity_in_bytes' data-ref="_ZN4llvm17capacity_in_bytesERKNS_11SmallVectorIT_XT0_EEE">capacity_in_bytes</dfn>(<em>const</em> <a class="type" href="#llvm::SmallVector" title='llvm::SmallVector' data-ref="llvm::SmallVector">SmallVector</a>&lt;T, <a class="tu ref" href="#N" title='N' data-ref="N">N</a>&gt; &amp;<dfn class="local col8 decl" id="6578X" title='X' data-type='const SmallVector&lt;T, N&gt; &amp;' data-ref="6578X">X</dfn>) {</td></tr>
+<tr><th id="932">932</th><td>  <b>return</b> <a class="local col8 ref" href="#6578X" title='X' data-ref="6578X">X</a>.capacity_in_bytes();</td></tr>
+<tr><th id="933">933</th><td>}</td></tr>
+<tr><th id="934">934</th><td></td></tr>
+<tr><th id="935">935</th><td>} <i>// end namespace llvm</i></td></tr>
+<tr><th id="936">936</th><td></td></tr>
+<tr><th id="937">937</th><td><b>namespace</b> <span class="namespace">std</span> {</td></tr>
+<tr><th id="938">938</th><td></td></tr>
+<tr><th id="939">939</th><td>  <i class="doc">/// Implement std::swap in terms of SmallVector swap.</i></td></tr>
+<tr><th id="940">940</th><td>  <b>template</b>&lt;<b>typename</b> T&gt;</td></tr>
+<tr><th id="941">941</th><td>  <b>inline</b> <em>void</em></td></tr>
+<tr><th id="942">942</th><td>  <dfn class="decl def" id="_ZSt4swapRN4llvm15SmallVectorImplIT_EES3_" title='std::swap' data-ref="_ZSt4swapRN4llvm15SmallVectorImplIT_EES3_">swap</dfn>(<span class="namespace">llvm::</span><a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt; &amp;<dfn class="local col9 decl" id="6579LHS" title='LHS' data-type='llvm::SmallVectorImpl&lt;T&gt; &amp;' data-ref="6579LHS">LHS</dfn>, <span class="namespace">llvm::</span><a class="type" href="#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;T&gt; &amp;<dfn class="local col0 decl" id="6580RHS" title='RHS' data-type='llvm::SmallVectorImpl&lt;T&gt; &amp;' data-ref="6580RHS">RHS</dfn>) {</td></tr>
+<tr><th id="943">943</th><td>    <a class="local col9 ref" href="#6579LHS" title='LHS' data-ref="6579LHS">LHS</a>.swap(<a class="local col0 ref" href="#6580RHS" title='RHS' data-ref="6580RHS">RHS</a>);</td></tr>
+<tr><th id="944">944</th><td>  }</td></tr>
+<tr><th id="945">945</th><td></td></tr>
+<tr><th id="946">946</th><td>  <i class="doc">/// Implement std::swap in terms of SmallVector swap.</i></td></tr>
+<tr><th id="947">947</th><td>  <b>template</b>&lt;<b>typename</b> T, <em>unsigned</em> N&gt;</td></tr>
+<tr><th id="948">948</th><td>  <b>inline</b> <em>void</em></td></tr>
+<tr><th id="949">949</th><td>  <dfn class="decl def" id="_ZSt4swapRN4llvm11SmallVectorIT_XT0_EEES3_" title='std::swap' data-ref="_ZSt4swapRN4llvm11SmallVectorIT_XT0_EEES3_">swap</dfn>(<span class="namespace">llvm::</span><a class="type" href="#llvm::SmallVector" title='llvm::SmallVector' data-ref="llvm::SmallVector">SmallVector</a>&lt;T, <a class="tu ref" href="#N" title='N' data-ref="N">N</a>&gt; &amp;<dfn class="local col1 decl" id="6581LHS" title='LHS' data-type='llvm::SmallVector&lt;T, N&gt; &amp;' data-ref="6581LHS">LHS</dfn>, <span class="namespace">llvm::</span><a class="type" href="#llvm::SmallVector" title='llvm::SmallVector' data-ref="llvm::SmallVector">SmallVector</a>&lt;T, <a class="tu ref" href="#N" title='N' data-ref="N">N</a>&gt; &amp;<dfn class="local col2 decl" id="6582RHS" title='RHS' data-type='llvm::SmallVector&lt;T, N&gt; &amp;' data-ref="6582RHS">RHS</dfn>) {</td></tr>
+<tr><th id="950">950</th><td>    <a class="local col1 ref" href="#6581LHS" title='LHS' data-ref="6581LHS">LHS</a>.swap(<a class="local col2 ref" href="#6582RHS" title='RHS' data-ref="6582RHS">RHS</a>);</td></tr>
+<tr><th id="951">951</th><td>  }</td></tr>
+<tr><th id="952">952</th><td></td></tr>
+<tr><th id="953">953</th><td>} <i>// end namespace std</i></td></tr>
+<tr><th id="954">954</th><td></td></tr>
+<tr><th id="955">955</th><td><u>#<span data-ppcond="14">endif</span> // LLVM_ADT_SMALLVECTOR_H</u></td></tr>
+<tr><th id="956">956</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../../../pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc.html'>pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc</a><br/>Generated on <em>2019-Oct-28</em> from project include<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

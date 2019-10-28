@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Support/CommandLine.h' l='86' type='void llvm::cl::AddExtraVersionPrinter(VersionPrinterTy func)'/>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='79'>///===---------------------------------------------------------------------===//
+/// AddExtraVersionPrinter - Add an extra printer to use in addition to the
+///                          default one. This can be called multiple times,
+///                          and each time it adds a new function to the list
+///                          which will be called after the basic LLVM version
+///                          printing is complete. Each can then add additional
+///                          information specific to the tool.</doc>

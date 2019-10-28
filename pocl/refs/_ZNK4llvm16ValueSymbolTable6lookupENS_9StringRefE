@@ -1,0 +1,11 @@
+<def f='include/llvm-6.0/llvm/IR/ValueSymbolTable.h' l='75' type='llvm::Value * llvm::ValueSymbolTable::lookup(llvm::StringRef Name) const'/>
+<doc f='include/llvm-6.0/llvm/IR/ValueSymbolTable.h' l='67'>/// @}
+/// @name Accessors
+/// @{
+
+  /// This method finds the value with the given \p Name in the
+  /// the symbol table.
+  /// @returns the value associated with the \p Name
+  /// @brief Lookup a named Value.</doc>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='87' u='c' c='_ZN4pocl14ParallelRegion17GenerateTempNamesEPN4llvm10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='200' u='c' c='_ZN4pocl15WorkitemHandler26fixUndominatedVariableUsesEPN4llvm24DominatorTreeWrapperPassERNS1_8FunctionE'/>

@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='339' ll='343' type='void llvm::LoopBase::addBlockEntry(BlockT * BB)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='336'>/// This adds a basic block directly to the basic block list.
+  /// This should only be used by transformations that create new loops.  Other
+  /// transformations should use addBasicBlockToLoop.</doc>

@@ -1,0 +1,180 @@
+<def f='include/ocl_icd.h' l='48' ll='1726'/>
+<size>1424</size>
+<mbr r='_cl_icd_dispatch::clGetPlatformIDs' o='0' t='cl_int (*)(cl_uint, cl_platform_id *, cl_uint *)'/>
+<mbr r='_cl_icd_dispatch::clGetPlatformInfo' o='64' t='cl_int (*)(cl_platform_id, cl_platform_info, size_t, void *, size_t *)'/>
+<mbr r='_cl_icd_dispatch::clGetDeviceIDs' o='128' t='cl_int (*)(cl_platform_id, cl_device_type, cl_uint, cl_device_id *, cl_uint *)'/>
+<mbr r='_cl_icd_dispatch::clGetDeviceInfo' o='192' t='cl_int (*)(cl_device_id, cl_device_info, size_t, void *, size_t *)'/>
+<mbr r='_cl_icd_dispatch::clCreateContext' o='256' t='cl_context (*)(const cl_context_properties *, cl_uint, const cl_device_id *, void (*)(const char *, const void *, size_t, void *), void *, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clCreateContextFromType' o='320' t='cl_context (*)(const cl_context_properties *, cl_device_type, void (*)(const char *, const void *, size_t, void *), void *, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clRetainContext' o='384' t='cl_int (*)(cl_context)'/>
+<mbr r='_cl_icd_dispatch::clReleaseContext' o='448' t='cl_int (*)(cl_context)'/>
+<mbr r='_cl_icd_dispatch::clGetContextInfo' o='512' t='cl_int (*)(cl_context, cl_context_info, size_t, void *, size_t *)'/>
+<mbr r='_cl_icd_dispatch::clCreateCommandQueue' o='576' t='cl_command_queue (*)(cl_context, cl_device_id, cl_command_queue_properties, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clRetainCommandQueue' o='640' t='cl_int (*)(cl_command_queue)'/>
+<mbr r='_cl_icd_dispatch::clReleaseCommandQueue' o='704' t='cl_int (*)(cl_command_queue)'/>
+<mbr r='_cl_icd_dispatch::clGetCommandQueueInfo' o='768' t='cl_int (*)(cl_command_queue, cl_command_queue_info, size_t, void *, size_t *)'/>
+<mbr r='_cl_icd_dispatch::clSetCommandQueueProperty' o='832' t='cl_int (*)(cl_command_queue, cl_command_queue_properties, cl_bool, cl_command_queue_properties *)'/>
+<mbr r='_cl_icd_dispatch::clCreateBuffer' o='896' t='cl_mem (*)(cl_context, cl_mem_flags, size_t, void *, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clCreateImage2D' o='960' t='cl_mem (*)(cl_context, cl_mem_flags, const cl_image_format *, size_t, size_t, size_t, void *, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clCreateImage3D' o='1024' t='cl_mem (*)(cl_context, cl_mem_flags, const cl_image_format *, size_t, size_t, size_t, size_t, size_t, void *, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clRetainMemObject' o='1088' t='cl_int (*)(cl_mem)'/>
+<mbr r='_cl_icd_dispatch::clReleaseMemObject' o='1152' t='cl_int (*)(cl_mem)'/>
+<mbr r='_cl_icd_dispatch::clGetSupportedImageFormats' o='1216' t='cl_int (*)(cl_context, cl_mem_flags, cl_mem_object_type, cl_uint, cl_image_format *, cl_uint *)'/>
+<mbr r='_cl_icd_dispatch::clGetMemObjectInfo' o='1280' t='cl_int (*)(cl_mem, cl_mem_info, size_t, void *, size_t *)'/>
+<mbr r='_cl_icd_dispatch::clGetImageInfo' o='1344' t='cl_int (*)(cl_mem, cl_image_info, size_t, void *, size_t *)'/>
+<mbr r='_cl_icd_dispatch::clCreateSampler' o='1408' t='cl_sampler (*)(cl_context, cl_bool, cl_addressing_mode, cl_filter_mode, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clRetainSampler' o='1472' t='cl_int (*)(cl_sampler)'/>
+<mbr r='_cl_icd_dispatch::clReleaseSampler' o='1536' t='cl_int (*)(cl_sampler)'/>
+<mbr r='_cl_icd_dispatch::clGetSamplerInfo' o='1600' t='cl_int (*)(cl_sampler, cl_sampler_info, size_t, void *, size_t *)'/>
+<mbr r='_cl_icd_dispatch::clCreateProgramWithSource' o='1664' t='cl_program (*)(cl_context, cl_uint, const char **, const size_t *, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clCreateProgramWithBinary' o='1728' t='cl_program (*)(cl_context, cl_uint, const cl_device_id *, const size_t *, const unsigned char **, cl_int *, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clRetainProgram' o='1792' t='cl_int (*)(cl_program)'/>
+<mbr r='_cl_icd_dispatch::clReleaseProgram' o='1856' t='cl_int (*)(cl_program)'/>
+<mbr r='_cl_icd_dispatch::clBuildProgram' o='1920' t='cl_int (*)(cl_program, cl_uint, const cl_device_id *, const char *, void (*)(cl_program, void *), void *)'/>
+<mbr r='_cl_icd_dispatch::clUnloadCompiler' o='1984' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clGetProgramInfo' o='2048' t='cl_int (*)(cl_program, cl_program_info, size_t, void *, size_t *)'/>
+<mbr r='_cl_icd_dispatch::clGetProgramBuildInfo' o='2112' t='cl_int (*)(cl_program, cl_device_id, cl_program_build_info, size_t, void *, size_t *)'/>
+<mbr r='_cl_icd_dispatch::clCreateKernel' o='2176' t='cl_kernel (*)(cl_program, const char *, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clCreateKernelsInProgram' o='2240' t='cl_int (*)(cl_program, cl_uint, cl_kernel *, cl_uint *)'/>
+<mbr r='_cl_icd_dispatch::clRetainKernel' o='2304' t='cl_int (*)(cl_kernel)'/>
+<mbr r='_cl_icd_dispatch::clReleaseKernel' o='2368' t='cl_int (*)(cl_kernel)'/>
+<mbr r='_cl_icd_dispatch::clSetKernelArg' o='2432' t='cl_int (*)(cl_kernel, cl_uint, size_t, const void *)'/>
+<mbr r='_cl_icd_dispatch::clGetKernelInfo' o='2496' t='cl_int (*)(cl_kernel, cl_kernel_info, size_t, void *, size_t *)'/>
+<mbr r='_cl_icd_dispatch::clGetKernelWorkGroupInfo' o='2560' t='cl_int (*)(cl_kernel, cl_device_id, cl_kernel_work_group_info, size_t, void *, size_t *)'/>
+<mbr r='_cl_icd_dispatch::clWaitForEvents' o='2624' t='cl_int (*)(cl_uint, const cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clGetEventInfo' o='2688' t='cl_int (*)(cl_event, cl_event_info, size_t, void *, size_t *)'/>
+<mbr r='_cl_icd_dispatch::clRetainEvent' o='2752' t='cl_int (*)(cl_event)'/>
+<mbr r='_cl_icd_dispatch::clReleaseEvent' o='2816' t='cl_int (*)(cl_event)'/>
+<mbr r='_cl_icd_dispatch::clGetEventProfilingInfo' o='2880' t='cl_int (*)(cl_event, cl_profiling_info, size_t, void *, size_t *)'/>
+<mbr r='_cl_icd_dispatch::clFlush' o='2944' t='cl_int (*)(cl_command_queue)'/>
+<mbr r='_cl_icd_dispatch::clFinish' o='3008' t='cl_int (*)(cl_command_queue)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueReadBuffer' o='3072' t='cl_int (*)(cl_command_queue, cl_mem, cl_bool, size_t, size_t, void *, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueWriteBuffer' o='3136' t='cl_int (*)(cl_command_queue, cl_mem, cl_bool, size_t, size_t, const void *, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueCopyBuffer' o='3200' t='cl_int (*)(cl_command_queue, cl_mem, cl_mem, size_t, size_t, size_t, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueReadImage' o='3264' t='cl_int (*)(cl_command_queue, cl_mem, cl_bool, const size_t *, const size_t *, size_t, size_t, void *, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueWriteImage' o='3328' t='cl_int (*)(cl_command_queue, cl_mem, cl_bool, const size_t *, const size_t *, size_t, size_t, const void *, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueCopyImage' o='3392' t='cl_int (*)(cl_command_queue, cl_mem, cl_mem, const size_t *, const size_t *, const size_t *, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueCopyImageToBuffer' o='3456' t='cl_int (*)(cl_command_queue, cl_mem, cl_mem, const size_t *, const size_t *, size_t, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueCopyBufferToImage' o='3520' t='cl_int (*)(cl_command_queue, cl_mem, cl_mem, size_t, const size_t *, const size_t *, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueMapBuffer' o='3584' t='void *(*)(cl_command_queue, cl_mem, cl_bool, cl_map_flags, size_t, size_t, cl_uint, const cl_event *, cl_event *, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueMapImage' o='3648' t='void *(*)(cl_command_queue, cl_mem, cl_bool, cl_map_flags, const size_t *, const size_t *, size_t *, size_t *, cl_uint, const cl_event *, cl_event *, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueUnmapMemObject' o='3712' t='cl_int (*)(cl_command_queue, cl_mem, void *, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueNDRangeKernel' o='3776' t='cl_int (*)(cl_command_queue, cl_kernel, cl_uint, const size_t *, const size_t *, const size_t *, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueTask' o='3840' t='cl_int (*)(cl_command_queue, cl_kernel, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueNativeKernel' o='3904' t='cl_int (*)(cl_command_queue, void (*)(void *), void *, size_t, cl_uint, const cl_mem *, const void **, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueMarker' o='3968' t='cl_int (*)(cl_command_queue, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueWaitForEvents' o='4032' t='cl_int (*)(cl_command_queue, cl_uint, const cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueBarrier' o='4096' t='cl_int (*)(cl_command_queue)'/>
+<mbr r='_cl_icd_dispatch::clGetExtensionFunctionAddress' o='4160' t='void *(*)(const char *)'/>
+<mbr r='_cl_icd_dispatch::clCreateFromGLBuffer' o='4224' t='cl_mem (*)(cl_context, cl_mem_flags, cl_GLuint, int *)'/>
+<mbr r='_cl_icd_dispatch::clCreateFromGLTexture2D' o='4288' t='cl_mem (*)(cl_context, cl_mem_flags, cl_GLenum, cl_GLint, cl_GLuint, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clCreateFromGLTexture3D' o='4352' t='cl_mem (*)(cl_context, cl_mem_flags, cl_GLenum, cl_GLint, cl_GLuint, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clCreateFromGLRenderbuffer' o='4416' t='cl_mem (*)(cl_context, cl_mem_flags, cl_GLuint, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clGetGLObjectInfo' o='4480' t='cl_int (*)(cl_mem, cl_gl_object_type *, cl_GLuint *)'/>
+<mbr r='_cl_icd_dispatch::clGetGLTextureInfo' o='4544' t='cl_int (*)(cl_mem, cl_gl_texture_info, size_t, void *, size_t *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueAcquireGLObjects' o='4608' t='cl_int (*)(cl_command_queue, cl_uint, const cl_mem *, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueReleaseGLObjects' o='4672' t='cl_int (*)(cl_command_queue, cl_uint, const cl_mem *, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clGetGLContextInfoKHR' o='4736' t='cl_int (*)(const cl_context_properties *, cl_gl_context_info, size_t, void *, size_t *)'/>
+<mbr r='_cl_icd_dispatch::clUnknown75' o='4800' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown76' o='4864' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown77' o='4928' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown78' o='4992' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown79' o='5056' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown80' o='5120' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clSetEventCallback' o='5184' t='cl_int (*)(cl_event, cl_int, void (*)(cl_event, cl_int, void *), void *)'/>
+<mbr r='_cl_icd_dispatch::clCreateSubBuffer' o='5248' t='cl_mem (*)(cl_mem, cl_mem_flags, cl_buffer_create_type, const void *, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clSetMemObjectDestructorCallback' o='5312' t='cl_int (*)(cl_mem, void (*)(cl_mem, void *), void *)'/>
+<mbr r='_cl_icd_dispatch::clCreateUserEvent' o='5376' t='cl_event (*)(cl_context, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clSetUserEventStatus' o='5440' t='cl_int (*)(cl_event, cl_int)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueReadBufferRect' o='5504' t='cl_int (*)(cl_command_queue, cl_mem, cl_bool, const size_t *, const size_t *, const size_t *, size_t, size_t, size_t, size_t, void *, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueWriteBufferRect' o='5568' t='cl_int (*)(cl_command_queue, cl_mem, cl_bool, const size_t *, const size_t *, const size_t *, size_t, size_t, size_t, size_t, const void *, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueCopyBufferRect' o='5632' t='cl_int (*)(cl_command_queue, cl_mem, cl_mem, const size_t *, const size_t *, const size_t *, size_t, size_t, size_t, size_t, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clCreateSubDevicesEXT' o='5696' t='cl_int (*)(cl_device_id, const cl_device_partition_property_ext *, cl_uint, cl_device_id *, cl_uint *)'/>
+<mbr r='_cl_icd_dispatch::clRetainDeviceEXT' o='5760' t='cl_int (*)(cl_device_id)'/>
+<mbr r='_cl_icd_dispatch::clReleaseDeviceEXT' o='5824' t='cl_int (*)(cl_device_id)'/>
+<mbr r='_cl_icd_dispatch::clCreateEventFromGLsyncKHR' o='5888' t='cl_event (*)(cl_context, cl_GLsync, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clCreateSubDevices' o='5952' t='cl_int (*)(cl_device_id, const cl_device_partition_property *, cl_uint, cl_device_id *, cl_uint *)'/>
+<mbr r='_cl_icd_dispatch::clRetainDevice' o='6016' t='cl_int (*)(cl_device_id)'/>
+<mbr r='_cl_icd_dispatch::clReleaseDevice' o='6080' t='cl_int (*)(cl_device_id)'/>
+<mbr r='_cl_icd_dispatch::clCreateImage' o='6144' t='cl_mem (*)(cl_context, cl_mem_flags, const cl_image_format *, const cl_image_desc *, void *, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clCreateProgramWithBuiltInKernels' o='6208' t='cl_program (*)(cl_context, cl_uint, const cl_device_id *, const char *, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clCompileProgram' o='6272' t='cl_int (*)(cl_program, cl_uint, const cl_device_id *, const char *, cl_uint, const cl_program *, const char **, void (*)(cl_program, void *), void *)'/>
+<mbr r='_cl_icd_dispatch::clLinkProgram' o='6336' t='cl_program (*)(cl_context, cl_uint, const cl_device_id *, const char *, cl_uint, const cl_program *, void (*)(cl_program, void *), void *, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clUnloadPlatformCompiler' o='6400' t='cl_int (*)(cl_platform_id)'/>
+<mbr r='_cl_icd_dispatch::clGetKernelArgInfo' o='6464' t='cl_int (*)(cl_kernel, cl_uint, cl_kernel_arg_info, size_t, void *, size_t *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueFillBuffer' o='6528' t='cl_int (*)(cl_command_queue, cl_mem, const void *, size_t, size_t, size_t, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueFillImage' o='6592' t='cl_int (*)(cl_command_queue, cl_mem, const void *, const size_t *, const size_t *, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueMigrateMemObjects' o='6656' t='cl_int (*)(cl_command_queue, cl_uint, const cl_mem *, cl_mem_migration_flags, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueMarkerWithWaitList' o='6720' t='cl_int (*)(cl_command_queue, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueBarrierWithWaitList' o='6784' t='cl_int (*)(cl_command_queue, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clGetExtensionFunctionAddressForPlatform' o='6848' t='void *(*)(cl_platform_id, const char *)'/>
+<mbr r='_cl_icd_dispatch::clCreateFromGLTexture' o='6912' t='cl_mem (*)(cl_context, cl_mem_flags, cl_GLenum, cl_GLint, cl_GLuint, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clUnknown109' o='6976' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown110' o='7040' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown111' o='7104' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown112' o='7168' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown113' o='7232' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown114' o='7296' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown115' o='7360' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown116' o='7424' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown117' o='7488' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown118' o='7552' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clCreateFromEGLImageKHR' o='7616' t='cl_mem (*)(cl_context, CLeglDisplayKHR, CLeglImageKHR, cl_mem_flags, const cl_egl_image_properties_khr *, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueAcquireEGLObjectsKHR' o='7680' t='cl_int (*)(cl_command_queue, cl_uint, const cl_mem *, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueReleaseEGLObjectsKHR' o='7744' t='cl_int (*)(cl_command_queue, cl_uint, const cl_mem *, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clCreateEventFromEGLSyncKHR' o='7808' t='cl_event (*)(cl_context, CLeglSyncKHR, CLeglDisplayKHR, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clCreateCommandQueueWithProperties' o='7872' t='cl_command_queue (*)(cl_context, cl_device_id, const cl_queue_properties *, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clCreatePipe' o='7936' t='cl_mem (*)(cl_context, cl_mem_flags, cl_uint, cl_uint, const cl_pipe_properties *, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clGetPipeInfo' o='8000' t='cl_int (*)(cl_mem, cl_pipe_info, size_t, void *, size_t *)'/>
+<mbr r='_cl_icd_dispatch::clSVMAlloc' o='8064' t='void *(*)(cl_context, cl_svm_mem_flags, size_t, cl_uint)'/>
+<mbr r='_cl_icd_dispatch::clSVMFree' o='8128' t='void (*)(cl_context, void *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueSVMFree' o='8192' t='cl_int (*)(cl_command_queue, cl_uint, void **, void (*)(cl_command_queue, cl_uint, void **, void *), void *, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueSVMMemcpy' o='8256' t='cl_int (*)(cl_command_queue, cl_bool, void *, const void *, size_t, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueSVMMemFill' o='8320' t='cl_int (*)(cl_command_queue, void *, const void *, size_t, size_t, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueSVMMap' o='8384' t='cl_int (*)(cl_command_queue, cl_bool, cl_map_flags, void *, size_t, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueSVMUnmap' o='8448' t='cl_int (*)(cl_command_queue, void *, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clCreateSamplerWithProperties' o='8512' t='cl_sampler (*)(cl_context, const cl_sampler_properties *, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clSetKernelArgSVMPointer' o='8576' t='cl_int (*)(cl_kernel, cl_uint, const void *)'/>
+<mbr r='_cl_icd_dispatch::clSetKernelExecInfo' o='8640' t='cl_int (*)(cl_kernel, cl_kernel_exec_info, size_t, const void *)'/>
+<mbr r='_cl_icd_dispatch::clGetKernelSubGroupInfoKHR' o='8704' t='cl_int (*)(cl_kernel, cl_device_id, cl_kernel_sub_group_info, size_t, const void *, size_t, void *, size_t *)'/>
+<mbr r='_cl_icd_dispatch::clCloneKernel' o='8768' t='cl_kernel (*)(cl_kernel, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clCreateProgramWithIL' o='8832' t='cl_program (*)(cl_context, const void *, size_t, cl_int *)'/>
+<mbr r='_cl_icd_dispatch::clEnqueueSVMMigrateMem' o='8896' t='cl_int (*)(cl_command_queue, cl_uint, const void **, const size_t *, cl_mem_migration_flags, cl_uint, const cl_event *, cl_event *)'/>
+<mbr r='_cl_icd_dispatch::clGetDeviceAndHostTimer' o='8960' t='cl_int (*)(cl_device_id, cl_ulong *, cl_ulong *)'/>
+<mbr r='_cl_icd_dispatch::clGetHostTimer' o='9024' t='cl_int (*)(cl_device_id, cl_ulong *)'/>
+<mbr r='_cl_icd_dispatch::clGetKernelSubGroupInfo' o='9088' t='cl_int (*)(cl_kernel, cl_device_id, cl_kernel_sub_group_info, size_t, const void *, size_t, void *, size_t *)'/>
+<mbr r='_cl_icd_dispatch::clSetDefaultDeviceCommandQueue' o='9152' t='cl_int (*)(cl_context, cl_device_id, cl_command_queue)'/>
+<mbr r='_cl_icd_dispatch::clUnknown144' o='9216' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown145' o='9280' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown146' o='9344' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown147' o='9408' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown148' o='9472' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown149' o='9536' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown150' o='9600' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown151' o='9664' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown152' o='9728' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown153' o='9792' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown154' o='9856' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown155' o='9920' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown156' o='9984' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown157' o='10048' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown158' o='10112' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown159' o='10176' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown160' o='10240' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown161' o='10304' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown162' o='10368' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown163' o='10432' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown164' o='10496' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown165' o='10560' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown166' o='10624' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown167' o='10688' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown168' o='10752' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown169' o='10816' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown170' o='10880' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown171' o='10944' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown172' o='11008' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown173' o='11072' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown174' o='11136' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown175' o='11200' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown176' o='11264' t='cl_int (*)(void)'/>
+<mbr r='_cl_icd_dispatch::clUnknown177' o='11328' t='cl_int (*)(void)'/>

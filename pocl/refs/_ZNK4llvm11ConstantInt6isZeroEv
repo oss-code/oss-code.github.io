@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/IR/Constants.h' l='193' ll='195' type='bool llvm::ConstantInt::isZero() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='190'>/// This is just a convenience method to make client code smaller for a
+  /// common code. It also correctly performs the comparison without the
+  /// potential for an assertion from getZExtValue().</doc>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='486' u='c' c='_ZNK4llvm11GEPOperator17hasAllZeroIndicesEv'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1892' u='c' c='_ZN4llvm9IRBuilder31CreateAlignmentAssumptionHelperERKNS_10DataLayoutEPNS_5ValueES5_PNS_4TypeES5_'/>

@@ -1,0 +1,44 @@
+<dec f='pocl/lib/llvmopencl/IsolateRegions.h' l='37' type='bool pocl::IsolateRegions::runOnRegion(llvm::Region * R, llvm::RGPassManager &amp; )'/>
+<inh f='include/llvm-6.0/llvm/Analysis/RegionPass.h' l='50' c='_ZN4llvm10RegionPass11runOnRegionEPNS_6RegionERNS_13RGPassManagerE'/>
+<def f='pocl/lib/llvmopencl/IsolateRegions.cc' l='98' ll='129' type='bool pocl::IsolateRegions::runOnRegion(llvm::Region * R, llvm::RGPassManager &amp; )'/>
+<doc f='pocl/lib/llvmopencl/IsolateRegions.cc' l='57'>/* Ensure Single-Entry Single-Exit Regions are isolated from the
+   exit node so they won&apos;t get split illegally with tail replication. 
+
+   This might happen in case an if .. else .. structure is just 
+   before an exit from kernel. Both branches are split even though
+   we would like to replicate the structure as a whole to retain
+   semantics. This adds dummy basic blocks to all Regions just for
+   clarity. Cleanup with -simplifycfg.
+
+   TODO: Also add a dummy BB in case the Region starts with a
+   barrier. Such a Region might not get optimally replicated and
+   can lead to problematic cases. E.g.:
+
+   digraph G {
+      BAR1 -&gt; A;
+      A -&gt; X; 
+      BAR1 -&gt; X; 
+      X -&gt; BAR2;
+   }
+
+   (draw with &quot;dot -Tpng -o graph.png&quot;   + copy paste the above)
+
+   Here you have a structure which should be replicated fully but
+   it won&apos;t as the Region starts with a barrier at a split point
+   BB, thus it tries to replicate both of the branches which lead
+   to interesting errors and is not supported. Another option would
+   be to tail replicate both of the branches, but currently tail
+   replication is done only starting from the exit nodes.
+
+   IsolateRegions &quot;normalizes&quot; the graph to:
+
+   digraph G {
+      BAR1 -&gt; r_entry;
+      r_entry -&gt; A;
+      A -&gt; X; 
+      r_entry -&gt; X; 
+      X -&gt; BAR2;
+   }
+
+   
+*/</doc>

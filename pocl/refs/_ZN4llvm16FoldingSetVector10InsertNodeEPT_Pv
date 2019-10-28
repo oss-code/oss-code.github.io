@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='598' ll='601' type='void llvm::FoldingSetVector::InsertNode(T * N, void * InsertPos)'/>
+<doc f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='595'>/// InsertNode - Insert the specified node into the folding set, knowing that
+  /// it is not already in the folding set.  InsertPos must be obtained from
+  /// FindNodeOrInsertPos.</doc>

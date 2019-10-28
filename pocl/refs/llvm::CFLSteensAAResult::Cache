@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Analysis/CFLSteensAliasAnalysis.h' l='100' type='DenseMap&lt;llvm::Function *, Optional&lt;llvm::CFLSteensAAResult::FunctionInfo&gt; &gt;'/>
+<offset>128</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/CFLSteensAliasAnalysis.h' l='95'>/// \brief Cached mapping of Functions to their StratifiedSets.
+  /// If a function&apos;s sets are currently being built, it is marked
+  /// in the cache as an Optional without a value. This way, if we
+  /// have any kind of recursion, it is discernable from a function
+  /// that simply has empty sets.</doc>

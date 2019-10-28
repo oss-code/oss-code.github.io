@@ -1,0 +1,20 @@
+<def f='include/c++/7/bits/stl_vector.h' l='688' ll='695' type='void std::vector::resize(size_type __new_size)'/>
+<doc f='include/c++/7/bits/stl_vector.h' l='679'>/**
+       *  @brief  Resizes the %vector to the specified number of elements.
+       *  @param  __new_size  Number of elements the %vector should contain.
+       *
+       *  This function will %resize the %vector to the specified
+       *  number of elements.  If the number is smaller than the
+       *  %vector&apos;s current size the %vector is truncated, otherwise
+       *  default constructed elements are appended.
+       */</doc>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='654' u='c' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/include/CL/cl2.hpp' l='2243' u='c' c='_ZN2cl6Device16createSubDevicesEPKlPSt6vectorIS0_SaIS0_EE'/>
+<use f='pocl/include/CL/cl2.hpp' l='2486' u='c' c='_ZNK2cl8Platform10getDevicesEmPSt6vectorINS_6DeviceESaIS2_EE'/>
+<use f='pocl/include/CL/cl2.hpp' l='2611' u='c' c='_ZN2cl8Platform3getEPSt6vectorIS0_SaIS0_EE'/>
+<use f='pocl/include/CL/cl2.hpp' l='6454' u='c' c='_ZN2cl7ProgramC1ERKNS_7ContextERKSt6vectorINS_6DeviceESaIS5_EERKS4_IS4_IhSaIhEESaISB_EEPS4_IiSaIiEEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6718' u='c' c='_ZN2cl7Program13createKernelsEPSt6vectorINS_6KernelESaIS2_EE'/>
+<use f='pocl/include/CL/cl2.hpp' l='6826' u='c' c='_ZNK2cl7Program7getInfoEjPT_'/>
+<use f='pocl/include/CL/cl2.hpp' l='6828' u='c' c='_ZNK2cl7Program7getInfoEjPT_'/>
+<use f='pocl/tests/regression/test_flatten_barrier_subs.cpp' l='88' u='c' c='_Z18exclusive_scan_cpuRKSt6vectorIiSaIiEERS1_'/>
+<use f='pocl/tests/regression/test_flatten_barrier_subs.cpp' l='197' u='c' c='_Z17exclusive_scan_clRKSt6vectorIiSaIiEERS1_'/>

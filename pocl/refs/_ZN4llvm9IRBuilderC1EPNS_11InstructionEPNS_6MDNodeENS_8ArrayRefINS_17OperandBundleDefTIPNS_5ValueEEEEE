@@ -1,0 +1,14 @@
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='694' ll='698' type='void llvm::IRBuilder::IRBuilder&lt;T, Inserter&gt;(llvm::Instruction * IP, llvm::MDNode * FPMathTag = nullptr, ArrayRef&lt;OperandBundleDef&gt; OpBundles = None)'/>
+<use f='pocl/lib/llvmopencl/HandleSamplerInitialization.cc' l='78' u='c' c='_ZN4pocl27HandleSamplerInitialization13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Kernel.cc' l='278' u='c' c='_ZN4pocl6Kernel20addLocalSizeInitCodeEmmm'/>
+<use f='pocl/lib/llvmopencl/PHIsToAllocas.cc' l='125' u='c' c='_ZN4pocl13PHIsToAllocas17BreakPHIToAllocasEPN4llvm7PHINodeE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='592' u='c' c='_ZN4pocl14ParallelRegion12LocalIDZLoadEv'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='606' u='c' c='_ZN4pocl14ParallelRegion12LocalIDYLoadEv'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='620' u='c' c='_ZN4pocl14ParallelRegion12LocalIDXLoadEv'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='631' u='c' c='_ZN4pocl14ParallelRegion12InjectPrintFEPN4llvm11InstructionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIPNS1_5ValueESaISC_EE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='751' u='c' c='_ZN4pocl14ParallelRegion23InjectVariablePrintoutsEv'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='805' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='378' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='757' u='c' c='_ZN4pocl13WorkitemLoops14AddContextSaveEPN4llvm11InstructionES3_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='790' u='c' c='_ZN4pocl13WorkitemLoops17AddContextRestoreEPN4llvm5ValueEPNS1_11InstructionEbS5_b'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='877' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>

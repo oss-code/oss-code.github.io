@@ -1,0 +1,3 @@
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='788' ll='797' type='llvm::BranchInst * llvm::IRBuilder::CreateCondBr(llvm::Value * Cond, llvm::BasicBlock * True, llvm::BasicBlock * False, llvm::Instruction * MDSrc)'/>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='786'>/// \brief Create a conditional &apos;br Cond, TrueDest, FalseDest&apos;
+  /// instruction. Copy branch meta data if available.</doc>

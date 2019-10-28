@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='490' type='bool llvm::canReplaceOperandWithVariable(const llvm::Instruction * I, unsigned int OpIdx)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='484'>//===----------------------------------------------------------------------===//
+//  Transform predicates
+//
+
+/// Given an instruction, is it legal to set operand OpIdx to a non-constant
+/// value?</doc>

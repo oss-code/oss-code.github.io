@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/Constants.h' l='1191' ll='1193' type='llvm::Constant * llvm::ConstantExpr::getWithOperands(ArrayRef&lt;llvm::Constant *&gt; Ops) const'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='1188'>/// This returns the current constant expression with the operands replaced
+  /// with the specified values. The specified array must have the same number
+  /// of operands as our current one.</doc>

@@ -1,0 +1,45 @@
+<inh f='include/llvm-6.0/llvm/Pass.h' l='81' c='llvm::Pass'/>
+<def f='include/llvm-6.0/llvm/Pass.h' l='285' ll='307'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='1053' c='llvm::AAResultsWrapperPass'/>
+<size>32</size>
+<doc f='include/llvm-6.0/llvm/Pass.h' l='276'>//===----------------------------------------------------------------------===//
+/// FunctionPass class - This class is used to implement most global
+/// optimizations.  Optimizations should subclass this class if they meet the
+/// following constraints:
+///
+///  1. Optimizations are organized globally, i.e., a function at a time
+///  2. Optimizing a function does not cause the addition or removal of any
+///     functions in the module
+///</doc>
+<fun r='_ZN4llvm12FunctionPassC1ERc'/>
+<fun r='_ZNK4llvm12FunctionPass17createPrinterPassERNS_11raw_ostreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<fun r='_ZN4llvm12FunctionPass13runOnFunctionERNS_8FunctionE'/>
+<fun r='_ZN4llvm12FunctionPass17assignPassManagerERNS_7PMStackENS_15PassManagerTypeE'/>
+<fun r='_ZNK4llvm12FunctionPass27getPotentialPassManagerTypeEv'/>
+<fun r='_ZNK4llvm12FunctionPass12skipFunctionERKNS_8FunctionE'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/BasicAliasAnalysis.h' l='227' c='llvm::BasicAAWrapperPass'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/IntervalPartition.h' l='43' c='llvm::IntervalPartition'/>
+<ovr f='include/llvm-6.0/llvm/IR/Dominators.h' l='267' c='llvm::DominatorTreeWrapperPass'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/PostDominators.h' l='64' c='llvm::PostDominatorTreeWrapperPass'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='946' c='llvm::RegionInfoPass'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/RegionPass.h' l='89' c='llvm::RGPassManager'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='958' c='llvm::LoopInfoWrapperPass'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1815' c='llvm::ScalarEvolutionWrapperPass'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionAliasAnalysis.h' l='52' c='llvm::SCEVAAWrapperPass'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/MemoryDependenceAnalysis.h' l='517' c='llvm::MemoryDependenceWrapperPass'/>
+<ovr f='include/llvm-6.0/llvm/Transforms/Utils/UnifyFunctionExitNodes.h' l='26' c='llvm::UnifyFunctionExitNodes'/>
+<ovr f='pocl/lib/llvmopencl/AllocasToEntry.h' l='34' c='pocl::AllocasToEntry'/>
+<ovr f='pocl/lib/llvmopencl/BarrierTailReplication.h' l='41' c='pocl::BarrierTailReplication'/>
+<ovr f='pocl/lib/llvmopencl/VariableUniformityAnalysis.h' l='51' c='pocl::VariableUniformityAnalysis'/>
+<ovr f='pocl/lib/llvmopencl/BreakConstantGEPs.h' l='36' c='BreakConstantGEPs'/>
+<ovr f='pocl/lib/llvmopencl/CanonicalizeBarriers.h' l='34' c='pocl::CanonicalizeBarriers'/>
+<ovr f='pocl/lib/llvmopencl/HandleSamplerInitialization.h' l='42' c='pocl::HandleSamplerInitialization'/>
+<ovr f='pocl/lib/llvmopencl/ImplicitConditionalBarriers.h' l='62' c='pocl::ImplicitConditionalBarriers'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/LoopPass.h' l='97' c='llvm::LPPassManager'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/LoopPass.h' l='164' c='llvm::LCSSAVerificationPass'/>
+<ovr f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.h' l='33' c='pocl::OptimizeWorkItemFuncCalls'/>
+<ovr f='pocl/lib/llvmopencl/PHIsToAllocas.h' l='39' c='pocl::PHIsToAllocas'/>
+<ovr f='pocl/lib/llvmopencl/WorkitemHandler.h' l='47' c='pocl::WorkitemHandler'/>
+<ovr f='pocl/lib/llvmopencl/RemoveBarrierCalls.h' l='41' c='pocl::RemoveBarrierCalls'/>
+<ovr f='pocl/lib/llvmopencl/RemoveOptnoneFromWIFunc.h' l='33' c='pocl::RemoveOptnoneFromWIFunc'/>
+<ovr f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='93' c='WorkItemAliasAnalysis'/>

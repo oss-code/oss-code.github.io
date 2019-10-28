@@ -1,0 +1,34 @@
+<def f='pocl/include/CL/cl2.hpp' l='3126' ll='3130' type='cl::Event &amp; cl::Event::operator=(const cl_event &amp; rhs)'/>
+<use f='pocl/include/CL/cl2.hpp' l='7417' u='c' c='_ZNK2cl12CommandQueue17enqueueReadBufferERKNS_6BufferEjmmPvPKSt6vectorINS_5EventESaIS6_EEPS6_'/>
+<use f='pocl/include/CL/cl2.hpp' l='7442' u='c' c='_ZNK2cl12CommandQueue18enqueueWriteBufferERKNS_6BufferEjmmPKvPKSt6vectorINS_5EventESaIS7_EEPS7_'/>
+<use f='pocl/include/CL/cl2.hpp' l='7466' u='c' c='_ZNK2cl12CommandQueue17enqueueCopyBufferERKNS_6BufferES3_mmmPKSt6vectorINS_5EventESaIS5_EEPS5_'/>
+<use f='pocl/include/CL/cl2.hpp' l='7505' u='c' c='_ZNK2cl12CommandQueue21enqueueReadBufferRectERKNS_6BufferEjRKSt5arrayImLm3EES7_S7_mmmmPvPKSt6vectorINS_5EventESaISA_EEPSA_'/>
+<use f='pocl/include/CL/cl2.hpp' l='7544' u='c' c='_ZNK2cl12CommandQueue22enqueueWriteBufferRectERKNS_6BufferEjRKSt5arrayImLm3EES7_S7_mmmmPKvPKSt6vectorINS_5EventESaISB_EEPSB_'/>
+<use f='pocl/include/CL/cl2.hpp' l='7581' u='c' c='_ZNK2cl12CommandQueue21enqueueCopyBufferRectERKNS_6BufferES3_RKSt5arrayImLm3EES7_S7_mmmmPKSt6vectorINS_5EventESaIS9_EEPS9_'/>
+<use f='pocl/include/CL/cl2.hpp' l='7622' u='c' c='_ZNK2cl12CommandQueue17enqueueFillBufferERKNS_6BufferET_mmPKSt6vectorINS_5EventESaIS6_EEPS6_'/>
+<use f='pocl/include/CL/cl2.hpp' l='7656' u='c' c='_ZNK2cl12CommandQueue16enqueueReadImageERKNS_5ImageEjRKSt5arrayImLm3EES7_mmPvPKSt6vectorINS_5EventESaISA_EEPSA_'/>
+<use f='pocl/include/CL/cl2.hpp' l='7689' u='c' c='_ZNK2cl12CommandQueue17enqueueWriteImageERKNS_5ImageEjRKSt5arrayImLm3EES7_mmPKvPKSt6vectorINS_5EventESaISB_EEPSB_'/>
+<use f='pocl/include/CL/cl2.hpp' l='7718' u='c' c='_ZNK2cl12CommandQueue16enqueueCopyImageERKNS_5ImageES3_RKSt5arrayImLm3EES7_S7_PKSt6vectorINS_5EventESaIS9_EEPS9_'/>
+<use f='pocl/include/CL/cl2.hpp' l='7753' u='c' c='_ZNK2cl12CommandQueue16enqueueFillImageERKNS_5ImageE9cl_float4RKSt5arrayImLm3EES8_PKSt6vectorINS_5EventESaISA_EEPSA_'/>
+<use f='pocl/include/CL/cl2.hpp' l='7787' u='c' c='_ZNK2cl12CommandQueue16enqueueFillImageERKNS_5ImageE7cl_int4RKSt5arrayImLm3EES8_PKSt6vectorINS_5EventESaISA_EEPSA_'/>
+<use f='pocl/include/CL/cl2.hpp' l='7821' u='c' c='_ZNK2cl12CommandQueue16enqueueFillImageERKNS_5ImageE8cl_uint4RKSt5arrayImLm3EES8_PKSt6vectorINS_5EventESaISA_EEPSA_'/>
+<use f='pocl/include/CL/cl2.hpp' l='7851' u='c' c='_ZNK2cl12CommandQueue24enqueueCopyImageToBufferERKNS_5ImageERKNS_6BufferERKSt5arrayImLm3EESA_mPKSt6vectorINS_5EventESaISC_EEPSC_'/>
+<use f='pocl/include/CL/cl2.hpp' l='7880' u='c' c='_ZNK2cl12CommandQueue24enqueueCopyBufferToImageERKNS_6BufferERKNS_5ImageEmRKSt5arrayImLm3EESA_PKSt6vectorINS_5EventESaISC_EEPSC_'/>
+<use f='pocl/include/CL/cl2.hpp' l='7909' u='c' c='_ZNK2cl12CommandQueue16enqueueMapBufferERKNS_6BufferEjmmmPKSt6vectorINS_5EventESaIS5_EEPS5_Pi'/>
+<use f='pocl/include/CL/cl2.hpp' l='7943' u='c' c='_ZNK2cl12CommandQueue15enqueueMapImageERKNS_5ImageEjmRKSt5arrayImLm3EES7_PmS8_PKSt6vectorINS_5EventESaISA_EEPSA_Pi'/>
+<use f='pocl/include/CL/cl2.hpp' l='8046' u='c' c='_ZNK2cl12CommandQueue21enqueueUnmapMemObjectERKNS_6MemoryEPvPKSt6vectorINS_5EventESaIS6_EEPS6_'/>
+<use f='pocl/include/CL/cl2.hpp' l='8155' u='c' c='_ZNK2cl12CommandQueue25enqueueMarkerWithWaitListEPKSt6vectorINS_5EventESaIS2_EEPS2_'/>
+<use f='pocl/include/CL/cl2.hpp' l='8185' u='c' c='_ZNK2cl12CommandQueue26enqueueBarrierWithWaitListEPKSt6vectorINS_5EventESaIS2_EEPS2_'/>
+<use f='pocl/include/CL/cl2.hpp' l='8221' u='c' c='_ZNK2cl12CommandQueue24enqueueMigrateMemObjectsERKSt6vectorINS_6MemoryESaIS2_EEmPKS1_INS_5EventESaIS7_EEPS7_'/>
+<use f='pocl/include/CL/cl2.hpp' l='8372' u='c' c='_ZNK2cl12CommandQueue20enqueueNDRangeKernelERKNS_6KernelERKNS_7NDRangeES6_S6_PKSt6vectorINS_5EventESaIS8_EEPS8_'/>
+<use f='pocl/include/CL/cl2.hpp' l='8393' u='c' c='_ZNK2cl12CommandQueue11enqueueTaskERKNS_6KernelEPKSt6vectorINS_5EventESaIS5_EEPS5_'/>
+<use f='pocl/include/CL/cl2.hpp' l='8429' u='c' c='_ZNK2cl12CommandQueue19enqueueNativeKernelEPFvPvESt4pairIS1_mEPKSt6vectorINS_6MemoryESaIS7_EEPKS6_IPKvSaISD_EEPKS6_INS_5EventESaISI_EEPSI_'/>
+<use f='pocl/include/CL/cl2.hpp' l='8449' u='c' c='_ZNK2cl12CommandQueue13enqueueMarkerEPNS_5EventE'/>
+<use f='pocl/include/CL/cl2.hpp' l='8483' u='c' c='_ZNK2cl12CommandQueue23enqueueAcquireGLObjectsEPKSt6vectorINS_6MemoryESaIS2_EEPKS1_INS_5EventESaIS7_EEPS7_'/>
+<use f='pocl/include/CL/cl2.hpp' l='8505' u='c' c='_ZNK2cl12CommandQueue23enqueueReleaseGLObjectsEPKSt6vectorINS_6MemoryESaIS2_EEPKS1_INS_5EventESaIS7_EEPS7_'/>
+<use f='pocl/include/CL/cl2.hpp' l='9178' u='c' c='_ZN2cl21enqueueUnmapMemObjectERKNS_6MemoryEPvPKSt6vectorINS_5EventESaIS5_EEPS5_'/>
+<doc f='pocl/include/CL/cl2.hpp' l='3121'>/*! \brief Assignment operator from cl_event - takes ownership.
+     *
+     *  This effectively transfers ownership of a refcount on the rhs and calls
+     *  clReleaseEvent() on the value previously held by this instance.
+     */</doc>

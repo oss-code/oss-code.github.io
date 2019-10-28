@@ -1,0 +1,8 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2698' type='void LLVMSetCondition(LLVMValueRef Branch, LLVMValueRef Cond)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2691'>/**
+ * Set the condition of a branch instruction.
+ *
+ * This only works on llvm::BranchInst instructions.
+ *
+ * @see llvm::BranchInst::setCondition
+ */</doc>

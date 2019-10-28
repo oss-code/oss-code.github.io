@@ -1,0 +1,9 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='997' type='cl_device_id'/>
+<offset>896</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='995'>/* device that allocated, and is going to free, 
+     the shared system mem allocation */</doc>
+<use f='pocl/lib/CL/clCreateBuffer.c' l='141' u='w' c='POclCreateBuffer'/>
+<use f='pocl/lib/CL/clCreateBuffer.c' l='172' u='r' c='POclCreateBuffer'/>
+<use f='pocl/lib/CL/clReleaseMemObject.c' l='68' u='r' c='POclReleaseMemObject'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='494' u='w' c='pocl_basic_alloc_mem_obj'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='522' u='r' c='pocl_basic_free'/>

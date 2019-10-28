@@ -1,0 +1,10 @@
+<dec f='include/hwloc.h' l='1870' type='int hwloc_set_proc_membind(hwloc_topology_t topology, pid_t pid, hwloc_const_cpuset_t cpuset, hwloc_membind_policy_t policy, int flags)'/>
+<doc f='include/hwloc.h' l='1861'>/** \brief Set the default memory binding policy of the specified
+ * process to prefer the NUMA node(s) near the specified physical \p cpuset
+ *
+ * \return -1 with errno set to ENOSYS if the action is not supported
+ * \return -1 with errno set to EXDEV if the binding cannot be enforced
+ *
+ * \note \p hwloc_pid_t is \p pid_t on Unix platforms,
+ * and \p HANDLE on native Windows platforms.
+ */</doc>

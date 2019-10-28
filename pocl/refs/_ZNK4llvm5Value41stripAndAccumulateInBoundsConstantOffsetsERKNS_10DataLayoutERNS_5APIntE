@@ -1,0 +1,10 @@
+<dec f='include/llvm-6.0/llvm/IR/Value.h' l='550' type='const llvm::Value * llvm::Value::stripAndAccumulateInBoundsConstantOffsets(const llvm::DataLayout &amp; DL, llvm::APInt &amp; Offset) const'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='555' u='c' c='_ZN4llvm5Value41stripAndAccumulateInBoundsConstantOffsetsERKNS_10DataLayoutERNS_5APIntE'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalIndirectSymbol.h' l='68' u='c' c='_ZNK4llvm20GlobalIndirectSymbol13getBaseObjectERKNS_10DataLayoutERNS_5APIntE'/>
+<doc f='include/llvm-6.0/llvm/IR/Value.h' l='543'>/// \brief Accumulate offsets from \a stripInBoundsConstantOffsets().
+  ///
+  /// Stores the resulting constant offset stripped into the APInt provided.
+  /// The provided APInt will be extended or truncated as needed to be the
+  /// correct bitwidth for an offset of this pointer type.
+  ///
+  /// If this is called on a non-pointer value, it returns &apos;this&apos;.</doc>

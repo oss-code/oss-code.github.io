@@ -1,0 +1,11 @@
+<dec f='include/llvm-6.0/llvm/IR/Instructions.h' l='2741' type='llvm::Value * llvm::PHINode::removeIncomingValue(unsigned int Idx, bool DeletePHIIfEmpty = true)'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='2746' u='c' c='_ZN4llvm7PHINode19removeIncomingValueEPKNS_10BasicBlockEb'/>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='2733'>/// Remove an incoming value.  This is useful if a
+  /// predecessor basic block is deleted.  The value removed is returned.
+  ///
+  /// If the last incoming value for a PHI node is removed (and DeletePHIIfEmpty
+  /// is true), the PHI node is destroyed and any uses of it are replaced with
+  /// dummy values.  The only time there should be zero incoming values to a PHI
+  /// node is when the block is dead, so this strategy is sound.
+  ///</doc>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='262' u='c' c='_ZN4pocl22BarrierTailReplication11CleanupPHIsEPN4llvm10BasicBlockE'/>

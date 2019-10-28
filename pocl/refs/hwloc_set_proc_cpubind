@@ -1,0 +1,12 @@
+<dec f='include/hwloc.h' l='1475' type='int hwloc_set_proc_cpubind(hwloc_topology_t topology, pid_t pid, hwloc_const_cpuset_t set, int flags)'/>
+<doc f='include/hwloc.h' l='1464'>/** \brief Bind a process \p pid on cpus given in physical bitmap \p set.
+ *
+ * \note \p hwloc_pid_t is \p pid_t on Unix platforms,
+ * and \p HANDLE on native Windows platforms.
+ *
+ * \note As a special case on Linux, if a tid (thread ID) is supplied
+ * instead of a pid (process ID) and ::HWLOC_CPUBIND_THREAD is passed in flags,
+ * the binding is applied to that specific thread.
+ *
+ * \note On non-Linux systems, ::HWLOC_CPUBIND_THREAD can not be used in \p flags.
+ */</doc>

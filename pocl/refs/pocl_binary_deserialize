@@ -1,0 +1,4 @@
+<dec f='pocl/lib/CL/pocl_binary.h' l='47' type='cl_int pocl_binary_deserialize(cl_program program, unsigned int device_i)'/>
+<doc f='pocl/lib/CL/pocl_binary.h' l='46'>/* unpacks the content of program-&gt;pocl_binaries[device_i] into pocl cache */</doc>
+<use f='pocl/lib/CL/clCreateProgramWithBinary.c' l='161' u='c' c='create_program_skeleton'/>
+<def f='pocl/lib/CL/pocl_binary.c' l='643' ll='677' type='cl_int pocl_binary_deserialize(cl_program program, unsigned int device_i)'/>

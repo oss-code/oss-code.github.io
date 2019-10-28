@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/ADT/ilist_node.h' l='100' ll='104' type='bool llvm::ilist_node_impl::isSentinel() const'/>
+<doc f='include/llvm-6.0/llvm/ADT/ilist_node.h' l='96'>/// Check whether this is the sentinel node.
+  ///
+  /// This requires sentinel tracking to be explicitly enabled.  Use the
+  /// ilist_sentinel_tracking&lt;true&gt; option to get this API.</doc>

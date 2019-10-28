@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1250' type='const llvm::SCEV * llvm::ScalarEvolution::BackedgeTakenInfo::getExact(llvm::BasicBlock * ExitingBlock, llvm::ScalarEvolution * SE) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1246'>/// Return the number of times this loop exit may fall through to the back
+    /// edge, or SCEVCouldNotCompute. The loop is guaranteed not to exit via
+    /// this block before this number of iterations, but may exit via another
+    /// block.</doc>

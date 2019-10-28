@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='979' type='bool llvm::isIdentifiedObject(const llvm::Value * V)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='972'>/// Return true if this pointer refers to a distinct and identifiable object.
+/// This returns true for:
+///    Global Variables and Functions (but not Global Aliases)
+///    Allocas
+///    ByVal and NoAlias Arguments
+///    NoAlias returns (e.g. calls to malloc)
+///</doc>

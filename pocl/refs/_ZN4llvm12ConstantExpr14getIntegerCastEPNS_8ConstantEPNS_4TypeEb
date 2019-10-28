@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='1054' type='static llvm::Constant * llvm::ConstantExpr::getIntegerCast(llvm::Constant * C, llvm::Type * Ty, bool isSigned)'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='1053'>/// @brief Create a ZExt, Bitcast or Trunc for integer -&gt; integer casts</doc>
+<use f='include/llvm-6.0/llvm/IR/ConstantFolder.h' l='197' u='c' c='_ZNK4llvm14ConstantFolder13CreateIntCastEPNS_8ConstantEPNS_4TypeEb'/>
+<use f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='294' u='c' c='_ZN4llvm13EmitGEPOffsetEPT_RKNS_10DataLayoutEPNS_4UserEb'/>

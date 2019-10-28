@@ -1,0 +1,8 @@
+<def f='include/c++/7/bits/basic_string.h' l='1157' ll='1159' type='basic_string&lt;_CharT, _Traits, _Alloc&gt; &amp; std::__cxx11::basic_string::operator+=(const basic_string&lt;_CharT, _Traits, _Alloc&gt; &amp; __str)'/>
+<doc f='include/c++/7/bits/basic_string.h' l='1152'>/**
+       *  @brief  Append a string to this string.
+       *  @param __str  The string to append.
+       *  @return  Reference to this string.
+       */</doc>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='285' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/tests/regression/test_alignment_with_dynamic_wg.cpp' l='61' u='c' c='_Z15test_invocationjjjRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES6_S6_RN2cl12CommandQueueERNS7_7ProgramE'/>

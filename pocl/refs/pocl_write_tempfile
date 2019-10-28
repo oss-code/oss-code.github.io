@@ -1,0 +1,8 @@
+<dec f='pocl/include/pocl_file_util.h' l='59' type='int pocl_write_tempfile(char * output_path, const char * prefix, const char * suffix, const char * content, uint64_t count, int * ret_fd)'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='233' u='c' c='pocl_cache_write_program_source'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='243' u='c' c='pocl_cache_write_kernel_objfile'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='252' u='c' c='pocl_cache_write_spirv'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='673' u='c' c='pocl_llvm_codegen'/>
+<def f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='348' ll='387' type='int pocl_write_tempfile(char * output_path, const char * prefix, const char * suffix, const char * content, uint64_t count, int * ret_fd)'/>
+<doc f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='346'>/* write content[count] into a temporary file, and return the tempfile name in
+ * output_path */</doc>

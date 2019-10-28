@@ -1,0 +1,6 @@
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2432' u='c' c='_ZNK4llvm15DILocalVariable9cloneImplEv'/>
+<def f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2454' ll='2456' type='llvm::DILocalScope * llvm::DILocalVariable::getScope() const'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2471' u='c' c='_ZNK4llvm15DILocalVariable27isValidLocationForIntrinsicEPKNS_10DILocationE'/>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2451'>/// Get the local scope for this variable.
+  ///
+  /// Variables must be defined in a local scope.</doc>

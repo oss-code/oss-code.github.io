@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='532' type='llvm::MDNode * llvm::Loop::getLoopID() const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='526'>/// Return the llvm.loop loop id metadata node for this loop if it is present.
+  ///
+  /// If this loop contains the same llvm.loop metadata on each branch to the
+  /// header then the node is returned. If any latch instruction does not
+  /// contain llvm.loop or or if multiple latches contain different nodes then
+  /// 0 is returned.</doc>

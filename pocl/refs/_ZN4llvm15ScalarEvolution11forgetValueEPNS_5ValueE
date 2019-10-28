@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='770' type='void llvm::ScalarEvolution::forgetValue(llvm::Value * V)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='767'>/// This method should be called by the client when it has changed a value
+  /// in a way that may effect its value, or which may disconnect it from a
+  /// def-use chain linking it to a loop.</doc>

@@ -1,0 +1,4 @@
+<dec f='pocl/lib/CL/pocl_util.h' l='98' type='void pocl_unlock_events_inorder(cl_event ev1, cl_event ev2)'/>
+<use f='pocl/lib/CL/devices/common.c' l='782' u='c' c='pocl_broadcast'/>
+<def f='pocl/lib/CL/pocl_util.c' l='357' ll='372' type='void pocl_unlock_events_inorder(cl_event ev1, cl_event ev2)'/>
+<use f='pocl/lib/CL/pocl_util.c' l='450' u='c' c='pocl_create_event_sync'/>

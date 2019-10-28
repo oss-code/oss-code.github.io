@@ -1,0 +1,8 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2088' type='LLVMValueRef LLVMGetNextParam(LLVMValueRef Arg)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2081'>/**
+ * Obtain the next parameter to a function.
+ *
+ * This takes an LLVMValueRef obtained from LLVMGetFirstParam() (which is
+ * actually a wrapped iterator) and obtains the next parameter from the
+ * underlying iterator.
+ */</doc>

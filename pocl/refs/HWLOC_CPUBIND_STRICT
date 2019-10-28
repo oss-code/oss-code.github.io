@@ -1,0 +1,24 @@
+<dec f='include/hwloc.h' l='1430' type='4'/>
+<doc f='include/hwloc.h' l='1407'>/** \brief Request for strict binding from the OS.
+   *
+   * By default, when the designated CPUs are all busy while other
+   * CPUs are idle, operating systems may execute the thread/process
+   * on those other CPUs instead of the designated CPUs, to let them
+   * progress anyway.  Strict binding means that the thread/process
+   * will _never_ execute on other cpus than the designated CPUs, even
+   * when those are busy with other tasks and other CPUs are idle.
+   *
+   * \note Depending on the operating system, strict binding may not
+   * be possible (e.g., the OS does not implement it) or not allowed
+   * (e.g., for an administrative reasons), and the function will fail
+   * in that case.
+   *
+   * When retrieving the binding of a process, this flag checks
+   * whether all its threads  actually have the same binding. If the
+   * flag is not given, the binding of each thread will be
+   * accumulated.
+   *
+   * \note This flag is meaningless when retrieving the binding of a
+   * thread.
+   * \hideinitializer
+   */</doc>

@@ -1,0 +1,14 @@
+<def f='include/llvm-6.0/llvm/IR/DataLayout.h' l='90' ll='101'/>
+<size>16</size>
+<doc f='include/llvm-6.0/llvm/IR/DataLayout.h' l='84'>/// \brief Layout pointer alignment element.
+///
+/// Stores the alignment data associated with a given pointer and address space.
+///
+/// \note The unusual order of elements in the structure attempts to reduce
+/// padding and make the structure slightly more cache friendly.</doc>
+<mbr r='llvm::PointerAlignElem::ABIAlign' o='0' t='unsigned int'/>
+<mbr r='llvm::PointerAlignElem::PrefAlign' o='32' t='unsigned int'/>
+<mbr r='llvm::PointerAlignElem::TypeByteWidth' o='64' t='uint32_t'/>
+<mbr r='llvm::PointerAlignElem::AddressSpace' o='96' t='uint32_t'/>
+<fun r='_ZN4llvm16PointerAlignElem3getEjjjj'/>
+<fun r='_ZNK4llvm16PointerAlignElemeqERKS0_'/>

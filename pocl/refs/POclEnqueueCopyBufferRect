@@ -1,0 +1,6 @@
+<dec f='pocl/lib/CL/pocl_intfn.h' l='55' macro='1' type='cl_int POclEnqueueCopyBufferRect(cl_command_queue , cl_mem , cl_mem , const size_t * , const size_t * , const size_t * , size_t , size_t , size_t , size_t , cl_uint , const cl_event * , cl_event * )'/>
+<def f='pocl/lib/CL/clEnqueueCopyBufferRect.c' l='30' macro='1' type='cl_int POclEnqueueCopyBufferRect(cl_command_queue command_queue, cl_mem src_buffer, cl_mem dst_buffer, const size_t * src_origin, const size_t * dst_origin, const size_t * region, size_t src_row_pitch, size_t src_slice_pitch, size_t dst_row_pitch, size_t dst_slice_pitch, cl_uint num_events_in_wait_list, const cl_event * event_wait_list, cl_event * event)'/>
+<use f='pocl/lib/CL/clEnqueueCopyBufferToImage.c' l='31' macro='1' u='c'/>
+<use f='pocl/lib/CL/clEnqueueCopyImageToBuffer.c' l='30' macro='1' u='c'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='128' macro='1' u='a'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='128' macro='1' u='a'/>

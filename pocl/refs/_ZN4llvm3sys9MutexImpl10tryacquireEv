@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Support/Mutex.h' l='67' type='bool llvm::sys::MutexImpl::tryacquire()'/>
+<use f='include/llvm-6.0/llvm/Support/Mutex.h' l='128' u='c' c='_ZN4llvm3sys10SmartMutex8try_lockEv'/>
+<doc f='include/llvm-6.0/llvm/Support/Mutex.h' l='61'>/// Attempts to acquire the lock without blocking. If the lock is not
+      /// available, this function returns false quickly (without blocking). If
+      /// the lock is available, it is acquired.
+      /// @returns false if any kind of error occurs or the lock is not
+      /// available, true otherwise.
+      /// @brief Try to acquire the lock.</doc>

@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1128' type='SmallPtrSet&lt;const llvm::SCEVPredicate *, 4&gt;'/>
+<use f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1132' u='m' c='_ZN4llvm15ScalarEvolution9ExitLimit12addPredicateEPKNS_13SCEVPredicateE'/>
+<offset>192</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1125'>/// A set of predicate guards for this ExitLimit. The result is only valid
+    /// if all of the predicates in \c Predicates evaluate to &apos;true&apos; at
+    /// run-time.</doc>

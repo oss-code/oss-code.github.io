@@ -1,0 +1,4 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='93'/>
+<doc f='pocl/lib/CL/pocl_cl.h' l='91'>/* We recycle OpenCL objects by not actually freeing them until the
+   very end. Thus, the lock should not be destoryed at the refcount 0. */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='1083' u='c'/>

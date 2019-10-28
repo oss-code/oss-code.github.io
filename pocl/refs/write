@@ -1,0 +1,9 @@
+<dec f='include/unistd.h' l='369' type='ssize_t write(int __fd, const void * __buf, size_t __n)'/>
+<doc f='include/unistd.h' l='365'>/* Write N bytes of BUF to FD.  Return the number written, or -1.
+
+   This function is a cancellation point and therefore not marked with
+   __THROW.  */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='678' u='c' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='312' u='c' c='work_group_scheduler'/>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='324' u='c' c='pocl_write_file'/>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='366' u='c' c='pocl_write_tempfile'/>

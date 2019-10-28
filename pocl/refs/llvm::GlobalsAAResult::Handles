@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/GlobalsModRef.h' l='74' type='std::list&lt;DeletionCallbackHandle&gt;'/>
+<offset>2304</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/GlobalsModRef.h' l='70'>/// List of callbacks for globals being tracked by this analysis. Note that
+  /// these objects are quite large, but we only anticipate having one per
+  /// global tracked by this analysis. There are numerous optimizations we
+  /// could perform to the memory utilization here if this becomes a problem.</doc>

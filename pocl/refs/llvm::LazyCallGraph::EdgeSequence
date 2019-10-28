@@ -1,0 +1,28 @@
+<def f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='186' ll='315'/>
+<size>80</size>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='176'>/// The edge sequence object.
+  ///
+  /// This typically exists entirely within the node but is exposed as
+  /// a separate type because a node doesn&apos;t initially have edges. An explicit
+  /// population step is required to produce this sequence at first and it is
+  /// then cached in the node. It is also used to represent edges entering the
+  /// graph from outside the module to model the graph&apos;s roots.
+  ///
+  /// The sequence itself both iterable and indexable. The indexes remain
+  /// stable even as the sequence mutates (including removal).</doc>
+<fun r='_ZN4llvm13LazyCallGraph12EdgeSequence5beginEv'/>
+<fun r='_ZN4llvm13LazyCallGraph12EdgeSequence3endEv'/>
+<fun r='_ZN4llvm13LazyCallGraph12EdgeSequenceixEi'/>
+<fun r='_ZN4llvm13LazyCallGraph12EdgeSequenceixERNS0_4NodeE'/>
+<fun r='_ZN4llvm13LazyCallGraph12EdgeSequence6lookupERNS0_4NodeE'/>
+<fun r='_ZN4llvm13LazyCallGraph12EdgeSequence10call_beginEv'/>
+<fun r='_ZN4llvm13LazyCallGraph12EdgeSequence8call_endEv'/>
+<fun r='_ZN4llvm13LazyCallGraph12EdgeSequence5callsEv'/>
+<fun r='_ZN4llvm13LazyCallGraph12EdgeSequence5emptyEv'/>
+<mbr r='llvm::LazyCallGraph::EdgeSequence::Edges' o='0' t='VectorT'/>
+<mbr r='llvm::LazyCallGraph::EdgeSequence::EdgeIndexMap' o='448' t='DenseMap&lt;llvm::LazyCallGraph::Node *, int&gt;'/>
+<fun r='_ZN4llvm13LazyCallGraph12EdgeSequenceC1Ev'/>
+<fun r='_ZN4llvm13LazyCallGraph12EdgeSequence18insertEdgeInternalERNS0_4NodeENS0_4Edge4KindE'/>
+<fun r='_ZN4llvm13LazyCallGraph12EdgeSequence11setEdgeKindERNS0_4NodeENS0_4Edge4KindE'/>
+<fun r='_ZN4llvm13LazyCallGraph12EdgeSequence18removeEdgeInternalERNS0_4NodeE'/>
+<fun r='_ZN4llvm13LazyCallGraph12EdgeSequence14replaceEdgeKeyERNS_8FunctionES3_'/>

@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='697' type='unsigned int llvm::TargetTransformInfo::getMaxPrefetchIterationsAhead() const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='694'>/// \return The maximum number of iterations to prefetch ahead.  If the
+  /// required number of iterations is more than this number, no prefetching is
+  /// performed.</doc>

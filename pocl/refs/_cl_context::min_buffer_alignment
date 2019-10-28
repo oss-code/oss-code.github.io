@@ -1,0 +1,11 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='878' type='size_t'/>
+<offset>1408</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='872'>/* The minimal required buffer alignment for all devices in the context.
+   * E.g. for clCreateSubBuffer:
+   * CL_MISALIGNED_SUB_BUFFER_OFFSET is returned in errcode_ret if there are no
+   * devices in context associated with buffer for which the origin value
+   * is aligned to the CL_DEVICE_MEM_BASE_ADDR_ALIGN value.
+   */</doc>
+<use f='pocl/lib/CL/clCreateSubBuffer.c' l='91' u='r' c='POclCreateSubBuffer'/>
+<use f='pocl/lib/CL/clCreateSubBuffer.c' l='95' u='r' c='POclCreateSubBuffer'/>
+<use f='pocl/lib/CL/pocl_util.c' l='988' u='w' c='pocl_setup_context'/>

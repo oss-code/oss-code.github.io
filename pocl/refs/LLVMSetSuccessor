@@ -1,0 +1,6 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2671' type='void LLVMSetSuccessor(LLVMValueRef Term, unsigned int i, LLVMBasicBlockRef block)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2666'>/**
+ * Update the specified successor to point at the provided block.
+ *
+ * @see llvm::TerminatorInst::setSuccessor
+ */</doc>

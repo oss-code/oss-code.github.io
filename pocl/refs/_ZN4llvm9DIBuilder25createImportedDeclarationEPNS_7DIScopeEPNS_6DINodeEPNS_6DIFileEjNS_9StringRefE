@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='712' type='llvm::DIImportedEntity * llvm::DIBuilder::createImportedDeclaration(llvm::DIScope * Context, llvm::DINode * Decl, llvm::DIFile * File, unsigned int Line, llvm::StringRef Name = &quot;&quot;)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='706'>/// Create a descriptor for an imported function.
+    /// \param Context The scope this module is imported into.
+    /// \param Decl    The declaration (or definition) of a function, type, or
+    ///                variable.
+    /// \param File    File where the declaration is located.
+    /// \param Line    Line number of the declaration.</doc>

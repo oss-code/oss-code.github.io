@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Arg.h source code [include/llvm-6.0/llvm/Option/Arg.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="llvm::opt::Arg "/>
+<link rel="stylesheet" href="../../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'include/llvm-6.0/llvm/Option/Arg.h'; var root_path = '../../../..'; var data_path = '../../../../../data';</script>
+<script src='../../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../../..'>include</a>/<a href='../..'>llvm-6.0</a>/<a href='..'>llvm</a>/<a href='./'>Option</a>/<a href='Arg.h.html'>Arg.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>//===- Arg.h - Parsed Argument Classes --------------------------*- C++ -*-===//</i></td></tr>
+<tr><th id="2">2</th><td><i>//</i></td></tr>
+<tr><th id="3">3</th><td><i>//                     The LLVM Compiler Infrastructure</i></td></tr>
+<tr><th id="4">4</th><td><i>//</i></td></tr>
+<tr><th id="5">5</th><td><i>// This file is distributed under the University of Illinois Open Source</i></td></tr>
+<tr><th id="6">6</th><td><i>// License. See LICENSE.TXT for details.</i></td></tr>
+<tr><th id="7">7</th><td><i>//</i></td></tr>
+<tr><th id="8">8</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="9">9</th><td><i>///</i></td></tr>
+<tr><th id="10">10</th><td><i>/// \file</i></td></tr>
+<tr><th id="11">11</th><td><i>/// \brief Defines the llvm::Arg class for parsed arguments.</i></td></tr>
+<tr><th id="12">12</th><td><i>///</i></td></tr>
+<tr><th id="13">13</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td><u>#<span data-ppcond="15">ifndef</span> <span class="macro" data-ref="_M/LLVM_OPTION_ARG_H">LLVM_OPTION_ARG_H</span></u></td></tr>
+<tr><th id="16">16</th><td><u>#define <dfn class="macro" id="_M/LLVM_OPTION_ARG_H" data-ref="_M/LLVM_OPTION_ARG_H">LLVM_OPTION_ARG_H</dfn></u></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><u>#include <a href="../ADT/SmallVector.h.html">"llvm/ADT/SmallVector.h"</a></u></td></tr>
+<tr><th id="19">19</th><td><u>#include <a href="../ADT/StringRef.h.html">"llvm/ADT/StringRef.h"</a></u></td></tr>
+<tr><th id="20">20</th><td><u>#include <a href="Option.h.html">"llvm/Option/Option.h"</a></u></td></tr>
+<tr><th id="21">21</th><td><u>#include <a href="../../../c++/7/string.html">&lt;string&gt;</a></u></td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><b>namespace</b> <span class="namespace">llvm</span> {</td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><b>class</b> <a class="type" href="../Support/raw_ostream.h.html#llvm::raw_ostream" title='llvm::raw_ostream' data-ref="llvm::raw_ostream" id="llvm::raw_ostream">raw_ostream</a>;</td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><b>namespace</b> <span class="namespace">opt</span> {</td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><b>class</b> <a class="type" href="ArgList.h.html#llvm::opt::ArgList" title='llvm::opt::ArgList' data-ref="llvm::opt::ArgList" id="llvm::opt::ArgList">ArgList</a>;</td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><i class="doc">/// <span class="command">\brief</span> A concrete instance of a particular driver option.</i></td></tr>
+<tr><th id="32">32</th><td><i class="doc">///</i></td></tr>
+<tr><th id="33">33</th><td><i class="doc">/// The Arg class encodes just enough information to be able to</i></td></tr>
+<tr><th id="34">34</th><td><i class="doc">/// derive the argument values efficiently.</i></td></tr>
+<tr><th id="35">35</th><td><b>class</b> <dfn class="type def" id="llvm::opt::Arg" title='llvm::opt::Arg' data-ref="llvm::opt::Arg">Arg</dfn> {</td></tr>
+<tr><th id="36">36</th><td><b>private</b>:</td></tr>
+<tr><th id="37">37</th><td>  <i class="doc">/// <span class="command">\brief</span> The option this argument is an instance of.</i></td></tr>
+<tr><th id="38">38</th><td>  <em>const</em> <a class="type" href="Option.h.html#llvm::opt::Option" title='llvm::opt::Option' data-ref="llvm::opt::Option">Option</a> <dfn class="decl" id="llvm::opt::Arg::Opt" title='llvm::opt::Arg::Opt' data-ref="llvm::opt::Arg::Opt">Opt</dfn>;</td></tr>
+<tr><th id="39">39</th><td></td></tr>
+<tr><th id="40">40</th><td>  <i class="doc">/// <span class="command">\brief</span> The argument this argument was derived from (during tool chain</i></td></tr>
+<tr><th id="41">41</th><td><i class="doc">  /// argument translation), if any.</i></td></tr>
+<tr><th id="42">42</th><td>  <em>const</em> <a class="type" href="#llvm::opt::Arg" title='llvm::opt::Arg' data-ref="llvm::opt::Arg">Arg</a> *<dfn class="decl" id="llvm::opt::Arg::BaseArg" title='llvm::opt::Arg::BaseArg' data-ref="llvm::opt::Arg::BaseArg">BaseArg</dfn>;</td></tr>
+<tr><th id="43">43</th><td></td></tr>
+<tr><th id="44">44</th><td>  <i class="doc">/// <span class="command">\brief</span> How this instance of the option was spelled.</i></td></tr>
+<tr><th id="45">45</th><td>  <a class="type" href="../ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="decl" id="llvm::opt::Arg::Spelling" title='llvm::opt::Arg::Spelling' data-ref="llvm::opt::Arg::Spelling">Spelling</dfn>;</td></tr>
+<tr><th id="46">46</th><td></td></tr>
+<tr><th id="47">47</th><td>  <i class="doc">/// <span class="command">\brief</span> The index at which this argument appears in the containing</i></td></tr>
+<tr><th id="48">48</th><td><i class="doc">  /// ArgList.</i></td></tr>
+<tr><th id="49">49</th><td>  <em>unsigned</em> <dfn class="decl" id="llvm::opt::Arg::Index" title='llvm::opt::Arg::Index' data-ref="llvm::opt::Arg::Index">Index</dfn>;</td></tr>
+<tr><th id="50">50</th><td></td></tr>
+<tr><th id="51">51</th><td>  <i class="doc">/// <span class="command">\brief</span> Was this argument used to effect compilation?</i></td></tr>
+<tr><th id="52">52</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="53">53</th><td><i class="doc">  /// This is used for generating "argument unused" diagnostics.</i></td></tr>
+<tr><th id="54">54</th><td>  <em>mutable</em> <em>unsigned</em> <dfn class="decl" id="llvm::opt::Arg::Claimed" title='llvm::opt::Arg::Claimed' data-ref="llvm::opt::Arg::Claimed">Claimed</dfn> : <var>1</var>;</td></tr>
+<tr><th id="55">55</th><td></td></tr>
+<tr><th id="56">56</th><td>  <i class="doc">/// <span class="command">\brief</span> Does this argument own its values?</i></td></tr>
+<tr><th id="57">57</th><td>  <em>mutable</em> <em>unsigned</em> <dfn class="decl" id="llvm::opt::Arg::OwnsValues" title='llvm::opt::Arg::OwnsValues' data-ref="llvm::opt::Arg::OwnsValues">OwnsValues</dfn> : <var>1</var>;</td></tr>
+<tr><th id="58">58</th><td></td></tr>
+<tr><th id="59">59</th><td>  <i class="doc">/// <span class="command">\brief</span> The argument values, as C strings.</i></td></tr>
+<tr><th id="60">60</th><td>  <span class='type' title='llvm::SmallVector' data-ref="llvm::SmallVector">SmallVector</span>&lt;<em>const</em> <em>char</em> *, <var>2</var>&gt; <dfn class="decl" id="llvm::opt::Arg::Values" title='llvm::opt::Arg::Values' data-ref="llvm::opt::Arg::Values">Values</dfn>;</td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td><b>public</b>:</td></tr>
+<tr><th id="63">63</th><td>  <dfn class="decl" id="_ZN4llvm3opt3ArgC1ENS0_6OptionENS_9StringRefEjPKS1_" title='llvm::opt::Arg::Arg' data-ref="_ZN4llvm3opt3ArgC1ENS0_6OptionENS_9StringRefEjPKS1_">Arg</dfn>(<em>const</em> <a class="type" href="Option.h.html#llvm::opt::Option" title='llvm::opt::Option' data-ref="llvm::opt::Option">Option</a> <dfn class="local col5 decl" id="85Opt" title='Opt' data-type='const llvm::opt::Option' data-ref="85Opt">Opt</dfn>, <a class="type" href="../ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="local col6 decl" id="86Spelling" title='Spelling' data-type='llvm::StringRef' data-ref="86Spelling">Spelling</dfn>, <em>unsigned</em> <dfn class="local col7 decl" id="87Index" title='Index' data-type='unsigned int' data-ref="87Index">Index</dfn>,</td></tr>
+<tr><th id="64">64</th><td>      <em>const</em> <a class="type" href="#llvm::opt::Arg" title='llvm::opt::Arg' data-ref="llvm::opt::Arg">Arg</a> *<dfn class="local col8 decl" id="88BaseArg" title='BaseArg' data-type='const llvm::opt::Arg *' data-ref="88BaseArg">BaseArg</dfn> = <b>nullptr</b>);</td></tr>
+<tr><th id="65">65</th><td>  <dfn class="decl" id="_ZN4llvm3opt3ArgC1ENS0_6OptionENS_9StringRefEjPKcPKS1_" title='llvm::opt::Arg::Arg' data-ref="_ZN4llvm3opt3ArgC1ENS0_6OptionENS_9StringRefEjPKcPKS1_">Arg</dfn>(<em>const</em> <a class="type" href="Option.h.html#llvm::opt::Option" title='llvm::opt::Option' data-ref="llvm::opt::Option">Option</a> <dfn class="local col9 decl" id="89Opt" title='Opt' data-type='const llvm::opt::Option' data-ref="89Opt">Opt</dfn>, <a class="type" href="../ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="local col0 decl" id="90Spelling" title='Spelling' data-type='llvm::StringRef' data-ref="90Spelling">Spelling</dfn>, <em>unsigned</em> <dfn class="local col1 decl" id="91Index" title='Index' data-type='unsigned int' data-ref="91Index">Index</dfn>,</td></tr>
+<tr><th id="66">66</th><td>      <em>const</em> <em>char</em> *<dfn class="local col2 decl" id="92Value0" title='Value0' data-type='const char *' data-ref="92Value0">Value0</dfn>, <em>const</em> <a class="type" href="#llvm::opt::Arg" title='llvm::opt::Arg' data-ref="llvm::opt::Arg">Arg</a> *<dfn class="local col3 decl" id="93BaseArg" title='BaseArg' data-type='const llvm::opt::Arg *' data-ref="93BaseArg">BaseArg</dfn> = <b>nullptr</b>);</td></tr>
+<tr><th id="67">67</th><td>  <dfn class="decl" id="_ZN4llvm3opt3ArgC1ENS0_6OptionENS_9StringRefEjPKcS5_PKS1_" title='llvm::opt::Arg::Arg' data-ref="_ZN4llvm3opt3ArgC1ENS0_6OptionENS_9StringRefEjPKcS5_PKS1_">Arg</dfn>(<em>const</em> <a class="type" href="Option.h.html#llvm::opt::Option" title='llvm::opt::Option' data-ref="llvm::opt::Option">Option</a> <dfn class="local col4 decl" id="94Opt" title='Opt' data-type='const llvm::opt::Option' data-ref="94Opt">Opt</dfn>, <a class="type" href="../ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="local col5 decl" id="95Spelling" title='Spelling' data-type='llvm::StringRef' data-ref="95Spelling">Spelling</dfn>, <em>unsigned</em> <dfn class="local col6 decl" id="96Index" title='Index' data-type='unsigned int' data-ref="96Index">Index</dfn>,</td></tr>
+<tr><th id="68">68</th><td>      <em>const</em> <em>char</em> *<dfn class="local col7 decl" id="97Value0" title='Value0' data-type='const char *' data-ref="97Value0">Value0</dfn>, <em>const</em> <em>char</em> *<dfn class="local col8 decl" id="98Value1" title='Value1' data-type='const char *' data-ref="98Value1">Value1</dfn>, <em>const</em> <a class="type" href="#llvm::opt::Arg" title='llvm::opt::Arg' data-ref="llvm::opt::Arg">Arg</a> *<dfn class="local col9 decl" id="99BaseArg" title='BaseArg' data-type='const llvm::opt::Arg *' data-ref="99BaseArg">BaseArg</dfn> = <b>nullptr</b>);</td></tr>
+<tr><th id="69">69</th><td>  <dfn class="decl def" id="_ZN4llvm3opt3ArgC1ERKS1_" title='llvm::opt::Arg::Arg' data-ref="_ZN4llvm3opt3ArgC1ERKS1_">Arg</dfn>(<em>const</em> <a class="type" href="#llvm::opt::Arg" title='llvm::opt::Arg' data-ref="llvm::opt::Arg">Arg</a> &amp;) = <b>delete</b>;</td></tr>
+<tr><th id="70">70</th><td>  <a class="type" href="#llvm::opt::Arg" title='llvm::opt::Arg' data-ref="llvm::opt::Arg">Arg</a> &amp;<dfn class="decl def" id="_ZN4llvm3opt3ArgaSERKS1_" title='llvm::opt::Arg::operator=' data-ref="_ZN4llvm3opt3ArgaSERKS1_"><b>operator</b>=</dfn>(<em>const</em> <a class="type" href="#llvm::opt::Arg" title='llvm::opt::Arg' data-ref="llvm::opt::Arg">Arg</a> &amp;) = <b>delete</b>;</td></tr>
+<tr><th id="71">71</th><td>  <dfn class="decl" id="_ZN4llvm3opt3ArgD1Ev" title='llvm::opt::Arg::~Arg' data-ref="_ZN4llvm3opt3ArgD1Ev">~Arg</dfn>();</td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td>  <em>const</em> <a class="type" href="Option.h.html#llvm::opt::Option" title='llvm::opt::Option' data-ref="llvm::opt::Option">Option</a> &amp;<dfn class="decl def" id="_ZNK4llvm3opt3Arg9getOptionEv" title='llvm::opt::Arg::getOption' data-ref="_ZNK4llvm3opt3Arg9getOptionEv">getOption</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::opt::Arg::Opt" title='llvm::opt::Arg::Opt' data-ref="llvm::opt::Arg::Opt">Opt</a>; }</td></tr>
+<tr><th id="74">74</th><td>  <a class="type" href="../ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="decl def" id="_ZNK4llvm3opt3Arg11getSpellingEv" title='llvm::opt::Arg::getSpelling' data-ref="_ZNK4llvm3opt3Arg11getSpellingEv">getSpelling</dfn>() <em>const</em> { <b>return</b> <a class="ref fake" href="../ADT/StringRef.h.html#49" title='llvm::StringRef::StringRef' data-ref="_ZN4llvm9StringRefC1ERKS0_"></a><a class="member" href="#llvm::opt::Arg::Spelling" title='llvm::opt::Arg::Spelling' data-ref="llvm::opt::Arg::Spelling">Spelling</a>; }</td></tr>
+<tr><th id="75">75</th><td>  <em>unsigned</em> <dfn class="decl def" id="_ZNK4llvm3opt3Arg8getIndexEv" title='llvm::opt::Arg::getIndex' data-ref="_ZNK4llvm3opt3Arg8getIndexEv">getIndex</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::opt::Arg::Index" title='llvm::opt::Arg::Index' data-ref="llvm::opt::Arg::Index">Index</a>; }</td></tr>
+<tr><th id="76">76</th><td></td></tr>
+<tr><th id="77">77</th><td>  <i class="doc">/// <span class="command">\brief</span> Return the base argument which generated this arg.</i></td></tr>
+<tr><th id="78">78</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="79">79</th><td><i class="doc">  /// This is either the argument itself or the argument it was</i></td></tr>
+<tr><th id="80">80</th><td><i class="doc">  /// derived from during tool chain specific argument translation.</i></td></tr>
+<tr><th id="81">81</th><td>  <em>const</em> <a class="type" href="#llvm::opt::Arg" title='llvm::opt::Arg' data-ref="llvm::opt::Arg">Arg</a> &amp;<dfn class="decl def" id="_ZNK4llvm3opt3Arg10getBaseArgEv" title='llvm::opt::Arg::getBaseArg' data-ref="_ZNK4llvm3opt3Arg10getBaseArgEv">getBaseArg</dfn>() <em>const</em> {</td></tr>
+<tr><th id="82">82</th><td>    <b>return</b> <a class="member" href="#llvm::opt::Arg::BaseArg" title='llvm::opt::Arg::BaseArg' data-ref="llvm::opt::Arg::BaseArg">BaseArg</a> ? *<a class="member" href="#llvm::opt::Arg::BaseArg" title='llvm::opt::Arg::BaseArg' data-ref="llvm::opt::Arg::BaseArg">BaseArg</a> : *<b>this</b>;</td></tr>
+<tr><th id="83">83</th><td>  }</td></tr>
+<tr><th id="84">84</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm3opt3Arg10setBaseArgEPKS1_" title='llvm::opt::Arg::setBaseArg' data-ref="_ZN4llvm3opt3Arg10setBaseArgEPKS1_">setBaseArg</dfn>(<em>const</em> <a class="type" href="#llvm::opt::Arg" title='llvm::opt::Arg' data-ref="llvm::opt::Arg">Arg</a> *<dfn class="local col0 decl" id="100BaseArg" title='BaseArg' data-type='const llvm::opt::Arg *' data-ref="100BaseArg">BaseArg</dfn>) { <b>this</b>-&gt;<a class="member" href="#llvm::opt::Arg::BaseArg" title='llvm::opt::Arg::BaseArg' data-ref="llvm::opt::Arg::BaseArg">BaseArg</a> = <a class="local col0 ref" href="#100BaseArg" title='BaseArg' data-ref="100BaseArg">BaseArg</a>; }</td></tr>
+<tr><th id="85">85</th><td></td></tr>
+<tr><th id="86">86</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm3opt3Arg13getOwnsValuesEv" title='llvm::opt::Arg::getOwnsValues' data-ref="_ZNK4llvm3opt3Arg13getOwnsValuesEv">getOwnsValues</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::opt::Arg::OwnsValues" title='llvm::opt::Arg::OwnsValues' data-ref="llvm::opt::Arg::OwnsValues">OwnsValues</a>; }</td></tr>
+<tr><th id="87">87</th><td>  <em>void</em> <dfn class="decl def" id="_ZNK4llvm3opt3Arg13setOwnsValuesEb" title='llvm::opt::Arg::setOwnsValues' data-ref="_ZNK4llvm3opt3Arg13setOwnsValuesEb">setOwnsValues</dfn>(<em>bool</em> <dfn class="local col1 decl" id="101Value" title='Value' data-type='bool' data-ref="101Value">Value</dfn>) <em>const</em> { <a class="member" href="#llvm::opt::Arg::OwnsValues" title='llvm::opt::Arg::OwnsValues' data-ref="llvm::opt::Arg::OwnsValues">OwnsValues</a> = <a class="local col1 ref" href="#101Value" title='Value' data-ref="101Value">Value</a>; }</td></tr>
+<tr><th id="88">88</th><td></td></tr>
+<tr><th id="89">89</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm3opt3Arg9isClaimedEv" title='llvm::opt::Arg::isClaimed' data-ref="_ZNK4llvm3opt3Arg9isClaimedEv">isClaimed</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#_ZNK4llvm3opt3Arg10getBaseArgEv" title='llvm::opt::Arg::getBaseArg' data-ref="_ZNK4llvm3opt3Arg10getBaseArgEv">getBaseArg</a>().<a class="member" href="#llvm::opt::Arg::Claimed" title='llvm::opt::Arg::Claimed' data-ref="llvm::opt::Arg::Claimed">Claimed</a>; }</td></tr>
+<tr><th id="90">90</th><td></td></tr>
+<tr><th id="91">91</th><td>  <i class="doc">/// <span class="command">\brief</span> Set the Arg claimed bit.</i></td></tr>
+<tr><th id="92">92</th><td>  <em>void</em> <dfn class="decl def" id="_ZNK4llvm3opt3Arg5claimEv" title='llvm::opt::Arg::claim' data-ref="_ZNK4llvm3opt3Arg5claimEv">claim</dfn>() <em>const</em> { <a class="member" href="#_ZNK4llvm3opt3Arg10getBaseArgEv" title='llvm::opt::Arg::getBaseArg' data-ref="_ZNK4llvm3opt3Arg10getBaseArgEv">getBaseArg</a>().<a class="member" href="#llvm::opt::Arg::Claimed" title='llvm::opt::Arg::Claimed' data-ref="llvm::opt::Arg::Claimed">Claimed</a> = <b>true</b>; }</td></tr>
+<tr><th id="93">93</th><td></td></tr>
+<tr><th id="94">94</th><td>  <em>unsigned</em> <dfn class="decl def" id="_ZNK4llvm3opt3Arg12getNumValuesEv" title='llvm::opt::Arg::getNumValues' data-ref="_ZNK4llvm3opt3Arg12getNumValuesEv">getNumValues</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::opt::Arg::Values" title='llvm::opt::Arg::Values' data-ref="llvm::opt::Arg::Values">Values</a>.<a class="ref" href="../ADT/SmallVector.h.html#_ZNK4llvm25SmallVectorTemplateCommon4sizeEv" title='llvm::SmallVectorTemplateCommon::size' data-ref="_ZNK4llvm25SmallVectorTemplateCommon4sizeEv">size</a>(); }</td></tr>
+<tr><th id="95">95</th><td></td></tr>
+<tr><th id="96">96</th><td>  <em>const</em> <em>char</em> *<dfn class="decl def" id="_ZNK4llvm3opt3Arg8getValueEj" title='llvm::opt::Arg::getValue' data-ref="_ZNK4llvm3opt3Arg8getValueEj">getValue</dfn>(<em>unsigned</em> <dfn class="local col2 decl" id="102N" title='N' data-type='unsigned int' data-ref="102N">N</dfn> = <var>0</var>) <em>const</em> {</td></tr>
+<tr><th id="97">97</th><td>    <b>return</b> <a class="member" href="#llvm::opt::Arg::Values" title='llvm::opt::Arg::Values' data-ref="llvm::opt::Arg::Values">Values</a><a class="ref" href="../ADT/SmallVector.h.html#_ZNK4llvm25SmallVectorTemplateCommonixEm" title='llvm::SmallVectorTemplateCommon::operator[]' data-ref="_ZNK4llvm25SmallVectorTemplateCommonixEm">[<a class="local col2 ref" href="#102N" title='N' data-ref="102N">N</a>]</a>;</td></tr>
+<tr><th id="98">98</th><td>  }</td></tr>
+<tr><th id="99">99</th><td></td></tr>
+<tr><th id="100">100</th><td>  <span class='type' title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</span>&lt;<em>const</em> <em>char</em> *&gt; &amp;<dfn class="decl def" id="_ZN4llvm3opt3Arg9getValuesEv" title='llvm::opt::Arg::getValues' data-ref="_ZN4llvm3opt3Arg9getValuesEv">getValues</dfn>() { <b>return</b> <a class="member" href="#llvm::opt::Arg::Values" title='llvm::opt::Arg::Values' data-ref="llvm::opt::Arg::Values">Values</a>; }</td></tr>
+<tr><th id="101">101</th><td>  <em>const</em> <span class='type' title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</span>&lt;<em>const</em> <em>char</em> *&gt; &amp;<dfn class="decl def" id="_ZNK4llvm3opt3Arg9getValuesEv" title='llvm::opt::Arg::getValues' data-ref="_ZNK4llvm3opt3Arg9getValuesEv">getValues</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::opt::Arg::Values" title='llvm::opt::Arg::Values' data-ref="llvm::opt::Arg::Values">Values</a>; }</td></tr>
+<tr><th id="102">102</th><td></td></tr>
+<tr><th id="103">103</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm3opt3Arg13containsValueENS_9StringRefE" title='llvm::opt::Arg::containsValue' data-ref="_ZNK4llvm3opt3Arg13containsValueENS_9StringRefE">containsValue</dfn>(<a class="type" href="../ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="local col3 decl" id="103Value" title='Value' data-type='llvm::StringRef' data-ref="103Value">Value</dfn>) <em>const</em> {</td></tr>
+<tr><th id="104">104</th><td>    <b>for</b> (<em>unsigned</em> <dfn class="local col4 decl" id="104i" title='i' data-type='unsigned int' data-ref="104i">i</dfn> = <var>0</var>, <dfn class="local col5 decl" id="105e" title='e' data-type='unsigned int' data-ref="105e">e</dfn> = <a class="member" href="#_ZNK4llvm3opt3Arg12getNumValuesEv" title='llvm::opt::Arg::getNumValues' data-ref="_ZNK4llvm3opt3Arg12getNumValuesEv">getNumValues</a>(); <a class="local col4 ref" href="#104i" title='i' data-ref="104i">i</a> != <a class="local col5 ref" href="#105e" title='e' data-ref="105e">e</a>; ++<a class="local col4 ref" href="#104i" title='i' data-ref="104i">i</a>)</td></tr>
+<tr><th id="105">105</th><td>      <b>if</b> (<a class="ref fake" href="../ADT/StringRef.h.html#_ZN4llvm9StringRefC1EPKc" title='llvm::StringRef::StringRef' data-ref="_ZN4llvm9StringRefC1EPKc"></a><a class="member" href="#llvm::opt::Arg::Values" title='llvm::opt::Arg::Values' data-ref="llvm::opt::Arg::Values">Values</a><a class="ref" href="../ADT/SmallVector.h.html#_ZNK4llvm25SmallVectorTemplateCommonixEm" title='llvm::SmallVectorTemplateCommon::operator[]' data-ref="_ZNK4llvm25SmallVectorTemplateCommonixEm">[<a class="local col4 ref" href="#104i" title='i' data-ref="104i">i</a>]</a> <a class="ref" href="../ADT/StringRef.h.html#_ZN4llvmeqENS_9StringRefES0_" title='llvm::operator==' data-ref="_ZN4llvmeqENS_9StringRefES0_">==</a> <a class="ref fake" href="../ADT/StringRef.h.html#49" title='llvm::StringRef::StringRef' data-ref="_ZN4llvm9StringRefC1ERKS0_"></a><a class="local col3 ref" href="#103Value" title='Value' data-ref="103Value">Value</a>)</td></tr>
+<tr><th id="106">106</th><td>        <b>return</b> <b>true</b>;</td></tr>
+<tr><th id="107">107</th><td>    <b>return</b> <b>false</b>;</td></tr>
+<tr><th id="108">108</th><td>  }</td></tr>
+<tr><th id="109">109</th><td></td></tr>
+<tr><th id="110">110</th><td>  <i class="doc">/// <span class="command">\brief</span> Append the argument onto the given array as strings.</i></td></tr>
+<tr><th id="111">111</th><td>  <em>void</em> <dfn class="decl" id="_ZNK4llvm3opt3Arg6renderERKNS0_7ArgListERNS_11SmallVectorIPKcLj16EEE" title='llvm::opt::Arg::render' data-ref="_ZNK4llvm3opt3Arg6renderERKNS0_7ArgListERNS_11SmallVectorIPKcLj16EEE">render</dfn>(<em>const</em> <a class="type" href="ArgList.h.html#llvm::opt::ArgList" title='llvm::opt::ArgList' data-ref="llvm::opt::ArgList">ArgList</a> &amp;<dfn class="local col6 decl" id="106Args" title='Args' data-type='const llvm::opt::ArgList &amp;' data-ref="106Args">Args</dfn>, <a class="typedef" href="Option.h.html#llvm::opt::ArgStringList" title='llvm::opt::ArgStringList' data-type='SmallVector&lt;const char *, 16&gt;' data-ref="llvm::opt::ArgStringList">ArgStringList</a> &amp;<dfn class="local col7 decl" id="107Output" title='Output' data-type='ArgStringList &amp;' data-ref="107Output">Output</dfn>) <em>const</em>;</td></tr>
+<tr><th id="112">112</th><td></td></tr>
+<tr><th id="113">113</th><td>  <i class="doc">/// <span class="command">\brief</span> Append the argument, render as an input, onto the given</i></td></tr>
+<tr><th id="114">114</th><td><i class="doc">  /// array as strings.</i></td></tr>
+<tr><th id="115">115</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="116">116</th><td><i class="doc">  /// The distinction is that some options only render their values</i></td></tr>
+<tr><th id="117">117</th><td><i class="doc">  /// when rendered as a input (e.g., Xlinker).</i></td></tr>
+<tr><th id="118">118</th><td>  <em>void</em> <dfn class="decl" id="_ZNK4llvm3opt3Arg13renderAsInputERKNS0_7ArgListERNS_11SmallVectorIPKcLj16EEE" title='llvm::opt::Arg::renderAsInput' data-ref="_ZNK4llvm3opt3Arg13renderAsInputERKNS0_7ArgListERNS_11SmallVectorIPKcLj16EEE">renderAsInput</dfn>(<em>const</em> <a class="type" href="ArgList.h.html#llvm::opt::ArgList" title='llvm::opt::ArgList' data-ref="llvm::opt::ArgList">ArgList</a> &amp;<dfn class="local col8 decl" id="108Args" title='Args' data-type='const llvm::opt::ArgList &amp;' data-ref="108Args">Args</dfn>, <a class="typedef" href="Option.h.html#llvm::opt::ArgStringList" title='llvm::opt::ArgStringList' data-type='SmallVector&lt;const char *, 16&gt;' data-ref="llvm::opt::ArgStringList">ArgStringList</a> &amp;<dfn class="local col9 decl" id="109Output" title='Output' data-type='ArgStringList &amp;' data-ref="109Output">Output</dfn>) <em>const</em>;</td></tr>
+<tr><th id="119">119</th><td></td></tr>
+<tr><th id="120">120</th><td>  <em>void</em> <dfn class="decl" id="_ZNK4llvm3opt3Arg5printERNS_11raw_ostreamE" title='llvm::opt::Arg::print' data-ref="_ZNK4llvm3opt3Arg5printERNS_11raw_ostreamE">print</dfn>(<a class="type" href="../Support/raw_ostream.h.html#llvm::raw_ostream" title='llvm::raw_ostream' data-ref="llvm::raw_ostream">raw_ostream</a> &amp;<dfn class="local col0 decl" id="110O" title='O' data-type='llvm::raw_ostream &amp;' data-ref="110O">O</dfn>) <em>const</em>;</td></tr>
+<tr><th id="121">121</th><td>  <em>void</em> <dfn class="decl" id="_ZNK4llvm3opt3Arg4dumpEv" title='llvm::opt::Arg::dump' data-ref="_ZNK4llvm3opt3Arg4dumpEv">dump</dfn>() <em>const</em>;</td></tr>
+<tr><th id="122">122</th><td></td></tr>
+<tr><th id="123">123</th><td>  <i class="doc">/// <span class="command">\brief</span> Return a formatted version of the argument and</i></td></tr>
+<tr><th id="124">124</th><td><i class="doc">  /// its values, for debugging and diagnostics.</i></td></tr>
+<tr><th id="125">125</th><td>  <span class="namespace">std::</span><a class="typedef" href="../../../c++/7/bits/stringfwd.h.html#std::__cxx11::string" title='std::__cxx11::string' data-type='basic_string&lt;char&gt;' data-ref="std::__cxx11::string">string</a> <dfn class="decl" id="_ZNK4llvm3opt3Arg11getAsStringB5cxx11ERKNS0_7ArgListE" title='llvm::opt::Arg::getAsString' data-ref="_ZNK4llvm3opt3Arg11getAsStringB5cxx11ERKNS0_7ArgListE">getAsString</dfn>(<em>const</em> <a class="type" href="ArgList.h.html#llvm::opt::ArgList" title='llvm::opt::ArgList' data-ref="llvm::opt::ArgList">ArgList</a> &amp;<dfn class="local col1 decl" id="111Args" title='Args' data-type='const llvm::opt::ArgList &amp;' data-ref="111Args">Args</dfn>) <em>const</em>;</td></tr>
+<tr><th id="126">126</th><td>};</td></tr>
+<tr><th id="127">127</th><td></td></tr>
+<tr><th id="128">128</th><td>} <i>// end namespace opt</i></td></tr>
+<tr><th id="129">129</th><td></td></tr>
+<tr><th id="130">130</th><td>} <i>// end namespace llvm</i></td></tr>
+<tr><th id="131">131</th><td></td></tr>
+<tr><th id="132">132</th><td><u>#<span data-ppcond="15">endif</span> // LLVM_OPTION_ARG_H</u></td></tr>
+<tr><th id="133">133</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../../../pocl/lib/CL/pocl_llvm_build.cc.html'>pocl/lib/CL/pocl_llvm_build.cc</a><br/>Generated on <em>2019-Oct-28</em> from project include<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

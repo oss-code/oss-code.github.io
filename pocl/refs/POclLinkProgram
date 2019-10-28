@@ -1,0 +1,4 @@
+<dec f='pocl/lib/CL/pocl_intfn.h' l='32' macro='1' type='cl_program POclLinkProgram(cl_context , cl_uint , const cl_device_id * , const char * , cl_uint , const cl_program * , void (*)(cl_program, void *) , void * , cl_int * )'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='139' macro='1' u='a'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='139' macro='1' u='a'/>
+<def f='pocl/lib/CL/clLinkProgram.c' l='29' macro='1' type='cl_program POclLinkProgram(cl_context context, cl_uint num_devices, const cl_device_id * device_list, const char * options, cl_uint num_input_programs, const cl_program * input_programs, void (*)(cl_program, void *) pfn_notify, void * user_data, cl_int * errcode_ret)'/>

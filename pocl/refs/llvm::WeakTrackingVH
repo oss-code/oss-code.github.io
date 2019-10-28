@@ -1,0 +1,18 @@
+<inh f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='30' c='llvm::ValueHandleBase'/>
+<def f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='182' ll='205'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='175'>/// \brief Value handle that is nullable, but tries to track the Value.
+///
+/// This is a value handle that tries hard to point to a Value, even across
+/// RAUW operations, but will null itself out if the value is destroyed.  this
+/// is useful for advisory sorts of information, but should not be used as the
+/// key of a map (since the map would have to rearrange itself when the pointer
+/// changes).</doc>
+<fun r='_ZN4llvm14WeakTrackingVHC1Ev'/>
+<fun r='_ZN4llvm14WeakTrackingVHC1EPNS_5ValueE'/>
+<fun r='_ZN4llvm14WeakTrackingVHC1ERKS0_'/>
+<fun r='_ZN4llvm14WeakTrackingVHaSERKS0_'/>
+<fun r='_ZN4llvm14WeakTrackingVHaSEPNS_5ValueE'/>
+<fun r='_ZN4llvm14WeakTrackingVHaSERKNS_15ValueHandleBaseE'/>
+<fun r='_ZNK4llvm14WeakTrackingVHcvPNS_5ValueEEv'/>
+<fun r='_ZNK4llvm14WeakTrackingVH18pointsToAliveValueEv'/>

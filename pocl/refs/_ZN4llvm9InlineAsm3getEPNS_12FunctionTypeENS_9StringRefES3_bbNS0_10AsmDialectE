@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/InlineAsm.h' l='62' type='static llvm::InlineAsm * llvm::InlineAsm::get(llvm::FunctionType * Ty, llvm::StringRef AsmString, llvm::StringRef Constraints, bool hasSideEffects, bool isAlignStack = false, llvm::InlineAsm::AsmDialect asmDialect = AD_ATT)'/>
+<doc f='include/llvm-6.0/llvm/IR/InlineAsm.h' l='60'>/// InlineAsm::get - Return the specified uniqued inline asm string.
+  ///</doc>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='285' u='c' c='_ZN4pocl9Workgroup14addPlaceHolderERN4llvm9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEPNS1_5ValueENSt7__cxx1112basic_stringIcSt1115963950'/>

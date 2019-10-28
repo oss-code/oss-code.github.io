@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/devices/pthread/pocl-pthread_utils.h' l='84' type='void free_kernel_arg_array(kernel_run_command * k)'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='329' u='c' c='finalize_kernel_command'/>
+<def f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='228' ll='259' type='void free_kernel_arg_array(kernel_run_command * k)'/>
+<doc f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='226'>/* called from kernel teardown code.
+ * frees the actual arguments, except the local ones. */</doc>

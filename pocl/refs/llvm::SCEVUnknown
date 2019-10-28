@@ -1,0 +1,18 @@
+<inh f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='77' c='llvm::SCEV'/>
+<inh f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='389' c='llvm::CallbackVH'/>
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='402' ll='443'/>
+<size>80</size>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='399'>/// This means that we are dealing with an entirely unknown SCEV
+  /// value, and only represent it as its LLVM Value.  This is the
+  /// &quot;bottom&quot; value for the analysis.</doc>
+<mbr r='llvm::SCEVUnknown::SE' o='512' t='llvm::ScalarEvolution *'/>
+<mbr r='llvm::SCEVUnknown::Next' o='576' t='llvm::SCEVUnknown *'/>
+<fun r='_ZN4llvm11SCEVUnknownC1ENS_19FoldingSetNodeIDRefEPNS_5ValueEPNS_15ScalarEvolutionEPS0_'/>
+<fun r='_ZN4llvm11SCEVUnknown7deletedEv'/>
+<fun r='_ZN4llvm11SCEVUnknown19allUsesReplacedWithEPNS_5ValueE'/>
+<fun r='_ZNK4llvm11SCEVUnknown8getValueEv'/>
+<fun r='_ZNK4llvm11SCEVUnknown8isSizeOfERPNS_4TypeE'/>
+<fun r='_ZNK4llvm11SCEVUnknown9isAlignOfERPNS_4TypeE'/>
+<fun r='_ZNK4llvm11SCEVUnknown10isOffsetOfERPNS_4TypeERPNS_8ConstantE'/>
+<fun r='_ZNK4llvm11SCEVUnknown7getTypeEv'/>
+<fun r='_ZN4llvm11SCEVUnknown7classofEPKNS_4SCEVE'/>

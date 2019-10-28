@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='350' ll='354' type='bool llvm::LazyCallGraph::Node::isDead() const'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1200' u='c' c='_ZNK4llvm13LazyCallGraph4EdgecvbEv'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='345'>/// Tests whether this is actually a dead node and no longer valid.
+    ///
+    /// Users rarely interact with nodes in this state and other methods are
+    /// invalid. This is used to model a node in an edge list where the
+    /// function has been completely removed.</doc>

@@ -1,0 +1,7 @@
+<def f='pocl/include/CL/cl2.hpp' l='9923' ll='9940' type='cl::Event cl::KernelFunctor::operator()(const cl::EnqueueArgs &amp; args, Ts... ts, cl_int &amp; error)'/>
+<doc f='pocl/include/CL/cl2.hpp' l='9917'>/**
+    * Enqueue kernel with support for error code.
+    * @param args Launch parameters of the kernel.
+    * @param t0... List of kernel arguments based on the template type of the functor.
+    * @param error Out parameter returning the error code from the execution.
+    */</doc>

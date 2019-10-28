@@ -1,0 +1,10 @@
+<def f='pocl/include/CL/cl2.hpp' l='5810' ll='5811' type='void cl::Kernel::Kernel(const cl_kernel &amp; kernel, bool retainObject = false)'/>
+<use f='pocl/include/CL/cl2.hpp' l='6725' u='c' c='_ZN2cl7Program13createKernelsEPSt6vectorINS_6KernelESaIS2_EE'/>
+<doc f='pocl/include/CL/cl2.hpp' l='5802'>/*! \brief Constructor from cl_kernel - takes ownership.
+     *
+     * \param retainObject will cause the constructor to retain its cl object.
+     *                     Defaults to false to maintain compatibility with
+     *                     earlier versions.
+     *  This effectively transfers ownership of a refcount on the cl_kernel
+     *  into the new Kernel object.
+     */</doc>

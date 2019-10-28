@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='314' ll='326'/>
+<def f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='329' ll='339'/>
+<doc f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='313'>// Test if MappingContextTraits&lt;T&gt; is defined on type T.</doc>
+<doc f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='328'>// Test if MappingTraits&lt;T&gt; is defined on type T.</doc>
+<fun r='_ZN4llvm4yaml17has_MappingTraits4testEPNS_8SameTypeIPFvRNS0_2IOERT_RT0_EXadsrT_7mappingEEE'/>
+<fun r='_ZN4llvm4yaml17has_MappingTraits4testEz'/>
+<smbr r='llvm::yaml::has_MappingTraits::value' t='const bool'/>
+<fun r='_ZN4llvm4yaml17has_MappingTraitsIT_NS0_12EmptyContextEE4testEPNS_8SameTypeIPFvRNS0_2IOERS2_EXadsrT_7mappingEEE'/>
+<fun r='_ZN4llvm4yaml17has_MappingTraitsIT_NS0_12EmptyContextEE4testEz'/>
+<smbr r='llvm::yaml::has_MappingTraits{type-parameter-0-0,llvm::yaml::EmptyContext}::value' t='const bool'/>

@@ -1,0 +1,8 @@
+<dec f='include/hwloc/helper.h' l='124' type='hwloc_obj_t hwloc_get_obj_inside_cpuset_by_depth(hwloc_topology_t topology, hwloc_const_cpuset_t set, unsigned int depth, unsigned int idx)'/>
+<def f='include/hwloc/helper.h' l='126' ll='143' type='hwloc_obj_t hwloc_get_obj_inside_cpuset_by_depth(hwloc_topology_t topology, hwloc_const_cpuset_t set, unsigned int depth, unsigned int idx)'/>
+<use f='include/hwloc/helper.h' l='164' u='c' c='hwloc_get_obj_inside_cpuset_by_type'/>
+<doc f='include/hwloc/helper.h' l='118'>/** \brief Return the (logically) \p idx -th object at depth \p depth included in CPU set \p set.
+ *
+ * \note This function cannot work if objects at the given depth do
+ * not have CPU sets or if the topology is made of different machines.
+ */</doc>

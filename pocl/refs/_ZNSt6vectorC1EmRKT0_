@@ -1,0 +1,34 @@
+<def f='include/c++/7/bits/stl_vector.h' l='282' ll='285' type='void std::vector::vector&lt;_Tp, _Alloc&gt;(size_type __n, const allocator_type &amp; __a = allocator_type())'/>
+<doc f='include/c++/7/bits/stl_vector.h' l='274'>/**
+       *  @brief  Creates a %vector with default constructed elements.
+       *  @param  __n  The number of elements to initially create.
+       *  @param  __a  An allocator.
+       *
+       *  This constructor fills the %vector with @a __n default
+       *  constructed elements.
+       */</doc>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='750' u='c' c='_ZN4pocl9Workgroup33globalHandlesToContextStructLoadsERN4llvm9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEOKSt6vectorINSt7__cxx111109236'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='807' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='808' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemReplication.cc' l='138' u='c' c='_ZN4pocl19WorkitemReplication15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/include/CL/cl2.hpp' l='988' u='c' c='_ZN2cl6detail13getInfoHelperET_jPSt6vectorIS2_IhSaIhEESaIS4_EEi'/>
+<use f='pocl/include/CL/cl2.hpp' l='1080' u='c' c='_ZN2cl6detail13getInfoHelperET_jPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEl'/>
+<use f='pocl/include/CL/cl2.hpp' l='2234' u='c' c='_ZN2cl6Device16createSubDevicesEPKlPSt6vectorIS0_SaIS0_EE'/>
+<use f='pocl/include/CL/cl2.hpp' l='2350' u='c' c='_ZN2cl8Platform11makeDefaultEv'/>
+<use f='pocl/include/CL/cl2.hpp' l='2475' u='c' c='_ZNK2cl8Platform10getDevicesEmPSt6vectorINS_6DeviceESaIS2_EE'/>
+<use f='pocl/include/CL/cl2.hpp' l='2604' u='c' c='_ZN2cl8Platform3getEPSt6vectorIS0_SaIS0_EE'/>
+<use f='pocl/include/CL/cl2.hpp' l='2781' u='c' c='_ZN2cl7ContextC1ERKSt6vectorINS_6DeviceESaIS2_EEPlPFvPKcPKvmPvESC_Pi'/>
+<use f='pocl/include/CL/cl2.hpp' l='3040' u='c' c='_ZNK2cl7Context24getSupportedImageFormatsEmjPSt6vectorINS_11ImageFormatESaIS2_EE'/>
+<use f='pocl/include/CL/cl2.hpp' l='6226' u='c' c='_ZN2cl7ProgramC1ERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS7_EEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6227' u='c' c='_ZN2cl7ProgramC1ERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS7_EEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6261' u='c' c='_ZN2cl7ProgramC1ERKNS_7ContextERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaISA_EEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6262' u='c' c='_ZN2cl7ProgramC1ERKNS_7ContextERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaISA_EEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6434' u='c' c='_ZN2cl7ProgramC1ERKNS_7ContextERKSt6vectorINS_6DeviceESaIS5_EERKS4_IS4_IhSaIhEESaISB_EEPS4_IiSaIiEEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6435' u='c' c='_ZN2cl7ProgramC1ERKNS_7ContextERKSt6vectorINS_6DeviceESaIS5_EERKS4_IS4_IhSaIhEESaISB_EEPS4_IiSaIiEEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6448' u='c' c='_ZN2cl7ProgramC1ERKNS_7ContextERKSt6vectorINS_6DeviceESaIS5_EERKS4_IS4_IhSaIhEESaISB_EEPS4_IiSaIiEEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6486' u='c' c='_ZN2cl7ProgramC1ERKNS_7ContextERKSt6vectorINS_6DeviceESaIS5_EERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6558' u='c' c='_ZNK2cl7Program5buildERKSt6vectorINS_6DeviceESaIS2_EEPKcPFvP11_cl_programPvESB_'/>
+<use f='pocl/include/CL/cl2.hpp' l='6709' u='c' c='_ZN2cl7Program13createKernelsEPSt6vectorINS_6KernelESaIS2_EE'/>
+<use f='pocl/include/CL/cl2.hpp' l='6778' u='c' c='_ZN2cl11linkProgramESt6vectorINS_7ProgramESaIS1_EEPKcPFvP11_cl_programPvES8_Pi'/>
+<use f='pocl/include/CL/cl2.hpp' l='8203' u='c' c='_ZNK2cl12CommandQueue24enqueueMigrateMemObjectsERKSt6vectorINS_6MemoryESaIS2_EEmPKS1_INS_5EventESaIS7_EEPS7_'/>
+<use f='pocl/include/CL/cl2.hpp' l='8411' u='c' c='_ZNK2cl12CommandQueue19enqueueNativeKernelEPFvPvESt4pairIS1_mEPKSt6vectorINS_6MemoryESaIS7_EEPKS6_IPKvSaISD_EEPKS6_INS_5EventESaISI_EEPSI_'/>

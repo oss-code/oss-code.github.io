@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='137' type='llvm::Constant * llvm::ConstantFoldLoadThroughGEPIndices(llvm::Constant * C, ArrayRef&lt;llvm::Constant *&gt; Indices)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='133'>/// ConstantFoldLoadThroughGEPIndices - Given a constant and getelementptr
+/// indices (with an *implied* zero pointer index that is not in the list),
+/// return the constant value being addressed by a virtual load, or null if
+/// something is funny and we can&apos;t decide.</doc>

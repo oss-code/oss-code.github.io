@@ -1,0 +1,10 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='767' type='size_t'/>
+<offset>5056</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='763'>/* If &gt; 0, specialized versions of the work-group functions are generated
+     which assume each grid dimension is of at most the given width. This
+     assumption can be then taken in account in IR optimization and codegen
+     to reduce address computation overheads etc. */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='239' u='w' c='pocl_init_cpu_device_infos'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='145' u='r' c='pocl_cache_kernel_cachedir_path'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='409' u='r' c='pocl_llvm_generate_workgroup_function_nowrite'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='413' u='r' c='pocl_llvm_generate_workgroup_function_nowrite'/>

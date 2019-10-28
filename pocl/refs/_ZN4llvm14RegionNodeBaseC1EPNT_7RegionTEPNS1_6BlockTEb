@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='151' ll='153' type='void llvm::RegionNodeBase::RegionNodeBase&lt;Tr&gt;(RegionT * Parent, BlockT * Entry, bool isSubRegion = false)'/>
+<use f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='886' u='c' c='_ZN4llvm10RegionNodeC1EPNS_6RegionEPNS_10BasicBlockEb'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='143'>/// @brief Create a RegionNode.
+  ///
+  /// @param Parent      The parent of this RegionNode.
+  /// @param Entry       The entry BasicBlock of the RegionNode.  If this
+  ///                    RegionNode represents a BasicBlock, this is the
+  ///                    BasicBlock itself.  If it represents a subregion, this
+  ///                    is the entry BasicBlock of the subregion.
+  /// @param isSubRegion If this RegionNode represents a SubRegion.</doc>

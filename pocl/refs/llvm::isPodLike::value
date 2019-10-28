@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Support/type_traits.h' l='43' type='const bool'/>
+<doc f='include/llvm-6.0/llvm/Support/type_traits.h' l='40'>// Use the internal name if the compiler supports is_trivially_copyable but we
+  // don&apos;t know if the standard library does. This is the case for clang in
+  // conjunction with libstdc++ from GCC 4.x.</doc>

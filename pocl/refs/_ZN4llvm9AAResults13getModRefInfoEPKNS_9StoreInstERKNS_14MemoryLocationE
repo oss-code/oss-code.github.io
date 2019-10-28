@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='541' type='llvm::ModRefInfo llvm::AAResults::getModRefInfo(const llvm::StoreInst * S, const llvm::MemoryLocation &amp; Loc)'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='545' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_9StoreInstEPKNS_5ValueEm'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='630' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_11InstructionERKNS_8OptionalINS_14MemoryLocationEEE'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='539'>/// getModRefInfo (for stores) - Return information about whether
+  /// a particular store modifies or reads the specified memory location.</doc>

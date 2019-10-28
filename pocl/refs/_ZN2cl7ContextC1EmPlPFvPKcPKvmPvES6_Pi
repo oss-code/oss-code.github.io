@@ -1,0 +1,24 @@
+<use f='pocl/include/CL/cl2.hpp' l='2726' u='c' c='_ZN2cl7Context11makeDefaultEv'/>
+<def f='pocl/include/CL/cl2.hpp' l='2828' ll='2909' type='void cl::Context::Context(cl_device_type type, cl_context_properties * properties = __null, void (*)(const char *, const void *, size_type, void *) notifyFptr = __null, void * data = __null, cl_int * err = __null)'/>
+<doc f='pocl/include/CL/cl2.hpp' l='2824'>/*! \brief Constructs a context including all or a subset of devices of a specified type.
+     *
+     *  Wraps clCreateContextFromType().
+     */</doc>
+<use f='pocl/tests/regression/test_autolocals_in_constexprs.cpp' l='64' u='c' c='main'/>
+<use f='pocl/tests/regression/test_barrier_before_return.cpp' l='77' u='c' c='main'/>
+<use f='pocl/tests/regression/test_barrier_between_for_loops.cpp' l='93' u='c' c='main'/>
+<use f='pocl/tests/regression/test_constant_array.cpp' l='81' u='c' c='main'/>
+<use f='pocl/tests/regression/test_early_return.cpp' l='72' u='c' c='main'/>
+<use f='pocl/tests/regression/test_for_with_var_iteration_count.cpp' l='80' u='c' c='main'/>
+<use f='pocl/tests/regression/test_fors_with_var_iteration_counts.cpp' l='84' u='c' c='main'/>
+<use f='pocl/tests/regression/test_id_dependent_computation.cpp' l='92' u='c' c='main'/>
+<use f='pocl/tests/regression/test_infinite_loop.cpp' l='76' u='c' c='main'/>
+<use f='pocl/tests/regression/test_locals.cpp' l='74' u='c' c='main'/>
+<use f='pocl/tests/regression/test_loop_phi_replication.cpp' l='78' u='c' c='main'/>
+<use f='pocl/tests/regression/test_multi_level_loops_with_barriers.cpp' l='80' u='c' c='main'/>
+<use f='pocl/tests/regression/test_null_arg.cpp' l='69' u='c' c='main'/>
+<use f='pocl/tests/regression/test_setargs.cpp' l='60' u='c' c='main'/>
+<use f='pocl/tests/regression/test_simple_for_with_a_barrier.cpp' l='79' u='c' c='main'/>
+<use f='pocl/tests/regression/test_structs_as_args.cpp' l='144' u='c' c='main'/>
+<use f='pocl/tests/regression/test_undominated_variable.cpp' l='82' u='c' c='main'/>
+<use f='pocl/tests/regression/test_vectors_as_args.cpp' l='105' u='c' c='main'/>

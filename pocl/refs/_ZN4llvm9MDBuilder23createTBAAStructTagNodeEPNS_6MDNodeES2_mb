@@ -1,0 +1,3 @@
+<dec f='include/llvm-6.0/llvm/IR/MDBuilder.h' l='175' type='llvm::MDNode * llvm::MDBuilder::createTBAAStructTagNode(llvm::MDNode * BaseType, llvm::MDNode * AccessType, uint64_t Offset, bool IsConstant = false)'/>
+<doc f='include/llvm-6.0/llvm/IR/MDBuilder.h' l='173'>/// \brief Return metadata for a TBAA tag node with the given
+  /// base type, access type and offset relative to the base type.</doc>

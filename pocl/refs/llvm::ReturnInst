@@ -1,0 +1,43 @@
+<inh f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='54' c='llvm::TerminatorInst'/>
+<def f='include/llvm-6.0/llvm/IR/Instructions.h' l='2906' ll='2975'/>
+<size>56</size>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='2898'>//===----------------------------------------------------------------------===//
+//                               ReturnInst Class
+//===----------------------------------------------------------------------===//
+
+//===---------------------------------------------------------------------------
+/// Return a value (possibly void), from a function.  Execution
+/// does not continue in this function any longer.
+///</doc>
+<fun r='_ZN4llvm10ReturnInstC1ERKS0_'/>
+<fun r='_ZN4llvm10ReturnInstC1ERNS_11LLVMContextEPNS_5ValueEPNS_11InstructionE'/>
+<fun r='_ZN4llvm10ReturnInstC1ERNS_11LLVMContextEPNS_5ValueEPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm10ReturnInstC1ERNS_11LLVMContextEPNS_10BasicBlockE'/>
+<fun r='_ZNK4llvm10ReturnInst9cloneImplEv'/>
+<fun r='_ZN4llvm10ReturnInst6CreateERNS_11LLVMContextEPNS_5ValueEPNS_11InstructionE'/>
+<fun r='_ZN4llvm10ReturnInst6CreateERNS_11LLVMContextEPNS_5ValueEPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm10ReturnInst6CreateERNS_11LLVMContextEPNS_10BasicBlockE'/>
+<fun r='_ZNK4llvm10ReturnInst10getOperandEj'/>
+<fun r='_ZN4llvm10ReturnInst10setOperandEjPNS_5ValueE'/>
+<fun r='_ZN4llvm10ReturnInst8op_beginEv'/>
+<fun r='_ZNK4llvm10ReturnInst8op_beginEv'/>
+<fun r='_ZN4llvm10ReturnInst6op_endEv'/>
+<fun r='_ZNK4llvm10ReturnInst6op_endEv'/>
+<fun r='_ZN4llvm10ReturnInst2OpEv'/>
+<fun r='_ZNK4llvm10ReturnInst2OpEv'/>
+<fun r='_ZNK4llvm10ReturnInst14getNumOperandsEv'/>
+<fun r='_ZNK4llvm10ReturnInst14getReturnValueEv'/>
+<fun r='_ZNK4llvm10ReturnInst16getNumSuccessorsEv'/>
+<fun r='_ZN4llvm10ReturnInst7classofEPKNS_11InstructionE'/>
+<fun r='_ZN4llvm10ReturnInst7classofEPKNS_5ValueE'/>
+<fun r='_ZNK4llvm10ReturnInst12getSuccessorEj'/>
+<fun r='_ZN4llvm10ReturnInst12setSuccessorEjPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm10ReturnInst8op_beginEv'/>
+<fun r='_ZNK4llvm10ReturnInst8op_beginEv'/>
+<fun r='_ZN4llvm10ReturnInst6op_endEv'/>
+<fun r='_ZNK4llvm10ReturnInst6op_endEv'/>
+<fun r='_ZNK4llvm10ReturnInst10getOperandEj'/>
+<fun r='_ZN4llvm10ReturnInst10setOperandEjPNS_5ValueE'/>
+<fun r='_ZNK4llvm10ReturnInst14getNumOperandsEv'/>
+<fun r='_ZN4llvm10ReturnInst2OpEv'/>
+<fun r='_ZNK4llvm10ReturnInst2OpEv'/>

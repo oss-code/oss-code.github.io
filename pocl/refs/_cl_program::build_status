@@ -1,0 +1,20 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1101' type='cl_build_status'/>
+<offset>6656</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='1100'>/* Use to store build status */</doc>
+<use f='pocl/lib/CL/clCreateKernel.c' l='55' u='r' c='POclCreateKernel'/>
+<use f='pocl/lib/CL/clCreateKernel.c' l='59' u='r' c='POclCreateKernel'/>
+<use f='pocl/lib/CL/clCreateKernelsInProgram.c' l='25' u='r' c='POclCreateKernelsInProgram'/>
+<use f='pocl/lib/CL/clCreateKernelsInProgram.c' l='29' u='r' c='POclCreateKernelsInProgram'/>
+<use f='pocl/lib/CL/clCreateProgramWithBinary.c' l='128' u='w' c='create_program_skeleton'/>
+<use f='pocl/lib/CL/clCreateProgramWithSource.c' l='101' u='w' c='POclCreateProgramWithSource'/>
+<use f='pocl/lib/CL/clGetProgramBuildInfo.c' l='52' u='r' c='POclGetProgramBuildInfo'/>
+<use f='pocl/lib/CL/clGetProgramBuildInfo.c' l='63' u='r' c='POclGetProgramBuildInfo'/>
+<use f='pocl/lib/CL/clGetProgramInfo.c' l='112' u='r' c='POclGetProgramInfo'/>
+<use f='pocl/lib/CL/clGetProgramInfo.c' l='120' u='r' c='POclGetProgramInfo'/>
+<use f='pocl/lib/CL/clGetProgramInfo.c' l='144' u='r' c='POclGetProgramInfo'/>
+<use f='pocl/lib/CL/clGetProgramInfo.c' l='153' u='r' c='POclGetProgramInfo'/>
+<use f='pocl/lib/CL/pocl_build.c' l='121' u='r' c='program_compile_dynamic_wg_binaries'/>
+<use f='pocl/lib/CL/pocl_build.c' l='438' u='r' c='clean_program_on_rebuild'/>
+<use f='pocl/lib/CL/pocl_build.c' l='449' u='w' c='clean_program_on_rebuild'/>
+<use f='pocl/lib/CL/pocl_build.c' l='794' u='w' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_build.c' l='904' u='w' c='compile_and_link_program'/>

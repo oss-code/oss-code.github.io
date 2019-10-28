@@ -1,0 +1,11 @@
+<dec f='pocl/lib/CL/devices/devices.h' l='66' type='unsigned int pocl_get_devices(cl_device_type device_type, struct _cl_device_id ** devices, unsigned int num_devices)'/>
+<doc f='pocl/lib/CL/devices/devices.h' l='59'>/**
+ * \brief Get a certain amount of devices for a specific type
+ * \param type Type of devices wanted
+ * \param devcies Array of pointer to devices
+ * \param num_devices Number of devices queried
+ * \return The real number of devices added to devcies array which match the specified type
+ */</doc>
+<use f='pocl/lib/CL/clCreateContextFromType.c' l='100' u='c' c='POclCreateContextFromType'/>
+<use f='pocl/lib/CL/clGetDeviceIDs.c' l='60' u='c' c='POclGetDeviceIDs'/>
+<def f='pocl/lib/CL/devices/devices.c' l='141' ll='174' type='unsigned int pocl_get_devices(cl_device_type device_type, struct _cl_device_id ** devices, unsigned int num_devices)'/>

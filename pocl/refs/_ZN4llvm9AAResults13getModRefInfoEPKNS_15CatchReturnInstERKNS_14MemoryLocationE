@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='599' type='llvm::ModRefInfo llvm::AAResults::getModRefInfo(const llvm::CatchReturnInst * I, const llvm::MemoryLocation &amp; Loc)'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='604' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_15CatchReturnInstEPKNS_5ValueEm'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='641' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_11InstructionERKNS_8OptionalINS_14MemoryLocationEEE'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='597'>/// getModRefInfo (for catchrets) - Return information about whether
+  /// a particular catchret modifies or reads the specified memory location.</doc>

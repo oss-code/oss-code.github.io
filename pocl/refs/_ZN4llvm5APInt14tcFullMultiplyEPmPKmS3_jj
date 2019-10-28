@@ -1,0 +1,3 @@
+<dec f='include/llvm-6.0/llvm/ADT/APInt.h' l='1881' type='static void llvm::APInt::tcFullMultiply(WordType * , const WordType * , const WordType * , unsigned int , unsigned int )'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='1879'>/// DST = LHS * RHS, where DST has width the sum of the widths of the
+  /// operands. No overflow occurs. DST must be disjoint from both operands.</doc>

@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Support/DynamicLibrary.h' l='41' type='char'/>
+<use f='include/llvm-6.0/llvm/Support/DynamicLibrary.h' l='47' u='a' c='_ZN4llvm3sys14DynamicLibraryC1EPv'/>
+<use f='include/llvm-6.0/llvm/Support/DynamicLibrary.h' l='50' u='a' c='_ZNK4llvm3sys14DynamicLibrary7isValidEv'/>
+<doc f='include/llvm-6.0/llvm/Support/DynamicLibrary.h' l='38'>// Placeholder whose address represents an invalid library.
+    // We use this instead of NULL or a pointer-int pair because the OS library
+    // might define 0 or 1 to be &quot;special&quot; handles, such as &quot;search all&quot;.</doc>

@@ -1,0 +1,11 @@
+<def f='include/llvm-6.0/llvm/Support/CommandLine.h' l='377' ll='383'/>
+<size>16</size>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='371'>//===----------------------------------------------------------------------===//
+// Command line option modifiers that can be used to modify the behavior of
+// command line option parsers...
+//
+
+// desc - Modifier to set the description shown in the -help output...</doc>
+<mbr r='llvm::cl::desc::Desc' o='0' t='llvm::StringRef'/>
+<fun r='_ZN4llvm2cl4descC1ENS_9StringRefE'/>
+<fun r='_ZNK4llvm2cl4desc5applyERNS0_6OptionE'/>

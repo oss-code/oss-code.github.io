@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/ADT/simple_ilist.h' l='197' ll='201' type='iterator llvm::simple_ilist::erase(iterator I)'/>
+<doc f='include/llvm-6.0/llvm/ADT/simple_ilist.h' l='193'>/// Remove a node by iterator; never deletes.
+  ///
+  /// \see \a remove() for removing by reference.
+  /// \see \a eraseAndDispose() it the node should be deleted.</doc>

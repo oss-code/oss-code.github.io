@@ -1,0 +1,7 @@
+<dec f='pocl/include/poclu.h' l='101' type='cl_half poclu_float_to_cl_half(float value)'/>
+<doc f='pocl/include/poclu.h' l='97'>/**
+ * cl_half related helpers.
+ */</doc>
+<def f='pocl/lib/poclu/cl_half.c' l='55' ll='84' type='cl_half poclu_float_to_cl_half(float value)'/>
+<doc f='pocl/lib/poclu/cl_half.c' l='53'>// The idea behind these float to half functions is from:
+// http://gamedev.stackexchange.com/a/17410</doc>

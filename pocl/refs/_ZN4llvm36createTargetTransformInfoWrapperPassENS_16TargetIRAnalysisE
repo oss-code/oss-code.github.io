@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='1583' type='llvm::ImmutablePass * llvm::createTargetTransformInfoWrapperPass(llvm::TargetIRAnalysis TIRA)'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='186' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='1579'>/// \brief Create an analysis pass wrapper around a TTI object.
+///
+/// This analysis pass just holds the TTI instance and makes it available to
+/// clients.</doc>

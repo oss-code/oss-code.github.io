@@ -1,0 +1,8 @@
+<dec f='include/hwloc/bitmap.h' l='210' type='void hwloc_bitmap_singlify(hwloc_bitmap_t bitmap)'/>
+<use f='include/hwloc/cpuset.h' l='63' u='c' c='hwloc_cpuset_singlify'/>
+<doc f='include/hwloc/bitmap.h' l='204'>/** \brief Keep a single index among those set in bitmap \p bitmap
+ *
+ * May be useful before binding so that the process does not
+ * have a chance of migrating between multiple logical CPUs
+ * in the original mask.
+ */</doc>

@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='500' type='llvm::FunctionPass * llvm::createSpeculativeExecutionIfHasBranchDivergencePass()'/>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='206' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='498'>// Same as createSpeculativeExecutionPass, but does nothing unless
+// TargetTransformInfo::hasBranchDivergence() is true.</doc>

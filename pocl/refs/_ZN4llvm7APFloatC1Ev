@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/ADT/APFloat.h' l='817' ll='819' type='void llvm::APFloat::APFloat()'/>
+<doc f='include/llvm-6.0/llvm/ADT/APFloat.h' l='814'>// FIXME: This is due to clang 3.3 (or older version) always checks for the
+  // default constructor in an array aggregate initialization, even if no
+  // elements in the array is default initialized.</doc>

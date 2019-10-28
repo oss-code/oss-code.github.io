@@ -1,0 +1,16 @@
+<dec f='pocl/lib/llvmopencl/Workgroup.h' l='57' type='void pocl::Workgroup::createFastWorkgroupLauncher(llvm::Function * F)'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='253' u='c' c='_ZN4pocl9Workgroup11runOnModuleERN4llvm6ModuleE'/>
+<def f='pocl/lib/llvmopencl/Workgroup.cc' l='1349' ll='1425' type='void pocl::Workgroup::createFastWorkgroupLauncher(llvm::Function * F)'/>
+<doc f='pocl/lib/llvmopencl/Workgroup.cc' l='1336'>/**
+ * Creates a work group launcher more suitable for the heterogeneous
+ * host-device setup  (called KERNELNAME_workgroup_fast).
+ *
+ * 1) Pointer arguments are stored directly as pointers to the
+ *    buffers in the argument buffer.
+ *
+ * 2) Scalar values are loaded from the global memory address
+ *    space.
+ *
+ * This should minimize copying of data and memory allocation
+ * at the device.
+ */</doc>

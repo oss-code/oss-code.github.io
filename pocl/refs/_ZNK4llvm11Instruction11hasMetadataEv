@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/IR/Instruction.h' l='185' type='bool llvm::Instruction::hasMetadata() const'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.h' l='196' u='c' c='_ZNK4llvm11Instruction11getMetadataEj'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.h' l='203' u='c' c='_ZNK4llvm11Instruction11getMetadataENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.h' l='212' u='c' c='_ZNK4llvm11Instruction14getAllMetadataERNS_15SmallVectorImplISt4pairIjPNS_6MDNodeEEEE'/>
+<doc f='include/llvm-6.0/llvm/IR/Instruction.h' l='180'>//===--------------------------------------------------------------------===//
+  // Metadata manipulation.
+  //===--------------------------------------------------------------------===//
+
+  /// Return true if this instruction has any metadata attached to it.</doc>

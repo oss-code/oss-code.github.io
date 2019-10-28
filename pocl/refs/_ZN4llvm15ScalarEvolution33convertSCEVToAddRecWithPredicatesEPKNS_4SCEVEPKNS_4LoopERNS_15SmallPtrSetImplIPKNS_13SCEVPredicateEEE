@@ -1,0 +1,3 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1011' type='const llvm::SCEVAddRecExpr * llvm::ScalarEvolution::convertSCEVToAddRecWithPredicates(const llvm::SCEV * S, const llvm::Loop * L, SmallPtrSetImpl&lt;const llvm::SCEVPredicate *&gt; &amp; Preds)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1009'>/// Tries to convert the \p S expression to an AddRec expression,
+  /// adding additional predicates to \p Preds as required.</doc>

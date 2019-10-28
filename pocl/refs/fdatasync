@@ -1,0 +1,6 @@
+<dec f='include/unistd.h' l='1115' type='int fdatasync(int __fildes)'/>
+<doc f='include/unistd.h' l='1113'>/* Synchronize at least the data part of a file with the underlying
+   media.  */</doc>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='328' u='c' c='pocl_write_file'/>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='372' u='c' c='pocl_write_tempfile'/>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='426' u='c' c='pocl_write_module'/>

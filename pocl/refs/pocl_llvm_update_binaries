@@ -1,0 +1,7 @@
+<dec f='pocl/lib/CL/pocl_llvm.h' l='99' type='void pocl_llvm_update_binaries(cl_program program)'/>
+<doc f='pocl/lib/CL/pocl_llvm.h' l='94'>/**
+ * Update the program-&gt;binaries[] representation of the kernels
+ * from the program-&gt;llvm_irs[] representation.
+ * Also updates the &apos;program.bc&apos; file in the POCL_TEMP_DIR cache.
+ */</doc>
+<def f='pocl/lib/CL/pocl_llvm_wg.cc' l='525' ll='571' type='void pocl_llvm_update_binaries(cl_program program)'/>

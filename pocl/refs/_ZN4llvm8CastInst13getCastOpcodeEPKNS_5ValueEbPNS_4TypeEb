@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='755' type='static Instruction::CastOps llvm::CastInst::getCastOpcode(const llvm::Value * Val, bool SrcIsSigned, llvm::Type * Ty, bool DstIsSigned)'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='752'>/// Returns the opcode necessary to cast Val into Ty using usual casting
+  /// rules.
+  /// @brief Infer the opcode for cast operand and type</doc>

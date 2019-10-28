@@ -1,0 +1,9 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='715' type='cl_bool'/>
+<offset>3392</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='713'>/* The device uses an HSA-like kernel ABI with a single argument buffer as
+     an input. */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='306' u='w' c='pocl_init_cpu_device_infos'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='238' u='r' c='_ZN4pocl9Workgroup11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='257' u='r' c='_ZN4pocl9Workgroup11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='611' u='r' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='638' u='r' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>

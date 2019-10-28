@@ -1,0 +1,5 @@
+<def f='pocl/include/CL/cl2.hpp' l='4872' ll='4876' type='cl::Image2D &amp; cl::Image2D::operator=(cl::Image2D &amp;&amp; img)'/>
+<use f='pocl/include/CL/cl2.hpp' l='4970' u='c' c='_ZN2cl9Image2DGLaSEOS0_'/>
+<doc f='pocl/include/CL/cl2.hpp' l='4869'>/*! \brief Move assignment to forward move to the superclass correctly.
+     * Required for MSVC.
+     */</doc>

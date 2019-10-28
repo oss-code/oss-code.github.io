@@ -1,0 +1,19 @@
+<inh f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='560' c='llvm::CastInst'/>
+<def f='include/llvm-6.0/llvm/IR/Instructions.h' l='5134' ll='5191'/>
+<size>56</size>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='5128'>//===----------------------------------------------------------------------===//
+//                          AddrSpaceCastInst Class
+//===----------------------------------------------------------------------===//
+
+/// This class represents a conversion between pointers from one address space
+/// to another.</doc>
+<fun r='_ZNK4llvm17AddrSpaceCastInst9cloneImplEv'/>
+<fun r='_ZN4llvm17AddrSpaceCastInstC1EPNS_5ValueEPNS_4TypeERKNS_5TwineEPNS_11InstructionE'/>
+<fun r='_ZN4llvm17AddrSpaceCastInstC1EPNS_5ValueEPNS_4TypeERKNS_5TwineEPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm17AddrSpaceCastInst7classofEPKNS_11InstructionE'/>
+<fun r='_ZN4llvm17AddrSpaceCastInst7classofEPKNS_5ValueE'/>
+<fun r='_ZN4llvm17AddrSpaceCastInst17getPointerOperandEv'/>
+<fun r='_ZNK4llvm17AddrSpaceCastInst17getPointerOperandEv'/>
+<fun r='_ZN4llvm17AddrSpaceCastInst22getPointerOperandIndexEv'/>
+<fun r='_ZNK4llvm17AddrSpaceCastInst18getSrcAddressSpaceEv'/>
+<fun r='_ZNK4llvm17AddrSpaceCastInst19getDestAddressSpaceEv'/>

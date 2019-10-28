@@ -1,0 +1,16 @@
+<inh f='include/llvm-6.0/llvm/IR/User.h' l='45' c='llvm::User'/>
+<def f='include/llvm-6.0/llvm/IR/Operator.h' l='31' ll='62'/>
+<ovr f='include/llvm-6.0/llvm/IR/Operator.h' l='67' c='llvm::OverflowingBinaryOperator'/>
+<ovr f='include/llvm-6.0/llvm/IR/Operator.h' l='120' c='llvm::PossiblyExactOperator'/>
+<ovr f='include/llvm-6.0/llvm/IR/Operator.h' l='229' c='llvm::FPMathOperator'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/IR/Operator.h' l='29'>/// This is a utility class that provides an abstraction for the common
+/// functionality between Instructions and ConstantExprs.</doc>
+<fun r='_ZN4llvm8OperatorC1Ev'/>
+<fun r='_ZN4llvm8OperatorD1Ev'/>
+<fun r='_ZN4llvm8OperatornwEm'/>
+<fun r='_ZNK4llvm8Operator9getOpcodeEv'/>
+<fun r='_ZN4llvm8Operator9getOpcodeEPKNS_5ValueE'/>
+<fun r='_ZN4llvm8Operator7classofEPKNS_11InstructionE'/>
+<fun r='_ZN4llvm8Operator7classofEPKNS_12ConstantExprE'/>
+<fun r='_ZN4llvm8Operator7classofEPKNS_5ValueE'/>

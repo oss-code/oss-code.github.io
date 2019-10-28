@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/ADT/APInt.h' l='1876' type='static int llvm::APInt::tcMultiply(WordType * , const WordType * , const WordType * , unsigned int )'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='1872'>/// DST = LHS * RHS, where DST has the same width as the operands and is
+  /// filled with the least significant parts of the result.  Returns one if
+  /// overflow occurred, otherwise zero.  DST must be disjoint from both
+  /// operands.</doc>

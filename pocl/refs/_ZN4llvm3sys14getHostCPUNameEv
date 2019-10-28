@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Support/Host.h' l='70' type='llvm::StringRef llvm::sys::getHostCPUName()'/>
+<doc f='include/llvm-6.0/llvm/Support/Host.h' l='65'>/// getHostCPUName - Get the LLVM name for the host CPU. The particular format
+  /// of the name is target dependent, and suitable for passing as -mcpu to the
+  /// target which matches the host.
+  ///
+  /// \return - The host CPU name, or empty if the CPU could not be determined.</doc>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='110' u='c' c='get_llvm_cpu_name'/>

@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Transforms/IPO.h' l='143' type='llvm::ModulePass * llvm::createDeadArgEliminationPass()'/>
+<doc f='include/llvm-6.0/llvm/Transforms/IPO.h' l='139'>//===----------------------------------------------------------------------===//
+/// createDeadArgEliminationPass - This pass removes arguments from functions
+/// which are not used by the body of the function.
+///</doc>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='87' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>

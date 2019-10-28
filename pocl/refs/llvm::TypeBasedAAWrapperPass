@@ -1,0 +1,12 @@
+<inh f='include/llvm-6.0/llvm/Pass.h' l='256' c='llvm::ImmutablePass'/>
+<def f='include/llvm-6.0/llvm/Analysis/TypeBasedAliasAnalysis.h' l='69' ll='83'/>
+<size>40</size>
+<doc f='include/llvm-6.0/llvm/Analysis/TypeBasedAliasAnalysis.h' l='68'>/// Legacy wrapper pass to provide the TypeBasedAAResult object.</doc>
+<mbr r='llvm::TypeBasedAAWrapperPass::Result' o='256' t='std::unique_ptr&lt;TypeBasedAAResult&gt;'/>
+<smbr r='llvm::TypeBasedAAWrapperPass::ID' t='char'/>
+<fun r='_ZN4llvm22TypeBasedAAWrapperPassC1Ev'/>
+<fun r='_ZN4llvm22TypeBasedAAWrapperPass9getResultEv'/>
+<fun r='_ZNK4llvm22TypeBasedAAWrapperPass9getResultEv'/>
+<fun r='_ZN4llvm22TypeBasedAAWrapperPass16doInitializationERNS_6ModuleE'/>
+<fun r='_ZN4llvm22TypeBasedAAWrapperPass14doFinalizationERNS_6ModuleE'/>
+<fun r='_ZNK4llvm22TypeBasedAAWrapperPass16getAnalysisUsageERNS_13AnalysisUsageE'/>

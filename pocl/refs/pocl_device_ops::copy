@@ -1,0 +1,8 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='456' type='void (*)(void *, pocl_mem_identifier *, cl_mem, pocl_mem_identifier *, cl_mem, size_t, size_t, size_t)'/>
+<offset>1856</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='455'>/* clEnqCopyBuffer */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='124' u='w' c='pocl_basic_init_device_ops'/>
+<use f='pocl/lib/CL/devices/common.c' l='294' u='r' c='pocl_copy_mem_object'/>
+<use f='pocl/lib/CL/devices/common.c' l='417' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='418' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='158' u='w' c='pocl_cuda_init_device_ops'/>

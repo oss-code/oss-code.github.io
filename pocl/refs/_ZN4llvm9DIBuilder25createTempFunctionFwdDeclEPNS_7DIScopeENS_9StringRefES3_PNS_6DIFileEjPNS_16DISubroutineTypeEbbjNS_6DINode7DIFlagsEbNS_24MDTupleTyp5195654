@@ -1,0 +1,3 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='601' type='llvm::DISubprogram * llvm::DIBuilder::createTempFunctionFwdDecl(llvm::DIScope * Scope, llvm::StringRef Name, llvm::StringRef LinkageName, llvm::DIFile * File, unsigned int LineNo, llvm::DISubroutineType * Ty, bool isLocalToUnit, bool isDefinition, unsigned int ScopeLine, DINode::DIFlags Flags = DINode::FlagZero, bool isOptimized = false, DITemplateParameterArray TParams = nullptr, llvm::DISubprogram * Decl = nullptr, DITypeArray ThrownTypes = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='599'>/// Identical to createFunction,
+    /// except that the resulting DbgNode is meant to be RAUWed.</doc>

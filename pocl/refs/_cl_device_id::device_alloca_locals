@@ -1,0 +1,15 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='761' type='int'/>
+<offset>5024</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='758'>/* Allocate local buffers device side in the work-group launcher instead of
+     having a disjoint physical local memory per work-group or having the
+     runtime/driver allocate the local space. */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='359' u='w' c='pocl_init_cpu_device_infos'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='588' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='645' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='686' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='710' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='193' u='r' c='setup_kernel_arg_array_with_locals'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='211' u='r' c='setup_kernel_arg_array_with_locals'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='240' u='r' c='free_kernel_arg_array'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='981' u='r' c='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1180' u='r' c='_ZN4pocl9Workgroup32createArgBufferWorkgroupLauncherEPN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>

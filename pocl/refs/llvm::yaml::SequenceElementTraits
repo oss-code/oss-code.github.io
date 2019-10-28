@@ -1,0 +1,12 @@
+<def f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='213' ll='216'/>
+<def f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='1637' ll='1641'/>
+<def f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='1644' ll='1646'/>
+<def f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='1647' ll='1649'/>
+<def f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='1650' ll='1652'/>
+<size>1</size>
+<doc f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='1636'>// Sequences of fundamental types use flow formatting.</doc>
+<doc f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='1643'>// Sequences of strings use block formatting.</doc>
+<smbr r='llvm::yaml::SequenceElementTraits{type-parameter-0-0,typenameenable_if{std::is_fundamental{T}::value,void}::type}::flow' t='const bool'/>
+<smbr r='llvm::yaml::SequenceElementTraits{std::__cxx11::basic_string{char},void}::flow' t='const bool'/>
+<smbr r='llvm::yaml::SequenceElementTraits{llvm::StringRef,void}::flow' t='const bool'/>
+<smbr r='llvm::yaml::SequenceElementTraits{std::pair{std::__cxx11::basic_string{char},std::__cxx11::basic_string{char}},void}::flow' t='const bool'/>

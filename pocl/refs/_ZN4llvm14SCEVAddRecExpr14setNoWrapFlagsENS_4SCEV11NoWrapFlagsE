@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='332' ll='336' type='void llvm::SCEVAddRecExpr::setNoWrapFlags(llvm::SCEV::NoWrapFlags Flags)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='329'>/// Set flags for a recurrence without clearing any previously set flags.
+    /// For AddRec, either NUW or NSW implies NW. Keep track of this fact here
+    /// to make it easier to propagate flags.</doc>

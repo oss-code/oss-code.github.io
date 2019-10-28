@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Option/Arg.h' l='118' type='void llvm::opt::Arg::renderAsInput(const llvm::opt::ArgList &amp; Args, ArgStringList &amp; Output) const'/>
+<doc f='include/llvm-6.0/llvm/Option/Arg.h' l='113'>/// \brief Append the argument, render as an input, onto the given
+  /// array as strings.
+  ///
+  /// The distinction is that some options only render their values
+  /// when rendered as a input (e.g., Xlinker).</doc>

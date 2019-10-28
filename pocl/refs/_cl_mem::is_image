@@ -1,0 +1,30 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1014' type='cl_bool'/>
+<offset>1280</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='1013'>/* Image flags */</doc>
+<use f='pocl/lib/CL/clCreateBuffer.c' l='112' u='w' c='POclCreateBuffer'/>
+<use f='pocl/lib/CL/clCreateImage.c' l='224' u='w' c='POclCreateImage'/>
+<use f='pocl/lib/CL/clCreateSubBuffer.c' l='40' u='r' c='POclCreateSubBuffer'/>
+<use f='pocl/lib/CL/clCreateSubBuffer.c' l='40' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueCopyBufferToImage.c' l='25' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueCopyImage.c' l='27' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueCopyImage.c' l='27' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueCopyImageToBuffer.c' l='24' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueFillImage.c' l='55' u='r' c='POclEnqueueFillImage'/>
+<use f='pocl/lib/CL/clEnqueueFillImage.c' l='95' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='65' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='76' u='r' c='POclEnqueueMapImage'/>
+<use f='pocl/lib/CL/clEnqueueMigrateMemObjects.c' l='72' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueReadImage.c' l='52' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueReadImage.c' l='66' u='r' c='POclEnqueueReadImage'/>
+<use f='pocl/lib/CL/clEnqueueWriteImage.c' l='26' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueWriteImage.c' l='40' u='r' c='POclEnqueueWriteImage'/>
+<use f='pocl/lib/CL/clReleaseMemObject.c' l='55' u='r' c='POclReleaseMemObject'/>
+<use f='pocl/lib/CL/clReleaseMemObject.c' l='76' u='r' c='POclReleaseMemObject'/>
+<use f='pocl/lib/CL/clReleaseMemObject.c' l='113' u='r' c='POclReleaseMemObject'/>
+<use f='pocl/lib/CL/clSetKernelArgSVMPointer.c' l='49' u='w' c='POclSetKernelArgSVMPointer'/>
+<use f='pocl/lib/CL/devices/common.c' l='278' macro='1' u='r'/>
+<use f='pocl/lib/CL/devices/common.c' l='633' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='634' macro='1' u='r'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1201' u='r' c='pocl_cuda_submit_node'/>
+<use f='pocl/lib/CL/pocl_img_buf_cpy.c' l='83' u='r' c='pocl_rect_copy'/>
+<use f='pocl/lib/CL/pocl_img_buf_cpy.c' l='101' u='r' c='pocl_rect_copy'/>

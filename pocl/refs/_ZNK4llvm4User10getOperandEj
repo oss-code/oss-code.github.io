@@ -1,0 +1,13 @@
+<def f='include/llvm-6.0/llvm/IR/User.h' l='154' ll='157' type='llvm::Value * llvm::User::getOperand(unsigned int i) const'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='450' u='c' c='_ZN4llvm11GEPOperator17getPointerOperandEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='453' u='c' c='_ZNK4llvm11GEPOperator17getPointerOperandEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='528' u='c' c='_ZN4llvm16PtrToIntOperator17getPointerOperandEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='531' u='c' c='_ZNK4llvm16PtrToIntOperator17getPointerOperandEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='556' u='c' c='_ZNK4llvm15BitCastOperator8getSrcTyEv'/>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='266' u='c' c='_ZN17BreakConstantGEPs13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='320' u='c' c='_ZN17BreakConstantGEPs13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='806' u='c' c='_ZN4pocl14ParallelRegion15LocalizeIDLoadsEv'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='432' u='c' c='_ZN4pocl26VariableUniformityAnalysis9isUniformEPN4llvm8FunctionEPNS1_5ValueE'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='101' u='c' c='_ZN4pocl15WorkitemHandler12dominatesUseEPN4llvm24DominatorTreeWrapperPassERNS1_11InstructionEj'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='172' u='c' c='_ZN4pocl15WorkitemHandler26fixUndominatedVariableUsesEPN4llvm24DominatorTreeWrapperPassERNS1_8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='173' u='c' c='_ZN4pocl15WorkitemHandler26fixUndominatedVariableUsesEPN4llvm24DominatorTreeWrapperPassERNS1_8FunctionE'/>

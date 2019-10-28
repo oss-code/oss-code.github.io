@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionPass.h' l='58' type='llvm::Pass * llvm::RegionPass::createPrinterPass(llvm::raw_ostream &amp; O, const std::string &amp; Banner) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionPass.h' l='52'>/// @brief Get a pass to print the LLVM IR in the region.
+  ///
+  /// @param O      The output stream to print the Region.
+  /// @param Banner The banner to separate different printed passes.
+  ///
+  /// @return The pass to print the LLVM IR in the region.</doc>

@@ -1,0 +1,69 @@
+<def f='include/llvm-6.0/llvm/Support/CommandLine.h' l='233' ll='369'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1283' c='llvm::cl::opt'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1365' c='llvm::cl::opt'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1366' c='llvm::cl::opt'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1367' c='llvm::cl::opt'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1368' c='llvm::cl::opt'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1369' c='llvm::cl::opt'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1475' c='llvm::cl::list'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1618' c='llvm::cl::bits'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1686' c='llvm::cl::alias'/>
+<size>152</size>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='230'>//===----------------------------------------------------------------------===//
+// Option Base class
+//</doc>
+<fun r='_ZN4llvm2cl6Option16handleOccurrenceEjNS_9StringRefES2_'/>
+<fun r='_ZNK4llvm2cl6Option27getValueExpectedFlagDefaultEv'/>
+<fun r='_ZN4llvm2cl6Option6anchorEv'/>
+<mbr r='llvm::cl::Option::NumOccurrences' o='64' t='int'/>
+<mbr r='llvm::cl::Option::Occurrences' o='96' t='unsigned int'/>
+<mbr r='llvm::cl::Option::Value' o='99' t='unsigned int'/>
+<mbr r='llvm::cl::Option::HiddenFlag' o='101' t='unsigned int'/>
+<mbr r='llvm::cl::Option::Formatting' o='103' t='unsigned int'/>
+<mbr r='llvm::cl::Option::Misc' o='105' t='unsigned int'/>
+<mbr r='llvm::cl::Option::Position' o='128' t='unsigned int'/>
+<mbr r='llvm::cl::Option::AdditionalVals' o='160' t='unsigned int'/>
+<mbr r='llvm::cl::Option::ArgStr' o='192' t='llvm::StringRef'/>
+<mbr r='llvm::cl::Option::HelpStr' o='320' t='llvm::StringRef'/>
+<mbr r='llvm::cl::Option::ValueStr' o='448' t='llvm::StringRef'/>
+<mbr r='llvm::cl::Option::Category' o='576' t='llvm::cl::OptionCategory *'/>
+<mbr r='llvm::cl::Option::Subs' o='640' t='SmallPtrSet&lt;llvm::cl::SubCommand *, 4&gt;'/>
+<mbr r='llvm::cl::Option::FullyInitialized' o='1152' t='bool'/>
+<fun r='_ZNK4llvm2cl6Option21getNumOccurrencesFlagEv'/>
+<fun r='_ZNK4llvm2cl6Option20getValueExpectedFlagEv'/>
+<fun r='_ZNK4llvm2cl6Option19getOptionHiddenFlagEv'/>
+<fun r='_ZNK4llvm2cl6Option17getFormattingFlagEv'/>
+<fun r='_ZNK4llvm2cl6Option12getMiscFlagsEv'/>
+<fun r='_ZNK4llvm2cl6Option11getPositionEv'/>
+<fun r='_ZNK4llvm2cl6Option20getNumAdditionalValsEv'/>
+<fun r='_ZNK4llvm2cl6Option9hasArgStrEv'/>
+<fun r='_ZNK4llvm2cl6Option12isPositionalEv'/>
+<fun r='_ZNK4llvm2cl6Option6isSinkEv'/>
+<fun r='_ZNK4llvm2cl6Option14isConsumeAfterEv'/>
+<fun r='_ZNK4llvm2cl6Option18isInAllSubCommandsEv'/>
+<fun r='_ZN4llvm2cl6Option9setArgStrENS_9StringRefE'/>
+<fun r='_ZN4llvm2cl6Option14setDescriptionENS_9StringRefE'/>
+<fun r='_ZN4llvm2cl6Option11setValueStrENS_9StringRefE'/>
+<fun r='_ZN4llvm2cl6Option21setNumOccurrencesFlagENS0_18NumOccurrencesFlagE'/>
+<fun r='_ZN4llvm2cl6Option20setValueExpectedFlagENS0_13ValueExpectedE'/>
+<fun r='_ZN4llvm2cl6Option13setHiddenFlagENS0_12OptionHiddenE'/>
+<fun r='_ZN4llvm2cl6Option17setFormattingFlagENS0_15FormattingFlagsE'/>
+<fun r='_ZN4llvm2cl6Option11setMiscFlagENS0_9MiscFlagsE'/>
+<fun r='_ZN4llvm2cl6Option11setPositionEj'/>
+<fun r='_ZN4llvm2cl6Option11setCategoryERNS0_14OptionCategoryE'/>
+<fun r='_ZN4llvm2cl6Option13addSubCommandERNS0_10SubCommandE'/>
+<fun r='_ZN4llvm2cl6OptionC1ENS0_18NumOccurrencesFlagENS0_12OptionHiddenE'/>
+<fun r='_ZN4llvm2cl6Option20setNumAdditionalValsEj'/>
+<fun r='_ZN4llvm2cl6OptionD1Ev'/>
+<fun r='_ZN4llvm2cl6Option11addArgumentEv'/>
+<fun r='_ZN4llvm2cl6Option14removeArgumentEv'/>
+<fun r='_ZNK4llvm2cl6Option14getOptionWidthEv'/>
+<fun r='_ZNK4llvm2cl6Option15printOptionInfoEm'/>
+<fun r='_ZNK4llvm2cl6Option16printOptionValueEmb'/>
+<fun r='_ZN4llvm2cl6Option10setDefaultEv'/>
+<fun r='_ZN4llvm2cl6Option12printHelpStrENS_9StringRefEmm'/>
+<fun r='_ZN4llvm2cl6Option19getExtraOptionNamesERNS_15SmallVectorImplINS_9StringRefEEE'/>
+<fun r='_ZN4llvm2cl6Option13addOccurrenceEjNS_9StringRefES2_b'/>
+<fun r='_ZN4llvm2cl6Option5errorERKNS_5TwineENS_9StringRefE'/>
+<fun r='_ZNK4llvm2cl6Option17getNumOccurrencesEv'/>
+<fun r='_ZN4llvm2cl6Option5resetEv'/>

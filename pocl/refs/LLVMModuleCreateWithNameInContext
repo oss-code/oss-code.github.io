@@ -1,0 +1,7 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='533' type='LLVMModuleRef LLVMModuleCreateWithNameInContext(const char * ModuleID, LLVMContextRef C)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='527'>/**
+ * Create a new, empty module in a specific context.
+ *
+ * Every invocation should be paired with LLVMDisposeModule() or memory
+ * will be leaked.
+ */</doc>

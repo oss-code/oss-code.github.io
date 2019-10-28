@@ -1,0 +1,45 @@
+<inh f='include/llvm-6.0/llvm/Pass.h' l='285' c='llvm::FunctionPass'/>
+<def f='pocl/lib/llvmopencl/ImplicitConditionalBarriers.h' l='62' ll='78'/>
+<size>40</size>
+<doc f='pocl/lib/llvmopencl/ImplicitConditionalBarriers.h' l='30'>/**
+   * Adds implicit barriers to branches to minimize the adverse effects from
+   * &quot;peeling&quot; to the symmetry of the work-item loops created for conditional
+   * barrier cases.
+   *
+   * In essence, the pass converts the following cases:
+   
+      .[P].
+      |   |
+      a   b
+     [B]  
+
+     to
+
+      .[P].
+     [B] [B]
+      |   |
+      a   b
+     [B]  
+
+     Legend: [P] is a BB with the predicate. 
+             [B] is a barrier. 
+             a and b are regular basic blocks. 
+
+     We can inject the barrier legally due to the barrier semantics: 
+     &apos;a&apos; or &apos;b&apos; are entered by all or none of the work-items. Thus,
+     the additional barrier is legal there as well.     
+
+     This creates a nice static trip count work-item parallel loop around &apos;a&apos; and 
+     &apos;b&apos; instead of needing to peel the first iteration that creates
+     an asymmetric loop with dynamic iteration count.
+   */</doc>
+<smbr r='pocl::ImplicitConditionalBarriers::ID' t='char'/>
+<fun r='_ZN4pocl27ImplicitConditionalBarriersC1Ev'/>
+<fun r='_ZNK4pocl27ImplicitConditionalBarriers16getAnalysisUsageERN4llvm13AnalysisUsageE'/>
+<fun r='_ZN4pocl27ImplicitConditionalBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<fun r='_ZN4pocl27ImplicitConditionalBarriers27firstNonBackedgePredecessorEPN4llvm10BasicBlockE'/>
+<mbr r='pocl::ImplicitConditionalBarriers::PDT' o='256' t='llvm::PostDominatorTreeWrapperPass *'/>
+<smbr r='pocl::ImplicitConditionalBarriers::ID' t='char'/>
+<fun r='_ZNK4pocl27ImplicitConditionalBarriers16getAnalysisUsageERN4llvm13AnalysisUsageE'/>
+<fun r='_ZN4pocl27ImplicitConditionalBarriers27firstNonBackedgePredecessorEPN4llvm10BasicBlockE'/>
+<fun r='_ZN4pocl27ImplicitConditionalBarriers13runOnFunctionERN4llvm8FunctionE'/>

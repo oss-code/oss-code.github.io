@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/CodeGen/Passes.h' l='381' type='llvm::Pass * llvm::createGlobalMergePass(const llvm::TargetMachine * TM, unsigned int MaximalOffset, bool OnlyOptimizeForSize = false, bool MergeExternalByDefault = false)'/>
+<doc f='include/llvm-6.0/llvm/CodeGen/Passes.h' l='377'>/// GlobalMerge - This pass merges internal (by default) globals into structs
+  /// to enable reuse of a base pointer by indexed addressing modes.
+  /// It can also be configured to focus on size optimizations only.
+  ///</doc>

@@ -1,0 +1,6 @@
+<dec f='pocl/lib/CL/devices/pthread/pocl-pthread_utils.h' l='59' type='size_t'/>
+<offset>1600</offset>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='215' u='r' c='get_wg_index_range'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='216' u='r' c='get_wg_index_range'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='218' u='w' c='get_wg_index_range'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='363' u='w' c='pocl_pthread_prepare_kernel'/>

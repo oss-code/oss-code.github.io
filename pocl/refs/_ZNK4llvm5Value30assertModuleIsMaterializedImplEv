@@ -1,0 +1,11 @@
+<dec f='include/llvm-6.0/llvm/IR/Value.h' l='318' type='void llvm::Value::assertModuleIsMaterializedImpl() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Value.h' l='308'>//----------------------------------------------------------------------
+  // Methods for handling the chain of uses of this Value.
+  //
+  // Materializing a function can introduce new uses, so these methods come in
+  // two variants:
+  // The methods that start with materialized_ check the uses that are
+  // currently known given which functions are materialized. Be very careful
+  // when using them since you might not get all uses.
+  // The methods that don&apos;t start with materialized_ assert that modules is
+  // fully materialized.</doc>

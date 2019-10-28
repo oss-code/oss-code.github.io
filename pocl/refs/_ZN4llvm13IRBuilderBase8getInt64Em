@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='313' ll='315' type='llvm::ConstantInt * llvm::IRBuilderBase::getInt64(uint64_t C)'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='409' u='c' c='_ZN4llvm13IRBuilderBase12CreateMemSetEPNS_5ValueES2_mjbPNS_6MDNodeES4_S4_'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='428' u='c' c='_ZN4llvm13IRBuilderBase12CreateMemCpyEPNS_5ValueES2_mjbPNS_6MDNodeES4_S4_S4_'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='452' u='c' c='_ZN4llvm13IRBuilderBase34CreateElementUnorderedAtomicMemCpyEPNS_5ValueEjS2_jmjPNS_6MDNodeES4_S4_S4_'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='472' u='c' c='_ZN4llvm13IRBuilderBase13CreateMemMoveEPNS_5ValueES2_mjbPNS_6MDNodeES4_S4_'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1723' u='c' c='_ZN4llvm9IRBuilder20CreateExtractElementEPNS_5ValueEmRKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1737' u='c' c='_ZN4llvm9IRBuilder19CreateInsertElementEPNS_5ValueES2_mRKNS_5TwineE'/>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='312'>/// \brief Get a constant 64-bit value.</doc>

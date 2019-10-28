@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/Instructions.h' l='3878' ll='3880' type='bool llvm::InvokeInst::doesNotAccessMemory() const'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='3887' u='c' c='_ZNK4llvm10InvokeInst15onlyReadsMemoryEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='3895' u='c' c='_ZNK4llvm10InvokeInst17doesNotReadMemoryEv'/>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='3877'>/// Determine if the call does not access memory.</doc>

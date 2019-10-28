@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Support/FileSystem.h' l='852' type='std::string llvm::sys::fs::getMainExecutable(const char * argv0, void * MainExecAddr)'/>
+<doc f='include/llvm-6.0/llvm/Support/FileSystem.h' l='849'>/// Return the path to the main executable, given the value of argv[0] from
+/// program startup and the address of main itself. In extremis, this function
+/// may fail and return an empty path.</doc>

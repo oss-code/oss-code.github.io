@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='950' type='void llvm::DiagnosticInfoOptimizationFailure::DiagnosticInfoOptimizationFailure(const char * PassName, llvm::StringRef RemarkName, const llvm::DiagnosticLocation &amp; Loc, const llvm::Value * CodeRegion)'/>
+<doc f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='945'>/// \p PassName is the name of the pass emitting this diagnostic.  \p
+  /// RemarkName is a textual identifier for the remark (single-word,
+  /// camel-case).  \p Loc is the debug location and \p CodeRegion is the
+  /// region that the optimization operates on (currently basic block is
+  /// supported).</doc>

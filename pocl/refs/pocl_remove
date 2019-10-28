@@ -1,0 +1,8 @@
+<dec f='pocl/include/pocl_file_util.h' l='45' type='int pocl_remove(const char * path)'/>
+<doc f='pocl/include/pocl_file_util.h' l='44'>/* Remove a file or empty directory */</doc>
+<use f='pocl/lib/CL/devices/common.c' l='236' u='c' c='llvm_codegen'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='122' u='c' c='_ZL13unlink_sourceRN5clang15FrontendOptionsE'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='506' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='685' u='c' c='pocl_llvm_codegen'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='686' u='c' c='pocl_llvm_codegen'/>
+<def f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='143' ll='148' type='int pocl_remove(const char * path)'/>

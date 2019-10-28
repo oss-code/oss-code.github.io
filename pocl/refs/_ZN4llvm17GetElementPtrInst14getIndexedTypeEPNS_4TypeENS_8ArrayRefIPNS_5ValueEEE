@@ -1,0 +1,10 @@
+<dec f='include/llvm-6.0/llvm/IR/Instructions.h' l='958' type='static llvm::Type * llvm::GetElementPtrInst::getIndexedType(llvm::Type * Ty, ArrayRef&lt;llvm::Value *&gt; IdxList)'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1005' u='c' c='_ZN4llvm17GetElementPtrInst16getGEPReturnTypeEPNS_4TypeEPNS_5ValueENS_8ArrayRefIS4_EE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1078' u='c' c='_ZN4llvm17GetElementPtrInstC1EPNS_4TypeEPNS_5ValueENS_8ArrayRefIS4_EEjRKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1092' u='c' c='_ZN4llvm17GetElementPtrInstC1EPNS_4TypeEPNS_5ValueENS_8ArrayRefIS4_EEjRKNS_5TwineEPNS_10BasicBlockE'/>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='952'>/// Returns the type of the element that would be loaded with
+  /// a load instruction with the specified parameters.
+  ///
+  /// Null is returned if the indices are invalid for the specified
+  /// pointer type.
+  ///</doc>

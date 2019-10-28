@@ -1,0 +1,4 @@
+<dec f='pocl/include/CL/cl.h' l='1246' type='cl_int clRetainKernel(cl_kernel kernel)'/>
+<use f='pocl/lib/CL/pocl_intfn.h' l='111' c='POclRetainKernel'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='610' u='c' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/include/CL/cl2.hpp' l='1645' u='c' c='_ZN2cl6detail16ReferenceHandlerIP10_cl_kernelE6retainES3_'/>

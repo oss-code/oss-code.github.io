@@ -1,0 +1,23 @@
+<dec f='include/hwloc.h' l='1989' type='int hwloc_get_area_membind_nodeset(hwloc_topology_t topology, const void * addr, size_t len, hwloc_nodeset_t nodeset, hwloc_membind_policy_t * policy, int flags)'/>
+<doc f='include/hwloc.h' l='1967'>/** \brief Query the physical NUMA node(s) and binding policy of the memory
+ * identified by (\p addr, \p len ).
+ *
+ * This function has two output parameters: \p nodeset and \p policy.
+ * The values returned in these parameters depend on both the \p flags
+ * passed in and the memory binding policies and nodesets of the pages
+ * in the address range.
+ *
+ * If ::HWLOC_MEMBIND_STRICT is specified, the target pages are first
+ * checked to see if they all have the same memory binding policy and
+ * nodeset.  If they do not, -1 is returned and errno is set to EXDEV.
+ * If they are identical across all pages, the nodeset and policy are
+ * returned in \p nodeset and \p policy, respectively.
+ *
+ * If ::HWLOC_MEMBIND_STRICT is not specified, \p nodeset is set to the
+ * union of all NUMA node(s) containing pages in the address range.
+ * If all pages in the target have the same policy, it is returned in
+ * \p policy.  Otherwise, \p policy is set to ::HWLOC_MEMBIND_MIXED.
+ *
+ * If any other flags are specified, -1 is returned and errno is set
+ * to EINVAL.
+ */</doc>

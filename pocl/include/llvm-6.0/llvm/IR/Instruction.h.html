@@ -1,0 +1,713 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Instruction.h source code [include/llvm-6.0/llvm/IR/Instruction.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="llvm::Instruction,llvm::ilist_alloc_traits "/>
+<link rel="stylesheet" href="../../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'include/llvm-6.0/llvm/IR/Instruction.h'; var root_path = '../../../..'; var data_path = '../../../../../data';</script>
+<script src='../../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../../..'>include</a>/<a href='../..'>llvm-6.0</a>/<a href='..'>llvm</a>/<a href='./'>IR</a>/<a href='Instruction.h.html'>Instruction.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>//===-- llvm/Instruction.h - Instruction class definition -------*- C++ -*-===//</i></td></tr>
+<tr><th id="2">2</th><td><i>//</i></td></tr>
+<tr><th id="3">3</th><td><i>//                     The LLVM Compiler Infrastructure</i></td></tr>
+<tr><th id="4">4</th><td><i>//</i></td></tr>
+<tr><th id="5">5</th><td><i>// This file is distributed under the University of Illinois Open Source</i></td></tr>
+<tr><th id="6">6</th><td><i>// License. See LICENSE.TXT for details.</i></td></tr>
+<tr><th id="7">7</th><td><i>//</i></td></tr>
+<tr><th id="8">8</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="9">9</th><td><i>//</i></td></tr>
+<tr><th id="10">10</th><td><i>// This file contains the declaration of the Instruction class, which is the</i></td></tr>
+<tr><th id="11">11</th><td><i>// base class for all of the LLVM instructions.</i></td></tr>
+<tr><th id="12">12</th><td><i>//</i></td></tr>
+<tr><th id="13">13</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td><u>#<span data-ppcond="15">ifndef</span> <span class="macro" data-ref="_M/LLVM_IR_INSTRUCTION_H">LLVM_IR_INSTRUCTION_H</span></u></td></tr>
+<tr><th id="16">16</th><td><u>#define <dfn class="macro" id="_M/LLVM_IR_INSTRUCTION_H" data-ref="_M/LLVM_IR_INSTRUCTION_H">LLVM_IR_INSTRUCTION_H</dfn></u></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><u>#include <a href="../ADT/ArrayRef.h.html">"llvm/ADT/ArrayRef.h"</a></u></td></tr>
+<tr><th id="19">19</th><td><u>#include <a href="../ADT/None.h.html">"llvm/ADT/None.h"</a></u></td></tr>
+<tr><th id="20">20</th><td><u>#include <a href="../ADT/StringRef.h.html">"llvm/ADT/StringRef.h"</a></u></td></tr>
+<tr><th id="21">21</th><td><u>#include <a href="../ADT/ilist_node.h.html">"llvm/ADT/ilist_node.h"</a></u></td></tr>
+<tr><th id="22">22</th><td><u>#include <a href="DebugLoc.h.html">"llvm/IR/DebugLoc.h"</a></u></td></tr>
+<tr><th id="23">23</th><td><u>#include <a href="SymbolTableListTraits.h.html">"llvm/IR/SymbolTableListTraits.h"</a></u></td></tr>
+<tr><th id="24">24</th><td><u>#include <a href="User.h.html">"llvm/IR/User.h"</a></u></td></tr>
+<tr><th id="25">25</th><td><u>#include <a href="Value.h.html">"llvm/IR/Value.h"</a></u></td></tr>
+<tr><th id="26">26</th><td><u>#include <a href="../Support/Casting.h.html">"llvm/Support/Casting.h"</a></u></td></tr>
+<tr><th id="27">27</th><td><u>#include <a href="../../../c++/7/algorithm.html">&lt;algorithm&gt;</a></u></td></tr>
+<tr><th id="28">28</th><td><u>#include <a href="../../../c++/7/cassert.html">&lt;cassert&gt;</a></u></td></tr>
+<tr><th id="29">29</th><td><u>#include <a href="../../../c++/7/cstdint.html">&lt;cstdint&gt;</a></u></td></tr>
+<tr><th id="30">30</th><td><u>#include <a href="../../../c++/7/utility.html">&lt;utility&gt;</a></u></td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><b>namespace</b> <span class="namespace">llvm</span> {</td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><b>class</b> <a class="type" href="BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock" id="llvm::BasicBlock">BasicBlock</a>;</td></tr>
+<tr><th id="35">35</th><td><b>class</b> <dfn class="type" id="llvm::FastMathFlags" title='llvm::FastMathFlags' data-ref="llvm::FastMathFlags">FastMathFlags</dfn>;</td></tr>
+<tr><th id="36">36</th><td><b>class</b> <a class="type" href="Metadata.h.html#llvm::MDNode" title='llvm::MDNode' data-ref="llvm::MDNode" id="llvm::MDNode">MDNode</a>;</td></tr>
+<tr><th id="37">37</th><td><b>class</b> <a class="type" href="Module.h.html#llvm::Module" title='llvm::Module' data-ref="llvm::Module" id="llvm::Module">Module</a>;</td></tr>
+<tr><th id="38">38</th><td><b>struct</b> <a class="type" href="Metadata.h.html#llvm::AAMDNodes" title='llvm::AAMDNodes' data-ref="llvm::AAMDNodes" id="llvm::AAMDNodes">AAMDNodes</a>;</td></tr>
+<tr><th id="39">39</th><td></td></tr>
+<tr><th id="40">40</th><td><b>template</b> &lt;&gt; <b>struct</b> <dfn class="type def" id="llvm::ilist_alloc_traits" title='llvm::ilist_alloc_traits' data-ref="llvm::ilist_alloc_traits"><a class="type" href="../ADT/ilist.h.html#llvm::ilist_alloc_traits" title='llvm::ilist_alloc_traits' data-ref="llvm::ilist_alloc_traits">ilist_alloc_traits</a></dfn>&lt;<a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a>&gt; {</td></tr>
+<tr><th id="41">41</th><td>  <em>static</em> <b>inline</b> <em>void</em> <a class="decl" href="#_ZN4llvm18ilist_alloc_traitsINS_11InstructionEE10deleteNodeEPS1_" title='llvm::ilist_alloc_traits&lt;llvm::Instruction&gt;::deleteNode' data-ref="_ZN4llvm18ilist_alloc_traitsINS_11InstructionEE10deleteNodeEPS1_">deleteNode</a>(<a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> *<dfn class="local col2 decl" id="11362V" title='V' data-type='llvm::Instruction *' data-ref="11362V">V</dfn>);</td></tr>
+<tr><th id="42">42</th><td>};</td></tr>
+<tr><th id="43">43</th><td></td></tr>
+<tr><th id="44">44</th><td><b>class</b> <dfn class="type def" id="llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</dfn> : <b>public</b> <a class="type" href="User.h.html#llvm::User" title='llvm::User' data-ref="llvm::User">User</a>,</td></tr>
+<tr><th id="45">45</th><td>                    <b>public</b> <a class="type" href="../ADT/ilist_node.h.html#llvm::ilist_node_with_parent" title='llvm::ilist_node_with_parent' data-ref="llvm::ilist_node_with_parent">ilist_node_with_parent</a>&lt;<a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a>, <a class="type" href="BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a>&gt; {</td></tr>
+<tr><th id="46">46</th><td>  <a class="type" href="BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a> *<dfn class="decl" id="llvm::Instruction::Parent" title='llvm::Instruction::Parent' data-ref="llvm::Instruction::Parent">Parent</dfn>;</td></tr>
+<tr><th id="47">47</th><td>  <a class="type" href="DebugLoc.h.html#llvm::DebugLoc" title='llvm::DebugLoc' data-ref="llvm::DebugLoc">DebugLoc</a> <dfn class="decl" id="llvm::Instruction::DbgLoc" title='llvm::Instruction::DbgLoc' data-ref="llvm::Instruction::DbgLoc">DbgLoc</dfn>;                         <i>// 'dbg' Metadata cache.</i></td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td>  <b>enum</b> {</td></tr>
+<tr><th id="50">50</th><td>    <i class="doc">/// This is a bit stored in the SubClassData field which indicates whether</i></td></tr>
+<tr><th id="51">51</th><td><i class="doc">    /// this instruction has metadata attached to it or not.</i></td></tr>
+<tr><th id="52">52</th><td>    <dfn class="enum" id="llvm::Instruction::HasMetadataBit" title='llvm::Instruction::HasMetadataBit' data-ref="llvm::Instruction::HasMetadataBit">HasMetadataBit</dfn> = <var>1</var> &lt;&lt; <var>15</var></td></tr>
+<tr><th id="53">53</th><td>  };</td></tr>
+<tr><th id="54">54</th><td></td></tr>
+<tr><th id="55">55</th><td><b>protected</b>:</td></tr>
+<tr><th id="56">56</th><td>  <dfn class="decl" id="_ZN4llvm11InstructionD1Ev" title='llvm::Instruction::~Instruction' data-ref="_ZN4llvm11InstructionD1Ev">~Instruction</dfn>(); <i>// Use deleteValue() to delete a generic Instruction.</i></td></tr>
+<tr><th id="57">57</th><td></td></tr>
+<tr><th id="58">58</th><td><b>public</b>:</td></tr>
+<tr><th id="59">59</th><td>  <dfn class="decl def" id="_ZN4llvm11InstructionC1ERKS0_" title='llvm::Instruction::Instruction' data-ref="_ZN4llvm11InstructionC1ERKS0_">Instruction</dfn>(<em>const</em> <a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> &amp;) = <b>delete</b>;</td></tr>
+<tr><th id="60">60</th><td>  <a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> &amp;<dfn class="decl def" id="_ZN4llvm11InstructionaSERKS0_" title='llvm::Instruction::operator=' data-ref="_ZN4llvm11InstructionaSERKS0_"><b>operator</b>=</dfn>(<em>const</em> <a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> &amp;) = <b>delete</b>;</td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td>  <i class="doc">/// Specialize the methods defined in Value, as we know that an instruction</i></td></tr>
+<tr><th id="63">63</th><td><i class="doc">  /// can only be used by other instructions.</i></td></tr>
+<tr><th id="64">64</th><td>  <a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a>       *<dfn class="decl def" id="_ZN4llvm11Instruction9user_backEv" title='llvm::Instruction::user_back' data-ref="_ZN4llvm11Instruction9user_backEv">user_back</dfn>()       { <b>return</b> <a class="ref" href="../Support/Casting.h.html#_ZN4llvm4castEPT0_" title='llvm::cast' data-ref="_ZN4llvm4castEPT0_">cast</a>&lt;<a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a>&gt;(<a class="ref" href="Value.h.html#_ZNK4llvm5Value18user_iterator_impldeEv" title='llvm::Value::user_iterator_impl::operator*' data-ref="_ZNK4llvm5Value18user_iterator_impldeEv">*</a><a class="member" href="Value.h.html#_ZN4llvm5Value10user_beginEv" title='llvm::Value::user_begin' data-ref="_ZN4llvm5Value10user_beginEv">user_begin</a>());}</td></tr>
+<tr><th id="65">65</th><td>  <em>const</em> <a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> *<dfn class="decl def" id="_ZNK4llvm11Instruction9user_backEv" title='llvm::Instruction::user_back' data-ref="_ZNK4llvm11Instruction9user_backEv">user_back</dfn>() <em>const</em> { <b>return</b> <a class="ref" href="../Support/Casting.h.html#_ZN4llvm4castEPT0_" title='llvm::cast' data-ref="_ZN4llvm4castEPT0_">cast</a>&lt;<a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a>&gt;(<a class="ref" href="Value.h.html#_ZNK4llvm5Value18user_iterator_impldeEv" title='llvm::Value::user_iterator_impl::operator*' data-ref="_ZNK4llvm5Value18user_iterator_impldeEv">*</a><a class="member" href="Value.h.html#_ZNK4llvm5Value10user_beginEv" title='llvm::Value::user_begin' data-ref="_ZNK4llvm5Value10user_beginEv">user_begin</a>());}</td></tr>
+<tr><th id="66">66</th><td></td></tr>
+<tr><th id="67">67</th><td>  <b>inline</b> <em>const</em> <a class="type" href="BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a> *<dfn class="decl def" id="_ZNK4llvm11Instruction9getParentEv" title='llvm::Instruction::getParent' data-ref="_ZNK4llvm11Instruction9getParentEv">getParent</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::Instruction::Parent" title='llvm::Instruction::Parent' data-ref="llvm::Instruction::Parent">Parent</a>; }</td></tr>
+<tr><th id="68">68</th><td>  <b>inline</b>       <a class="type" href="BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a> *<dfn class="decl def" id="_ZN4llvm11Instruction9getParentEv" title='llvm::Instruction::getParent' data-ref="_ZN4llvm11Instruction9getParentEv">getParent</dfn>()       { <b>return</b> <a class="member" href="#llvm::Instruction::Parent" title='llvm::Instruction::Parent' data-ref="llvm::Instruction::Parent">Parent</a>; }</td></tr>
+<tr><th id="69">69</th><td></td></tr>
+<tr><th id="70">70</th><td>  <i class="doc">/// Return the module owning the function this instruction belongs to</i></td></tr>
+<tr><th id="71">71</th><td><i class="doc">  /// or nullptr it the function does not have a module.</i></td></tr>
+<tr><th id="72">72</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="73">73</th><td><i class="doc">  /// Note: this is undefined behavior if the instruction does not have a</i></td></tr>
+<tr><th id="74">74</th><td><i class="doc">  /// parent, or the parent basic block does not have a parent function.</i></td></tr>
+<tr><th id="75">75</th><td>  <em>const</em> <a class="type" href="Module.h.html#llvm::Module" title='llvm::Module' data-ref="llvm::Module">Module</a> *<dfn class="decl" id="_ZNK4llvm11Instruction9getModuleEv" title='llvm::Instruction::getModule' data-ref="_ZNK4llvm11Instruction9getModuleEv">getModule</dfn>() <em>const</em>;</td></tr>
+<tr><th id="76">76</th><td>  <a class="type" href="Module.h.html#llvm::Module" title='llvm::Module' data-ref="llvm::Module">Module</a> *<dfn class="decl def" id="_ZN4llvm11Instruction9getModuleEv" title='llvm::Instruction::getModule' data-ref="_ZN4llvm11Instruction9getModuleEv">getModule</dfn>() {</td></tr>
+<tr><th id="77">77</th><td>    <b>return</b> <b>const_cast</b>&lt;<a class="type" href="Module.h.html#llvm::Module" title='llvm::Module' data-ref="llvm::Module">Module</a> *&gt;(</td></tr>
+<tr><th id="78">78</th><td>                           <b>static_cast</b>&lt;<em>const</em> <a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> *&gt;(<b>this</b>)-&gt;<a class="member" href="#_ZNK4llvm11Instruction9getModuleEv" title='llvm::Instruction::getModule' data-ref="_ZNK4llvm11Instruction9getModuleEv">getModule</a>());</td></tr>
+<tr><th id="79">79</th><td>  }</td></tr>
+<tr><th id="80">80</th><td></td></tr>
+<tr><th id="81">81</th><td>  <i class="doc">/// Return the function this instruction belongs to.</i></td></tr>
+<tr><th id="82">82</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="83">83</th><td><i class="doc">  /// Note: it is undefined behavior to call this on an instruction not</i></td></tr>
+<tr><th id="84">84</th><td><i class="doc">  /// currently inserted into a function.</i></td></tr>
+<tr><th id="85">85</th><td>  <em>const</em> <a class="type" href="Function.h.html#llvm::Function" title='llvm::Function' data-ref="llvm::Function">Function</a> *<dfn class="decl" id="_ZNK4llvm11Instruction11getFunctionEv" title='llvm::Instruction::getFunction' data-ref="_ZNK4llvm11Instruction11getFunctionEv">getFunction</dfn>() <em>const</em>;</td></tr>
+<tr><th id="86">86</th><td>  <a class="type" href="Function.h.html#llvm::Function" title='llvm::Function' data-ref="llvm::Function">Function</a> *<dfn class="decl def" id="_ZN4llvm11Instruction11getFunctionEv" title='llvm::Instruction::getFunction' data-ref="_ZN4llvm11Instruction11getFunctionEv">getFunction</dfn>() {</td></tr>
+<tr><th id="87">87</th><td>    <b>return</b> <b>const_cast</b>&lt;<a class="type" href="Function.h.html#llvm::Function" title='llvm::Function' data-ref="llvm::Function">Function</a> *&gt;(</td></tr>
+<tr><th id="88">88</th><td>                         <b>static_cast</b>&lt;<em>const</em> <a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> *&gt;(<b>this</b>)-&gt;<a class="member" href="#_ZNK4llvm11Instruction11getFunctionEv" title='llvm::Instruction::getFunction' data-ref="_ZNK4llvm11Instruction11getFunctionEv">getFunction</a>());</td></tr>
+<tr><th id="89">89</th><td>  }</td></tr>
+<tr><th id="90">90</th><td></td></tr>
+<tr><th id="91">91</th><td>  <i class="doc">/// This method unlinks 'this' from the containing basic block, but does not</i></td></tr>
+<tr><th id="92">92</th><td><i class="doc">  /// delete it.</i></td></tr>
+<tr><th id="93">93</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction16removeFromParentEv" title='llvm::Instruction::removeFromParent' data-ref="_ZN4llvm11Instruction16removeFromParentEv">removeFromParent</dfn>();</td></tr>
+<tr><th id="94">94</th><td></td></tr>
+<tr><th id="95">95</th><td>  <i class="doc">/// This method unlinks 'this' from the containing basic block and deletes it.</i></td></tr>
+<tr><th id="96">96</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="97">97</th><td><i class="doc">  /// <span class="command">\returns</span> an iterator pointing to the element after the erased one</i></td></tr>
+<tr><th id="98">98</th><td>  <a class="type" href="SymbolTableListTraits.h.html#llvm::SymbolTableList" title='llvm::SymbolTableList' data-ref="llvm::SymbolTableList">SymbolTableList</a>&lt;<a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a>&gt;::<a class="typedef" href="../ADT/ilist.h.html#llvm::iplist_impl{llvm::simple_ilist{llvm::Instruction},llvm::SymbolTableListTraits{llvm::Instruction}}::iterator" title='llvm::iplist_impl&lt;llvm::simple_ilist&lt;llvm::Instruction&gt;, llvm::SymbolTableListTraits&lt;llvm::Instruction&gt; &gt;::iterator' data-type='typename base_list_type::iterator' data-ref="llvm::iplist_impl{llvm::simple_ilist{llvm::Instruction},llvm::SymbolTableListTraits{llvm::Instruction}}::iterator">iterator</a> <dfn class="decl" id="_ZN4llvm11Instruction15eraseFromParentEv" title='llvm::Instruction::eraseFromParent' data-ref="_ZN4llvm11Instruction15eraseFromParentEv">eraseFromParent</dfn>();</td></tr>
+<tr><th id="99">99</th><td></td></tr>
+<tr><th id="100">100</th><td>  <i class="doc">/// Insert an unlinked instruction into a basic block immediately before</i></td></tr>
+<tr><th id="101">101</th><td><i class="doc">  /// the specified instruction.</i></td></tr>
+<tr><th id="102">102</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction12insertBeforeEPS0_" title='llvm::Instruction::insertBefore' data-ref="_ZN4llvm11Instruction12insertBeforeEPS0_">insertBefore</dfn>(<a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> *<dfn class="local col3 decl" id="11363InsertPos" title='InsertPos' data-type='llvm::Instruction *' data-ref="11363InsertPos">InsertPos</dfn>);</td></tr>
+<tr><th id="103">103</th><td></td></tr>
+<tr><th id="104">104</th><td>  <i class="doc">/// Insert an unlinked instruction into a basic block immediately after the</i></td></tr>
+<tr><th id="105">105</th><td><i class="doc">  /// specified instruction.</i></td></tr>
+<tr><th id="106">106</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction11insertAfterEPS0_" title='llvm::Instruction::insertAfter' data-ref="_ZN4llvm11Instruction11insertAfterEPS0_">insertAfter</dfn>(<a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> *<dfn class="local col4 decl" id="11364InsertPos" title='InsertPos' data-type='llvm::Instruction *' data-ref="11364InsertPos">InsertPos</dfn>);</td></tr>
+<tr><th id="107">107</th><td></td></tr>
+<tr><th id="108">108</th><td>  <i class="doc">/// Unlink this instruction from its current basic block and insert it into</i></td></tr>
+<tr><th id="109">109</th><td><i class="doc">  /// the basic block that MovePos lives in, right before MovePos.</i></td></tr>
+<tr><th id="110">110</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction10moveBeforeEPS0_" title='llvm::Instruction::moveBefore' data-ref="_ZN4llvm11Instruction10moveBeforeEPS0_">moveBefore</dfn>(<a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> *<dfn class="local col5 decl" id="11365MovePos" title='MovePos' data-type='llvm::Instruction *' data-ref="11365MovePos">MovePos</dfn>);</td></tr>
+<tr><th id="111">111</th><td></td></tr>
+<tr><th id="112">112</th><td>  <i class="doc">/// Unlink this instruction and insert into BB before I.</i></td></tr>
+<tr><th id="113">113</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="114">114</th><td><i class="doc">  /// <span class="command">\pre</span> I is a valid iterator into BB.</i></td></tr>
+<tr><th id="115">115</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction10moveBeforeERNS_10BasicBlockENS_14ilist_iteratorINS_12ilist_detail12node_optionsIS0_Lb0ELb0EvEELb0ELb0EEE" title='llvm::Instruction::moveBefore' data-ref="_ZN4llvm11Instruction10moveBeforeERNS_10BasicBlockENS_14ilist_iteratorINS_12ilist_detail12node_optionsIS0_Lb0ELb0EvEELb0ELb0EEE">moveBefore</dfn>(<a class="type" href="BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a> &amp;<dfn class="local col6 decl" id="11366BB" title='BB' data-type='llvm::BasicBlock &amp;' data-ref="11366BB">BB</dfn>, <a class="type" href="SymbolTableListTraits.h.html#llvm::SymbolTableList" title='llvm::SymbolTableList' data-ref="llvm::SymbolTableList">SymbolTableList</a>&lt;<a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a>&gt;::<a class="typedef" href="../ADT/ilist.h.html#llvm::iplist_impl{llvm::simple_ilist{llvm::Instruction},llvm::SymbolTableListTraits{llvm::Instruction}}::iterator" title='llvm::iplist_impl&lt;llvm::simple_ilist&lt;llvm::Instruction&gt;, llvm::SymbolTableListTraits&lt;llvm::Instruction&gt; &gt;::iterator' data-type='typename base_list_type::iterator' data-ref="llvm::iplist_impl{llvm::simple_ilist{llvm::Instruction},llvm::SymbolTableListTraits{llvm::Instruction}}::iterator">iterator</a> <dfn class="local col7 decl" id="11367I" title='I' data-type='SymbolTableList&lt;Instruction&gt;::iterator' data-ref="11367I">I</dfn>);</td></tr>
+<tr><th id="116">116</th><td></td></tr>
+<tr><th id="117">117</th><td>  <i class="doc">/// Unlink this instruction from its current basic block and insert it into</i></td></tr>
+<tr><th id="118">118</th><td><i class="doc">  /// the basic block that MovePos lives in, right after MovePos.</i></td></tr>
+<tr><th id="119">119</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction9moveAfterEPS0_" title='llvm::Instruction::moveAfter' data-ref="_ZN4llvm11Instruction9moveAfterEPS0_">moveAfter</dfn>(<a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> *<dfn class="local col8 decl" id="11368MovePos" title='MovePos' data-type='llvm::Instruction *' data-ref="11368MovePos">MovePos</dfn>);</td></tr>
+<tr><th id="120">120</th><td></td></tr>
+<tr><th id="121">121</th><td>  <i>//===--------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="122">122</th><td><i>  // Subclass classification.</i></td></tr>
+<tr><th id="123">123</th><td><i>  //===--------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="124">124</th><td><i></i></td></tr>
+<tr><th id="125">125</th><td><i>  /// Returns a member of one of the enums like Instruction::Add.</i></td></tr>
+<tr><th id="126">126</th><td>  <em>unsigned</em> <dfn class="decl def" id="_ZNK4llvm11Instruction9getOpcodeEv" title='llvm::Instruction::getOpcode' data-ref="_ZNK4llvm11Instruction9getOpcodeEv">getOpcode</dfn>() <em>const</em> { <b>return</b> <a class="member" href="Value.h.html#_ZNK4llvm5Value10getValueIDEv" title='llvm::Value::getValueID' data-ref="_ZNK4llvm5Value10getValueIDEv">getValueID</a>() - <a class="enum" href="Value.def.html#106" title='llvm::Value::ValueTy::InstructionVal' data-ref="llvm::Value::ValueTy::InstructionVal">InstructionVal</a>; }</td></tr>
+<tr><th id="127">127</th><td></td></tr>
+<tr><th id="128">128</th><td>  <em>const</em> <em>char</em> *<dfn class="decl def" id="_ZNK4llvm11Instruction13getOpcodeNameEv" title='llvm::Instruction::getOpcodeName' data-ref="_ZNK4llvm11Instruction13getOpcodeNameEv">getOpcodeName</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#_ZN4llvm11Instruction13getOpcodeNameEj" title='llvm::Instruction::getOpcodeName' data-ref="_ZN4llvm11Instruction13getOpcodeNameEj">getOpcodeName</a>(<a class="member" href="#_ZNK4llvm11Instruction9getOpcodeEv" title='llvm::Instruction::getOpcode' data-ref="_ZNK4llvm11Instruction9getOpcodeEv">getOpcode</a>()); }</td></tr>
+<tr><th id="129">129</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm11Instruction12isTerminatorEv" title='llvm::Instruction::isTerminator' data-ref="_ZNK4llvm11Instruction12isTerminatorEv">isTerminator</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#_ZN4llvm11Instruction12isTerminatorEj" title='llvm::Instruction::isTerminator' data-ref="_ZN4llvm11Instruction12isTerminatorEj">isTerminator</a>(<a class="member" href="#_ZNK4llvm11Instruction9getOpcodeEv" title='llvm::Instruction::getOpcode' data-ref="_ZNK4llvm11Instruction9getOpcodeEv">getOpcode</a>()); }</td></tr>
+<tr><th id="130">130</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm11Instruction10isBinaryOpEv" title='llvm::Instruction::isBinaryOp' data-ref="_ZNK4llvm11Instruction10isBinaryOpEv">isBinaryOp</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#_ZN4llvm11Instruction10isBinaryOpEj" title='llvm::Instruction::isBinaryOp' data-ref="_ZN4llvm11Instruction10isBinaryOpEj">isBinaryOp</a>(<a class="member" href="#_ZNK4llvm11Instruction9getOpcodeEv" title='llvm::Instruction::getOpcode' data-ref="_ZNK4llvm11Instruction9getOpcodeEv">getOpcode</a>()); }</td></tr>
+<tr><th id="131">131</th><td>  <em>bool</em> <dfn class="decl def" id="_ZN4llvm11Instruction7isShiftEv" title='llvm::Instruction::isShift' data-ref="_ZN4llvm11Instruction7isShiftEv">isShift</dfn>() { <b>return</b> <a class="member" href="#_ZN4llvm11Instruction7isShiftEj" title='llvm::Instruction::isShift' data-ref="_ZN4llvm11Instruction7isShiftEj">isShift</a>(<a class="member" href="#_ZNK4llvm11Instruction9getOpcodeEv" title='llvm::Instruction::getOpcode' data-ref="_ZNK4llvm11Instruction9getOpcodeEv">getOpcode</a>()); }</td></tr>
+<tr><th id="132">132</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm11Instruction6isCastEv" title='llvm::Instruction::isCast' data-ref="_ZNK4llvm11Instruction6isCastEv">isCast</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#_ZN4llvm11Instruction6isCastEj" title='llvm::Instruction::isCast' data-ref="_ZN4llvm11Instruction6isCastEj">isCast</a>(<a class="member" href="#_ZNK4llvm11Instruction9getOpcodeEv" title='llvm::Instruction::getOpcode' data-ref="_ZNK4llvm11Instruction9getOpcodeEv">getOpcode</a>()); }</td></tr>
+<tr><th id="133">133</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm11Instruction12isFuncletPadEv" title='llvm::Instruction::isFuncletPad' data-ref="_ZNK4llvm11Instruction12isFuncletPadEv">isFuncletPad</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#_ZN4llvm11Instruction12isFuncletPadEj" title='llvm::Instruction::isFuncletPad' data-ref="_ZN4llvm11Instruction12isFuncletPadEj">isFuncletPad</a>(<a class="member" href="#_ZNK4llvm11Instruction9getOpcodeEv" title='llvm::Instruction::getOpcode' data-ref="_ZNK4llvm11Instruction9getOpcodeEv">getOpcode</a>()); }</td></tr>
+<tr><th id="134">134</th><td></td></tr>
+<tr><th id="135">135</th><td>  <em>static</em> <em>const</em> <em>char</em>* <dfn class="decl" id="_ZN4llvm11Instruction13getOpcodeNameEj" title='llvm::Instruction::getOpcodeName' data-ref="_ZN4llvm11Instruction13getOpcodeNameEj">getOpcodeName</dfn>(<em>unsigned</em> <dfn class="local col9 decl" id="11369OpCode" title='OpCode' data-type='unsigned int' data-ref="11369OpCode">OpCode</dfn>);</td></tr>
+<tr><th id="136">136</th><td></td></tr>
+<tr><th id="137">137</th><td>  <em>static</em> <b>inline</b> <em>bool</em> <dfn class="decl def" id="_ZN4llvm11Instruction12isTerminatorEj" title='llvm::Instruction::isTerminator' data-ref="_ZN4llvm11Instruction12isTerminatorEj">isTerminator</dfn>(<em>unsigned</em> <dfn class="local col0 decl" id="11370OpCode" title='OpCode' data-type='unsigned int' data-ref="11370OpCode">OpCode</dfn>) {</td></tr>
+<tr><th id="138">138</th><td>    <b>return</b> <a class="local col0 ref" href="#11370OpCode" title='OpCode' data-ref="11370OpCode">OpCode</a> &gt;= <a class="enum" href="Instruction.def.html#113" title='llvm::Instruction::TermOps::TermOpsBegin' data-ref="llvm::Instruction::TermOps::TermOpsBegin">TermOpsBegin</a> &amp;&amp; <a class="local col0 ref" href="#11370OpCode" title='OpCode' data-ref="11370OpCode">OpCode</a> &lt; <a class="enum" href="Instruction.def.html#124" title='llvm::Instruction::TermOps::TermOpsEnd' data-ref="llvm::Instruction::TermOps::TermOpsEnd">TermOpsEnd</a>;</td></tr>
+<tr><th id="139">139</th><td>  }</td></tr>
+<tr><th id="140">140</th><td></td></tr>
+<tr><th id="141">141</th><td>  <em>static</em> <b>inline</b> <em>bool</em> <dfn class="decl def" id="_ZN4llvm11Instruction10isBinaryOpEj" title='llvm::Instruction::isBinaryOp' data-ref="_ZN4llvm11Instruction10isBinaryOpEj">isBinaryOp</dfn>(<em>unsigned</em> <dfn class="local col1 decl" id="11371Opcode" title='Opcode' data-type='unsigned int' data-ref="11371Opcode">Opcode</dfn>) {</td></tr>
+<tr><th id="142">142</th><td>    <b>return</b> <a class="local col1 ref" href="#11371Opcode" title='Opcode' data-ref="11371Opcode">Opcode</a> &gt;= <a class="enum" href="Instruction.def.html#127" title='llvm::Instruction::BinaryOps::BinaryOpsBegin' data-ref="llvm::Instruction::BinaryOps::BinaryOpsBegin">BinaryOpsBegin</a> &amp;&amp; <a class="local col1 ref" href="#11371Opcode" title='Opcode' data-ref="11371Opcode">Opcode</a> &lt; <a class="enum" href="Instruction.def.html#148" title='llvm::Instruction::BinaryOps::BinaryOpsEnd' data-ref="llvm::Instruction::BinaryOps::BinaryOpsEnd">BinaryOpsEnd</a>;</td></tr>
+<tr><th id="143">143</th><td>  }</td></tr>
+<tr><th id="144">144</th><td></td></tr>
+<tr><th id="145">145</th><td>  <i class="doc">/// Determine if the Opcode is one of the shift instructions.</i></td></tr>
+<tr><th id="146">146</th><td>  <em>static</em> <b>inline</b> <em>bool</em> <dfn class="decl def" id="_ZN4llvm11Instruction7isShiftEj" title='llvm::Instruction::isShift' data-ref="_ZN4llvm11Instruction7isShiftEj">isShift</dfn>(<em>unsigned</em> <dfn class="local col2 decl" id="11372Opcode" title='Opcode' data-type='unsigned int' data-ref="11372Opcode">Opcode</dfn>) {</td></tr>
+<tr><th id="147">147</th><td>    <b>return</b> <a class="local col2 ref" href="#11372Opcode" title='Opcode' data-ref="11372Opcode">Opcode</a> &gt;= <a class="enum" href="Instruction.def.html#142" title='llvm::Instruction::BinaryOps::Shl' data-ref="llvm::Instruction::BinaryOps::Shl">Shl</a> &amp;&amp; <a class="local col2 ref" href="#11372Opcode" title='Opcode' data-ref="11372Opcode">Opcode</a> &lt;= <a class="enum" href="Instruction.def.html#144" title='llvm::Instruction::BinaryOps::AShr' data-ref="llvm::Instruction::BinaryOps::AShr">AShr</a>;</td></tr>
+<tr><th id="148">148</th><td>  }</td></tr>
+<tr><th id="149">149</th><td></td></tr>
+<tr><th id="150">150</th><td>  <i class="doc">/// Return true if this is a logical shift left or a logical shift right.</i></td></tr>
+<tr><th id="151">151</th><td>  <b>inline</b> <em>bool</em> <dfn class="decl def" id="_ZNK4llvm11Instruction14isLogicalShiftEv" title='llvm::Instruction::isLogicalShift' data-ref="_ZNK4llvm11Instruction14isLogicalShiftEv">isLogicalShift</dfn>() <em>const</em> {</td></tr>
+<tr><th id="152">152</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm11Instruction9getOpcodeEv" title='llvm::Instruction::getOpcode' data-ref="_ZNK4llvm11Instruction9getOpcodeEv">getOpcode</a>() == <a class="enum" href="Instruction.def.html#142" title='llvm::Instruction::BinaryOps::Shl' data-ref="llvm::Instruction::BinaryOps::Shl">Shl</a> || <a class="member" href="#_ZNK4llvm11Instruction9getOpcodeEv" title='llvm::Instruction::getOpcode' data-ref="_ZNK4llvm11Instruction9getOpcodeEv">getOpcode</a>() == <a class="enum" href="Instruction.def.html#143" title='llvm::Instruction::BinaryOps::LShr' data-ref="llvm::Instruction::BinaryOps::LShr">LShr</a>;</td></tr>
+<tr><th id="153">153</th><td>  }</td></tr>
+<tr><th id="154">154</th><td></td></tr>
+<tr><th id="155">155</th><td>  <i class="doc">/// Return true if this is an arithmetic shift right.</i></td></tr>
+<tr><th id="156">156</th><td>  <b>inline</b> <em>bool</em> <dfn class="decl def" id="_ZNK4llvm11Instruction17isArithmeticShiftEv" title='llvm::Instruction::isArithmeticShift' data-ref="_ZNK4llvm11Instruction17isArithmeticShiftEv">isArithmeticShift</dfn>() <em>const</em> {</td></tr>
+<tr><th id="157">157</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm11Instruction9getOpcodeEv" title='llvm::Instruction::getOpcode' data-ref="_ZNK4llvm11Instruction9getOpcodeEv">getOpcode</a>() == <a class="enum" href="Instruction.def.html#144" title='llvm::Instruction::BinaryOps::AShr' data-ref="llvm::Instruction::BinaryOps::AShr">AShr</a>;</td></tr>
+<tr><th id="158">158</th><td>  }</td></tr>
+<tr><th id="159">159</th><td></td></tr>
+<tr><th id="160">160</th><td>  <i class="doc">/// Determine if the Opcode is and/or/xor.</i></td></tr>
+<tr><th id="161">161</th><td>  <em>static</em> <b>inline</b> <em>bool</em> <dfn class="decl def" id="_ZN4llvm11Instruction16isBitwiseLogicOpEj" title='llvm::Instruction::isBitwiseLogicOp' data-ref="_ZN4llvm11Instruction16isBitwiseLogicOpEj">isBitwiseLogicOp</dfn>(<em>unsigned</em> <dfn class="local col3 decl" id="11373Opcode" title='Opcode' data-type='unsigned int' data-ref="11373Opcode">Opcode</dfn>) {</td></tr>
+<tr><th id="162">162</th><td>    <b>return</b> <a class="local col3 ref" href="#11373Opcode" title='Opcode' data-ref="11373Opcode">Opcode</a> == <a class="enum" href="Instruction.def.html#145" title='llvm::Instruction::BinaryOps::And' data-ref="llvm::Instruction::BinaryOps::And">And</a> || <a class="local col3 ref" href="#11373Opcode" title='Opcode' data-ref="11373Opcode">Opcode</a> == <a class="enum" href="Instruction.def.html#146" title='llvm::Instruction::BinaryOps::Or' data-ref="llvm::Instruction::BinaryOps::Or">Or</a> || <a class="local col3 ref" href="#11373Opcode" title='Opcode' data-ref="11373Opcode">Opcode</a> == <a class="enum" href="Instruction.def.html#147" title='llvm::Instruction::BinaryOps::Xor' data-ref="llvm::Instruction::BinaryOps::Xor">Xor</a>;</td></tr>
+<tr><th id="163">163</th><td>  }</td></tr>
+<tr><th id="164">164</th><td></td></tr>
+<tr><th id="165">165</th><td>  <i class="doc">/// Return true if this is and/or/xor.</i></td></tr>
+<tr><th id="166">166</th><td>  <b>inline</b> <em>bool</em> <dfn class="decl def" id="_ZNK4llvm11Instruction16isBitwiseLogicOpEv" title='llvm::Instruction::isBitwiseLogicOp' data-ref="_ZNK4llvm11Instruction16isBitwiseLogicOpEv">isBitwiseLogicOp</dfn>() <em>const</em> {</td></tr>
+<tr><th id="167">167</th><td>    <b>return</b> <a class="member" href="#_ZN4llvm11Instruction16isBitwiseLogicOpEj" title='llvm::Instruction::isBitwiseLogicOp' data-ref="_ZN4llvm11Instruction16isBitwiseLogicOpEj">isBitwiseLogicOp</a>(<a class="member" href="#_ZNK4llvm11Instruction9getOpcodeEv" title='llvm::Instruction::getOpcode' data-ref="_ZNK4llvm11Instruction9getOpcodeEv">getOpcode</a>());</td></tr>
+<tr><th id="168">168</th><td>  }</td></tr>
+<tr><th id="169">169</th><td></td></tr>
+<tr><th id="170">170</th><td>  <i class="doc">/// Determine if the OpCode is one of the CastInst instructions.</i></td></tr>
+<tr><th id="171">171</th><td>  <em>static</em> <b>inline</b> <em>bool</em> <dfn class="decl def" id="_ZN4llvm11Instruction6isCastEj" title='llvm::Instruction::isCast' data-ref="_ZN4llvm11Instruction6isCastEj">isCast</dfn>(<em>unsigned</em> <dfn class="local col4 decl" id="11374OpCode" title='OpCode' data-type='unsigned int' data-ref="11374OpCode">OpCode</dfn>) {</td></tr>
+<tr><th id="172">172</th><td>    <b>return</b> <a class="local col4 ref" href="#11374OpCode" title='OpCode' data-ref="11374OpCode">OpCode</a> &gt;= <a class="enum" href="Instruction.def.html#164" title='llvm::Instruction::CastOps::CastOpsBegin' data-ref="llvm::Instruction::CastOps::CastOpsBegin">CastOpsBegin</a> &amp;&amp; <a class="local col4 ref" href="#11374OpCode" title='OpCode' data-ref="11374OpCode">OpCode</a> &lt; <a class="enum" href="Instruction.def.html#178" title='llvm::Instruction::CastOps::CastOpsEnd' data-ref="llvm::Instruction::CastOps::CastOpsEnd">CastOpsEnd</a>;</td></tr>
+<tr><th id="173">173</th><td>  }</td></tr>
+<tr><th id="174">174</th><td></td></tr>
+<tr><th id="175">175</th><td>  <i class="doc">/// Determine if the OpCode is one of the FuncletPadInst instructions.</i></td></tr>
+<tr><th id="176">176</th><td>  <em>static</em> <b>inline</b> <em>bool</em> <dfn class="decl def" id="_ZN4llvm11Instruction12isFuncletPadEj" title='llvm::Instruction::isFuncletPad' data-ref="_ZN4llvm11Instruction12isFuncletPadEj">isFuncletPad</dfn>(<em>unsigned</em> <dfn class="local col5 decl" id="11375OpCode" title='OpCode' data-type='unsigned int' data-ref="11375OpCode">OpCode</dfn>) {</td></tr>
+<tr><th id="177">177</th><td>    <b>return</b> <a class="local col5 ref" href="#11375OpCode" title='OpCode' data-ref="11375OpCode">OpCode</a> &gt;= <a class="enum" href="Instruction.def.html#180" title='llvm::Instruction::FuncletPadOps::FuncletPadOpsBegin' data-ref="llvm::Instruction::FuncletPadOps::FuncletPadOpsBegin">FuncletPadOpsBegin</a> &amp;&amp; <a class="local col5 ref" href="#11375OpCode" title='OpCode' data-ref="11375OpCode">OpCode</a> &lt; <a class="enum" href="Instruction.def.html#183" title='llvm::Instruction::FuncletPadOps::FuncletPadOpsEnd' data-ref="llvm::Instruction::FuncletPadOps::FuncletPadOpsEnd">FuncletPadOpsEnd</a>;</td></tr>
+<tr><th id="178">178</th><td>  }</td></tr>
+<tr><th id="179">179</th><td></td></tr>
+<tr><th id="180">180</th><td>  <i>//===--------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="181">181</th><td><i>  // Metadata manipulation.</i></td></tr>
+<tr><th id="182">182</th><td><i>  //===--------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="183">183</th><td><i></i></td></tr>
+<tr><th id="184">184</th><td><i>  /// Return true if this instruction has any metadata attached to it.</i></td></tr>
+<tr><th id="185">185</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm11Instruction11hasMetadataEv" title='llvm::Instruction::hasMetadata' data-ref="_ZNK4llvm11Instruction11hasMetadataEv">hasMetadata</dfn>() <em>const</em> { <b>return</b> <a class="ref fake" href="DebugLoc.h.html#_ZNK4llvm8DebugLoccvbEv" title='llvm::DebugLoc::operator bool' data-ref="_ZNK4llvm8DebugLoccvbEv"></a><a class="member" href="#llvm::Instruction::DbgLoc" title='llvm::Instruction::DbgLoc' data-ref="llvm::Instruction::DbgLoc">DbgLoc</a> || <a class="member" href="#_ZNK4llvm11Instruction20hasMetadataHashEntryEv" title='llvm::Instruction::hasMetadataHashEntry' data-ref="_ZNK4llvm11Instruction20hasMetadataHashEntryEv">hasMetadataHashEntry</a>(); }</td></tr>
+<tr><th id="186">186</th><td></td></tr>
+<tr><th id="187">187</th><td>  <i class="doc">/// Return true if this instruction has metadata attached to it other than a</i></td></tr>
+<tr><th id="188">188</th><td><i class="doc">  /// debug location.</i></td></tr>
+<tr><th id="189">189</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm11Instruction28hasMetadataOtherThanDebugLocEv" title='llvm::Instruction::hasMetadataOtherThanDebugLoc' data-ref="_ZNK4llvm11Instruction28hasMetadataOtherThanDebugLocEv">hasMetadataOtherThanDebugLoc</dfn>() <em>const</em> {</td></tr>
+<tr><th id="190">190</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm11Instruction20hasMetadataHashEntryEv" title='llvm::Instruction::hasMetadataHashEntry' data-ref="_ZNK4llvm11Instruction20hasMetadataHashEntryEv">hasMetadataHashEntry</a>();</td></tr>
+<tr><th id="191">191</th><td>  }</td></tr>
+<tr><th id="192">192</th><td></td></tr>
+<tr><th id="193">193</th><td>  <i class="doc">/// Get the metadata of given kind attached to this Instruction.</i></td></tr>
+<tr><th id="194">194</th><td><i class="doc">  /// If the metadata is not found then return null.</i></td></tr>
+<tr><th id="195">195</th><td>  <a class="type" href="Metadata.h.html#llvm::MDNode" title='llvm::MDNode' data-ref="llvm::MDNode">MDNode</a> *<dfn class="decl def" id="_ZNK4llvm11Instruction11getMetadataEj" title='llvm::Instruction::getMetadata' data-ref="_ZNK4llvm11Instruction11getMetadataEj">getMetadata</dfn>(<em>unsigned</em> <dfn class="local col6 decl" id="11376KindID" title='KindID' data-type='unsigned int' data-ref="11376KindID">KindID</dfn>) <em>const</em> {</td></tr>
+<tr><th id="196">196</th><td>    <b>if</b> (!<a class="member" href="#_ZNK4llvm11Instruction11hasMetadataEv" title='llvm::Instruction::hasMetadata' data-ref="_ZNK4llvm11Instruction11hasMetadataEv">hasMetadata</a>()) <b>return</b> <b>nullptr</b>;</td></tr>
+<tr><th id="197">197</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm11Instruction15getMetadataImplEj" title='llvm::Instruction::getMetadataImpl' data-ref="_ZNK4llvm11Instruction15getMetadataImplEj">getMetadataImpl</a>(<a class="local col6 ref" href="#11376KindID" title='KindID' data-ref="11376KindID">KindID</a>);</td></tr>
+<tr><th id="198">198</th><td>  }</td></tr>
+<tr><th id="199">199</th><td></td></tr>
+<tr><th id="200">200</th><td>  <i class="doc">/// Get the metadata of given kind attached to this Instruction.</i></td></tr>
+<tr><th id="201">201</th><td><i class="doc">  /// If the metadata is not found then return null.</i></td></tr>
+<tr><th id="202">202</th><td>  <a class="type" href="Metadata.h.html#llvm::MDNode" title='llvm::MDNode' data-ref="llvm::MDNode">MDNode</a> *<dfn class="decl def" id="_ZNK4llvm11Instruction11getMetadataENS_9StringRefE" title='llvm::Instruction::getMetadata' data-ref="_ZNK4llvm11Instruction11getMetadataENS_9StringRefE">getMetadata</dfn>(<a class="type" href="../ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="local col7 decl" id="11377Kind" title='Kind' data-type='llvm::StringRef' data-ref="11377Kind">Kind</dfn>) <em>const</em> {</td></tr>
+<tr><th id="203">203</th><td>    <b>if</b> (!<a class="member" href="#_ZNK4llvm11Instruction11hasMetadataEv" title='llvm::Instruction::hasMetadata' data-ref="_ZNK4llvm11Instruction11hasMetadataEv">hasMetadata</a>()) <b>return</b> <b>nullptr</b>;</td></tr>
+<tr><th id="204">204</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm11Instruction15getMetadataImplENS_9StringRefE" title='llvm::Instruction::getMetadataImpl' data-ref="_ZNK4llvm11Instruction15getMetadataImplENS_9StringRefE">getMetadataImpl</a>(<a class="ref fake" href="../ADT/StringRef.h.html#49" title='llvm::StringRef::StringRef' data-ref="_ZN4llvm9StringRefC1ERKS0_"></a><a class="local col7 ref" href="#11377Kind" title='Kind' data-ref="11377Kind">Kind</a>);</td></tr>
+<tr><th id="205">205</th><td>  }</td></tr>
+<tr><th id="206">206</th><td></td></tr>
+<tr><th id="207">207</th><td>  <i class="doc">/// Get all metadata attached to this Instruction. The first element of each</i></td></tr>
+<tr><th id="208">208</th><td><i class="doc">  /// pair returned is the KindID, the second element is the metadata value.</i></td></tr>
+<tr><th id="209">209</th><td><i class="doc">  /// This list is returned sorted by the KindID.</i></td></tr>
+<tr><th id="210">210</th><td>  <em>void</em></td></tr>
+<tr><th id="211">211</th><td>  <dfn class="decl def" id="_ZNK4llvm11Instruction14getAllMetadataERNS_15SmallVectorImplISt4pairIjPNS_6MDNodeEEEE" title='llvm::Instruction::getAllMetadata' data-ref="_ZNK4llvm11Instruction14getAllMetadataERNS_15SmallVectorImplISt4pairIjPNS_6MDNodeEEEE">getAllMetadata</dfn>(<a class="type" href="../ADT/SmallVector.h.html#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;<span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/stl_pair.h.html#std::pair" title='std::pair' data-ref="std::pair">pair</a>&lt;<em>unsigned</em>, <a class="type" href="Metadata.h.html#llvm::MDNode" title='llvm::MDNode' data-ref="llvm::MDNode">MDNode</a> *&gt;&gt; &amp;<dfn class="local col8 decl" id="11378MDs" title='MDs' data-type='SmallVectorImpl&lt;std::pair&lt;unsigned int, MDNode *&gt; &gt; &amp;' data-ref="11378MDs">MDs</dfn>) <em>const</em> {</td></tr>
+<tr><th id="212">212</th><td>    <b>if</b> (<a class="member" href="#_ZNK4llvm11Instruction11hasMetadataEv" title='llvm::Instruction::hasMetadata' data-ref="_ZNK4llvm11Instruction11hasMetadataEv">hasMetadata</a>())</td></tr>
+<tr><th id="213">213</th><td>      <a class="member" href="#_ZNK4llvm11Instruction18getAllMetadataImplERNS_15SmallVectorImplISt4pairIjPNS_6MDNodeEEEE" title='llvm::Instruction::getAllMetadataImpl' data-ref="_ZNK4llvm11Instruction18getAllMetadataImplERNS_15SmallVectorImplISt4pairIjPNS_6MDNodeEEEE">getAllMetadataImpl</a>(<span class='refarg'><a class="local col8 ref" href="#11378MDs" title='MDs' data-ref="11378MDs">MDs</a></span>);</td></tr>
+<tr><th id="214">214</th><td>  }</td></tr>
+<tr><th id="215">215</th><td></td></tr>
+<tr><th id="216">216</th><td>  <i class="doc">/// This does the same thing as getAllMetadata, except that it filters out the</i></td></tr>
+<tr><th id="217">217</th><td><i class="doc">  /// debug location.</i></td></tr>
+<tr><th id="218">218</th><td>  <em>void</em> <dfn class="decl def" id="_ZNK4llvm11Instruction31getAllMetadataOtherThanDebugLocERNS_15SmallVectorImplISt4pairIjPNS_6MDNodeEEEE" title='llvm::Instruction::getAllMetadataOtherThanDebugLoc' data-ref="_ZNK4llvm11Instruction31getAllMetadataOtherThanDebugLocERNS_15SmallVectorImplISt4pairIjPNS_6MDNodeEEEE">getAllMetadataOtherThanDebugLoc</dfn>(</td></tr>
+<tr><th id="219">219</th><td>      <a class="type" href="../ADT/SmallVector.h.html#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;<span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/stl_pair.h.html#std::pair" title='std::pair' data-ref="std::pair">pair</a>&lt;<em>unsigned</em>, <a class="type" href="Metadata.h.html#llvm::MDNode" title='llvm::MDNode' data-ref="llvm::MDNode">MDNode</a> *&gt;&gt; &amp;<dfn class="local col9 decl" id="11379MDs" title='MDs' data-type='SmallVectorImpl&lt;std::pair&lt;unsigned int, MDNode *&gt; &gt; &amp;' data-ref="11379MDs">MDs</dfn>) <em>const</em> {</td></tr>
+<tr><th id="220">220</th><td>    <b>if</b> (<a class="member" href="#_ZNK4llvm11Instruction28hasMetadataOtherThanDebugLocEv" title='llvm::Instruction::hasMetadataOtherThanDebugLoc' data-ref="_ZNK4llvm11Instruction28hasMetadataOtherThanDebugLocEv">hasMetadataOtherThanDebugLoc</a>())</td></tr>
+<tr><th id="221">221</th><td>      <a class="member" href="#_ZNK4llvm11Instruction35getAllMetadataOtherThanDebugLocImplERNS_15SmallVectorImplISt4pairIjPNS_6MDNodeEEEE" title='llvm::Instruction::getAllMetadataOtherThanDebugLocImpl' data-ref="_ZNK4llvm11Instruction35getAllMetadataOtherThanDebugLocImplERNS_15SmallVectorImplISt4pairIjPNS_6MDNodeEEEE">getAllMetadataOtherThanDebugLocImpl</a>(<span class='refarg'><a class="local col9 ref" href="#11379MDs" title='MDs' data-ref="11379MDs">MDs</a></span>);</td></tr>
+<tr><th id="222">222</th><td>  }</td></tr>
+<tr><th id="223">223</th><td></td></tr>
+<tr><th id="224">224</th><td>  <i class="doc">/// Fills the AAMDNodes structure with AA metadata from this instruction.</i></td></tr>
+<tr><th id="225">225</th><td><i class="doc">  /// When Merge is true, the existing AA metadata is merged with that from this</i></td></tr>
+<tr><th id="226">226</th><td><i class="doc">  /// instruction providing the most-general result.</i></td></tr>
+<tr><th id="227">227</th><td>  <em>void</em> <dfn class="decl" id="_ZNK4llvm11Instruction13getAAMetadataERNS_9AAMDNodesEb" title='llvm::Instruction::getAAMetadata' data-ref="_ZNK4llvm11Instruction13getAAMetadataERNS_9AAMDNodesEb">getAAMetadata</dfn>(<a class="type" href="Metadata.h.html#llvm::AAMDNodes" title='llvm::AAMDNodes' data-ref="llvm::AAMDNodes">AAMDNodes</a> &amp;<dfn class="local col0 decl" id="11380N" title='N' data-type='llvm::AAMDNodes &amp;' data-ref="11380N">N</dfn>, <em>bool</em> <dfn class="local col1 decl" id="11381Merge" title='Merge' data-type='bool' data-ref="11381Merge">Merge</dfn> = <b>false</b>) <em>const</em>;</td></tr>
+<tr><th id="228">228</th><td></td></tr>
+<tr><th id="229">229</th><td>  <i class="doc">/// Set the metadata of the specified kind to the specified node. This updates</i></td></tr>
+<tr><th id="230">230</th><td><i class="doc">  /// or replaces metadata if already present, or removes it if Node is null.</i></td></tr>
+<tr><th id="231">231</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction11setMetadataEjPNS_6MDNodeE" title='llvm::Instruction::setMetadata' data-ref="_ZN4llvm11Instruction11setMetadataEjPNS_6MDNodeE">setMetadata</dfn>(<em>unsigned</em> <dfn class="local col2 decl" id="11382KindID" title='KindID' data-type='unsigned int' data-ref="11382KindID">KindID</dfn>, <a class="type" href="Metadata.h.html#llvm::MDNode" title='llvm::MDNode' data-ref="llvm::MDNode">MDNode</a> *<dfn class="local col3 decl" id="11383Node" title='Node' data-type='llvm::MDNode *' data-ref="11383Node">Node</dfn>);</td></tr>
+<tr><th id="232">232</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction11setMetadataENS_9StringRefEPNS_6MDNodeE" title='llvm::Instruction::setMetadata' data-ref="_ZN4llvm11Instruction11setMetadataENS_9StringRefEPNS_6MDNodeE">setMetadata</dfn>(<a class="type" href="../ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="local col4 decl" id="11384Kind" title='Kind' data-type='llvm::StringRef' data-ref="11384Kind">Kind</dfn>, <a class="type" href="Metadata.h.html#llvm::MDNode" title='llvm::MDNode' data-ref="llvm::MDNode">MDNode</a> *<dfn class="local col5 decl" id="11385Node" title='Node' data-type='llvm::MDNode *' data-ref="11385Node">Node</dfn>);</td></tr>
+<tr><th id="233">233</th><td></td></tr>
+<tr><th id="234">234</th><td>  <i class="doc">/// Copy metadata from<span class="command"> \p</span> <span class="arg">SrcInst</span> to this instruction.<span class="command"> \p</span> <span class="arg">WL,</span> if not empty,</i></td></tr>
+<tr><th id="235">235</th><td><i class="doc">  /// specifies the list of meta data that needs to be copied. If<span class="command"> \p</span> <span class="arg">WL</span> is</i></td></tr>
+<tr><th id="236">236</th><td><i class="doc">  /// empty, all meta data will be copied.</i></td></tr>
+<tr><th id="237">237</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction12copyMetadataERKS0_NS_8ArrayRefIjEE" title='llvm::Instruction::copyMetadata' data-ref="_ZN4llvm11Instruction12copyMetadataERKS0_NS_8ArrayRefIjEE">copyMetadata</dfn>(<em>const</em> <a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> &amp;<dfn class="local col6 decl" id="11386SrcInst" title='SrcInst' data-type='const llvm::Instruction &amp;' data-ref="11386SrcInst">SrcInst</dfn>,</td></tr>
+<tr><th id="238">238</th><td>                    <a class="type" href="../ADT/ArrayRef.h.html#llvm::ArrayRef" title='llvm::ArrayRef' data-ref="llvm::ArrayRef">ArrayRef</a>&lt;<em>unsigned</em>&gt; <dfn class="local col7 decl" id="11387WL" title='WL' data-type='ArrayRef&lt;unsigned int&gt;' data-ref="11387WL">WL</dfn> = <a class="type" href="../ADT/ArrayRef.h.html#llvm::ArrayRef" title='llvm::ArrayRef' data-ref="llvm::ArrayRef">ArrayRef</a>&lt;<em>unsigned</em>&gt;<a class="ref" href="../ADT/ArrayRef.h.html#_ZN4llvm8ArrayRefC1Ev" title='llvm::ArrayRef::ArrayRef&lt;T&gt;' data-ref="_ZN4llvm8ArrayRefC1Ev">(</a>));</td></tr>
+<tr><th id="239">239</th><td></td></tr>
+<tr><th id="240">240</th><td>  <i class="doc">/// If the instruction has "branch_weights" MD_prof metadata and the MDNode</i></td></tr>
+<tr><th id="241">241</th><td><i class="doc">  /// has three operands (including name string), swap the order of the</i></td></tr>
+<tr><th id="242">242</th><td><i class="doc">  /// metadata.</i></td></tr>
+<tr><th id="243">243</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction16swapProfMetadataEv" title='llvm::Instruction::swapProfMetadata' data-ref="_ZN4llvm11Instruction16swapProfMetadataEv">swapProfMetadata</dfn>();</td></tr>
+<tr><th id="244">244</th><td></td></tr>
+<tr><th id="245">245</th><td>  <i class="doc">/// Drop all unknown metadata except for debug locations.</i></td></tr>
+<tr><th id="246">246</th><td><i class="doc">  /// @{</i></td></tr>
+<tr><th id="247">247</th><td><i class="doc">  /// Passes are required to drop metadata they don't understand. This is a</i></td></tr>
+<tr><th id="248">248</th><td><i class="doc">  /// convenience method for passes to do so.</i></td></tr>
+<tr><th id="249">249</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction27dropUnknownNonDebugMetadataENS_8ArrayRefIjEE" title='llvm::Instruction::dropUnknownNonDebugMetadata' data-ref="_ZN4llvm11Instruction27dropUnknownNonDebugMetadataENS_8ArrayRefIjEE">dropUnknownNonDebugMetadata</dfn>(<a class="type" href="../ADT/ArrayRef.h.html#llvm::ArrayRef" title='llvm::ArrayRef' data-ref="llvm::ArrayRef">ArrayRef</a>&lt;<em>unsigned</em>&gt; <dfn class="local col8 decl" id="11388KnownIDs" title='KnownIDs' data-type='ArrayRef&lt;unsigned int&gt;' data-ref="11388KnownIDs">KnownIDs</dfn>);</td></tr>
+<tr><th id="250">250</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm11Instruction27dropUnknownNonDebugMetadataEv" title='llvm::Instruction::dropUnknownNonDebugMetadata' data-ref="_ZN4llvm11Instruction27dropUnknownNonDebugMetadataEv">dropUnknownNonDebugMetadata</dfn>() {</td></tr>
+<tr><th id="251">251</th><td>    <b>return</b> <a class="member" href="#_ZN4llvm11Instruction27dropUnknownNonDebugMetadataENS_8ArrayRefIjEE" title='llvm::Instruction::dropUnknownNonDebugMetadata' data-ref="_ZN4llvm11Instruction27dropUnknownNonDebugMetadataENS_8ArrayRefIjEE">dropUnknownNonDebugMetadata</a>(<a class="ref fake" href="../ADT/ArrayRef.h.html#_ZN4llvm8ArrayRefC1ENS_8NoneTypeE" title='llvm::ArrayRef::ArrayRef&lt;T&gt;' data-ref="_ZN4llvm8ArrayRefC1ENS_8NoneTypeE"></a><a class="ref" href="../ADT/None.h.html#llvm::None" title='llvm::None' data-ref="llvm::None">None</a>);</td></tr>
+<tr><th id="252">252</th><td>  }</td></tr>
+<tr><th id="253">253</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm11Instruction27dropUnknownNonDebugMetadataEj" title='llvm::Instruction::dropUnknownNonDebugMetadata' data-ref="_ZN4llvm11Instruction27dropUnknownNonDebugMetadataEj">dropUnknownNonDebugMetadata</dfn>(<em>unsigned</em> <dfn class="local col9 decl" id="11389ID1" title='ID1' data-type='unsigned int' data-ref="11389ID1">ID1</dfn>) {</td></tr>
+<tr><th id="254">254</th><td>    <b>return</b> <a class="member" href="#_ZN4llvm11Instruction27dropUnknownNonDebugMetadataENS_8ArrayRefIjEE" title='llvm::Instruction::dropUnknownNonDebugMetadata' data-ref="_ZN4llvm11Instruction27dropUnknownNonDebugMetadataENS_8ArrayRefIjEE">dropUnknownNonDebugMetadata</a>(<a class="ref" href="../ADT/ArrayRef.h.html#_ZN4llvm12makeArrayRefERKT_" title='llvm::makeArrayRef' data-ref="_ZN4llvm12makeArrayRefERKT_">makeArrayRef</a>(<a class="local col9 ref" href="#11389ID1" title='ID1' data-ref="11389ID1">ID1</a>));</td></tr>
+<tr><th id="255">255</th><td>  }</td></tr>
+<tr><th id="256">256</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm11Instruction27dropUnknownNonDebugMetadataEjj" title='llvm::Instruction::dropUnknownNonDebugMetadata' data-ref="_ZN4llvm11Instruction27dropUnknownNonDebugMetadataEjj">dropUnknownNonDebugMetadata</dfn>(<em>unsigned</em> <dfn class="local col0 decl" id="11390ID1" title='ID1' data-type='unsigned int' data-ref="11390ID1">ID1</dfn>, <em>unsigned</em> <dfn class="local col1 decl" id="11391ID2" title='ID2' data-type='unsigned int' data-ref="11391ID2">ID2</dfn>) {</td></tr>
+<tr><th id="257">257</th><td>    <em>unsigned</em> <dfn class="local col2 decl" id="11392IDs" title='IDs' data-type='unsigned int [2]' data-ref="11392IDs">IDs</dfn>[] = {<a class="local col0 ref" href="#11390ID1" title='ID1' data-ref="11390ID1">ID1</a>, <a class="local col1 ref" href="#11391ID2" title='ID2' data-ref="11391ID2">ID2</a>};</td></tr>
+<tr><th id="258">258</th><td>    <b>return</b> <a class="member" href="#_ZN4llvm11Instruction27dropUnknownNonDebugMetadataENS_8ArrayRefIjEE" title='llvm::Instruction::dropUnknownNonDebugMetadata' data-ref="_ZN4llvm11Instruction27dropUnknownNonDebugMetadataENS_8ArrayRefIjEE">dropUnknownNonDebugMetadata</a>(<a class="ref fake" href="../ADT/ArrayRef.h.html#_ZN4llvm8ArrayRefC1ERAT__KT_" title='llvm::ArrayRef::ArrayRef&lt;T&gt;' data-ref="_ZN4llvm8ArrayRefC1ERAT__KT_"></a><a class="local col2 ref" href="#11392IDs" title='IDs' data-ref="11392IDs">IDs</a>);</td></tr>
+<tr><th id="259">259</th><td>  }</td></tr>
+<tr><th id="260">260</th><td>  <i class="doc">/// @}</i></td></tr>
+<tr><th id="261">261</th><td><i class="doc"></i></td></tr>
+<tr><th id="262">262</th><td><i class="doc">  /// Sets the metadata on this instruction from the AAMDNodes structure.</i></td></tr>
+<tr><th id="263">263</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction13setAAMetadataERKNS_9AAMDNodesE" title='llvm::Instruction::setAAMetadata' data-ref="_ZN4llvm11Instruction13setAAMetadataERKNS_9AAMDNodesE">setAAMetadata</dfn>(<em>const</em> <a class="type" href="Metadata.h.html#llvm::AAMDNodes" title='llvm::AAMDNodes' data-ref="llvm::AAMDNodes">AAMDNodes</a> &amp;<dfn class="local col3 decl" id="11393N" title='N' data-type='const llvm::AAMDNodes &amp;' data-ref="11393N">N</dfn>);</td></tr>
+<tr><th id="264">264</th><td></td></tr>
+<tr><th id="265">265</th><td>  <i class="doc">/// Retrieve the raw weight values of a conditional branch or select.</i></td></tr>
+<tr><th id="266">266</th><td><i class="doc">  /// Returns true on success with profile weights filled in.</i></td></tr>
+<tr><th id="267">267</th><td><i class="doc">  /// Returns false if no metadata or invalid metadata was found.</i></td></tr>
+<tr><th id="268">268</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11Instruction19extractProfMetadataERmS1_" title='llvm::Instruction::extractProfMetadata' data-ref="_ZNK4llvm11Instruction19extractProfMetadataERmS1_">extractProfMetadata</dfn>(<a class="typedef" href="../../../stdint.h.html#uint64_t" title='uint64_t' data-type='unsigned long' data-ref="uint64_t">uint64_t</a> &amp;<dfn class="local col4 decl" id="11394TrueVal" title='TrueVal' data-type='uint64_t &amp;' data-ref="11394TrueVal">TrueVal</dfn>, <a class="typedef" href="../../../stdint.h.html#uint64_t" title='uint64_t' data-type='unsigned long' data-ref="uint64_t">uint64_t</a> &amp;<dfn class="local col5 decl" id="11395FalseVal" title='FalseVal' data-type='uint64_t &amp;' data-ref="11395FalseVal">FalseVal</dfn>) <em>const</em>;</td></tr>
+<tr><th id="269">269</th><td></td></tr>
+<tr><th id="270">270</th><td>  <i class="doc">/// Retrieve total raw weight values of a branch.</i></td></tr>
+<tr><th id="271">271</th><td><i class="doc">  /// Returns true on success with profile total weights filled in.</i></td></tr>
+<tr><th id="272">272</th><td><i class="doc">  /// Returns false if no metadata was found.</i></td></tr>
+<tr><th id="273">273</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11Instruction22extractProfTotalWeightERm" title='llvm::Instruction::extractProfTotalWeight' data-ref="_ZNK4llvm11Instruction22extractProfTotalWeightERm">extractProfTotalWeight</dfn>(<a class="typedef" href="../../../stdint.h.html#uint64_t" title='uint64_t' data-type='unsigned long' data-ref="uint64_t">uint64_t</a> &amp;<dfn class="local col6 decl" id="11396TotalVal" title='TotalVal' data-type='uint64_t &amp;' data-ref="11396TotalVal">TotalVal</dfn>) <em>const</em>;</td></tr>
+<tr><th id="274">274</th><td></td></tr>
+<tr><th id="275">275</th><td>  <i class="doc">/// Updates branch_weights metadata by scaling it by<span class="command"> \p</span> <span class="arg">S</span> /<span class="command"> \p</span> <span class="arg">T.</span></i></td></tr>
+<tr><th id="276">276</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction16updateProfWeightEmm" title='llvm::Instruction::updateProfWeight' data-ref="_ZN4llvm11Instruction16updateProfWeightEmm">updateProfWeight</dfn>(<a class="typedef" href="../../../stdint.h.html#uint64_t" title='uint64_t' data-type='unsigned long' data-ref="uint64_t">uint64_t</a> <dfn class="local col7 decl" id="11397S" title='S' data-type='uint64_t' data-ref="11397S">S</dfn>, <a class="typedef" href="../../../stdint.h.html#uint64_t" title='uint64_t' data-type='unsigned long' data-ref="uint64_t">uint64_t</a> <dfn class="local col8 decl" id="11398T" title='T' data-type='uint64_t' data-ref="11398T">T</dfn>);</td></tr>
+<tr><th id="277">277</th><td></td></tr>
+<tr><th id="278">278</th><td>  <i class="doc">/// Sets the branch_weights metadata to<span class="command"> \p</span> <span class="arg">W</span> for CallInst.</i></td></tr>
+<tr><th id="279">279</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction13setProfWeightEm" title='llvm::Instruction::setProfWeight' data-ref="_ZN4llvm11Instruction13setProfWeightEm">setProfWeight</dfn>(<a class="typedef" href="../../../stdint.h.html#uint64_t" title='uint64_t' data-type='unsigned long' data-ref="uint64_t">uint64_t</a> <dfn class="local col9 decl" id="11399W" title='W' data-type='uint64_t' data-ref="11399W">W</dfn>);</td></tr>
+<tr><th id="280">280</th><td></td></tr>
+<tr><th id="281">281</th><td>  <i class="doc">/// Set the debug location information for this instruction.</i></td></tr>
+<tr><th id="282">282</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm11Instruction11setDebugLocENS_8DebugLocE" title='llvm::Instruction::setDebugLoc' data-ref="_ZN4llvm11Instruction11setDebugLocENS_8DebugLocE">setDebugLoc</dfn>(<a class="type" href="DebugLoc.h.html#llvm::DebugLoc" title='llvm::DebugLoc' data-ref="llvm::DebugLoc">DebugLoc</a> <dfn class="local col0 decl" id="11400Loc" title='Loc' data-type='llvm::DebugLoc' data-ref="11400Loc">Loc</dfn>) { <a class="member" href="#llvm::Instruction::DbgLoc" title='llvm::Instruction::DbgLoc' data-ref="llvm::Instruction::DbgLoc">DbgLoc</a> <a class="ref" href="DebugLoc.h.html#34" title='llvm::DebugLoc::operator=' data-ref="_ZN4llvm8DebugLocaSEOS0_">=</a> <span class="namespace">std::</span><a class="ref" href="../../../c++/7/bits/move.h.html#_ZSt4moveOT_" title='std::move' data-ref="_ZSt4moveOT_">move</a>(<span class='refarg'><a class="local col0 ref" href="#11400Loc" title='Loc' data-ref="11400Loc">Loc</a></span>); }</td></tr>
+<tr><th id="283">283</th><td></td></tr>
+<tr><th id="284">284</th><td>  <i class="doc">/// Return the debug location for this node as a DebugLoc.</i></td></tr>
+<tr><th id="285">285</th><td>  <em>const</em> <a class="type" href="DebugLoc.h.html#llvm::DebugLoc" title='llvm::DebugLoc' data-ref="llvm::DebugLoc">DebugLoc</a> &amp;<dfn class="decl def" id="_ZNK4llvm11Instruction11getDebugLocEv" title='llvm::Instruction::getDebugLoc' data-ref="_ZNK4llvm11Instruction11getDebugLocEv">getDebugLoc</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::Instruction::DbgLoc" title='llvm::Instruction::DbgLoc' data-ref="llvm::Instruction::DbgLoc">DbgLoc</a>; }</td></tr>
+<tr><th id="286">286</th><td></td></tr>
+<tr><th id="287">287</th><td>  <i class="doc">/// Set or clear the nsw flag on this instruction, which must be an operator</i></td></tr>
+<tr><th id="288">288</th><td><i class="doc">  /// which supports this flag. See LangRef.html for the meaning of this flag.</i></td></tr>
+<tr><th id="289">289</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction20setHasNoUnsignedWrapEb" title='llvm::Instruction::setHasNoUnsignedWrap' data-ref="_ZN4llvm11Instruction20setHasNoUnsignedWrapEb">setHasNoUnsignedWrap</dfn>(<em>bool</em> <dfn class="local col1 decl" id="11401b" title='b' data-type='bool' data-ref="11401b">b</dfn> = <b>true</b>);</td></tr>
+<tr><th id="290">290</th><td></td></tr>
+<tr><th id="291">291</th><td>  <i class="doc">/// Set or clear the nsw flag on this instruction, which must be an operator</i></td></tr>
+<tr><th id="292">292</th><td><i class="doc">  /// which supports this flag. See LangRef.html for the meaning of this flag.</i></td></tr>
+<tr><th id="293">293</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction18setHasNoSignedWrapEb" title='llvm::Instruction::setHasNoSignedWrap' data-ref="_ZN4llvm11Instruction18setHasNoSignedWrapEb">setHasNoSignedWrap</dfn>(<em>bool</em> <dfn class="local col2 decl" id="11402b" title='b' data-type='bool' data-ref="11402b">b</dfn> = <b>true</b>);</td></tr>
+<tr><th id="294">294</th><td></td></tr>
+<tr><th id="295">295</th><td>  <i class="doc">/// Set or clear the exact flag on this instruction, which must be an operator</i></td></tr>
+<tr><th id="296">296</th><td><i class="doc">  /// which supports this flag. See LangRef.html for the meaning of this flag.</i></td></tr>
+<tr><th id="297">297</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction10setIsExactEb" title='llvm::Instruction::setIsExact' data-ref="_ZN4llvm11Instruction10setIsExactEb">setIsExact</dfn>(<em>bool</em> <dfn class="local col3 decl" id="11403b" title='b' data-type='bool' data-ref="11403b">b</dfn> = <b>true</b>);</td></tr>
+<tr><th id="298">298</th><td></td></tr>
+<tr><th id="299">299</th><td>  <i class="doc">/// Determine whether the no unsigned wrap flag is set.</i></td></tr>
+<tr><th id="300">300</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11Instruction17hasNoUnsignedWrapEv" title='llvm::Instruction::hasNoUnsignedWrap' data-ref="_ZNK4llvm11Instruction17hasNoUnsignedWrapEv">hasNoUnsignedWrap</dfn>() <em>const</em>;</td></tr>
+<tr><th id="301">301</th><td></td></tr>
+<tr><th id="302">302</th><td>  <i class="doc">/// Determine whether the no signed wrap flag is set.</i></td></tr>
+<tr><th id="303">303</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11Instruction15hasNoSignedWrapEv" title='llvm::Instruction::hasNoSignedWrap' data-ref="_ZNK4llvm11Instruction15hasNoSignedWrapEv">hasNoSignedWrap</dfn>() <em>const</em>;</td></tr>
+<tr><th id="304">304</th><td></td></tr>
+<tr><th id="305">305</th><td>  <i class="doc">/// Drops flags that may cause this instruction to evaluate to poison despite</i></td></tr>
+<tr><th id="306">306</th><td><i class="doc">  /// having non-poison inputs.</i></td></tr>
+<tr><th id="307">307</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction25dropPoisonGeneratingFlagsEv" title='llvm::Instruction::dropPoisonGeneratingFlags' data-ref="_ZN4llvm11Instruction25dropPoisonGeneratingFlagsEv">dropPoisonGeneratingFlags</dfn>();</td></tr>
+<tr><th id="308">308</th><td></td></tr>
+<tr><th id="309">309</th><td>  <i class="doc">/// Determine whether the exact flag is set.</i></td></tr>
+<tr><th id="310">310</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11Instruction7isExactEv" title='llvm::Instruction::isExact' data-ref="_ZNK4llvm11Instruction7isExactEv">isExact</dfn>() <em>const</em>;</td></tr>
+<tr><th id="311">311</th><td></td></tr>
+<tr><th id="312">312</th><td>  <i class="doc">/// Set or clear all fast-math-flags on this instruction, which must be an</i></td></tr>
+<tr><th id="313">313</th><td><i class="doc">  /// operator which supports this flag. See LangRef.html for the meaning of</i></td></tr>
+<tr><th id="314">314</th><td><i class="doc">  /// this flag.</i></td></tr>
+<tr><th id="315">315</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction7setFastEb" title='llvm::Instruction::setFast' data-ref="_ZN4llvm11Instruction7setFastEb">setFast</dfn>(<em>bool</em> <dfn class="local col4 decl" id="11404B" title='B' data-type='bool' data-ref="11404B">B</dfn>);</td></tr>
+<tr><th id="316">316</th><td></td></tr>
+<tr><th id="317">317</th><td>  <i class="doc">/// Set or clear the reassociation flag on this instruction, which must be</i></td></tr>
+<tr><th id="318">318</th><td><i class="doc">  /// an operator which supports this flag. See LangRef.html for the meaning of</i></td></tr>
+<tr><th id="319">319</th><td><i class="doc">  /// this flag.</i></td></tr>
+<tr><th id="320">320</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction18setHasAllowReassocEb" title='llvm::Instruction::setHasAllowReassoc' data-ref="_ZN4llvm11Instruction18setHasAllowReassocEb">setHasAllowReassoc</dfn>(<em>bool</em> <dfn class="local col5 decl" id="11405B" title='B' data-type='bool' data-ref="11405B">B</dfn>);</td></tr>
+<tr><th id="321">321</th><td></td></tr>
+<tr><th id="322">322</th><td>  <i class="doc">/// Set or clear the no-nans flag on this instruction, which must be an</i></td></tr>
+<tr><th id="323">323</th><td><i class="doc">  /// operator which supports this flag. See LangRef.html for the meaning of</i></td></tr>
+<tr><th id="324">324</th><td><i class="doc">  /// this flag.</i></td></tr>
+<tr><th id="325">325</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction12setHasNoNaNsEb" title='llvm::Instruction::setHasNoNaNs' data-ref="_ZN4llvm11Instruction12setHasNoNaNsEb">setHasNoNaNs</dfn>(<em>bool</em> <dfn class="local col6 decl" id="11406B" title='B' data-type='bool' data-ref="11406B">B</dfn>);</td></tr>
+<tr><th id="326">326</th><td></td></tr>
+<tr><th id="327">327</th><td>  <i class="doc">/// Set or clear the no-infs flag on this instruction, which must be an</i></td></tr>
+<tr><th id="328">328</th><td><i class="doc">  /// operator which supports this flag. See LangRef.html for the meaning of</i></td></tr>
+<tr><th id="329">329</th><td><i class="doc">  /// this flag.</i></td></tr>
+<tr><th id="330">330</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction12setHasNoInfsEb" title='llvm::Instruction::setHasNoInfs' data-ref="_ZN4llvm11Instruction12setHasNoInfsEb">setHasNoInfs</dfn>(<em>bool</em> <dfn class="local col7 decl" id="11407B" title='B' data-type='bool' data-ref="11407B">B</dfn>);</td></tr>
+<tr><th id="331">331</th><td></td></tr>
+<tr><th id="332">332</th><td>  <i class="doc">/// Set or clear the no-signed-zeros flag on this instruction, which must be</i></td></tr>
+<tr><th id="333">333</th><td><i class="doc">  /// an operator which supports this flag. See LangRef.html for the meaning of</i></td></tr>
+<tr><th id="334">334</th><td><i class="doc">  /// this flag.</i></td></tr>
+<tr><th id="335">335</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction19setHasNoSignedZerosEb" title='llvm::Instruction::setHasNoSignedZeros' data-ref="_ZN4llvm11Instruction19setHasNoSignedZerosEb">setHasNoSignedZeros</dfn>(<em>bool</em> <dfn class="local col8 decl" id="11408B" title='B' data-type='bool' data-ref="11408B">B</dfn>);</td></tr>
+<tr><th id="336">336</th><td></td></tr>
+<tr><th id="337">337</th><td>  <i class="doc">/// Set or clear the allow-reciprocal flag on this instruction, which must be</i></td></tr>
+<tr><th id="338">338</th><td><i class="doc">  /// an operator which supports this flag. See LangRef.html for the meaning of</i></td></tr>
+<tr><th id="339">339</th><td><i class="doc">  /// this flag.</i></td></tr>
+<tr><th id="340">340</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction21setHasAllowReciprocalEb" title='llvm::Instruction::setHasAllowReciprocal' data-ref="_ZN4llvm11Instruction21setHasAllowReciprocalEb">setHasAllowReciprocal</dfn>(<em>bool</em> <dfn class="local col9 decl" id="11409B" title='B' data-type='bool' data-ref="11409B">B</dfn>);</td></tr>
+<tr><th id="341">341</th><td></td></tr>
+<tr><th id="342">342</th><td>  <i class="doc">/// Set or clear the approximate-math-functions flag on this instruction,</i></td></tr>
+<tr><th id="343">343</th><td><i class="doc">  /// which must be an operator which supports this flag. See LangRef.html for</i></td></tr>
+<tr><th id="344">344</th><td><i class="doc">  /// the meaning of this flag.</i></td></tr>
+<tr><th id="345">345</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction16setHasApproxFuncEb" title='llvm::Instruction::setHasApproxFunc' data-ref="_ZN4llvm11Instruction16setHasApproxFuncEb">setHasApproxFunc</dfn>(<em>bool</em> <dfn class="local col0 decl" id="11410B" title='B' data-type='bool' data-ref="11410B">B</dfn>);</td></tr>
+<tr><th id="346">346</th><td></td></tr>
+<tr><th id="347">347</th><td>  <i class="doc">/// Convenience function for setting multiple fast-math flags on this</i></td></tr>
+<tr><th id="348">348</th><td><i class="doc">  /// instruction, which must be an operator which supports these flags. See</i></td></tr>
+<tr><th id="349">349</th><td><i class="doc">  /// LangRef.html for the meaning of these flags.</i></td></tr>
+<tr><th id="350">350</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction16setFastMathFlagsENS_13FastMathFlagsE" title='llvm::Instruction::setFastMathFlags' data-ref="_ZN4llvm11Instruction16setFastMathFlagsENS_13FastMathFlagsE">setFastMathFlags</dfn>(<a class="type" href="#llvm::FastMathFlags" title='llvm::FastMathFlags' data-ref="llvm::FastMathFlags">FastMathFlags</a> <dfn class="local col1 decl" id="11411FMF" title='FMF' data-type='llvm::FastMathFlags' data-ref="11411FMF">FMF</dfn>);</td></tr>
+<tr><th id="351">351</th><td></td></tr>
+<tr><th id="352">352</th><td>  <i class="doc">/// Convenience function for transferring all fast-math flag values to this</i></td></tr>
+<tr><th id="353">353</th><td><i class="doc">  /// instruction, which must be an operator which supports these flags. See</i></td></tr>
+<tr><th id="354">354</th><td><i class="doc">  /// LangRef.html for the meaning of these flags.</i></td></tr>
+<tr><th id="355">355</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction17copyFastMathFlagsENS_13FastMathFlagsE" title='llvm::Instruction::copyFastMathFlags' data-ref="_ZN4llvm11Instruction17copyFastMathFlagsENS_13FastMathFlagsE">copyFastMathFlags</dfn>(<a class="type" href="#llvm::FastMathFlags" title='llvm::FastMathFlags' data-ref="llvm::FastMathFlags">FastMathFlags</a> <dfn class="local col2 decl" id="11412FMF" title='FMF' data-type='llvm::FastMathFlags' data-ref="11412FMF">FMF</dfn>);</td></tr>
+<tr><th id="356">356</th><td></td></tr>
+<tr><th id="357">357</th><td>  <i class="doc">/// Determine whether all fast-math-flags are set.</i></td></tr>
+<tr><th id="358">358</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11Instruction6isFastEv" title='llvm::Instruction::isFast' data-ref="_ZNK4llvm11Instruction6isFastEv">isFast</dfn>() <em>const</em>;</td></tr>
+<tr><th id="359">359</th><td></td></tr>
+<tr><th id="360">360</th><td>  <i class="doc">/// Determine whether the allow-reassociation flag is set.</i></td></tr>
+<tr><th id="361">361</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11Instruction15hasAllowReassocEv" title='llvm::Instruction::hasAllowReassoc' data-ref="_ZNK4llvm11Instruction15hasAllowReassocEv">hasAllowReassoc</dfn>() <em>const</em>;</td></tr>
+<tr><th id="362">362</th><td></td></tr>
+<tr><th id="363">363</th><td>  <i class="doc">/// Determine whether the no-NaNs flag is set.</i></td></tr>
+<tr><th id="364">364</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11Instruction9hasNoNaNsEv" title='llvm::Instruction::hasNoNaNs' data-ref="_ZNK4llvm11Instruction9hasNoNaNsEv">hasNoNaNs</dfn>() <em>const</em>;</td></tr>
+<tr><th id="365">365</th><td></td></tr>
+<tr><th id="366">366</th><td>  <i class="doc">/// Determine whether the no-infs flag is set.</i></td></tr>
+<tr><th id="367">367</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11Instruction9hasNoInfsEv" title='llvm::Instruction::hasNoInfs' data-ref="_ZNK4llvm11Instruction9hasNoInfsEv">hasNoInfs</dfn>() <em>const</em>;</td></tr>
+<tr><th id="368">368</th><td></td></tr>
+<tr><th id="369">369</th><td>  <i class="doc">/// Determine whether the no-signed-zeros flag is set.</i></td></tr>
+<tr><th id="370">370</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11Instruction16hasNoSignedZerosEv" title='llvm::Instruction::hasNoSignedZeros' data-ref="_ZNK4llvm11Instruction16hasNoSignedZerosEv">hasNoSignedZeros</dfn>() <em>const</em>;</td></tr>
+<tr><th id="371">371</th><td></td></tr>
+<tr><th id="372">372</th><td>  <i class="doc">/// Determine whether the allow-reciprocal flag is set.</i></td></tr>
+<tr><th id="373">373</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11Instruction18hasAllowReciprocalEv" title='llvm::Instruction::hasAllowReciprocal' data-ref="_ZNK4llvm11Instruction18hasAllowReciprocalEv">hasAllowReciprocal</dfn>() <em>const</em>;</td></tr>
+<tr><th id="374">374</th><td></td></tr>
+<tr><th id="375">375</th><td>  <i class="doc">/// Determine whether the allow-contract flag is set.</i></td></tr>
+<tr><th id="376">376</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11Instruction16hasAllowContractEv" title='llvm::Instruction::hasAllowContract' data-ref="_ZNK4llvm11Instruction16hasAllowContractEv">hasAllowContract</dfn>() <em>const</em>;</td></tr>
+<tr><th id="377">377</th><td></td></tr>
+<tr><th id="378">378</th><td>  <i class="doc">/// Determine whether the approximate-math-functions flag is set.</i></td></tr>
+<tr><th id="379">379</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11Instruction13hasApproxFuncEv" title='llvm::Instruction::hasApproxFunc' data-ref="_ZNK4llvm11Instruction13hasApproxFuncEv">hasApproxFunc</dfn>() <em>const</em>;</td></tr>
+<tr><th id="380">380</th><td></td></tr>
+<tr><th id="381">381</th><td>  <i class="doc">/// Convenience function for getting all the fast-math flags, which must be an</i></td></tr>
+<tr><th id="382">382</th><td><i class="doc">  /// operator which supports these flags. See LangRef.html for the meaning of</i></td></tr>
+<tr><th id="383">383</th><td><i class="doc">  /// these flags.</i></td></tr>
+<tr><th id="384">384</th><td>  <a class="type" href="#llvm::FastMathFlags" title='llvm::FastMathFlags' data-ref="llvm::FastMathFlags">FastMathFlags</a> <dfn class="decl" id="_ZNK4llvm11Instruction16getFastMathFlagsEv" title='llvm::Instruction::getFastMathFlags' data-ref="_ZNK4llvm11Instruction16getFastMathFlagsEv">getFastMathFlags</dfn>() <em>const</em>;</td></tr>
+<tr><th id="385">385</th><td></td></tr>
+<tr><th id="386">386</th><td>  <i class="doc">/// Copy I's fast-math flags</i></td></tr>
+<tr><th id="387">387</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction17copyFastMathFlagsEPKS0_" title='llvm::Instruction::copyFastMathFlags' data-ref="_ZN4llvm11Instruction17copyFastMathFlagsEPKS0_">copyFastMathFlags</dfn>(<em>const</em> <a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> *<dfn class="local col3 decl" id="11413I" title='I' data-type='const llvm::Instruction *' data-ref="11413I">I</dfn>);</td></tr>
+<tr><th id="388">388</th><td></td></tr>
+<tr><th id="389">389</th><td>  <i class="doc">/// Convenience method to copy supported exact, fast-math, and (optionally)</i></td></tr>
+<tr><th id="390">390</th><td><i class="doc">  /// wrapping flags from V to this instruction.</i></td></tr>
+<tr><th id="391">391</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction11copyIRFlagsEPKNS_5ValueEb" title='llvm::Instruction::copyIRFlags' data-ref="_ZN4llvm11Instruction11copyIRFlagsEPKNS_5ValueEb">copyIRFlags</dfn>(<em>const</em> <a class="type" href="Value.h.html#llvm::Value" title='llvm::Value' data-ref="llvm::Value">Value</a> *<dfn class="local col4 decl" id="11414V" title='V' data-type='const llvm::Value *' data-ref="11414V">V</dfn>, <em>bool</em> <dfn class="local col5 decl" id="11415IncludeWrapFlags" title='IncludeWrapFlags' data-type='bool' data-ref="11415IncludeWrapFlags">IncludeWrapFlags</dfn> = <b>true</b>);</td></tr>
+<tr><th id="392">392</th><td></td></tr>
+<tr><th id="393">393</th><td>  <i class="doc">/// Logical 'and' of any supported wrapping, exact, and fast-math flags of</i></td></tr>
+<tr><th id="394">394</th><td><i class="doc">  /// V and this instruction.</i></td></tr>
+<tr><th id="395">395</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction10andIRFlagsEPKNS_5ValueE" title='llvm::Instruction::andIRFlags' data-ref="_ZN4llvm11Instruction10andIRFlagsEPKNS_5ValueE">andIRFlags</dfn>(<em>const</em> <a class="type" href="Value.h.html#llvm::Value" title='llvm::Value' data-ref="llvm::Value">Value</a> *<dfn class="local col6 decl" id="11416V" title='V' data-type='const llvm::Value *' data-ref="11416V">V</dfn>);</td></tr>
+<tr><th id="396">396</th><td></td></tr>
+<tr><th id="397">397</th><td>  <i class="doc">/// Merge 2 debug locations and apply it to the Instruction. If the</i></td></tr>
+<tr><th id="398">398</th><td><i class="doc">  /// instruction is a CallIns, we need to traverse the inline chain to find</i></td></tr>
+<tr><th id="399">399</th><td><i class="doc">  /// the common scope. This is not efficient for N-way merging as each time</i></td></tr>
+<tr><th id="400">400</th><td><i class="doc">  /// you merge 2 iterations, you need to rebuild the hashmap to find the</i></td></tr>
+<tr><th id="401">401</th><td><i class="doc">  /// common scope. However, we still choose this API because:</i></td></tr>
+<tr><th id="402">402</th><td><i class="doc">  ///  1) Simplicity: it takes 2 locations instead of a list of locations.</i></td></tr>
+<tr><th id="403">403</th><td><i class="doc">  ///  2) In worst case, it increases the complexity from O(N*I) to</i></td></tr>
+<tr><th id="404">404</th><td><i class="doc">  ///     O(2*N*I), where N is # of Instructions to merge, and I is the</i></td></tr>
+<tr><th id="405">405</th><td><i class="doc">  ///     maximum level of inline stack. So it is still linear.</i></td></tr>
+<tr><th id="406">406</th><td><i class="doc">  ///  3) Merging of call instructions should be extremely rare in real</i></td></tr>
+<tr><th id="407">407</th><td><i class="doc">  ///     applications, thus the N-way merging should be in code path.</i></td></tr>
+<tr><th id="408">408</th><td><i class="doc">  /// The DebugLoc attached to this instruction will be overwritten by the</i></td></tr>
+<tr><th id="409">409</th><td><i class="doc">  /// merged DebugLoc.</i></td></tr>
+<tr><th id="410">410</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction19applyMergedLocationEPKNS_10DILocationES3_" title='llvm::Instruction::applyMergedLocation' data-ref="_ZN4llvm11Instruction19applyMergedLocationEPKNS_10DILocationES3_">applyMergedLocation</dfn>(<em>const</em> <a class="type" href="Metadata.def.html#83" title='llvm::DILocation' data-ref="llvm::DILocation">DILocation</a> *<dfn class="local col7 decl" id="11417LocA" title='LocA' data-type='const llvm::DILocation *' data-ref="11417LocA">LocA</dfn>, <em>const</em> <a class="type" href="Metadata.def.html#83" title='llvm::DILocation' data-ref="llvm::DILocation">DILocation</a> *<dfn class="local col8 decl" id="11418LocB" title='LocB' data-type='const llvm::DILocation *' data-ref="11418LocB">LocB</dfn>);</td></tr>
+<tr><th id="411">411</th><td></td></tr>
+<tr><th id="412">412</th><td><b>private</b>:</td></tr>
+<tr><th id="413">413</th><td>  <i class="doc">/// Return true if we have an entry in the on-the-side metadata hash.</i></td></tr>
+<tr><th id="414">414</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm11Instruction20hasMetadataHashEntryEv" title='llvm::Instruction::hasMetadataHashEntry' data-ref="_ZNK4llvm11Instruction20hasMetadataHashEntryEv">hasMetadataHashEntry</dfn>() <em>const</em> {</td></tr>
+<tr><th id="415">415</th><td>    <b>return</b> (<a class="member" href="#_ZNK4llvm11Instruction24getSubclassDataFromValueEv" title='llvm::Instruction::getSubclassDataFromValue' data-ref="_ZNK4llvm11Instruction24getSubclassDataFromValueEv">getSubclassDataFromValue</a>() &amp; <a class="enum" href="#llvm::Instruction::HasMetadataBit" title='llvm::Instruction::HasMetadataBit' data-ref="llvm::Instruction::HasMetadataBit">HasMetadataBit</a>) != <var>0</var>;</td></tr>
+<tr><th id="416">416</th><td>  }</td></tr>
+<tr><th id="417">417</th><td></td></tr>
+<tr><th id="418">418</th><td>  <i>// These are all implemented in Metadata.cpp.</i></td></tr>
+<tr><th id="419">419</th><td>  <a class="type" href="Metadata.h.html#llvm::MDNode" title='llvm::MDNode' data-ref="llvm::MDNode">MDNode</a> *<dfn class="decl" id="_ZNK4llvm11Instruction15getMetadataImplEj" title='llvm::Instruction::getMetadataImpl' data-ref="_ZNK4llvm11Instruction15getMetadataImplEj">getMetadataImpl</dfn>(<em>unsigned</em> <dfn class="local col9 decl" id="11419KindID" title='KindID' data-type='unsigned int' data-ref="11419KindID">KindID</dfn>) <em>const</em>;</td></tr>
+<tr><th id="420">420</th><td>  <a class="type" href="Metadata.h.html#llvm::MDNode" title='llvm::MDNode' data-ref="llvm::MDNode">MDNode</a> *<dfn class="decl" id="_ZNK4llvm11Instruction15getMetadataImplENS_9StringRefE" title='llvm::Instruction::getMetadataImpl' data-ref="_ZNK4llvm11Instruction15getMetadataImplENS_9StringRefE">getMetadataImpl</dfn>(<a class="type" href="../ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="local col0 decl" id="11420Kind" title='Kind' data-type='llvm::StringRef' data-ref="11420Kind">Kind</dfn>) <em>const</em>;</td></tr>
+<tr><th id="421">421</th><td>  <em>void</em></td></tr>
+<tr><th id="422">422</th><td>  <dfn class="decl" id="_ZNK4llvm11Instruction18getAllMetadataImplERNS_15SmallVectorImplISt4pairIjPNS_6MDNodeEEEE" title='llvm::Instruction::getAllMetadataImpl' data-ref="_ZNK4llvm11Instruction18getAllMetadataImplERNS_15SmallVectorImplISt4pairIjPNS_6MDNodeEEEE">getAllMetadataImpl</dfn>(<a class="type" href="../ADT/SmallVector.h.html#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;<span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/stl_pair.h.html#std::pair" title='std::pair' data-ref="std::pair">pair</a>&lt;<em>unsigned</em>, <a class="type" href="Metadata.h.html#llvm::MDNode" title='llvm::MDNode' data-ref="llvm::MDNode">MDNode</a> *&gt;&gt; &amp;) <em>const</em>;</td></tr>
+<tr><th id="423">423</th><td>  <em>void</em> <dfn class="decl" id="_ZNK4llvm11Instruction35getAllMetadataOtherThanDebugLocImplERNS_15SmallVectorImplISt4pairIjPNS_6MDNodeEEEE" title='llvm::Instruction::getAllMetadataOtherThanDebugLocImpl' data-ref="_ZNK4llvm11Instruction35getAllMetadataOtherThanDebugLocImplERNS_15SmallVectorImplISt4pairIjPNS_6MDNodeEEEE">getAllMetadataOtherThanDebugLocImpl</dfn>(</td></tr>
+<tr><th id="424">424</th><td>      <a class="type" href="../ADT/SmallVector.h.html#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;<span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/stl_pair.h.html#std::pair" title='std::pair' data-ref="std::pair">pair</a>&lt;<em>unsigned</em>, <a class="type" href="Metadata.h.html#llvm::MDNode" title='llvm::MDNode' data-ref="llvm::MDNode">MDNode</a> *&gt;&gt; &amp;) <em>const</em>;</td></tr>
+<tr><th id="425">425</th><td>  <i class="doc">/// Clear all hashtable-based metadata from this instruction.</i></td></tr>
+<tr><th id="426">426</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction24clearMetadataHashEntriesEv" title='llvm::Instruction::clearMetadataHashEntries' data-ref="_ZN4llvm11Instruction24clearMetadataHashEntriesEv">clearMetadataHashEntries</dfn>();</td></tr>
+<tr><th id="427">427</th><td></td></tr>
+<tr><th id="428">428</th><td><b>public</b>:</td></tr>
+<tr><th id="429">429</th><td>  <i>//===--------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="430">430</th><td><i>  // Predicates and helper methods.</i></td></tr>
+<tr><th id="431">431</th><td><i>  //===--------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="432">432</th><td><i></i></td></tr>
+<tr><th id="433">433</th><td><i>  /// Return true if the instruction is associative:</i></td></tr>
+<tr><th id="434">434</th><td><i>  ///</i></td></tr>
+<tr><th id="435">435</th><td><i>  ///   Associative operators satisfy:  x op (y op z) === (x op y) op z</i></td></tr>
+<tr><th id="436">436</th><td><i>  ///</i></td></tr>
+<tr><th id="437">437</th><td><i>  /// In LLVM, the Add, Mul, And, Or, and Xor operators are associative.</i></td></tr>
+<tr><th id="438">438</th><td><i>  ///</i></td></tr>
+<tr><th id="439">439</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11Instruction13isAssociativeEv" title='llvm::Instruction::isAssociative' data-ref="_ZNK4llvm11Instruction13isAssociativeEv">isAssociative</dfn>() <em>const</em> <a class="macro" href="../Support/Compiler.h.html#166" title="__attribute__((__pure__))" data-ref="_M/LLVM_READONLY">LLVM_READONLY</a>;</td></tr>
+<tr><th id="440">440</th><td>  <em>static</em> <em>bool</em> <dfn class="decl def" id="_ZN4llvm11Instruction13isAssociativeEj" title='llvm::Instruction::isAssociative' data-ref="_ZN4llvm11Instruction13isAssociativeEj">isAssociative</dfn>(<em>unsigned</em> <dfn class="local col1 decl" id="11421Opcode" title='Opcode' data-type='unsigned int' data-ref="11421Opcode">Opcode</dfn>) {</td></tr>
+<tr><th id="441">441</th><td>    <b>return</b> <a class="local col1 ref" href="#11421Opcode" title='Opcode' data-ref="11421Opcode">Opcode</a> == <a class="enum" href="Instruction.def.html#145" title='llvm::Instruction::BinaryOps::And' data-ref="llvm::Instruction::BinaryOps::And">And</a> || <a class="local col1 ref" href="#11421Opcode" title='Opcode' data-ref="11421Opcode">Opcode</a> == <a class="enum" href="Instruction.def.html#146" title='llvm::Instruction::BinaryOps::Or' data-ref="llvm::Instruction::BinaryOps::Or">Or</a> || <a class="local col1 ref" href="#11421Opcode" title='Opcode' data-ref="11421Opcode">Opcode</a> == <a class="enum" href="Instruction.def.html#147" title='llvm::Instruction::BinaryOps::Xor' data-ref="llvm::Instruction::BinaryOps::Xor">Xor</a> ||</td></tr>
+<tr><th id="442">442</th><td>           <a class="local col1 ref" href="#11421Opcode" title='Opcode' data-ref="11421Opcode">Opcode</a> == <a class="enum" href="Instruction.def.html#128" title='llvm::Instruction::BinaryOps::Add' data-ref="llvm::Instruction::BinaryOps::Add">Add</a> || <a class="local col1 ref" href="#11421Opcode" title='Opcode' data-ref="11421Opcode">Opcode</a> == <a class="enum" href="Instruction.def.html#132" title='llvm::Instruction::BinaryOps::Mul' data-ref="llvm::Instruction::BinaryOps::Mul">Mul</a>;</td></tr>
+<tr><th id="443">443</th><td>  }</td></tr>
+<tr><th id="444">444</th><td></td></tr>
+<tr><th id="445">445</th><td>  <i class="doc">/// Return true if the instruction is commutative:</i></td></tr>
+<tr><th id="446">446</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="447">447</th><td><i class="doc">  ///   Commutative operators satisfy: (x op y) === (y op x)</i></td></tr>
+<tr><th id="448">448</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="449">449</th><td><i class="doc">  /// In LLVM, these are the commutative operators, plus SetEQ and SetNE, when</i></td></tr>
+<tr><th id="450">450</th><td><i class="doc">  /// applied to any type.</i></td></tr>
+<tr><th id="451">451</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="452">452</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm11Instruction13isCommutativeEv" title='llvm::Instruction::isCommutative' data-ref="_ZNK4llvm11Instruction13isCommutativeEv">isCommutative</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#_ZN4llvm11Instruction13isCommutativeEj" title='llvm::Instruction::isCommutative' data-ref="_ZN4llvm11Instruction13isCommutativeEj">isCommutative</a>(<a class="member" href="#_ZNK4llvm11Instruction9getOpcodeEv" title='llvm::Instruction::getOpcode' data-ref="_ZNK4llvm11Instruction9getOpcodeEv">getOpcode</a>()); }</td></tr>
+<tr><th id="453">453</th><td>  <em>static</em> <em>bool</em> <dfn class="decl def" id="_ZN4llvm11Instruction13isCommutativeEj" title='llvm::Instruction::isCommutative' data-ref="_ZN4llvm11Instruction13isCommutativeEj">isCommutative</dfn>(<em>unsigned</em> <dfn class="local col2 decl" id="11422Opcode" title='Opcode' data-type='unsigned int' data-ref="11422Opcode">Opcode</dfn>) {</td></tr>
+<tr><th id="454">454</th><td>    <b>switch</b> (<a class="local col2 ref" href="#11422Opcode" title='Opcode' data-ref="11422Opcode">Opcode</a>) {</td></tr>
+<tr><th id="455">455</th><td>    <b>case</b> <a class="enum" href="Instruction.def.html#128" title='llvm::Instruction::BinaryOps::Add' data-ref="llvm::Instruction::BinaryOps::Add">Add</a>: <b>case</b> <a class="enum" href="Instruction.def.html#129" title='llvm::Instruction::BinaryOps::FAdd' data-ref="llvm::Instruction::BinaryOps::FAdd">FAdd</a>:</td></tr>
+<tr><th id="456">456</th><td>    <b>case</b> <a class="enum" href="Instruction.def.html#132" title='llvm::Instruction::BinaryOps::Mul' data-ref="llvm::Instruction::BinaryOps::Mul">Mul</a>: <b>case</b> <a class="enum" href="Instruction.def.html#133" title='llvm::Instruction::BinaryOps::FMul' data-ref="llvm::Instruction::BinaryOps::FMul">FMul</a>:</td></tr>
+<tr><th id="457">457</th><td>    <b>case</b> <a class="enum" href="Instruction.def.html#145" title='llvm::Instruction::BinaryOps::And' data-ref="llvm::Instruction::BinaryOps::And">And</a>: <b>case</b> <a class="enum" href="Instruction.def.html#146" title='llvm::Instruction::BinaryOps::Or' data-ref="llvm::Instruction::BinaryOps::Or">Or</a>: <b>case</b> <a class="enum" href="Instruction.def.html#147" title='llvm::Instruction::BinaryOps::Xor' data-ref="llvm::Instruction::BinaryOps::Xor">Xor</a>:</td></tr>
+<tr><th id="458">458</th><td>      <b>return</b> <b>true</b>;</td></tr>
+<tr><th id="459">459</th><td>    <b>default</b>:</td></tr>
+<tr><th id="460">460</th><td>      <b>return</b> <b>false</b>;</td></tr>
+<tr><th id="461">461</th><td>  }</td></tr>
+<tr><th id="462">462</th><td>  }</td></tr>
+<tr><th id="463">463</th><td></td></tr>
+<tr><th id="464">464</th><td>  <i class="doc">/// Return true if the instruction is idempotent:</i></td></tr>
+<tr><th id="465">465</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="466">466</th><td><i class="doc">  ///   Idempotent operators satisfy:  x op x === x</i></td></tr>
+<tr><th id="467">467</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="468">468</th><td><i class="doc">  /// In LLVM, the And and Or operators are idempotent.</i></td></tr>
+<tr><th id="469">469</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="470">470</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm11Instruction12isIdempotentEv" title='llvm::Instruction::isIdempotent' data-ref="_ZNK4llvm11Instruction12isIdempotentEv">isIdempotent</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#_ZN4llvm11Instruction12isIdempotentEj" title='llvm::Instruction::isIdempotent' data-ref="_ZN4llvm11Instruction12isIdempotentEj">isIdempotent</a>(<a class="member" href="#_ZNK4llvm11Instruction9getOpcodeEv" title='llvm::Instruction::getOpcode' data-ref="_ZNK4llvm11Instruction9getOpcodeEv">getOpcode</a>()); }</td></tr>
+<tr><th id="471">471</th><td>  <em>static</em> <em>bool</em> <dfn class="decl def" id="_ZN4llvm11Instruction12isIdempotentEj" title='llvm::Instruction::isIdempotent' data-ref="_ZN4llvm11Instruction12isIdempotentEj">isIdempotent</dfn>(<em>unsigned</em> <dfn class="local col3 decl" id="11423Opcode" title='Opcode' data-type='unsigned int' data-ref="11423Opcode">Opcode</dfn>) {</td></tr>
+<tr><th id="472">472</th><td>    <b>return</b> <a class="local col3 ref" href="#11423Opcode" title='Opcode' data-ref="11423Opcode">Opcode</a> == <a class="enum" href="Instruction.def.html#145" title='llvm::Instruction::BinaryOps::And' data-ref="llvm::Instruction::BinaryOps::And">And</a> || <a class="local col3 ref" href="#11423Opcode" title='Opcode' data-ref="11423Opcode">Opcode</a> == <a class="enum" href="Instruction.def.html#146" title='llvm::Instruction::BinaryOps::Or' data-ref="llvm::Instruction::BinaryOps::Or">Or</a>;</td></tr>
+<tr><th id="473">473</th><td>  }</td></tr>
+<tr><th id="474">474</th><td></td></tr>
+<tr><th id="475">475</th><td>  <i class="doc">/// Return true if the instruction is nilpotent:</i></td></tr>
+<tr><th id="476">476</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="477">477</th><td><i class="doc">  ///   Nilpotent operators satisfy:  x op x === Id,</i></td></tr>
+<tr><th id="478">478</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="479">479</th><td><i class="doc">  ///   where Id is the identity for the operator, i.e. a constant such that</i></td></tr>
+<tr><th id="480">480</th><td><i class="doc">  ///     x op Id === x and Id op x === x for all x.</i></td></tr>
+<tr><th id="481">481</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="482">482</th><td><i class="doc">  /// In LLVM, the Xor operator is nilpotent.</i></td></tr>
+<tr><th id="483">483</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="484">484</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm11Instruction11isNilpotentEv" title='llvm::Instruction::isNilpotent' data-ref="_ZNK4llvm11Instruction11isNilpotentEv">isNilpotent</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#_ZN4llvm11Instruction11isNilpotentEj" title='llvm::Instruction::isNilpotent' data-ref="_ZN4llvm11Instruction11isNilpotentEj">isNilpotent</a>(<a class="member" href="#_ZNK4llvm11Instruction9getOpcodeEv" title='llvm::Instruction::getOpcode' data-ref="_ZNK4llvm11Instruction9getOpcodeEv">getOpcode</a>()); }</td></tr>
+<tr><th id="485">485</th><td>  <em>static</em> <em>bool</em> <dfn class="decl def" id="_ZN4llvm11Instruction11isNilpotentEj" title='llvm::Instruction::isNilpotent' data-ref="_ZN4llvm11Instruction11isNilpotentEj">isNilpotent</dfn>(<em>unsigned</em> <dfn class="local col4 decl" id="11424Opcode" title='Opcode' data-type='unsigned int' data-ref="11424Opcode">Opcode</dfn>) {</td></tr>
+<tr><th id="486">486</th><td>    <b>return</b> <a class="local col4 ref" href="#11424Opcode" title='Opcode' data-ref="11424Opcode">Opcode</a> == <a class="enum" href="Instruction.def.html#147" title='llvm::Instruction::BinaryOps::Xor' data-ref="llvm::Instruction::BinaryOps::Xor">Xor</a>;</td></tr>
+<tr><th id="487">487</th><td>  }</td></tr>
+<tr><th id="488">488</th><td></td></tr>
+<tr><th id="489">489</th><td>  <i class="doc">/// Return true if this instruction may modify memory.</i></td></tr>
+<tr><th id="490">490</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11Instruction16mayWriteToMemoryEv" title='llvm::Instruction::mayWriteToMemory' data-ref="_ZNK4llvm11Instruction16mayWriteToMemoryEv">mayWriteToMemory</dfn>() <em>const</em>;</td></tr>
+<tr><th id="491">491</th><td></td></tr>
+<tr><th id="492">492</th><td>  <i class="doc">/// Return true if this instruction may read memory.</i></td></tr>
+<tr><th id="493">493</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11Instruction17mayReadFromMemoryEv" title='llvm::Instruction::mayReadFromMemory' data-ref="_ZNK4llvm11Instruction17mayReadFromMemoryEv">mayReadFromMemory</dfn>() <em>const</em>;</td></tr>
+<tr><th id="494">494</th><td></td></tr>
+<tr><th id="495">495</th><td>  <i class="doc">/// Return true if this instruction may read or write memory.</i></td></tr>
+<tr><th id="496">496</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm11Instruction20mayReadOrWriteMemoryEv" title='llvm::Instruction::mayReadOrWriteMemory' data-ref="_ZNK4llvm11Instruction20mayReadOrWriteMemoryEv">mayReadOrWriteMemory</dfn>() <em>const</em> {</td></tr>
+<tr><th id="497">497</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm11Instruction17mayReadFromMemoryEv" title='llvm::Instruction::mayReadFromMemory' data-ref="_ZNK4llvm11Instruction17mayReadFromMemoryEv">mayReadFromMemory</a>() || <a class="member" href="#_ZNK4llvm11Instruction16mayWriteToMemoryEv" title='llvm::Instruction::mayWriteToMemory' data-ref="_ZNK4llvm11Instruction16mayWriteToMemoryEv">mayWriteToMemory</a>();</td></tr>
+<tr><th id="498">498</th><td>  }</td></tr>
+<tr><th id="499">499</th><td></td></tr>
+<tr><th id="500">500</th><td>  <i class="doc">/// Return true if this instruction has an AtomicOrdering of unordered or</i></td></tr>
+<tr><th id="501">501</th><td><i class="doc">  /// higher.</i></td></tr>
+<tr><th id="502">502</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11Instruction8isAtomicEv" title='llvm::Instruction::isAtomic' data-ref="_ZNK4llvm11Instruction8isAtomicEv">isAtomic</dfn>() <em>const</em>;</td></tr>
+<tr><th id="503">503</th><td></td></tr>
+<tr><th id="504">504</th><td>  <i class="doc">/// Return true if this atomic instruction loads from memory.</i></td></tr>
+<tr><th id="505">505</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11Instruction13hasAtomicLoadEv" title='llvm::Instruction::hasAtomicLoad' data-ref="_ZNK4llvm11Instruction13hasAtomicLoadEv">hasAtomicLoad</dfn>() <em>const</em>;</td></tr>
+<tr><th id="506">506</th><td></td></tr>
+<tr><th id="507">507</th><td>  <i class="doc">/// Return true if this atomic instruction stores to memory.</i></td></tr>
+<tr><th id="508">508</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11Instruction14hasAtomicStoreEv" title='llvm::Instruction::hasAtomicStore' data-ref="_ZNK4llvm11Instruction14hasAtomicStoreEv">hasAtomicStore</dfn>() <em>const</em>;</td></tr>
+<tr><th id="509">509</th><td></td></tr>
+<tr><th id="510">510</th><td>  <i class="doc">/// Return true if this instruction may throw an exception.</i></td></tr>
+<tr><th id="511">511</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11Instruction8mayThrowEv" title='llvm::Instruction::mayThrow' data-ref="_ZNK4llvm11Instruction8mayThrowEv">mayThrow</dfn>() <em>const</em>;</td></tr>
+<tr><th id="512">512</th><td></td></tr>
+<tr><th id="513">513</th><td>  <i class="doc">/// Return true if this instruction behaves like a memory fence: it can load</i></td></tr>
+<tr><th id="514">514</th><td><i class="doc">  /// or store to memory location without being given a memory location.</i></td></tr>
+<tr><th id="515">515</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm11Instruction11isFenceLikeEv" title='llvm::Instruction::isFenceLike' data-ref="_ZNK4llvm11Instruction11isFenceLikeEv">isFenceLike</dfn>() <em>const</em> {</td></tr>
+<tr><th id="516">516</th><td>    <b>switch</b> (<a class="member" href="#_ZNK4llvm11Instruction9getOpcodeEv" title='llvm::Instruction::getOpcode' data-ref="_ZNK4llvm11Instruction9getOpcodeEv">getOpcode</a>()) {</td></tr>
+<tr><th id="517">517</th><td>    <b>default</b>:</td></tr>
+<tr><th id="518">518</th><td>      <b>return</b> <b>false</b>;</td></tr>
+<tr><th id="519">519</th><td>    <i>// This list should be kept in sync with the list in mayWriteToMemory for</i></td></tr>
+<tr><th id="520">520</th><td><i>    // all opcodes which don't have a memory location.</i></td></tr>
+<tr><th id="521">521</th><td>    <b>case</b> <a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a>::<a class="enum" href="Instruction.def.html#156" title='llvm::Instruction::MemoryOps::Fence' data-ref="llvm::Instruction::MemoryOps::Fence">Fence</a>:</td></tr>
+<tr><th id="522">522</th><td>    <b>case</b> <a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a>::<a class="enum" href="Instruction.def.html#182" title='llvm::Instruction::FuncletPadOps::CatchPad' data-ref="llvm::Instruction::FuncletPadOps::CatchPad">CatchPad</a>:</td></tr>
+<tr><th id="523">523</th><td>    <b>case</b> <a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a>::<a class="enum" href="Instruction.def.html#122" title='llvm::Instruction::TermOps::CatchRet' data-ref="llvm::Instruction::TermOps::CatchRet">CatchRet</a>:</td></tr>
+<tr><th id="524">524</th><td>    <b>case</b> <a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a>::<a class="enum" href="Instruction.def.html#190" title='llvm::Instruction::OtherOps::Call' data-ref="llvm::Instruction::OtherOps::Call">Call</a>:</td></tr>
+<tr><th id="525">525</th><td>    <b>case</b> <a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a>::<a class="enum" href="Instruction.def.html#118" title='llvm::Instruction::TermOps::Invoke' data-ref="llvm::Instruction::TermOps::Invoke">Invoke</a>:</td></tr>
+<tr><th id="526">526</th><td>      <b>return</b> <b>true</b>;</td></tr>
+<tr><th id="527">527</th><td>    }</td></tr>
+<tr><th id="528">528</th><td>  }</td></tr>
+<tr><th id="529">529</th><td></td></tr>
+<tr><th id="530">530</th><td>  <i class="doc">/// Return true if the instruction may have side effects.</i></td></tr>
+<tr><th id="531">531</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="532">532</th><td><i class="doc">  /// Note that this does not consider malloc and alloca to have side</i></td></tr>
+<tr><th id="533">533</th><td><i class="doc">  /// effects because the newly allocated memory is completely invisible to</i></td></tr>
+<tr><th id="534">534</th><td><i class="doc">  /// instructions which don't use the returned value.  For cases where this</i></td></tr>
+<tr><th id="535">535</th><td><i class="doc">  /// matters, isSafeToSpeculativelyExecute may be more appropriate.</i></td></tr>
+<tr><th id="536">536</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm11Instruction18mayHaveSideEffectsEv" title='llvm::Instruction::mayHaveSideEffects' data-ref="_ZNK4llvm11Instruction18mayHaveSideEffectsEv">mayHaveSideEffects</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#_ZNK4llvm11Instruction16mayWriteToMemoryEv" title='llvm::Instruction::mayWriteToMemory' data-ref="_ZNK4llvm11Instruction16mayWriteToMemoryEv">mayWriteToMemory</a>() || <a class="member" href="#_ZNK4llvm11Instruction8mayThrowEv" title='llvm::Instruction::mayThrow' data-ref="_ZNK4llvm11Instruction8mayThrowEv">mayThrow</a>(); }</td></tr>
+<tr><th id="537">537</th><td></td></tr>
+<tr><th id="538">538</th><td>  <i class="doc">/// Return true if the instruction is a variety of EH-block.</i></td></tr>
+<tr><th id="539">539</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm11Instruction7isEHPadEv" title='llvm::Instruction::isEHPad' data-ref="_ZNK4llvm11Instruction7isEHPadEv">isEHPad</dfn>() <em>const</em> {</td></tr>
+<tr><th id="540">540</th><td>    <b>switch</b> (<a class="member" href="#_ZNK4llvm11Instruction9getOpcodeEv" title='llvm::Instruction::getOpcode' data-ref="_ZNK4llvm11Instruction9getOpcodeEv">getOpcode</a>()) {</td></tr>
+<tr><th id="541">541</th><td>    <b>case</b> <a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a>::<a class="enum" href="Instruction.def.html#123" title='llvm::Instruction::TermOps::CatchSwitch' data-ref="llvm::Instruction::TermOps::CatchSwitch">CatchSwitch</a>:</td></tr>
+<tr><th id="542">542</th><td>    <b>case</b> <a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a>::<a class="enum" href="Instruction.def.html#182" title='llvm::Instruction::FuncletPadOps::CatchPad' data-ref="llvm::Instruction::FuncletPadOps::CatchPad">CatchPad</a>:</td></tr>
+<tr><th id="543">543</th><td>    <b>case</b> <a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a>::<a class="enum" href="Instruction.def.html#181" title='llvm::Instruction::FuncletPadOps::CleanupPad' data-ref="llvm::Instruction::FuncletPadOps::CleanupPad">CleanupPad</a>:</td></tr>
+<tr><th id="544">544</th><td>    <b>case</b> <a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a>::<a class="enum" href="Instruction.def.html#200" title='llvm::Instruction::OtherOps::LandingPad' data-ref="llvm::Instruction::OtherOps::LandingPad">LandingPad</a>:</td></tr>
+<tr><th id="545">545</th><td>      <b>return</b> <b>true</b>;</td></tr>
+<tr><th id="546">546</th><td>    <b>default</b>:</td></tr>
+<tr><th id="547">547</th><td>      <b>return</b> <b>false</b>;</td></tr>
+<tr><th id="548">548</th><td>    }</td></tr>
+<tr><th id="549">549</th><td>  }</td></tr>
+<tr><th id="550">550</th><td></td></tr>
+<tr><th id="551">551</th><td>  <i class="doc">/// Create a copy of 'this' instruction that is identical in all ways except</i></td></tr>
+<tr><th id="552">552</th><td><i class="doc">  /// the following:</i></td></tr>
+<tr><th id="553">553</th><td><i class="doc">  ///   * The instruction has no parent</i></td></tr>
+<tr><th id="554">554</th><td><i class="doc">  ///   * The instruction has no name</i></td></tr>
+<tr><th id="555">555</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="556">556</th><td>  <a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> *<dfn class="decl" id="_ZNK4llvm11Instruction5cloneEv" title='llvm::Instruction::clone' data-ref="_ZNK4llvm11Instruction5cloneEv">clone</dfn>() <em>const</em>;</td></tr>
+<tr><th id="557">557</th><td></td></tr>
+<tr><th id="558">558</th><td>  <i class="doc">/// Return true if the specified instruction is exactly identical to the</i></td></tr>
+<tr><th id="559">559</th><td><i class="doc">  /// current one. This means that all operands match and any extra information</i></td></tr>
+<tr><th id="560">560</th><td><i class="doc">  /// (e.g. load is volatile) agree.</i></td></tr>
+<tr><th id="561">561</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11Instruction13isIdenticalToEPKS0_" title='llvm::Instruction::isIdenticalTo' data-ref="_ZNK4llvm11Instruction13isIdenticalToEPKS0_">isIdenticalTo</dfn>(<em>const</em> <a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> *<dfn class="local col5 decl" id="11425I" title='I' data-type='const llvm::Instruction *' data-ref="11425I">I</dfn>) <em>const</em>;</td></tr>
+<tr><th id="562">562</th><td></td></tr>
+<tr><th id="563">563</th><td>  <i class="doc">/// This is like isIdenticalTo, except that it ignores the</i></td></tr>
+<tr><th id="564">564</th><td><i class="doc">  /// SubclassOptionalData flags, which may specify conditions under which the</i></td></tr>
+<tr><th id="565">565</th><td><i class="doc">  /// instruction's result is undefined.</i></td></tr>
+<tr><th id="566">566</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11Instruction24isIdenticalToWhenDefinedEPKS0_" title='llvm::Instruction::isIdenticalToWhenDefined' data-ref="_ZNK4llvm11Instruction24isIdenticalToWhenDefinedEPKS0_">isIdenticalToWhenDefined</dfn>(<em>const</em> <a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> *<dfn class="local col6 decl" id="11426I" title='I' data-type='const llvm::Instruction *' data-ref="11426I">I</dfn>) <em>const</em>;</td></tr>
+<tr><th id="567">567</th><td></td></tr>
+<tr><th id="568">568</th><td>  <i class="doc">/// When checking for operation equivalence (using isSameOperationAs) it is</i></td></tr>
+<tr><th id="569">569</th><td><i class="doc">  /// sometimes useful to ignore certain attributes.</i></td></tr>
+<tr><th id="570">570</th><td>  <b>enum</b> <dfn class="type def" id="llvm::Instruction::OperationEquivalenceFlags" title='llvm::Instruction::OperationEquivalenceFlags' data-ref="llvm::Instruction::OperationEquivalenceFlags">OperationEquivalenceFlags</dfn> {</td></tr>
+<tr><th id="571">571</th><td>    <i class="doc">/// Check for equivalence ignoring load/store alignment.</i></td></tr>
+<tr><th id="572">572</th><td>    <dfn class="enum" id="llvm::Instruction::OperationEquivalenceFlags::CompareIgnoringAlignment" title='llvm::Instruction::OperationEquivalenceFlags::CompareIgnoringAlignment' data-ref="llvm::Instruction::OperationEquivalenceFlags::CompareIgnoringAlignment">CompareIgnoringAlignment</dfn> = <var>1</var>&lt;&lt;<var>0</var>,</td></tr>
+<tr><th id="573">573</th><td>    <i class="doc">/// Check for equivalence treating a type and a vector of that type</i></td></tr>
+<tr><th id="574">574</th><td><i class="doc">    /// as equivalent.</i></td></tr>
+<tr><th id="575">575</th><td>    <dfn class="enum" id="llvm::Instruction::OperationEquivalenceFlags::CompareUsingScalarTypes" title='llvm::Instruction::OperationEquivalenceFlags::CompareUsingScalarTypes' data-ref="llvm::Instruction::OperationEquivalenceFlags::CompareUsingScalarTypes">CompareUsingScalarTypes</dfn> = <var>1</var>&lt;&lt;<var>1</var></td></tr>
+<tr><th id="576">576</th><td>  };</td></tr>
+<tr><th id="577">577</th><td></td></tr>
+<tr><th id="578">578</th><td>  <i class="doc">/// This function determines if the specified instruction executes the same</i></td></tr>
+<tr><th id="579">579</th><td><i class="doc">  /// operation as the current one. This means that the opcodes, type, operand</i></td></tr>
+<tr><th id="580">580</th><td><i class="doc">  /// types and any other factors affecting the operation must be the same. This</i></td></tr>
+<tr><th id="581">581</th><td><i class="doc">  /// is similar to isIdenticalTo except the operands themselves don't have to</i></td></tr>
+<tr><th id="582">582</th><td><i class="doc">  /// be identical.</i></td></tr>
+<tr><th id="583">583</th><td><i class="doc">  /// <span class="command">@returns</span> true if the specified instruction is the same operation as</i></td></tr>
+<tr><th id="584">584</th><td><i class="doc">  /// the current one.</i></td></tr>
+<tr><th id="585">585</th><td><i class="doc">  /// <span class="command">@brief</span> Determine if one instruction is the same operation as another.</i></td></tr>
+<tr><th id="586">586</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11Instruction17isSameOperationAsEPKS0_j" title='llvm::Instruction::isSameOperationAs' data-ref="_ZNK4llvm11Instruction17isSameOperationAsEPKS0_j">isSameOperationAs</dfn>(<em>const</em> <a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> *<dfn class="local col7 decl" id="11427I" title='I' data-type='const llvm::Instruction *' data-ref="11427I">I</dfn>, <em>unsigned</em> <dfn class="local col8 decl" id="11428flags" title='flags' data-type='unsigned int' data-ref="11428flags">flags</dfn> = <var>0</var>) <em>const</em>;</td></tr>
+<tr><th id="587">587</th><td></td></tr>
+<tr><th id="588">588</th><td>  <i class="doc">/// Return true if there are any uses of this instruction in blocks other than</i></td></tr>
+<tr><th id="589">589</th><td><i class="doc">  /// the specified block. Note that PHI nodes are considered to evaluate their</i></td></tr>
+<tr><th id="590">590</th><td><i class="doc">  /// operands in the corresponding predecessor block.</i></td></tr>
+<tr><th id="591">591</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11Instruction20isUsedOutsideOfBlockEPKNS_10BasicBlockE" title='llvm::Instruction::isUsedOutsideOfBlock' data-ref="_ZNK4llvm11Instruction20isUsedOutsideOfBlockEPKNS_10BasicBlockE">isUsedOutsideOfBlock</dfn>(<em>const</em> <a class="type" href="BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a> *<dfn class="local col9 decl" id="11429BB" title='BB' data-type='const llvm::BasicBlock *' data-ref="11429BB">BB</dfn>) <em>const</em>;</td></tr>
+<tr><th id="592">592</th><td></td></tr>
+<tr><th id="593">593</th><td></td></tr>
+<tr><th id="594">594</th><td>  <i class="doc">/// Methods for support type inquiry through isa, cast, and dyn_cast:</i></td></tr>
+<tr><th id="595">595</th><td>  <em>static</em> <em>bool</em> <dfn class="decl def" id="_ZN4llvm11Instruction7classofEPKNS_5ValueE" title='llvm::Instruction::classof' data-ref="_ZN4llvm11Instruction7classofEPKNS_5ValueE">classof</dfn>(<em>const</em> <a class="type" href="Value.h.html#llvm::Value" title='llvm::Value' data-ref="llvm::Value">Value</a> *<dfn class="local col0 decl" id="11430V" title='V' data-type='const llvm::Value *' data-ref="11430V">V</dfn>) {</td></tr>
+<tr><th id="596">596</th><td>    <b>return</b> <a class="local col0 ref" href="#11430V" title='V' data-ref="11430V">V</a>-&gt;<a class="member" href="Value.h.html#_ZNK4llvm5Value10getValueIDEv" title='llvm::Value::getValueID' data-ref="_ZNK4llvm5Value10getValueIDEv">getValueID</a>() &gt;= <a class="type" href="Value.h.html#llvm::Value" title='llvm::Value' data-ref="llvm::Value">Value</a>::<a class="enum" href="Value.def.html#106" title='llvm::Value::ValueTy::InstructionVal' data-ref="llvm::Value::ValueTy::InstructionVal">InstructionVal</a>;</td></tr>
+<tr><th id="597">597</th><td>  }</td></tr>
+<tr><th id="598">598</th><td></td></tr>
+<tr><th id="599">599</th><td>  <i>//----------------------------------------------------------------------</i></td></tr>
+<tr><th id="600">600</th><td><i>  // Exported enumerations.</i></td></tr>
+<tr><th id="601">601</th><td><i>  //</i></td></tr>
+<tr><th id="602">602</th><td>  <b>enum</b> <dfn class="type def" id="llvm::Instruction::TermOps" title='llvm::Instruction::TermOps' data-ref="llvm::Instruction::TermOps">TermOps</dfn> {       <i>// These terminate basic blocks</i></td></tr>
+<tr><th id="603">603</th><td><u>#define  <dfn class="macro" id="_M/FIRST_TERM_INST" data-ref="_M/FIRST_TERM_INST">FIRST_TERM_INST</dfn>(N)             TermOpsBegin = N,</u></td></tr>
+<tr><th id="604">604</th><td><u>#define <dfn class="macro" id="_M/HANDLE_TERM_INST" data-ref="_M/HANDLE_TERM_INST">HANDLE_TERM_INST</dfn>(N, OPC, CLASS) OPC = N,</u></td></tr>
+<tr><th id="605">605</th><td><u>#define   <dfn class="macro" id="_M/LAST_TERM_INST" data-ref="_M/LAST_TERM_INST">LAST_TERM_INST</dfn>(N)             TermOpsEnd = N+1</u></td></tr>
+<tr><th id="606">606</th><td><u>#include <a href="Instruction.def.html">"llvm/IR/Instruction.def"</a></u></td></tr>
+<tr><th id="607">607</th><td>  };</td></tr>
+<tr><th id="608">608</th><td></td></tr>
+<tr><th id="609">609</th><td>  <b>enum</b> <dfn class="type def" id="llvm::Instruction::BinaryOps" title='llvm::Instruction::BinaryOps' data-ref="llvm::Instruction::BinaryOps">BinaryOps</dfn> {</td></tr>
+<tr><th id="610">610</th><td><u>#define  <dfn class="macro" id="_M/FIRST_BINARY_INST" data-ref="_M/FIRST_BINARY_INST">FIRST_BINARY_INST</dfn>(N)             BinaryOpsBegin = N,</u></td></tr>
+<tr><th id="611">611</th><td><u>#define <dfn class="macro" id="_M/HANDLE_BINARY_INST" data-ref="_M/HANDLE_BINARY_INST">HANDLE_BINARY_INST</dfn>(N, OPC, CLASS) OPC = N,</u></td></tr>
+<tr><th id="612">612</th><td><u>#define   <dfn class="macro" id="_M/LAST_BINARY_INST" data-ref="_M/LAST_BINARY_INST">LAST_BINARY_INST</dfn>(N)             BinaryOpsEnd = N+1</u></td></tr>
+<tr><th id="613">613</th><td><u>#include <a href="Instruction.def.html">"llvm/IR/Instruction.def"</a></u></td></tr>
+<tr><th id="614">614</th><td>  };</td></tr>
+<tr><th id="615">615</th><td></td></tr>
+<tr><th id="616">616</th><td>  <b>enum</b> <dfn class="type def" id="llvm::Instruction::MemoryOps" title='llvm::Instruction::MemoryOps' data-ref="llvm::Instruction::MemoryOps">MemoryOps</dfn> {</td></tr>
+<tr><th id="617">617</th><td><u>#define  <dfn class="macro" id="_M/FIRST_MEMORY_INST" data-ref="_M/FIRST_MEMORY_INST">FIRST_MEMORY_INST</dfn>(N)             MemoryOpsBegin = N,</u></td></tr>
+<tr><th id="618">618</th><td><u>#define <dfn class="macro" id="_M/HANDLE_MEMORY_INST" data-ref="_M/HANDLE_MEMORY_INST">HANDLE_MEMORY_INST</dfn>(N, OPC, CLASS) OPC = N,</u></td></tr>
+<tr><th id="619">619</th><td><u>#define   <dfn class="macro" id="_M/LAST_MEMORY_INST" data-ref="_M/LAST_MEMORY_INST">LAST_MEMORY_INST</dfn>(N)             MemoryOpsEnd = N+1</u></td></tr>
+<tr><th id="620">620</th><td><u>#include <a href="Instruction.def.html">"llvm/IR/Instruction.def"</a></u></td></tr>
+<tr><th id="621">621</th><td>  };</td></tr>
+<tr><th id="622">622</th><td></td></tr>
+<tr><th id="623">623</th><td>  <b>enum</b> <dfn class="type def" id="llvm::Instruction::CastOps" title='llvm::Instruction::CastOps' data-ref="llvm::Instruction::CastOps">CastOps</dfn> {</td></tr>
+<tr><th id="624">624</th><td><u>#define  <dfn class="macro" id="_M/FIRST_CAST_INST" data-ref="_M/FIRST_CAST_INST">FIRST_CAST_INST</dfn>(N)             CastOpsBegin = N,</u></td></tr>
+<tr><th id="625">625</th><td><u>#define <dfn class="macro" id="_M/HANDLE_CAST_INST" data-ref="_M/HANDLE_CAST_INST">HANDLE_CAST_INST</dfn>(N, OPC, CLASS) OPC = N,</u></td></tr>
+<tr><th id="626">626</th><td><u>#define   <dfn class="macro" id="_M/LAST_CAST_INST" data-ref="_M/LAST_CAST_INST">LAST_CAST_INST</dfn>(N)             CastOpsEnd = N+1</u></td></tr>
+<tr><th id="627">627</th><td><u>#include <a href="Instruction.def.html">"llvm/IR/Instruction.def"</a></u></td></tr>
+<tr><th id="628">628</th><td>  };</td></tr>
+<tr><th id="629">629</th><td></td></tr>
+<tr><th id="630">630</th><td>  <b>enum</b> <dfn class="type def" id="llvm::Instruction::FuncletPadOps" title='llvm::Instruction::FuncletPadOps' data-ref="llvm::Instruction::FuncletPadOps">FuncletPadOps</dfn> {</td></tr>
+<tr><th id="631">631</th><td><u>#define  <dfn class="macro" id="_M/FIRST_FUNCLETPAD_INST" data-ref="_M/FIRST_FUNCLETPAD_INST">FIRST_FUNCLETPAD_INST</dfn>(N)             FuncletPadOpsBegin = N,</u></td></tr>
+<tr><th id="632">632</th><td><u>#define <dfn class="macro" id="_M/HANDLE_FUNCLETPAD_INST" data-ref="_M/HANDLE_FUNCLETPAD_INST">HANDLE_FUNCLETPAD_INST</dfn>(N, OPC, CLASS) OPC = N,</u></td></tr>
+<tr><th id="633">633</th><td><u>#define   <dfn class="macro" id="_M/LAST_FUNCLETPAD_INST" data-ref="_M/LAST_FUNCLETPAD_INST">LAST_FUNCLETPAD_INST</dfn>(N)             FuncletPadOpsEnd = N+1</u></td></tr>
+<tr><th id="634">634</th><td><u>#include <a href="Instruction.def.html">"llvm/IR/Instruction.def"</a></u></td></tr>
+<tr><th id="635">635</th><td>  };</td></tr>
+<tr><th id="636">636</th><td></td></tr>
+<tr><th id="637">637</th><td>  <b>enum</b> <dfn class="type def" id="llvm::Instruction::OtherOps" title='llvm::Instruction::OtherOps' data-ref="llvm::Instruction::OtherOps">OtherOps</dfn> {</td></tr>
+<tr><th id="638">638</th><td><u>#define  <dfn class="macro" id="_M/FIRST_OTHER_INST" data-ref="_M/FIRST_OTHER_INST">FIRST_OTHER_INST</dfn>(N)             OtherOpsBegin = N,</u></td></tr>
+<tr><th id="639">639</th><td><u>#define <dfn class="macro" id="_M/HANDLE_OTHER_INST" data-ref="_M/HANDLE_OTHER_INST">HANDLE_OTHER_INST</dfn>(N, OPC, CLASS) OPC = N,</u></td></tr>
+<tr><th id="640">640</th><td><u>#define   <dfn class="macro" id="_M/LAST_OTHER_INST" data-ref="_M/LAST_OTHER_INST">LAST_OTHER_INST</dfn>(N)             OtherOpsEnd = N+1</u></td></tr>
+<tr><th id="641">641</th><td><u>#include <a href="Instruction.def.html">"llvm/IR/Instruction.def"</a></u></td></tr>
+<tr><th id="642">642</th><td>  };</td></tr>
+<tr><th id="643">643</th><td></td></tr>
+<tr><th id="644">644</th><td><b>private</b>:</td></tr>
+<tr><th id="645">645</th><td>  <b>friend</b> <b>class</b> <a class="type" href="SymbolTableListTraits.h.html#llvm::SymbolTableListTraits" title='llvm::SymbolTableListTraits' data-ref="llvm::SymbolTableListTraits">SymbolTableListTraits</a>&lt;<a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a>&gt;;</td></tr>
+<tr><th id="646">646</th><td></td></tr>
+<tr><th id="647">647</th><td>  <i>// Shadow Value::setValueSubclassData with a private forwarding method so that</i></td></tr>
+<tr><th id="648">648</th><td><i>  // subclasses cannot accidentally use it.</i></td></tr>
+<tr><th id="649">649</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm11Instruction20setValueSubclassDataEt" title='llvm::Instruction::setValueSubclassData' data-ref="_ZN4llvm11Instruction20setValueSubclassDataEt">setValueSubclassData</dfn>(<em>unsigned</em> <em>short</em> <dfn class="local col1 decl" id="11431D" title='D' data-type='unsigned short' data-ref="11431D">D</dfn>) {</td></tr>
+<tr><th id="650">650</th><td>    <a class="type" href="Value.h.html#llvm::Value" title='llvm::Value' data-ref="llvm::Value">Value</a>::<a class="member" href="Value.h.html#_ZN4llvm5Value20setValueSubclassDataEt" title='llvm::Value::setValueSubclassData' data-ref="_ZN4llvm5Value20setValueSubclassDataEt">setValueSubclassData</a>(<a class="local col1 ref" href="#11431D" title='D' data-ref="11431D">D</a>);</td></tr>
+<tr><th id="651">651</th><td>  }</td></tr>
+<tr><th id="652">652</th><td></td></tr>
+<tr><th id="653">653</th><td>  <em>unsigned</em> <em>short</em> <dfn class="decl def" id="_ZNK4llvm11Instruction24getSubclassDataFromValueEv" title='llvm::Instruction::getSubclassDataFromValue' data-ref="_ZNK4llvm11Instruction24getSubclassDataFromValueEv">getSubclassDataFromValue</dfn>() <em>const</em> {</td></tr>
+<tr><th id="654">654</th><td>    <b>return</b> <a class="type" href="Value.h.html#llvm::Value" title='llvm::Value' data-ref="llvm::Value">Value</a>::<a class="member" href="Value.h.html#_ZNK4llvm5Value24getSubclassDataFromValueEv" title='llvm::Value::getSubclassDataFromValue' data-ref="_ZNK4llvm5Value24getSubclassDataFromValueEv">getSubclassDataFromValue</a>();</td></tr>
+<tr><th id="655">655</th><td>  }</td></tr>
+<tr><th id="656">656</th><td></td></tr>
+<tr><th id="657">657</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm11Instruction23setHasMetadataHashEntryEb" title='llvm::Instruction::setHasMetadataHashEntry' data-ref="_ZN4llvm11Instruction23setHasMetadataHashEntryEb">setHasMetadataHashEntry</dfn>(<em>bool</em> <dfn class="local col2 decl" id="11432V" title='V' data-type='bool' data-ref="11432V">V</dfn>) {</td></tr>
+<tr><th id="658">658</th><td>    <a class="member" href="#_ZN4llvm11Instruction20setValueSubclassDataEt" title='llvm::Instruction::setValueSubclassData' data-ref="_ZN4llvm11Instruction20setValueSubclassDataEt">setValueSubclassData</a>((<a class="member" href="#_ZNK4llvm11Instruction24getSubclassDataFromValueEv" title='llvm::Instruction::getSubclassDataFromValue' data-ref="_ZNK4llvm11Instruction24getSubclassDataFromValueEv">getSubclassDataFromValue</a>() &amp; ~<a class="enum" href="#llvm::Instruction::HasMetadataBit" title='llvm::Instruction::HasMetadataBit' data-ref="llvm::Instruction::HasMetadataBit">HasMetadataBit</a>) |</td></tr>
+<tr><th id="659">659</th><td>                         (<a class="local col2 ref" href="#11432V" title='V' data-ref="11432V">V</a> ? <a class="enum" href="#llvm::Instruction::HasMetadataBit" title='llvm::Instruction::HasMetadataBit' data-ref="llvm::Instruction::HasMetadataBit">HasMetadataBit</a> : <var>0</var>));</td></tr>
+<tr><th id="660">660</th><td>  }</td></tr>
+<tr><th id="661">661</th><td></td></tr>
+<tr><th id="662">662</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11Instruction9setParentEPNS_10BasicBlockE" title='llvm::Instruction::setParent' data-ref="_ZN4llvm11Instruction9setParentEPNS_10BasicBlockE">setParent</dfn>(<a class="type" href="BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a> *<dfn class="local col3 decl" id="11433P" title='P' data-type='llvm::BasicBlock *' data-ref="11433P">P</dfn>);</td></tr>
+<tr><th id="663">663</th><td></td></tr>
+<tr><th id="664">664</th><td><b>protected</b>:</td></tr>
+<tr><th id="665">665</th><td>  <i>// Instruction subclasses can stick up to 15 bits of stuff into the</i></td></tr>
+<tr><th id="666">666</th><td><i>  // SubclassData field of instruction with these members.</i></td></tr>
+<tr><th id="667">667</th><td><i></i></td></tr>
+<tr><th id="668">668</th><td><i>  // Verify that only the low 15 bits are used.</i></td></tr>
+<tr><th id="669">669</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm11Instruction26setInstructionSubclassDataEt" title='llvm::Instruction::setInstructionSubclassData' data-ref="_ZN4llvm11Instruction26setInstructionSubclassDataEt">setInstructionSubclassData</dfn>(<em>unsigned</em> <em>short</em> <dfn class="local col4 decl" id="11434D" title='D' data-type='unsigned short' data-ref="11434D">D</dfn>) {</td></tr>
+<tr><th id="670">670</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>((D &amp; HasMetadataBit) == <var>0</var> &amp;&amp; <q>"Out of range value put into field"</q>);</td></tr>
+<tr><th id="671">671</th><td>    <a class="member" href="#_ZN4llvm11Instruction20setValueSubclassDataEt" title='llvm::Instruction::setValueSubclassData' data-ref="_ZN4llvm11Instruction20setValueSubclassDataEt">setValueSubclassData</a>((<a class="member" href="#_ZNK4llvm11Instruction24getSubclassDataFromValueEv" title='llvm::Instruction::getSubclassDataFromValue' data-ref="_ZNK4llvm11Instruction24getSubclassDataFromValueEv">getSubclassDataFromValue</a>() &amp; <a class="enum" href="#llvm::Instruction::HasMetadataBit" title='llvm::Instruction::HasMetadataBit' data-ref="llvm::Instruction::HasMetadataBit">HasMetadataBit</a>) | <a class="local col4 ref" href="#11434D" title='D' data-ref="11434D">D</a>);</td></tr>
+<tr><th id="672">672</th><td>  }</td></tr>
+<tr><th id="673">673</th><td></td></tr>
+<tr><th id="674">674</th><td>  <em>unsigned</em> <dfn class="decl def" id="_ZNK4llvm11Instruction30getSubclassDataFromInstructionEv" title='llvm::Instruction::getSubclassDataFromInstruction' data-ref="_ZNK4llvm11Instruction30getSubclassDataFromInstructionEv">getSubclassDataFromInstruction</dfn>() <em>const</em> {</td></tr>
+<tr><th id="675">675</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm11Instruction24getSubclassDataFromValueEv" title='llvm::Instruction::getSubclassDataFromValue' data-ref="_ZNK4llvm11Instruction24getSubclassDataFromValueEv">getSubclassDataFromValue</a>() &amp; ~<a class="enum" href="#llvm::Instruction::HasMetadataBit" title='llvm::Instruction::HasMetadataBit' data-ref="llvm::Instruction::HasMetadataBit">HasMetadataBit</a>;</td></tr>
+<tr><th id="676">676</th><td>  }</td></tr>
+<tr><th id="677">677</th><td></td></tr>
+<tr><th id="678">678</th><td>  <dfn class="decl" id="_ZN4llvm11InstructionC1EPNS_4TypeEjPNS_3UseEjPS0_" title='llvm::Instruction::Instruction' data-ref="_ZN4llvm11InstructionC1EPNS_4TypeEjPNS_3UseEjPS0_">Instruction</dfn>(<a class="type" href="Type.h.html#llvm::Type" title='llvm::Type' data-ref="llvm::Type">Type</a> *<dfn class="local col5 decl" id="11435Ty" title='Ty' data-type='llvm::Type *' data-ref="11435Ty">Ty</dfn>, <em>unsigned</em> <dfn class="local col6 decl" id="11436iType" title='iType' data-type='unsigned int' data-ref="11436iType">iType</dfn>, <a class="type" href="Use.h.html#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a> *<dfn class="local col7 decl" id="11437Ops" title='Ops' data-type='llvm::Use *' data-ref="11437Ops">Ops</dfn>, <em>unsigned</em> <dfn class="local col8 decl" id="11438NumOps" title='NumOps' data-type='unsigned int' data-ref="11438NumOps">NumOps</dfn>,</td></tr>
+<tr><th id="679">679</th><td>              <a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> *<dfn class="local col9 decl" id="11439InsertBefore" title='InsertBefore' data-type='llvm::Instruction *' data-ref="11439InsertBefore">InsertBefore</dfn> = <b>nullptr</b>);</td></tr>
+<tr><th id="680">680</th><td>  <dfn class="decl" id="_ZN4llvm11InstructionC1EPNS_4TypeEjPNS_3UseEjPNS_10BasicBlockE" title='llvm::Instruction::Instruction' data-ref="_ZN4llvm11InstructionC1EPNS_4TypeEjPNS_3UseEjPNS_10BasicBlockE">Instruction</dfn>(<a class="type" href="Type.h.html#llvm::Type" title='llvm::Type' data-ref="llvm::Type">Type</a> *<dfn class="local col0 decl" id="11440Ty" title='Ty' data-type='llvm::Type *' data-ref="11440Ty">Ty</dfn>, <em>unsigned</em> <dfn class="local col1 decl" id="11441iType" title='iType' data-type='unsigned int' data-ref="11441iType">iType</dfn>, <a class="type" href="Use.h.html#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a> *<dfn class="local col2 decl" id="11442Ops" title='Ops' data-type='llvm::Use *' data-ref="11442Ops">Ops</dfn>, <em>unsigned</em> <dfn class="local col3 decl" id="11443NumOps" title='NumOps' data-type='unsigned int' data-ref="11443NumOps">NumOps</dfn>,</td></tr>
+<tr><th id="681">681</th><td>              <a class="type" href="BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a> *<dfn class="local col4 decl" id="11444InsertAtEnd" title='InsertAtEnd' data-type='llvm::BasicBlock *' data-ref="11444InsertAtEnd">InsertAtEnd</dfn>);</td></tr>
+<tr><th id="682">682</th><td></td></tr>
+<tr><th id="683">683</th><td><b>private</b>:</td></tr>
+<tr><th id="684">684</th><td>  <i class="doc">/// Create a copy of this instruction.</i></td></tr>
+<tr><th id="685">685</th><td>  <a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> *<dfn class="decl" id="_ZNK4llvm11Instruction9cloneImplEv" title='llvm::Instruction::cloneImpl' data-ref="_ZNK4llvm11Instruction9cloneImplEv">cloneImpl</dfn>() <em>const</em>;</td></tr>
+<tr><th id="686">686</th><td>};</td></tr>
+<tr><th id="687">687</th><td></td></tr>
+<tr><th id="688">688</th><td><b>inline</b> <em>void</em> <a class="type" href="../ADT/ilist.h.html#llvm::ilist_alloc_traits" title='llvm::ilist_alloc_traits' data-ref="llvm::ilist_alloc_traits">ilist_alloc_traits</a>&lt;<a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a>&gt;::<dfn class="decl def" id="_ZN4llvm18ilist_alloc_traitsINS_11InstructionEE10deleteNodeEPS1_" title='llvm::ilist_alloc_traits&lt;llvm::Instruction&gt;::deleteNode' data-ref="_ZN4llvm18ilist_alloc_traitsINS_11InstructionEE10deleteNodeEPS1_">deleteNode</dfn>(<a class="type" href="#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> *<dfn class="local col5 decl" id="11445V" title='V' data-type='llvm::Instruction *' data-ref="11445V">V</dfn>) {</td></tr>
+<tr><th id="689">689</th><td>  <a class="local col5 ref" href="#11445V" title='V' data-ref="11445V">V</a>-&gt;<a class="ref" href="Value.h.html#_ZN4llvm5Value11deleteValueEv" title='llvm::Value::deleteValue' data-ref="_ZN4llvm5Value11deleteValueEv">deleteValue</a>();</td></tr>
+<tr><th id="690">690</th><td>}</td></tr>
+<tr><th id="691">691</th><td></td></tr>
+<tr><th id="692">692</th><td>} <i>// end namespace llvm</i></td></tr>
+<tr><th id="693">693</th><td></td></tr>
+<tr><th id="694">694</th><td><u>#<span data-ppcond="15">endif</span> // LLVM_IR_INSTRUCTION_H</u></td></tr>
+<tr><th id="695">695</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../../../pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc.html'>pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc</a><br/>Generated on <em>2019-Oct-28</em> from project include<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

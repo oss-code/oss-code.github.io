@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='307' ll='312' type='const llvm::SCEV * llvm::SCEVAddRecExpr::getStepRecurrence(llvm::ScalarEvolution &amp; SE) const'/>
+<use f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='354' u='c' c='_ZNK4llvm14SCEVAddRecExpr14getPostIncExprERNS_15ScalarEvolutionE'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='303'>/// Constructs and returns the recurrence indicating how much this
+    /// expression steps by.  If this is a polynomial of degree N, it
+    /// returns a chrec of degree N-1.  We cannot determine whether
+    /// the step recurrence has self-wraparound.</doc>

@@ -1,0 +1,6 @@
+<dec f='include/hwloc.h' l='2066' type='void * hwloc_alloc_membind_policy(hwloc_topology_t topology, size_t len, hwloc_const_cpuset_t set, hwloc_membind_policy_t policy, int flags)'/>
+<def f='include/hwloc/inlines.h' l='134' ll='146' type='void * hwloc_alloc_membind_policy(hwloc_topology_t topology, size_t len, hwloc_const_cpuset_t set, hwloc_membind_policy_t policy, int flags)'/>
+<doc f='include/hwloc.h' l='2061'>/** \brief Allocate some memory on the memory nodes near given cpuset \p cpuset
+ *
+ * This is similar to hwloc_alloc_membind_policy_nodeset(), but for a given cpuset.
+ */</doc>

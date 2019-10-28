@@ -1,0 +1,12 @@
+<def f='include/c++/7/bits/forward_list.h' l='1070' ll='1075' type='void std::forward_list::splice_after(const_iterator __pos, forward_list&lt;_Tp, _Alloc&gt; &amp;&amp; __list)'/>
+<doc f='include/c++/7/bits/forward_list.h' l='1059'>/**
+       *  @brief  Insert contents of another %forward_list.
+       *  @param  __pos  Iterator referencing the element to insert after.
+       *  @param  __list  Source list.
+       *
+       *  The elements of @a list are inserted in constant time after
+       *  the element referenced by @a pos.  @a list becomes an empty
+       *  list.
+       *
+       *  Requires this != @a x.
+       */</doc>

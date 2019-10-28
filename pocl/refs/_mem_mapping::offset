@@ -1,0 +1,16 @@
+<dec f='pocl/include/pocl.h' l='54' type='size_t'/>
+<offset>64</offset>
+<doc f='pocl/include/pocl.h' l='54'>/* offset to the beginning of the buffer */</doc>
+<use f='pocl/lib/CL/clEnqueueMapBuffer.c' l='100' u='w' c='POclEnqueueMapBuffer'/>
+<use f='pocl/lib/CL/clEnqueueMapBuffer.c' l='145' u='r' c='POclEnqueueMapBuffer'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='123' u='w' c='POclEnqueueMapImage'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='152' u='r' c='POclEnqueueMapImage'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='181' u='r' c='POclEnqueueMapImage'/>
+<use f='pocl/lib/CL/clEnqueueUnmapMemObject.c' l='71' u='r' c='POclEnqueueUnmapMemObject'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='1021' u='r' c='pocl_basic_map_mem'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='1062' u='r' c='pocl_basic_unmap_mem'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='1366' u='r' c='pocl_basic_map_image'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='1373' u='r' c='pocl_basic_map_image'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='1390' u='r' c='pocl_basic_unmap_image'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1190' u='r' c='pocl_cuda_submit_node'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1205' u='r' c='pocl_cuda_submit_node'/>

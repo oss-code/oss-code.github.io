@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Bitcode/BitcodeReader.h' l='39' type='std::error_code llvm::errorToErrorCodeAndEmitErrors(llvm::LLVMContext &amp; Ctx, llvm::Error Err)'/>
+<doc f='include/llvm-6.0/llvm/Bitcode/BitcodeReader.h' l='35'>// These functions are for converting Expected/Error values to
+  // ErrorOr/std::error_code for compatibility with legacy clients. FIXME:
+  // Remove these functions once no longer needed by the C and libLTO APIs.</doc>

@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Support/MemoryBuffer.h' l='93' type='static ErrorOr&lt;std::unique_ptr&lt;MemoryBuffer&gt; &gt; llvm::MemoryBuffer::getOpenFileSlice(int FD, const llvm::Twine &amp; Filename, uint64_t MapSize, int64_t Offset, bool IsVolatile = false)'/>
+<doc f='include/llvm-6.0/llvm/Support/MemoryBuffer.h' l='89'>/// Given an already-open file descriptor, map some slice of it into a
+  /// MemoryBuffer. The slice is specified by an \p Offset and \p MapSize.
+  /// Since this is in the middle of a file, the buffer is not null terminated.</doc>

@@ -1,0 +1,43 @@
+<inh f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='45' c='llvm::GlobalValue'/>
+<def f='include/llvm-6.0/llvm/IR/GlobalObject.h' l='30' ll='180'/>
+<ovr f='include/llvm-6.0/llvm/IR/Function.h' l='60' c='llvm::Function'/>
+<ovr f='include/llvm-6.0/llvm/IR/GlobalVariable.h' l='42' c='llvm::GlobalVariable'/>
+<size>56</size>
+<fun r='_ZN4llvm12GlobalObjectC1EPNS_4TypeENS_5Value7ValueTyEPNS_3UseEjNS_11GlobalValue12LinkageTypesERKNS_5TwineEj'/>
+<mbr r='llvm::GlobalObject::ObjComdat' o='384' t='llvm::Comdat *'/>
+<smbr r='llvm::GlobalObject::GlobalObjectSubClassDataBits' t='const unsigned int'/>
+<smbr r='llvm::GlobalObject::AlignmentBits' t='const unsigned int'/>
+<smbr r='llvm::GlobalObject::AlignmentMask' t='const unsigned int'/>
+<smbr r='llvm::GlobalObject::GlobalObjectMask' t='const unsigned int'/>
+<fun r='_ZN4llvm12GlobalObjectC1ERKS0_'/>
+<fun r='_ZNK4llvm12GlobalObject12getAlignmentEv'/>
+<fun r='_ZN4llvm12GlobalObject12setAlignmentEj'/>
+<fun r='_ZNK4llvm12GlobalObject27getGlobalObjectSubClassDataEv'/>
+<fun r='_ZN4llvm12GlobalObject27setGlobalObjectSubClassDataEj'/>
+<fun r='_ZNK4llvm12GlobalObject10hasSectionEv'/>
+<fun r='_ZNK4llvm12GlobalObject10getSectionEv'/>
+<fun r='_ZN4llvm12GlobalObject10setSectionENS_9StringRefE'/>
+<fun r='_ZNK4llvm12GlobalObject9hasComdatEv'/>
+<fun r='_ZNK4llvm12GlobalObject9getComdatEv'/>
+<fun r='_ZN4llvm12GlobalObject9getComdatEv'/>
+<fun r='_ZN4llvm12GlobalObject9setComdatEPNS_6ComdatE'/>
+<fun r='_ZNK4llvm12GlobalObject11hasMetadataEv'/>
+<fun r='_ZNK4llvm12GlobalObject11getMetadataEj'/>
+<fun r='_ZNK4llvm12GlobalObject11getMetadataENS_9StringRefE'/>
+<fun r='_ZNK4llvm12GlobalObject11getMetadataEjRNS_15SmallVectorImplIPNS_6MDNodeEEE'/>
+<fun r='_ZNK4llvm12GlobalObject11getMetadataENS_9StringRefERNS_15SmallVectorImplIPNS_6MDNodeEEE'/>
+<fun r='_ZN4llvm12GlobalObject11setMetadataEjPNS_6MDNodeE'/>
+<fun r='_ZN4llvm12GlobalObject11setMetadataENS_9StringRefEPNS_6MDNodeE'/>
+<fun r='_ZN4llvm12GlobalObject11addMetadataEjRNS_6MDNodeE'/>
+<fun r='_ZN4llvm12GlobalObject11addMetadataENS_9StringRefERNS_6MDNodeE'/>
+<fun r='_ZNK4llvm12GlobalObject14getAllMetadataERNS_15SmallVectorImplISt4pairIjPNS_6MDNodeEEEE'/>
+<fun r='_ZN4llvm12GlobalObject13eraseMetadataEj'/>
+<fun r='_ZN4llvm12GlobalObject12copyMetadataEPKS0_j'/>
+<fun r='_ZN4llvm12GlobalObject15addTypeMetadataEjPNS_8MetadataE'/>
+<fun r='_ZN4llvm12GlobalObject18copyAttributesFromEPKS0_'/>
+<fun r='_ZN4llvm12GlobalObject7classofEPKNS_5ValueE'/>
+<fun r='_ZN4llvm12GlobalObject13clearMetadataEv'/>
+<fun r='_ZN4llvm12GlobalObject19setGlobalObjectFlagEjb'/>
+<fun r='_ZNK4llvm12GlobalObject20hasMetadataHashEntryEv'/>
+<fun r='_ZN4llvm12GlobalObject23setHasMetadataHashEntryEb'/>
+<fun r='_ZNK4llvm12GlobalObject14getSectionImplEv'/>

@@ -1,0 +1,19 @@
+<dec f='include/hwloc.h' l='752' type='2'/>
+<doc f='include/hwloc.h' l='734'>/** \brief Assume that the selected backend provides the topology for the
+   * system on which we are running.
+   *
+   * This forces hwloc_topology_is_thissystem() to return 1, i.e. makes hwloc assume that
+   * the selected backend provides the topology for the system on which we are running,
+   * even if it is not the OS-specific backend but the XML backend for instance.
+   * This means making the binding functions actually call the OS-specific
+   * system calls and really do binding, while the XML backend would otherwise
+   * provide empty hooks just returning success.
+   *
+   * Setting the environment variable HWLOC_THISSYSTEM may also result in the
+   * same behavior.
+   *
+   * This can be used for efficiency reasons to first detect the topology once,
+   * save it to an XML file, and quickly reload it later through the XML
+   * backend, but still having binding functions actually do bind.
+   * \hideinitializer
+   */</doc>

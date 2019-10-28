@@ -1,0 +1,8 @@
+<dec f='include/hwloc.h' l='234' type='10'/>
+<use f='include/hwloc/helper.h' l='1187' u='r' c='hwloc_get_next_pcidev'/>
+<use f='pocl/lib/CL/devices/topology/pocl_topology.c' l='106' u='r' c='pocl_topology_detect_device_info'/>
+<doc f='include/hwloc.h' l='234'>/**&lt; \brief PCI device.
+			  * These objects have neither CPU sets nor node sets.
+			  * They are not added to the topology unless I/O discovery
+			  * is enabled with hwloc_topology_set_flags().
+			  */</doc>

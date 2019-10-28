@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/Bitcode/BitCodes.h' l='168' ll='182'/>
+<size>536</size>
+<doc f='include/llvm-6.0/llvm/Bitcode/BitCodes.h' l='165'>/// BitCodeAbbrev - This class represents an abbreviation record.  An
+/// abbreviation allows a complex record that has redundancy to be stored in a
+/// specialized format instead of the fully-general, fully-vbr, format.</doc>
+<mbr r='llvm::BitCodeAbbrev::OperandList' o='0' t='SmallVector&lt;llvm::BitCodeAbbrevOp, 32&gt;'/>
+<fun r='_ZNK4llvm13BitCodeAbbrev18getNumOperandInfosEv'/>
+<fun r='_ZNK4llvm13BitCodeAbbrev14getOperandInfoEj'/>
+<fun r='_ZN4llvm13BitCodeAbbrev3AddERKNS_15BitCodeAbbrevOpE'/>

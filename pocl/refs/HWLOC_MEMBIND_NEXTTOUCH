@@ -1,0 +1,6 @@
+<dec f='include/hwloc.h' l='1670' type='5'/>
+<doc f='include/hwloc.h' l='1665'>/** \brief For each page bound with this policy, by next time
+   * it is touched (and next time only), it is moved from its current
+   * location to the local NUMA node of the thread where the memory
+   * reference occurred (if it needs to be moved at all).
+   * \hideinitializer */</doc>

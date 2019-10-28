@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IRReader/IRReader.h' l='43' type='std::unique_ptr&lt;Module&gt; llvm::parseIR(llvm::MemoryBufferRef Buffer, llvm::SMDiagnostic &amp; Err, llvm::LLVMContext &amp; Context, bool UpgradeDebugInfo = true)'/>
+<doc f='include/llvm-6.0/llvm/IRReader/IRReader.h' l='37'>/// If the given MemoryBuffer holds a bitcode image, return a Module
+/// for it.  Otherwise, attempt to parse it as LLVM Assembly and return
+/// a Module for it.
+/// \param UpgradeDebugInfo Run UpgradeDebugInfo, which runs the Verifier.
+///                         This option should only be set to false by llvm-as
+///                         for use inside the LLVM testuite!</doc>

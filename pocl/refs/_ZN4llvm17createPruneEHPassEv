@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Transforms/IPO.h' l='119' type='llvm::Pass * llvm::createPruneEHPass()'/>
+<doc f='include/llvm-6.0/llvm/Transforms/IPO.h' l='115'>//===----------------------------------------------------------------------===//
+/// createPruneEHPass - Return a new pass object which transforms invoke
+/// instructions into calls, if the callee can _not_ unwind the stack.
+///</doc>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='144' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>

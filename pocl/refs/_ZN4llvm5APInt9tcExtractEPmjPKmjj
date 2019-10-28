@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/ADT/APInt.h' l='1827' type='static void llvm::APInt::tcExtract(WordType * , unsigned int dstCount, const WordType * , unsigned int srcBits, unsigned int srcLSB)'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='1823'>/// Copy the bit vector of width srcBITS from SRC, starting at bit srcLSB, to
+  /// DST, of dstCOUNT parts, such that the bit srcLSB becomes the least
+  /// significant bit of DST.  All high bits above srcBITS in DST are
+  /// zero-filled.</doc>

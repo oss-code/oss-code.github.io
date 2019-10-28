@@ -1,0 +1,4 @@
+<use f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='140' u='c' c='_ZNK4llvm19TargetTransformInfo18getInstructionCostEPKNS_11InstructionENS0_14TargetCostKindE'/>
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='923' type='int llvm::TargetTransformInfo::getInstructionLatency(const llvm::Instruction * I) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='921'>/// \brief Estimate the latency of specified instruction.
+  /// Returns 1 as the default value.</doc>

@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='413' type='llvm::DITemplateValueParameter * llvm::DIBuilder::createTemplateParameterPack(llvm::DIScope * Scope, llvm::StringRef Name, llvm::DIType * Ty, DINodeArray Val)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='408'>/// Create debugging information for a template parameter pack.
+    /// \param Scope        Scope in which this type is defined.
+    /// \param Name         Value parameter name.
+    /// \param Ty           Parameter type.
+    /// \param Val          An array of types in the pack.</doc>

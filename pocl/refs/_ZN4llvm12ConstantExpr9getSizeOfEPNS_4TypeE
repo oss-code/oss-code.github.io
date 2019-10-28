@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='890' type='static llvm::Constant * llvm::ConstantExpr::getSizeOf(llvm::Type * Ty)'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='886'>/// getSizeOf constant expr - computes the (alloc) size of a type (in
+  /// address-units, not bits) in a target independent way (Note: the return
+  /// type is an i64).
+  ///</doc>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1807' u='c' c='_ZN4llvm9IRBuilder13CreatePtrDiffEPNS_5ValueES2_RKNS_5TwineE'/>

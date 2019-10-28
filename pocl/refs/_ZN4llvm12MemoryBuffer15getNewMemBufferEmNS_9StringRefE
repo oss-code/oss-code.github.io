@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Support/MemoryBuffer.h' l='124' type='static std::unique_ptr&lt;MemoryBuffer&gt; llvm::MemoryBuffer::getNewMemBuffer(size_t Size, llvm::StringRef BufferName = &quot;&quot;)'/>
+<doc f='include/llvm-6.0/llvm/Support/MemoryBuffer.h' l='120'>/// Allocate a new zero-initialized MemoryBuffer of the specified size. Note
+  /// that the caller need not initialize the memory allocated by this method.
+  /// The memory is owned by the MemoryBuffer object.</doc>

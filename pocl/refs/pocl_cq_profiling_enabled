@@ -1,0 +1,6 @@
+<dec f='pocl/lib/CL/pocl_cq_profiling.h' l='50' type='int'/>
+<use f='pocl/lib/CL/clCreateCommandQueue.c' l='48' u='r' c='POclCreateCommandQueue'/>
+<doc f='pocl/lib/CL/pocl_cq_profiling.h' l='49'>/* This is set to 1 in case the cq profiling was enabled via POCL_TRACING=cq. */</doc>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='607' u='r' c='POclEnqueueNDRangeKernel'/>
+<def f='pocl/lib/CL/pocl_cq_profiling.c' l='33' type='int'/>
+<use f='pocl/lib/CL/pocl_cq_profiling.c' l='120' u='w' c='pocl_cq_profiling_init'/>

@@ -1,0 +1,6 @@
+<inh f='include/llvm-6.0/llvm/Support/Error.h' l='156' c='llvm::Error'/>
+<def f='include/llvm-6.0/llvm/Support/Error.h' l='311'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/Support/Error.h' l='308'>/// Subclass of Error for the sole purpose of identifying the success path in
+/// the type system. This allows to catch invalid conversion to Expected&lt;T&gt; at
+/// compile time.</doc>

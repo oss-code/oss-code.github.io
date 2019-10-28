@@ -1,0 +1,13 @@
+<dec f='pocl/lib/llvmopencl/BreakConstantGEPs.h' l='46' type='bool BreakConstantGEPs::runOnFunction(llvm::Function &amp; F)'/>
+<inh f='include/llvm-6.0/llvm/Pass.h' l='295' c='_ZN4llvm12FunctionPass13runOnFunctionERNS_8FunctionE'/>
+<def f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='244' ll='330' type='bool BreakConstantGEPs::runOnFunction(llvm::Function &amp; F)'/>
+<doc f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='234'>//
+// Method: runOnFunction()
+//
+// Description:
+//  Entry point for this LLVM pass.
+//
+// Return value:
+//  true  - The function was modified.
+//  false - The function was not modified.
+//</doc>

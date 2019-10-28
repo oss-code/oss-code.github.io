@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1163' ll='1177'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1161'>/// Information about the number of times a particular loop exit may be
+  /// reached before exiting the loop.</doc>
+<mbr r='llvm::ScalarEvolution::ExitNotTakenInfo::ExitingBlock' o='0' t='PoisoningVH&lt;llvm::BasicBlock&gt;'/>
+<mbr r='llvm::ScalarEvolution::ExitNotTakenInfo::ExactNotTaken' o='64' t='const llvm::SCEV *'/>
+<mbr r='llvm::ScalarEvolution::ExitNotTakenInfo::Predicate' o='128' t='std::unique_ptr&lt;SCEVUnionPredicate&gt;'/>
+<fun r='_ZN4llvm15ScalarEvolution16ExitNotTakenInfoC1ENS_11PoisoningVHINS_10BasicBlockEEEPKNS_4SCEVESt10unique_ptrINS_18SCEVUnionPredicateESt14default_deleteIS9_EE'/>
+<fun r='_ZNK4llvm15ScalarEvolution16ExitNotTakenInfo22hasAlwaysTruePredicateEv'/>

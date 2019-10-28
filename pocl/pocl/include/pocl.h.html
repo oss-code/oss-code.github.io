@@ -1,0 +1,412 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>pocl.h source code [pocl/include/pocl.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="_build_program_callback,_cl_command_node,_mem_destructor_callback,_mem_mapping,_pocl_mem_identifier "/>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/include/pocl.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>pocl</a>/<a href='./'>include</a>/<a href='pocl.h.html'>pocl.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* pocl.h - global pocl declarations for the host side runtime.</i></td></tr>
+<tr><th id="2">2</th><td><i></i></td></tr>
+<tr><th id="3">3</th><td><i>   Copyright (c) 2011 Universidad Rey Juan Carlos</i></td></tr>
+<tr><th id="4">4</th><td><i>                 2011-2019 Pekka Jääskeläinen</i></td></tr>
+<tr><th id="5">5</th><td><i></i></td></tr>
+<tr><th id="6">6</th><td><i>   Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="7">7</th><td><i>   of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="8">8</th><td><i>   in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="9">9</th><td><i>   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="10">10</th><td><i>   copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="11">11</th><td><i>   furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="12">12</th><td><i></i></td></tr>
+<tr><th id="13">13</th><td><i>   The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="14">14</th><td><i>   all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="15">15</th><td><i></i></td></tr>
+<tr><th id="16">16</th><td><i>   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="17">17</th><td><i>   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="18">18</th><td><i>   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="19">19</th><td><i>   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="20">20</th><td><i>   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="21">21</th><td><i>   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="22">22</th><td><i>   THE SOFTWARE.</i></td></tr>
+<tr><th id="23">23</th><td><i>*/</i></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><i class="doc">/**</i></td></tr>
+<tr><th id="26">26</th><td><i class="doc"> *<span class="command"> @file</span> pocl.h</i></td></tr>
+<tr><th id="27">27</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="28">28</th><td><i class="doc"> * The declarations in this file are such that are used both in the</i></td></tr>
+<tr><th id="29">29</th><td><i class="doc"> * libpocl implementation CL and the kernel compiler. Others should be</i></td></tr>
+<tr><th id="30">30</th><td><i class="doc"> * moved to pocl_cl.h of lib/CL or under the kernel compiler dir.</i></td></tr>
+<tr><th id="31">31</th><td><i class="doc"> * <span class="command">@todo</span> Check if there are extra declarations here that could be moved.</i></td></tr>
+<tr><th id="32">32</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="33">33</th><td><u>#<span data-ppcond="33">ifndef</span> <span class="macro" data-ref="_M/POCL_H">POCL_H</span></u></td></tr>
+<tr><th id="34">34</th><td><u>#define <dfn class="macro" id="_M/POCL_H" data-ref="_M/POCL_H">POCL_H</dfn></u></td></tr>
+<tr><th id="35">35</th><td></td></tr>
+<tr><th id="36">36</th><td><u>#<span data-ppcond="36">ifndef</span> <span class="macro" data-ref="_M/CL_TARGET_OPENCL_VERSION">CL_TARGET_OPENCL_VERSION</span></u></td></tr>
+<tr><th id="37">37</th><td><u>#define CL_TARGET_OPENCL_VERSION 220</u></td></tr>
+<tr><th id="38">38</th><td><u>#<span data-ppcond="36">endif</span></u></td></tr>
+<tr><th id="39">39</th><td><u>#include <a href="CL/opencl.h.html">&lt;CL/opencl.h&gt;</a></u></td></tr>
+<tr><th id="40">40</th><td></td></tr>
+<tr><th id="41">41</th><td><u>#include <a href="../config.h.html">"config.h"</a></u></td></tr>
+<tr><th id="42">42</th><td></td></tr>
+<tr><th id="43">43</th><td><u>#include <a href="pocl_context.h.html">"pocl_context.h"</a></u></td></tr>
+<tr><th id="44">44</th><td></td></tr>
+<tr><th id="45">45</th><td><i>/* detects restrict, variadic macros etc */</i></td></tr>
+<tr><th id="46">46</th><td><u>#include <a href="pocl_compiler_features.h.html">"pocl_compiler_features.h"</a></u></td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td><u>#define <dfn class="macro" id="_M/POCL_FILENAME_LENGTH" data-ref="_M/POCL_FILENAME_LENGTH">POCL_FILENAME_LENGTH</dfn> 1024</u></td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td><b>typedef</b> <b>struct</b> <a class="type" href="#_mem_mapping" title='_mem_mapping' data-ref="_mem_mapping">_mem_mapping</a> <dfn class="typedef" id="mem_mapping_t" title='mem_mapping_t' data-type='struct _mem_mapping' data-ref="mem_mapping_t">mem_mapping_t</dfn>;</td></tr>
+<tr><th id="51">51</th><td><i>/* represents a single buffer to host memory mapping */</i></td></tr>
+<tr><th id="52">52</th><td><b>struct</b> <dfn class="type def" id="_mem_mapping" title='_mem_mapping' data-ref="_mem_mapping">_mem_mapping</dfn> {</td></tr>
+<tr><th id="53">53</th><td>  <em>void</em> *<dfn class="decl" id="_mem_mapping::host_ptr" title='_mem_mapping::host_ptr' data-ref="_mem_mapping::host_ptr">host_ptr</dfn>; <i>/* the location of the mapped buffer chunk in the host memory */</i></td></tr>
+<tr><th id="54">54</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="_mem_mapping::offset" title='_mem_mapping::offset' data-ref="_mem_mapping::offset">offset</dfn>; <i>/* offset to the beginning of the buffer */</i></td></tr>
+<tr><th id="55">55</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="_mem_mapping::size" title='_mem_mapping::size' data-ref="_mem_mapping::size">size</dfn>;</td></tr>
+<tr><th id="56">56</th><td>  <a class="typedef" href="#mem_mapping_t" title='mem_mapping_t' data-type='struct _mem_mapping' data-ref="mem_mapping_t">mem_mapping_t</a> *<dfn class="decl" id="_mem_mapping::prev" title='_mem_mapping::prev' data-ref="_mem_mapping::prev">prev</dfn>, *<dfn class="decl" id="_mem_mapping::next" title='_mem_mapping::next' data-ref="_mem_mapping::next">next</dfn>;</td></tr>
+<tr><th id="57">57</th><td>  <i>/* This is required, because two clEnqueueMap() with the same buffer+size+offset,</i></td></tr>
+<tr><th id="58">58</th><td><i>     will create two identical mappings in the buffer-&gt;mappings LL.</i></td></tr>
+<tr><th id="59">59</th><td><i>     Without this flag, both corresponding clEnqUnmap()s will find</i></td></tr>
+<tr><th id="60">60</th><td><i>     the same mapping (the first one in mappings LL), which will lead</i></td></tr>
+<tr><th id="61">61</th><td><i>     to memory double-free corruption later. */</i></td></tr>
+<tr><th id="62">62</th><td>  <em>long</em> <dfn class="decl" id="_mem_mapping::unmap_requested" title='_mem_mapping::unmap_requested' data-ref="_mem_mapping::unmap_requested">unmap_requested</dfn>;</td></tr>
+<tr><th id="63">63</th><td>  <a class="typedef" href="CL/cl.h.html#cl_map_flags" title='cl_map_flags' data-type='cl_bitfield' data-ref="cl_map_flags">cl_map_flags</a> <dfn class="decl" id="_mem_mapping::map_flags" title='_mem_mapping::map_flags' data-ref="_mem_mapping::map_flags">map_flags</dfn>;</td></tr>
+<tr><th id="64">64</th><td>  <i>/* image mapping data */</i></td></tr>
+<tr><th id="65">65</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="_mem_mapping::origin" title='_mem_mapping::origin' data-ref="_mem_mapping::origin">origin</dfn>[<var>3</var>];</td></tr>
+<tr><th id="66">66</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="_mem_mapping::region" title='_mem_mapping::region' data-ref="_mem_mapping::region">region</dfn>[<var>3</var>];</td></tr>
+<tr><th id="67">67</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="_mem_mapping::row_pitch" title='_mem_mapping::row_pitch' data-ref="_mem_mapping::row_pitch">row_pitch</dfn>;</td></tr>
+<tr><th id="68">68</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="_mem_mapping::slice_pitch" title='_mem_mapping::slice_pitch' data-ref="_mem_mapping::slice_pitch">slice_pitch</dfn>;</td></tr>
+<tr><th id="69">69</th><td>};</td></tr>
+<tr><th id="70">70</th><td></td></tr>
+<tr><th id="71">71</th><td><i>/* memory identifier: id to point the global memory where memory resides</i></td></tr>
+<tr><th id="72">72</th><td><i>                      + pointer to actual data */</i></td></tr>
+<tr><th id="73">73</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="_pocl_mem_identifier" title='_pocl_mem_identifier' data-ref="_pocl_mem_identifier"><a class="type" href="#_pocl_mem_identifier" title='_pocl_mem_identifier' data-ref="_pocl_mem_identifier">_pocl_mem_identifier</a></dfn></td></tr>
+<tr><th id="74">74</th><td>{</td></tr>
+<tr><th id="75">75</th><td>  <em>int</em> <dfn class="decl" id="_pocl_mem_identifier::available" title='_pocl_mem_identifier::available' data-ref="_pocl_mem_identifier::available">available</dfn>; <i>/* ... in this mem objs context */</i></td></tr>
+<tr><th id="76">76</th><td>  <em>int</em> <dfn class="decl" id="_pocl_mem_identifier::global_mem_id" title='_pocl_mem_identifier::global_mem_id' data-ref="_pocl_mem_identifier::global_mem_id">global_mem_id</dfn>;</td></tr>
+<tr><th id="77">77</th><td>  <em>void</em> *<dfn class="decl" id="_pocl_mem_identifier::mem_ptr" title='_pocl_mem_identifier::mem_ptr' data-ref="_pocl_mem_identifier::mem_ptr">mem_ptr</dfn>;</td></tr>
+<tr><th id="78">78</th><td>  <em>void</em> *<dfn class="decl" id="_pocl_mem_identifier::image_data" title='_pocl_mem_identifier::image_data' data-ref="_pocl_mem_identifier::image_data">image_data</dfn>;</td></tr>
+<tr><th id="79">79</th><td>} <dfn class="typedef" id="pocl_mem_identifier" title='pocl_mem_identifier' data-type='struct _pocl_mem_identifier' data-ref="pocl_mem_identifier">pocl_mem_identifier</dfn>;</td></tr>
+<tr><th id="80">80</th><td></td></tr>
+<tr><th id="81">81</th><td><b>typedef</b> <b>struct</b> <a class="type" href="#_mem_destructor_callback" title='_mem_destructor_callback' data-ref="_mem_destructor_callback">_mem_destructor_callback</a> <dfn class="typedef" id="mem_destructor_callback_t" title='mem_destructor_callback_t' data-type='struct _mem_destructor_callback' data-ref="mem_destructor_callback_t">mem_destructor_callback_t</dfn>;</td></tr>
+<tr><th id="82">82</th><td><i>/* represents a memory object destructor callback */</i></td></tr>
+<tr><th id="83">83</th><td><b>struct</b> <dfn class="type def" id="_mem_destructor_callback" title='_mem_destructor_callback' data-ref="_mem_destructor_callback">_mem_destructor_callback</dfn></td></tr>
+<tr><th id="84">84</th><td>{</td></tr>
+<tr><th id="85">85</th><td>  <em>void</em> (<a class="macro" href="CL/cl_platform.h.html#45" title="" data-ref="_M/CL_CALLBACK">CL_CALLBACK</a> * <dfn class="decl" id="_mem_destructor_callback::pfn_notify" title='_mem_destructor_callback::pfn_notify' data-ref="_mem_destructor_callback::pfn_notify">pfn_notify</dfn>) (<a class="typedef" href="CL/cl.h.html#cl_mem" title='cl_mem' data-type='struct _cl_mem *' data-ref="cl_mem">cl_mem</a>, <em>void</em>*); <i>/* callback function */</i></td></tr>
+<tr><th id="86">86</th><td>  <em>void</em> *<dfn class="decl" id="_mem_destructor_callback::user_data" title='_mem_destructor_callback::user_data' data-ref="_mem_destructor_callback::user_data">user_data</dfn>; <i>/* user supplied data passed to callback function */</i></td></tr>
+<tr><th id="87">87</th><td>  <a class="typedef" href="#mem_destructor_callback_t" title='mem_destructor_callback_t' data-type='struct _mem_destructor_callback' data-ref="mem_destructor_callback_t">mem_destructor_callback_t</a> *<dfn class="decl" id="_mem_destructor_callback::next" title='_mem_destructor_callback::next' data-ref="_mem_destructor_callback::next">next</dfn>;</td></tr>
+<tr><th id="88">88</th><td>};</td></tr>
+<tr><th id="89">89</th><td></td></tr>
+<tr><th id="90">90</th><td><b>typedef</b> <b>struct</b> <a class="type" href="#_build_program_callback" title='_build_program_callback' data-ref="_build_program_callback">_build_program_callback</a> <dfn class="typedef" id="build_program_callback_t" title='build_program_callback_t' data-type='struct _build_program_callback' data-ref="build_program_callback_t">build_program_callback_t</dfn>;</td></tr>
+<tr><th id="91">91</th><td><b>struct</b> <dfn class="type def" id="_build_program_callback" title='_build_program_callback' data-ref="_build_program_callback">_build_program_callback</dfn></td></tr>
+<tr><th id="92">92</th><td>{</td></tr>
+<tr><th id="93">93</th><td>    <em>void</em> (<a class="macro" href="CL/cl_platform.h.html#45" title="" data-ref="_M/CL_CALLBACK">CL_CALLBACK</a> * <dfn class="decl" id="_build_program_callback::callback_function" title='_build_program_callback::callback_function' data-ref="_build_program_callback::callback_function">callback_function</dfn>) (<a class="typedef" href="CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a>, <em>void</em>*); <i>/* callback function */</i></td></tr>
+<tr><th id="94">94</th><td>    <em>void</em> *<dfn class="decl" id="_build_program_callback::user_data" title='_build_program_callback::user_data' data-ref="_build_program_callback::user_data">user_data</dfn>; <i>/* user supplied data passed to callback function */</i></td></tr>
+<tr><th id="95">95</th><td>};</td></tr>
+<tr><th id="96">96</th><td></td></tr>
+<tr><th id="97">97</th><td><i>// Command Queue datatypes</i></td></tr>
+<tr><th id="98">98</th><td></td></tr>
+<tr><th id="99">99</th><td><u>#define <dfn class="macro" id="_M/POCL_KERNEL_DIGEST_SIZE" data-ref="_M/POCL_KERNEL_DIGEST_SIZE">POCL_KERNEL_DIGEST_SIZE</dfn> 16</u></td></tr>
+<tr><th id="100">100</th><td><b>typedef</b> <a class="typedef" href="../../include/stdint.h.html#uint8_t" title='uint8_t' data-type='unsigned char' data-ref="uint8_t">uint8_t</a> <dfn class="typedef" id="pocl_kernel_hash_t" title='pocl_kernel_hash_t' data-type='uint8_t [16]' data-ref="pocl_kernel_hash_t">pocl_kernel_hash_t</dfn>[<a class="macro" href="#99" title="16" data-ref="_M/POCL_KERNEL_DIGEST_SIZE">POCL_KERNEL_DIGEST_SIZE</a>];</td></tr>
+<tr><th id="101">101</th><td></td></tr>
+<tr><th id="102">102</th><td><i>// clEnqueueNDRangeKernel</i></td></tr>
+<tr><th id="103">103</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="104">104</th><td>{</td></tr>
+<tr><th id="105">105</th><td>  <em>void</em> *<dfn class="decl" id="(anonymous)::hash" title='(anonymous struct)::hash' data-ref="(anonymous)::hash">hash</dfn>;</td></tr>
+<tr><th id="106">106</th><td>  <em>void</em> *<dfn class="decl" id="(anonymous)::wg" title='(anonymous struct)::wg' data-ref="(anonymous)::wg">wg</dfn>; <i>/* The work group function ptr. Device specific. */</i></td></tr>
+<tr><th id="107">107</th><td>  <a class="typedef" href="CL/cl.h.html#cl_kernel" title='cl_kernel' data-type='struct _cl_kernel *' data-ref="cl_kernel">cl_kernel</a> <dfn class="decl" id="(anonymous)::kernel" title='(anonymous struct)::kernel' data-ref="(anonymous)::kernel">kernel</dfn>;</td></tr>
+<tr><th id="108">108</th><td>  <i>/* The launch data that can be passed to the kernel execution environment. */</i></td></tr>
+<tr><th id="109">109</th><td>  <b>struct</b> <a class="type" href="pocl_context.h.html#pocl_context" title='pocl_context' data-ref="pocl_context">pocl_context</a> <dfn class="decl" id="(anonymous)::pc" title='(anonymous struct)::pc' data-ref="(anonymous)::pc">pc</dfn>;</td></tr>
+<tr><th id="110">110</th><td>  <b>struct</b> <a class="type" href="../lib/CL/pocl_cl.h.html#pocl_argument" title='pocl_argument' data-ref="pocl_argument" id="pocl_argument"><a class="type" href="../lib/CL/pocl_cl.h.html#pocl_argument" title='pocl_argument' data-ref="pocl_argument">pocl_argument</a></a> *<dfn class="decl" id="(anonymous)::arguments" title='(anonymous struct)::arguments' data-ref="(anonymous)::arguments">arguments</dfn>;</td></tr>
+<tr><th id="111">111</th><td>  <i>/* Can be used to store/cache arbitrary device-specific data. */</i></td></tr>
+<tr><th id="112">112</th><td>  <em>void</em> *<dfn class="decl" id="(anonymous)::device_data" title='(anonymous struct)::device_data' data-ref="(anonymous)::device_data">device_data</dfn>;</td></tr>
+<tr><th id="113">113</th><td>  <i>/* If set to 1, disallow any work-group function specialization. */</i></td></tr>
+<tr><th id="114">114</th><td>  <em>int</em> <dfn class="decl" id="(anonymous)::force_generic_wg_func" title='(anonymous struct)::force_generic_wg_func' data-ref="(anonymous)::force_generic_wg_func">force_generic_wg_func</dfn>;</td></tr>
+<tr><th id="115">115</th><td>  <i>/* If set to 1, disallow "small grid" WG function specialization. */</i></td></tr>
+<tr><th id="116">116</th><td>  <em>int</em> <dfn class="decl" id="(anonymous)::force_large_grid_wg_func" title='(anonymous struct)::force_large_grid_wg_func' data-ref="(anonymous)::force_large_grid_wg_func">force_large_grid_wg_func</dfn>;</td></tr>
+<tr><th id="117">117</th><td>  <em>unsigned</em> <dfn class="decl" id="(anonymous)::device_i" title='(anonymous struct)::device_i' data-ref="(anonymous)::device_i">device_i</dfn>;</td></tr>
+<tr><th id="118">118</th><td>} <dfn class="typedef" id="_cl_command_run" title='_cl_command_run' data-type='struct _cl_command_run' data-ref="_cl_command_run">_cl_command_run</dfn>;</td></tr>
+<tr><th id="119">119</th><td></td></tr>
+<tr><th id="120">120</th><td><i>// clEnqueueNativeKernel</i></td></tr>
+<tr><th id="121">121</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="122">122</th><td>{</td></tr>
+<tr><th id="123">123</th><td>  <em>void</em> *<dfn class="decl" id="(anonymous)::args" title='(anonymous struct)::args' data-ref="(anonymous)::args">args</dfn>;</td></tr>
+<tr><th id="124">124</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::cb_args" title='(anonymous struct)::cb_args' data-ref="(anonymous)::cb_args">cb_args</dfn>;</td></tr>
+<tr><th id="125">125</th><td>  <em>void</em> (*<dfn class="decl" id="(anonymous)::user_func" title='(anonymous struct)::user_func' data-ref="(anonymous)::user_func">user_func</dfn>)(<em>void</em> *);</td></tr>
+<tr><th id="126">126</th><td>} <dfn class="typedef" id="_cl_command_native" title='_cl_command_native' data-type='struct _cl_command_native' data-ref="_cl_command_native">_cl_command_native</dfn>;</td></tr>
+<tr><th id="127">127</th><td></td></tr>
+<tr><th id="128">128</th><td><i>// clEnqueueReadBuffer</i></td></tr>
+<tr><th id="129">129</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="130">130</th><td>{</td></tr>
+<tr><th id="131">131</th><td>  <em>void</em> *<b>__restrict__</b> <dfn class="decl" id="(anonymous)::dst_host_ptr" title='(anonymous struct)::dst_host_ptr' data-ref="(anonymous)::dst_host_ptr">dst_host_ptr</dfn>;</td></tr>
+<tr><th id="132">132</th><td>  <a class="typedef" href="#pocl_mem_identifier" title='pocl_mem_identifier' data-type='struct _pocl_mem_identifier' data-ref="pocl_mem_identifier">pocl_mem_identifier</a> *<dfn class="decl" id="(anonymous)::src_mem_id" title='(anonymous struct)::src_mem_id' data-ref="(anonymous)::src_mem_id">src_mem_id</dfn>;</td></tr>
+<tr><th id="133">133</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::offset" title='(anonymous struct)::offset' data-ref="(anonymous)::offset">offset</dfn>;</td></tr>
+<tr><th id="134">134</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::size" title='(anonymous struct)::size' data-ref="(anonymous)::size">size</dfn>;</td></tr>
+<tr><th id="135">135</th><td>} <dfn class="typedef" id="_cl_command_read" title='_cl_command_read' data-type='struct _cl_command_read' data-ref="_cl_command_read">_cl_command_read</dfn>;</td></tr>
+<tr><th id="136">136</th><td></td></tr>
+<tr><th id="137">137</th><td><i>// clEnqueueWriteBuffer</i></td></tr>
+<tr><th id="138">138</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="139">139</th><td>{</td></tr>
+<tr><th id="140">140</th><td>  <em>const</em> <em>void</em> *<b>__restrict__</b> <dfn class="decl" id="(anonymous)::src_host_ptr" title='(anonymous struct)::src_host_ptr' data-ref="(anonymous)::src_host_ptr">src_host_ptr</dfn>;</td></tr>
+<tr><th id="141">141</th><td>  <a class="typedef" href="#pocl_mem_identifier" title='pocl_mem_identifier' data-type='struct _pocl_mem_identifier' data-ref="pocl_mem_identifier">pocl_mem_identifier</a> *<dfn class="decl" id="(anonymous)::dst_mem_id" title='(anonymous struct)::dst_mem_id' data-ref="(anonymous)::dst_mem_id">dst_mem_id</dfn>;</td></tr>
+<tr><th id="142">142</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::offset" title='(anonymous struct)::offset' data-ref="(anonymous)::offset">offset</dfn>;</td></tr>
+<tr><th id="143">143</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::size" title='(anonymous struct)::size' data-ref="(anonymous)::size">size</dfn>;</td></tr>
+<tr><th id="144">144</th><td>} <dfn class="typedef" id="_cl_command_write" title='_cl_command_write' data-type='struct _cl_command_write' data-ref="_cl_command_write">_cl_command_write</dfn>;</td></tr>
+<tr><th id="145">145</th><td></td></tr>
+<tr><th id="146">146</th><td><i>// clEnqueueCopyBuffer</i></td></tr>
+<tr><th id="147">147</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="148">148</th><td>{</td></tr>
+<tr><th id="149">149</th><td>  <a class="typedef" href="#pocl_mem_identifier" title='pocl_mem_identifier' data-type='struct _pocl_mem_identifier' data-ref="pocl_mem_identifier">pocl_mem_identifier</a> *<dfn class="decl" id="(anonymous)::src_mem_id" title='(anonymous struct)::src_mem_id' data-ref="(anonymous)::src_mem_id">src_mem_id</dfn>;</td></tr>
+<tr><th id="150">150</th><td>  <a class="typedef" href="#pocl_mem_identifier" title='pocl_mem_identifier' data-type='struct _pocl_mem_identifier' data-ref="pocl_mem_identifier">pocl_mem_identifier</a> *<dfn class="decl" id="(anonymous)::dst_mem_id" title='(anonymous struct)::dst_mem_id' data-ref="(anonymous)::dst_mem_id">dst_mem_id</dfn>;</td></tr>
+<tr><th id="151">151</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::src_offset" title='(anonymous struct)::src_offset' data-ref="(anonymous)::src_offset">src_offset</dfn>;</td></tr>
+<tr><th id="152">152</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::dst_offset" title='(anonymous struct)::dst_offset' data-ref="(anonymous)::dst_offset">dst_offset</dfn>;</td></tr>
+<tr><th id="153">153</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::size" title='(anonymous struct)::size' data-ref="(anonymous)::size">size</dfn>;</td></tr>
+<tr><th id="154">154</th><td>} <dfn class="typedef" id="_cl_command_copy" title='_cl_command_copy' data-type='struct _cl_command_copy' data-ref="_cl_command_copy">_cl_command_copy</dfn>;</td></tr>
+<tr><th id="155">155</th><td></td></tr>
+<tr><th id="156">156</th><td><i>// clEnqueueReadBufferRect</i></td></tr>
+<tr><th id="157">157</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="158">158</th><td>{</td></tr>
+<tr><th id="159">159</th><td>  <em>void</em> *<b>__restrict__</b> <dfn class="decl" id="(anonymous)::dst_host_ptr" title='(anonymous struct)::dst_host_ptr' data-ref="(anonymous)::dst_host_ptr">dst_host_ptr</dfn>;</td></tr>
+<tr><th id="160">160</th><td>  <a class="typedef" href="#pocl_mem_identifier" title='pocl_mem_identifier' data-type='struct _pocl_mem_identifier' data-ref="pocl_mem_identifier">pocl_mem_identifier</a> *<dfn class="decl" id="(anonymous)::src_mem_id" title='(anonymous struct)::src_mem_id' data-ref="(anonymous)::src_mem_id">src_mem_id</dfn>;</td></tr>
+<tr><th id="161">161</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::buffer_origin" title='(anonymous struct)::buffer_origin' data-ref="(anonymous)::buffer_origin">buffer_origin</dfn>[<var>3</var>];</td></tr>
+<tr><th id="162">162</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::host_origin" title='(anonymous struct)::host_origin' data-ref="(anonymous)::host_origin">host_origin</dfn>[<var>3</var>];</td></tr>
+<tr><th id="163">163</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::region" title='(anonymous struct)::region' data-ref="(anonymous)::region">region</dfn>[<var>3</var>];</td></tr>
+<tr><th id="164">164</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::buffer_row_pitch" title='(anonymous struct)::buffer_row_pitch' data-ref="(anonymous)::buffer_row_pitch">buffer_row_pitch</dfn>;</td></tr>
+<tr><th id="165">165</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::buffer_slice_pitch" title='(anonymous struct)::buffer_slice_pitch' data-ref="(anonymous)::buffer_slice_pitch">buffer_slice_pitch</dfn>;</td></tr>
+<tr><th id="166">166</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::host_row_pitch" title='(anonymous struct)::host_row_pitch' data-ref="(anonymous)::host_row_pitch">host_row_pitch</dfn>;</td></tr>
+<tr><th id="167">167</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::host_slice_pitch" title='(anonymous struct)::host_slice_pitch' data-ref="(anonymous)::host_slice_pitch">host_slice_pitch</dfn>;</td></tr>
+<tr><th id="168">168</th><td>} <dfn class="typedef" id="_cl_command_read_rect" title='_cl_command_read_rect' data-type='struct _cl_command_read_rect' data-ref="_cl_command_read_rect">_cl_command_read_rect</dfn>;</td></tr>
+<tr><th id="169">169</th><td></td></tr>
+<tr><th id="170">170</th><td><i>// clEnqueueWriteBufferRect</i></td></tr>
+<tr><th id="171">171</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="172">172</th><td>{</td></tr>
+<tr><th id="173">173</th><td>  <em>const</em> <em>void</em> *<b>__restrict__</b> <dfn class="decl" id="(anonymous)::src_host_ptr" title='(anonymous struct)::src_host_ptr' data-ref="(anonymous)::src_host_ptr">src_host_ptr</dfn>;</td></tr>
+<tr><th id="174">174</th><td>  <a class="typedef" href="#pocl_mem_identifier" title='pocl_mem_identifier' data-type='struct _pocl_mem_identifier' data-ref="pocl_mem_identifier">pocl_mem_identifier</a> *<dfn class="decl" id="(anonymous)::dst_mem_id" title='(anonymous struct)::dst_mem_id' data-ref="(anonymous)::dst_mem_id">dst_mem_id</dfn>;</td></tr>
+<tr><th id="175">175</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::buffer_origin" title='(anonymous struct)::buffer_origin' data-ref="(anonymous)::buffer_origin">buffer_origin</dfn>[<var>3</var>];</td></tr>
+<tr><th id="176">176</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::host_origin" title='(anonymous struct)::host_origin' data-ref="(anonymous)::host_origin">host_origin</dfn>[<var>3</var>];</td></tr>
+<tr><th id="177">177</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::region" title='(anonymous struct)::region' data-ref="(anonymous)::region">region</dfn>[<var>3</var>];</td></tr>
+<tr><th id="178">178</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::buffer_row_pitch" title='(anonymous struct)::buffer_row_pitch' data-ref="(anonymous)::buffer_row_pitch">buffer_row_pitch</dfn>;</td></tr>
+<tr><th id="179">179</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::buffer_slice_pitch" title='(anonymous struct)::buffer_slice_pitch' data-ref="(anonymous)::buffer_slice_pitch">buffer_slice_pitch</dfn>;</td></tr>
+<tr><th id="180">180</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::host_row_pitch" title='(anonymous struct)::host_row_pitch' data-ref="(anonymous)::host_row_pitch">host_row_pitch</dfn>;</td></tr>
+<tr><th id="181">181</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::host_slice_pitch" title='(anonymous struct)::host_slice_pitch' data-ref="(anonymous)::host_slice_pitch">host_slice_pitch</dfn>;</td></tr>
+<tr><th id="182">182</th><td>} <dfn class="typedef" id="_cl_command_write_rect" title='_cl_command_write_rect' data-type='struct _cl_command_write_rect' data-ref="_cl_command_write_rect">_cl_command_write_rect</dfn>;</td></tr>
+<tr><th id="183">183</th><td></td></tr>
+<tr><th id="184">184</th><td><i>// clEnqueueCopyBufferRect</i></td></tr>
+<tr><th id="185">185</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="186">186</th><td>{</td></tr>
+<tr><th id="187">187</th><td>  <a class="typedef" href="#pocl_mem_identifier" title='pocl_mem_identifier' data-type='struct _pocl_mem_identifier' data-ref="pocl_mem_identifier">pocl_mem_identifier</a> *<dfn class="decl" id="(anonymous)::src_mem_id" title='(anonymous struct)::src_mem_id' data-ref="(anonymous)::src_mem_id">src_mem_id</dfn>;</td></tr>
+<tr><th id="188">188</th><td>  <a class="typedef" href="#pocl_mem_identifier" title='pocl_mem_identifier' data-type='struct _pocl_mem_identifier' data-ref="pocl_mem_identifier">pocl_mem_identifier</a> *<dfn class="decl" id="(anonymous)::dst_mem_id" title='(anonymous struct)::dst_mem_id' data-ref="(anonymous)::dst_mem_id">dst_mem_id</dfn>;</td></tr>
+<tr><th id="189">189</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::dst_origin" title='(anonymous struct)::dst_origin' data-ref="(anonymous)::dst_origin">dst_origin</dfn>[<var>3</var>];</td></tr>
+<tr><th id="190">190</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::src_origin" title='(anonymous struct)::src_origin' data-ref="(anonymous)::src_origin">src_origin</dfn>[<var>3</var>];</td></tr>
+<tr><th id="191">191</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::region" title='(anonymous struct)::region' data-ref="(anonymous)::region">region</dfn>[<var>3</var>];</td></tr>
+<tr><th id="192">192</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::src_row_pitch" title='(anonymous struct)::src_row_pitch' data-ref="(anonymous)::src_row_pitch">src_row_pitch</dfn>;</td></tr>
+<tr><th id="193">193</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::src_slice_pitch" title='(anonymous struct)::src_slice_pitch' data-ref="(anonymous)::src_slice_pitch">src_slice_pitch</dfn>;</td></tr>
+<tr><th id="194">194</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::dst_row_pitch" title='(anonymous struct)::dst_row_pitch' data-ref="(anonymous)::dst_row_pitch">dst_row_pitch</dfn>;</td></tr>
+<tr><th id="195">195</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::dst_slice_pitch" title='(anonymous struct)::dst_slice_pitch' data-ref="(anonymous)::dst_slice_pitch">dst_slice_pitch</dfn>;</td></tr>
+<tr><th id="196">196</th><td>} <dfn class="typedef" id="_cl_command_copy_rect" title='_cl_command_copy_rect' data-type='struct _cl_command_copy_rect' data-ref="_cl_command_copy_rect">_cl_command_copy_rect</dfn>;</td></tr>
+<tr><th id="197">197</th><td></td></tr>
+<tr><th id="198">198</th><td><i>// clEnqueueMapBuffer</i></td></tr>
+<tr><th id="199">199</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="200">200</th><td>{</td></tr>
+<tr><th id="201">201</th><td>  <a class="typedef" href="#pocl_mem_identifier" title='pocl_mem_identifier' data-type='struct _pocl_mem_identifier' data-ref="pocl_mem_identifier">pocl_mem_identifier</a> *<dfn class="decl" id="(anonymous)::mem_id" title='(anonymous struct)::mem_id' data-ref="(anonymous)::mem_id">mem_id</dfn>;</td></tr>
+<tr><th id="202">202</th><td>  <a class="typedef" href="#mem_mapping_t" title='mem_mapping_t' data-type='struct _mem_mapping' data-ref="mem_mapping_t">mem_mapping_t</a> *<dfn class="decl" id="(anonymous)::mapping" title='(anonymous struct)::mapping' data-ref="(anonymous)::mapping">mapping</dfn>;</td></tr>
+<tr><th id="203">203</th><td>} <dfn class="typedef" id="_cl_command_map" title='_cl_command_map' data-type='struct _cl_command_map' data-ref="_cl_command_map">_cl_command_map</dfn>;</td></tr>
+<tr><th id="204">204</th><td></td></tr>
+<tr><th id="205">205</th><td><i>/* clEnqueueUnMapMemObject */</i></td></tr>
+<tr><th id="206">206</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="207">207</th><td>{</td></tr>
+<tr><th id="208">208</th><td>  <a class="typedef" href="#pocl_mem_identifier" title='pocl_mem_identifier' data-type='struct _pocl_mem_identifier' data-ref="pocl_mem_identifier">pocl_mem_identifier</a> *<dfn class="decl" id="(anonymous)::mem_id" title='(anonymous struct)::mem_id' data-ref="(anonymous)::mem_id">mem_id</dfn>;</td></tr>
+<tr><th id="209">209</th><td>  <a class="typedef" href="#mem_mapping_t" title='mem_mapping_t' data-type='struct _mem_mapping' data-ref="mem_mapping_t">mem_mapping_t</a> *<dfn class="decl" id="(anonymous)::mapping" title='(anonymous struct)::mapping' data-ref="(anonymous)::mapping">mapping</dfn>;</td></tr>
+<tr><th id="210">210</th><td>} <dfn class="typedef" id="_cl_command_unmap" title='_cl_command_unmap' data-type='struct _cl_command_unmap' data-ref="_cl_command_unmap">_cl_command_unmap</dfn>;</td></tr>
+<tr><th id="211">211</th><td></td></tr>
+<tr><th id="212">212</th><td><i>/* clEnqueueFillBuffer */</i></td></tr>
+<tr><th id="213">213</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="214">214</th><td>{</td></tr>
+<tr><th id="215">215</th><td>  <a class="typedef" href="#pocl_mem_identifier" title='pocl_mem_identifier' data-type='struct _pocl_mem_identifier' data-ref="pocl_mem_identifier">pocl_mem_identifier</a> *<dfn class="decl" id="(anonymous)::dst_mem_id" title='(anonymous struct)::dst_mem_id' data-ref="(anonymous)::dst_mem_id">dst_mem_id</dfn>;</td></tr>
+<tr><th id="216">216</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::size" title='(anonymous struct)::size' data-ref="(anonymous)::size">size</dfn>;</td></tr>
+<tr><th id="217">217</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::offset" title='(anonymous struct)::offset' data-ref="(anonymous)::offset">offset</dfn>;</td></tr>
+<tr><th id="218">218</th><td>  <em>void</em> *<b>__restrict__</b> <dfn class="decl" id="(anonymous)::pattern" title='(anonymous struct)::pattern' data-ref="(anonymous)::pattern">pattern</dfn>;</td></tr>
+<tr><th id="219">219</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::pattern_size" title='(anonymous struct)::pattern_size' data-ref="(anonymous)::pattern_size">pattern_size</dfn>;</td></tr>
+<tr><th id="220">220</th><td>} <dfn class="typedef" id="_cl_command_fill_mem" title='_cl_command_fill_mem' data-type='struct _cl_command_fill_mem' data-ref="_cl_command_fill_mem">_cl_command_fill_mem</dfn>;</td></tr>
+<tr><th id="221">221</th><td></td></tr>
+<tr><th id="222">222</th><td><i>/* clEnqueue(Write/Read)Image */</i></td></tr>
+<tr><th id="223">223</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="224">224</th><td>{</td></tr>
+<tr><th id="225">225</th><td>  <a class="typedef" href="#pocl_mem_identifier" title='pocl_mem_identifier' data-type='struct _pocl_mem_identifier' data-ref="pocl_mem_identifier">pocl_mem_identifier</a> *<dfn class="decl" id="(anonymous)::src_mem_id" title='(anonymous struct)::src_mem_id' data-ref="(anonymous)::src_mem_id">src_mem_id</dfn>;</td></tr>
+<tr><th id="226">226</th><td>  <em>void</em> *<b>__restrict__</b> <dfn class="decl" id="(anonymous)::dst_host_ptr" title='(anonymous struct)::dst_host_ptr' data-ref="(anonymous)::dst_host_ptr">dst_host_ptr</dfn>;</td></tr>
+<tr><th id="227">227</th><td>  <a class="typedef" href="#pocl_mem_identifier" title='pocl_mem_identifier' data-type='struct _pocl_mem_identifier' data-ref="pocl_mem_identifier">pocl_mem_identifier</a> *<dfn class="decl" id="(anonymous)::dst_mem_id" title='(anonymous struct)::dst_mem_id' data-ref="(anonymous)::dst_mem_id">dst_mem_id</dfn>;</td></tr>
+<tr><th id="228">228</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::dst_offset" title='(anonymous struct)::dst_offset' data-ref="(anonymous)::dst_offset">dst_offset</dfn>;</td></tr>
+<tr><th id="229">229</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::origin" title='(anonymous struct)::origin' data-ref="(anonymous)::origin">origin</dfn>[<var>3</var>];</td></tr>
+<tr><th id="230">230</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::region" title='(anonymous struct)::region' data-ref="(anonymous)::region">region</dfn>[<var>3</var>];</td></tr>
+<tr><th id="231">231</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::dst_row_pitch" title='(anonymous struct)::dst_row_pitch' data-ref="(anonymous)::dst_row_pitch">dst_row_pitch</dfn>;</td></tr>
+<tr><th id="232">232</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::dst_slice_pitch" title='(anonymous struct)::dst_slice_pitch' data-ref="(anonymous)::dst_slice_pitch">dst_slice_pitch</dfn>;</td></tr>
+<tr><th id="233">233</th><td>} <dfn class="typedef" id="_cl_command_read_image" title='_cl_command_read_image' data-type='struct _cl_command_read_image' data-ref="_cl_command_read_image">_cl_command_read_image</dfn>;</td></tr>
+<tr><th id="234">234</th><td></td></tr>
+<tr><th id="235">235</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="236">236</th><td>{</td></tr>
+<tr><th id="237">237</th><td>  <a class="typedef" href="#pocl_mem_identifier" title='pocl_mem_identifier' data-type='struct _pocl_mem_identifier' data-ref="pocl_mem_identifier">pocl_mem_identifier</a> *<dfn class="decl" id="(anonymous)::dst_mem_id" title='(anonymous struct)::dst_mem_id' data-ref="(anonymous)::dst_mem_id">dst_mem_id</dfn>;</td></tr>
+<tr><th id="238">238</th><td>  <em>const</em> <em>void</em> *<b>__restrict__</b> <dfn class="decl" id="(anonymous)::src_host_ptr" title='(anonymous struct)::src_host_ptr' data-ref="(anonymous)::src_host_ptr">src_host_ptr</dfn>;</td></tr>
+<tr><th id="239">239</th><td>  <a class="typedef" href="#pocl_mem_identifier" title='pocl_mem_identifier' data-type='struct _pocl_mem_identifier' data-ref="pocl_mem_identifier">pocl_mem_identifier</a> *<dfn class="decl" id="(anonymous)::src_mem_id" title='(anonymous struct)::src_mem_id' data-ref="(anonymous)::src_mem_id">src_mem_id</dfn>;</td></tr>
+<tr><th id="240">240</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::src_offset" title='(anonymous struct)::src_offset' data-ref="(anonymous)::src_offset">src_offset</dfn>;</td></tr>
+<tr><th id="241">241</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::origin" title='(anonymous struct)::origin' data-ref="(anonymous)::origin">origin</dfn>[<var>3</var>];</td></tr>
+<tr><th id="242">242</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::region" title='(anonymous struct)::region' data-ref="(anonymous)::region">region</dfn>[<var>3</var>];</td></tr>
+<tr><th id="243">243</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::src_row_pitch" title='(anonymous struct)::src_row_pitch' data-ref="(anonymous)::src_row_pitch">src_row_pitch</dfn>;</td></tr>
+<tr><th id="244">244</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::src_slice_pitch" title='(anonymous struct)::src_slice_pitch' data-ref="(anonymous)::src_slice_pitch">src_slice_pitch</dfn>;</td></tr>
+<tr><th id="245">245</th><td>} <dfn class="typedef" id="_cl_command_write_image" title='_cl_command_write_image' data-type='struct _cl_command_write_image' data-ref="_cl_command_write_image">_cl_command_write_image</dfn>;</td></tr>
+<tr><th id="246">246</th><td></td></tr>
+<tr><th id="247">247</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="248">248</th><td>{</td></tr>
+<tr><th id="249">249</th><td>  <a class="typedef" href="#pocl_mem_identifier" title='pocl_mem_identifier' data-type='struct _pocl_mem_identifier' data-ref="pocl_mem_identifier">pocl_mem_identifier</a> *<dfn class="decl" id="(anonymous)::src_mem_id" title='(anonymous struct)::src_mem_id' data-ref="(anonymous)::src_mem_id">src_mem_id</dfn>;</td></tr>
+<tr><th id="250">250</th><td>  <a class="typedef" href="#pocl_mem_identifier" title='pocl_mem_identifier' data-type='struct _pocl_mem_identifier' data-ref="pocl_mem_identifier">pocl_mem_identifier</a> *<dfn class="decl" id="(anonymous)::dst_mem_id" title='(anonymous struct)::dst_mem_id' data-ref="(anonymous)::dst_mem_id">dst_mem_id</dfn>;</td></tr>
+<tr><th id="251">251</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::dst_origin" title='(anonymous struct)::dst_origin' data-ref="(anonymous)::dst_origin">dst_origin</dfn>[<var>3</var>];</td></tr>
+<tr><th id="252">252</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::src_origin" title='(anonymous struct)::src_origin' data-ref="(anonymous)::src_origin">src_origin</dfn>[<var>3</var>];</td></tr>
+<tr><th id="253">253</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::region" title='(anonymous struct)::region' data-ref="(anonymous)::region">region</dfn>[<var>3</var>];</td></tr>
+<tr><th id="254">254</th><td>} <dfn class="typedef" id="_cl_command_copy_image" title='_cl_command_copy_image' data-type='struct _cl_command_copy_image' data-ref="_cl_command_copy_image">_cl_command_copy_image</dfn>;</td></tr>
+<tr><th id="255">255</th><td></td></tr>
+<tr><th id="256">256</th><td><i>/* clEnqueueFillImage */</i></td></tr>
+<tr><th id="257">257</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="258">258</th><td>{</td></tr>
+<tr><th id="259">259</th><td>  <a class="typedef" href="#pocl_mem_identifier" title='pocl_mem_identifier' data-type='struct _pocl_mem_identifier' data-ref="pocl_mem_identifier">pocl_mem_identifier</a> *<dfn class="decl" id="(anonymous)::mem_id" title='(anonymous struct)::mem_id' data-ref="(anonymous)::mem_id">mem_id</dfn>;</td></tr>
+<tr><th id="260">260</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::origin" title='(anonymous struct)::origin' data-ref="(anonymous)::origin">origin</dfn>[<var>3</var>];</td></tr>
+<tr><th id="261">261</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::region" title='(anonymous struct)::region' data-ref="(anonymous)::region">region</dfn>[<var>3</var>];</td></tr>
+<tr><th id="262">262</th><td>  <em>void</em> *<b>__restrict__</b> <dfn class="decl" id="(anonymous)::fill_pixel" title='(anonymous struct)::fill_pixel' data-ref="(anonymous)::fill_pixel">fill_pixel</dfn>;</td></tr>
+<tr><th id="263">263</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::pixel_size" title='(anonymous struct)::pixel_size' data-ref="(anonymous)::pixel_size">pixel_size</dfn>;</td></tr>
+<tr><th id="264">264</th><td>} <dfn class="typedef" id="_cl_command_fill_image" title='_cl_command_fill_image' data-type='struct _cl_command_fill_image' data-ref="_cl_command_fill_image">_cl_command_fill_image</dfn>;</td></tr>
+<tr><th id="265">265</th><td></td></tr>
+<tr><th id="266">266</th><td><i>/* clEnqueueMarkerWithWaitlist */</i></td></tr>
+<tr><th id="267">267</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="268">268</th><td>{</td></tr>
+<tr><th id="269">269</th><td>  <em>void</em> *<dfn class="decl" id="(anonymous)::data" title='(anonymous struct)::data' data-ref="(anonymous)::data">data</dfn>;</td></tr>
+<tr><th id="270">270</th><td>  <em>int</em> <dfn class="decl" id="(anonymous)::has_wait_list" title='(anonymous struct)::has_wait_list' data-ref="(anonymous)::has_wait_list">has_wait_list</dfn>;</td></tr>
+<tr><th id="271">271</th><td>} <dfn class="typedef" id="_cl_command_marker" title='_cl_command_marker' data-type='struct _cl_command_marker' data-ref="_cl_command_marker">_cl_command_marker</dfn>;</td></tr>
+<tr><th id="272">272</th><td></td></tr>
+<tr><th id="273">273</th><td><i>/* clEnqueueBarrierWithWaitlist */</i></td></tr>
+<tr><th id="274">274</th><td><b>typedef</b> <a class="typedef" href="#_cl_command_marker" title='_cl_command_marker' data-type='struct _cl_command_marker' data-ref="_cl_command_marker">_cl_command_marker</a> <dfn class="typedef" id="_cl_command_barrier" title='_cl_command_barrier' data-type='_cl_command_marker' data-ref="_cl_command_barrier">_cl_command_barrier</dfn>;</td></tr>
+<tr><th id="275">275</th><td></td></tr>
+<tr><th id="276">276</th><td><i>/* clEnqueueMigrateMemObjects */</i></td></tr>
+<tr><th id="277">277</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="278">278</th><td>{</td></tr>
+<tr><th id="279">279</th><td>  <em>void</em> *<dfn class="decl" id="(anonymous)::data" title='(anonymous struct)::data' data-ref="(anonymous)::data">data</dfn>;</td></tr>
+<tr><th id="280">280</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::num_mem_objects" title='(anonymous struct)::num_mem_objects' data-ref="(anonymous)::num_mem_objects">num_mem_objects</dfn>;</td></tr>
+<tr><th id="281">281</th><td>  <a class="typedef" href="CL/cl.h.html#cl_mem" title='cl_mem' data-type='struct _cl_mem *' data-ref="cl_mem">cl_mem</a> *<dfn class="decl" id="(anonymous)::mem_objects" title='(anonymous struct)::mem_objects' data-ref="(anonymous)::mem_objects">mem_objects</dfn>;</td></tr>
+<tr><th id="282">282</th><td>  <a class="typedef" href="CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> *<dfn class="decl" id="(anonymous)::source_devices" title='(anonymous struct)::source_devices' data-ref="(anonymous)::source_devices">source_devices</dfn>;</td></tr>
+<tr><th id="283">283</th><td>} <dfn class="typedef" id="_cl_command_migrate" title='_cl_command_migrate' data-type='struct _cl_command_migrate' data-ref="_cl_command_migrate">_cl_command_migrate</dfn>;</td></tr>
+<tr><th id="284">284</th><td></td></tr>
+<tr><th id="285">285</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="286">286</th><td>{</td></tr>
+<tr><th id="287">287</th><td>  <em>void</em>* <dfn class="decl" id="(anonymous)::data" title='(anonymous struct)::data' data-ref="(anonymous)::data">data</dfn>;</td></tr>
+<tr><th id="288">288</th><td>  <em>void</em>* <dfn class="decl" id="(anonymous)::queue" title='(anonymous struct)::queue' data-ref="(anonymous)::queue">queue</dfn>;</td></tr>
+<tr><th id="289">289</th><td>  <em>unsigned</em>  <dfn class="decl" id="(anonymous)::num_svm_pointers" title='(anonymous struct)::num_svm_pointers' data-ref="(anonymous)::num_svm_pointers">num_svm_pointers</dfn>;</td></tr>
+<tr><th id="290">290</th><td>  <em>void</em>  **<dfn class="decl" id="(anonymous)::svm_pointers" title='(anonymous struct)::svm_pointers' data-ref="(anonymous)::svm_pointers">svm_pointers</dfn>;</td></tr>
+<tr><th id="291">291</th><td>  <em>void</em> (<a class="macro" href="CL/cl_platform.h.html#45" title="" data-ref="_M/CL_CALLBACK">CL_CALLBACK</a>  *<dfn class="decl" id="(anonymous)::pfn_free_func" title='(anonymous struct)::pfn_free_func' data-ref="(anonymous)::pfn_free_func">pfn_free_func</dfn>) ( <a class="typedef" href="CL/cl.h.html#cl_command_queue" title='cl_command_queue' data-type='struct _cl_command_queue *' data-ref="cl_command_queue">cl_command_queue</a> <dfn class="local col5 decl" id="285queue" title='queue' data-type='cl_command_queue' data-ref="285queue">queue</dfn>,</td></tr>
+<tr><th id="292">292</th><td>                                       <em>unsigned</em> <dfn class="local col6 decl" id="286num_svm_pointers" title='num_svm_pointers' data-type='unsigned int' data-ref="286num_svm_pointers">num_svm_pointers</dfn>,</td></tr>
+<tr><th id="293">293</th><td>                                       <em>void</em> *<dfn class="local col7 decl" id="287svm_pointers" title='svm_pointers' data-type='void **' data-ref="287svm_pointers">svm_pointers</dfn>[],</td></tr>
+<tr><th id="294">294</th><td>                                       <em>void</em>  *<dfn class="local col8 decl" id="288user_data" title='user_data' data-type='void *' data-ref="288user_data">user_data</dfn>);</td></tr>
+<tr><th id="295">295</th><td>} <dfn class="typedef" id="_cl_command_svm_free" title='_cl_command_svm_free' data-type='struct _cl_command_svm_free' data-ref="_cl_command_svm_free">_cl_command_svm_free</dfn>;</td></tr>
+<tr><th id="296">296</th><td></td></tr>
+<tr><th id="297">297</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="298">298</th><td>{</td></tr>
+<tr><th id="299">299</th><td>  <em>void</em>* <dfn class="decl" id="(anonymous)::svm_ptr" title='(anonymous struct)::svm_ptr' data-ref="(anonymous)::svm_ptr">svm_ptr</dfn>;</td></tr>
+<tr><th id="300">300</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::size" title='(anonymous struct)::size' data-ref="(anonymous)::size">size</dfn>;</td></tr>
+<tr><th id="301">301</th><td>  <a class="typedef" href="CL/cl.h.html#cl_map_flags" title='cl_map_flags' data-type='cl_bitfield' data-ref="cl_map_flags">cl_map_flags</a> <dfn class="decl" id="(anonymous)::flags" title='(anonymous struct)::flags' data-ref="(anonymous)::flags">flags</dfn>;</td></tr>
+<tr><th id="302">302</th><td>} <dfn class="typedef" id="_cl_command_svm_map" title='_cl_command_svm_map' data-type='struct _cl_command_svm_map' data-ref="_cl_command_svm_map">_cl_command_svm_map</dfn>;</td></tr>
+<tr><th id="303">303</th><td></td></tr>
+<tr><th id="304">304</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="305">305</th><td>{</td></tr>
+<tr><th id="306">306</th><td>  <em>void</em>* <dfn class="decl" id="(anonymous)::svm_ptr" title='(anonymous struct)::svm_ptr' data-ref="(anonymous)::svm_ptr">svm_ptr</dfn>;</td></tr>
+<tr><th id="307">307</th><td>} <dfn class="typedef" id="_cl_command_svm_unmap" title='_cl_command_svm_unmap' data-type='struct _cl_command_svm_unmap' data-ref="_cl_command_svm_unmap">_cl_command_svm_unmap</dfn>;</td></tr>
+<tr><th id="308">308</th><td></td></tr>
+<tr><th id="309">309</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="310">310</th><td>{</td></tr>
+<tr><th id="311">311</th><td>  <em>const</em> <em>void</em> *<b>__restrict__</b> <dfn class="decl" id="(anonymous)::src" title='(anonymous struct)::src' data-ref="(anonymous)::src">src</dfn>;</td></tr>
+<tr><th id="312">312</th><td>  <em>void</em> *<b>__restrict__</b> <dfn class="decl" id="(anonymous)::dst" title='(anonymous struct)::dst' data-ref="(anonymous)::dst">dst</dfn>;</td></tr>
+<tr><th id="313">313</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::size" title='(anonymous struct)::size' data-ref="(anonymous)::size">size</dfn>;</td></tr>
+<tr><th id="314">314</th><td>} <dfn class="typedef" id="_cl_command_svm_cpy" title='_cl_command_svm_cpy' data-type='struct _cl_command_svm_cpy' data-ref="_cl_command_svm_cpy">_cl_command_svm_cpy</dfn>;</td></tr>
+<tr><th id="315">315</th><td></td></tr>
+<tr><th id="316">316</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="317">317</th><td>{</td></tr>
+<tr><th id="318">318</th><td>  <em>void</em> *<b>__restrict__</b> <dfn class="decl" id="(anonymous)::svm_ptr" title='(anonymous struct)::svm_ptr' data-ref="(anonymous)::svm_ptr">svm_ptr</dfn>;</td></tr>
+<tr><th id="319">319</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::size" title='(anonymous struct)::size' data-ref="(anonymous)::size">size</dfn>;</td></tr>
+<tr><th id="320">320</th><td>  <em>void</em> *<b>__restrict__</b> <dfn class="decl" id="(anonymous)::pattern" title='(anonymous struct)::pattern' data-ref="(anonymous)::pattern">pattern</dfn>;</td></tr>
+<tr><th id="321">321</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="(anonymous)::pattern_size" title='(anonymous struct)::pattern_size' data-ref="(anonymous)::pattern_size">pattern_size</dfn>;</td></tr>
+<tr><th id="322">322</th><td>} <dfn class="typedef" id="_cl_command_svm_fill" title='_cl_command_svm_fill' data-type='struct _cl_command_svm_fill' data-ref="_cl_command_svm_fill">_cl_command_svm_fill</dfn>;</td></tr>
+<tr><th id="323">323</th><td></td></tr>
+<tr><th id="324">324</th><td><b>typedef</b> <b>union</b></td></tr>
+<tr><th id="325">325</th><td>{</td></tr>
+<tr><th id="326">326</th><td>  <a class="typedef" href="#_cl_command_run" title='_cl_command_run' data-type='struct _cl_command_run' data-ref="_cl_command_run">_cl_command_run</a> <dfn class="decl" id="(anonymous)::run" title='(anonymous union)::run' data-ref="(anonymous)::run">run</dfn>;</td></tr>
+<tr><th id="327">327</th><td>  <a class="typedef" href="#_cl_command_native" title='_cl_command_native' data-type='struct _cl_command_native' data-ref="_cl_command_native">_cl_command_native</a> <dfn class="decl" id="(anonymous)::native" title='(anonymous union)::native' data-ref="(anonymous)::native">native</dfn>;</td></tr>
+<tr><th id="328">328</th><td></td></tr>
+<tr><th id="329">329</th><td>  <a class="typedef" href="#_cl_command_read" title='_cl_command_read' data-type='struct _cl_command_read' data-ref="_cl_command_read">_cl_command_read</a> <dfn class="decl" id="(anonymous)::read" title='(anonymous union)::read' data-ref="(anonymous)::read">read</dfn>;</td></tr>
+<tr><th id="330">330</th><td>  <a class="typedef" href="#_cl_command_write" title='_cl_command_write' data-type='struct _cl_command_write' data-ref="_cl_command_write">_cl_command_write</a> <dfn class="decl" id="(anonymous)::write" title='(anonymous union)::write' data-ref="(anonymous)::write">write</dfn>;</td></tr>
+<tr><th id="331">331</th><td>  <a class="typedef" href="#_cl_command_copy" title='_cl_command_copy' data-type='struct _cl_command_copy' data-ref="_cl_command_copy">_cl_command_copy</a> <dfn class="decl" id="(anonymous)::copy" title='(anonymous union)::copy' data-ref="(anonymous)::copy">copy</dfn>;</td></tr>
+<tr><th id="332">332</th><td>  <a class="typedef" href="#_cl_command_read_rect" title='_cl_command_read_rect' data-type='struct _cl_command_read_rect' data-ref="_cl_command_read_rect">_cl_command_read_rect</a> <dfn class="decl" id="(anonymous)::read_rect" title='(anonymous union)::read_rect' data-ref="(anonymous)::read_rect">read_rect</dfn>;</td></tr>
+<tr><th id="333">333</th><td>  <a class="typedef" href="#_cl_command_write_rect" title='_cl_command_write_rect' data-type='struct _cl_command_write_rect' data-ref="_cl_command_write_rect">_cl_command_write_rect</a> <dfn class="decl" id="(anonymous)::write_rect" title='(anonymous union)::write_rect' data-ref="(anonymous)::write_rect">write_rect</dfn>;</td></tr>
+<tr><th id="334">334</th><td>  <a class="typedef" href="#_cl_command_copy_rect" title='_cl_command_copy_rect' data-type='struct _cl_command_copy_rect' data-ref="_cl_command_copy_rect">_cl_command_copy_rect</a> <dfn class="decl" id="(anonymous)::copy_rect" title='(anonymous union)::copy_rect' data-ref="(anonymous)::copy_rect">copy_rect</dfn>;</td></tr>
+<tr><th id="335">335</th><td>  <a class="typedef" href="#_cl_command_fill_mem" title='_cl_command_fill_mem' data-type='struct _cl_command_fill_mem' data-ref="_cl_command_fill_mem">_cl_command_fill_mem</a> <dfn class="decl" id="(anonymous)::memfill" title='(anonymous union)::memfill' data-ref="(anonymous)::memfill">memfill</dfn>;</td></tr>
+<tr><th id="336">336</th><td></td></tr>
+<tr><th id="337">337</th><td>  <a class="typedef" href="#_cl_command_read_image" title='_cl_command_read_image' data-type='struct _cl_command_read_image' data-ref="_cl_command_read_image">_cl_command_read_image</a> <dfn class="decl" id="(anonymous)::read_image" title='(anonymous union)::read_image' data-ref="(anonymous)::read_image">read_image</dfn>;</td></tr>
+<tr><th id="338">338</th><td>  <a class="typedef" href="#_cl_command_write_image" title='_cl_command_write_image' data-type='struct _cl_command_write_image' data-ref="_cl_command_write_image">_cl_command_write_image</a> <dfn class="decl" id="(anonymous)::write_image" title='(anonymous union)::write_image' data-ref="(anonymous)::write_image">write_image</dfn>;</td></tr>
+<tr><th id="339">339</th><td>  <a class="typedef" href="#_cl_command_copy_image" title='_cl_command_copy_image' data-type='struct _cl_command_copy_image' data-ref="_cl_command_copy_image">_cl_command_copy_image</a> <dfn class="decl" id="(anonymous)::copy_image" title='(anonymous union)::copy_image' data-ref="(anonymous)::copy_image">copy_image</dfn>;</td></tr>
+<tr><th id="340">340</th><td>  <a class="typedef" href="#_cl_command_fill_image" title='_cl_command_fill_image' data-type='struct _cl_command_fill_image' data-ref="_cl_command_fill_image">_cl_command_fill_image</a> <dfn class="decl" id="(anonymous)::fill_image" title='(anonymous union)::fill_image' data-ref="(anonymous)::fill_image">fill_image</dfn>;</td></tr>
+<tr><th id="341">341</th><td></td></tr>
+<tr><th id="342">342</th><td>  <a class="typedef" href="#_cl_command_map" title='_cl_command_map' data-type='struct _cl_command_map' data-ref="_cl_command_map">_cl_command_map</a> <dfn class="decl" id="(anonymous)::map" title='(anonymous union)::map' data-ref="(anonymous)::map">map</dfn>;</td></tr>
+<tr><th id="343">343</th><td>  <a class="typedef" href="#_cl_command_unmap" title='_cl_command_unmap' data-type='struct _cl_command_unmap' data-ref="_cl_command_unmap">_cl_command_unmap</a> <dfn class="decl" id="(anonymous)::unmap" title='(anonymous union)::unmap' data-ref="(anonymous)::unmap">unmap</dfn>;</td></tr>
+<tr><th id="344">344</th><td></td></tr>
+<tr><th id="345">345</th><td>  <a class="typedef" href="#_cl_command_marker" title='_cl_command_marker' data-type='struct _cl_command_marker' data-ref="_cl_command_marker">_cl_command_marker</a> <dfn class="decl" id="(anonymous)::marker" title='(anonymous union)::marker' data-ref="(anonymous)::marker">marker</dfn>;</td></tr>
+<tr><th id="346">346</th><td>  <a class="typedef" href="#_cl_command_barrier" title='_cl_command_barrier' data-type='_cl_command_marker' data-ref="_cl_command_barrier">_cl_command_barrier</a> <dfn class="decl" id="(anonymous)::barrier" title='(anonymous union)::barrier' data-ref="(anonymous)::barrier">barrier</dfn>;</td></tr>
+<tr><th id="347">347</th><td>  <a class="typedef" href="#_cl_command_migrate" title='_cl_command_migrate' data-type='struct _cl_command_migrate' data-ref="_cl_command_migrate">_cl_command_migrate</a> <dfn class="decl" id="(anonymous)::migrate" title='(anonymous union)::migrate' data-ref="(anonymous)::migrate">migrate</dfn>;</td></tr>
+<tr><th id="348">348</th><td></td></tr>
+<tr><th id="349">349</th><td>  <a class="typedef" href="#_cl_command_svm_free" title='_cl_command_svm_free' data-type='struct _cl_command_svm_free' data-ref="_cl_command_svm_free">_cl_command_svm_free</a> <dfn class="decl" id="(anonymous)::svm_free" title='(anonymous union)::svm_free' data-ref="(anonymous)::svm_free">svm_free</dfn>;</td></tr>
+<tr><th id="350">350</th><td>  <a class="typedef" href="#_cl_command_svm_map" title='_cl_command_svm_map' data-type='struct _cl_command_svm_map' data-ref="_cl_command_svm_map">_cl_command_svm_map</a> <dfn class="decl" id="(anonymous)::svm_map" title='(anonymous union)::svm_map' data-ref="(anonymous)::svm_map">svm_map</dfn>;</td></tr>
+<tr><th id="351">351</th><td>  <a class="typedef" href="#_cl_command_svm_unmap" title='_cl_command_svm_unmap' data-type='struct _cl_command_svm_unmap' data-ref="_cl_command_svm_unmap">_cl_command_svm_unmap</a> <dfn class="decl" id="(anonymous)::svm_unmap" title='(anonymous union)::svm_unmap' data-ref="(anonymous)::svm_unmap">svm_unmap</dfn>;</td></tr>
+<tr><th id="352">352</th><td>  <a class="typedef" href="#_cl_command_svm_cpy" title='_cl_command_svm_cpy' data-type='struct _cl_command_svm_cpy' data-ref="_cl_command_svm_cpy">_cl_command_svm_cpy</a> <dfn class="decl" id="(anonymous)::svm_memcpy" title='(anonymous union)::svm_memcpy' data-ref="(anonymous)::svm_memcpy">svm_memcpy</dfn>;</td></tr>
+<tr><th id="353">353</th><td>  <a class="typedef" href="#_cl_command_svm_fill" title='_cl_command_svm_fill' data-type='struct _cl_command_svm_fill' data-ref="_cl_command_svm_fill">_cl_command_svm_fill</a> <dfn class="decl" id="(anonymous)::svm_fill" title='(anonymous union)::svm_fill' data-ref="(anonymous)::svm_fill">svm_fill</dfn>;</td></tr>
+<tr><th id="354">354</th><td>} <dfn class="typedef" id="_cl_command_t" title='_cl_command_t' data-type='union _cl_command_t' data-ref="_cl_command_t">_cl_command_t</dfn>;</td></tr>
+<tr><th id="355">355</th><td></td></tr>
+<tr><th id="356">356</th><td><i>// one item in the command queue</i></td></tr>
+<tr><th id="357">357</th><td><b>typedef</b> <b>struct</b> <a class="type" href="#_cl_command_node" title='_cl_command_node' data-ref="_cl_command_node">_cl_command_node</a> <dfn class="typedef" id="_cl_command_node" title='_cl_command_node' data-type='struct _cl_command_node' data-ref="_cl_command_node">_cl_command_node</dfn>;</td></tr>
+<tr><th id="358">358</th><td><b>struct</b> <dfn class="type def" id="_cl_command_node" title='_cl_command_node' data-ref="_cl_command_node">_cl_command_node</dfn></td></tr>
+<tr><th id="359">359</th><td>{</td></tr>
+<tr><th id="360">360</th><td>  <a class="typedef" href="#_cl_command_t" title='_cl_command_t' data-type='union _cl_command_t' data-ref="_cl_command_t">_cl_command_t</a> <dfn class="decl" id="_cl_command_node::command" title='_cl_command_node::command' data-ref="_cl_command_node::command">command</dfn>;</td></tr>
+<tr><th id="361">361</th><td>  <a class="typedef" href="CL/cl.h.html#cl_command_type" title='cl_command_type' data-type='cl_uint' data-ref="cl_command_type">cl_command_type</a> <dfn class="decl" id="_cl_command_node::type" title='_cl_command_node::type' data-ref="_cl_command_node::type">type</dfn>;</td></tr>
+<tr><th id="362">362</th><td>  <a class="typedef" href="#_cl_command_node" title='_cl_command_node' data-type='struct _cl_command_node' data-ref="_cl_command_node">_cl_command_node</a> *<dfn class="decl" id="_cl_command_node::next" title='_cl_command_node::next' data-ref="_cl_command_node::next">next</dfn>; <i>// for linked-list storage</i></td></tr>
+<tr><th id="363">363</th><td>  <a class="typedef" href="#_cl_command_node" title='_cl_command_node' data-type='struct _cl_command_node' data-ref="_cl_command_node">_cl_command_node</a> *<dfn class="decl" id="_cl_command_node::prev" title='_cl_command_node::prev' data-ref="_cl_command_node::prev">prev</dfn>;</td></tr>
+<tr><th id="364">364</th><td>  <a class="typedef" href="CL/cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> <dfn class="decl" id="_cl_command_node::event" title='_cl_command_node::event' data-ref="_cl_command_node::event">event</dfn>;</td></tr>
+<tr><th id="365">365</th><td>  <em>const</em> <a class="typedef" href="CL/cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> *<dfn class="decl" id="_cl_command_node::event_wait_list" title='_cl_command_node::event_wait_list' data-ref="_cl_command_node::event_wait_list">event_wait_list</dfn>;</td></tr>
+<tr><th id="366">366</th><td>  <a class="typedef" href="CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="decl" id="_cl_command_node::device" title='_cl_command_node::device' data-ref="_cl_command_node::device">device</dfn>;</td></tr>
+<tr><th id="367">367</th><td>  <i>/* The index of the targeted device in the platform's device list. */</i></td></tr>
+<tr><th id="368">368</th><td>  <em>unsigned</em> <dfn class="decl" id="_cl_command_node::device_i" title='_cl_command_node::device_i' data-ref="_cl_command_node::device_i">device_i</dfn>;</td></tr>
+<tr><th id="369">369</th><td>  <a class="typedef" href="CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <dfn class="decl" id="_cl_command_node::ready" title='_cl_command_node::ready' data-ref="_cl_command_node::ready">ready</dfn>;</td></tr>
+<tr><th id="370">370</th><td>};</td></tr>
+<tr><th id="371">371</th><td></td></tr>
+<tr><th id="372">372</th><td><u>#<span data-ppcond="372">ifndef</span> <span class="macro" data-ref="_M/LLVM_10_0">LLVM_10_0</span></u></td></tr>
+<tr><th id="373">373</th><td><u>#define <dfn class="macro" id="_M/LLVM_OLDER_THAN_10_0" data-ref="_M/LLVM_OLDER_THAN_10_0">LLVM_OLDER_THAN_10_0</dfn> 1</u></td></tr>
+<tr><th id="374">374</th><td></td></tr>
+<tr><th id="375">375</th><td><u>#<span data-ppcond="375">ifndef</span> <span class="macro" data-ref="_M/LLVM_9_0">LLVM_9_0</span></u></td></tr>
+<tr><th id="376">376</th><td><u>#define <dfn class="macro" id="_M/LLVM_OLDER_THAN_9_0" data-ref="_M/LLVM_OLDER_THAN_9_0">LLVM_OLDER_THAN_9_0</dfn> 1</u></td></tr>
+<tr><th id="377">377</th><td></td></tr>
+<tr><th id="378">378</th><td><u>#<span data-ppcond="378">ifndef</span> <span class="macro" data-ref="_M/LLVM_8_0">LLVM_8_0</span></u></td></tr>
+<tr><th id="379">379</th><td><u>#define <dfn class="macro" id="_M/LLVM_OLDER_THAN_8_0" data-ref="_M/LLVM_OLDER_THAN_8_0">LLVM_OLDER_THAN_8_0</dfn> 1</u></td></tr>
+<tr><th id="380">380</th><td></td></tr>
+<tr><th id="381">381</th><td><u>#<span data-ppcond="381">ifndef</span> <span class="macro" data-ref="_M/LLVM_7_0">LLVM_7_0</span></u></td></tr>
+<tr><th id="382">382</th><td><u>#define <dfn class="macro" id="_M/LLVM_OLDER_THAN_7_0" data-ref="_M/LLVM_OLDER_THAN_7_0">LLVM_OLDER_THAN_7_0</dfn> 1</u></td></tr>
+<tr><th id="383">383</th><td></td></tr>
+<tr><th id="384">384</th><td><u>#<span data-ppcond="384">ifndef</span> <a class="macro" href="../config.h.html#143" data-ref="_M/LLVM_6_0">LLVM_6_0</a></u></td></tr>
+<tr><th id="385">385</th><td><u>#define LLVM_OLDER_THAN_6_0 1</u></td></tr>
+<tr><th id="386">386</th><td></td></tr>
+<tr><th id="387">387</th><td><u>#<span data-ppcond="384">endif</span></u></td></tr>
+<tr><th id="388">388</th><td><u>#<span data-ppcond="381">endif</span></u></td></tr>
+<tr><th id="389">389</th><td><u>#<span data-ppcond="378">endif</span></u></td></tr>
+<tr><th id="390">390</th><td><u>#<span data-ppcond="375">endif</span></u></td></tr>
+<tr><th id="391">391</th><td><u>#<span data-ppcond="372">endif</span></u></td></tr>
+<tr><th id="392">392</th><td></td></tr>
+<tr><th id="393">393</th><td><u>#<span data-ppcond="33">endif</span> /* POCL_H */</u></td></tr>
+<tr><th id="394">394</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../lib/CL/clBuildProgram.c.html'>pocl/lib/CL/clBuildProgram.c</a><br/>Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/Operator.h' l='496' ll='502' type='bool llvm::GEPOperator::hasAllConstantIndices() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Operator.h' l='493'>/// Return true if all of the indices of this GEP are constant integers.
+  /// If so, the result pointer and the first operand have
+  /// a constant offset between them.</doc>

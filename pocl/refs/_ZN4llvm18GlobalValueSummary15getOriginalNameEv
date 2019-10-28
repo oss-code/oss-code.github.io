@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='202' type='GlobalValue::GUID llvm::GlobalValueSummary::getOriginalName()'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='692' u='c' c='_ZN4llvm18ModuleSummaryIndex21addGlobalValueSummaryENS_9ValueInfoESt10unique_ptrINS_18GlobalValueSummaryESt14default_deleteIS3_EE'/>
+<doc f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='200'>/// Returns the hash of the original name, it is identical to the GUID for
+  /// externally visible symbols, but not for local ones.</doc>

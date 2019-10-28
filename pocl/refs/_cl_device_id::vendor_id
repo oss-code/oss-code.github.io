@@ -1,0 +1,12 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='640' type='cl_uint'/>
+<offset>512</offset>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='71' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='438' u='r' c='pocl_basic_init'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='439' u='w' c='pocl_basic_init'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='442' u='w' c='pocl_basic_init'/>
+<use f='pocl/lib/CL/devices/cpuinfo.c' l='301' u='r' c='pocl_cpuinfo_get_cpu_name_and_vendor'/>
+<use f='pocl/lib/CL/devices/cpuinfo.c' l='302' u='w' c='pocl_cpuinfo_get_cpu_name_and_vendor'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='176' u='w' c='pocl_cuda_init'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='181' u='r' c='pocl_pthread_init'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='182' u='w' c='pocl_pthread_init'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='185' u='w' c='pocl_pthread_init'/>

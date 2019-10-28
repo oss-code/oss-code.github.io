@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='242' type='int llvm::TargetTransformInfo::getIntrinsicCost(Intrinsic::ID IID, llvm::Type * RetTy, ArrayRef&lt;const llvm::Value *&gt; Arguments) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='239'>/// \brief Estimate the cost of an intrinsic when lowered.
+  ///
+  /// Mirrors the \c getCallCost method but uses an intrinsic identifier.</doc>

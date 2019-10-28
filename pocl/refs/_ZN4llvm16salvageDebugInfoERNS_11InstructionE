@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='376' type='void llvm::salvageDebugInfo(llvm::Instruction &amp; I)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='373'>/// Assuming the instruction \p I is going to be deleted, attempt to salvage any
+/// dbg.value intrinsics referring to \p I by rewriting its effect into a
+/// DIExpression.</doc>

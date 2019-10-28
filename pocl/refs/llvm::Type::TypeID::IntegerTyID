@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/IR/Type.h' l='71' type='11'/>
+<use f='include/llvm-6.0/llvm/IR/Type.h' l='197' u='r' c='_ZNK4llvm4Type11isIntegerTyEv'/>
+<use f='include/llvm-6.0/llvm/IR/Type.h' l='264' u='r' c='_ZNK4llvm4Type7isSizedEPNS_15SmallPtrSetImplIPS0_EE'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='44' u='r' c='_ZN4llvm11IntegerTypeC1ERNS_11LLVMContextEj'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='93' u='r' c='_ZN4llvm11IntegerType7classofEPKNS_4TypeE'/>
+<use f='include/llvm-6.0/llvm/IR/DataLayout.h' l='545' c='_ZNK4llvm10DataLayout17getTypeSizeInBitsEPNS_4TypeE'/>
+<doc f='include/llvm-6.0/llvm/IR/Type.h' l='69'>// Derived types... see DerivedTypes.h file.
+    // Make sure FirstDerivedTyID stays up to date!</doc>
+<doc f='include/llvm-6.0/llvm/IR/Type.h' l='71'>///&lt; 11: Arbitrary bit width integers</doc>

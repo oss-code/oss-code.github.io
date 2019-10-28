@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/IR/PassManager.h' l='657' ll='670' type='void llvm::AnalysisManager::clear(IRUnitT &amp; IR, llvm::StringRef Name)'/>
+<doc f='include/llvm-6.0/llvm/IR/PassManager.h' l='652'>/// \brief Clear any cached analysis results for a single unit of IR.
+  ///
+  /// This doesn&apos;t invalidate, but instead simply deletes, the relevant results.
+  /// It is useful when the IR is being removed and we want to clear out all the
+  /// memory pinned for it.</doc>

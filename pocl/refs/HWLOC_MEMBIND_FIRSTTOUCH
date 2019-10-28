@@ -1,0 +1,11 @@
+<dec f='include/hwloc.h' l='1637' type='1'/>
+<use f='include/hwloc/inlines.h' l='128' u='r' c='hwloc_alloc_membind_policy_nodeset'/>
+<use f='include/hwloc/inlines.h' l='142' u='r' c='hwloc_alloc_membind_policy'/>
+<doc f='include/hwloc.h' l='1629'>/** \brief Allocate memory
+   * but do not immediately bind it to a specific locality. Instead,
+   * each page in the allocation is bound only when it is first
+   * touched. Pages are individually bound to the local NUMA node of
+   * the first thread that touches it. If there is not enough memory
+   * on the node, allocation may be done in the specified cpuset
+   * before allocating on other nodes.
+   * \hideinitializer */</doc>

@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Support/Mutex.h' l='52' type='bool llvm::sys::MutexImpl::acquire()'/>
+<use f='include/llvm-6.0/llvm/Support/Mutex.h' l='101' u='c' c='_ZN4llvm3sys10SmartMutex4lockEv'/>
+<doc f='include/llvm-6.0/llvm/Support/Mutex.h' l='48'>/// Attempts to unconditionally acquire the lock. If the lock is held by
+      /// another thread, this method will wait until it can acquire the lock.
+      /// @returns false if any kind of error occurs, true otherwise.
+      /// @brief Unconditionally acquire the lock.</doc>

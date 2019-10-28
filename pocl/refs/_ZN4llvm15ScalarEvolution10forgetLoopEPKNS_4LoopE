@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='765' type='void llvm::ScalarEvolution::forgetLoop(const llvm::Loop * L)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='761'>/// This method should be called by the client when it has changed a loop in
+  /// a way that may effect ScalarEvolution&apos;s ability to compute a trip count,
+  /// or if the loop is deleted.  This call is potentially expensive for large
+  /// loop bodies.</doc>

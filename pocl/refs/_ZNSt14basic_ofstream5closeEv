@@ -1,0 +1,8 @@
+<def f='include/c++/7/fstream' l='838' ll='843' type='void std::basic_ofstream::close()'/>
+<use f='pocl/lib/llvmopencl/DebugHelpers.cc' l='193' u='c' c='_ZN4pocl7dumpCFGERN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPNS0_11SmallVectorIPNS_14ParallelRegionELj8EEEPSt3setIPNS0_10Bas7693485'/>
+<doc f='include/c++/7/fstream' l='832'>/**
+       *  @brief  Close the file.
+       *
+       *  Calls @c std::basic_filebuf::close().  If that function
+       *  fails, @c failbit is set in the stream&apos;s error state.
+       */</doc>

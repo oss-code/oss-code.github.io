@@ -1,0 +1,10 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='311' type='llvm::Pass * llvm::createLoopSimplifyPass()'/>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='123' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='303'>//===----------------------------------------------------------------------===//
+//
+// LoopSimplify - Insert Pre-header blocks into the CFG for every function in
+// the module.  This pass updates dominator information, loop information, and
+// does not add critical edges to the CFG.
+//
+//   AU.addRequiredID(LoopSimplifyID);
+//</doc>

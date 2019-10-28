@@ -1,0 +1,12 @@
+<dec f='include/hwloc/helper.h' l='867' type='hwloc_const_nodeset_t hwloc_topology_get_topology_nodeset(hwloc_topology_t topology)'/>
+<def f='include/hwloc/helper.h' l='868' ll='872' type='hwloc_const_nodeset_t hwloc_topology_get_topology_nodeset(hwloc_topology_t topology)'/>
+<doc f='include/hwloc/helper.h' l='856'>/** \brief Get topology node set
+ *
+ * \return the node set of memory of the system for which hwloc
+ * provides topology information. This is equivalent to the nodeset of the
+ * system object. If the topology is the result of a combination of several
+ * systems, NULL is returned.
+ *
+ * \note The returned nodeset is not newly allocated and should thus not be
+ * changed or freed; hwloc_bitmap_dup() must be used to obtain a local copy.
+ */</doc>

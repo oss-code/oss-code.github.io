@@ -1,0 +1,12 @@
+<def f='include/llvm-6.0/llvm/ADT/STLExtras.h' l='605' ll='628'/>
+<doc f='include/llvm-6.0/llvm/ADT/STLExtras.h' l='600'>/// Helper to store a sequence of ranges being concatenated and access them.
+///
+/// This is designed to facilitate providing actual storage when temporaries
+/// are passed into the constructor such that we can use it as part of range
+/// based for loops.</doc>
+<mbr r='llvm::detail::concat_range::Ranges' t='std::tuple&lt;RangeTs...&gt;'/>
+<fun r='_ZN4llvm6detail12concat_range10begin_implENS_14index_sequenceIJXspT_EEEE'/>
+<fun r='_ZN4llvm6detail12concat_range8end_implENS_14index_sequenceIJXspT_EEEE'/>
+<fun r='_ZN4llvm6detail12concat_rangeC1EDpOT0_'/>
+<fun r='_ZN4llvm6detail12concat_range5beginEv'/>
+<fun r='_ZN4llvm6detail12concat_range3endEv'/>

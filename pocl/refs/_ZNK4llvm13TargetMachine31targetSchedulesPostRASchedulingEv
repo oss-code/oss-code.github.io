@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/Target/TargetMachine.h' l='259' type='bool llvm::TargetMachine::targetSchedulesPostRAScheduling() const'/>
+<doc f='include/llvm-6.0/llvm/Target/TargetMachine.h' l='254'>/// True if subtarget inserts the final scheduling pass on its own.
+  ///
+  /// Branch relaxation, which must happen after block placement, can
+  /// on some targets (e.g. SystemZ) expose additional post-RA
+  /// scheduling opportunities.</doc>

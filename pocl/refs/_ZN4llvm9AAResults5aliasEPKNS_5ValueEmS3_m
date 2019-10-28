@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='328' ll='331' type='llvm::AliasResult llvm::AAResults::alias(const llvm::Value * V1, uint64_t V1Size, const llvm::Value * V2, uint64_t V2Size)'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='335' u='c' c='_ZN4llvm9AAResults5aliasEPKNS_5ValueES3_'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='364' u='c' c='_ZN4llvm9AAResults11isMustAliasEPKNS_5ValueES3_'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='327'>/// A convenience wrapper around the primary \c alias interface.</doc>

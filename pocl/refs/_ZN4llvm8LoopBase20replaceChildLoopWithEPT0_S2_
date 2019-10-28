@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='307' type='void llvm::LoopBase::replaceChildLoopWith(LoopT * OldChild, LoopT * NewChild)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='303'>/// This is used when splitting loops up. It replaces the OldChild entry in
+  /// our children list with NewChild, and updates the parent pointer of
+  /// OldChild to be null and the NewChild to be this loop.
+  /// This updates the loop depth of the new child.</doc>

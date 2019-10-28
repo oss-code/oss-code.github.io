@@ -1,0 +1,6 @@
+<def f='pocl/include/CL/cl2.hpp' l='2976' ll='2977' type='void cl::Context::Context(const cl_context &amp; context, bool retainObject = false)'/>
+<doc f='pocl/include/CL/cl2.hpp' l='2971'>/*! \brief Constructor from cl_context - takes ownership.
+     *
+     *  This effectively transfers ownership of a refcount on the cl_context
+     *  into the new Context object.
+     */</doc>

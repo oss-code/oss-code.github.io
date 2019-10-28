@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='121' ll='123' type='static unsigned int llvm::APInt::whichBit(unsigned int bitPosition)'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='132' u='c' c='_ZN4llvm5APInt7maskBitEj'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='117'>/// \brief Determine which bit in a word a bit is in.
+  ///
+  /// \returns the bit position in a word for the specified bit position
+  /// in the APInt.</doc>

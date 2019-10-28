@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='281' type='FoldingSet&lt;llvm::PMTopLevelManager::AUFoldingSetNode&gt;'/>
+<offset>4352</offset>
+<doc f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='278'>// Contains all of the unique combinations of AnalysisUsage.  This is helpful
+  // when we have multiple instances of the same pass since they&apos;ll usually
+  // have the same analysis usage and can share storage.</doc>

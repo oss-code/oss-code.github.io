@@ -1,0 +1,9 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2446' type='LLVMValueRef LLVMGetNextInstruction(LLVMValueRef Inst)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2438'>/**
+ * Obtain the instruction that occurs after the one specified.
+ *
+ * The next instruction will be from the same basic block.
+ *
+ * If this is the last instruction in a basic block, NULL will be
+ * returned.
+ */</doc>

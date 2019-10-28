@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='759' type='static llvm::Constant * llvm::ConstantDataVector::getFP(llvm::LLVMContext &amp; Context, ArrayRef&lt;uint16_t&gt; Elts)'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='754'>/// getFP() constructors - Return a constant with vector type with an element
+  /// count and element type of float with the precision matching the number of
+  /// bits in the ArrayRef passed in.  (i.e. half for 16bits, float for 32bits,
+  /// double for 64bits) Note that this can return a ConstantAggregateZero
+  /// object.</doc>

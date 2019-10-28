@@ -1,0 +1,21 @@
+<inh f='include/llvm-6.0/llvm/IR/PassManager.h' l='365' c='llvm::PassInfoMixin'/>
+<def f='include/llvm-6.0/llvm/Analysis/AliasAnalysisEvaluator.h' l='34' ll='67'/>
+<size>104</size>
+<mbr r='llvm::AAEvaluator::FunctionCount' o='0' t='int64_t'/>
+<mbr r='llvm::AAEvaluator::NoAliasCount' o='64' t='int64_t'/>
+<mbr r='llvm::AAEvaluator::MayAliasCount' o='128' t='int64_t'/>
+<mbr r='llvm::AAEvaluator::PartialAliasCount' o='192' t='int64_t'/>
+<mbr r='llvm::AAEvaluator::MustAliasCount' o='256' t='int64_t'/>
+<mbr r='llvm::AAEvaluator::NoModRefCount' o='320' t='int64_t'/>
+<mbr r='llvm::AAEvaluator::ModCount' o='384' t='int64_t'/>
+<mbr r='llvm::AAEvaluator::RefCount' o='448' t='int64_t'/>
+<mbr r='llvm::AAEvaluator::ModRefCount' o='512' t='int64_t'/>
+<mbr r='llvm::AAEvaluator::MustCount' o='576' t='int64_t'/>
+<mbr r='llvm::AAEvaluator::MustRefCount' o='640' t='int64_t'/>
+<mbr r='llvm::AAEvaluator::MustModCount' o='704' t='int64_t'/>
+<mbr r='llvm::AAEvaluator::MustModRefCount' o='768' t='int64_t'/>
+<fun r='_ZN4llvm11AAEvaluatorC1Ev'/>
+<fun r='_ZN4llvm11AAEvaluatorC1EOS0_'/>
+<fun r='_ZN4llvm11AAEvaluatorD1Ev'/>
+<fun r='_ZN4llvm11AAEvaluator3runERNS_8FunctionERNS_15AnalysisManagerIS1_JEEE'/>
+<fun r='_ZN4llvm11AAEvaluator11runInternalERNS_8FunctionERNS_9AAResultsE'/>

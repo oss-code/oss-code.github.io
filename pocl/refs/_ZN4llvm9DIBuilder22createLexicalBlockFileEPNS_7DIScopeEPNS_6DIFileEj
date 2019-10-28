@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='669' type='llvm::DILexicalBlockFile * llvm::DIBuilder::createLexicalBlockFile(llvm::DIScope * Scope, llvm::DIFile * File, unsigned int Discriminator = 0)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='663'>/// This creates a descriptor for a lexical block with a new file
+    /// attached. This merely extends the existing
+    /// lexical block as it crosses a file.
+    /// \param Scope       Lexical block.
+    /// \param File        Source file.
+    /// \param Discriminator DWARF path discriminator value.</doc>

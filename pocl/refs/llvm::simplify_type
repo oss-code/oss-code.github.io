@@ -1,0 +1,62 @@
+<def f='include/llvm-6.0/llvm/Support/Casting.h' l='34' ll='39'/>
+<def f='include/llvm-6.0/llvm/Support/Casting.h' l='41' ll='51'/>
+<def f='include/llvm-6.0/llvm/IR/Use.h' l='166' ll='170'/>
+<def f='include/llvm-6.0/llvm/IR/Use.h' l='171' ll='175'/>
+<def f='include/llvm-6.0/llvm/ADT/ilist_iterator.h' l='186' ll='192'/>
+<def f='include/llvm-6.0/llvm/ADT/ilist_iterator.h' l='193' ll='195'/>
+<def f='include/llvm-6.0/llvm/IR/User.h' l='302' ll='308'/>
+<def f='include/llvm-6.0/llvm/IR/User.h' l='309' ll='315'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='752' ll='756'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='758' ll='762'/>
+<def f='include/llvm-6.0/llvm/IR/TrackingMDRef.h' l='146' ll='150'/>
+<def f='include/llvm-6.0/llvm/IR/TrackingMDRef.h' l='152' ll='158'/>
+<def f='include/llvm-6.0/llvm/IR/TrackingMDRef.h' l='160' ll='166'/>
+<def f='include/llvm-6.0/llvm/IR/TrackingMDRef.h' l='168' ll='174'/>
+<def f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='164' ll='168'/>
+<def f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='169' ll='173'/>
+<def f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='209' ll='213'/>
+<def f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='214' ll='220'/>
+<size>1</size>
+<doc f='include/llvm-6.0/llvm/Support/Casting.h' l='26'>//===----------------------------------------------------------------------===//
+//                          isa&lt;x&gt; Support Templates
+//===----------------------------------------------------------------------===//
+
+// Define a template that can be specialized by smart pointers to reflect the
+// fact that they are automatically dereferenced, and are not involved with the
+// template selection process...  the default implementation is a noop.
+//</doc>
+<doc f='include/llvm-6.0/llvm/IR/Use.h' l='164'>/// \brief Allow clients to treat uses just like values when using
+/// casting operators.</doc>
+<doc f='include/llvm-6.0/llvm/ADT/ilist_iterator.h' l='182'>/// Allow ilist_iterators to convert into pointers to a node automatically when
+/// used by the dyn_cast, cast, isa mechanisms...
+///
+/// FIXME: remove this, since there is no implicit conversion to NodeTy.</doc>
+<doc f='include/llvm-6.0/llvm/IR/TrackingMDRef.h' l='145'>// Expose the underlying metadata to casting.</doc>
+<doc f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='162'>// Specialize simplify_type to allow WeakVH to participate in
+// dyn_cast, isa, etc.</doc>
+<doc f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='207'>// Specialize simplify_type to allow WeakTrackingVH to participate in
+// dyn_cast, isa, etc.</doc>
+<fun r='_ZN4llvm13simplify_type18getSimplifiedValueERT_'/>
+<fun r='_ZN4llvm13simplify_typeIKT_E18getSimplifiedValueERS2_'/>
+<fun r='_ZN4llvm13simplify_typeINS_3UseEE18getSimplifiedValueERS1_'/>
+<fun r='_ZN4llvm13simplify_typeIKNS_3UseEE18getSimplifiedValueERS2_'/>
+<fun r='_ZN4llvm13simplify_typeINS_14ilist_iteratorIT_Lb0EXT0_EEEE18getSimplifiedValueERKS3_'/>
+<fun r='_ZN4llvm13simplify_typeIPNS_3UseEE18getSimplifiedValueERS2_'/>
+<fun r='_ZN4llvm13simplify_typeIPKNS_3UseEE18getSimplifiedValueERS3_'/>
+<fun r='_ZN4llvm13simplify_typeINS_9MDOperandEE18getSimplifiedValueERS1_'/>
+<fun r='_ZN4llvm13simplify_typeIKNS_9MDOperandEE18getSimplifiedValueERS2_'/>
+<fun r='_ZN4llvm13simplify_typeINS_13TrackingMDRefEE18getSimplifiedValueERS1_'/>
+<fun r='_ZN4llvm13simplify_typeIKNS_13TrackingMDRefEE18getSimplifiedValueERS2_'/>
+<fun r='_ZN4llvm13simplify_typeINS_18TypedTrackingMDRefIT_EEE18getSimplifiedValueERS3_'/>
+<fun r='_ZN4llvm13simplify_typeIKNS_18TypedTrackingMDRefIT_EEE18getSimplifiedValueERS4_'/>
+<fun r='_ZN4llvm13simplify_typeINS_6WeakVHEE18getSimplifiedValueERS1_'/>
+<fun r='_ZN4llvm13simplify_typeIKNS_6WeakVHEE18getSimplifiedValueERS2_'/>
+<fun r='_ZN4llvm13simplify_typeINS_14WeakTrackingVHEE18getSimplifiedValueERS1_'/>
+<fun r='_ZN4llvm13simplify_typeIKNS_14WeakTrackingVHEE18getSimplifiedValueERS2_'/>
+<def f='include/llvm-6.0/llvm/ADT/IntrusiveRefCntPtr.h' l='252' ll='258'/>
+<def f='include/llvm-6.0/llvm/ADT/IntrusiveRefCntPtr.h' l='260' ll='266'/>
+<fun r='_ZN4llvm13simplify_typeINS_18IntrusiveRefCntPtrIT_EEE18getSimplifiedValueERS3_'/>
+<fun r='_ZN4llvm13simplify_typeIKNS_18IntrusiveRefCntPtrIT_EEE18getSimplifiedValueERS4_'/>
+<def f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='241' ll='247'/>
+<def f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='249' ll='251'/>
+<fun r='_ZN4llvm13simplify_typeIKNS_14TypedDINodeRefIT_EEE18getSimplifiedValueERS4_'/>

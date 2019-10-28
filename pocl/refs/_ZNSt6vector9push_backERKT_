@@ -1,0 +1,51 @@
+<def f='include/c++/7/bits/stl_vector.h' l='938' ll='949' type='void std::vector::push_back(const value_type &amp; __x)'/>
+<use f='include/llvm-6.0/llvm/PassAnalysisSupport.h' l='174' u='c' c='_ZN4llvm16AnalysisResolver20addAnalysisImplsPairEPKvPNS_4PassE'/>
+<use f='include/llvm-6.0/llvm/PassInfo.h' l='109' u='c' c='_ZN4llvm8PassInfo23addInterfaceImplementedEPKS0_'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='453' u='c' c='_ZN4llvm15FunctionSummary11addTypeTestEm'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='308' u='c' c='_ZN4llvm9AAResults17addAADependencyIDEPNS_11AnalysisKeyE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='621' u='c' c='_Z23convertPtrArgsToOffsetsPN4llvm6ModuleEPKcjPNS_14GlobalVariableE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='622' u='c' c='_Z23convertPtrArgsToOffsetsPN4llvm6ModuleEPKcjPNS_14GlobalVariableE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='640' u='c' c='_Z23convertPtrArgsToOffsetsPN4llvm6ModuleEPKcjPNS_14GlobalVariableE'/>
+<doc f='include/c++/7/bits/stl_vector.h' l='928'>/**
+       *  @brief  Add data to the end of the %vector.
+       *  @param  __x  Data to be added.
+       *
+       *  This is a typical stack operation.  The function creates an
+       *  element at the end of the %vector and assigns the given data
+       *  to it.  Due to the nature of a %vector this operation can be
+       *  done in constant time if the %vector has preallocated space
+       *  available.
+       */</doc>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='365' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='450' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='451' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='457' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='479' u='c' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='101' u='c' c='_ZN12_GLOBAL__N_115AutomaticLocals11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='316' u='c' c='_ZN4pocl22BarrierTailReplication12FindSubgraphERSt6vectorIPN4llvm10BasicBlockESaIS4_EES4_'/>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='345' u='c' c='_ZN4pocl22BarrierTailReplication20ReplicateBasicBlocksERSt6vectorIPN4llvm10BasicBlockESaIS4_EERNS2_8ValueMapIPKNS2_5ValueENS2_14WeakTrackingVHENS2_14V12045754'/>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='267' u='c' c='_ZN17BreakConstantGEPs13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='310' u='c' c='_ZN17BreakConstantGEPs13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='323' u='c' c='_ZN17BreakConstantGEPs13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/ImplicitConditionalBarriers.cc' l='111' u='c' c='_ZN4pocl27ImplicitConditionalBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/IsolateRegions.cc' l='143' u='c' c='_ZN4pocl14IsolateRegions13addDummyAfterEPN4llvm6RegionEPNS1_10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/IsolateRegions.cc' l='167' u='c' c='_ZN4pocl14IsolateRegions14addDummyBeforeEPN4llvm6RegionEPNS1_10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='112' u='c' c='pocl_rm_rf'/>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='114' u='c' c='pocl_rm_rf'/>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='114' u='c' c='_ZN4pocl25OptimizeWorkItemFuncCalls13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='159' u='c' c='_ZN4pocl25OptimizeWorkItemFuncCalls13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/PHIsToAllocas.cc' l='80' u='c' c='_ZN4pocl13PHIsToAllocas13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='131' u='c' c='_ZN4pocl14ParallelRegion9replicateERN4llvm8ValueMapIPKNS1_5ValueENS1_14WeakTrackingVHENS1_14ValueMapConfigIS5_NS1_3sys10SmartMutexILb0EEEEEEERKNS1_5TwineE'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='223' u='c' c='_ZN4pocl26VariableUniformityAnalysis19analyzeBBDivergenceEPN4llvm8FunctionEPNS1_10BasicBlockES5_'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='232' u='c' c='_ZN4pocl26VariableUniformityAnalysis19analyzeBBDivergenceEPN4llvm8FunctionEPNS1_10BasicBlockES5_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='227' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='483' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='679' u='c' c='_ZN4pocl13WorkitemLoops23FixMultiRegionVariablesEPNS_14ParallelRegionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='929' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='1045' u='c' c='_ZN4pocl13WorkitemLoops21AddContextSaveRestoreEPN4llvm11InstructionE'/>
+<use f='pocl/include/CL/cl2.hpp' l='9711' u='c' c='_ZN2cl11EnqueueArgsC1ENS_5EventENS_7NDRangeE'/>
+<use f='pocl/include/CL/cl2.hpp' l='9720' u='c' c='_ZN2cl11EnqueueArgsC1ENS_5EventENS_7NDRangeES2_'/>
+<use f='pocl/include/CL/cl2.hpp' l='9729' u='c' c='_ZN2cl11EnqueueArgsC1ENS_5EventENS_7NDRangeES2_S2_'/>
+<use f='pocl/include/CL/cl2.hpp' l='9795' u='c' c='_ZN2cl11EnqueueArgsC1ERNS_12CommandQueueENS_5EventENS_7NDRangeE'/>
+<use f='pocl/include/CL/cl2.hpp' l='9804' u='c' c='_ZN2cl11EnqueueArgsC1ERNS_12CommandQueueENS_5EventENS_7NDRangeES4_'/>
+<use f='pocl/include/CL/cl2.hpp' l='9813' u='c' c='_ZN2cl11EnqueueArgsC1ERNS_12CommandQueueENS_5EventENS_7NDRangeES4_S4_'/>

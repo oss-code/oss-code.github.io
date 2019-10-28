@@ -1,0 +1,8 @@
+<dec f='include/hwloc.h' l='1199' type='hwloc_obj_t hwloc_get_obj_by_depth(hwloc_topology_t topology, unsigned int depth, unsigned int idx)'/>
+<use f='include/hwloc/helper.h' l='130' u='c' c='hwloc_get_obj_inside_cpuset_by_depth'/>
+<use f='include/hwloc/helper.h' l='179' u='c' c='hwloc_get_nbobjs_inside_cpuset_by_depth'/>
+<use f='include/hwloc/helper.h' l='466' u='c' c='hwloc_get_cache_type_depth'/>
+<use f='include/hwloc/inlines.h' l='81' u='c' c='hwloc_get_obj_by_type'/>
+<use f='include/hwloc/inlines.h' l='88' u='c' c='hwloc_get_next_obj_by_depth'/>
+<use f='include/hwloc/inlines.h' l='107' u='c' c='hwloc_get_root_obj'/>
+<doc f='include/hwloc.h' l='1198'>/** \brief Returns the topology object at logical index \p idx from depth \p depth */</doc>

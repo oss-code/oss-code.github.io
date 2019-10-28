@@ -1,0 +1,4 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='404' type='void *(*)(cl_device_id, cl_svm_mem_flags, size_t)'/>
+<offset>1280</offset>
+<use f='pocl/lib/CL/clSVMAlloc.c' l='96' u='r' c='POclSVMAlloc'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='140' u='w' c='pocl_basic_init_device_ops'/>

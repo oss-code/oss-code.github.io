@@ -1,0 +1,28 @@
+<inh f='include/llvm-6.0/llvm/Pass.h' l='225' c='llvm::ModulePass'/>
+<def f='pocl/lib/llvmopencl/Workgroup.h' l='35' ll='98'/>
+<size>112</size>
+<smbr r='pocl::Workgroup::ID' t='char'/>
+<fun r='_ZN4pocl9WorkgroupC1Ev'/>
+<fun r='_ZN4pocl9Workgroup11runOnModuleERN4llvm6ModuleE'/>
+<fun r='_ZN4pocl9Workgroup17isKernelToProcessERKN4llvm8FunctionE'/>
+<fun r='_ZN4pocl9Workgroup20hasWorkgroupBarriersERKN4llvm8FunctionE'/>
+<fun r='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<fun r='_ZN4pocl9Workgroup18createGridLauncherEPN4llvm8FunctionES3_NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<fun r='_ZN4pocl9Workgroup32createArgBufferWorkgroupLauncherEPN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<fun r='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<fun r='_ZN4pocl9Workgroup27createFastWorkgroupLauncherEPN4llvm8FunctionE'/>
+<fun r='_ZN4pocl9Workgroup33globalHandlesToContextStructLoadsERN4llvm9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEOKSt6vectorINSt7__cxx111109236'/>
+<fun r='_ZN4pocl9Workgroup14addPlaceHolderERN4llvm9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEPNS1_5ValueENSt7__cxx1112basic_stringIcSt1115963950'/>
+<fun r='_ZN4pocl9Workgroup16privatizeGlobalsEPN4llvm8FunctionERNS1_9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEOKSt6vectorINSt7__cxx1112b2085380'/>
+<fun r='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<fun r='_ZN4pocl9Workgroup21createLoadFromContextERN4llvm9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEii'/>
+<fun r='_ZN4pocl9Workgroup7addGEPsERN4llvm9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEiPKc'/>
+<mbr r='pocl::Workgroup::M' o='256' t='llvm::Module *'/>
+<mbr r='pocl::Workgroup::C' o='320' t='llvm::LLVMContext *'/>
+<mbr r='pocl::Workgroup::ContextArg' o='384' t='llvm::Argument *'/>
+<mbr r='pocl::Workgroup::GroupIdArgs' o='448' t='std::vector&lt;llvm::Value *&gt;'/>
+<mbr r='pocl::Workgroup::HiddenArgs' o='640' t='unsigned int'/>
+<mbr r='pocl::Workgroup::SizeTWidth' o='672' t='int'/>
+<mbr r='pocl::Workgroup::SizeT' o='704' t='llvm::Type *'/>
+<mbr r='pocl::Workgroup::PoclContextT' o='768' t='llvm::Type *'/>
+<mbr r='pocl::Workgroup::LauncherFuncT' o='832' t='llvm::FunctionType *'/>

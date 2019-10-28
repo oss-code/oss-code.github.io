@@ -1,0 +1,588 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>devices.c source code [pocl/lib/CL/devices/devices.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/CL/devices/devices.c'; var root_path = '../../../..'; var data_path = '../../../../../data';</script>
+<script src='../../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../../..'>pocl</a>/<a href='../..'>lib</a>/<a href='..'>CL</a>/<a href='./'>devices</a>/<a href='devices.c.html'>devices.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Definition of available OpenCL devices.</i></td></tr>
+<tr><th id="2">2</th><td><i></i></td></tr>
+<tr><th id="3">3</th><td><i>   Copyright (c) 2011 Universidad Rey Juan Carlos and</i></td></tr>
+<tr><th id="4">4</th><td><i>                 2012-2018 Pekka Jääskeläinen</i></td></tr>
+<tr><th id="5">5</th><td><i></i></td></tr>
+<tr><th id="6">6</th><td><i>   Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="7">7</th><td><i>   of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="8">8</th><td><i>   in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="9">9</th><td><i>   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="10">10</th><td><i>   copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="11">11</th><td><i>   furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="12">12</th><td><i></i></td></tr>
+<tr><th id="13">13</th><td><i>   The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="14">14</th><td><i>   all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="15">15</th><td><i></i></td></tr>
+<tr><th id="16">16</th><td><i>   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="17">17</th><td><i>   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="18">18</th><td><i>   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="19">19</th><td><i>   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="20">20</th><td><i>   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="21">21</th><td><i>   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="22">22</th><td><i>   THE SOFTWARE.</i></td></tr>
+<tr><th id="23">23</th><td><i>*/</i></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><u>#define <dfn class="macro" id="_M/_GNU_SOURCE" data-ref="_M/_GNU_SOURCE">_GNU_SOURCE</dfn></u></td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><u>#include <a href="../../../../include/string.h.html">&lt;string.h&gt;</a></u></td></tr>
+<tr><th id="28">28</th><td><u>#include <a href="../../../../include/ctype.h.html">&lt;ctype.h&gt;</a></u></td></tr>
+<tr><th id="29">29</th><td></td></tr>
+<tr><th id="30">30</th><td><u>#<span data-ppcond="30">ifdef</span> <span class="macro" data-ref="_M/__linux__">__linux__</span></u></td></tr>
+<tr><th id="31">31</th><td><u>#include &lt;limits.h&gt;</u></td></tr>
+<tr><th id="32">32</th><td><u>#include <a href="../../../../include/signal.h.html">&lt;signal.h&gt;</a></u></td></tr>
+<tr><th id="33">33</th><td><u>#include <a href="../../../../include/stdio.h.html">&lt;stdio.h&gt;</a></u></td></tr>
+<tr><th id="34">34</th><td><u>#include <a href="../../../../include/stdlib.h.html">&lt;stdlib.h&gt;</a></u></td></tr>
+<tr><th id="35">35</th><td><u>#include <a href="../../../../include/x86_64-linux-gnu/sys/types.h.html">&lt;sys/types.h&gt;</a></u></td></tr>
+<tr><th id="36">36</th><td><u>#include <a href="../../../../include/ucontext.h.html">&lt;ucontext.h&gt;</a></u></td></tr>
+<tr><th id="37">37</th><td><u>#<span data-ppcond="30">endif</span></u></td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td><u>#<span data-ppcond="39">ifndef</span> <span class="macro" data-ref="_M/_MSC_VER">_MSC_VER</span></u></td></tr>
+<tr><th id="40">40</th><td><u>#  include <a href="../../../../include/unistd.h.html">&lt;unistd.h&gt;</a></u></td></tr>
+<tr><th id="41">41</th><td><u>#<span data-ppcond="39">else</span></u></td></tr>
+<tr><th id="42">42</th><td><u>#  include "vccompat.hpp"</u></td></tr>
+<tr><th id="43">43</th><td><u>#<span data-ppcond="39">endif</span></u></td></tr>
+<tr><th id="44">44</th><td></td></tr>
+<tr><th id="45">45</th><td><u>#include <a href="devices.h.html">"devices.h"</a></u></td></tr>
+<tr><th id="46">46</th><td><u>#include <a href="common.h.html">"common.h"</a></u></td></tr>
+<tr><th id="47">47</th><td><u>#include <a href="../pocl_runtime_config.h.html">"pocl_runtime_config.h"</a></u></td></tr>
+<tr><th id="48">48</th><td><u>#include <a href="basic/basic.h.html">"basic/basic.h"</a></u></td></tr>
+<tr><th id="49">49</th><td><u>#include <a href="pthread/pocl-pthread.h.html">"pthread/pocl-pthread.h"</a></u></td></tr>
+<tr><th id="50">50</th><td><u>#include <a href="../pocl_debug.h.html">"pocl_debug.h"</a></u></td></tr>
+<tr><th id="51">51</th><td><u>#include <a href="../pocl_tracing.h.html">"pocl_tracing.h"</a></u></td></tr>
+<tr><th id="52">52</th><td><u>#include <a href="../../../include/pocl_cache.h.html">"pocl_cache.h"</a></u></td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td><u>#<span data-ppcond="54">ifdef</span> <a class="macro" href="../../../config.h.html#70" data-ref="_M/OCS_AVAILABLE">OCS_AVAILABLE</a></u></td></tr>
+<tr><th id="55">55</th><td><u>#include <a href="../pocl_llvm.h.html">"pocl_llvm.h"</a></u></td></tr>
+<tr><th id="56">56</th><td><u>#<span data-ppcond="54">endif</span></u></td></tr>
+<tr><th id="57">57</th><td></td></tr>
+<tr><th id="58">58</th><td><u>#<span data-ppcond="58">if</span> defined(<span class="macro" data-ref="_M/TCE_AVAILABLE">TCE_AVAILABLE</span>)</u></td></tr>
+<tr><th id="59">59</th><td><u>#include "tce/ttasim/ttasim.h"</u></td></tr>
+<tr><th id="60">60</th><td><u>#<span data-ppcond="58">endif</span></u></td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td><u>#include <a href="hsa/pocl-hsa.h.html">"hsa/pocl-hsa.h"</a></u></td></tr>
+<tr><th id="63">63</th><td></td></tr>
+<tr><th id="64">64</th><td><u>#<span data-ppcond="64">if</span> defined(<a class="macro" href="../../../config.h.html#3" data-ref="_M/BUILD_CUDA">BUILD_CUDA</a>)</u></td></tr>
+<tr><th id="65">65</th><td><u>#include <a href="cuda/pocl-cuda.h.html">"cuda/pocl-cuda.h"</a></u></td></tr>
+<tr><th id="66">66</th><td><u>#<span data-ppcond="64">endif</span></u></td></tr>
+<tr><th id="67">67</th><td></td></tr>
+<tr><th id="68">68</th><td><u>#<span data-ppcond="68">if</span> defined(<span class="macro" data-ref="_M/BUILD_ACCEL">BUILD_ACCEL</span>)</u></td></tr>
+<tr><th id="69">69</th><td><u>#include "accel/accel.h"</u></td></tr>
+<tr><th id="70">70</th><td><u>#<span data-ppcond="68">endif</span></u></td></tr>
+<tr><th id="71">71</th><td></td></tr>
+<tr><th id="72">72</th><td><u>#define <dfn class="macro" id="_M/MAX_DEV_NAME_LEN" data-ref="_M/MAX_DEV_NAME_LEN">MAX_DEV_NAME_LEN</dfn> 64</u></td></tr>
+<tr><th id="73">73</th><td></td></tr>
+<tr><th id="74">74</th><td><i  data-doc="pocl_devices">/* the enabled devices */</i></td></tr>
+<tr><th id="75">75</th><td><em>static</em> <b>struct</b> <a class="type" href="../pocl_cl.h.html#_cl_device_id" title='_cl_device_id' data-ref="_cl_device_id">_cl_device_id</a>* <dfn class="tu decl def" id="pocl_devices" title='pocl_devices' data-type='struct _cl_device_id *' data-ref="pocl_devices">pocl_devices</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="76">76</th><td><em>unsigned</em> <em>int</em> <dfn class="decl def" id="pocl_num_devices" title='pocl_num_devices' data-ref="pocl_num_devices">pocl_num_devices</dfn> = <var>0</var>;</td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td><i>/* Init function prototype */</i></td></tr>
+<tr><th id="79">79</th><td><b>typedef</b> <em>void</em> (*<dfn class="typedef" id="init_device_ops" title='init_device_ops' data-type='void (*)(struct pocl_device_ops *)' data-ref="init_device_ops">init_device_ops</dfn>)(<b>struct</b> <a class="type" href="../pocl_cl.h.html#pocl_device_ops" title='pocl_device_ops' data-ref="pocl_device_ops">pocl_device_ops</a>*);</td></tr>
+<tr><th id="80">80</th><td></td></tr>
+<tr><th id="81">81</th><td><i  data-doc="pocl_devices_init_ops">/* All init function for device operations available to pocl */</i></td></tr>
+<tr><th id="82">82</th><td><em>static</em> <a class="typedef" href="#init_device_ops" title='init_device_ops' data-type='void (*)(struct pocl_device_ops *)' data-ref="init_device_ops">init_device_ops</a> <dfn class="tu decl def" id="pocl_devices_init_ops" title='pocl_devices_init_ops' data-type='init_device_ops [3]' data-ref="pocl_devices_init_ops">pocl_devices_init_ops</dfn>[] = {</td></tr>
+<tr><th id="83">83</th><td><u>#<span data-ppcond="83">ifdef</span> <a class="macro" href="../../../config.h.html#4" data-ref="_M/BUILD_BASIC">BUILD_BASIC</a></u></td></tr>
+<tr><th id="84">84</th><td>  <a class="ref" href="basic/basic.h.html#44" title='pocl_basic_init_device_ops' data-ref="pocl_basic_init_device_ops">pocl_basic_init_device_ops</a>,</td></tr>
+<tr><th id="85">85</th><td><u>#<span data-ppcond="83">endif</span></u></td></tr>
+<tr><th id="86">86</th><td><u>#<span data-ppcond="86">ifdef</span> <a class="macro" href="../../../config.h.html#5" data-ref="_M/BUILD_PTHREAD">BUILD_PTHREAD</a></u></td></tr>
+<tr><th id="87">87</th><td>  <a class="ref" href="pthread/pocl-pthread.h.html#32" title='pocl_pthread_init_device_ops' data-ref="pocl_pthread_init_device_ops">pocl_pthread_init_device_ops</a>,</td></tr>
+<tr><th id="88">88</th><td><u>#<span data-ppcond="86">endif</span></u></td></tr>
+<tr><th id="89">89</th><td><u>#<span data-ppcond="89">if</span> defined(<span class="macro" data-ref="_M/TCE_AVAILABLE">TCE_AVAILABLE</span>)</u></td></tr>
+<tr><th id="90">90</th><td>  pocl_ttasim_init_device_ops,</td></tr>
+<tr><th id="91">91</th><td><u>#<span data-ppcond="89">endif</span></u></td></tr>
+<tr><th id="92">92</th><td><u>#<span data-ppcond="92">if</span> defined(<span class="macro" data-ref="_M/BUILD_HSA">BUILD_HSA</span>)</u></td></tr>
+<tr><th id="93">93</th><td>  pocl_hsa_init_device_ops,</td></tr>
+<tr><th id="94">94</th><td><u>#<span data-ppcond="92">endif</span></u></td></tr>
+<tr><th id="95">95</th><td><u>#<span data-ppcond="95">if</span> defined(<a class="macro" href="../../../config.h.html#3" data-ref="_M/BUILD_CUDA">BUILD_CUDA</a>)</u></td></tr>
+<tr><th id="96">96</th><td>  <a class="ref" href="cuda/pocl-cuda.h.html#32" title='pocl_cuda_init_device_ops' data-ref="pocl_cuda_init_device_ops">pocl_cuda_init_device_ops</a>,</td></tr>
+<tr><th id="97">97</th><td><u>#<span data-ppcond="95">endif</span></u></td></tr>
+<tr><th id="98">98</th><td><u>#<span data-ppcond="98">if</span> defined(<span class="macro" data-ref="_M/BUILD_ACCEL">BUILD_ACCEL</span>)</u></td></tr>
+<tr><th id="99">99</th><td>  pocl_accel_init_device_ops,</td></tr>
+<tr><th id="100">100</th><td><u>#<span data-ppcond="98">endif</span></u></td></tr>
+<tr><th id="101">101</th><td>};</td></tr>
+<tr><th id="102">102</th><td></td></tr>
+<tr><th id="103">103</th><td><u>#define <dfn class="macro" id="_M/POCL_NUM_DEVICE_TYPES" data-ref="_M/POCL_NUM_DEVICE_TYPES">POCL_NUM_DEVICE_TYPES</dfn> (sizeof(<a class="tu ref" href="#pocl_devices_init_ops" title='pocl_devices_init_ops' data-use='r' data-ref="pocl_devices_init_ops">pocl_devices_init_ops</a>) / sizeof((<a class="tu ref" href="#pocl_devices_init_ops" title='pocl_devices_init_ops' data-use='r' data-ref="pocl_devices_init_ops">pocl_devices_init_ops</a>)[0]))</u></td></tr>
+<tr><th id="104">104</th><td></td></tr>
+<tr><th id="105">105</th><td><em>static</em> <b>struct</b> <a class="type" href="../pocl_cl.h.html#pocl_device_ops" title='pocl_device_ops' data-ref="pocl_device_ops">pocl_device_ops</a> <dfn class="tu decl def" id="pocl_device_ops" title='pocl_device_ops' data-type='struct pocl_device_ops [3]' data-ref="pocl_device_ops">pocl_device_ops</dfn>[<a class="macro" href="#103" title="(sizeof(pocl_devices_init_ops) / sizeof((pocl_devices_init_ops)[0]))" data-ref="_M/POCL_NUM_DEVICE_TYPES">POCL_NUM_DEVICE_TYPES</a>];</td></tr>
+<tr><th id="106">106</th><td></td></tr>
+<tr><th id="107">107</th><td><i  data-doc="first_init_done">// first setup</i></td></tr>
+<tr><th id="108">108</th><td><em>static</em> <em>unsigned</em> <dfn class="tu decl def" id="first_init_done" title='first_init_done' data-type='unsigned int' data-ref="first_init_done">first_init_done</dfn> = <var>0</var>;</td></tr>
+<tr><th id="109">109</th><td><em>static</em> <em>unsigned</em> <dfn class="tu decl def" id="init_in_progress" title='init_in_progress' data-type='unsigned int' data-ref="init_in_progress">init_in_progress</dfn> = <var>0</var>;</td></tr>
+<tr><th id="110">110</th><td><em>static</em> <em>unsigned</em> <dfn class="tu decl def" id="device_count" title='device_count' data-type='unsigned int [3]' data-ref="device_count">device_count</dfn>[<a class="macro" href="#103" title="(sizeof(pocl_devices_init_ops) / sizeof((pocl_devices_init_ops)[0]))" data-ref="_M/POCL_NUM_DEVICE_TYPES">POCL_NUM_DEVICE_TYPES</a>];</td></tr>
+<tr><th id="111">111</th><td></td></tr>
+<tr><th id="112">112</th><td><i  data-doc="devices_active">// after calling drivers uninit, we may have to re-init the devices.</i></td></tr>
+<tr><th id="113">113</th><td><em>static</em> <em>unsigned</em> <dfn class="tu decl def" id="devices_active" title='devices_active' data-type='unsigned int' data-ref="devices_active">devices_active</dfn> = <var>0</var>;</td></tr>
+<tr><th id="114">114</th><td></td></tr>
+<tr><th id="115">115</th><td><em>static</em> <a class="typedef" href="../pocl_cl.h.html#pocl_lock_t" title='pocl_lock_t' data-type='pthread_mutex_t' data-ref="pocl_lock_t">pocl_lock_t</a> <dfn class="tu decl def" id="pocl_init_lock" title='pocl_init_lock' data-type='pocl_lock_t' data-ref="pocl_init_lock">pocl_init_lock</dfn> = <a class="macro" href="../pocl_cl.h.html#65" title="{ { 0, 0, 0, 0, 0, 0, 0, { 0, 0 } } }" data-ref="_M/POCL_LOCK_INITIALIZER">POCL_LOCK_INITIALIZER</a>;</td></tr>
+<tr><th id="116">116</th><td></td></tr>
+<tr><th id="117">117</th><td><i class="doc">/**</i></td></tr>
+<tr><th id="118">118</th><td><i class="doc"> * Get the number of specified devices from environnement</i></td></tr>
+<tr><th id="119">119</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="120">120</th><td><em>int</em> <dfn class="decl def" id="pocl_device_get_env_count" title='pocl_device_get_env_count' data-ref="pocl_device_get_env_count">pocl_device_get_env_count</dfn>(<em>const</em> <em>char</em> *<dfn class="local col4 decl" id="84dev_type" title='dev_type' data-type='const char *' data-ref="84dev_type">dev_type</dfn>)</td></tr>
+<tr><th id="121">121</th><td>{</td></tr>
+<tr><th id="122">122</th><td>  <em>const</em> <em>char</em> *<dfn class="local col5 decl" id="85dev_env" title='dev_env' data-type='const char *' data-ref="85dev_env">dev_env</dfn> = <a class="ref" href="../../../../include/stdlib.h.html#getenv" title='getenv' data-ref="getenv">getenv</a>(<a class="macro" href="devices.h.html#88" title="&quot;POCL_DEVICES&quot;" data-ref="_M/POCL_DEVICES_ENV">POCL_DEVICES_ENV</a>);</td></tr>
+<tr><th id="123">123</th><td>  <em>char</em> *<dfn class="local col6 decl" id="86ptr" title='ptr' data-type='char *' data-ref="86ptr">ptr</dfn>, *<dfn class="local col7 decl" id="87saveptr" title='saveptr' data-type='char *' data-ref="87saveptr">saveptr</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, *<dfn class="local col8 decl" id="88tofree" title='tofree' data-type='char *' data-ref="88tofree">tofree</dfn>, *<dfn class="local col9 decl" id="89token" title='token' data-type='char *' data-ref="89token">token</dfn>;</td></tr>
+<tr><th id="124">124</th><td>  <em>unsigned</em> <em>int</em> <dfn class="local col0 decl" id="90dev_count" title='dev_count' data-type='unsigned int' data-ref="90dev_count">dev_count</dfn> = <var>0</var>;</td></tr>
+<tr><th id="125">125</th><td>  <b>if</b> (<a class="local col5 ref" href="#85dev_env" title='dev_env' data-ref="85dev_env">dev_env</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="126">126</th><td>    {</td></tr>
+<tr><th id="127">127</th><td>      <b>return</b> -<var>1</var>;</td></tr>
+<tr><th id="128">128</th><td>    }</td></tr>
+<tr><th id="129">129</th><td>  <a class="local col6 ref" href="#86ptr" title='ptr' data-ref="86ptr">ptr</a> = <a class="local col8 ref" href="#88tofree" title='tofree' data-ref="88tofree">tofree</a> = <a class="ref" href="../../../../include/string.h.html#strdup" title='strdup' data-ref="strdup">strdup</a>(<a class="local col5 ref" href="#85dev_env" title='dev_env' data-ref="85dev_env">dev_env</a>);</td></tr>
+<tr><th id="130">130</th><td>  <b>while</b> ((<a class="local col9 ref" href="#89token" title='token' data-ref="89token">token</a> = <a class="ref" href="../../../../include/string.h.html#strtok_r" title='strtok_r' data-ref="strtok_r">strtok_r</a> (<a class="local col6 ref" href="#86ptr" title='ptr' data-ref="86ptr">ptr</a>, <q>" "</q>, &amp;<a class="local col7 ref" href="#87saveptr" title='saveptr' data-ref="87saveptr">saveptr</a>)) != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="131">131</th><td>    {</td></tr>
+<tr><th id="132">132</th><td>      <b>if</b>(<a class="ref" href="../../../../include/string.h.html#strcmp" title='strcmp' data-ref="strcmp">strcmp</a>(<a class="local col9 ref" href="#89token" title='token' data-ref="89token">token</a>, <a class="local col4 ref" href="#84dev_type" title='dev_type' data-ref="84dev_type">dev_type</a>) == <var>0</var>)</td></tr>
+<tr><th id="133">133</th><td>        <a class="local col0 ref" href="#90dev_count" title='dev_count' data-ref="90dev_count">dev_count</a>++;</td></tr>
+<tr><th id="134">134</th><td>      <a class="local col6 ref" href="#86ptr" title='ptr' data-ref="86ptr">ptr</a> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="135">135</th><td>    }</td></tr>
+<tr><th id="136">136</th><td>  <a class="macro" href="../pocl_cl.h.html#173" title="do { free((tofree)); (tofree) = ((void*)0); } while (0)" data-ref="_M/POCL_MEM_FREE">POCL_MEM_FREE</a>(<a class="local col8 ref" href="#88tofree" title='tofree' data-ref="88tofree">tofree</a>);</td></tr>
+<tr><th id="137">137</th><td></td></tr>
+<tr><th id="138">138</th><td>  <b>return</b> <a class="local col0 ref" href="#90dev_count" title='dev_count' data-ref="90dev_count">dev_count</a>;</td></tr>
+<tr><th id="139">139</th><td>}</td></tr>
+<tr><th id="140">140</th><td></td></tr>
+<tr><th id="141">141</th><td><em>unsigned</em> <em>int</em></td></tr>
+<tr><th id="142">142</th><td><dfn class="decl def" id="pocl_get_devices" title='pocl_get_devices' data-ref="pocl_get_devices">pocl_get_devices</dfn>(<a class="typedef" href="../../../include/CL/cl.h.html#cl_device_type" title='cl_device_type' data-type='cl_bitfield' data-ref="cl_device_type">cl_device_type</a> <dfn class="local col1 decl" id="91device_type" title='device_type' data-type='cl_device_type' data-ref="91device_type">device_type</dfn>, <b>struct</b> <a class="type" href="../pocl_cl.h.html#_cl_device_id" title='_cl_device_id' data-ref="_cl_device_id">_cl_device_id</a> **<dfn class="local col2 decl" id="92devices" title='devices' data-type='struct _cl_device_id **' data-ref="92devices">devices</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col3 decl" id="93num_devices" title='num_devices' data-type='unsigned int' data-ref="93num_devices">num_devices</dfn>)</td></tr>
+<tr><th id="143">143</th><td>{</td></tr>
+<tr><th id="144">144</th><td>  <em>unsigned</em> <em>int</em> <dfn class="local col4 decl" id="94i" title='i' data-type='unsigned int' data-ref="94i">i</dfn>, <dfn class="local col5 decl" id="95dev_added" title='dev_added' data-type='unsigned int' data-ref="95dev_added">dev_added</dfn> = <var>0</var>;</td></tr>
+<tr><th id="145">145</th><td></td></tr>
+<tr><th id="146">146</th><td>  <em>int</em> <dfn class="local col6 decl" id="96offline_compile" title='offline_compile' data-type='int' data-ref="96offline_compile">offline_compile</dfn> = <a class="ref" href="../pocl_runtime_config.h.html#pocl_get_bool_option" title='pocl_get_bool_option' data-ref="pocl_get_bool_option">pocl_get_bool_option</a>(<q>"POCL_OFFLINE_COMPILE"</q>, <var>0</var>);</td></tr>
+<tr><th id="147">147</th><td></td></tr>
+<tr><th id="148">148</th><td>  <b>for</b> (<a class="local col4 ref" href="#94i" title='i' data-ref="94i">i</a> = <var>0</var>; <a class="local col4 ref" href="#94i" title='i' data-ref="94i">i</a> &lt; <a class="ref" href="devices.h.html#pocl_num_devices" title='pocl_num_devices' data-ref="pocl_num_devices">pocl_num_devices</a>; ++<a class="local col4 ref" href="#94i" title='i' data-ref="94i">i</a>)</td></tr>
+<tr><th id="149">149</th><td>    {</td></tr>
+<tr><th id="150">150</th><td>      <b>if</b> (!<a class="local col6 ref" href="#96offline_compile" title='offline_compile' data-ref="96offline_compile">offline_compile</a> &amp;&amp; (<a class="tu ref" href="#pocl_devices" title='pocl_devices' data-use='r' data-ref="pocl_devices">pocl_devices</a>[<a class="local col4 ref" href="#94i" title='i' data-ref="94i">i</a>].<a class="ref" href="../pocl_cl.h.html#_cl_device_id::available" title='_cl_device_id::available' data-ref="_cl_device_id::available">available</a> != <a class="macro" href="../../../include/CL/cl.h.html#254" title="1" data-ref="_M/CL_TRUE">CL_TRUE</a>))</td></tr>
+<tr><th id="151">151</th><td>        <b>continue</b>;</td></tr>
+<tr><th id="152">152</th><td></td></tr>
+<tr><th id="153">153</th><td>      <b>if</b> (<a class="local col1 ref" href="#91device_type" title='device_type' data-ref="91device_type">device_type</a> == <a class="macro" href="../../../include/CL/cl.h.html#271" title="(1 &lt;&lt; 0)" data-ref="_M/CL_DEVICE_TYPE_DEFAULT">CL_DEVICE_TYPE_DEFAULT</a>)</td></tr>
+<tr><th id="154">154</th><td>        {</td></tr>
+<tr><th id="155">155</th><td>          <a class="local col2 ref" href="#92devices" title='devices' data-ref="92devices">devices</a>[<a class="local col5 ref" href="#95dev_added" title='dev_added' data-ref="95dev_added">dev_added</a>] = &amp;<a class="tu ref" href="#pocl_devices" title='pocl_devices' data-use='r' data-ref="pocl_devices">pocl_devices</a>[<a class="local col4 ref" href="#94i" title='i' data-ref="94i">i</a>];</td></tr>
+<tr><th id="156">156</th><td>          ++<a class="local col5 ref" href="#95dev_added" title='dev_added' data-ref="95dev_added">dev_added</a>;</td></tr>
+<tr><th id="157">157</th><td>          <b>break</b>;</td></tr>
+<tr><th id="158">158</th><td>        }</td></tr>
+<tr><th id="159">159</th><td></td></tr>
+<tr><th id="160">160</th><td>      <b>if</b> (<a class="tu ref" href="#pocl_devices" title='pocl_devices' data-use='r' data-ref="pocl_devices">pocl_devices</a>[<a class="local col4 ref" href="#94i" title='i' data-ref="94i">i</a>].<a class="ref" href="../pocl_cl.h.html#_cl_device_id::type" title='_cl_device_id::type' data-ref="_cl_device_id::type">type</a> &amp; <a class="local col1 ref" href="#91device_type" title='device_type' data-ref="91device_type">device_type</a>)</td></tr>
+<tr><th id="161">161</th><td>        {</td></tr>
+<tr><th id="162">162</th><td>            <b>if</b> (<a class="local col5 ref" href="#95dev_added" title='dev_added' data-ref="95dev_added">dev_added</a> &lt; <a class="local col3 ref" href="#93num_devices" title='num_devices' data-ref="93num_devices">num_devices</a>)</td></tr>
+<tr><th id="163">163</th><td>              {</td></tr>
+<tr><th id="164">164</th><td>                <a class="local col2 ref" href="#92devices" title='devices' data-ref="92devices">devices</a>[<a class="local col5 ref" href="#95dev_added" title='dev_added' data-ref="95dev_added">dev_added</a>] = &amp;<a class="tu ref" href="#pocl_devices" title='pocl_devices' data-use='r' data-ref="pocl_devices">pocl_devices</a>[<a class="local col4 ref" href="#94i" title='i' data-ref="94i">i</a>];</td></tr>
+<tr><th id="165">165</th><td>                ++<a class="local col5 ref" href="#95dev_added" title='dev_added' data-ref="95dev_added">dev_added</a>;</td></tr>
+<tr><th id="166">166</th><td>              }</td></tr>
+<tr><th id="167">167</th><td>            <b>else</b></td></tr>
+<tr><th id="168">168</th><td>              {</td></tr>
+<tr><th id="169">169</th><td>                <b>break</b>;</td></tr>
+<tr><th id="170">170</th><td>              }</td></tr>
+<tr><th id="171">171</th><td>        }</td></tr>
+<tr><th id="172">172</th><td>    }</td></tr>
+<tr><th id="173">173</th><td>  <b>return</b> <a class="local col5 ref" href="#95dev_added" title='dev_added' data-ref="95dev_added">dev_added</a>;</td></tr>
+<tr><th id="174">174</th><td>}</td></tr>
+<tr><th id="175">175</th><td></td></tr>
+<tr><th id="176">176</th><td><em>unsigned</em> <em>int</em></td></tr>
+<tr><th id="177">177</th><td><dfn class="decl def" id="pocl_get_device_type_count" title='pocl_get_device_type_count' data-ref="pocl_get_device_type_count">pocl_get_device_type_count</dfn>(<a class="typedef" href="../../../include/CL/cl.h.html#cl_device_type" title='cl_device_type' data-type='cl_bitfield' data-ref="cl_device_type">cl_device_type</a> <dfn class="local col7 decl" id="97device_type" title='device_type' data-type='cl_device_type' data-ref="97device_type">device_type</dfn>)</td></tr>
+<tr><th id="178">178</th><td>{</td></tr>
+<tr><th id="179">179</th><td>  <em>int</em> <dfn class="local col8 decl" id="98count" title='count' data-type='int' data-ref="98count">count</dfn> = <var>0</var>;</td></tr>
+<tr><th id="180">180</th><td>  <em>unsigned</em> <em>int</em> <dfn class="local col9 decl" id="99i" title='i' data-type='unsigned int' data-ref="99i">i</dfn>;</td></tr>
+<tr><th id="181">181</th><td></td></tr>
+<tr><th id="182">182</th><td>  <em>int</em> <dfn class="local col0 decl" id="100offline_compile" title='offline_compile' data-type='int' data-ref="100offline_compile">offline_compile</dfn> = <a class="ref" href="../pocl_runtime_config.h.html#pocl_get_bool_option" title='pocl_get_bool_option' data-ref="pocl_get_bool_option">pocl_get_bool_option</a>(<q>"POCL_OFFLINE_COMPILE"</q>, <var>0</var>);</td></tr>
+<tr><th id="183">183</th><td></td></tr>
+<tr><th id="184">184</th><td>  <b>for</b> (<a class="local col9 ref" href="#99i" title='i' data-ref="99i">i</a> = <var>0</var>; <a class="local col9 ref" href="#99i" title='i' data-ref="99i">i</a> &lt; <a class="ref" href="devices.h.html#pocl_num_devices" title='pocl_num_devices' data-ref="pocl_num_devices">pocl_num_devices</a>; ++<a class="local col9 ref" href="#99i" title='i' data-ref="99i">i</a>)</td></tr>
+<tr><th id="185">185</th><td>    {</td></tr>
+<tr><th id="186">186</th><td>      <b>if</b> (!<a class="local col0 ref" href="#100offline_compile" title='offline_compile' data-ref="100offline_compile">offline_compile</a> &amp;&amp; (<a class="tu ref" href="#pocl_devices" title='pocl_devices' data-use='r' data-ref="pocl_devices">pocl_devices</a>[<a class="local col9 ref" href="#99i" title='i' data-ref="99i">i</a>].<a class="ref" href="../pocl_cl.h.html#_cl_device_id::available" title='_cl_device_id::available' data-ref="_cl_device_id::available">available</a> != <a class="macro" href="../../../include/CL/cl.h.html#254" title="1" data-ref="_M/CL_TRUE">CL_TRUE</a>))</td></tr>
+<tr><th id="187">187</th><td>        <b>continue</b>;</td></tr>
+<tr><th id="188">188</th><td></td></tr>
+<tr><th id="189">189</th><td>      <b>if</b> (<a class="local col7 ref" href="#97device_type" title='device_type' data-ref="97device_type">device_type</a> == <a class="macro" href="../../../include/CL/cl.h.html#271" title="(1 &lt;&lt; 0)" data-ref="_M/CL_DEVICE_TYPE_DEFAULT">CL_DEVICE_TYPE_DEFAULT</a>)</td></tr>
+<tr><th id="190">190</th><td>        <b>return</b> <var>1</var>;</td></tr>
+<tr><th id="191">191</th><td></td></tr>
+<tr><th id="192">192</th><td>      <b>if</b> (<a class="tu ref" href="#pocl_devices" title='pocl_devices' data-use='r' data-ref="pocl_devices">pocl_devices</a>[<a class="local col9 ref" href="#99i" title='i' data-ref="99i">i</a>].<a class="ref" href="../pocl_cl.h.html#_cl_device_id::type" title='_cl_device_id::type' data-ref="_cl_device_id::type">type</a> &amp; <a class="local col7 ref" href="#97device_type" title='device_type' data-ref="97device_type">device_type</a>)</td></tr>
+<tr><th id="193">193</th><td>        {</td></tr>
+<tr><th id="194">194</th><td>           ++<a class="local col8 ref" href="#98count" title='count' data-ref="98count">count</a>;</td></tr>
+<tr><th id="195">195</th><td>        }</td></tr>
+<tr><th id="196">196</th><td>    }</td></tr>
+<tr><th id="197">197</th><td></td></tr>
+<tr><th id="198">198</th><td>  <b>return</b> <a class="local col8 ref" href="#98count" title='count' data-ref="98count">count</a>;</td></tr>
+<tr><th id="199">199</th><td>}</td></tr>
+<tr><th id="200">200</th><td></td></tr>
+<tr><th id="201">201</th><td></td></tr>
+<tr><th id="202">202</th><td><em>static</em> <b>inline</b> <em>void</em></td></tr>
+<tr><th id="203">203</th><td><dfn class="tu decl def" id="str_toupper" title='str_toupper' data-type='void str_toupper(char * out, const char * in)' data-ref="str_toupper">str_toupper</dfn>(<em>char</em> *<dfn class="local col1 decl" id="101out" title='out' data-type='char *' data-ref="101out">out</dfn>, <em>const</em> <em>char</em> *<dfn class="local col2 decl" id="102in" title='in' data-type='const char *' data-ref="102in">in</dfn>)</td></tr>
+<tr><th id="204">204</th><td>{</td></tr>
+<tr><th id="205">205</th><td>  <em>int</em> <dfn class="local col3 decl" id="103i" title='i' data-type='int' data-ref="103i">i</dfn>;</td></tr>
+<tr><th id="206">206</th><td></td></tr>
+<tr><th id="207">207</th><td>  <b>for</b> (<a class="local col3 ref" href="#103i" title='i' data-ref="103i">i</a> = <var>0</var>; <a class="local col2 ref" href="#102in" title='in' data-ref="102in">in</a>[<a class="local col3 ref" href="#103i" title='i' data-ref="103i">i</a>] != <kbd>'\0'</kbd>; <a class="local col3 ref" href="#103i" title='i' data-ref="103i">i</a>++)</td></tr>
+<tr><th id="208">208</th><td>    <a class="local col1 ref" href="#101out" title='out' data-ref="101out">out</a>[<a class="local col3 ref" href="#103i" title='i' data-ref="103i">i</a>] = <a class="ref" href="../../../../include/ctype.h.html#toupper" title='toupper' data-ref="toupper">toupper</a>(<a class="local col2 ref" href="#102in" title='in' data-ref="102in">in</a>[<a class="local col3 ref" href="#103i" title='i' data-ref="103i">i</a>]);</td></tr>
+<tr><th id="209">209</th><td>  <a class="local col1 ref" href="#101out" title='out' data-ref="101out">out</a>[<a class="local col3 ref" href="#103i" title='i' data-ref="103i">i</a>] = <kbd>'\0'</kbd>;</td></tr>
+<tr><th id="210">210</th><td>}</td></tr>
+<tr><th id="211">211</th><td></td></tr>
+<tr><th id="212">212</th><td><i>/* This ugly hack is required because:</i></td></tr>
+<tr><th id="213">213</th><td><i> *</i></td></tr>
+<tr><th id="214">214</th><td><i> * OpenCL 1.2 specification, 6.3 Operators :</i></td></tr>
+<tr><th id="215">215</th><td><i> *</i></td></tr>
+<tr><th id="216">216</th><td><i> * A divide by zero with integer types does not cause an exception</i></td></tr>
+<tr><th id="217">217</th><td><i> * but will result in an unspecified value. Division by zero for</i></td></tr>
+<tr><th id="218">218</th><td><i> * floating-point types will result in ±infinity or NaN as</i></td></tr>
+<tr><th id="219">219</th><td><i> * prescribed by the IEEE-754 standard.</i></td></tr>
+<tr><th id="220">220</th><td><i> *</i></td></tr>
+<tr><th id="221">221</th><td><i> * FPU exceptions are masked by default on x86 linux, but integer divide</i></td></tr>
+<tr><th id="222">222</th><td><i> * is not and there doesn't seem any sane way to mask it.</i></td></tr>
+<tr><th id="223">223</th><td><i> *</i></td></tr>
+<tr><th id="224">224</th><td><i> * This *might* be possible to fix with a LLVM pass (either check divisor</i></td></tr>
+<tr><th id="225">225</th><td><i> * for 0, or perhaps some vector extension has a suitable instruction), but</i></td></tr>
+<tr><th id="226">226</th><td><i> * it's likely to ruin the performance.</i></td></tr>
+<tr><th id="227">227</th><td><i> */</i></td></tr>
+<tr><th id="228">228</th><td></td></tr>
+<tr><th id="229">229</th><td><u>#<span data-ppcond="229">ifdef</span> <a class="macro" href="../../../config.h.html#24" data-ref="_M/ENABLE_HOST_CPU_DEVICES">ENABLE_HOST_CPU_DEVICES</a></u></td></tr>
+<tr><th id="230">230</th><td><u>#<span data-ppcond="230">ifdef</span> <span class="macro" data-ref="_M/__linux__">__linux__</span></u></td></tr>
+<tr><th id="231">231</th><td><u>#<span data-ppcond="231">ifdef</span> <span class="macro" data-ref="_M/__x86_64__">__x86_64__</span></u></td></tr>
+<tr><th id="232">232</th><td></td></tr>
+<tr><th id="233">233</th><td><u>#define <dfn class="macro" id="_M/DIV_OPCODE_SIZE" data-ref="_M/DIV_OPCODE_SIZE">DIV_OPCODE_SIZE</dfn> 1</u></td></tr>
+<tr><th id="234">234</th><td><u>#define <dfn class="macro" id="_M/DIV_OPCODE_MASK" data-ref="_M/DIV_OPCODE_MASK">DIV_OPCODE_MASK</dfn> 0xf6</u></td></tr>
+<tr><th id="235">235</th><td></td></tr>
+<tr><th id="236">236</th><td><i>/* F6 /6, F6 /7, F7 /6, F7 /7 */</i></td></tr>
+<tr><th id="237">237</th><td><u>#define <dfn class="macro" id="_M/DIV_OPCODE_1" data-ref="_M/DIV_OPCODE_1">DIV_OPCODE_1</dfn> 0xf6</u></td></tr>
+<tr><th id="238">238</th><td><u>#define <dfn class="macro" id="_M/DIV_OPCODE_2" data-ref="_M/DIV_OPCODE_2">DIV_OPCODE_2</dfn> 0xf7</u></td></tr>
+<tr><th id="239">239</th><td><u>#define <dfn class="macro" id="_M/DIV_MODRM_OPCODE_EXT_1" data-ref="_M/DIV_MODRM_OPCODE_EXT_1">DIV_MODRM_OPCODE_EXT_1</dfn> 0x38 //  /7</u></td></tr>
+<tr><th id="240">240</th><td><u>#define <dfn class="macro" id="_M/DIV_MODRM_OPCODE_EXT_2" data-ref="_M/DIV_MODRM_OPCODE_EXT_2">DIV_MODRM_OPCODE_EXT_2</dfn> 0x30 //  /6</u></td></tr>
+<tr><th id="241">241</th><td></td></tr>
+<tr><th id="242">242</th><td><u>#define <dfn class="macro" id="_M/MODRM_SIZE" data-ref="_M/MODRM_SIZE">MODRM_SIZE</dfn> 1</u></td></tr>
+<tr><th id="243">243</th><td><u>#define <dfn class="macro" id="_M/MODRM_MASK" data-ref="_M/MODRM_MASK">MODRM_MASK</dfn> 0xC0</u></td></tr>
+<tr><th id="244">244</th><td><u>#define <dfn class="macro" id="_M/REG2_MASK" data-ref="_M/REG2_MASK">REG2_MASK</dfn> 0x38</u></td></tr>
+<tr><th id="245">245</th><td><u>#define <dfn class="macro" id="_M/REG1_MASK" data-ref="_M/REG1_MASK">REG1_MASK</dfn> 0x07</u></td></tr>
+<tr><th id="246">246</th><td><u>#define <dfn class="macro" id="_M/ADDR_MODE_INDIRECT_ONE_BYTE_OFFSET" data-ref="_M/ADDR_MODE_INDIRECT_ONE_BYTE_OFFSET">ADDR_MODE_INDIRECT_ONE_BYTE_OFFSET</dfn> 0x40</u></td></tr>
+<tr><th id="247">247</th><td><u>#define <dfn class="macro" id="_M/ADDR_MODE_INDIRECT_FOUR_BYTE_OFFSET" data-ref="_M/ADDR_MODE_INDIRECT_FOUR_BYTE_OFFSET">ADDR_MODE_INDIRECT_FOUR_BYTE_OFFSET</dfn> 0x80</u></td></tr>
+<tr><th id="248">248</th><td><u>#define <dfn class="macro" id="_M/ADDR_MODE_INDIRECT" data-ref="_M/ADDR_MODE_INDIRECT">ADDR_MODE_INDIRECT</dfn> 0x0</u></td></tr>
+<tr><th id="249">249</th><td><u>#define <dfn class="macro" id="_M/ADDR_MODE_REGISTER_ONLY" data-ref="_M/ADDR_MODE_REGISTER_ONLY">ADDR_MODE_REGISTER_ONLY</dfn> 0xC0</u></td></tr>
+<tr><th id="250">250</th><td><u>#define <dfn class="macro" id="_M/REG_SP" data-ref="_M/REG_SP">REG_SP</dfn> 0x4</u></td></tr>
+<tr><th id="251">251</th><td><u>#define <dfn class="macro" id="_M/REG_BP" data-ref="_M/REG_BP">REG_BP</dfn> 0x5</u></td></tr>
+<tr><th id="252">252</th><td><u>#define <dfn class="macro" id="_M/SIB_BYTE" data-ref="_M/SIB_BYTE">SIB_BYTE</dfn> 1</u></td></tr>
+<tr><th id="253">253</th><td><u>#define <dfn class="macro" id="_M/IP_RELATIVE_INDEXING" data-ref="_M/IP_RELATIVE_INDEXING">IP_RELATIVE_INDEXING</dfn> 4</u></td></tr>
+<tr><th id="254">254</th><td></td></tr>
+<tr><th id="255">255</th><td><em>static</em> <b>struct</b> <a class="type" href="../../../../include/x86_64-linux-gnu/bits/sigaction.h.html#sigaction" title='sigaction' data-ref="sigaction">sigaction</a> <dfn class="tu decl def" id="sigfpe_action" title='sigfpe_action' data-type='struct sigaction' data-ref="sigfpe_action">sigfpe_action</dfn>, <dfn class="tu decl def" id="old_sigfpe_action" title='old_sigfpe_action' data-type='struct sigaction' data-ref="old_sigfpe_action">old_sigfpe_action</dfn>;</td></tr>
+<tr><th id="256">256</th><td></td></tr>
+<tr><th id="257">257</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="258">258</th><td><dfn class="tu decl def" id="sigfpe_signal_handler" title='sigfpe_signal_handler' data-type='void sigfpe_signal_handler(int signo, siginfo_t * si, void * data)' data-ref="sigfpe_signal_handler">sigfpe_signal_handler</dfn> (<em>int</em> <dfn class="local col4 decl" id="104signo" title='signo' data-type='int' data-ref="104signo">signo</dfn>, <a class="typedef" href="../../../../include/x86_64-linux-gnu/bits/siginfo.h.html#siginfo_t" title='siginfo_t' data-type='struct siginfo_t' data-ref="siginfo_t">siginfo_t</a> *<dfn class="local col5 decl" id="105si" title='si' data-type='siginfo_t *' data-ref="105si">si</dfn>, <em>void</em> *<dfn class="local col6 decl" id="106data" title='data' data-type='void *' data-ref="106data">data</dfn>)</td></tr>
+<tr><th id="259">259</th><td>{</td></tr>
+<tr><th id="260">260</th><td>  <a class="typedef" href="../../../../include/x86_64-linux-gnu/sys/ucontext.h.html#ucontext_t" title='ucontext_t' data-type='struct ucontext' data-ref="ucontext_t">ucontext_t</a> *<dfn class="local col7 decl" id="107uc" title='uc' data-type='ucontext_t *' data-ref="107uc">uc</dfn>;</td></tr>
+<tr><th id="261">261</th><td>  <a class="local col7 ref" href="#107uc" title='uc' data-ref="107uc">uc</a> = (<a class="typedef" href="../../../../include/x86_64-linux-gnu/sys/ucontext.h.html#ucontext_t" title='ucontext_t' data-type='struct ucontext' data-ref="ucontext_t">ucontext_t</a> *)<a class="local col6 ref" href="#106data" title='data' data-ref="106data">data</a>;</td></tr>
+<tr><th id="262">262</th><td>  <em>unsigned</em> <em>char</em> *<dfn class="local col8 decl" id="108eip" title='eip' data-type='unsigned char *' data-ref="108eip">eip</dfn> = (<em>unsigned</em> <em>char</em> *)(<a class="local col7 ref" href="#107uc" title='uc' data-ref="107uc">uc</a>-&gt;<a class="ref" href="../../../../include/x86_64-linux-gnu/sys/ucontext.h.html#ucontext::uc_mcontext" title='ucontext::uc_mcontext' data-ref="ucontext::uc_mcontext">uc_mcontext</a>.<a class="ref" href="../../../../include/x86_64-linux-gnu/sys/ucontext.h.html#(anonymous)::gregs" title='(anonymous struct)::gregs' data-ref="(anonymous)::gregs">gregs</a>[<a class="macro" href="../../../../include/x86_64-linux-gnu/sys/ucontext.h.html#76" title="REG_RIP" data-ref="_M/REG_RIP">REG_RIP</a>]);</td></tr>
+<tr><th id="263">263</th><td></td></tr>
+<tr><th id="264">264</th><td>  <b>if</b> ((<a class="local col4 ref" href="#104signo" title='signo' data-ref="104signo">signo</a> == <a class="macro" href="../../../../include/x86_64-linux-gnu/bits/signum.h.html#40" title="8" data-ref="_M/SIGFPE">SIGFPE</a>)</td></tr>
+<tr><th id="265">265</th><td>      &amp;&amp; ((<a class="local col5 ref" href="#105si" title='si' data-ref="105si">si</a>-&gt;<a class="ref" href="../../../../include/x86_64-linux-gnu/bits/siginfo.h.html#(anonymous)::si_code" title='(anonymous struct)::si_code' data-ref="(anonymous)::si_code">si_code</a> == <a class="macro" href="../../../../include/x86_64-linux-gnu/bits/siginfo.h.html#209" title="FPE_INTDIV" data-ref="_M/FPE_INTDIV">FPE_INTDIV</a>) || (<a class="local col5 ref" href="#105si" title='si' data-ref="105si">si</a>-&gt;<a class="ref" href="../../../../include/x86_64-linux-gnu/bits/siginfo.h.html#(anonymous)::si_code" title='(anonymous struct)::si_code' data-ref="(anonymous)::si_code">si_code</a> == <a class="macro" href="../../../../include/x86_64-linux-gnu/bits/siginfo.h.html#211" title="FPE_INTOVF" data-ref="_M/FPE_INTOVF">FPE_INTOVF</a>)))</td></tr>
+<tr><th id="266">266</th><td>    {</td></tr>
+<tr><th id="267">267</th><td>      <i>/* Luckily for us, div-by-0 exceptions do NOT advance the IP register,</i></td></tr>
+<tr><th id="268">268</th><td><i>       * so we have to disassemble the instruction (to know its length)</i></td></tr>
+<tr><th id="269">269</th><td><i>       * and move IP past it. */</i></td></tr>
+<tr><th id="270">270</th><td>      <em>unsigned</em> <dfn class="local col9 decl" id="109n" title='n' data-type='unsigned int' data-ref="109n">n</dfn> = <var>0</var>;</td></tr>
+<tr><th id="271">271</th><td></td></tr>
+<tr><th id="272">272</th><td>      <i>/* skip all prefixes */</i></td></tr>
+<tr><th id="273">273</th><td>      <b>while</b> ((<a class="local col9 ref" href="#109n" title='n' data-ref="109n">n</a> &lt; <var>4</var>) &amp;&amp; ((<a class="local col8 ref" href="#108eip" title='eip' data-ref="108eip">eip</a>[<a class="local col9 ref" href="#109n" title='n' data-ref="109n">n</a>] &amp; <a class="macro" href="#234" title="0xf6" data-ref="_M/DIV_OPCODE_MASK">DIV_OPCODE_MASK</a>) != <a class="macro" href="#234" title="0xf6" data-ref="_M/DIV_OPCODE_MASK">DIV_OPCODE_MASK</a>))</td></tr>
+<tr><th id="274">274</th><td>        ++<a class="local col9 ref" href="#109n" title='n' data-ref="109n">n</a>;</td></tr>
+<tr><th id="275">275</th><td></td></tr>
+<tr><th id="276">276</th><td>      <i>/* too much prefixes = decoding failed */</i></td></tr>
+<tr><th id="277">277</th><td>      <b>if</b> (<a class="local col9 ref" href="#109n" title='n' data-ref="109n">n</a> &gt;= <var>4</var>)</td></tr>
+<tr><th id="278">278</th><td>        <b>goto</b> <a class="lbl" href="#110ORIGINAL_HANDLER" data-ref="110ORIGINAL_HANDLER">ORIGINAL_HANDLER</a>;</td></tr>
+<tr><th id="279">279</th><td></td></tr>
+<tr><th id="280">280</th><td>      <i>/* check opcode */</i></td></tr>
+<tr><th id="281">281</th><td>      <em>unsigned</em> <dfn class="local col1 decl" id="111opcode" title='opcode' data-type='unsigned int' data-ref="111opcode">opcode</dfn> = <a class="local col8 ref" href="#108eip" title='eip' data-ref="108eip">eip</a>[<a class="local col9 ref" href="#109n" title='n' data-ref="109n">n</a>];</td></tr>
+<tr><th id="282">282</th><td>      <b>if</b> ((<a class="local col1 ref" href="#111opcode" title='opcode' data-ref="111opcode">opcode</a> != <a class="macro" href="#237" title="0xf6" data-ref="_M/DIV_OPCODE_1">DIV_OPCODE_1</a>) &amp;&amp; (<a class="local col1 ref" href="#111opcode" title='opcode' data-ref="111opcode">opcode</a> != <a class="macro" href="#238" title="0xf7" data-ref="_M/DIV_OPCODE_2">DIV_OPCODE_2</a>))</td></tr>
+<tr><th id="283">283</th><td>        <b>goto</b> <a class="lbl" href="#110ORIGINAL_HANDLER" data-ref="110ORIGINAL_HANDLER">ORIGINAL_HANDLER</a>;</td></tr>
+<tr><th id="284">284</th><td>      <a class="local col9 ref" href="#109n" title='n' data-ref="109n">n</a> += <a class="macro" href="#233" title="1" data-ref="_M/DIV_OPCODE_SIZE">DIV_OPCODE_SIZE</a>;</td></tr>
+<tr><th id="285">285</th><td></td></tr>
+<tr><th id="286">286</th><td>      <em>unsigned</em> <dfn class="local col2 decl" id="112modrm" title='modrm' data-type='unsigned int' data-ref="112modrm">modrm</dfn> = <a class="local col8 ref" href="#108eip" title='eip' data-ref="108eip">eip</a>[<a class="local col9 ref" href="#109n" title='n' data-ref="109n">n</a>];</td></tr>
+<tr><th id="287">287</th><td>      <em>unsigned</em> <dfn class="local col3 decl" id="113modmask" title='modmask' data-type='unsigned int' data-ref="113modmask">modmask</dfn> = <a class="local col2 ref" href="#112modrm" title='modrm' data-ref="112modrm">modrm</a> &amp; <a class="macro" href="#243" title="0xC0" data-ref="_M/MODRM_MASK">MODRM_MASK</a>;</td></tr>
+<tr><th id="288">288</th><td>      <em>unsigned</em> <dfn class="local col4 decl" id="114reg1mask" title='reg1mask' data-type='unsigned int' data-ref="114reg1mask">reg1mask</dfn> = <a class="local col2 ref" href="#112modrm" title='modrm' data-ref="112modrm">modrm</a> &amp; <a class="macro" href="#245" title="0x07" data-ref="_M/REG1_MASK">REG1_MASK</a>;</td></tr>
+<tr><th id="289">289</th><td>      <em>unsigned</em> <dfn class="local col5 decl" id="115reg2mask" title='reg2mask' data-type='unsigned int' data-ref="115reg2mask">reg2mask</dfn> = <a class="local col2 ref" href="#112modrm" title='modrm' data-ref="112modrm">modrm</a> &amp; <a class="macro" href="#244" title="0x38" data-ref="_M/REG2_MASK">REG2_MASK</a>;</td></tr>
+<tr><th id="290">290</th><td>      <i>/* check opcode extension in ModR/M reg2 */</i></td></tr>
+<tr><th id="291">291</th><td>      <b>if</b> ((<a class="local col5 ref" href="#115reg2mask" title='reg2mask' data-ref="115reg2mask">reg2mask</a> != <a class="macro" href="#239" title="0x38" data-ref="_M/DIV_MODRM_OPCODE_EXT_1">DIV_MODRM_OPCODE_EXT_1</a>)</td></tr>
+<tr><th id="292">292</th><td>          &amp;&amp; (<a class="local col5 ref" href="#115reg2mask" title='reg2mask' data-ref="115reg2mask">reg2mask</a> != <a class="macro" href="#240" title="0x30" data-ref="_M/DIV_MODRM_OPCODE_EXT_2">DIV_MODRM_OPCODE_EXT_2</a>))</td></tr>
+<tr><th id="293">293</th><td>        <b>goto</b> <a class="lbl" href="#110ORIGINAL_HANDLER" data-ref="110ORIGINAL_HANDLER">ORIGINAL_HANDLER</a>;</td></tr>
+<tr><th id="294">294</th><td>      <a class="local col9 ref" href="#109n" title='n' data-ref="109n">n</a> += <a class="macro" href="#242" title="1" data-ref="_M/MODRM_SIZE">MODRM_SIZE</a>;</td></tr>
+<tr><th id="295">295</th><td></td></tr>
+<tr><th id="296">296</th><td>      <i>/* handle immediates/registers */</i></td></tr>
+<tr><th id="297">297</th><td>      <b>if</b> (<a class="local col3 ref" href="#113modmask" title='modmask' data-ref="113modmask">modmask</a> == <a class="macro" href="#246" title="0x40" data-ref="_M/ADDR_MODE_INDIRECT_ONE_BYTE_OFFSET">ADDR_MODE_INDIRECT_ONE_BYTE_OFFSET</a>)</td></tr>
+<tr><th id="298">298</th><td>        <a class="local col9 ref" href="#109n" title='n' data-ref="109n">n</a> += <var>1</var>;</td></tr>
+<tr><th id="299">299</th><td>      <b>if</b> (<a class="local col3 ref" href="#113modmask" title='modmask' data-ref="113modmask">modmask</a> == <a class="macro" href="#247" title="0x80" data-ref="_M/ADDR_MODE_INDIRECT_FOUR_BYTE_OFFSET">ADDR_MODE_INDIRECT_FOUR_BYTE_OFFSET</a>)</td></tr>
+<tr><th id="300">300</th><td>        <a class="local col9 ref" href="#109n" title='n' data-ref="109n">n</a> += <var>4</var>;</td></tr>
+<tr><th id="301">301</th><td>      <b>if</b> (<a class="local col3 ref" href="#113modmask" title='modmask' data-ref="113modmask">modmask</a> == <a class="macro" href="#248" title="0x0" data-ref="_M/ADDR_MODE_INDIRECT">ADDR_MODE_INDIRECT</a>)</td></tr>
+<tr><th id="302">302</th><td>        <a class="local col9 ref" href="#109n" title='n' data-ref="109n">n</a> += <var>0</var>;</td></tr>
+<tr><th id="303">303</th><td>      <b>if</b> (<a class="local col3 ref" href="#113modmask" title='modmask' data-ref="113modmask">modmask</a> != <a class="macro" href="#249" title="0xC0" data-ref="_M/ADDR_MODE_REGISTER_ONLY">ADDR_MODE_REGISTER_ONLY</a>)</td></tr>
+<tr><th id="304">304</th><td>        {</td></tr>
+<tr><th id="305">305</th><td>          <b>if</b> (<a class="local col4 ref" href="#114reg1mask" title='reg1mask' data-ref="114reg1mask">reg1mask</a> == <a class="macro" href="#250" title="0x4" data-ref="_M/REG_SP">REG_SP</a>)</td></tr>
+<tr><th id="306">306</th><td>            <a class="local col9 ref" href="#109n" title='n' data-ref="109n">n</a> += <a class="macro" href="#252" title="1" data-ref="_M/SIB_BYTE">SIB_BYTE</a>;</td></tr>
+<tr><th id="307">307</th><td>          <b>if</b> (<a class="local col4 ref" href="#114reg1mask" title='reg1mask' data-ref="114reg1mask">reg1mask</a> == <a class="macro" href="#251" title="0x5" data-ref="_M/REG_BP">REG_BP</a>)</td></tr>
+<tr><th id="308">308</th><td>            <a class="local col9 ref" href="#109n" title='n' data-ref="109n">n</a> += <a class="macro" href="#253" title="4" data-ref="_M/IP_RELATIVE_INDEXING">IP_RELATIVE_INDEXING</a>;</td></tr>
+<tr><th id="309">309</th><td>        }</td></tr>
+<tr><th id="310">310</th><td></td></tr>
+<tr><th id="311">311</th><td>      <a class="local col7 ref" href="#107uc" title='uc' data-ref="107uc">uc</a>-&gt;<a class="ref" href="../../../../include/x86_64-linux-gnu/sys/ucontext.h.html#ucontext::uc_mcontext" title='ucontext::uc_mcontext' data-ref="ucontext::uc_mcontext">uc_mcontext</a>.<a class="ref" href="../../../../include/x86_64-linux-gnu/sys/ucontext.h.html#(anonymous)::gregs" title='(anonymous struct)::gregs' data-ref="(anonymous)::gregs">gregs</a>[<a class="macro" href="../../../../include/x86_64-linux-gnu/sys/ucontext.h.html#76" title="REG_RIP" data-ref="_M/REG_RIP">REG_RIP</a>] += <a class="local col9 ref" href="#109n" title='n' data-ref="109n">n</a>;</td></tr>
+<tr><th id="312">312</th><td>      <b>return</b>;</td></tr>
+<tr><th id="313">313</th><td>    }</td></tr>
+<tr><th id="314">314</th><td>  <b>else</b></td></tr>
+<tr><th id="315">315</th><td>    {</td></tr>
+<tr><th id="316">316</th><td>    <dfn class="lbl" id="110ORIGINAL_HANDLER" data-ref="110ORIGINAL_HANDLER">ORIGINAL_HANDLER</dfn>:</td></tr>
+<tr><th id="317">317</th><td>      (*<a class="tu ref" href="#old_sigfpe_action" title='old_sigfpe_action' data-use='m' data-ref="old_sigfpe_action">old_sigfpe_action</a>.<a class="macro" href="../../../../include/x86_64-linux-gnu/bits/sigaction.h.html#37" title="__sigaction_handler.sa_sigaction" data-ref="_M/sa_sigaction">sa_sigaction</a>) (<a class="local col4 ref" href="#104signo" title='signo' data-ref="104signo">signo</a>, <a class="local col5 ref" href="#105si" title='si' data-ref="105si">si</a>, <a class="local col6 ref" href="#106data" title='data' data-ref="106data">data</a>);</td></tr>
+<tr><th id="318">318</th><td>    }</td></tr>
+<tr><th id="319">319</th><td>}</td></tr>
+<tr><th id="320">320</th><td></td></tr>
+<tr><th id="321">321</th><td><u>#<span data-ppcond="231">endif</span></u></td></tr>
+<tr><th id="322">322</th><td><u>#<span data-ppcond="230">endif</span></u></td></tr>
+<tr><th id="323">323</th><td><u>#<span data-ppcond="229">endif</span></u></td></tr>
+<tr><th id="324">324</th><td></td></tr>
+<tr><th id="325">325</th><td><a class="typedef" href="../../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a></td></tr>
+<tr><th id="326">326</th><td><dfn class="decl def" id="pocl_uninit_devices" title='pocl_uninit_devices' data-ref="pocl_uninit_devices">pocl_uninit_devices</dfn> ()</td></tr>
+<tr><th id="327">327</th><td>{</td></tr>
+<tr><th id="328">328</th><td>  <a class="typedef" href="../../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <dfn class="local col6 decl" id="116retval" title='retval' data-type='cl_int' data-ref="116retval">retval</dfn> = <a class="macro" href="../../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>;</td></tr>
+<tr><th id="329">329</th><td></td></tr>
+<tr><th id="330">330</th><td>  <a class="macro" href="../pocl_cl.h.html#70" title="do { int r = pthread_mutex_lock (&amp;(pocl_init_lock)); ((r == 0) ? (void) (0) : __assert_fail (&quot;r == 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/devices/devices.c&quot;, 330, __PRETTY_FUNCTION__)); } while (0)" data-ref="_M/POCL_LOCK">POCL_LOCK</a> (<a class="tu ref" href="#pocl_init_lock" title='pocl_init_lock' data-use='a' data-ref="pocl_init_lock">pocl_init_lock</a>);</td></tr>
+<tr><th id="331">331</th><td>  <b>if</b> ((!<a class="tu ref" href="#devices_active" title='devices_active' data-use='r' data-ref="devices_active">devices_active</a>) || (<a class="ref" href="devices.h.html#pocl_num_devices" title='pocl_num_devices' data-ref="pocl_num_devices">pocl_num_devices</a> == <var>0</var>))</td></tr>
+<tr><th id="332">332</th><td>    <b>goto</b> <a class="lbl" href="#117FINISH" data-ref="117FINISH">FINISH</a>;</td></tr>
+<tr><th id="333">333</th><td></td></tr>
+<tr><th id="334">334</th><td>  <a class="macro" href="../pocl_debug.h.html#210" title="do { if (pocl_debug_messages_filter &amp; 0x1) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 334, &quot;GENERAL&quot;, 1); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;&quot; &quot; &quot;); fprintf (stderr, &quot;UNINIT all devices\n&quot;); pocl_debug_output_unlock (); } } while (0)" data-ref="_M/POCL_MSG_PRINT_GENERAL">POCL_MSG_PRINT_GENERAL</a> (<q>"UNINIT all devices\n"</q>);</td></tr>
+<tr><th id="335">335</th><td></td></tr>
+<tr><th id="336">336</th><td>  <em>unsigned</em> <dfn class="local col8 decl" id="118i" title='i' data-type='unsigned int' data-ref="118i">i</dfn>, <dfn class="local col9 decl" id="119j" title='j' data-type='unsigned int' data-ref="119j">j</dfn>, <dfn class="local col0 decl" id="120dev_index" title='dev_index' data-type='unsigned int' data-ref="120dev_index">dev_index</dfn>;</td></tr>
+<tr><th id="337">337</th><td></td></tr>
+<tr><th id="338">338</th><td>  <a class="local col0 ref" href="#120dev_index" title='dev_index' data-ref="120dev_index">dev_index</a> = <var>0</var>;</td></tr>
+<tr><th id="339">339</th><td>  <a class="typedef" href="../../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="local col1 decl" id="121d" title='d' data-type='cl_device_id' data-ref="121d">d</dfn>;</td></tr>
+<tr><th id="340">340</th><td>  <b>for</b> (<a class="local col8 ref" href="#118i" title='i' data-ref="118i">i</a> = <var>0</var>; <a class="local col8 ref" href="#118i" title='i' data-ref="118i">i</a> &lt; <a class="macro" href="#103" title="(sizeof(pocl_devices_init_ops) / sizeof((pocl_devices_init_ops)[0]))" data-ref="_M/POCL_NUM_DEVICE_TYPES">POCL_NUM_DEVICE_TYPES</a>; ++<a class="local col8 ref" href="#118i" title='i' data-ref="118i">i</a>)</td></tr>
+<tr><th id="341">341</th><td>    {</td></tr>
+<tr><th id="342">342</th><td>      <a class="macro" href="../../../../include/assert.h.html#88" title="((pocl_device_ops[i].init) ? (void) (0) : __assert_fail (&quot;pocl_device_ops[i].init&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/devices/devices.c&quot;, 342, __PRETTY_FUNCTION__))" data-ref="_M/assert">assert</a> (<a class="tu ref" href="#pocl_device_ops" title='pocl_device_ops' data-use='m' data-ref="pocl_device_ops">pocl_device_ops</a>[<a class="local col8 ref" href="#118i" title='i' data-ref="118i">i</a>].<a class="ref" href="../pocl_cl.h.html#pocl_device_ops::init" title='pocl_device_ops::init' data-ref="pocl_device_ops::init">init</a>);</td></tr>
+<tr><th id="343">343</th><td>      <b>for</b> (<a class="local col9 ref" href="#119j" title='j' data-ref="119j">j</a> = <var>0</var>; <a class="local col9 ref" href="#119j" title='j' data-ref="119j">j</a> &lt; <a class="tu ref" href="#device_count" title='device_count' data-use='r' data-ref="device_count">device_count</a>[<a class="local col8 ref" href="#118i" title='i' data-ref="118i">i</a>]; ++<a class="local col9 ref" href="#119j" title='j' data-ref="119j">j</a>)</td></tr>
+<tr><th id="344">344</th><td>        {</td></tr>
+<tr><th id="345">345</th><td>          <a class="local col1 ref" href="#121d" title='d' data-ref="121d">d</a> = &amp;<a class="tu ref" href="#pocl_devices" title='pocl_devices' data-use='r' data-ref="pocl_devices">pocl_devices</a>[<a class="local col0 ref" href="#120dev_index" title='dev_index' data-ref="120dev_index">dev_index</a>];</td></tr>
+<tr><th id="346">346</th><td>          <b>if</b> (<a class="local col1 ref" href="#121d" title='d' data-ref="121d">d</a>-&gt;<a class="ref" href="../pocl_cl.h.html#_cl_device_id::available" title='_cl_device_id::available' data-ref="_cl_device_id::available">available</a> == <var>0</var>)</td></tr>
+<tr><th id="347">347</th><td>            <b>continue</b>;</td></tr>
+<tr><th id="348">348</th><td>          <b>if</b> (<a class="local col1 ref" href="#121d" title='d' data-ref="121d">d</a>-&gt;<a class="ref" href="../pocl_cl.h.html#_cl_device_id::ops" title='_cl_device_id::ops' data-ref="_cl_device_id::ops">ops</a>-&gt;<a class="ref" href="../pocl_cl.h.html#pocl_device_ops::reinit" title='pocl_device_ops::reinit' data-ref="pocl_device_ops::reinit">reinit</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span> || <a class="local col1 ref" href="#121d" title='d' data-ref="121d">d</a>-&gt;<a class="ref" href="../pocl_cl.h.html#_cl_device_id::ops" title='_cl_device_id::ops' data-ref="_cl_device_id::ops">ops</a>-&gt;<a class="ref" href="../pocl_cl.h.html#pocl_device_ops::uninit" title='pocl_device_ops::uninit' data-ref="pocl_device_ops::uninit">uninit</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="349">349</th><td>            <b>continue</b>;</td></tr>
+<tr><th id="350">350</th><td>          <a class="typedef" href="../../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <dfn class="local col2 decl" id="122ret" title='ret' data-type='cl_int' data-ref="122ret">ret</dfn> = <a class="local col1 ref" href="#121d" title='d' data-ref="121d">d</a>-&gt;<a class="ref" href="../pocl_cl.h.html#_cl_device_id::ops" title='_cl_device_id::ops' data-ref="_cl_device_id::ops">ops</a>-&gt;<a class="ref" href="../pocl_cl.h.html#pocl_device_ops::uninit" title='pocl_device_ops::uninit' data-ref="pocl_device_ops::uninit">uninit</a> (<a class="local col9 ref" href="#119j" title='j' data-ref="119j">j</a>, <a class="local col1 ref" href="#121d" title='d' data-ref="121d">d</a>);</td></tr>
+<tr><th id="351">351</th><td>          <b>if</b> (<a class="local col2 ref" href="#122ret" title='ret' data-ref="122ret">ret</a> != <a class="macro" href="../../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>)</td></tr>
+<tr><th id="352">352</th><td>            {</td></tr>
+<tr><th id="353">353</th><td>              <a class="local col6 ref" href="#116retval" title='retval' data-ref="116retval">retval</a> = <a class="local col2 ref" href="#122ret" title='ret' data-ref="122ret">ret</a>;</td></tr>
+<tr><th id="354">354</th><td>              <b>goto</b> <a class="lbl" href="#117FINISH" data-ref="117FINISH">FINISH</a>;</td></tr>
+<tr><th id="355">355</th><td>            }</td></tr>
+<tr><th id="356">356</th><td></td></tr>
+<tr><th id="357">357</th><td>          ++<a class="local col0 ref" href="#120dev_index" title='dev_index' data-ref="120dev_index">dev_index</a>;</td></tr>
+<tr><th id="358">358</th><td>        }</td></tr>
+<tr><th id="359">359</th><td>    }</td></tr>
+<tr><th id="360">360</th><td></td></tr>
+<tr><th id="361">361</th><td><dfn class="lbl" id="117FINISH" data-ref="117FINISH">FINISH</dfn>:</td></tr>
+<tr><th id="362">362</th><td>  <a class="tu ref" href="#devices_active" title='devices_active' data-use='w' data-ref="devices_active">devices_active</a> = <var>0</var>;</td></tr>
+<tr><th id="363">363</th><td>  <a class="macro" href="../pocl_cl.h.html#77" title="do { int r = pthread_mutex_unlock (&amp;(pocl_init_lock)); ((r == 0) ? (void) (0) : __assert_fail (&quot;r == 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/devices/devices.c&quot;, 363, __PRETTY_FUNCTION__)); } while (0)" data-ref="_M/POCL_UNLOCK">POCL_UNLOCK</a> (<a class="tu ref" href="#pocl_init_lock" title='pocl_init_lock' data-use='a' data-ref="pocl_init_lock">pocl_init_lock</a>);</td></tr>
+<tr><th id="364">364</th><td></td></tr>
+<tr><th id="365">365</th><td>  <b>return</b> <a class="local col6 ref" href="#116retval" title='retval' data-ref="116retval">retval</a>;</td></tr>
+<tr><th id="366">366</th><td>}</td></tr>
+<tr><th id="367">367</th><td></td></tr>
+<tr><th id="368">368</th><td><em>static</em> <a class="typedef" href="../../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a></td></tr>
+<tr><th id="369">369</th><td><dfn class="tu decl def" id="pocl_reinit_devices" title='pocl_reinit_devices' data-type='cl_int pocl_reinit_devices()' data-ref="pocl_reinit_devices">pocl_reinit_devices</dfn> ()</td></tr>
+<tr><th id="370">370</th><td>{</td></tr>
+<tr><th id="371">371</th><td>  <a class="macro" href="../../../../include/assert.h.html#88" title="((first_init_done) ? (void) (0) : __assert_fail (&quot;first_init_done&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/devices/devices.c&quot;, 371, __PRETTY_FUNCTION__))" data-ref="_M/assert">assert</a> (<a class="tu ref" href="#first_init_done" title='first_init_done' data-use='r' data-ref="first_init_done">first_init_done</a>);</td></tr>
+<tr><th id="372">372</th><td>  <a class="typedef" href="../../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <dfn class="local col3 decl" id="123retval" title='retval' data-type='cl_int' data-ref="123retval">retval</dfn> = <a class="macro" href="../../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>;</td></tr>
+<tr><th id="373">373</th><td></td></tr>
+<tr><th id="374">374</th><td>  <b>if</b> (<a class="tu ref" href="#devices_active" title='devices_active' data-use='r' data-ref="devices_active">devices_active</a>)</td></tr>
+<tr><th id="375">375</th><td>    <b>return</b> <a class="local col3 ref" href="#123retval" title='retval' data-ref="123retval">retval</a>;</td></tr>
+<tr><th id="376">376</th><td></td></tr>
+<tr><th id="377">377</th><td>  <b>if</b> (<a class="ref" href="devices.h.html#pocl_num_devices" title='pocl_num_devices' data-ref="pocl_num_devices">pocl_num_devices</a> == <var>0</var>)</td></tr>
+<tr><th id="378">378</th><td>    <b>return</b> <a class="macro" href="../../../include/CL/cl.h.html#175" title="-1" data-ref="_M/CL_DEVICE_NOT_FOUND">CL_DEVICE_NOT_FOUND</a>;</td></tr>
+<tr><th id="379">379</th><td></td></tr>
+<tr><th id="380">380</th><td>  <a class="macro" href="../pocl_debug.h.html#178" title="do { if (pocl_debug_messages_filter &amp; 0x800) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 380, &quot;WARNING&quot;, 2); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;&quot; &quot; &quot;); fprintf (stderr, &quot;REINIT all devices\n&quot;); pocl_debug_output_unlock (); } } while (0)" data-ref="_M/POCL_MSG_WARN">POCL_MSG_WARN</a> (<q>"REINIT all devices\n"</q>);</td></tr>
+<tr><th id="381">381</th><td></td></tr>
+<tr><th id="382">382</th><td>  <em>unsigned</em> <dfn class="local col4 decl" id="124i" title='i' data-type='unsigned int' data-ref="124i">i</dfn>, <dfn class="local col5 decl" id="125j" title='j' data-type='unsigned int' data-ref="125j">j</dfn>, <dfn class="local col6 decl" id="126dev_index" title='dev_index' data-type='unsigned int' data-ref="126dev_index">dev_index</dfn>;</td></tr>
+<tr><th id="383">383</th><td></td></tr>
+<tr><th id="384">384</th><td>  <a class="local col6 ref" href="#126dev_index" title='dev_index' data-ref="126dev_index">dev_index</a> = <var>0</var>;</td></tr>
+<tr><th id="385">385</th><td>  <a class="typedef" href="../../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="local col7 decl" id="127d" title='d' data-type='cl_device_id' data-ref="127d">d</dfn>;</td></tr>
+<tr><th id="386">386</th><td>  <i>/* Init infos for each probed devices */</i></td></tr>
+<tr><th id="387">387</th><td>  <b>for</b> (<a class="local col4 ref" href="#124i" title='i' data-ref="124i">i</a> = <var>0</var>; <a class="local col4 ref" href="#124i" title='i' data-ref="124i">i</a> &lt; <a class="macro" href="#103" title="(sizeof(pocl_devices_init_ops) / sizeof((pocl_devices_init_ops)[0]))" data-ref="_M/POCL_NUM_DEVICE_TYPES">POCL_NUM_DEVICE_TYPES</a>; ++<a class="local col4 ref" href="#124i" title='i' data-ref="124i">i</a>)</td></tr>
+<tr><th id="388">388</th><td>    {</td></tr>
+<tr><th id="389">389</th><td>      <a class="macro" href="../../../../include/assert.h.html#88" title="((pocl_device_ops[i].init) ? (void) (0) : __assert_fail (&quot;pocl_device_ops[i].init&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/devices/devices.c&quot;, 389, __PRETTY_FUNCTION__))" data-ref="_M/assert">assert</a> (<a class="tu ref" href="#pocl_device_ops" title='pocl_device_ops' data-use='m' data-ref="pocl_device_ops">pocl_device_ops</a>[<a class="local col4 ref" href="#124i" title='i' data-ref="124i">i</a>].<a class="ref" href="../pocl_cl.h.html#pocl_device_ops::init" title='pocl_device_ops::init' data-ref="pocl_device_ops::init">init</a>);</td></tr>
+<tr><th id="390">390</th><td>      <b>for</b> (<a class="local col5 ref" href="#125j" title='j' data-ref="125j">j</a> = <var>0</var>; <a class="local col5 ref" href="#125j" title='j' data-ref="125j">j</a> &lt; <a class="tu ref" href="#device_count" title='device_count' data-use='r' data-ref="device_count">device_count</a>[<a class="local col4 ref" href="#124i" title='i' data-ref="124i">i</a>]; ++<a class="local col5 ref" href="#125j" title='j' data-ref="125j">j</a>)</td></tr>
+<tr><th id="391">391</th><td>        {</td></tr>
+<tr><th id="392">392</th><td>          <a class="local col7 ref" href="#127d" title='d' data-ref="127d">d</a> = &amp;<a class="tu ref" href="#pocl_devices" title='pocl_devices' data-use='r' data-ref="pocl_devices">pocl_devices</a>[<a class="local col6 ref" href="#126dev_index" title='dev_index' data-ref="126dev_index">dev_index</a>];</td></tr>
+<tr><th id="393">393</th><td>          <b>if</b> (<a class="local col7 ref" href="#127d" title='d' data-ref="127d">d</a>-&gt;<a class="ref" href="../pocl_cl.h.html#_cl_device_id::available" title='_cl_device_id::available' data-ref="_cl_device_id::available">available</a> == <var>0</var>)</td></tr>
+<tr><th id="394">394</th><td>            <b>continue</b>;</td></tr>
+<tr><th id="395">395</th><td>          <b>if</b> (<a class="local col7 ref" href="#127d" title='d' data-ref="127d">d</a>-&gt;<a class="ref" href="../pocl_cl.h.html#_cl_device_id::ops" title='_cl_device_id::ops' data-ref="_cl_device_id::ops">ops</a>-&gt;<a class="ref" href="../pocl_cl.h.html#pocl_device_ops::reinit" title='pocl_device_ops::reinit' data-ref="pocl_device_ops::reinit">reinit</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span> || <a class="local col7 ref" href="#127d" title='d' data-ref="127d">d</a>-&gt;<a class="ref" href="../pocl_cl.h.html#_cl_device_id::ops" title='_cl_device_id::ops' data-ref="_cl_device_id::ops">ops</a>-&gt;<a class="ref" href="../pocl_cl.h.html#pocl_device_ops::uninit" title='pocl_device_ops::uninit' data-ref="pocl_device_ops::uninit">uninit</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="396">396</th><td>            <b>continue</b>;</td></tr>
+<tr><th id="397">397</th><td>          <a class="typedef" href="../../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <dfn class="local col8 decl" id="128ret" title='ret' data-type='cl_int' data-ref="128ret">ret</dfn> = <a class="local col7 ref" href="#127d" title='d' data-ref="127d">d</a>-&gt;<a class="ref" href="../pocl_cl.h.html#_cl_device_id::ops" title='_cl_device_id::ops' data-ref="_cl_device_id::ops">ops</a>-&gt;<a class="ref" href="../pocl_cl.h.html#pocl_device_ops::reinit" title='pocl_device_ops::reinit' data-ref="pocl_device_ops::reinit">reinit</a> (<a class="local col5 ref" href="#125j" title='j' data-ref="125j">j</a>, <a class="local col7 ref" href="#127d" title='d' data-ref="127d">d</a>);</td></tr>
+<tr><th id="398">398</th><td>          <b>if</b> (<a class="local col8 ref" href="#128ret" title='ret' data-ref="128ret">ret</a> != <a class="macro" href="../../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>)</td></tr>
+<tr><th id="399">399</th><td>            {</td></tr>
+<tr><th id="400">400</th><td>              <a class="local col3 ref" href="#123retval" title='retval' data-ref="123retval">retval</a> = <a class="local col8 ref" href="#128ret" title='ret' data-ref="128ret">ret</a>;</td></tr>
+<tr><th id="401">401</th><td>              <b>goto</b> <a class="lbl" href="#129FINISH" data-ref="129FINISH">FINISH</a>;</td></tr>
+<tr><th id="402">402</th><td>            }</td></tr>
+<tr><th id="403">403</th><td></td></tr>
+<tr><th id="404">404</th><td>          ++<a class="local col6 ref" href="#126dev_index" title='dev_index' data-ref="126dev_index">dev_index</a>;</td></tr>
+<tr><th id="405">405</th><td>        }</td></tr>
+<tr><th id="406">406</th><td>    }</td></tr>
+<tr><th id="407">407</th><td></td></tr>
+<tr><th id="408">408</th><td><dfn class="lbl" id="129FINISH" data-ref="129FINISH">FINISH</dfn>:</td></tr>
+<tr><th id="409">409</th><td></td></tr>
+<tr><th id="410">410</th><td>  <a class="tu ref" href="#devices_active" title='devices_active' data-use='w' data-ref="devices_active">devices_active</a> = <var>1</var>;</td></tr>
+<tr><th id="411">411</th><td>  <b>return</b> <a class="local col3 ref" href="#123retval" title='retval' data-ref="123retval">retval</a>;</td></tr>
+<tr><th id="412">412</th><td>}</td></tr>
+<tr><th id="413">413</th><td></td></tr>
+<tr><th id="414">414</th><td><a class="typedef" href="../../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a></td></tr>
+<tr><th id="415">415</th><td><dfn class="decl def" id="pocl_init_devices" title='pocl_init_devices' data-ref="pocl_init_devices">pocl_init_devices</dfn> ()</td></tr>
+<tr><th id="416">416</th><td>{</td></tr>
+<tr><th id="417">417</th><td>  <em>int</em> <dfn class="local col0 decl" id="130errcode" title='errcode' data-type='int' data-ref="130errcode">errcode</dfn> = <a class="macro" href="../../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>;</td></tr>
+<tr><th id="418">418</th><td></td></tr>
+<tr><th id="419">419</th><td>  <i>/* This is a workaround to a nasty problem with libhwloc: When</i></td></tr>
+<tr><th id="420">420</th><td><i>     initializing basic, it calls libhwloc to query device info.</i></td></tr>
+<tr><th id="421">421</th><td><i>     In case libhwloc has the OpenCL plugin installed, it initializes</i></td></tr>
+<tr><th id="422">422</th><td><i>     it and it leads to initializing pocl again which leads to an</i></td></tr>
+<tr><th id="423">423</th><td><i>     infinite loop. This only protects against recursive calls of</i></td></tr>
+<tr><th id="424">424</th><td><i>     pocl_init_devices(), so must be done without pocl_init_lock held. */</i></td></tr>
+<tr><th id="425">425</th><td>  <b>if</b> (<a class="tu ref" href="#init_in_progress" title='init_in_progress' data-use='r' data-ref="init_in_progress">init_in_progress</a>)</td></tr>
+<tr><th id="426">426</th><td>    <b>return</b> <a class="macro" href="../../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>; <i>/* debatable, but what else can we do ? */</i></td></tr>
+<tr><th id="427">427</th><td></td></tr>
+<tr><th id="428">428</th><td>  <a class="macro" href="../pocl_cl.h.html#70" title="do { int r = pthread_mutex_lock (&amp;(pocl_init_lock)); ((r == 0) ? (void) (0) : __assert_fail (&quot;r == 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/devices/devices.c&quot;, 428, __PRETTY_FUNCTION__)); } while (0)" data-ref="_M/POCL_LOCK">POCL_LOCK</a> (<a class="tu ref" href="#pocl_init_lock" title='pocl_init_lock' data-use='a' data-ref="pocl_init_lock">pocl_init_lock</a>);</td></tr>
+<tr><th id="429">429</th><td>  <a class="tu ref" href="#init_in_progress" title='init_in_progress' data-use='w' data-ref="init_in_progress">init_in_progress</a> = <var>1</var>;</td></tr>
+<tr><th id="430">430</th><td></td></tr>
+<tr><th id="431">431</th><td>  <b>if</b> (<a class="tu ref" href="#first_init_done" title='first_init_done' data-use='r' data-ref="first_init_done">first_init_done</a>)</td></tr>
+<tr><th id="432">432</th><td>    {</td></tr>
+<tr><th id="433">433</th><td>      <b>if</b> (!<a class="tu ref" href="#devices_active" title='devices_active' data-use='r' data-ref="devices_active">devices_active</a>)</td></tr>
+<tr><th id="434">434</th><td>        {</td></tr>
+<tr><th id="435">435</th><td>          <a class="macro" href="../pocl_debug.h.html#210" title="do { if (pocl_debug_messages_filter &amp; 0x1) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 435, &quot;GENERAL&quot;, 1); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;&quot; &quot; &quot;); fprintf (stderr, &quot;FIRST INIT done; REINIT all devices\n&quot;); pocl_debug_output_unlock (); } } while (0)" data-ref="_M/POCL_MSG_PRINT_GENERAL">POCL_MSG_PRINT_GENERAL</a> (<q>"FIRST INIT done; REINIT all devices\n"</q>);</td></tr>
+<tr><th id="436">436</th><td>          <a class="tu ref" href="#pocl_reinit_devices" title='pocl_reinit_devices' data-use='c' data-ref="pocl_reinit_devices">pocl_reinit_devices</a> (); <i>// TODO err check</i></td></tr>
+<tr><th id="437">437</th><td>        }</td></tr>
+<tr><th id="438">438</th><td>      <a class="local col0 ref" href="#130errcode" title='errcode' data-ref="130errcode">errcode</a> = <a class="ref" href="devices.h.html#pocl_num_devices" title='pocl_num_devices' data-ref="pocl_num_devices">pocl_num_devices</a> ? <a class="macro" href="../../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a> : <a class="macro" href="../../../include/CL/cl.h.html#175" title="-1" data-ref="_M/CL_DEVICE_NOT_FOUND">CL_DEVICE_NOT_FOUND</a>;</td></tr>
+<tr><th id="439">439</th><td>      <b>goto</b> <a class="lbl" href="#131ERROR" data-ref="131ERROR">ERROR</a>;</td></tr>
+<tr><th id="440">440</th><td>    }</td></tr>
+<tr><th id="441">441</th><td></td></tr>
+<tr><th id="442">442</th><td>  <i>/* first time initialization */</i></td></tr>
+<tr><th id="443">443</th><td>  <em>unsigned</em> <dfn class="local col2 decl" id="132i" title='i' data-type='unsigned int' data-ref="132i">i</dfn>, <dfn class="local col3 decl" id="133j" title='j' data-type='unsigned int' data-ref="133j">j</dfn>, <dfn class="local col4 decl" id="134dev_index" title='dev_index' data-type='unsigned int' data-ref="134dev_index">dev_index</dfn>;</td></tr>
+<tr><th id="444">444</th><td>  <em>char</em> <dfn class="local col5 decl" id="135env_name" title='env_name' data-type='char [1024]' data-ref="135env_name">env_name</dfn>[<var>1024</var>];</td></tr>
+<tr><th id="445">445</th><td>  <em>char</em> <dfn class="local col6 decl" id="136dev_name" title='dev_name' data-type='char [64]' data-ref="136dev_name">dev_name</dfn>[<a class="macro" href="#72" title="64" data-ref="_M/MAX_DEV_NAME_LEN">MAX_DEV_NAME_LEN</a>] = { <var>0</var> };</td></tr>
+<tr><th id="446">446</th><td></td></tr>
+<tr><th id="447">447</th><td>  <i>/* Set a global debug flag, so we don't have to call pocl_get_bool_option</i></td></tr>
+<tr><th id="448">448</th><td><i>   * everytime we use the debug macros */</i></td></tr>
+<tr><th id="449">449</th><td><u>#<span data-ppcond="449">ifdef</span> <a class="macro" href="../../../config.h.html#179" data-ref="_M/POCL_DEBUG_MESSAGES">POCL_DEBUG_MESSAGES</a></u></td></tr>
+<tr><th id="450">450</th><td>  <em>const</em> <em>char</em>* <dfn class="local col7 decl" id="137debug" title='debug' data-type='const char *' data-ref="137debug">debug</dfn> = <a class="ref" href="../pocl_runtime_config.h.html#pocl_get_string_option" title='pocl_get_string_option' data-ref="pocl_get_string_option">pocl_get_string_option</a> (<q>"POCL_DEBUG"</q>, <q>"0"</q>);</td></tr>
+<tr><th id="451">451</th><td>  <a class="ref" href="../pocl_debug.h.html#pocl_debug_messages_setup" title='pocl_debug_messages_setup' data-ref="pocl_debug_messages_setup">pocl_debug_messages_setup</a> (<a class="local col7 ref" href="#137debug" title='debug' data-ref="137debug">debug</a>);</td></tr>
+<tr><th id="452">452</th><td>  <a class="ref" href="../pocl_debug.h.html#stderr_is_a_tty" title='stderr_is_a_tty' data-ref="stderr_is_a_tty">stderr_is_a_tty</a> = <a class="ref" href="../../../../include/unistd.h.html#isatty" title='isatty' data-ref="isatty">isatty</a>(<a class="ref" href="../../../../include/stdio.h.html#fileno" title='fileno' data-ref="fileno">fileno</a>(<a class="macro" href="../../../../include/stdio.h.html#174" title="stderr" data-ref="_M/stderr">stderr</a>));</td></tr>
+<tr><th id="453">453</th><td><u>#<span data-ppcond="449">endif</span></u></td></tr>
+<tr><th id="454">454</th><td></td></tr>
+<tr><th id="455">455</th><td>  <a class="macro" href="../pocl_debug.h.html#254" title="do { if ((pocl_cache_init_topdir ())) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 456, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_DEVICE_NOT_FOUND&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_DEVICE_NOT_FOUND&quot; &quot; &quot;); fprintf (stderr, &quot;Cache directory initialization failed&quot;); pocl_debug_output_unlock (); } } while (0); errcode = -1; goto ERROR; } } while (0)" data-ref="_M/POCL_GOTO_ERROR_ON">POCL_GOTO_ERROR_ON</a> ((<a class="ref" href="../../../include/pocl_cache.h.html#pocl_cache_init_topdir" title='pocl_cache_init_topdir' data-ref="pocl_cache_init_topdir">pocl_cache_init_topdir</a> ()), <a class="macro" href="../../../include/CL/cl.h.html#175" title="-1" data-ref="_M/CL_DEVICE_NOT_FOUND">CL_DEVICE_NOT_FOUND</a>,</td></tr>
+<tr><th id="456">456</th><td>                      <q>"Cache directory initialization failed"</q>);</td></tr>
+<tr><th id="457">457</th><td></td></tr>
+<tr><th id="458">458</th><td>  <a class="ref" href="../pocl_tracing.h.html#pocl_tracing_init" title='pocl_tracing_init' data-ref="pocl_tracing_init">pocl_tracing_init</a> ();</td></tr>
+<tr><th id="459">459</th><td></td></tr>
+<tr><th id="460">460</th><td><u>#<span data-ppcond="460">ifdef</span> <a class="macro" href="../../../config.h.html#66" data-ref="_M/HAVE_SLEEP">HAVE_SLEEP</a></u></td></tr>
+<tr><th id="461">461</th><td>  <em>int</em> <dfn class="local col8 decl" id="138delay" title='delay' data-type='int' data-ref="138delay">delay</dfn> = <a class="ref" href="../pocl_runtime_config.h.html#pocl_get_int_option" title='pocl_get_int_option' data-ref="pocl_get_int_option">pocl_get_int_option</a> (<q>"POCL_STARTUP_DELAY"</q>, <var>0</var>);</td></tr>
+<tr><th id="462">462</th><td>  <b>if</b> (<a class="local col8 ref" href="#138delay" title='delay' data-ref="138delay">delay</a> &gt; <var>0</var>)</td></tr>
+<tr><th id="463">463</th><td>    <a class="ref" href="../../../../include/unistd.h.html#sleep" title='sleep' data-ref="sleep">sleep</a> (<a class="local col8 ref" href="#138delay" title='delay' data-ref="138delay">delay</a>);</td></tr>
+<tr><th id="464">464</th><td><u>#<span data-ppcond="460">endif</span></u></td></tr>
+<tr><th id="465">465</th><td></td></tr>
+<tr><th id="466">466</th><td></td></tr>
+<tr><th id="467">467</th><td><u>#<span data-ppcond="467">ifdef</span> <a class="macro" href="../../../config.h.html#24" data-ref="_M/ENABLE_HOST_CPU_DEVICES">ENABLE_HOST_CPU_DEVICES</a></u></td></tr>
+<tr><th id="468">468</th><td><u>#<span data-ppcond="468">ifdef</span> <span class="macro" data-ref="_M/__linux__">__linux__</span></u></td></tr>
+<tr><th id="469">469</th><td><u>#<span data-ppcond="469">ifdef</span> <span class="macro" data-ref="_M/__x86_64__">__x86_64__</span></u></td></tr>
+<tr><th id="470">470</th><td></td></tr>
+<tr><th id="471">471</th><td>  <b>if</b> (<a class="ref" href="../pocl_runtime_config.h.html#pocl_get_bool_option" title='pocl_get_bool_option' data-ref="pocl_get_bool_option">pocl_get_bool_option</a> (<q>"POCL_SIGFPE_HANDLER"</q>, <var>1</var>))</td></tr>
+<tr><th id="472">472</th><td>    {</td></tr>
+<tr><th id="473">473</th><td></td></tr>
+<tr><th id="474">474</th><td><u>#<span data-ppcond="474">ifdef</span> <a class="macro" href="../../../config.h.html#70" data-ref="_M/OCS_AVAILABLE">OCS_AVAILABLE</a></u></td></tr>
+<tr><th id="475">475</th><td>      <i>/* This is required to force LLVM to register its signal</i></td></tr>
+<tr><th id="476">476</th><td><i>       * handlers, before pocl registers its own SIGFPE handler.</i></td></tr>
+<tr><th id="477">477</th><td><i>       * LLVM otherwise calls this via</i></td></tr>
+<tr><th id="478">478</th><td><i>       *    pocl_llvm_build_program -&gt;</i></td></tr>
+<tr><th id="479">479</th><td><i>       *    clang::PrintPreprocessedAction -&gt;</i></td></tr>
+<tr><th id="480">480</th><td><i>       *    CreateOutputFile -&gt; RemoveFileOnSignal</i></td></tr>
+<tr><th id="481">481</th><td><i>       * Registering our handlers before LLVM creates its sigaltstack</i></td></tr>
+<tr><th id="482">482</th><td><i>       * leads to interesting crashes &amp; bugs later.</i></td></tr>
+<tr><th id="483">483</th><td><i>       */</i></td></tr>
+<tr><th id="484">484</th><td>      <em>char</em> <dfn class="local col9 decl" id="139random_empty_file" title='random_empty_file' data-type='char [1024]' data-ref="139random_empty_file">random_empty_file</dfn>[<a class="macro" href="../../../include/pocl.h.html#48" title="1024" data-ref="_M/POCL_FILENAME_LENGTH">POCL_FILENAME_LENGTH</a>];</td></tr>
+<tr><th id="485">485</th><td>      <a class="ref" href="../../../include/pocl_cache.h.html#pocl_cache_tempname" title='pocl_cache_tempname' data-ref="pocl_cache_tempname">pocl_cache_tempname</a> (<a class="local col9 ref" href="#139random_empty_file" title='random_empty_file' data-ref="139random_empty_file">random_empty_file</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="486">486</th><td>      <a class="ref" href="../pocl_llvm.h.html#pocl_llvm_remove_file_on_signal" title='pocl_llvm_remove_file_on_signal' data-ref="pocl_llvm_remove_file_on_signal">pocl_llvm_remove_file_on_signal</a> (<a class="local col9 ref" href="#139random_empty_file" title='random_empty_file' data-ref="139random_empty_file">random_empty_file</a>);</td></tr>
+<tr><th id="487">487</th><td><u>#<span data-ppcond="474">endif</span></u></td></tr>
+<tr><th id="488">488</th><td></td></tr>
+<tr><th id="489">489</th><td>      <a class="macro" href="../pocl_debug.h.html#210" title="do { if (pocl_debug_messages_filter &amp; 0x1) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 489, &quot;GENERAL&quot;, 1); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;&quot; &quot; &quot;); fprintf (stderr, &quot;Installing SIGFPE handler...\n&quot;); pocl_debug_output_unlock (); } } while (0)" data-ref="_M/POCL_MSG_PRINT_GENERAL">POCL_MSG_PRINT_GENERAL</a> (<q>"Installing SIGFPE handler...\n"</q>);</td></tr>
+<tr><th id="490">490</th><td>      <a class="tu ref" href="#sigfpe_action" title='sigfpe_action' data-use='m' data-ref="sigfpe_action">sigfpe_action</a>.<a class="ref" href="../../../../include/x86_64-linux-gnu/bits/sigaction.h.html#sigaction::sa_flags" title='sigaction::sa_flags' data-ref="sigaction::sa_flags">sa_flags</a> = <a class="macro" href="../../../../include/x86_64-linux-gnu/bits/sigaction.h.html#61" title="0x10000000" data-ref="_M/SA_RESTART">SA_RESTART</a> | <a class="macro" href="../../../../include/x86_64-linux-gnu/bits/sigaction.h.html#55" title="4" data-ref="_M/SA_SIGINFO">SA_SIGINFO</a>;</td></tr>
+<tr><th id="491">491</th><td>      <a class="tu ref" href="#sigfpe_action" title='sigfpe_action' data-use='m' data-ref="sigfpe_action">sigfpe_action</a>.<a class="macro" href="../../../../include/x86_64-linux-gnu/bits/sigaction.h.html#37" title="__sigaction_handler.sa_sigaction" data-ref="_M/sa_sigaction">sa_sigaction</a> = <a class="tu ref" href="#sigfpe_signal_handler" title='sigfpe_signal_handler' data-use='r' data-ref="sigfpe_signal_handler">sigfpe_signal_handler</a>;</td></tr>
+<tr><th id="492">492</th><td>      <em>int</em> <dfn class="local col0 decl" id="140res" title='res' data-type='int' data-ref="140res">res</dfn> = <a class="ref" href="../../../../include/signal.h.html#sigaction" title='sigaction' data-ref="sigaction">sigaction</a> (<a class="macro" href="../../../../include/x86_64-linux-gnu/bits/signum.h.html#40" title="8" data-ref="_M/SIGFPE">SIGFPE</a>, &amp;<a class="tu ref" href="#sigfpe_action" title='sigfpe_action' data-use='a' data-ref="sigfpe_action">sigfpe_action</a>, &amp;<a class="tu ref" href="#old_sigfpe_action" title='old_sigfpe_action' data-use='a' data-ref="old_sigfpe_action">old_sigfpe_action</a>);</td></tr>
+<tr><th id="493">493</th><td>      <a class="macro" href="../../../../include/assert.h.html#88" title="((res == 0) ? (void) (0) : __assert_fail (&quot;res == 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/devices/devices.c&quot;, 493, __PRETTY_FUNCTION__))" data-ref="_M/assert">assert</a> (<a class="local col0 ref" href="#140res" title='res' data-ref="140res">res</a> == <var>0</var>);</td></tr>
+<tr><th id="494">494</th><td>    }</td></tr>
+<tr><th id="495">495</th><td></td></tr>
+<tr><th id="496">496</th><td><u>#<span data-ppcond="469">endif</span></u></td></tr>
+<tr><th id="497">497</th><td><u>#<span data-ppcond="468">endif</span></u></td></tr>
+<tr><th id="498">498</th><td><u>#<span data-ppcond="467">endif</span></u></td></tr>
+<tr><th id="499">499</th><td></td></tr>
+<tr><th id="500">500</th><td>  <i>/* Init operations */</i></td></tr>
+<tr><th id="501">501</th><td>  <b>for</b> (<a class="local col2 ref" href="#132i" title='i' data-ref="132i">i</a> = <var>0</var>; <a class="local col2 ref" href="#132i" title='i' data-ref="132i">i</a> &lt; <a class="macro" href="#103" title="(sizeof(pocl_devices_init_ops) / sizeof((pocl_devices_init_ops)[0]))" data-ref="_M/POCL_NUM_DEVICE_TYPES">POCL_NUM_DEVICE_TYPES</a>; ++<a class="local col2 ref" href="#132i" title='i' data-ref="132i">i</a>)</td></tr>
+<tr><th id="502">502</th><td>    {</td></tr>
+<tr><th id="503">503</th><td>      <a class="tu ref" href="#pocl_devices_init_ops" title='pocl_devices_init_ops' data-use='r' data-ref="pocl_devices_init_ops">pocl_devices_init_ops</a>[<a class="local col2 ref" href="#132i" title='i' data-ref="132i">i</a>](&amp;<a class="tu ref" href="#pocl_device_ops" title='pocl_device_ops' data-use='a' data-ref="pocl_device_ops">pocl_device_ops</a>[<a class="local col2 ref" href="#132i" title='i' data-ref="132i">i</a>]);</td></tr>
+<tr><th id="504">504</th><td>      <a class="macro" href="../../../../include/assert.h.html#88" title="((pocl_device_ops[i].device_name != ((void*)0)) ? (void) (0) : __assert_fail (&quot;pocl_device_ops[i].device_name != NULL&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/devices/devices.c&quot;, 504, __PRETTY_FUNCTION__))" data-ref="_M/assert">assert</a>(<a class="tu ref" href="#pocl_device_ops" title='pocl_device_ops' data-use='m' data-ref="pocl_device_ops">pocl_device_ops</a>[<a class="local col2 ref" href="#132i" title='i' data-ref="132i">i</a>].<a class="ref" href="../pocl_cl.h.html#pocl_device_ops::device_name" title='pocl_device_ops::device_name' data-ref="pocl_device_ops::device_name">device_name</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="505">505</th><td></td></tr>
+<tr><th id="506">506</th><td>      <i>/* Probe and add the result to the number of probed devices */</i></td></tr>
+<tr><th id="507">507</th><td>      <a class="macro" href="../../../../include/assert.h.html#88" title="((pocl_device_ops[i].probe) ? (void) (0) : __assert_fail (&quot;pocl_device_ops[i].probe&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/devices/devices.c&quot;, 507, __PRETTY_FUNCTION__))" data-ref="_M/assert">assert</a>(<a class="tu ref" href="#pocl_device_ops" title='pocl_device_ops' data-use='m' data-ref="pocl_device_ops">pocl_device_ops</a>[<a class="local col2 ref" href="#132i" title='i' data-ref="132i">i</a>].<a class="ref" href="../pocl_cl.h.html#pocl_device_ops::probe" title='pocl_device_ops::probe' data-ref="pocl_device_ops::probe">probe</a>);</td></tr>
+<tr><th id="508">508</th><td>      <a class="tu ref" href="#device_count" title='device_count' data-use='w' data-ref="device_count">device_count</a>[<a class="local col2 ref" href="#132i" title='i' data-ref="132i">i</a>] = <a class="tu ref" href="#pocl_device_ops" title='pocl_device_ops' data-use='m' data-ref="pocl_device_ops">pocl_device_ops</a>[<a class="local col2 ref" href="#132i" title='i' data-ref="132i">i</a>].<a class="ref" href="../pocl_cl.h.html#pocl_device_ops::probe" title='pocl_device_ops::probe' data-ref="pocl_device_ops::probe">probe</a>(&amp;<a class="tu ref" href="#pocl_device_ops" title='pocl_device_ops' data-use='a' data-ref="pocl_device_ops">pocl_device_ops</a>[<a class="local col2 ref" href="#132i" title='i' data-ref="132i">i</a>]);</td></tr>
+<tr><th id="509">509</th><td>      <a class="ref" href="devices.h.html#pocl_num_devices" title='pocl_num_devices' data-ref="pocl_num_devices">pocl_num_devices</a> += <a class="tu ref" href="#device_count" title='device_count' data-use='r' data-ref="device_count">device_count</a>[<a class="local col2 ref" href="#132i" title='i' data-ref="132i">i</a>];</td></tr>
+<tr><th id="510">510</th><td>    }</td></tr>
+<tr><th id="511">511</th><td></td></tr>
+<tr><th id="512">512</th><td>  <em>const</em> <em>char</em> *<dfn class="local col1 decl" id="141dev_env" title='dev_env' data-type='const char *' data-ref="141dev_env">dev_env</dfn> = <a class="ref" href="../pocl_runtime_config.h.html#pocl_get_string_option" title='pocl_get_string_option' data-ref="pocl_get_string_option">pocl_get_string_option</a> (<q>"POCL_DEVICES"</q>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="513">513</th><td>  <a class="macro" href="../pocl_debug.h.html#254" title="do { if ((pocl_num_devices == 0)) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 514, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_DEVICE_NOT_FOUND&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_DEVICE_NOT_FOUND&quot; &quot; &quot;); fprintf (stderr, &quot;no devices found. POCL_DEVICES=%s\n&quot;, dev_env); pocl_debug_output_unlock (); } } while (0); errcode = -1; goto ERROR; } } while (0)" data-ref="_M/POCL_GOTO_ERROR_ON">POCL_GOTO_ERROR_ON</a> ((<a class="ref" href="devices.h.html#pocl_num_devices" title='pocl_num_devices' data-ref="pocl_num_devices">pocl_num_devices</a> == <var>0</var>), <a class="macro" href="../../../include/CL/cl.h.html#175" title="-1" data-ref="_M/CL_DEVICE_NOT_FOUND">CL_DEVICE_NOT_FOUND</a>,</td></tr>
+<tr><th id="514">514</th><td>                      <q>"no devices found. POCL_DEVICES=%s\n"</q>, <a class="local col1 ref" href="#141dev_env" title='dev_env' data-ref="141dev_env">dev_env</a>);</td></tr>
+<tr><th id="515">515</th><td></td></tr>
+<tr><th id="516">516</th><td>  <a class="tu ref" href="#pocl_devices" title='pocl_devices' data-use='w' data-ref="pocl_devices">pocl_devices</a> = (<b>struct</b> <a class="type" href="../pocl_cl.h.html#_cl_device_id" title='_cl_device_id' data-ref="_cl_device_id">_cl_device_id</a>*) <a class="ref" href="../../../../include/stdlib.h.html#calloc" title='calloc' data-ref="calloc">calloc</a>(<a class="ref" href="devices.h.html#pocl_num_devices" title='pocl_num_devices' data-ref="pocl_num_devices">pocl_num_devices</a>, <b>sizeof</b>(<b>struct</b> <a class="type" href="../pocl_cl.h.html#_cl_device_id" title='_cl_device_id' data-ref="_cl_device_id">_cl_device_id</a>));</td></tr>
+<tr><th id="517">517</th><td>  <a class="macro" href="../pocl_debug.h.html#254" title="do { if ((pocl_devices == ((void*)0))) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 518, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_OUT_OF_HOST_MEMORY&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_OUT_OF_HOST_MEMORY&quot; &quot; &quot;); fprintf (stderr, &quot;Can not allocate memory for devices\n&quot;); pocl_debug_output_unlock (); } } while (0); errcode = -6; goto ERROR; } } while (0)" data-ref="_M/POCL_GOTO_ERROR_ON">POCL_GOTO_ERROR_ON</a> ((<a class="tu ref" href="#pocl_devices" title='pocl_devices' data-use='r' data-ref="pocl_devices">pocl_devices</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>), <a class="macro" href="../../../include/CL/cl.h.html#180" title="-6" data-ref="_M/CL_OUT_OF_HOST_MEMORY">CL_OUT_OF_HOST_MEMORY</a>,</td></tr>
+<tr><th id="518">518</th><td>                      <q>"Can not allocate memory for devices\n"</q>);</td></tr>
+<tr><th id="519">519</th><td></td></tr>
+<tr><th id="520">520</th><td>  <a class="local col4 ref" href="#134dev_index" title='dev_index' data-ref="134dev_index">dev_index</a> = <var>0</var>;</td></tr>
+<tr><th id="521">521</th><td>  <i>/* Init infos for each probed devices */</i></td></tr>
+<tr><th id="522">522</th><td>  <b>for</b> (<a class="local col2 ref" href="#132i" title='i' data-ref="132i">i</a> = <var>0</var>; <a class="local col2 ref" href="#132i" title='i' data-ref="132i">i</a> &lt; <a class="macro" href="#103" title="(sizeof(pocl_devices_init_ops) / sizeof((pocl_devices_init_ops)[0]))" data-ref="_M/POCL_NUM_DEVICE_TYPES">POCL_NUM_DEVICE_TYPES</a>; ++<a class="local col2 ref" href="#132i" title='i' data-ref="132i">i</a>)</td></tr>
+<tr><th id="523">523</th><td>    {</td></tr>
+<tr><th id="524">524</th><td>      <a class="tu ref" href="#str_toupper" title='str_toupper' data-use='c' data-ref="str_toupper">str_toupper</a> (<a class="local col6 ref" href="#136dev_name" title='dev_name' data-ref="136dev_name">dev_name</a>, <a class="tu ref" href="#pocl_device_ops" title='pocl_device_ops' data-use='m' data-ref="pocl_device_ops">pocl_device_ops</a>[<a class="local col2 ref" href="#132i" title='i' data-ref="132i">i</a>].<a class="ref" href="../pocl_cl.h.html#pocl_device_ops::device_name" title='pocl_device_ops::device_name' data-ref="pocl_device_ops::device_name">device_name</a>);</td></tr>
+<tr><th id="525">525</th><td>      <a class="macro" href="../../../../include/assert.h.html#88" title="((pocl_device_ops[i].init) ? (void) (0) : __assert_fail (&quot;pocl_device_ops[i].init&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/devices/devices.c&quot;, 525, __PRETTY_FUNCTION__))" data-ref="_M/assert">assert</a>(<a class="tu ref" href="#pocl_device_ops" title='pocl_device_ops' data-use='m' data-ref="pocl_device_ops">pocl_device_ops</a>[<a class="local col2 ref" href="#132i" title='i' data-ref="132i">i</a>].<a class="ref" href="../pocl_cl.h.html#pocl_device_ops::init" title='pocl_device_ops::init' data-ref="pocl_device_ops::init">init</a>);</td></tr>
+<tr><th id="526">526</th><td>      <b>for</b> (<a class="local col3 ref" href="#133j" title='j' data-ref="133j">j</a> = <var>0</var>; <a class="local col3 ref" href="#133j" title='j' data-ref="133j">j</a> &lt; <a class="tu ref" href="#device_count" title='device_count' data-use='r' data-ref="device_count">device_count</a>[<a class="local col2 ref" href="#132i" title='i' data-ref="132i">i</a>]; ++<a class="local col3 ref" href="#133j" title='j' data-ref="133j">j</a>)</td></tr>
+<tr><th id="527">527</th><td>        {</td></tr>
+<tr><th id="528">528</th><td>          <a class="typedef" href="../../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="local col2 decl" id="142dev" title='dev' data-type='cl_device_id' data-ref="142dev">dev</dfn> = &amp;<a class="tu ref" href="#pocl_devices" title='pocl_devices' data-use='r' data-ref="pocl_devices">pocl_devices</a>[<a class="local col4 ref" href="#134dev_index" title='dev_index' data-ref="134dev_index">dev_index</a>];</td></tr>
+<tr><th id="529">529</th><td>          <a class="local col2 ref" href="#142dev" title='dev' data-ref="142dev">dev</a>-&gt;<a class="ref" href="../pocl_cl.h.html#_cl_device_id::ops" title='_cl_device_id::ops' data-ref="_cl_device_id::ops">ops</a> = &amp;<a class="tu ref" href="#pocl_device_ops" title='pocl_device_ops' data-use='a' data-ref="pocl_device_ops">pocl_device_ops</a>[<a class="local col2 ref" href="#132i" title='i' data-ref="132i">i</a>];</td></tr>
+<tr><th id="530">530</th><td>          <a class="local col2 ref" href="#142dev" title='dev' data-ref="142dev">dev</a>-&gt;<a class="ref" href="../pocl_cl.h.html#_cl_device_id::dev_id" title='_cl_device_id::dev_id' data-ref="_cl_device_id::dev_id">dev_id</a> = <a class="local col4 ref" href="#134dev_index" title='dev_index' data-ref="134dev_index">dev_index</a>;</td></tr>
+<tr><th id="531">531</th><td>          <a class="macro" href="../pocl_cl.h.html#181" title="do { do { do { int r = pthread_mutex_init (&amp;((dev)-&gt;pocl_lock), ((void*)0)); ((r == 0) ? (void) (0) : __assert_fail (&quot;r == 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/devices/devices.c&quot;, 531, __PRETTY_FUNCTION__)); } while (0); (dev)-&gt;pocl_refcount = 1; } while (0); (dev)-&gt;dispatch=&amp;pocl_dispatch; } while (0)" data-ref="_M/POCL_INIT_OBJECT">POCL_INIT_OBJECT</a> (<a class="local col2 ref" href="#142dev" title='dev' data-ref="142dev">dev</a>);</td></tr>
+<tr><th id="532">532</th><td>          <a class="local col2 ref" href="#142dev" title='dev' data-ref="142dev">dev</a>-&gt;<a class="ref" href="../pocl_cl.h.html#_cl_device_id::driver_version" title='_cl_device_id::driver_version' data-ref="_cl_device_id::driver_version">driver_version</a> = <a class="macro" href="../../../config.h.html#173" title="&quot;1.5-pre/master-0-gf1dee8d&quot;" data-ref="_M/PACKAGE_VERSION">PACKAGE_VERSION</a>;</td></tr>
+<tr><th id="533">533</th><td>          <b>if</b> (<a class="local col2 ref" href="#142dev" title='dev' data-ref="142dev">dev</a>-&gt;<a class="ref" href="../pocl_cl.h.html#_cl_device_id::version" title='_cl_device_id::version' data-ref="_cl_device_id::version">version</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="534">534</th><td>            <a class="local col2 ref" href="#142dev" title='dev' data-ref="142dev">dev</a>-&gt;<a class="ref" href="../pocl_cl.h.html#_cl_device_id::version" title='_cl_device_id::version' data-ref="_cl_device_id::version">version</a> = <q>"OpenCL 2.0 pocl"</q>;</td></tr>
+<tr><th id="535">535</th><td>          <a class="local col2 ref" href="#142dev" title='dev' data-ref="142dev">dev</a>-&gt;<a class="ref" href="../pocl_cl.h.html#_cl_device_id::short_name" title='_cl_device_id::short_name' data-ref="_cl_device_id::short_name">short_name</a> = <a class="ref" href="../../../../include/string.h.html#strdup" title='strdup' data-ref="strdup">strdup</a> (<a class="local col2 ref" href="#142dev" title='dev' data-ref="142dev">dev</a>-&gt;<a class="ref" href="../pocl_cl.h.html#_cl_device_id::ops" title='_cl_device_id::ops' data-ref="_cl_device_id::ops">ops</a>-&gt;<a class="ref" href="../pocl_cl.h.html#pocl_device_ops::device_name" title='pocl_device_ops::device_name' data-ref="pocl_device_ops::device_name">device_name</a>);</td></tr>
+<tr><th id="536">536</th><td>          <i>/* The default value for the global memory space identifier is</i></td></tr>
+<tr><th id="537">537</th><td><i>             the same as the device id. The device instance can then override</i></td></tr>
+<tr><th id="538">538</th><td><i>             it to point to some other device's global memory id in case of</i></td></tr>
+<tr><th id="539">539</th><td><i>             a shared global memory. */</i></td></tr>
+<tr><th id="540">540</th><td>          <a class="tu ref" href="#pocl_devices" title='pocl_devices' data-use='r' data-ref="pocl_devices">pocl_devices</a>[<a class="local col4 ref" href="#134dev_index" title='dev_index' data-ref="134dev_index">dev_index</a>].<a class="ref" href="../pocl_cl.h.html#_cl_device_id::global_mem_id" title='_cl_device_id::global_mem_id' data-ref="_cl_device_id::global_mem_id">global_mem_id</a> = <a class="local col4 ref" href="#134dev_index" title='dev_index' data-ref="134dev_index">dev_index</a>;</td></tr>
+<tr><th id="541">541</th><td></td></tr>
+<tr><th id="542">542</th><td>          <i>/* Check if there are device-specific parameters set in the</i></td></tr>
+<tr><th id="543">543</th><td><i>             POCL_DEVICEn_PARAMETERS env. */</i></td></tr>
+<tr><th id="544">544</th><td>          <a class="macro" href="../pocl_debug.h.html#254" title="do { if ((snprintf (env_name, 1024, &quot;POCL_%s%d_PARAMETERS&quot;, dev_name, j) &lt; 0)) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 547, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_OUT_OF_HOST_MEMORY&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_OUT_OF_HOST_MEMORY&quot; &quot; &quot;); fprintf (stderr, &quot;Unable to generate the env string.&quot;); pocl_debug_output_unlock (); } } while (0); errcode = -6; goto ERROR; } } while (0)" data-ref="_M/POCL_GOTO_ERROR_ON">POCL_GOTO_ERROR_ON</a> (</td></tr>
+<tr><th id="545">545</th><td>              (<a class="ref" href="../../../../include/stdio.h.html#snprintf" title='snprintf' data-ref="snprintf">snprintf</a> (<a class="local col5 ref" href="#135env_name" title='env_name' data-ref="135env_name">env_name</a>, <var>1024</var>, <q>"POCL_%s%d_PARAMETERS"</q>, <a class="local col6 ref" href="#136dev_name" title='dev_name' data-ref="136dev_name">dev_name</a>, <a class="local col3 ref" href="#133j" title='j' data-ref="133j">j</a>)</td></tr>
+<tr><th id="546">546</th><td>               &lt; <var>0</var>),</td></tr>
+<tr><th id="547">547</th><td>              <a class="macro" href="../../../include/CL/cl.h.html#180" title="-6" data-ref="_M/CL_OUT_OF_HOST_MEMORY">CL_OUT_OF_HOST_MEMORY</a>, <q>"Unable to generate the env string."</q>);</td></tr>
+<tr><th id="548">548</th><td>          <a class="local col0 ref" href="#130errcode" title='errcode' data-ref="130errcode">errcode</a> = <a class="tu ref" href="#pocl_devices" title='pocl_devices' data-use='r' data-ref="pocl_devices">pocl_devices</a>[<a class="local col4 ref" href="#134dev_index" title='dev_index' data-ref="134dev_index">dev_index</a>].<a class="ref" href="../pocl_cl.h.html#_cl_device_id::ops" title='_cl_device_id::ops' data-ref="_cl_device_id::ops">ops</a>-&gt;<a class="ref" href="../pocl_cl.h.html#pocl_device_ops::init" title='pocl_device_ops::init' data-ref="pocl_device_ops::init">init</a> (</td></tr>
+<tr><th id="549">549</th><td>              <a class="local col3 ref" href="#133j" title='j' data-ref="133j">j</a>, &amp;<a class="tu ref" href="#pocl_devices" title='pocl_devices' data-use='r' data-ref="pocl_devices">pocl_devices</a>[<a class="local col4 ref" href="#134dev_index" title='dev_index' data-ref="134dev_index">dev_index</a>], <a class="ref" href="../../../../include/stdlib.h.html#getenv" title='getenv' data-ref="getenv">getenv</a> (<a class="local col5 ref" href="#135env_name" title='env_name' data-ref="135env_name">env_name</a>));</td></tr>
+<tr><th id="550">550</th><td>          <a class="macro" href="../pocl_debug.h.html#254" title="do { if ((errcode != 0)) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 552, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_DEVICE_NOT_AVAILABLE&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_DEVICE_NOT_AVAILABLE&quot; &quot; &quot;); fprintf (stderr, &quot;Device %i / %s initialization failed!&quot;, j, dev_name); pocl_debug_output_unlock (); } } while (0); errcode = -2; goto ERROR; } } while (0)" data-ref="_M/POCL_GOTO_ERROR_ON">POCL_GOTO_ERROR_ON</a> ((<a class="local col0 ref" href="#130errcode" title='errcode' data-ref="130errcode">errcode</a> != <a class="macro" href="../../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>), <a class="macro" href="../../../include/CL/cl.h.html#176" title="-2" data-ref="_M/CL_DEVICE_NOT_AVAILABLE">CL_DEVICE_NOT_AVAILABLE</a>,</td></tr>
+<tr><th id="551">551</th><td>                              <q>"Device %i / %s initialization failed!"</q>, <a class="local col3 ref" href="#133j" title='j' data-ref="133j">j</a>,</td></tr>
+<tr><th id="552">552</th><td>                              <a class="local col6 ref" href="#136dev_name" title='dev_name' data-ref="136dev_name">dev_name</a>);</td></tr>
+<tr><th id="553">553</th><td></td></tr>
+<tr><th id="554">554</th><td>          ++<a class="local col4 ref" href="#134dev_index" title='dev_index' data-ref="134dev_index">dev_index</a>;</td></tr>
+<tr><th id="555">555</th><td>        }</td></tr>
+<tr><th id="556">556</th><td>    }</td></tr>
+<tr><th id="557">557</th><td></td></tr>
+<tr><th id="558">558</th><td>  <a class="tu ref" href="#first_init_done" title='first_init_done' data-use='w' data-ref="first_init_done">first_init_done</a> = <var>1</var>;</td></tr>
+<tr><th id="559">559</th><td>  <a class="tu ref" href="#devices_active" title='devices_active' data-use='w' data-ref="devices_active">devices_active</a> = <var>1</var>;</td></tr>
+<tr><th id="560">560</th><td><dfn class="lbl" id="131ERROR" data-ref="131ERROR">ERROR</dfn>:</td></tr>
+<tr><th id="561">561</th><td>  <a class="tu ref" href="#init_in_progress" title='init_in_progress' data-use='w' data-ref="init_in_progress">init_in_progress</a> = <var>0</var>;</td></tr>
+<tr><th id="562">562</th><td>  <a class="macro" href="../pocl_cl.h.html#77" title="do { int r = pthread_mutex_unlock (&amp;(pocl_init_lock)); ((r == 0) ? (void) (0) : __assert_fail (&quot;r == 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/devices/devices.c&quot;, 562, __PRETTY_FUNCTION__)); } while (0)" data-ref="_M/POCL_UNLOCK">POCL_UNLOCK</a> (<a class="tu ref" href="#pocl_init_lock" title='pocl_init_lock' data-use='a' data-ref="pocl_init_lock">pocl_init_lock</a>);</td></tr>
+<tr><th id="563">563</th><td>  <b>return</b> <a class="local col0 ref" href="#130errcode" title='errcode' data-ref="130errcode">errcode</a>;</td></tr>
+<tr><th id="564">564</th><td>}</td></tr>
+<tr><th id="565">565</th><td></td></tr>
+<tr><th id="566">566</th><td><em>int</em> <dfn class="decl def" id="pocl_get_unique_global_mem_id" title='pocl_get_unique_global_mem_id' data-ref="pocl_get_unique_global_mem_id">pocl_get_unique_global_mem_id</dfn> ()</td></tr>
+<tr><th id="567">567</th><td>{</td></tr>
+<tr><th id="568">568</th><td>  <em>static</em> <em>int</em> <dfn class="local col3 decl" id="143global_id_counter" title='global_id_counter' data-type='int' data-ref="143global_id_counter">global_id_counter</dfn> = <var>1</var>;</td></tr>
+<tr><th id="569">569</th><td>  <b>return</b> <a class="local col3 ref" href="#143global_id_counter" title='global_id_counter' data-ref="143global_id_counter">global_id_counter</a>++;</td></tr>
+<tr><th id="570">570</th><td>}</td></tr>
+<tr><th id="571">571</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

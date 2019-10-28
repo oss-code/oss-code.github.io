@@ -1,0 +1,25 @@
+<def f='include/llvm-6.0/llvm/Support/FileSystem.h' l='148' ll='216'/>
+<ovr f='include/llvm-6.0/llvm/Support/FileSystem.h' l='219' c='llvm::sys::fs::file_status'/>
+<size>40</size>
+<doc f='include/llvm-6.0/llvm/Support/FileSystem.h' l='145'>/// Represents the result of a call to directory_iterator::status(). This is a
+/// subset of the information returned by a regular sys::fs::status() call, and
+/// represents the information provided by Windows FileFirstFile/FindNextFile.</doc>
+<mbr r='llvm::sys::fs::basic_file_status::fs_st_atime' o='0' t='time_t'/>
+<mbr r='llvm::sys::fs::basic_file_status::fs_st_mtime' o='64' t='time_t'/>
+<mbr r='llvm::sys::fs::basic_file_status::fs_st_uid' o='128' t='uid_t'/>
+<mbr r='llvm::sys::fs::basic_file_status::fs_st_gid' o='160' t='gid_t'/>
+<mbr r='llvm::sys::fs::basic_file_status::fs_st_size' o='192' t='off_t'/>
+<mbr r='llvm::sys::fs::basic_file_status::Type' o='256' t='llvm::sys::fs::file_type'/>
+<mbr r='llvm::sys::fs::basic_file_status::Perms' o='288' t='llvm::sys::fs::perms'/>
+<fun r='_ZN4llvm3sys2fs17basic_file_statusC1Ev'/>
+<fun r='_ZN4llvm3sys2fs17basic_file_statusC1ENS1_9file_typeE'/>
+<fun r='_ZN4llvm3sys2fs17basic_file_statusC1ENS1_9file_typeENS1_5permsElljjl'/>
+<fun r='_ZNK4llvm3sys2fs17basic_file_status4typeEv'/>
+<fun r='_ZNK4llvm3sys2fs17basic_file_status11permissionsEv'/>
+<fun r='_ZNK4llvm3sys2fs17basic_file_status19getLastAccessedTimeEv'/>
+<fun r='_ZNK4llvm3sys2fs17basic_file_status23getLastModificationTimeEv'/>
+<fun r='_ZNK4llvm3sys2fs17basic_file_status7getUserEv'/>
+<fun r='_ZNK4llvm3sys2fs17basic_file_status8getGroupEv'/>
+<fun r='_ZNK4llvm3sys2fs17basic_file_status7getSizeEv'/>
+<fun r='_ZN4llvm3sys2fs17basic_file_status4typeENS1_9file_typeE'/>
+<fun r='_ZN4llvm3sys2fs17basic_file_status11permissionsENS1_5permsE'/>

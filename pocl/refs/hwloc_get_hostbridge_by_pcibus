@@ -1,0 +1,6 @@
+<def f='include/hwloc/helper.h' l='1264' ll='1279' type='hwloc_obj_t hwloc_get_hostbridge_by_pcibus(hwloc_topology_t topology, unsigned int domain, unsigned int bus)'/>
+<doc f='include/hwloc/helper.h' l='1259'>/** \brief Find the hostbridge that covers the given PCI bus.
+ *
+ * This is useful for finding the locality of a bus because
+ * it is the hostbridge parent cpuset.
+ */</doc>

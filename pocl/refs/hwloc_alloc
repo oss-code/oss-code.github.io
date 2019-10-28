@@ -1,0 +1,10 @@
+<dec f='include/hwloc.h' l='2024' type='void * hwloc_alloc(hwloc_topology_t topology, size_t len)'/>
+<use f='include/hwloc/inlines.h' l='127' u='c' c='hwloc_alloc_membind_policy_nodeset'/>
+<use f='include/hwloc/inlines.h' l='141' u='c' c='hwloc_alloc_membind_policy'/>
+<doc f='include/hwloc.h' l='2017'>/** \brief Allocate some memory
+ *
+ * This is equivalent to malloc(), except that it tries to allocate
+ * page-aligned memory from the OS.
+ *
+ * \note The allocated memory should be freed with hwloc_free().
+ */</doc>

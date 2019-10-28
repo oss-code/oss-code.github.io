@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='629' ll='633' type='static llvm::APInt llvm::APInt::getHighBitsSet(unsigned int numBits, unsigned int hiBitsSet)'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='623'>/// \brief Get a value with high bits set
+  ///
+  /// Constructs an APInt value that has the top hiBitsSet bits set.
+  ///
+  /// \param numBits the bitwidth of the result
+  /// \param hiBitsSet the number of high-order bits set in the result.</doc>

@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='519' type='bool llvm::LazyCallGraph::SCC::isDescendantOf(const llvm::LazyCallGraph::SCC &amp; C) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='515'>/// Test if this SCC is a descendant of \a C.
+    ///
+    /// See the comments for \c isParentOf for detailed notes about the
+    /// complexity of this routine.</doc>

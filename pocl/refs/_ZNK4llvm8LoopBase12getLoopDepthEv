@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='92' ll='99' type='unsigned int llvm::LoopBase::getLoopDepth() const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='89'>/// Return the nesting level of this loop.  An outer-most loop has depth 1,
+  /// for consistency with loop depth values used for basic blocks, where depth
+  /// 0 is used for blocks not inside any loops.</doc>

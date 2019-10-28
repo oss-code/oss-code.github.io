@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='592' type='llvm::FunctionPass * llvm::createEntryExitInstrumenterPass()'/>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='169' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='586'>//===----------------------------------------------------------------------===//
+//
+// EntryExitInstrumenter pass - Instrument function entry/exit with calls to
+// mcount(), @__cyg_profile_func_{enter,exit} and the like. There are two
+// variants, intended to run pre- and post-inlining, respectively.
+//</doc>

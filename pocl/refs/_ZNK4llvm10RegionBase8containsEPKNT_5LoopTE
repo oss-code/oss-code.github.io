@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='479' type='bool llvm::RegionBase::contains(const LoopT * L) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='472'>/// @brief Check if the region contains a loop.
+  ///
+  /// @param L The loop that might be contained in this region.
+  /// @return True if the loop is contained in the region otherwise false.
+  ///         In case a NULL pointer is passed to this function the result
+  ///         is false, except for the region that describes the whole function.
+  ///         In that case true is returned.</doc>

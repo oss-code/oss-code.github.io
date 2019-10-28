@@ -1,0 +1,9 @@
+<dec f='pocl/lib/llvmopencl/WorkitemLoops.h' l='118' type='llvm::Value *'/>
+<offset>1728</offset>
+<doc f='pocl/lib/llvmopencl/WorkitemLoops.h' l='115'>// An alloca in the kernel which stores the first iteration to execute
+    // in the inner (dimension 0) loop. This is set to 1 in an peeled iteration
+    // to skip the 0, 0, 0 iteration in the loops.</doc>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='244' u='r' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='245' u='r' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='379' u='w' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='606' u='r' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>

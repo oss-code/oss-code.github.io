@@ -1,0 +1,45 @@
+<def f='include/llvm-6.0/llvm/IR/Use.h' l='56' ll='162'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/IR/Use.h' l='39'>/// \brief A Use represents the edge between a Value definition and its users.
+///
+/// This is notionally a two-dimensional linked list. It supports traversing
+/// all of the uses for a particular value definition. It also supports jumping
+/// directly to the used value when we arrive from the User&apos;s operands, and
+/// jumping directly to the User when we arrive from the Value&apos;s uses.
+///
+/// The pointer to the used Value is explicit, and the pointer to the User is
+/// implicit. The implicit pointer is found via a waymarking algorithm
+/// described in the programmer&apos;s manual:
+///
+///   http://www.llvm.org/docs/ProgrammersManual.html#the-waymarking-algorithm
+///
+/// This is essentially the single most memory intensive object in LLVM because
+/// of the number of uses in the system. At the same time, the constant time
+/// operations it allows are essential to many optimizations having reasonable
+/// time complexity.</doc>
+<fun r='_ZN4llvm3UseC1ERKS0_'/>
+<fun r='_ZN4llvm3Use4swapERS0_'/>
+<fun r='_ZN4llvm3UseD1Ev'/>
+<fun r='_ZN4llvm3UseC1ENS0_10PrevPtrTagE'/>
+<fun r='_ZNK4llvm3UsecvPNS_5ValueEEv'/>
+<fun r='_ZNK4llvm3Use3getEv'/>
+<fun r='_ZNK4llvm3Use7getUserEv'/>
+<fun r='_ZN4llvm3Use3setEPNS_5ValueE'/>
+<fun r='_ZN4llvm3UseaSEPNS_5ValueE'/>
+<fun r='_ZN4llvm3UseaSERKS0_'/>
+<fun r='_ZN4llvm3UseptEv'/>
+<fun r='_ZNK4llvm3UseptEv'/>
+<fun r='_ZNK4llvm3Use7getNextEv'/>
+<fun r='_ZNK4llvm3Use12getOperandNoEv'/>
+<fun r='_ZN4llvm3Use8initTagsEPS0_S1_'/>
+<fun r='_ZN4llvm3Use3zapEPS0_PKS0_b'/>
+<fun r='_ZNK4llvm3Use14getImpliedUserEv'/>
+<mbr r='llvm::Use::Val' o='0' t='llvm::Value *'/>
+<mbr r='llvm::Use::Next' o='64' t='llvm::Use *'/>
+<mbr r='llvm::Use::Prev' o='128' t='PointerIntPair&lt;llvm::Use **, 2, llvm::Use::PrevPtrTag, llvm::Use::PrevPointerTraits&gt;'/>
+<fun r='_ZN4llvm3Use7setPrevEPPS0_'/>
+<fun r='_ZN4llvm3Use9addToListEPPS0_'/>
+<fun r='_ZN4llvm3Use14removeFromListEv'/>
+<fun r='_ZN4llvm3Use3setEPNS_5ValueE'/>
+<fun r='_ZN4llvm3UseaSEPNS_5ValueE'/>
+<fun r='_ZN4llvm3UseaSERKS0_'/>

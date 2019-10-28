@@ -1,0 +1,11 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='235' type='unsigned int llvm::getOrEnforceKnownAlignment(llvm::Value * V, unsigned int PrefAlign, const llvm::DataLayout &amp; DL, const llvm::Instruction * CxtI = nullptr, llvm::AssumptionCache * AC = nullptr, const llvm::DominatorTree * DT = nullptr)'/>
+<use f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='246' u='c' c='_ZN4llvm17getKnownAlignmentEPNS_5ValueERKNS_10DataLayoutEPKNS_11InstructionEPNS_15AssumptionCacheEPKNS_13DominatorTreeE'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='226'>/// Try to ensure that the alignment of \p V is at least \p PrefAlign bytes. If
+/// the owning object can be modified and has an alignment less than \p
+/// PrefAlign, it will be increased and \p PrefAlign returned. If the alignment
+/// cannot be increased, the known alignment of the value is returned.
+///
+/// It is not always possible to modify the alignment of the underlying object,
+/// so if alignment is important, a more reliable approach is to simply align
+/// all global variables and allocation instructions to their preferred
+/// alignment from the beginning.</doc>

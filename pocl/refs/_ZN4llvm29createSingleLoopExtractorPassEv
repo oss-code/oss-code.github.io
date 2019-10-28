@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Transforms/IPO.h' l='180' type='llvm::Pass * llvm::createSingleLoopExtractorPass()'/>
+<doc f='include/llvm-6.0/llvm/Transforms/IPO.h' l='177'>/// createSingleLoopExtractorPass - This pass extracts one natural loop from the
+/// program into a function if it can.  This is used by bugpoint.
+///</doc>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='158' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>

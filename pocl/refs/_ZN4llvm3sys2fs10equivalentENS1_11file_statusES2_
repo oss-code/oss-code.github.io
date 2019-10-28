@@ -1,0 +1,11 @@
+<dec f='include/llvm-6.0/llvm/Support/FileSystem.h' l='220' type='bool llvm::sys::fs::equivalent(llvm::sys::fs::file_status A, llvm::sys::fs::file_status B)'/>
+<dec f='include/llvm-6.0/llvm/Support/FileSystem.h' l='456' type='bool llvm::sys::fs::equivalent(llvm::sys::fs::file_status A, llvm::sys::fs::file_status B)'/>
+<doc f='include/llvm-6.0/llvm/Support/FileSystem.h' l='447'>/// @brief Do file_status&apos;s represent the same thing?
+///
+/// @param A Input file_status.
+/// @param B Input file_status.
+///
+/// assert(status_known(A) || status_known(B));
+///
+/// @returns True if A and B both represent the same file system entity, false
+///          otherwise.</doc>

@@ -1,0 +1,7 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='695' type='cl_ulong'/>
+<offset>2688</offset>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='167' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='291' u='w' c='pocl_init_cpu_device_infos'/>
+<use f='pocl/lib/CL/devices/common.c' l='1220' u='r' c='pocl_set_buffer_image_limits'/>
+<use f='pocl/lib/CL/devices/common.c' l='1221' u='r' c='pocl_set_buffer_image_limits'/>
+<use f='pocl/lib/CL/devices/topology/pocl_topology.c' l='169' u='w' c='pocl_topology_detect_device_info'/>

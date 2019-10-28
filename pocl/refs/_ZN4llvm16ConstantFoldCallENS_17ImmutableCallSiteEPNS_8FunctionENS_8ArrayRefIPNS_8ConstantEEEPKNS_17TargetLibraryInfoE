@@ -1,0 +1,3 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='146' type='llvm::Constant * llvm::ConstantFoldCall(llvm::ImmutableCallSite CS, llvm::Function * F, ArrayRef&lt;llvm::Constant *&gt; Operands, const llvm::TargetLibraryInfo * TLI = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='144'>/// ConstantFoldCall - Attempt to constant fold a call to the specified function
+/// with the specified arguments, returning null if unsuccessful.</doc>

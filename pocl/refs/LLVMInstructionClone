@@ -1,0 +1,9 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2511' type='LLVMValueRef LLVMInstructionClone(LLVMValueRef Inst)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2503'>/**
+ * Create a copy of &apos;this&apos; instruction that is identical in all ways
+ * except the following:
+ *   * The instruction has no parent
+ *   * The instruction has no name
+ *
+ * @see llvm::Instruction::clone()
+ */</doc>

@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='100' ll='135'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='94'>/// Flags indicating whether a memory access modifies or references memory.
+///
+/// This is no access at all, a modification, a reference, or both
+/// a modification and a reference. These are specifically structured such that
+/// they form a three bit matrix and bit-tests for &apos;mod&apos; or &apos;ref&apos; or &apos;must&apos;
+/// work with any of the possible values.</doc>

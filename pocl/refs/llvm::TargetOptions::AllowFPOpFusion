@@ -1,0 +1,18 @@
+<dec f='include/llvm-6.0/llvm/Target/TargetOptions.h' l='246' type='FPOpFusion::FPOpFusionMode'/>
+<offset>192</offset>
+<doc f='include/llvm-6.0/llvm/Target/TargetOptions.h' l='230'>/// AllowFPOpFusion - This flag is set by the -fuse-fp-ops=xxx option.
+    /// This controls the creation of fused FP ops that store intermediate
+    /// results in higher precision than IEEE allows (E.g. FMAs).
+    ///
+    /// Fast mode - allows formation of fused FP ops whenever they&apos;re
+    /// profitable.
+    /// Standard mode - allow fusion only for &apos;blessed&apos; FP ops. At present the
+    /// only blessed op is the fmuladd intrinsic. In the future more blessed ops
+    /// may be added.
+    /// Strict mode - allow fusion only if/when it can be proven that the excess
+    /// precision won&apos;t effect the result.
+    ///
+    /// Note: This option only controls formation of fused ops by the
+    /// optimizers.  Fused operations that are explicitly specified (e.g. FMA
+    /// via the llvm.fma.* intrinsic) will always be honored, regardless of
+    /// the value of this option.</doc>

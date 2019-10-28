@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/Function.h' l='180' type='bool llvm::Function::isIntrinsic() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Function.h' l='177'>/// isIntrinsic - Returns true if the function&apos;s name starts with &quot;llvm.&quot;.
+  /// It&apos;s possible for this function to return true while getIntrinsicID()
+  /// returns Intrinsic::not_intrinsic!</doc>

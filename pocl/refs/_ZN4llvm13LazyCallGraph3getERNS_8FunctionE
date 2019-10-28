@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='984' ll='990' type='llvm::LazyCallGraph::Node &amp; llvm::LazyCallGraph::get(llvm::Function &amp; F)'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1024' u='c' c='_ZN4llvm13LazyCallGraph10insertEdgeERNS_8FunctionES2_NS0_4Edge4KindE'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1024' u='c' c='_ZN4llvm13LazyCallGraph10insertEdgeERNS_8FunctionES2_NS0_4Edge4KindE'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1032' u='c' c='_ZN4llvm13LazyCallGraph10removeEdgeERNS_8FunctionES2_'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1032' u='c' c='_ZN4llvm13LazyCallGraph10removeEdgeERNS_8FunctionES2_'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='982'>/// Get a graph node for a given function, scanning it to populate the graph
+  /// data as necessary.</doc>

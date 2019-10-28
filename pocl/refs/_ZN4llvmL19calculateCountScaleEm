@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Transforms/Instrumentation.h' l='193' ll='197' type='uint64_t llvm::calculateCountScale(uint64_t MaxCount)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Instrumentation.h' l='189'>/// \brief Calculate what to divide by to scale counts.
+///
+/// Given the maximum count, calculate a divisor that will scale all the
+/// weights to strictly less than std::numeric_limits&lt;uint32_t&gt;::max().</doc>

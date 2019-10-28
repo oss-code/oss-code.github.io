@@ -1,0 +1,8 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2174' type='const char * LLVMGetMDString(LLVMValueRef V, unsigned int * Length)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2167'>/**
+ * Obtain the underlying string from a MDString value.
+ *
+ * @param V Instance to obtain string from.
+ * @param Length Memory address which will hold length of returned string.
+ * @return String data in MDString.
+ */</doc>

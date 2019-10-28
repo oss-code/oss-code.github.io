@@ -1,0 +1,8 @@
+<dec f='include/pthread.h' l='233' type='int pthread_create(pthread_t *restrict __newthread, const pthread_attr_t *restrict __attr, void *(*)(void *) __start_routine, void *restrict __arg)'/>
+<doc f='include/pthread.h' l='230'>/* Create a new thread, starting with execution of START-ROUTINE
+   getting passed ARG.  Creation attributed come from ATTR.  The new
+   handle is stored in *NEWTHREAD.  */</doc>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='354' u='c' c='pocl_cuda_init_queue'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='362' u='c' c='pocl_cuda_init_queue'/>
+<use f='include/x86_64-linux-gnu/c++/7/bits/gthr-default.h' l='105' c='__gthrw_pthread_create'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='112' u='c' c='pthread_scheduler_init'/>

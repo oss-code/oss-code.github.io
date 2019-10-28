@@ -1,0 +1,6 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='606' type='cl_int (*)(void *, cl_mem, pocl_mem_identifier *, const size_t *, const size_t *, const void *restrict, size_t)'/>
+<offset>3136</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='605'>/* fill image with pattern */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='157' u='w' c='pocl_basic_init_device_ops'/>
+<use f='pocl/lib/CL/devices/common.c' l='604' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='605' u='r' c='pocl_exec_command'/>

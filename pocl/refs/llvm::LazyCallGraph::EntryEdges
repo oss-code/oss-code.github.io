@@ -1,0 +1,10 @@
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='939' u='m' c='_ZN4llvm13LazyCallGraph5beginEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='940' u='m' c='_ZN4llvm13LazyCallGraph3endEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='945' u='m' c='_ZN4llvm13LazyCallGraph23postorder_ref_scc_beginEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='951' u='m' c='_ZN4llvm13LazyCallGraph21postorder_ref_scc_endEv'/>
+<dec f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1117' type='llvm::LazyCallGraph::EdgeSequence'/>
+<offset>1344</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1113'>/// The entry edges into the graph.
+  ///
+  /// These edges are from &quot;external&quot; sources. Put another way, they
+  /// escape at the module scope.</doc>

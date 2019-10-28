@@ -1,0 +1,28 @@
+<def f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='250' ll='251'/>
+<def f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='746' ll='750'/>
+<def f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='751' ll='758'/>
+<doc f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='244'>/// FoldingSetTrait - This trait class is used to define behavior of how
+/// to &quot;profile&quot; (in the FoldingSet parlance) an object of a given type.
+/// The default behavior is to invoke a &apos;Profile&apos; method on an object, but
+/// through template specialization the behavior can be tailored for specific
+/// types.  Combined with the FoldingSetNodeWrapper class, one can add objects
+/// to FoldingSets that were not originally designed to have that behavior.</doc>
+<doc f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='743'>//===----------------------------------------------------------------------===//
+// Partial specializations of FoldingSetTrait.</doc>
+<fun r='_ZN4llvm15FoldingSetTraitIPT_E7ProfileES2_RNS_16FoldingSetNodeIDE'/>
+<fun r='_ZN4llvm15FoldingSetTraitISt4pairIT_T0_EE7ProfileERKS4_RNS_16FoldingSetNodeIDE'/>
+<inh f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='221' c='llvm::DefaultFoldingSetTrait'/>
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='151' ll='162'/>
+<inh f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='221' c='llvm::DefaultFoldingSetTrait'/>
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='230' ll='245'/>
+<size>1</size>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='149'>// Specialize FoldingSetTrait for SCEV to avoid needing to compute
+// temporary FoldingSetNodeID values.</doc>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='228'>// Specialize FoldingSetTrait for SCEVPredicate to avoid needing to compute
+// temporary FoldingSetNodeID values.</doc>
+<fun r='_ZN4llvm15FoldingSetTraitINS_4SCEVEE7ProfileERKS1_RNS_16FoldingSetNodeIDE'/>
+<fun r='_ZN4llvm15FoldingSetTraitINS_4SCEVEE6EqualsERKS1_RKNS_16FoldingSetNodeIDEjRS5_'/>
+<fun r='_ZN4llvm15FoldingSetTraitINS_4SCEVEE11ComputeHashERKS1_RNS_16FoldingSetNodeIDE'/>
+<fun r='_ZN4llvm15FoldingSetTraitINS_13SCEVPredicateEE7ProfileERKS1_RNS_16FoldingSetNodeIDE'/>
+<fun r='_ZN4llvm15FoldingSetTraitINS_13SCEVPredicateEE6EqualsERKS1_RKNS_16FoldingSetNodeIDEjRS5_'/>
+<fun r='_ZN4llvm15FoldingSetTraitINS_13SCEVPredicateEE11ComputeHashERKS1_RNS_16FoldingSetNodeIDE'/>

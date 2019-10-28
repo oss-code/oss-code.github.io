@@ -1,0 +1,9 @@
+<inh f='include/llvm-6.0/llvm/ADT/DenseSet.h' l='30' c='llvm::detail::DenseSetEmpty'/>
+<def f='include/llvm-6.0/llvm/ADT/DenseSet.h' l='34' ll='42'/>
+<doc f='include/llvm-6.0/llvm/ADT/DenseSet.h' l='32'>// Use the empty base class trick so we can create a DenseMap where the buckets
+// contain only a single item.</doc>
+<mbr r='llvm::detail::DenseSetPair::key' t='KeyT'/>
+<fun r='_ZN4llvm6detail12DenseSetPair8getFirstEv'/>
+<fun r='_ZNK4llvm6detail12DenseSetPair8getFirstEv'/>
+<fun r='_ZN4llvm6detail12DenseSetPair9getSecondEv'/>
+<fun r='_ZNK4llvm6detail12DenseSetPair9getSecondEv'/>

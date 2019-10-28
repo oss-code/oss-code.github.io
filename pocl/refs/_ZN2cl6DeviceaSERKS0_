@@ -1,0 +1,6 @@
+<use f='pocl/include/CL/cl2.hpp' l='2056' u='c' c='_ZN2cl6Device19makeDefaultProvidedERKS0_'/>
+<def f='pocl/include/CL/cl2.hpp' l='2129' ll='2133' type='cl::Device &amp; cl::Device::operator=(const cl::Device &amp; dev)'/>
+<use f='pocl/include/CL/cl2.hpp' l='3081' u='c' c='_ZN2cl6Device11makeDefaultEv'/>
+<doc f='pocl/include/CL/cl2.hpp' l='2126'>/*! \brief Copy assignment to forward copy to the superclass correctly.
+    * Required for MSVC.
+    */</doc>

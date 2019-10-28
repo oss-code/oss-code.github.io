@@ -1,0 +1,8 @@
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='428' u='c' c='_ZNK4llvm7DIScope7getFileEv'/>
+<def f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='442' ll='445' type='llvm::Metadata * llvm::DIScope::getRawFile() const'/>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='436'>/// Return the raw underlying file.
+  ///
+  /// A \a DIFile is a \a DIScope, but it doesn&apos;t point at a separate file (it
+  /// \em is the file).  If \c this is an \a DIFile, we need to return \c this.
+  /// Otherwise, return the first operand, which is where all other subclasses
+  /// store their file pointer.</doc>

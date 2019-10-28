@@ -1,0 +1,35 @@
+<def f='include/llvm-6.0/llvm/Option/Option.h' l='52' ll='212'/>
+<size>16</size>
+<doc f='include/llvm-6.0/llvm/Option/Option.h' l='41'>/// Option - Abstract representation for a single form of driver
+/// argument.
+///
+/// An Option class represents a form of option that the driver
+/// takes, for example how many arguments the option has and how
+/// they can be provided. Individual option instances store
+/// additional information about what group the option is a member
+/// of (if any), if the option is an alias, and a number of
+/// flags. At runtime the driver parses the command line into
+/// concrete Arg instances, each of which corresponds to a
+/// particular Option instance.</doc>
+<mbr r='llvm::opt::Option::Info' o='0' t='const OptTable::Info *'/>
+<mbr r='llvm::opt::Option::Owner' o='64' t='const llvm::opt::OptTable *'/>
+<fun r='_ZN4llvm3opt6OptionC1EPKNS0_8OptTable4InfoEPKS2_'/>
+<fun r='_ZNK4llvm3opt6Option7isValidEv'/>
+<fun r='_ZNK4llvm3opt6Option5getIDEv'/>
+<fun r='_ZNK4llvm3opt6Option7getKindEv'/>
+<fun r='_ZNK4llvm3opt6Option7getNameEv'/>
+<fun r='_ZNK4llvm3opt6Option8getGroupEv'/>
+<fun r='_ZNK4llvm3opt6Option8getAliasEv'/>
+<fun r='_ZNK4llvm3opt6Option12getAliasArgsEv'/>
+<fun r='_ZNK4llvm3opt6Option9getPrefixEv'/>
+<fun r='_ZNK4llvm3opt6Option15getPrefixedNameB5cxx11Ev'/>
+<fun r='_ZNK4llvm3opt6Option10getNumArgsEv'/>
+<fun r='_ZNK4llvm3opt6Option15hasNoOptAsInputEv'/>
+<fun r='_ZNK4llvm3opt6Option14getRenderStyleEv'/>
+<fun r='_ZNK4llvm3opt6Option7hasFlagEj'/>
+<fun r='_ZNK4llvm3opt6Option18getUnaliasedOptionEv'/>
+<fun r='_ZNK4llvm3opt6Option13getRenderNameEv'/>
+<fun r='_ZNK4llvm3opt6Option7matchesENS0_12OptSpecifierE'/>
+<fun r='_ZNK4llvm3opt6Option6acceptERKNS0_7ArgListERjj'/>
+<fun r='_ZNK4llvm3opt6Option5printERNS_11raw_ostreamE'/>
+<fun r='_ZNK4llvm3opt6Option4dumpEv'/>

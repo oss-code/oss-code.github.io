@@ -1,0 +1,7 @@
+<def f='pocl/include/CL/cl2.hpp' l='2462' ll='2495' type='cl_int cl::Platform::getDevices(cl_device_type type, vector&lt;cl::Device&gt; * devices) const'/>
+<use f='pocl/include/CL/cl2.hpp' l='2866' u='c' c='_ZN2cl7ContextC1EmPlPFvPKcPKvmPvES6_Pi'/>
+<doc f='pocl/include/CL/cl2.hpp' l='2458'>/*! \brief Gets a list of devices for this platform.
+     *
+     *  Wraps clGetDeviceIDs().
+     */</doc>
+<use f='pocl/tests/regression/test_flatten_barrier_subs.cpp' l='79' u='c' c='_Z10get_deviceN2cl8PlatformEj'/>

@@ -1,0 +1,13 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='673' type='cl_uint'/>
+<offset>1568</offset>
+<use f='pocl/lib/CL/clEnqueueNativeKernel.c' l='101' u='r' c='POclEnqueueNativeKernel'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='121' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='121' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='240' u='w' c='pocl_init_cpu_device_infos'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='179' u='w' c='pocl_cuda_init'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='300' u='r' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='637' u='r' c='pocl_llvm_link_program'/>
+<use f='pocl/lib/llvmopencl/Kernel.cc' l='285' u='r' c='_ZN4pocl6Kernel20addLocalSizeInitCodeEmmm'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='293' u='r' c='_ZN4pocl14ParallelRegion17insertLocalIdInitEPN4llvm10BasicBlockEjjj'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='172' u='r' c='_ZN4pocl9Workgroup11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='84' u='r' c='_ZN4pocl15WorkitemHandler10InitializeEPNS_6KernelE'/>

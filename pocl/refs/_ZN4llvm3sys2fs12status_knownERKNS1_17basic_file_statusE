@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Support/FileSystem.h' l='659' type='bool llvm::sys::fs::status_known(const llvm::sys::fs::basic_file_status &amp; s)'/>
+<doc f='include/llvm-6.0/llvm/Support/FileSystem.h' l='655'>/// @brief Is status available?
+///
+/// @param s Input file status.
+/// @returns True if status() != status_error.</doc>

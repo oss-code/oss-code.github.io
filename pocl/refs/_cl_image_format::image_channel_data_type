@@ -1,0 +1,13 @@
+<dec f='pocl/include/CL/cl.h' l='125' type='cl_channel_type'/>
+<offset>32</offset>
+<use f='pocl/lib/CL/clCreateImage.c' l='95' u='r' c='POclCreateImage'/>
+<use f='pocl/lib/CL/clCreateImage.c' l='243' u='r' c='POclCreateImage'/>
+<use f='pocl/lib/CL/pocl_image_util.c' l='198' u='r' c='pocl_check_device_supports_image'/>
+<use f='pocl/lib/CL/pocl_image_util.c' l='199' u='r' c='pocl_check_device_supports_image'/>
+<use f='pocl/tests/kernel/image_query_funcs.c' l='45' u='w' c='main'/>
+<use f='pocl/tests/kernel/sampler_address_clamp.c' l='38' u='w' c='main'/>
+<use f='pocl/include/CL/cl2.hpp' l='2015' u='w' c='_ZN2cl11ImageFormatC1Ejj'/>
+<use f='pocl/include/CL/cl2.hpp' l='2022' u='w' c='_ZN2cl11ImageFormataSERKS0_'/>
+<use f='pocl/include/CL/cl2.hpp' l='2022' u='r' c='_ZN2cl11ImageFormataSERKS0_'/>
+<use f='pocl/tests/runtime/test_buffer-image-copy.c' l='37' u='w'/>
+<use f='pocl/tests/runtime/test_event_free.c' l='48' u='w' c='main'/>

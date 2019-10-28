@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='644' type='static llvm::CastInst * llvm::CastInst::CreatePointerCast(llvm::Value * S, llvm::Type * Ty, const llvm::Twine &amp; Name = &quot;&quot;, llvm::Instruction * InsertBefore = nullptr)'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='298' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='643'>/// @brief Create a BitCast, AddrSpaceCast or a PtrToInt cast instruction.</doc>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1494' u='c' c='_ZN4llvm9IRBuilder17CreatePointerCastEPNS_5ValueEPNS_4TypeERKNS_5TwineE'/>

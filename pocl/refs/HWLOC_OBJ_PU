@@ -1,0 +1,13 @@
+<dec f='include/hwloc.h' l='199' type='6'/>
+<use f='include/hwloc/helper.h' l='559' u='r' c='hwloc_get_pu_obj_by_os_index'/>
+<use f='include/hwloc/inlines.h' l='37' u='r' c='hwloc_get_type_or_below_depth'/>
+<use f='pocl/lib/CL/devices/topology/pocl_topology.c' l='126' u='r' c='pocl_topology_detect_device_info'/>
+<use f='pocl/lib/CL/devices/topology/pocl_topology.c' l='151' u='r' c='pocl_topology_detect_device_info'/>
+<doc f='include/hwloc.h' l='199'>/**&lt; \brief Processing Unit, or (Logical) Processor.
+			  * An execution unit (may share a core with some
+			  * other logical processors, e.g. in the case of
+			  * an SMT core).
+			  *
+			  * Objects of this kind are always reported and can
+			  * thus be used as fallback when others are not.
+			  */</doc>

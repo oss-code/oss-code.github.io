@@ -1,0 +1,3 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='58' type='bool llvm::MergeBlockIntoPredecessor(llvm::BasicBlock * BB, llvm::DominatorTree * DT = nullptr, llvm::LoopInfo * LI = nullptr, llvm::MemoryDependenceResults * MemDep = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='56'>/// Attempts to merge a block into its predecessor, if possible. The return
+/// value indicates success or failure.</doc>

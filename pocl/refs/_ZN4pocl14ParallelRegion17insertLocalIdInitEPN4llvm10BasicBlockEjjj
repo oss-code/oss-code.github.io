@@ -1,0 +1,5 @@
+<dec f='pocl/lib/llvmopencl/ParallelRegion.h' l='63' type='static void pocl::ParallelRegion::insertLocalIdInit(llvm::BasicBlock * entry, unsigned int x, unsigned int y, unsigned int z)'/>
+<def f='pocl/lib/llvmopencl/ParallelRegion.cc' l='284' ll='306' type='static void pocl::ParallelRegion::insertLocalIdInit(llvm::BasicBlock * Entry, unsigned int X, unsigned int Y, unsigned int Z)'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='314' u='c' c='_ZN4pocl14ParallelRegion14insertPrologueEjjj'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='364' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='612' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>

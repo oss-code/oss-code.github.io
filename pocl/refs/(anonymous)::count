@@ -1,0 +1,11 @@
+<dec f='pocl/lib/CL/pocl_hash.h' l='40' type='uint32_t [2]'/>
+<offset>160</offset>
+<use f='pocl/lib/CL/pocl_hash.c' l='171' u='w' c='pocl_SHA1_Init'/>
+<use f='pocl/lib/CL/pocl_hash.c' l='171' u='w' c='pocl_SHA1_Init'/>
+<use f='pocl/lib/CL/pocl_hash.c' l='180' u='r' c='pocl_SHA1_Update'/>
+<use f='pocl/lib/CL/pocl_hash.c' l='181' u='w' c='pocl_SHA1_Update'/>
+<use f='pocl/lib/CL/pocl_hash.c' l='181' u='w' c='pocl_SHA1_Update'/>
+<use f='pocl/lib/CL/pocl_hash.c' l='182' u='w' c='pocl_SHA1_Update'/>
+<use f='pocl/lib/CL/pocl_hash.c' l='204' u='r' c='pocl_SHA1_Final'/>
+<use f='pocl/lib/CL/pocl_hash.c' l='208' u='r' c='pocl_SHA1_Final'/>
+<use f='pocl/lib/CL/pocl_hash.c' l='222' u='r' c='pocl_SHA1_Final'/>

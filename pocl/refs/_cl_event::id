@@ -1,0 +1,20 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1158' type='unsigned int'/>
+<offset>704</offset>
+<use f='pocl/lib/CL/clReleaseEvent.c' l='54' u='r' c='POclReleaseEvent'/>
+<use f='pocl/lib/CL/clSetUserEventStatus.c' l='28' u='r' c='POclSetUserEventStatus'/>
+<use f='pocl/lib/CL/pocl_util.c' l='344' u='r' c='pocl_lock_events_inorder'/>
+<use f='pocl/lib/CL/pocl_util.c' l='344' u='r' c='pocl_lock_events_inorder'/>
+<use f='pocl/lib/CL/pocl_util.c' l='345' u='r' c='pocl_lock_events_inorder'/>
+<use f='pocl/lib/CL/pocl_util.c' l='345' u='r' c='pocl_lock_events_inorder'/>
+<use f='pocl/lib/CL/pocl_util.c' l='361' u='r' c='pocl_unlock_events_inorder'/>
+<use f='pocl/lib/CL/pocl_util.c' l='361' u='r' c='pocl_unlock_events_inorder'/>
+<use f='pocl/lib/CL/pocl_util.c' l='362' u='r' c='pocl_unlock_events_inorder'/>
+<use f='pocl/lib/CL/pocl_util.c' l='362' u='r' c='pocl_unlock_events_inorder'/>
+<use f='pocl/lib/CL/pocl_util.c' l='398' u='w' c='pocl_create_event'/>
+<use f='pocl/lib/CL/pocl_util.c' l='401' u='r' c='pocl_create_event'/>
+<use f='pocl/lib/CL/pocl_util.c' l='424' u='r' c='pocl_create_event_sync'/>
+<use f='pocl/lib/CL/pocl_util.c' l='424' u='r' c='pocl_create_event_sync'/>
+<use f='pocl/lib/CL/pocl_util.c' l='532' u='r' c='pocl_create_command'/>
+<use f='pocl/lib/CL/pocl_util.c' l='568' u='r' c='pocl_command_enqueue'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1241' u='r' c='pocl_update_event_finished_msg'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1244' u='r' c='pocl_update_event_finished_msg'/>

@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/IR/LegacyPassManager.h' l='59' type='bool llvm::legacy::PassManager::run(llvm::Module &amp; M)'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='144' u='c' c='pocl_ptx_gen'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='585' u='c' c='_ZL13linkLibDevicePN4llvm6ModuleEPKcS3_'/>
+<doc f='include/llvm-6.0/llvm/IR/LegacyPassManager.h' l='57'>/// run - Execute all of the passes scheduled for execution.  Keep track of
+  /// whether any of the passes modifies the module, and if so, return true.</doc>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='435' u='c' c='pocl_llvm_generate_workgroup_function_nowrite'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='624' u='c' c='pocl_llvm_codegen'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='661' u='c' c='pocl_llvm_codegen'/>

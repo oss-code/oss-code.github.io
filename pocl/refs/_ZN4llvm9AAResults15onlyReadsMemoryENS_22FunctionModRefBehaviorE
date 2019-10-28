@@ -1,0 +1,5 @@
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='435' u='c' c='_ZN4llvm9AAResults15onlyReadsMemoryENS_17ImmutableCallSiteE'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='448' u='c' c='_ZN4llvm9AAResults15onlyReadsMemoryEPKNS_8FunctionE'/>
+<def f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='453' ll='455' type='static bool llvm::AAResults::onlyReadsMemory(llvm::FunctionModRefBehavior MRB)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='451'>/// Checks if functions with the specified behavior are known to only read
+  /// from non-volatile memory (or not access memory at all).</doc>

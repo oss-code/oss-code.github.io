@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='193' type='int llvm::TargetTransformInfo::getGEPCost(llvm::Type * PointeeType, const llvm::Value * Ptr, ArrayRef&lt;const llvm::Value *&gt; Operands) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='188'>/// \brief Estimate the cost of a GEP operation when lowered.
+  ///
+  /// The contract for this function is the same as \c getOperationCost except
+  /// that it supports an interface that provides extra information specific to
+  /// the GEP operation.</doc>

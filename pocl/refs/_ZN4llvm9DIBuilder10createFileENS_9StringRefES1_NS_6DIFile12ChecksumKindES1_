@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='143' type='llvm::DIFile * llvm::DIBuilder::createFile(llvm::StringRef Filename, llvm::StringRef Directory, DIFile::ChecksumKind CSKind = DIFile::CSK_None, llvm::StringRef Checksum = llvm::StringRef())'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='138'>/// Create a file descriptor to hold debugging information for a file.
+    /// \param Filename  File name.
+    /// \param Directory Directory.
+    /// \param CSKind    Checksum kind (e.g. CSK_None, CSK_MD5, CSK_SHA1, etc.).
+    /// \param Checksum  Checksum data.</doc>

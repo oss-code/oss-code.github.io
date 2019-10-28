@@ -1,0 +1,53 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='108' type='bool llvm::APInt::isSingleWord() const'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='147' u='c' c='_ZN4llvm5APInt15clearUnusedBitsEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='157' u='c' c='_ZNK4llvm5APInt7getWordEj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='274' u='c' c='_ZN4llvm5APIntC1Ejmb'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='316' u='c' c='_ZN4llvm5APIntC1ERKS0_'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='342' u='c' c='_ZNK4llvm5APInt12needsCleanupEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='390' u='c' c='_ZNK4llvm5APInt14isAllOnesValueEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='405' u='c' c='_ZNK4llvm5APInt10isOneValueEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='421' u='c' c='_ZNK4llvm5APInt16isMaxSignedValueEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='437' u='c' c='_ZNK4llvm5APInt16isMinSignedValueEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='458' u='c' c='_ZNK4llvm5APInt10isPowerOf2Ev'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='491' u='c' c='_ZNK4llvm5APInt6isMaskEj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='502' u='c' c='_ZNK4llvm5APInt6isMaskEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='511' u='c' c='_ZNK4llvm5APInt13isShiftedMaskEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='669' u='c' c='_ZNK4llvm5APInt10getRawDataEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='716' u='c' c='_ZNK4llvm5APIntntEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='730' u='c' c='_ZN4llvm5APIntaSERKS0_'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='730' u='c' c='_ZN4llvm5APIntaSERKS0_'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='743' u='c' c='_ZN4llvm5APIntaSEOS0_'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='764' u='c' c='_ZN4llvm5APIntaSEm'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='782' u='c' c='_ZN4llvm5APIntaNERKS0_'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='795' u='c' c='_ZN4llvm5APIntaNEm'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='812' u='c' c='_ZN4llvm5APIntoRERKS0_'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='825' u='c' c='_ZN4llvm5APIntoREm'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='842' u='c' c='_ZN4llvm5APInteOERKS0_'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='855' u='c' c='_ZN4llvm5APInteOEm'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='895' u='c' c='_ZN4llvm5APIntlSEj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='944' u='c' c='_ZN4llvm5APInt11ashrInPlaceEj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='968' u='c' c='_ZN4llvm5APInt11lshrInPlaceEj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1111' u='c' c='_ZNK4llvm5APInteqERKS0_'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1123' u='c' c='_ZNK4llvm5APInteqEm'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1174' u='c' c='_ZNK4llvm5APInt3ultEm'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1192' u='c' c='_ZNK4llvm5APInt3sltEl'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1244' u='c' c='_ZNK4llvm5APInt3ugtEm'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1262' u='c' c='_ZNK4llvm5APInt3sgtEl'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1302' u='c' c='_ZNK4llvm5APInt10intersectsERKS0_'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1310' u='c' c='_ZNK4llvm5APInt10isSubsetOfERKS0_'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1370' u='c' c='_ZN4llvm5APInt10setAllBitsEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1385' u='c' c='_ZN4llvm5APInt6setBitEj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1406' u='c' c='_ZN4llvm5APInt7setBitsEjj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1432' u='c' c='_ZN4llvm5APInt12clearAllBitsEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1444' u='c' c='_ZN4llvm5APInt8clearBitEj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1457' u='c' c='_ZN4llvm5APInt11flipAllBitsEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1543' u='c' c='_ZNK4llvm5APInt12getZExtValueEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1555' u='c' c='_ZNK4llvm5APInt12getSExtValueEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1576' u='c' c='_ZNK4llvm5APInt17countLeadingZerosEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1592' u='c' c='_ZNK4llvm5APInt16countLeadingOnesEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1612' u='c' c='_ZNK4llvm5APInt18countTrailingZerosEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1626' u='c' c='_ZNK4llvm5APInt17countTrailingOnesEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1638' u='c' c='_ZNK4llvm5APInt15countPopulationEv'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='105'>/// \brief Determine if this APInt just has one word to store value.
+  ///
+  /// \returns true if the number of bits &lt;= 64, false otherwise.</doc>

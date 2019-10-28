@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/ADT/ilist.h' l='65' ll='77'/>
+<doc f='include/llvm-6.0/llvm/ADT/ilist.h' l='61'>/// Callbacks do nothing by default in iplist and ilist.
+///
+/// Specialize this for to use callbacks for when nodes change their list
+/// membership.</doc>
+<fun r='_ZN4llvm21ilist_callback_traits13addNodeToListEPT_'/>
+<fun r='_ZN4llvm21ilist_callback_traits18removeNodeFromListEPT_'/>
+<fun r='_ZN4llvm21ilist_callback_traits21transferNodesFromListERNS_21ilist_callback_traitsIT_EET_S6_'/>

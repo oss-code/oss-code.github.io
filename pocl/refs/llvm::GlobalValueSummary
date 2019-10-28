@@ -1,0 +1,33 @@
+<def f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='124' ll='254'/>
+<ovr f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='257' c='llvm::AliasSummary'/>
+<ovr f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='305' c='llvm::FunctionSummary'/>
+<ovr f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='497' c='llvm::GlobalVarSummary'/>
+<size>64</size>
+<doc f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='122'>/// \brief Function and variable summary information to aid decisions and
+/// implementation of importing.</doc>
+<mbr r='llvm::GlobalValueSummary::Kind' o='64' t='llvm::GlobalValueSummary::SummaryKind'/>
+<mbr r='llvm::GlobalValueSummary::Flags' o='96' t='llvm::GlobalValueSummary::GVFlags'/>
+<mbr r='llvm::GlobalValueSummary::OriginalName' o='128' t='GlobalValue::GUID'/>
+<mbr r='llvm::GlobalValueSummary::ModulePath' o='192' t='llvm::StringRef'/>
+<mbr r='llvm::GlobalValueSummary::RefEdgeList' o='320' t='std::vector&lt;ValueInfo&gt;'/>
+<fun r='_ZNK4llvm18GlobalValueSummary6isLiveEv'/>
+<fun r='_ZN4llvm18GlobalValueSummaryC1ENS0_11SummaryKindENS0_7GVFlagsESt6vectorINS_9ValueInfoESaIS4_EE'/>
+<fun r='_ZN4llvm18GlobalValueSummaryD1Ev'/>
+<fun r='_ZN4llvm18GlobalValueSummary15getOriginalNameEv'/>
+<fun r='_ZN4llvm18GlobalValueSummary15setOriginalNameEm'/>
+<fun r='_ZNK4llvm18GlobalValueSummary14getSummaryKindEv'/>
+<fun r='_ZN4llvm18GlobalValueSummary13setModulePathENS_9StringRefE'/>
+<fun r='_ZNK4llvm18GlobalValueSummary10modulePathEv'/>
+<fun r='_ZN4llvm18GlobalValueSummary5flagsEv'/>
+<fun r='_ZNK4llvm18GlobalValueSummary7linkageEv'/>
+<fun r='_ZN4llvm18GlobalValueSummary10setLinkageENS_11GlobalValue12LinkageTypesE'/>
+<fun r='_ZNK4llvm18GlobalValueSummary19notEligibleToImportEv'/>
+<fun r='_ZN4llvm18GlobalValueSummary7setLiveEb'/>
+<fun r='_ZN4llvm18GlobalValueSummary11setDSOLocalEb'/>
+<fun r='_ZNK4llvm18GlobalValueSummary10isDSOLocalEv'/>
+<fun r='_ZN4llvm18GlobalValueSummary22setNotEligibleToImportEv'/>
+<fun r='_ZNK4llvm18GlobalValueSummary4refsEv'/>
+<fun r='_ZN4llvm18GlobalValueSummary13getBaseObjectEv'/>
+<fun r='_ZNK4llvm18GlobalValueSummary13getBaseObjectEv'/>
+<fun r='_ZNK4llvm18GlobalValueSummary13getBaseObjectEv'/>
+<fun r='_ZN4llvm18GlobalValueSummary13getBaseObjectEv'/>

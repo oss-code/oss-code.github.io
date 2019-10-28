@@ -1,0 +1,6 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1193' type='pthread_cond_t'/>
+<offset>0</offset>
+<use f='pocl/lib/CL/clCreateUserEvent.c' l='25' u='a' c='POclCreateUserEvent'/>
+<use f='pocl/lib/CL/clReleaseEvent.c' l='50' u='a' c='POclReleaseEvent'/>
+<use f='pocl/lib/CL/clSetUserEventStatus.c' l='36' u='a' c='POclSetUserEventStatus'/>
+<use f='pocl/lib/CL/clWaitForEvents.c' l='75' u='a' c='POclWaitForEvents'/>

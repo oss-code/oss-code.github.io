@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/IR/PassManager.h' l='444' ll='483' type='llvm::PreservedAnalyses llvm::PassManager::run(IRUnitT &amp; IR, AnalysisManagerT &amp; AM, ExtraArgTs... ExtraArgs)'/>
+<doc f='include/llvm-6.0/llvm/IR/PassManager.h' l='442'>/// \brief Run all of the passes in this manager over the given unit of IR.
+  /// ExtraArgs are passed to each pass.</doc>
+<dec f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='137' type='llvm::PreservedAnalyses llvm::PassManager&lt;llvm::LazyCallGraph::SCC, llvm::AnalysisManager&lt;LazyCallGraph::SCC, llvm::LazyCallGraph &amp;&gt;, llvm::LazyCallGraph &amp;, llvm::CGSCCUpdateResult &amp;&gt;::run(LazyCallGraph::SCC &amp; InitialC, CGSCCAnalysisManager &amp; AM, llvm::LazyCallGraph &amp; G, llvm::CGSCCUpdateResult &amp; UR)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='131'>// Explicit specialization and instantiation declarations for the pass manager.
+// See the comments on the definition of the specialization for details on how
+// it differs from the primary template.</doc>

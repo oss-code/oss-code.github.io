@@ -1,0 +1,14 @@
+<def f='include/llvm-6.0/llvm/IR/PassManager.h' l='114' ll='120'/>
+<size>1</size>
+<doc f='include/llvm-6.0/llvm/IR/PassManager.h' l='104'>/// Represents analyses that only rely on functions&apos; control flow.
+///
+/// This can be used with \c PreservedAnalyses to mark the CFG as preserved and
+/// to query whether it has been preserved.
+///
+/// The CFG of a function is defined as the set of basic blocks and the edges
+/// between them. Changing the set of basic blocks in a function is enough to
+/// mutate the CFG. Mutating the condition of a branch or argument of an
+/// invoked function does not mutate the CFG, but changing the successor labels
+/// of those instructions does.</doc>
+<fun r='_ZN4llvm11CFGAnalyses2IDEv'/>
+<smbr r='llvm::CFGAnalyses::SetKey' t='llvm::AnalysisSetKey'/>

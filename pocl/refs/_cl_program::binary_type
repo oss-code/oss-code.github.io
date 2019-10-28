@@ -1,0 +1,15 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1103' type='cl_program_binary_type'/>
+<offset>6688</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='1102'>/* Use to store binary type */</doc>
+<use f='pocl/lib/CL/clCreateProgramWithBinary.c' l='129' u='w' c='create_program_skeleton'/>
+<use f='pocl/lib/CL/clCreateProgramWithSource.c' l='102' u='w' c='POclCreateProgramWithSource'/>
+<use f='pocl/lib/CL/clGetProgramBuildInfo.c' l='89' u='r' c='POclGetProgramBuildInfo'/>
+<use f='pocl/lib/CL/clLinkProgram.c' l='62' u='r' c='POclLinkProgram'/>
+<use f='pocl/lib/CL/clLinkProgram.c' l='63' u='r' c='POclLinkProgram'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='615' u='r' c='pocl_binary_serialize'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='653' u='w' c='pocl_binary_deserialize'/>
+<use f='pocl/lib/CL/pocl_build.c' l='127' u='r' c='program_compile_dynamic_wg_binaries'/>
+<use f='pocl/lib/CL/pocl_build.c' l='795' u='w' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_build.c' l='804' u='w' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_build.c' l='806' u='w' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_build.c' l='810' u='r' c='compile_and_link_program'/>

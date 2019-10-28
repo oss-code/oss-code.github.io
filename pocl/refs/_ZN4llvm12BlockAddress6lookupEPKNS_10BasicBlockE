@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='834' type='static llvm::BlockAddress * llvm::BlockAddress::lookup(const llvm::BasicBlock * BB)'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='831'>/// Lookup an existing \c BlockAddress constant for the given BasicBlock.
+  ///
+  /// \returns 0 if \c !BB-&gt;hasAddressTaken(), otherwise the \c BlockAddress.</doc>

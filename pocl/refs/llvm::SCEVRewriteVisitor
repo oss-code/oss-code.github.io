@@ -1,0 +1,19 @@
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='579' ll='693'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='699' c='llvm::SCEVParameterRewriter'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='731' c='llvm::SCEVLoopAddRecRewriter'/>
+<mbr r='llvm::SCEVRewriteVisitor::SE' t='llvm::ScalarEvolution &amp;'/>
+<mbr r='llvm::SCEVRewriteVisitor::RewriteResults' t='DenseMap&lt;const llvm::SCEV *, const llvm::SCEV *&gt;'/>
+<fun r='_ZN4llvm18SCEVRewriteVisitorC1ERNS_15ScalarEvolutionE'/>
+<fun r='_ZN4llvm18SCEVRewriteVisitor5visitEPKNS_4SCEVE'/>
+<fun r='_ZN4llvm18SCEVRewriteVisitor13visitConstantEPKNS_12SCEVConstantE'/>
+<fun r='_ZN4llvm18SCEVRewriteVisitor17visitTruncateExprEPKNS_16SCEVTruncateExprE'/>
+<fun r='_ZN4llvm18SCEVRewriteVisitor19visitZeroExtendExprEPKNS_18SCEVZeroExtendExprE'/>
+<fun r='_ZN4llvm18SCEVRewriteVisitor19visitSignExtendExprEPKNS_18SCEVSignExtendExprE'/>
+<fun r='_ZN4llvm18SCEVRewriteVisitor12visitAddExprEPKNS_11SCEVAddExprE'/>
+<fun r='_ZN4llvm18SCEVRewriteVisitor12visitMulExprEPKNS_11SCEVMulExprE'/>
+<fun r='_ZN4llvm18SCEVRewriteVisitor13visitUDivExprEPKNS_12SCEVUDivExprE'/>
+<fun r='_ZN4llvm18SCEVRewriteVisitor15visitAddRecExprEPKNS_14SCEVAddRecExprE'/>
+<fun r='_ZN4llvm18SCEVRewriteVisitor13visitSMaxExprEPKNS_12SCEVSMaxExprE'/>
+<fun r='_ZN4llvm18SCEVRewriteVisitor13visitUMaxExprEPKNS_12SCEVUMaxExprE'/>
+<fun r='_ZN4llvm18SCEVRewriteVisitor12visitUnknownEPKNS_11SCEVUnknownE'/>
+<fun r='_ZN4llvm18SCEVRewriteVisitor20visitCouldNotComputeEPKNS_19SCEVCouldNotComputeE'/>

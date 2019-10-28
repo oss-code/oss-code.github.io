@@ -1,0 +1,32 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='675' type='cl_bool'/>
+<offset>1664</offset>
+<use f='pocl/lib/CL/clCreateImage.c' l='74' u='r' c='POclCreateImage'/>
+<use f='pocl/lib/CL/clCreateImage.c' l='207' u='r' c='POclCreateImage'/>
+<use f='pocl/lib/CL/clCreateSampler.c' l='44' u='r' c='POclCreateSampler'/>
+<use f='pocl/lib/CL/clCreateSampler.c' l='72' u='r' c='POclCreateSampler'/>
+<use f='pocl/lib/CL/clEnqueueFillImage.c' l='57' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='79' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='489' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueReadImage.c' l='68' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueWriteImage.c' l='42' macro='1' u='r'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='67' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='36' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='36' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='36' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='36' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='36' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='36' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='36' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='36' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='36' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='36' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='36' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/clReleaseMemObject.c' l='76' u='r' c='POclReleaseMemObject'/>
+<use f='pocl/lib/CL/clReleaseSampler.c' l='44' u='r' c='POclReleaseSampler'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='241' u='w' c='pocl_init_cpu_device_infos'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='192' u='w' c='pocl_cuda_init'/>
+<use f='pocl/lib/CL/pocl_image_util.c' l='135' u='r' c='pocl_check_device_supports_image'/>
+<use f='pocl/lib/CL/pocl_img_buf_cpy.c' l='85' macro='1' u='r'/>
+<use f='pocl/lib/CL/pocl_img_buf_cpy.c' l='103' macro='1' u='r'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='318' u='r' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_util.c' l='970' u='r' c='pocl_setup_context'/>

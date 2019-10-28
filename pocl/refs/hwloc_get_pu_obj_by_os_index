@@ -1,0 +1,11 @@
+<dec f='include/hwloc/helper.h' l='554' type='hwloc_obj_t hwloc_get_pu_obj_by_os_index(hwloc_topology_t topology, unsigned int os_index)'/>
+<def f='include/hwloc/helper.h' l='555' ll='563' type='hwloc_obj_t hwloc_get_pu_obj_by_os_index(hwloc_topology_t topology, unsigned int os_index)'/>
+<doc f='include/hwloc/helper.h' l='544'>/** \brief Returns the object of type ::HWLOC_OBJ_PU with \p os_index.
+ *
+ * This function is useful for converting a CPU set into the PU
+ * objects it contains.
+ * When retrieving the current binding (e.g. with hwloc_get_cpubind()),
+ * one may iterate over the bits of the resulting CPU set with
+ * hwloc_bitmap_foreach_begin(), and find the corresponding PUs
+ * with this function.
+ */</doc>

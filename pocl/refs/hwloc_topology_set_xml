@@ -1,0 +1,27 @@
+<dec f='include/hwloc.h' l='913' type='int hwloc_topology_set_xml(restrict hwloc_topology_t topology, const char *restrict xmlpath)'/>
+<doc f='include/hwloc.h' l='887'>/** \brief Enable XML-file based topology.
+ *
+ * Gather topology information from the XML file given at \p xmlpath.
+ * Setting the environment variable HWLOC_XMLFILE may also result in this behavior.
+ * This file may have been generated earlier with hwloc_topology_export_xml()
+ * or lstopo file.xml.
+ *
+ * Note that this function does not actually load topology
+ * information; it just tells hwloc where to load it from.  You&apos;ll
+ * still need to invoke hwloc_topology_load() to actually load the
+ * topology information.
+ *
+ * \return -1 with errno set to EINVAL on failure to read the XML file.
+ *
+ * \note See also hwloc_topology_set_userdata_import_callback()
+ * for importing application-specific object userdata.
+ *
+ * \note For convenience, this backend provides empty binding hooks which just
+ * return success.  To have hwloc still actually call OS-specific hooks, the
+ * ::HWLOC_TOPOLOGY_FLAG_IS_THISSYSTEM has to be set to assert that the loaded
+ * file is really the underlying system.
+ *
+ * \note On success, the XML component replaces the previously enabled
+ * component (if any), but the topology is not actually modified until
+ * hwloc_topology_load().
+ */</doc>

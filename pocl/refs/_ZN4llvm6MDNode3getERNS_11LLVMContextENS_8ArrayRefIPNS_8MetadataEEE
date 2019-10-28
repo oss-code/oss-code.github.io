@@ -1,0 +1,14 @@
+<dec f='include/llvm-6.0/llvm/IR/Metadata.h' l='905' type='static llvm::MDTuple * llvm::MDNode::get(llvm::LLVMContext &amp; Context, ArrayRef&lt;llvm::Metadata *&gt; MDs)'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='1164' ll='1166' type='static llvm::MDTuple * llvm::MDNode::get(llvm::LLVMContext &amp; Context, ArrayRef&lt;llvm::Metadata *&gt; MDs)'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='174' u='c' c='_ZL20addKernelAnnotationsPN4llvm6ModuleEPKc'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='576' u='c' c='_ZL13linkLibDevicePN4llvm6ModuleEPKcS3_'/>
+<use f='pocl/lib/llvmopencl/LLVMUtils.cc' l='75' u='c' c='_ZN4pocl26regenerate_kernel_metadataERN4llvm6ModuleERSt3mapIPNS0_8FunctionES5_St4lessIS5_ESaISt4pairIKS5_S5_EEE'/>
+<use f='pocl/lib/llvmopencl/LLVMUtils.cc' l='93' u='c' c='_ZN4pocl26regenerate_kernel_metadataERN4llvm6ModuleERSt3mapIPNS0_8FunctionES5_St4lessIS5_ESaISt4pairIKS5_S5_EEE'/>
+<use f='pocl/lib/llvmopencl/LLVMUtils.cc' l='158' u='c' c='_ZN4pocl24setFuncArgAddressSpaceMDEPN4llvm8FunctionEjj'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='478' u='c' c='_ZN4pocl14ParallelRegion23AddParallelLoopMetadataEPN4llvm6MDNodeE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='501' u='c' c='_ZN4pocl14ParallelRegion13AddIDMetadataERN4llvm11LLVMContextEmmm'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='510' u='c' c='_ZN4pocl14ParallelRegion13AddIDMetadataERN4llvm11LLVMContextEmmm'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='515' u='c' c='_ZN4pocl14ParallelRegion13AddIDMetadataERN4llvm11LLVMContextEmmm'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='525' u='c' c='_ZN4pocl14ParallelRegion13AddIDMetadataERN4llvm11LLVMContextEmmm'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='670' u='c' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='292' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>

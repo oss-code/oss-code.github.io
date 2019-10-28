@@ -1,0 +1,7 @@
+<dec f='pocl/lib/CL/pocl_intfn.h' l='85' macro='1' type='void * POclGetExtensionFunctionAddress(const char * )'/>
+<def f='pocl/lib/CL/clGetExtensionFunctionAddress.c' l='9' macro='1' type='void * POclGetExtensionFunctionAddress(const char * func_name)'/>
+<doc f='pocl/lib/CL/clGetExtensionFunctionAddress.c' l='5'>/* Note - this is deprecated in 1.1, but (some of) the ICD loaders are built
+ * against OCL 1.1, so we need it.
+ */</doc>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='105' macro='1' u='a'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='105' macro='1' u='a'/>

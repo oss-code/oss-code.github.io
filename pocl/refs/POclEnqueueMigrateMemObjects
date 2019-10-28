@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/pocl_intfn.h' l='62' macro='1' type='cl_int POclEnqueueMigrateMemObjects(cl_command_queue , cl_uint , const cl_mem * , cl_mem_migration_flags , cl_uint , const cl_event * , cl_event * )'/>
+<def f='pocl/lib/CL/clEnqueueMigrateMemObjects.c' l='29' macro='1' type='cl_int POclEnqueueMigrateMemObjects(cl_command_queue command_queue, cl_uint num_mem_objects, const cl_mem * mem_objects, cl_mem_migration_flags flags, cl_uint num_events_in_wait_list, const cl_event * event_wait_list, cl_event * event)'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='528' macro='1' u='c'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='144' macro='1' u='a'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='144' macro='1' u='a'/>

@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Support/MutexGuard.h' l='37' type='bool llvm::MutexGuard::holds(const sys::Mutex &amp; lock) const'/>
+<doc f='include/llvm-6.0/llvm/Support/MutexGuard.h' l='34'>/// holds - Returns true if this locker instance holds the specified lock.
+    /// This is mostly used in assertions to validate that the correct mutex
+    /// is held.</doc>

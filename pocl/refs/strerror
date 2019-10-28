@@ -1,0 +1,5 @@
+<dec f='include/string.h' l='408' type='char * strerror(int __errnum)'/>
+<use f='pocl/bin/poclcc.c' l='38' u='c' c='process_kernel_file'/>
+<use f='pocl/bin/poclcc.c' l='38' u='c' c='main'/>
+<doc f='include/string.h' l='407'>/* Return a string describing the meaning of the `errno&apos; code in ERRNUM.  */</doc>
+<use f='pocl/lib/CL/pocl_util.c' l='1037' u='c' c='pocl_abort_on_pthread_error'/>

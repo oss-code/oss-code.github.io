@@ -1,0 +1,31 @@
+<dec f='pocl/lib/CL/pocl_util.h' l='112' type='void pocl_command_enqueue(cl_command_queue command_queue, _cl_command_node * node)'/>
+<use f='pocl/lib/CL/clEnqueueBarrier.c' l='44' u='c' c='POclEnqueueBarrier'/>
+<use f='pocl/lib/CL/clEnqueueBarrierWithWaitList.c' l='54' u='c' c='POclEnqueueBarrierWithWaitList'/>
+<use f='pocl/lib/CL/clEnqueueCopyBuffer.c' l='113' u='c' c='POclEnqueueCopyBuffer'/>
+<use f='pocl/lib/CL/clEnqueueCopyBufferRect.c' l='96' u='c' c='POclEnqueueCopyBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueCopyBufferToImage.c' l='85' u='c' c='POclEnqueueCopyBufferToImage'/>
+<use f='pocl/lib/CL/clEnqueueCopyImage.c' l='67' u='c' c='POclEnqueueCopyImage'/>
+<use f='pocl/lib/CL/clEnqueueCopyImageToBuffer.c' l='83' u='c' c='POclEnqueueCopyImageToBuffer'/>
+<use f='pocl/lib/CL/clEnqueueFillBuffer.c' l='104' u='c' c='POclEnqueueFillBuffer'/>
+<use f='pocl/lib/CL/clEnqueueFillImage.c' l='127' u='c' c='POclEnqueueFillImage'/>
+<use f='pocl/lib/CL/clEnqueueMapBuffer.c' l='147' u='c' c='POclEnqueueMapBuffer'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='188' u='c' c='POclEnqueueMapImage'/>
+<use f='pocl/lib/CL/clEnqueueMarker.c' l='44' u='c' c='POclEnqueueMarker'/>
+<use f='pocl/lib/CL/clEnqueueMarkerWithWaitList.c' l='53' u='c' c='POclEnqueueMarkerWithWaitList'/>
+<use f='pocl/lib/CL/clEnqueueMigrateMemObjects.c' l='99' u='c' c='POclEnqueueMigrateMemObjects'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='614' u='c' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/clEnqueueNativeKernel.c' l='109' u='c' c='POclEnqueueNativeKernel'/>
+<use f='pocl/lib/CL/clEnqueueReadBuffer.c' l='93' u='c' c='POclEnqueueReadBuffer'/>
+<use f='pocl/lib/CL/clEnqueueReadBufferRect.c' l='120' u='c' c='POclEnqueueReadBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueReadImage.c' l='123' u='c' c='POclEnqueueReadImage'/>
+<use f='pocl/lib/CL/clEnqueueSVMFree.c' l='80' u='c' c='POclEnqueueSVMFree'/>
+<use f='pocl/lib/CL/clEnqueueSVMMap.c' l='83' u='c' c='POclEnqueueSVMMap'/>
+<use f='pocl/lib/CL/clEnqueueSVMMemFill.c' l='91' u='c' c='POclEnqueueSVMMemFill'/>
+<use f='pocl/lib/CL/clEnqueueSVMMemcpy.c' l='83' u='c' c='POclEnqueueSVMMemcpy'/>
+<use f='pocl/lib/CL/clEnqueueSVMUnmap.c' l='71' u='c' c='POclEnqueueSVMUnmap'/>
+<use f='pocl/lib/CL/clEnqueueUnmapMemObject.c' l='95' u='c' c='POclEnqueueUnmapMemObject'/>
+<use f='pocl/lib/CL/clEnqueueWriteBuffer.c' l='93' u='c' c='POclEnqueueWriteBuffer'/>
+<use f='pocl/lib/CL/clEnqueueWriteBufferRect.c' l='118' u='c' c='POclEnqueueWriteBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueWriteImage.c' l='95' u='c' c='POclEnqueueWriteImage'/>
+<def f='pocl/lib/CL/pocl_util.c' l='537' ll='577' type='void pocl_command_enqueue(cl_command_queue command_queue, _cl_command_node * node)'/>
+<doc f='pocl/lib/CL/pocl_util.c' l='536'>/* call with node-&gt;event UNLOCKED */</doc>

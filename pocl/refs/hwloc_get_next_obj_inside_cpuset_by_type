@@ -1,0 +1,10 @@
+<def f='include/hwloc/helper.h' l='108' ll='116' type='hwloc_obj_t hwloc_get_next_obj_inside_cpuset_by_type(hwloc_topology_t topology, hwloc_const_cpuset_t set, hwloc_obj_type_t type, hwloc_obj_t prev)'/>
+<doc f='include/hwloc/helper.h' l='99'>/** \brief Return the next object of type \p type included in CPU set \p set.
+ *
+ * If there are multiple or no depth for given type, return \c NULL
+ * and let the caller fallback to
+ * hwloc_get_next_obj_inside_cpuset_by_depth().
+ *
+ * \note This function cannot work if objects of the given type do
+ * not have CPU sets or if the topology is made of different machines.
+ */</doc>

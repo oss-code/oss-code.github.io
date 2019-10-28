@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/GlobalAlias.h' l='41' type='static llvm::GlobalAlias * llvm::GlobalAlias::create(llvm::Type * Ty, unsigned int AddressSpace, llvm::GlobalValue::LinkageTypes Linkage, const llvm::Twine &amp; Name, llvm::Constant * Aliasee, llvm::Module * Parent)'/>
+<doc f='include/llvm-6.0/llvm/IR/GlobalAlias.h' l='39'>/// If a parent module is specified, the alias is automatically inserted into
+  /// the end of the specified module&apos;s alias list.</doc>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='305' u='c' c='_ZL11shared_copyPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERNS_8ValueMapIPKNS_5ValueENS_14WeakTrackingVHENS_14ValueMapCo8254284'/>

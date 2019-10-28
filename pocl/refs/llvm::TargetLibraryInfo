@@ -1,0 +1,27 @@
+<def f='include/llvm-6.0/llvm/Analysis/TargetLibraryInfo.h' l='206' ll='339'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetLibraryInfo.h' l='201'>/// Provides information about what library functions are available for
+/// the current target.
+///
+/// This both allows optimizations to handle them specially and frontends to
+/// disable such optimizations through -fno-builtin etc.</doc>
+<mbr r='llvm::TargetLibraryInfo::Impl' o='0' t='const llvm::TargetLibraryInfoImpl *'/>
+<fun r='_ZN4llvm17TargetLibraryInfoC1ERKNS_21TargetLibraryInfoImplE'/>
+<fun r='_ZN4llvm17TargetLibraryInfoC1ERKS0_'/>
+<fun r='_ZN4llvm17TargetLibraryInfoC1EOS0_'/>
+<fun r='_ZN4llvm17TargetLibraryInfoaSERKS0_'/>
+<fun r='_ZN4llvm17TargetLibraryInfoaSEOS0_'/>
+<fun r='_ZNK4llvm17TargetLibraryInfo10getLibFuncENS_9StringRefERNS_7LibFuncE'/>
+<fun r='_ZNK4llvm17TargetLibraryInfo10getLibFuncERKNS_8FunctionERNS_7LibFuncE'/>
+<fun r='_ZNK4llvm17TargetLibraryInfo10getLibFuncENS_17ImmutableCallSiteERNS_7LibFuncE'/>
+<fun r='_ZNK4llvm17TargetLibraryInfo3hasENS_7LibFuncE'/>
+<fun r='_ZNK4llvm17TargetLibraryInfo22isFunctionVectorizableENS_9StringRefEj'/>
+<fun r='_ZNK4llvm17TargetLibraryInfo22isFunctionVectorizableENS_9StringRefE'/>
+<fun r='_ZNK4llvm17TargetLibraryInfo21getVectorizedFunctionENS_9StringRefEj'/>
+<fun r='_ZNK4llvm17TargetLibraryInfo19hasOptimizedCodeGenENS_7LibFuncE'/>
+<fun r='_ZNK4llvm17TargetLibraryInfo7getNameENS_7LibFuncE'/>
+<fun r='_ZNK4llvm17TargetLibraryInfo21getExtAttrForI32ParamEb'/>
+<fun r='_ZNK4llvm17TargetLibraryInfo22getExtAttrForI32ReturnEb'/>
+<fun r='_ZNK4llvm17TargetLibraryInfo12getWCharSizeERKNS_6ModuleE'/>
+<fun r='_ZN4llvm17TargetLibraryInfo10invalidateERNS_6ModuleERKNS_17PreservedAnalysesERNS_15AnalysisManagerIS1_JEE11InvalidatorE'/>
+<fun r='_ZN4llvm17TargetLibraryInfo10invalidateERNS_8FunctionERKNS_17PreservedAnalysesERNS_15AnalysisManagerIS1_JEE11InvalidatorE'/>

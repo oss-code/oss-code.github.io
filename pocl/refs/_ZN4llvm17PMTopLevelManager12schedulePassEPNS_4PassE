@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='184' type='void llvm::PMTopLevelManager::schedulePass(llvm::Pass * P)'/>
+<doc f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='181'>/// Schedule pass P for execution. Make sure that passes required by
+  /// P are run before P is run. Update analysis info maintained by
+  /// the manager. Remove dead passes. This is a recursive function.</doc>

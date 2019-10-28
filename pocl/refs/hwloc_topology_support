@@ -1,0 +1,11 @@
+<def f='include/hwloc.h' l='1067' ll='1071'/>
+<size>24</size>
+<doc f='include/hwloc.h' l='1061'>/** \brief Set of flags describing actual support for this topology.
+ *
+ * This is retrieved with hwloc_topology_get_support() and will be valid until
+ * the topology object is destroyed.  Note: the values are correct only after
+ * discovery.
+ */</doc>
+<mbr r='hwloc_topology_support::discovery' o='0' t='struct hwloc_topology_discovery_support *'/>
+<mbr r='hwloc_topology_support::cpubind' o='64' t='struct hwloc_topology_cpubind_support *'/>
+<mbr r='hwloc_topology_support::membind' o='128' t='struct hwloc_topology_membind_support *'/>

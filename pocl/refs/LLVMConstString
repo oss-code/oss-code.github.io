@@ -1,0 +1,10 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='1632' type='LLVMValueRef LLVMConstString(const char * Str, unsigned int Length, LLVMBool DontNullTerminate)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='1623'>/**
+ * Create a ConstantDataSequential with string content in the global context.
+ *
+ * This is the same as LLVMConstStringInContext except it operates on the
+ * global context.
+ *
+ * @see LLVMConstStringInContext()
+ * @see llvm::ConstantDataArray::getString()
+ */</doc>

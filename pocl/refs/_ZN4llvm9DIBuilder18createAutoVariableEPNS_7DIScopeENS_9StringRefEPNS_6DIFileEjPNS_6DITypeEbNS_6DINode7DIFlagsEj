@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='540' type='llvm::DILocalVariable * llvm::DIBuilder::createAutoVariable(llvm::DIScope * Scope, llvm::StringRef Name, llvm::DIFile * File, unsigned int LineNo, llvm::DIType * Ty, bool AlwaysPreserve = false, DINode::DIFlags Flags = DINode::FlagZero, uint32_t AlignInBits = 0)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='531'>/// Create a new descriptor for an auto variable.  This is a local variable
+    /// that is not a subprogram parameter.
+    ///
+    /// \c Scope must be a \a DILocalScope, and thus its scope chain eventually
+    /// leads to a \a DISubprogram.
+    ///
+    /// If \c AlwaysPreserve, this variable will be referenced from its
+    /// containing subprogram, and will survive some optimizations.</doc>

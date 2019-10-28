@@ -1,0 +1,11 @@
+<def f='include/c++/7/bits/forward_list.h' l='821' ll='823' type='void std::forward_list::push_front(const _Tp &amp; __val)'/>
+<doc f='include/c++/7/bits/forward_list.h' l='811'>/**
+       *  @brief  Add data to the front of the %forward_list.
+       *  @param  __val  Data to be added.
+       *
+       *  This is a typical stack operation.  The function creates an
+       *  element at the front of the %forward_list and assigns the given
+       *  data to it.  Due to the nature of a %forward_list this operation
+       *  can be done in constant time, and does not invalidate iterators
+       *  and references.
+       */</doc>

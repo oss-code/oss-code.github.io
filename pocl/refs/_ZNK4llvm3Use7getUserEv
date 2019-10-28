@@ -1,0 +1,12 @@
+<dec f='include/llvm-6.0/llvm/IR/Use.h' l='114' type='llvm::User * llvm::Use::getUser() const'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='192' u='c' c='_ZNK4llvm5Value18user_iterator_impldeEv'/>
+<doc f='include/llvm-6.0/llvm/IR/Use.h' l='110'>/// \brief Returns the User that contains this Use.
+  ///
+  /// For an instruction operand, for example, this will return the
+  /// instruction.</doc>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='879' u='c' c='_ZN4llvm8LoopInfo26movementPreservesLCSSAFormEPNS_11InstructionES2_'/>
+<use f='pocl/lib/llvmopencl/FlattenGlobals.cc' l='102' u='c' c='_ZN12_GLOBAL__N_114FlattenGlobals11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='332' u='c' c='_ZN4pocl26VariableUniformityAnalysis9isUniformEPN4llvm8FunctionEPNS1_5ValueE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='667' u='c' c='_ZN4pocl13WorkitemLoops23FixMultiRegionVariablesEPNS_14ParallelRegionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='1042' u='c' c='_ZN4pocl13WorkitemLoops21AddContextSaveRestoreEPN4llvm11InstructionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemReplication.cc' l='175' u='c' c='_ZN4pocl19WorkitemReplication15ProcessFunctionERN4llvm8FunctionE'/>

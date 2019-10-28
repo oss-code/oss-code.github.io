@@ -1,0 +1,19 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1243' type='const llvm::SCEV * llvm::ScalarEvolution::BackedgeTakenInfo::getExact(llvm::ScalarEvolution * SE, llvm::SCEVUnionPredicate * Predicates = nullptr) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1225'>/// Return an expression indicating the exact *backedge-taken*
+    /// count of the loop if it is known or SCEVCouldNotCompute
+    /// otherwise.  If execution makes it to the backedge on every
+    /// iteration (i.e. there are no abnormal exists like exception
+    /// throws and thread exits) then this is the number of times the
+    /// loop header will execute minus one.
+    ///
+    /// If the SCEV predicate associated with the answer can be different
+    /// from AlwaysTrue, we must add a (non null) Predicates argument.
+    /// The SCEV predicate associated with the answer will be added to
+    /// Predicates. A run-time check needs to be emitted for the SCEV
+    /// predicate in order for the answer to be valid.
+    ///
+    /// Note that we should always know if we need to pass a predicate
+    /// argument or not from the way the ExitCounts vector was computed.
+    /// If we allowed SCEV predicates to be generated when populating this
+    /// vector, this information can contain them and therefore a
+    /// SCEVPredicate argument should be added to getExact.</doc>

@@ -1,0 +1,26 @@
+<dec f='pocl/include/poclu.h' l='68' type='void poclu_bswap_cl_float_array(cl_device_id device, cl_float * array, size_t num_elements)'/>
+<use f='pocl/examples/boxadd/boxadd_exec.c' l='58' u='c' c='exec_matadd_kernel'/>
+<use f='pocl/examples/boxadd/boxadd_exec.c' l='60' u='c' c='exec_matadd_kernel'/>
+<use f='pocl/examples/boxadd/boxadd_exec.c' l='107' u='c' c='exec_matadd_kernel'/>
+<use f='pocl/examples/boxadd/boxadd_exec.c' l='109' u='c' c='exec_matadd_kernel'/>
+<use f='pocl/examples/boxadd/boxadd_exec.c' l='111' u='c' c='exec_matadd_kernel'/>
+<use f='pocl/examples/example1/example1_exec.c' l='24' u='c' c='exec_dot_product_kernel'/>
+<use f='pocl/examples/example1/example1_exec.c' l='25' u='c' c='exec_dot_product_kernel'/>
+<use f='pocl/examples/example1/example1_exec.c' l='64' u='c' c='exec_dot_product_kernel'/>
+<use f='pocl/examples/example1/example1_exec.c' l='65' u='c' c='exec_dot_product_kernel'/>
+<use f='pocl/examples/example1/example1_exec.c' l='66' u='c' c='exec_dot_product_kernel'/>
+<use f='pocl/examples/matadd/matadd_exec.c' l='46' u='c' c='exec_matadd_kernel'/>
+<use f='pocl/examples/matadd/matadd_exec.c' l='47' u='c' c='exec_matadd_kernel'/>
+<use f='pocl/examples/matadd/matadd_exec.c' l='83' u='c' c='exec_matadd_kernel'/>
+<use f='pocl/examples/matadd/matadd_exec.c' l='85' u='c' c='exec_matadd_kernel'/>
+<use f='pocl/examples/matadd/matadd_exec.c' l='87' u='c' c='exec_matadd_kernel'/>
+<use f='pocl/examples/matrix1/matrix1.c' l='51' u='c' c='exec_matrix_kernel'/>
+<use f='pocl/examples/matrix1/matrix1.c' l='52' u='c' c='exec_matrix_kernel'/>
+<use f='pocl/examples/matrix1/matrix1.c' l='160' u='c' c='exec_matrix_kernel'/>
+<use f='pocl/examples/vecadd/vecadd_exec.c' l='24' u='c' c='exec_vecadd_kernel'/>
+<use f='pocl/examples/vecadd/vecadd_exec.c' l='25' u='c' c='exec_vecadd_kernel'/>
+<use f='pocl/examples/vecadd/vecadd_exec.c' l='64' u='c' c='exec_vecadd_kernel'/>
+<use f='pocl/examples/vecadd/vecadd_exec.c' l='65' u='c' c='exec_vecadd_kernel'/>
+<use f='pocl/examples/vecadd/vecadd_exec.c' l='66' u='c' c='exec_vecadd_kernel'/>
+<def f='pocl/lib/poclu/bswap.c' l='106' ll='116' type='void poclu_bswap_cl_float_array(cl_device_id device, cl_float * array, size_t num_elements)'/>
+<use f='pocl/tests/regression/test_barrier_between_for_loops.cpp' l='104' u='c' c='main'/>

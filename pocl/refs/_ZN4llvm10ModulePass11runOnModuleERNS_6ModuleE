@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/Pass.h' l='238' type='bool llvm::ModulePass::runOnModule(llvm::Module &amp; M)'/>
+<ovr f='include/llvm-6.0/llvm/Pass.h' l='273' c='_ZN4llvm13ImmutablePass11runOnModuleERNS_6ModuleE'/>
+<doc f='include/llvm-6.0/llvm/Pass.h' l='236'>/// runOnModule - Virtual method overriden by subclasses to process the module
+  /// being operated on.</doc>
+<ovr f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='76' c='_ZN12_GLOBAL__N_115AutomaticLocals11runOnModuleERN4llvm6ModuleE'/>
+<ovr f='pocl/lib/llvmopencl/Flatten.cc' l='70' c='_ZN12_GLOBAL__N_17Flatten11runOnModuleERN4llvm6ModuleE'/>
+<ovr f='pocl/lib/llvmopencl/FlattenBarrierSubs.cc' l='109' c='_ZN12_GLOBAL__N_118FlattenBarrierSubs11runOnModuleERN4llvm6ModuleE'/>
+<ovr f='pocl/lib/llvmopencl/FlattenGlobals.cc' l='83' c='_ZN12_GLOBAL__N_114FlattenGlobals11runOnModuleERN4llvm6ModuleE'/>
+<ovr f='pocl/lib/llvmopencl/Workgroup.cc' l='166' c='_ZN4pocl9Workgroup11runOnModuleERN4llvm6ModuleE'/>

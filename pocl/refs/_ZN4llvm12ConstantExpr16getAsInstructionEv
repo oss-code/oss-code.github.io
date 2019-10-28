@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='1215' type='llvm::Instruction * llvm::ConstantExpr::getAsInstruction()'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='1208'>/// Returns an Instruction which implements the same operation as this
+  /// ConstantExpr. The instruction is not linked to any basic block.
+  ///
+  /// A better approach to this could be to have a constructor for Instruction
+  /// which would take a ConstantExpr parameter, but that would have spread
+  /// implementation details of ConstantExpr outside of Constants.cpp, which
+  /// would make it harder to remove ConstantExprs altogether.</doc>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='131' u='c' c='_ZL24breakConstantExpressionsPN4llvm5ValueEPNS_8FunctionE'/>

@@ -1,0 +1,20 @@
+<inh f='include/llvm-6.0/llvm/IR/Metadata.h' l='862' c='llvm::MDNode'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='1104' ll='1162'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='1100'>/// \brief Tuple of metadata.
+///
+/// This is the simple \a MDNode arbitrary tuple.  Nodes are uniqued by
+/// default based on their operands.</doc>
+<fun r='_ZN4llvm7MDTupleC1ERNS_11LLVMContextENS_8Metadata11StorageTypeEjNS_8ArrayRefIPS3_EE'/>
+<fun r='_ZN4llvm7MDTupleD1Ev'/>
+<fun r='_ZN4llvm7MDTuple7setHashEj'/>
+<fun r='_ZN4llvm7MDTuple15recalculateHashEv'/>
+<fun r='_ZN4llvm7MDTuple7getImplERNS_11LLVMContextENS_8ArrayRefIPNS_8MetadataEEENS4_11StorageTypeEb'/>
+<fun r='_ZNK4llvm7MDTuple9cloneImplEv'/>
+<fun r='_ZNK4llvm7MDTuple7getHashEv'/>
+<fun r='_ZN4llvm7MDTuple3getERNS_11LLVMContextENS_8ArrayRefIPNS_8MetadataEEE'/>
+<fun r='_ZN4llvm7MDTuple11getIfExistsERNS_11LLVMContextENS_8ArrayRefIPNS_8MetadataEEE'/>
+<fun r='_ZN4llvm7MDTuple11getDistinctERNS_11LLVMContextENS_8ArrayRefIPNS_8MetadataEEE'/>
+<fun r='_ZN4llvm7MDTuple12getTemporaryERNS_11LLVMContextENS_8ArrayRefIPNS_8MetadataEEE'/>
+<fun r='_ZNK4llvm7MDTuple5cloneEv'/>
+<fun r='_ZN4llvm7MDTuple7classofEPKNS_8MetadataE'/>

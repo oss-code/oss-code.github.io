@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='757' type='void llvm::RegionInfoBase::verifyBBMap(const RegionT * SR) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='754'>// Check whether the entries of BBtoRegion for the BBs of region
+  // SR are correct. Triggers an assertion if not. Calls itself recursively for
+  // subregions.</doc>

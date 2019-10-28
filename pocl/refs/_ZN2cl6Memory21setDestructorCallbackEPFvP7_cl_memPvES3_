@@ -1,0 +1,14 @@
+<def f='pocl/include/CL/cl2.hpp' l='3384' ll='3394' type='cl_int cl::Memory::setDestructorCallback(void (*)(cl_mem, void *) pfn_notify, void * user_data = __null)'/>
+<doc f='pocl/include/CL/cl2.hpp' l='3371'>/*! \brief Registers a callback function to be called when the memory object
+     *         is no longer needed.
+     *
+     *  Wraps clSetMemObjectDestructorCallback().
+     *
+     *  Repeated calls to this function, for a given cl_mem value, will append
+     *  to the list of functions called (in reverse order) when memory object&apos;s
+     *  resources are freed and the memory object is deleted.
+     *
+     *  \note
+     *  The registered callbacks are associated with the underlying cl_mem
+     *  value - not the Memory class instance.
+     */</doc>

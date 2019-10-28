@@ -1,0 +1,13 @@
+<dec f='pocl/lib/CL/pocl_llvm.h' l='127' type='int pocl_invoke_clang(cl_device_id Device, const char ** Args)'/>
+<use f='pocl/lib/CL/devices/common.c' l='208' u='c' c='llvm_codegen'/>
+<def f='pocl/lib/CL/pocl_llvm_build.cc' l='894' ll='925' type='int pocl_invoke_clang(cl_device_id Device, const char ** Args)'/>
+<doc f='pocl/lib/CL/pocl_llvm_build.cc' l='885'>/**
+ * Invoke the Clang compiler through its Driver API.
+ *
+ * @param Device the device of which toolchain to use.
+ * @param Args the command line arguments that would be passed to Clang
+ *             (a NULL terminated list). Args[0] should be the path to
+ *             the Clang binary.
+ * @return 0 on success, error code otherwise.
+ */</doc>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='678' u='c' c='pocl_llvm_codegen'/>

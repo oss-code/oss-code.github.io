@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='763' ll='772' type='llvm::APInt &amp; llvm::APInt::operator=(uint64_t RHS)'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='756'>/// \brief Assignment operator.
+  ///
+  /// The RHS value is assigned to *this. If the significant bits in RHS exceed
+  /// the bit width, the excess bits are truncated. If the bit width is larger
+  /// than 64, the value is zero filled in the unspecified high order bits.
+  ///
+  /// \returns *this after assignment of RHS value.</doc>
+<use f='include/llvm-6.0/llvm/ADT/APSInt.h' l='54' u='c' c='_ZN4llvm6APSIntaSEm'/>

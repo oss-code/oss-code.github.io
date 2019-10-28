@@ -1,0 +1,29 @@
+<def f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='74' ll='159'/>
+<size>72</size>
+<doc f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='69'>/// \brief The basic data container for the call graph of a \c Module of IR.
+///
+/// This class exposes both the interface to the call graph for a module of IR.
+///
+/// The core call graph itself can also be updated to reflect changes to the IR.</doc>
+<mbr r='llvm::CallGraph::M' o='0' t='llvm::Module &amp;'/>
+<mbr r='llvm::CallGraph::FunctionMap' o='64' t='FunctionMapTy'/>
+<mbr r='llvm::CallGraph::ExternalCallingNode' o='448' t='llvm::CallGraphNode *'/>
+<mbr r='llvm::CallGraph::CallsExternalNode' o='512' t='std::unique_ptr&lt;CallGraphNode&gt;'/>
+<fun r='_ZN4llvm9CallGraph14spliceFunctionEPKNS_8FunctionES3_'/>
+<fun r='_ZN4llvm9CallGraph14addToCallGraphEPNS_8FunctionE'/>
+<fun r='_ZN4llvm9CallGraphC1ERNS_6ModuleE'/>
+<fun r='_ZN4llvm9CallGraphC1EOS0_'/>
+<fun r='_ZN4llvm9CallGraphD1Ev'/>
+<fun r='_ZNK4llvm9CallGraph5printERNS_11raw_ostreamE'/>
+<fun r='_ZNK4llvm9CallGraph4dumpEv'/>
+<fun r='_ZNK4llvm9CallGraph9getModuleEv'/>
+<fun r='_ZN4llvm9CallGraph5beginEv'/>
+<fun r='_ZN4llvm9CallGraph3endEv'/>
+<fun r='_ZNK4llvm9CallGraph5beginEv'/>
+<fun r='_ZNK4llvm9CallGraph3endEv'/>
+<fun r='_ZNK4llvm9CallGraphixEPKNS_8FunctionE'/>
+<fun r='_ZN4llvm9CallGraphixEPKNS_8FunctionE'/>
+<fun r='_ZNK4llvm9CallGraph22getExternalCallingNodeEv'/>
+<fun r='_ZNK4llvm9CallGraph20getCallsExternalNodeEv'/>
+<fun r='_ZN4llvm9CallGraph24removeFunctionFromModuleEPNS_13CallGraphNodeE'/>
+<fun r='_ZN4llvm9CallGraph19getOrInsertFunctionEPKNS_8FunctionE'/>

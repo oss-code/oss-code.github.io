@@ -1,0 +1,7 @@
+<dec f='pocl/lib/llvmopencl/ParallelRegion.h' l='97' type='static void pocl::ParallelRegion::GenerateTempNames(llvm::BasicBlock * bb)'/>
+<def f='pocl/lib/llvmopencl/ParallelRegion.cc' l='73' ll='90' type='static void pocl::ParallelRegion::GenerateTempNames(llvm::BasicBlock * bb)'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='119' u='c' c='_ZN4pocl14ParallelRegion9replicateERN4llvm8ValueMapIPKNS1_5ValueENS1_14WeakTrackingVHENS1_14ValueMapConfigIS5_NS1_3sys10SmartMutexILb0EEEEEEERKNS1_5TwineE'/>
+<doc f='pocl/lib/llvmopencl/ParallelRegion.cc' l='69'>/**
+ * Ensure all variables are named so they will be replicated and renamed
+ * correctly.
+ */</doc>

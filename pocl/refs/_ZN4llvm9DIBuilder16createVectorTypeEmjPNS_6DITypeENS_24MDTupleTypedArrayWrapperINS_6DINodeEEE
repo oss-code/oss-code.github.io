@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='431' type='llvm::DICompositeType * llvm::DIBuilder::createVectorType(uint64_t Size, uint32_t AlignInBits, llvm::DIType * Ty, DINodeArray Subscripts)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='426'>/// Create debugging information entry for a vector type.
+    /// \param Size         Array size.
+    /// \param AlignInBits  Alignment.
+    /// \param Ty           Element type.
+    /// \param Subscripts   Subscripts.</doc>

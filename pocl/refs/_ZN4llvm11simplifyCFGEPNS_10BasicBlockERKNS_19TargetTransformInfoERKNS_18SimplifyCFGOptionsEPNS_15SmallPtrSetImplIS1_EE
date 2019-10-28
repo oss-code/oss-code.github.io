@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='198' type='bool llvm::simplifyCFG(llvm::BasicBlock * BB, const llvm::TargetTransformInfo &amp; TTI, const llvm::SimplifyCFGOptions &amp; Options = {}, SmallPtrSetImpl&lt;llvm::BasicBlock *&gt; * LoopHeaders = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='192'>/// This function is used to do simplification of a CFG.  For example, it
+/// adjusts branches to branches to eliminate the extra hop, it eliminates
+/// unreachable basic blocks, and does other peephole optimization of the CFG.
+/// It returns true if a modification was made, possibly deleting the basic
+/// block that was pointed to. LoopHeaders is an optional input parameter
+/// providing the set of loop headers that SimplifyCFG should not eliminate.</doc>

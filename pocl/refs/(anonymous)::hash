@@ -1,0 +1,7 @@
+<dec f='pocl/include/pocl.h' l='105' type='void *'/>
+<offset>0</offset>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='568' u='w' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/devices/common.c' l='904' u='r' c='pocl_release_dlhandle_cache'/>
+<use f='pocl/lib/CL/devices/common.c' l='1017' u='r' c='fetch_dlhandle_cache_item'/>
+<use f='pocl/lib/CL/devices/common.c' l='1068' u='r' c='pocl_check_kernel_dlhandle_cache'/>
+<use f='pocl/lib/CL/pocl_build.c' l='159' u='w' c='program_compile_dynamic_wg_binaries'/>

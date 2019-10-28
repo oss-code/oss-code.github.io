@@ -1,0 +1,10 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2136' type='LLVMValueRef LLVMMDStringInContext(LLVMContextRef C, const char * Str, unsigned int SLen)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2127'>/**
+ * Obtain a MDString value from a context.
+ *
+ * The returned instance corresponds to the llvm::MDString class.
+ *
+ * The instance is specified by string data of a specified length. The
+ * string content is copied, so the backing memory can be freed after
+ * this function returns.
+ */</doc>

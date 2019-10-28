@@ -1,0 +1,4 @@
+<dec f='pocl/include/CL/cl.h' l='1462' type='cl_int clEnqueueCopyBufferRect(cl_command_queue command_queue, cl_mem src_buffer, cl_mem dst_buffer, const size_t * src_origin, const size_t * dst_origin, const size_t * region, size_t src_row_pitch, size_t src_slice_pitch, size_t dst_row_pitch, size_t dst_slice_pitch, cl_uint num_events_in_wait_list, const cl_event * event_wait_list, cl_event * event)'/>
+<use f='pocl/lib/CL/pocl_intfn.h' l='55' c='POclEnqueueCopyBufferRect'/>
+<use f='pocl/include/CL/cl2.hpp' l='7564' u='c' c='_ZNK2cl12CommandQueue21enqueueCopyBufferRectERKNS_6BufferES3_RKSt5arrayImLm3EES7_S7_mmmmPKSt6vectorINS_5EventESaIS9_EEPS9_'/>
+<use f='pocl/tests/runtime/test_read-copy-write-buffer.c' l='113' u='c' c='main'/>

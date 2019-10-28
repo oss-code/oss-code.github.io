@@ -1,0 +1,11 @@
+<dec f='pocl/lib/llvmopencl/ParallelRegion.h' l='99' type='llvm::Instruction * pocl::ParallelRegion::LocalIDXLoad()'/>
+<def f='pocl/lib/llvmopencl/ParallelRegion.cc' l='616' ll='624' type='llvm::Instruction * pocl::ParallelRegion::LocalIDXLoad()'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='722' u='c' c='_ZN4pocl14ParallelRegion18InjectRegionPrintFEv'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='777' u='c' c='_ZN4pocl14ParallelRegion15LocalizeIDLoadsEv'/>
+<doc f='pocl/lib/llvmopencl/ParallelRegion.cc' l='612'>/**
+ * Find the instruction that loads the X dimension of the work item
+ * in the beginning of the parallel region, if not found, creates it.
+ */</doc>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='734' u='c' c='_ZN4pocl13WorkitemLoops16GetLinearWiIndexERN4llvm9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEPNS1_6ModuleEPNS_14ParallelRegionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='776' u='c' c='_ZN4pocl13WorkitemLoops14AddContextSaveEPN4llvm11InstructionES3_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='823' u='c' c='_ZN4pocl13WorkitemLoops17AddContextRestoreEPN4llvm5ValueEPNS1_11InstructionEbS5_b'/>

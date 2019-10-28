@@ -1,0 +1,24 @@
+<inh f='include/llvm-6.0/llvm/IR/PassManager.h' l='382' c='llvm::AnalysisInfoMixin'/>
+<def f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='1503' ll='1553'/>
+<size>32</size>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='1492'>/// \brief Analysis pass providing the \c TargetTransformInfo.
+///
+/// The core idea of the TargetIRAnalysis is to expose an interface through
+/// which LLVM targets can analyze and provide information about the middle
+/// end&apos;s target-independent IR. This supports use cases such as target-aware
+/// cost modeling of IR constructs.
+///
+/// This is a function analysis because much of the cost modeling for targets
+/// is done in a subtarget specific way and LLVM supports compiling different
+/// functions targeting different subtargets in order to support runtime
+/// dispatch according to the observed subtarget.</doc>
+<fun r='_ZN4llvm16TargetIRAnalysisC1Ev'/>
+<fun r='_ZN4llvm16TargetIRAnalysisC1ESt8functionIFNS_19TargetTransformInfoERKNS_8FunctionEEE'/>
+<fun r='_ZN4llvm16TargetIRAnalysisC1ERKS0_'/>
+<fun r='_ZN4llvm16TargetIRAnalysisC1EOS0_'/>
+<fun r='_ZN4llvm16TargetIRAnalysisaSERKS0_'/>
+<fun r='_ZN4llvm16TargetIRAnalysisaSEOS0_'/>
+<fun r='_ZN4llvm16TargetIRAnalysis3runERKNS_8FunctionERNS_15AnalysisManagerIS1_JEEE'/>
+<smbr r='llvm::TargetIRAnalysis::Key' t='llvm::AnalysisKey'/>
+<mbr r='llvm::TargetIRAnalysis::TTICallback' o='0' t='std::function&lt;Result (const Function &amp;)&gt;'/>
+<fun r='_ZN4llvm16TargetIRAnalysis13getDefaultTTIERKNS_8FunctionE'/>

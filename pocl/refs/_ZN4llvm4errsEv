@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='451' type='llvm::raw_ostream &amp; llvm::errs()'/>
+<use f='include/llvm-6.0/llvm/Support/Error.h' l='1144' u='c' c='_ZNK4llvm11ExitOnError10checkErrorENS_5ErrorE'/>
+<doc f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='449'>/// This returns a reference to a raw_ostream for standard error. Use it like:
+/// errs() &lt;&lt; &quot;foo&quot; &lt;&lt; &quot;bar&quot;;</doc>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='902' u='c' c='pocl_invoke_clang'/>
+<use f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='874' u='c' c='_ZN4llvm4yaml7yamlizeERNS0_2IOERT_bRT0_'/>

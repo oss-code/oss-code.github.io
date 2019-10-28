@@ -1,0 +1,13 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Cloning.h' l='129' type='llvm::Function * llvm::CloneFunction(llvm::Function * F, ValueToValueMapTy &amp; VMap, llvm::ClonedCodeInfo * CodeInfo = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Cloning.h' l='117'>/// CloneFunction - Return a copy of the specified function and add it to that
+/// function&apos;s module.  Also, any references specified in the VMap are changed
+/// to refer to their mapped value instead of the original one.  If any of the
+/// arguments to the function are in the VMap, the arguments are deleted from
+/// the resultant function.  The VMap is updated to include mappings from all of
+/// the instructions and basicblocks in the function from their old to new
+/// values.  The final argument captures information about the cloned code if
+/// non-null.
+///
+/// VMap contains no non-identity GlobalValue mappings and debug info metadata
+/// will not be cloned.
+///</doc>

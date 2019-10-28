@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='620' type='bool'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='641' u='r' c='_ZNK4llvm18ModuleSummaryIndex28withGlobalValueDeadStrippingEv'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='644' u='w' c='_ZN4llvm18ModuleSummaryIndex31setWithGlobalValueDeadStrippingEv'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='648' u='r' c='_ZNK4llvm18ModuleSummaryIndex17isGlobalValueLiveEPKNS_18GlobalValueSummaryE'/>
+<offset>1408</offset>
+<doc f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='617'>/// Indicates that summary-based GlobalValue GC has run, and values with
+  /// GVFlags::Live==false are really dead. Otherwise, all values must be
+  /// considered live.</doc>

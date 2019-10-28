@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/Instructions.h' l='2620' ll='2624' type='static llvm::PHINode * llvm::PHINode::Create(llvm::Type * Ty, unsigned int NumReservedValues, const llvm::Twine &amp; NameStr = &quot;&quot;, llvm::Instruction * InsertBefore = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='2618'>/// Constructors - NumReservedValues is a hint for the number of incoming
+  /// edges that this phi node will have (use 0 if you really have no idea).</doc>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1660' u='c' c='_ZN4llvm9IRBuilder9CreatePHIEPNS_4TypeEjRKNS_5TwineE'/>

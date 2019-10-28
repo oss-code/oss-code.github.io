@@ -1,0 +1,11 @@
+<def f='include/llvm-6.0/llvm/Analysis/LoopPass.h' l='80' type='void llvm::LoopPass::cloneBasicBlockAnalysis(llvm::BasicBlock * F, llvm::BasicBlock * T, llvm::Loop * L)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopPass.h' l='70'>//===--------------------------------------------------------------------===//
+  /// SimpleAnalysis - Provides simple interface to update analysis info
+  /// maintained by various passes. Note, if required this interface can
+  /// be extracted into a separate abstract class but it would require
+  /// additional use of multiple inheritance in Pass class hierarchy, something
+  /// we are trying to avoid.
+
+  /// Each loop pass can override these simple analysis hooks to update
+  /// desired analysis information.
+  /// cloneBasicBlockAnalysis - Clone analysis info associated with basic block.</doc>

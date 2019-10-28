@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='128' type='bool llvm::isInstructionTriviallyDead(llvm::Instruction * I, const llvm::TargetLibraryInfo * TLI = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='122'>//===----------------------------------------------------------------------===//
+//  Local dead code elimination.
+//
+
+/// Return true if the result produced by the instruction is not used, and the
+/// instruction has no side effects.</doc>

@@ -1,0 +1,3 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='651' type='const llvm::SCEV * llvm::ScalarEvolution::getUMinFromMismatchedTypes(const llvm::SCEV * LHS, const llvm::SCEV * RHS)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='649'>/// Promote the operands to the wider of the types using zero-extension, and
+  /// then perform a umin operation with them.</doc>

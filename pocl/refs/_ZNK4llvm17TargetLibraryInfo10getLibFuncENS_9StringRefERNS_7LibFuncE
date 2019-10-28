@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Analysis/TargetLibraryInfo.h' l='231' ll='233' type='bool llvm::TargetLibraryInfo::getLibFunc(llvm::StringRef funcName, llvm::LibFunc &amp; F) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetLibraryInfo.h' l='227'>/// Searches for a particular function name.
+  ///
+  /// If it is one of the known library functions, return true and set F to the
+  /// corresponding value.</doc>

@@ -1,0 +1,14 @@
+<def f='include/hwloc/helper.h' l='306' ll='316' type='hwloc_obj_t hwloc_get_next_obj_covering_cpuset_by_depth(hwloc_topology_t topology, hwloc_const_cpuset_t set, unsigned int depth, hwloc_obj_t prev)'/>
+<use f='include/hwloc/helper.h' l='340' u='c' c='hwloc_get_next_obj_covering_cpuset_by_type'/>
+<use f='include/hwloc/helper.h' l='938' u='c' c='hwloc_cpuset_to_nodeset'/>
+<use f='include/hwloc/helper.h' l='958' u='c' c='hwloc_cpuset_to_nodeset_strict'/>
+<doc f='include/hwloc/helper.h' l='296'>/** \brief Iterate through same-depth objects covering at least CPU set \p set
+ *
+ * If object \p prev is \c NULL, return the first object at depth \p
+ * depth covering at least part of CPU set \p set.  The next
+ * invokation should pass the previous return value in \p prev so as
+ * to obtain the next object covering at least another part of \p set.
+ *
+ * \note This function cannot work if objects at the given depth do
+ * not have CPU sets or if the topology is made of different machines.
+ */</doc>

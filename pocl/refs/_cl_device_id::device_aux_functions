@@ -1,0 +1,8 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='783' type='const char **'/>
+<offset>5184</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='780'>/* Auxiliary functions required by the device binary which should
+     be retained across the kernel compilation unused code pruning
+     process. */</doc>
+<use f='pocl/lib/llvmopencl/Flatten.cc' l='75' u='r' c='_ZN12_GLOBAL__N_17Flatten11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='351' u='r' c='_Z4linkPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='472' u='r' c='_Z21copyKernelFromBitcodePKcPN4llvm6ModuleEPKS2_'/>

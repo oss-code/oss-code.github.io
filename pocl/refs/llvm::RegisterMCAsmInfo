@@ -1,0 +1,11 @@
+<def f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='914' ll='924'/>
+<doc f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='906'>/// RegisterMCAsmInfo - Helper template for registering a target assembly info
+/// implementation.  This invokes the static &quot;Create&quot; method on the class to
+/// actually do the construction.  Usage:
+///
+/// extern &quot;C&quot; void LLVMInitializeFooTarget() {
+///   extern Target TheFooTarget;
+///   RegisterMCAsmInfo&lt;FooMCAsmInfo&gt; X(TheFooTarget);
+/// }</doc>
+<fun r='_ZN4llvm17RegisterMCAsmInfoC1ERNS_6TargetE'/>
+<fun r='_ZN4llvm17RegisterMCAsmInfo9AllocatorERKNS_14MCRegisterInfoERKNS_6TripleE'/>

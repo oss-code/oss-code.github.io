@@ -1,0 +1,13 @@
+<def f='pocl/include/CL/cl2.hpp' l='2944' ll='2952' type='static cl::Context cl::Context::getDefault(cl_int * err = __null)'/>
+<use f='pocl/include/CL/cl2.hpp' l='3074' u='c' c='_ZN2cl6Device11makeDefaultEv'/>
+<use f='pocl/include/CL/cl2.hpp' l='3821' u='c' c='_ZN2cl6BufferC1EmmPvPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='3860' u='c' c='_ZN2cl6BufferC1ET_S1_bbPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6147' u='c' c='_ZN2cl7ProgramC1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEbPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6222' u='c' c='_ZN2cl7ProgramC1ERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS7_EEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6901' u='c' c='_ZN2cl12CommandQueue11makeDefaultEv'/>
+<use f='pocl/include/CL/cl2.hpp' l='6951' u='c' c='_ZN2cl12CommandQueueC1EmPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='7017' u='c' c='_ZN2cl12CommandQueueC1ENS_15QueuePropertiesEPi'/>
+<doc f='pocl/include/CL/cl2.hpp' l='2940'>/*! \brief Returns a singleton context including all devices of CL_DEVICE_TYPE_DEFAULT.
+     *
+     *  \note All calls to this function return the same cl_context as the first.
+     */</doc>

@@ -1,0 +1,4 @@
+<def f='include/c++/7/chrono' l='672' ll='678' type='typename enable_if&lt;__is_duration&lt;_ToDur&gt;::value, time_point&lt;_Clock, _ToDur&gt; &gt;::type std::chrono::time_point_cast(const time_point&lt;_Clock, _Dur&gt; &amp; __t)'/>
+<use f='include/c++/7/chrono' l='846' u='c' c='_ZNSt6chrono3_V212system_clock11from_time_tEl'/>
+<use f='include/llvm-6.0/llvm/Support/Chrono.h' l='40' u='c' c='_ZN4llvm3sys7toTimeTENSt6chrono10time_pointINS1_3_V212system_clockENS1_8durationIlSt5ratioILl1ELl1000000000EEEEEE'/>
+<use f='include/llvm-6.0/llvm/Support/Chrono.h' l='47' u='c' c='_ZN4llvm3sys11toTimePointEl'/>

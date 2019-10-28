@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='71' type='void llvm::ReplaceInstWithInst(BasicBlock::InstListType &amp; BIL, BasicBlock::iterator &amp; BI, llvm::Instruction * I)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='67'>/// Replace the instruction specified by BI with the instruction specified by I.
+/// Copies DebugLoc from BI to I, if I doesn&apos;t already have a DebugLoc. The
+/// original instruction is deleted and BI is updated to point to the new
+/// instruction.</doc>

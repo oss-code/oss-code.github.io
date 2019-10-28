@@ -1,0 +1,6 @@
+<dec f='include/llvm-c-6.0/llvm-c/ErrorHandling.h' l='43' type='void LLVMEnablePrettyStackTrace()'/>
+<doc f='include/llvm-c-6.0/llvm-c/ErrorHandling.h' l='38'>/**
+ * Enable LLVM&apos;s built-in stack trace code. This intercepts the OS&apos;s crash
+ * signals and prints which component of LLVM you were in at the time if the
+ * crash.
+ */</doc>

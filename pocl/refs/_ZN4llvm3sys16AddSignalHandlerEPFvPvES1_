@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Support/Signals.h' l='62' type='void llvm::sys::AddSignalHandler(void (*)(void *) FnPtr, void * Cookie)'/>
+<doc f='include/llvm-6.0/llvm/Support/Signals.h' l='59'>/// AddSignalHandler - Add a function to be called when an abort/kill signal
+  /// is delivered to the process.  The handler can have a cookie passed to it
+  /// to identify what instance of the handler it is.</doc>

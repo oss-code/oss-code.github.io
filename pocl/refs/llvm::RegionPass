@@ -1,0 +1,17 @@
+<inh f='include/llvm-6.0/llvm/Pass.h' l='81' c='llvm::Pass'/>
+<def f='include/llvm-6.0/llvm/Analysis/RegionPass.h' l='34' ll='86'/>
+<size>32</size>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionPass.h' l='30'>//===----------------------------------------------------------------------===//
+/// @brief A pass that runs on each Region in a function.
+///
+/// RegionPass is managed by RGPassManager.</doc>
+<fun r='_ZN4llvm10RegionPassC1ERc'/>
+<fun r='_ZN4llvm10RegionPass11runOnRegionEPNS_6RegionERNS_13RGPassManagerE'/>
+<fun r='_ZNK4llvm10RegionPass17createPrinterPassERNS_11raw_ostreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<fun r='_ZN4llvm10RegionPass16doInitializationEPNS_6RegionERNS_13RGPassManagerE'/>
+<fun r='_ZN4llvm10RegionPass14doFinalizationEv'/>
+<fun r='_ZN4llvm10RegionPass18preparePassManagerERNS_7PMStackE'/>
+<fun r='_ZN4llvm10RegionPass17assignPassManagerERNS_7PMStackENS_15PassManagerTypeE'/>
+<fun r='_ZNK4llvm10RegionPass27getPotentialPassManagerTypeEv'/>
+<fun r='_ZNK4llvm10RegionPass10skipRegionERNS_6RegionE'/>
+<ovr f='pocl/lib/llvmopencl/IsolateRegions.h' l='30' c='pocl::IsolateRegions'/>

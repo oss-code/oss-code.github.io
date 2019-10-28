@@ -1,0 +1,9 @@
+<dec f='pocl/lib/llvmopencl/ImplicitLoopBarriers.h' l='40' type='bool pocl::ImplicitLoopBarriers::ProcessLoop(llvm::Loop * L, llvm::LPPassManager &amp; LPM)'/>
+<use f='pocl/lib/llvmopencl/ImplicitLoopBarriers.cc' l='77' u='c' c='_ZN4pocl20ImplicitLoopBarriers9runOnLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<def f='pocl/lib/llvmopencl/ImplicitLoopBarriers.cc' l='86' ll='102' type='bool pocl::ImplicitLoopBarriers::ProcessLoop(llvm::Loop * L, llvm::LPPassManager &amp; LPM)'/>
+<doc f='pocl/lib/llvmopencl/ImplicitLoopBarriers.cc' l='80'>/**
+ * Adds a barrier to the first BB of each loop.
+ *
+ * Note: it&apos;s not safe to do this in case the loop is not executed
+ * by all work items. Therefore this is not enabled by default.
+ */</doc>

@@ -1,0 +1,8 @@
+<def f='pocl/tests/regression/test_structs_as_args.cpp' l='46' ll='48'/>
+<size>4</size>
+<doc f='pocl/tests/regression/test_structs_as_args.cpp' l='39'>// Currently assume these types map the OpenCL types, might be better to use
+// the explicitly-sized types in &lt;cstdint&gt; under C++11 for better portability.
+// 
+// We also assume the same packing rules between host and target, so if this
+// regression fails in the future, this might be worth investigating as to
+// the origin of the problem.</doc>

@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>SwapByteOrder.h source code [include/llvm-6.0/llvm/Support/SwapByteOrder.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'include/llvm-6.0/llvm/Support/SwapByteOrder.h'; var root_path = '../../../..'; var data_path = '../../../../../data';</script>
+<script src='../../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../../..'>include</a>/<a href='../..'>llvm-6.0</a>/<a href='..'>llvm</a>/<a href='./'>Support</a>/<a href='SwapByteOrder.h.html'>SwapByteOrder.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>//===- SwapByteOrder.h - Generic and optimized byte swaps -------*- C++ -*-===//</i></td></tr>
+<tr><th id="2">2</th><td><i>//</i></td></tr>
+<tr><th id="3">3</th><td><i>//                     The LLVM Compiler Infrastructure</i></td></tr>
+<tr><th id="4">4</th><td><i>//</i></td></tr>
+<tr><th id="5">5</th><td><i>// This file is distributed under the University of Illinois Open Source</i></td></tr>
+<tr><th id="6">6</th><td><i>// License. See LICENSE.TXT for details.</i></td></tr>
+<tr><th id="7">7</th><td><i>//</i></td></tr>
+<tr><th id="8">8</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="9">9</th><td><i>//</i></td></tr>
+<tr><th id="10">10</th><td><i>// This file declares generic and optimized functions to swap the byte order of</i></td></tr>
+<tr><th id="11">11</th><td><i>// an integral type.</i></td></tr>
+<tr><th id="12">12</th><td><i>//</i></td></tr>
+<tr><th id="13">13</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td><u>#<span data-ppcond="15">ifndef</span> <span class="macro" data-ref="_M/LLVM_SUPPORT_SWAPBYTEORDER_H">LLVM_SUPPORT_SWAPBYTEORDER_H</span></u></td></tr>
+<tr><th id="16">16</th><td><u>#define <dfn class="macro" id="_M/LLVM_SUPPORT_SWAPBYTEORDER_H" data-ref="_M/LLVM_SUPPORT_SWAPBYTEORDER_H">LLVM_SUPPORT_SWAPBYTEORDER_H</dfn></u></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><u>#include <a href="Compiler.h.html">"llvm/Support/Compiler.h"</a></u></td></tr>
+<tr><th id="19">19</th><td><u>#include <a href="DataTypes.h.html">"llvm/Support/DataTypes.h"</a></u></td></tr>
+<tr><th id="20">20</th><td><u>#include <a href="../../../c++/7/cstddef.html">&lt;cstddef&gt;</a></u></td></tr>
+<tr><th id="21">21</th><td><u>#<span data-ppcond="21">if</span> defined(<span class="macro" data-ref="_M/_MSC_VER">_MSC_VER</span>) &amp;&amp; !defined(<span class="macro" data-ref="_M/_DEBUG">_DEBUG</span>)</u></td></tr>
+<tr><th id="22">22</th><td><u>#include &lt;stdlib.h&gt;</u></td></tr>
+<tr><th id="23">23</th><td><u>#<span data-ppcond="21">endif</span></u></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><b>namespace</b> <span class="namespace">llvm</span> {</td></tr>
+<tr><th id="26">26</th><td><b>namespace</b> <span class="namespace">sys</span> {</td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><i class="doc">/// SwapByteOrder_16 - This function returns a byte-swapped representation of</i></td></tr>
+<tr><th id="29">29</th><td><i class="doc">/// the 16-bit argument.</i></td></tr>
+<tr><th id="30">30</th><td><b>inline</b> <a class="typedef" href="../../../stdint.h.html#uint16_t" title='uint16_t' data-type='unsigned short' data-ref="uint16_t">uint16_t</a> <dfn class="decl def" id="_ZN4llvm3sys16SwapByteOrder_16Et" title='llvm::sys::SwapByteOrder_16' data-ref="_ZN4llvm3sys16SwapByteOrder_16Et">SwapByteOrder_16</dfn>(<a class="typedef" href="../../../stdint.h.html#uint16_t" title='uint16_t' data-type='unsigned short' data-ref="uint16_t">uint16_t</a> <dfn class="local col0 decl" id="5470value" title='value' data-type='uint16_t' data-ref="5470value">value</dfn>) {</td></tr>
+<tr><th id="31">31</th><td><u>#<span data-ppcond="31">if</span> defined(<span class="macro" data-ref="_M/_MSC_VER">_MSC_VER</span>) &amp;&amp; !defined(<span class="macro" data-ref="_M/_DEBUG">_DEBUG</span>)</u></td></tr>
+<tr><th id="32">32</th><td>  <i>// The DLL version of the runtime lacks these functions (bug!?), but in a</i></td></tr>
+<tr><th id="33">33</th><td><i>  // release build they're replaced with BSWAP instructions anyway.</i></td></tr>
+<tr><th id="34">34</th><td>  <b>return</b> _byteswap_ushort(value);</td></tr>
+<tr><th id="35">35</th><td><u>#<span data-ppcond="31">else</span></u></td></tr>
+<tr><th id="36">36</th><td>  <a class="typedef" href="../../../stdint.h.html#uint16_t" title='uint16_t' data-type='unsigned short' data-ref="uint16_t">uint16_t</a> <dfn class="local col1 decl" id="5471Hi" title='Hi' data-type='uint16_t' data-ref="5471Hi">Hi</dfn> = <a class="local col0 ref" href="#5470value" title='value' data-ref="5470value">value</a> &lt;&lt; <var>8</var>;</td></tr>
+<tr><th id="37">37</th><td>  <a class="typedef" href="../../../stdint.h.html#uint16_t" title='uint16_t' data-type='unsigned short' data-ref="uint16_t">uint16_t</a> <dfn class="local col2 decl" id="5472Lo" title='Lo' data-type='uint16_t' data-ref="5472Lo">Lo</dfn> = <a class="local col0 ref" href="#5470value" title='value' data-ref="5470value">value</a> &gt;&gt; <var>8</var>;</td></tr>
+<tr><th id="38">38</th><td>  <b>return</b> <a class="local col1 ref" href="#5471Hi" title='Hi' data-ref="5471Hi">Hi</a> | <a class="local col2 ref" href="#5472Lo" title='Lo' data-ref="5472Lo">Lo</a>;</td></tr>
+<tr><th id="39">39</th><td><u>#<span data-ppcond="31">endif</span></u></td></tr>
+<tr><th id="40">40</th><td>}</td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td><i class="doc">/// SwapByteOrder_32 - This function returns a byte-swapped representation of</i></td></tr>
+<tr><th id="43">43</th><td><i class="doc">/// the 32-bit argument.</i></td></tr>
+<tr><th id="44">44</th><td><b>inline</b> <a class="typedef" href="../../../stdint.h.html#uint32_t" title='uint32_t' data-type='unsigned int' data-ref="uint32_t">uint32_t</a> <dfn class="decl def" id="_ZN4llvm3sys16SwapByteOrder_32Ej" title='llvm::sys::SwapByteOrder_32' data-ref="_ZN4llvm3sys16SwapByteOrder_32Ej">SwapByteOrder_32</dfn>(<a class="typedef" href="../../../stdint.h.html#uint32_t" title='uint32_t' data-type='unsigned int' data-ref="uint32_t">uint32_t</a> <dfn class="local col3 decl" id="5473value" title='value' data-type='uint32_t' data-ref="5473value">value</dfn>) {</td></tr>
+<tr><th id="45">45</th><td><u>#<span data-ppcond="45">if</span> defined(<span class="macro" data-ref="_M/__llvm__">__llvm__</span>) || (<a class="macro" href="Compiler.h.html#49" title="((4 &lt;&lt; 20) + (2 &lt;&lt; 10) + 1 &gt;= ((4) &lt;&lt; 20) + ((3) &lt;&lt; 10) + (0))" data-ref="_M/LLVM_GNUC_PREREQ">LLVM_GNUC_PREREQ</a>(4, 3, 0) &amp;&amp; !defined(<span class="macro" data-ref="_M/__ICC">__ICC</span>))</u></td></tr>
+<tr><th id="46">46</th><td>  <b>return</b> <a class="ref" href="#46" title='__builtin_bswap32' data-ref="__builtin_bswap32">__builtin_bswap32</a>(<a class="local col3 ref" href="#5473value" title='value' data-ref="5473value">value</a>);</td></tr>
+<tr><th id="47">47</th><td><u>#<span data-ppcond="45">elif</span> defined(_MSC_VER) &amp;&amp; !defined(_DEBUG)</u></td></tr>
+<tr><th id="48">48</th><td>  <b>return</b> _byteswap_ulong(value);</td></tr>
+<tr><th id="49">49</th><td><u>#else</u></td></tr>
+<tr><th id="50">50</th><td>  uint32_t Byte0 = value &amp; <var>0x000000FF</var>;</td></tr>
+<tr><th id="51">51</th><td>  uint32_t Byte1 = value &amp; <var>0x0000FF00</var>;</td></tr>
+<tr><th id="52">52</th><td>  uint32_t Byte2 = value &amp; <var>0x00FF0000</var>;</td></tr>
+<tr><th id="53">53</th><td>  uint32_t Byte3 = value &amp; <var>0xFF000000</var>;</td></tr>
+<tr><th id="54">54</th><td>  <b>return</b> (Byte0 &lt;&lt; <var>24</var>) | (Byte1 &lt;&lt; <var>8</var>) | (Byte2 &gt;&gt; <var>8</var>) | (Byte3 &gt;&gt; <var>24</var>);</td></tr>
+<tr><th id="55">55</th><td><u>#<span data-ppcond="45">endif</span></u></td></tr>
+<tr><th id="56">56</th><td>}</td></tr>
+<tr><th id="57">57</th><td></td></tr>
+<tr><th id="58">58</th><td><i class="doc">/// SwapByteOrder_64 - This function returns a byte-swapped representation of</i></td></tr>
+<tr><th id="59">59</th><td><i class="doc">/// the 64-bit argument.</i></td></tr>
+<tr><th id="60">60</th><td><b>inline</b> <a class="typedef" href="../../../stdint.h.html#uint64_t" title='uint64_t' data-type='unsigned long' data-ref="uint64_t">uint64_t</a> <dfn class="decl def" id="_ZN4llvm3sys16SwapByteOrder_64Em" title='llvm::sys::SwapByteOrder_64' data-ref="_ZN4llvm3sys16SwapByteOrder_64Em">SwapByteOrder_64</dfn>(<a class="typedef" href="../../../stdint.h.html#uint64_t" title='uint64_t' data-type='unsigned long' data-ref="uint64_t">uint64_t</a> <dfn class="local col4 decl" id="5474value" title='value' data-type='uint64_t' data-ref="5474value">value</dfn>) {</td></tr>
+<tr><th id="61">61</th><td><u>#<span data-ppcond="61">if</span> defined(<span class="macro" data-ref="_M/__llvm__">__llvm__</span>) || (<a class="macro" href="Compiler.h.html#49" title="((4 &lt;&lt; 20) + (2 &lt;&lt; 10) + 1 &gt;= ((4) &lt;&lt; 20) + ((3) &lt;&lt; 10) + (0))" data-ref="_M/LLVM_GNUC_PREREQ">LLVM_GNUC_PREREQ</a>(4, 3, 0) &amp;&amp; !defined(<span class="macro" data-ref="_M/__ICC">__ICC</span>))</u></td></tr>
+<tr><th id="62">62</th><td>  <b>return</b> <a class="ref" href="#62" title='__builtin_bswap64' data-ref="__builtin_bswap64">__builtin_bswap64</a>(<a class="local col4 ref" href="#5474value" title='value' data-ref="5474value">value</a>);</td></tr>
+<tr><th id="63">63</th><td><u>#<span data-ppcond="61">elif</span> defined(_MSC_VER) &amp;&amp; !defined(_DEBUG)</u></td></tr>
+<tr><th id="64">64</th><td>  <b>return</b> _byteswap_uint64(value);</td></tr>
+<tr><th id="65">65</th><td><u>#else</u></td></tr>
+<tr><th id="66">66</th><td>  uint64_t Hi = SwapByteOrder_32(uint32_t(value));</td></tr>
+<tr><th id="67">67</th><td>  uint32_t Lo = SwapByteOrder_32(uint32_t(value &gt;&gt; <var>32</var>));</td></tr>
+<tr><th id="68">68</th><td>  <b>return</b> (Hi &lt;&lt; <var>32</var>) | Lo;</td></tr>
+<tr><th id="69">69</th><td><u>#<span data-ppcond="61">endif</span></u></td></tr>
+<tr><th id="70">70</th><td>}</td></tr>
+<tr><th id="71">71</th><td></td></tr>
+<tr><th id="72">72</th><td><b>inline</b> <em>unsigned</em> <em>char</em>  <dfn class="decl def" id="_ZN4llvm3sys15getSwappedBytesEh" title='llvm::sys::getSwappedBytes' data-ref="_ZN4llvm3sys15getSwappedBytesEh">getSwappedBytes</dfn>(<em>unsigned</em> <em>char</em> <dfn class="local col5 decl" id="5475C" title='C' data-type='unsigned char' data-ref="5475C">C</dfn>) { <b>return</b> <a class="local col5 ref" href="#5475C" title='C' data-ref="5475C">C</a>; }</td></tr>
+<tr><th id="73">73</th><td><b>inline</b>   <em>signed</em> <em>char</em>  <dfn class="decl def" id="_ZN4llvm3sys15getSwappedBytesEa" title='llvm::sys::getSwappedBytes' data-ref="_ZN4llvm3sys15getSwappedBytesEa">getSwappedBytes</dfn>(<em>signed</em> <em>char</em> <dfn class="local col6 decl" id="5476C" title='C' data-type='signed char' data-ref="5476C">C</dfn>) { <b>return</b> <a class="local col6 ref" href="#5476C" title='C' data-ref="5476C">C</a>; }</td></tr>
+<tr><th id="74">74</th><td><b>inline</b>          <em>char</em>  <dfn class="decl def" id="_ZN4llvm3sys15getSwappedBytesEc" title='llvm::sys::getSwappedBytes' data-ref="_ZN4llvm3sys15getSwappedBytesEc">getSwappedBytes</dfn>(<em>char</em> <dfn class="local col7 decl" id="5477C" title='C' data-type='char' data-ref="5477C">C</dfn>) { <b>return</b> <a class="local col7 ref" href="#5477C" title='C' data-ref="5477C">C</a>; }</td></tr>
+<tr><th id="75">75</th><td></td></tr>
+<tr><th id="76">76</th><td><b>inline</b> <em>unsigned</em> <em>short</em> <dfn class="decl def" id="_ZN4llvm3sys15getSwappedBytesEt" title='llvm::sys::getSwappedBytes' data-ref="_ZN4llvm3sys15getSwappedBytesEt">getSwappedBytes</dfn>(<em>unsigned</em> <em>short</em> <dfn class="local col8 decl" id="5478C" title='C' data-type='unsigned short' data-ref="5478C">C</dfn>) { <b>return</b> <a class="ref" href="#_ZN4llvm3sys16SwapByteOrder_16Et" title='llvm::sys::SwapByteOrder_16' data-ref="_ZN4llvm3sys16SwapByteOrder_16Et">SwapByteOrder_16</a>(<a class="local col8 ref" href="#5478C" title='C' data-ref="5478C">C</a>); }</td></tr>
+<tr><th id="77">77</th><td><b>inline</b>   <em>signed</em> <em>short</em> <dfn class="decl def" id="_ZN4llvm3sys15getSwappedBytesEs" title='llvm::sys::getSwappedBytes' data-ref="_ZN4llvm3sys15getSwappedBytesEs">getSwappedBytes</dfn>(  <em>signed</em> <em>short</em> <dfn class="local col9 decl" id="5479C" title='C' data-type='short' data-ref="5479C">C</dfn>) { <b>return</b> <a class="ref" href="#_ZN4llvm3sys16SwapByteOrder_16Et" title='llvm::sys::SwapByteOrder_16' data-ref="_ZN4llvm3sys16SwapByteOrder_16Et">SwapByteOrder_16</a>(<a class="local col9 ref" href="#5479C" title='C' data-ref="5479C">C</a>); }</td></tr>
+<tr><th id="78">78</th><td></td></tr>
+<tr><th id="79">79</th><td><b>inline</b> <em>unsigned</em> <em>int</em>   <dfn class="decl def" id="_ZN4llvm3sys15getSwappedBytesEj" title='llvm::sys::getSwappedBytes' data-ref="_ZN4llvm3sys15getSwappedBytesEj">getSwappedBytes</dfn>(<em>unsigned</em> <em>int</em>   <dfn class="local col0 decl" id="5480C" title='C' data-type='unsigned int' data-ref="5480C">C</dfn>) { <b>return</b> <a class="ref" href="#_ZN4llvm3sys16SwapByteOrder_32Ej" title='llvm::sys::SwapByteOrder_32' data-ref="_ZN4llvm3sys16SwapByteOrder_32Ej">SwapByteOrder_32</a>(<a class="local col0 ref" href="#5480C" title='C' data-ref="5480C">C</a>); }</td></tr>
+<tr><th id="80">80</th><td><b>inline</b>   <em>signed</em> <em>int</em>   <dfn class="decl def" id="_ZN4llvm3sys15getSwappedBytesEi" title='llvm::sys::getSwappedBytes' data-ref="_ZN4llvm3sys15getSwappedBytesEi">getSwappedBytes</dfn>(  <em>signed</em> <em>int</em>   <dfn class="local col1 decl" id="5481C" title='C' data-type='int' data-ref="5481C">C</dfn>) { <b>return</b> <a class="ref" href="#_ZN4llvm3sys16SwapByteOrder_32Ej" title='llvm::sys::SwapByteOrder_32' data-ref="_ZN4llvm3sys16SwapByteOrder_32Ej">SwapByteOrder_32</a>(<a class="local col1 ref" href="#5481C" title='C' data-ref="5481C">C</a>); }</td></tr>
+<tr><th id="81">81</th><td></td></tr>
+<tr><th id="82">82</th><td><u>#<span data-ppcond="82">if</span> <span class="macro" title="9223372036854775807L" data-ref="_M/__LONG_MAX__">__LONG_MAX__</span> == <span class="macro" title="2147483647" data-ref="_M/__INT_MAX__">__INT_MAX__</span></u></td></tr>
+<tr><th id="83">83</th><td><b>inline</b> <em>unsigned</em> <em>long</em>  getSwappedBytes(<em>unsigned</em> <em>long</em>  C) { <b>return</b> SwapByteOrder_32(C); }</td></tr>
+<tr><th id="84">84</th><td><b>inline</b>   <em>signed</em> <em>long</em>  getSwappedBytes(  <em>signed</em> <em>long</em>  C) { <b>return</b> SwapByteOrder_32(C); }</td></tr>
+<tr><th id="85">85</th><td><u>#<span data-ppcond="82">elif</span> <span class="macro" title="9223372036854775807L" data-ref="_M/__LONG_MAX__">__LONG_MAX__</span> == <span class="macro" title="9223372036854775807LL" data-ref="_M/__LONG_LONG_MAX__">__LONG_LONG_MAX__</span></u></td></tr>
+<tr><th id="86">86</th><td><b>inline</b> <em>unsigned</em> <em>long</em>  <dfn class="decl def" id="_ZN4llvm3sys15getSwappedBytesEm" title='llvm::sys::getSwappedBytes' data-ref="_ZN4llvm3sys15getSwappedBytesEm">getSwappedBytes</dfn>(<em>unsigned</em> <em>long</em>  <dfn class="local col2 decl" id="5482C" title='C' data-type='unsigned long' data-ref="5482C">C</dfn>) { <b>return</b> <a class="ref" href="#_ZN4llvm3sys16SwapByteOrder_64Em" title='llvm::sys::SwapByteOrder_64' data-ref="_ZN4llvm3sys16SwapByteOrder_64Em">SwapByteOrder_64</a>(<a class="local col2 ref" href="#5482C" title='C' data-ref="5482C">C</a>); }</td></tr>
+<tr><th id="87">87</th><td><b>inline</b>   <em>signed</em> <em>long</em>  <dfn class="decl def" id="_ZN4llvm3sys15getSwappedBytesEl" title='llvm::sys::getSwappedBytes' data-ref="_ZN4llvm3sys15getSwappedBytesEl">getSwappedBytes</dfn>(  <em>signed</em> <em>long</em>  <dfn class="local col3 decl" id="5483C" title='C' data-type='long' data-ref="5483C">C</dfn>) { <b>return</b> <a class="ref" href="#_ZN4llvm3sys16SwapByteOrder_64Em" title='llvm::sys::SwapByteOrder_64' data-ref="_ZN4llvm3sys16SwapByteOrder_64Em">SwapByteOrder_64</a>(<a class="local col3 ref" href="#5483C" title='C' data-ref="5483C">C</a>); }</td></tr>
+<tr><th id="88">88</th><td><u>#<span data-ppcond="82">else</span></u></td></tr>
+<tr><th id="89">89</th><td><u>#error "Unknown long size!"</u></td></tr>
+<tr><th id="90">90</th><td><u>#<span data-ppcond="82">endif</span></u></td></tr>
+<tr><th id="91">91</th><td></td></tr>
+<tr><th id="92">92</th><td><b>inline</b> <em>unsigned</em> <em>long</em> <em>long</em> <dfn class="decl def" id="_ZN4llvm3sys15getSwappedBytesEy" title='llvm::sys::getSwappedBytes' data-ref="_ZN4llvm3sys15getSwappedBytesEy">getSwappedBytes</dfn>(<em>unsigned</em> <em>long</em> <em>long</em> <dfn class="local col4 decl" id="5484C" title='C' data-type='unsigned long long' data-ref="5484C">C</dfn>) {</td></tr>
+<tr><th id="93">93</th><td>  <b>return</b> <a class="ref" href="#_ZN4llvm3sys16SwapByteOrder_64Em" title='llvm::sys::SwapByteOrder_64' data-ref="_ZN4llvm3sys16SwapByteOrder_64Em">SwapByteOrder_64</a>(<a class="local col4 ref" href="#5484C" title='C' data-ref="5484C">C</a>);</td></tr>
+<tr><th id="94">94</th><td>}</td></tr>
+<tr><th id="95">95</th><td><b>inline</b> <em>signed</em> <em>long</em> <em>long</em> <dfn class="decl def" id="_ZN4llvm3sys15getSwappedBytesEx" title='llvm::sys::getSwappedBytes' data-ref="_ZN4llvm3sys15getSwappedBytesEx">getSwappedBytes</dfn>(<em>signed</em> <em>long</em> <em>long</em> <dfn class="local col5 decl" id="5485C" title='C' data-type='long long' data-ref="5485C">C</dfn>) {</td></tr>
+<tr><th id="96">96</th><td>  <b>return</b> <a class="ref" href="#_ZN4llvm3sys16SwapByteOrder_64Em" title='llvm::sys::SwapByteOrder_64' data-ref="_ZN4llvm3sys16SwapByteOrder_64Em">SwapByteOrder_64</a>(<a class="local col5 ref" href="#5485C" title='C' data-ref="5485C">C</a>);</td></tr>
+<tr><th id="97">97</th><td>}</td></tr>
+<tr><th id="98">98</th><td></td></tr>
+<tr><th id="99">99</th><td><b>inline</b> <em>float</em> <dfn class="decl def" id="_ZN4llvm3sys15getSwappedBytesEf" title='llvm::sys::getSwappedBytes' data-ref="_ZN4llvm3sys15getSwappedBytesEf">getSwappedBytes</dfn>(<em>float</em> <dfn class="local col6 decl" id="5486C" title='C' data-type='float' data-ref="5486C">C</dfn>) {</td></tr>
+<tr><th id="100">100</th><td>  <b>union</b> {</td></tr>
+<tr><th id="101">101</th><td>    <a class="typedef" href="../../../stdint.h.html#uint32_t" title='uint32_t' data-type='unsigned int' data-ref="uint32_t">uint32_t</a> <dfn class="local col7 decl" id="5487i" title='i' data-type='uint32_t' data-ref="5487i">i</dfn>;</td></tr>
+<tr><th id="102">102</th><td>    <em>float</em> <dfn class="local col8 decl" id="5488f" title='f' data-type='float' data-ref="5488f">f</dfn>;</td></tr>
+<tr><th id="103">103</th><td>  } <dfn class="local col9 decl" id="5489in" title='in' data-type='union (anonymous union at /usr/lib/llvm-6.0/include/llvm/Support/SwapByteOrder.h:100:3)' data-ref="5489in">in</dfn>, <dfn class="local col0 decl" id="5490out" title='out' data-type='union (anonymous union at /usr/lib/llvm-6.0/include/llvm/Support/SwapByteOrder.h:100:3)' data-ref="5490out">out</dfn>;</td></tr>
+<tr><th id="104">104</th><td>  <a class="local col9 ref" href="#5489in" title='in' data-ref="5489in">in</a>.<a class="local col8 ref" href="#5488f" title='f' data-ref="5488f">f</a> = <a class="local col6 ref" href="#5486C" title='C' data-ref="5486C">C</a>;</td></tr>
+<tr><th id="105">105</th><td>  <a class="local col0 ref" href="#5490out" title='out' data-ref="5490out">out</a>.<a class="local col7 ref" href="#5487i" title='i' data-ref="5487i">i</a> = <a class="ref" href="#_ZN4llvm3sys16SwapByteOrder_32Ej" title='llvm::sys::SwapByteOrder_32' data-ref="_ZN4llvm3sys16SwapByteOrder_32Ej">SwapByteOrder_32</a>(<a class="local col9 ref" href="#5489in" title='in' data-ref="5489in">in</a>.<a class="local col7 ref" href="#5487i" title='i' data-ref="5487i">i</a>);</td></tr>
+<tr><th id="106">106</th><td>  <b>return</b> <a class="local col0 ref" href="#5490out" title='out' data-ref="5490out">out</a>.<a class="local col8 ref" href="#5488f" title='f' data-ref="5488f">f</a>;</td></tr>
+<tr><th id="107">107</th><td>}</td></tr>
+<tr><th id="108">108</th><td></td></tr>
+<tr><th id="109">109</th><td><b>inline</b> <em>double</em> <dfn class="decl def" id="_ZN4llvm3sys15getSwappedBytesEd" title='llvm::sys::getSwappedBytes' data-ref="_ZN4llvm3sys15getSwappedBytesEd">getSwappedBytes</dfn>(<em>double</em> <dfn class="local col1 decl" id="5491C" title='C' data-type='double' data-ref="5491C">C</dfn>) {</td></tr>
+<tr><th id="110">110</th><td>  <b>union</b> {</td></tr>
+<tr><th id="111">111</th><td>    <a class="typedef" href="../../../stdint.h.html#uint64_t" title='uint64_t' data-type='unsigned long' data-ref="uint64_t">uint64_t</a> <dfn class="local col2 decl" id="5492i" title='i' data-type='uint64_t' data-ref="5492i">i</dfn>;</td></tr>
+<tr><th id="112">112</th><td>    <em>double</em> <dfn class="local col3 decl" id="5493d" title='d' data-type='double' data-ref="5493d">d</dfn>;</td></tr>
+<tr><th id="113">113</th><td>  } <dfn class="local col4 decl" id="5494in" title='in' data-type='union (anonymous union at /usr/lib/llvm-6.0/include/llvm/Support/SwapByteOrder.h:110:3)' data-ref="5494in">in</dfn>, <dfn class="local col5 decl" id="5495out" title='out' data-type='union (anonymous union at /usr/lib/llvm-6.0/include/llvm/Support/SwapByteOrder.h:110:3)' data-ref="5495out">out</dfn>;</td></tr>
+<tr><th id="114">114</th><td>  <a class="local col4 ref" href="#5494in" title='in' data-ref="5494in">in</a>.<a class="local col3 ref" href="#5493d" title='d' data-ref="5493d">d</a> = <a class="local col1 ref" href="#5491C" title='C' data-ref="5491C">C</a>;</td></tr>
+<tr><th id="115">115</th><td>  <a class="local col5 ref" href="#5495out" title='out' data-ref="5495out">out</a>.<a class="local col2 ref" href="#5492i" title='i' data-ref="5492i">i</a> = <a class="ref" href="#_ZN4llvm3sys16SwapByteOrder_64Em" title='llvm::sys::SwapByteOrder_64' data-ref="_ZN4llvm3sys16SwapByteOrder_64Em">SwapByteOrder_64</a>(<a class="local col4 ref" href="#5494in" title='in' data-ref="5494in">in</a>.<a class="local col2 ref" href="#5492i" title='i' data-ref="5492i">i</a>);</td></tr>
+<tr><th id="116">116</th><td>  <b>return</b> <a class="local col5 ref" href="#5495out" title='out' data-ref="5495out">out</a>.<a class="local col3 ref" href="#5493d" title='d' data-ref="5493d">d</a>;</td></tr>
+<tr><th id="117">117</th><td>}</td></tr>
+<tr><th id="118">118</th><td></td></tr>
+<tr><th id="119">119</th><td><b>template</b>&lt;<b>typename</b> T&gt;</td></tr>
+<tr><th id="120">120</th><td><b>inline</b> <em>void</em> <dfn class="decl def" id="_ZN4llvm3sys13swapByteOrderERT_" title='llvm::sys::swapByteOrder' data-ref="_ZN4llvm3sys13swapByteOrderERT_">swapByteOrder</dfn>(T &amp;<dfn class="local col6 decl" id="5496Value" title='Value' data-type='T &amp;' data-ref="5496Value">Value</dfn>) {</td></tr>
+<tr><th id="121">121</th><td>  <a class="local col6 ref" href="#5496Value" title='Value' data-ref="5496Value">Value</a> = getSwappedBytes(<a class="local col6 ref" href="#5496Value" title='Value' data-ref="5496Value">Value</a>);</td></tr>
+<tr><th id="122">122</th><td>}</td></tr>
+<tr><th id="123">123</th><td></td></tr>
+<tr><th id="124">124</th><td>} <i>// end namespace sys</i></td></tr>
+<tr><th id="125">125</th><td>} <i>// end namespace llvm</i></td></tr>
+<tr><th id="126">126</th><td></td></tr>
+<tr><th id="127">127</th><td><u>#<span data-ppcond="15">endif</span></u></td></tr>
+<tr><th id="128">128</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../../../pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc.html'>pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc</a><br/>Generated on <em>2019-Oct-28</em> from project include<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

@@ -1,0 +1,10 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2065' type='LLVMValueRef LLVMGetParamParent(LLVMValueRef Inst)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2056'>/**
+ * Obtain the function to which this argument belongs.
+ *
+ * Unlike other functions in this group, this one takes an LLVMValueRef
+ * that corresponds to a llvm::Attribute.
+ *
+ * The returned LLVMValueRef is the llvm::Function to which this
+ * argument belongs.
+ */</doc>

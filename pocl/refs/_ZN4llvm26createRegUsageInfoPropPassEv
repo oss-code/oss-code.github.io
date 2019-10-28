@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/CodeGen/Passes.h' l='401' type='llvm::FunctionPass * llvm::createRegUsageInfoPropPass()'/>
+<doc f='include/llvm-6.0/llvm/CodeGen/Passes.h' l='398'>/// Return a MachineFunction pass that identifies call sites
+  /// and propagates register usage information of callee to caller
+  /// if available with PysicalRegisterUsageInfo pass.</doc>

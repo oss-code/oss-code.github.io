@@ -1,0 +1,32 @@
+<dec f='pocl/lib/CL/devices/bufalloc.h' l='130' type='chunk_info_t *'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='139' u='r' c='append_new_chunk'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='148' u='w' c='append_new_chunk'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='148' u='r' c='append_new_chunk'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='148' u='w' c='append_new_chunk'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='148' u='r' c='append_new_chunk'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='323' u='r' c='coalesce_chunks'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='323' u='r' c='coalesce_chunks'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='323' u='r' c='coalesce_chunks'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='323' u='r' c='coalesce_chunks'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='323' u='w' c='coalesce_chunks'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='323' u='r' c='coalesce_chunks'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='323' u='r' c='coalesce_chunks'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='323' u='r' c='coalesce_chunks'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='408' u='w' c='init_mem_region'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='423' u='r' c='init_mem_region'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='423' u='r' c='init_mem_region'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='423' u='r' c='init_mem_region'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='423' u='r' c='init_mem_region'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='423' u='w' c='init_mem_region'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='423' u='r' c='init_mem_region'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='423' u='r' c='init_mem_region'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='423' u='r' c='init_mem_region'/>
+<offset>524352</offset>
+<doc f='pocl/lib/CL/devices/bufalloc.h' l='130'>/* A pointer to a head of a linked list of
+                                chunk_info records that can be used for
+                                new allocations. This enables allocating
+                                the chunk infos statically at compile time,
+                                or dynamically. In the dynamic case, the
+                                client of the bufalloc should first ensure
+                                there is at least one free chunk info before
+                                trying the allocation. If not, create one. */</doc>

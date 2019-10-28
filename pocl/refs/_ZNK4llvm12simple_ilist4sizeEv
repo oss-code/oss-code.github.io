@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/ADT/simple_ilist.h' l='135' ll='137' type='size_type llvm::simple_ilist::size() const'/>
+<use f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='262' u='c' c='_ZNK4llvm10BasicBlock4sizeEv'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='606' u='c' c='_ZNK4llvm8Function4sizeEv'/>
+<use f='include/llvm-6.0/llvm/IR/Module.h' l='580' u='c' c='_ZNK4llvm6Module4sizeEv'/>
+<use f='include/llvm-6.0/llvm/IR/Module.h' l='598' u='c' c='_ZNK4llvm6Module10alias_sizeEv'/>
+<use f='include/llvm-6.0/llvm/IR/Module.h' l='616' u='c' c='_ZNK4llvm6Module10ifunc_sizeEv'/>
+<use f='include/llvm-6.0/llvm/IR/Module.h' l='694' u='c' c='_ZNK4llvm6Module19named_metadata_sizeEv'/>
+<doc f='include/llvm-6.0/llvm/ADT/simple_ilist.h' l='134'>/// Calculate the size of the list in linear time.</doc>

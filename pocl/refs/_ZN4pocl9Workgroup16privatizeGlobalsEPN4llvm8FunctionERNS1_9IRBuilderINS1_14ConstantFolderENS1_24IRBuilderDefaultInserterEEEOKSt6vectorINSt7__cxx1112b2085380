@@ -1,0 +1,12 @@
+<dec f='pocl/lib/llvmopencl/Workgroup.h' l='68' type='void pocl::Workgroup::privatizeGlobals(llvm::Function * F, llvm::IRBuilder&lt;&gt; &amp; Builder, const std::vector&lt;std::string&gt; &amp;&amp; GlobalHandleNames, std::vector&lt;llvm::Value *&gt; PrivateValues)'/>
+<def f='pocl/lib/llvmopencl/Workgroup.cc' l='764' ll='799' type='void pocl::Workgroup::privatizeGlobals(llvm::Function * F, llvm::IRBuilder&lt;&gt; &amp; Builder, const std::vector&lt;std::string&gt; &amp;&amp; GlobalHandleNames, std::vector&lt;llvm::Value *&gt; PrivateValues)'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='892' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='896' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='902' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='911' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='915' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='923' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='928' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='933' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<doc f='pocl/lib/llvmopencl/Workgroup.cc' l='762'>// Converts uses of the given variable handles (external global variables) to
+// use the given function-private values instead.</doc>

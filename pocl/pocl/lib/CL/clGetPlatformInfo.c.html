@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>clGetPlatformInfo.c source code [pocl/lib/CL/clGetPlatformInfo.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/CL/clGetPlatformInfo.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>CL</a>/<a href='clGetPlatformInfo.c.html'>clGetPlatformInfo.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* OpenCL runtime library: clGetPlatformInfo()</i></td></tr>
+<tr><th id="2">2</th><td><i></i></td></tr>
+<tr><th id="3">3</th><td><i>   Copyright (c) 2011 Kalle Raiskila</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>   Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="6">6</th><td><i>   of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="7">7</th><td><i>   in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="8">8</th><td><i>   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="9">9</th><td><i>   copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="10">10</th><td><i>   furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="11">11</th><td><i></i></td></tr>
+<tr><th id="12">12</th><td><i>   The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="13">13</th><td><i>   all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="14">14</th><td><i></i></td></tr>
+<tr><th id="15">15</th><td><i>   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="16">16</th><td><i>   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="17">17</th><td><i>   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="18">18</th><td><i>   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="19">19</th><td><i>   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="20">20</th><td><i>   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="21">21</th><td><i>   THE SOFTWARE.</i></td></tr>
+<tr><th id="22">22</th><td><i>*/</i></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><u>#include <a href="pocl_util.h.html">"pocl_util.h"</a></u></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><a class="macro" href="../../include/CL/cl_platform.h.html#43" title="" data-ref="_M/CL_API_ENTRY">CL_API_ENTRY</a> <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <a class="macro" href="../../include/CL/cl_platform.h.html#44" title="" data-ref="_M/CL_API_CALL">CL_API_CALL</a></td></tr>
+<tr><th id="28">28</th><td><a class="macro" href="pocl_cl.h.html#225" title="POclGetPlatformInfo" data-ref="_M/POname">POname</a>(clGetPlatformInfo)(<a class="typedef" href="../../include/CL/cl.h.html#cl_platform_id" title='cl_platform_id' data-type='struct _cl_platform_id *' data-ref="cl_platform_id">cl_platform_id</a>   <dfn class="local col1 decl" id="1platform" title='platform' data-type='cl_platform_id' data-ref="1platform">platform</dfn>,</td></tr>
+<tr><th id="29">29</th><td>                  <a class="typedef" href="../../include/CL/cl.h.html#cl_platform_info" title='cl_platform_info' data-type='cl_uint' data-ref="cl_platform_info">cl_platform_info</a> <dfn class="local col2 decl" id="2param_name" title='param_name' data-type='cl_platform_info' data-ref="2param_name">param_name</dfn>,</td></tr>
+<tr><th id="30">30</th><td>                  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span>           <dfn class="local col3 decl" id="3param_value_size" title='param_value_size' data-type='size_t' data-ref="3param_value_size">param_value_size</dfn>,</td></tr>
+<tr><th id="31">31</th><td>                  <em>void</em> *           <dfn class="local col4 decl" id="4param_value" title='param_value' data-type='void *' data-ref="4param_value">param_value</dfn>,</td></tr>
+<tr><th id="32">32</th><td>                  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> *         <dfn class="local col5 decl" id="5param_value_size_ret" title='param_value_size_ret' data-type='size_t *' data-ref="5param_value_size_ret">param_value_size_ret</dfn>) <a class="macro" href="../../include/CL/cl_platform.h.html#57" title="" data-ref="_M/CL_API_SUFFIX__VERSION_1_0">CL_API_SUFFIX__VERSION_1_0</a></td></tr>
+<tr><th id="33">33</th><td>{</td></tr>
+<tr><th id="34">34</th><td>  <em>const</em> <em>char</em> *<dfn class="local col6 decl" id="6ret" title='ret' data-type='const char *' data-ref="6ret">ret</dfn>;</td></tr>
+<tr><th id="35">35</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col7 decl" id="7retlen" title='retlen' data-type='size_t' data-ref="7retlen">retlen</dfn>;</td></tr>
+<tr><th id="36">36</th><td>  <a class="typedef" href="../../include/CL/cl.h.html#cl_platform_id" title='cl_platform_id' data-type='struct _cl_platform_id *' data-ref="cl_platform_id">cl_platform_id</a> <dfn class="local col8 decl" id="8tmp_platform" title='tmp_platform' data-type='cl_platform_id' data-ref="8tmp_platform">tmp_platform</dfn>;</td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td>  <i>// TODO: if we don't have ICD in use, platform==NULL should be valid &amp; point to pocl</i></td></tr>
+<tr><th id="39">39</th><td>  <a class="macro" href="pocl_debug.h.html#277" title="do { if ((platform == ((void*)0))) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 39, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_INVALID_PLATFORM&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_INVALID_PLATFORM&quot; &quot; &quot;); fprintf (stderr, &quot;%s\n&quot;, &quot;(platform == NULL)&quot;); pocl_debug_output_unlock (); } } while (0); return -32; } } while (0)" data-ref="_M/POCL_RETURN_ERROR_COND">POCL_RETURN_ERROR_COND</a>((<a class="local col1 ref" href="#1platform" title='platform' data-ref="1platform">platform</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>), <a class="macro" href="../../include/CL/cl.h.html#201" title="-32" data-ref="_M/CL_INVALID_PLATFORM">CL_INVALID_PLATFORM</a>);</td></tr>
+<tr><th id="40">40</th><td></td></tr>
+<tr><th id="41">41</th><td>  <a class="macro" href="pocl_cl.h.html#225" title="POclGetPlatformIDs" data-ref="_M/POname">POname</a>(clGetPlatformIDs)(<var>1</var>, &amp;<a class="local col8 ref" href="#8tmp_platform" title='tmp_platform' data-ref="8tmp_platform">tmp_platform</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="42">42</th><td>  <a class="macro" href="pocl_debug.h.html#266" title="do { if ((platform != tmp_platform)) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 43, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_INVALID_PLATFORM&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_INVALID_PLATFORM&quot; &quot; &quot;); fprintf (stderr, &quot;Can only return info about the POCL platform\n&quot;); pocl_debug_output_unlock (); } } while (0); return -32; } } while (0)" data-ref="_M/POCL_RETURN_ERROR_ON">POCL_RETURN_ERROR_ON</a>((<a class="local col1 ref" href="#1platform" title='platform' data-ref="1platform">platform</a> != <a class="local col8 ref" href="#8tmp_platform" title='tmp_platform' data-ref="8tmp_platform">tmp_platform</a>), <a class="macro" href="../../include/CL/cl.h.html#201" title="-32" data-ref="_M/CL_INVALID_PLATFORM">CL_INVALID_PLATFORM</a>,</td></tr>
+<tr><th id="43">43</th><td>    <q>"Can only return info about the POCL platform\n"</q>);</td></tr>
+<tr><th id="44">44</th><td></td></tr>
+<tr><th id="45">45</th><td>  <b>switch</b> (<a class="local col2 ref" href="#2param_name" title='param_name' data-ref="2param_name">param_name</a>)</td></tr>
+<tr><th id="46">46</th><td>  {</td></tr>
+<tr><th id="47">47</th><td>    <b>case</b> <a class="macro" href="../../include/CL/cl.h.html#261" title="0x0900" data-ref="_M/CL_PLATFORM_PROFILE">CL_PLATFORM_PROFILE</a>:</td></tr>
+<tr><th id="48">48</th><td>      <i>// TODO: figure this out depending on the native execution host.</i></td></tr>
+<tr><th id="49">49</th><td><i>      // assume FULL_PROFILE for now.</i></td></tr>
+<tr><th id="50">50</th><td>      <a class="macro" href="pocl_util.h.html#255" title="do { size_t const value_size = strlen(&quot;FULL_PROFILE&quot;) + 1; do { if (param_value) { do { if ((param_value_size &lt; value_size)) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 50, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_INVALID_VALUE&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_INVALID_VALUE&quot; &quot; &quot;); fprintf (stderr, &quot;param_value_size (%zu) smaller than actual size (%zu)\n&quot;, param_value_size, value_size); pocl_debug_output_unlock (); } } while (0); return -30; } } while (0); memcpy(param_value, &quot;FULL_PROFILE&quot;, value_size); } if (param_value_size_ret) *param_value_size_ret = value_size; return 0; } while (0); } while (0)" data-ref="_M/POCL_RETURN_GETINFO_STR">POCL_RETURN_GETINFO_STR</a>(<q>"FULL_PROFILE"</q>);</td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td>    <b>case</b> <a class="macro" href="../../include/CL/cl.h.html#262" title="0x0901" data-ref="_M/CL_PLATFORM_VERSION">CL_PLATFORM_VERSION</a>:</td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td>      <a class="macro" href="pocl_util.h.html#255" title="do { size_t const value_size = strlen(&quot;OpenCL &quot; &quot;1.2&quot; &quot; pocl &quot; &quot;1.5-pre/master-0-gf1dee8d&quot;ifdef &quot;, &quot; &quot;Debug&quot;ifdef &quot;+Asserts&quot;endif &quot;, LLVM &quot; &quot;6.0.0&quot;ifdef LLVM_BUILD_MODE_DEBUG &quot; - debug&quot;endififdef &quot;, RELOC&quot;endififdef &quot;, SPIR&quot;endififdef ENABLE_SPIRV &quot;, SPIR-V&quot;endififdef &quot;, SLEEF&quot;endififndef &quot;, FP16&quot;endifelse &quot;, no online compiler support&quot;endififdef ENABLE_ASAN &quot;, ASAN&quot;endififdef ENABLE_TSAN &quot;, TSAN&quot;endififdef ENABLE_LSAN &quot;, LSAN&quot;endififdef ENABLE_UBSAN &quot;, UBSAN&quot;endififdef &quot;, CUDA&quot;endififdef BUILD_HSA &quot;, HSA&quot;endififdef TCE_AVAILABLE &quot;, TCE&quot;endififdef HAVE_LTTNG_UST &quot;, LTTNG&quot;endififdef KERNELLIB_HOST_DISTRO_VARIANTS &quot;, DISTRO&quot;endififdef &quot;, POCL_DEBUG&quot;endif) + 1; do { if (param_value) { do { if ((param_value_size &lt; value_size)) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 126, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_INVALID_VALUE&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_INVALID_VALUE&quot; &quot; &quot;); fprintf (stderr, &quot;param_value_size (%zu) smaller than actual size (%zu)\n&quot;, param_value_size, value_size); pocl_debug_output_unlock (); } } while (0); return -30; } } while (0); memcpy(param_value, &quot;OpenCL &quot; &quot;1.2&quot; &quot; pocl &quot; &quot;1.5-pre/master-0-gf1dee8d&quot;ifdef &quot;, &quot; &quot;Debug&quot;ifdef &quot;+Asserts&quot;endif &quot;, LLVM &quot; &quot;6.0.0&quot;ifdef LLVM_BUILD_MODE_DEBUG &quot; - debug&quot;endififdef &quot;, RELOC&quot;endififdef &quot;, SPIR&quot;endififdef ENABLE_SPIRV &quot;, SPIR-V&quot;endififdef &quot;, SLEEF&quot;endififndef &quot;, FP16&quot;endifelse &quot;, no online compiler support&quot;endififdef ENABLE_ASAN &quot;, ASAN&quot;endififdef ENABLE_TSAN &quot;, TSAN&quot;endififdef ENABLE_LSAN &quot;, LSAN&quot;endififdef ENABLE_UBSAN &quot;, UBSAN&quot;endififdef &quot;, CUDA&quot;endififdef BUILD_HSA &quot;, HSA&quot;endififdef TCE_AVAILABLE &quot;, TCE&quot;endififdef HAVE_LTTNG_UST &quot;, LTTNG&quot;endififdef KERNELLIB_HOST_DISTRO_VARIANTS &quot;, DISTRO&quot;endififdef &quot;, POCL_DEBUG&quot;endif, value_size); } if (param_value_size_ret) *param_value_size_ret = value_size; return 0; } while (0); } while (0)" data-ref="_M/POCL_RETURN_GETINFO_STR">POCL_RETURN_GETINFO_STR</a> (<q>"OpenCL "</q> <a class="macro" href="../../config.h.html#209" title="&quot;1.2&quot;" data-ref="_M/POCL_CL_VERSION">POCL_CL_VERSION</a></td></tr>
+<tr><th id="55">55</th><td>                               <q>" pocl "</q> <a class="macro" href="../../config.h.html#173" title="&quot;1.5-pre/master-0-gf1dee8d&quot;" data-ref="_M/PACKAGE_VERSION">PACKAGE_VERSION</a></td></tr>
+<tr><th id="56">56</th><td><u>#<span data-ppcond="56">ifdef</span> <a class="macro" href="../../config.h.html#70" data-ref="_M/OCS_AVAILABLE">OCS_AVAILABLE</a></u></td></tr>
+<tr><th id="57">57</th><td>                               <q>", "</q> <a class="macro" href="../../config.h.html#117" title="&quot;Debug&quot;" data-ref="_M/CMAKE_BUILD_TYPE">CMAKE_BUILD_TYPE</a></td></tr>
+<tr><th id="58">58</th><td><u>#<span data-ppcond="58">ifdef</span> <a class="macro" href="../../config.h.html#187" data-ref="_M/POCL_ASSERTS_BUILD">POCL_ASSERTS_BUILD</a></u></td></tr>
+<tr><th id="59">59</th><td>                               <q>"+Asserts"</q></td></tr>
+<tr><th id="60">60</th><td><u>#<span data-ppcond="58">endif</span></u></td></tr>
+<tr><th id="61">61</th><td>                               <q>", LLVM "</q> <a class="macro" href="../../config.h.html#158" title="&quot;6.0.0&quot;" data-ref="_M/LLVM_VERSION">LLVM_VERSION</a></td></tr>
+<tr><th id="62">62</th><td><u>#<span data-ppcond="62">ifdef</span> <span class="macro" data-ref="_M/LLVM_BUILD_MODE_DEBUG">LLVM_BUILD_MODE_DEBUG</span></u></td></tr>
+<tr><th id="63">63</th><td>                               <q>" - debug"</q></td></tr>
+<tr><th id="64">64</th><td><u>#<span data-ppcond="62">endif</span></u></td></tr>
+<tr><th id="65">65</th><td></td></tr>
+<tr><th id="66">66</th><td><u>#<span data-ppcond="66">ifdef</span> <a class="macro" href="../../config.h.html#30" data-ref="_M/ENABLE_RELOCATION">ENABLE_RELOCATION</a></u></td></tr>
+<tr><th id="67">67</th><td>                               <q>", RELOC"</q></td></tr>
+<tr><th id="68">68</th><td><u>#<span data-ppcond="66">endif</span></u></td></tr>
+<tr><th id="69">69</th><td></td></tr>
+<tr><th id="70">70</th><td><u>#<span data-ppcond="70">ifdef</span> <a class="macro" href="../../config.h.html#34" data-ref="_M/ENABLE_SPIR">ENABLE_SPIR</a></u></td></tr>
+<tr><th id="71">71</th><td>                               <q>", SPIR"</q></td></tr>
+<tr><th id="72">72</th><td><u>#<span data-ppcond="70">endif</span></u></td></tr>
+<tr><th id="73">73</th><td></td></tr>
+<tr><th id="74">74</th><td><u>#<span data-ppcond="74">ifdef</span> <span class="macro" data-ref="_M/ENABLE_SPIRV">ENABLE_SPIRV</span></u></td></tr>
+<tr><th id="75">75</th><td>                               <q>", SPIR-V"</q></td></tr>
+<tr><th id="76">76</th><td><u>#<span data-ppcond="74">endif</span></u></td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td><u>#<span data-ppcond="78">ifdef</span> <a class="macro" href="../../config.h.html#32" data-ref="_M/ENABLE_SLEEF">ENABLE_SLEEF</a></u></td></tr>
+<tr><th id="79">79</th><td>                               <q>", SLEEF"</q></td></tr>
+<tr><th id="80">80</th><td><u>#<span data-ppcond="78">endif</span></u></td></tr>
+<tr><th id="81">81</th><td></td></tr>
+<tr><th id="82">82</th><td><u>#<span data-ppcond="82">ifndef</span> <a class="macro" href="../../config.h.html#204" data-ref="_M/_CL_DISABLE_HALF">_CL_DISABLE_HALF</a></u></td></tr>
+<tr><th id="83">83</th><td>                               <q>", FP16"</q></td></tr>
+<tr><th id="84">84</th><td><u>#<span data-ppcond="82">endif</span></u></td></tr>
+<tr><th id="85">85</th><td></td></tr>
+<tr><th id="86">86</th><td><u>#<span data-ppcond="56">else</span></u></td></tr>
+<tr><th id="87">87</th><td>                               <q>", no online compiler support"</q></td></tr>
+<tr><th id="88">88</th><td><u>#<span data-ppcond="56">endif</span></u></td></tr>
+<tr><th id="89">89</th><td></td></tr>
+<tr><th id="90">90</th><td><u>#<span data-ppcond="90">ifdef</span> <span class="macro" data-ref="_M/ENABLE_ASAN">ENABLE_ASAN</span></u></td></tr>
+<tr><th id="91">91</th><td>                               <q>", ASAN"</q></td></tr>
+<tr><th id="92">92</th><td><u>#<span data-ppcond="90">endif</span></u></td></tr>
+<tr><th id="93">93</th><td><u>#<span data-ppcond="93">ifdef</span> <span class="macro" data-ref="_M/ENABLE_TSAN">ENABLE_TSAN</span></u></td></tr>
+<tr><th id="94">94</th><td>                               <q>", TSAN"</q></td></tr>
+<tr><th id="95">95</th><td><u>#<span data-ppcond="93">endif</span></u></td></tr>
+<tr><th id="96">96</th><td><u>#<span data-ppcond="96">ifdef</span> <span class="macro" data-ref="_M/ENABLE_LSAN">ENABLE_LSAN</span></u></td></tr>
+<tr><th id="97">97</th><td>                               <q>", LSAN"</q></td></tr>
+<tr><th id="98">98</th><td><u>#<span data-ppcond="96">endif</span></u></td></tr>
+<tr><th id="99">99</th><td><u>#<span data-ppcond="99">ifdef</span> <span class="macro" data-ref="_M/ENABLE_UBSAN">ENABLE_UBSAN</span></u></td></tr>
+<tr><th id="100">100</th><td>                               <q>", UBSAN"</q></td></tr>
+<tr><th id="101">101</th><td><u>#<span data-ppcond="99">endif</span></u></td></tr>
+<tr><th id="102">102</th><td></td></tr>
+<tr><th id="103">103</th><td><u>#<span data-ppcond="103">ifdef</span> <a class="macro" href="../../config.h.html#3" data-ref="_M/BUILD_CUDA">BUILD_CUDA</a></u></td></tr>
+<tr><th id="104">104</th><td>                               <q>", CUDA"</q></td></tr>
+<tr><th id="105">105</th><td><u>#<span data-ppcond="103">endif</span></u></td></tr>
+<tr><th id="106">106</th><td></td></tr>
+<tr><th id="107">107</th><td><u>#<span data-ppcond="107">ifdef</span> <span class="macro" data-ref="_M/BUILD_HSA">BUILD_HSA</span></u></td></tr>
+<tr><th id="108">108</th><td>                               <q>", HSA"</q></td></tr>
+<tr><th id="109">109</th><td><u>#<span data-ppcond="107">endif</span></u></td></tr>
+<tr><th id="110">110</th><td></td></tr>
+<tr><th id="111">111</th><td><u>#<span data-ppcond="111">ifdef</span> <span class="macro" data-ref="_M/TCE_AVAILABLE">TCE_AVAILABLE</span></u></td></tr>
+<tr><th id="112">112</th><td>                               <q>", TCE"</q></td></tr>
+<tr><th id="113">113</th><td><u>#<span data-ppcond="111">endif</span></u></td></tr>
+<tr><th id="114">114</th><td></td></tr>
+<tr><th id="115">115</th><td><u>#<span data-ppcond="115">ifdef</span> <span class="macro" data-ref="_M/HAVE_LTTNG_UST">HAVE_LTTNG_UST</span></u></td></tr>
+<tr><th id="116">116</th><td>                               <q>", LTTNG"</q></td></tr>
+<tr><th id="117">117</th><td><u>#<span data-ppcond="115">endif</span></u></td></tr>
+<tr><th id="118">118</th><td></td></tr>
+<tr><th id="119">119</th><td><u>#<span data-ppcond="119">ifdef</span> <span class="macro" data-ref="_M/KERNELLIB_HOST_DISTRO_VARIANTS">KERNELLIB_HOST_DISTRO_VARIANTS</span></u></td></tr>
+<tr><th id="120">120</th><td>                               <q>", DISTRO"</q></td></tr>
+<tr><th id="121">121</th><td><u>#<span data-ppcond="119">endif</span></u></td></tr>
+<tr><th id="122">122</th><td></td></tr>
+<tr><th id="123">123</th><td><u>#<span data-ppcond="123">ifdef</span> <a class="macro" href="../../config.h.html#179" data-ref="_M/POCL_DEBUG_MESSAGES">POCL_DEBUG_MESSAGES</a></u></td></tr>
+<tr><th id="124">124</th><td>                               <q>", POCL_DEBUG"</q></td></tr>
+<tr><th id="125">125</th><td><u>#<span data-ppcond="123">endif</span></u></td></tr>
+<tr><th id="126">126</th><td>      );</td></tr>
+<tr><th id="127">127</th><td></td></tr>
+<tr><th id="128">128</th><td>    <b>case</b> <a class="macro" href="../../include/CL/cl.h.html#263" title="0x0902" data-ref="_M/CL_PLATFORM_NAME">CL_PLATFORM_NAME</a>:</td></tr>
+<tr><th id="129">129</th><td>      <a class="macro" href="pocl_util.h.html#255" title="do { size_t const value_size = strlen(&quot;Portable Computing Language&quot;) + 1; do { if (param_value) { do { if ((param_value_size &lt; value_size)) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 129, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_INVALID_VALUE&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_INVALID_VALUE&quot; &quot; &quot;); fprintf (stderr, &quot;param_value_size (%zu) smaller than actual size (%zu)\n&quot;, param_value_size, value_size); pocl_debug_output_unlock (); } } while (0); return -30; } } while (0); memcpy(param_value, &quot;Portable Computing Language&quot;, value_size); } if (param_value_size_ret) *param_value_size_ret = value_size; return 0; } while (0); } while (0)" data-ref="_M/POCL_RETURN_GETINFO_STR">POCL_RETURN_GETINFO_STR</a>(<q>"Portable Computing Language"</q>);</td></tr>
+<tr><th id="130">130</th><td></td></tr>
+<tr><th id="131">131</th><td>    <b>case</b> <a class="macro" href="../../include/CL/cl.h.html#264" title="0x0903" data-ref="_M/CL_PLATFORM_VENDOR">CL_PLATFORM_VENDOR</a>:</td></tr>
+<tr><th id="132">132</th><td>      <a class="macro" href="pocl_util.h.html#255" title="do { size_t const value_size = strlen(&quot;The pocl project&quot;) + 1; do { if (param_value) { do { if ((param_value_size &lt; value_size)) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 132, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_INVALID_VALUE&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_INVALID_VALUE&quot; &quot; &quot;); fprintf (stderr, &quot;param_value_size (%zu) smaller than actual size (%zu)\n&quot;, param_value_size, value_size); pocl_debug_output_unlock (); } } while (0); return -30; } } while (0); memcpy(param_value, &quot;The pocl project&quot;, value_size); } if (param_value_size_ret) *param_value_size_ret = value_size; return 0; } while (0); } while (0)" data-ref="_M/POCL_RETURN_GETINFO_STR">POCL_RETURN_GETINFO_STR</a>(<q>"The pocl project"</q>);</td></tr>
+<tr><th id="133">133</th><td></td></tr>
+<tr><th id="134">134</th><td>    <b>case</b> <a class="macro" href="../../include/CL/cl.h.html#265" title="0x0904" data-ref="_M/CL_PLATFORM_EXTENSIONS">CL_PLATFORM_EXTENSIONS</a>:</td></tr>
+<tr><th id="135">135</th><td>      <i>// TODO: do we want to list all supported extensions *here*, or in some header?.</i></td></tr>
+<tr><th id="136">136</th><td><i>      // TODO: yes, it is better here: available through ICD Loader and headers can be the ones from Khronos Group</i></td></tr>
+<tr><th id="137">137</th><td><u>#<span data-ppcond="137">ifdef</span> <a class="macro" href="../../config.h.html#11" data-ref="_M/BUILD_ICD">BUILD_ICD</a></u></td></tr>
+<tr><th id="138">138</th><td>      <a class="macro" href="pocl_util.h.html#255" title="do { size_t const value_size = strlen(&quot;cl_khr_icd&quot;) + 1; do { if (param_value) { do { if ((param_value_size &lt; value_size)) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 138, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_INVALID_VALUE&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_INVALID_VALUE&quot; &quot; &quot;); fprintf (stderr, &quot;param_value_size (%zu) smaller than actual size (%zu)\n&quot;, param_value_size, value_size); pocl_debug_output_unlock (); } } while (0); return -30; } } while (0); memcpy(param_value, &quot;cl_khr_icd&quot;, value_size); } if (param_value_size_ret) *param_value_size_ret = value_size; return 0; } while (0); } while (0)" data-ref="_M/POCL_RETURN_GETINFO_STR">POCL_RETURN_GETINFO_STR</a>(<q>"cl_khr_icd"</q>);</td></tr>
+<tr><th id="139">139</th><td><u>#<span data-ppcond="137">else</span></u></td></tr>
+<tr><th id="140">140</th><td>      POCL_RETURN_GETINFO_STR(<q>""</q>);</td></tr>
+<tr><th id="141">141</th><td><u>#<span data-ppcond="137">endif</span></u></td></tr>
+<tr><th id="142">142</th><td></td></tr>
+<tr><th id="143">143</th><td>    <b>case</b> <a class="macro" href="../../include/CL/cl_ext.h.html#107" title="0x0920" data-ref="_M/CL_PLATFORM_ICD_SUFFIX_KHR">CL_PLATFORM_ICD_SUFFIX_KHR</a>:</td></tr>
+<tr><th id="144">144</th><td>      <a class="macro" href="pocl_util.h.html#255" title="do { size_t const value_size = strlen(&quot;POCL&quot;) + 1; do { if (param_value) { do { if ((param_value_size &lt; value_size)) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 144, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_INVALID_VALUE&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_INVALID_VALUE&quot; &quot; &quot;); fprintf (stderr, &quot;param_value_size (%zu) smaller than actual size (%zu)\n&quot;, param_value_size, value_size); pocl_debug_output_unlock (); } } while (0); return -30; } } while (0); memcpy(param_value, &quot;POCL&quot;, value_size); } if (param_value_size_ret) *param_value_size_ret = value_size; return 0; } while (0); } while (0)" data-ref="_M/POCL_RETURN_GETINFO_STR">POCL_RETURN_GETINFO_STR</a>(<q>"POCL"</q>);</td></tr>
+<tr><th id="145">145</th><td></td></tr>
+<tr><th id="146">146</th><td>    <b>default</b>:</td></tr>
+<tr><th id="147">147</th><td>      <b>return</b> <a class="macro" href="../../include/CL/cl.h.html#199" title="-30" data-ref="_M/CL_INVALID_VALUE">CL_INVALID_VALUE</a>;</td></tr>
+<tr><th id="148">148</th><td>  }</td></tr>
+<tr><th id="149">149</th><td></td></tr>
+<tr><th id="150">150</th><td>  <i>// the OpenCL API docs *seem* to count the trailing NULL</i></td></tr>
+<tr><th id="151">151</th><td>  <a class="local col7 ref" href="#7retlen" title='retlen' data-ref="7retlen">retlen</a> = <a class="ref" href="../../../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a>(<a class="local col6 ref" href="#6ret" title='ret' data-ref="6ret">ret</a>) + <var>1</var>;</td></tr>
+<tr><th id="152">152</th><td></td></tr>
+<tr><th id="153">153</th><td>  <b>if</b> (<a class="local col4 ref" href="#4param_value" title='param_value' data-ref="4param_value">param_value</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="154">154</th><td>  {</td></tr>
+<tr><th id="155">155</th><td>    <b>if</b> (<a class="local col3 ref" href="#3param_value_size" title='param_value_size' data-ref="3param_value_size">param_value_size</a> &lt; <a class="local col7 ref" href="#7retlen" title='retlen' data-ref="7retlen">retlen</a>)</td></tr>
+<tr><th id="156">156</th><td>      <b>return</b> <a class="macro" href="../../include/CL/cl.h.html#199" title="-30" data-ref="_M/CL_INVALID_VALUE">CL_INVALID_VALUE</a>;</td></tr>
+<tr><th id="157">157</th><td></td></tr>
+<tr><th id="158">158</th><td>    <a class="ref" href="../../../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a>(<a class="local col4 ref" href="#4param_value" title='param_value' data-ref="4param_value">param_value</a>, <a class="local col6 ref" href="#6ret" title='ret' data-ref="6ret">ret</a>, <a class="local col7 ref" href="#7retlen" title='retlen' data-ref="7retlen">retlen</a>);</td></tr>
+<tr><th id="159">159</th><td>  }</td></tr>
+<tr><th id="160">160</th><td></td></tr>
+<tr><th id="161">161</th><td>  <b>if</b> (<a class="local col5 ref" href="#5param_value_size_ret" title='param_value_size_ret' data-ref="5param_value_size_ret">param_value_size_ret</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="162">162</th><td>    *<a class="local col5 ref" href="#5param_value_size_ret" title='param_value_size_ret' data-ref="5param_value_size_ret">param_value_size_ret</a> = <a class="local col7 ref" href="#7retlen" title='retlen' data-ref="7retlen">retlen</a>;</td></tr>
+<tr><th id="163">163</th><td></td></tr>
+<tr><th id="164">164</th><td>  <b>return</b> <a class="macro" href="../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>;</td></tr>
+<tr><th id="165">165</th><td>}</td></tr>
+<tr><th id="166">166</th><td><a class="macro" href="pocl_cl.h.html#234" title="" data-ref="_M/POsym">POsym</a>(clGetPlatformInfo)</td></tr>
+<tr><th id="167">167</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

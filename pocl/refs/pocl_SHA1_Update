@@ -1,0 +1,18 @@
+<dec f='pocl/lib/CL/pocl_hash.h' l='47' type='void pocl_SHA1_Update(SHA1_CTX * context, const uint8_t * data, const size_t len)'/>
+<use f='pocl/lib/CL/devices/common.c' l='1327' u='c' c='pocl_calculate_kernel_hash'/>
+<use f='pocl/lib/CL/devices/common.c' l='1329' u='c' c='pocl_calculate_kernel_hash'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='377' u='c' c='build_program_compute_hash'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='383' u='c' c='build_program_compute_hash'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='392' u='c' c='build_program_compute_hash'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='401' u='c' c='build_program_compute_hash'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='406' u='c' c='build_program_compute_hash'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='414' u='c' c='build_program_compute_hash'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='415' u='c' c='build_program_compute_hash'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='417' u='c' c='build_program_compute_hash'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='419' u='c' c='build_program_compute_hash'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='427' u='c' c='build_program_compute_hash'/>
+<def f='pocl/lib/CL/pocl_hash.c' l='176' ll='194' type='void pocl_SHA1_Update(SHA1_CTX * context, const uint8_t * data, const size_t len)'/>
+<use f='pocl/lib/CL/pocl_hash.c' l='207' u='c' c='pocl_SHA1_Final'/>
+<use f='pocl/lib/CL/pocl_hash.c' l='209' u='c' c='pocl_SHA1_Final'/>
+<use f='pocl/lib/CL/pocl_hash.c' l='211' u='c' c='pocl_SHA1_Final'/>
+<doc f='pocl/lib/CL/pocl_hash.c' l='175'>/* Run your data through this. */</doc>

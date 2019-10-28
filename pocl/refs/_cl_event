@@ -1,0 +1,25 @@
+<def f='pocl/lib/CL/pocl_cl.h' l='1151' ll='1189'/>
+<size>216</size>
+<mbr r='_cl_event::dispatch' o='0' t='struct _cl_icd_dispatch *'/>
+<mbr r='_cl_event::pocl_lock' o='64' t='pocl_lock_t'/>
+<mbr r='_cl_event::pocl_refcount' o='384' t='volatile int'/>
+<mbr r='_cl_event::context' o='448' t='cl_context'/>
+<mbr r='_cl_event::queue' o='512' t='cl_command_queue'/>
+<mbr r='_cl_event::command_type' o='576' t='cl_command_type'/>
+<mbr r='_cl_event::command' o='640' t='_cl_command_node *'/>
+<mbr r='_cl_event::id' o='704' t='unsigned int'/>
+<mbr r='_cl_event::callback_list' o='768' t='event_callback_item *volatile'/>
+<mbr r='_cl_event::notify_list' o='832' t='event_node *volatile'/>
+<mbr r='_cl_event::wait_list' o='896' t='event_node *volatile'/>
+<mbr r='_cl_event::mem_objs' o='960' t='cl_mem *'/>
+<mbr r='_cl_event::num_buffers' o='1024' t='size_t'/>
+<mbr r='_cl_event::status' o='1088' t='volatile cl_int'/>
+<mbr r='_cl_event::time_queue' o='1152' t='cl_ulong'/>
+<mbr r='_cl_event::time_submit' o='1216' t='cl_ulong'/>
+<mbr r='_cl_event::time_start' o='1280' t='cl_ulong'/>
+<mbr r='_cl_event::time_end' o='1344' t='cl_ulong'/>
+<mbr r='_cl_event::data' o='1408' t='void *'/>
+<mbr r='_cl_event::meta_data' o='1472' t='pocl_event_md *'/>
+<mbr r='_cl_event::implicit_event' o='1536' t='int'/>
+<mbr r='_cl_event::next' o='1600' t='_cl_event *volatile'/>
+<mbr r='_cl_event::prev' o='1664' t='_cl_event *volatile'/>

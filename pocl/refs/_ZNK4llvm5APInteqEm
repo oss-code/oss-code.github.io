@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='1122' ll='1124' type='bool llvm::APInt::operator==(uint64_t Val) const'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1148' u='c' c='_ZNK4llvm5APIntneEm'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1946' u='c' c='_ZN4llvmeqEmRKNS_5APIntE'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='166' u='c' c='_ZNK4llvm11ConstantInt9equalsIntEm'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='1116'>/// \brief Equality operator.
+  ///
+  /// Compares this APInt with a uint64_t for the validity of the equality
+  /// relationship.
+  ///
+  /// \returns true if *this == Val</doc>

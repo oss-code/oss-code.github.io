@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/Support/AtomicOrdering.h' l='57' ll='66'/>
+<doc f='include/llvm-6.0/llvm/Support/AtomicOrdering.h' l='50'>/// Atomic ordering for LLVM&apos;s memory model.
+///
+/// C++ defines ordering as a lattice. LLVM supplements this with NotAtomic and
+/// Unordered, which are both below the C++ orders.
+///
+/// not_atomic--&gt;unordered--&gt;relaxed--&gt;release---------------&gt;acq_rel--&gt;seq_cst
+///                                   \--&gt;consume--&gt;acquire--/</doc>

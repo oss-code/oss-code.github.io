@@ -1,0 +1,8 @@
+<def f='pocl/include/CL/cl2.hpp' l='2961' ll='2966' type='static cl::Context cl::Context::setDefault(const cl::Context &amp; default_context)'/>
+<doc f='pocl/include/CL/cl2.hpp' l='2954'>/**
+     * Modify the default context to be used by
+     * subsequent operations.
+     * Will only set the default if no default was previously created.
+     * @return updated default context.
+     *         Should be compared to the passed value to ensure that it was updated.
+     */</doc>

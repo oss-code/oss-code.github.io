@@ -1,0 +1,15 @@
+<def f='pocl/lib/CL/pocl_cl.h' l='839' ll='879'/>
+<size>184</size>
+<mbr r='_cl_context::dispatch' o='0' t='struct _cl_icd_dispatch *'/>
+<mbr r='_cl_context::pocl_lock' o='64' t='pocl_lock_t'/>
+<mbr r='_cl_context::pocl_refcount' o='384' t='volatile int'/>
+<mbr r='_cl_context::devices' o='448' t='cl_device_id *'/>
+<mbr r='_cl_context::properties' o='512' t='cl_context_properties *'/>
+<mbr r='_cl_context::num_devices' o='576' t='unsigned int'/>
+<mbr r='_cl_context::num_properties' o='608' t='unsigned int'/>
+<mbr r='_cl_context::valid' o='640' t='char'/>
+<mbr r='_cl_context::max_mem_alloc_size' o='704' t='size_t'/>
+<mbr r='_cl_context::image_formats' o='768' t='cl_image_format *[6]'/>
+<mbr r='_cl_context::num_image_formats' o='1152' t='cl_uint [6]'/>
+<mbr r='_cl_context::svm_allocdev' o='1344' t='cl_device_id'/>
+<mbr r='_cl_context::min_buffer_alignment' o='1408' t='size_t'/>

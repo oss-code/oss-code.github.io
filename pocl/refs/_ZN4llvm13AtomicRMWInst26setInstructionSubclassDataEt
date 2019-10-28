@@ -1,0 +1,6 @@
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='736' u='c' c='_ZN4llvm13AtomicRMWInst12setOperationENS0_5BinOpE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='749' u='c' c='_ZN4llvm13AtomicRMWInst11setVolatileEb'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='765' u='c' c='_ZN4llvm13AtomicRMWInst11setOrderingENS_14AtomicOrderingE'/>
+<def f='include/llvm-6.0/llvm/IR/Instructions.h' l='805' ll='807' type='void llvm::AtomicRMWInst::setInstructionSubclassData(unsigned short D)'/>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='803'>// Shadow Instruction::setInstructionSubclassData with a private forwarding
+  // method so that subclasses cannot accidentally use it.</doc>

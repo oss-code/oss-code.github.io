@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Support/Mutex.h' l='37' type='void llvm::sys::MutexImpl::MutexImpl(bool recursive = true)'/>
+<use f='include/llvm-6.0/llvm/Support/Mutex.h' l='97' u='c' c='_ZN4llvm3sys10SmartMutexC1Eb'/>
+<doc f='include/llvm-6.0/llvm/Support/Mutex.h' l='32'>/// Initializes the lock but doesn&apos;t acquire it. if \p recursive is set
+      /// to false, the lock will not be recursive which makes it cheaper but
+      /// also more likely to deadlock (same thread can&apos;t acquire more than
+      /// once).
+      /// @brief Default Constructor.</doc>

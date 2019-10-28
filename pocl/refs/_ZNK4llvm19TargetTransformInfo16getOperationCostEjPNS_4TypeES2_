@@ -1,0 +1,15 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='186' type='int llvm::TargetTransformInfo::getOperationCost(unsigned int Opcode, llvm::Type * Ty, llvm::Type * OpTy = nullptr) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='172'>/// \brief Estimate the cost of a specific operation when lowered.
+  ///
+  /// Note that this is designed to work on an arbitrary synthetic opcode, and
+  /// thus work for hypothetical queries before an instruction has even been
+  /// formed. However, this does *not* work for GEPs, and must not be called
+  /// for a GEP instruction. Instead, use the dedicated getGEPCost interface as
+  /// analyzing a GEP&apos;s cost required more information.
+  ///
+  /// Typically only the result type is required, and the operand type can be
+  /// omitted. However, if the opcode is one of the cast instructions, the
+  /// operand type is required.
+  ///
+  /// The returned cost is defined in terms of \c TargetCostConstants, see its
+  /// comments for a detailed explanation of the cost values.</doc>

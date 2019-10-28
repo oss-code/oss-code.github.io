@@ -1,0 +1,367 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>LLVMContext.h source code [include/llvm-6.0/llvm/IR/LLVMContext.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="llvm::LLVMContext "/>
+<link rel="stylesheet" href="../../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'include/llvm-6.0/llvm/IR/LLVMContext.h'; var root_path = '../../../..'; var data_path = '../../../../../data';</script>
+<script src='../../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../../..'>include</a>/<a href='../..'>llvm-6.0</a>/<a href='..'>llvm</a>/<a href='./'>IR</a>/<a href='LLVMContext.h.html'>LLVMContext.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>//===- llvm/LLVMContext.h - Class for managing "global" state ---*- C++ -*-===//</i></td></tr>
+<tr><th id="2">2</th><td><i>//</i></td></tr>
+<tr><th id="3">3</th><td><i>//                     The LLVM Compiler Infrastructure</i></td></tr>
+<tr><th id="4">4</th><td><i>//</i></td></tr>
+<tr><th id="5">5</th><td><i>// This file is distributed under the University of Illinois Open Source</i></td></tr>
+<tr><th id="6">6</th><td><i>// License. See LICENSE.TXT for details.</i></td></tr>
+<tr><th id="7">7</th><td><i>//</i></td></tr>
+<tr><th id="8">8</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="9">9</th><td><i>//</i></td></tr>
+<tr><th id="10">10</th><td><i>// This file declares LLVMContext, a container of "global" state in LLVM, such</i></td></tr>
+<tr><th id="11">11</th><td><i>// as the global type and constant uniquing tables.</i></td></tr>
+<tr><th id="12">12</th><td><i>//</i></td></tr>
+<tr><th id="13">13</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td><u>#<span data-ppcond="15">ifndef</span> <span class="macro" data-ref="_M/LLVM_IR_LLVMCONTEXT_H">LLVM_IR_LLVMCONTEXT_H</span></u></td></tr>
+<tr><th id="16">16</th><td><u>#define <dfn class="macro" id="_M/LLVM_IR_LLVMCONTEXT_H" data-ref="_M/LLVM_IR_LLVMCONTEXT_H">LLVM_IR_LLVMCONTEXT_H</dfn></u></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><u>#include <a href="../../../llvm-c-6.0/llvm-c/Types.h.html">"llvm-c/Types.h"</a></u></td></tr>
+<tr><th id="19">19</th><td><u>#include <a href="DiagnosticHandler.h.html">"llvm/IR/DiagnosticHandler.h"</a></u></td></tr>
+<tr><th id="20">20</th><td><u>#include <a href="../Support/CBindingWrapping.h.html">"llvm/Support/CBindingWrapping.h"</a></u></td></tr>
+<tr><th id="21">21</th><td><u>#include <a href="../Support/Options.h.html">"llvm/Support/Options.h"</a></u></td></tr>
+<tr><th id="22">22</th><td><u>#include <a href="../../../c++/7/cstdint.html">&lt;cstdint&gt;</a></u></td></tr>
+<tr><th id="23">23</th><td><u>#include <a href="../../../c++/7/memory.html">&lt;memory&gt;</a></u></td></tr>
+<tr><th id="24">24</th><td><u>#include <a href="../../../c++/7/string.html">&lt;string&gt;</a></u></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><b>namespace</b> <span class="namespace">llvm</span> {</td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><b>class</b> <a class="type" href="DiagnosticHandler.h.html#llvm::DiagnosticInfo" title='llvm::DiagnosticInfo' data-ref="llvm::DiagnosticInfo" id="llvm::DiagnosticInfo">DiagnosticInfo</a>;</td></tr>
+<tr><th id="29">29</th><td><b>enum</b> <dfn class="type" id="llvm::DiagnosticSeverity" title='llvm::DiagnosticSeverity' data-ref="llvm::DiagnosticSeverity">DiagnosticSeverity</dfn> : <em>char</em>;</td></tr>
+<tr><th id="30">30</th><td><b>class</b> <a class="type" href="Function.h.html#llvm::Function" title='llvm::Function' data-ref="llvm::Function" id="llvm::Function">Function</a>;</td></tr>
+<tr><th id="31">31</th><td><b>class</b> <a class="type" href="Instruction.h.html#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction" id="llvm::Instruction">Instruction</a>;</td></tr>
+<tr><th id="32">32</th><td><b>class</b> <a class="type" href="Type.h.html#llvm::LLVMContextImpl" title='llvm::LLVMContextImpl' data-ref="llvm::LLVMContextImpl" id="llvm::LLVMContextImpl">LLVMContextImpl</a>;</td></tr>
+<tr><th id="33">33</th><td><b>class</b> <a class="type" href="Module.h.html#llvm::Module" title='llvm::Module' data-ref="llvm::Module" id="llvm::Module">Module</a>;</td></tr>
+<tr><th id="34">34</th><td><b>class</b> <dfn class="type" id="llvm::OptBisect" title='llvm::OptBisect' data-ref="llvm::OptBisect">OptBisect</dfn>;</td></tr>
+<tr><th id="35">35</th><td><b>template</b> &lt;<b>typename</b> T&gt; <b>class</b> <a class="type" href="../ADT/SmallVector.h.html#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl" id="llvm::SmallVectorImpl">SmallVectorImpl</a>;</td></tr>
+<tr><th id="36">36</th><td><b>class</b> <dfn class="type" id="llvm::SMDiagnostic" title='llvm::SMDiagnostic' data-ref="llvm::SMDiagnostic">SMDiagnostic</dfn>;</td></tr>
+<tr><th id="37">37</th><td><b>class</b> <a class="type" href="../ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef" id="llvm::StringRef">StringRef</a>;</td></tr>
+<tr><th id="38">38</th><td><b>class</b> <a class="type" href="../ADT/Twine.h.html#llvm::Twine" title='llvm::Twine' data-ref="llvm::Twine" id="llvm::Twine">Twine</a>;</td></tr>
+<tr><th id="39">39</th><td></td></tr>
+<tr><th id="40">40</th><td><b>namespace</b> <span class="namespace">yaml</span> {</td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td><b>class</b> <dfn class="type" id="llvm::yaml::Output" title='llvm::yaml::Output' data-ref="llvm::yaml::Output">Output</dfn>;</td></tr>
+<tr><th id="43">43</th><td></td></tr>
+<tr><th id="44">44</th><td>} <i>// end namespace yaml</i></td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td><b>namespace</b> <span class="namespace">SyncScope</span> {</td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td><b>typedef</b> <a class="typedef" href="../../../stdint.h.html#uint8_t" title='uint8_t' data-type='unsigned char' data-ref="uint8_t">uint8_t</a> <dfn class="typedef" id="llvm::SyncScope::ID" title='llvm::SyncScope::ID' data-type='uint8_t' data-ref="llvm::SyncScope::ID">ID</dfn>;</td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td><i class="doc">/// Known synchronization scope IDs, which always have the same value.  All</i></td></tr>
+<tr><th id="51">51</th><td><i class="doc">/// synchronization scope IDs that LLVM has special knowledge of are listed</i></td></tr>
+<tr><th id="52">52</th><td><i class="doc">/// here.  Additionally, this scheme allows LLVM to efficiently check for</i></td></tr>
+<tr><th id="53">53</th><td><i class="doc">/// specific synchronization scope ID without comparing strings.</i></td></tr>
+<tr><th id="54">54</th><td><b>enum</b> {</td></tr>
+<tr><th id="55">55</th><td>  <i class="doc">/// Synchronized with respect to signal handlers executing in the same thread.</i></td></tr>
+<tr><th id="56">56</th><td>  <dfn class="enum" id="llvm::SyncScope::SingleThread" title='llvm::SyncScope::SingleThread' data-ref="llvm::SyncScope::SingleThread">SingleThread</dfn> = <var>0</var>,</td></tr>
+<tr><th id="57">57</th><td></td></tr>
+<tr><th id="58">58</th><td>  <i class="doc">/// Synchronized with respect to all concurrently executing threads.</i></td></tr>
+<tr><th id="59">59</th><td>  <dfn class="enum" id="llvm::SyncScope::System" title='llvm::SyncScope::System' data-ref="llvm::SyncScope::System">System</dfn> = <var>1</var></td></tr>
+<tr><th id="60">60</th><td>};</td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td>} <i>// end namespace SyncScope</i></td></tr>
+<tr><th id="63">63</th><td></td></tr>
+<tr><th id="64">64</th><td><i class="doc">/// This is an important class for using LLVM in a threaded context.  It</i></td></tr>
+<tr><th id="65">65</th><td><i class="doc">/// (opaquely) owns and manages the core "global" data of LLVM's core</i></td></tr>
+<tr><th id="66">66</th><td><i class="doc">/// infrastructure, including the type and constant uniquing tables.</i></td></tr>
+<tr><th id="67">67</th><td><i class="doc">/// LLVMContext itself provides no locking guarantees, so you should be careful</i></td></tr>
+<tr><th id="68">68</th><td><i class="doc">/// to have one context per thread.</i></td></tr>
+<tr><th id="69">69</th><td><b>class</b> <dfn class="type def" id="llvm::LLVMContext" title='llvm::LLVMContext' data-ref="llvm::LLVMContext">LLVMContext</dfn> {</td></tr>
+<tr><th id="70">70</th><td><b>public</b>:</td></tr>
+<tr><th id="71">71</th><td>  <a class="type" href="Type.h.html#llvm::LLVMContextImpl" title='llvm::LLVMContextImpl' data-ref="llvm::LLVMContextImpl">LLVMContextImpl</a> *<em>const</em> <dfn class="decl" id="llvm::LLVMContext::pImpl" title='llvm::LLVMContext::pImpl' data-ref="llvm::LLVMContext::pImpl">pImpl</dfn>;</td></tr>
+<tr><th id="72">72</th><td>  <dfn class="decl" id="_ZN4llvm11LLVMContextC1Ev" title='llvm::LLVMContext::LLVMContext' data-ref="_ZN4llvm11LLVMContextC1Ev">LLVMContext</dfn>();</td></tr>
+<tr><th id="73">73</th><td>  <dfn class="decl def" id="_ZN4llvm11LLVMContextC1ERS0_" title='llvm::LLVMContext::LLVMContext' data-ref="_ZN4llvm11LLVMContextC1ERS0_">LLVMContext</dfn>(<a class="type" href="#llvm::LLVMContext" title='llvm::LLVMContext' data-ref="llvm::LLVMContext">LLVMContext</a> &amp;) = <b>delete</b>;</td></tr>
+<tr><th id="74">74</th><td>  <a class="type" href="#llvm::LLVMContext" title='llvm::LLVMContext' data-ref="llvm::LLVMContext">LLVMContext</a> &amp;<dfn class="decl def" id="_ZN4llvm11LLVMContextaSERKS0_" title='llvm::LLVMContext::operator=' data-ref="_ZN4llvm11LLVMContextaSERKS0_"><b>operator</b>=</dfn>(<em>const</em> <a class="type" href="#llvm::LLVMContext" title='llvm::LLVMContext' data-ref="llvm::LLVMContext">LLVMContext</a> &amp;) = <b>delete</b>;</td></tr>
+<tr><th id="75">75</th><td>  <dfn class="decl" id="_ZN4llvm11LLVMContextD1Ev" title='llvm::LLVMContext::~LLVMContext' data-ref="_ZN4llvm11LLVMContextD1Ev">~LLVMContext</dfn>();</td></tr>
+<tr><th id="76">76</th><td></td></tr>
+<tr><th id="77">77</th><td>  <i>// Pinned metadata names, which always have the same value.  This is a</i></td></tr>
+<tr><th id="78">78</th><td><i>  // compile-time performance optimization, not a correctness optimization.</i></td></tr>
+<tr><th id="79">79</th><td>  <b>enum</b> {</td></tr>
+<tr><th id="80">80</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_dbg" title='llvm::LLVMContext::MD_dbg' data-ref="llvm::LLVMContext::MD_dbg">MD_dbg</dfn> = <var>0</var>,                       <i>// "dbg"</i></td></tr>
+<tr><th id="81">81</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_tbaa" title='llvm::LLVMContext::MD_tbaa' data-ref="llvm::LLVMContext::MD_tbaa">MD_tbaa</dfn> = <var>1</var>,                      <i>// "tbaa"</i></td></tr>
+<tr><th id="82">82</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_prof" title='llvm::LLVMContext::MD_prof' data-ref="llvm::LLVMContext::MD_prof">MD_prof</dfn> = <var>2</var>,                      <i>// "prof"</i></td></tr>
+<tr><th id="83">83</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_fpmath" title='llvm::LLVMContext::MD_fpmath' data-ref="llvm::LLVMContext::MD_fpmath">MD_fpmath</dfn> = <var>3</var>,                    <i>// "fpmath"</i></td></tr>
+<tr><th id="84">84</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_range" title='llvm::LLVMContext::MD_range' data-ref="llvm::LLVMContext::MD_range">MD_range</dfn> = <var>4</var>,                     <i>// "range"</i></td></tr>
+<tr><th id="85">85</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_tbaa_struct" title='llvm::LLVMContext::MD_tbaa_struct' data-ref="llvm::LLVMContext::MD_tbaa_struct">MD_tbaa_struct</dfn> = <var>5</var>,               <i>// "tbaa.struct"</i></td></tr>
+<tr><th id="86">86</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_invariant_load" title='llvm::LLVMContext::MD_invariant_load' data-ref="llvm::LLVMContext::MD_invariant_load">MD_invariant_load</dfn> = <var>6</var>,            <i>// "invariant.load"</i></td></tr>
+<tr><th id="87">87</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_alias_scope" title='llvm::LLVMContext::MD_alias_scope' data-ref="llvm::LLVMContext::MD_alias_scope">MD_alias_scope</dfn> = <var>7</var>,               <i>// "alias.scope"</i></td></tr>
+<tr><th id="88">88</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_noalias" title='llvm::LLVMContext::MD_noalias' data-ref="llvm::LLVMContext::MD_noalias">MD_noalias</dfn> = <var>8</var>,                   <i>// "noalias",</i></td></tr>
+<tr><th id="89">89</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_nontemporal" title='llvm::LLVMContext::MD_nontemporal' data-ref="llvm::LLVMContext::MD_nontemporal">MD_nontemporal</dfn> = <var>9</var>,               <i>// "nontemporal"</i></td></tr>
+<tr><th id="90">90</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_mem_parallel_loop_access" title='llvm::LLVMContext::MD_mem_parallel_loop_access' data-ref="llvm::LLVMContext::MD_mem_parallel_loop_access">MD_mem_parallel_loop_access</dfn> = <var>10</var>, <i>// "llvm.mem.parallel_loop_access"</i></td></tr>
+<tr><th id="91">91</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_nonnull" title='llvm::LLVMContext::MD_nonnull' data-ref="llvm::LLVMContext::MD_nonnull">MD_nonnull</dfn> = <var>11</var>,                  <i>// "nonnull"</i></td></tr>
+<tr><th id="92">92</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_dereferenceable" title='llvm::LLVMContext::MD_dereferenceable' data-ref="llvm::LLVMContext::MD_dereferenceable">MD_dereferenceable</dfn> = <var>12</var>,          <i>// "dereferenceable"</i></td></tr>
+<tr><th id="93">93</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_dereferenceable_or_null" title='llvm::LLVMContext::MD_dereferenceable_or_null' data-ref="llvm::LLVMContext::MD_dereferenceable_or_null">MD_dereferenceable_or_null</dfn> = <var>13</var>,  <i>// "dereferenceable_or_null"</i></td></tr>
+<tr><th id="94">94</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_make_implicit" title='llvm::LLVMContext::MD_make_implicit' data-ref="llvm::LLVMContext::MD_make_implicit">MD_make_implicit</dfn> = <var>14</var>,            <i>// "make.implicit"</i></td></tr>
+<tr><th id="95">95</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_unpredictable" title='llvm::LLVMContext::MD_unpredictable' data-ref="llvm::LLVMContext::MD_unpredictable">MD_unpredictable</dfn> = <var>15</var>,            <i>// "unpredictable"</i></td></tr>
+<tr><th id="96">96</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_invariant_group" title='llvm::LLVMContext::MD_invariant_group' data-ref="llvm::LLVMContext::MD_invariant_group">MD_invariant_group</dfn> = <var>16</var>,          <i>// "invariant.group"</i></td></tr>
+<tr><th id="97">97</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_align" title='llvm::LLVMContext::MD_align' data-ref="llvm::LLVMContext::MD_align">MD_align</dfn> = <var>17</var>,                    <i>// "align"</i></td></tr>
+<tr><th id="98">98</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_loop" title='llvm::LLVMContext::MD_loop' data-ref="llvm::LLVMContext::MD_loop">MD_loop</dfn> = <var>18</var>,                     <i>// "llvm.loop"</i></td></tr>
+<tr><th id="99">99</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_type" title='llvm::LLVMContext::MD_type' data-ref="llvm::LLVMContext::MD_type">MD_type</dfn> = <var>19</var>,                     <i>// "type"</i></td></tr>
+<tr><th id="100">100</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_section_prefix" title='llvm::LLVMContext::MD_section_prefix' data-ref="llvm::LLVMContext::MD_section_prefix">MD_section_prefix</dfn> = <var>20</var>,           <i>// "section_prefix"</i></td></tr>
+<tr><th id="101">101</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_absolute_symbol" title='llvm::LLVMContext::MD_absolute_symbol' data-ref="llvm::LLVMContext::MD_absolute_symbol">MD_absolute_symbol</dfn> = <var>21</var>,          <i>// "absolute_symbol"</i></td></tr>
+<tr><th id="102">102</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_associated" title='llvm::LLVMContext::MD_associated' data-ref="llvm::LLVMContext::MD_associated">MD_associated</dfn> = <var>22</var>,               <i>// "associated"</i></td></tr>
+<tr><th id="103">103</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_callees" title='llvm::LLVMContext::MD_callees' data-ref="llvm::LLVMContext::MD_callees">MD_callees</dfn> = <var>23</var>,                  <i>// "callees"</i></td></tr>
+<tr><th id="104">104</th><td>    <dfn class="enum" id="llvm::LLVMContext::MD_irr_loop" title='llvm::LLVMContext::MD_irr_loop' data-ref="llvm::LLVMContext::MD_irr_loop">MD_irr_loop</dfn> = <var>24</var>,                 <i>// "irr_loop"</i></td></tr>
+<tr><th id="105">105</th><td>  };</td></tr>
+<tr><th id="106">106</th><td></td></tr>
+<tr><th id="107">107</th><td>  <i class="doc">/// Known operand bundle tag IDs, which always have the same value.  All</i></td></tr>
+<tr><th id="108">108</th><td><i class="doc">  /// operand bundle tags that LLVM has special knowledge of are listed here.</i></td></tr>
+<tr><th id="109">109</th><td><i class="doc">  /// Additionally, this scheme allows LLVM to efficiently check for specific</i></td></tr>
+<tr><th id="110">110</th><td><i class="doc">  /// operand bundle tags without comparing strings.</i></td></tr>
+<tr><th id="111">111</th><td>  <b>enum</b> {</td></tr>
+<tr><th id="112">112</th><td>    <dfn class="enum" id="llvm::LLVMContext::OB_deopt" title='llvm::LLVMContext::OB_deopt' data-ref="llvm::LLVMContext::OB_deopt">OB_deopt</dfn> = <var>0</var>,         <i>// "deopt"</i></td></tr>
+<tr><th id="113">113</th><td>    <dfn class="enum" id="llvm::LLVMContext::OB_funclet" title='llvm::LLVMContext::OB_funclet' data-ref="llvm::LLVMContext::OB_funclet">OB_funclet</dfn> = <var>1</var>,       <i>// "funclet"</i></td></tr>
+<tr><th id="114">114</th><td>    <dfn class="enum" id="llvm::LLVMContext::OB_gc_transition" title='llvm::LLVMContext::OB_gc_transition' data-ref="llvm::LLVMContext::OB_gc_transition">OB_gc_transition</dfn> = <var>2</var>, <i>// "gc-transition"</i></td></tr>
+<tr><th id="115">115</th><td>  };</td></tr>
+<tr><th id="116">116</th><td></td></tr>
+<tr><th id="117">117</th><td>  <i class="doc">/// getMDKindID - Return a unique non-zero ID for the specified metadata kind.</i></td></tr>
+<tr><th id="118">118</th><td><i class="doc">  /// This ID is uniqued across modules in the current LLVMContext.</i></td></tr>
+<tr><th id="119">119</th><td>  <em>unsigned</em> <dfn class="decl" id="_ZNK4llvm11LLVMContext11getMDKindIDENS_9StringRefE" title='llvm::LLVMContext::getMDKindID' data-ref="_ZNK4llvm11LLVMContext11getMDKindIDENS_9StringRefE">getMDKindID</dfn>(<a class="type" href="../ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="local col9 decl" id="11059Name" title='Name' data-type='llvm::StringRef' data-ref="11059Name">Name</dfn>) <em>const</em>;</td></tr>
+<tr><th id="120">120</th><td></td></tr>
+<tr><th id="121">121</th><td>  <i class="doc">/// getMDKindNames - Populate client supplied SmallVector with the name for</i></td></tr>
+<tr><th id="122">122</th><td><i class="doc">  /// custom metadata IDs registered in this LLVMContext.</i></td></tr>
+<tr><th id="123">123</th><td>  <em>void</em> <dfn class="decl" id="_ZNK4llvm11LLVMContext14getMDKindNamesERNS_15SmallVectorImplINS_9StringRefEEE" title='llvm::LLVMContext::getMDKindNames' data-ref="_ZNK4llvm11LLVMContext14getMDKindNamesERNS_15SmallVectorImplINS_9StringRefEEE">getMDKindNames</dfn>(<a class="type" href="../ADT/SmallVector.h.html#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;<a class="type" href="../ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a>&gt; &amp;<dfn class="local col0 decl" id="11060Result" title='Result' data-type='SmallVectorImpl&lt;llvm::StringRef&gt; &amp;' data-ref="11060Result">Result</dfn>) <em>const</em>;</td></tr>
+<tr><th id="124">124</th><td></td></tr>
+<tr><th id="125">125</th><td>  <i class="doc">/// getOperandBundleTags - Populate client supplied SmallVector with the</i></td></tr>
+<tr><th id="126">126</th><td><i class="doc">  /// bundle tags registered in this LLVMContext.  The bundle tags are ordered</i></td></tr>
+<tr><th id="127">127</th><td><i class="doc">  /// by increasing bundle IDs.</i></td></tr>
+<tr><th id="128">128</th><td><i class="doc">  /// <span class="command">\see</span> LLVMContext::getOperandBundleTagID</i></td></tr>
+<tr><th id="129">129</th><td>  <em>void</em> <dfn class="decl" id="_ZNK4llvm11LLVMContext20getOperandBundleTagsERNS_15SmallVectorImplINS_9StringRefEEE" title='llvm::LLVMContext::getOperandBundleTags' data-ref="_ZNK4llvm11LLVMContext20getOperandBundleTagsERNS_15SmallVectorImplINS_9StringRefEEE">getOperandBundleTags</dfn>(<a class="type" href="../ADT/SmallVector.h.html#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;<a class="type" href="../ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a>&gt; &amp;<dfn class="local col1 decl" id="11061Result" title='Result' data-type='SmallVectorImpl&lt;llvm::StringRef&gt; &amp;' data-ref="11061Result">Result</dfn>) <em>const</em>;</td></tr>
+<tr><th id="130">130</th><td></td></tr>
+<tr><th id="131">131</th><td>  <i class="doc">/// getOperandBundleTagID - Maps a bundle tag to an integer ID.  Every bundle</i></td></tr>
+<tr><th id="132">132</th><td><i class="doc">  /// tag registered with an LLVMContext has an unique ID.</i></td></tr>
+<tr><th id="133">133</th><td>  <a class="typedef" href="../../../stdint.h.html#uint32_t" title='uint32_t' data-type='unsigned int' data-ref="uint32_t">uint32_t</a> <dfn class="decl" id="_ZNK4llvm11LLVMContext21getOperandBundleTagIDENS_9StringRefE" title='llvm::LLVMContext::getOperandBundleTagID' data-ref="_ZNK4llvm11LLVMContext21getOperandBundleTagIDENS_9StringRefE">getOperandBundleTagID</dfn>(<a class="type" href="../ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="local col2 decl" id="11062Tag" title='Tag' data-type='llvm::StringRef' data-ref="11062Tag">Tag</dfn>) <em>const</em>;</td></tr>
+<tr><th id="134">134</th><td></td></tr>
+<tr><th id="135">135</th><td>  <i class="doc">/// getOrInsertSyncScopeID - Maps synchronization scope name to</i></td></tr>
+<tr><th id="136">136</th><td><i class="doc">  /// synchronization scope ID.  Every synchronization scope registered with</i></td></tr>
+<tr><th id="137">137</th><td><i class="doc">  /// LLVMContext has unique ID except pre-defined ones.</i></td></tr>
+<tr><th id="138">138</th><td>  <span class="namespace">SyncScope::</span><a class="typedef" href="#llvm::SyncScope::ID" title='llvm::SyncScope::ID' data-type='uint8_t' data-ref="llvm::SyncScope::ID">ID</a> <dfn class="decl" id="_ZN4llvm11LLVMContext22getOrInsertSyncScopeIDENS_9StringRefE" title='llvm::LLVMContext::getOrInsertSyncScopeID' data-ref="_ZN4llvm11LLVMContext22getOrInsertSyncScopeIDENS_9StringRefE">getOrInsertSyncScopeID</dfn>(<a class="type" href="../ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="local col3 decl" id="11063SSN" title='SSN' data-type='llvm::StringRef' data-ref="11063SSN">SSN</dfn>);</td></tr>
+<tr><th id="139">139</th><td></td></tr>
+<tr><th id="140">140</th><td>  <i class="doc">/// getSyncScopeNames - Populates client supplied SmallVector with</i></td></tr>
+<tr><th id="141">141</th><td><i class="doc">  /// synchronization scope names registered with LLVMContext.  Synchronization</i></td></tr>
+<tr><th id="142">142</th><td><i class="doc">  /// scope names are ordered by increasing synchronization scope IDs.</i></td></tr>
+<tr><th id="143">143</th><td>  <em>void</em> <dfn class="decl" id="_ZNK4llvm11LLVMContext17getSyncScopeNamesERNS_15SmallVectorImplINS_9StringRefEEE" title='llvm::LLVMContext::getSyncScopeNames' data-ref="_ZNK4llvm11LLVMContext17getSyncScopeNamesERNS_15SmallVectorImplINS_9StringRefEEE">getSyncScopeNames</dfn>(<a class="type" href="../ADT/SmallVector.h.html#llvm::SmallVectorImpl" title='llvm::SmallVectorImpl' data-ref="llvm::SmallVectorImpl">SmallVectorImpl</a>&lt;<a class="type" href="../ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a>&gt; &amp;<dfn class="local col4 decl" id="11064SSNs" title='SSNs' data-type='SmallVectorImpl&lt;llvm::StringRef&gt; &amp;' data-ref="11064SSNs">SSNs</dfn>) <em>const</em>;</td></tr>
+<tr><th id="144">144</th><td></td></tr>
+<tr><th id="145">145</th><td>  <i class="doc">/// Define the GC for a function</i></td></tr>
+<tr><th id="146">146</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11LLVMContext5setGCERKNS_8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE" title='llvm::LLVMContext::setGC' data-ref="_ZN4llvm11LLVMContext5setGCERKNS_8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE">setGC</dfn>(<em>const</em> <a class="type" href="Function.h.html#llvm::Function" title='llvm::Function' data-ref="llvm::Function">Function</a> &amp;<dfn class="local col5 decl" id="11065Fn" title='Fn' data-type='const llvm::Function &amp;' data-ref="11065Fn">Fn</dfn>, <span class="namespace">std::</span><a class="typedef" href="../../../c++/7/bits/stringfwd.h.html#std::__cxx11::string" title='std::__cxx11::string' data-type='basic_string&lt;char&gt;' data-ref="std::__cxx11::string">string</a> <dfn class="local col6 decl" id="11066GCName" title='GCName' data-type='std::string' data-ref="11066GCName">GCName</dfn>);</td></tr>
+<tr><th id="147">147</th><td></td></tr>
+<tr><th id="148">148</th><td>  <i class="doc">/// Return the GC for a function</i></td></tr>
+<tr><th id="149">149</th><td>  <em>const</em> <span class="namespace">std::</span><a class="typedef" href="../../../c++/7/bits/stringfwd.h.html#std::__cxx11::string" title='std::__cxx11::string' data-type='basic_string&lt;char&gt;' data-ref="std::__cxx11::string">string</a> &amp;<dfn class="decl" id="_ZN4llvm11LLVMContext5getGCB5cxx11ERKNS_8FunctionE" title='llvm::LLVMContext::getGC' data-ref="_ZN4llvm11LLVMContext5getGCB5cxx11ERKNS_8FunctionE">getGC</dfn>(<em>const</em> <a class="type" href="Function.h.html#llvm::Function" title='llvm::Function' data-ref="llvm::Function">Function</a> &amp;<dfn class="local col7 decl" id="11067Fn" title='Fn' data-type='const llvm::Function &amp;' data-ref="11067Fn">Fn</dfn>);</td></tr>
+<tr><th id="150">150</th><td></td></tr>
+<tr><th id="151">151</th><td>  <i class="doc">/// Remove the GC for a function</i></td></tr>
+<tr><th id="152">152</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11LLVMContext8deleteGCERKNS_8FunctionE" title='llvm::LLVMContext::deleteGC' data-ref="_ZN4llvm11LLVMContext8deleteGCERKNS_8FunctionE">deleteGC</dfn>(<em>const</em> <a class="type" href="Function.h.html#llvm::Function" title='llvm::Function' data-ref="llvm::Function">Function</a> &amp;<dfn class="local col8 decl" id="11068Fn" title='Fn' data-type='const llvm::Function &amp;' data-ref="11068Fn">Fn</dfn>);</td></tr>
+<tr><th id="153">153</th><td></td></tr>
+<tr><th id="154">154</th><td>  <i class="doc">/// Return true if the Context runtime configuration is set to discard all</i></td></tr>
+<tr><th id="155">155</th><td><i class="doc">  /// value names. When true, only GlobalValue names will be available in the</i></td></tr>
+<tr><th id="156">156</th><td><i class="doc">  /// IR.</i></td></tr>
+<tr><th id="157">157</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11LLVMContext23shouldDiscardValueNamesEv" title='llvm::LLVMContext::shouldDiscardValueNames' data-ref="_ZNK4llvm11LLVMContext23shouldDiscardValueNamesEv">shouldDiscardValueNames</dfn>() <em>const</em>;</td></tr>
+<tr><th id="158">158</th><td></td></tr>
+<tr><th id="159">159</th><td>  <i class="doc">/// Set the Context runtime configuration to discard all value name (but</i></td></tr>
+<tr><th id="160">160</th><td><i class="doc">  /// GlobalValue). Clients can use this flag to save memory and runtime,</i></td></tr>
+<tr><th id="161">161</th><td><i class="doc">  /// especially in release mode.</i></td></tr>
+<tr><th id="162">162</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11LLVMContext20setDiscardValueNamesEb" title='llvm::LLVMContext::setDiscardValueNames' data-ref="_ZN4llvm11LLVMContext20setDiscardValueNamesEb">setDiscardValueNames</dfn>(<em>bool</em> <dfn class="local col9 decl" id="11069Discard" title='Discard' data-type='bool' data-ref="11069Discard">Discard</dfn>);</td></tr>
+<tr><th id="163">163</th><td></td></tr>
+<tr><th id="164">164</th><td>  <i class="doc">/// Whether there is a string map for uniquing debug info</i></td></tr>
+<tr><th id="165">165</th><td><i class="doc">  /// identifiers across the context.  Off by default.</i></td></tr>
+<tr><th id="166">166</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11LLVMContext23isODRUniquingDebugTypesEv" title='llvm::LLVMContext::isODRUniquingDebugTypes' data-ref="_ZNK4llvm11LLVMContext23isODRUniquingDebugTypesEv">isODRUniquingDebugTypes</dfn>() <em>const</em>;</td></tr>
+<tr><th id="167">167</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11LLVMContext26enableDebugTypeODRUniquingEv" title='llvm::LLVMContext::enableDebugTypeODRUniquing' data-ref="_ZN4llvm11LLVMContext26enableDebugTypeODRUniquingEv">enableDebugTypeODRUniquing</dfn>();</td></tr>
+<tr><th id="168">168</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11LLVMContext27disableDebugTypeODRUniquingEv" title='llvm::LLVMContext::disableDebugTypeODRUniquing' data-ref="_ZN4llvm11LLVMContext27disableDebugTypeODRUniquingEv">disableDebugTypeODRUniquing</dfn>();</td></tr>
+<tr><th id="169">169</th><td></td></tr>
+<tr><th id="170">170</th><td>  <b>using</b> <dfn class="typedef" id="llvm::LLVMContext::InlineAsmDiagHandlerTy" title='llvm::LLVMContext::InlineAsmDiagHandlerTy' data-type='void (*)(const llvm::SMDiagnostic &amp;, void *, unsigned int)' data-ref="llvm::LLVMContext::InlineAsmDiagHandlerTy">InlineAsmDiagHandlerTy</dfn> = <em>void</em> (*)(<em>const</em> <a class="type" href="#llvm::SMDiagnostic" title='llvm::SMDiagnostic' data-ref="llvm::SMDiagnostic">SMDiagnostic</a>&amp;, <em>void</em> *<dfn class="local col0 decl" id="11070Context" title='Context' data-type='void *' data-ref="11070Context">Context</dfn>,</td></tr>
+<tr><th id="171">171</th><td>                                          <em>unsigned</em> <dfn class="local col1 decl" id="11071LocCookie" title='LocCookie' data-type='unsigned int' data-ref="11071LocCookie">LocCookie</dfn>);</td></tr>
+<tr><th id="172">172</th><td></td></tr>
+<tr><th id="173">173</th><td>  <i class="doc">/// Defines the type of a yield callback.</i></td></tr>
+<tr><th id="174">174</th><td><i class="doc">  /// <span class="command">\see</span> LLVMContext::setYieldCallback.</i></td></tr>
+<tr><th id="175">175</th><td>  <b>using</b> <dfn class="typedef" id="llvm::LLVMContext::YieldCallbackTy" title='llvm::LLVMContext::YieldCallbackTy' data-type='void (*)(llvm::LLVMContext *, void *)' data-ref="llvm::LLVMContext::YieldCallbackTy">YieldCallbackTy</dfn> = <em>void</em> (*)(<a class="type" href="#llvm::LLVMContext" title='llvm::LLVMContext' data-ref="llvm::LLVMContext">LLVMContext</a> *<dfn class="local col2 decl" id="11072Context" title='Context' data-type='llvm::LLVMContext *' data-ref="11072Context">Context</dfn>, <em>void</em> *<dfn class="local col3 decl" id="11073OpaqueHandle" title='OpaqueHandle' data-type='void *' data-ref="11073OpaqueHandle">OpaqueHandle</dfn>);</td></tr>
+<tr><th id="176">176</th><td></td></tr>
+<tr><th id="177">177</th><td>  <i class="doc">/// setInlineAsmDiagnosticHandler - This method sets a handler that is invoked</i></td></tr>
+<tr><th id="178">178</th><td><i class="doc">  /// when problems with inline asm are detected by the backend.  The first</i></td></tr>
+<tr><th id="179">179</th><td><i class="doc">  /// argument is a function pointer and the second is a context pointer that</i></td></tr>
+<tr><th id="180">180</th><td><i class="doc">  /// gets passed into the DiagHandler.</i></td></tr>
+<tr><th id="181">181</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="182">182</th><td><i class="doc">  /// LLVMContext doesn't take ownership or interpret either of these</i></td></tr>
+<tr><th id="183">183</th><td><i class="doc">  /// pointers.</i></td></tr>
+<tr><th id="184">184</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11LLVMContext29setInlineAsmDiagnosticHandlerEPFvRKNS_12SMDiagnosticEPvjES4_" title='llvm::LLVMContext::setInlineAsmDiagnosticHandler' data-ref="_ZN4llvm11LLVMContext29setInlineAsmDiagnosticHandlerEPFvRKNS_12SMDiagnosticEPvjES4_">setInlineAsmDiagnosticHandler</dfn>(<a class="typedef" href="#llvm::LLVMContext::InlineAsmDiagHandlerTy" title='llvm::LLVMContext::InlineAsmDiagHandlerTy' data-type='void (*)(const llvm::SMDiagnostic &amp;, void *, unsigned int)' data-ref="llvm::LLVMContext::InlineAsmDiagHandlerTy">InlineAsmDiagHandlerTy</a> <dfn class="local col4 decl" id="11074DiagHandler" title='DiagHandler' data-type='InlineAsmDiagHandlerTy' data-ref="11074DiagHandler">DiagHandler</dfn>,</td></tr>
+<tr><th id="185">185</th><td>                                     <em>void</em> *<dfn class="local col5 decl" id="11075DiagContext" title='DiagContext' data-type='void *' data-ref="11075DiagContext">DiagContext</dfn> = <b>nullptr</b>);</td></tr>
+<tr><th id="186">186</th><td></td></tr>
+<tr><th id="187">187</th><td>  <i class="doc">/// getInlineAsmDiagnosticHandler - Return the diagnostic handler set by</i></td></tr>
+<tr><th id="188">188</th><td><i class="doc">  /// setInlineAsmDiagnosticHandler.</i></td></tr>
+<tr><th id="189">189</th><td>  <a class="typedef" href="#llvm::LLVMContext::InlineAsmDiagHandlerTy" title='llvm::LLVMContext::InlineAsmDiagHandlerTy' data-type='void (*)(const llvm::SMDiagnostic &amp;, void *, unsigned int)' data-ref="llvm::LLVMContext::InlineAsmDiagHandlerTy">InlineAsmDiagHandlerTy</a> <dfn class="decl" id="_ZNK4llvm11LLVMContext29getInlineAsmDiagnosticHandlerEv" title='llvm::LLVMContext::getInlineAsmDiagnosticHandler' data-ref="_ZNK4llvm11LLVMContext29getInlineAsmDiagnosticHandlerEv">getInlineAsmDiagnosticHandler</dfn>() <em>const</em>;</td></tr>
+<tr><th id="190">190</th><td></td></tr>
+<tr><th id="191">191</th><td>  <i class="doc">/// getInlineAsmDiagnosticContext - Return the diagnostic context set by</i></td></tr>
+<tr><th id="192">192</th><td><i class="doc">  /// setInlineAsmDiagnosticHandler.</i></td></tr>
+<tr><th id="193">193</th><td>  <em>void</em> *<dfn class="decl" id="_ZNK4llvm11LLVMContext29getInlineAsmDiagnosticContextEv" title='llvm::LLVMContext::getInlineAsmDiagnosticContext' data-ref="_ZNK4llvm11LLVMContext29getInlineAsmDiagnosticContextEv">getInlineAsmDiagnosticContext</dfn>() <em>const</em>;</td></tr>
+<tr><th id="194">194</th><td></td></tr>
+<tr><th id="195">195</th><td>  <i class="doc">/// setDiagnosticHandlerCallBack - This method sets a handler call back</i></td></tr>
+<tr><th id="196">196</th><td><i class="doc">  /// that is invoked when the backend needs to report anything to the user.</i></td></tr>
+<tr><th id="197">197</th><td><i class="doc">  /// The first argument is a function pointer and the second is a context pointer</i></td></tr>
+<tr><th id="198">198</th><td><i class="doc">  /// that gets passed into the DiagHandler.  The third argument should be set to</i></td></tr>
+<tr><th id="199">199</th><td><i class="doc">  /// true if the handler only expects enabled diagnostics.</i></td></tr>
+<tr><th id="200">200</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="201">201</th><td><i class="doc">  /// LLVMContext doesn't take ownership or interpret either of these</i></td></tr>
+<tr><th id="202">202</th><td><i class="doc">  /// pointers.</i></td></tr>
+<tr><th id="203">203</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11LLVMContext28setDiagnosticHandlerCallBackEPFvRKNS_14DiagnosticInfoEPvES4_b" title='llvm::LLVMContext::setDiagnosticHandlerCallBack' data-ref="_ZN4llvm11LLVMContext28setDiagnosticHandlerCallBackEPFvRKNS_14DiagnosticInfoEPvES4_b">setDiagnosticHandlerCallBack</dfn>(</td></tr>
+<tr><th id="204">204</th><td>      <a class="type" href="DiagnosticHandler.h.html#llvm::DiagnosticHandler" title='llvm::DiagnosticHandler' data-ref="llvm::DiagnosticHandler">DiagnosticHandler</a>::<a class="typedef" href="DiagnosticHandler.h.html#llvm::DiagnosticHandler::DiagnosticHandlerTy" title='llvm::DiagnosticHandler::DiagnosticHandlerTy' data-type='void (*)(const llvm::DiagnosticInfo &amp;, void *)' data-ref="llvm::DiagnosticHandler::DiagnosticHandlerTy">DiagnosticHandlerTy</a> <dfn class="local col6 decl" id="11076DiagHandler" title='DiagHandler' data-type='DiagnosticHandler::DiagnosticHandlerTy' data-ref="11076DiagHandler">DiagHandler</dfn>,</td></tr>
+<tr><th id="205">205</th><td>      <em>void</em> *<dfn class="local col7 decl" id="11077DiagContext" title='DiagContext' data-type='void *' data-ref="11077DiagContext">DiagContext</dfn> = <b>nullptr</b>, <em>bool</em> <dfn class="local col8 decl" id="11078RespectFilters" title='RespectFilters' data-type='bool' data-ref="11078RespectFilters">RespectFilters</dfn> = <b>false</b>);</td></tr>
+<tr><th id="206">206</th><td></td></tr>
+<tr><th id="207">207</th><td>  <i class="doc">/// setDiagnosticHandler - This method sets unique_ptr to object of DiagnosticHandler</i></td></tr>
+<tr><th id="208">208</th><td><i class="doc">  /// to provide custom diagnostic handling. The first argument is unique_ptr of object</i></td></tr>
+<tr><th id="209">209</th><td><i class="doc">  /// of type DiagnosticHandler or a derived of that.   The third argument should be</i></td></tr>
+<tr><th id="210">210</th><td><i class="doc">  /// set to true if the handler only expects enabled diagnostics.</i></td></tr>
+<tr><th id="211">211</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="212">212</th><td><i class="doc">  /// Ownership of this pointer is moved to LLVMContextImpl.</i></td></tr>
+<tr><th id="213">213</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11LLVMContext20setDiagnosticHandlerEOSt10unique_ptrINS_17DiagnosticHandlerESt14default_deleteIS2_EEb" title='llvm::LLVMContext::setDiagnosticHandler' data-ref="_ZN4llvm11LLVMContext20setDiagnosticHandlerEOSt10unique_ptrINS_17DiagnosticHandlerESt14default_deleteIS2_EEb">setDiagnosticHandler</dfn>(<span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/unique_ptr.h.html#std::unique_ptr" title='std::unique_ptr' data-ref="std::unique_ptr">unique_ptr</a>&lt;<a class="type" href="DiagnosticHandler.h.html#llvm::DiagnosticHandler" title='llvm::DiagnosticHandler' data-ref="llvm::DiagnosticHandler">DiagnosticHandler</a>&gt; &amp;&amp;<dfn class="local col9 decl" id="11079DH" title='DH' data-type='std::unique_ptr&lt;DiagnosticHandler&gt; &amp;&amp;' data-ref="11079DH">DH</dfn>,</td></tr>
+<tr><th id="214">214</th><td>                            <em>bool</em> <dfn class="local col0 decl" id="11080RespectFilters" title='RespectFilters' data-type='bool' data-ref="11080RespectFilters">RespectFilters</dfn> = <b>false</b>);</td></tr>
+<tr><th id="215">215</th><td></td></tr>
+<tr><th id="216">216</th><td>  <i class="doc">/// getDiagnosticHandlerCallBack - Return the diagnostic handler call back set by</i></td></tr>
+<tr><th id="217">217</th><td><i class="doc">  /// setDiagnosticHandlerCallBack.</i></td></tr>
+<tr><th id="218">218</th><td>  <a class="type" href="DiagnosticHandler.h.html#llvm::DiagnosticHandler" title='llvm::DiagnosticHandler' data-ref="llvm::DiagnosticHandler">DiagnosticHandler</a>::<a class="typedef" href="DiagnosticHandler.h.html#llvm::DiagnosticHandler::DiagnosticHandlerTy" title='llvm::DiagnosticHandler::DiagnosticHandlerTy' data-type='void (*)(const llvm::DiagnosticInfo &amp;, void *)' data-ref="llvm::DiagnosticHandler::DiagnosticHandlerTy">DiagnosticHandlerTy</a> <dfn class="decl" id="_ZNK4llvm11LLVMContext28getDiagnosticHandlerCallBackEv" title='llvm::LLVMContext::getDiagnosticHandlerCallBack' data-ref="_ZNK4llvm11LLVMContext28getDiagnosticHandlerCallBackEv">getDiagnosticHandlerCallBack</dfn>() <em>const</em>;</td></tr>
+<tr><th id="219">219</th><td></td></tr>
+<tr><th id="220">220</th><td>  <i class="doc">/// getDiagnosticContext - Return the diagnostic context set by</i></td></tr>
+<tr><th id="221">221</th><td><i class="doc">  /// setDiagnosticContext.</i></td></tr>
+<tr><th id="222">222</th><td>  <em>void</em> *<dfn class="decl" id="_ZNK4llvm11LLVMContext20getDiagnosticContextEv" title='llvm::LLVMContext::getDiagnosticContext' data-ref="_ZNK4llvm11LLVMContext20getDiagnosticContextEv">getDiagnosticContext</dfn>() <em>const</em>;</td></tr>
+<tr><th id="223">223</th><td></td></tr>
+<tr><th id="224">224</th><td>  <i class="doc">/// getDiagHandlerPtr - Returns const raw pointer of DiagnosticHandler set by</i></td></tr>
+<tr><th id="225">225</th><td><i class="doc">  /// setDiagnosticHandler.</i></td></tr>
+<tr><th id="226">226</th><td>  <em>const</em> <a class="type" href="DiagnosticHandler.h.html#llvm::DiagnosticHandler" title='llvm::DiagnosticHandler' data-ref="llvm::DiagnosticHandler">DiagnosticHandler</a> *<dfn class="decl" id="_ZNK4llvm11LLVMContext17getDiagHandlerPtrEv" title='llvm::LLVMContext::getDiagHandlerPtr' data-ref="_ZNK4llvm11LLVMContext17getDiagHandlerPtrEv">getDiagHandlerPtr</dfn>() <em>const</em>;</td></tr>
+<tr><th id="227">227</th><td></td></tr>
+<tr><th id="228">228</th><td>  <i class="doc">/// getDiagnosticHandler - transfers owenership of DiagnosticHandler unique_ptr</i></td></tr>
+<tr><th id="229">229</th><td><i class="doc">  /// to caller.</i></td></tr>
+<tr><th id="230">230</th><td>  <span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/unique_ptr.h.html#std::unique_ptr" title='std::unique_ptr' data-ref="std::unique_ptr">unique_ptr</a>&lt;<a class="type" href="DiagnosticHandler.h.html#llvm::DiagnosticHandler" title='llvm::DiagnosticHandler' data-ref="llvm::DiagnosticHandler">DiagnosticHandler</a>&gt; <dfn class="decl" id="_ZN4llvm11LLVMContext20getDiagnosticHandlerEv" title='llvm::LLVMContext::getDiagnosticHandler' data-ref="_ZN4llvm11LLVMContext20getDiagnosticHandlerEv">getDiagnosticHandler</dfn>();</td></tr>
+<tr><th id="231">231</th><td></td></tr>
+<tr><th id="232">232</th><td>  <i class="doc">/// <span class="command">\brief</span> Return if a code hotness metric should be included in optimization</i></td></tr>
+<tr><th id="233">233</th><td><i class="doc">  /// diagnostics.</i></td></tr>
+<tr><th id="234">234</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm11LLVMContext30getDiagnosticsHotnessRequestedEv" title='llvm::LLVMContext::getDiagnosticsHotnessRequested' data-ref="_ZNK4llvm11LLVMContext30getDiagnosticsHotnessRequestedEv">getDiagnosticsHotnessRequested</dfn>() <em>const</em>;</td></tr>
+<tr><th id="235">235</th><td>  <i class="doc">/// <span class="command">\brief</span> Set if a code hotness metric should be included in optimization</i></td></tr>
+<tr><th id="236">236</th><td><i class="doc">  /// diagnostics.</i></td></tr>
+<tr><th id="237">237</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11LLVMContext30setDiagnosticsHotnessRequestedEb" title='llvm::LLVMContext::setDiagnosticsHotnessRequested' data-ref="_ZN4llvm11LLVMContext30setDiagnosticsHotnessRequestedEb">setDiagnosticsHotnessRequested</dfn>(<em>bool</em> <dfn class="local col1 decl" id="11081Requested" title='Requested' data-type='bool' data-ref="11081Requested">Requested</dfn>);</td></tr>
+<tr><th id="238">238</th><td></td></tr>
+<tr><th id="239">239</th><td>  <i class="doc">/// <span class="command">\brief</span> Return the minimum hotness value a diagnostic would need in order</i></td></tr>
+<tr><th id="240">240</th><td><i class="doc">  /// to be included in optimization diagnostics. If there is no minimum, this</i></td></tr>
+<tr><th id="241">241</th><td><i class="doc">  /// returns None.</i></td></tr>
+<tr><th id="242">242</th><td>  <a class="typedef" href="../../../stdint.h.html#uint64_t" title='uint64_t' data-type='unsigned long' data-ref="uint64_t">uint64_t</a> <dfn class="decl" id="_ZNK4llvm11LLVMContext30getDiagnosticsHotnessThresholdEv" title='llvm::LLVMContext::getDiagnosticsHotnessThreshold' data-ref="_ZNK4llvm11LLVMContext30getDiagnosticsHotnessThresholdEv">getDiagnosticsHotnessThreshold</dfn>() <em>const</em>;</td></tr>
+<tr><th id="243">243</th><td></td></tr>
+<tr><th id="244">244</th><td>  <i class="doc">/// <span class="command">\brief</span> Set the minimum hotness value a diagnostic needs in order to be</i></td></tr>
+<tr><th id="245">245</th><td><i class="doc">  /// included in optimization diagnostics.</i></td></tr>
+<tr><th id="246">246</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11LLVMContext30setDiagnosticsHotnessThresholdEm" title='llvm::LLVMContext::setDiagnosticsHotnessThreshold' data-ref="_ZN4llvm11LLVMContext30setDiagnosticsHotnessThresholdEm">setDiagnosticsHotnessThreshold</dfn>(<a class="typedef" href="../../../stdint.h.html#uint64_t" title='uint64_t' data-type='unsigned long' data-ref="uint64_t">uint64_t</a> <dfn class="local col2 decl" id="11082Threshold" title='Threshold' data-type='uint64_t' data-ref="11082Threshold">Threshold</dfn>);</td></tr>
+<tr><th id="247">247</th><td></td></tr>
+<tr><th id="248">248</th><td>  <i class="doc">/// <span class="command">\brief</span> Return the YAML file used by the backend to save optimization</i></td></tr>
+<tr><th id="249">249</th><td><i class="doc">  /// diagnostics.  If null, diagnostics are not saved in a file but only</i></td></tr>
+<tr><th id="250">250</th><td><i class="doc">  /// emitted via the diagnostic handler.</i></td></tr>
+<tr><th id="251">251</th><td>  <span class="namespace">yaml::</span><a class="type" href="#llvm::yaml::Output" title='llvm::yaml::Output' data-ref="llvm::yaml::Output">Output</a> *<dfn class="decl" id="_ZN4llvm11LLVMContext24getDiagnosticsOutputFileEv" title='llvm::LLVMContext::getDiagnosticsOutputFile' data-ref="_ZN4llvm11LLVMContext24getDiagnosticsOutputFileEv">getDiagnosticsOutputFile</dfn>();</td></tr>
+<tr><th id="252">252</th><td>  <i class="doc">/// Set the diagnostics output file used for optimization diagnostics.</i></td></tr>
+<tr><th id="253">253</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="254">254</th><td><i class="doc">  /// By default or if invoked with null, diagnostics are not saved in a file</i></td></tr>
+<tr><th id="255">255</th><td><i class="doc">  /// but only emitted via the diagnostic handler.  Even if an output file is</i></td></tr>
+<tr><th id="256">256</th><td><i class="doc">  /// set, the handler is invoked for each diagnostic message.</i></td></tr>
+<tr><th id="257">257</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11LLVMContext24setDiagnosticsOutputFileESt10unique_ptrINS_4yaml6OutputESt14default_deleteIS3_EE" title='llvm::LLVMContext::setDiagnosticsOutputFile' data-ref="_ZN4llvm11LLVMContext24setDiagnosticsOutputFileESt10unique_ptrINS_4yaml6OutputESt14default_deleteIS3_EE">setDiagnosticsOutputFile</dfn>(<span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/unique_ptr.h.html#std::unique_ptr" title='std::unique_ptr' data-ref="std::unique_ptr">unique_ptr</a>&lt;<span class="namespace">yaml::</span><a class="type" href="#llvm::yaml::Output" title='llvm::yaml::Output' data-ref="llvm::yaml::Output">Output</a>&gt; <dfn class="local col3 decl" id="11083F" title='F' data-type='std::unique_ptr&lt;yaml::Output&gt;' data-ref="11083F">F</dfn>);</td></tr>
+<tr><th id="258">258</th><td></td></tr>
+<tr><th id="259">259</th><td>  <i class="doc">/// <span class="command">\brief</span> Get the prefix that should be printed in front of a diagnostic of</i></td></tr>
+<tr><th id="260">260</th><td><i class="doc">  ///        the given<span class="command"> \p</span> <span class="arg">Severity</span></i></td></tr>
+<tr><th id="261">261</th><td>  <em>static</em> <em>const</em> <em>char</em> *<dfn class="decl" id="_ZN4llvm11LLVMContext26getDiagnosticMessagePrefixENS_18DiagnosticSeverityE" title='llvm::LLVMContext::getDiagnosticMessagePrefix' data-ref="_ZN4llvm11LLVMContext26getDiagnosticMessagePrefixENS_18DiagnosticSeverityE">getDiagnosticMessagePrefix</dfn>(<a class="type" href="#llvm::DiagnosticSeverity" title='llvm::DiagnosticSeverity' data-ref="llvm::DiagnosticSeverity">DiagnosticSeverity</a> <dfn class="local col4 decl" id="11084Severity" title='Severity' data-type='llvm::DiagnosticSeverity' data-ref="11084Severity">Severity</dfn>);</td></tr>
+<tr><th id="262">262</th><td></td></tr>
+<tr><th id="263">263</th><td>  <i class="doc">/// <span class="command">\brief</span> Report a message to the currently installed diagnostic handler.</i></td></tr>
+<tr><th id="264">264</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="265">265</th><td><i class="doc">  /// This function returns, in particular in the case of error reporting</i></td></tr>
+<tr><th id="266">266</th><td><i class="doc">  /// (DI.Severity ==<span class="command"> \a</span> <span class="arg">DS_Error),</span> so the caller should leave the compilation</i></td></tr>
+<tr><th id="267">267</th><td><i class="doc">  /// process in a self-consistent state, even though the generated code</i></td></tr>
+<tr><th id="268">268</th><td><i class="doc">  /// need not be correct.</i></td></tr>
+<tr><th id="269">269</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="270">270</th><td><i class="doc">  /// The diagnostic message will be implicitly prefixed with a severity keyword</i></td></tr>
+<tr><th id="271">271</th><td><i class="doc">  /// according to<span class="command"> \p</span> <span class="arg">DI.getSeverity(),</span> i.e., "error: " for<span class="command"> \a</span> <span class="arg">DS_Error,</span></i></td></tr>
+<tr><th id="272">272</th><td><i class="doc">  /// "warning: " for<span class="command"> \a</span> <span class="arg">DS_Warning,</span> and "note: " for<span class="command"> \a</span> <span class="arg">DS_Note.</span></i></td></tr>
+<tr><th id="273">273</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11LLVMContext8diagnoseERKNS_14DiagnosticInfoE" title='llvm::LLVMContext::diagnose' data-ref="_ZN4llvm11LLVMContext8diagnoseERKNS_14DiagnosticInfoE">diagnose</dfn>(<em>const</em> <a class="type" href="DiagnosticHandler.h.html#llvm::DiagnosticInfo" title='llvm::DiagnosticInfo' data-ref="llvm::DiagnosticInfo">DiagnosticInfo</a> &amp;<dfn class="local col5 decl" id="11085DI" title='DI' data-type='const llvm::DiagnosticInfo &amp;' data-ref="11085DI">DI</dfn>);</td></tr>
+<tr><th id="274">274</th><td></td></tr>
+<tr><th id="275">275</th><td>  <i class="doc">/// <span class="command">\brief</span> Registers a yield callback with the given context.</i></td></tr>
+<tr><th id="276">276</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="277">277</th><td><i class="doc">  /// The yield callback function may be called by LLVM to transfer control back</i></td></tr>
+<tr><th id="278">278</th><td><i class="doc">  /// to the client that invoked the LLVM compilation. This can be used to yield</i></td></tr>
+<tr><th id="279">279</th><td><i class="doc">  /// control of the thread, or perform periodic work needed by the client.</i></td></tr>
+<tr><th id="280">280</th><td><i class="doc">  /// There is no guaranteed frequency at which callbacks must occur; in fact,</i></td></tr>
+<tr><th id="281">281</th><td><i class="doc">  /// the client is not guaranteed to ever receive this callback. It is at the</i></td></tr>
+<tr><th id="282">282</th><td><i class="doc">  /// sole discretion of LLVM to do so and only if it can guarantee that</i></td></tr>
+<tr><th id="283">283</th><td><i class="doc">  /// suspending the thread won't block any forward progress in other LLVM</i></td></tr>
+<tr><th id="284">284</th><td><i class="doc">  /// contexts in the same process.</i></td></tr>
+<tr><th id="285">285</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="286">286</th><td><i class="doc">  /// At a suspend point, the state of the current LLVM context is intentionally</i></td></tr>
+<tr><th id="287">287</th><td><i class="doc">  /// undefined. No assumptions about it can or should be made. Only LLVM</i></td></tr>
+<tr><th id="288">288</th><td><i class="doc">  /// context API calls that explicitly state that they can be used during a</i></td></tr>
+<tr><th id="289">289</th><td><i class="doc">  /// yield callback are allowed to be used. Any other API calls into the</i></td></tr>
+<tr><th id="290">290</th><td><i class="doc">  /// context are not supported until the yield callback function returns</i></td></tr>
+<tr><th id="291">291</th><td><i class="doc">  /// control to LLVM. Other LLVM contexts are unaffected by this restriction.</i></td></tr>
+<tr><th id="292">292</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11LLVMContext16setYieldCallbackEPFvPS0_PvES2_" title='llvm::LLVMContext::setYieldCallback' data-ref="_ZN4llvm11LLVMContext16setYieldCallbackEPFvPS0_PvES2_">setYieldCallback</dfn>(<a class="typedef" href="#llvm::LLVMContext::YieldCallbackTy" title='llvm::LLVMContext::YieldCallbackTy' data-type='void (*)(llvm::LLVMContext *, void *)' data-ref="llvm::LLVMContext::YieldCallbackTy">YieldCallbackTy</a> <dfn class="local col6 decl" id="11086Callback" title='Callback' data-type='YieldCallbackTy' data-ref="11086Callback">Callback</dfn>, <em>void</em> *<dfn class="local col7 decl" id="11087OpaqueHandle" title='OpaqueHandle' data-type='void *' data-ref="11087OpaqueHandle">OpaqueHandle</dfn>);</td></tr>
+<tr><th id="293">293</th><td></td></tr>
+<tr><th id="294">294</th><td>  <i class="doc">/// <span class="command">\brief</span> Calls the yield callback (if applicable).</i></td></tr>
+<tr><th id="295">295</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="296">296</th><td><i class="doc">  /// This transfers control of the current thread back to the client, which may</i></td></tr>
+<tr><th id="297">297</th><td><i class="doc">  /// suspend the current thread. Only call this method when LLVM doesn't hold</i></td></tr>
+<tr><th id="298">298</th><td><i class="doc">  /// any global mutex or cannot block the execution in another LLVM context.</i></td></tr>
+<tr><th id="299">299</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11LLVMContext5yieldEv" title='llvm::LLVMContext::yield' data-ref="_ZN4llvm11LLVMContext5yieldEv">yield</dfn>();</td></tr>
+<tr><th id="300">300</th><td></td></tr>
+<tr><th id="301">301</th><td>  <i class="doc">/// emitError - Emit an error message to the currently installed error handler</i></td></tr>
+<tr><th id="302">302</th><td><i class="doc">  /// with optional location information.  This function returns, so code should</i></td></tr>
+<tr><th id="303">303</th><td><i class="doc">  /// be prepared to drop the erroneous construct on the floor and "not crash".</i></td></tr>
+<tr><th id="304">304</th><td><i class="doc">  /// The generated code need not be correct.  The error message will be</i></td></tr>
+<tr><th id="305">305</th><td><i class="doc">  /// implicitly prefixed with "error: " and should not end with a ".".</i></td></tr>
+<tr><th id="306">306</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11LLVMContext9emitErrorEjRKNS_5TwineE" title='llvm::LLVMContext::emitError' data-ref="_ZN4llvm11LLVMContext9emitErrorEjRKNS_5TwineE">emitError</dfn>(<em>unsigned</em> <dfn class="local col8 decl" id="11088LocCookie" title='LocCookie' data-type='unsigned int' data-ref="11088LocCookie">LocCookie</dfn>, <em>const</em> <a class="type" href="../ADT/Twine.h.html#llvm::Twine" title='llvm::Twine' data-ref="llvm::Twine">Twine</a> &amp;<dfn class="local col9 decl" id="11089ErrorStr" title='ErrorStr' data-type='const llvm::Twine &amp;' data-ref="11089ErrorStr">ErrorStr</dfn>);</td></tr>
+<tr><th id="307">307</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11LLVMContext9emitErrorEPKNS_11InstructionERKNS_5TwineE" title='llvm::LLVMContext::emitError' data-ref="_ZN4llvm11LLVMContext9emitErrorEPKNS_11InstructionERKNS_5TwineE">emitError</dfn>(<em>const</em> <a class="type" href="Instruction.h.html#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> *<dfn class="local col0 decl" id="11090I" title='I' data-type='const llvm::Instruction *' data-ref="11090I">I</dfn>, <em>const</em> <a class="type" href="../ADT/Twine.h.html#llvm::Twine" title='llvm::Twine' data-ref="llvm::Twine">Twine</a> &amp;<dfn class="local col1 decl" id="11091ErrorStr" title='ErrorStr' data-type='const llvm::Twine &amp;' data-ref="11091ErrorStr">ErrorStr</dfn>);</td></tr>
+<tr><th id="308">308</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11LLVMContext9emitErrorERKNS_5TwineE" title='llvm::LLVMContext::emitError' data-ref="_ZN4llvm11LLVMContext9emitErrorERKNS_5TwineE">emitError</dfn>(<em>const</em> <a class="type" href="../ADT/Twine.h.html#llvm::Twine" title='llvm::Twine' data-ref="llvm::Twine">Twine</a> &amp;<dfn class="local col2 decl" id="11092ErrorStr" title='ErrorStr' data-type='const llvm::Twine &amp;' data-ref="11092ErrorStr">ErrorStr</dfn>);</td></tr>
+<tr><th id="309">309</th><td></td></tr>
+<tr><th id="310">310</th><td>  <i class="doc">/// <span class="command">\brief</span> Query for a debug option's value.</i></td></tr>
+<tr><th id="311">311</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="312">312</th><td><i class="doc">  /// This function returns typed data populated from command line parsing.</i></td></tr>
+<tr><th id="313">313</th><td>  <b>template</b> &lt;<b>typename</b> ValT, <b>typename</b> Base, ValT(Base::*Mem)&gt;</td></tr>
+<tr><th id="314">314</th><td>  ValT <dfn class="decl def" id="_ZNK4llvm11LLVMContext9getOptionEv" title='llvm::LLVMContext::getOption' data-ref="_ZNK4llvm11LLVMContext9getOptionEv">getOption</dfn>() <em>const</em> {</td></tr>
+<tr><th id="315">315</th><td>    <b>return</b> <a class="type" href="../Support/Options.h.html#llvm::OptionRegistry" title='llvm::OptionRegistry' data-ref="llvm::OptionRegistry">OptionRegistry</a>::<a class="ref" href="../Support/Options.h.html#_ZN4llvm14OptionRegistry8instanceEv" title='llvm::OptionRegistry::instance' data-ref="_ZN4llvm14OptionRegistry8instanceEv">instance</a>().<b>template</b> get&lt;ValT, Base, <a class="tu ref" href="#Mem" title='Mem' data-use='c' data-ref="Mem">Mem</a>&gt;();</td></tr>
+<tr><th id="316">316</th><td>  }</td></tr>
+<tr><th id="317">317</th><td></td></tr>
+<tr><th id="318">318</th><td>  <i class="doc">/// <span class="command">\brief</span> Access the object which manages optimization bisection for failure</i></td></tr>
+<tr><th id="319">319</th><td><i class="doc">  /// analysis.</i></td></tr>
+<tr><th id="320">320</th><td>  <a class="type" href="#llvm::OptBisect" title='llvm::OptBisect' data-ref="llvm::OptBisect">OptBisect</a> &amp;<dfn class="decl" id="_ZN4llvm11LLVMContext12getOptBisectEv" title='llvm::LLVMContext::getOptBisect' data-ref="_ZN4llvm11LLVMContext12getOptBisectEv">getOptBisect</dfn>();</td></tr>
+<tr><th id="321">321</th><td><b>private</b>:</td></tr>
+<tr><th id="322">322</th><td>  <i>// Module needs access to the add/removeModule methods.</i></td></tr>
+<tr><th id="323">323</th><td>  <b>friend</b> <b>class</b> <a class="type" href="Module.h.html#llvm::Module" title='llvm::Module' data-ref="llvm::Module">Module</a>;</td></tr>
+<tr><th id="324">324</th><td></td></tr>
+<tr><th id="325">325</th><td>  <i class="doc">/// addModule - Register a module as being instantiated in this context.  If</i></td></tr>
+<tr><th id="326">326</th><td><i class="doc">  /// the context is deleted, the module will be deleted as well.</i></td></tr>
+<tr><th id="327">327</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11LLVMContext9addModuleEPNS_6ModuleE" title='llvm::LLVMContext::addModule' data-ref="_ZN4llvm11LLVMContext9addModuleEPNS_6ModuleE">addModule</dfn>(<a class="type" href="Module.h.html#llvm::Module" title='llvm::Module' data-ref="llvm::Module">Module</a>*);</td></tr>
+<tr><th id="328">328</th><td></td></tr>
+<tr><th id="329">329</th><td>  <i class="doc">/// removeModule - Unregister a module from this context.</i></td></tr>
+<tr><th id="330">330</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm11LLVMContext12removeModuleEPNS_6ModuleE" title='llvm::LLVMContext::removeModule' data-ref="_ZN4llvm11LLVMContext12removeModuleEPNS_6ModuleE">removeModule</dfn>(<a class="type" href="Module.h.html#llvm::Module" title='llvm::Module' data-ref="llvm::Module">Module</a>*);</td></tr>
+<tr><th id="331">331</th><td>};</td></tr>
+<tr><th id="332">332</th><td></td></tr>
+<tr><th id="333">333</th><td><i>// Create wrappers for C Binding types (see CBindingWrapping.h).</i></td></tr>
+<tr><th id="334">334</th><td><a class="macro" href="../Support/CBindingWrapping.h.html#20" title="inline LLVMContext *unwrap(LLVMContextRef P) { return reinterpret_cast&lt;LLVMContext*&gt;(P); } inline LLVMContextRef wrap(const LLVMContext *P) { return reinterpret_cast&lt;LLVMContextRef&gt;(const_cast&lt;LLVMContext*&gt;(P)); }" data-ref="_M/DEFINE_SIMPLE_CONVERSION_FUNCTIONS">DEFINE_SIMPLE_CONVERSION_FUNCTIONS</a>(<a class="type" href="#llvm::LLVMContext" title='llvm::LLVMContext' data-ref="llvm::LLVMContext">LLVMContext</a>, <a class="typedef" href="../../../llvm-c-6.0/llvm-c/Types.h.html#LLVMContextRef" title='LLVMContextRef' data-type='struct LLVMOpaqueContext *' data-ref="LLVMContextRef">LLVMContextRef</a>)</td></tr>
+<tr><th id="335">335</th><td></td></tr>
+<tr><th id="336">336</th><td><i>/* Specialized opaque context conversions.</i></td></tr>
+<tr><th id="337">337</th><td><i> */</i></td></tr>
+<tr><th id="338">338</th><td><b>inline</b> <a class="type" href="#llvm::LLVMContext" title='llvm::LLVMContext' data-ref="llvm::LLVMContext">LLVMContext</a> **<dfn class="decl def" id="_ZN4llvm6unwrapEPP17LLVMOpaqueContext" title='llvm::unwrap' data-ref="_ZN4llvm6unwrapEPP17LLVMOpaqueContext">unwrap</dfn>(<a class="typedef" href="../../../llvm-c-6.0/llvm-c/Types.h.html#LLVMContextRef" title='LLVMContextRef' data-type='struct LLVMOpaqueContext *' data-ref="LLVMContextRef">LLVMContextRef</a>* <dfn class="local col3 decl" id="11093Tys" title='Tys' data-type='LLVMContextRef *' data-ref="11093Tys">Tys</dfn>) {</td></tr>
+<tr><th id="339">339</th><td>  <b>return</b> <b>reinterpret_cast</b>&lt;<a class="type" href="#llvm::LLVMContext" title='llvm::LLVMContext' data-ref="llvm::LLVMContext">LLVMContext</a>**&gt;(<a class="local col3 ref" href="#11093Tys" title='Tys' data-ref="11093Tys">Tys</a>);</td></tr>
+<tr><th id="340">340</th><td>}</td></tr>
+<tr><th id="341">341</th><td></td></tr>
+<tr><th id="342">342</th><td><b>inline</b> <a class="typedef" href="../../../llvm-c-6.0/llvm-c/Types.h.html#LLVMContextRef" title='LLVMContextRef' data-type='struct LLVMOpaqueContext *' data-ref="LLVMContextRef">LLVMContextRef</a> *<dfn class="decl def" id="_ZN4llvm4wrapEPPKNS_11LLVMContextE" title='llvm::wrap' data-ref="_ZN4llvm4wrapEPPKNS_11LLVMContextE">wrap</dfn>(<em>const</em> <a class="type" href="#llvm::LLVMContext" title='llvm::LLVMContext' data-ref="llvm::LLVMContext">LLVMContext</a> **<dfn class="local col4 decl" id="11094Tys" title='Tys' data-type='const llvm::LLVMContext **' data-ref="11094Tys">Tys</dfn>) {</td></tr>
+<tr><th id="343">343</th><td>  <b>return</b> <b>reinterpret_cast</b>&lt;<a class="typedef" href="../../../llvm-c-6.0/llvm-c/Types.h.html#LLVMContextRef" title='LLVMContextRef' data-type='struct LLVMOpaqueContext *' data-ref="LLVMContextRef">LLVMContextRef</a>*&gt;(<b>const_cast</b>&lt;<a class="type" href="#llvm::LLVMContext" title='llvm::LLVMContext' data-ref="llvm::LLVMContext">LLVMContext</a>**&gt;(<a class="local col4 ref" href="#11094Tys" title='Tys' data-ref="11094Tys">Tys</a>));</td></tr>
+<tr><th id="344">344</th><td>}</td></tr>
+<tr><th id="345">345</th><td></td></tr>
+<tr><th id="346">346</th><td>} <i>// end namespace llvm</i></td></tr>
+<tr><th id="347">347</th><td></td></tr>
+<tr><th id="348">348</th><td><u>#<span data-ppcond="15">endif</span> // LLVM_IR_LLVMCONTEXT_H</u></td></tr>
+<tr><th id="349">349</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../../../pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc.html'>pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc</a><br/>Generated on <em>2019-Oct-28</em> from project include<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

@@ -1,0 +1,5 @@
+<dec f='pocl/include/CL/cl.h' l='927' type='cl_context clCreateContextFromType(const cl_context_properties * properties, cl_device_type device_type, void (*)(const char *, const void *, size_t, void *) pfn_notify, void * user_data, cl_int * errcode_ret)'/>
+<use f='pocl/examples/EinsteinToolkit/EinsteinToolkit.c' l='509' u='c' c='setup'/>
+<use f='pocl/lib/CL/pocl_intfn.h' l='37' c='POclCreateContextFromType'/>
+<use f='pocl/lib/poclu/misc.c' l='49' u='c' c='poclu_create_any_context'/>
+<use f='pocl/include/CL/cl2.hpp' l='2902' u='c' c='_ZN2cl7ContextC1EmPlPFvPKcPKvmPvES6_Pi'/>

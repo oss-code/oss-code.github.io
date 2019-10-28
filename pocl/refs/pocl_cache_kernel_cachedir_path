@@ -1,0 +1,16 @@
+<dec f='pocl/include/pocl_cache.h' l='91' type='void pocl_cache_kernel_cachedir_path(char * kernel_cachedir_path, cl_program program, unsigned int device_i, cl_kernel kernel, const char * append_str, _cl_command_node * command, int specialize)'/>
+<use f='pocl/lib/CL/devices/common.c' l='142' u='c' c='llvm_codegen'/>
+<def f='pocl/lib/CL/pocl_cache.c' l='123' ll='152' type='void pocl_cache_kernel_cachedir_path(char * kernel_cachedir_path, cl_program program, unsigned int device_i, cl_kernel kernel, const char * append_str, _cl_command_node * command, int specialized)'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='175' u='c' c='pocl_cache_work_group_function_path'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='207' u='c' c='pocl_cache_final_binary_path'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='350' u='c' c='pocl_cache_write_kernel_parallel_bc'/>
+<doc f='pocl/lib/CL/pocl_cache.c' l='113'>/* Return the cache directory for the given work-group function.
+   If specialized = 1, specialization parameters are derived from run_cmd,
+   otherwise a generic directory name is returned.
+
+   The current specialization parameters are:
+   - local size
+   - if the global offset is zero (in all dimensions) or not
+   - if the grid size in any dimension is smaller than a device
+   specified limit (&quot;smallgrid&quot; specialization)
+*/</doc>

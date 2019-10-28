@@ -1,0 +1,3 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='643' type='const llvm::SCEV * llvm::ScalarEvolution::getTruncateOrNoop(const llvm::SCEV * V, llvm::Type * Ty)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='641'>/// Return a SCEV corresponding to a conversion of the input value to the
+  /// specified type.  The conversion must not be widening.</doc>

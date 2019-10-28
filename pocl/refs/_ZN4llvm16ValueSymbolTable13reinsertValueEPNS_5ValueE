@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/ValueSymbolTable.h' l='115' type='void llvm::ValueSymbolTable::reinsertValue(llvm::Value * V)'/>
+<doc f='include/llvm-6.0/llvm/IR/ValueSymbolTable.h' l='111'>/// This method adds the provided value \p N to the symbol table.  The Value
+  /// must have a name which is used to place the value in the symbol table.
+  /// If the inserted name conflicts, this renames the value.
+  /// @brief Add a named value to the symbol table</doc>

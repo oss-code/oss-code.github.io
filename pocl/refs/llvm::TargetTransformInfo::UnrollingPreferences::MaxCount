@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='394' type='unsigned int'/>
+<offset>256</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='390'>// Set the maximum unrolling factor. The unrolling factor may be selected
+    // using the appropriate cost threshold, but may not exceed this number
+    // (set to UINT_MAX to disable). This does not apply in cases where the
+    // loop is being fully unrolled.</doc>

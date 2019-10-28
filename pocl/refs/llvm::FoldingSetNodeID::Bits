@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='309' type='SmallVector&lt;unsigned int, 32&gt;'/>
+<use f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='315' u='w' c='_ZN4llvm16FoldingSetNodeIDC1ENS_19FoldingSetNodeIDRefE'/>
+<use f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='334' u='m' c='_ZN4llvm16FoldingSetNodeID5clearEv'/>
+<offset>0</offset>
+<doc f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='307'>/// Bits - Vector of all the data bits that make the node unique.
+  /// Use a SmallVector to avoid a heap allocation in the common case.</doc>

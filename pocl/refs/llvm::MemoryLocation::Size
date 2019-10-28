@@ -1,0 +1,16 @@
+<dec f='include/llvm-6.0/llvm/Analysis/MemoryLocation.h' l='58' type='uint64_t'/>
+<use f='include/llvm-6.0/llvm/Analysis/MemoryLocation.h' l='105' u='w' c='_ZN4llvm14MemoryLocationC1EPKNS_5ValueEmRKNS_9AAMDNodesE'/>
+<use f='include/llvm-6.0/llvm/Analysis/MemoryLocation.h' l='115' u='w' c='_ZNK4llvm14MemoryLocation14getWithNewSizeEm'/>
+<use f='include/llvm-6.0/llvm/Analysis/MemoryLocation.h' l='126' u='r' c='_ZNK4llvm14MemoryLocationeqERKS0_'/>
+<use f='include/llvm-6.0/llvm/Analysis/MemoryLocation.h' l='126' u='r' c='_ZNK4llvm14MemoryLocationeqERKS0_'/>
+<use f='include/llvm-6.0/llvm/Analysis/MemoryLocation.h' l='140' u='r' c='_ZN4llvm12DenseMapInfoINS_14MemoryLocationEE12getHashValueERKS1_'/>
+<offset>64</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/MemoryLocation.h' l='51'>/// The maximum size of the location, in address-units, or
+  /// UnknownSize if the size is not known.
+  ///
+  /// Note that an unknown size does not mean the pointer aliases the entire
+  /// virtual address space, because there are restrictions on stepping out of
+  /// one object and into another. See
+  /// http://llvm.org/docs/LangRef.html#pointeraliasing</doc>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='148' u='r' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='148' u='r' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>

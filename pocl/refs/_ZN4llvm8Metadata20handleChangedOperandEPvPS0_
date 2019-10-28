@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='93' ll='95' type='void llvm::Metadata::handleChangedOperand(void * , llvm::Metadata * )'/>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='89'>/// \brief Default handling of a changed operand, which asserts.
+  ///
+  /// If subclasses pass themselves in as owners to a tracking node reference,
+  /// they must provide an implementation of this method.</doc>

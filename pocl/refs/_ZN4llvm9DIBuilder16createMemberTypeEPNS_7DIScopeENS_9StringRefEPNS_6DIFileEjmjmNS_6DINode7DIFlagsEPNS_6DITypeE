@@ -1,0 +1,11 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='251' type='llvm::DIDerivedType * llvm::DIBuilder::createMemberType(llvm::DIScope * Scope, llvm::StringRef Name, llvm::DIFile * File, unsigned int LineNo, uint64_t SizeInBits, uint32_t AlignInBits, uint64_t OffsetInBits, DINode::DIFlags Flags, llvm::DIType * Ty)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='241'>/// Create debugging information entry for a member.
+    /// \param Scope        Member scope.
+    /// \param Name         Member name.
+    /// \param File         File where this member is defined.
+    /// \param LineNo       Line number.
+    /// \param SizeInBits   Member size.
+    /// \param AlignInBits  Member alignment.
+    /// \param OffsetInBits Member offset.
+    /// \param Flags        Flags to encode member attribute, e.g. private
+    /// \param Ty           Parent type.</doc>

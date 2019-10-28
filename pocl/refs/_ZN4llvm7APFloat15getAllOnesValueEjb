@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/ADT/APFloat.h' l='935' type='static llvm::APFloat llvm::APFloat::getAllOnesValue(unsigned int BitWidth, bool isIEEE = false)'/>
+<doc f='include/llvm-6.0/llvm/ADT/APFloat.h' l='931'>/// Returns a float which is bitcasted from an all one value int.
+  ///
+  /// \param BitWidth - Select float type
+  /// \param isIEEE   - If 128 bit number, select between PPC and IEEE</doc>

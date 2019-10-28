@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='205' type='bool llvm::FlattenCFG(llvm::BasicBlock * BB, AliasAnalysis * AA = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='202'>/// This function is used to flatten a CFG. For example, it uses parallel-and
+/// and parallel-or mode to collapse if-conditions and merge if-regions with
+/// identical statements.</doc>

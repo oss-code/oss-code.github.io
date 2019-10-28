@@ -1,0 +1,11 @@
+<dec f='include/llvm-6.0/llvm/Option/OptTable.h' l='134' type='std::vector&lt;std::string&gt; llvm::opt::OptTable::suggestValueCompletions(llvm::StringRef Option, llvm::StringRef Arg) const'/>
+<doc f='include/llvm-6.0/llvm/Option/OptTable.h' l='124'>/// Find possible value for given flags. This is used for shell
+  /// autocompletion.
+  ///
+  /// \param [in] Option - Key flag like &quot;-stdlib=&quot; when &quot;-stdlib=l&quot;
+  /// was passed to clang.
+  ///
+  /// \param [in] Arg - Value which we want to autocomplete like &quot;l&quot;
+  /// when &quot;-stdlib=l&quot; was passed to clang.
+  ///
+  /// \return The vector of possible values.</doc>

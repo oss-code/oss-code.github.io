@@ -1,0 +1,9 @@
+<dec f='include/hwloc/helper.h' l='497' type='hwloc_obj_t hwloc_get_cache_covering_cpuset(hwloc_topology_t topology, hwloc_const_cpuset_t set)'/>
+<def f='include/hwloc/helper.h' l='498' ll='508' type='hwloc_obj_t hwloc_get_cache_covering_cpuset(hwloc_topology_t topology, hwloc_const_cpuset_t set)'/>
+<doc f='include/hwloc/helper.h' l='489'>/** \brief Get the first cache covering a cpuset \p set
+ *
+ * \return \c NULL if no cache matches.
+ *
+ * \note This function cannot work if the root object does not have a CPU set,
+ * e.g. if the topology is made of different machines.
+ */</doc>

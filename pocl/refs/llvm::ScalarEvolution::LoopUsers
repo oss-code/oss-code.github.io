@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1777' type='DenseMap&lt;const llvm::Loop *, SmallVector&lt;const llvm::SCEV *, 4&gt; &gt;'/>
+<offset>5312</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1775'>/// This maps loops to a list of SCEV expressions that (transitively) use said
+  /// loop.</doc>

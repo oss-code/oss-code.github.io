@@ -1,0 +1,6 @@
+<def f='pocl/lib/CL/pocl_tracing.h' l='47' ll='55'/>
+<size>24</size>
+<doc f='pocl/lib/CL/pocl_tracing.h' l='46'>/* Struct of trace handlers. */</doc>
+<mbr r='pocl_event_tracer::name' o='0' t='const char *'/>
+<mbr r='pocl_event_tracer::init' o='64' t='void (*)()'/>
+<mbr r='pocl_event_tracer::event_updated' o='128' t='void (*)(cl_event, int)'/>

@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Target/TargetMachine.h' l='209' type='llvm::TargetIRAnalysis llvm::TargetMachine::getTargetIRAnalysis()'/>
+<doc f='include/llvm-6.0/llvm/Target/TargetMachine.h' l='204'>/// \brief Get a \c TargetIRAnalysis appropriate for the target.
+  ///
+  /// This is used to construct the new pass manager&apos;s target IR analysis pass,
+  /// set up appropriately for this target machine. Even the old pass manager
+  /// uses this to answer queries about the IR.</doc>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='186' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>

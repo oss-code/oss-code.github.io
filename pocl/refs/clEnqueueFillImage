@@ -1,0 +1,8 @@
+<dec f='pocl/include/CL/cl.h' l='1507' type='cl_int clEnqueueFillImage(cl_command_queue command_queue, cl_mem image, const void * fill_color, const size_t * origin, const size_t * region, cl_uint num_events_in_wait_list, const cl_event * event_wait_list, cl_event * event)'/>
+<use f='pocl/lib/CL/pocl_intfn.h' l='75' c='POclEnqueueFillImage'/>
+<use f='pocl/tests/kernel/image_query_funcs.c' l='92' u='c' c='main'/>
+<use f='pocl/include/CL/cl2.hpp' l='7741' u='c' c='_ZNK2cl12CommandQueue16enqueueFillImageERKNS_5ImageE9cl_float4RKSt5arrayImLm3EES8_PKSt6vectorINS_5EventESaISA_EEPSA_'/>
+<use f='pocl/include/CL/cl2.hpp' l='7775' u='c' c='_ZNK2cl12CommandQueue16enqueueFillImageERKNS_5ImageE7cl_int4RKSt5arrayImLm3EES8_PKSt6vectorINS_5EventESaISA_EEPSA_'/>
+<use f='pocl/include/CL/cl2.hpp' l='7809' u='c' c='_ZNK2cl12CommandQueue16enqueueFillImageERKNS_5ImageE8cl_uint4RKSt5arrayImLm3EES8_PKSt6vectorINS_5EventESaISA_EEPSA_'/>
+<use f='pocl/tests/runtime/test_event_free.c' l='141' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_event_free.c' l='173' u='c' c='main'/>

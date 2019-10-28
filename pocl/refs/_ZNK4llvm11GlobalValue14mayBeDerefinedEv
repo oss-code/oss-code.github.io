@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='124' ll='143' type='bool llvm::GlobalValue::mayBeDerefined() const'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='394' u='c' c='_ZNK4llvm11GlobalValue17isDefinitionExactEv'/>
+<doc f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='121'>/// Returns true if the definition of this global may be replaced by a
+  /// differently optimized variant of the same source level function at link
+  /// time.</doc>

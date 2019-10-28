@@ -1,0 +1,22 @@
+<def f='include/llvm-6.0/llvm/IR/ValueSymbolTable.h' l='38' ll='135'/>
+<size>40</size>
+<doc f='include/llvm-6.0/llvm/IR/ValueSymbolTable.h' l='34'>/// This class provides a symbol table of name/value pairs. It is essentially
+/// a std::map&lt;std::string,Value*&gt; but has a controlled interface provided by
+/// LLVM as well as ensuring uniqueness of names.
+///</doc>
+<fun r='_ZN4llvm16ValueSymbolTableC1Ev'/>
+<fun r='_ZN4llvm16ValueSymbolTableD1Ev'/>
+<fun r='_ZNK4llvm16ValueSymbolTable6lookupENS_9StringRefE'/>
+<fun r='_ZNK4llvm16ValueSymbolTable5emptyEv'/>
+<fun r='_ZNK4llvm16ValueSymbolTable4sizeEv'/>
+<fun r='_ZNK4llvm16ValueSymbolTable4dumpEv'/>
+<fun r='_ZN4llvm16ValueSymbolTable5beginEv'/>
+<fun r='_ZNK4llvm16ValueSymbolTable5beginEv'/>
+<fun r='_ZN4llvm16ValueSymbolTable3endEv'/>
+<fun r='_ZNK4llvm16ValueSymbolTable3endEv'/>
+<fun r='_ZN4llvm16ValueSymbolTable14makeUniqueNameEPNS_5ValueERNS_11SmallStringILj256EEE'/>
+<fun r='_ZN4llvm16ValueSymbolTable13reinsertValueEPNS_5ValueE'/>
+<fun r='_ZN4llvm16ValueSymbolTable15createValueNameENS_9StringRefEPNS_5ValueE'/>
+<fun r='_ZN4llvm16ValueSymbolTable15removeValueNameEPNS_14StringMapEntryIPNS_5ValueEEE'/>
+<mbr r='llvm::ValueSymbolTable::vmap' o='0' t='ValueMap'/>
+<mbr r='llvm::ValueSymbolTable::LastUnique' o='256' t='uint32_t'/>

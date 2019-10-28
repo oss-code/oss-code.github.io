@@ -1,0 +1,6 @@
+<dec f='include/hwloc/helper.h' l='411' type='int hwloc_obj_is_in_subtree(hwloc_topology_t topology, hwloc_obj_t obj, hwloc_obj_t subtree_root)'/>
+<def f='include/hwloc/helper.h' l='412' ll='416' type='int hwloc_obj_is_in_subtree(hwloc_topology_t topology, hwloc_obj_t obj, hwloc_obj_t subtree_root)'/>
+<doc f='include/hwloc/helper.h' l='406'>/** \brief Returns true if \p obj is inside the subtree beginning with ancestor object \p subtree_root.
+ *
+ * \note This function assumes that both \p obj and \p subtree_root have a \p cpuset.
+ */</doc>

@@ -1,0 +1,4 @@
+<def f='include/llvm-c-6.0/llvm-c/Target.h' l='136' ll='146' type='LLVMBool LLVMInitializeNativeTarget()'/>
+<doc f='include/llvm-c-6.0/llvm-c/Target.h' l='133'>/** LLVMInitializeNativeTarget - The main program should call this function to
+    initialize the native target corresponding to the host.  This is useful
+    for JIT applications to ensure that the target gets linked in correctly. */</doc>

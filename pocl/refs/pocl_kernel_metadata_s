@@ -1,0 +1,13 @@
+<def f='pocl/lib/CL/pocl_cl.h' l='1037' ll='1057'/>
+<size>96</size>
+<mbr r='pocl_kernel_metadata_s::num_args' o='0' t='cl_uint'/>
+<mbr r='pocl_kernel_metadata_s::num_locals' o='32' t='cl_uint'/>
+<mbr r='pocl_kernel_metadata_s::local_sizes' o='64' t='size_t *'/>
+<mbr r='pocl_kernel_metadata_s::name' o='128' t='char *'/>
+<mbr r='pocl_kernel_metadata_s::attributes' o='192' t='char *'/>
+<mbr r='pocl_kernel_metadata_s::arg_info' o='256' t='struct pocl_argument_info *'/>
+<mbr r='pocl_kernel_metadata_s::has_arg_metadata' o='320' t='cl_bitfield'/>
+<mbr r='pocl_kernel_metadata_s::reqd_wg_size' o='384' t='size_t [3]'/>
+<mbr r='pocl_kernel_metadata_s::build_hash' o='576' t='pocl_kernel_hash_t *'/>
+<mbr r='pocl_kernel_metadata_s::builtin_kernel' o='640' t='cl_bitfield'/>
+<mbr r='pocl_kernel_metadata_s::data' o='704' t='void **'/>

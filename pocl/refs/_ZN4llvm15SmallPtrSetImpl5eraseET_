@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/ADT/SmallPtrSet.h' l='378' ll='380' type='bool llvm::SmallPtrSetImpl::erase(PtrType Ptr)'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='180' u='c' c='_ZN4llvm17PreservedAnalyses8preserveEPNS_11AnalysisKeyE'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='217' u='c' c='_ZN4llvm17PreservedAnalyses7abandonEPNS_11AnalysisKeyE'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='235' u='c' c='_ZN4llvm17PreservedAnalyses9intersectERKS0_'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='240' u='c' c='_ZN4llvm17PreservedAnalyses9intersectERKS0_'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='257' u='c' c='_ZN4llvm17PreservedAnalyses9intersectEOS0_'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='262' u='c' c='_ZN4llvm17PreservedAnalyses9intersectEOS0_'/>
+<doc f='include/llvm-6.0/llvm/ADT/SmallPtrSet.h' l='376'>/// erase - If the set contains the specified pointer, remove it and return
+  /// true, otherwise return false.</doc>

@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/Instruction.h' l='297' type='void llvm::Instruction::setIsExact(bool b = true)'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='435' u='c' c='_ZN4llvm14BinaryOperator11CreateExactENS_11Instruction9BinaryOpsEPNS_5ValueES4_RKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='441' u='c' c='_ZN4llvm14BinaryOperator11CreateExactENS_11Instruction9BinaryOpsEPNS_5ValueES4_RKNS_5TwineEPNS_10BasicBlockE'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='447' u='c' c='_ZN4llvm14BinaryOperator11CreateExactENS_11Instruction9BinaryOpsEPNS_5ValueES4_RKNS_5TwineEPS1_'/>
+<doc f='include/llvm-6.0/llvm/IR/Instruction.h' l='295'>/// Set or clear the exact flag on this instruction, which must be an operator
+  /// which supports this flag. See LangRef.html for the meaning of this flag.</doc>

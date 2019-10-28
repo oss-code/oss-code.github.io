@@ -1,0 +1,38 @@
+<dec f='include/hwloc/diff.h' l='192' type='int hwloc_topology_diff_build(hwloc_topology_t topology, hwloc_topology_t newtopology, unsigned long flags, hwloc_topology_diff_t * diff)'/>
+<doc f='include/hwloc/diff.h' l='155'>/** \brief Compute the difference between 2 topologies.
+ *
+ * The difference is stored as a list of ::hwloc_topology_diff_t entries
+ * starting at \p diff.
+ * It is computed by doing a depth-first traversal of both topology trees
+ * simultaneously.
+ *
+ * If the difference between 2 objects is too complex to be represented
+ * (for instance if some objects have different types, or different numbers
+ * of children), a special diff entry of type ::HWLOC_TOPOLOGY_DIFF_TOO_COMPLEX
+ * is queued.
+ * The computation of the diff does not continue below these objects.
+ * So each such diff entry means that the difference between two subtrees
+ * could not be computed.
+ *
+ * \return 0 if the difference can be represented properly.
+ *
+ * \return 0 with \p diff pointing to NULL if there is no difference
+ * between the topologies.
+ *
+ * \return 1 if the difference is too complex (see above). Some entries in
+ * the list will be of type ::HWLOC_TOPOLOGY_DIFF_TOO_COMPLEX.
+ *
+ * \return -1 on any other error.
+ *
+ * \note \p flags is currently not used. It should be 0.
+ *
+ * \note The output diff has to be freed with hwloc_topology_diff_destroy().
+ *
+ * \note The output diff can only be exported to XML or passed to
+ * hwloc_topology_diff_apply() if 0 was returned, i.e. if no entry of type
+ * ::HWLOC_TOPOLOGY_DIFF_TOO_COMPLEX is listed.
+ *
+ * \note The output diff may be modified by removing some entries from
+ * the list. The removed entries should be freed by passing them to
+ * to hwloc_topology_diff_destroy() (possible as another list).
+*/</doc>

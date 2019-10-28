@@ -1,0 +1,6 @@
+<dec f='include/hwloc/bitmap.h' l='75' type='void hwloc_bitmap_free(hwloc_bitmap_t bitmap)'/>
+<use f='include/hwloc/cpuset.h' l='30' u='c' c='hwloc_cpuset_free'/>
+<doc f='include/hwloc/bitmap.h' l='71'>/** \brief Free bitmap \p bitmap.
+ *
+ * If \p bitmap is \c NULL, no operation is performed.
+ */</doc>

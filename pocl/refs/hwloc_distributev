@@ -1,0 +1,9 @@
+<dec f='include/hwloc/deprecated.h' l='90' type='void hwloc_distributev(hwloc_topology_t topology, hwloc_obj_t * roots, unsigned int n_roots, hwloc_cpuset_t * set, unsigned int n, unsigned int until)'/>
+<def f='include/hwloc/deprecated.h' l='91' ll='95' type='void hwloc_distributev(hwloc_topology_t topology, hwloc_obj_t * roots, unsigned int n_roots, hwloc_cpuset_t * set, unsigned int n, unsigned int until)'/>
+<doc f='include/hwloc/deprecated.h' l='82'>/** \brief Distribute \p n items over the topology under \p roots
+ *
+ * This is the same as hwloc_distribute(), but takes an array of roots instead of
+ * just one root.
+ *
+ * \note This function requires the \p roots objects to have a CPU set.
+ */</doc>

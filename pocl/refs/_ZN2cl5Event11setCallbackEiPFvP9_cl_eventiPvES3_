@@ -1,0 +1,5 @@
+<def f='pocl/include/CL/cl2.hpp' l='3194' ll='3206' type='cl_int cl::Event::setCallback(cl_int type, void (*)(cl_event, cl_int, void *) pfn_notify, void * user_data = __null)'/>
+<doc f='pocl/include/CL/cl2.hpp' l='3190'>/*! \brief Registers a user callback function for a specific command execution status.
+     *
+     *  Wraps clSetEventCallback().
+     */</doc>

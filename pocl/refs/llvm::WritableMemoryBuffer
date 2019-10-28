@@ -1,0 +1,15 @@
+<inh f='include/llvm-6.0/llvm/Support/MemoryBuffer.h' l='41' c='llvm::MemoryBuffer'/>
+<def f='include/llvm-6.0/llvm/Support/MemoryBuffer.h' l='161' ll='211'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/Support/MemoryBuffer.h' l='157'>/// This class is an extension of MemoryBuffer, which allows writing to the
+/// underlying contents.  It only supports creation methods that are guaranteed
+/// to produce a writable buffer.  For example, mapping a file read-only is not
+/// supported.</doc>
+<fun r='_ZN4llvm20WritableMemoryBufferC1Ev'/>
+<smbr r='llvm::WritableMemoryBuffer::Writable' t='const bool'/>
+<fun r='_ZN4llvm20WritableMemoryBuffer14getBufferStartEv'/>
+<fun r='_ZN4llvm20WritableMemoryBuffer12getBufferEndEv'/>
+<fun r='_ZN4llvm20WritableMemoryBuffer9getBufferEv'/>
+<fun r='_ZN4llvm20WritableMemoryBuffer7getFileERKNS_5TwineElb'/>
+<fun r='_ZN4llvm20WritableMemoryBuffer12getFileSliceERKNS_5TwineEmmb'/>
+<fun r='_ZN4llvm20WritableMemoryBuffer21getNewUninitMemBufferEmRKNS_5TwineE'/>

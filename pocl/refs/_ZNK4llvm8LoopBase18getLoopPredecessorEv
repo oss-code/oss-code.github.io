@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='276' type='BlockT * llvm::LoopBase::getLoopPredecessor() const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='272'>/// If the given loop&apos;s header has exactly one unique predecessor outside the
+  /// loop, return it. Otherwise return null.
+  ///  This is less strict that the loop &quot;preheader&quot; concept, which requires
+  /// the predecessor to have exactly one successor.</doc>

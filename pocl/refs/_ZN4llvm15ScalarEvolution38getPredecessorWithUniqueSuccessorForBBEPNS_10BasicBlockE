@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1562' type='std::pair&lt;BasicBlock *, BasicBlock *&gt; llvm::ScalarEvolution::getPredecessorWithUniqueSuccessorForBB(llvm::BasicBlock * BB)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1558'>/// Return a predecessor of BB (which may not be an immediate predecessor)
+  /// which has exactly one successor from which BB is reachable, or null if
+  /// no such block is found.</doc>

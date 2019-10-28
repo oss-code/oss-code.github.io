@@ -1,0 +1,6 @@
+<dec f='include/hwloc/bitmap.h' l='250' type='int hwloc_bitmap_last(hwloc_const_bitmap_t bitmap)'/>
+<use f='include/hwloc/cpuset.h' l='61' u='c' c='hwloc_cpuset_last'/>
+<doc f='include/hwloc/bitmap.h' l='246'>/** \brief Compute the last index (most significant bit) in bitmap \p bitmap
+ *
+ * \return -1 if no index is bitmap, or if the index bitmap is infinite.
+ */</doc>

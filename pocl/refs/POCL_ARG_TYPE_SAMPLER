@@ -1,0 +1,9 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='288' type='3'/>
+<use f='pocl/lib/CL/clSetKernelArg.c' l='96' u='r' c='POclSetKernelArg'/>
+<use f='pocl/lib/CL/clSetKernelArg.c' l='100' u='r' c='POclSetKernelArg'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='632' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='698' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='700' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='974' c='pocl_cuda_submit_kernel'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='156' u='r' c='setup_kernel_arg_array'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='562' u='r' c='pocl_llvm_get_kernels_metadata'/>

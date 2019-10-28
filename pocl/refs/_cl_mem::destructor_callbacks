@@ -1,0 +1,7 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1007' type='mem_destructor_callback_t *'/>
+<offset>1152</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='1006'>/* A linked list of destructor callbacks */</doc>
+<use f='pocl/lib/CL/clCreateBuffer.c' l='109' u='w' c='POclCreateBuffer'/>
+<use f='pocl/lib/CL/clReleaseMemObject.c' l='104' u='r' c='POclReleaseMemObject'/>
+<use f='pocl/lib/CL/clSetMemObjectDestructorCallback.c' l='19' u='r' c='POclSetMemObjectDestructorCallback'/>
+<use f='pocl/lib/CL/clSetMemObjectDestructorCallback.c' l='20' u='w' c='POclSetMemObjectDestructorCallback'/>

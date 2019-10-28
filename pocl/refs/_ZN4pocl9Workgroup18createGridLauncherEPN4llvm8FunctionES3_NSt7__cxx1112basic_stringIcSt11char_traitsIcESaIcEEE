@@ -1,0 +1,11 @@
+<dec f='pocl/lib/llvmopencl/Workgroup.h' l='49' type='void pocl::Workgroup::createGridLauncher(llvm::Function * KernFunc, llvm::Function * WGFunc, std::string KernName)'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='244' u='c' c='_ZN4pocl9Workgroup11runOnModuleERN4llvm6ModuleE'/>
+<def f='pocl/lib/llvmopencl/Workgroup.cc' l='1260' ll='1334' type='void pocl::Workgroup::createGridLauncher(llvm::Function * KernFunc, llvm::Function * WGFunc, std::string KernName)'/>
+<doc f='pocl/lib/llvmopencl/Workgroup.cc' l='1252'>/**
+ * Creates a launcher function that executes all work-items in the grid by
+ * launching a given work-group function for all work-group ids.
+ *
+ * The function adheres to the PHSA calling convention where the first two
+ * arguments are for PHSA&apos;s context data, and the third one is the argument
+ * buffer. The name will be phsa_kernel.KERNELNAME_grid_launcher.
+ */</doc>

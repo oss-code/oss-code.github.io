@@ -1,0 +1,23 @@
+<dec f='pocl/lib/llvmopencl/VariableUniformityAnalysis.h' l='59' type='bool pocl::VariableUniformityAnalysis::isUniform(llvm::Function * f, llvm::Value * v)'/>
+<use f='pocl/lib/llvmopencl/ImplicitLoopBarriers.cc' l='146' u='c' c='_ZN4pocl20ImplicitLoopBarriers19AddInnerLoopBarrierEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/ImplicitLoopBarriers.cc' l='160' u='c' c='_ZN4pocl20ImplicitLoopBarriers19AddInnerLoopBarrierEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/PHIsToAllocas.cc' l='123' u='c' c='_ZN4pocl13PHIsToAllocas17BreakPHIToAllocasEPN4llvm7PHINodeE'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='142' u='c' c='_ZN4pocl26VariableUniformityAnalysis18shouldBePrivatizedEPN4llvm8FunctionEPNS1_5ValueE'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='214' u='c' c='_ZN4pocl26VariableUniformityAnalysis19analyzeBBDivergenceEPN4llvm8FunctionEPNS1_10BasicBlockES5_'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='215' u='c' c='_ZN4pocl26VariableUniformityAnalysis19analyzeBBDivergenceEPN4llvm8FunctionEPNS1_10BasicBlockES5_'/>
+<def f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='276' ll='440' type='bool pocl::VariableUniformityAnalysis::isUniform(llvm::Function * f, llvm::Value * v)'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='337' u='c' c='_ZN4pocl26VariableUniformityAnalysis9isUniformEPN4llvm8FunctionEPNS1_5ValueE'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='338' u='c' c='_ZN4pocl26VariableUniformityAnalysis9isUniformEPN4llvm8FunctionEPNS1_5ValueE'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='339' u='c' c='_ZN4pocl26VariableUniformityAnalysis9isUniformEPN4llvm8FunctionEPNS1_5ValueE'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='433' u='c' c='_ZN4pocl26VariableUniformityAnalysis9isUniformEPN4llvm8FunctionEPNS1_5ValueE'/>
+<doc f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='265'>/**
+ * Simple uniformity analysis that recursively analyses all the
+ * operands affecting the value.
+ *
+ * Known uniform Values that act as &quot;leafs&quot; in the recursive uniformity
+ * check logic:
+ * a) kernel arguments
+ * b) constants
+ * c) OpenCL C identifiers that are constant for all work-items in a work-group
+ * 
+ */</doc>

@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='509' ll='564' type='llvm::yaml::QuotingType llvm::yaml::needsQuotes(llvm::StringRef S)'/>
+<use f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='965' u='c' c='_ZN4llvm4yaml12ScalarTraitsINS_9StringRefEE9mustQuoteES2_'/>
+<use f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='972' u='c' c='_ZN4llvm4yaml12ScalarTraitsINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE9mustQuoteENS_9StringRefE'/>
+<doc f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='504'>// 5.1. Character Set
+// The allowed character range explicitly excludes the C0 control block #x0-#x1F
+// (except for TAB #x9, LF #xA, and CR #xD which are allowed), DEL #x7F, the C1
+// control block #x80-#x9F (except for NEL #x85 which is allowed), the surrogate
+// block #xD800-#xDFFF, #xFFFE, and #xFFFF.</doc>

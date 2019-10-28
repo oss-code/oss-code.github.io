@@ -1,0 +1,30 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1099' type='void **'/>
+<offset>6592</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='1098'>/* Used to store the llvm IR of the build to save disk I/O. */</doc>
+<use f='pocl/lib/CL/clCreateKernel.c' l='63' u='r' c='POclCreateKernel'/>
+<use f='pocl/lib/CL/clCreateKernelsInProgram.c' l='32' u='r' c='POclCreateKernelsInProgram'/>
+<use f='pocl/lib/CL/clCreateProgramWithBinary.c' l='116' u='w' c='create_program_skeleton'/>
+<use f='pocl/lib/CL/clCreateProgramWithSource.c' l='114' u='w' c='POclCreateProgramWithSource'/>
+<use f='pocl/lib/CL/clCreateProgramWithSource.c' l='132' u='r' c='POclCreateProgramWithSource'/>
+<use f='pocl/lib/CL/clCreateProgramWithSource.c' l='132' u='w' c='POclCreateProgramWithSource'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='112' u='r' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='117' u='r' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='117' u='w' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/pocl_build.c' l='460' u='r' c='clean_program_on_rebuild'/>
+<use f='pocl/lib/CL/pocl_build.c' l='738' u='r' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_build.c' l='741' u='r' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_build.c' l='778' u='r' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='543' u='r' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='614' u='r' c='pocl_llvm_link_program'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='456' u='r' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='456' u='r' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='457' u='r' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='622' u='r' c='pocl_llvm_get_kernel_count'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='380' u='r' c='pocl_llvm_generate_workgroup_function_nowrite'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='383' u='r' c='pocl_llvm_generate_workgroup_function_nowrite'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='501' u='r' c='_Z37pocl_update_program_llvm_irs_unlockedP11_cl_programj'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='515' u='r' c='pocl_free_llvm_irs'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='518' u='r' c='pocl_free_llvm_irs'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='521' u='r' c='pocl_free_llvm_irs'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='545' u='r' c='pocl_llvm_update_binaries'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='556' u='r' c='pocl_llvm_update_binaries'/>

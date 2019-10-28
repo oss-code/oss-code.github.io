@@ -1,0 +1,32 @@
+<def f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='327' ll='418'/>
+<size>112</size>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='317'>/// A node in the call graph.
+  ///
+  /// This represents a single node. It&apos;s primary roles are to cache the list of
+  /// callees, de-duplicate and provide fast testing of whether a function is
+  /// a callee, and facilitate iteration of child nodes in the graph.
+  ///
+  /// The node works much like an optional in order to lazily populate the
+  /// edges of each node. Until populated, there are no edges. Once populated,
+  /// you can access the edges by dereferencing the node or using the `-&gt;`
+  /// operator as if the node was an `Optional&lt;EdgeSequence&gt;`.</doc>
+<fun r='_ZNK4llvm13LazyCallGraph4Node8getGraphEv'/>
+<fun r='_ZNK4llvm13LazyCallGraph4Node11getFunctionEv'/>
+<fun r='_ZNK4llvm13LazyCallGraph4Node7getNameEv'/>
+<fun r='_ZNK4llvm13LazyCallGraph4NodeeqERKS1_'/>
+<fun r='_ZNK4llvm13LazyCallGraph4NodeneERKS1_'/>
+<fun r='_ZNK4llvm13LazyCallGraph4Node11isPopulatedEv'/>
+<fun r='_ZNK4llvm13LazyCallGraph4Node6isDeadEv'/>
+<fun r='_ZNK4llvm13LazyCallGraph4NodedeEv'/>
+<fun r='_ZNK4llvm13LazyCallGraph4NodeptEv'/>
+<fun r='_ZN4llvm13LazyCallGraph4Node8populateEv'/>
+<mbr r='llvm::LazyCallGraph::Node::G' o='0' t='llvm::LazyCallGraph *'/>
+<mbr r='llvm::LazyCallGraph::Node::F' o='64' t='llvm::Function *'/>
+<mbr r='llvm::LazyCallGraph::Node::DFSNumber' o='128' t='int'/>
+<mbr r='llvm::LazyCallGraph::Node::LowLink' o='160' t='int'/>
+<mbr r='llvm::LazyCallGraph::Node::Edges' o='192' t='Optional&lt;llvm::LazyCallGraph::EdgeSequence&gt;'/>
+<fun r='_ZN4llvm13LazyCallGraph4NodeC1ERS0_RNS_8FunctionE'/>
+<fun r='_ZN4llvm13LazyCallGraph4Node12populateSlowEv'/>
+<fun r='_ZN4llvm13LazyCallGraph4Node15replaceFunctionERNS_8FunctionE'/>
+<fun r='_ZN4llvm13LazyCallGraph4Node5clearEv'/>
+<fun r='_ZNK4llvm13LazyCallGraph4Node4dumpEv'/>

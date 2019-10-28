@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/Transforms/Utils/Cloning.h' l='65' ll='82'/>
+<size>32</size>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Cloning.h' l='63'>/// ClonedCodeInfo - This struct can be used to capture information about code
+/// being cloned, while it is being cloned.</doc>
+<mbr r='llvm::ClonedCodeInfo::ContainsCalls' o='0' t='bool'/>
+<mbr r='llvm::ClonedCodeInfo::ContainsDynamicAllocas' o='8' t='bool'/>
+<mbr r='llvm::ClonedCodeInfo::OperandBundleCallSites' o='64' t='std::vector&lt;WeakTrackingVH&gt;'/>
+<fun r='_ZN4llvm14ClonedCodeInfoC1Ev'/>

@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/pocl_llvm.h' l='50' type='int pocl_llvm_build_program(cl_program program, unsigned int device_i, const char * user_options_cstr, char * program_bc_path, cl_uint num_input_headers, const cl_program * input_headers, const char ** header_include_names, int linking_program)'/>
+<doc f='pocl/lib/CL/pocl_llvm.h' l='48'>/* Compiles an .cl file into LLVM IR.
+ */</doc>
+<use f='pocl/lib/CL/pocl_build.c' l='636' u='c' c='compile_and_link_program'/>
+<def f='pocl/lib/CL/pocl_llvm_build.cc' l='194' ll='602' type='int pocl_llvm_build_program(cl_program program, unsigned int device_i, const char * user_options_cstr, char * program_bc_path, cl_uint num_input_headers, const cl_program * input_headers, const char ** header_include_names, int linking_program)'/>

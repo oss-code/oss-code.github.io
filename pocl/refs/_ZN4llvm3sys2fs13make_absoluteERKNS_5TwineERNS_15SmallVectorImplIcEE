@@ -1,0 +1,16 @@
+<dec f='include/llvm-6.0/llvm/Support/FileSystem.h' l='276' type='std::error_code llvm::sys::fs::make_absolute(const llvm::Twine &amp; current_directory, SmallVectorImpl&lt;char&gt; &amp; path)'/>
+<doc f='include/llvm-6.0/llvm/Support/FileSystem.h' l='261'>/// @}
+/// @name Physical Operators
+/// @{
+
+/// @brief Make \a path an absolute path.
+///
+/// Makes \a path absolute using the \a current_directory if it is not already.
+/// An empty \a path will result in the \a current_directory.
+///
+/// /absolute/path   =&gt; /absolute/path
+/// relative/../path =&gt; &lt;current-directory&gt;/relative/../path
+///
+/// @param path A path that is modified to be an absolute path.
+/// @returns errc::success if \a path has been made absolute, otherwise a
+///          platform-specific error_code.</doc>

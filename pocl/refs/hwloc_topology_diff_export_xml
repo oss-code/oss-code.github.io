@@ -1,0 +1,13 @@
+<dec f='include/hwloc/diff.h' l='257' type='int hwloc_topology_diff_export_xml(hwloc_topology_t topology, hwloc_topology_diff_t diff, const char * refname, const char * xmlpath)'/>
+<doc f='include/hwloc/diff.h' l='245'>/** \brief Export a list of topology differences to a XML file.
+ *
+ * If not \c NULL, \p refname defines an identifier string
+ * for the reference topology which was used as a base when
+ * computing this difference.
+ * This identifier is usually the name of the other XML file
+ * that contains the reference topology.
+ * This attribute is given back when reading the diff from XML.
+ *
+ * \note The \p topology parameter must be a valid topology
+ * but it is not required that it is related to \p diff.
+ */</doc>

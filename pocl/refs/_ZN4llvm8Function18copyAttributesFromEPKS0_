@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/Function.h' l='549' type='void llvm::Function::copyAttributesFrom(const llvm::Function * Src)'/>
+<doc f='include/llvm-6.0/llvm/IR/Function.h' l='547'>/// copyAttributesFrom - copy all additional attributes (those not needed to
+  /// create a Function) from the Function Src to this one.</doc>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='150' u='c' c='_ZL24CloneFuncFixOpenCLImageTPN4llvm6ModuleEPNS_8FunctionE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='221' u='c' c='_ZL8CopyFuncN4llvm9StringRefEPKNS_6ModuleEPS1_RNS_8ValueMapIPKNS_5ValueENS_14WeakTrackingVHENS_14ValueMapConfigIS8_NS_3sys10SmartMutexILb0EEEEEEE'/>

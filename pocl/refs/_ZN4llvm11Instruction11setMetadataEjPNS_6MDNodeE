@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/Instruction.h' l='231' type='void llvm::Instruction::setMetadata(unsigned int KindID, llvm::MDNode * Node)'/>
+<doc f='include/llvm-6.0/llvm/IR/Instruction.h' l='229'>/// Set the metadata of the specified kind to the specified node. This updates
+  /// or replaces metadata if already present, or removes it if Node is null.</doc>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='887' u='c' c='_ZNK4llvm9IRBuilder19AddFPMathAttributesEPNS_11InstructionEPNS_6MDNodeENS_13FastMathFlagsE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='295' u='c' c='_ZL16addRangeMetadataPN4llvm11InstructionEmm'/>

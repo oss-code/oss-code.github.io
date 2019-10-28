@@ -1,0 +1,10 @@
+<dec f='pocl/lib/llvmopencl/ParallelRegion.h' l='72' type='void pocl::ParallelRegion::AddBlockBefore(llvm::BasicBlock * block, llvm::BasicBlock * before)'/>
+<def f='pocl/lib/llvmopencl/ParallelRegion.cc' l='542' ll='559' type='void pocl::ParallelRegion::AddBlockBefore(llvm::BasicBlock * block, llvm::BasicBlock * before)'/>
+<doc f='pocl/lib/llvmopencl/ParallelRegion.cc' l='534'>/**
+ * Inserts a new basic block to the region, before an old basic block in
+ * the region.
+ *
+ * Assumes the inserted block to be before the other block in control
+ * flow, that is, there should be direct CFG edge from the block to the
+ * other.
+ */</doc>

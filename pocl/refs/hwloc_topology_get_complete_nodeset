@@ -1,0 +1,11 @@
+<dec f='include/hwloc/helper.h' l='849' type='hwloc_const_nodeset_t hwloc_topology_get_complete_nodeset(hwloc_topology_t topology)'/>
+<def f='include/hwloc/helper.h' l='850' ll='854' type='hwloc_const_nodeset_t hwloc_topology_get_complete_nodeset(hwloc_topology_t topology)'/>
+<doc f='include/hwloc/helper.h' l='839'>/** \brief Get complete node set
+ *
+ * \return the complete node set of memory of the system. If the
+ * topology is the result of a combination of several systems, NULL is
+ * returned.
+ *
+ * \note The returned nodeset is not newly allocated and should thus not be
+ * changed or freed; hwloc_bitmap_dup() must be used to obtain a local copy.
+ */</doc>

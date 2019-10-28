@@ -1,0 +1,385 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>bitmap.h source code [include/hwloc/bitmap.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'include/hwloc/bitmap.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>include</a>/<a href='./'>hwloc</a>/<a href='bitmap.h.html'>bitmap.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*</i></td></tr>
+<tr><th id="2">2</th><td><i> * Copyright © 2009 CNRS</i></td></tr>
+<tr><th id="3">3</th><td><i> * Copyright © 2009-2015 Inria.  All rights reserved.</i></td></tr>
+<tr><th id="4">4</th><td><i> * Copyright © 2009-2012 Université Bordeaux</i></td></tr>
+<tr><th id="5">5</th><td><i> * Copyright © 2009-2011 Cisco Systems, Inc.  All rights reserved.</i></td></tr>
+<tr><th id="6">6</th><td><i> * See COPYING in top-level directory.</i></td></tr>
+<tr><th id="7">7</th><td><i> */</i></td></tr>
+<tr><th id="8">8</th><td></td></tr>
+<tr><th id="9">9</th><td><i class="doc">/**<span class="command"> \file</span></i></td></tr>
+<tr><th id="10">10</th><td><i class="doc"> * <span class="command">\brief</span> The bitmap API, for use in hwloc itself.</i></td></tr>
+<tr><th id="11">11</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td><u>#<span data-ppcond="13">ifndef</span> <span class="macro" data-ref="_M/HWLOC_BITMAP_H">HWLOC_BITMAP_H</span></u></td></tr>
+<tr><th id="14">14</th><td><u>#define <dfn class="macro" id="_M/HWLOC_BITMAP_H" data-ref="_M/HWLOC_BITMAP_H">HWLOC_BITMAP_H</dfn></u></td></tr>
+<tr><th id="15">15</th><td></td></tr>
+<tr><th id="16">16</th><td><u>#include <a href="../x86_64-linux-gnu/hwloc/autogen/config.h.html">&lt;hwloc/autogen/config.h&gt;</a></u></td></tr>
+<tr><th id="17">17</th><td><u>#include <a href="../assert.h.html">&lt;assert.h&gt;</a></u></td></tr>
+<tr><th id="18">18</th><td></td></tr>
+<tr><th id="19">19</th><td></td></tr>
+<tr><th id="20">20</th><td><u>#<span data-ppcond="20">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="21">21</th><td><b>extern</b> <q>"C"</q> {</td></tr>
+<tr><th id="22">22</th><td><u>#<span data-ppcond="20">endif</span></u></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><i class="doc">/** <span class="command">\defgroup</span> <span class="verb">hwlocality_bitmap The bitmap API</span></i></td></tr>
+<tr><th id="26">26</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="27">27</th><td><i class="doc"> * The ::hwloc_bitmap_t type represents a set of objects, typically OS</i></td></tr>
+<tr><th id="28">28</th><td><i class="doc"> * processors -- which may actually be hardware threads (represented</i></td></tr>
+<tr><th id="29">29</th><td><i class="doc"> * by ::hwloc_cpuset_t, which is a typedef for ::hwloc_bitmap_t) -- or</i></td></tr>
+<tr><th id="30">30</th><td><i class="doc"> * memory nodes (represented by ::hwloc_nodeset_t, which is also a</i></td></tr>
+<tr><th id="31">31</th><td><i class="doc"> * typedef for ::hwloc_bitmap_t).</i></td></tr>
+<tr><th id="32">32</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="33">33</th><td><i class="doc"> * <span class="tag">&lt;em&gt;</span>Both CPU and node sets are always indexed by OS physical number.<span class="tag">&lt;/em&gt;</span></i></td></tr>
+<tr><th id="34">34</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="35">35</th><td><i class="doc"> * <span class="command">\note</span> CPU sets and nodesets are described in <span class="command">\ref</span> <span class="verb">hwlocality_object_sets.</span></i></td></tr>
+<tr><th id="36">36</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="37">37</th><td><i class="doc"> * A bitmap may be of infinite size.</i></td></tr>
+<tr><th id="38">38</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="39">39</th><td><i class="doc"> * <span class="command">\note</span> Several examples of using the bitmap API are available under the</i></td></tr>
+<tr><th id="40">40</th><td><i class="doc"> * doc/examples/ directory in the source tree.</i></td></tr>
+<tr><th id="41">41</th><td><i class="doc"> * Regression tests such as tests/hwloc/hwloc_bitmap*.c also make intensive use</i></td></tr>
+<tr><th id="42">42</th><td><i class="doc"> * of this API.</i></td></tr>
+<tr><th id="43">43</th><td><i class="doc"> * @{</i></td></tr>
+<tr><th id="44">44</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td></td></tr>
+<tr><th id="47">47</th><td><i class="doc">/** <span class="command">\brief</span></i></td></tr>
+<tr><th id="48">48</th><td><i class="doc"> * Set of bits represented as an opaque pointer to an internal bitmap.</i></td></tr>
+<tr><th id="49">49</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="50">50</th><td><b>typedef</b> <b>struct</b> <dfn class="type" id="hwloc_bitmap_s" title='hwloc_bitmap_s' data-ref="hwloc_bitmap_s"><a class="type" href="#hwloc_bitmap_s" title='hwloc_bitmap_s' data-ref="hwloc_bitmap_s">hwloc_bitmap_s</a></dfn> * <dfn class="typedef" id="hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</dfn>;</td></tr>
+<tr><th id="51">51</th><td><i class="doc">/** <span class="command">\brief</span> a non-modifiable ::hwloc_bitmap_t */</i></td></tr>
+<tr><th id="52">52</th><td><b>typedef</b> <em>const</em> <b>struct</b> <a class="type" href="#hwloc_bitmap_s" title='hwloc_bitmap_s' data-ref="hwloc_bitmap_s">hwloc_bitmap_s</a> * <dfn class="typedef" id="hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</dfn>;</td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td></td></tr>
+<tr><th id="55">55</th><td><i>/*</i></td></tr>
+<tr><th id="56">56</th><td><i> * Bitmap allocation, freeing and copying.</i></td></tr>
+<tr><th id="57">57</th><td><i> */</i></td></tr>
+<tr><th id="58">58</th><td></td></tr>
+<tr><th id="59">59</th><td><i class="doc">/** <span class="command">\brief</span> Allocate a new empty bitmap.</i></td></tr>
+<tr><th id="60">60</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="61">61</th><td><i class="doc"> * <span class="command">\returns</span> A valid bitmap or<span class="command"> \c</span> <span class="arg">NULL.</span></i></td></tr>
+<tr><th id="62">62</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="63">63</th><td><i class="doc"> * The bitmap should be freed by a corresponding call to</i></td></tr>
+<tr><th id="64">64</th><td><i class="doc"> * hwloc_bitmap_free().</i></td></tr>
+<tr><th id="65">65</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="66">66</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="decl" id="hwloc_bitmap_alloc" title='hwloc_bitmap_alloc' data-ref="hwloc_bitmap_alloc">hwloc_bitmap_alloc</dfn>(<em>void</em>) <a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#93" title="__attribute__((__malloc__))" data-ref="_M/__hwloc_attribute_malloc">__hwloc_attribute_malloc</a>;</td></tr>
+<tr><th id="67">67</th><td></td></tr>
+<tr><th id="68">68</th><td><i class="doc">/** <span class="command">\brief</span> Allocate a new full bitmap. */</i></td></tr>
+<tr><th id="69">69</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="decl" id="hwloc_bitmap_alloc_full" title='hwloc_bitmap_alloc_full' data-ref="hwloc_bitmap_alloc_full">hwloc_bitmap_alloc_full</dfn>(<em>void</em>) <a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#93" title="__attribute__((__malloc__))" data-ref="_M/__hwloc_attribute_malloc">__hwloc_attribute_malloc</a>;</td></tr>
+<tr><th id="70">70</th><td></td></tr>
+<tr><th id="71">71</th><td><i class="doc">/** <span class="command">\brief</span> Free bitmap<span class="command"> \p</span> <span class="arg">bitmap.</span></i></td></tr>
+<tr><th id="72">72</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="73">73</th><td><i class="doc"> * If<span class="command"> \p</span> <span class="arg">bitmap</span> is<span class="command"> \c</span> <span class="arg">NULL,</span> no operation is performed.</i></td></tr>
+<tr><th id="74">74</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="75">75</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>void</em> <dfn class="decl" id="hwloc_bitmap_free" title='hwloc_bitmap_free' data-ref="hwloc_bitmap_free">hwloc_bitmap_free</dfn>(<a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="local col1 decl" id="1bitmap" title='bitmap' data-type='hwloc_bitmap_t' data-ref="1bitmap">bitmap</dfn>);</td></tr>
+<tr><th id="76">76</th><td></td></tr>
+<tr><th id="77">77</th><td><i class="doc">/** <span class="command">\brief</span> Duplicate bitmap<span class="command"> \p</span> <span class="arg">bitmap</span> by allocating a new bitmap and copying<span class="command"> \p</span> <span class="arg">bitmap</span> contents.</i></td></tr>
+<tr><th id="78">78</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="79">79</th><td><i class="doc"> * If<span class="command"> \p</span> <span class="arg">bitmap</span> is<span class="command"> \c</span> <span class="arg">NULL,</span><span class="command"> \c</span> <span class="arg">NULL</span> is returned.</i></td></tr>
+<tr><th id="80">80</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="81">81</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="decl" id="hwloc_bitmap_dup" title='hwloc_bitmap_dup' data-ref="hwloc_bitmap_dup">hwloc_bitmap_dup</dfn>(<a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col2 decl" id="2bitmap" title='bitmap' data-type='hwloc_const_bitmap_t' data-ref="2bitmap">bitmap</dfn>) <a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#93" title="__attribute__((__malloc__))" data-ref="_M/__hwloc_attribute_malloc">__hwloc_attribute_malloc</a>;</td></tr>
+<tr><th id="82">82</th><td></td></tr>
+<tr><th id="83">83</th><td><i class="doc">/** <span class="command">\brief</span> Copy the contents of bitmap<span class="command"> \p</span> <span class="arg">src</span> into the already allocated bitmap<span class="command"> \p</span> <span class="arg">dst</span> */</i></td></tr>
+<tr><th id="84">84</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>void</em> <dfn class="decl" id="hwloc_bitmap_copy" title='hwloc_bitmap_copy' data-ref="hwloc_bitmap_copy">hwloc_bitmap_copy</dfn>(<a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="local col3 decl" id="3dst" title='dst' data-type='hwloc_bitmap_t' data-ref="3dst">dst</dfn>, <a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col4 decl" id="4src" title='src' data-type='hwloc_const_bitmap_t' data-ref="4src">src</dfn>);</td></tr>
+<tr><th id="85">85</th><td></td></tr>
+<tr><th id="86">86</th><td></td></tr>
+<tr><th id="87">87</th><td><i>/*</i></td></tr>
+<tr><th id="88">88</th><td><i> * Bitmap/String Conversion</i></td></tr>
+<tr><th id="89">89</th><td><i> */</i></td></tr>
+<tr><th id="90">90</th><td></td></tr>
+<tr><th id="91">91</th><td><i class="doc">/** <span class="command">\brief</span> Stringify a bitmap.</i></td></tr>
+<tr><th id="92">92</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="93">93</th><td><i class="doc"> * Up to<span class="command"> \p</span> <span class="arg">buflen</span> characters may be written in buffer<span class="command"> \p</span> <span class="arg">buf.</span></i></td></tr>
+<tr><th id="94">94</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="95">95</th><td><i class="doc"> * If<span class="command"> \p</span> <span class="arg">buflen</span> is 0,<span class="command"> \p</span> <span class="arg">buf</span> may safely be<span class="command"> \c</span> <span class="arg">NULL.</span></i></td></tr>
+<tr><th id="96">96</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="97">97</th><td><i class="doc"> * <span class="command">\return</span> the number of character that were actually written if not truncating,</i></td></tr>
+<tr><th id="98">98</th><td><i class="doc"> * or that would have been written (not including the ending \\0).</i></td></tr>
+<tr><th id="99">99</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="100">100</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>int</em> <dfn class="decl" id="hwloc_bitmap_snprintf" title='hwloc_bitmap_snprintf' data-ref="hwloc_bitmap_snprintf">hwloc_bitmap_snprintf</dfn>(<em>char</em> * <a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#16" title="__restrict" data-ref="_M/__hwloc_restrict">__hwloc_restrict</a> <dfn class="local col5 decl" id="5buf" title='buf' data-type='char *restrict' data-ref="5buf">buf</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col6 decl" id="6buflen" title='buflen' data-type='size_t' data-ref="6buflen">buflen</dfn>, <a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col7 decl" id="7bitmap" title='bitmap' data-type='hwloc_const_bitmap_t' data-ref="7bitmap">bitmap</dfn>);</td></tr>
+<tr><th id="101">101</th><td></td></tr>
+<tr><th id="102">102</th><td><i class="doc">/** <span class="command">\brief</span> Stringify a bitmap into a newly allocated string.</i></td></tr>
+<tr><th id="103">103</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="104">104</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>int</em> <dfn class="decl" id="hwloc_bitmap_asprintf" title='hwloc_bitmap_asprintf' data-ref="hwloc_bitmap_asprintf">hwloc_bitmap_asprintf</dfn>(<em>char</em> ** <dfn class="local col8 decl" id="8strp" title='strp' data-type='char **' data-ref="8strp">strp</dfn>, <a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col9 decl" id="9bitmap" title='bitmap' data-type='hwloc_const_bitmap_t' data-ref="9bitmap">bitmap</dfn>);</td></tr>
+<tr><th id="105">105</th><td></td></tr>
+<tr><th id="106">106</th><td><i class="doc">/** <span class="command">\brief</span> Parse a bitmap string and stores it in bitmap<span class="command"> \p</span> <span class="arg">bitmap.</span></i></td></tr>
+<tr><th id="107">107</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="108">108</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>int</em> <dfn class="decl" id="hwloc_bitmap_sscanf" title='hwloc_bitmap_sscanf' data-ref="hwloc_bitmap_sscanf">hwloc_bitmap_sscanf</dfn>(<a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="local col0 decl" id="10bitmap" title='bitmap' data-type='hwloc_bitmap_t' data-ref="10bitmap">bitmap</dfn>, <em>const</em> <em>char</em> * <a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#16" title="__restrict" data-ref="_M/__hwloc_restrict">__hwloc_restrict</a> <dfn class="local col1 decl" id="11string" title='string' data-type='const char *restrict' data-ref="11string">string</dfn>);</td></tr>
+<tr><th id="109">109</th><td></td></tr>
+<tr><th id="110">110</th><td><i class="doc">/** <span class="command">\brief</span> Stringify a bitmap in the list format.</i></td></tr>
+<tr><th id="111">111</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="112">112</th><td><i class="doc"> * Lists are comma-separated indexes or ranges.</i></td></tr>
+<tr><th id="113">113</th><td><i class="doc"> * Ranges are dash separated indexes.</i></td></tr>
+<tr><th id="114">114</th><td><i class="doc"> * The last range may not have a ending indexes if the bitmap is infinite.</i></td></tr>
+<tr><th id="115">115</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="116">116</th><td><i class="doc"> * Up to<span class="command"> \p</span> <span class="arg">buflen</span> characters may be written in buffer<span class="command"> \p</span> <span class="arg">buf.</span></i></td></tr>
+<tr><th id="117">117</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="118">118</th><td><i class="doc"> * If<span class="command"> \p</span> <span class="arg">buflen</span> is 0,<span class="command"> \p</span> <span class="arg">buf</span> may safely be<span class="command"> \c</span> <span class="arg">NULL.</span></i></td></tr>
+<tr><th id="119">119</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="120">120</th><td><i class="doc"> * <span class="command">\return</span> the number of character that were actually written if not truncating,</i></td></tr>
+<tr><th id="121">121</th><td><i class="doc"> * or that would have been written (not including the ending \\0).</i></td></tr>
+<tr><th id="122">122</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="123">123</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>int</em> <dfn class="decl" id="hwloc_bitmap_list_snprintf" title='hwloc_bitmap_list_snprintf' data-ref="hwloc_bitmap_list_snprintf">hwloc_bitmap_list_snprintf</dfn>(<em>char</em> * <a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#16" title="__restrict" data-ref="_M/__hwloc_restrict">__hwloc_restrict</a> <dfn class="local col2 decl" id="12buf" title='buf' data-type='char *restrict' data-ref="12buf">buf</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col3 decl" id="13buflen" title='buflen' data-type='size_t' data-ref="13buflen">buflen</dfn>, <a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col4 decl" id="14bitmap" title='bitmap' data-type='hwloc_const_bitmap_t' data-ref="14bitmap">bitmap</dfn>);</td></tr>
+<tr><th id="124">124</th><td></td></tr>
+<tr><th id="125">125</th><td><i class="doc">/** <span class="command">\brief</span> Stringify a bitmap into a newly allocated list string.</i></td></tr>
+<tr><th id="126">126</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="127">127</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>int</em> <dfn class="decl" id="hwloc_bitmap_list_asprintf" title='hwloc_bitmap_list_asprintf' data-ref="hwloc_bitmap_list_asprintf">hwloc_bitmap_list_asprintf</dfn>(<em>char</em> ** <dfn class="local col5 decl" id="15strp" title='strp' data-type='char **' data-ref="15strp">strp</dfn>, <a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col6 decl" id="16bitmap" title='bitmap' data-type='hwloc_const_bitmap_t' data-ref="16bitmap">bitmap</dfn>);</td></tr>
+<tr><th id="128">128</th><td></td></tr>
+<tr><th id="129">129</th><td><i class="doc">/** <span class="command">\brief</span> Parse a list string and stores it in bitmap<span class="command"> \p</span> <span class="arg">bitmap.</span></i></td></tr>
+<tr><th id="130">130</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="131">131</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>int</em> <dfn class="decl" id="hwloc_bitmap_list_sscanf" title='hwloc_bitmap_list_sscanf' data-ref="hwloc_bitmap_list_sscanf">hwloc_bitmap_list_sscanf</dfn>(<a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="local col7 decl" id="17bitmap" title='bitmap' data-type='hwloc_bitmap_t' data-ref="17bitmap">bitmap</dfn>, <em>const</em> <em>char</em> * <a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#16" title="__restrict" data-ref="_M/__hwloc_restrict">__hwloc_restrict</a> <dfn class="local col8 decl" id="18string" title='string' data-type='const char *restrict' data-ref="18string">string</dfn>);</td></tr>
+<tr><th id="132">132</th><td></td></tr>
+<tr><th id="133">133</th><td><i class="doc">/** <span class="command">\brief</span> Stringify a bitmap in the taskset-specific format.</i></td></tr>
+<tr><th id="134">134</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="135">135</th><td><i class="doc"> * The taskset command manipulates bitmap strings that contain a single</i></td></tr>
+<tr><th id="136">136</th><td><i class="doc"> * (possible very long) hexadecimal number starting with 0x.</i></td></tr>
+<tr><th id="137">137</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="138">138</th><td><i class="doc"> * Up to<span class="command"> \p</span> <span class="arg">buflen</span> characters may be written in buffer<span class="command"> \p</span> <span class="arg">buf.</span></i></td></tr>
+<tr><th id="139">139</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="140">140</th><td><i class="doc"> * If<span class="command"> \p</span> <span class="arg">buflen</span> is 0,<span class="command"> \p</span> <span class="arg">buf</span> may safely be<span class="command"> \c</span> <span class="arg">NULL.</span></i></td></tr>
+<tr><th id="141">141</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="142">142</th><td><i class="doc"> * <span class="command">\return</span> the number of character that were actually written if not truncating,</i></td></tr>
+<tr><th id="143">143</th><td><i class="doc"> * or that would have been written (not including the ending \\0).</i></td></tr>
+<tr><th id="144">144</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="145">145</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>int</em> <dfn class="decl" id="hwloc_bitmap_taskset_snprintf" title='hwloc_bitmap_taskset_snprintf' data-ref="hwloc_bitmap_taskset_snprintf">hwloc_bitmap_taskset_snprintf</dfn>(<em>char</em> * <a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#16" title="__restrict" data-ref="_M/__hwloc_restrict">__hwloc_restrict</a> <dfn class="local col9 decl" id="19buf" title='buf' data-type='char *restrict' data-ref="19buf">buf</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col0 decl" id="20buflen" title='buflen' data-type='size_t' data-ref="20buflen">buflen</dfn>, <a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col1 decl" id="21bitmap" title='bitmap' data-type='hwloc_const_bitmap_t' data-ref="21bitmap">bitmap</dfn>);</td></tr>
+<tr><th id="146">146</th><td></td></tr>
+<tr><th id="147">147</th><td><i class="doc">/** <span class="command">\brief</span> Stringify a bitmap into a newly allocated taskset-specific string.</i></td></tr>
+<tr><th id="148">148</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="149">149</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>int</em> <dfn class="decl" id="hwloc_bitmap_taskset_asprintf" title='hwloc_bitmap_taskset_asprintf' data-ref="hwloc_bitmap_taskset_asprintf">hwloc_bitmap_taskset_asprintf</dfn>(<em>char</em> ** <dfn class="local col2 decl" id="22strp" title='strp' data-type='char **' data-ref="22strp">strp</dfn>, <a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col3 decl" id="23bitmap" title='bitmap' data-type='hwloc_const_bitmap_t' data-ref="23bitmap">bitmap</dfn>);</td></tr>
+<tr><th id="150">150</th><td></td></tr>
+<tr><th id="151">151</th><td><i class="doc">/** <span class="command">\brief</span> Parse a taskset-specific bitmap string and stores it in bitmap<span class="command"> \p</span> <span class="arg">bitmap.</span></i></td></tr>
+<tr><th id="152">152</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="153">153</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>int</em> <dfn class="decl" id="hwloc_bitmap_taskset_sscanf" title='hwloc_bitmap_taskset_sscanf' data-ref="hwloc_bitmap_taskset_sscanf">hwloc_bitmap_taskset_sscanf</dfn>(<a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="local col4 decl" id="24bitmap" title='bitmap' data-type='hwloc_bitmap_t' data-ref="24bitmap">bitmap</dfn>, <em>const</em> <em>char</em> * <a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#16" title="__restrict" data-ref="_M/__hwloc_restrict">__hwloc_restrict</a> <dfn class="local col5 decl" id="25string" title='string' data-type='const char *restrict' data-ref="25string">string</dfn>);</td></tr>
+<tr><th id="154">154</th><td></td></tr>
+<tr><th id="155">155</th><td></td></tr>
+<tr><th id="156">156</th><td><i>/*</i></td></tr>
+<tr><th id="157">157</th><td><i> * Building bitmaps.</i></td></tr>
+<tr><th id="158">158</th><td><i> */</i></td></tr>
+<tr><th id="159">159</th><td></td></tr>
+<tr><th id="160">160</th><td><i class="doc">/** <span class="command">\brief</span> Empty the bitmap<span class="command"> \p</span> <span class="arg">bitmap</span> */</i></td></tr>
+<tr><th id="161">161</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>void</em> <dfn class="decl" id="hwloc_bitmap_zero" title='hwloc_bitmap_zero' data-ref="hwloc_bitmap_zero">hwloc_bitmap_zero</dfn>(<a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="local col6 decl" id="26bitmap" title='bitmap' data-type='hwloc_bitmap_t' data-ref="26bitmap">bitmap</dfn>);</td></tr>
+<tr><th id="162">162</th><td></td></tr>
+<tr><th id="163">163</th><td><i class="doc">/** <span class="command">\brief</span> Fill bitmap<span class="command"> \p</span> <span class="arg">bitmap</span> with all possible indexes (even if those objects don't exist or are otherwise unavailable) */</i></td></tr>
+<tr><th id="164">164</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>void</em> <dfn class="decl" id="hwloc_bitmap_fill" title='hwloc_bitmap_fill' data-ref="hwloc_bitmap_fill">hwloc_bitmap_fill</dfn>(<a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="local col7 decl" id="27bitmap" title='bitmap' data-type='hwloc_bitmap_t' data-ref="27bitmap">bitmap</dfn>);</td></tr>
+<tr><th id="165">165</th><td></td></tr>
+<tr><th id="166">166</th><td><i class="doc">/** <span class="command">\brief</span> Empty the bitmap<span class="command"> \p</span> <span class="arg">bitmap</span> and add bit<span class="command"> \p</span> <span class="arg">id</span> */</i></td></tr>
+<tr><th id="167">167</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>void</em> <dfn class="decl" id="hwloc_bitmap_only" title='hwloc_bitmap_only' data-ref="hwloc_bitmap_only">hwloc_bitmap_only</dfn>(<a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="local col8 decl" id="28bitmap" title='bitmap' data-type='hwloc_bitmap_t' data-ref="28bitmap">bitmap</dfn>, <em>unsigned</em> <dfn class="local col9 decl" id="29id" title='id' data-type='unsigned int' data-ref="29id">id</dfn>);</td></tr>
+<tr><th id="168">168</th><td></td></tr>
+<tr><th id="169">169</th><td><i class="doc">/** <span class="command">\brief</span> Fill the bitmap<span class="command"> \p</span> <span class="arg">and</span> clear the index<span class="command"> \p</span> <span class="arg">id</span> */</i></td></tr>
+<tr><th id="170">170</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>void</em> <dfn class="decl" id="hwloc_bitmap_allbut" title='hwloc_bitmap_allbut' data-ref="hwloc_bitmap_allbut">hwloc_bitmap_allbut</dfn>(<a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="local col0 decl" id="30bitmap" title='bitmap' data-type='hwloc_bitmap_t' data-ref="30bitmap">bitmap</dfn>, <em>unsigned</em> <dfn class="local col1 decl" id="31id" title='id' data-type='unsigned int' data-ref="31id">id</dfn>);</td></tr>
+<tr><th id="171">171</th><td></td></tr>
+<tr><th id="172">172</th><td><i class="doc">/** <span class="command">\brief</span> Setup bitmap<span class="command"> \p</span> <span class="arg">bitmap</span> from unsigned long<span class="command"> \p</span> <span class="arg">mask</span> */</i></td></tr>
+<tr><th id="173">173</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>void</em> <dfn class="decl" id="hwloc_bitmap_from_ulong" title='hwloc_bitmap_from_ulong' data-ref="hwloc_bitmap_from_ulong">hwloc_bitmap_from_ulong</dfn>(<a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="local col2 decl" id="32bitmap" title='bitmap' data-type='hwloc_bitmap_t' data-ref="32bitmap">bitmap</dfn>, <em>unsigned</em> <em>long</em> <dfn class="local col3 decl" id="33mask" title='mask' data-type='unsigned long' data-ref="33mask">mask</dfn>);</td></tr>
+<tr><th id="174">174</th><td></td></tr>
+<tr><th id="175">175</th><td><i class="doc">/** <span class="command">\brief</span> Setup bitmap<span class="command"> \p</span> <span class="arg">bitmap</span> from unsigned long<span class="command"> \p</span> <span class="arg">mask</span> used as<span class="command"> \p</span> <span class="arg">i</span> -th subset */</i></td></tr>
+<tr><th id="176">176</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>void</em> <dfn class="decl" id="hwloc_bitmap_from_ith_ulong" title='hwloc_bitmap_from_ith_ulong' data-ref="hwloc_bitmap_from_ith_ulong">hwloc_bitmap_from_ith_ulong</dfn>(<a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="local col4 decl" id="34bitmap" title='bitmap' data-type='hwloc_bitmap_t' data-ref="34bitmap">bitmap</dfn>, <em>unsigned</em> <dfn class="local col5 decl" id="35i" title='i' data-type='unsigned int' data-ref="35i">i</dfn>, <em>unsigned</em> <em>long</em> <dfn class="local col6 decl" id="36mask" title='mask' data-type='unsigned long' data-ref="36mask">mask</dfn>);</td></tr>
+<tr><th id="177">177</th><td></td></tr>
+<tr><th id="178">178</th><td></td></tr>
+<tr><th id="179">179</th><td><i>/*</i></td></tr>
+<tr><th id="180">180</th><td><i> * Modifying bitmaps.</i></td></tr>
+<tr><th id="181">181</th><td><i> */</i></td></tr>
+<tr><th id="182">182</th><td></td></tr>
+<tr><th id="183">183</th><td><i class="doc">/** <span class="command">\brief</span> Add index<span class="command"> \p</span> <span class="arg">id</span> in bitmap<span class="command"> \p</span> <span class="arg">bitmap</span> */</i></td></tr>
+<tr><th id="184">184</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>void</em> <dfn class="decl" id="hwloc_bitmap_set" title='hwloc_bitmap_set' data-ref="hwloc_bitmap_set">hwloc_bitmap_set</dfn>(<a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="local col7 decl" id="37bitmap" title='bitmap' data-type='hwloc_bitmap_t' data-ref="37bitmap">bitmap</dfn>, <em>unsigned</em> <dfn class="local col8 decl" id="38id" title='id' data-type='unsigned int' data-ref="38id">id</dfn>);</td></tr>
+<tr><th id="185">185</th><td></td></tr>
+<tr><th id="186">186</th><td><i class="doc">/** <span class="command">\brief</span> Add indexes from<span class="command"> \p</span> <span class="arg">begin</span> to<span class="command"> \p</span> <span class="arg">end</span> in bitmap<span class="command"> \p</span> <span class="arg">bitmap.</span></i></td></tr>
+<tr><th id="187">187</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="188">188</th><td><i class="doc"> * If<span class="command"> \p</span> <span class="arg">end</span> is<span class="command"> \c</span> <span class="arg">-1,</span> the range is infinite.</i></td></tr>
+<tr><th id="189">189</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="190">190</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>void</em> <dfn class="decl" id="hwloc_bitmap_set_range" title='hwloc_bitmap_set_range' data-ref="hwloc_bitmap_set_range">hwloc_bitmap_set_range</dfn>(<a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="local col9 decl" id="39bitmap" title='bitmap' data-type='hwloc_bitmap_t' data-ref="39bitmap">bitmap</dfn>, <em>unsigned</em> <dfn class="local col0 decl" id="40begin" title='begin' data-type='unsigned int' data-ref="40begin">begin</dfn>, <em>int</em> <dfn class="local col1 decl" id="41end" title='end' data-type='int' data-ref="41end">end</dfn>);</td></tr>
+<tr><th id="191">191</th><td></td></tr>
+<tr><th id="192">192</th><td><i class="doc">/** <span class="command">\brief</span> Replace<span class="command"> \p</span> <span class="arg">i</span> -th subset of bitmap<span class="command"> \p</span> <span class="arg">bitmap</span> with unsigned long<span class="command"> \p</span> <span class="arg">mask</span> */</i></td></tr>
+<tr><th id="193">193</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>void</em> <dfn class="decl" id="hwloc_bitmap_set_ith_ulong" title='hwloc_bitmap_set_ith_ulong' data-ref="hwloc_bitmap_set_ith_ulong">hwloc_bitmap_set_ith_ulong</dfn>(<a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="local col2 decl" id="42bitmap" title='bitmap' data-type='hwloc_bitmap_t' data-ref="42bitmap">bitmap</dfn>, <em>unsigned</em> <dfn class="local col3 decl" id="43i" title='i' data-type='unsigned int' data-ref="43i">i</dfn>, <em>unsigned</em> <em>long</em> <dfn class="local col4 decl" id="44mask" title='mask' data-type='unsigned long' data-ref="44mask">mask</dfn>);</td></tr>
+<tr><th id="194">194</th><td></td></tr>
+<tr><th id="195">195</th><td><i class="doc">/** <span class="command">\brief</span> Remove index<span class="command"> \p</span> <span class="arg">id</span> from bitmap<span class="command"> \p</span> <span class="arg">bitmap</span> */</i></td></tr>
+<tr><th id="196">196</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>void</em> <dfn class="decl" id="hwloc_bitmap_clr" title='hwloc_bitmap_clr' data-ref="hwloc_bitmap_clr">hwloc_bitmap_clr</dfn>(<a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="local col5 decl" id="45bitmap" title='bitmap' data-type='hwloc_bitmap_t' data-ref="45bitmap">bitmap</dfn>, <em>unsigned</em> <dfn class="local col6 decl" id="46id" title='id' data-type='unsigned int' data-ref="46id">id</dfn>);</td></tr>
+<tr><th id="197">197</th><td></td></tr>
+<tr><th id="198">198</th><td><i class="doc">/** <span class="command">\brief</span> Remove indexes from<span class="command"> \p</span> <span class="arg">begin</span> to<span class="command"> \p</span> <span class="arg">end</span> in bitmap<span class="command"> \p</span> <span class="arg">bitmap.</span></i></td></tr>
+<tr><th id="199">199</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="200">200</th><td><i class="doc"> * If<span class="command"> \p</span> <span class="arg">end</span> is<span class="command"> \c</span> <span class="arg">-1,</span> the range is infinite.</i></td></tr>
+<tr><th id="201">201</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="202">202</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>void</em> <dfn class="decl" id="hwloc_bitmap_clr_range" title='hwloc_bitmap_clr_range' data-ref="hwloc_bitmap_clr_range">hwloc_bitmap_clr_range</dfn>(<a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="local col7 decl" id="47bitmap" title='bitmap' data-type='hwloc_bitmap_t' data-ref="47bitmap">bitmap</dfn>, <em>unsigned</em> <dfn class="local col8 decl" id="48begin" title='begin' data-type='unsigned int' data-ref="48begin">begin</dfn>, <em>int</em> <dfn class="local col9 decl" id="49end" title='end' data-type='int' data-ref="49end">end</dfn>);</td></tr>
+<tr><th id="203">203</th><td></td></tr>
+<tr><th id="204">204</th><td><i class="doc">/** <span class="command">\brief</span> Keep a single index among those set in bitmap<span class="command"> \p</span> <span class="arg">bitmap</span></i></td></tr>
+<tr><th id="205">205</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="206">206</th><td><i class="doc"> * May be useful before binding so that the process does not</i></td></tr>
+<tr><th id="207">207</th><td><i class="doc"> * have a chance of migrating between multiple logical CPUs</i></td></tr>
+<tr><th id="208">208</th><td><i class="doc"> * in the original mask.</i></td></tr>
+<tr><th id="209">209</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="210">210</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>void</em> <dfn class="decl" id="hwloc_bitmap_singlify" title='hwloc_bitmap_singlify' data-ref="hwloc_bitmap_singlify">hwloc_bitmap_singlify</dfn>(<a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="local col0 decl" id="50bitmap" title='bitmap' data-type='hwloc_bitmap_t' data-ref="50bitmap">bitmap</dfn>);</td></tr>
+<tr><th id="211">211</th><td></td></tr>
+<tr><th id="212">212</th><td></td></tr>
+<tr><th id="213">213</th><td><i>/*</i></td></tr>
+<tr><th id="214">214</th><td><i> * Consulting bitmaps.</i></td></tr>
+<tr><th id="215">215</th><td><i> */</i></td></tr>
+<tr><th id="216">216</th><td></td></tr>
+<tr><th id="217">217</th><td><i class="doc">/** <span class="command">\brief</span> Convert the beginning part of bitmap<span class="command"> \p</span> <span class="arg">bitmap</span> into unsigned long<span class="command"> \p</span> <span class="arg">mask</span> */</i></td></tr>
+<tr><th id="218">218</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>unsigned</em> <em>long</em> <dfn class="decl" id="hwloc_bitmap_to_ulong" title='hwloc_bitmap_to_ulong' data-ref="hwloc_bitmap_to_ulong">hwloc_bitmap_to_ulong</dfn>(<a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col1 decl" id="51bitmap" title='bitmap' data-type='hwloc_const_bitmap_t' data-ref="51bitmap">bitmap</dfn>) <a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#119" title="__attribute__((__pure__))" data-ref="_M/__hwloc_attribute_pure">__hwloc_attribute_pure</a>;</td></tr>
+<tr><th id="219">219</th><td></td></tr>
+<tr><th id="220">220</th><td><i class="doc">/** <span class="command">\brief</span> Convert the<span class="command"> \p</span> <span class="arg">i</span> -th subset of bitmap<span class="command"> \p</span> <span class="arg">bitmap</span> into unsigned long mask */</i></td></tr>
+<tr><th id="221">221</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>unsigned</em> <em>long</em> <dfn class="decl" id="hwloc_bitmap_to_ith_ulong" title='hwloc_bitmap_to_ith_ulong' data-ref="hwloc_bitmap_to_ith_ulong">hwloc_bitmap_to_ith_ulong</dfn>(<a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col2 decl" id="52bitmap" title='bitmap' data-type='hwloc_const_bitmap_t' data-ref="52bitmap">bitmap</dfn>, <em>unsigned</em> <dfn class="local col3 decl" id="53i" title='i' data-type='unsigned int' data-ref="53i">i</dfn>) <a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#119" title="__attribute__((__pure__))" data-ref="_M/__hwloc_attribute_pure">__hwloc_attribute_pure</a>;</td></tr>
+<tr><th id="222">222</th><td></td></tr>
+<tr><th id="223">223</th><td><i class="doc">/** <span class="command">\brief</span> Test whether index<span class="command"> \p</span> <span class="arg">id</span> is part of bitmap<span class="command"> \p</span> <span class="arg">bitmap</span> */</i></td></tr>
+<tr><th id="224">224</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>int</em> <dfn class="decl" id="hwloc_bitmap_isset" title='hwloc_bitmap_isset' data-ref="hwloc_bitmap_isset">hwloc_bitmap_isset</dfn>(<a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col4 decl" id="54bitmap" title='bitmap' data-type='hwloc_const_bitmap_t' data-ref="54bitmap">bitmap</dfn>, <em>unsigned</em> <dfn class="local col5 decl" id="55id" title='id' data-type='unsigned int' data-ref="55id">id</dfn>) <a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#119" title="__attribute__((__pure__))" data-ref="_M/__hwloc_attribute_pure">__hwloc_attribute_pure</a>;</td></tr>
+<tr><th id="225">225</th><td></td></tr>
+<tr><th id="226">226</th><td><i class="doc">/** <span class="command">\brief</span> Test whether bitmap<span class="command"> \p</span> <span class="arg">bitmap</span> is empty */</i></td></tr>
+<tr><th id="227">227</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>int</em> <dfn class="decl" id="hwloc_bitmap_iszero" title='hwloc_bitmap_iszero' data-ref="hwloc_bitmap_iszero">hwloc_bitmap_iszero</dfn>(<a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col6 decl" id="56bitmap" title='bitmap' data-type='hwloc_const_bitmap_t' data-ref="56bitmap">bitmap</dfn>) <a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#119" title="__attribute__((__pure__))" data-ref="_M/__hwloc_attribute_pure">__hwloc_attribute_pure</a>;</td></tr>
+<tr><th id="228">228</th><td></td></tr>
+<tr><th id="229">229</th><td><i class="doc">/** <span class="command">\brief</span> Test whether bitmap<span class="command"> \p</span> <span class="arg">bitmap</span> is completely full */</i></td></tr>
+<tr><th id="230">230</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>int</em> <dfn class="decl" id="hwloc_bitmap_isfull" title='hwloc_bitmap_isfull' data-ref="hwloc_bitmap_isfull">hwloc_bitmap_isfull</dfn>(<a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col7 decl" id="57bitmap" title='bitmap' data-type='hwloc_const_bitmap_t' data-ref="57bitmap">bitmap</dfn>) <a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#119" title="__attribute__((__pure__))" data-ref="_M/__hwloc_attribute_pure">__hwloc_attribute_pure</a>;</td></tr>
+<tr><th id="231">231</th><td></td></tr>
+<tr><th id="232">232</th><td><i class="doc">/** <span class="command">\brief</span> Compute the first index (least significant bit) in bitmap<span class="command"> \p</span> <span class="arg">bitmap</span></i></td></tr>
+<tr><th id="233">233</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="234">234</th><td><i class="doc"> * <span class="command">\return</span> -1 if no index is set.</i></td></tr>
+<tr><th id="235">235</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="236">236</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>int</em> <dfn class="decl" id="hwloc_bitmap_first" title='hwloc_bitmap_first' data-ref="hwloc_bitmap_first">hwloc_bitmap_first</dfn>(<a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col8 decl" id="58bitmap" title='bitmap' data-type='hwloc_const_bitmap_t' data-ref="58bitmap">bitmap</dfn>) <a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#119" title="__attribute__((__pure__))" data-ref="_M/__hwloc_attribute_pure">__hwloc_attribute_pure</a>;</td></tr>
+<tr><th id="237">237</th><td></td></tr>
+<tr><th id="238">238</th><td><i class="doc">/** <span class="command">\brief</span> Compute the next index in bitmap<span class="command"> \p</span> <span class="arg">bitmap</span> which is after index<span class="command"> \p</span> <span class="arg">prev</span></i></td></tr>
+<tr><th id="239">239</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="240">240</th><td><i class="doc"> * If<span class="command"> \p</span> <span class="arg">prev</span> is -1, the first index is returned.</i></td></tr>
+<tr><th id="241">241</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="242">242</th><td><i class="doc"> * <span class="command">\return</span> -1 if no index with higher index is bitmap.</i></td></tr>
+<tr><th id="243">243</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="244">244</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>int</em> <dfn class="decl" id="hwloc_bitmap_next" title='hwloc_bitmap_next' data-ref="hwloc_bitmap_next">hwloc_bitmap_next</dfn>(<a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col9 decl" id="59bitmap" title='bitmap' data-type='hwloc_const_bitmap_t' data-ref="59bitmap">bitmap</dfn>, <em>int</em> <dfn class="local col0 decl" id="60prev" title='prev' data-type='int' data-ref="60prev">prev</dfn>) <a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#119" title="__attribute__((__pure__))" data-ref="_M/__hwloc_attribute_pure">__hwloc_attribute_pure</a>;</td></tr>
+<tr><th id="245">245</th><td></td></tr>
+<tr><th id="246">246</th><td><i class="doc">/** <span class="command">\brief</span> Compute the last index (most significant bit) in bitmap<span class="command"> \p</span> <span class="arg">bitmap</span></i></td></tr>
+<tr><th id="247">247</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="248">248</th><td><i class="doc"> * <span class="command">\return</span> -1 if no index is bitmap, or if the index bitmap is infinite.</i></td></tr>
+<tr><th id="249">249</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="250">250</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>int</em> <dfn class="decl" id="hwloc_bitmap_last" title='hwloc_bitmap_last' data-ref="hwloc_bitmap_last">hwloc_bitmap_last</dfn>(<a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col1 decl" id="61bitmap" title='bitmap' data-type='hwloc_const_bitmap_t' data-ref="61bitmap">bitmap</dfn>) <a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#119" title="__attribute__((__pure__))" data-ref="_M/__hwloc_attribute_pure">__hwloc_attribute_pure</a>;</td></tr>
+<tr><th id="251">251</th><td></td></tr>
+<tr><th id="252">252</th><td><i class="doc">/** <span class="command">\brief</span> Compute the "weight" of bitmap<span class="command"> \p</span> <span class="arg">bitmap</span> (i.e., number of</i></td></tr>
+<tr><th id="253">253</th><td><i class="doc"> * indexes that are in the bitmap).</i></td></tr>
+<tr><th id="254">254</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="255">255</th><td><i class="doc"> * <span class="command">\return</span> the number of indexes that are in the bitmap.</i></td></tr>
+<tr><th id="256">256</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="257">257</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>int</em> <dfn class="decl" id="hwloc_bitmap_weight" title='hwloc_bitmap_weight' data-ref="hwloc_bitmap_weight">hwloc_bitmap_weight</dfn>(<a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col2 decl" id="62bitmap" title='bitmap' data-type='hwloc_const_bitmap_t' data-ref="62bitmap">bitmap</dfn>) <a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#119" title="__attribute__((__pure__))" data-ref="_M/__hwloc_attribute_pure">__hwloc_attribute_pure</a>;</td></tr>
+<tr><th id="258">258</th><td></td></tr>
+<tr><th id="259">259</th><td><i class="doc">/** <span class="command">\brief</span> Loop macro iterating on bitmap<span class="command"> \p</span> <span class="arg">bitmap</span></i></td></tr>
+<tr><th id="260">260</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="261">261</th><td><i class="doc"> * The loop must start with hwloc_bitmap_foreach_begin() and end</i></td></tr>
+<tr><th id="262">262</th><td><i class="doc"> * with hwloc_bitmap_foreach_end() followed by a terminating ';'.</i></td></tr>
+<tr><th id="263">263</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="264">264</th><td><i class="doc"> *<span class="command"> \p</span> <span class="arg">index</span> is the loop variable; it should be an unsigned int.  The</i></td></tr>
+<tr><th id="265">265</th><td><i class="doc"> * first iteration will set<span class="command"> \p</span> <span class="arg">index</span> to the lowest index in the bitmap.</i></td></tr>
+<tr><th id="266">266</th><td><i class="doc"> * Successive iterations will iterate through, in order, all remaining</i></td></tr>
+<tr><th id="267">267</th><td><i class="doc"> * indexes set in the bitmap.  To be specific: each iteration will return a</i></td></tr>
+<tr><th id="268">268</th><td><i class="doc"> * value for<span class="command"> \p</span> <span class="arg">index</span> such that hwloc_bitmap_isset(bitmap, index) is true.</i></td></tr>
+<tr><th id="269">269</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="270">270</th><td><i class="doc"> * The assert prevents the loop from being infinite if the bitmap is infinite.</i></td></tr>
+<tr><th id="271">271</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="272">272</th><td><i class="doc"> *<span class="command"> \hideinitializer</span></i></td></tr>
+<tr><th id="273">273</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="274">274</th><td><u>#define <dfn class="macro" id="_M/hwloc_bitmap_foreach_begin" data-ref="_M/hwloc_bitmap_foreach_begin">hwloc_bitmap_foreach_begin</dfn>(id, bitmap) \</u></td></tr>
+<tr><th id="275">275</th><td><u>do { \</u></td></tr>
+<tr><th id="276">276</th><td><u>        assert(hwloc_bitmap_weight(bitmap) != -1); \</u></td></tr>
+<tr><th id="277">277</th><td><u>        for (id = hwloc_bitmap_first(bitmap); \</u></td></tr>
+<tr><th id="278">278</th><td><u>             (unsigned) id != (unsigned) -1; \</u></td></tr>
+<tr><th id="279">279</th><td><u>             id = hwloc_bitmap_next(bitmap, id)) {</u></td></tr>
+<tr><th id="280">280</th><td></td></tr>
+<tr><th id="281">281</th><td><i class="doc">/** <span class="command">\brief</span> End of loop macro iterating on a bitmap.</i></td></tr>
+<tr><th id="282">282</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="283">283</th><td><i class="doc"> * Needs a terminating ';'.</i></td></tr>
+<tr><th id="284">284</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="285">285</th><td><i class="doc"> * <span class="command">\sa</span> hwloc_bitmap_foreach_begin()</i></td></tr>
+<tr><th id="286">286</th><td><i class="doc"> *<span class="command"> \hideinitializer</span></i></td></tr>
+<tr><th id="287">287</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="288">288</th><td><u>#define <dfn class="macro" id="_M/hwloc_bitmap_foreach_end" data-ref="_M/hwloc_bitmap_foreach_end">hwloc_bitmap_foreach_end</dfn>()		\</u></td></tr>
+<tr><th id="289">289</th><td><u>        } \</u></td></tr>
+<tr><th id="290">290</th><td><u>} while (0)</u></td></tr>
+<tr><th id="291">291</th><td></td></tr>
+<tr><th id="292">292</th><td></td></tr>
+<tr><th id="293">293</th><td><i>/*</i></td></tr>
+<tr><th id="294">294</th><td><i> * Combining bitmaps.</i></td></tr>
+<tr><th id="295">295</th><td><i> */</i></td></tr>
+<tr><th id="296">296</th><td></td></tr>
+<tr><th id="297">297</th><td><i class="doc">/** <span class="command">\brief</span> Or bitmaps<span class="command"> \p</span> <span class="arg">bitmap1</span> and<span class="command"> \p</span> <span class="arg">bitmap2</span> and store the result in bitmap<span class="command"> \p</span> <span class="arg">res</span></i></td></tr>
+<tr><th id="298">298</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="299">299</th><td><i class="doc"> *<span class="command"> \p</span> <span class="arg">res</span> can be the same as<span class="command"> \p</span> <span class="arg">bitmap1</span> or<span class="command"> \p</span> <span class="arg">bitmap2</span></i></td></tr>
+<tr><th id="300">300</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="301">301</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>void</em> <dfn class="decl" id="hwloc_bitmap_or" title='hwloc_bitmap_or' data-ref="hwloc_bitmap_or">hwloc_bitmap_or</dfn> (<a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="local col3 decl" id="63res" title='res' data-type='hwloc_bitmap_t' data-ref="63res">res</dfn>, <a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col4 decl" id="64bitmap1" title='bitmap1' data-type='hwloc_const_bitmap_t' data-ref="64bitmap1">bitmap1</dfn>, <a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col5 decl" id="65bitmap2" title='bitmap2' data-type='hwloc_const_bitmap_t' data-ref="65bitmap2">bitmap2</dfn>);</td></tr>
+<tr><th id="302">302</th><td></td></tr>
+<tr><th id="303">303</th><td><i class="doc">/** <span class="command">\brief</span> And bitmaps<span class="command"> \p</span> <span class="arg">bitmap1</span> and<span class="command"> \p</span> <span class="arg">bitmap2</span> and store the result in bitmap<span class="command"> \p</span> <span class="arg">res</span></i></td></tr>
+<tr><th id="304">304</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="305">305</th><td><i class="doc"> *<span class="command"> \p</span> <span class="arg">res</span> can be the same as<span class="command"> \p</span> <span class="arg">bitmap1</span> or<span class="command"> \p</span> <span class="arg">bitmap2</span></i></td></tr>
+<tr><th id="306">306</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="307">307</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>void</em> <dfn class="decl" id="hwloc_bitmap_and" title='hwloc_bitmap_and' data-ref="hwloc_bitmap_and">hwloc_bitmap_and</dfn> (<a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="local col6 decl" id="66res" title='res' data-type='hwloc_bitmap_t' data-ref="66res">res</dfn>, <a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col7 decl" id="67bitmap1" title='bitmap1' data-type='hwloc_const_bitmap_t' data-ref="67bitmap1">bitmap1</dfn>, <a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col8 decl" id="68bitmap2" title='bitmap2' data-type='hwloc_const_bitmap_t' data-ref="68bitmap2">bitmap2</dfn>);</td></tr>
+<tr><th id="308">308</th><td></td></tr>
+<tr><th id="309">309</th><td><i class="doc">/** <span class="command">\brief</span> And bitmap<span class="command"> \p</span> <span class="arg">bitmap1</span> and the negation of<span class="command"> \p</span> <span class="arg">bitmap2</span> and store the result in bitmap<span class="command"> \p</span> <span class="arg">res</span></i></td></tr>
+<tr><th id="310">310</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="311">311</th><td><i class="doc"> *<span class="command"> \p</span> <span class="arg">res</span> can be the same as<span class="command"> \p</span> <span class="arg">bitmap1</span> or<span class="command"> \p</span> <span class="arg">bitmap2</span></i></td></tr>
+<tr><th id="312">312</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="313">313</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>void</em> <dfn class="decl" id="hwloc_bitmap_andnot" title='hwloc_bitmap_andnot' data-ref="hwloc_bitmap_andnot">hwloc_bitmap_andnot</dfn> (<a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="local col9 decl" id="69res" title='res' data-type='hwloc_bitmap_t' data-ref="69res">res</dfn>, <a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col0 decl" id="70bitmap1" title='bitmap1' data-type='hwloc_const_bitmap_t' data-ref="70bitmap1">bitmap1</dfn>, <a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col1 decl" id="71bitmap2" title='bitmap2' data-type='hwloc_const_bitmap_t' data-ref="71bitmap2">bitmap2</dfn>);</td></tr>
+<tr><th id="314">314</th><td></td></tr>
+<tr><th id="315">315</th><td><i class="doc">/** <span class="command">\brief</span> Xor bitmaps<span class="command"> \p</span> <span class="arg">bitmap1</span> and<span class="command"> \p</span> <span class="arg">bitmap2</span> and store the result in bitmap<span class="command"> \p</span> <span class="arg">res</span></i></td></tr>
+<tr><th id="316">316</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="317">317</th><td><i class="doc"> *<span class="command"> \p</span> <span class="arg">res</span> can be the same as<span class="command"> \p</span> <span class="arg">bitmap1</span> or<span class="command"> \p</span> <span class="arg">bitmap2</span></i></td></tr>
+<tr><th id="318">318</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="319">319</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>void</em> <dfn class="decl" id="hwloc_bitmap_xor" title='hwloc_bitmap_xor' data-ref="hwloc_bitmap_xor">hwloc_bitmap_xor</dfn> (<a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="local col2 decl" id="72res" title='res' data-type='hwloc_bitmap_t' data-ref="72res">res</dfn>, <a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col3 decl" id="73bitmap1" title='bitmap1' data-type='hwloc_const_bitmap_t' data-ref="73bitmap1">bitmap1</dfn>, <a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col4 decl" id="74bitmap2" title='bitmap2' data-type='hwloc_const_bitmap_t' data-ref="74bitmap2">bitmap2</dfn>);</td></tr>
+<tr><th id="320">320</th><td></td></tr>
+<tr><th id="321">321</th><td><i class="doc">/** <span class="command">\brief</span> Negate bitmap<span class="command"> \p</span> <span class="arg">bitmap</span> and store the result in bitmap<span class="command"> \p</span> <span class="arg">res</span></i></td></tr>
+<tr><th id="322">322</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="323">323</th><td><i class="doc"> *<span class="command"> \p</span> <span class="arg">res</span> can be the same as<span class="command"> \p</span> <span class="arg">bitmap</span></i></td></tr>
+<tr><th id="324">324</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="325">325</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>void</em> <dfn class="decl" id="hwloc_bitmap_not" title='hwloc_bitmap_not' data-ref="hwloc_bitmap_not">hwloc_bitmap_not</dfn> (<a class="typedef" href="#hwloc_bitmap_t" title='hwloc_bitmap_t' data-type='struct hwloc_bitmap_s *' data-ref="hwloc_bitmap_t">hwloc_bitmap_t</a> <dfn class="local col5 decl" id="75res" title='res' data-type='hwloc_bitmap_t' data-ref="75res">res</dfn>, <a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col6 decl" id="76bitmap" title='bitmap' data-type='hwloc_const_bitmap_t' data-ref="76bitmap">bitmap</dfn>);</td></tr>
+<tr><th id="326">326</th><td></td></tr>
+<tr><th id="327">327</th><td></td></tr>
+<tr><th id="328">328</th><td><i>/*</i></td></tr>
+<tr><th id="329">329</th><td><i> * Comparing bitmaps.</i></td></tr>
+<tr><th id="330">330</th><td><i> */</i></td></tr>
+<tr><th id="331">331</th><td></td></tr>
+<tr><th id="332">332</th><td><i class="doc">/** <span class="command">\brief</span> Test whether bitmaps<span class="command"> \p</span> <span class="arg">bitmap1</span> and<span class="command"> \p</span> <span class="arg">bitmap2</span> intersects */</i></td></tr>
+<tr><th id="333">333</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>int</em> <dfn class="decl" id="hwloc_bitmap_intersects" title='hwloc_bitmap_intersects' data-ref="hwloc_bitmap_intersects">hwloc_bitmap_intersects</dfn> (<a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col7 decl" id="77bitmap1" title='bitmap1' data-type='hwloc_const_bitmap_t' data-ref="77bitmap1">bitmap1</dfn>, <a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col8 decl" id="78bitmap2" title='bitmap2' data-type='hwloc_const_bitmap_t' data-ref="78bitmap2">bitmap2</dfn>) <a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#119" title="__attribute__((__pure__))" data-ref="_M/__hwloc_attribute_pure">__hwloc_attribute_pure</a>;</td></tr>
+<tr><th id="334">334</th><td></td></tr>
+<tr><th id="335">335</th><td><i class="doc">/** <span class="command">\brief</span> Test whether bitmap<span class="command"> \p</span> <span class="arg">sub_bitmap</span> is part of bitmap<span class="command"> \p</span> <span class="arg">super_bitmap</span> */</i></td></tr>
+<tr><th id="336">336</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>int</em> <dfn class="decl" id="hwloc_bitmap_isincluded" title='hwloc_bitmap_isincluded' data-ref="hwloc_bitmap_isincluded">hwloc_bitmap_isincluded</dfn> (<a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col9 decl" id="79sub_bitmap" title='sub_bitmap' data-type='hwloc_const_bitmap_t' data-ref="79sub_bitmap">sub_bitmap</dfn>, <a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col0 decl" id="80super_bitmap" title='super_bitmap' data-type='hwloc_const_bitmap_t' data-ref="80super_bitmap">super_bitmap</dfn>) <a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#119" title="__attribute__((__pure__))" data-ref="_M/__hwloc_attribute_pure">__hwloc_attribute_pure</a>;</td></tr>
+<tr><th id="337">337</th><td></td></tr>
+<tr><th id="338">338</th><td><i class="doc">/** <span class="command">\brief</span> Test whether bitmap<span class="command"> \p</span> <span class="arg">bitmap1</span> is equal to bitmap<span class="command"> \p</span> <span class="arg">bitmap2</span> */</i></td></tr>
+<tr><th id="339">339</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>int</em> <dfn class="decl" id="hwloc_bitmap_isequal" title='hwloc_bitmap_isequal' data-ref="hwloc_bitmap_isequal">hwloc_bitmap_isequal</dfn> (<a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col1 decl" id="81bitmap1" title='bitmap1' data-type='hwloc_const_bitmap_t' data-ref="81bitmap1">bitmap1</dfn>, <a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col2 decl" id="82bitmap2" title='bitmap2' data-type='hwloc_const_bitmap_t' data-ref="82bitmap2">bitmap2</dfn>) <a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#119" title="__attribute__((__pure__))" data-ref="_M/__hwloc_attribute_pure">__hwloc_attribute_pure</a>;</td></tr>
+<tr><th id="340">340</th><td></td></tr>
+<tr><th id="341">341</th><td><i class="doc">/** <span class="command">\brief</span> Compare bitmaps<span class="command"> \p</span> <span class="arg">bitmap1</span> and<span class="command"> \p</span> <span class="arg">bitmap2</span> using their lowest index.</i></td></tr>
+<tr><th id="342">342</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="343">343</th><td><i class="doc"> * Smaller least significant bit is smaller.</i></td></tr>
+<tr><th id="344">344</th><td><i class="doc"> * The empty bitmap is considered higher than anything.</i></td></tr>
+<tr><th id="345">345</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="346">346</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>int</em> <dfn class="decl" id="hwloc_bitmap_compare_first" title='hwloc_bitmap_compare_first' data-ref="hwloc_bitmap_compare_first">hwloc_bitmap_compare_first</dfn>(<a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col3 decl" id="83bitmap1" title='bitmap1' data-type='hwloc_const_bitmap_t' data-ref="83bitmap1">bitmap1</dfn>, <a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col4 decl" id="84bitmap2" title='bitmap2' data-type='hwloc_const_bitmap_t' data-ref="84bitmap2">bitmap2</dfn>) <a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#119" title="__attribute__((__pure__))" data-ref="_M/__hwloc_attribute_pure">__hwloc_attribute_pure</a>;</td></tr>
+<tr><th id="347">347</th><td></td></tr>
+<tr><th id="348">348</th><td><i class="doc">/** <span class="command">\brief</span> Compare bitmaps<span class="command"> \p</span> <span class="arg">bitmap1</span> and<span class="command"> \p</span> <span class="arg">bitmap2</span> in lexicographic order.</i></td></tr>
+<tr><th id="349">349</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="350">350</th><td><i class="doc"> * Lexicographic comparison of bitmaps, starting for their highest indexes.</i></td></tr>
+<tr><th id="351">351</th><td><i class="doc"> * Compare last indexes first, then second, etc.</i></td></tr>
+<tr><th id="352">352</th><td><i class="doc"> * The empty bitmap is considered lower than anything.</i></td></tr>
+<tr><th id="353">353</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="354">354</th><td><i class="doc"> * <span class="command">\note</span> This is different from the non-existing hwloc_bitmap_compare_last()</i></td></tr>
+<tr><th id="355">355</th><td><i class="doc"> * which would only compare the highest index of each bitmap.</i></td></tr>
+<tr><th id="356">356</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="357">357</th><td><a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#157" title="" data-ref="_M/HWLOC_DECLSPEC">HWLOC_DECLSPEC</a> <em>int</em> <dfn class="decl" id="hwloc_bitmap_compare" title='hwloc_bitmap_compare' data-ref="hwloc_bitmap_compare">hwloc_bitmap_compare</dfn>(<a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col5 decl" id="85bitmap1" title='bitmap1' data-type='hwloc_const_bitmap_t' data-ref="85bitmap1">bitmap1</dfn>, <a class="typedef" href="#hwloc_const_bitmap_t" title='hwloc_const_bitmap_t' data-type='const struct hwloc_bitmap_s *' data-ref="hwloc_const_bitmap_t">hwloc_const_bitmap_t</a> <dfn class="local col6 decl" id="86bitmap2" title='bitmap2' data-type='hwloc_const_bitmap_t' data-ref="86bitmap2">bitmap2</dfn>) <a class="macro" href="../x86_64-linux-gnu/hwloc/autogen/config.h.html#119" title="__attribute__((__pure__))" data-ref="_M/__hwloc_attribute_pure">__hwloc_attribute_pure</a>;</td></tr>
+<tr><th id="358">358</th><td></td></tr>
+<tr><th id="359">359</th><td><i class="doc">/** @} */</i></td></tr>
+<tr><th id="360">360</th><td></td></tr>
+<tr><th id="361">361</th><td></td></tr>
+<tr><th id="362">362</th><td><u>#<span data-ppcond="362">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="363">363</th><td>} <i>/* extern "C" */</i></td></tr>
+<tr><th id="364">364</th><td><u>#<span data-ppcond="362">endif</span></u></td></tr>
+<tr><th id="365">365</th><td></td></tr>
+<tr><th id="366">366</th><td></td></tr>
+<tr><th id="367">367</th><td><u>#<span data-ppcond="13">endif</span> /* HWLOC_BITMAP_H */</u></td></tr>
+<tr><th id="368">368</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../pocl/lib/CL/devices/topology/pocl_topology.c.html'>pocl/lib/CL/devices/topology/pocl_topology.c</a><br/>Generated on <em>2019-Oct-28</em> from project include<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

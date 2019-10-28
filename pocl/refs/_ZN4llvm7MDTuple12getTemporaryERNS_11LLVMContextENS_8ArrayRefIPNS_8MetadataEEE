@@ -1,0 +1,8 @@
+<use f='include/llvm-6.0/llvm/IR/Metadata.h' l='1123' u='c' c='_ZNK4llvm7MDTuple9cloneImplEv'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='1151' ll='1154' type='static TempMDTuple llvm::MDTuple::getTemporary(llvm::LLVMContext &amp; Context, ArrayRef&lt;llvm::Metadata *&gt; MDs)'/>
+<use f='include/llvm-6.0/llvm/IR/Metadata.h' l='1178' u='c' c='_ZN4llvm6MDNode12getTemporaryERNS_11LLVMContextENS_8ArrayRefIPNS_8MetadataEEE'/>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='1146'>/// \brief Return a temporary node.
+  ///
+  /// For use in constructing cyclic MDNode structures. A temporary MDNode is
+  /// not uniqued, may be RAUW&apos;d, and must be manually deleted with
+  /// deleteTemporary.</doc>

@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/ADT/MapVector.h' l='170' ll='184' type='typename VectorType::iterator llvm::MapVector::erase(typename VectorType::iterator Iterator)'/>
+<doc f='include/llvm-6.0/llvm/ADT/MapVector.h' l='163'>/// \brief Remove the element given by Iterator.
+  ///
+  /// Returns an iterator to the element following the one which was removed,
+  /// which may be end().
+  ///
+  /// \note This is a deceivingly expensive operation (linear time).  It&apos;s
+  /// usually better to use \a remove_if() if possible.</doc>

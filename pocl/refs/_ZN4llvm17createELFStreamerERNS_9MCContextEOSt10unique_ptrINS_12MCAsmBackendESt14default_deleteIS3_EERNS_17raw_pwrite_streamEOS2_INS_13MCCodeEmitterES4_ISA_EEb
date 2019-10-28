@@ -1,0 +1,3 @@
+<dec f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='70' type='llvm::MCStreamer * llvm::createELFStreamer(llvm::MCContext &amp; Ctx, std::unique_ptr&lt;MCAsmBackend&gt; &amp;&amp; TAB, llvm::raw_pwrite_stream &amp; OS, std::unique_ptr&lt;MCCodeEmitter&gt; &amp;&amp; CE, bool RelaxAll)'/>
+<use f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='476' u='c' c='_ZNK4llvm6Target22createMCObjectStreamerERKNS_6TripleERNS_9MCContextEOSt10unique_ptrINS_12MCAsmBackendESt14default_deleteIS7_EERNS_17raw_pwrite_stream5777760'/>
+<doc f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='69'>/// Takes ownership of \p TAB and \p CE.</doc>

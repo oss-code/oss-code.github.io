@@ -1,0 +1,46 @@
+<dec f='pocl/include/CL/cl.h' l='1108' type='cl_program clCreateProgramWithSource(cl_context context, cl_uint count, const char ** strings, const size_t * lengths, cl_int * errcode_ret)'/>
+<use f='pocl/bin/poclcc.c' l='323' u='c' c='main'/>
+<doc f='pocl/include/CL/cl.h' l='1106'>/* Program Object APIs */</doc>
+<use f='pocl/examples/EinsteinToolkit/EinsteinToolkit.c' l='589' u='c' c='setup'/>
+<use f='pocl/examples/EinsteinToolkit/EinsteinToolkit.c' l='615' u='c' c='setup'/>
+<use f='pocl/examples/scalarwave/scalarwave.c' l='68' u='c' c='exec_scalarwave_kernel'/>
+<use f='pocl/examples/trig/trig_exec.c' l='73' u='c' c='exec_trig_kernel'/>
+<use f='pocl/lib/CL/pocl_intfn.h' l='47' c='POclCreateProgramWithSource'/>
+<use f='pocl/lib/poclu/misc.c' l='384' u='c' c='poclu_load_program_multidev'/>
+<use f='pocl/tests/kernel/image_query_funcs.c' l='96' u='c' c='main'/>
+<use f='pocl/tests/kernel/kernel.c' l='69' u='c' c='call_test'/>
+<use f='pocl/tests/kernel/sampler_address_clamp.c' l='100' u='c' c='main'/>
+<use f='pocl/include/CL/cl2.hpp' l='6149' u='c' c='_ZN2cl7ProgramC1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEbPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6187' u='c' c='_ZN2cl7ProgramC1ERKNS_7ContextERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEbPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6239' u='c' c='_ZN2cl7ProgramC1ERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS7_EEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6274' u='c' c='_ZN2cl7ProgramC1ERKNS_7ContextERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaISA_EEPi'/>
+<use f='pocl/tests/regression/test_assign_loop_variable_to_privvar_makes_it_local.c' l='69' u='c' c='main'/>
+<use f='pocl/tests/regression/test_assign_loop_variable_to_privvar_makes_it_local_2.c' l='64' u='c' c='main'/>
+<use f='pocl/tests/regression/test_program_from_binary_with_local_1_1_1.c' l='94' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='101' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='116' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='132' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='195' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='224' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='254' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='325' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='354' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='383' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='411' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='433' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='463' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateKernel.c' l='27' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateKernelsInProgram.c' l='28' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateKernelsInProgram.c' l='40' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateProgramWithBinary.c' l='45' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateSubDevices.c' l='56' u='c' c='test_context'/>
+<use f='pocl/tests/runtime/test_clFinish.c' l='119' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clGetKernelArgInfo.c' l='400' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clSetEventCallback.c' l='114' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_enqueue_kernel_from_binary.c' l='130' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_enqueue_kernel_from_binary.c' l='155' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_enqueue_kernel_from_binary.c' l='165' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_kernel_cache_includes.c' l='39' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_kernel_cache_includes.c' l='59' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_link_error.c' l='56' u='c' c='main'/>
+<use f='pocl/tests/workgroup/run_kernel.c' l='93' u='c' c='main'/>

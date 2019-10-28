@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/Function.h' l='510' ll='512' type='bool llvm::Function::hasUWTable() const'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='519' u='c' c='_ZNK4llvm8Function21needsUnwindTableEntryEv'/>
+<doc f='include/llvm-6.0/llvm/IR/Function.h' l='508'>/// @brief True if the ABI mandates (or the user requested) that this
+  /// function be in a unwind table.</doc>

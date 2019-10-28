@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/ADT/Triple.h' l='315' type='llvm::Triple::ObjectFormatType llvm::Triple::getObjectFormat() const'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='589' u='c' c='_ZNK4llvm6Triple16isOSBinFormatELFEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='594' u='c' c='_ZNK4llvm6Triple17isOSBinFormatCOFFEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='599' u='c' c='_ZNK4llvm6Triple18isOSBinFormatMachOEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='604' u='c' c='_ZNK4llvm6Triple17isOSBinFormatWasmEv'/>
+<use f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='455' u='c' c='_ZNK4llvm6Target22createMCObjectStreamerERKNS_6TripleERNS_9MCContextEOSt10unique_ptrINS_12MCAsmBackendESt14default_deleteIS7_EERNS_17raw_pwrite_stream5777760'/>
+<doc f='include/llvm-6.0/llvm/ADT/Triple.h' l='314'>/// getFormat - Get the object format for this triple.</doc>

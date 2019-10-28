@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='420' ll='424' type='bool llvm::APInt::isMaxSignedValue() const'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='220' u='c' c='_ZNK4llvm11ConstantInt10isMaxValueEb'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='416'>/// \brief Determine if this is the largest signed value.
+  ///
+  /// This checks to see if the value of this APInt is the maximum signed
+  /// value for the APInt&apos;s bit width.</doc>

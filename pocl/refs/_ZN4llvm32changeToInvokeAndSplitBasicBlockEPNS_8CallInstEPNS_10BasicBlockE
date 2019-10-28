@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='391' type='llvm::BasicBlock * llvm::changeToInvokeAndSplitBasicBlock(llvm::CallInst * CI, llvm::BasicBlock * UnwindEdge)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='387'>/// Convert the CallInst to InvokeInst with the specified unwind edge basic
+/// block.  This also splits the basic block where CI is located, because
+/// InvokeInst is a terminator instruction.  Returns the newly split basic
+/// block.</doc>

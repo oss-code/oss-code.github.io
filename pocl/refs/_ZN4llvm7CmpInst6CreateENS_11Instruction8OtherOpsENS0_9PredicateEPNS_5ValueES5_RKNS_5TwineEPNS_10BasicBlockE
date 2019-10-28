@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='918' type='static llvm::CmpInst * llvm::CmpInst::Create(llvm::Instruction::OtherOps Op, llvm::CmpInst::Predicate predicate, llvm::Value * S1, llvm::Value * S2, const llvm::Twine &amp; Name, llvm::BasicBlock * InsertAtEnd)'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='914'>/// Construct a compare instruction, given the opcode, the predicate and the
+  /// two operands.  Also automatically insert this instruction to the end of
+  /// the BasicBlock specified.
+  /// @brief Create a CmpInst</doc>

@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='603' ll='605' type='BlockT * llvm::RegionBase::block_iterator_wrapper::operator*() const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='600'>// FIXME: Even a const_iterator returns a non-const BasicBlock pointer.
+    //        This was introduced for backwards compatibility, but should
+    //        be removed as soon as all users are fixed.</doc>

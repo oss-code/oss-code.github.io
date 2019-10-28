@@ -1,0 +1,4 @@
+<dec f='pocl/include/CL/cl.h' l='1059' type='cl_int clSetMemObjectDestructorCallback(cl_mem memobj, void (*)(cl_mem, void *) pfn_notify, void * user_data)'/>
+<use f='pocl/lib/CL/pocl_intfn.h' l='117' c='POclSetMemObjectDestructorCallback'/>
+<use f='pocl/include/CL/cl2.hpp' l='3389' u='c' c='_ZN2cl6Memory21setDestructorCallbackEPFvP7_cl_memPvES3_'/>
+<use f='pocl/tests/runtime/test_clSetMemObjectDestructorCallback.c' l='42' u='c' c='main'/>

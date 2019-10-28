@@ -1,0 +1,43 @@
+<inh f='include/llvm-6.0/llvm/IR/Instruction.h' l='44' c='llvm::Instruction'/>
+<def f='include/llvm-6.0/llvm/IR/Instructions.h' l='2227' ll='2310'/>
+<size>56</size>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='2220'>//===----------------------------------------------------------------------===//
+//                           ShuffleVectorInst Class
+//===----------------------------------------------------------------------===//
+
+/// This instruction constructs a fixed permutation of two
+/// input vectors.
+///</doc>
+<fun r='_ZNK4llvm17ShuffleVectorInst9cloneImplEv'/>
+<fun r='_ZN4llvm17ShuffleVectorInstC1EPNS_5ValueES2_S2_RKNS_5TwineEPNS_11InstructionE'/>
+<fun r='_ZN4llvm17ShuffleVectorInstC1EPNS_5ValueES2_S2_RKNS_5TwineEPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm17ShuffleVectorInstnwEm'/>
+<fun r='_ZN4llvm17ShuffleVectorInst15isValidOperandsEPKNS_5ValueES3_S3_'/>
+<fun r='_ZNK4llvm17ShuffleVectorInst7getTypeEv'/>
+<fun r='_ZNK4llvm17ShuffleVectorInst10getOperandEj'/>
+<fun r='_ZN4llvm17ShuffleVectorInst10setOperandEjPNS_5ValueE'/>
+<fun r='_ZN4llvm17ShuffleVectorInst8op_beginEv'/>
+<fun r='_ZNK4llvm17ShuffleVectorInst8op_beginEv'/>
+<fun r='_ZN4llvm17ShuffleVectorInst6op_endEv'/>
+<fun r='_ZNK4llvm17ShuffleVectorInst6op_endEv'/>
+<fun r='_ZN4llvm17ShuffleVectorInst2OpEv'/>
+<fun r='_ZNK4llvm17ShuffleVectorInst2OpEv'/>
+<fun r='_ZNK4llvm17ShuffleVectorInst14getNumOperandsEv'/>
+<fun r='_ZNK4llvm17ShuffleVectorInst7getMaskEv'/>
+<fun r='_ZN4llvm17ShuffleVectorInst12getMaskValueEPNS_8ConstantEj'/>
+<fun r='_ZNK4llvm17ShuffleVectorInst12getMaskValueEj'/>
+<fun r='_ZN4llvm17ShuffleVectorInst14getShuffleMaskEPNS_8ConstantERNS_15SmallVectorImplIiEE'/>
+<fun r='_ZNK4llvm17ShuffleVectorInst14getShuffleMaskERNS_15SmallVectorImplIiEE'/>
+<fun r='_ZNK4llvm17ShuffleVectorInst14getShuffleMaskEv'/>
+<fun r='_ZN4llvm17ShuffleVectorInst18commuteShuffleMaskENS_15MutableArrayRefIiEEj'/>
+<fun r='_ZN4llvm17ShuffleVectorInst7classofEPKNS_11InstructionE'/>
+<fun r='_ZN4llvm17ShuffleVectorInst7classofEPKNS_5ValueE'/>
+<fun r='_ZN4llvm17ShuffleVectorInst8op_beginEv'/>
+<fun r='_ZNK4llvm17ShuffleVectorInst8op_beginEv'/>
+<fun r='_ZN4llvm17ShuffleVectorInst6op_endEv'/>
+<fun r='_ZNK4llvm17ShuffleVectorInst6op_endEv'/>
+<fun r='_ZNK4llvm17ShuffleVectorInst10getOperandEj'/>
+<fun r='_ZN4llvm17ShuffleVectorInst10setOperandEjPNS_5ValueE'/>
+<fun r='_ZNK4llvm17ShuffleVectorInst14getNumOperandsEv'/>
+<fun r='_ZN4llvm17ShuffleVectorInst2OpEv'/>
+<fun r='_ZNK4llvm17ShuffleVectorInst2OpEv'/>

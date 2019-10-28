@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/ADT/APFloat.h' l='840' ll='841' type='void llvm::APFloat::APFloat(const llvm::fltSemantics &amp; Semantics, llvm::APFloatBase::uninitializedTag )'/>
+<use f='include/llvm-6.0/llvm/ADT/APFloat.h' l='856' u='c' c='_ZN4llvm7APFloat7getZeroERKNS_12fltSemanticsEb'/>
+<use f='include/llvm-6.0/llvm/ADT/APFloat.h' l='865' u='c' c='_ZN4llvm7APFloat6getInfERKNS_12fltSemanticsEb'/>
+<use f='include/llvm-6.0/llvm/ADT/APFloat.h' l='888' u='c' c='_ZN4llvm7APFloat7getQNaNERKNS_12fltSemanticsEbPKNS_5APIntE'/>
+<use f='include/llvm-6.0/llvm/ADT/APFloat.h' l='896' u='c' c='_ZN4llvm7APFloat7getSNaNERKNS_12fltSemanticsEbPKNS_5APIntE'/>
+<use f='include/llvm-6.0/llvm/ADT/APFloat.h' l='905' u='c' c='_ZN4llvm7APFloat10getLargestERKNS_12fltSemanticsEb'/>
+<use f='include/llvm-6.0/llvm/ADT/APFloat.h' l='915' u='c' c='_ZN4llvm7APFloat11getSmallestERKNS_12fltSemanticsEb'/>
+<use f='include/llvm-6.0/llvm/ADT/APFloat.h' l='926' u='c' c='_ZN4llvm7APFloat21getSmallestNormalizedERKNS_12fltSemanticsEb'/>
+<doc f='include/llvm-6.0/llvm/ADT/APFloat.h' l='839'>// TODO: Remove this constructor. This isn&apos;t faster than the first one.</doc>

@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='570' type='llvm::ModRefInfo llvm::AAResults::getModRefInfo(const llvm::AtomicRMWInst * RMW, const llvm::MemoryLocation &amp; Loc)'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='575' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_13AtomicRMWInstEPKNS_5ValueEj'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='635' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_11InstructionERKNS_8OptionalINS_14MemoryLocationEEE'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='568'>/// getModRefInfo (for atomicrmws) - Return information about whether
+  /// a particular atomicrmw modifies or reads the specified memory location.</doc>

@@ -1,0 +1,11 @@
+<def f='include/llvm-6.0/llvm/Support/SpecialCaseList.h' l='118' ll='129'/>
+<size>144</size>
+<doc f='include/llvm-6.0/llvm/Support/SpecialCaseList.h' l='114'>/// Represents a set of regular expressions.  Regular expressions which are
+  /// &quot;literal&quot; (i.e. no regex metacharacters) are stored in Strings.  The
+  /// reason for doing so is efficiency; StringMap is much faster at matching
+  /// literal strings than Regex.</doc>
+<fun r='_ZN4llvm15SpecialCaseList7Matcher6insertENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEjRS7_'/>
+<fun r='_ZNK4llvm15SpecialCaseList7Matcher5matchENS_9StringRefE'/>
+<mbr r='llvm::SpecialCaseList::Matcher::Strings' o='0' t='StringMap&lt;unsigned int&gt;'/>
+<mbr r='llvm::SpecialCaseList::Matcher::Trigrams' o='256' t='llvm::TrigramIndex'/>
+<mbr r='llvm::SpecialCaseList::Matcher::RegExes' o='960' t='std::vector&lt;std::pair&lt;std::unique_ptr&lt;Regex&gt;, unsigned int&gt; &gt;'/>

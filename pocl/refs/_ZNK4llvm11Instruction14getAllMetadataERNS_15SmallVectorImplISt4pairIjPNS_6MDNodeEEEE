@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/Instruction.h' l='210' ll='214' type='void llvm::Instruction::getAllMetadata(SmallVectorImpl&lt;std::pair&lt;unsigned int, MDNode *&gt; &gt; &amp; MDs) const'/>
+<doc f='include/llvm-6.0/llvm/IR/Instruction.h' l='207'>/// Get all metadata attached to this Instruction. The first element of each
+  /// pair returned is the KindID, the second element is the metadata value.
+  /// This list is returned sorted by the KindID.</doc>

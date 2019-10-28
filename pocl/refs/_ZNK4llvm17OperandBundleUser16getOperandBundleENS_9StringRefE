@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1363' ll='1373' type='Optional&lt;llvm::OperandBundleUse&gt; llvm::OperandBundleUser::getOperandBundle(llvm::StringRef Name) const'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1359'>/// \brief Return an operand bundle by name, if present.
+  ///
+  /// It is an error to call this for operand bundle types that may have
+  /// multiple instances of them on the same instruction.</doc>

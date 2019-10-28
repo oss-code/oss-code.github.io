@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/PassManagerInternal.h' l='47' type='llvm::PreservedAnalyses llvm::detail::PassConcept::run(IRUnitT &amp; IR, AnalysisManagerT &amp; AM, ExtraArgTs... ExtraArgs)'/>
+<doc f='include/llvm-6.0/llvm/IR/PassManagerInternal.h' l='42'>/// \brief The polymorphic API which runs the pass over a given IR entity.
+  ///
+  /// Note that actual pass object can omit the analysis manager argument if
+  /// desired. Also that the analysis manager may be null if there is no
+  /// analysis manager in the pass pipeline.</doc>

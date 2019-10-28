@@ -1,0 +1,9 @@
+<dec f='pocl/lib/CL/pocl_timing.h' l='14' type='uint64_t pocl_gettimemono_ns()'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='310' u='c' c='pocl_cuda_init'/>
+<use f='pocl/lib/CL/pocl_debug.c' l='125' u='c' c='pocl_debug_measure_start'/>
+<use f='pocl/lib/CL/pocl_debug.c' l='199' u='c' c='pocl_debug_measure_finish'/>
+<def f='pocl/lib/CL/pocl_timing.c' l='66' ll='110' type='uint64_t pocl_gettimemono_ns()'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1168' u='c' c='pocl_update_event_queued'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1186' u='c' c='pocl_update_event_submitted'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1203' u='c' c='pocl_update_event_running_unlocked'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1232' u='c' c='pocl_update_event_finished_msg'/>

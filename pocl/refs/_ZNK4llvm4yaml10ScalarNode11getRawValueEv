@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Support/YAMLParser.h' l='214' type='llvm::StringRef llvm::yaml::ScalarNode::getRawValue() const'/>
+<doc f='include/llvm-6.0/llvm/Support/YAMLParser.h' l='211'>// Return Value without any escaping or folding or other fun YAML stuff. This
+  // is the exact bytes that are contained in the file (after conversion to
+  // utf8).</doc>

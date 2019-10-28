@@ -1,0 +1,25 @@
+<dec f='pocl/lib/CL/pocl_util.h' l='179' type='int pocl_check_event_wait_list(cl_command_queue command_queue, cl_uint num_events_in_wait_list, const cl_event * event_wait_list)'/>
+<use f='pocl/lib/CL/clEnqueueBarrierWithWaitList.c' l='40' u='c' c='POclEnqueueBarrierWithWaitList'/>
+<use f='pocl/lib/CL/clEnqueueCopyBuffer.c' l='80' u='c' c='POclEnqueueCopyBuffer'/>
+<use f='pocl/lib/CL/clEnqueueFillBuffer.c' l='52' u='c' c='POclEnqueueFillBuffer'/>
+<use f='pocl/lib/CL/clEnqueueFillImage.c' l='59' u='c' c='POclEnqueueFillImage'/>
+<use f='pocl/lib/CL/clEnqueueMapBuffer.c' l='65' u='c' c='POclEnqueueMapBuffer'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='81' u='c' c='POclEnqueueMapImage'/>
+<use f='pocl/lib/CL/clEnqueueMarkerWithWaitList.c' l='41' u='c' c='POclEnqueueMarkerWithWaitList'/>
+<use f='pocl/lib/CL/clEnqueueMigrateMemObjects.c' l='52' u='c' c='POclEnqueueMigrateMemObjects'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='124' u='c' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/clEnqueueNativeKernel.c' l='46' u='c' c='POclEnqueueNativeKernel'/>
+<use f='pocl/lib/CL/clEnqueueReadBuffer.c' l='71' u='c' c='POclEnqueueReadBuffer'/>
+<use f='pocl/lib/CL/clEnqueueReadBufferRect.c' l='67' u='c' c='POclEnqueueReadBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueReadImage.c' l='70' u='c' c='POclEnqueueReadImage'/>
+<use f='pocl/lib/CL/clEnqueueSVMFree.c' l='54' u='c' c='POclEnqueueSVMFree'/>
+<use f='pocl/lib/CL/clEnqueueSVMMap.c' l='59' u='c' c='POclEnqueueSVMMap'/>
+<use f='pocl/lib/CL/clEnqueueSVMMemFill.c' l='62' u='c' c='POclEnqueueSVMMemFill'/>
+<use f='pocl/lib/CL/clEnqueueSVMMemcpy.c' l='51' u='c' c='POclEnqueueSVMMemcpy'/>
+<use f='pocl/lib/CL/clEnqueueSVMUnmap.c' l='49' u='c' c='POclEnqueueSVMUnmap'/>
+<use f='pocl/lib/CL/clEnqueueUnmapMemObject.c' l='50' u='c' c='POclEnqueueUnmapMemObject'/>
+<use f='pocl/lib/CL/clEnqueueWaitForEvents.c' l='35' u='c' c='POclEnqueueWaitForEvents'/>
+<use f='pocl/lib/CL/clEnqueueWriteBuffer.c' l='71' u='c' c='POclEnqueueWriteBuffer'/>
+<use f='pocl/lib/CL/clEnqueueWriteBufferRect.c' l='65' u='c' c='POclEnqueueWriteBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueWriteImage.c' l='44' u='c' c='POclEnqueueWriteImage'/>
+<def f='pocl/lib/CL/pocl_util.c' l='991' ll='1018' type='int pocl_check_event_wait_list(cl_command_queue command_queue, cl_uint num_events_in_wait_list, const cl_event * event_wait_list)'/>

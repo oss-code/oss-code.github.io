@@ -1,0 +1,4 @@
+<dec f='pocl/lib/CL/pocl_intfn.h' l='44' macro='1' type='cl_program POclCreateProgramWithBinary(cl_context , cl_uint , const cl_device_id * , const size_t * , const unsigned char ** , cl_int * , cl_int * )'/>
+<def f='pocl/lib/CL/clCreateProgramWithBinary.c' l='212' macro='1' type='cl_program POclCreateProgramWithBinary(cl_context context, cl_uint num_devices, const cl_device_id * device_list, const size_t * lengths, const unsigned char ** binaries, cl_int * binary_status, cl_int * errcode_ret)'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='67' macro='1' u='a'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='67' macro='1' u='a'/>

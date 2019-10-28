@@ -1,0 +1,12 @@
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='451' u='c' c='_ZNK4llvm5APInt12isSignedIntNEj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1192' u='c' c='_ZNK4llvm5APInt3sltEl'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1262' u='c' c='_ZNK4llvm5APInt3sgtEl'/>
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='1531' ll='1535' type='unsigned int llvm::APInt::getMinSignedBits() const'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='1523'>/// \brief Get the minimum bit size for this signed APInt
+  ///
+  /// Computes the minimum bit width for this APInt while considering it to be a
+  /// signed (and probably negative) value. If the value is not negative, this
+  /// function returns the same value as getActiveBits()+1. Otherwise, it
+  /// returns the smallest bit width that will retain the negative value. For
+  /// example, -1 can be written as 0b1 or 0xFFFFFFFFFF. 0b1 is shorter and so
+  /// for -1, this function will always return 1.</doc>

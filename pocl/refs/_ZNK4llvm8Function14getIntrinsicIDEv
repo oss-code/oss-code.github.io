@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/IR/Function.h' l='175' type='Intrinsic::ID llvm::Function::getIntrinsicID() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Function.h' l='169'>/// getIntrinsicID - This method returns the ID number of the specified
+  /// function, or Intrinsic::not_intrinsic if the function is not an
+  /// intrinsic, or if the pointer is null.  This value is always defined to be
+  /// zero to allow easy checking for whether a function is intrinsic or not.
+  /// The particular intrinsic functions which correspond to this value are
+  /// defined in llvm/Intrinsics.h.</doc>

@@ -1,0 +1,21 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1122' type='struct pocl_argument *'/>
+<offset>704</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='1120'>/* The kernel arguments that are set with clSetKernelArg().
+     These are copied to the command queue command at enqueue. */</doc>
+<use f='pocl/lib/CL/clCreateKernel.c' l='87' u='w' c='POclCreateKernel'/>
+<use f='pocl/lib/CL/clCreateKernel.c' l='89' u='r' c='POclCreateKernel'/>
+<use f='pocl/lib/CL/clCreateKernel.c' l='102' u='r' c='POclCreateKernel'/>
+<use f='pocl/lib/CL/clCreateKernel.c' l='102' u='w' c='POclCreateKernel'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='474' u='r' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='579' u='r' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='581' u='r' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='583' u='r' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='599' u='r' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/clGetKernelWorkGroupInfo.c' l='89' u='r' c='POclGetKernelWorkGroupInfo'/>
+<use f='pocl/lib/CL/clReleaseKernel.c' l='47' u='r' c='POclReleaseKernel'/>
+<use f='pocl/lib/CL/clReleaseKernel.c' l='50' u='r' c='POclReleaseKernel'/>
+<use f='pocl/lib/CL/clReleaseKernel.c' l='50' u='r' c='POclReleaseKernel'/>
+<use f='pocl/lib/CL/clReleaseKernel.c' l='55' u='r' c='POclReleaseKernel'/>
+<use f='pocl/lib/CL/clReleaseKernel.c' l='55' u='w' c='POclReleaseKernel'/>
+<use f='pocl/lib/CL/clSetKernelArg.c' l='51' u='r' c='POclSetKernelArg'/>
+<use f='pocl/lib/CL/clSetKernelArg.c' l='118' u='r' c='POclSetKernelArg'/>

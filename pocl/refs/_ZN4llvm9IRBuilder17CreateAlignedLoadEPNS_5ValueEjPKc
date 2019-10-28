@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1186' ll='1190' type='llvm::LoadInst * llvm::IRBuilder::CreateAlignedLoad(llvm::Value * Ptr, unsigned int Align, const char * Name)'/>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1183'>// \brief Provided to resolve &apos;CreateAlignedLoad(Ptr, Align, &quot;...&quot;)&apos;
+  // correctly, instead of converting the string to &apos;bool&apos; for the isVolatile
+  // parameter.</doc>

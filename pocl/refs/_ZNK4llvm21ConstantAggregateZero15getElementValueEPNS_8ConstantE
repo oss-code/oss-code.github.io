@@ -1,0 +1,3 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='355' type='llvm::Constant * llvm::ConstantAggregateZero::getElementValue(llvm::Constant * C) const'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='353'>/// Return a zero of the right value for the specified GEP index if we can,
+  /// otherwise return null (e.g. if C is a ConstantExpr).</doc>

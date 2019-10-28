@@ -1,0 +1,19 @@
+<def f='include/llvm-6.0/llvm/IR/Function.h' l='586' type='llvm::BasicBlock &amp; llvm::Function::getEntryBlock()'/>
+<use f='include/llvm-6.0/llvm/IR/CFG.h' l='213' u='c' c='_ZN4llvm11GraphTraitsIPNS_8FunctionEE12getEntryNodeES2_'/>
+<use f='include/llvm-6.0/llvm/IR/CFG.h' l='254' u='c' c='_ZN4llvm11GraphTraitsINS_7InverseIPNS_8FunctionEEEE12getEntryNodeES4_'/>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='113' u='c' c='_ZN4pocl22BarrierTailReplication15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='67' u='c' c='_ZN4pocl20CanonicalizeBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='169' u='c' c='_ZN4pocl20CanonicalizeBarriers15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/ImplicitConditionalBarriers.cc' l='105' u='c' c='_ZN4pocl27ImplicitConditionalBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/IsolateRegions.cc' l='121' u='c' c='_ZN4pocl14IsolateRegions11runOnRegionEPN4llvm6RegionERNS1_13RGPassManagerE'/>
+<use f='pocl/lib/llvmopencl/Kernel.cc' l='278' u='c' c='_ZN4pocl6Kernel20addLocalSizeInitCodeEmmm'/>
+<use f='pocl/lib/llvmopencl/PHIsToAllocas.cc' l='125' u='c' c='_ZN4pocl13PHIsToAllocas17BreakPHIToAllocasEPN4llvm7PHINodeE'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='124' u='c' c='_ZN4pocl26VariableUniformityAnalysis13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='125' u='c' c='_ZN4pocl26VariableUniformityAnalysis13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='125' u='c' c='_ZN4pocl26VariableUniformityAnalysis13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='286' u='c' c='_ZN4pocl26VariableUniformityAnalysis9isUniformEPN4llvm8FunctionEPNS1_5ValueE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='805' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='364' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='378' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='612' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='876' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>

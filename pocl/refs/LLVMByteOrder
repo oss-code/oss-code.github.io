@@ -1,0 +1,4 @@
+<dec f='include/llvm-c-6.0/llvm-c/Target.h' l='222' type='enum LLVMByteOrdering LLVMByteOrder(LLVMTargetDataRef TD)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Target.h' l='219'>/** Returns the byte order of a target, either LLVMBigEndian or
+    LLVMLittleEndian.
+    See the method llvm::DataLayout::isLittleEndian. */</doc>

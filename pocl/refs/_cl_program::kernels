@@ -1,0 +1,14 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1091' type='cl_kernel'/>
+<offset>1280</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='1090'>/* implementation */</doc>
+<use f='pocl/lib/CL/clCreateKernel.c' l='93' u='r' c='POclCreateKernel'/>
+<use f='pocl/lib/CL/clCreateKernel.c' l='93' u='w' c='POclCreateKernel'/>
+<use f='pocl/lib/CL/clReleaseKernel.c' l='45' c='POclReleaseKernel'/>
+<use f='pocl/lib/CL/clReleaseKernel.c' l='45' u='r' c='POclReleaseKernel'/>
+<use f='pocl/lib/CL/clReleaseKernel.c' l='45' u='w' c='POclReleaseKernel'/>
+<use f='pocl/lib/CL/clReleaseKernel.c' l='45' u='r' c='POclReleaseKernel'/>
+<use f='pocl/lib/CL/clReleaseKernel.c' l='45' u='r' c='POclReleaseKernel'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='56' u='r' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/pocl_build.c' l='444' u='r' c='clean_program_on_rebuild'/>
+<use f='pocl/lib/CL/pocl_build.c' l='516' u='r' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_build.c' l='889' u='w' c='compile_and_link_program'/>

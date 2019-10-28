@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/IR/DataLayout.h' l='224' ll='226' type='const std::string &amp; llvm::DataLayout::getStringRepresentation() const'/>
+<use f='include/llvm-6.0/llvm/IR/Module.h' l='225' u='c' c='_ZNK4llvm6Module16getDataLayoutStrB5cxx11Ev'/>
+<doc f='include/llvm-6.0/llvm/IR/DataLayout.h' l='219'>/// \brief Returns the string representation of the DataLayout.
+  ///
+  /// This representation is in the same format accepted by the string
+  /// constructor above. This should not be used to compare two DataLayout as
+  /// different string can represent the same layout.</doc>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='464' u='c' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='434' u='c' c='pocl_llvm_generate_workgroup_function_nowrite'/>

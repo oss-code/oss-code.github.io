@@ -1,0 +1,8 @@
+<dec f='pocl/lib/CL/pocl_util.h' l='125' type='int pocl_buffer_boundcheck_3d(const size_t buffer_size, const size_t * origin, const size_t * region, size_t * row_pitch, size_t * slice_pitch, const char * prefix)'/>
+<use f='pocl/lib/CL/clEnqueueReadBufferRect.c' l='80' u='c' c='POclEnqueueReadBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueReadBufferRect.c' l='83' u='c' c='POclEnqueueReadBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueWriteBufferRect.c' l='78' u='c' c='POclEnqueueWriteBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueWriteBufferRect.c' l='81' u='c' c='POclEnqueueWriteBufferRect'/>
+<use f='pocl/lib/CL/pocl_img_buf_cpy.c' l='161' u='c' c='pocl_rect_copy'/>
+<use f='pocl/lib/CL/pocl_img_buf_cpy.c' l='165' u='c' c='pocl_rect_copy'/>
+<def f='pocl/lib/CL/pocl_util.c' l='654' ll='699' type='int pocl_buffer_boundcheck_3d(const size_t buffer_size, const size_t * origin, const size_t * region, size_t * row_pitch, size_t * slice_pitch, const char * prefix)'/>

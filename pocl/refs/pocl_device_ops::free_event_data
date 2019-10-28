@@ -1,0 +1,9 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='362' type='void (*)(cl_event)'/>
+<offset>512</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='359'>/* free_event_data may be called when event is freed. Event data may only be
+     used by the device driver owning the corresponding command.
+     No need to implement this if the device does not need any event data. */</doc>
+<use f='pocl/lib/CL/clReleaseEvent.c' l='56' u='r' c='POclReleaseEvent'/>
+<use f='pocl/lib/CL/clReleaseEvent.c' l='57' u='r' c='POclReleaseEvent'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='148' u='w' c='pocl_cuda_init_device_ops'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='97' u='w' c='pocl_pthread_init_device_ops'/>

@@ -1,0 +1,11 @@
+<dec f='include/hwloc/helper.h' l='201' type='int hwloc_get_nbobjs_inside_cpuset_by_type(hwloc_topology_t topology, hwloc_const_cpuset_t set, hwloc_obj_type_t type)'/>
+<def f='include/hwloc/helper.h' l='203' ll='213' type='int hwloc_get_nbobjs_inside_cpuset_by_type(hwloc_topology_t topology, hwloc_const_cpuset_t set, hwloc_obj_type_t type)'/>
+<doc f='include/hwloc/helper.h' l='191'>/** \brief Return the number of objects of type \p type included in CPU set \p set.
+ *
+ * If no object for that type exists inside CPU set \p set, 0 is
+ * returned.  If there are several levels with objects of that type
+ * inside CPU set \p set, -1 is returned.
+ *
+ * \note This function cannot work if objects of the given type do
+ * not have CPU sets or if the topology is made of different machines.
+ */</doc>

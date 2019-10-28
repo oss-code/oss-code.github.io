@@ -1,0 +1,16 @@
+<dec f='include/llvm-6.0/llvm/Analysis/BasicAliasAnalysis.h' l='158' type='SmallPtrSet&lt;const llvm::BasicBlock *, 8&gt;'/>
+<offset>6080</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/BasicAliasAnalysis.h' l='144'>/// Tracks phi nodes we have visited.
+  ///
+  /// When interpret &quot;Value&quot; pointer equality as value equality we need to make
+  /// sure that the &quot;Value&quot; is not part of a cycle. Otherwise, two uses could
+  /// come from different &quot;iterations&quot; of a cycle and see different values for
+  /// the same &quot;Value&quot; pointer.
+  ///
+  /// The following example shows the problem:
+  ///   %p = phi(%alloca1, %addr2)
+  ///   %l = load %ptr
+  ///   %addr1 = gep, %alloca2, 0, %l
+  ///   %addr2 = gep  %alloca2, 0, (%l + 1)
+  ///      alias(%p, %addr1) -&gt; MayAlias !
+  ///   store %l, ...</doc>

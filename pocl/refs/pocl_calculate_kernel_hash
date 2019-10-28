@@ -1,0 +1,6 @@
+<dec f='pocl/lib/CL/devices/common.h' l='119' type='void pocl_calculate_kernel_hash(cl_program program, unsigned int kernel_i, unsigned int device_i)'/>
+<def f='pocl/lib/CL/devices/common.c' l='1319' ll='1336' type='void pocl_calculate_kernel_hash(cl_program program, unsigned int kernel_i, unsigned int device_i)'/>
+<doc f='pocl/lib/CL/devices/common.c' l='1316'>/* Unique hash for a device + program build + kernel name combination.
+   NOTE: this does NOT take into account the local WG sizes or other
+   specialization properties. */</doc>
+<use f='pocl/lib/CL/pocl_build.c' l='879' u='c' c='compile_and_link_program'/>

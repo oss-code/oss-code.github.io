@@ -1,0 +1,4 @@
+<dec f='pocl/include/CL/cl.h' l='1610' type='cl_int clEnqueueNativeKernel(cl_command_queue command_queue, void (*)(void *) user_func, void * args, size_t cb_args, cl_uint num_mem_objects, const cl_mem * mem_list, const void ** args_mem_loc, cl_uint num_events_in_wait_list, const cl_event * event_wait_list, cl_event * event)'/>
+<use f='pocl/lib/CL/pocl_intfn.h' l='63' c='POclEnqueueNativeKernel'/>
+<use f='pocl/include/CL/cl2.hpp' l='8418' u='c' c='_ZNK2cl12CommandQueue19enqueueNativeKernelEPFvPvESt4pairIS1_mEPKSt6vectorINS_6MemoryESaIS7_EEPKS6_IPKvSaISD_EEPKS6_INS_5EventESaISI_EEPSI_'/>
+<use f='pocl/tests/runtime/test_clEnqueueNativeKernel.c' l='114' u='c' c='main'/>

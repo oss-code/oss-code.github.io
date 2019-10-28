@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Instruction.h' l='273' type='bool llvm::Instruction::extractProfTotalWeight(uint64_t &amp; TotalVal) const'/>
+<doc f='include/llvm-6.0/llvm/IR/Instruction.h' l='270'>/// Retrieve total raw weight values of a branch.
+  /// Returns true on success with profile total weights filled in.
+  /// Returns false if no metadata was found.</doc>

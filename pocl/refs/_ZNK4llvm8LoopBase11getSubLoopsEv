@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='131' ll='134' type='const std::vector&lt;LoopT *&gt; &amp; llvm::LoopBase::getSubLoops() const'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='142' u='c' c='_ZNK4llvm8LoopBase5beginEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='143' u='c' c='_ZNK4llvm8LoopBase3endEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='144' u='c' c='_ZNK4llvm8LoopBase6rbeginEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='145' u='c' c='_ZNK4llvm8LoopBase4rendEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='146' u='c' c='_ZNK4llvm8LoopBase5emptyEv'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='130'>/// Return the loops contained entirely within this loop.</doc>
+<use f='pocl/lib/llvmopencl/ImplicitLoopBarriers.cc' l='125' u='c' c='_ZN4pocl20ImplicitLoopBarriers19AddInnerLoopBarrierEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='96' u='c' c='_ZN4pocl26VariableUniformityAnalysis22markInductionVariablesERN4llvm8FunctionERNS1_4LoopE'/>

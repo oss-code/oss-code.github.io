@@ -1,0 +1,9 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='1971' type='void LLVMSetFunctionCallConv(LLVMValueRef Fn, unsigned int CC)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='1963'>/**
+ * Set the calling convention of a function.
+ *
+ * @see llvm::Function::setCallingConv()
+ *
+ * @param Fn Function to operate on
+ * @param CC LLVMCallConv to set calling convention to
+ */</doc>

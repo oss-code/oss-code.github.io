@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1302' type='bool'/>
+<use f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1312' u='r' c='_ZN4llvm15ScalarEvolution20loopHasNoSideEffectsEPKNS_4LoopE'/>
+<offset>8</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1297'>/// Set to true if the loop contains no instruction that can abnormally exit
+    /// the loop (i.e. via throwing an exception, by terminating the thread
+    /// cleanly or by infinite looping in a called function).  Strictly
+    /// speaking, the last one is not leaving the loop, but is identical to
+    /// leaving the loop for reasoning about undefined behavior.</doc>

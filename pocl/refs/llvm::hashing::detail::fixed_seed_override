@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/ADT/Hashing.h' l='319' type='size_t'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='329' u='r' c='_ZN4llvm7hashing6detail18get_execution_seedEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='329' u='r' c='_ZN4llvm7hashing6detail18get_execution_seedEv'/>
+<doc f='include/llvm-6.0/llvm/ADT/Hashing.h' l='314'>/// \brief A global, fixed seed-override variable.
+///
+/// This variable can be set using the \see llvm::set_fixed_execution_seed
+/// function. See that function for details. Do not, under any circumstances,
+/// set or read this variable.</doc>

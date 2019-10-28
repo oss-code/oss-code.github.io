@@ -1,0 +1,15 @@
+<def f='include/llvm-6.0/llvm/Support/YAMLParser.h' l='81' ll='108'/>
+<size>16</size>
+<doc f='include/llvm-6.0/llvm/Support/YAMLParser.h' l='79'>/// \brief This class represents a YAML stream potentially containing multiple
+///        documents.</doc>
+<fun r='_ZN4llvm4yaml6StreamC1ENS_9StringRefERNS_9SourceMgrEbPSt10error_code'/>
+<fun r='_ZN4llvm4yaml6StreamC1ENS_15MemoryBufferRefERNS_9SourceMgrEbPSt10error_code'/>
+<fun r='_ZN4llvm4yaml6StreamD1Ev'/>
+<fun r='_ZN4llvm4yaml6Stream5beginEv'/>
+<fun r='_ZN4llvm4yaml6Stream3endEv'/>
+<fun r='_ZN4llvm4yaml6Stream4skipEv'/>
+<fun r='_ZN4llvm4yaml6Stream6failedEv'/>
+<fun r='_ZN4llvm4yaml6Stream8validateEv'/>
+<fun r='_ZN4llvm4yaml6Stream10printErrorEPNS0_4NodeERKNS_5TwineE'/>
+<mbr r='llvm::yaml::Stream::scanner' o='0' t='std::unique_ptr&lt;Scanner&gt;'/>
+<mbr r='llvm::yaml::Stream::CurrentDoc' o='64' t='std::unique_ptr&lt;Document&gt;'/>

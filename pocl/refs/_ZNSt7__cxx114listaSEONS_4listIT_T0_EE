@@ -1,0 +1,12 @@
+<def f='include/c++/7/bits/stl_list.h' l='758' ll='767' type='list&lt;_Tp, _Alloc&gt; &amp; std::__cxx11::list::operator=(list&lt;_Tp, _Alloc&gt; &amp;&amp; __x)'/>
+<doc f='include/c++/7/bits/stl_list.h' l='748'>/**
+       *  @brief  %List move assignment operator.
+       *  @param  __x  A %list of identical element and allocator types.
+       *
+       *  The contents of @a __x are moved into this %list (without copying).
+       *
+       *  Afterwards @a __x is a valid, but unspecified %list
+       *
+       *  Whether the allocator is moved depends on the allocator traits.
+       */</doc>
+<use f='include/llvm-6.0/llvm/Option/ArgList.h' l='404' u='c' c='_ZN4llvm3opt12InputArgListaSEOS1_'/>

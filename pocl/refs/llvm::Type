@@ -1,0 +1,127 @@
+<def f='include/llvm-6.0/llvm/IR/Type.h' l='46' ll='438'/>
+<ovr f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='40' c='llvm::IntegerType'/>
+<ovr f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='103' c='llvm::FunctionType'/>
+<ovr f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='162' c='llvm::CompositeType'/>
+<ovr f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='467' c='llvm::PointerType'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/IR/Type.h' l='38'>/// The instances of the Type class are immutable: once they are created,
+/// they are never changed.  Also note that only one instance of a particular
+/// type is ever created.  Thus seeing if two types are equal is a matter of
+/// doing a trivial pointer comparison. To enforce that no two equal instances
+/// are created, Type instances can only be created via static factory methods
+/// in class Type and in derived classes.  Once allocated, Types are never
+/// free&apos;d.
+///</doc>
+<mbr r='llvm::Type::Context' o='0' t='llvm::LLVMContext &amp;'/>
+<mbr r='llvm::Type::ID' o='64' t='llvm::Type::TypeID'/>
+<mbr r='llvm::Type::SubclassData' o='72' t='unsigned int'/>
+<fun r='_ZN4llvm4TypeC1ERNS_11LLVMContextENS0_6TypeIDE'/>
+<fun r='_ZN4llvm4TypeD1Ev'/>
+<fun r='_ZNK4llvm4Type15getSubclassDataEv'/>
+<fun r='_ZN4llvm4Type15setSubclassDataEj'/>
+<mbr r='llvm::Type::NumContainedTys' o='96' t='unsigned int'/>
+<mbr r='llvm::Type::ContainedTys' o='128' t='llvm::Type *const *'/>
+<fun r='_ZN4llvm4Type16isSequentialTypeENS0_6TypeIDE'/>
+<fun r='_ZNK4llvm4Type5printERNS_11raw_ostreamEbb'/>
+<fun r='_ZNK4llvm4Type4dumpEv'/>
+<fun r='_ZNK4llvm4Type10getContextEv'/>
+<fun r='_ZNK4llvm4Type9getTypeIDEv'/>
+<fun r='_ZNK4llvm4Type8isVoidTyEv'/>
+<fun r='_ZNK4llvm4Type8isHalfTyEv'/>
+<fun r='_ZNK4llvm4Type9isFloatTyEv'/>
+<fun r='_ZNK4llvm4Type10isDoubleTyEv'/>
+<fun r='_ZNK4llvm4Type12isX86_FP80TyEv'/>
+<fun r='_ZNK4llvm4Type9isFP128TyEv'/>
+<fun r='_ZNK4llvm4Type13isPPC_FP128TyEv'/>
+<fun r='_ZNK4llvm4Type17isFloatingPointTyEv'/>
+<fun r='_ZNK4llvm4Type15getFltSemanticsEv'/>
+<fun r='_ZNK4llvm4Type11isX86_MMXTyEv'/>
+<fun r='_ZNK4llvm4Type16isFPOrFPVectorTyEv'/>
+<fun r='_ZNK4llvm4Type9isLabelTyEv'/>
+<fun r='_ZNK4llvm4Type12isMetadataTyEv'/>
+<fun r='_ZNK4llvm4Type9isTokenTyEv'/>
+<fun r='_ZNK4llvm4Type11isIntegerTyEv'/>
+<fun r='_ZNK4llvm4Type11isIntegerTyEj'/>
+<fun r='_ZNK4llvm4Type18isIntOrIntVectorTyEv'/>
+<fun r='_ZNK4llvm4Type18isIntOrIntVectorTyEj'/>
+<fun r='_ZNK4llvm4Type12isFunctionTyEv'/>
+<fun r='_ZNK4llvm4Type10isStructTyEv'/>
+<fun r='_ZNK4llvm4Type9isArrayTyEv'/>
+<fun r='_ZNK4llvm4Type11isPointerTyEv'/>
+<fun r='_ZNK4llvm4Type18isPtrOrPtrVectorTyEv'/>
+<fun r='_ZNK4llvm4Type10isVectorTyEv'/>
+<fun r='_ZNK4llvm4Type22canLosslesslyBitCastToEPS0_'/>
+<fun r='_ZNK4llvm4Type9isEmptyTyEv'/>
+<fun r='_ZNK4llvm4Type16isFirstClassTypeEv'/>
+<fun r='_ZNK4llvm4Type17isSingleValueTypeEv'/>
+<fun r='_ZNK4llvm4Type15isAggregateTypeEv'/>
+<fun r='_ZNK4llvm4Type7isSizedEPNS_15SmallPtrSetImplIPS0_EE'/>
+<fun r='_ZNK4llvm4Type22getPrimitiveSizeInBitsEv'/>
+<fun r='_ZNK4llvm4Type19getScalarSizeInBitsEv'/>
+<fun r='_ZNK4llvm4Type18getFPMantissaWidthEv'/>
+<fun r='_ZNK4llvm4Type13getScalarTypeEv'/>
+<fun r='_ZNK4llvm4Type13subtype_beginEv'/>
+<fun r='_ZNK4llvm4Type11subtype_endEv'/>
+<fun r='_ZNK4llvm4Type8subtypesEv'/>
+<fun r='_ZNK4llvm4Type14subtype_rbeginEv'/>
+<fun r='_ZNK4llvm4Type12subtype_rendEv'/>
+<fun r='_ZNK4llvm4Type16getContainedTypeEj'/>
+<fun r='_ZNK4llvm4Type20getNumContainedTypesEv'/>
+<fun r='_ZNK4llvm4Type18getIntegerBitWidthEv'/>
+<fun r='_ZNK4llvm4Type20getFunctionParamTypeEj'/>
+<fun r='_ZNK4llvm4Type20getFunctionNumParamsEv'/>
+<fun r='_ZNK4llvm4Type16isFunctionVarArgEv'/>
+<fun r='_ZNK4llvm4Type13getStructNameEv'/>
+<fun r='_ZNK4llvm4Type20getStructNumElementsEv'/>
+<fun r='_ZNK4llvm4Type20getStructElementTypeEj'/>
+<fun r='_ZNK4llvm4Type24getSequentialElementTypeEv'/>
+<fun r='_ZNK4llvm4Type19getArrayNumElementsEv'/>
+<fun r='_ZNK4llvm4Type19getArrayElementTypeEv'/>
+<fun r='_ZNK4llvm4Type20getVectorNumElementsEv'/>
+<fun r='_ZNK4llvm4Type20getVectorElementTypeEv'/>
+<fun r='_ZNK4llvm4Type21getPointerElementTypeEv'/>
+<fun r='_ZNK4llvm4Type22getPointerAddressSpaceEv'/>
+<fun r='_ZN4llvm4Type16getPrimitiveTypeERNS_11LLVMContextENS0_6TypeIDE'/>
+<fun r='_ZN4llvm4Type9getVoidTyERNS_11LLVMContextE'/>
+<fun r='_ZN4llvm4Type10getLabelTyERNS_11LLVMContextE'/>
+<fun r='_ZN4llvm4Type9getHalfTyERNS_11LLVMContextE'/>
+<fun r='_ZN4llvm4Type10getFloatTyERNS_11LLVMContextE'/>
+<fun r='_ZN4llvm4Type11getDoubleTyERNS_11LLVMContextE'/>
+<fun r='_ZN4llvm4Type13getMetadataTyERNS_11LLVMContextE'/>
+<fun r='_ZN4llvm4Type13getX86_FP80TyERNS_11LLVMContextE'/>
+<fun r='_ZN4llvm4Type10getFP128TyERNS_11LLVMContextE'/>
+<fun r='_ZN4llvm4Type14getPPC_FP128TyERNS_11LLVMContextE'/>
+<fun r='_ZN4llvm4Type12getX86_MMXTyERNS_11LLVMContextE'/>
+<fun r='_ZN4llvm4Type10getTokenTyERNS_11LLVMContextE'/>
+<fun r='_ZN4llvm4Type9getIntNTyERNS_11LLVMContextEj'/>
+<fun r='_ZN4llvm4Type9getInt1TyERNS_11LLVMContextE'/>
+<fun r='_ZN4llvm4Type9getInt8TyERNS_11LLVMContextE'/>
+<fun r='_ZN4llvm4Type10getInt16TyERNS_11LLVMContextE'/>
+<fun r='_ZN4llvm4Type10getInt32TyERNS_11LLVMContextE'/>
+<fun r='_ZN4llvm4Type10getInt64TyERNS_11LLVMContextE'/>
+<fun r='_ZN4llvm4Type11getInt128TyERNS_11LLVMContextE'/>
+<fun r='_ZN4llvm4Type12getHalfPtrTyERNS_11LLVMContextEj'/>
+<fun r='_ZN4llvm4Type13getFloatPtrTyERNS_11LLVMContextEj'/>
+<fun r='_ZN4llvm4Type14getDoublePtrTyERNS_11LLVMContextEj'/>
+<fun r='_ZN4llvm4Type16getX86_FP80PtrTyERNS_11LLVMContextEj'/>
+<fun r='_ZN4llvm4Type13getFP128PtrTyERNS_11LLVMContextEj'/>
+<fun r='_ZN4llvm4Type17getPPC_FP128PtrTyERNS_11LLVMContextEj'/>
+<fun r='_ZN4llvm4Type15getX86_MMXPtrTyERNS_11LLVMContextEj'/>
+<fun r='_ZN4llvm4Type12getIntNPtrTyERNS_11LLVMContextEjj'/>
+<fun r='_ZN4llvm4Type12getInt1PtrTyERNS_11LLVMContextEj'/>
+<fun r='_ZN4llvm4Type12getInt8PtrTyERNS_11LLVMContextEj'/>
+<fun r='_ZN4llvm4Type13getInt16PtrTyERNS_11LLVMContextEj'/>
+<fun r='_ZN4llvm4Type13getInt32PtrTyERNS_11LLVMContextEj'/>
+<fun r='_ZN4llvm4Type13getInt64PtrTyERNS_11LLVMContextEj'/>
+<fun r='_ZNK4llvm4Type12getPointerToEj'/>
+<fun r='_ZNK4llvm4Type18isSizedDerivedTypeEPNS_15SmallPtrSetImplIPS0_EE'/>
+<fun r='_ZNK4llvm4Type18getIntegerBitWidthEv'/>
+<fun r='_ZNK4llvm4Type16isFunctionVarArgEv'/>
+<fun r='_ZNK4llvm4Type20getFunctionParamTypeEj'/>
+<fun r='_ZNK4llvm4Type20getFunctionNumParamsEv'/>
+<fun r='_ZNK4llvm4Type13getStructNameEv'/>
+<fun r='_ZNK4llvm4Type20getStructNumElementsEv'/>
+<fun r='_ZNK4llvm4Type20getStructElementTypeEj'/>
+<fun r='_ZNK4llvm4Type19getArrayNumElementsEv'/>
+<fun r='_ZNK4llvm4Type20getVectorNumElementsEv'/>
+<fun r='_ZNK4llvm4Type22getPointerAddressSpaceEv'/>

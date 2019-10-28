@@ -1,0 +1,5 @@
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='968' u='c' c='_ZNK4llvm7CmpInst19getSwappedPredicateEv'/>
+<dec f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='974' type='static llvm::CmpInst::Predicate llvm::CmpInst::getSwappedPredicate(llvm::CmpInst::Predicate pred)'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='971'>/// This is a static version that you can use without an instruction
+  /// available.
+  /// @brief Return the predicate as if the operands were swapped.</doc>

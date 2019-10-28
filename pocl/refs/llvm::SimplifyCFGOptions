@@ -1,0 +1,19 @@
+<def f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='61' ll='106'/>
+<size>16</size>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='57'>/// A set of parameters used to control the transforms in the SimplifyCFG pass.
+/// Options may change depending on the position in the optimization pipeline.
+/// For example, canonical form that includes switches and branches may later be
+/// replaced by lookup tables and selects.</doc>
+<mbr r='llvm::SimplifyCFGOptions::BonusInstThreshold' o='0' t='int'/>
+<mbr r='llvm::SimplifyCFGOptions::ForwardSwitchCondToPhi' o='32' t='bool'/>
+<mbr r='llvm::SimplifyCFGOptions::ConvertSwitchToLookupTable' o='40' t='bool'/>
+<mbr r='llvm::SimplifyCFGOptions::NeedCanonicalLoop' o='48' t='bool'/>
+<mbr r='llvm::SimplifyCFGOptions::SinkCommonInsts' o='56' t='bool'/>
+<mbr r='llvm::SimplifyCFGOptions::AC' o='64' t='llvm::AssumptionCache *'/>
+<fun r='_ZN4llvm18SimplifyCFGOptionsC1EjbbbbPNS_15AssumptionCacheE'/>
+<fun r='_ZN4llvm18SimplifyCFGOptions18bonusInstThresholdEi'/>
+<fun r='_ZN4llvm18SimplifyCFGOptions22forwardSwitchCondToPhiEb'/>
+<fun r='_ZN4llvm18SimplifyCFGOptions26convertSwitchToLookupTableEb'/>
+<fun r='_ZN4llvm18SimplifyCFGOptions18needCanonicalLoopsEb'/>
+<fun r='_ZN4llvm18SimplifyCFGOptions15sinkCommonInstsEb'/>
+<fun r='_ZN4llvm18SimplifyCFGOptions18setAssumptionCacheEPNS_15AssumptionCacheE'/>

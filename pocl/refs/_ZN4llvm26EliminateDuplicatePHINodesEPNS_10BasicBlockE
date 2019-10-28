@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='190' type='bool llvm::EliminateDuplicatePHINodes(llvm::BasicBlock * BB)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='187'>/// Check for and eliminate duplicate PHI nodes in this block. This doesn&apos;t try
+/// to be clever about PHI nodes which differ only in the order of the incoming
+/// values, but instcombine orders them so it usually won&apos;t matter.</doc>

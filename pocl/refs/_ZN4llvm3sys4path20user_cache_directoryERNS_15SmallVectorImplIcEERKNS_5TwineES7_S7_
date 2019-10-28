@@ -1,0 +1,14 @@
+<dec f='include/llvm-6.0/llvm/Support/Path.h' l='376' type='bool llvm::sys::path::user_cache_directory(SmallVectorImpl&lt;char&gt; &amp; Result, const llvm::Twine &amp; Path1, const llvm::Twine &amp; Path2 = &quot;&quot;, const llvm::Twine &amp; Path3 = &quot;&quot;)'/>
+<doc f='include/llvm-6.0/llvm/Support/Path.h' l='363'>/// @brief Get the user&apos;s cache directory.
+///
+/// Expect the resulting path to be a directory shared with other
+/// applications/services used by the user. Params \p Path1 to \p Path3 can be
+/// used to append additional directory names to the resulting path. Recommended
+/// pattern is &lt;user_cache_directory&gt;/&lt;vendor&gt;/&lt;application&gt;.
+///
+/// @param Result Holds the resulting path.
+/// @param Path1 Additional path to be appended to the user&apos;s cache directory
+/// path. &quot;&quot; can be used to append nothing.
+/// @param Path2 Second additional path to be appended.
+/// @param Path3 Third additional path to be appended.
+/// @result True if a cache directory path is set, false otherwise.</doc>

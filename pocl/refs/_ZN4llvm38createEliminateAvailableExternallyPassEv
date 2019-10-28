@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Transforms/IPO.h' l='86' type='llvm::ModulePass * llvm::createEliminateAvailableExternallyPass()'/>
+<doc f='include/llvm-6.0/llvm/Transforms/IPO.h' l='82'>//===----------------------------------------------------------------------===//
+/// This transform is designed to eliminate available external globals
+/// (functions or global variables)
+///</doc>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='211' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>

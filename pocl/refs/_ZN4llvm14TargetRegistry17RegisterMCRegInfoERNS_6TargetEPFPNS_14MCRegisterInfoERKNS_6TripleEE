@@ -1,0 +1,12 @@
+<def f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='706' ll='708' type='static void llvm::TargetRegistry::RegisterMCRegInfo(llvm::Target &amp; T, Target::MCRegInfoCtorFnTy Fn)'/>
+<use f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='1014' u='c' c='_ZN4llvm17RegisterMCRegInfoC1ERNS_6TargetE'/>
+<use f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='1033' u='c' c='_ZN4llvm19RegisterMCRegInfoFnC1ERNS_6TargetEPFPNS_14MCRegisterInfoERKNS_6TripleEE'/>
+<doc f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='697'>/// RegisterMCRegInfo - Register a MCRegisterInfo implementation for the
+  /// given target.
+  ///
+  /// Clients are responsible for ensuring that registration doesn&apos;t occur
+  /// while another thread is attempting to access the registry. Typically
+  /// this is done by initializing all targets at program startup.
+  ///
+  /// @param T - The target being registered.
+  /// @param Fn - A function to construct a MCRegisterInfo for the target.</doc>

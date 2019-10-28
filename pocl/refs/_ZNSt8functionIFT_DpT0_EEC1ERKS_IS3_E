@@ -1,0 +1,12 @@
+<dec f='include/c++/7/bits/std_function.h' l='432' type='void std::function&lt;type-parameter-0-0 (type-parameter-0-1...)&gt;::function&lt;type-parameter-0-0 (type-parameter-0-1...)&gt;(const function&lt;type-parameter-0-0 (type-parameter-0-1...)&gt; &amp; __x)'/>
+<def f='include/c++/7/bits/std_function.h' l='670' ll='681' type='void std::function&lt;type-parameter-0-0 (type-parameter-0-1...)&gt;::function&lt;type-parameter-0-0 (type-parameter-0-1...)&gt;(const function&lt;type-parameter-0-0 (type-parameter-0-1...)&gt; &amp; __x)'/>
+<doc f='include/c++/7/bits/std_function.h' l='424'>/**
+       *  @brief %Function copy constructor.
+       *  @param __x A %function object with identical call signature.
+       *  @post @c bool(*this) == bool(__x)
+       *
+       *  The newly-created %function contains a copy of the target of @a
+       *  __x (if it has one).
+       */</doc>
+<doc f='include/c++/7/bits/std_function.h' l='669'>// Out-of-line member definitions.</doc>
+<use f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='1521' u='c' c='_ZN4llvm16TargetIRAnalysisC1ERKS0_'/>

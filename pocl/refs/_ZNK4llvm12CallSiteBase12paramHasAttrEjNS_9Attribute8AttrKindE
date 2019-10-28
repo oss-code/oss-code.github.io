@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/IR/CallSite.h' l='377' ll='379' type='bool llvm::CallSiteBase::paramHasAttr(unsigned int ArgNo, Attribute::AttrKind Kind) const'/>
+<use f='include/llvm-6.0/llvm/IR/CallSite.h' l='599' u='c' c='_ZNK4llvm12CallSiteBase15isByValArgumentEj'/>
+<use f='include/llvm-6.0/llvm/IR/CallSite.h' l='604' u='c' c='_ZNK4llvm12CallSiteBase18isInAllocaArgumentEj'/>
+<use f='include/llvm-6.0/llvm/IR/CallSite.h' l='609' u='c' c='_ZNK4llvm12CallSiteBase25isByValOrInAllocaArgumentEj'/>
+<use f='include/llvm-6.0/llvm/IR/CallSite.h' l='610' u='c' c='_ZNK4llvm12CallSiteBase25isByValOrInAllocaArgumentEj'/>
+<use f='include/llvm-6.0/llvm/IR/CallSite.h' l='616' u='c' c='_ZNK4llvm12CallSiteBase19hasInAllocaArgumentEv'/>
+<doc f='include/llvm-6.0/llvm/IR/CallSite.h' l='376'>/// Return true if the call or the callee has the given attribute.</doc>

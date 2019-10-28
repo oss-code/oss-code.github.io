@@ -1,0 +1,17 @@
+<def f='include/llvm-6.0/llvm/ADT/Twine.h' l='279' ll='282' type='void llvm::Twine::Twine(const std::string &amp; Str)'/>
+<use f='include/llvm-6.0/llvm/Support/Error.h' l='1144' u='c' c='_ZNK4llvm11ExitOnError10checkErrorENS_5ErrorE'/>
+<doc f='include/llvm-6.0/llvm/ADT/Twine.h' l='278'>/// Construct from an std::string.</doc>
+<doc f='include/llvm-6.0/llvm/ADT/Twine.h' l='279'>/*implicit*/</doc>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='635' u='c' c='pocl_llvm_link_program'/>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='109' u='c' c='pocl_rm_rf'/>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='120' u='c' c='pocl_rm_rf'/>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='127' u='c' c='pocl_rm_rf'/>
+<use f='pocl/lib/llvmopencl/PHIsToAllocas.cc' l='128' u='c' c='_ZN4pocl13PHIsToAllocas17BreakPHIToAllocasEPN4llvm7PHINodeE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='88' u='c' c='_ZN4pocl14ParallelRegion17GenerateTempNamesEPN4llvm10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='127' u='c' c='_ZN4pocl14ParallelRegion9replicateERN4llvm8ValueMapIPKNS1_5ValueENS1_14WeakTrackingVHENS1_14ValueMapConfigIS5_NS1_3sys10SmartMutexILb0EEEEEEERKNS1_5TwineE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='640' u='c' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='641' u='c' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='644' u='c' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='197' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='975' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='984' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>

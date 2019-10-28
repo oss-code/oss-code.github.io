@@ -1,0 +1,8 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2628' type='void LLVMSetNormalDest(LLVMValueRef InvokeInst, LLVMBasicBlockRef B)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2621'>/**
+ * Set the normal destination basic block.
+ *
+ * This only works on llvm::InvokeInst instructions.
+ *
+ * @see llvm::InvokeInst::setNormalDest()
+ */</doc>

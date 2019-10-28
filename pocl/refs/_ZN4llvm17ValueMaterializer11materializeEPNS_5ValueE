@@ -1,0 +1,3 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/ValueMapper.h' l='63' type='llvm::Value * llvm::ValueMaterializer::materialize(llvm::Value * V)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/ValueMapper.h' l='61'>/// This method can be implemented to generate a mapped Value on demand. For
+  /// example, if linking lazily. Returns null if the value is not materialized.</doc>

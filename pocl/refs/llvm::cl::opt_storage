@@ -1,0 +1,40 @@
+<def f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1186' ll='1226'/>
+<def f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1232' ll='1247'/>
+<def f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1253' ll='1276'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1365' c='llvm::cl::opt'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1366' c='llvm::cl::opt'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1367' c='llvm::cl::opt'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1368' c='llvm::cl::opt'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1369' c='llvm::cl::opt'/>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1228'>// Define how to hold a class type object, such as a string.  Since we can
+// inherit from a class, we do so.  This makes us exactly compatible with the
+// object in all cases that it is used.
+//</doc>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1249'>// Define a partial specialization to handle things we cannot inherit from.  In
+// this case, we store an instance through containment, and overload operators
+// to get at the value.
+//</doc>
+<mbr r='llvm::cl::opt_storage::Location' t='DataType *'/>
+<mbr r='llvm::cl::opt_storage::Default' t='OptionValue&lt;DataType&gt;'/>
+<fun r='_ZNK4llvm2cl11opt_storage14check_locationEv'/>
+<fun r='_ZN4llvm2cl11opt_storageC1Ev'/>
+<fun r='_ZN4llvm2cl11opt_storage11setLocationERNS0_6OptionERT_'/>
+<fun r='_ZN4llvm2cl11opt_storage8setValueERKT_b'/>
+<fun r='_ZN4llvm2cl11opt_storage8getValueEv'/>
+<fun r='_ZNK4llvm2cl11opt_storage8getValueEv'/>
+<fun r='_ZNK4llvm2cl11opt_storagecvT_Ev'/>
+<fun r='_ZNK4llvm2cl11opt_storage10getDefaultEv'/>
+<mbr r='llvm::cl::opt_storage::Default' t='OptionValue&lt;DataType&gt;'/>
+<fun r='_ZN4llvm2cl11opt_storageIT_Lb0ELb1EE8setValueERKT_b'/>
+<fun r='_ZN4llvm2cl11opt_storageIT_Lb0ELb1EE8getValueEv'/>
+<fun r='_ZNK4llvm2cl11opt_storageIT_Lb0ELb1EE8getValueEv'/>
+<fun r='_ZNK4llvm2cl11opt_storageIT_Lb0ELb1EE10getDefaultEv'/>
+<mbr r='llvm::cl::opt_storage::Value' t='DataType'/>
+<mbr r='llvm::cl::opt_storage::Default' t='OptionValue&lt;DataType&gt;'/>
+<fun r='_ZN4llvm2cl11opt_storageIT_Lb0ELb0EEC1Ev'/>
+<fun r='_ZN4llvm2cl11opt_storageIT_Lb0ELb0EE8setValueERKT_b'/>
+<fun r='_ZN4llvm2cl11opt_storageIT_Lb0ELb0EE8getValueEv'/>
+<fun r='_ZNK4llvm2cl11opt_storageIT_Lb0ELb0EE8getValueEv'/>
+<fun r='_ZNK4llvm2cl11opt_storageIT_Lb0ELb0EE10getDefaultEv'/>
+<fun r='_ZNK4llvm2cl11opt_storageIT_Lb0ELb0EEcvS2_Ev'/>
+<fun r='_ZNK4llvm2cl11opt_storageIT_Lb0ELb0EEptEv'/>

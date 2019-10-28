@@ -1,0 +1,4 @@
+<dec f='include/llvm-c-6.0/llvm-c/Target.h' l='240' type='LLVMTypeRef LLVMIntPtrTypeForAS(LLVMTargetDataRef TD, unsigned int AS)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Target.h' l='237'>/** Returns the integer type that is the same size as a pointer on a target.
+    This version allows the address space to be specified.
+    See the method llvm::DataLayout::getIntPtrType. */</doc>

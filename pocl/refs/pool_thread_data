@@ -1,0 +1,9 @@
+<def f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='46' ll='62'/>
+<size>64</size>
+<mbr r='pool_thread_data::thread' o='0' t='pthread_t'/>
+<mbr r='pool_thread_data::executed_commands' o='64' t='unsigned long'/>
+<mbr r='pool_thread_data::local_mem' o='128' t='void *'/>
+<mbr r='pool_thread_data::current_ftz' o='192' t='unsigned int'/>
+<mbr r='pool_thread_data::num_threads' o='224' t='unsigned int'/>
+<mbr r='pool_thread_data::index' o='256' t='unsigned int'/>
+<mbr r='pool_thread_data::printf_buffer' o='320' t='void *'/>

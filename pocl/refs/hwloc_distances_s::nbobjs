@@ -1,0 +1,8 @@
+<dec f='include/hwloc.h' l='559' type='unsigned int'/>
+<use f='include/hwloc/helper.h' l='1104' u='r' c='hwloc_get_distance_matrix_covering_obj_by_depth'/>
+<use f='include/hwloc/helper.h' l='1143' u='r' c='hwloc_get_latency'/>
+<offset>32</offset>
+<doc f='include/hwloc.h' l='559'>/**&lt; \brief Number of objects considered in the matrix.
+				 * It is the number of descendant objects at \p relative_depth
+				 * below the containing object.
+				 * It corresponds to the result of hwloc_get_nbobjs_inside_cpuset_by_depth(). */</doc>

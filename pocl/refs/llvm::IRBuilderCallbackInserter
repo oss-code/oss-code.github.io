@@ -1,0 +1,8 @@
+<inh f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='63' c='llvm::IRBuilderDefaultInserter'/>
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='74' ll='87'/>
+<size>32</size>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='72'>/// Provides an &apos;InsertHelper&apos; that calls a user-provided callback after
+/// performing the default insertion.</doc>
+<mbr r='llvm::IRBuilderCallbackInserter::Callback' o='0' t='std::function&lt;void (Instruction *)&gt;'/>
+<fun r='_ZN4llvm25IRBuilderCallbackInserterC1ESt8functionIFvPNS_11InstructionEEE'/>
+<fun r='_ZNK4llvm25IRBuilderCallbackInserter12InsertHelperEPNS_11InstructionERKNS_5TwineEPNS_10BasicBlockENS_14ilist_iteratorINS_12ilist_detail12node_optionsI9269246'/>

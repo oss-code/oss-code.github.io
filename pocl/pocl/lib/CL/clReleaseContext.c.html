@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>clReleaseContext.c source code [pocl/lib/CL/clReleaseContext.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/CL/clReleaseContext.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>CL</a>/<a href='clReleaseContext.c.html'>clReleaseContext.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* OpenCL runtime library: clReleaseContext()</i></td></tr>
+<tr><th id="2">2</th><td><i></i></td></tr>
+<tr><th id="3">3</th><td><i>   Copyright (c) 2011 Universidad Rey Juan Carlos</i></td></tr>
+<tr><th id="4">4</th><td><i>                 2011-2019 pocl developers</i></td></tr>
+<tr><th id="5">5</th><td><i></i></td></tr>
+<tr><th id="6">6</th><td><i>   Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="7">7</th><td><i>   of this software and associated documentation files (the "Software"), to</i></td></tr>
+<tr><th id="8">8</th><td><i>   deal in the Software without restriction, including without limitation the</i></td></tr>
+<tr><th id="9">9</th><td><i>   rights to use, copy, modify, merge, publish, distribute, sublicense, and/or</i></td></tr>
+<tr><th id="10">10</th><td><i>   sell copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="11">11</th><td><i>   furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="12">12</th><td><i></i></td></tr>
+<tr><th id="13">13</th><td><i>   The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="14">14</th><td><i>   all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="15">15</th><td><i></i></td></tr>
+<tr><th id="16">16</th><td><i>   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="17">17</th><td><i>   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="18">18</th><td><i>   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="19">19</th><td><i>   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="20">20</th><td><i>   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING</i></td></tr>
+<tr><th id="21">21</th><td><i>   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS</i></td></tr>
+<tr><th id="22">22</th><td><i>   IN THE SOFTWARE.</i></td></tr>
+<tr><th id="23">23</th><td><i>*/</i></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><u>#include <a href="devices/devices.h.html">"devices/devices.h"</a></u></td></tr>
+<tr><th id="26">26</th><td><u>#include <a href="pocl_cl.h.html">"pocl_cl.h"</a></u></td></tr>
+<tr><th id="27">27</th><td><u>#include <a href="pocl_util.h.html">"pocl_util.h"</a></u></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><u>#include <a href="../../../include/unistd.h.html">&lt;unistd.h&gt;</a></u></td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><b>extern</b> <em>unsigned</em> <dfn class="decl" id="cl_context_count" title='cl_context_count' data-ref="cl_context_count">cl_context_count</dfn>;</td></tr>
+<tr><th id="32">32</th><td><b>extern</b> <a class="typedef" href="pocl_cl.h.html#pocl_lock_t" title='pocl_lock_t' data-type='pthread_mutex_t' data-ref="pocl_lock_t">pocl_lock_t</a> <dfn class="decl" id="pocl_context_handling_lock" title='pocl_context_handling_lock' data-ref="pocl_context_handling_lock">pocl_context_handling_lock</dfn>;</td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><a class="macro" href="../../include/CL/cl_platform.h.html#43" title="" data-ref="_M/CL_API_ENTRY">CL_API_ENTRY</a> <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <a class="macro" href="../../include/CL/cl_platform.h.html#44" title="" data-ref="_M/CL_API_CALL">CL_API_CALL</a></td></tr>
+<tr><th id="35">35</th><td><a class="macro" href="pocl_cl.h.html#225" title="POclReleaseContext" data-ref="_M/POname">POname</a>(clReleaseContext)(<a class="typedef" href="../../include/CL/cl.h.html#cl_context" title='cl_context' data-type='struct _cl_context *' data-ref="cl_context">cl_context</a> <dfn class="local col1 decl" id="1context" title='context' data-type='cl_context' data-ref="1context">context</dfn>) <a class="macro" href="../../include/CL/cl_platform.h.html#57" title="" data-ref="_M/CL_API_SUFFIX__VERSION_1_0">CL_API_SUFFIX__VERSION_1_0</a></td></tr>
+<tr><th id="36">36</th><td>{</td></tr>
+<tr><th id="37">37</th><td>  <em>int</em> <dfn class="local col2 decl" id="2new_refcount" title='new_refcount' data-type='int' data-ref="2new_refcount">new_refcount</dfn>;</td></tr>
+<tr><th id="38">38</th><td>  <b>if</b> (!<a class="local col1 ref" href="#1context" title='context' data-ref="1context">context</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_context::valid" title='_cl_context::valid' data-ref="_cl_context::valid">valid</a>)</td></tr>
+<tr><th id="39">39</th><td>    {</td></tr>
+<tr><th id="40">40</th><td>      <a class="macro" href="pocl_cl.h.html#173" title="do { free((context)); (context) = ((void*)0); } while (0)" data-ref="_M/POCL_MEM_FREE">POCL_MEM_FREE</a> (<a class="local col1 ref" href="#1context" title='context' data-ref="1context">context</a>);</td></tr>
+<tr><th id="41">41</th><td>      <b>return</b> <a class="macro" href="../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>;</td></tr>
+<tr><th id="42">42</th><td>    }</td></tr>
+<tr><th id="43">43</th><td></td></tr>
+<tr><th id="44">44</th><td>  <a class="macro" href="pocl_cl.h.html#70" title="do { int r = pthread_mutex_lock (&amp;(pocl_context_handling_lock)); ((r == 0) ? (void) (0) : __assert_fail (&quot;r == 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/clReleaseContext.c&quot;, 44, __PRETTY_FUNCTION__)); } while (0)" data-ref="_M/POCL_LOCK">POCL_LOCK</a> (<a class="ref" href="#pocl_context_handling_lock" title='pocl_context_handling_lock' data-ref="pocl_context_handling_lock">pocl_context_handling_lock</a>);</td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td>  <a class="macro" href="pocl_debug.h.html#200" title="do { if (pocl_debug_messages_filter &amp; 0x40) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 46, &quot;REFCOUNTS&quot;, 1); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;&quot; &quot; &quot;); fprintf (stderr, &quot;Release Context \n&quot;); pocl_debug_output_unlock (); } } while (0)" data-ref="_M/POCL_MSG_PRINT_REFCOUNTS">POCL_MSG_PRINT_REFCOUNTS</a> (<q>"Release Context \n"</q>);</td></tr>
+<tr><th id="47">47</th><td>  <a class="macro" href="pocl_cl.h.html#139" title="do { do { do { int r = pthread_mutex_lock (&amp;((context)-&gt;pocl_lock)); ((r == 0) ? (void) (0) : __assert_fail (&quot;r == 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/clReleaseContext.c&quot;, 47, __PRETTY_FUNCTION__)); } while (0); (((context)-&gt;pocl_refcount &gt; 0) ? (void) (0) : __assert_fail (&quot;(context)-&gt;pocl_refcount &gt; 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/clReleaseContext.c&quot;, 47, __PRETTY_FUNCTION__)); } while (0); new_refcount = --(context)-&gt;pocl_refcount; do { (((context)-&gt;pocl_refcount &gt;= 0) ? (void) (0) : __assert_fail (&quot;(context)-&gt;pocl_refcount &gt;= 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/clReleaseContext.c&quot;, 47, __PRETTY_FUNCTION__)); do { int r = pthread_mutex_unlock (&amp;((context)-&gt;pocl_lock)); ((r == 0) ? (void) (0) : __assert_fail (&quot;r == 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/clReleaseContext.c&quot;, 47, __PRETTY_FUNCTION__)); } while (0); } while (0); } while (0)" data-ref="_M/POCL_RELEASE_OBJECT">POCL_RELEASE_OBJECT</a>(<a class="local col1 ref" href="#1context" title='context' data-ref="1context">context</a>, <a class="local col2 ref" href="#2new_refcount" title='new_refcount' data-ref="2new_refcount">new_refcount</a>);</td></tr>
+<tr><th id="48">48</th><td>  <b>if</b> (<a class="local col2 ref" href="#2new_refcount" title='new_refcount' data-ref="2new_refcount">new_refcount</a> == <var>0</var>)</td></tr>
+<tr><th id="49">49</th><td>    {</td></tr>
+<tr><th id="50">50</th><td>      <a class="macro" href="pocl_debug.h.html#200" title="do { if (pocl_debug_messages_filter &amp; 0x40) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 50, &quot;REFCOUNTS&quot;, 1); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;&quot; &quot; &quot;); fprintf (stderr, &quot;Free Context %p\n&quot;, context); pocl_debug_output_unlock (); } } while (0)" data-ref="_M/POCL_MSG_PRINT_REFCOUNTS">POCL_MSG_PRINT_REFCOUNTS</a> (<q>"Free Context %p\n"</q>, <a class="local col1 ref" href="#1context" title='context' data-ref="1context">context</a>);</td></tr>
+<tr><th id="51">51</th><td>      <i>/* The context holds references to all its devices,</i></td></tr>
+<tr><th id="52">52</th><td><i>         memory objects, command-queues etc. Release the</i></td></tr>
+<tr><th id="53">53</th><td><i>         references and let the objects to get freed. */</i></td></tr>
+<tr><th id="54">54</th><td>      <em>unsigned</em> <dfn class="local col3 decl" id="3i" title='i' data-type='unsigned int' data-ref="3i">i</dfn>;</td></tr>
+<tr><th id="55">55</th><td>      <b>for</b> (<a class="local col3 ref" href="#3i" title='i' data-ref="3i">i</a> = <var>0</var>; <a class="local col3 ref" href="#3i" title='i' data-ref="3i">i</a> &lt; <a class="local col1 ref" href="#1context" title='context' data-ref="1context">context</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_context::num_devices" title='_cl_context::num_devices' data-ref="_cl_context::num_devices">num_devices</a>; ++<a class="local col3 ref" href="#3i" title='i' data-ref="3i">i</a>)</td></tr>
+<tr><th id="56">56</th><td>        {</td></tr>
+<tr><th id="57">57</th><td>          <a class="macro" href="pocl_cl.h.html#225" title="POclReleaseDevice" data-ref="_M/POname">POname</a>(clReleaseDevice) (<a class="local col1 ref" href="#1context" title='context' data-ref="1context">context</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_context::devices" title='_cl_context::devices' data-ref="_cl_context::devices">devices</a>[<a class="local col3 ref" href="#3i" title='i' data-ref="3i">i</a>]);</td></tr>
+<tr><th id="58">58</th><td>        }</td></tr>
+<tr><th id="59">59</th><td>      <a class="macro" href="pocl_cl.h.html#173" title="do { free((context-&gt;devices)); (context-&gt;devices) = ((void*)0); } while (0)" data-ref="_M/POCL_MEM_FREE">POCL_MEM_FREE</a>(<a class="local col1 ref" href="#1context" title='context' data-ref="1context">context</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_context::devices" title='_cl_context::devices' data-ref="_cl_context::devices">devices</a>);</td></tr>
+<tr><th id="60">60</th><td>      <a class="macro" href="pocl_cl.h.html#173" title="do { free((context-&gt;properties)); (context-&gt;properties) = ((void*)0); } while (0)" data-ref="_M/POCL_MEM_FREE">POCL_MEM_FREE</a>(<a class="local col1 ref" href="#1context" title='context' data-ref="1context">context</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_context::properties" title='_cl_context::properties' data-ref="_cl_context::properties">properties</a>);</td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td>      <b>for</b> (<a class="local col3 ref" href="#3i" title='i' data-ref="3i">i</a> = <var>0</var>; <a class="local col3 ref" href="#3i" title='i' data-ref="3i">i</a> &lt; <a class="macro" href="pocl_cl.h.html#633" title="6" data-ref="_M/NUM_OPENCL_IMAGE_TYPES">NUM_OPENCL_IMAGE_TYPES</a>; ++<a class="local col3 ref" href="#3i" title='i' data-ref="3i">i</a>)</td></tr>
+<tr><th id="63">63</th><td>        <a class="macro" href="pocl_cl.h.html#173" title="do { free((context-&gt;image_formats[i])); (context-&gt;image_formats[i]) = ((void*)0); } while (0)" data-ref="_M/POCL_MEM_FREE">POCL_MEM_FREE</a> (<a class="local col1 ref" href="#1context" title='context' data-ref="1context">context</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_context::image_formats" title='_cl_context::image_formats' data-ref="_cl_context::image_formats">image_formats</a>[<a class="local col3 ref" href="#3i" title='i' data-ref="3i">i</a>]);</td></tr>
+<tr><th id="64">64</th><td></td></tr>
+<tr><th id="65">65</th><td>      <a class="macro" href="pocl_cl.h.html#191" title="do { do { int r = pthread_mutex_destroy (&amp;((context)-&gt;pocl_lock)); ((r == 0) ? (void) (0) : __assert_fail (&quot;r == 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/clReleaseContext.c&quot;, 65, __PRETTY_FUNCTION__)); } while (0); } while (0)" data-ref="_M/POCL_DESTROY_OBJECT">POCL_DESTROY_OBJECT</a> (<a class="local col1 ref" href="#1context" title='context' data-ref="1context">context</a>);</td></tr>
+<tr><th id="66">66</th><td>      <a class="macro" href="pocl_cl.h.html#173" title="do { free((context)); (context) = ((void*)0); } while (0)" data-ref="_M/POCL_MEM_FREE">POCL_MEM_FREE</a>(<a class="local col1 ref" href="#1context" title='context' data-ref="1context">context</a>);</td></tr>
+<tr><th id="67">67</th><td></td></tr>
+<tr><th id="68">68</th><td>      <i>/* see below on why we don't call uninit_devices here anymore */</i></td></tr>
+<tr><th id="69">69</th><td>      --<a class="ref" href="#cl_context_count" title='cl_context_count' data-ref="cl_context_count">cl_context_count</a>;</td></tr>
+<tr><th id="70">70</th><td>      <a class="macro" href="pocl_util.h.html#53" title="__sync_sub_and_fetch (&amp;cl_context_count, 1)" data-ref="_M/POCL_ATOMIC_DEC">POCL_ATOMIC_DEC</a> (<a class="ref" href="#cl_context_count" title='cl_context_count' data-ref="cl_context_count">cl_context_count</a>);</td></tr>
+<tr><th id="71">71</th><td>    }</td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td>  <a class="macro" href="pocl_cl.h.html#77" title="do { int r = pthread_mutex_unlock (&amp;(pocl_context_handling_lock)); ((r == 0) ? (void) (0) : __assert_fail (&quot;r == 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/clReleaseContext.c&quot;, 73, __PRETTY_FUNCTION__)); } while (0)" data-ref="_M/POCL_UNLOCK">POCL_UNLOCK</a> (<a class="ref" href="#pocl_context_handling_lock" title='pocl_context_handling_lock' data-ref="pocl_context_handling_lock">pocl_context_handling_lock</a>);</td></tr>
+<tr><th id="74">74</th><td></td></tr>
+<tr><th id="75">75</th><td>  <b>return</b> <a class="macro" href="../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>;</td></tr>
+<tr><th id="76">76</th><td>}</td></tr>
+<tr><th id="77">77</th><td><a class="macro" href="pocl_cl.h.html#234" title="" data-ref="_M/POsym">POsym</a>(clReleaseContext)</td></tr>
+<tr><th id="78">78</th><td></td></tr>
+<tr><th id="79">79</th><td><i>/*</i></td></tr>
+<tr><th id="80">80</th><td><i>  This is a workaround for a problem explained below.</i></td></tr>
+<tr><th id="81">81</th><td><i></i></td></tr>
+<tr><th id="82">82</th><td><i>  Note this is function *only* used by pocl tests, is subject to change without notice,</i></td></tr>
+<tr><th id="83">83</th><td><i>  and only available when compiling in no-ICD mode (= test is directly linked to libpocl).</i></td></tr>
+<tr><th id="84">84</th><td><i>*/</i></td></tr>
+<tr><th id="85">85</th><td></td></tr>
+<tr><th id="86">86</th><td><em>void</em></td></tr>
+<tr><th id="87">87</th><td><dfn class="decl def" id="pocl_check_uninit_devices" title='pocl_check_uninit_devices' data-ref="pocl_check_uninit_devices">pocl_check_uninit_devices</dfn> ()</td></tr>
+<tr><th id="88">88</th><td>{</td></tr>
+<tr><th id="89">89</th><td>  <i>/* This is a sleep with rather arbitrary amount, but it's required.</i></td></tr>
+<tr><th id="90">90</th><td><i>   * See the full explanation below, but basically,</i></td></tr>
+<tr><th id="91">91</th><td><i>   * this gives the pocl driver a bit of time to cleanup</i></td></tr>
+<tr><th id="92">92</th><td><i>   * and go idle, so we can safely call pocl_uninit_devices() from</i></td></tr>
+<tr><th id="93">93</th><td><i>   * a user thread. */</i></td></tr>
+<tr><th id="94">94</th><td></td></tr>
+<tr><th id="95">95</th><td>  <em>int</em> <dfn class="local col4 decl" id="4do_uninit" title='do_uninit' data-type='int' data-ref="4do_uninit">do_uninit</dfn> = <a class="ref" href="pocl_runtime_config.h.html#pocl_get_bool_option" title='pocl_get_bool_option' data-ref="pocl_get_bool_option">pocl_get_bool_option</a> (<q>"POCL_ENABLE_UNINIT"</q>, <var>0</var>);</td></tr>
+<tr><th id="96">96</th><td>  <b>if</b> (!<a class="local col4 ref" href="#4do_uninit" title='do_uninit' data-ref="4do_uninit">do_uninit</a>)</td></tr>
+<tr><th id="97">97</th><td>    <b>return</b>;</td></tr>
+<tr><th id="98">98</th><td></td></tr>
+<tr><th id="99">99</th><td>  <a class="ref" href="../../../include/unistd.h.html#usleep" title='usleep' data-ref="usleep">usleep</a> (<var>100000</var>);</td></tr>
+<tr><th id="100">100</th><td></td></tr>
+<tr><th id="101">101</th><td>  <a class="macro" href="pocl_cl.h.html#70" title="do { int r = pthread_mutex_lock (&amp;(pocl_context_handling_lock)); ((r == 0) ? (void) (0) : __assert_fail (&quot;r == 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/clReleaseContext.c&quot;, 101, __PRETTY_FUNCTION__)); } while (0)" data-ref="_M/POCL_LOCK">POCL_LOCK</a> (<a class="ref" href="#pocl_context_handling_lock" title='pocl_context_handling_lock' data-ref="pocl_context_handling_lock">pocl_context_handling_lock</a>);</td></tr>
+<tr><th id="102">102</th><td>  <em>int</em> <dfn class="local col5 decl" id="5do_cleanup" title='do_cleanup' data-type='int' data-ref="5do_cleanup">do_cleanup</dfn> = (<a class="ref" href="#cl_context_count" title='cl_context_count' data-ref="cl_context_count">cl_context_count</a> == <var>0</var>);</td></tr>
+<tr><th id="103">103</th><td>  <a class="macro" href="pocl_cl.h.html#77" title="do { int r = pthread_mutex_unlock (&amp;(pocl_context_handling_lock)); ((r == 0) ? (void) (0) : __assert_fail (&quot;r == 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/clReleaseContext.c&quot;, 103, __PRETTY_FUNCTION__)); } while (0)" data-ref="_M/POCL_UNLOCK">POCL_UNLOCK</a> (<a class="ref" href="#pocl_context_handling_lock" title='pocl_context_handling_lock' data-ref="pocl_context_handling_lock">pocl_context_handling_lock</a>);</td></tr>
+<tr><th id="104">104</th><td></td></tr>
+<tr><th id="105">105</th><td>  <b>if</b> (<a class="local col5 ref" href="#5do_cleanup" title='do_cleanup' data-ref="5do_cleanup">do_cleanup</a>)</td></tr>
+<tr><th id="106">106</th><td>    {</td></tr>
+<tr><th id="107">107</th><td>      <a class="macro" href="pocl_debug.h.html#200" title="do { if (pocl_debug_messages_filter &amp; 0x40) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 108, &quot;REFCOUNTS&quot;, 1); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;&quot; &quot; &quot;); fprintf (stderr, &quot;Zero contexts left, calling pocl_uninit_devices\n&quot;); pocl_debug_output_unlock (); } } while (0)" data-ref="_M/POCL_MSG_PRINT_REFCOUNTS">POCL_MSG_PRINT_REFCOUNTS</a> (</td></tr>
+<tr><th id="108">108</th><td>          <q>"Zero contexts left, calling pocl_uninit_devices\n"</q>);</td></tr>
+<tr><th id="109">109</th><td>      <a class="ref" href="devices/devices.h.html#pocl_uninit_devices" title='pocl_uninit_devices' data-ref="pocl_uninit_devices">pocl_uninit_devices</a> ();</td></tr>
+<tr><th id="110">110</th><td>    }</td></tr>
+<tr><th id="111">111</th><td>  <b>else</b></td></tr>
+<tr><th id="112">112</th><td>    <a class="macro" href="pocl_debug.h.html#182" title="do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 112, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;&quot; &quot; &quot;); fprintf (stderr, &quot;Contexts remaining!! \n&quot;); pocl_debug_output_unlock (); } } while (0)" data-ref="_M/POCL_MSG_ERR">POCL_MSG_ERR</a> (<q>"Contexts remaining!! \n"</q>);</td></tr>
+<tr><th id="113">113</th><td>}</td></tr>
+<tr><th id="114">114</th><td></td></tr>
+<tr><th id="115">115</th><td></td></tr>
+<tr><th id="116">116</th><td><i>/*</i></td></tr>
+<tr><th id="117">117</th><td><i></i></td></tr>
+<tr><th id="118">118</th><td><i>There used to be code that called pocl_uninit_devices() from clReleaseContext()</i></td></tr>
+<tr><th id="119">119</th><td><i>to un-initialize all devices when cl_context_count reached 0.</i></td></tr>
+<tr><th id="120">120</th><td><i>Unfortunately it ignores some realities of OpenCL.</i></td></tr>
+<tr><th id="121">121</th><td><i></i></td></tr>
+<tr><th id="122">122</th><td><i>What happens (usually) is:</i></td></tr>
+<tr><th id="123">123</th><td><i></i></td></tr>
+<tr><th id="124">124</th><td><i>  Application     Pocl driver thread(s)</i></td></tr>
+<tr><th id="125">125</th><td><i>-----------------------------------------------------------------------</i></td></tr>
+<tr><th id="126">126</th><td><i>  clEnqueueSomething()</i></td></tr>
+<tr><th id="127">127</th><td><i>                            process command</i></td></tr>
+<tr><th id="128">128</th><td><i></i></td></tr>
+<tr><th id="129">129</th><td><i>  clFinish()</i></td></tr>
+<tr><th id="130">130</th><td><i>   .. in libpocl: wait for notify from driver</i></td></tr>
+<tr><th id="131">131</th><td><i></i></td></tr>
+<tr><th id="132">132</th><td><i>                            process any commands</i></td></tr>
+<tr><th id="133">133</th><td><i>                            notify user app thread (via pthread_cond_signal) that command queue is empty</i></td></tr>
+<tr><th id="134">134</th><td><i>                            release any cl_objects used by last command (decrease refcounts)</i></td></tr>
+<tr><th id="135">135</th><td><i></i></td></tr>
+<tr><th id="136">136</th><td><i>  clReleaseBuffer() etc</i></td></tr>
+<tr><th id="137">137</th><td><i>  clReleaseCommandQueue()</i></td></tr>
+<tr><th id="138">138</th><td><i>  clReleaseContext()</i></td></tr>
+<tr><th id="139">139</th><td><i>   .. in libpocl: decrease context's refcount</i></td></tr>
+<tr><th id="140">140</th><td><i>     .. context refcount is 0 -&gt; call pocl_uninit_devices()</i></td></tr>
+<tr><th id="141">141</th><td><i></i></td></tr>
+<tr><th id="142">142</th><td><i>                            uninit_device() called, unitialize device, stop driver threads etc</i></td></tr>
+<tr><th id="143">143</th><td><i></i></td></tr>
+<tr><th id="144">144</th><td><i>What can happen instead is:</i></td></tr>
+<tr><th id="145">145</th><td><i></i></td></tr>
+<tr><th id="146">146</th><td><i>  Application               Pocl driver thread(s)</i></td></tr>
+<tr><th id="147">147</th><td><i>-----------------------------------------------------------------------</i></td></tr>
+<tr><th id="148">148</th><td><i>  clEnqueueSomething()</i></td></tr>
+<tr><th id="149">149</th><td><i>                            process command</i></td></tr>
+<tr><th id="150">150</th><td><i></i></td></tr>
+<tr><th id="151">151</th><td><i>  clFinish()</i></td></tr>
+<tr><th id="152">152</th><td><i>   .. in libpocl: wait for notify from driver</i></td></tr>
+<tr><th id="153">153</th><td><i></i></td></tr>
+<tr><th id="154">154</th><td><i>                            process any commands</i></td></tr>
+<tr><th id="155">155</th><td><i>                            notify user app thread (via pthread_cond_signal) that command queue is empty</i></td></tr>
+<tr><th id="156">156</th><td><i>                            driver thread gets unscheduled by OS</i></td></tr>
+<tr><th id="157">157</th><td><i></i></td></tr>
+<tr><th id="158">158</th><td><i>  clReleaseBuffer() etc</i></td></tr>
+<tr><th id="159">159</th><td><i>  clReleaseCommandQueue()</i></td></tr>
+<tr><th id="160">160</th><td><i>  clReleaseContext()</i></td></tr>
+<tr><th id="161">161</th><td><i>   .. in libpocl: decrease context's refcount</i></td></tr>
+<tr><th id="162">162</th><td><i>     .. context refcount is NOT 0 (because driver hasn't clReleased cl_objects used by last command yet)</i></td></tr>
+<tr><th id="163">163</th><td><i></i></td></tr>
+<tr><th id="164">164</th><td><i>** POINT X ** (see below)</i></td></tr>
+<tr><th id="165">165</th><td><i></i></td></tr>
+<tr><th id="166">166</th><td><i>                            release any cl_objects used by commands:</i></td></tr>
+<tr><th id="167">167</th><td><i>                            clReleaseEvent()</i></td></tr>
+<tr><th id="168">168</th><td><i>                            clReleaseCommandQueue()</i></td></tr>
+<tr><th id="169">169</th><td><i>                            clReleaseContext(): now refcount is 0</i></td></tr>
+<tr><th id="170">170</th><td><i>                                -&gt; calls pocl_uninit_devices() ** from the driver thread **</i></td></tr>
+<tr><th id="171">171</th><td><i>The symptoms are</i></td></tr>
+<tr><th id="172">172</th><td><i>  1) pocl_uninit_devices() is called from a driver thread - it would have to release itself</i></td></tr>
+<tr><th id="173">173</th><td><i>  2) at "POINT X" the application usually calls exit() which also causes the driver threads to terminate,</i></td></tr>
+<tr><th id="174">174</th><td><i>     leaving unreleased objects, triggering sanitizer checks</i></td></tr>
+<tr><th id="175">175</th><td><i></i></td></tr>
+<tr><th id="176">176</th><td><i>The root of the problem is that the driver notifies the user app when the command finished executing,</i></td></tr>
+<tr><th id="177">177</th><td><i>but before it has done the clRelease* calls on commands/buffers etc of the command's event. This *may*</i></td></tr>
+<tr><th id="178">178</th><td><i>be possible to fix but possibly requires significant changes to "event complete" handling code.</i></td></tr>
+<tr><th id="179">179</th><td><i></i></td></tr>
+<tr><th id="180">180</th><td><i>The bigger problem is that if we can't guarantee clReleaseContext() reaches refcount 0 only in user</i></td></tr>
+<tr><th id="181">181</th><td><i>app's thread, we either have to refactor drivers to be able to handle this,</i></td></tr>
+<tr><th id="182">182</th><td><i>or solve uninit() in some entirely different way (or ignore it completely).</i></td></tr>
+<tr><th id="183">183</th><td><i></i></td></tr>
+<tr><th id="184">184</th><td><i>*/</i></td></tr>
+<tr><th id="185">185</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

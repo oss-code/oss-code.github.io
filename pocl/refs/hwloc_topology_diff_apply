@@ -1,0 +1,18 @@
+<dec f='include/hwloc/diff.h' l='220' type='int hwloc_topology_diff_apply(hwloc_topology_t topology, hwloc_topology_diff_t diff, unsigned long flags)'/>
+<doc f='include/hwloc/diff.h' l='203'>/** \brief Apply a topology diff to an existing topology.
+ *
+ * \p flags is an OR&apos;ed set of ::hwloc_topology_diff_apply_flags_e.
+ *
+ * The new topology is modified in place. hwloc_topology_dup()
+ * may be used to duplicate it before patching.
+ *
+ * If the difference cannot be applied entirely, all previous applied
+ * elements are unapplied before returning.
+ *
+ * \return 0 on success.
+ *
+ * \return -N if applying the difference failed while trying
+ * to apply the N-th part of the difference. For instance -1
+ * is returned if the very first difference element could not
+ * be applied.
+ */</doc>

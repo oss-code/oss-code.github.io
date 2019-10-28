@@ -1,0 +1,18 @@
+<def f='include/c++/7/bits/forward_list.h' l='965' ll='968' type='iterator std::forward_list::erase_after(const_iterator __pos)'/>
+<doc f='include/c++/7/bits/forward_list.h' l='948'>/**
+       *  @brief  Removes the element pointed to by the iterator following
+       *          @c pos.
+       *  @param  __pos  Iterator pointing before element to be erased.
+       *  @return  An iterator pointing to the element following the one
+       *           that was erased, or end() if no such element exists.
+       *
+       *  This function will erase the element at the given position and
+       *  thus shorten the %forward_list by one.
+       *
+       *  Due to the nature of a %forward_list this operation can be done
+       *  in constant time, and only invalidates iterators/references to
+       *  the element being removed.  The user is also cautioned that
+       *  this function only erases the element, and that if the element
+       *  is itself a pointer, the pointed-to memory is not touched in
+       *  any way.  Managing the pointer is the user&apos;s responsibility.
+       */</doc>

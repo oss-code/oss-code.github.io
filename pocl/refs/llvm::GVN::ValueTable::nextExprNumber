@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Scalar/GVN.h' l='97' type='uint32_t'/>
+<offset>384</offset>
+<doc f='include/llvm-6.0/llvm/Transforms/Scalar/GVN.h' l='93'>// Expressions is the vector of Expression. ExprIdx is the mapping from
+    // value number to the index of Expression in Expressions. We use it
+    // instead of a DenseMap because filling such mapping is faster than
+    // filling a DenseMap and the compile time is a little better.</doc>

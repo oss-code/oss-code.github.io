@@ -1,0 +1,18 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='896' type='cl_event'/>
+<offset>640</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='895'>/* implementation */</doc>
+<doc f='pocl/lib/CL/pocl_cl.h' l='896'>/* events of the enqueued commands in enqueue order */</doc>
+<use f='pocl/lib/CL/clCreateCommandQueue.c' l='73' u='w' c='POclCreateCommandQueue'/>
+<use f='pocl/lib/CL/pocl_util.c' l='552' u='r' c='pocl_command_enqueue'/>
+<use f='pocl/lib/CL/pocl_util.c' l='566' u='r' c='pocl_command_enqueue'/>
+<use f='pocl/lib/CL/pocl_util.c' l='566' u='r' c='pocl_command_enqueue'/>
+<use f='pocl/lib/CL/pocl_util.c' l='566' u='r' c='pocl_command_enqueue'/>
+<use f='pocl/lib/CL/pocl_util.c' l='566' u='r' c='pocl_command_enqueue'/>
+<use f='pocl/lib/CL/pocl_util.c' l='566' u='w' c='pocl_command_enqueue'/>
+<use f='pocl/lib/CL/pocl_util.c' l='566' u='r' c='pocl_command_enqueue'/>
+<use f='pocl/lib/CL/pocl_util.c' l='566' u='r' c='pocl_command_enqueue'/>
+<use f='pocl/lib/CL/pocl_util.c' l='566' u='r' c='pocl_command_enqueue'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1254' u='w' c='pocl_update_event_finished_msg'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1254' u='r' c='pocl_update_event_finished_msg'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1254' u='w' c='pocl_update_event_finished_msg'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1254' u='r' c='pocl_update_event_finished_msg'/>

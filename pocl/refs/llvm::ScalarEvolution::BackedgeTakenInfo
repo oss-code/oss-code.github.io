@@ -1,0 +1,22 @@
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1182' ll='1265'/>
+<size>72</size>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1179'>/// Information about the backedge-taken count of a loop. This currently
+  /// includes an exact count and a maximum count.
+  ///</doc>
+<mbr r='llvm::ScalarEvolution::BackedgeTakenInfo::ExitNotTaken' o='0' t='SmallVector&lt;llvm::ScalarEvolution::ExitNotTakenInfo, 1&gt;'/>
+<mbr r='llvm::ScalarEvolution::BackedgeTakenInfo::MaxAndComplete' o='448' t='PointerIntPair&lt;const llvm::SCEV *, 1&gt;'/>
+<mbr r='llvm::ScalarEvolution::BackedgeTakenInfo::MaxOrZero' o='512' t='bool'/>
+<fun r='_ZNK4llvm15ScalarEvolution17BackedgeTakenInfo10isCompleteEv'/>
+<fun r='_ZNK4llvm15ScalarEvolution17BackedgeTakenInfo6getMaxEv'/>
+<fun r='_ZN4llvm15ScalarEvolution17BackedgeTakenInfoC1Ev'/>
+<fun r='_ZN4llvm15ScalarEvolution17BackedgeTakenInfoC1EOS1_'/>
+<fun r='_ZN4llvm15ScalarEvolution17BackedgeTakenInfoaSEOS1_'/>
+<fun r='_ZN4llvm15ScalarEvolution17BackedgeTakenInfoC1EONS_15SmallVectorImplISt4pairIPNS_10BasicBlockENS0_9ExitLimitEEEEbPKNS_4SCEVEb'/>
+<fun r='_ZNK4llvm15ScalarEvolution17BackedgeTakenInfo10hasAnyInfoEv'/>
+<fun r='_ZNK4llvm15ScalarEvolution17BackedgeTakenInfo11hasFullInfoEv'/>
+<fun r='_ZNK4llvm15ScalarEvolution17BackedgeTakenInfo8getExactEPS0_PNS_18SCEVUnionPredicateE'/>
+<fun r='_ZNK4llvm15ScalarEvolution17BackedgeTakenInfo8getExactEPNS_10BasicBlockEPS0_'/>
+<fun r='_ZNK4llvm15ScalarEvolution17BackedgeTakenInfo6getMaxEPS0_'/>
+<fun r='_ZNK4llvm15ScalarEvolution17BackedgeTakenInfo11isMaxOrZeroEPS0_'/>
+<fun r='_ZNK4llvm15ScalarEvolution17BackedgeTakenInfo10hasOperandEPKNS_4SCEVEPS0_'/>
+<fun r='_ZN4llvm15ScalarEvolution17BackedgeTakenInfo5clearEv'/>

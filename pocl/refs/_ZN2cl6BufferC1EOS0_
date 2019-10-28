@@ -1,0 +1,6 @@
+<def f='pocl/include/CL/cl2.hpp' l='3939' type='void cl::Buffer::Buffer(cl::Buffer &amp;&amp; buf)'/>
+<use f='pocl/include/CL/cl2.hpp' l='4164' u='c' c='_ZN2cl8BufferGLC1EOS0_'/>
+<use f='pocl/include/CL/cl2.hpp' l='4261' u='c' c='_ZN2cl14BufferRenderGLC1EOS0_'/>
+<doc f='pocl/include/CL/cl2.hpp' l='3936'>/*! \brief Move constructor to forward move to the superclass correctly.
+     * Required for MSVC.
+     */</doc>

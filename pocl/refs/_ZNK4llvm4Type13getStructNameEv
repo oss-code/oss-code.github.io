@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/Type.h' l='351' type='llvm::StringRef llvm::Type::getStructName() const'/>
+<def f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='325' ll='327' type='llvm::StringRef llvm::Type::getStructName() const'/>
+<use f='pocl/lib/llvmopencl/LLVMUtils.h' l='69' u='c' c='_ZN4pocl13is_image_typeERKN4llvm4TypeE'/>
+<use f='pocl/lib/llvmopencl/LLVMUtils.h' l='82' u='c' c='_ZN4pocl15is_sampler_typeERKN4llvm4TypeE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='88' u='c' c='_ZL23fixOpenCLimageArgumentsPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='117' u='c' c='_ZL24CloneFuncFixOpenCLImageTPN4llvm6ModuleEPNS_8FunctionE'/>

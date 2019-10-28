@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='446' ll='454' type='llvm::CallInst * llvm::IRBuilderBase::CreateElementUnorderedAtomicMemCpy(llvm::Value * Dst, unsigned int DstAlign, llvm::Value * Src, unsigned int SrcAlign, uint64_t Size, uint32_t ElementSize, llvm::MDNode * TBAATag = nullptr, llvm::MDNode * TBAAStructTag = nullptr, llvm::MDNode * ScopeTag = nullptr, llvm::MDNode * NoAliasTag = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='438'>/// \brief Create and insert an element unordered-atomic memcpy between the
+  /// specified pointers.
+  ///
+  /// DstAlign/SrcAlign are the alignments of the Dst/Src pointers, respectively.
+  ///
+  /// If the pointers aren&apos;t i8*, they will be converted.  If a TBAA tag is
+  /// specified, it will be added to the instruction. Likewise with alias.scope
+  /// and noalias tags.</doc>

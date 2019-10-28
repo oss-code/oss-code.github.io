@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/IR/PassManager.h' l='769' ll='829' type='void llvm::AnalysisManager::invalidate(IRUnitT &amp; IR, const llvm::PreservedAnalyses &amp; PA)'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='1205' u='c' c='_ZN4llvm27ModuleToFunctionPassAdaptor3runERNS_6ModuleERNS_15AnalysisManagerIS1_JEEE'/>
+<doc f='include/llvm-6.0/llvm/IR/PassManager.h' l='765'>/// \brief Invalidate cached analyses for an IR unit.
+  ///
+  /// Walk through all of the analyses pertaining to this unit of IR and
+  /// invalidate them, unless they are preserved by the PreservedAnalyses set.</doc>
+<use f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='451' u='c' c='_ZN4llvm33ModuleToPostOrderCGSCCPassAdaptor3runERNS_6ModuleERNS_15AnalysisManagerIS1_JEEE'/>
+<use f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='619' u='c' c='_ZN4llvm26CGSCCToFunctionPassAdaptor3runERNS_13LazyCallGraph3SCCERNS_15AnalysisManagerIS2_JRS1_EEES5_RNS_17CGSCCUpdateResultE'/>
+<use f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='812' u='c' c='_ZN4llvm21DevirtSCCRepeatedPass3runERNS_13LazyCallGraph3SCCERNS_15AnalysisManagerIS2_JRS1_EEES5_RNS_17CGSCCUpdateResultE'/>

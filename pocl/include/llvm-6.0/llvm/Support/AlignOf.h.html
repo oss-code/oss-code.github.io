@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>AlignOf.h source code [include/llvm-6.0/llvm/Support/AlignOf.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="llvm::AlignedCharArray,llvm::AlignedCharArrayUnion,llvm::detail::AlignerImpl,llvm::detail::SizerImpl "/>
+<link rel="stylesheet" href="../../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'include/llvm-6.0/llvm/Support/AlignOf.h'; var root_path = '../../../..'; var data_path = '../../../../../data';</script>
+<script src='../../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../../..'>include</a>/<a href='../..'>llvm-6.0</a>/<a href='..'>llvm</a>/<a href='./'>Support</a>/<a href='AlignOf.h.html'>AlignOf.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>//===--- AlignOf.h - Portable calculation of type alignment -----*- C++ -*-===//</i></td></tr>
+<tr><th id="2">2</th><td><i>//</i></td></tr>
+<tr><th id="3">3</th><td><i>//                     The LLVM Compiler Infrastructure</i></td></tr>
+<tr><th id="4">4</th><td><i>//</i></td></tr>
+<tr><th id="5">5</th><td><i>// This file is distributed under the University of Illinois Open Source</i></td></tr>
+<tr><th id="6">6</th><td><i>// License. See LICENSE.TXT for details.</i></td></tr>
+<tr><th id="7">7</th><td><i>//</i></td></tr>
+<tr><th id="8">8</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="9">9</th><td><i>//</i></td></tr>
+<tr><th id="10">10</th><td><i>// This file defines the AlignedCharArray and AlignedCharArrayUnion classes.</i></td></tr>
+<tr><th id="11">11</th><td><i>//</i></td></tr>
+<tr><th id="12">12</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td><u>#<span data-ppcond="14">ifndef</span> <span class="macro" data-ref="_M/LLVM_SUPPORT_ALIGNOF_H">LLVM_SUPPORT_ALIGNOF_H</span></u></td></tr>
+<tr><th id="15">15</th><td><u>#define <dfn class="macro" id="_M/LLVM_SUPPORT_ALIGNOF_H" data-ref="_M/LLVM_SUPPORT_ALIGNOF_H">LLVM_SUPPORT_ALIGNOF_H</dfn></u></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><u>#include <a href="Compiler.h.html">"llvm/Support/Compiler.h"</a></u></td></tr>
+<tr><th id="18">18</th><td><u>#include <a href="../../../c++/7/cstddef.html">&lt;cstddef&gt;</a></u></td></tr>
+<tr><th id="19">19</th><td></td></tr>
+<tr><th id="20">20</th><td><b>namespace</b> <span class="namespace">llvm</span> {</td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><i class="doc">/// <span class="command">\struct</span> <span class="verb">AlignedCharArray</span></i></td></tr>
+<tr><th id="23">23</th><td><i class="doc">/// <span class="command">\brief</span> Helper for building an aligned character array type.</i></td></tr>
+<tr><th id="24">24</th><td><i class="doc">///</i></td></tr>
+<tr><th id="25">25</th><td><i class="doc">/// This template is used to explicitly build up a collection of aligned</i></td></tr>
+<tr><th id="26">26</th><td><i class="doc">/// character array types. We have to build these up using a macro and explicit</i></td></tr>
+<tr><th id="27">27</th><td><i class="doc">/// specialization to cope with MSVC (at least till 2015) where only an</i></td></tr>
+<tr><th id="28">28</th><td><i class="doc">/// integer literal can be used to specify an alignment constraint. Once built</i></td></tr>
+<tr><th id="29">29</th><td><i class="doc">/// up here, we can then begin to indirect between these using normal C++</i></td></tr>
+<tr><th id="30">30</th><td><i class="doc">/// template parameters.</i></td></tr>
+<tr><th id="31">31</th><td><i class="doc"></i></td></tr>
+<tr><th id="32">32</th><td><i class="doc">// MSVC requires special handling here.</i></td></tr>
+<tr><th id="33">33</th><td><u>#<span data-ppcond="33">ifndef</span> <span class="macro" data-ref="_M/_MSC_VER">_MSC_VER</span></u></td></tr>
+<tr><th id="34">34</th><td></td></tr>
+<tr><th id="35">35</th><td><b>template</b>&lt;<span class="namespace">std::</span><a class="typedef" href="../../../x86_64-linux-gnu/c++/7/bits/c++config.h.html#std::size_t" title='std::size_t' data-type='unsigned long' data-ref="std::size_t">size_t</a> Alignment, <span class="namespace">std::</span><a class="typedef" href="../../../x86_64-linux-gnu/c++/7/bits/c++config.h.html#std::size_t" title='std::size_t' data-type='unsigned long' data-ref="std::size_t">size_t</a> Size&gt;</td></tr>
+<tr><th id="36">36</th><td><b>struct</b> <dfn class="type def" id="llvm::AlignedCharArray" title='llvm::AlignedCharArray' data-ref="llvm::AlignedCharArray">AlignedCharArray</dfn> {</td></tr>
+<tr><th id="37">37</th><td>  <a class="macro" href="Compiler.h.html#322" title="alignas(Alignment)" data-ref="_M/LLVM_ALIGNAS">LLVM_ALIGNAS</a>(Alignment) <em>char</em> <dfn class="decl" id="llvm::AlignedCharArray::buffer" title='llvm::AlignedCharArray::buffer' data-ref="llvm::AlignedCharArray::buffer">buffer</dfn>[<a class="tu ref" href="#llvm::AlignedCharArray::Size" title='llvm::AlignedCharArray::Size' data-ref="llvm::AlignedCharArray::Size">Size</a>];</td></tr>
+<tr><th id="38">38</th><td>};</td></tr>
+<tr><th id="39">39</th><td></td></tr>
+<tr><th id="40">40</th><td><u>#<span data-ppcond="33">else</span> // _MSC_VER</u></td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td><i class="doc">/// <span class="command">\brief</span> Create a type with an aligned char buffer.</i></td></tr>
+<tr><th id="43">43</th><td><b>template</b>&lt;std::size_t Alignment, std::size_t Size&gt;</td></tr>
+<tr><th id="44">44</th><td><b>struct</b> AlignedCharArray;</td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td><i>// We provide special variations of this template for the most common</i></td></tr>
+<tr><th id="47">47</th><td><i>// alignments because __declspec(align(...)) doesn't actually work when it is</i></td></tr>
+<tr><th id="48">48</th><td><i>// a member of a by-value function argument in MSVC, even if the alignment</i></td></tr>
+<tr><th id="49">49</th><td><i>// request is something reasonably like 8-byte or 16-byte. Note that we can't</i></td></tr>
+<tr><th id="50">50</th><td><i>// even include the declspec with the union that forces the alignment because</i></td></tr>
+<tr><th id="51">51</th><td><i>// MSVC warns on the existence of the declspec despite the union member forcing</i></td></tr>
+<tr><th id="52">52</th><td><i>// proper alignment.</i></td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td><b>template</b>&lt;std::size_t Size&gt;</td></tr>
+<tr><th id="55">55</th><td><b>struct</b> AlignedCharArray&lt;<var>1</var>, Size&gt; {</td></tr>
+<tr><th id="56">56</th><td>  <b>union</b> {</td></tr>
+<tr><th id="57">57</th><td>    <em>char</em> aligned;</td></tr>
+<tr><th id="58">58</th><td>    <em>char</em> buffer[Size];</td></tr>
+<tr><th id="59">59</th><td>  };</td></tr>
+<tr><th id="60">60</th><td>};</td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td><b>template</b>&lt;std::size_t Size&gt;</td></tr>
+<tr><th id="63">63</th><td><b>struct</b> AlignedCharArray&lt;<var>2</var>, Size&gt; {</td></tr>
+<tr><th id="64">64</th><td>  <b>union</b> {</td></tr>
+<tr><th id="65">65</th><td>    <em>short</em> aligned;</td></tr>
+<tr><th id="66">66</th><td>    <em>char</em> buffer[Size];</td></tr>
+<tr><th id="67">67</th><td>  };</td></tr>
+<tr><th id="68">68</th><td>};</td></tr>
+<tr><th id="69">69</th><td></td></tr>
+<tr><th id="70">70</th><td><b>template</b>&lt;std::size_t Size&gt;</td></tr>
+<tr><th id="71">71</th><td><b>struct</b> AlignedCharArray&lt;<var>4</var>, Size&gt; {</td></tr>
+<tr><th id="72">72</th><td>  <b>union</b> {</td></tr>
+<tr><th id="73">73</th><td>    <em>int</em> aligned;</td></tr>
+<tr><th id="74">74</th><td>    <em>char</em> buffer[Size];</td></tr>
+<tr><th id="75">75</th><td>  };</td></tr>
+<tr><th id="76">76</th><td>};</td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td><b>template</b>&lt;std::size_t Size&gt;</td></tr>
+<tr><th id="79">79</th><td><b>struct</b> AlignedCharArray&lt;<var>8</var>, Size&gt; {</td></tr>
+<tr><th id="80">80</th><td>  <b>union</b> {</td></tr>
+<tr><th id="81">81</th><td>    <em>double</em> aligned;</td></tr>
+<tr><th id="82">82</th><td>    <em>char</em> buffer[Size];</td></tr>
+<tr><th id="83">83</th><td>  };</td></tr>
+<tr><th id="84">84</th><td>};</td></tr>
+<tr><th id="85">85</th><td></td></tr>
+<tr><th id="86">86</th><td></td></tr>
+<tr><th id="87">87</th><td><i>// The rest of these are provided with a __declspec(align(...)) and we simply</i></td></tr>
+<tr><th id="88">88</th><td><i>// can't pass them by-value as function arguments on MSVC.</i></td></tr>
+<tr><th id="89">89</th><td></td></tr>
+<tr><th id="90">90</th><td><u>#define LLVM_ALIGNEDCHARARRAY_TEMPLATE_ALIGNMENT(x) \</u></td></tr>
+<tr><th id="91">91</th><td><u>  template&lt;std::size_t Size&gt; \</u></td></tr>
+<tr><th id="92">92</th><td><u>  struct AlignedCharArray&lt;x, Size&gt; { \</u></td></tr>
+<tr><th id="93">93</th><td><u>    __declspec(align(x)) char buffer[Size]; \</u></td></tr>
+<tr><th id="94">94</th><td><u>  };</u></td></tr>
+<tr><th id="95">95</th><td></td></tr>
+<tr><th id="96">96</th><td>LLVM_ALIGNEDCHARARRAY_TEMPLATE_ALIGNMENT(<var>16</var>)</td></tr>
+<tr><th id="97">97</th><td>LLVM_ALIGNEDCHARARRAY_TEMPLATE_ALIGNMENT(<var>32</var>)</td></tr>
+<tr><th id="98">98</th><td>LLVM_ALIGNEDCHARARRAY_TEMPLATE_ALIGNMENT(<var>64</var>)</td></tr>
+<tr><th id="99">99</th><td>LLVM_ALIGNEDCHARARRAY_TEMPLATE_ALIGNMENT(<var>128</var>)</td></tr>
+<tr><th id="100">100</th><td></td></tr>
+<tr><th id="101">101</th><td><u>#undef LLVM_ALIGNEDCHARARRAY_TEMPLATE_ALIGNMENT</u></td></tr>
+<tr><th id="102">102</th><td></td></tr>
+<tr><th id="103">103</th><td><u>#<span data-ppcond="33">endif</span> // _MSC_VER</u></td></tr>
+<tr><th id="104">104</th><td></td></tr>
+<tr><th id="105">105</th><td><b>namespace</b> <span class="namespace">detail</span> {</td></tr>
+<tr><th id="106">106</th><td><b>template</b> &lt;<b>typename</b> T1,</td></tr>
+<tr><th id="107">107</th><td>          <b>typename</b> T2 = <em>char</em>, <b>typename</b> T3 = <em>char</em>, <b>typename</b> T4 = <em>char</em>,</td></tr>
+<tr><th id="108">108</th><td>          <b>typename</b> T5 = <em>char</em>, <b>typename</b> T6 = <em>char</em>, <b>typename</b> T7 = <em>char</em>,</td></tr>
+<tr><th id="109">109</th><td>          <b>typename</b> T8 = <em>char</em>, <b>typename</b> T9 = <em>char</em>, <b>typename</b> T10 = <em>char</em>&gt;</td></tr>
+<tr><th id="110">110</th><td><b>class</b> <dfn class="type def" id="llvm::detail::AlignerImpl" title='llvm::detail::AlignerImpl' data-ref="llvm::detail::AlignerImpl">AlignerImpl</dfn> {</td></tr>
+<tr><th id="111">111</th><td>  T1 <dfn class="decl" id="llvm::detail::AlignerImpl::t1" title='llvm::detail::AlignerImpl::t1' data-ref="llvm::detail::AlignerImpl::t1">t1</dfn>; T2 <dfn class="decl" id="llvm::detail::AlignerImpl::t2" title='llvm::detail::AlignerImpl::t2' data-ref="llvm::detail::AlignerImpl::t2">t2</dfn>; T3 <dfn class="decl" id="llvm::detail::AlignerImpl::t3" title='llvm::detail::AlignerImpl::t3' data-ref="llvm::detail::AlignerImpl::t3">t3</dfn>; T4 <dfn class="decl" id="llvm::detail::AlignerImpl::t4" title='llvm::detail::AlignerImpl::t4' data-ref="llvm::detail::AlignerImpl::t4">t4</dfn>; T5 <dfn class="decl" id="llvm::detail::AlignerImpl::t5" title='llvm::detail::AlignerImpl::t5' data-ref="llvm::detail::AlignerImpl::t5">t5</dfn>; T6 <dfn class="decl" id="llvm::detail::AlignerImpl::t6" title='llvm::detail::AlignerImpl::t6' data-ref="llvm::detail::AlignerImpl::t6">t6</dfn>; T7 <dfn class="decl" id="llvm::detail::AlignerImpl::t7" title='llvm::detail::AlignerImpl::t7' data-ref="llvm::detail::AlignerImpl::t7">t7</dfn>; T8 <dfn class="decl" id="llvm::detail::AlignerImpl::t8" title='llvm::detail::AlignerImpl::t8' data-ref="llvm::detail::AlignerImpl::t8">t8</dfn>; T9 <dfn class="decl" id="llvm::detail::AlignerImpl::t9" title='llvm::detail::AlignerImpl::t9' data-ref="llvm::detail::AlignerImpl::t9">t9</dfn>; T10 <dfn class="decl" id="llvm::detail::AlignerImpl::t10" title='llvm::detail::AlignerImpl::t10' data-ref="llvm::detail::AlignerImpl::t10">t10</dfn>;</td></tr>
+<tr><th id="112">112</th><td></td></tr>
+<tr><th id="113">113</th><td>  <dfn class="decl def" id="_ZN4llvm6detail11AlignerImplC1Ev" title='llvm::detail::AlignerImpl::AlignerImpl&lt;T1, T2, T3, T4, T5, T6, T7, T8, T9, T10&gt;' data-ref="_ZN4llvm6detail11AlignerImplC1Ev">AlignerImpl</dfn>() = <b>delete</b>;</td></tr>
+<tr><th id="114">114</th><td>};</td></tr>
+<tr><th id="115">115</th><td></td></tr>
+<tr><th id="116">116</th><td><b>template</b> &lt;<b>typename</b> T1,</td></tr>
+<tr><th id="117">117</th><td>          <b>typename</b> T2 = <em>char</em>, <b>typename</b> T3 = <em>char</em>, <b>typename</b> T4 = <em>char</em>,</td></tr>
+<tr><th id="118">118</th><td>          <b>typename</b> T5 = <em>char</em>, <b>typename</b> T6 = <em>char</em>, <b>typename</b> T7 = <em>char</em>,</td></tr>
+<tr><th id="119">119</th><td>          <b>typename</b> T8 = <em>char</em>, <b>typename</b> T9 = <em>char</em>, <b>typename</b> T10 = <em>char</em>&gt;</td></tr>
+<tr><th id="120">120</th><td><b>union</b> <dfn class="type def" id="llvm::detail::SizerImpl" title='llvm::detail::SizerImpl' data-ref="llvm::detail::SizerImpl">SizerImpl</dfn> {</td></tr>
+<tr><th id="121">121</th><td>  <em>char</em> <dfn class="decl" id="llvm::detail::SizerImpl::arr1" title='llvm::detail::SizerImpl::arr1' data-ref="llvm::detail::SizerImpl::arr1">arr1</dfn>[<b>sizeof</b>(T1)], <dfn class="decl" id="llvm::detail::SizerImpl::arr2" title='llvm::detail::SizerImpl::arr2' data-ref="llvm::detail::SizerImpl::arr2">arr2</dfn>[<b>sizeof</b>(T2)], <dfn class="decl" id="llvm::detail::SizerImpl::arr3" title='llvm::detail::SizerImpl::arr3' data-ref="llvm::detail::SizerImpl::arr3">arr3</dfn>[<b>sizeof</b>(T3)], <dfn class="decl" id="llvm::detail::SizerImpl::arr4" title='llvm::detail::SizerImpl::arr4' data-ref="llvm::detail::SizerImpl::arr4">arr4</dfn>[<b>sizeof</b>(T4)],</td></tr>
+<tr><th id="122">122</th><td>       <dfn class="decl" id="llvm::detail::SizerImpl::arr5" title='llvm::detail::SizerImpl::arr5' data-ref="llvm::detail::SizerImpl::arr5">arr5</dfn>[<b>sizeof</b>(T5)], <dfn class="decl" id="llvm::detail::SizerImpl::arr6" title='llvm::detail::SizerImpl::arr6' data-ref="llvm::detail::SizerImpl::arr6">arr6</dfn>[<b>sizeof</b>(T6)], <dfn class="decl" id="llvm::detail::SizerImpl::arr7" title='llvm::detail::SizerImpl::arr7' data-ref="llvm::detail::SizerImpl::arr7">arr7</dfn>[<b>sizeof</b>(T7)], <dfn class="decl" id="llvm::detail::SizerImpl::arr8" title='llvm::detail::SizerImpl::arr8' data-ref="llvm::detail::SizerImpl::arr8">arr8</dfn>[<b>sizeof</b>(T8)],</td></tr>
+<tr><th id="123">123</th><td>       <dfn class="decl" id="llvm::detail::SizerImpl::arr9" title='llvm::detail::SizerImpl::arr9' data-ref="llvm::detail::SizerImpl::arr9">arr9</dfn>[<b>sizeof</b>(T9)], <dfn class="decl" id="llvm::detail::SizerImpl::arr10" title='llvm::detail::SizerImpl::arr10' data-ref="llvm::detail::SizerImpl::arr10">arr10</dfn>[<b>sizeof</b>(T10)];</td></tr>
+<tr><th id="124">124</th><td>};</td></tr>
+<tr><th id="125">125</th><td>} <i>// end namespace detail</i></td></tr>
+<tr><th id="126">126</th><td></td></tr>
+<tr><th id="127">127</th><td><i class="doc">/// <span class="command">\brief</span> This union template exposes a suitably aligned and sized character</i></td></tr>
+<tr><th id="128">128</th><td><i class="doc">/// array member which can hold elements of any of up to ten types.</i></td></tr>
+<tr><th id="129">129</th><td><i class="doc">///</i></td></tr>
+<tr><th id="130">130</th><td><i class="doc">/// These types may be arrays, structs, or any other types. The goal is to</i></td></tr>
+<tr><th id="131">131</th><td><i class="doc">/// expose a char array buffer member which can be used as suitable storage for</i></td></tr>
+<tr><th id="132">132</th><td><i class="doc">/// a placement new of any of these types. Support for more than ten types can</i></td></tr>
+<tr><th id="133">133</th><td><i class="doc">/// be added at the cost of more boilerplate.</i></td></tr>
+<tr><th id="134">134</th><td><b>template</b> &lt;<b>typename</b> T1,</td></tr>
+<tr><th id="135">135</th><td>          <b>typename</b> T2 = <em>char</em>, <b>typename</b> T3 = <em>char</em>, <b>typename</b> T4 = <em>char</em>,</td></tr>
+<tr><th id="136">136</th><td>          <b>typename</b> T5 = <em>char</em>, <b>typename</b> T6 = <em>char</em>, <b>typename</b> T7 = <em>char</em>,</td></tr>
+<tr><th id="137">137</th><td>          <b>typename</b> T8 = <em>char</em>, <b>typename</b> T9 = <em>char</em>, <b>typename</b> T10 = <em>char</em>&gt;</td></tr>
+<tr><th id="138">138</th><td><b>struct</b> <dfn class="type def" id="llvm::AlignedCharArrayUnion" title='llvm::AlignedCharArrayUnion' data-ref="llvm::AlignedCharArrayUnion">AlignedCharArrayUnion</dfn> : <span class="namespace">llvm::</span><a class="type" href="#llvm::AlignedCharArray" title='llvm::AlignedCharArray' data-ref="llvm::AlignedCharArray">AlignedCharArray</a>&lt;</td></tr>
+<tr><th id="139">139</th><td>    <b>alignof</b>(<span class="namespace">llvm::detail::</span><a class="type" href="#llvm::detail::AlignerImpl" title='llvm::detail::AlignerImpl' data-ref="llvm::detail::AlignerImpl">AlignerImpl</a>&lt;T1, T2, T3, T4, T5,</td></tr>
+<tr><th id="140">140</th><td>                                      T6, T7, T8, T9, T10&gt;),</td></tr>
+<tr><th id="141">141</th><td>    <b>sizeof</b>(<span class="namespace">::llvm::detail::</span><a class="type" href="#llvm::detail::SizerImpl" title='llvm::detail::SizerImpl' data-ref="llvm::detail::SizerImpl">SizerImpl</a>&lt;T1, T2, T3, T4, T5,</td></tr>
+<tr><th id="142">142</th><td>                                     T6, T7, T8, T9, T10&gt;)&gt; {</td></tr>
+<tr><th id="143">143</th><td>};</td></tr>
+<tr><th id="144">144</th><td>} <i>// end namespace llvm</i></td></tr>
+<tr><th id="145">145</th><td></td></tr>
+<tr><th id="146">146</th><td><u>#<span data-ppcond="14">endif</span> // LLVM_SUPPORT_ALIGNOF_H</u></td></tr>
+<tr><th id="147">147</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../../../pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc.html'>pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc</a><br/>Generated on <em>2019-Oct-28</em> from project include<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

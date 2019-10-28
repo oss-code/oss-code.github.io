@@ -1,0 +1,6 @@
+<def f='pocl/include/CL/cl2.hpp' l='4899' ll='4921' type='void cl::Image2DGL::Image2DGL(const cl::Context &amp; context, cl_mem_flags flags, cl_GLenum target, cl_GLint miplevel, cl_GLuint texobj, cl_int * err = __null)'/>
+<doc f='pocl/include/CL/cl2.hpp' l='4894'>/*! \brief Constructs an Image2DGL in a specified context, from a given
+     *         GL Texture.
+     *
+     *  Wraps clCreateFromGLTexture2D().
+     */</doc>

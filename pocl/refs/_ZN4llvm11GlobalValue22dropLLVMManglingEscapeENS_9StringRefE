@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='462' ll='466' type='static llvm::StringRef llvm::GlobalValue::dropLLVMManglingEscape(llvm::StringRef Name)'/>
+<doc f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='455'>/// If the given string begins with the GlobalValue name mangling escape
+  /// character &apos;\1&apos;, drop it.
+  ///
+  /// This function applies a specific mangling that is used in PGO profiles,
+  /// among other things. If you&apos;re trying to get a symbol name for an
+  /// arbitrary GlobalValue, this is not the function you&apos;re looking for; see
+  /// Mangler.h.</doc>

@@ -1,0 +1,8 @@
+<dec f='pocl/lib/CL/devices/pthread/pocl-pthread_utils.h' l='54' type='void **'/>
+<offset>640</offset>
+<doc f='pocl/lib/CL/devices/pthread/pocl-pthread_utils.h' l='53'>/* this is required b/c there&apos;s an additional level of indirection */</doc>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='113' u='w' c='setup_kernel_arg_array'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='183' u='r' c='setup_kernel_arg_array_with_locals'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='234' u='r' c='free_kernel_arg_array'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='258' u='r' c='free_kernel_arg_array'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='258' u='w' c='free_kernel_arg_array'/>

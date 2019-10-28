@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='362' type='bool llvm::APInt::isNonNegative() const'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='384' u='c' c='_ZNK4llvm5APInt18isStrictlyPositiveEv'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='359'>/// \brief Determine if this APInt Value is non-negative (&gt;= 0)
+  ///
+  /// This tests the high bit of the APInt to determine if it is unset.</doc>

@@ -1,0 +1,17 @@
+<dec f='include/llvm-6.0/llvm/Pass.h' l='295' type='bool llvm::FunctionPass::runOnFunction(llvm::Function &amp; F)'/>
+<doc f='include/llvm-6.0/llvm/Pass.h' l='293'>/// runOnFunction - Virtual method overriden by subclasses to do the
+  /// per-function processing of the pass.</doc>
+<ovr f='pocl/lib/llvmopencl/AllocasToEntry.cc' l='54' c='_ZN4pocl14AllocasToEntry13runOnFunctionERN4llvm8FunctionE'/>
+<ovr f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='71' c='_ZN4pocl22BarrierTailReplication13runOnFunctionERN4llvm8FunctionE'/>
+<ovr f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='245' c='_ZN17BreakConstantGEPs13runOnFunctionERN4llvm8FunctionE'/>
+<ovr f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='62' c='_ZN4pocl20CanonicalizeBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<ovr f='pocl/lib/llvmopencl/HandleSamplerInitialization.cc' l='57' c='_ZN4pocl27HandleSamplerInitialization13runOnFunctionERN4llvm8FunctionE'/>
+<ovr f='pocl/lib/llvmopencl/ImplicitConditionalBarriers.cc' l='88' c='_ZN4pocl27ImplicitConditionalBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/LoopPass.h' l='170' c='_ZN4llvm21LCSSAVerificationPass13runOnFunctionERNS_8FunctionE'/>
+<ovr f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='51' c='_ZN4pocl25OptimizeWorkItemFuncCalls13runOnFunctionERN4llvm8FunctionE'/>
+<ovr f='pocl/lib/llvmopencl/PHIsToAllocas.cc' l='60' c='_ZN4pocl13PHIsToAllocas13runOnFunctionERN4llvm8FunctionE'/>
+<ovr f='pocl/lib/llvmopencl/RemoveBarrierCalls.cc' l='52' c='_ZN4pocl18RemoveBarrierCalls13runOnFunctionERN4llvm8FunctionE'/>
+<ovr f='pocl/lib/llvmopencl/RemoveOptnoneFromWIFunc.cc' l='48' c='_ZN4pocl23RemoveOptnoneFromWIFunc13runOnFunctionERN4llvm8FunctionE'/>
+<ovr f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='102' c='_ZN4pocl26VariableUniformityAnalysis13runOnFunctionERN4llvm8FunctionE'/>
+<ovr f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='119' c='_ZN21WorkItemAliasAnalysis13runOnFunctionERN4llvm8FunctionE'/>
+<ovr f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='75' c='_ZN4pocl15WorkitemHandler13runOnFunctionERN4llvm8FunctionE'/>

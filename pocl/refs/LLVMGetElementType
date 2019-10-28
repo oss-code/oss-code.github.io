@@ -1,0 +1,10 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='1040' type='LLVMTypeRef LLVMGetElementType(LLVMTypeRef Ty)'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1190' u='c' c='_ZN4pocl9Workgroup32createArgBufferWorkgroupLauncherEPN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1224' u='c' c='_ZN4pocl9Workgroup32createArgBufferWorkgroupLauncherEPN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='1033'>/**
+ * Obtain the type of elements within a sequential type.
+ *
+ * This works on array, vector, and pointer types.
+ *
+ * @see llvm::SequentialType::getElementType()
+ */</doc>

@@ -1,0 +1,17 @@
+<def f='include/llvm-6.0/llvm/IR/DataLayout.h' l='491' ll='526'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/IR/DataLayout.h' l='489'>/// Used to lazily calculate structure layout information for a target machine,
+/// based on the DataLayout structure.</doc>
+<mbr r='llvm::StructLayout::StructSize' o='0' t='uint64_t'/>
+<mbr r='llvm::StructLayout::StructAlignment' o='64' t='unsigned int'/>
+<mbr r='llvm::StructLayout::IsPadded' o='96' t='unsigned int'/>
+<mbr r='llvm::StructLayout::NumElements' o='97' t='unsigned int'/>
+<mbr r='llvm::StructLayout::MemberOffsets' o='128' t='uint64_t [1]'/>
+<fun r='_ZNK4llvm12StructLayout14getSizeInBytesEv'/>
+<fun r='_ZNK4llvm12StructLayout13getSizeInBitsEv'/>
+<fun r='_ZNK4llvm12StructLayout12getAlignmentEv'/>
+<fun r='_ZNK4llvm12StructLayout10hasPaddingEv'/>
+<fun r='_ZNK4llvm12StructLayout26getElementContainingOffsetEm'/>
+<fun r='_ZNK4llvm12StructLayout16getElementOffsetEj'/>
+<fun r='_ZNK4llvm12StructLayout22getElementOffsetInBitsEj'/>
+<fun r='_ZN4llvm12StructLayoutC1EPNS_10StructTypeERKNS_10DataLayoutE'/>

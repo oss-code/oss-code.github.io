@@ -1,0 +1,26 @@
+<dec f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='360' type='static llvm::BinaryOperator * llvm::BinaryOperator::Create(llvm::Instruction::BinaryOps Op, llvm::Value * S1, llvm::Value * S2, const llvm::Twine &amp; Name, llvm::BasicBlock * InsertAtEnd)'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.def' l='128' macro='1' u='c'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.def' l='129' macro='1' u='c'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.def' l='130' macro='1' u='c'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.def' l='131' macro='1' u='c'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.def' l='132' macro='1' u='c'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.def' l='133' macro='1' u='c'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.def' l='134' macro='1' u='c'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.def' l='135' macro='1' u='c'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.def' l='136' macro='1' u='c'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.def' l='137' macro='1' u='c'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.def' l='138' macro='1' u='c'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.def' l='139' macro='1' u='c'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.def' l='142' macro='1' u='c'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.def' l='143' macro='1' u='c'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.def' l='144' macro='1' u='c'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.def' l='145' macro='1' u='c'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.def' l='146' macro='1' u='c'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.def' l='147' macro='1' u='c'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='402' u='c' c='_ZN4llvm14BinaryOperator9CreateNSWENS_11Instruction9BinaryOpsEPNS_5ValueES4_RKNS_5TwineEPNS_10BasicBlockE'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='421' u='c' c='_ZN4llvm14BinaryOperator9CreateNUWENS_11Instruction9BinaryOpsEPNS_5ValueES4_RKNS_5TwineEPNS_10BasicBlockE'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='440' u='c' c='_ZN4llvm14BinaryOperator11CreateExactENS_11Instruction9BinaryOpsEPNS_5ValueES4_RKNS_5TwineEPNS_10BasicBlockE'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='356'>/// Construct a binary instruction, given the opcode and the two
+  /// operands.  Also automatically insert this instruction to the end of the
+  /// BasicBlock specified.
+  ///</doc>

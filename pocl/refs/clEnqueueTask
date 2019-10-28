@@ -1,0 +1,8 @@
+<dec f='pocl/include/CL/cl.h' l='1794' type='cl_int clEnqueueTask(cl_command_queue command_queue, cl_kernel kernel, cl_uint num_events_in_wait_list, const cl_event * event_wait_list, cl_event * event)'/>
+<use f='pocl/lib/CL/pocl_intfn.h' l='68' c='POclEnqueueTask'/>
+<use f='pocl/tests/kernel/test_shuffle.cc' l='184' u='c' c='_ZN11TestShuffle15run_single_testEjj'/>
+<use f='pocl/tests/kernel/test_shuffle.cc' l='217' u='c' c='_ZN11TestShuffle15run_single_testEjj'/>
+<use f='pocl/include/CL/cl2.hpp' l='8385' u='c' c='_ZNK2cl12CommandQueue11enqueueTaskERKNS_6KernelEPKSt6vectorINS_5EventESaIS5_EEPS5_'/>
+<use f='pocl/tests/runtime/test_clCreateKernelsInProgram.c' l='57' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateKernelsInProgram.c' l='63' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateSubDevices.c' l='78' u='c' c='test_context'/>

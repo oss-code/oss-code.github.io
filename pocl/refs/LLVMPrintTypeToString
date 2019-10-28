@@ -1,0 +1,7 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='790' type='char * LLVMPrintTypeToString(LLVMTypeRef Val)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='784'>/**
+ * Return a string representation of the type. Use
+ * LLVMDisposeMessage to free the string.
+ *
+ * @see llvm::Type::print()
+ */</doc>

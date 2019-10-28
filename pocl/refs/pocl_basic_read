@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/devices/basic/basic.h' l='44' macro='1' type='void pocl_basic_read(void * data, void *restrict dst_host_ptr, pocl_mem_identifier * src_mem_id, cl_mem src_buf, size_t offset, size_t size)'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='120' u='r' c='pocl_basic_init_device_ops'/>
+<def f='pocl/lib/CL/devices/basic/basic.c' l='533' ll='545' type='void pocl_basic_read(void * data, void *restrict host_ptr, pocl_mem_identifier * src_mem_id, cl_mem src_buf, size_t offset, size_t size)'/>
+<dec f='pocl/lib/CL/devices/pthread/pocl-pthread.h' l='35' macro='1' type='void pocl_basic_read(void * data, void *restrict dst_host_ptr, pocl_mem_identifier * src_mem_id, cl_mem src_buf, size_t offset, size_t size)'/>
+<dec f='pocl/lib/CL/devices/hsa/pocl-hsa.h' l='32' macro='1' type='void pocl_basic_read(void * data, void *restrict dst_host_ptr, pocl_mem_identifier * src_mem_id, cl_mem src_buf, size_t offset, size_t size)'/>

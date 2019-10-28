@@ -1,0 +1,7 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1183' type='pocl_event_md *'/>
+<offset>1472</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='1182'>/* Additional (optional data) used to make profile data more readable etc. */</doc>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='611' u='r' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/pocl_cq_profiling.c' l='69' u='r' c='pocl_atexit'/>
+<use f='pocl/lib/CL/pocl_cq_profiling.c' l='131' u='r' c='pocl_cq_profiling_register_event'/>
+<use f='pocl/lib/CL/pocl_cq_profiling.c' l='132' u='w' c='pocl_cq_profiling_register_event'/>

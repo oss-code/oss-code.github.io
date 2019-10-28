@@ -1,0 +1,8 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2707' type='LLVMBasicBlockRef LLVMGetSwitchDefaultDest(LLVMValueRef SwitchInstr)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2700'>/**
+ * Obtain the default destination basic block of a switch instruction.
+ *
+ * This only works on llvm::SwitchInst instructions.
+ *
+ * @see llvm::SwitchInst::getDefaultDest()
+ */</doc>

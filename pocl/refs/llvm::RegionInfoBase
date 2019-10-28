@@ -1,0 +1,45 @@
+<def f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='676' ll='879'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='904' c='llvm::RegionInfo'/>
+<def f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='1028'/>
+<size>64</size>
+<fun r='_ZN4llvm14RegionInfoBaseC1Ev'/>
+<fun r='_ZN4llvm14RegionInfoBaseC1EONS_14RegionInfoBaseIT_EE'/>
+<fun r='_ZN4llvm14RegionInfoBaseaSEONS_14RegionInfoBaseIT_EE'/>
+<fun r='_ZN4llvm14RegionInfoBaseD1Ev'/>
+<mbr r='llvm::RegionInfoBase::DT' t='DomTreeT *'/>
+<mbr r='llvm::RegionInfoBase::PDT' t='PostDomTreeT *'/>
+<mbr r='llvm::RegionInfoBase::DF' t='DomFrontierT *'/>
+<mbr r='llvm::RegionInfoBase::TopLevelRegion' t='RegionT *'/>
+<mbr r='llvm::RegionInfoBase::BBtoRegion' t='BBtoRegionMap'/>
+<fun r='_ZN4llvm14RegionInfoBase16updateRegionTreeERNT_11RegionInfoTEPT_'/>
+<fun r='_ZN4llvm14RegionInfoBase4wipeEv'/>
+<fun r='_ZNK4llvm14RegionInfoBase11verifyBBMapEPKNT_7RegionTE'/>
+<fun r='_ZNK4llvm14RegionInfoBase19isCommonDomFrontierEPNT_6BlockTES3_S3_'/>
+<fun r='_ZNK4llvm14RegionInfoBase8isRegionEPNT_6BlockTES3_'/>
+<fun r='_ZNK4llvm14RegionInfoBase14insertShortCutEPNT_6BlockTES3_PNS_8DenseMapIS3_S3_NS_12DenseMapInfoIS3_EENS_6detail12DenseMapPairIS3_S3_EEEE'/>
+<fun r='_ZNK4llvm14RegionInfoBase14getNextPostDomEPNT_12DomTreeNodeTEPNS_8DenseMapIPNS1_6BlockTES6_NS_12DenseMapInfoIS6_EENS_6detail12DenseMapPairIS6_S6_EEEE'/>
+<fun r='_ZNK4llvm14RegionInfoBase15isTrivialRegionEPNT_6BlockTES3_'/>
+<fun r='_ZN4llvm14RegionInfoBase12createRegionEPNT_6BlockTES3_'/>
+<fun r='_ZN4llvm14RegionInfoBase20findRegionsWithEntryEPNT_6BlockTEPNS_8DenseMapIS3_S3_NS_12DenseMapInfoIS3_EENS_6detail12DenseMapPairIS3_S3_EEEE'/>
+<fun r='_ZN4llvm14RegionInfoBase14scanForRegionsERNT_5FuncTEPNS_8DenseMapIPNS1_6BlockTES6_NS_12DenseMapInfoIS6_EENS_6detail12DenseMapPairIS6_S6_EEEE'/>
+<fun r='_ZN4llvm14RegionInfoBase16getTopMostParentEPNT_7RegionTE'/>
+<fun r='_ZN4llvm14RegionInfoBase16buildRegionsTreeEPNT_12DomTreeNodeTEPNS1_7RegionTE'/>
+<fun r='_ZN4llvm14RegionInfoBase16updateStatisticsEPNT_7RegionTE'/>
+<fun r='_ZN4llvm14RegionInfoBase9calculateERNT_5FuncTE'/>
+<fun r='_ZN4llvm14RegionInfoBaseC1ERKNS_14RegionInfoBaseIT_EE'/>
+<fun r='_ZN4llvm14RegionInfoBaseaSERKNS_14RegionInfoBaseIT_EE'/>
+<smbr r='llvm::RegionInfoBase::VerifyRegionInfo' t='bool'/>
+<smbr r='llvm::RegionInfoBase::printStyle' t='typename RegionT::PrintStyle'/>
+<fun r='_ZNK4llvm14RegionInfoBase5printERNS_11raw_ostreamE'/>
+<fun r='_ZN4llvm14RegionInfoBase13releaseMemoryEv'/>
+<fun r='_ZNK4llvm14RegionInfoBase12getRegionForEPNT_6BlockTE'/>
+<fun r='_ZN4llvm14RegionInfoBase12setRegionForEPNT_6BlockTEPNS1_7RegionTE'/>
+<fun r='_ZNK4llvm14RegionInfoBaseixEPNT_6BlockTE'/>
+<fun r='_ZNK4llvm14RegionInfoBase16getMaxRegionExitEPNT_6BlockTE'/>
+<fun r='_ZNK4llvm14RegionInfoBase15getCommonRegionEPNT_7RegionTES3_'/>
+<fun r='_ZNK4llvm14RegionInfoBase15getCommonRegionEPNT_6BlockTES3_'/>
+<fun r='_ZNK4llvm14RegionInfoBase15getCommonRegionERNS_15SmallVectorImplIPNT_7RegionTEEE'/>
+<fun r='_ZNK4llvm14RegionInfoBase15getCommonRegionERNS_15SmallVectorImplIPNT_6BlockTEEE'/>
+<fun r='_ZNK4llvm14RegionInfoBase17getTopLevelRegionEv'/>
+<fun r='_ZN4llvm14RegionInfoBase14clearNodeCacheEv'/>
+<fun r='_ZNK4llvm14RegionInfoBase14verifyAnalysisEv'/>

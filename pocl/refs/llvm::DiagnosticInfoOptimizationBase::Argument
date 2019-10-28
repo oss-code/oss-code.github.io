@@ -1,0 +1,19 @@
+<def f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='407' ll='425'/>
+<size>88</size>
+<doc f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='405'>/// \brief Used in the streaming interface as the general argument type.  It
+  /// internally converts everything into a key-value pair.</doc>
+<mbr r='llvm::DiagnosticInfoOptimizationBase::Argument::Key' o='0' t='std::string'/>
+<mbr r='llvm::DiagnosticInfoOptimizationBase::Argument::Val' o='256' t='std::string'/>
+<mbr r='llvm::DiagnosticInfoOptimizationBase::Argument::Loc' o='512' t='llvm::DiagnosticLocation'/>
+<fun r='_ZN4llvm30DiagnosticInfoOptimizationBase8ArgumentC1ENS_9StringRefE'/>
+<fun r='_ZN4llvm30DiagnosticInfoOptimizationBase8ArgumentC1ENS_9StringRefEPKNS_5ValueE'/>
+<fun r='_ZN4llvm30DiagnosticInfoOptimizationBase8ArgumentC1ENS_9StringRefEPKNS_4TypeE'/>
+<fun r='_ZN4llvm30DiagnosticInfoOptimizationBase8ArgumentC1ENS_9StringRefES2_'/>
+<fun r='_ZN4llvm30DiagnosticInfoOptimizationBase8ArgumentC1ENS_9StringRefEi'/>
+<fun r='_ZN4llvm30DiagnosticInfoOptimizationBase8ArgumentC1ENS_9StringRefEl'/>
+<fun r='_ZN4llvm30DiagnosticInfoOptimizationBase8ArgumentC1ENS_9StringRefEx'/>
+<fun r='_ZN4llvm30DiagnosticInfoOptimizationBase8ArgumentC1ENS_9StringRefEj'/>
+<fun r='_ZN4llvm30DiagnosticInfoOptimizationBase8ArgumentC1ENS_9StringRefEm'/>
+<fun r='_ZN4llvm30DiagnosticInfoOptimizationBase8ArgumentC1ENS_9StringRefEy'/>
+<fun r='_ZN4llvm30DiagnosticInfoOptimizationBase8ArgumentC1ENS_9StringRefEb'/>
+<fun r='_ZN4llvm30DiagnosticInfoOptimizationBase8ArgumentC1ENS_9StringRefENS_8DebugLocE'/>

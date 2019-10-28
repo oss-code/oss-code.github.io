@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/ValueSymbolTable.h' l='120' type='ValueName * llvm::ValueSymbolTable::createValueName(llvm::StringRef Name, llvm::Value * V)'/>
+<doc f='include/llvm-6.0/llvm/IR/ValueSymbolTable.h' l='117'>/// createValueName - This method attempts to create a value name and insert
+  /// it into the symbol table with the specified name.  If it conflicts, it
+  /// auto-renames the name and returns that instead.</doc>

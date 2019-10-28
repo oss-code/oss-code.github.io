@@ -1,0 +1,11 @@
+<def f='include/llvm-6.0/llvm/ADT/CachedHashString.h' l='30' ll='48'/>
+<size>16</size>
+<doc f='include/llvm-6.0/llvm/ADT/CachedHashString.h' l='29'>/// A container which contains a StringRef plus a precomputed hash.</doc>
+<mbr r='llvm::CachedHashStringRef::P' o='0' t='const char *'/>
+<mbr r='llvm::CachedHashStringRef::Size' o='64' t='uint32_t'/>
+<mbr r='llvm::CachedHashStringRef::Hash' o='96' t='uint32_t'/>
+<fun r='_ZN4llvm19CachedHashStringRefC1ENS_9StringRefE'/>
+<fun r='_ZN4llvm19CachedHashStringRefC1ENS_9StringRefEj'/>
+<fun r='_ZNK4llvm19CachedHashStringRef3valEv'/>
+<fun r='_ZNK4llvm19CachedHashStringRef4sizeEv'/>
+<fun r='_ZNK4llvm19CachedHashStringRef4hashEv'/>

@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='996' ll='998' type='ArrayRef&lt;llvm::Function *&gt; llvm::LazyCallGraph::getLibFunctions() const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='992'>/// Get the sequence of known and defined library functions.
+  ///
+  /// These functions, because they are known to LLVM, can have calls
+  /// introduced out of thin air from arbitrary IR.</doc>

@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Instruction.h' l='566' type='bool llvm::Instruction::isIdenticalToWhenDefined(const llvm::Instruction * I) const'/>
+<doc f='include/llvm-6.0/llvm/IR/Instruction.h' l='563'>/// This is like isIdenticalTo, except that it ignores the
+  /// SubclassOptionalData flags, which may specify conditions under which the
+  /// instruction&apos;s result is undefined.</doc>

@@ -1,0 +1,22 @@
+<dec f='include/llvm-6.0/llvm/IR/Type.h' l='111' type='llvm::Type *const *'/>
+<use f='include/llvm-6.0/llvm/IR/Type.h' l='312' u='r' c='_ZNK4llvm4Type13subtype_beginEv'/>
+<use f='include/llvm-6.0/llvm/IR/Type.h' l='313' u='r' c='_ZNK4llvm4Type11subtype_endEv'/>
+<use f='include/llvm-6.0/llvm/IR/Type.h' l='332' u='r' c='_ZNK4llvm4Type16getContainedTypeEj'/>
+<use f='include/llvm-6.0/llvm/IR/Type.h' l='357' u='r' c='_ZNK4llvm4Type24getSequentialElementTypeEv'/>
+<use f='include/llvm-6.0/llvm/IR/Type.h' l='364' u='r' c='_ZNK4llvm4Type19getArrayElementTypeEv'/>
+<use f='include/llvm-6.0/llvm/IR/Type.h' l='370' u='r' c='_ZNK4llvm4Type20getVectorElementTypeEv'/>
+<use f='include/llvm-6.0/llvm/IR/Type.h' l='375' u='r' c='_ZNK4llvm4Type21getPointerElementTypeEv'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='124' u='r' c='_ZNK4llvm12FunctionType13getReturnTypeEv'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='128' u='r' c='_ZNK4llvm12FunctionType11param_beginEv'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='129' u='r' c='_ZNK4llvm12FunctionType9param_endEv'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='135' u='r' c='_ZNK4llvm12FunctionType12getParamTypeEj'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='303' u='r' c='_ZNK4llvm10StructType13element_beginEv'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='304' u='r' c='_ZNK4llvm10StructType11element_endEv'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='316' u='r' c='_ZNK4llvm10StructType14getElementTypeEj'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='351' u='w' c='_ZN4llvm14SequentialTypeC1ENS_4Type6TypeIDEPS1_m'/>
+<offset>128</offset>
+<doc f='include/llvm-6.0/llvm/IR/Type.h' l='106'>/// A pointer to the array of Types contained by this Type. For example, this
+  /// includes the arguments of a function type, the elements of a structure,
+  /// the pointee of a pointer, the element type of an array, etc. This pointer
+  /// may be 0 for types that don&apos;t contain other types (Integer, Double,
+  /// Float).</doc>

@@ -1,0 +1,19 @@
+<def f='include/hwloc/helper.h' l='1073' ll='1080' type='const struct hwloc_distances_s * hwloc_get_whole_distance_matrix_by_type(hwloc_topology_t topology, hwloc_obj_type_t type)'/>
+<doc f='include/hwloc/helper.h' l='1054'>/** \brief Get the distances between all objects of a given type.
+ *
+ * \return a distances structure containing a matrix with all distances
+ * between all objects of the given type.
+ *
+ * Slot i+nbobjs*j contains the distance from the object of logical index i
+ * the object of logical index j.
+ *
+ * \note This function only returns matrices covering the whole topology,
+ * without any unknown distance value. Those matrices are available in
+ * top-level object of the hierarchy. Matrices of lower objects are not
+ * reported here since they cover only part of the machine.
+ *
+ * The returned structure belongs to the hwloc library. The caller should
+ * not modify or free it.
+ *
+ * \return \c NULL if no such distance matrix exists.
+ */</doc>

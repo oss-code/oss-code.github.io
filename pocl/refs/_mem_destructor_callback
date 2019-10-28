@@ -1,0 +1,6 @@
+<def f='pocl/include/pocl.h' l='83' ll='88'/>
+<size>24</size>
+<doc f='pocl/include/pocl.h' l='82'>/* represents a memory object destructor callback */</doc>
+<mbr r='_mem_destructor_callback::pfn_notify' o='0' t='void (*)(cl_mem, void *)'/>
+<mbr r='_mem_destructor_callback::user_data' o='64' t='void *'/>
+<mbr r='_mem_destructor_callback::next' o='128' t='mem_destructor_callback_t *'/>

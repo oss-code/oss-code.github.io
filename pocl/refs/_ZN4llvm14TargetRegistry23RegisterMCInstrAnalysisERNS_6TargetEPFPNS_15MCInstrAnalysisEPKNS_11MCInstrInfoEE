@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='692' ll='695' type='static void llvm::TargetRegistry::RegisterMCInstrAnalysis(llvm::Target &amp; T, Target::MCInstrAnalysisCtorFnTy Fn)'/>
+<use f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='981' u='c' c='_ZN4llvm23RegisterMCInstrAnalysisC1ERNS_6TargetE'/>
+<use f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='1000' u='c' c='_ZN4llvm25RegisterMCInstrAnalysisFnC1ERNS_6TargetEPFPNS_15MCInstrAnalysisEPKNS_11MCInstrInfoEE'/>
+<doc f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='690'>/// RegisterMCInstrAnalysis - Register a MCInstrAnalysis implementation for
+  /// the given target.</doc>

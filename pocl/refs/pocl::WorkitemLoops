@@ -1,0 +1,29 @@
+<inh f='pocl/lib/llvmopencl/WorkitemHandler.h' l='47' c='pocl::WorkitemHandler'/>
+<def f='pocl/lib/llvmopencl/WorkitemLoops.h' l='46' ll='119'/>
+<size>224</size>
+<smbr r='pocl::WorkitemLoops::ID' t='char'/>
+<fun r='_ZN4pocl13WorkitemLoopsC1Ev'/>
+<fun r='_ZNK4pocl13WorkitemLoops16getAnalysisUsageERN4llvm13AnalysisUsageE'/>
+<fun r='_ZN4pocl13WorkitemLoops13runOnFunctionERN4llvm8FunctionE'/>
+<mbr r='pocl::WorkitemLoops::DT' o='576' t='llvm::DominatorTree *'/>
+<mbr r='pocl::WorkitemLoops::LI' o='640' t='llvm::LoopInfoWrapperPass *'/>
+<mbr r='pocl::WorkitemLoops::PDT' o='704' t='llvm::PostDominatorTreeWrapperPass *'/>
+<mbr r='pocl::WorkitemLoops::DTP' o='768' t='llvm::DominatorTreeWrapperPass *'/>
+<mbr r='pocl::WorkitemLoops::original_parallel_regions' o='832' t='ParallelRegion::ParallelRegionVector *'/>
+<mbr r='pocl::WorkitemLoops::contextArrays' o='896' t='StrInstructionMap'/>
+<fun r='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<fun r='_ZN4pocl13WorkitemLoops23FixMultiRegionVariablesEPNS_14ParallelRegionE'/>
+<fun r='_ZN4pocl13WorkitemLoops21AddContextSaveRestoreEPN4llvm11InstructionE'/>
+<fun r='_ZN4pocl13WorkitemLoops22releaseParallelRegionsEv'/>
+<fun r='_ZN4pocl13WorkitemLoops16GetLinearWiIndexERN4llvm9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEPNS1_6ModuleEPNS_14ParallelRegionE'/>
+<fun r='_ZN4pocl13WorkitemLoops14AddContextSaveEPN4llvm11InstructionES3_'/>
+<fun r='_ZN4pocl13WorkitemLoops17AddContextRestoreEPN4llvm5ValueEPNS1_11InstructionEbS5_b'/>
+<fun r='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>
+<fun r='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<fun r='_ZN4pocl13WorkitemLoops14AppendIncBlockEPN4llvm10BasicBlockEPNS1_5ValueE'/>
+<fun r='_ZN4pocl13WorkitemLoops13RegionOfBlockEPN4llvm10BasicBlockE'/>
+<fun r='_ZN4pocl13WorkitemLoops23ShouldNotBeContextSavedEPN4llvm11InstructionE'/>
+<fun r='_ZN4pocl13WorkitemLoops25RecursivelyAlignArrayTypeEPN4llvm4TypeES3_mRKNS1_10DataLayoutE'/>
+<mbr r='pocl::WorkitemLoops::tempInstructionIds' o='1280' t='std::map&lt;llvm::Instruction *, unsigned int&gt;'/>
+<mbr r='pocl::WorkitemLoops::tempInstructionIndex' o='1664' t='size_t'/>
+<mbr r='pocl::WorkitemLoops::localIdXFirstVar' o='1728' t='llvm::Value *'/>

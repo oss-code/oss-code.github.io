@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/IR/DataLayout.h' l='344' ll='346' type='unsigned int llvm::DataLayout::getPointerSizeInBits(unsigned int AS = 0) const'/>
+<use f='include/llvm-6.0/llvm/IR/DataLayout.h' l='534' u='c' c='_ZNK4llvm10DataLayout17getTypeSizeInBitsEPNS_4TypeE'/>
+<use f='include/llvm-6.0/llvm/IR/DataLayout.h' l='536' u='c' c='_ZNK4llvm10DataLayout17getTypeSizeInBitsEPNS_4TypeE'/>
+<doc f='include/llvm-6.0/llvm/IR/DataLayout.h' l='341'>/// Layout pointer size, in bits
+  /// FIXME: The defaults need to be removed once all of
+  /// the backends/clients are updated.</doc>
+<use f='pocl/lib/llvmopencl/HandleSamplerInitialization.cc' l='90' u='c' c='_ZN4pocl27HandleSamplerInitialization13runOnFunctionERN4llvm8FunctionE'/>

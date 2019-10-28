@@ -1,0 +1,27 @@
+<def f='include/hwloc/helper.h' l='701' ll='761' type='int hwloc_distrib(hwloc_topology_t topology, hwloc_obj_t * roots, unsigned int n_roots, hwloc_cpuset_t * set, unsigned int n, unsigned int until, unsigned long flags)'/>
+<use f='include/hwloc/helper.h' l='753' u='c' c='hwloc_distrib'/>
+<use f='include/hwloc/deprecated.h' l='79' u='c' c='hwloc_distribute'/>
+<use f='include/hwloc/deprecated.h' l='94' u='c' c='hwloc_distributev'/>
+<doc f='include/hwloc/helper.h' l='678'>/** \brief Distribute \p n items over the topology under \p roots
+ *
+ * Array \p set will be filled with \p n cpusets recursively distributed
+ * linearly over the topology under objects \p roots, down to depth \p until
+ * (which can be INT_MAX to distribute down to the finest level).
+ *
+ * \p n_roots is usually 1 and \p roots only contains the topology root object
+ * so as to distribute over the entire topology.
+ *
+ * This is typically useful when an application wants to distribute \p n
+ * threads over a machine, giving each of them as much private cache as
+ * possible and keeping them locally in number order.
+ *
+ * The caller may typically want to also call hwloc_bitmap_singlify()
+ * before binding a thread so that it does not move at all.
+ *
+ * \p flags should be 0 or a OR&apos;ed set of ::hwloc_distrib_flags_e.
+ *
+ * \note This function requires the \p roots objects to have a CPU set.
+ *
+ * \note This function replaces the now deprecated hwloc_distribute()
+ * and hwloc_distributev() functions.
+ */</doc>

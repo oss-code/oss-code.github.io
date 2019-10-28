@@ -1,0 +1,12 @@
+<dec f='include/hwloc/bitmap.h' l='336' type='int hwloc_bitmap_isincluded(hwloc_const_bitmap_t sub_bitmap, hwloc_const_bitmap_t super_bitmap)'/>
+<use f='include/hwloc/cpuset.h' l='54' u='c' c='hwloc_cpuset_isincluded'/>
+<use f='include/hwloc/helper.h' l='50' u='c' c='hwloc_get_first_largest_obj_inside_cpuset'/>
+<use f='include/hwloc/helper.h' l='94' u='c' c='hwloc_get_next_obj_inside_cpuset_by_depth'/>
+<use f='include/hwloc/helper.h' l='135' u='c' c='hwloc_get_obj_inside_cpuset_by_depth'/>
+<use f='include/hwloc/helper.h' l='184' u='c' c='hwloc_get_nbobjs_inside_cpuset_by_depth'/>
+<use f='include/hwloc/helper.h' l='231' u='c' c='hwloc_get_obj_index_inside_cpuset'/>
+<use f='include/hwloc/helper.h' l='235' u='c' c='hwloc_get_obj_index_inside_cpuset'/>
+<use f='include/hwloc/helper.h' l='266' u='c' c='hwloc_get_child_covering_cpuset'/>
+<use f='include/hwloc/helper.h' l='286' u='c' c='hwloc_get_obj_covering_cpuset'/>
+<use f='include/hwloc/helper.h' l='415' u='c' c='hwloc_obj_is_in_subtree'/>
+<doc f='include/hwloc/bitmap.h' l='335'>/** \brief Test whether bitmap \p sub_bitmap is part of bitmap \p super_bitmap */</doc>

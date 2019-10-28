@@ -1,0 +1,7 @@
+<dec f='pocl/lib/llvmopencl/LLVMUtils.h' l='95' type='void pocl::setFuncArgAddressSpaceMD(llvm::Function * Func, unsigned int ArgIndex, unsigned int AS)'/>
+<doc f='pocl/lib/llvmopencl/LLVMUtils.h' l='91'>// Sets the address space metadata of the given function argument.
+// Note: The address space ids must be SPIR ids. If it encounters
+// argument indices without address space ids in the list, sets
+// them to globals.</doc>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='201' u='c' c='_ZN12_GLOBAL__N_115AutomaticLocals22processAutomaticLocalsEPN4llvm8FunctionE'/>
+<def f='pocl/lib/llvmopencl/LLVMUtils.cc' l='141' ll='159' type='void pocl::setFuncArgAddressSpaceMD(llvm::Function * F, unsigned int ArgIndex, unsigned int AS)'/>

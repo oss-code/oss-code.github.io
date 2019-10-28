@@ -1,0 +1,12 @@
+<def f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='100' type='BlockT * llvm::LoopBase::getHeader() const'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='214' u='c' c='_ZNK4llvm8LoopBase11isLoopLatchEPKT_'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='224' u='c' c='_ZNK4llvm8LoopBase15getNumBackEdgesEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='286' u='c' c='_ZNK4llvm8LoopBase14getLoopLatchesERNS_15SmallVectorImplIPT_EE'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='578' u='c' c='_ZNK4llvm4Loop7getNameEv'/>
+<use f='pocl/lib/llvmopencl/ImplicitLoopBarriers.cc' l='65' u='c' c='_ZN4pocl20ImplicitLoopBarriers9runOnLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/ImplicitLoopBarriers.cc' l='69' u='c' c='_ZN4pocl20ImplicitLoopBarriers9runOnLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/ImplicitLoopBarriers.cc' l='136' u='c' c='_ZN4pocl20ImplicitLoopBarriers19AddInnerLoopBarrierEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/LoopBarriers.cc' l='63' u='c' c='_ZN4pocl12LoopBarriers9runOnLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/LoopBarriers.cc' l='66' u='c' c='_ZN4pocl12LoopBarriers9runOnLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/LoopBarriers.cc' l='116' u='c' c='_ZN4pocl12LoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/LoopBarriers.cc' l='147' u='c' c='_ZN4pocl12LoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>

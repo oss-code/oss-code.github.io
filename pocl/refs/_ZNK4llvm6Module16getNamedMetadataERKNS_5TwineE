@@ -1,0 +1,19 @@
+<dec f='include/llvm-6.0/llvm/IR/Module.h' l='423' type='llvm::NamedMDNode * llvm::Module::getNamedMetadata(const llvm::Twine &amp; Name) const'/>
+<use f='include/llvm-6.0/llvm/IR/Module.h' l='743' u='c' c='_ZNK4llvm6Module25debug_compile_units_beginEv'/>
+<use f='include/llvm-6.0/llvm/IR/Module.h' l='748' u='c' c='_ZNK4llvm6Module23debug_compile_units_endEv'/>
+<use f='include/llvm-6.0/llvm/IR/Module.h' l='756' u='c' c='_ZNK4llvm6Module19debug_compile_unitsEv'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='155' u='c' c='_ZL20addKernelAnnotationsPN4llvm6ModuleEPKc'/>
+<doc f='include/llvm-6.0/llvm/IR/Module.h' l='417'>/// @}
+/// @name Named Metadata Accessors
+/// @{
+
+  /// Return the first NamedMDNode in the module with the specified name. This
+  /// method returns null if a NamedMDNode with the specified name is not found.</doc>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='58' u='c' c='_ZL35pocl_get_kernel_arg_module_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='282' u='c' c='_ZL37pocl_get_kernel_arg_function_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='470' u='c' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='625' u='c' c='pocl_llvm_get_kernel_count'/>
+<use f='pocl/lib/llvmopencl/LLVMUtils.cc' l='51' u='c' c='_ZN4pocl26regenerate_kernel_metadataERN4llvm6ModuleERSt3mapIPNS0_8FunctionES5_St4lessIS5_ESaISt4pairIKS5_S5_EEE'/>
+<use f='pocl/lib/llvmopencl/LLVMUtils.cc' l='85' u='c' c='_ZN4pocl26regenerate_kernel_metadataERN4llvm6ModuleERSt3mapIPNS0_8FunctionES5_St4lessIS5_ESaISt4pairIKS5_S5_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1437' u='c' c='_ZN4pocl9Workgroup17isKernelToProcessERKN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='333' u='c' c='_ZL11shared_copyPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERNS_8ValueMapIPKNS_5ValueENS_14WeakTrackingVHENS_14ValueMapCo8254284'/>

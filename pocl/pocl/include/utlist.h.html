@@ -1,0 +1,540 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>utlist.h source code [pocl/include/utlist.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/include/utlist.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>pocl</a>/<a href='./'>include</a>/<a href='utlist.h.html'>utlist.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*</i></td></tr>
+<tr><th id="2">2</th><td><i>Copyright (c) 2007-2011, Troy D. Hanson   <a href="http://uthash.sourceforge.net">http://uthash.sourceforge.net</a></i></td></tr>
+<tr><th id="3">3</th><td><i>All rights reserved.</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>Redistribution and use in source and binary forms, with or without</i></td></tr>
+<tr><th id="6">6</th><td><i>modification, are permitted provided that the following conditions are met:</i></td></tr>
+<tr><th id="7">7</th><td><i></i></td></tr>
+<tr><th id="8">8</th><td><i>    * Redistributions of source code must retain the above copyright</i></td></tr>
+<tr><th id="9">9</th><td><i>      notice, this list of conditions and the following disclaimer.</i></td></tr>
+<tr><th id="10">10</th><td><i></i></td></tr>
+<tr><th id="11">11</th><td><i>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS</i></td></tr>
+<tr><th id="12">12</th><td><i>IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED</i></td></tr>
+<tr><th id="13">13</th><td><i>TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A</i></td></tr>
+<tr><th id="14">14</th><td><i>PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER</i></td></tr>
+<tr><th id="15">15</th><td><i>OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,</i></td></tr>
+<tr><th id="16">16</th><td><i>EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,</i></td></tr>
+<tr><th id="17">17</th><td><i>PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR</i></td></tr>
+<tr><th id="18">18</th><td><i>PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF</i></td></tr>
+<tr><th id="19">19</th><td><i>LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING</i></td></tr>
+<tr><th id="20">20</th><td><i>NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</i></td></tr>
+<tr><th id="21">21</th><td><i>SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</i></td></tr>
+<tr><th id="22">22</th><td><i>*/</i></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><u>#<span data-ppcond="24">ifndef</span> <span class="macro" data-ref="_M/UTLIST_H">UTLIST_H</span></u></td></tr>
+<tr><th id="25">25</th><td><u>#define <dfn class="macro" id="_M/UTLIST_H" data-ref="_M/UTLIST_H">UTLIST_H</dfn></u></td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><u>#define <dfn class="macro" id="_M/UTLIST_VERSION" data-ref="_M/UTLIST_VERSION">UTLIST_VERSION</dfn> 1.9.4</u></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><u>#include <a href="../../include/assert.h.html">&lt;assert.h&gt;</a></u></td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><i>/* </i></td></tr>
+<tr><th id="32">32</th><td><i> * This file contains macros to manipulate singly and doubly-linked lists.</i></td></tr>
+<tr><th id="33">33</th><td><i> *</i></td></tr>
+<tr><th id="34">34</th><td><i> * 1. LL_ macros:  singly-linked lists.</i></td></tr>
+<tr><th id="35">35</th><td><i> * 2. DL_ macros:  doubly-linked lists.</i></td></tr>
+<tr><th id="36">36</th><td><i> * 3. CDL_ macros: circular doubly-linked lists.</i></td></tr>
+<tr><th id="37">37</th><td><i> *</i></td></tr>
+<tr><th id="38">38</th><td><i> * To use singly-linked lists, your structure must have a "next" pointer.</i></td></tr>
+<tr><th id="39">39</th><td><i> * To use doubly-linked lists, your structure must "prev" and "next" pointers.</i></td></tr>
+<tr><th id="40">40</th><td><i> * Either way, the pointer to the head of the list must be initialized to NULL.</i></td></tr>
+<tr><th id="41">41</th><td><i> * </i></td></tr>
+<tr><th id="42">42</th><td><i> * ----------------.EXAMPLE -------------------------</i></td></tr>
+<tr><th id="43">43</th><td><i> * struct item {</i></td></tr>
+<tr><th id="44">44</th><td><i> *      int id;</i></td></tr>
+<tr><th id="45">45</th><td><i> *      struct item *prev, *next;</i></td></tr>
+<tr><th id="46">46</th><td><i> * }</i></td></tr>
+<tr><th id="47">47</th><td><i> *</i></td></tr>
+<tr><th id="48">48</th><td><i> * struct item *list = NULL:</i></td></tr>
+<tr><th id="49">49</th><td><i> *</i></td></tr>
+<tr><th id="50">50</th><td><i> * int main() {</i></td></tr>
+<tr><th id="51">51</th><td><i> *      struct item *item;</i></td></tr>
+<tr><th id="52">52</th><td><i> *      ... allocate and populate item ...</i></td></tr>
+<tr><th id="53">53</th><td><i> *      DL_APPEND(list, item);</i></td></tr>
+<tr><th id="54">54</th><td><i> * }</i></td></tr>
+<tr><th id="55">55</th><td><i> * --------------------------------------------------</i></td></tr>
+<tr><th id="56">56</th><td><i> *</i></td></tr>
+<tr><th id="57">57</th><td><i> * For doubly-linked lists, the append and delete macros are O(1)</i></td></tr>
+<tr><th id="58">58</th><td><i> * For singly-linked lists, append and delete are O(n) but prepend is O(1)</i></td></tr>
+<tr><th id="59">59</th><td><i> * The sort macro is O(n log(n)) for all types of single/double/circular lists.</i></td></tr>
+<tr><th id="60">60</th><td><i> */</i></td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td><i>/* These macros use decltype or the earlier __typeof GNU extension.</i></td></tr>
+<tr><th id="63">63</th><td><i>   As decltype is only available in newer compilers (VS2010 or gcc 4.3+</i></td></tr>
+<tr><th id="64">64</th><td><i>   when compiling c++ code), this code uses whatever method is needed</i></td></tr>
+<tr><th id="65">65</th><td><i>   or, for VS2008 where neither is available, uses casting workarounds. */</i></td></tr>
+<tr><th id="66">66</th><td><u>#<span data-ppcond="66">ifdef</span> <span class="macro" data-ref="_M/_MSC_VER">_MSC_VER</span>            /* MS compiler */</u></td></tr>
+<tr><th id="67">67</th><td><u>#if _MSC_VER &gt;= 1600 &amp;&amp; defined(__cplusplus)  /* VS2010 or newer in C++ mode */</u></td></tr>
+<tr><th id="68">68</th><td><u>#define LDECLTYPE(x) decltype(x)</u></td></tr>
+<tr><th id="69">69</th><td><u>#else                     /* VS2008 or older (or VS2010 in C mode) */</u></td></tr>
+<tr><th id="70">70</th><td><u>#define NO_DECLTYPE</u></td></tr>
+<tr><th id="71">71</th><td><u>#define LDECLTYPE(x) char*</u></td></tr>
+<tr><th id="72">72</th><td><u>#endif</u></td></tr>
+<tr><th id="73">73</th><td><u>#<span data-ppcond="66">else</span>                      /* GNU, Sun and other compilers */</u></td></tr>
+<tr><th id="74">74</th><td><u>#define <dfn class="macro" id="_M/LDECLTYPE" data-ref="_M/LDECLTYPE">LDECLTYPE</dfn>(x) __typeof(x)</u></td></tr>
+<tr><th id="75">75</th><td><u>#<span data-ppcond="66">endif</span></u></td></tr>
+<tr><th id="76">76</th><td></td></tr>
+<tr><th id="77">77</th><td><i>/* for VS2008 we use some workarounds to get around the lack of decltype,</i></td></tr>
+<tr><th id="78">78</th><td><i> * namely, we always reassign our tmp variable to the list head if we need</i></td></tr>
+<tr><th id="79">79</th><td><i> * to dereference its prev/next pointers, and save/restore the real head.*/</i></td></tr>
+<tr><th id="80">80</th><td><u>#<span data-ppcond="80">ifdef</span> <span class="macro" data-ref="_M/NO_DECLTYPE">NO_DECLTYPE</span></u></td></tr>
+<tr><th id="81">81</th><td><u>#define _SV(elt,list) _tmp = (char*)(list); {char **_alias = (char**)&amp;(list); *_alias = (elt); }</u></td></tr>
+<tr><th id="82">82</th><td><u>#define _NEXT(elt,list) ((char*)((list)-&gt;next))</u></td></tr>
+<tr><th id="83">83</th><td><u>#define _NEXTASGN(elt,list,to) { char **_alias = (char**)&amp;((list)-&gt;next); *_alias=(char*)(to); }</u></td></tr>
+<tr><th id="84">84</th><td><u>#define _PREV(elt,list) ((char*)((list)-&gt;prev))</u></td></tr>
+<tr><th id="85">85</th><td><u>#define _PREVASGN(elt,list,to) { char **_alias = (char**)&amp;((list)-&gt;prev); *_alias=(char*)(to); }</u></td></tr>
+<tr><th id="86">86</th><td><u>#define _RS(list) { char **_alias = (char**)&amp;(list); *_alias=_tmp; }</u></td></tr>
+<tr><th id="87">87</th><td><u>#define _CASTASGN(a,b) { char **_alias = (char**)&amp;(a); *_alias=(char*)(b); }</u></td></tr>
+<tr><th id="88">88</th><td><u>#<span data-ppcond="80">else</span></u> </td></tr>
+<tr><th id="89">89</th><td><u>#define <dfn class="macro" id="_M/_SV" data-ref="_M/_SV">_SV</dfn>(elt,list)</u></td></tr>
+<tr><th id="90">90</th><td><u>#define <dfn class="macro" id="_M/_NEXT" data-ref="_M/_NEXT">_NEXT</dfn>(elt,list) ((elt)-&gt;next)</u></td></tr>
+<tr><th id="91">91</th><td><u>#define <dfn class="macro" id="_M/_NEXTASGN" data-ref="_M/_NEXTASGN">_NEXTASGN</dfn>(elt,list,to) ((elt)-&gt;next)=(to)</u></td></tr>
+<tr><th id="92">92</th><td><u>#define <dfn class="macro" id="_M/_PREV" data-ref="_M/_PREV">_PREV</dfn>(elt,list) ((elt)-&gt;prev)</u></td></tr>
+<tr><th id="93">93</th><td><u>#define <dfn class="macro" id="_M/_PREVASGN" data-ref="_M/_PREVASGN">_PREVASGN</dfn>(elt,list,to) ((elt)-&gt;prev)=(to)</u></td></tr>
+<tr><th id="94">94</th><td><u>#define <dfn class="macro" id="_M/_RS" data-ref="_M/_RS">_RS</dfn>(list)</u></td></tr>
+<tr><th id="95">95</th><td><u>#define <dfn class="macro" id="_M/_CASTASGN" data-ref="_M/_CASTASGN">_CASTASGN</dfn>(a,b) (a)=(b)</u></td></tr>
+<tr><th id="96">96</th><td><u>#<span data-ppcond="80">endif</span></u></td></tr>
+<tr><th id="97">97</th><td></td></tr>
+<tr><th id="98">98</th><td><i>/******************************************************************************</i></td></tr>
+<tr><th id="99">99</th><td><i> * The sort macro is an adaptation of Simon Tatham's O(n log(n)) mergesort    *</i></td></tr>
+<tr><th id="100">100</th><td><i> * Unwieldy variable names used here to avoid shadowing passed-in variables.  *</i></td></tr>
+<tr><th id="101">101</th><td><i> *****************************************************************************/</i></td></tr>
+<tr><th id="102">102</th><td><u>#define <dfn class="macro" id="_M/LL_SORT" data-ref="_M/LL_SORT">LL_SORT</dfn>(list, cmp)                                                                     \</u></td></tr>
+<tr><th id="103">103</th><td><u>do {                                                                                           \</u></td></tr>
+<tr><th id="104">104</th><td><u>  LDECLTYPE(list) _ls_p;                                                                       \</u></td></tr>
+<tr><th id="105">105</th><td><u>  LDECLTYPE(list) _ls_q;                                                                       \</u></td></tr>
+<tr><th id="106">106</th><td><u>  LDECLTYPE(list) _ls_e;                                                                       \</u></td></tr>
+<tr><th id="107">107</th><td><u>  LDECLTYPE(list) _ls_tail;                                                                    \</u></td></tr>
+<tr><th id="108">108</th><td><u>  LDECLTYPE(list) _ls_oldhead;                                                                 \</u></td></tr>
+<tr><th id="109">109</th><td><u>  LDECLTYPE(list) _tmp;                                                                        \</u></td></tr>
+<tr><th id="110">110</th><td><u>  int _ls_insize, _ls_nmerges, _ls_psize, _ls_qsize, _ls_i, _ls_looping;                       \</u></td></tr>
+<tr><th id="111">111</th><td><u>  if (list) {                                                                                  \</u></td></tr>
+<tr><th id="112">112</th><td><u>    _ls_insize = 1;                                                                            \</u></td></tr>
+<tr><th id="113">113</th><td><u>    _ls_looping = 1;                                                                           \</u></td></tr>
+<tr><th id="114">114</th><td><u>    while (_ls_looping) {                                                                      \</u></td></tr>
+<tr><th id="115">115</th><td><u>      _CASTASGN(_ls_p,list);                                                                   \</u></td></tr>
+<tr><th id="116">116</th><td><u>      _CASTASGN(_ls_oldhead,list);                                                             \</u></td></tr>
+<tr><th id="117">117</th><td><u>      list = NULL;                                                                             \</u></td></tr>
+<tr><th id="118">118</th><td><u>      _ls_tail = NULL;                                                                         \</u></td></tr>
+<tr><th id="119">119</th><td><u>      _ls_nmerges = 0;                                                                         \</u></td></tr>
+<tr><th id="120">120</th><td><u>      while (_ls_p) {                                                                          \</u></td></tr>
+<tr><th id="121">121</th><td><u>        _ls_nmerges++;                                                                         \</u></td></tr>
+<tr><th id="122">122</th><td><u>        _ls_q = _ls_p;                                                                         \</u></td></tr>
+<tr><th id="123">123</th><td><u>        _ls_psize = 0;                                                                         \</u></td></tr>
+<tr><th id="124">124</th><td><u>        for (_ls_i = 0; _ls_i &lt; _ls_insize; _ls_i++) {                                         \</u></td></tr>
+<tr><th id="125">125</th><td><u>          _ls_psize++;                                                                         \</u></td></tr>
+<tr><th id="126">126</th><td><u>          _SV(_ls_q,list); _ls_q = _NEXT(_ls_q,list); _RS(list);                               \</u></td></tr>
+<tr><th id="127">127</th><td><u>          if (!_ls_q) break;                                                                   \</u></td></tr>
+<tr><th id="128">128</th><td><u>        }                                                                                      \</u></td></tr>
+<tr><th id="129">129</th><td><u>        _ls_qsize = _ls_insize;                                                                \</u></td></tr>
+<tr><th id="130">130</th><td><u>        while (_ls_psize &gt; 0 || (_ls_qsize &gt; 0 &amp;&amp; _ls_q)) {                                    \</u></td></tr>
+<tr><th id="131">131</th><td><u>          if (_ls_psize == 0) {                                                                \</u></td></tr>
+<tr><th id="132">132</th><td><u>            _ls_e = _ls_q; _SV(_ls_q,list); _ls_q = _NEXT(_ls_q,list); _RS(list); _ls_qsize--; \</u></td></tr>
+<tr><th id="133">133</th><td><u>          } else if (_ls_qsize == 0 || !_ls_q) {                                               \</u></td></tr>
+<tr><th id="134">134</th><td><u>            _ls_e = _ls_p; _SV(_ls_p,list); _ls_p = _NEXT(_ls_p,list); _RS(list); _ls_psize--; \</u></td></tr>
+<tr><th id="135">135</th><td><u>          } else if (cmp(_ls_p,_ls_q) &lt;= 0) {                                                  \</u></td></tr>
+<tr><th id="136">136</th><td><u>            _ls_e = _ls_p; _SV(_ls_p,list); _ls_p = _NEXT(_ls_p,list); _RS(list); _ls_psize--; \</u></td></tr>
+<tr><th id="137">137</th><td><u>          } else {                                                                             \</u></td></tr>
+<tr><th id="138">138</th><td><u>            _ls_e = _ls_q; _SV(_ls_q,list); _ls_q = _NEXT(_ls_q,list); _RS(list); _ls_qsize--; \</u></td></tr>
+<tr><th id="139">139</th><td><u>          }                                                                                    \</u></td></tr>
+<tr><th id="140">140</th><td><u>          if (_ls_tail) {                                                                      \</u></td></tr>
+<tr><th id="141">141</th><td><u>            _SV(_ls_tail,list); _NEXTASGN(_ls_tail,list,_ls_e); _RS(list);                     \</u></td></tr>
+<tr><th id="142">142</th><td><u>          } else {                                                                             \</u></td></tr>
+<tr><th id="143">143</th><td><u>            _CASTASGN(list,_ls_e);                                                             \</u></td></tr>
+<tr><th id="144">144</th><td><u>          }                                                                                    \</u></td></tr>
+<tr><th id="145">145</th><td><u>          _ls_tail = _ls_e;                                                                    \</u></td></tr>
+<tr><th id="146">146</th><td><u>        }                                                                                      \</u></td></tr>
+<tr><th id="147">147</th><td><u>        _ls_p = _ls_q;                                                                         \</u></td></tr>
+<tr><th id="148">148</th><td><u>      }                                                                                        \</u></td></tr>
+<tr><th id="149">149</th><td><u>      _SV(_ls_tail,list); _NEXTASGN(_ls_tail,list,NULL); _RS(list);                            \</u></td></tr>
+<tr><th id="150">150</th><td><u>      if (_ls_nmerges &lt;= 1) {                                                                  \</u></td></tr>
+<tr><th id="151">151</th><td><u>        _ls_looping=0;                                                                         \</u></td></tr>
+<tr><th id="152">152</th><td><u>      }                                                                                        \</u></td></tr>
+<tr><th id="153">153</th><td><u>      _ls_insize *= 2;                                                                         \</u></td></tr>
+<tr><th id="154">154</th><td><u>    }                                                                                          \</u></td></tr>
+<tr><th id="155">155</th><td><u>  } else _tmp=NULL; /* quiet gcc unused variable warning */                                    \</u></td></tr>
+<tr><th id="156">156</th><td><u>} while (0)</u></td></tr>
+<tr><th id="157">157</th><td></td></tr>
+<tr><th id="158">158</th><td><u>#define <dfn class="macro" id="_M/DL_SORT" data-ref="_M/DL_SORT">DL_SORT</dfn>(list, cmp)                                                                     \</u></td></tr>
+<tr><th id="159">159</th><td><u>do {                                                                                           \</u></td></tr>
+<tr><th id="160">160</th><td><u>  LDECLTYPE(list) _ls_p;                                                                       \</u></td></tr>
+<tr><th id="161">161</th><td><u>  LDECLTYPE(list) _ls_q;                                                                       \</u></td></tr>
+<tr><th id="162">162</th><td><u>  LDECLTYPE(list) _ls_e;                                                                       \</u></td></tr>
+<tr><th id="163">163</th><td><u>  LDECLTYPE(list) _ls_tail;                                                                    \</u></td></tr>
+<tr><th id="164">164</th><td><u>  LDECLTYPE(list) _ls_oldhead;                                                                 \</u></td></tr>
+<tr><th id="165">165</th><td><u>  LDECLTYPE(list) _tmp;                                                                        \</u></td></tr>
+<tr><th id="166">166</th><td><u>  int _ls_insize, _ls_nmerges, _ls_psize, _ls_qsize, _ls_i, _ls_looping;                       \</u></td></tr>
+<tr><th id="167">167</th><td><u>  if (list) {                                                                                  \</u></td></tr>
+<tr><th id="168">168</th><td><u>    _ls_insize = 1;                                                                            \</u></td></tr>
+<tr><th id="169">169</th><td><u>    _ls_looping = 1;                                                                           \</u></td></tr>
+<tr><th id="170">170</th><td><u>    while (_ls_looping) {                                                                      \</u></td></tr>
+<tr><th id="171">171</th><td><u>      _CASTASGN(_ls_p,list);                                                                   \</u></td></tr>
+<tr><th id="172">172</th><td><u>      _CASTASGN(_ls_oldhead,list);                                                             \</u></td></tr>
+<tr><th id="173">173</th><td><u>      list = NULL;                                                                             \</u></td></tr>
+<tr><th id="174">174</th><td><u>      _ls_tail = NULL;                                                                         \</u></td></tr>
+<tr><th id="175">175</th><td><u>      _ls_nmerges = 0;                                                                         \</u></td></tr>
+<tr><th id="176">176</th><td><u>      while (_ls_p) {                                                                          \</u></td></tr>
+<tr><th id="177">177</th><td><u>        _ls_nmerges++;                                                                         \</u></td></tr>
+<tr><th id="178">178</th><td><u>        _ls_q = _ls_p;                                                                         \</u></td></tr>
+<tr><th id="179">179</th><td><u>        _ls_psize = 0;                                                                         \</u></td></tr>
+<tr><th id="180">180</th><td><u>        for (_ls_i = 0; _ls_i &lt; _ls_insize; _ls_i++) {                                         \</u></td></tr>
+<tr><th id="181">181</th><td><u>          _ls_psize++;                                                                         \</u></td></tr>
+<tr><th id="182">182</th><td><u>          _SV(_ls_q,list); _ls_q = _NEXT(_ls_q,list); _RS(list);                               \</u></td></tr>
+<tr><th id="183">183</th><td><u>          if (!_ls_q) break;                                                                   \</u></td></tr>
+<tr><th id="184">184</th><td><u>        }                                                                                      \</u></td></tr>
+<tr><th id="185">185</th><td><u>        _ls_qsize = _ls_insize;                                                                \</u></td></tr>
+<tr><th id="186">186</th><td><u>        while (_ls_psize &gt; 0 || (_ls_qsize &gt; 0 &amp;&amp; _ls_q)) {                                    \</u></td></tr>
+<tr><th id="187">187</th><td><u>          if (_ls_psize == 0) {                                                                \</u></td></tr>
+<tr><th id="188">188</th><td><u>            _ls_e = _ls_q; _SV(_ls_q,list); _ls_q = _NEXT(_ls_q,list); _RS(list); _ls_qsize--; \</u></td></tr>
+<tr><th id="189">189</th><td><u>          } else if (_ls_qsize == 0 || !_ls_q) {                                               \</u></td></tr>
+<tr><th id="190">190</th><td><u>            _ls_e = _ls_p; _SV(_ls_p,list); _ls_p = _NEXT(_ls_p,list); _RS(list); _ls_psize--; \</u></td></tr>
+<tr><th id="191">191</th><td><u>          } else if (cmp(_ls_p,_ls_q) &lt;= 0) {                                                  \</u></td></tr>
+<tr><th id="192">192</th><td><u>            _ls_e = _ls_p; _SV(_ls_p,list); _ls_p = _NEXT(_ls_p,list); _RS(list); _ls_psize--; \</u></td></tr>
+<tr><th id="193">193</th><td><u>          } else {                                                                             \</u></td></tr>
+<tr><th id="194">194</th><td><u>            _ls_e = _ls_q; _SV(_ls_q,list); _ls_q = _NEXT(_ls_q,list); _RS(list); _ls_qsize--; \</u></td></tr>
+<tr><th id="195">195</th><td><u>          }                                                                                    \</u></td></tr>
+<tr><th id="196">196</th><td><u>          if (_ls_tail) {                                                                      \</u></td></tr>
+<tr><th id="197">197</th><td><u>            _SV(_ls_tail,list); _NEXTASGN(_ls_tail,list,_ls_e); _RS(list);                     \</u></td></tr>
+<tr><th id="198">198</th><td><u>          } else {                                                                             \</u></td></tr>
+<tr><th id="199">199</th><td><u>            _CASTASGN(list,_ls_e);                                                             \</u></td></tr>
+<tr><th id="200">200</th><td><u>          }                                                                                    \</u></td></tr>
+<tr><th id="201">201</th><td><u>          _SV(_ls_e,list); _PREVASGN(_ls_e,list,_ls_tail); _RS(list);                          \</u></td></tr>
+<tr><th id="202">202</th><td><u>          _ls_tail = _ls_e;                                                                    \</u></td></tr>
+<tr><th id="203">203</th><td><u>        }                                                                                      \</u></td></tr>
+<tr><th id="204">204</th><td><u>        _ls_p = _ls_q;                                                                         \</u></td></tr>
+<tr><th id="205">205</th><td><u>      }                                                                                        \</u></td></tr>
+<tr><th id="206">206</th><td><u>      _CASTASGN(list-&gt;prev, _ls_tail);                                                         \</u></td></tr>
+<tr><th id="207">207</th><td><u>      _SV(_ls_tail,list); _NEXTASGN(_ls_tail,list,NULL); _RS(list);                            \</u></td></tr>
+<tr><th id="208">208</th><td><u>      if (_ls_nmerges &lt;= 1) {                                                                  \</u></td></tr>
+<tr><th id="209">209</th><td><u>        _ls_looping=0;                                                                         \</u></td></tr>
+<tr><th id="210">210</th><td><u>      }                                                                                        \</u></td></tr>
+<tr><th id="211">211</th><td><u>      _ls_insize *= 2;                                                                         \</u></td></tr>
+<tr><th id="212">212</th><td><u>    }                                                                                          \</u></td></tr>
+<tr><th id="213">213</th><td><u>  } else _tmp=NULL; /* quiet gcc unused variable warning */                                    \</u></td></tr>
+<tr><th id="214">214</th><td><u>} while (0)</u></td></tr>
+<tr><th id="215">215</th><td></td></tr>
+<tr><th id="216">216</th><td><u>#define <dfn class="macro" id="_M/CDL_SORT" data-ref="_M/CDL_SORT">CDL_SORT</dfn>(list, cmp)                                                                    \</u></td></tr>
+<tr><th id="217">217</th><td><u>do {                                                                                           \</u></td></tr>
+<tr><th id="218">218</th><td><u>  LDECLTYPE(list) _ls_p;                                                                       \</u></td></tr>
+<tr><th id="219">219</th><td><u>  LDECLTYPE(list) _ls_q;                                                                       \</u></td></tr>
+<tr><th id="220">220</th><td><u>  LDECLTYPE(list) _ls_e;                                                                       \</u></td></tr>
+<tr><th id="221">221</th><td><u>  LDECLTYPE(list) _ls_tail;                                                                    \</u></td></tr>
+<tr><th id="222">222</th><td><u>  LDECLTYPE(list) _ls_oldhead;                                                                 \</u></td></tr>
+<tr><th id="223">223</th><td><u>  LDECLTYPE(list) _tmp;                                                                        \</u></td></tr>
+<tr><th id="224">224</th><td><u>  LDECLTYPE(list) _tmp2;                                                                       \</u></td></tr>
+<tr><th id="225">225</th><td><u>  int _ls_insize, _ls_nmerges, _ls_psize, _ls_qsize, _ls_i, _ls_looping;                       \</u></td></tr>
+<tr><th id="226">226</th><td><u>  if (list) {                                                                                  \</u></td></tr>
+<tr><th id="227">227</th><td><u>    _ls_insize = 1;                                                                            \</u></td></tr>
+<tr><th id="228">228</th><td><u>    _ls_looping = 1;                                                                           \</u></td></tr>
+<tr><th id="229">229</th><td><u>    while (_ls_looping) {                                                                      \</u></td></tr>
+<tr><th id="230">230</th><td><u>      _CASTASGN(_ls_p,list);                                                                   \</u></td></tr>
+<tr><th id="231">231</th><td><u>      _CASTASGN(_ls_oldhead,list);                                                             \</u></td></tr>
+<tr><th id="232">232</th><td><u>      list = NULL;                                                                             \</u></td></tr>
+<tr><th id="233">233</th><td><u>      _ls_tail = NULL;                                                                         \</u></td></tr>
+<tr><th id="234">234</th><td><u>      _ls_nmerges = 0;                                                                         \</u></td></tr>
+<tr><th id="235">235</th><td><u>      while (_ls_p) {                                                                          \</u></td></tr>
+<tr><th id="236">236</th><td><u>        _ls_nmerges++;                                                                         \</u></td></tr>
+<tr><th id="237">237</th><td><u>        _ls_q = _ls_p;                                                                         \</u></td></tr>
+<tr><th id="238">238</th><td><u>        _ls_psize = 0;                                                                         \</u></td></tr>
+<tr><th id="239">239</th><td><u>        for (_ls_i = 0; _ls_i &lt; _ls_insize; _ls_i++) {                                         \</u></td></tr>
+<tr><th id="240">240</th><td><u>          _ls_psize++;                                                                         \</u></td></tr>
+<tr><th id="241">241</th><td><u>          _SV(_ls_q,list);                                                                     \</u></td></tr>
+<tr><th id="242">242</th><td><u>          if (_NEXT(_ls_q,list) == _ls_oldhead) {                                              \</u></td></tr>
+<tr><th id="243">243</th><td><u>            _ls_q = NULL;                                                                      \</u></td></tr>
+<tr><th id="244">244</th><td><u>          } else {                                                                             \</u></td></tr>
+<tr><th id="245">245</th><td><u>            _ls_q = _NEXT(_ls_q,list);                                                         \</u></td></tr>
+<tr><th id="246">246</th><td><u>          }                                                                                    \</u></td></tr>
+<tr><th id="247">247</th><td><u>          _RS(list);                                                                           \</u></td></tr>
+<tr><th id="248">248</th><td><u>          if (!_ls_q) break;                                                                   \</u></td></tr>
+<tr><th id="249">249</th><td><u>        }                                                                                      \</u></td></tr>
+<tr><th id="250">250</th><td><u>        _ls_qsize = _ls_insize;                                                                \</u></td></tr>
+<tr><th id="251">251</th><td><u>        while (_ls_psize &gt; 0 || (_ls_qsize &gt; 0 &amp;&amp; _ls_q)) {                                    \</u></td></tr>
+<tr><th id="252">252</th><td><u>          if (_ls_psize == 0) {                                                                \</u></td></tr>
+<tr><th id="253">253</th><td><u>            _ls_e = _ls_q; _SV(_ls_q,list); _ls_q = _NEXT(_ls_q,list); _RS(list); _ls_qsize--; \</u></td></tr>
+<tr><th id="254">254</th><td><u>            if (_ls_q == _ls_oldhead) { _ls_q = NULL; }                                        \</u></td></tr>
+<tr><th id="255">255</th><td><u>          } else if (_ls_qsize == 0 || !_ls_q) {                                               \</u></td></tr>
+<tr><th id="256">256</th><td><u>            _ls_e = _ls_p; _SV(_ls_p,list); _ls_p = _NEXT(_ls_p,list); _RS(list); _ls_psize--; \</u></td></tr>
+<tr><th id="257">257</th><td><u>            if (_ls_p == _ls_oldhead) { _ls_p = NULL; }                                        \</u></td></tr>
+<tr><th id="258">258</th><td><u>          } else if (cmp(_ls_p,_ls_q) &lt;= 0) {                                                  \</u></td></tr>
+<tr><th id="259">259</th><td><u>            _ls_e = _ls_p; _SV(_ls_p,list); _ls_p = _NEXT(_ls_p,list); _RS(list); _ls_psize--; \</u></td></tr>
+<tr><th id="260">260</th><td><u>            if (_ls_p == _ls_oldhead) { _ls_p = NULL; }                                        \</u></td></tr>
+<tr><th id="261">261</th><td><u>          } else {                                                                             \</u></td></tr>
+<tr><th id="262">262</th><td><u>            _ls_e = _ls_q; _SV(_ls_q,list); _ls_q = _NEXT(_ls_q,list); _RS(list); _ls_qsize--; \</u></td></tr>
+<tr><th id="263">263</th><td><u>            if (_ls_q == _ls_oldhead) { _ls_q = NULL; }                                        \</u></td></tr>
+<tr><th id="264">264</th><td><u>          }                                                                                    \</u></td></tr>
+<tr><th id="265">265</th><td><u>          if (_ls_tail) {                                                                      \</u></td></tr>
+<tr><th id="266">266</th><td><u>            _SV(_ls_tail,list); _NEXTASGN(_ls_tail,list,_ls_e); _RS(list);                     \</u></td></tr>
+<tr><th id="267">267</th><td><u>          } else {                                                                             \</u></td></tr>
+<tr><th id="268">268</th><td><u>            _CASTASGN(list,_ls_e);                                                             \</u></td></tr>
+<tr><th id="269">269</th><td><u>          }                                                                                    \</u></td></tr>
+<tr><th id="270">270</th><td><u>          _SV(_ls_e,list); _PREVASGN(_ls_e,list,_ls_tail); _RS(list);                          \</u></td></tr>
+<tr><th id="271">271</th><td><u>          _ls_tail = _ls_e;                                                                    \</u></td></tr>
+<tr><th id="272">272</th><td><u>        }                                                                                      \</u></td></tr>
+<tr><th id="273">273</th><td><u>        _ls_p = _ls_q;                                                                         \</u></td></tr>
+<tr><th id="274">274</th><td><u>      }                                                                                        \</u></td></tr>
+<tr><th id="275">275</th><td><u>      _CASTASGN(list-&gt;prev,_ls_tail);                                                          \</u></td></tr>
+<tr><th id="276">276</th><td><u>      _CASTASGN(_tmp2,list);                                                                   \</u></td></tr>
+<tr><th id="277">277</th><td><u>      _SV(_ls_tail,list); _NEXTASGN(_ls_tail,list,_tmp2); _RS(list);                           \</u></td></tr>
+<tr><th id="278">278</th><td><u>      if (_ls_nmerges &lt;= 1) {                                                                  \</u></td></tr>
+<tr><th id="279">279</th><td><u>        _ls_looping=0;                                                                         \</u></td></tr>
+<tr><th id="280">280</th><td><u>      }                                                                                        \</u></td></tr>
+<tr><th id="281">281</th><td><u>      _ls_insize *= 2;                                                                         \</u></td></tr>
+<tr><th id="282">282</th><td><u>    }                                                                                          \</u></td></tr>
+<tr><th id="283">283</th><td><u>  } else _tmp=NULL; /* quiet gcc unused variable warning */                                    \</u></td></tr>
+<tr><th id="284">284</th><td><u>} while (0)</u></td></tr>
+<tr><th id="285">285</th><td></td></tr>
+<tr><th id="286">286</th><td><i>/******************************************************************************</i></td></tr>
+<tr><th id="287">287</th><td><i> * singly linked list macros (non-circular)                                   *</i></td></tr>
+<tr><th id="288">288</th><td><i> *****************************************************************************/</i></td></tr>
+<tr><th id="289">289</th><td><u>#define <dfn class="macro" id="_M/LL_PREPEND" data-ref="_M/LL_PREPEND">LL_PREPEND</dfn>(head,add)                                                                   \</u></td></tr>
+<tr><th id="290">290</th><td><u>do {                                                                                           \</u></td></tr>
+<tr><th id="291">291</th><td><u>  (add)-&gt;next = head;                                                                          \</u></td></tr>
+<tr><th id="292">292</th><td><u>  head = add;                                                                                  \</u></td></tr>
+<tr><th id="293">293</th><td><u>} while (0)</u></td></tr>
+<tr><th id="294">294</th><td></td></tr>
+<tr><th id="295">295</th><td><u>#define <dfn class="macro" id="_M/LL_CONCAT" data-ref="_M/LL_CONCAT">LL_CONCAT</dfn>(head1,head2)                                                                 \</u></td></tr>
+<tr><th id="296">296</th><td><u>do {                                                                                           \</u></td></tr>
+<tr><th id="297">297</th><td><u>  LDECLTYPE(head1) _tmp;                                                                       \</u></td></tr>
+<tr><th id="298">298</th><td><u>  if (head1) {                                                                                 \</u></td></tr>
+<tr><th id="299">299</th><td><u>    _tmp = head1;                                                                              \</u></td></tr>
+<tr><th id="300">300</th><td><u>    while (_tmp-&gt;next) { _tmp = _tmp-&gt;next; }                                                  \</u></td></tr>
+<tr><th id="301">301</th><td><u>    _tmp-&gt;next=(head2);                                                                        \</u></td></tr>
+<tr><th id="302">302</th><td><u>  } else {                                                                                     \</u></td></tr>
+<tr><th id="303">303</th><td><u>    (head1)=(head2);                                                                           \</u></td></tr>
+<tr><th id="304">304</th><td><u>  }                                                                                            \</u></td></tr>
+<tr><th id="305">305</th><td><u>} while (0)</u></td></tr>
+<tr><th id="306">306</th><td></td></tr>
+<tr><th id="307">307</th><td><u>#define <dfn class="macro" id="_M/LL_APPEND" data-ref="_M/LL_APPEND">LL_APPEND</dfn>(head,add)                                                                    \</u></td></tr>
+<tr><th id="308">308</th><td><u>do {                                                                                           \</u></td></tr>
+<tr><th id="309">309</th><td><u>  LDECLTYPE(head) _tmp;                                                                        \</u></td></tr>
+<tr><th id="310">310</th><td><u>  (add)-&gt;next=NULL;                                                                            \</u></td></tr>
+<tr><th id="311">311</th><td><u>  if (head) {                                                                                  \</u></td></tr>
+<tr><th id="312">312</th><td><u>    _tmp = head;                                                                               \</u></td></tr>
+<tr><th id="313">313</th><td><u>    while (_tmp-&gt;next) { _tmp = _tmp-&gt;next; }                                                  \</u></td></tr>
+<tr><th id="314">314</th><td><u>    _tmp-&gt;next=(add);                                                                          \</u></td></tr>
+<tr><th id="315">315</th><td><u>  } else {                                                                                     \</u></td></tr>
+<tr><th id="316">316</th><td><u>    (head)=(add);                                                                              \</u></td></tr>
+<tr><th id="317">317</th><td><u>  }                                                                                            \</u></td></tr>
+<tr><th id="318">318</th><td><u>} while (0)</u></td></tr>
+<tr><th id="319">319</th><td></td></tr>
+<tr><th id="320">320</th><td><u>#define <dfn class="macro" id="_M/LL_DELETE" data-ref="_M/LL_DELETE">LL_DELETE</dfn>(head,del)                                                                    \</u></td></tr>
+<tr><th id="321">321</th><td><u>do {                                                                                           \</u></td></tr>
+<tr><th id="322">322</th><td><u>  LDECLTYPE(head) _tmp;                                                                        \</u></td></tr>
+<tr><th id="323">323</th><td><u>  if ((head) == (del)) {                                                                       \</u></td></tr>
+<tr><th id="324">324</th><td><u>    (head)=(head)-&gt;next;                                                                       \</u></td></tr>
+<tr><th id="325">325</th><td><u>  } else {                                                                                     \</u></td></tr>
+<tr><th id="326">326</th><td><u>    _tmp = head;                                                                               \</u></td></tr>
+<tr><th id="327">327</th><td><u>    while (_tmp-&gt;next &amp;&amp; (_tmp-&gt;next != (del))) {                                              \</u></td></tr>
+<tr><th id="328">328</th><td><u>      _tmp = _tmp-&gt;next;                                                                       \</u></td></tr>
+<tr><th id="329">329</th><td><u>    }                                                                                          \</u></td></tr>
+<tr><th id="330">330</th><td><u>    if (_tmp-&gt;next) {                                                                          \</u></td></tr>
+<tr><th id="331">331</th><td><u>      _tmp-&gt;next = ((del)-&gt;next);                                                              \</u></td></tr>
+<tr><th id="332">332</th><td><u>    }                                                                                          \</u></td></tr>
+<tr><th id="333">333</th><td><u>  }                                                                                            \</u></td></tr>
+<tr><th id="334">334</th><td><u>} while (0)</u></td></tr>
+<tr><th id="335">335</th><td></td></tr>
+<tr><th id="336">336</th><td><i>/* Here are VS2008 replacements for LL_APPEND and LL_DELETE */</i></td></tr>
+<tr><th id="337">337</th><td><u>#define <dfn class="macro" id="_M/LL_APPEND_VS2008" data-ref="_M/LL_APPEND_VS2008">LL_APPEND_VS2008</dfn>(head,add)                                                             \</u></td></tr>
+<tr><th id="338">338</th><td><u>do {                                                                                           \</u></td></tr>
+<tr><th id="339">339</th><td><u>  if (head) {                                                                                  \</u></td></tr>
+<tr><th id="340">340</th><td><u>    (add)-&gt;next = head;     /* use add-&gt;next as a temp variable */                             \</u></td></tr>
+<tr><th id="341">341</th><td><u>    while ((add)-&gt;next-&gt;next) { (add)-&gt;next = (add)-&gt;next-&gt;next; }                             \</u></td></tr>
+<tr><th id="342">342</th><td><u>    (add)-&gt;next-&gt;next=(add);                                                                   \</u></td></tr>
+<tr><th id="343">343</th><td><u>  } else {                                                                                     \</u></td></tr>
+<tr><th id="344">344</th><td><u>    (head)=(add);                                                                              \</u></td></tr>
+<tr><th id="345">345</th><td><u>  }                                                                                            \</u></td></tr>
+<tr><th id="346">346</th><td><u>  (add)-&gt;next=NULL;                                                                            \</u></td></tr>
+<tr><th id="347">347</th><td><u>} while (0)</u></td></tr>
+<tr><th id="348">348</th><td></td></tr>
+<tr><th id="349">349</th><td><u>#define <dfn class="macro" id="_M/LL_DELETE_VS2008" data-ref="_M/LL_DELETE_VS2008">LL_DELETE_VS2008</dfn>(head,del)                                                             \</u></td></tr>
+<tr><th id="350">350</th><td><u>do {                                                                                           \</u></td></tr>
+<tr><th id="351">351</th><td><u>  if ((head) == (del)) {                                                                       \</u></td></tr>
+<tr><th id="352">352</th><td><u>    (head)=(head)-&gt;next;                                                                       \</u></td></tr>
+<tr><th id="353">353</th><td><u>  } else {                                                                                     \</u></td></tr>
+<tr><th id="354">354</th><td><u>    char *_tmp = (char*)(head);                                                                \</u></td></tr>
+<tr><th id="355">355</th><td><u>    while (head-&gt;next &amp;&amp; (head-&gt;next != (del))) {                                              \</u></td></tr>
+<tr><th id="356">356</th><td><u>      head = head-&gt;next;                                                                       \</u></td></tr>
+<tr><th id="357">357</th><td><u>    }                                                                                          \</u></td></tr>
+<tr><th id="358">358</th><td><u>    if (head-&gt;next) {                                                                          \</u></td></tr>
+<tr><th id="359">359</th><td><u>      head-&gt;next = ((del)-&gt;next);                                                              \</u></td></tr>
+<tr><th id="360">360</th><td><u>    }                                                                                          \</u></td></tr>
+<tr><th id="361">361</th><td><u>    {                                                                                          \</u></td></tr>
+<tr><th id="362">362</th><td><u>      char **_head_alias = (char**)&amp;(head);                                                    \</u></td></tr>
+<tr><th id="363">363</th><td><u>      *_head_alias = _tmp;                                                                     \</u></td></tr>
+<tr><th id="364">364</th><td><u>    }                                                                                          \</u></td></tr>
+<tr><th id="365">365</th><td><u>  }                                                                                            \</u></td></tr>
+<tr><th id="366">366</th><td><u>} while (0)</u></td></tr>
+<tr><th id="367">367</th><td><u>#<span data-ppcond="367">ifdef</span> <span class="macro" data-ref="_M/NO_DECLTYPE">NO_DECLTYPE</span></u></td></tr>
+<tr><th id="368">368</th><td><u>#undef LL_APPEND</u></td></tr>
+<tr><th id="369">369</th><td><u>#define LL_APPEND LL_APPEND_VS2008</u></td></tr>
+<tr><th id="370">370</th><td><u>#undef LL_DELETE</u></td></tr>
+<tr><th id="371">371</th><td><u>#define LL_DELETE LL_DELETE_VS2008</u></td></tr>
+<tr><th id="372">372</th><td><u>#undef LL_CONCAT /* no LL_CONCAT_VS2008 */</u></td></tr>
+<tr><th id="373">373</th><td><u>#undef DL_CONCAT /* no DL_CONCAT_VS2008 */</u></td></tr>
+<tr><th id="374">374</th><td><u>#<span data-ppcond="367">endif</span></u></td></tr>
+<tr><th id="375">375</th><td><i>/* end VS2008 replacements */</i></td></tr>
+<tr><th id="376">376</th><td></td></tr>
+<tr><th id="377">377</th><td><u>#define <dfn class="macro" id="_M/LL_FOREACH" data-ref="_M/LL_FOREACH">LL_FOREACH</dfn>(head,el)                                                                    \</u></td></tr>
+<tr><th id="378">378</th><td><u>    for(el=head;el;el=el-&gt;next)</u></td></tr>
+<tr><th id="379">379</th><td></td></tr>
+<tr><th id="380">380</th><td><u>#define <dfn class="macro" id="_M/LL_FOREACH_SAFE" data-ref="_M/LL_FOREACH_SAFE">LL_FOREACH_SAFE</dfn>(head,el,tmp)                                                           \</u></td></tr>
+<tr><th id="381">381</th><td><u>  for((el)=(head);(el) &amp;&amp; (tmp = (el)-&gt;next, 1); (el) = tmp)</u></td></tr>
+<tr><th id="382">382</th><td></td></tr>
+<tr><th id="383">383</th><td><u>#define <dfn class="macro" id="_M/LL_SEARCH_SCALAR" data-ref="_M/LL_SEARCH_SCALAR">LL_SEARCH_SCALAR</dfn>(head,out,field,val)                                                   \</u></td></tr>
+<tr><th id="384">384</th><td><u>do {                                                                                           \</u></td></tr>
+<tr><th id="385">385</th><td><u>    LL_FOREACH(head,out) {                                                                     \</u></td></tr>
+<tr><th id="386">386</th><td><u>      if ((out)-&gt;field == (val)) break;                                                        \</u></td></tr>
+<tr><th id="387">387</th><td><u>    }                                                                                          \</u></td></tr>
+<tr><th id="388">388</th><td><u>} while(0)</u> </td></tr>
+<tr><th id="389">389</th><td></td></tr>
+<tr><th id="390">390</th><td><u>#define <dfn class="macro" id="_M/LL_SEARCH" data-ref="_M/LL_SEARCH">LL_SEARCH</dfn>(head,out,elt,cmp)                                                            \</u></td></tr>
+<tr><th id="391">391</th><td><u>do {                                                                                           \</u></td></tr>
+<tr><th id="392">392</th><td><u>    LL_FOREACH(head,out) {                                                                     \</u></td></tr>
+<tr><th id="393">393</th><td><u>      if ((cmp(out,elt))==0) break;                                                            \</u></td></tr>
+<tr><th id="394">394</th><td><u>    }                                                                                          \</u></td></tr>
+<tr><th id="395">395</th><td><u>} while(0)</u> </td></tr>
+<tr><th id="396">396</th><td></td></tr>
+<tr><th id="397">397</th><td><i>/******************************************************************************</i></td></tr>
+<tr><th id="398">398</th><td><i> * doubly linked list macros (non-circular)                                   *</i></td></tr>
+<tr><th id="399">399</th><td><i> *****************************************************************************/</i></td></tr>
+<tr><th id="400">400</th><td><u>#define <dfn class="macro" id="_M/DL_PREPEND" data-ref="_M/DL_PREPEND">DL_PREPEND</dfn>(head,add)                                                                   \</u></td></tr>
+<tr><th id="401">401</th><td><u>do {                                                                                           \</u></td></tr>
+<tr><th id="402">402</th><td><u> (add)-&gt;next = head;                                                                           \</u></td></tr>
+<tr><th id="403">403</th><td><u> if (head) {                                                                                   \</u></td></tr>
+<tr><th id="404">404</th><td><u>   (add)-&gt;prev = (head)-&gt;prev;                                                                 \</u></td></tr>
+<tr><th id="405">405</th><td><u>   (head)-&gt;prev = (add);                                                                       \</u></td></tr>
+<tr><th id="406">406</th><td><u> } else {                                                                                      \</u></td></tr>
+<tr><th id="407">407</th><td><u>   (add)-&gt;prev = (add);                                                                        \</u></td></tr>
+<tr><th id="408">408</th><td><u> }                                                                                             \</u></td></tr>
+<tr><th id="409">409</th><td><u> (head) = (add);                                                                               \</u></td></tr>
+<tr><th id="410">410</th><td><u>} while (0)</u></td></tr>
+<tr><th id="411">411</th><td></td></tr>
+<tr><th id="412">412</th><td><u>#define <dfn class="macro" id="_M/DL_APPEND" data-ref="_M/DL_APPEND">DL_APPEND</dfn>(head,add)                                                                    \</u></td></tr>
+<tr><th id="413">413</th><td><u>do {                                                                                           \</u></td></tr>
+<tr><th id="414">414</th><td><u>  if (head) {                                                                                  \</u></td></tr>
+<tr><th id="415">415</th><td><u>      (add)-&gt;prev = (head)-&gt;prev;                                                              \</u></td></tr>
+<tr><th id="416">416</th><td><u>      (head)-&gt;prev-&gt;next = (add);                                                              \</u></td></tr>
+<tr><th id="417">417</th><td><u>      (head)-&gt;prev = (add);                                                                    \</u></td></tr>
+<tr><th id="418">418</th><td><u>      (add)-&gt;next = NULL;                                                                      \</u></td></tr>
+<tr><th id="419">419</th><td><u>  } else {                                                                                     \</u></td></tr>
+<tr><th id="420">420</th><td><u>      (head)=(add);                                                                            \</u></td></tr>
+<tr><th id="421">421</th><td><u>      (head)-&gt;prev = (head);                                                                   \</u></td></tr>
+<tr><th id="422">422</th><td><u>      (head)-&gt;next = NULL;                                                                     \</u></td></tr>
+<tr><th id="423">423</th><td><u>  }                                                                                            \</u></td></tr>
+<tr><th id="424">424</th><td><u>} while (0);</u></td></tr>
+<tr><th id="425">425</th><td></td></tr>
+<tr><th id="426">426</th><td><u>#define <dfn class="macro" id="_M/DL_CONCAT" data-ref="_M/DL_CONCAT">DL_CONCAT</dfn>(head1,head2)                                                                 \</u></td></tr>
+<tr><th id="427">427</th><td><u>do {                                                                                           \</u></td></tr>
+<tr><th id="428">428</th><td><u>  LDECLTYPE(head1) _tmp;                                                                       \</u></td></tr>
+<tr><th id="429">429</th><td><u>  if (head2) {                                                                                 \</u></td></tr>
+<tr><th id="430">430</th><td><u>    if (head1) {                                                                               \</u></td></tr>
+<tr><th id="431">431</th><td><u>        _tmp = (head2)-&gt;prev;                                                                  \</u></td></tr>
+<tr><th id="432">432</th><td><u>        (head2)-&gt;prev = (head1)-&gt;prev;                                                         \</u></td></tr>
+<tr><th id="433">433</th><td><u>        (head1)-&gt;prev-&gt;next = (head2);                                                         \</u></td></tr>
+<tr><th id="434">434</th><td><u>        (head1)-&gt;prev = _tmp;                                                                  \</u></td></tr>
+<tr><th id="435">435</th><td><u>    } else {                                                                                   \</u></td></tr>
+<tr><th id="436">436</th><td><u>        (head1)=(head2);                                                                       \</u></td></tr>
+<tr><th id="437">437</th><td><u>    }                                                                                          \</u></td></tr>
+<tr><th id="438">438</th><td><u>  }                                                                                            \</u></td></tr>
+<tr><th id="439">439</th><td><u>} while (0);</u></td></tr>
+<tr><th id="440">440</th><td></td></tr>
+<tr><th id="441">441</th><td><u>#define <dfn class="macro" id="_M/DL_DELETE" data-ref="_M/DL_DELETE">DL_DELETE</dfn>(head,del)                                                                    \</u></td></tr>
+<tr><th id="442">442</th><td><u>do {                                                                                           \</u></td></tr>
+<tr><th id="443">443</th><td><u>  assert((del)-&gt;prev != NULL);                                                                 \</u></td></tr>
+<tr><th id="444">444</th><td><u>  if ((del)-&gt;prev == (del)) {                                                                  \</u></td></tr>
+<tr><th id="445">445</th><td><u>      (head)=NULL;                                                                             \</u></td></tr>
+<tr><th id="446">446</th><td><u>  } else if ((del)==(head)) {                                                                  \</u></td></tr>
+<tr><th id="447">447</th><td><u>      (del)-&gt;next-&gt;prev = (del)-&gt;prev;                                                         \</u></td></tr>
+<tr><th id="448">448</th><td><u>      (head) = (del)-&gt;next;                                                                    \</u></td></tr>
+<tr><th id="449">449</th><td><u>  } else {                                                                                     \</u></td></tr>
+<tr><th id="450">450</th><td><u>      (del)-&gt;prev-&gt;next = (del)-&gt;next;                                                         \</u></td></tr>
+<tr><th id="451">451</th><td><u>      if ((del)-&gt;next) {                                                                       \</u></td></tr>
+<tr><th id="452">452</th><td><u>          (del)-&gt;next-&gt;prev = (del)-&gt;prev;                                                     \</u></td></tr>
+<tr><th id="453">453</th><td><u>      } else {                                                                                 \</u></td></tr>
+<tr><th id="454">454</th><td><u>          (head)-&gt;prev = (del)-&gt;prev;                                                          \</u></td></tr>
+<tr><th id="455">455</th><td><u>      }                                                                                        \</u></td></tr>
+<tr><th id="456">456</th><td><u>  }                                                                                            \</u></td></tr>
+<tr><th id="457">457</th><td><u>} while (0);</u></td></tr>
+<tr><th id="458">458</th><td></td></tr>
+<tr><th id="459">459</th><td></td></tr>
+<tr><th id="460">460</th><td><u>#define <dfn class="macro" id="_M/DL_FOREACH" data-ref="_M/DL_FOREACH">DL_FOREACH</dfn>(head,el)                                                                    \</u></td></tr>
+<tr><th id="461">461</th><td><u>    for(el=head;el;el=el-&gt;next)</u></td></tr>
+<tr><th id="462">462</th><td></td></tr>
+<tr><th id="463">463</th><td><i>/* this version is safe for deleting the elements during iteration */</i></td></tr>
+<tr><th id="464">464</th><td><u>#define <dfn class="macro" id="_M/DL_FOREACH_SAFE" data-ref="_M/DL_FOREACH_SAFE">DL_FOREACH_SAFE</dfn>(head,el,tmp)                                                           \</u></td></tr>
+<tr><th id="465">465</th><td><u>  for((el)=(head);(el) &amp;&amp; (tmp = (el)-&gt;next, 1); (el) = tmp)</u></td></tr>
+<tr><th id="466">466</th><td></td></tr>
+<tr><th id="467">467</th><td><i>/* these are identical to their singly-linked list counterparts */</i></td></tr>
+<tr><th id="468">468</th><td><u>#define <dfn class="macro" id="_M/DL_SEARCH_SCALAR" data-ref="_M/DL_SEARCH_SCALAR">DL_SEARCH_SCALAR</dfn> LL_SEARCH_SCALAR</u></td></tr>
+<tr><th id="469">469</th><td><u>#define <dfn class="macro" id="_M/DL_SEARCH" data-ref="_M/DL_SEARCH">DL_SEARCH</dfn> LL_SEARCH</u></td></tr>
+<tr><th id="470">470</th><td></td></tr>
+<tr><th id="471">471</th><td><i>/******************************************************************************</i></td></tr>
+<tr><th id="472">472</th><td><i> * circular doubly linked list macros                                         *</i></td></tr>
+<tr><th id="473">473</th><td><i> *****************************************************************************/</i></td></tr>
+<tr><th id="474">474</th><td><u>#define <dfn class="macro" id="_M/CDL_PREPEND" data-ref="_M/CDL_PREPEND">CDL_PREPEND</dfn>(head,add)                                                                  \</u></td></tr>
+<tr><th id="475">475</th><td><u>do {                                                                                           \</u></td></tr>
+<tr><th id="476">476</th><td><u> if (head) {                                                                                   \</u></td></tr>
+<tr><th id="477">477</th><td><u>   (add)-&gt;prev = (head)-&gt;prev;                                                                 \</u></td></tr>
+<tr><th id="478">478</th><td><u>   (add)-&gt;next = (head);                                                                       \</u></td></tr>
+<tr><th id="479">479</th><td><u>   (head)-&gt;prev = (add);                                                                       \</u></td></tr>
+<tr><th id="480">480</th><td><u>   (add)-&gt;prev-&gt;next = (add);                                                                  \</u></td></tr>
+<tr><th id="481">481</th><td><u> } else {                                                                                      \</u></td></tr>
+<tr><th id="482">482</th><td><u>   (add)-&gt;prev = (add);                                                                        \</u></td></tr>
+<tr><th id="483">483</th><td><u>   (add)-&gt;next = (add);                                                                        \</u></td></tr>
+<tr><th id="484">484</th><td><u> }                                                                                             \</u></td></tr>
+<tr><th id="485">485</th><td><u>(head)=(add);                                                                                  \</u></td></tr>
+<tr><th id="486">486</th><td><u>} while (0)</u></td></tr>
+<tr><th id="487">487</th><td></td></tr>
+<tr><th id="488">488</th><td><u>#define <dfn class="macro" id="_M/CDL_DELETE" data-ref="_M/CDL_DELETE">CDL_DELETE</dfn>(head,del)                                                                   \</u></td></tr>
+<tr><th id="489">489</th><td><u>do {                                                                                           \</u></td></tr>
+<tr><th id="490">490</th><td><u>  if ( ((head)==(del)) &amp;&amp; ((head)-&gt;next == (head))) {                                          \</u></td></tr>
+<tr><th id="491">491</th><td><u>      (head) = 0L;                                                                             \</u></td></tr>
+<tr><th id="492">492</th><td><u>  } else {                                                                                     \</u></td></tr>
+<tr><th id="493">493</th><td><u>     (del)-&gt;next-&gt;prev = (del)-&gt;prev;                                                          \</u></td></tr>
+<tr><th id="494">494</th><td><u>     (del)-&gt;prev-&gt;next = (del)-&gt;next;                                                          \</u></td></tr>
+<tr><th id="495">495</th><td><u>     if ((del) == (head)) (head)=(del)-&gt;next;                                                  \</u></td></tr>
+<tr><th id="496">496</th><td><u>  }                                                                                            \</u></td></tr>
+<tr><th id="497">497</th><td><u>} while (0);</u></td></tr>
+<tr><th id="498">498</th><td></td></tr>
+<tr><th id="499">499</th><td><u>#define <dfn class="macro" id="_M/CDL_FOREACH" data-ref="_M/CDL_FOREACH">CDL_FOREACH</dfn>(head,el)                                                                   \</u></td></tr>
+<tr><th id="500">500</th><td><u>    for(el=head;el;el=(el-&gt;next==head ? 0L : el-&gt;next))</u> </td></tr>
+<tr><th id="501">501</th><td></td></tr>
+<tr><th id="502">502</th><td><u>#define <dfn class="macro" id="_M/CDL_FOREACH_SAFE" data-ref="_M/CDL_FOREACH_SAFE">CDL_FOREACH_SAFE</dfn>(head,el,tmp1,tmp2)                                                    \</u></td></tr>
+<tr><th id="503">503</th><td><u>  for((el)=(head), ((tmp1)=(head)?((head)-&gt;prev):NULL);                                        \</u></td></tr>
+<tr><th id="504">504</th><td><u>      (el) &amp;&amp; ((tmp2)=(el)-&gt;next, 1);                                                          \</u></td></tr>
+<tr><th id="505">505</th><td><u>      ((el) = (((el)==(tmp1)) ? 0L : (tmp2))))</u></td></tr>
+<tr><th id="506">506</th><td></td></tr>
+<tr><th id="507">507</th><td><u>#define <dfn class="macro" id="_M/CDL_SEARCH_SCALAR" data-ref="_M/CDL_SEARCH_SCALAR">CDL_SEARCH_SCALAR</dfn>(head,out,field,val)                                                  \</u></td></tr>
+<tr><th id="508">508</th><td><u>do {                                                                                           \</u></td></tr>
+<tr><th id="509">509</th><td><u>    CDL_FOREACH(head,out) {                                                                    \</u></td></tr>
+<tr><th id="510">510</th><td><u>      if ((out)-&gt;field == (val)) break;                                                        \</u></td></tr>
+<tr><th id="511">511</th><td><u>    }                                                                                          \</u></td></tr>
+<tr><th id="512">512</th><td><u>} while(0)</u> </td></tr>
+<tr><th id="513">513</th><td></td></tr>
+<tr><th id="514">514</th><td><u>#define <dfn class="macro" id="_M/CDL_SEARCH" data-ref="_M/CDL_SEARCH">CDL_SEARCH</dfn>(head,out,elt,cmp)                                                           \</u></td></tr>
+<tr><th id="515">515</th><td><u>do {                                                                                           \</u></td></tr>
+<tr><th id="516">516</th><td><u>    CDL_FOREACH(head,out) {                                                                    \</u></td></tr>
+<tr><th id="517">517</th><td><u>      if ((cmp(out,elt))==0) break;                                                            \</u></td></tr>
+<tr><th id="518">518</th><td><u>    }                                                                                          \</u></td></tr>
+<tr><th id="519">519</th><td><u>} while(0)</u> </td></tr>
+<tr><th id="520">520</th><td></td></tr>
+<tr><th id="521">521</th><td><u>#<span data-ppcond="24">endif</span> /* UTLIST_H */</u></td></tr>
+<tr><th id="522">522</th><td></td></tr>
+<tr><th id="523">523</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../lib/CL/clBuildProgram.c.html'>pocl/lib/CL/clBuildProgram.c</a><br/>Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

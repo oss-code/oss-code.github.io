@@ -1,0 +1,5 @@
+<use f='include/llvm-6.0/llvm/Support/Allocator.h' l='396' u='c' c='_ZN4llvm24SpecificBumpPtrAllocatorD1Ev'/>
+<def f='include/llvm-6.0/llvm/Support/Allocator.h' l='406' ll='431' type='void llvm::SpecificBumpPtrAllocator::DestroyAll()'/>
+<doc f='include/llvm-6.0/llvm/Support/Allocator.h' l='403'>/// Call the destructor of each allocated object and deallocate all but the
+  /// current slab and reset the current pointer to the beginning of it, freeing
+  /// all memory allocated so far.</doc>

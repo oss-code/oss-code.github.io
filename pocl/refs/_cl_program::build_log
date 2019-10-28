@@ -1,0 +1,27 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1095' type='char **'/>
+<offset>1408</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='1094'>/* Per-device build logs, for the case when we don&apos;t yet have the program&apos;s cachedir */</doc>
+<use f='pocl/lib/CL/clCreateProgramWithBinary.c' l='114' u='w' c='create_program_skeleton'/>
+<use f='pocl/lib/CL/clCreateProgramWithSource.c' l='112' u='w' c='POclCreateProgramWithSource'/>
+<use f='pocl/lib/CL/clCreateProgramWithSource.c' l='133' u='r' c='POclCreateProgramWithSource'/>
+<use f='pocl/lib/CL/clCreateProgramWithSource.c' l='133' u='w' c='POclCreateProgramWithSource'/>
+<use f='pocl/lib/CL/clGetProgramBuildInfo.c' l='74' u='r' c='POclGetProgramBuildInfo'/>
+<use f='pocl/lib/CL/clGetProgramBuildInfo.c' l='76' u='r' c='POclGetProgramBuildInfo'/>
+<use f='pocl/lib/CL/clGetProgramBuildInfo.c' l='76' u='r' c='POclGetProgramBuildInfo'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='79' u='r' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='81' u='r' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='81' u='r' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='82' u='r' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='82' u='w' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/pocl_build.c' l='453' u='r' c='clean_program_on_rebuild'/>
+<use f='pocl/lib/CL/pocl_build.c' l='453' u='r' c='clean_program_on_rebuild'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='136' u='r' c='_ZL23appendToProgramBuildLogP11_cl_programjRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='137' u='r' c='_ZL23appendToProgramBuildLogP11_cl_programjRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='140' u='r' c='_ZL23appendToProgramBuildLogP11_cl_programjRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='143' u='r' c='_ZL23appendToProgramBuildLogP11_cl_programjRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='143' u='r' c='_ZL23appendToProgramBuildLogP11_cl_programjRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='144' u='r' c='_ZL23appendToProgramBuildLogP11_cl_programjRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='146' u='r' c='_ZL23appendToProgramBuildLogP11_cl_programjRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='382' u='r' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='383' u='r' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='383' u='r' c='pocl_llvm_build_program'/>

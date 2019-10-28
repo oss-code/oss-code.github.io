@@ -1,0 +1,10 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1063' type='cl_context'/>
+<offset>448</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='1062'>/* queries */</doc>
+<use f='pocl/lib/CL/clCreateKernel.c' l='84' u='r' c='POclCreateKernel'/>
+<use f='pocl/lib/CL/clCreateProgramWithBinary.c' l='125' u='w' c='create_program_skeleton'/>
+<use f='pocl/lib/CL/clCreateProgramWithSource.c' l='98' u='w' c='POclCreateProgramWithSource'/>
+<use f='pocl/lib/CL/clGetProgramInfo.c' l='99' u='r' c='POclGetProgramInfo'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='52' u='r' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='58' u='r' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/pocl_build.c' l='150' u='r' c='program_compile_dynamic_wg_binaries'/>

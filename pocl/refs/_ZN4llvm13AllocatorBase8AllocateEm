@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/Support/Allocator.h' l='78' ll='80' type='T * llvm::AllocatorBase::Allocate(size_t Num = 1)'/>
+<doc f='include/llvm-6.0/llvm/Support/Allocator.h' l='74'>// The rest of these methods are helpers that redirect to one of the above
+  // core methods.
+
+  /// \brief Allocate space for a sequence of objects without constructing them.</doc>
+<use f='include/llvm-6.0/llvm/IR/PredIteratorCache.h' l='53' u='c' c='_ZN4llvm17PredIteratorCache8GetPredsEPNS_10BasicBlockE'/>
+<use f='include/llvm-6.0/llvm/Transforms/Scalar/GVN.h' l='206' u='c' c='_ZN4llvm3GVN16addToLeaderTableEjPNS_5ValueEPKNS_10BasicBlockE'/>

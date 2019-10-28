@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='255' ll='257' type='static bool llvm::MetadataTracking::retrack(llvm::Metadata *&amp; MD, llvm::Metadata *&amp; New)'/>
+<use f='include/llvm-6.0/llvm/IR/TrackingMDRef.h' l='97' u='c' c='_ZN4llvm13TrackingMDRef7retrackERS0_'/>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='247'>/// \brief Move tracking from one reference to another.
+  ///
+  /// Semantically equivalent to \c untrack(MD) followed by \c track(New),
+  /// except that ownership callbacks are maintained.
+  ///
+  /// Note: it is an error if \c *MD does not equal \c New.
+  ///
+  /// \return true iff tracking is supported by \c MD.</doc>

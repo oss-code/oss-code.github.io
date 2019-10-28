@@ -1,0 +1,6 @@
+<dec f='pocl/include/pocl.h' l='123' type='void *'/>
+<offset>0</offset>
+<use f='pocl/lib/CL/clEnqueueNativeKernel.c' l='106' u='w' c='POclEnqueueNativeKernel'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='724' u='r' c='pocl_basic_run_native'/>
+<use f='pocl/lib/CL/devices/common.c' l='672' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='672' u='w' c='pocl_exec_command'/>

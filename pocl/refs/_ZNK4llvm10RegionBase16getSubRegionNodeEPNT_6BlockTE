@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='506' type='RegionT * llvm::RegionBase::getSubRegionNode(BlockT * BB) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='502'>/// @brief Get the subregion that starts at a BasicBlock
+  ///
+  /// @param BB The BasicBlock the subregion should start.
+  /// @return The Subregion if available, otherwise NULL.</doc>

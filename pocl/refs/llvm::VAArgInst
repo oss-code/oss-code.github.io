@@ -1,0 +1,18 @@
+<inh f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='279' c='llvm::UnaryInstruction'/>
+<def f='include/llvm-6.0/llvm/IR/Instructions.h' l='2060' ll='2091'/>
+<size>56</size>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='2053'>//===----------------------------------------------------------------------===//
+//                                VAArgInst Class
+//===----------------------------------------------------------------------===//
+
+/// This class represents the va_arg llvm instruction, which returns
+/// an argument of the specified type given a va_list and increments that list
+///</doc>
+<fun r='_ZNK4llvm9VAArgInst9cloneImplEv'/>
+<fun r='_ZN4llvm9VAArgInstC1EPNS_5ValueEPNS_4TypeERKNS_5TwineEPNS_11InstructionE'/>
+<fun r='_ZN4llvm9VAArgInstC1EPNS_5ValueEPNS_4TypeERKNS_5TwineEPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm9VAArgInst17getPointerOperandEv'/>
+<fun r='_ZNK4llvm9VAArgInst17getPointerOperandEv'/>
+<fun r='_ZN4llvm9VAArgInst22getPointerOperandIndexEv'/>
+<fun r='_ZN4llvm9VAArgInst7classofEPKNS_11InstructionE'/>
+<fun r='_ZN4llvm9VAArgInst7classofEPKNS_5ValueE'/>

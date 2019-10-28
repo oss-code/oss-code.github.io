@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/ADT/APFloat.h' l='914' ll='918' type='static llvm::APFloat llvm::APFloat::getSmallest(const llvm::fltSemantics &amp; Sem, bool Negative = false)'/>
+<doc f='include/llvm-6.0/llvm/ADT/APFloat.h' l='910'>/// Returns the smallest (by magnitude) finite number in the given semantics.
+  /// Might be denormalized, which implies a relative loss of precision.
+  ///
+  /// \param Negative - True iff the number should be negative</doc>

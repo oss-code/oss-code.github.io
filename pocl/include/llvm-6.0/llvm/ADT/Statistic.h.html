@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Statistic.h source code [include/llvm-6.0/llvm/ADT/Statistic.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="llvm::Statistic "/>
+<link rel="stylesheet" href="../../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'include/llvm-6.0/llvm/ADT/Statistic.h'; var root_path = '../../../..'; var data_path = '../../../../../data';</script>
+<script src='../../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../../..'>include</a>/<a href='../..'>llvm-6.0</a>/<a href='..'>llvm</a>/<a href='./'>ADT</a>/<a href='Statistic.h.html'>Statistic.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>//===-- llvm/ADT/Statistic.h - Easy way to expose stats ---------*- C++ -*-===//</i></td></tr>
+<tr><th id="2">2</th><td><i>//</i></td></tr>
+<tr><th id="3">3</th><td><i>//                     The LLVM Compiler Infrastructure</i></td></tr>
+<tr><th id="4">4</th><td><i>//</i></td></tr>
+<tr><th id="5">5</th><td><i>// This file is distributed under the University of Illinois Open Source</i></td></tr>
+<tr><th id="6">6</th><td><i>// License. See LICENSE.TXT for details.</i></td></tr>
+<tr><th id="7">7</th><td><i>//</i></td></tr>
+<tr><th id="8">8</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="9">9</th><td><i>//</i></td></tr>
+<tr><th id="10">10</th><td><i>// This file defines the 'Statistic' class, which is designed to be an easy way</i></td></tr>
+<tr><th id="11">11</th><td><i>// to expose various metrics from passes.  These statistics are printed at the</i></td></tr>
+<tr><th id="12">12</th><td><i>// end of a run (from llvm_shutdown), when the -stats command line option is</i></td></tr>
+<tr><th id="13">13</th><td><i>// passed on the command line.</i></td></tr>
+<tr><th id="14">14</th><td><i>//</i></td></tr>
+<tr><th id="15">15</th><td><i>// This is useful for reporting information like the number of instructions</i></td></tr>
+<tr><th id="16">16</th><td><i>// simplified, optimized or removed by various transformations, like this:</i></td></tr>
+<tr><th id="17">17</th><td><i>//</i></td></tr>
+<tr><th id="18">18</th><td><i>// static Statistic NumInstsKilled("gcse", "Number of instructions killed");</i></td></tr>
+<tr><th id="19">19</th><td><i>//</i></td></tr>
+<tr><th id="20">20</th><td><i>// Later, in the code: ++NumInstsKilled;</i></td></tr>
+<tr><th id="21">21</th><td><i>//</i></td></tr>
+<tr><th id="22">22</th><td><i>// NOTE: Statistics *must* be declared as global variables.</i></td></tr>
+<tr><th id="23">23</th><td><i>//</i></td></tr>
+<tr><th id="24">24</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><u>#<span data-ppcond="26">ifndef</span> <span class="macro" data-ref="_M/LLVM_ADT_STATISTIC_H">LLVM_ADT_STATISTIC_H</span></u></td></tr>
+<tr><th id="27">27</th><td><u>#define <dfn class="macro" id="_M/LLVM_ADT_STATISTIC_H" data-ref="_M/LLVM_ADT_STATISTIC_H">LLVM_ADT_STATISTIC_H</dfn></u></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><u>#include <a href="../Support/Atomic.h.html">"llvm/Support/Atomic.h"</a></u></td></tr>
+<tr><th id="30">30</th><td><u>#include <a href="../Support/Compiler.h.html">"llvm/Support/Compiler.h"</a></u></td></tr>
+<tr><th id="31">31</th><td><u>#include <a href="../../../c++/7/atomic.html">&lt;atomic&gt;</a></u></td></tr>
+<tr><th id="32">32</th><td><u>#include <a href="../../../c++/7/memory.html">&lt;memory&gt;</a></u></td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><b>namespace</b> <span class="namespace">llvm</span> {</td></tr>
+<tr><th id="35">35</th><td></td></tr>
+<tr><th id="36">36</th><td><b>class</b> <a class="type" href="../Support/raw_ostream.h.html#llvm::raw_ostream" title='llvm::raw_ostream' data-ref="llvm::raw_ostream" id="llvm::raw_ostream">raw_ostream</a>;</td></tr>
+<tr><th id="37">37</th><td><b>class</b> <a class="type" href="../Support/raw_ostream.h.html#llvm::raw_fd_ostream" title='llvm::raw_fd_ostream' data-ref="llvm::raw_fd_ostream" id="llvm::raw_fd_ostream">raw_fd_ostream</a>;</td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td><b>class</b> <dfn class="type def" id="llvm::Statistic" title='llvm::Statistic' data-ref="llvm::Statistic">Statistic</dfn> {</td></tr>
+<tr><th id="40">40</th><td><b>public</b>:</td></tr>
+<tr><th id="41">41</th><td>  <em>const</em> <em>char</em> *<dfn class="decl" id="llvm::Statistic::DebugType" title='llvm::Statistic::DebugType' data-ref="llvm::Statistic::DebugType">DebugType</dfn>;</td></tr>
+<tr><th id="42">42</th><td>  <em>const</em> <em>char</em> *<dfn class="decl" id="llvm::Statistic::Name" title='llvm::Statistic::Name' data-ref="llvm::Statistic::Name">Name</dfn>;</td></tr>
+<tr><th id="43">43</th><td>  <em>const</em> <em>char</em> *<dfn class="decl" id="llvm::Statistic::Desc" title='llvm::Statistic::Desc' data-ref="llvm::Statistic::Desc">Desc</dfn>;</td></tr>
+<tr><th id="44">44</th><td>  <span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/atomic_base.h.html#std::atomic" title='std::atomic' data-ref="std::atomic">atomic</a>&lt;<em>unsigned</em>&gt; <dfn class="decl" id="llvm::Statistic::Value" title='llvm::Statistic::Value' data-ref="llvm::Statistic::Value">Value</dfn>;</td></tr>
+<tr><th id="45">45</th><td>  <em>bool</em> <dfn class="decl" id="llvm::Statistic::Initialized" title='llvm::Statistic::Initialized' data-ref="llvm::Statistic::Initialized">Initialized</dfn>;</td></tr>
+<tr><th id="46">46</th><td></td></tr>
+<tr><th id="47">47</th><td>  <em>unsigned</em> <dfn class="decl def" id="_ZNK4llvm9Statistic8getValueEv" title='llvm::Statistic::getValue' data-ref="_ZNK4llvm9Statistic8getValueEv">getValue</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::Statistic::Value" title='llvm::Statistic::Value' data-ref="llvm::Statistic::Value">Value</a>.<a class="ref" href="../../../c++/7/bits/atomic_base.h.html#_ZNKSt13__atomic_base4loadESt12memory_order" title='std::__atomic_base::load' data-ref="_ZNKSt13__atomic_base4loadESt12memory_order">load</a>(<span class="namespace">std::</span><a class="enum" href="../../../c++/7/bits/atomic_base.h.html#std::memory_order::memory_order_relaxed" title='std::memory_order::memory_order_relaxed' data-ref="std::memory_order::memory_order_relaxed">memory_order_relaxed</a>); }</td></tr>
+<tr><th id="48">48</th><td>  <em>const</em> <em>char</em> *<dfn class="decl def" id="_ZNK4llvm9Statistic12getDebugTypeEv" title='llvm::Statistic::getDebugType' data-ref="_ZNK4llvm9Statistic12getDebugTypeEv">getDebugType</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::Statistic::DebugType" title='llvm::Statistic::DebugType' data-ref="llvm::Statistic::DebugType">DebugType</a>; }</td></tr>
+<tr><th id="49">49</th><td>  <em>const</em> <em>char</em> *<dfn class="decl def" id="_ZNK4llvm9Statistic7getNameEv" title='llvm::Statistic::getName' data-ref="_ZNK4llvm9Statistic7getNameEv">getName</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::Statistic::Name" title='llvm::Statistic::Name' data-ref="llvm::Statistic::Name">Name</a>; }</td></tr>
+<tr><th id="50">50</th><td>  <em>const</em> <em>char</em> *<dfn class="decl def" id="_ZNK4llvm9Statistic7getDescEv" title='llvm::Statistic::getDesc' data-ref="_ZNK4llvm9Statistic7getDescEv">getDesc</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::Statistic::Desc" title='llvm::Statistic::Desc' data-ref="llvm::Statistic::Desc">Desc</a>; }</td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td>  <i class="doc">/// construct - This should only be called for non-global statistics.</i></td></tr>
+<tr><th id="53">53</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm9Statistic9constructEPKcS2_S2_" title='llvm::Statistic::construct' data-ref="_ZN4llvm9Statistic9constructEPKcS2_S2_">construct</dfn>(<em>const</em> <em>char</em> *<dfn class="local col0 decl" id="1420debugtype" title='debugtype' data-type='const char *' data-ref="1420debugtype">debugtype</dfn>, <em>const</em> <em>char</em> *<dfn class="local col1 decl" id="1421name" title='name' data-type='const char *' data-ref="1421name">name</dfn>, <em>const</em> <em>char</em> *<dfn class="local col2 decl" id="1422desc" title='desc' data-type='const char *' data-ref="1422desc">desc</dfn>) {</td></tr>
+<tr><th id="54">54</th><td>    <a class="member" href="#llvm::Statistic::DebugType" title='llvm::Statistic::DebugType' data-ref="llvm::Statistic::DebugType">DebugType</a> = <a class="local col0 ref" href="#1420debugtype" title='debugtype' data-ref="1420debugtype">debugtype</a>;</td></tr>
+<tr><th id="55">55</th><td>    <a class="member" href="#llvm::Statistic::Name" title='llvm::Statistic::Name' data-ref="llvm::Statistic::Name">Name</a> = <a class="local col1 ref" href="#1421name" title='name' data-ref="1421name">name</a>;</td></tr>
+<tr><th id="56">56</th><td>    <a class="member" href="#llvm::Statistic::Desc" title='llvm::Statistic::Desc' data-ref="llvm::Statistic::Desc">Desc</a> = <a class="local col2 ref" href="#1422desc" title='desc' data-ref="1422desc">desc</a>;</td></tr>
+<tr><th id="57">57</th><td>    <a class="member" href="#llvm::Statistic::Value" title='llvm::Statistic::Value' data-ref="llvm::Statistic::Value">Value</a> <a class="ref" href="../../../c++/7/bits/atomic_base.h.html#_ZNSt13__atomic_baseaSET_" title='std::__atomic_base::operator=' data-ref="_ZNSt13__atomic_baseaSET_">=</a> <var>0</var>;</td></tr>
+<tr><th id="58">58</th><td>    <a class="member" href="#llvm::Statistic::Initialized" title='llvm::Statistic::Initialized' data-ref="llvm::Statistic::Initialized">Initialized</a> = <b>false</b>;</td></tr>
+<tr><th id="59">59</th><td>  }</td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td>  <i>// Allow use of this class as the value itself.</i></td></tr>
+<tr><th id="62">62</th><td>  <dfn class="decl def" id="_ZNK4llvm9StatisticcvjEv" title='llvm::Statistic::operator unsigned int' data-ref="_ZNK4llvm9StatisticcvjEv"><b>operator</b> <em>unsigned</em></dfn>() <em>const</em> { <b>return</b> <a class="member" href="#_ZNK4llvm9Statistic8getValueEv" title='llvm::Statistic::getValue' data-ref="_ZNK4llvm9Statistic8getValueEv">getValue</a>(); }</td></tr>
+<tr><th id="63">63</th><td></td></tr>
+<tr><th id="64">64</th><td><u>#<span data-ppcond="64">if</span> !defined(<span class="macro" data-ref="_M/NDEBUG">NDEBUG</span>) || defined(<span class="macro" data-ref="_M/LLVM_ENABLE_STATS">LLVM_ENABLE_STATS</span>)</u></td></tr>
+<tr><th id="65">65</th><td>   <em>const</em> Statistic &amp;<b>operator</b>=(<em>unsigned</em> Val) {</td></tr>
+<tr><th id="66">66</th><td>    Value.store(Val, std::memory_order_relaxed);</td></tr>
+<tr><th id="67">67</th><td>    <b>return</b> init();</td></tr>
+<tr><th id="68">68</th><td>  }</td></tr>
+<tr><th id="69">69</th><td></td></tr>
+<tr><th id="70">70</th><td>  <em>const</em> Statistic &amp;<b>operator</b>++() {</td></tr>
+<tr><th id="71">71</th><td>    Value.fetch_add(<var>1</var>, std::memory_order_relaxed);</td></tr>
+<tr><th id="72">72</th><td>    <b>return</b> init();</td></tr>
+<tr><th id="73">73</th><td>  }</td></tr>
+<tr><th id="74">74</th><td></td></tr>
+<tr><th id="75">75</th><td>  <em>unsigned</em> <b>operator</b>++(<em>int</em>) {</td></tr>
+<tr><th id="76">76</th><td>    init();</td></tr>
+<tr><th id="77">77</th><td>    <b>return</b> Value.fetch_add(<var>1</var>, std::memory_order_relaxed);</td></tr>
+<tr><th id="78">78</th><td>  }</td></tr>
+<tr><th id="79">79</th><td></td></tr>
+<tr><th id="80">80</th><td>  <em>const</em> Statistic &amp;<b>operator</b>--() {</td></tr>
+<tr><th id="81">81</th><td>    Value.fetch_sub(<var>1</var>, std::memory_order_relaxed);</td></tr>
+<tr><th id="82">82</th><td>    <b>return</b> init();</td></tr>
+<tr><th id="83">83</th><td>  }</td></tr>
+<tr><th id="84">84</th><td></td></tr>
+<tr><th id="85">85</th><td>  <em>unsigned</em> <b>operator</b>--(<em>int</em>) {</td></tr>
+<tr><th id="86">86</th><td>    init();</td></tr>
+<tr><th id="87">87</th><td>    <b>return</b> Value.fetch_sub(<var>1</var>, std::memory_order_relaxed);</td></tr>
+<tr><th id="88">88</th><td>  }</td></tr>
+<tr><th id="89">89</th><td></td></tr>
+<tr><th id="90">90</th><td>  <em>const</em> Statistic &amp;<b>operator</b>+=(<em>unsigned</em> V) {</td></tr>
+<tr><th id="91">91</th><td>    <b>if</b> (V == <var>0</var>)</td></tr>
+<tr><th id="92">92</th><td>      <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="93">93</th><td>    Value.fetch_add(V, std::memory_order_relaxed);</td></tr>
+<tr><th id="94">94</th><td>    <b>return</b> init();</td></tr>
+<tr><th id="95">95</th><td>  }</td></tr>
+<tr><th id="96">96</th><td></td></tr>
+<tr><th id="97">97</th><td>  <em>const</em> Statistic &amp;<b>operator</b>-=(<em>unsigned</em> V) {</td></tr>
+<tr><th id="98">98</th><td>    <b>if</b> (V == <var>0</var>)</td></tr>
+<tr><th id="99">99</th><td>      <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="100">100</th><td>    Value.fetch_sub(V, std::memory_order_relaxed);</td></tr>
+<tr><th id="101">101</th><td>    <b>return</b> init();</td></tr>
+<tr><th id="102">102</th><td>  }</td></tr>
+<tr><th id="103">103</th><td></td></tr>
+<tr><th id="104">104</th><td>  <em>void</em> updateMax(<em>unsigned</em> V) {</td></tr>
+<tr><th id="105">105</th><td>    <em>unsigned</em> PrevMax = Value.load(std::memory_order_relaxed);</td></tr>
+<tr><th id="106">106</th><td>    <i>// Keep trying to update max until we succeed or another thread produces</i></td></tr>
+<tr><th id="107">107</th><td><i>    // a bigger max than us.</i></td></tr>
+<tr><th id="108">108</th><td>    <b>while</b> (V &gt; PrevMax &amp;&amp; !Value.compare_exchange_weak(</td></tr>
+<tr><th id="109">109</th><td>                              PrevMax, V, std::memory_order_relaxed)) {</td></tr>
+<tr><th id="110">110</th><td>    }</td></tr>
+<tr><th id="111">111</th><td>    init();</td></tr>
+<tr><th id="112">112</th><td>  }</td></tr>
+<tr><th id="113">113</th><td></td></tr>
+<tr><th id="114">114</th><td><u>#<span data-ppcond="64">else</span>  // Statistics are disabled in release builds.</u></td></tr>
+<tr><th id="115">115</th><td></td></tr>
+<tr><th id="116">116</th><td>  <em>const</em> <a class="type" href="#llvm::Statistic" title='llvm::Statistic' data-ref="llvm::Statistic">Statistic</a> &amp;<dfn class="decl def" id="_ZN4llvm9StatisticaSEj" title='llvm::Statistic::operator=' data-ref="_ZN4llvm9StatisticaSEj"><b>operator</b>=</dfn>(<em>unsigned</em> <dfn class="local col3 decl" id="1423Val" title='Val' data-type='unsigned int' data-ref="1423Val">Val</dfn>) {</td></tr>
+<tr><th id="117">117</th><td>    <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="118">118</th><td>  }</td></tr>
+<tr><th id="119">119</th><td></td></tr>
+<tr><th id="120">120</th><td>  <em>const</em> <a class="type" href="#llvm::Statistic" title='llvm::Statistic' data-ref="llvm::Statistic">Statistic</a> &amp;<dfn class="decl def" id="_ZN4llvm9StatisticppEv" title='llvm::Statistic::operator++' data-ref="_ZN4llvm9StatisticppEv"><b>operator</b>++</dfn>() {</td></tr>
+<tr><th id="121">121</th><td>    <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="122">122</th><td>  }</td></tr>
+<tr><th id="123">123</th><td></td></tr>
+<tr><th id="124">124</th><td>  <em>unsigned</em> <dfn class="decl def" id="_ZN4llvm9StatisticppEi" title='llvm::Statistic::operator++' data-ref="_ZN4llvm9StatisticppEi"><b>operator</b>++</dfn>(<em>int</em>) {</td></tr>
+<tr><th id="125">125</th><td>    <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="126">126</th><td>  }</td></tr>
+<tr><th id="127">127</th><td></td></tr>
+<tr><th id="128">128</th><td>  <em>const</em> <a class="type" href="#llvm::Statistic" title='llvm::Statistic' data-ref="llvm::Statistic">Statistic</a> &amp;<dfn class="decl def" id="_ZN4llvm9StatisticmmEv" title='llvm::Statistic::operator--' data-ref="_ZN4llvm9StatisticmmEv"><b>operator</b>--</dfn>() {</td></tr>
+<tr><th id="129">129</th><td>    <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="130">130</th><td>  }</td></tr>
+<tr><th id="131">131</th><td></td></tr>
+<tr><th id="132">132</th><td>  <em>unsigned</em> <dfn class="decl def" id="_ZN4llvm9StatisticmmEi" title='llvm::Statistic::operator--' data-ref="_ZN4llvm9StatisticmmEi"><b>operator</b>--</dfn>(<em>int</em>) {</td></tr>
+<tr><th id="133">133</th><td>    <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="134">134</th><td>  }</td></tr>
+<tr><th id="135">135</th><td></td></tr>
+<tr><th id="136">136</th><td>  <em>const</em> <a class="type" href="#llvm::Statistic" title='llvm::Statistic' data-ref="llvm::Statistic">Statistic</a> &amp;<dfn class="decl def" id="_ZN4llvm9StatisticpLERKj" title='llvm::Statistic::operator+=' data-ref="_ZN4llvm9StatisticpLERKj"><b>operator</b>+=</dfn>(<em>const</em> <em>unsigned</em> &amp;<dfn class="local col4 decl" id="1424V" title='V' data-type='const unsigned int &amp;' data-ref="1424V">V</dfn>) {</td></tr>
+<tr><th id="137">137</th><td>    <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="138">138</th><td>  }</td></tr>
+<tr><th id="139">139</th><td></td></tr>
+<tr><th id="140">140</th><td>  <em>const</em> <a class="type" href="#llvm::Statistic" title='llvm::Statistic' data-ref="llvm::Statistic">Statistic</a> &amp;<dfn class="decl def" id="_ZN4llvm9StatisticmIERKj" title='llvm::Statistic::operator-=' data-ref="_ZN4llvm9StatisticmIERKj"><b>operator</b>-=</dfn>(<em>const</em> <em>unsigned</em> &amp;<dfn class="local col5 decl" id="1425V" title='V' data-type='const unsigned int &amp;' data-ref="1425V">V</dfn>) {</td></tr>
+<tr><th id="141">141</th><td>    <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="142">142</th><td>  }</td></tr>
+<tr><th id="143">143</th><td></td></tr>
+<tr><th id="144">144</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm9Statistic9updateMaxEj" title='llvm::Statistic::updateMax' data-ref="_ZN4llvm9Statistic9updateMaxEj">updateMax</dfn>(<em>unsigned</em> <dfn class="local col6 decl" id="1426V" title='V' data-type='unsigned int' data-ref="1426V">V</dfn>) {}</td></tr>
+<tr><th id="145">145</th><td></td></tr>
+<tr><th id="146">146</th><td><u>#<span data-ppcond="64">endif</span>  // !defined(NDEBUG) || defined(LLVM_ENABLE_STATS)</u></td></tr>
+<tr><th id="147">147</th><td></td></tr>
+<tr><th id="148">148</th><td><b>protected</b>:</td></tr>
+<tr><th id="149">149</th><td>  <a class="type" href="#llvm::Statistic" title='llvm::Statistic' data-ref="llvm::Statistic">Statistic</a> &amp;<dfn class="decl def" id="_ZN4llvm9Statistic4initEv" title='llvm::Statistic::init' data-ref="_ZN4llvm9Statistic4initEv">init</dfn>() {</td></tr>
+<tr><th id="150">150</th><td>    <em>bool</em> <dfn class="local col7 decl" id="1427tmp" title='tmp' data-type='bool' data-ref="1427tmp">tmp</dfn> = <a class="member" href="#llvm::Statistic::Initialized" title='llvm::Statistic::Initialized' data-ref="llvm::Statistic::Initialized">Initialized</a>;</td></tr>
+<tr><th id="151">151</th><td>    <span class="namespace">sys::</span><a class="ref" href="../Support/Atomic.h.html#_ZN4llvm3sys11MemoryFenceEv" title='llvm::sys::MemoryFence' data-ref="_ZN4llvm3sys11MemoryFenceEv">MemoryFence</a>();</td></tr>
+<tr><th id="152">152</th><td>    <b>if</b> (!<a class="local col7 ref" href="#1427tmp" title='tmp' data-ref="1427tmp">tmp</a>) <a class="member" href="#_ZN4llvm9Statistic17RegisterStatisticEv" title='llvm::Statistic::RegisterStatistic' data-ref="_ZN4llvm9Statistic17RegisterStatisticEv">RegisterStatistic</a>();</td></tr>
+<tr><th id="153">153</th><td>    <a class="macro" href="../Support/Compiler.h.html#429" title="" data-ref="_M/TsanHappensAfter">TsanHappensAfter</a>(<b>this</b>);</td></tr>
+<tr><th id="154">154</th><td>    <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="155">155</th><td>  }</td></tr>
+<tr><th id="156">156</th><td></td></tr>
+<tr><th id="157">157</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm9Statistic17RegisterStatisticEv" title='llvm::Statistic::RegisterStatistic' data-ref="_ZN4llvm9Statistic17RegisterStatisticEv">RegisterStatistic</dfn>();</td></tr>
+<tr><th id="158">158</th><td>};</td></tr>
+<tr><th id="159">159</th><td></td></tr>
+<tr><th id="160">160</th><td><i>// STATISTIC - A macro to make definition of statistics really simple.  This</i></td></tr>
+<tr><th id="161">161</th><td><i>// automatically passes the DEBUG_TYPE of the file into the statistic.</i></td></tr>
+<tr><th id="162">162</th><td><u>#define <dfn class="macro" id="_M/STATISTIC" data-ref="_M/STATISTIC">STATISTIC</dfn>(VARNAME, DESC)                                               \</u></td></tr>
+<tr><th id="163">163</th><td><u>  static llvm::Statistic VARNAME = {DEBUG_TYPE, #VARNAME, DESC, {0}, false}</u></td></tr>
+<tr><th id="164">164</th><td></td></tr>
+<tr><th id="165">165</th><td><i class="doc">/// <span class="command">\brief</span> Enable the collection and printing of statistics.</i></td></tr>
+<tr><th id="166">166</th><td><em>void</em> <dfn class="decl" id="_ZN4llvm16EnableStatisticsEb" title='llvm::EnableStatistics' data-ref="_ZN4llvm16EnableStatisticsEb">EnableStatistics</dfn>(<em>bool</em> <dfn class="local col8 decl" id="1428PrintOnExit" title='PrintOnExit' data-type='bool' data-ref="1428PrintOnExit">PrintOnExit</dfn> = <b>true</b>);</td></tr>
+<tr><th id="167">167</th><td></td></tr>
+<tr><th id="168">168</th><td><i class="doc">/// <span class="command">\brief</span> Check if statistics are enabled.</i></td></tr>
+<tr><th id="169">169</th><td><em>bool</em> <dfn class="decl" id="_ZN4llvm20AreStatisticsEnabledEv" title='llvm::AreStatisticsEnabled' data-ref="_ZN4llvm20AreStatisticsEnabledEv">AreStatisticsEnabled</dfn>();</td></tr>
+<tr><th id="170">170</th><td></td></tr>
+<tr><th id="171">171</th><td><i class="doc">/// <span class="command">\brief</span> Return a file stream to print our output on.</i></td></tr>
+<tr><th id="172">172</th><td><span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/unique_ptr.h.html#std::unique_ptr" title='std::unique_ptr' data-ref="std::unique_ptr">unique_ptr</a>&lt;<a class="type" href="../Support/raw_ostream.h.html#llvm::raw_fd_ostream" title='llvm::raw_fd_ostream' data-ref="llvm::raw_fd_ostream">raw_fd_ostream</a>&gt; <dfn class="decl" id="_ZN4llvm20CreateInfoOutputFileEv" title='llvm::CreateInfoOutputFile' data-ref="_ZN4llvm20CreateInfoOutputFileEv">CreateInfoOutputFile</dfn>();</td></tr>
+<tr><th id="173">173</th><td></td></tr>
+<tr><th id="174">174</th><td><i class="doc">/// <span class="command">\brief</span> Print statistics to the file returned by CreateInfoOutputFile().</i></td></tr>
+<tr><th id="175">175</th><td><em>void</em> <dfn class="decl" id="_ZN4llvm15PrintStatisticsEv" title='llvm::PrintStatistics' data-ref="_ZN4llvm15PrintStatisticsEv">PrintStatistics</dfn>();</td></tr>
+<tr><th id="176">176</th><td></td></tr>
+<tr><th id="177">177</th><td><i class="doc">/// <span class="command">\brief</span> Print statistics to the given output stream.</i></td></tr>
+<tr><th id="178">178</th><td><em>void</em> <dfn class="decl" id="_ZN4llvm15PrintStatisticsERNS_11raw_ostreamE" title='llvm::PrintStatistics' data-ref="_ZN4llvm15PrintStatisticsERNS_11raw_ostreamE">PrintStatistics</dfn>(<a class="type" href="../Support/raw_ostream.h.html#llvm::raw_ostream" title='llvm::raw_ostream' data-ref="llvm::raw_ostream">raw_ostream</a> &amp;<dfn class="local col9 decl" id="1429OS" title='OS' data-type='llvm::raw_ostream &amp;' data-ref="1429OS">OS</dfn>);</td></tr>
+<tr><th id="179">179</th><td></td></tr>
+<tr><th id="180">180</th><td><i class="doc">/// Print statistics in JSON format. This does include all global timers (<span class="command">\see</span></i></td></tr>
+<tr><th id="181">181</th><td><i class="doc">/// Timer, TimerGroup). Note that the timers are cleared after printing and will</i></td></tr>
+<tr><th id="182">182</th><td><i class="doc">/// not be printed in human readable form or in a second call of</i></td></tr>
+<tr><th id="183">183</th><td><i class="doc">/// PrintStatisticsJSON().</i></td></tr>
+<tr><th id="184">184</th><td><em>void</em> <dfn class="decl" id="_ZN4llvm19PrintStatisticsJSONERNS_11raw_ostreamE" title='llvm::PrintStatisticsJSON' data-ref="_ZN4llvm19PrintStatisticsJSONERNS_11raw_ostreamE">PrintStatisticsJSON</dfn>(<a class="type" href="../Support/raw_ostream.h.html#llvm::raw_ostream" title='llvm::raw_ostream' data-ref="llvm::raw_ostream">raw_ostream</a> &amp;<dfn class="local col0 decl" id="1430OS" title='OS' data-type='llvm::raw_ostream &amp;' data-ref="1430OS">OS</dfn>);</td></tr>
+<tr><th id="185">185</th><td></td></tr>
+<tr><th id="186">186</th><td>} <i>// end namespace llvm</i></td></tr>
+<tr><th id="187">187</th><td></td></tr>
+<tr><th id="188">188</th><td><u>#<span data-ppcond="26">endif</span> // LLVM_ADT_STATISTIC_H</u></td></tr>
+<tr><th id="189">189</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../../../pocl/lib/CL/pocl_llvm_build.cc.html'>pocl/lib/CL/pocl_llvm_build.cc</a><br/>Generated on <em>2019-Oct-28</em> from project include<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

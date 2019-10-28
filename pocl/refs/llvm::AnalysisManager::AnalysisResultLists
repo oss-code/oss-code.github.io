@@ -1,0 +1,13 @@
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='661' u='c' c='_ZN4llvm15AnalysisManager5clearERT_NS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='662' u='c' c='_ZN4llvm15AnalysisManager5clearERT_NS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='669' u='c' c='_ZN4llvm15AnalysisManager5clearERT_NS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='680' u='c' c='_ZN4llvm15AnalysisManager5clearEv'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='782' u='a' c='_ZN4llvm15AnalysisManager10invalidateERT_RKNS_17PreservedAnalysesE'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='828' u='c' c='_ZN4llvm15AnalysisManager10invalidateERT_RKNS_17PreservedAnalysesE'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='863' u='a' c='_ZN4llvm15AnalysisManager13getResultImplEPNS_11AnalysisKeyERT_DpT0_'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='894' u='c' c='_ZN4llvm15AnalysisManager14invalidateImplEPNS_11AnalysisKeyERT_'/>
+<dec f='include/llvm-6.0/llvm/IR/PassManager.h' l='909' type='AnalysisResultListMapT'/>
+<doc f='include/llvm-6.0/llvm/IR/PassManager.h' l='905'>/// \brief Map from function to a list of function analysis results.
+  ///
+  /// Provides linear time removal of all analysis results for a function and
+  /// the ultimate storage for a particular cached analysis result.</doc>

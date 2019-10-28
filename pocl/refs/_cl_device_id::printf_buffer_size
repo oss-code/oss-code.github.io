@@ -1,0 +1,12 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='729' type='size_t'/>
+<offset>3968</offset>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='282' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='282' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='328' u='w' c='pocl_init_cpu_device_infos'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='427' u='r' c='pocl_basic_init'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='429' u='r' c='pocl_basic_init'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='657' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='1099' u='r' c='pocl_basic_reinit'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='1101' u='r' c='pocl_basic_reinit'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='101' u='r' c='pthread_scheduler_init'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='102' u='r' c='pthread_scheduler_init'/>

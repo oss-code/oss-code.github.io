@@ -1,0 +1,16 @@
+<dec f='include/string.h' l='133' type='char * strcat(char *restrict __dest, const char *restrict __src)'/>
+<use f='pocl/bin/poclcc.c' l='103' u='c' c='process_kernel_file'/>
+<doc f='include/string.h' l='132'>/* Append SRC onto DEST.  */</doc>
+<use f='pocl/lib/CL/clGetProgramInfo.c' l='214' u='c' c='POclGetProgramInfo'/>
+<use f='pocl/lib/CL/clGetProgramInfo.c' l='216' u='c' c='POclGetProgramInfo'/>
+<use f='pocl/lib/CL/devices/common.c' l='229' u='c' c='llvm_codegen'/>
+<use f='pocl/lib/CL/pocl_build.c' l='255' u='c' c='process_options'/>
+<use f='pocl/lib/CL/pocl_build.c' l='102' u='c' c='process_options'/>
+<use f='pocl/lib/CL/pocl_build.c' l='103' u='c' c='process_options'/>
+<use f='pocl/lib/CL/pocl_build.c' l='102' u='c' c='process_options'/>
+<use f='pocl/lib/CL/pocl_build.c' l='103' u='c' c='process_options'/>
+<use f='pocl/lib/CL/pocl_build.c' l='550' u='c' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_build.c' l='552' u='c' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='358' u='c' c='pocl_cache_write_kernel_parallel_bc'/>
+<use f='pocl/lib/poclu/misc.c' l='303' u='c' c='poclu_load_program_multidev'/>
+<use f='pocl/lib/poclu/misc.c' l='308' u='c' c='poclu_load_program_multidev'/>

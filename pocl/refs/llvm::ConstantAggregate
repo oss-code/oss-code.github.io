@@ -1,0 +1,37 @@
+<inh f='include/llvm-6.0/llvm/IR/Constant.h' l='42' c='llvm::Constant'/>
+<def f='include/llvm-6.0/llvm/IR/Constants.h' l='381' ll='394'/>
+<ovr f='include/llvm-6.0/llvm/IR/Constants.h' l='405' c='llvm::ConstantArray'/>
+<ovr f='include/llvm-6.0/llvm/IR/Constants.h' l='437' c='llvm::ConstantStruct'/>
+<ovr f='include/llvm-6.0/llvm/IR/Constants.h' l='491' c='llvm::ConstantVector'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='370'>/// Base class for aggregate constants (with operands).
+///
+/// These constants are aggregates of other constants, which are stored as
+/// operands.
+///
+/// Subclasses are \a ConstantStruct, \a ConstantArray, and \a
+/// ConstantVector.
+///
+/// \note Some subclasses of \a ConstantData are semantically aggregates --
+/// such as \a ConstantDataArray -- but are not subclasses of this because they
+/// use operands.</doc>
+<fun r='_ZN4llvm17ConstantAggregateC1EPNS_13CompositeTypeENS_5Value7ValueTyENS_8ArrayRefIPNS_8ConstantEEE'/>
+<fun r='_ZNK4llvm17ConstantAggregate10getOperandEj'/>
+<fun r='_ZN4llvm17ConstantAggregate10setOperandEjPNS_8ConstantE'/>
+<fun r='_ZN4llvm17ConstantAggregate8op_beginEv'/>
+<fun r='_ZNK4llvm17ConstantAggregate8op_beginEv'/>
+<fun r='_ZN4llvm17ConstantAggregate6op_endEv'/>
+<fun r='_ZNK4llvm17ConstantAggregate6op_endEv'/>
+<fun r='_ZN4llvm17ConstantAggregate2OpEv'/>
+<fun r='_ZNK4llvm17ConstantAggregate2OpEv'/>
+<fun r='_ZNK4llvm17ConstantAggregate14getNumOperandsEv'/>
+<fun r='_ZN4llvm17ConstantAggregate7classofEPKNS_5ValueE'/>
+<fun r='_ZN4llvm17ConstantAggregate8op_beginEv'/>
+<fun r='_ZNK4llvm17ConstantAggregate8op_beginEv'/>
+<fun r='_ZN4llvm17ConstantAggregate6op_endEv'/>
+<fun r='_ZNK4llvm17ConstantAggregate6op_endEv'/>
+<fun r='_ZNK4llvm17ConstantAggregate10getOperandEj'/>
+<fun r='_ZN4llvm17ConstantAggregate10setOperandEjPNS_8ConstantE'/>
+<fun r='_ZNK4llvm17ConstantAggregate14getNumOperandsEv'/>
+<fun r='_ZN4llvm17ConstantAggregate2OpEv'/>
+<fun r='_ZNK4llvm17ConstantAggregate2OpEv'/>

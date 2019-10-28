@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1402' type='void llvm::ScalarEvolution::forgetSymbolicName(llvm::Instruction * I, const llvm::SCEV * SymName)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1399'>/// This looks up computed SCEV values for all instructions that depend on
+  /// the given instruction and removes them from the ValueExprMap map if they
+  /// reference SymName. This is used during PHI resolution.</doc>

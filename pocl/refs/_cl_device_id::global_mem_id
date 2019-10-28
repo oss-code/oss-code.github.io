@@ -1,0 +1,17 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='748' type='int'/>
+<offset>4832</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='748'>/* identifier for device global memory */</doc>
+<use f='pocl/lib/CL/clCreateBuffer.c' l='133' u='r' c='POclCreateBuffer'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='520' u='r' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='521' u='r' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='404' u='w' c='pocl_basic_init'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='467' u='r' c='pocl_basic_alloc_mem_obj'/>
+<use f='pocl/lib/CL/devices/common.c' l='292' u='r' c='pocl_copy_mem_object'/>
+<use f='pocl/lib/CL/devices/common.c' l='292' u='r' c='pocl_copy_mem_object'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='459' u='r' c='pocl_cuda_alloc_mem_obj'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='512' u='r' c='pocl_cuda_alloc_mem_obj'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='513' u='r' c='pocl_cuda_alloc_mem_obj'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='514' u='r' c='pocl_cuda_alloc_mem_obj'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='519' u='r' c='pocl_cuda_alloc_mem_obj'/>
+<use f='pocl/lib/CL/devices/devices.c' l='540' u='w' c='pocl_init_devices'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='202' u='w' c='pocl_pthread_init'/>

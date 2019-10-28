@@ -1,0 +1,16 @@
+<def f='include/llvm-6.0/llvm/IR/Value.h' l='322' ll='326' type='void llvm::Value::assertModuleIsMaterialized() const'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='329' u='c' c='_ZNK4llvm5Value9use_emptyEv'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='345' u='c' c='_ZN4llvm5Value9use_beginEv'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='349' u='c' c='_ZNK4llvm5Value9use_beginEv'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='361' u='c' c='_ZN4llvm5Value4usesEv'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='365' u='c' c='_ZNK4llvm5Value4usesEv'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='370' u='c' c='_ZNK4llvm5Value10user_emptyEv'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='382' u='c' c='_ZN4llvm5Value10user_beginEv'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='386' u='c' c='_ZNK4llvm5Value10user_beginEv'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='392' u='c' c='_ZN4llvm5Value9user_backEv'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='396' u='c' c='_ZNK4llvm5Value9user_backEv'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='406' u='c' c='_ZN4llvm5Value5usersEv'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='410' u='c' c='_ZNK4llvm5Value5usersEv'/>
+<doc f='include/llvm-6.0/llvm/IR/Value.h' l='319'>// This indirection exists so we can keep assertModuleIsMaterializedImpl()
+  // around in release builds of Value.cpp to be linked with other code built
+  // in debug mode. But this avoids calling it in any of the release built code.</doc>

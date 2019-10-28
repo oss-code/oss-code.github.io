@@ -1,0 +1,30 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1040' type='cl_uint'/>
+<offset>32</offset>
+<use f='pocl/lib/CL/clGetKernelWorkGroupInfo.c' l='92' u='r' c='POclGetKernelWorkGroupInfo'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='578' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='646' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='711' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='829' u='r' c='load_or_generate_kernel'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='881' u='r' c='pocl_cuda_submit_kernel'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='882' u='r' c='pocl_cuda_submit_kernel'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='988' u='r' c='pocl_cuda_submit_kernel'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='243' u='r' c='work_group_scheduler'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='244' u='r' c='work_group_scheduler'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='86' u='r' c='setup_kernel_arg_array'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='86' u='r' c='setup_kernel_arg_array'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='86' u='r' c='setup_kernel_arg_array_with_locals'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='86' u='r' c='setup_kernel_arg_array_with_locals'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='214' u='r' c='setup_kernel_arg_array_with_locals'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='279' u='r' c='free_kernel_arg_array_with_locals'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='376' u='r' c='pocl_binary_serialize_kernel_to_buffer'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='376' u='r' c='pocl_binary_serialize_kernel_to_buffer'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='376' u='r' c='pocl_binary_serialize_kernel_to_buffer'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='376' u='r' c='pocl_binary_serialize_kernel_to_buffer'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='376' u='r' c='pocl_binary_serialize_kernel_to_buffer'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='376' u='r' c='pocl_binary_serialize_kernel_to_buffer'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='376' u='r' c='pocl_binary_serialize_kernel_to_buffer'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='376' u='r' c='pocl_binary_serialize_kernel_to_buffer'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='383' u='r' c='pocl_binary_serialize_kernel_to_buffer'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='756' u='w' c='pocl_binary_get_kernels_metadata'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='532' u='w' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='536' u='r' c='pocl_llvm_get_kernels_metadata'/>

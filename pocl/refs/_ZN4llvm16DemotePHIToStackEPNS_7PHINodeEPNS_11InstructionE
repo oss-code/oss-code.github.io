@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='224' type='llvm::AllocaInst * llvm::DemotePHIToStack(llvm::PHINode * P, llvm::Instruction * AllocaPoint = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='221'>/// This function takes a virtual register computed by a phi node and replaces
+/// it with a slot in the stack frame, allocated via alloca. The phi node is
+/// deleted and it returns the pointer to the alloca inserted.</doc>

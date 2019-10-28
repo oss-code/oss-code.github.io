@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='652' type='unsigned int llvm::TargetTransformInfo::getNumberOfRegisters(bool Vector) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='649'>/// \return The number of scalar or vector registers that the target has.
+  /// If &apos;Vectors&apos; is true, it returns the number of vector registers. If it is
+  /// set to false, it returns the number of scalar registers.</doc>

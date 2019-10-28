@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='308' ll='310' type='iterator_range&lt;const_phi_iterator&gt; llvm::BasicBlock::phis() const'/>
+<doc f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='305'>/// Returns a range that iterates over the phis in the basic block.
+  ///
+  /// Note that this cannot be used with basic blocks that have no terminator.</doc>

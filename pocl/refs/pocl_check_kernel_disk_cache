@@ -1,0 +1,13 @@
+<dec f='pocl/lib/CL/devices/common.h' l='97' type='char * pocl_check_kernel_disk_cache(_cl_command_node * cmd, int specialized)'/>
+<def f='pocl/lib/CL/devices/common.c' l='931' ll='994' type='char * pocl_check_kernel_disk_cache(_cl_command_node * command, int specialized)'/>
+<use f='pocl/lib/CL/devices/common.c' l='1081' u='c' c='pocl_check_kernel_dlhandle_cache'/>
+<doc f='pocl/lib/CL/devices/common.c' l='921'>/**
+ * Checks if a built binary is found in the disk for the given kernel command,
+ * if not, builds the kernel, caches it, and returns the file name of the
+ * end result.
+ *
+ * @param command The kernel run command.
+ * @param specialized 1 if should check the per-command specialized one instead
+ * of the generic one.
+ * @returns The filename of the built binary in the disk.
+ */</doc>

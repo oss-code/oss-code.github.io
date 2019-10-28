@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='877' type='bool llvm::ScalarEvolution::isAvailableAtLoopEntry(const llvm::SCEV * S, const llvm::Loop * L)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='874'>/// Determine if the SCEV can be evaluated at loop&apos;s entry. It is true if it
+  /// doesn&apos;t depend on a SCEVUnknown of an instruction which is dominated by
+  /// the header of loop L.</doc>

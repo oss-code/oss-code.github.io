@@ -1,0 +1,18 @@
+<def f='include/llvm-6.0/llvm/Bitcode/BitcodeReader.h' l='57' ll='116'/>
+<size>64</size>
+<doc f='include/llvm-6.0/llvm/Bitcode/BitcodeReader.h' l='56'>/// Represents a module in a bitcode file.</doc>
+<mbr r='llvm::BitcodeModule::Buffer' o='0' t='ArrayRef&lt;uint8_t&gt;'/>
+<mbr r='llvm::BitcodeModule::ModuleIdentifier' o='128' t='llvm::StringRef'/>
+<mbr r='llvm::BitcodeModule::Strtab' o='256' t='llvm::StringRef'/>
+<mbr r='llvm::BitcodeModule::IdentificationBit' o='384' t='uint64_t'/>
+<mbr r='llvm::BitcodeModule::ModuleBit' o='448' t='uint64_t'/>
+<fun r='_ZN4llvm13BitcodeModuleC1ENS_8ArrayRefIhEENS_9StringRefEmm'/>
+<fun r='_ZN4llvm13BitcodeModule13getModuleImplERNS_11LLVMContextEbbb'/>
+<fun r='_ZNK4llvm13BitcodeModule9getBufferEv'/>
+<fun r='_ZNK4llvm13BitcodeModule9getStrtabEv'/>
+<fun r='_ZNK4llvm13BitcodeModule19getModuleIdentifierEv'/>
+<fun r='_ZN4llvm13BitcodeModule13getLazyModuleERNS_11LLVMContextEbb'/>
+<fun r='_ZN4llvm13BitcodeModule11parseModuleERNS_11LLVMContextE'/>
+<fun r='_ZN4llvm13BitcodeModule10getLTOInfoEv'/>
+<fun r='_ZN4llvm13BitcodeModule10getSummaryEv'/>
+<fun r='_ZN4llvm13BitcodeModule11readSummaryERNS_18ModuleSummaryIndexENS_9StringRefEm'/>

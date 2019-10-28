@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/Instructions.h' l='689' ll='716'/>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='685'>/// This enumeration lists the possible modifications atomicrmw can make.  In
+  /// the descriptions, &apos;p&apos; is the pointer to the instruction&apos;s memory location,
+  /// &apos;old&apos; is the initial value of *p, and &apos;v&apos; is the other value passed to the
+  /// instruction.  These instructions always return &apos;old&apos;.</doc>

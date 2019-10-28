@@ -1,0 +1,10 @@
+<inh f='include/llvm-6.0/llvm/IR/PassManager.h' l='382' c='llvm::AnalysisInfoMixin'/>
+<def f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='292' ll='305'/>
+<size>1</size>
+<doc f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='287'>/// \brief An analysis pass to compute the \c CallGraph for a \c Module.
+///
+/// This class implements the concept of an analysis pass used by the \c
+/// ModuleAnalysisManager to run an analysis over a module and cache the
+/// resulting data.</doc>
+<smbr r='llvm::CallGraphAnalysis::Key' t='llvm::AnalysisKey'/>
+<fun r='_ZN4llvm17CallGraphAnalysis3runERNS_6ModuleERNS_15AnalysisManagerIS1_JEEE'/>

@@ -1,0 +1,9 @@
+<inh f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='389' c='llvm::CallbackVH'/>
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1018' ll='1026'/>
+<size>40</size>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1016'>/// A CallbackVH to arrange for ScalarEvolution to be notified whenever a
+  /// Value is deleted.</doc>
+<mbr r='llvm::ScalarEvolution::SCEVCallbackVH::SE' o='256' t='llvm::ScalarEvolution *'/>
+<fun r='_ZN4llvm15ScalarEvolution14SCEVCallbackVH7deletedEv'/>
+<fun r='_ZN4llvm15ScalarEvolution14SCEVCallbackVH19allUsesReplacedWithEPNS_5ValueE'/>
+<fun r='_ZN4llvm15ScalarEvolution14SCEVCallbackVHC1EPNS_5ValueEPS0_'/>

@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='580' type='llvm::ModRefInfo llvm::AAResults::getModRefInfo(const llvm::VAArgInst * I, const llvm::MemoryLocation &amp; Loc)'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='584' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_9VAArgInstEPKNS_5ValueEm'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='628' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_11InstructionERKNS_8OptionalINS_14MemoryLocationEEE'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='578'>/// getModRefInfo (for va_args) - Return information about whether
+  /// a particular va_arg modifies or reads the specified memory location.</doc>

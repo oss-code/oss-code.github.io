@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/ADT/ilist_node_options.h' l='28'/>
+<doc f='include/llvm-6.0/llvm/ADT/ilist_node_options.h' l='23'>/// Option to choose whether to track sentinels.
+///
+/// This option affects the ABI for the nodes.  When not specified explicitly,
+/// the ABI depends on LLVM_ENABLE_ABI_BREAKING_CHECKS.  Specify explicitly to
+/// enable \a ilist_node::isSentinel().</doc>

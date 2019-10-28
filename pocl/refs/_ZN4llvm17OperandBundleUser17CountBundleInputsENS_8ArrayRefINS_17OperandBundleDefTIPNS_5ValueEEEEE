@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1624' ll='1629' type='static unsigned int llvm::OperandBundleUser::CountBundleInputs(ArrayRef&lt;OperandBundleDef&gt; Bundles)'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1440' u='c' c='_ZN4llvm8CallInst6CreateEPNS_12FunctionTypeEPNS_5ValueENS_8ArrayRefIS4_EENS5_INS_17OperandBundleDefTIS4_EEEERKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1451' u='c' c='_ZN4llvm8CallInst6CreateEPNS_5ValueENS_8ArrayRefIS2_EENS3_INS_17OperandBundleDefTIS2_EEEERKNS_5TwineEPNS_10BasicBlockE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1942' u='c' c='_ZN4llvm8CallInstC1EPNS_5ValueENS_8ArrayRefIS2_EENS3_INS_17OperandBundleDefTIS2_EEEERKNS_5TwineEPNS_10BasicBlockE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1943' u='c' c='_ZN4llvm8CallInstC1EPNS_5ValueENS_8ArrayRefIS2_EENS3_INS_17OperandBundleDefTIS2_EEEERKNS_5TwineEPNS_10BasicBlockE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1952' u='c' c='_ZN4llvm8CallInstC1EPNS_12FunctionTypeEPNS_5ValueENS_8ArrayRefIS4_EENS5_INS_17OperandBundleDefTIS4_EEEERKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1953' u='c' c='_ZN4llvm8CallInstC1EPNS_12FunctionTypeEPNS_5ValueENS_8ArrayRefIS4_EENS5_INS_17OperandBundleDefTIS4_EEEERKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='3639' u='c' c='_ZN4llvm10InvokeInst6CreateEPNS_12FunctionTypeEPNS_5ValueEPNS_10BasicBlockES6_NS_8ArrayRefIS4_EENS7_INS_17OperandBundleDefTIS4_EEEERKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='3660' u='c' c='_ZN4llvm10InvokeInst6CreateEPNS_5ValueEPNS_10BasicBlockES4_NS_8ArrayRefIS2_EENS5_INS_17OperandBundleDefTIS2_EEEERKNS_5TwineES4_'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1623'>/// \brief Return the total number of values used in \p Bundles.</doc>

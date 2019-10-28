@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/Function.h' l='250' type='Optional&lt;uint64_t&gt; llvm::Function::getEntryCount() const'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='256' u='c' c='_ZNK4llvm8Function14hasProfileDataEv'/>
+<doc f='include/llvm-6.0/llvm/IR/Function.h' l='246'>/// \brief Get the entry count for this function.
+  ///
+  /// Entry count is the number of times the function was executed based on
+  /// pgo data.</doc>

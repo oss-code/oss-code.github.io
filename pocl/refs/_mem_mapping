@@ -1,0 +1,14 @@
+<def f='pocl/include/pocl.h' l='52' ll='69'/>
+<size>120</size>
+<doc f='pocl/include/pocl.h' l='51'>/* represents a single buffer to host memory mapping */</doc>
+<mbr r='_mem_mapping::host_ptr' o='0' t='void *'/>
+<mbr r='_mem_mapping::offset' o='64' t='size_t'/>
+<mbr r='_mem_mapping::size' o='128' t='size_t'/>
+<mbr r='_mem_mapping::prev' o='192' t='mem_mapping_t *'/>
+<mbr r='_mem_mapping::next' o='256' t='mem_mapping_t *'/>
+<mbr r='_mem_mapping::unmap_requested' o='320' t='long'/>
+<mbr r='_mem_mapping::map_flags' o='384' t='cl_map_flags'/>
+<mbr r='_mem_mapping::origin' o='448' t='size_t [3]'/>
+<mbr r='_mem_mapping::region' o='640' t='size_t [3]'/>
+<mbr r='_mem_mapping::row_pitch' o='832' t='size_t'/>
+<mbr r='_mem_mapping::slice_pitch' o='896' t='size_t'/>

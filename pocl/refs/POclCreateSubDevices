@@ -1,0 +1,10 @@
+<dec f='pocl/lib/CL/pocl_intfn.h' l='50' macro='1' type='cl_int POclCreateSubDevices(cl_device_id , const cl_device_partition_property * , cl_uint , cl_device_id * , cl_uint * )'/>
+<def f='pocl/lib/CL/clCreateSubDevices.c' l='38' macro='1' type='cl_int POclCreateSubDevices(cl_device_id in_device, const cl_device_partition_property * properties, cl_uint num_devices, cl_device_id * out_devices, cl_uint * num_devices_ret)'/>
+<doc f='pocl/lib/CL/clCreateSubDevices.c' l='30'>/* Creates an array of sub-devices that each reference a non-intersecting
+   set of compute units within in_device, according to a partition scheme
+   given by properties.
+   TODO we should actually pin the subdevices to specific cores,
+   and possibly correct the cache information accordingly.
+   */</doc>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='133' macro='1' u='a'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='133' macro='1' u='a'/>

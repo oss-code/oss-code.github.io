@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/IR/PassManagerInternal.h' l='192' ll='197' type='bool llvm::detail::AnalysisResultModel&lt;type-parameter-0-0, type-parameter-0-1, type-parameter-0-2, type-parameter-0-3, type-parameter-0-4, false&gt;::invalidate(IRUnitT &amp; , const PreservedAnalysesT &amp; PA, InvalidatorT &amp; )'/>
+<doc f='include/llvm-6.0/llvm/IR/PassManagerInternal.h' l='187'>/// \brief The model bases invalidation solely on being in the preserved set.
+  //
+  // FIXME: We should actually use two different concepts for analysis results
+  // rather than two different models, and avoid the indirect function call for
+  // ones that use the trivial behavior.</doc>

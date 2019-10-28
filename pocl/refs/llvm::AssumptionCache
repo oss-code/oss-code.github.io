@@ -1,0 +1,23 @@
+<def f='include/llvm-6.0/llvm/Analysis/AssumptionCache.h' l='42' ll='145'/>
+<size>160</size>
+<doc f='include/llvm-6.0/llvm/Analysis/AssumptionCache.h' l='35'>/// \brief A cache of @llvm.assume calls within a function.
+///
+/// This cache provides fast lookup of assumptions within a function by caching
+/// them and amortizing the cost of scanning for them across all queries. Passes
+/// that create new assumptions are required to call registerAssumption() to
+/// register any new @llvm.assume calls that they create. Deletions of
+/// @llvm.assume calls do not require special handling.</doc>
+<mbr r='llvm::AssumptionCache::F' o='0' t='llvm::Function &amp;'/>
+<mbr r='llvm::AssumptionCache::AssumeHandles' o='64' t='SmallVector&lt;llvm::WeakTrackingVH, 4&gt;'/>
+<mbr r='llvm::AssumptionCache::AffectedValues' o='1024' t='AffectedValuesMap'/>
+<fun r='_ZN4llvm15AssumptionCache25getOrInsertAffectedValuesEPNS_5ValueE'/>
+<fun r='_ZN4llvm15AssumptionCache25copyAffectedValuesInCacheEPNS_5ValueES2_'/>
+<mbr r='llvm::AssumptionCache::Scanned' o='1216' t='bool'/>
+<fun r='_ZN4llvm15AssumptionCache12scanFunctionEv'/>
+<fun r='_ZN4llvm15AssumptionCacheC1ERNS_8FunctionE'/>
+<fun r='_ZN4llvm15AssumptionCache10invalidateERNS_8FunctionERKNS_17PreservedAnalysesERNS_15AnalysisManagerIS1_JEE11InvalidatorE'/>
+<fun r='_ZN4llvm15AssumptionCache18registerAssumptionEPNS_8CallInstE'/>
+<fun r='_ZN4llvm15AssumptionCache20updateAffectedValuesEPNS_8CallInstE'/>
+<fun r='_ZN4llvm15AssumptionCache5clearEv'/>
+<fun r='_ZN4llvm15AssumptionCache11assumptionsEv'/>
+<fun r='_ZN4llvm15AssumptionCache14assumptionsForEPKNS_5ValueE'/>

@@ -1,0 +1,52 @@
+<def f='include/llvm-6.0/llvm/IR/LLVMContext.h' l='69' ll='331'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/IR/LLVMContext.h' l='64'>/// This is an important class for using LLVM in a threaded context.  It
+/// (opaquely) owns and manages the core &quot;global&quot; data of LLVM&apos;s core
+/// infrastructure, including the type and constant uniquing tables.
+/// LLVMContext itself provides no locking guarantees, so you should be careful
+/// to have one context per thread.</doc>
+<mbr r='llvm::LLVMContext::pImpl' o='0' t='llvm::LLVMContextImpl *const'/>
+<fun r='_ZN4llvm11LLVMContextC1Ev'/>
+<fun r='_ZN4llvm11LLVMContextC1ERS0_'/>
+<fun r='_ZN4llvm11LLVMContextaSERKS0_'/>
+<fun r='_ZN4llvm11LLVMContextD1Ev'/>
+<fun r='_ZNK4llvm11LLVMContext11getMDKindIDENS_9StringRefE'/>
+<fun r='_ZNK4llvm11LLVMContext14getMDKindNamesERNS_15SmallVectorImplINS_9StringRefEEE'/>
+<fun r='_ZNK4llvm11LLVMContext20getOperandBundleTagsERNS_15SmallVectorImplINS_9StringRefEEE'/>
+<fun r='_ZNK4llvm11LLVMContext21getOperandBundleTagIDENS_9StringRefE'/>
+<fun r='_ZN4llvm11LLVMContext22getOrInsertSyncScopeIDENS_9StringRefE'/>
+<fun r='_ZNK4llvm11LLVMContext17getSyncScopeNamesERNS_15SmallVectorImplINS_9StringRefEEE'/>
+<fun r='_ZN4llvm11LLVMContext5setGCERKNS_8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<fun r='_ZN4llvm11LLVMContext5getGCB5cxx11ERKNS_8FunctionE'/>
+<fun r='_ZN4llvm11LLVMContext8deleteGCERKNS_8FunctionE'/>
+<fun r='_ZNK4llvm11LLVMContext23shouldDiscardValueNamesEv'/>
+<fun r='_ZN4llvm11LLVMContext20setDiscardValueNamesEb'/>
+<fun r='_ZNK4llvm11LLVMContext23isODRUniquingDebugTypesEv'/>
+<fun r='_ZN4llvm11LLVMContext26enableDebugTypeODRUniquingEv'/>
+<fun r='_ZN4llvm11LLVMContext27disableDebugTypeODRUniquingEv'/>
+<fun r='_ZN4llvm11LLVMContext29setInlineAsmDiagnosticHandlerEPFvRKNS_12SMDiagnosticEPvjES4_'/>
+<fun r='_ZNK4llvm11LLVMContext29getInlineAsmDiagnosticHandlerEv'/>
+<fun r='_ZNK4llvm11LLVMContext29getInlineAsmDiagnosticContextEv'/>
+<fun r='_ZN4llvm11LLVMContext28setDiagnosticHandlerCallBackEPFvRKNS_14DiagnosticInfoEPvES4_b'/>
+<fun r='_ZN4llvm11LLVMContext20setDiagnosticHandlerEOSt10unique_ptrINS_17DiagnosticHandlerESt14default_deleteIS2_EEb'/>
+<fun r='_ZNK4llvm11LLVMContext28getDiagnosticHandlerCallBackEv'/>
+<fun r='_ZNK4llvm11LLVMContext20getDiagnosticContextEv'/>
+<fun r='_ZNK4llvm11LLVMContext17getDiagHandlerPtrEv'/>
+<fun r='_ZN4llvm11LLVMContext20getDiagnosticHandlerEv'/>
+<fun r='_ZNK4llvm11LLVMContext30getDiagnosticsHotnessRequestedEv'/>
+<fun r='_ZN4llvm11LLVMContext30setDiagnosticsHotnessRequestedEb'/>
+<fun r='_ZNK4llvm11LLVMContext30getDiagnosticsHotnessThresholdEv'/>
+<fun r='_ZN4llvm11LLVMContext30setDiagnosticsHotnessThresholdEm'/>
+<fun r='_ZN4llvm11LLVMContext24getDiagnosticsOutputFileEv'/>
+<fun r='_ZN4llvm11LLVMContext24setDiagnosticsOutputFileESt10unique_ptrINS_4yaml6OutputESt14default_deleteIS3_EE'/>
+<fun r='_ZN4llvm11LLVMContext26getDiagnosticMessagePrefixENS_18DiagnosticSeverityE'/>
+<fun r='_ZN4llvm11LLVMContext8diagnoseERKNS_14DiagnosticInfoE'/>
+<fun r='_ZN4llvm11LLVMContext16setYieldCallbackEPFvPS0_PvES2_'/>
+<fun r='_ZN4llvm11LLVMContext5yieldEv'/>
+<fun r='_ZN4llvm11LLVMContext9emitErrorEjRKNS_5TwineE'/>
+<fun r='_ZN4llvm11LLVMContext9emitErrorEPKNS_11InstructionERKNS_5TwineE'/>
+<fun r='_ZN4llvm11LLVMContext9emitErrorERKNS_5TwineE'/>
+<fun r='_ZNK4llvm11LLVMContext9getOptionEv'/>
+<fun r='_ZN4llvm11LLVMContext12getOptBisectEv'/>
+<fun r='_ZN4llvm11LLVMContext9addModuleEPNS_6ModuleE'/>
+<fun r='_ZN4llvm11LLVMContext12removeModuleEPNS_6ModuleE'/>

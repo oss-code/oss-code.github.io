@@ -1,0 +1,6 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='649' type='unsigned int LLVMGetNamedMetadataNumOperands(LLVMModuleRef M, const char * Name)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='644'>/**
+ * Obtain the number of operands for named metadata in a module.
+ *
+ * @see llvm::Module::getNamedMetadata()
+ */</doc>

@@ -1,0 +1,12 @@
+<dec f='include/hwloc.h' l='732' type='1'/>
+<doc f='include/hwloc.h' l='721'>/** \brief Detect the whole system, ignore reservations and offline settings.
+   *
+   * Gather all resources, even if some were disabled by the administrator.
+   * For instance, ignore Linux Cgroup/Cpusets and gather all processors and memory nodes,
+   * and ignore the fact that some resources may be offline.
+   *
+   * When this flag is not set, PUs that are disallowed are not added to the topology.
+   * Parent objects (package, core, cache, etc.) are added only if some of their children are allowed.
+   * NUMA nodes are always added but their available memory is set to 0 when disallowed.
+   * \hideinitializer
+   */</doc>

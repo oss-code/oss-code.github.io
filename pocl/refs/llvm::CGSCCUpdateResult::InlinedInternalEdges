@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='302' type='SmallDenseSet&lt;std::pair&lt;LazyCallGraph::Node *, LazyCallGraph::SCC *&gt;, 4&gt; &amp;'/>
+<offset>384</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='295'>/// A hacky area where the inliner can retain history about inlining
+  /// decisions that mutated the call graph&apos;s SCC structure in order to avoid
+  /// infinite inlining. See the comments in the inliner&apos;s CG update logic.
+  ///
+  /// FIXME: Keeping this here seems like a big layering issue, we should look
+  /// for a better technique.</doc>

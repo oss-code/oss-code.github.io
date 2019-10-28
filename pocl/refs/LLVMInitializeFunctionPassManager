@@ -1,0 +1,4 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='3181' type='LLVMBool LLVMInitializeFunctionPassManager(LLVMPassManagerRef FPM)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='3178'>/** Initializes all of the function passes scheduled in the function pass
+    manager. Returns 1 if any of the passes modified the module, 0 otherwise.
+    @see llvm::FunctionPassManager::doInitialization */</doc>

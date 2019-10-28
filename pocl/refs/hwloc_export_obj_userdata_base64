@@ -1,0 +1,14 @@
+<dec f='include/hwloc.h' l='2327' type='int hwloc_export_obj_userdata_base64(void * reserved, hwloc_topology_t topology, hwloc_obj_t obj, const char * name, const void * buffer, size_t length)'/>
+<doc f='include/hwloc.h' l='2314'>/** \brief Encode and export some object userdata to XML
+ *
+ * This function is similar to hwloc_export_obj_userdata() but it encodes
+ * the input buffer into printable characters before exporting.
+ * On import, decoding is automatically performed before the data is given
+ * to the import() callback if any.
+ *
+ * This function may only be called from within the export() callback passed
+ * to hwloc_topology_set_userdata_export_callback().
+ *
+ * The function does not take care of portability issues if the export
+ * may be reimported on a different architecture.
+ */</doc>

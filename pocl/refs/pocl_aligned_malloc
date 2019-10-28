@@ -1,0 +1,30 @@
+<dec f='pocl/lib/CL/pocl_util.h' l='91' type='void * pocl_aligned_malloc(size_t alignment, size_t size)'/>
+<use f='pocl/lib/CL/clCreateBuffer.c' l='173' u='c' c='POclCreateBuffer'/>
+<doc f='pocl/lib/CL/pocl_util.h' l='82'>/* Allocates aligned blocks of memory.
+ *
+ * Uses posix_memalign when available. Otherwise, uses
+ * malloc to allocate a block of memory on the heap of the desired
+ * size which is then aligned with the given alignment. The resulting
+ * pointer must be freed with a call to pocl_aligned_free. Alignment
+ * must be a non-zero power of 2.
+ */</doc>
+<use f='pocl/lib/CL/clEnqueueFillBuffer.c' l='96' u='c' c='POclEnqueueFillBuffer'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='598' u='c' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/clEnqueueSVMMemFill.c' l='82' u='c' c='POclEnqueueSVMMemFill'/>
+<use f='pocl/lib/CL/clSetKernelArg.c' l='139' u='c' c='POclSetKernelArg'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='428' u='c' c='pocl_basic_init'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='600' u='c' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='626' u='c' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='651' u='c' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='1100' u='c' c='pocl_basic_reinit'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='1448' u='c' c='pocl_basic_svm_alloc'/>
+<use f='pocl/lib/CL/devices/common.c' l='1274' u='c' c='pocl_aligned_malloc_global_mem'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='376' u='c' c='pocl_pthread_init_queue'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='93' u='c' c='pthread_scheduler_init'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='353' macro='1' u='c'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='506' u='c' c='pocl_pthread_driver_thread'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='511' u='c' c='pocl_pthread_driver_thread'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='112' u='c' c='setup_kernel_arg_array'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='114' u='c' c='setup_kernel_arg_array'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='150' u='c' c='setup_kernel_arg_array'/>
+<def f='pocl/lib/CL/pocl_util.c' l='261' ll='323' type='void * pocl_aligned_malloc(size_t alignment, size_t size)'/>

@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='237' ll='239' type='static bool llvm::MetadataTracking::track(void * Ref, llvm::Metadata &amp; MD, llvm::MetadataAsValue &amp; Owner)'/>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='232'>/// \brief Track the reference to metadata for \a MetadataAsValue.
+  ///
+  /// As \a track(Metadata*&amp;), but with support for calling back to \c Owner to
+  /// tell it that its operand changed.  This could trigger \c Owner being
+  /// re-uniqued.</doc>

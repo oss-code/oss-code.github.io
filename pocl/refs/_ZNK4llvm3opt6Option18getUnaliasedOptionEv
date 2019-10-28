@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Option/Option.h' l='177' ll='181' type='const llvm::opt::Option llvm::opt::Option::getUnaliasedOption() const'/>
+<use f='include/llvm-6.0/llvm/Option/Option.h' l='179' u='c' c='_ZNK4llvm3opt6Option18getUnaliasedOptionEv'/>
+<use f='include/llvm-6.0/llvm/Option/Option.h' l='186' u='c' c='_ZNK4llvm3opt6Option13getRenderNameEv'/>
+<doc f='include/llvm-6.0/llvm/Option/Option.h' l='175'>/// getUnaliasedOption - Return the final option this option
+  /// aliases (itself, if the option has no alias).</doc>

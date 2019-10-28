@@ -1,0 +1,25 @@
+<inh f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='153' c='llvm::DINode'/>
+<def f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2075' ll='2118'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2322' c='llvm::DIGlobalVariable'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2401' c='llvm::DILocalVariable'/>
+<size>32</size>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2074'>/// Base class for variables.</doc>
+<mbr r='llvm::DIVariable::Line' o='192' t='unsigned int'/>
+<mbr r='llvm::DIVariable::AlignInBits' o='224' t='uint32_t'/>
+<fun r='_ZN4llvm10DIVariableC1ERNS_11LLVMContextEjNS_8Metadata11StorageTypeEjNS_8ArrayRefIPS3_EEj'/>
+<fun r='_ZN4llvm10DIVariableD1Ev'/>
+<fun r='_ZNK4llvm10DIVariable7getLineEv'/>
+<fun r='_ZNK4llvm10DIVariable8getScopeEv'/>
+<fun r='_ZNK4llvm10DIVariable7getNameEv'/>
+<fun r='_ZNK4llvm10DIVariable7getFileEv'/>
+<fun r='_ZNK4llvm10DIVariable7getTypeEv'/>
+<fun r='_ZNK4llvm10DIVariable14getAlignInBitsEv'/>
+<fun r='_ZNK4llvm10DIVariable15getAlignInBytesEv'/>
+<fun r='_ZNK4llvm10DIVariable13getSizeInBitsEv'/>
+<fun r='_ZNK4llvm10DIVariable11getFilenameEv'/>
+<fun r='_ZNK4llvm10DIVariable12getDirectoryEv'/>
+<fun r='_ZNK4llvm10DIVariable11getRawScopeEv'/>
+<fun r='_ZNK4llvm10DIVariable10getRawNameEv'/>
+<fun r='_ZNK4llvm10DIVariable10getRawFileEv'/>
+<fun r='_ZNK4llvm10DIVariable10getRawTypeEv'/>
+<fun r='_ZN4llvm10DIVariable7classofEPKNS_8MetadataE'/>

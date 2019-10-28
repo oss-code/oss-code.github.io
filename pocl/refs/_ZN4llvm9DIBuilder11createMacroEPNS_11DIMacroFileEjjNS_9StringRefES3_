@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='153' type='llvm::DIMacro * llvm::DIBuilder::createMacro(llvm::DIMacroFile * Parent, unsigned int Line, unsigned int MacroType, llvm::StringRef Name, llvm::StringRef Value = llvm::StringRef())'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='147'>/// Create debugging information entry for a macro.
+    /// \param Parent     Macro parent (could be nullptr).
+    /// \param Line       Source line number where the macro is defined.
+    /// \param MacroType  DW_MACINFO_define or DW_MACINFO_undef.
+    /// \param Name       Macro name.
+    /// \param Value      Macro value.</doc>

@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='162' type='llvm::DIMacroFile * llvm::DIBuilder::createTempMacroFile(llvm::DIMacroFile * Parent, unsigned int Line, llvm::DIFile * File)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='156'>/// Create debugging information temporary entry for a macro file.
+    /// List of macro node direct children will be calculated by DIBuilder,
+    /// using the \p Parent relationship.
+    /// \param Parent     Macro file parent (could be nullptr).
+    /// \param Line       Source line number where the macro file is included.
+    /// \param File       File descriptor containing the name of the macro file.</doc>

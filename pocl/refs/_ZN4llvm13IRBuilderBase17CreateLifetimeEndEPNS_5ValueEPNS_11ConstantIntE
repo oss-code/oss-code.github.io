@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='528' type='llvm::CallInst * llvm::IRBuilderBase::CreateLifetimeEnd(llvm::Value * Ptr, llvm::ConstantInt * Size = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='525'>/// \brief Create a lifetime.end intrinsic.
+  ///
+  /// If the pointer isn&apos;t i8* it will be converted.</doc>

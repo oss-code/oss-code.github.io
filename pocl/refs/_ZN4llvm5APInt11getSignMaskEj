@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='548' ll='550' type='static llvm::APInt llvm::APInt::getSignMask(unsigned int BitWidth)'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='544'>/// \brief Get the SignMask for a specific bit width.
+  ///
+  /// This is just a wrapper function of getSignedMinValue(), and it helps code
+  /// readability when we want to get a SignMask.</doc>

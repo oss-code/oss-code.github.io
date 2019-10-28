@@ -1,0 +1,59 @@
+<inh f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='591' c='llvm::yaml::IO'/>
+<def f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='1304' ll='1380'/>
+<size>112</size>
+<doc f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='1300'>///
+/// The Output class is used to generate a yaml document from in-memory structs
+/// and vectors.
+///</doc>
+<fun r='_ZN4llvm4yaml6OutputC1ERNS_11raw_ostreamEPvi'/>
+<fun r='_ZN4llvm4yaml6OutputD1Ev'/>
+<fun r='_ZN4llvm4yaml6Output21setWriteDefaultValuesEb'/>
+<fun r='_ZN4llvm4yaml6Output10outputtingEv'/>
+<fun r='_ZN4llvm4yaml6Output6mapTagENS_9StringRefEb'/>
+<fun r='_ZN4llvm4yaml6Output12beginMappingEv'/>
+<fun r='_ZN4llvm4yaml6Output10endMappingEv'/>
+<fun r='_ZN4llvm4yaml6Output12preflightKeyEPKcbbRbRPv'/>
+<fun r='_ZN4llvm4yaml6Output13postflightKeyEPv'/>
+<fun r='_ZN4llvm4yaml6Output4keysEv'/>
+<fun r='_ZN4llvm4yaml6Output16beginFlowMappingEv'/>
+<fun r='_ZN4llvm4yaml6Output14endFlowMappingEv'/>
+<fun r='_ZN4llvm4yaml6Output13beginSequenceEv'/>
+<fun r='_ZN4llvm4yaml6Output11endSequenceEv'/>
+<fun r='_ZN4llvm4yaml6Output16preflightElementEjRPv'/>
+<fun r='_ZN4llvm4yaml6Output17postflightElementEPv'/>
+<fun r='_ZN4llvm4yaml6Output17beginFlowSequenceEv'/>
+<fun r='_ZN4llvm4yaml6Output20preflightFlowElementEjRPv'/>
+<fun r='_ZN4llvm4yaml6Output21postflightFlowElementEPv'/>
+<fun r='_ZN4llvm4yaml6Output15endFlowSequenceEv'/>
+<fun r='_ZN4llvm4yaml6Output15beginEnumScalarEv'/>
+<fun r='_ZN4llvm4yaml6Output15matchEnumScalarEPKcb'/>
+<fun r='_ZN4llvm4yaml6Output17matchEnumFallbackEv'/>
+<fun r='_ZN4llvm4yaml6Output13endEnumScalarEv'/>
+<fun r='_ZN4llvm4yaml6Output17beginBitSetScalarERb'/>
+<fun r='_ZN4llvm4yaml6Output11bitSetMatchEPKcb'/>
+<fun r='_ZN4llvm4yaml6Output15endBitSetScalarEv'/>
+<fun r='_ZN4llvm4yaml6Output12scalarStringERNS_9StringRefENS0_11QuotingTypeE'/>
+<fun r='_ZN4llvm4yaml6Output17blockScalarStringERNS_9StringRefE'/>
+<fun r='_ZN4llvm4yaml6Output8setErrorERKNS_5TwineE'/>
+<fun r='_ZN4llvm4yaml6Output21canElideEmptySequenceEv'/>
+<fun r='_ZN4llvm4yaml6Output14beginDocumentsEv'/>
+<fun r='_ZN4llvm4yaml6Output17preflightDocumentEj'/>
+<fun r='_ZN4llvm4yaml6Output18postflightDocumentEv'/>
+<fun r='_ZN4llvm4yaml6Output12endDocumentsEv'/>
+<fun r='_ZN4llvm4yaml6Output6outputENS_9StringRefE'/>
+<fun r='_ZN4llvm4yaml6Output19outputUpToEndOfLineENS_9StringRefE'/>
+<fun r='_ZN4llvm4yaml6Output12newLineCheckEv'/>
+<fun r='_ZN4llvm4yaml6Output13outputNewLineEv'/>
+<fun r='_ZN4llvm4yaml6Output9paddedKeyENS_9StringRefE'/>
+<fun r='_ZN4llvm4yaml6Output7flowKeyENS_9StringRefE'/>
+<mbr r='llvm::yaml::Output::Out' o='128' t='llvm::raw_ostream &amp;'/>
+<mbr r='llvm::yaml::Output::WrapColumn' o='192' t='int'/>
+<mbr r='llvm::yaml::Output::StateStack' o='256' t='SmallVector&lt;llvm::yaml::Output::InState, 8&gt;'/>
+<mbr r='llvm::yaml::Output::Column' o='704' t='int'/>
+<mbr r='llvm::yaml::Output::ColumnAtFlowStart' o='736' t='int'/>
+<mbr r='llvm::yaml::Output::ColumnAtMapFlowStart' o='768' t='int'/>
+<mbr r='llvm::yaml::Output::NeedBitValueComma' o='800' t='bool'/>
+<mbr r='llvm::yaml::Output::NeedFlowSequenceComma' o='808' t='bool'/>
+<mbr r='llvm::yaml::Output::EnumerationMatchFound' o='816' t='bool'/>
+<mbr r='llvm::yaml::Output::NeedsNewLine' o='824' t='bool'/>
+<mbr r='llvm::yaml::Output::WriteDefaultValues' o='832' t='bool'/>

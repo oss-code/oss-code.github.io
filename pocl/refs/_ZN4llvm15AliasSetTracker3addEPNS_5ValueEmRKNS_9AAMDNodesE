@@ -1,0 +1,15 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasSetTracker.h' l='367' type='void llvm::AliasSetTracker::add(llvm::Value * Ptr, uint64_t Size, const llvm::AAMDNodes &amp; AAInfo)'/>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='222' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasSetTracker.h' l='355'>/// These methods are used to add different types of instructions to the alias
+  /// sets. Adding a new instruction can result in one of three actions
+  /// happening:
+  ///
+  ///   1. If the instruction doesn&apos;t alias any other sets, create a new set.
+  ///   2. If the instruction aliases exactly one set, add it to the set
+  ///   3. If the instruction aliases multiple sets, merge the sets, and add
+  ///      the instruction to the result.
+  ///
+  /// These methods return true if inserting the instruction resulted in the
+  /// addition of a new alias set (i.e., the pointer did not alias anything).
+  ///</doc>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasSetTracker.h' l='367'>// Add a loc.</doc>

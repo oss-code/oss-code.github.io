@@ -1,0 +1,32 @@
+<def f='include/c++/7/bits/basic_string.h' l='721' ll='778' type='basic_string&lt;_CharT, _Traits, _Alloc&gt; &amp; std::__cxx11::basic_string::operator=(basic_string&lt;_CharT, _Traits, _Alloc&gt; &amp;&amp; __str)'/>
+<use f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1032' u='c' c='_ZN4llvm2cl6parserINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE5parseERNS0_6OptionENS_9StringRefESB_RS7_'/>
+<use f='include/llvm-6.0/llvm/IR/Module.h' l='259' u='c' c='_ZN4llvm6Module19setModuleIdentifierENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/IR/Module.h' l='262' u='c' c='_ZN4llvm6Module17setSourceFileNameENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/IR/Module.h' l='269' u='c' c='_ZN4llvm6Module15setTargetTripleENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/IR/Module.h' l='274' u='c' c='_ZN4llvm6Module18setModuleInlineAsmENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/Support/Error.h' l='1116' u='c' c='_ZN4llvm11ExitOnError9setBannerENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='include/llvm-6.0/llvm/Support/FileSystem.h' l='874' u='c' c='_ZN4llvm3sys2fs15directory_entry6assignERKNS_5TwineENS1_17basic_file_statusE'/>
+<use f='include/llvm-6.0/llvm/Analysis/TargetLibraryInfo.h' l='130' u='c' c='_ZN4llvm21TargetLibraryInfoImpl20setAvailableWithNameENS_7LibFuncENS_9StringRefE'/>
+<doc f='include/c++/7/bits/basic_string.h' l='711'>/**
+       *  @brief  Move assign the value of @a str to this string.
+       *  @param  __str  Source string.
+       *
+       *  The contents of @a str are moved into this string (without copying).
+       *  @a str is a valid, but unspecified string.
+       **/
+      // PR 58265, this should be noexcept.
+      // _GLIBCXX_RESOLVE_LIB_DEFECTS
+      // 2063. Contradictory requirements for string move assignment</doc>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='184' u='c' c='_ZL21getPoclPrivateDataDirB5cxx11v'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='432' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='446' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='447' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='448' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='835' u='c' c='_ZL16getKernelLibraryP13_cl_device_id'/>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='154' u='c' c='_ZN12_GLOBAL__N_115AutomaticLocals22processAutomaticLocalsEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/DebugHelpers.cc' l='140' u='c' c='_ZN4pocl7dumpCFGERN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPNS0_11SmallVectorIPNS_14ParallelRegionELj8EEEPSt3setIPNS0_10Bas7693485'/>
+<use f='pocl/lib/llvmopencl/DebugHelpers.cc' l='147' u='c' c='_ZN4pocl7dumpCFGERN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPNS0_11SmallVectorIPNS_14ParallelRegionELj8EEEPSt3setIPNS0_10Bas7693485'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='86' u='c' c='_ZN4pocl14ParallelRegion17GenerateTempNamesEPN4llvm10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='636' u='c' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='949' u='c' c='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1355' u='c' c='_ZN4pocl9Workgroup27createFastWorkgroupLauncherEPN4llvm8FunctionE'/>

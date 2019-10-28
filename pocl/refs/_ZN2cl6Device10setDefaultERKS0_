@@ -1,0 +1,8 @@
+<def f='pocl/include/CL/cl2.hpp' l='2104' ll='2109' type='static cl::Device cl::Device::setDefault(const cl::Device &amp; default_device)'/>
+<doc f='pocl/include/CL/cl2.hpp' l='2097'>/**
+    * Modify the default device to be used by
+    * subsequent operations.
+    * Will only set the default if no default was previously created.
+    * @return updated default device.
+    *         Should be compared to the passed value to ensure that it was updated.
+    */</doc>

@@ -1,0 +1,11 @@
+<def f='include/c++/7/bits/stl_vector.h' l='1246' ll='1248' type='void std::vector::clear()'/>
+<use f='include/c++/7/bits/stl_vector.h' l='1316' u='c' c='_ZNSt6vector19_M_range_initializeET_S0_St18input_iterator_tag'/>
+<use f='include/llvm-6.0/llvm/PassAnalysisSupport.h' l='179' u='c' c='_ZN4llvm16AnalysisResolver18clearAnalysisImplsEv'/>
+<doc f='include/c++/7/bits/stl_vector.h' l='1240'>/**
+       *  Erases all the elements.  Note that this function only erases the
+       *  elements, and that if the elements themselves are pointers, the
+       *  pointed-to memory is not touched in any way.  Managing the pointer is
+       *  the user&apos;s responsibility.
+       */</doc>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='470' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/include/CL/cl2.hpp' l='3056' u='c' c='_ZNK2cl7Context24getSupportedImageFormatsEmjPSt6vectorINS_11ImageFormatESaIS2_EE'/>

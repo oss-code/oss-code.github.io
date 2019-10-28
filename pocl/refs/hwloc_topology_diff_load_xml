@@ -1,0 +1,15 @@
+<dec f='include/hwloc/diff.h' l='243' type='int hwloc_topology_diff_load_xml(hwloc_topology_t topology, const char * xmlpath, hwloc_topology_diff_t * diff, char ** refname)'/>
+<doc f='include/hwloc/diff.h' l='229'>/** \brief Load a list of topology differences from a XML file.
+ *
+ * If not \c NULL, \p refname will be filled with the identifier
+ * string of the reference topology for the difference file,
+ * if any was specified in the XML file.
+ * This identifier is usually the name of the other XML file
+ * that contains the reference topology.
+ *
+ * \note The \p topology parameter must be a valid topology
+ * but it is not required that it is related to \p diff.
+ *
+ * \note the pointer returned in refname should later be freed
+ * by the caller.
+ */</doc>

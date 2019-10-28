@@ -1,0 +1,10 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='1550' type='LLVMValueRef LLVMConstIntOfString(LLVMTypeRef IntTy, const char * Text, uint8_t Radix)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='1541'>/**
+ * Obtain a constant value for an integer parsed from a string.
+ *
+ * A similar API, LLVMConstIntOfStringAndSize is also available. If the
+ * string&apos;s length is available, it is preferred to call that function
+ * instead.
+ *
+ * @see llvm::ConstantInt::get()
+ */</doc>

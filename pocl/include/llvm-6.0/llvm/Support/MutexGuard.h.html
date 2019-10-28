@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>MutexGuard.h source code [include/llvm-6.0/llvm/Support/MutexGuard.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="llvm::MutexGuard "/>
+<link rel="stylesheet" href="../../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'include/llvm-6.0/llvm/Support/MutexGuard.h'; var root_path = '../../../..'; var data_path = '../../../../../data';</script>
+<script src='../../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../../..'>include</a>/<a href='../..'>llvm-6.0</a>/<a href='..'>llvm</a>/<a href='./'>Support</a>/<a href='MutexGuard.h.html'>MutexGuard.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>//===-- Support/MutexGuard.h - Acquire/Release Mutex In Scope ---*- C++ -*-===//</i></td></tr>
+<tr><th id="2">2</th><td><i>//</i></td></tr>
+<tr><th id="3">3</th><td><i>//                     The LLVM Compiler Infrastructure</i></td></tr>
+<tr><th id="4">4</th><td><i>//</i></td></tr>
+<tr><th id="5">5</th><td><i>// This file is distributed under the University of Illinois Open Source</i></td></tr>
+<tr><th id="6">6</th><td><i>// License. See LICENSE.TXT for details.</i></td></tr>
+<tr><th id="7">7</th><td><i>//</i></td></tr>
+<tr><th id="8">8</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="9">9</th><td><i>//</i></td></tr>
+<tr><th id="10">10</th><td><i>// This file defines a guard for a block of code that ensures a Mutex is locked</i></td></tr>
+<tr><th id="11">11</th><td><i>// upon construction and released upon destruction.</i></td></tr>
+<tr><th id="12">12</th><td><i>//</i></td></tr>
+<tr><th id="13">13</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td><u>#<span data-ppcond="15">ifndef</span> <span class="macro" data-ref="_M/LLVM_SUPPORT_MUTEXGUARD_H">LLVM_SUPPORT_MUTEXGUARD_H</span></u></td></tr>
+<tr><th id="16">16</th><td><u>#define <dfn class="macro" id="_M/LLVM_SUPPORT_MUTEXGUARD_H" data-ref="_M/LLVM_SUPPORT_MUTEXGUARD_H">LLVM_SUPPORT_MUTEXGUARD_H</dfn></u></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><u>#include <a href="Mutex.h.html">"llvm/Support/Mutex.h"</a></u></td></tr>
+<tr><th id="19">19</th><td></td></tr>
+<tr><th id="20">20</th><td><b>namespace</b> <span class="namespace">llvm</span> {</td></tr>
+<tr><th id="21">21</th><td>  <i class="doc">/// Instances of this class acquire a given Mutex Lock when constructed and</i></td></tr>
+<tr><th id="22">22</th><td><i class="doc">  /// hold that lock until destruction. The intention is to instantiate one of</i></td></tr>
+<tr><th id="23">23</th><td><i class="doc">  /// these on the stack at the top of some scope to be assured that C++</i></td></tr>
+<tr><th id="24">24</th><td><i class="doc">  /// destruction of the object will always release the Mutex and thus avoid</i></td></tr>
+<tr><th id="25">25</th><td><i class="doc">  /// a host of nasty multi-threading problems in the face of exceptions, etc.</i></td></tr>
+<tr><th id="26">26</th><td><i class="doc">  /// <span class="command">@brief</span> Guard a section of code with a Mutex.</i></td></tr>
+<tr><th id="27">27</th><td>  <b>class</b> <dfn class="type def" id="llvm::MutexGuard" title='llvm::MutexGuard' data-ref="llvm::MutexGuard">MutexGuard</dfn> {</td></tr>
+<tr><th id="28">28</th><td>    <span class="namespace">sys::</span><a class="typedef" href="Mutex.h.html#llvm::sys::Mutex" title='llvm::sys::Mutex' data-type='SmartMutex&lt;false&gt;' data-ref="llvm::sys::Mutex">Mutex</a> &amp;<dfn class="decl" id="llvm::MutexGuard::M" title='llvm::MutexGuard::M' data-ref="llvm::MutexGuard::M">M</dfn>;</td></tr>
+<tr><th id="29">29</th><td>    <dfn class="decl def" id="_ZN4llvm10MutexGuardC1ERKS0_" title='llvm::MutexGuard::MutexGuard' data-ref="_ZN4llvm10MutexGuardC1ERKS0_">MutexGuard</dfn>(<em>const</em> <a class="type" href="#llvm::MutexGuard" title='llvm::MutexGuard' data-ref="llvm::MutexGuard">MutexGuard</a> &amp;) = <b>delete</b>;</td></tr>
+<tr><th id="30">30</th><td>    <em>void</em> <dfn class="decl def" id="_ZN4llvm10MutexGuardaSERKS0_" title='llvm::MutexGuard::operator=' data-ref="_ZN4llvm10MutexGuardaSERKS0_"><b>operator</b>=</dfn>(<em>const</em> <a class="type" href="#llvm::MutexGuard" title='llvm::MutexGuard' data-ref="llvm::MutexGuard">MutexGuard</a> &amp;) = <b>delete</b>;</td></tr>
+<tr><th id="31">31</th><td>  <b>public</b>:</td></tr>
+<tr><th id="32">32</th><td>    <dfn class="decl def" id="_ZN4llvm10MutexGuardC1ERNS_3sys10SmartMutexILb0EEE" title='llvm::MutexGuard::MutexGuard' data-ref="_ZN4llvm10MutexGuardC1ERNS_3sys10SmartMutexILb0EEE">MutexGuard</dfn>(<span class="namespace">sys::</span><a class="typedef" href="Mutex.h.html#llvm::sys::Mutex" title='llvm::sys::Mutex' data-type='SmartMutex&lt;false&gt;' data-ref="llvm::sys::Mutex">Mutex</a> &amp;<dfn class="local col5 decl" id="4135m" title='m' data-type='sys::Mutex &amp;' data-ref="4135m">m</dfn>) : <a class="member" href="#llvm::MutexGuard::M" title='llvm::MutexGuard::M' data-ref="llvm::MutexGuard::M">M</a>(<a class="local col5 ref" href="#4135m" title='m' data-ref="4135m">m</a>) { <a class="member" href="#llvm::MutexGuard::M" title='llvm::MutexGuard::M' data-ref="llvm::MutexGuard::M">M</a>.<a class="ref" href="Mutex.h.html#_ZN4llvm3sys10SmartMutex4lockEv" title='llvm::sys::SmartMutex::lock' data-ref="_ZN4llvm3sys10SmartMutex4lockEv">lock</a>(); }</td></tr>
+<tr><th id="33">33</th><td>    <dfn class="decl def" id="_ZN4llvm10MutexGuardD1Ev" title='llvm::MutexGuard::~MutexGuard' data-ref="_ZN4llvm10MutexGuardD1Ev">~MutexGuard</dfn>() { <a class="member" href="#llvm::MutexGuard::M" title='llvm::MutexGuard::M' data-ref="llvm::MutexGuard::M">M</a>.<a class="ref" href="Mutex.h.html#_ZN4llvm3sys10SmartMutex6unlockEv" title='llvm::sys::SmartMutex::unlock' data-ref="_ZN4llvm3sys10SmartMutex6unlockEv">unlock</a>(); }</td></tr>
+<tr><th id="34">34</th><td>    <i class="doc">/// holds - Returns true if this locker instance holds the specified lock.</i></td></tr>
+<tr><th id="35">35</th><td><i class="doc">    /// This is mostly used in assertions to validate that the correct mutex</i></td></tr>
+<tr><th id="36">36</th><td><i class="doc">    /// is held.</i></td></tr>
+<tr><th id="37">37</th><td>    <em>bool</em> <dfn class="decl def" id="_ZNK4llvm10MutexGuard5holdsERKNS_3sys10SmartMutexILb0EEE" title='llvm::MutexGuard::holds' data-ref="_ZNK4llvm10MutexGuard5holdsERKNS_3sys10SmartMutexILb0EEE">holds</dfn>(<em>const</em> <span class="namespace">sys::</span><a class="typedef" href="Mutex.h.html#llvm::sys::Mutex" title='llvm::sys::Mutex' data-type='SmartMutex&lt;false&gt;' data-ref="llvm::sys::Mutex">Mutex</a>&amp; <dfn class="local col6 decl" id="4136lock" title='lock' data-type='const sys::Mutex &amp;' data-ref="4136lock">lock</dfn>) <em>const</em> { <b>return</b> &amp;<a class="member" href="#llvm::MutexGuard::M" title='llvm::MutexGuard::M' data-ref="llvm::MutexGuard::M">M</a> == &amp;<a class="local col6 ref" href="#4136lock" title='lock' data-ref="4136lock">lock</a>; }</td></tr>
+<tr><th id="38">38</th><td>  };</td></tr>
+<tr><th id="39">39</th><td>}</td></tr>
+<tr><th id="40">40</th><td></td></tr>
+<tr><th id="41">41</th><td><u>#<span data-ppcond="15">endif</span> // LLVM_SUPPORT_MUTEXGUARD_H</u></td></tr>
+<tr><th id="42">42</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../../../pocl/lib/CL/pocl_llvm_build.cc.html'>pocl/lib/CL/pocl_llvm_build.cc</a><br/>Generated on <em>2019-Oct-28</em> from project include<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

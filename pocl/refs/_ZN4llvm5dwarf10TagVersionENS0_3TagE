@@ -1,0 +1,11 @@
+<dec f='include/llvm-6.0/llvm/BinaryFormat/Dwarf.h' l='452' type='unsigned int llvm::dwarf::TagVersion(llvm::dwarf::Tag T)'/>
+<doc f='include/llvm-6.0/llvm/BinaryFormat/Dwarf.h' l='442'>/// @}
+
+/// \defgroup DwarfConstantsVersioning Dwarf version for constants
+///
+/// For constants defined by DWARF, returns the DWARF version when the constant
+/// was first defined. For vendor extensions, if there is a version-related
+/// policy for when to emit it, returns a version number for that policy.
+/// Otherwise returns 0.
+///
+/// @{</doc>

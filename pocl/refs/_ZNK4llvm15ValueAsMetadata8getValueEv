@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='377' type='llvm::Value * llvm::ValueAsMetadata::getValue() const'/>
+<use f='include/llvm-6.0/llvm/IR/Metadata.h' l='417' u='c' c='_ZNK4llvm18ConstantAsMetadata8getValueEv'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='69' u='c' c='_ZL35pocl_get_kernel_arg_module_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='105' u='c' c='_ZL35pocl_get_kernel_arg_module_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='476' u='c' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/llvmopencl/LLVMUtils.cc' l='64' u='c' c='_ZN4pocl26regenerate_kernel_metadataERN4llvm6ModuleERSt3mapIPNS0_8FunctionES5_St4lessIS5_ESaISt4pairIKS5_S5_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1453' u='c' c='_ZN4pocl9Workgroup17isKernelToProcessERKN4llvm8FunctionE'/>

@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='576' type='Optional&lt;std::pair&lt;const SCEV *, SmallVector&lt;const SCEVPredicate *, 3&gt; &gt; &gt; llvm::ScalarEvolution::createAddRecFromPHIWithCasts(const llvm::SCEVUnknown * SymbolicPHI)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='571'>/// Checks if \p SymbolicPHI can be rewritten as an AddRecExpr under some
+  /// Predicates. If successful return these &lt;AddRecExpr, Predicates&gt;;
+  /// The function is intended to be called from PSCEV (the caller will decide
+  /// whether to actually add the predicates and carry out the rewrites).</doc>

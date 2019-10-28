@@ -1,0 +1,12 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2195' type='void LLVMGetMDNodeOperands(LLVMValueRef V, LLVMValueRef * Dest)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2184'>/**
+ * Obtain the given MDNode&apos;s operands.
+ *
+ * The passed LLVMValueRef pointer should point to enough memory to hold all of
+ * the operands of the given MDNode (see LLVMGetMDNodeNumOperands) as
+ * LLVMValueRefs. This memory will be populated with the LLVMValueRefs of the
+ * MDNode&apos;s operands.
+ *
+ * @param V MDNode to get the operands from.
+ * @param Dest Destination array for operands.
+ */</doc>

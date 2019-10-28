@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/ADT/BitVector.h' l='299' ll='328' type='int llvm::BitVector::find_last_unset_in(unsigned int Begin, unsigned int End) const'/>
+<use f='include/llvm-6.0/llvm/ADT/BitVector.h' l='358' u='c' c='_ZNK4llvm9BitVector15find_last_unsetEv'/>
+<use f='include/llvm-6.0/llvm/ADT/BitVector.h' l='363' u='c' c='_ZN4llvm9BitVector15find_prev_unsetEj'/>
+<doc f='include/llvm-6.0/llvm/ADT/BitVector.h' l='297'>/// find_last_unset_in - Returns the index of the last unset bit in the
+  /// range [Begin, End).  Returns -1 if all bits in the range are set.</doc>

@@ -1,0 +1,18 @@
+<def f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='69' ll='94'/>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='62'>/// Holds a subclass of DINode.
+///
+/// FIXME: This class doesn&apos;t currently make much sense.  Previously it was a
+/// union beteen MDString (for ODR-uniqued types) and things like DIType.  To
+/// support CodeView work, it wasn&apos;t deleted outright when MDString-based type
+/// references were deleted; we&apos;ll soon need a similar concept for CodeView
+/// DITypeIndex.</doc>
+<mbr r='llvm::TypedDINodeRef::MD' t='const llvm::Metadata *'/>
+<fun r='_ZN4llvm14TypedDINodeRefC1Ev'/>
+<fun r='_ZN4llvm14TypedDINodeRefC1EDn'/>
+<fun r='_ZN4llvm14TypedDINodeRefC1EPKT_'/>
+<fun r='_ZN4llvm14TypedDINodeRefC1EPKNS_8MetadataE'/>
+<fun r='_ZN4llvm14TypedDINodeRefC1ERKNS_14TypedDINodeRefIT_EEPNSt9enable_ifIXsr14is_convertibleIPS2_PT_EE5valueEvE4typeE'/>
+<fun r='_ZNK4llvm14TypedDINodeRefcvPNS_8MetadataEEv'/>
+<fun r='_ZNK4llvm14TypedDINodeRef7resolveEv'/>
+<fun r='_ZNK4llvm14TypedDINodeRefeqERKNS_14TypedDINodeRefIT_EE'/>
+<fun r='_ZNK4llvm14TypedDINodeRefneERKNS_14TypedDINodeRefIT_EE'/>

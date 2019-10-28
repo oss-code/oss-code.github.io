@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='496' type='bool llvm::ScalarEvolution::isSCEVable(llvm::Type * Ty) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='492'>/// Test if values of the given type are analyzable within the SCEV
+  /// framework. This primarily includes integer types, and it can optionally
+  /// include pointer types if the ScalarEvolution class has access to
+  /// target-specific information.</doc>

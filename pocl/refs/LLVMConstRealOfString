@@ -1,0 +1,7 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='1573' type='LLVMValueRef LLVMConstRealOfString(LLVMTypeRef RealTy, const char * Text)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='1567'>/**
+ * Obtain a constant for a floating point value parsed from a string.
+ *
+ * A similar API, LLVMConstRealOfStringAndSize is also available. It
+ * should be used if the input string&apos;s length is known.
+ */</doc>

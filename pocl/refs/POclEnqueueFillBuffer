@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/pocl_intfn.h' l='76' macro='1' type='cl_int POclEnqueueFillBuffer(cl_command_queue , cl_mem , const void * , size_t , size_t , size_t , cl_uint , const cl_event * , cl_event * )'/>
+<def f='pocl/lib/CL/clEnqueueFillBuffer.c' l='28' macro='1' type='cl_int POclEnqueueFillBuffer(cl_command_queue command_queue, cl_mem buffer, const void * pattern, size_t pattern_size, size_t offset, size_t size, cl_uint num_events_in_wait_list, const cl_event * event_wait_list, cl_event * event)'/>
+<use f='pocl/lib/CL/clEnqueueFillImage.c' l='97' macro='1' u='c'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='142' macro='1' u='a'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='142' macro='1' u='a'/>

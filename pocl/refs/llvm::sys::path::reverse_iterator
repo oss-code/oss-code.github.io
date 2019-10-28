@@ -1,0 +1,16 @@
+<inh f='include/llvm-6.0/llvm/ADT/iterator.h' l='68' c='llvm::iterator_facade_base'/>
+<def f='include/llvm-6.0/llvm/Support/Path.h' l='78' ll='96'/>
+<size>48</size>
+<doc f='include/llvm-6.0/llvm/Support/Path.h' l='73'>/// @brief Reverse path iterator.
+///
+/// This is an input iterator that iterates over the individual components in
+/// \a path in reverse order. The traversal order is exactly reversed from that
+/// of \a const_iterator</doc>
+<mbr r='llvm::sys::path::reverse_iterator::Path' o='0' t='llvm::StringRef'/>
+<mbr r='llvm::sys::path::reverse_iterator::Component' o='128' t='llvm::StringRef'/>
+<mbr r='llvm::sys::path::reverse_iterator::Position' o='256' t='size_t'/>
+<mbr r='llvm::sys::path::reverse_iterator::S' o='320' t='llvm::sys::path::Style'/>
+<fun r='_ZNK4llvm3sys4path16reverse_iteratordeEv'/>
+<fun r='_ZN4llvm3sys4path16reverse_iteratorppEv'/>
+<fun r='_ZNK4llvm3sys4path16reverse_iteratoreqERKS2_'/>
+<fun r='_ZNK4llvm3sys4path16reverse_iteratormiERKS2_'/>

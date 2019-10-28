@@ -1,0 +1,12 @@
+<dec f='pocl/lib/llvmopencl/LLVMUtils.h' l='46' type='void pocl::regenerate_kernel_metadata(llvm::Module &amp; M, FunctionMapping &amp; kernels)'/>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='106' u='c' c='_ZN12_GLOBAL__N_115AutomaticLocals11runOnModuleERN4llvm6ModuleE'/>
+<def f='pocl/lib/llvmopencl/LLVMUtils.cc' l='47' ll='99' type='void pocl::regenerate_kernel_metadata(llvm::Module &amp; M, FunctionMapping &amp; kernels)'/>
+<doc f='pocl/lib/llvmopencl/LLVMUtils.cc' l='39'>/**
+ * Regenerates the metadata that points to the original kernel
+ * (of which finger print was modified) to point to the new
+ * kernel.
+ *
+ * Only checks if the first operand of the metadata is the kernel
+ * function.
+ */</doc>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='258' u='c' c='_ZN4pocl9Workgroup11runOnModuleERN4llvm6ModuleE'/>

@@ -1,0 +1,7 @@
+<dec f='include/hwloc/bitmap.h' l='346' type='int hwloc_bitmap_compare_first(hwloc_const_bitmap_t bitmap1, hwloc_const_bitmap_t bitmap2)'/>
+<use f='include/hwloc/cpuset.h' l='64' u='c' c='hwloc_cpuset_compare_first'/>
+<doc f='include/hwloc/bitmap.h' l='341'>/** \brief Compare bitmaps \p bitmap1 and \p bitmap2 using their lowest index.
+ *
+ * Smaller least significant bit is smaller.
+ * The empty bitmap is considered higher than anything.
+ */</doc>

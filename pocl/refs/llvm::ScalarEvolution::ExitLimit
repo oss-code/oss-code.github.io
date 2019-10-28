@@ -1,0 +1,18 @@
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1118' ll='1159'/>
+<size>88</size>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1114'>/// Information about the number of loop iterations for which a loop exit&apos;s
+  /// branch condition evaluates to the not-taken path.  This is a temporary
+  /// pair of exact and max expressions that are eventually summarized in
+  /// ExitNotTakenInfo and BackedgeTakenInfo.</doc>
+<mbr r='llvm::ScalarEvolution::ExitLimit::ExactNotTaken' o='0' t='const llvm::SCEV *'/>
+<mbr r='llvm::ScalarEvolution::ExitLimit::MaxNotTaken' o='64' t='const llvm::SCEV *'/>
+<mbr r='llvm::ScalarEvolution::ExitLimit::MaxOrZero' o='128' t='bool'/>
+<mbr r='llvm::ScalarEvolution::ExitLimit::Predicates' o='192' t='SmallPtrSet&lt;const llvm::SCEVPredicate *, 4&gt;'/>
+<fun r='_ZN4llvm15ScalarEvolution9ExitLimit12addPredicateEPKNS_13SCEVPredicateE'/>
+<fun r='_ZN4llvm15ScalarEvolution9ExitLimitC1EPKNS_4SCEVE'/>
+<fun r='_ZN4llvm15ScalarEvolution9ExitLimitC1EPKNS_4SCEVES4_bNS_8ArrayRefIPKNS_15SmallPtrSetImplIPKNS_13SCEVPredicateEEEEE'/>
+<fun r='_ZN4llvm15ScalarEvolution9ExitLimitC1EPKNS_4SCEVES4_bRKNS_15SmallPtrSetImplIPKNS_13SCEVPredicateEEE'/>
+<fun r='_ZN4llvm15ScalarEvolution9ExitLimitC1EPKNS_4SCEVES4_b'/>
+<fun r='_ZNK4llvm15ScalarEvolution9ExitLimit10hasAnyInfoEv'/>
+<fun r='_ZNK4llvm15ScalarEvolution9ExitLimit10hasOperandEPKNS_4SCEVE'/>
+<fun r='_ZNK4llvm15ScalarEvolution9ExitLimit11hasFullInfoEv'/>

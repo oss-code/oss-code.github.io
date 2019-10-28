@@ -1,0 +1,13 @@
+<def f='pocl/lib/CL/pocl_cl.h' l='888' ll='903'/>
+<size>128</size>
+<mbr r='_cl_command_queue::dispatch' o='0' t='struct _cl_icd_dispatch *'/>
+<mbr r='_cl_command_queue::pocl_lock' o='64' t='pocl_lock_t'/>
+<mbr r='_cl_command_queue::pocl_refcount' o='384' t='volatile int'/>
+<mbr r='_cl_command_queue::context' o='448' t='cl_context'/>
+<mbr r='_cl_command_queue::device' o='512' t='cl_device_id'/>
+<mbr r='_cl_command_queue::properties' o='576' t='cl_command_queue_properties'/>
+<mbr r='_cl_command_queue::events' o='640' t='cl_event'/>
+<mbr r='_cl_command_queue::barrier' o='704' t='struct _cl_event *volatile'/>
+<mbr r='_cl_command_queue::command_count' o='768' t='volatile int'/>
+<mbr r='_cl_command_queue::last_event' o='832' t='volatile pocl_data_sync_item'/>
+<mbr r='_cl_command_queue::data' o='960' t='void *'/>

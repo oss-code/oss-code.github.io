@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='726' type='const llvm::SCEV * llvm::ScalarEvolution::getExitCount(const llvm::Loop * L, llvm::BasicBlock * ExitingBlock)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='723'>/// Get the expression for the number of loop iterations for which this loop
+  /// is guaranteed not to exit via ExitingBlock. Otherwise return
+  /// SCEVCouldNotCompute.</doc>

@@ -1,0 +1,39 @@
+<def f='include/llvm-6.0/llvm/Analysis/AliasSetTracker.h' l='322' ll='459'/>
+<size>64</size>
+<mbr r='llvm::AliasSetTracker::AA' o='0' t='AliasAnalysis &amp;'/>
+<mbr r='llvm::AliasSetTracker::AliasSets' o='64' t='ilist&lt;llvm::AliasSet&gt;'/>
+<mbr r='llvm::AliasSetTracker::PointerMap' o='192' t='PointerMapType'/>
+<fun r='_ZN4llvm15AliasSetTrackerC1ERNS_9AAResultsE'/>
+<fun r='_ZN4llvm15AliasSetTrackerD1Ev'/>
+<fun r='_ZN4llvm15AliasSetTracker3addEPNS_5ValueEmRKNS_9AAMDNodesE'/>
+<fun r='_ZN4llvm15AliasSetTracker3addEPNS_8LoadInstE'/>
+<fun r='_ZN4llvm15AliasSetTracker3addEPNS_9StoreInstE'/>
+<fun r='_ZN4llvm15AliasSetTracker3addEPNS_9VAArgInstE'/>
+<fun r='_ZN4llvm15AliasSetTracker3addEPNS_10MemSetInstE'/>
+<fun r='_ZN4llvm15AliasSetTracker3addEPNS_15MemTransferInstE'/>
+<fun r='_ZN4llvm15AliasSetTracker3addEPNS_11InstructionE'/>
+<fun r='_ZN4llvm15AliasSetTracker3addERNS_10BasicBlockE'/>
+<fun r='_ZN4llvm15AliasSetTracker3addERKS0_'/>
+<fun r='_ZN4llvm15AliasSetTracker10addUnknownEPNS_11InstructionE'/>
+<fun r='_ZN4llvm15AliasSetTracker5clearEv'/>
+<fun r='_ZNK4llvm15AliasSetTracker12getAliasSetsEv'/>
+<fun r='_ZN4llvm15AliasSetTracker21getAliasSetForPointerEPNS_5ValueEmRKNS_9AAMDNodesE'/>
+<fun r='_ZN4llvm15AliasSetTracker29getAliasSetForPointerIfExistsEPKNS_5ValueEmRKNS_9AAMDNodesE'/>
+<fun r='_ZNK4llvm15AliasSetTracker15containsUnknownEPKNS_11InstructionE'/>
+<fun r='_ZNK4llvm15AliasSetTracker16getAliasAnalysisEv'/>
+<fun r='_ZN4llvm15AliasSetTracker11deleteValueEPNS_5ValueE'/>
+<fun r='_ZN4llvm15AliasSetTracker9copyValueEPNS_5ValueES2_'/>
+<fun r='_ZNK4llvm15AliasSetTracker5beginEv'/>
+<fun r='_ZNK4llvm15AliasSetTracker3endEv'/>
+<fun r='_ZN4llvm15AliasSetTracker5beginEv'/>
+<fun r='_ZN4llvm15AliasSetTracker3endEv'/>
+<fun r='_ZNK4llvm15AliasSetTracker5printERNS_11raw_ostreamE'/>
+<fun r='_ZNK4llvm15AliasSetTracker4dumpEv'/>
+<mbr r='llvm::AliasSetTracker::TotalMayAliasSetSize' o='384' t='unsigned int'/>
+<mbr r='llvm::AliasSetTracker::AliasAnyAS' o='448' t='llvm::AliasSet *'/>
+<fun r='_ZN4llvm15AliasSetTracker14removeAliasSetEPNS_8AliasSetE'/>
+<fun r='_ZN4llvm15AliasSetTracker11getEntryForEPNS_5ValueE'/>
+<fun r='_ZN4llvm15AliasSetTracker10addPointerEPNS_5ValueEmRKNS_9AAMDNodesENS_8AliasSet13AccessLatticeE'/>
+<fun r='_ZN4llvm15AliasSetTracker24mergeAliasSetsForPointerEPKNS_5ValueEmRKNS_9AAMDNodesE'/>
+<fun r='_ZN4llvm15AliasSetTracker17mergeAllAliasSetsEv'/>
+<fun r='_ZN4llvm15AliasSetTracker26findAliasSetForUnknownInstEPNS_11InstructionE'/>

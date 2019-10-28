@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/Function.h' l='573' type='void llvm::Function::stealArgumentListFrom(llvm::Function &amp; Src)'/>
+<doc f='include/llvm-6.0/llvm/IR/Function.h' l='569'>/// Steal arguments from another function.
+  ///
+  /// Drop this function&apos;s arguments and splice in the ones from \c Src.
+  /// Requires that this has no function body.</doc>

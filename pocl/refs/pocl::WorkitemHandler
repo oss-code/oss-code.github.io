@@ -1,0 +1,18 @@
+<inh f='include/llvm-6.0/llvm/Pass.h' l='285' c='llvm::FunctionPass'/>
+<def f='pocl/lib/llvmopencl/WorkitemHandler.h' l='47' ll='71'/>
+<ovr f='pocl/lib/llvmopencl/WorkitemHandlerChooser.h' l='31' c='pocl::WorkitemHandlerChooser'/>
+<ovr f='pocl/lib/llvmopencl/WorkitemLoops.h' l='46' c='pocl::WorkitemLoops'/>
+<size>72</size>
+<fun r='_ZN4pocl15WorkitemHandlerC1ERc'/>
+<fun r='_ZNK4pocl15WorkitemHandler16getAnalysisUsageERN4llvm13AnalysisUsageE'/>
+<fun r='_ZN4pocl15WorkitemHandler13runOnFunctionERN4llvm8FunctionE'/>
+<fun r='_ZN4pocl15WorkitemHandler10InitializeEPNS_6KernelE'/>
+<fun r='_ZN4pocl15WorkitemHandler12movePhiNodesEPN4llvm10BasicBlockES3_'/>
+<fun r='_ZN4pocl15WorkitemHandler26fixUndominatedVariableUsesEPN4llvm24DominatorTreeWrapperPassERNS1_8FunctionE'/>
+<fun r='_ZN4pocl15WorkitemHandler12dominatesUseEPN4llvm24DominatorTreeWrapperPassERNS1_11InstructionEj'/>
+<mbr r='pocl::WorkitemHandler::SizeT' o='256' t='llvm::Type *'/>
+<mbr r='pocl::WorkitemHandler::SizeTWidth' o='320' t='int'/>
+<mbr r='pocl::WorkitemHandler::LocalIdZGlobal' o='384' t='llvm::Value *'/>
+<mbr r='pocl::WorkitemHandler::LocalIdYGlobal' o='448' t='llvm::Value *'/>
+<mbr r='pocl::WorkitemHandler::LocalIdXGlobal' o='512' t='llvm::Value *'/>
+<ovr f='pocl/lib/llvmopencl/WorkitemReplication.h' l='42' c='pocl::WorkitemReplication'/>

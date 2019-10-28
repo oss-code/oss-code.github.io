@@ -1,0 +1,23 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1180' type='void *'/>
+<offset>1408</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='1180'>/* Device specific data. */</doc>
+<use f='pocl/lib/CL/clCreateUserEvent.c' l='26' u='w' c='POclCreateUserEvent'/>
+<use f='pocl/lib/CL/clReleaseEvent.c' l='49' u='r' c='POclReleaseEvent'/>
+<use f='pocl/lib/CL/clSetUserEventStatus.c' l='34' u='r' c='POclSetUserEventStatus'/>
+<use f='pocl/lib/CL/clWaitForEvents.c' l='69' u='r' c='POclWaitForEvents'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1034' u='r' c='pocl_cuda_submit_node'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1052' u='r' c='pocl_cuda_submit_node'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1253' u='w' c='pocl_cuda_submit'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1284' u='r' c='pocl_cuda_notify'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1311' u='r' c='pocl_cuda_finalize_command'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1399' u='r' c='pocl_cuda_update_event'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1446' u='r' c='pocl_cuda_free_event_data'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1449' u='r' c='pocl_cuda_free_event_data'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1459' u='r' c='pocl_cuda_free_event_data'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='334' u='r' c='pocl_pthread_notify_event_finished'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='342' u='r' c='pocl_pthread_update_event'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='348' u='w' c='pocl_pthread_update_event'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='354' u='r' c='pocl_pthread_wait_event'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='367' u='r' c='pocl_pthread_free_event_data'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='368' u='r' c='pocl_pthread_free_event_data'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='369' u='w' c='pocl_pthread_free_event_data'/>

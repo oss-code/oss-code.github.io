@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='206' type='llvm::DIDerivedType * llvm::DIBuilder::createMemberPointerType(llvm::DIType * PointeeTy, llvm::DIType * Class, uint64_t SizeInBits, uint32_t AlignInBits = 0, DINode::DIFlags Flags = DINode::FlagZero)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='200'>/// Create debugging information entry for a pointer to member.
+    /// \param PointeeTy Type pointed to by this pointer.
+    /// \param SizeInBits  Size.
+    /// \param AlignInBits Alignment. (optional)
+    /// \param Class Type for which this pointer points to members of.</doc>

@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='314' type='void llvm::LazyCallGraph::EdgeSequence::replaceEdgeKey(llvm::Function &amp; OldTarget, llvm::Function &amp; NewTarget)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='309'>/// Internal helper to replace an edge key with a new one.
+    ///
+    /// This should be used when the function for a particular node in the
+    /// graph gets replaced and we are updating all of the edges to that node
+    /// to use the new function as the key.</doc>

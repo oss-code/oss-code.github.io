@@ -1,0 +1,15 @@
+<def f='pocl/include/CL/cl2.hpp' l='4302' ll='4303' type='void cl::Image::Image(const cl_mem &amp; image, bool retainObject = false)'/>
+<use f='pocl/include/CL/cl2.hpp' l='4423' u='c' c='_ZN2cl7Image1DC1ERKP7_cl_memb'/>
+<use f='pocl/include/CL/cl2.hpp' l='4511' u='c' c='_ZN2cl13Image1DBufferC1ERKP7_cl_memb'/>
+<use f='pocl/include/CL/cl2.hpp' l='4599' u='c' c='_ZN2cl12Image1DArrayC1ERKP7_cl_memb'/>
+<use f='pocl/include/CL/cl2.hpp' l='4838' u='c' c='_ZN2cl7Image2DC1ERKP7_cl_memb'/>
+<use f='pocl/include/CL/cl2.hpp' l='5031' u='c' c='_ZN2cl12Image2DArrayC1ERKP7_cl_memb'/>
+<use f='pocl/include/CL/cl2.hpp' l='5163' u='c' c='_ZN2cl7Image3DC1ERKP7_cl_memb'/>
+<use f='pocl/include/CL/cl2.hpp' l='5340' u='c' c='_ZN2cl7ImageGLC1ERKP7_cl_memb'/>
+<doc f='pocl/include/CL/cl2.hpp' l='4295'>/*! \brief Constructor from cl_mem - takes ownership.
+     *
+     * \param retainObject will cause the constructor to retain its cl object.
+     *                     Defaults to false to maintain compatibility with
+     *                     earlier versions.
+     *  See Memory for further details.
+     */</doc>

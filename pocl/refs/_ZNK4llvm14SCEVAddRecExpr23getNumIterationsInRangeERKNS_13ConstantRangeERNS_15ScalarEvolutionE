@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='348' type='const llvm::SCEV * llvm::SCEVAddRecExpr::getNumIterationsInRange(const llvm::ConstantRange &amp; Range, llvm::ScalarEvolution &amp; SE) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='342'>/// Return the number of iterations of this loop that produce
+    /// values in the specified constant range.  Another way of
+    /// looking at this is that it returns the first iteration number
+    /// where the value is not in the condition, thus computing the
+    /// exit count.  If the iteration count can&apos;t be computed, an
+    /// instance of SCEVCouldNotCompute is returned.</doc>

@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1246' type='llvm::DISubprogram * llvm::DILocalScope::getSubprogram() const'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2471' u='c' c='_ZNK4llvm15DILocalVariable27isValidLocationForIntrinsicEPKNS_10DILocationE'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2471' u='c' c='_ZNK4llvm15DILocalVariable27isValidLocationForIntrinsicEPKNS_10DILocationE'/>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1242'>/// Get the subprogram for this scope.
+  ///
+  /// Return this if it&apos;s an \a DISubprogram; otherwise, look up the scope
+  /// chain.</doc>

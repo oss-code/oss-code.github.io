@@ -1,0 +1,4 @@
+<dec f='pocl/lib/llvmopencl/Workgroup.h' l='65' type='void pocl::Workgroup::addPlaceHolder(llvm::IRBuilder&lt;&gt; &amp; Builder, llvm::Value * Value, const std::string TypeStr)'/>
+<def f='pocl/lib/llvmopencl/Workgroup.cc' l='274' ll='287' type='void pocl::Workgroup::addPlaceHolder(llvm::IRBuilder&lt;&gt; &amp; Builder, llvm::Value * Val, const std::string TypeStr = &quot;r&quot;)'/>
+<doc f='pocl/lib/llvmopencl/Workgroup.cc' l='272'>// Ensures the given value is not optimized away even if it&apos;s not used
+// by LLVM IR.</doc>

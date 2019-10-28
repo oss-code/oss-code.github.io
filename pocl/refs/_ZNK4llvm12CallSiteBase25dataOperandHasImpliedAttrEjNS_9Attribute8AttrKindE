@@ -1,0 +1,14 @@
+<def f='include/llvm-6.0/llvm/IR/CallSite.h' l='396' ll='398' type='bool llvm::CallSiteBase::dataOperandHasImpliedAttr(unsigned int i, Attribute::AttrKind Kind) const'/>
+<use f='include/llvm-6.0/llvm/IR/CallSite.h' l='594' u='c' c='_ZNK4llvm12CallSiteBase14doesNotCaptureEj'/>
+<use f='include/llvm-6.0/llvm/IR/CallSite.h' l='620' u='c' c='_ZNK4llvm12CallSiteBase19doesNotAccessMemoryEj'/>
+<use f='include/llvm-6.0/llvm/IR/CallSite.h' l='624' u='c' c='_ZNK4llvm12CallSiteBase15onlyReadsMemoryEj'/>
+<use f='include/llvm-6.0/llvm/IR/CallSite.h' l='625' u='c' c='_ZNK4llvm12CallSiteBase15onlyReadsMemoryEj'/>
+<use f='include/llvm-6.0/llvm/IR/CallSite.h' l='629' u='c' c='_ZNK4llvm12CallSiteBase17doesNotReadMemoryEj'/>
+<use f='include/llvm-6.0/llvm/IR/CallSite.h' l='630' u='c' c='_ZNK4llvm12CallSiteBase17doesNotReadMemoryEj'/>
+<doc f='include/llvm-6.0/llvm/IR/CallSite.h' l='389'>/// Return true if the data operand at index \p i directly or indirectly has
+  /// the attribute \p A.
+  ///
+  /// Normal call or invoke arguments have per operand attributes, as specified
+  /// in the attribute set attached to this instruction, while operand bundle
+  /// operands may have some attributes implied by the type of its containing
+  /// operand bundle.</doc>

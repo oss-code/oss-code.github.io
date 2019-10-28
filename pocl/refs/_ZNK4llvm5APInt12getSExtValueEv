@@ -1,0 +1,10 @@
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1193' u='c' c='_ZNK4llvm5APInt3sltEl'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1263' u='c' c='_ZNK4llvm5APInt3sgtEl'/>
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='1554' ll='1559' type='int64_t llvm::APInt::getSExtValue() const'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='158' u='c' c='_ZNK4llvm11ConstantInt12getSExtValueEv'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='1549'>/// \brief Get sign extended value
+  ///
+  /// This method attempts to return the value of this APInt as a sign extended
+  /// int64_t. The bit width must be &lt;= 64 or the value must fit within an
+  /// int64_t. Otherwise an assertion will result.</doc>
+<use f='include/llvm-6.0/llvm/ADT/APSInt.h' l='78' u='c' c='_ZNK4llvm6APSInt11getExtValueEv'/>

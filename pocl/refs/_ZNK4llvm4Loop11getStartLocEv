@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='572' type='llvm::DebugLoc llvm::Loop::getStartLoc() const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='567'>/// Return the debug location of the start of this loop.
+  /// This looks for a BB terminating instruction with a known debug
+  /// location by looking at the preheader and header blocks. If it
+  /// cannot find a terminating instruction with location information,
+  /// it returns an unknown location.</doc>

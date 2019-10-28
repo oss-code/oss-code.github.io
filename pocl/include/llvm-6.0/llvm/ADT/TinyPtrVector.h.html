@@ -1,0 +1,366 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>TinyPtrVector.h source code [include/llvm-6.0/llvm/ADT/TinyPtrVector.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="llvm::TinyPtrVector "/>
+<link rel="stylesheet" href="../../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'include/llvm-6.0/llvm/ADT/TinyPtrVector.h'; var root_path = '../../../..'; var data_path = '../../../../../data';</script>
+<script src='../../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../../..'>include</a>/<a href='../..'>llvm-6.0</a>/<a href='..'>llvm</a>/<a href='./'>ADT</a>/<a href='TinyPtrVector.h.html'>TinyPtrVector.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>//===- llvm/ADT/TinyPtrVector.h - 'Normally tiny' vectors -------*- C++ -*-===//</i></td></tr>
+<tr><th id="2">2</th><td><i>//</i></td></tr>
+<tr><th id="3">3</th><td><i>//                     The LLVM Compiler Infrastructure</i></td></tr>
+<tr><th id="4">4</th><td><i>//</i></td></tr>
+<tr><th id="5">5</th><td><i>// This file is distributed under the University of Illinois Open Source</i></td></tr>
+<tr><th id="6">6</th><td><i>// License. See LICENSE.TXT for details.</i></td></tr>
+<tr><th id="7">7</th><td><i>//</i></td></tr>
+<tr><th id="8">8</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td><u>#<span data-ppcond="10">ifndef</span> <span class="macro" data-ref="_M/LLVM_ADT_TINYPTRVECTOR_H">LLVM_ADT_TINYPTRVECTOR_H</span></u></td></tr>
+<tr><th id="11">11</th><td><u>#define <dfn class="macro" id="_M/LLVM_ADT_TINYPTRVECTOR_H" data-ref="_M/LLVM_ADT_TINYPTRVECTOR_H">LLVM_ADT_TINYPTRVECTOR_H</dfn></u></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td><u>#include <a href="ArrayRef.h.html">"llvm/ADT/ArrayRef.h"</a></u></td></tr>
+<tr><th id="14">14</th><td><u>#include <a href="None.h.html">"llvm/ADT/None.h"</a></u></td></tr>
+<tr><th id="15">15</th><td><u>#include <a href="PointerUnion.h.html">"llvm/ADT/PointerUnion.h"</a></u></td></tr>
+<tr><th id="16">16</th><td><u>#include <a href="SmallVector.h.html">"llvm/ADT/SmallVector.h"</a></u></td></tr>
+<tr><th id="17">17</th><td><u>#include <a href="../../../c++/7/cassert.html">&lt;cassert&gt;</a></u></td></tr>
+<tr><th id="18">18</th><td><u>#include <a href="../../../c++/7/cstddef.html">&lt;cstddef&gt;</a></u></td></tr>
+<tr><th id="19">19</th><td><u>#include <a href="../../../c++/7/iterator.html">&lt;iterator&gt;</a></u></td></tr>
+<tr><th id="20">20</th><td><u>#include <a href="../../../c++/7/type_traits.html">&lt;type_traits&gt;</a></u></td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><b>namespace</b> <span class="namespace">llvm</span> {</td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><i class="doc">/// TinyPtrVector - This class is specialized for cases where there are</i></td></tr>
+<tr><th id="25">25</th><td><i class="doc">/// normally 0 or 1 element in a vector, but is general enough to go beyond that</i></td></tr>
+<tr><th id="26">26</th><td><i class="doc">/// when required.</i></td></tr>
+<tr><th id="27">27</th><td><i class="doc">///</i></td></tr>
+<tr><th id="28">28</th><td><i class="doc">/// NOTE: This container doesn't allow you to store a null pointer into it.</i></td></tr>
+<tr><th id="29">29</th><td><i class="doc">///</i></td></tr>
+<tr><th id="30">30</th><td><b>template</b> &lt;<b>typename</b> EltTy&gt;</td></tr>
+<tr><th id="31">31</th><td><b>class</b> <dfn class="type def" id="llvm::TinyPtrVector" title='llvm::TinyPtrVector' data-ref="llvm::TinyPtrVector">TinyPtrVector</dfn> {</td></tr>
+<tr><th id="32">32</th><td><b>public</b>:</td></tr>
+<tr><th id="33">33</th><td>  <b>using</b> <dfn class="typedef" id="llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</dfn> = <a class="type" href="SmallVector.h.html#llvm::SmallVector" title='llvm::SmallVector' data-ref="llvm::SmallVector">SmallVector</a>&lt;EltTy, <var>4</var>&gt;;</td></tr>
+<tr><th id="34">34</th><td>  <b>using</b> <dfn class="typedef" id="llvm::TinyPtrVector::value_type" title='llvm::TinyPtrVector::value_type' data-type='typename VecTy::value_type' data-ref="llvm::TinyPtrVector::value_type">value_type</dfn> = <b>typename</b> <a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>::value_type;</td></tr>
+<tr><th id="35">35</th><td>  <b>using</b> <dfn class="typedef" id="llvm::TinyPtrVector::PtrUnion" title='llvm::TinyPtrVector::PtrUnion' data-type='PointerUnion&lt;EltTy, VecTy *&gt;' data-ref="llvm::TinyPtrVector::PtrUnion">PtrUnion</dfn> = <a class="type" href="PointerUnion.h.html#llvm::PointerUnion" title='llvm::PointerUnion' data-ref="llvm::PointerUnion">PointerUnion</a>&lt;EltTy, <a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a> *&gt;;</td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td><b>private</b>:</td></tr>
+<tr><th id="38">38</th><td>  <a class="typedef" href="#llvm::TinyPtrVector::PtrUnion" title='llvm::TinyPtrVector::PtrUnion' data-type='PointerUnion&lt;EltTy, VecTy *&gt;' data-ref="llvm::TinyPtrVector::PtrUnion">PtrUnion</a> <dfn class="decl" id="llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</dfn>;</td></tr>
+<tr><th id="39">39</th><td></td></tr>
+<tr><th id="40">40</th><td><b>public</b>:</td></tr>
+<tr><th id="41">41</th><td>  <dfn class="decl" id="_ZN4llvm13TinyPtrVectorC1Ev" title='llvm::TinyPtrVector::TinyPtrVector&lt;EltTy&gt;' data-ref="_ZN4llvm13TinyPtrVectorC1Ev">TinyPtrVector</dfn>() = <b>default</b>;</td></tr>
+<tr><th id="42">42</th><td></td></tr>
+<tr><th id="43">43</th><td>  <dfn class="decl def" id="_ZN4llvm13TinyPtrVectorD1Ev" title='llvm::TinyPtrVector::~TinyPtrVector&lt;EltTy&gt;' data-ref="_ZN4llvm13TinyPtrVectorD1Ev">~TinyPtrVector</dfn>() {</td></tr>
+<tr><th id="44">44</th><td>    <b>if</b> (<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a> *<dfn class="local col1 decl" id="15061V" title='V' data-type='VecTy *' data-ref="15061V"><a class="local col1 ref" href="#15061V" title='V' data-ref="15061V">V</a></dfn> = <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> dyn_cast&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>*&gt;())</td></tr>
+<tr><th id="45">45</th><td>      <b>delete</b> <a class="local col1 ref" href="#15061V" title='V' data-ref="15061V">V</a>;</td></tr>
+<tr><th id="46">46</th><td>  }</td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td>  <dfn class="decl def" id="_ZN4llvm13TinyPtrVectorC1ERKNS_13TinyPtrVectorIT_EE" title='llvm::TinyPtrVector::TinyPtrVector&lt;EltTy&gt;' data-ref="_ZN4llvm13TinyPtrVectorC1ERKNS_13TinyPtrVectorIT_EE">TinyPtrVector</dfn>(<em>const</em> TinyPtrVector &amp;<dfn class="local col2 decl" id="15062RHS" title='RHS' data-type='const TinyPtrVector&lt;EltTy&gt; &amp;' data-ref="15062RHS">RHS</dfn>) : <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>(<a class="local col2 ref" href="#15062RHS" title='RHS' data-ref="15062RHS">RHS</a>.Val) {</td></tr>
+<tr><th id="49">49</th><td>    <b>if</b> (<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a> *<dfn class="local col3 decl" id="15063V" title='V' data-type='VecTy *' data-ref="15063V"><a class="local col3 ref" href="#15063V" title='V' data-ref="15063V">V</a></dfn> = <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> dyn_cast&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>*&gt;())</td></tr>
+<tr><th id="50">50</th><td>      <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a> = <b>new</b> <a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>(*<a class="local col3 ref" href="#15063V" title='V' data-ref="15063V">V</a>);</td></tr>
+<tr><th id="51">51</th><td>  }</td></tr>
+<tr><th id="52">52</th><td></td></tr>
+<tr><th id="53">53</th><td>  TinyPtrVector &amp;<dfn class="decl def" id="_ZN4llvm13TinyPtrVectoraSERKNS_13TinyPtrVectorIT_EE" title='llvm::TinyPtrVector::operator=' data-ref="_ZN4llvm13TinyPtrVectoraSERKNS_13TinyPtrVectorIT_EE"><b>operator</b>=</dfn>(<em>const</em> TinyPtrVector &amp;<dfn class="local col4 decl" id="15064RHS" title='RHS' data-type='const TinyPtrVector&lt;EltTy&gt; &amp;' data-ref="15064RHS">RHS</dfn>) {</td></tr>
+<tr><th id="54">54</th><td>    <b>if</b> (<b>this</b> == &amp;<a class="local col4 ref" href="#15064RHS" title='RHS' data-ref="15064RHS">RHS</a>)</td></tr>
+<tr><th id="55">55</th><td>      <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="56">56</th><td>    <b>if</b> (<a class="local col4 ref" href="#15064RHS" title='RHS' data-ref="15064RHS">RHS</a>.empty()) {</td></tr>
+<tr><th id="57">57</th><td>      <b>this</b>-&gt;clear();</td></tr>
+<tr><th id="58">58</th><td>      <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="59">59</th><td>    }</td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td>    <i>// Try to squeeze into the single slot. If it won't fit, allocate a copied</i></td></tr>
+<tr><th id="62">62</th><td><i>    // vector.</i></td></tr>
+<tr><th id="63">63</th><td>    <b>if</b> (<a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> is&lt;EltTy&gt;()) {</td></tr>
+<tr><th id="64">64</th><td>      <b>if</b> (<a class="local col4 ref" href="#15064RHS" title='RHS' data-ref="15064RHS">RHS</a>.size() == <var>1</var>)</td></tr>
+<tr><th id="65">65</th><td>        <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a> = <a class="local col4 ref" href="#15064RHS" title='RHS' data-ref="15064RHS">RHS</a>.front();</td></tr>
+<tr><th id="66">66</th><td>      <b>else</b></td></tr>
+<tr><th id="67">67</th><td>        <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a> = <b>new</b> <a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>(*<a class="local col4 ref" href="#15064RHS" title='RHS' data-ref="15064RHS">RHS</a>.Val.<b>template</b> get&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>*&gt;());</td></tr>
+<tr><th id="68">68</th><td>      <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="69">69</th><td>    }</td></tr>
+<tr><th id="70">70</th><td></td></tr>
+<tr><th id="71">71</th><td>    <i>// If we have a full vector allocated, try to re-use it.</i></td></tr>
+<tr><th id="72">72</th><td>    <b>if</b> (<a class="local col4 ref" href="#15064RHS" title='RHS' data-ref="15064RHS">RHS</a>.Val.<b>template</b> is&lt;EltTy&gt;()) {</td></tr>
+<tr><th id="73">73</th><td>      <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> get&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>*&gt;()-&gt;clear();</td></tr>
+<tr><th id="74">74</th><td>      <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> get&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>*&gt;()-&gt;push_back(<a class="local col4 ref" href="#15064RHS" title='RHS' data-ref="15064RHS">RHS</a>.front());</td></tr>
+<tr><th id="75">75</th><td>    } <b>else</b> {</td></tr>
+<tr><th id="76">76</th><td>      *<a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> get&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>*&gt;() = *<a class="local col4 ref" href="#15064RHS" title='RHS' data-ref="15064RHS">RHS</a>.Val.<b>template</b> get&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>*&gt;();</td></tr>
+<tr><th id="77">77</th><td>    }</td></tr>
+<tr><th id="78">78</th><td>    <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="79">79</th><td>  }</td></tr>
+<tr><th id="80">80</th><td></td></tr>
+<tr><th id="81">81</th><td>  <dfn class="decl def" id="_ZN4llvm13TinyPtrVectorC1EONS_13TinyPtrVectorIT_EE" title='llvm::TinyPtrVector::TinyPtrVector&lt;EltTy&gt;' data-ref="_ZN4llvm13TinyPtrVectorC1EONS_13TinyPtrVectorIT_EE">TinyPtrVector</dfn>(TinyPtrVector &amp;&amp;<dfn class="local col5 decl" id="15065RHS" title='RHS' data-type='TinyPtrVector&lt;EltTy&gt; &amp;&amp;' data-ref="15065RHS">RHS</dfn>) : <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>(<a class="local col5 ref" href="#15065RHS" title='RHS' data-ref="15065RHS">RHS</a>.Val) {</td></tr>
+<tr><th id="82">82</th><td>    <a class="local col5 ref" href="#15065RHS" title='RHS' data-ref="15065RHS">RHS</a>.Val = (EltTy)<b>nullptr</b>;</td></tr>
+<tr><th id="83">83</th><td>  }</td></tr>
+<tr><th id="84">84</th><td></td></tr>
+<tr><th id="85">85</th><td>  TinyPtrVector &amp;<dfn class="decl def" id="_ZN4llvm13TinyPtrVectoraSEONS_13TinyPtrVectorIT_EE" title='llvm::TinyPtrVector::operator=' data-ref="_ZN4llvm13TinyPtrVectoraSEONS_13TinyPtrVectorIT_EE"><b>operator</b>=</dfn>(TinyPtrVector &amp;&amp;<dfn class="local col6 decl" id="15066RHS" title='RHS' data-type='TinyPtrVector&lt;EltTy&gt; &amp;&amp;' data-ref="15066RHS">RHS</dfn>) {</td></tr>
+<tr><th id="86">86</th><td>    <b>if</b> (<b>this</b> == &amp;<a class="local col6 ref" href="#15066RHS" title='RHS' data-ref="15066RHS">RHS</a>)</td></tr>
+<tr><th id="87">87</th><td>      <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="88">88</th><td>    <b>if</b> (<a class="local col6 ref" href="#15066RHS" title='RHS' data-ref="15066RHS">RHS</a>.empty()) {</td></tr>
+<tr><th id="89">89</th><td>      <b>this</b>-&gt;clear();</td></tr>
+<tr><th id="90">90</th><td>      <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="91">91</th><td>    }</td></tr>
+<tr><th id="92">92</th><td></td></tr>
+<tr><th id="93">93</th><td>    <i>// If this vector has been allocated on the heap, re-use it if cheap. If it</i></td></tr>
+<tr><th id="94">94</th><td><i>    // would require more copying, just delete it and we'll steal the other</i></td></tr>
+<tr><th id="95">95</th><td><i>    // side.</i></td></tr>
+<tr><th id="96">96</th><td>    <b>if</b> (<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a> *<dfn class="local col7 decl" id="15067V" title='V' data-type='VecTy *' data-ref="15067V"><a class="local col7 ref" href="#15067V" title='V' data-ref="15067V">V</a></dfn> = <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> dyn_cast&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>*&gt;()) {</td></tr>
+<tr><th id="97">97</th><td>      <b>if</b> (<a class="local col6 ref" href="#15066RHS" title='RHS' data-ref="15066RHS">RHS</a>.Val.<b>template</b> is&lt;EltTy&gt;()) {</td></tr>
+<tr><th id="98">98</th><td>        <a class="local col7 ref" href="#15067V" title='V' data-ref="15067V">V</a>-&gt;clear();</td></tr>
+<tr><th id="99">99</th><td>        <a class="local col7 ref" href="#15067V" title='V' data-ref="15067V">V</a>-&gt;push_back(<a class="local col6 ref" href="#15066RHS" title='RHS' data-ref="15066RHS">RHS</a>.front());</td></tr>
+<tr><th id="100">100</th><td>        <a class="local col6 ref" href="#15066RHS" title='RHS' data-ref="15066RHS">RHS</a>.Val = (EltTy)<b>nullptr</b>;</td></tr>
+<tr><th id="101">101</th><td>        <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="102">102</th><td>      }</td></tr>
+<tr><th id="103">103</th><td>      <b>delete</b> <a class="local col7 ref" href="#15067V" title='V' data-ref="15067V">V</a>;</td></tr>
+<tr><th id="104">104</th><td>    }</td></tr>
+<tr><th id="105">105</th><td></td></tr>
+<tr><th id="106">106</th><td>    <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a> = <a class="local col6 ref" href="#15066RHS" title='RHS' data-ref="15066RHS">RHS</a>.Val;</td></tr>
+<tr><th id="107">107</th><td>    <a class="local col6 ref" href="#15066RHS" title='RHS' data-ref="15066RHS">RHS</a>.Val = (EltTy)<b>nullptr</b>;</td></tr>
+<tr><th id="108">108</th><td>    <b>return</b> *<b>this</b>;</td></tr>
+<tr><th id="109">109</th><td>  }</td></tr>
+<tr><th id="110">110</th><td></td></tr>
+<tr><th id="111">111</th><td>  <i class="doc">/// Constructor from an ArrayRef.</i></td></tr>
+<tr><th id="112">112</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="113">113</th><td><i class="doc">  /// This also is a constructor for individual array elements due to the single</i></td></tr>
+<tr><th id="114">114</th><td><i class="doc">  /// element constructor for ArrayRef.</i></td></tr>
+<tr><th id="115">115</th><td>  <b>explicit</b> <dfn class="decl def" id="_ZN4llvm13TinyPtrVectorC1ENS_8ArrayRefIT_EE" title='llvm::TinyPtrVector::TinyPtrVector&lt;EltTy&gt;' data-ref="_ZN4llvm13TinyPtrVectorC1ENS_8ArrayRefIT_EE">TinyPtrVector</dfn>(<a class="type" href="ArrayRef.h.html#llvm::ArrayRef" title='llvm::ArrayRef' data-ref="llvm::ArrayRef">ArrayRef</a>&lt;EltTy&gt; <dfn class="local col8 decl" id="15068Elts" title='Elts' data-type='ArrayRef&lt;EltTy&gt;' data-ref="15068Elts">Elts</dfn>)</td></tr>
+<tr><th id="116">116</th><td>      : <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>(<a class="local col8 ref" href="#15068Elts" title='Elts' data-ref="15068Elts">Elts</a>.empty()</td></tr>
+<tr><th id="117">117</th><td>                ? <a class="typedef" href="#llvm::TinyPtrVector::PtrUnion" title='llvm::TinyPtrVector::PtrUnion' data-type='PointerUnion&lt;EltTy, VecTy *&gt;' data-ref="llvm::TinyPtrVector::PtrUnion">PtrUnion</a>()</td></tr>
+<tr><th id="118">118</th><td>                : <a class="local col8 ref" href="#15068Elts" title='Elts' data-ref="15068Elts">Elts</a>.size() == <var>1</var></td></tr>
+<tr><th id="119">119</th><td>                      ? <a class="typedef" href="#llvm::TinyPtrVector::PtrUnion" title='llvm::TinyPtrVector::PtrUnion' data-type='PointerUnion&lt;EltTy, VecTy *&gt;' data-ref="llvm::TinyPtrVector::PtrUnion">PtrUnion</a>(<a class="local col8 ref" href="#15068Elts" title='Elts' data-ref="15068Elts">Elts</a>[<var>0</var>])</td></tr>
+<tr><th id="120">120</th><td>                      : <a class="typedef" href="#llvm::TinyPtrVector::PtrUnion" title='llvm::TinyPtrVector::PtrUnion' data-type='PointerUnion&lt;EltTy, VecTy *&gt;' data-ref="llvm::TinyPtrVector::PtrUnion">PtrUnion</a>(<b>new</b> <a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>(<a class="local col8 ref" href="#15068Elts" title='Elts' data-ref="15068Elts">Elts</a>.begin(), <a class="local col8 ref" href="#15068Elts" title='Elts' data-ref="15068Elts">Elts</a>.end()))) {}</td></tr>
+<tr><th id="121">121</th><td></td></tr>
+<tr><th id="122">122</th><td>  <dfn class="decl def" id="_ZN4llvm13TinyPtrVectorC1EmT_" title='llvm::TinyPtrVector::TinyPtrVector&lt;EltTy&gt;' data-ref="_ZN4llvm13TinyPtrVectorC1EmT_">TinyPtrVector</dfn>(<span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col9 decl" id="15069Count" title='Count' data-type='size_t' data-ref="15069Count">Count</dfn>, EltTy <dfn class="local col0 decl" id="15070Value" title='Value' data-type='EltTy' data-ref="15070Value">Value</dfn>)</td></tr>
+<tr><th id="123">123</th><td>      : <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>(<a class="local col9 ref" href="#15069Count" title='Count' data-ref="15069Count">Count</a> == <var>0</var> ? <a class="typedef" href="#llvm::TinyPtrVector::PtrUnion" title='llvm::TinyPtrVector::PtrUnion' data-type='PointerUnion&lt;EltTy, VecTy *&gt;' data-ref="llvm::TinyPtrVector::PtrUnion">PtrUnion</a>()</td></tr>
+<tr><th id="124">124</th><td>                       : <a class="local col9 ref" href="#15069Count" title='Count' data-ref="15069Count">Count</a> == <var>1</var> ? <a class="typedef" href="#llvm::TinyPtrVector::PtrUnion" title='llvm::TinyPtrVector::PtrUnion' data-type='PointerUnion&lt;EltTy, VecTy *&gt;' data-ref="llvm::TinyPtrVector::PtrUnion">PtrUnion</a>(<a class="local col0 ref" href="#15070Value" title='Value' data-ref="15070Value">Value</a>)</td></tr>
+<tr><th id="125">125</th><td>                                    : <a class="typedef" href="#llvm::TinyPtrVector::PtrUnion" title='llvm::TinyPtrVector::PtrUnion' data-type='PointerUnion&lt;EltTy, VecTy *&gt;' data-ref="llvm::TinyPtrVector::PtrUnion">PtrUnion</a>(<b>new</b> <a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>(<a class="local col9 ref" href="#15069Count" title='Count' data-ref="15069Count">Count</a>, <a class="local col0 ref" href="#15070Value" title='Value' data-ref="15070Value">Value</a>))) {}</td></tr>
+<tr><th id="126">126</th><td></td></tr>
+<tr><th id="127">127</th><td>  <i>// implicit conversion operator to ArrayRef.</i></td></tr>
+<tr><th id="128">128</th><td>  <dfn class="decl def" id="_ZNK4llvm13TinyPtrVectorcvNS_8ArrayRefIT_EEEv" title='llvm::TinyPtrVector::operator ArrayRef&lt;type-parameter-0-0&gt;' data-ref="_ZNK4llvm13TinyPtrVectorcvNS_8ArrayRefIT_EEEv"><b>operator</b> <a class="type" href="ArrayRef.h.html#llvm::ArrayRef" title='llvm::ArrayRef' data-ref="llvm::ArrayRef">ArrayRef</a>&lt;EltTy&gt;</dfn>() <em>const</em> {</td></tr>
+<tr><th id="129">129</th><td>    <b>if</b> (<a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.isNull())</td></tr>
+<tr><th id="130">130</th><td>      <b>return</b> <a class="ref" href="None.h.html#llvm::None" title='llvm::None' data-ref="llvm::None">None</a>;</td></tr>
+<tr><th id="131">131</th><td>    <b>if</b> (<a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> is&lt;EltTy&gt;())</td></tr>
+<tr><th id="132">132</th><td>      <b>return</b> *<a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.getAddrOfPtr1();</td></tr>
+<tr><th id="133">133</th><td>    <b>return</b> *<a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> get&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>*&gt;();</td></tr>
+<tr><th id="134">134</th><td>  }</td></tr>
+<tr><th id="135">135</th><td></td></tr>
+<tr><th id="136">136</th><td>  <i>// implicit conversion operator to MutableArrayRef.</i></td></tr>
+<tr><th id="137">137</th><td>  <dfn class="decl def" id="_ZN4llvm13TinyPtrVectorcvNS_15MutableArrayRefIT_EEEv" title='llvm::TinyPtrVector::operator MutableArrayRef&lt;type-parameter-0-0&gt;' data-ref="_ZN4llvm13TinyPtrVectorcvNS_15MutableArrayRefIT_EEEv"><b>operator</b> <a class="type" href="ArrayRef.h.html#llvm::MutableArrayRef" title='llvm::MutableArrayRef' data-ref="llvm::MutableArrayRef">MutableArrayRef</a>&lt;EltTy&gt;</dfn>() {</td></tr>
+<tr><th id="138">138</th><td>    <b>if</b> (<a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.isNull())</td></tr>
+<tr><th id="139">139</th><td>      <b>return</b> <a class="ref" href="None.h.html#llvm::None" title='llvm::None' data-ref="llvm::None">None</a>;</td></tr>
+<tr><th id="140">140</th><td>    <b>if</b> (<a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> is&lt;EltTy&gt;())</td></tr>
+<tr><th id="141">141</th><td>      <b>return</b> *<a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.getAddrOfPtr1();</td></tr>
+<tr><th id="142">142</th><td>    <b>return</b> *<a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> get&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>*&gt;();</td></tr>
+<tr><th id="143">143</th><td>  }</td></tr>
+<tr><th id="144">144</th><td></td></tr>
+<tr><th id="145">145</th><td>  <i>// Implicit conversion to ArrayRef&lt;U&gt; if EltTy* implicitly converts to U*.</i></td></tr>
+<tr><th id="146">146</th><td>  <b>template</b>&lt;<b>typename</b> U,</td></tr>
+<tr><th id="147">147</th><td>           <b>typename</b> <span class="namespace">std::</span><a class="type" href="../../../c++/7/type_traits.html#std::enable_if" title='std::enable_if' data-ref="std::enable_if">enable_if</a>&lt;</td></tr>
+<tr><th id="148">148</th><td>               <span class="namespace">std::</span><a class="type" href="../../../c++/7/type_traits.html#std::is_convertible" title='std::is_convertible' data-ref="std::is_convertible">is_convertible</a>&lt;<a class="type" href="ArrayRef.h.html#llvm::ArrayRef" title='llvm::ArrayRef' data-ref="llvm::ArrayRef">ArrayRef</a>&lt;EltTy&gt;, <a class="type" href="ArrayRef.h.html#llvm::ArrayRef" title='llvm::ArrayRef' data-ref="llvm::ArrayRef">ArrayRef</a>&lt;U&gt;&gt;::value,</td></tr>
+<tr><th id="149">149</th><td>               <em>bool</em>&gt;::type = <b>false</b>&gt;</td></tr>
+<tr><th id="150">150</th><td>  <dfn class="decl def" id="_ZNK4llvm13TinyPtrVectorcvNS_8ArrayRefIT_EEEv" title='llvm::TinyPtrVector::operator ArrayRef&lt;type-parameter-1-0&gt;' data-ref="_ZNK4llvm13TinyPtrVectorcvNS_8ArrayRefIT_EEEv"><b>operator</b> <a class="type" href="ArrayRef.h.html#llvm::ArrayRef" title='llvm::ArrayRef' data-ref="llvm::ArrayRef">ArrayRef</a>&lt;U&gt;</dfn>() <em>const</em> {</td></tr>
+<tr><th id="151">151</th><td>    <b>return</b> <b>operator</b> ArrayRef&lt;EltTy&gt;();</td></tr>
+<tr><th id="152">152</th><td>  }</td></tr>
+<tr><th id="153">153</th><td></td></tr>
+<tr><th id="154">154</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm13TinyPtrVector5emptyEv" title='llvm::TinyPtrVector::empty' data-ref="_ZNK4llvm13TinyPtrVector5emptyEv">empty</dfn>() <em>const</em> {</td></tr>
+<tr><th id="155">155</th><td>    <i>// This vector can be empty if it contains no element, or if it</i></td></tr>
+<tr><th id="156">156</th><td><i>    // contains a pointer to an empty vector.</i></td></tr>
+<tr><th id="157">157</th><td>    <b>if</b> (<a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.isNull()) <b>return</b> <b>true</b>;</td></tr>
+<tr><th id="158">158</th><td>    <b>if</b> (<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a> *<dfn class="local col1 decl" id="15071Vec" title='Vec' data-type='VecTy *' data-ref="15071Vec"><a class="local col1 ref" href="#15071Vec" title='Vec' data-ref="15071Vec">Vec</a></dfn> = <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> dyn_cast&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>*&gt;())</td></tr>
+<tr><th id="159">159</th><td>      <b>return</b> <a class="local col1 ref" href="#15071Vec" title='Vec' data-ref="15071Vec">Vec</a>-&gt;empty();</td></tr>
+<tr><th id="160">160</th><td>    <b>return</b> <b>false</b>;</td></tr>
+<tr><th id="161">161</th><td>  }</td></tr>
+<tr><th id="162">162</th><td></td></tr>
+<tr><th id="163">163</th><td>  <em>unsigned</em> <dfn class="decl def" id="_ZNK4llvm13TinyPtrVector4sizeEv" title='llvm::TinyPtrVector::size' data-ref="_ZNK4llvm13TinyPtrVector4sizeEv">size</dfn>() <em>const</em> {</td></tr>
+<tr><th id="164">164</th><td>    <b>if</b> (<a class="member" href="#_ZNK4llvm13TinyPtrVector5emptyEv" title='llvm::TinyPtrVector::empty' data-ref="_ZNK4llvm13TinyPtrVector5emptyEv">empty</a>())</td></tr>
+<tr><th id="165">165</th><td>      <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="166">166</th><td>    <b>if</b> (<a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> is&lt;EltTy&gt;())</td></tr>
+<tr><th id="167">167</th><td>      <b>return</b> <var>1</var>;</td></tr>
+<tr><th id="168">168</th><td>    <b>return</b> <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> get&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>*&gt;()-&gt;size();</td></tr>
+<tr><th id="169">169</th><td>  }</td></tr>
+<tr><th id="170">170</th><td></td></tr>
+<tr><th id="171">171</th><td>  <b>using</b> <dfn class="typedef" id="llvm::TinyPtrVector::iterator" title='llvm::TinyPtrVector::iterator' data-type='EltTy *' data-ref="llvm::TinyPtrVector::iterator">iterator</dfn> = EltTy *;</td></tr>
+<tr><th id="172">172</th><td>  <b>using</b> <dfn class="typedef" id="llvm::TinyPtrVector::const_iterator" title='llvm::TinyPtrVector::const_iterator' data-type='const EltTy *' data-ref="llvm::TinyPtrVector::const_iterator">const_iterator</dfn> = <em>const</em> EltTy *;</td></tr>
+<tr><th id="173">173</th><td>  <b>using</b> <dfn class="typedef" id="llvm::TinyPtrVector::reverse_iterator" title='llvm::TinyPtrVector::reverse_iterator' data-type='std::reverse_iterator&lt;iterator&gt;' data-ref="llvm::TinyPtrVector::reverse_iterator">reverse_iterator</dfn> = <span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/stl_iterator.h.html#std::reverse_iterator" title='std::reverse_iterator' data-ref="std::reverse_iterator">reverse_iterator</a>&lt;<a class="typedef" href="#llvm::TinyPtrVector::iterator" title='llvm::TinyPtrVector::iterator' data-type='EltTy *' data-ref="llvm::TinyPtrVector::iterator">iterator</a>&gt;;</td></tr>
+<tr><th id="174">174</th><td>  <b>using</b> <dfn class="typedef" id="llvm::TinyPtrVector::const_reverse_iterator" title='llvm::TinyPtrVector::const_reverse_iterator' data-type='std::reverse_iterator&lt;const_iterator&gt;' data-ref="llvm::TinyPtrVector::const_reverse_iterator">const_reverse_iterator</dfn> = <span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/stl_iterator.h.html#std::reverse_iterator" title='std::reverse_iterator' data-ref="std::reverse_iterator">reverse_iterator</a>&lt;<a class="typedef" href="#llvm::TinyPtrVector::const_iterator" title='llvm::TinyPtrVector::const_iterator' data-type='const EltTy *' data-ref="llvm::TinyPtrVector::const_iterator">const_iterator</a>&gt;;</td></tr>
+<tr><th id="175">175</th><td></td></tr>
+<tr><th id="176">176</th><td>  <a class="typedef" href="#llvm::TinyPtrVector::iterator" title='llvm::TinyPtrVector::iterator' data-type='EltTy *' data-ref="llvm::TinyPtrVector::iterator">iterator</a> <dfn class="decl def" id="_ZN4llvm13TinyPtrVector5beginEv" title='llvm::TinyPtrVector::begin' data-ref="_ZN4llvm13TinyPtrVector5beginEv">begin</dfn>() {</td></tr>
+<tr><th id="177">177</th><td>    <b>if</b> (<a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> is&lt;EltTy&gt;())</td></tr>
+<tr><th id="178">178</th><td>      <b>return</b> <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.getAddrOfPtr1();</td></tr>
+<tr><th id="179">179</th><td></td></tr>
+<tr><th id="180">180</th><td>    <b>return</b> <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> get&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a> *&gt;()-&gt;begin();</td></tr>
+<tr><th id="181">181</th><td>  }</td></tr>
+<tr><th id="182">182</th><td></td></tr>
+<tr><th id="183">183</th><td>  <a class="typedef" href="#llvm::TinyPtrVector::iterator" title='llvm::TinyPtrVector::iterator' data-type='EltTy *' data-ref="llvm::TinyPtrVector::iterator">iterator</a> <dfn class="decl def" id="_ZN4llvm13TinyPtrVector3endEv" title='llvm::TinyPtrVector::end' data-ref="_ZN4llvm13TinyPtrVector3endEv">end</dfn>() {</td></tr>
+<tr><th id="184">184</th><td>    <b>if</b> (<a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> is&lt;EltTy&gt;())</td></tr>
+<tr><th id="185">185</th><td>      <b>return</b> begin() + (<a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.isNull() ? <var>0</var> : <var>1</var>);</td></tr>
+<tr><th id="186">186</th><td></td></tr>
+<tr><th id="187">187</th><td>    <b>return</b> <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> get&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a> *&gt;()-&gt;end();</td></tr>
+<tr><th id="188">188</th><td>  }</td></tr>
+<tr><th id="189">189</th><td></td></tr>
+<tr><th id="190">190</th><td>  <a class="typedef" href="#llvm::TinyPtrVector::const_iterator" title='llvm::TinyPtrVector::const_iterator' data-type='const EltTy *' data-ref="llvm::TinyPtrVector::const_iterator">const_iterator</a> <dfn class="decl def" id="_ZNK4llvm13TinyPtrVector5beginEv" title='llvm::TinyPtrVector::begin' data-ref="_ZNK4llvm13TinyPtrVector5beginEv">begin</dfn>() <em>const</em> {</td></tr>
+<tr><th id="191">191</th><td>    <b>return</b> (<a class="typedef" href="#llvm::TinyPtrVector::const_iterator" title='llvm::TinyPtrVector::const_iterator' data-type='const EltTy *' data-ref="llvm::TinyPtrVector::const_iterator">const_iterator</a>)<b>const_cast</b>&lt;TinyPtrVector*&gt;(<b>this</b>)-&gt;begin();</td></tr>
+<tr><th id="192">192</th><td>  }</td></tr>
+<tr><th id="193">193</th><td></td></tr>
+<tr><th id="194">194</th><td>  <a class="typedef" href="#llvm::TinyPtrVector::const_iterator" title='llvm::TinyPtrVector::const_iterator' data-type='const EltTy *' data-ref="llvm::TinyPtrVector::const_iterator">const_iterator</a> <dfn class="decl def" id="_ZNK4llvm13TinyPtrVector3endEv" title='llvm::TinyPtrVector::end' data-ref="_ZNK4llvm13TinyPtrVector3endEv">end</dfn>() <em>const</em> {</td></tr>
+<tr><th id="195">195</th><td>    <b>return</b> (<a class="typedef" href="#llvm::TinyPtrVector::const_iterator" title='llvm::TinyPtrVector::const_iterator' data-type='const EltTy *' data-ref="llvm::TinyPtrVector::const_iterator">const_iterator</a>)<b>const_cast</b>&lt;TinyPtrVector*&gt;(<b>this</b>)-&gt;end();</td></tr>
+<tr><th id="196">196</th><td>  }</td></tr>
+<tr><th id="197">197</th><td></td></tr>
+<tr><th id="198">198</th><td>  <a class="typedef" href="#llvm::TinyPtrVector::reverse_iterator" title='llvm::TinyPtrVector::reverse_iterator' data-type='std::reverse_iterator&lt;iterator&gt;' data-ref="llvm::TinyPtrVector::reverse_iterator">reverse_iterator</a> <dfn class="decl def" id="_ZN4llvm13TinyPtrVector6rbeginEv" title='llvm::TinyPtrVector::rbegin' data-ref="_ZN4llvm13TinyPtrVector6rbeginEv">rbegin</dfn>() { <b>return</b> <a class="typedef" href="#llvm::TinyPtrVector::reverse_iterator" title='llvm::TinyPtrVector::reverse_iterator' data-type='std::reverse_iterator&lt;iterator&gt;' data-ref="llvm::TinyPtrVector::reverse_iterator">reverse_iterator</a>(end()); }</td></tr>
+<tr><th id="199">199</th><td>  <a class="typedef" href="#llvm::TinyPtrVector::reverse_iterator" title='llvm::TinyPtrVector::reverse_iterator' data-type='std::reverse_iterator&lt;iterator&gt;' data-ref="llvm::TinyPtrVector::reverse_iterator">reverse_iterator</a> <dfn class="decl def" id="_ZN4llvm13TinyPtrVector4rendEv" title='llvm::TinyPtrVector::rend' data-ref="_ZN4llvm13TinyPtrVector4rendEv">rend</dfn>() { <b>return</b> <a class="typedef" href="#llvm::TinyPtrVector::reverse_iterator" title='llvm::TinyPtrVector::reverse_iterator' data-type='std::reverse_iterator&lt;iterator&gt;' data-ref="llvm::TinyPtrVector::reverse_iterator">reverse_iterator</a>(begin()); }</td></tr>
+<tr><th id="200">200</th><td></td></tr>
+<tr><th id="201">201</th><td>  <a class="typedef" href="#llvm::TinyPtrVector::const_reverse_iterator" title='llvm::TinyPtrVector::const_reverse_iterator' data-type='std::reverse_iterator&lt;const_iterator&gt;' data-ref="llvm::TinyPtrVector::const_reverse_iterator">const_reverse_iterator</a> <dfn class="decl def" id="_ZNK4llvm13TinyPtrVector6rbeginEv" title='llvm::TinyPtrVector::rbegin' data-ref="_ZNK4llvm13TinyPtrVector6rbeginEv">rbegin</dfn>() <em>const</em> {</td></tr>
+<tr><th id="202">202</th><td>    <b>return</b> <a class="typedef" href="#llvm::TinyPtrVector::const_reverse_iterator" title='llvm::TinyPtrVector::const_reverse_iterator' data-type='std::reverse_iterator&lt;const_iterator&gt;' data-ref="llvm::TinyPtrVector::const_reverse_iterator">const_reverse_iterator</a>(end());</td></tr>
+<tr><th id="203">203</th><td>  }</td></tr>
+<tr><th id="204">204</th><td></td></tr>
+<tr><th id="205">205</th><td>  <a class="typedef" href="#llvm::TinyPtrVector::const_reverse_iterator" title='llvm::TinyPtrVector::const_reverse_iterator' data-type='std::reverse_iterator&lt;const_iterator&gt;' data-ref="llvm::TinyPtrVector::const_reverse_iterator">const_reverse_iterator</a> <dfn class="decl def" id="_ZNK4llvm13TinyPtrVector4rendEv" title='llvm::TinyPtrVector::rend' data-ref="_ZNK4llvm13TinyPtrVector4rendEv">rend</dfn>() <em>const</em> {</td></tr>
+<tr><th id="206">206</th><td>    <b>return</b> <a class="typedef" href="#llvm::TinyPtrVector::const_reverse_iterator" title='llvm::TinyPtrVector::const_reverse_iterator' data-type='std::reverse_iterator&lt;const_iterator&gt;' data-ref="llvm::TinyPtrVector::const_reverse_iterator">const_reverse_iterator</a>(begin());</td></tr>
+<tr><th id="207">207</th><td>  }</td></tr>
+<tr><th id="208">208</th><td></td></tr>
+<tr><th id="209">209</th><td>  EltTy <dfn class="decl def" id="_ZNK4llvm13TinyPtrVectorixEj" title='llvm::TinyPtrVector::operator[]' data-ref="_ZNK4llvm13TinyPtrVectorixEj"><b>operator</b>[]</dfn>(<em>unsigned</em> <dfn class="local col2 decl" id="15072i" title='i' data-type='unsigned int' data-ref="15072i">i</dfn>) <em>const</em> {</td></tr>
+<tr><th id="210">210</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(!Val.isNull() &amp;&amp; <q>"can't index into an empty vector"</q>);</td></tr>
+<tr><th id="211">211</th><td>    <b>if</b> (EltTy <dfn class="local col3 decl" id="15073V" title='V' data-type='EltTy' data-ref="15073V"><a class="local col3 ref" href="#15073V" title='V' data-ref="15073V">V</a></dfn> = <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> dyn_cast&lt;EltTy&gt;()) {</td></tr>
+<tr><th id="212">212</th><td>      <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(i == <var>0</var> &amp;&amp; <q>"tinyvector index out of range"</q>);</td></tr>
+<tr><th id="213">213</th><td>      <b>return</b> <a class="local col3 ref" href="#15073V" title='V' data-ref="15073V">V</a>;</td></tr>
+<tr><th id="214">214</th><td>    }</td></tr>
+<tr><th id="215">215</th><td></td></tr>
+<tr><th id="216">216</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(i &lt; Val.<b>template</b> get&lt;VecTy*&gt;()-&gt;size() &amp;&amp;</td></tr>
+<tr><th id="217">217</th><td>           <q>"tinyvector index out of range"</q>);</td></tr>
+<tr><th id="218">218</th><td>    <b>return</b> (*<a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> get&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>*&gt;())[<a class="local col2 ref" href="#15072i" title='i' data-ref="15072i">i</a>];</td></tr>
+<tr><th id="219">219</th><td>  }</td></tr>
+<tr><th id="220">220</th><td></td></tr>
+<tr><th id="221">221</th><td>  EltTy <dfn class="decl def" id="_ZNK4llvm13TinyPtrVector5frontEv" title='llvm::TinyPtrVector::front' data-ref="_ZNK4llvm13TinyPtrVector5frontEv">front</dfn>() <em>const</em> {</td></tr>
+<tr><th id="222">222</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(!empty() &amp;&amp; <q>"vector empty"</q>);</td></tr>
+<tr><th id="223">223</th><td>    <b>if</b> (EltTy <dfn class="local col4 decl" id="15074V" title='V' data-type='EltTy' data-ref="15074V"><a class="local col4 ref" href="#15074V" title='V' data-ref="15074V">V</a></dfn> = <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> dyn_cast&lt;EltTy&gt;())</td></tr>
+<tr><th id="224">224</th><td>      <b>return</b> <a class="local col4 ref" href="#15074V" title='V' data-ref="15074V">V</a>;</td></tr>
+<tr><th id="225">225</th><td>    <b>return</b> <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> get&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>*&gt;()-&gt;front();</td></tr>
+<tr><th id="226">226</th><td>  }</td></tr>
+<tr><th id="227">227</th><td></td></tr>
+<tr><th id="228">228</th><td>  EltTy <dfn class="decl def" id="_ZNK4llvm13TinyPtrVector4backEv" title='llvm::TinyPtrVector::back' data-ref="_ZNK4llvm13TinyPtrVector4backEv">back</dfn>() <em>const</em> {</td></tr>
+<tr><th id="229">229</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(!empty() &amp;&amp; <q>"vector empty"</q>);</td></tr>
+<tr><th id="230">230</th><td>    <b>if</b> (EltTy <dfn class="local col5 decl" id="15075V" title='V' data-type='EltTy' data-ref="15075V"><a class="local col5 ref" href="#15075V" title='V' data-ref="15075V">V</a></dfn> = <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> dyn_cast&lt;EltTy&gt;())</td></tr>
+<tr><th id="231">231</th><td>      <b>return</b> <a class="local col5 ref" href="#15075V" title='V' data-ref="15075V">V</a>;</td></tr>
+<tr><th id="232">232</th><td>    <b>return</b> <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> get&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>*&gt;()-&gt;back();</td></tr>
+<tr><th id="233">233</th><td>  }</td></tr>
+<tr><th id="234">234</th><td></td></tr>
+<tr><th id="235">235</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm13TinyPtrVector9push_backET_" title='llvm::TinyPtrVector::push_back' data-ref="_ZN4llvm13TinyPtrVector9push_backET_">push_back</dfn>(EltTy <dfn class="local col6 decl" id="15076NewVal" title='NewVal' data-type='EltTy' data-ref="15076NewVal">NewVal</dfn>) {</td></tr>
+<tr><th id="236">236</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(NewVal &amp;&amp; <q>"Can't add a null value"</q>);</td></tr>
+<tr><th id="237">237</th><td></td></tr>
+<tr><th id="238">238</th><td>    <i>// If we have nothing, add something.</i></td></tr>
+<tr><th id="239">239</th><td>    <b>if</b> (<a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.isNull()) {</td></tr>
+<tr><th id="240">240</th><td>      <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a> = <a class="local col6 ref" href="#15076NewVal" title='NewVal' data-ref="15076NewVal">NewVal</a>;</td></tr>
+<tr><th id="241">241</th><td>      <b>return</b>;</td></tr>
+<tr><th id="242">242</th><td>    }</td></tr>
+<tr><th id="243">243</th><td></td></tr>
+<tr><th id="244">244</th><td>    <i>// If we have a single value, convert to a vector.</i></td></tr>
+<tr><th id="245">245</th><td>    <b>if</b> (EltTy <dfn class="local col7 decl" id="15077V" title='V' data-type='EltTy' data-ref="15077V"><a class="local col7 ref" href="#15077V" title='V' data-ref="15077V">V</a></dfn> = <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> dyn_cast&lt;EltTy&gt;()) {</td></tr>
+<tr><th id="246">246</th><td>      <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a> = <b>new</b> <a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>();</td></tr>
+<tr><th id="247">247</th><td>      <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> get&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>*&gt;()-&gt;push_back(<a class="local col7 ref" href="#15077V" title='V' data-ref="15077V">V</a>);</td></tr>
+<tr><th id="248">248</th><td>    }</td></tr>
+<tr><th id="249">249</th><td></td></tr>
+<tr><th id="250">250</th><td>    <i>// Add the new value, we know we have a vector.</i></td></tr>
+<tr><th id="251">251</th><td>    <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> get&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>*&gt;()-&gt;push_back(<a class="local col6 ref" href="#15076NewVal" title='NewVal' data-ref="15076NewVal">NewVal</a>);</td></tr>
+<tr><th id="252">252</th><td>  }</td></tr>
+<tr><th id="253">253</th><td></td></tr>
+<tr><th id="254">254</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm13TinyPtrVector8pop_backEv" title='llvm::TinyPtrVector::pop_back' data-ref="_ZN4llvm13TinyPtrVector8pop_backEv">pop_back</dfn>() {</td></tr>
+<tr><th id="255">255</th><td>    <i>// If we have a single value, convert to empty.</i></td></tr>
+<tr><th id="256">256</th><td>    <b>if</b> (<a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> is&lt;EltTy&gt;())</td></tr>
+<tr><th id="257">257</th><td>      <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a> = (EltTy)<b>nullptr</b>;</td></tr>
+<tr><th id="258">258</th><td>    <b>else</b> <b>if</b> (<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a> *<dfn class="local col8 decl" id="15078Vec" title='Vec' data-type='VecTy *' data-ref="15078Vec"><a class="local col8 ref" href="#15078Vec" title='Vec' data-ref="15078Vec">Vec</a></dfn> = <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> get&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>*&gt;())</td></tr>
+<tr><th id="259">259</th><td>      <a class="local col8 ref" href="#15078Vec" title='Vec' data-ref="15078Vec">Vec</a>-&gt;pop_back();</td></tr>
+<tr><th id="260">260</th><td>  }</td></tr>
+<tr><th id="261">261</th><td></td></tr>
+<tr><th id="262">262</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm13TinyPtrVector5clearEv" title='llvm::TinyPtrVector::clear' data-ref="_ZN4llvm13TinyPtrVector5clearEv">clear</dfn>() {</td></tr>
+<tr><th id="263">263</th><td>    <i>// If we have a single value, convert to empty.</i></td></tr>
+<tr><th id="264">264</th><td>    <b>if</b> (<a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> is&lt;EltTy&gt;()) {</td></tr>
+<tr><th id="265">265</th><td>      <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a> = (EltTy)<b>nullptr</b>;</td></tr>
+<tr><th id="266">266</th><td>    } <b>else</b> <b>if</b> (<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a> *<dfn class="local col9 decl" id="15079Vec" title='Vec' data-type='VecTy *' data-ref="15079Vec"><a class="local col9 ref" href="#15079Vec" title='Vec' data-ref="15079Vec">Vec</a></dfn> = <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> dyn_cast&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>*&gt;()) {</td></tr>
+<tr><th id="267">267</th><td>      <i>// If we have a vector form, just clear it.</i></td></tr>
+<tr><th id="268">268</th><td>      <a class="local col9 ref" href="#15079Vec" title='Vec' data-ref="15079Vec">Vec</a>-&gt;clear();</td></tr>
+<tr><th id="269">269</th><td>    }</td></tr>
+<tr><th id="270">270</th><td>    <i>// Otherwise, we're already empty.</i></td></tr>
+<tr><th id="271">271</th><td>  }</td></tr>
+<tr><th id="272">272</th><td></td></tr>
+<tr><th id="273">273</th><td>  <a class="typedef" href="#llvm::TinyPtrVector::iterator" title='llvm::TinyPtrVector::iterator' data-type='EltTy *' data-ref="llvm::TinyPtrVector::iterator">iterator</a> <dfn class="decl def" id="_ZN4llvm13TinyPtrVector5eraseEPT_" title='llvm::TinyPtrVector::erase' data-ref="_ZN4llvm13TinyPtrVector5eraseEPT_">erase</dfn>(<a class="typedef" href="#llvm::TinyPtrVector::iterator" title='llvm::TinyPtrVector::iterator' data-type='EltTy *' data-ref="llvm::TinyPtrVector::iterator">iterator</a> <dfn class="local col0 decl" id="15080I" title='I' data-type='iterator' data-ref="15080I">I</dfn>) {</td></tr>
+<tr><th id="274">274</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(I &gt;= begin() &amp;&amp; <q>"Iterator to erase is out of bounds."</q>);</td></tr>
+<tr><th id="275">275</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(I &lt; end() &amp;&amp; <q>"Erasing at past-the-end iterator."</q>);</td></tr>
+<tr><th id="276">276</th><td></td></tr>
+<tr><th id="277">277</th><td>    <i>// If we have a single value, convert to empty.</i></td></tr>
+<tr><th id="278">278</th><td>    <b>if</b> (<a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> is&lt;EltTy&gt;()) {</td></tr>
+<tr><th id="279">279</th><td>      <b>if</b> (<a class="local col0 ref" href="#15080I" title='I' data-ref="15080I">I</a> == begin())</td></tr>
+<tr><th id="280">280</th><td>        <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a> = (EltTy)<b>nullptr</b>;</td></tr>
+<tr><th id="281">281</th><td>    } <b>else</b> <b>if</b> (<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a> *<dfn class="local col1 decl" id="15081Vec" title='Vec' data-type='VecTy *' data-ref="15081Vec"><a class="local col1 ref" href="#15081Vec" title='Vec' data-ref="15081Vec">Vec</a></dfn> = <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> dyn_cast&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>*&gt;()) {</td></tr>
+<tr><th id="282">282</th><td>      <i>// multiple items in a vector; just do the erase, there is no</i></td></tr>
+<tr><th id="283">283</th><td><i>      // benefit to collapsing back to a pointer</i></td></tr>
+<tr><th id="284">284</th><td>      <b>return</b> <a class="local col1 ref" href="#15081Vec" title='Vec' data-ref="15081Vec">Vec</a>-&gt;erase(<a class="local col0 ref" href="#15080I" title='I' data-ref="15080I">I</a>);</td></tr>
+<tr><th id="285">285</th><td>    }</td></tr>
+<tr><th id="286">286</th><td>    <b>return</b> end();</td></tr>
+<tr><th id="287">287</th><td>  }</td></tr>
+<tr><th id="288">288</th><td></td></tr>
+<tr><th id="289">289</th><td>  <a class="typedef" href="#llvm::TinyPtrVector::iterator" title='llvm::TinyPtrVector::iterator' data-type='EltTy *' data-ref="llvm::TinyPtrVector::iterator">iterator</a> <dfn class="decl def" id="_ZN4llvm13TinyPtrVector5eraseEPT_S2_" title='llvm::TinyPtrVector::erase' data-ref="_ZN4llvm13TinyPtrVector5eraseEPT_S2_">erase</dfn>(<a class="typedef" href="#llvm::TinyPtrVector::iterator" title='llvm::TinyPtrVector::iterator' data-type='EltTy *' data-ref="llvm::TinyPtrVector::iterator">iterator</a> <dfn class="local col2 decl" id="15082S" title='S' data-type='iterator' data-ref="15082S">S</dfn>, <a class="typedef" href="#llvm::TinyPtrVector::iterator" title='llvm::TinyPtrVector::iterator' data-type='EltTy *' data-ref="llvm::TinyPtrVector::iterator">iterator</a> <dfn class="local col3 decl" id="15083E" title='E' data-type='iterator' data-ref="15083E">E</dfn>) {</td></tr>
+<tr><th id="290">290</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(S &gt;= begin() &amp;&amp; <q>"Range to erase is out of bounds."</q>);</td></tr>
+<tr><th id="291">291</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(S &lt;= E &amp;&amp; <q>"Trying to erase invalid range."</q>);</td></tr>
+<tr><th id="292">292</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(E &lt;= end() &amp;&amp; <q>"Trying to erase past the end."</q>);</td></tr>
+<tr><th id="293">293</th><td></td></tr>
+<tr><th id="294">294</th><td>    <b>if</b> (<a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> is&lt;EltTy&gt;()) {</td></tr>
+<tr><th id="295">295</th><td>      <b>if</b> (<a class="local col2 ref" href="#15082S" title='S' data-ref="15082S">S</a> == begin() &amp;&amp; <a class="local col2 ref" href="#15082S" title='S' data-ref="15082S">S</a> != <a class="local col3 ref" href="#15083E" title='E' data-ref="15083E">E</a>)</td></tr>
+<tr><th id="296">296</th><td>        <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a> = (EltTy)<b>nullptr</b>;</td></tr>
+<tr><th id="297">297</th><td>    } <b>else</b> <b>if</b> (<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a> *<dfn class="local col4 decl" id="15084Vec" title='Vec' data-type='VecTy *' data-ref="15084Vec"><a class="local col4 ref" href="#15084Vec" title='Vec' data-ref="15084Vec">Vec</a></dfn> = <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> dyn_cast&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>*&gt;()) {</td></tr>
+<tr><th id="298">298</th><td>      <b>return</b> <a class="local col4 ref" href="#15084Vec" title='Vec' data-ref="15084Vec">Vec</a>-&gt;erase(<a class="local col2 ref" href="#15082S" title='S' data-ref="15082S">S</a>, <a class="local col3 ref" href="#15083E" title='E' data-ref="15083E">E</a>);</td></tr>
+<tr><th id="299">299</th><td>    }</td></tr>
+<tr><th id="300">300</th><td>    <b>return</b> end();</td></tr>
+<tr><th id="301">301</th><td>  }</td></tr>
+<tr><th id="302">302</th><td></td></tr>
+<tr><th id="303">303</th><td>  <a class="typedef" href="#llvm::TinyPtrVector::iterator" title='llvm::TinyPtrVector::iterator' data-type='EltTy *' data-ref="llvm::TinyPtrVector::iterator">iterator</a> <dfn class="decl def" id="_ZN4llvm13TinyPtrVector6insertEPT_RKS1_" title='llvm::TinyPtrVector::insert' data-ref="_ZN4llvm13TinyPtrVector6insertEPT_RKS1_">insert</dfn>(<a class="typedef" href="#llvm::TinyPtrVector::iterator" title='llvm::TinyPtrVector::iterator' data-type='EltTy *' data-ref="llvm::TinyPtrVector::iterator">iterator</a> <dfn class="local col5 decl" id="15085I" title='I' data-type='iterator' data-ref="15085I">I</dfn>, <em>const</em> EltTy &amp;<dfn class="local col6 decl" id="15086Elt" title='Elt' data-type='const EltTy &amp;' data-ref="15086Elt">Elt</dfn>) {</td></tr>
+<tr><th id="304">304</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(I &gt;= <b>this</b>-&gt;begin() &amp;&amp; <q>"Insertion iterator is out of bounds."</q>);</td></tr>
+<tr><th id="305">305</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(I &lt;= <b>this</b>-&gt;end() &amp;&amp; <q>"Inserting past the end of the vector."</q>);</td></tr>
+<tr><th id="306">306</th><td>    <b>if</b> (<a class="local col5 ref" href="#15085I" title='I' data-ref="15085I">I</a> == end()) {</td></tr>
+<tr><th id="307">307</th><td>      <a class="member" href="#_ZN4llvm13TinyPtrVector9push_backET_" title='llvm::TinyPtrVector::push_back' data-ref="_ZN4llvm13TinyPtrVector9push_backET_">push_back</a>(<a class="local col6 ref" href="#15086Elt" title='Elt' data-ref="15086Elt">Elt</a>);</td></tr>
+<tr><th id="308">308</th><td>      <b>return</b> <span class="namespace">std::</span>prev(end());</td></tr>
+<tr><th id="309">309</th><td>    }</td></tr>
+<tr><th id="310">310</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(!Val.isNull() &amp;&amp; <q>"Null value with non-end insert iterator."</q>);</td></tr>
+<tr><th id="311">311</th><td>    <b>if</b> (EltTy <dfn class="local col7 decl" id="15087V" title='V' data-type='EltTy' data-ref="15087V"><a class="local col7 ref" href="#15087V" title='V' data-ref="15087V">V</a></dfn> = <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> dyn_cast&lt;EltTy&gt;()) {</td></tr>
+<tr><th id="312">312</th><td>      <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(I == begin());</td></tr>
+<tr><th id="313">313</th><td>      <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a> = <a class="local col6 ref" href="#15086Elt" title='Elt' data-ref="15086Elt">Elt</a>;</td></tr>
+<tr><th id="314">314</th><td>      <a class="member" href="#_ZN4llvm13TinyPtrVector9push_backET_" title='llvm::TinyPtrVector::push_back' data-ref="_ZN4llvm13TinyPtrVector9push_backET_">push_back</a>(<a class="local col7 ref" href="#15087V" title='V' data-ref="15087V">V</a>);</td></tr>
+<tr><th id="315">315</th><td>      <b>return</b> begin();</td></tr>
+<tr><th id="316">316</th><td>    }</td></tr>
+<tr><th id="317">317</th><td></td></tr>
+<tr><th id="318">318</th><td>    <b>return</b> <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> get&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>*&gt;()-&gt;insert(<a class="local col5 ref" href="#15085I" title='I' data-ref="15085I">I</a>, <a class="local col6 ref" href="#15086Elt" title='Elt' data-ref="15086Elt">Elt</a>);</td></tr>
+<tr><th id="319">319</th><td>  }</td></tr>
+<tr><th id="320">320</th><td></td></tr>
+<tr><th id="321">321</th><td>  <b>template</b>&lt;<b>typename</b> ItTy&gt;</td></tr>
+<tr><th id="322">322</th><td>  <a class="typedef" href="#llvm::TinyPtrVector::iterator" title='llvm::TinyPtrVector::iterator' data-type='EltTy *' data-ref="llvm::TinyPtrVector::iterator">iterator</a> <dfn class="decl def" id="_ZN4llvm13TinyPtrVector6insertEPT_T_S3_" title='llvm::TinyPtrVector::insert' data-ref="_ZN4llvm13TinyPtrVector6insertEPT_T_S3_">insert</dfn>(<a class="typedef" href="#llvm::TinyPtrVector::iterator" title='llvm::TinyPtrVector::iterator' data-type='EltTy *' data-ref="llvm::TinyPtrVector::iterator">iterator</a> <dfn class="local col8 decl" id="15088I" title='I' data-type='iterator' data-ref="15088I">I</dfn>, ItTy <dfn class="local col9 decl" id="15089From" title='From' data-type='ItTy' data-ref="15089From">From</dfn>, ItTy <dfn class="local col0 decl" id="15090To" title='To' data-type='ItTy' data-ref="15090To">To</dfn>) {</td></tr>
+<tr><th id="323">323</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(I &gt;= <b>this</b>-&gt;begin() &amp;&amp; <q>"Insertion iterator is out of bounds."</q>);</td></tr>
+<tr><th id="324">324</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(I &lt;= <b>this</b>-&gt;end() &amp;&amp; <q>"Inserting past the end of the vector."</q>);</td></tr>
+<tr><th id="325">325</th><td>    <b>if</b> (<a class="local col9 ref" href="#15089From" title='From' data-ref="15089From">From</a> == <a class="local col0 ref" href="#15090To" title='To' data-ref="15090To">To</a>)</td></tr>
+<tr><th id="326">326</th><td>      <b>return</b> <a class="local col8 ref" href="#15088I" title='I' data-ref="15088I">I</a>;</td></tr>
+<tr><th id="327">327</th><td></td></tr>
+<tr><th id="328">328</th><td>    <i>// If we have a single value, convert to a vector.</i></td></tr>
+<tr><th id="329">329</th><td>    <span class='typedef' title='ptrdiff_t' data-type='long' data-ref="ptrdiff_t">ptrdiff_t</span> <dfn class="local col1 decl" id="15091Offset" title='Offset' data-type='ptrdiff_t' data-ref="15091Offset">Offset</dfn> = <a class="local col8 ref" href="#15088I" title='I' data-ref="15088I">I</a> - begin();</td></tr>
+<tr><th id="330">330</th><td>    <b>if</b> (<a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.isNull()) {</td></tr>
+<tr><th id="331">331</th><td>      <b>if</b> (<span class="namespace">std::</span>next(<a class="local col9 ref" href="#15089From" title='From' data-ref="15089From">From</a>) == <a class="local col0 ref" href="#15090To" title='To' data-ref="15090To">To</a>) {</td></tr>
+<tr><th id="332">332</th><td>        <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a> = *<a class="local col9 ref" href="#15089From" title='From' data-ref="15089From">From</a>;</td></tr>
+<tr><th id="333">333</th><td>        <b>return</b> begin();</td></tr>
+<tr><th id="334">334</th><td>      }</td></tr>
+<tr><th id="335">335</th><td></td></tr>
+<tr><th id="336">336</th><td>      <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a> = <b>new</b> <a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>();</td></tr>
+<tr><th id="337">337</th><td>    } <b>else</b> <b>if</b> (EltTy <dfn class="local col2 decl" id="15092V" title='V' data-type='EltTy' data-ref="15092V"><a class="local col2 ref" href="#15092V" title='V' data-ref="15092V">V</a></dfn> = <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> dyn_cast&lt;EltTy&gt;()) {</td></tr>
+<tr><th id="338">338</th><td>      <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a> = <b>new</b> <a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>();</td></tr>
+<tr><th id="339">339</th><td>      <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> get&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>*&gt;()-&gt;push_back(<a class="local col2 ref" href="#15092V" title='V' data-ref="15092V">V</a>);</td></tr>
+<tr><th id="340">340</th><td>    }</td></tr>
+<tr><th id="341">341</th><td>    <b>return</b> <a class="member" href="#llvm::TinyPtrVector::Val" title='llvm::TinyPtrVector::Val' data-ref="llvm::TinyPtrVector::Val">Val</a>.<b>template</b> get&lt;<a class="typedef" href="#llvm::TinyPtrVector::VecTy" title='llvm::TinyPtrVector::VecTy' data-type='SmallVector&lt;EltTy, 4&gt;' data-ref="llvm::TinyPtrVector::VecTy">VecTy</a>*&gt;()-&gt;insert(begin() + <a class="local col1 ref" href="#15091Offset" title='Offset' data-ref="15091Offset">Offset</a>, <a class="local col9 ref" href="#15089From" title='From' data-ref="15089From">From</a>, <a class="local col0 ref" href="#15090To" title='To' data-ref="15090To">To</a>);</td></tr>
+<tr><th id="342">342</th><td>  }</td></tr>
+<tr><th id="343">343</th><td>};</td></tr>
+<tr><th id="344">344</th><td></td></tr>
+<tr><th id="345">345</th><td>} <i>// end namespace llvm</i></td></tr>
+<tr><th id="346">346</th><td></td></tr>
+<tr><th id="347">347</th><td><u>#<span data-ppcond="10">endif</span> // LLVM_ADT_TINYPTRVECTOR_H</u></td></tr>
+<tr><th id="348">348</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../../../pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc.html'>pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc</a><br/>Generated on <em>2019-Oct-28</em> from project include<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

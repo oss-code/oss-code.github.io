@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/ADT/Twine.h' l='522' ll='524' type='llvm::Twine llvm::operator+(const char * LHS, const llvm::StringRef &amp; RHS)'/>
+<use f='include/llvm-6.0/llvm/Support/CommandLine.h' l='780' u='c' c='_ZN4llvm2cl6parser5parseERNS0_6OptionENS_9StringRefES4_RT_'/>
+<doc f='include/llvm-6.0/llvm/ADT/Twine.h' l='519'>/// Additional overload to guarantee simplified codegen; this is equivalent to
+  /// concat().</doc>

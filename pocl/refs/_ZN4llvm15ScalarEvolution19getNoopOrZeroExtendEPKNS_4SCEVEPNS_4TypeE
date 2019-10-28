@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='629' type='const llvm::SCEV * llvm::ScalarEvolution::getNoopOrZeroExtend(const llvm::SCEV * V, llvm::Type * Ty)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='626'>/// Return a SCEV corresponding to a conversion of the input value to the
+  /// specified type.  If the type must be extended, it is zero extended.  The
+  /// conversion must not be narrowing.</doc>

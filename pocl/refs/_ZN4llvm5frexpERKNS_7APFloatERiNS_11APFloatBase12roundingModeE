@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/ADT/APFloat.h' l='1183' type='llvm::APFloat llvm::frexp(const llvm::APFloat &amp; X, int &amp; Exp, llvm::APFloatBase::roundingMode RM)'/>
+<def f='include/llvm-6.0/llvm/ADT/APFloat.h' l='1205' ll='1211' type='llvm::APFloat llvm::frexp(const llvm::APFloat &amp; X, int &amp; Exp, APFloat::roundingMode RM)'/>
+<doc f='include/llvm-6.0/llvm/ADT/APFloat.h' l='1201'>/// Equivalent of C standard library function.
+///
+/// While the C standard says Exp is an unspecified value for infinity and nan,
+/// this returns INT_MAX for infinities, and INT_MIN for NaNs.</doc>

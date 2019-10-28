@@ -1,0 +1,13 @@
+<dec f='pocl/lib/llvmopencl/linker.h' l='20' type='int link(llvm::Module * krn, const llvm::Module * lib, std::string &amp; log)'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='569' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='700' u='c' c='pocl_llvm_link_program'/>
+<doc f='pocl/lib/llvmopencl/linker.h' l='11'>/**
+ * Link in module lib to krn.
+ * This function searches for each undefined symbol 
+ * in krn from lib, cloning as needed. For big modules,
+ * this is faster than calling llvm::Linker and then
+ * running DCE.
+ *
+ * log is used to report errors if we run into undefined symbols
+ */</doc>
+<def f='pocl/lib/llvmopencl/linker.cpp' l='344' ll='448' type='int link(llvm::Module * program, const llvm::Module * lib, std::string &amp; log)'/>

@@ -1,0 +1,11 @@
+<dec f='include/llvm-6.0/llvm/Transforms/IPO.h' l='257' type='llvm::ModulePass * llvm::createWholeProgramDevirtPass(llvm::ModuleSummaryIndex * ExportSummary, const llvm::ModuleSummaryIndex * ImportSummary)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/IPO.h' l='246'>/// \brief This pass implements whole-program devirtualization using type
+/// metadata.
+///
+/// The behavior depends on the summary arguments:
+/// - If ExportSummary is non-null, this pass will export type identifiers to
+///   the given summary.
+/// - Otherwise, if ImportSummary is non-null, this pass will import type
+///   identifiers from the given summary.
+/// - Otherwise it does neither.
+/// It is invalid for both ExportSummary and ImportSummary to be non-null.</doc>

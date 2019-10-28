@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='712' type='unsigned int llvm::ScalarEvolution::getSmallConstantTripMultiple(const llvm::Loop * L)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='706'>/// Returns the largest constant divisor of the trip count of the
+  /// loop if it is a single-exit loop and we can compute a small maximum for
+  /// that loop.
+  ///
+  /// Implemented in terms of the \c getSmallConstantTripMultiple overload with
+  /// the single exiting block passed to it. See that routine for details.</doc>

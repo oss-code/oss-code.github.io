@@ -1,0 +1,3 @@
+<def f='pocl/include/CL/cl2.hpp' l='7422' ll='7445' type='cl_int cl::CommandQueue::enqueueWriteBuffer(const cl::Buffer &amp; buffer, cl_bool blocking, size_type offset, size_type size, const void * ptr, const vector&lt;cl::Event&gt; * events = __null, cl::Event * event = __null) const'/>
+<use f='pocl/include/CL/cl2.hpp' l='9046' u='c' c='_ZN2cl18enqueueWriteBufferERKNS_6BufferEjmmPKvPKSt6vectorINS_5EventESaIS6_EEPS6_'/>
+<use f='pocl/tests/regression/test_flatten_barrier_subs.cpp' l='116' u='c' c='_Z17exclusive_scan_clRKSt6vectorIiSaIiEERS1_'/>

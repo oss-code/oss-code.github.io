@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Argument.h' l='56' type='bool llvm::Argument::hasNonNullAttr() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Argument.h' l='53'>/// Return true if this argument has the nonnull attribute. Also returns true
+  /// if at least one byte is known to be dereferenceable and the pointer is in
+  /// addrspace(0).</doc>

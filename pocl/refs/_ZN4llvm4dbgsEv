@@ -1,0 +1,12 @@
+<dec f='include/llvm-6.0/llvm/Support/Debug.h' l='109' type='llvm::raw_ostream &amp; llvm::dbgs()'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='449' u='c' c='_ZN4llvm11PassManager3runERT_RT0_DpT1_'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='453' u='c' c='_ZN4llvm11PassManager3runERT_RT0_DpT1_'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='480' u='c' c='_ZN4llvm11PassManager3runERT_RT0_DpT1_'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='659' u='c' c='_ZN4llvm15AnalysisManager5clearERT_NS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='775' u='c' c='_ZN4llvm15AnalysisManager10invalidateERT_RKNS_17PreservedAnalysesE'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='819' u='c' c='_ZN4llvm15AnalysisManager10invalidateERT_RKNS_17PreservedAnalysesE'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='861' u='c' c='_ZN4llvm15AnalysisManager13getResultImplEPNS_11AnalysisKeyERT_DpT0_'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='892' u='c' c='_ZN4llvm15AnalysisManager14invalidateImplEPNS_11AnalysisKeyERT_'/>
+<doc f='include/llvm-6.0/llvm/Support/Debug.h' l='106'>/// dbgs() - This returns a reference to a raw_ostream for debugging
+/// messages.  If debugging is disabled it returns errs().  Use it
+/// like: dbgs() &lt;&lt; &quot;foo&quot; &lt;&lt; &quot;bar&quot;;</doc>

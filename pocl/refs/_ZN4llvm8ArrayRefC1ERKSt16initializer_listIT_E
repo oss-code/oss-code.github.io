@@ -1,0 +1,13 @@
+<def f='include/llvm-6.0/llvm/ADT/ArrayRef.h' l='101' ll='103' type='void llvm::ArrayRef::ArrayRef&lt;T&gt;(const std::initializer_list&lt;T&gt; &amp; Vec)'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='174' u='c' c='_ZL20addKernelAnnotationsPN4llvm6ModuleEPKc'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='207' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='244' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='309' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='331' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='359' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='576' u='c' c='_ZL13linkLibDevicePN4llvm6ModuleEPKcS3_'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='627' u='c' c='_Z23convertPtrArgsToOffsetsPN4llvm6ModuleEPKcjPNS_14GlobalVariableE'/>
+<doc f='include/llvm-6.0/llvm/ADT/ArrayRef.h' l='100'>/// Construct an ArrayRef from a std::initializer_list.</doc>
+<doc f='include/llvm-6.0/llvm/ADT/ArrayRef.h' l='101'>/*implicit*/</doc>
+<use f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='572' u='c' c='_ZN4llvm9DIBuilder29createConstantValueExpressionEm'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='670' u='c' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>

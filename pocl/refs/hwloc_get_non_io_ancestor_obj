@@ -1,0 +1,7 @@
+<def f='include/hwloc/helper.h' l='1169' ll='1178' type='hwloc_obj_t hwloc_get_non_io_ancestor_obj(hwloc_topology_t topology, hwloc_obj_t ioobj)'/>
+<doc f='include/hwloc/helper.h' l='1163'>/** \brief Get the first non-I/O ancestor object.
+ *
+ * Given the I/O object \p ioobj, find the smallest non-I/O ancestor
+ * object. This regular object may then be used for binding because
+ * its locality is the same as \p ioobj.
+ */</doc>

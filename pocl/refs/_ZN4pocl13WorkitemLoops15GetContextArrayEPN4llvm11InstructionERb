@@ -1,0 +1,7 @@
+<dec f='pocl/lib/llvmopencl/WorkitemLoops.h' l='90' type='llvm::Instruction * pocl::WorkitemLoops::GetContextArray(llvm::Instruction * val, bool &amp; PoclWrapperStructAdded)'/>
+<def f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='845' ll='995' type='llvm::Instruction * pocl::WorkitemLoops::GetContextArray(llvm::Instruction * instruction, bool &amp; PoclWrapperStructAdded)'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='1019' u='c' c='_ZN4pocl13WorkitemLoops21AddContextSaveRestoreEPN4llvm11InstructionE'/>
+<doc f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='841'>/**
+ * Returns the context array (alloca) for the given Value, creates it if not
+ * found.
+ */</doc>

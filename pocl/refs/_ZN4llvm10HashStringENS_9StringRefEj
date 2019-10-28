@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/ADT/StringExtras.h' l='242' ll='246' type='unsigned int llvm::HashString(llvm::StringRef Str, unsigned int Result = 0)'/>
+<doc f='include/llvm-6.0/llvm/ADT/StringExtras.h' l='235'>/// HashString - Hash function for strings.
+///
+/// This is the Bernstein hash function.
+//
+// FIXME: Investigate whether a modified bernstein hash function performs
+// better: http://eternallyconfuzzled.com/tuts/algorithms/jsw_tut_hashing.aspx
+//   X*33+c -&gt; X*33^c</doc>

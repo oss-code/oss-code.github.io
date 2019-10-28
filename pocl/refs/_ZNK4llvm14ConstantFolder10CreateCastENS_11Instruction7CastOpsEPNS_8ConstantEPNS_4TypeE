@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/IR/ConstantFolder.h' l='181' ll='184' type='llvm::Constant * llvm::ConstantFolder::CreateCast(Instruction::CastOps Op, llvm::Constant * C, llvm::Type * DestTy) const'/>
+<use f='include/llvm-6.0/llvm/IR/ConstantFolder.h' l='205' u='c' c='_ZNK4llvm14ConstantFolder13CreateBitCastEPNS_8ConstantEPNS_4TypeE'/>
+<use f='include/llvm-6.0/llvm/IR/ConstantFolder.h' l='209' u='c' c='_ZNK4llvm14ConstantFolder14CreateIntToPtrEPNS_8ConstantEPNS_4TypeE'/>
+<use f='include/llvm-6.0/llvm/IR/ConstantFolder.h' l='213' u='c' c='_ZNK4llvm14ConstantFolder14CreatePtrToIntEPNS_8ConstantEPNS_4TypeE'/>
+<doc f='include/llvm-6.0/llvm/IR/ConstantFolder.h' l='177'>//===--------------------------------------------------------------------===//
+  // Cast/Conversion Operators
+  //===--------------------------------------------------------------------===//</doc>

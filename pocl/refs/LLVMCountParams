@@ -1,0 +1,9 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2032' type='unsigned int LLVMCountParams(LLVMValueRef Fn)'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1067' u='c' c='_ZL23computeArgBufferOffsetsP15LLVMOpaqueValuePm'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1127' u='c' c='_ZN4pocl9Workgroup32createArgBufferWorkgroupLauncherEPN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1307' u='c' c='_ZN4pocl9Workgroup18createGridLauncherEPN4llvm8FunctionES3_NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2027'>/**
+ * Obtain the number of parameters in a function.
+ *
+ * @see llvm::Function::arg_size()
+ */</doc>

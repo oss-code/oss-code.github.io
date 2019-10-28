@@ -1,0 +1,61 @@
+<def f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='245' ll='847'/>
+<def f='include/llvm-6.0/llvm/IR/Dominators.h' l='37'/>
+<def f='include/llvm-6.0/llvm/IR/Dominators.h' l='38'/>
+<ovr f='include/llvm-6.0/llvm/IR/Dominators.h' l='140' c='llvm::DominatorTree'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/PostDominators.h' l='29' c='llvm::PostDominatorTree'/>
+<size>104</size>
+<doc f='include/llvm-6.0/llvm/IR/Dominators.h' l='37'>// DomTree</doc>
+<doc f='include/llvm-6.0/llvm/IR/Dominators.h' l='38'>// PostDomTree</doc>
+<smbr r='llvm::DominatorTreeBase::IsPostDominator' t='const bool'/>
+<smbr r='llvm::DominatorTreeBase::Insert' t='const UpdateKind'/>
+<smbr r='llvm::DominatorTreeBase::Delete' t='const UpdateKind'/>
+<mbr r='llvm::DominatorTreeBase::Roots' t='SmallVector&lt;NodeT *, IsPostDom ? 4 : 1&gt;'/>
+<mbr r='llvm::DominatorTreeBase::DomTreeNodes' t='DomTreeNodeMapType'/>
+<mbr r='llvm::DominatorTreeBase::RootNode' t='DomTreeNodeBase&lt;NodeT&gt; *'/>
+<mbr r='llvm::DominatorTreeBase::Parent' t='ParentPtr'/>
+<mbr r='llvm::DominatorTreeBase::DFSInfoValid' t='bool'/>
+<mbr r='llvm::DominatorTreeBase::SlowQueries' t='unsigned int'/>
+<fun r='_ZN4llvm17DominatorTreeBaseC1Ev'/>
+<fun r='_ZN4llvm17DominatorTreeBaseC1EONS_17DominatorTreeBaseIT_XT0_EEE'/>
+<fun r='_ZN4llvm17DominatorTreeBaseaSEONS_17DominatorTreeBaseIT_XT0_EEE'/>
+<fun r='_ZN4llvm17DominatorTreeBaseC1ERKNS_17DominatorTreeBaseIT_XT0_EEE'/>
+<fun r='_ZN4llvm17DominatorTreeBaseaSERKNS_17DominatorTreeBaseIT_XT0_EEE'/>
+<fun r='_ZNK4llvm17DominatorTreeBase8getRootsEv'/>
+<fun r='_ZNK4llvm17DominatorTreeBase15isPostDominatorEv'/>
+<fun r='_ZNK4llvm17DominatorTreeBase7compareERKNS_17DominatorTreeBaseIT_XT0_EEE'/>
+<fun r='_ZN4llvm17DominatorTreeBase13releaseMemoryEv'/>
+<fun r='_ZNK4llvm17DominatorTreeBase7getNodeEPT_'/>
+<fun r='_ZNK4llvm17DominatorTreeBaseixEPT_'/>
+<fun r='_ZN4llvm17DominatorTreeBase11getRootNodeEv'/>
+<fun r='_ZNK4llvm17DominatorTreeBase11getRootNodeEv'/>
+<fun r='_ZNK4llvm17DominatorTreeBase14getDescendantsEPT_RNS_15SmallVectorImplIS2_EE'/>
+<fun r='_ZNK4llvm17DominatorTreeBase17properlyDominatesEPKNS_15DomTreeNodeBaseIT_EES5_'/>
+<fun r='_ZNK4llvm17DominatorTreeBase17properlyDominatesEPKT_S3_'/>
+<fun r='_ZNK4llvm17DominatorTreeBase20isReachableFromEntryEPKT_'/>
+<fun r='_ZNK4llvm17DominatorTreeBase20isReachableFromEntryEPKNS_15DomTreeNodeBaseIT_EE'/>
+<fun r='_ZNK4llvm17DominatorTreeBase9dominatesEPKNS_15DomTreeNodeBaseIT_EES5_'/>
+<fun r='_ZNK4llvm17DominatorTreeBase9dominatesEPKT_S3_'/>
+<fun r='_ZNK4llvm17DominatorTreeBase7getRootEv'/>
+<fun r='_ZNK4llvm17DominatorTreeBase26findNearestCommonDominatorEPT_S2_'/>
+<fun r='_ZNK4llvm17DominatorTreeBase26findNearestCommonDominatorEPKT_S3_'/>
+<fun r='_ZNK4llvm17DominatorTreeBase13isVirtualRootEPKNS_15DomTreeNodeBaseIT_EE'/>
+<fun r='_ZN4llvm17DominatorTreeBase12applyUpdatesENS_8ArrayRefINS_14DomTreeBuilder6UpdateIPT_EEEE'/>
+<fun r='_ZN4llvm17DominatorTreeBase10insertEdgeEPT_S2_'/>
+<fun r='_ZN4llvm17DominatorTreeBase10deleteEdgeEPT_S2_'/>
+<fun r='_ZN4llvm17DominatorTreeBase11addNewBlockEPT_S2_'/>
+<fun r='_ZN4llvm17DominatorTreeBase10setNewRootEPT_'/>
+<fun r='_ZN4llvm17DominatorTreeBase24changeImmediateDominatorEPNS_15DomTreeNodeBaseIT_EES4_'/>
+<fun r='_ZN4llvm17DominatorTreeBase24changeImmediateDominatorEPT_S2_'/>
+<fun r='_ZN4llvm17DominatorTreeBase9eraseNodeEPT_'/>
+<fun r='_ZN4llvm17DominatorTreeBase10splitBlockEPT_'/>
+<fun r='_ZNK4llvm17DominatorTreeBase5printERNS_11raw_ostreamE'/>
+<fun r='_ZNK4llvm17DominatorTreeBase16updateDFSNumbersEv'/>
+<fun r='_ZN4llvm17DominatorTreeBase11recalculateERNSt14remove_pointerIDTclptclsr3stdE7declvalIPT_EE9getParentEEE4typeE'/>
+<fun r='_ZNK4llvm17DominatorTreeBase6verifyEv'/>
+<fun r='_ZN4llvm17DominatorTreeBase7addRootEPT_'/>
+<fun r='_ZN4llvm17DominatorTreeBase5resetEv'/>
+<fun r='_ZN4llvm17DominatorTreeBase5SplitENS_11GraphTraitsIT_E7NodeRefE'/>
+<fun r='_ZNK4llvm17DominatorTreeBase23dominatedBySlowTreeWalkEPKNS_15DomTreeNodeBaseIT_EES5_'/>
+<fun r='_ZN4llvm17DominatorTreeBase4wipeEv'/>
+<fun r='_ZNK4llvm17DominatorTreeBase9dominatesEPKT_S3_'/>
+<fun r='_ZNK4llvm17DominatorTreeBase17properlyDominatesEPKT_S3_'/>

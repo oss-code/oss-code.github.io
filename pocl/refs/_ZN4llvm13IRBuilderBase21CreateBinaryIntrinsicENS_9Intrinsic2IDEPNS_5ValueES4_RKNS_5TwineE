@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='629' type='llvm::CallInst * llvm::IRBuilderBase::CreateBinaryIntrinsic(Intrinsic::ID ID, llvm::Value * LHS, llvm::Value * RHS, const llvm::Twine &amp; Name = &quot;&quot;)'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='635' u='c' c='_ZN4llvm13IRBuilderBase12CreateMinNumEPNS_5ValueES2_RKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='640' u='c' c='_ZN4llvm13IRBuilderBase12CreateMaxNumEPNS_5ValueES2_RKNS_5TwineE'/>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='627'>/// Create a call to intrinsic \p ID with 2 operands which is mangled on the
+  /// first type.</doc>

@@ -1,0 +1,4 @@
+<dec f='include/utime.h' l='45' type='int utime(const char * __file, const struct utimbuf * __file_times)'/>
+<doc f='include/utime.h' l='43'>/* Set the access and modification times of FILE to those given in
+   *FILE_TIMES.  If FILE_TIMES is NULL, set them to the current time.  */</doc>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='168' u='c' c='pocl_touch_file'/>

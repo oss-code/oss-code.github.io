@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>WorkitemHandler.h source code [pocl/lib/llvmopencl/WorkitemHandler.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="pocl::WorkitemHandler "/>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/llvmopencl/WorkitemHandler.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>llvmopencl</a>/<a href='WorkitemHandler.h.html'>WorkitemHandler.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>// Header for WorkitemHandler, a parent class for all implementations of</i></td></tr>
+<tr><th id="2">2</th><td><i>// work item handling.</i></td></tr>
+<tr><th id="3">3</th><td><i>//</i></td></tr>
+<tr><th id="4">4</th><td><i>// Copyright (c) 2012-2019 Pekka Jääskeläinen</i></td></tr>
+<tr><th id="5">5</th><td><i>//</i></td></tr>
+<tr><th id="6">6</th><td><i>// Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="7">7</th><td><i>// of this software and associated documentation files (the "Software"), to</i></td></tr>
+<tr><th id="8">8</th><td><i>// deal in the Software without restriction, including without limitation the</i></td></tr>
+<tr><th id="9">9</th><td><i>// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or</i></td></tr>
+<tr><th id="10">10</th><td><i>// sell copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="11">11</th><td><i>// furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="12">12</th><td><i>//</i></td></tr>
+<tr><th id="13">13</th><td><i>// The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="14">14</th><td><i>// all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="15">15</th><td><i>//</i></td></tr>
+<tr><th id="16">16</th><td><i>// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="17">17</th><td><i>// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="18">18</th><td><i>// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="19">19</th><td><i>// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="20">20</th><td><i>// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING</i></td></tr>
+<tr><th id="21">21</th><td><i>// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS</i></td></tr>
+<tr><th id="22">22</th><td><i>// IN THE SOFTWARE.</i></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><u>#<span data-ppcond="24">ifndef</span> <span class="macro" data-ref="_M/_POCL_WORKITEM_HANDLER_H">_POCL_WORKITEM_HANDLER_H</span></u></td></tr>
+<tr><th id="25">25</th><td><u>#define <dfn class="macro" id="_M/_POCL_WORKITEM_HANDLER_H" data-ref="_M/_POCL_WORKITEM_HANDLER_H">_POCL_WORKITEM_HANDLER_H</dfn></u></td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><u>#include <a href="CompilerWarnings.h.html">"CompilerWarnings.h"</a></u></td></tr>
+<tr><th id="28">28</th><td><a class="macro" href="CompilerWarnings.h.html#29" title="" data-ref="_M/IGNORE_COMPILER_WARNING">IGNORE_COMPILER_WARNING</a>(<q>"-Wunused-parameter"</q>)</td></tr>
+<tr><th id="29">29</th><td></td></tr>
+<tr><th id="30">30</th><td><u>#include <a href="../../config.h.html">"config.h"</a></u></td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><u>#include <a href="../../../include/llvm-6.0/llvm/IR/Function.h.html">"llvm/IR/Function.h"</a></u></td></tr>
+<tr><th id="33">33</th><td><u>#include <a href="../../../include/llvm-6.0/llvm/IR/Dominators.h.html">"llvm/IR/Dominators.h"</a></u></td></tr>
+<tr><th id="34">34</th><td><u>#include <a href="../../../include/llvm-6.0/llvm/Pass.h.html">"llvm/Pass.h"</a></u></td></tr>
+<tr><th id="35">35</th><td><u>#include <a href="../../../include/llvm-6.0/llvm/Support/CommandLine.h.html">"llvm/Support/CommandLine.h"</a></u></td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td><a class="macro" href="CompilerWarnings.h.html#48" title="" data-ref="_M/POP_COMPILER_DIAGS">POP_COMPILER_DIAGS</a></td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td><b>namespace</b> <span class="namespace">llvm</span> {</td></tr>
+<tr><th id="40">40</th><td>  <b>class</b> <a class="type" href="../../../include/llvm-6.0/llvm/IR/Dominators.h.html#llvm::DominatorTree" title='llvm::DominatorTree' data-ref="llvm::DominatorTree" id="llvm::DominatorTree">DominatorTree</a>;</td></tr>
+<tr><th id="41">41</th><td>}</td></tr>
+<tr><th id="42">42</th><td></td></tr>
+<tr><th id="43">43</th><td><b>namespace</b> <span class="namespace">pocl</span> {</td></tr>
+<tr><th id="44">44</th><td>  <b>class</b> <a class="type" href="Workgroup.h.html#pocl::Workgroup" title='pocl::Workgroup' data-ref="pocl::Workgroup" id="pocl::Workgroup">Workgroup</a>;</td></tr>
+<tr><th id="45">45</th><td>  <b>class</b> <dfn class="type" id="pocl::Kernel" title='pocl::Kernel' data-ref="pocl::Kernel">Kernel</dfn>;</td></tr>
+<tr><th id="46">46</th><td></td></tr>
+<tr><th id="47">47</th><td>  <b>class</b> <dfn class="type def" id="pocl::WorkitemHandler" title='pocl::WorkitemHandler' data-ref="pocl::WorkitemHandler">WorkitemHandler</dfn> : <b>public</b> <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> {</td></tr>
+<tr><th id="48">48</th><td>  <b>public</b>:</td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td>    <dfn class="decl" id="_ZN4pocl15WorkitemHandlerC1ERc" title='pocl::WorkitemHandler::WorkitemHandler' data-ref="_ZN4pocl15WorkitemHandlerC1ERc">WorkitemHandler</dfn>(<em>char</em>&amp; <dfn class="local col4 decl" id="4ID" title='ID' data-type='char &amp;' data-ref="4ID">ID</dfn>);</td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td>    <b>virtual</b> <em>void</em> <dfn class="virtual decl" id="_ZNK4pocl15WorkitemHandler16getAnalysisUsageERN4llvm13AnalysisUsageE" title='pocl::WorkitemHandler::getAnalysisUsage' data-ref="_ZNK4pocl15WorkitemHandler16getAnalysisUsageERN4llvm13AnalysisUsageE">getAnalysisUsage</dfn>(<span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/PassAnalysisSupport.h.html#llvm::AnalysisUsage" title='llvm::AnalysisUsage' data-ref="llvm::AnalysisUsage">AnalysisUsage</a> &amp;<dfn class="local col5 decl" id="5AU" title='AU' data-type='llvm::AnalysisUsage &amp;' data-ref="5AU">AU</dfn>) <em>const</em> = <var>0</var>;</td></tr>
+<tr><th id="53">53</th><td>    <b>virtual</b> <em>bool</em> <dfn class="virtual decl" id="_ZN4pocl15WorkitemHandler13runOnFunctionERN4llvm8FunctionE" title='pocl::WorkitemHandler::runOnFunction' data-ref="_ZN4pocl15WorkitemHandler13runOnFunctionERN4llvm8FunctionE">runOnFunction</dfn>(<span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/Function.h.html#llvm::Function" title='llvm::Function' data-ref="llvm::Function">Function</a> &amp;<dfn class="local col6 decl" id="6F" title='F' data-type='llvm::Function &amp;' data-ref="6F">F</dfn>);</td></tr>
+<tr><th id="54">54</th><td></td></tr>
+<tr><th id="55">55</th><td>    <b>virtual</b> <em>void</em> <dfn class="virtual decl" id="_ZN4pocl15WorkitemHandler10InitializeEPNS_6KernelE" title='pocl::WorkitemHandler::Initialize' data-ref="_ZN4pocl15WorkitemHandler10InitializeEPNS_6KernelE">Initialize</dfn>(<span class="namespace">pocl::</span><a class="type" href="#pocl::Kernel" title='pocl::Kernel' data-ref="pocl::Kernel">Kernel</a> *<dfn class="local col7 decl" id="7K" title='K' data-type='pocl::Kernel *' data-ref="7K">K</dfn>);</td></tr>
+<tr><th id="56">56</th><td></td></tr>
+<tr><th id="57">57</th><td>  <b>protected</b>:</td></tr>
+<tr><th id="58">58</th><td></td></tr>
+<tr><th id="59">59</th><td>    <em>void</em> <dfn class="decl" id="_ZN4pocl15WorkitemHandler12movePhiNodesEPN4llvm10BasicBlockES3_" title='pocl::WorkitemHandler::movePhiNodes' data-ref="_ZN4pocl15WorkitemHandler12movePhiNodesEPN4llvm10BasicBlockES3_">movePhiNodes</dfn>(<span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a>* <dfn class="local col8 decl" id="8src" title='src' data-type='llvm::BasicBlock *' data-ref="8src">src</dfn>, <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a>* <dfn class="local col9 decl" id="9dst" title='dst' data-type='llvm::BasicBlock *' data-ref="9dst">dst</dfn>);</td></tr>
+<tr><th id="60">60</th><td>    <em>bool</em> <dfn class="decl" id="_ZN4pocl15WorkitemHandler26fixUndominatedVariableUsesEPN4llvm24DominatorTreeWrapperPassERNS1_8FunctionE" title='pocl::WorkitemHandler::fixUndominatedVariableUses' data-ref="_ZN4pocl15WorkitemHandler26fixUndominatedVariableUsesEPN4llvm24DominatorTreeWrapperPassERNS1_8FunctionE">fixUndominatedVariableUses</dfn>(<span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/Dominators.h.html#llvm::DominatorTreeWrapperPass" title='llvm::DominatorTreeWrapperPass' data-ref="llvm::DominatorTreeWrapperPass">DominatorTreeWrapperPass</a> *<dfn class="local col0 decl" id="10DT" title='DT' data-type='llvm::DominatorTreeWrapperPass *' data-ref="10DT">DT</dfn>, <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/Function.h.html#llvm::Function" title='llvm::Function' data-ref="llvm::Function">Function</a> &amp;<dfn class="local col1 decl" id="11F" title='F' data-type='llvm::Function &amp;' data-ref="11F">F</dfn>);</td></tr>
+<tr><th id="61">61</th><td>    <em>bool</em> <dfn class="decl" id="_ZN4pocl15WorkitemHandler12dominatesUseEPN4llvm24DominatorTreeWrapperPassERNS1_11InstructionEj" title='pocl::WorkitemHandler::dominatesUse' data-ref="_ZN4pocl15WorkitemHandler12dominatesUseEPN4llvm24DominatorTreeWrapperPassERNS1_11InstructionEj">dominatesUse</dfn>(<span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/Dominators.h.html#llvm::DominatorTreeWrapperPass" title='llvm::DominatorTreeWrapperPass' data-ref="llvm::DominatorTreeWrapperPass">DominatorTreeWrapperPass</a> *<dfn class="local col2 decl" id="12DT" title='DT' data-type='llvm::DominatorTreeWrapperPass *' data-ref="12DT">DT</dfn>, <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/Instruction.h.html#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> &amp;<dfn class="local col3 decl" id="13I" title='I' data-type='llvm::Instruction &amp;' data-ref="13I">I</dfn>, <em>unsigned</em> <dfn class="local col4 decl" id="14i" title='i' data-type='unsigned int' data-ref="14i">i</dfn>);</td></tr>
+<tr><th id="62">62</th><td></td></tr>
+<tr><th id="63">63</th><td>    <i>// The type of size_t for the current target.</i></td></tr>
+<tr><th id="64">64</th><td>    <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/Type.h.html#llvm::Type" title='llvm::Type' data-ref="llvm::Type">Type</a> *<dfn class="decl" id="pocl::WorkitemHandler::SizeT" title='pocl::WorkitemHandler::SizeT' data-ref="pocl::WorkitemHandler::SizeT">SizeT</dfn>;</td></tr>
+<tr><th id="65">65</th><td>    <i>// The width of size_t for the current target.</i></td></tr>
+<tr><th id="66">66</th><td>    <em>int</em> <dfn class="decl" id="pocl::WorkitemHandler::SizeTWidth" title='pocl::WorkitemHandler::SizeTWidth' data-ref="pocl::WorkitemHandler::SizeTWidth">SizeTWidth</dfn>;</td></tr>
+<tr><th id="67">67</th><td></td></tr>
+<tr><th id="68">68</th><td>    <i>// The Module global variables that hold the place of the current local</i></td></tr>
+<tr><th id="69">69</th><td><i>    // id until privatized.</i></td></tr>
+<tr><th id="70">70</th><td>    <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/Value.h.html#llvm::Value" title='llvm::Value' data-ref="llvm::Value">Value</a> *<dfn class="decl" id="pocl::WorkitemHandler::LocalIdZGlobal" title='pocl::WorkitemHandler::LocalIdZGlobal' data-ref="pocl::WorkitemHandler::LocalIdZGlobal">LocalIdZGlobal</dfn>, *<dfn class="decl" id="pocl::WorkitemHandler::LocalIdYGlobal" title='pocl::WorkitemHandler::LocalIdYGlobal' data-ref="pocl::WorkitemHandler::LocalIdYGlobal">LocalIdYGlobal</dfn>, *<dfn class="decl" id="pocl::WorkitemHandler::LocalIdXGlobal" title='pocl::WorkitemHandler::LocalIdXGlobal' data-ref="pocl::WorkitemHandler::LocalIdXGlobal">LocalIdXGlobal</dfn>;</td></tr>
+<tr><th id="71">71</th><td>  };</td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td>  <b>extern</b> <span class="namespace">llvm::cl::</span><a class="type" href="../../../include/llvm-6.0/llvm/Support/CommandLine.h.html#llvm::cl::opt" title='llvm::cl::opt' data-ref="llvm::cl::opt">opt</a>&lt;<em>bool</em>&gt; <dfn class="decl" id="pocl::AddWIMetadata" title='pocl::AddWIMetadata' data-ref="pocl::AddWIMetadata">AddWIMetadata</dfn>;</td></tr>
+<tr><th id="74">74</th><td>  <b>extern</b> <span class="namespace">llvm::cl::</span><a class="type" href="../../../include/llvm-6.0/llvm/Support/CommandLine.h.html#llvm::cl::opt" title='llvm::cl::opt' data-ref="llvm::cl::opt">opt</a>&lt;<em>int</em>&gt; <dfn class="decl" id="pocl::LockStepSIMDWidth" title='pocl::LockStepSIMDWidth' data-ref="pocl::LockStepSIMDWidth">LockStepSIMDWidth</dfn>;</td></tr>
+<tr><th id="75">75</th><td></td></tr>
+<tr><th id="76">76</th><td>  <i>// If set to true, the next 3 parameters define the local size to specialize</i></td></tr>
+<tr><th id="77">77</th><td><i>  // for.</i></td></tr>
+<tr><th id="78">78</th><td>  <b>extern</b> <em>bool</em> <dfn class="decl" id="pocl::WGDynamicLocalSize" title='pocl::WGDynamicLocalSize' data-ref="pocl::WGDynamicLocalSize">WGDynamicLocalSize</dfn>;</td></tr>
+<tr><th id="79">79</th><td>  <b>extern</b> <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="pocl::WGLocalSizeX" title='pocl::WGLocalSizeX' data-ref="pocl::WGLocalSizeX">WGLocalSizeX</dfn>;</td></tr>
+<tr><th id="80">80</th><td>  <b>extern</b> <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="pocl::WGLocalSizeY" title='pocl::WGLocalSizeY' data-ref="pocl::WGLocalSizeY">WGLocalSizeY</dfn>;</td></tr>
+<tr><th id="81">81</th><td>  <b>extern</b> <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="pocl::WGLocalSizeZ" title='pocl::WGLocalSizeZ' data-ref="pocl::WGLocalSizeZ">WGLocalSizeZ</dfn>;</td></tr>
+<tr><th id="82">82</th><td>  <i>// If set to non-zero, assume each grid dimension is at most this</i></td></tr>
+<tr><th id="83">83</th><td><i>  // work-items wide.</i></td></tr>
+<tr><th id="84">84</th><td>  <b>extern</b> <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="pocl::WGMaxGridDimWidth" title='pocl::WGMaxGridDimWidth' data-ref="pocl::WGMaxGridDimWidth">WGMaxGridDimWidth</dfn>;</td></tr>
+<tr><th id="85">85</th><td>  <i>// Set to true to generate a global offset 0 specialized WG function.</i></td></tr>
+<tr><th id="86">86</th><td>  <b>extern</b> <em>bool</em> <dfn class="decl" id="pocl::WGAssumeZeroGlobalOffset" title='pocl::WGAssumeZeroGlobalOffset' data-ref="pocl::WGAssumeZeroGlobalOffset">WGAssumeZeroGlobalOffset</dfn>;</td></tr>
+<tr><th id="87">87</th><td>}</td></tr>
+<tr><th id="88">88</th><td></td></tr>
+<tr><th id="89">89</th><td><u>#<span data-ppcond="24">endif</span></u></td></tr>
+<tr><th id="90">90</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='PHIsToAllocas.cc.html'>pocl/lib/llvmopencl/PHIsToAllocas.cc</a><br/>Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

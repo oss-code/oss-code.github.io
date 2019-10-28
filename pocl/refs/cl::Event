@@ -1,0 +1,22 @@
+<inh f='pocl/include/CL/cl2.hpp' l='1713' c='cl::detail::Wrapper'/>
+<def f='pocl/include/CL/cl2.hpp' l='3104' ll='3221'/>
+<ovr f='pocl/include/CL/cl2.hpp' l='3228' c='cl::UserEvent'/>
+<size>8</size>
+<doc f='pocl/include/CL/cl2.hpp' l='3096'>/*! \brief Class interface for cl_event.
+ *
+ *  \note Copies of these objects are shallow, meaning that the copy will refer
+ *        to the same underlying cl_event as the original.  For details, see
+ *        clRetainEvent() and clReleaseEvent().
+ *
+ *  \see cl_event
+ */</doc>
+<fun r='_ZN2cl5EventC1Ev'/>
+<fun r='_ZN2cl5EventC1ERKP9_cl_eventb'/>
+<fun r='_ZN2cl5EventaSERKP9_cl_event'/>
+<fun r='_ZNK2cl5Event7getInfoEjPT_'/>
+<fun r='_ZNK2cl5Event7getInfoEPi'/>
+<fun r='_ZNK2cl5Event16getProfilingInfoEjPT_'/>
+<fun r='_ZNK2cl5Event16getProfilingInfoEPi'/>
+<fun r='_ZNK2cl5Event4waitEv'/>
+<fun r='_ZN2cl5Event11setCallbackEiPFvP9_cl_eventiPvES3_'/>
+<fun r='_ZN2cl5Event13waitForEventsERKSt6vectorIS0_SaIS0_EE'/>

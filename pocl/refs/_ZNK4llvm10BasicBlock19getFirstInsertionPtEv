@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='179' type='const_iterator llvm::BasicBlock::getFirstInsertionPt() const'/>
+<use f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='182' u='c' c='_ZN4llvm10BasicBlock19getFirstInsertionPtEv'/>
+<doc f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='175'>/// \brief Returns an iterator to the first instruction in this block that is
+  /// suitable for inserting a non-PHI instruction.
+  ///
+  /// In particular, it skips all PHIs and LandingPad instructions.</doc>

@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='449' type='bool llvm::RegionBase::contains(const BlockT * BB) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='445'>/// @brief Check if the region contains a BasicBlock.
+  ///
+  /// @param BB The BasicBlock that might be contained in this Region.
+  /// @return True if the block is contained in the region otherwise false.</doc>
+<use f='pocl/lib/llvmopencl/IsolateRegions.cc' l='142' u='c' c='_ZN4pocl14IsolateRegions13addDummyAfterEPN4llvm6RegionEPNS1_10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/IsolateRegions.cc' l='166' u='c' c='_ZN4pocl14IsolateRegions14addDummyBeforeEPN4llvm6RegionEPNS1_10BasicBlockE'/>

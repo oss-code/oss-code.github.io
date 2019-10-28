@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Value.h' l='430' type='bool llvm::Value::hasNUsesOrMore(unsigned int N) const'/>
+<doc f='include/llvm-6.0/llvm/IR/Value.h' l='427'>/// \brief Return true if this value has N users or more.
+  ///
+  /// This is logically equivalent to getNumUses() &gt;= N.</doc>

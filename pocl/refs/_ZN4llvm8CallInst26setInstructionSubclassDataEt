@@ -1,0 +1,6 @@
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1551' u='c' c='_ZN4llvm8CallInst11setTailCallEb'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1556' u='c' c='_ZN4llvm8CallInst15setTailCallKindENS0_12TailCallKindE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1630' u='c' c='_ZN4llvm8CallInst14setCallingConvEj'/>
+<def f='include/llvm-6.0/llvm/IR/Instructions.h' l='1926' ll='1928' type='void llvm::CallInst::setInstructionSubclassData(unsigned short D)'/>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='1924'>// Shadow Instruction::setInstructionSubclassData with a private forwarding
+  // method so that subclasses cannot accidentally use it.</doc>

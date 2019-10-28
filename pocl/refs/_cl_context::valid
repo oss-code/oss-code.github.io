@@ -1,0 +1,10 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='852' type='char'/>
+<offset>640</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='848'>/* some OpenCL apps (AMD OpenCL SDK at least) use a trial-error 
+     approach for creating a context with a device type, and call 
+     clReleaseContext for the result regardless if it failed or not. 
+     Returns a valid = 0 context in that case.  */</doc>
+<use f='pocl/lib/CL/clCreateContext.c' l='218' u='w' c='POclCreateContext'/>
+<use f='pocl/lib/CL/clCreateContextFromType.c' l='119' u='w' c='POclCreateContextFromType'/>
+<use f='pocl/lib/CL/clReleaseContext.c' l='38' u='r' c='POclReleaseContext'/>
+<use f='pocl/lib/CL/pocl_util.c' l='380' u='r' c='pocl_create_event'/>

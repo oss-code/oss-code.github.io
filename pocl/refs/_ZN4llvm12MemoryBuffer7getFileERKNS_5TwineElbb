@@ -1,0 +1,12 @@
+<dec f='include/llvm-6.0/llvm/Support/MemoryBuffer.h' l='80' type='static ErrorOr&lt;std::unique_ptr&lt;MemoryBuffer&gt; &gt; llvm::MemoryBuffer::getFile(const llvm::Twine &amp; Filename, int64_t FileSize = -1, bool RequiresNullTerminator = true, bool IsVolatile = false)'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='69' u='c' c='pocl_ptx_gen'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='536' u='c' c='_ZL13linkLibDevicePN4llvm6ModuleEPKcS3_'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='836' u='c' c='pocl_cuda_get_ptr_arg_alignment'/>
+<doc f='include/llvm-6.0/llvm/Support/MemoryBuffer.h' l='71'>/// Open the specified file as a MemoryBuffer, returning a new MemoryBuffer
+  /// if successful, otherwise returning null. If FileSize is specified, this
+  /// means that the client knows that the file exists and that it has the
+  /// specified size.
+  ///
+  /// \param IsVolatile Set to true to indicate that the contents of the file
+  /// can change outside the user&apos;s control, e.g. when libclang tries to parse
+  /// while the user is editing/updating the file or if the file is on an NFS.</doc>

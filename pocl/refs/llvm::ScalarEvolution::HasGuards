@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1038' type='bool'/>
+<offset>64</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1035'>/// Does the module have any calls to the llvm.experimental.guard intrinsic
+  /// at all?  If this is false, we avoid doing work that will only help if
+  /// thare are guards present in the IR.</doc>

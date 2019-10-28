@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ImplicitLoopBarriers.cc source code [pocl/lib/llvmopencl/ImplicitLoopBarriers.cc] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/llvmopencl/ImplicitLoopBarriers.cc'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>llvmopencl</a>/<a href='ImplicitLoopBarriers.cc.html'>ImplicitLoopBarriers.cc</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>// LLVM function pass that adds implicit barriers to loops if it sees</i></td></tr>
+<tr><th id="2">2</th><td><i>// beneficial.</i></td></tr>
+<tr><th id="3">3</th><td><i>// </i></td></tr>
+<tr><th id="4">4</th><td><i>// Copyright (c) 2012-2013 Pekka Jääskeläinen / TUT</i></td></tr>
+<tr><th id="5">5</th><td><i>// </i></td></tr>
+<tr><th id="6">6</th><td><i>// Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="7">7</th><td><i>// of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="8">8</th><td><i>// in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="9">9</th><td><i>// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="10">10</th><td><i>// copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="11">11</th><td><i>// furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="12">12</th><td><i>// </i></td></tr>
+<tr><th id="13">13</th><td><i>// The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="14">14</th><td><i>// all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="15">15</th><td><i>// </i></td></tr>
+<tr><th id="16">16</th><td><i>// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="17">17</th><td><i>// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="18">18</th><td><i>// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="19">19</th><td><i>// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="20">20</th><td><i>// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="21">21</th><td><i>// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="22">22</th><td><i>// THE SOFTWARE.</i></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><u>#include <a href="../../../include/c++/7/iostream.html">&lt;iostream&gt;</a></u></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><u>#include <a href="../../config.h.html">"config.h"</a></u></td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><u>#include <a href="CompilerWarnings.h.html">"CompilerWarnings.h"</a></u></td></tr>
+<tr><th id="29">29</th><td><a class="macro" href="CompilerWarnings.h.html#29" title="" data-ref="_M/IGNORE_COMPILER_WARNING">IGNORE_COMPILER_WARNING</a>(<q>"-Wunused-parameter"</q>)</td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><u>#include <a href="../../../include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h.html">"llvm/Transforms/Utils/BasicBlockUtils.h"</a></u></td></tr>
+<tr><th id="32">32</th><td><u>#include <a href="../../../include/llvm-6.0/llvm/IR/Constants.h.html">"llvm/IR/Constants.h"</a></u></td></tr>
+<tr><th id="33">33</th><td><u>#include <a href="../../../include/llvm-6.0/llvm/IR/Instructions.h.html">"llvm/IR/Instructions.h"</a></u></td></tr>
+<tr><th id="34">34</th><td><u>#include <a href="../../../include/llvm-6.0/llvm/IR/Module.h.html">"llvm/IR/Module.h"</a></u></td></tr>
+<tr><th id="35">35</th><td><u>#include <a href="../../../include/llvm-6.0/llvm/IR/Dominators.h.html">"llvm/IR/Dominators.h"</a></u></td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td><u>#include <a href="ImplicitLoopBarriers.h.html">"ImplicitLoopBarriers.h"</a></u></td></tr>
+<tr><th id="38">38</th><td><u>#include <a href="Barrier.h.html">"Barrier.h"</a></u></td></tr>
+<tr><th id="39">39</th><td><u>#include <a href="Workgroup.h.html">"Workgroup.h"</a></u></td></tr>
+<tr><th id="40">40</th><td><u>#include <a href="VariableUniformityAnalysis.h.html">"VariableUniformityAnalysis.h"</a></u></td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td><u>#include <a href="../CL/pocl_runtime_config.h.html">"pocl_runtime_config.h"</a></u></td></tr>
+<tr><th id="43">43</th><td></td></tr>
+<tr><th id="44">44</th><td><i>//#define DEBUG_ILOOP_BARRIERS</i></td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td><b>using</b> <b>namespace</b> <span class="namespace">llvm</span>;</td></tr>
+<tr><th id="47">47</th><td><b>using</b> <b>namespace</b> <span class="namespace">pocl</span>;</td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td><b>namespace</b> {</td></tr>
+<tr><th id="50">50</th><td>  <em>static</em></td></tr>
+<tr><th id="51">51</th><td>  <a class="type" href="../../../include/llvm-6.0/llvm/PassSupport.h.html#llvm::RegisterPass" title='llvm::RegisterPass' data-ref="llvm::RegisterPass">RegisterPass</a>&lt;<a class="type" href="ImplicitLoopBarriers.h.html#pocl::ImplicitLoopBarriers" title='pocl::ImplicitLoopBarriers' data-ref="pocl::ImplicitLoopBarriers">ImplicitLoopBarriers</a>&gt; <dfn class="tu decl def" id="(anonymousnamespace)::X" title='(anonymous namespace)::X' data-type='RegisterPass&lt;pocl::ImplicitLoopBarriers&gt;' data-ref="(anonymousnamespace)::X">X</dfn><a class="ref" href="../../../include/llvm-6.0/llvm/PassSupport.h.html#_ZN4llvm12RegisterPassC1ENS_9StringRefES1_bb" title='llvm::RegisterPass::RegisterPass&lt;passName&gt;' data-ref="_ZN4llvm12RegisterPassC1ENS_9StringRefES1_bb">(</a><a class="ref fake" href="../../../include/llvm-6.0/llvm/ADT/StringRef.h.html#_ZN4llvm9StringRefC1EPKc" title='llvm::StringRef::StringRef' data-ref="_ZN4llvm9StringRefC1EPKc"></a><q>"implicit-loop-barriers"</q>,</td></tr>
+<tr><th id="52">52</th><td>                                       <a class="ref fake" href="../../../include/llvm-6.0/llvm/ADT/StringRef.h.html#_ZN4llvm9StringRefC1EPKc" title='llvm::StringRef::StringRef' data-ref="_ZN4llvm9StringRefC1EPKc"></a><q>"Adds implicit barriers to loops"</q>);</td></tr>
+<tr><th id="53">53</th><td>}</td></tr>
+<tr><th id="54">54</th><td></td></tr>
+<tr><th id="55">55</th><td><em>char</em> <a class="type" href="ImplicitLoopBarriers.h.html#pocl::ImplicitLoopBarriers" title='pocl::ImplicitLoopBarriers' data-ref="pocl::ImplicitLoopBarriers">ImplicitLoopBarriers</a>::<dfn class="decl def" id="pocl::ImplicitLoopBarriers::ID" title='pocl::ImplicitLoopBarriers::ID' data-ref="pocl::ImplicitLoopBarriers::ID">ID</dfn> = <var>0</var>;</td></tr>
+<tr><th id="56">56</th><td></td></tr>
+<tr><th id="57">57</th><td><em>void</em> <a class="type" href="ImplicitLoopBarriers.h.html#pocl::ImplicitLoopBarriers" title='pocl::ImplicitLoopBarriers' data-ref="pocl::ImplicitLoopBarriers">ImplicitLoopBarriers</a>::<dfn class="virtual decl def" id="_ZNK4pocl20ImplicitLoopBarriers16getAnalysisUsageERN4llvm13AnalysisUsageE" title='pocl::ImplicitLoopBarriers::getAnalysisUsage' data-ref="_ZNK4pocl20ImplicitLoopBarriers16getAnalysisUsageERN4llvm13AnalysisUsageE">getAnalysisUsage</dfn>(<a class="type" href="../../../include/llvm-6.0/llvm/PassAnalysisSupport.h.html#llvm::AnalysisUsage" title='llvm::AnalysisUsage' data-ref="llvm::AnalysisUsage">AnalysisUsage</a> &amp;<dfn class="local col0 decl" id="40AU" title='AU' data-type='llvm::AnalysisUsage &amp;' data-ref="40AU">AU</dfn>) <em>const</em> {</td></tr>
+<tr><th id="58">58</th><td>  <a class="local col0 ref" href="#40AU" title='AU' data-ref="40AU">AU</a>.<a class="ref" href="../../../include/llvm-6.0/llvm/PassAnalysisSupport.h.html#_ZN4llvm13AnalysisUsage11addRequiredEv" title='llvm::AnalysisUsage::addRequired' data-ref="_ZN4llvm13AnalysisUsage11addRequiredEv">addRequired</a>&lt;<a class="type" href="../../../include/llvm-6.0/llvm/IR/Dominators.h.html#llvm::DominatorTreeWrapperPass" title='llvm::DominatorTreeWrapperPass' data-ref="llvm::DominatorTreeWrapperPass">DominatorTreeWrapperPass</a>&gt;();</td></tr>
+<tr><th id="59">59</th><td>  <a class="local col0 ref" href="#40AU" title='AU' data-ref="40AU">AU</a>.<a class="ref" href="../../../include/llvm-6.0/llvm/PassAnalysisSupport.h.html#_ZN4llvm13AnalysisUsage12addPreservedEv" title='llvm::AnalysisUsage::addPreserved' data-ref="_ZN4llvm13AnalysisUsage12addPreservedEv">addPreserved</a>&lt;<a class="type" href="../../../include/llvm-6.0/llvm/IR/Dominators.h.html#llvm::DominatorTreeWrapperPass" title='llvm::DominatorTreeWrapperPass' data-ref="llvm::DominatorTreeWrapperPass">DominatorTreeWrapperPass</a>&gt;();</td></tr>
+<tr><th id="60">60</th><td>  <a class="local col0 ref" href="#40AU" title='AU' data-ref="40AU">AU</a>.<a class="ref" href="../../../include/llvm-6.0/llvm/PassAnalysisSupport.h.html#_ZN4llvm13AnalysisUsage11addRequiredEv" title='llvm::AnalysisUsage::addRequired' data-ref="_ZN4llvm13AnalysisUsage11addRequiredEv">addRequired</a>&lt;<a class="type" href="VariableUniformityAnalysis.h.html#pocl::VariableUniformityAnalysis" title='pocl::VariableUniformityAnalysis' data-ref="pocl::VariableUniformityAnalysis">VariableUniformityAnalysis</a>&gt;();</td></tr>
+<tr><th id="61">61</th><td>  <a class="local col0 ref" href="#40AU" title='AU' data-ref="40AU">AU</a>.<a class="ref" href="../../../include/llvm-6.0/llvm/PassAnalysisSupport.h.html#_ZN4llvm13AnalysisUsage12addPreservedEv" title='llvm::AnalysisUsage::addPreserved' data-ref="_ZN4llvm13AnalysisUsage12addPreservedEv">addPreserved</a>&lt;<a class="type" href="VariableUniformityAnalysis.h.html#pocl::VariableUniformityAnalysis" title='pocl::VariableUniformityAnalysis' data-ref="pocl::VariableUniformityAnalysis">VariableUniformityAnalysis</a>&gt;();</td></tr>
+<tr><th id="62">62</th><td>}</td></tr>
+<tr><th id="63">63</th><td></td></tr>
+<tr><th id="64">64</th><td><em>bool</em> <a class="type" href="ImplicitLoopBarriers.h.html#pocl::ImplicitLoopBarriers" title='pocl::ImplicitLoopBarriers' data-ref="pocl::ImplicitLoopBarriers">ImplicitLoopBarriers</a>::<dfn class="virtual decl def" id="_ZN4pocl20ImplicitLoopBarriers9runOnLoopEPN4llvm4LoopERNS1_13LPPassManagerE" title='pocl::ImplicitLoopBarriers::runOnLoop' data-ref="_ZN4pocl20ImplicitLoopBarriers9runOnLoopEPN4llvm4LoopERNS1_13LPPassManagerE">runOnLoop</dfn>(<a class="type" href="../../../include/llvm-6.0/llvm/Analysis/LoopInfo.h.html#llvm::Loop" title='llvm::Loop' data-ref="llvm::Loop">Loop</a> *<dfn class="local col1 decl" id="41L" title='L' data-type='llvm::Loop *' data-ref="41L">L</dfn>, <a class="type" href="../../../include/llvm-6.0/llvm/Analysis/LoopPass.h.html#llvm::LPPassManager" title='llvm::LPPassManager' data-ref="llvm::LPPassManager">LPPassManager</a> &amp;<dfn class="local col2 decl" id="42LPM" title='LPM' data-type='llvm::LPPassManager &amp;' data-ref="42LPM">LPM</dfn>) {</td></tr>
+<tr><th id="65">65</th><td>  <b>if</b> (!<a class="type" href="Workgroup.h.html#pocl::Workgroup" title='pocl::Workgroup' data-ref="pocl::Workgroup">Workgroup</a>::<a class="ref" href="Workgroup.h.html#_ZN4pocl9Workgroup17isKernelToProcessERKN4llvm8FunctionE" title='pocl::Workgroup::isKernelToProcess' data-ref="_ZN4pocl9Workgroup17isKernelToProcessERKN4llvm8FunctionE">isKernelToProcess</a>(*<a class="local col1 ref" href="#41L" title='L' data-ref="41L">L</a>-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/Analysis/LoopInfo.h.html#_ZNK4llvm8LoopBase9getHeaderEv" title='llvm::LoopBase::getHeader' data-ref="_ZNK4llvm8LoopBase9getHeaderEv">getHeader</a>()-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#_ZN4llvm10BasicBlock9getParentEv" title='llvm::BasicBlock::getParent' data-ref="_ZN4llvm10BasicBlock9getParentEv">getParent</a>()))</td></tr>
+<tr><th id="66">66</th><td>    <b>return</b> <b>false</b>;</td></tr>
+<tr><th id="67">67</th><td></td></tr>
+<tr><th id="68">68</th><td>  <b>if</b> (!<a class="ref" href="../CL/pocl_runtime_config.h.html#pocl_get_bool_option" title='pocl_get_bool_option' data-ref="pocl_get_bool_option">pocl_get_bool_option</a>(<q>"POCL_FORCE_PARALLEL_OUTER_LOOP"</q>, <var>0</var>) &amp;&amp;</td></tr>
+<tr><th id="69">69</th><td>      !<a class="type" href="Workgroup.h.html#pocl::Workgroup" title='pocl::Workgroup' data-ref="pocl::Workgroup">Workgroup</a>::<a class="ref" href="Workgroup.h.html#_ZN4pocl9Workgroup20hasWorkgroupBarriersERKN4llvm8FunctionE" title='pocl::Workgroup::hasWorkgroupBarriers' data-ref="_ZN4pocl9Workgroup20hasWorkgroupBarriersERKN4llvm8FunctionE">hasWorkgroupBarriers</a>(*<a class="local col1 ref" href="#41L" title='L' data-ref="41L">L</a>-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/Analysis/LoopInfo.h.html#_ZNK4llvm8LoopBase9getHeaderEv" title='llvm::LoopBase::getHeader' data-ref="_ZNK4llvm8LoopBase9getHeaderEv">getHeader</a>()-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#_ZN4llvm10BasicBlock9getParentEv" title='llvm::BasicBlock::getParent' data-ref="_ZN4llvm10BasicBlock9getParentEv">getParent</a>())) {</td></tr>
+<tr><th id="70">70</th><td><u>#<span data-ppcond="70">ifdef</span> <span class="macro" data-ref="_M/DEBUG_ILOOP_BARRIERS">DEBUG_ILOOP_BARRIERS</span></u></td></tr>
+<tr><th id="71">71</th><td>    std::cerr &lt;&lt; <q>"### ILB: The kernel has no barriers, let's not add implicit ones "</q></td></tr>
+<tr><th id="72">72</th><td>              &lt;&lt; <q>"either to avoid WI context switch overheads"</q></td></tr>
+<tr><th id="73">73</th><td>              &lt;&lt; std::endl;</td></tr>
+<tr><th id="74">74</th><td><u>#<span data-ppcond="70">endif</span></u></td></tr>
+<tr><th id="75">75</th><td>    <b>return</b> <b>false</b>;</td></tr>
+<tr><th id="76">76</th><td>  }</td></tr>
+<tr><th id="77">77</th><td>  <b>return</b> <a class="member" href="#_ZN4pocl20ImplicitLoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE" title='pocl::ImplicitLoopBarriers::ProcessLoop' data-ref="_ZN4pocl20ImplicitLoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE">ProcessLoop</a>(<a class="local col1 ref" href="#41L" title='L' data-ref="41L">L</a>, <span class='refarg'><a class="local col2 ref" href="#42LPM" title='LPM' data-ref="42LPM">LPM</a></span>);</td></tr>
+<tr><th id="78">78</th><td>}</td></tr>
+<tr><th id="79">79</th><td></td></tr>
+<tr><th id="80">80</th><td><i class="doc">/**</i></td></tr>
+<tr><th id="81">81</th><td><i class="doc"> * Adds a barrier to the first BB of each loop.</i></td></tr>
+<tr><th id="82">82</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="83">83</th><td><i class="doc"> * Note: it's not safe to do this in case the loop is not executed</i></td></tr>
+<tr><th id="84">84</th><td><i class="doc"> * by all work items. Therefore this is not enabled by default.</i></td></tr>
+<tr><th id="85">85</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="86">86</th><td><em>bool</em> <a class="type" href="ImplicitLoopBarriers.h.html#pocl::ImplicitLoopBarriers" title='pocl::ImplicitLoopBarriers' data-ref="pocl::ImplicitLoopBarriers">ImplicitLoopBarriers</a>::<dfn class="decl def" id="_ZN4pocl20ImplicitLoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE" title='pocl::ImplicitLoopBarriers::ProcessLoop' data-ref="_ZN4pocl20ImplicitLoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE">ProcessLoop</dfn>(<a class="type" href="../../../include/llvm-6.0/llvm/Analysis/LoopInfo.h.html#llvm::Loop" title='llvm::Loop' data-ref="llvm::Loop">Loop</a> *<dfn class="local col3 decl" id="43L" title='L' data-type='llvm::Loop *' data-ref="43L">L</dfn>, <a class="type" href="../../../include/llvm-6.0/llvm/Analysis/LoopPass.h.html#llvm::LPPassManager" title='llvm::LPPassManager' data-ref="llvm::LPPassManager">LPPassManager</a> &amp;<dfn class="local col4 decl" id="44LPM" title='LPM' data-type='llvm::LPPassManager &amp;' data-ref="44LPM">LPM</dfn>) {</td></tr>
+<tr><th id="87">87</th><td></td></tr>
+<tr><th id="88">88</th><td>  <em>bool</em> <dfn class="local col5 decl" id="45isBLoop" title='isBLoop' data-type='bool' data-ref="45isBLoop">isBLoop</dfn> = <b>false</b>;</td></tr>
+<tr><th id="89">89</th><td>  <b>for</b> (<a class="type" href="../../../include/llvm-6.0/llvm/Analysis/LoopInfo.h.html#llvm::Loop" title='llvm::Loop' data-ref="llvm::Loop">Loop</a>::<a class="typedef" href="../../../include/llvm-6.0/llvm/Analysis/LoopInfo.h.html#llvm::LoopBase{llvm::BasicBlock,llvm::Loop}::block_iterator" title='llvm::LoopBase&lt;llvm::BasicBlock, llvm::Loop&gt;::block_iterator' data-type='typename ArrayRef&lt;BasicBlock *&gt;::const_iterator' data-ref="llvm::LoopBase{llvm::BasicBlock,llvm::Loop}::block_iterator">block_iterator</a> <dfn class="local col6 decl" id="46i" title='i' data-type='Loop::block_iterator' data-ref="46i">i</dfn> = <a class="local col3 ref" href="#43L" title='L' data-ref="43L">L</a>-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/Analysis/LoopInfo.h.html#_ZNK4llvm8LoopBase11block_beginEv" title='llvm::LoopBase::block_begin' data-ref="_ZNK4llvm8LoopBase11block_beginEv">block_begin</a>(), <dfn class="local col7 decl" id="47e" title='e' data-type='Loop::block_iterator' data-ref="47e">e</dfn> = <a class="local col3 ref" href="#43L" title='L' data-ref="43L">L</a>-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/Analysis/LoopInfo.h.html#_ZNK4llvm8LoopBase9block_endEv" title='llvm::LoopBase::block_end' data-ref="_ZNK4llvm8LoopBase9block_endEv">block_end</a>();</td></tr>
+<tr><th id="90">90</th><td>       <a class="local col6 ref" href="#46i" title='i' data-ref="46i">i</a> != <a class="local col7 ref" href="#47e" title='e' data-ref="47e">e</a> &amp;&amp; !<a class="local col5 ref" href="#45isBLoop" title='isBLoop' data-ref="45isBLoop">isBLoop</a>; ++<a class="local col6 ref" href="#46i" title='i' data-ref="46i">i</a>) {</td></tr>
+<tr><th id="91">91</th><td>    <b>for</b> (<a class="type" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a>::<a class="typedef" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#llvm::BasicBlock::iterator" title='llvm::BasicBlock::iterator' data-type='InstListType::iterator' data-ref="llvm::BasicBlock::iterator">iterator</a> <dfn class="local col8 decl" id="48j" title='j' data-type='BasicBlock::iterator' data-ref="48j">j</dfn> = (*<a class="local col6 ref" href="#46i" title='i' data-ref="46i">i</a>)-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#_ZN4llvm10BasicBlock5beginEv" title='llvm::BasicBlock::begin' data-ref="_ZN4llvm10BasicBlock5beginEv">begin</a>(), <dfn class="local col9 decl" id="49e" title='e' data-type='BasicBlock::iterator' data-ref="49e">e</dfn> = (*<a class="local col6 ref" href="#46i" title='i' data-ref="46i">i</a>)-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#_ZN4llvm10BasicBlock3endEv" title='llvm::BasicBlock::end' data-ref="_ZN4llvm10BasicBlock3endEv">end</a>();</td></tr>
+<tr><th id="92">92</th><td>         <a class="local col8 ref" href="#48j" title='j' data-ref="48j">j</a> <a class="ref" href="../../../include/llvm-6.0/llvm/ADT/ilist_iterator.h.html#_ZN4llvmneERKNS_14ilist_iteratorIT_XT0_EXT1_EEES5_" title='llvm::operator!=' data-ref="_ZN4llvmneERKNS_14ilist_iteratorIT_XT0_EXT1_EEES5_">!=</a> <a class="local col9 ref" href="#49e" title='e' data-ref="49e">e</a>; <a class="ref" href="../../../include/llvm-6.0/llvm/ADT/ilist_iterator.h.html#_ZN4llvm14ilist_iteratorppEv" title='llvm::ilist_iterator::operator++' data-ref="_ZN4llvm14ilist_iteratorppEv">++</a><a class="local col8 ref" href="#48j" title='j' data-ref="48j">j</a>) {</td></tr>
+<tr><th id="93">93</th><td>      <b>if</b> (<a class="ref" href="../../../include/llvm-6.0/llvm/Support/Casting.h.html#_ZN4llvm3isaERKT0_" title='llvm::isa' data-ref="_ZN4llvm3isaERKT0_">isa</a>&lt;<a class="type" href="Barrier.h.html#pocl::Barrier" title='pocl::Barrier' data-ref="pocl::Barrier">Barrier</a>&gt;(<a class="local col8 ref" href="#48j" title='j' data-ref="48j">j</a>)) {</td></tr>
+<tr><th id="94">94</th><td>          <a class="local col5 ref" href="#45isBLoop" title='isBLoop' data-ref="45isBLoop">isBLoop</a> = <b>true</b>;</td></tr>
+<tr><th id="95">95</th><td>          <b>break</b>;</td></tr>
+<tr><th id="96">96</th><td>      }</td></tr>
+<tr><th id="97">97</th><td>    }</td></tr>
+<tr><th id="98">98</th><td>  }</td></tr>
+<tr><th id="99">99</th><td>  <b>if</b> (<a class="local col5 ref" href="#45isBLoop" title='isBLoop' data-ref="45isBLoop">isBLoop</a>) <b>return</b> <b>false</b>;</td></tr>
+<tr><th id="100">100</th><td></td></tr>
+<tr><th id="101">101</th><td>  <b>return</b> <a class="member" href="#_ZN4pocl20ImplicitLoopBarriers19AddInnerLoopBarrierEPN4llvm4LoopERNS1_13LPPassManagerE" title='pocl::ImplicitLoopBarriers::AddInnerLoopBarrier' data-ref="_ZN4pocl20ImplicitLoopBarriers19AddInnerLoopBarrierEPN4llvm4LoopERNS1_13LPPassManagerE">AddInnerLoopBarrier</a>(<a class="local col3 ref" href="#43L" title='L' data-ref="43L">L</a>, <span class='refarg'><a class="local col4 ref" href="#44LPM" title='LPM' data-ref="44LPM">LPM</a></span>);</td></tr>
+<tr><th id="102">102</th><td>}</td></tr>
+<tr><th id="103">103</th><td></td></tr>
+<tr><th id="104">104</th><td><i class="doc">/**</i></td></tr>
+<tr><th id="105">105</th><td><i class="doc"> * Adds a barrier to the beginning of the loop body to force its treatment </i></td></tr>
+<tr><th id="106">106</th><td><i class="doc"> * similarly to a loop with work-group barriers.</i></td></tr>
+<tr><th id="107">107</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="108">108</th><td><i class="doc"> * This allows parallelizing work-items across the work-group per kernel</i></td></tr>
+<tr><th id="109">109</th><td><i class="doc"> * for-loop iteration, potentially leading to easier horizontal vectorization.</i></td></tr>
+<tr><th id="110">110</th><td><i class="doc"> * The idea is similar to loop switching where the work-item loop is </i></td></tr>
+<tr><th id="111">111</th><td><i class="doc"> * switched with the kernel for-loop.</i></td></tr>
+<tr><th id="112">112</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="113">113</th><td><i class="doc"> * We need to make sure it is legal to add the barrier, though. The</i></td></tr>
+<tr><th id="114">114</th><td><i class="doc"> * OpenCL barrier semantics require either all or none of the WIs to</i></td></tr>
+<tr><th id="115">115</th><td><i class="doc"> * reach the barrier at each iteration. This is satisfied at least when</i></td></tr>
+<tr><th id="116">116</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="117">117</th><td><i class="doc"> * a) loop exit condition does not depend on the WI and </i></td></tr>
+<tr><th id="118">118</th><td><i class="doc"> * b) all or none of the WIs always enter the loop</i></td></tr>
+<tr><th id="119">119</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="120">120</th><td><em>bool</em> <a class="type" href="ImplicitLoopBarriers.h.html#pocl::ImplicitLoopBarriers" title='pocl::ImplicitLoopBarriers' data-ref="pocl::ImplicitLoopBarriers">ImplicitLoopBarriers</a>::<dfn class="decl def" id="_ZN4pocl20ImplicitLoopBarriers19AddInnerLoopBarrierEPN4llvm4LoopERNS1_13LPPassManagerE" title='pocl::ImplicitLoopBarriers::AddInnerLoopBarrier' data-ref="_ZN4pocl20ImplicitLoopBarriers19AddInnerLoopBarrierEPN4llvm4LoopERNS1_13LPPassManagerE">AddInnerLoopBarrier</dfn>(</td></tr>
+<tr><th id="121">121</th><td>  <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/Analysis/LoopInfo.h.html#llvm::Loop" title='llvm::Loop' data-ref="llvm::Loop">Loop</a> *<dfn class="local col0 decl" id="50L" title='L' data-type='llvm::Loop *' data-ref="50L">L</dfn>, <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/Analysis/LoopPass.h.html#llvm::LPPassManager" title='llvm::LPPassManager' data-ref="llvm::LPPassManager">LPPassManager</a> &amp;<dfn class="local col1 decl" id="51LPM" title='LPM' data-type='llvm::LPPassManager &amp;' data-ref="51LPM">LPM</dfn>) {</td></tr>
+<tr><th id="122">122</th><td></td></tr>
+<tr><th id="123">123</th><td>  <i>/* Only add barriers to the innermost loops. */</i></td></tr>
+<tr><th id="124">124</th><td></td></tr>
+<tr><th id="125">125</th><td>  <b>if</b> (<a class="local col0 ref" href="#50L" title='L' data-ref="50L">L</a>-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/Analysis/LoopInfo.h.html#_ZNK4llvm8LoopBase11getSubLoopsEv" title='llvm::LoopBase::getSubLoops' data-ref="_ZNK4llvm8LoopBase11getSubLoopsEv">getSubLoops</a>().<a class="ref" href="../../../include/c++/7/bits/stl_vector.h.html#_ZNKSt6vector4sizeEv" title='std::vector::size' data-ref="_ZNKSt6vector4sizeEv">size</a>() &gt; <var>0</var>)</td></tr>
+<tr><th id="126">126</th><td>    <b>return</b> <b>false</b>;</td></tr>
+<tr><th id="127">127</th><td></td></tr>
+<tr><th id="128">128</th><td><u>#<span data-ppcond="128">ifdef</span> <span class="macro" data-ref="_M/DEBUG_ILOOP_BARRIERS">DEBUG_ILOOP_BARRIERS</span></u></td></tr>
+<tr><th id="129">129</th><td>  std::cerr &lt;&lt; <q>"### trying to add a loop barrier to force horizontal parallelization"</q> </td></tr>
+<tr><th id="130">130</th><td>            &lt;&lt; std::endl;</td></tr>
+<tr><th id="131">131</th><td><u>#<span data-ppcond="128">endif</span></u></td></tr>
+<tr><th id="132">132</th><td></td></tr>
+<tr><th id="133">133</th><td>  <a class="type" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a> *<dfn class="local col2 decl" id="52brexit" title='brexit' data-type='llvm::BasicBlock *' data-ref="52brexit">brexit</dfn> = <a class="local col0 ref" href="#50L" title='L' data-ref="50L">L</a>-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/Analysis/LoopInfo.h.html#_ZNK4llvm8LoopBase15getExitingBlockEv" title='llvm::LoopBase::getExitingBlock' data-ref="_ZNK4llvm8LoopBase15getExitingBlockEv">getExitingBlock</a>();</td></tr>
+<tr><th id="134">134</th><td>  <b>if</b> (<a class="local col2 ref" href="#52brexit" title='brexit' data-ref="52brexit">brexit</a> == <span class="macro" title="__null" data-ref="_M/NULL">NULL</span>) <b>return</b> <b>false</b>; <i>/* Multiple exit points */</i></td></tr>
+<tr><th id="135">135</th><td></td></tr>
+<tr><th id="136">136</th><td>  <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a> *<dfn class="local col3 decl" id="53loopEntry" title='loopEntry' data-type='llvm::BasicBlock *' data-ref="53loopEntry">loopEntry</dfn> = <a class="local col0 ref" href="#50L" title='L' data-ref="50L">L</a>-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/Analysis/LoopInfo.h.html#_ZNK4llvm8LoopBase9getHeaderEv" title='llvm::LoopBase::getHeader' data-ref="_ZNK4llvm8LoopBase9getHeaderEv">getHeader</a>();</td></tr>
+<tr><th id="137">137</th><td>  <b>if</b> (<a class="local col3 ref" href="#53loopEntry" title='loopEntry' data-ref="53loopEntry">loopEntry</a> == <span class="macro" title="__null" data-ref="_M/NULL">NULL</span>) <b>return</b> <b>false</b>; <i>/* Multiple entries blocks? */</i></td></tr>
+<tr><th id="138">138</th><td></td></tr>
+<tr><th id="139">139</th><td>  <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/Function.h.html#llvm::Function" title='llvm::Function' data-ref="llvm::Function">Function</a> *<dfn class="local col4 decl" id="54f" title='f' data-type='llvm::Function *' data-ref="54f">f</dfn> = <a class="local col2 ref" href="#52brexit" title='brexit' data-ref="52brexit">brexit</a>-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#_ZN4llvm10BasicBlock9getParentEv" title='llvm::BasicBlock::getParent' data-ref="_ZN4llvm10BasicBlock9getParentEv">getParent</a>();</td></tr>
+<tr><th id="140">140</th><td></td></tr>
+<tr><th id="141">141</th><td>  <a class="type" href="VariableUniformityAnalysis.h.html#pocl::VariableUniformityAnalysis" title='pocl::VariableUniformityAnalysis' data-ref="pocl::VariableUniformityAnalysis">VariableUniformityAnalysis</a> &amp;<dfn class="local col5 decl" id="55VUA" title='VUA' data-type='pocl::VariableUniformityAnalysis &amp;' data-ref="55VUA">VUA</dfn> = </td></tr>
+<tr><th id="142">142</th><td>    <a class="member" href="../../../include/llvm-6.0/llvm/PassAnalysisSupport.h.html#_ZNK4llvm4Pass11getAnalysisEv" title='llvm::Pass::getAnalysis' data-ref="_ZNK4llvm4Pass11getAnalysisEv">getAnalysis</a>&lt;<a class="type" href="VariableUniformityAnalysis.h.html#pocl::VariableUniformityAnalysis" title='pocl::VariableUniformityAnalysis' data-ref="pocl::VariableUniformityAnalysis">VariableUniformityAnalysis</a>&gt;();</td></tr>
+<tr><th id="143">143</th><td></td></tr>
+<tr><th id="144">144</th><td>  <i>/* Check if the whole loop construct is executed by all or none of the</i></td></tr>
+<tr><th id="145">145</th><td><i>     work-items. */</i></td></tr>
+<tr><th id="146">146</th><td>  <b>if</b> (!<a class="local col5 ref" href="#55VUA" title='VUA' data-ref="55VUA">VUA</a>.<a class="virtual ref" href="VariableUniformityAnalysis.h.html#_ZN4pocl26VariableUniformityAnalysis9isUniformEPN4llvm8FunctionEPNS1_5ValueE" title='pocl::VariableUniformityAnalysis::isUniform' data-ref="_ZN4pocl26VariableUniformityAnalysis9isUniformEPN4llvm8FunctionEPNS1_5ValueE">isUniform</a>(<a class="local col4 ref" href="#54f" title='f' data-ref="54f">f</a>, <a class="local col3 ref" href="#53loopEntry" title='loopEntry' data-ref="53loopEntry">loopEntry</a>)) {</td></tr>
+<tr><th id="147">147</th><td><u>#<span data-ppcond="147">ifdef</span> <span class="macro" data-ref="_M/DEBUG_ILOOP_BARRIERS">DEBUG_ILOOP_BARRIERS</span></u></td></tr>
+<tr><th id="148">148</th><td>    std::cerr &lt;&lt; <q>"### the loop is not uniform because loop entry '"</q></td></tr>
+<tr><th id="149">149</th><td>              &lt;&lt; loopEntry-&gt;getName().str() &lt;&lt; <q>"' is not uniform; LOOP: \n"</q></td></tr>
+<tr><th id="150">150</th><td>              &lt;&lt; std::endl;</td></tr>
+<tr><th id="151">151</th><td>    L-&gt;dump();</td></tr>
+<tr><th id="152">152</th><td><u>#<span data-ppcond="147">endif</span></u></td></tr>
+<tr><th id="153">153</th><td>    <b>return</b> <b>false</b>;</td></tr>
+<tr><th id="154">154</th><td>  }</td></tr>
+<tr><th id="155">155</th><td></td></tr>
+<tr><th id="156">156</th><td>  <i>/* Check the branch condition predicate. If it is uniform, we know the loop </i></td></tr>
+<tr><th id="157">157</th><td><i>     is  executed the same number of times for all WIs. */</i></td></tr>
+<tr><th id="158">158</th><td>  <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/Instructions.h.html#llvm::BranchInst" title='llvm::BranchInst' data-ref="llvm::BranchInst">BranchInst</a> *<dfn class="local col6 decl" id="56br" title='br' data-type='llvm::BranchInst *' data-ref="56br">br</dfn> = <a class="ref" href="../../../include/llvm-6.0/llvm/Support/Casting.h.html#_ZN4llvm8dyn_castEPT0_" title='llvm::dyn_cast' data-ref="_ZN4llvm8dyn_castEPT0_">dyn_cast</a>&lt;<span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/Instructions.h.html#llvm::BranchInst" title='llvm::BranchInst' data-ref="llvm::BranchInst">BranchInst</a>&gt;(<a class="local col2 ref" href="#52brexit" title='brexit' data-ref="52brexit">brexit</a>-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#_ZN4llvm10BasicBlock13getTerminatorEv" title='llvm::BasicBlock::getTerminator' data-ref="_ZN4llvm10BasicBlock13getTerminatorEv">getTerminator</a>());  </td></tr>
+<tr><th id="159">159</th><td>  <b>if</b> (<a class="local col6 ref" href="#56br" title='br' data-ref="56br">br</a> &amp;&amp; <a class="local col6 ref" href="#56br" title='br' data-ref="56br">br</a>-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/IR/Instructions.h.html#_ZNK4llvm10BranchInst13isConditionalEv" title='llvm::BranchInst::isConditional' data-ref="_ZNK4llvm10BranchInst13isConditionalEv">isConditional</a>() &amp;&amp;</td></tr>
+<tr><th id="160">160</th><td>      <a class="local col5 ref" href="#55VUA" title='VUA' data-ref="55VUA">VUA</a>.<a class="virtual ref" href="VariableUniformityAnalysis.h.html#_ZN4pocl26VariableUniformityAnalysis9isUniformEPN4llvm8FunctionEPNS1_5ValueE" title='pocl::VariableUniformityAnalysis::isUniform' data-ref="_ZN4pocl26VariableUniformityAnalysis9isUniformEPN4llvm8FunctionEPNS1_5ValueE">isUniform</a>(<a class="local col4 ref" href="#54f" title='f' data-ref="54f">f</a>, <a class="local col6 ref" href="#56br" title='br' data-ref="56br">br</a>-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/IR/Instructions.h.html#_ZNK4llvm10BranchInst12getConditionEv" title='llvm::BranchInst::getCondition' data-ref="_ZNK4llvm10BranchInst12getConditionEv">getCondition</a>())) {</td></tr>
+<tr><th id="161">161</th><td></td></tr>
+<tr><th id="162">162</th><td>    <i>/* Add a barrier both to the beginning of the entry and to the very end</i></td></tr>
+<tr><th id="163">163</th><td><i>       to nicely isolate the parallel region. */</i></td></tr>
+<tr><th id="164">164</th><td>    <a class="type" href="Barrier.h.html#pocl::Barrier" title='pocl::Barrier' data-ref="pocl::Barrier">Barrier</a>::<a class="ref" href="Barrier.h.html#_ZN4pocl7Barrier6CreateEPN4llvm11InstructionE" title='pocl::Barrier::Create' data-ref="_ZN4pocl7Barrier6CreateEPN4llvm11InstructionE">Create</a>(<a class="local col2 ref" href="#52brexit" title='brexit' data-ref="52brexit">brexit</a>-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#_ZN4llvm10BasicBlock13getTerminatorEv" title='llvm::BasicBlock::getTerminator' data-ref="_ZN4llvm10BasicBlock13getTerminatorEv">getTerminator</a>());   </td></tr>
+<tr><th id="165">165</th><td>    <a class="type" href="Barrier.h.html#pocl::Barrier" title='pocl::Barrier' data-ref="pocl::Barrier">Barrier</a>::<a class="ref" href="Barrier.h.html#_ZN4pocl7Barrier6CreateEPN4llvm11InstructionE" title='pocl::Barrier::Create' data-ref="_ZN4pocl7Barrier6CreateEPN4llvm11InstructionE">Create</a>(<a class="local col3 ref" href="#53loopEntry" title='loopEntry' data-ref="53loopEntry">loopEntry</a>-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#_ZN4llvm10BasicBlock14getFirstNonPHIEv" title='llvm::BasicBlock::getFirstNonPHI' data-ref="_ZN4llvm10BasicBlock14getFirstNonPHIEv">getFirstNonPHI</a>());</td></tr>
+<tr><th id="166">166</th><td></td></tr>
+<tr><th id="167">167</th><td><u>#<span data-ppcond="167">ifdef</span> <span class="macro" data-ref="_M/DEBUG_ILOOP_BARRIERS">DEBUG_ILOOP_BARRIERS</span></u></td></tr>
+<tr><th id="168">168</th><td>    std::cerr &lt;&lt; <q>"### added an inner-loop barrier to the loop"</q> &lt;&lt; std::endl &lt;&lt; std::endl;</td></tr>
+<tr><th id="169">169</th><td><u>#<span data-ppcond="167">endif</span></u></td></tr>
+<tr><th id="170">170</th><td>    <b>return</b> <b>true</b>;</td></tr>
+<tr><th id="171">171</th><td>  } <b>else</b> {</td></tr>
+<tr><th id="172">172</th><td><u>#<span data-ppcond="172">ifdef</span> <span class="macro" data-ref="_M/DEBUG_ILOOP_BARRIERS">DEBUG_ILOOP_BARRIERS</span></u></td></tr>
+<tr><th id="173">173</th><td>    <b>if</b> (br &amp;&amp; br-&gt;isConditional() &amp;&amp; !VUA.isUniform(f, br-&gt;getCondition())) {</td></tr>
+<tr><th id="174">174</th><td>      std::cerr &lt;&lt; <q>"### loop condition not uniform"</q> &lt;&lt; std::endl;</td></tr>
+<tr><th id="175">175</th><td>      br-&gt;getCondition()-&gt;dump();</td></tr>
+<tr><th id="176">176</th><td>    }</td></tr>
+<tr><th id="177">177</th><td><u>#<span data-ppcond="172">endif</span></u></td></tr>
+<tr><th id="178">178</th><td></td></tr>
+<tr><th id="179">179</th><td>  }</td></tr>
+<tr><th id="180">180</th><td></td></tr>
+<tr><th id="181">181</th><td><u>#<span data-ppcond="181">ifdef</span> <span class="macro" data-ref="_M/DEBUG_ILOOP_BARRIERS">DEBUG_ILOOP_BARRIERS</span></u></td></tr>
+<tr><th id="182">182</th><td>  std::cerr &lt;&lt; <q>"### cannot add an inner-loop barrier to the loop"</q> &lt;&lt; std::endl &lt;&lt; std::endl;</td></tr>
+<tr><th id="183">183</th><td><u>#<span data-ppcond="181">endif</span></u></td></tr>
+<tr><th id="184">184</th><td>  </td></tr>
+<tr><th id="185">185</th><td>  <b>return</b> <b>false</b>;</td></tr>
+<tr><th id="186">186</th><td>}</td></tr>
+<tr><th id="187">187</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

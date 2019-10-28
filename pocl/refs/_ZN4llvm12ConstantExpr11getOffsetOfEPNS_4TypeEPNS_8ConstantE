@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='900' type='static llvm::Constant * llvm::ConstantExpr::getOffsetOf(llvm::Type * Ty, llvm::Constant * FieldNo)'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='897'>/// getOffsetOf constant expr - This is a generalized form of getOffsetOf,
+  /// which supports any aggregate type, and any Constant index.
+  ///</doc>

@@ -1,0 +1,65 @@
+<def f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='44' ll='332'/>
+<ovr f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='337' c='llvm::raw_pwrite_stream'/>
+<ovr f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='462' c='llvm::raw_string_ostream'/>
+<ovr f='include/llvm-6.0/llvm/Support/FormattedStream.h' l='27' c='llvm::formatted_raw_ostream'/>
+<size>40</size>
+<doc f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='40'>/// This class implements an extremely fast bulk output stream that can *only*
+/// output to a stream.  It does not support seeking, reopening, rewinding, line
+/// buffered disciplines etc. It is a simple buffer that outputs
+/// a chunk at a time.</doc>
+<mbr r='llvm::raw_ostream::OutBufStart' o='64' t='char *'/>
+<mbr r='llvm::raw_ostream::OutBufEnd' o='128' t='char *'/>
+<mbr r='llvm::raw_ostream::OutBufCur' o='192' t='char *'/>
+<mbr r='llvm::raw_ostream::BufferMode' o='256' t='enum BufferKind'/>
+<fun r='_ZN4llvm11raw_ostreamC1Eb'/>
+<fun r='_ZN4llvm11raw_ostreamC1ERKS0_'/>
+<fun r='_ZN4llvm11raw_ostreamaSERKS0_'/>
+<fun r='_ZN4llvm11raw_ostreamD1Ev'/>
+<fun r='_ZNK4llvm11raw_ostream4tellEv'/>
+<fun r='_ZN4llvm11raw_ostream11SetBufferedEv'/>
+<fun r='_ZN4llvm11raw_ostream13SetBufferSizeEm'/>
+<fun r='_ZNK4llvm11raw_ostream13GetBufferSizeEv'/>
+<fun r='_ZN4llvm11raw_ostream13SetUnbufferedEv'/>
+<fun r='_ZNK4llvm11raw_ostream19GetNumBytesInBufferEv'/>
+<fun r='_ZN4llvm11raw_ostream5flushEv'/>
+<fun r='_ZN4llvm11raw_ostreamlsEc'/>
+<fun r='_ZN4llvm11raw_ostreamlsEh'/>
+<fun r='_ZN4llvm11raw_ostreamlsEa'/>
+<fun r='_ZN4llvm11raw_ostreamlsENS_9StringRefE'/>
+<fun r='_ZN4llvm11raw_ostreamlsEPKc'/>
+<fun r='_ZN4llvm11raw_ostreamlsERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<fun r='_ZN4llvm11raw_ostreamlsERKNS_15SmallVectorImplIcEE'/>
+<fun r='_ZN4llvm11raw_ostreamlsEm'/>
+<fun r='_ZN4llvm11raw_ostreamlsEl'/>
+<fun r='_ZN4llvm11raw_ostreamlsEy'/>
+<fun r='_ZN4llvm11raw_ostreamlsEx'/>
+<fun r='_ZN4llvm11raw_ostreamlsEPKv'/>
+<fun r='_ZN4llvm11raw_ostreamlsEj'/>
+<fun r='_ZN4llvm11raw_ostreamlsEi'/>
+<fun r='_ZN4llvm11raw_ostreamlsEd'/>
+<fun r='_ZN4llvm11raw_ostream9write_hexEy'/>
+<fun r='_ZN4llvm11raw_ostream10write_uuidEPKh'/>
+<fun r='_ZN4llvm11raw_ostream13write_escapedENS_9StringRefEb'/>
+<fun r='_ZN4llvm11raw_ostream5writeEh'/>
+<fun r='_ZN4llvm11raw_ostream5writeEPKcm'/>
+<fun r='_ZN4llvm11raw_ostreamlsERKNS_18format_object_baseE'/>
+<fun r='_ZN4llvm11raw_ostreamlsERKNS_15FormattedStringE'/>
+<fun r='_ZN4llvm11raw_ostreamlsERKNS_15FormattedNumberE'/>
+<fun r='_ZN4llvm11raw_ostreamlsERKNS_19formatv_object_baseE'/>
+<fun r='_ZN4llvm11raw_ostreamlsERKNS_14FormattedBytesE'/>
+<fun r='_ZN4llvm11raw_ostream6indentEj'/>
+<fun r='_ZN4llvm11raw_ostream11changeColorENS0_6ColorsEbb'/>
+<fun r='_ZN4llvm11raw_ostream10resetColorEv'/>
+<fun r='_ZN4llvm11raw_ostream12reverseColorEv'/>
+<fun r='_ZNK4llvm11raw_ostream12is_displayedEv'/>
+<fun r='_ZNK4llvm11raw_ostream10has_colorsEv'/>
+<fun r='_ZN4llvm11raw_ostream10write_implEPKcm'/>
+<fun r='_ZN4llvm11raw_ostream6handleEv'/>
+<fun r='_ZNK4llvm11raw_ostream11current_posEv'/>
+<fun r='_ZN4llvm11raw_ostream9SetBufferEPcm'/>
+<fun r='_ZNK4llvm11raw_ostream21preferred_buffer_sizeEv'/>
+<fun r='_ZNK4llvm11raw_ostream14getBufferStartEv'/>
+<fun r='_ZN4llvm11raw_ostream16SetBufferAndModeEPcmNS0_10BufferKindE'/>
+<fun r='_ZN4llvm11raw_ostream14flush_nonemptyEv'/>
+<fun r='_ZN4llvm11raw_ostream14copy_to_bufferEPKcm'/>
+<ovr f='include/llvm-6.0/llvm/Support/raw_os_ostream.h' l='25' c='llvm::raw_os_ostream'/>

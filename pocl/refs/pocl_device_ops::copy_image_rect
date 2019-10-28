@@ -1,0 +1,6 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='550' type='cl_int (*)(void *, cl_mem, cl_mem, pocl_mem_identifier *, pocl_mem_identifier *, const size_t *, const size_t *, const size_t *)'/>
+<offset>2816</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='549'>/* copies image to image, on the same device (or same global memory). */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='152' u='w' c='pocl_basic_init_device_ops'/>
+<use f='pocl/lib/CL/devices/common.c' l='589' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='590' u='r' c='pocl_exec_command'/>

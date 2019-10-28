@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='185' type='bool llvm::TryToSimplifyUncondBranchFromEmptyBlock(llvm::BasicBlock * BB)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='181'>/// BB is known to contain an unconditional branch, and contains no instructions
+/// other than PHI nodes, potential debug intrinsics and the branch. If
+/// possible, eliminate BB by rewriting all the predecessors to branch to the
+/// successor block and return true. If we can&apos;t transform, return false.</doc>

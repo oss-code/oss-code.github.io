@@ -1,0 +1,5 @@
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='649' u='c' c='_ZNK4llvm22ConstantDataSequential11getAsStringEv'/>
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='663' type='llvm::StringRef llvm::ConstantDataSequential::getRawDataValues() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='660'>/// Return the raw, underlying, bytes of this data. Note that this is an
+  /// extremely tricky thing to work with, as it exposes the host endianness of
+  /// the data elements.</doc>

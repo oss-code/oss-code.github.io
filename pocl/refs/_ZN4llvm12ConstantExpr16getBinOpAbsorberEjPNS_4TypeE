@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='1007' type='static llvm::Constant * llvm::ConstantExpr::getBinOpAbsorber(unsigned int Opcode, llvm::Type * Ty)'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='1003'>/// Return the absorbing element for the given binary
+  /// operation, i.e. a constant C such that X op C = C and C op X = C for
+  /// every X.  For example, this returns zero for integer multiplication.
+  /// It returns null if the operator doesn&apos;t have an absorbing element.</doc>

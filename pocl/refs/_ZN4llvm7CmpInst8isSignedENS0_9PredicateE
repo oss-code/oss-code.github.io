@@ -1,0 +1,4 @@
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='995' u='c' c='_ZNK4llvm7CmpInst8isSignedEv'/>
+<dec f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1035' type='static bool llvm::CmpInst::isSigned(llvm::CmpInst::Predicate predicate)'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1033'>/// @returns true if the predicate is signed, false otherwise.
+  /// @brief Determine if the predicate is an signed operation.</doc>

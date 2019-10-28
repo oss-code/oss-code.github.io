@@ -1,0 +1,8 @@
+<dec f='include/unistd.h' l='290' type='int access(const char * __name, int __type)'/>
+<doc f='include/unistd.h' l='289'>/* Test for access to NAME using the real UID and real GID.  */</doc>
+<use f='pocl/lib/CL/devices/cpuinfo.c' l='82' u='c' c='pocl_cpufreq_get_max'/>
+<use f='pocl/lib/CL/devices/cpuinfo.c' l='118' u='c' c='pocl_cpuinfo_detect_max_clock_frequency'/>
+<use f='pocl/lib/CL/devices/cpuinfo.c' l='167' u='c' c='pocl_cpuinfo_detect_compute_unit_count'/>
+<use f='pocl/lib/CL/devices/cpuinfo.c' l='305' u='c' c='pocl_cpuinfo_get_cpu_name_and_vendor'/>
+<use f='pocl/lib/poclu/misc.c' l='366' u='c' c='poclu_load_program_multidev'/>
+<use f='pocl/lib/poclu/misc.c' l='370' u='c' c='poclu_load_program_multidev'/>

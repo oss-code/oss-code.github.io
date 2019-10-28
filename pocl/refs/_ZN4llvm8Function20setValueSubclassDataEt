@@ -1,0 +1,4 @@
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='201' u='c' c='_ZN4llvm8Function14setCallingConvEj'/>
+<def f='include/llvm-6.0/llvm/IR/Function.h' l='749' ll='751' type='void llvm::Function::setValueSubclassData(unsigned short D)'/>
+<doc f='include/llvm-6.0/llvm/IR/Function.h' l='747'>/// Shadow Value::setValueSubclassData with a private forwarding method so
+  /// that subclasses cannot accidentally use it.</doc>

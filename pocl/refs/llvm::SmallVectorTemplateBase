@@ -1,0 +1,21 @@
+<def f='include/llvm-6.0/llvm/ADT/SmallVector.h' l='180' ll='230'/>
+<def f='include/llvm-6.0/llvm/ADT/SmallVector.h' l='263' ll='319'/>
+<doc f='include/llvm-6.0/llvm/ADT/SmallVector.h' l='261'>/// SmallVectorTemplateBase&lt;isPodLike = true&gt; - This is where we put method
+/// implementations that are designed to work with POD-like T&apos;s.</doc>
+<fun r='_ZN4llvm23SmallVectorTemplateBaseC1Em'/>
+<fun r='_ZN4llvm23SmallVectorTemplateBase13destroy_rangeEPT_S2_'/>
+<fun r='_ZN4llvm23SmallVectorTemplateBase18uninitialized_moveET_S1_T0_'/>
+<fun r='_ZN4llvm23SmallVectorTemplateBase18uninitialized_copyET_S1_T0_'/>
+<fun r='_ZN4llvm23SmallVectorTemplateBase4growEm'/>
+<fun r='_ZN4llvm23SmallVectorTemplateBase9push_backERKT_'/>
+<fun r='_ZN4llvm23SmallVectorTemplateBase9push_backEOT_'/>
+<fun r='_ZN4llvm23SmallVectorTemplateBase8pop_backEv'/>
+<fun r='_ZN4llvm23SmallVectorTemplateBase4growEm'/>
+<fun r='_ZN4llvm23SmallVectorTemplateBaseIT_Lb1EEC1Em'/>
+<fun r='_ZN4llvm23SmallVectorTemplateBaseIT_Lb1EE13destroy_rangeEPS1_S3_'/>
+<fun r='_ZN4llvm23SmallVectorTemplateBaseIT_Lb1EE18uninitialized_moveET_S3_T0_'/>
+<fun r='_ZN4llvm23SmallVectorTemplateBaseIT_Lb1EE18uninitialized_copyET_S3_T0_'/>
+<fun r='_ZN4llvm23SmallVectorTemplateBaseIT_Lb1EE18uninitialized_copyEPT_S4_PT0_PNSt9enable_ifIXsr3std7is_sameINSt12remove_constIS3_E4typeES5_EE5valueEvE4typeE'/>
+<fun r='_ZN4llvm23SmallVectorTemplateBaseIT_Lb1EE4growEm'/>
+<fun r='_ZN4llvm23SmallVectorTemplateBaseIT_Lb1EE9push_backERKS1_'/>
+<fun r='_ZN4llvm23SmallVectorTemplateBaseIT_Lb1EE8pop_backEv'/>

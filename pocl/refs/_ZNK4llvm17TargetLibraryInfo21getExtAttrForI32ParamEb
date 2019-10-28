@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Analysis/TargetLibraryInfo.h' l='305' ll='311' type='Attribute::AttrKind llvm::TargetLibraryInfo::getExtAttrForI32Param(bool Signed = true) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetLibraryInfo.h' l='302'>/// Returns extension attribute kind to be used for i32 parameters
+  /// corresponding to C-level int or unsigned int.  May be zeroext, signext,
+  /// or none.</doc>

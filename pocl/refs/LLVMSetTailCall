@@ -1,0 +1,8 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2601' type='void LLVMSetTailCall(LLVMValueRef CallInst, LLVMBool IsTailCall)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2594'>/**
+ * Set whether a call instruction is a tail call.
+ *
+ * This only works on llvm::CallInst instructions.
+ *
+ * @see llvm::CallInst::setTailCall()
+ */</doc>

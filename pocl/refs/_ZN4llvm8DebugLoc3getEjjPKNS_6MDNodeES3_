@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/IR/DebugLoc.h' l='80' type='static llvm::DebugLoc llvm::DebugLoc::get(unsigned int Line, unsigned int Col, const llvm::MDNode * Scope, const llvm::MDNode * InlinedAt = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/IR/DebugLoc.h' l='72'>/// \brief Create a new DebugLoc.
+    ///
+    /// Create a new DebugLoc at the specified line/col and scope/inline.  This
+    /// forwards to \a DILocation::get().
+    ///
+    /// If \c !Scope, returns a default-constructed \a DebugLoc.
+    ///
+    /// FIXME: Remove this.  Users should use DILocation::get().</doc>

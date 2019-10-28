@@ -1,0 +1,16 @@
+<def f='include/llvm-6.0/llvm/ADT/SmallVector.h' l='147' ll='151' macro='1' type='reference llvm::SmallVectorTemplateCommon::operator[](size_type idx)'/>
+<use f='include/llvm-6.0/llvm/Option/ArgList.h' l='412' u='c' c='_ZNK4llvm3opt12InputArgList12getArgStringEj'/>
+<use f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='493' u='c' c='_ZN4llvm13FPPassManager16getContainedPassEj'/>
+<use f='include/llvm-6.0/llvm/Analysis/RegionPass.h' l='120' u='c' c='_ZN4llvm13RGPassManager16getContainedPassEj'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='261' u='c' c='_ZN4llvm13LazyCallGraph12EdgeSequenceixEi'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='264' u='c' c='_ZN4llvm13LazyCallGraph12EdgeSequenceixERNS0_4NodeE'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='273' u='c' c='_ZN4llvm13LazyCallGraph12EdgeSequence6lookupERNS0_4NodeE'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='624' u='c' c='_ZN4llvm13LazyCallGraph6RefSCCixEi'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='911' u='c' c='_ZN4llvm13LazyCallGraph26postorder_ref_scc_iterator5getRCERS0_i'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='538' u='c' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='189' u='c' c='_ZN12_GLOBAL__N_115AutomaticLocals22processAutomaticLocalsEPN4llvm8FunctionE'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopPass.h' l='120' u='c' c='_ZN4llvm13LPPassManager16getContainedPassEj'/>
+<use f='pocl/lib/llvmopencl/WorkitemReplication.cc' l='240' u='c' c='_ZN4pocl19WorkitemReplication15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemReplication.cc' l='243' u='c' c='_ZN4pocl19WorkitemReplication15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemReplication.cc' l='274' u='c' c='_ZN4pocl19WorkitemReplication15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemReplication.cc' l='275' u='c' c='_ZN4pocl19WorkitemReplication15ProcessFunctionERN4llvm8FunctionE'/>

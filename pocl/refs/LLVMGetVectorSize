@@ -1,0 +1,8 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='1112' type='unsigned int LLVMGetVectorSize(LLVMTypeRef VectorTy)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='1105'>/**
+ * Obtain the number of elements in a vector type.
+ *
+ * This only works on types that represent vectors.
+ *
+ * @see llvm::VectorType::getNumElements()
+ */</doc>

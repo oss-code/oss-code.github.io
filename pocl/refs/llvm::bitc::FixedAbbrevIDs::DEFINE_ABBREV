@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Bitcode/BitCodes.h' l='53' type='2'/>
+<doc f='include/llvm-6.0/llvm/Bitcode/BitCodes.h' l='48'>/// DEFINE_ABBREV - Defines an abbrev for the current block.  It consists
+    /// of a vbr5 for # operand infos.  Each operand info is emitted with a
+    /// single bit to indicate if it is a literal encoding.  If so, the value is
+    /// emitted with a vbr8.  If not, the encoding is emitted as 3 bits followed
+    /// by the info value as a vbr5 if needed.</doc>

@@ -1,0 +1,9 @@
+<dec f='pocl/lib/llvmopencl/BarrierTailReplication.h' l='62' type='bool pocl::BarrierTailReplication::FindBarriersDFS(llvm::BasicBlock * bb, BasicBlockSet &amp; processed_bbs)'/>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='113' u='c' c='_ZN4pocl22BarrierTailReplication15ProcessFunctionERN4llvm8FunctionE'/>
+<def f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='122' ll='150' type='bool pocl::BarrierTailReplication::FindBarriersDFS(llvm::BasicBlock * bb, BasicBlockSet &amp; processed_bbs)'/>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='147' u='c' c='_ZN4pocl22BarrierTailReplication15FindBarriersDFSEPN4llvm10BasicBlockERSt3setIS3_St4lessIS3_ESaIS3_EE'/>
+<doc f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='117'>// Recursively (depht-first) look for barriers in all possible
+// execution paths starting on entry, replicating the barrier
+// successors to ensure there is a separate function exit BB
+// for each combination of traversed barriers. The set
+// processed_bbs stores the </doc>

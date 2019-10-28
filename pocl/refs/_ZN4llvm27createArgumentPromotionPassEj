@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Transforms/IPO.h' l='155' type='llvm::Pass * llvm::createArgumentPromotionPass(unsigned int maxElements = 3)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/IPO.h' l='150'>//===----------------------------------------------------------------------===//
+/// createArgumentPromotionPass - This pass promotes &quot;by reference&quot; arguments to
+/// be passed by value if the number of elements passed is smaller or
+/// equal to maxElements (maxElements == 0 means always promote).
+///</doc>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='68' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>

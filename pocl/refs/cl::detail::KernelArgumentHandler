@@ -1,0 +1,15 @@
+<def f='pocl/include/CL/cl2.hpp' l='5748' ll='5753'/>
+<def f='pocl/include/CL/cl2.hpp' l='5757' ll='5762'/>
+<def f='pocl/include/CL/cl2.hpp' l='5766' ll='5771'/>
+<size>1</size>
+<doc f='pocl/include/CL/cl2.hpp' l='5746'>// Enable for objects that are not subclasses of memory
+// Pointers, constants etc</doc>
+<doc f='pocl/include/CL/cl2.hpp' l='5755'>// Enable for subclasses of memory where we want to get a reference to the cl_mem out
+// and pass that in for safety</doc>
+<doc f='pocl/include/CL/cl2.hpp' l='5764'>// Specialization for DeviceCommandQueue defined later</doc>
+<fun r='_ZN2cl6detail21KernelArgumentHandlerIT_NSt9enable_ifIXntsr3std10is_base_ofINS_6MemoryES2_EE5valueEvE4typeEE4sizeERKS2_'/>
+<fun r='_ZN2cl6detail21KernelArgumentHandlerIT_NSt9enable_ifIXntsr3std10is_base_ofINS_6MemoryES2_EE5valueEvE4typeEE3ptrERKS2_'/>
+<fun r='_ZN2cl6detail21KernelArgumentHandlerIT_NSt9enable_ifIXsr3std10is_base_ofINS_6MemoryES2_EE5valueEvE4typeEE4sizeERKS2_'/>
+<fun r='_ZN2cl6detail21KernelArgumentHandlerIT_NSt9enable_ifIXsr3std10is_base_ofINS_6MemoryES2_EE5valueEvE4typeEE3ptrERKS2_'/>
+<fun r='_ZN2cl6detail21KernelArgumentHandlerINS_13LocalSpaceArgEvE4sizeERKS2_'/>
+<fun r='_ZN2cl6detail21KernelArgumentHandlerINS_13LocalSpaceArgEvE3ptrERKS2_'/>

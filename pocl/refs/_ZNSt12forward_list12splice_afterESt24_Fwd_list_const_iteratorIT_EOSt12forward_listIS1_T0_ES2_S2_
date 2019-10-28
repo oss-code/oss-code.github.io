@@ -1,0 +1,15 @@
+<def f='include/c++/7/bits/forward_list.h' l='1114' ll='1117' type='void std::forward_list::splice_after(const_iterator __pos, forward_list&lt;_Tp, _Alloc&gt; &amp;&amp; , const_iterator __before, const_iterator __last)'/>
+<doc f='include/c++/7/bits/forward_list.h' l='1100'>/**
+       *  @brief  Insert range from another %forward_list.
+       *  @param  __pos  Iterator referencing the element to insert after.
+       *  @param  __list  Source list.
+       *  @param  __before  Iterator referencing before the start of range
+       *                    in list.
+       *  @param  __last  Iterator referencing the end of range in list.
+       *
+       *  Removes elements in the range (__before,__last) and inserts them
+       *  after @a __pos in constant time.
+       *
+       *  Undefined if @a __pos is in (__before,__last).
+       *  @{
+       */</doc>

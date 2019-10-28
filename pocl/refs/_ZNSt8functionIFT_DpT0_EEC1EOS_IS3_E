@@ -1,0 +1,11 @@
+<def f='include/c++/7/bits/std_function.h' l='441' ll='444' type='void std::function&lt;type-parameter-0-0 (type-parameter-0-1...)&gt;::function&lt;type-parameter-0-0 (type-parameter-0-1...)&gt;(function&lt;type-parameter-0-0 (type-parameter-0-1...)&gt; &amp;&amp; __x)'/>
+<use f='include/llvm-6.0/llvm/Transforms/IPO/PassManagerBuilder.h' l='212' u='c' c='_ZN4llvm22RegisterStandardPassesC1ENS_18PassManagerBuilder16ExtensionPointTyESt8functionIFvRKS1_RNS_6legacy15PassManagerBaseEEE'/>
+<doc f='include/c++/7/bits/std_function.h' l='434'>/**
+       *  @brief %Function move constructor.
+       *  @param __x A %function object rvalue with identical call signature.
+       *
+       *  The newly-created %function contains the target of @a __x
+       *  (if it has one).
+       */</doc>
+<use f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='1523' u='c' c='_ZN4llvm16TargetIRAnalysisC1EOS0_'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='79' u='c' c='_ZN4llvm25IRBuilderCallbackInserterC1ESt8functionIFvPNS_11InstructionEEE'/>

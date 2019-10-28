@@ -1,0 +1,15 @@
+<dec f='include/hwloc.h' l='1328' type='void hwloc_obj_add_info(hwloc_obj_t obj, const char * name, const char * value)'/>
+<doc f='include/hwloc.h' l='1314'>/** \brief Add the given info name and value pair to the given object.
+ *
+ * The info is appended to the existing info array even if another key
+ * with the same name already exists.
+ *
+ * The input strings are copied before being added in the object infos.
+ *
+ * \note This function may be used to enforce object colors in the lstopo
+ * graphical output by using &quot;lstopoStyle&quot; as a name and &quot;Background=#rrggbb&quot;
+ * as a value. See CUSTOM COLORS in the lstopo(1) manpage for details.
+ *
+ * \note If \p value contains some non-printable characters, they will
+ * be dropped when exporting to XML, see hwloc_topology_export_xml().
+ */</doc>

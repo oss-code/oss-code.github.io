@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1743' type='const llvm::SCEV * llvm::ScalarEvolution::computeMaxBECountForLT(const llvm::SCEV * Start, const llvm::SCEV * Stride, const llvm::SCEV * End, unsigned int BitWidth, bool IsSigned)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1737'>/// Compute the maximum backedge count based on the range of values
+  /// permitted by Start, End, and Stride. This is for loops of the form
+  /// {Start, +, Stride} LT End.
+  ///
+  /// Precondition: the induction variable is known to be positive.  We *don&apos;t*
+  /// assert these preconditions so please be careful.</doc>

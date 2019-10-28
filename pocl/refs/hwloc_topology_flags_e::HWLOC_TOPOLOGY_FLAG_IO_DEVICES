@@ -1,0 +1,12 @@
+<dec f='include/hwloc.h' l='765' type='4'/>
+<doc f='include/hwloc.h' l='754'>/** \brief Detect PCI devices.
+   *
+   * By default, I/O devices are ignored. This flag enables I/O device
+   * detection using the pci backend. Only the common PCI devices (GPUs,
+   * NICs, block devices, ...) and host bridges (objects that connect the host
+   * objects to an I/O subsystem) will be added to the topology.
+   * Additionally it also enables MemoryModule misc objects.
+   * Uncommon devices and other bridges (such as PCI-to-PCI bridges) will be
+   * ignored.
+   * \hideinitializer
+   */</doc>

@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/IR/Type.h' l='392' type='static llvm::Type * llvm::Type::getVoidTy(llvm::LLVMContext &amp; C)'/>
+<doc f='include/llvm-6.0/llvm/IR/Type.h' l='389'>//===--------------------------------------------------------------------===//
+  // These are the builtin types that are always available.
+  //</doc>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='382' u='c' c='_ZN4llvm13IRBuilderBase9getVoidTyEv'/>
+<use f='pocl/lib/llvmopencl/Barrier.h' l='66' u='c' c='_ZN4pocl7Barrier6CreateEPN4llvm11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/TypeBuilder.h' l='240' u='c' c='_ZN4llvm11TypeBuilderIvXT_EE3getERNS_11LLVMContextE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='281' u='c' c='_ZN4pocl9Workgroup14addPlaceHolderERN4llvm9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEPNS1_5ValueENSt7__cxx1112basic_stringIcSt1115963950'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='633' u='c' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>

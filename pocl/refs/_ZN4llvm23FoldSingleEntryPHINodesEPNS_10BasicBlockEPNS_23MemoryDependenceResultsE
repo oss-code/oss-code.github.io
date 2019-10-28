@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='47' type='void llvm::FoldSingleEntryPHINodes(llvm::BasicBlock * BB, llvm::MemoryDependenceResults * MemDep = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='43'>/// We know that BB has one predecessor. If there are any single-entry PHI nodes
+/// in it, fold them away. This handles the case when all entries to the PHI
+/// nodes in a block are guaranteed equal, such as when the block has exactly
+/// one predecessor.</doc>

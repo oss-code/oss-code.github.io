@@ -1,0 +1,5 @@
+<def f='pocl/include/CL/cl2.hpp' l='3213' ll='3220' type='static cl_int cl::Event::waitForEvents(const vector&lt;cl::Event&gt; &amp; events)'/>
+<doc f='pocl/include/CL/cl2.hpp' l='3209'>/*! \brief Blocks the calling thread until every event specified is complete.
+     *
+     *  Wraps clWaitForEvents().
+     */</doc>

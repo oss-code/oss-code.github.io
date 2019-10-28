@@ -1,0 +1,10 @@
+<def f='include/c++/7/bits/unordered_map.h' l='936' ll='938' type='size_type std::unordered_map::count(const key_type &amp; __x) const'/>
+<doc f='include/c++/7/bits/unordered_map.h' l='927'>/**
+       *  @brief  Finds the number of elements.
+       *  @param  __x  Key to count.
+       *  @return  Number of elements with specified key.
+       *
+       *  This function only makes sense for %unordered_multimap; for
+       *  %unordered_map the result will either be 0 (not present) or 1
+       *  (present).
+       */</doc>

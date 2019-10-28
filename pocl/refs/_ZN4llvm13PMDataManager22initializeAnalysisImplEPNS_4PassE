@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='363' type='void llvm::PMDataManager::initializeAnalysisImpl(llvm::Pass * P)'/>
+<doc f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='359'>/// All Required analyses should be available to the pass as it runs!  Here
+  /// we fill in the AnalysisImpls member of the pass so that it can
+  /// successfully use the getAnalysis() method to retrieve the
+  /// implementations it needs.</doc>

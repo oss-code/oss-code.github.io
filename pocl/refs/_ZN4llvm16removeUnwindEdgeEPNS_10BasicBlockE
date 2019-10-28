@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='400' type='void llvm::removeUnwindEdge(llvm::BasicBlock * BB)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='394'>/// Replace &apos;BB&apos;s terminator with one that does not have an unwind successor
+/// block. Rewrites `invoke` to `call`, etc. Updates any PHIs in unwind
+/// successor.
+///
+/// \param BB  Block whose terminator will be replaced.  Its terminator must
+///            have an unwind successor.</doc>

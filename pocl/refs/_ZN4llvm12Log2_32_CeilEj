@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/Support/MathExtras.h' l='544' ll='546' type='unsigned int llvm::Log2_32_Ceil(uint32_t Value)'/>
+<use f='include/llvm-6.0/llvm/ADT/DenseMap.h' l='752' u='c' c='_ZN4llvm8DenseMap16shrink_and_clearEv'/>
+<use f='include/llvm-6.0/llvm/ADT/DenseMap.h' l='1019' u='c' c='_ZN4llvm13SmallDenseMap16shrink_and_clearEv'/>
+<doc f='include/llvm-6.0/llvm/Support/MathExtras.h' l='541'>/// Return the ceil log base 2 of the specified value, 32 if the value is zero.
+/// (32 bit edition).
+/// Ex. Log2_32_Ceil(32) == 5, Log2_32_Ceil(1) == 0, Log2_32_Ceil(6) == 3</doc>

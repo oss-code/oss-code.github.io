@@ -1,0 +1,6 @@
+<use f='include/llvm-6.0/llvm/ADT/StringMap.h' l='138' u='c' c='_ZNK4llvm14StringMapEntry6getKeyEv'/>
+<def f='include/llvm-6.0/llvm/ADT/StringMap.h' l='149' type='const char * llvm::StringMapEntry::getKeyData() const'/>
+<use f='include/llvm-6.0/llvm/ADT/StringMap.h' l='151' u='c' c='_ZNK4llvm14StringMapEntry5firstEv'/>
+<doc f='include/llvm-6.0/llvm/ADT/StringMap.h' l='146'>/// getKeyData - Return the start of the string data that is the key for this
+  /// value.  The string data is always stored immediately after the
+  /// StringMapEntry object.</doc>

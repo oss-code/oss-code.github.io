@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AssumptionCache.h' l='84' type='bool'/>
+<use f='include/llvm-6.0/llvm/Analysis/AssumptionCache.h' l='117' u='w' c='_ZN4llvm15AssumptionCache5clearEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/AssumptionCache.h' l='129' u='r' c='_ZN4llvm15AssumptionCache11assumptionsEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/AssumptionCache.h' l='136' u='r' c='_ZN4llvm15AssumptionCache14assumptionsForEPKNS_5ValueE'/>
+<offset>1216</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/AssumptionCache.h' l='80'>/// \brief Flag tracking whether we have scanned the function yet.
+  ///
+  /// We want to be as lazy about this as possible, and so we scan the function
+  /// at the last moment.</doc>

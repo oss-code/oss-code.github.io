@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1586' ll='1609' type='OpIteratorTy llvm::OperandBundleUser::populateBundleOperandInfos(ArrayRef&lt;OperandBundleDef&gt; Bundles, const unsigned int BeginIndex)'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1580'>/// \brief Populate the BundleOpInfo instances and the Use&amp; vector from \p
+  /// Bundles.  Return the op_iterator pointing to the Use&amp; one past the last
+  /// last bundle operand use.
+  ///
+  /// Each \p OperandBundleDef instance is tracked by a OperandBundleInfo
+  /// instance allocated in this User&apos;s descriptor.</doc>

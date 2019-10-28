@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/Analysis/MemoryDependenceAnalysis.h' l='297' ll='312'/>
+<size>64</size>
+<doc f='include/llvm-6.0/llvm/Analysis/MemoryDependenceAnalysis.h' l='296'>/// This record is the information kept for each (value, is load) pair.</doc>
+<mbr r='llvm::MemoryDependenceResults::NonLocalPointerInfo::Pair' o='0' t='BBSkipFirstBlockPair'/>
+<mbr r='llvm::MemoryDependenceResults::NonLocalPointerInfo::NonLocalDeps' o='64' t='NonLocalDepInfo'/>
+<mbr r='llvm::MemoryDependenceResults::NonLocalPointerInfo::Size' o='256' t='uint64_t'/>
+<mbr r='llvm::MemoryDependenceResults::NonLocalPointerInfo::AATags' o='320' t='llvm::AAMDNodes'/>
+<fun r='_ZN4llvm23MemoryDependenceResults19NonLocalPointerInfoC1Ev'/>

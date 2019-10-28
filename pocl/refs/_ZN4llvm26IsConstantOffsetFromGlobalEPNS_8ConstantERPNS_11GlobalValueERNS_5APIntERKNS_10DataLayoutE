@@ -1,0 +1,3 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='40' type='bool llvm::IsConstantOffsetFromGlobal(llvm::Constant * C, llvm::GlobalValue *&amp; GV, llvm::APInt &amp; Offset, const llvm::DataLayout &amp; DL)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='38'>/// If this constant is a constant offset from a global, return the global and
+/// the constant. Because of constantexprs, this function is recursive.</doc>

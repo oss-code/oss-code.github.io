@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='975' ll='980' type='llvm::LazyCallGraph::RefSCC * llvm::LazyCallGraph::lookupRefSCC(llvm::LazyCallGraph::Node &amp; N) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='971'>/// Lookup a function&apos;s RefSCC in the graph.
+  ///
+  /// \returns null if the function hasn&apos;t been assigned a RefSCC via the
+  /// RefSCC iterator walk.</doc>

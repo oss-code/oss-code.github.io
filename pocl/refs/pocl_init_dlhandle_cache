@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/devices/common.h' l='95' type='void pocl_init_dlhandle_cache()'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='401' u='c' c='pocl_basic_init'/>
+<def f='pocl/lib/CL/devices/common.c' l='849' ll='858' type='void pocl_init_dlhandle_cache()'/>
+<doc f='pocl/lib/CL/devices/common.c' l='848'>/* only to be called in basic/pthread/&lt;other cpu driver&gt; init */</doc>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='197' u='c' c='pocl_pthread_init'/>

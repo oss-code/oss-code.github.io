@@ -1,0 +1,16 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1156' type='cl_command_type'/>
+<offset>576</offset>
+<use f='pocl/lib/CL/clGetEventInfo.c' l='34' u='r' c='POclGetEventInfo'/>
+<use f='pocl/lib/CL/clReleaseEvent.c' l='47' u='r' c='POclReleaseEvent'/>
+<use f='pocl/lib/CL/clReleaseEvent.c' l='55' u='r' c='POclReleaseEvent'/>
+<use f='pocl/lib/CL/clSetUserEventStatus.c' l='17' u='r' c='POclSetUserEventStatus'/>
+<use f='pocl/lib/CL/clWaitForEvents.c' l='48' u='r' c='POclWaitForEvents'/>
+<use f='pocl/lib/CL/clWaitForEvents.c' l='70' u='r' c='POclWaitForEvents'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1045' u='r' c='pocl_cuda_submit_node'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1319' u='r' c='pocl_cuda_finalize_command'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1334' u='r' c='pocl_cuda_finalize_command'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1335' u='r' c='pocl_cuda_finalize_command'/>
+<use f='pocl/lib/CL/pocl_tracing.c' l='197' u='r' c='text_tracer_event_updated'/>
+<use f='pocl/lib/CL/pocl_tracing.c' l='201' u='r' c='text_tracer_event_updated'/>
+<use f='pocl/lib/CL/pocl_util.c' l='397' u='w' c='pocl_create_event'/>
+<use f='pocl/lib/CL/pocl_util.c' l='493' u='w' c='pocl_create_command'/>

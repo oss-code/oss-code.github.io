@@ -1,0 +1,12 @@
+<use f='include/llvm-6.0/llvm/IR/Type.h' l='185' u='c' c='_ZNK4llvm4Type16isFPOrFPVectorTyEv'/>
+<use f='include/llvm-6.0/llvm/IR/Type.h' l='203' u='c' c='_ZNK4llvm4Type18isIntOrIntVectorTyEv'/>
+<use f='include/llvm-6.0/llvm/IR/Type.h' l='208' u='c' c='_ZNK4llvm4Type18isIntOrIntVectorTyEj'/>
+<use f='include/llvm-6.0/llvm/IR/Type.h' l='224' u='c' c='_ZNK4llvm4Type18isPtrOrPtrVectorTyEv'/>
+<def f='include/llvm-6.0/llvm/IR/Type.h' l='301' ll='305' type='llvm::Type * llvm::Type::getScalarType() const'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='504' u='c' c='_ZNK4llvm4Type22getPointerAddressSpaceEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='870' u='c' c='_ZN4llvm17GetElementPtrInst6CreateEPNS_4TypeEPNS_5ValueENS_8ArrayRefIS4_EERKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='886' u='c' c='_ZN4llvm17GetElementPtrInst6CreateEPNS_4TypeEPNS_5ValueENS_8ArrayRefIS4_EERKNS_5TwineEPNS_10BasicBlockE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1000' u='c' c='_ZN4llvm17GetElementPtrInst16getGEPReturnTypeEPNS_5ValueENS_8ArrayRefIS2_EE'/>
+<doc f='include/llvm-6.0/llvm/IR/Type.h' l='299'>/// If this is a vector type, return the element type, otherwise return
+  /// &apos;this&apos;.</doc>
+<use f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='266' u='c' c='_ZN4llvm13EmitGEPOffsetEPT_RKNS_10DataLayoutEPNS_4UserEb'/>

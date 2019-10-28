@@ -1,0 +1,13 @@
+<dec f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='154' type='llvm::Function * llvm::CallGraph::removeFunctionFromModule(llvm::CallGraphNode * CGN)'/>
+<use f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='379' u='c' c='_ZN4llvm20CallGraphWrapperPass24removeFunctionFromModuleEPNS_13CallGraphNodeE'/>
+<doc f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='143'>//===---------------------------------------------------------------------
+  // Functions to keep a call graph up to date with a function that has been
+  // modified.
+  //
+
+  /// \brief Unlink the function from this module, returning it.
+  ///
+  /// Because this removes the function from the module, the call graph node is
+  /// destroyed.  This is only valid if the function does not call any other
+  /// functions (ie, there are no edges in it&apos;s CGN).  The easiest way to do
+  /// this is to dropAllReferences before calling this.</doc>

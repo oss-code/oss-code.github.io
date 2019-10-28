@@ -1,0 +1,6 @@
+<def f='pocl/include/CL/cl2.hpp' l='3321' type='void cl::Memory::Memory(const cl::Memory &amp; mem)'/>
+<use f='pocl/include/CL/cl2.hpp' l='3925' u='c' c='_ZN2cl6BufferC1ERKS0_'/>
+<use f='pocl/include/CL/cl2.hpp' l='4318' u='c' c='_ZN2cl5ImageC1ERKS0_'/>
+<doc f='pocl/include/CL/cl2.hpp' l='3318'>/*! \brief Copy constructor to forward copy to the superclass correctly.
+     * Required for MSVC.
+     */</doc>

@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>CFLSteensAliasAnalysis.h source code [include/llvm-6.0/llvm/Analysis/CFLSteensAliasAnalysis.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="llvm::CFLSteensAA,llvm::CFLSteensAAResult,llvm::CFLSteensAAWrapperPass "/>
+<link rel="stylesheet" href="../../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'include/llvm-6.0/llvm/Analysis/CFLSteensAliasAnalysis.h'; var root_path = '../../../..'; var data_path = '../../../../../data';</script>
+<script src='../../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../../..'>include</a>/<a href='../..'>llvm-6.0</a>/<a href='..'>llvm</a>/<a href='./'>Analysis</a>/<a href='CFLSteensAliasAnalysis.h.html'>CFLSteensAliasAnalysis.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>//==- CFLSteensAliasAnalysis.h - Unification-based Alias Analysis -*- C++-*-==//</i></td></tr>
+<tr><th id="2">2</th><td><i>//</i></td></tr>
+<tr><th id="3">3</th><td><i>//                     The LLVM Compiler Infrastructure</i></td></tr>
+<tr><th id="4">4</th><td><i>//</i></td></tr>
+<tr><th id="5">5</th><td><i>// This file is distributed under the University of Illinois Open Source</i></td></tr>
+<tr><th id="6">6</th><td><i>// License. See LICENSE.TXT for details.</i></td></tr>
+<tr><th id="7">7</th><td><i>//</i></td></tr>
+<tr><th id="8">8</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="9">9</th><td><i>/// \file</i></td></tr>
+<tr><th id="10">10</th><td><i>/// This is the interface for LLVM's unification-based alias analysis</i></td></tr>
+<tr><th id="11">11</th><td><i>/// implemented with CFL graph reachability.</i></td></tr>
+<tr><th id="12">12</th><td><i>///</i></td></tr>
+<tr><th id="13">13</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td><u>#<span data-ppcond="15">ifndef</span> <span class="macro" data-ref="_M/LLVM_ANALYSIS_CFLSTEENSALIASANALYSIS_H">LLVM_ANALYSIS_CFLSTEENSALIASANALYSIS_H</span></u></td></tr>
+<tr><th id="16">16</th><td><u>#define <dfn class="macro" id="_M/LLVM_ANALYSIS_CFLSTEENSALIASANALYSIS_H" data-ref="_M/LLVM_ANALYSIS_CFLSTEENSALIASANALYSIS_H">LLVM_ANALYSIS_CFLSTEENSALIASANALYSIS_H</dfn></u></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><u>#include <a href="../ADT/DenseMap.h.html">"llvm/ADT/DenseMap.h"</a></u></td></tr>
+<tr><th id="19">19</th><td><u>#include <a href="../ADT/Optional.h.html">"llvm/ADT/Optional.h"</a></u></td></tr>
+<tr><th id="20">20</th><td><u>#include <a href="AliasAnalysis.h.html">"llvm/Analysis/AliasAnalysis.h"</a></u></td></tr>
+<tr><th id="21">21</th><td><u>#include <a href="CFLAliasAnalysisUtils.h.html">"llvm/Analysis/CFLAliasAnalysisUtils.h"</a></u></td></tr>
+<tr><th id="22">22</th><td><u>#include <a href="MemoryLocation.h.html">"llvm/Analysis/MemoryLocation.h"</a></u></td></tr>
+<tr><th id="23">23</th><td><u>#include <a href="../IR/PassManager.h.html">"llvm/IR/PassManager.h"</a></u></td></tr>
+<tr><th id="24">24</th><td><u>#include <a href="../Pass.h.html">"llvm/Pass.h"</a></u></td></tr>
+<tr><th id="25">25</th><td><u>#include <a href="../Support/Casting.h.html">"llvm/Support/Casting.h"</a></u></td></tr>
+<tr><th id="26">26</th><td><u>#include <a href="../../../c++/7/forward_list.html">&lt;forward_list&gt;</a></u></td></tr>
+<tr><th id="27">27</th><td><u>#include <a href="../../../c++/7/memory.html">&lt;memory&gt;</a></u></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><b>namespace</b> <span class="namespace">llvm</span> {</td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><b>class</b> <a class="type" href="../IR/Function.h.html#llvm::Function" title='llvm::Function' data-ref="llvm::Function" id="llvm::Function">Function</a>;</td></tr>
+<tr><th id="32">32</th><td><b>class</b> <a class="type" href="TargetLibraryInfo.h.html#llvm::TargetLibraryInfo" title='llvm::TargetLibraryInfo' data-ref="llvm::TargetLibraryInfo" id="llvm::TargetLibraryInfo">TargetLibraryInfo</a>;</td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><b>namespace</b> <span class="namespace">cflaa</span> {</td></tr>
+<tr><th id="35">35</th><td></td></tr>
+<tr><th id="36">36</th><td><b>struct</b> <a class="type" href="CFLAndersAliasAnalysis.h.html#llvm::cflaa::AliasSummary" title='llvm::cflaa::AliasSummary' data-ref="llvm::cflaa::AliasSummary" id="llvm::cflaa::AliasSummary">AliasSummary</a>;</td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td>} <i>// end namespace cflaa</i></td></tr>
+<tr><th id="39">39</th><td></td></tr>
+<tr><th id="40">40</th><td><b>class</b> <dfn class="type def" id="llvm::CFLSteensAAResult" title='llvm::CFLSteensAAResult' data-ref="llvm::CFLSteensAAResult">CFLSteensAAResult</dfn> : <b>public</b> <a class="type" href="AliasAnalysis.h.html#llvm::AAResultBase" title='llvm::AAResultBase' data-ref="llvm::AAResultBase">AAResultBase</a>&lt;<a class="type" href="#llvm::CFLSteensAAResult" title='llvm::CFLSteensAAResult' data-ref="llvm::CFLSteensAAResult">CFLSteensAAResult</a>&gt; {</td></tr>
+<tr><th id="41">41</th><td>  <b>friend</b> <a class="type" href="AliasAnalysis.h.html#llvm::AAResultBase" title='llvm::AAResultBase' data-ref="llvm::AAResultBase">AAResultBase</a>&lt;<a class="type" href="#llvm::CFLSteensAAResult" title='llvm::CFLSteensAAResult' data-ref="llvm::CFLSteensAAResult">CFLSteensAAResult</a>&gt;;</td></tr>
+<tr><th id="42">42</th><td></td></tr>
+<tr><th id="43">43</th><td>  <b>class</b> <dfn class="type" id="llvm::CFLSteensAAResult::FunctionInfo" title='llvm::CFLSteensAAResult::FunctionInfo' data-ref="llvm::CFLSteensAAResult::FunctionInfo">FunctionInfo</dfn>;</td></tr>
+<tr><th id="44">44</th><td></td></tr>
+<tr><th id="45">45</th><td><b>public</b>:</td></tr>
+<tr><th id="46">46</th><td>  <b>explicit</b> <dfn class="decl" id="_ZN4llvm17CFLSteensAAResultC1ERKNS_17TargetLibraryInfoE" title='llvm::CFLSteensAAResult::CFLSteensAAResult' data-ref="_ZN4llvm17CFLSteensAAResultC1ERKNS_17TargetLibraryInfoE">CFLSteensAAResult</dfn>(<em>const</em> <a class="type" href="TargetLibraryInfo.h.html#llvm::TargetLibraryInfo" title='llvm::TargetLibraryInfo' data-ref="llvm::TargetLibraryInfo">TargetLibraryInfo</a> &amp;<dfn class="local col7 decl" id="1857TLI" title='TLI' data-type='const llvm::TargetLibraryInfo &amp;' data-ref="1857TLI">TLI</dfn>);</td></tr>
+<tr><th id="47">47</th><td>  <dfn class="decl" id="_ZN4llvm17CFLSteensAAResultC1EOS0_" title='llvm::CFLSteensAAResult::CFLSteensAAResult' data-ref="_ZN4llvm17CFLSteensAAResultC1EOS0_">CFLSteensAAResult</dfn>(<a class="type" href="#llvm::CFLSteensAAResult" title='llvm::CFLSteensAAResult' data-ref="llvm::CFLSteensAAResult">CFLSteensAAResult</a> &amp;&amp;<dfn class="local col8 decl" id="1858Arg" title='Arg' data-type='llvm::CFLSteensAAResult &amp;&amp;' data-ref="1858Arg">Arg</dfn>);</td></tr>
+<tr><th id="48">48</th><td>  <dfn class="decl" id="_ZN4llvm17CFLSteensAAResultD1Ev" title='llvm::CFLSteensAAResult::~CFLSteensAAResult' data-ref="_ZN4llvm17CFLSteensAAResultD1Ev">~CFLSteensAAResult</dfn>();</td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td>  <i class="doc">/// Handle invalidation events from the new pass manager.</i></td></tr>
+<tr><th id="51">51</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="52">52</th><td><i class="doc">  /// By definition, this result is stateless and so remains valid.</i></td></tr>
+<tr><th id="53">53</th><td>  <em>bool</em> <dfn class="decl def" id="_ZN4llvm17CFLSteensAAResult10invalidateERNS_8FunctionERKNS_17PreservedAnalysesERNS_15AnalysisManagerIS1_JEE11InvalidatorE" title='llvm::CFLSteensAAResult::invalidate' data-ref="_ZN4llvm17CFLSteensAAResult10invalidateERNS_8FunctionERKNS_17PreservedAnalysesERNS_15AnalysisManagerIS1_JEE11InvalidatorE">invalidate</dfn>(<a class="type" href="../IR/Function.h.html#llvm::Function" title='llvm::Function' data-ref="llvm::Function">Function</a> &amp;, <em>const</em> <a class="type" href="../IR/PassManager.h.html#llvm::PreservedAnalyses" title='llvm::PreservedAnalyses' data-ref="llvm::PreservedAnalyses">PreservedAnalyses</a> &amp;,</td></tr>
+<tr><th id="54">54</th><td>                  <a class="typedef" href="../IR/PassManager.h.html#llvm::FunctionAnalysisManager" title='llvm::FunctionAnalysisManager' data-type='AnalysisManager&lt;llvm::Function&gt;' data-ref="llvm::FunctionAnalysisManager">FunctionAnalysisManager</a>::<a class="type" href="../IR/PassManager.h.html#llvm::AnalysisManager::Invalidator" title='llvm::AnalysisManager::Invalidator' data-ref="llvm::AnalysisManager::Invalidator">Invalidator</a> &amp;) {</td></tr>
+<tr><th id="55">55</th><td>    <b>return</b> <b>false</b>;</td></tr>
+<tr><th id="56">56</th><td>  }</td></tr>
+<tr><th id="57">57</th><td></td></tr>
+<tr><th id="58">58</th><td>  <i class="doc">/// <span class="command">\brief</span> Inserts the given Function into the cache.</i></td></tr>
+<tr><th id="59">59</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm17CFLSteensAAResult4scanEPNS_8FunctionE" title='llvm::CFLSteensAAResult::scan' data-ref="_ZN4llvm17CFLSteensAAResult4scanEPNS_8FunctionE">scan</dfn>(<a class="type" href="../IR/Function.h.html#llvm::Function" title='llvm::Function' data-ref="llvm::Function">Function</a> *<dfn class="local col9 decl" id="1859Fn" title='Fn' data-type='llvm::Function *' data-ref="1859Fn">Fn</dfn>);</td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm17CFLSteensAAResult5evictEPNS_8FunctionE" title='llvm::CFLSteensAAResult::evict' data-ref="_ZN4llvm17CFLSteensAAResult5evictEPNS_8FunctionE">evict</dfn>(<a class="type" href="../IR/Function.h.html#llvm::Function" title='llvm::Function' data-ref="llvm::Function">Function</a> *<dfn class="local col0 decl" id="1860Fn" title='Fn' data-type='llvm::Function *' data-ref="1860Fn">Fn</dfn>);</td></tr>
+<tr><th id="62">62</th><td></td></tr>
+<tr><th id="63">63</th><td>  <i class="doc">/// <span class="command">\brief</span> Ensures that the given function is available in the cache.</i></td></tr>
+<tr><th id="64">64</th><td><i class="doc">  /// Returns the appropriate entry from the cache.</i></td></tr>
+<tr><th id="65">65</th><td>  <em>const</em> <span class='type' title='llvm::Optional' data-ref="llvm::Optional">Optional</span>&lt;<a class="type" href="#llvm::CFLSteensAAResult::FunctionInfo" title='llvm::CFLSteensAAResult::FunctionInfo' data-ref="llvm::CFLSteensAAResult::FunctionInfo">FunctionInfo</a>&gt; &amp;<dfn class="decl" id="_ZN4llvm17CFLSteensAAResult12ensureCachedEPNS_8FunctionE" title='llvm::CFLSteensAAResult::ensureCached' data-ref="_ZN4llvm17CFLSteensAAResult12ensureCachedEPNS_8FunctionE">ensureCached</dfn>(<a class="type" href="../IR/Function.h.html#llvm::Function" title='llvm::Function' data-ref="llvm::Function">Function</a> *<dfn class="local col1 decl" id="1861Fn" title='Fn' data-type='llvm::Function *' data-ref="1861Fn">Fn</dfn>);</td></tr>
+<tr><th id="66">66</th><td></td></tr>
+<tr><th id="67">67</th><td>  <i class="doc">/// <span class="command">\brief</span> Get the alias summary for the given function</i></td></tr>
+<tr><th id="68">68</th><td><i class="doc">  /// Return nullptr if the summary is not found or not available</i></td></tr>
+<tr><th id="69">69</th><td>  <em>const</em> <span class="namespace">cflaa::</span><a class="type" href="CFLAndersAliasAnalysis.h.html#llvm::cflaa::AliasSummary" title='llvm::cflaa::AliasSummary' data-ref="llvm::cflaa::AliasSummary">AliasSummary</a> *<dfn class="decl" id="_ZN4llvm17CFLSteensAAResult15getAliasSummaryERNS_8FunctionE" title='llvm::CFLSteensAAResult::getAliasSummary' data-ref="_ZN4llvm17CFLSteensAAResult15getAliasSummaryERNS_8FunctionE">getAliasSummary</dfn>(<a class="type" href="../IR/Function.h.html#llvm::Function" title='llvm::Function' data-ref="llvm::Function">Function</a> &amp;<dfn class="local col2 decl" id="1862Fn" title='Fn' data-type='llvm::Function &amp;' data-ref="1862Fn">Fn</dfn>);</td></tr>
+<tr><th id="70">70</th><td></td></tr>
+<tr><th id="71">71</th><td>  <a class="type" href="AliasAnalysis.h.html#llvm::AliasResult" title='llvm::AliasResult' data-ref="llvm::AliasResult">AliasResult</a> <dfn class="decl" id="_ZN4llvm17CFLSteensAAResult5queryERKNS_14MemoryLocationES3_" title='llvm::CFLSteensAAResult::query' data-ref="_ZN4llvm17CFLSteensAAResult5queryERKNS_14MemoryLocationES3_">query</dfn>(<em>const</em> <a class="type" href="MemoryLocation.h.html#llvm::MemoryLocation" title='llvm::MemoryLocation' data-ref="llvm::MemoryLocation">MemoryLocation</a> &amp;<dfn class="local col3 decl" id="1863LocA" title='LocA' data-type='const llvm::MemoryLocation &amp;' data-ref="1863LocA">LocA</dfn>, <em>const</em> <a class="type" href="MemoryLocation.h.html#llvm::MemoryLocation" title='llvm::MemoryLocation' data-ref="llvm::MemoryLocation">MemoryLocation</a> &amp;<dfn class="local col4 decl" id="1864LocB" title='LocB' data-type='const llvm::MemoryLocation &amp;' data-ref="1864LocB">LocB</dfn>);</td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td>  <a class="type" href="AliasAnalysis.h.html#llvm::AliasResult" title='llvm::AliasResult' data-ref="llvm::AliasResult">AliasResult</a> <dfn class="decl def" id="_ZN4llvm17CFLSteensAAResult5aliasERKNS_14MemoryLocationES3_" title='llvm::CFLSteensAAResult::alias' data-ref="_ZN4llvm17CFLSteensAAResult5aliasERKNS_14MemoryLocationES3_">alias</dfn>(<em>const</em> <a class="type" href="MemoryLocation.h.html#llvm::MemoryLocation" title='llvm::MemoryLocation' data-ref="llvm::MemoryLocation">MemoryLocation</a> &amp;<dfn class="local col5 decl" id="1865LocA" title='LocA' data-type='const llvm::MemoryLocation &amp;' data-ref="1865LocA">LocA</dfn>, <em>const</em> <a class="type" href="MemoryLocation.h.html#llvm::MemoryLocation" title='llvm::MemoryLocation' data-ref="llvm::MemoryLocation">MemoryLocation</a> &amp;<dfn class="local col6 decl" id="1866LocB" title='LocB' data-type='const llvm::MemoryLocation &amp;' data-ref="1866LocB">LocB</dfn>) {</td></tr>
+<tr><th id="74">74</th><td>    <b>if</b> (<a class="local col5 ref" href="#1865LocA" title='LocA' data-ref="1865LocA">LocA</a>.<a class="ref" href="MemoryLocation.h.html#llvm::MemoryLocation::Ptr" title='llvm::MemoryLocation::Ptr' data-ref="llvm::MemoryLocation::Ptr">Ptr</a> == <a class="local col6 ref" href="#1866LocB" title='LocB' data-ref="1866LocB">LocB</a>.<a class="ref" href="MemoryLocation.h.html#llvm::MemoryLocation::Ptr" title='llvm::MemoryLocation::Ptr' data-ref="llvm::MemoryLocation::Ptr">Ptr</a>)</td></tr>
+<tr><th id="75">75</th><td>      <b>return</b> <a class="enum" href="AliasAnalysis.h.html#llvm::AliasResult::MustAlias" title='llvm::AliasResult::MustAlias' data-ref="llvm::AliasResult::MustAlias">MustAlias</a>;</td></tr>
+<tr><th id="76">76</th><td></td></tr>
+<tr><th id="77">77</th><td>    <i>// Comparisons between global variables and other constants should be</i></td></tr>
+<tr><th id="78">78</th><td><i>    // handled by BasicAA.</i></td></tr>
+<tr><th id="79">79</th><td><i>    // CFLSteensAA may report NoAlias when comparing a GlobalValue and</i></td></tr>
+<tr><th id="80">80</th><td><i>    // ConstantExpr, but every query needs to have at least one Value tied to a</i></td></tr>
+<tr><th id="81">81</th><td><i>    // Function, and neither GlobalValues nor ConstantExprs are.</i></td></tr>
+<tr><th id="82">82</th><td>    <b>if</b> (<a class="ref" href="../Support/Casting.h.html#_ZN4llvm3isaERKT0_" title='llvm::isa' data-ref="_ZN4llvm3isaERKT0_">isa</a>&lt;<a class="type" href="../IR/Constant.h.html#llvm::Constant" title='llvm::Constant' data-ref="llvm::Constant">Constant</a>&gt;(<a class="local col5 ref" href="#1865LocA" title='LocA' data-ref="1865LocA">LocA</a>.<a class="ref" href="MemoryLocation.h.html#llvm::MemoryLocation::Ptr" title='llvm::MemoryLocation::Ptr' data-ref="llvm::MemoryLocation::Ptr">Ptr</a>) &amp;&amp; <a class="ref" href="../Support/Casting.h.html#_ZN4llvm3isaERKT0_" title='llvm::isa' data-ref="_ZN4llvm3isaERKT0_">isa</a>&lt;<a class="type" href="../IR/Constant.h.html#llvm::Constant" title='llvm::Constant' data-ref="llvm::Constant">Constant</a>&gt;(<a class="local col6 ref" href="#1866LocB" title='LocB' data-ref="1866LocB">LocB</a>.<a class="ref" href="MemoryLocation.h.html#llvm::MemoryLocation::Ptr" title='llvm::MemoryLocation::Ptr' data-ref="llvm::MemoryLocation::Ptr">Ptr</a>))</td></tr>
+<tr><th id="83">83</th><td>      <b>return</b> <a class="type" href="AliasAnalysis.h.html#llvm::AAResultBase" title='llvm::AAResultBase' data-ref="llvm::AAResultBase">AAResultBase</a>::<a class="member" href="AliasAnalysis.h.html#_ZN4llvm12AAResultBase5aliasERKNS_14MemoryLocationES3_" title='llvm::AAResultBase::alias' data-ref="_ZN4llvm12AAResultBase5aliasERKNS_14MemoryLocationES3_">alias</a>(<a class="local col5 ref" href="#1865LocA" title='LocA' data-ref="1865LocA">LocA</a>, <a class="local col6 ref" href="#1866LocB" title='LocB' data-ref="1866LocB">LocB</a>);</td></tr>
+<tr><th id="84">84</th><td></td></tr>
+<tr><th id="85">85</th><td>    <a class="type" href="AliasAnalysis.h.html#llvm::AliasResult" title='llvm::AliasResult' data-ref="llvm::AliasResult">AliasResult</a> <dfn class="local col7 decl" id="1867QueryResult" title='QueryResult' data-type='llvm::AliasResult' data-ref="1867QueryResult">QueryResult</dfn> = <a class="member" href="#_ZN4llvm17CFLSteensAAResult5queryERKNS_14MemoryLocationES3_" title='llvm::CFLSteensAAResult::query' data-ref="_ZN4llvm17CFLSteensAAResult5queryERKNS_14MemoryLocationES3_">query</a>(<a class="local col5 ref" href="#1865LocA" title='LocA' data-ref="1865LocA">LocA</a>, <a class="local col6 ref" href="#1866LocB" title='LocB' data-ref="1866LocB">LocB</a>);</td></tr>
+<tr><th id="86">86</th><td>    <b>if</b> (<a class="local col7 ref" href="#1867QueryResult" title='QueryResult' data-ref="1867QueryResult">QueryResult</a> == <a class="enum" href="AliasAnalysis.h.html#llvm::AliasResult::MayAlias" title='llvm::AliasResult::MayAlias' data-ref="llvm::AliasResult::MayAlias">MayAlias</a>)</td></tr>
+<tr><th id="87">87</th><td>      <b>return</b> <a class="type" href="AliasAnalysis.h.html#llvm::AAResultBase" title='llvm::AAResultBase' data-ref="llvm::AAResultBase">AAResultBase</a>::<a class="member" href="AliasAnalysis.h.html#_ZN4llvm12AAResultBase5aliasERKNS_14MemoryLocationES3_" title='llvm::AAResultBase::alias' data-ref="_ZN4llvm12AAResultBase5aliasERKNS_14MemoryLocationES3_">alias</a>(<a class="local col5 ref" href="#1865LocA" title='LocA' data-ref="1865LocA">LocA</a>, <a class="local col6 ref" href="#1866LocB" title='LocB' data-ref="1866LocB">LocB</a>);</td></tr>
+<tr><th id="88">88</th><td></td></tr>
+<tr><th id="89">89</th><td>    <b>return</b> <a class="local col7 ref" href="#1867QueryResult" title='QueryResult' data-ref="1867QueryResult">QueryResult</a>;</td></tr>
+<tr><th id="90">90</th><td>  }</td></tr>
+<tr><th id="91">91</th><td></td></tr>
+<tr><th id="92">92</th><td><b>private</b>:</td></tr>
+<tr><th id="93">93</th><td>  <em>const</em> <a class="type" href="TargetLibraryInfo.h.html#llvm::TargetLibraryInfo" title='llvm::TargetLibraryInfo' data-ref="llvm::TargetLibraryInfo">TargetLibraryInfo</a> &amp;<dfn class="decl" id="llvm::CFLSteensAAResult::TLI" title='llvm::CFLSteensAAResult::TLI' data-ref="llvm::CFLSteensAAResult::TLI">TLI</dfn>;</td></tr>
+<tr><th id="94">94</th><td></td></tr>
+<tr><th id="95">95</th><td>  <i class="doc">/// <span class="command">\brief</span> Cached mapping of Functions to their StratifiedSets.</i></td></tr>
+<tr><th id="96">96</th><td><i class="doc">  /// If a function's sets are currently being built, it is marked</i></td></tr>
+<tr><th id="97">97</th><td><i class="doc">  /// in the cache as an Optional without a value. This way, if we</i></td></tr>
+<tr><th id="98">98</th><td><i class="doc">  /// have any kind of recursion, it is discernable from a function</i></td></tr>
+<tr><th id="99">99</th><td><i class="doc">  /// that simply has empty sets.</i></td></tr>
+<tr><th id="100">100</th><td>  <a class="type" href="../ADT/DenseMap.h.html#llvm::DenseMap" title='llvm::DenseMap' data-ref="llvm::DenseMap">DenseMap</a>&lt;<a class="type" href="../IR/Function.h.html#llvm::Function" title='llvm::Function' data-ref="llvm::Function">Function</a> *, <span class='type' title='llvm::Optional' data-ref="llvm::Optional">Optional</span>&lt;<a class="type" href="#llvm::CFLSteensAAResult::FunctionInfo" title='llvm::CFLSteensAAResult::FunctionInfo' data-ref="llvm::CFLSteensAAResult::FunctionInfo">FunctionInfo</a>&gt;&gt; <dfn class="decl" id="llvm::CFLSteensAAResult::Cache" title='llvm::CFLSteensAAResult::Cache' data-ref="llvm::CFLSteensAAResult::Cache">Cache</dfn>;</td></tr>
+<tr><th id="101">101</th><td>  <span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/forward_list.h.html#std::forward_list" title='std::forward_list' data-ref="std::forward_list">forward_list</a>&lt;<span class="namespace">cflaa::</span><a class="type" href="CFLAliasAnalysisUtils.h.html#llvm::cflaa::FunctionHandle" title='llvm::cflaa::FunctionHandle' data-ref="llvm::cflaa::FunctionHandle">FunctionHandle</a>&lt;<a class="type" href="#llvm::CFLSteensAAResult" title='llvm::CFLSteensAAResult' data-ref="llvm::CFLSteensAAResult">CFLSteensAAResult</a>&gt;&gt; <dfn class="decl" id="llvm::CFLSteensAAResult::Handles" title='llvm::CFLSteensAAResult::Handles' data-ref="llvm::CFLSteensAAResult::Handles">Handles</dfn>;</td></tr>
+<tr><th id="102">102</th><td></td></tr>
+<tr><th id="103">103</th><td>  <a class="type" href="#llvm::CFLSteensAAResult::FunctionInfo" title='llvm::CFLSteensAAResult::FunctionInfo' data-ref="llvm::CFLSteensAAResult::FunctionInfo">FunctionInfo</a> <dfn class="decl" id="_ZN4llvm17CFLSteensAAResult13buildSetsFromEPNS_8FunctionE" title='llvm::CFLSteensAAResult::buildSetsFrom' data-ref="_ZN4llvm17CFLSteensAAResult13buildSetsFromEPNS_8FunctionE">buildSetsFrom</dfn>(<a class="type" href="../IR/Function.h.html#llvm::Function" title='llvm::Function' data-ref="llvm::Function">Function</a> *<dfn class="local col8 decl" id="1868F" title='F' data-type='llvm::Function *' data-ref="1868F">F</dfn>);</td></tr>
+<tr><th id="104">104</th><td>};</td></tr>
+<tr><th id="105">105</th><td></td></tr>
+<tr><th id="106">106</th><td><i class="doc">/// Analysis pass providing a never-invalidated alias analysis result.</i></td></tr>
+<tr><th id="107">107</th><td><i class="doc">///</i></td></tr>
+<tr><th id="108">108</th><td><i class="doc">/// FIXME: We really should refactor CFL to use the analysis more heavily, and</i></td></tr>
+<tr><th id="109">109</th><td><i class="doc">/// in particular to leverage invalidation to trigger re-computation of sets.</i></td></tr>
+<tr><th id="110">110</th><td><b>class</b> <dfn class="type def" id="llvm::CFLSteensAA" title='llvm::CFLSteensAA' data-ref="llvm::CFLSteensAA">CFLSteensAA</dfn> : <b>public</b> <a class="type" href="../IR/PassManager.h.html#llvm::AnalysisInfoMixin" title='llvm::AnalysisInfoMixin' data-ref="llvm::AnalysisInfoMixin">AnalysisInfoMixin</a>&lt;<a class="type" href="#llvm::CFLSteensAA" title='llvm::CFLSteensAA' data-ref="llvm::CFLSteensAA">CFLSteensAA</a>&gt; {</td></tr>
+<tr><th id="111">111</th><td>  <b>friend</b> <a class="type" href="../IR/PassManager.h.html#llvm::AnalysisInfoMixin" title='llvm::AnalysisInfoMixin' data-ref="llvm::AnalysisInfoMixin">AnalysisInfoMixin</a>&lt;<a class="type" href="#llvm::CFLSteensAA" title='llvm::CFLSteensAA' data-ref="llvm::CFLSteensAA">CFLSteensAA</a>&gt;;</td></tr>
+<tr><th id="112">112</th><td></td></tr>
+<tr><th id="113">113</th><td>  <em>static</em> <a class="type" href="../IR/PassManager.h.html#llvm::AnalysisKey" title='llvm::AnalysisKey' data-ref="llvm::AnalysisKey">AnalysisKey</a> <dfn class="decl" id="llvm::CFLSteensAA::Key" title='llvm::CFLSteensAA::Key' data-ref="llvm::CFLSteensAA::Key">Key</dfn>;</td></tr>
+<tr><th id="114">114</th><td></td></tr>
+<tr><th id="115">115</th><td><b>public</b>:</td></tr>
+<tr><th id="116">116</th><td>  <b>using</b> <dfn class="typedef" id="llvm::CFLSteensAA::Result" title='llvm::CFLSteensAA::Result' data-type='llvm::CFLSteensAAResult' data-ref="llvm::CFLSteensAA::Result">Result</dfn> = <a class="type" href="#llvm::CFLSteensAAResult" title='llvm::CFLSteensAAResult' data-ref="llvm::CFLSteensAAResult">CFLSteensAAResult</a>;</td></tr>
+<tr><th id="117">117</th><td></td></tr>
+<tr><th id="118">118</th><td>  <a class="type" href="#llvm::CFLSteensAAResult" title='llvm::CFLSteensAAResult' data-ref="llvm::CFLSteensAAResult">CFLSteensAAResult</a> <dfn class="decl" id="_ZN4llvm11CFLSteensAA3runERNS_8FunctionERNS_15AnalysisManagerIS1_JEEE" title='llvm::CFLSteensAA::run' data-ref="_ZN4llvm11CFLSteensAA3runERNS_8FunctionERNS_15AnalysisManagerIS1_JEEE">run</dfn>(<a class="type" href="../IR/Function.h.html#llvm::Function" title='llvm::Function' data-ref="llvm::Function">Function</a> &amp;<dfn class="local col9 decl" id="1869F" title='F' data-type='llvm::Function &amp;' data-ref="1869F">F</dfn>, <a class="typedef" href="../IR/PassManager.h.html#llvm::FunctionAnalysisManager" title='llvm::FunctionAnalysisManager' data-type='AnalysisManager&lt;llvm::Function&gt;' data-ref="llvm::FunctionAnalysisManager">FunctionAnalysisManager</a> &amp;<dfn class="local col0 decl" id="1870AM" title='AM' data-type='FunctionAnalysisManager &amp;' data-ref="1870AM">AM</dfn>);</td></tr>
+<tr><th id="119">119</th><td>};</td></tr>
+<tr><th id="120">120</th><td></td></tr>
+<tr><th id="121">121</th><td><i class="doc">/// Legacy wrapper pass to provide the CFLSteensAAResult object.</i></td></tr>
+<tr><th id="122">122</th><td><b>class</b> <dfn class="type def" id="llvm::CFLSteensAAWrapperPass" title='llvm::CFLSteensAAWrapperPass' data-ref="llvm::CFLSteensAAWrapperPass">CFLSteensAAWrapperPass</dfn> : <b>public</b> <a class="type" href="../Pass.h.html#llvm::ImmutablePass" title='llvm::ImmutablePass' data-ref="llvm::ImmutablePass">ImmutablePass</a> {</td></tr>
+<tr><th id="123">123</th><td>  <span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/unique_ptr.h.html#std::unique_ptr" title='std::unique_ptr' data-ref="std::unique_ptr">unique_ptr</a>&lt;<a class="type" href="#llvm::CFLSteensAAResult" title='llvm::CFLSteensAAResult' data-ref="llvm::CFLSteensAAResult">CFLSteensAAResult</a>&gt; <dfn class="decl" id="llvm::CFLSteensAAWrapperPass::Result" title='llvm::CFLSteensAAWrapperPass::Result' data-ref="llvm::CFLSteensAAWrapperPass::Result">Result</dfn>;</td></tr>
+<tr><th id="124">124</th><td></td></tr>
+<tr><th id="125">125</th><td><b>public</b>:</td></tr>
+<tr><th id="126">126</th><td>  <em>static</em> <em>char</em> <dfn class="decl" id="llvm::CFLSteensAAWrapperPass::ID" title='llvm::CFLSteensAAWrapperPass::ID' data-ref="llvm::CFLSteensAAWrapperPass::ID">ID</dfn>;</td></tr>
+<tr><th id="127">127</th><td></td></tr>
+<tr><th id="128">128</th><td>  <dfn class="decl" id="_ZN4llvm22CFLSteensAAWrapperPassC1Ev" title='llvm::CFLSteensAAWrapperPass::CFLSteensAAWrapperPass' data-ref="_ZN4llvm22CFLSteensAAWrapperPassC1Ev">CFLSteensAAWrapperPass</dfn>();</td></tr>
+<tr><th id="129">129</th><td></td></tr>
+<tr><th id="130">130</th><td>  <a class="type" href="#llvm::CFLSteensAAResult" title='llvm::CFLSteensAAResult' data-ref="llvm::CFLSteensAAResult">CFLSteensAAResult</a> &amp;<dfn class="decl def" id="_ZN4llvm22CFLSteensAAWrapperPass9getResultEv" title='llvm::CFLSteensAAWrapperPass::getResult' data-ref="_ZN4llvm22CFLSteensAAWrapperPass9getResultEv">getResult</dfn>() { <b>return</b> <a class="ref" href="../../../c++/7/bits/unique_ptr.h.html#_ZNKSt10unique_ptrdeEv" title='std::unique_ptr::operator*' data-ref="_ZNKSt10unique_ptrdeEv">*</a><a class="member" href="#llvm::CFLSteensAAWrapperPass::Result" title='llvm::CFLSteensAAWrapperPass::Result' data-ref="llvm::CFLSteensAAWrapperPass::Result">Result</a>; }</td></tr>
+<tr><th id="131">131</th><td>  <em>const</em> <a class="type" href="#llvm::CFLSteensAAResult" title='llvm::CFLSteensAAResult' data-ref="llvm::CFLSteensAAResult">CFLSteensAAResult</a> &amp;<dfn class="decl def" id="_ZNK4llvm22CFLSteensAAWrapperPass9getResultEv" title='llvm::CFLSteensAAWrapperPass::getResult' data-ref="_ZNK4llvm22CFLSteensAAWrapperPass9getResultEv">getResult</dfn>() <em>const</em> { <b>return</b> <a class="ref" href="../../../c++/7/bits/unique_ptr.h.html#_ZNKSt10unique_ptrdeEv" title='std::unique_ptr::operator*' data-ref="_ZNKSt10unique_ptrdeEv">*</a><a class="member" href="#llvm::CFLSteensAAWrapperPass::Result" title='llvm::CFLSteensAAWrapperPass::Result' data-ref="llvm::CFLSteensAAWrapperPass::Result">Result</a>; }</td></tr>
+<tr><th id="132">132</th><td></td></tr>
+<tr><th id="133">133</th><td>  <em>void</em> <dfn class="virtual decl" id="_ZN4llvm22CFLSteensAAWrapperPass14initializePassEv" title='llvm::CFLSteensAAWrapperPass::initializePass' data-ref="_ZN4llvm22CFLSteensAAWrapperPass14initializePassEv">initializePass</dfn>() override;</td></tr>
+<tr><th id="134">134</th><td>  <em>void</em> <dfn class="virtual decl" id="_ZNK4llvm22CFLSteensAAWrapperPass16getAnalysisUsageERNS_13AnalysisUsageE" title='llvm::CFLSteensAAWrapperPass::getAnalysisUsage' data-ref="_ZNK4llvm22CFLSteensAAWrapperPass16getAnalysisUsageERNS_13AnalysisUsageE">getAnalysisUsage</dfn>(<a class="type" href="../PassAnalysisSupport.h.html#llvm::AnalysisUsage" title='llvm::AnalysisUsage' data-ref="llvm::AnalysisUsage">AnalysisUsage</a> &amp;<dfn class="local col1 decl" id="1871AU" title='AU' data-type='llvm::AnalysisUsage &amp;' data-ref="1871AU">AU</dfn>) <em>const</em> override;</td></tr>
+<tr><th id="135">135</th><td>};</td></tr>
+<tr><th id="136">136</th><td></td></tr>
+<tr><th id="137">137</th><td><i>// createCFLSteensAAWrapperPass - This pass implements a set-based approach to</i></td></tr>
+<tr><th id="138">138</th><td><i>// alias analysis.</i></td></tr>
+<tr><th id="139">139</th><td><a class="type" href="../Pass.h.html#llvm::ImmutablePass" title='llvm::ImmutablePass' data-ref="llvm::ImmutablePass">ImmutablePass</a> *<dfn class="decl" id="_ZN4llvm28createCFLSteensAAWrapperPassEv" title='llvm::createCFLSteensAAWrapperPass' data-ref="_ZN4llvm28createCFLSteensAAWrapperPassEv">createCFLSteensAAWrapperPass</dfn>();</td></tr>
+<tr><th id="140">140</th><td></td></tr>
+<tr><th id="141">141</th><td>} <i>// end namespace llvm</i></td></tr>
+<tr><th id="142">142</th><td></td></tr>
+<tr><th id="143">143</th><td><u>#<span data-ppcond="15">endif</span> // LLVM_ANALYSIS_CFLSTEENSALIASANALYSIS_H</u></td></tr>
+<tr><th id="144">144</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../../../pocl/lib/CL/pocl_llvm_build.cc.html'>pocl/lib/CL/pocl_llvm_build.cc</a><br/>Generated on <em>2019-Oct-28</em> from project include<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

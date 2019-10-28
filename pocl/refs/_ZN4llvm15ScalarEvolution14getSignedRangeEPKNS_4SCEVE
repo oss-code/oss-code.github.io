@@ -1,0 +1,3 @@
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='803' ll='805' type='llvm::ConstantRange llvm::ScalarEvolution::getSignedRange(const llvm::SCEV * S)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='801'>/// Determine the signed range for a particular SCEV.
+  /// NOTE: This returns a copy of the reference returned by getRangeRef.</doc>

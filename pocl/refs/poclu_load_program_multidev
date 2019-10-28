@@ -1,0 +1,3 @@
+<dec f='pocl/include/poclu.h' l='121' type='int poclu_load_program_multidev(cl_context context, cl_device_id * devices, cl_uint num_devices, const char * basename, int spir, int spirv, int poclbin, const char * explicit_binary, const char * extra_build_opts, cl_program * p)'/>
+<def f='pocl/lib/poclu/misc.c' l='276' ll='425' type='int poclu_load_program_multidev(cl_context context, cl_device_id * devices, cl_uint num_devices, const char * basename, int spir, int spirv, int poclbin, const char * explicit_binary, const char * extra_build_opts, cl_program * p)'/>
+<use f='pocl/lib/poclu/misc.c' l='433' u='c' c='poclu_load_program'/>

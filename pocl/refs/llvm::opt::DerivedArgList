@@ -1,0 +1,21 @@
+<inh f='include/llvm-6.0/llvm/Option/ArgList.h' l='120' c='llvm::opt::ArgList'/>
+<def f='include/llvm-6.0/llvm/Option/ArgList.h' l='435' ll='515'/>
+<size>344</size>
+<doc f='include/llvm-6.0/llvm/Option/ArgList.h' l='433'>/// DerivedArgList - An ordered collection of driver arguments,
+/// whose storage may be in another argument list.</doc>
+<mbr r='llvm::opt::DerivedArgList::BaseArgs' o='1472' t='const llvm::opt::InputArgList &amp;'/>
+<mbr r='llvm::opt::DerivedArgList::SynthesizedArgs' o='1536' t='SmallVector&lt;std::unique_ptr&lt;Arg&gt;, 16&gt;'/>
+<fun r='_ZN4llvm3opt14DerivedArgListC1ERKNS0_12InputArgListE'/>
+<fun r='_ZNK4llvm3opt14DerivedArgList12getArgStringEj'/>
+<fun r='_ZNK4llvm3opt14DerivedArgList21getNumInputArgStringsEv'/>
+<fun r='_ZNK4llvm3opt14DerivedArgList11getBaseArgsEv'/>
+<fun r='_ZN4llvm3opt14DerivedArgList17AddSynthesizedArgEPNS0_3ArgE'/>
+<fun r='_ZNK4llvm3opt14DerivedArgList16MakeArgStringRefENS_9StringRefE'/>
+<fun r='_ZN4llvm3opt14DerivedArgList10AddFlagArgEPKNS0_3ArgENS0_6OptionE'/>
+<fun r='_ZN4llvm3opt14DerivedArgList16AddPositionalArgEPKNS0_3ArgENS0_6OptionENS_9StringRefE'/>
+<fun r='_ZN4llvm3opt14DerivedArgList14AddSeparateArgEPKNS0_3ArgENS0_6OptionENS_9StringRefE'/>
+<fun r='_ZN4llvm3opt14DerivedArgList12AddJoinedArgEPKNS0_3ArgENS0_6OptionENS_9StringRefE'/>
+<fun r='_ZNK4llvm3opt14DerivedArgList11MakeFlagArgEPKNS0_3ArgENS0_6OptionE'/>
+<fun r='_ZNK4llvm3opt14DerivedArgList17MakePositionalArgEPKNS0_3ArgENS0_6OptionENS_9StringRefE'/>
+<fun r='_ZNK4llvm3opt14DerivedArgList15MakeSeparateArgEPKNS0_3ArgENS0_6OptionENS_9StringRefE'/>
+<fun r='_ZNK4llvm3opt14DerivedArgList13MakeJoinedArgEPKNS0_3ArgENS0_6OptionENS_9StringRefE'/>

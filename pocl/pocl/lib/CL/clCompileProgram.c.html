@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>clCompileProgram.c source code [pocl/lib/CL/clCompileProgram.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/CL/clCompileProgram.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>CL</a>/<a href='clCompileProgram.c.html'>clCompileProgram.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* OpenCL runtime library: clCompileProgram()</i></td></tr>
+<tr><th id="2">2</th><td><i></i></td></tr>
+<tr><th id="3">3</th><td><i>   Copyright (c) 2017 Michal Babej / Tampere University of Technology</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>   Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="6">6</th><td><i>   of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="7">7</th><td><i>   in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="8">8</th><td><i>   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="9">9</th><td><i>   copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="10">10</th><td><i>   furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="11">11</th><td><i></i></td></tr>
+<tr><th id="12">12</th><td><i>   The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="13">13</th><td><i>   all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="14">14</th><td><i></i></td></tr>
+<tr><th id="15">15</th><td><i>   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="16">16</th><td><i>   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="17">17</th><td><i>   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="18">18</th><td><i>   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="19">19</th><td><i>   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="20">20</th><td><i>   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="21">21</th><td><i>   THE SOFTWARE.</i></td></tr>
+<tr><th id="22">22</th><td><i>*/</i></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><u>#include <a href="pocl_cl.h.html">"pocl_cl.h"</a></u></td></tr>
+<tr><th id="25">25</th><td><u>#include <a href="pocl_shared.h.html">"pocl_shared.h"</a></u></td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><a class="macro" href="../../include/CL/cl_platform.h.html#43" title="" data-ref="_M/CL_API_ENTRY">CL_API_ENTRY</a> <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <a class="macro" href="../../include/CL/cl_platform.h.html#44" title="" data-ref="_M/CL_API_CALL">CL_API_CALL</a></td></tr>
+<tr><th id="28">28</th><td><a class="macro" href="pocl_cl.h.html#225" title="POclCompileProgram" data-ref="_M/POname">POname</a> (clCompileProgram) (<a class="typedef" href="../../include/CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col1 decl" id="1program" title='program' data-type='cl_program' data-ref="1program">program</dfn>,</td></tr>
+<tr><th id="29">29</th><td>                           <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a> <dfn class="local col2 decl" id="2num_devices" title='num_devices' data-type='cl_uint' data-ref="2num_devices">num_devices</dfn>,</td></tr>
+<tr><th id="30">30</th><td>                           <em>const</em> <a class="typedef" href="../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> *<dfn class="local col3 decl" id="3device_list" title='device_list' data-type='const cl_device_id *' data-ref="3device_list">device_list</dfn>,</td></tr>
+<tr><th id="31">31</th><td>                           <em>const</em> <em>char</em> *<dfn class="local col4 decl" id="4options" title='options' data-type='const char *' data-ref="4options">options</dfn>,</td></tr>
+<tr><th id="32">32</th><td>                           <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a> <dfn class="local col5 decl" id="5num_input_headers" title='num_input_headers' data-type='cl_uint' data-ref="5num_input_headers">num_input_headers</dfn>,</td></tr>
+<tr><th id="33">33</th><td>                           <em>const</em> <a class="typedef" href="../../include/CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> *<dfn class="local col6 decl" id="6input_headers" title='input_headers' data-type='const cl_program *' data-ref="6input_headers">input_headers</dfn>,</td></tr>
+<tr><th id="34">34</th><td>                           <em>const</em> <em>char</em> **<dfn class="local col7 decl" id="7header_include_names" title='header_include_names' data-type='const char **' data-ref="7header_include_names">header_include_names</dfn>,</td></tr>
+<tr><th id="35">35</th><td>                           <em>void</em> (<a class="macro" href="../../include/CL/cl_platform.h.html#45" title="" data-ref="_M/CL_CALLBACK">CL_CALLBACK</a> *<dfn class="local col8 decl" id="8pfn_notify" title='pfn_notify' data-type='void (*)(cl_program, void *)' data-ref="8pfn_notify">pfn_notify</dfn>) (<a class="typedef" href="../../include/CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col9 decl" id="9program" title='program' data-type='cl_program' data-ref="9program">program</dfn>,</td></tr>
+<tr><th id="36">36</th><td>                                                         <em>void</em> *<dfn class="local col0 decl" id="10user_data" title='user_data' data-type='void *' data-ref="10user_data">user_data</dfn>),</td></tr>
+<tr><th id="37">37</th><td>                           <em>void</em> *<dfn class="local col1 decl" id="11user_data" title='user_data' data-type='void *' data-ref="11user_data">user_data</dfn>)</td></tr>
+<tr><th id="38">38</th><td><a class="macro" href="../../include/CL/cl_platform.h.html#61" title="" data-ref="_M/CL_API_SUFFIX__VERSION_1_2">CL_API_SUFFIX__VERSION_1_2</a></td></tr>
+<tr><th id="39">39</th><td>{</td></tr>
+<tr><th id="40">40</th><td>  <b>return</b> <a class="ref" href="pocl_shared.h.html#compile_and_link_program" title='compile_and_link_program' data-ref="compile_and_link_program">compile_and_link_program</a> (<var>1</var>, <var>0</var>, <a class="local col1 ref" href="#1program" title='program' data-ref="1program">program</a>,</td></tr>
+<tr><th id="41">41</th><td>                                   <a class="local col2 ref" href="#2num_devices" title='num_devices' data-ref="2num_devices">num_devices</a>, <a class="local col3 ref" href="#3device_list" title='device_list' data-ref="3device_list">device_list</a>, <a class="local col4 ref" href="#4options" title='options' data-ref="4options">options</a>,</td></tr>
+<tr><th id="42">42</th><td>                                   <a class="local col5 ref" href="#5num_input_headers" title='num_input_headers' data-ref="5num_input_headers">num_input_headers</a>, <a class="local col6 ref" href="#6input_headers" title='input_headers' data-ref="6input_headers">input_headers</a>,</td></tr>
+<tr><th id="43">43</th><td>                                   <a class="local col7 ref" href="#7header_include_names" title='header_include_names' data-ref="7header_include_names">header_include_names</a>, <var>0</var>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,</td></tr>
+<tr><th id="44">44</th><td>                                   <a class="local col8 ref" href="#8pfn_notify" title='pfn_notify' data-ref="8pfn_notify">pfn_notify</a>, <a class="local col1 ref" href="#11user_data" title='user_data' data-ref="11user_data">user_data</a>);</td></tr>
+<tr><th id="45">45</th><td>}</td></tr>
+<tr><th id="46">46</th><td><a class="macro" href="pocl_cl.h.html#234" title="" data-ref="_M/POsym">POsym</a> (clCompileProgram)</td></tr>
+<tr><th id="47">47</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

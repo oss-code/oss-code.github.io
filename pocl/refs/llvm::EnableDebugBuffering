@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/Support/Debug.h' l='104' type='bool'/>
+<doc f='include/llvm-6.0/llvm/Support/Debug.h' l='96'>///\}
+
+/// EnableDebugBuffering - This defaults to false.  If true, the debug
+/// stream will install signal handlers to dump any buffered debug
+/// output.  It allows clients to selectively allow the debug stream
+/// to install signal handlers if they are certain there will be no
+/// conflict.
+///</doc>

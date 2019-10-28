@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='312' type='void llvm::RegionBase::RegionBase&lt;RegionTr&gt;(BlockT * Entry, BlockT * Exit, RegionInfoT * RI, DomTreeT * DT, RegionT * Parent = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='304'>/// @brief Create a new region.
+  ///
+  /// @param Entry  The entry basic block of the region.
+  /// @param Exit   The exit basic block of the region.
+  /// @param RI     The region info object that is managing this region.
+  /// @param DT     The dominator tree of the current function.
+  /// @param Parent The surrounding region or NULL if this is a top level
+  ///               region.</doc>

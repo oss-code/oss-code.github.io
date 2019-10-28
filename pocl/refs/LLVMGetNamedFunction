@@ -1,0 +1,9 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='689' type='LLVMValueRef LLVMGetNamedFunction(LLVMModuleRef M, const char * Name)'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1299' u='c' c='_ZN4pocl9Workgroup18createGridLauncherEPN4llvm8FunctionES3_NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='682'>/**
+ * Obtain a Function value from a Module by its name.
+ *
+ * The returned value corresponds to a llvm::Function value.
+ *
+ * @see llvm::Module::getFunction()
+ */</doc>

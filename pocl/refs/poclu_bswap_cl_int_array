@@ -1,0 +1,9 @@
+<dec f='pocl/include/poclu.h' l='62' type='void poclu_bswap_cl_int_array(cl_device_id device, cl_int * array, size_t num_elements)'/>
+<doc f='pocl/include/poclu.h' l='60'>/* In-place swapping of arrays. */</doc>
+<use f='pocl/examples/example0/example0_exec.c' l='25' u='c' c='exec_integer_mad_kernel'/>
+<use f='pocl/examples/example0/example0_exec.c' l='26' u='c' c='exec_integer_mad_kernel'/>
+<use f='pocl/examples/example0/example0_exec.c' l='71' u='c' c='exec_integer_mad_kernel'/>
+<use f='pocl/examples/example0/example0_exec.c' l='72' u='c' c='exec_integer_mad_kernel'/>
+<use f='pocl/examples/example0/example0_exec.c' l='73' u='c' c='exec_integer_mad_kernel'/>
+<def f='pocl/lib/poclu/bswap.c' l='82' ll='92' type='void poclu_bswap_cl_int_array(cl_device_id device, cl_int * array, size_t num_elements)'/>
+<use f='pocl/tests/regression/test_barrier_between_for_loops.cpp' l='105' u='c' c='main'/>

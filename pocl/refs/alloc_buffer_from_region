@@ -1,0 +1,8 @@
+<dec f='pocl/lib/CL/devices/bufalloc.h' l='153' type='chunk_info_t * alloc_buffer_from_region(memory_region_t * region, size_t size)'/>
+<def f='pocl/lib/CL/devices/bufalloc.c' l='185' ll='239' type='chunk_info_t * alloc_buffer_from_region(memory_region_t * region, size_t size)'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='261' u='c' c='alloc_buffer'/>
+<doc f='pocl/lib/CL/devices/bufalloc.c' l='180'>/**
+ * Allocates a chunk of memory from the given memory region.
+ *
+ * @return The chunk, or NULL if no space available in the region.
+ */</doc>

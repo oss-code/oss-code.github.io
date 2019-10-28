@@ -1,0 +1,6 @@
+<dec f='pocl/examples/boxadd/boxadd.c' l='41' type='int exec_matadd_kernel(cl_context context, cl_device_id device, cl_command_queue cmd_queue, cl_program program, int sizeX, int sizeY, int sizeZ, cl_float * srcA, cl_float * srcB, cl_float * dst)'/>
+<use f='pocl/examples/boxadd/boxadd.c' l='85' u='c' c='main'/>
+<def f='pocl/examples/boxadd/boxadd_exec.c' l='38' ll='120' type='int exec_matadd_kernel(cl_context context, cl_device_id device, cl_command_queue cmd_queue, cl_program program, int sizeX, int sizeY, int sizeZ, cl_float * srcA, cl_float * srcB, cl_float * dst)'/>
+<dec f='pocl/examples/matadd/matadd.c' l='40' type='int exec_matadd_kernel(cl_context context, cl_device_id device, cl_command_queue cmd_queue, cl_program program, int n, int m, cl_float * srcA, cl_float * srcB, cl_float * dst)'/>
+<use f='pocl/examples/matadd/matadd.c' l='82' u='c' c='main'/>
+<def f='pocl/examples/matadd/matadd_exec.c' l='34' ll='96' type='int exec_matadd_kernel(cl_context context, cl_device_id device, cl_command_queue cmd_queue, cl_program program, int n, int m, cl_float * srcA, cl_float * srcB, cl_float * dst)'/>

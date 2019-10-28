@@ -1,0 +1,9 @@
+<dec f='pocl/lib/llvmopencl/Kernel.h' l='40' type='ParallelRegion::ParallelRegionVector * pocl::Kernel::getParallelRegions(llvm::LoopInfo * LI)'/>
+<def f='pocl/lib/llvmopencl/Kernel.cc' l='170' ll='273' type='ParallelRegion::ParallelRegionVector * pocl::Kernel::getParallelRegions(llvm::LoopInfo * LI)'/>
+<doc f='pocl/lib/llvmopencl/Kernel.cc' l='165'>/**
+ * The main entry to the &quot;parallel region formation&quot;, phase which search
+ * for the regions between barriers that can be freely parallelized 
+ * across work-items in the work-group.
+ */</doc>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='370' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemReplication.cc' l='136' u='c' c='_ZN4pocl19WorkitemReplication15ProcessFunctionERN4llvm8FunctionE'/>

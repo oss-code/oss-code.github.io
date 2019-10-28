@@ -1,0 +1,6 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='418' type='void LLVMContextSetYieldCallback(LLVMContextRef C, LLVMYieldCallback Callback, void * OpaqueHandle)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='413'>/**
+ * Set the yield callback function for this context.
+ *
+ * @see LLVMContext::setYieldCallback()
+ */</doc>

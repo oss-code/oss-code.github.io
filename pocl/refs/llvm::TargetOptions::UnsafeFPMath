@@ -1,0 +1,8 @@
+<use f='include/llvm-6.0/llvm/Target/TargetOptions.h' l='102' u='w' c='_ZN4llvm13TargetOptionsC1Ev'/>
+<dec f='include/llvm-6.0/llvm/Target/TargetOptions.h' l='127' type='unsigned int'/>
+<offset>1</offset>
+<doc f='include/llvm-6.0/llvm/Target/TargetOptions.h' l='122'>/// UnsafeFPMath - This flag is enabled when the
+    /// -enable-unsafe-fp-math flag is specified on the command line.  When
+    /// this flag is off (the default), the code generator is not allowed to
+    /// produce results that are &quot;less precise&quot; than IEEE allows.  This includes
+    /// use of X86 instructions like FSIN and FCOS instead of libcalls.</doc>

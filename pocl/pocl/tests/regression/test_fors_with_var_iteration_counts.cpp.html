@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>test_fors_with_var_iteration_counts.cpp source code [pocl/tests/regression/test_fors_with_var_iteration_counts.cpp] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="main "/>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/tests/regression/test_fors_with_var_iteration_counts.cpp'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>tests</a>/<a href='./'>regression</a>/<a href='test_fors_with_var_iteration_counts.cpp.html'>test_fors_with_var_iteration_counts.cpp</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Tests nested for-loops with variable iteration counts with barriers inside.</i></td></tr>
+<tr><th id="2">2</th><td><i></i></td></tr>
+<tr><th id="3">3</th><td><i>   Copyright (c) 2014 Pekka Jääskeläinen / Tampere University of Technology</i></td></tr>
+<tr><th id="4">4</th><td><i>   </i></td></tr>
+<tr><th id="5">5</th><td><i>   Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="6">6</th><td><i>   of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="7">7</th><td><i>   in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="8">8</th><td><i>   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="9">9</th><td><i>   copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="10">10</th><td><i>   furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="11">11</th><td><i>   </i></td></tr>
+<tr><th id="12">12</th><td><i>   The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="13">13</th><td><i>   all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="14">14</th><td><i>   </i></td></tr>
+<tr><th id="15">15</th><td><i>   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="16">16</th><td><i>   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="17">17</th><td><i>   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="18">18</th><td><i>   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="19">19</th><td><i>   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="20">20</th><td><i>   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="21">21</th><td><i>   THE SOFTWARE.</i></td></tr>
+<tr><th id="22">22</th><td><i>*/</i></td></tr>
+<tr><th id="23">23</th><td><i></i></td></tr>
+<tr><th id="24">24</th><td><i>// Enable OpenCL C++ exceptions</i></td></tr>
+<tr><th id="25">25</th><td><u>#define <dfn class="macro" id="_M/CL_HPP_ENABLE_EXCEPTIONS" data-ref="_M/CL_HPP_ENABLE_EXCEPTIONS">CL_HPP_ENABLE_EXCEPTIONS</dfn></u></td></tr>
+<tr><th id="26">26</th><td><u>#define <dfn class="macro" id="_M/CL_HPP_MINIMUM_OPENCL_VERSION" data-ref="_M/CL_HPP_MINIMUM_OPENCL_VERSION">CL_HPP_MINIMUM_OPENCL_VERSION</dfn> 120</u></td></tr>
+<tr><th id="27">27</th><td><u>#define <dfn class="macro" id="_M/CL_HPP_TARGET_OPENCL_VERSION" data-ref="_M/CL_HPP_TARGET_OPENCL_VERSION">CL_HPP_TARGET_OPENCL_VERSION</dfn> 120</u></td></tr>
+<tr><th id="28">28</th><td><u>#include <a href="../../include/CL/cl2.hpp.html">&lt;CL/cl2.hpp&gt;</a></u></td></tr>
+<tr><th id="29">29</th><td></td></tr>
+<tr><th id="30">30</th><td><u>#include <a href="../../../include/c++/7/cstdio.html">&lt;cstdio&gt;</a></u></td></tr>
+<tr><th id="31">31</th><td><u>#include <a href="../../../include/c++/7/cstdlib.html">&lt;cstdlib&gt;</a></u></td></tr>
+<tr><th id="32">32</th><td><u>#include <a href="../../../include/c++/7/iostream.html">&lt;iostream&gt;</a></u></td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><u>#define <dfn class="macro" id="_M/WINDOW_SIZE" data-ref="_M/WINDOW_SIZE">WINDOW_SIZE</dfn> 32</u></td></tr>
+<tr><th id="35">35</th><td><u>#define <dfn class="macro" id="_M/WORK_ITEMS" data-ref="_M/WORK_ITEMS">WORK_ITEMS</dfn> 2</u></td></tr>
+<tr><th id="36">36</th><td><u>#define <dfn class="macro" id="_M/BUFFER_SIZE" data-ref="_M/BUFFER_SIZE">BUFFER_SIZE</dfn> (WORK_ITEMS + WINDOW_SIZE)</u></td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td><em>static</em> <em>char</em></td></tr>
+<tr><th id="39">39</th><td><dfn class="tu decl def" id="kernelSourceCode" title='kernelSourceCode' data-type='char [453]' data-ref="kernelSourceCode">kernelSourceCode</dfn>[] = </td></tr>
+<tr><th id="40">40</th><td><q>"kernel \n"</q></td></tr>
+<tr><th id="41">41</th><td><q>"void test_kernel(__global float *input, \n"</q></td></tr>
+<tr><th id="42">42</th><td><q>"                 __global int *result,\n"</q></td></tr>
+<tr><th id="43">43</th><td><q>"                 int a) {\n"</q></td></tr>
+<tr><th id="44">44</th><td><q>" size_t gid = get_global_id(0);\n"</q></td></tr>
+<tr><th id="45">45</th><td><q>" size_t i;\n"</q></td></tr>
+<tr><th id="46">46</th><td><q>" volatile int something = 0;\n"</q></td></tr>
+<tr><th id="47">47</th><td><q>" for (int k = 0; k &lt; a; k++) {\n"</q></td></tr>
+<tr><th id="48">48</th><td><q>"     for (int j = k + 1; j &lt; result[0]; j++) {\n"</q></td></tr>
+<tr><th id="49">49</th><td><q>"         something += result[j];\n"</q></td></tr>
+<tr><th id="50">50</th><td><q>"     }\n"</q></td></tr>
+<tr><th id="51">51</th><td><q>"     something *= 2;\n"</q></td></tr>
+<tr><th id="52">52</th><td><q>"     for (int l = 0; l &lt; result[1]; ++l) {\n"</q></td></tr>
+<tr><th id="53">53</th><td><q>"         something += result[k];\n"</q></td></tr>
+<tr><th id="54">54</th><td><i>// This barrier here causes the kernel compiler to crash.</i></td></tr>
+<tr><th id="55">55</th><td><q>"         barrier(CLK_LOCAL_MEM_FENCE);\n"</q></td></tr>
+<tr><th id="56">56</th><td><q>"     }\n"</q></td></tr>
+<tr><th id="57">57</th><td><q>" }\n"</q></td></tr>
+<tr><th id="58">58</th><td><q>"}\n"</q>;</td></tr>
+<tr><th id="59">59</th><td></td></tr>
+<tr><th id="60">60</th><td><em>int</em></td></tr>
+<tr><th id="61">61</th><td><dfn class="decl def" id="main" title='main' data-ref="main">main</dfn>(<em>void</em>)</td></tr>
+<tr><th id="62">62</th><td>{</td></tr>
+<tr><th id="63">63</th><td>    <em>float</em> <dfn class="local col1 decl" id="1A" title='A' data-type='float [34]' data-ref="1A">A</dfn>[<a class="macro" href="#36" title="(2 + 32)" data-ref="_M/BUFFER_SIZE">BUFFER_SIZE</a>];</td></tr>
+<tr><th id="64">64</th><td>    <em>int</em> <dfn class="local col2 decl" id="2R" title='R' data-type='int [2]' data-ref="2R">R</dfn>[<a class="macro" href="#35" title="2" data-ref="_M/WORK_ITEMS">WORK_ITEMS</a>];</td></tr>
+<tr><th id="65">65</th><td>    <em>int</em> <dfn class="local col3 decl" id="3a" title='a' data-type='int' data-ref="3a">a</dfn> = <var>3</var>;</td></tr>
+<tr><th id="66">66</th><td></td></tr>
+<tr><th id="67">67</th><td>    <b>for</b> (<em>int</em> <dfn class="local col4 decl" id="4i" title='i' data-type='int' data-ref="4i">i</dfn> = <var>0</var>; <a class="local col4 ref" href="#4i" title='i' data-ref="4i">i</a> &lt; <a class="macro" href="#36" title="(2 + 32)" data-ref="_M/BUFFER_SIZE">BUFFER_SIZE</a>; <a class="local col4 ref" href="#4i" title='i' data-ref="4i">i</a>++) {</td></tr>
+<tr><th id="68">68</th><td>        <a class="local col1 ref" href="#1A" title='A' data-ref="1A">A</a>[<a class="local col4 ref" href="#4i" title='i' data-ref="4i">i</a>] = (<em>float</em>)<a class="local col4 ref" href="#4i" title='i' data-ref="4i">i</a>;</td></tr>
+<tr><th id="69">69</th><td>    }</td></tr>
+<tr><th id="70">70</th><td></td></tr>
+<tr><th id="71">71</th><td>    <b>for</b> (<em>int</em> <dfn class="local col5 decl" id="5i" title='i' data-type='int' data-ref="5i">i</dfn> = <var>0</var>; <a class="local col5 ref" href="#5i" title='i' data-ref="5i">i</a> &lt; <a class="macro" href="#35" title="2" data-ref="_M/WORK_ITEMS">WORK_ITEMS</a>; <a class="local col5 ref" href="#5i" title='i' data-ref="5i">i</a>++) {</td></tr>
+<tr><th id="72">72</th><td>        <a class="local col2 ref" href="#2R" title='R' data-ref="2R">R</a>[<a class="local col5 ref" href="#5i" title='i' data-ref="5i">i</a>] = <a class="local col5 ref" href="#5i" title='i' data-ref="5i">i</a>;</td></tr>
+<tr><th id="73">73</th><td>    }</td></tr>
+<tr><th id="74">74</th><td></td></tr>
+<tr><th id="75">75</th><td>    <b>try</b> {</td></tr>
+<tr><th id="76">76</th><td>        <span class="namespace">std::</span><a class="type" href="../../../include/c++/7/bits/stl_vector.h.html#std::vector" title='std::vector' data-ref="std::vector">vector</a>&lt;<span class="namespace">cl::</span><a class="type" href="../../include/CL/cl2.hpp.html#cl::Platform" title='cl::Platform' data-ref="cl::Platform">Platform</a>&gt; <a class="ref fake" href="../../../include/c++/7/bits/stl_vector.h.html#_ZNSt6vectorC1Ev" title='std::vector::vector&lt;_Tp, _Alloc&gt;' data-ref="_ZNSt6vectorC1Ev"></a><dfn class="local col6 decl" id="6platformList" title='platformList' data-type='std::vector&lt;cl::Platform&gt;' data-ref="6platformList">platformList</dfn>;</td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td>        <i>// Pick platform</i></td></tr>
+<tr><th id="79">79</th><td>        <span class="namespace">cl::</span><a class="type" href="../../include/CL/cl2.hpp.html#cl::Platform" title='cl::Platform' data-ref="cl::Platform">Platform</a>::<a class="ref" href="../../include/CL/cl2.hpp.html#_ZN2cl8Platform3getEPSt6vectorIS0_SaIS0_EE" title='cl::Platform::get' data-ref="_ZN2cl8Platform3getEPSt6vectorIS0_SaIS0_EE">get</a>(&amp;<a class="local col6 ref" href="#6platformList" title='platformList' data-ref="6platformList">platformList</a>);</td></tr>
+<tr><th id="80">80</th><td></td></tr>
+<tr><th id="81">81</th><td>        <i>// Pick first platform</i></td></tr>
+<tr><th id="82">82</th><td>        <a class="typedef" href="../../include/CL/cl.h.html#cl_context_properties" title='cl_context_properties' data-type='intptr_t' data-ref="cl_context_properties">cl_context_properties</a> <dfn class="local col7 decl" id="7cprops" title='cprops' data-type='cl_context_properties [3]' data-ref="7cprops">cprops</dfn>[] = {</td></tr>
+<tr><th id="83">83</th><td>            <a class="macro" href="../../include/CL/cl.h.html#433" title="0x1084" data-ref="_M/CL_CONTEXT_PLATFORM">CL_CONTEXT_PLATFORM</a>, (<a class="typedef" href="../../include/CL/cl.h.html#cl_context_properties" title='cl_context_properties' data-type='intptr_t' data-ref="cl_context_properties">cl_context_properties</a>)(<a class="local col6 ref" href="#6platformList" title='platformList' data-ref="6platformList">platformList</a><a class="ref" href="../../../include/c++/7/bits/stl_vector.h.html#_ZNSt6vectorixEm" title='std::vector::operator[]' data-ref="_ZNSt6vectorixEm">[<var>0</var>]</a>)<a class="ref" href="../../include/CL/cl2.hpp.html#_ZN2cl6detail7WrapperclEv" title='cl::detail::Wrapper::operator()' data-ref="_ZN2cl6detail7WrapperclEv">()</a>, <var>0</var>};</td></tr>
+<tr><th id="84">84</th><td>        <span class="namespace">cl::</span><a class="type" href="../../include/CL/cl2.hpp.html#cl::Context" title='cl::Context' data-ref="cl::Context">Context</a> <dfn class="local col8 decl" id="8context" title='context' data-type='cl::Context' data-ref="8context">context</dfn><a class="ref" href="../../include/CL/cl2.hpp.html#_ZN2cl7ContextC1EmPlPFvPKcPKvmPvES6_Pi" title='cl::Context::Context' data-ref="_ZN2cl7ContextC1EmPlPFvPKcPKvmPvES6_Pi">(</a><a class="macro" href="../../include/CL/cl.h.html#278" title="0xFFFFFFFF" data-ref="_M/CL_DEVICE_TYPE_ALL">CL_DEVICE_TYPE_ALL</a>, <a class="local col7 ref" href="#7cprops" title='cprops' data-ref="7cprops">cprops</a>);</td></tr>
+<tr><th id="85">85</th><td></td></tr>
+<tr><th id="86">86</th><td>        <i>// Query the set of devices attched to the context</i></td></tr>
+<tr><th id="87">87</th><td>        <span class="namespace">std::</span><a class="type" href="../../../include/c++/7/bits/stl_vector.h.html#std::vector" title='std::vector' data-ref="std::vector">vector</a>&lt;<span class="namespace">cl::</span><a class="type" href="../../include/CL/cl2.hpp.html#cl::Device" title='cl::Device' data-ref="cl::Device">Device</a>&gt; <dfn class="local col9 decl" id="9devices" title='devices' data-type='std::vector&lt;cl::Device&gt;' data-ref="9devices">devices</dfn> = <a class="local col8 ref" href="#8context" title='context' data-ref="8context">context</a>.<a class="ref" href="../../include/CL/cl2.hpp.html#_ZNK2cl7Context7getInfoEPi" title='cl::Context::getInfo' data-ref="_ZNK2cl7Context7getInfoEPi">getInfo</a>&lt;<a class="macro" href="../../include/CL/cl.h.html#426" title="0x1081" data-ref="_M/CL_CONTEXT_DEVICES">CL_CONTEXT_DEVICES</a>&gt;();</td></tr>
+<tr><th id="88">88</th><td></td></tr>
+<tr><th id="89">89</th><td>        <i>// Create and program from source</i></td></tr>
+<tr><th id="90">90</th><td>        <span class="namespace">cl::</span><a class="type" href="../../include/CL/cl2.hpp.html#cl::Program" title='cl::Program' data-ref="cl::Program">Program</a>::<a class="typedef" href="../../include/CL/cl2.hpp.html#cl::Program::Sources" title='cl::Program::Sources' data-type='vector&lt;string&gt;' data-ref="cl::Program::Sources">Sources</a> <dfn class="local col0 decl" id="10sources" title='sources' data-type='cl::Program::Sources' data-ref="10sources">sources</dfn><a class="ref" href="../../../include/c++/7/bits/stl_vector.h.html#_ZNSt6vectorC1ESt16initializer_listIT_ERKT0_" title='std::vector::vector&lt;_Tp, _Alloc&gt;' data-ref="_ZNSt6vectorC1ESt16initializer_listIT_ERKT0_">(</a>{<a class="ref fake" href="../../../include/c++/7/bits/basic_string.h.html#_ZNSt7__cxx1112basic_stringC1EPKT_RKT1_" title='std::__cxx11::basic_string::basic_string&lt;_CharT, _Traits, _Alloc&gt;' data-ref="_ZNSt7__cxx1112basic_stringC1EPKT_RKT1_"></a><a class="tu ref" href="#kernelSourceCode" title='kernelSourceCode' data-use='r' data-ref="kernelSourceCode">kernelSourceCode</a>});</td></tr>
+<tr><th id="91">91</th><td>        <span class="namespace">cl::</span><a class="type" href="../../include/CL/cl2.hpp.html#cl::Program" title='cl::Program' data-ref="cl::Program">Program</a> <dfn class="local col1 decl" id="11program" title='program' data-type='cl::Program' data-ref="11program">program</dfn><a class="ref" href="../../include/CL/cl2.hpp.html#_ZN2cl7ProgramC1ERKNS_7ContextERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaISA_EEPi" title='cl::Program::Program' data-ref="_ZN2cl7ProgramC1ERKNS_7ContextERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaISA_EEPi">(</a><a class="local col8 ref" href="#8context" title='context' data-ref="8context">context</a>, <a class="local col0 ref" href="#10sources" title='sources' data-ref="10sources">sources</a>);</td></tr>
+<tr><th id="92">92</th><td></td></tr>
+<tr><th id="93">93</th><td>        <i>// Build program</i></td></tr>
+<tr><th id="94">94</th><td>        <a class="local col1 ref" href="#11program" title='program' data-ref="11program">program</a>.<a class="ref" href="../../include/CL/cl2.hpp.html#_ZNK2cl7Program5buildERKSt6vectorINS_6DeviceESaIS2_EEPKcPFvP11_cl_programPvESB_" title='cl::Program::build' data-ref="_ZNK2cl7Program5buildERKSt6vectorINS_6DeviceESaIS2_EEPKcPFvP11_cl_programPvESB_">build</a>(<a class="local col9 ref" href="#9devices" title='devices' data-ref="9devices">devices</a>);</td></tr>
+<tr><th id="95">95</th><td></td></tr>
+<tr><th id="96">96</th><td>        <i>// Create buffer for A and copy host contents</i></td></tr>
+<tr><th id="97">97</th><td>        <span class="namespace">cl::</span><a class="type" href="../../include/CL/cl2.hpp.html#cl::Buffer" title='cl::Buffer' data-ref="cl::Buffer">Buffer</a> <dfn class="local col2 decl" id="12aBuffer" title='aBuffer' data-type='cl::Buffer' data-ref="12aBuffer">aBuffer</dfn> = <span class="namespace">cl::</span><a class="type" href="../../include/CL/cl2.hpp.html#cl::Buffer" title='cl::Buffer' data-ref="cl::Buffer">Buffer</a><a class="ref" href="../../include/CL/cl2.hpp.html#_ZN2cl6BufferC1ERKNS_7ContextEmmPvPi" title='cl::Buffer::Buffer' data-ref="_ZN2cl6BufferC1ERKNS_7ContextEmmPvPi">(</a></td></tr>
+<tr><th id="98">98</th><td>            <a class="local col8 ref" href="#8context" title='context' data-ref="8context">context</a>, </td></tr>
+<tr><th id="99">99</th><td>            <a class="macro" href="../../include/CL/cl.h.html#485" title="(1 &lt;&lt; 2)" data-ref="_M/CL_MEM_READ_ONLY">CL_MEM_READ_ONLY</a> | <a class="macro" href="../../include/CL/cl.h.html#488" title="(1 &lt;&lt; 5)" data-ref="_M/CL_MEM_COPY_HOST_PTR">CL_MEM_COPY_HOST_PTR</a>, </td></tr>
+<tr><th id="100">100</th><td>            <a class="macro" href="#36" title="(2 + 32)" data-ref="_M/BUFFER_SIZE">BUFFER_SIZE</a> * <b>sizeof</b>(<em>float</em>), </td></tr>
+<tr><th id="101">101</th><td>            (<em>void</em> *) &amp;<a class="local col1 ref" href="#1A" title='A' data-ref="1A">A</a>[<var>0</var>]);</td></tr>
+<tr><th id="102">102</th><td></td></tr>
+<tr><th id="103">103</th><td>        <i>// Create buffer for that uses the host ptr C</i></td></tr>
+<tr><th id="104">104</th><td>        <span class="namespace">cl::</span><a class="type" href="../../include/CL/cl2.hpp.html#cl::Buffer" title='cl::Buffer' data-ref="cl::Buffer">Buffer</a> <dfn class="local col3 decl" id="13cBuffer" title='cBuffer' data-type='cl::Buffer' data-ref="13cBuffer">cBuffer</dfn> = <span class="namespace">cl::</span><a class="type" href="../../include/CL/cl2.hpp.html#cl::Buffer" title='cl::Buffer' data-ref="cl::Buffer">Buffer</a><a class="ref" href="../../include/CL/cl2.hpp.html#_ZN2cl6BufferC1ERKNS_7ContextEmmPvPi" title='cl::Buffer::Buffer' data-ref="_ZN2cl6BufferC1ERKNS_7ContextEmmPvPi">(</a></td></tr>
+<tr><th id="105">105</th><td>            <a class="local col8 ref" href="#8context" title='context' data-ref="8context">context</a>, </td></tr>
+<tr><th id="106">106</th><td>            <a class="macro" href="../../include/CL/cl.h.html#484" title="(1 &lt;&lt; 1)" data-ref="_M/CL_MEM_WRITE_ONLY">CL_MEM_WRITE_ONLY</a> | <a class="macro" href="../../include/CL/cl.h.html#486" title="(1 &lt;&lt; 3)" data-ref="_M/CL_MEM_USE_HOST_PTR">CL_MEM_USE_HOST_PTR</a>, </td></tr>
+<tr><th id="107">107</th><td>            <a class="macro" href="#35" title="2" data-ref="_M/WORK_ITEMS">WORK_ITEMS</a> * <b>sizeof</b>(<em>int</em>), </td></tr>
+<tr><th id="108">108</th><td>            (<em>void</em> *) &amp;<a class="local col2 ref" href="#2R" title='R' data-ref="2R">R</a>[<var>0</var>]);</td></tr>
+<tr><th id="109">109</th><td></td></tr>
+<tr><th id="110">110</th><td>        <i>// Create kernel object</i></td></tr>
+<tr><th id="111">111</th><td>        <span class="namespace">cl::</span><a class="type" href="../../include/CL/cl2.hpp.html#cl::Kernel" title='cl::Kernel' data-ref="cl::Kernel">Kernel</a> <dfn class="local col4 decl" id="14kernel" title='kernel' data-type='cl::Kernel' data-ref="14kernel">kernel</dfn><a class="ref" href="../../include/CL/cl2.hpp.html#_ZN2cl6KernelC1ERKNS_7ProgramEPKcPi" title='cl::Kernel::Kernel' data-ref="_ZN2cl6KernelC1ERKNS_7ProgramEPKcPi">(</a><a class="local col1 ref" href="#11program" title='program' data-ref="11program">program</a>, <q>"test_kernel"</q>);</td></tr>
+<tr><th id="112">112</th><td></td></tr>
+<tr><th id="113">113</th><td>        <i>// Set kernel args</i></td></tr>
+<tr><th id="114">114</th><td>        <a class="local col4 ref" href="#14kernel" title='kernel' data-ref="14kernel">kernel</a>.<a class="ref" href="../../include/CL/cl2.hpp.html#_ZN2cl6Kernel6setArgEjRKT_" title='cl::Kernel::setArg' data-ref="_ZN2cl6Kernel6setArgEjRKT_">setArg</a>(<var>0</var>, <a class="local col2 ref" href="#12aBuffer" title='aBuffer' data-ref="12aBuffer">aBuffer</a>);</td></tr>
+<tr><th id="115">115</th><td>        <a class="local col4 ref" href="#14kernel" title='kernel' data-ref="14kernel">kernel</a>.<a class="ref" href="../../include/CL/cl2.hpp.html#_ZN2cl6Kernel6setArgEjRKT_" title='cl::Kernel::setArg' data-ref="_ZN2cl6Kernel6setArgEjRKT_">setArg</a>(<var>1</var>, <a class="local col3 ref" href="#13cBuffer" title='cBuffer' data-ref="13cBuffer">cBuffer</a>);</td></tr>
+<tr><th id="116">116</th><td>        <a class="local col4 ref" href="#14kernel" title='kernel' data-ref="14kernel">kernel</a>.<a class="ref" href="../../include/CL/cl2.hpp.html#_ZN2cl6Kernel6setArgEjRKT_" title='cl::Kernel::setArg' data-ref="_ZN2cl6Kernel6setArgEjRKT_">setArg</a>(<var>2</var>, <a class="local col3 ref" href="#3a" title='a' data-ref="3a">a</a>);</td></tr>
+<tr><th id="117">117</th><td></td></tr>
+<tr><th id="118">118</th><td>        <i>// Create command queue</i></td></tr>
+<tr><th id="119">119</th><td>        <span class="namespace">cl::</span><a class="type" href="../../include/CL/cl2.hpp.html#cl::CommandQueue" title='cl::CommandQueue' data-ref="cl::CommandQueue">CommandQueue</a> <dfn class="local col5 decl" id="15queue" title='queue' data-type='cl::CommandQueue' data-ref="15queue">queue</dfn><a class="ref" href="../../include/CL/cl2.hpp.html#_ZN2cl12CommandQueueC1ERKNS_7ContextERKNS_6DeviceEmPi" title='cl::CommandQueue::CommandQueue' data-ref="_ZN2cl12CommandQueueC1ERKNS_7ContextERKNS_6DeviceEmPi">(</a><a class="local col8 ref" href="#8context" title='context' data-ref="8context">context</a>, <a class="local col9 ref" href="#9devices" title='devices' data-ref="9devices">devices</a><a class="ref" href="../../../include/c++/7/bits/stl_vector.h.html#_ZNSt6vectorixEm" title='std::vector::operator[]' data-ref="_ZNSt6vectorixEm">[<var>0</var>]</a>, <var>0</var>);</td></tr>
+<tr><th id="120">120</th><td> </td></tr>
+<tr><th id="121">121</th><td>        <i>// Do the work</i></td></tr>
+<tr><th id="122">122</th><td>        <a class="local col5 ref" href="#15queue" title='queue' data-ref="15queue">queue</a>.<a class="ref" href="../../include/CL/cl2.hpp.html#_ZNK2cl12CommandQueue20enqueueNDRangeKernelERKNS_6KernelERKNS_7NDRangeES6_S6_PKSt6vectorINS_5EventESaIS8_EEPS8_" title='cl::CommandQueue::enqueueNDRangeKernel' data-ref="_ZNK2cl12CommandQueue20enqueueNDRangeKernelERKNS_6KernelERKNS_7NDRangeES6_S6_PKSt6vectorINS_5EventESaIS8_EEPS8_">enqueueNDRangeKernel</a>(</td></tr>
+<tr><th id="123">123</th><td>            <a class="local col4 ref" href="#14kernel" title='kernel' data-ref="14kernel">kernel</a>, </td></tr>
+<tr><th id="124">124</th><td>            <span class="namespace">cl::</span><a class="ref" href="../../include/CL/cl2.hpp.html#cl::NullRange" title='cl::NullRange' data-ref="cl::NullRange">NullRange</a>, </td></tr>
+<tr><th id="125">125</th><td>            <span class="namespace">cl::</span><a class="type" href="../../include/CL/cl2.hpp.html#cl::NDRange" title='cl::NDRange' data-ref="cl::NDRange">NDRange</a><a class="ref" href="../../include/CL/cl2.hpp.html#_ZN2cl7NDRangeC1Em" title='cl::NDRange::NDRange' data-ref="_ZN2cl7NDRangeC1Em">(</a><a class="macro" href="#35" title="2" data-ref="_M/WORK_ITEMS">WORK_ITEMS</a>),</td></tr>
+<tr><th id="126">126</th><td>            <span class="namespace">cl::</span><a class="ref" href="../../include/CL/cl2.hpp.html#cl::NullRange" title='cl::NullRange' data-ref="cl::NullRange">NullRange</a>);</td></tr>
+<tr><th id="127">127</th><td> </td></tr>
+<tr><th id="128">128</th><td></td></tr>
+<tr><th id="129">129</th><td>        <i>// Map cBuffer to host pointer. This enforces a sync with </i></td></tr>
+<tr><th id="130">130</th><td><i>        // the host backing space, remember we choose GPU device.</i></td></tr>
+<tr><th id="131">131</th><td>        <a class="local col5 ref" href="#15queue" title='queue' data-ref="15queue">queue</a>.<a class="ref" href="../../include/CL/cl2.hpp.html#_ZNK2cl12CommandQueue16enqueueMapBufferERKNS_6BufferEjmmmPKSt6vectorINS_5EventESaIS5_EEPS5_Pi" title='cl::CommandQueue::enqueueMapBuffer' data-ref="_ZNK2cl12CommandQueue16enqueueMapBufferERKNS_6BufferEjmmmPKSt6vectorINS_5EventESaIS5_EEPS5_Pi">enqueueMapBuffer</a>(</td></tr>
+<tr><th id="132">132</th><td>            <a class="local col3 ref" href="#13cBuffer" title='cBuffer' data-ref="13cBuffer">cBuffer</a>,</td></tr>
+<tr><th id="133">133</th><td>            <a class="macro" href="../../include/CL/cl.h.html#254" title="1" data-ref="_M/CL_TRUE">CL_TRUE</a>, <i>// block </i></td></tr>
+<tr><th id="134">134</th><td>            <a class="macro" href="../../include/CL/cl.h.html#642" title="(1 &lt;&lt; 0)" data-ref="_M/CL_MAP_READ">CL_MAP_READ</a>,</td></tr>
+<tr><th id="135">135</th><td>            <var>0</var>,</td></tr>
+<tr><th id="136">136</th><td>            <a class="macro" href="#35" title="2" data-ref="_M/WORK_ITEMS">WORK_ITEMS</a> * <b>sizeof</b>(<em>int</em>));</td></tr>
+<tr><th id="137">137</th><td></td></tr>
+<tr><th id="138">138</th><td>        <i>// If the kernel compiler succeeds, we are happy for now.</i></td></tr>
+<tr><th id="139">139</th><td>        <b>return</b> <a class="macro" href="../../../include/stdlib.h.html#134" title="0" data-ref="_M/EXIT_SUCCESS">EXIT_SUCCESS</a>;</td></tr>
+<tr><th id="140">140</th><td>    } </td></tr>
+<tr><th id="141">141</th><td>    <b>catch</b> (<span class="namespace">cl::</span><a class="type" href="../../include/CL/cl2.hpp.html#cl::Error" title='cl::Error' data-ref="cl::Error">Error</a> &amp;<dfn class="local col6 decl" id="16err" title='err' data-type='cl::Error &amp;' data-ref="16err">err</dfn>) {</td></tr>
+<tr><th id="142">142</th><td>         <span class="namespace">std::</span><a class="ref" href="../../../include/c++/7/iostream.html#std::cerr" title='std::cerr' data-ref="std::cerr">cerr</a></td></tr>
+<tr><th id="143">143</th><td>             <a class="ref" href="../../../include/c++/7/ostream.html#_ZStlsRSt13basic_ostreamIcT_EPKc" title='std::operator&lt;&lt;' data-ref="_ZStlsRSt13basic_ostreamIcT_EPKc">&lt;&lt;</a> <q>"ERROR: "</q></td></tr>
+<tr><th id="144">144</th><td>             <a class="ref" href="../../../include/c++/7/ostream.html#_ZStlsRSt13basic_ostreamIcT_EPKc" title='std::operator&lt;&lt;' data-ref="_ZStlsRSt13basic_ostreamIcT_EPKc">&lt;&lt;</a> <a class="local col6 ref" href="#16err" title='err' data-ref="16err">err</a>.<a class="virtual ref" href="../../include/CL/cl2.hpp.html#_ZNK2cl5Error4whatEv" title='cl::Error::what' data-ref="_ZNK2cl5Error4whatEv">what</a>()</td></tr>
+<tr><th id="145">145</th><td>             <a class="ref" href="../../../include/c++/7/ostream.html#_ZStlsRSt13basic_ostreamIcT_EPKc" title='std::operator&lt;&lt;' data-ref="_ZStlsRSt13basic_ostreamIcT_EPKc">&lt;&lt;</a> <q>"("</q></td></tr>
+<tr><th id="146">146</th><td>             <a class="ref" href="../../../include/c++/7/ostream.html#_ZNSt13basic_ostreamlsEi" title='std::basic_ostream::operator&lt;&lt;' data-ref="_ZNSt13basic_ostreamlsEi">&lt;&lt;</a> <a class="local col6 ref" href="#16err" title='err' data-ref="16err">err</a>.<a class="ref" href="../../include/CL/cl2.hpp.html#_ZNK2cl5Error3errEv" title='cl::Error::err' data-ref="_ZNK2cl5Error3errEv">err</a>()</td></tr>
+<tr><th id="147">147</th><td>             <a class="ref" href="../../../include/c++/7/ostream.html#_ZStlsRSt13basic_ostreamIcT_EPKc" title='std::operator&lt;&lt;' data-ref="_ZStlsRSt13basic_ostreamIcT_EPKc">&lt;&lt;</a> <q>")"</q></td></tr>
+<tr><th id="148">148</th><td>             <a class="ref" href="../../../include/c++/7/ostream.html#_ZNSt13basic_ostreamlsEPFRSt13basic_ostreamIT_T0_ES5_E" title='std::basic_ostream::operator&lt;&lt;' data-ref="_ZNSt13basic_ostreamlsEPFRSt13basic_ostreamIT_T0_ES5_E">&lt;&lt;</a> <span class="namespace">std::</span><a class="ref" href="../../../include/c++/7/ostream.html#_ZSt4endlRSt13basic_ostreamIT_T0_E" title='std::endl' data-ref="_ZSt4endlRSt13basic_ostreamIT_T0_E">endl</a>;</td></tr>
+<tr><th id="149">149</th><td></td></tr>
+<tr><th id="150">150</th><td>         <b>return</b> <a class="macro" href="../../../include/stdlib.h.html#133" title="1" data-ref="_M/EXIT_FAILURE">EXIT_FAILURE</a>;</td></tr>
+<tr><th id="151">151</th><td>    }</td></tr>
+<tr><th id="152">152</th><td></td></tr>
+<tr><th id="153">153</th><td>    <b>return</b> <a class="macro" href="../../../include/stdlib.h.html#134" title="0" data-ref="_M/EXIT_SUCCESS">EXIT_SUCCESS</a>;</td></tr>
+<tr><th id="154">154</th><td>}</td></tr>
+<tr><th id="155">155</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

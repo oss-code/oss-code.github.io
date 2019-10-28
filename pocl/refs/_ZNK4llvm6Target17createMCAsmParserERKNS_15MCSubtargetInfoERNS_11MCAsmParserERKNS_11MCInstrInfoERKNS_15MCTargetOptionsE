@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='396' ll='403' type='llvm::MCTargetAsmParser * llvm::Target::createMCAsmParser(const llvm::MCSubtargetInfo &amp; STI, llvm::MCAsmParser &amp; Parser, const llvm::MCInstrInfo &amp; MII, const llvm::MCTargetOptions &amp; Options) const'/>
+<doc f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='392'>/// createMCAsmParser - Create a target specific assembly parser.
+  ///
+  /// \param Parser The target independent parser implementation to use for
+  /// parsing and lexing.</doc>

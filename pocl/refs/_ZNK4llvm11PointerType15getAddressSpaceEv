@@ -1,0 +1,15 @@
+<def f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='495' type='unsigned int llvm::PointerType::getAddressSpace() const'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='504' u='c' c='_ZNK4llvm4Type22getPointerAddressSpaceEv'/>
+<use f='include/llvm-6.0/llvm/IR/DataLayout.h' l='332' u='c' c='_ZNK4llvm10DataLayout24isNonIntegralPointerTypeEPNS_11PointerTypeE'/>
+<doc f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='494'>/// Return the address space of the Pointer type.</doc>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='545' u='c' c='_ZNK4llvm16PtrToIntOperator22getPointerAddressSpaceEv'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1921' u='c' c='_ZN4llvm9IRBuilder25CreateAlignmentAssumptionERKNS_10DataLayoutEPNS_5ValueEjS5_'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1943' u='c' c='_ZN4llvm9IRBuilder25CreateAlignmentAssumptionERKNS_10DataLayoutEPNS_5ValueES5_S5_'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='152' u='c' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='153' u='c' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='989' u='c' c='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1004' u='c' c='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1401' u='c' c='_ZN4pocl9Workgroup27createFastWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='306' u='c' c='_ZL11shared_copyPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERNS_8ValueMapIPKNS_5ValueENS_14WeakTrackingVHENS_14ValueMapCo8254284'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='407' u='c' c='_Z4linkPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='464' u='c' c='_Z21copyKernelFromBitcodePKcPN4llvm6ModuleEPKS2_'/>

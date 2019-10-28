@@ -1,0 +1,14 @@
+<dec f='pocl/include/poclu.h' l='108' type='char * poclu_read_file(const char * filemane)'/>
+<use f='pocl/bin/poclcc.c' l='96' u='c' c='process_kernel_file'/>
+<doc f='pocl/include/poclu.h' l='106'>/* Read content of file to a malloc&apos;d buffer, which is returned.
+ * Return NULL on errors */</doc>
+<def f='pocl/lib/poclu/misc.c' l='167' ll='175' type='char * poclu_read_file(const char * filename)'/>
+<use f='pocl/lib/poclu/misc.c' l='381' u='c' c='poclu_load_program_multidev'/>
+<use f='pocl/tests/kernel/image_query_funcs.c' l='61' u='c' c='main'/>
+<use f='pocl/tests/kernel/kernel.c' l='45' u='c' c='call_test'/>
+<use f='pocl/tests/kernel/sampler_address_clamp.c' l='62' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='409' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateKernel.c' l='24' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateKernelsInProgram.c' l='37' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_kernel_cache_includes.c' l='32' u='c' c='main'/>
+<use f='pocl/tests/workgroup/run_kernel.c' l='70' u='c' c='main'/>

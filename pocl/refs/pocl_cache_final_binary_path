@@ -1,0 +1,10 @@
+<dec f='pocl/include/pocl_cache.h' l='123' type='void pocl_cache_final_binary_path(char * final_binary_path, cl_program program, unsigned int device_i, cl_kernel kernel, _cl_command_node * command, int specialize)'/>
+<use f='pocl/lib/CL/devices/common.c' l='114' u='c' c='llvm_codegen'/>
+<use f='pocl/lib/CL/devices/common.c' l='944' u='c' c='pocl_check_kernel_disk_cache'/>
+<use f='pocl/lib/CL/devices/common.c' l='978' u='c' c='pocl_check_kernel_disk_cache'/>
+<use f='pocl/lib/CL/devices/common.c' l='983' u='c' c='pocl_check_kernel_disk_cache'/>
+<def f='pocl/lib/CL/pocl_cache.c' l='183' ll='210' type='void pocl_cache_final_binary_path(char * final_binary_path, cl_program program, unsigned int device_i, cl_kernel kernel, _cl_command_node * command, int specialized)'/>
+<doc f='pocl/lib/CL/pocl_cache.c' l='180'>/* Return the final binary path for the given work-group function.
+   If specialized is 1, find the WG function specialized for the
+   given command&apos;s properties, if 0, return the path to a generic version. */</doc>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='463' u='c' c='pocl_llvm_generate_workgroup_function'/>

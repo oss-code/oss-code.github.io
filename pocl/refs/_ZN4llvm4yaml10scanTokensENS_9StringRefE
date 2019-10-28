@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Support/YAMLParser.h' l='74' type='bool llvm::yaml::scanTokens(llvm::StringRef Input)'/>
+<doc f='include/llvm-6.0/llvm/Support/YAMLParser.h' l='71'>/// \brief Scans all tokens in input without outputting anything. This is used
+///        for benchmarking the tokenizer.
+/// \returns true if there was an error, false otherwise.</doc>

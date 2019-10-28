@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='63' ll='70'/>
+<ovr f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='74' c='llvm::IRBuilderCallbackInserter'/>
+<size>1</size>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='58'>/// \brief This provides the default implementation of the IRBuilder
+/// &apos;InsertHelper&apos; method that is called whenever an instruction is created by
+/// IRBuilder and needs to be inserted.
+///
+/// By default, this inserts the instruction at the insertion point.</doc>
+<fun r='_ZNK4llvm24IRBuilderDefaultInserter12InsertHelperEPNS_11InstructionERKNS_5TwineEPNS_10BasicBlockENS_14ilist_iteratorINS_12ilist_detail12node_optionsIS5024512'/>

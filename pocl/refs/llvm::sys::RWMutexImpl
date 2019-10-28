@@ -1,0 +1,12 @@
+<def f='include/llvm-6.0/llvm/Support/RWMutex.h' l='25' ll='82'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/Support/RWMutex.h' l='24'>/// @brief Platform agnostic RWMutex class.</doc>
+<fun r='_ZN4llvm3sys11RWMutexImplC1Ev'/>
+<fun r='_ZN4llvm3sys11RWMutexImplC1ERKS1_'/>
+<fun r='_ZN4llvm3sys11RWMutexImplaSERKS1_'/>
+<fun r='_ZN4llvm3sys11RWMutexImplD1Ev'/>
+<fun r='_ZN4llvm3sys11RWMutexImpl14reader_acquireEv'/>
+<fun r='_ZN4llvm3sys11RWMutexImpl14reader_releaseEv'/>
+<fun r='_ZN4llvm3sys11RWMutexImpl14writer_acquireEv'/>
+<fun r='_ZN4llvm3sys11RWMutexImpl14writer_releaseEv'/>
+<mbr r='llvm::sys::RWMutexImpl::data_' o='0' t='void *'/>

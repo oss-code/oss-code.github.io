@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1451' type='SmallDenseMap&lt;PointerIntPair&lt;llvm::Value *, 1&gt;, llvm::ScalarEvolution::ExitLimit&gt;'/>
+<offset>0</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1446'>// It may look like we need key on the whole (L, TBB, FBB, ControlsExit,
+    // AllowPredicates) tuple, but recursive calls to
+    // computeExitLimitFromCondCached from computeExitLimitFromCondImpl only
+    // vary the in \c ExitCond and \c ControlsExit parameters.  We remember the
+    // initial values of the other values to assert our assumption.</doc>

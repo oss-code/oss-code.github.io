@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/Dominators.h' l='167' type='bool llvm::DominatorTree::dominates(const llvm::Instruction * Def, const llvm::Use &amp; U) const'/>
+<doc f='include/llvm-6.0/llvm/IR/Dominators.h' l='163'>/// \brief Return true if Def dominates a use in User.
+  ///
+  /// This performs the special checks necessary if Def and User are in the same
+  /// basic block. Note that Def doesn&apos;t dominate a use in Def itself!</doc>

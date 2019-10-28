@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/Argument.h' l='48' ll='51' type='unsigned int llvm::Argument::getArgNo() const'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='859' u='c' c='pocl_cuda_get_ptr_arg_alignment'/>
+<doc f='include/llvm-6.0/llvm/IR/Argument.h' l='45'>/// Return the index of this formal argument in its containing function.
+  ///
+  /// For example in &quot;void foo(int a, float b)&quot; a is 0 and b is 1.</doc>

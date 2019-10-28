@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Support/AtomicOrdering.h' l='60' type='2'/>
+<use f='include/llvm-6.0/llvm/Support/AtomicOrdering.h' l='125' u='r' c='_ZN4llvm23isStrongerThanMonotonicENS_14AtomicOrderingE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='631' c='_ZN4llvm17AtomicCmpXchgInst27getStrongestFailureOrderingENS_14AtomicOrderingE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='632' u='r' c='_ZN4llvm17AtomicCmpXchgInst27getStrongestFailureOrderingENS_14AtomicOrderingE'/>
+<doc f='include/llvm-6.0/llvm/Support/AtomicOrdering.h' l='60'>// Equivalent to C++&apos;s relaxed.</doc>

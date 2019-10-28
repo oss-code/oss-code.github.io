@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Scalar/GVN.h' l='292' type='llvm::FunctionPass * llvm::createGVNPass(bool NoLoads = false)'/>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='174' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Scalar/GVN.h' l='290'>/// Create a legacy GVN pass. This also allows parameterizing whether or not
+/// loads are eliminated by the pass.</doc>

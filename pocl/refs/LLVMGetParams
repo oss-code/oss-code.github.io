@@ -1,0 +1,12 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2045' type='void LLVMGetParams(LLVMValueRef Fn, LLVMValueRef * Params)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2034'>/**
+ * Obtain the parameters in a function.
+ *
+ * The takes a pointer to a pre-allocated array of LLVMValueRef that is
+ * at least LLVMCountParams() long. This array will be filled with
+ * LLVMValueRef instances which correspond to the parameters the
+ * function receives. Each LLVMValueRef corresponds to a llvm::Argument
+ * instance.
+ *
+ * @see llvm::Function::arg_begin()
+ */</doc>

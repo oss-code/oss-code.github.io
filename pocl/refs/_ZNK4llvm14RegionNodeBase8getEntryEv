@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='175' type='BlockT * llvm::RegionNodeBase::getEntry() const'/>
+<use f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='1002' u='c' c='_ZNK4llvm14RegionNodeBase9getNodeAsEv'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='169'>/// @brief Get the entry BasicBlock of this RegionNode.
+  ///
+  /// If this RegionNode represents a BasicBlock this is just the BasicBlock
+  /// itself, otherwise we return the entry BasicBlock of the Subregion
+  ///
+  /// @return The entry BasicBlock of this RegionNode.</doc>

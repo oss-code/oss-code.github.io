@@ -1,0 +1,5 @@
+<use f='pocl/include/CL/cl2.hpp' l='2747' u='c' c='_ZN2cl7Context19makeDefaultProvidedERKS0_'/>
+<def f='pocl/include/CL/cl2.hpp' l='2919' ll='2923' type='cl::Context &amp; cl::Context::operator=(const cl::Context &amp; ctx)'/>
+<doc f='pocl/include/CL/cl2.hpp' l='2916'>/*! \brief Copy assignment to forward copy to the superclass correctly.
+     * Required for MSVC.
+     */</doc>

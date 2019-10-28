@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/IR/Instructions.h' l='2678' ll='2680' type='llvm::Value * llvm::PHINode::getIncomingValue(unsigned int i) const'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='2762' u='c' c='_ZNK4llvm7PHINode24getIncomingValueForBlockEPKNS_10BasicBlockE'/>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='2676'>/// Return incoming value number x
+  ///</doc>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='304' u='c' c='_ZN17BreakConstantGEPs13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/PHIsToAllocas.cc' l='132' u='c' c='_ZN4pocl13PHIsToAllocas17BreakPHIToAllocasEPN4llvm7PHINodeE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='1087' u='c' c='_ZN4pocl13WorkitemLoops21AddContextSaveRestoreEPN4llvm11InstructionE'/>

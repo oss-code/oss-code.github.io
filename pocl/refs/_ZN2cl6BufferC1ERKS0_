@@ -1,0 +1,16 @@
+<def f='pocl/include/CL/cl2.hpp' l='3925' type='void cl::Buffer::Buffer(const cl::Buffer &amp; buf)'/>
+<use f='pocl/include/CL/cl2.hpp' l='4150' u='c' c='_ZN2cl8BufferGLC1ERKS0_'/>
+<use f='pocl/include/CL/cl2.hpp' l='4247' u='c' c='_ZN2cl14BufferRenderGLC1ERKS0_'/>
+<use f='pocl/tests/regression/test_alignment_with_dynamic_wg.cpp' l='87' u='c' c='_Z15test_invocationjjjRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES6_S6_RN2cl12CommandQueueERNS7_7ProgramE'/>
+<use f='pocl/tests/regression/test_alignment_with_dynamic_wg.cpp' l='87' u='c' c='_Z15test_invocationjjjRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES6_S6_RN2cl12CommandQueueERNS7_7ProgramE'/>
+<doc f='pocl/include/CL/cl2.hpp' l='3922'>/*! \brief Copy constructor to forward copy to the superclass correctly.
+     * Required for MSVC.
+     */</doc>
+<use f='pocl/tests/regression/test_alignment_with_dynamic_wg2.cpp' l='75' u='c' c='main'/>
+<use f='pocl/tests/regression/test_alignment_with_dynamic_wg2.cpp' l='76' u='c' c='main'/>
+<use f='pocl/tests/regression/test_alignment_with_dynamic_wg3.cpp' l='52' u='c' c='main'/>
+<use f='pocl/tests/regression/test_issue_231.cpp' l='95' u='c' c='main'/>
+<use f='pocl/tests/regression/test_issue_231.cpp' l='95' u='c' c='main'/>
+<use f='pocl/tests/regression/test_issue_231.cpp' l='95' u='c' c='main'/>
+<use f='pocl/tests/regression/test_issue_231.cpp' l='95' u='c' c='main'/>
+<use f='pocl/tests/regression/test_issue_445.cpp' l='43' u='c' c='main'/>

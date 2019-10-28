@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1407' ll='1409' type='llvm::OperandBundleUse llvm::OperandBundleUser::getOperandBundleForOperand(unsigned int OpIdx) const'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1403'>/// \brief Return the operand bundle for the operand at index OpIdx.
+  ///
+  /// It is an error to call this with an OpIdx that does not correspond to an
+  /// bundle operand.</doc>

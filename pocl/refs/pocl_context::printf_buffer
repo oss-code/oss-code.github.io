@@ -1,0 +1,9 @@
+<dec f='pocl/include/pocl_context.h' l='49' type='uchar *'/>
+<offset>576</offset>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='655' u='w' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='656' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='678' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='263' u='w' c='work_group_scheduler'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='266' u='r' c='work_group_scheduler'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='312' u='r' c='work_group_scheduler'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='359' u='w' c='pocl_pthread_prepare_kernel'/>

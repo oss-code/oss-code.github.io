@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/Function.h' l='717' type='bool llvm::Function::hasAddressTaken(const llvm::User **  = nullptr) const'/>
+<doc f='include/llvm-6.0/llvm/IR/Function.h' l='713'>/// hasAddressTaken - returns true if there are any uses of this function
+  /// other than direct calls or invokes to it, or blockaddress expressions.
+  /// Optionally passes back an offending user for diagnostic purposes.
+  ///</doc>

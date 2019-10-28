@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/Attributes.h' l='489' ll='493' type='llvm::AttributeList llvm::AttributeList::addDereferenceableOrNullParamAttr(llvm::LLVMContext &amp; C, unsigned int ArgNo, uint64_t Bytes) const'/>
+<doc f='include/llvm-6.0/llvm/IR/Attributes.h' l='486'>/// \brief Add the dereferenceable_or_null attribute to the attribute set at
+  /// the given arg index. Returns a new list because attribute lists are
+  /// immutable.</doc>

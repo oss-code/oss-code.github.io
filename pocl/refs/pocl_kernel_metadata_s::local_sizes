@@ -1,0 +1,14 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1041' type='size_t *'/>
+<offset>64</offset>
+<use f='pocl/lib/CL/clGetKernelWorkGroupInfo.c' l='94' u='r' c='POclGetKernelWorkGroupInfo'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='102' u='r' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='102' u='w' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='648' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='990' u='r' c='pocl_cuda_submit_kernel'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='217' u='r' c='setup_kernel_arg_array_with_locals'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='385' u='r' c='pocl_binary_serialize_kernel_to_buffer'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='757' u='w' c='pocl_binary_get_kernels_metadata'/>
+<use f='pocl/lib/CL/pocl_build.c' l='426' u='r' c='free_meta'/>
+<use f='pocl/lib/CL/pocl_build.c' l='426' u='w' c='free_meta'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='533' u='w' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='539' u='r' c='pocl_llvm_get_kernels_metadata'/>

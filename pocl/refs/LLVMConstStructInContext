@@ -1,0 +1,6 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='1654' type='LLVMValueRef LLVMConstStructInContext(LLVMContextRef C, LLVMValueRef * ConstantVals, unsigned int Count, LLVMBool Packed)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='1649'>/**
+ * Create an anonymous ConstantStruct with the specified values.
+ *
+ * @see llvm::ConstantStruct::getAnon()
+ */</doc>

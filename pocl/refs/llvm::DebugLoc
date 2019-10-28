@@ -1,0 +1,32 @@
+<def f='include/llvm-6.0/llvm/IR/DebugLoc.h' l='34' ll='122'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/IR/DebugLoc.h' l='27'>/// \brief A debug info location.
+  ///
+  /// This class is a wrapper around a tracking reference to an \a DILocation
+  /// pointer.
+  ///
+  /// To avoid extra includes, \a DebugLoc doubles the \a DILocation API with a
+  /// one based on relatively opaque \a MDNode pointers.</doc>
+<mbr r='llvm::DebugLoc::Loc' o='0' t='TrackingMDNodeRef'/>
+<fun r='_ZN4llvm8DebugLocC1Ev'/>
+<fun r='_ZN4llvm8DebugLocC1EPKNS_10DILocationE'/>
+<fun r='_ZN4llvm8DebugLocC1EPKNS_6MDNodeE'/>
+<fun r='_ZNK4llvm8DebugLoc3getEv'/>
+<fun r='_ZNK4llvm8DebugLoccvPNS_10DILocationEEv'/>
+<fun r='_ZNK4llvm8DebugLocptEv'/>
+<fun r='_ZNK4llvm8DebugLocdeEv'/>
+<fun r='_ZNK4llvm8DebugLoccvbEv'/>
+<fun r='_ZNK4llvm8DebugLoc20hasTrivialDestructorEv'/>
+<fun r='_ZN4llvm8DebugLoc3getEjjPKNS_6MDNodeES3_'/>
+<fun r='_ZN4llvm8DebugLoc15appendInlinedAtES0_PNS_10DILocationERNS_11LLVMContextERNS_8DenseMapIPKNS_6MDNodeEPS6_NS_12DenseMapInfoIS8_EENS_6detail12DenseMapPairIS8_S9_EEEEb'/>
+<fun r='_ZNK4llvm8DebugLoc7getLineEv'/>
+<fun r='_ZNK4llvm8DebugLoc6getColEv'/>
+<fun r='_ZNK4llvm8DebugLoc8getScopeEv'/>
+<fun r='_ZNK4llvm8DebugLoc12getInlinedAtEv'/>
+<fun r='_ZNK4llvm8DebugLoc17getInlinedAtScopeEv'/>
+<fun r='_ZNK4llvm8DebugLoc13getFnDebugLocEv'/>
+<fun r='_ZNK4llvm8DebugLoc11getAsMDNodeEv'/>
+<fun r='_ZNK4llvm8DebugLoceqERKS0_'/>
+<fun r='_ZNK4llvm8DebugLocneERKS0_'/>
+<fun r='_ZNK4llvm8DebugLoc4dumpEv'/>
+<fun r='_ZNK4llvm8DebugLoc5printERNS_11raw_ostreamE'/>

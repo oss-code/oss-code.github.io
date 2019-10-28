@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/devices/pthread/pocl-pthread_utils.h' l='79' type='void setup_kernel_arg_array(kernel_run_command * k)'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='370' u='c' c='pocl_pthread_prepare_kernel'/>
+<def f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='102' ll='167' type='void setup_kernel_arg_array(kernel_run_command * k)'/>
+<doc f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='100'>/* called from kernel setup code.
+ * Sets up the actual arguments, except the local ones. */</doc>

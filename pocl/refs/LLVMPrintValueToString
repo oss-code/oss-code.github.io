@@ -1,0 +1,7 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='1317' type='char * LLVMPrintValueToString(LLVMValueRef Val)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='1311'>/**
+ * Return a string representation of the value. Use
+ * LLVMDisposeMessage to free the string.
+ *
+ * @see llvm::Value::print()
+ */</doc>

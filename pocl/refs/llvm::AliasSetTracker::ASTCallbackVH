@@ -1,0 +1,10 @@
+<inh f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='389' c='llvm::CallbackVH'/>
+<def f='include/llvm-6.0/llvm/Analysis/AliasSetTracker.h' l='325' ll='335'/>
+<size>40</size>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasSetTracker.h' l='323'>/// A CallbackVH to arrange for AliasSetTracker to be notified whenever a
+  /// Value is deleted.</doc>
+<mbr r='llvm::AliasSetTracker::ASTCallbackVH::AST' o='256' t='llvm::AliasSetTracker *'/>
+<fun r='_ZN4llvm15AliasSetTracker13ASTCallbackVH7deletedEv'/>
+<fun r='_ZN4llvm15AliasSetTracker13ASTCallbackVH19allUsesReplacedWithEPNS_5ValueE'/>
+<fun r='_ZN4llvm15AliasSetTracker13ASTCallbackVHC1EPNS_5ValueEPS0_'/>
+<fun r='_ZN4llvm15AliasSetTracker13ASTCallbackVHaSEPNS_5ValueE'/>

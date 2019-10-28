@@ -1,0 +1,25 @@
+<use f='pocl/include/CL/cl2.hpp' l='6908' u='c' c='_ZN2cl12CommandQueue11makeDefaultEv'/>
+<def f='pocl/include/CL/cl2.hpp' l='7203' ll='7248' type='void cl::CommandQueue::CommandQueue(const cl::Context &amp; context, const cl::Device &amp; device, cl_command_queue_properties properties = 0, cl_int * err = __null)'/>
+<doc f='pocl/include/CL/cl2.hpp' l='7199'>/*!
+     * \brief Constructs a CommandQueue for a passed device and context
+     * Will return an CL_INVALID_QUEUE_PROPERTIES error if CL_QUEUE_ON_DEVICE is specified.
+     */</doc>
+<use f='pocl/tests/regression/test_autolocals_in_constexprs.cpp' l='92' u='c' c='main'/>
+<use f='pocl/tests/regression/test_barrier_before_return.cpp' l='111' u='c' c='main'/>
+<use f='pocl/tests/regression/test_barrier_between_for_loops.cpp' l='132' u='c' c='main'/>
+<use f='pocl/tests/regression/test_constant_array.cpp' l='114' u='c' c='main'/>
+<use f='pocl/tests/regression/test_early_return.cpp' l='106' u='c' c='main'/>
+<use f='pocl/tests/regression/test_flatten_barrier_subs.cpp' l='115' u='c' c='_Z17exclusive_scan_clRKSt6vectorIiSaIiEERS1_'/>
+<use f='pocl/tests/regression/test_for_with_var_iteration_count.cpp' l='115' u='c' c='main'/>
+<use f='pocl/tests/regression/test_fors_with_var_iteration_counts.cpp' l='119' u='c' c='main'/>
+<use f='pocl/tests/regression/test_id_dependent_computation.cpp' l='126' u='c' c='main'/>
+<use f='pocl/tests/regression/test_infinite_loop.cpp' l='109' u='c' c='main'/>
+<use f='pocl/tests/regression/test_locals.cpp' l='108' u='c' c='main'/>
+<use f='pocl/tests/regression/test_loop_phi_replication.cpp' l='112' u='c' c='main'/>
+<use f='pocl/tests/regression/test_multi_level_loops_with_barriers.cpp' l='115' u='c' c='main'/>
+<use f='pocl/tests/regression/test_null_arg.cpp' l='104' u='c' c='main'/>
+<use f='pocl/tests/regression/test_setargs.cpp' l='81' u='c' c='main'/>
+<use f='pocl/tests/regression/test_simple_for_with_a_barrier.cpp' l='113' u='c' c='main'/>
+<use f='pocl/tests/regression/test_structs_as_args.cpp' l='164' u='c' c='main'/>
+<use f='pocl/tests/regression/test_undominated_variable.cpp' l='117' u='c' c='main'/>
+<use f='pocl/tests/regression/test_vectors_as_args.cpp' l='130' u='c' c='main'/>

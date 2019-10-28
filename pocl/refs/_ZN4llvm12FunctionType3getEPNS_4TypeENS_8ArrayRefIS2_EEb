@@ -1,0 +1,12 @@
+<dec f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='111' type='static llvm::FunctionType * llvm::FunctionType::get(llvm::Type * Result, ArrayRef&lt;llvm::Type *&gt; Params, bool isVarArg)'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='207' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='359' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='420' u='c' c='_ZL16handleGetWorkDimPN4llvm6ModuleEPKc'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='649' u='c' c='_Z23convertPtrArgsToOffsetsPN4llvm6ModuleEPKcjPNS_14GlobalVariableE'/>
+<doc f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='110'>/// This static method is the primary way of constructing a FunctionType.</doc>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='174' u='c' c='_ZN12_GLOBAL__N_115AutomaticLocals22processAutomaticLocalsEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='646' u='c' c='_ZN4pocl14ParallelRegion12InjectPrintFEPN4llvm11InstructionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIPNS1_5ValueESaISC_EE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='281' u='c' c='_ZN4pocl9Workgroup14addPlaceHolderERN4llvm9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEPNS1_5ValueENSt7__cxx1112basic_stringIcSt1115963950'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='440' u='c' c='_ZL27cloneFunctionWithPrintfArgsPN4llvm5ValueES1_S1_PNS_8FunctionEPNS_6ModuleE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='633' u='c' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='133' u='c' c='_ZL24CloneFuncFixOpenCLImageTPN4llvm6ModuleEPNS_8FunctionE'/>

@@ -1,0 +1,12 @@
+<def f='include/c++/7/system_error' l='148' ll='149' type='void std::error_code::error_code()'/>
+<use f='include/c++/7/system_error' l='347' u='c' c='_ZNSt12system_errorC1ESt10error_code'/>
+<use f='include/llvm-6.0/llvm/Support/ErrorOr.h' l='173' u='c' c='_ZNK4llvm7ErrorOr8getErrorEv'/>
+<use f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='442' u='c' c='_ZN4llvm14raw_fd_ostream11clear_errorEv'/>
+<use f='include/llvm-6.0/llvm/Support/FileSystem.h' l='645' u='c' c='_ZN4llvm3sys2fs9file_sizeERKNS_5TwineERm'/>
+<use f='include/llvm-6.0/llvm/Support/FileSystem.h' l='1044' u='c' c='_ZN4llvm3sys2fs28recursive_directory_iterator3popEv'/>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='100' u='c' c='pocl_rm_rf'/>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='218' u='c' c='pocl_mk_tempname'/>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='247' u='c' c='pocl_read_file'/>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='296' u='c' c='pocl_write_file'/>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='352' u='c' c='pocl_write_tempfile'/>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='396' u='c' c='pocl_write_module'/>

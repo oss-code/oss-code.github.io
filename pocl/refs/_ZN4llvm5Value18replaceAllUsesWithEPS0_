@@ -1,0 +1,19 @@
+<dec f='include/llvm-6.0/llvm/IR/Value.h' l='287' type='void llvm::Value::replaceAllUsesWith(llvm::Value * V)'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='333' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='341' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='400' u='c' c='_ZL22replaceScalarGlobalVarPN4llvm6ModuleEPKcPNS_5ValueE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='664' u='c' c='_Z23convertPtrArgsToOffsetsPN4llvm6ModuleEPKcjPNS_14GlobalVariableE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='822' u='c' c='_ZL17mapLibDeviceCallsPN4llvm6ModuleE'/>
+<doc f='include/llvm-6.0/llvm/IR/Value.h' l='282'>/// \brief Change all uses of this to point to a new Value.
+  ///
+  /// Go through the uses list for this definition and make each use point to
+  /// &quot;V&quot; instead of &quot;this&quot;.  After this completes, &apos;this&apos;s use list is
+  /// guaranteed to be empty.</doc>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='133' u='c' c='_ZL24breakConstantExpressionsPN4llvm5ValueEPNS_8FunctionE'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='199' u='c' c='_ZN4pocl20CanonicalizeBarriers15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/HandleSamplerInitialization.cc' l='99' u='c' c='_ZN4pocl27HandleSamplerInitialization13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='164' u='c' c='_ZN4pocl25OptimizeWorkItemFuncCalls13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/PHIsToAllocas.cc' l='142' u='c' c='_ZN4pocl13PHIsToAllocas17BreakPHIToAllocasEPN4llvm7PHINodeE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='544' u='c' c='_ZL18replacePrintfCallsPN4llvm5ValueES1_S1_bPNS_8FunctionERNS_6ModuleES3_RSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='595' u='c' c='_ZL18replacePrintfCallsPN4llvm5ValueES1_S1_bPNS_8FunctionERNS_6ModuleES3_RSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='793' u='c' c='_ZN4pocl9Workgroup16privatizeGlobalsEPN4llvm8FunctionERNS1_9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEOKSt6vectorINSt7__cxx1112b2085380'/>

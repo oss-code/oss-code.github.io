@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Instruction.h' l='490' type='bool llvm::Instruction::mayWriteToMemory() const'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.h' l='497' u='c' c='_ZNK4llvm11Instruction20mayReadOrWriteMemoryEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.h' l='536' u='c' c='_ZNK4llvm11Instruction18mayHaveSideEffectsEv'/>
+<doc f='include/llvm-6.0/llvm/IR/Instruction.h' l='489'>/// Return true if this instruction may modify memory.</doc>

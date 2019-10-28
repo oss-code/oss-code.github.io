@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/Analysis/BasicAliasAnalysis.h' l='185' type='bool llvm::BasicAAResult::constantOffsetHeuristic(const SmallVectorImpl&lt;llvm::BasicAAResult::VariableGEPIndex&gt; &amp; VarIndices, uint64_t V1Size, uint64_t V2Size, int64_t BaseOffset, llvm::AssumptionCache * AC, llvm::DominatorTree * DT)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/BasicAliasAnalysis.h' l='176'>/// \brief A Heuristic for aliasGEP that searches for a constant offset
+  /// between the variables.
+  ///
+  /// GetLinearExpression has some limitations, as generally zext(%x + 1)
+  /// != zext(%x) + zext(1) if the arithmetic overflows. GetLinearExpression
+  /// will therefore conservatively refuse to decompose these expressions.
+  /// However, we know that, for all %x, zext(%x) != zext(%x + 1), even if
+  /// the addition overflows.</doc>

@@ -1,0 +1,7 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='389' type='LLVMContextRef LLVMContextCreate()'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='383'>/**
+ * Create a new context.
+ *
+ * Every call to this function should be paired with a call to
+ * LLVMContextDispose() or the context will leak memory.
+ */</doc>

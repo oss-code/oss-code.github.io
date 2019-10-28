@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='158' type='llvm::CallGraphNode * llvm::CallGraph::getOrInsertFunction(const llvm::Function * F)'/>
+<use f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='385' u='c' c='_ZN4llvm20CallGraphWrapperPass19getOrInsertFunctionEPKNS_8FunctionE'/>
+<doc f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='156'>/// \brief Similar to operator[], but this will insert a new CallGraphNode for
+  /// \c F if one does not already exist.</doc>

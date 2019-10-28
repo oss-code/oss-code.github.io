@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/Support/SpecialCaseList.h' l='100' type='unsigned int llvm::SpecialCaseList::inSectionBlame(llvm::StringRef Section, llvm::StringRef Prefix, llvm::StringRef Query, llvm::StringRef Category = llvm::StringRef()) const'/>
+<doc f='include/llvm-6.0/llvm/Support/SpecialCaseList.h' l='92'>/// Returns the line number corresponding to the special case list entry if
+  /// the special case list contains a line
+  /// \code
+  ///   @Prefix:&lt;E&gt;=@Category
+  /// \endcode
+  /// where @Query satisfies wildcard expression &lt;E&gt; in a given @Section.
+  /// Returns zero if there is no blacklist entry corresponding to this
+  /// expression.</doc>

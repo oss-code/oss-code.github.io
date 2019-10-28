@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/MemoryDependenceAnalysis.h' l='427' type='void llvm::MemoryDependenceResults::invalidateCachedPredecessors()'/>
+<doc f='include/llvm-6.0/llvm/Analysis/MemoryDependenceAnalysis.h' l='423'>/// Clears the PredIteratorCache info.
+  ///
+  /// This needs to be done when the CFG changes, e.g., due to splitting
+  /// critical edges.</doc>

@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/ADT/Hashing.h' l='307' ll='310' type='uint64_t llvm::hashing::detail::hash_state::finalize(size_t length)'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='435' u='c' c='_ZN4llvm7hashing6detail23hash_combine_range_implET_S2_'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='466' u='c' c='_ZN4llvm7hashing6detail23hash_combine_range_implEPT_S3_'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='584' u='c' c='_ZN4llvm7hashing6detail29hash_combine_recursive_helper7combineEmPcS3_'/>
+<doc f='include/llvm-6.0/llvm/ADT/Hashing.h' l='305'>/// \brief Compute the final 64-bit hash code value based on the current
+  /// state and the length of bytes hashed.</doc>

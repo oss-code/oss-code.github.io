@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/Module.h' l='220' type='llvm::StringRef llvm::Module::getName() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Module.h' l='216'>/// \brief Get a short &quot;name&quot; for the module.
+  ///
+  /// This is useful for debugging or logging. It is essentially a convenience
+  /// wrapper around getModuleIdentifier().</doc>

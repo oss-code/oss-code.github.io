@@ -1,0 +1,10 @@
+<dec f='include/llvm-6.0/llvm/IR/GlobalVariable.h' l='61' type='void llvm::GlobalVariable::GlobalVariable(llvm::Module &amp; M, llvm::Type * Ty, bool isConstant, llvm::GlobalValue::LinkageTypes Linkage, llvm::Constant * Initializer, const llvm::Twine &amp; Name = &quot;&quot;, llvm::GlobalVariable * InsertBefore = nullptr, llvm::GlobalValue::ThreadLocalMode  = NotThreadLocal, unsigned int AddressSpace = 0, bool isExternallyInitialized = false)'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='699' u='c' c='_ZL18fixConstantMemArgsPN4llvm6ModuleEPKc'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='716' u='c' c='_ZL15fixLocalMemArgsPN4llvm6ModuleEPKc'/>
+<doc f='include/llvm-6.0/llvm/IR/GlobalVariable.h' l='59'>/// GlobalVariable ctor - This creates a global and inserts it before the
+  /// specified other global.</doc>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='533' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='543' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='551' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='404' u='c' c='_Z4linkPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='461' u='c' c='_Z21copyKernelFromBitcodePKcPN4llvm6ModuleEPKS2_'/>

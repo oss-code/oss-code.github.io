@@ -1,0 +1,24 @@
+<inh f='include/llvm-6.0/llvm/Pass.h' l='81' c='llvm::Pass'/>
+<def f='include/llvm-6.0/llvm/Pass.h' l='225' ll='249'/>
+<ovr f='include/llvm-6.0/llvm/Pass.h' l='256' c='llvm::ImmutablePass'/>
+<size>32</size>
+<doc f='include/llvm-6.0/llvm/Pass.h' l='220'>//===----------------------------------------------------------------------===//
+/// ModulePass class - This class is used to implement unstructured
+/// interprocedural optimizations and analyses.  ModulePasses may do anything
+/// they want to the program.
+///</doc>
+<fun r='_ZN4llvm10ModulePassC1ERc'/>
+<fun r='_ZN4llvm10ModulePassD1Ev'/>
+<fun r='_ZNK4llvm10ModulePass17createPrinterPassERNS_11raw_ostreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<fun r='_ZN4llvm10ModulePass11runOnModuleERNS_6ModuleE'/>
+<fun r='_ZN4llvm10ModulePass17assignPassManagerERNS_7PMStackENS_15PassManagerTypeE'/>
+<fun r='_ZNK4llvm10ModulePass27getPotentialPassManagerTypeEv'/>
+<fun r='_ZNK4llvm10ModulePass10skipModuleERNS_6ModuleE'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='324' c='llvm::CallGraphWrapperPass'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/GlobalsModRef.h' l='132' c='llvm::GlobalsAAWrapperPass'/>
+<ovr f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='446' c='llvm::FPPassManager'/>
+<ovr f='pocl/lib/llvmopencl/Workgroup.h' l='35' c='pocl::Workgroup'/>
+<ovr f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='53' c='(anonymousnamespace)::AutomaticLocals'/>
+<ovr f='pocl/lib/llvmopencl/Flatten.cc' l='48' c='(anonymousnamespace)::Flatten'/>
+<ovr f='pocl/lib/llvmopencl/FlattenBarrierSubs.cc' l='47' c='(anonymousnamespace)::FlattenBarrierSubs'/>
+<ovr f='pocl/lib/llvmopencl/FlattenGlobals.cc' l='46' c='(anonymousnamespace)::FlattenGlobals'/>

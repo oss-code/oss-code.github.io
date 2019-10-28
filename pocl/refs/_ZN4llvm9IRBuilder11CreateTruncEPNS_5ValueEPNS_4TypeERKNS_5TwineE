@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1384' ll='1386' type='llvm::Value * llvm::IRBuilder::CreateTrunc(llvm::Value * V, llvm::Type * DestTy, const llvm::Twine &amp; Name = &quot;&quot;)'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1404' u='c' c='_ZN4llvm9IRBuilder17CreateZExtOrTruncEPNS_5ValueEPNS_4TypeERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1418' u='c' c='_ZN4llvm9IRBuilder17CreateSExtOrTruncEPNS_5ValueEPNS_4TypeERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1874' u='c' c='_ZN4llvm9IRBuilder20CreateExtractIntegerERKNS_10DataLayoutEPNS_5ValueEPNS_11IntegerTypeEmRKNS_5TwineE'/>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1380'>//===--------------------------------------------------------------------===//
+  // Instruction creation methods: Cast/Conversion Operators
+  //===--------------------------------------------------------------------===//</doc>

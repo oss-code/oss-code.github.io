@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/Constant.h' l='93' type='bool llvm::Constant::needsRelocation() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Constant.h' l='88'>/// This method classifies the entry according to whether or not it may
+  /// generate a relocation entry.  This must be conservative, so if it might
+  /// codegen to a relocatable entry, it should say so.
+  ///
+  /// FIXME: This really should not be in IR.</doc>

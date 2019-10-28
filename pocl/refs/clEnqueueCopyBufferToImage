@@ -1,0 +1,4 @@
+<dec f='pocl/include/CL/cl.h' l='1541' type='cl_int clEnqueueCopyBufferToImage(cl_command_queue command_queue, cl_mem src_buffer, cl_mem dst_image, size_t src_offset, const size_t * dst_origin, const size_t * region, cl_uint num_events_in_wait_list, const cl_event * event_wait_list, cl_event * event)'/>
+<use f='pocl/lib/CL/pocl_intfn.h' l='56' c='POclEnqueueCopyBufferToImage'/>
+<use f='pocl/include/CL/cl2.hpp' l='7867' u='c' c='_ZNK2cl12CommandQueue24enqueueCopyBufferToImageERKNS_6BufferERKNS_5ImageEmRKSt5arrayImLm3EESA_PKSt6vectorINS_5EventESaISC_EEPSC_'/>
+<use f='pocl/tests/runtime/test_buffer-image-copy.c' l='135' u='c' c='main'/>

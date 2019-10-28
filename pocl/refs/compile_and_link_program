@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/pocl_shared.h' l='65' type='cl_int compile_and_link_program(int compile_program, int link_program, cl_program program, cl_uint num_devices, const cl_device_id * device_list, const char * options, cl_uint num_input_headers, const cl_program * input_headers, const char ** header_include_names, cl_uint num_input_programs, const cl_program * input_programs, void (*)(cl_program, void *) pfn_notify, void * user_data)'/>
+<use f='pocl/lib/CL/clBuildProgram.c' l='37' u='c' c='POclBuildProgram'/>
+<use f='pocl/lib/CL/clCompileProgram.c' l='40' u='c' c='POclCompileProgram'/>
+<use f='pocl/lib/CL/clLinkProgram.c' l='92' u='c' c='POclLinkProgram'/>
+<def f='pocl/lib/CL/pocl_build.c' l='472' ll='915' type='cl_int compile_and_link_program(int compile_program, int link_program, cl_program program, cl_uint num_devices, const cl_device_id * device_list, const char * options, cl_uint num_input_headers, const cl_program * input_headers, const char ** header_include_names, cl_uint num_input_programs, const cl_program * input_programs, void (*)(cl_program, void *) pfn_notify, void * user_data)'/>

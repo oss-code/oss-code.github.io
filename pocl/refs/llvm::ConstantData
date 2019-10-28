@@ -1,0 +1,20 @@
+<inh f='include/llvm-6.0/llvm/IR/Constant.h' l='42' c='llvm::Constant'/>
+<def f='include/llvm-6.0/llvm/IR/Constants.h' l='58' ll='78'/>
+<ovr f='include/llvm-6.0/llvm/IR/Constants.h' l='84' c='llvm::ConstantInt'/>
+<ovr f='include/llvm-6.0/llvm/IR/Constants.h' l='264' c='llvm::ConstantFP'/>
+<ovr f='include/llvm-6.0/llvm/IR/Constants.h' l='332' c='llvm::ConstantAggregateZero'/>
+<ovr f='include/llvm-6.0/llvm/IR/Constants.h' l='530' c='llvm::ConstantPointerNull'/>
+<ovr f='include/llvm-6.0/llvm/IR/Constants.h' l='565' c='llvm::ConstantDataSequential'/>
+<ovr f='include/llvm-6.0/llvm/IR/Constants.h' l='791' c='llvm::ConstantTokenNone'/>
+<ovr f='include/llvm-6.0/llvm/IR/Constants.h' l='1247' c='llvm::UndefValue'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='53'>/// Base class for constants with no operands.
+///
+/// These constants have no operands; they represent their data directly.
+/// Since they can be in use by unrelated modules (and are never based on
+/// GlobalValues), it never makes sense to RAUW them.</doc>
+<fun r='_ZN4llvm12ConstantData23handleOperandChangeImplEPNS_5ValueES2_'/>
+<fun r='_ZN4llvm12ConstantDataC1EPNS_4TypeENS_5Value7ValueTyE'/>
+<fun r='_ZN4llvm12ConstantDatanwEm'/>
+<fun r='_ZN4llvm12ConstantDataC1ERKS0_'/>
+<fun r='_ZN4llvm12ConstantData7classofEPKNS_5ValueE'/>

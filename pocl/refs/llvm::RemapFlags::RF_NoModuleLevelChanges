@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/ValueMapper.h' l='73' type='1'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/ValueMapper.h' l='70'>/// If this flag is set, the remapper knows that only local values within a
+  /// function (such as an instruction or argument) are mapped, not global
+  /// values like functions and global metadata.</doc>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='414' u='r' c='_ZN4pocl22BarrierTailReplication16UpdateReferencesERKSt6vectorIPN4llvm10BasicBlockESaIS4_EERNS2_8ValueMapIPKNS2_5ValueENS2_14WeakTrackingVHENS2_14Valu1035321'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='169' u='r' c='_ZN4pocl14ParallelRegion5remapERN4llvm8ValueMapIPKNS1_5ValueENS1_14WeakTrackingVHENS1_14ValueMapConfigIS5_NS1_3sys10SmartMutexILb0EEEEEEE'/>

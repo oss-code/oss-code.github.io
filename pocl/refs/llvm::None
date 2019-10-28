@@ -1,0 +1,78 @@
+<def f='include/llvm-6.0/llvm/ADT/None.h' l='24' type='const llvm::NoneType'/>
+<use f='include/llvm-6.0/llvm/ADT/Optional.h' l='217' c='_ZN4llvmeqENS_8NoneTypeERKNS_8OptionalIT_EE'/>
+<use f='include/llvm-6.0/llvm/ADT/Optional.h' l='222' c='_ZN4llvmneERKNS_8OptionalIT_EENS_8NoneTypeE'/>
+<use f='include/llvm-6.0/llvm/ADT/Optional.h' l='227' c='_ZN4llvmneENS_8NoneTypeERKNS_8OptionalIT_EE'/>
+<use f='include/llvm-6.0/llvm/ADT/Optional.h' l='239' c='_ZN4llvmleERKNS_8OptionalIT_EENS_8NoneTypeE'/>
+<use f='include/llvm-6.0/llvm/ADT/Optional.h' l='243' c='_ZN4llvmleENS_8NoneTypeERKNS_8OptionalIT_EE'/>
+<use f='include/llvm-6.0/llvm/ADT/Optional.h' l='247' c='_ZN4llvmgtERKNS_8OptionalIT_EENS_8NoneTypeE'/>
+<use f='include/llvm-6.0/llvm/ADT/Optional.h' l='251' c='_ZN4llvmgtENS_8NoneTypeERKNS_8OptionalIT_EE'/>
+<use f='include/llvm-6.0/llvm/ADT/Optional.h' l='255' c='_ZN4llvmgeERKNS_8OptionalIT_EENS_8NoneTypeE'/>
+<use f='include/llvm-6.0/llvm/ADT/Optional.h' l='259' c='_ZN4llvmgeENS_8NoneTypeERKNS_8OptionalIT_EE'/>
+<use f='include/llvm-6.0/llvm/IR/Metadata.h' l='873' u='r' c='_ZN4llvm6MDNodeC1ERNS_11LLVMContextEjNS_8Metadata11StorageTypeENS_8ArrayRefIPS3_EES7_'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.h' l='251' u='r' c='_ZN4llvm11Instruction27dropUnknownNonDebugMetadataEv'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='1118' u='r' c='_ZN4llvm12ConstantExpr16getGetElementPtrEPNS_4TypeEPNS_8ConstantENS_8ArrayRefIS4_EEbNS_8OptionalIjEES2_'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='1126' u='r' c='_ZN4llvm12ConstantExpr16getGetElementPtrEPNS_4TypeEPNS_8ConstantES4_bNS_8OptionalIjEES2_'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='1137' u='r' c='_ZN4llvm12ConstantExpr16getGetElementPtrEPNS_4TypeEPNS_8ConstantENS_8ArrayRefIPNS_5ValueEEEbNS_8OptionalIjEES2_'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1372' u='r' c='_ZNK4llvm17OperandBundleUser16getOperandBundleENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1388' u='r' c='_ZNK4llvm17OperandBundleUser16getOperandBundleEj'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1379' u='r' c='_ZN4llvm8CallInstC1EPNS_5ValueENS_8ArrayRefIS2_EERKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1412' u='r' c='_ZN4llvm8CallInst6CreateEPNS_5ValueENS_8ArrayRefIS2_EENS3_INS_17OperandBundleDefTIS2_EEEERKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1425' u='r' c='_ZN4llvm8CallInst6CreateEPNS_5ValueENS_8ArrayRefIS2_EERKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1432' u='r' c='_ZN4llvm8CallInst6CreateEPNS_12FunctionTypeEPNS_5ValueENS_8ArrayRefIS4_EERKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1436' u='r' c='_ZN4llvm8CallInst6CreateEPNS_12FunctionTypeEPNS_5ValueENS_8ArrayRefIS4_EENS5_INS_17OperandBundleDefTIS4_EEEERKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1461' u='r' c='_ZN4llvm8CallInst6CreateEPNS_5ValueENS_8ArrayRefIS2_EERKNS_5TwineEPNS_10BasicBlockE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1502' u='r' c='_ZN4llvm8CallInst12CreateMallocEPNS_11InstructionEPNS_4TypeES4_PNS_5ValueES6_NS_8ArrayRefINS_17OperandBundleDefTIS6_EEEEPNS_8FunctionERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1508' u='r' c='_ZN4llvm8CallInst12CreateMallocEPNS_10BasicBlockEPNS_4TypeES4_PNS_5ValueES6_NS_8ArrayRefINS_17OperandBundleDefTIS6_EEEEPNS_8FunctionERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='3610' u='r' c='_ZN4llvm10InvokeInst6CreateEPNS_5ValueEPNS_10BasicBlockES4_NS_8ArrayRefIS2_EERKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='3616' u='r' c='_ZN4llvm10InvokeInst6CreateEPNS_5ValueEPNS_10BasicBlockES4_NS_8ArrayRefIS2_EENS5_INS_17OperandBundleDefTIS2_EEEERKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='3630' u='r' c='_ZN4llvm10InvokeInst6CreateEPNS_12FunctionTypeEPNS_5ValueEPNS_10BasicBlockES6_NS_8ArrayRefIS4_EERKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='3636' u='r' c='_ZN4llvm10InvokeInst6CreateEPNS_12FunctionTypeEPNS_5ValueEPNS_10BasicBlockES6_NS_8ArrayRefIS4_EENS7_INS_17OperandBundleDefTIS4_EEEERKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='3652' u='r' c='_ZN4llvm10InvokeInst6CreateEPNS_5ValueEPNS_10BasicBlockES4_NS_8ArrayRefIS2_EERKNS_5TwineES4_'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='4338' u='r' c='_ZN4llvm14CleanupPadInst6CreateEPNS_5ValueENS_8ArrayRefIS2_EERKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/ADT/TinyPtrVector.h' l='130' u='r' c='_ZNK4llvm13TinyPtrVectorcvNS_8ArrayRefIT_EEEv'/>
+<use f='include/llvm-6.0/llvm/ADT/TinyPtrVector.h' l='139' u='r' c='_ZN4llvm13TinyPtrVectorcvNS_15MutableArrayRefIT_EEEv'/>
+<use f='include/llvm-6.0/llvm/Support/NativeFormatting.h' l='43' u='r' c='_ZN4llvm9write_hexERNS_11raw_ostreamEmNS_13HexPrintStyleENS_8OptionalImEE'/>
+<use f='include/llvm-6.0/llvm/Support/NativeFormatting.h' l='45' u='r' c='_ZN4llvm12write_doubleERNS_11raw_ostreamEdNS_10FloatStyleENS_8OptionalImEE'/>
+<use f='include/llvm-6.0/llvm/Support/FormatProviders.h' l='67' u='r' c='_ZN4llvm6detail15HelperFunctions21parseNumericPrecisionENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/Support/FormatProviders.h' l='70' u='r' c='_ZN4llvm6detail15HelperFunctions21parseNumericPrecisionENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='374' u='r' c='_ZNK4llvm6Target19createTargetMachineENS_9StringRefES1_S1_RKNS_13TargetOptionsENS_8OptionalINS_5Reloc5ModelEEENS5_INS_9CodeModel5ModelEEENS_10CodeGenOpt5LevelEb'/>
+<use f='include/llvm-6.0/llvm/Analysis/MemoryLocation.h' l='87' u='r' c='_ZN4llvm14MemoryLocation9getOrNoneEPKNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='619' u='r' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_11InstructionERKNS_8OptionalINS_14MemoryLocationEEE'/>
+<use f='include/llvm-6.0/llvm/IR/ValueMap.h' l='127' u='r' c='_ZNK4llvm8ValueMap11getMappedMDEPKNS_8MetadataE'/>
+<use f='include/llvm-6.0/llvm/IR/ValueMap.h' l='130' u='r' c='_ZNK4llvm8ValueMap11getMappedMDEPKNS_8MetadataE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='127' u='r' c='pocl_ptx_gen'/>
+<use f='include/llvm-6.0/llvm/Support/SourceMgr.h' l='165' u='r' c='_ZNK4llvm9SourceMgr12PrintMessageERNS_11raw_ostreamENS_5SMLocENS0_8DiagKindERKNS_5TwineENS_8ArrayRefINS_7SMRangeEEENS8_INS_7SMFixItEEEb'/>
+<use f='include/llvm-6.0/llvm/Support/SourceMgr.h' l='166' u='r' c='_ZNK4llvm9SourceMgr12PrintMessageERNS_11raw_ostreamENS_5SMLocENS0_8DiagKindERKNS_5TwineENS_8ArrayRefINS_7SMRangeEEENS8_INS_7SMFixItEEEb'/>
+<use f='include/llvm-6.0/llvm/Support/SourceMgr.h' l='171' u='r' c='_ZNK4llvm9SourceMgr12PrintMessageENS_5SMLocENS0_8DiagKindERKNS_5TwineENS_8ArrayRefINS_7SMRangeEEENS6_INS_7SMFixItEEEb'/>
+<use f='include/llvm-6.0/llvm/Support/SourceMgr.h' l='172' u='r' c='_ZNK4llvm9SourceMgr12PrintMessageENS_5SMLocENS0_8DiagKindERKNS_5TwineENS_8ArrayRefINS_7SMRangeEEENS6_INS_7SMFixItEEEb'/>
+<use f='include/llvm-6.0/llvm/Support/SourceMgr.h' l='188' u='r' c='_ZNK4llvm9SourceMgr10GetMessageENS_5SMLocENS0_8DiagKindERKNS_5TwineENS_8ArrayRefINS_7SMRangeEEENS6_INS_7SMFixItEEE'/>
+<use f='include/llvm-6.0/llvm/Support/SourceMgr.h' l='189' u='r' c='_ZNK4llvm9SourceMgr10GetMessageENS_5SMLocENS0_8DiagKindERKNS_5TwineENS_8ArrayRefINS_7SMRangeEEENS6_INS_7SMFixItEEE'/>
+<use f='include/llvm-6.0/llvm/Support/SourceMgr.h' l='256' u='r' c='_ZN4llvm12SMDiagnosticC1ERKNS_9SourceMgrENS_5SMLocENS_9StringRefEiiNS1_8DiagKindES5_S5_NS_8ArrayRefISt4pairIjjEEENS7_INS_7SMFixItEEE'/>
+<use f='include/llvm-6.0/llvm/ADT/SmallSet.h' l='83' c='_ZN4llvm8SmallSet6insertERKT_'/>
+<use f='include/llvm-6.0/llvm/ADT/SmallSet.h' l='87' u='r' c='_ZN4llvm8SmallSet6insertERKT_'/>
+<use f='include/llvm-6.0/llvm/ADT/SmallSet.h' l='90' u='r' c='_ZN4llvm8SmallSet6insertERKT_'/>
+<use f='include/llvm-6.0/llvm/ADT/SmallSet.h' l='99' u='r' c='_ZN4llvm8SmallSet6insertERKT_'/>
+<use f='include/llvm-6.0/llvm/IR/Intrinsics.h' l='61' u='r' c='_ZN4llvm9Intrinsic7getTypeERNS_11LLVMContextENS0_2IDENS_8ArrayRefIPNS_4TypeEEE'/>
+<use f='include/llvm-6.0/llvm/IR/Intrinsics.h' l='81' u='r' c='_ZN4llvm9Intrinsic14getDeclarationEPNS_6ModuleENS0_2IDENS_8ArrayRefIPNS_4TypeEEE'/>
+<use f='include/llvm-6.0/llvm/ADT/DepthFirstIterator.h' l='104' c='_ZN4llvm11df_iteratorC1ENT2_7NodeRefE'/>
+<use f='include/llvm-6.0/llvm/ADT/DepthFirstIterator.h' l='112' c='_ZN4llvm11df_iteratorC1ENT2_7NodeRefERT0_'/>
+<use f='include/llvm-6.0/llvm/ADT/DepthFirstIterator.h' l='136' c='_ZN4llvm11df_iterator6toNextEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='440' u='r' c='_ZNK4llvm11GEPOperator15getInRangeIndexEv'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='159' u='r' c='_ZN4llvm6DINodeC1ERNS_11LLVMContextEjNS_8Metadata11StorageTypeEjNS_8ArrayRefIPS3_EES7_'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='340' u='r' c='_ZN4llvm10DISubrangeC1ERNS_11LLVMContextENS_8Metadata11StorageTypeEll'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2136' u='r' c='_ZN4llvm12DIExpressionC1ERNS_11LLVMContextENS_8Metadata11StorageTypeENS_8ArrayRefImEE'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2674' u='r' c='_ZN4llvm11DIMacroNodeC1ERNS_11LLVMContextEjNS_8Metadata11StorageTypeEjNS_8ArrayRefIPS3_EES7_'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='105' u='r' c='_ZN4llvm13IRBuilderBaseC1ERNS_11LLVMContextEPNS_6MDNodeENS_8ArrayRefINS_17OperandBundleDefTIPNS_5ValueEEEEE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='674' u='r' c='_ZN4llvm9IRBuilderC1ERNS_11LLVMContextERKT_T0_PNS_6MDNodeENS_8ArrayRefINS_17OperandBundleDefTIPNS_5ValueEEEEE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='679' u='r' c='_ZN4llvm9IRBuilderC1ERNS_11LLVMContextEPNS_6MDNodeENS_8ArrayRefINS_17OperandBundleDefTIPNS_5ValueEEEEE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='683' u='r' c='_ZN4llvm9IRBuilderC1EPNS_10BasicBlockERKT_PNS_6MDNodeENS_8ArrayRefINS_17OperandBundleDefTIPNS_5ValueEEEEE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='689' u='r' c='_ZN4llvm9IRBuilderC1EPNS_10BasicBlockEPNS_6MDNodeENS_8ArrayRefINS_17OperandBundleDefTIPNS_5ValueEEEEE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='695' u='r' c='_ZN4llvm9IRBuilderC1EPNS_11InstructionEPNS_6MDNodeENS_8ArrayRefINS_17OperandBundleDefTIPNS_5ValueEEEEE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='702' u='r' c='_ZN4llvm9IRBuilderC1EPNS_10BasicBlockENS_14ilist_iteratorINS_12ilist_detail12node_optionsINS_11InstructionELb0ELb0EvEELb0ELb0EEERKT_PNS_6MDNodeENS_8Ar11599355'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='709' u='r' c='_ZN4llvm9IRBuilderC1EPNS_10BasicBlockENS_14ilist_iteratorINS_12ilist_detail12node_optionsINS_11InstructionELb0ELb0EvEELb0ELb0EEEPNS_6MDNodeENS_8ArrayR12331158'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='819' u='r' c='_ZN4llvm9IRBuilder12CreateInvokeEPNS_5ValueEPNS_10BasicBlockES4_NS_8ArrayRefIS2_EERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='854' u='r' c='_ZN4llvm9IRBuilder16CreateCleanupPadEPNS_5ValueENS_8ArrayRefIS2_EERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1663' u='r' c='_ZN4llvm9IRBuilder10CreateCallEPNS_5ValueENS_8ArrayRefIS2_EERKNS_5TwineEPNS_6MDNodeE'/>
+<use f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='197' u='r' c='_ZN4llvm9DIBuilder17createPointerTypeEPNS_6DITypeEmjNS_8OptionalIjEENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='216' u='r' c='_ZN4llvm9DIBuilder19createReferenceTypeEjPNS_6DITypeEmjNS_8OptionalIjEE'/>
+<use f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='565' u='r' c='_ZN4llvm9DIBuilder16createExpressionENS_8ArrayRefImEE'/>

@@ -1,0 +1,14 @@
+<inh f='include/llvm-6.0/llvm/Pass.h' l='285' c='llvm::FunctionPass'/>
+<def f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='958' ll='981'/>
+<size>224</size>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='957'>/// \brief The legacy pass manager&apos;s analysis pass to compute loop information.</doc>
+<mbr r='llvm::LoopInfoWrapperPass::LI' o='256' t='llvm::LoopInfo'/>
+<smbr r='llvm::LoopInfoWrapperPass::ID' t='char'/>
+<fun r='_ZN4llvm19LoopInfoWrapperPassC1Ev'/>
+<fun r='_ZN4llvm19LoopInfoWrapperPass11getLoopInfoEv'/>
+<fun r='_ZNK4llvm19LoopInfoWrapperPass11getLoopInfoEv'/>
+<fun r='_ZN4llvm19LoopInfoWrapperPass13runOnFunctionERNS_8FunctionE'/>
+<fun r='_ZNK4llvm19LoopInfoWrapperPass14verifyAnalysisEv'/>
+<fun r='_ZN4llvm19LoopInfoWrapperPass13releaseMemoryEv'/>
+<fun r='_ZNK4llvm19LoopInfoWrapperPass5printERNS_11raw_ostreamEPKNS_6ModuleE'/>
+<fun r='_ZNK4llvm19LoopInfoWrapperPass16getAnalysisUsageERNS_13AnalysisUsageE'/>

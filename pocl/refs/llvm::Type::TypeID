@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/IR/Type.h' l='55' ll='77'/>
+<doc f='include/llvm-6.0/llvm/IR/Type.h' l='48'>//===--------------------------------------------------------------------===//
+  /// Definitions of all of the base types for the Type system.  Based on this
+  /// value, you can cast to a class defined in DerivedTypes.h.
+  /// Note: If you add an element to this, you need to add an element to the
+  /// Type::getPrimitiveType function, or else things will break!
+  /// Also update LLVMTypeKind and LLVMGetTypeKind () in the C binding.
+  ///</doc>

@@ -1,0 +1,10 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='577' type='const char * LLVMGetDataLayoutStr(LLVMModuleRef M)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='568'>/**
+ * Obtain the data layout for a module.
+ *
+ * @see Module::getDataLayoutStr()
+ *
+ * LLVMGetDataLayout is DEPRECATED, as the name is not only incorrect,
+ * but match the name of another method on the module. Prefer the use
+ * of LLVMGetDataLayoutStr, which is not ambiguous.
+ */</doc>

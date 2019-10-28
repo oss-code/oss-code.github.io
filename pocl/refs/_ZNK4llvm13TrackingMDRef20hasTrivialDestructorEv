@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/TrackingMDRef.h' l='76' ll='78' type='bool llvm::TrackingMDRef::hasTrivialDestructor() const'/>
+<use f='include/llvm-6.0/llvm/IR/TrackingMDRef.h' l='139' u='c' c='_ZNK4llvm18TypedTrackingMDRef20hasTrivialDestructorEv'/>
+<doc f='include/llvm-6.0/llvm/IR/TrackingMDRef.h' l='73'>/// \brief Check whether this has a trivial destructor.
+  ///
+  /// If \c MD isn&apos;t replaceable, the destructor will be a no-op.</doc>

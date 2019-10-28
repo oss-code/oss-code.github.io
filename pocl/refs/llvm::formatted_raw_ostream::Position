@@ -1,0 +1,10 @@
+<dec f='include/llvm-6.0/llvm/Support/FormattedStream.h' l='37' type='std::pair&lt;unsigned int, unsigned int&gt;'/>
+<use f='include/llvm-6.0/llvm/Support/FormattedStream.h' l='90' u='w' c='_ZN4llvm21formatted_raw_ostreamC1ERNS_11raw_ostreamE'/>
+<use f='include/llvm-6.0/llvm/Support/FormattedStream.h' l='93' u='w' c='_ZN4llvm21formatted_raw_ostreamC1Ev'/>
+<use f='include/llvm-6.0/llvm/Support/FormattedStream.h' l='110' u='m' c='_ZN4llvm21formatted_raw_ostream9getColumnEv'/>
+<use f='include/llvm-6.0/llvm/Support/FormattedStream.h' l='113' u='m' c='_ZN4llvm21formatted_raw_ostream7getLineEv'/>
+<offset>384</offset>
+<doc f='include/llvm-6.0/llvm/Support/FormattedStream.h' l='33'>/// Position - The current output column and line of the data that&apos;s
+  /// been flushed and the portion of the buffer that&apos;s been
+  /// scanned.  The line and column scheme is zero-based.
+  ///</doc>

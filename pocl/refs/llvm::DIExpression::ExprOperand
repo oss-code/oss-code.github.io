@@ -1,0 +1,14 @@
+<def f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2174' ll='2197'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2170'>/// A lightweight wrapper around an expression operand.
+  ///
+  /// TODO: Store arguments directly and change \a DIExpression to store a
+  /// range of these.</doc>
+<mbr r='llvm::DIExpression::ExprOperand::Op' o='0' t='const uint64_t *'/>
+<fun r='_ZN4llvm12DIExpression11ExprOperandC1Ev'/>
+<fun r='_ZN4llvm12DIExpression11ExprOperandC1EPKm'/>
+<fun r='_ZNK4llvm12DIExpression11ExprOperand3getEv'/>
+<fun r='_ZNK4llvm12DIExpression11ExprOperand5getOpEv'/>
+<fun r='_ZNK4llvm12DIExpression11ExprOperand6getArgEj'/>
+<fun r='_ZNK4llvm12DIExpression11ExprOperand10getNumArgsEv'/>
+<fun r='_ZNK4llvm12DIExpression11ExprOperand7getSizeEv'/>

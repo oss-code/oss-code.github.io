@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1356' ll='1362' type='bool llvm::DILocation::canDiscriminate(const llvm::DILocation &amp; RHS) const'/>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1351'>/// Check whether this can be discriminated from another location.
+  ///
+  /// Check \c this can be discriminated from \c RHS in a linetable entry.
+  /// Scope and inlined-at chains are not recorded in the linetable, so they
+  /// cannot be used to distinguish basic blocks.</doc>

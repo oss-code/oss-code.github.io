@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='356' ll='361' type='llvm::MCSubtargetInfo * llvm::Target::createMCSubtargetInfo(llvm::StringRef TheTriple, llvm::StringRef CPU, llvm::StringRef Features) const'/>
+<doc f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='347'>/// createMCSubtargetInfo - Create a MCSubtargetInfo implementation.
+  ///
+  /// \param TheTriple This argument is used to determine the target machine
+  /// feature set; it should always be provided. Generally this should be
+  /// either the target triple from the module, or the target triple of the
+  /// host if that does not exist.
+  /// \param CPU This specifies the name of the target CPU.
+  /// \param Features This specifies the string representation of the
+  /// additional target features.</doc>

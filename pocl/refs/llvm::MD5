@@ -1,0 +1,17 @@
+<def f='include/llvm-6.0/llvm/Support/MD5.h' l='41' ll='102'/>
+<size>152</size>
+<mbr r='llvm::MD5::a' o='0' t='MD5_u32plus'/>
+<mbr r='llvm::MD5::b' o='32' t='MD5_u32plus'/>
+<mbr r='llvm::MD5::c' o='64' t='MD5_u32plus'/>
+<mbr r='llvm::MD5::d' o='96' t='MD5_u32plus'/>
+<mbr r='llvm::MD5::hi' o='128' t='MD5_u32plus'/>
+<mbr r='llvm::MD5::lo' o='160' t='MD5_u32plus'/>
+<mbr r='llvm::MD5::buffer' o='192' t='uint8_t [64]'/>
+<mbr r='llvm::MD5::block' o='704' t='MD5_u32plus [16]'/>
+<fun r='_ZN4llvm3MD5C1Ev'/>
+<fun r='_ZN4llvm3MD56updateENS_8ArrayRefIhEE'/>
+<fun r='_ZN4llvm3MD56updateENS_9StringRefE'/>
+<fun r='_ZN4llvm3MD55finalERNS0_9MD5ResultE'/>
+<fun r='_ZN4llvm3MD515stringifyResultERNS0_9MD5ResultERNS_11SmallStringILj32EEE'/>
+<fun r='_ZN4llvm3MD54hashENS_8ArrayRefIhEE'/>
+<fun r='_ZN4llvm3MD54bodyENS_8ArrayRefIhEE'/>

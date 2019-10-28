@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='533' type='llvm::CallInst * llvm::IRBuilderBase::CreateInvariantStart(llvm::Value * Ptr, llvm::ConstantInt * Size = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='530'>/// Create a call to invariant.start intrinsic.
+  ///
+  /// If the pointer isn&apos;t i8* it will be converted.</doc>

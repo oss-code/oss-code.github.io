@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/GlobalObject.h' l='98' type='void llvm::GlobalObject::setSection(llvm::StringRef S)'/>
+<doc f='include/llvm-6.0/llvm/IR/GlobalObject.h' l='94'>/// Change the section for this global.
+  ///
+  /// Setting the section to the empty string tells LLVM to choose an
+  /// appropriate default object file section.</doc>

@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Pass.h' l='306' type='bool llvm::FunctionPass::skipFunction(const llvm::Function &amp; F) const'/>
+<doc f='include/llvm-6.0/llvm/Pass.h' l='303'>/// Optional passes call this function to check whether the pass should be
+  /// skipped. This is the case when Attribute::OptimizeNone is set or when
+  /// optimization bisect is over the limit.</doc>

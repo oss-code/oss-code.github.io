@@ -1,0 +1,14 @@
+<dec f='pocl/lib/CL/pocl_llvm_api.h' l='63' type='void PoclCompilerMutexGuard::PoclCompilerMutexGuard(void * unused)'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='212' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='621' u='c' c='pocl_llvm_link_program'/>
+<doc f='pocl/lib/CL/pocl_llvm_api.h' l='62'>// an unused argument is required, otherwise compiler optimizes out the object</doc>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='447' u='c' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='618' u='c' c='pocl_llvm_get_kernel_count'/>
+<def f='pocl/lib/CL/pocl_llvm_utils.cc' l='260' ll='262' type='void PoclCompilerMutexGuard::PoclCompilerMutexGuard(void * unused)'/>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='358' u='c' c='pocl_llvm_release'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='344' u='c' c='pocl_destroy_llvm_module'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='377' u='c' c='pocl_llvm_generate_workgroup_function_nowrite'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='508' u='c' c='pocl_update_program_llvm_irs'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='516' u='c' c='pocl_free_llvm_irs'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='527' u='c' c='pocl_llvm_update_binaries'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='588' u='c' c='pocl_llvm_codegen'/>

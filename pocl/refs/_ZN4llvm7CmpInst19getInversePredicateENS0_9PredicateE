@@ -1,0 +1,6 @@
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='952' u='c' c='_ZNK4llvm7CmpInst19getInversePredicateEv'/>
+<dec f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='959' type='static llvm::CmpInst::Predicate llvm::CmpInst::getInversePredicate(llvm::CmpInst::Predicate pred)'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='955'>/// For example, EQ -&gt; NE, UGT -&gt; ULE, SLT -&gt; SGE,
+  ///              OEQ -&gt; UNE, UGT -&gt; OLE, OLT -&gt; UGE, etc.
+  /// @returns the inverse predicate for predicate provided in \p pred.
+  /// @brief Return the inverse of a given predicate</doc>

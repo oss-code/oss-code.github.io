@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='589' type='llvm::ModRefInfo llvm::AAResults::getModRefInfo(const llvm::CatchPadInst * I, const llvm::MemoryLocation &amp; Loc)'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='594' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_12CatchPadInstEPKNS_5ValueEm'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='639' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_11InstructionERKNS_8OptionalINS_14MemoryLocationEEE'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='587'>/// getModRefInfo (for catchpads) - Return information about whether
+  /// a particular catchpad modifies or reads the specified memory location.</doc>

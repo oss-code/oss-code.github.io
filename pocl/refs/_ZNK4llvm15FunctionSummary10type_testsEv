@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='407' ll='411' type='ArrayRef&lt;GlobalValue::GUID&gt; llvm::FunctionSummary::type_tests() const'/>
+<doc f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='404'>/// Returns the list of type identifiers used by this function in
+  /// llvm.type.test intrinsics other than by an llvm.assume intrinsic,
+  /// represented as GUIDs.</doc>

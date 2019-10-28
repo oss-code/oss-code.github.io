@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>IsolateRegions.cc source code [pocl/lib/llvmopencl/IsolateRegions.cc] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/llvmopencl/IsolateRegions.cc'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>llvmopencl</a>/<a href='IsolateRegions.cc.html'>IsolateRegions.cc</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>// Header for IsolateRegions RegionPass.</i></td></tr>
+<tr><th id="2">2</th><td><i>// </i></td></tr>
+<tr><th id="3">3</th><td><i>// Copyright (c) 2012-2015 Pekka Jääskeläinen / TUT</i></td></tr>
+<tr><th id="4">4</th><td><i>// </i></td></tr>
+<tr><th id="5">5</th><td><i>// Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="6">6</th><td><i>// of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="7">7</th><td><i>// in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="8">8</th><td><i>// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="9">9</th><td><i>// copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="10">10</th><td><i>// furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="11">11</th><td><i>// </i></td></tr>
+<tr><th id="12">12</th><td><i>// The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="13">13</th><td><i>// all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="14">14</th><td><i>// </i></td></tr>
+<tr><th id="15">15</th><td><i>// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="16">16</th><td><i>// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="17">17</th><td><i>// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="18">18</th><td><i>// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="19">19</th><td><i>// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="20">20</th><td><i>// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="21">21</th><td><i>// THE SOFTWARE.</i></td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><u>#include <a href="../../../include/c++/7/iostream.html">&lt;iostream&gt;</a></u></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><u>#include <a href="CompilerWarnings.h.html">"CompilerWarnings.h"</a></u></td></tr>
+<tr><th id="26">26</th><td><a class="macro" href="CompilerWarnings.h.html#29" title="" data-ref="_M/IGNORE_COMPILER_WARNING">IGNORE_COMPILER_WARNING</a>(<q>"-Wunused-parameter"</q>)</td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><u>#include <a href="../../config.h.html">"config.h"</a></u></td></tr>
+<tr><th id="29">29</th><td><u>#include <a href="../../include/pocl.h.html">"pocl.h"</a></u></td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><u>#include <a href="../../../include/llvm-6.0/llvm/Analysis/RegionInfo.h.html">"llvm/Analysis/RegionInfo.h"</a></u></td></tr>
+<tr><th id="32">32</th><td><u>#include <a href="../../../include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h.html">"llvm/Transforms/Utils/BasicBlockUtils.h"</a></u></td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><u>#include <a href="IsolateRegions.h.html">"IsolateRegions.h"</a></u></td></tr>
+<tr><th id="35">35</th><td><u>#include <a href="Barrier.h.html">"Barrier.h"</a></u></td></tr>
+<tr><th id="36">36</th><td><u>#include <a href="Workgroup.h.html">"Workgroup.h"</a></u></td></tr>
+<tr><th id="37">37</th><td><u>#include <a href="VariableUniformityAnalysis.h.html">"VariableUniformityAnalysis.h"</a></u></td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td><a class="macro" href="CompilerWarnings.h.html#48" title="" data-ref="_M/POP_COMPILER_DIAGS">POP_COMPILER_DIAGS</a></td></tr>
+<tr><th id="40">40</th><td></td></tr>
+<tr><th id="41">41</th><td><i>//#define DEBUG_ISOLATE_REGIONS</i></td></tr>
+<tr><th id="42">42</th><td><b>using</b> <b>namespace</b> <span class="namespace">llvm</span>;</td></tr>
+<tr><th id="43">43</th><td><b>using</b> <b>namespace</b> <span class="namespace">pocl</span>;</td></tr>
+<tr><th id="44">44</th><td> </td></tr>
+<tr><th id="45">45</th><td><b>namespace</b> {</td></tr>
+<tr><th id="46">46</th><td>  <em>static</em></td></tr>
+<tr><th id="47">47</th><td>  <a class="type" href="../../../include/llvm-6.0/llvm/PassSupport.h.html#llvm::RegisterPass" title='llvm::RegisterPass' data-ref="llvm::RegisterPass">RegisterPass</a>&lt;<a class="type" href="IsolateRegions.h.html#pocl::IsolateRegions" title='pocl::IsolateRegions' data-ref="pocl::IsolateRegions">IsolateRegions</a>&gt; <dfn class="tu decl def" id="(anonymousnamespace)::X" title='(anonymous namespace)::X' data-type='RegisterPass&lt;pocl::IsolateRegions&gt;' data-ref="(anonymousnamespace)::X">X</dfn><a class="ref" href="../../../include/llvm-6.0/llvm/PassSupport.h.html#_ZN4llvm12RegisterPassC1ENS_9StringRefES1_bb" title='llvm::RegisterPass::RegisterPass&lt;passName&gt;' data-ref="_ZN4llvm12RegisterPassC1ENS_9StringRefES1_bb">(</a><a class="ref fake" href="../../../include/llvm-6.0/llvm/ADT/StringRef.h.html#_ZN4llvm9StringRefC1EPKc" title='llvm::StringRef::StringRef' data-ref="_ZN4llvm9StringRefC1EPKc"></a><q>"isolate-regions"</q>,</td></tr>
+<tr><th id="48">48</th><td>					 <a class="ref fake" href="../../../include/llvm-6.0/llvm/ADT/StringRef.h.html#_ZN4llvm9StringRefC1EPKc" title='llvm::StringRef::StringRef' data-ref="_ZN4llvm9StringRefC1EPKc"></a><q>"Single-Entry Single-Exit region isolation pass."</q>);</td></tr>
+<tr><th id="49">49</th><td>}</td></tr>
+<tr><th id="50">50</th><td></td></tr>
+<tr><th id="51">51</th><td><em>char</em> <a class="type" href="IsolateRegions.h.html#pocl::IsolateRegions" title='pocl::IsolateRegions' data-ref="pocl::IsolateRegions">IsolateRegions</a>::<dfn class="decl def" id="pocl::IsolateRegions::ID" title='pocl::IsolateRegions::ID' data-ref="pocl::IsolateRegions::ID">ID</dfn> = <var>0</var>;</td></tr>
+<tr><th id="52">52</th><td></td></tr>
+<tr><th id="53">53</th><td><em>void</em> <a class="type" href="IsolateRegions.h.html#pocl::IsolateRegions" title='pocl::IsolateRegions' data-ref="pocl::IsolateRegions">IsolateRegions</a>::<dfn class="virtual decl def" id="_ZNK4pocl14IsolateRegions16getAnalysisUsageERN4llvm13AnalysisUsageE" title='pocl::IsolateRegions::getAnalysisUsage' data-ref="_ZNK4pocl14IsolateRegions16getAnalysisUsageERN4llvm13AnalysisUsageE">getAnalysisUsage</dfn>(<a class="type" href="../../../include/llvm-6.0/llvm/PassAnalysisSupport.h.html#llvm::AnalysisUsage" title='llvm::AnalysisUsage' data-ref="llvm::AnalysisUsage">AnalysisUsage</a> &amp;<dfn class="local col7 decl" id="7AU" title='AU' data-type='llvm::AnalysisUsage &amp;' data-ref="7AU">AU</dfn>) <em>const</em> {</td></tr>
+<tr><th id="54">54</th><td>  <a class="local col7 ref" href="#7AU" title='AU' data-ref="7AU">AU</a>.<a class="ref" href="../../../include/llvm-6.0/llvm/PassAnalysisSupport.h.html#_ZN4llvm13AnalysisUsage12addPreservedEv" title='llvm::AnalysisUsage::addPreserved' data-ref="_ZN4llvm13AnalysisUsage12addPreservedEv">addPreserved</a>&lt;<span class="namespace">pocl::</span><a class="type" href="VariableUniformityAnalysis.h.html#pocl::VariableUniformityAnalysis" title='pocl::VariableUniformityAnalysis' data-ref="pocl::VariableUniformityAnalysis">VariableUniformityAnalysis</a>&gt;();</td></tr>
+<tr><th id="55">55</th><td>}</td></tr>
+<tr><th id="56">56</th><td></td></tr>
+<tr><th id="57">57</th><td><i>/* Ensure Single-Entry Single-Exit Regions are isolated from the</i></td></tr>
+<tr><th id="58">58</th><td><i>   exit node so they won't get split illegally with tail replication. </i></td></tr>
+<tr><th id="59">59</th><td><i></i></td></tr>
+<tr><th id="60">60</th><td><i>   This might happen in case an if .. else .. structure is just </i></td></tr>
+<tr><th id="61">61</th><td><i>   before an exit from kernel. Both branches are split even though</i></td></tr>
+<tr><th id="62">62</th><td><i>   we would like to replicate the structure as a whole to retain</i></td></tr>
+<tr><th id="63">63</th><td><i>   semantics. This adds dummy basic blocks to all Regions just for</i></td></tr>
+<tr><th id="64">64</th><td><i>   clarity. Cleanup with -simplifycfg.</i></td></tr>
+<tr><th id="65">65</th><td><i></i></td></tr>
+<tr><th id="66">66</th><td><i>   TODO: Also add a dummy BB in case the Region starts with a</i></td></tr>
+<tr><th id="67">67</th><td><i>   barrier. Such a Region might not get optimally replicated and</i></td></tr>
+<tr><th id="68">68</th><td><i>   can lead to problematic cases. E.g.:</i></td></tr>
+<tr><th id="69">69</th><td><i></i></td></tr>
+<tr><th id="70">70</th><td><i>   digraph G {</i></td></tr>
+<tr><th id="71">71</th><td><i>      BAR1 -&gt; A;</i></td></tr>
+<tr><th id="72">72</th><td><i>      A -&gt; X; </i></td></tr>
+<tr><th id="73">73</th><td><i>      BAR1 -&gt; X; </i></td></tr>
+<tr><th id="74">74</th><td><i>      X -&gt; BAR2;</i></td></tr>
+<tr><th id="75">75</th><td><i>   }</i></td></tr>
+<tr><th id="76">76</th><td><i></i></td></tr>
+<tr><th id="77">77</th><td><i>   (draw with "dot -Tpng -o graph.png"   + copy paste the above)</i></td></tr>
+<tr><th id="78">78</th><td><i></i></td></tr>
+<tr><th id="79">79</th><td><i>   Here you have a structure which should be replicated fully but</i></td></tr>
+<tr><th id="80">80</th><td><i>   it won't as the Region starts with a barrier at a split point</i></td></tr>
+<tr><th id="81">81</th><td><i>   BB, thus it tries to replicate both of the branches which lead</i></td></tr>
+<tr><th id="82">82</th><td><i>   to interesting errors and is not supported. Another option would</i></td></tr>
+<tr><th id="83">83</th><td><i>   be to tail replicate both of the branches, but currently tail</i></td></tr>
+<tr><th id="84">84</th><td><i>   replication is done only starting from the exit nodes.</i></td></tr>
+<tr><th id="85">85</th><td><i></i></td></tr>
+<tr><th id="86">86</th><td><i>   IsolateRegions "normalizes" the graph to:</i></td></tr>
+<tr><th id="87">87</th><td><i></i></td></tr>
+<tr><th id="88">88</th><td><i>   digraph G {</i></td></tr>
+<tr><th id="89">89</th><td><i>      BAR1 -&gt; r_entry;</i></td></tr>
+<tr><th id="90">90</th><td><i>      r_entry -&gt; A;</i></td></tr>
+<tr><th id="91">91</th><td><i>      A -&gt; X; </i></td></tr>
+<tr><th id="92">92</th><td><i>      r_entry -&gt; X; </i></td></tr>
+<tr><th id="93">93</th><td><i>      X -&gt; BAR2;</i></td></tr>
+<tr><th id="94">94</th><td><i>   }</i></td></tr>
+<tr><th id="95">95</th><td><i></i></td></tr>
+<tr><th id="96">96</th><td><i>   </i></td></tr>
+<tr><th id="97">97</th><td><i>*/</i></td></tr>
+<tr><th id="98">98</th><td><em>bool</em> <a class="type" href="IsolateRegions.h.html#pocl::IsolateRegions" title='pocl::IsolateRegions' data-ref="pocl::IsolateRegions">IsolateRegions</a>::<dfn class="virtual decl def" id="_ZN4pocl14IsolateRegions11runOnRegionEPN4llvm6RegionERNS1_13RGPassManagerE" title='pocl::IsolateRegions::runOnRegion' data-ref="_ZN4pocl14IsolateRegions11runOnRegionEPN4llvm6RegionERNS1_13RGPassManagerE">runOnRegion</dfn>(<a class="type" href="../../../include/llvm-6.0/llvm/Analysis/RegionInfo.h.html#llvm::Region" title='llvm::Region' data-ref="llvm::Region">Region</a> *<dfn class="local col8 decl" id="8R" title='R' data-type='llvm::Region *' data-ref="8R">R</dfn>, <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/Analysis/RegionPass.h.html#llvm::RGPassManager" title='llvm::RGPassManager' data-ref="llvm::RGPassManager">RGPassManager</a>&amp;) {</td></tr>
+<tr><th id="99">99</th><td></td></tr>
+<tr><th id="100">100</th><td>  <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a> *<dfn class="local col9 decl" id="9exit" title='exit' data-type='llvm::BasicBlock *' data-ref="9exit">exit</dfn> = <a class="local col8 ref" href="#8R" title='R' data-ref="8R">R</a>-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/Analysis/RegionInfo.h.html#_ZNK4llvm10RegionBase7getExitEv" title='llvm::RegionBase::getExit' data-ref="_ZNK4llvm10RegionBase7getExitEv">getExit</a>();</td></tr>
+<tr><th id="101">101</th><td>  <b>if</b> (<a class="local col9 ref" href="#9exit" title='exit' data-ref="9exit">exit</a> == <span class="macro" title="__null" data-ref="_M/NULL">NULL</span>) <b>return</b> <b>false</b>;</td></tr>
+<tr><th id="102">102</th><td></td></tr>
+<tr><th id="103">103</th><td><u>#<span data-ppcond="103">ifdef</span> <span class="macro" data-ref="_M/DEBUG_ISOLATE_REGIONS">DEBUG_ISOLATE_REGIONS</span></u></td></tr>
+<tr><th id="104">104</th><td>  std::cerr &lt;&lt; <q>"### processing region:"</q> &lt;&lt; std::endl;</td></tr>
+<tr><th id="105">105</th><td>  R-&gt;dump();</td></tr>
+<tr><th id="106">106</th><td>  std::cerr &lt;&lt; <q>"### exit block:"</q> &lt;&lt; std::endl;</td></tr>
+<tr><th id="107">107</th><td>  exit-&gt;dump();</td></tr>
+<tr><th id="108">108</th><td><u>#<span data-ppcond="103">endif</span></u></td></tr>
+<tr><th id="109">109</th><td>  <em>bool</em> <dfn class="local col0 decl" id="10isFunctionExit" title='isFunctionExit' data-type='bool' data-ref="10isFunctionExit">isFunctionExit</dfn> = <a class="local col9 ref" href="#9exit" title='exit' data-ref="9exit">exit</a>-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#_ZN4llvm10BasicBlock13getTerminatorEv" title='llvm::BasicBlock::getTerminator' data-ref="_ZN4llvm10BasicBlock13getTerminatorEv">getTerminator</a>()-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/IR/InstrTypes.h.html#_ZNK4llvm14TerminatorInst16getNumSuccessorsEv" title='llvm::TerminatorInst::getNumSuccessors' data-ref="_ZNK4llvm14TerminatorInst16getNumSuccessorsEv">getNumSuccessors</a>() == <var>0</var>;</td></tr>
+<tr><th id="110">110</th><td></td></tr>
+<tr><th id="111">111</th><td>  <em>bool</em> <dfn class="local col1 decl" id="11changed" title='changed' data-type='bool' data-ref="11changed">changed</dfn> = <b>false</b>;</td></tr>
+<tr><th id="112">112</th><td></td></tr>
+<tr><th id="113">113</th><td>  <b>if</b> (<a class="type" href="Barrier.h.html#pocl::Barrier" title='pocl::Barrier' data-ref="pocl::Barrier">Barrier</a>::<a class="ref" href="Barrier.h.html#_ZN4pocl7Barrier10hasBarrierEPKN4llvm10BasicBlockE" title='pocl::Barrier::hasBarrier' data-ref="_ZN4pocl7Barrier10hasBarrierEPKN4llvm10BasicBlockE">hasBarrier</a>(<a class="local col9 ref" href="#9exit" title='exit' data-ref="9exit">exit</a>) || <a class="local col0 ref" href="#10isFunctionExit" title='isFunctionExit' data-ref="10isFunctionExit">isFunctionExit</a>) {</td></tr>
+<tr><th id="114">114</th><td>      <a class="member" href="#_ZN4pocl14IsolateRegions14addDummyBeforeEPN4llvm6RegionEPNS1_10BasicBlockE" title='pocl::IsolateRegions::addDummyBefore' data-ref="_ZN4pocl14IsolateRegions14addDummyBeforeEPN4llvm6RegionEPNS1_10BasicBlockE">addDummyBefore</a>(<a class="local col8 ref" href="#8R" title='R' data-ref="8R">R</a>, <a class="local col9 ref" href="#9exit" title='exit' data-ref="9exit">exit</a>);</td></tr>
+<tr><th id="115">115</th><td>      <a class="local col1 ref" href="#11changed" title='changed' data-ref="11changed">changed</a> = <b>true</b>;</td></tr>
+<tr><th id="116">116</th><td>  }</td></tr>
+<tr><th id="117">117</th><td></td></tr>
+<tr><th id="118">118</th><td>  <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a> *<dfn class="local col2 decl" id="12entry" title='entry' data-type='llvm::BasicBlock *' data-ref="12entry">entry</dfn> = <a class="local col8 ref" href="#8R" title='R' data-ref="8R">R</a>-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/Analysis/RegionInfo.h.html#_ZNK4llvm10RegionBase8getEntryEv" title='llvm::RegionBase::getEntry' data-ref="_ZNK4llvm10RegionBase8getEntryEv">getEntry</a>();</td></tr>
+<tr><th id="119">119</th><td>  <b>if</b> (<a class="local col2 ref" href="#12entry" title='entry' data-ref="12entry">entry</a> == <span class="macro" title="__null" data-ref="_M/NULL">NULL</span>) <b>return</b> <a class="local col1 ref" href="#11changed" title='changed' data-ref="11changed">changed</a>;</td></tr>
+<tr><th id="120">120</th><td></td></tr>
+<tr><th id="121">121</th><td>  <em>bool</em> <dfn class="local col3 decl" id="13isFunctionEntry" title='isFunctionEntry' data-type='bool' data-ref="13isFunctionEntry">isFunctionEntry</dfn> = &amp;<a class="local col2 ref" href="#12entry" title='entry' data-ref="12entry">entry</a>-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#_ZN4llvm10BasicBlock9getParentEv" title='llvm::BasicBlock::getParent' data-ref="_ZN4llvm10BasicBlock9getParentEv">getParent</a>()-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/IR/Function.h.html#_ZN4llvm8Function13getEntryBlockEv" title='llvm::Function::getEntryBlock' data-ref="_ZN4llvm8Function13getEntryBlockEv">getEntryBlock</a>() == <a class="local col2 ref" href="#12entry" title='entry' data-ref="12entry">entry</a>;</td></tr>
+<tr><th id="122">122</th><td></td></tr>
+<tr><th id="123">123</th><td>  <b>if</b> (<a class="type" href="Barrier.h.html#pocl::Barrier" title='pocl::Barrier' data-ref="pocl::Barrier">Barrier</a>::<a class="ref" href="Barrier.h.html#_ZN4pocl7Barrier10hasBarrierEPKN4llvm10BasicBlockE" title='pocl::Barrier::hasBarrier' data-ref="_ZN4pocl7Barrier10hasBarrierEPKN4llvm10BasicBlockE">hasBarrier</a>(<a class="local col2 ref" href="#12entry" title='entry' data-ref="12entry">entry</a>) || <a class="local col3 ref" href="#13isFunctionEntry" title='isFunctionEntry' data-ref="13isFunctionEntry">isFunctionEntry</a>) {</td></tr>
+<tr><th id="124">124</th><td>    <a class="member" href="#_ZN4pocl14IsolateRegions13addDummyAfterEPN4llvm6RegionEPNS1_10BasicBlockE" title='pocl::IsolateRegions::addDummyAfter' data-ref="_ZN4pocl14IsolateRegions13addDummyAfterEPN4llvm6RegionEPNS1_10BasicBlockE">addDummyAfter</a>(<a class="local col8 ref" href="#8R" title='R' data-ref="8R">R</a>, <a class="local col2 ref" href="#12entry" title='entry' data-ref="12entry">entry</a>);</td></tr>
+<tr><th id="125">125</th><td>    <a class="local col1 ref" href="#11changed" title='changed' data-ref="11changed">changed</a> = <b>true</b>;</td></tr>
+<tr><th id="126">126</th><td>  }</td></tr>
+<tr><th id="127">127</th><td></td></tr>
+<tr><th id="128">128</th><td>  <b>return</b> <a class="local col1 ref" href="#11changed" title='changed' data-ref="11changed">changed</a>;</td></tr>
+<tr><th id="129">129</th><td>}</td></tr>
+<tr><th id="130">130</th><td></td></tr>
+<tr><th id="131">131</th><td></td></tr>
+<tr><th id="132">132</th><td><i class="doc">/**</i></td></tr>
+<tr><th id="133">133</th><td><i class="doc"> * Adds a dummy node after the given basic block.</i></td></tr>
+<tr><th id="134">134</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="135">135</th><td><em>void</em> <a class="type" href="IsolateRegions.h.html#pocl::IsolateRegions" title='pocl::IsolateRegions' data-ref="pocl::IsolateRegions">IsolateRegions</a>::<dfn class="decl def" id="_ZN4pocl14IsolateRegions13addDummyAfterEPN4llvm6RegionEPNS1_10BasicBlockE" title='pocl::IsolateRegions::addDummyAfter' data-ref="_ZN4pocl14IsolateRegions13addDummyAfterEPN4llvm6RegionEPNS1_10BasicBlockE">addDummyAfter</dfn>(<span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/Analysis/RegionInfo.h.html#llvm::Region" title='llvm::Region' data-ref="llvm::Region">Region</a> *<dfn class="local col4 decl" id="14R" title='R' data-type='llvm::Region *' data-ref="14R">R</dfn>, <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a> *<dfn class="local col5 decl" id="15bb" title='bb' data-type='llvm::BasicBlock *' data-ref="15bb">bb</dfn>) {</td></tr>
+<tr><th id="136">136</th><td></td></tr>
+<tr><th id="137">137</th><td>  <span class="namespace">std::</span><a class="type" href="../../../include/c++/7/bits/stl_vector.h.html#std::vector" title='std::vector' data-ref="std::vector">vector</a>&lt; <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a>* &gt; <a class="ref fake" href="../../../include/c++/7/bits/stl_vector.h.html#_ZNSt6vectorC1Ev" title='std::vector::vector&lt;_Tp, _Alloc&gt;' data-ref="_ZNSt6vectorC1Ev"></a><dfn class="local col6 decl" id="16regionSuccs" title='regionSuccs' data-type='std::vector&lt;llvm::BasicBlock *&gt;' data-ref="16regionSuccs">regionSuccs</dfn>;</td></tr>
+<tr><th id="138">138</th><td></td></tr>
+<tr><th id="139">139</th><td>  <b>for</b> (<span class="namespace">llvm::</span><a class="typedef" href="../../../include/llvm-6.0/llvm/IR/CFG.h.html#llvm::succ_iterator" title='llvm::succ_iterator' data-type='TerminatorInst::SuccIterator&lt;TerminatorInst *, BasicBlock&gt;' data-ref="llvm::succ_iterator">succ_iterator</a> <dfn class="local col7 decl" id="17i" title='i' data-type='llvm::succ_iterator' data-ref="17i">i</dfn> = <a class="ref" href="../../../include/llvm-6.0/llvm/IR/CFG.h.html#_ZN4llvm10succ_beginEPNS_10BasicBlockE" title='llvm::succ_begin' data-ref="_ZN4llvm10succ_beginEPNS_10BasicBlockE">succ_begin</a>(<a class="local col5 ref" href="#15bb" title='bb' data-ref="15bb">bb</a>), <dfn class="local col8 decl" id="18e" title='e' data-type='llvm::succ_iterator' data-ref="18e">e</dfn> = <a class="ref" href="../../../include/llvm-6.0/llvm/IR/CFG.h.html#_ZN4llvm8succ_endEPNS_10BasicBlockE" title='llvm::succ_end' data-ref="_ZN4llvm8succ_endEPNS_10BasicBlockE">succ_end</a>(<a class="local col5 ref" href="#15bb" title='bb' data-ref="15bb">bb</a>);</td></tr>
+<tr><th id="140">140</th><td>       <a class="local col7 ref" href="#17i" title='i' data-ref="17i">i</a> <a class="ref" href="../../../include/llvm-6.0/llvm/IR/InstrTypes.h.html#_ZNK4llvm14TerminatorInst12SuccIteratorneERKNS0_12SuccIteratorIT_T0_EE" title='llvm::TerminatorInst::SuccIterator::operator!=' data-ref="_ZNK4llvm14TerminatorInst12SuccIteratorneERKNS0_12SuccIteratorIT_T0_EE">!=</a> <a class="local col8 ref" href="#18e" title='e' data-ref="18e">e</a>; <a class="ref" href="../../../include/llvm-6.0/llvm/IR/InstrTypes.h.html#_ZN4llvm14TerminatorInst12SuccIteratorppEv" title='llvm::TerminatorInst::SuccIterator::operator++' data-ref="_ZN4llvm14TerminatorInst12SuccIteratorppEv">++</a><a class="local col7 ref" href="#17i" title='i' data-ref="17i">i</a>) {</td></tr>
+<tr><th id="141">141</th><td>    <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a>* <dfn class="local col9 decl" id="19succ" title='succ' data-type='llvm::BasicBlock *' data-ref="19succ">succ</dfn> = <a class="ref" href="../../../include/llvm-6.0/llvm/IR/InstrTypes.h.html#_ZNK4llvm14TerminatorInst12SuccIteratordeEv" title='llvm::TerminatorInst::SuccIterator::operator*' data-ref="_ZNK4llvm14TerminatorInst12SuccIteratordeEv">*</a><a class="local col7 ref" href="#17i" title='i' data-ref="17i">i</a>;</td></tr>
+<tr><th id="142">142</th><td>    <b>if</b> (<a class="local col4 ref" href="#14R" title='R' data-ref="14R">R</a>-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/Analysis/RegionInfo.h.html#_ZNK4llvm10RegionBase8containsEPKNT_6BlockTE" title='llvm::RegionBase::contains' data-ref="_ZNK4llvm10RegionBase8containsEPKNT_6BlockTE">contains</a>(<a class="local col9 ref" href="#19succ" title='succ' data-ref="19succ">succ</a>))</td></tr>
+<tr><th id="143">143</th><td>      <a class="local col6 ref" href="#16regionSuccs" title='regionSuccs' data-ref="16regionSuccs">regionSuccs</a>.<a class="ref" href="../../../include/c++/7/bits/stl_vector.h.html#_ZNSt6vector9push_backERKT_" title='std::vector::push_back' data-ref="_ZNSt6vector9push_backERKT_">push_back</a>(<a class="local col9 ref" href="#19succ" title='succ' data-ref="19succ">succ</a>);</td></tr>
+<tr><th id="144">144</th><td>  }</td></tr>
+<tr><th id="145">145</th><td>  <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a>* <dfn class="local col0 decl" id="20newEntry" title='newEntry' data-type='llvm::BasicBlock *' data-ref="20newEntry">newEntry</dfn> = </td></tr>
+<tr><th id="146">146</th><td>    <a class="ref" href="../../../include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h.html#_ZN4llvm10SplitBlockEPNS_10BasicBlockEPNS_11InstructionEPNS_13DominatorTreeEPNS_8LoopInfoE" title='llvm::SplitBlock' data-ref="_ZN4llvm10SplitBlockEPNS_10BasicBlockEPNS_11InstructionEPNS_13DominatorTreeEPNS_8LoopInfoE">SplitBlock</a>(<a class="local col5 ref" href="#15bb" title='bb' data-ref="15bb">bb</a>, <a class="local col5 ref" href="#15bb" title='bb' data-ref="15bb">bb</a>-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#_ZN4llvm10BasicBlock13getTerminatorEv" title='llvm::BasicBlock::getTerminator' data-ref="_ZN4llvm10BasicBlock13getTerminatorEv">getTerminator</a>());</td></tr>
+<tr><th id="147">147</th><td>  <a class="local col0 ref" href="#20newEntry" title='newEntry' data-ref="20newEntry">newEntry</a>-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/IR/Value.h.html#_ZN4llvm5Value7setNameERKNS_5TwineE" title='llvm::Value::setName' data-ref="_ZN4llvm5Value7setNameERKNS_5TwineE">setName</a>(<a class="local col5 ref" href="#15bb" title='bb' data-ref="15bb">bb</a>-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/IR/Value.h.html#_ZNK4llvm5Value7getNameEv" title='llvm::Value::getName' data-ref="_ZNK4llvm5Value7getNameEv">getName</a>() <a class="ref" href="../../../include/llvm-6.0/llvm/ADT/Twine.h.html#_ZN4llvmplERKNS_9StringRefEPKc" title='llvm::operator+' data-ref="_ZN4llvmplERKNS_9StringRefEPKc">+</a> <q>".r_entry"</q>);</td></tr>
+<tr><th id="148">148</th><td>  <a class="local col4 ref" href="#14R" title='R' data-ref="14R">R</a>-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/Analysis/RegionInfo.h.html#_ZN4llvm10RegionBase12replaceEntryEPNT_6BlockTE" title='llvm::RegionBase::replaceEntry' data-ref="_ZN4llvm10RegionBase12replaceEntryEPNT_6BlockTE">replaceEntry</a>(<a class="local col0 ref" href="#20newEntry" title='newEntry' data-ref="20newEntry">newEntry</a>);</td></tr>
+<tr><th id="149">149</th><td></td></tr>
+<tr><th id="150">150</th><td>}</td></tr>
+<tr><th id="151">151</th><td></td></tr>
+<tr><th id="152">152</th><td><i class="doc">/**</i></td></tr>
+<tr><th id="153">153</th><td><i class="doc"> * Adds a dummy node before the given basic block.</i></td></tr>
+<tr><th id="154">154</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="155">155</th><td><i class="doc"> * The edges going in to the original BB are moved to go</i></td></tr>
+<tr><th id="156">156</th><td><i class="doc"> * in to the dummy BB in case the source BB is inside the</i></td></tr>
+<tr><th id="157">157</th><td><i class="doc"> * same region.</i></td></tr>
+<tr><th id="158">158</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="159">159</th><td><em>void</em></td></tr>
+<tr><th id="160">160</th><td><a class="type" href="IsolateRegions.h.html#pocl::IsolateRegions" title='pocl::IsolateRegions' data-ref="pocl::IsolateRegions">IsolateRegions</a>::<dfn class="decl def" id="_ZN4pocl14IsolateRegions14addDummyBeforeEPN4llvm6RegionEPNS1_10BasicBlockE" title='pocl::IsolateRegions::addDummyBefore' data-ref="_ZN4pocl14IsolateRegions14addDummyBeforeEPN4llvm6RegionEPNS1_10BasicBlockE">addDummyBefore</dfn>(<span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/Analysis/RegionInfo.h.html#llvm::Region" title='llvm::Region' data-ref="llvm::Region">Region</a> *<dfn class="local col1 decl" id="21R" title='R' data-type='llvm::Region *' data-ref="21R">R</dfn>, <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a> *<dfn class="local col2 decl" id="22bb" title='bb' data-type='llvm::BasicBlock *' data-ref="22bb">bb</dfn>) {</td></tr>
+<tr><th id="161">161</th><td>  <span class="namespace">std::</span><a class="type" href="../../../include/c++/7/bits/stl_vector.h.html#std::vector" title='std::vector' data-ref="std::vector">vector</a>&lt; <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a>* &gt; <a class="ref fake" href="../../../include/c++/7/bits/stl_vector.h.html#_ZNSt6vectorC1Ev" title='std::vector::vector&lt;_Tp, _Alloc&gt;' data-ref="_ZNSt6vectorC1Ev"></a><dfn class="local col3 decl" id="23regionPreds" title='regionPreds' data-type='std::vector&lt;llvm::BasicBlock *&gt;' data-ref="23regionPreds">regionPreds</dfn>;</td></tr>
+<tr><th id="162">162</th><td></td></tr>
+<tr><th id="163">163</th><td>  <b>for</b> (<a class="typedef" href="../../../include/llvm-6.0/llvm/IR/CFG.h.html#llvm::pred_iterator" title='llvm::pred_iterator' data-type='PredIterator&lt;llvm::BasicBlock, Value::user_iterator&gt;' data-ref="llvm::pred_iterator">pred_iterator</a> <dfn class="local col4 decl" id="24i" title='i' data-type='pred_iterator' data-ref="24i">i</dfn> = <a class="ref" href="../../../include/llvm-6.0/llvm/IR/CFG.h.html#_ZN4llvm10pred_beginEPNS_10BasicBlockE" title='llvm::pred_begin' data-ref="_ZN4llvm10pred_beginEPNS_10BasicBlockE">pred_begin</a>(<a class="local col2 ref" href="#22bb" title='bb' data-ref="22bb">bb</a>), <dfn class="local col5 decl" id="25e" title='e' data-type='pred_iterator' data-ref="25e">e</dfn> = <a class="ref" href="../../../include/llvm-6.0/llvm/IR/CFG.h.html#_ZN4llvm8pred_endEPNS_10BasicBlockE" title='llvm::pred_end' data-ref="_ZN4llvm8pred_endEPNS_10BasicBlockE">pred_end</a>(<a class="local col2 ref" href="#22bb" title='bb' data-ref="22bb">bb</a>);</td></tr>
+<tr><th id="164">164</th><td>       <a class="local col4 ref" href="#24i" title='i' data-ref="24i">i</a> <a class="ref" href="../../../include/llvm-6.0/llvm/IR/CFG.h.html#_ZNK4llvm12PredIteratorneERKNS_12PredIteratorIT_T0_EE" title='llvm::PredIterator::operator!=' data-ref="_ZNK4llvm12PredIteratorneERKNS_12PredIteratorIT_T0_EE">!=</a> <a class="local col5 ref" href="#25e" title='e' data-ref="25e">e</a>; <a class="ref" href="../../../include/llvm-6.0/llvm/IR/CFG.h.html#_ZN4llvm12PredIteratorppEv" title='llvm::PredIterator::operator++' data-ref="_ZN4llvm12PredIteratorppEv">++</a><a class="local col4 ref" href="#24i" title='i' data-ref="24i">i</a>) {</td></tr>
+<tr><th id="165">165</th><td>    <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a>* <dfn class="local col6 decl" id="26pred" title='pred' data-type='llvm::BasicBlock *' data-ref="26pred">pred</dfn> = <a class="ref" href="../../../include/llvm-6.0/llvm/IR/CFG.h.html#_ZNK4llvm12PredIteratordeEv" title='llvm::PredIterator::operator*' data-ref="_ZNK4llvm12PredIteratordeEv">*</a><a class="local col4 ref" href="#24i" title='i' data-ref="24i">i</a>;</td></tr>
+<tr><th id="166">166</th><td>    <b>if</b> (<a class="local col1 ref" href="#21R" title='R' data-ref="21R">R</a>-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/Analysis/RegionInfo.h.html#_ZNK4llvm10RegionBase8containsEPKNT_6BlockTE" title='llvm::RegionBase::contains' data-ref="_ZNK4llvm10RegionBase8containsEPKNT_6BlockTE">contains</a>(<a class="local col6 ref" href="#26pred" title='pred' data-ref="26pred">pred</a>))</td></tr>
+<tr><th id="167">167</th><td>      <a class="local col3 ref" href="#23regionPreds" title='regionPreds' data-ref="23regionPreds">regionPreds</a>.<a class="ref" href="../../../include/c++/7/bits/stl_vector.h.html#_ZNSt6vector9push_backERKT_" title='std::vector::push_back' data-ref="_ZNSt6vector9push_backERKT_">push_back</a>(<a class="local col6 ref" href="#26pred" title='pred' data-ref="26pred">pred</a>);</td></tr>
+<tr><th id="168">168</th><td>  }</td></tr>
+<tr><th id="169">169</th><td>  <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a>* <dfn class="local col7 decl" id="27newExit" title='newExit' data-type='llvm::BasicBlock *' data-ref="27newExit">newExit</dfn> = </td></tr>
+<tr><th id="170">170</th><td>    <a class="ref" href="../../../include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h.html#_ZN4llvm22SplitBlockPredecessorsEPNS_10BasicBlockENS_8ArrayRefIS1_EEPKcPNS_13DominatorTreeEPNS_8LoopInfoEb" title='llvm::SplitBlockPredecessors' data-ref="_ZN4llvm22SplitBlockPredecessorsEPNS_10BasicBlockENS_8ArrayRefIS1_EEPKcPNS_13DominatorTreeEPNS_8LoopInfoEb">SplitBlockPredecessors</a>(<a class="local col2 ref" href="#22bb" title='bb' data-ref="22bb">bb</a>, <a class="ref fake" href="../../../include/llvm-6.0/llvm/ADT/ArrayRef.h.html#_ZN4llvm8ArrayRefC1ERKSt6vectorIT_T_E" title='llvm::ArrayRef::ArrayRef&lt;T&gt;' data-ref="_ZN4llvm8ArrayRefC1ERKSt6vectorIT_T_E"></a><a class="local col3 ref" href="#23regionPreds" title='regionPreds' data-ref="23regionPreds">regionPreds</a>, <q>".r_exit"</q>);</td></tr>
+<tr><th id="171">171</th><td>  <a class="local col1 ref" href="#21R" title='R' data-ref="21R">R</a>-&gt;<a class="ref" href="../../../include/llvm-6.0/llvm/Analysis/RegionInfo.h.html#_ZN4llvm10RegionBase11replaceExitEPNT_6BlockTE" title='llvm::RegionBase::replaceExit' data-ref="_ZN4llvm10RegionBase11replaceExitEPNT_6BlockTE">replaceExit</a>(<a class="local col7 ref" href="#27newExit" title='newExit' data-ref="27newExit">newExit</a>);</td></tr>
+<tr><th id="172">172</th><td>}</td></tr>
+<tr><th id="173">173</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/Metadata.h' l='300' type='void llvm::ReplaceableMetadataImpl::replaceAllUsesWith(llvm::Metadata * MD)'/>
+<use f='include/llvm-6.0/llvm/IR/Metadata.h' l='391' u='c' c='_ZN4llvm15ValueAsMetadata18replaceAllUsesWithEPNS_8MetadataE'/>
+<use f='include/llvm-6.0/llvm/IR/Metadata.h' l='950' u='c' c='_ZN4llvm6MDNode18replaceAllUsesWithEPNS_8MetadataE'/>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='297'>/// \brief Replace all uses of this with MD.
+  ///
+  /// Replace all uses of this with \c MD, which is allowed to be null.</doc>

@@ -1,0 +1,10 @@
+<def f='include/c++/7/bits/stl_map.h' l='1207' ll='1209' type='size_type std::map::count(const key_type &amp; __x) const'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='704' u='c' c='_ZN4llvm18ModuleSummaryIndex15addOriginalNameEmm'/>
+<doc f='include/c++/7/bits/stl_map.h' l='1199'>/**
+       *  @brief  Finds the number of elements with given key.
+       *  @param  __x  Key of (key, value) pairs to be located.
+       *  @return  Number of elements with specified key.
+       *
+       *  This function only makes sense for multimaps; for map the result will
+       *  either be 0 (not present) or 1 (present).
+       */</doc>

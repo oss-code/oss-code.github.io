@@ -1,0 +1,5 @@
+<use f='include/c++/7/bits/stl_vector.h' l='1043' u='c' c='_ZNSt6vector6insertEN9__gnu_cxx17__normal_iteratorINS0_14__alloc_traitsINSt12_Vector_baseIT_T0_E14_Tp_alloc_typeEE13const_pointerESt6vectorIS4_S5_EEEOS4_'/>
+<dec f='include/c++/7/bits/stl_vector.h' l='1487' type='iterator std::vector::_M_insert_rval(const_iterator __position, value_type &amp;&amp; __v)'/>
+<use f='include/c++/7/bits/stl_vector.h' l='1497' u='c' c='_ZNSt6vector14_M_emplace_auxEN9__gnu_cxx17__normal_iteratorINS0_14__alloc_traitsINSt12_Vector_baseIT_T0_E14_Tp_alloc_typeEE13const_pointerESt6vectorIS4_S5_EEEOS4_'/>
+<def f='include/c++/7/bits/vector.tcc' l='311' ll='330' type='iterator std::vector::_M_insert_rval(const_iterator __position, value_type &amp;&amp; __v)'/>
+<doc f='include/c++/7/bits/stl_vector.h' l='1485'>// Either move-construct at the end, or forward to _M_insert_aux.</doc>

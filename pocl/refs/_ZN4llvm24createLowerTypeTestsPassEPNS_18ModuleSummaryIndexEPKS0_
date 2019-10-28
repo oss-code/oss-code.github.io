@@ -1,0 +1,11 @@
+<dec f='include/llvm-6.0/llvm/Transforms/IPO.h' l='240' type='llvm::ModulePass * llvm::createLowerTypeTestsPass(llvm::ModuleSummaryIndex * ExportSummary, const llvm::ModuleSummaryIndex * ImportSummary)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/IPO.h' l='230'>/// \brief This pass lowers type metadata and the llvm.type.test intrinsic to
+/// bitsets.
+///
+/// The behavior depends on the summary arguments:
+/// - If ExportSummary is non-null, this pass will export type identifiers to
+///   the given summary.
+/// - Otherwise, if ImportSummary is non-null, this pass will import type
+///   identifiers from the given summary.
+/// - Otherwise it does neither.
+/// It is invalid for both ExportSummary and ImportSummary to be non-null.</doc>

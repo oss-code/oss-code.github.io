@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/Analysis/BasicAliasAnalysis.h' l='127' ll='137'/>
+<size>144</size>
+<doc f='include/llvm-6.0/llvm/Analysis/BasicAliasAnalysis.h' l='125'>// Represents the internal structure of a GEP, decomposed into a base pointer,
+  // constant offsets, and variable scaled indices.</doc>
+<mbr r='llvm::BasicAAResult::DecomposedGEP::Base' o='0' t='const llvm::Value *'/>
+<mbr r='llvm::BasicAAResult::DecomposedGEP::StructOffset' o='64' t='int64_t'/>
+<mbr r='llvm::BasicAAResult::DecomposedGEP::OtherOffset' o='128' t='int64_t'/>
+<mbr r='llvm::BasicAAResult::DecomposedGEP::VarIndices' o='192' t='SmallVector&lt;llvm::BasicAAResult::VariableGEPIndex, 4&gt;'/>

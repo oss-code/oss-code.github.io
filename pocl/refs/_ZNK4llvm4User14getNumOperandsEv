@@ -1,0 +1,13 @@
+<def f='include/llvm-6.0/llvm/IR/User.h' l='176' type='unsigned int llvm::User::getNumOperands() const'/>
+<use f='include/llvm-6.0/llvm/IR/OperandTraits.h' l='56' u='c' c='_ZN4llvm21OptionalOperandTraits8operandsEPKNS_4UserE'/>
+<use f='include/llvm-6.0/llvm/IR/OperandTraits.h' l='74' u='c' c='_ZN4llvm21VariadicOperandTraits8op_beginEPT_'/>
+<use f='include/llvm-6.0/llvm/IR/OperandTraits.h' l='80' u='c' c='_ZN4llvm21VariadicOperandTraits8operandsEPKNS_4UserE'/>
+<use f='include/llvm-6.0/llvm/IR/OperandTraits.h' l='101' u='c' c='_ZN4llvm20HungoffOperandTraits6op_endEPNS_4UserE'/>
+<use f='include/llvm-6.0/llvm/IR/OperandTraits.h' l='104' u='c' c='_ZN4llvm20HungoffOperandTraits8operandsEPKNS_4UserE'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='473' u='c' c='_ZNK4llvm11GEPOperator13getNumIndicesEv'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='477' u='c' c='_ZNK4llvm11GEPOperator10hasIndicesEv'/>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='265' u='c' c='_ZN17BreakConstantGEPs13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='314' u='c' c='_ZN17BreakConstantGEPs13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='803' u='c' c='_ZN4pocl14ParallelRegion15LocalizeIDLoadsEv'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='431' u='c' c='_ZN4pocl26VariableUniformityAnalysis9isUniformEPN4llvm8FunctionEPNS1_5ValueE'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='170' u='c' c='_ZN4pocl15WorkitemHandler26fixUndominatedVariableUsesEPN4llvm24DominatorTreeWrapperPassERNS1_8FunctionE'/>

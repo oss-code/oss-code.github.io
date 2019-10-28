@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='390' type='int'/>
+<offset>128</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='387'>// We provide for the DFS numbering and Tarjan walk lowlink numbers to be
+    // stored directly within the node. These are both &apos;-1&apos; when nodes are part
+    // of an SCC (or RefSCC), or &apos;0&apos; when not yet reached in a DFS walk.</doc>

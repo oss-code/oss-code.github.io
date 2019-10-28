@@ -1,0 +1,9 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='387' type='cl_int (*)(unsigned int, cl_device_id)'/>
+<offset>832</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='386'>/* uninitializes the driver for a particular device. May free hardware resources. */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='115' u='w' c='pocl_basic_init_device_ops'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='135' u='w' c='pocl_cuda_init_device_ops'/>
+<use f='pocl/lib/CL/devices/devices.c' l='348' u='r' c='pocl_uninit_devices'/>
+<use f='pocl/lib/CL/devices/devices.c' l='350' u='r' c='pocl_uninit_devices'/>
+<use f='pocl/lib/CL/devices/devices.c' l='395' u='r' c='pocl_reinit_devices'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='84' u='w' c='pocl_pthread_init_device_ops'/>

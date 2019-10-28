@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/GlobalsModRef.h' l='101' type='llvm::FunctionModRefBehavior llvm::GlobalsAAResult::getModRefBehavior(llvm::ImmutableCallSite CS)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/GlobalsModRef.h' l='98'>/// getModRefBehavior - Return the behavior of the specified function if
+  /// called from the specified call site.  The call site may be null in which
+  /// case the most generic behavior of this function should be returned.</doc>

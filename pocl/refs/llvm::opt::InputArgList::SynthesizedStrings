@@ -1,0 +1,11 @@
+<dec f='include/llvm-6.0/llvm/Option/ArgList.h' l='384' type='std::list&lt;std::string&gt;'/>
+<use f='include/llvm-6.0/llvm/Option/ArgList.h' l='397' u='w' c='_ZN4llvm3opt12InputArgListC1EOS1_'/>
+<use f='include/llvm-6.0/llvm/Option/ArgList.h' l='397' u='a' c='_ZN4llvm3opt12InputArgListC1EOS1_'/>
+<use f='include/llvm-6.0/llvm/Option/ArgList.h' l='404' u='w' c='_ZN4llvm3opt12InputArgListaSEOS1_'/>
+<use f='include/llvm-6.0/llvm/Option/ArgList.h' l='404' u='a' c='_ZN4llvm3opt12InputArgListaSEOS1_'/>
+<offset>2688</offset>
+<doc f='include/llvm-6.0/llvm/Option/ArgList.h' l='379'>/// Strings for synthesized arguments.
+  ///
+  /// This is mutable since we treat the ArgList as being the list
+  /// of Args, and allow routines to add new strings (to have a
+  /// convenient place to store the memory) via MakeIndex.</doc>

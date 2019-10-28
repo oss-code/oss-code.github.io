@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>UnifyFunctionExitNodes.h source code [include/llvm-6.0/llvm/Transforms/Utils/UnifyFunctionExitNodes.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="llvm::UnifyFunctionExitNodes "/>
+<link rel="stylesheet" href="../../../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'include/llvm-6.0/llvm/Transforms/Utils/UnifyFunctionExitNodes.h'; var root_path = '../../../../..'; var data_path = '../../../../../../data';</script>
+<script src='../../../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../../../..'>include</a>/<a href='../../..'>llvm-6.0</a>/<a href='../..'>llvm</a>/<a href='..'>Transforms</a>/<a href='./'>Utils</a>/<a href='UnifyFunctionExitNodes.h.html'>UnifyFunctionExitNodes.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>//===-- UnifyFunctionExitNodes.h - Ensure fn's have one return --*- C++ -*-===//</i></td></tr>
+<tr><th id="2">2</th><td><i>//</i></td></tr>
+<tr><th id="3">3</th><td><i>//                     The LLVM Compiler Infrastructure</i></td></tr>
+<tr><th id="4">4</th><td><i>//</i></td></tr>
+<tr><th id="5">5</th><td><i>// This file is distributed under the University of Illinois Open Source</i></td></tr>
+<tr><th id="6">6</th><td><i>// License. See LICENSE.TXT for details.</i></td></tr>
+<tr><th id="7">7</th><td><i>//</i></td></tr>
+<tr><th id="8">8</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="9">9</th><td><i>//</i></td></tr>
+<tr><th id="10">10</th><td><i>// This pass is used to ensure that functions have at most one return and one</i></td></tr>
+<tr><th id="11">11</th><td><i>// unwind instruction in them.  Additionally, it keeps track of which node is</i></td></tr>
+<tr><th id="12">12</th><td><i>// the new exit node of the CFG.  If there are no return or unwind instructions</i></td></tr>
+<tr><th id="13">13</th><td><i>// in the function, the getReturnBlock/getUnwindBlock methods will return a null</i></td></tr>
+<tr><th id="14">14</th><td><i>// pointer.</i></td></tr>
+<tr><th id="15">15</th><td><i>//</i></td></tr>
+<tr><th id="16">16</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><u>#<span data-ppcond="18">ifndef</span> <span class="macro" data-ref="_M/LLVM_TRANSFORMS_UTILS_UNIFYFUNCTIONEXITNODES_H">LLVM_TRANSFORMS_UTILS_UNIFYFUNCTIONEXITNODES_H</span></u></td></tr>
+<tr><th id="19">19</th><td><u>#define <dfn class="macro" id="_M/LLVM_TRANSFORMS_UTILS_UNIFYFUNCTIONEXITNODES_H" data-ref="_M/LLVM_TRANSFORMS_UTILS_UNIFYFUNCTIONEXITNODES_H">LLVM_TRANSFORMS_UTILS_UNIFYFUNCTIONEXITNODES_H</dfn></u></td></tr>
+<tr><th id="20">20</th><td></td></tr>
+<tr><th id="21">21</th><td><u>#include <a href="../../Pass.h.html">"llvm/Pass.h"</a></u></td></tr>
+<tr><th id="22">22</th><td><u>#include <a href="../../PassRegistry.h.html">"llvm/PassRegistry.h"</a></u></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><b>namespace</b> <span class="namespace">llvm</span> {</td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><b>struct</b> <dfn class="type def" id="llvm::UnifyFunctionExitNodes" title='llvm::UnifyFunctionExitNodes' data-ref="llvm::UnifyFunctionExitNodes">UnifyFunctionExitNodes</dfn> : <b>public</b> <a class="type" href="../../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> {</td></tr>
+<tr><th id="27">27</th><td>  <a class="type" href="../../IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a> *<dfn class="decl" id="llvm::UnifyFunctionExitNodes::ReturnBlock" title='llvm::UnifyFunctionExitNodes::ReturnBlock' data-ref="llvm::UnifyFunctionExitNodes::ReturnBlock">ReturnBlock</dfn> = <b>nullptr</b>;</td></tr>
+<tr><th id="28">28</th><td>  <a class="type" href="../../IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a> *<dfn class="decl" id="llvm::UnifyFunctionExitNodes::UnwindBlock" title='llvm::UnifyFunctionExitNodes::UnwindBlock' data-ref="llvm::UnifyFunctionExitNodes::UnwindBlock">UnwindBlock</dfn> = <b>nullptr</b>;</td></tr>
+<tr><th id="29">29</th><td>  <a class="type" href="../../IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a> *<dfn class="decl" id="llvm::UnifyFunctionExitNodes::UnreachableBlock" title='llvm::UnifyFunctionExitNodes::UnreachableBlock' data-ref="llvm::UnifyFunctionExitNodes::UnreachableBlock">UnreachableBlock</dfn>;</td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><b>public</b>:</td></tr>
+<tr><th id="32">32</th><td>  <em>static</em> <em>char</em> <dfn class="decl" id="llvm::UnifyFunctionExitNodes::ID" title='llvm::UnifyFunctionExitNodes::ID' data-ref="llvm::UnifyFunctionExitNodes::ID">ID</dfn>; <i>// Pass identification, replacement for typeid</i></td></tr>
+<tr><th id="33">33</th><td>  <dfn class="decl def" id="_ZN4llvm22UnifyFunctionExitNodesC1Ev" title='llvm::UnifyFunctionExitNodes::UnifyFunctionExitNodes' data-ref="_ZN4llvm22UnifyFunctionExitNodesC1Ev">UnifyFunctionExitNodes</dfn>() : <a class="type" href="../../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a><a class="ref" href="../../Pass.h.html#_ZN4llvm12FunctionPassC1ERc" title='llvm::FunctionPass::FunctionPass' data-ref="_ZN4llvm12FunctionPassC1ERc">(</a><a class="member" href="#llvm::UnifyFunctionExitNodes::ID" title='llvm::UnifyFunctionExitNodes::ID' data-ref="llvm::UnifyFunctionExitNodes::ID">ID</a>) {</td></tr>
+<tr><th id="34">34</th><td>    <a class="ref" href="../../InitializePasses.h.html#_ZN4llvm36initializeUnifyFunctionExitNodesPassERNS_12PassRegistryE" title='llvm::initializeUnifyFunctionExitNodesPass' data-ref="_ZN4llvm36initializeUnifyFunctionExitNodesPassERNS_12PassRegistryE">initializeUnifyFunctionExitNodesPass</a>(<span class='refarg'>*<a class="type" href="../../PassRegistry.h.html#llvm::PassRegistry" title='llvm::PassRegistry' data-ref="llvm::PassRegistry">PassRegistry</a>::<a class="ref" href="../../PassRegistry.h.html#_ZN4llvm12PassRegistry15getPassRegistryEv" title='llvm::PassRegistry::getPassRegistry' data-ref="_ZN4llvm12PassRegistry15getPassRegistryEv">getPassRegistry</a>()</span>);</td></tr>
+<tr><th id="35">35</th><td>  }</td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td>  <i>// We can preserve non-critical-edgeness when we unify function exit nodes</i></td></tr>
+<tr><th id="38">38</th><td>  <em>void</em> <dfn class="virtual decl" id="_ZNK4llvm22UnifyFunctionExitNodes16getAnalysisUsageERNS_13AnalysisUsageE" title='llvm::UnifyFunctionExitNodes::getAnalysisUsage' data-ref="_ZNK4llvm22UnifyFunctionExitNodes16getAnalysisUsageERNS_13AnalysisUsageE">getAnalysisUsage</dfn>(<a class="type" href="../../PassAnalysisSupport.h.html#llvm::AnalysisUsage" title='llvm::AnalysisUsage' data-ref="llvm::AnalysisUsage">AnalysisUsage</a> &amp;<dfn class="local col1 decl" id="4121AU" title='AU' data-type='llvm::AnalysisUsage &amp;' data-ref="4121AU">AU</dfn>) <em>const</em> override;</td></tr>
+<tr><th id="39">39</th><td></td></tr>
+<tr><th id="40">40</th><td>  <i>// getReturn|Unwind|UnreachableBlock - Return the new single (or nonexistent)</i></td></tr>
+<tr><th id="41">41</th><td><i>  // return, unwind, or unreachable  basic blocks in the CFG.</i></td></tr>
+<tr><th id="42">42</th><td><i>  //</i></td></tr>
+<tr><th id="43">43</th><td>  <a class="type" href="../../IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a> *<dfn class="decl def" id="_ZNK4llvm22UnifyFunctionExitNodes14getReturnBlockEv" title='llvm::UnifyFunctionExitNodes::getReturnBlock' data-ref="_ZNK4llvm22UnifyFunctionExitNodes14getReturnBlockEv">getReturnBlock</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::UnifyFunctionExitNodes::ReturnBlock" title='llvm::UnifyFunctionExitNodes::ReturnBlock' data-ref="llvm::UnifyFunctionExitNodes::ReturnBlock">ReturnBlock</a>; }</td></tr>
+<tr><th id="44">44</th><td>  <a class="type" href="../../IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a> *<dfn class="decl def" id="_ZNK4llvm22UnifyFunctionExitNodes14getUnwindBlockEv" title='llvm::UnifyFunctionExitNodes::getUnwindBlock' data-ref="_ZNK4llvm22UnifyFunctionExitNodes14getUnwindBlockEv">getUnwindBlock</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::UnifyFunctionExitNodes::UnwindBlock" title='llvm::UnifyFunctionExitNodes::UnwindBlock' data-ref="llvm::UnifyFunctionExitNodes::UnwindBlock">UnwindBlock</a>; }</td></tr>
+<tr><th id="45">45</th><td>  <a class="type" href="../../IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a> *<dfn class="decl def" id="_ZNK4llvm22UnifyFunctionExitNodes19getUnreachableBlockEv" title='llvm::UnifyFunctionExitNodes::getUnreachableBlock' data-ref="_ZNK4llvm22UnifyFunctionExitNodes19getUnreachableBlockEv">getUnreachableBlock</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::UnifyFunctionExitNodes::UnreachableBlock" title='llvm::UnifyFunctionExitNodes::UnreachableBlock' data-ref="llvm::UnifyFunctionExitNodes::UnreachableBlock">UnreachableBlock</a>; }</td></tr>
+<tr><th id="46">46</th><td></td></tr>
+<tr><th id="47">47</th><td>  <em>bool</em> <dfn class="virtual decl" id="_ZN4llvm22UnifyFunctionExitNodes13runOnFunctionERNS_8FunctionE" title='llvm::UnifyFunctionExitNodes::runOnFunction' data-ref="_ZN4llvm22UnifyFunctionExitNodes13runOnFunctionERNS_8FunctionE">runOnFunction</dfn>(<a class="type" href="../../IR/Function.h.html#llvm::Function" title='llvm::Function' data-ref="llvm::Function">Function</a> &amp;<dfn class="local col2 decl" id="4122F" title='F' data-type='llvm::Function &amp;' data-ref="4122F">F</dfn>) override;</td></tr>
+<tr><th id="48">48</th><td>};</td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td><a class="type" href="../../Pass.h.html#llvm::Pass" title='llvm::Pass' data-ref="llvm::Pass">Pass</a> *<dfn class="decl" id="_ZN4llvm32createUnifyFunctionExitNodesPassEv" title='llvm::createUnifyFunctionExitNodesPass' data-ref="_ZN4llvm32createUnifyFunctionExitNodesPassEv">createUnifyFunctionExitNodesPass</dfn>();</td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td>} <i>// end namespace llvm</i></td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td><u>#<span data-ppcond="18">endif</span> // LLVM_TRANSFORMS_UTILS_UNIFYFUNCTIONEXITNODES_H</u></td></tr>
+<tr><th id="55">55</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../../../../pocl/lib/CL/pocl_llvm_build.cc.html'>pocl/lib/CL/pocl_llvm_build.cc</a><br/>Generated on <em>2019-Oct-28</em> from project include<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

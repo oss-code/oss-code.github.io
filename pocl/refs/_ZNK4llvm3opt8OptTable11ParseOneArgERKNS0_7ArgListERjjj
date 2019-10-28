@@ -1,0 +1,15 @@
+<dec f='include/llvm-6.0/llvm/Option/OptTable.h' l='171' type='llvm::opt::Arg * llvm::opt::OptTable::ParseOneArg(const llvm::opt::ArgList &amp; Args, unsigned int &amp; Index, unsigned int FlagsToInclude = 0, unsigned int FlagsToExclude = 0) const'/>
+<doc f='include/llvm-6.0/llvm/Option/OptTable.h' l='157'>/// \brief Parse a single argument; returning the new argument and
+  /// updating Index.
+  ///
+  /// \param [in,out] Index - The current parsing position in the argument
+  /// string list; on return this will be the index of the next argument
+  /// string to parse.
+  /// \param [in] FlagsToInclude - Only parse options with any of these flags.
+  /// Zero is the default which includes all flags.
+  /// \param [in] FlagsToExclude - Don&apos;t parse options with this flag.  Zero
+  /// is the default and means exclude nothing.
+  ///
+  /// \return The parsed argument, or 0 if the argument is missing values
+  /// (in which case Index still points at the conceptual next argument string
+  /// to parse).</doc>

@@ -1,0 +1,6 @@
+<dec f='pocl/lib/CL/devices/bufalloc.h' l='92' type='0'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='197' u='r' c='alloc_buffer_from_region'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='234' u='r' c='alloc_buffer_from_region'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='406' u='r' c='init_mem_region'/>
+<doc f='pocl/lib/CL/devices/bufalloc.h' l='92'>/* try to fit to the end of the region first
+                         (consumes the whole region quicker) */</doc>

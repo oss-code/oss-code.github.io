@@ -1,0 +1,14 @@
+<dec f='include/llvm-6.0/llvm/IR/Metadata.h' l='925' type='void llvm::MDNode::replaceOperandWith(unsigned int I, llvm::Metadata * New)'/>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='924'>/// \brief Replace a specific operand.</doc>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='319' u='c' c='_ZN4llvm13GenericDINode23replaceDwarfOperandWithEjPNS_8MetadataE'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='976' u='c' c='_ZN4llvm15DICompositeType15replaceElementsENS_24MDTupleTypedArrayWrapperINS_6DINodeEEE'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='980' u='c' c='_ZN4llvm15DICompositeType19replaceVTableHolderENS_14TypedDINodeRefINS_6DITypeEEE'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='984' u='c' c='_ZN4llvm15DICompositeType21replaceTemplateParamsENS_24MDTupleTypedArrayWrapperINS_19DITemplateParameterEEE'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1210' u='c' c='_ZN4llvm13DICompileUnit16replaceEnumTypesENS_24MDTupleTypedArrayWrapperINS_15DICompositeTypeEEE'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1213' u='c' c='_ZN4llvm13DICompileUnit20replaceRetainedTypesENS_24MDTupleTypedArrayWrapperINS_6DITypeEEE'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1216' u='c' c='_ZN4llvm13DICompileUnit22replaceGlobalVariablesENS_24MDTupleTypedArrayWrapperINS_26DIGlobalVariableExpressionEEE'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1219' u='c' c='_ZN4llvm13DICompileUnit23replaceImportedEntitiesENS_24MDTupleTypedArrayWrapperINS_16DIImportedEntityEEE'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1221' u='c' c='_ZN4llvm13DICompileUnit13replaceMacrosENS_24MDTupleTypedArrayWrapperINS_11DIMacroNodeEEE'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1641' u='c' c='_ZN4llvm12DISubprogram11replaceUnitEPNS_13DICompileUnitE'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2804' u='c' c='_ZN4llvm11DIMacroFile15replaceElementsENS_24MDTupleTypedArrayWrapperINS_11DIMacroNodeEEE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='305' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>

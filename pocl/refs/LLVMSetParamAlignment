@@ -1,0 +1,7 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2103' type='void LLVMSetParamAlignment(LLVMValueRef Arg, unsigned int Align)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2097'>/**
+ * Set the alignment for a function parameter.
+ *
+ * @see llvm::Argument::addAttr()
+ * @see llvm::AttrBuilder::addAlignmentAttr()
+ */</doc>

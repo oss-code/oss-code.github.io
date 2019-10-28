@@ -1,0 +1,10 @@
+<use f='pocl/include/CL/cl2.hpp' l='2094' u='c' c='_ZN2cl6Device10getDefaultEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='2108' u='c' c='_ZN2cl6Device10setDefaultERKS0_'/>
+<def f='pocl/include/CL/cl2.hpp' l='2124' type='void cl::Device::Device(const cl::Device &amp; dev)'/>
+<use f='pocl/include/CL/cl2.hpp' l='6960' u='c' c='_ZN2cl12CommandQueueC1EmPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='7026' u='c' c='_ZN2cl12CommandQueueC1ENS_15QueuePropertiesEPi'/>
+<doc f='pocl/include/CL/cl2.hpp' l='2121'>/*! \brief Copy constructor to forward copy to the superclass correctly.
+    * Required for MSVC.
+    */</doc>
+<use f='pocl/tests/regression/test_flatten_barrier_subs.cpp' l='83' u='c' c='_Z10get_deviceN2cl8PlatformEj'/>
+<use f='pocl/tests/regression/test_flatten_barrier_subs.cpp' l='108' u='c' c='_Z17exclusive_scan_clRKSt6vectorIiSaIiEERS1_'/>

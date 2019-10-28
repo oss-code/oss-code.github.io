@@ -1,0 +1,7 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='444' type='void (*)(void *, const void *restrict, pocl_mem_identifier *, cl_mem, const size_t *, const size_t *, const size_t *, size_t, size_t, size_t, size_t)'/>
+<offset>1792</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='443'>/* clEnqWriteBufferRect */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='123' u='w' c='pocl_basic_init_device_ops'/>
+<use f='pocl/lib/CL/devices/common.c' l='484' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='485' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='157' u='w' c='pocl_cuda_init_device_ops'/>

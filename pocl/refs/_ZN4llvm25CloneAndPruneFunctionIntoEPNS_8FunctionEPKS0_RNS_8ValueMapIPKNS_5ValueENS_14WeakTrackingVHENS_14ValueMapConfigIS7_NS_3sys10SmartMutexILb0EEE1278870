@@ -1,0 +1,12 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Cloning.h' l='167' type='void llvm::CloneAndPruneFunctionInto(llvm::Function * NewFunc, const llvm::Function * OldFunc, ValueToValueMapTy &amp; VMap, bool ModuleLevelChanges, SmallVectorImpl&lt;llvm::ReturnInst *&gt; &amp; Returns, const char * NameSuffix = &quot;&quot;, llvm::ClonedCodeInfo * CodeInfo = nullptr, llvm::Instruction * TheCall = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Cloning.h' l='156'>/// CloneAndPruneFunctionInto - This works exactly like CloneFunctionInto,
+/// except that it does some simple constant prop and DCE on the fly.  The
+/// effect of this is to copy significantly less code in cases where (for
+/// example) a function call with constant arguments is inlined, and those
+/// constant arguments cause a significant amount of code in the callee to be
+/// dead.  Since this doesn&apos;t produce an exactly copy of the input, it can&apos;t be
+/// used for things like CloneFunction or CloneModule.
+///
+/// If ModuleLevelChanges is false, VMap contains no non-identity GlobalValue
+/// mappings.
+///</doc>

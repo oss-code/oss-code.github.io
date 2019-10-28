@@ -1,0 +1,7 @@
+<dec f='pocl/lib/CL/devices/basic/basic.h' l='44' macro='1' type='void pocl_basic_init_device_ops(struct pocl_device_ops * ops)'/>
+<def f='pocl/lib/CL/devices/basic/basic.c' l='109' ll='158' type='void pocl_basic_init_device_ops(struct pocl_device_ops * ops)'/>
+<dec f='pocl/lib/CL/devices/pthread/pocl-pthread.h' l='35' macro='1' type='void pocl_basic_init_device_ops(struct pocl_device_ops * ops)'/>
+<dec f='pocl/lib/CL/devices/hsa/pocl-hsa.h' l='32' macro='1' type='void pocl_basic_init_device_ops(struct pocl_device_ops * ops)'/>
+<use f='pocl/lib/CL/devices/devices.c' l='84'/>
+<use f='pocl/lib/CL/devices/devices.c' l='84'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='78' u='c' c='pocl_pthread_init_device_ops'/>

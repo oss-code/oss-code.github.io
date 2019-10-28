@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Support/Threading.h' l='146' type='uint64_t llvm::get_threadid()'/>
+<doc f='include/llvm-6.0/llvm/Support/Threading.h' l='142'>/// \brief Return the current thread id, as used in various OS system calls.
+  /// Note that not all platforms guarantee that the value returned will be
+  /// unique across the entire system, so portable code should not assume
+  /// this.</doc>

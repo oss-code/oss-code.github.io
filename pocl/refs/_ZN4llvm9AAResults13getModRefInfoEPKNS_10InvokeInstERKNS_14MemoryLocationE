@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='521' ll='523' type='llvm::ModRefInfo llvm::AAResults::getModRefInfo(const llvm::InvokeInst * I, const llvm::MemoryLocation &amp; Loc)'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='527' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_10InvokeInstEPKNS_5ValueEm'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='637' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_11InstructionERKNS_8OptionalINS_14MemoryLocationEEE'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='519'>/// getModRefInfo (for invokes) - Return information about whether
+  /// a particular invoke modifies or reads the specified memory location.</doc>

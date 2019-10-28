@@ -1,0 +1,16 @@
+<dec f='include/llvm-6.0/llvm/ADT/Twine.h' l='430' type='std::string llvm::Twine::str() const'/>
+<use f='include/llvm-6.0/llvm/Support/FormatProviders.h' l='220' u='c' c='_ZN4llvm15format_providerINS_5TwineEvE6formatERKS1_RNS_11raw_ostreamENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/Support/FileSystem.h' l='869' u='c' c='_ZN4llvm3sys2fs15directory_entryC1ERKNS_5TwineEbNS1_17basic_file_statusE'/>
+<use f='include/llvm-6.0/llvm/Support/FileSystem.h' l='874' u='c' c='_ZN4llvm3sys2fs15directory_entry6assignERKNS_5TwineENS1_17basic_file_statusE'/>
+<doc f='include/llvm-6.0/llvm/ADT/Twine.h' l='425'>/// @}
+    /// @name Output &amp; Conversion.
+    /// @{
+
+    /// Return the twine contents as a std::string.</doc>
+<use f='include/llvm-6.0/llvm/Support/StringSaver.h' l='28' u='c' c='_ZN4llvm11StringSaver4saveERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/Support/SourceMgr.h' l='209' u='c' c='_ZN4llvm7SMFixItC1ENS_5SMLocERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/Support/SourceMgr.h' l='215' u='c' c='_ZN4llvm7SMFixItC1ENS_7SMRangeERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='641' u='c' c='_ZN4llvm28DiagnosticInfoIROptimizationC1ENS_14DiagnosticKindENS_18DiagnosticSeverityEPKcRKNS_8FunctionERKNS_18DiagnosticLocationERKNS_5TwineE'/>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='110' u='c' c='pocl_rm_rf'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='121' u='c' c='_ZN4pocl14ParallelRegion9replicateERN4llvm8ValueMapIPKNS1_5ValueENS1_14WeakTrackingVHENS1_14ValueMapConfigIS5_NS1_3sys10SmartMutexILb0EEEEEEERKNS1_5TwineE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='122' u='c' c='_ZN4pocl14ParallelRegion9replicateERN4llvm8ValueMapIPKNS1_5ValueENS1_14WeakTrackingVHENS1_14ValueMapConfigIS5_NS1_3sys10SmartMutexILb0EEEEEEERKNS1_5TwineE'/>

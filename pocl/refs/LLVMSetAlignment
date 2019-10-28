@@ -1,0 +1,8 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='1852' type='void LLVMSetAlignment(LLVMValueRef V, unsigned int Bytes)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='1845'>/**
+ * Set the preferred alignment of the value.
+ * @see llvm::AllocaInst::setAlignment()
+ * @see llvm::LoadInst::setAlignment()
+ * @see llvm::StoreInst::setAlignment()
+ * @see llvm::GlobalValue::setAlignment()
+ */</doc>

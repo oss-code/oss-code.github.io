@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='595' type='static bool llvm::ConstantDataSequential::isElementTypeCompatible(llvm::Type * Ty)'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='591'>/// Return true if a ConstantDataSequential can be formed with a vector or
+  /// array of the specified element type.
+  /// ConstantDataArray only works with normal float and int types that are
+  /// stored densely in memory, not with things like i42 or x86_f80.</doc>

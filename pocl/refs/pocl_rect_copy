@@ -1,0 +1,11 @@
+<dec f='pocl/lib/CL/pocl_shared.h' l='37' type='cl_int pocl_rect_copy(cl_command_queue command_queue, cl_command_type command_type, cl_mem src, cl_int src_is_image, cl_mem dst, cl_int dst_is_image, const size_t * src_origin, const size_t * dst_origin, const size_t * region, size_t src_row_pitch, size_t src_slice_pitch, size_t dst_row_pitch, size_t dst_slice_pitch, cl_uint num_events_in_wait_list, const cl_event * event_wait_list, cl_event * event, _cl_command_node ** cmd)'/>
+<use f='pocl/lib/CL/clEnqueueCopyBufferRect.c' l='48' u='c' c='POclEnqueueCopyBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueCopyBufferToImage.c' l='41' u='c' c='POclEnqueueCopyBufferToImage'/>
+<use f='pocl/lib/CL/clEnqueueCopyImage.c' l='34' u='c' c='POclEnqueueCopyImage'/>
+<use f='pocl/lib/CL/clEnqueueCopyImageToBuffer.c' l='40' u='c' c='POclEnqueueCopyImageToBuffer'/>
+<def f='pocl/lib/CL/pocl_img_buf_cpy.c' l='36' ll='205' type='cl_int pocl_rect_copy(cl_command_queue command_queue, cl_command_type command_type, cl_mem src, cl_int src_is_image, cl_mem dst, cl_int dst_is_image, const size_t * src_origin, const size_t * dst_origin, const size_t * region, size_t src_row_pitch, size_t src_slice_pitch, size_t dst_row_pitch, size_t dst_slice_pitch, cl_uint num_events_in_wait_list, const cl_event * event_wait_list, cl_event * event, _cl_command_node ** cmd)'/>
+<doc f='pocl/lib/CL/pocl_img_buf_cpy.c' l='30'>/* Copies between images and rectangular buffer copies share most of the code,
+   with specializations only needed for specific checks. The actual API calls
+   thus defer to this function, with the additional information of which of src
+   and/or dst is an image and which is a buffer.
+ */</doc>

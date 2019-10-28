@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='668' type='llvm::ModRefInfo llvm::AAResults::callCapturesBefore(const llvm::Instruction * I, const llvm::MemoryLocation &amp; MemLoc, llvm::DominatorTree * DT, llvm::OrderedBasicBlock * OBB = nullptr)'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='676' u='c' c='_ZN4llvm9AAResults18callCapturesBeforeEPKNS_11InstructionEPKNS_5ValueEmPNS_13DominatorTreeEPNS_17OrderedBasicBlockE'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='662'>/// \brief Return information about whether a particular call site modifies
+  /// or reads the specified memory location \p MemLoc before instruction \p I
+  /// in a BasicBlock. An ordered basic block \p OBB can be used to speed up
+  /// instruction ordering queries inside the BasicBlock containing \p I.
+  /// Early exits in callCapturesBefore may lead to ModRefInfo::Must not being
+  /// set.</doc>

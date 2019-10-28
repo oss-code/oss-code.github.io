@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/ADT/PointerEmbeddedInt.h' l='73' ll='77' type='IntT llvm::PointerEmbeddedInt::operator type-parameter-0-0() const'/>
+<use f='include/llvm-6.0/llvm/Analysis/MemoryDependenceAnalysis.h' l='160' u='c' c='_ZNK4llvm12MemDepResult10isNonLocalEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/MemoryDependenceAnalysis.h' l='166' u='c' c='_ZNK4llvm12MemDepResult14isNonFuncLocalEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/MemoryDependenceAnalysis.h' l='172' u='c' c='_ZNK4llvm12MemDepResult9isUnknownEv'/>
+<doc f='include/llvm-6.0/llvm/ADT/PointerEmbeddedInt.h' l='71'>// Note that this implicit conversion additionally allows all of the basic
+  // comparison operators to work transparently, etc.</doc>

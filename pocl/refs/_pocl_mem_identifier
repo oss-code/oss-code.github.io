@@ -1,0 +1,8 @@
+<def f='pocl/include/pocl.h' l='73' ll='79'/>
+<size>24</size>
+<doc f='pocl/include/pocl.h' l='71'>/* memory identifier: id to point the global memory where memory resides
+                      + pointer to actual data */</doc>
+<mbr r='_pocl_mem_identifier::available' o='0' t='int'/>
+<mbr r='_pocl_mem_identifier::global_mem_id' o='32' t='int'/>
+<mbr r='_pocl_mem_identifier::mem_ptr' o='64' t='void *'/>
+<mbr r='_pocl_mem_identifier::image_data' o='128' t='void *'/>

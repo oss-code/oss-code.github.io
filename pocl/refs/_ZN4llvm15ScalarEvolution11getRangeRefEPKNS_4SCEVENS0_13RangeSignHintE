@@ -1,0 +1,10 @@
+<use f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='788' u='c' c='_ZN4llvm15ScalarEvolution16getUnsignedRangeEPKNS_4SCEVE'/>
+<use f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='793' u='c' c='_ZN4llvm15ScalarEvolution19getUnsignedRangeMinEPKNS_4SCEVE'/>
+<use f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='798' u='c' c='_ZN4llvm15ScalarEvolution19getUnsignedRangeMaxEPKNS_4SCEVE'/>
+<use f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='804' u='c' c='_ZN4llvm15ScalarEvolution14getSignedRangeEPKNS_4SCEVE'/>
+<use f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='809' u='c' c='_ZN4llvm15ScalarEvolution17getSignedRangeMinEPKNS_4SCEVE'/>
+<use f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='814' u='c' c='_ZN4llvm15ScalarEvolution17getSignedRangeMaxEPKNS_4SCEVE'/>
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1355' type='const llvm::ConstantRange &amp; llvm::ScalarEvolution::getRangeRef(const llvm::SCEV * S, llvm::ScalarEvolution::RangeSignHint Hint)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1352'>/// Determine the range for a particular SCEV.
+  /// NOTE: This returns a reference to an entry in a cache. It must be
+  /// copied if its needed for longer.</doc>

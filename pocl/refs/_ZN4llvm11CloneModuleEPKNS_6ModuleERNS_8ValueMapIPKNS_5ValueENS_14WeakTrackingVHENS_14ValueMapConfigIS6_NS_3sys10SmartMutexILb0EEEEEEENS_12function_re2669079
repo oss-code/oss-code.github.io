@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Cloning.h' l='60' type='std::unique_ptr&lt;Module&gt; llvm::CloneModule(const llvm::Module * M, ValueToValueMapTy &amp; VMap, function_ref&lt;bool (const llvm::GlobalValue *)&gt; ShouldCloneDefinition)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Cloning.h' l='55'>/// Return a copy of the specified module. The ShouldCloneDefinition function
+/// controls whether a specific GlobalValue&apos;s definition is cloned. If the
+/// function returns false, the module copy will contain an external reference
+/// in place of the global definition.</doc>

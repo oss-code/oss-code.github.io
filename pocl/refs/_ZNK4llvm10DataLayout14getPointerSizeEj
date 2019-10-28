@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/DataLayout.h' l='322' type='unsigned int llvm::DataLayout::getPointerSize(unsigned int AS = 0) const'/>
+<use f='include/llvm-6.0/llvm/IR/DataLayout.h' l='345' u='c' c='_ZNK4llvm10DataLayout20getPointerSizeInBitsEj'/>
+<use f='include/llvm-6.0/llvm/Target/TargetMachine.h' l='141' u='c' c='_ZNK4llvm13TargetMachine14getPointerSizeEv'/>
+<doc f='include/llvm-6.0/llvm/IR/DataLayout.h' l='319'>/// Layout pointer size
+  /// FIXME: The defaults need to be removed once all of
+  /// the backends/clients are updated.</doc>

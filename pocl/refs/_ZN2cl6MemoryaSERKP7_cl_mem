@@ -1,0 +1,8 @@
+<def f='pocl/include/CL/cl2.hpp' l='3312' ll='3316' type='cl::Memory &amp; cl::Memory::operator=(const cl_mem &amp; rhs)'/>
+<use f='pocl/include/CL/cl2.hpp' l='3918' u='c' c='_ZN2cl6BufferaSERKP7_cl_mem'/>
+<use f='pocl/include/CL/cl2.hpp' l='4311' u='c' c='_ZN2cl5ImageaSERKP7_cl_mem'/>
+<doc f='pocl/include/CL/cl2.hpp' l='3307'>/*! \brief Assignment operator from cl_mem - takes ownership.
+     *
+     *  This effectively transfers ownership of a refcount on the rhs and calls
+     *  clReleaseMemObject() on the value previously held by this instance.
+     */</doc>

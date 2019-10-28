@@ -1,0 +1,45 @@
+<def f='include/llvm-6.0/llvm/Analysis/MemoryDependenceAnalysis.h' l='276' ll='497'/>
+<size>392</size>
+<doc f='include/llvm-6.0/llvm/Analysis/MemoryDependenceAnalysis.h' l='264'>/// Provides a lazy, caching interface for making common memory aliasing
+/// information queries, backed by LLVM&apos;s alias analysis passes.
+///
+/// The dependency information returned is somewhat unusual, but is pragmatic.
+/// If queried about a store or call that might modify memory, the analysis
+/// will return the instruction[s] that may either load from that memory or
+/// store to it.  If queried with a load or call that can never modify memory,
+/// the analysis will return calls and stores that might modify the pointer,
+/// but generally does not return loads unless a) they are volatile, or
+/// b) they load from *must-aliased* pointers.  Returning a dependence on
+/// must-alias&apos;d pointers instead of all pointers interacts well with the
+/// internal caching mechanism.</doc>
+<mbr r='llvm::MemoryDependenceResults::LocalDeps' o='0' t='LocalDepMapType'/>
+<mbr r='llvm::MemoryDependenceResults::NonLocalDefsCache' o='192' t='DenseMap&lt;llvm::Instruction *, llvm::NonLocalDepResult&gt;'/>
+<mbr r='llvm::MemoryDependenceResults::NonLocalPointerDeps' o='384' t='CachedNonLocalPointerInfo'/>
+<mbr r='llvm::MemoryDependenceResults::ReverseNonLocalPtrDeps' o='576' t='ReverseNonLocalPtrDepTy'/>
+<mbr r='llvm::MemoryDependenceResults::NonLocalDeps' o='768' t='NonLocalDepMapType'/>
+<mbr r='llvm::MemoryDependenceResults::ReverseLocalDeps' o='960' t='ReverseDepMapType'/>
+<mbr r='llvm::MemoryDependenceResults::ReverseNonLocalDeps' o='1152' t='ReverseDepMapType'/>
+<mbr r='llvm::MemoryDependenceResults::AA' o='1344' t='AliasAnalysis &amp;'/>
+<mbr r='llvm::MemoryDependenceResults::AC' o='1408' t='llvm::AssumptionCache &amp;'/>
+<mbr r='llvm::MemoryDependenceResults::TLI' o='1472' t='const llvm::TargetLibraryInfo &amp;'/>
+<mbr r='llvm::MemoryDependenceResults::DT' o='1536' t='llvm::DominatorTree &amp;'/>
+<mbr r='llvm::MemoryDependenceResults::PredCache' o='1600' t='llvm::PredIteratorCache'/>
+<fun r='_ZN4llvm23MemoryDependenceResultsC1ERNS_9AAResultsERNS_15AssumptionCacheERKNS_17TargetLibraryInfoERNS_13DominatorTreeE'/>
+<fun r='_ZN4llvm23MemoryDependenceResults10invalidateERNS_8FunctionERKNS_17PreservedAnalysesERNS_15AnalysisManagerIS1_JEE11InvalidatorE'/>
+<fun r='_ZNK4llvm23MemoryDependenceResults24getDefaultBlockScanLimitEv'/>
+<fun r='_ZN4llvm23MemoryDependenceResults13getDependencyEPNS_11InstructionE'/>
+<fun r='_ZN4llvm23MemoryDependenceResults25getNonLocalCallDependencyENS_8CallSiteE'/>
+<fun r='_ZN4llvm23MemoryDependenceResults28getNonLocalPointerDependencyEPNS_11InstructionERNS_15SmallVectorImplINS_17NonLocalDepResultEEE'/>
+<fun r='_ZN4llvm23MemoryDependenceResults17removeInstructionEPNS_11InstructionE'/>
+<fun r='_ZN4llvm23MemoryDependenceResults27invalidateCachedPointerInfoEPNS_5ValueE'/>
+<fun r='_ZN4llvm23MemoryDependenceResults28invalidateCachedPredecessorsEv'/>
+<fun r='_ZN4llvm23MemoryDependenceResults24getPointerDependencyFromERKNS_14MemoryLocationEbNS_14ilist_iteratorINS_12ilist_detail12node_optionsINS_11Instructio3230749'/>
+<fun r='_ZN4llvm23MemoryDependenceResults30getSimplePointerDependencyFromERKNS_14MemoryLocationEbNS_14ilist_iteratorINS_12ilist_detail12node_optionsINS_11Inst8138037'/>
+<fun r='_ZN4llvm23MemoryDependenceResults34getInvariantGroupPointerDependencyEPNS_8LoadInstEPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm23MemoryDependenceResults31getLoadLoadClobberFullWidthSizeEPKNS_5ValueEljPKNS_8LoadInstE'/>
+<fun r='_ZN4llvm23MemoryDependenceResults13releaseMemoryEv'/>
+<fun r='_ZN4llvm23MemoryDependenceResults25getCallSiteDependencyFromENS_8CallSiteEbNS_14ilist_iteratorINS_12ilist_detail12node_optionsINS_11InstructionELb0ELb286045'/>
+<fun r='_ZN4llvm23MemoryDependenceResults27getNonLocalPointerDepFromBBEPNS_11InstructionERKNS_12PHITransAddrERKNS_14MemoryLocationEbPNS_10BasicBlockERNS_15Sma2824746'/>
+<fun r='_ZN4llvm23MemoryDependenceResults23GetNonLocalInfoForBlockEPNS_11InstructionERKNS_14MemoryLocationEbPNS_10BasicBlockEPSt6vectorINS_16NonLocalDepEntryESaIS9_EEj'/>
+<fun r='_ZN4llvm23MemoryDependenceResults39RemoveCachedNonLocalPointerDependenciesENS_14PointerIntPairIPKNS_5ValueELj1EbNS_21PointerLikeTypeTraitsIS4_EENS_18P8877613'/>
+<fun r='_ZNK4llvm23MemoryDependenceResults13verifyRemovedEPNS_11InstructionE'/>

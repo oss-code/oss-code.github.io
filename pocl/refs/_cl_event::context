@@ -1,0 +1,10 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1154' type='cl_context'/>
+<offset>448</offset>
+<use f='pocl/lib/CL/clCreateUserEvent.c' l='22' u='w' c='POclCreateUserEvent'/>
+<use f='pocl/lib/CL/clGetEventInfo.c' l='36' u='r' c='POclGetEventInfo'/>
+<use f='pocl/lib/CL/clReleaseEvent.c' l='33' u='r' c='POclReleaseEvent'/>
+<use f='pocl/lib/CL/clReleaseEvent.c' l='59' u='r' c='POclReleaseEvent'/>
+<use f='pocl/lib/CL/clWaitForEvents.c' l='40' u='r' c='POclWaitForEvents'/>
+<use f='pocl/lib/CL/clWaitForEvents.c' l='40' u='r' c='POclWaitForEvents'/>
+<use f='pocl/lib/CL/pocl_util.c' l='389' u='w' c='pocl_create_event'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1012' u='r' c='pocl_check_event_wait_list'/>

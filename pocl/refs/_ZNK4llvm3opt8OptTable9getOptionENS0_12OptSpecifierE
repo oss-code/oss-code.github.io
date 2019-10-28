@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Option/OptTable.h' l='96' type='const llvm::opt::Option llvm::opt::OptTable::getOption(llvm::opt::OptSpecifier Opt) const'/>
+<use f='include/llvm-6.0/llvm/Option/Option.h' l='107' u='c' c='_ZNK4llvm3opt6Option8getGroupEv'/>
+<use f='include/llvm-6.0/llvm/Option/Option.h' l='113' u='c' c='_ZNK4llvm3opt6Option8getAliasEv'/>
+<doc f='include/llvm-6.0/llvm/Option/OptTable.h' l='92'>/// \brief Get the given Opt&apos;s Option instance, lazily creating it
+  /// if necessary.
+  ///
+  /// \return The option, or null for the INVALID option id.</doc>

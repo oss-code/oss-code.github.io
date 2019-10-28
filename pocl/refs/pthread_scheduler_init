@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/devices/pthread/pocl-pthread_scheduler.h' l='39' type='void pthread_scheduler_init(cl_device_id device)'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='199' u='c' c='pocl_pthread_init'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='236' u='c' c='pocl_pthread_reinit'/>
+<doc f='pocl/lib/CL/devices/pthread/pocl-pthread_scheduler.h' l='38'>/* Initializes scheduler. Must be called before any kernel enqueue */</doc>
+<def f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='84' ll='117' type='void pthread_scheduler_init(cl_device_id device)'/>

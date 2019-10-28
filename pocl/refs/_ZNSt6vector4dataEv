@@ -1,0 +1,31 @@
+<def f='include/c++/7/bits/stl_vector.h' l='919' ll='921' type='_Tp * std::vector::data()'/>
+<doc f='include/c++/7/bits/stl_vector.h' l='915'>/**
+       *   Returns a pointer such that [data(), data() + size()) is a valid
+       *   range.  For a non-empty %vector, data() == &amp;front().
+       */</doc>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='386' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='386' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/include/CL/cl2.hpp' l='992' u='c' c='_ZN2cl6detail13getInfoHelperET_jPSt6vectorIS2_IhSaIhEESaIS4_EEi'/>
+<use f='pocl/include/CL/cl2.hpp' l='995' u='c' c='_ZN2cl6detail13getInfoHelperET_jPSt6vectorIS2_IhSaIhEESaIS4_EEi'/>
+<use f='pocl/include/CL/cl2.hpp' l='1081' u='c' c='_ZN2cl6detail13getInfoHelperET_jPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEl'/>
+<use f='pocl/include/CL/cl2.hpp' l='1108' u='c' c='_ZN2cl6detail13getInfoHelperET_jPSt5arrayImXT0_EEl'/>
+<use f='pocl/include/CL/cl2.hpp' l='2235' u='c' c='_ZN2cl6Device16createSubDevicesEPKlPSt6vectorIS0_SaIS0_EE'/>
+<use f='pocl/include/CL/cl2.hpp' l='2351' u='c' c='_ZN2cl8Platform11makeDefaultEv'/>
+<use f='pocl/include/CL/cl2.hpp' l='2476' u='c' c='_ZNK2cl8Platform10getDevicesEmPSt6vectorINS_6DeviceESaIS2_EE'/>
+<use f='pocl/include/CL/cl2.hpp' l='2605' u='c' c='_ZN2cl8Platform3getEPSt6vectorIS0_SaIS0_EE'/>
+<use f='pocl/include/CL/cl2.hpp' l='2789' u='c' c='_ZN2cl7ContextC1ERKSt6vectorINS_6DeviceESaIS2_EEPlPFvPKcPKvmPvESC_Pi'/>
+<use f='pocl/include/CL/cl2.hpp' l='3046' u='c' c='_ZNK2cl7Context24getSupportedImageFormatsEmjPSt6vectorINS_11ImageFormatESaIS2_EE'/>
+<use f='pocl/include/CL/cl2.hpp' l='6240' u='c' c='_ZN2cl7ProgramC1ERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS7_EEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6240' u='c' c='_ZN2cl7ProgramC1ERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS7_EEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6275' u='c' c='_ZN2cl7ProgramC1ERKNS_7ContextERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaISA_EEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6275' u='c' c='_ZN2cl7ProgramC1ERKNS_7ContextERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaISA_EEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6459' u='c' c='_ZN2cl7ProgramC1ERKNS_7ContextERKSt6vectorINS_6DeviceESaIS5_EERKS4_IS4_IhSaIhEESaISB_EEPS4_IiSaIiEEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6460' u='c' c='_ZN2cl7ProgramC1ERKNS_7ContextERKSt6vectorINS_6DeviceESaIS5_EERKS4_IS4_IhSaIhEESaISB_EEPS4_IiSaIiEEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6460' u='c' c='_ZN2cl7ProgramC1ERKNS_7ContextERKSt6vectorINS_6DeviceESaIS5_EERKS4_IS4_IhSaIhEESaISB_EEPS4_IiSaIiEEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6494' u='c' c='_ZN2cl7ProgramC1ERKNS_7ContextERKSt6vectorINS_6DeviceESaIS5_EERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='6568' u='c' c='_ZNK2cl7Program5buildERKSt6vectorINS_6DeviceESaIS2_EEPKcPFvP11_cl_programPvESB_'/>
+<use f='pocl/include/CL/cl2.hpp' l='6712' u='c' c='_ZN2cl7Program13createKernelsEPSt6vectorINS_6KernelESaIS2_EE'/>
+<use f='pocl/include/CL/cl2.hpp' l='6797' u='c' c='_ZN2cl11linkProgramESt6vectorINS_7ProgramESaIS1_EEPKcPFvP11_cl_programPvES8_Pi'/>
+<use f='pocl/include/CL/cl2.hpp' l='8213' u='c' c='_ZNK2cl12CommandQueue24enqueueMigrateMemObjectsERKSt6vectorINS_6MemoryESaIS2_EEmPKS1_INS_5EventESaIS7_EEPS7_'/>
+<use f='pocl/include/CL/cl2.hpp' l='8421' u='c' c='_ZNK2cl12CommandQueue19enqueueNativeKernelEPFvPvESt4pairIS1_mEPKSt6vectorINS_6MemoryESaIS7_EEPKS6_IPKvSaISD_EEPKS6_INS_5EventESaISI_EEPSI_'/>
+<use f='pocl/tests/regression/test_flatten_barrier_subs.cpp' l='199' u='c' c='_Z17exclusive_scan_clRKSt6vectorIiSaIiEERS1_'/>

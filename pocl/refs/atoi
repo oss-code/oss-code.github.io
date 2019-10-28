@@ -1,0 +1,12 @@
+<dec f='include/stdlib.h' l='147' type='int atoi(const char * __nptr)'/>
+<use f='pocl/bin/poclcc.c' l='169' u='c' c='process_device_id'/>
+<doc f='include/stdlib.h' l='146'>/* Convert a string to an integer.  */</doc>
+<use f='pocl/examples/vecadd/vecadd.c' l='79' u='c' c='main'/>
+<use f='pocl/examples/vecadd/vecadd.c' l='82' u='c' c='main'/>
+<use f='pocl/lib/CL/pocl_runtime_config.c' l='84' u='c' c='pocl_get_int_option'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandlerChooser.cc' l='103' u='c' c='_ZN4pocl22WorkitemHandlerChooser13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='488' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/tests/workgroup/run_kernel.c' l='73' u='c' c='main'/>
+<use f='pocl/tests/workgroup/run_kernel.c' l='74' u='c' c='main'/>
+<use f='pocl/tests/workgroup/run_kernel.c' l='75' u='c' c='main'/>
+<use f='pocl/tests/workgroup/run_kernel.c' l='77' u='c' c='main'/>

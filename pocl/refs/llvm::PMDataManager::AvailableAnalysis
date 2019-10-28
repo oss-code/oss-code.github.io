@@ -1,0 +1,8 @@
+<use f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='343' u='m' c='_ZN4llvm13PMDataManager22initializeAnalysisInfoEv'/>
+<use f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='395' u='a' c='_ZN4llvm13PMDataManager20getAvailableAnalysisEv'/>
+<dec f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='430' type='DenseMap&lt;AnalysisID, llvm::Pass *&gt;'/>
+<offset>1792</offset>
+<doc f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='426'>// Set of available Analysis. This information is used while scheduling
+  // pass. If a pass requires an analysis which is not available then
+  // the required analysis pass is scheduled to run before the pass itself is
+  // scheduled to run.</doc>

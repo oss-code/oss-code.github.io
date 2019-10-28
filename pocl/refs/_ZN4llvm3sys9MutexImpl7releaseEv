@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Support/Mutex.h' l='59' type='bool llvm::sys::MutexImpl::release()'/>
+<use f='include/llvm-6.0/llvm/Support/Mutex.h' l='114' u='c' c='_ZN4llvm3sys10SmartMutex6unlockEv'/>
+<doc f='include/llvm-6.0/llvm/Support/Mutex.h' l='54'>/// Attempts to release the lock. If the lock is held by the current
+      /// thread, the lock is released allowing other threads to acquire the
+      /// lock.
+      /// @returns false if any kind of error occurs, true otherwise.
+      /// @brief Unconditionally release the lock.</doc>

@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='860' type='RegionT * llvm::RegionInfoBase::getCommonRegion(SmallVectorImpl&lt;RegionT *&gt; &amp; Regions) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='856'>/// @brief Find the smallest region that contains a set of regions.
+  ///
+  /// @param Regions A vector of regions.
+  /// @return The smallest region that contains all regions in Regions.</doc>

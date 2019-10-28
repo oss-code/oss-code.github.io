@@ -1,0 +1,8 @@
+<def f='include/hwloc/helper.h' l='1001' ll='1014' type='void hwloc_cpuset_from_nodeset_strict(struct hwloc_topology * topology, hwloc_cpuset_t _cpuset, hwloc_const_nodeset_t nodeset)'/>
+<doc f='include/hwloc/helper.h' l='994'>/** \brief Convert a NUMA node set into a CPU set without handling non-NUMA cases
+ *
+ * This is the strict variant of hwloc_cpuset_from_nodeset(). It does not fix
+ * non-NUMA cases. If the topology contains some NUMA nodes, behave exactly
+ * the same. However, if the topology contains no NUMA nodes, return an empty
+ * cpuset.
+ */</doc>

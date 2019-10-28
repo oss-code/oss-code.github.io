@@ -1,0 +1,28 @@
+<inh f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='556' c='llvm::DIType'/>
+<def f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='654' ll='704'/>
+<size>56</size>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='650'>/// Basic type, like &apos;int&apos; or &apos;float&apos;.
+///
+/// TODO: Split out DW_TAG_unspecified_type.
+/// TODO: Drop unused accessors.</doc>
+<mbr r='llvm::DIBasicType::Encoding' o='416' t='unsigned int'/>
+<fun r='_ZN4llvm11DIBasicTypeC1ERNS_11LLVMContextENS_8Metadata11StorageTypeEjmjjNS_8ArrayRefIPS3_EE'/>
+<fun r='_ZN4llvm11DIBasicTypeD1Ev'/>
+<fun r='_ZN4llvm11DIBasicType7getImplERNS_11LLVMContextEjNS_9StringRefEmjjNS_8Metadata11StorageTypeEb'/>
+<fun r='_ZN4llvm11DIBasicType7getImplERNS_11LLVMContextEjPNS_8MDStringEmjjNS_8Metadata11StorageTypeEb'/>
+<fun r='_ZNK4llvm11DIBasicType9cloneImplEv'/>
+<fun r='_ZN4llvm11DIBasicType3getERNS_11LLVMContextEjNS_9StringRefE'/>
+<fun r='_ZN4llvm11DIBasicType11getIfExistsERNS_11LLVMContextEjNS_9StringRefE'/>
+<fun r='_ZN4llvm11DIBasicType11getDistinctERNS_11LLVMContextEjNS_9StringRefE'/>
+<fun r='_ZN4llvm11DIBasicType12getTemporaryERNS_11LLVMContextEjNS_9StringRefE'/>
+<fun r='_ZN4llvm11DIBasicType3getERNS_11LLVMContextEjNS_9StringRefEmjj'/>
+<fun r='_ZN4llvm11DIBasicType11getIfExistsERNS_11LLVMContextEjNS_9StringRefEmjj'/>
+<fun r='_ZN4llvm11DIBasicType11getDistinctERNS_11LLVMContextEjNS_9StringRefEmjj'/>
+<fun r='_ZN4llvm11DIBasicType12getTemporaryERNS_11LLVMContextEjNS_9StringRefEmjj'/>
+<fun r='_ZN4llvm11DIBasicType3getERNS_11LLVMContextEjPNS_8MDStringEmjj'/>
+<fun r='_ZN4llvm11DIBasicType11getIfExistsERNS_11LLVMContextEjPNS_8MDStringEmjj'/>
+<fun r='_ZN4llvm11DIBasicType11getDistinctERNS_11LLVMContextEjPNS_8MDStringEmjj'/>
+<fun r='_ZN4llvm11DIBasicType12getTemporaryERNS_11LLVMContextEjPNS_8MDStringEmjj'/>
+<fun r='_ZNK4llvm11DIBasicType5cloneEv'/>
+<fun r='_ZNK4llvm11DIBasicType11getEncodingEv'/>
+<fun r='_ZN4llvm11DIBasicType7classofEPKNS_8MetadataE'/>

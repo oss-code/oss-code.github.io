@@ -1,0 +1,4 @@
+<dec f='pocl/lib/CL/pocl_llvm.h' l='37' type='char * get_llvm_cpu_name()'/>
+<doc f='pocl/lib/CL/pocl_llvm.h' l='36'>/* Returns the cpu name as reported by LLVM. */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='367' u='c' c='pocl_init_cpu_device_infos'/>
+<def f='pocl/lib/CL/pocl_llvm_utils.cc' l='106' ll='125' type='char * get_llvm_cpu_name()'/>

@@ -1,0 +1,9 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2282' type='LLVMBasicBlockRef LLVMGetFirstBasicBlock(LLVMValueRef Fn)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2274'>/**
+ * Obtain the first basic block in a function.
+ *
+ * The returned basic block can be used as an iterator. You will likely
+ * eventually call into LLVMGetNextBasicBlock() with it.
+ *
+ * @see llvm::Function::begin()
+ */</doc>

@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='866' type='RegionT * llvm::RegionInfoBase::getCommonRegion(SmallVectorImpl&lt;BlockT *&gt; &amp; BBs) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='862'>/// @brief Find the smallest region that contains a set of basic blocks.
+  ///
+  /// @param BBs A vector of basic blocks.
+  /// @return The smallest region that contains all basic blocks in BBS.</doc>

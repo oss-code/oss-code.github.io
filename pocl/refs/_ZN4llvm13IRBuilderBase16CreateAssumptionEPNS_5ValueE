@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='555' type='llvm::CallInst * llvm::IRBuilderBase::CreateAssumption(llvm::Value * Cond)'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1905' u='c' c='_ZN4llvm9IRBuilder31CreateAlignmentAssumptionHelperERKNS_10DataLayoutEPNS_5ValueES5_PNS_4TypeES5_'/>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='553'>/// \brief Create an assume intrinsic call that allows the optimizer to
+  /// assume that the provided condition will be true.</doc>

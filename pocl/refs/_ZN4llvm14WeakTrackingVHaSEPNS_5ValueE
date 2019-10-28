@@ -1,0 +1,14 @@
+<def f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='191' ll='193' type='llvm::Value * llvm::WeakTrackingVH::operator=(llvm::Value * RHS)'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='432' u='c' c='_ZL16handleGetWorkDimPN4llvm6ModuleEPKc'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='636' u='c' c='_Z23convertPtrArgsToOffsetsPN4llvm6ModuleEPKcjPNS_14GlobalVariableE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='661' u='c' c='_Z23convertPtrArgsToOffsetsPN4llvm6ModuleEPKcjPNS_14GlobalVariableE'/>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='183' u='c' c='_ZN12_GLOBAL__N_115AutomaticLocals22processAutomaticLocalsEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='189' u='c' c='_ZN12_GLOBAL__N_115AutomaticLocals22processAutomaticLocalsEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='130' u='c' c='_ZN4pocl14ParallelRegion9replicateERN4llvm8ValueMapIPKNS1_5ValueENS1_14WeakTrackingVHENS1_14ValueMapConfigIS5_NS1_3sys10SmartMutexILb0EEEEEEERKNS1_5TwineE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='455' u='c' c='_ZL27cloneFunctionWithPrintfArgsPN4llvm5ValueES1_S1_PNS_8FunctionEPNS_6ModuleE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='146' u='c' c='_ZL24CloneFuncFixOpenCLImageTPN4llvm6ModuleEPNS_8FunctionE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='226' u='c' c='_ZL8CopyFuncN4llvm9StringRefEPKNS_6ModuleEPS1_RNS_8ValueMapIPKNS_5ValueENS_14WeakTrackingVHENS_14ValueMapConfigIS8_NS_3sys10SmartMutexILb0EEEEEEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='233' u='c' c='_ZL8CopyFuncN4llvm9StringRefEPKNS_6ModuleEPS1_RNS_8ValueMapIPKNS_5ValueENS_14WeakTrackingVHENS_14ValueMapConfigIS8_NS_3sys10SmartMutexILb0EEEEEEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='310' u='c' c='_ZL11shared_copyPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERNS_8ValueMapIPKNS_5ValueENS_14WeakTrackingVHENS_14ValueMapCo8254284'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='409' u='c' c='_Z4linkPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='466' u='c' c='_Z21copyKernelFromBitcodePKcPN4llvm6ModuleEPKS2_'/>

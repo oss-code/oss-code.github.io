@@ -1,0 +1,32 @@
+<dec f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='63' type='static llvm::IntegerType * llvm::IntegerType::get(llvm::LLVMContext &amp; C, unsigned int NumBits)'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='409' u='c' c='_ZN4llvm10VectorType10getIntegerEPS0_'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='417' u='c' c='_ZN4llvm10VectorType28getExtendedElementVectorTypeEPS0_'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='427' u='c' c='_ZN4llvm10VectorType29getTruncatedElementVectorTypeEPS0_'/>
+<doc f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='58'>/// This static method is the primary way of constructing an IntegerType.
+  /// If an IntegerType with the same NumBits value was previously instantiated,
+  /// that instance will be returned. Otherwise a new one will be created. Only
+  /// one instance with a given NumBits value is ever created.
+  /// @brief Get or create an IntegerType instance.</doc>
+<use f='pocl/lib/llvmopencl/Kernel.cc' l='285' u='c' c='_ZN4pocl6Kernel20addLocalSizeInitCodeEmmm'/>
+<use f='pocl/lib/llvmopencl/LLVMUtils.cc' l='126' u='c' c='_ZN4pocl19createConstantIntMDERN4llvm11LLVMContextEi'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='293' u='c' c='_ZN4pocl14ParallelRegion17insertLocalIdInitEPN4llvm10BasicBlockEjjj'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='640' u='c' c='_ZN4pocl14ParallelRegion12InjectPrintFEPN4llvm11InstructionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIPNS1_5ValueESaISC_EE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='647' u='c' c='_ZN4pocl14ParallelRegion12InjectPrintFEPN4llvm11InstructionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIPNS1_5ValueESaISC_EE'/>
+<use f='include/llvm-6.0/llvm/IR/TypeBuilder.h' l='163' u='c' c='_ZN4llvm11TypeBuilderIcLb0EE3getERNS_11LLVMContextE'/>
+<use f='include/llvm-6.0/llvm/IR/TypeBuilder.h' l='163' u='c' c='_ZN4llvm11TypeBuilderIaLb0EE3getERNS_11LLVMContextE'/>
+<use f='include/llvm-6.0/llvm/IR/TypeBuilder.h' l='163' u='c' c='_ZN4llvm11TypeBuilderIhLb0EE3getERNS_11LLVMContextE'/>
+<use f='include/llvm-6.0/llvm/IR/TypeBuilder.h' l='163' u='c' c='_ZN4llvm11TypeBuilderIsLb0EE3getERNS_11LLVMContextE'/>
+<use f='include/llvm-6.0/llvm/IR/TypeBuilder.h' l='163' u='c' c='_ZN4llvm11TypeBuilderItLb0EE3getERNS_11LLVMContextE'/>
+<use f='include/llvm-6.0/llvm/IR/TypeBuilder.h' l='163' u='c' c='_ZN4llvm11TypeBuilderIiLb0EE3getERNS_11LLVMContextE'/>
+<use f='include/llvm-6.0/llvm/IR/TypeBuilder.h' l='163' u='c' c='_ZN4llvm11TypeBuilderIjLb0EE3getERNS_11LLVMContextE'/>
+<use f='include/llvm-6.0/llvm/IR/TypeBuilder.h' l='163' u='c' c='_ZN4llvm11TypeBuilderIlLb0EE3getERNS_11LLVMContextE'/>
+<use f='include/llvm-6.0/llvm/IR/TypeBuilder.h' l='163' u='c' c='_ZN4llvm11TypeBuilderImLb0EE3getERNS_11LLVMContextE'/>
+<use f='include/llvm-6.0/llvm/IR/TypeBuilder.h' l='163' u='c' c='_ZN4llvm11TypeBuilderIxLb0EE3getERNS_11LLVMContextE'/>
+<use f='include/llvm-6.0/llvm/IR/TypeBuilder.h' l='163' u='c' c='_ZN4llvm11TypeBuilderIyLb0EE3getERNS_11LLVMContextE'/>
+<use f='include/llvm-6.0/llvm/IR/TypeBuilder.h' l='192' u='c' c='_ZN4llvm11TypeBuilderINS_5types1iIXT_EEEXT0_EE3getERNS_11LLVMContextE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='173' u='c' c='_ZN4pocl9Workgroup11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='977' u='c' c='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='990' u='c' c='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='999' u='c' c='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1382' u='c' c='_ZN4pocl9Workgroup27createFastWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='85' u='c' c='_ZN4pocl15WorkitemHandler10InitializeEPNS_6KernelE'/>

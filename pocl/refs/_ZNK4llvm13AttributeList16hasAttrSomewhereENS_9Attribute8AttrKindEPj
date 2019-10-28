@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/Attributes.h' l='567' type='bool llvm::AttributeList::hasAttrSomewhere(Attribute::AttrKind Kind, unsigned int * Index = nullptr) const'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1867' u='c' c='_ZNK4llvm8CallInst16hasByValArgumentEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='3967' u='c' c='_ZNK4llvm10InvokeInst16hasByValArgumentEv'/>
+<doc f='include/llvm-6.0/llvm/IR/Attributes.h' l='564'>/// \brief Return true if the specified attribute is set for at least one
+  /// parameter or for the return value. If Index is not nullptr, the index
+  /// of a parameter with the specified attribute is provided.</doc>

@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='248' type='unsigned int llvm::TargetTransformInfo::getEstimatedNumberOfCaseClusters(const llvm::SwitchInst &amp; SI, unsigned int &amp; JTSize) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='245'>/// \return The estimated number of case clusters when lowering \p &apos;SI&apos;.
+  /// \p JTSize Set a jump table size only when \p SI is suitable for a jump
+  /// table.</doc>

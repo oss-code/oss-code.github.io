@@ -1,0 +1,16 @@
+<dec f='include/stdio.h' l='242' type='int fflush(FILE * __stream)'/>
+<doc f='include/stdio.h' l='238'>/* Flush STREAM, or all streams if STREAM is NULL.
+
+   This function is a possible cancellation point and therefore not
+   marked with __THROW.  */</doc>
+<use f='pocl/tests/kernel/kernel.c' l='146' u='c' c='main'/>
+<use f='pocl/tests/kernel/kernel.c' l='147' u='c' c='main'/>
+<use f='pocl/tests/kernel/kernel.c' l='149' u='c' c='main'/>
+<use f='pocl/tests/kernel/kernel.c' l='150' u='c' c='main'/>
+<use f='pocl/tests/kernel/kernel.c' l='155' u='c' c='main'/>
+<use f='pocl/tests/kernel/kernel.c' l='156' u='c' c='main'/>
+<use f='pocl/tests/kernel/kernel.c' l='158' u='c' c='main'/>
+<use f='pocl/tests/kernel/kernel.c' l='159' u='c' c='main'/>
+<use f='pocl/tests/kernel/kernel.c' l='166' u='c' c='main'/>
+<use f='pocl/tests/kernel/kernel.c' l='167' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clSetEventCallback.c' l='64' u='c' c='callback_function'/>

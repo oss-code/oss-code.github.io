@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Support/MathExtras.h' l='719' ll='721' type='uint64_t llvm::OffsetToAlignment(uint64_t Value, uint64_t Align)'/>
+<doc f='include/llvm-6.0/llvm/Support/MathExtras.h' l='716'>/// Returns the offset to the next integer (mod 2**64) that is greater than
+/// or equal to \p Value and is a multiple of \p Align. \p Align must be
+/// non-zero.</doc>

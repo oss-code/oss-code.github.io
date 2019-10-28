@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Module.h' l='331' type='llvm::Constant * llvm::Module::getOrInsertFunction(llvm::StringRef Name, llvm::FunctionType * T)'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='810' u='c' c='_ZL17mapLibDeviceCallsPN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='953' u='c' c='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1359' u='c' c='_ZN4pocl9Workgroup27createFastWorkgroupLauncherEPN4llvm8FunctionE'/>

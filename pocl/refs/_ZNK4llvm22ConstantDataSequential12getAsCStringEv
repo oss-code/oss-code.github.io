@@ -1,0 +1,3 @@
+<def f='include/llvm-6.0/llvm/IR/Constants.h' l='654' ll='658' type='llvm::StringRef llvm::ConstantDataSequential::getAsCString() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='652'>/// If this array is isCString(), then this method returns the array (without
+  /// the trailing null byte) as a StringRef. Otherwise, it asserts out.</doc>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>PassInfo.h source code [include/llvm-6.0/llvm/PassInfo.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="llvm::PassInfo "/>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'include/llvm-6.0/llvm/PassInfo.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>include</a>/<a href='..'>llvm-6.0</a>/<a href='./'>llvm</a>/<a href='PassInfo.h.html'>PassInfo.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>//===- llvm/PassInfo.h - Pass Info class ------------------------*- C++ -*-===//</i></td></tr>
+<tr><th id="2">2</th><td><i>//</i></td></tr>
+<tr><th id="3">3</th><td><i>//                     The LLVM Compiler Infrastructure</i></td></tr>
+<tr><th id="4">4</th><td><i>//</i></td></tr>
+<tr><th id="5">5</th><td><i>// This file is distributed under the University of Illinois Open Source</i></td></tr>
+<tr><th id="6">6</th><td><i>// License. See LICENSE.TXT for details.</i></td></tr>
+<tr><th id="7">7</th><td><i>//</i></td></tr>
+<tr><th id="8">8</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="9">9</th><td><i>//</i></td></tr>
+<tr><th id="10">10</th><td><i>// This file defines and implements the PassInfo class.</i></td></tr>
+<tr><th id="11">11</th><td><i>//</i></td></tr>
+<tr><th id="12">12</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td><u>#<span data-ppcond="14">ifndef</span> <span class="macro" data-ref="_M/LLVM_PASSINFO_H">LLVM_PASSINFO_H</span></u></td></tr>
+<tr><th id="15">15</th><td><u>#define <dfn class="macro" id="_M/LLVM_PASSINFO_H" data-ref="_M/LLVM_PASSINFO_H">LLVM_PASSINFO_H</dfn></u></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><u>#include <a href="ADT/StringRef.h.html">"llvm/ADT/StringRef.h"</a></u></td></tr>
+<tr><th id="18">18</th><td><u>#include <a href="../../c++/7/cassert.html">&lt;cassert&gt;</a></u></td></tr>
+<tr><th id="19">19</th><td><u>#include <a href="../../c++/7/vector.html">&lt;vector&gt;</a></u></td></tr>
+<tr><th id="20">20</th><td></td></tr>
+<tr><th id="21">21</th><td><b>namespace</b> <span class="namespace">llvm</span> {</td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><b>class</b> <a class="type" href="Pass.h.html#llvm::Pass" title='llvm::Pass' data-ref="llvm::Pass" id="llvm::Pass">Pass</a>;</td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><i>//===---------------------------------------------------------------------------</i></td></tr>
+<tr><th id="26">26</th><td><i>/// PassInfo class - An instance of this class exists for every pass known by</i></td></tr>
+<tr><th id="27">27</th><td><i>/// the system, and can be obtained from a live Pass by calling its</i></td></tr>
+<tr><th id="28">28</th><td><i>/// getPassInfo() method.  These objects are set up by the RegisterPass&lt;&gt;</i></td></tr>
+<tr><th id="29">29</th><td><i>/// template.</i></td></tr>
+<tr><th id="30">30</th><td><i>///</i></td></tr>
+<tr><th id="31">31</th><td><b>class</b> <dfn class="type def" id="llvm::PassInfo" title='llvm::PassInfo' data-ref="llvm::PassInfo">PassInfo</dfn> {</td></tr>
+<tr><th id="32">32</th><td><b>public</b>:</td></tr>
+<tr><th id="33">33</th><td>  <b>using</b> <dfn class="typedef" id="llvm::PassInfo::NormalCtor_t" title='llvm::PassInfo::NormalCtor_t' data-type='llvm::Pass *(*)()' data-ref="llvm::PassInfo::NormalCtor_t">NormalCtor_t</dfn> = <a class="type" href="Pass.h.html#llvm::Pass" title='llvm::Pass' data-ref="llvm::Pass">Pass</a>* (*)();</td></tr>
+<tr><th id="34">34</th><td></td></tr>
+<tr><th id="35">35</th><td><b>private</b>:</td></tr>
+<tr><th id="36">36</th><td>  <a class="type" href="ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="decl" id="llvm::PassInfo::PassName" title='llvm::PassInfo::PassName' data-ref="llvm::PassInfo::PassName">PassName</dfn>;     <i>// Nice name for Pass</i></td></tr>
+<tr><th id="37">37</th><td>  <a class="type" href="ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="decl" id="llvm::PassInfo::PassArgument" title='llvm::PassInfo::PassArgument' data-ref="llvm::PassInfo::PassArgument">PassArgument</dfn>; <i>// Command Line argument to run this pass</i></td></tr>
+<tr><th id="38">38</th><td>  <em>const</em> <em>void</em> *<dfn class="decl" id="llvm::PassInfo::PassID" title='llvm::PassInfo::PassID' data-ref="llvm::PassInfo::PassID">PassID</dfn>;</td></tr>
+<tr><th id="39">39</th><td>  <em>const</em> <em>bool</em> <dfn class="decl" id="llvm::PassInfo::IsCFGOnlyPass" title='llvm::PassInfo::IsCFGOnlyPass' data-ref="llvm::PassInfo::IsCFGOnlyPass">IsCFGOnlyPass</dfn> = <b>false</b>;      <i>// Pass only looks at the CFG.</i></td></tr>
+<tr><th id="40">40</th><td>  <em>const</em> <em>bool</em> <dfn class="decl" id="llvm::PassInfo::IsAnalysis" title='llvm::PassInfo::IsAnalysis' data-ref="llvm::PassInfo::IsAnalysis">IsAnalysis</dfn>;                 <i>// True if an analysis pass.</i></td></tr>
+<tr><th id="41">41</th><td>  <em>const</em> <em>bool</em> <dfn class="decl" id="llvm::PassInfo::IsAnalysisGroup" title='llvm::PassInfo::IsAnalysisGroup' data-ref="llvm::PassInfo::IsAnalysisGroup">IsAnalysisGroup</dfn>;            <i>// True if an analysis group.</i></td></tr>
+<tr><th id="42">42</th><td>  <span class="namespace">std::</span><a class="type" href="../../c++/7/bits/stl_vector.h.html#std::vector" title='std::vector' data-ref="std::vector">vector</a>&lt;<em>const</em> <a class="type" href="#llvm::PassInfo" title='llvm::PassInfo' data-ref="llvm::PassInfo">PassInfo</a> *&gt; <dfn class="decl" id="llvm::PassInfo::ItfImpl" title='llvm::PassInfo::ItfImpl' data-ref="llvm::PassInfo::ItfImpl">ItfImpl</dfn>; <i>// Interfaces implemented by this pass</i></td></tr>
+<tr><th id="43">43</th><td>  <a class="typedef" href="#llvm::PassInfo::NormalCtor_t" title='llvm::PassInfo::NormalCtor_t' data-type='llvm::Pass *(*)()' data-ref="llvm::PassInfo::NormalCtor_t">NormalCtor_t</a> <dfn class="decl" id="llvm::PassInfo::NormalCtor" title='llvm::PassInfo::NormalCtor' data-ref="llvm::PassInfo::NormalCtor">NormalCtor</dfn> = <b>nullptr</b>;</td></tr>
+<tr><th id="44">44</th><td></td></tr>
+<tr><th id="45">45</th><td><b>public</b>:</td></tr>
+<tr><th id="46">46</th><td>  <i class="doc">/// PassInfo ctor - Do not call this directly, this should only be invoked</i></td></tr>
+<tr><th id="47">47</th><td><i class="doc">  /// through RegisterPass.</i></td></tr>
+<tr><th id="48">48</th><td>  <dfn class="decl def" id="_ZN4llvm8PassInfoC1ENS_9StringRefES1_PKvPFPNS_4PassEvEbb" title='llvm::PassInfo::PassInfo' data-ref="_ZN4llvm8PassInfoC1ENS_9StringRefES1_PKvPFPNS_4PassEvEbb">PassInfo</dfn>(<a class="type" href="ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="local col5 decl" id="9335name" title='name' data-type='llvm::StringRef' data-ref="9335name">name</dfn>, <a class="type" href="ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="local col6 decl" id="9336arg" title='arg' data-type='llvm::StringRef' data-ref="9336arg">arg</dfn>, <em>const</em> <em>void</em> *<dfn class="local col7 decl" id="9337pi" title='pi' data-type='const void *' data-ref="9337pi">pi</dfn>, <a class="typedef" href="#llvm::PassInfo::NormalCtor_t" title='llvm::PassInfo::NormalCtor_t' data-type='llvm::Pass *(*)()' data-ref="llvm::PassInfo::NormalCtor_t">NormalCtor_t</a> <dfn class="local col8 decl" id="9338normal" title='normal' data-type='NormalCtor_t' data-ref="9338normal">normal</dfn>,</td></tr>
+<tr><th id="49">49</th><td>           <em>bool</em> <dfn class="local col9 decl" id="9339isCFGOnly" title='isCFGOnly' data-type='bool' data-ref="9339isCFGOnly">isCFGOnly</dfn>, <em>bool</em> <dfn class="local col0 decl" id="9340is_analysis" title='is_analysis' data-type='bool' data-ref="9340is_analysis">is_analysis</dfn>)</td></tr>
+<tr><th id="50">50</th><td>      : <a class="member" href="#llvm::PassInfo::PassName" title='llvm::PassInfo::PassName' data-ref="llvm::PassInfo::PassName">PassName</a><a class="ref" href="ADT/StringRef.h.html#49" title='llvm::StringRef::StringRef' data-ref="_ZN4llvm9StringRefC1ERKS0_">(</a><a class="local col5 ref" href="#9335name" title='name' data-ref="9335name">name</a>), <a class="member" href="#llvm::PassInfo::PassArgument" title='llvm::PassInfo::PassArgument' data-ref="llvm::PassInfo::PassArgument">PassArgument</a><a class="ref" href="ADT/StringRef.h.html#49" title='llvm::StringRef::StringRef' data-ref="_ZN4llvm9StringRefC1ERKS0_">(</a><a class="local col6 ref" href="#9336arg" title='arg' data-ref="9336arg">arg</a>), <a class="member" href="#llvm::PassInfo::PassID" title='llvm::PassInfo::PassID' data-ref="llvm::PassInfo::PassID">PassID</a>(<a class="local col7 ref" href="#9337pi" title='pi' data-ref="9337pi">pi</a>), <a class="member" href="#llvm::PassInfo::IsCFGOnlyPass" title='llvm::PassInfo::IsCFGOnlyPass' data-ref="llvm::PassInfo::IsCFGOnlyPass">IsCFGOnlyPass</a>(<a class="local col9 ref" href="#9339isCFGOnly" title='isCFGOnly' data-ref="9339isCFGOnly">isCFGOnly</a>),</td></tr>
+<tr><th id="51">51</th><td>        <a class="member" href="#llvm::PassInfo::IsAnalysis" title='llvm::PassInfo::IsAnalysis' data-ref="llvm::PassInfo::IsAnalysis">IsAnalysis</a>(<a class="local col0 ref" href="#9340is_analysis" title='is_analysis' data-ref="9340is_analysis">is_analysis</a>), <a class="member" href="#llvm::PassInfo::IsAnalysisGroup" title='llvm::PassInfo::IsAnalysisGroup' data-ref="llvm::PassInfo::IsAnalysisGroup">IsAnalysisGroup</a>(<b>false</b>), <a class="member" href="#llvm::PassInfo::NormalCtor" title='llvm::PassInfo::NormalCtor' data-ref="llvm::PassInfo::NormalCtor">NormalCtor</a>(<a class="local col8 ref" href="#9338normal" title='normal' data-ref="9338normal">normal</a>) {}</td></tr>
+<tr><th id="52">52</th><td></td></tr>
+<tr><th id="53">53</th><td>  <i class="doc">/// PassInfo ctor - Do not call this directly, this should only be invoked</i></td></tr>
+<tr><th id="54">54</th><td><i class="doc">  /// through RegisterPass. This version is for use by analysis groups; it</i></td></tr>
+<tr><th id="55">55</th><td><i class="doc">  /// does not auto-register the pass.</i></td></tr>
+<tr><th id="56">56</th><td>  <dfn class="decl def" id="_ZN4llvm8PassInfoC1ENS_9StringRefEPKv" title='llvm::PassInfo::PassInfo' data-ref="_ZN4llvm8PassInfoC1ENS_9StringRefEPKv">PassInfo</dfn>(<a class="type" href="ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="local col1 decl" id="9341name" title='name' data-type='llvm::StringRef' data-ref="9341name">name</dfn>, <em>const</em> <em>void</em> *<dfn class="local col2 decl" id="9342pi" title='pi' data-type='const void *' data-ref="9342pi">pi</dfn>)</td></tr>
+<tr><th id="57">57</th><td>      : <a class="member" href="#llvm::PassInfo::PassName" title='llvm::PassInfo::PassName' data-ref="llvm::PassInfo::PassName">PassName</a><a class="ref" href="ADT/StringRef.h.html#49" title='llvm::StringRef::StringRef' data-ref="_ZN4llvm9StringRefC1ERKS0_">(</a><a class="local col1 ref" href="#9341name" title='name' data-ref="9341name">name</a>), <a class="member" href="#llvm::PassInfo::PassID" title='llvm::PassInfo::PassID' data-ref="llvm::PassInfo::PassID">PassID</a>(<a class="local col2 ref" href="#9342pi" title='pi' data-ref="9342pi">pi</a>), <a class="member" href="#llvm::PassInfo::IsAnalysis" title='llvm::PassInfo::IsAnalysis' data-ref="llvm::PassInfo::IsAnalysis">IsAnalysis</a>(<b>false</b>), <a class="member" href="#llvm::PassInfo::IsAnalysisGroup" title='llvm::PassInfo::IsAnalysisGroup' data-ref="llvm::PassInfo::IsAnalysisGroup">IsAnalysisGroup</a>(<b>true</b>) {}</td></tr>
+<tr><th id="58">58</th><td></td></tr>
+<tr><th id="59">59</th><td>  <dfn class="decl def" id="_ZN4llvm8PassInfoC1ERKS0_" title='llvm::PassInfo::PassInfo' data-ref="_ZN4llvm8PassInfoC1ERKS0_">PassInfo</dfn>(<em>const</em> <a class="type" href="#llvm::PassInfo" title='llvm::PassInfo' data-ref="llvm::PassInfo">PassInfo</a> &amp;) = <b>delete</b>;</td></tr>
+<tr><th id="60">60</th><td>  <a class="type" href="#llvm::PassInfo" title='llvm::PassInfo' data-ref="llvm::PassInfo">PassInfo</a> &amp;<dfn class="decl def" id="_ZN4llvm8PassInfoaSERKS0_" title='llvm::PassInfo::operator=' data-ref="_ZN4llvm8PassInfoaSERKS0_"><b>operator</b>=</dfn>(<em>const</em> <a class="type" href="#llvm::PassInfo" title='llvm::PassInfo' data-ref="llvm::PassInfo">PassInfo</a> &amp;) = <b>delete</b>;</td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td>  <i class="doc">/// getPassName - Return the friendly name for the pass, never returns null</i></td></tr>
+<tr><th id="63">63</th><td>  <a class="type" href="ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="decl def" id="_ZNK4llvm8PassInfo11getPassNameEv" title='llvm::PassInfo::getPassName' data-ref="_ZNK4llvm8PassInfo11getPassNameEv">getPassName</dfn>() <em>const</em> { <b>return</b> <a class="ref fake" href="ADT/StringRef.h.html#49" title='llvm::StringRef::StringRef' data-ref="_ZN4llvm9StringRefC1ERKS0_"></a><a class="member" href="#llvm::PassInfo::PassName" title='llvm::PassInfo::PassName' data-ref="llvm::PassInfo::PassName">PassName</a>; }</td></tr>
+<tr><th id="64">64</th><td></td></tr>
+<tr><th id="65">65</th><td>  <i class="doc">/// getPassArgument - Return the command line option that may be passed to</i></td></tr>
+<tr><th id="66">66</th><td><i class="doc">  /// 'opt' that will cause this pass to be run.  This will return null if there</i></td></tr>
+<tr><th id="67">67</th><td><i class="doc">  /// is no argument.</i></td></tr>
+<tr><th id="68">68</th><td>  <a class="type" href="ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="decl def" id="_ZNK4llvm8PassInfo15getPassArgumentEv" title='llvm::PassInfo::getPassArgument' data-ref="_ZNK4llvm8PassInfo15getPassArgumentEv">getPassArgument</dfn>() <em>const</em> { <b>return</b> <a class="ref fake" href="ADT/StringRef.h.html#49" title='llvm::StringRef::StringRef' data-ref="_ZN4llvm9StringRefC1ERKS0_"></a><a class="member" href="#llvm::PassInfo::PassArgument" title='llvm::PassInfo::PassArgument' data-ref="llvm::PassInfo::PassArgument">PassArgument</a>; }</td></tr>
+<tr><th id="69">69</th><td></td></tr>
+<tr><th id="70">70</th><td>  <i class="doc">/// getTypeInfo - Return the id object for the pass...</i></td></tr>
+<tr><th id="71">71</th><td><i class="doc">  /// TODO : Rename</i></td></tr>
+<tr><th id="72">72</th><td>  <em>const</em> <em>void</em> *<dfn class="decl def" id="_ZNK4llvm8PassInfo11getTypeInfoEv" title='llvm::PassInfo::getTypeInfo' data-ref="_ZNK4llvm8PassInfo11getTypeInfoEv">getTypeInfo</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::PassInfo::PassID" title='llvm::PassInfo::PassID' data-ref="llvm::PassInfo::PassID">PassID</a>; }</td></tr>
+<tr><th id="73">73</th><td></td></tr>
+<tr><th id="74">74</th><td>  <i class="doc">/// Return true if this PassID implements the specified ID pointer.</i></td></tr>
+<tr><th id="75">75</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm8PassInfo8isPassIDEPKv" title='llvm::PassInfo::isPassID' data-ref="_ZNK4llvm8PassInfo8isPassIDEPKv">isPassID</dfn>(<em>const</em> <em>void</em> *<dfn class="local col3 decl" id="9343IDPtr" title='IDPtr' data-type='const void *' data-ref="9343IDPtr">IDPtr</dfn>) <em>const</em> { <b>return</b> <a class="member" href="#llvm::PassInfo::PassID" title='llvm::PassInfo::PassID' data-ref="llvm::PassInfo::PassID">PassID</a> == <a class="local col3 ref" href="#9343IDPtr" title='IDPtr' data-ref="9343IDPtr">IDPtr</a>; }</td></tr>
+<tr><th id="76">76</th><td></td></tr>
+<tr><th id="77">77</th><td>  <i class="doc">/// isAnalysisGroup - Return true if this is an analysis group, not a normal</i></td></tr>
+<tr><th id="78">78</th><td><i class="doc">  /// pass.</i></td></tr>
+<tr><th id="79">79</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm8PassInfo15isAnalysisGroupEv" title='llvm::PassInfo::isAnalysisGroup' data-ref="_ZNK4llvm8PassInfo15isAnalysisGroupEv">isAnalysisGroup</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::PassInfo::IsAnalysisGroup" title='llvm::PassInfo::IsAnalysisGroup' data-ref="llvm::PassInfo::IsAnalysisGroup">IsAnalysisGroup</a>; }</td></tr>
+<tr><th id="80">80</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm8PassInfo10isAnalysisEv" title='llvm::PassInfo::isAnalysis' data-ref="_ZNK4llvm8PassInfo10isAnalysisEv">isAnalysis</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::PassInfo::IsAnalysis" title='llvm::PassInfo::IsAnalysis' data-ref="llvm::PassInfo::IsAnalysis">IsAnalysis</a>; }</td></tr>
+<tr><th id="81">81</th><td></td></tr>
+<tr><th id="82">82</th><td>  <i class="doc">/// isCFGOnlyPass - return true if this pass only looks at the CFG for the</i></td></tr>
+<tr><th id="83">83</th><td><i class="doc">  /// function.</i></td></tr>
+<tr><th id="84">84</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm8PassInfo13isCFGOnlyPassEv" title='llvm::PassInfo::isCFGOnlyPass' data-ref="_ZNK4llvm8PassInfo13isCFGOnlyPassEv">isCFGOnlyPass</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::PassInfo::IsCFGOnlyPass" title='llvm::PassInfo::IsCFGOnlyPass' data-ref="llvm::PassInfo::IsCFGOnlyPass">IsCFGOnlyPass</a>; }</td></tr>
+<tr><th id="85">85</th><td></td></tr>
+<tr><th id="86">86</th><td>  <i class="doc">/// getNormalCtor - Return a pointer to a function, that when called, creates</i></td></tr>
+<tr><th id="87">87</th><td><i class="doc">  /// an instance of the pass and returns it.  This pointer may be null if there</i></td></tr>
+<tr><th id="88">88</th><td><i class="doc">  /// is no default constructor for the pass.</i></td></tr>
+<tr><th id="89">89</th><td>  <a class="typedef" href="#llvm::PassInfo::NormalCtor_t" title='llvm::PassInfo::NormalCtor_t' data-type='llvm::Pass *(*)()' data-ref="llvm::PassInfo::NormalCtor_t">NormalCtor_t</a> <dfn class="decl def" id="_ZNK4llvm8PassInfo13getNormalCtorEv" title='llvm::PassInfo::getNormalCtor' data-ref="_ZNK4llvm8PassInfo13getNormalCtorEv">getNormalCtor</dfn>() <em>const</em> {</td></tr>
+<tr><th id="90">90</th><td>    <b>return</b> <a class="member" href="#llvm::PassInfo::NormalCtor" title='llvm::PassInfo::NormalCtor' data-ref="llvm::PassInfo::NormalCtor">NormalCtor</a>;</td></tr>
+<tr><th id="91">91</th><td>  }</td></tr>
+<tr><th id="92">92</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm8PassInfo13setNormalCtorEPFPNS_4PassEvE" title='llvm::PassInfo::setNormalCtor' data-ref="_ZN4llvm8PassInfo13setNormalCtorEPFPNS_4PassEvE">setNormalCtor</dfn>(<a class="typedef" href="#llvm::PassInfo::NormalCtor_t" title='llvm::PassInfo::NormalCtor_t' data-type='llvm::Pass *(*)()' data-ref="llvm::PassInfo::NormalCtor_t">NormalCtor_t</a> <dfn class="local col4 decl" id="9344Ctor" title='Ctor' data-type='NormalCtor_t' data-ref="9344Ctor">Ctor</dfn>) {</td></tr>
+<tr><th id="93">93</th><td>    <a class="member" href="#llvm::PassInfo::NormalCtor" title='llvm::PassInfo::NormalCtor' data-ref="llvm::PassInfo::NormalCtor">NormalCtor</a> = <a class="local col4 ref" href="#9344Ctor" title='Ctor' data-ref="9344Ctor">Ctor</a>;</td></tr>
+<tr><th id="94">94</th><td>  }</td></tr>
+<tr><th id="95">95</th><td></td></tr>
+<tr><th id="96">96</th><td>  <i class="doc">/// createPass() - Use this method to create an instance of this pass.</i></td></tr>
+<tr><th id="97">97</th><td>  <a class="type" href="Pass.h.html#llvm::Pass" title='llvm::Pass' data-ref="llvm::Pass">Pass</a> *<dfn class="decl def" id="_ZNK4llvm8PassInfo10createPassEv" title='llvm::PassInfo::createPass' data-ref="_ZNK4llvm8PassInfo10createPassEv">createPass</dfn>() <em>const</em> {</td></tr>
+<tr><th id="98">98</th><td>    <a class="macro" href="../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>((!isAnalysisGroup() || NormalCtor) &amp;&amp;</td></tr>
+<tr><th id="99">99</th><td>           <q>"No default implementation found for analysis group!"</q>);</td></tr>
+<tr><th id="100">100</th><td>    <a class="macro" href="../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(NormalCtor &amp;&amp;</td></tr>
+<tr><th id="101">101</th><td>           <q>"Cannot call createPass on PassInfo without default ctor!"</q>);</td></tr>
+<tr><th id="102">102</th><td>    <b>return</b> <a class="member" href="#llvm::PassInfo::NormalCtor" title='llvm::PassInfo::NormalCtor' data-ref="llvm::PassInfo::NormalCtor">NormalCtor</a>();</td></tr>
+<tr><th id="103">103</th><td>  }</td></tr>
+<tr><th id="104">104</th><td></td></tr>
+<tr><th id="105">105</th><td>  <i class="doc">/// addInterfaceImplemented - This method is called when this pass is</i></td></tr>
+<tr><th id="106">106</th><td><i class="doc">  /// registered as a member of an analysis group with the RegisterAnalysisGroup</i></td></tr>
+<tr><th id="107">107</th><td><i class="doc">  /// template.</i></td></tr>
+<tr><th id="108">108</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm8PassInfo23addInterfaceImplementedEPKS0_" title='llvm::PassInfo::addInterfaceImplemented' data-ref="_ZN4llvm8PassInfo23addInterfaceImplementedEPKS0_">addInterfaceImplemented</dfn>(<em>const</em> <a class="type" href="#llvm::PassInfo" title='llvm::PassInfo' data-ref="llvm::PassInfo">PassInfo</a> *<dfn class="local col5 decl" id="9345ItfPI" title='ItfPI' data-type='const llvm::PassInfo *' data-ref="9345ItfPI">ItfPI</dfn>) {</td></tr>
+<tr><th id="109">109</th><td>    <a class="member" href="#llvm::PassInfo::ItfImpl" title='llvm::PassInfo::ItfImpl' data-ref="llvm::PassInfo::ItfImpl">ItfImpl</a>.<a class="ref" href="../../c++/7/bits/stl_vector.h.html#_ZNSt6vector9push_backERKT_" title='std::vector::push_back' data-ref="_ZNSt6vector9push_backERKT_">push_back</a>(<a class="local col5 ref" href="#9345ItfPI" title='ItfPI' data-ref="9345ItfPI">ItfPI</a>);</td></tr>
+<tr><th id="110">110</th><td>  }</td></tr>
+<tr><th id="111">111</th><td></td></tr>
+<tr><th id="112">112</th><td>  <i class="doc">/// getInterfacesImplemented - Return a list of all of the analysis group</i></td></tr>
+<tr><th id="113">113</th><td><i class="doc">  /// interfaces implemented by this pass.</i></td></tr>
+<tr><th id="114">114</th><td>  <em>const</em> <span class="namespace">std::</span><a class="type" href="../../c++/7/bits/stl_vector.h.html#std::vector" title='std::vector' data-ref="std::vector">vector</a>&lt;<em>const</em> <a class="type" href="#llvm::PassInfo" title='llvm::PassInfo' data-ref="llvm::PassInfo">PassInfo</a>*&gt; &amp;<dfn class="decl def" id="_ZNK4llvm8PassInfo24getInterfacesImplementedEv" title='llvm::PassInfo::getInterfacesImplemented' data-ref="_ZNK4llvm8PassInfo24getInterfacesImplementedEv">getInterfacesImplemented</dfn>() <em>const</em> {</td></tr>
+<tr><th id="115">115</th><td>    <b>return</b> <a class="member" href="#llvm::PassInfo::ItfImpl" title='llvm::PassInfo::ItfImpl' data-ref="llvm::PassInfo::ItfImpl">ItfImpl</a>;</td></tr>
+<tr><th id="116">116</th><td>  }</td></tr>
+<tr><th id="117">117</th><td>};</td></tr>
+<tr><th id="118">118</th><td></td></tr>
+<tr><th id="119">119</th><td>} <i>// end namespace llvm</i></td></tr>
+<tr><th id="120">120</th><td></td></tr>
+<tr><th id="121">121</th><td><u>#<span data-ppcond="14">endif</span> // LLVM_PASSINFO_H</u></td></tr>
+<tr><th id="122">122</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../../pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc.html'>pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc</a><br/>Generated on <em>2019-Oct-28</em> from project include<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

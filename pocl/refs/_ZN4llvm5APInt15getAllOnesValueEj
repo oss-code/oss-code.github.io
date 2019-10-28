@@ -1,0 +1,6 @@
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='524' u='c' c='_ZN4llvm5APInt11getMaxValueEj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='529' u='c' c='_ZN4llvm5APInt17getSignedMaxValueEj'/>
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='555' ll='557' type='static llvm::APInt llvm::APInt::getAllOnesValue(unsigned int numBits)'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='552'>/// \brief Get the all-ones value.
+  ///
+  /// \returns the all-ones value for an APInt of the specified bit-width.</doc>

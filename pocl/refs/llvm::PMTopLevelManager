@@ -1,0 +1,36 @@
+<def f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='166' ll='296'/>
+<size>760</size>
+<doc f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='161'>//===----------------------------------------------------------------------===//
+// PMTopLevelManager
+//
+/// PMTopLevelManager manages LastUser info and collects common APIs used by
+/// top level pass managers.</doc>
+<fun r='_ZN4llvm17PMTopLevelManagerC1EPNS_13PMDataManagerE'/>
+<fun r='_ZNK4llvm17PMTopLevelManager23getNumContainedManagersEv'/>
+<fun r='_ZN4llvm17PMTopLevelManager25initializeAllAnalysisInfoEv'/>
+<fun r='_ZN4llvm17PMTopLevelManager18getAsPMDataManagerEv'/>
+<fun r='_ZN4llvm17PMTopLevelManager26getTopLevelPassManagerTypeEv'/>
+<fun r='_ZN4llvm17PMTopLevelManager12schedulePassEPNS_4PassE'/>
+<fun r='_ZN4llvm17PMTopLevelManager11setLastUserENS_8ArrayRefIPNS_4PassEEES3_'/>
+<fun r='_ZN4llvm17PMTopLevelManager15collectLastUsesERNS_15SmallVectorImplIPNS_4PassEEES3_'/>
+<fun r='_ZN4llvm17PMTopLevelManager16findAnalysisPassEPKv'/>
+<fun r='_ZNK4llvm17PMTopLevelManager20findAnalysisPassInfoEPKv'/>
+<fun r='_ZN4llvm17PMTopLevelManager17findAnalysisUsageEPNS_4PassE'/>
+<fun r='_ZN4llvm17PMTopLevelManagerD1Ev'/>
+<fun r='_ZN4llvm17PMTopLevelManager16addImmutablePassEPNS_13ImmutablePassE'/>
+<fun r='_ZN4llvm17PMTopLevelManager18getImmutablePassesEv'/>
+<fun r='_ZN4llvm17PMTopLevelManager14addPassManagerEPNS_13PMDataManagerE'/>
+<fun r='_ZN4llvm17PMTopLevelManager22addIndirectPassManagerEPNS_13PMDataManagerE'/>
+<fun r='_ZNK4llvm17PMTopLevelManager10dumpPassesEv'/>
+<fun r='_ZNK4llvm17PMTopLevelManager13dumpArgumentsEv'/>
+<mbr r='llvm::PMTopLevelManager::activeStack' o='64' t='llvm::PMStack'/>
+<mbr r='llvm::PMTopLevelManager::PassManagers' o='256' t='SmallVector&lt;llvm::PMDataManager *, 8&gt;'/>
+<mbr r='llvm::PMTopLevelManager::IndirectPassManagers' o='960' t='SmallVector&lt;llvm::PMDataManager *, 8&gt;'/>
+<mbr r='llvm::PMTopLevelManager::LastUser' o='1664' t='DenseMap&lt;llvm::Pass *, llvm::Pass *&gt;'/>
+<mbr r='llvm::PMTopLevelManager::InversedLastUser' o='1856' t='DenseMap&lt;llvm::Pass *, SmallPtrSet&lt;llvm::Pass *, 8&gt; &gt;'/>
+<mbr r='llvm::PMTopLevelManager::ImmutablePasses' o='2048' t='SmallVector&lt;llvm::ImmutablePass *, 16&gt;'/>
+<mbr r='llvm::PMTopLevelManager::ImmutablePassMap' o='3264' t='SmallDenseMap&lt;AnalysisID, llvm::ImmutablePass *, 8&gt;'/>
+<mbr r='llvm::PMTopLevelManager::UniqueAnalysisUsages' o='4352' t='FoldingSet&lt;llvm::PMTopLevelManager::AUFoldingSetNode&gt;'/>
+<mbr r='llvm::PMTopLevelManager::AUFoldingSetNodeAllocator' o='4544' t='SpecificBumpPtrAllocator&lt;llvm::PMTopLevelManager::AUFoldingSetNode&gt;'/>
+<mbr r='llvm::PMTopLevelManager::AnUsageMap' o='5696' t='DenseMap&lt;llvm::Pass *, llvm::AnalysisUsage *&gt;'/>
+<mbr r='llvm::PMTopLevelManager::AnalysisPassInfos' o='5888' t='DenseMap&lt;AnalysisID, const llvm::PassInfo *&gt;'/>

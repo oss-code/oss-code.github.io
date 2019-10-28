@@ -1,0 +1,109 @@
+<def f='include/llvm-6.0/llvm/ADT/Twine.h' l='81' ll='481'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/ADT/Twine.h' l='25'>/// Twine - A lightweight data structure for efficiently representing the
+  /// concatenation of temporary values as strings.
+  ///
+  /// A Twine is a kind of rope, it represents a concatenated string using a
+  /// binary-tree, where the string is the preorder of the nodes. Since the
+  /// Twine can be efficiently rendered into a buffer when its result is used,
+  /// it avoids the cost of generating temporary values for intermediate string
+  /// results -- particularly in cases when the Twine result is never
+  /// required. By explicitly tracking the type of leaf nodes, we can also avoid
+  /// the creation of temporary strings for conversions operations (such as
+  /// appending an integer to a string).
+  ///
+  /// A Twine is not intended for use directly and should not be stored, its
+  /// implementation relies on the ability to store pointers to temporary stack
+  /// objects which may be deallocated at the end of a statement. Twines should
+  /// only be used accepted as const references in arguments, when an API wishes
+  /// to accept possibly-concatenated strings.
+  ///
+  /// Twines support a special &apos;null&apos; value, which always concatenates to form
+  /// itself, and renders as an empty string. This can be returned from APIs to
+  /// effectively nullify any concatenations performed on the result.
+  ///
+  /// \b Implementation
+  ///
+  /// Given the nature of a Twine, it is not possible for the Twine&apos;s
+  /// concatenation method to construct interior nodes; the result must be
+  /// represented inside the returned value. For this reason a Twine object
+  /// actually holds two values, the left- and right-hand sides of a
+  /// concatenation. We also have nullary Twine objects, which are effectively
+  /// sentinel values that represent empty strings.
+  ///
+  /// Thus, a Twine can effectively have zero, one, or two children. The \see
+  /// isNullary(), \see isUnary(), and \see isBinary() predicates exist for
+  /// testing the number of children.
+  ///
+  /// We maintain a number of invariants on Twine objects (FIXME: Why):
+  ///  - Nullary twines are always represented with their Kind on the left-hand
+  ///    side, and the Empty kind on the right-hand side.
+  ///  - Unary twines are always represented with the value on the left-hand
+  ///    side, and the Empty kind on the right-hand side.
+  ///  - If a Twine has another Twine as a child, that child should always be
+  ///    binary (otherwise it could have been folded into the parent).
+  ///
+  /// These invariants are check by \see isValid().
+  ///
+  /// \b Efficiency Considerations
+  ///
+  /// The Twine is designed to yield efficient and small code for common
+  /// situations. For this reason, the concat() method is inlined so that
+  /// concatenations of leaf nodes can be optimized into stores directly into a
+  /// single stack allocated object.
+  ///
+  /// In practice, not all compilers can be trusted to optimize concat() fully,
+  /// so we provide two additional methods (and accompanying operator+
+  /// overloads) to guarantee that particularly important cases (cstring plus
+  /// StringRef) codegen as desired.</doc>
+<mbr r='llvm::Twine::LHS' o='0' t='llvm::Twine::Child'/>
+<mbr r='llvm::Twine::RHS' o='64' t='llvm::Twine::Child'/>
+<mbr r='llvm::Twine::LHSKind' o='128' t='llvm::Twine::NodeKind'/>
+<mbr r='llvm::Twine::RHSKind' o='136' t='llvm::Twine::NodeKind'/>
+<fun r='_ZN4llvm5TwineC1ENS0_8NodeKindE'/>
+<fun r='_ZN4llvm5TwineC1ERKS0_S2_'/>
+<fun r='_ZN4llvm5TwineC1ENS0_5ChildENS0_8NodeKindES1_S2_'/>
+<fun r='_ZNK4llvm5Twine6isNullEv'/>
+<fun r='_ZNK4llvm5Twine7isEmptyEv'/>
+<fun r='_ZNK4llvm5Twine9isNullaryEv'/>
+<fun r='_ZNK4llvm5Twine7isUnaryEv'/>
+<fun r='_ZNK4llvm5Twine8isBinaryEv'/>
+<fun r='_ZNK4llvm5Twine7isValidEv'/>
+<fun r='_ZNK4llvm5Twine10getLHSKindEv'/>
+<fun r='_ZNK4llvm5Twine10getRHSKindEv'/>
+<fun r='_ZNK4llvm5Twine13printOneChildERNS_11raw_ostreamENS0_5ChildENS0_8NodeKindE'/>
+<fun r='_ZNK4llvm5Twine17printOneChildReprERNS_11raw_ostreamENS0_5ChildENS0_8NodeKindE'/>
+<fun r='_ZN4llvm5TwineC1Ev'/>
+<fun r='_ZN4llvm5TwineC1ERKS0_'/>
+<fun r='_ZN4llvm5TwineC1EPKc'/>
+<fun r='_ZN4llvm5TwineC1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<fun r='_ZN4llvm5TwineC1ERKNS_9StringRefE'/>
+<fun r='_ZN4llvm5TwineC1ERKNS_15SmallVectorImplIcEE'/>
+<fun r='_ZN4llvm5TwineC1ERKNS_19formatv_object_baseE'/>
+<fun r='_ZN4llvm5TwineC1Ec'/>
+<fun r='_ZN4llvm5TwineC1Ea'/>
+<fun r='_ZN4llvm5TwineC1Eh'/>
+<fun r='_ZN4llvm5TwineC1Ej'/>
+<fun r='_ZN4llvm5TwineC1Ei'/>
+<fun r='_ZN4llvm5TwineC1ERKm'/>
+<fun r='_ZN4llvm5TwineC1ERKl'/>
+<fun r='_ZN4llvm5TwineC1ERKy'/>
+<fun r='_ZN4llvm5TwineC1ERKx'/>
+<fun r='_ZN4llvm5TwineC1EPKcRKNS_9StringRefE'/>
+<fun r='_ZN4llvm5TwineC1ERKNS_9StringRefEPKc'/>
+<fun r='_ZN4llvm5TwineaSERKS0_'/>
+<fun r='_ZN4llvm5Twine10createNullEv'/>
+<fun r='_ZN4llvm5Twine9utohexstrERKm'/>
+<fun r='_ZNK4llvm5Twine16isTriviallyEmptyEv'/>
+<fun r='_ZNK4llvm5Twine17isSingleStringRefEv'/>
+<fun r='_ZNK4llvm5Twine6concatERKS0_'/>
+<fun r='_ZNK4llvm5Twine3strB5cxx11Ev'/>
+<fun r='_ZNK4llvm5Twine8toVectorERNS_15SmallVectorImplIcEE'/>
+<fun r='_ZNK4llvm5Twine18getSingleStringRefEv'/>
+<fun r='_ZNK4llvm5Twine11toStringRefERNS_15SmallVectorImplIcEE'/>
+<fun r='_ZNK4llvm5Twine25toNullTerminatedStringRefERNS_15SmallVectorImplIcEE'/>
+<fun r='_ZNK4llvm5Twine5printERNS_11raw_ostreamE'/>
+<fun r='_ZNK4llvm5Twine4dumpEv'/>
+<fun r='_ZNK4llvm5Twine9printReprERNS_11raw_ostreamE'/>
+<fun r='_ZNK4llvm5Twine8dumpReprEv'/>
+<fun r='_ZNK4llvm5Twine6concatERKS0_'/>

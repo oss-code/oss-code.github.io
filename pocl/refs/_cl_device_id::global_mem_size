@@ -1,0 +1,17 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='696' type='cl_ulong'/>
+<offset>2752</offset>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='169' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='169' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='292' u='w' c='pocl_init_cpu_device_infos'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='420' u='w' c='pocl_basic_init'/>
+<use f='pocl/lib/CL/devices/common.c' l='1137' u='r' c='pocl_setup_device_for_system_memory'/>
+<use f='pocl/lib/CL/devices/common.c' l='1164' u='w' c='pocl_setup_device_for_system_memory'/>
+<use f='pocl/lib/CL/devices/common.c' l='1170' u='r' c='pocl_setup_device_for_system_memory'/>
+<use f='pocl/lib/CL/devices/common.c' l='1171' u='w' c='pocl_setup_device_for_system_memory'/>
+<use f='pocl/lib/CL/devices/common.c' l='1176' u='r' c='pocl_setup_device_for_system_memory'/>
+<use f='pocl/lib/CL/devices/common.c' l='1179' u='r' c='pocl_setup_device_for_system_memory'/>
+<use f='pocl/lib/CL/devices/common.c' l='1187' u='r' c='pocl_setup_device_for_system_memory'/>
+<use f='pocl/lib/CL/devices/common.c' l='1223' u='r' c='pocl_set_buffer_image_limits'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='323' u='w' c='pocl_cuda_init'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='160' u='w' c='pocl_pthread_init'/>
+<use f='pocl/lib/CL/devices/topology/pocl_topology.c' l='121' u='w' c='pocl_topology_detect_device_info'/>

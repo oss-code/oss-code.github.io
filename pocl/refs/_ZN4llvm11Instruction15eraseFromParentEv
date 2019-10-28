@@ -1,0 +1,16 @@
+<dec f='include/llvm-6.0/llvm/IR/Instruction.h' l='98' type='SymbolTableList&lt;Instruction&gt;::iterator llvm::Instruction::eraseFromParent()'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='266' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='334' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='401' u='c' c='_ZL22replaceScalarGlobalVarPN4llvm6ModuleEPKcPNS_5ValueE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='823' u='c' c='_ZL17mapLibDeviceCallsPN4llvm6ModuleE'/>
+<doc f='include/llvm-6.0/llvm/IR/Instruction.h' l='95'>/// This method unlinks &apos;this&apos; from the containing basic block and deletes it.
+  ///
+  /// \returns an iterator pointing to the element after the erased one</doc>
+<use f='pocl/lib/llvmopencl/HandleSamplerInitialization.cc' l='100' u='c' c='_ZN4pocl27HandleSamplerInitialization13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/LLVMUtils.cc' l='111' u='c' c='_ZN4pocl23eraseFunctionAndCallersEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='165' u='c' c='_ZN4pocl25OptimizeWorkItemFuncCalls13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/PHIsToAllocas.cc' l='157' u='c' c='_ZN4pocl13PHIsToAllocas17BreakPHIToAllocasEPN4llvm7PHINodeE'/>
+<use f='pocl/lib/llvmopencl/RemoveBarrierCalls.cc' l='68' u='c' c='_ZN4pocl18RemoveBarrierCalls13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='542' u='c' c='_ZL18replacePrintfCallsPN4llvm5ValueES1_S1_bPNS_8FunctionERNS_6ModuleES3_RSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='717' u='c' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='794' u='c' c='_ZN4pocl9Workgroup16privatizeGlobalsEPN4llvm8FunctionERNS1_9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEOKSt6vectorINSt7__cxx1112b2085380'/>

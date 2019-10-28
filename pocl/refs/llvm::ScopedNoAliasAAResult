@@ -1,0 +1,9 @@
+<inh f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='857' c='llvm::AAResultBase'/>
+<def f='include/llvm-6.0/llvm/Analysis/ScopedNoAliasAA.h' l='31' ll='49'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/Analysis/ScopedNoAliasAA.h' l='30'>/// A simple AA result which uses scoped-noalias metadata to answer queries.</doc>
+<fun r='_ZN4llvm21ScopedNoAliasAAResult10invalidateERNS_8FunctionERKNS_17PreservedAnalysesERNS_15AnalysisManagerIS1_JEE11InvalidatorE'/>
+<fun r='_ZN4llvm21ScopedNoAliasAAResult5aliasERKNS_14MemoryLocationES3_'/>
+<fun r='_ZN4llvm21ScopedNoAliasAAResult13getModRefInfoENS_17ImmutableCallSiteERKNS_14MemoryLocationE'/>
+<fun r='_ZN4llvm21ScopedNoAliasAAResult13getModRefInfoENS_17ImmutableCallSiteES1_'/>
+<fun r='_ZNK4llvm21ScopedNoAliasAAResult16mayAliasInScopesEPKNS_6MDNodeES3_'/>

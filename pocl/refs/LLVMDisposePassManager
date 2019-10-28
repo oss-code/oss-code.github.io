@@ -1,0 +1,4 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='3197' type='void LLVMDisposePassManager(LLVMPassManagerRef PM)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='3194'>/** Frees the memory of a pass pipeline. For function pipelines, does not free
+    the module provider.
+    @see llvm::PassManagerBase::~PassManagerBase. */</doc>

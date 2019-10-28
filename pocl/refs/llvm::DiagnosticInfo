@@ -1,0 +1,23 @@
+<def f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='97' ll='120'/>
+<ovr f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='126' c='llvm::DiagnosticInfoInlineAsm'/>
+<ovr f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='174' c='llvm::DiagnosticInfoResourceLimit'/>
+<ovr f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='230' c='llvm::DiagnosticInfoDebugMetadataVersion'/>
+<ovr f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='257' c='llvm::DiagnosticInfoIgnoringInvalidDebugMetadata'/>
+<ovr f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='279' c='llvm::DiagnosticInfoSampleProfile'/>
+<ovr f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='318' c='llvm::DiagnosticInfoPGOProfile'/>
+<ovr f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='359' c='llvm::DiagnosticInfoWithLocationBase'/>
+<ovr f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='891' c='llvm::DiagnosticInfoMIRParser'/>
+<ovr f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='909' c='llvm::DiagnosticInfoISelFallback'/>
+<size>16</size>
+<doc f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='92'>/// \brief This is the base abstract class for diagnostic reporting in
+/// the backend.
+/// The print method must be overloaded by the subclasses to print a
+/// user-friendly message in the client of the backend (let us call it a
+/// frontend).</doc>
+<mbr r='llvm::DiagnosticInfo::Kind' o='64' t='const int'/>
+<mbr r='llvm::DiagnosticInfo::Severity' o='96' t='const llvm::DiagnosticSeverity'/>
+<fun r='_ZN4llvm14DiagnosticInfoC1EiNS_18DiagnosticSeverityE'/>
+<fun r='_ZN4llvm14DiagnosticInfoD1Ev'/>
+<fun r='_ZNK4llvm14DiagnosticInfo7getKindEv'/>
+<fun r='_ZNK4llvm14DiagnosticInfo11getSeverityEv'/>
+<fun r='_ZNK4llvm14DiagnosticInfo5printERNS_17DiagnosticPrinterE'/>

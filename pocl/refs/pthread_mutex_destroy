@@ -1,0 +1,14 @@
+<dec f='include/pthread.h' l='754' type='int pthread_mutex_destroy(pthread_mutex_t * __mutex)'/>
+<doc f='include/pthread.h' l='753'>/* Destroy a mutex.  */</doc>
+<use f='pocl/lib/CL/clReleaseCommandQueue.c' l='46' macro='1' u='c'/>
+<use f='pocl/lib/CL/clReleaseContext.c' l='65' macro='1' u='c'/>
+<use f='pocl/lib/CL/clReleaseDevice.c' l='39' macro='1' u='c'/>
+<use f='pocl/lib/CL/clReleaseEvent.c' l='63' macro='1' u='c'/>
+<use f='pocl/lib/CL/clReleaseKernel.c' l='56' macro='1' u='c'/>
+<use f='pocl/lib/CL/clReleaseMemObject.c' l='116' macro='1' u='c'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='118' macro='1' u='c'/>
+<use f='pocl/lib/CL/clReleaseSampler.c' l='52' macro='1' u='c'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='1083' macro='1' u='c'/>
+<use f='include/x86_64-linux-gnu/c++/7/bits/gthr-default.h' l='122' c='__gthrw_pthread_mutex_destroy'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='135' macro='1' u='c'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='338' macro='1' u='c'/>

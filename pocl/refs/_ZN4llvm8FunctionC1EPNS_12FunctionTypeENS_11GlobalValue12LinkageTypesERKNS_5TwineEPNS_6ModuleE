@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/Function.h' l='123' type='void llvm::Function::Function(llvm::FunctionType * Ty, llvm::GlobalValue::LinkageTypes Linkage, const llvm::Twine &amp; N = &quot;&quot;, llvm::Module * M = nullptr)'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='138' u='c' c='_ZN4llvm8Function6CreateEPNS_12FunctionTypeENS_11GlobalValue12LinkageTypesERKNS_5TwineEPNS_6ModuleE'/>
+<doc f='include/llvm-6.0/llvm/IR/Function.h' l='119'>/// Function ctor - If the (optional) Module argument is specified, the
+  /// function is automatically inserted into the end of the function list for
+  /// the module.
+  ///</doc>

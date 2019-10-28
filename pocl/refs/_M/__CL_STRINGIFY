@@ -1,0 +1,21 @@
+<dec f='pocl/include/CL/cl_platform.h' l='1368'/>
+<doc f='pocl/include/CL/cl_platform.h' l='1348'>/* Macro to facilitate debugging
+ * Usage:
+ *   Place CL_PROGRAM_STRING_DEBUG_INFO on the line before the first line of your source.
+ *   The first line ends with:   CL_PROGRAM_STRING_DEBUG_INFO \&quot;
+ *   Each line thereafter of OpenCL C source must end with: \n\
+ *   The last line ends in &quot;;
+ *
+ *   Example:
+ *
+ *   const char *my_program = CL_PROGRAM_STRING_DEBUG_INFO &quot;\
+ *   kernel void foo( int a, float * b )             \n\
+ *   {                                               \n\
+ *      // my comment                                \n\
+ *      *b[ get_global_id(0)] = a;                   \n\
+ *   }                                               \n\
+ *   &quot;;
+ *
+ * This should correctly set up the line, (column) and file information for your source
+ * string so you can do source level debugging.
+ */</doc>

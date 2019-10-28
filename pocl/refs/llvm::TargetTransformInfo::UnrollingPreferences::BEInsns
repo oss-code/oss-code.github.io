@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='403' type='unsigned int'/>
+<offset>320</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='399'>// Represents number of instructions optimized when &quot;back edge&quot;
+    // becomes &quot;fall through&quot; in unrolled loop.
+    // For now we count a conditional branch on a backedge and a comparison
+    // feeding it.</doc>

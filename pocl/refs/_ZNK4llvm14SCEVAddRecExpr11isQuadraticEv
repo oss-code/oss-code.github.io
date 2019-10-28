@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='325' ll='327' type='bool llvm::SCEVAddRecExpr::isQuadratic() const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='322'>/// Return true if this represents an expression A + B*x + C*x^2
+    /// where A, B and C are loop invariant values.  This corresponds
+    /// to an addrec of the form {L,+,M,+,N}</doc>

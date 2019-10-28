@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Support/Error.h' l='1058' type='std::error_code llvm::inconvertibleErrorCode()'/>
+<doc f='include/llvm-6.0/llvm/Support/Error.h' l='1052'>/// The value returned by this function can be returned from convertToErrorCode
+/// for Error values where no sensible translation to std::error_code exists.
+/// It should only be used in this situation, and should never be used where a
+/// sensible conversion to std::error_code is available, as attempts to convert
+/// to/from this error will result in a fatal error. (i.e. it is a programmatic
+///error to try to convert such a value).</doc>

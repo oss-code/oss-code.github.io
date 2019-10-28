@@ -1,0 +1,40 @@
+<dec f='include/llvm-6.0/llvm/IR/Value.h' l='273' type='void llvm::Value::setName(const llvm::Twine &amp; Name)'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='85' u='c' c='_ZN4llvm11GlobalValueC1EPNS_4TypeENS_5Value7ValueTyEPNS_3UseEjNS0_12LinkageTypesERKNS_5TwineEj'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='566' u='c' c='_ZN4llvm8CastInstC1EPNS_4TypeEjPNS_5ValueERKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='572' u='c' c='_ZN4llvm8CastInstC1EPNS_4TypeEjPNS_5ValueERKNS_5TwineEPNS_10BasicBlockE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1975' u='c' c='_ZN4llvm10SelectInstC1EPNS_5ValueES2_S2_RKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1983' u='c' c='_ZN4llvm10SelectInstC1EPNS_5ValueES2_S2_RKNS_5TwineEPNS_10BasicBlockE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='2071' u='c' c='_ZN4llvm9VAArgInstC1EPNS_5ValueEPNS_4TypeERKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='2077' u='c' c='_ZN4llvm9VAArgInstC1EPNS_5ValueEPNS_4TypeERKNS_5TwineEPNS_10BasicBlockE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='2592' u='c' c='_ZN4llvm7PHINodeC1EPNS_4TypeEjRKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='2600' u='c' c='_ZN4llvm7PHINodeC1EPNS_4TypeEjRKNS_5TwineEPNS_10BasicBlockE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='446' u='c' c='_ZL16handleGetWorkDimPN4llvm6ModuleEPKc'/>
+<doc f='include/llvm-6.0/llvm/IR/Value.h' l='268'>/// \brief Change the name of the value.
+  ///
+  /// Choose a new unique name if the provided name is taken.
+  ///
+  /// \param Name The new name; or &quot;&quot; if the value&apos;s name should be removed.</doc>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='68' u='c' c='_ZNK4llvm24IRBuilderDefaultInserter12InsertHelperEPNS_11InstructionERKNS_5TwineEPNS_10BasicBlockENS_14ilist_iteratorINS_12ilist_detail12node_optionsIS5024512'/>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='182' u='c' c='_ZN12_GLOBAL__N_115AutomaticLocals22processAutomaticLocalsEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='188' u='c' c='_ZN12_GLOBAL__N_115AutomaticLocals22processAutomaticLocalsEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='73' u='c' c='_ZN4pocl20CanonicalizeBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='101' u='c' c='_ZN4pocl20CanonicalizeBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='153' u='c' c='_ZN4pocl20CanonicalizeBarriers15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='179' u='c' c='_ZN4pocl20CanonicalizeBarriers15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/IsolateRegions.cc' l='147' u='c' c='_ZN4pocl14IsolateRegions13addDummyAfterEPN4llvm6RegionEPNS1_10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/LoopBarriers.cc' l='112' u='c' c='_ZN4pocl12LoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/LoopBarriers.cc' l='119' u='c' c='_ZN4pocl12LoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/LoopBarriers.cc' l='133' u='c' c='_ZN4pocl12LoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/LoopBarriers.cc' l='141' u='c' c='_ZN4pocl12LoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/LoopBarriers.cc' l='164' u='c' c='_ZN4pocl12LoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/LoopBarriers.cc' l='187' u='c' c='_ZN4pocl12LoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='88' u='c' c='_ZN4pocl14ParallelRegion17GenerateTempNamesEPN4llvm10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='446' u='c' c='_ZL27cloneFunctionWithPrintfArgsPN4llvm5ValueES1_S1_PNS_8FunctionEPNS_6ModuleE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='448' u='c' c='_ZL27cloneFunctionWithPrintfArgsPN4llvm5ValueES1_S1_PNS_8FunctionEPNS_6ModuleE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='450' u='c' c='_ZL27cloneFunctionWithPrintfArgsPN4llvm5ValueES1_S1_PNS_8FunctionEPNS_6ModuleE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='454' u='c' c='_ZL27cloneFunctionWithPrintfArgsPN4llvm5ValueES1_S1_PNS_8FunctionEPNS_6ModuleE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='640' u='c' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='197' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemReplication.cc' l='295' u='c' c='_ZN4pocl19WorkitemReplication15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='145' u='c' c='_ZL24CloneFuncFixOpenCLImageTPN4llvm6ModuleEPNS_8FunctionE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='232' u='c' c='_ZL8CopyFuncN4llvm9StringRefEPKNS_6ModuleEPS1_RNS_8ValueMapIPKNS_5ValueENS_14WeakTrackingVHENS_14ValueMapConfigIS8_NS_3sys10SmartMutexILb0EEEEEEE'/>

@@ -1,0 +1,6 @@
+<def f='pocl/include/CL/cl2.hpp' l='3326' ll='3330' type='cl::Memory &amp; cl::Memory::operator=(const cl::Memory &amp; mem)'/>
+<use f='pocl/include/CL/cl2.hpp' l='3932' u='c' c='_ZN2cl6BufferaSERKS0_'/>
+<use f='pocl/include/CL/cl2.hpp' l='4325' u='c' c='_ZN2cl5ImageaSERKS0_'/>
+<doc f='pocl/include/CL/cl2.hpp' l='3323'>/*! \brief Copy assignment to forward copy to the superclass correctly.
+     * Required for MSVC.
+     */</doc>

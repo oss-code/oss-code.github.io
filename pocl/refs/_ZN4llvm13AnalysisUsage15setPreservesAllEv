@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/PassAnalysisSupport.h' l='121' type='void llvm::AnalysisUsage::setPreservesAll()'/>
+<doc f='include/llvm-6.0/llvm/PassAnalysisSupport.h' l='120'>/// Set by analyses that do not transform their input at all</doc>
+<use f='include/llvm-6.0/llvm/Analysis/IntervalPartition.h' l='87' u='c' c='_ZNK4llvm17IntervalPartition16getAnalysisUsageERNS_13AnalysisUsageE'/>
+<use f='include/llvm-6.0/llvm/IR/Dominators.h' l='285' u='c' c='_ZNK4llvm24DominatorTreeWrapperPass16getAnalysisUsageERNS_13AnalysisUsageE'/>
+<use f='include/llvm-6.0/llvm/Analysis/PostDominators.h' l='79' u='c' c='_ZNK4llvm28PostDominatorTreeWrapperPass16getAnalysisUsageERNS_13AnalysisUsageE'/>
+<use f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='483' u='c' c='_ZNK4llvm13FPPassManager16getAnalysisUsageERNS_13AnalysisUsageE'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopPass.h' l='173' u='c' c='_ZNK4llvm21LCSSAVerificationPass16getAnalysisUsageERNS_13AnalysisUsageE'/>
+<use f='pocl/lib/llvmopencl/RemoveOptnoneFromWIFunc.h' l='40' u='c' c='_ZNK4pocl23RemoveOptnoneFromWIFunc16getAnalysisUsageERN4llvm13AnalysisUsageE'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='134' u='c' c='_ZNK21WorkItemAliasAnalysis16getAnalysisUsageERN4llvm13AnalysisUsageE'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandlerChooser.cc' l='58' u='c' c='_ZNK4pocl22WorkitemHandlerChooser16getAnalysisUsageERN4llvm13AnalysisUsageE'/>

@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='134' ll='146' type='int llvm::TargetTransformInfo::getInstructionCost(const llvm::Instruction * I, enum TargetCostKind kind) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='127'>/// \brief Query the cost of a specified instruction.
+  ///
+  /// Clients should use this interface to query the cost of an existing
+  /// instruction. The instruction must have a valid parent (basic block).
+  ///
+  /// Note, this method does not cache the cost calculation and it
+  /// can be expensive in some cases.</doc>

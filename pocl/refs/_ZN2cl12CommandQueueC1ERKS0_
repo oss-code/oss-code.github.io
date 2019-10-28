@@ -1,0 +1,15 @@
+<use f='pocl/include/CL/cl2.hpp' l='7312' u='c' c='_ZN2cl12CommandQueue10getDefaultEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='7326' u='c' c='_ZN2cl12CommandQueue10setDefaultERKS0_'/>
+<def f='pocl/include/CL/cl2.hpp' l='7350' type='void cl::CommandQueue::CommandQueue(const cl::CommandQueue &amp; queue)'/>
+<use f='pocl/include/CL/cl2.hpp' l='9763' u='c' c='_ZN2cl11EnqueueArgsC1ERNS_12CommandQueueENS_7NDRangeE'/>
+<use f='pocl/include/CL/cl2.hpp' l='9772' u='c' c='_ZN2cl11EnqueueArgsC1ERNS_12CommandQueueENS_7NDRangeES3_'/>
+<use f='pocl/include/CL/cl2.hpp' l='9781' u='c' c='_ZN2cl11EnqueueArgsC1ERNS_12CommandQueueENS_7NDRangeES3_S3_'/>
+<use f='pocl/include/CL/cl2.hpp' l='9790' u='c' c='_ZN2cl11EnqueueArgsC1ERNS_12CommandQueueENS_5EventENS_7NDRangeE'/>
+<use f='pocl/include/CL/cl2.hpp' l='9799' u='c' c='_ZN2cl11EnqueueArgsC1ERNS_12CommandQueueENS_5EventENS_7NDRangeES4_'/>
+<use f='pocl/include/CL/cl2.hpp' l='9808' u='c' c='_ZN2cl11EnqueueArgsC1ERNS_12CommandQueueENS_5EventENS_7NDRangeES4_S4_'/>
+<use f='pocl/include/CL/cl2.hpp' l='9817' u='c' c='_ZN2cl11EnqueueArgsC1ERNS_12CommandQueueERKSt6vectorINS_5EventESaIS4_EENS_7NDRangeE'/>
+<use f='pocl/include/CL/cl2.hpp' l='9827' u='c' c='_ZN2cl11EnqueueArgsC1ERNS_12CommandQueueERKSt6vectorINS_5EventESaIS4_EENS_7NDRangeES9_'/>
+<use f='pocl/include/CL/cl2.hpp' l='9837' u='c' c='_ZN2cl11EnqueueArgsC1ERNS_12CommandQueueERKSt6vectorINS_5EventESaIS4_EENS_7NDRangeES9_S9_'/>
+<doc f='pocl/include/CL/cl2.hpp' l='7347'>/*! \brief Copy constructor to forward copy to the superclass correctly.
+     * Required for MSVC.
+     */</doc>

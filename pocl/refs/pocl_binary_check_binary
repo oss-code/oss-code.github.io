@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/pocl_binary.h' l='39' type='int pocl_binary_check_binary(cl_device_id device, const unsigned char * binary)'/>
+<doc f='pocl/lib/CL/pocl_binary.h' l='38'>/* check if buffer is pocl binary format, returns 1 if true */</doc>
+<use f='pocl/lib/CL/clCreateProgramWithBinary.c' l='150' u='c' c='create_program_skeleton'/>
+<def f='pocl/lib/CL/pocl_binary.c' l='259' ll='263' type='int pocl_binary_check_binary(cl_device_id device, const unsigned char * binary)'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='726' u='c' c='pocl_binary_get_kernels_metadata'/>

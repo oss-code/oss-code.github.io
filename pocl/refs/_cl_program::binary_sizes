@@ -1,0 +1,25 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1074' type='size_t *'/>
+<offset>768</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='1072'>/* The binaries for each device.  Currently the binary is directly the
+     sequential bitcode produced from the kernel sources.  */</doc>
+<use f='pocl/lib/CL/clCreateProgramWithBinary.c' l='106' u='w' c='create_program_skeleton'/>
+<use f='pocl/lib/CL/clCreateProgramWithBinary.c' l='141' u='r' c='create_program_skeleton'/>
+<use f='pocl/lib/CL/clCreateProgramWithBinary.c' l='169' u='r' c='create_program_skeleton'/>
+<use f='pocl/lib/CL/clCreateProgramWithBinary.c' l='198' u='r' c='create_program_skeleton'/>
+<use f='pocl/lib/CL/clCreateProgramWithBinary.c' l='198' u='w' c='create_program_skeleton'/>
+<use f='pocl/lib/CL/clCreateProgramWithSource.c' l='104' u='w' c='POclCreateProgramWithSource'/>
+<use f='pocl/lib/CL/clCreateProgramWithSource.c' l='135' u='r' c='POclCreateProgramWithSource'/>
+<use f='pocl/lib/CL/clCreateProgramWithSource.c' l='135' u='w' c='POclCreateProgramWithSource'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='65' u='r' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='65' u='w' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/pocl_build.c' l='458' u='r' c='clean_program_on_rebuild'/>
+<use f='pocl/lib/CL/pocl_build.c' l='660' u='r' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_build.c' l='736' u='r' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_build.c' l='774' u='r' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_build.c' l='896' u='r' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='387' u='r' c='build_program_compute_hash'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='393' u='r' c='build_program_compute_hash'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='597' u='r' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='632' u='r' c='pocl_llvm_link_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='742' u='r' c='pocl_llvm_link_program'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='559' u='r' c='pocl_llvm_update_binaries'/>

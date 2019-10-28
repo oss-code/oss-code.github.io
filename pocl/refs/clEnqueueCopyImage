@@ -1,0 +1,3 @@
+<dec f='pocl/include/CL/cl.h' l='1519' type='cl_int clEnqueueCopyImage(cl_command_queue command_queue, cl_mem src_image, cl_mem dst_image, const size_t * src_origin, const size_t * dst_origin, const size_t * region, cl_uint num_events_in_wait_list, const cl_event * event_wait_list, cl_event * event)'/>
+<use f='pocl/lib/CL/pocl_intfn.h' l='57' c='POclEnqueueCopyImage'/>
+<use f='pocl/include/CL/cl2.hpp' l='7705' u='c' c='_ZNK2cl12CommandQueue16enqueueCopyImageERKNS_5ImageES3_RKSt5arrayImLm3EES7_S7_PKSt6vectorINS_5EventESaIS9_EEPS9_'/>

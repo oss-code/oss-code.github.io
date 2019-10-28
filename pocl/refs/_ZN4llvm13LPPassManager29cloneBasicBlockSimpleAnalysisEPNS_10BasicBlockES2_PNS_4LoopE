@@ -1,0 +1,10 @@
+<dec f='include/llvm-6.0/llvm/Analysis/LoopPass.h' l='144' type='void llvm::LPPassManager::cloneBasicBlockSimpleAnalysis(llvm::BasicBlock * From, llvm::BasicBlock * To, llvm::Loop * L)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopPass.h' l='135'>//===--------------------------------------------------------------------===//
+  /// SimpleAnalysis - Provides simple interface to update analysis info
+  /// maintained by various passes. Note, if required this interface can
+  /// be extracted into a separate abstract class but it would require
+  /// additional use of multiple inheritance in Pass class hierarchy, something
+  /// we are trying to avoid.
+
+  /// cloneBasicBlockSimpleAnalysis - Invoke cloneBasicBlockAnalysis hook for
+  /// all passes that implement simple analysis interface.</doc>

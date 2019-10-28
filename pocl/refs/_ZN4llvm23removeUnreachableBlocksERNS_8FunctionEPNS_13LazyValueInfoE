@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='405' type='bool llvm::removeUnreachableBlocks(llvm::Function &amp; F, llvm::LazyValueInfo * LVI = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='402'>/// Remove all blocks that can not be reached from the function&apos;s entry.
+///
+/// Returns true if any basic block was removed.</doc>

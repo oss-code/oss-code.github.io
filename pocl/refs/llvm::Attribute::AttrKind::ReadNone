@@ -1,0 +1,11 @@
+<dec f='include/llvm-6.0/llvm/IR/Attributes.gen' l='36' type='34'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='409' u='r' c='_ZNK4llvm8Function19doesNotAccessMemoryEv'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='412' u='r' c='_ZN4llvm8Function22setDoesNotAccessMemoryEv'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1492' c='_ZNK4llvm17OperandBundleUser28isFnAttrDisallowedByOpBundleENS_9Attribute8AttrKindE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1779' u='r' c='_ZNK4llvm8CallInst19doesNotAccessMemoryEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1782' u='r' c='_ZN4llvm8CallInst22setDoesNotAccessMemoryEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='3879' u='r' c='_ZNK4llvm10InvokeInst19doesNotAccessMemoryEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='3882' u='r' c='_ZN4llvm10InvokeInst22setDoesNotAccessMemoryEv'/>
+<use f='include/llvm-6.0/llvm/IR/CallSite.h' l='620' u='r' c='_ZNK4llvm12CallSiteBase19doesNotAccessMemoryEj'/>
+<use f='include/llvm-6.0/llvm/IR/CallSite.h' l='625' u='r' c='_ZNK4llvm12CallSiteBase15onlyReadsMemoryEj'/>
+<use f='include/llvm-6.0/llvm/IR/CallSite.h' l='630' u='r' c='_ZNK4llvm12CallSiteBase17doesNotReadMemoryEj'/>

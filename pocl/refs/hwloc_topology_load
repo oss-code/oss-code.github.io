@@ -1,0 +1,19 @@
+<dec f='include/hwloc.h' l='629' type='int hwloc_topology_load(hwloc_topology_t topology)'/>
+<use f='pocl/lib/CL/devices/topology/pocl_topology.c' l='110' u='c' c='pocl_topology_detect_device_info'/>
+<doc f='include/hwloc.h' l='612'>/** \brief Build the actual topology
+ *
+ * Build the actual topology once initialized with hwloc_topology_init() and
+ * tuned with \ref hwlocality_configuration routines.
+ * No other routine may be called earlier using this topology context.
+ *
+ * \param topology is the topology to be loaded with objects.
+ *
+ * \return 0 on success, -1 on error.
+ *
+ * \note On failure, the topology is reinitialized. It should be either
+ * destroyed with hwloc_topology_destroy() or configured and loaded again.
+ *
+ * \note This function may be called only once per topology.
+ *
+ * \sa hwlocality_configuration
+ */</doc>

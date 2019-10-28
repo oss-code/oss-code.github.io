@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/Constants.h' l='165' ll='167' type='bool llvm::ConstantInt::equalsInt(uint64_t V) const'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='161'>/// A helper method that can be used to determine if the constant contained
+  /// within is equal to a constant.  This only works for very small values,
+  /// because this is all that can be represented with all types.
+  /// @brief Determine if this constant&apos;s value is same as an unsigned char.</doc>

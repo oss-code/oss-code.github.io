@@ -1,0 +1,14 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='341' type='void (*)(cl_event)'/>
+<offset>320</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='333'>/* broadcast is(has to be) called by the device driver when a command is
+     completed.
+     It is used to broadcast notifications to device drivers waiting
+     this event to complete.
+     There is a default implementation for this. Use it if there is no need
+     to do anything special here.
+     The default implementation calls notify(event, target_event) for the
+     list of events waiting on &apos;event&apos;. */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='134' u='w' c='pocl_basic_init_device_ops'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='145' u='w' c='pocl_cuda_init_device_ops'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='91' u='w' c='pocl_pthread_init_device_ops'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1268' u='r' c='pocl_update_event_finished_msg'/>

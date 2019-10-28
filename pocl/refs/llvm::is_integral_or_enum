@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/Support/type_traits.h' l='64' ll='74'/>
+<doc f='include/llvm-6.0/llvm/Support/type_traits.h' l='57'>/// \brief Metafunction that determines whether the given type is either an
+/// integral type or an enumeration type, including enum classes.
+///
+/// Note that this accepts potentially more integral types than is_integral
+/// because it is based on being implicitly convertible to an integral type.
+/// Also note that enum classes aren&apos;t implicitly convertible to integral types,
+/// the value may therefore need to be explicitly converted before being used.</doc>
+<smbr r='llvm::is_integral_or_enum::value' t='const bool'/>

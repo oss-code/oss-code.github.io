@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/GlobalVariable.h' l='159' type='void llvm::GlobalVariable::copyAttributesFrom(const llvm::GlobalVariable * Src)'/>
+<doc f='include/llvm-6.0/llvm/IR/GlobalVariable.h' l='157'>/// copyAttributesFrom - copy all additional attributes (those not needed to
+  /// create a GlobalVariable) from the GlobalVariable Src to this one.</doc>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='408' u='c' c='_Z4linkPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='465' u='c' c='_Z21copyKernelFromBitcodePKcPN4llvm6ModuleEPKS2_'/>

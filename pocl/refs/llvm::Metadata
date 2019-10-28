@@ -1,0 +1,23 @@
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='58' ll='137'/>
+<ovr f='include/llvm-6.0/llvm/IR/Metadata.h' l='337' c='llvm::ValueAsMetadata'/>
+<ovr f='include/llvm-6.0/llvm/IR/Metadata.h' l='602' c='llvm::MDString'/>
+<ovr f='include/llvm-6.0/llvm/IR/Metadata.h' l='862' c='llvm::MDNode'/>
+<ovr f='include/llvm-6.0/llvm/IR/Metadata.h' l='1279' c='llvm::DistinctMDOperandPlaceholder'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='55'>/// \brief Root of the metadata hierarchy.
+///
+/// This is a root class for typeless data in the IR.</doc>
+<mbr r='llvm::Metadata::SubclassID' o='0' t='const unsigned char'/>
+<mbr r='llvm::Metadata::Storage' o='8' t='unsigned char'/>
+<mbr r='llvm::Metadata::SubclassData16' o='16' t='unsigned short'/>
+<mbr r='llvm::Metadata::SubclassData32' o='32' t='unsigned int'/>
+<fun r='_ZN4llvm8MetadataC1EjNS0_11StorageTypeE'/>
+<fun r='_ZN4llvm8MetadataD1Ev'/>
+<fun r='_ZN4llvm8Metadata20handleChangedOperandEPvPS0_'/>
+<fun r='_ZNK4llvm8Metadata13getMetadataIDEv'/>
+<fun r='_ZNK4llvm8Metadata4dumpEv'/>
+<fun r='_ZNK4llvm8Metadata4dumpEPKNS_6ModuleE'/>
+<fun r='_ZNK4llvm8Metadata5printERNS_11raw_ostreamEPKNS_6ModuleEb'/>
+<fun r='_ZNK4llvm8Metadata5printERNS_11raw_ostreamERNS_17ModuleSlotTrackerEPKNS_6ModuleEb'/>
+<fun r='_ZNK4llvm8Metadata14printAsOperandERNS_11raw_ostreamEPKNS_6ModuleE'/>
+<fun r='_ZNK4llvm8Metadata14printAsOperandERNS_11raw_ostreamERNS_17ModuleSlotTrackerEPKNS_6ModuleE'/>

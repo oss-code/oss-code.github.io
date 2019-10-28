@@ -1,0 +1,5 @@
+<def f='pocl/include/CL/cl2.hpp' l='5082' ll='5150' type='void cl::Image3D::Image3D(const cl::Context &amp; context, cl_mem_flags flags, cl::ImageFormat format, size_type width, size_type height, size_type depth, size_type row_pitch = 0, size_type slice_pitch = 0, void * host_ptr = __null, cl_int * err = __null)'/>
+<doc f='pocl/include/CL/cl2.hpp' l='5078'>/*! \brief Constructs a 3D Image in a specified context.
+     *
+     *  Wraps clCreateImage().
+     */</doc>

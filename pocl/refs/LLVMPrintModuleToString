@@ -1,0 +1,7 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='623' type='char * LLVMPrintModuleToString(LLVMModuleRef M)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='617'>/**
+ * Return a string representation of the module. Use
+ * LLVMDisposeMessage to free the string.
+ *
+ * @see Module::print()
+ */</doc>

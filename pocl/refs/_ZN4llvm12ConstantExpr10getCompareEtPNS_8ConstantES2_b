@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='1099' type='static llvm::Constant * llvm::ConstantExpr::getCompare(unsigned short pred, llvm::Constant * C1, llvm::Constant * C2, bool OnlyIfReduced = false)'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='1096'>/// \brief Return an ICmp or FCmp comparison operator constant expression.
+  ///
+  /// \param OnlyIfReduced see \a getWithOperands() docs.</doc>
+<use f='include/llvm-6.0/llvm/IR/ConstantFolder.h' l='234' u='c' c='_ZNK4llvm14ConstantFolder10CreateICmpENS_7CmpInst9PredicateEPNS_8ConstantES4_'/>
+<use f='include/llvm-6.0/llvm/IR/ConstantFolder.h' l='239' u='c' c='_ZNK4llvm14ConstantFolder10CreateFCmpENS_7CmpInst9PredicateEPNS_8ConstantES4_'/>

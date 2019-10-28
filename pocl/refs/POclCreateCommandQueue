@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/pocl_intfn.h' l='35' macro='1' type='cl_command_queue POclCreateCommandQueue(cl_context , cl_device_id , cl_command_queue_properties , cl_int * )'/>
+<def f='pocl/lib/CL/clCreateCommandQueue.c' l='29' macro='1' type='cl_command_queue POclCreateCommandQueue(cl_context context, cl_device_id device, cl_command_queue_properties properties, cl_int * errcode_ret)'/>
+<use f='pocl/lib/CL/clCreateCommandQueueWithProperties.c' l='98' macro='1' u='c'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='49' macro='1' u='a'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='49' macro='1' u='a'/>

@@ -1,0 +1,11 @@
+<dec f='include/hwloc/bitmap.h' l='357' type='int hwloc_bitmap_compare(hwloc_const_bitmap_t bitmap1, hwloc_const_bitmap_t bitmap2)'/>
+<use f='include/hwloc/cpuset.h' l='65' u='c' c='hwloc_cpuset_compare'/>
+<doc f='include/hwloc/bitmap.h' l='348'>/** \brief Compare bitmaps \p bitmap1 and \p bitmap2 in lexicographic order.
+ *
+ * Lexicographic comparison of bitmaps, starting for their highest indexes.
+ * Compare last indexes first, then second, etc.
+ * The empty bitmap is considered lower than anything.
+ *
+ * \note This is different from the non-existing hwloc_bitmap_compare_last()
+ * which would only compare the highest index of each bitmap.
+ */</doc>

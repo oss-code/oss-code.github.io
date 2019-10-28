@@ -1,0 +1,6 @@
+<dec f='include/hwloc.h' l='1462' type='int hwloc_get_cpubind(hwloc_topology_t topology, hwloc_cpuset_t set, int flags)'/>
+<doc f='include/hwloc.h' l='1457'>/** \brief Get current process or thread binding.
+ *
+ * Writes into \p set the physical cpuset which the process or thread (according to \e
+ * flags) was last bound to.
+ */</doc>

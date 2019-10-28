@@ -1,0 +1,8 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2637' type='void LLVMSetUnwindDest(LLVMValueRef InvokeInst, LLVMBasicBlockRef B)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2630'>/**
+ * Set the unwind destination basic block.
+ *
+ * This only works on llvm::InvokeInst instructions.
+ *
+ * @see llvm::InvokeInst::setUnwindDest()
+ */</doc>

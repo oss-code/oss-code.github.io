@@ -1,0 +1,9 @@
+<def f='include/c++/7/bits/forward_list.h' l='604' ll='609' type='forward_list&lt;_Tp, _Alloc&gt; &amp; std::forward_list::operator=(std::initializer_list&lt;_Tp&gt; __il)'/>
+<doc f='include/c++/7/bits/forward_list.h' l='596'>/**
+       *  @brief  The %forward_list initializer list assignment operator.
+       *  @param  __il  An initializer_list of value_type.
+       *
+       *  Replace the contents of the %forward_list with copies of the
+       *  elements in the initializer_list @a __il.  This is linear in
+       *  __il.size().
+       */</doc>

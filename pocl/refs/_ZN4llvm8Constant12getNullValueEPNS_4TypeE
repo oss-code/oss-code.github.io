@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/Constant.h' l='136' type='static llvm::Constant * llvm::Constant::getNullValue(llvm::Type * Ty)'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='701' u='c' c='_ZL18fixConstantMemArgsPN4llvm6ModuleEPKc'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1783' u='c' c='_ZN4llvm9IRBuilder12CreateIsNullEPNS_5ValueERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1789' u='c' c='_ZN4llvm9IRBuilder15CreateIsNotNullEPNS_5ValueERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='259' u='c' c='_ZN4llvm13EmitGEPOffsetEPT_RKNS_10DataLayoutEPNS_4UserEb'/>

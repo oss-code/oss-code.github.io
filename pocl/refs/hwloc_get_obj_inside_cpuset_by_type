@@ -1,0 +1,13 @@
+<dec f='include/hwloc/helper.h' l='155' type='hwloc_obj_t hwloc_get_obj_inside_cpuset_by_type(hwloc_topology_t topology, hwloc_const_cpuset_t set, hwloc_obj_type_t type, unsigned int idx)'/>
+<def f='include/hwloc/helper.h' l='157' ll='165' type='hwloc_obj_t hwloc_get_obj_inside_cpuset_by_type(hwloc_topology_t topology, hwloc_const_cpuset_t set, hwloc_obj_type_t type, unsigned int idx)'/>
+<use f='include/hwloc/helper.h' l='625' u='c' c='hwloc_get_obj_below_by_type'/>
+<use f='include/hwloc/helper.h' l='656' u='c' c='hwloc_get_obj_below_array_by_type'/>
+<doc f='include/hwloc/helper.h' l='145'>/** \brief Return the \p idx -th object of type \p type included in CPU set \p set.
+ *
+ * If there are multiple or no depth for given type, return \c NULL
+ * and let the caller fallback to
+ * hwloc_get_obj_inside_cpuset_by_depth().
+ *
+ * \note This function cannot work if objects of the given type do
+ * not have CPU sets or if the topology is made of different machines.
+ */</doc>

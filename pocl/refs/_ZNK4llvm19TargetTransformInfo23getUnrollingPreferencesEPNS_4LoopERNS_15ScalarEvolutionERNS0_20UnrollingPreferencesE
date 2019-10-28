@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='430' type='void llvm::TargetTransformInfo::getUnrollingPreferences(llvm::Loop * L, llvm::ScalarEvolution &amp; , llvm::TargetTransformInfo::UnrollingPreferences &amp; UP) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='427'>/// \brief Get target-customized preferences for the generic loop unrolling
+  /// transformation. The caller will initialize UP with the current
+  /// target-independent defaults.</doc>

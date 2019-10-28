@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>pocl-pthread_utils.h source code [pocl/lib/CL/devices/pthread/pocl-pthread_utils.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="kernel_run_command "/>
+<link rel="stylesheet" href="../../../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/CL/devices/pthread/pocl-pthread_utils.h'; var root_path = '../../../../..'; var data_path = '../../../../../../data';</script>
+<script src='../../../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../../../..'>pocl</a>/<a href='../../..'>lib</a>/<a href='../..'>CL</a>/<a href='..'>devices</a>/<a href='./'>pthread</a>/<a href='pocl-pthread_utils.h.html'>pocl-pthread_utils.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* OpenCL pthreaded CPU device implementation: utils.</i></td></tr>
+<tr><th id="2">2</th><td><i></i></td></tr>
+<tr><th id="3">3</th><td><i>   Copyright (c) 2011-2012 Universidad Rey Juan Carlos and</i></td></tr>
+<tr><th id="4">4</th><td><i>                 2012-2018 Pekka Jääskeläinen / Tampere Univ. of Technology</i></td></tr>
+<tr><th id="5">5</th><td><i></i></td></tr>
+<tr><th id="6">6</th><td><i>   Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="7">7</th><td><i>   of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="8">8</th><td><i>   in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="9">9</th><td><i>   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="10">10</th><td><i>   copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="11">11</th><td><i>   furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="12">12</th><td><i></i></td></tr>
+<tr><th id="13">13</th><td><i>   The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="14">14</th><td><i>   all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="15">15</th><td><i></i></td></tr>
+<tr><th id="16">16</th><td><i>   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="17">17</th><td><i>   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="18">18</th><td><i>   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="19">19</th><td><i>   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="20">20</th><td><i>   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="21">21</th><td><i>   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="22">22</th><td><i>   THE SOFTWARE.</i></td></tr>
+<tr><th id="23">23</th><td><i>*/</i></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><u>#<span data-ppcond="25">ifndef</span> <span class="macro" data-ref="_M/POCL_PTHREAD_UTILS_H">POCL_PTHREAD_UTILS_H</span></u></td></tr>
+<tr><th id="26">26</th><td><u>#define <dfn class="macro" id="_M/POCL_PTHREAD_UTILS_H" data-ref="_M/POCL_PTHREAD_UTILS_H">POCL_PTHREAD_UTILS_H</dfn></u></td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><u>#include <a href="../../pocl_cl.h.html">"pocl_cl.h"</a></u></td></tr>
+<tr><th id="29">29</th><td><u>#include <a href="../../pocl_util.h.html">"pocl_util.h"</a></u></td></tr>
+<tr><th id="30">30</th><td><u>#include <a href="../../../../include/pocl_context.h.html">"pocl_context.h"</a></u></td></tr>
+<tr><th id="31">31</th><td><u>#include <a href="../../../../include/pocl_workgroup_func.h.html">"pocl_workgroup_func.h"</a></u></td></tr>
+<tr><th id="32">32</th><td></td></tr>
+<tr><th id="33">33</th><td><u>#<span data-ppcond="33">ifdef</span> <span class="macro" data-ref="_M/__GNUC__">__GNUC__</span></u></td></tr>
+<tr><th id="34">34</th><td><u>#pragma GCC visibility push(hidden)</u></td></tr>
+<tr><th id="35">35</th><td><u>#<span data-ppcond="33">endif</span></u></td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td><b>typedef</b> <b>struct</b> <a class="type" href="#kernel_run_command" title='kernel_run_command' data-ref="kernel_run_command">kernel_run_command</a> <dfn class="typedef" id="kernel_run_command" title='kernel_run_command' data-type='struct kernel_run_command' data-ref="kernel_run_command">kernel_run_command</dfn>;</td></tr>
+<tr><th id="38">38</th><td><b>struct</b> <dfn class="type def" id="kernel_run_command" title='kernel_run_command' data-ref="kernel_run_command">kernel_run_command</dfn></td></tr>
+<tr><th id="39">39</th><td>{</td></tr>
+<tr><th id="40">40</th><td>  <em>void</em> *<dfn class="decl" id="kernel_run_command::data" title='kernel_run_command::data' data-ref="kernel_run_command::data">data</dfn>;</td></tr>
+<tr><th id="41">41</th><td>  <a class="typedef" href="../../../../include/CL/cl.h.html#cl_kernel" title='cl_kernel' data-type='struct _cl_kernel *' data-ref="cl_kernel">cl_kernel</a> <dfn class="decl" id="kernel_run_command::kernel" title='kernel_run_command::kernel' data-ref="kernel_run_command::kernel">kernel</dfn>;</td></tr>
+<tr><th id="42">42</th><td>  <a class="typedef" href="../../../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="decl" id="kernel_run_command::device" title='kernel_run_command::device' data-ref="kernel_run_command::device">device</dfn>;</td></tr>
+<tr><th id="43">43</th><td>  <a class="typedef" href="../../../../include/pocl.h.html#_cl_command_node" title='_cl_command_node' data-type='struct _cl_command_node' data-ref="_cl_command_node">_cl_command_node</a> *<dfn class="decl" id="kernel_run_command::cmd" title='kernel_run_command::cmd' data-ref="kernel_run_command::cmd">cmd</dfn>;</td></tr>
+<tr><th id="44">44</th><td>  <a class="typedef" href="../../../../include/pocl_workgroup_func.h.html#pocl_workgroup_func" title='pocl_workgroup_func' data-type='void (*)(uchar *, uchar *, ulong, ulong, ulong)' data-ref="pocl_workgroup_func">pocl_workgroup_func</a> <dfn class="decl" id="kernel_run_command::workgroup" title='kernel_run_command::workgroup' data-ref="kernel_run_command::workgroup">workgroup</dfn>;</td></tr>
+<tr><th id="45">45</th><td>  <b>struct</b> <a class="type" href="../../pocl_cl.h.html#pocl_argument" title='pocl_argument' data-ref="pocl_argument">pocl_argument</a> *<dfn class="decl" id="kernel_run_command::kernel_args" title='kernel_run_command::kernel_args' data-ref="kernel_run_command::kernel_args">kernel_args</dfn>;</td></tr>
+<tr><th id="46">46</th><td>  <a class="typedef" href="#kernel_run_command" title='kernel_run_command' data-type='struct kernel_run_command' data-ref="kernel_run_command">kernel_run_command</a> *<dfn class="decl" id="kernel_run_command::prev" title='kernel_run_command::prev' data-ref="kernel_run_command::prev">prev</dfn>;</td></tr>
+<tr><th id="47">47</th><td>  <a class="typedef" href="#kernel_run_command" title='kernel_run_command' data-type='struct kernel_run_command' data-ref="kernel_run_command">kernel_run_command</a> *<dfn class="decl" id="kernel_run_command::next" title='kernel_run_command::next' data-ref="kernel_run_command::next">next</dfn>;</td></tr>
+<tr><th id="48">48</th><td>  <em>unsigned</em> <em>long</em> <dfn class="decl" id="kernel_run_command::ref_count" title='kernel_run_command::ref_count' data-ref="kernel_run_command::ref_count">ref_count</dfn>;</td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td>  <i>/* actual kernel arguments. these are setup once at the kernel setup</i></td></tr>
+<tr><th id="51">51</th><td><i>   * phase, then each thread sets up the local arguments for itself. */</i></td></tr>
+<tr><th id="52">52</th><td>  <em>void</em> **<dfn class="decl" id="kernel_run_command::arguments" title='kernel_run_command::arguments' data-ref="kernel_run_command::arguments">arguments</dfn>;</td></tr>
+<tr><th id="53">53</th><td>  <i>/* this is required b/c there's an additional level of indirection */</i></td></tr>
+<tr><th id="54">54</th><td>  <em>void</em> **<dfn class="decl" id="kernel_run_command::arguments2" title='kernel_run_command::arguments2' data-ref="kernel_run_command::arguments2">arguments2</dfn>;</td></tr>
+<tr><th id="55">55</th><td></td></tr>
+<tr><th id="56">56</th><td>  <a class="macro" href="../../pocl_cl.h.html#104" title="pthread_mutex_t" data-ref="_M/POCL_FAST_LOCK_T">POCL_FAST_LOCK_T</a> <dfn class="decl" id="kernel_run_command::lock" title='kernel_run_command::lock' data-ref="kernel_run_command::lock">lock</dfn> <b>__attribute__</b> ((aligned (<a class="macro" href="../../../../config.h.html#73" title="64" data-ref="_M/HOST_CPU_CACHELINE_SIZE">HOST_CPU_CACHELINE_SIZE</a>)));</td></tr>
+<tr><th id="57">57</th><td></td></tr>
+<tr><th id="58">58</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="kernel_run_command::remaining_wgs" title='kernel_run_command::remaining_wgs' data-ref="kernel_run_command::remaining_wgs">remaining_wgs</dfn> <b>__attribute__</b> ((aligned (<a class="macro" href="../../../../config.h.html#73" title="64" data-ref="_M/HOST_CPU_CACHELINE_SIZE">HOST_CPU_CACHELINE_SIZE</a>)));</td></tr>
+<tr><th id="59">59</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="kernel_run_command::wgs_dealt" title='kernel_run_command::wgs_dealt' data-ref="kernel_run_command::wgs_dealt">wgs_dealt</dfn>;</td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td>  <b>struct</b> <a class="type" href="../../../../include/pocl_context.h.html#pocl_context" title='pocl_context' data-ref="pocl_context">pocl_context</a> <dfn class="decl" id="kernel_run_command::pc" title='kernel_run_command::pc' data-ref="kernel_run_command::pc">pc</dfn> <b>__attribute__</b> ((aligned (<a class="macro" href="../../../../config.h.html#73" title="64" data-ref="_M/HOST_CPU_CACHELINE_SIZE">HOST_CPU_CACHELINE_SIZE</a>)));</td></tr>
+<tr><th id="62">62</th><td></td></tr>
+<tr><th id="63">63</th><td>} <b>__attribute__</b> ((aligned (<a class="macro" href="../../../../config.h.html#73" title="64" data-ref="_M/HOST_CPU_CACHELINE_SIZE">HOST_CPU_CACHELINE_SIZE</a>)));</td></tr>
+<tr><th id="64">64</th><td></td></tr>
+<tr><th id="65">65</th><td><u>#<span data-ppcond="65">ifdef</span> <span class="macro" data-ref="_M/USE_POCL_MEMMANAGER">USE_POCL_MEMMANAGER</span></u></td></tr>
+<tr><th id="66">66</th><td><em>void</em> pocl_init_kernel_run_command_manager (<em>void</em>);</td></tr>
+<tr><th id="67">67</th><td><em>void</em> pocl_init_thread_argument_manager ();</td></tr>
+<tr><th id="68">68</th><td>kernel_run_command* new_kernel_run_command ();</td></tr>
+<tr><th id="69">69</th><td><em>void</em> free_kernel_run_command (kernel_run_command *k);</td></tr>
+<tr><th id="70">70</th><td><u>#<span data-ppcond="65">else</span></u></td></tr>
+<tr><th id="71">71</th><td><u>#define <dfn class="macro" id="_M/pocl_init_kernel_run_command_manager" data-ref="_M/pocl_init_kernel_run_command_manager">pocl_init_kernel_run_command_manager</dfn>() NULL</u></td></tr>
+<tr><th id="72">72</th><td><u>#define <dfn class="macro" id="_M/pocl_init_thread_argument_manager" data-ref="_M/pocl_init_thread_argument_manager">pocl_init_thread_argument_manager</dfn>() NULL</u></td></tr>
+<tr><th id="73">73</th><td><u>#define <dfn class="macro" id="_M/new_kernel_run_command" data-ref="_M/new_kernel_run_command">new_kernel_run_command</dfn>()                                              \</u></td></tr>
+<tr><th id="74">74</th><td><u>  (kernel_run_command *)pocl_aligned_malloc (HOST_CPU_CACHELINE_SIZE,         \</u></td></tr>
+<tr><th id="75">75</th><td><u>                                             sizeof (kernel_run_command))</u></td></tr>
+<tr><th id="76">76</th><td><u>#define <dfn class="macro" id="_M/free_kernel_run_command" data-ref="_M/free_kernel_run_command">free_kernel_run_command</dfn>(k) free (k)</u></td></tr>
+<tr><th id="77">77</th><td><u>#<span data-ppcond="65">endif</span></u></td></tr>
+<tr><th id="78">78</th><td></td></tr>
+<tr><th id="79">79</th><td><em>void</em> <dfn class="decl" id="setup_kernel_arg_array" title='setup_kernel_arg_array' data-ref="setup_kernel_arg_array">setup_kernel_arg_array</dfn> (<a class="typedef" href="#kernel_run_command" title='kernel_run_command' data-type='struct kernel_run_command' data-ref="kernel_run_command">kernel_run_command</a> *<dfn class="local col1 decl" id="1k" title='k' data-type='kernel_run_command *' data-ref="1k">k</dfn>);</td></tr>
+<tr><th id="80">80</th><td><em>void</em> <dfn class="decl" id="setup_kernel_arg_array_with_locals" title='setup_kernel_arg_array_with_locals' data-ref="setup_kernel_arg_array_with_locals">setup_kernel_arg_array_with_locals</dfn> (<em>void</em> **<dfn class="local col2 decl" id="2arguments" title='arguments' data-type='void **' data-ref="2arguments">arguments</dfn>, <em>void</em> **<dfn class="local col3 decl" id="3arguments2" title='arguments2' data-type='void **' data-ref="3arguments2">arguments2</dfn>,</td></tr>
+<tr><th id="81">81</th><td>                                         <a class="typedef" href="#kernel_run_command" title='kernel_run_command' data-type='struct kernel_run_command' data-ref="kernel_run_command">kernel_run_command</a> *<dfn class="local col4 decl" id="4k" title='k' data-type='kernel_run_command *' data-ref="4k">k</dfn>,</td></tr>
+<tr><th id="82">82</th><td>                                         <em>char</em> *<dfn class="local col5 decl" id="5local_mem" title='local_mem' data-type='char *' data-ref="5local_mem">local_mem</dfn>,</td></tr>
+<tr><th id="83">83</th><td>                                         <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col6 decl" id="6local_mem_size" title='local_mem_size' data-type='size_t' data-ref="6local_mem_size">local_mem_size</dfn>);</td></tr>
+<tr><th id="84">84</th><td><em>void</em> <dfn class="decl" id="free_kernel_arg_array" title='free_kernel_arg_array' data-ref="free_kernel_arg_array">free_kernel_arg_array</dfn> (<a class="typedef" href="#kernel_run_command" title='kernel_run_command' data-type='struct kernel_run_command' data-ref="kernel_run_command">kernel_run_command</a> *<dfn class="local col7 decl" id="7k" title='k' data-type='kernel_run_command *' data-ref="7k">k</dfn>);</td></tr>
+<tr><th id="85">85</th><td><em>void</em> <dfn class="decl" id="free_kernel_arg_array_with_locals" title='free_kernel_arg_array_with_locals' data-ref="free_kernel_arg_array_with_locals">free_kernel_arg_array_with_locals</dfn> (<em>void</em> **<dfn class="local col8 decl" id="8arguments" title='arguments' data-type='void **' data-ref="8arguments">arguments</dfn>, <em>void</em> **<dfn class="local col9 decl" id="9arguments2" title='arguments2' data-type='void **' data-ref="9arguments2">arguments2</dfn>,</td></tr>
+<tr><th id="86">86</th><td>                                        <a class="typedef" href="#kernel_run_command" title='kernel_run_command' data-type='struct kernel_run_command' data-ref="kernel_run_command">kernel_run_command</a> *<dfn class="local col0 decl" id="10k" title='k' data-type='kernel_run_command *' data-ref="10k">k</dfn>);</td></tr>
+<tr><th id="87">87</th><td></td></tr>
+<tr><th id="88">88</th><td><u>#<span data-ppcond="88">ifdef</span> <span class="macro" data-ref="_M/__GNUC__">__GNUC__</span></u></td></tr>
+<tr><th id="89">89</th><td><u>#pragma GCC visibility pop</u></td></tr>
+<tr><th id="90">90</th><td><u>#<span data-ppcond="88">endif</span></u></td></tr>
+<tr><th id="91">91</th><td></td></tr>
+<tr><th id="92">92</th><td><u>#<span data-ppcond="25">endif</span></u></td></tr>
+<tr><th id="93">93</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='pthread.c.html'>pocl/lib/CL/devices/pthread/pthread.c</a><br/>Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

@@ -1,0 +1,14 @@
+<def f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='878' ll='915'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='875'>/// This proxy class models a common pattern where we delegate to either the
+  /// top-level \c AAResults aggregation if one is registered, or to the
+  /// current result if none are registered.</doc>
+<mbr r='llvm::AAResultBase::AAResultsProxy::AAR' t='llvm::AAResults *'/>
+<mbr r='llvm::AAResultBase::AAResultsProxy::CurrentResult' t='DerivedT &amp;'/>
+<fun r='_ZN4llvm12AAResultBase14AAResultsProxyC1EPNS_9AAResultsERT_'/>
+<fun r='_ZN4llvm12AAResultBase14AAResultsProxy5aliasERKNS_14MemoryLocationES4_'/>
+<fun r='_ZN4llvm12AAResultBase14AAResultsProxy22pointsToConstantMemoryERKNS_14MemoryLocationEb'/>
+<fun r='_ZN4llvm12AAResultBase14AAResultsProxy16getArgModRefInfoENS_17ImmutableCallSiteEj'/>
+<fun r='_ZN4llvm12AAResultBase14AAResultsProxy17getModRefBehaviorENS_17ImmutableCallSiteE'/>
+<fun r='_ZN4llvm12AAResultBase14AAResultsProxy17getModRefBehaviorEPKNS_8FunctionE'/>
+<fun r='_ZN4llvm12AAResultBase14AAResultsProxy13getModRefInfoENS_17ImmutableCallSiteERKNS_14MemoryLocationE'/>
+<fun r='_ZN4llvm12AAResultBase14AAResultsProxy13getModRefInfoENS_17ImmutableCallSiteES2_'/>

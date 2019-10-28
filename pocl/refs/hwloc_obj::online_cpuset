@@ -1,0 +1,11 @@
+<dec f='include/hwloc.h' l='418' type='hwloc_cpuset_t'/>
+<use f='include/hwloc/helper.h' l='819' u='r' c='hwloc_topology_get_online_cpuset'/>
+<offset>1408</offset>
+<doc f='include/hwloc.h' l='418'>/**&lt; \brief The CPU set of online logical processors
+                                          *
+                                          * This includes the CPUs contained in this object that are online, i.e. draw
+                                          * power and can execute threads.  It may however not be allowed to bind to
+                                          * them due to administration rules, see allowed_cpuset.
+                                          *
+                                          * \note Its value must not be changed, hwloc_bitmap_dup() must be used instead.
+                                          */</doc>

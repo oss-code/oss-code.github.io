@@ -1,0 +1,17 @@
+<dec f='pocl/lib/CL/devices/bufalloc.h' l='113' type='memory_address_t'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='83' u='r' c='print_chunk'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='101' u='r' c='chunk_slack'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='103' u='r' c='chunk_slack'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='153' u='w' c='append_new_chunk'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='154' u='r' c='append_new_chunk'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='162' u='w' c='append_new_chunk'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='163' u='r' c='append_new_chunk'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='280' u='w' c='create_sub_chunk'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='280' u='r' c='create_sub_chunk'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='310' u='r' c='coalesce_chunks'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='310' u='r' c='coalesce_chunks'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='321' u='r' c='coalesce_chunks'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='321' u='r' c='coalesce_chunks'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='349' u='r' c='free_buffer'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='414' u='w' c='init_mem_region'/>
+<offset>0</offset>

@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Constant.h' l='98' type='llvm::Constant * llvm::Constant::getAggregateElement(unsigned int Elt) const'/>
+<doc f='include/llvm-6.0/llvm/IR/Constant.h' l='95'>/// For aggregates (struct/array/vector) return the constant that corresponds
+  /// to the specified element if possible, or null if not. This can return null
+  /// if the element index is a ConstantExpr, or if &apos;this&apos; is a constant expr.</doc>

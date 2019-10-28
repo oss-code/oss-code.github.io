@@ -1,0 +1,14 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='385' type='cl_int (*)(unsigned int, cl_device_id, const char *)'/>
+<offset>768</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='380'>/* Device initialization. Parameters:
+   *  j : progressive index for the devices of the same type
+   *  device : struct to initialize
+   *  parameters : optional environment with device-specific parameters
+   */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='117' u='w' c='pocl_basic_init_device_ops'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='137' u='w' c='pocl_cuda_init_device_ops'/>
+<use f='pocl/lib/CL/devices/devices.c' l='342' u='r' c='pocl_uninit_devices'/>
+<use f='pocl/lib/CL/devices/devices.c' l='389' u='r' c='pocl_reinit_devices'/>
+<use f='pocl/lib/CL/devices/devices.c' l='525' u='r' c='pocl_init_devices'/>
+<use f='pocl/lib/CL/devices/devices.c' l='548' u='r' c='pocl_init_devices'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='86' u='w' c='pocl_pthread_init_device_ops'/>

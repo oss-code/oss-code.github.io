@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1423' type='llvm::ScalarEvolution::ExitLimit llvm::ScalarEvolution::computeExitLimit(const llvm::Loop * L, llvm::BasicBlock * ExitingBlock, bool AllowPredicates = false)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1419'>/// Compute the number of times the backedge of the specified loop will
+  /// execute if it exits via the specified block. If AllowPredicates is set,
+  /// this call will try to use a minimal set of SCEV predicates in order to
+  /// return an exact answer.</doc>

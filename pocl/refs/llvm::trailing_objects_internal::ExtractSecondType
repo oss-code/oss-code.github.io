@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Support/TrailingObjects.h' l='116' ll='118'/>
+<doc f='include/llvm-6.0/llvm/Support/TrailingObjects.h' l='113'>// Just a little helper for transforming a type pack into the same
+// number of a different type. e.g.:
+//   ExtractSecondType&lt;Foo..., int&gt;::type</doc>

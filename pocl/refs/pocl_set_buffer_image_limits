@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/devices/common.h' l='111' type='void pocl_set_buffer_image_limits(cl_device_id device)'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='433' u='c' c='pocl_basic_init'/>
+<def f='pocl/lib/CL/devices/common.c' l='1208' ll='1262' type='void pocl_set_buffer_image_limits(cl_device_id device)'/>
+<doc f='pocl/lib/CL/devices/common.c' l='1207'>/* set maximum allocation sizes for buffers and images */</doc>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='176' u='c' c='pocl_pthread_init'/>

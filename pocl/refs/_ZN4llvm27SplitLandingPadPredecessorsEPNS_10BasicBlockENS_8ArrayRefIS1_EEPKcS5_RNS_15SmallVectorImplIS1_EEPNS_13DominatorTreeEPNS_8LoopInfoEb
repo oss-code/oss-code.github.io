@@ -1,0 +1,12 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='217' type='void llvm::SplitLandingPadPredecessors(llvm::BasicBlock * OrigBB, ArrayRef&lt;llvm::BasicBlock *&gt; Preds, const char * Suffix, const char * Suffix2, SmallVectorImpl&lt;llvm::BasicBlock *&gt; &amp; NewBBs, llvm::DominatorTree * DT = nullptr, llvm::LoopInfo * LI = nullptr, bool PreserveLCSSA = false)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='206'>/// This method transforms the landing pad, OrigBB, by introducing two new basic
+/// blocks into the function. One of those new basic blocks gets the
+/// predecessors listed in Preds. The other basic block gets the remaining
+/// predecessors of OrigBB. The landingpad instruction OrigBB is clone into both
+/// of the new basic blocks. The new blocks are given the suffixes &apos;Suffix1&apos; and
+/// &apos;Suffix2&apos;, and are returned in the NewBBs vector.
+///
+/// This currently updates the LLVM IR, DominatorTree, LoopInfo, and LCCSA but
+/// no other analyses. In particular, it does not preserve LoopSimplify
+/// (because it&apos;s complicated to handle the case where one of the edges being
+/// split is an exit of a loop with other exits).</doc>

@@ -1,0 +1,29 @@
+<def f='include/llvm-6.0/llvm/Analysis/MemoryLocation.h' l='41' ll='128'/>
+<size>40</size>
+<doc f='include/llvm-6.0/llvm/Analysis/MemoryLocation.h' l='32'>/// Representation for a specific memory location.
+///
+/// This abstraction can be used to represent a specific location in memory.
+/// The goal of the location is to represent enough information to describe
+/// abstract aliasing, modification, and reference behaviors of whatever
+/// value(s) are stored in memory at the particular location.
+///
+/// The primary user of this interface is LLVM&apos;s Alias Analysis, but other
+/// memory analyses such as MemoryDependence can use it as well.</doc>
+<mbr r='llvm::MemoryLocation::Ptr' o='0' t='const llvm::Value *'/>
+<mbr r='llvm::MemoryLocation::Size' o='64' t='uint64_t'/>
+<mbr r='llvm::MemoryLocation::AATags' o='128' t='llvm::AAMDNodes'/>
+<fun r='_ZN4llvm14MemoryLocation3getEPKNS_8LoadInstE'/>
+<fun r='_ZN4llvm14MemoryLocation3getEPKNS_9StoreInstE'/>
+<fun r='_ZN4llvm14MemoryLocation3getEPKNS_9VAArgInstE'/>
+<fun r='_ZN4llvm14MemoryLocation3getEPKNS_17AtomicCmpXchgInstE'/>
+<fun r='_ZN4llvm14MemoryLocation3getEPKNS_13AtomicRMWInstE'/>
+<fun r='_ZN4llvm14MemoryLocation3getEPKNS_11InstructionE'/>
+<fun r='_ZN4llvm14MemoryLocation9getOrNoneEPKNS_11InstructionE'/>
+<fun r='_ZN4llvm14MemoryLocation12getForSourceEPKNS_15MemTransferInstE'/>
+<fun r='_ZN4llvm14MemoryLocation10getForDestEPKNS_12MemIntrinsicE'/>
+<fun r='_ZN4llvm14MemoryLocation14getForArgumentENS_17ImmutableCallSiteEjRKNS_17TargetLibraryInfoE'/>
+<fun r='_ZN4llvm14MemoryLocationC1EPKNS_5ValueEmRKNS_9AAMDNodesE'/>
+<fun r='_ZNK4llvm14MemoryLocation13getWithNewPtrEPKNS_5ValueE'/>
+<fun r='_ZNK4llvm14MemoryLocation14getWithNewSizeEm'/>
+<fun r='_ZNK4llvm14MemoryLocation16getWithoutAATagsEv'/>
+<fun r='_ZNK4llvm14MemoryLocationeqERKS0_'/>

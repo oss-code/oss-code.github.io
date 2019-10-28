@@ -1,0 +1,21 @@
+<inh f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='77' c='llvm::SCEV'/>
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='136' ll='192'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='195' c='llvm::SCEVCommutativeExpr'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='290' c='llvm::SCEVAddRecExpr'/>
+<size>48</size>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='134'>/// This node is a base class providing common functionality for
+  /// n&apos;ary operators.</doc>
+<mbr r='llvm::SCEVNAryExpr::Operands' o='256' t='const llvm::SCEV *const *'/>
+<mbr r='llvm::SCEVNAryExpr::NumOperands' o='320' t='size_t'/>
+<fun r='_ZN4llvm12SCEVNAryExprC1ENS_19FoldingSetNodeIDRefENS_9SCEVTypesEPKPKNS_4SCEVEm'/>
+<fun r='_ZNK4llvm12SCEVNAryExpr14getNumOperandsEv'/>
+<fun r='_ZNK4llvm12SCEVNAryExpr10getOperandEj'/>
+<fun r='_ZNK4llvm12SCEVNAryExpr8op_beginEv'/>
+<fun r='_ZNK4llvm12SCEVNAryExpr6op_endEv'/>
+<fun r='_ZNK4llvm12SCEVNAryExpr8operandsEv'/>
+<fun r='_ZNK4llvm12SCEVNAryExpr7getTypeEv'/>
+<fun r='_ZNK4llvm12SCEVNAryExpr14getNoWrapFlagsENS_4SCEV11NoWrapFlagsE'/>
+<fun r='_ZNK4llvm12SCEVNAryExpr17hasNoUnsignedWrapEv'/>
+<fun r='_ZNK4llvm12SCEVNAryExpr15hasNoSignedWrapEv'/>
+<fun r='_ZNK4llvm12SCEVNAryExpr13hasNoSelfWrapEv'/>
+<fun r='_ZN4llvm12SCEVNAryExpr7classofEPKNS_4SCEVE'/>

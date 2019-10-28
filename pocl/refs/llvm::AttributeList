@@ -1,0 +1,81 @@
+<def f='include/llvm-6.0/llvm/IR/Attributes.h' l='323' ll='649'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/IR/Attributes.h' l='315'>//===----------------------------------------------------------------------===//
+/// \class
+/// \brief This class holds the attributes for a function, its return value, and
+/// its parameters. You access the attributes for each of them via an index into
+/// the AttributeList object. The function attributes are at index
+/// `AttributeList::FunctionIndex&apos;, the return value is at index
+/// `AttributeList::ReturnIndex&apos;, and the attributes for the parameters start at
+/// index `AttributeList::FirstArgIndex&apos;.</doc>
+<mbr r='llvm::AttributeList::pImpl' o='0' t='llvm::AttributeListImpl *'/>
+<fun r='_ZN4llvm13AttributeList3getERNS_11LLVMContextENS_8ArrayRefISt4pairIjNS_9AttributeEEEE'/>
+<fun r='_ZN4llvm13AttributeList3getERNS_11LLVMContextENS_8ArrayRefISt4pairIjNS_12AttributeSetEEEE'/>
+<fun r='_ZN4llvm13AttributeList3getERNS_11LLVMContextENS_12AttributeSetES3_NS_8ArrayRefIS3_EE'/>
+<fun r='_ZN4llvm13AttributeListC1EPNS_17AttributeListImplE'/>
+<fun r='_ZN4llvm13AttributeList7getImplERNS_11LLVMContextENS_8ArrayRefINS_12AttributeSetEEE'/>
+<fun r='_ZN4llvm13AttributeListC1Ev'/>
+<fun r='_ZN4llvm13AttributeList3getERNS_11LLVMContextENS_8ArrayRefIS0_EE'/>
+<fun r='_ZN4llvm13AttributeList3getERNS_11LLVMContextEjNS_8ArrayRefINS_9Attribute8AttrKindEEE'/>
+<fun r='_ZN4llvm13AttributeList3getERNS_11LLVMContextEjNS_8ArrayRefINS_9StringRefEEE'/>
+<fun r='_ZN4llvm13AttributeList3getERNS_11LLVMContextEjRKNS_11AttrBuilderE'/>
+<fun r='_ZNK4llvm13AttributeList12addAttributeERNS_11LLVMContextEjNS_9Attribute8AttrKindE'/>
+<fun r='_ZNK4llvm13AttributeList12addAttributeERNS_11LLVMContextEjNS_9StringRefES3_'/>
+<fun r='_ZNK4llvm13AttributeList12addAttributeERNS_11LLVMContextEjNS_9AttributeE'/>
+<fun r='_ZNK4llvm13AttributeList13addAttributesERNS_11LLVMContextEjRKNS_11AttrBuilderE'/>
+<fun r='_ZNK4llvm13AttributeList17addParamAttributeERNS_11LLVMContextEjNS_9Attribute8AttrKindE'/>
+<fun r='_ZNK4llvm13AttributeList17addParamAttributeERNS_11LLVMContextEjNS_9StringRefES3_'/>
+<fun r='_ZNK4llvm13AttributeList17addParamAttributeERNS_11LLVMContextENS_8ArrayRefIjEENS_9AttributeE'/>
+<fun r='_ZNK4llvm13AttributeList18addParamAttributesERNS_11LLVMContextEjRKNS_11AttrBuilderE'/>
+<fun r='_ZNK4llvm13AttributeList15removeAttributeERNS_11LLVMContextEjNS_9Attribute8AttrKindE'/>
+<fun r='_ZNK4llvm13AttributeList15removeAttributeERNS_11LLVMContextEjNS_9StringRefE'/>
+<fun r='_ZNK4llvm13AttributeList16removeAttributesERNS_11LLVMContextEjRKNS_11AttrBuilderE'/>
+<fun r='_ZNK4llvm13AttributeList16removeAttributesERNS_11LLVMContextEj'/>
+<fun r='_ZNK4llvm13AttributeList20removeParamAttributeERNS_11LLVMContextEjNS_9Attribute8AttrKindE'/>
+<fun r='_ZNK4llvm13AttributeList20removeParamAttributeERNS_11LLVMContextEjNS_9StringRefE'/>
+<fun r='_ZNK4llvm13AttributeList21removeParamAttributesERNS_11LLVMContextEjRKNS_11AttrBuilderE'/>
+<fun r='_ZNK4llvm13AttributeList21removeParamAttributesERNS_11LLVMContextEj'/>
+<fun r='_ZNK4llvm13AttributeList22addDereferenceableAttrERNS_11LLVMContextEjm'/>
+<fun r='_ZNK4llvm13AttributeList27addDereferenceableParamAttrERNS_11LLVMContextEjm'/>
+<fun r='_ZNK4llvm13AttributeList28addDereferenceableOrNullAttrERNS_11LLVMContextEjm'/>
+<fun r='_ZNK4llvm13AttributeList33addDereferenceableOrNullParamAttrERNS_11LLVMContextEjm'/>
+<fun r='_ZN4llvm13AttributeList16addAllocSizeAttrERNS_11LLVMContextEjjRKNS_8OptionalIjEE'/>
+<fun r='_ZN4llvm13AttributeList21addAllocSizeParamAttrERNS_11LLVMContextEjjRKNS_8OptionalIjEE'/>
+<fun r='_ZNK4llvm13AttributeList10getContextEv'/>
+<fun r='_ZNK4llvm13AttributeList13getAttributesEj'/>
+<fun r='_ZNK4llvm13AttributeList18getParamAttributesEj'/>
+<fun r='_ZNK4llvm13AttributeList16getRetAttributesEv'/>
+<fun r='_ZNK4llvm13AttributeList15getFnAttributesEv'/>
+<fun r='_ZNK4llvm13AttributeList12hasAttributeEjNS_9Attribute8AttrKindE'/>
+<fun r='_ZNK4llvm13AttributeList12hasAttributeEjNS_9StringRefE'/>
+<fun r='_ZNK4llvm13AttributeList13hasAttributesEj'/>
+<fun r='_ZNK4llvm13AttributeList12hasParamAttrEjNS_9Attribute8AttrKindE'/>
+<fun r='_ZNK4llvm13AttributeList12hasParamAttrEjNS_9StringRefE'/>
+<fun r='_ZNK4llvm13AttributeList13hasParamAttrsEj'/>
+<fun r='_ZNK4llvm13AttributeList14hasFnAttributeENS_9Attribute8AttrKindE'/>
+<fun r='_ZNK4llvm13AttributeList14hasFnAttributeENS_9StringRefE'/>
+<fun r='_ZNK4llvm13AttributeList17hasParamAttributeEjNS_9Attribute8AttrKindE'/>
+<fun r='_ZNK4llvm13AttributeList16hasAttrSomewhereENS_9Attribute8AttrKindEPj'/>
+<fun r='_ZNK4llvm13AttributeList12getAttributeEjNS_9Attribute8AttrKindE'/>
+<fun r='_ZNK4llvm13AttributeList12getAttributeEjNS_9StringRefE'/>
+<fun r='_ZNK4llvm13AttributeList12getParamAttrEjNS_9Attribute8AttrKindE'/>
+<fun r='_ZNK4llvm13AttributeList12getParamAttrEjNS_9StringRefE'/>
+<fun r='_ZNK4llvm13AttributeList15getRetAlignmentEv'/>
+<fun r='_ZNK4llvm13AttributeList17getParamAlignmentEj'/>
+<fun r='_ZNK4llvm13AttributeList17getStackAlignmentEj'/>
+<fun r='_ZNK4llvm13AttributeList23getDereferenceableBytesEj'/>
+<fun r='_ZNK4llvm13AttributeList28getParamDereferenceableBytesEj'/>
+<fun r='_ZNK4llvm13AttributeList29getDereferenceableOrNullBytesEj'/>
+<fun r='_ZNK4llvm13AttributeList34getParamDereferenceableOrNullBytesEj'/>
+<fun r='_ZNK4llvm13AttributeList16getAllocSizeArgsEj'/>
+<fun r='_ZNK4llvm13AttributeList11getAsStringB5cxx11Ejb'/>
+<fun r='_ZNK4llvm13AttributeList5beginEv'/>
+<fun r='_ZNK4llvm13AttributeList3endEv'/>
+<fun r='_ZNK4llvm13AttributeList14getNumAttrSetsEv'/>
+<fun r='_ZNK4llvm13AttributeList11index_beginEv'/>
+<fun r='_ZNK4llvm13AttributeList9index_endEv'/>
+<fun r='_ZNK4llvm13AttributeListeqERKS0_'/>
+<fun r='_ZNK4llvm13AttributeListneERKS0_'/>
+<fun r='_ZNK4llvm13AttributeList13getRawPointerEv'/>
+<fun r='_ZNK4llvm13AttributeList7isEmptyEv'/>
+<fun r='_ZNK4llvm13AttributeList4dumpEv'/>

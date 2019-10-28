@@ -1,0 +1,6 @@
+<def f='include/hwloc/helper.h' l='1184' ll='1188' type='hwloc_obj_t hwloc_get_next_pcidev(hwloc_topology_t topology, hwloc_obj_t prev)'/>
+<use f='include/hwloc/helper.h' l='1198' u='c' c='hwloc_get_pcidev_by_busid'/>
+<doc f='include/hwloc/helper.h' l='1180'>/** \brief Get the next PCI device in the system.
+ *
+ * \return the first PCI device if \p prev is \c NULL.
+ */</doc>

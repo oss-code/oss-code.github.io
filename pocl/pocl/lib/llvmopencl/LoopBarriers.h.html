@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>LoopBarriers.h source code [pocl/lib/llvmopencl/LoopBarriers.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="pocl::LoopBarriers "/>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/llvmopencl/LoopBarriers.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>llvmopencl</a>/<a href='LoopBarriers.h.html'>LoopBarriers.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>// Header for LoopBarriers.cc function pass.</i></td></tr>
+<tr><th id="2">2</th><td><i>// </i></td></tr>
+<tr><th id="3">3</th><td><i>// Copyright (c) 2011 Universidad Rey Juan Carlos</i></td></tr>
+<tr><th id="4">4</th><td><i>// </i></td></tr>
+<tr><th id="5">5</th><td><i>// Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="6">6</th><td><i>// of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="7">7</th><td><i>// in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="8">8</th><td><i>// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="9">9</th><td><i>// copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="10">10</th><td><i>// furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="11">11</th><td><i>// </i></td></tr>
+<tr><th id="12">12</th><td><i>// The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="13">13</th><td><i>// all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="14">14</th><td><i>// </i></td></tr>
+<tr><th id="15">15</th><td><i>// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="16">16</th><td><i>// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="17">17</th><td><i>// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="18">18</th><td><i>// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="19">19</th><td><i>// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="20">20</th><td><i>// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="21">21</th><td><i>// THE SOFTWARE.</i></td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><u>#include <a href="../../../include/c++/7/set.html">&lt;set&gt;</a></u></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><u>#<span data-ppcond="25">ifndef</span> <span class="macro" data-ref="_M/POCL_LOOP_BARRIERS_H">POCL_LOOP_BARRIERS_H</span></u></td></tr>
+<tr><th id="26">26</th><td><u>#define <dfn class="macro" id="_M/POCL_LOOP_BARRIERS_H" data-ref="_M/POCL_LOOP_BARRIERS_H">POCL_LOOP_BARRIERS_H</dfn></u></td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><u>#include <a href="CompilerWarnings.h.html">"CompilerWarnings.h"</a></u></td></tr>
+<tr><th id="29">29</th><td><a class="macro" href="CompilerWarnings.h.html#29" title="" data-ref="_M/IGNORE_COMPILER_WARNING">IGNORE_COMPILER_WARNING</a>(<q>"-Wunused-parameter"</q>)</td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><u>#include <a href="../../../include/llvm-6.0/llvm/Analysis/LoopPass.h.html">"llvm/Analysis/LoopPass.h"</a></u></td></tr>
+<tr><th id="32">32</th><td></td></tr>
+<tr><th id="33">33</th><td><a class="macro" href="CompilerWarnings.h.html#48" title="" data-ref="_M/POP_COMPILER_DIAGS">POP_COMPILER_DIAGS</a></td></tr>
+<tr><th id="34">34</th><td></td></tr>
+<tr><th id="35">35</th><td><b>namespace</b> <span class="namespace">pocl</span> {</td></tr>
+<tr><th id="36">36</th><td>  <b>class</b> <dfn class="type def" id="pocl::LoopBarriers" title='pocl::LoopBarriers' data-ref="pocl::LoopBarriers">LoopBarriers</dfn> : <b>public</b> <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/Analysis/LoopPass.h.html#llvm::LoopPass" title='llvm::LoopPass' data-ref="llvm::LoopPass">LoopPass</a> {</td></tr>
+<tr><th id="37">37</th><td>    </td></tr>
+<tr><th id="38">38</th><td>  <b>public</b>:</td></tr>
+<tr><th id="39">39</th><td>    <em>static</em> <em>char</em> <dfn class="decl" id="pocl::LoopBarriers::ID" title='pocl::LoopBarriers::ID' data-ref="pocl::LoopBarriers::ID">ID</dfn>;</td></tr>
+<tr><th id="40">40</th><td>    </td></tr>
+<tr><th id="41">41</th><td>  <dfn class="decl def" id="_ZN4pocl12LoopBarriersC1Ev" title='pocl::LoopBarriers::LoopBarriers' data-ref="_ZN4pocl12LoopBarriersC1Ev">LoopBarriers</dfn>() : <a class="type" href="../../../include/llvm-6.0/llvm/Analysis/LoopPass.h.html#llvm::LoopPass" title='llvm::LoopPass' data-ref="llvm::LoopPass">LoopPass</a><a class="ref" href="../../../include/llvm-6.0/llvm/Analysis/LoopPass.h.html#_ZN4llvm8LoopPassC1ERc" title='llvm::LoopPass::LoopPass' data-ref="_ZN4llvm8LoopPassC1ERc">(</a><a class="member" href="#pocl::LoopBarriers::ID" title='pocl::LoopBarriers::ID' data-ref="pocl::LoopBarriers::ID">ID</a>) {}</td></tr>
+<tr><th id="42">42</th><td>    </td></tr>
+<tr><th id="43">43</th><td>    <b>virtual</b> <em>void</em> <a class="virtual decl" href="LoopBarriers.cc.html#_ZNK4pocl12LoopBarriers16getAnalysisUsageERN4llvm13AnalysisUsageE" title='pocl::LoopBarriers::getAnalysisUsage' data-ref="_ZNK4pocl12LoopBarriers16getAnalysisUsageERN4llvm13AnalysisUsageE" id="_ZNK4pocl12LoopBarriers16getAnalysisUsageERN4llvm13AnalysisUsageE">getAnalysisUsage</a>(<span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/PassAnalysisSupport.h.html#llvm::AnalysisUsage" title='llvm::AnalysisUsage' data-ref="llvm::AnalysisUsage">AnalysisUsage</a> &amp;<dfn class="local col1 decl" id="1AU" title='AU' data-type='llvm::AnalysisUsage &amp;' data-ref="1AU">AU</dfn>) <em>const</em>;</td></tr>
+<tr><th id="44">44</th><td>    <b>virtual</b> <em>bool</em> <a class="virtual decl" href="LoopBarriers.cc.html#_ZN4pocl12LoopBarriers9runOnLoopEPN4llvm4LoopERNS1_13LPPassManagerE" title='pocl::LoopBarriers::runOnLoop' data-ref="_ZN4pocl12LoopBarriers9runOnLoopEPN4llvm4LoopERNS1_13LPPassManagerE" id="_ZN4pocl12LoopBarriers9runOnLoopEPN4llvm4LoopERNS1_13LPPassManagerE">runOnLoop</a>(<span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/Analysis/LoopInfo.h.html#llvm::Loop" title='llvm::Loop' data-ref="llvm::Loop">Loop</a> *<dfn class="local col2 decl" id="2L" title='L' data-type='llvm::Loop *' data-ref="2L">L</dfn>, <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/Analysis/LoopPass.h.html#llvm::LPPassManager" title='llvm::LPPassManager' data-ref="llvm::LPPassManager">LPPassManager</a> &amp;<dfn class="local col3 decl" id="3LPM" title='LPM' data-type='llvm::LPPassManager &amp;' data-ref="3LPM">LPM</dfn>);</td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td>  <b>private</b>:</td></tr>
+<tr><th id="47">47</th><td>    <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/IR/Dominators.h.html#llvm::DominatorTree" title='llvm::DominatorTree' data-ref="llvm::DominatorTree">DominatorTree</a> *<dfn class="decl" id="pocl::LoopBarriers::DT" title='pocl::LoopBarriers::DT' data-ref="pocl::LoopBarriers::DT">DT</dfn>;</td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td>    <em>bool</em> <a class="decl" href="LoopBarriers.cc.html#_ZN4pocl12LoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE" title='pocl::LoopBarriers::ProcessLoop' data-ref="_ZN4pocl12LoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE" id="_ZN4pocl12LoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE">ProcessLoop</a>(<span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/Analysis/LoopInfo.h.html#llvm::Loop" title='llvm::Loop' data-ref="llvm::Loop">Loop</a> *<dfn class="local col4 decl" id="4L" title='L' data-type='llvm::Loop *' data-ref="4L">L</dfn>, <span class="namespace">llvm::</span><a class="type" href="../../../include/llvm-6.0/llvm/Analysis/LoopPass.h.html#llvm::LPPassManager" title='llvm::LPPassManager' data-ref="llvm::LPPassManager">LPPassManager</a> &amp;<dfn class="local col5 decl" id="5LPM" title='LPM' data-type='llvm::LPPassManager &amp;' data-ref="5LPM">LPM</dfn>);</td></tr>
+<tr><th id="50">50</th><td>  };</td></tr>
+<tr><th id="51">51</th><td>}</td></tr>
+<tr><th id="52">52</th><td></td></tr>
+<tr><th id="53">53</th><td><u>#<span data-ppcond="25">endif</span></u></td></tr>
+<tr><th id="54">54</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='LoopBarriers.cc.html'>pocl/lib/llvmopencl/LoopBarriers.cc</a><br/>Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

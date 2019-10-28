@@ -1,0 +1,13 @@
+<inh f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='77' c='llvm::SCEV'/>
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='69' ll='87'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='91' c='llvm::SCEVTruncateExpr'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='106' c='llvm::SCEVZeroExtendExpr'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='121' c='llvm::SCEVSignExtendExpr'/>
+<size>48</size>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='68'>/// This is the base class for unary cast operator classes.</doc>
+<mbr r='llvm::SCEVCastExpr::Op' o='256' t='const llvm::SCEV *'/>
+<mbr r='llvm::SCEVCastExpr::Ty' o='320' t='llvm::Type *'/>
+<fun r='_ZN4llvm12SCEVCastExprC1ENS_19FoldingSetNodeIDRefEjPKNS_4SCEVEPNS_4TypeE'/>
+<fun r='_ZNK4llvm12SCEVCastExpr10getOperandEv'/>
+<fun r='_ZNK4llvm12SCEVCastExpr7getTypeEv'/>
+<fun r='_ZN4llvm12SCEVCastExpr7classofEPKNS_4SCEVE'/>

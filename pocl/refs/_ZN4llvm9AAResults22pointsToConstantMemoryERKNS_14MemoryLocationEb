@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='369' type='bool llvm::AAResults::pointsToConstantMemory(const llvm::MemoryLocation &amp; Loc, bool OrLocal = false)'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='374' u='c' c='_ZN4llvm9AAResults22pointsToConstantMemoryEPKNS_5ValueEb'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='891' u='c' c='_ZN4llvm12AAResultBase14AAResultsProxy22pointsToConstantMemoryERKNS_14MemoryLocationEb'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='367'>/// Checks whether the given location points to constant memory, or if
+  /// \p OrLocal is true whether it points to a local alloca.</doc>

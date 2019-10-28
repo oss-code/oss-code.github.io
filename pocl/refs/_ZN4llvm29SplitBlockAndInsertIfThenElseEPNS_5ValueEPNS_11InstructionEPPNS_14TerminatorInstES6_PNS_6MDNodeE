@@ -1,0 +1,15 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='272' type='void llvm::SplitBlockAndInsertIfThenElse(llvm::Value * Cond, llvm::Instruction * SplitBefore, llvm::TerminatorInst ** ThenTerm, llvm::TerminatorInst ** ElseTerm, llvm::MDNode * BranchWeights = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='258'>/// SplitBlockAndInsertIfThenElse is similar to SplitBlockAndInsertIfThen,
+/// but also creates the ElseBlock.
+/// Before:
+///   Head
+///   SplitBefore
+///   Tail
+/// After:
+///   Head
+///   if (Cond)
+///     ThenBlock
+///   else
+///     ElseBlock
+///   SplitBefore
+///   Tail</doc>

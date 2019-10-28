@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>_kernel_constants.h source code [pocl/include/_kernel_constants.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/include/_kernel_constants.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>pocl</a>/<a href='./'>include</a>/<a href='_kernel_constants.h.html'>_kernel_constants.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* pocl/_kernel_constants.h - C compatible OpenCL types and runtime library</i></td></tr>
+<tr><th id="2">2</th><td><i>   constants declarations.</i></td></tr>
+<tr><th id="3">3</th><td><i></i></td></tr>
+<tr><th id="4">4</th><td><i>   Copyright (c) 2011 Universidad Rey Juan Carlos</i></td></tr>
+<tr><th id="5">5</th><td><i>   Copyright (c) 2011-2013 Pekka Jääskeläinen / TUT</i></td></tr>
+<tr><th id="6">6</th><td><i>   Copyright (c) 2011-2013 Erik Schnetter &lt;eschnetter@perimeterinstitute.ca&gt;</i></td></tr>
+<tr><th id="7">7</th><td><i>                           Perimeter Institute for Theoretical Physics</i></td></tr>
+<tr><th id="8">8</th><td><i>   </i></td></tr>
+<tr><th id="9">9</th><td><i>   Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="10">10</th><td><i>   of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="11">11</th><td><i>   in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="12">12</th><td><i>   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="13">13</th><td><i>   copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="14">14</th><td><i>   furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="15">15</th><td><i>   </i></td></tr>
+<tr><th id="16">16</th><td><i>   The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="17">17</th><td><i>   all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="18">18</th><td><i>   </i></td></tr>
+<tr><th id="19">19</th><td><i>   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="20">20</th><td><i>   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="21">21</th><td><i>   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="22">22</th><td><i>   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="23">23</th><td><i>   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="24">24</th><td><i>   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="25">25</th><td><i>   THE SOFTWARE.</i></td></tr>
+<tr><th id="26">26</th><td><i>*/</i></td></tr>
+<tr><th id="27">27</th><td><i class="doc">/**</i></td></tr>
+<tr><th id="28">28</th><td><i class="doc"> * Header that can be implemented in C compiled implementations of</i></td></tr>
+<tr><th id="29">29</th><td><i class="doc"> * built-in functions to introduce the OpenCL C compatible constants.</i></td></tr>
+<tr><th id="30">30</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="31">31</th><td><u>#<span data-ppcond="31">ifndef</span> <span class="macro" data-ref="_M/_KERNEL_CONSTANTS_H">_KERNEL_CONSTANTS_H</span></u></td></tr>
+<tr><th id="32">32</th><td><u>#define <dfn class="macro" id="_M/_KERNEL_CONSTANTS_H" data-ref="_M/_KERNEL_CONSTANTS_H">_KERNEL_CONSTANTS_H</dfn></u></td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><i>/* clang's header defines these */</i></td></tr>
+<tr><th id="35">35</th><td><u>#<span data-ppcond="35">ifndef</span> <span class="macro" data-ref="_M/_OPENCL_H_">_OPENCL_H_</span></u></td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td><i>/* cl_channel_order */</i></td></tr>
+<tr><th id="38">38</th><td><u>#define <dfn class="macro" id="_M/CLK_R" data-ref="_M/CLK_R">CLK_R</dfn>                                        0x10B0</u></td></tr>
+<tr><th id="39">39</th><td><u>#define <dfn class="macro" id="_M/CLK_A" data-ref="_M/CLK_A">CLK_A</dfn>                                        0x10B1</u></td></tr>
+<tr><th id="40">40</th><td><u>#define <dfn class="macro" id="_M/CLK_RG" data-ref="_M/CLK_RG">CLK_RG</dfn>                                       0x10B2</u></td></tr>
+<tr><th id="41">41</th><td><u>#define <dfn class="macro" id="_M/CLK_RA" data-ref="_M/CLK_RA">CLK_RA</dfn>                                       0x10B3</u></td></tr>
+<tr><th id="42">42</th><td><u>#define <dfn class="macro" id="_M/CLK_RGB" data-ref="_M/CLK_RGB">CLK_RGB</dfn>                                      0x10B4</u></td></tr>
+<tr><th id="43">43</th><td><u>#define <dfn class="macro" id="_M/CLK_RGBA" data-ref="_M/CLK_RGBA">CLK_RGBA</dfn>                                     0x10B5</u></td></tr>
+<tr><th id="44">44</th><td><u>#define <dfn class="macro" id="_M/CLK_BGRA" data-ref="_M/CLK_BGRA">CLK_BGRA</dfn>                                     0x10B6</u></td></tr>
+<tr><th id="45">45</th><td><u>#define <dfn class="macro" id="_M/CLK_ARGB" data-ref="_M/CLK_ARGB">CLK_ARGB</dfn>                                     0x10B7</u></td></tr>
+<tr><th id="46">46</th><td><u>#define <dfn class="macro" id="_M/CLK_INTENSITY" data-ref="_M/CLK_INTENSITY">CLK_INTENSITY</dfn>                                0x10B8</u></td></tr>
+<tr><th id="47">47</th><td><u>#define <dfn class="macro" id="_M/CLK_LUMINANCE" data-ref="_M/CLK_LUMINANCE">CLK_LUMINANCE</dfn>                                0x10B9</u></td></tr>
+<tr><th id="48">48</th><td><u>#define <dfn class="macro" id="_M/CLK_Rx" data-ref="_M/CLK_Rx">CLK_Rx</dfn>                                       0x10BA</u></td></tr>
+<tr><th id="49">49</th><td><u>#define <dfn class="macro" id="_M/CLK_RGx" data-ref="_M/CLK_RGx">CLK_RGx</dfn>                                      0x10BB</u></td></tr>
+<tr><th id="50">50</th><td><u>#define <dfn class="macro" id="_M/CLK_RGBx" data-ref="_M/CLK_RGBx">CLK_RGBx</dfn>                                     0x10BC</u></td></tr>
+<tr><th id="51">51</th><td><u>#define <dfn class="macro" id="_M/CLK_DEPTH" data-ref="_M/CLK_DEPTH">CLK_DEPTH</dfn>                                    0x10BD</u></td></tr>
+<tr><th id="52">52</th><td><u>#define <dfn class="macro" id="_M/CLK_DEPTH_STENCIL" data-ref="_M/CLK_DEPTH_STENCIL">CLK_DEPTH_STENCIL</dfn>                            0x10BE</u></td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td><i>/* cl_channel_type */</i></td></tr>
+<tr><th id="55">55</th><td><u>#define <dfn class="macro" id="_M/CLK_SNORM_INT8" data-ref="_M/CLK_SNORM_INT8">CLK_SNORM_INT8</dfn>                               0x10D0</u></td></tr>
+<tr><th id="56">56</th><td><u>#define <dfn class="macro" id="_M/CLK_SNORM_INT16" data-ref="_M/CLK_SNORM_INT16">CLK_SNORM_INT16</dfn>                              0x10D1</u></td></tr>
+<tr><th id="57">57</th><td><u>#define <dfn class="macro" id="_M/CLK_UNORM_INT8" data-ref="_M/CLK_UNORM_INT8">CLK_UNORM_INT8</dfn>                               0x10D2</u></td></tr>
+<tr><th id="58">58</th><td><u>#define <dfn class="macro" id="_M/CLK_UNORM_INT16" data-ref="_M/CLK_UNORM_INT16">CLK_UNORM_INT16</dfn>                              0x10D3</u></td></tr>
+<tr><th id="59">59</th><td><u>#define <dfn class="macro" id="_M/CLK_UNORM_SHORT_565" data-ref="_M/CLK_UNORM_SHORT_565">CLK_UNORM_SHORT_565</dfn>                          0x10D4</u></td></tr>
+<tr><th id="60">60</th><td><u>#define <dfn class="macro" id="_M/CLK_UNORM_SHORT_555" data-ref="_M/CLK_UNORM_SHORT_555">CLK_UNORM_SHORT_555</dfn>                          0x10D5</u></td></tr>
+<tr><th id="61">61</th><td><u>#define <dfn class="macro" id="_M/CLK_UNORM_INT_101010" data-ref="_M/CLK_UNORM_INT_101010">CLK_UNORM_INT_101010</dfn>                         0x10D6</u></td></tr>
+<tr><th id="62">62</th><td><u>#define <dfn class="macro" id="_M/CLK_SIGNED_INT8" data-ref="_M/CLK_SIGNED_INT8">CLK_SIGNED_INT8</dfn>                              0x10D7</u></td></tr>
+<tr><th id="63">63</th><td><u>#define <dfn class="macro" id="_M/CLK_SIGNED_INT16" data-ref="_M/CLK_SIGNED_INT16">CLK_SIGNED_INT16</dfn>                             0x10D8</u></td></tr>
+<tr><th id="64">64</th><td><u>#define <dfn class="macro" id="_M/CLK_SIGNED_INT32" data-ref="_M/CLK_SIGNED_INT32">CLK_SIGNED_INT32</dfn>                             0x10D9</u></td></tr>
+<tr><th id="65">65</th><td><u>#define <dfn class="macro" id="_M/CLK_UNSIGNED_INT8" data-ref="_M/CLK_UNSIGNED_INT8">CLK_UNSIGNED_INT8</dfn>                            0x10DA</u></td></tr>
+<tr><th id="66">66</th><td><u>#define <dfn class="macro" id="_M/CLK_UNSIGNED_INT16" data-ref="_M/CLK_UNSIGNED_INT16">CLK_UNSIGNED_INT16</dfn>                           0x10DB</u></td></tr>
+<tr><th id="67">67</th><td><u>#define <dfn class="macro" id="_M/CLK_UNSIGNED_INT32" data-ref="_M/CLK_UNSIGNED_INT32">CLK_UNSIGNED_INT32</dfn>                           0x10DC</u></td></tr>
+<tr><th id="68">68</th><td><u>#define <dfn class="macro" id="_M/CLK_HALF_FLOAT" data-ref="_M/CLK_HALF_FLOAT">CLK_HALF_FLOAT</dfn>                               0x10DD</u></td></tr>
+<tr><th id="69">69</th><td><u>#define <dfn class="macro" id="_M/CLK_FLOAT" data-ref="_M/CLK_FLOAT">CLK_FLOAT</dfn>                                    0x10DE</u></td></tr>
+<tr><th id="70">70</th><td><u>#define <dfn class="macro" id="_M/CLK_UNORM_INT24" data-ref="_M/CLK_UNORM_INT24">CLK_UNORM_INT24</dfn>                              0x10DF</u></td></tr>
+<tr><th id="71">71</th><td></td></tr>
+<tr><th id="72">72</th><td><i>/* cl_addressing _mode */</i></td></tr>
+<tr><th id="73">73</th><td><u>#define <dfn class="macro" id="_M/CLK_ADDRESS_NONE" data-ref="_M/CLK_ADDRESS_NONE">CLK_ADDRESS_NONE</dfn>                            0x00</u></td></tr>
+<tr><th id="74">74</th><td><u>#define <dfn class="macro" id="_M/CLK_ADDRESS_CLAMP_TO_EDGE" data-ref="_M/CLK_ADDRESS_CLAMP_TO_EDGE">CLK_ADDRESS_CLAMP_TO_EDGE</dfn>                   0x02</u></td></tr>
+<tr><th id="75">75</th><td><u>#define <dfn class="macro" id="_M/CLK_ADDRESS_CLAMP" data-ref="_M/CLK_ADDRESS_CLAMP">CLK_ADDRESS_CLAMP</dfn>                           0x04</u></td></tr>
+<tr><th id="76">76</th><td><u>#define <dfn class="macro" id="_M/CLK_ADDRESS_REPEAT" data-ref="_M/CLK_ADDRESS_REPEAT">CLK_ADDRESS_REPEAT</dfn>                          0x06</u></td></tr>
+<tr><th id="77">77</th><td><u>#define <dfn class="macro" id="_M/CLK_ADDRESS_MIRRORED_REPEAT" data-ref="_M/CLK_ADDRESS_MIRRORED_REPEAT">CLK_ADDRESS_MIRRORED_REPEAT</dfn>                 0x08</u></td></tr>
+<tr><th id="78">78</th><td></td></tr>
+<tr><th id="79">79</th><td><i>/* cl_sampler_info */</i></td></tr>
+<tr><th id="80">80</th><td><u>#define <dfn class="macro" id="_M/CLK_NORMALIZED_COORDS_FALSE" data-ref="_M/CLK_NORMALIZED_COORDS_FALSE">CLK_NORMALIZED_COORDS_FALSE</dfn>                 0x00</u></td></tr>
+<tr><th id="81">81</th><td><u>#define <dfn class="macro" id="_M/CLK_NORMALIZED_COORDS_TRUE" data-ref="_M/CLK_NORMALIZED_COORDS_TRUE">CLK_NORMALIZED_COORDS_TRUE</dfn>                  0x01</u></td></tr>
+<tr><th id="82">82</th><td></td></tr>
+<tr><th id="83">83</th><td><i>/* filter_mode */</i></td></tr>
+<tr><th id="84">84</th><td><u>#define <dfn class="macro" id="_M/CLK_FILTER_NEAREST" data-ref="_M/CLK_FILTER_NEAREST">CLK_FILTER_NEAREST</dfn>                          0x10</u></td></tr>
+<tr><th id="85">85</th><td><u>#define <dfn class="macro" id="_M/CLK_FILTER_LINEAR" data-ref="_M/CLK_FILTER_LINEAR">CLK_FILTER_LINEAR</dfn>                           0x20</u></td></tr>
+<tr><th id="86">86</th><td></td></tr>
+<tr><th id="87">87</th><td><i>/* barrier() flags */</i></td></tr>
+<tr><th id="88">88</th><td><u>#define <dfn class="macro" id="_M/CLK_LOCAL_MEM_FENCE" data-ref="_M/CLK_LOCAL_MEM_FENCE">CLK_LOCAL_MEM_FENCE</dfn>                         0x01</u></td></tr>
+<tr><th id="89">89</th><td><u>#define <dfn class="macro" id="_M/CLK_GLOBAL_MEM_FENCE" data-ref="_M/CLK_GLOBAL_MEM_FENCE">CLK_GLOBAL_MEM_FENCE</dfn>                        0x02</u></td></tr>
+<tr><th id="90">90</th><td></td></tr>
+<tr><th id="91">91</th><td><u>#<span data-ppcond="35">endif</span></u></td></tr>
+<tr><th id="92">92</th><td></td></tr>
+<tr><th id="93">93</th><td><u>#<span data-ppcond="31">endif</span></u></td></tr>
+<tr><th id="94">94</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../lib/CL/devices/common.c.html'>pocl/lib/CL/devices/common.c</a><br/>Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

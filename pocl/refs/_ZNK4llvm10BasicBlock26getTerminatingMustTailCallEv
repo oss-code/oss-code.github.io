@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='141' type='const llvm::CallInst * llvm::BasicBlock::getTerminatingMustTailCall() const'/>
+<use f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='144' u='c' c='_ZN4llvm10BasicBlock26getTerminatingMustTailCallEv'/>
+<doc f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='138'>/// \brief Returns the call instruction marked &apos;musttail&apos; prior to the
+  /// terminating return instruction of this basic block, if such a call is
+  /// present.  Otherwise, returns null.</doc>

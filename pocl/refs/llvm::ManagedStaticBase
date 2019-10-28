@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/Support/ManagedStatic.h' l='37' ll='52'/>
+<ovr f='include/llvm-6.0/llvm/Support/ManagedStatic.h' l='61' c='llvm::ManagedStatic'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/Support/ManagedStatic.h' l='36'>/// ManagedStaticBase - Common base class for ManagedStatic instances.</doc>
+<mbr r='llvm::ManagedStaticBase::Ptr' o='0' t='std::atomic&lt;void *&gt;'/>
+<mbr r='llvm::ManagedStaticBase::DeleterFn' o='64' t='void (*)(void *)'/>
+<mbr r='llvm::ManagedStaticBase::Next' o='128' t='const llvm::ManagedStaticBase *'/>
+<fun r='_ZNK4llvm17ManagedStaticBase21RegisterManagedStaticEPFPvvEPFvS1_E'/>
+<fun r='_ZNK4llvm17ManagedStaticBase13isConstructedEv'/>
+<fun r='_ZNK4llvm17ManagedStaticBase7destroyEv'/>

@@ -1,0 +1,8 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='379' type='unsigned int (*)(struct pocl_device_ops *)'/>
+<offset>704</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='378'>/* Detects &amp; returns the number of available devices the driver finds on the system. */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='114' u='w' c='pocl_basic_init_device_ops'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='134' u='w' c='pocl_cuda_init_device_ops'/>
+<use f='pocl/lib/CL/devices/devices.c' l='507' u='r' c='pocl_init_devices'/>
+<use f='pocl/lib/CL/devices/devices.c' l='508' u='r' c='pocl_init_devices'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='83' u='w' c='pocl_pthread_init_device_ops'/>

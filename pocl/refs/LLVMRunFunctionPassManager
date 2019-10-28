@@ -1,0 +1,5 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='3187' type='LLVMBool LLVMRunFunctionPassManager(LLVMPassManagerRef FPM, LLVMValueRef F)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='3183'>/** Executes all of the function passes scheduled in the function pass manager
+    on the provided function. Returns 1 if any of the passes modified the
+    function, false otherwise.
+    @see llvm::FunctionPassManager::run(Function&amp;) */</doc>

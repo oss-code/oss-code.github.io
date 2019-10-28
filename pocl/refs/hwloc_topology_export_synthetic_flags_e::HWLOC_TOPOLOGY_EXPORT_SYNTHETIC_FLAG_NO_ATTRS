@@ -1,0 +1,7 @@
+<dec f='include/hwloc.h' l='2379' type='2'/>
+<doc f='include/hwloc.h' l='2373'>/** \brief Do not export level attributes.
+  *
+  * Ignore level attributes such as memory/cache sizes or PU indexes.
+  * This is required if loading the synthetic description with hwloc &lt; 1.10.
+  * \hideinitializer
+  */</doc>

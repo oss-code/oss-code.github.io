@@ -1,0 +1,8 @@
+<dec f='pocl/include/pocl_cache.h' l='113' type='void pocl_cache_program_bc_path(char * program_bc_path, cl_program program, unsigned int device_i)'/>
+<doc f='pocl/include/pocl_cache.h' l='111'>// these two required by llvm API</doc>
+<use f='pocl/lib/CL/pocl_binary.c' l='626' u='c' c='pocl_binary_serialize'/>
+<def f='pocl/lib/CL/pocl_cache.c' l='106' ll='111' type='void pocl_cache_program_bc_path(char * program_bc_path, cl_program program, unsigned int device_i)'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='606' u='c' c='pocl_cache_create_program_cachedir'/>
+<doc f='pocl/lib/CL/pocl_cache.c' l='105'>// required in llvm API</doc>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='491' u='c' c='_Z37pocl_update_program_llvm_irs_unlockedP11_cl_programj'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='544' u='c' c='pocl_llvm_update_binaries'/>

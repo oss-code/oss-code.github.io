@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>sampler_address_clamp.c source code [pocl/tests/kernel/sampler_address_clamp.c] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="main "/>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/tests/kernel/sampler_address_clamp.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>tests</a>/<a href='./'>kernel</a>/<a href='sampler_address_clamp.c.html'>sampler_address_clamp.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><u>#include <a href="../../../include/stdio.h.html">&lt;stdio.h&gt;</a></u></td></tr>
+<tr><th id="2">2</th><td><u>#include <a href="../../../include/stdlib.h.html">&lt;stdlib.h&gt;</a></u></td></tr>
+<tr><th id="3">3</th><td><u>#include <a href="../../../include/string.h.html">&lt;string.h&gt;</a></u></td></tr>
+<tr><th id="4">4</th><td><u>#include <a href="../../include/CL/opencl.h.html">&lt;CL/opencl.h&gt;</a></u></td></tr>
+<tr><th id="5">5</th><td><u>#include <a href="../../include/poclu.h.html">"poclu.h"</a></u></td></tr>
+<tr><th id="6">6</th><td></td></tr>
+<tr><th id="7">7</th><td><u>#<span data-ppcond="7">ifdef</span> <span class="macro" data-ref="_M/_MSC_VER">_MSC_VER</span></u></td></tr>
+<tr><th id="8">8</th><td><u>#  include "vccompat.hpp"</u></td></tr>
+<tr><th id="9">9</th><td><u>#<span data-ppcond="7">endif</span></u></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td><em>int</em> <dfn class="decl def" id="main" title='main' data-ref="main">main</dfn>(<em>int</em> <dfn class="local col1 decl" id="1argc" title='argc' data-type='int' data-ref="1argc">argc</dfn>, <em>char</em> **<dfn class="local col2 decl" id="2argv" title='argv' data-type='char **' data-ref="2argv">argv</dfn>)</td></tr>
+<tr><th id="12">12</th><td>{</td></tr>
+<tr><th id="13">13</th><td>  <i>/* test name */</i></td></tr>
+<tr><th id="14">14</th><td>  <em>char</em> <dfn class="local col3 decl" id="3name" title='name' data-type='char [27]' data-ref="3name">name</dfn>[] = <q>"test_sampler_address_clamp"</q>;</td></tr>
+<tr><th id="15">15</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col4 decl" id="4global_work_size" title='global_work_size' data-type='size_t [1]' data-ref="4global_work_size">global_work_size</dfn>[<var>1</var>] = { <var>1</var> }, <dfn class="local col5 decl" id="5local_work_size" title='local_work_size' data-type='size_t [1]' data-ref="5local_work_size">local_work_size</dfn>[<var>1</var>]= { <var>1</var> };</td></tr>
+<tr><th id="16">16</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col6 decl" id="6srcdir_length" title='srcdir_length' data-type='size_t' data-ref="6srcdir_length">srcdir_length</dfn>, <dfn class="local col7 decl" id="7name_length" title='name_length' data-type='size_t' data-ref="7name_length">name_length</dfn>, <dfn class="local col8 decl" id="8filename_size" title='filename_size' data-type='size_t' data-ref="8filename_size">filename_size</dfn>;</td></tr>
+<tr><th id="17">17</th><td>  <em>char</em> *<dfn class="local col9 decl" id="9filename" title='filename' data-type='char *' data-ref="9filename">filename</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="18">18</th><td>  <em>char</em> *<dfn class="local col0 decl" id="10source" title='source' data-type='char *' data-ref="10source">source</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="19">19</th><td>  <a class="typedef" href="../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="local col1 decl" id="11devices" title='devices' data-type='cl_device_id [1]' data-ref="11devices">devices</dfn>[<var>1</var>];</td></tr>
+<tr><th id="20">20</th><td>  <a class="typedef" href="../../include/CL/cl.h.html#cl_context" title='cl_context' data-type='struct _cl_context *' data-ref="cl_context">cl_context</a> <dfn class="local col2 decl" id="12context" title='context' data-type='cl_context' data-ref="12context">context</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="21">21</th><td>  <a class="typedef" href="../../include/CL/cl.h.html#cl_command_queue" title='cl_command_queue' data-type='struct _cl_command_queue *' data-ref="cl_command_queue">cl_command_queue</a> <dfn class="local col3 decl" id="13queue" title='queue' data-type='cl_command_queue' data-ref="13queue">queue</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="22">22</th><td>  <a class="typedef" href="../../include/CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col4 decl" id="14program" title='program' data-type='cl_program' data-ref="14program">program</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="23">23</th><td>  <a class="typedef" href="../../include/CL/cl.h.html#cl_kernel" title='cl_kernel' data-type='struct _cl_kernel *' data-ref="cl_kernel">cl_kernel</a> <dfn class="local col5 decl" id="15kernel" title='kernel' data-type='cl_kernel' data-ref="15kernel">kernel</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="24">24</th><td>  <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <dfn class="local col6 decl" id="16result" title='result' data-type='cl_int' data-ref="16result">result</dfn>;</td></tr>
+<tr><th id="25">25</th><td>  <em>int</em> <dfn class="local col7 decl" id="17retval" title='retval' data-type='int' data-ref="17retval">retval</dfn> = -<var>1</var>;</td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td>  <i>/* image parameters */</i></td></tr>
+<tr><th id="28">28</th><td>  <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_uchar4" title='cl_uchar4' data-type='union cl_uchar4' data-ref="cl_uchar4">cl_uchar4</a> *<dfn class="local col8 decl" id="18imageData" title='imageData' data-type='cl_uchar4 *' data-ref="18imageData">imageData</dfn>;</td></tr>
+<tr><th id="29">29</th><td>  <a class="typedef" href="../../include/CL/cl.h.html#cl_image_format" title='cl_image_format' data-type='struct _cl_image_format' data-ref="cl_image_format">cl_image_format</a> <dfn class="local col9 decl" id="19image_format" title='image_format' data-type='cl_image_format' data-ref="19image_format">image_format</dfn>;</td></tr>
+<tr><th id="30">30</th><td>  <a class="typedef" href="../../include/CL/cl.h.html#cl_image_desc" title='cl_image_desc' data-type='struct _cl_image_desc' data-ref="cl_image_desc">cl_image_desc</a> <dfn class="local col0 decl" id="20image_desc" title='image_desc' data-type='cl_image_desc' data-ref="20image_desc">image_desc</dfn>;</td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td>  <a class="ref" href="../../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"Running test %s...\n"</q>, <a class="local col3 ref" href="#3name" title='name' data-ref="3name">name</a>);</td></tr>
+<tr><th id="33">33</th><td>  <a class="ref" href="../../../include/string.h.html#memset" title='memset' data-ref="memset">memset</a>(&amp;<a class="local col0 ref" href="#20image_desc" title='image_desc' data-ref="20image_desc">image_desc</a>, <var>0</var>, <b>sizeof</b>(<a class="typedef" href="../../include/CL/cl.h.html#cl_image_desc" title='cl_image_desc' data-type='struct _cl_image_desc' data-ref="cl_image_desc">cl_image_desc</a>));</td></tr>
+<tr><th id="34">34</th><td>  <a class="local col0 ref" href="#20image_desc" title='image_desc' data-ref="20image_desc">image_desc</a>.<a class="ref" href="../../include/CL/cl.h.html#_cl_image_desc::image_type" title='_cl_image_desc::image_type' data-ref="_cl_image_desc::image_type">image_type</a> = <a class="macro" href="../../include/CL/cl.h.html#562" title="0x10F1" data-ref="_M/CL_MEM_OBJECT_IMAGE2D">CL_MEM_OBJECT_IMAGE2D</a>;</td></tr>
+<tr><th id="35">35</th><td>  <a class="local col0 ref" href="#20image_desc" title='image_desc' data-ref="20image_desc">image_desc</a>.<a class="ref" href="../../include/CL/cl.h.html#_cl_image_desc::image_width" title='_cl_image_desc::image_width' data-ref="_cl_image_desc::image_width">image_width</a> = <var>4</var>;</td></tr>
+<tr><th id="36">36</th><td>  <a class="local col0 ref" href="#20image_desc" title='image_desc' data-ref="20image_desc">image_desc</a>.<a class="ref" href="../../include/CL/cl.h.html#_cl_image_desc::image_height" title='_cl_image_desc::image_height' data-ref="_cl_image_desc::image_height">image_height</a> = <var>4</var>;</td></tr>
+<tr><th id="37">37</th><td>  <a class="local col9 ref" href="#19image_format" title='image_format' data-ref="19image_format">image_format</a>.<a class="ref" href="../../include/CL/cl.h.html#_cl_image_format::image_channel_order" title='_cl_image_format::image_channel_order' data-ref="_cl_image_format::image_channel_order">image_channel_order</a> = <a class="macro" href="../../include/CL/cl.h.html#515" title="0x10B5" data-ref="_M/CL_RGBA">CL_RGBA</a>;</td></tr>
+<tr><th id="38">38</th><td>  <a class="local col9 ref" href="#19image_format" title='image_format' data-ref="19image_format">image_format</a>.<a class="ref" href="../../include/CL/cl.h.html#_cl_image_format::image_channel_data_type" title='_cl_image_format::image_channel_data_type' data-ref="_cl_image_format::image_channel_data_type">image_channel_data_type</a> = <a class="macro" href="../../include/CL/cl.h.html#548" title="0x10DA" data-ref="_M/CL_UNSIGNED_INT8">CL_UNSIGNED_INT8</a>;</td></tr>
+<tr><th id="39">39</th><td>  <a class="local col8 ref" href="#18imageData" title='imageData' data-ref="18imageData">imageData</a> = (<a class="typedef" href="../../include/CL/cl_platform.h.html#cl_uchar4" title='cl_uchar4' data-type='union cl_uchar4' data-ref="cl_uchar4">cl_uchar4</a>*)<a class="ref" href="../../../include/stdlib.h.html#malloc" title='malloc' data-ref="malloc">malloc</a> (<var>4</var> * <var>4</var> * <b>sizeof</b>(<a class="typedef" href="../../include/CL/cl_platform.h.html#cl_uchar4" title='cl_uchar4' data-type='union cl_uchar4' data-ref="cl_uchar4">cl_uchar4</a>));</td></tr>
+<tr><th id="40">40</th><td>  </td></tr>
+<tr><th id="41">41</th><td>  <b>if</b> (<a class="local col8 ref" href="#18imageData" title='imageData' data-ref="18imageData">imageData</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="42">42</th><td>    {</td></tr>
+<tr><th id="43">43</th><td>      <a class="ref" href="../../../include/stdio.h.html#puts" title='puts' data-ref="puts">puts</a>(<q>"out of host memory\n"</q>);</td></tr>
+<tr><th id="44">44</th><td>      <b>goto</b> <a class="lbl" href="#21error" data-ref="21error">error</a>;</td></tr>
+<tr><th id="45">45</th><td>    }</td></tr>
+<tr><th id="46">46</th><td>  <a class="ref" href="../../../include/string.h.html#memset" title='memset' data-ref="memset">memset</a> (<a class="local col8 ref" href="#18imageData" title='imageData' data-ref="18imageData">imageData</a>, <var>1</var>, <var>4</var>*<var>4</var>*<b>sizeof</b>(<a class="typedef" href="../../include/CL/cl_platform.h.html#cl_uchar4" title='cl_uchar4' data-type='union cl_uchar4' data-ref="cl_uchar4">cl_uchar4</a>));</td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td>  <i>/* determine file name of kernel source to load */</i></td></tr>
+<tr><th id="49">49</th><td>  <a class="local col6 ref" href="#6srcdir_length" title='srcdir_length' data-ref="6srcdir_length">srcdir_length</a> = <a class="ref" href="../../../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a>(<span class="macro" title="&quot;/opt/src/oss-code.github.io/src/pocl/tests/kernel&quot;" data-ref="_M/SRCDIR">SRCDIR</span>);</td></tr>
+<tr><th id="50">50</th><td>  <a class="local col7 ref" href="#7name_length" title='name_length' data-ref="7name_length">name_length</a> = <a class="ref" href="../../../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a>(<a class="local col3 ref" href="#3name" title='name' data-ref="3name">name</a>);</td></tr>
+<tr><th id="51">51</th><td>  <a class="local col8 ref" href="#8filename_size" title='filename_size' data-ref="8filename_size">filename_size</a> = <a class="local col6 ref" href="#6srcdir_length" title='srcdir_length' data-ref="6srcdir_length">srcdir_length</a> + <a class="local col7 ref" href="#7name_length" title='name_length' data-ref="7name_length">name_length</a> + <var>16</var>;</td></tr>
+<tr><th id="52">52</th><td>  <a class="local col9 ref" href="#9filename" title='filename' data-ref="9filename">filename</a> = (<em>char</em> *)<a class="ref" href="../../../include/stdlib.h.html#malloc" title='malloc' data-ref="malloc">malloc</a>(<a class="local col8 ref" href="#8filename_size" title='filename_size' data-ref="8filename_size">filename_size</a> + <var>1</var>);</td></tr>
+<tr><th id="53">53</th><td>  <b>if</b> (!<a class="local col9 ref" href="#9filename" title='filename' data-ref="9filename">filename</a>) </td></tr>
+<tr><th id="54">54</th><td>    {</td></tr>
+<tr><th id="55">55</th><td>      <a class="ref" href="../../../include/stdio.h.html#puts" title='puts' data-ref="puts">puts</a>(<q>"out of memory"</q>);</td></tr>
+<tr><th id="56">56</th><td>      <b>goto</b> <a class="lbl" href="#21error" data-ref="21error">error</a>;</td></tr>
+<tr><th id="57">57</th><td>    }</td></tr>
+<tr><th id="58">58</th><td>  </td></tr>
+<tr><th id="59">59</th><td>  <a class="ref" href="../../../include/stdio.h.html#snprintf" title='snprintf' data-ref="snprintf">snprintf</a>(<a class="local col9 ref" href="#9filename" title='filename' data-ref="9filename">filename</a>, <a class="local col8 ref" href="#8filename_size" title='filename_size' data-ref="8filename_size">filename_size</a>, <q>"%s/%s.cl"</q>, <span class="macro" title="&quot;/opt/src/oss-code.github.io/src/pocl/tests/kernel&quot;" data-ref="_M/SRCDIR">SRCDIR</span>, <a class="local col3 ref" href="#3name" title='name' data-ref="3name">name</a>);</td></tr>
+<tr><th id="60">60</th><td>  </td></tr>
+<tr><th id="61">61</th><td>  <i>/* read source code */</i></td></tr>
+<tr><th id="62">62</th><td>  <a class="local col0 ref" href="#10source" title='source' data-ref="10source">source</a> = <a class="ref" href="../../include/poclu.h.html#poclu_read_file" title='poclu_read_file' data-ref="poclu_read_file">poclu_read_file</a> (<a class="local col9 ref" href="#9filename" title='filename' data-ref="9filename">filename</a>);</td></tr>
+<tr><th id="63">63</th><td>  <a class="macro" href="../../include/poclu.h.html#147" title="do { if (!(source != ((void*)0) &amp;&amp; &quot;Kernel .cl not found.&quot;)) { fprintf(stderr, &quot;Assertion: \n&quot; &quot;source != NULL &amp;&amp; \&quot;Kernel .cl not found.\&quot;&quot; &quot;\nfailed on %s:%i\n&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/tests/kernel/sampler_address_clamp.c&quot;, 63); return 1; } } while (0)" data-ref="_M/TEST_ASSERT">TEST_ASSERT</a> (<a class="local col0 ref" href="#10source" title='source' data-ref="10source">source</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span> &amp;&amp; <q>"Kernel .cl not found."</q>);</td></tr>
+<tr><th id="64">64</th><td></td></tr>
+<tr><th id="65">65</th><td>  <i>/* setup an OpenCL context and command queue using default device */</i></td></tr>
+<tr><th id="66">66</th><td>  <a class="local col2 ref" href="#12context" title='context' data-ref="12context">context</a> = <a class="ref" href="../../include/poclu.h.html#poclu_create_any_context" title='poclu_create_any_context' data-ref="poclu_create_any_context">poclu_create_any_context</a>();</td></tr>
+<tr><th id="67">67</th><td>  <b>if</b> (!<a class="local col2 ref" href="#12context" title='context' data-ref="12context">context</a>) </td></tr>
+<tr><th id="68">68</th><td>    {</td></tr>
+<tr><th id="69">69</th><td>      <a class="ref" href="../../../include/stdio.h.html#puts" title='puts' data-ref="puts">puts</a>(<q>"clCreateContextFromType call failed\n"</q>);</td></tr>
+<tr><th id="70">70</th><td>      <b>goto</b> <a class="lbl" href="#21error" data-ref="21error">error</a>;</td></tr>
+<tr><th id="71">71</th><td>    }</td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td>  <a class="local col6 ref" href="#16result" title='result' data-ref="16result">result</a> = <a class="ref" href="../../include/CL/cl.h.html#clGetContextInfo" title='clGetContextInfo' data-ref="clGetContextInfo">clGetContextInfo</a>(<a class="local col2 ref" href="#12context" title='context' data-ref="12context">context</a>, <a class="macro" href="../../include/CL/cl.h.html#426" title="0x1081" data-ref="_M/CL_CONTEXT_DEVICES">CL_CONTEXT_DEVICES</a>,</td></tr>
+<tr><th id="74">74</th><td>                            <b>sizeof</b>(<a class="typedef" href="../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a>), <a class="local col1 ref" href="#11devices" title='devices' data-ref="11devices">devices</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="75">75</th><td>  <b>if</b> (<a class="local col6 ref" href="#16result" title='result' data-ref="16result">result</a> != <a class="macro" href="../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>) </td></tr>
+<tr><th id="76">76</th><td>    {</td></tr>
+<tr><th id="77">77</th><td>      <a class="ref" href="../../../include/stdio.h.html#puts" title='puts' data-ref="puts">puts</a>(<q>"clGetContextInfo call failed\n"</q>);</td></tr>
+<tr><th id="78">78</th><td>      <b>goto</b> <a class="lbl" href="#21error" data-ref="21error">error</a>;</td></tr>
+<tr><th id="79">79</th><td>    }</td></tr>
+<tr><th id="80">80</th><td></td></tr>
+<tr><th id="81">81</th><td>  <a class="local col3 ref" href="#13queue" title='queue' data-ref="13queue">queue</a> = <a class="ref" href="../../include/CL/cl.h.html#clCreateCommandQueue" title='clCreateCommandQueue' data-ref="clCreateCommandQueue">clCreateCommandQueue</a>(<a class="local col2 ref" href="#12context" title='context' data-ref="12context">context</a>, <a class="local col1 ref" href="#11devices" title='devices' data-ref="11devices">devices</a>[<var>0</var>], <var>0</var>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>); </td></tr>
+<tr><th id="82">82</th><td>  <b>if</b> (!<a class="local col3 ref" href="#13queue" title='queue' data-ref="13queue">queue</a>) </td></tr>
+<tr><th id="83">83</th><td>    {</td></tr>
+<tr><th id="84">84</th><td>      <a class="ref" href="../../../include/stdio.h.html#puts" title='puts' data-ref="puts">puts</a>(<q>"clCreateCommandQueue call failed\n"</q>);</td></tr>
+<tr><th id="85">85</th><td>      <b>goto</b> <a class="lbl" href="#21error" data-ref="21error">error</a>;</td></tr>
+<tr><th id="86">86</th><td>    }</td></tr>
+<tr><th id="87">87</th><td></td></tr>
+<tr><th id="88">88</th><td>  <i>/* Create image */</i></td></tr>
+<tr><th id="89">89</th><td></td></tr>
+<tr><th id="90">90</th><td>  <a class="typedef" href="../../include/CL/cl.h.html#cl_mem" title='cl_mem' data-type='struct _cl_mem *' data-ref="cl_mem">cl_mem</a> <dfn class="local col2 decl" id="22image" title='image' data-type='cl_mem' data-ref="22image">image</dfn> = <a class="ref" href="../../include/CL/cl.h.html#clCreateImage" title='clCreateImage' data-ref="clCreateImage">clCreateImage</a> (<a class="local col2 ref" href="#12context" title='context' data-ref="12context">context</a>, <a class="macro" href="../../include/CL/cl.h.html#485" title="(1 &lt;&lt; 2)" data-ref="_M/CL_MEM_READ_ONLY">CL_MEM_READ_ONLY</a> | <a class="macro" href="../../include/CL/cl.h.html#486" title="(1 &lt;&lt; 3)" data-ref="_M/CL_MEM_USE_HOST_PTR">CL_MEM_USE_HOST_PTR</a>,</td></tr>
+<tr><th id="91">91</th><td>                                &amp;<a class="local col9 ref" href="#19image_format" title='image_format' data-ref="19image_format">image_format</a>, &amp;<a class="local col0 ref" href="#20image_desc" title='image_desc' data-ref="20image_desc">image_desc</a>, <a class="local col8 ref" href="#18imageData" title='imageData' data-ref="18imageData">imageData</a>, &amp;<a class="local col6 ref" href="#16result" title='result' data-ref="16result">result</a>);</td></tr>
+<tr><th id="92">92</th><td>  <b>if</b> (<a class="local col6 ref" href="#16result" title='result' data-ref="16result">result</a> != <a class="macro" href="../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>)</td></tr>
+<tr><th id="93">93</th><td>    {</td></tr>
+<tr><th id="94">94</th><td>      <a class="ref" href="../../../include/stdio.h.html#puts" title='puts' data-ref="puts">puts</a>(<q>"image creation failed\n"</q>);</td></tr>
+<tr><th id="95">95</th><td>      <b>goto</b> <a class="lbl" href="#21error" data-ref="21error">error</a>;</td></tr>
+<tr><th id="96">96</th><td>    }</td></tr>
+<tr><th id="97">97</th><td></td></tr>
+<tr><th id="98">98</th><td></td></tr>
+<tr><th id="99">99</th><td>  <i>/* create and build program */</i></td></tr>
+<tr><th id="100">100</th><td>  <a class="local col4 ref" href="#14program" title='program' data-ref="14program">program</a> = <a class="ref" href="../../include/CL/cl.h.html#clCreateProgramWithSource" title='clCreateProgramWithSource' data-ref="clCreateProgramWithSource">clCreateProgramWithSource</a> (<a class="local col2 ref" href="#12context" title='context' data-ref="12context">context</a>, <var>1</var>, (<em>const</em> <em>char</em> **)&amp;<a class="local col0 ref" href="#10source" title='source' data-ref="10source">source</a>,</td></tr>
+<tr><th id="101">101</th><td>                                       <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="102">102</th><td>  <b>if</b> (!<a class="local col4 ref" href="#14program" title='program' data-ref="14program">program</a>) </td></tr>
+<tr><th id="103">103</th><td>    {</td></tr>
+<tr><th id="104">104</th><td>      <a class="ref" href="../../../include/stdio.h.html#puts" title='puts' data-ref="puts">puts</a>(<q>"clCreateProgramWithSource call failed\n"</q>);</td></tr>
+<tr><th id="105">105</th><td>      <b>goto</b> <a class="lbl" href="#21error" data-ref="21error">error</a>;</td></tr>
+<tr><th id="106">106</th><td>    }</td></tr>
+<tr><th id="107">107</th><td></td></tr>
+<tr><th id="108">108</th><td>  <a class="local col6 ref" href="#16result" title='result' data-ref="16result">result</a> = <a class="ref" href="../../include/CL/cl.h.html#clBuildProgram" title='clBuildProgram' data-ref="clBuildProgram">clBuildProgram</a>(<a class="local col4 ref" href="#14program" title='program' data-ref="14program">program</a>, <var>0</var>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>); </td></tr>
+<tr><th id="109">109</th><td>  <b>if</b> (<a class="local col6 ref" href="#16result" title='result' data-ref="16result">result</a> != <a class="macro" href="../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>) </td></tr>
+<tr><th id="110">110</th><td>    {</td></tr>
+<tr><th id="111">111</th><td>      <a class="ref" href="../../../include/stdio.h.html#puts" title='puts' data-ref="puts">puts</a>(<q>"clBuildProgram call failed\n"</q>);</td></tr>
+<tr><th id="112">112</th><td>      <b>goto</b> <a class="lbl" href="#21error" data-ref="21error">error</a>;</td></tr>
+<tr><th id="113">113</th><td>    }</td></tr>
+<tr><th id="114">114</th><td></td></tr>
+<tr><th id="115">115</th><td>  <i>/* execute the kernel with give name */</i></td></tr>
+<tr><th id="116">116</th><td>  <a class="local col5 ref" href="#15kernel" title='kernel' data-ref="15kernel">kernel</a> = <a class="ref" href="../../include/CL/cl.h.html#clCreateKernel" title='clCreateKernel' data-ref="clCreateKernel">clCreateKernel</a>(<a class="local col4 ref" href="#14program" title='program' data-ref="14program">program</a>, <a class="local col3 ref" href="#3name" title='name' data-ref="3name">name</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>); </td></tr>
+<tr><th id="117">117</th><td>  <b>if</b> (!<a class="local col5 ref" href="#15kernel" title='kernel' data-ref="15kernel">kernel</a>) </td></tr>
+<tr><th id="118">118</th><td>    {</td></tr>
+<tr><th id="119">119</th><td>      <a class="ref" href="../../../include/stdio.h.html#puts" title='puts' data-ref="puts">puts</a>(<q>"clCreateKernel call failed\n"</q>);</td></tr>
+<tr><th id="120">120</th><td>      <b>goto</b> <a class="lbl" href="#21error" data-ref="21error">error</a>;</td></tr>
+<tr><th id="121">121</th><td>    }</td></tr>
+<tr><th id="122">122</th><td></td></tr>
+<tr><th id="123">123</th><td>   <a class="local col6 ref" href="#16result" title='result' data-ref="16result">result</a> = <a class="ref" href="../../include/CL/cl.h.html#clSetKernelArg" title='clSetKernelArg' data-ref="clSetKernelArg">clSetKernelArg</a>( <a class="local col5 ref" href="#15kernel" title='kernel' data-ref="15kernel">kernel</a>, <var>0</var>, <b>sizeof</b>(<a class="typedef" href="../../include/CL/cl.h.html#cl_mem" title='cl_mem' data-type='struct _cl_mem *' data-ref="cl_mem">cl_mem</a>), &amp;<a class="local col2 ref" href="#22image" title='image' data-ref="22image">image</a>);</td></tr>
+<tr><th id="124">124</th><td>   <b>if</b> (<a class="local col6 ref" href="#16result" title='result' data-ref="16result">result</a>)</td></tr>
+<tr><th id="125">125</th><td>     {</td></tr>
+<tr><th id="126">126</th><td>       <a class="ref" href="../../../include/stdio.h.html#puts" title='puts' data-ref="puts">puts</a>(<q>"clSetKernelArg failed\n"</q>);</td></tr>
+<tr><th id="127">127</th><td>       <b>goto</b> <a class="lbl" href="#21error" data-ref="21error">error</a>;</td></tr>
+<tr><th id="128">128</th><td>     }</td></tr>
+<tr><th id="129">129</th><td></td></tr>
+<tr><th id="130">130</th><td>  <a class="local col6 ref" href="#16result" title='result' data-ref="16result">result</a> = <a class="ref" href="../../include/CL/cl.h.html#clEnqueueNDRangeKernel" title='clEnqueueNDRangeKernel' data-ref="clEnqueueNDRangeKernel">clEnqueueNDRangeKernel</a>(<a class="local col3 ref" href="#13queue" title='queue' data-ref="13queue">queue</a>, <a class="local col5 ref" href="#15kernel" title='kernel' data-ref="15kernel">kernel</a>, <var>1</var>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <a class="local col4 ref" href="#4global_work_size" title='global_work_size' data-ref="4global_work_size">global_work_size</a>, </td></tr>
+<tr><th id="131">131</th><td>                                  <a class="local col5 ref" href="#5local_work_size" title='local_work_size' data-ref="5local_work_size">local_work_size</a>, <var>0</var>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>); </td></tr>
+<tr><th id="132">132</th><td>  <b>if</b> (<a class="local col6 ref" href="#16result" title='result' data-ref="16result">result</a> != <a class="macro" href="../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>) </td></tr>
+<tr><th id="133">133</th><td>    {</td></tr>
+<tr><th id="134">134</th><td>      <a class="ref" href="../../../include/stdio.h.html#puts" title='puts' data-ref="puts">puts</a>(<q>"clEnqueueNDRangeKernel call failed\n"</q>);</td></tr>
+<tr><th id="135">135</th><td>      <b>goto</b> <a class="lbl" href="#21error" data-ref="21error">error</a>;</td></tr>
+<tr><th id="136">136</th><td>    }</td></tr>
+<tr><th id="137">137</th><td></td></tr>
+<tr><th id="138">138</th><td>  <a class="local col6 ref" href="#16result" title='result' data-ref="16result">result</a> = <a class="ref" href="../../include/CL/cl.h.html#clFinish" title='clFinish' data-ref="clFinish">clFinish</a>(<a class="local col3 ref" href="#13queue" title='queue' data-ref="13queue">queue</a>);</td></tr>
+<tr><th id="139">139</th><td>  <b>if</b> (<a class="local col6 ref" href="#16result" title='result' data-ref="16result">result</a> == <a class="macro" href="../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>)</td></tr>
+<tr><th id="140">140</th><td>    <a class="local col7 ref" href="#17retval" title='retval' data-ref="17retval">retval</a> = <var>0</var>;</td></tr>
+<tr><th id="141">141</th><td></td></tr>
+<tr><th id="142">142</th><td><dfn class="lbl" id="21error" data-ref="21error">error</dfn>:</td></tr>
+<tr><th id="143">143</th><td></td></tr>
+<tr><th id="144">144</th><td>  <b>if</b> (<a class="local col2 ref" href="#22image" title='image' data-ref="22image">image</a>)</td></tr>
+<tr><th id="145">145</th><td>    {</td></tr>
+<tr><th id="146">146</th><td>      <a class="ref" href="../../include/CL/cl.h.html#clReleaseMemObject" title='clReleaseMemObject' data-ref="clReleaseMemObject">clReleaseMemObject</a> (<a class="local col2 ref" href="#22image" title='image' data-ref="22image">image</a>);</td></tr>
+<tr><th id="147">147</th><td>    }</td></tr>
+<tr><th id="148">148</th><td></td></tr>
+<tr><th id="149">149</th><td>  <b>if</b> (<a class="local col5 ref" href="#15kernel" title='kernel' data-ref="15kernel">kernel</a>) </td></tr>
+<tr><th id="150">150</th><td>    {</td></tr>
+<tr><th id="151">151</th><td>      <a class="ref" href="../../include/CL/cl.h.html#clReleaseKernel" title='clReleaseKernel' data-ref="clReleaseKernel">clReleaseKernel</a>(<a class="local col5 ref" href="#15kernel" title='kernel' data-ref="15kernel">kernel</a>);</td></tr>
+<tr><th id="152">152</th><td>    }</td></tr>
+<tr><th id="153">153</th><td>  <b>if</b> (<a class="local col4 ref" href="#14program" title='program' data-ref="14program">program</a>) </td></tr>
+<tr><th id="154">154</th><td>    {</td></tr>
+<tr><th id="155">155</th><td>      <a class="ref" href="../../include/CL/cl.h.html#clReleaseProgram" title='clReleaseProgram' data-ref="clReleaseProgram">clReleaseProgram</a>(<a class="local col4 ref" href="#14program" title='program' data-ref="14program">program</a>);</td></tr>
+<tr><th id="156">156</th><td>    }</td></tr>
+<tr><th id="157">157</th><td>  <b>if</b> (<a class="local col3 ref" href="#13queue" title='queue' data-ref="13queue">queue</a>) </td></tr>
+<tr><th id="158">158</th><td>    {</td></tr>
+<tr><th id="159">159</th><td>      <a class="ref" href="../../include/CL/cl.h.html#clReleaseCommandQueue" title='clReleaseCommandQueue' data-ref="clReleaseCommandQueue">clReleaseCommandQueue</a>(<a class="local col3 ref" href="#13queue" title='queue' data-ref="13queue">queue</a>);</td></tr>
+<tr><th id="160">160</th><td>    }</td></tr>
+<tr><th id="161">161</th><td>  <b>if</b> (<a class="local col2 ref" href="#12context" title='context' data-ref="12context">context</a>) </td></tr>
+<tr><th id="162">162</th><td>    {</td></tr>
+<tr><th id="163">163</th><td>      <a class="ref" href="../../include/CL/cl.h.html#clUnloadCompiler" title='clUnloadCompiler' data-ref="clUnloadCompiler">clUnloadCompiler</a> ();</td></tr>
+<tr><th id="164">164</th><td>      <a class="ref" href="../../include/CL/cl.h.html#clReleaseContext" title='clReleaseContext' data-ref="clReleaseContext">clReleaseContext</a> (<a class="local col2 ref" href="#12context" title='context' data-ref="12context">context</a>);</td></tr>
+<tr><th id="165">165</th><td>    }</td></tr>
+<tr><th id="166">166</th><td>  <b>if</b> (<a class="local col0 ref" href="#10source" title='source' data-ref="10source">source</a>) </td></tr>
+<tr><th id="167">167</th><td>    {</td></tr>
+<tr><th id="168">168</th><td>      <a class="ref" href="../../../include/stdlib.h.html#free" title='free' data-ref="free">free</a>(<a class="local col0 ref" href="#10source" title='source' data-ref="10source">source</a>);</td></tr>
+<tr><th id="169">169</th><td>    }</td></tr>
+<tr><th id="170">170</th><td>  <b>if</b> (<a class="local col9 ref" href="#9filename" title='filename' data-ref="9filename">filename</a>)</td></tr>
+<tr><th id="171">171</th><td>    {</td></tr>
+<tr><th id="172">172</th><td>      <a class="ref" href="../../../include/stdlib.h.html#free" title='free' data-ref="free">free</a>(<a class="local col9 ref" href="#9filename" title='filename' data-ref="9filename">filename</a>);</td></tr>
+<tr><th id="173">173</th><td>    }</td></tr>
+<tr><th id="174">174</th><td>  <b>if</b> (<a class="local col8 ref" href="#18imageData" title='imageData' data-ref="18imageData">imageData</a>)</td></tr>
+<tr><th id="175">175</th><td>    {</td></tr>
+<tr><th id="176">176</th><td>      <a class="ref" href="../../../include/stdlib.h.html#free" title='free' data-ref="free">free</a>(<a class="local col8 ref" href="#18imageData" title='imageData' data-ref="18imageData">imageData</a>);</td></tr>
+<tr><th id="177">177</th><td>    }</td></tr>
+<tr><th id="178">178</th><td></td></tr>
+<tr><th id="179">179</th><td></td></tr>
+<tr><th id="180">180</th><td>  <b>if</b> (<a class="local col7 ref" href="#17retval" title='retval' data-ref="17retval">retval</a>) </td></tr>
+<tr><th id="181">181</th><td>    {</td></tr>
+<tr><th id="182">182</th><td>      <a class="ref" href="../../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"FAIL\n"</q>);</td></tr>
+<tr><th id="183">183</th><td>      <b>return</b> <var>1</var>;</td></tr>
+<tr><th id="184">184</th><td>    }</td></tr>
+<tr><th id="185">185</th><td> </td></tr>
+<tr><th id="186">186</th><td>  <a class="ref" href="../../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"OK\n"</q>);</td></tr>
+<tr><th id="187">187</th><td>  <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="188">188</th><td>}</td></tr>
+<tr><th id="189">189</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

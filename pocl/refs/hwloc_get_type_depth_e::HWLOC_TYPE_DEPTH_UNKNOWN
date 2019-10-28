@@ -1,0 +1,18 @@
+<dec f='include/hwloc.h' l='1139' type='-1'/>
+<use f='include/hwloc/helper.h' l='113' u='r' c='hwloc_get_next_obj_inside_cpuset_by_type'/>
+<use f='include/hwloc/helper.h' l='162' u='r' c='hwloc_get_obj_inside_cpuset_by_type'/>
+<use f='include/hwloc/helper.h' l='208' u='r' c='hwloc_get_nbobjs_inside_cpuset_by_type'/>
+<use f='include/hwloc/helper.h' l='338' u='r' c='hwloc_get_next_obj_covering_cpuset_by_type'/>
+<use f='include/hwloc/helper.h' l='464' u='r' c='hwloc_get_cache_type_depth'/>
+<use f='include/hwloc/helper.h' l='473' u='r' c='hwloc_get_cache_type_depth'/>
+<use f='include/hwloc/helper.h' l='927' u='r' c='hwloc_cpuset_to_nodeset'/>
+<use f='include/hwloc/helper.h' l='954' u='r' c='hwloc_cpuset_to_nodeset_strict'/>
+<use f='include/hwloc/helper.h' l='976' u='r' c='hwloc_cpuset_from_nodeset'/>
+<use f='include/hwloc/helper.h' l='1006' u='r' c='hwloc_cpuset_from_nodeset_strict'/>
+<use f='include/hwloc/inlines.h' l='33' u='r' c='hwloc_get_type_or_below_depth'/>
+<use f='include/hwloc/inlines.h' l='50' u='r' c='hwloc_get_type_or_above_depth'/>
+<use f='include/hwloc/inlines.h' l='66' u='r' c='hwloc_get_nbobjs_by_type'/>
+<use f='include/hwloc/inlines.h' l='77' u='r' c='hwloc_get_obj_by_type'/>
+<use f='include/hwloc/inlines.h' l='99' u='r' c='hwloc_get_next_obj_by_type'/>
+<use f='pocl/lib/CL/devices/topology/pocl_topology.c' l='127' u='r' c='pocl_topology_detect_device_info'/>
+<doc f='include/hwloc.h' l='1139'>/**&lt; \brief No object of given type exists in the topology. \hideinitializer */</doc>

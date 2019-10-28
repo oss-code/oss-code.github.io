@@ -1,0 +1,11 @@
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='251' ll='267'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='249'>// \brief RAII object that stores the current fast math settings and restores
+  // them when the object is destroyed.</doc>
+<mbr r='llvm::IRBuilderBase::FastMathFlagGuard::Builder' o='0' t='llvm::IRBuilderBase &amp;'/>
+<mbr r='llvm::IRBuilderBase::FastMathFlagGuard::FMF' o='64' t='llvm::FastMathFlags'/>
+<mbr r='llvm::IRBuilderBase::FastMathFlagGuard::FPMathTag' o='128' t='llvm::MDNode *'/>
+<fun r='_ZN4llvm13IRBuilderBase17FastMathFlagGuardC1ERS0_'/>
+<fun r='_ZN4llvm13IRBuilderBase17FastMathFlagGuardC1ERKS1_'/>
+<fun r='_ZN4llvm13IRBuilderBase17FastMathFlagGuardaSERKS1_'/>
+<fun r='_ZN4llvm13IRBuilderBase17FastMathFlagGuardD1Ev'/>

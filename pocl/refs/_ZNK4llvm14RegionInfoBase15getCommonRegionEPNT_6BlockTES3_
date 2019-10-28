@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='852' ll='854' type='RegionT * llvm::RegionInfoBase::getCommonRegion(BlockT * A, BlockT * B) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='847'>/// @brief Find the smallest region that contains two basic blocks.
+  ///
+  /// @param A The first basic block.
+  /// @param B The second basic block.
+  /// @return The smallest region that contains A and B.</doc>

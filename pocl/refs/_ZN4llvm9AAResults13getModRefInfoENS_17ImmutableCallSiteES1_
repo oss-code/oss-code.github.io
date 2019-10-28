@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='660' type='llvm::ModRefInfo llvm::AAResults::getModRefInfo(llvm::ImmutableCallSite CS1, llvm::ImmutableCallSite CS2)'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='913' u='c' c='_ZN4llvm12AAResultBase14AAResultsProxy13getModRefInfoENS_17ImmutableCallSiteES2_'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='657'>/// Return information about whether two call sites may refer to the same set
+  /// of memory locations. See the AA documentation for details:
+  ///   http://llvm.org/docs/AliasAnalysis.html#ModRefInfo</doc>

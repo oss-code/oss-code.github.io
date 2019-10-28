@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/LLVMContext.h' l='257' type='void llvm::LLVMContext::setDiagnosticsOutputFile(std::unique_ptr&lt;yaml::Output&gt; F)'/>
+<doc f='include/llvm-6.0/llvm/IR/LLVMContext.h' l='252'>/// Set the diagnostics output file used for optimization diagnostics.
+  ///
+  /// By default or if invoked with null, diagnostics are not saved in a file
+  /// but only emitted via the diagnostic handler.  Even if an output file is
+  /// set, the handler is invoked for each diagnostic message.</doc>

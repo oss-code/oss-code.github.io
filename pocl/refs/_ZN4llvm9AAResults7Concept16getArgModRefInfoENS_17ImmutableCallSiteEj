@@ -1,0 +1,12 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='771' type='llvm::ModRefInfo llvm::AAResults::Concept::getArgModRefInfo(llvm::ImmutableCallSite CS, unsigned int ArgIdx)'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='821' c='_ZN4llvm9AAResults5Model16getArgModRefInfoENS_17ImmutableCallSiteEj'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='761'>/// @}
+  //===--------------------------------------------------------------------===//
+  /// \name Simple mod/ref information
+  /// @{
+
+  /// Get the ModRef info associated with a pointer argument of a callsite. The
+  /// result&apos;s bits are set to indicate the allowed aliasing ModRef kinds. Note
+  /// that these bits do not necessarily account for the overall behavior of
+  /// the function, but rather only provide additional per-argument
+  /// information.</doc>

@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='505' ll='507' type='void llvm::raw_svector_ostream::raw_svector_ostream(SmallVectorImpl&lt;char&gt; &amp; O)'/>
+<use f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='537' u='c' c='_ZN4llvm14buffer_ostreamC1ERNS_11raw_ostreamE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='133' u='c' c='pocl_ptx_gen'/>
+<doc f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='501'>/// Construct a new raw_svector_ostream.
+  ///
+  /// \param O The vector to write to; this should generally have at least 128
+  /// bytes free to avoid any extraneous memory overhead.</doc>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='606' u='c' c='pocl_llvm_codegen'/>

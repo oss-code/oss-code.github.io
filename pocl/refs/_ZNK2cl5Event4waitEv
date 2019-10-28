@@ -1,0 +1,7 @@
+<def f='pocl/include/CL/cl2.hpp' l='3182' ll='3187' type='cl_int cl::Event::wait() const'/>
+<use f='pocl/include/CL/cl2.hpp' l='9336' u='c' c='_ZN2cl4copyERKNS_12CommandQueueET_S3_RNS_6BufferE'/>
+<use f='pocl/include/CL/cl2.hpp' l='9367' u='c' c='_ZN2cl4copyERKNS_12CommandQueueERKNS_6BufferET_S6_'/>
+<doc f='pocl/include/CL/cl2.hpp' l='3178'>/*! \brief Blocks the calling thread until this event completes.
+     *
+     *  Wraps clWaitForEvents().
+     */</doc>

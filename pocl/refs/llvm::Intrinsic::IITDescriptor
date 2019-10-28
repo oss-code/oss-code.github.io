@@ -1,0 +1,11 @@
+<def f='include/llvm-6.0/llvm/IR/Intrinsics.h' l='98' ll='159'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/IR/Intrinsics.h' l='96'>/// This is a type descriptor which explains the type requirements of an
+  /// intrinsic. This is returned by getIntrinsicInfoTableEntries.</doc>
+<mbr r='llvm::Intrinsic::IITDescriptor::Kind' o='0' t='enum IITDescriptorKind'/>
+<fun r='_ZNK4llvm9Intrinsic13IITDescriptor17getArgumentNumberEv'/>
+<fun r='_ZNK4llvm9Intrinsic13IITDescriptor15getArgumentKindEv'/>
+<fun r='_ZNK4llvm9Intrinsic13IITDescriptor20getOverloadArgNumberEv'/>
+<fun r='_ZNK4llvm9Intrinsic13IITDescriptor15getRefArgNumberEv'/>
+<fun r='_ZN4llvm9Intrinsic13IITDescriptor3getENS1_17IITDescriptorKindEj'/>
+<fun r='_ZN4llvm9Intrinsic13IITDescriptor3getENS1_17IITDescriptorKindEtt'/>

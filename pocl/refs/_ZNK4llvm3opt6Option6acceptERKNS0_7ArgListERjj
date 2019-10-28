@@ -1,0 +1,12 @@
+<dec f='include/llvm-6.0/llvm/Option/Option.h' l='208' type='llvm::opt::Arg * llvm::opt::Option::accept(const llvm::opt::ArgList &amp; Args, unsigned int &amp; Index, unsigned int ArgSize) const'/>
+<doc f='include/llvm-6.0/llvm/Option/Option.h' l='197'>/// accept - Potentially accept the current argument, returning a
+  /// new Arg instance, or 0 if the option does not accept this
+  /// argument (or the argument is missing values).
+  ///
+  /// If the option accepts the current argument, accept() sets
+  /// Index to the position where argument parsing should resume
+  /// (even if the argument is missing values).
+  ///
+  /// \param ArgSize The number of bytes taken up by the matched Option prefix
+  ///                and name. This is used to determine where joined values
+  ///                start.</doc>

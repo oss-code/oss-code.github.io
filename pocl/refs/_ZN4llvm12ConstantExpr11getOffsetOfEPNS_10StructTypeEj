@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='895' type='static llvm::Constant * llvm::ConstantExpr::getOffsetOf(llvm::StructType * STy, unsigned int FieldNo)'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='892'>/// getOffsetOf constant expr - computes the offset of a struct field in a
+  /// target independent way (Note: the return type is an i64).
+  ///</doc>

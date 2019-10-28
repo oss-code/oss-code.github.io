@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Scalar/GVN.h' l='181' type='SmallMapVector&lt;llvm::Value *, llvm::Constant *, 4&gt;'/>
+<offset>3776</offset>
+<doc f='include/llvm-6.0/llvm/Transforms/Scalar/GVN.h' l='178'>// Block-local map of equivalent values to their leader, does not
+  // propagate to any successors. Entries added mid-block are applied
+  // to the remaining instructions in the block.</doc>

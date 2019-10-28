@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/MC/StringTableBuilder.h' l='45' type='size_t llvm::StringTableBuilder::add(llvm::CachedHashStringRef S)'/>
+<use f='include/llvm-6.0/llvm/MC/StringTableBuilder.h' l='46' u='c' c='_ZN4llvm18StringTableBuilder3addENS_9StringRefE'/>
+<doc f='include/llvm-6.0/llvm/MC/StringTableBuilder.h' l='42'>/// \brief Add a string to the builder. Returns the position of S in the
+  /// table. The position will be changed if finalize is used.
+  /// Can only be used before the table is finalized.</doc>

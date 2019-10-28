@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/Metadata.h' l='959' type='void llvm::MDNode::resolveCycles()'/>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='953'>/// \brief Resolve cycles.
+  ///
+  /// Once all forward declarations have been resolved, force cycles to be
+  /// resolved.
+  ///
+  /// \pre No operands (or operands&apos; operands, etc.) have \a isTemporary().</doc>

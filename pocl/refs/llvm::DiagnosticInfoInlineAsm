@@ -1,0 +1,16 @@
+<inh f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='97' c='llvm::DiagnosticInfo'/>
+<def f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='126' ll='170'/>
+<size>40</size>
+<doc f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='124'>/// Diagnostic information for inline asm reporting.
+/// This is basically a message and an optional location.</doc>
+<mbr r='llvm::DiagnosticInfoInlineAsm::LocCookie' o='128' t='unsigned int'/>
+<mbr r='llvm::DiagnosticInfoInlineAsm::MsgStr' o='192' t='const llvm::Twine &amp;'/>
+<mbr r='llvm::DiagnosticInfoInlineAsm::Instr' o='256' t='const llvm::Instruction *'/>
+<fun r='_ZN4llvm23DiagnosticInfoInlineAsmC1ERKNS_5TwineENS_18DiagnosticSeverityE'/>
+<fun r='_ZN4llvm23DiagnosticInfoInlineAsmC1EjRKNS_5TwineENS_18DiagnosticSeverityE'/>
+<fun r='_ZN4llvm23DiagnosticInfoInlineAsmC1ERKNS_11InstructionERKNS_5TwineENS_18DiagnosticSeverityE'/>
+<fun r='_ZNK4llvm23DiagnosticInfoInlineAsm12getLocCookieEv'/>
+<fun r='_ZNK4llvm23DiagnosticInfoInlineAsm9getMsgStrEv'/>
+<fun r='_ZNK4llvm23DiagnosticInfoInlineAsm14getInstructionEv'/>
+<fun r='_ZNK4llvm23DiagnosticInfoInlineAsm5printERNS_17DiagnosticPrinterE'/>
+<fun r='_ZN4llvm23DiagnosticInfoInlineAsm7classofEPKNS_14DiagnosticInfoE'/>

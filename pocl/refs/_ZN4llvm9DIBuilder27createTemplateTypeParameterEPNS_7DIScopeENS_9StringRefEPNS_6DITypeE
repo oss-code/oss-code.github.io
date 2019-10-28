@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='385' type='llvm::DITemplateTypeParameter * llvm::DIBuilder::createTemplateTypeParameter(llvm::DIScope * Scope, llvm::StringRef Name, llvm::DIType * Ty)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='379'>/// Create debugging information for template
+    /// type parameter.
+    /// \param Scope        Scope in which this type is defined.
+    /// \param Name         Type parameter name.
+    /// \param Ty           Parameter type.</doc>

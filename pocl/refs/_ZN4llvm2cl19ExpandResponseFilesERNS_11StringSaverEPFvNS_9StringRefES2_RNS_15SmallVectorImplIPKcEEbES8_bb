@@ -1,0 +1,17 @@
+<dec f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1908' type='bool llvm::cl::ExpandResponseFiles(llvm::StringSaver &amp; Saver, TokenizerCallback Tokenizer, SmallVectorImpl&lt;const char *&gt; &amp; Argv, bool MarkEOLs = false, bool RelativeNames = false)'/>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1892'>/// \brief Expand response files on a command line recursively using the given
+/// StringSaver and tokenization strategy.  Argv should contain the command line
+/// before expansion and will be modified in place. If requested, Argv will
+/// also be populated with nullptrs indicating where each response file line
+/// ends, which is useful for the &quot;/link&quot; argument that needs to consume all
+/// remaining arguments only until the next end of line, when in a response
+/// file.
+///
+/// \param [in] Saver Delegates back to the caller for saving parsed strings.
+/// \param [in] Tokenizer Tokenization strategy. Typically Unix or Windows.
+/// \param [in,out] Argv Command line into which to expand response files.
+/// \param [in] MarkEOLs Mark end of lines and the end of the response file
+/// with nullptrs in the Argv vector.
+/// \param [in] RelativeNames true if names of nested response files must be
+/// resolved relative to including file.
+/// \return true if all @files were expanded successfully or there were none.</doc>

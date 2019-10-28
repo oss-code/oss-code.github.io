@@ -1,0 +1,23 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1069' type='char *'/>
+<offset>640</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='1068'>/* all the program sources appended together, terminated with a zero */</doc>
+<use f='pocl/lib/CL/clCreateProgramWithSource.c' l='75' u='w' c='POclCreateProgramWithSource'/>
+<use f='pocl/lib/CL/clCreateProgramWithSource.c' l='138' u='r' c='POclCreateProgramWithSource'/>
+<use f='pocl/lib/CL/clCreateProgramWithSource.c' l='138' u='w' c='POclCreateProgramWithSource'/>
+<use f='pocl/lib/CL/clGetProgramInfo.c' l='103' u='r' c='POclGetProgramInfo'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='61' u='r' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='61' u='w' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/pocl_build.c' l='316' u='r' c='process_options'/>
+<use f='pocl/lib/CL/pocl_build.c' l='331' u='r' c='process_options'/>
+<use f='pocl/lib/CL/pocl_build.c' l='455' u='r' c='clean_program_on_rebuild'/>
+<use f='pocl/lib/CL/pocl_build.c' l='521' u='r' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_build.c' l='529' u='r' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_build.c' l='629' u='r' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_build.c' l='893' u='r' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='234' u='r' c='pocl_cache_write_program_source'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='235' u='r' c='pocl_cache_write_program_source'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='374' u='r' c='build_program_compute_hash'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='576' u='r' c='pocl_cache_create_program_cachedir'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='577' u='r' c='pocl_cache_create_program_cachedir'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='578' u='r' c='pocl_cache_create_program_cachedir'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='226' u='r' c='pocl_llvm_build_program'/>

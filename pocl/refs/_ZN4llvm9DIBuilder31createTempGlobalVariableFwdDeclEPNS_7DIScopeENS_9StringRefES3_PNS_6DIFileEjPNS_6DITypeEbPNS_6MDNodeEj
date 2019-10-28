@@ -1,0 +1,3 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='526' type='llvm::DIGlobalVariable * llvm::DIBuilder::createTempGlobalVariableFwdDecl(llvm::DIScope * Context, llvm::StringRef Name, llvm::StringRef LinkageName, llvm::DIFile * File, unsigned int LineNo, llvm::DIType * Ty, bool isLocalToUnit, llvm::MDNode * Decl = nullptr, uint32_t AlignInBits = 0)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='524'>/// Identical to createGlobalVariable
+    /// except that the resulting DbgNode is temporary and meant to be RAUWed.</doc>

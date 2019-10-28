@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/ADT/APFloat.h' l='334' type='bool llvm::detail::IEEEFloat::isZero() const'/>
+<use f='include/llvm-6.0/llvm/ADT/APFloat.h' l='357' u='c' c='_ZNK4llvm6detail9IEEEFloat15isFiniteNonZeroEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APFloat.h' l='358' u='c' c='_ZNK4llvm6detail9IEEEFloat9isPosZeroEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APFloat.h' l='359' u='c' c='_ZNK4llvm6detail9IEEEFloat9isNegZeroEv'/>
+<doc f='include/llvm-6.0/llvm/ADT/APFloat.h' l='333'>/// Returns true if and only if the float is plus or minus zero.</doc>

@@ -1,0 +1,6 @@
+<use f='include/llvm-6.0/llvm/ADT/SmallPtrSet.h' l='163' u='c' c='_ZN4llvm19SmallPtrSetImplBase9erase_impEPKv'/>
+<def f='include/llvm-6.0/llvm/ADT/SmallPtrSet.h' l='177' ll='192' type='const void *const * llvm::SmallPtrSetImplBase::find_imp(const void * Ptr) const'/>
+<use f='include/llvm-6.0/llvm/ADT/SmallPtrSet.h' l='384' u='c' c='_ZNK4llvm15SmallPtrSetImpl4findENS_22add_const_past_pointerIT_vE4typeE'/>
+<doc f='include/llvm-6.0/llvm/ADT/SmallPtrSet.h' l='174'>/// Returns the raw pointer needed to construct an iterator.  If element not
+  /// found, this will be EndPointer.  Otherwise, it will be a pointer to the
+  /// slot which stores Ptr;</doc>

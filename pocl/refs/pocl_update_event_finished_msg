@@ -1,0 +1,4 @@
+<def f='pocl/lib/CL/pocl_util.c' l='1219' ll='1279' type='void pocl_update_event_finished_msg(cl_int status, const char * func, unsigned int line, cl_event event, const char * msg)'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1285' u='c' c='pocl_update_event_failed'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1293' u='c' c='pocl_update_event_complete_msg'/>
+<doc f='pocl/lib/CL/pocl_util.c' l='1218'>// status can be complete or failed (&lt;0)</doc>

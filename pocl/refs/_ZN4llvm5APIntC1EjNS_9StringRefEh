@@ -1,0 +1,13 @@
+<dec f='include/llvm-6.0/llvm/ADT/APInt.h' l='311' type='void llvm::APInt::APInt(unsigned int numBits, llvm::StringRef str, uint8_t radix)'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='300'>/// \brief Construct an APInt from a string representation.
+  ///
+  /// This constructor interprets the string \p str in the given radix. The
+  /// interpretation stops when the first character that is not suitable for the
+  /// radix is encountered, or the end of the string. Acceptable radix values
+  /// are 2, 8, 10, 16, and 36. It is an error for the value implied by the
+  /// string to require more bits than numBits.
+  ///
+  /// \param numBits the bit width of the constructed APInt
+  /// \param str the string to be interpreted
+  /// \param radix the radix to use for the conversion</doc>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='668' u='c' c='_ZN4pocl14ParallelRegion12InjectPrintFEPN4llvm11InstructionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIPNS1_5ValueESaISC_EE'/>

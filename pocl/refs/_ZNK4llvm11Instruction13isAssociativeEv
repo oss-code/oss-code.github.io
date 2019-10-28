@@ -1,0 +1,11 @@
+<dec f='include/llvm-6.0/llvm/IR/Instruction.h' l='439' type='bool llvm::Instruction::isAssociative() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Instruction.h' l='429'>//===--------------------------------------------------------------------===//
+  // Predicates and helper methods.
+  //===--------------------------------------------------------------------===//
+
+  /// Return true if the instruction is associative:
+  ///
+  ///   Associative operators satisfy:  x op (y op z) === (x op y) op z
+  ///
+  /// In LLVM, the Add, Mul, And, Or, and Xor operators are associative.
+  ///</doc>

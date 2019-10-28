@@ -1,0 +1,13 @@
+<dec f='pocl/lib/CL/pocl_llvm_api.h' l='70' type='void InitializeLLVM()'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='213' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='622' u='c' c='pocl_llvm_link_program'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='448' u='c' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='619' u='c' c='pocl_llvm_get_kernel_count'/>
+<def f='pocl/lib/CL/pocl_llvm_utils.cc' l='271' ll='348' type='void InitializeLLVM()'/>
+<doc f='pocl/lib/CL/pocl_llvm_utils.cc' l='270'>/* must be called with kernelCompilerLock locked */</doc>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='345' u='c' c='pocl_destroy_llvm_module'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='378' u='c' c='pocl_llvm_generate_workgroup_function_nowrite'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='509' u='c' c='pocl_update_program_llvm_irs'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='517' u='c' c='pocl_free_llvm_irs'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='528' u='c' c='pocl_llvm_update_binaries'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='589' u='c' c='pocl_llvm_codegen'/>

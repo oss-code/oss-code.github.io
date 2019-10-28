@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='390' type='llvm::FunctionModRefBehavior llvm::AAResults::getModRefBehavior(llvm::ImmutableCallSite CS)'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='407' u='c' c='_ZN4llvm9AAResults19doesNotAccessMemoryENS_17ImmutableCallSiteE'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='435' u='c' c='_ZN4llvm9AAResults15onlyReadsMemoryENS_17ImmutableCallSiteE'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='621' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_11InstructionERKNS_8OptionalINS_14MemoryLocationEEE'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='900' u='c' c='_ZN4llvm12AAResultBase14AAResultsProxy17getModRefBehaviorENS_17ImmutableCallSiteE'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='389'>/// Return the behavior of the given call site.</doc>

@@ -1,0 +1,16 @@
+<dec f='pocl/lib/CL/devices/cpuinfo.h' l='39' type='void pocl_cpuinfo_detect_device_info(cl_device_id device)'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='432' u='c' c='pocl_basic_init'/>
+<def f='pocl/lib/CL/devices/cpuinfo.c' l='415' ll='429' type='void pocl_cpuinfo_detect_device_info(cl_device_id device)'/>
+<doc f='pocl/lib/CL/devices/cpuinfo.c' l='402'>/*
+ * Expects:
+ *   short name
+ *
+ * Sets up:
+ *   vendor_id
+ *   vendor (name)
+ *   long name
+ *
+ *   max compute units IF NOT SET ALREADY
+ *   max clock freq
+ */</doc>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='175' u='c' c='pocl_pthread_init'/>

@@ -1,0 +1,13 @@
+<dec f='include/llvm-6.0/llvm/ADT/Triple.h' l='251' type='void llvm::Triple::Triple(const llvm::Twine &amp; Str)'/>
+<use f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='320' u='c' c='_ZNK4llvm6Target15createMCAsmInfoERKNS_14MCRegisterInfoENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='344' u='c' c='_ZNK4llvm6Target15createMCRegInfoENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='360' u='c' c='_ZNK4llvm6Target21createMCSubtargetInfoENS_9StringRefES1_S1_'/>
+<use f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='379' u='c' c='_ZNK4llvm6Target19createTargetMachineENS_9StringRefES1_S1_RKNS_13TargetOptionsENS_8OptionalINS_5Reloc5ModelEEENS5_INS_9CodeModel5ModelEEENS_10CodeGenOpt5LevelEb'/>
+<use f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='535' u='c' c='_ZNK4llvm6Target22createMCRelocationInfoENS_9StringRefERNS_9MCContextE'/>
+<use f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='557' u='c' c='_ZNK4llvm6Target18createMCSymbolizerENS_9StringRefEPFiPvmmmiS2_EPFPKcS2_mPmmPS6_ES2_PNS_9MCContextEOSt10unique_ptrINS_16MCRelocationInfoESt14default_deleteISE_EE'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='347' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='635' u='c' c='pocl_llvm_link_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='791' u='c' c='_ZL16getKernelLibraryP13_cl_device_id'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='181' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='575' u='c' c='_ZL25initPassManagerForCodeGenRN4llvm6legacy11PassManagerEP13_cl_device_id'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='598' u='c' c='pocl_llvm_codegen'/>

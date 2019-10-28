@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Support/FileSystem.h' l='561' type='bool llvm::sys::fs::is_symlink_file(const llvm::sys::fs::basic_file_status &amp; status)'/>
+<doc f='include/llvm-6.0/llvm/Support/FileSystem.h' l='557'>/// @brief Does status represent a symlink file?
+///
+/// @param status A basic_file_status previously returned from status.
+/// @returns status_known(status) &amp;&amp; status.type() == file_type::symlink_file.</doc>

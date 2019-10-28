@@ -1,0 +1,4 @@
+<dec f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.h' l='54' type='int pocl_cuda_get_ptr_arg_alignment(const char * BitcodeFilename, const char * KernelName, size_t * Alignments)'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='830' u='c' c='load_or_generate_kernel'/>
+<doc f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.h' l='53'>/* Returns zero on success, non-zero on failure. */</doc>
+<def f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='831' ll='870' type='int pocl_cuda_get_ptr_arg_alignment(const char * BitcodeFilename, const char * KernelName, size_t * Alignments)'/>

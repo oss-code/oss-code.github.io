@@ -1,0 +1,443 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Passes.h source code [include/llvm-6.0/llvm/CodeGen/Passes.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'include/llvm-6.0/llvm/CodeGen/Passes.h'; var root_path = '../../../..'; var data_path = '../../../../../data';</script>
+<script src='../../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../../..'>include</a>/<a href='../..'>llvm-6.0</a>/<a href='..'>llvm</a>/<a href='./'>CodeGen</a>/<a href='Passes.h.html'>Passes.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>//===-- Passes.h - Target independent code generation passes ----*- C++ -*-===//</i></td></tr>
+<tr><th id="2">2</th><td><i>//</i></td></tr>
+<tr><th id="3">3</th><td><i>//                     The LLVM Compiler Infrastructure</i></td></tr>
+<tr><th id="4">4</th><td><i>//</i></td></tr>
+<tr><th id="5">5</th><td><i>// This file is distributed under the University of Illinois Open Source</i></td></tr>
+<tr><th id="6">6</th><td><i>// License. See LICENSE.TXT for details.</i></td></tr>
+<tr><th id="7">7</th><td><i>//</i></td></tr>
+<tr><th id="8">8</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="9">9</th><td><i>//</i></td></tr>
+<tr><th id="10">10</th><td><i>// This file defines interfaces to access the target independent code generation</i></td></tr>
+<tr><th id="11">11</th><td><i>// passes provided by the LLVM backend.</i></td></tr>
+<tr><th id="12">12</th><td><i>//</i></td></tr>
+<tr><th id="13">13</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td><u>#<span data-ppcond="15">ifndef</span> <span class="macro" data-ref="_M/LLVM_CODEGEN_PASSES_H">LLVM_CODEGEN_PASSES_H</span></u></td></tr>
+<tr><th id="16">16</th><td><u>#define <dfn class="macro" id="_M/LLVM_CODEGEN_PASSES_H" data-ref="_M/LLVM_CODEGEN_PASSES_H">LLVM_CODEGEN_PASSES_H</dfn></u></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><u>#include <a href="../../../c++/7/functional.html">&lt;functional&gt;</a></u></td></tr>
+<tr><th id="19">19</th><td><u>#include <a href="../../../c++/7/string.html">&lt;string&gt;</a></u></td></tr>
+<tr><th id="20">20</th><td></td></tr>
+<tr><th id="21">21</th><td><b>namespace</b> <span class="namespace">llvm</span> {</td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><b>class</b> <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass" id="llvm::FunctionPass">FunctionPass</a>;</td></tr>
+<tr><th id="24">24</th><td><b>class</b> <a class="type" href="../Target/TargetOptions.h.html#llvm::MachineFunction" title='llvm::MachineFunction' data-ref="llvm::MachineFunction" id="llvm::MachineFunction">MachineFunction</a>;</td></tr>
+<tr><th id="25">25</th><td><b>class</b> <dfn class="type" id="llvm::MachineFunctionPass" title='llvm::MachineFunctionPass' data-ref="llvm::MachineFunctionPass">MachineFunctionPass</dfn>;</td></tr>
+<tr><th id="26">26</th><td><b>class</b> <a class="type" href="../Pass.h.html#llvm::ModulePass" title='llvm::ModulePass' data-ref="llvm::ModulePass" id="llvm::ModulePass">ModulePass</a>;</td></tr>
+<tr><th id="27">27</th><td><b>class</b> <a class="type" href="../Pass.h.html#llvm::Pass" title='llvm::Pass' data-ref="llvm::Pass" id="llvm::Pass">Pass</a>;</td></tr>
+<tr><th id="28">28</th><td><b>class</b> <dfn class="type" id="llvm::TargetMachine" title='llvm::TargetMachine' data-ref="llvm::TargetMachine">TargetMachine</dfn>;</td></tr>
+<tr><th id="29">29</th><td><b>class</b> <dfn class="type" id="llvm::TargetRegisterClass" title='llvm::TargetRegisterClass' data-ref="llvm::TargetRegisterClass">TargetRegisterClass</dfn>;</td></tr>
+<tr><th id="30">30</th><td><b>class</b> <a class="type" href="../Support/raw_ostream.h.html#llvm::raw_ostream" title='llvm::raw_ostream' data-ref="llvm::raw_ostream" id="llvm::raw_ostream">raw_ostream</a>;</td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td>} <i>// End llvm namespace</i></td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><i class="doc">/// List of target independent CodeGen pass IDs.</i></td></tr>
+<tr><th id="35">35</th><td><b>namespace</b> <span class="namespace">llvm</span> {</td></tr>
+<tr><th id="36">36</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm22createAtomicExpandPassEv" title='llvm::createAtomicExpandPass' data-ref="_ZN4llvm22createAtomicExpandPassEv">createAtomicExpandPass</dfn>();</td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td>  <i class="doc">/// createUnreachableBlockEliminationPass - The LLVM code generator does not</i></td></tr>
+<tr><th id="39">39</th><td><i class="doc">  /// work well with unreachable basic blocks (what live ranges make sense for a</i></td></tr>
+<tr><th id="40">40</th><td><i class="doc">  /// block that cannot be reached?).  As such, a code generator should either</i></td></tr>
+<tr><th id="41">41</th><td><i class="doc">  /// not instruction select unreachable blocks, or run this pass as its</i></td></tr>
+<tr><th id="42">42</th><td><i class="doc">  /// last LLVM modifying pass to clean up blocks that are not reachable from</i></td></tr>
+<tr><th id="43">43</th><td><i class="doc">  /// the entry block.</i></td></tr>
+<tr><th id="44">44</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm37createUnreachableBlockEliminationPassEv" title='llvm::createUnreachableBlockEliminationPass' data-ref="_ZN4llvm37createUnreachableBlockEliminationPassEv">createUnreachableBlockEliminationPass</dfn>();</td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td>  <i class="doc">/// MachineFunctionPrinter pass - This pass prints out the machine function to</i></td></tr>
+<tr><th id="47">47</th><td><i class="doc">  /// the given stream as a debugging tool.</i></td></tr>
+<tr><th id="48">48</th><td>  <a class="type" href="#llvm::MachineFunctionPass" title='llvm::MachineFunctionPass' data-ref="llvm::MachineFunctionPass">MachineFunctionPass</a> *</td></tr>
+<tr><th id="49">49</th><td>  <dfn class="decl" id="_ZN4llvm32createMachineFunctionPrinterPassERNS_11raw_ostreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE" title='llvm::createMachineFunctionPrinterPass' data-ref="_ZN4llvm32createMachineFunctionPrinterPassERNS_11raw_ostreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE">createMachineFunctionPrinterPass</dfn>(<a class="type" href="../Support/raw_ostream.h.html#llvm::raw_ostream" title='llvm::raw_ostream' data-ref="llvm::raw_ostream">raw_ostream</a> &amp;<dfn class="local col5 decl" id="3475OS" title='OS' data-type='llvm::raw_ostream &amp;' data-ref="3475OS">OS</dfn>,</td></tr>
+<tr><th id="50">50</th><td>                                   <em>const</em> <span class="namespace">std::</span><a class="typedef" href="../../../c++/7/bits/stringfwd.h.html#std::__cxx11::string" title='std::__cxx11::string' data-type='basic_string&lt;char&gt;' data-ref="std::__cxx11::string">string</a> &amp;<dfn class="local col6 decl" id="3476Banner" title='Banner' data-type='const std::string &amp;' data-ref="3476Banner">Banner</dfn> =<a class="ref fake" href="../../../c++/7/bits/basic_string.h.html#_ZNSt7__cxx1112basic_stringC1EPKT_RKT1_" title='std::__cxx11::basic_string::basic_string&lt;_CharT, _Traits, _Alloc&gt;' data-ref="_ZNSt7__cxx1112basic_stringC1EPKT_RKT1_"></a><q>""</q>);</td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td>  <i class="doc">/// MIRPrinting pass - this pass prints out the LLVM IR into the given stream</i></td></tr>
+<tr><th id="53">53</th><td><i class="doc">  /// using the MIR serialization format.</i></td></tr>
+<tr><th id="54">54</th><td>  <a class="type" href="#llvm::MachineFunctionPass" title='llvm::MachineFunctionPass' data-ref="llvm::MachineFunctionPass">MachineFunctionPass</a> *<dfn class="decl" id="_ZN4llvm18createPrintMIRPassERNS_11raw_ostreamE" title='llvm::createPrintMIRPass' data-ref="_ZN4llvm18createPrintMIRPassERNS_11raw_ostreamE">createPrintMIRPass</dfn>(<a class="type" href="../Support/raw_ostream.h.html#llvm::raw_ostream" title='llvm::raw_ostream' data-ref="llvm::raw_ostream">raw_ostream</a> &amp;<dfn class="local col7 decl" id="3477OS" title='OS' data-type='llvm::raw_ostream &amp;' data-ref="3477OS">OS</dfn>);</td></tr>
+<tr><th id="55">55</th><td></td></tr>
+<tr><th id="56">56</th><td>  <i class="doc">/// This pass resets a MachineFunction when it has the FailedISel property</i></td></tr>
+<tr><th id="57">57</th><td><i class="doc">  /// as if it was just created.</i></td></tr>
+<tr><th id="58">58</th><td><i class="doc">  /// If EmitFallbackDiag is true, the pass will emit a</i></td></tr>
+<tr><th id="59">59</th><td><i class="doc">  /// DiagnosticInfoISelFallback for every MachineFunction it resets.</i></td></tr>
+<tr><th id="60">60</th><td><i class="doc">  /// If AbortOnFailedISel is true, abort compilation instead of resetting.</i></td></tr>
+<tr><th id="61">61</th><td>  <a class="type" href="#llvm::MachineFunctionPass" title='llvm::MachineFunctionPass' data-ref="llvm::MachineFunctionPass">MachineFunctionPass</a> *<dfn class="decl" id="_ZN4llvm30createResetMachineFunctionPassEbb" title='llvm::createResetMachineFunctionPass' data-ref="_ZN4llvm30createResetMachineFunctionPassEbb">createResetMachineFunctionPass</dfn>(<em>bool</em> <dfn class="local col8 decl" id="3478EmitFallbackDiag" title='EmitFallbackDiag' data-type='bool' data-ref="3478EmitFallbackDiag">EmitFallbackDiag</dfn>,</td></tr>
+<tr><th id="62">62</th><td>                                                      <em>bool</em> <dfn class="local col9 decl" id="3479AbortOnFailedISel" title='AbortOnFailedISel' data-type='bool' data-ref="3479AbortOnFailedISel">AbortOnFailedISel</dfn>);</td></tr>
+<tr><th id="63">63</th><td></td></tr>
+<tr><th id="64">64</th><td>  <i class="doc">/// createCodeGenPreparePass - Transform the code to expose more pattern</i></td></tr>
+<tr><th id="65">65</th><td><i class="doc">  /// matching during instruction selection.</i></td></tr>
+<tr><th id="66">66</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm24createCodeGenPreparePassEv" title='llvm::createCodeGenPreparePass' data-ref="_ZN4llvm24createCodeGenPreparePassEv">createCodeGenPreparePass</dfn>();</td></tr>
+<tr><th id="67">67</th><td></td></tr>
+<tr><th id="68">68</th><td>  <i class="doc">/// createScalarizeMaskedMemIntrinPass - Replace masked load, store, gather</i></td></tr>
+<tr><th id="69">69</th><td><i class="doc">  /// and scatter intrinsics with scalar code when target doesn't support them.</i></td></tr>
+<tr><th id="70">70</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm34createScalarizeMaskedMemIntrinPassEv" title='llvm::createScalarizeMaskedMemIntrinPass' data-ref="_ZN4llvm34createScalarizeMaskedMemIntrinPassEv">createScalarizeMaskedMemIntrinPass</dfn>();</td></tr>
+<tr><th id="71">71</th><td></td></tr>
+<tr><th id="72">72</th><td>  <i class="doc">/// AtomicExpandID -- Lowers atomic operations in terms of either cmpxchg</i></td></tr>
+<tr><th id="73">73</th><td><i class="doc">  /// load-linked/store-conditional loops.</i></td></tr>
+<tr><th id="74">74</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::AtomicExpandID" title='llvm::AtomicExpandID' data-ref="llvm::AtomicExpandID">AtomicExpandID</dfn>;</td></tr>
+<tr><th id="75">75</th><td></td></tr>
+<tr><th id="76">76</th><td>  <i class="doc">/// MachineLoopInfo - This pass is a loop analysis pass.</i></td></tr>
+<tr><th id="77">77</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::MachineLoopInfoID" title='llvm::MachineLoopInfoID' data-ref="llvm::MachineLoopInfoID">MachineLoopInfoID</dfn>;</td></tr>
+<tr><th id="78">78</th><td></td></tr>
+<tr><th id="79">79</th><td>  <i class="doc">/// MachineDominators - This pass is a machine dominators analysis pass.</i></td></tr>
+<tr><th id="80">80</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::MachineDominatorsID" title='llvm::MachineDominatorsID' data-ref="llvm::MachineDominatorsID">MachineDominatorsID</dfn>;</td></tr>
+<tr><th id="81">81</th><td></td></tr>
+<tr><th id="82">82</th><td><i class="doc">/// MachineDominanaceFrontier - This pass is a machine dominators analysis pass.</i></td></tr>
+<tr><th id="83">83</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::MachineDominanceFrontierID" title='llvm::MachineDominanceFrontierID' data-ref="llvm::MachineDominanceFrontierID">MachineDominanceFrontierID</dfn>;</td></tr>
+<tr><th id="84">84</th><td></td></tr>
+<tr><th id="85">85</th><td>  <i class="doc">/// MachineRegionInfo - This pass computes SESE regions for machine functions.</i></td></tr>
+<tr><th id="86">86</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::MachineRegionInfoPassID" title='llvm::MachineRegionInfoPassID' data-ref="llvm::MachineRegionInfoPassID">MachineRegionInfoPassID</dfn>;</td></tr>
+<tr><th id="87">87</th><td></td></tr>
+<tr><th id="88">88</th><td>  <i class="doc">/// EdgeBundles analysis - Bundle machine CFG edges.</i></td></tr>
+<tr><th id="89">89</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::EdgeBundlesID" title='llvm::EdgeBundlesID' data-ref="llvm::EdgeBundlesID">EdgeBundlesID</dfn>;</td></tr>
+<tr><th id="90">90</th><td></td></tr>
+<tr><th id="91">91</th><td>  <i class="doc">/// LiveVariables pass - This pass computes the set of blocks in which each</i></td></tr>
+<tr><th id="92">92</th><td><i class="doc">  /// variable is life and sets machine operand kill flags.</i></td></tr>
+<tr><th id="93">93</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::LiveVariablesID" title='llvm::LiveVariablesID' data-ref="llvm::LiveVariablesID">LiveVariablesID</dfn>;</td></tr>
+<tr><th id="94">94</th><td></td></tr>
+<tr><th id="95">95</th><td>  <i class="doc">/// PHIElimination - This pass eliminates machine instruction PHI nodes</i></td></tr>
+<tr><th id="96">96</th><td><i class="doc">  /// by inserting copy instructions.  This destroys SSA information, but is the</i></td></tr>
+<tr><th id="97">97</th><td><i class="doc">  /// desired input for some register allocators.  This pass is "required" by</i></td></tr>
+<tr><th id="98">98</th><td><i class="doc">  /// these register allocator like this: AU.addRequiredID(PHIEliminationID);</i></td></tr>
+<tr><th id="99">99</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::PHIEliminationID" title='llvm::PHIEliminationID' data-ref="llvm::PHIEliminationID">PHIEliminationID</dfn>;</td></tr>
+<tr><th id="100">100</th><td></td></tr>
+<tr><th id="101">101</th><td>  <i class="doc">/// LiveIntervals - This analysis keeps track of the live ranges of virtual</i></td></tr>
+<tr><th id="102">102</th><td><i class="doc">  /// and physical registers.</i></td></tr>
+<tr><th id="103">103</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::LiveIntervalsID" title='llvm::LiveIntervalsID' data-ref="llvm::LiveIntervalsID">LiveIntervalsID</dfn>;</td></tr>
+<tr><th id="104">104</th><td></td></tr>
+<tr><th id="105">105</th><td>  <i class="doc">/// LiveStacks pass. An analysis keeping track of the liveness of stack slots.</i></td></tr>
+<tr><th id="106">106</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::LiveStacksID" title='llvm::LiveStacksID' data-ref="llvm::LiveStacksID">LiveStacksID</dfn>;</td></tr>
+<tr><th id="107">107</th><td></td></tr>
+<tr><th id="108">108</th><td>  <i class="doc">/// TwoAddressInstruction - This pass reduces two-address instructions to</i></td></tr>
+<tr><th id="109">109</th><td><i class="doc">  /// use two operands. This destroys SSA information but it is desired by</i></td></tr>
+<tr><th id="110">110</th><td><i class="doc">  /// register allocators.</i></td></tr>
+<tr><th id="111">111</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::TwoAddressInstructionPassID" title='llvm::TwoAddressInstructionPassID' data-ref="llvm::TwoAddressInstructionPassID">TwoAddressInstructionPassID</dfn>;</td></tr>
+<tr><th id="112">112</th><td></td></tr>
+<tr><th id="113">113</th><td>  <i class="doc">/// ProcessImpicitDefs pass - This pass removes IMPLICIT_DEFs.</i></td></tr>
+<tr><th id="114">114</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::ProcessImplicitDefsID" title='llvm::ProcessImplicitDefsID' data-ref="llvm::ProcessImplicitDefsID">ProcessImplicitDefsID</dfn>;</td></tr>
+<tr><th id="115">115</th><td></td></tr>
+<tr><th id="116">116</th><td>  <i class="doc">/// RegisterCoalescer - This pass merges live ranges to eliminate copies.</i></td></tr>
+<tr><th id="117">117</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::RegisterCoalescerID" title='llvm::RegisterCoalescerID' data-ref="llvm::RegisterCoalescerID">RegisterCoalescerID</dfn>;</td></tr>
+<tr><th id="118">118</th><td></td></tr>
+<tr><th id="119">119</th><td>  <i class="doc">/// MachineScheduler - This pass schedules machine instructions.</i></td></tr>
+<tr><th id="120">120</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::MachineSchedulerID" title='llvm::MachineSchedulerID' data-ref="llvm::MachineSchedulerID">MachineSchedulerID</dfn>;</td></tr>
+<tr><th id="121">121</th><td></td></tr>
+<tr><th id="122">122</th><td>  <i class="doc">/// PostMachineScheduler - This pass schedules machine instructions postRA.</i></td></tr>
+<tr><th id="123">123</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::PostMachineSchedulerID" title='llvm::PostMachineSchedulerID' data-ref="llvm::PostMachineSchedulerID">PostMachineSchedulerID</dfn>;</td></tr>
+<tr><th id="124">124</th><td></td></tr>
+<tr><th id="125">125</th><td>  <i class="doc">/// SpillPlacement analysis. Suggest optimal placement of spill code between</i></td></tr>
+<tr><th id="126">126</th><td><i class="doc">  /// basic blocks.</i></td></tr>
+<tr><th id="127">127</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::SpillPlacementID" title='llvm::SpillPlacementID' data-ref="llvm::SpillPlacementID">SpillPlacementID</dfn>;</td></tr>
+<tr><th id="128">128</th><td></td></tr>
+<tr><th id="129">129</th><td>  <i class="doc">/// ShrinkWrap pass. Look for the best place to insert save and restore</i></td></tr>
+<tr><th id="130">130</th><td><i class="doc">  // instruction and update the MachineFunctionInfo with that information.</i></td></tr>
+<tr><th id="131">131</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::ShrinkWrapID" title='llvm::ShrinkWrapID' data-ref="llvm::ShrinkWrapID">ShrinkWrapID</dfn>;</td></tr>
+<tr><th id="132">132</th><td></td></tr>
+<tr><th id="133">133</th><td>  <i class="doc">/// LiveRangeShrink pass. Move instruction close to its definition to shrink</i></td></tr>
+<tr><th id="134">134</th><td><i class="doc">  /// the definition's live range.</i></td></tr>
+<tr><th id="135">135</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::LiveRangeShrinkID" title='llvm::LiveRangeShrinkID' data-ref="llvm::LiveRangeShrinkID">LiveRangeShrinkID</dfn>;</td></tr>
+<tr><th id="136">136</th><td></td></tr>
+<tr><th id="137">137</th><td>  <i class="doc">/// Greedy register allocator.</i></td></tr>
+<tr><th id="138">138</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::RAGreedyID" title='llvm::RAGreedyID' data-ref="llvm::RAGreedyID">RAGreedyID</dfn>;</td></tr>
+<tr><th id="139">139</th><td></td></tr>
+<tr><th id="140">140</th><td>  <i class="doc">/// Basic register allocator.</i></td></tr>
+<tr><th id="141">141</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::RABasicID" title='llvm::RABasicID' data-ref="llvm::RABasicID">RABasicID</dfn>;</td></tr>
+<tr><th id="142">142</th><td></td></tr>
+<tr><th id="143">143</th><td>  <i class="doc">/// VirtRegRewriter pass. Rewrite virtual registers to physical registers as</i></td></tr>
+<tr><th id="144">144</th><td><i class="doc">  /// assigned in VirtRegMap.</i></td></tr>
+<tr><th id="145">145</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::VirtRegRewriterID" title='llvm::VirtRegRewriterID' data-ref="llvm::VirtRegRewriterID">VirtRegRewriterID</dfn>;</td></tr>
+<tr><th id="146">146</th><td></td></tr>
+<tr><th id="147">147</th><td>  <i class="doc">/// UnreachableMachineBlockElimination - This pass removes unreachable</i></td></tr>
+<tr><th id="148">148</th><td><i class="doc">  /// machine basic blocks.</i></td></tr>
+<tr><th id="149">149</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::UnreachableMachineBlockElimID" title='llvm::UnreachableMachineBlockElimID' data-ref="llvm::UnreachableMachineBlockElimID">UnreachableMachineBlockElimID</dfn>;</td></tr>
+<tr><th id="150">150</th><td></td></tr>
+<tr><th id="151">151</th><td>  <i class="doc">/// DeadMachineInstructionElim - This pass removes dead machine instructions.</i></td></tr>
+<tr><th id="152">152</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::DeadMachineInstructionElimID" title='llvm::DeadMachineInstructionElimID' data-ref="llvm::DeadMachineInstructionElimID">DeadMachineInstructionElimID</dfn>;</td></tr>
+<tr><th id="153">153</th><td></td></tr>
+<tr><th id="154">154</th><td>  <i class="doc">/// This pass adds dead/undef flags after analyzing subregister lanes.</i></td></tr>
+<tr><th id="155">155</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::DetectDeadLanesID" title='llvm::DetectDeadLanesID' data-ref="llvm::DetectDeadLanesID">DetectDeadLanesID</dfn>;</td></tr>
+<tr><th id="156">156</th><td></td></tr>
+<tr><th id="157">157</th><td>  <i class="doc">/// FastRegisterAllocation Pass - This pass register allocates as fast as</i></td></tr>
+<tr><th id="158">158</th><td><i class="doc">  /// possible. It is best suited for debug code where live ranges are short.</i></td></tr>
+<tr><th id="159">159</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="160">160</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm27createFastRegisterAllocatorEv" title='llvm::createFastRegisterAllocator' data-ref="_ZN4llvm27createFastRegisterAllocatorEv">createFastRegisterAllocator</dfn>();</td></tr>
+<tr><th id="161">161</th><td></td></tr>
+<tr><th id="162">162</th><td>  <i class="doc">/// BasicRegisterAllocation Pass - This pass implements a degenerate global</i></td></tr>
+<tr><th id="163">163</th><td><i class="doc">  /// register allocator using the basic regalloc framework.</i></td></tr>
+<tr><th id="164">164</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="165">165</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm28createBasicRegisterAllocatorEv" title='llvm::createBasicRegisterAllocator' data-ref="_ZN4llvm28createBasicRegisterAllocatorEv">createBasicRegisterAllocator</dfn>();</td></tr>
+<tr><th id="166">166</th><td></td></tr>
+<tr><th id="167">167</th><td>  <i class="doc">/// Greedy register allocation pass - This pass implements a global register</i></td></tr>
+<tr><th id="168">168</th><td><i class="doc">  /// allocator for optimized builds.</i></td></tr>
+<tr><th id="169">169</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="170">170</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm29createGreedyRegisterAllocatorEv" title='llvm::createGreedyRegisterAllocator' data-ref="_ZN4llvm29createGreedyRegisterAllocatorEv">createGreedyRegisterAllocator</dfn>();</td></tr>
+<tr><th id="171">171</th><td></td></tr>
+<tr><th id="172">172</th><td>  <i class="doc">/// PBQPRegisterAllocation Pass - This pass implements the Partitioned Boolean</i></td></tr>
+<tr><th id="173">173</th><td><i class="doc">  /// Quadratic Prograaming (PBQP) based register allocator.</i></td></tr>
+<tr><th id="174">174</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="175">175</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm34createDefaultPBQPRegisterAllocatorEv" title='llvm::createDefaultPBQPRegisterAllocator' data-ref="_ZN4llvm34createDefaultPBQPRegisterAllocatorEv">createDefaultPBQPRegisterAllocator</dfn>();</td></tr>
+<tr><th id="176">176</th><td></td></tr>
+<tr><th id="177">177</th><td>  <i class="doc">/// PrologEpilogCodeInserter - This pass inserts prolog and epilog code,</i></td></tr>
+<tr><th id="178">178</th><td><i class="doc">  /// and eliminates abstract frame references.</i></td></tr>
+<tr><th id="179">179</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::PrologEpilogCodeInserterID" title='llvm::PrologEpilogCodeInserterID' data-ref="llvm::PrologEpilogCodeInserterID">PrologEpilogCodeInserterID</dfn>;</td></tr>
+<tr><th id="180">180</th><td>  <a class="type" href="#llvm::MachineFunctionPass" title='llvm::MachineFunctionPass' data-ref="llvm::MachineFunctionPass">MachineFunctionPass</a> *<dfn class="decl" id="_ZN4llvm30createPrologEpilogInserterPassEv" title='llvm::createPrologEpilogInserterPass' data-ref="_ZN4llvm30createPrologEpilogInserterPassEv">createPrologEpilogInserterPass</dfn>();</td></tr>
+<tr><th id="181">181</th><td></td></tr>
+<tr><th id="182">182</th><td>  <i class="doc">/// ExpandPostRAPseudos - This pass expands pseudo instructions after</i></td></tr>
+<tr><th id="183">183</th><td><i class="doc">  /// register allocation.</i></td></tr>
+<tr><th id="184">184</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::ExpandPostRAPseudosID" title='llvm::ExpandPostRAPseudosID' data-ref="llvm::ExpandPostRAPseudosID">ExpandPostRAPseudosID</dfn>;</td></tr>
+<tr><th id="185">185</th><td></td></tr>
+<tr><th id="186">186</th><td>  <i class="doc">/// createPostRAHazardRecognizer - This pass runs the post-ra hazard</i></td></tr>
+<tr><th id="187">187</th><td><i class="doc">  /// recognizer.</i></td></tr>
+<tr><th id="188">188</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::PostRAHazardRecognizerID" title='llvm::PostRAHazardRecognizerID' data-ref="llvm::PostRAHazardRecognizerID">PostRAHazardRecognizerID</dfn>;</td></tr>
+<tr><th id="189">189</th><td></td></tr>
+<tr><th id="190">190</th><td>  <i class="doc">/// createPostRAScheduler - This pass performs post register allocation</i></td></tr>
+<tr><th id="191">191</th><td><i class="doc">  /// scheduling.</i></td></tr>
+<tr><th id="192">192</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::PostRASchedulerID" title='llvm::PostRASchedulerID' data-ref="llvm::PostRASchedulerID">PostRASchedulerID</dfn>;</td></tr>
+<tr><th id="193">193</th><td></td></tr>
+<tr><th id="194">194</th><td>  <i class="doc">/// BranchFolding - This pass performs machine code CFG based</i></td></tr>
+<tr><th id="195">195</th><td><i class="doc">  /// optimizations to delete branches to branches, eliminate branches to</i></td></tr>
+<tr><th id="196">196</th><td><i class="doc">  /// successor blocks (creating fall throughs), and eliminating branches over</i></td></tr>
+<tr><th id="197">197</th><td><i class="doc">  /// branches.</i></td></tr>
+<tr><th id="198">198</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::BranchFolderPassID" title='llvm::BranchFolderPassID' data-ref="llvm::BranchFolderPassID">BranchFolderPassID</dfn>;</td></tr>
+<tr><th id="199">199</th><td></td></tr>
+<tr><th id="200">200</th><td>  <i class="doc">/// BranchRelaxation - This pass replaces branches that need to jump further</i></td></tr>
+<tr><th id="201">201</th><td><i class="doc">  /// than is supported by a branch instruction.</i></td></tr>
+<tr><th id="202">202</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::BranchRelaxationPassID" title='llvm::BranchRelaxationPassID' data-ref="llvm::BranchRelaxationPassID">BranchRelaxationPassID</dfn>;</td></tr>
+<tr><th id="203">203</th><td></td></tr>
+<tr><th id="204">204</th><td>  <i class="doc">/// MachineFunctionPrinterPass - This pass prints out MachineInstr's.</i></td></tr>
+<tr><th id="205">205</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::MachineFunctionPrinterPassID" title='llvm::MachineFunctionPrinterPassID' data-ref="llvm::MachineFunctionPrinterPassID">MachineFunctionPrinterPassID</dfn>;</td></tr>
+<tr><th id="206">206</th><td></td></tr>
+<tr><th id="207">207</th><td>  <i class="doc">/// MIRPrintingPass - this pass prints out the LLVM IR using the MIR</i></td></tr>
+<tr><th id="208">208</th><td><i class="doc">  /// serialization format.</i></td></tr>
+<tr><th id="209">209</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::MIRPrintingPassID" title='llvm::MIRPrintingPassID' data-ref="llvm::MIRPrintingPassID">MIRPrintingPassID</dfn>;</td></tr>
+<tr><th id="210">210</th><td></td></tr>
+<tr><th id="211">211</th><td>  <i class="doc">/// TailDuplicate - Duplicate blocks with unconditional branches</i></td></tr>
+<tr><th id="212">212</th><td><i class="doc">  /// into tails of their predecessors.</i></td></tr>
+<tr><th id="213">213</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::TailDuplicateID" title='llvm::TailDuplicateID' data-ref="llvm::TailDuplicateID">TailDuplicateID</dfn>;</td></tr>
+<tr><th id="214">214</th><td></td></tr>
+<tr><th id="215">215</th><td>  <i class="doc">/// MachineTraceMetrics - This pass computes critical path and CPU resource</i></td></tr>
+<tr><th id="216">216</th><td><i class="doc">  /// usage in an ensemble of traces.</i></td></tr>
+<tr><th id="217">217</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::MachineTraceMetricsID" title='llvm::MachineTraceMetricsID' data-ref="llvm::MachineTraceMetricsID">MachineTraceMetricsID</dfn>;</td></tr>
+<tr><th id="218">218</th><td></td></tr>
+<tr><th id="219">219</th><td>  <i class="doc">/// EarlyIfConverter - This pass performs if-conversion on SSA form by</i></td></tr>
+<tr><th id="220">220</th><td><i class="doc">  /// inserting cmov instructions.</i></td></tr>
+<tr><th id="221">221</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::EarlyIfConverterID" title='llvm::EarlyIfConverterID' data-ref="llvm::EarlyIfConverterID">EarlyIfConverterID</dfn>;</td></tr>
+<tr><th id="222">222</th><td></td></tr>
+<tr><th id="223">223</th><td>  <i class="doc">/// This pass performs instruction combining using trace metrics to estimate</i></td></tr>
+<tr><th id="224">224</th><td><i class="doc">  /// critical-path and resource depth.</i></td></tr>
+<tr><th id="225">225</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::MachineCombinerID" title='llvm::MachineCombinerID' data-ref="llvm::MachineCombinerID">MachineCombinerID</dfn>;</td></tr>
+<tr><th id="226">226</th><td></td></tr>
+<tr><th id="227">227</th><td>  <i class="doc">/// StackSlotColoring - This pass performs stack coloring and merging.</i></td></tr>
+<tr><th id="228">228</th><td><i class="doc">  /// It merges disjoint allocas to reduce the stack size.</i></td></tr>
+<tr><th id="229">229</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::StackColoringID" title='llvm::StackColoringID' data-ref="llvm::StackColoringID">StackColoringID</dfn>;</td></tr>
+<tr><th id="230">230</th><td></td></tr>
+<tr><th id="231">231</th><td>  <i class="doc">/// IfConverter - This pass performs machine code if conversion.</i></td></tr>
+<tr><th id="232">232</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::IfConverterID" title='llvm::IfConverterID' data-ref="llvm::IfConverterID">IfConverterID</dfn>;</td></tr>
+<tr><th id="233">233</th><td></td></tr>
+<tr><th id="234">234</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm17createIfConverterESt8functionIFbRKNS_15MachineFunctionEEE" title='llvm::createIfConverter' data-ref="_ZN4llvm17createIfConverterESt8functionIFbRKNS_15MachineFunctionEEE">createIfConverter</dfn>(</td></tr>
+<tr><th id="235">235</th><td>      <span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/std_function.h.html#std::function" title='std::function' data-ref="std::function">function</a>&lt;<em>bool</em>(<em>const</em> <a class="type" href="../Target/TargetOptions.h.html#llvm::MachineFunction" title='llvm::MachineFunction' data-ref="llvm::MachineFunction">MachineFunction</a> &amp;)&gt; <dfn class="local col0 decl" id="3480Ftor" title='Ftor' data-type='std::function&lt;bool (const MachineFunction &amp;)&gt;' data-ref="3480Ftor">Ftor</dfn>);</td></tr>
+<tr><th id="236">236</th><td></td></tr>
+<tr><th id="237">237</th><td>  <i class="doc">/// MachineBlockPlacement - This pass places basic blocks based on branch</i></td></tr>
+<tr><th id="238">238</th><td><i class="doc">  /// probabilities.</i></td></tr>
+<tr><th id="239">239</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::MachineBlockPlacementID" title='llvm::MachineBlockPlacementID' data-ref="llvm::MachineBlockPlacementID">MachineBlockPlacementID</dfn>;</td></tr>
+<tr><th id="240">240</th><td></td></tr>
+<tr><th id="241">241</th><td>  <i class="doc">/// MachineBlockPlacementStats - This pass collects statistics about the</i></td></tr>
+<tr><th id="242">242</th><td><i class="doc">  /// basic block placement using branch probabilities and block frequency</i></td></tr>
+<tr><th id="243">243</th><td><i class="doc">  /// information.</i></td></tr>
+<tr><th id="244">244</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::MachineBlockPlacementStatsID" title='llvm::MachineBlockPlacementStatsID' data-ref="llvm::MachineBlockPlacementStatsID">MachineBlockPlacementStatsID</dfn>;</td></tr>
+<tr><th id="245">245</th><td></td></tr>
+<tr><th id="246">246</th><td>  <i class="doc">/// GCLowering Pass - Used by gc.root to perform its default lowering</i></td></tr>
+<tr><th id="247">247</th><td><i class="doc">  /// operations.</i></td></tr>
+<tr><th id="248">248</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm20createGCLoweringPassEv" title='llvm::createGCLoweringPass' data-ref="_ZN4llvm20createGCLoweringPassEv">createGCLoweringPass</dfn>();</td></tr>
+<tr><th id="249">249</th><td></td></tr>
+<tr><th id="250">250</th><td>  <i class="doc">/// ShadowStackGCLowering - Implements the custom lowering mechanism</i></td></tr>
+<tr><th id="251">251</th><td><i class="doc">  /// used by the shadow stack GC.  Only runs on functions which opt in to</i></td></tr>
+<tr><th id="252">252</th><td><i class="doc">  /// the shadow stack collector.</i></td></tr>
+<tr><th id="253">253</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm31createShadowStackGCLoweringPassEv" title='llvm::createShadowStackGCLoweringPass' data-ref="_ZN4llvm31createShadowStackGCLoweringPassEv">createShadowStackGCLoweringPass</dfn>();</td></tr>
+<tr><th id="254">254</th><td></td></tr>
+<tr><th id="255">255</th><td>  <i class="doc">/// GCMachineCodeAnalysis - Target-independent pass to mark safe points</i></td></tr>
+<tr><th id="256">256</th><td><i class="doc">  /// in machine code. Must be added very late during code generation, just</i></td></tr>
+<tr><th id="257">257</th><td><i class="doc">  /// prior to output, and importantly after all CFG transformations (such as</i></td></tr>
+<tr><th id="258">258</th><td><i class="doc">  /// branch folding).</i></td></tr>
+<tr><th id="259">259</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::GCMachineCodeAnalysisID" title='llvm::GCMachineCodeAnalysisID' data-ref="llvm::GCMachineCodeAnalysisID">GCMachineCodeAnalysisID</dfn>;</td></tr>
+<tr><th id="260">260</th><td></td></tr>
+<tr><th id="261">261</th><td>  <i class="doc">/// Creates a pass to print GC metadata.</i></td></tr>
+<tr><th id="262">262</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="263">263</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm19createGCInfoPrinterERNS_11raw_ostreamE" title='llvm::createGCInfoPrinter' data-ref="_ZN4llvm19createGCInfoPrinterERNS_11raw_ostreamE">createGCInfoPrinter</dfn>(<a class="type" href="../Support/raw_ostream.h.html#llvm::raw_ostream" title='llvm::raw_ostream' data-ref="llvm::raw_ostream">raw_ostream</a> &amp;<dfn class="local col1 decl" id="3481OS" title='OS' data-type='llvm::raw_ostream &amp;' data-ref="3481OS">OS</dfn>);</td></tr>
+<tr><th id="264">264</th><td></td></tr>
+<tr><th id="265">265</th><td>  <i class="doc">/// MachineCSE - This pass performs global CSE on machine instructions.</i></td></tr>
+<tr><th id="266">266</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::MachineCSEID" title='llvm::MachineCSEID' data-ref="llvm::MachineCSEID">MachineCSEID</dfn>;</td></tr>
+<tr><th id="267">267</th><td></td></tr>
+<tr><th id="268">268</th><td>  <i class="doc">/// ImplicitNullChecks - This pass folds null pointer checks into nearby</i></td></tr>
+<tr><th id="269">269</th><td><i class="doc">  /// memory operations.</i></td></tr>
+<tr><th id="270">270</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::ImplicitNullChecksID" title='llvm::ImplicitNullChecksID' data-ref="llvm::ImplicitNullChecksID">ImplicitNullChecksID</dfn>;</td></tr>
+<tr><th id="271">271</th><td></td></tr>
+<tr><th id="272">272</th><td>  <i class="doc">/// MachineLICM - This pass performs LICM on machine instructions.</i></td></tr>
+<tr><th id="273">273</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::MachineLICMID" title='llvm::MachineLICMID' data-ref="llvm::MachineLICMID">MachineLICMID</dfn>;</td></tr>
+<tr><th id="274">274</th><td></td></tr>
+<tr><th id="275">275</th><td>  <i class="doc">/// MachineSinking - This pass performs sinking on machine instructions.</i></td></tr>
+<tr><th id="276">276</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::MachineSinkingID" title='llvm::MachineSinkingID' data-ref="llvm::MachineSinkingID">MachineSinkingID</dfn>;</td></tr>
+<tr><th id="277">277</th><td></td></tr>
+<tr><th id="278">278</th><td>  <i class="doc">/// MachineCopyPropagation - This pass performs copy propagation on</i></td></tr>
+<tr><th id="279">279</th><td><i class="doc">  /// machine instructions.</i></td></tr>
+<tr><th id="280">280</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::MachineCopyPropagationID" title='llvm::MachineCopyPropagationID' data-ref="llvm::MachineCopyPropagationID">MachineCopyPropagationID</dfn>;</td></tr>
+<tr><th id="281">281</th><td></td></tr>
+<tr><th id="282">282</th><td>  <i class="doc">/// PeepholeOptimizer - This pass performs peephole optimizations -</i></td></tr>
+<tr><th id="283">283</th><td><i class="doc">  /// like extension and comparison eliminations.</i></td></tr>
+<tr><th id="284">284</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::PeepholeOptimizerID" title='llvm::PeepholeOptimizerID' data-ref="llvm::PeepholeOptimizerID">PeepholeOptimizerID</dfn>;</td></tr>
+<tr><th id="285">285</th><td></td></tr>
+<tr><th id="286">286</th><td>  <i class="doc">/// OptimizePHIs - This pass optimizes machine instruction PHIs</i></td></tr>
+<tr><th id="287">287</th><td><i class="doc">  /// to take advantage of opportunities created during DAG legalization.</i></td></tr>
+<tr><th id="288">288</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::OptimizePHIsID" title='llvm::OptimizePHIsID' data-ref="llvm::OptimizePHIsID">OptimizePHIsID</dfn>;</td></tr>
+<tr><th id="289">289</th><td></td></tr>
+<tr><th id="290">290</th><td>  <i class="doc">/// StackSlotColoring - This pass performs stack slot coloring.</i></td></tr>
+<tr><th id="291">291</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::StackSlotColoringID" title='llvm::StackSlotColoringID' data-ref="llvm::StackSlotColoringID">StackSlotColoringID</dfn>;</td></tr>
+<tr><th id="292">292</th><td></td></tr>
+<tr><th id="293">293</th><td>  <i class="doc">/// <span class="command">\brief</span> This pass lays out funclets contiguously.</i></td></tr>
+<tr><th id="294">294</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::FuncletLayoutID" title='llvm::FuncletLayoutID' data-ref="llvm::FuncletLayoutID">FuncletLayoutID</dfn>;</td></tr>
+<tr><th id="295">295</th><td></td></tr>
+<tr><th id="296">296</th><td>  <i class="doc">/// This pass inserts the XRay instrumentation sleds if they are supported by</i></td></tr>
+<tr><th id="297">297</th><td><i class="doc">  /// the target platform.</i></td></tr>
+<tr><th id="298">298</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::XRayInstrumentationID" title='llvm::XRayInstrumentationID' data-ref="llvm::XRayInstrumentationID">XRayInstrumentationID</dfn>;</td></tr>
+<tr><th id="299">299</th><td></td></tr>
+<tr><th id="300">300</th><td>  <i class="doc">/// This pass inserts FEntry calls</i></td></tr>
+<tr><th id="301">301</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::FEntryInserterID" title='llvm::FEntryInserterID' data-ref="llvm::FEntryInserterID">FEntryInserterID</dfn>;</td></tr>
+<tr><th id="302">302</th><td></td></tr>
+<tr><th id="303">303</th><td>  <i class="doc">/// <span class="command">\brief</span> This pass implements the "patchable-function" attribute.</i></td></tr>
+<tr><th id="304">304</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::PatchableFunctionID" title='llvm::PatchableFunctionID' data-ref="llvm::PatchableFunctionID">PatchableFunctionID</dfn>;</td></tr>
+<tr><th id="305">305</th><td></td></tr>
+<tr><th id="306">306</th><td>  <i class="doc">/// createStackProtectorPass - This pass adds stack protectors to functions.</i></td></tr>
+<tr><th id="307">307</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="308">308</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm24createStackProtectorPassEv" title='llvm::createStackProtectorPass' data-ref="_ZN4llvm24createStackProtectorPassEv">createStackProtectorPass</dfn>();</td></tr>
+<tr><th id="309">309</th><td></td></tr>
+<tr><th id="310">310</th><td>  <i class="doc">/// createMachineVerifierPass - This pass verifies cenerated machine code</i></td></tr>
+<tr><th id="311">311</th><td><i class="doc">  /// instructions for correctness.</i></td></tr>
+<tr><th id="312">312</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="313">313</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm25createMachineVerifierPassERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE" title='llvm::createMachineVerifierPass' data-ref="_ZN4llvm25createMachineVerifierPassERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE">createMachineVerifierPass</dfn>(<em>const</em> <span class="namespace">std::</span><a class="typedef" href="../../../c++/7/bits/stringfwd.h.html#std::__cxx11::string" title='std::__cxx11::string' data-type='basic_string&lt;char&gt;' data-ref="std::__cxx11::string">string</a>&amp; <dfn class="local col2 decl" id="3482Banner" title='Banner' data-type='const std::string &amp;' data-ref="3482Banner">Banner</dfn>);</td></tr>
+<tr><th id="314">314</th><td></td></tr>
+<tr><th id="315">315</th><td>  <i class="doc">/// createDwarfEHPass - This pass mulches exception handling code into a form</i></td></tr>
+<tr><th id="316">316</th><td><i class="doc">  /// adapted to code generation.  Required if using dwarf exception handling.</i></td></tr>
+<tr><th id="317">317</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm17createDwarfEHPassEv" title='llvm::createDwarfEHPass' data-ref="_ZN4llvm17createDwarfEHPassEv">createDwarfEHPass</dfn>();</td></tr>
+<tr><th id="318">318</th><td></td></tr>
+<tr><th id="319">319</th><td>  <i class="doc">/// createWinEHPass - Prepares personality functions used by MSVC on Windows,</i></td></tr>
+<tr><th id="320">320</th><td><i class="doc">  /// in addition to the Itanium LSDA based personalities.</i></td></tr>
+<tr><th id="321">321</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm15createWinEHPassEv" title='llvm::createWinEHPass' data-ref="_ZN4llvm15createWinEHPassEv">createWinEHPass</dfn>();</td></tr>
+<tr><th id="322">322</th><td></td></tr>
+<tr><th id="323">323</th><td>  <i class="doc">/// createSjLjEHPreparePass - This pass adapts exception handling code to use</i></td></tr>
+<tr><th id="324">324</th><td><i class="doc">  /// the GCC-style builtin setjmp/longjmp (sjlj) to handling EH control flow.</i></td></tr>
+<tr><th id="325">325</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="326">326</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm23createSjLjEHPreparePassEv" title='llvm::createSjLjEHPreparePass' data-ref="_ZN4llvm23createSjLjEHPreparePassEv">createSjLjEHPreparePass</dfn>();</td></tr>
+<tr><th id="327">327</th><td></td></tr>
+<tr><th id="328">328</th><td>  <i class="doc">/// LocalStackSlotAllocation - This pass assigns local frame indices to stack</i></td></tr>
+<tr><th id="329">329</th><td><i class="doc">  /// slots relative to one another and allocates base registers to access them</i></td></tr>
+<tr><th id="330">330</th><td><i class="doc">  /// when it is estimated by the target to be out of range of normal frame</i></td></tr>
+<tr><th id="331">331</th><td><i class="doc">  /// pointer or stack pointer index addressing.</i></td></tr>
+<tr><th id="332">332</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::LocalStackSlotAllocationID" title='llvm::LocalStackSlotAllocationID' data-ref="llvm::LocalStackSlotAllocationID">LocalStackSlotAllocationID</dfn>;</td></tr>
+<tr><th id="333">333</th><td></td></tr>
+<tr><th id="334">334</th><td>  <i class="doc">/// ExpandISelPseudos - This pass expands pseudo-instructions.</i></td></tr>
+<tr><th id="335">335</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::ExpandISelPseudosID" title='llvm::ExpandISelPseudosID' data-ref="llvm::ExpandISelPseudosID">ExpandISelPseudosID</dfn>;</td></tr>
+<tr><th id="336">336</th><td></td></tr>
+<tr><th id="337">337</th><td>  <i class="doc">/// UnpackMachineBundles - This pass unpack machine instruction bundles.</i></td></tr>
+<tr><th id="338">338</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::UnpackMachineBundlesID" title='llvm::UnpackMachineBundlesID' data-ref="llvm::UnpackMachineBundlesID">UnpackMachineBundlesID</dfn>;</td></tr>
+<tr><th id="339">339</th><td></td></tr>
+<tr><th id="340">340</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *</td></tr>
+<tr><th id="341">341</th><td>  <dfn class="decl" id="_ZN4llvm26createUnpackMachineBundlesESt8functionIFbRKNS_15MachineFunctionEEE" title='llvm::createUnpackMachineBundles' data-ref="_ZN4llvm26createUnpackMachineBundlesESt8functionIFbRKNS_15MachineFunctionEEE">createUnpackMachineBundles</dfn>(<span class="namespace">std::</span><a class="type" href="../../../c++/7/bits/std_function.h.html#std::function" title='std::function' data-ref="std::function">function</a>&lt;<em>bool</em>(<em>const</em> <a class="type" href="../Target/TargetOptions.h.html#llvm::MachineFunction" title='llvm::MachineFunction' data-ref="llvm::MachineFunction">MachineFunction</a> &amp;)&gt; <dfn class="local col3 decl" id="3483Ftor" title='Ftor' data-type='std::function&lt;bool (const MachineFunction &amp;)&gt;' data-ref="3483Ftor">Ftor</dfn>);</td></tr>
+<tr><th id="342">342</th><td></td></tr>
+<tr><th id="343">343</th><td>  <i class="doc">/// FinalizeMachineBundles - This pass finalize machine instruction</i></td></tr>
+<tr><th id="344">344</th><td><i class="doc">  /// bundles (created earlier, e.g. during pre-RA scheduling).</i></td></tr>
+<tr><th id="345">345</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::FinalizeMachineBundlesID" title='llvm::FinalizeMachineBundlesID' data-ref="llvm::FinalizeMachineBundlesID">FinalizeMachineBundlesID</dfn>;</td></tr>
+<tr><th id="346">346</th><td></td></tr>
+<tr><th id="347">347</th><td>  <i class="doc">/// StackMapLiveness - This pass analyses the register live-out set of</i></td></tr>
+<tr><th id="348">348</th><td><i class="doc">  /// stackmap/patchpoint intrinsics and attaches the calculated information to</i></td></tr>
+<tr><th id="349">349</th><td><i class="doc">  /// the intrinsic for later emission to the StackMap.</i></td></tr>
+<tr><th id="350">350</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::StackMapLivenessID" title='llvm::StackMapLivenessID' data-ref="llvm::StackMapLivenessID">StackMapLivenessID</dfn>;</td></tr>
+<tr><th id="351">351</th><td></td></tr>
+<tr><th id="352">352</th><td>  <i class="doc">/// LiveDebugValues pass</i></td></tr>
+<tr><th id="353">353</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::LiveDebugValuesID" title='llvm::LiveDebugValuesID' data-ref="llvm::LiveDebugValuesID">LiveDebugValuesID</dfn>;</td></tr>
+<tr><th id="354">354</th><td></td></tr>
+<tr><th id="355">355</th><td>  <i class="doc">/// createJumpInstrTables - This pass creates jump-instruction tables.</i></td></tr>
+<tr><th id="356">356</th><td>  <a class="type" href="../Pass.h.html#llvm::ModulePass" title='llvm::ModulePass' data-ref="llvm::ModulePass">ModulePass</a> *<dfn class="decl" id="_ZN4llvm25createJumpInstrTablesPassEv" title='llvm::createJumpInstrTablesPass' data-ref="_ZN4llvm25createJumpInstrTablesPassEv">createJumpInstrTablesPass</dfn>();</td></tr>
+<tr><th id="357">357</th><td></td></tr>
+<tr><th id="358">358</th><td>  <i class="doc">/// createForwardControlFlowIntegrityPass - This pass adds control-flow</i></td></tr>
+<tr><th id="359">359</th><td><i class="doc">  /// integrity.</i></td></tr>
+<tr><th id="360">360</th><td>  <a class="type" href="../Pass.h.html#llvm::ModulePass" title='llvm::ModulePass' data-ref="llvm::ModulePass">ModulePass</a> *<dfn class="decl" id="_ZN4llvm37createForwardControlFlowIntegrityPassEv" title='llvm::createForwardControlFlowIntegrityPass' data-ref="_ZN4llvm37createForwardControlFlowIntegrityPassEv">createForwardControlFlowIntegrityPass</dfn>();</td></tr>
+<tr><th id="361">361</th><td></td></tr>
+<tr><th id="362">362</th><td>  <i class="doc">/// InterleavedAccess Pass - This pass identifies and matches interleaved</i></td></tr>
+<tr><th id="363">363</th><td><i class="doc">  /// memory accesses to target specific intrinsics.</i></td></tr>
+<tr><th id="364">364</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="365">365</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm27createInterleavedAccessPassEv" title='llvm::createInterleavedAccessPass' data-ref="_ZN4llvm27createInterleavedAccessPassEv">createInterleavedAccessPass</dfn>();</td></tr>
+<tr><th id="366">366</th><td></td></tr>
+<tr><th id="367">367</th><td>  <i class="doc">/// LowerEmuTLS - This pass generates __emutls_[vt].xyz variables for all</i></td></tr>
+<tr><th id="368">368</th><td><i class="doc">  /// TLS variables for the emulated TLS model.</i></td></tr>
+<tr><th id="369">369</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="370">370</th><td>  <a class="type" href="../Pass.h.html#llvm::ModulePass" title='llvm::ModulePass' data-ref="llvm::ModulePass">ModulePass</a> *<dfn class="decl" id="_ZN4llvm21createLowerEmuTLSPassEv" title='llvm::createLowerEmuTLSPass' data-ref="_ZN4llvm21createLowerEmuTLSPassEv">createLowerEmuTLSPass</dfn>();</td></tr>
+<tr><th id="371">371</th><td></td></tr>
+<tr><th id="372">372</th><td>  <i class="doc">/// This pass lowers the<span class="command"> @llvm</span>.load.relative intrinsic to instructions.</i></td></tr>
+<tr><th id="373">373</th><td><i class="doc">  /// This is unsafe to do earlier because a pass may combine the constant</i></td></tr>
+<tr><th id="374">374</th><td><i class="doc">  /// initializer into the load, which may result in an overflowing evaluation.</i></td></tr>
+<tr><th id="375">375</th><td>  <a class="type" href="../Pass.h.html#llvm::ModulePass" title='llvm::ModulePass' data-ref="llvm::ModulePass">ModulePass</a> *<dfn class="decl" id="_ZN4llvm34createPreISelIntrinsicLoweringPassEv" title='llvm::createPreISelIntrinsicLoweringPass' data-ref="_ZN4llvm34createPreISelIntrinsicLoweringPassEv">createPreISelIntrinsicLoweringPass</dfn>();</td></tr>
+<tr><th id="376">376</th><td></td></tr>
+<tr><th id="377">377</th><td>  <i class="doc">/// GlobalMerge - This pass merges internal (by default) globals into structs</i></td></tr>
+<tr><th id="378">378</th><td><i class="doc">  /// to enable reuse of a base pointer by indexed addressing modes.</i></td></tr>
+<tr><th id="379">379</th><td><i class="doc">  /// It can also be configured to focus on size optimizations only.</i></td></tr>
+<tr><th id="380">380</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="381">381</th><td>  <a class="type" href="../Pass.h.html#llvm::Pass" title='llvm::Pass' data-ref="llvm::Pass">Pass</a> *<dfn class="decl" id="_ZN4llvm21createGlobalMergePassEPKNS_13TargetMachineEjbb" title='llvm::createGlobalMergePass' data-ref="_ZN4llvm21createGlobalMergePassEPKNS_13TargetMachineEjbb">createGlobalMergePass</dfn>(<em>const</em> <a class="type" href="#llvm::TargetMachine" title='llvm::TargetMachine' data-ref="llvm::TargetMachine">TargetMachine</a> *<dfn class="local col4 decl" id="3484TM" title='TM' data-type='const llvm::TargetMachine *' data-ref="3484TM">TM</dfn>, <em>unsigned</em> <dfn class="local col5 decl" id="3485MaximalOffset" title='MaximalOffset' data-type='unsigned int' data-ref="3485MaximalOffset">MaximalOffset</dfn>,</td></tr>
+<tr><th id="382">382</th><td>                              <em>bool</em> <dfn class="local col6 decl" id="3486OnlyOptimizeForSize" title='OnlyOptimizeForSize' data-type='bool' data-ref="3486OnlyOptimizeForSize">OnlyOptimizeForSize</dfn> = <b>false</b>,</td></tr>
+<tr><th id="383">383</th><td>                              <em>bool</em> <dfn class="local col7 decl" id="3487MergeExternalByDefault" title='MergeExternalByDefault' data-type='bool' data-ref="3487MergeExternalByDefault">MergeExternalByDefault</dfn> = <b>false</b>);</td></tr>
+<tr><th id="384">384</th><td></td></tr>
+<tr><th id="385">385</th><td>  <i class="doc">/// This pass splits the stack into a safe stack and an unsafe stack to</i></td></tr>
+<tr><th id="386">386</th><td><i class="doc">  /// protect against stack-based overflow vulnerabilities.</i></td></tr>
+<tr><th id="387">387</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm19createSafeStackPassEv" title='llvm::createSafeStackPass' data-ref="_ZN4llvm19createSafeStackPassEv">createSafeStackPass</dfn>();</td></tr>
+<tr><th id="388">388</th><td></td></tr>
+<tr><th id="389">389</th><td>  <i class="doc">/// This pass detects subregister lanes in a virtual register that are used</i></td></tr>
+<tr><th id="390">390</th><td><i class="doc">  /// independently of other lanes and splits them into separate virtual</i></td></tr>
+<tr><th id="391">391</th><td><i class="doc">  /// registers.</i></td></tr>
+<tr><th id="392">392</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::RenameIndependentSubregsID" title='llvm::RenameIndependentSubregsID' data-ref="llvm::RenameIndependentSubregsID">RenameIndependentSubregsID</dfn>;</td></tr>
+<tr><th id="393">393</th><td></td></tr>
+<tr><th id="394">394</th><td>  <i class="doc">/// This pass is executed POST-RA to collect which physical registers are</i></td></tr>
+<tr><th id="395">395</th><td><i class="doc">  /// preserved by given machine function.</i></td></tr>
+<tr><th id="396">396</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm27createRegUsageInfoCollectorEv" title='llvm::createRegUsageInfoCollector' data-ref="_ZN4llvm27createRegUsageInfoCollectorEv">createRegUsageInfoCollector</dfn>();</td></tr>
+<tr><th id="397">397</th><td></td></tr>
+<tr><th id="398">398</th><td>  <i class="doc">/// Return a MachineFunction pass that identifies call sites</i></td></tr>
+<tr><th id="399">399</th><td><i class="doc">  /// and propagates register usage information of callee to caller</i></td></tr>
+<tr><th id="400">400</th><td><i class="doc">  /// if available with PysicalRegisterUsageInfo pass.</i></td></tr>
+<tr><th id="401">401</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm26createRegUsageInfoPropPassEv" title='llvm::createRegUsageInfoPropPass' data-ref="_ZN4llvm26createRegUsageInfoPropPassEv">createRegUsageInfoPropPass</dfn>();</td></tr>
+<tr><th id="402">402</th><td></td></tr>
+<tr><th id="403">403</th><td>  <i class="doc">/// This pass performs software pipelining on machine instructions.</i></td></tr>
+<tr><th id="404">404</th><td>  <b>extern</b> <em>char</em> &amp;<dfn class="decl" id="llvm::MachinePipelinerID" title='llvm::MachinePipelinerID' data-ref="llvm::MachinePipelinerID">MachinePipelinerID</dfn>;</td></tr>
+<tr><th id="405">405</th><td></td></tr>
+<tr><th id="406">406</th><td>  <i class="doc">/// This pass frees the memory occupied by the MachineFunction.</i></td></tr>
+<tr><th id="407">407</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm29createFreeMachineFunctionPassEv" title='llvm::createFreeMachineFunctionPass' data-ref="_ZN4llvm29createFreeMachineFunctionPassEv">createFreeMachineFunctionPass</dfn>();</td></tr>
+<tr><th id="408">408</th><td></td></tr>
+<tr><th id="409">409</th><td>  <i class="doc">/// This pass performs outlining on machine instructions directly before</i></td></tr>
+<tr><th id="410">410</th><td><i class="doc">  /// printing assembly.</i></td></tr>
+<tr><th id="411">411</th><td>  <a class="type" href="../Pass.h.html#llvm::ModulePass" title='llvm::ModulePass' data-ref="llvm::ModulePass">ModulePass</a> *<dfn class="decl" id="_ZN4llvm25createMachineOutlinerPassEb" title='llvm::createMachineOutlinerPass' data-ref="_ZN4llvm25createMachineOutlinerPassEb">createMachineOutlinerPass</dfn>(<em>bool</em> <dfn class="local col8 decl" id="3488OutlineFromLinkOnceODRs" title='OutlineFromLinkOnceODRs' data-type='bool' data-ref="3488OutlineFromLinkOnceODRs">OutlineFromLinkOnceODRs</dfn> = <b>false</b>);</td></tr>
+<tr><th id="412">412</th><td></td></tr>
+<tr><th id="413">413</th><td>  <i class="doc">/// This pass expands the experimental reduction intrinsics into sequences of</i></td></tr>
+<tr><th id="414">414</th><td><i class="doc">  /// shuffles.</i></td></tr>
+<tr><th id="415">415</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm26createExpandReductionsPassEv" title='llvm::createExpandReductionsPass' data-ref="_ZN4llvm26createExpandReductionsPassEv">createExpandReductionsPass</dfn>();</td></tr>
+<tr><th id="416">416</th><td></td></tr>
+<tr><th id="417">417</th><td>  <i>// This pass expands memcmp() to load/stores.</i></td></tr>
+<tr><th id="418">418</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm22createExpandMemCmpPassEv" title='llvm::createExpandMemCmpPass' data-ref="_ZN4llvm22createExpandMemCmpPassEv">createExpandMemCmpPass</dfn>();</td></tr>
+<tr><th id="419">419</th><td></td></tr>
+<tr><th id="420">420</th><td>  <i>// This pass expands indirectbr instructions.</i></td></tr>
+<tr><th id="421">421</th><td>  <a class="type" href="../Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a> *<dfn class="decl" id="_ZN4llvm26createIndirectBrExpandPassEv" title='llvm::createIndirectBrExpandPass' data-ref="_ZN4llvm26createIndirectBrExpandPassEv">createIndirectBrExpandPass</dfn>();</td></tr>
+<tr><th id="422">422</th><td></td></tr>
+<tr><th id="423">423</th><td>} <i>// End llvm namespace</i></td></tr>
+<tr><th id="424">424</th><td></td></tr>
+<tr><th id="425">425</th><td><u>#<span data-ppcond="15">endif</span></u></td></tr>
+<tr><th id="426">426</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../../../pocl/lib/CL/pocl_llvm_build.cc.html'>pocl/lib/CL/pocl_llvm_build.cc</a><br/>Generated on <em>2019-Oct-28</em> from project include<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

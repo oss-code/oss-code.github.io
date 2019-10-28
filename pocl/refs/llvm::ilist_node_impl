@@ -1,0 +1,21 @@
+<def f='include/llvm-6.0/llvm/ADT/ilist_node.h' l='40' ll='105'/>
+<doc f='include/llvm-6.0/llvm/ADT/ilist_node.h' l='32'>/// Implementation for an ilist node.
+///
+/// Templated on an appropriate \a ilist_detail::node_options, usually computed
+/// by \a ilist_detail::compute_node_options.
+///
+/// This is a wrapper around \a ilist_node_base whose main purpose is to
+/// provide type safety: you can&apos;t insert nodes of \a ilist_node_impl into the
+/// wrong \a simple_ilist or \a iplist.</doc>
+<fun r='_ZN4llvm15ilist_node_implC1Ev'/>
+<fun r='_ZN4llvm15ilist_node_impl7getPrevEv'/>
+<fun r='_ZN4llvm15ilist_node_impl7getNextEv'/>
+<fun r='_ZNK4llvm15ilist_node_impl7getPrevEv'/>
+<fun r='_ZNK4llvm15ilist_node_impl7getNextEv'/>
+<fun r='_ZN4llvm15ilist_node_impl7setPrevEPNS_15ilist_node_implIT_EE'/>
+<fun r='_ZN4llvm15ilist_node_impl7setNextEPNS_15ilist_node_implIT_EE'/>
+<fun r='_ZN4llvm15ilist_node_impl11getIteratorEv'/>
+<fun r='_ZNK4llvm15ilist_node_impl11getIteratorEv'/>
+<fun r='_ZN4llvm15ilist_node_impl18getReverseIteratorEv'/>
+<fun r='_ZNK4llvm15ilist_node_impl18getReverseIteratorEv'/>
+<fun r='_ZNK4llvm15ilist_node_impl10isSentinelEv'/>

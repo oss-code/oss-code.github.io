@@ -1,0 +1,5 @@
+<dec f='include/llvm-c-6.0/llvm-c/Target.h' l='258' type='unsigned long long LLVMStoreSizeOfType(LLVMTargetDataRef TD, LLVMTypeRef Ty)'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1204' u='c' c='_ZN4pocl9Workgroup32createArgBufferWorkgroupLauncherEPN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1219' u='c' c='_ZN4pocl9Workgroup32createArgBufferWorkgroupLauncherEPN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<doc f='include/llvm-c-6.0/llvm-c/Target.h' l='256'>/** Computes the storage size of a type in bytes for a target.
+    See the method llvm::DataLayout::getTypeStoreSize. */</doc>

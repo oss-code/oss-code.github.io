@@ -1,0 +1,4 @@
+<dec f='include/dlfcn.h' l='98' type='int dladdr(const void * __address, Dl_info * __info)'/>
+<doc f='include/dlfcn.h' l='96'>/* Fill in *INFO with the following information about ADDRESS.
+   Returns 0 iff no shared object&apos;s segments contain that address.  */</doc>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='180' u='c' c='_ZL21getPoclPrivateDataDirB5cxx11v'/>

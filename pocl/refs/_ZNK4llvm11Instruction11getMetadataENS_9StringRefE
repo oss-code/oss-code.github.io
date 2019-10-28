@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/IR/Instruction.h' l='202' ll='205' type='llvm::MDNode * llvm::Instruction::getMetadata(llvm::StringRef Kind) const'/>
+<doc f='include/llvm-6.0/llvm/IR/Instruction.h' l='200'>/// Get the metadata of given kind attached to this Instruction.
+  /// If the metadata is not found then return null.</doc>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='479' u='c' c='_ZN4pocl14ParallelRegion23AddParallelLoopMetadataEPN4llvm6MDNodeE'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='160' u='c' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='160' u='c' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='161' u='c' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='162' u='c' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>

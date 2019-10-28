@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/ADT/MapVector.h' l='201' type='void llvm::MapVector::remove_if(Predicate Pred)'/>
+<def f='include/llvm-6.0/llvm/ADT/MapVector.h' l='204' ll='224' type='void llvm::MapVector::remove_if(Function Pred)'/>
+<doc f='include/llvm-6.0/llvm/ADT/MapVector.h' l='197'>/// \brief Remove the elements that match the predicate.
+  ///
+  /// Erase all elements that match \c Pred in a single pass.  Takes linear
+  /// time.</doc>

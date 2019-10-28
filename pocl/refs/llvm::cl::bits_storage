@@ -1,0 +1,24 @@
+<def f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1559' ll='1590'/>
+<def f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1595' ll='1611'/>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1552'>//===----------------------------------------------------------------------===//
+// bits_storage class
+
+// Default storage class definition: external storage.  This implementation
+// assumes the user will specify a variable to store the data into with the
+// cl::location(x) modifier.
+//</doc>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1592'>// Define how to hold bits.  Since we can inherit from a class, we do so.
+// This makes us exactly compatible with the bits in all cases that it is used.
+//</doc>
+<mbr r='llvm::cl::bits_storage::Location' t='unsigned int *'/>
+<fun r='_ZN4llvm2cl12bits_storage3BitERKT_'/>
+<fun r='_ZN4llvm2cl12bits_storageC1Ev'/>
+<fun r='_ZN4llvm2cl12bits_storage11setLocationERNS0_6OptionERj'/>
+<fun r='_ZN4llvm2cl12bits_storage8addValueERKT_'/>
+<fun r='_ZN4llvm2cl12bits_storage7getBitsEv'/>
+<fun r='_ZN4llvm2cl12bits_storage5isSetERKT_'/>
+<mbr r='llvm::cl::bits_storage::Bits' t='unsigned int'/>
+<fun r='_ZN4llvm2cl12bits_storageIT_bE3BitERKT_'/>
+<fun r='_ZN4llvm2cl12bits_storageIT_bE8addValueERKT_'/>
+<fun r='_ZN4llvm2cl12bits_storageIT_bE7getBitsEv'/>
+<fun r='_ZN4llvm2cl12bits_storageIT_bE5isSetERKT_'/>

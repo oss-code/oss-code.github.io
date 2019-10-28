@@ -1,0 +1,14 @@
+<dec f='include/hwloc/helper.h' l='613' type='hwloc_obj_t hwloc_get_obj_below_by_type(hwloc_topology_t topology, hwloc_obj_type_t type1, unsigned int idx1, hwloc_obj_type_t type2, unsigned int idx2)'/>
+<def f='include/hwloc/helper.h' l='616' ll='626' type='hwloc_obj_t hwloc_get_obj_below_by_type(hwloc_topology_t topology, hwloc_obj_type_t type1, unsigned int idx1, hwloc_obj_type_t type2, unsigned int idx2)'/>
+<doc f='include/hwloc/helper.h' l='600'>/** \brief Find an object below another object, both specified by types and indexes.
+ *
+ * Start from the top system object and find object of type \p type1
+ * and logical index \p idx1.  Then look below this object and find another
+ * object of type \p type2 and logical index \p idx2.  Indexes are specified
+ * within the parent, not withing the entire system.
+ *
+ * For instance, if type1 is PACKAGE, idx1 is 2, type2 is CORE and idx2
+ * is 3, return the fourth core object below the third package.
+ *
+ * \note This function requires these objects to have a CPU set.
+ */</doc>

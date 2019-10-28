@@ -1,0 +1,37 @@
+<def f='include/hwloc.h' l='345' ll='492'/>
+<size>248</size>
+<doc f='include/hwloc.h' l='341'>/** \brief Structure of a topology object
+ *
+ * Applications must not modify any field except hwloc_obj.userdata.
+ */</doc>
+<mbr r='hwloc_obj::type' o='0' t='hwloc_obj_type_t'/>
+<mbr r='hwloc_obj::os_index' o='32' t='unsigned int'/>
+<mbr r='hwloc_obj::name' o='64' t='char *'/>
+<mbr r='hwloc_obj::memory' o='128' t='struct hwloc_obj_memory_s'/>
+<mbr r='hwloc_obj::attr' o='384' t='union hwloc_obj_attr_u *'/>
+<mbr r='hwloc_obj::depth' o='448' t='unsigned int'/>
+<mbr r='hwloc_obj::logical_index' o='480' t='unsigned int'/>
+<mbr r='hwloc_obj::os_level' o='512' t='int'/>
+<mbr r='hwloc_obj::next_cousin' o='576' t='struct hwloc_obj *'/>
+<mbr r='hwloc_obj::prev_cousin' o='640' t='struct hwloc_obj *'/>
+<mbr r='hwloc_obj::parent' o='704' t='struct hwloc_obj *'/>
+<mbr r='hwloc_obj::sibling_rank' o='768' t='unsigned int'/>
+<mbr r='hwloc_obj::next_sibling' o='832' t='struct hwloc_obj *'/>
+<mbr r='hwloc_obj::prev_sibling' o='896' t='struct hwloc_obj *'/>
+<mbr r='hwloc_obj::arity' o='960' t='unsigned int'/>
+<mbr r='hwloc_obj::children' o='1024' t='struct hwloc_obj **'/>
+<mbr r='hwloc_obj::first_child' o='1088' t='struct hwloc_obj *'/>
+<mbr r='hwloc_obj::last_child' o='1152' t='struct hwloc_obj *'/>
+<mbr r='hwloc_obj::userdata' o='1216' t='void *'/>
+<mbr r='hwloc_obj::cpuset' o='1280' t='hwloc_cpuset_t'/>
+<mbr r='hwloc_obj::complete_cpuset' o='1344' t='hwloc_cpuset_t'/>
+<mbr r='hwloc_obj::online_cpuset' o='1408' t='hwloc_cpuset_t'/>
+<mbr r='hwloc_obj::allowed_cpuset' o='1472' t='hwloc_cpuset_t'/>
+<mbr r='hwloc_obj::nodeset' o='1536' t='hwloc_nodeset_t'/>
+<mbr r='hwloc_obj::complete_nodeset' o='1600' t='hwloc_nodeset_t'/>
+<mbr r='hwloc_obj::allowed_nodeset' o='1664' t='hwloc_nodeset_t'/>
+<mbr r='hwloc_obj::distances' o='1728' t='struct hwloc_distances_s **'/>
+<mbr r='hwloc_obj::distances_count' o='1792' t='unsigned int'/>
+<mbr r='hwloc_obj::infos' o='1856' t='struct hwloc_obj_info_s *'/>
+<mbr r='hwloc_obj::infos_count' o='1920' t='unsigned int'/>
+<mbr r='hwloc_obj::symmetric_subtree' o='1952' t='int'/>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>clIcdGetPlatformIDsKHR.c source code [pocl/lib/CL/clIcdGetPlatformIDsKHR.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/CL/clIcdGetPlatformIDsKHR.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>CL</a>/<a href='clIcdGetPlatformIDsKHR.c.html'>clIcdGetPlatformIDsKHR.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><u>#include <a href="../../../include/assert.h.html">&lt;assert.h&gt;</a></u></td></tr>
+<tr><th id="2">2</th><td><u>#include <a href="../../../include/string.h.html">&lt;string.h&gt;</a></u></td></tr>
+<tr><th id="3">3</th><td><u>#include <a href="pocl_cl.h.html">"pocl_cl.h"</a></u></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/*</i></td></tr>
+<tr><th id="6">6</th><td><i> * GetPlatformIDs that support ICD.</i></td></tr>
+<tr><th id="7">7</th><td><i> * This function is required by the ICD specification.</i></td></tr>
+<tr><th id="8">8</th><td><i> */</i> </td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td><u>#<span data-ppcond="10">ifdef</span> <a class="macro" href="../../config.h.html#11" data-ref="_M/BUILD_ICD">BUILD_ICD</a></u></td></tr>
+<tr><th id="11">11</th><td><a class="macro" href="../../include/CL/cl_platform.h.html#43" title="" data-ref="_M/CL_API_ENTRY">CL_API_ENTRY</a> <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <a class="macro" href="../../include/CL/cl_platform.h.html#44" title="" data-ref="_M/CL_API_CALL">CL_API_CALL</a></td></tr>
+<tr><th id="12">12</th><td><a class="macro" href="pocl_cl.h.html#225" title="POclIcdGetPlatformIDsKHR" data-ref="_M/POname">POname</a>(clIcdGetPlatformIDsKHR)(<a class="typedef" href="../../include/CL/cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a>           <dfn class="local col1 decl" id="1num_entries" title='num_entries' data-type='cl_uint' data-ref="1num_entries">num_entries</dfn>,</td></tr>
+<tr><th id="13">13</th><td>                       <a class="typedef" href="../../include/CL/cl.h.html#cl_platform_id" title='cl_platform_id' data-type='struct _cl_platform_id *' data-ref="cl_platform_id">cl_platform_id</a> *  <dfn class="local col2 decl" id="2platforms" title='platforms' data-type='cl_platform_id *' data-ref="2platforms">platforms</dfn>,</td></tr>
+<tr><th id="14">14</th><td>                       <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a> *         <dfn class="local col3 decl" id="3num_platforms" title='num_platforms' data-type='cl_uint *' data-ref="3num_platforms">num_platforms</dfn>) <a class="macro" href="../../include/CL/cl_platform.h.html#57" title="" data-ref="_M/CL_API_SUFFIX__VERSION_1_0">CL_API_SUFFIX__VERSION_1_0</a></td></tr>
+<tr><th id="15">15</th><td>{	</td></tr>
+<tr><th id="16">16</th><td>  <b>return</b> <a class="macro" href="pocl_cl.h.html#225" title="POclGetPlatformIDs" data-ref="_M/POname">POname</a>(clGetPlatformIDs)( <a class="local col1 ref" href="#1num_entries" title='num_entries' data-ref="1num_entries">num_entries</a>, <a class="local col2 ref" href="#2platforms" title='platforms' data-ref="2platforms">platforms</a>, <a class="local col3 ref" href="#3num_platforms" title='num_platforms' data-ref="3num_platforms">num_platforms</a> );</td></tr>
+<tr><th id="17">17</th><td>}</td></tr>
+<tr><th id="18">18</th><td><a class="macro" href="pocl_cl.h.html#252" title="" data-ref="_M/POsymICD">POsymICD</a>(clIcdGetPlatformIDsKHR)</td></tr>
+<tr><th id="19">19</th><td><u>#<span data-ppcond="10">endif</span></u></td></tr>
+<tr><th id="20">20</th><td></td></tr>
+<tr><th id="21">21</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

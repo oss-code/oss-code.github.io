@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='119' type='static llvm::ConstantInt * llvm::ConstantInt::getSigned(llvm::IntegerType * Ty, int64_t V)'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='169' u='c' c='_ZL20addKernelAnnotationsPN4llvm6ModuleEPKc'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='114'>/// Return a ConstantInt with the specified value for the specified type. The
+  /// value V will be canonicalized to a an unsigned APInt. Accessing it with
+  /// either getSExtValue() or getZExtValue() will yield a correctly sized and
+  /// signed value for the type Ty.
+  /// @brief Get a ConstantInt for a specific signed value.</doc>

@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/Constants.h' l='647' ll='650' type='llvm::StringRef llvm::ConstantDataSequential::getAsString() const'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='656' u='c' c='_ZNK4llvm22ConstantDataSequential12getAsCStringEv'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='645'>/// If this array is isString(), then this method returns the array as a
+  /// StringRef. Otherwise, it asserts out.</doc>

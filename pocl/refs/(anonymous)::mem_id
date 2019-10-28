@@ -1,0 +1,15 @@
+<dec f='pocl/include/pocl.h' l='201' type='pocl_mem_identifier *'/>
+<dec f='pocl/include/pocl.h' l='208' type='pocl_mem_identifier *'/>
+<dec f='pocl/include/pocl.h' l='259' type='pocl_mem_identifier *'/>
+<offset>0</offset>
+<use f='pocl/lib/CL/clEnqueueFillImage.c' l='115' u='w' c='POclEnqueueFillImage'/>
+<use f='pocl/lib/CL/clEnqueueMapBuffer.c' l='136' u='w' c='POclEnqueueMapBuffer'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='177' u='w' c='POclEnqueueMapImage'/>
+<use f='pocl/lib/CL/clEnqueueUnmapMemObject.c' l='91' u='w' c='POclEnqueueUnmapMemObject'/>
+<use f='pocl/lib/CL/devices/common.c' l='511' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='608' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='622' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='638' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='646' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1189' u='r' c='pocl_cuda_submit_node'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1204' u='r' c='pocl_cuda_submit_node'/>

@@ -1,0 +1,53 @@
+<def f='include/llvm-6.0/llvm/ADT/StringRef.h' l='77' type='void llvm::StringRef::StringRef()'/>
+<use f='include/llvm-6.0/llvm/ADT/StringRef.h' l='159' u='c' c='_ZNK4llvm9StringRef4copyERT_'/>
+<use f='include/llvm-6.0/llvm/ADT/StringRef.h' l='730' u='c' c='_ZNK4llvm9StringRef5splitEc'/>
+<use f='include/llvm-6.0/llvm/ADT/StringRef.h' l='748' u='c' c='_ZNK4llvm9StringRef5splitES0_'/>
+<use f='include/llvm-6.0/llvm/ADT/StringRef.h' l='801' u='c' c='_ZNK4llvm9StringRef6rsplitEc'/>
+<use f='include/llvm-6.0/llvm/IR/Attributes.h' l='93' u='c' c='_ZN4llvm9Attribute3getERNS_11LLVMContextENS_9StringRefES3_'/>
+<use f='include/llvm-6.0/llvm/IR/Attributes.h' l='238' u='c' c='_ZNK4llvm12AttributeSet12addAttributeERNS_11LLVMContextENS_9StringRefES3_'/>
+<use f='include/llvm-6.0/llvm/IR/Attributes.h' l='385' u='c' c='_ZNK4llvm13AttributeList12addAttributeERNS_11LLVMContextEjNS_9StringRefES3_'/>
+<use f='include/llvm-6.0/llvm/IR/Attributes.h' l='407' u='c' c='_ZNK4llvm13AttributeList17addParamAttributeERNS_11LLVMContextEjNS_9StringRefES3_'/>
+<use f='include/llvm-6.0/llvm/IR/Attributes.h' l='709' u='c' c='_ZN4llvm11AttrBuilder12addAttributeENS_9StringRefES1_'/>
+<use f='include/llvm-6.0/llvm/ADT/Twine.h' l='441' u='c' c='_ZNK4llvm5Twine18getSingleStringRefEv'/>
+<use f='include/llvm-6.0/llvm/Support/CommandLine.h' l='365' u='c' c='_ZN4llvm2cl6Option5errorERKNS_5TwineENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/Support/CommandLine.h' l='768' u='c' c='_ZN4llvm2cl6parser5parseERNS0_6OptionENS_9StringRefES4_RT_'/>
+<use f='include/llvm-6.0/llvm/Support/CommandLine.h' l='873' u='c' c='_ZNK4llvm2cl6parserIbE12getValueNameEv'/>
+<use f='include/llvm-6.0/llvm/Support/CommandLine.h' l='899' u='c' c='_ZNK4llvm2cl6parserINS0_13boolOrDefaultEE12getValueNameEv'/>
+<use f='include/llvm-6.0/llvm/IR/Metadata.h' l='616' u='c' c='_ZN4llvm8MDString3getERNS_11LLVMContextEPKc'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalObject.h' l='91' u='c' c='_ZNK4llvm12GlobalObject10getSectionEv'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='216' u='c' c='_ZN4llvm8Function9addFnAttrENS_9StringRefES1_'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalVariable.h' l='187' u='c' c='_ZN4llvm14GlobalVariable12addAttributeENS_9StringRefES1_'/>
+<use f='include/llvm-6.0/llvm/Support/FormatProviders.h' l='401' u='c' c='_ZN4llvm15format_providerINS_14iterator_rangeIT_EEvE6formatERKS3_RNS_11raw_ostreamENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/Support/FormatProviders.h' l='402' u='c' c='_ZN4llvm15format_providerINS_14iterator_rangeIT_EEvE6formatERKS3_RNS_11raw_ostreamENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/Support/Chrono.h' l='149' u='c' c='_ZN4llvm15format_providerINSt6chrono8durationIT_T0_EEvE6formatERKS5_RNS_11raw_ostreamENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='754' u='c' c='_ZNK4llvm6Triple16getARMCPUForArchENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/Analysis/TargetLibraryInfo.h' l='295' u='c' c='_ZNK4llvm17TargetLibraryInfo7getNameENS_7LibFuncE'/>
+<doc f='include/llvm-6.0/llvm/ADT/StringRef.h' l='73'>/// @name Constructors
+    /// @{
+
+    /// Construct an empty string ref.</doc>
+<doc f='include/llvm-6.0/llvm/ADT/StringRef.h' l='77'>/*implicit*/</doc>
+<use f='include/llvm-6.0/llvm/Option/Option.h' l='129' u='c' c='_ZNK4llvm3opt6Option9getPrefixEv'/>
+<use f='include/llvm-6.0/llvm/Support/SpecialCaseList.h' l='90' u='c' c='_ZNK4llvm15SpecialCaseList9inSectionENS_9StringRefES1_S1_S1_'/>
+<use f='include/llvm-6.0/llvm/Support/SpecialCaseList.h' l='101' u='c' c='_ZNK4llvm15SpecialCaseList14inSectionBlameENS_9StringRefES1_S1_S1_'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='173' u='c' c='_ZNK4llvm6DINode16getStringOperandEj'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='513' u='c' c='_ZN4llvm6DIFile3getERNS_11LLVMContextENS_9StringRefES3_NS0_12ChecksumKindES3_'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='513' u='c' c='_ZN4llvm6DIFile11getIfExistsERNS_11LLVMContextENS_9StringRefES3_NS0_12ChecksumKindES3_'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='513' u='c' c='_ZN4llvm6DIFile11getDistinctERNS_11LLVMContextENS_9StringRefES3_NS0_12ChecksumKindES3_'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='513' u='c' c='_ZN4llvm6DIFile12getTemporaryERNS_11LLVMContextENS_9StringRefES3_NS0_12ChecksumKindES3_'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2688' u='c' c='_ZNK4llvm11DIMacroNode16getStringOperandEj'/>
+<use f='include/llvm-6.0/llvm/Support/YAMLParser.h' l='189' u='c' c='_ZN4llvm4yaml8NullNodeC1ERSt10unique_ptrINS0_8DocumentESt14default_deleteIS3_EE'/>
+<use f='include/llvm-6.0/llvm/Support/YAMLParser.h' l='189' u='c' c='_ZN4llvm4yaml8NullNodeC1ERSt10unique_ptrINS0_8DocumentESt14default_deleteIS3_EE'/>
+<use f='include/llvm-6.0/llvm/Support/YAMLParser.h' l='277' u='c' c='_ZN4llvm4yaml12KeyValueNodeC1ERSt10unique_ptrINS0_8DocumentESt14default_deleteIS3_EE'/>
+<use f='include/llvm-6.0/llvm/Support/YAMLParser.h' l='277' u='c' c='_ZN4llvm4yaml12KeyValueNodeC1ERSt10unique_ptrINS0_8DocumentESt14default_deleteIS3_EE'/>
+<use f='include/llvm-6.0/llvm/Support/YAMLParser.h' l='502' u='c' c='_ZN4llvm4yaml9AliasNodeC1ERSt10unique_ptrINS0_8DocumentESt14default_deleteIS3_EENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/Support/YAMLParser.h' l='502' u='c' c='_ZN4llvm4yaml9AliasNodeC1ERSt10unique_ptrINS0_8DocumentESt14default_deleteIS3_EENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='836' u='c' c='_ZN4llvm4yaml7yamlizeERNS0_2IOERT_bRNS0_12EmptyContextE'/>
+<use f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='855' u='c' c='_ZN4llvm4yaml7yamlizeERNS0_2IOERT_bRNS0_12EmptyContextE'/>
+<use f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='131' u='c' c='_ZN4llvm9DIBuilder17createCompileUnitEjPNS_6DIFileENS_9StringRefEbS3_jS3_NS_13DICompileUnit17DebugEmissionKindEmbbb'/>
+<use f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='145' u='c' c='_ZN4llvm9DIBuilder10createFileENS_9StringRefES1_NS_6DIFile12ChecksumKindES1_'/>
+<use f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='154' u='c' c='_ZN4llvm9DIBuilder11createMacroEPNS_11DIMacroFileEjjNS_9StringRefES3_'/>
+<use f='include/llvm-6.0/llvm/IR/MDBuilder.h' l='104' u='c' c='_ZN4llvm9MDBuilder21createAnonymousAARootENS_9StringRefEPNS_6MDNodeE'/>
+<use f='include/llvm-6.0/llvm/IR/MDBuilder.h' l='118' u='c' c='_ZN4llvm9MDBuilder31createAnonymousAliasScopeDomainENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/IR/MDBuilder.h' l='126' u='c' c='_ZN4llvm9MDBuilder25createAnonymousAliasScopeEPNS_6MDNodeENS_9StringRefE'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='182' u='c' c='_ZN4pocl15WorkitemHandler26fixUndominatedVariableUsesEPN4llvm24DominatorTreeWrapperPassERNS1_8FunctionE'/>

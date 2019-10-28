@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Support/MathExtras.h' l='749' ll='753' type='int64_t llvm::SignExtend64(uint64_t X, unsigned int B)'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='945' u='c' c='_ZN4llvm5APInt11ashrInPlaceEj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1556' u='c' c='_ZNK4llvm5APInt12getSExtValueEv'/>
+<doc f='include/llvm-6.0/llvm/Support/MathExtras.h' l='747'>/// Sign-extend the number in the bottom B bits of X to a 64-bit integer.
+/// Requires 0 &lt; B &lt; 64.</doc>

@@ -1,0 +1,23 @@
+<def f='include/llvm-6.0/llvm/PassRegistry.h' l='39' ll='91'/>
+<size>120</size>
+<doc f='include/llvm-6.0/llvm/PassRegistry.h' l='33'>/// PassRegistry - This class manages the registration and intitialization of
+/// the pass subsystem as application startup, and assists the PassManager
+/// in resolving pass dependencies.
+/// NOTE: PassRegistry is NOT thread-safe.  If you want to use LLVM on multiple
+/// threads simultaneously, you will need to use a separate PassRegistry on
+/// each thread.</doc>
+<mbr r='llvm::PassRegistry::Lock' o='0' t='sys::SmartRWMutex&lt;true&gt;'/>
+<mbr r='llvm::PassRegistry::PassInfoMap' o='128' t='MapType'/>
+<mbr r='llvm::PassRegistry::PassInfoStringMap' o='320' t='StringMapType'/>
+<mbr r='llvm::PassRegistry::ToFree' o='576' t='std::vector&lt;std::unique_ptr&lt;const PassInfo&gt; &gt;'/>
+<mbr r='llvm::PassRegistry::Listeners' o='768' t='std::vector&lt;PassRegistrationListener *&gt;'/>
+<fun r='_ZN4llvm12PassRegistryC1Ev'/>
+<fun r='_ZN4llvm12PassRegistryD1Ev'/>
+<fun r='_ZN4llvm12PassRegistry15getPassRegistryEv'/>
+<fun r='_ZNK4llvm12PassRegistry11getPassInfoEPKv'/>
+<fun r='_ZNK4llvm12PassRegistry11getPassInfoENS_9StringRefE'/>
+<fun r='_ZN4llvm12PassRegistry12registerPassERKNS_8PassInfoEb'/>
+<fun r='_ZN4llvm12PassRegistry21registerAnalysisGroupEPKvS2_RNS_8PassInfoEbb'/>
+<fun r='_ZN4llvm12PassRegistry13enumerateWithEPNS_24PassRegistrationListenerE'/>
+<fun r='_ZN4llvm12PassRegistry23addRegistrationListenerEPNS_24PassRegistrationListenerE'/>
+<fun r='_ZN4llvm12PassRegistry26removeRegistrationListenerEPNS_24PassRegistrationListenerE'/>

@@ -1,0 +1,12 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='354' type='llvm::DICompositeType * llvm::DIBuilder::createStructType(llvm::DIScope * Scope, llvm::StringRef Name, llvm::DIFile * File, unsigned int LineNumber, uint64_t SizeInBits, uint32_t AlignInBits, DINode::DIFlags Flags, llvm::DIType * DerivedFrom, DINodeArray Elements, unsigned int RunTimeLang = 0, llvm::DIType * VTableHolder = nullptr, llvm::StringRef UniqueIdentifier = &quot;&quot;)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='343'>/// Create debugging information entry for a struct.
+    /// \param Scope        Scope in which this struct is defined.
+    /// \param Name         Struct name.
+    /// \param File         File where this member is defined.
+    /// \param LineNumber   Line number.
+    /// \param SizeInBits   Member size.
+    /// \param AlignInBits  Member alignment.
+    /// \param Flags        Flags to encode member attribute, e.g. private
+    /// \param Elements     Struct elements.
+    /// \param RunTimeLang  Optional parameter, Objective-C runtime version.
+    /// \param UniqueIdentifier A unique identifier for the struct.</doc>

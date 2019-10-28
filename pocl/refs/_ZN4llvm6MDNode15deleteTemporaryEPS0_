@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/Metadata.h' l='920' type='static void llvm::MDNode::deleteTemporary(llvm::MDNode * N)'/>
+<use f='include/llvm-6.0/llvm/IR/Metadata.h' l='1182' u='c' c='_ZNK4llvm17TempMDNodeDeleterclEPNS_6MDNodeE'/>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='916'>/// \brief Deallocate a node created by getTemporary.
+  ///
+  /// Calls \c replaceAllUsesWith(nullptr) before deleting, so any remaining
+  /// references will be reset.</doc>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='306' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>

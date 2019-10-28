@@ -1,0 +1,4 @@
+<dec f='pocl/lib/CL/pocl_binary.h' l='59' type='cl_uint pocl_binary_get_kernel_count(cl_program program, unsigned int device_i)'/>
+<doc f='pocl/lib/CL/pocl_binary.h' l='58'>/* returns the number of kernels without unpacking the binary */</doc>
+<def f='pocl/lib/CL/pocl_binary.c' l='278' ll='285' type='cl_uint pocl_binary_get_kernel_count(cl_program program, unsigned int device_i)'/>
+<use f='pocl/lib/CL/pocl_build.c' l='856' u='c' c='compile_and_link_program'/>

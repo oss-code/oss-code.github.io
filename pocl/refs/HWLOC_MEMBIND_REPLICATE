@@ -1,0 +1,12 @@
+<dec f='include/hwloc.h' l='1663' type='4'/>
+<doc f='include/hwloc.h' l='1652'>/** \brief Replicate memory on the given nodes; reads from this
+   * memory will attempt to be serviced from the NUMA node local to
+   * the reading thread. Replicating can be useful when multiple
+   * threads from the specified NUMA nodes will be sharing the same
+   * read-only data.
+   *
+   * This policy can only be used with existing memory allocations
+   * (i.e., the hwloc_set_*membind*() functions); it cannot be used
+   * with functions that allocate new memory (i.e., the hwloc_alloc*()
+   * functions).
+   * \hideinitializer */</doc>

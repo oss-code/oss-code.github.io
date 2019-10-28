@@ -1,0 +1,3 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='64' type='void llvm::ReplaceInstWithValue(BasicBlock::InstListType &amp; BIL, BasicBlock::iterator &amp; BI, llvm::Value * V)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='62'>/// Replace all uses of an instruction (specified by BI) with a value, then
+/// remove and delete the original instruction.</doc>

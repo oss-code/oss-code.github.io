@@ -1,0 +1,7 @@
+<dec f='include/hwloc.h' l='1957' type='int hwloc_set_area_membind_nodeset(hwloc_topology_t topology, const void * addr, size_t len, hwloc_const_nodeset_t nodeset, hwloc_membind_policy_t policy, int flags)'/>
+<doc f='include/hwloc.h' l='1951'>/** \brief Bind the already-allocated memory identified by (addr, len)
+ * to the NUMA node(s) in physical \p nodeset.
+ *
+ * \return -1 with errno set to ENOSYS if the action is not supported
+ * \return -1 with errno set to EXDEV if the binding cannot be enforced
+ */</doc>

@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/ADT/SmallString.h' l='46' ll='48' type='void llvm::SmallString::assign(size_t NumElts, char Elt)'/>
+<doc f='include/llvm-6.0/llvm/ADT/SmallString.h' l='38'>// Note that in order to add new overloads for append &amp; assign, we have to
+  // duplicate the inherited versions so as not to inadvertently hide them.
+
+  /// @}
+  /// @name String Assignment
+  /// @{
+
+  /// Assign from a repeated element.</doc>

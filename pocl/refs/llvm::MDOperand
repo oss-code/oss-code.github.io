@@ -1,0 +1,24 @@
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='709' ll='750'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='702'>/// \brief Tracking metadata reference owned by Metadata.
+///
+/// Similar to \a TrackingMDRef, but it&apos;s expected to be owned by an instance
+/// of \a Metadata, which has the option of registering itself for callbacks to
+/// re-unique itself.
+///
+/// In particular, this is used by \a MDNode.</doc>
+<mbr r='llvm::MDOperand::MD' o='0' t='llvm::Metadata *'/>
+<fun r='_ZN4llvm9MDOperandC1Ev'/>
+<fun r='_ZN4llvm9MDOperandC1EOS0_'/>
+<fun r='_ZN4llvm9MDOperandC1ERKS0_'/>
+<fun r='_ZN4llvm9MDOperandaSEOS0_'/>
+<fun r='_ZN4llvm9MDOperandaSERKS0_'/>
+<fun r='_ZN4llvm9MDOperandD1Ev'/>
+<fun r='_ZNK4llvm9MDOperand3getEv'/>
+<fun r='_ZNK4llvm9MDOperandcvPNS_8MetadataEEv'/>
+<fun r='_ZNK4llvm9MDOperandptEv'/>
+<fun r='_ZNK4llvm9MDOperanddeEv'/>
+<fun r='_ZN4llvm9MDOperand5resetEv'/>
+<fun r='_ZN4llvm9MDOperand5resetEPNS_8MetadataES2_'/>
+<fun r='_ZN4llvm9MDOperand5trackEPNS_8MetadataE'/>
+<fun r='_ZN4llvm9MDOperand7untrackEv'/>

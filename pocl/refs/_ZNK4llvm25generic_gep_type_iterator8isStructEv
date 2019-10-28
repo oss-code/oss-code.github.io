@@ -1,0 +1,15 @@
+<def f='include/llvm-6.0/llvm/IR/GetElementPtrTypeIterator.h' l='107' type='bool llvm::generic_gep_type_iterator::isStruct() const'/>
+<doc f='include/llvm-6.0/llvm/IR/GetElementPtrTypeIterator.h' l='92'>// All of the below API is for querying properties of the &quot;outer type&quot;, i.e.
+    // the type that contains the indexed type. Most of the time this is just
+    // the type that was visited immediately prior to the indexed type, but for
+    // the first element this is an unbounded array of the GEP&apos;s source element
+    // type, for which there is no clearly corresponding IR type (we&apos;ve
+    // historically used a pointer type as the outer type in this case, but
+    // pointers will soon lose their element type).
+    //
+    // FIXME: Most current users of this class are just interested in byte
+    // offsets (a few need to know whether the outer type is a struct because
+    // they are trying to replace a constant with a variable, which is only
+    // legal for arrays, e.g. canReplaceOperandWithVariable in SimplifyCFG.cpp);
+    // we should provide a more minimal API here that exposes not much more than
+    // that.</doc>

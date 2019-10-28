@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/pocl_hash.h' l='48' type='void pocl_SHA1_Final(SHA1_CTX * context, uint8_t * digest)'/>
+<use f='pocl/lib/CL/devices/common.c' l='1332' u='c' c='pocl_calculate_kernel_hash'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='432' u='c' c='build_program_compute_hash'/>
+<def f='pocl/lib/CL/pocl_hash.c' l='198' ll='224' type='void pocl_SHA1_Final(SHA1_CTX * context, uint8_t * digest)'/>
+<doc f='pocl/lib/CL/pocl_hash.c' l='197'>/* Add padding and return the message digest. */</doc>

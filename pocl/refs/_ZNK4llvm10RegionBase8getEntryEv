@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='323' ll='325' type='BlockT * llvm::RegionBase::getEntry() const'/>
+<use f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='611' u='c' c='_ZN4llvm10RegionBase11block_beginEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='616' u='c' c='_ZNK4llvm10RegionBase11block_beginEv'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='321'>/// @brief Get the entry BasicBlock of the Region.
+  /// @return The entry BasicBlock of the region.</doc>
+<use f='pocl/lib/llvmopencl/IsolateRegions.cc' l='118' u='c' c='_ZN4pocl14IsolateRegions11runOnRegionEPN4llvm6RegionERNS1_13RGPassManagerE'/>

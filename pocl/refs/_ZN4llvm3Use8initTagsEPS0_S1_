@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/Use.h' l='133' type='static llvm::Use * llvm::Use::initTags(llvm::Use * Start, llvm::Use * Stop)'/>
+<doc f='include/llvm-6.0/llvm/IR/Use.h' l='129'>/// \brief Initializes the waymarking tags on an array of Uses.
+  ///
+  /// This sets up the array of Uses such that getUser() can find the User from
+  /// any of those Uses.</doc>

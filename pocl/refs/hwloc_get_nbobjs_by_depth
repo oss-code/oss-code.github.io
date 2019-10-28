@@ -1,0 +1,5 @@
+<dec f='include/hwloc.h' l='1180' type='unsigned int hwloc_get_nbobjs_by_depth(hwloc_topology_t topology, unsigned int depth)'/>
+<use f='include/hwloc/inlines.h' l='70' u='c' c='hwloc_get_nbobjs_by_type'/>
+<use f='pocl/lib/CL/devices/topology/pocl_topology.c' l='128' u='c' c='pocl_topology_detect_device_info'/>
+<doc f='include/hwloc.h' l='1178'>/** \brief Returns the width of level at depth \p depth.
+ */</doc>

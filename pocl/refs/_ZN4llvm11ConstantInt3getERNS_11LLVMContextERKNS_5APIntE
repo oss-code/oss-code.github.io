@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='124' type='static llvm::ConstantInt * llvm::ConstantInt::get(llvm::LLVMContext &amp; Context, const llvm::APInt &amp; V)'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='122'>/// Return a ConstantInt with the specified value and an implied Type. The
+  /// type is the integer type that corresponds to the bit width of the value.</doc>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='325' u='c' c='_ZN4llvm13IRBuilderBase6getIntERKNS_5APIntE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='668' u='c' c='_ZN4pocl14ParallelRegion12InjectPrintFEPN4llvm11InstructionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIPNS1_5ValueESaISC_EE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='719' u='c' c='_ZN4pocl14ParallelRegion18InjectRegionPrintFEv'/>

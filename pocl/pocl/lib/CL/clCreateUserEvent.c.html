@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>clCreateUserEvent.c source code [pocl/lib/CL/clCreateUserEvent.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/CL/clCreateUserEvent.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>CL</a>/<a href='clCreateUserEvent.c.html'>clCreateUserEvent.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><u>#include <a href="pocl_cl.h.html">"pocl_cl.h"</a></u></td></tr>
+<tr><th id="2">2</th><td><u>#include <a href="pocl_util.h.html">"pocl_util.h"</a></u></td></tr>
+<tr><th id="3">3</th><td><u>#include <a href="pocl_timing.h.html">"pocl_timing.h"</a></u></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><a class="macro" href="../../include/CL/cl_platform.h.html#43" title="" data-ref="_M/CL_API_ENTRY">CL_API_ENTRY</a> <a class="typedef" href="../../include/CL/cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> <a class="macro" href="../../include/CL/cl_platform.h.html#44" title="" data-ref="_M/CL_API_CALL">CL_API_CALL</a></td></tr>
+<tr><th id="6">6</th><td><a class="macro" href="pocl_cl.h.html#225" title="POclCreateUserEvent" data-ref="_M/POname">POname</a>(clCreateUserEvent)(<a class="typedef" href="../../include/CL/cl.h.html#cl_context" title='cl_context' data-type='struct _cl_context *' data-ref="cl_context">cl_context</a>     <dfn class="local col8 decl" id="8context" title='context' data-type='cl_context' data-ref="8context">context</dfn> ,</td></tr>
+<tr><th id="7">7</th><td>                  <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> *       <dfn class="local col9 decl" id="9errcode_ret" title='errcode_ret' data-type='cl_int *' data-ref="9errcode_ret">errcode_ret</dfn> ) <a class="macro" href="../../include/CL/cl_platform.h.html#59" title="" data-ref="_M/CL_API_SUFFIX__VERSION_1_1">CL_API_SUFFIX__VERSION_1_1</a></td></tr>
+<tr><th id="8">8</th><td>{</td></tr>
+<tr><th id="9">9</th><td>  <em>int</em> <dfn class="local col0 decl" id="10error" title='error' data-type='int' data-ref="10error">error</dfn>;</td></tr>
+<tr><th id="10">10</th><td>  <a class="typedef" href="../../include/CL/cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> <dfn class="local col1 decl" id="11event" title='event' data-type='cl_event' data-ref="11event">event</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="11">11</th><td></td></tr>
+<tr><th id="12">12</th><td>  <a class="local col0 ref" href="#10error" title='error' data-ref="10error">error</a> = <a class="ref" href="pocl_util.h.html#pocl_create_event" title='pocl_create_event' data-ref="pocl_create_event">pocl_create_event</a> (&amp;<a class="local col1 ref" href="#11event" title='event' data-ref="11event">event</a>, <var>0</var>, <a class="macro" href="../../include/CL/cl.h.html#811" title="0x1204" data-ref="_M/CL_COMMAND_USER">CL_COMMAND_USER</a>, <var>0</var>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <a class="local col8 ref" href="#8context" title='context' data-ref="8context">context</a>);</td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td>  <b>if</b> (<a class="local col0 ref" href="#10error" title='error' data-ref="10error">error</a> != <a class="macro" href="../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>)</td></tr>
+<tr><th id="15">15</th><td>    {</td></tr>
+<tr><th id="16">16</th><td>      <a class="macro" href="pocl_cl.h.html#173" title="do { free((event)); (event) = ((void*)0); } while (0)" data-ref="_M/POCL_MEM_FREE">POCL_MEM_FREE</a>(<a class="local col1 ref" href="#11event" title='event' data-ref="11event">event</a>);</td></tr>
+<tr><th id="17">17</th><td>    }</td></tr>
+<tr><th id="18">18</th><td>  <b>else</b></td></tr>
+<tr><th id="19">19</th><td>    {</td></tr>
+<tr><th id="20">20</th><td>      <a class="local col1 ref" href="#11event" title='event' data-ref="11event">event</a>-&gt;<a class="ref" href="pocl_cl.h.html#1153" title='_cl_event::pocl_refcount' data-ref="_cl_event::pocl_refcount">pocl_refcount</a> = <var>1</var>;</td></tr>
+<tr><th id="21">21</th><td>      <a class="local col1 ref" href="#11event" title='event' data-ref="11event">event</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_event::status" title='_cl_event::status' data-ref="_cl_event::status">status</a> = <a class="macro" href="../../include/CL/cl.h.html#830" title="0x2" data-ref="_M/CL_SUBMITTED">CL_SUBMITTED</a>;</td></tr>
+<tr><th id="22">22</th><td>      <a class="local col1 ref" href="#11event" title='event' data-ref="11event">event</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_event::context" title='_cl_event::context' data-ref="_cl_event::context">context</a> = <a class="local col8 ref" href="#8context" title='context' data-ref="8context">context</a>;</td></tr>
+<tr><th id="23">23</th><td>      <a class="typedef" href="pocl_cl.h.html#pocl_user_event_data" title='pocl_user_event_data' data-type='struct _pocl_user_event_data' data-ref="pocl_user_event_data">pocl_user_event_data</a> *<dfn class="local col2 decl" id="12p" title='p' data-type='pocl_user_event_data *' data-ref="12p">p</dfn> = <a class="ref" href="../../../include/stdlib.h.html#malloc" title='malloc' data-ref="malloc">malloc</a> (<b>sizeof</b> (<a class="typedef" href="pocl_cl.h.html#pocl_user_event_data" title='pocl_user_event_data' data-type='struct _pocl_user_event_data' data-ref="pocl_user_event_data">pocl_user_event_data</a>));</td></tr>
+<tr><th id="24">24</th><td>      <a class="macro" href="../../../include/assert.h.html#88" title="((p) ? (void) (0) : __assert_fail (&quot;p&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/clCreateUserEvent.c&quot;, 24, __PRETTY_FUNCTION__))" data-ref="_M/assert">assert</a> (<a class="local col2 ref" href="#12p" title='p' data-ref="12p">p</a>);</td></tr>
+<tr><th id="25">25</th><td>      <a class="ref" href="../../../include/pthread.h.html#pthread_cond_init" title='pthread_cond_init' data-ref="pthread_cond_init">pthread_cond_init</a> (&amp;<a class="local col2 ref" href="#12p" title='p' data-ref="12p">p</a>-&gt;<a class="ref" href="pocl_cl.h.html#_pocl_user_event_data::wakeup_cond" title='_pocl_user_event_data::wakeup_cond' data-ref="_pocl_user_event_data::wakeup_cond">wakeup_cond</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="26">26</th><td>      <a class="local col1 ref" href="#11event" title='event' data-ref="11event">event</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_event::data" title='_cl_event::data' data-ref="_cl_event::data">data</a> = <a class="local col2 ref" href="#12p" title='p' data-ref="12p">p</a>;</td></tr>
+<tr><th id="27">27</th><td>    }</td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td>  <b>if</b> (<a class="local col9 ref" href="#9errcode_ret" title='errcode_ret' data-ref="9errcode_ret">errcode_ret</a>)</td></tr>
+<tr><th id="30">30</th><td>    *<a class="local col9 ref" href="#9errcode_ret" title='errcode_ret' data-ref="9errcode_ret">errcode_ret</a> = <a class="local col0 ref" href="#10error" title='error' data-ref="10error">error</a>;</td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td>  <b>return</b> <a class="local col1 ref" href="#11event" title='event' data-ref="11event">event</a>;</td></tr>
+<tr><th id="33">33</th><td>}</td></tr>
+<tr><th id="34">34</th><td><a class="macro" href="pocl_cl.h.html#234" title="" data-ref="_M/POsym">POsym</a>(clCreateUserEvent)</td></tr>
+<tr><th id="35">35</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='179' type='void llvm::MergeBasicBlockIntoOnlyPred(llvm::BasicBlock * BB, llvm::DominatorTree * DT = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='176'>/// BB is a block with one predecessor and its predecessor is known to have one
+/// successor (BB!). Eliminate the edge between them, moving the instructions in
+/// the predecessor into BB. This deletes the predecessor block.</doc>

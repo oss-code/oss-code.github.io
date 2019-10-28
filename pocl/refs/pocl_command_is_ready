@@ -1,0 +1,11 @@
+<def f='pocl/lib/CL/pocl_util.h' l='148' ll='152' type='int pocl_command_is_ready(cl_event event)'/>
+<doc f='pocl/lib/CL/pocl_util.h' l='144'>/**
+ * Return true if a command is ready to execute (no more event in wait list
+ * or false if not
+ */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='1117' u='c' c='basic_command_scheduler'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='1183' u='c' c='pocl_basic_notify'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='253' u='c' c='pocl_pthread_submit'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='304' u='c' c='pocl_pthread_notify'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='467' u='c' c='pthread_scheduler_get_work'/>
+<use f='pocl/lib/CL/pocl_util.c' l='595' u='c' c='pocl_command_push'/>

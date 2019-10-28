@@ -1,0 +1,13 @@
+<def f='include/c++/7/sstream' l='636' ll='638' type='__string_type std::__cxx11::basic_ostringstream::str() const'/>
+<doc f='include/c++/7/sstream' l='632'>/**
+       *  @brief  Copying out the string buffer.
+       *  @return  @c rdbuf()-&gt;str()
+      */</doc>
+<use f='pocl/lib/llvmopencl/DebugHelpers.cc' l='52' u='c' c='_ZN4poclL18getDotBasicBlockIDB5cxx11EPN4llvm10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/DebugHelpers.cc' l='147' u='c' c='_ZN4pocl7dumpCFGERN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPNS0_11SmallVectorIPNS_14ParallelRegionELj8EEEPSt3setIPNS0_10Bas7693485'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='86' u='c' c='_ZN4pocl14ParallelRegion17GenerateTempNamesEPN4llvm10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='127' u='c' c='_ZN4pocl14ParallelRegion9replicateERN4llvm8ValueMapIPKNS1_5ValueENS1_14WeakTrackingVHENS1_14ValueMapConfigIS5_NS1_3sys10SmartMutexILb0EEEEEEERKNS1_5TwineE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1149' u='c' c='_ZN4pocl9Workgroup32createArgBufferWorkgroupLauncherEPN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1278' u='c' c='_ZN4pocl9Workgroup18createGridLauncherEPN4llvm8FunctionES3_NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='200' u='c' c='_ZN4pocl15WorkitemHandler26fixUndominatedVariableUsesEPN4llvm24DominatorTreeWrapperPassERNS1_8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='871' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>

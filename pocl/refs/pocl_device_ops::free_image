@@ -1,0 +1,6 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='537' type='cl_int (*)(void *, cl_mem, void *)'/>
+<offset>2624</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='536'>/* free the device-specific pointer (image_data) from create_image() */</doc>
+<use f='pocl/lib/CL/clReleaseMemObject.c' l='77' u='r' c='POclReleaseMemObject'/>
+<use f='pocl/lib/CL/clReleaseMemObject.c' l='78' u='r' c='POclReleaseMemObject'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='149' u='w' c='pocl_basic_init_device_ops'/>

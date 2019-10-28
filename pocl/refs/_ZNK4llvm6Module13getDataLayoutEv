@@ -1,0 +1,16 @@
+<dec f='include/llvm-6.0/llvm/IR/Module.h' l='229' type='const llvm::DataLayout &amp; llvm::Module::getDataLayout() const'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='550' u='c' c='_ZL13linkLibDevicePN4llvm6ModuleEPKcS3_'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='690' u='c' c='_ZL18fixConstantMemArgsPN4llvm6ModuleEPKc'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='857' u='c' c='pocl_cuda_get_ptr_arg_alignment'/>
+<doc f='include/llvm-6.0/llvm/IR/Module.h' l='228'>/// Get the data layout for the module&apos;s target platform.</doc>
+<use f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='997' u='c' c='_ZNK4llvm15ScalarEvolution13getDataLayoutEv'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='650' u='c' c='pocl_llvm_link_program'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='464' u='c' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='391' u='c' c='pocl_llvm_generate_workgroup_function_nowrite'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='434' u='c' c='pocl_llvm_generate_workgroup_function_nowrite'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1163' u='c' c='_ZN4llvm9IRBuilder12CreateAllocaEPNS_4TypeEPNS_5ValueERKNS_5TwineE'/>
+<use f='pocl/lib/llvmopencl/HandleSamplerInitialization.cc' l='90' u='c' c='_ZN4pocl27HandleSamplerInitialization13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='995' u='c' c='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1059' u='c' c='_ZL15getArgumentSizeRN4llvm8ArgumentE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='899' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>
+<use f='pocl/lib/llvmopencl/WorkitemReplication.cc' l='181' u='c' c='_ZN4pocl19WorkitemReplication15ProcessFunctionERN4llvm8FunctionE'/>

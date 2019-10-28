@@ -1,0 +1,8 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='399' type='void (*)(cl_device_id, cl_mem)'/>
+<offset>1152</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='398'>/* free a device buffer */</doc>
+<use f='pocl/lib/CL/clCreateBuffer.c' l='195' u='r' c='POclCreateBuffer'/>
+<use f='pocl/lib/CL/clReleaseMemObject.c' l='80' u='r' c='POclReleaseMemObject'/>
+<use f='pocl/lib/CL/clReleaseMemObject.c' l='84' u='r' c='POclReleaseMemObject'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='119' u='w' c='pocl_basic_init_device_ops'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='141' u='w' c='pocl_cuda_init_device_ops'/>

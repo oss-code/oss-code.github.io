@@ -1,0 +1,19 @@
+<def f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='346' ll='351' type='DomTreeNodeBase&lt;NodeT&gt; * llvm::DominatorTreeBase::getNode(NodeT * BB) const'/>
+<use f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='354' u='c' c='_ZNK4llvm17DominatorTreeBaseixEPT_'/>
+<use f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='369' u='c' c='_ZNK4llvm17DominatorTreeBase14getDescendantsEPT_RNS_15SmallVectorImplIS2_EE'/>
+<use f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='401' u='c' c='_ZNK4llvm17DominatorTreeBase20isReachableFromEntryEPKT_'/>
+<use f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='474' u='c' c='_ZNK4llvm17DominatorTreeBase26findNearestCommonDominatorEPT_S2_'/>
+<use f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='475' u='c' c='_ZNK4llvm17DominatorTreeBase26findNearestCommonDominatorEPT_S2_'/>
+<use f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='587' u='c' c='_ZN4llvm17DominatorTreeBase11addNewBlockEPT_S2_'/>
+<use f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='631' u='c' c='_ZN4llvm17DominatorTreeBase24changeImmediateDominatorEPT_S2_'/>
+<use f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='631' u='c' c='_ZN4llvm17DominatorTreeBase24changeImmediateDominatorEPT_S2_'/>
+<use f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='638' u='c' c='_ZN4llvm17DominatorTreeBase9eraseNodeEPT_'/>
+<use f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='820' u='c' c='_ZN4llvm17DominatorTreeBase5SplitENS_11GraphTraitsIT_E7NodeRefE'/>
+<use f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='866' u='c' c='_ZNK4llvm17DominatorTreeBase9dominatesEPKT_S3_'/>
+<use f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='867' u='c' c='_ZNK4llvm17DominatorTreeBase9dominatesEPKT_S3_'/>
+<use f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='878' u='c' c='_ZNK4llvm17DominatorTreeBase17properlyDominatesEPKT_S3_'/>
+<use f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='879' u='c' c='_ZNK4llvm17DominatorTreeBase17properlyDominatesEPKT_S3_'/>
+<doc f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='342'>/// getNode - return the (Post)DominatorTree node for the specified basic
+  /// block.  This is the same as using operator[] on this class.  The result
+  /// may (but is not required to) be null for a forward (backwards)
+  /// statically unreachable block.</doc>

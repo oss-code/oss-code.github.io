@@ -1,0 +1,11 @@
+<def f='pocl/include/CL/cl2.hpp' l='4323' ll='4327' type='cl::Image &amp; cl::Image::operator=(const cl::Image &amp; img)'/>
+<use f='pocl/include/CL/cl2.hpp' l='4445' u='c' c='_ZN2cl7Image1DaSERKS0_'/>
+<use f='pocl/include/CL/cl2.hpp' l='4529' u='c' c='_ZN2cl13Image1DBufferaSERKS0_'/>
+<use f='pocl/include/CL/cl2.hpp' l='4618' u='c' c='_ZN2cl12Image1DArrayaSERKS0_'/>
+<use f='pocl/include/CL/cl2.hpp' l='4860' u='c' c='_ZN2cl7Image2DaSERKS0_'/>
+<use f='pocl/include/CL/cl2.hpp' l='5049' u='c' c='_ZN2cl12Image2DArrayaSERKS0_'/>
+<use f='pocl/include/CL/cl2.hpp' l='5185' u='c' c='_ZN2cl7Image3DaSERKS0_'/>
+<use f='pocl/include/CL/cl2.hpp' l='5358' u='c' c='_ZN2cl7ImageGLaSERKS0_'/>
+<doc f='pocl/include/CL/cl2.hpp' l='4320'>/*! \brief Copy assignment to forward copy to the superclass correctly.
+     * Required for MSVC.
+     */</doc>

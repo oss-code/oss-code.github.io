@@ -1,0 +1,11 @@
+<inh f='include/llvm-6.0/llvm/ADT/StringRef.h' l='49' c='llvm::StringRef'/>
+<def f='include/llvm-6.0/llvm/ADT/StringRef.h' l='857' ll='870'/>
+<size>16</size>
+<doc f='include/llvm-6.0/llvm/ADT/StringRef.h' l='850'>/// A wrapper around a string literal that serves as a proxy for constructing
+  /// global tables of StringRefs with the length computed at compile time.
+  /// In order to avoid the invocation of a global constructor, StringLiteral
+  /// should *only* be used in a constexpr context, as such:
+  ///
+  /// constexpr StringLiteral S(&quot;test&quot;);
+  ///</doc>
+<fun r='_ZN4llvm13StringLiteralC1EUa9enable_ifIXeqclL_Z16__builtin_strlenEfL0p_EmiT_Li1EEERAT__Kc'/>

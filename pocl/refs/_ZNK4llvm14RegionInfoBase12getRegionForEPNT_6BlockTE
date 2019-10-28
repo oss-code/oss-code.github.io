@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='819' type='RegionT * llvm::RegionInfoBase::getRegionFor(BlockT * BB) const'/>
+<use f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='853' u='c' c='_ZNK4llvm14RegionInfoBase15getCommonRegionEPNT_6BlockTES3_'/>
+<use f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='853' u='c' c='_ZNK4llvm14RegionInfoBase15getCommonRegionEPNT_6BlockTES3_'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='814'>/// @brief Get the smallest region that contains a BasicBlock.
+  ///
+  /// @param BB The basic block.
+  /// @return The smallest region, that contains BB or NULL, if there is no
+  /// region containing BB.</doc>

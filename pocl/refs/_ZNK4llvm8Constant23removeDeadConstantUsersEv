@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/Constant.h' l='151' type='void llvm::Constant::removeDeadConstantUsers() const'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='170' u='c' c='_ZN4llvm11GlobalValueD1Ev'/>
+<doc f='include/llvm-6.0/llvm/IR/Constant.h' l='147'>/// If there are any dead constant users dangling off of this constant, remove
+  /// them. This method is useful for clients that want to check to see if a
+  /// global is unused, but don&apos;t want to deal with potentially dead constants
+  /// hanging off of the globals.</doc>

@@ -1,0 +1,19 @@
+<def f='include/llvm-6.0/llvm/Analysis/AliasSetTracker.h' l='50' ll='131'/>
+<size>64</size>
+<mbr r='llvm::AliasSet::PointerRec::Val' o='0' t='llvm::Value *'/>
+<mbr r='llvm::AliasSet::PointerRec::PrevInList' o='64' t='llvm::AliasSet::PointerRec **'/>
+<mbr r='llvm::AliasSet::PointerRec::NextInList' o='128' t='llvm::AliasSet::PointerRec *'/>
+<mbr r='llvm::AliasSet::PointerRec::AS' o='192' t='llvm::AliasSet *'/>
+<mbr r='llvm::AliasSet::PointerRec::Size' o='256' t='uint64_t'/>
+<mbr r='llvm::AliasSet::PointerRec::AAInfo' o='320' t='llvm::AAMDNodes'/>
+<fun r='_ZN4llvm8AliasSet10PointerRecC1EPNS_5ValueE'/>
+<fun r='_ZNK4llvm8AliasSet10PointerRec8getValueEv'/>
+<fun r='_ZNK4llvm8AliasSet10PointerRec7getNextEv'/>
+<fun r='_ZNK4llvm8AliasSet10PointerRec11hasAliasSetEv'/>
+<fun r='_ZN4llvm8AliasSet10PointerRec13setPrevInListEPPS1_'/>
+<fun r='_ZN4llvm8AliasSet10PointerRec19updateSizeAndAAInfoEmRKNS_9AAMDNodesE'/>
+<fun r='_ZNK4llvm8AliasSet10PointerRec7getSizeEv'/>
+<fun r='_ZNK4llvm8AliasSet10PointerRec9getAAInfoEv'/>
+<fun r='_ZN4llvm8AliasSet10PointerRec11getAliasSetERNS_15AliasSetTrackerE'/>
+<fun r='_ZN4llvm8AliasSet10PointerRec11setAliasSetEPS0_'/>
+<fun r='_ZN4llvm8AliasSet10PointerRec13eraseFromListEv'/>

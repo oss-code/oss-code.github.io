@@ -1,0 +1,17 @@
+<def f='pocl/lib/CL/devices/pthread/pocl-pthread_utils.h' l='38' ll='63'/>
+<size>384</size>
+<mbr r='kernel_run_command::data' o='0' t='void *'/>
+<mbr r='kernel_run_command::kernel' o='64' t='cl_kernel'/>
+<mbr r='kernel_run_command::device' o='128' t='cl_device_id'/>
+<mbr r='kernel_run_command::cmd' o='192' t='_cl_command_node *'/>
+<mbr r='kernel_run_command::workgroup' o='256' t='pocl_workgroup_func'/>
+<mbr r='kernel_run_command::kernel_args' o='320' t='struct pocl_argument *'/>
+<mbr r='kernel_run_command::prev' o='384' t='kernel_run_command *'/>
+<mbr r='kernel_run_command::next' o='448' t='kernel_run_command *'/>
+<mbr r='kernel_run_command::ref_count' o='512' t='unsigned long'/>
+<mbr r='kernel_run_command::arguments' o='576' t='void **'/>
+<mbr r='kernel_run_command::arguments2' o='640' t='void **'/>
+<mbr r='kernel_run_command::lock' o='1024' t='pthread_mutex_t'/>
+<mbr r='kernel_run_command::remaining_wgs' o='1536' t='size_t'/>
+<mbr r='kernel_run_command::wgs_dealt' o='1600' t='size_t'/>
+<mbr r='kernel_run_command::pc' o='2048' t='struct pocl_context'/>

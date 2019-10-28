@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/LLVMContext.h' l='143' type='void llvm::LLVMContext::getSyncScopeNames(SmallVectorImpl&lt;llvm::StringRef&gt; &amp; SSNs) const'/>
+<doc f='include/llvm-6.0/llvm/IR/LLVMContext.h' l='140'>/// getSyncScopeNames - Populates client supplied SmallVector with
+  /// synchronization scope names registered with LLVMContext.  Synchronization
+  /// scope names are ordered by increasing synchronization scope IDs.</doc>

@@ -1,0 +1,9 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='321' type='void (*)(cl_device_id, cl_command_queue)'/>
+<offset>128</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='318'>/* join is called by clFinish and this function blocks until all the enqueued
+     commands are finished. Called by the user thread; see notify_cmdq_finished
+     for the driver thread counterpart. */</doc>
+<use f='pocl/lib/CL/clFinish.c' l='39' u='r' c='POclFinish'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='132' u='w' c='pocl_basic_init_device_ops'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='149' u='w' c='pocl_cuda_init_device_ops'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='88' u='w' c='pocl_pthread_init_device_ops'/>

@@ -1,0 +1,98 @@
+<inh f='include/llvm-6.0/llvm/IR/Metadata.h' l='58' c='llvm::Metadata'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='862' ll='1098'/>
+<ovr f='include/llvm-6.0/llvm/IR/Metadata.h' l='1104' c='llvm::MDTuple'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='846'>/// \brief Metadata node.
+///
+/// Metadata nodes can be uniqued, like constants, or distinct.  Temporary
+/// metadata nodes (with full support for RAUW) can be used to delay uniquing
+/// until forward references are known.  The basic metadata node is an \a
+/// MDTuple.
+///
+/// There is limited support for RAUW at construction time.  At construction
+/// time, if any operand is a temporary node (or an unresolved uniqued node,
+/// which indicates a transitive temporary operand), the node itself will be
+/// unresolved.  As soon as all operands become resolved, it will drop RAUW
+/// support permanently.
+///
+/// If an unresolved node is part of a cycle, \a resolveCycles() needs
+/// to be called on some member of the cycle once all temporary nodes have been
+/// replaced.</doc>
+<mbr r='llvm::MDNode::NumOperands' o='64' t='unsigned int'/>
+<mbr r='llvm::MDNode::NumUnresolved' o='96' t='unsigned int'/>
+<mbr r='llvm::MDNode::Context' o='128' t='llvm::ContextAndReplaceableUses'/>
+<fun r='_ZN4llvm6MDNodeC1ERNS_11LLVMContextEjNS_8Metadata11StorageTypeENS_8ArrayRefIPS3_EES7_'/>
+<fun r='_ZN4llvm6MDNodeD1Ev'/>
+<fun r='_ZN4llvm6MDNodenwEmj'/>
+<fun r='_ZN4llvm6MDNodedlEPv'/>
+<fun r='_ZN4llvm6MDNodedlEPvj'/>
+<fun r='_ZN4llvm6MDNodedlEPvjb'/>
+<fun r='_ZN4llvm6MDNode17dropAllReferencesEv'/>
+<fun r='_ZN4llvm6MDNode13mutable_beginEv'/>
+<fun r='_ZN4llvm6MDNode11mutable_endEv'/>
+<fun r='_ZN4llvm6MDNode16mutable_operandsEv'/>
+<fun r='_ZN4llvm6MDNodeC1ERKS0_'/>
+<fun r='_ZN4llvm6MDNodeaSERKS0_'/>
+<fun r='_ZN4llvm6MDNodenwEm'/>
+<fun r='_ZN4llvm6MDNode3getERNS_11LLVMContextENS_8ArrayRefIPNS_8MetadataEEE'/>
+<fun r='_ZN4llvm6MDNode11getIfExistsERNS_11LLVMContextENS_8ArrayRefIPNS_8MetadataEEE'/>
+<fun r='_ZN4llvm6MDNode11getDistinctERNS_11LLVMContextENS_8ArrayRefIPNS_8MetadataEEE'/>
+<fun r='_ZN4llvm6MDNode12getTemporaryERNS_11LLVMContextENS_8ArrayRefIPNS_8MetadataEEE'/>
+<fun r='_ZNK4llvm6MDNode5cloneEv'/>
+<fun r='_ZN4llvm6MDNode15deleteTemporaryEPS0_'/>
+<fun r='_ZNK4llvm6MDNode10getContextEv'/>
+<fun r='_ZN4llvm6MDNode18replaceOperandWithEjPNS_8MetadataE'/>
+<fun r='_ZNK4llvm6MDNode10isResolvedEv'/>
+<fun r='_ZNK4llvm6MDNode9isUniquedEv'/>
+<fun r='_ZNK4llvm6MDNode10isDistinctEv'/>
+<fun r='_ZNK4llvm6MDNode11isTemporaryEv'/>
+<fun r='_ZN4llvm6MDNode18replaceAllUsesWithEPNS_8MetadataE'/>
+<fun r='_ZN4llvm6MDNode13resolveCyclesEv'/>
+<fun r='_ZN4llvm6MDNode7resolveEv'/>
+<fun r='_ZN4llvm6MDNode20replaceWithPermanentESt10unique_ptrIT_NS_17TempMDNodeDeleterEE'/>
+<fun r='_ZN4llvm6MDNode18replaceWithUniquedESt10unique_ptrIT_NS_17TempMDNodeDeleterEE'/>
+<fun r='_ZN4llvm6MDNode19replaceWithDistinctESt10unique_ptrIT_NS_17TempMDNodeDeleterEE'/>
+<fun r='_ZN4llvm6MDNode24replaceWithPermanentImplEv'/>
+<fun r='_ZN4llvm6MDNode22replaceWithUniquedImplEv'/>
+<fun r='_ZN4llvm6MDNode23replaceWithDistinctImplEv'/>
+<fun r='_ZN4llvm6MDNode10setOperandEjPNS_8MetadataE'/>
+<fun r='_ZN4llvm6MDNode22storeDistinctInContextEv'/>
+<fun r='_ZN4llvm6MDNode9storeImplEPT_NS_8Metadata11StorageTypeERT0_'/>
+<fun r='_ZN4llvm6MDNode9storeImplEPT_NS_8Metadata11StorageTypeE'/>
+<fun r='_ZN4llvm6MDNode20handleChangedOperandEPvPNS_8MetadataE'/>
+<fun r='_ZN4llvm6MDNode19dropReplaceableUsesEv'/>
+<fun r='_ZN4llvm6MDNode25resolveAfterOperandChangeEPNS_8MetadataES2_'/>
+<fun r='_ZN4llvm6MDNode31decrementUnresolvedOperandCountEv'/>
+<fun r='_ZN4llvm6MDNode23countUnresolvedOperandsEv'/>
+<fun r='_ZN4llvm6MDNode11makeUniquedEv'/>
+<fun r='_ZN4llvm6MDNode12makeDistinctEv'/>
+<fun r='_ZN4llvm6MDNode16deleteAsSubclassEv'/>
+<fun r='_ZN4llvm6MDNode8uniquifyEv'/>
+<fun r='_ZN4llvm6MDNode14eraseFromStoreEv'/>
+<fun r='_ZN4llvm6MDNode23dispatchRecalculateHashEPT_St17integral_constantIbLb1EE'/>
+<fun r='_ZN4llvm6MDNode23dispatchRecalculateHashEPT_St17integral_constantIbLb0EE'/>
+<fun r='_ZN4llvm6MDNode17dispatchResetHashEPT_St17integral_constantIbLb1EE'/>
+<fun r='_ZN4llvm6MDNode17dispatchResetHashEPT_St17integral_constantIbLb0EE'/>
+<fun r='_ZNK4llvm6MDNode8op_beginEv'/>
+<fun r='_ZNK4llvm6MDNode6op_endEv'/>
+<fun r='_ZNK4llvm6MDNode8operandsEv'/>
+<fun r='_ZNK4llvm6MDNode10getOperandEj'/>
+<fun r='_ZNK4llvm6MDNode14getNumOperandsEv'/>
+<fun r='_ZN4llvm6MDNode7classofEPKNS_8MetadataE'/>
+<fun r='_ZNK4llvm6MDNode18isTBAAVtableAccessEv'/>
+<fun r='_ZN4llvm6MDNode11concatenateEPS0_S1_'/>
+<fun r='_ZN4llvm6MDNode9intersectEPS0_S1_'/>
+<fun r='_ZN4llvm6MDNode18getMostGenericTBAAEPS0_S1_'/>
+<fun r='_ZN4llvm6MDNode20getMostGenericFPMathEPS0_S1_'/>
+<fun r='_ZN4llvm6MDNode19getMostGenericRangeEPS0_S1_'/>
+<fun r='_ZN4llvm6MDNode24getMostGenericAliasScopeEPS0_S1_'/>
+<fun r='_ZN4llvm6MDNode40getMostGenericAlignmentOrDereferenceableEPS0_S1_'/>
+<fun r='_ZN4llvm6MDNode3getERNS_11LLVMContextENS_8ArrayRefIPNS_8MetadataEEE'/>
+<fun r='_ZN4llvm6MDNode11getIfExistsERNS_11LLVMContextENS_8ArrayRefIPNS_8MetadataEEE'/>
+<fun r='_ZN4llvm6MDNode11getDistinctERNS_11LLVMContextENS_8ArrayRefIPNS_8MetadataEEE'/>
+<fun r='_ZN4llvm6MDNode12getTemporaryERNS_11LLVMContextENS_8ArrayRefIPNS_8MetadataEEE'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='153' c='llvm::DINode'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1264' c='llvm::DILocation'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2129' c='llvm::DIExpression'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2621' c='llvm::DIGlobalVariableExpression'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2668' c='llvm::DIMacroNode'/>

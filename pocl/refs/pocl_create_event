@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/pocl_util.h' l='101' type='cl_int pocl_create_event(cl_event * event, cl_command_queue command_queue, cl_command_type command_type, size_t num_buffers, const cl_mem * buffers, cl_context context)'/>
+<doc f='pocl/lib/CL/pocl_util.h' l='100'>/* Function for creating events */</doc>
+<use f='pocl/lib/CL/clCreateUserEvent.c' l='12' u='c' c='POclCreateUserEvent'/>
+<def f='pocl/lib/CL/pocl_util.c' l='374' ll='412' type='cl_int pocl_create_event(cl_event * event, cl_command_queue command_queue, cl_command_type command_type, size_t num_buffers, const cl_mem * buffers, cl_context context)'/>
+<use f='pocl/lib/CL/pocl_util.c' l='485' u='c' c='pocl_create_command'/>

@@ -1,0 +1,3 @@
+<def f='include/llvm-6.0/llvm/Support/FileSystem.h' l='995' ll='1025' type='llvm::sys::fs::recursive_directory_iterator &amp; llvm::sys::fs::recursive_directory_iterator::increment(std::error_code &amp; ec)'/>
+<doc f='include/llvm-6.0/llvm/Support/FileSystem.h' l='994'>// No operator++ because we need error_code.</doc>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='108' u='c' c='pocl_rm_rf'/>

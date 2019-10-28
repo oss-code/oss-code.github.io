@@ -1,0 +1,6 @@
+<use f='pocl/lib/llvmopencl/Barrier.h' l='99' u='c' c='_ZN4pocl7Barrier14hasOnlyBarrierEPKN4llvm10BasicBlockE'/>
+<def f='pocl/lib/llvmopencl/Barrier.h' l='123' ll='129' type='static bool pocl::Barrier::endsWithBarrier(const llvm::BasicBlock * bb)'/>
+<doc f='pocl/lib/llvmopencl/Barrier.h' l='121'>// Returns true in case the given basic block ends with a barrier,
+    // that is, contains only a branch instruction after a barrier call.</doc>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='97' u='c' c='_ZN4pocl20CanonicalizeBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='192' u='c' c='_ZN4pocl20CanonicalizeBarriers15ProcessFunctionERN4llvm8FunctionE'/>

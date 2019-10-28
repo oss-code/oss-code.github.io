@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='531' type='llvm::FunctionPass * llvm::createStripGCRelocatesPass()'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='526'>//===----------------------------------------------------------------------===//
+//
+// StripGCRelocates - Remove GC relocates that have been inserted by
+// RewriteStatepointsForGC. The resulting IR is incorrect, but this is useful
+// for manual inspection.</doc>

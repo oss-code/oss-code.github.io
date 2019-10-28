@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>bufalloc.h source code [pocl/lib/CL/devices/bufalloc.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="allocation_strategy,chunk_info,memory_region "/>
+<link rel="stylesheet" href="../../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/CL/devices/bufalloc.h'; var root_path = '../../../..'; var data_path = '../../../../../data';</script>
+<script src='../../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../../..'>pocl</a>/<a href='../..'>lib</a>/<a href='..'>CL</a>/<a href='./'>devices</a>/<a href='bufalloc.h.html'>bufalloc.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* OpenCL runtime/device driver library: custom buffer allocator</i></td></tr>
+<tr><th id="2">2</th><td><i></i></td></tr>
+<tr><th id="3">3</th><td><i>   Copyright (c) 2011 Tampere University of Technology</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>   Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="6">6</th><td><i>   of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="7">7</th><td><i>   in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="8">8</th><td><i>   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="9">9</th><td><i>   copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="10">10</th><td><i>   furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="11">11</th><td><i></i></td></tr>
+<tr><th id="12">12</th><td><i>   The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="13">13</th><td><i>   all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="14">14</th><td><i></i></td></tr>
+<tr><th id="15">15</th><td><i>   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="16">16</th><td><i>   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="17">17</th><td><i>   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="18">18</th><td><i>   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="19">19</th><td><i>   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="20">20</th><td><i>   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="21">21</th><td><i>   THE SOFTWARE.</i></td></tr>
+<tr><th id="22">22</th><td><i>*/</i></td></tr>
+<tr><th id="23">23</th><td><i class="doc">/**</i></td></tr>
+<tr><th id="24">24</th><td><i class="doc"> * This file implements a customized memory allocator for OpenCL buffers.</i></td></tr>
+<tr><th id="25">25</th><td><i class="doc"> *</i></td></tr>
+<tr><th id="26">26</th><td><i class="doc"> * <span class="command">@see</span> bufalloc.c</i></td></tr>
+<tr><th id="27">27</th><td><i class="doc"> *<span class="command"> @file</span> bufalloc.h</i></td></tr>
+<tr><th id="28">28</th><td><i class="doc"> */</i></td></tr>
+<tr><th id="29">29</th><td></td></tr>
+<tr><th id="30">30</th><td><u>#<span data-ppcond="30">ifndef</span> <span class="macro" data-ref="_M/BUFALLOC_H">BUFALLOC_H</span></u></td></tr>
+<tr><th id="31">31</th><td><u>#define <dfn class="macro" id="_M/BUFALLOC_H" data-ref="_M/BUFALLOC_H">BUFALLOC_H</dfn></u></td></tr>
+<tr><th id="32">32</th><td></td></tr>
+<tr><th id="33">33</th><td><u>#<span data-ppcond="33">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="34">34</th><td><b>extern</b> <q>"C"</q> {</td></tr>
+<tr><th id="35">35</th><td><u>#<span data-ppcond="33">endif</span></u></td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td><u>#include &lt;stddef.h&gt;</u></td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td><u>#<span data-ppcond="39">ifndef</span> <span class="macro" data-ref="_M/__TCE_STANDALONE__">__TCE_STANDALONE__</span></u></td></tr>
+<tr><th id="40">40</th><td></td></tr>
+<tr><th id="41">41</th><td><u>#include <a href="../pocl_cl.h.html">"pocl_cl.h"</a></u></td></tr>
+<tr><th id="42">42</th><td></td></tr>
+<tr><th id="43">43</th><td><b>typedef</b> <a class="typedef" href="../pocl_cl.h.html#pocl_lock_t" title='pocl_lock_t' data-type='pthread_mutex_t' data-ref="pocl_lock_t">pocl_lock_t</a> <dfn class="typedef" id="ba_lock_t" title='ba_lock_t' data-type='pocl_lock_t' data-ref="ba_lock_t">ba_lock_t</dfn>;</td></tr>
+<tr><th id="44">44</th><td></td></tr>
+<tr><th id="45">45</th><td><u>#define <dfn class="macro" id="_M/BA_LOCK" data-ref="_M/BA_LOCK">BA_LOCK</dfn>(LOCK) POCL_LOCK(LOCK)</u></td></tr>
+<tr><th id="46">46</th><td><u>#define <dfn class="macro" id="_M/BA_UNLOCK" data-ref="_M/BA_UNLOCK">BA_UNLOCK</dfn>(LOCK) POCL_UNLOCK(LOCK)</u></td></tr>
+<tr><th id="47">47</th><td><u>#define <dfn class="macro" id="_M/BA_INIT_LOCK" data-ref="_M/BA_INIT_LOCK">BA_INIT_LOCK</dfn>(LOCK) POCL_INIT_LOCK(LOCK)</u></td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td><i>/* The qualifier to add in case using non-default</i></td></tr>
+<tr><th id="50">50</th><td><i>   address space. */</i></td></tr>
+<tr><th id="51">51</th><td><u>#<span data-ppcond="51">ifndef</span> <span class="macro" data-ref="_M/AS_QUALIFIER">AS_QUALIFIER</span></u></td></tr>
+<tr><th id="52">52</th><td><u>#define <dfn class="macro" id="_M/AS_QUALIFIER" data-ref="_M/AS_QUALIFIER">AS_QUALIFIER</dfn></u></td></tr>
+<tr><th id="53">53</th><td><u>#<span data-ppcond="51">endif</span></u></td></tr>
+<tr><th id="54">54</th><td></td></tr>
+<tr><th id="55">55</th><td><u>#<span data-ppcond="39">else</span></u></td></tr>
+<tr><th id="56">56</th><td><i>/* TCE standalone mode. */</i></td></tr>
+<tr><th id="57">57</th><td></td></tr>
+<tr><th id="58">58</th><td><u>#include "tce-sync.h"</u></td></tr>
+<tr><th id="59">59</th><td><u>#include "dthread.h"</u></td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td><u>#ifdef NO_LOCKING</u></td></tr>
+<tr><th id="62">62</th><td><b>typedef</b> <em>int</em> ba_lock_t;</td></tr>
+<tr><th id="63">63</th><td><u>#define BA_LOCK(LOCK)</u></td></tr>
+<tr><th id="64">64</th><td><u>#define BA_UNLOCK(LOCK)</u></td></tr>
+<tr><th id="65">65</th><td><u>#define BA_INIT_LOCK(LOCK)</u></td></tr>
+<tr><th id="66">66</th><td><u>#else</u></td></tr>
+<tr><th id="67">67</th><td><b>typedef</b> tce_sm_lock ba_lock_t;</td></tr>
+<tr><th id="68">68</th><td><u>#define BA_LOCK(LOCK) tce_sync_spin_lock (&amp;LOCK)</u></td></tr>
+<tr><th id="69">69</th><td><u>#define BA_UNLOCK(LOCK) tce_sync_unlock (&amp;LOCK)</u></td></tr>
+<tr><th id="70">70</th><td><u>#define BA_INIT_LOCK(LOCK) LOCK = 0</u></td></tr>
+<tr><th id="71">71</th><td><u>#endif</u></td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td><u>#ifndef AS_QUALIFIER</u></td></tr>
+<tr><th id="74">74</th><td><u>#define AS_QUALIFIER</u></td></tr>
+<tr><th id="75">75</th><td><u>#endif</u></td></tr>
+<tr><th id="76">76</th><td></td></tr>
+<tr><th id="77">77</th><td><u>#<span data-ppcond="39">endif</span></u></td></tr>
+<tr><th id="78">78</th><td></td></tr>
+<tr><th id="79">79</th><td><i>/* The number of chunks in a region should be scaled to an approximate</i></td></tr>
+<tr><th id="80">80</th><td><i>   maximum number of kernel buffer arguments. Running out of chunk</i></td></tr>
+<tr><th id="81">81</th><td><i>   data structures might leave region space unused due to that only. */</i></td></tr>
+<tr><th id="82">82</th><td><u>#<span data-ppcond="82">ifndef</span> <span class="macro" data-ref="_M/MAX_CHUNKS_IN_REGION">MAX_CHUNKS_IN_REGION</span></u></td></tr>
+<tr><th id="83">83</th><td><u>#define <dfn class="macro" id="_M/MAX_CHUNKS_IN_REGION" data-ref="_M/MAX_CHUNKS_IN_REGION">MAX_CHUNKS_IN_REGION</dfn> 1024</u></td></tr>
+<tr><th id="84">84</th><td><u>#<span data-ppcond="82">endif</span></u></td></tr>
+<tr><th id="85">85</th><td></td></tr>
+<tr><th id="86">86</th><td><i>/* address-space agnostic memory address */</i></td></tr>
+<tr><th id="87">87</th><td><b>typedef</b> <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="typedef" id="memory_address_t" title='memory_address_t' data-type='size_t' data-ref="memory_address_t">memory_address_t</dfn>;</td></tr>
+<tr><th id="88">88</th><td></td></tr>
+<tr><th id="89">89</th><td><i>/* the different strategies for how to allocate buffers from a memory region */</i></td></tr>
+<tr><th id="90">90</th><td><b>enum</b> <dfn class="type def" id="allocation_strategy" title='allocation_strategy' data-ref="allocation_strategy">allocation_strategy</dfn></td></tr>
+<tr><th id="91">91</th><td>  {</td></tr>
+<tr><th id="92">92</th><td>    <dfn class="enum" id="allocation_strategy::BALLOCS_WASTEFUL" title='allocation_strategy::BALLOCS_WASTEFUL' data-ref="allocation_strategy::BALLOCS_WASTEFUL">BALLOCS_WASTEFUL</dfn>, <i>/* try to fit to the end of the region first</i></td></tr>
+<tr><th id="93">93</th><td><i>                         (consumes the whole region quicker) */</i></td></tr>
+<tr><th id="94">94</th><td>    <dfn class="enum" id="allocation_strategy::BALLOCS_TIGHT" title='allocation_strategy::BALLOCS_TIGHT' data-ref="allocation_strategy::BALLOCS_TIGHT">BALLOCS_TIGHT</dfn>     <i>/* try to reuse old freed chunks first</i></td></tr>
+<tr><th id="95">95</th><td><i>                         (for the case when the region grows dynamically e.g. towards stack)</i></td></tr>
+<tr><th id="96">96</th><td><i>                      */</i></td></tr>
+<tr><th id="97">97</th><td>  };</td></tr>
+<tr><th id="98">98</th><td></td></tr>
+<tr><th id="99">99</th><td><u>#<span data-ppcond="99">ifdef</span> <span class="macro" data-ref="_M/__TCE_STANDALONE__">__TCE_STANDALONE__</span></u></td></tr>
+<tr><th id="100">100</th><td><b>typedef</b> AS_QUALIFIER <em>volatile</em> <b>struct</b> chunk_info chunk_info_t;</td></tr>
+<tr><th id="101">101</th><td><b>typedef</b> AS_QUALIFIER <em>volatile</em> <b>struct</b> memory_region memory_region_t;</td></tr>
+<tr><th id="102">102</th><td><u>#<span data-ppcond="99">else</span></u></td></tr>
+<tr><th id="103">103</th><td><b>typedef</b> <a class="macro" href="#52" title="" data-ref="_M/AS_QUALIFIER">AS_QUALIFIER</a> <b>struct</b> <a class="type" href="#chunk_info" title='chunk_info' data-ref="chunk_info">chunk_info</a> <dfn class="typedef" id="chunk_info_t" title='chunk_info_t' data-type='struct chunk_info' data-ref="chunk_info_t">chunk_info_t</dfn>;</td></tr>
+<tr><th id="104">104</th><td><b>typedef</b> <a class="macro" href="#52" title="" data-ref="_M/AS_QUALIFIER">AS_QUALIFIER</a> <b>struct</b> <a class="type" href="#memory_region" title='memory_region' data-ref="memory_region">memory_region</a> <dfn class="typedef" id="memory_region_t" title='memory_region_t' data-type='struct memory_region' data-ref="memory_region_t">memory_region_t</dfn>;</td></tr>
+<tr><th id="105">105</th><td><u>#<span data-ppcond="99">endif</span></u></td></tr>
+<tr><th id="106">106</th><td></td></tr>
+<tr><th id="107">107</th><td><i>/* Info of a single "chunk" inside a memory region. Chunk is a piece</i></td></tr>
+<tr><th id="108">108</th><td><i>   of memory that has been allocated to a buffer (but might have been</i></td></tr>
+<tr><th id="109">109</th><td><i>   unallocated). Initially there's only one special chunk representing</i></td></tr>
+<tr><th id="110">110</th><td><i>   the whole region as one unallocated chunk. */</i></td></tr>
+<tr><th id="111">111</th><td><b>struct</b> <dfn class="type def" id="chunk_info" title='chunk_info' data-ref="chunk_info">chunk_info</dfn></td></tr>
+<tr><th id="112">112</th><td>{</td></tr>
+<tr><th id="113">113</th><td>  <a class="typedef" href="#memory_address_t" title='memory_address_t' data-type='size_t' data-ref="memory_address_t">memory_address_t</a> <dfn class="decl" id="chunk_info::start_address" title='chunk_info::start_address' data-ref="chunk_info::start_address">start_address</dfn>;</td></tr>
+<tr><th id="114">114</th><td>  <em>int</em> <dfn class="decl" id="chunk_info::is_allocated" title='chunk_info::is_allocated' data-ref="chunk_info::is_allocated">is_allocated</dfn>;</td></tr>
+<tr><th id="115">115</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="chunk_info::size" title='chunk_info::size' data-ref="chunk_info::size">size</dfn>; <i>/* size in bytes */</i></td></tr>
+<tr><th id="116">116</th><td>  <a class="typedef" href="#chunk_info_t" title='chunk_info_t' data-type='struct chunk_info' data-ref="chunk_info_t">chunk_info_t</a>* <dfn class="decl" id="chunk_info::next" title='chunk_info::next' data-ref="chunk_info::next">next</dfn>;</td></tr>
+<tr><th id="117">117</th><td>  <a class="typedef" href="#chunk_info_t" title='chunk_info_t' data-type='struct chunk_info' data-ref="chunk_info_t">chunk_info_t</a>* <dfn class="decl" id="chunk_info::prev" title='chunk_info::prev' data-ref="chunk_info::prev">prev</dfn>;</td></tr>
+<tr><th id="118">118</th><td>  <a class="typedef" href="#chunk_info_t" title='chunk_info_t' data-type='struct chunk_info' data-ref="chunk_info_t">chunk_info_t</a>* <dfn class="decl" id="chunk_info::children" title='chunk_info::children' data-ref="chunk_info::children">children</dfn>;</td></tr>
+<tr><th id="119">119</th><td>  <a class="typedef" href="#chunk_info_t" title='chunk_info_t' data-type='struct chunk_info' data-ref="chunk_info_t">chunk_info_t</a>* <dfn class="decl" id="chunk_info::parent" title='chunk_info::parent' data-ref="chunk_info::parent">parent</dfn>;</td></tr>
+<tr><th id="120">120</th><td>  <a class="typedef" href="#memory_region_t" title='memory_region_t' data-type='struct memory_region' data-ref="memory_region_t">memory_region_t</a>* <dfn class="decl" id="chunk_info::parent_region" title='chunk_info::parent_region' data-ref="chunk_info::parent_region">parent_region</dfn>;</td></tr>
+<tr><th id="121">121</th><td>};</td></tr>
+<tr><th id="122">122</th><td></td></tr>
+<tr><th id="123">123</th><td><i>/* Represents a single continuous region of memory from which smaller</i></td></tr>
+<tr><th id="124">124</th><td><i>   "chunks" are allocated. Note: this doesn't include the memory space</i></td></tr>
+<tr><th id="125">125</th><td><i>   itself. */</i></td></tr>
+<tr><th id="126">126</th><td><b>struct</b> <dfn class="type def" id="memory_region" title='memory_region' data-ref="memory_region">memory_region</dfn></td></tr>
+<tr><th id="127">127</th><td>{</td></tr>
+<tr><th id="128">128</th><td>  <a class="typedef" href="#chunk_info_t" title='chunk_info_t' data-type='struct chunk_info' data-ref="chunk_info_t">chunk_info_t</a> <dfn class="decl" id="memory_region::all_chunks" title='memory_region::all_chunks' data-ref="memory_region::all_chunks">all_chunks</dfn>[<a class="macro" href="#83" title="1024" data-ref="_M/MAX_CHUNKS_IN_REGION">MAX_CHUNKS_IN_REGION</a>];</td></tr>
+<tr><th id="129">129</th><td>  <a class="typedef" href="#chunk_info_t" title='chunk_info_t' data-type='struct chunk_info' data-ref="chunk_info_t">chunk_info_t</a> *<dfn class="decl" id="memory_region::chunks" title='memory_region::chunks' data-ref="memory_region::chunks">chunks</dfn>;</td></tr>
+<tr><th id="130">130</th><td>  <a class="typedef" href="#chunk_info_t" title='chunk_info_t' data-type='struct chunk_info' data-ref="chunk_info_t">chunk_info_t</a> *<dfn class="decl" id="memory_region::free_chunks" title='memory_region::free_chunks' data-ref="memory_region::free_chunks">free_chunks</dfn>; <i>/* A pointer to a head of a linked list of</i></td></tr>
+<tr><th id="131">131</th><td><i>                                chunk_info records that can be used for</i></td></tr>
+<tr><th id="132">132</th><td><i>                                new allocations. This enables allocating</i></td></tr>
+<tr><th id="133">133</th><td><i>                                the chunk infos statically at compile time,</i></td></tr>
+<tr><th id="134">134</th><td><i>                                or dynamically. In the dynamic case, the</i></td></tr>
+<tr><th id="135">135</th><td><i>                                client of the bufalloc should first ensure</i></td></tr>
+<tr><th id="136">136</th><td><i>                                there is at least one free chunk info before</i></td></tr>
+<tr><th id="137">137</th><td><i>                                trying the allocation. If not, create one. */</i></td></tr>
+<tr><th id="138">138</th><td>  <a class="typedef" href="#chunk_info_t" title='chunk_info_t' data-type='struct chunk_info' data-ref="chunk_info_t">chunk_info_t</a> *<dfn class="decl" id="memory_region::last_chunk" title='memory_region::last_chunk' data-ref="memory_region::last_chunk">last_chunk</dfn>; <i>/* The last chunk in the region (a "sentinel"). In case</i></td></tr>
+<tr><th id="139">139</th><td><i>                               the last chunk is allocated, the region</i></td></tr>
+<tr><th id="140">140</th><td><i>                               is completely full. New chunks should be inserted</i></td></tr>
+<tr><th id="141">141</th><td><i>                               before this chunk. */</i></td></tr>
+<tr><th id="142">142</th><td>  <a class="typedef" href="#memory_region_t" title='memory_region_t' data-type='struct memory_region' data-ref="memory_region_t">memory_region_t</a> *<dfn class="decl" id="memory_region::next" title='memory_region::next' data-ref="memory_region::next">next</dfn>;</td></tr>
+<tr><th id="143">143</th><td>  <a class="typedef" href="#memory_region_t" title='memory_region_t' data-type='struct memory_region' data-ref="memory_region_t">memory_region_t</a> *<dfn class="decl" id="memory_region::prev" title='memory_region::prev' data-ref="memory_region::prev">prev</dfn>;</td></tr>
+<tr><th id="144">144</th><td>  <b>enum</b> <a class="type" href="#allocation_strategy" title='allocation_strategy' data-ref="allocation_strategy">allocation_strategy</a> <dfn class="decl" id="memory_region::strategy" title='memory_region::strategy' data-ref="memory_region::strategy">strategy</dfn>;</td></tr>
+<tr><th id="145">145</th><td>  <em>unsigned</em> <em>short</em> <dfn class="decl" id="memory_region::alignment" title='memory_region::alignment' data-ref="memory_region::alignment">alignment</dfn>; <i>/* alignment of the returned chunks in a 2's exponent byte count */</i></td></tr>
+<tr><th id="146">146</th><td>  <a class="typedef" href="#ba_lock_t" title='ba_lock_t' data-type='pocl_lock_t' data-ref="ba_lock_t">ba_lock_t</a> <dfn class="decl" id="memory_region::lock" title='memory_region::lock' data-ref="memory_region::lock">lock</dfn>;</td></tr>
+<tr><th id="147">147</th><td>};</td></tr>
+<tr><th id="148">148</th><td></td></tr>
+<tr><th id="149">149</th><td><u>#<span data-ppcond="149">ifdef</span> <span class="macro" data-ref="_M/__GNUC__">__GNUC__</span></u></td></tr>
+<tr><th id="150">150</th><td><u>#pragma GCC visibility push(hidden)</u></td></tr>
+<tr><th id="151">151</th><td><u>#<span data-ppcond="149">endif</span></u></td></tr>
+<tr><th id="152">152</th><td></td></tr>
+<tr><th id="153">153</th><td><a class="typedef" href="#chunk_info_t" title='chunk_info_t' data-type='struct chunk_info' data-ref="chunk_info_t">chunk_info_t</a> *<a class="decl" href="bufalloc.c.html#alloc_buffer_from_region" title='alloc_buffer_from_region' data-ref="alloc_buffer_from_region" id="alloc_buffer_from_region">alloc_buffer_from_region</a>(<a class="typedef" href="#memory_region_t" title='memory_region_t' data-type='struct memory_region' data-ref="memory_region_t">memory_region_t</a> *<dfn class="local col1 decl" id="1region" title='region' data-type='memory_region_t *' data-ref="1region">region</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col2 decl" id="2size" title='size' data-type='size_t' data-ref="2size">size</dfn>);</td></tr>
+<tr><th id="154">154</th><td><a class="typedef" href="#chunk_info_t" title='chunk_info_t' data-type='struct chunk_info' data-ref="chunk_info_t">chunk_info_t</a> *<a class="decl" href="bufalloc.c.html#alloc_buffer" title='alloc_buffer' data-ref="alloc_buffer" id="alloc_buffer">alloc_buffer</a>(<a class="typedef" href="#memory_region_t" title='memory_region_t' data-type='struct memory_region' data-ref="memory_region_t">memory_region_t</a> *<dfn class="local col3 decl" id="3regions" title='regions' data-type='memory_region_t *' data-ref="3regions">regions</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col4 decl" id="4size" title='size' data-type='size_t' data-ref="4size">size</dfn>);</td></tr>
+<tr><th id="155">155</th><td></td></tr>
+<tr><th id="156">156</th><td><a class="typedef" href="#memory_region_t" title='memory_region_t' data-type='struct memory_region' data-ref="memory_region_t">memory_region_t</a> *<a class="decl" href="bufalloc.c.html#free_buffer" title='free_buffer' data-ref="free_buffer" id="free_buffer">free_buffer</a> (<a class="typedef" href="#memory_region_t" title='memory_region_t' data-type='struct memory_region' data-ref="memory_region_t">memory_region_t</a> *<dfn class="local col5 decl" id="5regions" title='regions' data-type='memory_region_t *' data-ref="5regions">regions</dfn>, <a class="typedef" href="#memory_address_t" title='memory_address_t' data-type='size_t' data-ref="memory_address_t">memory_address_t</a> <dfn class="local col6 decl" id="6addr" title='addr' data-type='memory_address_t' data-ref="6addr">addr</dfn>);</td></tr>
+<tr><th id="157">157</th><td><em>void</em> <a class="decl" href="bufalloc.c.html#free_chunk" title='free_chunk' data-ref="free_chunk" id="free_chunk">free_chunk</a>(<a class="typedef" href="#chunk_info_t" title='chunk_info_t' data-type='struct chunk_info' data-ref="chunk_info_t">chunk_info_t</a>* <dfn class="local col7 decl" id="7chunk" title='chunk' data-type='chunk_info_t *' data-ref="7chunk">chunk</dfn>);</td></tr>
+<tr><th id="158">158</th><td></td></tr>
+<tr><th id="159">159</th><td><em>void</em> <a class="decl" href="bufalloc.c.html#init_mem_region" title='init_mem_region' data-ref="init_mem_region" id="init_mem_region">init_mem_region</a> (</td></tr>
+<tr><th id="160">160</th><td>    <a class="typedef" href="#memory_region_t" title='memory_region_t' data-type='struct memory_region' data-ref="memory_region_t">memory_region_t</a> *<dfn class="local col8 decl" id="8region" title='region' data-type='memory_region_t *' data-ref="8region">region</dfn>, <a class="typedef" href="#memory_address_t" title='memory_address_t' data-type='size_t' data-ref="memory_address_t">memory_address_t</a> <dfn class="local col9 decl" id="9start" title='start' data-type='memory_address_t' data-ref="9start">start</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col0 decl" id="10size" title='size' data-type='size_t' data-ref="10size">size</dfn>);</td></tr>
+<tr><th id="161">161</th><td></td></tr>
+<tr><th id="162">162</th><td><a class="typedef" href="#chunk_info_t" title='chunk_info_t' data-type='struct chunk_info' data-ref="chunk_info_t">chunk_info_t</a> *<a class="decl" href="bufalloc.c.html#create_sub_chunk" title='create_sub_chunk' data-ref="create_sub_chunk" id="create_sub_chunk">create_sub_chunk</a> (<a class="typedef" href="#chunk_info_t" title='chunk_info_t' data-type='struct chunk_info' data-ref="chunk_info_t">chunk_info_t</a> *<dfn class="local col1 decl" id="11parent" title='parent' data-type='chunk_info_t *' data-ref="11parent">parent</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col2 decl" id="12offset" title='offset' data-type='size_t' data-ref="12offset">offset</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col3 decl" id="13size" title='size' data-type='size_t' data-ref="13size">size</dfn>);</td></tr>
+<tr><th id="163">163</th><td></td></tr>
+<tr><th id="164">164</th><td><em>void</em></td></tr>
+<tr><th id="165">165</th><td><a class="decl" href="bufalloc.c.html#print_chunk" title='print_chunk' data-ref="print_chunk" id="print_chunk">print_chunk</a> (<a class="typedef" href="#chunk_info_t" title='chunk_info_t' data-type='struct chunk_info' data-ref="chunk_info_t">chunk_info_t</a> *<dfn class="local col4 decl" id="14chunk" title='chunk' data-type='chunk_info_t *' data-ref="14chunk">chunk</dfn>);</td></tr>
+<tr><th id="166">166</th><td></td></tr>
+<tr><th id="167">167</th><td><em>void</em></td></tr>
+<tr><th id="168">168</th><td><a class="decl" href="bufalloc.c.html#print_chunks" title='print_chunks' data-ref="print_chunks" id="print_chunks">print_chunks</a> (<a class="typedef" href="#chunk_info_t" title='chunk_info_t' data-type='struct chunk_info' data-ref="chunk_info_t">chunk_info_t</a> *<dfn class="local col5 decl" id="15first" title='first' data-type='chunk_info_t *' data-ref="15first">first</dfn>);</td></tr>
+<tr><th id="169">169</th><td></td></tr>
+<tr><th id="170">170</th><td><u>#<span data-ppcond="170">ifdef</span> <span class="macro" data-ref="_M/__GNUC__">__GNUC__</span></u></td></tr>
+<tr><th id="171">171</th><td><u>#pragma GCC visibility pop</u></td></tr>
+<tr><th id="172">172</th><td><u>#<span data-ppcond="170">endif</span></u></td></tr>
+<tr><th id="173">173</th><td></td></tr>
+<tr><th id="174">174</th><td><u>#<span data-ppcond="174">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="175">175</th><td>}</td></tr>
+<tr><th id="176">176</th><td><u>#<span data-ppcond="174">endif</span></u></td></tr>
+<tr><th id="177">177</th><td></td></tr>
+<tr><th id="178">178</th><td><u>#<span data-ppcond="30">endif</span></u></td></tr>
+<tr><th id="179">179</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='bufalloc.c.html'>pocl/lib/CL/devices/bufalloc.c</a><br/>Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

@@ -1,0 +1,18 @@
+<dec f='include/stdio.h' l='272' type='FILE * fopen(const char *restrict __filename, const char *restrict __modes)'/>
+<doc f='include/stdio.h' l='268'>/* Open a file and create a new stream for it.
+
+   This function is a possible cancellation point and therefore not
+   marked with __THROW.  */</doc>
+<use f='pocl/examples/EinsteinToolkit/EinsteinToolkit.c' l='1418' u='c' c='main'/>
+<use f='pocl/examples/EinsteinToolkit/EinsteinToolkit.c' l='1428' u='c' c='main'/>
+<use f='pocl/examples/scalarwave/scalarwave.c' l='154' u='c' c='main'/>
+<use f='pocl/examples/trig/trig.c' l='46' u='c' c='main'/>
+<use f='pocl/examples/trig/trig.c' l='48' u='c' c='main'/>
+<use f='pocl/lib/CL/devices/cpuinfo.c' l='85' u='c' c='pocl_cpufreq_get_max'/>
+<use f='pocl/lib/CL/devices/cpuinfo.c' l='122' u='c' c='pocl_cpuinfo_detect_max_clock_frequency'/>
+<use f='pocl/lib/CL/devices/cpuinfo.c' l='171' u='c' c='pocl_cpuinfo_detect_compute_unit_count'/>
+<use f='pocl/lib/CL/devices/cpuinfo.c' l='308' u='c' c='pocl_cpuinfo_get_cpu_name_and_vendor'/>
+<use f='pocl/lib/CL/pocl_tracing.c' l='162' u='c' c='text_tracer_init'/>
+<use f='pocl/lib/poclu/misc.c' l='147' u='c' c='poclu_read_binfile'/>
+<use f='pocl/lib/poclu/misc.c' l='182' u='c' c='poclu_write_file'/>
+<use f='pocl/tests/regression/test_flatten_barrier_subs.cpp' l='33' u='c' c='_Z14read_text_fileRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>

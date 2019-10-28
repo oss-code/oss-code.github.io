@@ -1,0 +1,15 @@
+<dec f='pocl/lib/CL/pocl_llvm_api.h' l='72' type='long'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='546' u='w' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='554' u='w' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='575' u='w' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='693' u='w' c='pocl_llvm_link_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='710' u='w' c='pocl_llvm_link_program'/>
+<def f='pocl/lib/CL/pocl_llvm_utils.cc' l='354' type='long'/>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='362' u='r' c='pocl_llvm_release'/>
+<doc f='pocl/lib/CL/pocl_llvm_utils.cc' l='351'>// TODO FIXME currently pocl_llvm_release() only works when
+// there are zero programs with IRs, because
+// programs hold references to LLVM IRs</doc>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='350' u='w' c='pocl_destroy_llvm_module'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='444' u='w' c='pocl_llvm_generate_workgroup_function_nowrite'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='502' u='w' c='_Z37pocl_update_program_llvm_irs_unlockedP11_cl_programj'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='520' u='w' c='pocl_free_llvm_irs'/>

@@ -1,0 +1,39 @@
+<inh f='include/llvm-6.0/llvm/IR/Constants.h' l='58' c='llvm::ConstantData'/>
+<def f='include/llvm-6.0/llvm/IR/Constants.h' l='84' ll='259'/>
+<size>40</size>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='80'>//===----------------------------------------------------------------------===//
+/// This is the shared class of boolean and integer constants. This class
+/// represents both boolean and integral constants.
+/// @brief Class for constant integers.</doc>
+<mbr r='llvm::ConstantInt::Val' o='192' t='llvm::APInt'/>
+<fun r='_ZN4llvm11ConstantIntC1EPNS_11IntegerTypeERKNS_5APIntE'/>
+<fun r='_ZN4llvm11ConstantInt19destroyConstantImplEv'/>
+<fun r='_ZN4llvm11ConstantIntC1ERKS0_'/>
+<fun r='_ZN4llvm11ConstantInt7getTrueERNS_11LLVMContextE'/>
+<fun r='_ZN4llvm11ConstantInt8getFalseERNS_11LLVMContextE'/>
+<fun r='_ZN4llvm11ConstantInt7getTrueEPNS_4TypeE'/>
+<fun r='_ZN4llvm11ConstantInt8getFalseEPNS_4TypeE'/>
+<fun r='_ZN4llvm11ConstantInt3getEPNS_4TypeEmb'/>
+<fun r='_ZN4llvm11ConstantInt3getEPNS_11IntegerTypeEmb'/>
+<fun r='_ZN4llvm11ConstantInt9getSignedEPNS_11IntegerTypeEl'/>
+<fun r='_ZN4llvm11ConstantInt9getSignedEPNS_4TypeEl'/>
+<fun r='_ZN4llvm11ConstantInt3getERNS_11LLVMContextERKNS_5APIntE'/>
+<fun r='_ZN4llvm11ConstantInt3getEPNS_11IntegerTypeENS_9StringRefEh'/>
+<fun r='_ZN4llvm11ConstantInt3getEPNS_4TypeERKNS_5APIntE'/>
+<fun r='_ZNK4llvm11ConstantInt8getValueEv'/>
+<fun r='_ZNK4llvm11ConstantInt11getBitWidthEv'/>
+<fun r='_ZNK4llvm11ConstantInt12getZExtValueEv'/>
+<fun r='_ZNK4llvm11ConstantInt12getSExtValueEv'/>
+<fun r='_ZNK4llvm11ConstantInt9equalsIntEm'/>
+<fun r='_ZNK4llvm11ConstantInt7getTypeEv'/>
+<fun r='_ZN4llvm11ConstantInt19isValueValidForTypeEPNS_4TypeEm'/>
+<fun r='_ZN4llvm11ConstantInt19isValueValidForTypeEPNS_4TypeEl'/>
+<fun r='_ZNK4llvm11ConstantInt10isNegativeEv'/>
+<fun r='_ZNK4llvm11ConstantInt6isZeroEv'/>
+<fun r='_ZNK4llvm11ConstantInt5isOneEv'/>
+<fun r='_ZNK4llvm11ConstantInt10isMinusOneEv'/>
+<fun r='_ZNK4llvm11ConstantInt10isMaxValueEb'/>
+<fun r='_ZNK4llvm11ConstantInt10isMinValueEb'/>
+<fun r='_ZNK4llvm11ConstantInt3ugeEm'/>
+<fun r='_ZNK4llvm11ConstantInt15getLimitedValueEm'/>
+<fun r='_ZN4llvm11ConstantInt7classofEPKNS_5ValueE'/>

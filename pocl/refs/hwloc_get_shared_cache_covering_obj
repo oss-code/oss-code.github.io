@@ -1,0 +1,8 @@
+<dec f='include/hwloc/helper.h' l='515' type='hwloc_obj_t hwloc_get_shared_cache_covering_obj(hwloc_topology_t topology, hwloc_obj_t obj)'/>
+<def f='include/hwloc/helper.h' l='516' ll='529' type='hwloc_obj_t hwloc_get_shared_cache_covering_obj(hwloc_topology_t topology, hwloc_obj_t obj)'/>
+<use f='pocl/lib/CL/devices/topology/pocl_topology.c' l='140' u='c' c='pocl_topology_detect_device_info'/>
+<use f='pocl/lib/CL/devices/topology/pocl_topology.c' l='155' u='c' c='pocl_topology_detect_device_info'/>
+<doc f='include/hwloc/helper.h' l='510'>/** \brief Get the first cache shared between an object and somebody else.
+ *
+ * \return \c NULL if no cache matches or if an invalid object is given.
+ */</doc>

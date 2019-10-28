@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/devices/common.h' l='90' type='void pocl_ndrange_node_cleanup(_cl_command_node * node)'/>
+<def f='pocl/lib/CL/devices/common.c' l='349' ll='360' type='void pocl_ndrange_node_cleanup(_cl_command_node * node)'/>
+<use f='pocl/lib/CL/devices/common.c' l='665' u='c' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1362' u='c' c='pocl_cuda_finalize_command'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='333' u='c' c='finalize_kernel_command'/>

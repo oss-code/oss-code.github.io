@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='517' type='llvm::FunctionPass * llvm::createPlaceSafepointsPass()'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='509'>//===----------------------------------------------------------------------===//
+//
+// PlaceSafepoints - Rewrite any IR calls to gc.statepoints and insert any
+// safepoint polls (method entry, backedge) that might be required.  This pass
+// does not generate explicit relocation sequences - that&apos;s handled by
+// RewriteStatepointsForGC which can be run at an arbitrary point in the pass
+// order following this pass.
+//</doc>

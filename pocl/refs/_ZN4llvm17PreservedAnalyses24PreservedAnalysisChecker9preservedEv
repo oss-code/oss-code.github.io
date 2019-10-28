@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/PassManager.h' l='284' ll='287' type='bool llvm::PreservedAnalyses::PreservedAnalysisChecker::preserved()'/>
+<doc f='include/llvm-6.0/llvm/IR/PassManager.h' l='281'>/// Returns true if the checker&apos;s analysis was not abandoned and either
+    ///  - the analysis is explicitly preserved or
+    ///  - all analyses are preserved.</doc>
+<use f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='629' u='c' c='_ZN4llvm26CGSCCToFunctionPassAdaptor3runERNS_13LazyCallGraph3SCCERNS_15AnalysisManagerIS2_JRS1_EEES5_RNS_17CGSCCUpdateResultE'/>

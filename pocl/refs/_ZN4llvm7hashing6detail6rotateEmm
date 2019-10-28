@@ -1,0 +1,23 @@
+<def f='include/llvm-6.0/llvm/ADT/Hashing.h' l='170' ll='173' type='uint64_t llvm::hashing::detail::rotate(uint64_t val, size_t shift)'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='207' u='c' c='_ZN4llvm7hashing6detail16hash_9to16_bytesEPKcmm'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='215' u='c' c='_ZN4llvm7hashing6detail17hash_17to32_bytesEPKcmm'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='215' u='c' c='_ZN4llvm7hashing6detail17hash_17to32_bytesEPKcmm'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='216' u='c' c='_ZN4llvm7hashing6detail17hash_17to32_bytesEPKcmm'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='222' u='c' c='_ZN4llvm7hashing6detail17hash_33to64_bytesEPKcmm'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='223' u='c' c='_ZN4llvm7hashing6detail17hash_33to64_bytesEPKcmm'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='225' u='c' c='_ZN4llvm7hashing6detail17hash_33to64_bytesEPKcmm'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='228' u='c' c='_ZN4llvm7hashing6detail17hash_33to64_bytesEPKcmm'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='231' u='c' c='_ZN4llvm7hashing6detail17hash_33to64_bytesEPKcmm'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='232' u='c' c='_ZN4llvm7hashing6detail17hash_33to64_bytesEPKcmm'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='234' u='c' c='_ZN4llvm7hashing6detail17hash_33to64_bytesEPKcmm'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='237' u='c' c='_ZN4llvm7hashing6detail17hash_33to64_bytesEPKcmm'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='268' u='c' c='_ZN4llvm7hashing6detail10hash_state6createEPKcm'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='268' u='c' c='_ZN4llvm7hashing6detail10hash_state6createEPKcm'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='280' u='c' c='_ZN4llvm7hashing6detail10hash_state12mix_32_bytesEPKcRmS5_'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='283' u='c' c='_ZN4llvm7hashing6detail10hash_state12mix_32_bytesEPKcRmS5_'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='291' u='c' c='_ZN4llvm7hashing6detail10hash_state3mixEPKc'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='292' u='c' c='_ZN4llvm7hashing6detail10hash_state3mixEPKc'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='295' u='c' c='_ZN4llvm7hashing6detail10hash_state3mixEPKc'/>
+<doc f='include/llvm-6.0/llvm/ADT/Hashing.h' l='167'>/// \brief Bitwise right rotate.
+/// Normally this will compile to a single instruction, especially if the
+/// shift is a manifest constant.</doc>

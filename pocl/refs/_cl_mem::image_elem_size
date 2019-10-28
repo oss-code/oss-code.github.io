@@ -1,0 +1,20 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1023' type='size_t'/>
+<offset>1792</offset>
+<use f='pocl/lib/CL/clCreateImage.c' l='248' u='w' c='POclCreateImage'/>
+<use f='pocl/lib/CL/clEnqueueCopyBufferToImage.c' l='30' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueCopyImageToBuffer.c' l='29' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueFillImage.c' l='90' u='r' c='POclEnqueueFillImage'/>
+<use f='pocl/lib/CL/clEnqueueFillImage.c' l='93' u='r' c='POclEnqueueFillImage'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='67' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='122' u='r' c='POclEnqueueMapImage'/>
+<use f='pocl/lib/CL/clEnqueueReadImage.c' l='54' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueWriteImage.c' l='28' macro='1' u='r'/>
+<use f='pocl/lib/CL/clGetImageInfo.c' l='22' u='r' c='POclGetImageInfo'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='1218' u='r' c='pocl_basic_copy_image_rect'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='1285' u='r' c='pocl_basic_write_image_rect'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='1336' u='r' c='pocl_basic_read_image_rect'/>
+<use f='pocl/lib/CL/pocl_image_util.c' l='48' u='r' c='origin_to_bytes'/>
+<use f='pocl/lib/CL/pocl_img_buf_cpy.c' l='140' u='r' c='pocl_rect_copy'/>
+<use f='pocl/lib/CL/pocl_img_buf_cpy.c' l='141' u='r' c='pocl_rect_copy'/>
+<use f='pocl/lib/CL/pocl_img_buf_cpy.c' l='151' u='r' c='pocl_rect_copy'/>
+<use f='pocl/lib/CL/pocl_img_buf_cpy.c' l='152' u='r' c='pocl_rect_copy'/>

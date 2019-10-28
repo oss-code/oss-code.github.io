@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Cloning.h' l='74' type='bool'/>
+<offset>8</offset>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Cloning.h' l='70'>/// ContainsDynamicAllocas - This is set to true if the cloned code contains
+  /// a &apos;dynamic&apos; alloca.  Dynamic allocas are allocas that are either not in
+  /// the entry block or they are in the entry block but are not a constant
+  /// size.</doc>

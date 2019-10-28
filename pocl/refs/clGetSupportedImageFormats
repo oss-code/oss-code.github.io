@@ -1,0 +1,6 @@
+<dec f='pocl/include/CL/cl.h' l='1024' type='cl_int clGetSupportedImageFormats(cl_context context, cl_mem_flags flags, cl_mem_object_type image_type, cl_uint num_entries, cl_image_format * image_formats, cl_uint * num_image_formats)'/>
+<use f='pocl/lib/CL/pocl_intfn.h' l='97' c='POclGetSupportedImageFormats'/>
+<use f='pocl/include/CL/cl2.hpp' l='3028' u='c' c='_ZNK2cl7Context24getSupportedImageFormatsEmjPSt6vectorINS_11ImageFormatESaIS2_EE'/>
+<use f='pocl/include/CL/cl2.hpp' l='3041' u='c' c='_ZNK2cl7Context24getSupportedImageFormatsEmjPSt6vectorINS_11ImageFormatESaIS2_EE'/>
+<use f='pocl/tests/runtime/test_clGetSupportedImageFormats.c' l='32' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clGetSupportedImageFormats.c' l='38' u='c' c='main'/>

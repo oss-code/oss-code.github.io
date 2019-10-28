@@ -1,0 +1,25 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='674' type='cl_ulong'/>
+<offset>1600</offset>
+<use f='pocl/lib/CL/clEnqueueCopyBuffer.c' l='66' u='r' c='POclEnqueueCopyBuffer'/>
+<use f='pocl/lib/CL/clEnqueueCopyBuffer.c' l='70' u='r' c='POclEnqueueCopyBuffer'/>
+<use f='pocl/lib/CL/clEnqueueCopyBufferRect.c' l='69' u='r' c='POclEnqueueCopyBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueCopyBufferRect.c' l='73' u='r' c='POclEnqueueCopyBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueCopyBufferToImage.c' l='58' u='r' c='POclEnqueueCopyBufferToImage'/>
+<use f='pocl/lib/CL/clEnqueueCopyImageToBuffer.c' l='57' u='r' c='POclEnqueueCopyImageToBuffer'/>
+<use f='pocl/lib/CL/clEnqueueFillBuffer.c' l='82' u='r' c='POclEnqueueFillBuffer'/>
+<use f='pocl/lib/CL/clEnqueueMapBuffer.c' l='87' u='r' c='POclEnqueueMapBuffer'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='504' u='r' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/clEnqueueReadBuffer.c' l='67' u='r' c='POclEnqueueReadBuffer'/>
+<use f='pocl/lib/CL/clEnqueueReadBufferRect.c' l='91' u='r' c='POclEnqueueReadBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueWriteBuffer.c' l='67' u='r' c='POclEnqueueWriteBuffer'/>
+<use f='pocl/lib/CL/clEnqueueWriteBufferRect.c' l='89' u='r' c='POclEnqueueWriteBufferRect'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='105' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='105' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='260' u='w' c='pocl_init_cpu_device_infos'/>
+<use f='pocl/lib/CL/devices/common.c' l='1194' u='w' c='pocl_setup_device_for_system_memory'/>
+<use f='pocl/lib/CL/devices/common.c' l='1232' u='r' c='pocl_set_buffer_image_limits'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='322' u='w' c='pocl_cuda_init'/>
+<use f='pocl/lib/CL/pocl_img_buf_cpy.c' l='94' u='r' c='pocl_rect_copy'/>
+<use f='pocl/lib/CL/pocl_img_buf_cpy.c' l='112' u='r' c='pocl_rect_copy'/>
+<use f='pocl/lib/CL/pocl_util.c' l='965' u='r' c='pocl_setup_context'/>
+<use f='pocl/lib/CL/pocl_util.c' l='968' u='r' c='pocl_setup_context'/>

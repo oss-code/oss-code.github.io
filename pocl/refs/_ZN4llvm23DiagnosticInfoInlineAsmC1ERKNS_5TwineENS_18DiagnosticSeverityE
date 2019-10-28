@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='139' ll='141' type='void llvm::DiagnosticInfoInlineAsm::DiagnosticInfoInlineAsm(const llvm::Twine &amp; MsgStr, llvm::DiagnosticSeverity Severity = DS_Error)'/>
+<doc f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='136'>/// \p MsgStr is the message to be reported to the frontend.
+  /// This class does not copy \p MsgStr, therefore the reference must be valid
+  /// for the whole life time of the Diagnostic.</doc>

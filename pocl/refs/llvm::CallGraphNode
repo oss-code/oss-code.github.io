@@ -1,0 +1,35 @@
+<def f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='165' ll='285'/>
+<size>40</size>
+<doc f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='161'>/// \brief A node in the call graph for a module.
+///
+/// Typically represents a function in the call graph. There are also special
+/// &quot;null&quot; nodes used to represent theoretical entries in the call graph.</doc>
+<fun r='_ZN4llvm13CallGraphNodeC1EPNS_8FunctionE'/>
+<fun r='_ZN4llvm13CallGraphNodeC1ERKS0_'/>
+<fun r='_ZN4llvm13CallGraphNodeaSERKS0_'/>
+<fun r='_ZN4llvm13CallGraphNodeD1Ev'/>
+<fun r='_ZNK4llvm13CallGraphNode11getFunctionEv'/>
+<fun r='_ZN4llvm13CallGraphNode5beginEv'/>
+<fun r='_ZN4llvm13CallGraphNode3endEv'/>
+<fun r='_ZNK4llvm13CallGraphNode5beginEv'/>
+<fun r='_ZNK4llvm13CallGraphNode3endEv'/>
+<fun r='_ZNK4llvm13CallGraphNode5emptyEv'/>
+<fun r='_ZNK4llvm13CallGraphNode4sizeEv'/>
+<fun r='_ZNK4llvm13CallGraphNode16getNumReferencesEv'/>
+<fun r='_ZNK4llvm13CallGraphNodeixEj'/>
+<fun r='_ZNK4llvm13CallGraphNode4dumpEv'/>
+<fun r='_ZNK4llvm13CallGraphNode5printERNS_11raw_ostreamE'/>
+<fun r='_ZN4llvm13CallGraphNode24removeAllCalledFunctionsEv'/>
+<fun r='_ZN4llvm13CallGraphNode24stealCalledFunctionsFromEPS0_'/>
+<fun r='_ZN4llvm13CallGraphNode17addCalledFunctionENS_8CallSiteEPS0_'/>
+<fun r='_ZN4llvm13CallGraphNode14removeCallEdgeEN9__gnu_cxx17__normal_iteratorIPSt4pairINS_14WeakTrackingVHEPS0_ESt6vectorIS6_SaIS6_EEEE'/>
+<fun r='_ZN4llvm13CallGraphNode17removeCallEdgeForENS_8CallSiteE'/>
+<fun r='_ZN4llvm13CallGraphNode19removeAnyCallEdgeToEPS0_'/>
+<fun r='_ZN4llvm13CallGraphNode23removeOneAbstractEdgeToEPS0_'/>
+<fun r='_ZN4llvm13CallGraphNode15replaceCallEdgeENS_8CallSiteES1_PS0_'/>
+<mbr r='llvm::CallGraphNode::F' o='0' t='llvm::Function *'/>
+<mbr r='llvm::CallGraphNode::CalledFunctions' o='64' t='std::vector&lt;CallRecord&gt;'/>
+<mbr r='llvm::CallGraphNode::NumReferences' o='256' t='unsigned int'/>
+<fun r='_ZN4llvm13CallGraphNode7DropRefEv'/>
+<fun r='_ZN4llvm13CallGraphNode6AddRefEv'/>
+<fun r='_ZN4llvm13CallGraphNode20allReferencesDroppedEv'/>

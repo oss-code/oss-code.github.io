@@ -1,0 +1,10 @@
+<dec f='pocl/lib/CL/pocl_shared.h' l='35' type='void pocl_check_uninit_devices()'/>
+<def f='pocl/lib/CL/clReleaseContext.c' l='86' ll='113' type='void pocl_check_uninit_devices()'/>
+<doc f='pocl/lib/CL/clReleaseContext.c' l='79'>/*
+  This is a workaround for a problem explained below.
+
+  Note this is function *only* used by pocl tests, is subject to change without notice,
+  and only available when compiling in no-ICD mode (= test is directly linked to libpocl).
+*/</doc>
+<use f='pocl/lib/CL/clUnloadCompiler.c' l='34' u='c' c='POclUnloadCompiler'/>
+<use f='pocl/lib/CL/clUnloadPlatformCompiler.c' l='49' u='c' c='POclUnloadPlatformCompiler'/>

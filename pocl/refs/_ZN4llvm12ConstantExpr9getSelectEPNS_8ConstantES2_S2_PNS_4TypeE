@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='1086' type='static llvm::Constant * llvm::ConstantExpr::getSelect(llvm::Constant * C, llvm::Constant * V1, llvm::Constant * V2, llvm::Type * OnlyIfReducedTy = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='1083'>/// Select constant expr
+  ///
+  /// \param OnlyIfReducedTy see \a getWithOperands() docs.</doc>
+<use f='include/llvm-6.0/llvm/IR/ConstantFolder.h' l='247' u='c' c='_ZNK4llvm14ConstantFolder12CreateSelectEPNS_8ConstantES2_S2_'/>

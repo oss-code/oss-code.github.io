@@ -1,0 +1,9 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='368' type='void (*)(cl_command_queue)'/>
+<offset>576</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='364'>/* Called from driver threads to notify every user thread waiting on
+   * command queue finish. See join() for user counterpart.
+   * Driver may chose to not implement this, which will result in
+   * undefined behaviour in multi-threaded user programs. */</doc>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='95' u='w' c='pocl_pthread_init_device_ops'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1256' u='r' c='pocl_update_event_finished_msg'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1257' u='r' c='pocl_update_event_finished_msg'/>

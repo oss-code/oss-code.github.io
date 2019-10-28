@@ -1,0 +1,26 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1155' type='cl_command_queue'/>
+<offset>512</offset>
+<use f='pocl/lib/CL/clGetEventInfo.c' l='33' u='r' c='POclGetEventInfo'/>
+<use f='pocl/lib/CL/clGetEventProfilingInfo.c' l='38' u='r' c='POclGetEventProfilingInfo'/>
+<use f='pocl/lib/CL/clGetEventProfilingInfo.c' l='40' u='r' c='POclGetEventProfilingInfo'/>
+<use f='pocl/lib/CL/clReleaseEvent.c' l='56' u='r' c='POclReleaseEvent'/>
+<use f='pocl/lib/CL/clReleaseEvent.c' l='57' u='r' c='POclReleaseEvent'/>
+<use f='pocl/lib/CL/clReleaseEvent.c' l='60' u='r' c='POclReleaseEvent'/>
+<use f='pocl/lib/CL/clReleaseEvent.c' l='61' u='r' c='POclReleaseEvent'/>
+<use f='pocl/lib/CL/clWaitForEvents.c' l='50' u='r' c='POclWaitForEvents'/>
+<use f='pocl/lib/CL/clWaitForEvents.c' l='54' u='r' c='POclWaitForEvents'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1046' u='r' c='pocl_cuda_submit_node'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1049' u='r' c='pocl_cuda_submit_node'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1049' u='r' c='pocl_cuda_submit_node'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1278' u='r' c='pocl_cuda_notify'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1278' u='r' c='pocl_cuda_notify'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1383' u='r' c='pocl_cuda_update_event'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1430' u='r' c='pocl_cuda_wait_event'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1451' u='r' c='pocl_cuda_free_event_data'/>
+<use f='pocl/lib/CL/pocl_util.c' l='391' u='w' c='pocl_create_event'/>
+<use f='pocl/lib/CL/pocl_util.c' l='544' u='r' c='pocl_command_enqueue'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1165' u='r' c='pocl_update_event_queued'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1182' u='r' c='pocl_update_event_submitted'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1199' u='r' c='pocl_update_event_running_unlocked'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1224' u='r' c='pocl_update_event_finished_msg'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1227' u='r' c='pocl_update_event_finished_msg'/>

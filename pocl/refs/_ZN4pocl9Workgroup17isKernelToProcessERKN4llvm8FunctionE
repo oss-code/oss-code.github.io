@@ -1,0 +1,19 @@
+<dec f='pocl/lib/llvmopencl/Workgroup.h' l='43' type='static bool pocl::Workgroup::isKernelToProcess(const llvm::Function &amp; F)'/>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='92' u='c' c='_ZN12_GLOBAL__N_115AutomaticLocals11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='73' u='c' c='_ZN4pocl22BarrierTailReplication13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='247' u='c' c='_ZN17BreakConstantGEPs13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='64' u='c' c='_ZN4pocl20CanonicalizeBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Flatten.cc' l='87' u='c' c='_ZN12_GLOBAL__N_17Flatten11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/FlattenBarrierSubs.cc' l='116' u='c' c='_ZN12_GLOBAL__N_118FlattenBarrierSubs11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/ImplicitConditionalBarriers.cc' l='90' u='c' c='_ZN4pocl27ImplicitConditionalBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/ImplicitLoopBarriers.cc' l='65' u='c' c='_ZN4pocl20ImplicitLoopBarriers9runOnLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/LoopBarriers.cc' l='63' u='c' c='_ZN4pocl12LoopBarriers9runOnLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/PHIsToAllocas.cc' l='61' u='c' c='_ZN4pocl13PHIsToAllocas13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='104' u='c' c='_ZN4pocl26VariableUniformityAnalysis13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='233' u='c' c='_ZN4pocl9Workgroup11runOnModuleERN4llvm6ModuleE'/>
+<def f='pocl/lib/llvmopencl/Workgroup.cc' l='1429' ll='1459' type='static bool pocl::Workgroup::isKernelToProcess(const llvm::Function &amp; F)'/>
+<doc f='pocl/lib/llvmopencl/Workgroup.cc' l='1427'>// Returns true in case the given function is a kernel that
+// should be processed by the kernel compiler.</doc>
+<use f='pocl/lib/llvmopencl/WorkitemHandlerChooser.cc' l='65' u='c' c='_ZN4pocl22WorkitemHandlerChooser13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='94' u='c' c='_ZN4pocl13WorkitemLoops13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemReplication.cc' l='91' u='c' c='_ZN4pocl19WorkitemReplication13runOnFunctionERN4llvm8FunctionE'/>

@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='447' ll='449' type='bool llvm::AAResults::onlyReadsMemory(const llvm::Function * F)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='438'>/// Checks if the specified function is known to only read from non-volatile
+  /// memory (or not access memory at all).
+  ///
+  /// Functions that unwind the stack are legal for this predicate.
+  ///
+  /// This property allows many common optimizations to be performed in the
+  /// absence of interfering store instructions, such as CSE of strlen calls.
+  ///
+  /// This property corresponds to the GCC &apos;pure&apos; attribute.</doc>

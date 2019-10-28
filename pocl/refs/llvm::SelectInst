@@ -1,0 +1,46 @@
+<inh f='include/llvm-6.0/llvm/IR/Instruction.h' l='44' c='llvm::Instruction'/>
+<def f='include/llvm-6.0/llvm/IR/Instructions.h' l='1969' ll='2045'/>
+<size>56</size>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='1963'>//===----------------------------------------------------------------------===//
+//                               SelectInst Class
+//===----------------------------------------------------------------------===//
+
+/// This class represents the LLVM &apos;select&apos; instruction.
+///</doc>
+<fun r='_ZN4llvm10SelectInstC1EPNS_5ValueES2_S2_RKNS_5TwineEPNS_11InstructionE'/>
+<fun r='_ZN4llvm10SelectInstC1EPNS_5ValueES2_S2_RKNS_5TwineEPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm10SelectInst4initEPNS_5ValueES2_S2_'/>
+<fun r='_ZNK4llvm10SelectInst9cloneImplEv'/>
+<fun r='_ZN4llvm10SelectInst6CreateEPNS_5ValueES2_S2_RKNS_5TwineEPNS_11InstructionES7_'/>
+<fun r='_ZN4llvm10SelectInst6CreateEPNS_5ValueES2_S2_RKNS_5TwineEPNS_10BasicBlockE'/>
+<fun r='_ZNK4llvm10SelectInst12getConditionEv'/>
+<fun r='_ZNK4llvm10SelectInst12getTrueValueEv'/>
+<fun r='_ZNK4llvm10SelectInst13getFalseValueEv'/>
+<fun r='_ZN4llvm10SelectInst12getConditionEv'/>
+<fun r='_ZN4llvm10SelectInst12getTrueValueEv'/>
+<fun r='_ZN4llvm10SelectInst13getFalseValueEv'/>
+<fun r='_ZN4llvm10SelectInst12setConditionEPNS_5ValueE'/>
+<fun r='_ZN4llvm10SelectInst12setTrueValueEPNS_5ValueE'/>
+<fun r='_ZN4llvm10SelectInst13setFalseValueEPNS_5ValueE'/>
+<fun r='_ZN4llvm10SelectInst18areInvalidOperandsEPNS_5ValueES2_S2_'/>
+<fun r='_ZNK4llvm10SelectInst10getOperandEj'/>
+<fun r='_ZN4llvm10SelectInst10setOperandEjPNS_5ValueE'/>
+<fun r='_ZN4llvm10SelectInst8op_beginEv'/>
+<fun r='_ZNK4llvm10SelectInst8op_beginEv'/>
+<fun r='_ZN4llvm10SelectInst6op_endEv'/>
+<fun r='_ZNK4llvm10SelectInst6op_endEv'/>
+<fun r='_ZN4llvm10SelectInst2OpEv'/>
+<fun r='_ZNK4llvm10SelectInst2OpEv'/>
+<fun r='_ZNK4llvm10SelectInst14getNumOperandsEv'/>
+<fun r='_ZNK4llvm10SelectInst9getOpcodeEv'/>
+<fun r='_ZN4llvm10SelectInst7classofEPKNS_11InstructionE'/>
+<fun r='_ZN4llvm10SelectInst7classofEPKNS_5ValueE'/>
+<fun r='_ZN4llvm10SelectInst8op_beginEv'/>
+<fun r='_ZNK4llvm10SelectInst8op_beginEv'/>
+<fun r='_ZN4llvm10SelectInst6op_endEv'/>
+<fun r='_ZNK4llvm10SelectInst6op_endEv'/>
+<fun r='_ZNK4llvm10SelectInst10getOperandEj'/>
+<fun r='_ZN4llvm10SelectInst10setOperandEjPNS_5ValueE'/>
+<fun r='_ZNK4llvm10SelectInst14getNumOperandsEv'/>
+<fun r='_ZN4llvm10SelectInst2OpEv'/>
+<fun r='_ZNK4llvm10SelectInst2OpEv'/>

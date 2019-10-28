@@ -1,0 +1,19 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1115' type='cl_program'/>
+<offset>512</offset>
+<use f='pocl/lib/CL/clCreateKernel.c' l='85' u='w' c='POclCreateKernel'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='565' u='r' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/clGetKernelArgInfo.c' l='45' u='r' c='POclGetKernelArgInfo'/>
+<use f='pocl/lib/CL/clGetKernelArgInfo.c' l='47' u='r' c='POclGetKernelArgInfo'/>
+<use f='pocl/lib/CL/clGetKernelInfo.c' l='48' u='r' c='POclGetKernelInfo'/>
+<use f='pocl/lib/CL/clReleaseKernel.c' l='40' u='r' c='POclReleaseKernel'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='665' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/common.c' l='103' u='r' c='llvm_codegen'/>
+<use f='pocl/lib/CL/devices/common.c' l='937' u='r' c='pocl_check_kernel_disk_cache'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='797' u='r' c='load_or_generate_kernel'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='273' u='r' c='work_group_scheduler'/>
+<use f='pocl/lib/CL/pocl_build.c' l='151' u='w' c='program_compile_dynamic_wg_binaries'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='198' u='r' c='pocl_cache_final_binary_path'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='373' u='r' c='pocl_llvm_generate_workgroup_function_nowrite'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='456' u='r' c='pocl_llvm_generate_workgroup_function'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='463' u='r' c='pocl_llvm_generate_workgroup_function'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='474' u='r' c='pocl_llvm_generate_workgroup_function'/>

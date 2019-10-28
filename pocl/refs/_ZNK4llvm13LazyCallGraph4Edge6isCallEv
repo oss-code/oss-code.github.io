@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='155' type='bool llvm::LazyCallGraph::Edge::isCall() const'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='237' u='c' c='_ZN4llvm13LazyCallGraph12EdgeSequence13call_iterator17advanceToNextEdgeEv'/>
+<def f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1208' ll='1211' type='bool llvm::LazyCallGraph::Edge::isCall() const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='152'>/// Test whether the edge represents a direct call to a function.
+    ///
+    /// This requires that the edge is not null.</doc>

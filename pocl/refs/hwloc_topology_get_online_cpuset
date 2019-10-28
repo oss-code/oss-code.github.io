@@ -1,0 +1,11 @@
+<dec f='include/hwloc/helper.h' l='815' type='hwloc_const_cpuset_t hwloc_topology_get_online_cpuset(hwloc_topology_t topology)'/>
+<def f='include/hwloc/helper.h' l='816' ll='820' type='hwloc_const_cpuset_t hwloc_topology_get_online_cpuset(hwloc_topology_t topology)'/>
+<doc f='include/hwloc/helper.h' l='805'>/** \brief Get online CPU set
+ *
+ * \return the CPU set of online logical processors of the system. If the
+ * topology is the result of a combination of several systems, NULL is
+ * returned.
+ *
+ * \note The returned cpuset is not newly allocated and should thus not be
+ * changed or freed; hwloc_bitmap_dup() must be used to obtain a local copy.
+ */</doc>

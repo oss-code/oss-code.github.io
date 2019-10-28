@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='73' type='void llvm::TerminatorInst::setSuccessor(unsigned int idx, llvm::BasicBlock * B)'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='72'>/// Update the specified successor to point at the provided block.</doc>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='209' u='c' c='_ZN4pocl22BarrierTailReplication24ReplicateJoinedSubgraphsEPN4llvm10BasicBlockES3_RSt3setIS3_St4lessIS3_ESaIS3_EE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='213' u='c' c='_ZN4pocl14ParallelRegion10chainAfterEPS0_'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='217' u='c' c='_ZN4pocl14ParallelRegion10chainAfterEPS0_'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='268' u='c' c='_ZN4pocl14ParallelRegion5purgeEv'/>

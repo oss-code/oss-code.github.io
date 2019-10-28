@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='352' ll='355' type='static bool llvm::GlobalValue::isDiscardableIfUnused(llvm::GlobalValue::LinkageTypes Linkage)'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='444' u='c' c='_ZNK4llvm11GlobalValue21isDiscardableIfUnusedEv'/>
+<doc f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='350'>/// Whether the definition of this global may be discarded if it is not used
+  /// in its compilation unit.</doc>

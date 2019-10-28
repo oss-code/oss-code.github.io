@@ -1,0 +1,23 @@
+<dec f='pocl/include/pocl_file_util.h' l='49' type='int pocl_exists(const char * path)'/>
+<use f='pocl/lib/CL/clCreateProgramWithBinary.c' l='165' u='c' c='create_program_skeleton'/>
+<use f='pocl/lib/CL/devices/common.c' l='117' u='c' c='llvm_codegen'/>
+<use f='pocl/lib/CL/devices/common.c' l='155' u='c' c='llvm_codegen'/>
+<use f='pocl/lib/CL/devices/common.c' l='166' u='c' c='llvm_codegen'/>
+<use f='pocl/lib/CL/devices/common.c' l='946' u='c' c='pocl_check_kernel_disk_cache'/>
+<use f='pocl/lib/CL/devices/common.c' l='980' u='c' c='pocl_check_kernel_disk_cache'/>
+<use f='pocl/lib/CL/devices/common.c' l='984' u='c' c='pocl_check_kernel_disk_cache'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='804' u='c' c='load_or_generate_kernel'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='505' u='c' c='findLibDevice'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='517' u='c' c='findLibDevice'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='450' u='c' c='deserialize_file'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='455' u='c' c='deserialize_file'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='278' u='c' c='pocl_cache_device_cachedir_exists'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='316' u='c' c='pocl_cache_read_buildlog'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='528' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='853' u='c' c='_ZL16getKernelLibraryP13_cl_device_id'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='861' u='c' c='_ZL16getKernelLibraryP13_cl_device_id'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='459' u='c' c='pocl_llvm_generate_workgroup_function'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='466' u='c' c='pocl_llvm_generate_workgroup_function'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='493' u='c' c='_Z37pocl_update_program_llvm_irs_unlockedP11_cl_programj'/>
+<use f='pocl/lib/llvmopencl/DebugHelpers.cc' l='144' u='c' c='_ZN4pocl7dumpCFGERN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPNS0_11SmallVectorIPNS_14ParallelRegionELj8EEEPSt3setIPNS0_10Bas7693485'/>
+<def f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='159' ll='163' type='int pocl_exists(const char * path)'/>

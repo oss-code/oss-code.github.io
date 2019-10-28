@@ -1,0 +1,7 @@
+<dec f='pocl/lib/llvmopencl/CanonicalizeBarriers.h' l='50' type='bool pocl::CanonicalizeBarriers::ProcessFunction(llvm::Function &amp; F)'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='107' u='c' c='_ZN4pocl20CanonicalizeBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<def f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='115' ll='210' type='bool pocl::CanonicalizeBarriers::ProcessFunction(llvm::Function &amp; F)'/>
+<doc f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='111'>// Canonicalize barriers: ensure all barriers are in a separate BB
+// containing only the barrier and the terminator, with just one
+// predecessor. This allows us to use those BBs as markers only, 
+// they will not be replicated.</doc>

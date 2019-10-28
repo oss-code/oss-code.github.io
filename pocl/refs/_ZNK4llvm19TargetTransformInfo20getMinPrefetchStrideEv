@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='692' type='unsigned int llvm::TargetTransformInfo::getMinPrefetchStride() const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='689'>/// \return Some HW prefetchers can handle accesses up to a certain constant
+  /// stride.  This is the minimum stride in bytes where it makes sense to start
+  /// adding SW prefetches.  The default is 1, i.e. prefetch with any stride.</doc>

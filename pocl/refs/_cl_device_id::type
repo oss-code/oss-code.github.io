@@ -1,0 +1,8 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='639' type='cl_device_type'/>
+<offset>448</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='638'>/* queries */</doc>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='69' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='184' u='w' c='pocl_init_cpu_device_infos'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='178' u='w' c='pocl_cuda_init'/>
+<use f='pocl/lib/CL/devices/devices.c' l='160' u='r' c='pocl_get_devices'/>
+<use f='pocl/lib/CL/devices/devices.c' l='192' u='r' c='pocl_get_device_type_count'/>

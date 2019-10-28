@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Module.h' l='307' type='void llvm::Module::getOperandBundleTags(SmallVectorImpl&lt;llvm::StringRef&gt; &amp; Result) const'/>
+<doc f='include/llvm-6.0/llvm/IR/Module.h' l='304'>/// Populate client supplied SmallVector with the bundle tags registered in
+  /// this LLVMContext.  The bundle tags are ordered by increasing bundle IDs.
+  /// \see LLVMContext::getOperandBundleTagID</doc>

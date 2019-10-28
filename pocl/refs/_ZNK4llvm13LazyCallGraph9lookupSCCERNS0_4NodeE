@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='969' type='llvm::LazyCallGraph::SCC * llvm::LazyCallGraph::lookupSCC(llvm::LazyCallGraph::Node &amp; N) const'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='976' u='c' c='_ZNK4llvm13LazyCallGraph12lookupRefSCCERNS0_4NodeE'/>
+<use f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='611' u='c' c='_ZN4llvm26CGSCCToFunctionPassAdaptor3runERNS_13LazyCallGraph3SCCERNS_15AnalysisManagerIS2_JRS1_EEES5_RNS_17CGSCCUpdateResultE'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='965'>/// Lookup a function&apos;s SCC in the graph.
+  ///
+  /// \returns null if the function hasn&apos;t been assigned an SCC via the RefSCC
+  /// iterator walk.</doc>

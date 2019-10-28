@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='599' ll='618' type='DomTreeNodeBase&lt;NodeT&gt; * llvm::DominatorTreeBase::setNewRoot(NodeT * BB)'/>
+<doc f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='594'>/// Add a new node to the forward dominator tree and make it a new root.
+  ///
+  /// \param BB New node in CFG.
+  /// \returns New dominator tree node that represents new CFG node.
+  ///</doc>

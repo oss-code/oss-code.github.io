@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/Function.h' l='723' type='bool llvm::Function::isDefTriviallyDead() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Function.h' l='719'>/// isDefTriviallyDead - Return true if it is trivially safe to remove
+  /// this function definition from the module (because it isn&apos;t externally
+  /// visible, does not have its address taken, and has no callers).  To make
+  /// this more accurate, call removeDeadConstantUsers first.</doc>

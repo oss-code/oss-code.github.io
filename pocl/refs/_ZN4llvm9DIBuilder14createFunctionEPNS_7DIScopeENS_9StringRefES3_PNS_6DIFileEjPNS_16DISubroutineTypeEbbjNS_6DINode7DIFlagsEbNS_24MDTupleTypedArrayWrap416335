@@ -1,0 +1,17 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='591' type='llvm::DISubprogram * llvm::DIBuilder::createFunction(llvm::DIScope * Scope, llvm::StringRef Name, llvm::StringRef LinkageName, llvm::DIFile * File, unsigned int LineNo, llvm::DISubroutineType * Ty, bool isLocalToUnit, bool isDefinition, unsigned int ScopeLine, DINode::DIFlags Flags = DINode::FlagZero, bool isOptimized = false, DITemplateParameterArray TParams = nullptr, llvm::DISubprogram * Decl = nullptr, DITypeArray ThrownTypes = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='575'>/// Create a new descriptor for the specified subprogram.
+    /// See comments in DISubprogram* for descriptions of these fields.
+    /// \param Scope         Function scope.
+    /// \param Name          Function name.
+    /// \param LinkageName   Mangled function name.
+    /// \param File          File where this variable is defined.
+    /// \param LineNo        Line number.
+    /// \param Ty            Function type.
+    /// \param isLocalToUnit True if this function is not externally visible.
+    /// \param isDefinition  True if this is a function definition.
+    /// \param ScopeLine     Set to the beginning of the scope this starts
+    /// \param Flags         e.g. is this function prototyped or not.
+    ///                      These flags are used to emit dwarf attributes.
+    /// \param isOptimized   True if optimization is ON.
+    /// \param TParams       Function template parameters.
+    /// \param ThrownTypes   Exception types this function may throw.</doc>

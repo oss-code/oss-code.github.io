@@ -1,0 +1,12 @@
+<inh f='include/llvm-6.0/llvm/IR/LegacyPassManager.h' l='36' c='llvm::legacy::PassManagerBase'/>
+<def f='include/llvm-6.0/llvm/IR/LegacyPassManager.h' l='68' ll='94'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/IR/LegacyPassManager.h' l='67'>/// FunctionPassManager manages FunctionPasses and BasicBlockPassManagers.</doc>
+<fun r='_ZN4llvm6legacy19FunctionPassManagerC1EPNS_6ModuleE'/>
+<fun r='_ZN4llvm6legacy19FunctionPassManagerD1Ev'/>
+<fun r='_ZN4llvm6legacy19FunctionPassManager3addEPNS_4PassE'/>
+<fun r='_ZN4llvm6legacy19FunctionPassManager3runERNS_8FunctionE'/>
+<fun r='_ZN4llvm6legacy19FunctionPassManager16doInitializationEv'/>
+<fun r='_ZN4llvm6legacy19FunctionPassManager14doFinalizationEv'/>
+<mbr r='llvm::legacy::FunctionPassManager::FPM' o='64' t='llvm::legacy::FunctionPassManagerImpl *'/>
+<mbr r='llvm::legacy::FunctionPassManager::M' o='128' t='llvm::Module *'/>

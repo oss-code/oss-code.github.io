@@ -1,0 +1,22 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Cloning.h' l='235' type='bool llvm::InlineFunction(llvm::CallInst * C, llvm::InlineFunctionInfo &amp; IFI, llvm::AAResults * CalleeAAR = nullptr, bool InsertLifetime = true)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Cloning.h' l='216'>/// InlineFunction - This function inlines the called function into the basic
+/// block of the caller.  This returns false if it is not possible to inline
+/// this call.  The program is still in a well defined state if this occurs
+/// though.
+///
+/// Note that this only does one level of inlining.  For example, if the
+/// instruction &apos;call B&apos; is inlined, and &apos;B&apos; calls &apos;C&apos;, then the call to &apos;C&apos; now
+/// exists in the instruction stream.  Similarly this will inline a recursive
+/// function by one level.
+///
+/// Note that while this routine is allowed to cleanup and optimize the
+/// *inlined* code to minimize the actual inserted code, it must not delete
+/// code in the caller as users of this routine may have pointers to
+/// instructions in the caller that need to remain stable.
+///
+/// If ForwardVarArgsTo is passed, inlining a function with varargs is allowed
+/// and all varargs at the callsite will be passed to any calls to
+/// ForwardVarArgsTo. The caller of InlineFunction has to make sure any varargs
+/// are only used by ForwardVarArgsTo.</doc>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='722' u='c' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1333' u='c' c='_ZN4pocl9Workgroup18createGridLauncherEPN4llvm8FunctionES3_NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>

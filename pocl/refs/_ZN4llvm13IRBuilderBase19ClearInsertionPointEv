@@ -1,0 +1,10 @@
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='108' u='c' c='_ZN4llvm13IRBuilderBaseC1ERNS_11LLVMContextEPNS_6MDNodeENS_8ArrayRefINS_17OperandBundleDefTIPNS_5ValueEEEEE'/>
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='117' ll='120' type='void llvm::IRBuilderBase::ClearInsertionPoint()'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='196' u='c' c='_ZN4llvm13IRBuilderBase14saveAndClearIPEv'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='205' u='c' c='_ZN4llvm13IRBuilderBase9restoreIPENS0_11InsertPointE'/>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='111'>//===--------------------------------------------------------------------===//
+  // Builder configuration methods
+  //===--------------------------------------------------------------------===//
+
+  /// \brief Clear the insertion point: created instructions will not be
+  /// inserted into a block.</doc>

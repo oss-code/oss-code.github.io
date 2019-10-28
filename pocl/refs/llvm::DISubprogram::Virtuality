@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1487' type='unsigned int'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1508' u='w' c='_ZN4llvm12DISubprogramC1ERNS_11LLVMContextENS_8Metadata11StorageTypeEjjjjiNS_6DINode7DIFlagsEbbbNS_8ArrayRefIPS3_EE'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1586' u='r' c='_ZNK4llvm12DISubprogram13getVirtualityEv'/>
+<offset>320</offset>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1485'>// Virtuality can only assume three values, so we can pack
+  // in 2 bits (none/pure/pure_virtual).</doc>

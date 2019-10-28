@@ -1,0 +1,39 @@
+<dec f='include/hwloc.h' l='1136' type='int hwloc_get_type_depth(hwloc_topology_t topology, hwloc_obj_type_t type)'/>
+<use f='include/hwloc/helper.h' l='112' u='c' c='hwloc_get_next_obj_inside_cpuset_by_type'/>
+<use f='include/hwloc/helper.h' l='161' u='c' c='hwloc_get_obj_inside_cpuset_by_type'/>
+<use f='include/hwloc/helper.h' l='207' u='c' c='hwloc_get_nbobjs_inside_cpuset_by_type'/>
+<use f='include/hwloc/helper.h' l='337' u='c' c='hwloc_get_next_obj_covering_cpuset_by_type'/>
+<use f='include/hwloc/helper.h' l='924' u='c' c='hwloc_cpuset_to_nodeset'/>
+<use f='include/hwloc/helper.h' l='952' u='c' c='hwloc_cpuset_to_nodeset_strict'/>
+<use f='include/hwloc/helper.h' l='973' u='c' c='hwloc_cpuset_from_nodeset'/>
+<use f='include/hwloc/helper.h' l='1004' u='c' c='hwloc_cpuset_from_nodeset_strict'/>
+<use f='include/hwloc/helper.h' l='1076' u='c' c='hwloc_get_whole_distance_matrix_by_type'/>
+<use f='include/hwloc/inlines.h' l='31' u='c' c='hwloc_get_type_or_below_depth'/>
+<use f='include/hwloc/inlines.h' l='37' u='c' c='hwloc_get_type_or_below_depth'/>
+<use f='include/hwloc/inlines.h' l='48' u='c' c='hwloc_get_type_or_above_depth'/>
+<use f='include/hwloc/inlines.h' l='65' u='c' c='hwloc_get_nbobjs_by_type'/>
+<use f='include/hwloc/inlines.h' l='76' u='c' c='hwloc_get_obj_by_type'/>
+<use f='include/hwloc/inlines.h' l='98' u='c' c='hwloc_get_next_obj_by_type'/>
+<use f='pocl/lib/CL/devices/topology/pocl_topology.c' l='126' u='c' c='pocl_topology_detect_device_info'/>
+<doc f='include/hwloc.h' l='1114'>/** \brief Returns the depth of objects of type \p type.
+ *
+ * If no object of this type is present on the underlying architecture, or if
+ * the OS doesn&apos;t provide this kind of information, the function returns
+ * ::HWLOC_TYPE_DEPTH_UNKNOWN.
+ *
+ * If type is absent but a similar type is acceptable, see also
+ * hwloc_get_type_or_below_depth() and hwloc_get_type_or_above_depth().
+ *
+ * If some objects of the given type exist in different levels,
+ * for instance L1 and L2 caches, or L1i and L1d caches,
+ * the function returns ::HWLOC_TYPE_DEPTH_MULTIPLE.
+ * See hwloc_get_cache_type_depth() in hwloc/helper.h to better handle this
+ * case.
+ *
+ * If an I/O object type is given, the function returns a virtual value
+ * because I/O objects are stored in special levels that are not CPU-related.
+ * This virtual depth may be passed to other hwloc functions such as
+ * hwloc_get_obj_by_depth() but it should not be considered as an actual
+ * depth by the application. In particular, it should not be compared with
+ * any other object depth or with the entire topology depth.
+ */</doc>

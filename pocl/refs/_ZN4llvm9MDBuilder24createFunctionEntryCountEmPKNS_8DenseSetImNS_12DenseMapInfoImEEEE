@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/MDBuilder.h' l='72' type='llvm::MDNode * llvm::MDBuilder::createFunctionEntryCount(uint64_t Count, const DenseSet&lt;GlobalValue::GUID&gt; * Imports)'/>
+<doc f='include/llvm-6.0/llvm/IR/MDBuilder.h' l='69'>/// Return metadata containing the entry \p Count for a function, and the
+  /// GUIDs stored in \p Imports that need to be imported for sample PGO, to
+  /// enable the same inlines as the profiled optimized binary</doc>

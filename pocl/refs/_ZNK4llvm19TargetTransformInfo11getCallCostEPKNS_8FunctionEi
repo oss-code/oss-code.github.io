@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='218' type='int llvm::TargetTransformInfo::getCallCost(const llvm::Function * F, int NumArgs = -1) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='214'>/// \brief Estimate the cost of calling a specific function when lowered.
+  ///
+  /// This overload adds the ability to reason about the particular function
+  /// being called in the event it is a library call with special lowering.</doc>

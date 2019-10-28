@@ -1,0 +1,18 @@
+<def f='include/llvm-6.0/llvm/ADT/Hashing.h' l='72' ll='95'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/ADT/Hashing.h' l='60'>/// \brief An opaque object representing a hash code.
+///
+/// This object represents the result of hashing some entity. It is intended to
+/// be used to implement hashtables or other hashing-based data structures.
+/// While it wraps and exposes a numeric value, this value should not be
+/// trusted to be stable or predictable across processes or executions.
+///
+/// In order to obtain the hash_code for an object &apos;x&apos;:
+/// \code
+///   using llvm::hash_value;
+///   llvm::hash_code code = hash_value(x);
+/// \endcode</doc>
+<mbr r='llvm::hash_code::value' o='0' t='size_t'/>
+<fun r='_ZN4llvm9hash_codeC1Ev'/>
+<fun r='_ZN4llvm9hash_codeC1Em'/>
+<fun r='_ZNK4llvm9hash_codecvmEv'/>

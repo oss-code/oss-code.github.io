@@ -1,0 +1,5 @@
+<use f='pocl/include/CL/cl2.hpp' l='6908' u='c' c='_ZN2cl12CommandQueue11makeDefaultEv'/>
+<def f='pocl/include/CL/cl2.hpp' l='7369' ll='7373' type='cl::CommandQueue &amp; cl::CommandQueue::operator=(cl::CommandQueue &amp;&amp; queue)'/>
+<doc f='pocl/include/CL/cl2.hpp' l='7366'>/*! \brief Move assignment to forward move to the superclass correctly.
+     * Required for MSVC.
+     */</doc>

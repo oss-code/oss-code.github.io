@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='410' type='void llvm::combineMetadata(llvm::Instruction * K, const llvm::Instruction * J, ArrayRef&lt;unsigned int&gt; KnownIDs)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='407'>/// Combine the metadata of two instructions so that K can replace J
+///
+/// Metadata not listed as known via KnownIDs is removed</doc>

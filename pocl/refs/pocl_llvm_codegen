@@ -1,0 +1,9 @@
+<dec f='pocl/lib/CL/pocl_llvm.h' l='111' type='int pocl_llvm_codegen(cl_device_id device, void * modp, char ** output, uint64_t * output_size)'/>
+<doc f='pocl/lib/CL/pocl_llvm.h' l='108'>/** Compile the kernel in infile from LLVM bitcode to native object file for
+ * device, into outfile.
+ */</doc>
+<use f='pocl/lib/CL/devices/common.c' l='158' u='c' c='llvm_codegen'/>
+<def f='pocl/lib/CL/pocl_llvm_wg.cc' l='585' ll='689' type='int pocl_llvm_codegen(cl_device_id Device, void * Modp, char ** Output, uint64_t * OutputSize)'/>
+<doc f='pocl/lib/CL/pocl_llvm_wg.cc' l='582'>/* Run LLVM codegen on input file (parallel-optimized).
+ * modp = llvm::Module* of parallel.bc
+ * Output native object file (&lt;kernel&gt;.so.o). */</doc>

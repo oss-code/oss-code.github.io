@@ -1,0 +1,31 @@
+<inh f='pocl/include/CL/cl2.hpp' l='1810' c='cl::detail::Wrapper'/>
+<def f='pocl/include/CL/cl2.hpp' l='2036' ll='2303'/>
+<size>16</size>
+<doc f='pocl/include/CL/cl2.hpp' l='2029'>/*! \brief Class interface for cl_device_id.
+ *
+ *  \note Copies of these objects are inexpensive, since they don&apos;t &apos;own&apos;
+ *        any underlying resources or data structures.
+ *
+ *  \see cl_device_id
+ */</doc>
+<smbr r='cl::Device::default_initialized_' t='std::once_flag'/>
+<smbr r='cl::Device::default_' t='cl::Device'/>
+<smbr r='cl::Device::default_error_' t='cl_int'/>
+<fun r='_ZN2cl6Device11makeDefaultEv'/>
+<fun r='_ZN2cl6Device19makeDefaultProvidedERKS0_'/>
+<fun r='_ZN2cl6DeviceC1Ev'/>
+<fun r='_ZN2cl6DeviceC1ERKP13_cl_device_idb'/>
+<fun r='_ZN2cl6Device10getDefaultEPi'/>
+<fun r='_ZN2cl6Device10setDefaultERKS0_'/>
+<fun r='_ZN2cl6DeviceaSERKP13_cl_device_id'/>
+<fun r='_ZN2cl6DeviceC1ERKS0_'/>
+<fun r='_ZN2cl6DeviceaSERKS0_'/>
+<fun r='_ZN2cl6DeviceC1EOS0_'/>
+<fun r='_ZN2cl6DeviceaSEOS0_'/>
+<fun r='_ZNK2cl6Device7getInfoEjPT_'/>
+<fun r='_ZNK2cl6Device7getInfoEPi'/>
+<fun r='_ZN2cl6Device16createSubDevicesEPKlPSt6vectorIS0_SaIS0_EE'/>
+<smbr r='cl::Device::default_initialized_' t='std::once_flag'/>
+<smbr r='cl::Device::default_' t='cl::Device'/>
+<smbr r='cl::Device::default_error_' t='cl_int'/>
+<fun r='_ZN2cl6Device11makeDefaultEv'/>

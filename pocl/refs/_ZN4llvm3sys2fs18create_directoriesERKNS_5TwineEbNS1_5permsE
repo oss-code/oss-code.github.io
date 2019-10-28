@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Support/FileSystem.h' l='298' type='std::error_code llvm::sys::fs::create_directories(const llvm::Twine &amp; path, bool IgnoreExisting = true, llvm::sys::fs::perms Perms = owner_all | group_all)'/>
+<doc f='include/llvm-6.0/llvm/Support/FileSystem.h' l='292'>/// @brief Create all the non-existent directories in path.
+///
+/// @param path Directories to create.
+/// @returns errc::success if is_directory(path), otherwise a platform
+///          specific error_code. If IgnoreExisting is false, also returns
+///          error if the directory already existed.</doc>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='139' u='c' c='pocl_mkdir_p'/>

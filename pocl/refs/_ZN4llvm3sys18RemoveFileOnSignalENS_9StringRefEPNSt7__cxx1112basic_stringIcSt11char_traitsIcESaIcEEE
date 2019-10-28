@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Support/Signals.h' l='33' type='bool llvm::sys::RemoveFileOnSignal(llvm::StringRef Filename, std::string * ErrMsg = nullptr)'/>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='212' u='c' c='pocl_llvm_remove_file_on_signal'/>
+<doc f='include/llvm-6.0/llvm/Support/Signals.h' l='30'>/// This function registers signal handlers to ensure that if a signal gets
+  /// delivered that the named file is removed.
+  /// @brief Remove a file if a fatal signal occurs.</doc>

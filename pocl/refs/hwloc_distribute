@@ -1,0 +1,17 @@
+<dec f='include/hwloc/deprecated.h' l='75' type='void hwloc_distribute(hwloc_topology_t topology, hwloc_obj_t root, hwloc_cpuset_t * set, unsigned int n, unsigned int until)'/>
+<def f='include/hwloc/deprecated.h' l='76' ll='80' type='void hwloc_distribute(hwloc_topology_t topology, hwloc_obj_t root, hwloc_cpuset_t * set, unsigned int n, unsigned int until)'/>
+<doc f='include/hwloc/deprecated.h' l='59'>/** \brief Distribute \p n items over the topology under \p root
+ *
+ * Array \p cpuset will be filled with \p n cpusets recursively distributed
+ * linearly over the topology under \p root, down to depth \p until (which can
+ * be INT_MAX to distribute down to the finest level).
+ *
+ * This is typically useful when an application wants to distribute \p n
+ * threads over a machine, giving each of them as much private cache as
+ * possible and keeping them locally in number order.
+ *
+ * The caller may typically want to also call hwloc_bitmap_singlify()
+ * before binding a thread so that it does not move at all.
+ *
+ * \note This function requires the \p root object to have a CPU set.
+ */</doc>

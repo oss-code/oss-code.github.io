@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='337' type='void llvm::PMDataManager::addLowerLevelRequiredPass(llvm::Pass * P, llvm::Pass * RequiredPass)'/>
+<doc f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='334'>/// Add RequiredPass into list of lower level passes required by pass P.
+  /// RequiredPass is run on the fly by Pass Manager when P requests it
+  /// through getAnalysis interface.</doc>

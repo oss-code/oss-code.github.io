@@ -1,0 +1,33 @@
+<def f='include/llvm-6.0/llvm/ADT/PointerUnion.h' l='87' ll='191'/>
+<doc f='include/llvm-6.0/llvm/ADT/PointerUnion.h' l='71'>/// A discriminated union of two pointer types, with the discriminator in the
+/// low bit of the pointer.
+///
+/// This implementation is extremely efficient in space due to leveraging the
+/// low bits of the pointer, while exposing a natural and type-safe API.
+///
+/// Common use patterns would be something like this:
+///    PointerUnion&lt;int*, float*&gt; P;
+///    P = (int*)0;
+///    printf(&quot;%d %d&quot;, P.is&lt;int*&gt;(), P.is&lt;float*&gt;());  // prints &quot;1 0&quot;
+///    X = P.get&lt;int*&gt;();     // ok.
+///    Y = P.get&lt;float*&gt;();   // runtime assertion failure.
+///    Z = P.get&lt;double*&gt;();  // compile time failure.
+///    P = (float*)0;
+///    Y = P.get&lt;float*&gt;();   // ok.
+///    X = P.get&lt;int*&gt;();     // runtime assertion failure.</doc>
+<mbr r='llvm::PointerUnion::Val' t='ValTy'/>
+<fun r='_ZN4llvm12PointerUnionC1Ev'/>
+<fun r='_ZN4llvm12PointerUnionC1ET_'/>
+<fun r='_ZN4llvm12PointerUnionC1ET0_'/>
+<fun r='_ZNK4llvm12PointerUnion6isNullEv'/>
+<fun r='_ZNK4llvm12PointerUnioncvbEv'/>
+<fun r='_ZNK4llvm12PointerUnion2isEv'/>
+<fun r='_ZNK4llvm12PointerUnion3getEv'/>
+<fun r='_ZNK4llvm12PointerUnion8dyn_castEv'/>
+<fun r='_ZNK4llvm12PointerUnion13getAddrOfPtr1Ev'/>
+<fun r='_ZN4llvm12PointerUnion13getAddrOfPtr1Ev'/>
+<fun r='_ZN4llvm12PointerUnionaSEDn'/>
+<fun r='_ZN4llvm12PointerUnionaSERKT_'/>
+<fun r='_ZN4llvm12PointerUnionaSERKT0_'/>
+<fun r='_ZNK4llvm12PointerUnion14getOpaqueValueEv'/>
+<fun r='_ZN4llvm12PointerUnion18getFromOpaqueValueEPv'/>

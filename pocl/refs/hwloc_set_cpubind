@@ -1,0 +1,6 @@
+<dec f='include/hwloc.h' l='1455' type='int hwloc_set_cpubind(hwloc_topology_t topology, hwloc_const_cpuset_t set, int flags)'/>
+<doc f='include/hwloc.h' l='1450'>/** \brief Bind current process or thread on cpus given in physical bitmap \p set.
+ *
+ * \return -1 with errno set to ENOSYS if the action is not supported
+ * \return -1 with errno set to EXDEV if the binding cannot be enforced
+ */</doc>

@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/Constants.h' l='172' ll='174' type='llvm::IntegerType * llvm::ConstantInt::getType() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='169'>/// getType - Specialize the getType() method to always return an IntegerType,
+  /// which reduces the amount of casting needed in parts of the compiler.
+  ///</doc>
+<use f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='60' u='c' c='_ZNK4llvm12SCEVConstant7getTypeEv'/>

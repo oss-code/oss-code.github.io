@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/GlobalObject.h' l='143' type='void llvm::GlobalObject::getAllMetadata(SmallVectorImpl&lt;std::pair&lt;unsigned int, MDNode *&gt; &gt; &amp; MDs) const'/>
+<doc f='include/llvm-6.0/llvm/IR/GlobalObject.h' l='138'>/// @}
+
+  /// Appends all attachments for the global to \c MDs, sorting by attachment
+  /// ID. Attachments with the same ID appear in insertion order.</doc>

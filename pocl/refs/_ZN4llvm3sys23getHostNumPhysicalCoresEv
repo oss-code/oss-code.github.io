@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Support/Host.h' l='87' type='int llvm::sys::getHostNumPhysicalCores()'/>
+<doc f='include/llvm-6.0/llvm/Support/Host.h' l='84'>/// Get the number of physical cores (as opposed to logical cores returned
+  /// from thread::hardware_concurrency(), which includes hyperthreads).
+  /// Returns -1 if unknown for the current host system.</doc>

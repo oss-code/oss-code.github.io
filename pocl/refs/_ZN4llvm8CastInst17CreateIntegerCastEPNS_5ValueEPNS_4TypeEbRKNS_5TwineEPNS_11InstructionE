@@ -1,0 +1,3 @@
+<dec f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='681' type='static llvm::CastInst * llvm::CastInst::CreateIntegerCast(llvm::Value * S, llvm::Type * Ty, bool isSigned, const llvm::Twine &amp; Name = &quot;&quot;, llvm::Instruction * InsertBefore = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='680'>/// @brief Create a ZExt, BitCast, or Trunc for int -&gt; int casts.</doc>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1517' u='c' c='_ZN4llvm9IRBuilder13CreateIntCastEPNS_5ValueEPNS_4TypeEbRKNS_5TwineE'/>

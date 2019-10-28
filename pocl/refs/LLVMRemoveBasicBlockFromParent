@@ -1,0 +1,9 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2364' type='void LLVMRemoveBasicBlockFromParent(LLVMBasicBlockRef BB)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2356'>/**
+ * Remove a basic block from a function.
+ *
+ * This deletes the basic block from its containing function but keep
+ * the basic block alive.
+ *
+ * @see llvm::BasicBlock::removeFromParent()
+ */</doc>

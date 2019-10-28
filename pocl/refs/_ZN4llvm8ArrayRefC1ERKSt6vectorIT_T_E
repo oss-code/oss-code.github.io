@@ -1,0 +1,24 @@
+<def f='include/llvm-6.0/llvm/ADT/ArrayRef.h' l='88' ll='89' type='void llvm::ArrayRef::ArrayRef&lt;T&gt;(const std::vector&lt;T, A&gt; &amp; Vec)'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='105' u='c' c='_ZNK4llvm9ValueInfo14getSummaryListEv'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='244' u='c' c='_ZNK4llvm18GlobalValueSummary4refsEv'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='402' u='c' c='_ZNK4llvm15FunctionSummary5callsEv'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='409' u='c' c='_ZNK4llvm15FunctionSummary10type_testsEv'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='418' u='c' c='_ZNK4llvm15FunctionSummary23type_test_assume_vcallsEv'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='427' u='c' c='_ZNK4llvm15FunctionSummary24type_checked_load_vcallsEv'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='436' u='c' c='_ZNK4llvm15FunctionSummary29type_test_assume_const_vcallsEv'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='444' u='c' c='_ZNK4llvm15FunctionSummary30type_checked_load_const_vcallsEv'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='420' u='c' c='_ZL16handleGetWorkDimPN4llvm6ModuleEPKc'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='649' u='c' c='_Z23convertPtrArgsToOffsetsPN4llvm6ModuleEPKcjPNS_14GlobalVariableE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='820' u='c' c='_ZL17mapLibDeviceCallsPN4llvm6ModuleE'/>
+<doc f='include/llvm-6.0/llvm/ADT/ArrayRef.h' l='88'>/*implicit*/</doc>
+<use f='include/llvm-6.0/llvm/Support/SourceMgr.h' l='266' u='c' c='_ZNK4llvm12SMDiagnostic9getRangesEv'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2153' u='c' c='_ZNK4llvm12DIExpression11getElementsEv'/>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='126' u='c' c='_ZL10convertGEPPN4llvm12ConstantExprEPNS_11InstructionE'/>
+<use f='pocl/lib/llvmopencl/IsolateRegions.cc' l='170' u='c' c='_ZN4pocl14IsolateRegions14addDummyBeforeEPN4llvm6RegionEPNS1_10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='648' u='c' c='_ZN4pocl14ParallelRegion12InjectPrintFEPN4llvm11InstructionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIPNS1_5ValueESaISC_EE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='674' u='c' c='_ZN4pocl14ParallelRegion12InjectPrintFEPN4llvm11InstructionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIPNS1_5ValueESaISC_EE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='680' u='c' c='_ZN4pocl14ParallelRegion12InjectPrintFEPN4llvm11InstructionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIPNS1_5ValueESaISC_EE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='780' u='c' c='_ZN4pocl13WorkitemLoops14AddContextSaveEPN4llvm11InstructionES3_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='831' u='c' c='_ZN4pocl13WorkitemLoops17AddContextRestoreEPN4llvm5ValueEPNS1_11InstructionEbS5_b'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='931' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='946' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>

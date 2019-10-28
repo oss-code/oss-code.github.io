@@ -1,0 +1,11 @@
+<inh f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='124' c='llvm::GlobalValueSummary'/>
+<def f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='497' ll='507'/>
+<size>64</size>
+<doc f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='491'>/// \brief Global variable summary information to aid decisions and
+/// implementation of importing.
+///
+/// Currently this doesn&apos;t add anything to the base \p GlobalValueSummary,
+/// but is a placeholder as additional info may be added to the summary
+/// for variables.</doc>
+<fun r='_ZN4llvm16GlobalVarSummaryC1ENS_18GlobalValueSummary7GVFlagsESt6vectorINS_9ValueInfoESaIS4_EE'/>
+<fun r='_ZN4llvm16GlobalVarSummary7classofEPKNS_18GlobalValueSummaryE'/>

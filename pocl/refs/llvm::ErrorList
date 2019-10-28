@@ -1,0 +1,11 @@
+<inh f='include/llvm-6.0/llvm/Support/Error.h' l='331' c='llvm::ErrorInfo'/>
+<def f='include/llvm-6.0/llvm/Support/Error.h' l='344' ll='403'/>
+<size>32</size>
+<doc f='include/llvm-6.0/llvm/Support/Error.h' l='342'>/// Special ErrorInfo subclass representing a list of ErrorInfos.
+/// Instances of this class are constructed by joinError.</doc>
+<fun r='_ZNK4llvm9ErrorList3logERNS_11raw_ostreamE'/>
+<fun r='_ZNK4llvm9ErrorList18convertToErrorCodeEv'/>
+<smbr r='llvm::ErrorList::ID' t='char'/>
+<fun r='_ZN4llvm9ErrorListC1ESt10unique_ptrINS_13ErrorInfoBaseESt14default_deleteIS2_EES5_'/>
+<fun r='_ZN4llvm9ErrorList4joinENS_5ErrorES1_'/>
+<mbr r='llvm::ErrorList::Payloads' o='64' t='std::vector&lt;std::unique_ptr&lt;ErrorInfoBase&gt; &gt;'/>

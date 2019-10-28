@@ -1,0 +1,16 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='174' type='void llvm::RemovePredecessorAndSimplify(llvm::BasicBlock * BB, llvm::BasicBlock * Pred)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='159'>//===----------------------------------------------------------------------===//
+//  Control Flow Graph Restructuring.
+//
+
+/// Like BasicBlock::removePredecessor, this method is called when we&apos;re about
+/// to delete Pred as a predecessor of BB. If BB contains any PHI nodes, this
+/// drops the entries in the PHI nodes for Pred.
+///
+/// Unlike the removePredecessor method, this attempts to simplify uses of PHI
+/// nodes that collapse into identity values.  For example, if we have:
+///   x = phi(1, 0, 0, 0)
+///   y = and x, z
+///
+/// .. and delete the predecessor corresponding to the &apos;1&apos;, this will attempt to
+/// recursively fold the &apos;and&apos; to 0.</doc>

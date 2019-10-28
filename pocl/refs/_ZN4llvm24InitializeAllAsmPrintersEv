@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/Support/TargetSelect.h' l='86' ll='89' type='void llvm::InitializeAllAsmPrinters()'/>
+<doc f='include/llvm-6.0/llvm/Support/TargetSelect.h' l='81'>/// InitializeAllAsmPrinters - The main program should call this function if
+  /// it wants all asm printers that LLVM is configured to support, to make them
+  /// available via the TargetRegistry.
+  ///
+  /// It is legal for a client to make multiple calls to this function.</doc>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='279' u='c' c='_Z14InitializeLLVMv'/>

@@ -1,0 +1,37 @@
+<dec f='include/hwloc.h' l='1908' type='int hwloc_get_proc_membind_nodeset(hwloc_topology_t topology, pid_t pid, hwloc_nodeset_t nodeset, hwloc_membind_policy_t * policy, int flags)'/>
+<doc f='include/hwloc.h' l='1872'>/** \brief Query the default memory binding policy and physical locality of the
+ * specified process.
+ *
+ * This function has two output parameters: \p nodeset and \p policy.
+ * The values returned in these parameters depend on both the \p flags
+ * passed in and the current memory binding policies and nodesets in
+ * the queried target.
+ *
+ * Passing the ::HWLOC_MEMBIND_PROCESS flag specifies that the query
+ * target is the current policies and nodesets for all the threads in
+ * the specified process.  If ::HWLOC_MEMBIND_PROCESS is not specified
+ * (which is the most portable method), the process is assumed to be
+ * single threaded.  This allows hwloc to use either process-based OS
+ * functions or thread-based OS functions, depending on which are
+ * available.
+ *
+ * Note that it does not make sense to pass ::HWLOC_MEMBIND_THREAD to
+ * this function.
+ *
+ * If ::HWLOC_MEMBIND_STRICT is specified, hwloc will check the default
+ * memory policies and nodesets for all threads in the specified
+ * process.  If they are not identical, -1 is returned and errno is
+ * set to EXDEV.  If they are identical, the values are returned in \p
+ * nodeset and \p policy.
+ *
+ * Otherwise, \p nodeset is set to the logical OR of all threads&apos;
+ * default nodeset.  If all threads&apos; default policies are the same, \p
+ * policy is set to that policy.  If they are different, \p policy is
+ * set to ::HWLOC_MEMBIND_MIXED.
+ *
+ * If any other flags are specified, -1 is returned and errno is set
+ * to EINVAL.
+ *
+ * \note \p hwloc_pid_t is \p pid_t on Unix platforms,
+ * and \p HANDLE on native Windows platforms.
+ */</doc>

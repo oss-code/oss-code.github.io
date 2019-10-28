@@ -1,0 +1,17 @@
+<def f='pocl/include/CL/cl2.hpp' l='8030' ll='8049' type='cl_int cl::CommandQueue::enqueueUnmapMemObject(const cl::Memory &amp; memory, void * mapped_ptr, const vector&lt;cl::Event&gt; * events = __null, cl::Event * event = __null) const'/>
+<use f='pocl/include/CL/cl2.hpp' l='9331' u='c' c='_ZN2cl4copyERKNS_12CommandQueueET_S3_RNS_6BufferE'/>
+<use f='pocl/include/CL/cl2.hpp' l='9362' u='c' c='_ZN2cl4copyERKNS_12CommandQueueERKNS_6BufferET_S6_'/>
+<use f='pocl/tests/regression/test_barrier_before_return.cpp' l='141' u='c' c='main'/>
+<use f='pocl/tests/regression/test_barrier_between_for_loops.cpp' l='179' u='c' c='main'/>
+<use f='pocl/tests/regression/test_early_return.cpp' l='137' u='c' c='main'/>
+<use f='pocl/tests/regression/test_for_with_var_iteration_count.cpp' l='146' u='c' c='main'/>
+<use f='pocl/tests/regression/test_id_dependent_computation.cpp' l='161' u='c' c='main'/>
+<use f='pocl/tests/regression/test_issue_445.cpp' l='54' u='c' c='main'/>
+<use f='pocl/tests/regression/test_locals.cpp' l='138' u='c' c='main'/>
+<use f='pocl/tests/regression/test_loop_phi_replication.cpp' l='145' u='c' c='main'/>
+<use f='pocl/tests/regression/test_multi_level_loops_with_barriers.cpp' l='155' u='c' c='main'/>
+<use f='pocl/tests/regression/test_null_arg.cpp' l='130' u='c' c='main'/>
+<use f='pocl/tests/regression/test_simple_for_with_a_barrier.cpp' l='150' u='c' c='main'/>
+<use f='pocl/tests/regression/test_structs_as_args.cpp' l='201' u='c' c='main'/>
+<use f='pocl/tests/regression/test_structs_as_args.cpp' l='238' u='c' c='main'/>
+<use f='pocl/tests/regression/test_undominated_variable.cpp' l='148' u='c' c='main'/>

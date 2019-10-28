@@ -1,0 +1,21 @@
+<inh f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='153' c='llvm::DINode'/>
+<def f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='331' ll='364'/>
+<size>40</size>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='327'>/// Array subrange.
+///
+/// TODO: Merge into node for DW_TAG_array_type, which should have a custom
+/// type.</doc>
+<mbr r='llvm::DISubrange::Count' o='192' t='int64_t'/>
+<mbr r='llvm::DISubrange::LowerBound' o='256' t='int64_t'/>
+<fun r='_ZN4llvm10DISubrangeC1ERNS_11LLVMContextENS_8Metadata11StorageTypeEll'/>
+<fun r='_ZN4llvm10DISubrangeD1Ev'/>
+<fun r='_ZN4llvm10DISubrange7getImplERNS_11LLVMContextEllNS_8Metadata11StorageTypeEb'/>
+<fun r='_ZNK4llvm10DISubrange9cloneImplEv'/>
+<fun r='_ZN4llvm10DISubrange3getERNS_11LLVMContextEll'/>
+<fun r='_ZN4llvm10DISubrange11getIfExistsERNS_11LLVMContextEll'/>
+<fun r='_ZN4llvm10DISubrange11getDistinctERNS_11LLVMContextEll'/>
+<fun r='_ZN4llvm10DISubrange12getTemporaryERNS_11LLVMContextEll'/>
+<fun r='_ZNK4llvm10DISubrange5cloneEv'/>
+<fun r='_ZNK4llvm10DISubrange13getLowerBoundEv'/>
+<fun r='_ZNK4llvm10DISubrange8getCountEv'/>
+<fun r='_ZN4llvm10DISubrange7classofEPKNS_8MetadataE'/>

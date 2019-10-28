@@ -1,0 +1,11 @@
+<dec f='include/hwloc/helper.h' l='832' type='hwloc_const_cpuset_t hwloc_topology_get_allowed_cpuset(hwloc_topology_t topology)'/>
+<def f='include/hwloc/helper.h' l='833' ll='837' type='hwloc_const_cpuset_t hwloc_topology_get_allowed_cpuset(hwloc_topology_t topology)'/>
+<doc f='include/hwloc/helper.h' l='822'>/** \brief Get allowed CPU set
+ *
+ * \return the CPU set of allowed logical processors of the system. If the
+ * topology is the result of a combination of several systems, NULL is
+ * returned.
+ *
+ * \note The returned cpuset is not newly allocated and should thus not be
+ * changed or freed, hwloc_bitmap_dup() must be used to obtain a local copy.
+ */</doc>

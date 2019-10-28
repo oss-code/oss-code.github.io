@@ -1,0 +1,10 @@
+<dec f='include/hwloc.h' l='804' type='int hwloc_topology_set_flags(hwloc_topology_t topology, unsigned long flags)'/>
+<doc f='include/hwloc.h' l='795'>/** \brief Set OR&apos;ed flags to non-yet-loaded topology.
+ *
+ * Set a OR&apos;ed set of ::hwloc_topology_flags_e onto a topology that was not yet loaded.
+ *
+ * If this function is called multiple times, the last invokation will erase
+ * and replace the set of flags that was previously set.
+ *
+ * The flags set in a topology may be retrieved with hwloc_topology_get_flags()
+ */</doc>

@@ -1,0 +1,15 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='518' type='llvm::DIGlobalVariableExpression * llvm::DIBuilder::createGlobalVariableExpression(llvm::DIScope * Context, llvm::StringRef Name, llvm::StringRef LinkageName, llvm::DIFile * File, unsigned int LineNo, llvm::DIType * Ty, bool isLocalToUnit, llvm::DIExpression * Expr = nullptr, llvm::MDNode * Decl = nullptr, uint32_t AlignInBits = 0)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='504'>/// Create a new descriptor for the specified variable.
+    /// \param Context     Variable scope.
+    /// \param Name        Name of the variable.
+    /// \param LinkageName Mangled  name of the variable.
+    /// \param File        File where this variable is defined.
+    /// \param LineNo      Line number.
+    /// \param Ty          Variable Type.
+    /// \param isLocalToUnit Boolean flag indicate whether this variable is
+    ///                      externally visible or not.
+    /// \param Expr        The location of the global relative to the attached
+    ///                    GlobalVariable.
+    /// \param Decl        Reference to the corresponding declaration.
+    /// \param AlignInBits Variable alignment(or 0 if no alignment attr was
+    ///                    specified)</doc>

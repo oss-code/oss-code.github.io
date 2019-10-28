@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/InlineAsm.h' l='145' type='bool'/>
+<offset>104</offset>
+<doc f='include/llvm-6.0/llvm/IR/InlineAsm.h' l='141'>/// isIndirect - True if this operand is an indirect operand.  This means
+    /// that the address of the source or destination is present in the call
+    /// instruction, instead of it being returned or passed in explicitly.  This
+    /// is represented with a &apos;*&apos; in the asm string.</doc>

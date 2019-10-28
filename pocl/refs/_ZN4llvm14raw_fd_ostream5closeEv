@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='407' type='void llvm::raw_fd_ostream::close()'/>
+<doc f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='405'>/// Manually flush the stream and close the file. Note that this does not call
+  /// fsync.</doc>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='433' u='c' c='pocl_write_module'/>

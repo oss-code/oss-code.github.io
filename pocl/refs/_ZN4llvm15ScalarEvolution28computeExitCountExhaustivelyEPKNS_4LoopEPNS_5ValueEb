@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1523' type='const llvm::SCEV * llvm::ScalarEvolution::computeExitCountExhaustively(const llvm::Loop * L, llvm::Value * Cond, bool ExitWhen)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1518'>/// If the loop is known to execute a constant number of times (the
+  /// condition evolves only from constants), try to evaluate a few iterations
+  /// of the loop until we get the exit condition gets a value of ExitWhen
+  /// (true or false).  If we cannot evaluate the exit count of the loop,
+  /// return CouldNotCompute.</doc>

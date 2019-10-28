@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/Support/DynamicLibrary.h' l='86' ll='89' type='static bool llvm::sys::DynamicLibrary::LoadLibraryPermanently(const char * Filename, std::string * ErrMsg = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/Support/DynamicLibrary.h' l='81'>/// This function permanently loads the dynamic library at the given path.
+    /// Use this instead of getPermanentLibrary() when you won&apos;t need to get
+    /// symbols from the library itself.
+    ///
+    /// It is safe to call this function multiple times for the same library.</doc>

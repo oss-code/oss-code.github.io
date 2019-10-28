@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/ADT/DepthFirstIterator.h' l='173' type='NodeRef llvm::df_iterator::operator-&gt;() const'/>
+<doc f='include/llvm-6.0/llvm/ADT/DepthFirstIterator.h' l='169'>// This is a nonstandard operator-&gt; that dereferences the pointer an extra
+  // time... so that you can actually call methods ON the Node, because
+  // the contained type is a pointer.  This allows BBIt-&gt;getTerminator() f.e.
+  //</doc>

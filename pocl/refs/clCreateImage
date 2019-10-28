@@ -1,0 +1,13 @@
+<dec f='pocl/include/CL/cl.h' l='996' type='cl_mem clCreateImage(cl_context context, cl_mem_flags flags, const cl_image_format * image_format, const cl_image_desc * image_desc, void * host_ptr, cl_int * errcode_ret)'/>
+<use f='pocl/lib/CL/pocl_intfn.h' l='40' c='POclCreateImage'/>
+<use f='pocl/tests/kernel/image_query_funcs.c' l='80' u='c' c='main'/>
+<use f='pocl/tests/kernel/image_query_funcs.c' l='85' u='c' c='main'/>
+<use f='pocl/tests/kernel/sampler_address_clamp.c' l='90' u='c' c='main'/>
+<use f='pocl/include/CL/cl2.hpp' l='4398' u='c' c='_ZN2cl7Image1DC1ERKNS_7ContextEmNS_11ImageFormatEmPvPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='4487' u='c' c='_ZN2cl13Image1DBufferC1ERKNS_7ContextEmNS_11ImageFormatEmRKNS_6BufferEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='4575' u='c' c='_ZN2cl12Image1DArrayC1ERKNS_7ContextEmNS_11ImageFormatEmmmPvPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='4690' u='c' c='_ZN2cl7Image2DC1ERKNS_7ContextEmNS_11ImageFormatEmmmPvPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='5008' u='c' c='_ZN2cl12Image2DArrayC1ERKNS_7ContextEmNS_11ImageFormatEmmmmmPvPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='5123' u='c' c='_ZN2cl7Image3DC1ERKNS_7ContextEmNS_11ImageFormatEmmmmmPvPi'/>
+<use f='pocl/tests/runtime/test_buffer-image-copy.c' l='125' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_event_free.c' l='62' u='c' c='main'/>

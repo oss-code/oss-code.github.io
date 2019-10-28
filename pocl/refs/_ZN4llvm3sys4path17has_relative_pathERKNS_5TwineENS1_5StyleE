@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Support/Path.h' l='409' type='bool llvm::sys::path::has_relative_path(const llvm::Twine &amp; path, llvm::sys::path::Style style = Style::native)'/>
+<doc f='include/llvm-6.0/llvm/Support/Path.h' l='403'>/// @brief Has relative path?
+///
+/// relative_path != &quot;&quot;
+///
+/// @param path Input path.
+/// @result True if the path has a relative path, false otherwise.</doc>

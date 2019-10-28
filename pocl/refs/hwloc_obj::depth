@@ -1,0 +1,22 @@
+<dec f='include/hwloc.h' l='360' type='unsigned int'/>
+<use f='include/hwloc/helper.h' l='363' u='r' c='hwloc_get_ancestor_obj_by_depth'/>
+<use f='include/hwloc/helper.h' l='365' u='r' c='hwloc_get_ancestor_obj_by_depth'/>
+<use f='include/hwloc/helper.h' l='394' u='r' c='hwloc_get_common_ancestor_obj'/>
+<use f='include/hwloc/helper.h' l='394' u='r' c='hwloc_get_common_ancestor_obj'/>
+<use f='include/hwloc/helper.h' l='396' u='r' c='hwloc_get_common_ancestor_obj'/>
+<use f='include/hwloc/helper.h' l='396' u='r' c='hwloc_get_common_ancestor_obj'/>
+<use f='include/hwloc/helper.h' l='398' u='r' c='hwloc_get_common_ancestor_obj'/>
+<use f='include/hwloc/helper.h' l='398' u='r' c='hwloc_get_common_ancestor_obj'/>
+<use f='include/hwloc/helper.h' l='736' u='r' c='hwloc_distrib'/>
+<use f='include/hwloc/helper.h' l='1103' u='r' c='hwloc_get_distance_matrix_covering_obj_by_depth'/>
+<use f='include/hwloc/helper.h' l='1134' u='r' c='hwloc_get_latency'/>
+<use f='include/hwloc/helper.h' l='1134' u='r' c='hwloc_get_latency'/>
+<use f='include/hwloc/helper.h' l='1140' u='r' c='hwloc_get_latency'/>
+<use f='include/hwloc/inlines.h' l='89' u='r' c='hwloc_get_next_obj_by_depth'/>
+<offset>448</offset>
+<doc f='include/hwloc.h' l='359'>/* global position */</doc>
+<doc f='include/hwloc.h' l='360'>/**&lt; \brief Vertical index in the hierarchy.
+					 * If the topology is symmetric, this is equal to the
+					 * parent depth plus one, and also equal to the number
+					 * of parent/child links from the root object to here.
+					 */</doc>

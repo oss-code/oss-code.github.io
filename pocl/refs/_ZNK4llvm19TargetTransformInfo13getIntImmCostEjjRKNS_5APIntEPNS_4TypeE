@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='606' type='int llvm::TargetTransformInfo::getIntImmCost(unsigned int Opc, unsigned int Idx, const llvm::APInt &amp; Imm, llvm::Type * Ty) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='603'>/// \brief Return the expected cost of materialization for the given integer
+  /// immediate of the specified type for a given instruction. The cost can be
+  /// zero if the immediate can be folded into the specified instruction.</doc>

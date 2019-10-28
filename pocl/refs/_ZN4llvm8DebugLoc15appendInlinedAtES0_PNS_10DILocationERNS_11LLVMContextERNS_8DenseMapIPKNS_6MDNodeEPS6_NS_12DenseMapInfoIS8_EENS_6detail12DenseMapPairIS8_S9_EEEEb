@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/DebugLoc.h' l='88' type='static llvm::DebugLoc llvm::DebugLoc::appendInlinedAt(llvm::DebugLoc DL, llvm::DILocation * InlinedAt, llvm::LLVMContext &amp; Ctx, DenseMap&lt;const llvm::MDNode *, llvm::MDNode *&gt; &amp; Cache, bool ReplaceLast = false)'/>
+<doc f='include/llvm-6.0/llvm/IR/DebugLoc.h' l='84'>/// Rebuild the entire inlined-at chain for this instruction so that the top of
+    /// the chain now is inlined-at the new call site.
+    /// \param   InlinedAt    The new outermost inlined-at in the chain.
+    /// \param   ReplaceLast  Replace the last location in the inlined-at chain.</doc>

@@ -1,0 +1,24 @@
+<def f='include/llvm-6.0/llvm/Support/FileSystem.h' l='861' ll='890'/>
+<size>80</size>
+<doc f='include/llvm-6.0/llvm/Support/FileSystem.h' l='854'>/// @}
+/// @name Iterators
+/// @{
+
+/// directory_entry - A single entry in a directory. Caches the status either
+/// from the result of the iteration syscall, or the first time status is
+/// called.</doc>
+<mbr r='llvm::sys::fs::directory_entry::Path' o='0' t='std::string'/>
+<mbr r='llvm::sys::fs::directory_entry::FollowSymlinks' o='256' t='bool'/>
+<mbr r='llvm::sys::fs::directory_entry::Status' o='320' t='llvm::sys::fs::basic_file_status'/>
+<fun r='_ZN4llvm3sys2fs15directory_entryC1ERKNS_5TwineEbNS1_17basic_file_statusE'/>
+<fun r='_ZN4llvm3sys2fs15directory_entryC1Ev'/>
+<fun r='_ZN4llvm3sys2fs15directory_entry6assignERKNS_5TwineENS1_17basic_file_statusE'/>
+<fun r='_ZN4llvm3sys2fs15directory_entry16replace_filenameERKNS_5TwineENS1_17basic_file_statusE'/>
+<fun r='_ZNK4llvm3sys2fs15directory_entry4pathB5cxx11Ev'/>
+<fun r='_ZNK4llvm3sys2fs15directory_entry6statusEv'/>
+<fun r='_ZNK4llvm3sys2fs15directory_entryeqERKS2_'/>
+<fun r='_ZNK4llvm3sys2fs15directory_entryneERKS2_'/>
+<fun r='_ZNK4llvm3sys2fs15directory_entryltERKS2_'/>
+<fun r='_ZNK4llvm3sys2fs15directory_entryleERKS2_'/>
+<fun r='_ZNK4llvm3sys2fs15directory_entrygtERKS2_'/>
+<fun r='_ZNK4llvm3sys2fs15directory_entrygeERKS2_'/>

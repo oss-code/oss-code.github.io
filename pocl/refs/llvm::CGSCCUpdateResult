@@ -1,0 +1,24 @@
+<def f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='232' ll='303'/>
+<size>56</size>
+<doc f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='217'>/// Support structure for SCC passes to communicate updates the call graph back
+/// to the CGSCC pass manager infrsatructure.
+///
+/// The CGSCC pass manager runs SCC passes which are allowed to update the call
+/// graph and SCC structures. This means the structure the pass manager works
+/// on is mutating underneath it. In order to support that, there needs to be
+/// careful communication about the precise nature and ramifications of these
+/// updates to the pass management infrastructure.
+///
+/// All SCC passes will have to accept a reference to the management layer&apos;s
+/// update result struct and use it to reflect the results of any CG updates
+/// performed.
+///
+/// Passes which do not change the call graph structure in any way can just
+/// ignore this argument to their run method.</doc>
+<mbr r='llvm::CGSCCUpdateResult::RCWorklist' o='0' t='SmallPriorityWorklist&lt;LazyCallGraph::RefSCC *, 1&gt; &amp;'/>
+<mbr r='llvm::CGSCCUpdateResult::CWorklist' o='64' t='SmallPriorityWorklist&lt;LazyCallGraph::SCC *, 1&gt; &amp;'/>
+<mbr r='llvm::CGSCCUpdateResult::InvalidatedRefSCCs' o='128' t='SmallPtrSetImpl&lt;LazyCallGraph::RefSCC *&gt; &amp;'/>
+<mbr r='llvm::CGSCCUpdateResult::InvalidatedSCCs' o='192' t='SmallPtrSetImpl&lt;LazyCallGraph::SCC *&gt; &amp;'/>
+<mbr r='llvm::CGSCCUpdateResult::UpdatedRC' o='256' t='LazyCallGraph::RefSCC *'/>
+<mbr r='llvm::CGSCCUpdateResult::UpdatedC' o='320' t='LazyCallGraph::SCC *'/>
+<mbr r='llvm::CGSCCUpdateResult::InlinedInternalEdges' o='384' t='SmallDenseSet&lt;std::pair&lt;LazyCallGraph::Node *, LazyCallGraph::SCC *&gt;, 4&gt; &amp;'/>

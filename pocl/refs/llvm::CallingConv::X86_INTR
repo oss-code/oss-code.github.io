@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/CallingConv.h' l='174' type='83'/>
+<doc f='include/llvm-6.0/llvm/IR/CallingConv.h' l='169'>/// X86_INTR - x86 hardware interrupt context. Callee may take one or two
+    /// parameters, where the 1st represents a pointer to hardware context frame
+    /// and the 2nd represents hardware error code, the presence of the later
+    /// depends on the interrupt vector taken. Valid for both 32- and 64-bit
+    /// subtargets.</doc>

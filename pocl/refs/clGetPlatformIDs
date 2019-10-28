@@ -1,0 +1,25 @@
+<dec f='pocl/include/CL/cl.h' l='853' type='cl_int clGetPlatformIDs(cl_uint num_entries, cl_platform_id * platforms, cl_uint * num_platforms)'/>
+<use f='pocl/bin/poclcc.c' l='283' u='c' c='main'/>
+<doc f='pocl/include/CL/cl.h' l='851'>/* Platform API */</doc>
+<use f='pocl/examples/EinsteinToolkit/EinsteinToolkit.c' l='470' u='c' c='setup'/>
+<use f='pocl/examples/EinsteinToolkit/EinsteinToolkit.c' l='472' u='c' c='setup'/>
+<use f='pocl/examples/scalarwave/scalarwave.c' l='225' u='c' c='main'/>
+<use f='pocl/lib/CL/pocl_intfn.h' l='92' c='POclGetPlatformIDs'/>
+<use f='pocl/lib/poclu/misc.c' l='39' u='c' c='poclu_create_any_context'/>
+<use f='pocl/lib/poclu/misc.c' l='76' u='c' c='poclu_get_any_device2'/>
+<use f='pocl/lib/poclu/misc.c' l='108' u='c' c='poclu_get_multiple_devices'/>
+<use f='pocl/include/CL/cl2.hpp' l='2340' u='c' c='_ZN2cl8Platform11makeDefaultEv'/>
+<use f='pocl/include/CL/cl2.hpp' l='2351' u='c' c='_ZN2cl8Platform11makeDefaultEv'/>
+<use f='pocl/include/CL/cl2.hpp' l='2599' u='c' c='_ZN2cl8Platform3getEPSt6vectorIS0_SaIS0_EE'/>
+<use f='pocl/include/CL/cl2.hpp' l='2605' u='c' c='_ZN2cl8Platform3getEPSt6vectorIS0_SaIS0_EE'/>
+<use f='pocl/tests/regression/test_program_from_binary_with_local_1_1_1.c' l='85' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_buffer-image-copy.c' l='57' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='87' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateProgramWithBinary.c' l='30' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clFinish.c' l='68' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clGetDeviceInfo.c' l='19' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clGetEventInfo.c' l='24' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clGetSupportedImageFormats.c' l='19' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clSetMemObjectDestructorCallback.c' l='27' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_event_cycle.c' l='59' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_read-copy-write-buffer.c' l='46' u='c' c='main'/>

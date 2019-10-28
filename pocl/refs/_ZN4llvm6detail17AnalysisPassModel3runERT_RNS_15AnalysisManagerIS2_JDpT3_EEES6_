@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/PassManagerInternal.h' l='289' ll='294' type='std::unique_ptr&lt;AnalysisResultConcept&lt;IRUnitT, PreservedAnalysesT, InvalidatorT&gt; &gt; llvm::detail::AnalysisPassModel::run(IRUnitT &amp; IR, AnalysisManager&lt;IRUnitT, ExtraArgTs...&gt; &amp; AM, ExtraArgTs... ExtraArgs)'/>
+<doc f='include/llvm-6.0/llvm/IR/PassManagerInternal.h' l='286'>/// \brief The model delegates to the \c PassT::run method.
+  ///
+  /// The return is wrapped in an \c AnalysisResultModel.</doc>

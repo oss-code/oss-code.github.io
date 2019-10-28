@@ -1,0 +1,26 @@
+<inh f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='153' c='llvm::DINode'/>
+<def f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='420' ll='465'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='471' c='llvm::DIFile'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='556' c='llvm::DIType'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1050' c='llvm::DICompileUnit'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1234' c='llvm::DILocalScope'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1862' c='llvm::DINamespace'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1914' c='llvm::DIModule'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='414'>/// Base class for scope-like contexts.
+///
+/// Base class for lexical scopes and types (which are also declaration
+/// contexts).
+///
+/// TODO: Separate the concepts of declaration contexts and lexical scopes.</doc>
+<fun r='_ZN4llvm7DIScopeC1ERNS_11LLVMContextEjNS_8Metadata11StorageTypeEjNS_8ArrayRefIPS3_EE'/>
+<fun r='_ZN4llvm7DIScopeD1Ev'/>
+<fun r='_ZNK4llvm7DIScope7getFileEv'/>
+<fun r='_ZNK4llvm7DIScope11getFilenameEv'/>
+<fun r='_ZNK4llvm7DIScope12getDirectoryEv'/>
+<fun r='_ZNK4llvm7DIScope7getNameEv'/>
+<fun r='_ZNK4llvm7DIScope8getScopeEv'/>
+<fun r='_ZNK4llvm7DIScope10getRawFileEv'/>
+<fun r='_ZN4llvm7DIScope7classofEPKNS_8MetadataE'/>
+<fun r='_ZNK4llvm7DIScope11getFilenameEv'/>
+<fun r='_ZNK4llvm7DIScope12getDirectoryEv'/>

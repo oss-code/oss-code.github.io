@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='59' type='MapVector&lt;llvm::MDNode *, SetVector&lt;llvm::Metadata *&gt; &gt;'/>
+<offset>2560</offset>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='56'>/// Map Macro parent (which can be DIMacroFile or nullptr) to a list of
+    /// Metadata all of type DIMacroNode.
+    /// DIMacroNode&apos;s with nullptr parent are DICompileUnit direct children.</doc>

@@ -1,0 +1,26 @@
+<def f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='556' type='llvm::Module * llvm::GlobalValue::getParent()'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='1043' u='c' c='_ZN4llvm9AAManager21getModuleAAResultImplERNS_8FunctionERNS_15AnalysisManagerIS1_JEEERNS_9AAResultsE'/>
+<doc f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='555'>/// Get the module that this global value is contained inside of...</doc>
+<use f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='997' u='c' c='_ZNK4llvm15ScalarEvolution13getDataLayoutEv'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1163' u='c' c='_ZN4llvm9IRBuilder12CreateAllocaEPNS_4TypeEPNS_5ValueERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1823' u='c' c='_ZN4llvm9IRBuilder27CreateInvariantGroupBarrierEPNS_5ValueE'/>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='142' u='c' c='_ZN12_GLOBAL__N_115AutomaticLocals22processAutomaticLocalsEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Barrier.h' l='58' u='c' c='_ZN4pocl7Barrier6CreateEPN4llvm11InstructionE'/>
+<use f='pocl/lib/llvmopencl/HandleSamplerInitialization.cc' l='90' u='c' c='_ZN4pocl27HandleSamplerInitialization13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Kernel.cc' l='282' u='c' c='_ZN4pocl6Kernel20addLocalSizeInitCodeEmmm'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='290' u='c' c='_ZN4pocl14ParallelRegion17insertLocalIdInitEPN4llvm10BasicBlockEjjj'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='595' u='c' c='_ZN4pocl14ParallelRegion12LocalIDZLoadEv'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='609' u='c' c='_ZN4pocl14ParallelRegion12LocalIDYLoadEv'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='623' u='c' c='_ZN4pocl14ParallelRegion12LocalIDXLoadEv'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='632' u='c' c='_ZN4pocl14ParallelRegion12InjectPrintFEPN4llvm11InstructionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIPNS1_5ValueESaISC_EE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='706' u='c' c='_ZN4pocl14ParallelRegion18InjectRegionPrintFEv'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='780' u='c' c='_ZN4pocl14ParallelRegion15LocalizeIDLoadsEv'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='378' u='c' c='_ZN4pocl26VariableUniformityAnalysis9isUniformEPN4llvm8FunctionEPNS1_5ValueE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1059' u='c' c='_ZL15getArgumentSizeRN4llvm8ArgumentE'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='82' u='c' c='_ZN4pocl15WorkitemHandler10InitializeEPNS_6KernelE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='356' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='768' u='c' c='_ZN4pocl13WorkitemLoops14AddContextSaveEPN4llvm11InstructionES3_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='815' u='c' c='_ZN4pocl13WorkitemLoops17AddContextRestoreEPN4llvm5ValueEPNS1_11InstructionEbS5_b'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='898' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>
+<use f='pocl/lib/llvmopencl/WorkitemReplication.cc' l='116' u='c' c='_ZN4pocl19WorkitemReplication15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemReplication.cc' l='181' u='c' c='_ZN4pocl19WorkitemReplication15ProcessFunctionERN4llvm8FunctionE'/>

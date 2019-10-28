@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/Dominators.h' l='188' type='void llvm::DominatorTree::verifyDomTree() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Dominators.h' l='184'>/// \brief Verify the correctness of the domtree by re-computing it.
+  ///
+  /// This should only be used for debugging as it aborts the program if the
+  /// verification fails.</doc>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='90' u='c' c='_ZN4pocl22BarrierTailReplication13runOnFunctionERN4llvm8FunctionE'/>

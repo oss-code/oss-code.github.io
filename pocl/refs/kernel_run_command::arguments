@@ -1,0 +1,9 @@
+<dec f='pocl/lib/CL/devices/pthread/pocl-pthread_utils.h' l='52' type='void **'/>
+<offset>576</offset>
+<doc f='pocl/lib/CL/devices/pthread/pocl-pthread_utils.h' l='50'>/* actual kernel arguments. these are setup once at the kernel setup
+   * phase, then each thread sets up the local arguments for itself. */</doc>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='111' u='w' c='setup_kernel_arg_array'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='184' u='r' c='setup_kernel_arg_array_with_locals'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='233' u='r' c='free_kernel_arg_array'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='257' u='r' c='free_kernel_arg_array'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='257' u='w' c='free_kernel_arg_array'/>

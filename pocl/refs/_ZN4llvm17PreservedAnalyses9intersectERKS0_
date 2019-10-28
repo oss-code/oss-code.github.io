@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/PassManager.h' l='225' ll='241' type='void llvm::PreservedAnalyses::intersect(const llvm::PreservedAnalyses &amp; Arg)'/>
+<doc f='include/llvm-6.0/llvm/IR/PassManager.h' l='221'>/// \brief Intersect this set with another in place.
+  ///
+  /// This is a mutating operation on this preserved set, removing all
+  /// preserved passes which are not also preserved in the argument.</doc>

@@ -1,0 +1,11 @@
+<def f='include/c++/7/ostream' l='244' ll='246' type='__ostream_type &amp; std::basic_ostream::operator&lt;&lt;(const void * __p)'/>
+<doc f='include/c++/7/ostream' l='236'>/**
+       *  @brief  Pointer arithmetic inserters
+       *  @param  __p A variable of pointer type.
+       *  @return  @c *this if successful
+       *
+       *  These functions use the stream&apos;s current locale (specifically, the
+       *  @c num_get facet) to perform numeric formatting.
+      */</doc>
+<use f='pocl/lib/llvmopencl/DebugHelpers.cc' l='51' u='c' c='_ZN4poclL18getDotBasicBlockIDB5cxx11EPN4llvm10BasicBlockE'/>
+<use f='pocl/tests/regression/test_locals.cpp' l='133' u='c' c='main'/>

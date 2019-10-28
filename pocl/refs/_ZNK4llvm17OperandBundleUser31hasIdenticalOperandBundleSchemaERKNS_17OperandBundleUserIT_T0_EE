@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1447' ll='1454' type='bool llvm::OperandBundleUser::hasIdenticalOperandBundleSchema(const OperandBundleUser&lt;InstrTy, OpIteratorTy&gt; &amp; Other) const'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1444'>/// \brief Return true if \p Other has the same sequence of operand bundle
+  /// tags with the same number of operands on each one of them as this
+  /// OperandBundleUser.</doc>

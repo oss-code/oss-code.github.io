@@ -1,0 +1,18 @@
+<def f='include/llvm-6.0/llvm/ADT/SmallPtrSet.h' l='371' ll='374' type='std::pair&lt;iterator, bool&gt; llvm::SmallPtrSetImpl::insert(PtrType Ptr)'/>
+<use f='include/llvm-6.0/llvm/Support/CommandLine.h' l='319' u='c' c='_ZN4llvm2cl6Option13addSubCommandERNS0_10SubCommandE'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='161' u='c' c='_ZN4llvm17PreservedAnalyses3allEv'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='185' u='c' c='_ZN4llvm17PreservedAnalyses8preserveEPNS_11AnalysisKeyE'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='197' u='c' c='_ZN4llvm17PreservedAnalyses11preserveSetEPNS_14AnalysisSetKeyE'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='218' u='c' c='_ZN4llvm17PreservedAnalyses7abandonEPNS_11AnalysisKeyE'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='236' u='c' c='_ZN4llvm17PreservedAnalyses9intersectERKS0_'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='258' u='c' c='_ZN4llvm17PreservedAnalyses9intersectEOS0_'/>
+<doc f='include/llvm-6.0/llvm/ADT/SmallPtrSet.h' l='367'>/// Inserts Ptr if and only if there is no element in the container equal to
+  /// Ptr. The bool component of the returned pair is true if and only if the
+  /// insertion takes place, and the iterator component of the pair points to
+  /// the element equal to Ptr.</doc>
+<use f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1132' u='c' c='_ZN4llvm15ScalarEvolution9ExitLimit12addPredicateEPKNS_13SCEVPredicateE'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1090' u='c' c='_ZN4llvm13LazyCallGraph15visitReferencesERNS_15SmallVectorImplIPNS_8ConstantEEERNS_15SmallPtrSetImplIS3_EET_'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1096' u='c' c='_ZN4llvm13LazyCallGraph15visitReferencesERNS_15SmallVectorImplIPNS_8ConstantEEERNS_15SmallPtrSetImplIS3_EET_'/>
+<use f='pocl/lib/llvmopencl/FlattenGlobals.cc' l='114' u='c' c='_ZN12_GLOBAL__N_114FlattenGlobals11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/Kernel.cc' l='118' u='c' c='_ZN4pocl6Kernel26createParallelRegionBeforeEPN4llvm10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/Kernel.cc' l='193' u='c' c='_ZN4pocl6Kernel18getParallelRegionsEPN4llvm8LoopInfoE'/>

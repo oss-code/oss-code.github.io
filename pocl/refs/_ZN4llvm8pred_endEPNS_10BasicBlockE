@@ -1,0 +1,12 @@
+<def f='include/llvm-6.0/llvm/IR/CFG.h' l='103' type='pred_iterator llvm::pred_end(llvm::BasicBlock * BB)'/>
+<use f='include/llvm-6.0/llvm/IR/CFG.h' l='111' u='c' c='_ZN4llvm12predecessorsEPNS_10BasicBlockE'/>
+<use f='include/llvm-6.0/llvm/IR/CFG.h' l='192' u='c' c='_ZN4llvm11GraphTraitsINS_7InverseIPNS_10BasicBlockEEEE9child_endES3_'/>
+<use f='include/llvm-6.0/llvm/IR/PredIteratorCache.h' l='48' u='c' c='_ZN4llvm17PredIteratorCache8GetPredsEPNS_10BasicBlockE'/>
+<use f='include/llvm-6.0/llvm/IR/PredIteratorCache.h' l='62' u='c' c='_ZNK4llvm17PredIteratorCache11GetNumPredsEPNS_10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/ImplicitConditionalBarriers.cc' l='80' u='c' c='_ZN4pocl27ImplicitConditionalBarriers27firstNonBackedgePredecessorEPN4llvm10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/ImplicitConditionalBarriers.cc' l='127' u='c' c='_ZN4pocl27ImplicitConditionalBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/IsolateRegions.cc' l='163' u='c' c='_ZN4pocl14IsolateRegions14addDummyBeforeEPN4llvm6RegionEPNS1_10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/Kernel.cc' l='148' u='c' c='_ZL16add_predecessorsRN4llvm15SmallVectorImplIPNS_10BasicBlockEEES2_'/>
+<use f='pocl/lib/llvmopencl/Kernel.cc' l='199' u='c' c='_ZN4pocl6Kernel18getParallelRegionsEPN4llvm8LoopInfoE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='222' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='474' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>

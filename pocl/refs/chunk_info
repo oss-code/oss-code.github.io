@@ -1,0 +1,14 @@
+<def f='pocl/lib/CL/devices/bufalloc.h' l='111' ll='121'/>
+<size>64</size>
+<doc f='pocl/lib/CL/devices/bufalloc.h' l='107'>/* Info of a single &quot;chunk&quot; inside a memory region. Chunk is a piece
+   of memory that has been allocated to a buffer (but might have been
+   unallocated). Initially there&apos;s only one special chunk representing
+   the whole region as one unallocated chunk. */</doc>
+<mbr r='chunk_info::start_address' o='0' t='memory_address_t'/>
+<mbr r='chunk_info::is_allocated' o='64' t='int'/>
+<mbr r='chunk_info::size' o='128' t='size_t'/>
+<mbr r='chunk_info::next' o='192' t='chunk_info_t *'/>
+<mbr r='chunk_info::prev' o='256' t='chunk_info_t *'/>
+<mbr r='chunk_info::children' o='320' t='chunk_info_t *'/>
+<mbr r='chunk_info::parent' o='384' t='chunk_info_t *'/>
+<mbr r='chunk_info::parent_region' o='448' t='memory_region_t *'/>

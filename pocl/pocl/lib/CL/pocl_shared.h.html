@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>pocl_shared.h source code [pocl/lib/CL/pocl_shared.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/CL/pocl_shared.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>CL</a>/<a href='pocl_shared.h.html'>pocl_shared.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* OpenCL runtime library: shared functions</i></td></tr>
+<tr><th id="2">2</th><td><i></i></td></tr>
+<tr><th id="3">3</th><td><i>   Copyright (c) 2016 Michal Babej / Tampere University of Technology</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>   Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="6">6</th><td><i>   of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="7">7</th><td><i>   in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="8">8</th><td><i>   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="9">9</th><td><i>   copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="10">10</th><td><i>   furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="11">11</th><td><i></i></td></tr>
+<tr><th id="12">12</th><td><i>   The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="13">13</th><td><i>   all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="14">14</th><td><i></i></td></tr>
+<tr><th id="15">15</th><td><i>   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="16">16</th><td><i>   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="17">17</th><td><i>   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="18">18</th><td><i>   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="19">19</th><td><i>   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="20">20</th><td><i>   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="21">21</th><td><i>   THE SOFTWARE.</i></td></tr>
+<tr><th id="22">22</th><td><i>*/</i></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><u>#<span data-ppcond="24">ifndef</span> <span class="macro" data-ref="_M/POCL_SHARED_H">POCL_SHARED_H</span></u></td></tr>
+<tr><th id="25">25</th><td><u>#define <dfn class="macro" id="_M/POCL_SHARED_H" data-ref="_M/POCL_SHARED_H">POCL_SHARED_H</dfn></u></td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><u>#<span data-ppcond="27">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="28">28</th><td><b>extern</b> <q>"C"</q> {</td></tr>
+<tr><th id="29">29</th><td><u>#<span data-ppcond="27">endif</span></u></td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><u>#<span data-ppcond="31">ifdef</span> <span class="macro" data-ref="_M/__GNUC__">__GNUC__</span></u></td></tr>
+<tr><th id="32">32</th><td><u>#pragma GCC visibility push(hidden)</u></td></tr>
+<tr><th id="33">33</th><td><u>#<span data-ppcond="31">endif</span></u></td></tr>
+<tr><th id="34">34</th><td></td></tr>
+<tr><th id="35">35</th><td><em>void</em> <dfn class="decl" id="pocl_check_uninit_devices" title='pocl_check_uninit_devices' data-ref="pocl_check_uninit_devices">pocl_check_uninit_devices</dfn> ();</td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td><a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <dfn class="decl" id="pocl_rect_copy" title='pocl_rect_copy' data-ref="pocl_rect_copy">pocl_rect_copy</dfn>(<a class="typedef" href="../../include/CL/cl.h.html#cl_command_queue" title='cl_command_queue' data-type='struct _cl_command_queue *' data-ref="cl_command_queue">cl_command_queue</a> <dfn class="local col1 decl" id="571command_queue" title='command_queue' data-type='cl_command_queue' data-ref="571command_queue">command_queue</dfn>,</td></tr>
+<tr><th id="38">38</th><td>                      <a class="typedef" href="../../include/CL/cl.h.html#cl_command_type" title='cl_command_type' data-type='cl_uint' data-ref="cl_command_type">cl_command_type</a> <dfn class="local col2 decl" id="572command_type" title='command_type' data-type='cl_command_type' data-ref="572command_type">command_type</dfn>,</td></tr>
+<tr><th id="39">39</th><td>                      <a class="typedef" href="../../include/CL/cl.h.html#cl_mem" title='cl_mem' data-type='struct _cl_mem *' data-ref="cl_mem">cl_mem</a> <dfn class="local col3 decl" id="573src" title='src' data-type='cl_mem' data-ref="573src">src</dfn>,</td></tr>
+<tr><th id="40">40</th><td>                      <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <dfn class="local col4 decl" id="574src_is_image" title='src_is_image' data-type='cl_int' data-ref="574src_is_image">src_is_image</dfn>,</td></tr>
+<tr><th id="41">41</th><td>                      <a class="typedef" href="../../include/CL/cl.h.html#cl_mem" title='cl_mem' data-type='struct _cl_mem *' data-ref="cl_mem">cl_mem</a> <dfn class="local col5 decl" id="575dst" title='dst' data-type='cl_mem' data-ref="575dst">dst</dfn>,</td></tr>
+<tr><th id="42">42</th><td>                      <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <dfn class="local col6 decl" id="576dst_is_image" title='dst_is_image' data-type='cl_int' data-ref="576dst_is_image">dst_is_image</dfn>,</td></tr>
+<tr><th id="43">43</th><td>                      <em>const</em> <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> *<dfn class="local col7 decl" id="577src_origin" title='src_origin' data-type='const size_t *' data-ref="577src_origin">src_origin</dfn>,</td></tr>
+<tr><th id="44">44</th><td>                      <em>const</em> <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> *<dfn class="local col8 decl" id="578dst_origin" title='dst_origin' data-type='const size_t *' data-ref="578dst_origin">dst_origin</dfn>,</td></tr>
+<tr><th id="45">45</th><td>                      <em>const</em> <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> *<dfn class="local col9 decl" id="579region" title='region' data-type='const size_t *' data-ref="579region">region</dfn>,</td></tr>
+<tr><th id="46">46</th><td>                      <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col0 decl" id="580src_row_pitch" title='src_row_pitch' data-type='size_t' data-ref="580src_row_pitch">src_row_pitch</dfn>,</td></tr>
+<tr><th id="47">47</th><td>                      <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col1 decl" id="581src_slice_pitch" title='src_slice_pitch' data-type='size_t' data-ref="581src_slice_pitch">src_slice_pitch</dfn>,</td></tr>
+<tr><th id="48">48</th><td>                      <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col2 decl" id="582dst_row_pitch" title='dst_row_pitch' data-type='size_t' data-ref="582dst_row_pitch">dst_row_pitch</dfn>,</td></tr>
+<tr><th id="49">49</th><td>                      <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col3 decl" id="583dst_slice_pitch" title='dst_slice_pitch' data-type='size_t' data-ref="583dst_slice_pitch">dst_slice_pitch</dfn>,</td></tr>
+<tr><th id="50">50</th><td>                      <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a> <dfn class="local col4 decl" id="584num_events_in_wait_list" title='num_events_in_wait_list' data-type='cl_uint' data-ref="584num_events_in_wait_list">num_events_in_wait_list</dfn>,</td></tr>
+<tr><th id="51">51</th><td>                      <em>const</em> <a class="typedef" href="../../include/CL/cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> *<dfn class="local col5 decl" id="585event_wait_list" title='event_wait_list' data-type='const cl_event *' data-ref="585event_wait_list">event_wait_list</dfn>,</td></tr>
+<tr><th id="52">52</th><td>                      <a class="typedef" href="../../include/CL/cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> *<dfn class="local col6 decl" id="586event" title='event' data-type='cl_event *' data-ref="586event">event</dfn>,</td></tr>
+<tr><th id="53">53</th><td>                      <a class="typedef" href="../../include/pocl.h.html#_cl_command_node" title='_cl_command_node' data-type='struct _cl_command_node' data-ref="_cl_command_node">_cl_command_node</a> **<dfn class="local col7 decl" id="587cmd" title='cmd' data-type='_cl_command_node **' data-ref="587cmd">cmd</dfn>);</td></tr>
+<tr><th id="54">54</th><td></td></tr>
+<tr><th id="55">55</th><td><a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <dfn class="decl" id="program_compile_dynamic_wg_binaries" title='program_compile_dynamic_wg_binaries' data-ref="program_compile_dynamic_wg_binaries">program_compile_dynamic_wg_binaries</dfn> (<a class="typedef" href="../../include/CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col8 decl" id="588program" title='program' data-type='cl_program' data-ref="588program">program</dfn>);</td></tr>
+<tr><th id="56">56</th><td></td></tr>
+<tr><th id="57">57</th><td><a class="typedef" href="../../include/CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="decl" id="create_program_skeleton" title='create_program_skeleton' data-ref="create_program_skeleton">create_program_skeleton</dfn> (<a class="typedef" href="../../include/CL/cl.h.html#cl_context" title='cl_context' data-type='struct _cl_context *' data-ref="cl_context">cl_context</a> <dfn class="local col9 decl" id="589context" title='context' data-type='cl_context' data-ref="589context">context</dfn>, <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a> <dfn class="local col0 decl" id="590num_devices" title='num_devices' data-type='cl_uint' data-ref="590num_devices">num_devices</dfn>,</td></tr>
+<tr><th id="58">58</th><td>                                    <em>const</em> <a class="typedef" href="../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> *<dfn class="local col1 decl" id="591device_list" title='device_list' data-type='const cl_device_id *' data-ref="591device_list">device_list</dfn>,</td></tr>
+<tr><th id="59">59</th><td>                                    <em>const</em> <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> *<dfn class="local col2 decl" id="592lengths" title='lengths' data-type='const size_t *' data-ref="592lengths">lengths</dfn>,</td></tr>
+<tr><th id="60">60</th><td>                                    <em>const</em> <em>unsigned</em> <em>char</em> **<dfn class="local col3 decl" id="593binaries" title='binaries' data-type='const unsigned char **' data-ref="593binaries">binaries</dfn>,</td></tr>
+<tr><th id="61">61</th><td>                                    <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> *<dfn class="local col4 decl" id="594binary_status" title='binary_status' data-type='cl_int *' data-ref="594binary_status">binary_status</dfn>, <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> *<dfn class="local col5 decl" id="595errcode_ret" title='errcode_ret' data-type='cl_int *' data-ref="595errcode_ret">errcode_ret</dfn>,</td></tr>
+<tr><th id="62">62</th><td>                                    <em>int</em> <dfn class="local col6 decl" id="596allow_empty_binaries" title='allow_empty_binaries' data-type='int' data-ref="596allow_empty_binaries">allow_empty_binaries</dfn>);</td></tr>
+<tr><th id="63">63</th><td></td></tr>
+<tr><th id="64">64</th><td><a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a></td></tr>
+<tr><th id="65">65</th><td><dfn class="decl" id="compile_and_link_program" title='compile_and_link_program' data-ref="compile_and_link_program">compile_and_link_program</dfn>(<em>int</em> <dfn class="local col7 decl" id="597compile_program" title='compile_program' data-type='int' data-ref="597compile_program">compile_program</dfn>,</td></tr>
+<tr><th id="66">66</th><td>                         <em>int</em> <dfn class="local col8 decl" id="598link_program" title='link_program' data-type='int' data-ref="598link_program">link_program</dfn>,</td></tr>
+<tr><th id="67">67</th><td>                         <a class="typedef" href="../../include/CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col9 decl" id="599program" title='program' data-type='cl_program' data-ref="599program">program</dfn>,</td></tr>
+<tr><th id="68">68</th><td>                         <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a> <dfn class="local col0 decl" id="600num_devices" title='num_devices' data-type='cl_uint' data-ref="600num_devices">num_devices</dfn>,</td></tr>
+<tr><th id="69">69</th><td>                         <em>const</em> <a class="typedef" href="../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> *<dfn class="local col1 decl" id="601device_list" title='device_list' data-type='const cl_device_id *' data-ref="601device_list">device_list</dfn>,</td></tr>
+<tr><th id="70">70</th><td>                         <em>const</em> <em>char</em> *<dfn class="local col2 decl" id="602options" title='options' data-type='const char *' data-ref="602options">options</dfn>,</td></tr>
+<tr><th id="71">71</th><td>                         <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a> <dfn class="local col3 decl" id="603num_input_headers" title='num_input_headers' data-type='cl_uint' data-ref="603num_input_headers">num_input_headers</dfn>,</td></tr>
+<tr><th id="72">72</th><td>                         <em>const</em> <a class="typedef" href="../../include/CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> *<dfn class="local col4 decl" id="604input_headers" title='input_headers' data-type='const cl_program *' data-ref="604input_headers">input_headers</dfn>,</td></tr>
+<tr><th id="73">73</th><td>                         <em>const</em> <em>char</em> **<dfn class="local col5 decl" id="605header_include_names" title='header_include_names' data-type='const char **' data-ref="605header_include_names">header_include_names</dfn>,</td></tr>
+<tr><th id="74">74</th><td>                         <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a> <dfn class="local col6 decl" id="606num_input_programs" title='num_input_programs' data-type='cl_uint' data-ref="606num_input_programs">num_input_programs</dfn>,</td></tr>
+<tr><th id="75">75</th><td>                         <em>const</em> <a class="typedef" href="../../include/CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> *<dfn class="local col7 decl" id="607input_programs" title='input_programs' data-type='const cl_program *' data-ref="607input_programs">input_programs</dfn>,</td></tr>
+<tr><th id="76">76</th><td>                         <em>void</em> (<a class="macro" href="../../include/CL/cl_platform.h.html#45" title="" data-ref="_M/CL_CALLBACK">CL_CALLBACK</a> *<dfn class="local col8 decl" id="608pfn_notify" title='pfn_notify' data-type='void (*)(cl_program, void *)' data-ref="608pfn_notify">pfn_notify</dfn>) (<a class="typedef" href="../../include/CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col9 decl" id="609program" title='program' data-type='cl_program' data-ref="609program">program</dfn>,</td></tr>
+<tr><th id="77">77</th><td>                                                         <em>void</em> *<dfn class="local col0 decl" id="610user_data" title='user_data' data-type='void *' data-ref="610user_data">user_data</dfn>),</td></tr>
+<tr><th id="78">78</th><td>                         <em>void</em> *<dfn class="local col1 decl" id="611user_data" title='user_data' data-type='void *' data-ref="611user_data">user_data</dfn>);</td></tr>
+<tr><th id="79">79</th><td></td></tr>
+<tr><th id="80">80</th><td><em>int</em> <dfn class="decl" id="context_set_properties" title='context_set_properties' data-ref="context_set_properties">context_set_properties</dfn>(<a class="typedef" href="../../include/CL/cl.h.html#cl_context" title='cl_context' data-type='struct _cl_context *' data-ref="cl_context">cl_context</a>                    <dfn class="local col2 decl" id="612context" title='context' data-type='cl_context' data-ref="612context">context</dfn>,</td></tr>
+<tr><th id="81">81</th><td>                           <em>const</em> <a class="typedef" href="../../include/CL/cl.h.html#cl_context_properties" title='cl_context_properties' data-type='intptr_t' data-ref="cl_context_properties">cl_context_properties</a> * <dfn class="local col3 decl" id="613properties" title='properties' data-type='const cl_context_properties *' data-ref="613properties">properties</dfn>,</td></tr>
+<tr><th id="82">82</th><td>                           <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> *                      <dfn class="local col4 decl" id="614errcode" title='errcode' data-type='cl_int *' data-ref="614errcode">errcode</dfn>);</td></tr>
+<tr><th id="83">83</th><td></td></tr>
+<tr><th id="84">84</th><td><u>#<span data-ppcond="84">ifdef</span> <span class="macro" data-ref="_M/__GNUC__">__GNUC__</span></u></td></tr>
+<tr><th id="85">85</th><td><u>#pragma GCC visibility pop</u></td></tr>
+<tr><th id="86">86</th><td><u>#<span data-ppcond="84">endif</span></u></td></tr>
+<tr><th id="87">87</th><td></td></tr>
+<tr><th id="88">88</th><td><u>#<span data-ppcond="88">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="89">89</th><td>}</td></tr>
+<tr><th id="90">90</th><td><u>#<span data-ppcond="88">endif</span></u></td></tr>
+<tr><th id="91">91</th><td></td></tr>
+<tr><th id="92">92</th><td><u>#<span data-ppcond="24">endif</span> // POCL_SHARED_H</u></td></tr>
+<tr><th id="93">93</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='clBuildProgram.c.html'>pocl/lib/CL/clBuildProgram.c</a><br/>Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='582' ll='584' type='T * llvm::FoldingSetVector::FindNodeOrInsertPos(const llvm::FoldingSetNodeID &amp; ID, void *&amp; InsertPos)'/>
+<doc f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='579'>/// FindNodeOrInsertPos - Look up the node specified by ID.  If it exists,
+  /// return it.  If not, return the insertion token that will make insertion
+  /// faster.</doc>

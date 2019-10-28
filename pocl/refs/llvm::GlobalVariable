@@ -1,0 +1,59 @@
+<inh f='include/llvm-6.0/llvm/IR/GlobalObject.h' l='30' c='llvm::GlobalObject'/>
+<inh f='include/llvm-6.0/llvm/ADT/ilist_node.h' l='149' c='llvm::ilist_node'/>
+<def f='include/llvm-6.0/llvm/IR/GlobalVariable.h' l='42' ll='247'/>
+<size>88</size>
+<mbr r='llvm::GlobalVariable::Attrs' o='576' t='llvm::AttributeSet'/>
+<mbr r='llvm::GlobalVariable::isConstantGlobal' o='640' t='bool'/>
+<mbr r='llvm::GlobalVariable::isExternallyInitializedConstant' o='641' t='bool'/>
+<fun r='_ZN4llvm14GlobalVariableC1EPNS_4TypeEbNS_11GlobalValue12LinkageTypesEPNS_8ConstantERKNS_5TwineENS3_15ThreadLocalModeEjb'/>
+<fun r='_ZN4llvm14GlobalVariableC1ERNS_6ModuleEPNS_4TypeEbNS_11GlobalValue12LinkageTypesEPNS_8ConstantERKNS_5TwineEPS0_NS5_15ThreadLocalModeEjb'/>
+<fun r='_ZN4llvm14GlobalVariableC1ERKS0_'/>
+<fun r='_ZN4llvm14GlobalVariableaSERKS0_'/>
+<fun r='_ZN4llvm14GlobalVariableD1Ev'/>
+<fun r='_ZN4llvm14GlobalVariablenwEm'/>
+<fun r='_ZNK4llvm14GlobalVariable10getOperandEj'/>
+<fun r='_ZN4llvm14GlobalVariable10setOperandEjPNS_5ValueE'/>
+<fun r='_ZN4llvm14GlobalVariable8op_beginEv'/>
+<fun r='_ZNK4llvm14GlobalVariable8op_beginEv'/>
+<fun r='_ZN4llvm14GlobalVariable6op_endEv'/>
+<fun r='_ZNK4llvm14GlobalVariable6op_endEv'/>
+<fun r='_ZN4llvm14GlobalVariable2OpEv'/>
+<fun r='_ZNK4llvm14GlobalVariable2OpEv'/>
+<fun r='_ZNK4llvm14GlobalVariable14getNumOperandsEv'/>
+<fun r='_ZNK4llvm14GlobalVariable14hasInitializerEv'/>
+<fun r='_ZNK4llvm14GlobalVariable24hasDefinitiveInitializerEv'/>
+<fun r='_ZNK4llvm14GlobalVariable20hasUniqueInitializerEv'/>
+<fun r='_ZNK4llvm14GlobalVariable14getInitializerEv'/>
+<fun r='_ZN4llvm14GlobalVariable14getInitializerEv'/>
+<fun r='_ZN4llvm14GlobalVariable14setInitializerEPNS_8ConstantE'/>
+<fun r='_ZNK4llvm14GlobalVariable10isConstantEv'/>
+<fun r='_ZN4llvm14GlobalVariable11setConstantEb'/>
+<fun r='_ZNK4llvm14GlobalVariable23isExternallyInitializedEv'/>
+<fun r='_ZN4llvm14GlobalVariable24setExternallyInitializedEb'/>
+<fun r='_ZN4llvm14GlobalVariable18copyAttributesFromEPKS0_'/>
+<fun r='_ZN4llvm14GlobalVariable16removeFromParentEv'/>
+<fun r='_ZN4llvm14GlobalVariable15eraseFromParentEv'/>
+<fun r='_ZN4llvm14GlobalVariable17dropAllReferencesEv'/>
+<fun r='_ZN4llvm14GlobalVariable12addDebugInfoEPNS_26DIGlobalVariableExpressionE'/>
+<fun r='_ZNK4llvm14GlobalVariable12getDebugInfoERNS_15SmallVectorImplIPNS_26DIGlobalVariableExpressionEEE'/>
+<fun r='_ZN4llvm14GlobalVariable12addAttributeENS_9Attribute8AttrKindE'/>
+<fun r='_ZN4llvm14GlobalVariable12addAttributeENS_9StringRefES1_'/>
+<fun r='_ZNK4llvm14GlobalVariable12hasAttributeENS_9Attribute8AttrKindE'/>
+<fun r='_ZNK4llvm14GlobalVariable12hasAttributeENS_9StringRefE'/>
+<fun r='_ZNK4llvm14GlobalVariable13hasAttributesEv'/>
+<fun r='_ZNK4llvm14GlobalVariable12getAttributeENS_9Attribute8AttrKindE'/>
+<fun r='_ZNK4llvm14GlobalVariable12getAttributeENS_9StringRefE'/>
+<fun r='_ZNK4llvm14GlobalVariable13getAttributesEv'/>
+<fun r='_ZNK4llvm14GlobalVariable19getAttributesAsListEj'/>
+<fun r='_ZN4llvm14GlobalVariable13setAttributesENS_12AttributeSetE'/>
+<fun r='_ZNK4llvm14GlobalVariable18hasImplicitSectionEv'/>
+<fun r='_ZN4llvm14GlobalVariable7classofEPKNS_5ValueE'/>
+<fun r='_ZN4llvm14GlobalVariable8op_beginEv'/>
+<fun r='_ZNK4llvm14GlobalVariable8op_beginEv'/>
+<fun r='_ZN4llvm14GlobalVariable6op_endEv'/>
+<fun r='_ZNK4llvm14GlobalVariable6op_endEv'/>
+<fun r='_ZNK4llvm14GlobalVariable10getOperandEj'/>
+<fun r='_ZN4llvm14GlobalVariable10setOperandEjPNS_5ValueE'/>
+<fun r='_ZNK4llvm14GlobalVariable14getNumOperandsEv'/>
+<fun r='_ZN4llvm14GlobalVariable2OpEv'/>
+<fun r='_ZNK4llvm14GlobalVariable2OpEv'/>

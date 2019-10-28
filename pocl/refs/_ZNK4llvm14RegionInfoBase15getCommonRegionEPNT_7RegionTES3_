@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='845' type='RegionT * llvm::RegionInfoBase::getCommonRegion(RegionT * A, RegionT * B) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='840'>/// @brief Find the smallest region that contains two regions.
+  ///
+  /// @param A The first region.
+  /// @param B The second region.
+  /// @return The smallest region containing A and B.</doc>

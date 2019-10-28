@@ -1,0 +1,21 @@
+<dec f='include/hwloc.h' l='2191' type='int hwloc_custom_insert_topology(hwloc_topology_t newtopology, hwloc_obj_t newparent, hwloc_topology_t oldtopology, hwloc_obj_t oldroot)'/>
+<doc f='include/hwloc.h' l='2171'>/** \brief Insert an existing topology inside a custom topology
+ *
+ * Duplicate the existing topology \p oldtopology inside a new
+ * custom topology \p newtopology as a leaf of object \p newparent.
+ *
+ * If \p oldroot is not \c NULL, duplicate \p oldroot and all its
+ * children instead of the entire \p oldtopology. Passing the root
+ * object of \p oldtopology in \p oldroot is equivalent to passing
+ * \c NULL.
+ *
+ * The custom topology \p newtopology must have been prepared with
+ * hwloc_topology_set_custom() and not loaded with hwloc_topology_load()
+ * yet.
+ *
+ * \p newparent may be either the root of \p newtopology or an object
+ * that was added through hwloc_custom_insert_group_object_by_parent().
+ *
+ * \note The cpuset and nodeset of the \p newparent object are not
+ * modified based on the contents of \p oldtopology.
+ */</doc>

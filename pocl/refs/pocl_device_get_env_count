@@ -1,0 +1,14 @@
+<dec f='pocl/lib/CL/devices/devices.h' l='74' type='int pocl_device_get_env_count(const char * dev_type)'/>
+<doc f='pocl/lib/CL/devices/devices.h' l='68'>/**
+ * \brief Return the count of a specific device in the env var POCL_DEVICES
+ * \param dev_type a string describing the device (&quot;basic&quot; for instance)
+ * \return If the env var was not set, return -1, if the env var is specified, return 0
+ * or the number of occurence of dev_type in the env var
+ */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='381' u='c' c='pocl_basic_probe'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='409' u='c' c='pocl_cuda_probe'/>
+<def f='pocl/lib/CL/devices/devices.c' l='120' ll='139' type='int pocl_device_get_env_count(const char * dev_type)'/>
+<doc f='pocl/lib/CL/devices/devices.c' l='117'>/**
+ * Get the number of specified devices from environnement
+ */</doc>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='121' u='c' c='pocl_pthread_probe'/>

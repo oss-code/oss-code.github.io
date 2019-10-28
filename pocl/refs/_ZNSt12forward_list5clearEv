@@ -1,0 +1,13 @@
+<def f='include/c++/7/bits/forward_list.h' l='1053' ll='1055' type='void std::forward_list::clear()'/>
+<use f='include/c++/7/bits/forward_list.h' l='1278' u='c' c='_ZNSt12forward_list14_M_move_assignEOSt12forward_listIT_T0_ESt17integral_constantIbLb1EE'/>
+<use f='include/c++/7/bits/forward_list.h' l='1326' u='c' c='_ZNSt12forward_list9_M_assignET_S0_St17integral_constantIbLb0EE'/>
+<use f='include/c++/7/bits/forward_list.h' l='1354' u='c' c='_ZNSt12forward_list11_M_assign_nEmRKT_St17integral_constantIbLb0EE'/>
+<use f='include/c++/7/bits/forward_list.tcc' l='156' u='c' c='_ZNSt12forward_listaSERKSt12forward_listIT_T0_E'/>
+<doc f='include/c++/7/bits/forward_list.h' l='1045'>/**
+       *  @brief  Erases all the elements.
+       *
+       *  Note that this function only erases
+       *  the elements, and that if the elements themselves are
+       *  pointers, the pointed-to memory is not touched in any way.
+       *  Managing the pointer is the user&apos;s responsibility.
+       */</doc>

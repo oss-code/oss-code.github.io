@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/IR/Constants.h' l='242' ll='244' type='bool llvm::ConstantInt::uge(uint64_t Num) const'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='237'>/// This function will return true iff this constant represents a value with
+  /// active bits bigger than 64 bits or a value greater than the given uint64_t
+  /// value.
+  /// @returns true iff this constant is greater or equal to the given number.
+  /// @brief Determine if the value is greater or equal to the given number.</doc>

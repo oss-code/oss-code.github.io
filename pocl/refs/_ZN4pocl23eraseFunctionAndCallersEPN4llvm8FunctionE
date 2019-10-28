@@ -1,0 +1,5 @@
+<dec f='pocl/lib/llvmopencl/LLVMUtils.h' l='49' type='void pocl::eraseFunctionAndCallers(llvm::Function * Function)'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='201' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='202' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<doc f='pocl/lib/llvmopencl/LLVMUtils.h' l='48'>// Remove a function from a module, along with all callsites.</doc>
+<def f='pocl/lib/llvmopencl/LLVMUtils.cc' l='101' ll='114' type='void pocl::eraseFunctionAndCallers(llvm::Function * Function)'/>

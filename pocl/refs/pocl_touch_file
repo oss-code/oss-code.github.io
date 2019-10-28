@@ -1,0 +1,5 @@
+<dec f='pocl/include/pocl_file_util.h' l='53' type='int pocl_touch_file(const char * path)'/>
+<doc f='pocl/include/pocl_file_util.h' l='51'>/* Touch file to change last modified time. For portability, this
+ * removes &amp; creates the file. */</doc>
+<use f='pocl/lib/CL/pocl_cache.c' l='268' u='c' c='pocl_cache_update_program_last_access'/>
+<def f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='166' ll='184' type='int pocl_touch_file(const char * path)'/>

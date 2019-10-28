@@ -1,0 +1,14 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1177' type='cl_ulong'/>
+<offset>1280</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='1177'>/* the time the command actually started executing */</doc>
+<use f='pocl/lib/CL/clGetEventProfilingInfo.c' l='59' u='r' c='POclGetEventProfilingInfo'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1406' u='w' c='pocl_cuda_update_event'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1407' u='w' c='pocl_cuda_update_event'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1407' u='r' c='pocl_cuda_update_event'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1407' u='r' c='pocl_cuda_update_event'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1414' u='r' c='pocl_cuda_update_event'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1414' u='r' c='pocl_cuda_update_event'/>
+<use f='pocl/lib/CL/pocl_cq_profiling.c' l='70' u='r' c='pocl_atexit'/>
+<use f='pocl/lib/CL/pocl_tracing.c' l='180' u='r' c='text_tracer_event_updated'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1203' u='w' c='pocl_update_event_running_unlocked'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1274' u='r' c='pocl_update_event_finished_msg'/>

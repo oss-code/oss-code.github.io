@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='489' type='LoopT * llvm::RegionBase::outermostLoopInRegion(LoopT * L) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='481'>/// @brief Get the outermost loop in the region that contains a loop.
+  ///
+  /// Find for a Loop L the outermost loop OuterL that is a parent loop of L
+  /// and is itself contained in the region.
+  ///
+  /// @param L The loop the lookup is started.
+  /// @return The outermost loop in the region, NULL if such a loop does not
+  ///         exist or if the region describes the whole function.</doc>

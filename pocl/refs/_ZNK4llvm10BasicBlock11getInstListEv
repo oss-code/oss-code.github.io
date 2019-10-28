@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='317' type='const InstListType &amp; llvm::BasicBlock::getInstList() const'/>
+<doc f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='313'>/// \brief Return the underlying instruction list container.
+  ///
+  /// Currently you need to access the underlying instruction list container
+  /// directly if you want to modify it.</doc>

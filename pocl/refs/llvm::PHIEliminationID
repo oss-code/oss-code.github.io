@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/CodeGen/Passes.h' l='99' type='char &amp;'/>
+<doc f='include/llvm-6.0/llvm/CodeGen/Passes.h' l='95'>/// PHIElimination - This pass eliminates machine instruction PHI nodes
+  /// by inserting copy instructions.  This destroys SSA information, but is the
+  /// desired input for some register allocators.  This pass is &quot;required&quot; by
+  /// these register allocator like this: AU.addRequiredID(PHIEliminationID);</doc>

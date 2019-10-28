@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/ValueMapper.h' l='167' type='void llvm::ValueMapper::addFlags(llvm::RemapFlags Flags)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/ValueMapper.h' l='163'>/// Add to the current \a RemapFlags.
+  ///
+  /// \note Like the top-level mapping functions, \a addFlags() must be called
+  /// at the top level, not during a callback in a \a ValueMaterializer.</doc>

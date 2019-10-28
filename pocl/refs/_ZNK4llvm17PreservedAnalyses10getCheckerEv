@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/IR/PassManager.h' l='304' ll='306' type='llvm::PreservedAnalyses::PreservedAnalysisChecker llvm::PreservedAnalyses::getChecker() const'/>
+<doc f='include/llvm-6.0/llvm/IR/PassManager.h' l='299'>/// Build a checker for this `PreservedAnalyses` and the specified analysis
+  /// type.
+  ///
+  /// You can use the returned object to query whether an analysis was
+  /// preserved. See the example in the comment on `PreservedAnalysis`.</doc>
+<use f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='628' u='c' c='_ZN4llvm26CGSCCToFunctionPassAdaptor3runERNS_13LazyCallGraph3SCCERNS_15AnalysisManagerIS2_JRS1_EEES5_RNS_17CGSCCUpdateResultE'/>

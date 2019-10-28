@@ -1,0 +1,13 @@
+<dec f='pocl/lib/llvmopencl/VariableUniformityAnalysis.h' l='65' type='bool pocl::VariableUniformityAnalysis::shouldBePrivatized(llvm::Function * f, llvm::Value * val)'/>
+<def f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='139' ll='155' type='bool pocl::VariableUniformityAnalysis::shouldBePrivatized(llvm::Function * f, llvm::Value * val)'/>
+<doc f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='129'>/**
+ * Returns true in case the value should be privatized, e.g., a copy
+ * should be created for each parallel work-item.
+ *
+ * This is not the same as !isUniform() because of some of the allocas.
+ * Specifically, the loop iteration variables are sometimes uniform, 
+ * that is, each work item sees the same induction variable value at every iteration, 
+ * but the variables should be still replicated to avoid multiple increments
+ * of the same induction variable by each work-item.
+ */</doc>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='1142' u='c' c='_ZN4pocl13WorkitemLoops23ShouldNotBeContextSavedEPN4llvm11InstructionE'/>

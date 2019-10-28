@@ -1,0 +1,9 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2272' type='void LLVMGetBasicBlocks(LLVMValueRef Fn, LLVMBasicBlockRef * BasicBlocks)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2264'>/**
+ * Obtain all of the basic blocks in a function.
+ *
+ * This operates on a function value. The BasicBlocks parameter is a
+ * pointer to a pre-allocated array of LLVMBasicBlockRef of at least
+ * LLVMCountBasicBlocks() in length. This array is populated with
+ * LLVMBasicBlockRef instances.
+ */</doc>

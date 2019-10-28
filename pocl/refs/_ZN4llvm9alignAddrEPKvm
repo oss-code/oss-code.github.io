@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/Support/MathExtras.h' l='615' ll='622' type='uintptr_t llvm::alignAddr(const void * Addr, size_t Alignment)'/>
+<use f='include/llvm-6.0/llvm/Support/MathExtras.h' l='627' u='c' c='_ZN4llvm19alignmentAdjustmentEPKvm'/>
+<use f='include/llvm-6.0/llvm/Support/Allocator.h' l='249' u='c' c='_ZN4llvm20BumpPtrAllocatorImpl8AllocateEmm'/>
+<use f='include/llvm-6.0/llvm/Support/Allocator.h' l='427' u='c' c='_ZN4llvm24SpecificBumpPtrAllocator10DestroyAllEv'/>
+<doc f='include/llvm-6.0/llvm/Support/MathExtras.h' l='611'>/// \brief Aligns \c Addr to \c Alignment bytes, rounding up.
+///
+/// Alignment should be a power of two.  This method rounds up, so
+/// alignAddr(7, 4) == 8 and alignAddr(8, 4) == 8.</doc>
+<use f='include/llvm-6.0/llvm/Support/TrailingObjects.h' l='176' u='c' c='_ZN4llvm25trailing_objects_internal19TrailingObjectsImplIXT_ET0_T1_T2_JT3_DpT4_EE22getTrailingObjectsImplEPKS2_NS0_19TrailingObjectsBase13OverloadTokenIS5_EE'/>
+<use f='include/llvm-6.0/llvm/Support/TrailingObjects.h' l='190' u='c' c='_ZN4llvm25trailing_objects_internal19TrailingObjectsImplIXT_ET0_T1_T2_JT3_DpT4_EE22getTrailingObjectsImplEPS2_NS0_19TrailingObjectsBase13OverloadTokenIS5_EE'/>

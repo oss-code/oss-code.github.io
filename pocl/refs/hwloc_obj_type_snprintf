@@ -1,0 +1,11 @@
+<dec f='include/hwloc.h' l='1279' type='int hwloc_obj_type_snprintf(char *restrict string, size_t size, hwloc_obj_t obj, int verbose)'/>
+<doc f='include/hwloc.h' l='1269'>/** \brief Stringify the type of a given topology object into a human-readable form.
+ *
+ * It differs from hwloc_obj_type_string() because it prints type attributes such
+ * as cache depth and type.
+ *
+ * If \p size is 0, \p string may safely be \c NULL.
+ *
+ * \return the number of character that were actually written if not truncating,
+ * or that would have been written (not including the ending \\0).
+ */</doc>

@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/IR/Argument.h' l='67' type='bool llvm::Argument::hasByValAttr() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Argument.h' l='66'>/// Return true if this argument has the byval attribute.</doc>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='554' u='c' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1011' u='c' c='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1043' u='c' c='_ZL18isByValPtrArgumentRN4llvm8ArgumentE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1049' u='c' c='_ZL15getArgumentSizeRN4llvm8ArgumentE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1386' u='c' c='_ZN4pocl9Workgroup27createFastWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1401' u='c' c='_ZN4pocl9Workgroup27createFastWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1407' u='c' c='_ZN4pocl9Workgroup27createFastWorkgroupLauncherEPN4llvm8FunctionE'/>

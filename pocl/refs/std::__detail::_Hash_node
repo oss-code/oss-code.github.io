@@ -1,0 +1,15 @@
+<def f='include/c++/7/bits/hashtable_policy.h' l='278' ll='286'/>
+<def f='include/c++/7/bits/hashtable_policy.h' l='293' ll='299'/>
+<doc f='include/c++/7/bits/hashtable_policy.h' l='273'>/**
+   *  Specialization for nodes with caches, struct _Hash_node.
+   *
+   *  Base class is __detail::_Hash_node_value_base.
+   */</doc>
+<doc f='include/c++/7/bits/hashtable_policy.h' l='288'>/**
+   *  Specialization for nodes without caches, struct _Hash_node.
+   *
+   *  Base class is __detail::_Hash_node_value_base.
+   */</doc>
+<mbr r='std::__detail::_Hash_node::_M_hash_code' t='std::size_t'/>
+<fun r='_ZNKSt8__detail10_Hash_nodeIT_Lb1EE7_M_nextEv'/>
+<fun r='_ZNKSt8__detail10_Hash_nodeIT_Lb0EE7_M_nextEv'/>

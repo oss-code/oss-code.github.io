@@ -1,0 +1,32 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='271' ll='280' type='void llvm::APInt::APInt(unsigned int numBits, uint64_t val, bool isSigned = false)'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='535' u='c' c='_ZN4llvm5APInt11getMinValueEj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='539' u='c' c='_ZN4llvm5APInt17getSignedMinValueEj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='556' u='c' c='_ZN4llvm5APInt15getAllOnesValueEj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='562' u='c' c='_ZN4llvm5APInt12getNullValueEj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='582' u='c' c='_ZN4llvm5APInt12getOneBitSetEjj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='601' u='c' c='_ZN4llvm5APInt10getBitsSetEjjj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='618' u='c' c='_ZN4llvm5APInt14getBitsSetFromEjj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='630' u='c' c='_ZN4llvm5APInt14getHighBitsSetEjj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='642' u='c' c='_ZN4llvm5APInt13getLowBitsSetEjj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1711' u='c' c='_ZN4llvm5APInt12doubleToBitsEd'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1719' u='c' c='_ZN4llvm5APInt11floatToBitsEf'/>
+<use f='include/llvm-6.0/llvm/ADT/APFloat.h' l='878' u='c' c='_ZN4llvm7APFloat6getNaNERKNS_12fltSemanticsEbj'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='258'>/// \name Constructors
+  /// @{
+
+  /// \brief Create a new APInt of numBits width, initialized as val.
+  ///
+  /// If isSigned is true then val is treated as if it were a signed value
+  /// (i.e. as an int64_t) and the appropriate sign extension to the bit width
+  /// will be done. Otherwise, no sign extension occurs (high order bits beyond
+  /// the range of val are zero filled).
+  ///
+  /// \param numBits the bit width of the constructed APInt
+  /// \param val the initial value of the APInt
+  /// \param isSigned how to treat signedness of val</doc>
+<use f='include/llvm-6.0/llvm/ADT/APSInt.h' l='32' u='c' c='_ZN4llvm6APSIntC1Ejb'/>
+<use f='include/llvm-6.0/llvm/ADT/APSInt.h' l='314' u='c' c='_ZN4llvm6APSInt3getEl'/>
+<use f='include/llvm-6.0/llvm/ADT/APSInt.h' l='315' u='c' c='_ZN4llvm6APSInt11getUnsignedEm'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='719' u='c' c='_ZN4pocl14ParallelRegion18InjectRegionPrintFEv'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='294' u='c' c='_ZL16addRangeMetadataPN4llvm11InstructionEmm'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='294' u='c' c='_ZL16addRangeMetadataPN4llvm11InstructionEmm'/>

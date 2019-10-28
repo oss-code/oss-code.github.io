@@ -1,0 +1,8 @@
+<dec f='pocl/include/CL/cl2.hpp' l='2048' type='static void cl::Device::makeDefault()'/>
+<use f='pocl/include/CL/cl2.hpp' l='2089' u='a' c='_ZN2cl6Device10getDefaultEPi'/>
+<def f='pocl/include/CL/cl2.hpp' l='3063' ll='3090' type='static void cl::Device::makeDefault()'/>
+<doc f='pocl/include/CL/cl2.hpp' l='2043'>/*! \brief Create the default context.
+    *
+    * This sets @c default_ and @c default_error_. It does not throw
+    * @c cl::Error.
+    */</doc>

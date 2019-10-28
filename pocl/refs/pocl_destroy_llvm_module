@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/pocl_llvm.h' l='89' type='void pocl_destroy_llvm_module(void * modp)'/>
+<doc f='pocl/lib/CL/pocl_llvm.h' l='88'>/* calls delete on the module. */</doc>
+<use f='pocl/lib/CL/devices/common.c' l='242' u='c' c='llvm_codegen'/>
+<def f='pocl/lib/CL/pocl_llvm_wg.cc' l='342' ll='352' type='void pocl_destroy_llvm_module(void * modp)'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='483' u='c' c='pocl_llvm_generate_workgroup_function'/>

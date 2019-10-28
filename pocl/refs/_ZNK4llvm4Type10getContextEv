@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/IR/Type.h' l='130' type='llvm::LLVMContext &amp; llvm::Type::getContext() const'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='256' u='c' c='_ZN4llvm10StructType3getEPNS_4TypeEDpPT_'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='349' u='c' c='_ZN4llvm14SequentialTypeC1ENS_4Type6TypeIDEPS1_m'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='409' u='c' c='_ZN4llvm10VectorType10getIntegerEPS0_'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='417' u='c' c='_ZN4llvm10VectorType28getExtendedElementVectorTypeEPS0_'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='427' u='c' c='_ZN4llvm10VectorType29getTruncatedElementVectorTypeEPS0_'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1069' u='c' c='_ZN4llvm7CmpInst17makeCmpResultTypeEPNS_4TypeE'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1072' u='c' c='_ZN4llvm7CmpInst17makeCmpResultTypeEPNS_4TypeE'/>
+<doc f='include/llvm-6.0/llvm/IR/Type.h' l='129'>/// Return the LLVMContext in which this type was uniqued.</doc>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='947' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>

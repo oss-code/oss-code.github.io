@@ -1,0 +1,9 @@
+<inh f='include/llvm-6.0/llvm/IR/PassManager.h' l='382' c='llvm::AnalysisInfoMixin'/>
+<def f='include/llvm-6.0/llvm/Analysis/CFLAndersAliasAnalysis.h' l='93' ll='102'/>
+<size>1</size>
+<doc f='include/llvm-6.0/llvm/Analysis/CFLAndersAliasAnalysis.h' l='89'>/// Analysis pass providing a never-invalidated alias analysis result.
+///
+/// FIXME: We really should refactor CFL to use the analysis more heavily, and
+/// in particular to leverage invalidation to trigger re-computation.</doc>
+<smbr r='llvm::CFLAndersAA::Key' t='llvm::AnalysisKey'/>
+<fun r='_ZN4llvm11CFLAndersAA3runERNS_8FunctionERNS_15AnalysisManagerIS1_JEEE'/>

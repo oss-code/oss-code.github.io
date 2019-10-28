@@ -1,0 +1,27 @@
+<def f='include/llvm-6.0/llvm/Support/CommandLine.h' l='805' ll='840'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='845' c='llvm::cl::basic_parser'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='882' c='llvm::cl::basic_parser'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='908' c='llvm::cl::basic_parser'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='930' c='llvm::cl::basic_parser'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='952' c='llvm::cl::basic_parser'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='977' c='llvm::cl::basic_parser'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='999' c='llvm::cl::basic_parser'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1021' c='llvm::cl::basic_parser'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1046' c='llvm::cl::basic_parser'/>
+<ovr f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1071' c='llvm::cl::basic_parser'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='802'>//--------------------------------------------------
+// basic_parser - Super class of parsers to provide boilerplate code
+//</doc>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='805'>// non-template implementation of basic_parser&lt;t&gt;</doc>
+<fun r='_ZN4llvm2cl17basic_parser_implC1ERNS0_6OptionE'/>
+<fun r='_ZNK4llvm2cl17basic_parser_impl27getValueExpectedFlagDefaultEv'/>
+<fun r='_ZN4llvm2cl17basic_parser_impl19getExtraOptionNamesERNS_15SmallVectorImplINS_9StringRefEEE'/>
+<fun r='_ZN4llvm2cl17basic_parser_impl10initializeEv'/>
+<fun r='_ZNK4llvm2cl17basic_parser_impl14getOptionWidthERKNS0_6OptionE'/>
+<fun r='_ZNK4llvm2cl17basic_parser_impl15printOptionInfoERKNS0_6OptionEm'/>
+<fun r='_ZNK4llvm2cl17basic_parser_impl18printOptionNoValueERKNS0_6OptionEm'/>
+<fun r='_ZNK4llvm2cl17basic_parser_impl12getValueNameEv'/>
+<fun r='_ZN4llvm2cl17basic_parser_impl6anchorEv'/>
+<fun r='_ZN4llvm2cl17basic_parser_implD1Ev'/>
+<fun r='_ZNK4llvm2cl17basic_parser_impl15printOptionNameERKNS0_6OptionEm'/>

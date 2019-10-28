@@ -1,0 +1,30 @@
+<inh f='include/llvm-6.0/llvm/Pass.h' l='285' c='llvm::FunctionPass'/>
+<def f='pocl/lib/llvmopencl/VariableUniformityAnalysis.h' l='51' ll='77'/>
+<size>80</size>
+<doc f='pocl/lib/llvmopencl/VariableUniformityAnalysis.h' l='36'>/**
+   * Analyses the variables in the function to figure out if a variable
+   * value is
+   *
+   * a) &apos;uniform&apos;, i.e., always same for all work-items in the *same work-group*
+   * b) &apos;varying&apos;, i.e., somehow dependent on the work-item id
+   *
+   * For safety, &apos;variable&apos; is assumed, unless certain of a).
+   *
+   * VAU is an &quot;accumulating&quot; pass; it gathers uniformity information of
+   * instructions in a way that it needs not to be invalidated even though
+   * the CFG is modified. Thus, in case the semantics of the original
+   * information does not change, it is safe for passes to set this pass
+   * preserved even though new instructions are added or the CFG manipulated.
+   */</doc>
+<smbr r='pocl::VariableUniformityAnalysis::ID' t='char'/>
+<fun r='_ZN4pocl26VariableUniformityAnalysisC1Ev'/>
+<fun r='_ZNK4pocl26VariableUniformityAnalysis16getAnalysisUsageERN4llvm13AnalysisUsageE'/>
+<fun r='_ZN4pocl26VariableUniformityAnalysis13runOnFunctionERN4llvm8FunctionE'/>
+<fun r='_ZN4pocl26VariableUniformityAnalysis9isUniformEPN4llvm8FunctionEPNS1_5ValueE'/>
+<fun r='_ZN4pocl26VariableUniformityAnalysis10setUniformEPN4llvm8FunctionEPNS1_5ValueEb'/>
+<fun r='_ZN4pocl26VariableUniformityAnalysis19analyzeBBDivergenceEPN4llvm8FunctionEPNS1_10BasicBlockES5_'/>
+<fun r='_ZN4pocl26VariableUniformityAnalysis18shouldBePrivatizedEPN4llvm8FunctionEPNS1_5ValueE'/>
+<fun r='_ZN4pocl26VariableUniformityAnalysis14doFinalizationERN4llvm6ModuleE'/>
+<fun r='_ZN4pocl26VariableUniformityAnalysis22markInductionVariablesERN4llvm8FunctionERNS1_4LoopE'/>
+<fun r='_ZNK4pocl26VariableUniformityAnalysis20isUniformityAnalyzedEPN4llvm8FunctionEPNS1_5ValueE'/>
+<mbr r='pocl::VariableUniformityAnalysis::uniformityCache_' o='256' t='UniformityCache'/>

@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='120' ll='123' type='bool llvm::LoopBase::contains(const BlockT * BB) const'/>
+<def f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='126' ll='128' type='bool llvm::LoopBase::contains(const InstT * Inst) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='119'>/// Return true if the specified basic block is in this loop.</doc>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='125'>/// Return true if the specified instruction is in this loop.</doc>
+<use f='pocl/lib/llvmopencl/LoopBarriers.cc' l='157' u='c' c='_ZN4pocl12LoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>

@@ -1,0 +1,825 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Triple.h source code [include/llvm-6.0/llvm/ADT/Triple.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="llvm::Triple "/>
+<link rel="stylesheet" href="../../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'include/llvm-6.0/llvm/ADT/Triple.h'; var root_path = '../../../..'; var data_path = '../../../../../data';</script>
+<script src='../../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../../..'>include</a>/<a href='../..'>llvm-6.0</a>/<a href='..'>llvm</a>/<a href='./'>ADT</a>/<a href='Triple.h.html'>Triple.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>//===-- llvm/ADT/Triple.h - Target triple helper class ----------*- C++ -*-===//</i></td></tr>
+<tr><th id="2">2</th><td><i>//</i></td></tr>
+<tr><th id="3">3</th><td><i>//                     The LLVM Compiler Infrastructure</i></td></tr>
+<tr><th id="4">4</th><td><i>//</i></td></tr>
+<tr><th id="5">5</th><td><i>// This file is distributed under the University of Illinois Open Source</i></td></tr>
+<tr><th id="6">6</th><td><i>// License. See LICENSE.TXT for details.</i></td></tr>
+<tr><th id="7">7</th><td><i>//</i></td></tr>
+<tr><th id="8">8</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td><u>#<span data-ppcond="10">ifndef</span> <span class="macro" data-ref="_M/LLVM_ADT_TRIPLE_H">LLVM_ADT_TRIPLE_H</span></u></td></tr>
+<tr><th id="11">11</th><td><u>#define <dfn class="macro" id="_M/LLVM_ADT_TRIPLE_H" data-ref="_M/LLVM_ADT_TRIPLE_H">LLVM_ADT_TRIPLE_H</dfn></u></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td><u>#include <a href="Twine.h.html">"llvm/ADT/Twine.h"</a></u></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td><i>// Some system headers or GCC predefined macros conflict with identifiers in</i></td></tr>
+<tr><th id="16">16</th><td><i>// this file.  Undefine them here.</i></td></tr>
+<tr><th id="17">17</th><td><u>#undef <span class="macro" data-ref="_M/NetBSD">NetBSD</span></u></td></tr>
+<tr><th id="18">18</th><td><u>#undef <span class="macro" data-ref="_M/mips">mips</span></u></td></tr>
+<tr><th id="19">19</th><td><u>#undef <span class="macro" data-ref="_M/sparc">sparc</span></u></td></tr>
+<tr><th id="20">20</th><td></td></tr>
+<tr><th id="21">21</th><td><b>namespace</b> <span class="namespace">llvm</span> {</td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><i class="doc">/// Triple - Helper class for working with autoconf configuration names. For</i></td></tr>
+<tr><th id="24">24</th><td><i class="doc">/// historical reasons, we also call these 'triples' (they used to contain</i></td></tr>
+<tr><th id="25">25</th><td><i class="doc">/// exactly three fields).</i></td></tr>
+<tr><th id="26">26</th><td><i class="doc">///</i></td></tr>
+<tr><th id="27">27</th><td><i class="doc">/// Configuration names are strings in the canonical form:</i></td></tr>
+<tr><th id="28">28</th><td><i class="doc">///   ARCHITECTURE-VENDOR-OPERATING_SYSTEM</i></td></tr>
+<tr><th id="29">29</th><td><i class="doc">/// or</i></td></tr>
+<tr><th id="30">30</th><td><i class="doc">///   ARCHITECTURE-VENDOR-OPERATING_SYSTEM-ENVIRONMENT</i></td></tr>
+<tr><th id="31">31</th><td><i class="doc">///</i></td></tr>
+<tr><th id="32">32</th><td><i class="doc">/// This class is used for clients which want to support arbitrary</i></td></tr>
+<tr><th id="33">33</th><td><i class="doc">/// configuration names, but also want to implement certain special</i></td></tr>
+<tr><th id="34">34</th><td><i class="doc">/// behavior for particular configurations. This class isolates the mapping</i></td></tr>
+<tr><th id="35">35</th><td><i class="doc">/// from the components of the configuration name to well known IDs.</i></td></tr>
+<tr><th id="36">36</th><td><i class="doc">///</i></td></tr>
+<tr><th id="37">37</th><td><i class="doc">/// At its core the Triple class is designed to be a wrapper for a triple</i></td></tr>
+<tr><th id="38">38</th><td><i class="doc">/// string; the constructor does not change or normalize the triple string.</i></td></tr>
+<tr><th id="39">39</th><td><i class="doc">/// Clients that need to handle the non-canonical triples that users often</i></td></tr>
+<tr><th id="40">40</th><td><i class="doc">/// specify should use the normalize method.</i></td></tr>
+<tr><th id="41">41</th><td><i class="doc">///</i></td></tr>
+<tr><th id="42">42</th><td><i class="doc">/// See autoconf/config.guess for a glimpse into what configuration names</i></td></tr>
+<tr><th id="43">43</th><td><i class="doc">/// look like in practice.</i></td></tr>
+<tr><th id="44">44</th><td><b>class</b> <dfn class="type def" id="llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</dfn> {</td></tr>
+<tr><th id="45">45</th><td><b>public</b>:</td></tr>
+<tr><th id="46">46</th><td>  <b>enum</b> <dfn class="type def" id="llvm::Triple::ArchType" title='llvm::Triple::ArchType' data-ref="llvm::Triple::ArchType">ArchType</dfn> {</td></tr>
+<tr><th id="47">47</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::UnknownArch" title='llvm::Triple::ArchType::UnknownArch' data-ref="llvm::Triple::ArchType::UnknownArch">UnknownArch</dfn>,</td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::arm" title='llvm::Triple::ArchType::arm' data-ref="llvm::Triple::ArchType::arm">arm</dfn>,            <i>// ARM (little endian): arm, armv.*, xscale</i></td></tr>
+<tr><th id="50">50</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::armeb" title='llvm::Triple::ArchType::armeb' data-ref="llvm::Triple::ArchType::armeb">armeb</dfn>,          <i>// ARM (big endian): armeb</i></td></tr>
+<tr><th id="51">51</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::aarch64" title='llvm::Triple::ArchType::aarch64' data-ref="llvm::Triple::ArchType::aarch64">aarch64</dfn>,        <i>// AArch64 (little endian): aarch64</i></td></tr>
+<tr><th id="52">52</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::aarch64_be" title='llvm::Triple::ArchType::aarch64_be' data-ref="llvm::Triple::ArchType::aarch64_be">aarch64_be</dfn>,     <i>// AArch64 (big endian): aarch64_be</i></td></tr>
+<tr><th id="53">53</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::arc" title='llvm::Triple::ArchType::arc' data-ref="llvm::Triple::ArchType::arc">arc</dfn>,            <i>// ARC: Synopsys ARC</i></td></tr>
+<tr><th id="54">54</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::avr" title='llvm::Triple::ArchType::avr' data-ref="llvm::Triple::ArchType::avr">avr</dfn>,            <i>// AVR: Atmel AVR microcontroller</i></td></tr>
+<tr><th id="55">55</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::bpfel" title='llvm::Triple::ArchType::bpfel' data-ref="llvm::Triple::ArchType::bpfel">bpfel</dfn>,          <i>// eBPF or extended BPF or 64-bit BPF (little endian)</i></td></tr>
+<tr><th id="56">56</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::bpfeb" title='llvm::Triple::ArchType::bpfeb' data-ref="llvm::Triple::ArchType::bpfeb">bpfeb</dfn>,          <i>// eBPF or extended BPF or 64-bit BPF (big endian)</i></td></tr>
+<tr><th id="57">57</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::hexagon" title='llvm::Triple::ArchType::hexagon' data-ref="llvm::Triple::ArchType::hexagon">hexagon</dfn>,        <i>// Hexagon: hexagon</i></td></tr>
+<tr><th id="58">58</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::mips" title='llvm::Triple::ArchType::mips' data-ref="llvm::Triple::ArchType::mips">mips</dfn>,           <i>// MIPS: mips, mipsallegrex</i></td></tr>
+<tr><th id="59">59</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::mipsel" title='llvm::Triple::ArchType::mipsel' data-ref="llvm::Triple::ArchType::mipsel">mipsel</dfn>,         <i>// MIPSEL: mipsel, mipsallegrexel</i></td></tr>
+<tr><th id="60">60</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::mips64" title='llvm::Triple::ArchType::mips64' data-ref="llvm::Triple::ArchType::mips64">mips64</dfn>,         <i>// MIPS64: mips64</i></td></tr>
+<tr><th id="61">61</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::mips64el" title='llvm::Triple::ArchType::mips64el' data-ref="llvm::Triple::ArchType::mips64el">mips64el</dfn>,       <i>// MIPS64EL: mips64el</i></td></tr>
+<tr><th id="62">62</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::msp430" title='llvm::Triple::ArchType::msp430' data-ref="llvm::Triple::ArchType::msp430">msp430</dfn>,         <i>// MSP430: msp430</i></td></tr>
+<tr><th id="63">63</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::nios2" title='llvm::Triple::ArchType::nios2' data-ref="llvm::Triple::ArchType::nios2">nios2</dfn>,          <i>// NIOSII: nios2</i></td></tr>
+<tr><th id="64">64</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::ppc" title='llvm::Triple::ArchType::ppc' data-ref="llvm::Triple::ArchType::ppc">ppc</dfn>,            <i>// PPC: powerpc</i></td></tr>
+<tr><th id="65">65</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::ppc64" title='llvm::Triple::ArchType::ppc64' data-ref="llvm::Triple::ArchType::ppc64">ppc64</dfn>,          <i>// PPC64: powerpc64, ppu</i></td></tr>
+<tr><th id="66">66</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::ppc64le" title='llvm::Triple::ArchType::ppc64le' data-ref="llvm::Triple::ArchType::ppc64le">ppc64le</dfn>,        <i>// PPC64LE: powerpc64le</i></td></tr>
+<tr><th id="67">67</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::r600" title='llvm::Triple::ArchType::r600' data-ref="llvm::Triple::ArchType::r600">r600</dfn>,           <i>// R600: AMD GPUs HD2XXX - HD6XXX</i></td></tr>
+<tr><th id="68">68</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::amdgcn" title='llvm::Triple::ArchType::amdgcn' data-ref="llvm::Triple::ArchType::amdgcn">amdgcn</dfn>,         <i>// AMDGCN: AMD GCN GPUs</i></td></tr>
+<tr><th id="69">69</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::riscv32" title='llvm::Triple::ArchType::riscv32' data-ref="llvm::Triple::ArchType::riscv32">riscv32</dfn>,        <i>// RISC-V (32-bit): riscv32</i></td></tr>
+<tr><th id="70">70</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::riscv64" title='llvm::Triple::ArchType::riscv64' data-ref="llvm::Triple::ArchType::riscv64">riscv64</dfn>,        <i>// RISC-V (64-bit): riscv64</i></td></tr>
+<tr><th id="71">71</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::sparc" title='llvm::Triple::ArchType::sparc' data-ref="llvm::Triple::ArchType::sparc">sparc</dfn>,          <i>// Sparc: sparc</i></td></tr>
+<tr><th id="72">72</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::sparcv9" title='llvm::Triple::ArchType::sparcv9' data-ref="llvm::Triple::ArchType::sparcv9">sparcv9</dfn>,        <i>// Sparcv9: Sparcv9</i></td></tr>
+<tr><th id="73">73</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::sparcel" title='llvm::Triple::ArchType::sparcel' data-ref="llvm::Triple::ArchType::sparcel">sparcel</dfn>,        <i>// Sparc: (endianness = little). NB: 'Sparcle' is a CPU variant</i></td></tr>
+<tr><th id="74">74</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::systemz" title='llvm::Triple::ArchType::systemz' data-ref="llvm::Triple::ArchType::systemz">systemz</dfn>,        <i>// SystemZ: s390x</i></td></tr>
+<tr><th id="75">75</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::tce" title='llvm::Triple::ArchType::tce' data-ref="llvm::Triple::ArchType::tce">tce</dfn>,            <i>// TCE (<a href="http://tce.cs.tut.fi/):">http://tce.cs.tut.fi/):</a> tce</i></td></tr>
+<tr><th id="76">76</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::tcele" title='llvm::Triple::ArchType::tcele' data-ref="llvm::Triple::ArchType::tcele">tcele</dfn>,          <i>// TCE little endian (<a href="http://tce.cs.tut.fi/):">http://tce.cs.tut.fi/):</a> tcele</i></td></tr>
+<tr><th id="77">77</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::thumb" title='llvm::Triple::ArchType::thumb' data-ref="llvm::Triple::ArchType::thumb">thumb</dfn>,          <i>// Thumb (little endian): thumb, thumbv.*</i></td></tr>
+<tr><th id="78">78</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::thumbeb" title='llvm::Triple::ArchType::thumbeb' data-ref="llvm::Triple::ArchType::thumbeb">thumbeb</dfn>,        <i>// Thumb (big endian): thumbeb</i></td></tr>
+<tr><th id="79">79</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::x86" title='llvm::Triple::ArchType::x86' data-ref="llvm::Triple::ArchType::x86">x86</dfn>,            <i>// X86: i[3-9]86</i></td></tr>
+<tr><th id="80">80</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::x86_64" title='llvm::Triple::ArchType::x86_64' data-ref="llvm::Triple::ArchType::x86_64">x86_64</dfn>,         <i>// X86-64: amd64, x86_64</i></td></tr>
+<tr><th id="81">81</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::xcore" title='llvm::Triple::ArchType::xcore' data-ref="llvm::Triple::ArchType::xcore">xcore</dfn>,          <i>// XCore: xcore</i></td></tr>
+<tr><th id="82">82</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::nvptx" title='llvm::Triple::ArchType::nvptx' data-ref="llvm::Triple::ArchType::nvptx">nvptx</dfn>,          <i>// NVPTX: 32-bit</i></td></tr>
+<tr><th id="83">83</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::nvptx64" title='llvm::Triple::ArchType::nvptx64' data-ref="llvm::Triple::ArchType::nvptx64">nvptx64</dfn>,        <i>// NVPTX: 64-bit</i></td></tr>
+<tr><th id="84">84</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::le32" title='llvm::Triple::ArchType::le32' data-ref="llvm::Triple::ArchType::le32">le32</dfn>,           <i>// le32: generic little-endian 32-bit CPU (PNaCl)</i></td></tr>
+<tr><th id="85">85</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::le64" title='llvm::Triple::ArchType::le64' data-ref="llvm::Triple::ArchType::le64">le64</dfn>,           <i>// le64: generic little-endian 64-bit CPU (PNaCl)</i></td></tr>
+<tr><th id="86">86</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::amdil" title='llvm::Triple::ArchType::amdil' data-ref="llvm::Triple::ArchType::amdil">amdil</dfn>,          <i>// AMDIL</i></td></tr>
+<tr><th id="87">87</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::amdil64" title='llvm::Triple::ArchType::amdil64' data-ref="llvm::Triple::ArchType::amdil64">amdil64</dfn>,        <i>// AMDIL with 64-bit pointers</i></td></tr>
+<tr><th id="88">88</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::hsail" title='llvm::Triple::ArchType::hsail' data-ref="llvm::Triple::ArchType::hsail">hsail</dfn>,          <i>// AMD HSAIL</i></td></tr>
+<tr><th id="89">89</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::hsail64" title='llvm::Triple::ArchType::hsail64' data-ref="llvm::Triple::ArchType::hsail64">hsail64</dfn>,        <i>// AMD HSAIL with 64-bit pointers</i></td></tr>
+<tr><th id="90">90</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::spir" title='llvm::Triple::ArchType::spir' data-ref="llvm::Triple::ArchType::spir">spir</dfn>,           <i>// SPIR: standard portable IR for OpenCL 32-bit version</i></td></tr>
+<tr><th id="91">91</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::spir64" title='llvm::Triple::ArchType::spir64' data-ref="llvm::Triple::ArchType::spir64">spir64</dfn>,         <i>// SPIR: standard portable IR for OpenCL 64-bit version</i></td></tr>
+<tr><th id="92">92</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::kalimba" title='llvm::Triple::ArchType::kalimba' data-ref="llvm::Triple::ArchType::kalimba">kalimba</dfn>,        <i>// Kalimba: generic kalimba</i></td></tr>
+<tr><th id="93">93</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::shave" title='llvm::Triple::ArchType::shave' data-ref="llvm::Triple::ArchType::shave">shave</dfn>,          <i>// SHAVE: Movidius vector VLIW processors</i></td></tr>
+<tr><th id="94">94</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::lanai" title='llvm::Triple::ArchType::lanai' data-ref="llvm::Triple::ArchType::lanai">lanai</dfn>,          <i>// Lanai: Lanai 32-bit</i></td></tr>
+<tr><th id="95">95</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::wasm32" title='llvm::Triple::ArchType::wasm32' data-ref="llvm::Triple::ArchType::wasm32">wasm32</dfn>,         <i>// WebAssembly with 32-bit pointers</i></td></tr>
+<tr><th id="96">96</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::wasm64" title='llvm::Triple::ArchType::wasm64' data-ref="llvm::Triple::ArchType::wasm64">wasm64</dfn>,         <i>// WebAssembly with 64-bit pointers</i></td></tr>
+<tr><th id="97">97</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::renderscript32" title='llvm::Triple::ArchType::renderscript32' data-ref="llvm::Triple::ArchType::renderscript32">renderscript32</dfn>, <i>// 32-bit RenderScript</i></td></tr>
+<tr><th id="98">98</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::renderscript64" title='llvm::Triple::ArchType::renderscript64' data-ref="llvm::Triple::ArchType::renderscript64">renderscript64</dfn>, <i>// 64-bit RenderScript</i></td></tr>
+<tr><th id="99">99</th><td>    <dfn class="enum" id="llvm::Triple::ArchType::LastArchType" title='llvm::Triple::ArchType::LastArchType' data-ref="llvm::Triple::ArchType::LastArchType">LastArchType</dfn> = <a class="enum" href="#llvm::Triple::ArchType::renderscript64" title='llvm::Triple::ArchType::renderscript64' data-ref="llvm::Triple::ArchType::renderscript64">renderscript64</a></td></tr>
+<tr><th id="100">100</th><td>  };</td></tr>
+<tr><th id="101">101</th><td>  <b>enum</b> <dfn class="type def" id="llvm::Triple::SubArchType" title='llvm::Triple::SubArchType' data-ref="llvm::Triple::SubArchType">SubArchType</dfn> {</td></tr>
+<tr><th id="102">102</th><td>    <dfn class="enum" id="llvm::Triple::SubArchType::NoSubArch" title='llvm::Triple::SubArchType::NoSubArch' data-ref="llvm::Triple::SubArchType::NoSubArch">NoSubArch</dfn>,</td></tr>
+<tr><th id="103">103</th><td></td></tr>
+<tr><th id="104">104</th><td>    <dfn class="enum" id="llvm::Triple::SubArchType::ARMSubArch_v8_3a" title='llvm::Triple::SubArchType::ARMSubArch_v8_3a' data-ref="llvm::Triple::SubArchType::ARMSubArch_v8_3a">ARMSubArch_v8_3a</dfn>,</td></tr>
+<tr><th id="105">105</th><td>    <dfn class="enum" id="llvm::Triple::SubArchType::ARMSubArch_v8_2a" title='llvm::Triple::SubArchType::ARMSubArch_v8_2a' data-ref="llvm::Triple::SubArchType::ARMSubArch_v8_2a">ARMSubArch_v8_2a</dfn>,</td></tr>
+<tr><th id="106">106</th><td>    <dfn class="enum" id="llvm::Triple::SubArchType::ARMSubArch_v8_1a" title='llvm::Triple::SubArchType::ARMSubArch_v8_1a' data-ref="llvm::Triple::SubArchType::ARMSubArch_v8_1a">ARMSubArch_v8_1a</dfn>,</td></tr>
+<tr><th id="107">107</th><td>    <dfn class="enum" id="llvm::Triple::SubArchType::ARMSubArch_v8" title='llvm::Triple::SubArchType::ARMSubArch_v8' data-ref="llvm::Triple::SubArchType::ARMSubArch_v8">ARMSubArch_v8</dfn>,</td></tr>
+<tr><th id="108">108</th><td>    <dfn class="enum" id="llvm::Triple::SubArchType::ARMSubArch_v8r" title='llvm::Triple::SubArchType::ARMSubArch_v8r' data-ref="llvm::Triple::SubArchType::ARMSubArch_v8r">ARMSubArch_v8r</dfn>,</td></tr>
+<tr><th id="109">109</th><td>    <dfn class="enum" id="llvm::Triple::SubArchType::ARMSubArch_v8m_baseline" title='llvm::Triple::SubArchType::ARMSubArch_v8m_baseline' data-ref="llvm::Triple::SubArchType::ARMSubArch_v8m_baseline">ARMSubArch_v8m_baseline</dfn>,</td></tr>
+<tr><th id="110">110</th><td>    <dfn class="enum" id="llvm::Triple::SubArchType::ARMSubArch_v8m_mainline" title='llvm::Triple::SubArchType::ARMSubArch_v8m_mainline' data-ref="llvm::Triple::SubArchType::ARMSubArch_v8m_mainline">ARMSubArch_v8m_mainline</dfn>,</td></tr>
+<tr><th id="111">111</th><td>    <dfn class="enum" id="llvm::Triple::SubArchType::ARMSubArch_v7" title='llvm::Triple::SubArchType::ARMSubArch_v7' data-ref="llvm::Triple::SubArchType::ARMSubArch_v7">ARMSubArch_v7</dfn>,</td></tr>
+<tr><th id="112">112</th><td>    <dfn class="enum" id="llvm::Triple::SubArchType::ARMSubArch_v7em" title='llvm::Triple::SubArchType::ARMSubArch_v7em' data-ref="llvm::Triple::SubArchType::ARMSubArch_v7em">ARMSubArch_v7em</dfn>,</td></tr>
+<tr><th id="113">113</th><td>    <dfn class="enum" id="llvm::Triple::SubArchType::ARMSubArch_v7m" title='llvm::Triple::SubArchType::ARMSubArch_v7m' data-ref="llvm::Triple::SubArchType::ARMSubArch_v7m">ARMSubArch_v7m</dfn>,</td></tr>
+<tr><th id="114">114</th><td>    <dfn class="enum" id="llvm::Triple::SubArchType::ARMSubArch_v7s" title='llvm::Triple::SubArchType::ARMSubArch_v7s' data-ref="llvm::Triple::SubArchType::ARMSubArch_v7s">ARMSubArch_v7s</dfn>,</td></tr>
+<tr><th id="115">115</th><td>    <dfn class="enum" id="llvm::Triple::SubArchType::ARMSubArch_v7k" title='llvm::Triple::SubArchType::ARMSubArch_v7k' data-ref="llvm::Triple::SubArchType::ARMSubArch_v7k">ARMSubArch_v7k</dfn>,</td></tr>
+<tr><th id="116">116</th><td>    <dfn class="enum" id="llvm::Triple::SubArchType::ARMSubArch_v7ve" title='llvm::Triple::SubArchType::ARMSubArch_v7ve' data-ref="llvm::Triple::SubArchType::ARMSubArch_v7ve">ARMSubArch_v7ve</dfn>,</td></tr>
+<tr><th id="117">117</th><td>    <dfn class="enum" id="llvm::Triple::SubArchType::ARMSubArch_v6" title='llvm::Triple::SubArchType::ARMSubArch_v6' data-ref="llvm::Triple::SubArchType::ARMSubArch_v6">ARMSubArch_v6</dfn>,</td></tr>
+<tr><th id="118">118</th><td>    <dfn class="enum" id="llvm::Triple::SubArchType::ARMSubArch_v6m" title='llvm::Triple::SubArchType::ARMSubArch_v6m' data-ref="llvm::Triple::SubArchType::ARMSubArch_v6m">ARMSubArch_v6m</dfn>,</td></tr>
+<tr><th id="119">119</th><td>    <dfn class="enum" id="llvm::Triple::SubArchType::ARMSubArch_v6k" title='llvm::Triple::SubArchType::ARMSubArch_v6k' data-ref="llvm::Triple::SubArchType::ARMSubArch_v6k">ARMSubArch_v6k</dfn>,</td></tr>
+<tr><th id="120">120</th><td>    <dfn class="enum" id="llvm::Triple::SubArchType::ARMSubArch_v6t2" title='llvm::Triple::SubArchType::ARMSubArch_v6t2' data-ref="llvm::Triple::SubArchType::ARMSubArch_v6t2">ARMSubArch_v6t2</dfn>,</td></tr>
+<tr><th id="121">121</th><td>    <dfn class="enum" id="llvm::Triple::SubArchType::ARMSubArch_v5" title='llvm::Triple::SubArchType::ARMSubArch_v5' data-ref="llvm::Triple::SubArchType::ARMSubArch_v5">ARMSubArch_v5</dfn>,</td></tr>
+<tr><th id="122">122</th><td>    <dfn class="enum" id="llvm::Triple::SubArchType::ARMSubArch_v5te" title='llvm::Triple::SubArchType::ARMSubArch_v5te' data-ref="llvm::Triple::SubArchType::ARMSubArch_v5te">ARMSubArch_v5te</dfn>,</td></tr>
+<tr><th id="123">123</th><td>    <dfn class="enum" id="llvm::Triple::SubArchType::ARMSubArch_v4t" title='llvm::Triple::SubArchType::ARMSubArch_v4t' data-ref="llvm::Triple::SubArchType::ARMSubArch_v4t">ARMSubArch_v4t</dfn>,</td></tr>
+<tr><th id="124">124</th><td></td></tr>
+<tr><th id="125">125</th><td>    <dfn class="enum" id="llvm::Triple::SubArchType::KalimbaSubArch_v3" title='llvm::Triple::SubArchType::KalimbaSubArch_v3' data-ref="llvm::Triple::SubArchType::KalimbaSubArch_v3">KalimbaSubArch_v3</dfn>,</td></tr>
+<tr><th id="126">126</th><td>    <dfn class="enum" id="llvm::Triple::SubArchType::KalimbaSubArch_v4" title='llvm::Triple::SubArchType::KalimbaSubArch_v4' data-ref="llvm::Triple::SubArchType::KalimbaSubArch_v4">KalimbaSubArch_v4</dfn>,</td></tr>
+<tr><th id="127">127</th><td>    <dfn class="enum" id="llvm::Triple::SubArchType::KalimbaSubArch_v5" title='llvm::Triple::SubArchType::KalimbaSubArch_v5' data-ref="llvm::Triple::SubArchType::KalimbaSubArch_v5">KalimbaSubArch_v5</dfn></td></tr>
+<tr><th id="128">128</th><td>  };</td></tr>
+<tr><th id="129">129</th><td>  <b>enum</b> <dfn class="type def" id="llvm::Triple::VendorType" title='llvm::Triple::VendorType' data-ref="llvm::Triple::VendorType">VendorType</dfn> {</td></tr>
+<tr><th id="130">130</th><td>    <dfn class="enum" id="llvm::Triple::VendorType::UnknownVendor" title='llvm::Triple::VendorType::UnknownVendor' data-ref="llvm::Triple::VendorType::UnknownVendor">UnknownVendor</dfn>,</td></tr>
+<tr><th id="131">131</th><td></td></tr>
+<tr><th id="132">132</th><td>    <dfn class="enum" id="llvm::Triple::VendorType::Apple" title='llvm::Triple::VendorType::Apple' data-ref="llvm::Triple::VendorType::Apple">Apple</dfn>,</td></tr>
+<tr><th id="133">133</th><td>    <dfn class="enum" id="llvm::Triple::VendorType::PC" title='llvm::Triple::VendorType::PC' data-ref="llvm::Triple::VendorType::PC">PC</dfn>,</td></tr>
+<tr><th id="134">134</th><td>    <dfn class="enum" id="llvm::Triple::VendorType::SCEI" title='llvm::Triple::VendorType::SCEI' data-ref="llvm::Triple::VendorType::SCEI">SCEI</dfn>,</td></tr>
+<tr><th id="135">135</th><td>    <dfn class="enum" id="llvm::Triple::VendorType::BGP" title='llvm::Triple::VendorType::BGP' data-ref="llvm::Triple::VendorType::BGP">BGP</dfn>,</td></tr>
+<tr><th id="136">136</th><td>    <dfn class="enum" id="llvm::Triple::VendorType::BGQ" title='llvm::Triple::VendorType::BGQ' data-ref="llvm::Triple::VendorType::BGQ">BGQ</dfn>,</td></tr>
+<tr><th id="137">137</th><td>    <dfn class="enum" id="llvm::Triple::VendorType::Freescale" title='llvm::Triple::VendorType::Freescale' data-ref="llvm::Triple::VendorType::Freescale">Freescale</dfn>,</td></tr>
+<tr><th id="138">138</th><td>    <dfn class="enum" id="llvm::Triple::VendorType::IBM" title='llvm::Triple::VendorType::IBM' data-ref="llvm::Triple::VendorType::IBM">IBM</dfn>,</td></tr>
+<tr><th id="139">139</th><td>    <dfn class="enum" id="llvm::Triple::VendorType::ImaginationTechnologies" title='llvm::Triple::VendorType::ImaginationTechnologies' data-ref="llvm::Triple::VendorType::ImaginationTechnologies">ImaginationTechnologies</dfn>,</td></tr>
+<tr><th id="140">140</th><td>    <dfn class="enum" id="llvm::Triple::VendorType::MipsTechnologies" title='llvm::Triple::VendorType::MipsTechnologies' data-ref="llvm::Triple::VendorType::MipsTechnologies">MipsTechnologies</dfn>,</td></tr>
+<tr><th id="141">141</th><td>    <dfn class="enum" id="llvm::Triple::VendorType::NVIDIA" title='llvm::Triple::VendorType::NVIDIA' data-ref="llvm::Triple::VendorType::NVIDIA">NVIDIA</dfn>,</td></tr>
+<tr><th id="142">142</th><td>    <dfn class="enum" id="llvm::Triple::VendorType::CSR" title='llvm::Triple::VendorType::CSR' data-ref="llvm::Triple::VendorType::CSR">CSR</dfn>,</td></tr>
+<tr><th id="143">143</th><td>    <dfn class="enum" id="llvm::Triple::VendorType::Myriad" title='llvm::Triple::VendorType::Myriad' data-ref="llvm::Triple::VendorType::Myriad">Myriad</dfn>,</td></tr>
+<tr><th id="144">144</th><td>    <dfn class="enum" id="llvm::Triple::VendorType::AMD" title='llvm::Triple::VendorType::AMD' data-ref="llvm::Triple::VendorType::AMD">AMD</dfn>,</td></tr>
+<tr><th id="145">145</th><td>    <dfn class="enum" id="llvm::Triple::VendorType::Mesa" title='llvm::Triple::VendorType::Mesa' data-ref="llvm::Triple::VendorType::Mesa">Mesa</dfn>,</td></tr>
+<tr><th id="146">146</th><td>    <dfn class="enum" id="llvm::Triple::VendorType::SUSE" title='llvm::Triple::VendorType::SUSE' data-ref="llvm::Triple::VendorType::SUSE">SUSE</dfn>,</td></tr>
+<tr><th id="147">147</th><td>    <dfn class="enum" id="llvm::Triple::VendorType::LastVendorType" title='llvm::Triple::VendorType::LastVendorType' data-ref="llvm::Triple::VendorType::LastVendorType">LastVendorType</dfn> = <a class="enum" href="#llvm::Triple::VendorType::SUSE" title='llvm::Triple::VendorType::SUSE' data-ref="llvm::Triple::VendorType::SUSE">SUSE</a></td></tr>
+<tr><th id="148">148</th><td>  };</td></tr>
+<tr><th id="149">149</th><td>  <b>enum</b> <dfn class="type def" id="llvm::Triple::OSType" title='llvm::Triple::OSType' data-ref="llvm::Triple::OSType">OSType</dfn> {</td></tr>
+<tr><th id="150">150</th><td>    <dfn class="enum" id="llvm::Triple::OSType::UnknownOS" title='llvm::Triple::OSType::UnknownOS' data-ref="llvm::Triple::OSType::UnknownOS">UnknownOS</dfn>,</td></tr>
+<tr><th id="151">151</th><td></td></tr>
+<tr><th id="152">152</th><td>    <dfn class="enum" id="llvm::Triple::OSType::Ananas" title='llvm::Triple::OSType::Ananas' data-ref="llvm::Triple::OSType::Ananas">Ananas</dfn>,</td></tr>
+<tr><th id="153">153</th><td>    <dfn class="enum" id="llvm::Triple::OSType::CloudABI" title='llvm::Triple::OSType::CloudABI' data-ref="llvm::Triple::OSType::CloudABI">CloudABI</dfn>,</td></tr>
+<tr><th id="154">154</th><td>    <dfn class="enum" id="llvm::Triple::OSType::Darwin" title='llvm::Triple::OSType::Darwin' data-ref="llvm::Triple::OSType::Darwin">Darwin</dfn>,</td></tr>
+<tr><th id="155">155</th><td>    <dfn class="enum" id="llvm::Triple::OSType::DragonFly" title='llvm::Triple::OSType::DragonFly' data-ref="llvm::Triple::OSType::DragonFly">DragonFly</dfn>,</td></tr>
+<tr><th id="156">156</th><td>    <dfn class="enum" id="llvm::Triple::OSType::FreeBSD" title='llvm::Triple::OSType::FreeBSD' data-ref="llvm::Triple::OSType::FreeBSD">FreeBSD</dfn>,</td></tr>
+<tr><th id="157">157</th><td>    <dfn class="enum" id="llvm::Triple::OSType::Fuchsia" title='llvm::Triple::OSType::Fuchsia' data-ref="llvm::Triple::OSType::Fuchsia">Fuchsia</dfn>,</td></tr>
+<tr><th id="158">158</th><td>    <dfn class="enum" id="llvm::Triple::OSType::IOS" title='llvm::Triple::OSType::IOS' data-ref="llvm::Triple::OSType::IOS">IOS</dfn>,</td></tr>
+<tr><th id="159">159</th><td>    <dfn class="enum" id="llvm::Triple::OSType::KFreeBSD" title='llvm::Triple::OSType::KFreeBSD' data-ref="llvm::Triple::OSType::KFreeBSD">KFreeBSD</dfn>,</td></tr>
+<tr><th id="160">160</th><td>    <dfn class="enum" id="llvm::Triple::OSType::Linux" title='llvm::Triple::OSType::Linux' data-ref="llvm::Triple::OSType::Linux">Linux</dfn>,</td></tr>
+<tr><th id="161">161</th><td>    <dfn class="enum" id="llvm::Triple::OSType::Lv2" title='llvm::Triple::OSType::Lv2' data-ref="llvm::Triple::OSType::Lv2">Lv2</dfn>,        <i>// PS3</i></td></tr>
+<tr><th id="162">162</th><td>    <dfn class="enum" id="llvm::Triple::OSType::MacOSX" title='llvm::Triple::OSType::MacOSX' data-ref="llvm::Triple::OSType::MacOSX">MacOSX</dfn>,</td></tr>
+<tr><th id="163">163</th><td>    <dfn class="enum" id="llvm::Triple::OSType::NetBSD" title='llvm::Triple::OSType::NetBSD' data-ref="llvm::Triple::OSType::NetBSD">NetBSD</dfn>,</td></tr>
+<tr><th id="164">164</th><td>    <dfn class="enum" id="llvm::Triple::OSType::OpenBSD" title='llvm::Triple::OSType::OpenBSD' data-ref="llvm::Triple::OSType::OpenBSD">OpenBSD</dfn>,</td></tr>
+<tr><th id="165">165</th><td>    <dfn class="enum" id="llvm::Triple::OSType::Solaris" title='llvm::Triple::OSType::Solaris' data-ref="llvm::Triple::OSType::Solaris">Solaris</dfn>,</td></tr>
+<tr><th id="166">166</th><td>    <dfn class="enum" id="llvm::Triple::OSType::Win32" title='llvm::Triple::OSType::Win32' data-ref="llvm::Triple::OSType::Win32">Win32</dfn>,</td></tr>
+<tr><th id="167">167</th><td>    <dfn class="enum" id="llvm::Triple::OSType::Haiku" title='llvm::Triple::OSType::Haiku' data-ref="llvm::Triple::OSType::Haiku">Haiku</dfn>,</td></tr>
+<tr><th id="168">168</th><td>    <dfn class="enum" id="llvm::Triple::OSType::Minix" title='llvm::Triple::OSType::Minix' data-ref="llvm::Triple::OSType::Minix">Minix</dfn>,</td></tr>
+<tr><th id="169">169</th><td>    <dfn class="enum" id="llvm::Triple::OSType::RTEMS" title='llvm::Triple::OSType::RTEMS' data-ref="llvm::Triple::OSType::RTEMS">RTEMS</dfn>,</td></tr>
+<tr><th id="170">170</th><td>    <dfn class="enum" id="llvm::Triple::OSType::NaCl" title='llvm::Triple::OSType::NaCl' data-ref="llvm::Triple::OSType::NaCl">NaCl</dfn>,       <i>// Native Client</i></td></tr>
+<tr><th id="171">171</th><td>    <dfn class="enum" id="llvm::Triple::OSType::CNK" title='llvm::Triple::OSType::CNK' data-ref="llvm::Triple::OSType::CNK">CNK</dfn>,        <i>// BG/P Compute-Node Kernel</i></td></tr>
+<tr><th id="172">172</th><td>    <dfn class="enum" id="llvm::Triple::OSType::AIX" title='llvm::Triple::OSType::AIX' data-ref="llvm::Triple::OSType::AIX">AIX</dfn>,</td></tr>
+<tr><th id="173">173</th><td>    <dfn class="enum" id="llvm::Triple::OSType::CUDA" title='llvm::Triple::OSType::CUDA' data-ref="llvm::Triple::OSType::CUDA">CUDA</dfn>,       <i>// NVIDIA CUDA</i></td></tr>
+<tr><th id="174">174</th><td>    <dfn class="enum" id="llvm::Triple::OSType::NVCL" title='llvm::Triple::OSType::NVCL' data-ref="llvm::Triple::OSType::NVCL">NVCL</dfn>,       <i>// NVIDIA OpenCL</i></td></tr>
+<tr><th id="175">175</th><td>    <dfn class="enum" id="llvm::Triple::OSType::AMDHSA" title='llvm::Triple::OSType::AMDHSA' data-ref="llvm::Triple::OSType::AMDHSA">AMDHSA</dfn>,     <i>// AMD HSA Runtime</i></td></tr>
+<tr><th id="176">176</th><td>    <dfn class="enum" id="llvm::Triple::OSType::PS4" title='llvm::Triple::OSType::PS4' data-ref="llvm::Triple::OSType::PS4">PS4</dfn>,</td></tr>
+<tr><th id="177">177</th><td>    <dfn class="enum" id="llvm::Triple::OSType::ELFIAMCU" title='llvm::Triple::OSType::ELFIAMCU' data-ref="llvm::Triple::OSType::ELFIAMCU">ELFIAMCU</dfn>,</td></tr>
+<tr><th id="178">178</th><td>    <dfn class="enum" id="llvm::Triple::OSType::TvOS" title='llvm::Triple::OSType::TvOS' data-ref="llvm::Triple::OSType::TvOS">TvOS</dfn>,       <i>// Apple tvOS</i></td></tr>
+<tr><th id="179">179</th><td>    <dfn class="enum" id="llvm::Triple::OSType::WatchOS" title='llvm::Triple::OSType::WatchOS' data-ref="llvm::Triple::OSType::WatchOS">WatchOS</dfn>,    <i>// Apple watchOS</i></td></tr>
+<tr><th id="180">180</th><td>    <dfn class="enum" id="llvm::Triple::OSType::Mesa3D" title='llvm::Triple::OSType::Mesa3D' data-ref="llvm::Triple::OSType::Mesa3D">Mesa3D</dfn>,</td></tr>
+<tr><th id="181">181</th><td>    <dfn class="enum" id="llvm::Triple::OSType::Contiki" title='llvm::Triple::OSType::Contiki' data-ref="llvm::Triple::OSType::Contiki">Contiki</dfn>,</td></tr>
+<tr><th id="182">182</th><td>    <dfn class="enum" id="llvm::Triple::OSType::AMDPAL" title='llvm::Triple::OSType::AMDPAL' data-ref="llvm::Triple::OSType::AMDPAL">AMDPAL</dfn>,     <i>// AMD PAL Runtime</i></td></tr>
+<tr><th id="183">183</th><td>    <dfn class="enum" id="llvm::Triple::OSType::LastOSType" title='llvm::Triple::OSType::LastOSType' data-ref="llvm::Triple::OSType::LastOSType">LastOSType</dfn> = <a class="enum" href="#llvm::Triple::OSType::AMDPAL" title='llvm::Triple::OSType::AMDPAL' data-ref="llvm::Triple::OSType::AMDPAL">AMDPAL</a></td></tr>
+<tr><th id="184">184</th><td>  };</td></tr>
+<tr><th id="185">185</th><td>  <b>enum</b> <dfn class="type def" id="llvm::Triple::EnvironmentType" title='llvm::Triple::EnvironmentType' data-ref="llvm::Triple::EnvironmentType">EnvironmentType</dfn> {</td></tr>
+<tr><th id="186">186</th><td>    <dfn class="enum" id="llvm::Triple::EnvironmentType::UnknownEnvironment" title='llvm::Triple::EnvironmentType::UnknownEnvironment' data-ref="llvm::Triple::EnvironmentType::UnknownEnvironment">UnknownEnvironment</dfn>,</td></tr>
+<tr><th id="187">187</th><td></td></tr>
+<tr><th id="188">188</th><td>    <dfn class="enum" id="llvm::Triple::EnvironmentType::GNU" title='llvm::Triple::EnvironmentType::GNU' data-ref="llvm::Triple::EnvironmentType::GNU">GNU</dfn>,</td></tr>
+<tr><th id="189">189</th><td>    <dfn class="enum" id="llvm::Triple::EnvironmentType::GNUABIN32" title='llvm::Triple::EnvironmentType::GNUABIN32' data-ref="llvm::Triple::EnvironmentType::GNUABIN32">GNUABIN32</dfn>,</td></tr>
+<tr><th id="190">190</th><td>    <dfn class="enum" id="llvm::Triple::EnvironmentType::GNUABI64" title='llvm::Triple::EnvironmentType::GNUABI64' data-ref="llvm::Triple::EnvironmentType::GNUABI64">GNUABI64</dfn>,</td></tr>
+<tr><th id="191">191</th><td>    <dfn class="enum" id="llvm::Triple::EnvironmentType::GNUEABI" title='llvm::Triple::EnvironmentType::GNUEABI' data-ref="llvm::Triple::EnvironmentType::GNUEABI">GNUEABI</dfn>,</td></tr>
+<tr><th id="192">192</th><td>    <dfn class="enum" id="llvm::Triple::EnvironmentType::GNUEABIHF" title='llvm::Triple::EnvironmentType::GNUEABIHF' data-ref="llvm::Triple::EnvironmentType::GNUEABIHF">GNUEABIHF</dfn>,</td></tr>
+<tr><th id="193">193</th><td>    <dfn class="enum" id="llvm::Triple::EnvironmentType::GNUX32" title='llvm::Triple::EnvironmentType::GNUX32' data-ref="llvm::Triple::EnvironmentType::GNUX32">GNUX32</dfn>,</td></tr>
+<tr><th id="194">194</th><td>    <dfn class="enum" id="llvm::Triple::EnvironmentType::CODE16" title='llvm::Triple::EnvironmentType::CODE16' data-ref="llvm::Triple::EnvironmentType::CODE16">CODE16</dfn>,</td></tr>
+<tr><th id="195">195</th><td>    <dfn class="enum" id="llvm::Triple::EnvironmentType::EABI" title='llvm::Triple::EnvironmentType::EABI' data-ref="llvm::Triple::EnvironmentType::EABI">EABI</dfn>,</td></tr>
+<tr><th id="196">196</th><td>    <dfn class="enum" id="llvm::Triple::EnvironmentType::EABIHF" title='llvm::Triple::EnvironmentType::EABIHF' data-ref="llvm::Triple::EnvironmentType::EABIHF">EABIHF</dfn>,</td></tr>
+<tr><th id="197">197</th><td>    <dfn class="enum" id="llvm::Triple::EnvironmentType::Android" title='llvm::Triple::EnvironmentType::Android' data-ref="llvm::Triple::EnvironmentType::Android">Android</dfn>,</td></tr>
+<tr><th id="198">198</th><td>    <dfn class="enum" id="llvm::Triple::EnvironmentType::Musl" title='llvm::Triple::EnvironmentType::Musl' data-ref="llvm::Triple::EnvironmentType::Musl">Musl</dfn>,</td></tr>
+<tr><th id="199">199</th><td>    <dfn class="enum" id="llvm::Triple::EnvironmentType::MuslEABI" title='llvm::Triple::EnvironmentType::MuslEABI' data-ref="llvm::Triple::EnvironmentType::MuslEABI">MuslEABI</dfn>,</td></tr>
+<tr><th id="200">200</th><td>    <dfn class="enum" id="llvm::Triple::EnvironmentType::MuslEABIHF" title='llvm::Triple::EnvironmentType::MuslEABIHF' data-ref="llvm::Triple::EnvironmentType::MuslEABIHF">MuslEABIHF</dfn>,</td></tr>
+<tr><th id="201">201</th><td></td></tr>
+<tr><th id="202">202</th><td>    <dfn class="enum" id="llvm::Triple::EnvironmentType::MSVC" title='llvm::Triple::EnvironmentType::MSVC' data-ref="llvm::Triple::EnvironmentType::MSVC">MSVC</dfn>,</td></tr>
+<tr><th id="203">203</th><td>    <dfn class="enum" id="llvm::Triple::EnvironmentType::Itanium" title='llvm::Triple::EnvironmentType::Itanium' data-ref="llvm::Triple::EnvironmentType::Itanium">Itanium</dfn>,</td></tr>
+<tr><th id="204">204</th><td>    <dfn class="enum" id="llvm::Triple::EnvironmentType::Cygnus" title='llvm::Triple::EnvironmentType::Cygnus' data-ref="llvm::Triple::EnvironmentType::Cygnus">Cygnus</dfn>,</td></tr>
+<tr><th id="205">205</th><td>    <dfn class="enum" id="llvm::Triple::EnvironmentType::AMDOpenCL" title='llvm::Triple::EnvironmentType::AMDOpenCL' data-ref="llvm::Triple::EnvironmentType::AMDOpenCL">AMDOpenCL</dfn>,</td></tr>
+<tr><th id="206">206</th><td>    <dfn class="enum" id="llvm::Triple::EnvironmentType::CoreCLR" title='llvm::Triple::EnvironmentType::CoreCLR' data-ref="llvm::Triple::EnvironmentType::CoreCLR">CoreCLR</dfn>,</td></tr>
+<tr><th id="207">207</th><td>    <dfn class="enum" id="llvm::Triple::EnvironmentType::OpenCL" title='llvm::Triple::EnvironmentType::OpenCL' data-ref="llvm::Triple::EnvironmentType::OpenCL">OpenCL</dfn>,</td></tr>
+<tr><th id="208">208</th><td>    <dfn class="enum" id="llvm::Triple::EnvironmentType::Simulator" title='llvm::Triple::EnvironmentType::Simulator' data-ref="llvm::Triple::EnvironmentType::Simulator">Simulator</dfn>,  <i>// Simulator variants of other systems, e.g., Apple's iOS</i></td></tr>
+<tr><th id="209">209</th><td>    <dfn class="enum" id="llvm::Triple::EnvironmentType::LastEnvironmentType" title='llvm::Triple::EnvironmentType::LastEnvironmentType' data-ref="llvm::Triple::EnvironmentType::LastEnvironmentType">LastEnvironmentType</dfn> = <a class="enum" href="#llvm::Triple::EnvironmentType::Simulator" title='llvm::Triple::EnvironmentType::Simulator' data-ref="llvm::Triple::EnvironmentType::Simulator">Simulator</a></td></tr>
+<tr><th id="210">210</th><td>  };</td></tr>
+<tr><th id="211">211</th><td>  <b>enum</b> <dfn class="type def" id="llvm::Triple::ObjectFormatType" title='llvm::Triple::ObjectFormatType' data-ref="llvm::Triple::ObjectFormatType">ObjectFormatType</dfn> {</td></tr>
+<tr><th id="212">212</th><td>    <dfn class="enum" id="llvm::Triple::ObjectFormatType::UnknownObjectFormat" title='llvm::Triple::ObjectFormatType::UnknownObjectFormat' data-ref="llvm::Triple::ObjectFormatType::UnknownObjectFormat">UnknownObjectFormat</dfn>,</td></tr>
+<tr><th id="213">213</th><td></td></tr>
+<tr><th id="214">214</th><td>    <dfn class="enum" id="llvm::Triple::ObjectFormatType::COFF" title='llvm::Triple::ObjectFormatType::COFF' data-ref="llvm::Triple::ObjectFormatType::COFF">COFF</dfn>,</td></tr>
+<tr><th id="215">215</th><td>    <dfn class="enum" id="llvm::Triple::ObjectFormatType::ELF" title='llvm::Triple::ObjectFormatType::ELF' data-ref="llvm::Triple::ObjectFormatType::ELF">ELF</dfn>,</td></tr>
+<tr><th id="216">216</th><td>    <dfn class="enum" id="llvm::Triple::ObjectFormatType::MachO" title='llvm::Triple::ObjectFormatType::MachO' data-ref="llvm::Triple::ObjectFormatType::MachO">MachO</dfn>,</td></tr>
+<tr><th id="217">217</th><td>    <dfn class="enum" id="llvm::Triple::ObjectFormatType::Wasm" title='llvm::Triple::ObjectFormatType::Wasm' data-ref="llvm::Triple::ObjectFormatType::Wasm">Wasm</dfn>,</td></tr>
+<tr><th id="218">218</th><td>  };</td></tr>
+<tr><th id="219">219</th><td></td></tr>
+<tr><th id="220">220</th><td><b>private</b>:</td></tr>
+<tr><th id="221">221</th><td>  <span class="namespace">std::</span><a class="typedef" href="../../../c++/7/bits/stringfwd.h.html#std::__cxx11::string" title='std::__cxx11::string' data-type='basic_string&lt;char&gt;' data-ref="std::__cxx11::string">string</a> <dfn class="decl" id="llvm::Triple::Data" title='llvm::Triple::Data' data-ref="llvm::Triple::Data">Data</dfn>;</td></tr>
+<tr><th id="222">222</th><td></td></tr>
+<tr><th id="223">223</th><td>  <i class="doc">/// The parsed arch type.</i></td></tr>
+<tr><th id="224">224</th><td>  <a class="type" href="#llvm::Triple::ArchType" title='llvm::Triple::ArchType' data-ref="llvm::Triple::ArchType">ArchType</a> <dfn class="decl" id="llvm::Triple::Arch" title='llvm::Triple::Arch' data-ref="llvm::Triple::Arch">Arch</dfn>;</td></tr>
+<tr><th id="225">225</th><td></td></tr>
+<tr><th id="226">226</th><td>  <i class="doc">/// The parsed subarchitecture type.</i></td></tr>
+<tr><th id="227">227</th><td>  <a class="type" href="#llvm::Triple::SubArchType" title='llvm::Triple::SubArchType' data-ref="llvm::Triple::SubArchType">SubArchType</a> <dfn class="decl" id="llvm::Triple::SubArch" title='llvm::Triple::SubArch' data-ref="llvm::Triple::SubArch">SubArch</dfn>;</td></tr>
+<tr><th id="228">228</th><td></td></tr>
+<tr><th id="229">229</th><td>  <i class="doc">/// The parsed vendor type.</i></td></tr>
+<tr><th id="230">230</th><td>  <a class="type" href="#llvm::Triple::VendorType" title='llvm::Triple::VendorType' data-ref="llvm::Triple::VendorType">VendorType</a> <dfn class="decl" id="llvm::Triple::Vendor" title='llvm::Triple::Vendor' data-ref="llvm::Triple::Vendor">Vendor</dfn>;</td></tr>
+<tr><th id="231">231</th><td></td></tr>
+<tr><th id="232">232</th><td>  <i class="doc">/// The parsed OS type.</i></td></tr>
+<tr><th id="233">233</th><td>  <a class="type" href="#llvm::Triple::OSType" title='llvm::Triple::OSType' data-ref="llvm::Triple::OSType">OSType</a> <dfn class="decl" id="llvm::Triple::OS" title='llvm::Triple::OS' data-ref="llvm::Triple::OS">OS</dfn>;</td></tr>
+<tr><th id="234">234</th><td></td></tr>
+<tr><th id="235">235</th><td>  <i class="doc">/// The parsed Environment type.</i></td></tr>
+<tr><th id="236">236</th><td>  <a class="type" href="#llvm::Triple::EnvironmentType" title='llvm::Triple::EnvironmentType' data-ref="llvm::Triple::EnvironmentType">EnvironmentType</a> <dfn class="decl" id="llvm::Triple::Environment" title='llvm::Triple::Environment' data-ref="llvm::Triple::Environment">Environment</dfn>;</td></tr>
+<tr><th id="237">237</th><td></td></tr>
+<tr><th id="238">238</th><td>  <i class="doc">/// The object format type.</i></td></tr>
+<tr><th id="239">239</th><td>  <a class="type" href="#llvm::Triple::ObjectFormatType" title='llvm::Triple::ObjectFormatType' data-ref="llvm::Triple::ObjectFormatType">ObjectFormatType</a> <dfn class="decl" id="llvm::Triple::ObjectFormat" title='llvm::Triple::ObjectFormat' data-ref="llvm::Triple::ObjectFormat">ObjectFormat</dfn>;</td></tr>
+<tr><th id="240">240</th><td></td></tr>
+<tr><th id="241">241</th><td><b>public</b>:</td></tr>
+<tr><th id="242">242</th><td>  <i class="doc">/// <span class="command">@name</span> <span class="verb">Constructors</span></i></td></tr>
+<tr><th id="243">243</th><td><i class="doc">  /// @{</i></td></tr>
+<tr><th id="244">244</th><td><i class="doc"></i></td></tr>
+<tr><th id="245">245</th><td><i class="doc">  /// Default constructor is the same as an empty string and leaves all</i></td></tr>
+<tr><th id="246">246</th><td><i class="doc">  /// triple fields unknown.</i></td></tr>
+<tr><th id="247">247</th><td>  <dfn class="decl def" id="_ZN4llvm6TripleC1Ev" title='llvm::Triple::Triple' data-ref="_ZN4llvm6TripleC1Ev">Triple</dfn>()</td></tr>
+<tr><th id="248">248</th><td>      : <a class="member" href="#llvm::Triple::Data" title='llvm::Triple::Data' data-ref="llvm::Triple::Data">Data</a><a class="ref" href="../../../c++/7/bits/basic_string.h.html#_ZNSt7__cxx1112basic_stringC1Ev" title='std::__cxx11::basic_string::basic_string&lt;_CharT, _Traits, _Alloc&gt;' data-ref="_ZNSt7__cxx1112basic_stringC1Ev">(</a>), <a class="member" href="#llvm::Triple::Arch" title='llvm::Triple::Arch' data-ref="llvm::Triple::Arch">Arch</a>(), <a class="member" href="#llvm::Triple::SubArch" title='llvm::Triple::SubArch' data-ref="llvm::Triple::SubArch">SubArch</a>(), <a class="member" href="#llvm::Triple::Vendor" title='llvm::Triple::Vendor' data-ref="llvm::Triple::Vendor">Vendor</a>(), <a class="member" href="#llvm::Triple::OS" title='llvm::Triple::OS' data-ref="llvm::Triple::OS">OS</a>(), <a class="member" href="#llvm::Triple::Environment" title='llvm::Triple::Environment' data-ref="llvm::Triple::Environment">Environment</a>(),</td></tr>
+<tr><th id="249">249</th><td>        <a class="member" href="#llvm::Triple::ObjectFormat" title='llvm::Triple::ObjectFormat' data-ref="llvm::Triple::ObjectFormat">ObjectFormat</a>() {}</td></tr>
+<tr><th id="250">250</th><td></td></tr>
+<tr><th id="251">251</th><td>  <b>explicit</b> <dfn class="decl" id="_ZN4llvm6TripleC1ERKNS_5TwineE" title='llvm::Triple::Triple' data-ref="_ZN4llvm6TripleC1ERKNS_5TwineE">Triple</dfn>(<em>const</em> <a class="type" href="Twine.h.html#llvm::Twine" title='llvm::Twine' data-ref="llvm::Twine">Twine</a> &amp;<dfn class="local col3 decl" id="16503Str" title='Str' data-type='const llvm::Twine &amp;' data-ref="16503Str">Str</dfn>);</td></tr>
+<tr><th id="252">252</th><td>  <dfn class="decl" id="_ZN4llvm6TripleC1ERKNS_5TwineES3_S3_" title='llvm::Triple::Triple' data-ref="_ZN4llvm6TripleC1ERKNS_5TwineES3_S3_">Triple</dfn>(<em>const</em> <a class="type" href="Twine.h.html#llvm::Twine" title='llvm::Twine' data-ref="llvm::Twine">Twine</a> &amp;<dfn class="local col4 decl" id="16504ArchStr" title='ArchStr' data-type='const llvm::Twine &amp;' data-ref="16504ArchStr">ArchStr</dfn>, <em>const</em> <a class="type" href="Twine.h.html#llvm::Twine" title='llvm::Twine' data-ref="llvm::Twine">Twine</a> &amp;<dfn class="local col5 decl" id="16505VendorStr" title='VendorStr' data-type='const llvm::Twine &amp;' data-ref="16505VendorStr">VendorStr</dfn>, <em>const</em> <a class="type" href="Twine.h.html#llvm::Twine" title='llvm::Twine' data-ref="llvm::Twine">Twine</a> &amp;<dfn class="local col6 decl" id="16506OSStr" title='OSStr' data-type='const llvm::Twine &amp;' data-ref="16506OSStr">OSStr</dfn>);</td></tr>
+<tr><th id="253">253</th><td>  <dfn class="decl" id="_ZN4llvm6TripleC1ERKNS_5TwineES3_S3_S3_" title='llvm::Triple::Triple' data-ref="_ZN4llvm6TripleC1ERKNS_5TwineES3_S3_S3_">Triple</dfn>(<em>const</em> <a class="type" href="Twine.h.html#llvm::Twine" title='llvm::Twine' data-ref="llvm::Twine">Twine</a> &amp;<dfn class="local col7 decl" id="16507ArchStr" title='ArchStr' data-type='const llvm::Twine &amp;' data-ref="16507ArchStr">ArchStr</dfn>, <em>const</em> <a class="type" href="Twine.h.html#llvm::Twine" title='llvm::Twine' data-ref="llvm::Twine">Twine</a> &amp;<dfn class="local col8 decl" id="16508VendorStr" title='VendorStr' data-type='const llvm::Twine &amp;' data-ref="16508VendorStr">VendorStr</dfn>, <em>const</em> <a class="type" href="Twine.h.html#llvm::Twine" title='llvm::Twine' data-ref="llvm::Twine">Twine</a> &amp;<dfn class="local col9 decl" id="16509OSStr" title='OSStr' data-type='const llvm::Twine &amp;' data-ref="16509OSStr">OSStr</dfn>,</td></tr>
+<tr><th id="254">254</th><td>         <em>const</em> <a class="type" href="Twine.h.html#llvm::Twine" title='llvm::Twine' data-ref="llvm::Twine">Twine</a> &amp;<dfn class="local col0 decl" id="16510EnvironmentStr" title='EnvironmentStr' data-type='const llvm::Twine &amp;' data-ref="16510EnvironmentStr">EnvironmentStr</dfn>);</td></tr>
+<tr><th id="255">255</th><td></td></tr>
+<tr><th id="256">256</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6TripleeqERKS0_" title='llvm::Triple::operator==' data-ref="_ZNK4llvm6TripleeqERKS0_"><b>operator</b>==</dfn>(<em>const</em> <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a> &amp;<dfn class="local col1 decl" id="16511Other" title='Other' data-type='const llvm::Triple &amp;' data-ref="16511Other">Other</dfn>) <em>const</em> {</td></tr>
+<tr><th id="257">257</th><td>    <b>return</b> <a class="member" href="#llvm::Triple::Arch" title='llvm::Triple::Arch' data-ref="llvm::Triple::Arch">Arch</a> == <a class="local col1 ref" href="#16511Other" title='Other' data-ref="16511Other">Other</a>.<a class="member" href="#llvm::Triple::Arch" title='llvm::Triple::Arch' data-ref="llvm::Triple::Arch">Arch</a> &amp;&amp; <a class="member" href="#llvm::Triple::SubArch" title='llvm::Triple::SubArch' data-ref="llvm::Triple::SubArch">SubArch</a> == <a class="local col1 ref" href="#16511Other" title='Other' data-ref="16511Other">Other</a>.<a class="member" href="#llvm::Triple::SubArch" title='llvm::Triple::SubArch' data-ref="llvm::Triple::SubArch">SubArch</a> &amp;&amp;</td></tr>
+<tr><th id="258">258</th><td>           <a class="member" href="#llvm::Triple::Vendor" title='llvm::Triple::Vendor' data-ref="llvm::Triple::Vendor">Vendor</a> == <a class="local col1 ref" href="#16511Other" title='Other' data-ref="16511Other">Other</a>.<a class="member" href="#llvm::Triple::Vendor" title='llvm::Triple::Vendor' data-ref="llvm::Triple::Vendor">Vendor</a> &amp;&amp; <a class="member" href="#llvm::Triple::OS" title='llvm::Triple::OS' data-ref="llvm::Triple::OS">OS</a> == <a class="local col1 ref" href="#16511Other" title='Other' data-ref="16511Other">Other</a>.<a class="member" href="#llvm::Triple::OS" title='llvm::Triple::OS' data-ref="llvm::Triple::OS">OS</a> &amp;&amp;</td></tr>
+<tr><th id="259">259</th><td>           <a class="member" href="#llvm::Triple::Environment" title='llvm::Triple::Environment' data-ref="llvm::Triple::Environment">Environment</a> == <a class="local col1 ref" href="#16511Other" title='Other' data-ref="16511Other">Other</a>.<a class="member" href="#llvm::Triple::Environment" title='llvm::Triple::Environment' data-ref="llvm::Triple::Environment">Environment</a> &amp;&amp;</td></tr>
+<tr><th id="260">260</th><td>           <a class="member" href="#llvm::Triple::ObjectFormat" title='llvm::Triple::ObjectFormat' data-ref="llvm::Triple::ObjectFormat">ObjectFormat</a> == <a class="local col1 ref" href="#16511Other" title='Other' data-ref="16511Other">Other</a>.<a class="member" href="#llvm::Triple::ObjectFormat" title='llvm::Triple::ObjectFormat' data-ref="llvm::Triple::ObjectFormat">ObjectFormat</a>;</td></tr>
+<tr><th id="261">261</th><td>  }</td></tr>
+<tr><th id="262">262</th><td></td></tr>
+<tr><th id="263">263</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6TripleneERKS0_" title='llvm::Triple::operator!=' data-ref="_ZNK4llvm6TripleneERKS0_"><b>operator</b>!=</dfn>(<em>const</em> <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a> &amp;<dfn class="local col2 decl" id="16512Other" title='Other' data-type='const llvm::Triple &amp;' data-ref="16512Other">Other</dfn>) <em>const</em> {</td></tr>
+<tr><th id="264">264</th><td>    <b>return</b> !(*<b>this</b> <a class="member" href="#_ZNK4llvm6TripleeqERKS0_" title='llvm::Triple::operator==' data-ref="_ZNK4llvm6TripleeqERKS0_">==</a> <a class="local col2 ref" href="#16512Other" title='Other' data-ref="16512Other">Other</a>);</td></tr>
+<tr><th id="265">265</th><td>  }</td></tr>
+<tr><th id="266">266</th><td></td></tr>
+<tr><th id="267">267</th><td>  <i class="doc">/// @}</i></td></tr>
+<tr><th id="268">268</th><td><i class="doc">  /// <span class="command">@name</span> <span class="verb">Normalization</span></i></td></tr>
+<tr><th id="269">269</th><td><i class="doc">  /// @{</i></td></tr>
+<tr><th id="270">270</th><td><i class="doc"></i></td></tr>
+<tr><th id="271">271</th><td><i class="doc">  /// normalize - Turn an arbitrary machine specification into the canonical</i></td></tr>
+<tr><th id="272">272</th><td><i class="doc">  /// triple form (or something sensible that the Triple class understands if</i></td></tr>
+<tr><th id="273">273</th><td><i class="doc">  /// nothing better can reasonably be done).  In particular, it handles the</i></td></tr>
+<tr><th id="274">274</th><td><i class="doc">  /// common case in which otherwise valid components are in the wrong order.</i></td></tr>
+<tr><th id="275">275</th><td>  <em>static</em> <span class="namespace">std::</span><a class="typedef" href="../../../c++/7/bits/stringfwd.h.html#std::__cxx11::string" title='std::__cxx11::string' data-type='basic_string&lt;char&gt;' data-ref="std::__cxx11::string">string</a> <dfn class="decl" id="_ZN4llvm6Triple9normalizeB5cxx11ENS_9StringRefE" title='llvm::Triple::normalize' data-ref="_ZN4llvm6Triple9normalizeB5cxx11ENS_9StringRefE">normalize</dfn>(<a class="type" href="StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="local col3 decl" id="16513Str" title='Str' data-type='llvm::StringRef' data-ref="16513Str">Str</dfn>);</td></tr>
+<tr><th id="276">276</th><td></td></tr>
+<tr><th id="277">277</th><td>  <i class="doc">/// Return the normalized form of this triple's string.</i></td></tr>
+<tr><th id="278">278</th><td>  <span class="namespace">std::</span><a class="typedef" href="../../../c++/7/bits/stringfwd.h.html#std::__cxx11::string" title='std::__cxx11::string' data-type='basic_string&lt;char&gt;' data-ref="std::__cxx11::string">string</a> <dfn class="decl def" id="_ZNK4llvm6Triple9normalizeB5cxx11Ev" title='llvm::Triple::normalize' data-ref="_ZNK4llvm6Triple9normalizeB5cxx11Ev">normalize</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#_ZN4llvm6Triple9normalizeB5cxx11ENS_9StringRefE" title='llvm::Triple::normalize' data-ref="_ZN4llvm6Triple9normalizeB5cxx11ENS_9StringRefE">normalize</a>(<a class="ref fake" href="StringRef.h.html#_ZN4llvm9StringRefC1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE" title='llvm::StringRef::StringRef' data-ref="_ZN4llvm9StringRefC1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"></a><a class="member" href="#llvm::Triple::Data" title='llvm::Triple::Data' data-ref="llvm::Triple::Data">Data</a>); }</td></tr>
+<tr><th id="279">279</th><td></td></tr>
+<tr><th id="280">280</th><td>  <i class="doc">/// @}</i></td></tr>
+<tr><th id="281">281</th><td><i class="doc">  /// <span class="command">@name</span> <span class="verb">Typed Component Access</span></i></td></tr>
+<tr><th id="282">282</th><td><i class="doc">  /// @{</i></td></tr>
+<tr><th id="283">283</th><td><i class="doc"></i></td></tr>
+<tr><th id="284">284</th><td><i class="doc">  /// getArch - Get the parsed architecture type of this triple.</i></td></tr>
+<tr><th id="285">285</th><td>  <a class="type" href="#llvm::Triple::ArchType" title='llvm::Triple::ArchType' data-ref="llvm::Triple::ArchType">ArchType</a> <dfn class="decl def" id="_ZNK4llvm6Triple7getArchEv" title='llvm::Triple::getArch' data-ref="_ZNK4llvm6Triple7getArchEv">getArch</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::Triple::Arch" title='llvm::Triple::Arch' data-ref="llvm::Triple::Arch">Arch</a>; }</td></tr>
+<tr><th id="286">286</th><td></td></tr>
+<tr><th id="287">287</th><td>  <i class="doc">/// getSubArch - get the parsed subarchitecture type for this triple.</i></td></tr>
+<tr><th id="288">288</th><td>  <a class="type" href="#llvm::Triple::SubArchType" title='llvm::Triple::SubArchType' data-ref="llvm::Triple::SubArchType">SubArchType</a> <dfn class="decl def" id="_ZNK4llvm6Triple10getSubArchEv" title='llvm::Triple::getSubArch' data-ref="_ZNK4llvm6Triple10getSubArchEv">getSubArch</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::Triple::SubArch" title='llvm::Triple::SubArch' data-ref="llvm::Triple::SubArch">SubArch</a>; }</td></tr>
+<tr><th id="289">289</th><td></td></tr>
+<tr><th id="290">290</th><td>  <i class="doc">/// getVendor - Get the parsed vendor type of this triple.</i></td></tr>
+<tr><th id="291">291</th><td>  <a class="type" href="#llvm::Triple::VendorType" title='llvm::Triple::VendorType' data-ref="llvm::Triple::VendorType">VendorType</a> <dfn class="decl def" id="_ZNK4llvm6Triple9getVendorEv" title='llvm::Triple::getVendor' data-ref="_ZNK4llvm6Triple9getVendorEv">getVendor</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::Triple::Vendor" title='llvm::Triple::Vendor' data-ref="llvm::Triple::Vendor">Vendor</a>; }</td></tr>
+<tr><th id="292">292</th><td></td></tr>
+<tr><th id="293">293</th><td>  <i class="doc">/// getOS - Get the parsed operating system type of this triple.</i></td></tr>
+<tr><th id="294">294</th><td>  <a class="type" href="#llvm::Triple::OSType" title='llvm::Triple::OSType' data-ref="llvm::Triple::OSType">OSType</a> <dfn class="decl def" id="_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::Triple::OS" title='llvm::Triple::OS' data-ref="llvm::Triple::OS">OS</a>; }</td></tr>
+<tr><th id="295">295</th><td></td></tr>
+<tr><th id="296">296</th><td>  <i class="doc">/// hasEnvironment - Does this triple have the optional environment</i></td></tr>
+<tr><th id="297">297</th><td><i class="doc">  /// (fourth) component?</i></td></tr>
+<tr><th id="298">298</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple14hasEnvironmentEv" title='llvm::Triple::hasEnvironment' data-ref="_ZNK4llvm6Triple14hasEnvironmentEv">hasEnvironment</dfn>() <em>const</em> {</td></tr>
+<tr><th id="299">299</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple18getEnvironmentNameEv" title='llvm::Triple::getEnvironmentName' data-ref="_ZNK4llvm6Triple18getEnvironmentNameEv">getEnvironmentName</a>() <a class="ref" href="StringRef.h.html#_ZN4llvmneENS_9StringRefES0_" title='llvm::operator!=' data-ref="_ZN4llvmneENS_9StringRefES0_">!=</a> <a class="ref fake" href="StringRef.h.html#_ZN4llvm9StringRefC1EPKc" title='llvm::StringRef::StringRef' data-ref="_ZN4llvm9StringRefC1EPKc"></a><q>""</q>;</td></tr>
+<tr><th id="300">300</th><td>  }</td></tr>
+<tr><th id="301">301</th><td></td></tr>
+<tr><th id="302">302</th><td>  <i class="doc">/// getEnvironment - Get the parsed environment type of this triple.</i></td></tr>
+<tr><th id="303">303</th><td>  <a class="type" href="#llvm::Triple::EnvironmentType" title='llvm::Triple::EnvironmentType' data-ref="llvm::Triple::EnvironmentType">EnvironmentType</a> <dfn class="decl def" id="_ZNK4llvm6Triple14getEnvironmentEv" title='llvm::Triple::getEnvironment' data-ref="_ZNK4llvm6Triple14getEnvironmentEv">getEnvironment</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::Triple::Environment" title='llvm::Triple::Environment' data-ref="llvm::Triple::Environment">Environment</a>; }</td></tr>
+<tr><th id="304">304</th><td></td></tr>
+<tr><th id="305">305</th><td>  <i class="doc">/// Parse the version number from the OS name component of the</i></td></tr>
+<tr><th id="306">306</th><td><i class="doc">  /// triple, if present.</i></td></tr>
+<tr><th id="307">307</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="308">308</th><td><i class="doc">  /// For example, "fooos1.2.3" would return (1, 2, 3).</i></td></tr>
+<tr><th id="309">309</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="310">310</th><td><i class="doc">  /// If an entry is not defined, it will be returned as 0.</i></td></tr>
+<tr><th id="311">311</th><td>  <em>void</em> <dfn class="decl" id="_ZNK4llvm6Triple21getEnvironmentVersionERjS1_S1_" title='llvm::Triple::getEnvironmentVersion' data-ref="_ZNK4llvm6Triple21getEnvironmentVersionERjS1_S1_">getEnvironmentVersion</dfn>(<em>unsigned</em> &amp;<dfn class="local col4 decl" id="16514Major" title='Major' data-type='unsigned int &amp;' data-ref="16514Major">Major</dfn>, <em>unsigned</em> &amp;<dfn class="local col5 decl" id="16515Minor" title='Minor' data-type='unsigned int &amp;' data-ref="16515Minor">Minor</dfn>,</td></tr>
+<tr><th id="312">312</th><td>                             <em>unsigned</em> &amp;<dfn class="local col6 decl" id="16516Micro" title='Micro' data-type='unsigned int &amp;' data-ref="16516Micro">Micro</dfn>) <em>const</em>;</td></tr>
+<tr><th id="313">313</th><td></td></tr>
+<tr><th id="314">314</th><td>  <i class="doc">/// getFormat - Get the object format for this triple.</i></td></tr>
+<tr><th id="315">315</th><td>  <a class="type" href="#llvm::Triple::ObjectFormatType" title='llvm::Triple::ObjectFormatType' data-ref="llvm::Triple::ObjectFormatType">ObjectFormatType</a> <dfn class="decl def" id="_ZNK4llvm6Triple15getObjectFormatEv" title='llvm::Triple::getObjectFormat' data-ref="_ZNK4llvm6Triple15getObjectFormatEv">getObjectFormat</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::Triple::ObjectFormat" title='llvm::Triple::ObjectFormat' data-ref="llvm::Triple::ObjectFormat">ObjectFormat</a>; }</td></tr>
+<tr><th id="316">316</th><td></td></tr>
+<tr><th id="317">317</th><td>  <i class="doc">/// getOSVersion - Parse the version number from the OS name component of the</i></td></tr>
+<tr><th id="318">318</th><td><i class="doc">  /// triple, if present.</i></td></tr>
+<tr><th id="319">319</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="320">320</th><td><i class="doc">  /// For example, "fooos1.2.3" would return (1, 2, 3).</i></td></tr>
+<tr><th id="321">321</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="322">322</th><td><i class="doc">  /// If an entry is not defined, it will be returned as 0.</i></td></tr>
+<tr><th id="323">323</th><td>  <em>void</em> <dfn class="decl" id="_ZNK4llvm6Triple12getOSVersionERjS1_S1_" title='llvm::Triple::getOSVersion' data-ref="_ZNK4llvm6Triple12getOSVersionERjS1_S1_">getOSVersion</dfn>(<em>unsigned</em> &amp;<dfn class="local col7 decl" id="16517Major" title='Major' data-type='unsigned int &amp;' data-ref="16517Major">Major</dfn>, <em>unsigned</em> &amp;<dfn class="local col8 decl" id="16518Minor" title='Minor' data-type='unsigned int &amp;' data-ref="16518Minor">Minor</dfn>, <em>unsigned</em> &amp;<dfn class="local col9 decl" id="16519Micro" title='Micro' data-type='unsigned int &amp;' data-ref="16519Micro">Micro</dfn>) <em>const</em>;</td></tr>
+<tr><th id="324">324</th><td></td></tr>
+<tr><th id="325">325</th><td>  <i class="doc">/// getOSMajorVersion - Return just the major version number, this is</i></td></tr>
+<tr><th id="326">326</th><td><i class="doc">  /// specialized because it is a common query.</i></td></tr>
+<tr><th id="327">327</th><td>  <em>unsigned</em> <dfn class="decl def" id="_ZNK4llvm6Triple17getOSMajorVersionEv" title='llvm::Triple::getOSMajorVersion' data-ref="_ZNK4llvm6Triple17getOSMajorVersionEv">getOSMajorVersion</dfn>() <em>const</em> {</td></tr>
+<tr><th id="328">328</th><td>    <em>unsigned</em> <dfn class="local col0 decl" id="16520Maj" title='Maj' data-type='unsigned int' data-ref="16520Maj">Maj</dfn>, <dfn class="local col1 decl" id="16521Min" title='Min' data-type='unsigned int' data-ref="16521Min">Min</dfn>, <dfn class="local col2 decl" id="16522Micro" title='Micro' data-type='unsigned int' data-ref="16522Micro">Micro</dfn>;</td></tr>
+<tr><th id="329">329</th><td>    <a class="member" href="#_ZNK4llvm6Triple12getOSVersionERjS1_S1_" title='llvm::Triple::getOSVersion' data-ref="_ZNK4llvm6Triple12getOSVersionERjS1_S1_">getOSVersion</a>(<span class='refarg'><a class="local col0 ref" href="#16520Maj" title='Maj' data-ref="16520Maj">Maj</a></span>, <span class='refarg'><a class="local col1 ref" href="#16521Min" title='Min' data-ref="16521Min">Min</a></span>, <span class='refarg'><a class="local col2 ref" href="#16522Micro" title='Micro' data-ref="16522Micro">Micro</a></span>);</td></tr>
+<tr><th id="330">330</th><td>    <b>return</b> <a class="local col0 ref" href="#16520Maj" title='Maj' data-ref="16520Maj">Maj</a>;</td></tr>
+<tr><th id="331">331</th><td>  }</td></tr>
+<tr><th id="332">332</th><td></td></tr>
+<tr><th id="333">333</th><td>  <i class="doc">/// getMacOSXVersion - Parse the version number as with getOSVersion and then</i></td></tr>
+<tr><th id="334">334</th><td><i class="doc">  /// translate generic "darwin" versions to the corresponding OS X versions.</i></td></tr>
+<tr><th id="335">335</th><td><i class="doc">  /// This may also be called with IOS triples but the OS X version number is</i></td></tr>
+<tr><th id="336">336</th><td><i class="doc">  /// just set to a constant 10.4.0 in that case.  Returns true if successful.</i></td></tr>
+<tr><th id="337">337</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm6Triple16getMacOSXVersionERjS1_S1_" title='llvm::Triple::getMacOSXVersion' data-ref="_ZNK4llvm6Triple16getMacOSXVersionERjS1_S1_">getMacOSXVersion</dfn>(<em>unsigned</em> &amp;<dfn class="local col3 decl" id="16523Major" title='Major' data-type='unsigned int &amp;' data-ref="16523Major">Major</dfn>, <em>unsigned</em> &amp;<dfn class="local col4 decl" id="16524Minor" title='Minor' data-type='unsigned int &amp;' data-ref="16524Minor">Minor</dfn>,</td></tr>
+<tr><th id="338">338</th><td>                        <em>unsigned</em> &amp;<dfn class="local col5 decl" id="16525Micro" title='Micro' data-type='unsigned int &amp;' data-ref="16525Micro">Micro</dfn>) <em>const</em>;</td></tr>
+<tr><th id="339">339</th><td></td></tr>
+<tr><th id="340">340</th><td>  <i class="doc">/// getiOSVersion - Parse the version number as with getOSVersion.  This should</i></td></tr>
+<tr><th id="341">341</th><td><i class="doc">  /// only be called with IOS or generic triples.</i></td></tr>
+<tr><th id="342">342</th><td>  <em>void</em> <dfn class="decl" id="_ZNK4llvm6Triple13getiOSVersionERjS1_S1_" title='llvm::Triple::getiOSVersion' data-ref="_ZNK4llvm6Triple13getiOSVersionERjS1_S1_">getiOSVersion</dfn>(<em>unsigned</em> &amp;<dfn class="local col6 decl" id="16526Major" title='Major' data-type='unsigned int &amp;' data-ref="16526Major">Major</dfn>, <em>unsigned</em> &amp;<dfn class="local col7 decl" id="16527Minor" title='Minor' data-type='unsigned int &amp;' data-ref="16527Minor">Minor</dfn>,</td></tr>
+<tr><th id="343">343</th><td>                     <em>unsigned</em> &amp;<dfn class="local col8 decl" id="16528Micro" title='Micro' data-type='unsigned int &amp;' data-ref="16528Micro">Micro</dfn>) <em>const</em>;</td></tr>
+<tr><th id="344">344</th><td></td></tr>
+<tr><th id="345">345</th><td>  <i class="doc">/// getWatchOSVersion - Parse the version number as with getOSVersion.  This</i></td></tr>
+<tr><th id="346">346</th><td><i class="doc">  /// should only be called with WatchOS or generic triples.</i></td></tr>
+<tr><th id="347">347</th><td>  <em>void</em> <dfn class="decl" id="_ZNK4llvm6Triple17getWatchOSVersionERjS1_S1_" title='llvm::Triple::getWatchOSVersion' data-ref="_ZNK4llvm6Triple17getWatchOSVersionERjS1_S1_">getWatchOSVersion</dfn>(<em>unsigned</em> &amp;<dfn class="local col9 decl" id="16529Major" title='Major' data-type='unsigned int &amp;' data-ref="16529Major">Major</dfn>, <em>unsigned</em> &amp;<dfn class="local col0 decl" id="16530Minor" title='Minor' data-type='unsigned int &amp;' data-ref="16530Minor">Minor</dfn>,</td></tr>
+<tr><th id="348">348</th><td>                         <em>unsigned</em> &amp;<dfn class="local col1 decl" id="16531Micro" title='Micro' data-type='unsigned int &amp;' data-ref="16531Micro">Micro</dfn>) <em>const</em>;</td></tr>
+<tr><th id="349">349</th><td></td></tr>
+<tr><th id="350">350</th><td>  <i class="doc">/// @}</i></td></tr>
+<tr><th id="351">351</th><td><i class="doc">  /// <span class="command">@name</span> <span class="verb">Direct Component Access</span></i></td></tr>
+<tr><th id="352">352</th><td><i class="doc">  /// @{</i></td></tr>
+<tr><th id="353">353</th><td></td></tr>
+<tr><th id="354">354</th><td>  <em>const</em> <span class="namespace">std::</span><a class="typedef" href="../../../c++/7/bits/stringfwd.h.html#std::__cxx11::string" title='std::__cxx11::string' data-type='basic_string&lt;char&gt;' data-ref="std::__cxx11::string">string</a> &amp;<dfn class="decl def" id="_ZNK4llvm6Triple3strB5cxx11Ev" title='llvm::Triple::str' data-ref="_ZNK4llvm6Triple3strB5cxx11Ev">str</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::Triple::Data" title='llvm::Triple::Data' data-ref="llvm::Triple::Data">Data</a>; }</td></tr>
+<tr><th id="355">355</th><td></td></tr>
+<tr><th id="356">356</th><td>  <em>const</em> <span class="namespace">std::</span><a class="typedef" href="../../../c++/7/bits/stringfwd.h.html#std::__cxx11::string" title='std::__cxx11::string' data-type='basic_string&lt;char&gt;' data-ref="std::__cxx11::string">string</a> &amp;<dfn class="decl def" id="_ZNK4llvm6Triple9getTripleB5cxx11Ev" title='llvm::Triple::getTriple' data-ref="_ZNK4llvm6Triple9getTripleB5cxx11Ev">getTriple</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::Triple::Data" title='llvm::Triple::Data' data-ref="llvm::Triple::Data">Data</a>; }</td></tr>
+<tr><th id="357">357</th><td></td></tr>
+<tr><th id="358">358</th><td>  <i class="doc">/// getArchName - Get the architecture (first) component of the</i></td></tr>
+<tr><th id="359">359</th><td><i class="doc">  /// triple.</i></td></tr>
+<tr><th id="360">360</th><td>  <a class="type" href="StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="decl" id="_ZNK4llvm6Triple11getArchNameEv" title='llvm::Triple::getArchName' data-ref="_ZNK4llvm6Triple11getArchNameEv">getArchName</dfn>() <em>const</em>;</td></tr>
+<tr><th id="361">361</th><td></td></tr>
+<tr><th id="362">362</th><td>  <i class="doc">/// getVendorName - Get the vendor (second) component of the triple.</i></td></tr>
+<tr><th id="363">363</th><td>  <a class="type" href="StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="decl" id="_ZNK4llvm6Triple13getVendorNameEv" title='llvm::Triple::getVendorName' data-ref="_ZNK4llvm6Triple13getVendorNameEv">getVendorName</dfn>() <em>const</em>;</td></tr>
+<tr><th id="364">364</th><td></td></tr>
+<tr><th id="365">365</th><td>  <i class="doc">/// getOSName - Get the operating system (third) component of the</i></td></tr>
+<tr><th id="366">366</th><td><i class="doc">  /// triple.</i></td></tr>
+<tr><th id="367">367</th><td>  <a class="type" href="StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="decl" id="_ZNK4llvm6Triple9getOSNameEv" title='llvm::Triple::getOSName' data-ref="_ZNK4llvm6Triple9getOSNameEv">getOSName</dfn>() <em>const</em>;</td></tr>
+<tr><th id="368">368</th><td></td></tr>
+<tr><th id="369">369</th><td>  <i class="doc">/// getEnvironmentName - Get the optional environment (fourth)</i></td></tr>
+<tr><th id="370">370</th><td><i class="doc">  /// component of the triple, or "" if empty.</i></td></tr>
+<tr><th id="371">371</th><td>  <a class="type" href="StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="decl" id="_ZNK4llvm6Triple18getEnvironmentNameEv" title='llvm::Triple::getEnvironmentName' data-ref="_ZNK4llvm6Triple18getEnvironmentNameEv">getEnvironmentName</dfn>() <em>const</em>;</td></tr>
+<tr><th id="372">372</th><td></td></tr>
+<tr><th id="373">373</th><td>  <i class="doc">/// getOSAndEnvironmentName - Get the operating system and optional</i></td></tr>
+<tr><th id="374">374</th><td><i class="doc">  /// environment components as a single string (separated by a '-'</i></td></tr>
+<tr><th id="375">375</th><td><i class="doc">  /// if the environment component is present).</i></td></tr>
+<tr><th id="376">376</th><td>  <a class="type" href="StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="decl" id="_ZNK4llvm6Triple23getOSAndEnvironmentNameEv" title='llvm::Triple::getOSAndEnvironmentName' data-ref="_ZNK4llvm6Triple23getOSAndEnvironmentNameEv">getOSAndEnvironmentName</dfn>() <em>const</em>;</td></tr>
+<tr><th id="377">377</th><td></td></tr>
+<tr><th id="378">378</th><td>  <i class="doc">/// @}</i></td></tr>
+<tr><th id="379">379</th><td><i class="doc">  /// <span class="command">@name</span> <span class="verb">Convenience Predicates</span></i></td></tr>
+<tr><th id="380">380</th><td><i class="doc">  /// @{</i></td></tr>
+<tr><th id="381">381</th><td><i class="doc"></i></td></tr>
+<tr><th id="382">382</th><td><i class="doc">  /// Test whether the architecture is 64-bit</i></td></tr>
+<tr><th id="383">383</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="384">384</th><td><i class="doc">  /// Note that this tests for 64-bit pointer width, and nothing else. Note</i></td></tr>
+<tr><th id="385">385</th><td><i class="doc">  /// that we intentionally expose only three predicates, 64-bit, 32-bit, and</i></td></tr>
+<tr><th id="386">386</th><td><i class="doc">  /// 16-bit. The inner details of pointer width for particular architectures</i></td></tr>
+<tr><th id="387">387</th><td><i class="doc">  /// is not summed up in the triple, and so only a coarse grained predicate</i></td></tr>
+<tr><th id="388">388</th><td><i class="doc">  /// system is provided.</i></td></tr>
+<tr><th id="389">389</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm6Triple11isArch64BitEv" title='llvm::Triple::isArch64Bit' data-ref="_ZNK4llvm6Triple11isArch64BitEv">isArch64Bit</dfn>() <em>const</em>;</td></tr>
+<tr><th id="390">390</th><td></td></tr>
+<tr><th id="391">391</th><td>  <i class="doc">/// Test whether the architecture is 32-bit</i></td></tr>
+<tr><th id="392">392</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="393">393</th><td><i class="doc">  /// Note that this tests for 32-bit pointer width, and nothing else.</i></td></tr>
+<tr><th id="394">394</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm6Triple11isArch32BitEv" title='llvm::Triple::isArch32Bit' data-ref="_ZNK4llvm6Triple11isArch32BitEv">isArch32Bit</dfn>() <em>const</em>;</td></tr>
+<tr><th id="395">395</th><td></td></tr>
+<tr><th id="396">396</th><td>  <i class="doc">/// Test whether the architecture is 16-bit</i></td></tr>
+<tr><th id="397">397</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="398">398</th><td><i class="doc">  /// Note that this tests for 16-bit pointer width, and nothing else.</i></td></tr>
+<tr><th id="399">399</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm6Triple11isArch16BitEv" title='llvm::Triple::isArch16Bit' data-ref="_ZNK4llvm6Triple11isArch16BitEv">isArch16Bit</dfn>() <em>const</em>;</td></tr>
+<tr><th id="400">400</th><td></td></tr>
+<tr><th id="401">401</th><td>  <i class="doc">/// isOSVersionLT - Helper function for doing comparisons against version</i></td></tr>
+<tr><th id="402">402</th><td><i class="doc">  /// numbers included in the target triple.</i></td></tr>
+<tr><th id="403">403</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple13isOSVersionLTEjjj" title='llvm::Triple::isOSVersionLT' data-ref="_ZNK4llvm6Triple13isOSVersionLTEjjj">isOSVersionLT</dfn>(<em>unsigned</em> <dfn class="local col2 decl" id="16532Major" title='Major' data-type='unsigned int' data-ref="16532Major">Major</dfn>, <em>unsigned</em> <dfn class="local col3 decl" id="16533Minor" title='Minor' data-type='unsigned int' data-ref="16533Minor">Minor</dfn> = <var>0</var>,</td></tr>
+<tr><th id="404">404</th><td>                     <em>unsigned</em> <dfn class="local col4 decl" id="16534Micro" title='Micro' data-type='unsigned int' data-ref="16534Micro">Micro</dfn> = <var>0</var>) <em>const</em> {</td></tr>
+<tr><th id="405">405</th><td>    <em>unsigned</em> <dfn class="local col5 decl" id="16535LHS" title='LHS' data-type='unsigned int [3]' data-ref="16535LHS">LHS</dfn>[<var>3</var>];</td></tr>
+<tr><th id="406">406</th><td>    <a class="member" href="#_ZNK4llvm6Triple12getOSVersionERjS1_S1_" title='llvm::Triple::getOSVersion' data-ref="_ZNK4llvm6Triple12getOSVersionERjS1_S1_">getOSVersion</a>(<span class='refarg'><a class="local col5 ref" href="#16535LHS" title='LHS' data-ref="16535LHS">LHS</a>[<var>0</var>]</span>, <span class='refarg'><a class="local col5 ref" href="#16535LHS" title='LHS' data-ref="16535LHS">LHS</a>[<var>1</var>]</span>, <span class='refarg'><a class="local col5 ref" href="#16535LHS" title='LHS' data-ref="16535LHS">LHS</a>[<var>2</var>]</span>);</td></tr>
+<tr><th id="407">407</th><td></td></tr>
+<tr><th id="408">408</th><td>    <b>if</b> (<a class="local col5 ref" href="#16535LHS" title='LHS' data-ref="16535LHS">LHS</a>[<var>0</var>] != <a class="local col2 ref" href="#16532Major" title='Major' data-ref="16532Major">Major</a>)</td></tr>
+<tr><th id="409">409</th><td>      <b>return</b> <a class="local col5 ref" href="#16535LHS" title='LHS' data-ref="16535LHS">LHS</a>[<var>0</var>] &lt; <a class="local col2 ref" href="#16532Major" title='Major' data-ref="16532Major">Major</a>;</td></tr>
+<tr><th id="410">410</th><td>    <b>if</b> (<a class="local col5 ref" href="#16535LHS" title='LHS' data-ref="16535LHS">LHS</a>[<var>1</var>] != <a class="local col3 ref" href="#16533Minor" title='Minor' data-ref="16533Minor">Minor</a>)</td></tr>
+<tr><th id="411">411</th><td>      <b>return</b> <a class="local col5 ref" href="#16535LHS" title='LHS' data-ref="16535LHS">LHS</a>[<var>1</var>] &lt; <a class="local col3 ref" href="#16533Minor" title='Minor' data-ref="16533Minor">Minor</a>;</td></tr>
+<tr><th id="412">412</th><td>    <b>if</b> (<a class="local col5 ref" href="#16535LHS" title='LHS' data-ref="16535LHS">LHS</a>[<var>2</var>] != <a class="local col4 ref" href="#16534Micro" title='Micro' data-ref="16534Micro">Micro</a>)</td></tr>
+<tr><th id="413">413</th><td>      <b>return</b> <a class="local col5 ref" href="#16535LHS" title='LHS' data-ref="16535LHS">LHS</a>[<var>1</var>] &lt; <a class="local col4 ref" href="#16534Micro" title='Micro' data-ref="16534Micro">Micro</a>;</td></tr>
+<tr><th id="414">414</th><td></td></tr>
+<tr><th id="415">415</th><td>    <b>return</b> <b>false</b>;</td></tr>
+<tr><th id="416">416</th><td>  }</td></tr>
+<tr><th id="417">417</th><td></td></tr>
+<tr><th id="418">418</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple13isOSVersionLTERKS0_" title='llvm::Triple::isOSVersionLT' data-ref="_ZNK4llvm6Triple13isOSVersionLTERKS0_">isOSVersionLT</dfn>(<em>const</em> <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a> &amp;<dfn class="local col6 decl" id="16536Other" title='Other' data-type='const llvm::Triple &amp;' data-ref="16536Other">Other</dfn>) <em>const</em> {</td></tr>
+<tr><th id="419">419</th><td>    <em>unsigned</em> <dfn class="local col7 decl" id="16537RHS" title='RHS' data-type='unsigned int [3]' data-ref="16537RHS">RHS</dfn>[<var>3</var>];</td></tr>
+<tr><th id="420">420</th><td>    <a class="local col6 ref" href="#16536Other" title='Other' data-ref="16536Other">Other</a>.<a class="member" href="#_ZNK4llvm6Triple12getOSVersionERjS1_S1_" title='llvm::Triple::getOSVersion' data-ref="_ZNK4llvm6Triple12getOSVersionERjS1_S1_">getOSVersion</a>(<span class='refarg'><a class="local col7 ref" href="#16537RHS" title='RHS' data-ref="16537RHS">RHS</a>[<var>0</var>]</span>, <span class='refarg'><a class="local col7 ref" href="#16537RHS" title='RHS' data-ref="16537RHS">RHS</a>[<var>1</var>]</span>, <span class='refarg'><a class="local col7 ref" href="#16537RHS" title='RHS' data-ref="16537RHS">RHS</a>[<var>2</var>]</span>);</td></tr>
+<tr><th id="421">421</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple13isOSVersionLTEjjj" title='llvm::Triple::isOSVersionLT' data-ref="_ZNK4llvm6Triple13isOSVersionLTEjjj">isOSVersionLT</a>(<a class="local col7 ref" href="#16537RHS" title='RHS' data-ref="16537RHS">RHS</a>[<var>0</var>], <a class="local col7 ref" href="#16537RHS" title='RHS' data-ref="16537RHS">RHS</a>[<var>1</var>], <a class="local col7 ref" href="#16537RHS" title='RHS' data-ref="16537RHS">RHS</a>[<var>2</var>]);</td></tr>
+<tr><th id="422">422</th><td>  }</td></tr>
+<tr><th id="423">423</th><td></td></tr>
+<tr><th id="424">424</th><td>  <i class="doc">/// isMacOSXVersionLT - Comparison function for checking OS X version</i></td></tr>
+<tr><th id="425">425</th><td><i class="doc">  /// compatibility, which handles supporting skewed version numbering schemes</i></td></tr>
+<tr><th id="426">426</th><td><i class="doc">  /// used by the "darwin" triples.</i></td></tr>
+<tr><th id="427">427</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple17isMacOSXVersionLTEjjj" title='llvm::Triple::isMacOSXVersionLT' data-ref="_ZNK4llvm6Triple17isMacOSXVersionLTEjjj">isMacOSXVersionLT</dfn>(<em>unsigned</em> <dfn class="local col8 decl" id="16538Major" title='Major' data-type='unsigned int' data-ref="16538Major">Major</dfn>, <em>unsigned</em> <dfn class="local col9 decl" id="16539Minor" title='Minor' data-type='unsigned int' data-ref="16539Minor">Minor</dfn> = <var>0</var>,</td></tr>
+<tr><th id="428">428</th><td>                         <em>unsigned</em> <dfn class="local col0 decl" id="16540Micro" title='Micro' data-type='unsigned int' data-ref="16540Micro">Micro</dfn> = <var>0</var>) <em>const</em> {</td></tr>
+<tr><th id="429">429</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(isMacOSX() &amp;&amp; <q>"Not an OS X triple!"</q>);</td></tr>
+<tr><th id="430">430</th><td></td></tr>
+<tr><th id="431">431</th><td>    <i>// If this is OS X, expect a sane version number.</i></td></tr>
+<tr><th id="432">432</th><td>    <b>if</b> (<a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::MacOSX" title='llvm::Triple::OSType::MacOSX' data-ref="llvm::Triple::OSType::MacOSX">MacOSX</a>)</td></tr>
+<tr><th id="433">433</th><td>      <b>return</b> <a class="member" href="#_ZNK4llvm6Triple13isOSVersionLTEjjj" title='llvm::Triple::isOSVersionLT' data-ref="_ZNK4llvm6Triple13isOSVersionLTEjjj">isOSVersionLT</a>(<a class="local col8 ref" href="#16538Major" title='Major' data-ref="16538Major">Major</a>, <a class="local col9 ref" href="#16539Minor" title='Minor' data-ref="16539Minor">Minor</a>, <a class="local col0 ref" href="#16540Micro" title='Micro' data-ref="16540Micro">Micro</a>);</td></tr>
+<tr><th id="434">434</th><td></td></tr>
+<tr><th id="435">435</th><td>    <i>// Otherwise, compare to the "Darwin" number.</i></td></tr>
+<tr><th id="436">436</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(Major == <var>10</var> &amp;&amp; <q>"Unexpected major version"</q>);</td></tr>
+<tr><th id="437">437</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple13isOSVersionLTEjjj" title='llvm::Triple::isOSVersionLT' data-ref="_ZNK4llvm6Triple13isOSVersionLTEjjj">isOSVersionLT</a>(<a class="local col9 ref" href="#16539Minor" title='Minor' data-ref="16539Minor">Minor</a> + <var>4</var>, <a class="local col0 ref" href="#16540Micro" title='Micro' data-ref="16540Micro">Micro</a>, <var>0</var>);</td></tr>
+<tr><th id="438">438</th><td>  }</td></tr>
+<tr><th id="439">439</th><td></td></tr>
+<tr><th id="440">440</th><td>  <i class="doc">/// isMacOSX - Is this a Mac OS X triple. For legacy reasons, we support both</i></td></tr>
+<tr><th id="441">441</th><td><i class="doc">  /// "darwin" and "osx" as OS X triples.</i></td></tr>
+<tr><th id="442">442</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple8isMacOSXEv" title='llvm::Triple::isMacOSX' data-ref="_ZNK4llvm6Triple8isMacOSXEv">isMacOSX</dfn>() <em>const</em> {</td></tr>
+<tr><th id="443">443</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::Darwin" title='llvm::Triple::OSType::Darwin' data-ref="llvm::Triple::OSType::Darwin">Darwin</a> || <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::MacOSX" title='llvm::Triple::OSType::MacOSX' data-ref="llvm::Triple::OSType::MacOSX">MacOSX</a>;</td></tr>
+<tr><th id="444">444</th><td>  }</td></tr>
+<tr><th id="445">445</th><td></td></tr>
+<tr><th id="446">446</th><td>  <i class="doc">/// Is this an iOS triple.</i></td></tr>
+<tr><th id="447">447</th><td><i class="doc">  /// Note: This identifies tvOS as a variant of iOS. If that ever</i></td></tr>
+<tr><th id="448">448</th><td><i class="doc">  /// changes, i.e., if the two operating systems diverge or their version</i></td></tr>
+<tr><th id="449">449</th><td><i class="doc">  /// numbers get out of sync, that will need to be changed.</i></td></tr>
+<tr><th id="450">450</th><td><i class="doc">  /// watchOS has completely different version numbers so it is not included.</i></td></tr>
+<tr><th id="451">451</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple5isiOSEv" title='llvm::Triple::isiOS' data-ref="_ZNK4llvm6Triple5isiOSEv">isiOS</dfn>() <em>const</em> {</td></tr>
+<tr><th id="452">452</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::IOS" title='llvm::Triple::OSType::IOS' data-ref="llvm::Triple::OSType::IOS">IOS</a> || <a class="member" href="#_ZNK4llvm6Triple6isTvOSEv" title='llvm::Triple::isTvOS' data-ref="_ZNK4llvm6Triple6isTvOSEv">isTvOS</a>();</td></tr>
+<tr><th id="453">453</th><td>  }</td></tr>
+<tr><th id="454">454</th><td></td></tr>
+<tr><th id="455">455</th><td>  <i class="doc">/// Is this an Apple tvOS triple.</i></td></tr>
+<tr><th id="456">456</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple6isTvOSEv" title='llvm::Triple::isTvOS' data-ref="_ZNK4llvm6Triple6isTvOSEv">isTvOS</dfn>() <em>const</em> {</td></tr>
+<tr><th id="457">457</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::TvOS" title='llvm::Triple::OSType::TvOS' data-ref="llvm::Triple::OSType::TvOS">TvOS</a>;</td></tr>
+<tr><th id="458">458</th><td>  }</td></tr>
+<tr><th id="459">459</th><td></td></tr>
+<tr><th id="460">460</th><td>  <i class="doc">/// Is this an Apple watchOS triple.</i></td></tr>
+<tr><th id="461">461</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple9isWatchOSEv" title='llvm::Triple::isWatchOS' data-ref="_ZNK4llvm6Triple9isWatchOSEv">isWatchOS</dfn>() <em>const</em> {</td></tr>
+<tr><th id="462">462</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::WatchOS" title='llvm::Triple::OSType::WatchOS' data-ref="llvm::Triple::OSType::WatchOS">WatchOS</a>;</td></tr>
+<tr><th id="463">463</th><td>  }</td></tr>
+<tr><th id="464">464</th><td></td></tr>
+<tr><th id="465">465</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple10isWatchABIEv" title='llvm::Triple::isWatchABI' data-ref="_ZNK4llvm6Triple10isWatchABIEv">isWatchABI</dfn>() <em>const</em> {</td></tr>
+<tr><th id="466">466</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple10getSubArchEv" title='llvm::Triple::getSubArch' data-ref="_ZNK4llvm6Triple10getSubArchEv">getSubArch</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::SubArchType::ARMSubArch_v7k" title='llvm::Triple::SubArchType::ARMSubArch_v7k' data-ref="llvm::Triple::SubArchType::ARMSubArch_v7k">ARMSubArch_v7k</a>;</td></tr>
+<tr><th id="467">467</th><td>  }</td></tr>
+<tr><th id="468">468</th><td></td></tr>
+<tr><th id="469">469</th><td>  <i class="doc">/// isOSDarwin - Is this a "Darwin" OS (OS X, iOS, or watchOS).</i></td></tr>
+<tr><th id="470">470</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple10isOSDarwinEv" title='llvm::Triple::isOSDarwin' data-ref="_ZNK4llvm6Triple10isOSDarwinEv">isOSDarwin</dfn>() <em>const</em> {</td></tr>
+<tr><th id="471">471</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple8isMacOSXEv" title='llvm::Triple::isMacOSX' data-ref="_ZNK4llvm6Triple8isMacOSXEv">isMacOSX</a>() || <a class="member" href="#_ZNK4llvm6Triple5isiOSEv" title='llvm::Triple::isiOS' data-ref="_ZNK4llvm6Triple5isiOSEv">isiOS</a>() || <a class="member" href="#_ZNK4llvm6Triple9isWatchOSEv" title='llvm::Triple::isWatchOS' data-ref="_ZNK4llvm6Triple9isWatchOSEv">isWatchOS</a>();</td></tr>
+<tr><th id="472">472</th><td>  }</td></tr>
+<tr><th id="473">473</th><td></td></tr>
+<tr><th id="474">474</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple22isSimulatorEnvironmentEv" title='llvm::Triple::isSimulatorEnvironment' data-ref="_ZNK4llvm6Triple22isSimulatorEnvironmentEv">isSimulatorEnvironment</dfn>() <em>const</em> {</td></tr>
+<tr><th id="475">475</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple14getEnvironmentEv" title='llvm::Triple::getEnvironment' data-ref="_ZNK4llvm6Triple14getEnvironmentEv">getEnvironment</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::EnvironmentType::Simulator" title='llvm::Triple::EnvironmentType::Simulator' data-ref="llvm::Triple::EnvironmentType::Simulator">Simulator</a>;</td></tr>
+<tr><th id="476">476</th><td>  }</td></tr>
+<tr><th id="477">477</th><td></td></tr>
+<tr><th id="478">478</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple10isOSNetBSDEv" title='llvm::Triple::isOSNetBSD' data-ref="_ZNK4llvm6Triple10isOSNetBSDEv">isOSNetBSD</dfn>() <em>const</em> {</td></tr>
+<tr><th id="479">479</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::NetBSD" title='llvm::Triple::OSType::NetBSD' data-ref="llvm::Triple::OSType::NetBSD">NetBSD</a>;</td></tr>
+<tr><th id="480">480</th><td>  }</td></tr>
+<tr><th id="481">481</th><td></td></tr>
+<tr><th id="482">482</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple11isOSOpenBSDEv" title='llvm::Triple::isOSOpenBSD' data-ref="_ZNK4llvm6Triple11isOSOpenBSDEv">isOSOpenBSD</dfn>() <em>const</em> {</td></tr>
+<tr><th id="483">483</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::OpenBSD" title='llvm::Triple::OSType::OpenBSD' data-ref="llvm::Triple::OSType::OpenBSD">OpenBSD</a>;</td></tr>
+<tr><th id="484">484</th><td>  }</td></tr>
+<tr><th id="485">485</th><td></td></tr>
+<tr><th id="486">486</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple11isOSFreeBSDEv" title='llvm::Triple::isOSFreeBSD' data-ref="_ZNK4llvm6Triple11isOSFreeBSDEv">isOSFreeBSD</dfn>() <em>const</em> {</td></tr>
+<tr><th id="487">487</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::FreeBSD" title='llvm::Triple::OSType::FreeBSD' data-ref="llvm::Triple::OSType::FreeBSD">FreeBSD</a>;</td></tr>
+<tr><th id="488">488</th><td>  }</td></tr>
+<tr><th id="489">489</th><td></td></tr>
+<tr><th id="490">490</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple11isOSFuchsiaEv" title='llvm::Triple::isOSFuchsia' data-ref="_ZNK4llvm6Triple11isOSFuchsiaEv">isOSFuchsia</dfn>() <em>const</em> {</td></tr>
+<tr><th id="491">491</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::Fuchsia" title='llvm::Triple::OSType::Fuchsia' data-ref="llvm::Triple::OSType::Fuchsia">Fuchsia</a>;</td></tr>
+<tr><th id="492">492</th><td>  }</td></tr>
+<tr><th id="493">493</th><td></td></tr>
+<tr><th id="494">494</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple13isOSDragonFlyEv" title='llvm::Triple::isOSDragonFly' data-ref="_ZNK4llvm6Triple13isOSDragonFlyEv">isOSDragonFly</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::DragonFly" title='llvm::Triple::OSType::DragonFly' data-ref="llvm::Triple::OSType::DragonFly">DragonFly</a>; }</td></tr>
+<tr><th id="495">495</th><td></td></tr>
+<tr><th id="496">496</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple11isOSSolarisEv" title='llvm::Triple::isOSSolaris' data-ref="_ZNK4llvm6Triple11isOSSolarisEv">isOSSolaris</dfn>() <em>const</em> {</td></tr>
+<tr><th id="497">497</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::Solaris" title='llvm::Triple::OSType::Solaris' data-ref="llvm::Triple::OSType::Solaris">Solaris</a>;</td></tr>
+<tr><th id="498">498</th><td>  }</td></tr>
+<tr><th id="499">499</th><td></td></tr>
+<tr><th id="500">500</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple9isOSIAMCUEv" title='llvm::Triple::isOSIAMCU' data-ref="_ZNK4llvm6Triple9isOSIAMCUEv">isOSIAMCU</dfn>() <em>const</em> {</td></tr>
+<tr><th id="501">501</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::ELFIAMCU" title='llvm::Triple::OSType::ELFIAMCU' data-ref="llvm::Triple::OSType::ELFIAMCU">ELFIAMCU</a>;</td></tr>
+<tr><th id="502">502</th><td>  }</td></tr>
+<tr><th id="503">503</th><td></td></tr>
+<tr><th id="504">504</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple11isOSUnknownEv" title='llvm::Triple::isOSUnknown' data-ref="_ZNK4llvm6Triple11isOSUnknownEv">isOSUnknown</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::UnknownOS" title='llvm::Triple::OSType::UnknownOS' data-ref="llvm::Triple::OSType::UnknownOS">UnknownOS</a>; }</td></tr>
+<tr><th id="505">505</th><td></td></tr>
+<tr><th id="506">506</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple16isGNUEnvironmentEv" title='llvm::Triple::isGNUEnvironment' data-ref="_ZNK4llvm6Triple16isGNUEnvironmentEv">isGNUEnvironment</dfn>() <em>const</em> {</td></tr>
+<tr><th id="507">507</th><td>    <a class="type" href="#llvm::Triple::EnvironmentType" title='llvm::Triple::EnvironmentType' data-ref="llvm::Triple::EnvironmentType">EnvironmentType</a> <dfn class="local col1 decl" id="16541Env" title='Env' data-type='llvm::Triple::EnvironmentType' data-ref="16541Env">Env</dfn> = <a class="member" href="#_ZNK4llvm6Triple14getEnvironmentEv" title='llvm::Triple::getEnvironment' data-ref="_ZNK4llvm6Triple14getEnvironmentEv">getEnvironment</a>();</td></tr>
+<tr><th id="508">508</th><td>    <b>return</b> <a class="local col1 ref" href="#16541Env" title='Env' data-ref="16541Env">Env</a> == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::EnvironmentType::GNU" title='llvm::Triple::EnvironmentType::GNU' data-ref="llvm::Triple::EnvironmentType::GNU">GNU</a> || <a class="local col1 ref" href="#16541Env" title='Env' data-ref="16541Env">Env</a> == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::EnvironmentType::GNUABIN32" title='llvm::Triple::EnvironmentType::GNUABIN32' data-ref="llvm::Triple::EnvironmentType::GNUABIN32">GNUABIN32</a> ||</td></tr>
+<tr><th id="509">509</th><td>           <a class="local col1 ref" href="#16541Env" title='Env' data-ref="16541Env">Env</a> == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::EnvironmentType::GNUABI64" title='llvm::Triple::EnvironmentType::GNUABI64' data-ref="llvm::Triple::EnvironmentType::GNUABI64">GNUABI64</a> || <a class="local col1 ref" href="#16541Env" title='Env' data-ref="16541Env">Env</a> == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::EnvironmentType::GNUEABI" title='llvm::Triple::EnvironmentType::GNUEABI' data-ref="llvm::Triple::EnvironmentType::GNUEABI">GNUEABI</a> ||</td></tr>
+<tr><th id="510">510</th><td>           <a class="local col1 ref" href="#16541Env" title='Env' data-ref="16541Env">Env</a> == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::EnvironmentType::GNUEABIHF" title='llvm::Triple::EnvironmentType::GNUEABIHF' data-ref="llvm::Triple::EnvironmentType::GNUEABIHF">GNUEABIHF</a> || <a class="local col1 ref" href="#16541Env" title='Env' data-ref="16541Env">Env</a> == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::EnvironmentType::GNUX32" title='llvm::Triple::EnvironmentType::GNUX32' data-ref="llvm::Triple::EnvironmentType::GNUX32">GNUX32</a>;</td></tr>
+<tr><th id="511">511</th><td>  }</td></tr>
+<tr><th id="512">512</th><td></td></tr>
+<tr><th id="513">513</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple11isOSContikiEv" title='llvm::Triple::isOSContiki' data-ref="_ZNK4llvm6Triple11isOSContikiEv">isOSContiki</dfn>() <em>const</em> {</td></tr>
+<tr><th id="514">514</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::Contiki" title='llvm::Triple::OSType::Contiki' data-ref="llvm::Triple::OSType::Contiki">Contiki</a>;</td></tr>
+<tr><th id="515">515</th><td>  }</td></tr>
+<tr><th id="516">516</th><td></td></tr>
+<tr><th id="517">517</th><td>  <i class="doc">/// Tests whether the OS is Haiku.</i></td></tr>
+<tr><th id="518">518</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple9isOSHaikuEv" title='llvm::Triple::isOSHaiku' data-ref="_ZNK4llvm6Triple9isOSHaikuEv">isOSHaiku</dfn>() <em>const</em> {</td></tr>
+<tr><th id="519">519</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::Haiku" title='llvm::Triple::OSType::Haiku' data-ref="llvm::Triple::OSType::Haiku">Haiku</a>;</td></tr>
+<tr><th id="520">520</th><td>  }</td></tr>
+<tr><th id="521">521</th><td></td></tr>
+<tr><th id="522">522</th><td>  <i class="doc">/// Checks if the environment could be MSVC.</i></td></tr>
+<tr><th id="523">523</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple24isWindowsMSVCEnvironmentEv" title='llvm::Triple::isWindowsMSVCEnvironment' data-ref="_ZNK4llvm6Triple24isWindowsMSVCEnvironmentEv">isWindowsMSVCEnvironment</dfn>() <em>const</em> {</td></tr>
+<tr><th id="524">524</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::Win32" title='llvm::Triple::OSType::Win32' data-ref="llvm::Triple::OSType::Win32">Win32</a> &amp;&amp;</td></tr>
+<tr><th id="525">525</th><td>           (<a class="member" href="#_ZNK4llvm6Triple14getEnvironmentEv" title='llvm::Triple::getEnvironment' data-ref="_ZNK4llvm6Triple14getEnvironmentEv">getEnvironment</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::EnvironmentType::UnknownEnvironment" title='llvm::Triple::EnvironmentType::UnknownEnvironment' data-ref="llvm::Triple::EnvironmentType::UnknownEnvironment">UnknownEnvironment</a> ||</td></tr>
+<tr><th id="526">526</th><td>            <a class="member" href="#_ZNK4llvm6Triple14getEnvironmentEv" title='llvm::Triple::getEnvironment' data-ref="_ZNK4llvm6Triple14getEnvironmentEv">getEnvironment</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::EnvironmentType::MSVC" title='llvm::Triple::EnvironmentType::MSVC' data-ref="llvm::Triple::EnvironmentType::MSVC">MSVC</a>);</td></tr>
+<tr><th id="527">527</th><td>  }</td></tr>
+<tr><th id="528">528</th><td></td></tr>
+<tr><th id="529">529</th><td>  <i class="doc">/// Checks if the environment is MSVC.</i></td></tr>
+<tr><th id="530">530</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple29isKnownWindowsMSVCEnvironmentEv" title='llvm::Triple::isKnownWindowsMSVCEnvironment' data-ref="_ZNK4llvm6Triple29isKnownWindowsMSVCEnvironmentEv">isKnownWindowsMSVCEnvironment</dfn>() <em>const</em> {</td></tr>
+<tr><th id="531">531</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::Win32" title='llvm::Triple::OSType::Win32' data-ref="llvm::Triple::OSType::Win32">Win32</a> &amp;&amp; <a class="member" href="#_ZNK4llvm6Triple14getEnvironmentEv" title='llvm::Triple::getEnvironment' data-ref="_ZNK4llvm6Triple14getEnvironmentEv">getEnvironment</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::EnvironmentType::MSVC" title='llvm::Triple::EnvironmentType::MSVC' data-ref="llvm::Triple::EnvironmentType::MSVC">MSVC</a>;</td></tr>
+<tr><th id="532">532</th><td>  }</td></tr>
+<tr><th id="533">533</th><td></td></tr>
+<tr><th id="534">534</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple27isWindowsCoreCLREnvironmentEv" title='llvm::Triple::isWindowsCoreCLREnvironment' data-ref="_ZNK4llvm6Triple27isWindowsCoreCLREnvironmentEv">isWindowsCoreCLREnvironment</dfn>() <em>const</em> {</td></tr>
+<tr><th id="535">535</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::Win32" title='llvm::Triple::OSType::Win32' data-ref="llvm::Triple::OSType::Win32">Win32</a> &amp;&amp; <a class="member" href="#_ZNK4llvm6Triple14getEnvironmentEv" title='llvm::Triple::getEnvironment' data-ref="_ZNK4llvm6Triple14getEnvironmentEv">getEnvironment</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::EnvironmentType::CoreCLR" title='llvm::Triple::EnvironmentType::CoreCLR' data-ref="llvm::Triple::EnvironmentType::CoreCLR">CoreCLR</a>;</td></tr>
+<tr><th id="536">536</th><td>  }</td></tr>
+<tr><th id="537">537</th><td></td></tr>
+<tr><th id="538">538</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple27isWindowsItaniumEnvironmentEv" title='llvm::Triple::isWindowsItaniumEnvironment' data-ref="_ZNK4llvm6Triple27isWindowsItaniumEnvironmentEv">isWindowsItaniumEnvironment</dfn>() <em>const</em> {</td></tr>
+<tr><th id="539">539</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::Win32" title='llvm::Triple::OSType::Win32' data-ref="llvm::Triple::OSType::Win32">Win32</a> &amp;&amp; <a class="member" href="#_ZNK4llvm6Triple14getEnvironmentEv" title='llvm::Triple::getEnvironment' data-ref="_ZNK4llvm6Triple14getEnvironmentEv">getEnvironment</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::EnvironmentType::Itanium" title='llvm::Triple::EnvironmentType::Itanium' data-ref="llvm::Triple::EnvironmentType::Itanium">Itanium</a>;</td></tr>
+<tr><th id="540">540</th><td>  }</td></tr>
+<tr><th id="541">541</th><td></td></tr>
+<tr><th id="542">542</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple26isWindowsCygwinEnvironmentEv" title='llvm::Triple::isWindowsCygwinEnvironment' data-ref="_ZNK4llvm6Triple26isWindowsCygwinEnvironmentEv">isWindowsCygwinEnvironment</dfn>() <em>const</em> {</td></tr>
+<tr><th id="543">543</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::Win32" title='llvm::Triple::OSType::Win32' data-ref="llvm::Triple::OSType::Win32">Win32</a> &amp;&amp; <a class="member" href="#_ZNK4llvm6Triple14getEnvironmentEv" title='llvm::Triple::getEnvironment' data-ref="_ZNK4llvm6Triple14getEnvironmentEv">getEnvironment</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::EnvironmentType::Cygnus" title='llvm::Triple::EnvironmentType::Cygnus' data-ref="llvm::Triple::EnvironmentType::Cygnus">Cygnus</a>;</td></tr>
+<tr><th id="544">544</th><td>  }</td></tr>
+<tr><th id="545">545</th><td></td></tr>
+<tr><th id="546">546</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple23isWindowsGNUEnvironmentEv" title='llvm::Triple::isWindowsGNUEnvironment' data-ref="_ZNK4llvm6Triple23isWindowsGNUEnvironmentEv">isWindowsGNUEnvironment</dfn>() <em>const</em> {</td></tr>
+<tr><th id="547">547</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::Win32" title='llvm::Triple::OSType::Win32' data-ref="llvm::Triple::OSType::Win32">Win32</a> &amp;&amp; <a class="member" href="#_ZNK4llvm6Triple14getEnvironmentEv" title='llvm::Triple::getEnvironment' data-ref="_ZNK4llvm6Triple14getEnvironmentEv">getEnvironment</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::EnvironmentType::GNU" title='llvm::Triple::EnvironmentType::GNU' data-ref="llvm::Triple::EnvironmentType::GNU">GNU</a>;</td></tr>
+<tr><th id="548">548</th><td>  }</td></tr>
+<tr><th id="549">549</th><td></td></tr>
+<tr><th id="550">550</th><td>  <i class="doc">/// Tests for either Cygwin or MinGW OS</i></td></tr>
+<tr><th id="551">551</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple11isOSCygMingEv" title='llvm::Triple::isOSCygMing' data-ref="_ZNK4llvm6Triple11isOSCygMingEv">isOSCygMing</dfn>() <em>const</em> {</td></tr>
+<tr><th id="552">552</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple26isWindowsCygwinEnvironmentEv" title='llvm::Triple::isWindowsCygwinEnvironment' data-ref="_ZNK4llvm6Triple26isWindowsCygwinEnvironmentEv">isWindowsCygwinEnvironment</a>() || <a class="member" href="#_ZNK4llvm6Triple23isWindowsGNUEnvironmentEv" title='llvm::Triple::isWindowsGNUEnvironment' data-ref="_ZNK4llvm6Triple23isWindowsGNUEnvironmentEv">isWindowsGNUEnvironment</a>();</td></tr>
+<tr><th id="553">553</th><td>  }</td></tr>
+<tr><th id="554">554</th><td></td></tr>
+<tr><th id="555">555</th><td>  <i class="doc">/// Is this a "Windows" OS targeting a "MSVCRT.dll" environment.</i></td></tr>
+<tr><th id="556">556</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple10isOSMSVCRTEv" title='llvm::Triple::isOSMSVCRT' data-ref="_ZNK4llvm6Triple10isOSMSVCRTEv">isOSMSVCRT</dfn>() <em>const</em> {</td></tr>
+<tr><th id="557">557</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple24isWindowsMSVCEnvironmentEv" title='llvm::Triple::isWindowsMSVCEnvironment' data-ref="_ZNK4llvm6Triple24isWindowsMSVCEnvironmentEv">isWindowsMSVCEnvironment</a>() || <a class="member" href="#_ZNK4llvm6Triple23isWindowsGNUEnvironmentEv" title='llvm::Triple::isWindowsGNUEnvironment' data-ref="_ZNK4llvm6Triple23isWindowsGNUEnvironmentEv">isWindowsGNUEnvironment</a>() ||</td></tr>
+<tr><th id="558">558</th><td>           <a class="member" href="#_ZNK4llvm6Triple27isWindowsItaniumEnvironmentEv" title='llvm::Triple::isWindowsItaniumEnvironment' data-ref="_ZNK4llvm6Triple27isWindowsItaniumEnvironmentEv">isWindowsItaniumEnvironment</a>();</td></tr>
+<tr><th id="559">559</th><td>  }</td></tr>
+<tr><th id="560">560</th><td></td></tr>
+<tr><th id="561">561</th><td>  <i class="doc">/// Tests whether the OS is Windows.</i></td></tr>
+<tr><th id="562">562</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple11isOSWindowsEv" title='llvm::Triple::isOSWindows' data-ref="_ZNK4llvm6Triple11isOSWindowsEv">isOSWindows</dfn>() <em>const</em> {</td></tr>
+<tr><th id="563">563</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::Win32" title='llvm::Triple::OSType::Win32' data-ref="llvm::Triple::OSType::Win32">Win32</a>;</td></tr>
+<tr><th id="564">564</th><td>  }</td></tr>
+<tr><th id="565">565</th><td></td></tr>
+<tr><th id="566">566</th><td>  <i class="doc">/// Tests whether the OS is NaCl (Native Client)</i></td></tr>
+<tr><th id="567">567</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple8isOSNaClEv" title='llvm::Triple::isOSNaCl' data-ref="_ZNK4llvm6Triple8isOSNaClEv">isOSNaCl</dfn>() <em>const</em> {</td></tr>
+<tr><th id="568">568</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::NaCl" title='llvm::Triple::OSType::NaCl' data-ref="llvm::Triple::OSType::NaCl">NaCl</a>;</td></tr>
+<tr><th id="569">569</th><td>  }</td></tr>
+<tr><th id="570">570</th><td></td></tr>
+<tr><th id="571">571</th><td>  <i class="doc">/// Tests whether the OS is Linux.</i></td></tr>
+<tr><th id="572">572</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple9isOSLinuxEv" title='llvm::Triple::isOSLinux' data-ref="_ZNK4llvm6Triple9isOSLinuxEv">isOSLinux</dfn>() <em>const</em> {</td></tr>
+<tr><th id="573">573</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::Linux" title='llvm::Triple::OSType::Linux' data-ref="llvm::Triple::OSType::Linux">Linux</a>;</td></tr>
+<tr><th id="574">574</th><td>  }</td></tr>
+<tr><th id="575">575</th><td></td></tr>
+<tr><th id="576">576</th><td>  <i class="doc">/// Tests whether the OS is kFreeBSD.</i></td></tr>
+<tr><th id="577">577</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple12isOSKFreeBSDEv" title='llvm::Triple::isOSKFreeBSD' data-ref="_ZNK4llvm6Triple12isOSKFreeBSDEv">isOSKFreeBSD</dfn>() <em>const</em> {</td></tr>
+<tr><th id="578">578</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::KFreeBSD" title='llvm::Triple::OSType::KFreeBSD' data-ref="llvm::Triple::OSType::KFreeBSD">KFreeBSD</a>;</td></tr>
+<tr><th id="579">579</th><td>  }</td></tr>
+<tr><th id="580">580</th><td></td></tr>
+<tr><th id="581">581</th><td>  <i class="doc">/// Tests whether the OS uses glibc.</i></td></tr>
+<tr><th id="582">582</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple9isOSGlibcEv" title='llvm::Triple::isOSGlibc' data-ref="_ZNK4llvm6Triple9isOSGlibcEv">isOSGlibc</dfn>() <em>const</em> {</td></tr>
+<tr><th id="583">583</th><td>    <b>return</b> (<a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::Linux" title='llvm::Triple::OSType::Linux' data-ref="llvm::Triple::OSType::Linux">Linux</a> || <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::KFreeBSD" title='llvm::Triple::OSType::KFreeBSD' data-ref="llvm::Triple::OSType::KFreeBSD">KFreeBSD</a>) &amp;&amp;</td></tr>
+<tr><th id="584">584</th><td>           !<a class="member" href="#_ZNK4llvm6Triple9isAndroidEv" title='llvm::Triple::isAndroid' data-ref="_ZNK4llvm6Triple9isAndroidEv">isAndroid</a>();</td></tr>
+<tr><th id="585">585</th><td>  }</td></tr>
+<tr><th id="586">586</th><td></td></tr>
+<tr><th id="587">587</th><td>  <i class="doc">/// Tests whether the OS uses the ELF binary format.</i></td></tr>
+<tr><th id="588">588</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple16isOSBinFormatELFEv" title='llvm::Triple::isOSBinFormatELF' data-ref="_ZNK4llvm6Triple16isOSBinFormatELFEv">isOSBinFormatELF</dfn>() <em>const</em> {</td></tr>
+<tr><th id="589">589</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple15getObjectFormatEv" title='llvm::Triple::getObjectFormat' data-ref="_ZNK4llvm6Triple15getObjectFormatEv">getObjectFormat</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::ObjectFormatType::ELF" title='llvm::Triple::ObjectFormatType::ELF' data-ref="llvm::Triple::ObjectFormatType::ELF">ELF</a>;</td></tr>
+<tr><th id="590">590</th><td>  }</td></tr>
+<tr><th id="591">591</th><td></td></tr>
+<tr><th id="592">592</th><td>  <i class="doc">/// Tests whether the OS uses the COFF binary format.</i></td></tr>
+<tr><th id="593">593</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple17isOSBinFormatCOFFEv" title='llvm::Triple::isOSBinFormatCOFF' data-ref="_ZNK4llvm6Triple17isOSBinFormatCOFFEv">isOSBinFormatCOFF</dfn>() <em>const</em> {</td></tr>
+<tr><th id="594">594</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple15getObjectFormatEv" title='llvm::Triple::getObjectFormat' data-ref="_ZNK4llvm6Triple15getObjectFormatEv">getObjectFormat</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::ObjectFormatType::COFF" title='llvm::Triple::ObjectFormatType::COFF' data-ref="llvm::Triple::ObjectFormatType::COFF">COFF</a>;</td></tr>
+<tr><th id="595">595</th><td>  }</td></tr>
+<tr><th id="596">596</th><td></td></tr>
+<tr><th id="597">597</th><td>  <i class="doc">/// Tests whether the environment is MachO.</i></td></tr>
+<tr><th id="598">598</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple18isOSBinFormatMachOEv" title='llvm::Triple::isOSBinFormatMachO' data-ref="_ZNK4llvm6Triple18isOSBinFormatMachOEv">isOSBinFormatMachO</dfn>() <em>const</em> {</td></tr>
+<tr><th id="599">599</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple15getObjectFormatEv" title='llvm::Triple::getObjectFormat' data-ref="_ZNK4llvm6Triple15getObjectFormatEv">getObjectFormat</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::ObjectFormatType::MachO" title='llvm::Triple::ObjectFormatType::MachO' data-ref="llvm::Triple::ObjectFormatType::MachO">MachO</a>;</td></tr>
+<tr><th id="600">600</th><td>  }</td></tr>
+<tr><th id="601">601</th><td></td></tr>
+<tr><th id="602">602</th><td>  <i class="doc">/// Tests whether the OS uses the Wasm binary format.</i></td></tr>
+<tr><th id="603">603</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple17isOSBinFormatWasmEv" title='llvm::Triple::isOSBinFormatWasm' data-ref="_ZNK4llvm6Triple17isOSBinFormatWasmEv">isOSBinFormatWasm</dfn>() <em>const</em> {</td></tr>
+<tr><th id="604">604</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple15getObjectFormatEv" title='llvm::Triple::getObjectFormat' data-ref="_ZNK4llvm6Triple15getObjectFormatEv">getObjectFormat</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::ObjectFormatType::Wasm" title='llvm::Triple::ObjectFormatType::Wasm' data-ref="llvm::Triple::ObjectFormatType::Wasm">Wasm</a>;</td></tr>
+<tr><th id="605">605</th><td>  }</td></tr>
+<tr><th id="606">606</th><td></td></tr>
+<tr><th id="607">607</th><td>  <i class="doc">/// Tests whether the target is the PS4 CPU</i></td></tr>
+<tr><th id="608">608</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple8isPS4CPUEv" title='llvm::Triple::isPS4CPU' data-ref="_ZNK4llvm6Triple8isPS4CPUEv">isPS4CPU</dfn>() <em>const</em> {</td></tr>
+<tr><th id="609">609</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple7getArchEv" title='llvm::Triple::getArch' data-ref="_ZNK4llvm6Triple7getArchEv">getArch</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::ArchType::x86_64" title='llvm::Triple::ArchType::x86_64' data-ref="llvm::Triple::ArchType::x86_64">x86_64</a> &amp;&amp;</td></tr>
+<tr><th id="610">610</th><td>           <a class="member" href="#_ZNK4llvm6Triple9getVendorEv" title='llvm::Triple::getVendor' data-ref="_ZNK4llvm6Triple9getVendorEv">getVendor</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::VendorType::SCEI" title='llvm::Triple::VendorType::SCEI' data-ref="llvm::Triple::VendorType::SCEI">SCEI</a> &amp;&amp;</td></tr>
+<tr><th id="611">611</th><td>           <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::PS4" title='llvm::Triple::OSType::PS4' data-ref="llvm::Triple::OSType::PS4">PS4</a>;</td></tr>
+<tr><th id="612">612</th><td>  }</td></tr>
+<tr><th id="613">613</th><td></td></tr>
+<tr><th id="614">614</th><td>  <i class="doc">/// Tests whether the target is the PS4 platform</i></td></tr>
+<tr><th id="615">615</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple5isPS4Ev" title='llvm::Triple::isPS4' data-ref="_ZNK4llvm6Triple5isPS4Ev">isPS4</dfn>() <em>const</em> {</td></tr>
+<tr><th id="616">616</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple9getVendorEv" title='llvm::Triple::getVendor' data-ref="_ZNK4llvm6Triple9getVendorEv">getVendor</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::VendorType::SCEI" title='llvm::Triple::VendorType::SCEI' data-ref="llvm::Triple::VendorType::SCEI">SCEI</a> &amp;&amp;</td></tr>
+<tr><th id="617">617</th><td>           <a class="member" href="#_ZNK4llvm6Triple5getOSEv" title='llvm::Triple::getOS' data-ref="_ZNK4llvm6Triple5getOSEv">getOS</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::OSType::PS4" title='llvm::Triple::OSType::PS4' data-ref="llvm::Triple::OSType::PS4">PS4</a>;</td></tr>
+<tr><th id="618">618</th><td>  }</td></tr>
+<tr><th id="619">619</th><td></td></tr>
+<tr><th id="620">620</th><td>  <i class="doc">/// Tests whether the target is Android</i></td></tr>
+<tr><th id="621">621</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple9isAndroidEv" title='llvm::Triple::isAndroid' data-ref="_ZNK4llvm6Triple9isAndroidEv">isAndroid</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#_ZNK4llvm6Triple14getEnvironmentEv" title='llvm::Triple::getEnvironment' data-ref="_ZNK4llvm6Triple14getEnvironmentEv">getEnvironment</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::EnvironmentType::Android" title='llvm::Triple::EnvironmentType::Android' data-ref="llvm::Triple::EnvironmentType::Android">Android</a>; }</td></tr>
+<tr><th id="622">622</th><td></td></tr>
+<tr><th id="623">623</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple18isAndroidVersionLTEj" title='llvm::Triple::isAndroidVersionLT' data-ref="_ZNK4llvm6Triple18isAndroidVersionLTEj">isAndroidVersionLT</dfn>(<em>unsigned</em> <dfn class="local col2 decl" id="16542Major" title='Major' data-type='unsigned int' data-ref="16542Major">Major</dfn>) <em>const</em> {</td></tr>
+<tr><th id="624">624</th><td>    <a class="macro" href="../../../assert.h.html#50" title="(static_cast&lt;void&gt; (0))" data-ref="_M/assert">assert</a>(isAndroid() &amp;&amp; <q>"Not an Android triple!"</q>);</td></tr>
+<tr><th id="625">625</th><td></td></tr>
+<tr><th id="626">626</th><td>    <em>unsigned</em> <dfn class="local col3 decl" id="16543Env" title='Env' data-type='unsigned int [3]' data-ref="16543Env">Env</dfn>[<var>3</var>];</td></tr>
+<tr><th id="627">627</th><td>    <a class="member" href="#_ZNK4llvm6Triple21getEnvironmentVersionERjS1_S1_" title='llvm::Triple::getEnvironmentVersion' data-ref="_ZNK4llvm6Triple21getEnvironmentVersionERjS1_S1_">getEnvironmentVersion</a>(<span class='refarg'><a class="local col3 ref" href="#16543Env" title='Env' data-ref="16543Env">Env</a>[<var>0</var>]</span>, <span class='refarg'><a class="local col3 ref" href="#16543Env" title='Env' data-ref="16543Env">Env</a>[<var>1</var>]</span>, <span class='refarg'><a class="local col3 ref" href="#16543Env" title='Env' data-ref="16543Env">Env</a>[<var>2</var>]</span>);</td></tr>
+<tr><th id="628">628</th><td></td></tr>
+<tr><th id="629">629</th><td>    <i>// 64-bit targets did not exist before API level 21 (Lollipop).</i></td></tr>
+<tr><th id="630">630</th><td>    <b>if</b> (<a class="member" href="#_ZNK4llvm6Triple11isArch64BitEv" title='llvm::Triple::isArch64Bit' data-ref="_ZNK4llvm6Triple11isArch64BitEv">isArch64Bit</a>() &amp;&amp; <a class="local col3 ref" href="#16543Env" title='Env' data-ref="16543Env">Env</a>[<var>0</var>] &lt; <var>21</var>)</td></tr>
+<tr><th id="631">631</th><td>      <a class="local col3 ref" href="#16543Env" title='Env' data-ref="16543Env">Env</a>[<var>0</var>] = <var>21</var>;</td></tr>
+<tr><th id="632">632</th><td></td></tr>
+<tr><th id="633">633</th><td>    <b>return</b> <a class="local col3 ref" href="#16543Env" title='Env' data-ref="16543Env">Env</a>[<var>0</var>] &lt; <a class="local col2 ref" href="#16542Major" title='Major' data-ref="16542Major">Major</a>;</td></tr>
+<tr><th id="634">634</th><td>  }</td></tr>
+<tr><th id="635">635</th><td></td></tr>
+<tr><th id="636">636</th><td>  <i class="doc">/// Tests whether the environment is musl-libc</i></td></tr>
+<tr><th id="637">637</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple6isMuslEv" title='llvm::Triple::isMusl' data-ref="_ZNK4llvm6Triple6isMuslEv">isMusl</dfn>() <em>const</em> {</td></tr>
+<tr><th id="638">638</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple14getEnvironmentEv" title='llvm::Triple::getEnvironment' data-ref="_ZNK4llvm6Triple14getEnvironmentEv">getEnvironment</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::EnvironmentType::Musl" title='llvm::Triple::EnvironmentType::Musl' data-ref="llvm::Triple::EnvironmentType::Musl">Musl</a> ||</td></tr>
+<tr><th id="639">639</th><td>           <a class="member" href="#_ZNK4llvm6Triple14getEnvironmentEv" title='llvm::Triple::getEnvironment' data-ref="_ZNK4llvm6Triple14getEnvironmentEv">getEnvironment</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::EnvironmentType::MuslEABI" title='llvm::Triple::EnvironmentType::MuslEABI' data-ref="llvm::Triple::EnvironmentType::MuslEABI">MuslEABI</a> ||</td></tr>
+<tr><th id="640">640</th><td>           <a class="member" href="#_ZNK4llvm6Triple14getEnvironmentEv" title='llvm::Triple::getEnvironment' data-ref="_ZNK4llvm6Triple14getEnvironmentEv">getEnvironment</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::EnvironmentType::MuslEABIHF" title='llvm::Triple::EnvironmentType::MuslEABIHF' data-ref="llvm::Triple::EnvironmentType::MuslEABIHF">MuslEABIHF</a>;</td></tr>
+<tr><th id="641">641</th><td>  }</td></tr>
+<tr><th id="642">642</th><td></td></tr>
+<tr><th id="643">643</th><td>  <i class="doc">/// Tests whether the target is NVPTX (32- or 64-bit).</i></td></tr>
+<tr><th id="644">644</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple7isNVPTXEv" title='llvm::Triple::isNVPTX' data-ref="_ZNK4llvm6Triple7isNVPTXEv">isNVPTX</dfn>() <em>const</em> {</td></tr>
+<tr><th id="645">645</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple7getArchEv" title='llvm::Triple::getArch' data-ref="_ZNK4llvm6Triple7getArchEv">getArch</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::ArchType::nvptx" title='llvm::Triple::ArchType::nvptx' data-ref="llvm::Triple::ArchType::nvptx">nvptx</a> || <a class="member" href="#_ZNK4llvm6Triple7getArchEv" title='llvm::Triple::getArch' data-ref="_ZNK4llvm6Triple7getArchEv">getArch</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::ArchType::nvptx64" title='llvm::Triple::ArchType::nvptx64' data-ref="llvm::Triple::ArchType::nvptx64">nvptx64</a>;</td></tr>
+<tr><th id="646">646</th><td>  }</td></tr>
+<tr><th id="647">647</th><td></td></tr>
+<tr><th id="648">648</th><td>  <i class="doc">/// Tests whether the target is Thumb (little and big endian).</i></td></tr>
+<tr><th id="649">649</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple7isThumbEv" title='llvm::Triple::isThumb' data-ref="_ZNK4llvm6Triple7isThumbEv">isThumb</dfn>() <em>const</em> {</td></tr>
+<tr><th id="650">650</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple7getArchEv" title='llvm::Triple::getArch' data-ref="_ZNK4llvm6Triple7getArchEv">getArch</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::ArchType::thumb" title='llvm::Triple::ArchType::thumb' data-ref="llvm::Triple::ArchType::thumb">thumb</a> || <a class="member" href="#_ZNK4llvm6Triple7getArchEv" title='llvm::Triple::getArch' data-ref="_ZNK4llvm6Triple7getArchEv">getArch</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::ArchType::thumbeb" title='llvm::Triple::ArchType::thumbeb' data-ref="llvm::Triple::ArchType::thumbeb">thumbeb</a>;</td></tr>
+<tr><th id="651">651</th><td>  }</td></tr>
+<tr><th id="652">652</th><td></td></tr>
+<tr><th id="653">653</th><td>  <i class="doc">/// Tests whether the target is ARM (little and big endian).</i></td></tr>
+<tr><th id="654">654</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple5isARMEv" title='llvm::Triple::isARM' data-ref="_ZNK4llvm6Triple5isARMEv">isARM</dfn>() <em>const</em> {</td></tr>
+<tr><th id="655">655</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple7getArchEv" title='llvm::Triple::getArch' data-ref="_ZNK4llvm6Triple7getArchEv">getArch</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::ArchType::arm" title='llvm::Triple::ArchType::arm' data-ref="llvm::Triple::ArchType::arm">arm</a> || <a class="member" href="#_ZNK4llvm6Triple7getArchEv" title='llvm::Triple::getArch' data-ref="_ZNK4llvm6Triple7getArchEv">getArch</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::ArchType::armeb" title='llvm::Triple::ArchType::armeb' data-ref="llvm::Triple::ArchType::armeb">armeb</a>;</td></tr>
+<tr><th id="656">656</th><td>  }</td></tr>
+<tr><th id="657">657</th><td></td></tr>
+<tr><th id="658">658</th><td>  <i class="doc">/// Tests whether the target is AArch64 (little and big endian).</i></td></tr>
+<tr><th id="659">659</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple9isAArch64Ev" title='llvm::Triple::isAArch64' data-ref="_ZNK4llvm6Triple9isAArch64Ev">isAArch64</dfn>() <em>const</em> {</td></tr>
+<tr><th id="660">660</th><td>    <b>return</b> <a class="member" href="#_ZNK4llvm6Triple7getArchEv" title='llvm::Triple::getArch' data-ref="_ZNK4llvm6Triple7getArchEv">getArch</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::ArchType::aarch64" title='llvm::Triple::ArchType::aarch64' data-ref="llvm::Triple::ArchType::aarch64">aarch64</a> || <a class="member" href="#_ZNK4llvm6Triple7getArchEv" title='llvm::Triple::getArch' data-ref="_ZNK4llvm6Triple7getArchEv">getArch</a>() == <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a>::<a class="enum" href="#llvm::Triple::ArchType::aarch64_be" title='llvm::Triple::ArchType::aarch64_be' data-ref="llvm::Triple::ArchType::aarch64_be">aarch64_be</a>;</td></tr>
+<tr><th id="661">661</th><td>  }</td></tr>
+<tr><th id="662">662</th><td></td></tr>
+<tr><th id="663">663</th><td>  <i class="doc">/// Tests wether the target supports comdat</i></td></tr>
+<tr><th id="664">664</th><td>  <em>bool</em> <dfn class="decl def" id="_ZNK4llvm6Triple14supportsCOMDATEv" title='llvm::Triple::supportsCOMDAT' data-ref="_ZNK4llvm6Triple14supportsCOMDATEv">supportsCOMDAT</dfn>() <em>const</em> {</td></tr>
+<tr><th id="665">665</th><td>    <b>return</b> !<a class="member" href="#_ZNK4llvm6Triple18isOSBinFormatMachOEv" title='llvm::Triple::isOSBinFormatMachO' data-ref="_ZNK4llvm6Triple18isOSBinFormatMachOEv">isOSBinFormatMachO</a>() &amp;&amp; !<a class="member" href="#_ZNK4llvm6Triple17isOSBinFormatWasmEv" title='llvm::Triple::isOSBinFormatWasm' data-ref="_ZNK4llvm6Triple17isOSBinFormatWasmEv">isOSBinFormatWasm</a>();</td></tr>
+<tr><th id="666">666</th><td>  }</td></tr>
+<tr><th id="667">667</th><td></td></tr>
+<tr><th id="668">668</th><td>  <i class="doc">/// @}</i></td></tr>
+<tr><th id="669">669</th><td><i class="doc">  /// <span class="command">@name</span> <span class="verb">Mutators</span></i></td></tr>
+<tr><th id="670">670</th><td><i class="doc">  /// @{</i></td></tr>
+<tr><th id="671">671</th><td><i class="doc"></i></td></tr>
+<tr><th id="672">672</th><td><i class="doc">  /// setArch - Set the architecture (first) component of the triple</i></td></tr>
+<tr><th id="673">673</th><td><i class="doc">  /// to a known type.</i></td></tr>
+<tr><th id="674">674</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm6Triple7setArchENS0_8ArchTypeE" title='llvm::Triple::setArch' data-ref="_ZN4llvm6Triple7setArchENS0_8ArchTypeE">setArch</dfn>(<a class="type" href="#llvm::Triple::ArchType" title='llvm::Triple::ArchType' data-ref="llvm::Triple::ArchType">ArchType</a> <dfn class="local col4 decl" id="16544Kind" title='Kind' data-type='llvm::Triple::ArchType' data-ref="16544Kind">Kind</dfn>);</td></tr>
+<tr><th id="675">675</th><td></td></tr>
+<tr><th id="676">676</th><td>  <i class="doc">/// setVendor - Set the vendor (second) component of the triple to a</i></td></tr>
+<tr><th id="677">677</th><td><i class="doc">  /// known type.</i></td></tr>
+<tr><th id="678">678</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm6Triple9setVendorENS0_10VendorTypeE" title='llvm::Triple::setVendor' data-ref="_ZN4llvm6Triple9setVendorENS0_10VendorTypeE">setVendor</dfn>(<a class="type" href="#llvm::Triple::VendorType" title='llvm::Triple::VendorType' data-ref="llvm::Triple::VendorType">VendorType</a> <dfn class="local col5 decl" id="16545Kind" title='Kind' data-type='llvm::Triple::VendorType' data-ref="16545Kind">Kind</dfn>);</td></tr>
+<tr><th id="679">679</th><td></td></tr>
+<tr><th id="680">680</th><td>  <i class="doc">/// setOS - Set the operating system (third) component of the triple</i></td></tr>
+<tr><th id="681">681</th><td><i class="doc">  /// to a known type.</i></td></tr>
+<tr><th id="682">682</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm6Triple5setOSENS0_6OSTypeE" title='llvm::Triple::setOS' data-ref="_ZN4llvm6Triple5setOSENS0_6OSTypeE">setOS</dfn>(<a class="type" href="#llvm::Triple::OSType" title='llvm::Triple::OSType' data-ref="llvm::Triple::OSType">OSType</a> <dfn class="local col6 decl" id="16546Kind" title='Kind' data-type='llvm::Triple::OSType' data-ref="16546Kind">Kind</dfn>);</td></tr>
+<tr><th id="683">683</th><td></td></tr>
+<tr><th id="684">684</th><td>  <i class="doc">/// setEnvironment - Set the environment (fourth) component of the triple</i></td></tr>
+<tr><th id="685">685</th><td><i class="doc">  /// to a known type.</i></td></tr>
+<tr><th id="686">686</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm6Triple14setEnvironmentENS0_15EnvironmentTypeE" title='llvm::Triple::setEnvironment' data-ref="_ZN4llvm6Triple14setEnvironmentENS0_15EnvironmentTypeE">setEnvironment</dfn>(<a class="type" href="#llvm::Triple::EnvironmentType" title='llvm::Triple::EnvironmentType' data-ref="llvm::Triple::EnvironmentType">EnvironmentType</a> <dfn class="local col7 decl" id="16547Kind" title='Kind' data-type='llvm::Triple::EnvironmentType' data-ref="16547Kind">Kind</dfn>);</td></tr>
+<tr><th id="687">687</th><td></td></tr>
+<tr><th id="688">688</th><td>  <i class="doc">/// setObjectFormat - Set the object file format</i></td></tr>
+<tr><th id="689">689</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm6Triple15setObjectFormatENS0_16ObjectFormatTypeE" title='llvm::Triple::setObjectFormat' data-ref="_ZN4llvm6Triple15setObjectFormatENS0_16ObjectFormatTypeE">setObjectFormat</dfn>(<a class="type" href="#llvm::Triple::ObjectFormatType" title='llvm::Triple::ObjectFormatType' data-ref="llvm::Triple::ObjectFormatType">ObjectFormatType</a> <dfn class="local col8 decl" id="16548Kind" title='Kind' data-type='llvm::Triple::ObjectFormatType' data-ref="16548Kind">Kind</dfn>);</td></tr>
+<tr><th id="690">690</th><td></td></tr>
+<tr><th id="691">691</th><td>  <i class="doc">/// setTriple - Set all components to the new triple<span class="command"> \p</span> <span class="arg">Str.</span></i></td></tr>
+<tr><th id="692">692</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm6Triple9setTripleERKNS_5TwineE" title='llvm::Triple::setTriple' data-ref="_ZN4llvm6Triple9setTripleERKNS_5TwineE">setTriple</dfn>(<em>const</em> <a class="type" href="Twine.h.html#llvm::Twine" title='llvm::Twine' data-ref="llvm::Twine">Twine</a> &amp;<dfn class="local col9 decl" id="16549Str" title='Str' data-type='const llvm::Twine &amp;' data-ref="16549Str">Str</dfn>);</td></tr>
+<tr><th id="693">693</th><td></td></tr>
+<tr><th id="694">694</th><td>  <i class="doc">/// setArchName - Set the architecture (first) component of the</i></td></tr>
+<tr><th id="695">695</th><td><i class="doc">  /// triple by name.</i></td></tr>
+<tr><th id="696">696</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm6Triple11setArchNameENS_9StringRefE" title='llvm::Triple::setArchName' data-ref="_ZN4llvm6Triple11setArchNameENS_9StringRefE">setArchName</dfn>(<a class="type" href="StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="local col0 decl" id="16550Str" title='Str' data-type='llvm::StringRef' data-ref="16550Str">Str</dfn>);</td></tr>
+<tr><th id="697">697</th><td></td></tr>
+<tr><th id="698">698</th><td>  <i class="doc">/// setVendorName - Set the vendor (second) component of the triple</i></td></tr>
+<tr><th id="699">699</th><td><i class="doc">  /// by name.</i></td></tr>
+<tr><th id="700">700</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm6Triple13setVendorNameENS_9StringRefE" title='llvm::Triple::setVendorName' data-ref="_ZN4llvm6Triple13setVendorNameENS_9StringRefE">setVendorName</dfn>(<a class="type" href="StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="local col1 decl" id="16551Str" title='Str' data-type='llvm::StringRef' data-ref="16551Str">Str</dfn>);</td></tr>
+<tr><th id="701">701</th><td></td></tr>
+<tr><th id="702">702</th><td>  <i class="doc">/// setOSName - Set the operating system (third) component of the</i></td></tr>
+<tr><th id="703">703</th><td><i class="doc">  /// triple by name.</i></td></tr>
+<tr><th id="704">704</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm6Triple9setOSNameENS_9StringRefE" title='llvm::Triple::setOSName' data-ref="_ZN4llvm6Triple9setOSNameENS_9StringRefE">setOSName</dfn>(<a class="type" href="StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="local col2 decl" id="16552Str" title='Str' data-type='llvm::StringRef' data-ref="16552Str">Str</dfn>);</td></tr>
+<tr><th id="705">705</th><td></td></tr>
+<tr><th id="706">706</th><td>  <i class="doc">/// setEnvironmentName - Set the optional environment (fourth)</i></td></tr>
+<tr><th id="707">707</th><td><i class="doc">  /// component of the triple by name.</i></td></tr>
+<tr><th id="708">708</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm6Triple18setEnvironmentNameENS_9StringRefE" title='llvm::Triple::setEnvironmentName' data-ref="_ZN4llvm6Triple18setEnvironmentNameENS_9StringRefE">setEnvironmentName</dfn>(<a class="type" href="StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="local col3 decl" id="16553Str" title='Str' data-type='llvm::StringRef' data-ref="16553Str">Str</dfn>);</td></tr>
+<tr><th id="709">709</th><td></td></tr>
+<tr><th id="710">710</th><td>  <i class="doc">/// setOSAndEnvironmentName - Set the operating system and optional</i></td></tr>
+<tr><th id="711">711</th><td><i class="doc">  /// environment components with a single string.</i></td></tr>
+<tr><th id="712">712</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm6Triple23setOSAndEnvironmentNameENS_9StringRefE" title='llvm::Triple::setOSAndEnvironmentName' data-ref="_ZN4llvm6Triple23setOSAndEnvironmentNameENS_9StringRefE">setOSAndEnvironmentName</dfn>(<a class="type" href="StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="local col4 decl" id="16554Str" title='Str' data-type='llvm::StringRef' data-ref="16554Str">Str</dfn>);</td></tr>
+<tr><th id="713">713</th><td></td></tr>
+<tr><th id="714">714</th><td>  <i class="doc">/// @}</i></td></tr>
+<tr><th id="715">715</th><td><i class="doc">  /// <span class="command">@name</span> <span class="verb">Helpers to build variants of a particular triple.</span></i></td></tr>
+<tr><th id="716">716</th><td><i class="doc">  /// @{</i></td></tr>
+<tr><th id="717">717</th><td><i class="doc"></i></td></tr>
+<tr><th id="718">718</th><td><i class="doc">  /// Form a triple with a 32-bit variant of the current architecture.</i></td></tr>
+<tr><th id="719">719</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="720">720</th><td><i class="doc">  /// This can be used to move across "families" of architectures where useful.</i></td></tr>
+<tr><th id="721">721</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="722">722</th><td><i class="doc">  /// <span class="command">\returns</span> A new triple with a 32-bit architecture or an unknown</i></td></tr>
+<tr><th id="723">723</th><td><i class="doc">  ///          architecture if no such variant can be found.</i></td></tr>
+<tr><th id="724">724</th><td>  <span class="namespace">llvm::</span><a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a> <dfn class="decl" id="_ZNK4llvm6Triple19get32BitArchVariantEv" title='llvm::Triple::get32BitArchVariant' data-ref="_ZNK4llvm6Triple19get32BitArchVariantEv">get32BitArchVariant</dfn>() <em>const</em>;</td></tr>
+<tr><th id="725">725</th><td></td></tr>
+<tr><th id="726">726</th><td>  <i class="doc">/// Form a triple with a 64-bit variant of the current architecture.</i></td></tr>
+<tr><th id="727">727</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="728">728</th><td><i class="doc">  /// This can be used to move across "families" of architectures where useful.</i></td></tr>
+<tr><th id="729">729</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="730">730</th><td><i class="doc">  /// <span class="command">\returns</span> A new triple with a 64-bit architecture or an unknown</i></td></tr>
+<tr><th id="731">731</th><td><i class="doc">  ///          architecture if no such variant can be found.</i></td></tr>
+<tr><th id="732">732</th><td>  <span class="namespace">llvm::</span><a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a> <dfn class="decl" id="_ZNK4llvm6Triple19get64BitArchVariantEv" title='llvm::Triple::get64BitArchVariant' data-ref="_ZNK4llvm6Triple19get64BitArchVariantEv">get64BitArchVariant</dfn>() <em>const</em>;</td></tr>
+<tr><th id="733">733</th><td></td></tr>
+<tr><th id="734">734</th><td>  <i class="doc">/// Form a triple with a big endian variant of the current architecture.</i></td></tr>
+<tr><th id="735">735</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="736">736</th><td><i class="doc">  /// This can be used to move across "families" of architectures where useful.</i></td></tr>
+<tr><th id="737">737</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="738">738</th><td><i class="doc">  /// <span class="command">\returns</span> A new triple with a big endian architecture or an unknown</i></td></tr>
+<tr><th id="739">739</th><td><i class="doc">  ///          architecture if no such variant can be found.</i></td></tr>
+<tr><th id="740">740</th><td>  <span class="namespace">llvm::</span><a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a> <dfn class="decl" id="_ZNK4llvm6Triple23getBigEndianArchVariantEv" title='llvm::Triple::getBigEndianArchVariant' data-ref="_ZNK4llvm6Triple23getBigEndianArchVariantEv">getBigEndianArchVariant</dfn>() <em>const</em>;</td></tr>
+<tr><th id="741">741</th><td></td></tr>
+<tr><th id="742">742</th><td>  <i class="doc">/// Form a triple with a little endian variant of the current architecture.</i></td></tr>
+<tr><th id="743">743</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="744">744</th><td><i class="doc">  /// This can be used to move across "families" of architectures where useful.</i></td></tr>
+<tr><th id="745">745</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="746">746</th><td><i class="doc">  /// <span class="command">\returns</span> A new triple with a little endian architecture or an unknown</i></td></tr>
+<tr><th id="747">747</th><td><i class="doc">  ///          architecture if no such variant can be found.</i></td></tr>
+<tr><th id="748">748</th><td>  <span class="namespace">llvm::</span><a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a> <dfn class="decl" id="_ZNK4llvm6Triple26getLittleEndianArchVariantEv" title='llvm::Triple::getLittleEndianArchVariant' data-ref="_ZNK4llvm6Triple26getLittleEndianArchVariantEv">getLittleEndianArchVariant</dfn>() <em>const</em>;</td></tr>
+<tr><th id="749">749</th><td></td></tr>
+<tr><th id="750">750</th><td>  <i class="doc">/// Get the (LLVM) name of the minimum ARM CPU for the arch we are targeting.</i></td></tr>
+<tr><th id="751">751</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="752">752</th><td><i class="doc">  /// <span class="command">\param</span> <span class="arg">Arch</span> the architecture name (e.g., "armv7s"). If it is an empty</i></td></tr>
+<tr><th id="753">753</th><td><i class="doc">  /// string then the triple's arch name is used.</i></td></tr>
+<tr><th id="754">754</th><td>  <a class="type" href="StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="decl" id="_ZNK4llvm6Triple16getARMCPUForArchENS_9StringRefE" title='llvm::Triple::getARMCPUForArch' data-ref="_ZNK4llvm6Triple16getARMCPUForArchENS_9StringRefE">getARMCPUForArch</dfn>(<a class="type" href="StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="local col5 decl" id="16555Arch" title='Arch' data-type='llvm::StringRef' data-ref="16555Arch">Arch</dfn> = <a class="type" href="StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a><a class="ref" href="StringRef.h.html#_ZN4llvm9StringRefC1Ev" title='llvm::StringRef::StringRef' data-ref="_ZN4llvm9StringRefC1Ev">(</a>)) <em>const</em>;</td></tr>
+<tr><th id="755">755</th><td></td></tr>
+<tr><th id="756">756</th><td>  <i class="doc">/// Tests whether the target triple is little endian.</i></td></tr>
+<tr><th id="757">757</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="758">758</th><td><i class="doc">  /// <span class="command">\returns</span> true if the triple is little endian, false otherwise.</i></td></tr>
+<tr><th id="759">759</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm6Triple14isLittleEndianEv" title='llvm::Triple::isLittleEndian' data-ref="_ZNK4llvm6Triple14isLittleEndianEv">isLittleEndian</dfn>() <em>const</em>;</td></tr>
+<tr><th id="760">760</th><td></td></tr>
+<tr><th id="761">761</th><td>  <i class="doc">/// Test whether target triples are compatible.</i></td></tr>
+<tr><th id="762">762</th><td>  <em>bool</em> <dfn class="decl" id="_ZNK4llvm6Triple16isCompatibleWithERKS0_" title='llvm::Triple::isCompatibleWith' data-ref="_ZNK4llvm6Triple16isCompatibleWithERKS0_">isCompatibleWith</dfn>(<em>const</em> <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a> &amp;<dfn class="local col6 decl" id="16556Other" title='Other' data-type='const llvm::Triple &amp;' data-ref="16556Other">Other</dfn>) <em>const</em>;</td></tr>
+<tr><th id="763">763</th><td></td></tr>
+<tr><th id="764">764</th><td>  <i class="doc">/// Merge target triples.</i></td></tr>
+<tr><th id="765">765</th><td>  <span class="namespace">std::</span><a class="typedef" href="../../../c++/7/bits/stringfwd.h.html#std::__cxx11::string" title='std::__cxx11::string' data-type='basic_string&lt;char&gt;' data-ref="std::__cxx11::string">string</a> <dfn class="decl" id="_ZNK4llvm6Triple5mergeB5cxx11ERKS0_" title='llvm::Triple::merge' data-ref="_ZNK4llvm6Triple5mergeB5cxx11ERKS0_">merge</dfn>(<em>const</em> <a class="type" href="#llvm::Triple" title='llvm::Triple' data-ref="llvm::Triple">Triple</a> &amp;<dfn class="local col7 decl" id="16557Other" title='Other' data-type='const llvm::Triple &amp;' data-ref="16557Other">Other</dfn>) <em>const</em>;</td></tr>
+<tr><th id="766">766</th><td></td></tr>
+<tr><th id="767">767</th><td>  <i class="doc">/// @}</i></td></tr>
+<tr><th id="768">768</th><td><i class="doc">  /// <span class="command">@name</span> <span class="verb">Static helpers for IDs.</span></i></td></tr>
+<tr><th id="769">769</th><td><i class="doc">  /// @{</i></td></tr>
+<tr><th id="770">770</th><td><i class="doc"></i></td></tr>
+<tr><th id="771">771</th><td><i class="doc">  /// getArchTypeName - Get the canonical name for the<span class="command"> \p</span> <span class="arg">Kind</span> architecture.</i></td></tr>
+<tr><th id="772">772</th><td>  <em>static</em> <a class="type" href="StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="decl" id="_ZN4llvm6Triple15getArchTypeNameENS0_8ArchTypeE" title='llvm::Triple::getArchTypeName' data-ref="_ZN4llvm6Triple15getArchTypeNameENS0_8ArchTypeE">getArchTypeName</dfn>(<a class="type" href="#llvm::Triple::ArchType" title='llvm::Triple::ArchType' data-ref="llvm::Triple::ArchType">ArchType</a> <dfn class="local col8 decl" id="16558Kind" title='Kind' data-type='llvm::Triple::ArchType' data-ref="16558Kind">Kind</dfn>);</td></tr>
+<tr><th id="773">773</th><td></td></tr>
+<tr><th id="774">774</th><td>  <i class="doc">/// getArchTypePrefix - Get the "prefix" canonical name for the<span class="command"> \p</span> <span class="arg">Kind</span></i></td></tr>
+<tr><th id="775">775</th><td><i class="doc">  /// architecture. This is the prefix used by the architecture specific</i></td></tr>
+<tr><th id="776">776</th><td><i class="doc">  /// builtins, and is suitable for passing to <span class="command">\see</span></i></td></tr>
+<tr><th id="777">777</th><td><i class="doc">  /// Intrinsic::getIntrinsicForGCCBuiltin().</i></td></tr>
+<tr><th id="778">778</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="779">779</th><td><i class="doc">  /// <span class="command">\return</span> - The architecture prefix, or 0 if none is defined.</i></td></tr>
+<tr><th id="780">780</th><td>  <em>static</em> <a class="type" href="StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="decl" id="_ZN4llvm6Triple17getArchTypePrefixENS0_8ArchTypeE" title='llvm::Triple::getArchTypePrefix' data-ref="_ZN4llvm6Triple17getArchTypePrefixENS0_8ArchTypeE">getArchTypePrefix</dfn>(<a class="type" href="#llvm::Triple::ArchType" title='llvm::Triple::ArchType' data-ref="llvm::Triple::ArchType">ArchType</a> <dfn class="local col9 decl" id="16559Kind" title='Kind' data-type='llvm::Triple::ArchType' data-ref="16559Kind">Kind</dfn>);</td></tr>
+<tr><th id="781">781</th><td></td></tr>
+<tr><th id="782">782</th><td>  <i class="doc">/// getVendorTypeName - Get the canonical name for the<span class="command"> \p</span> <span class="arg">Kind</span> vendor.</i></td></tr>
+<tr><th id="783">783</th><td>  <em>static</em> <a class="type" href="StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="decl" id="_ZN4llvm6Triple17getVendorTypeNameENS0_10VendorTypeE" title='llvm::Triple::getVendorTypeName' data-ref="_ZN4llvm6Triple17getVendorTypeNameENS0_10VendorTypeE">getVendorTypeName</dfn>(<a class="type" href="#llvm::Triple::VendorType" title='llvm::Triple::VendorType' data-ref="llvm::Triple::VendorType">VendorType</a> <dfn class="local col0 decl" id="16560Kind" title='Kind' data-type='llvm::Triple::VendorType' data-ref="16560Kind">Kind</dfn>);</td></tr>
+<tr><th id="784">784</th><td></td></tr>
+<tr><th id="785">785</th><td>  <i class="doc">/// getOSTypeName - Get the canonical name for the<span class="command"> \p</span> <span class="arg">Kind</span> operating system.</i></td></tr>
+<tr><th id="786">786</th><td>  <em>static</em> <a class="type" href="StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="decl" id="_ZN4llvm6Triple13getOSTypeNameENS0_6OSTypeE" title='llvm::Triple::getOSTypeName' data-ref="_ZN4llvm6Triple13getOSTypeNameENS0_6OSTypeE">getOSTypeName</dfn>(<a class="type" href="#llvm::Triple::OSType" title='llvm::Triple::OSType' data-ref="llvm::Triple::OSType">OSType</a> <dfn class="local col1 decl" id="16561Kind" title='Kind' data-type='llvm::Triple::OSType' data-ref="16561Kind">Kind</dfn>);</td></tr>
+<tr><th id="787">787</th><td></td></tr>
+<tr><th id="788">788</th><td>  <i class="doc">/// getEnvironmentTypeName - Get the canonical name for the<span class="command"> \p</span> <span class="arg">Kind</span></i></td></tr>
+<tr><th id="789">789</th><td><i class="doc">  /// environment.</i></td></tr>
+<tr><th id="790">790</th><td>  <em>static</em> <a class="type" href="StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="decl" id="_ZN4llvm6Triple22getEnvironmentTypeNameENS0_15EnvironmentTypeE" title='llvm::Triple::getEnvironmentTypeName' data-ref="_ZN4llvm6Triple22getEnvironmentTypeNameENS0_15EnvironmentTypeE">getEnvironmentTypeName</dfn>(<a class="type" href="#llvm::Triple::EnvironmentType" title='llvm::Triple::EnvironmentType' data-ref="llvm::Triple::EnvironmentType">EnvironmentType</a> <dfn class="local col2 decl" id="16562Kind" title='Kind' data-type='llvm::Triple::EnvironmentType' data-ref="16562Kind">Kind</dfn>);</td></tr>
+<tr><th id="791">791</th><td></td></tr>
+<tr><th id="792">792</th><td>  <i class="doc">/// @}</i></td></tr>
+<tr><th id="793">793</th><td><i class="doc">  /// <span class="command">@name</span> <span class="verb">Static helpers for converting alternate architecture names.</span></i></td></tr>
+<tr><th id="794">794</th><td><i class="doc">  /// @{</i></td></tr>
+<tr><th id="795">795</th><td><i class="doc"></i></td></tr>
+<tr><th id="796">796</th><td><i class="doc">  /// getArchTypeForLLVMName - The canonical type for the given LLVM</i></td></tr>
+<tr><th id="797">797</th><td><i class="doc">  /// architecture name (e.g., "x86").</i></td></tr>
+<tr><th id="798">798</th><td>  <em>static</em> <a class="type" href="#llvm::Triple::ArchType" title='llvm::Triple::ArchType' data-ref="llvm::Triple::ArchType">ArchType</a> <dfn class="decl" id="_ZN4llvm6Triple22getArchTypeForLLVMNameENS_9StringRefE" title='llvm::Triple::getArchTypeForLLVMName' data-ref="_ZN4llvm6Triple22getArchTypeForLLVMNameENS_9StringRefE">getArchTypeForLLVMName</dfn>(<a class="type" href="StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="local col3 decl" id="16563Str" title='Str' data-type='llvm::StringRef' data-ref="16563Str">Str</dfn>);</td></tr>
+<tr><th id="799">799</th><td></td></tr>
+<tr><th id="800">800</th><td>  <i class="doc">/// @}</i></td></tr>
+<tr><th id="801">801</th><td>};</td></tr>
+<tr><th id="802">802</th><td></td></tr>
+<tr><th id="803">803</th><td>} <i>// End llvm namespace</i></td></tr>
+<tr><th id="804">804</th><td></td></tr>
+<tr><th id="805">805</th><td></td></tr>
+<tr><th id="806">806</th><td><u>#<span data-ppcond="10">endif</span></u></td></tr>
+<tr><th id="807">807</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../../../pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc.html'>pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc</a><br/>Generated on <em>2019-Oct-28</em> from project include<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

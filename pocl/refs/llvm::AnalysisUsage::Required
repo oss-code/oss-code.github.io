@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/PassAnalysisSupport.h' l='52' type='SmallVector&lt;AnalysisID, 8&gt;'/>
+<use f='include/llvm-6.0/llvm/PassAnalysisSupport.h' l='135' u='a' c='_ZNK4llvm13AnalysisUsage14getRequiredSetEv'/>
+<offset>0</offset>
+<doc f='include/llvm-6.0/llvm/PassAnalysisSupport.h' l='48'>/// Sets of analyses required and preserved by a pass
+  // TODO: It&apos;s not clear that SmallVector is an appropriate data structure for
+  // this usecase.  The sizes were picked to minimize wasted space, but are
+  // otherwise fairly meaningless.</doc>

@@ -1,0 +1,7 @@
+<dec f='include/pthread.h' l='977' type='int pthread_cond_signal(pthread_cond_t * __cond)'/>
+<doc f='include/pthread.h' l='976'>/* Wake up one thread waiting for condition variable COND.  */</doc>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='390' u='c' c='pocl_cuda_free_queue'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='391' u='c' c='pocl_cuda_free_queue'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1263' u='c' c='pocl_cuda_submit'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1524' u='c' c='pocl_cuda_submit_thread'/>
+<use f='include/x86_64-linux-gnu/c++/7/bits/gthr-default.h' l='126' c='__gthrw_pthread_cond_signal'/>

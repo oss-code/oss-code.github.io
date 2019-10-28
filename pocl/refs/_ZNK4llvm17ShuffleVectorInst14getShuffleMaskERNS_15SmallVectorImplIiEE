@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/Instructions.h' l='2280' ll='2282' type='void llvm::ShuffleVectorInst::getShuffleMask(SmallVectorImpl&lt;int&gt; &amp; Result) const'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='2286' u='c' c='_ZNK4llvm17ShuffleVectorInst14getShuffleMaskEv'/>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='2278'>/// Return the mask for this instruction as a vector of integers. Undefined
+  /// elements of the mask are returned as -1.</doc>

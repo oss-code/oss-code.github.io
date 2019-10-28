@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='171' type='GlobalValue::GUID'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='202' u='r' c='_ZN4llvm18GlobalValueSummary15getOriginalNameEv'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='205' u='w' c='_ZN4llvm18GlobalValueSummary15setOriginalNameEm'/>
+<offset>128</offset>
+<doc f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='168'>/// This is the hash of the name of the symbol in the original file. It is
+  /// identical to the GUID for global symbols, but differs for local since the
+  /// GUID includes the module level id in the hash.</doc>

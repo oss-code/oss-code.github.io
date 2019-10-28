@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='434' ll='436' type='bool llvm::AAResults::onlyReadsMemory(llvm::ImmutableCallSite CS)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='425'>/// Checks if the specified call is known to only read from non-volatile
+  /// memory (or not access memory at all).
+  ///
+  /// Calls that unwind the stack are legal for this predicate.
+  ///
+  /// This property allows many common optimizations to be performed in the
+  /// absence of interfering store instructions, such as CSE of strlen calls.
+  ///
+  /// This property corresponds to the GCC &apos;pure&apos; attribute.</doc>

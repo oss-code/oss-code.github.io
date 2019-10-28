@@ -1,0 +1,30 @@
+<inh f='pocl/include/CL/cl2.hpp' l='1713' c='cl::detail::Wrapper'/>
+<def f='pocl/include/CL/cl2.hpp' l='2316' ll='2663'/>
+<size>8</size>
+<doc f='pocl/include/CL/cl2.hpp' l='2309'>/*! \brief Class interface for cl_platform_id.
+ *
+ *  \note Copies of these objects are inexpensive, since they don&apos;t &apos;own&apos;
+ *        any underlying resources or data structures.
+ *
+ *  \see cl_platform_id
+ */</doc>
+<smbr r='cl::Platform::default_initialized_' t='std::once_flag'/>
+<smbr r='cl::Platform::default_' t='cl::Platform'/>
+<smbr r='cl::Platform::default_error_' t='cl_int'/>
+<fun r='_ZN2cl8Platform11makeDefaultEv'/>
+<fun r='_ZN2cl8Platform19makeDefaultProvidedERKS0_'/>
+<fun r='_ZN2cl8PlatformC1Ev'/>
+<fun r='_ZN2cl8PlatformC1ERKP15_cl_platform_idb'/>
+<fun r='_ZN2cl8PlatformaSERKP15_cl_platform_id'/>
+<fun r='_ZN2cl8Platform10getDefaultEPi'/>
+<fun r='_ZN2cl8Platform10setDefaultERKS0_'/>
+<fun r='_ZNK2cl8Platform7getInfoEjPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<fun r='_ZNK2cl8Platform7getInfoEPi'/>
+<fun r='_ZNK2cl8Platform10getDevicesEmPSt6vectorINS_6DeviceESaIS2_EE'/>
+<fun r='_ZN2cl8Platform3getEPSt6vectorIS0_SaIS0_EE'/>
+<fun r='_ZN2cl8Platform3getEPS0_'/>
+<fun r='_ZN2cl8Platform3getEPi'/>
+<fun r='_ZN2cl8Platform14unloadCompilerEv'/>
+<smbr r='cl::Platform::default_initialized_' t='std::once_flag'/>
+<smbr r='cl::Platform::default_' t='cl::Platform'/>
+<smbr r='cl::Platform::default_error_' t='cl_int'/>

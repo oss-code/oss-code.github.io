@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='970' ll='977' type='void llvm::DICompositeType::replaceElements(DINodeArray Elements)'/>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='964'>/// Replace operands.
+  ///
+  /// If this \a isUniqued() and not \a isResolved(), on a uniquing collision
+  /// this will be RAUW&apos;ed and deleted.  Use a \a TrackingMDRef to keep track
+  /// of its movement if necessary.
+  /// @{</doc>

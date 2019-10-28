@@ -1,0 +1,8 @@
+<dec f='pocl/lib/CL/pocl_tracing.h' l='41' type='void pocl_event_updated(cl_event event, int new_status)'/>
+<use f='pocl/lib/CL/clSetUserEventStatus.c' l='33' u='c' c='POclSetUserEventStatus'/>
+<def f='pocl/lib/CL/pocl_tracing.c' l='57' ll='78' type='void pocl_event_updated(cl_event event, int status)'/>
+<doc f='pocl/lib/CL/pocl_tracing.c' l='56'>/* Called with event locked, and must also return with a locked event. */</doc>
+<use f='pocl/lib/CL/pocl_util.c' l='1172' u='c' c='pocl_update_event_queued'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1190' u='c' c='pocl_update_event_submitted'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1207' u='c' c='pocl_update_event_running_unlocked'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1266' u='c' c='pocl_update_event_finished_msg'/>

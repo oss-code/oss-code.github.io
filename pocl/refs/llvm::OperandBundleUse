@@ -1,0 +1,13 @@
+<def f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1162' ll='1207'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1160'>/// \brief A lightweight accessor for an operand bundle meant to be passed
+/// around by value.</doc>
+<mbr r='llvm::OperandBundleUse::Inputs' o='0' t='ArrayRef&lt;llvm::Use&gt;'/>
+<fun r='_ZN4llvm16OperandBundleUseC1Ev'/>
+<fun r='_ZN4llvm16OperandBundleUseC1EPNS_14StringMapEntryIjEENS_8ArrayRefINS_3UseEEE'/>
+<fun r='_ZNK4llvm16OperandBundleUse14operandHasAttrEjNS_9Attribute8AttrKindE'/>
+<fun r='_ZNK4llvm16OperandBundleUse10getTagNameEv'/>
+<fun r='_ZNK4llvm16OperandBundleUse8getTagIDEv'/>
+<fun r='_ZNK4llvm16OperandBundleUse20isDeoptOperandBundleEv'/>
+<fun r='_ZNK4llvm16OperandBundleUse22isFuncletOperandBundleEv'/>
+<mbr r='llvm::OperandBundleUse::Tag' o='128' t='StringMapEntry&lt;uint32_t&gt; *'/>

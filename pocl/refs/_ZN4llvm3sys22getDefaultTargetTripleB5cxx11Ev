@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Support/Host.h' l='59' type='std::string llvm::sys::getDefaultTargetTriple()'/>
+<doc f='include/llvm-6.0/llvm/Support/Host.h' l='52'>/// getDefaultTargetTriple() - Return the default target triple the compiler
+  /// has been configured to produce code for.
+  ///
+  /// The target triple is a string in the format of:
+  ///   CPU_TYPE-VENDOR-OPERATING_SYSTEM
+  /// or
+  ///   CPU_TYPE-VENDOR-KERNEL-OPERATING_SYSTEM</doc>

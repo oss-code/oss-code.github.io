@@ -1,0 +1,20 @@
+<def f='include/hwloc.h' l='556' ll='581'/>
+<size>24</size>
+<doc f='include/hwloc.h' l='543'>/** \brief Distances between objects
+ *
+ * One object may contain a distance structure describing distances
+ * between all its descendants at a given relative depth. If the
+ * containing object is the root object of the topology, then the
+ * distances are available for all objects in the machine.
+ *
+ * If the \p latency pointer is not \c NULL, the pointed array contains
+ * memory latencies (non-zero values), see below.
+ *
+ * In the future, some other types of distances may be considered.
+ * In these cases, \p latency may be \c NULL.
+ */</doc>
+<mbr r='hwloc_distances_s::relative_depth' o='0' t='unsigned int'/>
+<mbr r='hwloc_distances_s::nbobjs' o='32' t='unsigned int'/>
+<mbr r='hwloc_distances_s::latency' o='64' t='float *'/>
+<mbr r='hwloc_distances_s::latency_max' o='128' t='float'/>
+<mbr r='hwloc_distances_s::latency_base' o='160' t='float'/>

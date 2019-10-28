@@ -1,0 +1,13 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='506' type='void (*)(_cl_command_node *, cl_kernel, cl_device_id, int)'/>
+<offset>2176</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='499'>/* Compile the fully linked LLVM IR to target-specific binaries.
+     If specialize is set to 1, allow specializing the final result
+     according to the properites of the given cmd. Typically
+     specialization is _not_ wanted only when creating a generic
+     WG function for storing in a binary. Local size of all zeros
+     forces dynamic local size work-group even if specializing
+     according to other properties. */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='128' u='w' c='pocl_basic_init_device_ops'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='142' u='w' c='pocl_cuda_init_device_ops'/>
+<use f='pocl/lib/CL/pocl_build.c' l='179' u='r' c='program_compile_dynamic_wg_binaries'/>
+<use f='pocl/lib/CL/pocl_build.c' l='188' u='r' c='program_compile_dynamic_wg_binaries'/>

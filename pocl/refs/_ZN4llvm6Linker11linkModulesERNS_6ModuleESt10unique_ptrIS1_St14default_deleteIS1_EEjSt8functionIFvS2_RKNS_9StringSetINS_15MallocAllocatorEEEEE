@@ -1,0 +1,2 @@
+<dec f='include/llvm-6.0/llvm/Linker/Linker.h' l='51' type='static bool llvm::Linker::linkModules(llvm::Module &amp; Dest, std::unique_ptr&lt;Module&gt; Src, unsigned int Flags = Flags::None, std::function&lt;void (Module &amp;, const StringSet&lt;&gt; &amp;)&gt; InternalizeCallback = {})'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='675' u='c' c='pocl_llvm_link_program'/>

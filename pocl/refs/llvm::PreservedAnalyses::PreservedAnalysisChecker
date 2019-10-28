@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/IR/PassManager.h' l='267' ll='297'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/IR/PassManager.h' l='265'>/// A checker object that makes it easy to query for whether an analysis or
+  /// some set covering it is preserved.</doc>
+<mbr r='llvm::PreservedAnalyses::PreservedAnalysisChecker::PA' o='0' t='const llvm::PreservedAnalyses &amp;'/>
+<mbr r='llvm::PreservedAnalyses::PreservedAnalysisChecker::ID' o='64' t='llvm::AnalysisKey *const'/>
+<mbr r='llvm::PreservedAnalyses::PreservedAnalysisChecker::IsAbandoned' o='128' t='const bool'/>
+<fun r='_ZN4llvm17PreservedAnalyses24PreservedAnalysisCheckerC1ERKS0_PNS_11AnalysisKeyE'/>
+<fun r='_ZN4llvm17PreservedAnalyses24PreservedAnalysisChecker9preservedEv'/>
+<fun r='_ZN4llvm17PreservedAnalyses24PreservedAnalysisChecker12preservedSetEv'/>

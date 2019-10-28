@@ -1,0 +1,7 @@
+<use f='include/llvm-6.0/llvm/IR/Metadata.h' l='220' u='c' c='_ZN4llvm16MetadataTracking5trackERPNS_8MetadataE'/>
+<use f='include/llvm-6.0/llvm/IR/Metadata.h' l='229' u='c' c='_ZN4llvm16MetadataTracking5trackEPvRNS_8MetadataES3_'/>
+<use f='include/llvm-6.0/llvm/IR/Metadata.h' l='238' u='c' c='_ZN4llvm16MetadataTracking5trackEPvRNS_8MetadataERNS_15MetadataAsValueE'/>
+<dec f='include/llvm-6.0/llvm/IR/Metadata.h' l='269' type='static bool llvm::MetadataTracking::track(void * Ref, llvm::Metadata &amp; MD, OwnerTy Owner)'/>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='266'>/// \brief Track a reference to metadata for an owner.
+  ///
+  /// Generalized version of tracking.</doc>

@@ -1,0 +1,15 @@
+<def f='include/llvm-6.0/llvm/IR/Instructions.h' l='1674' ll='1678' type='bool llvm::CallInst::hasFnAttr(Attribute::AttrKind Kind) const'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1761' u='c' c='_ZNK4llvm8CallInst10isStrictFPEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1764' u='c' c='_ZNK4llvm8CallInst10isNoInlineEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1771' u='c' c='_ZNK4llvm8CallInst14canReturnTwiceEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1779' u='c' c='_ZNK4llvm8CallInst19doesNotAccessMemoryEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1787' u='c' c='_ZNK4llvm8CallInst15onlyReadsMemoryEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1795' u='c' c='_ZNK4llvm8CallInst17doesNotReadMemoryEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1804' u='c' c='_ZNK4llvm8CallInst21onlyAccessesArgMemoryEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1813' u='c' c='_ZNK4llvm8CallInst30onlyAccessesInaccessibleMemoryEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1822' u='c' c='_ZNK4llvm8CallInst35onlyAccessesInaccessibleMemOrArgMemEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1829' u='c' c='_ZNK4llvm8CallInst13doesNotReturnEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1835' u='c' c='_ZNK4llvm8CallInst12doesNotThrowEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1841' u='c' c='_ZNK4llvm8CallInst15cannotDuplicateEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1847' u='c' c='_ZNK4llvm8CallInst12isConvergentEv'/>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='1673'>/// Determine whether this call has the given attribute.</doc>

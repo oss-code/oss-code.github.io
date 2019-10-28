@@ -1,0 +1,30 @@
+<def f='include/llvm-6.0/llvm/ADT/Twine.h' l='285' ll='288' type='void llvm::Twine::Twine(const llvm::StringRef &amp; Str)'/>
+<use f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='320' u='c' c='_ZNK4llvm6Target15createMCAsmInfoERKNS_14MCRegisterInfoENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='344' u='c' c='_ZNK4llvm6Target15createMCRegInfoENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='360' u='c' c='_ZNK4llvm6Target21createMCSubtargetInfoENS_9StringRefES1_S1_'/>
+<use f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='379' u='c' c='_ZNK4llvm6Target19createTargetMachineENS_9StringRefES1_S1_RKNS_13TargetOptionsENS_8OptionalINS_5Reloc5ModelEEENS5_INS_9CodeModel5ModelEEENS_10CodeGenOpt5LevelEb'/>
+<use f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='535' u='c' c='_ZNK4llvm6Target22createMCRelocationInfoENS_9StringRefERNS_9MCContextE'/>
+<use f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='557' u='c' c='_ZNK4llvm6Target18createMCSymbolizerENS_9StringRefEPFiPvmmmiS2_EPFPKcS2_mPmmPS6_ES2_PNS_9MCContextEOSt10unique_ptrINS_16MCRelocationInfoESt14default_deleteISE_EE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='422' u='c' c='_ZL16handleGetWorkDimPN4llvm6ModuleEPKc'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='651' u='c' c='_Z23convertPtrArgsToOffsetsPN4llvm6ModuleEPKcjPNS_14GlobalVariableE'/>
+<doc f='include/llvm-6.0/llvm/ADT/Twine.h' l='284'>/// Construct from a StringRef.</doc>
+<doc f='include/llvm-6.0/llvm/ADT/Twine.h' l='285'>/*implicit*/</doc>
+<use f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='840' u='c' c='_ZN4llvm4yaml7yamlizeERNS0_2IOERT_bRNS0_12EmptyContextE'/>
+<use f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='860' u='c' c='_ZN4llvm4yaml7yamlizeERNS0_2IOERT_bRNS0_12EmptyContextE'/>
+<use f='include/llvm-6.0/llvm/Support/YAMLTraits.h' l='882' u='c' c='_ZN4llvm4yaml7yamlizeERNS0_2IOERT_bRT0_'/>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='182' u='c' c='_ZN12_GLOBAL__N_115AutomaticLocals22processAutomaticLocalsEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='127' u='c' c='_ZL10convertGEPPN4llvm12ConstantExprEPNS_11InstructionE'/>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='170' u='c' c='_ZL17convertExpressionPN4llvm12ConstantExprEPNS_11InstructionE'/>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='192' u='c' c='_ZL17convertExpressionPN4llvm12ConstantExprEPNS_11InstructionE'/>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='204' u='c' c='_ZL17convertExpressionPN4llvm12ConstantExprEPNS_11InstructionE'/>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='213' u='c' c='_ZL17convertExpressionPN4llvm12ConstantExprEPNS_11InstructionE'/>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='107' u='c' c='pocl_rm_rf'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='454' u='c' c='_ZL27cloneFunctionWithPrintfArgsPN4llvm5ValueES1_S1_PNS_8FunctionEPNS_6ModuleE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='139' u='c' c='_ZL24CloneFuncFixOpenCLImageTPN4llvm6ModuleEPNS_8FunctionE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='145' u='c' c='_ZL24CloneFuncFixOpenCLImageTPN4llvm6ModuleEPNS_8FunctionE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='219' u='c' c='_ZL8CopyFuncN4llvm9StringRefEPKNS_6ModuleEPS1_RNS_8ValueMapIPKNS_5ValueENS_14WeakTrackingVHENS_14ValueMapConfigIS8_NS_3sys10SmartMutexILb0EEEEEEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='232' u='c' c='_ZL8CopyFuncN4llvm9StringRefEPKNS_6ModuleEPS1_RNS_8ValueMapIPKNS_5ValueENS_14WeakTrackingVHENS_14ValueMapConfigIS8_NS_3sys10SmartMutexILb0EEEEEEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='307' u='c' c='_ZL11shared_copyPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERNS_8ValueMapIPKNS_5ValueENS_14WeakTrackingVHENS_14ValueMapCo8254284'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='333' u='c' c='_ZL11shared_copyPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERNS_8ValueMapIPKNS_5ValueENS_14WeakTrackingVHENS_14ValueMapCo8254284'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='406' u='c' c='_Z4linkPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='463' u='c' c='_Z21copyKernelFromBitcodePKcPN4llvm6ModuleEPKS2_'/>

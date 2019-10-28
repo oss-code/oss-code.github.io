@@ -1,0 +1,6 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2393' type='LLVMValueRef LLVMGetLastInstruction(LLVMBasicBlockRef BB)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2388'>/**
+ * Obtain the last instruction in a basic block.
+ *
+ * The returned LLVMValueRef corresponds to an LLVM:Instruction.
+ */</doc>

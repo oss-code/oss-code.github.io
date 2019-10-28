@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/Instructions.h' l='1203' ll='1205' type='bool llvm::ICmpInst::isEquality() const'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1209' u='c' c='_ZNK4llvm8ICmpInst13isCommutativeEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1214' u='c' c='_ZNK4llvm8ICmpInst12isRelationalEv'/>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='1201'>/// Return true if this predicate is either EQ or NE.  This also
+  /// tests for commutativity.</doc>

@@ -1,0 +1,7 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='427' type='void LLVMContextDispose(LLVMContextRef C)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='421'>/**
+ * Destroy a context instance.
+ *
+ * This should be called for every call to LLVMContextCreate() or memory
+ * will be leaked.
+ */</doc>

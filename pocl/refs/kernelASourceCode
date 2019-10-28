@@ -1,0 +1,13 @@
+<def f='pocl/tests/runtime/test_clFinish.c' l='29' ll='33' type='char [78]'/>
+<use f='pocl/tests/runtime/test_clFinish.c' l='116' u='r' c='main'/>
+<use f='pocl/tests/runtime/test_clFinish.c' l='117' u='r' c='main'/>
+<def f='pocl/tests/runtime/test_clSetEventCallback.c' l='75' ll='79' type='char [94]'/>
+<use f='pocl/tests/runtime/test_clSetEventCallback.c' l='111' u='r' c='main'/>
+<use f='pocl/tests/runtime/test_clSetEventCallback.c' l='112' u='r' c='main'/>
+<doc f='pocl/tests/runtime/test_clSetEventCallback.c' l='68'>/* TODO this test relied on output of printf() from kernel
+ * appearing in specific order WRT event state callbacks,
+ * which is likely UB. OpenCL states printf()
+ * should happen &quot;at clFinish time&quot; but AFAICT
+ * does not state, if it should happen before
+ * or after the event-completed callback call.
+ * -&gt; test disabled for now. */</doc>

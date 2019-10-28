@@ -1,0 +1,11 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='306' type='const char *'/>
+<offset>0</offset>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='112' u='w' c='pocl_basic_init_device_ops'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='381' u='r' c='pocl_basic_probe'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='132' u='w' c='pocl_cuda_init_device_ops'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='409' u='r' c='pocl_cuda_probe'/>
+<use f='pocl/lib/CL/devices/devices.c' l='504' u='r' c='pocl_init_devices'/>
+<use f='pocl/lib/CL/devices/devices.c' l='524' u='r' c='pocl_init_devices'/>
+<use f='pocl/lib/CL/devices/devices.c' l='535' u='r' c='pocl_init_devices'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='80' u='w' c='pocl_pthread_init_device_ops'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='121' u='r' c='pocl_pthread_probe'/>

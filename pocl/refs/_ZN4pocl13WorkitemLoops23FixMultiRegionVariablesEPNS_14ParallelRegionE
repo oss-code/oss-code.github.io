@@ -1,0 +1,11 @@
+<dec f='pocl/lib/llvmopencl/WorkitemLoops.h' l='77' type='void pocl::WorkitemLoops::FixMultiRegionVariables(pocl::ParallelRegion * region)'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='414' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<def f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='629' ll='697' type='void pocl::WorkitemLoops::FixMultiRegionVariables(pocl::ParallelRegion * region)'/>
+<doc f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='621'>/*
+ * Add context save/restore code to variables that are defined in 
+ * the given region and are used outside the region.
+ *
+ * Each such variable gets a slot in the stack frame. The variable
+ * is restored from the stack whenever it&apos;s used.
+ *
+ */</doc>

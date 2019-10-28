@@ -1,0 +1,13 @@
+<def f='include/llvm-6.0/llvm/Support/SMLoc.h' l='49' ll='61'/>
+<size>16</size>
+<doc f='include/llvm-6.0/llvm/Support/SMLoc.h' l='44'>/// Represents a range in source code.
+///
+/// SMRange is implemented using a half-open range, as is the convention in C++.
+/// In the string &quot;abc&quot;, the range (1,3] represents the substring &quot;bc&quot;, and the
+/// range (2,2] represents an empty range between the characters &quot;b&quot; and &quot;c&quot;.</doc>
+<mbr r='llvm::SMRange::Start' o='0' t='llvm::SMLoc'/>
+<mbr r='llvm::SMRange::End' o='64' t='llvm::SMLoc'/>
+<fun r='_ZN4llvm7SMRangeC1Ev'/>
+<fun r='_ZN4llvm7SMRangeC1ENS_8NoneTypeE'/>
+<fun r='_ZN4llvm7SMRangeC1ENS_5SMLocES1_'/>
+<fun r='_ZNK4llvm7SMRange7isValidEv'/>

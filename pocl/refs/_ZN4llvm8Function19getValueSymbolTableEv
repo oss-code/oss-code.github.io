@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/IR/Function.h' l='593' type='llvm::ValueSymbolTable * llvm::Function::getValueSymbolTable()'/>
+<doc f='include/llvm-6.0/llvm/IR/Function.h' l='588'>//===--------------------------------------------------------------------===//
+  // Symbol Table Accessing functions...
+
+  /// getSymbolTable() - Return the symbol table if any, otherwise nullptr.
+  ///</doc>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='87' u='c' c='_ZN4pocl14ParallelRegion17GenerateTempNamesEPN4llvm10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='200' u='c' c='_ZN4pocl15WorkitemHandler26fixUndominatedVariableUsesEPN4llvm24DominatorTreeWrapperPassERNS1_8FunctionE'/>

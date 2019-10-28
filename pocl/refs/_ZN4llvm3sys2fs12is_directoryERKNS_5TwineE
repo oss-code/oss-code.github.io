@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Support/FileSystem.h' l='528' ll='531' type='bool llvm::sys::fs::is_directory(const llvm::Twine &amp; Path)'/>
+<doc f='include/llvm-6.0/llvm/Support/FileSystem.h' l='526'>/// @brief Simpler version of is_directory for clients that don&apos;t need to
+///        differentiate between an error and false.</doc>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='111' u='c' c='pocl_rm_rf'/>

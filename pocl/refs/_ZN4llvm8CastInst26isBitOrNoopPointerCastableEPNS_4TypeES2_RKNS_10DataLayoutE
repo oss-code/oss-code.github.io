@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='747' type='static bool llvm::CastInst::isBitOrNoopPointerCastable(llvm::Type * SrcTy, llvm::Type * DestTy, const llvm::DataLayout &amp; DL)'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='742'>/// @brief Check whether a bitcast, inttoptr, or ptrtoint cast between these
+  /// types is valid and a no-op.
+  ///
+  /// This ensures that any pointer&lt;-&gt;integer cast has enough bits in the
+  /// integer and any other cast is a bitcast.</doc>

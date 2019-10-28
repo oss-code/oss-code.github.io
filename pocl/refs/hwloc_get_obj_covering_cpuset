@@ -1,0 +1,10 @@
+<dec f='include/hwloc/helper.h' l='281' type='hwloc_obj_t hwloc_get_obj_covering_cpuset(hwloc_topology_t topology, hwloc_const_cpuset_t set)'/>
+<def f='include/hwloc/helper.h' l='282' ll='294' type='hwloc_obj_t hwloc_get_obj_covering_cpuset(hwloc_topology_t topology, hwloc_const_cpuset_t set)'/>
+<use f='include/hwloc/helper.h' l='501' u='c' c='hwloc_get_cache_covering_cpuset'/>
+<doc f='include/hwloc/helper.h' l='273'>/** \brief Get the lowest object covering at least CPU set \p set
+ *
+ * \return \c NULL if no object matches or if \p set is empty.
+ *
+ * \note This function cannot work if the root object does not have a CPU set,
+ * e.g. if the topology is made of different machines.
+ */</doc>

@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/PassManagerInternal.h' l='126'/>
+<doc f='include/llvm-6.0/llvm/IR/PassManagerInternal.h' l='123'>// Purely to help out MSVC which fails to disable the below specialization,
+  // explicitly enable using the result type&apos;s invalidate routine if we can
+  // successfully call that routine.</doc>

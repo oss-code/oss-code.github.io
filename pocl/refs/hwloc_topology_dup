@@ -1,0 +1,8 @@
+<dec f='include/hwloc.h' l='644' type='int hwloc_topology_dup(hwloc_topology_t * newtopology, hwloc_topology_t oldtopology)'/>
+<doc f='include/hwloc.h' l='637'>/** \brief Duplicate a topology.
+ *
+ * The entire topology structure as well as its objects
+ * are duplicated into a new one.
+ *
+ * This is useful for keeping a backup while modifying a topology.
+ */</doc>

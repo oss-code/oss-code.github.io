@@ -1,0 +1,125 @@
+<def f='include/llvm-6.0/llvm/IR/Value.h' l='73' ll='661'/>
+<ovr f='include/llvm-6.0/llvm/IR/Argument.h' l='30' c='llvm::Argument'/>
+<ovr f='include/llvm-6.0/llvm/IR/User.h' l='45' c='llvm::User'/>
+<ovr f='include/llvm-6.0/llvm/IR/Metadata.h' l='172' c='llvm::MetadataAsValue'/>
+<ovr f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='59' c='llvm::BasicBlock'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/IR/Value.h' l='56'>//===----------------------------------------------------------------------===//
+//                                 Value Class
+//===----------------------------------------------------------------------===//
+
+/// \brief LLVM Value Representation
+///
+/// This is a very important LLVM class. It is the base class of all values
+/// computed by a program that may be used as operands to other values. Value is
+/// the super class of other important classes such as Instruction and Function.
+/// All Values have a Type. Type is not a subclass of Value. Some values can
+/// have a name and they belong to some Module.  Setting the name on the Value
+/// automatically updates the module&apos;s symbol table.
+///
+/// Every value has a &quot;use list&quot; that keeps track of which other Values are
+/// using this Value.  A Value can also have an arbitrary number of ValueHandle
+/// objects that watch it and listen to RAUW and Destroy events.  See
+/// llvm/IR/ValueHandle.h for details.</doc>
+<mbr r='llvm::Value::VTy' o='0' t='llvm::Type *'/>
+<mbr r='llvm::Value::UseList' o='64' t='llvm::Use *'/>
+<mbr r='llvm::Value::SubclassID' o='128' t='const unsigned char'/>
+<mbr r='llvm::Value::HasValueHandle' o='136' t='unsigned char'/>
+<mbr r='llvm::Value::SubclassOptionalData' o='137' t='unsigned char'/>
+<mbr r='llvm::Value::SubclassData' o='144' t='unsigned short'/>
+<mbr r='llvm::Value::NumUserOperands' o='160' t='unsigned int'/>
+<mbr r='llvm::Value::IsUsedByMD' o='188' t='unsigned int'/>
+<mbr r='llvm::Value::HasName' o='189' t='unsigned int'/>
+<mbr r='llvm::Value::HasHungOffUses' o='190' t='unsigned int'/>
+<mbr r='llvm::Value::HasDescriptor' o='191' t='unsigned int'/>
+<fun r='_ZN4llvm5ValueC1EPNS_4TypeEj'/>
+<fun r='_ZN4llvm5ValueD1Ev'/>
+<fun r='_ZN4llvm5ValueC1ERKS0_'/>
+<fun r='_ZN4llvm5ValueaSERKS0_'/>
+<fun r='_ZN4llvm5Value11deleteValueEv'/>
+<fun r='_ZNK4llvm5Value4dumpEv'/>
+<fun r='_ZNK4llvm5Value5printERNS_11raw_ostreamEb'/>
+<fun r='_ZNK4llvm5Value5printERNS_11raw_ostreamERNS_17ModuleSlotTrackerEb'/>
+<fun r='_ZNK4llvm5Value14printAsOperandERNS_11raw_ostreamEbPKNS_6ModuleE'/>
+<fun r='_ZNK4llvm5Value14printAsOperandERNS_11raw_ostreamEbRNS_17ModuleSlotTrackerE'/>
+<fun r='_ZNK4llvm5Value7getTypeEv'/>
+<fun r='_ZNK4llvm5Value10getContextEv'/>
+<fun r='_ZNK4llvm5Value7hasNameEv'/>
+<fun r='_ZNK4llvm5Value12getValueNameEv'/>
+<fun r='_ZN4llvm5Value12setValueNameEPNS_14StringMapEntryIPS0_EE'/>
+<fun r='_ZN4llvm5Value16destroyValueNameEv'/>
+<fun r='_ZN4llvm5Value6doRAUWEPS0_b'/>
+<fun r='_ZN4llvm5Value11setNameImplERKNS_5TwineE'/>
+<fun r='_ZNK4llvm5Value7getNameEv'/>
+<fun r='_ZN4llvm5Value7setNameERKNS_5TwineE'/>
+<fun r='_ZN4llvm5Value8takeNameEPS0_'/>
+<fun r='_ZN4llvm5Value18replaceAllUsesWithEPS0_'/>
+<fun r='_ZN4llvm5Value26replaceNonMetadataUsesWithEPS0_'/>
+<fun r='_ZN4llvm5Value23replaceUsesOutsideBlockEPS0_PNS_10BasicBlockE'/>
+<fun r='_ZN4llvm5Value26replaceUsesExceptBlockAddrEPS0_'/>
+<fun r='_ZNK4llvm5Value30assertModuleIsMaterializedImplEv'/>
+<fun r='_ZNK4llvm5Value26assertModuleIsMaterializedEv'/>
+<fun r='_ZNK4llvm5Value9use_emptyEv'/>
+<fun r='_ZNK4llvm5Value22materialized_use_emptyEv'/>
+<fun r='_ZN4llvm5Value22materialized_use_beginEv'/>
+<fun r='_ZNK4llvm5Value22materialized_use_beginEv'/>
+<fun r='_ZN4llvm5Value9use_beginEv'/>
+<fun r='_ZNK4llvm5Value9use_beginEv'/>
+<fun r='_ZN4llvm5Value7use_endEv'/>
+<fun r='_ZNK4llvm5Value7use_endEv'/>
+<fun r='_ZN4llvm5Value17materialized_usesEv'/>
+<fun r='_ZNK4llvm5Value17materialized_usesEv'/>
+<fun r='_ZN4llvm5Value4usesEv'/>
+<fun r='_ZNK4llvm5Value4usesEv'/>
+<fun r='_ZNK4llvm5Value10user_emptyEv'/>
+<fun r='_ZN4llvm5Value23materialized_user_beginEv'/>
+<fun r='_ZNK4llvm5Value23materialized_user_beginEv'/>
+<fun r='_ZN4llvm5Value10user_beginEv'/>
+<fun r='_ZNK4llvm5Value10user_beginEv'/>
+<fun r='_ZN4llvm5Value8user_endEv'/>
+<fun r='_ZNK4llvm5Value8user_endEv'/>
+<fun r='_ZN4llvm5Value9user_backEv'/>
+<fun r='_ZNK4llvm5Value9user_backEv'/>
+<fun r='_ZN4llvm5Value18materialized_usersEv'/>
+<fun r='_ZNK4llvm5Value18materialized_usersEv'/>
+<fun r='_ZN4llvm5Value5usersEv'/>
+<fun r='_ZNK4llvm5Value5usersEv'/>
+<fun r='_ZNK4llvm5Value9hasOneUseEv'/>
+<fun r='_ZNK4llvm5Value8hasNUsesEj'/>
+<fun r='_ZNK4llvm5Value14hasNUsesOrMoreEj'/>
+<fun r='_ZNK4llvm5Value18isUsedInBasicBlockEPKNS_10BasicBlockE'/>
+<fun r='_ZNK4llvm5Value10getNumUsesEv'/>
+<fun r='_ZN4llvm5Value6addUseERNS_3UseE'/>
+<fun r='_ZNK4llvm5Value10getValueIDEv'/>
+<fun r='_ZNK4llvm5Value26getRawSubclassOptionalDataEv'/>
+<fun r='_ZN4llvm5Value25clearSubclassOptionalDataEv'/>
+<fun r='_ZNK4llvm5Value27hasSameSubclassOptionalDataEPKS0_'/>
+<fun r='_ZNK4llvm5Value14hasValueHandleEv'/>
+<fun r='_ZNK4llvm5Value16isUsedByMetadataEv'/>
+<fun r='_ZNK4llvm5Value12isSwiftErrorEv'/>
+<fun r='_ZNK4llvm5Value17stripPointerCastsEv'/>
+<fun r='_ZN4llvm5Value17stripPointerCastsEv'/>
+<fun r='_ZNK4llvm5Value28stripPointerCastsAndBarriersEv'/>
+<fun r='_ZN4llvm5Value28stripPointerCastsAndBarriersEv'/>
+<fun r='_ZNK4llvm5Value32stripPointerCastsNoFollowAliasesEv'/>
+<fun r='_ZN4llvm5Value32stripPointerCastsNoFollowAliasesEv'/>
+<fun r='_ZNK4llvm5Value28stripInBoundsConstantOffsetsEv'/>
+<fun r='_ZN4llvm5Value28stripInBoundsConstantOffsetsEv'/>
+<fun r='_ZNK4llvm5Value41stripAndAccumulateInBoundsConstantOffsetsERKNS_10DataLayoutERNS_5APIntE'/>
+<fun r='_ZN4llvm5Value41stripAndAccumulateInBoundsConstantOffsetsERKNS_10DataLayoutERNS_5APIntE'/>
+<fun r='_ZNK4llvm5Value20stripInBoundsOffsetsEv'/>
+<fun r='_ZN4llvm5Value20stripInBoundsOffsetsEv'/>
+<fun r='_ZNK4llvm5Value30getPointerDereferenceableBytesERKNS_10DataLayoutERb'/>
+<fun r='_ZNK4llvm5Value19getPointerAlignmentERKNS_10DataLayoutE'/>
+<fun r='_ZNK4llvm5Value16DoPHITranslationEPKNS_10BasicBlockES3_'/>
+<fun r='_ZN4llvm5Value16DoPHITranslationEPKNS_10BasicBlockES3_'/>
+<smbr r='llvm::Value::MaxAlignmentExponent' t='const unsigned int'/>
+<smbr r='llvm::Value::MaximumAlignment' t='const unsigned int'/>
+<fun r='_ZN4llvm5Value10mutateTypeEPNS_4TypeE'/>
+<fun r='_ZN4llvm5Value11sortUseListET_'/>
+<fun r='_ZN4llvm5Value14reverseUseListEv'/>
+<fun r='_ZN4llvm5Value13mergeUseListsEPNS_3UseES2_T_'/>
+<fun r='_ZNK4llvm5Value24getSubclassDataFromValueEv'/>
+<fun r='_ZN4llvm5Value20setValueSubclassDataEt'/>
+<fun r='_ZN4llvm5Value11sortUseListET_'/>
+<ovr f='include/llvm-6.0/llvm/IR/InlineAsm.h' l='31' c='llvm::InlineAsm'/>

@@ -1,0 +1,4 @@
+<dec f='pocl/lib/llvmopencl/BarrierTailReplication.h' l='79' type='bool pocl::BarrierTailReplication::CleanupPHIs(llvm::BasicBlock * BB)'/>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='102' u='c' c='_ZN4pocl22BarrierTailReplication13runOnFunctionERN4llvm8FunctionE'/>
+<def f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='227' ll='284' type='bool pocl::BarrierTailReplication::CleanupPHIs(llvm::BasicBlock * BB)'/>
+<doc f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='226'>// Removes phi elements for which there are no successors (anymore).</doc>

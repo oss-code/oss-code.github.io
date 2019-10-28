@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='178' type='void llvm::FoldingSetBase::GrowBucketCount(unsigned int NewBucketCount)'/>
+<doc f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='175'>/// GrowBucketCount - resize the hash table and rehash everything.
+  /// NewBucketCount must be a power of two, and must be greater than the old
+  /// bucket count.</doc>

@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/Instruction.def' l='176' type='47'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='5121' u='r' c='_ZN4llvm11BitCastInst7classofEPKNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='550'/>
+<use f='include/llvm-6.0/llvm/IR/ConstantFolder.h' l='205' u='r' c='_ZNK4llvm14ConstantFolder13CreateBitCastEPNS_8ConstantEPNS_4TypeE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1450' u='r' c='_ZN4llvm9IRBuilder13CreateBitCastEPNS_5ValueEPNS_4TypeERKNS_5TwineE'/>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='74' u='r' c='_ZL14hasConstantGEPPN4llvm5ValueE'/>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='187' c='_ZL17convertExpressionPN4llvm12ConstantExprEPNS_11InstructionE'/>

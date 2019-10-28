@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>pocl_icd.h source code [pocl/lib/CL/pocl_icd.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/CL/pocl_icd.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>CL</a>/<a href='pocl_icd.h.html'>pocl_icd.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><u>#include <a href="../../config.h.html">"config.h"</a></u></td></tr>
+<tr><th id="2">2</th><td></td></tr>
+<tr><th id="3">3</th><td><i>/* Installable Client Driver-realated things. */</i></td></tr>
+<tr><th id="4">4</th><td><u>#<span data-ppcond="4">ifndef</span> <span class="macro" data-ref="_M/POCL_ICD_H">POCL_ICD_H</span></u></td></tr>
+<tr><th id="5">5</th><td><u>#define <dfn class="macro" id="_M/POCL_ICD_H" data-ref="_M/POCL_ICD_H">POCL_ICD_H</dfn></u></td></tr>
+<tr><th id="6">6</th><td></td></tr>
+<tr><th id="7">7</th><td><i>// stub out ICD related stuff </i></td></tr>
+<tr><th id="8">8</th><td><u>#<span data-ppcond="8">ifndef</span> <a class="macro" href="../../config.h.html#11" data-ref="_M/BUILD_ICD">BUILD_ICD</a></u></td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td><u>#  define POCL_DEVICE_ICD_DISPATCH</u></td></tr>
+<tr><th id="11">11</th><td><u>#  define POCL_INIT_ICD_OBJECT(__obj__)</u></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td><i>// rest of the file: ICD is enabled </i></td></tr>
+<tr><th id="14">14</th><td><u>#<span data-ppcond="8">else</span></u></td></tr>
+<tr><th id="15">15</th><td></td></tr>
+<tr><th id="16">16</th><td><b>extern</b> <b>struct</b> <a class="type" href="../../../include/ocl_icd.h.html#_cl_icd_dispatch" title='_cl_icd_dispatch' data-ref="_cl_icd_dispatch" id="_cl_icd_dispatch"><a class="type" href="../../../include/ocl_icd.h.html#_cl_icd_dispatch" title='_cl_icd_dispatch' data-ref="_cl_icd_dispatch">_cl_icd_dispatch</a></a> <dfn class="decl" id="pocl_dispatch" title='pocl_dispatch' data-ref="pocl_dispatch">pocl_dispatch</dfn>;  <i>//from clGetPlatformIDs.c</i></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><u>#  define <dfn class="macro" id="_M/POCL_DEVICE_ICD_DISPATCH" data-ref="_M/POCL_DEVICE_ICD_DISPATCH">POCL_DEVICE_ICD_DISPATCH</dfn> &amp;pocl_dispatch,</u></td></tr>
+<tr><th id="19">19</th><td><u>#  define <dfn class="macro" id="_M/POCL_INIT_ICD_OBJECT" data-ref="_M/POCL_INIT_ICD_OBJECT">POCL_INIT_ICD_OBJECT</dfn>(__obj__) (__obj__)-&gt;dispatch=&amp;pocl_dispatch</u></td></tr>
+<tr><th id="20">20</th><td></td></tr>
+<tr><th id="21">21</th><td><i>/* Define the ICD dispatch structure that gets filled below. </i></td></tr>
+<tr><th id="22">22</th><td><i> * Prefer to get it from ocl-icd, as that has compile time type checking</i></td></tr>
+<tr><th id="23">23</th><td><i> * of the function signatures. This checks that they are in correct order.</i></td></tr>
+<tr><th id="24">24</th><td><i> */</i></td></tr>
+<tr><th id="25">25</th><td><u>#<span data-ppcond="25">ifdef</span> <a class="macro" href="../../config.h.html#62" data-ref="_M/HAVE_OCL_ICD">HAVE_OCL_ICD</a></u> </td></tr>
+<tr><th id="26">26</th><td><u>#include <a href="../../../include/ocl_icd.h.html">&lt;ocl_icd.h&gt;</a></u></td></tr>
+<tr><th id="27">27</th><td><u>#<span data-ppcond="25">else</span></u></td></tr>
+<tr><th id="28">28</th><td><u>#define OCL_ICD_IDENTIFIED_FUNCTIONS 116</u></td></tr>
+<tr><th id="29">29</th><td><b>struct</b> _cl_icd_dispatch {</td></tr>
+<tr><th id="30">30</th><td>        <em>void</em> *funcptr[<var>166</var>];</td></tr>
+<tr><th id="31">31</th><td>};</td></tr>
+<tr><th id="32">32</th><td><u>#<span data-ppcond="25">endif</span></u></td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><u>#<span data-ppcond="8">endif</span></u></td></tr>
+<tr><th id="35">35</th><td><u>#<span data-ppcond="4">endif</span></u></td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='clBuildProgram.c.html'>pocl/lib/CL/clBuildProgram.c</a><br/>Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

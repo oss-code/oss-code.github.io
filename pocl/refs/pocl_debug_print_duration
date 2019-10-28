@@ -1,0 +1,4 @@
+<dec f='pocl/lib/CL/pocl_debug.h' l='138' type='void pocl_debug_print_duration(const char * func, unsigned int line, const char * msg, uint64_t nanosecs)'/>
+<def f='pocl/lib/CL/pocl_debug.c' l='140' ll='191' type='void pocl_debug_print_duration(const char * func, unsigned int line, const char * msg, uint64_t nanosecs)'/>
+<use f='pocl/lib/CL/pocl_debug.c' l='200' u='c' c='pocl_debug_measure_finish'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1273' u='c' c='pocl_update_event_finished_msg'/>

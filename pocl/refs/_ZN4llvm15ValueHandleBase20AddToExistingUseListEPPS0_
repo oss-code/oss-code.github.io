@@ -1,0 +1,7 @@
+<use f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='46' u='c' c='_ZN4llvm15ValueHandleBaseC1ENS0_14HandleBaseKindERKS0_'/>
+<use f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='88' u='c' c='_ZN4llvm15ValueHandleBaseaSERKS0_'/>
+<dec f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='128' type='void llvm::ValueHandleBase::AddToExistingUseList(llvm::ValueHandleBase ** List)'/>
+<doc f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='124'>/// \brief Add this ValueHandle to the use list for V.
+  ///
+  /// List is the address of either the head of the list or a Next node within
+  /// the existing use list.</doc>

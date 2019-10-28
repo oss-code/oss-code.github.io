@@ -1,0 +1,9 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2491' type='LLVMIntPredicate LLVMGetICmpPredicate(LLVMValueRef Inst)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2483'>/**
+ * Obtain the predicate of an instruction.
+ *
+ * This is only valid for instructions that correspond to llvm::ICmpInst
+ * or llvm::ConstantExpr whose opcode is llvm::Instruction::ICmp.
+ *
+ * @see llvm::ICmpInst::getPredicate()
+ */</doc>

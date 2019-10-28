@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/ValueMap.h' l='223' ll='225' type='const void * llvm::ValueMap::getPointerIntoBucketsArray() const'/>
+<doc f='include/llvm-6.0/llvm/IR/ValueMap.h' l='220'>/// getPointerIntoBucketsArray() - Return an opaque pointer into the buckets
+  /// array.  In conjunction with the previous method, this can be used to
+  /// determine whether an insertion caused the ValueMap to reallocate.</doc>

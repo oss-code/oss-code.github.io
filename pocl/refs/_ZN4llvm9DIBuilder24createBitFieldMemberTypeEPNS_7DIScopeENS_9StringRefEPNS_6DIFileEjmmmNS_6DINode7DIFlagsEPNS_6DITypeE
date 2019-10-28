@@ -1,0 +1,11 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='268' type='llvm::DIDerivedType * llvm::DIBuilder::createBitFieldMemberType(llvm::DIScope * Scope, llvm::StringRef Name, llvm::DIFile * File, unsigned int LineNo, uint64_t SizeInBits, uint64_t OffsetInBits, uint64_t StorageOffsetInBits, DINode::DIFlags Flags, llvm::DIType * Ty)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='258'>/// Create debugging information entry for a bit field member.
+    /// \param Scope               Member scope.
+    /// \param Name                Member name.
+    /// \param File                File where this member is defined.
+    /// \param LineNo              Line number.
+    /// \param SizeInBits          Member size.
+    /// \param OffsetInBits        Member offset.
+    /// \param StorageOffsetInBits Member storage offset.
+    /// \param Flags               Flags to encode member attribute.
+    /// \param Ty                  Parent type.</doc>

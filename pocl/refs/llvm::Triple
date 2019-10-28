@@ -1,0 +1,134 @@
+<def f='include/llvm-6.0/llvm/ADT/Triple.h' l='44' ll='801'/>
+<size>56</size>
+<doc f='include/llvm-6.0/llvm/ADT/Triple.h' l='23'>/// Triple - Helper class for working with autoconf configuration names. For
+/// historical reasons, we also call these &apos;triples&apos; (they used to contain
+/// exactly three fields).
+///
+/// Configuration names are strings in the canonical form:
+///   ARCHITECTURE-VENDOR-OPERATING_SYSTEM
+/// or
+///   ARCHITECTURE-VENDOR-OPERATING_SYSTEM-ENVIRONMENT
+///
+/// This class is used for clients which want to support arbitrary
+/// configuration names, but also want to implement certain special
+/// behavior for particular configurations. This class isolates the mapping
+/// from the components of the configuration name to well known IDs.
+///
+/// At its core the Triple class is designed to be a wrapper for a triple
+/// string; the constructor does not change or normalize the triple string.
+/// Clients that need to handle the non-canonical triples that users often
+/// specify should use the normalize method.
+///
+/// See autoconf/config.guess for a glimpse into what configuration names
+/// look like in practice.</doc>
+<mbr r='llvm::Triple::Data' o='0' t='std::string'/>
+<mbr r='llvm::Triple::Arch' o='256' t='llvm::Triple::ArchType'/>
+<mbr r='llvm::Triple::SubArch' o='288' t='llvm::Triple::SubArchType'/>
+<mbr r='llvm::Triple::Vendor' o='320' t='llvm::Triple::VendorType'/>
+<mbr r='llvm::Triple::OS' o='352' t='llvm::Triple::OSType'/>
+<mbr r='llvm::Triple::Environment' o='384' t='llvm::Triple::EnvironmentType'/>
+<mbr r='llvm::Triple::ObjectFormat' o='416' t='llvm::Triple::ObjectFormatType'/>
+<fun r='_ZN4llvm6TripleC1Ev'/>
+<fun r='_ZN4llvm6TripleC1ERKNS_5TwineE'/>
+<fun r='_ZN4llvm6TripleC1ERKNS_5TwineES3_S3_'/>
+<fun r='_ZN4llvm6TripleC1ERKNS_5TwineES3_S3_S3_'/>
+<fun r='_ZNK4llvm6TripleeqERKS0_'/>
+<fun r='_ZNK4llvm6TripleneERKS0_'/>
+<fun r='_ZN4llvm6Triple9normalizeB5cxx11ENS_9StringRefE'/>
+<fun r='_ZNK4llvm6Triple9normalizeB5cxx11Ev'/>
+<fun r='_ZNK4llvm6Triple7getArchEv'/>
+<fun r='_ZNK4llvm6Triple10getSubArchEv'/>
+<fun r='_ZNK4llvm6Triple9getVendorEv'/>
+<fun r='_ZNK4llvm6Triple5getOSEv'/>
+<fun r='_ZNK4llvm6Triple14hasEnvironmentEv'/>
+<fun r='_ZNK4llvm6Triple14getEnvironmentEv'/>
+<fun r='_ZNK4llvm6Triple21getEnvironmentVersionERjS1_S1_'/>
+<fun r='_ZNK4llvm6Triple15getObjectFormatEv'/>
+<fun r='_ZNK4llvm6Triple12getOSVersionERjS1_S1_'/>
+<fun r='_ZNK4llvm6Triple17getOSMajorVersionEv'/>
+<fun r='_ZNK4llvm6Triple16getMacOSXVersionERjS1_S1_'/>
+<fun r='_ZNK4llvm6Triple13getiOSVersionERjS1_S1_'/>
+<fun r='_ZNK4llvm6Triple17getWatchOSVersionERjS1_S1_'/>
+<fun r='_ZNK4llvm6Triple3strB5cxx11Ev'/>
+<fun r='_ZNK4llvm6Triple9getTripleB5cxx11Ev'/>
+<fun r='_ZNK4llvm6Triple11getArchNameEv'/>
+<fun r='_ZNK4llvm6Triple13getVendorNameEv'/>
+<fun r='_ZNK4llvm6Triple9getOSNameEv'/>
+<fun r='_ZNK4llvm6Triple18getEnvironmentNameEv'/>
+<fun r='_ZNK4llvm6Triple23getOSAndEnvironmentNameEv'/>
+<fun r='_ZNK4llvm6Triple11isArch64BitEv'/>
+<fun r='_ZNK4llvm6Triple11isArch32BitEv'/>
+<fun r='_ZNK4llvm6Triple11isArch16BitEv'/>
+<fun r='_ZNK4llvm6Triple13isOSVersionLTEjjj'/>
+<fun r='_ZNK4llvm6Triple13isOSVersionLTERKS0_'/>
+<fun r='_ZNK4llvm6Triple17isMacOSXVersionLTEjjj'/>
+<fun r='_ZNK4llvm6Triple8isMacOSXEv'/>
+<fun r='_ZNK4llvm6Triple5isiOSEv'/>
+<fun r='_ZNK4llvm6Triple6isTvOSEv'/>
+<fun r='_ZNK4llvm6Triple9isWatchOSEv'/>
+<fun r='_ZNK4llvm6Triple10isWatchABIEv'/>
+<fun r='_ZNK4llvm6Triple10isOSDarwinEv'/>
+<fun r='_ZNK4llvm6Triple22isSimulatorEnvironmentEv'/>
+<fun r='_ZNK4llvm6Triple10isOSNetBSDEv'/>
+<fun r='_ZNK4llvm6Triple11isOSOpenBSDEv'/>
+<fun r='_ZNK4llvm6Triple11isOSFreeBSDEv'/>
+<fun r='_ZNK4llvm6Triple11isOSFuchsiaEv'/>
+<fun r='_ZNK4llvm6Triple13isOSDragonFlyEv'/>
+<fun r='_ZNK4llvm6Triple11isOSSolarisEv'/>
+<fun r='_ZNK4llvm6Triple9isOSIAMCUEv'/>
+<fun r='_ZNK4llvm6Triple11isOSUnknownEv'/>
+<fun r='_ZNK4llvm6Triple16isGNUEnvironmentEv'/>
+<fun r='_ZNK4llvm6Triple11isOSContikiEv'/>
+<fun r='_ZNK4llvm6Triple9isOSHaikuEv'/>
+<fun r='_ZNK4llvm6Triple24isWindowsMSVCEnvironmentEv'/>
+<fun r='_ZNK4llvm6Triple29isKnownWindowsMSVCEnvironmentEv'/>
+<fun r='_ZNK4llvm6Triple27isWindowsCoreCLREnvironmentEv'/>
+<fun r='_ZNK4llvm6Triple27isWindowsItaniumEnvironmentEv'/>
+<fun r='_ZNK4llvm6Triple26isWindowsCygwinEnvironmentEv'/>
+<fun r='_ZNK4llvm6Triple23isWindowsGNUEnvironmentEv'/>
+<fun r='_ZNK4llvm6Triple11isOSCygMingEv'/>
+<fun r='_ZNK4llvm6Triple10isOSMSVCRTEv'/>
+<fun r='_ZNK4llvm6Triple11isOSWindowsEv'/>
+<fun r='_ZNK4llvm6Triple8isOSNaClEv'/>
+<fun r='_ZNK4llvm6Triple9isOSLinuxEv'/>
+<fun r='_ZNK4llvm6Triple12isOSKFreeBSDEv'/>
+<fun r='_ZNK4llvm6Triple9isOSGlibcEv'/>
+<fun r='_ZNK4llvm6Triple16isOSBinFormatELFEv'/>
+<fun r='_ZNK4llvm6Triple17isOSBinFormatCOFFEv'/>
+<fun r='_ZNK4llvm6Triple18isOSBinFormatMachOEv'/>
+<fun r='_ZNK4llvm6Triple17isOSBinFormatWasmEv'/>
+<fun r='_ZNK4llvm6Triple8isPS4CPUEv'/>
+<fun r='_ZNK4llvm6Triple5isPS4Ev'/>
+<fun r='_ZNK4llvm6Triple9isAndroidEv'/>
+<fun r='_ZNK4llvm6Triple18isAndroidVersionLTEj'/>
+<fun r='_ZNK4llvm6Triple6isMuslEv'/>
+<fun r='_ZNK4llvm6Triple7isNVPTXEv'/>
+<fun r='_ZNK4llvm6Triple7isThumbEv'/>
+<fun r='_ZNK4llvm6Triple5isARMEv'/>
+<fun r='_ZNK4llvm6Triple9isAArch64Ev'/>
+<fun r='_ZNK4llvm6Triple14supportsCOMDATEv'/>
+<fun r='_ZN4llvm6Triple7setArchENS0_8ArchTypeE'/>
+<fun r='_ZN4llvm6Triple9setVendorENS0_10VendorTypeE'/>
+<fun r='_ZN4llvm6Triple5setOSENS0_6OSTypeE'/>
+<fun r='_ZN4llvm6Triple14setEnvironmentENS0_15EnvironmentTypeE'/>
+<fun r='_ZN4llvm6Triple15setObjectFormatENS0_16ObjectFormatTypeE'/>
+<fun r='_ZN4llvm6Triple9setTripleERKNS_5TwineE'/>
+<fun r='_ZN4llvm6Triple11setArchNameENS_9StringRefE'/>
+<fun r='_ZN4llvm6Triple13setVendorNameENS_9StringRefE'/>
+<fun r='_ZN4llvm6Triple9setOSNameENS_9StringRefE'/>
+<fun r='_ZN4llvm6Triple18setEnvironmentNameENS_9StringRefE'/>
+<fun r='_ZN4llvm6Triple23setOSAndEnvironmentNameENS_9StringRefE'/>
+<fun r='_ZNK4llvm6Triple19get32BitArchVariantEv'/>
+<fun r='_ZNK4llvm6Triple19get64BitArchVariantEv'/>
+<fun r='_ZNK4llvm6Triple23getBigEndianArchVariantEv'/>
+<fun r='_ZNK4llvm6Triple26getLittleEndianArchVariantEv'/>
+<fun r='_ZNK4llvm6Triple16getARMCPUForArchENS_9StringRefE'/>
+<fun r='_ZNK4llvm6Triple14isLittleEndianEv'/>
+<fun r='_ZNK4llvm6Triple16isCompatibleWithERKS0_'/>
+<fun r='_ZNK4llvm6Triple5mergeB5cxx11ERKS0_'/>
+<fun r='_ZN4llvm6Triple15getArchTypeNameENS0_8ArchTypeE'/>
+<fun r='_ZN4llvm6Triple17getArchTypePrefixENS0_8ArchTypeE'/>
+<fun r='_ZN4llvm6Triple17getVendorTypeNameENS0_10VendorTypeE'/>
+<fun r='_ZN4llvm6Triple13getOSTypeNameENS0_6OSTypeE'/>
+<fun r='_ZN4llvm6Triple22getEnvironmentTypeNameENS0_15EnvironmentTypeE'/>
+<fun r='_ZN4llvm6Triple22getArchTypeForLLVMNameENS_9StringRefE'/>

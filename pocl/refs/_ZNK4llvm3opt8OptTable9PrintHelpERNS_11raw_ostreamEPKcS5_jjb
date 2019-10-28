@@ -1,0 +1,13 @@
+<dec f='include/llvm-6.0/llvm/Option/OptTable.h' l='209' type='void llvm::opt::OptTable::PrintHelp(llvm::raw_ostream &amp; OS, const char * Name, const char * Title, unsigned int FlagsToInclude, unsigned int FlagsToExclude, bool ShowAllAliases) const'/>
+<doc f='include/llvm-6.0/llvm/Option/OptTable.h' l='197'>/// \brief Render the help text for an option table.
+  ///
+  /// \param OS - The stream to write the help text to.
+  /// \param Name - The name to use in the usage line.
+  /// \param Title - The title to use in the usage line.
+  /// \param FlagsToInclude - If non-zero, only include options with any
+  ///                         of these flags set.
+  /// \param FlagsToExclude - Exclude options with any of these flags set.
+  /// \param ShowAllAliases - If true, display all options including aliases
+  ///                         that don&apos;t have help texts. By default, we display
+  ///                         only options that are not hidden and have help
+  ///                         texts.</doc>

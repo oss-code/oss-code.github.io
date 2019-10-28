@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1295' type='bool'/>
+<use f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1316' u='r' c='_ZN4llvm15ScalarEvolution22loopHasNoAbnormalExitsEPKNS_4LoopE'/>
+<offset>0</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1293'>/// Set to true if the loop contains no instruction that can have side
+    /// effects (i.e. via throwing an exception, volatile or atomic access).</doc>

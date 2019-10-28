@@ -1,0 +1,11 @@
+<def f='pocl/include/CL/cl2.hpp' l='1566' ll='1567' type='static cl_int cl::detail::ReferenceHandler&lt;_cl_device_id *&gt;::release(cl_device_id device)'/>
+<use f='pocl/include/CL/cl2.hpp' l='1930' u='c' c='_ZNK2cl6detail7WrapperIP13_cl_device_idE7releaseEv'/>
+<doc f='pocl/include/CL/cl2.hpp' l='1557'>/**
+     * Retain the device.
+     * \param device A valid device created using createSubDevices
+     * \return
+     *   CL_SUCCESS if the function executed successfully.
+     *   CL_INVALID_DEVICE if device was not a valid subdevice
+     *   CL_OUT_OF_RESOURCES
+     *   CL_OUT_OF_HOST_MEMORY
+     */</doc>

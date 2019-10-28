@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/GlobalObject.h' l='90' ll='92' type='llvm::StringRef llvm::GlobalObject::getSection() const'/>
+<doc f='include/llvm-6.0/llvm/IR/GlobalObject.h' l='86'>/// Get the custom section of this global if it has one.
+  ///
+  /// If this global does not have a custom section, this will be empty and the
+  /// default object file section (.text, .data, etc) will be used.</doc>

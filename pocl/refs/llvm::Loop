@@ -1,0 +1,29 @@
+<inh f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='435' c='llvm::LoopBase'/>
+<def f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='439' ll='591'/>
+<size>152</size>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='437'>/// Represents a single loop in the control flow graph.  Note that not all SCCs
+/// in the CFG are necessarily loops.</doc>
+<fun r='_ZNK4llvm4Loop15isLoopInvariantEPKNS_5ValueE'/>
+<fun r='_ZNK4llvm4Loop24hasLoopInvariantOperandsEPKNS_11InstructionE'/>
+<fun r='_ZNK4llvm4Loop17makeLoopInvariantEPNS_5ValueERbPNS_11InstructionE'/>
+<fun r='_ZNK4llvm4Loop17makeLoopInvariantEPNS_11InstructionERbS2_'/>
+<fun r='_ZNK4llvm4Loop29getCanonicalInductionVariableEv'/>
+<fun r='_ZNK4llvm4Loop11isLCSSAFormERNS_13DominatorTreeE'/>
+<fun r='_ZNK4llvm4Loop22isRecursivelyLCSSAFormERNS_13DominatorTreeERKNS_8LoopInfoE'/>
+<fun r='_ZNK4llvm4Loop18isLoopSimplifyFormEv'/>
+<fun r='_ZNK4llvm4Loop13isSafeToCloneEv'/>
+<fun r='_ZNK4llvm4Loop19isAnnotatedParallelEv'/>
+<fun r='_ZNK4llvm4Loop9getLoopIDEv'/>
+<fun r='_ZNK4llvm4Loop9setLoopIDEPNS_6MDNodeE'/>
+<fun r='_ZN4llvm4Loop22setLoopAlreadyUnrolledEv'/>
+<fun r='_ZNK4llvm4Loop17hasDedicatedExitsEv'/>
+<fun r='_ZNK4llvm4Loop19getUniqueExitBlocksERNS_15SmallVectorImplIPNS_10BasicBlockEEE'/>
+<fun r='_ZNK4llvm4Loop18getUniqueExitBlockEv'/>
+<fun r='_ZNK4llvm4Loop4dumpEv'/>
+<fun r='_ZNK4llvm4Loop11dumpVerboseEv'/>
+<fun r='_ZNK4llvm4Loop11getStartLocEv'/>
+<fun r='_ZNK4llvm4Loop11getLocRangeEv'/>
+<fun r='_ZNK4llvm4Loop7getNameEv'/>
+<fun r='_ZN4llvm4LoopC1Ev'/>
+<fun r='_ZN4llvm4LoopC1EPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm4LoopD1Ev'/>

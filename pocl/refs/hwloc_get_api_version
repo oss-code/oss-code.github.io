@@ -1,0 +1,6 @@
+<dec f='include/hwloc.h' l='88' type='unsigned int hwloc_get_api_version()'/>
+<use f='pocl/lib/CL/devices/topology/pocl_topology.c' l='67' u='c' c='pocl_topology_detect_device_info'/>
+<doc f='include/hwloc.h' l='84'>/** \brief Indicate at runtime which hwloc API version was used at build time.
+ *
+ * Should be ::HWLOC_API_VERSION if running on the same version.
+ */</doc>

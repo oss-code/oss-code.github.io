@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/Attributes.h' l='233' type='llvm::AttributeSet llvm::AttributeSet::addAttribute(llvm::LLVMContext &amp; C, Attribute::AttrKind Kind) const'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalVariable.h' l='183' u='c' c='_ZN4llvm14GlobalVariable12addAttributeENS_9Attribute8AttrKindE'/>
+<doc f='include/llvm-6.0/llvm/IR/Attributes.h' l='231'>/// Add an argument attribute. Returns a new set because attribute sets are
+  /// immutable.</doc>
+<use f='pocl/lib/llvmopencl/Flatten.cc' l='90' u='c' c='_ZN12_GLOBAL__N_17Flatten11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/Flatten.cc' l='103' u='c' c='_ZN12_GLOBAL__N_17Flatten11runOnModuleERN4llvm6ModuleE'/>

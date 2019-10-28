@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/DebugInfo.h' l='39' type='bool llvm::StripDebugInfo(llvm::Module &amp; M)'/>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfo.h' l='34'>/// \brief Strip debug info in the module if it exists.
+///
+/// To do this, we remove all calls to the debugger intrinsics and any named
+/// metadata for debugging. We also remove debug locations for instructions.
+/// Return true if module is modified.</doc>

@@ -1,0 +1,18 @@
+<dec f='pocl/lib/llvmopencl/WorkitemLoops.h' l='78' type='void pocl::WorkitemLoops::AddContextSaveRestore(llvm::Instruction * instruction)'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='695' u='c' c='_ZN4pocl13WorkitemLoops23FixMultiRegionVariablesEPNS_14ParallelRegionE'/>
+<def f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='1012' ll='1104' type='void pocl::WorkitemLoops::AddContextSaveRestore(llvm::Instruction * instruction)'/>
+<doc f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='997'>/**
+ * Adds context save/restore code for the value produced by the
+ * given instruction.
+ *
+ * TODO: add only one restore per variable per region.
+ * TODO: add only one load of the id variables per region. 
+ * Could be done by having a context restore BB in the beginning of the
+ * region and a context save BB at the end.
+ * TODO: ignore work group variables completely (the iteration variables)
+ * The LLVM should optimize these away but it would improve
+ * the readability of the output during debugging.
+ * TODO: rematerialize some values such as extended values of global 
+ * variables (especially global id which is computed from local id) or kernel 
+ * argument values instead of allocating stack space for them
+ */</doc>

@@ -1,0 +1,9 @@
+<dec f='include/hwloc/bitmap.h' l='66' type='hwloc_bitmap_t hwloc_bitmap_alloc()'/>
+<use f='include/hwloc/cpuset.h' l='29' u='c' c='hwloc_cpuset_alloc'/>
+<doc f='include/hwloc/bitmap.h' l='59'>/** \brief Allocate a new empty bitmap.
+ *
+ * \returns A valid bitmap or \c NULL.
+ *
+ * The bitmap should be freed by a corresponding call to
+ * hwloc_bitmap_free().
+ */</doc>

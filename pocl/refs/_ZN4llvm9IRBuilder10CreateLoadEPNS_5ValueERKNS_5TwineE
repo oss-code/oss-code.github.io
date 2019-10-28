@@ -1,0 +1,22 @@
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1171' ll='1173' type='llvm::LoadInst * llvm::IRBuilder::CreateLoad(llvm::Value * Ptr, const llvm::Twine &amp; Name = &quot;&quot;)'/>
+<use f='pocl/lib/llvmopencl/PHIsToAllocas.cc' l='141' u='c' c='_ZN4pocl13PHIsToAllocas17BreakPHIToAllocasEPN4llvm7PHINodeE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='594' u='c' c='_ZN4pocl14ParallelRegion12LocalIDZLoadEv'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='608' u='c' c='_ZN4pocl14ParallelRegion12LocalIDYLoadEv'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='622' u='c' c='_ZN4pocl14ParallelRegion12LocalIDXLoadEv'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='387' u='c' c='_ZN4pocl9Workgroup21createLoadFromContextERN4llvm9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEii'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='389' u='c' c='_ZN4pocl9Workgroup21createLoadFromContextERN4llvm9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEii'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='392' u='c' c='_ZN4pocl9Workgroup21createLoadFromContextERN4llvm9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEii'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='394' u='c' c='_ZN4pocl9Workgroup21createLoadFromContextERN4llvm9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEii'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='978' u='c' c='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1015' u='c' c='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1383' u='c' c='_ZN4pocl9Workgroup27createFastWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1408' u='c' c='_ZN4pocl9Workgroup27createFastWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='244' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='249' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='250' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='273' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='277' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='278' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='838' u='c' c='_ZN4pocl13WorkitemLoops17AddContextRestoreEPN4llvm5ValueEPNS1_11InstructionEbS5_b'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='965' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='1172' u='c' c='_ZN4pocl13WorkitemLoops14AppendIncBlockEPN4llvm10BasicBlockEPNS1_5ValueE'/>

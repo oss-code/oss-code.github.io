@@ -1,0 +1,23 @@
+<dec f='pocl/include/pocl.h' l='366' type='cl_device_id'/>
+<offset>1536</offset>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='588' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='617' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='624' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='645' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='657' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='686' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='710' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='1131' u='r' c='pocl_basic_submit'/>
+<use f='pocl/lib/CL/devices/common.c' l='340' u='r' c='pocl_migrate_mem_objects'/>
+<use f='pocl/lib/CL/devices/common.c' l='385' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='777' u='r' c='pocl_broadcast'/>
+<use f='pocl/lib/CL/devices/common.c' l='778' u='r' c='pocl_broadcast'/>
+<use f='pocl/lib/CL/devices/common.c' l='958' u='r' c='pocl_check_kernel_disk_cache'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1104' u='r' c='pocl_cuda_submit_node'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1211' u='r' c='pocl_cuda_submit_node'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='356' u='r' c='pocl_pthread_prepare_kernel'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='405' u='r' c='check_cmd_queue_for_device'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='471' u='r' c='pthread_scheduler_get_work'/>
+<use f='pocl/lib/CL/pocl_build.c' l='145' u='w' c='program_compile_dynamic_wg_binaries'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='132' u='r' c='pocl_cache_kernel_cachedir_path'/>
+<use f='pocl/lib/CL/pocl_util.c' l='510' u='w' c='pocl_create_command'/>

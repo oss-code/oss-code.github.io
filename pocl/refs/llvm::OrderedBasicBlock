@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/Analysis/OrderedBasicBlock.h' l='34' ll='63'/>
+<size>544</size>
+<mbr r='llvm::OrderedBasicBlock::NumberedInsts' o='0' t='SmallDenseMap&lt;const llvm::Instruction *, unsigned int, 32&gt;'/>
+<mbr r='llvm::OrderedBasicBlock::LastInstFound' o='4160' t='BasicBlock::const_iterator'/>
+<mbr r='llvm::OrderedBasicBlock::NextInstPos' o='4224' t='unsigned int'/>
+<mbr r='llvm::OrderedBasicBlock::BB' o='4288' t='const llvm::BasicBlock *'/>
+<fun r='_ZN4llvm17OrderedBasicBlock11comesBeforeEPKNS_11InstructionES3_'/>
+<fun r='_ZN4llvm17OrderedBasicBlockC1EPKNS_10BasicBlockE'/>
+<fun r='_ZN4llvm17OrderedBasicBlock9dominatesEPKNS_11InstructionES3_'/>

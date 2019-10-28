@@ -1,0 +1,8 @@
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='399' u='c' c='_ZNK4llvm5APInt11isNullValueEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='471' u='c' c='_ZNK4llvm5APInt12getBoolValueEv'/>
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='715' ll='719' type='bool llvm::APInt::operator!() const'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='710'>/// \brief Logical negation operator.
+  ///
+  /// Performs logical negation operation on this APInt.
+  ///
+  /// \returns true if *this is zero, false otherwise.</doc>

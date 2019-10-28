@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1623' type='bool llvm::ScalarEvolution::isImpliedCondOperandsViaNoOverflow(ICmpInst::Predicate Pred, const llvm::SCEV * LHS, const llvm::SCEV * RHS, const llvm::SCEV * FoundLHS, const llvm::SCEV * FoundRHS)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1617'>/// Test whether the condition described by Pred, LHS, and RHS is true
+  /// whenever the condition described by Pred, FoundLHS, and FoundRHS is
+  /// true.
+  ///
+  /// This routine tries to rule out certain kinds of integer overflow, and
+  /// then tries to reason about arithmetic properties of the predicates.</doc>

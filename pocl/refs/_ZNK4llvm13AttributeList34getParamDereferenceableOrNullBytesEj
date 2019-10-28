@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/Attributes.h' l='610' ll='612' type='uint64_t llvm::AttributeList::getParamDereferenceableOrNullBytes(unsigned int ArgNo) const'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='404' u='c' c='_ZNK4llvm8Function34getParamDereferenceableOrNullBytesEj'/>
+<doc f='include/llvm-6.0/llvm/IR/Attributes.h' l='608'>/// \brief Get the number of dereferenceable_or_null bytes (or zero if
+  /// unknown) of an arg.</doc>

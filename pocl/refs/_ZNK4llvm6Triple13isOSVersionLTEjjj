@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/ADT/Triple.h' l='403' ll='416' type='bool llvm::Triple::isOSVersionLT(unsigned int Major, unsigned int Minor = 0, unsigned int Micro = 0) const'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='421' u='c' c='_ZNK4llvm6Triple13isOSVersionLTERKS0_'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='433' u='c' c='_ZNK4llvm6Triple17isMacOSXVersionLTEjjj'/>
+<use f='include/llvm-6.0/llvm/ADT/Triple.h' l='437' u='c' c='_ZNK4llvm6Triple17isMacOSXVersionLTEjjj'/>
+<doc f='include/llvm-6.0/llvm/ADT/Triple.h' l='401'>/// isOSVersionLT - Helper function for doing comparisons against version
+  /// numbers included in the target triple.</doc>

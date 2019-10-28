@@ -1,0 +1,372 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>poclcc.c source code [pocl/bin/poclcc.c] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="_poclcc_option,main "/>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/bin/poclcc.c'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>pocl</a>/<a href='./'>bin</a>/<a href='poclcc.c.html'>poclcc.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Pocl tool: poclcc</i></td></tr>
+<tr><th id="2">2</th><td><i></i></td></tr>
+<tr><th id="3">3</th><td><i>   Copyright (c) 2016 pocl developers</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>   Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="6">6</th><td><i>   of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="7">7</th><td><i>   in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="8">8</th><td><i>   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="9">9</th><td><i>   copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="10">10</th><td><i>   furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="11">11</th><td><i></i></td></tr>
+<tr><th id="12">12</th><td><i>   The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="13">13</th><td><i>   all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="14">14</th><td><i></i></td></tr>
+<tr><th id="15">15</th><td><i>   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="16">16</th><td><i>   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="17">17</th><td><i>   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="18">18</th><td><i>   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="19">19</th><td><i>   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="20">20</th><td><i>   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="21">21</th><td><i>   THE SOFTWARE.</i></td></tr>
+<tr><th id="22">22</th><td><i>*/</i></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><u>#include <a href="../../include/stdio.h.html">&lt;stdio.h&gt;</a></u></td></tr>
+<tr><th id="25">25</th><td><u>#include <a href="../../include/stdlib.h.html">&lt;stdlib.h&gt;</a></u></td></tr>
+<tr><th id="26">26</th><td><u>#include <a href="../include/CL/opencl.h.html">&lt;CL/opencl.h&gt;</a></u></td></tr>
+<tr><th id="27">27</th><td><u>#include <a href="../../include/assert.h.html">&lt;assert.h&gt;</a></u></td></tr>
+<tr><th id="28">28</th><td><u>#include <a href="../../include/string.h.html">&lt;string.h&gt;</a></u></td></tr>
+<tr><th id="29">29</th><td><u>#include <a href="../../include/errno.h.html">&lt;errno.h&gt;</a></u></td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><u>#include <a href="../include/poclu.h.html">"poclu.h"</a></u></td></tr>
+<tr><th id="32">32</th><td></td></tr>
+<tr><th id="33">33</th><td><u>#define <dfn class="macro" id="_M/DEVICE_INFO_MAX_LENGTH" data-ref="_M/DEVICE_INFO_MAX_LENGTH">DEVICE_INFO_MAX_LENGTH</dfn> 2048</u></td></tr>
+<tr><th id="34">34</th><td><u>#define <dfn class="macro" id="_M/NUM_OF_DEVICE_ID" data-ref="_M/NUM_OF_DEVICE_ID">NUM_OF_DEVICE_ID</dfn> 32</u></td></tr>
+<tr><th id="35">35</th><td><u>#define <dfn class="macro" id="_M/NUM_OPTIONS" data-ref="_M/NUM_OPTIONS">NUM_OPTIONS</dfn> 6</u></td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td><u>#define <dfn class="macro" id="_M/ERRNO_EXIT" data-ref="_M/ERRNO_EXIT">ERRNO_EXIT</dfn>(filename) do { \</u></td></tr>
+<tr><th id="38">38</th><td><u>    <a class="ref" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>("IO error on file %s: %s\n", filename, <a class="ref" href="../../include/string.h.html#strerror" title='strerror' data-ref="strerror">strerror</a>(errno)); \</u></td></tr>
+<tr><th id="39">39</th><td><u>    <a class="ref" href="../../include/stdlib.h.html#exit" title='exit' data-ref="exit">exit</a>(2); \</u></td></tr>
+<tr><th id="40">40</th><td><u>  } while(0)</u></td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td><em>char</em> *<dfn class="decl def" id="kernel_source" title='kernel_source' data-ref="kernel_source">kernel_source</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="43">43</th><td><em>char</em> *<dfn class="decl def" id="output_file" title='output_file' data-ref="output_file">output_file</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="44">44</th><td><a class="typedef" href="../include/CL/cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a> <dfn class="decl def" id="opencl_device" title='opencl_device' data-ref="opencl_device">opencl_device</dfn> = <a class="macro" href="../include/CL/cl.h.html#271" title="(1 &lt;&lt; 0)" data-ref="_M/CL_DEVICE_TYPE_DEFAULT">CL_DEVICE_TYPE_DEFAULT</a>;</td></tr>
+<tr><th id="45">45</th><td><em>unsigned</em> <dfn class="decl def" id="opencl_device_id" title='opencl_device_id' data-ref="opencl_device_id">opencl_device_id</dfn> = <var>0</var>;</td></tr>
+<tr><th id="46">46</th><td><em>int</em> <dfn class="decl def" id="list_devices" title='list_devices' data-ref="list_devices">list_devices</dfn> = <var>0</var>;</td></tr>
+<tr><th id="47">47</th><td><em>int</em> <dfn class="decl def" id="list_devices_only" title='list_devices_only' data-ref="list_devices_only">list_devices_only</dfn> = <var>0</var>;</td></tr>
+<tr><th id="48">48</th><td><em>char</em> *<dfn class="decl def" id="build_options" title='build_options' data-ref="build_options">build_options</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td><i>/**********************************************************/</i></td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td><b>typedef</b> <em>int</em>(*<dfn class="typedef" id="poclcc_process" title='poclcc_process' data-type='int (*)(int, char **, int)' data-ref="poclcc_process">poclcc_process</dfn>)(<em>int</em>, <em>char</em> **, <em>int</em>);</td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="_poclcc_option" title='_poclcc_option' data-ref="_poclcc_option"><a class="type" href="#_poclcc_option" title='_poclcc_option' data-ref="_poclcc_option">_poclcc_option</a></dfn> {</td></tr>
+<tr><th id="55">55</th><td>  <a class="typedef" href="#poclcc_process" title='poclcc_process' data-type='int (*)(int, char **, int)' data-ref="poclcc_process">poclcc_process</a> <dfn class="tu decl" id="_poclcc_option::fct" title='_poclcc_option::fct' data-type='poclcc_process' data-ref="_poclcc_option::fct">fct</dfn>;</td></tr>
+<tr><th id="56">56</th><td>  <em>char</em> *<dfn class="tu decl" id="_poclcc_option::id" title='_poclcc_option::id' data-type='char *' data-ref="_poclcc_option::id">id</dfn>;</td></tr>
+<tr><th id="57">57</th><td>  <em>char</em> *<dfn class="tu decl" id="_poclcc_option::helper" title='_poclcc_option::helper' data-type='char *' data-ref="_poclcc_option::helper">helper</dfn>;</td></tr>
+<tr><th id="58">58</th><td>  <em>int</em> <dfn class="tu decl" id="_poclcc_option::num_args_read" title='_poclcc_option::num_args_read' data-type='int' data-ref="_poclcc_option::num_args_read">num_args_read</dfn>;</td></tr>
+<tr><th id="59">59</th><td>} <dfn class="typedef" id="poclcc_option" title='poclcc_option' data-type='struct _poclcc_option' data-ref="poclcc_option">poclcc_option</dfn>;</td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td><i>/**********************************************************/</i></td></tr>
+<tr><th id="62">62</th><td></td></tr>
+<tr><th id="63">63</th><td><a class="typedef" href="#poclcc_option" title='poclcc_option' data-type='struct _poclcc_option' data-ref="poclcc_option">poclcc_option</a> *<dfn class="decl def" id="options_help" title='options_help' data-ref="options_help">options_help</dfn>;</td></tr>
+<tr><th id="64">64</th><td></td></tr>
+<tr><th id="65">65</th><td><em>static</em> <em>int</em></td></tr>
+<tr><th id="66">66</th><td><dfn class="tu decl def" id="print_help" title='print_help' data-type='int print_help()' data-ref="print_help">print_help</dfn>()</td></tr>
+<tr><th id="67">67</th><td>{</td></tr>
+<tr><th id="68">68</th><td>  <a class="ref" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"USAGE: poclcc [OPTION]... [FILE]\n"</q>);</td></tr>
+<tr><th id="69">69</th><td>  <a class="ref" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"\n"</q>);</td></tr>
+<tr><th id="70">70</th><td>  <a class="ref" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"OPTIONS:\n"</q>);</td></tr>
+<tr><th id="71">71</th><td>  <em>int</em> <dfn class="local col6 decl" id="1376i" title='i' data-type='int' data-ref="1376i">i</dfn>;</td></tr>
+<tr><th id="72">72</th><td>  <b>for</b> (<a class="local col6 ref" href="#1376i" title='i' data-ref="1376i">i</a>=<var>0</var>; <a class="local col6 ref" href="#1376i" title='i' data-ref="1376i">i</a>&lt;<a class="macro" href="#35" title="6" data-ref="_M/NUM_OPTIONS">NUM_OPTIONS</a>; <a class="local col6 ref" href="#1376i" title='i' data-ref="1376i">i</a>++)</td></tr>
+<tr><th id="73">73</th><td>    <a class="ref" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"%s"</q>, <a class="ref" href="#options_help" title='options_help' data-ref="options_help">options_help</a>[<a class="local col6 ref" href="#1376i" title='i' data-ref="1376i">i</a>].<a class="tu ref" href="#_poclcc_option::helper" title='_poclcc_option::helper' data-use='r' data-ref="_poclcc_option::helper">helper</a>);</td></tr>
+<tr><th id="74">74</th><td></td></tr>
+<tr><th id="75">75</th><td>  <b>return</b> -<var>1</var>;</td></tr>
+<tr><th id="76">76</th><td>}</td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td><em>static</em> <em>int</em></td></tr>
+<tr><th id="79">79</th><td><dfn class="tu decl def" id="poclcc_error" title='poclcc_error' data-type='int poclcc_error(char * msg)' data-ref="poclcc_error">poclcc_error</dfn>(<em>char</em> *<dfn class="local col7 decl" id="1377msg" title='msg' data-type='char *' data-ref="1377msg">msg</dfn>)</td></tr>
+<tr><th id="80">80</th><td>{</td></tr>
+<tr><th id="81">81</th><td>  <a class="ref" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"ERROR: %s"</q>, <a class="local col7 ref" href="#1377msg" title='msg' data-ref="1377msg">msg</a>);</td></tr>
+<tr><th id="82">82</th><td>  <b>return</b> <a class="tu ref" href="#print_help" title='print_help' data-use='c' data-ref="print_help">print_help</a>();</td></tr>
+<tr><th id="83">83</th><td>}</td></tr>
+<tr><th id="84">84</th><td></td></tr>
+<tr><th id="85">85</th><td><i  data-doc="process_kernel_file">/**********************************************************</i></td></tr>
+<tr><th id="86">86</th><td><i  data-doc="process_kernel_file"> * MANAGE INPUT KERNEL FILE */</i></td></tr>
+<tr><th id="87">87</th><td></td></tr>
+<tr><th id="88">88</th><td><em>static</em> <em>int</em></td></tr>
+<tr><th id="89">89</th><td><dfn class="tu decl def" id="process_kernel_file" title='process_kernel_file' data-type='int process_kernel_file(int arg, char ** argv, int argc)' data-ref="process_kernel_file">process_kernel_file</dfn>(<em>int</em> <dfn class="local col8 decl" id="1378arg" title='arg' data-type='int' data-ref="1378arg">arg</dfn>, <em>char</em> **<dfn class="local col9 decl" id="1379argv" title='argv' data-type='char **' data-ref="1379argv">argv</dfn>, <em>int</em> <dfn class="local col0 decl" id="1380argc" title='argc' data-type='int' data-ref="1380argc">argc</dfn>)</td></tr>
+<tr><th id="90">90</th><td>{</td></tr>
+<tr><th id="91">91</th><td>  <b>if</b> (<a class="local col8 ref" href="#1378arg" title='arg' data-ref="1378arg">arg</a> &gt;= <a class="local col0 ref" href="#1380argc" title='argc' data-ref="1380argc">argc</a>)</td></tr>
+<tr><th id="92">92</th><td>    <b>return</b> <a class="tu ref" href="#poclcc_error" title='poclcc_error' data-use='c' data-ref="poclcc_error">poclcc_error</a>(<q>"Incomplete argument for input file!\n"</q>);</td></tr>
+<tr><th id="93">93</th><td></td></tr>
+<tr><th id="94">94</th><td>  <em>char</em> *<dfn class="local col1 decl" id="1381filename" title='filename' data-type='char *' data-ref="1381filename">filename</dfn> = <a class="local col9 ref" href="#1379argv" title='argv' data-ref="1379argv">argv</a>[<a class="local col8 ref" href="#1378arg" title='arg' data-ref="1378arg">arg</a>];</td></tr>
+<tr><th id="95">95</th><td>  <em>char</em> *<dfn class="local col2 decl" id="1382ext" title='ext' data-type='char *' data-ref="1382ext">ext</dfn> = <q>".pocl"</q>;</td></tr>
+<tr><th id="96">96</th><td>  <a class="ref" href="#kernel_source" title='kernel_source' data-ref="kernel_source">kernel_source</a> = <a class="ref" href="../include/poclu.h.html#poclu_read_file" title='poclu_read_file' data-ref="poclu_read_file">poclu_read_file</a>(<a class="local col1 ref" href="#1381filename" title='filename' data-ref="1381filename">filename</a>);</td></tr>
+<tr><th id="97">97</th><td>  <b>if</b> (!<a class="ref" href="#kernel_source" title='kernel_source' data-ref="kernel_source">kernel_source</a>)</td></tr>
+<tr><th id="98">98</th><td>    <a class="macro" href="#37" title="do { printf(&quot;IO error on file %s: %s\n&quot;, filename, strerror((*__errno_location ()))); exit(2); } while(0)" data-ref="_M/ERRNO_EXIT">ERRNO_EXIT</a>(<a class="local col1 ref" href="#1381filename" title='filename' data-ref="1381filename">filename</a>);</td></tr>
+<tr><th id="99">99</th><td>  <b>if</b> (<a class="ref" href="#output_file" title='output_file' data-ref="output_file">output_file</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="100">100</th><td>    {</td></tr>
+<tr><th id="101">101</th><td>      <a class="ref" href="#output_file" title='output_file' data-ref="output_file">output_file</a> = <a class="ref" href="../../include/stdlib.h.html#malloc" title='malloc' data-ref="malloc">malloc</a>(<a class="ref" href="../../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a>(<a class="local col1 ref" href="#1381filename" title='filename' data-ref="1381filename">filename</a>)+<a class="ref" href="../../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a>(<a class="local col2 ref" href="#1382ext" title='ext' data-ref="1382ext">ext</a>));</td></tr>
+<tr><th id="102">102</th><td>      <a class="ref" href="../../include/string.h.html#strcpy" title='strcpy' data-ref="strcpy">strcpy</a>(<a class="ref" href="#output_file" title='output_file' data-ref="output_file">output_file</a>, <a class="local col1 ref" href="#1381filename" title='filename' data-ref="1381filename">filename</a>);</td></tr>
+<tr><th id="103">103</th><td>      <a class="ref" href="../../include/string.h.html#strcat" title='strcat' data-ref="strcat">strcat</a>(<a class="ref" href="#output_file" title='output_file' data-ref="output_file">output_file</a>, <a class="local col2 ref" href="#1382ext" title='ext' data-ref="1382ext">ext</a>);</td></tr>
+<tr><th id="104">104</th><td>    }</td></tr>
+<tr><th id="105">105</th><td>  <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="106">106</th><td>}</td></tr>
+<tr><th id="107">107</th><td></td></tr>
+<tr><th id="108">108</th><td><i  data-doc="process_help">/**********************************************************</i></td></tr>
+<tr><th id="109">109</th><td><i  data-doc="process_help"> * OPTIONS PROCESS FUNCTIONS*/</i></td></tr>
+<tr><th id="110">110</th><td></td></tr>
+<tr><th id="111">111</th><td><em>static</em> <em>int</em></td></tr>
+<tr><th id="112">112</th><td><dfn class="tu decl def" id="process_help" title='process_help' data-type='int process_help(int arg, char ** argv, int argc)' data-ref="process_help">process_help</dfn>(<em>int</em> <dfn class="local col3 decl" id="1383arg" title='arg' data-type='int' data-ref="1383arg">arg</dfn>, <em>char</em> **<dfn class="local col4 decl" id="1384argv" title='argv' data-type='char **' data-ref="1384argv">argv</dfn>, <em>int</em> <dfn class="local col5 decl" id="1385argc" title='argc' data-type='int' data-ref="1385argc">argc</dfn>)</td></tr>
+<tr><th id="113">113</th><td>{</td></tr>
+<tr><th id="114">114</th><td>  <a class="tu ref" href="#print_help" title='print_help' data-use='c' data-ref="print_help">print_help</a>();</td></tr>
+<tr><th id="115">115</th><td>  <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="116">116</th><td>}</td></tr>
+<tr><th id="117">117</th><td></td></tr>
+<tr><th id="118">118</th><td><em>static</em> <em>int</em></td></tr>
+<tr><th id="119">119</th><td><dfn class="tu decl def" id="process_output" title='process_output' data-type='int process_output(int arg, char ** argv, int argc)' data-ref="process_output">process_output</dfn>(<em>int</em> <dfn class="local col6 decl" id="1386arg" title='arg' data-type='int' data-ref="1386arg">arg</dfn>, <em>char</em> **<dfn class="local col7 decl" id="1387argv" title='argv' data-type='char **' data-ref="1387argv">argv</dfn>, <em>int</em> <dfn class="local col8 decl" id="1388argc" title='argc' data-type='int' data-ref="1388argc">argc</dfn>)</td></tr>
+<tr><th id="120">120</th><td>{</td></tr>
+<tr><th id="121">121</th><td>  <b>if</b> (<a class="local col6 ref" href="#1386arg" title='arg' data-ref="1386arg">arg</a> &gt;= <a class="local col8 ref" href="#1388argc" title='argc' data-ref="1388argc">argc</a>)</td></tr>
+<tr><th id="122">122</th><td>    <b>return</b> <a class="tu ref" href="#poclcc_error" title='poclcc_error' data-use='c' data-ref="poclcc_error">poclcc_error</a>(<q>"Incomplete argument for output file!\n"</q>);</td></tr>
+<tr><th id="123">123</th><td></td></tr>
+<tr><th id="124">124</th><td>  <a class="ref" href="#output_file" title='output_file' data-ref="output_file">output_file</a> = <a class="local col7 ref" href="#1387argv" title='argv' data-ref="1387argv">argv</a>[<a class="local col6 ref" href="#1386arg" title='arg' data-ref="1386arg">arg</a>];</td></tr>
+<tr><th id="125">125</th><td>  <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="126">126</th><td>}</td></tr>
+<tr><th id="127">127</th><td></td></tr>
+<tr><th id="128">128</th><td><em>static</em> <em>int</em></td></tr>
+<tr><th id="129">129</th><td><dfn class="tu decl def" id="process_opencl_device" title='process_opencl_device' data-type='int process_opencl_device(int arg, char ** argv, int argc)' data-ref="process_opencl_device">process_opencl_device</dfn>(<em>int</em> <dfn class="local col9 decl" id="1389arg" title='arg' data-type='int' data-ref="1389arg">arg</dfn>, <em>char</em> **<dfn class="local col0 decl" id="1390argv" title='argv' data-type='char **' data-ref="1390argv">argv</dfn>, <em>int</em> <dfn class="local col1 decl" id="1391argc" title='argc' data-type='int' data-ref="1391argc">argc</dfn>)</td></tr>
+<tr><th id="130">130</th><td>{</td></tr>
+<tr><th id="131">131</th><td>  <b>if</b> (<a class="local col9 ref" href="#1389arg" title='arg' data-ref="1389arg">arg</a> &gt;= <a class="local col1 ref" href="#1391argc" title='argc' data-ref="1391argc">argc</a>)</td></tr>
+<tr><th id="132">132</th><td>    <b>return</b> <a class="tu ref" href="#poclcc_error" title='poclcc_error' data-use='c' data-ref="poclcc_error">poclcc_error</a>(<q>"Incomplete argument for device_type!\n"</q>);</td></tr>
+<tr><th id="133">133</th><td></td></tr>
+<tr><th id="134">134</th><td>  <em>char</em> *<dfn class="local col2 decl" id="1392opencl_string" title='opencl_string' data-type='char *' data-ref="1392opencl_string">opencl_string</dfn> = <a class="local col0 ref" href="#1390argv" title='argv' data-ref="1390argv">argv</a>[<a class="local col9 ref" href="#1389arg" title='arg' data-ref="1389arg">arg</a>];</td></tr>
+<tr><th id="135">135</th><td>  <b>if</b> (!<a class="ref" href="../../include/string.h.html#strcmp" title='strcmp' data-ref="strcmp">strcmp</a>(<a class="local col2 ref" href="#1392opencl_string" title='opencl_string' data-ref="1392opencl_string">opencl_string</a>, <q>"CL_DEVICE_TYPE_CPU"</q>))</td></tr>
+<tr><th id="136">136</th><td>    <a class="ref" href="#opencl_device" title='opencl_device' data-ref="opencl_device">opencl_device</a> = <a class="macro" href="../include/CL/cl.h.html#272" title="(1 &lt;&lt; 1)" data-ref="_M/CL_DEVICE_TYPE_CPU">CL_DEVICE_TYPE_CPU</a>;</td></tr>
+<tr><th id="137">137</th><td>  <b>else</b> <b>if</b> (!<a class="ref" href="../../include/string.h.html#strcmp" title='strcmp' data-ref="strcmp">strcmp</a>(<a class="local col2 ref" href="#1392opencl_string" title='opencl_string' data-ref="1392opencl_string">opencl_string</a>, <q>"CL_DEVICE_TYPE_GPU"</q>))</td></tr>
+<tr><th id="138">138</th><td>    <a class="ref" href="#opencl_device" title='opencl_device' data-ref="opencl_device">opencl_device</a> = <a class="macro" href="../include/CL/cl.h.html#273" title="(1 &lt;&lt; 2)" data-ref="_M/CL_DEVICE_TYPE_GPU">CL_DEVICE_TYPE_GPU</a>;</td></tr>
+<tr><th id="139">139</th><td>  <b>else</b> <b>if</b> (!<a class="ref" href="../../include/string.h.html#strcmp" title='strcmp' data-ref="strcmp">strcmp</a>(<a class="local col2 ref" href="#1392opencl_string" title='opencl_string' data-ref="1392opencl_string">opencl_string</a>, <q>"CL_DEVICE_TYPE_ACCELERATOR"</q>))</td></tr>
+<tr><th id="140">140</th><td>    <a class="ref" href="#opencl_device" title='opencl_device' data-ref="opencl_device">opencl_device</a> = <a class="macro" href="../include/CL/cl.h.html#274" title="(1 &lt;&lt; 3)" data-ref="_M/CL_DEVICE_TYPE_ACCELERATOR">CL_DEVICE_TYPE_ACCELERATOR</a>;</td></tr>
+<tr><th id="141">141</th><td>  <b>else</b> <b>if</b> (!<a class="ref" href="../../include/string.h.html#strcmp" title='strcmp' data-ref="strcmp">strcmp</a>(<a class="local col2 ref" href="#1392opencl_string" title='opencl_string' data-ref="1392opencl_string">opencl_string</a>, <q>"CL_DEVICE_TYPE_DEFAULT"</q>))</td></tr>
+<tr><th id="142">142</th><td>    <a class="ref" href="#opencl_device" title='opencl_device' data-ref="opencl_device">opencl_device</a> = <a class="macro" href="../include/CL/cl.h.html#271" title="(1 &lt;&lt; 0)" data-ref="_M/CL_DEVICE_TYPE_DEFAULT">CL_DEVICE_TYPE_DEFAULT</a>;</td></tr>
+<tr><th id="143">143</th><td>  <b>else</b> <b>if</b> (!<a class="ref" href="../../include/string.h.html#strcmp" title='strcmp' data-ref="strcmp">strcmp</a>(<a class="local col2 ref" href="#1392opencl_string" title='opencl_string' data-ref="1392opencl_string">opencl_string</a>, <q>"CL_DEVICE_TYPE_ALL"</q>))</td></tr>
+<tr><th id="144">144</th><td>    <a class="ref" href="#opencl_device" title='opencl_device' data-ref="opencl_device">opencl_device</a> = <a class="macro" href="../include/CL/cl.h.html#278" title="0xFFFFFFFF" data-ref="_M/CL_DEVICE_TYPE_ALL">CL_DEVICE_TYPE_ALL</a>;</td></tr>
+<tr><th id="145">145</th><td>  <b>else</b></td></tr>
+<tr><th id="146">146</th><td>    {</td></tr>
+<tr><th id="147">147</th><td>      <a class="ref" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"Invalid argument for device_type!\n"</q>);</td></tr>
+<tr><th id="148">148</th><td>      <b>return</b> <a class="tu ref" href="#print_help" title='print_help' data-use='c' data-ref="print_help">print_help</a>();</td></tr>
+<tr><th id="149">149</th><td>    }</td></tr>
+<tr><th id="150">150</th><td>  <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="151">151</th><td>}</td></tr>
+<tr><th id="152">152</th><td></td></tr>
+<tr><th id="153">153</th><td><em>static</em> <em>int</em></td></tr>
+<tr><th id="154">154</th><td><dfn class="tu decl def" id="process_build_options" title='process_build_options' data-type='int process_build_options(int arg, char ** argv, int argc)' data-ref="process_build_options">process_build_options</dfn>(<em>int</em> <dfn class="local col3 decl" id="1393arg" title='arg' data-type='int' data-ref="1393arg">arg</dfn>, <em>char</em> **<dfn class="local col4 decl" id="1394argv" title='argv' data-type='char **' data-ref="1394argv">argv</dfn>, <em>int</em> <dfn class="local col5 decl" id="1395argc" title='argc' data-type='int' data-ref="1395argc">argc</dfn>)</td></tr>
+<tr><th id="155">155</th><td>{</td></tr>
+<tr><th id="156">156</th><td>  <b>if</b> (<a class="local col3 ref" href="#1393arg" title='arg' data-ref="1393arg">arg</a> &gt;= <a class="local col5 ref" href="#1395argc" title='argc' data-ref="1395argc">argc</a>)</td></tr>
+<tr><th id="157">157</th><td>    <b>return</b> <a class="tu ref" href="#poclcc_error" title='poclcc_error' data-use='c' data-ref="poclcc_error">poclcc_error</a>(<q>"Incomplete argument for build_options!\n"</q>);</td></tr>
+<tr><th id="158">158</th><td></td></tr>
+<tr><th id="159">159</th><td>  <a class="ref" href="#build_options" title='build_options' data-ref="build_options">build_options</a> = <a class="local col4 ref" href="#1394argv" title='argv' data-ref="1394argv">argv</a>[<a class="local col3 ref" href="#1393arg" title='arg' data-ref="1393arg">arg</a>];</td></tr>
+<tr><th id="160">160</th><td>  <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="161">161</th><td>}</td></tr>
+<tr><th id="162">162</th><td></td></tr>
+<tr><th id="163">163</th><td><em>static</em> <em>int</em></td></tr>
+<tr><th id="164">164</th><td><dfn class="tu decl def" id="process_device_id" title='process_device_id' data-type='int process_device_id(int arg, char ** argv, int argc)' data-ref="process_device_id">process_device_id</dfn>(<em>int</em> <dfn class="local col6 decl" id="1396arg" title='arg' data-type='int' data-ref="1396arg">arg</dfn>, <em>char</em> **<dfn class="local col7 decl" id="1397argv" title='argv' data-type='char **' data-ref="1397argv">argv</dfn>, <em>int</em> <dfn class="local col8 decl" id="1398argc" title='argc' data-type='int' data-ref="1398argc">argc</dfn>)</td></tr>
+<tr><th id="165">165</th><td>{</td></tr>
+<tr><th id="166">166</th><td>  <b>if</b> (<a class="local col6 ref" href="#1396arg" title='arg' data-ref="1396arg">arg</a> &gt;= <a class="local col8 ref" href="#1398argc" title='argc' data-ref="1398argc">argc</a>)</td></tr>
+<tr><th id="167">167</th><td>    <b>return</b> <a class="tu ref" href="#poclcc_error" title='poclcc_error' data-use='c' data-ref="poclcc_error">poclcc_error</a>(<q>"Incomplete argument for build_options!\n"</q>);</td></tr>
+<tr><th id="168">168</th><td></td></tr>
+<tr><th id="169">169</th><td>  <a class="ref" href="#opencl_device_id" title='opencl_device_id' data-ref="opencl_device_id">opencl_device_id</a> = <a class="ref" href="../../include/stdlib.h.html#atoi" title='atoi' data-ref="atoi">atoi</a>(<a class="local col7 ref" href="#1397argv" title='argv' data-ref="1397argv">argv</a>[<a class="local col6 ref" href="#1396arg" title='arg' data-ref="1396arg">arg</a>]);</td></tr>
+<tr><th id="170">170</th><td>  <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="171">171</th><td>}</td></tr>
+<tr><th id="172">172</th><td></td></tr>
+<tr><th id="173">173</th><td><em>static</em> <em>int</em></td></tr>
+<tr><th id="174">174</th><td><dfn class="tu decl def" id="process_list_devices" title='process_list_devices' data-type='int process_list_devices(int arg, char ** argv, int argc)' data-ref="process_list_devices">process_list_devices</dfn>(<em>int</em> <dfn class="local col9 decl" id="1399arg" title='arg' data-type='int' data-ref="1399arg">arg</dfn>, <em>char</em> **<dfn class="local col0 decl" id="1400argv" title='argv' data-type='char **' data-ref="1400argv">argv</dfn>, <em>int</em> <dfn class="local col1 decl" id="1401argc" title='argc' data-type='int' data-ref="1401argc">argc</dfn>)</td></tr>
+<tr><th id="175">175</th><td>{</td></tr>
+<tr><th id="176">176</th><td>  <a class="ref" href="#list_devices" title='list_devices' data-ref="list_devices">list_devices</a> = <var>1</var>;</td></tr>
+<tr><th id="177">177</th><td>  <a class="ref" href="#opencl_device" title='opencl_device' data-ref="opencl_device">opencl_device</a> = <a class="macro" href="../include/CL/cl.h.html#278" title="0xFFFFFFFF" data-ref="_M/CL_DEVICE_TYPE_ALL">CL_DEVICE_TYPE_ALL</a>;</td></tr>
+<tr><th id="178">178</th><td>  <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="179">179</th><td>}</td></tr>
+<tr><th id="180">180</th><td></td></tr>
+<tr><th id="181">181</th><td><i  data-doc="options">/**********************************************************/</i></td></tr>
+<tr><th id="182">182</th><td></td></tr>
+<tr><th id="183">183</th><td><em>static</em> <a class="typedef" href="#poclcc_option" title='poclcc_option' data-type='struct _poclcc_option' data-ref="poclcc_option">poclcc_option</a> <dfn class="tu decl def" id="options" title='options' data-type='poclcc_option [6]' data-ref="options">options</dfn>[<a class="macro" href="#35" title="6" data-ref="_M/NUM_OPTIONS">NUM_OPTIONS</a>] =</td></tr>
+<tr><th id="184">184</th><td>{</td></tr>
+<tr><th id="185">185</th><td>  {<a class="tu ref" href="#process_help" title='process_help' data-ref="process_help">process_help</a>, <q>"-h"</q>,</td></tr>
+<tr><th id="186">186</th><td>   <q>"\t-h\n"</q></td></tr>
+<tr><th id="187">187</th><td>   <q>"\t\tDisplay the help\n"</q>,</td></tr>
+<tr><th id="188">188</th><td>   <var>1</var>},</td></tr>
+<tr><th id="189">189</th><td>  {<a class="tu ref" href="#process_build_options" title='process_build_options' data-ref="process_build_options">process_build_options</a>, <q>"-b"</q>,</td></tr>
+<tr><th id="190">190</th><td>   <q>"\t-b &lt;options&gt;\n"</q></td></tr>
+<tr><th id="191">191</th><td>   <q>"\t\tBuild the program with &lt;options&gt; options\n"</q>,</td></tr>
+<tr><th id="192">192</th><td>   <var>2</var>},</td></tr>
+<tr><th id="193">193</th><td>  {<a class="tu ref" href="#process_opencl_device" title='process_opencl_device' data-ref="process_opencl_device">process_opencl_device</a>, <q>"-d"</q>,</td></tr>
+<tr><th id="194">194</th><td>   <q>"\t-d &lt;device_type&gt;\n"</q></td></tr>
+<tr><th id="195">195</th><td>   <q>"\t\tSelect &lt;device_type&gt; as the device_type for clGetDeviceIDs.\n"</q></td></tr>
+<tr><th id="196">196</th><td>   <q>"\t\tDefault: CL_DEVICE_TYPE_DEFAULT\n"</q>,</td></tr>
+<tr><th id="197">197</th><td>   <var>2</var>},</td></tr>
+<tr><th id="198">198</th><td>  {<a class="tu ref" href="#process_list_devices" title='process_list_devices' data-ref="process_list_devices">process_list_devices</a>, <q>"-l"</q>,</td></tr>
+<tr><th id="199">199</th><td>   <q>"\t-l\n"</q></td></tr>
+<tr><th id="200">200</th><td>   <q>"\t\tList the opencl device found (that match the &lt;device_type&gt;\n"</q>,</td></tr>
+<tr><th id="201">201</th><td>   <var>1</var>},</td></tr>
+<tr><th id="202">202</th><td>  {<a class="tu ref" href="#process_device_id" title='process_device_id' data-ref="process_device_id">process_device_id</a>, <q>"-i"</q>,</td></tr>
+<tr><th id="203">203</th><td>   <q>"\t-i &lt;device_id&gt;\n"</q></td></tr>
+<tr><th id="204">204</th><td>   <q>"\t\tSelect the &lt;device_id&gt; opencl device to generate the pocl binary file\n"</q></td></tr>
+<tr><th id="205">205</th><td>   <q>"\t\tDefault: 0\n"</q>,</td></tr>
+<tr><th id="206">206</th><td>   <var>2</var>},</td></tr>
+<tr><th id="207">207</th><td>  {<a class="tu ref" href="#process_output" title='process_output' data-ref="process_output">process_output</a>, <q>"-o"</q>,</td></tr>
+<tr><th id="208">208</th><td>   <q>"\t-o &lt;file&gt;\n"</q></td></tr>
+<tr><th id="209">209</th><td>   <q>"\t\tWrite output to &lt;file&gt;\n"</q>,</td></tr>
+<tr><th id="210">210</th><td>   <var>2</var>}</td></tr>
+<tr><th id="211">211</th><td>};</td></tr>
+<tr><th id="212">212</th><td></td></tr>
+<tr><th id="213">213</th><td><i  data-doc="search_process">/**********************************************************/</i></td></tr>
+<tr><th id="214">214</th><td></td></tr>
+<tr><th id="215">215</th><td><em>static</em> <em>int</em></td></tr>
+<tr><th id="216">216</th><td><dfn class="tu decl def" id="search_process" title='search_process' data-type='int search_process(char * arg)' data-ref="search_process">search_process</dfn>(<em>char</em> *<dfn class="local col2 decl" id="1402arg" title='arg' data-type='char *' data-ref="1402arg">arg</dfn>)</td></tr>
+<tr><th id="217">217</th><td>{</td></tr>
+<tr><th id="218">218</th><td>  <em>int</em> <dfn class="local col3 decl" id="1403i" title='i' data-type='int' data-ref="1403i">i</dfn>;</td></tr>
+<tr><th id="219">219</th><td>  <b>for</b> (<a class="local col3 ref" href="#1403i" title='i' data-ref="1403i">i</a>=<var>0</var>; <a class="local col3 ref" href="#1403i" title='i' data-ref="1403i">i</a>&lt;<a class="macro" href="#35" title="6" data-ref="_M/NUM_OPTIONS">NUM_OPTIONS</a>; <a class="local col3 ref" href="#1403i" title='i' data-ref="1403i">i</a>++)</td></tr>
+<tr><th id="220">220</th><td>    {</td></tr>
+<tr><th id="221">221</th><td>      <b>if</b> (!<a class="ref" href="../../include/string.h.html#strcmp" title='strcmp' data-ref="strcmp">strcmp</a>(<a class="tu ref" href="#options" title='options' data-use='m' data-ref="options">options</a>[<a class="local col3 ref" href="#1403i" title='i' data-ref="1403i">i</a>].<a class="tu ref" href="#_poclcc_option::id" title='_poclcc_option::id' data-use='r' data-ref="_poclcc_option::id">id</a>, <a class="local col2 ref" href="#1402arg" title='arg' data-ref="1402arg">arg</a>))</td></tr>
+<tr><th id="222">222</th><td>        <b>return</b> <a class="local col3 ref" href="#1403i" title='i' data-ref="1403i">i</a>;</td></tr>
+<tr><th id="223">223</th><td>    }</td></tr>
+<tr><th id="224">224</th><td>  <b>return</b> -<var>1</var>;</td></tr>
+<tr><th id="225">225</th><td>}</td></tr>
+<tr><th id="226">226</th><td></td></tr>
+<tr><th id="227">227</th><td><em>static</em> <em>int</em></td></tr>
+<tr><th id="228">228</th><td><dfn class="tu decl def" id="process_arg" title='process_arg' data-type='int process_arg(int * arg, char ** argv, int argc)' data-ref="process_arg">process_arg</dfn>(<em>int</em> *<dfn class="local col4 decl" id="1404arg" title='arg' data-type='int *' data-ref="1404arg">arg</dfn>, <em>char</em> **<dfn class="local col5 decl" id="1405argv" title='argv' data-type='char **' data-ref="1405argv">argv</dfn>, <em>int</em> <dfn class="local col6 decl" id="1406argc" title='argc' data-type='int' data-ref="1406argc">argc</dfn>)</td></tr>
+<tr><th id="229">229</th><td>{</td></tr>
+<tr><th id="230">230</th><td>  <em>int</em> <dfn class="local col7 decl" id="1407prev_arg" title='prev_arg' data-type='int' data-ref="1407prev_arg">prev_arg</dfn> = *<a class="local col4 ref" href="#1404arg" title='arg' data-ref="1404arg">arg</a>;</td></tr>
+<tr><th id="231">231</th><td>  <em>char</em> *<dfn class="local col8 decl" id="1408current_arg" title='current_arg' data-type='char *' data-ref="1408current_arg">current_arg</dfn> = <a class="local col5 ref" href="#1405argv" title='argv' data-ref="1405argv">argv</a>[*<a class="local col4 ref" href="#1404arg" title='arg' data-ref="1404arg">arg</a>];</td></tr>
+<tr><th id="232">232</th><td>  <em>int</em> <dfn class="local col9 decl" id="1409current_process" title='current_process' data-type='int' data-ref="1409current_process">current_process</dfn> = <a class="tu ref" href="#search_process" title='search_process' data-use='c' data-ref="search_process">search_process</a>(<a class="local col8 ref" href="#1408current_arg" title='current_arg' data-ref="1408current_arg">current_arg</a>);</td></tr>
+<tr><th id="233">233</th><td>  <b>if</b> (<a class="local col9 ref" href="#1409current_process" title='current_process' data-ref="1409current_process">current_process</a> == -<var>1</var>)</td></tr>
+<tr><th id="234">234</th><td>    <b>return</b> <a class="tu ref" href="#poclcc_error" title='poclcc_error' data-use='c' data-ref="poclcc_error">poclcc_error</a>(<q>"Unknown argument!\n"</q>);</td></tr>
+<tr><th id="235">235</th><td>  <b>else</b></td></tr>
+<tr><th id="236">236</th><td>    {</td></tr>
+<tr><th id="237">237</th><td>      <a class="typedef" href="#poclcc_option" title='poclcc_option' data-type='struct _poclcc_option' data-ref="poclcc_option">poclcc_option</a> * <dfn class="local col0 decl" id="1410current_option" title='current_option' data-type='poclcc_option *' data-ref="1410current_option">current_option</dfn> = &amp;<a class="tu ref" href="#options" title='options' data-use='a' data-ref="options">options</a>[<a class="local col9 ref" href="#1409current_process" title='current_process' data-ref="1409current_process">current_process</a>];</td></tr>
+<tr><th id="238">238</th><td>      <em>int</em> <dfn class="local col1 decl" id="1411num_args_read" title='num_args_read' data-type='int' data-ref="1411num_args_read">num_args_read</dfn> = <a class="local col0 ref" href="#1410current_option" title='current_option' data-ref="1410current_option">current_option</a>-&gt;<a class="tu ref" href="#_poclcc_option::num_args_read" title='_poclcc_option::num_args_read' data-use='r' data-ref="_poclcc_option::num_args_read">num_args_read</a>;</td></tr>
+<tr><th id="239">239</th><td>      *<a class="local col4 ref" href="#1404arg" title='arg' data-ref="1404arg">arg</a> = <a class="local col7 ref" href="#1407prev_arg" title='prev_arg' data-ref="1407prev_arg">prev_arg</a> + <a class="local col1 ref" href="#1411num_args_read" title='num_args_read' data-ref="1411num_args_read">num_args_read</a>;</td></tr>
+<tr><th id="240">240</th><td>      <b>return</b> <a class="local col0 ref" href="#1410current_option" title='current_option' data-ref="1410current_option">current_option</a>-&gt;<a class="tu ref" href="#_poclcc_option::fct" title='_poclcc_option::fct' data-use='r' data-ref="_poclcc_option::fct">fct</a>(<a class="local col7 ref" href="#1407prev_arg" title='prev_arg' data-ref="1407prev_arg">prev_arg</a> + <var>1</var>, <a class="local col5 ref" href="#1405argv" title='argv' data-ref="1405argv">argv</a>, <a class="local col6 ref" href="#1406argc" title='argc' data-ref="1406argc">argc</a>);</td></tr>
+<tr><th id="241">241</th><td>    }</td></tr>
+<tr><th id="242">242</th><td>}</td></tr>
+<tr><th id="243">243</th><td></td></tr>
+<tr><th id="244">244</th><td><i>/**********************************************************/</i></td></tr>
+<tr><th id="245">245</th><td></td></tr>
+<tr><th id="246">246</th><td><em>int</em></td></tr>
+<tr><th id="247">247</th><td><dfn class="decl def" id="main" title='main' data-ref="main">main</dfn>(<em>int</em> <dfn class="local col2 decl" id="1412argc" title='argc' data-type='int' data-ref="1412argc">argc</dfn>, <em>char</em> **<dfn class="local col3 decl" id="1413argv" title='argv' data-type='char **' data-ref="1413argv">argv</dfn>)</td></tr>
+<tr><th id="248">248</th><td>{</td></tr>
+<tr><th id="249">249</th><td><i>//MANAGEMENT OF ARGUMENTS</i></td></tr>
+<tr><th id="250">250</th><td>  <a class="ref" href="#options_help" title='options_help' data-ref="options_help">options_help</a> = <a class="tu ref" href="#options" title='options' data-use='r' data-ref="options">options</a>;</td></tr>
+<tr><th id="251">251</th><td>  <em>int</em> <dfn class="local col4 decl" id="1414arg_num" title='arg_num' data-type='int' data-ref="1414arg_num">arg_num</dfn>=<var>1</var>;</td></tr>
+<tr><th id="252">252</th><td>  <b>if</b> (<a class="local col2 ref" href="#1412argc" title='argc' data-ref="1412argc">argc</a> &lt; <var>2</var>)</td></tr>
+<tr><th id="253">253</th><td>    <b>return</b> <a class="tu ref" href="#poclcc_error" title='poclcc_error' data-use='c' data-ref="poclcc_error">poclcc_error</a>(<q>"Invalid argument!\n"</q>);</td></tr>
+<tr><th id="254">254</th><td></td></tr>
+<tr><th id="255">255</th><td>  <b>while</b> (<a class="local col4 ref" href="#1414arg_num" title='arg_num' data-ref="1414arg_num">arg_num</a> &lt; <a class="local col2 ref" href="#1412argc" title='argc' data-ref="1412argc">argc</a>-<var>1</var>)</td></tr>
+<tr><th id="256">256</th><td>    <b>if</b> (<a class="tu ref" href="#process_arg" title='process_arg' data-use='c' data-ref="process_arg">process_arg</a>(&amp;<a class="local col4 ref" href="#1414arg_num" title='arg_num' data-ref="1414arg_num">arg_num</a>, <a class="local col3 ref" href="#1413argv" title='argv' data-ref="1413argv">argv</a>, <a class="local col2 ref" href="#1412argc" title='argc' data-ref="1412argc">argc</a>))</td></tr>
+<tr><th id="257">257</th><td>      <b>return</b> -<var>1</var>;</td></tr>
+<tr><th id="258">258</th><td></td></tr>
+<tr><th id="259">259</th><td>  <b>if</b> (<a class="local col4 ref" href="#1414arg_num" title='arg_num' data-ref="1414arg_num">arg_num</a> &gt;= <a class="local col2 ref" href="#1412argc" title='argc' data-ref="1412argc">argc</a> &amp;&amp; <a class="ref" href="#list_devices" title='list_devices' data-ref="list_devices">list_devices</a>)</td></tr>
+<tr><th id="260">260</th><td>    <a class="ref" href="#list_devices_only" title='list_devices_only' data-ref="list_devices_only">list_devices_only</a> = <var>1</var>;</td></tr>
+<tr><th id="261">261</th><td>  <b>else</b> <b>if</b> (<a class="local col4 ref" href="#1414arg_num" title='arg_num' data-ref="1414arg_num">arg_num</a> &gt;= <a class="local col2 ref" href="#1412argc" title='argc' data-ref="1412argc">argc</a>)</td></tr>
+<tr><th id="262">262</th><td>    <a class="tu ref" href="#poclcc_error" title='poclcc_error' data-use='c' data-ref="poclcc_error">poclcc_error</a>(<q>"Invalid arguments!\n"</q>);</td></tr>
+<tr><th id="263">263</th><td>  <b>else</b></td></tr>
+<tr><th id="264">264</th><td>    {</td></tr>
+<tr><th id="265">265</th><td>      <em>int</em> <dfn class="local col5 decl" id="1415current_process" title='current_process' data-type='int' data-ref="1415current_process">current_process</dfn> = <a class="tu ref" href="#search_process" title='search_process' data-use='c' data-ref="search_process">search_process</a>(<a class="local col3 ref" href="#1413argv" title='argv' data-ref="1413argv">argv</a>[<a class="local col4 ref" href="#1414arg_num" title='arg_num' data-ref="1414arg_num">arg_num</a>]);</td></tr>
+<tr><th id="266">266</th><td>      <b>if</b> (<a class="local col5 ref" href="#1415current_process" title='current_process' data-ref="1415current_process">current_process</a> == -<var>1</var> &amp;&amp; <a class="tu ref" href="#process_kernel_file" title='process_kernel_file' data-use='c' data-ref="process_kernel_file">process_kernel_file</a>(<a class="local col4 ref" href="#1414arg_num" title='arg_num' data-ref="1414arg_num">arg_num</a>, <a class="local col3 ref" href="#1413argv" title='argv' data-ref="1413argv">argv</a>, <a class="local col2 ref" href="#1412argc" title='argc' data-ref="1412argc">argc</a>))</td></tr>
+<tr><th id="267">267</th><td>        <b>return</b> -<var>1</var>;</td></tr>
+<tr><th id="268">268</th><td>      <b>else</b> <b>if</b> (<a class="local col5 ref" href="#1415current_process" title='current_process' data-ref="1415current_process">current_process</a> != -<var>1</var>)</td></tr>
+<tr><th id="269">269</th><td>        {</td></tr>
+<tr><th id="270">270</th><td>          <a class="tu ref" href="#process_arg" title='process_arg' data-use='c' data-ref="process_arg">process_arg</a>(&amp;<a class="local col4 ref" href="#1414arg_num" title='arg_num' data-ref="1414arg_num">arg_num</a>, <a class="local col3 ref" href="#1413argv" title='argv' data-ref="1413argv">argv</a>, <a class="local col2 ref" href="#1412argc" title='argc' data-ref="1412argc">argc</a>);</td></tr>
+<tr><th id="271">271</th><td>          <a class="ref" href="#list_devices_only" title='list_devices_only' data-ref="list_devices_only">list_devices_only</a> = <var>1</var>;</td></tr>
+<tr><th id="272">272</th><td>        }</td></tr>
+<tr><th id="273">273</th><td>    }</td></tr>
+<tr><th id="274">274</th><td></td></tr>
+<tr><th id="275">275</th><td><i>//OPENCL STUFF</i></td></tr>
+<tr><th id="276">276</th><td>  <a class="typedef" href="../include/CL/cl.h.html#cl_platform_id" title='cl_platform_id' data-type='struct _cl_platform_id *' data-ref="cl_platform_id">cl_platform_id</a> <dfn class="local col6 decl" id="1416cpPlatform" title='cpPlatform' data-type='cl_platform_id' data-ref="1416cpPlatform">cpPlatform</dfn>;</td></tr>
+<tr><th id="277">277</th><td>  <a class="typedef" href="../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="local col7 decl" id="1417device_ids" title='device_ids' data-type='cl_device_id [32]' data-ref="1417device_ids">device_ids</dfn>[<a class="macro" href="#34" title="32" data-ref="_M/NUM_OF_DEVICE_ID">NUM_OF_DEVICE_ID</a>];</td></tr>
+<tr><th id="278">278</th><td>  <a class="typedef" href="../include/CL/cl.h.html#cl_context" title='cl_context' data-type='struct _cl_context *' data-ref="cl_context">cl_context</a> <dfn class="local col8 decl" id="1418context" title='context' data-type='cl_context' data-ref="1418context">context</dfn>;</td></tr>
+<tr><th id="279">279</th><td>  <a class="typedef" href="../include/CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col9 decl" id="1419program" title='program' data-type='cl_program' data-ref="1419program">program</dfn>;</td></tr>
+<tr><th id="280">280</th><td>  <a class="typedef" href="../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <dfn class="local col0 decl" id="1420err" title='err' data-type='cl_int' data-ref="1420err">err</dfn>;</td></tr>
+<tr><th id="281">281</th><td>  <a class="typedef" href="../include/CL/cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a> <dfn class="local col1 decl" id="1421num_devices" title='num_devices' data-type='cl_uint' data-ref="1421num_devices">num_devices</dfn>, <dfn class="local col2 decl" id="1422i" title='i' data-type='cl_uint' data-ref="1422i">i</dfn>;</td></tr>
+<tr><th id="282">282</th><td></td></tr>
+<tr><th id="283">283</th><td>  <a class="macro" href="../include/poclu.h.html#142" title="do { if (check_cl_error (clGetPlatformIDs(1, &amp;cpPlatform, ((void*)0)), 283, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a>(<a class="ref" href="../include/CL/cl.h.html#clGetPlatformIDs" title='clGetPlatformIDs' data-ref="clGetPlatformIDs">clGetPlatformIDs</a>(<var>1</var>, &amp;<a class="local col6 ref" href="#1416cpPlatform" title='cpPlatform' data-ref="1416cpPlatform">cpPlatform</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>));</td></tr>
+<tr><th id="284">284</th><td></td></tr>
+<tr><th id="285">285</th><td>  <a class="macro" href="../include/poclu.h.html#142" title="do { if (check_cl_error (clGetDeviceIDs(cpPlatform, opencl_device, 32, device_ids, &amp;num_devices), 286, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a>(<a class="ref" href="../include/CL/cl.h.html#clGetDeviceIDs" title='clGetDeviceIDs' data-ref="clGetDeviceIDs">clGetDeviceIDs</a>(<a class="local col6 ref" href="#1416cpPlatform" title='cpPlatform' data-ref="1416cpPlatform">cpPlatform</a>, <a class="ref" href="#opencl_device" title='opencl_device' data-ref="opencl_device">opencl_device</a>,</td></tr>
+<tr><th id="286">286</th><td>                                <a class="macro" href="#34" title="32" data-ref="_M/NUM_OF_DEVICE_ID">NUM_OF_DEVICE_ID</a>, <a class="local col7 ref" href="#1417device_ids" title='device_ids' data-ref="1417device_ids">device_ids</a>, &amp;<a class="local col1 ref" href="#1421num_devices" title='num_devices' data-ref="1421num_devices">num_devices</a>));</td></tr>
+<tr><th id="287">287</th><td></td></tr>
+<tr><th id="288">288</th><td>  <b>if</b> (<a class="ref" href="#opencl_device_id" title='opencl_device_id' data-ref="opencl_device_id">opencl_device_id</a> &gt;= <a class="local col1 ref" href="#1421num_devices" title='num_devices' data-ref="1421num_devices">num_devices</a>)</td></tr>
+<tr><th id="289">289</th><td>    <b>return</b> <a class="tu ref" href="#poclcc_error" title='poclcc_error' data-use='c' data-ref="poclcc_error">poclcc_error</a>(<q>"Invalid opencl device_id!\n"</q>);</td></tr>
+<tr><th id="290">290</th><td></td></tr>
+<tr><th id="291">291</th><td>  <b>if</b> (<a class="ref" href="#list_devices" title='list_devices' data-ref="list_devices">list_devices</a>)</td></tr>
+<tr><th id="292">292</th><td>    {</td></tr>
+<tr><th id="293">293</th><td>      <a class="local col8 ref" href="#1418context" title='context' data-ref="1418context">context</a> = <a class="ref" href="../include/CL/cl.h.html#clCreateContext" title='clCreateContext' data-ref="clCreateContext">clCreateContext</a>(<var>0</var>, <a class="local col1 ref" href="#1421num_devices" title='num_devices' data-ref="1421num_devices">num_devices</a>, <a class="local col7 ref" href="#1417device_ids" title='device_ids' data-ref="1417device_ids">device_ids</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, &amp;<a class="local col0 ref" href="#1420err" title='err' data-ref="1420err">err</a>);</td></tr>
+<tr><th id="294">294</th><td>      <a class="macro" href="../include/poclu.h.html#144" title="do { if (check_cl_error (err, 294, &quot;clCreateContext&quot;)) return (1); } while (0)" data-ref="_M/CHECK_OPENCL_ERROR_IN">CHECK_OPENCL_ERROR_IN</a>(<q>"clCreateContext"</q>);</td></tr>
+<tr><th id="295">295</th><td></td></tr>
+<tr><th id="296">296</th><td>      <a class="ref" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"LIST OF DEVICES:\n"</q>);</td></tr>
+<tr><th id="297">297</th><td>      <b>for</b> (<a class="local col2 ref" href="#1422i" title='i' data-ref="1422i">i</a>=<var>0</var>; <a class="local col2 ref" href="#1422i" title='i' data-ref="1422i">i</a>&lt;<a class="local col1 ref" href="#1421num_devices" title='num_devices' data-ref="1421num_devices">num_devices</a>; <a class="local col2 ref" href="#1422i" title='i' data-ref="1422i">i</a>++)</td></tr>
+<tr><th id="298">298</th><td>        {</td></tr>
+<tr><th id="299">299</th><td>          <em>char</em> <dfn class="local col3 decl" id="1423str" title='str' data-type='char [2048]' data-ref="1423str">str</dfn>[<a class="macro" href="#33" title="2048" data-ref="_M/DEVICE_INFO_MAX_LENGTH">DEVICE_INFO_MAX_LENGTH</a>];</td></tr>
+<tr><th id="300">300</th><td>          <a class="macro" href="../include/poclu.h.html#142" title="do { if (check_cl_error (clGetDeviceInfo(device_ids[i], 0x102C, 2048, str, ((void*)0)), 301, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a>(<a class="ref" href="../include/CL/cl.h.html#clGetDeviceInfo" title='clGetDeviceInfo' data-ref="clGetDeviceInfo">clGetDeviceInfo</a>(<a class="local col7 ref" href="#1417device_ids" title='device_ids' data-ref="1417device_ids">device_ids</a>[<a class="local col2 ref" href="#1422i" title='i' data-ref="1422i">i</a>], <a class="macro" href="../include/CL/cl.h.html#328" title="0x102C" data-ref="_M/CL_DEVICE_VENDOR">CL_DEVICE_VENDOR</a>,</td></tr>
+<tr><th id="301">301</th><td>                                         <a class="macro" href="#33" title="2048" data-ref="_M/DEVICE_INFO_MAX_LENGTH">DEVICE_INFO_MAX_LENGTH</a>, <a class="local col3 ref" href="#1423str" title='str' data-ref="1423str">str</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>));</td></tr>
+<tr><th id="302">302</th><td></td></tr>
+<tr><th id="303">303</th><td>          <a class="ref" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"%i:\n  Vendor:   %s\n"</q>, <a class="local col2 ref" href="#1422i" title='i' data-ref="1422i">i</a>, <a class="local col3 ref" href="#1423str" title='str' data-ref="1423str">str</a>);</td></tr>
+<tr><th id="304">304</th><td></td></tr>
+<tr><th id="305">305</th><td>          <a class="macro" href="../include/poclu.h.html#142" title="do { if (check_cl_error (clGetDeviceInfo(device_ids[i], 0x102B, 2048, str, ((void*)0)), 306, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a>(<a class="ref" href="../include/CL/cl.h.html#clGetDeviceInfo" title='clGetDeviceInfo' data-ref="clGetDeviceInfo">clGetDeviceInfo</a>(<a class="local col7 ref" href="#1417device_ids" title='device_ids' data-ref="1417device_ids">device_ids</a>[<a class="local col2 ref" href="#1422i" title='i' data-ref="1422i">i</a>], <a class="macro" href="../include/CL/cl.h.html#327" title="0x102B" data-ref="_M/CL_DEVICE_NAME">CL_DEVICE_NAME</a>,</td></tr>
+<tr><th id="306">306</th><td>                                         <a class="macro" href="#33" title="2048" data-ref="_M/DEVICE_INFO_MAX_LENGTH">DEVICE_INFO_MAX_LENGTH</a>, <a class="local col3 ref" href="#1423str" title='str' data-ref="1423str">str</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>));</td></tr>
+<tr><th id="307">307</th><td>          <a class="ref" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"    Name:   %s\n"</q>, <a class="local col3 ref" href="#1423str" title='str' data-ref="1423str">str</a>);</td></tr>
+<tr><th id="308">308</th><td></td></tr>
+<tr><th id="309">309</th><td>          <i>// to print device-&gt;poclbin_hash_string</i></td></tr>
+<tr><th id="310">310</th><td>          <a class="macro" href="../include/poclu.h.html#142" title="do { if (check_cl_error (clGetDeviceInfo(device_ids[i], 0x102F, 2048, str, ((void*)0)), 311, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a>(<a class="ref" href="../include/CL/cl.h.html#clGetDeviceInfo" title='clGetDeviceInfo' data-ref="clGetDeviceInfo">clGetDeviceInfo</a>(<a class="local col7 ref" href="#1417device_ids" title='device_ids' data-ref="1417device_ids">device_ids</a>[<a class="local col2 ref" href="#1422i" title='i' data-ref="1422i">i</a>], <a class="macro" href="../include/CL/cl.h.html#331" title="0x102F" data-ref="_M/CL_DEVICE_VERSION">CL_DEVICE_VERSION</a>,</td></tr>
+<tr><th id="311">311</th><td>                                         <a class="macro" href="#33" title="2048" data-ref="_M/DEVICE_INFO_MAX_LENGTH">DEVICE_INFO_MAX_LENGTH</a>, <a class="local col3 ref" href="#1423str" title='str' data-ref="1423str">str</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>));</td></tr>
+<tr><th id="312">312</th><td>          <a class="ref" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>" Version:   %s\n"</q>, <a class="local col3 ref" href="#1423str" title='str' data-ref="1423str">str</a>);</td></tr>
+<tr><th id="313">313</th><td>        }</td></tr>
+<tr><th id="314">314</th><td></td></tr>
+<tr><th id="315">315</th><td>      <a class="ref" href="../include/CL/cl.h.html#clReleaseContext" title='clReleaseContext' data-ref="clReleaseContext">clReleaseContext</a>(<a class="local col8 ref" href="#1418context" title='context' data-ref="1418context">context</a>);</td></tr>
+<tr><th id="316">316</th><td>    }</td></tr>
+<tr><th id="317">317</th><td>  <b>if</b> (<a class="ref" href="#list_devices_only" title='list_devices_only' data-ref="list_devices_only">list_devices_only</a>)</td></tr>
+<tr><th id="318">318</th><td>    <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="319">319</th><td></td></tr>
+<tr><th id="320">320</th><td>  <a class="local col8 ref" href="#1418context" title='context' data-ref="1418context">context</a> = <a class="ref" href="../include/CL/cl.h.html#clCreateContext" title='clCreateContext' data-ref="clCreateContext">clCreateContext</a>(<var>0</var>, <var>1</var>, &amp;<a class="local col7 ref" href="#1417device_ids" title='device_ids' data-ref="1417device_ids">device_ids</a>[<a class="ref" href="#opencl_device_id" title='opencl_device_id' data-ref="opencl_device_id">opencl_device_id</a>], <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, &amp;<a class="local col0 ref" href="#1420err" title='err' data-ref="1420err">err</a>);</td></tr>
+<tr><th id="321">321</th><td>  <a class="macro" href="../include/poclu.h.html#144" title="do { if (check_cl_error (err, 321, &quot;clCreateContext&quot;)) return (1); } while (0)" data-ref="_M/CHECK_OPENCL_ERROR_IN">CHECK_OPENCL_ERROR_IN</a>(<q>"clCreateContext"</q>);</td></tr>
+<tr><th id="322">322</th><td></td></tr>
+<tr><th id="323">323</th><td>  <a class="local col9 ref" href="#1419program" title='program' data-ref="1419program">program</a> = <a class="ref" href="../include/CL/cl.h.html#clCreateProgramWithSource" title='clCreateProgramWithSource' data-ref="clCreateProgramWithSource">clCreateProgramWithSource</a>(<a class="local col8 ref" href="#1418context" title='context' data-ref="1418context">context</a>, <var>1</var>, (<em>const</em> <em>char</em> **)&amp;<a class="ref" href="#kernel_source" title='kernel_source' data-ref="kernel_source">kernel_source</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, &amp;<a class="local col0 ref" href="#1420err" title='err' data-ref="1420err">err</a>);</td></tr>
+<tr><th id="324">324</th><td>  <a class="macro" href="../include/poclu.h.html#144" title="do { if (check_cl_error (err, 324, &quot;clCreateProgramWithSource&quot;)) return (1); } while (0)" data-ref="_M/CHECK_OPENCL_ERROR_IN">CHECK_OPENCL_ERROR_IN</a>(<q>"clCreateProgramWithSource"</q>);</td></tr>
+<tr><th id="325">325</th><td></td></tr>
+<tr><th id="326">326</th><td>  <a class="macro" href="../include/poclu.h.html#142" title="do { if (check_cl_error (clBuildProgram(program, 0, ((void*)0), build_options, ((void*)0), ((void*)0)), 326, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a>(<a class="ref" href="../include/CL/cl.h.html#clBuildProgram" title='clBuildProgram' data-ref="clBuildProgram">clBuildProgram</a>(<a class="local col9 ref" href="#1419program" title='program' data-ref="1419program">program</a>, <var>0</var>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <a class="ref" href="#build_options" title='build_options' data-ref="build_options">build_options</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>));</td></tr>
+<tr><th id="327">327</th><td></td></tr>
+<tr><th id="328">328</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col4 decl" id="1424binary_sizes" title='binary_sizes' data-type='size_t' data-ref="1424binary_sizes">binary_sizes</dfn>;</td></tr>
+<tr><th id="329">329</th><td>  <em>char</em> *<dfn class="local col5 decl" id="1425binary" title='binary' data-type='char *' data-ref="1425binary">binary</dfn>;</td></tr>
+<tr><th id="330">330</th><td></td></tr>
+<tr><th id="331">331</th><td>  <a class="macro" href="../include/poclu.h.html#142" title="do { if (check_cl_error (clGetProgramInfo(program, 0x1165, sizeof(size_t), &amp;binary_sizes, ((void*)0)), 332, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a>(<a class="ref" href="../include/CL/cl.h.html#clGetProgramInfo" title='clGetProgramInfo' data-ref="clGetProgramInfo">clGetProgramInfo</a>(<a class="local col9 ref" href="#1419program" title='program' data-ref="1419program">program</a>, <a class="macro" href="../include/CL/cl.h.html#654" title="0x1165" data-ref="_M/CL_PROGRAM_BINARY_SIZES">CL_PROGRAM_BINARY_SIZES</a>,</td></tr>
+<tr><th id="332">332</th><td>                                  <b>sizeof</b>(<span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span>), &amp;<a class="local col4 ref" href="#1424binary_sizes" title='binary_sizes' data-ref="1424binary_sizes">binary_sizes</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>));</td></tr>
+<tr><th id="333">333</th><td></td></tr>
+<tr><th id="334">334</th><td>  <a class="local col5 ref" href="#1425binary" title='binary' data-ref="1425binary">binary</a> = <a class="ref" href="../../include/stdlib.h.html#malloc" title='malloc' data-ref="malloc">malloc</a>(<b>sizeof</b>(<em>char</em>)*<a class="local col4 ref" href="#1424binary_sizes" title='binary_sizes' data-ref="1424binary_sizes">binary_sizes</a>);</td></tr>
+<tr><th id="335">335</th><td>  <b>if</b> (!<a class="local col5 ref" href="#1425binary" title='binary' data-ref="1425binary">binary</a>)</td></tr>
+<tr><th id="336">336</th><td>    {</td></tr>
+<tr><th id="337">337</th><td>      <a class="ref" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"malloc(binary) failed\n"</q>);</td></tr>
+<tr><th id="338">338</th><td>      <a class="ref" href="../../include/stdlib.h.html#exit" title='exit' data-ref="exit">exit</a>(<var>1</var>);</td></tr>
+<tr><th id="339">339</th><td>    }</td></tr>
+<tr><th id="340">340</th><td></td></tr>
+<tr><th id="341">341</th><td>  <a class="macro" href="../include/poclu.h.html#142" title="do { if (check_cl_error (clGetProgramInfo(program, 0x1166, sizeof(unsigned char*), &amp;binary, ((void*)0)), 342, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a>(<a class="ref" href="../include/CL/cl.h.html#clGetProgramInfo" title='clGetProgramInfo' data-ref="clGetProgramInfo">clGetProgramInfo</a>(<a class="local col9 ref" href="#1419program" title='program' data-ref="1419program">program</a>, <a class="macro" href="../include/CL/cl.h.html#655" title="0x1166" data-ref="_M/CL_PROGRAM_BINARIES">CL_PROGRAM_BINARIES</a>,</td></tr>
+<tr><th id="342">342</th><td>                                  <b>sizeof</b>(<em>unsigned</em> <em>char</em>*), &amp;<a class="local col5 ref" href="#1425binary" title='binary' data-ref="1425binary">binary</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>));</td></tr>
+<tr><th id="343">343</th><td></td></tr>
+<tr><th id="344">344</th><td>  <a class="macro" href="../include/poclu.h.html#142" title="do { if (check_cl_error (clReleaseProgram(program), 344, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a>(<a class="ref" href="../include/CL/cl.h.html#clReleaseProgram" title='clReleaseProgram' data-ref="clReleaseProgram">clReleaseProgram</a>(<a class="local col9 ref" href="#1419program" title='program' data-ref="1419program">program</a>));</td></tr>
+<tr><th id="345">345</th><td>  <a class="macro" href="../include/poclu.h.html#142" title="do { if (check_cl_error (clReleaseContext(context), 345, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a>(<a class="ref" href="../include/CL/cl.h.html#clReleaseContext" title='clReleaseContext' data-ref="clReleaseContext">clReleaseContext</a>(<a class="local col8 ref" href="#1418context" title='context' data-ref="1418context">context</a>));</td></tr>
+<tr><th id="346">346</th><td></td></tr>
+<tr><th id="347">347</th><td>  <b>if</b> (<a class="ref" href="../include/poclu.h.html#poclu_write_file" title='poclu_write_file' data-ref="poclu_write_file">poclu_write_file</a>(<a class="ref" href="#output_file" title='output_file' data-ref="output_file">output_file</a>, <a class="local col5 ref" href="#1425binary" title='binary' data-ref="1425binary">binary</a>, <a class="local col4 ref" href="#1424binary_sizes" title='binary_sizes' data-ref="1424binary_sizes">binary_sizes</a>))</td></tr>
+<tr><th id="348">348</th><td>    <a class="macro" href="#37" title="do { printf(&quot;IO error on file %s: %s\n&quot;, output_file, strerror((*__errno_location ()))); exit(2); } while(0)" data-ref="_M/ERRNO_EXIT">ERRNO_EXIT</a>(<a class="ref" href="#output_file" title='output_file' data-ref="output_file">output_file</a>);</td></tr>
+<tr><th id="349">349</th><td></td></tr>
+<tr><th id="350">350</th><td>  <a class="ref" href="../../include/stdlib.h.html#free" title='free' data-ref="free">free</a>(<a class="local col5 ref" href="#1425binary" title='binary' data-ref="1425binary">binary</a>);</td></tr>
+<tr><th id="351">351</th><td></td></tr>
+<tr><th id="352">352</th><td>  <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="353">353</th><td>}</td></tr>
+<tr><th id="354">354</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

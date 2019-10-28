@@ -1,0 +1,5 @@
+<dec f='pocl/lib/llvmopencl/LLVMUtils.h' l='89' type='bool pocl::isLocalMemFunctionArg(llvm::Function * Func, unsigned int ArgIndex)'/>
+<doc f='pocl/lib/llvmopencl/LLVMUtils.h' l='88'>// Checks if the given argument of Func is a local buffer.</doc>
+<def f='pocl/lib/llvmopencl/LLVMUtils.cc' l='130' ll='139' type='bool pocl::isLocalMemFunctionArg(llvm::Function * F, unsigned int ArgIndex)'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='982' u='c' c='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1181' u='c' c='_ZN4pocl9Workgroup32createArgBufferWorkgroupLauncherEPN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>

@@ -1,0 +1,5 @@
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='910' u='c' c='_ZN4llvm17GetElementPtrInst14CreateInBoundsEPNS_4TypeEPNS_5ValueENS_8ArrayRefIS4_EERKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='927' u='c' c='_ZN4llvm17GetElementPtrInst14CreateInBoundsEPNS_4TypeEPNS_5ValueENS_8ArrayRefIS4_EERKNS_5TwineEPNS_10BasicBlockE'/>
+<dec f='include/llvm-6.0/llvm/IR/Instructions.h' l='1041' type='void llvm::GetElementPtrInst::setIsInBounds(bool b = true)'/>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='1039'>/// Set or clear the inbounds flag on this GEP instruction.
+  /// See LangRef.html for the meaning of inbounds on a getelementptr.</doc>

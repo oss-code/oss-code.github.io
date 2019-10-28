@@ -1,0 +1,25 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1088' type='pocl_kernel_metadata_t *'/>
+<offset>1216</offset>
+<use f='pocl/lib/CL/clCreateKernel.c' l='75' u='r' c='POclCreateKernel'/>
+<use f='pocl/lib/CL/clCreateKernel.c' l='82' u='r' c='POclCreateKernel'/>
+<use f='pocl/lib/CL/clCreateKernelsInProgram.c' l='59' u='r' c='POclCreateKernelsInProgram'/>
+<use f='pocl/lib/CL/clGetProgramInfo.c' l='195' u='r' c='POclGetProgramInfo'/>
+<use f='pocl/lib/CL/clGetProgramInfo.c' l='212' u='r' c='POclGetProgramInfo'/>
+<use f='pocl/lib/CL/clGetProgramInfo.c' l='214' u='r' c='POclGetProgramInfo'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='88' u='r' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='105' u='r' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='105' u='w' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/devices/common.c' l='1326' u='r' c='pocl_calculate_kernel_hash'/>
+<use f='pocl/lib/CL/devices/common.c' l='1334' u='r' c='pocl_calculate_kernel_hash'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='634' u='r' c='pocl_binary_serialize'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='748' u='r' c='pocl_binary_get_kernels_metadata'/>
+<use f='pocl/lib/CL/pocl_build.c' l='157' u='r' c='program_compile_dynamic_wg_binaries'/>
+<use f='pocl/lib/CL/pocl_build.c' l='410' u='r' c='free_meta'/>
+<use f='pocl/lib/CL/pocl_build.c' l='428' u='r' c='free_meta'/>
+<use f='pocl/lib/CL/pocl_build.c' l='428' u='w' c='free_meta'/>
+<use f='pocl/lib/CL/pocl_build.c' l='826' u='w' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_build.c' l='834' u='r' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_build.c' l='846' u='w' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_build.c' l='859' u='w' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_build.c' l='873' u='r' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='500' u='r' c='pocl_llvm_get_kernels_metadata'/>

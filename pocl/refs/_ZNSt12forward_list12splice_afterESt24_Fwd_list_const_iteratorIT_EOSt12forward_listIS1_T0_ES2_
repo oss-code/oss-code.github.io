@@ -1,0 +1,12 @@
+<dec f='include/c++/7/bits/forward_list.h' l='1092' type='void std::forward_list::splice_after(const_iterator __pos, forward_list&lt;_Tp, _Alloc&gt; &amp;&amp; __list, const_iterator __i)'/>
+<def f='include/c++/7/bits/forward_list.tcc' l='240' ll='255' type='void std::forward_list::splice_after(const_iterator __pos, forward_list&lt;_Tp, _Alloc&gt; &amp;&amp; , const_iterator __i)'/>
+<doc f='include/c++/7/bits/forward_list.h' l='1081'>/**
+       *  @brief  Insert element from another %forward_list.
+       *  @param  __pos  Iterator referencing the element to insert after.
+       *  @param  __list  Source list.
+       *  @param  __i   Iterator referencing the element before the element
+       *                to move.
+       *
+       *  Removes the element in list @a list referenced by @a i and
+       *  inserts it into the current list after @a pos.
+       */</doc>

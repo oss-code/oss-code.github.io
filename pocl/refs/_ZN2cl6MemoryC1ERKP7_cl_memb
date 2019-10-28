@@ -1,0 +1,14 @@
+<def f='pocl/include/CL/cl2.hpp' l='3304' ll='3305' type='void cl::Memory::Memory(const cl_mem &amp; memory, bool retainObject)'/>
+<use f='pocl/include/CL/cl2.hpp' l='3910' u='c' c='_ZN2cl6BufferC1ERKP7_cl_memb'/>
+<use f='pocl/include/CL/cl2.hpp' l='4303' u='c' c='_ZN2cl5ImageC1ERKP7_cl_memb'/>
+<doc f='pocl/include/CL/cl2.hpp' l='3293'>/*! \brief Constructor from cl_mem - takes ownership.
+     *
+     *  Optionally transfer ownership of a refcount on the cl_mem
+     *  into the new Memory object.
+     *
+     * \param retainObject will cause the constructor to retain its cl object.
+     *                     Defaults to false to maintain compatibility with
+     *                     earlier versions.
+     *
+     *  See Memory for further details.
+     */</doc>

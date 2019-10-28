@@ -1,0 +1,15 @@
+<dec f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='452' type='bool llvm::DominatorTreeBase::dominates(const NodeT * A, const NodeT * B) const'/>
+<def f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='857' ll='868' type='bool llvm::DominatorTreeBase::dominates(const NodeT * A, const NodeT * B) const'/>
+<doc f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='855'>// These two functions are declared out of line as a workaround for building
+// with old (&lt; r147295) versions of clang because of pr11642.</doc>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='184' u='c' c='_ZN4pocl22BarrierTailReplication24ReplicateJoinedSubgraphsEPN4llvm10BasicBlockES3_RSt3setIS3_St4lessIS3_ESaIS3_EE'/>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='193' u='c' c='_ZN4pocl22BarrierTailReplication24ReplicateJoinedSubgraphsEPN4llvm10BasicBlockES3_RSt3setIS3_St4lessIS3_ESaIS3_EE'/>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='321' u='c' c='_ZN4pocl22BarrierTailReplication12FindSubgraphERSt6vectorIPN4llvm10BasicBlockESaIS4_EES4_'/>
+<use f='pocl/lib/llvmopencl/ImplicitConditionalBarriers.cc' l='82' u='c' c='_ZN4pocl27ImplicitConditionalBarriers27firstNonBackedgePredecessorEPN4llvm10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/ImplicitConditionalBarriers.cc' l='105' u='c' c='_ZN4pocl27ImplicitConditionalBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/ImplicitConditionalBarriers.cc' l='135' u='c' c='_ZN4pocl27ImplicitConditionalBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/LoopBarriers.cc' l='162' u='c' c='_ZN4pocl12LoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='230' u='c' c='_ZN4pocl26VariableUniformityAnalysis19analyzeBBDivergenceEPN4llvm8FunctionEPNS1_10BasicBlockES5_'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='117' u='c' c='_ZN4pocl15WorkitemHandler12dominatesUseEPN4llvm24DominatorTreeWrapperPassERNS1_11InstructionEj'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='236' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='479' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>

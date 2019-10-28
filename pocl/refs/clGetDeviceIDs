@@ -1,0 +1,20 @@
+<dec f='pocl/include/CL/cl.h' l='866' type='cl_int clGetDeviceIDs(cl_platform_id platform, cl_device_type device_type, cl_uint num_entries, cl_device_id * devices, cl_uint * num_devices)'/>
+<use f='pocl/bin/poclcc.c' l='285' u='c' c='main'/>
+<doc f='pocl/include/CL/cl.h' l='864'>/* Device APIs */</doc>
+<use f='pocl/lib/CL/pocl_intfn.h' l='81' c='POclGetDeviceIDs'/>
+<use f='pocl/lib/poclu/misc.c' l='80' u='c' c='poclu_get_any_device2'/>
+<use f='pocl/lib/poclu/misc.c' l='112' u='c' c='poclu_get_multiple_devices'/>
+<use f='pocl/lib/poclu/misc.c' l='119' u='c' c='poclu_get_multiple_devices'/>
+<use f='pocl/include/CL/cl2.hpp' l='2470' u='c' c='_ZNK2cl8Platform10getDevicesEmPSt6vectorINS_6DeviceESaIS2_EE'/>
+<use f='pocl/include/CL/cl2.hpp' l='2476' u='c' c='_ZNK2cl8Platform10getDevicesEmPSt6vectorINS_6DeviceESaIS2_EE'/>
+<use f='pocl/tests/regression/test_program_from_binary_with_local_1_1_1.c' l='87' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_buffer-image-copy.c' l='61' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='90' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateProgramWithBinary.c' l='35' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clFinish.c' l='73' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clGetDeviceInfo.c' l='26' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clGetEventInfo.c' l='28' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clGetSupportedImageFormats.c' l='22' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clSetMemObjectDestructorCallback.c' l='30' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_event_cycle.c' l='63' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_read-copy-write-buffer.c' l='50' u='c' c='main'/>

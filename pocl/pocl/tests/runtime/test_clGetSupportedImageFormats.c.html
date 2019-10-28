@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>test_clGetSupportedImageFormats.c source code [pocl/tests/runtime/test_clGetSupportedImageFormats.c] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="main "/>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/tests/runtime/test_clGetSupportedImageFormats.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>tests</a>/<a href='./'>runtime</a>/<a href='test_clGetSupportedImageFormats.c.html'>test_clGetSupportedImageFormats.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><u>#include <a href="../../../include/stdio.h.html">&lt;stdio.h&gt;</a></u></td></tr>
+<tr><th id="2">2</th><td><u>#include <a href="../../../include/stdlib.h.html">&lt;stdlib.h&gt;</a></u></td></tr>
+<tr><th id="3">3</th><td><u>#include <a href="../../include/CL/cl.h.html">&lt;CL/cl.h&gt;</a></u></td></tr>
+<tr><th id="4">4</th><td><u>#include <a href="../../include/poclu.h.html">"poclu.h"</a></u></td></tr>
+<tr><th id="5">5</th><td></td></tr>
+<tr><th id="6">6</th><td><u>#define <dfn class="macro" id="_M/MAX_DEVICES" data-ref="_M/MAX_DEVICES">MAX_DEVICES</dfn>   2</u></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><em>int</em></td></tr>
+<tr><th id="9">9</th><td><dfn class="decl def" id="main" title='main' data-ref="main">main</dfn>(<em>void</em>)</td></tr>
+<tr><th id="10">10</th><td>{</td></tr>
+<tr><th id="11">11</th><td>  <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <dfn class="local col1 decl" id="1err" title='err' data-type='cl_int' data-ref="1err">err</dfn>;</td></tr>
+<tr><th id="12">12</th><td>  <a class="typedef" href="../../include/CL/cl.h.html#cl_platform_id" title='cl_platform_id' data-type='struct _cl_platform_id *' data-ref="cl_platform_id">cl_platform_id</a> <dfn class="local col2 decl" id="2platform" title='platform' data-type='cl_platform_id [1]' data-ref="2platform">platform</dfn>[<var>1</var>];</td></tr>
+<tr><th id="13">13</th><td>  <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a> <dfn class="local col3 decl" id="3nplatforms" title='nplatforms' data-type='cl_uint' data-ref="3nplatforms">nplatforms</dfn>;</td></tr>
+<tr><th id="14">14</th><td>  <a class="typedef" href="../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="local col4 decl" id="4devices" title='devices' data-type='cl_device_id [2]' data-ref="4devices">devices</dfn>[<a class="macro" href="#6" title="2" data-ref="_M/MAX_DEVICES">MAX_DEVICES</a>];</td></tr>
+<tr><th id="15">15</th><td>  <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a> <dfn class="local col5 decl" id="5ndevices" title='ndevices' data-type='cl_uint' data-ref="5ndevices">ndevices</dfn>;</td></tr>
+<tr><th id="16">16</th><td>  <a class="typedef" href="../../include/CL/cl.h.html#cl_image_format" title='cl_image_format' data-type='struct _cl_image_format' data-ref="cl_image_format">cl_image_format</a> *<dfn class="local col6 decl" id="6img_formats" title='img_formats' data-type='cl_image_format *' data-ref="6img_formats">img_formats</dfn>;</td></tr>
+<tr><th id="17">17</th><td>  <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a> <dfn class="local col7 decl" id="7num_entries" title='num_entries' data-type='cl_uint' data-ref="7num_entries">num_entries</dfn>;</td></tr>
+<tr><th id="18">18</th><td>  </td></tr>
+<tr><th id="19">19</th><td>  <a class="local col1 ref" href="#1err" title='err' data-ref="1err">err</a> = <a class="ref" href="../../include/CL/cl.h.html#clGetPlatformIDs" title='clGetPlatformIDs' data-ref="clGetPlatformIDs">clGetPlatformIDs</a> (<var>1</var>, <a class="local col2 ref" href="#2platform" title='platform' data-ref="2platform">platform</a>, &amp;<a class="local col3 ref" href="#3nplatforms" title='nplatforms' data-ref="3nplatforms">nplatforms</a>);	</td></tr>
+<tr><th id="20">20</th><td>  <a class="macro" href="../../include/poclu.h.html#144" title="do { if (check_cl_error (err, 20, &quot;clGetPlatformIDs&quot;)) return (1); } while (0)" data-ref="_M/CHECK_OPENCL_ERROR_IN">CHECK_OPENCL_ERROR_IN</a>(<q>"clGetPlatformIDs"</q>);</td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td>  <a class="local col1 ref" href="#1err" title='err' data-ref="1err">err</a> = <a class="ref" href="../../include/CL/cl.h.html#clGetDeviceIDs" title='clGetDeviceIDs' data-ref="clGetDeviceIDs">clGetDeviceIDs</a> (<a class="local col2 ref" href="#2platform" title='platform' data-ref="2platform">platform</a>[<var>0</var>], <a class="macro" href="../../include/CL/cl.h.html#278" title="0xFFFFFFFF" data-ref="_M/CL_DEVICE_TYPE_ALL">CL_DEVICE_TYPE_ALL</a>, <a class="macro" href="#6" title="2" data-ref="_M/MAX_DEVICES">MAX_DEVICES</a>,</td></tr>
+<tr><th id="23">23</th><td>                        <a class="local col4 ref" href="#4devices" title='devices' data-ref="4devices">devices</a>, &amp;<a class="local col5 ref" href="#5ndevices" title='ndevices' data-ref="5ndevices">ndevices</a>);</td></tr>
+<tr><th id="24">24</th><td>  <a class="macro" href="../../include/poclu.h.html#144" title="do { if (check_cl_error (err, 24, &quot;clGetDeviceIDs&quot;)) return (1); } while (0)" data-ref="_M/CHECK_OPENCL_ERROR_IN">CHECK_OPENCL_ERROR_IN</a>(<q>"clGetDeviceIDs"</q>);</td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td>  <a class="macro" href="../../include/poclu.h.html#147" title="do { if (!(ndevices &gt;= 2)) { fprintf(stderr, &quot;Assertion: \n&quot; &quot;ndevices &gt;= 2&quot; &quot;\nfailed on %s:%i\n&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/tests/runtime/test_clGetSupportedImageFormats.c&quot;, 26); return 1; } } while (0)" data-ref="_M/TEST_ASSERT">TEST_ASSERT</a>(<a class="local col5 ref" href="#5ndevices" title='ndevices' data-ref="5ndevices">ndevices</a> &gt;= <var>2</var>);</td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td>  <a class="typedef" href="../../include/CL/cl.h.html#cl_context" title='cl_context' data-type='struct _cl_context *' data-ref="cl_context">cl_context</a> <dfn class="local col8 decl" id="8context" title='context' data-type='cl_context' data-ref="8context">context</dfn> = <a class="ref" href="../../include/CL/cl.h.html#clCreateContext" title='clCreateContext' data-ref="clCreateContext">clCreateContext</a> (<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <a class="local col5 ref" href="#5ndevices" title='ndevices' data-ref="5ndevices">ndevices</a>, <a class="local col4 ref" href="#4devices" title='devices' data-ref="4devices">devices</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, </td></tr>
+<tr><th id="29">29</th><td>                                        &amp;<a class="local col1 ref" href="#1err" title='err' data-ref="1err">err</a>);</td></tr>
+<tr><th id="30">30</th><td>  <a class="macro" href="../../include/poclu.h.html#144" title="do { if (check_cl_error (err, 30, &quot;clCreateContext&quot;)) return (1); } while (0)" data-ref="_M/CHECK_OPENCL_ERROR_IN">CHECK_OPENCL_ERROR_IN</a>(<q>"clCreateContext"</q>);</td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td>  <a class="local col1 ref" href="#1err" title='err' data-ref="1err">err</a> = <a class="ref" href="../../include/CL/cl.h.html#clGetSupportedImageFormats" title='clGetSupportedImageFormats' data-ref="clGetSupportedImageFormats">clGetSupportedImageFormats</a> (<a class="local col8 ref" href="#8context" title='context' data-ref="8context">context</a>, <var>0</var>, <a class="macro" href="../../include/CL/cl.h.html#562" title="0x10F1" data-ref="_M/CL_MEM_OBJECT_IMAGE2D">CL_MEM_OBJECT_IMAGE2D</a>, <var>0</var>,</td></tr>
+<tr><th id="33">33</th><td>                              <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, &amp;<a class="local col7 ref" href="#7num_entries" title='num_entries' data-ref="7num_entries">num_entries</a>);</td></tr>
+<tr><th id="34">34</th><td>  <a class="macro" href="../../include/poclu.h.html#144" title="do { if (check_cl_error (err, 34, &quot;clGetSupportedImageFormats&quot;)) return (1); } while (0)" data-ref="_M/CHECK_OPENCL_ERROR_IN">CHECK_OPENCL_ERROR_IN</a>(<q>"clGetSupportedImageFormats"</q>);</td></tr>
+<tr><th id="35">35</th><td>  </td></tr>
+<tr><th id="36">36</th><td>  <a class="local col6 ref" href="#6img_formats" title='img_formats' data-ref="6img_formats">img_formats</a> = (<a class="typedef" href="../../include/CL/cl.h.html#cl_image_format" title='cl_image_format' data-type='struct _cl_image_format' data-ref="cl_image_format">cl_image_format</a>*)<a class="ref" href="../../../include/stdlib.h.html#malloc" title='malloc' data-ref="malloc">malloc</a> (<b>sizeof</b>(<a class="typedef" href="../../include/CL/cl.h.html#cl_image_format" title='cl_image_format' data-type='struct _cl_image_format' data-ref="cl_image_format">cl_image_format</a>)*<a class="local col7 ref" href="#7num_entries" title='num_entries' data-ref="7num_entries">num_entries</a>);</td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td>  <a class="local col1 ref" href="#1err" title='err' data-ref="1err">err</a> = <a class="ref" href="../../include/CL/cl.h.html#clGetSupportedImageFormats" title='clGetSupportedImageFormats' data-ref="clGetSupportedImageFormats">clGetSupportedImageFormats</a> (<a class="local col8 ref" href="#8context" title='context' data-ref="8context">context</a>, <var>0</var>, <a class="macro" href="../../include/CL/cl.h.html#562" title="0x10F1" data-ref="_M/CL_MEM_OBJECT_IMAGE2D">CL_MEM_OBJECT_IMAGE2D</a>,</td></tr>
+<tr><th id="39">39</th><td>                                      <a class="local col7 ref" href="#7num_entries" title='num_entries' data-ref="7num_entries">num_entries</a>, <a class="local col6 ref" href="#6img_formats" title='img_formats' data-ref="6img_formats">img_formats</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="40">40</th><td>  <a class="macro" href="../../include/poclu.h.html#144" title="do { if (check_cl_error (err, 40, &quot;clGetSupportedImageFormats&quot;)) return (1); } while (0)" data-ref="_M/CHECK_OPENCL_ERROR_IN">CHECK_OPENCL_ERROR_IN</a>(<q>"clGetSupportedImageFormats"</q>);</td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td>  <a class="macro" href="../../include/poclu.h.html#147" title="do { if (!(num_entries != 0)) { fprintf(stderr, &quot;Assertion: \n&quot; &quot;num_entries != 0&quot; &quot;\nfailed on %s:%i\n&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/tests/runtime/test_clGetSupportedImageFormats.c&quot;, 42); return 1; } } while (0)" data-ref="_M/TEST_ASSERT">TEST_ASSERT</a>(<a class="local col7 ref" href="#7num_entries" title='num_entries' data-ref="7num_entries">num_entries</a> != <var>0</var>);</td></tr>
+<tr><th id="43">43</th><td></td></tr>
+<tr><th id="44">44</th><td>  <a class="macro" href="../../include/poclu.h.html#142" title="do { if (check_cl_error (clReleaseContext (context), 44, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a> (<a class="ref" href="../../include/CL/cl.h.html#clReleaseContext" title='clReleaseContext' data-ref="clReleaseContext">clReleaseContext</a> (<a class="local col8 ref" href="#8context" title='context' data-ref="8context">context</a>));</td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td>  <a class="ref" href="../../../include/stdlib.h.html#free" title='free' data-ref="free">free</a> (<a class="local col6 ref" href="#6img_formats" title='img_formats' data-ref="6img_formats">img_formats</a>);</td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td>  <a class="macro" href="../../include/poclu.h.html#142" title="do { if (check_cl_error (clUnloadCompiler (), 48, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a> (<a class="ref" href="../../include/CL/cl.h.html#clUnloadCompiler" title='clUnloadCompiler' data-ref="clUnloadCompiler">clUnloadCompiler</a> ());</td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td>  <b>return</b> <a class="macro" href="../../../include/stdlib.h.html#134" title="0" data-ref="_M/EXIT_SUCCESS">EXIT_SUCCESS</a>;</td></tr>
+<tr><th id="51">51</th><td>}</td></tr>
+<tr><th id="52">52</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

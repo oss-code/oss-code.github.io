@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>clEnqueueSVMUnmap.c source code [pocl/lib/CL/clEnqueueSVMUnmap.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/CL/clEnqueueSVMUnmap.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>CL</a>/<a href='clEnqueueSVMUnmap.c.html'>clEnqueueSVMUnmap.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* OpenCL runtime library: clEnqueueSVMUnmap()</i></td></tr>
+<tr><th id="2">2</th><td><i></i></td></tr>
+<tr><th id="3">3</th><td><i>   Copyright (c) 2015 Michal Babej / Tampere University of Technology</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>   Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="6">6</th><td><i>   of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="7">7</th><td><i>   in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="8">8</th><td><i>   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="9">9</th><td><i>   copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="10">10</th><td><i>   furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="11">11</th><td><i></i></td></tr>
+<tr><th id="12">12</th><td><i>   The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="13">13</th><td><i>   all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="14">14</th><td><i></i></td></tr>
+<tr><th id="15">15</th><td><i>   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="16">16</th><td><i>   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="17">17</th><td><i>   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="18">18</th><td><i>   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="19">19</th><td><i>   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="20">20</th><td><i>   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="21">21</th><td><i>   THE SOFTWARE.</i></td></tr>
+<tr><th id="22">22</th><td><i>*/</i></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><u>#include <a href="pocl_cl.h.html">"pocl_cl.h"</a></u></td></tr>
+<tr><th id="25">25</th><td><u>#include <a href="pocl_util.h.html">"pocl_util.h"</a></u></td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><a class="macro" href="../../include/CL/cl_platform.h.html#43" title="" data-ref="_M/CL_API_ENTRY">CL_API_ENTRY</a> <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <a class="macro" href="../../include/CL/cl_platform.h.html#44" title="" data-ref="_M/CL_API_CALL">CL_API_CALL</a></td></tr>
+<tr><th id="28">28</th><td><a class="macro" href="pocl_cl.h.html#225" title="POclEnqueueSVMUnmap" data-ref="_M/POname">POname</a>(clEnqueueSVMUnmap) (<a class="typedef" href="../../include/CL/cl.h.html#cl_command_queue" title='cl_command_queue' data-type='struct _cl_command_queue *' data-ref="cl_command_queue">cl_command_queue</a> <dfn class="local col1 decl" id="1command_queue" title='command_queue' data-type='cl_command_queue' data-ref="1command_queue">command_queue</dfn>,</td></tr>
+<tr><th id="29">29</th><td>                   <em>void</em> *<dfn class="local col2 decl" id="2svm_ptr" title='svm_ptr' data-type='void *' data-ref="2svm_ptr">svm_ptr</dfn>,</td></tr>
+<tr><th id="30">30</th><td>                   <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a> <dfn class="local col3 decl" id="3num_events_in_wait_list" title='num_events_in_wait_list' data-type='cl_uint' data-ref="3num_events_in_wait_list">num_events_in_wait_list</dfn>,</td></tr>
+<tr><th id="31">31</th><td>                   <em>const</em> <a class="typedef" href="../../include/CL/cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> *<dfn class="local col4 decl" id="4event_wait_list" title='event_wait_list' data-type='const cl_event *' data-ref="4event_wait_list">event_wait_list</dfn>,</td></tr>
+<tr><th id="32">32</th><td>                   <a class="typedef" href="../../include/CL/cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> *<dfn class="local col5 decl" id="5event" title='event' data-type='cl_event *' data-ref="5event">event</dfn>) <a class="macro" href="../../include/CL/cl_platform.h.html#63" title="" data-ref="_M/CL_API_SUFFIX__VERSION_2_0">CL_API_SUFFIX__VERSION_2_0</a></td></tr>
+<tr><th id="33">33</th><td>{</td></tr>
+<tr><th id="34">34</th><td>  <em>unsigned</em> <dfn class="local col6 decl" id="6i" title='i' data-type='unsigned int' data-ref="6i">i</dfn>;</td></tr>
+<tr><th id="35">35</th><td>  <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <dfn class="local col7 decl" id="7errcode" title='errcode' data-type='cl_int' data-ref="7errcode">errcode</dfn>;</td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td>  <a class="macro" href="pocl_debug.h.html#277" title="do { if ((command_queue == ((void*)0))) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 37, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_INVALID_COMMAND_QUEUE&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_INVALID_COMMAND_QUEUE&quot; &quot; &quot;); fprintf (stderr, &quot;%s\n&quot;, &quot;(command_queue == NULL)&quot;); pocl_debug_output_unlock (); } } while (0); return -36; } } while (0)" data-ref="_M/POCL_RETURN_ERROR_COND">POCL_RETURN_ERROR_COND</a>((<a class="local col1 ref" href="#1command_queue" title='command_queue' data-ref="1command_queue">command_queue</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>), <a class="macro" href="../../include/CL/cl.h.html#205" title="-36" data-ref="_M/CL_INVALID_COMMAND_QUEUE">CL_INVALID_COMMAND_QUEUE</a>);</td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td>  <a class="macro" href="pocl_debug.h.html#266" title="do { if ((command_queue-&gt;context-&gt;svm_allocdev == ((void*)0))) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 40, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_INVALID_CONTEXT&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_INVALID_CONTEXT&quot; &quot; &quot;); fprintf (stderr, &quot;None of the devices in this context is SVM-capable\n&quot;); pocl_debug_output_unlock (); } } while (0); return -34; } } while (0)" data-ref="_M/POCL_RETURN_ERROR_ON">POCL_RETURN_ERROR_ON</a>((<a class="local col1 ref" href="#1command_queue" title='command_queue' data-ref="1command_queue">command_queue</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_command_queue::context" title='_cl_command_queue::context' data-ref="_cl_command_queue::context">context</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_context::svm_allocdev" title='_cl_context::svm_allocdev' data-ref="_cl_context::svm_allocdev">svm_allocdev</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>),</td></tr>
+<tr><th id="40">40</th><td>      <a class="macro" href="../../include/CL/cl.h.html#203" title="-34" data-ref="_M/CL_INVALID_CONTEXT">CL_INVALID_CONTEXT</a>, <q>"None of the devices in this context is SVM-capable\n"</q>);</td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td>  <b>if</b> (<a class="macro" href="pocl_cl.h.html#828" title="((command_queue-&gt;device-&gt;svm_caps &amp; ((1 &lt;&lt; 1) | (1 &lt;&lt; 2))) &amp;&amp; (command_queue-&gt;device-&gt;svm_caps &amp; (1 &lt;&lt; 3)))" data-ref="_M/DEVICE_MMAP_IS_NOP">DEVICE_MMAP_IS_NOP</a>(<a class="local col1 ref" href="#1command_queue" title='command_queue' data-ref="1command_queue">command_queue</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_command_queue::device" title='_cl_command_queue::device' data-ref="_cl_command_queue::device">device</a>)</td></tr>
+<tr><th id="43">43</th><td>      &amp;&amp; (<a class="local col3 ref" href="#3num_events_in_wait_list" title='num_events_in_wait_list' data-ref="3num_events_in_wait_list">num_events_in_wait_list</a> == <var>0</var>)</td></tr>
+<tr><th id="44">44</th><td>      &amp;&amp; (<a class="local col5 ref" href="#5event" title='event' data-ref="5event">event</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>))</td></tr>
+<tr><th id="45">45</th><td>    <b>return</b> <a class="macro" href="../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>;</td></tr>
+<tr><th id="46">46</th><td></td></tr>
+<tr><th id="47">47</th><td>  <a class="macro" href="pocl_debug.h.html#277" title="do { if ((svm_ptr == ((void*)0))) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 47, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_INVALID_VALUE&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_INVALID_VALUE&quot; &quot; &quot;); fprintf (stderr, &quot;%s\n&quot;, &quot;(svm_ptr == NULL)&quot;); pocl_debug_output_unlock (); } } while (0); return -30; } } while (0)" data-ref="_M/POCL_RETURN_ERROR_COND">POCL_RETURN_ERROR_COND</a>((<a class="local col2 ref" href="#2svm_ptr" title='svm_ptr' data-ref="2svm_ptr">svm_ptr</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>), <a class="macro" href="../../include/CL/cl.h.html#199" title="-30" data-ref="_M/CL_INVALID_VALUE">CL_INVALID_VALUE</a>);</td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td>  <a class="local col7 ref" href="#7errcode" title='errcode' data-ref="7errcode">errcode</a> = <a class="ref" href="pocl_util.h.html#pocl_check_event_wait_list" title='pocl_check_event_wait_list' data-ref="pocl_check_event_wait_list">pocl_check_event_wait_list</a> (<a class="local col1 ref" href="#1command_queue" title='command_queue' data-ref="1command_queue">command_queue</a>, <a class="local col3 ref" href="#3num_events_in_wait_list" title='num_events_in_wait_list' data-ref="3num_events_in_wait_list">num_events_in_wait_list</a>,</td></tr>
+<tr><th id="50">50</th><td>                                        <a class="local col4 ref" href="#4event_wait_list" title='event_wait_list' data-ref="4event_wait_list">event_wait_list</a>);</td></tr>
+<tr><th id="51">51</th><td>  <b>if</b> (<a class="local col7 ref" href="#7errcode" title='errcode' data-ref="7errcode">errcode</a> != <a class="macro" href="../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>)</td></tr>
+<tr><th id="52">52</th><td>    <b>return</b> <a class="local col7 ref" href="#7errcode" title='errcode' data-ref="7errcode">errcode</a>;</td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td>  <b>for</b>(<a class="local col6 ref" href="#6i" title='i' data-ref="6i">i</a>=<var>0</var>; <a class="local col6 ref" href="#6i" title='i' data-ref="6i">i</a>&lt;<a class="local col3 ref" href="#3num_events_in_wait_list" title='num_events_in_wait_list' data-ref="3num_events_in_wait_list">num_events_in_wait_list</a>; <a class="local col6 ref" href="#6i" title='i' data-ref="6i">i</a>++)</td></tr>
+<tr><th id="55">55</th><td>    <a class="macro" href="pocl_debug.h.html#277" title="do { if ((event_wait_list[i] == ((void*)0))) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 55, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_INVALID_EVENT_WAIT_LIST&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_INVALID_EVENT_WAIT_LIST&quot; &quot; &quot;); fprintf (stderr, &quot;%s\n&quot;, &quot;(event_wait_list[i] == NULL)&quot;); pocl_debug_output_unlock (); } } while (0); return -57; } } while (0)" data-ref="_M/POCL_RETURN_ERROR_COND">POCL_RETURN_ERROR_COND</a>((<a class="local col4 ref" href="#4event_wait_list" title='event_wait_list' data-ref="4event_wait_list">event_wait_list</a>[<a class="local col6 ref" href="#6i" title='i' data-ref="6i">i</a>] == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>), <a class="macro" href="../../include/CL/cl.h.html#226" title="-57" data-ref="_M/CL_INVALID_EVENT_WAIT_LIST">CL_INVALID_EVENT_WAIT_LIST</a>);</td></tr>
+<tr><th id="56">56</th><td></td></tr>
+<tr><th id="57">57</th><td>  <a class="typedef" href="../../include/pocl.h.html#_cl_command_node" title='_cl_command_node' data-type='struct _cl_command_node' data-ref="_cl_command_node">_cl_command_node</a> *<dfn class="local col8 decl" id="8cmd" title='cmd' data-type='_cl_command_node *' data-ref="8cmd">cmd</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="58">58</th><td></td></tr>
+<tr><th id="59">59</th><td>  <a class="local col7 ref" href="#7errcode" title='errcode' data-ref="7errcode">errcode</a> = <a class="ref" href="pocl_util.h.html#pocl_create_command" title='pocl_create_command' data-ref="pocl_create_command">pocl_create_command</a> (&amp;<a class="local col8 ref" href="#8cmd" title='cmd' data-ref="8cmd">cmd</a>, <a class="local col1 ref" href="#1command_queue" title='command_queue' data-ref="1command_queue">command_queue</a>, <a class="macro" href="../../include/CL/cl.h.html#824" title="0x120D" data-ref="_M/CL_COMMAND_SVM_UNMAP">CL_COMMAND_SVM_UNMAP</a>,</td></tr>
+<tr><th id="60">60</th><td>                                     <a class="local col5 ref" href="#5event" title='event' data-ref="5event">event</a>, <a class="local col3 ref" href="#3num_events_in_wait_list" title='num_events_in_wait_list' data-ref="3num_events_in_wait_list">num_events_in_wait_list</a>,</td></tr>
+<tr><th id="61">61</th><td>                                     <a class="local col4 ref" href="#4event_wait_list" title='event_wait_list' data-ref="4event_wait_list">event_wait_list</a>, <var>0</var>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="62">62</th><td></td></tr>
+<tr><th id="63">63</th><td>  <b>if</b> (<a class="local col7 ref" href="#7errcode" title='errcode' data-ref="7errcode">errcode</a> != <a class="macro" href="../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>)</td></tr>
+<tr><th id="64">64</th><td>    {</td></tr>
+<tr><th id="65">65</th><td>      <a class="macro" href="pocl_cl.h.html#173" title="do { free((cmd)); (cmd) = ((void*)0); } while (0)" data-ref="_M/POCL_MEM_FREE">POCL_MEM_FREE</a>(<a class="local col8 ref" href="#8cmd" title='cmd' data-ref="8cmd">cmd</a>);</td></tr>
+<tr><th id="66">66</th><td>      <b>return</b> <a class="local col7 ref" href="#7errcode" title='errcode' data-ref="7errcode">errcode</a>;</td></tr>
+<tr><th id="67">67</th><td>    }</td></tr>
+<tr><th id="68">68</th><td></td></tr>
+<tr><th id="69">69</th><td>  <a class="local col8 ref" href="#8cmd" title='cmd' data-ref="8cmd">cmd</a>-&gt;<a class="ref" href="../../include/pocl.h.html#_cl_command_node::command" title='_cl_command_node::command' data-ref="_cl_command_node::command">command</a>.<a class="ref" href="../../include/pocl.h.html#(anonymous)::svm_unmap" title='(anonymous union)::svm_unmap' data-ref="(anonymous)::svm_unmap">svm_unmap</a>.<a class="ref" href="../../include/pocl.h.html#(anonymous)::svm_ptr" title='(anonymous struct)::svm_ptr' data-ref="(anonymous)::svm_ptr">svm_ptr</a> = <a class="local col2 ref" href="#2svm_ptr" title='svm_ptr' data-ref="2svm_ptr">svm_ptr</a>;</td></tr>
+<tr><th id="70">70</th><td></td></tr>
+<tr><th id="71">71</th><td>  <a class="ref" href="pocl_util.h.html#pocl_command_enqueue" title='pocl_command_enqueue' data-ref="pocl_command_enqueue">pocl_command_enqueue</a>(<a class="local col1 ref" href="#1command_queue" title='command_queue' data-ref="1command_queue">command_queue</a>, <a class="local col8 ref" href="#8cmd" title='cmd' data-ref="8cmd">cmd</a>);</td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td>  <b>return</b> <a class="macro" href="../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>;</td></tr>
+<tr><th id="74">74</th><td></td></tr>
+<tr><th id="75">75</th><td>}</td></tr>
+<tr><th id="76">76</th><td><a class="macro" href="pocl_cl.h.html#234" title="" data-ref="_M/POsym">POsym</a>(clEnqueueSVMUnmap)</td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

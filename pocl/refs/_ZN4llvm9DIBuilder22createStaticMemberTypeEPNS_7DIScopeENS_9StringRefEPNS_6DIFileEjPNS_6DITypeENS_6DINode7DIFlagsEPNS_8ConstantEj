@@ -1,0 +1,11 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='283' type='llvm::DIDerivedType * llvm::DIBuilder::createStaticMemberType(llvm::DIScope * Scope, llvm::StringRef Name, llvm::DIFile * File, unsigned int LineNo, llvm::DIType * Ty, DINode::DIFlags Flags, llvm::Constant * Val, uint32_t AlignInBits = 0)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='273'>/// Create debugging information entry for a
+    /// C++ static data member.
+    /// \param Scope      Member scope.
+    /// \param Name       Member name.
+    /// \param File       File where this member is declared.
+    /// \param LineNo     Line number.
+    /// \param Ty         Type of the static member.
+    /// \param Flags      Flags to encode member attribute, e.g. private.
+    /// \param Val        Const initializer of the member.
+    /// \param AlignInBits  Member alignment.</doc>

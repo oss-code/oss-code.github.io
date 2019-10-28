@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='1272' type='bool llvm::APInt::uge(const llvm::APInt &amp; RHS) const'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='1266'>/// \brief Unsigned greater or equal comparison
+  ///
+  /// Regards both *this and RHS as unsigned quantities and compares them for
+  /// validity of the greater-or-equal relationship.
+  ///
+  /// \returns true if *this &gt;= RHS when both are considered unsigned.</doc>
+<use f='include/llvm-6.0/llvm/ADT/APSInt.h' l='149' u='c' c='_ZNK4llvm6APSIntgeERKS0_'/>

@@ -1,0 +1,22 @@
+<def f='include/c++/7/bits/stl_set.h' l='498' ll='504' type='std::pair&lt;iterator, bool&gt; std::set::insert(const value_type &amp; __x)'/>
+<doc f='include/c++/7/bits/stl_set.h' l='485'>/**
+       *  @brief Attempts to insert an element into the %set.
+       *  @param  __x  Element to be inserted.
+       *  @return  A pair, of which the first element is an iterator that points
+       *           to the possibly inserted element, and the second is a bool
+       *           that is true if the element was actually inserted.
+       *
+       *  This function attempts to insert an element into the %set.  A %set
+       *  relies on unique keys and thus an element is only inserted if it is
+       *  not already present in the %set.
+       *
+       *  Insertion requires logarithmic time.
+       */</doc>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='133' u='c' c='_ZN4pocl22BarrierTailReplication15FindBarriersDFSEPN4llvm10BasicBlockERSt3setIS3_St4lessIS3_ESaIS3_EE'/>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='222' u='c' c='_ZN4pocl22BarrierTailReplication24ReplicateJoinedSubgraphsEPN4llvm10BasicBlockES3_RSt3setIS3_St4lessIS3_ESaIS3_EE'/>
+<use f='pocl/lib/llvmopencl/DebugHelpers.cc' l='172' u='c' c='_ZN4pocl7dumpCFGERN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPNS0_11SmallVectorIPNS_14ParallelRegionELj8EEEPSt3setIPNS0_10Bas7693485'/>
+<use f='pocl/lib/llvmopencl/HandleSamplerInitialization.cc' l='71' u='c' c='_ZN4pocl27HandleSamplerInitialization13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='396' u='c' c='_ZN4pocl14ParallelRegion6VerifyEv'/>
+<use f='pocl/lib/llvmopencl/RemoveBarrierCalls.cc' l='62' u='c' c='_ZN4pocl18RemoveBarrierCalls13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='710' u='c' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='646' u='c' c='_ZN4pocl13WorkitemLoops23FixMultiRegionVariablesEPNS_14ParallelRegionE'/>

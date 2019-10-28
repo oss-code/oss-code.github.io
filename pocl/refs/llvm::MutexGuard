@@ -1,0 +1,14 @@
+<def f='include/llvm-6.0/llvm/Support/MutexGuard.h' l='27' ll='38'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/Support/MutexGuard.h' l='21'>/// Instances of this class acquire a given Mutex Lock when constructed and
+  /// hold that lock until destruction. The intention is to instantiate one of
+  /// these on the stack at the top of some scope to be assured that C++
+  /// destruction of the object will always release the Mutex and thus avoid
+  /// a host of nasty multi-threading problems in the face of exceptions, etc.
+  /// @brief Guard a section of code with a Mutex.</doc>
+<mbr r='llvm::MutexGuard::M' o='0' t='sys::Mutex &amp;'/>
+<fun r='_ZN4llvm10MutexGuardC1ERKS0_'/>
+<fun r='_ZN4llvm10MutexGuardaSERKS0_'/>
+<fun r='_ZN4llvm10MutexGuardC1ERNS_3sys10SmartMutexILb0EEE'/>
+<fun r='_ZN4llvm10MutexGuardD1Ev'/>
+<fun r='_ZNK4llvm10MutexGuard5holdsERKNS_3sys10SmartMutexILb0EEE'/>

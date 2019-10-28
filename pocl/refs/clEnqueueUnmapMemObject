@@ -1,0 +1,13 @@
+<dec f='pocl/include/CL/cl.h' l='1578' type='cl_int clEnqueueUnmapMemObject(cl_command_queue command_queue, cl_mem memobj, void * mapped_ptr, cl_uint num_events_in_wait_list, const cl_event * event_wait_list, cl_event * event)'/>
+<use f='pocl/lib/CL/pocl_intfn.h' l='69' c='POclEnqueueUnmapMemObject'/>
+<use f='pocl/include/CL/cl2.hpp' l='8038' u='c' c='_ZNK2cl12CommandQueue21enqueueUnmapMemObjectERKNS_6MemoryEPvPKSt6vectorINS_5EventESaIS6_EEPS6_'/>
+<use f='pocl/include/CL/cl2.hpp' l='9170' u='c' c='_ZN2cl21enqueueUnmapMemObjectERKNS_6MemoryEPvPKSt6vectorINS_5EventESaIS5_EEPS5_'/>
+<use f='pocl/tests/runtime/test_buffer-image-copy.c' l='166' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_buffer-image-copy.c' l='184' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_buffer-image-copy.c' l='194' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateSubDevices.c' l='94' u='c' c='test_context'/>
+<use f='pocl/tests/runtime/test_event_free.c' l='101' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_event_free.c' l='103' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_event_free.c' l='108' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_event_free.c' l='124' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_event_free.c' l='128' u='c' c='main'/>

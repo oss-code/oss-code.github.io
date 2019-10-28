@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/InlineAsm.h' l='167' type='bool llvm::InlineAsm::ConstraintInfo::Parse(llvm::StringRef Str, ConstraintInfoVector &amp; ConstraintsSoFar)'/>
+<doc f='include/llvm-6.0/llvm/IR/InlineAsm.h' l='164'>/// Parse - Analyze the specified string (e.g. &quot;=*&amp;{eax}&quot;) and fill in the
+    /// fields in this structure.  If the constraint string is not understood,
+    /// return true, otherwise return false.</doc>

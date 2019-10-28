@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Bitcode/BitcodeReader.h' l='98' type='Expected&lt;std::unique_ptr&lt;Module&gt; &gt; llvm::BitcodeModule::getLazyModule(llvm::LLVMContext &amp; Context, bool ShouldLazyLoadMetadata, bool IsImporting)'/>
+<doc f='include/llvm-6.0/llvm/Bitcode/BitcodeReader.h' l='94'>/// Read the bitcode module and prepare for lazy deserialization of function
+    /// bodies. If ShouldLazyLoadMetadata is true, lazily load metadata as well.
+    /// If IsImporting is true, this module is being parsed for ThinLTO
+    /// importing into another module.</doc>

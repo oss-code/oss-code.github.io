@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1868' type='const llvm::SCEVAddRecExpr * llvm::PredicatedScalarEvolution::getAsAddRec(llvm::Value * V)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1864'>/// Attempts to produce an AddRecExpr for V by adding additional SCEV
+  /// predicates. If we can&apos;t transform the expression into an AddRecExpr we
+  /// return nullptr and not add additional SCEV predicates to the current
+  /// context.</doc>

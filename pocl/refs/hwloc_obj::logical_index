@@ -1,0 +1,9 @@
+<dec f='include/hwloc.h' l='365' type='unsigned int'/>
+<use f='include/hwloc/helper.h' l='1106' u='r' c='hwloc_get_distance_matrix_covering_obj_by_depth'/>
+<use f='include/hwloc/helper.h' l='1144' u='r' c='hwloc_get_latency'/>
+<use f='include/hwloc/helper.h' l='1145' u='r' c='hwloc_get_latency'/>
+<offset>480</offset>
+<doc f='include/hwloc.h' l='365'>/**&lt; \brief Horizontal index in the whole list of similar objects,
+					 * hence guaranteed unique across the entire machine.
+					 * Could be a &quot;cousin_rank&quot; since it&apos;s the rank within the &quot;cousin&quot; list below
+					 */</doc>

@@ -1,0 +1,36 @@
+<def f='include/llvm-6.0/llvm/Target/TargetOptions.h' l='99' ll='267'/>
+<size>144</size>
+<fun r='_ZN4llvm13TargetOptionsC1Ev'/>
+<mbr r='llvm::TargetOptions::PrintMachineCode' o='0' t='unsigned int'/>
+<fun r='_ZNK4llvm13TargetOptions23DisableFramePointerElimERKNS_15MachineFunctionE'/>
+<mbr r='llvm::TargetOptions::UnsafeFPMath' o='1' t='unsigned int'/>
+<mbr r='llvm::TargetOptions::NoInfsFPMath' o='2' t='unsigned int'/>
+<mbr r='llvm::TargetOptions::NoNaNsFPMath' o='3' t='unsigned int'/>
+<mbr r='llvm::TargetOptions::NoTrappingFPMath' o='4' t='unsigned int'/>
+<mbr r='llvm::TargetOptions::NoSignedZerosFPMath' o='5' t='unsigned int'/>
+<mbr r='llvm::TargetOptions::HonorSignDependentRoundingFPMathOption' o='6' t='unsigned int'/>
+<fun r='_ZNK4llvm13TargetOptions32HonorSignDependentRoundingFPMathEv'/>
+<mbr r='llvm::TargetOptions::NoZerosInBSS' o='7' t='unsigned int'/>
+<mbr r='llvm::TargetOptions::GuaranteedTailCallOpt' o='8' t='unsigned int'/>
+<mbr r='llvm::TargetOptions::StackAlignmentOverride' o='32' t='unsigned int'/>
+<mbr r='llvm::TargetOptions::StackSymbolOrdering' o='64' t='unsigned int'/>
+<mbr r='llvm::TargetOptions::EnableFastISel' o='65' t='unsigned int'/>
+<mbr r='llvm::TargetOptions::UseInitArray' o='66' t='unsigned int'/>
+<mbr r='llvm::TargetOptions::DisableIntegratedAS' o='67' t='unsigned int'/>
+<mbr r='llvm::TargetOptions::CompressDebugSections' o='96' t='llvm::DebugCompressionType'/>
+<mbr r='llvm::TargetOptions::RelaxELFRelocations' o='128' t='unsigned int'/>
+<mbr r='llvm::TargetOptions::FunctionSections' o='129' t='unsigned int'/>
+<mbr r='llvm::TargetOptions::DataSections' o='130' t='unsigned int'/>
+<mbr r='llvm::TargetOptions::UniqueSectionNames' o='131' t='unsigned int'/>
+<mbr r='llvm::TargetOptions::TrapUnreachable' o='132' t='unsigned int'/>
+<mbr r='llvm::TargetOptions::EmulatedTLS' o='133' t='unsigned int'/>
+<mbr r='llvm::TargetOptions::EnableIPRA' o='134' t='unsigned int'/>
+<mbr r='llvm::TargetOptions::EmitStackSizeSection' o='135' t='unsigned int'/>
+<mbr r='llvm::TargetOptions::FloatABIType' o='160' t='FloatABI::ABIType'/>
+<mbr r='llvm::TargetOptions::AllowFPOpFusion' o='192' t='FPOpFusion::FPOpFusionMode'/>
+<mbr r='llvm::TargetOptions::ThreadModel' o='224' t='ThreadModel::Model'/>
+<mbr r='llvm::TargetOptions::EABIVersion' o='256' t='llvm::EABI'/>
+<mbr r='llvm::TargetOptions::DebuggerTuning' o='288' t='llvm::DebuggerKind'/>
+<mbr r='llvm::TargetOptions::FPDenormalMode' o='320' t='FPDenormal::DenormalMode'/>
+<mbr r='llvm::TargetOptions::ExceptionModel' o='352' t='llvm::ExceptionHandling'/>
+<mbr r='llvm::TargetOptions::MCOptions' o='384' t='llvm::MCTargetOptions'/>

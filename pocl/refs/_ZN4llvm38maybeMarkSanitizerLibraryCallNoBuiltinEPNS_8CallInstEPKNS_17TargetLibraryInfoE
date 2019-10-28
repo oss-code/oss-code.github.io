@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='481' type='void llvm::maybeMarkSanitizerLibraryCallNoBuiltin(llvm::CallInst * CI, const llvm::TargetLibraryInfo * TLI)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='473'>//===----------------------------------------------------------------------===//
+//  Sanitizer utilities
+//
+
+/// Given a CallInst, check if it calls a string function known to CodeGen,
+/// and mark it with NoBuiltin if so.  To be used by sanitizers that intend
+/// to intercept string functions and want to avoid converting them to target
+/// specific instructions.</doc>

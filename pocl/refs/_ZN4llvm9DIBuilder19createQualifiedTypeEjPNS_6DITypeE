@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='186' type='llvm::DIDerivedType * llvm::DIBuilder::createQualifiedType(unsigned int Tag, llvm::DIType * FromTy)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='182'>/// Create debugging information entry for a qualified
+    /// type, e.g. &apos;const int&apos;.
+    /// \param Tag         Tag identifing type, e.g. dwarf::TAG_volatile_type
+    /// \param FromTy      Base Type.</doc>

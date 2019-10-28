@@ -1,0 +1,26 @@
+<def f='include/llvm-6.0/llvm/ADT/ArrayRef.h' l='82' ll='84' type='void llvm::ArrayRef::ArrayRef&lt;T&gt;(const SmallVectorTemplateCommon&lt;T, U&gt; &amp; Vec)'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='238' u='c' c='_ZN4llvm10StructType6createENS_9StringRefEPNS_4TypeEDpPT_'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='258' u='c' c='_ZN4llvm10StructType3getEPNS_4TypeEDpPT_'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='294' u='c' c='_ZN4llvm10StructType7setBodyEPNS_4TypeEDpPT_'/>
+<use f='include/llvm-6.0/llvm/IR/DataLayout.h' l='327' u='c' c='_ZNK4llvm10DataLayout27getNonIntegralAddressSpacesEv'/>
+<use f='include/llvm-6.0/llvm/IR/Metadata.h' l='1124' u='c' c='_ZNK4llvm7MDTuple9cloneImplEv'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='455' u='c' c='_ZN4llvm14ConstantStruct3getEPNS_10StructTypeEDpPT_'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='2392' u='c' c='_ZNK4llvm16ExtractValueInst10getIndicesEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='2523' u='c' c='_ZNK4llvm15InsertValueInst10getIndicesEv'/>
+<doc f='include/llvm-6.0/llvm/ADT/ArrayRef.h' l='82'>/*implicit*/</doc>
+<use f='include/llvm-6.0/llvm/Support/SourceMgr.h' l='273' u='c' c='_ZNK4llvm12SMDiagnostic9getFixItsEv'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='288' u='c' c='_ZNK4llvm13GenericDINode9cloneImplEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='279' u='c' c='_ZNK4llvm19TargetTransformInfo11getUserCostEPKNS_4UserE'/>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='174' u='c' c='_ZN12_GLOBAL__N_115AutomaticLocals22processAutomaticLocalsEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/LLVMUtils.cc' l='75' u='c' c='_ZN4pocl26regenerate_kernel_metadataERN4llvm6ModuleERSt3mapIPNS0_8FunctionES5_St4lessIS5_ESaISt4pairIKS5_S5_EEE'/>
+<use f='pocl/lib/llvmopencl/LLVMUtils.cc' l='158' u='c' c='_ZN4pocl24setFuncArgAddressSpaceMDEPN4llvm8FunctionEjj'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='110' u='c' c='_ZN4llvm11TypeBuilderINS_13_pocl_contextEXT_EE3getERNS_11LLVMContextE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='129' u='c' c='_ZN4llvm11TypeBuilderINS_13_pocl_contextEXT_EE3getERNS_11LLVMContextE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='440' u='c' c='_ZL27cloneFunctionWithPrintfArgsPN4llvm5ValueES1_S1_PNS_8FunctionEPNS_6ModuleE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='521' u='c' c='_ZL18replacePrintfCallsPN4llvm5ValueES1_S1_bPNS_8FunctionERNS_6ModuleES3_RSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='586' u='c' c='_ZL18replacePrintfCallsPN4llvm5ValueES1_S1_bPNS_8FunctionERNS_6ModuleES3_RSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='633' u='c' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='683' u='c' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1032' u='c' c='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1423' u='c' c='_ZN4pocl9Workgroup27createFastWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='134' u='c' c='_ZL24CloneFuncFixOpenCLImageTPN4llvm6ModuleEPNS_8FunctionE'/>

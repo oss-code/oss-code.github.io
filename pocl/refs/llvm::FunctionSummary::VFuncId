@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='314' ll='317'/>
+<size>16</size>
+<doc f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='310'>/// An &quot;identifier&quot; for a virtual function. This contains the type identifier
+  /// represented as a GUID and the offset from the address point to the virtual
+  /// function pointer, where &quot;address point&quot; is as defined in the Itanium ABI:
+  /// https://itanium-cxx-abi.github.io/cxx-abi/abi.html#vtable-general</doc>
+<mbr r='llvm::FunctionSummary::VFuncId::GUID' o='0' t='GlobalValue::GUID'/>
+<mbr r='llvm::FunctionSummary::VFuncId::Offset' o='64' t='uint64_t'/>

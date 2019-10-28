@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/GlobalVariable.h' l='224' ll='229' type='llvm::AttributeList llvm::GlobalVariable::getAttributesAsList(unsigned int index) const'/>
+<doc f='include/llvm-6.0/llvm/IR/GlobalVariable.h' l='221'>/// Return attribute set as list with index.
+  /// FIXME: This may not be required once ValueEnumerators
+  /// in bitcode-writer can enumerate attribute-set.</doc>

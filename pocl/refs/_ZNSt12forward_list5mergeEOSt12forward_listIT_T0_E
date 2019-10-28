@@ -1,0 +1,10 @@
+<def f='include/c++/7/bits/forward_list.h' l='1193' ll='1195' type='void std::forward_list::merge(forward_list&lt;_Tp, _Alloc&gt; &amp;&amp; __list)'/>
+<doc f='include/c++/7/bits/forward_list.h' l='1184'>/**
+       *  @brief  Merge sorted lists.
+       *  @param  __list  Sorted list to merge.
+       *
+       *  Assumes that both @a list and this list are sorted according to
+       *  operator&lt;().  Merges elements of @a __list into this list in
+       *  sorted order, leaving @a __list empty when complete.  Elements in
+       *  this list precede elements in @a __list that are equal.
+       */</doc>

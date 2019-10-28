@@ -1,0 +1,26 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='870' type='cl_device_id'/>
+<offset>1344</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='868'>/* The device that should allocate SVM (might be == host)
+   * NULL if none of devices in the context is SVM capable */</doc>
+<use f='pocl/lib/CL/clCreateBuffer.c' l='145' u='r' c='POclCreateBuffer'/>
+<use f='pocl/lib/CL/clCreateBuffer.c' l='147' u='r' c='POclCreateBuffer'/>
+<use f='pocl/lib/CL/clCreateBuffer.c' l='147' u='r' c='POclCreateBuffer'/>
+<use f='pocl/lib/CL/clCreateBuffer.c' l='157' u='r' c='POclCreateBuffer'/>
+<use f='pocl/lib/CL/clEnqueueSVMFree.c' l='45' u='r' c='POclEnqueueSVMFree'/>
+<use f='pocl/lib/CL/clEnqueueSVMMap.c' l='42' u='r' c='POclEnqueueSVMMap'/>
+<use f='pocl/lib/CL/clEnqueueSVMMemFill.c' l='42' u='r' c='POclEnqueueSVMMemFill'/>
+<use f='pocl/lib/CL/clEnqueueSVMMemcpy.c' l='42' u='r' c='POclEnqueueSVMMemcpy'/>
+<use f='pocl/lib/CL/clEnqueueSVMUnmap.c' l='39' u='r' c='POclEnqueueSVMUnmap'/>
+<use f='pocl/lib/CL/clSVMAlloc.c' l='40' u='r' c='POclSVMAlloc'/>
+<use f='pocl/lib/CL/clSVMAlloc.c' l='81' u='r' c='POclSVMAlloc'/>
+<use f='pocl/lib/CL/clSVMAlloc.c' l='81' u='r' c='POclSVMAlloc'/>
+<use f='pocl/lib/CL/clSVMAlloc.c' l='81' u='r' c='POclSVMAlloc'/>
+<use f='pocl/lib/CL/clSVMFree.c' l='37' u='r' c='POclSVMFree'/>
+<use f='pocl/lib/CL/clSVMFree.c' l='46' u='r' c='POclSVMFree'/>
+<use f='pocl/lib/CL/clSVMFree.c' l='46' u='r' c='POclSVMFree'/>
+<use f='pocl/lib/CL/clSetKernelArgSVMPointer.c' l='36' u='r' c='POclSetKernelArgSVMPointer'/>
+<use f='pocl/lib/CL/clSetKernelExecInfo.c' l='34' u='r' c='POclSetKernelExecInfo'/>
+<use f='pocl/lib/CL/pocl_util.c' l='951' u='w' c='pocl_setup_context'/>
+<use f='pocl/lib/CL/pocl_util.c' l='960' u='w' c='pocl_setup_context'/>
+<use f='pocl/lib/CL/pocl_util.c' l='980' u='r' c='pocl_setup_context'/>
+<use f='pocl/lib/CL/pocl_util.c' l='984' u='w' c='pocl_setup_context'/>

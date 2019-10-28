@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/IR/Function.h' l='643' type='size_t llvm::Function::arg_size() const'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='644' u='c' c='_ZNK4llvm8Function9arg_emptyEv'/>
+<doc f='include/llvm-6.0/llvm/IR/Function.h' l='641'>/// @}</doc>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='505' u='c' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='201' u='c' c='_ZN12_GLOBAL__N_115AutomaticLocals22processAutomaticLocalsEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='648' u='c' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='971' u='c' c='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1377' u='c' c='_ZN4pocl9Workgroup27createFastWorkgroupLauncherEPN4llvm8FunctionE'/>

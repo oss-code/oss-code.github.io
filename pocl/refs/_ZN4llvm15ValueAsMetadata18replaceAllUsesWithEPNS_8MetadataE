@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='390' ll='392' type='void llvm::ValueAsMetadata::replaceAllUsesWith(llvm::Metadata * MD)'/>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='385'>/// \brief Handle collisions after \a Value::replaceAllUsesWith().
+  ///
+  /// RAUW isn&apos;t supported directly for \a ValueAsMetadata, but if the wrapped
+  /// \a Value gets RAUW&apos;ed and the target already exists, this is used to
+  /// merge the two metadata nodes.</doc>

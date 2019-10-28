@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='1140' type='bool llvm::APInt::operator!=(const llvm::APInt &amp; RHS) const'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='1134'>/// \brief Inequality operator.
+  ///
+  /// Compares this APInt with RHS for the validity of the inequality
+  /// relationship.
+  ///
+  /// \returns true if *this != Val</doc>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='145' u='c' c='_ZN4pocl25OptimizeWorkItemFuncCalls13runOnFunctionERN4llvm8FunctionE'/>

@@ -1,0 +1,9 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2553' type='unsigned int LLVMGetInstructionCallConv(LLVMValueRef Instr)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2545'>/**
+ * Obtain the calling convention for a call instruction.
+ *
+ * This is the opposite of LLVMSetInstructionCallConv(). Reads its
+ * usage.
+ *
+ * @see LLVMSetInstructionCallConv()
+ */</doc>

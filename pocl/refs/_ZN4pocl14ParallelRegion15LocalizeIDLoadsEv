@@ -1,0 +1,18 @@
+<dec f='pocl/lib/llvmopencl/ParallelRegion.h' l='103' type='void pocl::ParallelRegion::LocalizeIDLoads()'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='151' u='c' c='_ZN4pocl14ParallelRegion9replicateERN4llvm8ValueMapIPKNS1_5ValueENS1_14WeakTrackingVHENS1_14ValueMapConfigIS5_NS1_3sys10SmartMutexILb0EEEEEEERKNS1_5TwineE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='366' u='c' c='_ZN4pocl14ParallelRegion6CreateERKN4llvm11SmallPtrSetIPNS1_10BasicBlockELj8EEES4_S4_'/>
+<def f='pocl/lib/llvmopencl/ParallelRegion.cc' l='773' ll='821' type='void pocl::ParallelRegion::LocalizeIDLoads()'/>
+<doc f='pocl/lib/llvmopencl/ParallelRegion.cc' l='759'>/**
+ * Localizes all the loads to the the work-item identifiers.
+ *
+ * In case the code inside the region queries the WI id, it
+ * should not (re)use one that is loaded in another region, but
+ * one that is loaded in the same region. Otherwise, it ends
+ * up using the last id the previous PR work-item loop got.
+ * This caused problems in cases where the local id was stored
+ * to a temporary variable in an earlier region and that temp
+ * was reused later.
+ *
+ * The function scans for all loads from the local id variables
+ * and converts them to loads inside the parallel region.
+ */</doc>

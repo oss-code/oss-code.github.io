@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='739' type='void llvm::LazyCallGraph::RefSCC::switchOutgoingEdgeToRef(llvm::LazyCallGraph::Node &amp; SourceN, llvm::LazyCallGraph::Node &amp; TargetN)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='735'>/// Make an existing outgoing call edge into a ref edge.
+    ///
+    /// This is trivial as there are no cyclic impacts and there remains
+    /// a reference edge.</doc>

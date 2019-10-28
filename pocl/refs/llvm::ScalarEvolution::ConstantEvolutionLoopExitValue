@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1279' type='DenseMap&lt;llvm::PHINode *, llvm::Constant *&gt;'/>
+<offset>2432</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1275'>/// This map contains entries for all of the PHI instructions that we
+  /// attempt to compute constant evolutions for.  This allows us to avoid
+  /// potentially expensive recomputation of these properties.  An instruction
+  /// maps to null if we are unable to compute its exit value.</doc>

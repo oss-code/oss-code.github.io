@@ -1,0 +1,33 @@
+<inh f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='337' c='llvm::raw_pwrite_stream'/>
+<def f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='361' ll='443'/>
+<size>80</size>
+<doc f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='355'>//===----------------------------------------------------------------------===//
+// File Output Streams
+//===----------------------------------------------------------------------===//
+
+/// A raw_ostream that writes to a file descriptor.
+///</doc>
+<mbr r='llvm::raw_fd_ostream::FD' o='288' t='int'/>
+<mbr r='llvm::raw_fd_ostream::ShouldClose' o='320' t='bool'/>
+<mbr r='llvm::raw_fd_ostream::EC' o='384' t='std::error_code'/>
+<mbr r='llvm::raw_fd_ostream::pos' o='512' t='uint64_t'/>
+<mbr r='llvm::raw_fd_ostream::SupportsSeeking' o='576' t='bool'/>
+<fun r='_ZN4llvm14raw_fd_ostream10write_implEPKcm'/>
+<fun r='_ZN4llvm14raw_fd_ostream11pwrite_implEPKcmm'/>
+<fun r='_ZNK4llvm14raw_fd_ostream11current_posEv'/>
+<fun r='_ZNK4llvm14raw_fd_ostream21preferred_buffer_sizeEv'/>
+<fun r='_ZN4llvm14raw_fd_ostream14error_detectedESt10error_code'/>
+<fun r='_ZN4llvm14raw_fd_ostreamC1ENS_9StringRefERSt10error_codeNS_3sys2fs9OpenFlagsE'/>
+<fun r='_ZN4llvm14raw_fd_ostreamC1Eibb'/>
+<fun r='_ZN4llvm14raw_fd_ostreamD1Ev'/>
+<fun r='_ZN4llvm14raw_fd_ostream5closeEv'/>
+<fun r='_ZN4llvm14raw_fd_ostream15supportsSeekingEv'/>
+<fun r='_ZN4llvm14raw_fd_ostream4seekEm'/>
+<fun r='_ZN4llvm14raw_fd_ostream11changeColorENS_11raw_ostream6ColorsEbb'/>
+<fun r='_ZN4llvm14raw_fd_ostream10resetColorEv'/>
+<fun r='_ZN4llvm14raw_fd_ostream12reverseColorEv'/>
+<fun r='_ZNK4llvm14raw_fd_ostream12is_displayedEv'/>
+<fun r='_ZNK4llvm14raw_fd_ostream10has_colorsEv'/>
+<fun r='_ZNK4llvm14raw_fd_ostream5errorEv'/>
+<fun r='_ZNK4llvm14raw_fd_ostream9has_errorEv'/>
+<fun r='_ZN4llvm14raw_fd_ostream11clear_errorEv'/>

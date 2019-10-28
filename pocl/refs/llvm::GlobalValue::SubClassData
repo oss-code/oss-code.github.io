@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='116' type='unsigned int'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='155' u='r' c='_ZNK4llvm11GlobalValue26getGlobalValueSubClassDataEv'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='159' u='w' c='_ZN4llvm11GlobalValue26setGlobalValueSubClassDataEj'/>
+<offset>271</offset>
+<doc f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='114'>// Give subclasses access to what otherwise would be wasted padding.
+  // (17 + 4 + 2 + 2 + 2 + 3 + 1 + 1) == 32.</doc>

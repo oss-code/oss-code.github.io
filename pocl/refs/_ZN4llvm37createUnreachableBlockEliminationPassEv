@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/CodeGen/Passes.h' l='44' type='llvm::FunctionPass * llvm::createUnreachableBlockEliminationPass()'/>
+<doc f='include/llvm-6.0/llvm/CodeGen/Passes.h' l='38'>/// createUnreachableBlockEliminationPass - The LLVM code generator does not
+  /// work well with unreachable basic blocks (what live ranges make sense for a
+  /// block that cannot be reached?).  As such, a code generator should either
+  /// not instruction select unreachable blocks, or run this pass as its
+  /// last LLVM modifying pass to clean up blocks that are not reachable from
+  /// the entry block.</doc>

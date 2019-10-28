@@ -1,0 +1,28 @@
+<dec f='include/hwloc.h' l='885' type='int hwloc_topology_set_synthetic(restrict hwloc_topology_t topology, const char *restrict description)'/>
+<doc f='include/hwloc.h' l='858'>/** \brief Enable synthetic topology.
+ *
+ * Gather topology information from the given \p description,
+ * a space-separated string of numbers describing
+ * the arity of each level.
+ * Each number may be prefixed with a type and a colon to enforce the type
+ * of a level.  If only some level types are enforced, hwloc will try to
+ * choose the other types according to usual topologies, but it may fail
+ * and you may have to specify more level types manually.
+ * See also the \ref synthetic.
+ *
+ * If \p description was properly parsed and describes a valid topology
+ * configuration, this function returns 0.
+ * Otherwise -1 is returned and errno is set to EINVAL.
+ *
+ * Note that this function does not actually load topology
+ * information; it just tells hwloc where to load it from.  You&apos;ll
+ * still need to invoke hwloc_topology_load() to actually load the
+ * topology information.
+ *
+ * \note For convenience, this backend provides empty binding hooks which just
+ * return success.
+ *
+ * \note On success, the synthetic component replaces the previously enabled
+ * component (if any), but the topology is not actually modified until
+ * hwloc_topology_load().
+ */</doc>

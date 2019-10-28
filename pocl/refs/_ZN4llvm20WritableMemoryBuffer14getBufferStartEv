@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Support/MemoryBuffer.h' l='174' ll='176' type='char * llvm::WritableMemoryBuffer::getBufferStart()'/>
+<use f='include/llvm-6.0/llvm/Support/MemoryBuffer.h' l='181' u='c' c='_ZN4llvm20WritableMemoryBuffer9getBufferEv'/>
+<doc f='include/llvm-6.0/llvm/Support/MemoryBuffer.h' l='172'>// const_cast is well-defined here, because the underlying buffer is
+  // guaranteed to have been initialized with a mutable buffer.</doc>

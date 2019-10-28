@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/IRPrintingPasses.h' l='37' type='llvm::ModulePass * llvm::createPrintModulePass(llvm::raw_ostream &amp; OS, const std::string &amp; Banner = &quot;&quot;, bool ShouldPreserveUseListOrder = false)'/>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='188' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>
+<doc f='include/llvm-6.0/llvm/IR/IRPrintingPasses.h' l='35'>/// \brief Create and return a pass that writes the module to the specified
+/// \c raw_ostream.</doc>

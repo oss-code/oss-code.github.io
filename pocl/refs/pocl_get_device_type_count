@@ -1,0 +1,9 @@
+<dec f='pocl/lib/CL/devices/devices.h' l='57' type='unsigned int pocl_get_device_type_count(cl_device_type device_type)'/>
+<doc f='pocl/lib/CL/devices/devices.h' l='52'>/**
+ * \brief Get the count of devices for a specific type
+ * \param device_type the device type for which we want the count of devices
+ * \return the count of devices for this type
+ */</doc>
+<use f='pocl/lib/CL/clCreateContextFromType.c' l='76' u='c' c='POclCreateContextFromType'/>
+<use f='pocl/lib/CL/clGetDeviceIDs.c' l='54' u='c' c='POclGetDeviceIDs'/>
+<def f='pocl/lib/CL/devices/devices.c' l='176' ll='199' type='unsigned int pocl_get_device_type_count(cl_device_type device_type)'/>

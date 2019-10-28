@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Target/TargetMachine.h' l='215' type='llvm::TargetTransformInfo llvm::TargetMachine::getTargetTransformInfo(const llvm::Function &amp; F)'/>
+<doc f='include/llvm-6.0/llvm/Target/TargetMachine.h' l='211'>/// \brief Return a TargetTransformInfo for a given function.
+  ///
+  /// The returned TargetTransformInfo is specialized to the subtarget
+  /// corresponding to \p F.</doc>

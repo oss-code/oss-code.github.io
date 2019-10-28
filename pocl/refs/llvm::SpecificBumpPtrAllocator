@@ -1,0 +1,13 @@
+<def f='include/llvm-6.0/llvm/Support/Allocator.h' l='385' ll='435'/>
+<doc f='include/llvm-6.0/llvm/Support/Allocator.h' l='380'>/// \brief A BumpPtrAllocator that allows only elements of a specific type to be
+/// allocated.
+///
+/// This allows calling the destructor in DestroyAll() and when the allocator is
+/// destroyed.</doc>
+<mbr r='llvm::SpecificBumpPtrAllocator::Allocator' t='BumpPtrAllocator'/>
+<fun r='_ZN4llvm24SpecificBumpPtrAllocatorC1Ev'/>
+<fun r='_ZN4llvm24SpecificBumpPtrAllocatorC1EONS_24SpecificBumpPtrAllocatorIT_EE'/>
+<fun r='_ZN4llvm24SpecificBumpPtrAllocatorD1Ev'/>
+<fun r='_ZN4llvm24SpecificBumpPtrAllocatoraSEONS_24SpecificBumpPtrAllocatorIT_EE'/>
+<fun r='_ZN4llvm24SpecificBumpPtrAllocator10DestroyAllEv'/>
+<fun r='_ZN4llvm24SpecificBumpPtrAllocator8AllocateEm'/>

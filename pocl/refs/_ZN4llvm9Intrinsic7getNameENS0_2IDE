@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Intrinsics.h' l='50' type='llvm::StringRef llvm::Intrinsic::getName(llvm::Intrinsic::ID id)'/>
+<doc f='include/llvm-6.0/llvm/IR/Intrinsics.h' l='47'>/// Return the LLVM name for an intrinsic, such as &quot;llvm.ppc.altivec.lvx&quot;.
+  /// Note, this version is for intrinsics with no overloads.  Use the other
+  /// version of getName if overloads are required.</doc>

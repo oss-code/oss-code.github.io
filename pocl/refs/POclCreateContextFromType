@@ -1,0 +1,4 @@
+<dec f='pocl/lib/CL/pocl_intfn.h' l='37' macro='1' type='cl_context POclCreateContextFromType(const cl_context_properties * , cl_device_type , void (*)(const char *, const void *, size_t, void *) , void * , cl_int * )'/>
+<def f='pocl/lib/CL/clCreateContextFromType.c' l='41' macro='1' type='cl_context POclCreateContextFromType(const cl_context_properties * properties, cl_device_type device_type, void (*)(const char *, const void *, size_t, void *) pfn_notify, void * user_data, cl_int * errcode_ret)'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='45' macro='1' u='a'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='45' macro='1' u='a'/>

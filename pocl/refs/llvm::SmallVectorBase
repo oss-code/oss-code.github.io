@@ -1,0 +1,12 @@
+<def f='include/llvm-6.0/llvm/ADT/SmallVector.h' l='38' ll='62'/>
+<ovr f='include/llvm-6.0/llvm/ADT/SmallVector.h' l='68' c='llvm::SmallVectorTemplateCommon'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/ADT/SmallVector.h' l='37'>/// This is all the non-templated stuff common to all SmallVectors.</doc>
+<mbr r='llvm::SmallVectorBase::BeginX' o='0' t='void *'/>
+<mbr r='llvm::SmallVectorBase::EndX' o='64' t='void *'/>
+<mbr r='llvm::SmallVectorBase::CapacityX' o='128' t='void *'/>
+<fun r='_ZN4llvm15SmallVectorBaseC1EPvm'/>
+<fun r='_ZN4llvm15SmallVectorBase8grow_podEPvmm'/>
+<fun r='_ZNK4llvm15SmallVectorBase13size_in_bytesEv'/>
+<fun r='_ZNK4llvm15SmallVectorBase17capacity_in_bytesEv'/>
+<fun r='_ZNK4llvm15SmallVectorBase5emptyEv'/>

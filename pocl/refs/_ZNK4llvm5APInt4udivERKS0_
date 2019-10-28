@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/ADT/APInt.h' l='1038' type='llvm::APInt llvm::APInt::udiv(const llvm::APInt &amp; RHS) const'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='1032'>/// \brief Unsigned division operation.
+  ///
+  /// Perform an unsigned divide operation on this APInt by RHS. Both this and
+  /// RHS are treated as unsigned quantities for purposes of this division.
+  ///
+  /// \returns a new APInt value containing the division result</doc>
+<use f='include/llvm-6.0/llvm/ADT/APSInt.h' l='110' u='c' c='_ZN4llvm6APSIntdVERKS0_'/>
+<use f='include/llvm-6.0/llvm/ADT/APSInt.h' l='121' u='c' c='_ZNK4llvm6APSIntdvERKS0_'/>

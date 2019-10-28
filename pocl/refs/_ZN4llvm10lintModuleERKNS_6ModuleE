@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/Lint.h' l='38' type='void llvm::lintModule(const llvm::Module &amp; M)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/Lint.h' l='34'>/// @brief Check a module.
+///
+/// This should only be used for debugging, because it plays games with
+/// PassManagers and stuff.</doc>

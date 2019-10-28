@@ -1,0 +1,6 @@
+<dec f='include/hwloc/bitmap.h' l='202' type='void hwloc_bitmap_clr_range(hwloc_bitmap_t bitmap, unsigned int begin, int end)'/>
+<use f='include/hwloc/cpuset.h' l='48' u='c' c='hwloc_cpuset_clr_range'/>
+<doc f='include/hwloc/bitmap.h' l='198'>/** \brief Remove indexes from \p begin to \p end in bitmap \p bitmap.
+ *
+ * If \p end is \c -1, the range is infinite.
+ */</doc>

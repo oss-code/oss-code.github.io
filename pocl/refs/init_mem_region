@@ -1,0 +1,7 @@
+<dec f='pocl/lib/CL/devices/bufalloc.h' l='159' type='void init_mem_region(memory_region_t * region, memory_address_t start, size_t size)'/>
+<def f='pocl/lib/CL/devices/bufalloc.c' l='400' ll='429' type='void init_mem_region(memory_region_t * region, memory_address_t start, size_t size)'/>
+<doc f='pocl/lib/CL/devices/bufalloc.c' l='395'>/** Initialize a memory_region_t.
+ * @param region is a pointer to a existing memory_region_t data structure.
+ * @param start the base address of the memory region to be managed.
+ * @Param size  the size of the region (in bytes?)
+ */</doc>

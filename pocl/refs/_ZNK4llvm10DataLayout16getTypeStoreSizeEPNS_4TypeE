@@ -1,0 +1,15 @@
+<def f='include/llvm-6.0/llvm/IR/DataLayout.h' l='386' ll='388' type='uint64_t llvm::DataLayout::getTypeStoreSize(llvm::Type * Ty) const'/>
+<use f='include/llvm-6.0/llvm/IR/DataLayout.h' l='395' u='c' c='_ZNK4llvm10DataLayout22getTypeStoreSizeInBitsEPNS_4TypeE'/>
+<use f='include/llvm-6.0/llvm/IR/DataLayout.h' l='405' u='c' c='_ZNK4llvm10DataLayout16getTypeAllocSizeEPNS_4TypeE'/>
+<doc f='include/llvm-6.0/llvm/IR/DataLayout.h' l='382'>/// \brief Returns the maximum number of bytes that may be overwritten by
+  /// storing the specified type.
+  ///
+  /// For example, returns 5 for i36 and 10 for x86_fp80.</doc>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1866' u='c' c='_ZN4llvm9IRBuilder20CreateExtractIntegerERKNS_10DataLayoutEPNS_5ValueEPNS_11IntegerTypeEmRKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1867' u='c' c='_ZN4llvm9IRBuilder20CreateExtractIntegerERKNS_10DataLayoutEPNS_5ValueEPNS_11IntegerTypeEmRKNS_5TwineE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='997' u='c' c='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='998' u='c' c='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1060' u='c' c='_ZL15getArgumentSizeRN4llvm8ArgumentE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='912' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='934' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='949' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>

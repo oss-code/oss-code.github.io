@@ -1,0 +1,14 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionPass.h' l='50' type='bool llvm::RegionPass::runOnRegion(llvm::Region * R, llvm::RGPassManager &amp; RGM)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionPass.h' l='38'>//===--------------------------------------------------------------------===//
+  /// @name To be implemented by every RegionPass
+  ///
+  //@{
+  /// @brief Run the pass on a specific Region
+  ///
+  /// Accessing regions not contained in the current region is not allowed.
+  ///
+  /// @param R The region this pass is run on.
+  /// @param RGM The RegionPassManager that manages this Pass.
+  ///
+  /// @return True if the pass modifies this Region.</doc>
+<ovr f='pocl/lib/llvmopencl/IsolateRegions.cc' l='98' c='_ZN4pocl14IsolateRegions11runOnRegionEPN4llvm6RegionERNS1_13RGPassManagerE'/>

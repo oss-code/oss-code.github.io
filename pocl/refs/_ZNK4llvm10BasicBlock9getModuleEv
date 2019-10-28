@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='115' type='const llvm::Module * llvm::BasicBlock::getModule() const'/>
+<use f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='118' u='c' c='_ZN4llvm10BasicBlock9getModuleEv'/>
+<doc f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='111'>/// \brief Return the module owning the function this basic block belongs to,
+  /// or nullptr it the function does not have a module.
+  ///
+  /// Note: this is undefined behavior if the block does not have a parent.</doc>

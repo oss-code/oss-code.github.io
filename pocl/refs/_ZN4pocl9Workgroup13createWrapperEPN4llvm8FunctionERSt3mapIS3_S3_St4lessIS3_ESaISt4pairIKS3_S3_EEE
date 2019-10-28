@@ -1,0 +1,5 @@
+<dec f='pocl/lib/llvmopencl/Workgroup.h' l='46' type='llvm::Function * pocl::Workgroup::createWrapper(llvm::Function * F, FunctionMapping &amp; printfCache)'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='234' u='c' c='_ZN4pocl9Workgroup11runOnModuleERN4llvm6ModuleE'/>
+<def f='pocl/lib/llvmopencl/Workgroup.cc' l='602' ll='739' type='llvm::Function * pocl::Workgroup::createWrapper(llvm::Function * F, FunctionMapping &amp; printfCache)'/>
+<doc f='pocl/lib/llvmopencl/Workgroup.cc' l='600'>// Create a wrapper for the kernel and add pocl-specific hidden arguments.
+// Also inlines the wrapped function to the wrapper.</doc>

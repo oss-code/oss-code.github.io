@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Transforms/IPO.h' l='45' type='llvm::ModulePass * llvm::createStripNonDebugSymbolsPass()'/>
+<doc f='include/llvm-6.0/llvm/Transforms/IPO.h' l='40'>//===----------------------------------------------------------------------===//
+//
+// These functions strips symbols from functions and modules.
+// Only debugging information is not stripped.
+//</doc>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='160' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>

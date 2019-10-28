@@ -1,0 +1,25 @@
+<def f='include/llvm-6.0/llvm/ADT/IntrusiveRefCntPtr.h' l='136' ll='194'/>
+<doc f='include/llvm-6.0/llvm/ADT/IntrusiveRefCntPtr.h' l='130'>/// A smart pointer to a reference-counted object that inherits from
+/// RefCountedBase or ThreadSafeRefCountedBase.
+///
+/// This class increments its pointee&apos;s reference count when it is created, and
+/// decrements its refcount when it&apos;s destroyed (or is changed to point to a
+/// different object).</doc>
+<mbr r='llvm::IntrusiveRefCntPtr::Obj' t='T *'/>
+<fun r='_ZN4llvm18IntrusiveRefCntPtrC1Ev'/>
+<fun r='_ZN4llvm18IntrusiveRefCntPtrC1EPT_'/>
+<fun r='_ZN4llvm18IntrusiveRefCntPtrC1ERKNS_18IntrusiveRefCntPtrIT_EE'/>
+<fun r='_ZN4llvm18IntrusiveRefCntPtrC1EONS_18IntrusiveRefCntPtrIT_EE'/>
+<fun r='_ZN4llvm18IntrusiveRefCntPtrC1EONS_18IntrusiveRefCntPtrIT_EE'/>
+<fun r='_ZN4llvm18IntrusiveRefCntPtrC1ERKNS_18IntrusiveRefCntPtrIT_EE'/>
+<fun r='_ZN4llvm18IntrusiveRefCntPtrD1Ev'/>
+<fun r='_ZN4llvm18IntrusiveRefCntPtraSENS_18IntrusiveRefCntPtrIT_EE'/>
+<fun r='_ZNK4llvm18IntrusiveRefCntPtrdeEv'/>
+<fun r='_ZNK4llvm18IntrusiveRefCntPtrptEv'/>
+<fun r='_ZNK4llvm18IntrusiveRefCntPtr3getEv'/>
+<fun r='_ZNK4llvm18IntrusiveRefCntPtrcvbEv'/>
+<fun r='_ZN4llvm18IntrusiveRefCntPtr4swapERNS_18IntrusiveRefCntPtrIT_EE'/>
+<fun r='_ZN4llvm18IntrusiveRefCntPtr5resetEv'/>
+<fun r='_ZN4llvm18IntrusiveRefCntPtr19resetWithoutReleaseEv'/>
+<fun r='_ZN4llvm18IntrusiveRefCntPtr6retainEv'/>
+<fun r='_ZN4llvm18IntrusiveRefCntPtr7releaseEv'/>

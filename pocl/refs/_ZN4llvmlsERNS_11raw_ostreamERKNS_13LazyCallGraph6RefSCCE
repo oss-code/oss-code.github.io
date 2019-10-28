@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='575' ll='591' type='llvm::raw_ostream &amp; llvm::operator&lt;&lt;(llvm::raw_ostream &amp; OS, const llvm::LazyCallGraph::RefSCC &amp; RC)'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='665' u='c' c='_ZNK4llvm13LazyCallGraph6RefSCC7getNameB5cxx11Ev'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='568'>/// Print a short description useful for debugging or logging.
+    ///
+    /// We print the SCCs wrapped in &apos;[]&apos;s and skipping the middle SCCs if
+    /// there are a large number.
+    //
+    // Note: this is defined inline to dodge issues with GCC&apos;s interpretation
+    // of enclosing namespaces for friend function declarations.</doc>

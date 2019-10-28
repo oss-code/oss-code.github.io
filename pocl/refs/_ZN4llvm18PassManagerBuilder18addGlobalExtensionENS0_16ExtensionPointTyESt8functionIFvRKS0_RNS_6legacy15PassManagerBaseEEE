@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Transforms/IPO/PassManagerBuilder.h' l='180' type='static void llvm::PassManagerBuilder::addGlobalExtension(llvm::PassManagerBuilder::ExtensionPointTy Ty, ExtensionFn Fn)'/>
+<use f='include/llvm-6.0/llvm/Transforms/IPO/PassManagerBuilder.h' l='212' u='c' c='_ZN4llvm22RegisterStandardPassesC1ENS_18PassManagerBuilder16ExtensionPointTyESt8functionIFvRKS1_RNS_6legacy15PassManagerBaseEEE'/>
+<doc f='include/llvm-6.0/llvm/Transforms/IPO/PassManagerBuilder.h' l='177'>/// Adds an extension that will be used by all PassManagerBuilder instances.
+  /// This is intended to be used by plugins, to register a set of
+  /// optimisations to run automatically.</doc>

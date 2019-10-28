@@ -1,0 +1,14 @@
+<dec f='include/hwloc.h' l='208' type='7'/>
+<use f='pocl/lib/CL/devices/topology/pocl_topology.c' l='103' u='r' c='pocl_topology_detect_device_info'/>
+<doc f='include/hwloc.h' l='208'>/**&lt; \brief Group objects.
+			  * Objects which do not fit in the above but are
+			  * detected by hwloc and are useful to take into
+			  * account for affinity. For instance, some operating systems
+			  * expose their arbitrary processors aggregation this
+			  * way.  And hwloc may insert such objects to group
+			  * NUMA nodes according to their distances.
+			  * See also \ref faq_groups.
+			  *
+			  * These objects are ignored when they do not bring
+			  * any structure.
+			  */</doc>

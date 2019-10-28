@@ -1,0 +1,5 @@
+<dec f='pocl/lib/llvmopencl/WorkitemHandler.h' l='55' type='void pocl::WorkitemHandler::Initialize(pocl::Kernel * K)'/>
+<def f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='79' ll='94' type='void pocl::WorkitemHandler::Initialize(pocl::Kernel * K)'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandlerChooser.cc' l='81' u='c' c='_ZN4pocl22WorkitemHandlerChooser13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='358' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemReplication.cc' l='121' u='c' c='_ZN4pocl19WorkitemReplication15ProcessFunctionERN4llvm8FunctionE'/>

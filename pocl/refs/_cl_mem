@@ -1,0 +1,36 @@
+<def f='pocl/lib/CL/pocl_cl.h' l='974' ll='1033'/>
+<size>280</size>
+<mbr r='_cl_mem::dispatch' o='0' t='struct _cl_icd_dispatch *'/>
+<mbr r='_cl_mem::pocl_lock' o='64' t='pocl_lock_t'/>
+<mbr r='_cl_mem::pocl_refcount' o='384' t='volatile int'/>
+<mbr r='_cl_mem::type' o='416' t='cl_mem_object_type'/>
+<mbr r='_cl_mem::flags' o='448' t='cl_mem_flags'/>
+<mbr r='_cl_mem::size' o='512' t='size_t'/>
+<mbr r='_cl_mem::origin' o='576' t='size_t'/>
+<mbr r='_cl_mem::mem_host_ptr' o='640' t='void *'/>
+<mbr r='_cl_mem::map_count' o='704' t='cl_uint'/>
+<mbr r='_cl_mem::context' o='768' t='cl_context'/>
+<mbr r='_cl_mem::device_ptrs' o='832' t='pocl_mem_identifier *'/>
+<mbr r='_cl_mem::shared_mem_allocation_owner' o='896' t='cl_device_id'/>
+<mbr r='_cl_mem::owning_device' o='960' t='volatile cl_device_id'/>
+<mbr r='_cl_mem::mappings' o='1024' t='mem_mapping_t *'/>
+<mbr r='_cl_mem::parent' o='1088' t='cl_mem_t *'/>
+<mbr r='_cl_mem::destructor_callbacks' o='1152' t='mem_destructor_callback_t *'/>
+<mbr r='_cl_mem::device_supports_this_image' o='1216' t='int *'/>
+<mbr r='_cl_mem::is_image' o='1280' t='cl_bool'/>
+<mbr r='_cl_mem::image_channel_order' o='1312' t='cl_channel_order'/>
+<mbr r='_cl_mem::image_channel_data_type' o='1344' t='cl_channel_type'/>
+<mbr r='_cl_mem::image_width' o='1408' t='size_t'/>
+<mbr r='_cl_mem::image_height' o='1472' t='size_t'/>
+<mbr r='_cl_mem::image_depth' o='1536' t='size_t'/>
+<mbr r='_cl_mem::image_array_size' o='1600' t='size_t'/>
+<mbr r='_cl_mem::image_row_pitch' o='1664' t='size_t'/>
+<mbr r='_cl_mem::image_slice_pitch' o='1728' t='size_t'/>
+<mbr r='_cl_mem::image_elem_size' o='1792' t='size_t'/>
+<mbr r='_cl_mem::image_channels' o='1856' t='size_t'/>
+<mbr r='_cl_mem::num_mip_levels' o='1920' t='cl_uint'/>
+<mbr r='_cl_mem::num_samples' o='1952' t='cl_uint'/>
+<mbr r='_cl_mem::buffer' o='1984' t='cl_mem'/>
+<mbr r='_cl_mem::is_pipe' o='2048' t='cl_bool'/>
+<mbr r='_cl_mem::pipe_packet_size' o='2112' t='size_t'/>
+<mbr r='_cl_mem::pipe_max_packets' o='2176' t='size_t'/>

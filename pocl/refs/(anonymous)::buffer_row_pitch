@@ -1,0 +1,9 @@
+<dec f='pocl/include/pocl.h' l='164' type='size_t'/>
+<dec f='pocl/include/pocl.h' l='178' type='size_t'/>
+<offset>704</offset>
+<use f='pocl/lib/CL/clEnqueueReadBufferRect.c' l='114' u='w' c='POclEnqueueReadBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueWriteBufferRect.c' l='112' u='w' c='POclEnqueueWriteBufferRect'/>
+<use f='pocl/lib/CL/devices/common.c' l='456' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='493' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1134' u='r' c='pocl_cuda_submit_node'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1147' u='r' c='pocl_cuda_submit_node'/>

@@ -1,0 +1,10 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2532' type='unsigned int LLVMGetNumArgOperands(LLVMValueRef Instr)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2523'>/**
+ * Obtain the argument count for a call instruction.
+ *
+ * This expects an LLVMValueRef that corresponds to a llvm::CallInst or
+ * llvm::InvokeInst.
+ *
+ * @see llvm::CallInst::getNumArgOperands()
+ * @see llvm::InvokeInst::getNumArgOperands()
+ */</doc>

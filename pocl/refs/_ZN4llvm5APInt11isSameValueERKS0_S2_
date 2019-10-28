@@ -1,0 +1,3 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='652' ll='660' type='static bool llvm::APInt::isSameValue(const llvm::APInt &amp; I1, const llvm::APInt &amp; I2)'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='650'>/// \brief Determine if two APInts have the same value, after zero-extending
+  /// one of them (if needed!) to ensure that the bit-widths match.</doc>

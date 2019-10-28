@@ -1,0 +1,6 @@
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='924' u='m' c='_ZN4llvm13LazyCallGraph26postorder_ref_scc_iteratorppEv'/>
+<dec f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1135' type='DenseMap&lt;llvm::LazyCallGraph::RefSCC *, int&gt;'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1188' u='m' c='_ZN4llvm13LazyCallGraph14getRefSCCIndexERNS0_6RefSCCE'/>
+<offset>5696</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1133'>/// A map from RefSCC to the index for it in the postorder sequence of
+  /// RefSCCs.</doc>

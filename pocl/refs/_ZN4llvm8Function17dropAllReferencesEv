@@ -1,0 +1,14 @@
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='555' u='c' c='_ZN4llvm8Function10deleteBodyEv'/>
+<dec f='include/llvm-6.0/llvm/IR/Function.h' l='711' type='void llvm::Function::dropAllReferences()'/>
+<doc f='include/llvm-6.0/llvm/IR/Function.h' l='699'>/// dropAllReferences() - This method causes all the subinstructions to &quot;let
+  /// go&quot; of all references that they are maintaining.  This allows one to
+  /// &apos;delete&apos; a whole module at a time, even though there may be circular
+  /// references... first all references are dropped, and all use counts go to
+  /// zero.  Then everything is deleted for real.  Note that no operations are
+  /// valid on an object that has &quot;dropped all references&quot;, except operator
+  /// delete.
+  ///
+  /// Since no other object in the module can have references into the body of a
+  /// function, dropping all references deletes the entire body of the function,
+  /// including any contained basic blocks.
+  ///</doc>

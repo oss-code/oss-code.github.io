@@ -1,0 +1,63 @@
+<def f='include/llvm-6.0/llvm/IR/Value.h' l='469' ll='471' type='unsigned int llvm::Value::getValueID() const'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='764' u='c' c='_ZN4llvm8isa_implINS_8ConstantENS_5ValueEvE4doitERKS2_'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='770' u='c' c='_ZN4llvm8isa_implINS_12ConstantDataENS_5ValueEvE4doitERKS2_'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='771' u='c' c='_ZN4llvm8isa_implINS_12ConstantDataENS_5ValueEvE4doitERKS2_'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='777' u='c' c='_ZN4llvm8isa_implINS_17ConstantAggregateENS_5ValueEvE4doitERKS2_'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='778' u='c' c='_ZN4llvm8isa_implINS_17ConstantAggregateENS_5ValueEvE4doitERKS2_'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='784' u='c' c='_ZN4llvm8isa_implINS_8ArgumentENS_5ValueEvE4doitERKS2_'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='790' u='c' c='_ZN4llvm8isa_implINS_9InlineAsmENS_5ValueEvE4doitERKS2_'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='796' u='c' c='_ZN4llvm8isa_implINS_11InstructionENS_5ValueEvE4doitERKS2_'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='802' u='c' c='_ZN4llvm8isa_implINS_10BasicBlockENS_5ValueEvE4doitERKS2_'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='808' u='c' c='_ZN4llvm8isa_implINS_8FunctionENS_5ValueEvE4doitERKS2_'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='814' u='c' c='_ZN4llvm8isa_implINS_14GlobalVariableENS_5ValueEvE4doitERKS2_'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='820' u='c' c='_ZN4llvm8isa_implINS_11GlobalAliasENS_5ValueEvE4doitERKS2_'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='826' u='c' c='_ZN4llvm8isa_implINS_11GlobalIFuncENS_5ValueEvE4doitERKS2_'/>
+<use f='include/llvm-6.0/llvm/IR/Argument.h' l='124' u='c' c='_ZN4llvm8Argument7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/Constant.h' l='121' u='c' c='_ZN4llvm8Constant7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/Metadata.h' l='192' u='c' c='_ZN4llvm15MetadataAsValue7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.h' l='126' u='c' c='_ZNK4llvm11Instruction9getOpcodeEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.h' l='596' u='c' c='_ZN4llvm11Instruction7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='330' u='c' c='_ZN4llvm10BasicBlock7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='561' u='c' c='_ZN4llvm11GlobalValue7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='562' u='c' c='_ZN4llvm11GlobalValue7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='563' u='c' c='_ZN4llvm11GlobalValue7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='564' u='c' c='_ZN4llvm11GlobalValue7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalObject.h' l='159' u='c' c='_ZN4llvm12GlobalObject7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalObject.h' l='160' u='c' c='_ZN4llvm12GlobalObject7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='696' u='c' c='_ZN4llvm8Function7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalIndirectSymbol.h' l='79' u='c' c='_ZN4llvm20GlobalIndirectSymbol7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalIndirectSymbol.h' l='80' u='c' c='_ZN4llvm20GlobalIndirectSymbol7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalAlias.h' l='92' u='c' c='_ZN4llvm11GlobalAlias7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalIFunc.h' l='74' u='c' c='_ZN4llvm11GlobalIFunc7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalVariable.h' l='245' u='c' c='_ZN4llvm14GlobalVariable7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='75' u='c' c='_ZN4llvm12ConstantData7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='76' u='c' c='_ZN4llvm12ConstantData7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='257' u='c' c='_ZN4llvm11ConstantInt7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='325' u='c' c='_ZN4llvm10ConstantFP7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='366' u='c' c='_ZN4llvm21ConstantAggregateZero7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='391' u='c' c='_ZN4llvm17ConstantAggregate7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='392' u='c' c='_ZN4llvm17ConstantAggregate7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='430' u='c' c='_ZN4llvm13ConstantArray7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='484' u='c' c='_ZN4llvm14ConstantStruct7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='523' u='c' c='_ZN4llvm14ConstantVector7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='552' u='c' c='_ZN4llvm19ConstantPointerNull7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='667' u='c' c='_ZN4llvm22ConstantDataSequential7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='668' u='c' c='_ZN4llvm22ConstantDataSequential7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='725' u='c' c='_ZN4llvm17ConstantDataArray7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='784' u='c' c='_ZN4llvm18ConstantDataVector7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='807' u='c' c='_ZN4llvm17ConstantTokenNone7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='844' u='c' c='_ZN4llvm12BlockAddress7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='1219' u='c' c='_ZN4llvm12ConstantExpr7classofEPKNS_5ValueE'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='1280' u='c' c='_ZN4llvm10UndefValue7classofEPKNS_5ValueE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='326' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<doc f='include/llvm-6.0/llvm/IR/Value.h' l='459'>/// \brief Return an ID for the concrete type of this object.
+  ///
+  /// This is used to implement the classof checks.  This should not be used
+  /// for any other purpose, as the values may change as LLVM evolves.  Also,
+  /// note that for instructions, the Instruction&apos;s opcode is added to
+  /// InstructionVal. So this means three things:
+  /// # there is no value with code InstructionVal (no opcode==0).
+  /// # there are more possible values for the value type than in ValueTy enum.
+  /// # the InstructionVal enumerator must be the highest valued enumerator in
+  ///   the ValueTy enum.</doc>
+<use f='include/llvm-6.0/llvm/IR/InlineAsm.h' l='187' u='c' c='_ZN4llvm9InlineAsm7classofEPKNS_5ValueE'/>

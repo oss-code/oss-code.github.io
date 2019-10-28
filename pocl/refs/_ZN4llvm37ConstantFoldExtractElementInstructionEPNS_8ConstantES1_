@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='115' type='llvm::Constant * llvm::ConstantFoldExtractElementInstruction(llvm::Constant * Val, llvm::Constant * Idx)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='112'>/// \brief Attempt to constant fold an extractelement instruction with the
+/// specified operands and indices.  The constant result is returned if
+/// successful; if not, null is returned.</doc>

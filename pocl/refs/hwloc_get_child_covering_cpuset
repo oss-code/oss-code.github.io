@@ -1,0 +1,9 @@
+<dec f='include/hwloc/helper.h' l='255' type='hwloc_obj_t hwloc_get_child_covering_cpuset(hwloc_topology_t topology, hwloc_const_cpuset_t set, hwloc_obj_t parent)'/>
+<def f='include/hwloc/helper.h' l='257' ll='271' type='hwloc_obj_t hwloc_get_child_covering_cpuset(hwloc_topology_t topology, hwloc_const_cpuset_t set, hwloc_obj_t parent)'/>
+<use f='include/hwloc/helper.h' l='289' u='c' c='hwloc_get_obj_covering_cpuset'/>
+<doc f='include/hwloc/helper.h' l='248'>/** \brief Get the child covering at least CPU set \p set.
+ *
+ * \return \c NULL if no child matches or if \p set is empty.
+ *
+ * \note This function cannot work if parent does not have a CPU set.
+ */</doc>

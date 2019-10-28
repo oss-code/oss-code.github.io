@@ -1,0 +1,57 @@
+<def f='include/llvm-6.0/llvm/Option/ArgList.h' l='120' ll='368'/>
+<ovr f='include/llvm-6.0/llvm/Option/ArgList.h' l='370' c='llvm::opt::InputArgList'/>
+<ovr f='include/llvm-6.0/llvm/Option/ArgList.h' l='435' c='llvm::opt::DerivedArgList'/>
+<size>184</size>
+<doc f='include/llvm-6.0/llvm/Option/ArgList.h' l='114'>/// ArgList - Ordered collection of driver arguments.
+///
+/// The ArgList class manages a list of Arg instances as well as
+/// auxiliary data and convenience methods to allow Tools to quickly
+/// check for the presence of Arg instances for a particular Option
+/// and to iterate over groups of arguments.</doc>
+<mbr r='llvm::opt::ArgList::Args' o='64' t='arglist_type'/>
+<fun r='_ZN4llvm3opt7ArgList10emptyRangeEv'/>
+<mbr r='llvm::opt::ArgList::OptRanges' o='1280' t='DenseMap&lt;unsigned int, OptRange&gt;'/>
+<fun r='_ZNK4llvm3opt7ArgList8getRangeESt16initializer_listINS0_12OptSpecifierEE'/>
+<fun r='_ZN4llvm3opt7ArgListC1Ev'/>
+<fun r='_ZN4llvm3opt7ArgListC1EOS1_'/>
+<fun r='_ZN4llvm3opt7ArgListaSEOS1_'/>
+<fun r='_ZN4llvm3opt7ArgListD1Ev'/>
+<fun r='_ZN4llvm3opt7ArgList14toOptSpecifierENS0_12OptSpecifierE'/>
+<fun r='_ZN4llvm3opt7ArgList6appendEPNS0_3ArgE'/>
+<fun r='_ZNK4llvm3opt7ArgList7getArgsEv'/>
+<fun r='_ZNK4llvm3opt7ArgList4sizeEv'/>
+<fun r='_ZN4llvm3opt7ArgList5beginEv'/>
+<fun r='_ZN4llvm3opt7ArgList3endEv'/>
+<fun r='_ZN4llvm3opt7ArgList6rbeginEv'/>
+<fun r='_ZN4llvm3opt7ArgList4rendEv'/>
+<fun r='_ZNK4llvm3opt7ArgList5beginEv'/>
+<fun r='_ZNK4llvm3opt7ArgList3endEv'/>
+<fun r='_ZNK4llvm3opt7ArgList6rbeginEv'/>
+<fun r='_ZNK4llvm3opt7ArgList4rendEv'/>
+<fun r='_ZNK4llvm3opt7ArgList8filteredEDpT_'/>
+<fun r='_ZNK4llvm3opt7ArgList16filtered_reverseEDpT_'/>
+<fun r='_ZN4llvm3opt7ArgList8eraseArgENS0_12OptSpecifierE'/>
+<fun r='_ZNK4llvm3opt7ArgList13hasArgNoClaimEDpT_'/>
+<fun r='_ZNK4llvm3opt7ArgList6hasArgEDpT_'/>
+<fun r='_ZNK4llvm3opt7ArgList10getLastArgEDpT_'/>
+<fun r='_ZNK4llvm3opt7ArgList17getLastArgNoClaimEDpT_'/>
+<fun r='_ZNK4llvm3opt7ArgList12getArgStringEj'/>
+<fun r='_ZNK4llvm3opt7ArgList21getNumInputArgStringsEv'/>
+<fun r='_ZNK4llvm3opt7ArgList15getLastArgValueENS0_12OptSpecifierENS_9StringRefE'/>
+<fun r='_ZNK4llvm3opt7ArgList15getAllArgValuesB5cxx11ENS0_12OptSpecifierE'/>
+<fun r='_ZNK4llvm3opt7ArgList7hasFlagENS0_12OptSpecifierES2_b'/>
+<fun r='_ZNK4llvm3opt7ArgList7hasFlagENS0_12OptSpecifierES2_S2_b'/>
+<fun r='_ZNK4llvm3opt7ArgList10AddLastArgERNS_11SmallVectorIPKcLj16EEENS0_12OptSpecifierE'/>
+<fun r='_ZNK4llvm3opt7ArgList10AddLastArgERNS_11SmallVectorIPKcLj16EEENS0_12OptSpecifierES7_'/>
+<fun r='_ZNK4llvm3opt7ArgList16AddAllArgsExceptERNS_11SmallVectorIPKcLj16EEENS_8ArrayRefINS0_12OptSpecifierEEES9_'/>
+<fun r='_ZNK4llvm3opt7ArgList10AddAllArgsERNS_11SmallVectorIPKcLj16EEENS_8ArrayRefINS0_12OptSpecifierEEE'/>
+<fun r='_ZNK4llvm3opt7ArgList10AddAllArgsERNS_11SmallVectorIPKcLj16EEENS0_12OptSpecifierES7_S7_'/>
+<fun r='_ZNK4llvm3opt7ArgList15AddAllArgValuesERNS_11SmallVectorIPKcLj16EEENS0_12OptSpecifierES7_S7_'/>
+<fun r='_ZNK4llvm3opt7ArgList20AddAllArgsTranslatedERNS_11SmallVectorIPKcLj16EEENS0_12OptSpecifierES4_b'/>
+<fun r='_ZNK4llvm3opt7ArgList12ClaimAllArgsENS0_12OptSpecifierE'/>
+<fun r='_ZNK4llvm3opt7ArgList12ClaimAllArgsEv'/>
+<fun r='_ZNK4llvm3opt7ArgList16MakeArgStringRefENS_9StringRefE'/>
+<fun r='_ZNK4llvm3opt7ArgList13MakeArgStringERKNS_5TwineE'/>
+<fun r='_ZNK4llvm3opt7ArgList24GetOrMakeJoinedArgStringEjNS_9StringRefES2_'/>
+<fun r='_ZNK4llvm3opt7ArgList5printERNS_11raw_ostreamE'/>
+<fun r='_ZNK4llvm3opt7ArgList4dumpEv'/>

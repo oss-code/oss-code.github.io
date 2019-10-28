@@ -1,0 +1,12 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1437' type='llvm::ScalarEvolution::ExitLimit llvm::ScalarEvolution::computeExitLimitFromCond(const llvm::Loop * L, llvm::Value * ExitCond, llvm::BasicBlock * TBB, llvm::BasicBlock * FBB, bool ControlsExit, bool AllowPredicates = false)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1426'>/// Compute the number of times the backedge of the specified loop will
+  /// execute if its exit condition were a conditional branch of ExitCond,
+  /// TBB, and FBB.
+  ///
+  /// \p ControlsExit is true if ExitCond directly controls the exit
+  /// branch. In this case, we can assume that the loop exits only if the
+  /// condition is true and can infer that failing to meet the condition prior
+  /// to integer wraparound results in undefined behavior.
+  ///
+  /// If \p AllowPredicates is set, this call will try to use a minimal set of
+  /// SCEV predicates in order to return an exact answer.</doc>

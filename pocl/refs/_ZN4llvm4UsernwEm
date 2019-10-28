@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/IR/User.h' l='57' type='static void * llvm::User::operator new(size_t Size)'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='2822' u='c' c='_ZN4llvm14LandingPadInstnwEm'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='3120' u='c' c='_ZN4llvm10SwitchInstnwEm'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='3473' u='c' c='_ZN4llvm14IndirectBrInstnwEm'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='4177' u='c' c='_ZN4llvm15CatchSwitchInstnwEm'/>
+<doc f='include/llvm-6.0/llvm/IR/User.h' l='53'>/// Allocate a User with an operand pointer co-allocated.
+  ///
+  /// This is used for subclasses which need to allocate a variable number
+  /// of operands, ie, &apos;hung off uses&apos;.</doc>

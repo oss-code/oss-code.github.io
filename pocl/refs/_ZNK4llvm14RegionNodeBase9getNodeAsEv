@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='183' type='T * llvm::RegionNodeBase::getNodeAs() const'/>
+<def f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='997' ll='1003' type='llvm::BasicBlock * llvm::RegionNodeBase&lt;llvm::RegionTraits&lt;llvm::Function&gt; &gt;::getNodeAs() const'/>
+<def f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='1005' ll='1012' type='llvm::Region * llvm::RegionNodeBase&lt;llvm::RegionTraits&lt;llvm::Function&gt; &gt;::getNodeAs() const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='177'>/// @brief Get the content of this RegionNode.
+  ///
+  /// This can be either a BasicBlock or a subregion. Before calling getNodeAs()
+  /// check the type of the content with the isSubRegion() function call.
+  ///
+  /// @return The content of this RegionNode.</doc>

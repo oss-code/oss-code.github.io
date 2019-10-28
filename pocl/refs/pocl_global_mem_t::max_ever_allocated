@@ -1,0 +1,7 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='628' type='cl_ulong'/>
+<offset>320</offset>
+<use f='pocl/lib/CL/devices/common.c' l='1146' u='w' c='pocl_setup_device_for_system_memory'/>
+<use f='pocl/lib/CL/devices/common.c' l='1204' u='w' c='pocl_reinit_system_memory'/>
+<use f='pocl/lib/CL/devices/common.c' l='1279' u='r' c='pocl_aligned_malloc_global_mem'/>
+<use f='pocl/lib/CL/devices/common.c' l='1280' u='w' c='pocl_aligned_malloc_global_mem'/>
+<use f='pocl/lib/CL/devices/common.c' l='1313' u='r' c='pocl_print_system_memory_stats'/>

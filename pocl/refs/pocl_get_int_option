@@ -1,0 +1,9 @@
+<dec f='pocl/lib/CL/pocl_runtime_config.h' l='33' type='int pocl_get_int_option(const char * key, int default_value)'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='197' u='c' c='pocl_init_cpu_device_infos'/>
+<use f='pocl/lib/CL/devices/common.c' l='1166' u='c' c='pocl_setup_device_for_system_memory'/>
+<use f='pocl/lib/CL/devices/devices.c' l='461' u='c' c='pocl_init_devices'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='169' u='c' c='pocl_pthread_init'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='173' u='c' c='pocl_pthread_init'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='173' u='c' c='pocl_pthread_init'/>
+<def f='pocl/lib/CL/pocl_runtime_config.c' l='81' ll='85' type='int pocl_get_int_option(const char * key, int default_value)'/>
+<doc f='pocl/lib/CL/pocl_runtime_config.c' l='80'>/* Returns an integer value for the option with the given key string. */</doc>

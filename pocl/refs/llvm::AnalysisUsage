@@ -1,0 +1,35 @@
+<def f='include/llvm-6.0/llvm/PassAnalysisSupport.h' l='43' ll='141'/>
+<size>216</size>
+<doc f='include/llvm-6.0/llvm/PassAnalysisSupport.h' l='35'>//===----------------------------------------------------------------------===//
+/// Represent the analysis usage information of a pass.  This tracks analyses
+/// that the pass REQUIRES (must be available when the pass runs), REQUIRES
+/// TRANSITIVE (must be available throughout the lifetime of the pass), and
+/// analyses that the pass PRESERVES (the pass does not invalidate the results
+/// of these analyses).  This information is provided by a pass to the Pass
+/// infrastructure through the getAnalysisUsage virtual function.
+///</doc>
+<mbr r='llvm::AnalysisUsage::Required' o='0' t='SmallVector&lt;AnalysisID, 8&gt;'/>
+<mbr r='llvm::AnalysisUsage::RequiredTransitive' o='704' t='SmallVector&lt;AnalysisID, 2&gt;'/>
+<mbr r='llvm::AnalysisUsage::Preserved' o='1024' t='SmallVector&lt;AnalysisID, 2&gt;'/>
+<mbr r='llvm::AnalysisUsage::Used' o='1344' t='SmallVector&lt;AnalysisID, 0&gt;'/>
+<mbr r='llvm::AnalysisUsage::PreservesAll' o='1664' t='bool'/>
+<fun r='_ZN4llvm13AnalysisUsageC1Ev'/>
+<fun r='_ZN4llvm13AnalysisUsage13addRequiredIDEPKv'/>
+<fun r='_ZN4llvm13AnalysisUsage13addRequiredIDERc'/>
+<fun r='_ZN4llvm13AnalysisUsage11addRequiredEv'/>
+<fun r='_ZN4llvm13AnalysisUsage23addRequiredTransitiveIDERc'/>
+<fun r='_ZN4llvm13AnalysisUsage21addRequiredTransitiveEv'/>
+<fun r='_ZN4llvm13AnalysisUsage14addPreservedIDEPKv'/>
+<fun r='_ZN4llvm13AnalysisUsage14addPreservedIDERc'/>
+<fun r='_ZN4llvm13AnalysisUsage12addPreservedEv'/>
+<fun r='_ZN4llvm13AnalysisUsage20addUsedIfAvailableIDEPKv'/>
+<fun r='_ZN4llvm13AnalysisUsage20addUsedIfAvailableIDERc'/>
+<fun r='_ZN4llvm13AnalysisUsage18addUsedIfAvailableEv'/>
+<fun r='_ZN4llvm13AnalysisUsage12addPreservedENS_9StringRefE'/>
+<fun r='_ZN4llvm13AnalysisUsage15setPreservesAllEv'/>
+<fun r='_ZNK4llvm13AnalysisUsage15getPreservesAllEv'/>
+<fun r='_ZN4llvm13AnalysisUsage15setPreservesCFGEv'/>
+<fun r='_ZNK4llvm13AnalysisUsage14getRequiredSetEv'/>
+<fun r='_ZNK4llvm13AnalysisUsage24getRequiredTransitiveSetEv'/>
+<fun r='_ZNK4llvm13AnalysisUsage15getPreservedSetEv'/>
+<fun r='_ZNK4llvm13AnalysisUsage10getUsedSetEv'/>

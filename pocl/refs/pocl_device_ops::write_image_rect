@@ -1,0 +1,13 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='565' type='cl_int (*)(void *, cl_mem, pocl_mem_identifier *, const void *restrict, pocl_mem_identifier *, const size_t *, const size_t *, size_t, size_t, size_t)'/>
+<offset>2880</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='559'>/* copies a region from host OR device buffer to device image.
+   * clEnqueueCopyBufferToImage: src_mem_id = buffer,
+   *     src_host_ptr = NULL, src_row_pitch = src_slice_pitch = 0
+   * clEnqueueWriteImage: src_mem_id = NULL,
+   *     src_host_ptr = host pointer, src_offset = 0
+   */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='153' u='w' c='pocl_basic_init_device_ops'/>
+<use f='pocl/lib/CL/devices/common.c' l='555' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='556' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='572' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='573' u='r' c='pocl_exec_command'/>

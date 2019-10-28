@@ -1,0 +1,22 @@
+<use f='include/llvm-6.0/llvm/IR/Instruction.h' l='442' u='r' c='_ZN4llvm11Instruction13isAssociativeEj'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.h' l='456' c='_ZN4llvm11Instruction13isCommutativeEj'/>
+<dec f='include/llvm-6.0/llvm/IR/Instruction.def' l='132' type='15'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.def' l='132' u='r' c='_ZN4llvm14BinaryOperator9CreateMulEPNS_5ValueES2_RKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.def' l='132' u='r' c='_ZN4llvm14BinaryOperator9CreateMulEPNS_5ValueES2_RKNS_5TwineEPNS_10BasicBlockE'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.def' l='132' u='r' c='_ZN4llvm14BinaryOperator9CreateMulEPNS_5ValueES2_RKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='469' u='r' c='_ZN4llvm14BinaryOperator12CreateNSWMulEPNS_5ValueES2_RKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='469' u='r' c='_ZN4llvm14BinaryOperator12CreateNSWMulEPNS_5ValueES2_RKNS_5TwineEPNS_10BasicBlockE'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='469' u='r' c='_ZN4llvm14BinaryOperator12CreateNSWMulEPNS_5ValueES2_RKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='470' u='r' c='_ZN4llvm14BinaryOperator12CreateNUWMulEPNS_5ValueES2_RKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='470' u='r' c='_ZN4llvm14BinaryOperator12CreateNUWMulEPNS_5ValueES2_RKNS_5TwineEPNS_10BasicBlockE'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='470' u='r' c='_ZN4llvm14BinaryOperator12CreateNUWMulEPNS_5ValueES2_RKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='103' u='r' c='_ZN4llvm25OverflowingBinaryOperator7classofEPKNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='109' u='r' c='_ZN4llvm25OverflowingBinaryOperator7classofEPKNS_12ConstantExprE'/>
+<use f='include/llvm-6.0/llvm/IR/Operator.h' l='395'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='942' u='r' c='_ZN4llvm9IRBuilder9CreateMulEPNS_5ValueES2_RKNS_5TwineEbb'/>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='153' c='_ZL17convertExpressionPN4llvm12ConstantExprEPNS_11InstructionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='719' u='r' c='_ZN4pocl13WorkitemLoops16GetLinearWiIndexERN4llvm9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEPNS1_6ModuleEPNS_14ParallelRegionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='722' u='r' c='_ZN4pocl13WorkitemLoops16GetLinearWiIndexERN4llvm9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEPNS1_6ModuleEPNS_14ParallelRegionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='727' u='r' c='_ZN4pocl13WorkitemLoops16GetLinearWiIndexERN4llvm9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEPNS1_6ModuleEPNS_14ParallelRegionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='969' u='r' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='972' u='r' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>

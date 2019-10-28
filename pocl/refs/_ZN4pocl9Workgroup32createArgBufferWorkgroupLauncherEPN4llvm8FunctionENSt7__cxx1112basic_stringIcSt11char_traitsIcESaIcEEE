@@ -1,0 +1,12 @@
+<dec f='pocl/lib/llvmopencl/Workgroup.h' l='53' type='llvm::Function * pocl::Workgroup::createArgBufferWorkgroupLauncher(llvm::Function * Func, std::string KernName)'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='240' u='c' c='_ZN4pocl9Workgroup11runOnModuleERN4llvm6ModuleE'/>
+<def f='pocl/lib/llvmopencl/Workgroup.cc' l='1122' ll='1250' type='llvm::Function * pocl::Workgroup::createArgBufferWorkgroupLauncher(llvm::Function * Func, std::string KernName)'/>
+<doc f='pocl/lib/llvmopencl/Workgroup.cc' l='1113'>/**
+ * Creates a work group launcher with all the argument data passed
+ * in a single argument buffer.
+ *
+ * All argument values, including pointers are stored directly in the
+ * argument buffer with natural alignment. The rules for populating the
+ * buffer are those of the HSA kernel calling convention. The name of
+ * the generated function is KERNELNAME_workgroup_argbuffer.
+ */</doc>

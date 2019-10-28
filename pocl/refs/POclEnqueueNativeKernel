@@ -1,0 +1,4 @@
+<dec f='pocl/lib/CL/pocl_intfn.h' l='63' macro='1' type='cl_int POclEnqueueNativeKernel(cl_command_queue , void (*)(void *) , void * , size_t , cl_uint , const cl_mem * , const void ** , cl_uint , const cl_event * , cl_event * )'/>
+<def f='pocl/lib/CL/clEnqueueNativeKernel.c' l='11' macro='1' type='cl_int POclEnqueueNativeKernel(cl_command_queue command_queue, void (*)(void *) user_func, void * args, size_t cb_args, cl_uint num_mem_objects, const cl_mem * mem_list, const void ** args_mem_loc, cl_uint num_events_in_wait_list, const cl_event * event_wait_list, cl_event * event)'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='101' macro='1' u='a'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='101' macro='1' u='a'/>

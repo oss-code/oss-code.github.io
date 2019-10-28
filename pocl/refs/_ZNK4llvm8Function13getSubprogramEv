@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/Function.h' l='738' type='llvm::DISubprogram * llvm::Function::getSubprogram() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Function.h' l='734'>/// \brief Get the attached subprogram.
+  ///
+  /// Calls \a getMetadata() with \a LLVMContext::MD_dbg and casts the result
+  /// to \a DISubprogram.</doc>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='729' u='c' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>

@@ -1,0 +1,8 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1066' type='unsigned int'/>
+<offset>544</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='1065'>/* -cl-denorms-are-zero build option */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='665' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='273' u='r' c='work_group_scheduler'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='613' u='r' c='pocl_binary_serialize'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='652' u='w' c='pocl_binary_deserialize'/>
+<use f='pocl/lib/CL/pocl_build.c' l='574' u='w' c='compile_and_link_program'/>

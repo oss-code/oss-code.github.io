@@ -1,0 +1,9 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='316' type='void (*)(_cl_command_node *, cl_command_queue)'/>
+<offset>64</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='313'>/* submit gives the command for the device. The command may be left in the cq
+     or stored to the device driver owning the cq. submit is called
+     with node-&gt;event locked, and must return with it unlocked. */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='133' u='w' c='pocl_basic_init_device_ops'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='143' u='w' c='pocl_cuda_init_device_ops'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='89' u='w' c='pocl_pthread_init_device_ops'/>
+<use f='pocl/lib/CL/pocl_util.c' l='574' u='r' c='pocl_command_enqueue'/>

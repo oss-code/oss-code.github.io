@@ -1,0 +1,12 @@
+<dec f='include/c++/7/bits/stl_list.h' l='1615' type='void std::__cxx11::list::unique()'/>
+<def f='include/c++/7/bits/list.tcc' l='350' ll='368' type='void std::__cxx11::list::unique()'/>
+<doc f='include/c++/7/bits/stl_list.h' l='1604'>/**
+       *  @brief  Remove consecutive duplicate elements.
+       *
+       *  For each consecutive set of elements with the same value,
+       *  remove all but the first one.  Remaining elements stay in
+       *  list order.  Note that this function only erases the
+       *  elements, and that if the elements themselves are pointers,
+       *  the pointed-to memory is not touched in any way.  Managing
+       *  the pointer is the user&apos;s responsibility.
+       */</doc>

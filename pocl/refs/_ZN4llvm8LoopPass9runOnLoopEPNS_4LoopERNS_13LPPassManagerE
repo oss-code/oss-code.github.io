@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/LoopPass.h' l='40' type='bool llvm::LoopPass::runOnLoop(llvm::Loop * L, llvm::LPPassManager &amp; LPM)'/>
+<ovr f='pocl/lib/llvmopencl/ImplicitLoopBarriers.cc' l='64' c='_ZN4pocl20ImplicitLoopBarriers9runOnLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopPass.h' l='38'>// runOnLoop - This method should be implemented by the subclass to perform
+  // whatever action is necessary for the specified Loop.</doc>
+<ovr f='pocl/lib/llvmopencl/LoopBarriers.cc' l='62' c='_ZN4pocl12LoopBarriers9runOnLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>

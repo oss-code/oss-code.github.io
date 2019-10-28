@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='223' type='int llvm::TargetTransformInfo::getCallCost(const llvm::Function * F, ArrayRef&lt;const llvm::Value *&gt; Arguments) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='220'>/// \brief Estimate the cost of calling a specific function when lowered.
+  ///
+  /// This overload allows specifying a set of candidate argument values.</doc>

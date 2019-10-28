@@ -1,0 +1,6 @@
+<dec f='include/hwloc/diff.h' l='227' type='int hwloc_topology_diff_destroy(hwloc_topology_t topology, hwloc_topology_diff_t diff)'/>
+<doc f='include/hwloc/diff.h' l='222'>/** \brief Destroy a list of topology differences.
+ *
+ * \note The \p topology parameter must be a valid topology
+ * but it is not required that it is related to \p diff.
+ */</doc>

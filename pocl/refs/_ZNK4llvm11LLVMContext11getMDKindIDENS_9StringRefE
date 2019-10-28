@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/LLVMContext.h' l='119' type='unsigned int llvm::LLVMContext::getMDKindID(llvm::StringRef Name) const'/>
+<doc f='include/llvm-6.0/llvm/IR/LLVMContext.h' l='117'>/// getMDKindID - Return a unique non-zero ID for the specified metadata kind.
+  /// This ID is uniqued across modules in the current LLVMContext.</doc>
+<use f='pocl/lib/llvmopencl/LLVMUtils.cc' l='144' u='c' c='_ZN4pocl24setFuncArgAddressSpaceMDEPN4llvm8FunctionEjj'/>

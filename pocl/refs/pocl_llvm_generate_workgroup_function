@@ -1,0 +1,13 @@
+<dec f='pocl/lib/CL/pocl_llvm.h' l='74' type='int pocl_llvm_generate_workgroup_function(unsigned int DeviceI, cl_device_id Device, cl_kernel Kernel, _cl_command_node * Command, int Specialize)'/>
+<doc f='pocl/lib/CL/pocl_llvm.h' l='64'>/* This function links the input kernel LLVM bitcode and the OpenCL kernel
+ * runtime library into one LLVM module, then runs pocl&apos;s kernel compiler
+ * passes on that module to produce a function that executes all work-items in
+ * a work-group.
+ *
+ * Output is a LLVM bitcode file that contains a work-group function and its
+ * associated launchers. If @param Specialize is set to true, generates a
+ * WG function that might be specialized according to the properties of
+ * the given Command.
+ */</doc>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='787' u='c' c='load_or_generate_kernel'/>
+<def f='pocl/lib/CL/pocl_llvm_wg.cc' l='448' ll='485' type='int pocl_llvm_generate_workgroup_function(unsigned int DeviceI, cl_device_id Device, cl_kernel Kernel, _cl_command_node * Command, int Specialize)'/>

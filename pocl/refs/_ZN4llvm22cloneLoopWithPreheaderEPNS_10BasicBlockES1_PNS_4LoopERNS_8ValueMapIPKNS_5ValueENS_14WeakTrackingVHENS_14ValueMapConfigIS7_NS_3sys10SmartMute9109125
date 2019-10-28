@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Cloning.h' l='249' type='llvm::Loop * llvm::cloneLoopWithPreheader(llvm::BasicBlock * Before, llvm::BasicBlock * LoopDomBB, llvm::Loop * OrigLoop, ValueToValueMapTy &amp; VMap, const llvm::Twine &amp; NameSuffix, llvm::LoopInfo * LI, llvm::DominatorTree * DT, SmallVectorImpl&lt;llvm::BasicBlock *&gt; &amp; Blocks)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Cloning.h' l='243'>/// \brief Clones a loop \p OrigLoop.  Returns the loop and the blocks in \p
+/// Blocks.
+///
+/// Updates LoopInfo and DominatorTree assuming the loop is dominated by block
+/// \p LoopDomBB.  Insert the new blocks before block specified in \p Before.
+/// Note: Only innermost loops are supported.</doc>

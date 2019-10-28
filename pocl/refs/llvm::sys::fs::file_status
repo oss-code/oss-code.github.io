@@ -1,0 +1,12 @@
+<inh f='include/llvm-6.0/llvm/Support/FileSystem.h' l='148' c='llvm::sys::fs::basic_file_status'/>
+<def f='include/llvm-6.0/llvm/Support/FileSystem.h' l='219' ll='259'/>
+<size>64</size>
+<doc f='include/llvm-6.0/llvm/Support/FileSystem.h' l='218'>/// Represents the result of a call to sys::fs::status().</doc>
+<mbr r='llvm::sys::fs::file_status::fs_st_dev' o='320' t='dev_t'/>
+<mbr r='llvm::sys::fs::file_status::fs_st_nlinks' o='384' t='nlink_t'/>
+<mbr r='llvm::sys::fs::file_status::fs_st_ino' o='448' t='ino_t'/>
+<fun r='_ZN4llvm3sys2fs11file_statusC1Ev'/>
+<fun r='_ZN4llvm3sys2fs11file_statusC1ENS1_9file_typeE'/>
+<fun r='_ZN4llvm3sys2fs11file_statusC1ENS1_9file_typeENS1_5permsEmmmlljjl'/>
+<fun r='_ZNK4llvm3sys2fs11file_status11getUniqueIDEv'/>
+<fun r='_ZNK4llvm3sys2fs11file_status12getLinkCountEv'/>

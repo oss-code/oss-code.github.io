@@ -1,0 +1,11 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1730' type='Optional&lt;std::pair&lt;const SCEV *, SmallVector&lt;const SCEVPredicate *, 3&gt; &gt; &gt; llvm::ScalarEvolution::createAddRecFromPHIWithCastsImpl(const llvm::SCEVUnknown * SymbolicPHI)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1719'>/// Similar to createAddRecFromPHI, but with the additional flexibility of
+  /// suggesting runtime overflow checks in case casts are encountered.
+  /// If successful, the analysis records that for this loop, \p SymbolicPHI,
+  /// which is the UnknownSCEV currently representing the PHI, can be rewritten
+  /// into an AddRec, assuming some predicates; The function then returns the
+  /// AddRec and the predicates as a pair, and caches this pair in
+  /// PredicatedSCEVRewrites.
+  /// If the analysis is not successful, a mapping from the \p SymbolicPHI to
+  /// itself (with no predicates) is recorded, and a nullptr with an empty
+  /// predicates vector is returned as a pair.</doc>

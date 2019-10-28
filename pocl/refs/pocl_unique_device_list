@@ -1,0 +1,8 @@
+<dec f='pocl/lib/CL/pocl_util.h' l='164' type='cl_device_id * pocl_unique_device_list(const cl_device_id * in, cl_uint num, cl_uint * real)'/>
+<use f='pocl/lib/CL/clCreateContext.c' l='172' u='c' c='POclCreateContext'/>
+<use f='pocl/lib/CL/clCreateProgramWithBinary.c' l='82' u='c' c='create_program_skeleton'/>
+<use f='pocl/lib/CL/clLinkProgram.c' l='77' u='c' c='POclLinkProgram'/>
+<use f='pocl/lib/CL/pocl_build.c' l='593' u='c' c='compile_and_link_program'/>
+<def f='pocl/lib/CL/pocl_util.c' l='863' ll='894' type='cl_device_id * pocl_unique_device_list(const cl_device_id * in, cl_uint num, cl_uint * real)'/>
+<doc f='pocl/lib/CL/pocl_util.c' l='861'>/* Make a list of unique devices. If any device is a subdevice,
+ * replace with parent, then remove duplicate parents. */</doc>

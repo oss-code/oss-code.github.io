@@ -1,0 +1,6 @@
+<dec f='include/pthread.h' l='973' type='int pthread_cond_destroy(pthread_cond_t * __cond)'/>
+<doc f='include/pthread.h' l='972'>/* Destroy condition variable COND.  */</doc>
+<use f='pocl/lib/CL/clReleaseEvent.c' l='50' u='c' c='POclReleaseEvent'/>
+<use f='include/x86_64-linux-gnu/c++/7/bits/gthr-default.h' l='129' c='__gthrw_pthread_cond_destroy'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='387' u='c' c='pocl_pthread_free_queue'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='136' u='c' c='pthread_scheduler_uninit'/>

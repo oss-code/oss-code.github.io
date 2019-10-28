@@ -1,0 +1,330 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>pocl_tracing.c source code [pocl/lib/CL/pocl_tracing.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/CL/pocl_tracing.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>CL</a>/<a href='pocl_tracing.c.html'>pocl_tracing.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* pocl_tracing.c: event update and tracing system</i></td></tr>
+<tr><th id="2">2</th><td><i></i></td></tr>
+<tr><th id="3">3</th><td><i>   Copyright (c) 2015 Clément Léger / Kalray</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>   Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="6">6</th><td><i>   of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="7">7</th><td><i>   in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="8">8</th><td><i>   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="9">9</th><td><i>   copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="10">10</th><td><i>   furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="11">11</th><td><i></i></td></tr>
+<tr><th id="12">12</th><td><i>   The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="13">13</th><td><i>   all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="14">14</th><td><i></i></td></tr>
+<tr><th id="15">15</th><td><i>   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="16">16</th><td><i>   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="17">17</th><td><i>   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="18">18</th><td><i>   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="19">19</th><td><i>   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="20">20</th><td><i>   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="21">21</th><td><i>   THE SOFTWARE.</i></td></tr>
+<tr><th id="22">22</th><td><i>*/</i></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><u>#include <a href="../../../include/stdio.h.html">&lt;stdio.h&gt;</a></u></td></tr>
+<tr><th id="25">25</th><td><u>#include <a href="../../../include/string.h.html">&lt;string.h&gt;</a></u></td></tr>
+<tr><th id="26">26</th><td><u>#include <a href="pocl_cq_profiling.h.html">"pocl_cq_profiling.h"</a></u></td></tr>
+<tr><th id="27">27</th><td><u>#include <a href="pocl_util.h.html">"pocl_util.h"</a></u></td></tr>
+<tr><th id="28">28</th><td><u>#include <a href="pocl_tracing.h.html">"pocl_tracing.h"</a></u></td></tr>
+<tr><th id="29">29</th><td><u>#include <a href="pocl_runtime_config.h.html">"pocl_runtime_config.h"</a></u></td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><u>#<span data-ppcond="31">ifdef</span> <span class="macro" data-ref="_M/HAVE_LTTNG_UST">HAVE_LTTNG_UST</span></u></td></tr>
+<tr><th id="32">32</th><td><u>#include "pocl_lttng.h"</u></td></tr>
+<tr><th id="33">33</th><td><em>static</em> <em>const</em> <b>struct</b> pocl_event_tracer lttng_tracer;</td></tr>
+<tr><th id="34">34</th><td><u>#<span data-ppcond="31">endif</span></u></td></tr>
+<tr><th id="35">35</th><td></td></tr>
+<tr><th id="36">36</th><td><em>static</em> <em>int</em> <dfn class="tu decl def" id="tracing_initialized" title='tracing_initialized' data-type='int' data-ref="tracing_initialized">tracing_initialized</dfn> = <var>0</var>;</td></tr>
+<tr><th id="37">37</th><td><em>static</em> <a class="typedef" href="../../../include/stdint.h.html#uint8_t" title='uint8_t' data-type='unsigned char' data-ref="uint8_t">uint8_t</a> <dfn class="tu decl def" id="event_trace_filter" title='event_trace_filter' data-type='uint8_t' data-ref="event_trace_filter">event_trace_filter</dfn> = <var>0xF</var>;</td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td><em>static</em> <em>const</em> <b>struct</b> <a class="type" href="pocl_tracing.h.html#pocl_event_tracer" title='pocl_event_tracer' data-ref="pocl_event_tracer">pocl_event_tracer</a> <dfn class="tu decl def" id="text_logger" title='text_logger' data-type='const struct pocl_event_tracer' data-ref="text_logger">text_logger</dfn>;</td></tr>
+<tr><th id="40">40</th><td><em>static</em> <em>const</em> <b>struct</b> <a class="type" href="pocl_tracing.h.html#pocl_event_tracer" title='pocl_event_tracer' data-ref="pocl_event_tracer">pocl_event_tracer</a> <dfn class="tu decl def" id="cq_profiler" title='cq_profiler' data-type='const struct pocl_event_tracer' data-ref="cq_profiler">cq_profiler</dfn>;</td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td><i  data-doc="pocl_event_tracers">/* List of tracers</i></td></tr>
+<tr><th id="43">43</th><td><i  data-doc="pocl_event_tracers"> */</i></td></tr>
+<tr><th id="44">44</th><td><em>static</em> <em>const</em> <b>struct</b> <a class="type" href="pocl_tracing.h.html#pocl_event_tracer" title='pocl_event_tracer' data-ref="pocl_event_tracer">pocl_event_tracer</a> *<dfn class="tu decl def" id="pocl_event_tracers" title='pocl_event_tracers' data-type='const struct pocl_event_tracer *[2]' data-ref="pocl_event_tracers">pocl_event_tracers</dfn>[] = {</td></tr>
+<tr><th id="45">45</th><td>  &amp;<a class="tu ref" href="#text_logger" title='text_logger' data-use='a' data-ref="text_logger">text_logger</a>,</td></tr>
+<tr><th id="46">46</th><td><u>#<span data-ppcond="46">ifdef</span> <span class="macro" data-ref="_M/HAVE_LTTNG_UST">HAVE_LTTNG_UST</span></u></td></tr>
+<tr><th id="47">47</th><td>  &amp;lttng_tracer,</td></tr>
+<tr><th id="48">48</th><td><u>#<span data-ppcond="46">endif</span></u></td></tr>
+<tr><th id="49">49</th><td>  &amp;<a class="tu ref" href="#cq_profiler" title='cq_profiler' data-use='a' data-ref="cq_profiler">cq_profiler</a></td></tr>
+<tr><th id="50">50</th><td>};</td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td><u>#define <dfn class="macro" id="_M/POCL_TRACER_COUNT" data-ref="_M/POCL_TRACER_COUNT">POCL_TRACER_COUNT</dfn> (sizeof(<a class="tu ref" href="#pocl_event_tracers" title='pocl_event_tracers' data-use='r' data-ref="pocl_event_tracers">pocl_event_tracers</a>) / sizeof((<a class="tu ref" href="#pocl_event_tracers" title='pocl_event_tracers' data-use='r' data-ref="pocl_event_tracers">pocl_event_tracers</a>)[0]))</u></td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td><em>static</em> <em>const</em> <b>struct</b> <a class="type" href="pocl_tracing.h.html#pocl_event_tracer" title='pocl_event_tracer' data-ref="pocl_event_tracer">pocl_event_tracer</a> *<dfn class="tu decl def" id="event_tracer" title='event_tracer' data-type='const struct pocl_event_tracer *' data-ref="event_tracer">event_tracer</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="55">55</th><td></td></tr>
+<tr><th id="56">56</th><td><i>/* Called with event locked, and must also return with a locked event. */</i></td></tr>
+<tr><th id="57">57</th><td><em>void</em></td></tr>
+<tr><th id="58">58</th><td><dfn class="decl def" id="pocl_event_updated" title='pocl_event_updated' data-ref="pocl_event_updated">pocl_event_updated</dfn> (<a class="typedef" href="../../include/CL/cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> <dfn class="local col1 decl" id="1event" title='event' data-type='cl_event' data-ref="1event">event</dfn>, <em>int</em> <dfn class="local col2 decl" id="2status" title='status' data-type='int' data-ref="2status">status</dfn>)</td></tr>
+<tr><th id="59">59</th><td>{</td></tr>
+<tr><th id="60">60</th><td>  <a class="typedef" href="pocl_cl.h.html#event_callback_item" title='event_callback_item' data-type='struct event_callback_item' data-ref="event_callback_item">event_callback_item</a> *<dfn class="local col3 decl" id="3cb_ptr" title='cb_ptr' data-type='event_callback_item *' data-ref="3cb_ptr">cb_ptr</dfn>;</td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td>  <i>/* Event callback handling calls functions in the same order</i></td></tr>
+<tr><th id="63">63</th><td><i>     they were added if the status matches the specified one. */</i></td></tr>
+<tr><th id="64">64</th><td>  <b>for</b> (<a class="local col3 ref" href="#3cb_ptr" title='cb_ptr' data-ref="3cb_ptr">cb_ptr</a> = <a class="local col1 ref" href="#1event" title='event' data-ref="1event">event</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_event::callback_list" title='_cl_event::callback_list' data-ref="_cl_event::callback_list">callback_list</a>; <a class="local col3 ref" href="#3cb_ptr" title='cb_ptr' data-ref="3cb_ptr">cb_ptr</a>; <a class="local col3 ref" href="#3cb_ptr" title='cb_ptr' data-ref="3cb_ptr">cb_ptr</a> = <a class="local col3 ref" href="#3cb_ptr" title='cb_ptr' data-ref="3cb_ptr">cb_ptr</a>-&gt;<a class="ref" href="pocl_cl.h.html#event_callback_item::next" title='event_callback_item::next' data-ref="event_callback_item::next">next</a>)</td></tr>
+<tr><th id="65">65</th><td>    {</td></tr>
+<tr><th id="66">66</th><td>      <b>if</b> (<a class="local col3 ref" href="#3cb_ptr" title='cb_ptr' data-ref="3cb_ptr">cb_ptr</a>-&gt;<a class="ref" href="pocl_cl.h.html#event_callback_item::trigger_status" title='event_callback_item::trigger_status' data-ref="event_callback_item::trigger_status">trigger_status</a> == <a class="local col2 ref" href="#2status" title='status' data-ref="2status">status</a>)</td></tr>
+<tr><th id="67">67</th><td>        {</td></tr>
+<tr><th id="68">68</th><td>          <a class="macro" href="pocl_cl.h.html#131" title="do { (((event)-&gt;pocl_refcount &gt;= 0) ? (void) (0) : __assert_fail (&quot;(event)-&gt;pocl_refcount &gt;= 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/pocl_tracing.c&quot;, 68, __PRETTY_FUNCTION__)); do { int r = pthread_mutex_unlock (&amp;((event)-&gt;pocl_lock)); ((r == 0) ? (void) (0) : __assert_fail (&quot;r == 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/pocl_tracing.c&quot;, 68, __PRETTY_FUNCTION__)); } while (0); } while (0)" data-ref="_M/POCL_UNLOCK_OBJ">POCL_UNLOCK_OBJ</a> (<a class="local col1 ref" href="#1event" title='event' data-ref="1event">event</a>);</td></tr>
+<tr><th id="69">69</th><td>          <a class="local col3 ref" href="#3cb_ptr" title='cb_ptr' data-ref="3cb_ptr">cb_ptr</a>-&gt;<a class="ref" href="pocl_cl.h.html#event_callback_item::callback_function" title='event_callback_item::callback_function' data-ref="event_callback_item::callback_function">callback_function</a> (<a class="local col1 ref" href="#1event" title='event' data-ref="1event">event</a>, <a class="local col3 ref" href="#3cb_ptr" title='cb_ptr' data-ref="3cb_ptr">cb_ptr</a>-&gt;<a class="ref" href="pocl_cl.h.html#event_callback_item::trigger_status" title='event_callback_item::trigger_status' data-ref="event_callback_item::trigger_status">trigger_status</a>,</td></tr>
+<tr><th id="70">70</th><td>                                     <a class="local col3 ref" href="#3cb_ptr" title='cb_ptr' data-ref="3cb_ptr">cb_ptr</a>-&gt;<a class="ref" href="pocl_cl.h.html#event_callback_item::user_data" title='event_callback_item::user_data' data-ref="event_callback_item::user_data">user_data</a>);</td></tr>
+<tr><th id="71">71</th><td>          <a class="macro" href="pocl_cl.h.html#124" title="do { do { int r = pthread_mutex_lock (&amp;((event)-&gt;pocl_lock)); ((r == 0) ? (void) (0) : __assert_fail (&quot;r == 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/pocl_tracing.c&quot;, 71, __PRETTY_FUNCTION__)); } while (0); (((event)-&gt;pocl_refcount &gt; 0) ? (void) (0) : __assert_fail (&quot;(event)-&gt;pocl_refcount &gt; 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/pocl_tracing.c&quot;, 71, __PRETTY_FUNCTION__)); } while (0)" data-ref="_M/POCL_LOCK_OBJ">POCL_LOCK_OBJ</a> (<a class="local col1 ref" href="#1event" title='event' data-ref="1event">event</a>);</td></tr>
+<tr><th id="72">72</th><td>        }</td></tr>
+<tr><th id="73">73</th><td>    }</td></tr>
+<tr><th id="74">74</th><td></td></tr>
+<tr><th id="75">75</th><td>  <b>if</b> (<a class="tu ref" href="#event_tracer" title='event_tracer' data-use='r' data-ref="event_tracer">event_tracer</a> &amp;&amp; <a class="tu ref" href="#event_tracer" title='event_tracer' data-use='r' data-ref="event_tracer">event_tracer</a>-&gt;<a class="ref" href="pocl_tracing.h.html#pocl_event_tracer::event_updated" title='pocl_event_tracer::event_updated' data-ref="pocl_event_tracer::event_updated">event_updated</a> &amp;&amp;</td></tr>
+<tr><th id="76">76</th><td>      ((<var>1</var> &lt;&lt; <a class="local col2 ref" href="#2status" title='status' data-ref="2status">status</a>) &amp; <a class="tu ref" href="#event_trace_filter" title='event_trace_filter' data-use='r' data-ref="event_trace_filter">event_trace_filter</a>))</td></tr>
+<tr><th id="77">77</th><td>    <a class="tu ref" href="#event_tracer" title='event_tracer' data-use='r' data-ref="event_tracer">event_tracer</a>-&gt;<a class="ref" href="pocl_tracing.h.html#pocl_event_tracer::event_updated" title='pocl_event_tracer::event_updated' data-ref="pocl_event_tracer::event_updated">event_updated</a> (<a class="local col1 ref" href="#1event" title='event' data-ref="1event">event</a>, <a class="local col2 ref" href="#2status" title='status' data-ref="2status">status</a>);</td></tr>
+<tr><th id="78">78</th><td>}</td></tr>
+<tr><th id="79">79</th><td></td></tr>
+<tr><th id="80">80</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="81">81</th><td><dfn class="tu decl def" id="pocl_parse_event_filter" title='pocl_parse_event_filter' data-type='void pocl_parse_event_filter()' data-ref="pocl_parse_event_filter">pocl_parse_event_filter</dfn> ()</td></tr>
+<tr><th id="82">82</th><td>{</td></tr>
+<tr><th id="83">83</th><td>  <em>const</em> <em>char</em> *<dfn class="local col4 decl" id="4trace_filter" title='trace_filter' data-type='const char *' data-ref="4trace_filter">trace_filter</dfn>;</td></tr>
+<tr><th id="84">84</th><td>  <em>char</em> *<dfn class="local col5 decl" id="5tmp_str" title='tmp_str' data-type='char *' data-ref="5tmp_str">tmp_str</dfn>, *<dfn class="local col6 decl" id="6save_ptr" title='save_ptr' data-type='char *' data-ref="6save_ptr">save_ptr</dfn>, *<dfn class="local col7 decl" id="7token" title='token' data-type='char *' data-ref="7token">token</dfn>;</td></tr>
+<tr><th id="85">85</th><td></td></tr>
+<tr><th id="86">86</th><td>  <a class="local col4 ref" href="#4trace_filter" title='trace_filter' data-ref="4trace_filter">trace_filter</a> = <a class="ref" href="pocl_runtime_config.h.html#pocl_get_string_option" title='pocl_get_string_option' data-ref="pocl_get_string_option">pocl_get_string_option</a> (<q>"POCL_TRACING_FILTER"</q>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="87">87</th><td>  <b>if</b> (<a class="local col4 ref" href="#4trace_filter" title='trace_filter' data-ref="4trace_filter">trace_filter</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="88">88</th><td>    <b>return</b>;</td></tr>
+<tr><th id="89">89</th><td></td></tr>
+<tr><th id="90">90</th><td>  <a class="local col5 ref" href="#5tmp_str" title='tmp_str' data-ref="5tmp_str">tmp_str</a> = <a class="ref" href="../../../include/string.h.html#strdup" title='strdup' data-ref="strdup">strdup</a> (<a class="local col4 ref" href="#4trace_filter" title='trace_filter' data-ref="4trace_filter">trace_filter</a>);</td></tr>
+<tr><th id="91">91</th><td>  <b>if</b> (<a class="local col5 ref" href="#5tmp_str" title='tmp_str' data-ref="5tmp_str">tmp_str</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="92">92</th><td>    <b>return</b>;</td></tr>
+<tr><th id="93">93</th><td></td></tr>
+<tr><th id="94">94</th><td>  <a class="tu ref" href="#event_trace_filter" title='event_trace_filter' data-use='w' data-ref="event_trace_filter">event_trace_filter</a> = <var>0</var>;</td></tr>
+<tr><th id="95">95</th><td>  <b>while</b> (<var>1</var>)</td></tr>
+<tr><th id="96">96</th><td>    {</td></tr>
+<tr><th id="97">97</th><td>      <a class="local col7 ref" href="#7token" title='token' data-ref="7token">token</a> = <a class="ref" href="../../../include/string.h.html#strtok_r" title='strtok_r' data-ref="strtok_r">strtok_r</a> (<a class="local col5 ref" href="#5tmp_str" title='tmp_str' data-ref="5tmp_str">tmp_str</a>, <q>","</q>, &amp;<a class="local col6 ref" href="#6save_ptr" title='save_ptr' data-ref="6save_ptr">save_ptr</a>);</td></tr>
+<tr><th id="98">98</th><td>      <b>if</b> (<a class="local col7 ref" href="#7token" title='token' data-ref="7token">token</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="99">99</th><td>        <b>goto</b> <a class="lbl" href="#8PARSE_OUT" data-ref="8PARSE_OUT">PARSE_OUT</a>;</td></tr>
+<tr><th id="100">100</th><td>      <b>if</b> (<a class="ref" href="../../../include/string.h.html#strcmp" title='strcmp' data-ref="strcmp">strcmp</a> (<a class="local col7 ref" href="#7token" title='token' data-ref="7token">token</a>, <q>"queued"</q>) == <var>0</var>)</td></tr>
+<tr><th id="101">101</th><td>        <a class="tu ref" href="#event_trace_filter" title='event_trace_filter' data-use='w' data-ref="event_trace_filter">event_trace_filter</a> |= (<var>1</var> &lt;&lt; <a class="macro" href="../../include/CL/cl.h.html#831" title="0x3" data-ref="_M/CL_QUEUED">CL_QUEUED</a>);</td></tr>
+<tr><th id="102">102</th><td>      <b>else</b> <b>if</b> (<a class="ref" href="../../../include/string.h.html#strcmp" title='strcmp' data-ref="strcmp">strcmp</a> (<a class="local col7 ref" href="#7token" title='token' data-ref="7token">token</a>, <q>"submitted"</q>) == <var>0</var>)</td></tr>
+<tr><th id="103">103</th><td>        <a class="tu ref" href="#event_trace_filter" title='event_trace_filter' data-use='w' data-ref="event_trace_filter">event_trace_filter</a> |= (<var>1</var> &lt;&lt; <a class="macro" href="../../include/CL/cl.h.html#830" title="0x2" data-ref="_M/CL_SUBMITTED">CL_SUBMITTED</a>);</td></tr>
+<tr><th id="104">104</th><td>      <b>else</b> <b>if</b> (<a class="ref" href="../../../include/string.h.html#strcmp" title='strcmp' data-ref="strcmp">strcmp</a> (<a class="local col7 ref" href="#7token" title='token' data-ref="7token">token</a>, <q>"running"</q>) == <var>0</var>)</td></tr>
+<tr><th id="105">105</th><td>        <a class="tu ref" href="#event_trace_filter" title='event_trace_filter' data-use='w' data-ref="event_trace_filter">event_trace_filter</a> |= (<var>1</var> &lt;&lt; <a class="macro" href="../../include/CL/cl.h.html#829" title="0x1" data-ref="_M/CL_RUNNING">CL_RUNNING</a>);</td></tr>
+<tr><th id="106">106</th><td>      <b>else</b> <b>if</b> (<a class="ref" href="../../../include/string.h.html#strcmp" title='strcmp' data-ref="strcmp">strcmp</a> (<a class="local col7 ref" href="#7token" title='token' data-ref="7token">token</a>, <q>"complete"</q>) == <var>0</var>)</td></tr>
+<tr><th id="107">107</th><td>        <a class="tu ref" href="#event_trace_filter" title='event_trace_filter' data-use='w' data-ref="event_trace_filter">event_trace_filter</a> |= (<var>1</var> &lt;&lt; <a class="macro" href="../../include/CL/cl.h.html#828" title="0x0" data-ref="_M/CL_COMPLETE">CL_COMPLETE</a>);</td></tr>
+<tr><th id="108">108</th><td></td></tr>
+<tr><th id="109">109</th><td>      <a class="local col5 ref" href="#5tmp_str" title='tmp_str' data-ref="5tmp_str">tmp_str</a> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="110">110</th><td>    }</td></tr>
+<tr><th id="111">111</th><td></td></tr>
+<tr><th id="112">112</th><td><dfn class="lbl" id="8PARSE_OUT" data-ref="8PARSE_OUT">PARSE_OUT</dfn>:</td></tr>
+<tr><th id="113">113</th><td>  <a class="ref" href="../../../include/stdlib.h.html#free" title='free' data-ref="free">free</a> (<a class="local col5 ref" href="#5tmp_str" title='tmp_str' data-ref="5tmp_str">tmp_str</a>);</td></tr>
+<tr><th id="114">114</th><td>}</td></tr>
+<tr><th id="115">115</th><td></td></tr>
+<tr><th id="116">116</th><td><em>void</em></td></tr>
+<tr><th id="117">117</th><td><dfn class="decl def" id="pocl_tracing_init" title='pocl_tracing_init' data-ref="pocl_tracing_init">pocl_tracing_init</dfn> ()</td></tr>
+<tr><th id="118">118</th><td>{</td></tr>
+<tr><th id="119">119</th><td>  <em>const</em> <em>char</em> *<dfn class="local col9 decl" id="9trace_env" title='trace_env' data-type='const char *' data-ref="9trace_env">trace_env</dfn>;</td></tr>
+<tr><th id="120">120</th><td>  <em>unsigned</em> <dfn class="local col0 decl" id="10i" title='i' data-type='unsigned int' data-ref="10i">i</dfn>;</td></tr>
+<tr><th id="121">121</th><td></td></tr>
+<tr><th id="122">122</th><td>  <b>if</b> (<a class="tu ref" href="#tracing_initialized" title='tracing_initialized' data-use='r' data-ref="tracing_initialized">tracing_initialized</a>)</td></tr>
+<tr><th id="123">123</th><td>    <b>return</b>;</td></tr>
+<tr><th id="124">124</th><td></td></tr>
+<tr><th id="125">125</th><td>  <a class="local col9 ref" href="#9trace_env" title='trace_env' data-ref="9trace_env">trace_env</a> = <a class="ref" href="pocl_runtime_config.h.html#pocl_get_string_option" title='pocl_get_string_option' data-ref="pocl_get_string_option">pocl_get_string_option</a> (<q>"POCL_TRACING"</q>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="126">126</th><td>  <b>if</b> (<a class="local col9 ref" href="#9trace_env" title='trace_env' data-ref="9trace_env">trace_env</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="127">127</th><td>    <b>goto</b> <a class="lbl" href="#11EVENT_INIT_OUT" data-ref="11EVENT_INIT_OUT">EVENT_INIT_OUT</a>;</td></tr>
+<tr><th id="128">128</th><td></td></tr>
+<tr><th id="129">129</th><td>  <i>/* Check if a tracer has a name matching the supplied one */</i></td></tr>
+<tr><th id="130">130</th><td>  <b>for</b> (<a class="local col0 ref" href="#10i" title='i' data-ref="10i">i</a> = <var>0</var>; <a class="local col0 ref" href="#10i" title='i' data-ref="10i">i</a> &lt; <a class="macro" href="#52" title="(sizeof(pocl_event_tracers) / sizeof((pocl_event_tracers)[0]))" data-ref="_M/POCL_TRACER_COUNT">POCL_TRACER_COUNT</a>; <a class="local col0 ref" href="#10i" title='i' data-ref="10i">i</a>++)</td></tr>
+<tr><th id="131">131</th><td>    {</td></tr>
+<tr><th id="132">132</th><td>      <b>if</b> (<a class="ref" href="../../../include/string.h.html#strcmp" title='strcmp' data-ref="strcmp">strcmp</a> (<a class="local col9 ref" href="#9trace_env" title='trace_env' data-ref="9trace_env">trace_env</a>, <a class="tu ref" href="#pocl_event_tracers" title='pocl_event_tracers' data-use='r' data-ref="pocl_event_tracers">pocl_event_tracers</a>[<a class="local col0 ref" href="#10i" title='i' data-ref="10i">i</a>]-&gt;<a class="ref" href="pocl_tracing.h.html#pocl_event_tracer::name" title='pocl_event_tracer::name' data-ref="pocl_event_tracer::name">name</a>) == <var>0</var>)</td></tr>
+<tr><th id="133">133</th><td>       {</td></tr>
+<tr><th id="134">134</th><td>         <a class="tu ref" href="#event_tracer" title='event_tracer' data-use='w' data-ref="event_tracer">event_tracer</a> = <a class="tu ref" href="#pocl_event_tracers" title='pocl_event_tracers' data-use='r' data-ref="pocl_event_tracers">pocl_event_tracers</a>[<a class="local col0 ref" href="#10i" title='i' data-ref="10i">i</a>];</td></tr>
+<tr><th id="135">135</th><td>         <b>break</b>;</td></tr>
+<tr><th id="136">136</th><td>       }</td></tr>
+<tr><th id="137">137</th><td>    }</td></tr>
+<tr><th id="138">138</th><td>  <b>if</b> (<a class="tu ref" href="#event_tracer" title='event_tracer' data-use='r' data-ref="event_tracer">event_tracer</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="139">139</th><td>    <b>goto</b> <a class="lbl" href="#11EVENT_INIT_OUT" data-ref="11EVENT_INIT_OUT">EVENT_INIT_OUT</a>;</td></tr>
+<tr><th id="140">140</th><td></td></tr>
+<tr><th id="141">141</th><td>  <a class="tu ref" href="#pocl_parse_event_filter" title='pocl_parse_event_filter' data-use='c' data-ref="pocl_parse_event_filter">pocl_parse_event_filter</a> ();</td></tr>
+<tr><th id="142">142</th><td></td></tr>
+<tr><th id="143">143</th><td>  <a class="tu ref" href="#event_tracer" title='event_tracer' data-use='r' data-ref="event_tracer">event_tracer</a>-&gt;<a class="ref" href="pocl_tracing.h.html#pocl_event_tracer::init" title='pocl_event_tracer::init' data-ref="pocl_event_tracer::init">init</a> ();</td></tr>
+<tr><th id="144">144</th><td></td></tr>
+<tr><th id="145">145</th><td><dfn class="lbl" id="11EVENT_INIT_OUT" data-ref="11EVENT_INIT_OUT">EVENT_INIT_OUT</dfn>:</td></tr>
+<tr><th id="146">146</th><td>  <a class="tu ref" href="#tracing_initialized" title='tracing_initialized' data-use='w' data-ref="tracing_initialized">tracing_initialized</a> = <var>1</var>;</td></tr>
+<tr><th id="147">147</th><td>}</td></tr>
+<tr><th id="148">148</th><td></td></tr>
+<tr><th id="149">149</th><td></td></tr>
+<tr><th id="150">150</th><td><i  data-doc="text_tracer_file">/* Basic text logger, useful for grep/cut/sed operations</i></td></tr>
+<tr><th id="151">151</th><td><i  data-doc="text_tracer_file"> */</i></td></tr>
+<tr><th id="152">152</th><td><em>static</em> <a class="typedef" href="../../../include/stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> *<dfn class="tu decl def" id="text_tracer_file" title='text_tracer_file' data-type='FILE *' data-ref="text_tracer_file">text_tracer_file</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="153">153</th><td><em>static</em> <a class="typedef" href="pocl_cl.h.html#pocl_lock_t" title='pocl_lock_t' data-type='pthread_mutex_t' data-ref="pocl_lock_t">pocl_lock_t</a> <dfn class="tu decl def" id="text_tracer_lock" title='text_tracer_lock' data-type='pocl_lock_t' data-ref="text_tracer_lock">text_tracer_lock</dfn> = <a class="macro" href="pocl_cl.h.html#65" title="{ { 0, 0, 0, 0, 0, 0, 0, { 0, 0 } } }" data-ref="_M/POCL_LOCK_INITIALIZER">POCL_LOCK_INITIALIZER</a>;</td></tr>
+<tr><th id="154">154</th><td></td></tr>
+<tr><th id="155">155</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="156">156</th><td><dfn class="tu decl def" id="text_tracer_init" title='text_tracer_init' data-type='void text_tracer_init()' data-ref="text_tracer_init">text_tracer_init</dfn> ()</td></tr>
+<tr><th id="157">157</th><td>{</td></tr>
+<tr><th id="158">158</th><td>  <em>const</em> <em>char</em> *<dfn class="local col2 decl" id="12text_tracer_output" title='text_tracer_output' data-type='const char *' data-ref="12text_tracer_output">text_tracer_output</dfn>;</td></tr>
+<tr><th id="159">159</th><td></td></tr>
+<tr><th id="160">160</th><td>  <a class="local col2 ref" href="#12text_tracer_output" title='text_tracer_output' data-ref="12text_tracer_output">text_tracer_output</a> = <a class="ref" href="pocl_runtime_config.h.html#pocl_get_string_option" title='pocl_get_string_option' data-ref="pocl_get_string_option">pocl_get_string_option</a> (<q>"POCL_TRACING_OPT"</q>,</td></tr>
+<tr><th id="161">161</th><td>                                          <q>"pocl_trace_events.log"</q>);</td></tr>
+<tr><th id="162">162</th><td>  <a class="tu ref" href="#text_tracer_file" title='text_tracer_file' data-use='w' data-ref="text_tracer_file">text_tracer_file</a> = <a class="ref" href="../../../include/stdio.h.html#fopen" title='fopen' data-ref="fopen">fopen</a> (<a class="local col2 ref" href="#12text_tracer_output" title='text_tracer_output' data-ref="12text_tracer_output">text_tracer_output</a>, <q>"w"</q>);</td></tr>
+<tr><th id="163">163</th><td>  <b>if</b> (!<a class="tu ref" href="#text_tracer_file" title='text_tracer_file' data-use='r' data-ref="text_tracer_file">text_tracer_file</a>)</td></tr>
+<tr><th id="164">164</th><td>    <a class="macro" href="pocl_debug.h.html#95" title="do { fprintf(stderr, &quot;Failed to open text tracer output\n&quot;); abort(); } while (0)" data-ref="_M/POCL_ABORT">POCL_ABORT</a> (<q>"Failed to open text tracer output\n"</q>);</td></tr>
+<tr><th id="165">165</th><td>}</td></tr>
+<tr><th id="166">166</th><td></td></tr>
+<tr><th id="167">167</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="168">168</th><td><dfn class="tu decl def" id="text_tracer_event_updated" title='text_tracer_event_updated' data-type='void text_tracer_event_updated(cl_event event, int status)' data-ref="text_tracer_event_updated">text_tracer_event_updated</dfn> (<a class="typedef" href="../../include/CL/cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> <dfn class="local col3 decl" id="13event" title='event' data-type='cl_event' data-ref="13event">event</dfn>, <em>int</em> <dfn class="local col4 decl" id="14status" title='status' data-type='int' data-ref="14status">status</dfn>)</td></tr>
+<tr><th id="169">169</th><td>{</td></tr>
+<tr><th id="170">170</th><td>  <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_ulong" title='cl_ulong' data-type='uint64_t' data-ref="cl_ulong">cl_ulong</a> <dfn class="local col5 decl" id="15ts" title='ts' data-type='cl_ulong' data-ref="15ts">ts</dfn>;</td></tr>
+<tr><th id="171">171</th><td>  <b>switch</b> (<a class="local col4 ref" href="#14status" title='status' data-ref="14status">status</a>)</td></tr>
+<tr><th id="172">172</th><td>    {</td></tr>
+<tr><th id="173">173</th><td>    <b>case</b> <a class="macro" href="../../include/CL/cl.h.html#831" title="0x3" data-ref="_M/CL_QUEUED">CL_QUEUED</a>:</td></tr>
+<tr><th id="174">174</th><td>      <a class="local col5 ref" href="#15ts" title='ts' data-ref="15ts">ts</a> = <a class="local col3 ref" href="#13event" title='event' data-ref="13event">event</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_event::time_queue" title='_cl_event::time_queue' data-ref="_cl_event::time_queue">time_queue</a>;</td></tr>
+<tr><th id="175">175</th><td>      <b>break</b>;</td></tr>
+<tr><th id="176">176</th><td>    <b>case</b> <a class="macro" href="../../include/CL/cl.h.html#830" title="0x2" data-ref="_M/CL_SUBMITTED">CL_SUBMITTED</a>:</td></tr>
+<tr><th id="177">177</th><td>      <a class="local col5 ref" href="#15ts" title='ts' data-ref="15ts">ts</a> = <a class="local col3 ref" href="#13event" title='event' data-ref="13event">event</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_event::time_submit" title='_cl_event::time_submit' data-ref="_cl_event::time_submit">time_submit</a>;</td></tr>
+<tr><th id="178">178</th><td>      <b>break</b>;</td></tr>
+<tr><th id="179">179</th><td>    <b>case</b> <a class="macro" href="../../include/CL/cl.h.html#829" title="0x1" data-ref="_M/CL_RUNNING">CL_RUNNING</a>:</td></tr>
+<tr><th id="180">180</th><td>      <a class="local col5 ref" href="#15ts" title='ts' data-ref="15ts">ts</a> = <a class="local col3 ref" href="#13event" title='event' data-ref="13event">event</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_event::time_start" title='_cl_event::time_start' data-ref="_cl_event::time_start">time_start</a>;</td></tr>
+<tr><th id="181">181</th><td>      <b>break</b>;</td></tr>
+<tr><th id="182">182</th><td>    <b>case</b> <a class="macro" href="../../include/CL/cl.h.html#828" title="0x0" data-ref="_M/CL_COMPLETE">CL_COMPLETE</a>:</td></tr>
+<tr><th id="183">183</th><td>    <b>default</b>:</td></tr>
+<tr><th id="184">184</th><td>      <a class="local col5 ref" href="#15ts" title='ts' data-ref="15ts">ts</a> = <a class="local col3 ref" href="#13event" title='event' data-ref="13event">event</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_event::time_end" title='_cl_event::time_end' data-ref="_cl_event::time_end">time_end</a>;</td></tr>
+<tr><th id="185">185</th><td>    }</td></tr>
+<tr><th id="186">186</th><td>  <a class="typedef" href="../../include/pocl.h.html#_cl_command_node" title='_cl_command_node' data-type='struct _cl_command_node' data-ref="_cl_command_node">_cl_command_node</a> *<dfn class="local col6 decl" id="16node" title='node' data-type='_cl_command_node *' data-ref="16node">node</dfn> = <a class="local col3 ref" href="#13event" title='event' data-ref="13event">event</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_event::command" title='_cl_event::command' data-ref="_cl_event::command">command</a>;</td></tr>
+<tr><th id="187">187</th><td>  <em>char</em> <dfn class="local col7 decl" id="17tmp_buffer" title='tmp_buffer' data-type='char [512]' data-ref="17tmp_buffer">tmp_buffer</dfn>[<var>512</var>];</td></tr>
+<tr><th id="188">188</th><td>  <em>char</em> *<dfn class="local col8 decl" id="18cur_buf" title='cur_buf' data-type='char *' data-ref="18cur_buf">cur_buf</dfn> = <a class="local col7 ref" href="#17tmp_buffer" title='tmp_buffer' data-ref="17tmp_buffer">tmp_buffer</a>;</td></tr>
+<tr><th id="189">189</th><td>  <em>int</em> <dfn class="local col9 decl" id="19text_size" title='text_size' data-type='int' data-ref="19text_size">text_size</dfn> = <var>0</var>;</td></tr>
+<tr><th id="190">190</th><td></td></tr>
+<tr><th id="191">191</th><td>  <i>/* Some less integrated commands (clEnqueueReadBufferRect) do not use</i></td></tr>
+<tr><th id="192">192</th><td><i>   * standard mecanism, so check node to be non null */</i></td></tr>
+<tr><th id="193">193</th><td>  <b>if</b> (<a class="local col6 ref" href="#16node" title='node' data-ref="16node">node</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="194">194</th><td>    <b>return</b>;</td></tr>
+<tr><th id="195">195</th><td></td></tr>
+<tr><th id="196">196</th><td>  <a class="local col9 ref" href="#19text_size" title='text_size' data-ref="19text_size">text_size</a> = <a class="ref" href="../../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a> (<a class="local col8 ref" href="#18cur_buf" title='cur_buf' data-ref="18cur_buf">cur_buf</a>, <q>"%"</q><a class="macro" href="../../../include/inttypes.h.html#105" title="&quot;l&quot; &quot;u&quot;" data-ref="_M/PRIu64">PRIu64</a><q>" %s %s "</q>, <a class="local col5 ref" href="#15ts" title='ts' data-ref="15ts">ts</a>,</td></tr>
+<tr><th id="197">197</th><td>                       <a class="ref" href="pocl_util.h.html#pocl_command_to_str" title='pocl_command_to_str' data-ref="pocl_command_to_str">pocl_command_to_str</a> (<a class="local col3 ref" href="#13event" title='event' data-ref="13event">event</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_event::command_type" title='_cl_event::command_type' data-ref="_cl_event::command_type">command_type</a>),</td></tr>
+<tr><th id="198">198</th><td>                       <a class="ref" href="pocl_util.h.html#pocl_status_to_str" title='pocl_status_to_str' data-ref="pocl_status_to_str">pocl_status_to_str</a>(<a class="local col3 ref" href="#13event" title='event' data-ref="13event">event</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_event::status" title='_cl_event::status' data-ref="_cl_event::status">status</a>));</td></tr>
+<tr><th id="199">199</th><td>  <a class="local col8 ref" href="#18cur_buf" title='cur_buf' data-ref="18cur_buf">cur_buf</a> += <a class="local col9 ref" href="#19text_size" title='text_size' data-ref="19text_size">text_size</a>;</td></tr>
+<tr><th id="200">200</th><td>  <i>/* Print more informations for some commonly used commands */</i></td></tr>
+<tr><th id="201">201</th><td>  <b>switch</b> (<a class="local col3 ref" href="#13event" title='event' data-ref="13event">event</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_event::command_type" title='_cl_event::command_type' data-ref="_cl_event::command_type">command_type</a>)</td></tr>
+<tr><th id="202">202</th><td>    {</td></tr>
+<tr><th id="203">203</th><td>    <b>case</b> <a class="macro" href="../../include/CL/cl.h.html#793" title="0x11F3" data-ref="_M/CL_COMMAND_READ_BUFFER">CL_COMMAND_READ_BUFFER</a>:</td></tr>
+<tr><th id="204">204</th><td>      <a class="local col9 ref" href="#19text_size" title='text_size' data-ref="19text_size">text_size</a> += <a class="ref" href="../../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a> (<a class="local col8 ref" href="#18cur_buf" title='cur_buf' data-ref="18cur_buf">cur_buf</a>, <q>"size=%"</q> <a class="macro" href="pocl_debug.h.html#20" title="&quot;zu&quot;" data-ref="_M/PRIuS">PRIuS</a> <q>", host_ptr=%p\n"</q>,</td></tr>
+<tr><th id="205">205</th><td>                            <a class="local col6 ref" href="#16node" title='node' data-ref="16node">node</a>-&gt;<a class="ref" href="../../include/pocl.h.html#_cl_command_node::command" title='_cl_command_node::command' data-ref="_cl_command_node::command">command</a>.<a class="ref" href="../../include/pocl.h.html#(anonymous)::read" title='(anonymous union)::read' data-ref="(anonymous)::read">read</a>.<a class="ref" href="../../include/pocl.h.html#(anonymous)::size" title='(anonymous struct)::size' data-ref="(anonymous)::size">size</a>,</td></tr>
+<tr><th id="206">206</th><td>                            <a class="local col6 ref" href="#16node" title='node' data-ref="16node">node</a>-&gt;<a class="ref" href="../../include/pocl.h.html#_cl_command_node::command" title='_cl_command_node::command' data-ref="_cl_command_node::command">command</a>.<a class="ref" href="../../include/pocl.h.html#(anonymous)::read" title='(anonymous union)::read' data-ref="(anonymous)::read">read</a>.<a class="ref" href="../../include/pocl.h.html#(anonymous)::dst_host_ptr" title='(anonymous struct)::dst_host_ptr' data-ref="(anonymous)::dst_host_ptr">dst_host_ptr</a>);</td></tr>
+<tr><th id="207">207</th><td>      <b>break</b>;</td></tr>
+<tr><th id="208">208</th><td>    <b>case</b> <a class="macro" href="../../include/CL/cl.h.html#794" title="0x11F4" data-ref="_M/CL_COMMAND_WRITE_BUFFER">CL_COMMAND_WRITE_BUFFER</a>:</td></tr>
+<tr><th id="209">209</th><td>      <a class="local col9 ref" href="#19text_size" title='text_size' data-ref="19text_size">text_size</a> += <a class="ref" href="../../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a> (<a class="local col8 ref" href="#18cur_buf" title='cur_buf' data-ref="18cur_buf">cur_buf</a>, <q>"size=%"</q> <a class="macro" href="pocl_debug.h.html#20" title="&quot;zu&quot;" data-ref="_M/PRIuS">PRIuS</a> <q>", host_ptr=%p\n\n"</q>,</td></tr>
+<tr><th id="210">210</th><td>                            <a class="local col6 ref" href="#16node" title='node' data-ref="16node">node</a>-&gt;<a class="ref" href="../../include/pocl.h.html#_cl_command_node::command" title='_cl_command_node::command' data-ref="_cl_command_node::command">command</a>.<a class="ref" href="../../include/pocl.h.html#(anonymous)::write" title='(anonymous union)::write' data-ref="(anonymous)::write">write</a>.<a class="ref" href="../../include/pocl.h.html#(anonymous)::size" title='(anonymous struct)::size' data-ref="(anonymous)::size">size</a>,</td></tr>
+<tr><th id="211">211</th><td>                            <a class="local col6 ref" href="#16node" title='node' data-ref="16node">node</a>-&gt;<a class="ref" href="../../include/pocl.h.html#_cl_command_node::command" title='_cl_command_node::command' data-ref="_cl_command_node::command">command</a>.<a class="ref" href="../../include/pocl.h.html#(anonymous)::write" title='(anonymous union)::write' data-ref="(anonymous)::write">write</a>.<a class="ref" href="../../include/pocl.h.html#(anonymous)::src_host_ptr" title='(anonymous struct)::src_host_ptr' data-ref="(anonymous)::src_host_ptr">src_host_ptr</a>);</td></tr>
+<tr><th id="212">212</th><td>      <b>break</b>;</td></tr>
+<tr><th id="213">213</th><td>    <b>case</b> <a class="macro" href="../../include/CL/cl.h.html#795" title="0x11F5" data-ref="_M/CL_COMMAND_COPY_BUFFER">CL_COMMAND_COPY_BUFFER</a>:</td></tr>
+<tr><th id="214">214</th><td>      <a class="local col9 ref" href="#19text_size" title='text_size' data-ref="19text_size">text_size</a></td></tr>
+<tr><th id="215">215</th><td>          += <a class="ref" href="../../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a> (<a class="local col8 ref" href="#18cur_buf" title='cur_buf' data-ref="18cur_buf">cur_buf</a>, <q>"size=%"</q> <a class="macro" href="pocl_debug.h.html#20" title="&quot;zu&quot;" data-ref="_M/PRIuS">PRIuS</a> <q>"\n"</q>, <a class="local col6 ref" href="#16node" title='node' data-ref="16node">node</a>-&gt;<a class="ref" href="../../include/pocl.h.html#_cl_command_node::command" title='_cl_command_node::command' data-ref="_cl_command_node::command">command</a>.<a class="ref" href="../../include/pocl.h.html#(anonymous)::copy" title='(anonymous union)::copy' data-ref="(anonymous)::copy">copy</a>.<a class="ref" href="../../include/pocl.h.html#(anonymous)::size" title='(anonymous struct)::size' data-ref="(anonymous)::size">size</a>);</td></tr>
+<tr><th id="216">216</th><td>      <b>break</b>;</td></tr>
+<tr><th id="217">217</th><td>    <b>case</b> <a class="macro" href="../../include/CL/cl.h.html#790" title="0x11F0" data-ref="_M/CL_COMMAND_NDRANGE_KERNEL">CL_COMMAND_NDRANGE_KERNEL</a>:</td></tr>
+<tr><th id="218">218</th><td>      <a class="local col9 ref" href="#19text_size" title='text_size' data-ref="19text_size">text_size</a> += <a class="ref" href="../../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a> (<a class="local col8 ref" href="#18cur_buf" title='cur_buf' data-ref="18cur_buf">cur_buf</a>, <q>"name=%s\n"</q>,</td></tr>
+<tr><th id="219">219</th><td>                            <a class="local col6 ref" href="#16node" title='node' data-ref="16node">node</a>-&gt;<a class="ref" href="../../include/pocl.h.html#_cl_command_node::command" title='_cl_command_node::command' data-ref="_cl_command_node::command">command</a>.<a class="ref" href="../../include/pocl.h.html#(anonymous)::run" title='(anonymous union)::run' data-ref="(anonymous)::run">run</a>.<a class="ref" href="../../include/pocl.h.html#(anonymous)::kernel" title='(anonymous struct)::kernel' data-ref="(anonymous)::kernel">kernel</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_kernel::name" title='_cl_kernel::name' data-ref="_cl_kernel::name">name</a>);</td></tr>
+<tr><th id="220">220</th><td>      <b>break</b>;</td></tr>
+<tr><th id="221">221</th><td>    <b>case</b> <a class="macro" href="../../include/CL/cl.h.html#816" title="0x1207" data-ref="_M/CL_COMMAND_FILL_BUFFER">CL_COMMAND_FILL_BUFFER</a>:</td></tr>
+<tr><th id="222">222</th><td>      <a class="local col9 ref" href="#19text_size" title='text_size' data-ref="19text_size">text_size</a> += <a class="ref" href="../../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a> (<a class="local col8 ref" href="#18cur_buf" title='cur_buf' data-ref="18cur_buf">cur_buf</a>, <q>"size=%"</q><a class="macro" href="pocl_debug.h.html#20" title="&quot;zu&quot;" data-ref="_M/PRIuS">PRIuS</a><q>"\n"</q>, </td></tr>
+<tr><th id="223">223</th><td>                            <a class="local col6 ref" href="#16node" title='node' data-ref="16node">node</a>-&gt;<a class="ref" href="../../include/pocl.h.html#_cl_command_node::command" title='_cl_command_node::command' data-ref="_cl_command_node::command">command</a>.<a class="ref" href="../../include/pocl.h.html#(anonymous)::memfill" title='(anonymous union)::memfill' data-ref="(anonymous)::memfill">memfill</a>.<a class="ref" href="../../include/pocl.h.html#(anonymous)::size" title='(anonymous struct)::size' data-ref="(anonymous)::size">size</a>);</td></tr>
+<tr><th id="224">224</th><td>      <b>break</b>;</td></tr>
+<tr><th id="225">225</th><td>    <b>default</b>:</td></tr>
+<tr><th id="226">226</th><td>      <a class="local col8 ref" href="#18cur_buf" title='cur_buf' data-ref="18cur_buf">cur_buf</a>[<var>0</var>] = <kbd>'\n'</kbd>;</td></tr>
+<tr><th id="227">227</th><td>      <a class="local col9 ref" href="#19text_size" title='text_size' data-ref="19text_size">text_size</a>++;</td></tr>
+<tr><th id="228">228</th><td>    }</td></tr>
+<tr><th id="229">229</th><td></td></tr>
+<tr><th id="230">230</th><td>  <i>/* TODO: Make text_logger less intrusive by merging it with cq_profiler.</i></td></tr>
+<tr><th id="231">231</th><td><i>     Now it actually sprintfs after every event change which has a significant</i></td></tr>
+<tr><th id="232">232</th><td><i>     footprint. It could just use the collected events and sprintf the log</i></td></tr>
+<tr><th id="233">233</th><td><i>     after N events or atexit() to avoid the printing affecting the profile. */</i></td></tr>
+<tr><th id="234">234</th><td></td></tr>
+<tr><th id="235">235</th><td>  <a class="macro" href="pocl_cl.h.html#70" title="do { int r = pthread_mutex_lock (&amp;(text_tracer_lock)); ((r == 0) ? (void) (0) : __assert_fail (&quot;r == 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/pocl_tracing.c&quot;, 235, __PRETTY_FUNCTION__)); } while (0)" data-ref="_M/POCL_LOCK">POCL_LOCK</a> (<a class="tu ref" href="#text_tracer_lock" title='text_tracer_lock' data-use='a' data-ref="text_tracer_lock">text_tracer_lock</a>);</td></tr>
+<tr><th id="236">236</th><td>  <a class="ref" href="../../../include/stdio.h.html#fwrite" title='fwrite' data-ref="fwrite">fwrite</a> (<a class="local col7 ref" href="#17tmp_buffer" title='tmp_buffer' data-ref="17tmp_buffer">tmp_buffer</a>, <a class="local col9 ref" href="#19text_size" title='text_size' data-ref="19text_size">text_size</a>, <var>1</var>, <a class="tu ref" href="#text_tracer_file" title='text_tracer_file' data-use='r' data-ref="text_tracer_file">text_tracer_file</a>);</td></tr>
+<tr><th id="237">237</th><td>  <a class="macro" href="pocl_cl.h.html#77" title="do { int r = pthread_mutex_unlock (&amp;(text_tracer_lock)); ((r == 0) ? (void) (0) : __assert_fail (&quot;r == 0&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/lib/CL/pocl_tracing.c&quot;, 237, __PRETTY_FUNCTION__)); } while (0)" data-ref="_M/POCL_UNLOCK">POCL_UNLOCK</a> (<a class="tu ref" href="#text_tracer_lock" title='text_tracer_lock' data-use='a' data-ref="text_tracer_lock">text_tracer_lock</a>);</td></tr>
+<tr><th id="238">238</th><td>}</td></tr>
+<tr><th id="239">239</th><td></td></tr>
+<tr><th id="240">240</th><td><em>static</em> <em>const</em> <b>struct</b> <a class="type" href="pocl_tracing.h.html#pocl_event_tracer" title='pocl_event_tracer' data-ref="pocl_event_tracer">pocl_event_tracer</a> <dfn class="tu decl def" id="text_logger" title='text_logger' data-type='const struct pocl_event_tracer' data-ref="text_logger">text_logger</dfn> = {</td></tr>
+<tr><th id="241">241</th><td>  <q>"text"</q>,</td></tr>
+<tr><th id="242">242</th><td>  <a class="tu ref" href="#text_tracer_init" title='text_tracer_init' data-ref="text_tracer_init">text_tracer_init</a>,</td></tr>
+<tr><th id="243">243</th><td>  <a class="tu ref" href="#text_tracer_event_updated" title='text_tracer_event_updated' data-ref="text_tracer_event_updated">text_tracer_event_updated</a>,</td></tr>
+<tr><th id="244">244</th><td>};</td></tr>
+<tr><th id="245">245</th><td></td></tr>
+<tr><th id="246">246</th><td><em>static</em> <em>const</em> <b>struct</b> <a class="type" href="pocl_tracing.h.html#pocl_event_tracer" title='pocl_event_tracer' data-ref="pocl_event_tracer">pocl_event_tracer</a> <dfn class="tu decl def" id="cq_profiler" title='cq_profiler' data-type='const struct pocl_event_tracer' data-ref="cq_profiler">cq_profiler</dfn> = {</td></tr>
+<tr><th id="247">247</th><td>  <q>"cq"</q>,</td></tr>
+<tr><th id="248">248</th><td>  <a class="ref" href="pocl_cq_profiling.h.html#pocl_cq_profiling_init" title='pocl_cq_profiling_init' data-ref="pocl_cq_profiling_init">pocl_cq_profiling_init</a>,</td></tr>
+<tr><th id="249">249</th><td>  <i>/* Avoid a callback after every event change to minimize impact to the profiling run.</i></td></tr>
+<tr><th id="250">250</th><td><i>     Instead just store the event timestamps with as little impact as possible for</i></td></tr>
+<tr><th id="251">251</th><td><i>     later collection/analysis. */</i></td></tr>
+<tr><th id="252">252</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span></td></tr>
+<tr><th id="253">253</th><td>};</td></tr>
+<tr><th id="254">254</th><td></td></tr>
+<tr><th id="255">255</th><td><u>#<span data-ppcond="255">ifdef</span> <span class="macro" data-ref="_M/HAVE_LTTNG_UST">HAVE_LTTNG_UST</span></u></td></tr>
+<tr><th id="256">256</th><td></td></tr>
+<tr><th id="257">257</th><td><i>/* LTTNG tracer</i></td></tr>
+<tr><th id="258">258</th><td><i> */</i></td></tr>
+<tr><th id="259">259</th><td></td></tr>
+<tr><th id="260">260</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="261">261</th><td>lttng_tracer_init ()</td></tr>
+<tr><th id="262">262</th><td>{</td></tr>
+<tr><th id="263">263</th><td></td></tr>
+<tr><th id="264">264</th><td>}</td></tr>
+<tr><th id="265">265</th><td></td></tr>
+<tr><th id="266">266</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="267">267</th><td>lttng_tracer_event_updated (cl_event event, <em>int</em> status)</td></tr>
+<tr><th id="268">268</th><td>{</td></tr>
+<tr><th id="269">269</th><td>  _cl_command_node *node = event-&gt;command;</td></tr>
+<tr><th id="270">270</th><td></td></tr>
+<tr><th id="271">271</th><td>  <b>if</b> (node == NULL)</td></tr>
+<tr><th id="272">272</th><td>    <b>return</b>;</td></tr>
+<tr><th id="273">273</th><td></td></tr>
+<tr><th id="274">274</th><td>  <b>switch</b> (event-&gt;command_type)</td></tr>
+<tr><th id="275">275</th><td>    {</td></tr>
+<tr><th id="276">276</th><td>    <b>case</b> CL_COMMAND_NDRANGE_KERNEL:</td></tr>
+<tr><th id="277">277</th><td>      tracepoint (pocl_trace, ndrange_kernel, event-&gt;id, status,</td></tr>
+<tr><th id="278">278</th><td>                  node-&gt;command.run.kernel-&gt;name);</td></tr>
+<tr><th id="279">279</th><td>      <b>break</b>;</td></tr>
+<tr><th id="280">280</th><td>    <b>case</b> CL_COMMAND_READ_BUFFER:</td></tr>
+<tr><th id="281">281</th><td>      tracepoint (pocl_trace, read_buffer, event-&gt;id, status,</td></tr>
+<tr><th id="282">282</th><td>                  node-&gt;command.read.dst_host_ptr, node-&gt;command.read.size);</td></tr>
+<tr><th id="283">283</th><td>      <b>break</b>;</td></tr>
+<tr><th id="284">284</th><td>    <b>case</b> CL_COMMAND_WRITE_BUFFER:</td></tr>
+<tr><th id="285">285</th><td>      tracepoint (pocl_trace, write_buffer, event-&gt;id, status,</td></tr>
+<tr><th id="286">286</th><td>                  node-&gt;command.write.src_host_ptr, node-&gt;command.write.size);</td></tr>
+<tr><th id="287">287</th><td>      <b>break</b>;</td></tr>
+<tr><th id="288">288</th><td>    <b>case</b> CL_COMMAND_COPY_BUFFER:</td></tr>
+<tr><th id="289">289</th><td>      tracepoint (pocl_trace, copy_buffer, event-&gt;id, status, node-&gt;command.copy.size);</td></tr>
+<tr><th id="290">290</th><td>      <b>break</b>;</td></tr>
+<tr><th id="291">291</th><td>    <b>case</b> CL_COMMAND_FILL_BUFFER:</td></tr>
+<tr><th id="292">292</th><td>      tracepoint (pocl_trace, fill_buffer, event-&gt;id, status, node-&gt;command.copy.size);</td></tr>
+<tr><th id="293">293</th><td>      <b>break</b>;</td></tr>
+<tr><th id="294">294</th><td>    <b>case</b> CL_COMMAND_MAP_BUFFER:</td></tr>
+<tr><th id="295">295</th><td>    <b>case</b> CL_COMMAND_MAP_IMAGE:</td></tr>
+<tr><th id="296">296</th><td>      tracepoint (pocl_trace, map, event-&gt;id, status, node-&gt;command.map.mapping-&gt;size);</td></tr>
+<tr><th id="297">297</th><td>      <b>break</b>;</td></tr>
+<tr><th id="298">298</th><td>    <b>default</b>:</td></tr>
+<tr><th id="299">299</th><td>      tracepoint (pocl_trace, command, event-&gt;id, status,</td></tr>
+<tr><th id="300">300</th><td>                  pocl_command_to_str (event-&gt;command_type));</td></tr>
+<tr><th id="301">301</th><td>      <b>break</b>;</td></tr>
+<tr><th id="302">302</th><td>    }</td></tr>
+<tr><th id="303">303</th><td>}</td></tr>
+<tr><th id="304">304</th><td></td></tr>
+<tr><th id="305">305</th><td><em>static</em> <em>const</em> <b>struct</b> pocl_event_tracer lttng_tracer = {</td></tr>
+<tr><th id="306">306</th><td>  <q>"lttng"</q>,</td></tr>
+<tr><th id="307">307</th><td>  lttng_tracer_init,</td></tr>
+<tr><th id="308">308</th><td>  lttng_tracer_event_updated,</td></tr>
+<tr><th id="309">309</th><td>};</td></tr>
+<tr><th id="310">310</th><td></td></tr>
+<tr><th id="311">311</th><td></td></tr>
+<tr><th id="312">312</th><td><u>#<span data-ppcond="255">endif</span></u></td></tr>
+<tr><th id="313">313</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

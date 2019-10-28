@@ -1,0 +1,14 @@
+<dec f='pocl/lib/llvmopencl/ParallelRegion.h' l='57' type='pocl::ParallelRegion * pocl::ParallelRegion::replicate(llvm::ValueToValueMapTy &amp; map, const llvm::Twine &amp; suffix)'/>
+<doc f='pocl/lib/llvmopencl/ParallelRegion.h' l='56'>/* BarrierBlock *getEntryBarrier(); */</doc>
+<def f='pocl/lib/llvmopencl/ParallelRegion.cc' l='101' ll='154' type='pocl::ParallelRegion * pocl::ParallelRegion::replicate(ValueToValueMapTy &amp; map, const llvm::Twine &amp; suffix = &quot;&quot;)'/>
+<doc f='pocl/lib/llvmopencl/ParallelRegion.cc' l='92'>// BarrierBlock *
+// ParallelRegion::getEntryBarrier()
+// {
+//   BasicBlock *entry = front();
+//   BasicBlock *barrier = entry-&gt;getSinglePredecessor();
+
+//   return cast&lt;BarrierBlock&gt; (barrier);
+// }</doc>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='464' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='515' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemReplication.cc' l='208' u='c' c='_ZN4pocl19WorkitemReplication15ProcessFunctionERN4llvm8FunctionE'/>

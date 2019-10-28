@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='211' type='const llvm::BasicBlock * llvm::BasicBlock::getSinglePredecessor() const'/>
+<use f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='214' u='c' c='_ZN4llvm10BasicBlock20getSinglePredecessorEv'/>
+<doc f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='209'>/// \brief Return the predecessor of this block if it has a single predecessor
+  /// block. Otherwise return a null pointer.</doc>

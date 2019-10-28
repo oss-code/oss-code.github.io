@@ -1,0 +1,21 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1011' type='int *'/>
+<offset>1216</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='1009'>/* for images, a flag for each device in context,
+   * whether that device supports this */</doc>
+<use f='pocl/lib/CL/clCreateImage.c' l='223' u='w' c='POclCreateImage'/>
+<use f='pocl/lib/CL/clEnqueueFillImage.c' l='57' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueFillImage.c' l='57' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='79' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='79' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='489' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='489' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueReadImage.c' l='68' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueReadImage.c' l='68' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueWriteImage.c' l='42' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueWriteImage.c' l='42' macro='1' u='r'/>
+<use f='pocl/lib/CL/clReleaseMemObject.c' l='114' u='r' c='POclReleaseMemObject'/>
+<use f='pocl/lib/CL/clReleaseMemObject.c' l='114' u='w' c='POclReleaseMemObject'/>
+<use f='pocl/lib/CL/pocl_img_buf_cpy.c' l='85' macro='1' u='r'/>
+<use f='pocl/lib/CL/pocl_img_buf_cpy.c' l='85' macro='1' u='r'/>
+<use f='pocl/lib/CL/pocl_img_buf_cpy.c' l='103' macro='1' u='r'/>
+<use f='pocl/lib/CL/pocl_img_buf_cpy.c' l='103' macro='1' u='r'/>

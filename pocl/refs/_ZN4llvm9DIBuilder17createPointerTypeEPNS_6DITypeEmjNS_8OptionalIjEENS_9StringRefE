@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='194' type='llvm::DIDerivedType * llvm::DIBuilder::createPointerType(llvm::DIType * PointeeTy, uint64_t SizeInBits, uint32_t AlignInBits = 0, Optional&lt;unsigned int&gt; DWARFAddressSpace = None, llvm::StringRef Name = &quot;&quot;)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='188'>/// Create debugging information entry for a pointer.
+    /// \param PointeeTy         Type pointed by this pointer.
+    /// \param SizeInBits        Size.
+    /// \param AlignInBits       Alignment. (optional)
+    /// \param DWARFAddressSpace DWARF address space. (optional)
+    /// \param Name              Pointer type name. (optional)</doc>

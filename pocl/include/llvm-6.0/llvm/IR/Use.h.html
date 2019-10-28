@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Use.h source code [include/llvm-6.0/llvm/IR/Use.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="llvm::Use,llvm::simplify_type "/>
+<link rel="stylesheet" href="../../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'include/llvm-6.0/llvm/IR/Use.h'; var root_path = '../../../..'; var data_path = '../../../../../data';</script>
+<script src='../../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../../..'>include</a>/<a href='../..'>llvm-6.0</a>/<a href='..'>llvm</a>/<a href='./'>IR</a>/<a href='Use.h.html'>Use.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>//===- llvm/Use.h - Definition of the Use class -----------------*- C++ -*-===//</i></td></tr>
+<tr><th id="2">2</th><td><i>//</i></td></tr>
+<tr><th id="3">3</th><td><i>//                     The LLVM Compiler Infrastructure</i></td></tr>
+<tr><th id="4">4</th><td><i>//</i></td></tr>
+<tr><th id="5">5</th><td><i>// This file is distributed under the University of Illinois Open Source</i></td></tr>
+<tr><th id="6">6</th><td><i>// License. See LICENSE.TXT for details.</i></td></tr>
+<tr><th id="7">7</th><td><i>//</i></td></tr>
+<tr><th id="8">8</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="9">9</th><td><i>/// \file</i></td></tr>
+<tr><th id="10">10</th><td><i>///</i></td></tr>
+<tr><th id="11">11</th><td><i>/// This defines the Use class.  The Use class represents the operand of an</i></td></tr>
+<tr><th id="12">12</th><td><i>/// instruction or some other User instance which refers to a Value.  The Use</i></td></tr>
+<tr><th id="13">13</th><td><i>/// class keeps the "use list" of the referenced value up to date.</i></td></tr>
+<tr><th id="14">14</th><td><i>///</i></td></tr>
+<tr><th id="15">15</th><td><i>/// Pointer tagging is used to efficiently find the User corresponding to a Use</i></td></tr>
+<tr><th id="16">16</th><td><i>/// without having to store a User pointer in every Use. A User is preceded in</i></td></tr>
+<tr><th id="17">17</th><td><i>/// memory by all the Uses corresponding to its operands, and the low bits of</i></td></tr>
+<tr><th id="18">18</th><td><i>/// one of the fields (Prev) of the Use class are used to encode offsets to be</i></td></tr>
+<tr><th id="19">19</th><td><i>/// able to find that User given a pointer to any Use. For details, see:</i></td></tr>
+<tr><th id="20">20</th><td><i>///</i></td></tr>
+<tr><th id="21">21</th><td><i>///   <a href="http://www.llvm.org/docs/ProgrammersManual.html#UserLayout">http://www.llvm.org/docs/ProgrammersManual.html#UserLayout</a></i></td></tr>
+<tr><th id="22">22</th><td><i>///</i></td></tr>
+<tr><th id="23">23</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><u>#<span data-ppcond="25">ifndef</span> <span class="macro" data-ref="_M/LLVM_IR_USE_H">LLVM_IR_USE_H</span></u></td></tr>
+<tr><th id="26">26</th><td><u>#define <dfn class="macro" id="_M/LLVM_IR_USE_H" data-ref="_M/LLVM_IR_USE_H">LLVM_IR_USE_H</dfn></u></td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><u>#include <a href="../../../llvm-c-6.0/llvm-c/Types.h.html">"llvm-c/Types.h"</a></u></td></tr>
+<tr><th id="29">29</th><td><u>#include <a href="../ADT/PointerIntPair.h.html">"llvm/ADT/PointerIntPair.h"</a></u></td></tr>
+<tr><th id="30">30</th><td><u>#include <a href="../Support/CBindingWrapping.h.html">"llvm/Support/CBindingWrapping.h"</a></u></td></tr>
+<tr><th id="31">31</th><td><u>#include <a href="../Support/Compiler.h.html">"llvm/Support/Compiler.h"</a></u></td></tr>
+<tr><th id="32">32</th><td></td></tr>
+<tr><th id="33">33</th><td><b>namespace</b> <span class="namespace">llvm</span> {</td></tr>
+<tr><th id="34">34</th><td></td></tr>
+<tr><th id="35">35</th><td><b>template</b> &lt;<b>typename</b>&gt; <b>struct</b> <a class="type" href="../Support/Casting.h.html#llvm::simplify_type" title='llvm::simplify_type' data-ref="llvm::simplify_type" id="llvm::simplify_type">simplify_type</a>;</td></tr>
+<tr><th id="36">36</th><td><b>class</b> <a class="type" href="User.h.html#llvm::User" title='llvm::User' data-ref="llvm::User" id="llvm::User">User</a>;</td></tr>
+<tr><th id="37">37</th><td><b>class</b> <a class="type" href="Value.h.html#llvm::Value" title='llvm::Value' data-ref="llvm::Value" id="llvm::Value">Value</a>;</td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td><i class="doc">/// <span class="command">\brief</span> A Use represents the edge between a Value definition and its users.</i></td></tr>
+<tr><th id="40">40</th><td><i class="doc">///</i></td></tr>
+<tr><th id="41">41</th><td><i class="doc">/// This is notionally a two-dimensional linked list. It supports traversing</i></td></tr>
+<tr><th id="42">42</th><td><i class="doc">/// all of the uses for a particular value definition. It also supports jumping</i></td></tr>
+<tr><th id="43">43</th><td><i class="doc">/// directly to the used value when we arrive from the User's operands, and</i></td></tr>
+<tr><th id="44">44</th><td><i class="doc">/// jumping directly to the User when we arrive from the Value's uses.</i></td></tr>
+<tr><th id="45">45</th><td><i class="doc">///</i></td></tr>
+<tr><th id="46">46</th><td><i class="doc">/// The pointer to the used Value is explicit, and the pointer to the User is</i></td></tr>
+<tr><th id="47">47</th><td><i class="doc">/// implicit. The implicit pointer is found via a waymarking algorithm</i></td></tr>
+<tr><th id="48">48</th><td><i class="doc">/// described in the programmer's manual:</i></td></tr>
+<tr><th id="49">49</th><td><i class="doc">///</i></td></tr>
+<tr><th id="50">50</th><td><i class="doc">///   <a href="http://www.llvm.org/docs/ProgrammersManual.html#the-waymarking-algorithm">http://www.llvm.org/docs/ProgrammersManual.html#the-waymarking-algorithm</a></i></td></tr>
+<tr><th id="51">51</th><td><i class="doc">///</i></td></tr>
+<tr><th id="52">52</th><td><i class="doc">/// This is essentially the single most memory intensive object in LLVM because</i></td></tr>
+<tr><th id="53">53</th><td><i class="doc">/// of the number of uses in the system. At the same time, the constant time</i></td></tr>
+<tr><th id="54">54</th><td><i class="doc">/// operations it allows are essential to many optimizations having reasonable</i></td></tr>
+<tr><th id="55">55</th><td><i class="doc">/// time complexity.</i></td></tr>
+<tr><th id="56">56</th><td><b>class</b> <dfn class="type def" id="llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</dfn> {</td></tr>
+<tr><th id="57">57</th><td><b>public</b>:</td></tr>
+<tr><th id="58">58</th><td>  <dfn class="decl def" id="_ZN4llvm3UseC1ERKS0_" title='llvm::Use::Use' data-ref="_ZN4llvm3UseC1ERKS0_">Use</dfn>(<em>const</em> <a class="type" href="#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a> &amp;<dfn class="local col9 decl" id="9999U" title='U' data-type='const llvm::Use &amp;' data-ref="9999U">U</dfn>) = <b>delete</b>;</td></tr>
+<tr><th id="59">59</th><td></td></tr>
+<tr><th id="60">60</th><td>  <i class="doc">/// <span class="command">\brief</span> Provide a fast substitute to std::swap&lt;Use&gt;</i></td></tr>
+<tr><th id="61">61</th><td><i class="doc">  /// that also works with less standard-compliant compilers</i></td></tr>
+<tr><th id="62">62</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm3Use4swapERS0_" title='llvm::Use::swap' data-ref="_ZN4llvm3Use4swapERS0_">swap</dfn>(<a class="type" href="#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a> &amp;<dfn class="local col0 decl" id="10000RHS" title='RHS' data-type='llvm::Use &amp;' data-ref="10000RHS">RHS</dfn>);</td></tr>
+<tr><th id="63">63</th><td></td></tr>
+<tr><th id="64">64</th><td>  <i class="doc">/// Pointer traits for the UserRef PointerIntPair. This ensures we always</i></td></tr>
+<tr><th id="65">65</th><td><i class="doc">  /// use the LSB regardless of pointer alignment on different targets.</i></td></tr>
+<tr><th id="66">66</th><td>  <b>struct</b> <dfn class="type def" id="llvm::Use::UserRefPointerTraits" title='llvm::Use::UserRefPointerTraits' data-ref="llvm::Use::UserRefPointerTraits">UserRefPointerTraits</dfn> {</td></tr>
+<tr><th id="67">67</th><td>    <em>static</em> <b>inline</b> <em>void</em> *<dfn class="decl def" id="_ZN4llvm3Use20UserRefPointerTraits16getAsVoidPointerEPNS_4UserE" title='llvm::Use::UserRefPointerTraits::getAsVoidPointer' data-ref="_ZN4llvm3Use20UserRefPointerTraits16getAsVoidPointerEPNS_4UserE">getAsVoidPointer</dfn>(<a class="type" href="User.h.html#llvm::User" title='llvm::User' data-ref="llvm::User">User</a> *<dfn class="local col1 decl" id="10001P" title='P' data-type='llvm::User *' data-ref="10001P">P</dfn>) { <b>return</b> <a class="local col1 ref" href="#10001P" title='P' data-ref="10001P">P</a>; }</td></tr>
+<tr><th id="68">68</th><td></td></tr>
+<tr><th id="69">69</th><td>    <em>static</em> <b>inline</b> <a class="type" href="User.h.html#llvm::User" title='llvm::User' data-ref="llvm::User">User</a> *<dfn class="decl def" id="_ZN4llvm3Use20UserRefPointerTraits18getFromVoidPointerEPv" title='llvm::Use::UserRefPointerTraits::getFromVoidPointer' data-ref="_ZN4llvm3Use20UserRefPointerTraits18getFromVoidPointerEPv">getFromVoidPointer</dfn>(<em>void</em> *<dfn class="local col2 decl" id="10002P" title='P' data-type='void *' data-ref="10002P">P</dfn>) {</td></tr>
+<tr><th id="70">70</th><td>      <b>return</b> (<a class="type" href="User.h.html#llvm::User" title='llvm::User' data-ref="llvm::User">User</a> *)<a class="local col2 ref" href="#10002P" title='P' data-ref="10002P">P</a>;</td></tr>
+<tr><th id="71">71</th><td>    }</td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td>    <b>enum</b> { <dfn class="enum" id="llvm::Use::UserRefPointerTraits::NumLowBitsAvailable" title='llvm::Use::UserRefPointerTraits::NumLowBitsAvailable' data-ref="llvm::Use::UserRefPointerTraits::NumLowBitsAvailable">NumLowBitsAvailable</dfn> = <var>1</var> };</td></tr>
+<tr><th id="74">74</th><td>  };</td></tr>
+<tr><th id="75">75</th><td></td></tr>
+<tr><th id="76">76</th><td>  <i>// A type for the word following an array of hung-off Uses in memory, which is</i></td></tr>
+<tr><th id="77">77</th><td><i>  // a pointer back to their User with the bottom bit set.</i></td></tr>
+<tr><th id="78">78</th><td>  <b>using</b> <dfn class="typedef" id="llvm::Use::UserRef" title='llvm::Use::UserRef' data-type='PointerIntPair&lt;llvm::User *, 1, unsigned int, llvm::Use::UserRefPointerTraits&gt;' data-ref="llvm::Use::UserRef">UserRef</dfn> = <a class="type" href="../ADT/PointerIntPair.h.html#llvm::PointerIntPair" title='llvm::PointerIntPair' data-ref="llvm::PointerIntPair">PointerIntPair</a>&lt;<a class="type" href="User.h.html#llvm::User" title='llvm::User' data-ref="llvm::User">User</a> *, <var>1</var>, <em>unsigned</em>, <a class="type" href="#llvm::Use::UserRefPointerTraits" title='llvm::Use::UserRefPointerTraits' data-ref="llvm::Use::UserRefPointerTraits">UserRefPointerTraits</a>&gt;;</td></tr>
+<tr><th id="79">79</th><td></td></tr>
+<tr><th id="80">80</th><td>  <i class="doc">/// Pointer traits for the Prev PointerIntPair. This ensures we always use</i></td></tr>
+<tr><th id="81">81</th><td><i class="doc">  /// the two LSBs regardless of pointer alignment on different targets.</i></td></tr>
+<tr><th id="82">82</th><td>  <b>struct</b> <dfn class="type def" id="llvm::Use::PrevPointerTraits" title='llvm::Use::PrevPointerTraits' data-ref="llvm::Use::PrevPointerTraits">PrevPointerTraits</dfn> {</td></tr>
+<tr><th id="83">83</th><td>    <em>static</em> <b>inline</b> <em>void</em> *<dfn class="decl def" id="_ZN4llvm3Use17PrevPointerTraits16getAsVoidPointerEPPS0_" title='llvm::Use::PrevPointerTraits::getAsVoidPointer' data-ref="_ZN4llvm3Use17PrevPointerTraits16getAsVoidPointerEPPS0_">getAsVoidPointer</dfn>(<a class="type" href="#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a> **<dfn class="local col3 decl" id="10003P" title='P' data-type='llvm::Use **' data-ref="10003P">P</dfn>) { <b>return</b> <a class="local col3 ref" href="#10003P" title='P' data-ref="10003P">P</a>; }</td></tr>
+<tr><th id="84">84</th><td></td></tr>
+<tr><th id="85">85</th><td>    <em>static</em> <b>inline</b> <a class="type" href="#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a> **<dfn class="decl def" id="_ZN4llvm3Use17PrevPointerTraits18getFromVoidPointerEPv" title='llvm::Use::PrevPointerTraits::getFromVoidPointer' data-ref="_ZN4llvm3Use17PrevPointerTraits18getFromVoidPointerEPv">getFromVoidPointer</dfn>(<em>void</em> *<dfn class="local col4 decl" id="10004P" title='P' data-type='void *' data-ref="10004P">P</dfn>) {</td></tr>
+<tr><th id="86">86</th><td>      <b>return</b> (<a class="type" href="#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a> **)<a class="local col4 ref" href="#10004P" title='P' data-ref="10004P">P</a>;</td></tr>
+<tr><th id="87">87</th><td>    }</td></tr>
+<tr><th id="88">88</th><td></td></tr>
+<tr><th id="89">89</th><td>    <b>enum</b> { <dfn class="enum" id="llvm::Use::PrevPointerTraits::NumLowBitsAvailable" title='llvm::Use::PrevPointerTraits::NumLowBitsAvailable' data-ref="llvm::Use::PrevPointerTraits::NumLowBitsAvailable">NumLowBitsAvailable</dfn> = <var>2</var> };</td></tr>
+<tr><th id="90">90</th><td>  };</td></tr>
+<tr><th id="91">91</th><td></td></tr>
+<tr><th id="92">92</th><td><b>private</b>:</td></tr>
+<tr><th id="93">93</th><td>  <i class="doc">/// Destructor - Only for zap()</i></td></tr>
+<tr><th id="94">94</th><td>  <dfn class="decl def" id="_ZN4llvm3UseD1Ev" title='llvm::Use::~Use' data-ref="_ZN4llvm3UseD1Ev">~Use</dfn>() {</td></tr>
+<tr><th id="95">95</th><td>    <b>if</b> (<a class="member" href="#llvm::Use::Val" title='llvm::Use::Val' data-ref="llvm::Use::Val">Val</a>)</td></tr>
+<tr><th id="96">96</th><td>      <a class="member" href="#_ZN4llvm3Use14removeFromListEv" title='llvm::Use::removeFromList' data-ref="_ZN4llvm3Use14removeFromListEv">removeFromList</a>();</td></tr>
+<tr><th id="97">97</th><td>  }</td></tr>
+<tr><th id="98">98</th><td></td></tr>
+<tr><th id="99">99</th><td>  <b>enum</b> <dfn class="type def" id="llvm::Use::PrevPtrTag" title='llvm::Use::PrevPtrTag' data-ref="llvm::Use::PrevPtrTag">PrevPtrTag</dfn> { <dfn class="enum" id="llvm::Use::PrevPtrTag::zeroDigitTag" title='llvm::Use::PrevPtrTag::zeroDigitTag' data-ref="llvm::Use::PrevPtrTag::zeroDigitTag">zeroDigitTag</dfn>, <dfn class="enum" id="llvm::Use::PrevPtrTag::oneDigitTag" title='llvm::Use::PrevPtrTag::oneDigitTag' data-ref="llvm::Use::PrevPtrTag::oneDigitTag">oneDigitTag</dfn>, <dfn class="enum" id="llvm::Use::PrevPtrTag::stopTag" title='llvm::Use::PrevPtrTag::stopTag' data-ref="llvm::Use::PrevPtrTag::stopTag">stopTag</dfn>, <dfn class="enum" id="llvm::Use::PrevPtrTag::fullStopTag" title='llvm::Use::PrevPtrTag::fullStopTag' data-ref="llvm::Use::PrevPtrTag::fullStopTag">fullStopTag</dfn> };</td></tr>
+<tr><th id="100">100</th><td></td></tr>
+<tr><th id="101">101</th><td>  <i class="doc">/// Constructor</i></td></tr>
+<tr><th id="102">102</th><td>  <dfn class="decl def" id="_ZN4llvm3UseC1ENS0_10PrevPtrTagE" title='llvm::Use::Use' data-ref="_ZN4llvm3UseC1ENS0_10PrevPtrTagE">Use</dfn>(<a class="type" href="#llvm::Use::PrevPtrTag" title='llvm::Use::PrevPtrTag' data-ref="llvm::Use::PrevPtrTag">PrevPtrTag</a> <dfn class="local col5 decl" id="10005tag" title='tag' data-type='llvm::Use::PrevPtrTag' data-ref="10005tag">tag</dfn>) { <a class="member" href="#llvm::Use::Prev" title='llvm::Use::Prev' data-ref="llvm::Use::Prev">Prev</a>.<a class="ref" href="../ADT/PointerIntPair.h.html#_ZN4llvm14PointerIntPair6setIntET1_" title='llvm::PointerIntPair::setInt' data-ref="_ZN4llvm14PointerIntPair6setIntET1_">setInt</a>(<a class="local col5 ref" href="#10005tag" title='tag' data-ref="10005tag">tag</a>); }</td></tr>
+<tr><th id="103">103</th><td></td></tr>
+<tr><th id="104">104</th><td><b>public</b>:</td></tr>
+<tr><th id="105">105</th><td>  <b>friend</b> <b>class</b> <a class="type" href="Value.h.html#llvm::Value" title='llvm::Value' data-ref="llvm::Value">Value</a>;</td></tr>
+<tr><th id="106">106</th><td></td></tr>
+<tr><th id="107">107</th><td>  <dfn class="decl def" id="_ZNK4llvm3UsecvPNS_5ValueEEv" title='llvm::Use::operator llvm::Value *' data-ref="_ZNK4llvm3UsecvPNS_5ValueEEv"><b>operator</b> <a class="type" href="Value.h.html#llvm::Value" title='llvm::Value' data-ref="llvm::Value">Value</a> *</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::Use::Val" title='llvm::Use::Val' data-ref="llvm::Use::Val">Val</a>; }</td></tr>
+<tr><th id="108">108</th><td>  <a class="type" href="Value.h.html#llvm::Value" title='llvm::Value' data-ref="llvm::Value">Value</a> *<dfn class="decl def" id="_ZNK4llvm3Use3getEv" title='llvm::Use::get' data-ref="_ZNK4llvm3Use3getEv">get</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::Use::Val" title='llvm::Use::Val' data-ref="llvm::Use::Val">Val</a>; }</td></tr>
+<tr><th id="109">109</th><td></td></tr>
+<tr><th id="110">110</th><td>  <i class="doc">/// <span class="command">\brief</span> Returns the User that contains this Use.</i></td></tr>
+<tr><th id="111">111</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="112">112</th><td><i class="doc">  /// For an instruction operand, for example, this will return the</i></td></tr>
+<tr><th id="113">113</th><td><i class="doc">  /// instruction.</i></td></tr>
+<tr><th id="114">114</th><td>  <a class="type" href="User.h.html#llvm::User" title='llvm::User' data-ref="llvm::User">User</a> *<dfn class="decl" id="_ZNK4llvm3Use7getUserEv" title='llvm::Use::getUser' data-ref="_ZNK4llvm3Use7getUserEv">getUser</dfn>() <em>const</em> <a class="macro" href="../Support/Compiler.h.html#166" title="__attribute__((__pure__))" data-ref="_M/LLVM_READONLY">LLVM_READONLY</a>;</td></tr>
+<tr><th id="115">115</th><td></td></tr>
+<tr><th id="116">116</th><td>  <b>inline</b> <em>void</em> <a class="decl" href="Value.h.html#_ZN4llvm3Use3setEPNS_5ValueE" title='llvm::Use::set' data-ref="_ZN4llvm3Use3setEPNS_5ValueE" id="_ZN4llvm3Use3setEPNS_5ValueE">set</a>(<a class="type" href="Value.h.html#llvm::Value" title='llvm::Value' data-ref="llvm::Value">Value</a> *<dfn class="local col6 decl" id="10006Val" title='Val' data-type='llvm::Value *' data-ref="10006Val">Val</dfn>);</td></tr>
+<tr><th id="117">117</th><td></td></tr>
+<tr><th id="118">118</th><td>  <b>inline</b> <a class="type" href="Value.h.html#llvm::Value" title='llvm::Value' data-ref="llvm::Value">Value</a> *<a class="decl" href="Value.h.html#_ZN4llvm3UseaSEPNS_5ValueE" title='llvm::Use::operator=' data-ref="_ZN4llvm3UseaSEPNS_5ValueE" id="_ZN4llvm3UseaSEPNS_5ValueE"><b>operator</b>=</a>(<a class="type" href="Value.h.html#llvm::Value" title='llvm::Value' data-ref="llvm::Value">Value</a> *<dfn class="local col7 decl" id="10007RHS" title='RHS' data-type='llvm::Value *' data-ref="10007RHS">RHS</dfn>);</td></tr>
+<tr><th id="119">119</th><td>  <b>inline</b> <em>const</em> <a class="type" href="#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a> &amp;<a class="decl" href="Value.h.html#_ZN4llvm3UseaSERKS0_" title='llvm::Use::operator=' data-ref="_ZN4llvm3UseaSERKS0_" id="_ZN4llvm3UseaSERKS0_"><b>operator</b>=</a>(<em>const</em> <a class="type" href="#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a> &amp;<dfn class="local col8 decl" id="10008RHS" title='RHS' data-type='const llvm::Use &amp;' data-ref="10008RHS">RHS</dfn>);</td></tr>
+<tr><th id="120">120</th><td></td></tr>
+<tr><th id="121">121</th><td>  <a class="type" href="Value.h.html#llvm::Value" title='llvm::Value' data-ref="llvm::Value">Value</a> *<dfn class="decl def" id="_ZN4llvm3UseptEv" title='llvm::Use::operator-&gt;' data-ref="_ZN4llvm3UseptEv"><b>operator</b>-&gt;</dfn>() { <b>return</b> <a class="member" href="#llvm::Use::Val" title='llvm::Use::Val' data-ref="llvm::Use::Val">Val</a>; }</td></tr>
+<tr><th id="122">122</th><td>  <em>const</em> <a class="type" href="Value.h.html#llvm::Value" title='llvm::Value' data-ref="llvm::Value">Value</a> *<dfn class="decl def" id="_ZNK4llvm3UseptEv" title='llvm::Use::operator-&gt;' data-ref="_ZNK4llvm3UseptEv"><b>operator</b>-&gt;</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::Use::Val" title='llvm::Use::Val' data-ref="llvm::Use::Val">Val</a>; }</td></tr>
+<tr><th id="123">123</th><td></td></tr>
+<tr><th id="124">124</th><td>  <a class="type" href="#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a> *<dfn class="decl def" id="_ZNK4llvm3Use7getNextEv" title='llvm::Use::getNext' data-ref="_ZNK4llvm3Use7getNextEv">getNext</dfn>() <em>const</em> { <b>return</b> <a class="member" href="#llvm::Use::Next" title='llvm::Use::Next' data-ref="llvm::Use::Next">Next</a>; }</td></tr>
+<tr><th id="125">125</th><td></td></tr>
+<tr><th id="126">126</th><td>  <i class="doc">/// <span class="command">\brief</span> Return the operand # of this use in its User.</i></td></tr>
+<tr><th id="127">127</th><td>  <em>unsigned</em> <dfn class="decl" id="_ZNK4llvm3Use12getOperandNoEv" title='llvm::Use::getOperandNo' data-ref="_ZNK4llvm3Use12getOperandNoEv">getOperandNo</dfn>() <em>const</em>;</td></tr>
+<tr><th id="128">128</th><td></td></tr>
+<tr><th id="129">129</th><td>  <i class="doc">/// <span class="command">\brief</span> Initializes the waymarking tags on an array of Uses.</i></td></tr>
+<tr><th id="130">130</th><td><i class="doc">  ///</i></td></tr>
+<tr><th id="131">131</th><td><i class="doc">  /// This sets up the array of Uses such that getUser() can find the User from</i></td></tr>
+<tr><th id="132">132</th><td><i class="doc">  /// any of those Uses.</i></td></tr>
+<tr><th id="133">133</th><td>  <em>static</em> <a class="type" href="#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a> *<dfn class="decl" id="_ZN4llvm3Use8initTagsEPS0_S1_" title='llvm::Use::initTags' data-ref="_ZN4llvm3Use8initTagsEPS0_S1_">initTags</dfn>(<a class="type" href="#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a> *<dfn class="local col9 decl" id="10009Start" title='Start' data-type='llvm::Use *' data-ref="10009Start">Start</dfn>, <a class="type" href="#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a> *<dfn class="local col0 decl" id="10010Stop" title='Stop' data-type='llvm::Use *' data-ref="10010Stop">Stop</dfn>);</td></tr>
+<tr><th id="134">134</th><td></td></tr>
+<tr><th id="135">135</th><td>  <i class="doc">/// <span class="command">\brief</span> Destroys Use operands when the number of operands of</i></td></tr>
+<tr><th id="136">136</th><td><i class="doc">  /// a User changes.</i></td></tr>
+<tr><th id="137">137</th><td>  <em>static</em> <em>void</em> <dfn class="decl" id="_ZN4llvm3Use3zapEPS0_PKS0_b" title='llvm::Use::zap' data-ref="_ZN4llvm3Use3zapEPS0_PKS0_b">zap</dfn>(<a class="type" href="#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a> *<dfn class="local col1 decl" id="10011Start" title='Start' data-type='llvm::Use *' data-ref="10011Start">Start</dfn>, <em>const</em> <a class="type" href="#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a> *<dfn class="local col2 decl" id="10012Stop" title='Stop' data-type='const llvm::Use *' data-ref="10012Stop">Stop</dfn>, <em>bool</em> <dfn class="local col3 decl" id="10013del" title='del' data-type='bool' data-ref="10013del">del</dfn> = <b>false</b>);</td></tr>
+<tr><th id="138">138</th><td></td></tr>
+<tr><th id="139">139</th><td><b>private</b>:</td></tr>
+<tr><th id="140">140</th><td>  <em>const</em> <a class="type" href="#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a> *<dfn class="decl" id="_ZNK4llvm3Use14getImpliedUserEv" title='llvm::Use::getImpliedUser' data-ref="_ZNK4llvm3Use14getImpliedUserEv">getImpliedUser</dfn>() <em>const</em> <a class="macro" href="../Support/Compiler.h.html#166" title="__attribute__((__pure__))" data-ref="_M/LLVM_READONLY">LLVM_READONLY</a>;</td></tr>
+<tr><th id="141">141</th><td></td></tr>
+<tr><th id="142">142</th><td>  <a class="type" href="Value.h.html#llvm::Value" title='llvm::Value' data-ref="llvm::Value">Value</a> *<dfn class="decl" id="llvm::Use::Val" title='llvm::Use::Val' data-ref="llvm::Use::Val">Val</dfn> = <b>nullptr</b>;</td></tr>
+<tr><th id="143">143</th><td>  <a class="type" href="#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a> *<dfn class="decl" id="llvm::Use::Next" title='llvm::Use::Next' data-ref="llvm::Use::Next">Next</dfn>;</td></tr>
+<tr><th id="144">144</th><td>  <a class="type" href="../ADT/PointerIntPair.h.html#llvm::PointerIntPair" title='llvm::PointerIntPair' data-ref="llvm::PointerIntPair">PointerIntPair</a>&lt;<a class="type" href="#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a> **, <var>2</var>, <a class="type" href="#llvm::Use::PrevPtrTag" title='llvm::Use::PrevPtrTag' data-ref="llvm::Use::PrevPtrTag">PrevPtrTag</a>, <a class="type" href="#llvm::Use::PrevPointerTraits" title='llvm::Use::PrevPointerTraits' data-ref="llvm::Use::PrevPointerTraits">PrevPointerTraits</a>&gt; <dfn class="decl" id="llvm::Use::Prev" title='llvm::Use::Prev' data-ref="llvm::Use::Prev">Prev</dfn>;</td></tr>
+<tr><th id="145">145</th><td></td></tr>
+<tr><th id="146">146</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm3Use7setPrevEPPS0_" title='llvm::Use::setPrev' data-ref="_ZN4llvm3Use7setPrevEPPS0_">setPrev</dfn>(<a class="type" href="#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a> **<dfn class="local col4 decl" id="10014NewPrev" title='NewPrev' data-type='llvm::Use **' data-ref="10014NewPrev">NewPrev</dfn>) { <a class="member" href="#llvm::Use::Prev" title='llvm::Use::Prev' data-ref="llvm::Use::Prev">Prev</a>.<a class="ref" href="../ADT/PointerIntPair.h.html#_ZN4llvm14PointerIntPair10setPointerET_" title='llvm::PointerIntPair::setPointer' data-ref="_ZN4llvm14PointerIntPair10setPointerET_">setPointer</a>(<a class="local col4 ref" href="#10014NewPrev" title='NewPrev' data-ref="10014NewPrev">NewPrev</a>); }</td></tr>
+<tr><th id="147">147</th><td></td></tr>
+<tr><th id="148">148</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm3Use9addToListEPPS0_" title='llvm::Use::addToList' data-ref="_ZN4llvm3Use9addToListEPPS0_">addToList</dfn>(<a class="type" href="#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a> **<dfn class="local col5 decl" id="10015List" title='List' data-type='llvm::Use **' data-ref="10015List">List</dfn>) {</td></tr>
+<tr><th id="149">149</th><td>    <a class="member" href="#llvm::Use::Next" title='llvm::Use::Next' data-ref="llvm::Use::Next">Next</a> = *<a class="local col5 ref" href="#10015List" title='List' data-ref="10015List">List</a>;</td></tr>
+<tr><th id="150">150</th><td>    <b>if</b> (<a class="member" href="#llvm::Use::Next" title='llvm::Use::Next' data-ref="llvm::Use::Next">Next</a>)</td></tr>
+<tr><th id="151">151</th><td>      <a class="member" href="#llvm::Use::Next" title='llvm::Use::Next' data-ref="llvm::Use::Next">Next</a>-&gt;<a class="member" href="#_ZN4llvm3Use7setPrevEPPS0_" title='llvm::Use::setPrev' data-ref="_ZN4llvm3Use7setPrevEPPS0_">setPrev</a>(&amp;<a class="member" href="#llvm::Use::Next" title='llvm::Use::Next' data-ref="llvm::Use::Next">Next</a>);</td></tr>
+<tr><th id="152">152</th><td>    <a class="member" href="#_ZN4llvm3Use7setPrevEPPS0_" title='llvm::Use::setPrev' data-ref="_ZN4llvm3Use7setPrevEPPS0_">setPrev</a>(<a class="local col5 ref" href="#10015List" title='List' data-ref="10015List">List</a>);</td></tr>
+<tr><th id="153">153</th><td>    *<a class="local col5 ref" href="#10015List" title='List' data-ref="10015List">List</a> = <b>this</b>;</td></tr>
+<tr><th id="154">154</th><td>  }</td></tr>
+<tr><th id="155">155</th><td></td></tr>
+<tr><th id="156">156</th><td>  <em>void</em> <dfn class="decl def" id="_ZN4llvm3Use14removeFromListEv" title='llvm::Use::removeFromList' data-ref="_ZN4llvm3Use14removeFromListEv">removeFromList</dfn>() {</td></tr>
+<tr><th id="157">157</th><td>    <a class="type" href="#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a> **<dfn class="local col6 decl" id="10016StrippedPrev" title='StrippedPrev' data-type='llvm::Use **' data-ref="10016StrippedPrev">StrippedPrev</dfn> = <a class="member" href="#llvm::Use::Prev" title='llvm::Use::Prev' data-ref="llvm::Use::Prev">Prev</a>.<a class="ref" href="../ADT/PointerIntPair.h.html#_ZNK4llvm14PointerIntPair10getPointerEv" title='llvm::PointerIntPair::getPointer' data-ref="_ZNK4llvm14PointerIntPair10getPointerEv">getPointer</a>();</td></tr>
+<tr><th id="158">158</th><td>    *<a class="local col6 ref" href="#10016StrippedPrev" title='StrippedPrev' data-ref="10016StrippedPrev">StrippedPrev</a> = <a class="member" href="#llvm::Use::Next" title='llvm::Use::Next' data-ref="llvm::Use::Next">Next</a>;</td></tr>
+<tr><th id="159">159</th><td>    <b>if</b> (<a class="member" href="#llvm::Use::Next" title='llvm::Use::Next' data-ref="llvm::Use::Next">Next</a>)</td></tr>
+<tr><th id="160">160</th><td>      <a class="member" href="#llvm::Use::Next" title='llvm::Use::Next' data-ref="llvm::Use::Next">Next</a>-&gt;<a class="member" href="#_ZN4llvm3Use7setPrevEPPS0_" title='llvm::Use::setPrev' data-ref="_ZN4llvm3Use7setPrevEPPS0_">setPrev</a>(<a class="local col6 ref" href="#10016StrippedPrev" title='StrippedPrev' data-ref="10016StrippedPrev">StrippedPrev</a>);</td></tr>
+<tr><th id="161">161</th><td>  }</td></tr>
+<tr><th id="162">162</th><td>};</td></tr>
+<tr><th id="163">163</th><td></td></tr>
+<tr><th id="164">164</th><td><i class="doc">/// <span class="command">\brief</span> Allow clients to treat uses just like values when using</i></td></tr>
+<tr><th id="165">165</th><td><i class="doc">/// casting operators.</i></td></tr>
+<tr><th id="166">166</th><td><b>template</b> &lt;&gt; <b>struct</b> <dfn class="type def" id="llvm::simplify_type" title='llvm::simplify_type' data-ref="llvm::simplify_type"><a class="type" href="../Support/Casting.h.html#llvm::simplify_type" title='llvm::simplify_type' data-ref="llvm::simplify_type">simplify_type</a></dfn>&lt;<a class="type" href="#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a>&gt; {</td></tr>
+<tr><th id="167">167</th><td>  <b>using</b> <dfn class="typedef" id="llvm::simplify_type{llvm::Use}::SimpleType" title='llvm::simplify_type&lt;llvm::Use&gt;::SimpleType' data-type='llvm::Value *' data-ref="llvm::simplify_type{llvm::Use}::SimpleType">SimpleType</dfn> = <a class="type" href="Value.h.html#llvm::Value" title='llvm::Value' data-ref="llvm::Value">Value</a> *;</td></tr>
+<tr><th id="168">168</th><td></td></tr>
+<tr><th id="169">169</th><td>  <em>static</em> <a class="typedef" href="#llvm::simplify_type{llvm::Use}::SimpleType" title='llvm::simplify_type&lt;llvm::Use&gt;::SimpleType' data-type='llvm::Value *' data-ref="llvm::simplify_type{llvm::Use}::SimpleType">SimpleType</a> <dfn class="decl def" id="_ZN4llvm13simplify_typeINS_3UseEE18getSimplifiedValueERS1_" title='llvm::simplify_type&lt;llvm::Use&gt;::getSimplifiedValue' data-ref="_ZN4llvm13simplify_typeINS_3UseEE18getSimplifiedValueERS1_">getSimplifiedValue</dfn>(<a class="type" href="#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a> &amp;<dfn class="local col7 decl" id="10017Val" title='Val' data-type='llvm::Use &amp;' data-ref="10017Val">Val</dfn>) { <b>return</b> <a class="local col7 ref" href="#10017Val" title='Val' data-ref="10017Val">Val</a>.<a class="ref" href="#_ZNK4llvm3Use3getEv" title='llvm::Use::get' data-ref="_ZNK4llvm3Use3getEv">get</a>(); }</td></tr>
+<tr><th id="170">170</th><td>};</td></tr>
+<tr><th id="171">171</th><td><b>template</b> &lt;&gt; <b>struct</b> <dfn class="type def" id="llvm::simplify_type" title='llvm::simplify_type' data-ref="llvm::simplify_type"><a class="type" href="../Support/Casting.h.html#llvm::simplify_type" title='llvm::simplify_type' data-ref="llvm::simplify_type">simplify_type</a></dfn>&lt;<em>const</em> <a class="type" href="#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a>&gt; {</td></tr>
+<tr><th id="172">172</th><td>  <b>using</b> <dfn class="typedef" id="llvm::simplify_type{constllvm::Use}::SimpleType" title='llvm::simplify_type&lt;const llvm::Use&gt;::SimpleType' data-type='llvm::Value *' data-ref="llvm::simplify_type{constllvm::Use}::SimpleType">SimpleType</dfn> = <i>/*const*/</i> <a class="type" href="Value.h.html#llvm::Value" title='llvm::Value' data-ref="llvm::Value">Value</a> *;</td></tr>
+<tr><th id="173">173</th><td></td></tr>
+<tr><th id="174">174</th><td>  <em>static</em> <a class="typedef" href="#llvm::simplify_type{constllvm::Use}::SimpleType" title='llvm::simplify_type&lt;const llvm::Use&gt;::SimpleType' data-type='llvm::Value *' data-ref="llvm::simplify_type{constllvm::Use}::SimpleType">SimpleType</a> <dfn class="decl def" id="_ZN4llvm13simplify_typeIKNS_3UseEE18getSimplifiedValueERS2_" title='llvm::simplify_type&lt;const llvm::Use&gt;::getSimplifiedValue' data-ref="_ZN4llvm13simplify_typeIKNS_3UseEE18getSimplifiedValueERS2_">getSimplifiedValue</dfn>(<em>const</em> <a class="type" href="#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a> &amp;<dfn class="local col8 decl" id="10018Val" title='Val' data-type='const llvm::Use &amp;' data-ref="10018Val">Val</dfn>) { <b>return</b> <a class="local col8 ref" href="#10018Val" title='Val' data-ref="10018Val">Val</a>.<a class="ref" href="#_ZNK4llvm3Use3getEv" title='llvm::Use::get' data-ref="_ZNK4llvm3Use3getEv">get</a>(); }</td></tr>
+<tr><th id="175">175</th><td>};</td></tr>
+<tr><th id="176">176</th><td></td></tr>
+<tr><th id="177">177</th><td><i>// Create wrappers for C Binding types (see CBindingWrapping.h).</i></td></tr>
+<tr><th id="178">178</th><td><a class="macro" href="../Support/CBindingWrapping.h.html#20" title="inline Use *unwrap(LLVMUseRef P) { return reinterpret_cast&lt;Use*&gt;(P); } inline LLVMUseRef wrap(const Use *P) { return reinterpret_cast&lt;LLVMUseRef&gt;(const_cast&lt;Use*&gt;(P)); }" data-ref="_M/DEFINE_SIMPLE_CONVERSION_FUNCTIONS">DEFINE_SIMPLE_CONVERSION_FUNCTIONS</a>(<a class="type" href="#llvm::Use" title='llvm::Use' data-ref="llvm::Use">Use</a>, <a class="typedef" href="../../../llvm-c-6.0/llvm-c/Types.h.html#LLVMUseRef" title='LLVMUseRef' data-type='struct LLVMOpaqueUse *' data-ref="LLVMUseRef">LLVMUseRef</a>)</td></tr>
+<tr><th id="179">179</th><td></td></tr>
+<tr><th id="180">180</th><td>} <i>// end namespace llvm</i></td></tr>
+<tr><th id="181">181</th><td></td></tr>
+<tr><th id="182">182</th><td><u>#<span data-ppcond="25">endif</span> // LLVM_IR_USE_H</u></td></tr>
+<tr><th id="183">183</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../../../pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc.html'>pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc</a><br/>Generated on <em>2019-Oct-28</em> from project include<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

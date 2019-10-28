@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Attributes.h' l='555' type='bool llvm::AttributeList::hasFnAttribute(Attribute::AttrKind Kind) const'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='270' u='c' c='_ZNK4llvm8Function14hasFnAttributeENS_9Attribute8AttrKindE'/>
+<doc f='include/llvm-6.0/llvm/IR/Attributes.h' l='553'>/// \brief Equivalent to hasAttribute(AttributeList::FunctionIndex, Kind) but
+  /// may be faster.</doc>

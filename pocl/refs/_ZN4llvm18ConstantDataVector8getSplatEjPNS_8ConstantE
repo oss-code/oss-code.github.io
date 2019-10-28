@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='766' type='static llvm::Constant * llvm::ConstantDataVector::getSplat(unsigned int NumElts, llvm::Constant * Elt)'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='763'>/// Return a ConstantVector with the specified constant in each element.
+  /// The specified constant has to be a of a compatible type (i8/i16/
+  /// i32/i64/float/double) and must be a ConstantFP or ConstantInt.</doc>

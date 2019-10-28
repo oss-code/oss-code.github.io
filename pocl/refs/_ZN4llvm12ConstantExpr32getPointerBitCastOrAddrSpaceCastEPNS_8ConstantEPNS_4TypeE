@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='1048' type='static llvm::Constant * llvm::ConstantExpr::getPointerBitCastOrAddrSpaceCast(llvm::Constant * C, llvm::Type * Ty)'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='1046'>/// @brief Create a BitCast or AddrSpaceCast for a pointer type depending on
+  /// the address space.</doc>
+<use f='include/llvm-6.0/llvm/IR/ConstantFolder.h' l='192' u='c' c='_ZNK4llvm14ConstantFolder35CreatePointerBitCastOrAddrSpaceCastEPNS_8ConstantEPNS_4TypeE'/>

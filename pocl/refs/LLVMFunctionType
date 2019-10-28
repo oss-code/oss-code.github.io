@@ -1,0 +1,9 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='893' type='LLVMTypeRef LLVMFunctionType(LLVMTypeRef ReturnType, LLVMTypeRef * ParamTypes, unsigned int ParamCount, LLVMBool IsVarArg)'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1162' u='c' c='_ZN4pocl9Workgroup32createArgBufferWorkgroupLauncherEPN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1286' u='c' c='_ZN4pocl9Workgroup18createGridLauncherEPN4llvm8FunctionES3_NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='887'>/**
+ * Obtain a function type consisting of a specified signature.
+ *
+ * The function is defined as a tuple of a return Type, a list of
+ * parameter types, and whether the function is variadic.
+ */</doc>

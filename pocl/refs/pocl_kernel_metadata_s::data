@@ -1,0 +1,16 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1055' type='void **'/>
+<offset>704</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='1054'>/* device-specific data, void* array[program-&gt;num_devices] */</doc>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='97' u='r' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='99' u='r' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='100' u='r' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='101' u='r' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='101' u='w' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='767' u='r' c='load_or_generate_kernel'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='777' u='r' c='load_or_generate_kernel'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='761' u='w' c='pocl_binary_get_kernels_metadata'/>
+<use f='pocl/lib/CL/pocl_build.c' l='423' u='r' c='free_meta'/>
+<use f='pocl/lib/CL/pocl_build.c' l='424' u='r' c='free_meta'/>
+<use f='pocl/lib/CL/pocl_build.c' l='425' u='r' c='free_meta'/>
+<use f='pocl/lib/CL/pocl_build.c' l='425' u='w' c='free_meta'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='501' u='w' c='pocl_llvm_get_kernels_metadata'/>

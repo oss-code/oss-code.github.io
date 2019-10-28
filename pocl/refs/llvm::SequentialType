@@ -1,0 +1,19 @@
+<inh f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='162' c='llvm::CompositeType'/>
+<def f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='343' ll='366'/>
+<ovr f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='369' c='llvm::ArrayType'/>
+<ovr f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='393' c='llvm::VectorType'/>
+<size>40</size>
+<doc f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='337'>/// This is the superclass of the array and vector type classes. Both of these
+/// represent &quot;arrays&quot; in memory. The array type represents a specifically sized
+/// array, and the vector type represents a specifically sized array that allows
+/// for use of SIMD instructions. SequentialType holds the common features of
+/// both, which stem from the fact that both lay their components out in memory
+/// identically.</doc>
+<mbr r='llvm::SequentialType::ContainedType' o='192' t='llvm::Type *'/>
+<mbr r='llvm::SequentialType::NumElements' o='256' t='uint64_t'/>
+<fun r='_ZN4llvm14SequentialTypeC1ENS_4Type6TypeIDEPS1_m'/>
+<fun r='_ZN4llvm14SequentialTypeC1ERKS0_'/>
+<fun r='_ZN4llvm14SequentialTypeaSERKS0_'/>
+<fun r='_ZNK4llvm14SequentialType14getNumElementsEv'/>
+<fun r='_ZNK4llvm14SequentialType14getElementTypeEv'/>
+<fun r='_ZN4llvm14SequentialType7classofEPKNS_4TypeE'/>

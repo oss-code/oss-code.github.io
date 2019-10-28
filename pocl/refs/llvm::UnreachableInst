@@ -1,0 +1,21 @@
+<inh f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='54' c='llvm::TerminatorInst'/>
+<def f='include/llvm-6.0/llvm/IR/Instructions.h' l='4606' ll='4642'/>
+<size>56</size>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='4597'>//===----------------------------------------------------------------------===//
+//                           UnreachableInst Class
+//===----------------------------------------------------------------------===//
+
+//===---------------------------------------------------------------------------
+/// This function has undefined behavior.  In particular, the
+/// presence of this instruction indicates some higher level knowledge that the
+/// end of the block cannot be reached.
+///</doc>
+<fun r='_ZNK4llvm15UnreachableInst9cloneImplEv'/>
+<fun r='_ZN4llvm15UnreachableInstC1ERNS_11LLVMContextEPNS_11InstructionE'/>
+<fun r='_ZN4llvm15UnreachableInstC1ERNS_11LLVMContextEPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm15UnreachableInstnwEm'/>
+<fun r='_ZNK4llvm15UnreachableInst16getNumSuccessorsEv'/>
+<fun r='_ZN4llvm15UnreachableInst7classofEPKNS_11InstructionE'/>
+<fun r='_ZN4llvm15UnreachableInst7classofEPKNS_5ValueE'/>
+<fun r='_ZNK4llvm15UnreachableInst12getSuccessorEj'/>
+<fun r='_ZN4llvm15UnreachableInst12setSuccessorEjPNS_10BasicBlockE'/>

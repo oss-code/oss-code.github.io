@@ -1,0 +1,9 @@
+<dec f='pocl/include/pocl_file_util.h' l='56' type='int pocl_write_file(const char * path, const char * content, uint64_t count, int append, int dont_rewrite)'/>
+<doc f='pocl/include/pocl_file_util.h' l='55'>/* Writes or appends data to a file.  */</doc>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='147' u='c' c='pocl_ptx_gen'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='459' u='c' c='deserialize_file'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='303' u='c' c='pocl_cache_write_descriptor'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='337' u='c' c='pocl_cache_append_to_buildlog'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='239' u='c' c='pocl_llvm_build_program'/>
+<def f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='293' ll='344' type='int pocl_write_file(const char * path, const char * content, uint64_t count, int append, int dont_rewrite)'/>
+<doc f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='292'>/* Atomic write - with rename() */</doc>

@@ -1,0 +1,11 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2830' type='LLVMBuilderRef LLVMCreateBuilderInContext(LLVMContextRef C)'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1170' u='c' c='_ZN4pocl9Workgroup32createArgBufferWorkgroupLauncherEPN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1294' u='c' c='_ZN4pocl9Workgroup18createGridLauncherEPN4llvm8FunctionES3_NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2821'>/**
+ * @defgroup LLVMCCoreInstructionBuilder Instruction Builders
+ *
+ * An instruction builder represents a point within a basic block and is
+ * the exclusive means of building instructions using the C interface.
+ *
+ * @{
+ */</doc>

@@ -1,0 +1,22 @@
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='277' ll='327'/>
+<ovr f='include/llvm-6.0/llvm/IR/Metadata.h' l='337' c='llvm::ValueAsMetadata'/>
+<size>120</size>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='272'>/// \brief Shared implementation of use-lists for replaceable metadata.
+///
+/// Most metadata cannot be RAUW&apos;ed.  This is a shared implementation of
+/// use-lists and associated API for the two that support it (\a ValueAsMetadata
+/// and \a TempMDNode).</doc>
+<mbr r='llvm::ReplaceableMetadataImpl::Context' o='0' t='llvm::LLVMContext &amp;'/>
+<mbr r='llvm::ReplaceableMetadataImpl::NextIndex' o='64' t='uint64_t'/>
+<mbr r='llvm::ReplaceableMetadataImpl::UseMap' o='128' t='SmallDenseMap&lt;void *, std::pair&lt;OwnerTy, uint64_t&gt;, 4&gt;'/>
+<fun r='_ZN4llvm23ReplaceableMetadataImplC1ERNS_11LLVMContextE'/>
+<fun r='_ZN4llvm23ReplaceableMetadataImplD1Ev'/>
+<fun r='_ZNK4llvm23ReplaceableMetadataImpl10getContextEv'/>
+<fun r='_ZN4llvm23ReplaceableMetadataImpl18replaceAllUsesWithEPNS_8MetadataE'/>
+<fun r='_ZN4llvm23ReplaceableMetadataImpl14resolveAllUsesEb'/>
+<fun r='_ZN4llvm23ReplaceableMetadataImpl6addRefEPvNS_12PointerUnionIPNS_15MetadataAsValueEPNS_8MetadataEEE'/>
+<fun r='_ZN4llvm23ReplaceableMetadataImpl7dropRefEPv'/>
+<fun r='_ZN4llvm23ReplaceableMetadataImpl7moveRefEPvS1_RKNS_8MetadataE'/>
+<fun r='_ZN4llvm23ReplaceableMetadataImpl11getOrCreateERNS_8MetadataE'/>
+<fun r='_ZN4llvm23ReplaceableMetadataImpl11getIfExistsERNS_8MetadataE'/>
+<fun r='_ZN4llvm23ReplaceableMetadataImpl13isReplaceableERKNS_8MetadataE'/>

@@ -1,0 +1,16 @@
+<def f='include/llvm-6.0/llvm/ADT/StringRef.h' l='89' ll='91' macro='1' type='void llvm::StringRef::StringRef(const char * data, size_t length)'/>
+<use f='include/llvm-6.0/llvm/ADT/StringRef.h' l='162' u='c' c='_ZNK4llvm9StringRef4copyERT_'/>
+<use f='include/llvm-6.0/llvm/ADT/StringRef.h' l='600' u='c' c='_ZNK4llvm9StringRef6substrEmm'/>
+<use f='include/llvm-6.0/llvm/ADT/StringRef.h' l='713' u='c' c='_ZNK4llvm9StringRef5sliceEmm'/>
+<use f='include/llvm-6.0/llvm/ADT/DenseMapInfo.h' l='212' u='c' c='_ZN4llvm12DenseMapInfoINS_9StringRefEE11getEmptyKeyEv'/>
+<use f='include/llvm-6.0/llvm/ADT/DenseMapInfo.h' l='217' u='c' c='_ZN4llvm12DenseMapInfoINS_9StringRefEE15getTombstoneKeyEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Twine.h' l='446' u='c' c='_ZNK4llvm5Twine18getSingleStringRefEv'/>
+<use f='include/llvm-6.0/llvm/ADT/Twine.h' l='457' u='c' c='_ZNK4llvm5Twine11toStringRefERNS_15SmallVectorImplIcEE'/>
+<use f='include/llvm-6.0/llvm/ADT/StringExtras.h' l='47' u='c' c='_ZN4llvm11toStringRefENS_8ArrayRefIhEE'/>
+<use f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='514' u='c' c='_ZN4llvm19raw_svector_ostream3strEv'/>
+<use f='include/llvm-6.0/llvm/Support/MemoryBuffer.h' l='64' u='c' c='_ZNK4llvm12MemoryBuffer9getBufferEv'/>
+<use f='include/llvm-6.0/llvm/Bitcode/BitcodeReader.h' l='87' u='c' c='_ZNK4llvm13BitcodeModule9getBufferEv'/>
+<use f='include/llvm-6.0/llvm/ADT/CachedHashString.h' l='45' u='c' c='_ZNK4llvm19CachedHashStringRef3valEv'/>
+<use f='include/llvm-6.0/llvm/ADT/CachedHashString.h' l='136' u='c' c='_ZNK4llvm16CachedHashString3valEv'/>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='82' u='c' c='_Z16parseModuleIRMemPKcm'/>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='95' u='c' c='_Z15getModuleTriplePKcmRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>

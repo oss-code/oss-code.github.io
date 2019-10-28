@@ -1,0 +1,7 @@
+<def f='pocl/include/CL/cl2.hpp' l='7338' ll='7339' type='void cl::CommandQueue::CommandQueue(const cl_command_queue &amp; commandQueue, bool retainObject = false)'/>
+<doc f='pocl/include/CL/cl2.hpp' l='7332'>/*! \brief Constructor from cl_mem - takes ownership.
+     *
+     * \param retainObject will cause the constructor to retain its cl object.
+     *                     Defaults to false to maintain compatibility with
+     *                     earlier versions.
+     */</doc>

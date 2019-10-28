@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='358' ll='361' type='llvm::LazyCallGraph::EdgeSequence &amp; llvm::LazyCallGraph::Node::operator*() const'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='362' u='c' c='_ZNK4llvm13LazyCallGraph4NodeptEv'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='356'>// We allow accessing the edges by dereferencing or using the arrow
+    // operator, essentially wrapping the internal optional.</doc>

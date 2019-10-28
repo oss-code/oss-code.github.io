@@ -1,0 +1,15 @@
+<dec f='include/hwloc.h' l='828' type='int hwloc_topology_set_pid(restrict hwloc_topology_t topology, pid_t pid)'/>
+<doc f='include/hwloc.h' l='814'>/** \brief Change which process the topology is viewed from
+ *
+ * On some systems, processes may have different views of the machine, for
+ * instance the set of allowed CPUs. By default, hwloc exposes the view from
+ * the current process. Calling hwloc_topology_set_pid() permits to make it
+ * expose the topology of the machine from the point of view of another
+ * process.
+ *
+ * \note \p hwloc_pid_t is \p pid_t on Unix platforms,
+ * and \p HANDLE on native Windows platforms.
+ *
+ * \note -1 is returned and errno is set to ENOSYS on platforms that do not
+ * support this feature.
+ */</doc>

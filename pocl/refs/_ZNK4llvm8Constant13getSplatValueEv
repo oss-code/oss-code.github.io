@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Constant.h' l='103' type='llvm::Constant * llvm::Constant::getSplatValue() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Constant.h' l='101'>/// If this is a splat vector constant, meaning that all of the elements have
+  /// the same value, return that value. Otherwise return 0.</doc>
+<use f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='282' u='c' c='_ZN4llvm13EmitGEPOffsetEPT_RKNS_10DataLayoutEPNS_4UserEb'/>

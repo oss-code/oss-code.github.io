@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='79' type='llvm::Constant * llvm::ConstantFoldBinaryOpOperands(unsigned int Opcode, llvm::Constant * LHS, llvm::Constant * RHS, const llvm::DataLayout &amp; DL)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='76'>/// \brief Attempt to constant fold a binary operation with the specified
+/// operands.  If it fails, it returns a constant expression of the specified
+/// operands.</doc>

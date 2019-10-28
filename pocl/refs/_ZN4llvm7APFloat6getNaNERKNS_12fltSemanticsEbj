@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/ADT/APFloat.h' l='875' ll='883' type='static llvm::APFloat llvm::APFloat::getNaN(const llvm::fltSemantics &amp; Sem, bool Negative = false, unsigned int type = 0)'/>
+<doc f='include/llvm-6.0/llvm/ADT/APFloat.h' l='870'>/// Factory for NaN values.
+  ///
+  /// \param Negative - True iff the NaN generated should be negative.
+  /// \param type - The unspecified fill bits for creating the NaN, 0 by
+  /// default.  The value is truncated as necessary.</doc>

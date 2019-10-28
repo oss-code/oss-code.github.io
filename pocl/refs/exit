@@ -1,0 +1,29 @@
+<dec f='include/stdlib.h' l='543' type='void exit(int __status)'/>
+<use f='pocl/bin/poclcc.c' l='39' u='c' c='process_kernel_file'/>
+<use f='pocl/bin/poclcc.c' l='338' u='c' c='main'/>
+<use f='pocl/bin/poclcc.c' l='39' u='c' c='main'/>
+<doc f='include/stdlib.h' l='540'>/* Call all functions registered with `atexit&apos; and `on_exit&apos;,
+   in the reverse of the order in which they were registered,
+   perform stdio cleanup, and terminate program execution with STATUS.  */</doc>
+<use f='pocl/lib/CL/clCreateCommandQueueWithProperties.c' l='86' macro='1' u='c'/>
+<use f='pocl/lib/CL/clCreateFromGLTexture2D.c' l='11' macro='1' u='c'/>
+<use f='pocl/lib/CL/clCreateFromGLTexture3D.c' l='33' macro='1' u='c'/>
+<use f='pocl/lib/CL/clCreateImage.c' l='57' macro='1' u='c'/>
+<use f='pocl/lib/CL/clEnqueueSVMMemcpy.c' l='62' macro='1' u='c'/>
+<use f='pocl/lib/CL/clEnqueueWaitForEvents.c' l='39' macro='1' u='c'/>
+<use f='pocl/lib/CL/devices/common.c' l='747' macro='1' u='c'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1233' macro='1' u='c'/>
+<use f='include/llvm-6.0/llvm/Support/Error.h' l='1145' u='c' c='_ZNK4llvm11ExitOnError10checkErrorENS_5ErrorE'/>
+<use f='pocl/lib/CL/pocl_opengl.c' l='13' macro='1' u='c'/>
+<use f='pocl/lib/CL/pocl_opengl.c' l='27' macro='1' u='c'/>
+<use f='pocl/lib/CL/pocl_opengl.c' l='41' macro='1' u='c'/>
+<use f='pocl/lib/CL/pocl_opengl.c' l='54' macro='1' u='c'/>
+<use f='pocl/lib/CL/pocl_opengl.c' l='70' macro='1' u='c'/>
+<use f='pocl/lib/CL/pocl_opengl.c' l='86' macro='1' u='c'/>
+<use f='pocl/lib/CL/pocl_opengl.c' l='102' macro='1' u='c'/>
+<use f='pocl/lib/CL/pocl_opengl.c' l='118' macro='1' u='c'/>
+<use f='pocl/tests/kernel/test_shuffle.cc' l='336' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_enqueue_kernel_from_binary.c' l='367' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_enqueue_kernel_from_binary.c' l='372' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_enqueue_kernel_from_binary.c' l='377' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_event_cycle.c' l='38' u='c' c='timeout'/>

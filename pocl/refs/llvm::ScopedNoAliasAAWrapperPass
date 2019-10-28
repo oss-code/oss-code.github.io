@@ -1,0 +1,12 @@
+<inh f='include/llvm-6.0/llvm/Pass.h' l='256' c='llvm::ImmutablePass'/>
+<def f='include/llvm-6.0/llvm/Analysis/ScopedNoAliasAA.h' l='64' ll='78'/>
+<size>40</size>
+<doc f='include/llvm-6.0/llvm/Analysis/ScopedNoAliasAA.h' l='63'>/// Legacy wrapper pass to provide the ScopedNoAliasAAResult object.</doc>
+<mbr r='llvm::ScopedNoAliasAAWrapperPass::Result' o='256' t='std::unique_ptr&lt;ScopedNoAliasAAResult&gt;'/>
+<smbr r='llvm::ScopedNoAliasAAWrapperPass::ID' t='char'/>
+<fun r='_ZN4llvm26ScopedNoAliasAAWrapperPassC1Ev'/>
+<fun r='_ZN4llvm26ScopedNoAliasAAWrapperPass9getResultEv'/>
+<fun r='_ZNK4llvm26ScopedNoAliasAAWrapperPass9getResultEv'/>
+<fun r='_ZN4llvm26ScopedNoAliasAAWrapperPass16doInitializationERNS_6ModuleE'/>
+<fun r='_ZN4llvm26ScopedNoAliasAAWrapperPass14doFinalizationERNS_6ModuleE'/>
+<fun r='_ZNK4llvm26ScopedNoAliasAAWrapperPass16getAnalysisUsageERNS_13AnalysisUsageE'/>

@@ -1,0 +1,4 @@
+<dec f='pocl/lib/CL/pocl_llvm.h' l='119' type='int pocl_llvm_link_program(cl_program program, unsigned int device_i, char * program_bc_path, cl_uint num_input_programs, unsigned char ** cur_device_binaries, size_t * cur_device_binary_sizes, void ** cur_llvm_irs, int create_library, int spir)'/>
+<use f='pocl/lib/CL/pocl_build.c' l='684' u='c' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_build.c' l='744' u='c' c='compile_and_link_program'/>
+<def f='pocl/lib/CL/pocl_llvm_build.cc' l='604' ll='747' type='int pocl_llvm_link_program(cl_program program, unsigned int device_i, char * program_bc_path, cl_uint num_input_programs, unsigned char ** cur_device_binaries, size_t * cur_device_binary_sizes, void ** cur_llvm_irs, int create_library, int spir)'/>

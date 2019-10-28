@@ -1,0 +1,11 @@
+<def f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='998' ll='1002'/>
+<size>1</size>
+<doc f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='990'>/// RegisterMCInstrAnalysisFn - Helper template for registering a target
+/// instruction analyzer implementation.  This invokes the specified function
+/// to do the construction.  Usage:
+///
+/// extern &quot;C&quot; void LLVMInitializeFooTarget() {
+///   extern Target TheFooTarget;
+///   RegisterMCInstrAnalysisFn X(TheFooTarget, TheFunction);
+/// }</doc>
+<fun r='_ZN4llvm25RegisterMCInstrAnalysisFnC1ERNS_6TargetEPFPNS_15MCInstrAnalysisEPKNS_11MCInstrInfoEE'/>

@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='287' type='llvm::Pass * llvm::createStructurizeCFGPass(bool SkipUniformRegions = false)'/>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='81' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='280'>//===----------------------------------------------------------------------===//
+//
+// CFG Structurization - Remove irreducible control flow
+//
+///
+/// When \p SkipUniformRegions is true the structizer will not structurize
+/// regions that only contain uniform branches.</doc>

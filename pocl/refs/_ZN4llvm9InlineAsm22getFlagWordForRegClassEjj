@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/IR/InlineAsm.h' l='300' ll='308' type='static unsigned int llvm::InlineAsm::getFlagWordForRegClass(unsigned int InputFlag, unsigned int RC)'/>
+<doc f='include/llvm-6.0/llvm/IR/InlineAsm.h' l='295'>/// getFlagWordForRegClass - Augment an existing flag word returned by
+  /// getFlagWord with the required register class for the following register
+  /// operands.
+  /// A tied use operand cannot have a register class, use the register class
+  /// from the def operand instead.</doc>

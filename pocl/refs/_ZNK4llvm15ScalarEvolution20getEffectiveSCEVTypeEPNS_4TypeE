@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='505' type='llvm::Type * llvm::ScalarEvolution::getEffectiveSCEVType(llvm::Type * Ty) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='502'>/// Return a type with the same bitwidth as the given type and which
+  /// represents how SCEV will treat the given type, for which isSCEVable must
+  /// return true. For pointer types, this is the pointer-sized integer type.</doc>

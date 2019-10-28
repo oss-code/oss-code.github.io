@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='662' ll='668' type='std::string llvm::LazyCallGraph::RefSCC::getName() const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='658'>/// Provide a short name by printing this RefSCC to a std::string.
+    ///
+    /// This copes with the fact that we don&apos;t have a name per-se for an RefSCC
+    /// while still making the use of this in debugging and logging useful.</doc>

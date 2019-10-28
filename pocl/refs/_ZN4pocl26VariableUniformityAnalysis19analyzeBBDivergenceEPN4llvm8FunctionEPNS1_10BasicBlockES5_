@@ -1,0 +1,30 @@
+<dec f='pocl/lib/llvmopencl/VariableUniformityAnalysis.h' l='61' type='void pocl::VariableUniformityAnalysis::analyzeBBDivergence(llvm::Function * f, llvm::BasicBlock * bb, llvm::BasicBlock * previousUniformBB)'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='125' u='c' c='_ZN4pocl26VariableUniformityAnalysis13runOnFunctionERN4llvm8FunctionE'/>
+<def f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='184' ll='253' type='void pocl::VariableUniformityAnalysis::analyzeBBDivergence(llvm::Function * f, llvm::BasicBlock * bb, llvm::BasicBlock * previousUniformBB)'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='249' u='c' c='_ZN4pocl26VariableUniformityAnalysis19analyzeBBDivergenceEPN4llvm8FunctionEPNS1_10BasicBlockES5_'/>
+<doc f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='158'>/**  
+ * BB divergence analysis.
+ *
+ * Define:
+ * Uniform BB. A basic block which is known to be executed by all or none
+ * of the work-items, that is, a BB where it&apos;s known safe to add a barrier.
+ *
+ * Divergent/varying BB. A basic block where work-items *might* diverge.
+ * That is, it cannot be proven that all work-items execute the BB.
+ *
+ * Propagate the information from the entry downwards (breadth first). 
+ * This avoids infinite recursion with loop back edges and enables
+ * to keep book of the &quot;last seen&quot; uniform BB.
+ *
+ * The conditions to mark a BB &apos;uniform&apos;:
+ *
+ * a) the function entry, or
+ * b) BBs that post-dominate at least one uniform BB (try the previously 
+ *    found one), or
+ * c) BBs that are branched to directly from a uniform BB using a uniform branch.
+ *    Note: This assumes the CFG is well-formed in a way that there cannot be a divergent
+ *    branch to the same BB in that case.
+ *
+ * Otherwise, assume divergent (might not be *proven* to be one!).
+ *
+ */</doc>

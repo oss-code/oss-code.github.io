@@ -1,0 +1,12 @@
+<def f='include/llvm-6.0/llvm/IR/Constants.h' l='251' ll='253' type='uint64_t llvm::ConstantInt::getLimitedValue(uint64_t Limit = ~0ULL) const'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='246'>/// getLimitedValue - If the value is smaller than the specified limit,
+  /// return it, otherwise return the limit value.  This causes the value
+  /// to saturate to the limit.
+  /// @returns the min of the value of the constant and the specified value
+  /// @brief Get the constant&apos;s value with a saturation limit</doc>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='118' u='c' c='_ZL35pocl_get_kernel_arg_module_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='317' u='c' c='_ZL37pocl_get_kernel_arg_function_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='577' u='c' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='580' u='c' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='583' u='c' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/llvmopencl/LLVMUtils.cc' l='122' u='c' c='_ZN4pocl21getConstantIntMDValueEPN4llvm8MetadataE'/>

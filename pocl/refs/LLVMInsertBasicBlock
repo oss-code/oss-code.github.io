@@ -1,0 +1,6 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2343' type='LLVMBasicBlockRef LLVMInsertBasicBlock(LLVMBasicBlockRef InsertBeforeBB, const char * Name)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2338'>/**
+ * Insert a basic block in a function using the global context.
+ *
+ * @see llvm::BasicBlock::Create()
+ */</doc>

@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/pocl_util.h' l='79' type='size_t pocl_size_ceil2(size_t x)'/>
+<doc f='pocl/lib/CL/pocl_util.h' l='78'>/* Finds the next highest power of two of the given value. */</doc>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='592' u='c' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/clSetKernelArg.c' l='131' u='c' c='POclSetKernelArg'/>
+<def f='pocl/lib/CL/pocl_util.c' l='205' ll='222' type='size_t pocl_size_ceil2(size_t x)'/>

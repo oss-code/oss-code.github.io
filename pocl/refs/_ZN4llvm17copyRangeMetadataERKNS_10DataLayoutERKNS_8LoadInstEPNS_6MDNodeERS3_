@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='451' type='void llvm::copyRangeMetadata(const llvm::DataLayout &amp; DL, const llvm::LoadInst &amp; OldLI, llvm::MDNode * N, llvm::LoadInst &amp; NewLI)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='447'>/// Copy a range metadata node to a new load instruction.
+///
+/// This handles mapping it to nonnull metadata if the new load is a pointer
+/// load instead of an integer load and the range doesn&apos;t cover null.</doc>

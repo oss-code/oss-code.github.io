@@ -1,0 +1,8 @@
+<inh f='include/llvm-6.0/llvm/IR/PassManager.h' l='382' c='llvm::AnalysisInfoMixin'/>
+<def f='include/llvm-6.0/llvm/IR/Verifier.h' l='108' ll='120'/>
+<size>1</size>
+<doc f='include/llvm-6.0/llvm/IR/Verifier.h' l='106'>/// Check a module for errors, and report separate error states for IR
+/// and debug info errors.</doc>
+<smbr r='llvm::VerifierAnalysis::Key' t='llvm::AnalysisKey'/>
+<fun r='_ZN4llvm16VerifierAnalysis3runERNS_6ModuleERNS_15AnalysisManagerIS1_JEEE'/>
+<fun r='_ZN4llvm16VerifierAnalysis3runERNS_8FunctionERNS_15AnalysisManagerIS1_JEEE'/>

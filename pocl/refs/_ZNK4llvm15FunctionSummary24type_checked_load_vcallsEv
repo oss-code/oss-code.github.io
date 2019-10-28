@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='425' ll='429' type='ArrayRef&lt;llvm::FunctionSummary::VFuncId&gt; llvm::FunctionSummary::type_checked_load_vcalls() const'/>
+<doc f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='422'>/// Returns the list of virtual calls made by this function using
+  /// llvm.type.checked.load intrinsics that do not have all constant integer
+  /// arguments.</doc>

@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/Value.h' l='616' type='void llvm::Value::sortUseList(Compare Cmp)'/>
+<def f='include/llvm-6.0/llvm/IR/Value.h' l='691' ll='756' type='void llvm::Value::sortUseList(Compare Cmp)'/>
+<doc f='include/llvm-6.0/llvm/IR/Value.h' l='612'>/// \brief Sort the use-list.
+  ///
+  /// Sorts the Value&apos;s use-list by Cmp using a stable mergesort.  Cmp is
+  /// expected to compare two \a Use references.</doc>

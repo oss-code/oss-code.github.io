@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2470' ll='2472' type='bool llvm::DILocalVariable::isValidLocationForIntrinsic(const llvm::DILocation * DL) const'/>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2465'>/// Check that a location is valid for this variable.
+  ///
+  /// Check that \c DL exists, is in the same subprogram, and has the same
+  /// inlined-at location as \c this.  (Otherwise, it&apos;s not a valid attachment
+  /// to a \a DbgInfoIntrinsic.)</doc>

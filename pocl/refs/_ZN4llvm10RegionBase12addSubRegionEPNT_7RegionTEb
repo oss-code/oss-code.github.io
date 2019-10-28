@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='527' type='void llvm::RegionBase::addSubRegion(RegionT * SubRegion, bool moveChildren = false)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='522'>/// @brief Add a new subregion to this Region.
+  ///
+  /// @param SubRegion The new subregion that will be added.
+  /// @param moveChildren Move the children of this region, that are also
+  ///                     contained in SubRegion into SubRegion.</doc>

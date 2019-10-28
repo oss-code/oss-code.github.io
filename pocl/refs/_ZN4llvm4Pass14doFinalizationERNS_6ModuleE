@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Pass.h' l='110' type='bool llvm::Pass::doFinalization(llvm::Module &amp; )'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/AssumptionCache.h' l='222' c='_ZN4llvm22AssumptionCacheTracker14doFinalizationERNS_6ModuleE'/>
+<doc f='include/llvm-6.0/llvm/Pass.h' l='108'>/// doFinalization - Virtual method overriden by subclasses to do any
+  /// necessary clean up after all passes have run.</doc>
+<ovr f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='466' c='_ZN4pocl26VariableUniformityAnalysis14doFinalizationERN4llvm6ModuleE'/>

@@ -1,0 +1,57 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='747' type='int'/>
+<offset>4800</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='744'>/* A running number (starting from zero) across all the device instances.
+     Used for indexing arrays in data structures with device specific
+     entries. */</doc>
+<use f='pocl/lib/CL/clCreateBuffer.c' l='130' u='r' c='POclCreateBuffer'/>
+<use f='pocl/lib/CL/clCreateCommandQueue.c' l='42' u='r' c='POclCreateCommandQueue'/>
+<use f='pocl/lib/CL/clCreateImage.c' l='212' u='r' c='POclCreateImage'/>
+<use f='pocl/lib/CL/clCreateSampler.c' l='73' u='r' c='POclCreateSampler'/>
+<use f='pocl/lib/CL/clEnqueueCopyBuffer.c' l='101' u='r' c='POclEnqueueCopyBuffer'/>
+<use f='pocl/lib/CL/clEnqueueCopyBuffer.c' l='104' u='r' c='POclEnqueueCopyBuffer'/>
+<use f='pocl/lib/CL/clEnqueueCopyBufferRect.c' l='78' u='r' c='POclEnqueueCopyBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueCopyBufferRect.c' l='79' u='r' c='POclEnqueueCopyBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueCopyBufferToImage.c' l='64' u='r' c='POclEnqueueCopyBufferToImage'/>
+<use f='pocl/lib/CL/clEnqueueCopyBufferToImage.c' l='66' u='r' c='POclEnqueueCopyBufferToImage'/>
+<use f='pocl/lib/CL/clEnqueueCopyImage.c' l='49' u='r' c='POclEnqueueCopyImage'/>
+<use f='pocl/lib/CL/clEnqueueCopyImage.c' l='50' u='r' c='POclEnqueueCopyImage'/>
+<use f='pocl/lib/CL/clEnqueueCopyImageToBuffer.c' l='63' u='r' c='POclEnqueueCopyImageToBuffer'/>
+<use f='pocl/lib/CL/clEnqueueCopyImageToBuffer.c' l='65' u='r' c='POclEnqueueCopyImageToBuffer'/>
+<use f='pocl/lib/CL/clEnqueueFillBuffer.c' l='93' u='r' c='POclEnqueueFillBuffer'/>
+<use f='pocl/lib/CL/clEnqueueFillImage.c' l='116' u='r' c='POclEnqueueFillImage'/>
+<use f='pocl/lib/CL/clEnqueueMapBuffer.c' l='121' u='r' c='POclEnqueueMapBuffer'/>
+<use f='pocl/lib/CL/clEnqueueMapBuffer.c' l='136' u='r' c='POclEnqueueMapBuffer'/>
+<use f='pocl/lib/CL/clEnqueueMapBuffer.c' l='165' u='r' c='POclEnqueueMapBuffer'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='163' u='r' c='POclEnqueueMapImage'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='177' u='r' c='POclEnqueueMapImage'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='204' u='r' c='POclEnqueueMapImage'/>
+<use f='pocl/lib/CL/clEnqueueNativeKernel.c' l='92' u='r' c='POclEnqueueNativeKernel'/>
+<use f='pocl/lib/CL/clEnqueueReadBuffer.c' l='86' u='r' c='POclEnqueueReadBuffer'/>
+<use f='pocl/lib/CL/clEnqueueReadBufferRect.c' l='99' u='r' c='POclEnqueueReadBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueReadImage.c' l='106' u='r' c='POclEnqueueReadImage'/>
+<use f='pocl/lib/CL/clEnqueueUnmapMemObject.c' l='91' u='r' c='POclEnqueueUnmapMemObject'/>
+<use f='pocl/lib/CL/clEnqueueWriteBuffer.c' l='86' u='r' c='POclEnqueueWriteBuffer'/>
+<use f='pocl/lib/CL/clEnqueueWriteBufferRect.c' l='97' u='r' c='POclEnqueueWriteBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueWriteImage.c' l='78' u='r' c='POclEnqueueWriteImage'/>
+<use f='pocl/lib/CL/clReleaseMemObject.c' l='79' u='r' c='POclReleaseMemObject'/>
+<use f='pocl/lib/CL/clReleaseMemObject.c' l='81' u='r' c='POclReleaseMemObject'/>
+<use f='pocl/lib/CL/clReleaseSampler.c' l='47' u='r' c='POclReleaseSampler'/>
+<use f='pocl/lib/CL/clReleaseSampler.c' l='48' u='r' c='POclReleaseSampler'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='459' u='r' c='pocl_basic_alloc_mem_obj'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='470' u='r' c='pocl_basic_alloc_mem_obj'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='474' u='r' c='pocl_basic_alloc_mem_obj'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='509' u='r' c='pocl_basic_alloc_mem_obj'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='525' u='r' c='pocl_basic_free'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='617' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/common.c' l='279' u='r' c='fill_dev_image_t'/>
+<use f='pocl/lib/CL/devices/common.c' l='296' u='r' c='pocl_copy_mem_object'/>
+<use f='pocl/lib/CL/devices/common.c' l='298' u='r' c='pocl_copy_mem_object'/>
+<use f='pocl/lib/CL/devices/common.c' l='319' u='r' c='pocl_copy_mem_object'/>
+<use f='pocl/lib/CL/devices/common.c' l='324' u='r' c='pocl_copy_mem_object'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='518' u='r' c='pocl_cuda_alloc_mem_obj'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='541' u='r' c='pocl_cuda_free'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='927' u='r' c='pocl_cuda_submit_kernel'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='952' u='r' c='pocl_cuda_submit_kernel'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1178' u='r' c='pocl_cuda_submit_node'/>
+<use f='pocl/lib/CL/devices/devices.c' l='530' u='w' c='pocl_init_devices'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='139' u='r' c='setup_kernel_arg_array'/>

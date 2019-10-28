@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='130' ll='160'/>
+<size>4</size>
+<doc f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='129'>/// Group flags (Linkage, NotEligibleToImport, etc.) as a bitfield.</doc>
+<mbr r='llvm::GlobalValueSummary::GVFlags::Linkage' o='0' t='unsigned int'/>
+<mbr r='llvm::GlobalValueSummary::GVFlags::NotEligibleToImport' o='4' t='unsigned int'/>
+<mbr r='llvm::GlobalValueSummary::GVFlags::Live' o='5' t='unsigned int'/>
+<mbr r='llvm::GlobalValueSummary::GVFlags::DSOLocal' o='6' t='unsigned int'/>
+<fun r='_ZN4llvm18GlobalValueSummary7GVFlagsC1ENS_11GlobalValue12LinkageTypesEbbb'/>

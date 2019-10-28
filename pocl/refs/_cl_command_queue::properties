@@ -1,0 +1,14 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='894' type='cl_command_queue_properties'/>
+<offset>576</offset>
+<use f='pocl/lib/CL/clCreateCommandQueue.c' l='71' u='w' c='POclCreateCommandQueue'/>
+<use f='pocl/lib/CL/clGetCommandQueueInfo.c' l='51' u='r' c='POclGetCommandQueueInfo'/>
+<use f='pocl/lib/CL/clGetEventProfilingInfo.c' l='40' u='r' c='POclGetEventProfilingInfo'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1091' u='r' c='pocl_cuda_submit_node'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1238' u='r' c='pocl_cuda_submit_node'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1383' u='r' c='pocl_cuda_update_event'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1451' u='r' c='pocl_cuda_free_event_data'/>
+<use f='pocl/lib/CL/pocl_util.c' l='515' u='r' c='pocl_create_command'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1166' u='r' c='pocl_update_event_queued'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1184' u='r' c='pocl_update_event_submitted'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1201' u='r' c='pocl_update_event_running_unlocked'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1230' u='r' c='pocl_update_event_finished_msg'/>

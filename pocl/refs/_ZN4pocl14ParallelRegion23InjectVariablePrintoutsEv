@@ -1,0 +1,8 @@
+<dec f='pocl/lib/llvmopencl/ParallelRegion.h' l='87' type='void pocl::ParallelRegion::InjectVariablePrintouts()'/>
+<def f='pocl/lib/llvmopencl/ParallelRegion.cc' l='736' ll='757' type='void pocl::ParallelRegion::InjectVariablePrintouts()'/>
+<doc f='pocl/lib/llvmopencl/ParallelRegion.cc' l='730'>/**
+ * Adds a printf to the end of the parallel region that prints the
+ * hex contents of all named non-pointer variables.
+ *
+ * Useful for debugging data flow bugs.
+ */</doc>

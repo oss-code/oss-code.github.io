@@ -1,0 +1,6 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2243' type='LLVMValueRef LLVMGetBasicBlockParent(LLVMBasicBlockRef BB)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2238'>/**
+ * Obtain the function to which a basic block belongs.
+ *
+ * @see llvm::BasicBlock::getParent()
+ */</doc>

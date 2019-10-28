@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/ADT/SmallSet.h' l='81' ll='100' type='std::pair&lt;NoneType, bool&gt; llvm::SmallSet::insert(const T &amp; V)'/>
+<doc f='include/llvm-6.0/llvm/ADT/SmallSet.h' l='74'>/// insert - Insert an element into the set if it isn&apos;t already there.
+  /// Returns true if the element is inserted (it was not in the set before).
+  /// The first value of the returned pair is unused and provided for
+  /// partial compatibility with the standard library self-associative container
+  /// concept.
+  // FIXME: Add iterators that abstract over the small and large form, and then
+  // return those here.</doc>

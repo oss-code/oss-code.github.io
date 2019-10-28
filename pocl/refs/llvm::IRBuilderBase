@@ -1,0 +1,94 @@
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='90' ll='650'/>
+<ovr f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='668' c='llvm::IRBuilder'/>
+<size>64</size>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='89'>/// \brief Common base class shared among various IRBuilders.</doc>
+<mbr r='llvm::IRBuilderBase::CurDbgLocation' o='0' t='llvm::DebugLoc'/>
+<mbr r='llvm::IRBuilderBase::BB' o='64' t='llvm::BasicBlock *'/>
+<mbr r='llvm::IRBuilderBase::InsertPt' o='128' t='BasicBlock::iterator'/>
+<mbr r='llvm::IRBuilderBase::Context' o='192' t='llvm::LLVMContext &amp;'/>
+<mbr r='llvm::IRBuilderBase::DefaultFPMathTag' o='256' t='llvm::MDNode *'/>
+<mbr r='llvm::IRBuilderBase::FMF' o='320' t='llvm::FastMathFlags'/>
+<mbr r='llvm::IRBuilderBase::DefaultOperandBundles' o='384' t='ArrayRef&lt;OperandBundleDef&gt;'/>
+<fun r='_ZN4llvm13IRBuilderBaseC1ERNS_11LLVMContextEPNS_6MDNodeENS_8ArrayRefINS_17OperandBundleDefTIPNS_5ValueEEEEE'/>
+<fun r='_ZN4llvm13IRBuilderBase19ClearInsertionPointEv'/>
+<fun r='_ZNK4llvm13IRBuilderBase14GetInsertBlockEv'/>
+<fun r='_ZNK4llvm13IRBuilderBase14GetInsertPointEv'/>
+<fun r='_ZNK4llvm13IRBuilderBase10getContextEv'/>
+<fun r='_ZN4llvm13IRBuilderBase14SetInsertPointEPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm13IRBuilderBase14SetInsertPointEPNS_11InstructionE'/>
+<fun r='_ZN4llvm13IRBuilderBase14SetInsertPointEPNS_10BasicBlockENS_14ilist_iteratorINS_12ilist_detail12node_optionsINS_11InstructionELb0ELb0EvEELb0ELb0EEE'/>
+<fun r='_ZN4llvm13IRBuilderBase23SetCurrentDebugLocationENS_8DebugLocE'/>
+<fun r='_ZNK4llvm13IRBuilderBase23getCurrentDebugLocationEv'/>
+<fun r='_ZNK4llvm13IRBuilderBase20SetInstDebugLocationEPNS_11InstructionE'/>
+<fun r='_ZNK4llvm13IRBuilderBase28getCurrentFunctionReturnTypeEv'/>
+<fun r='_ZNK4llvm13IRBuilderBase6saveIPEv'/>
+<fun r='_ZN4llvm13IRBuilderBase14saveAndClearIPEv'/>
+<fun r='_ZN4llvm13IRBuilderBase9restoreIPENS0_11InsertPointE'/>
+<fun r='_ZNK4llvm13IRBuilderBase19getDefaultFPMathTagEv'/>
+<fun r='_ZNK4llvm13IRBuilderBase16getFastMathFlagsEv'/>
+<fun r='_ZN4llvm13IRBuilderBase18clearFastMathFlagsEv'/>
+<fun r='_ZN4llvm13IRBuilderBase19setDefaultFPMathTagEPNS_6MDNodeE'/>
+<fun r='_ZN4llvm13IRBuilderBase16setFastMathFlagsENS_13FastMathFlagsE'/>
+<fun r='_ZN4llvm13IRBuilderBase18CreateGlobalStringENS_9StringRefERKNS_5TwineEj'/>
+<fun r='_ZN4llvm13IRBuilderBase7getInt1Eb'/>
+<fun r='_ZN4llvm13IRBuilderBase7getTrueEv'/>
+<fun r='_ZN4llvm13IRBuilderBase8getFalseEv'/>
+<fun r='_ZN4llvm13IRBuilderBase7getInt8Eh'/>
+<fun r='_ZN4llvm13IRBuilderBase8getInt16Et'/>
+<fun r='_ZN4llvm13IRBuilderBase8getInt32Ej'/>
+<fun r='_ZN4llvm13IRBuilderBase8getInt64Em'/>
+<fun r='_ZN4llvm13IRBuilderBase7getIntNEjm'/>
+<fun r='_ZN4llvm13IRBuilderBase6getIntERKNS_5APIntE'/>
+<fun r='_ZN4llvm13IRBuilderBase9getInt1TyEv'/>
+<fun r='_ZN4llvm13IRBuilderBase9getInt8TyEv'/>
+<fun r='_ZN4llvm13IRBuilderBase10getInt16TyEv'/>
+<fun r='_ZN4llvm13IRBuilderBase10getInt32TyEv'/>
+<fun r='_ZN4llvm13IRBuilderBase10getInt64TyEv'/>
+<fun r='_ZN4llvm13IRBuilderBase11getInt128TyEv'/>
+<fun r='_ZN4llvm13IRBuilderBase9getIntNTyEj'/>
+<fun r='_ZN4llvm13IRBuilderBase9getHalfTyEv'/>
+<fun r='_ZN4llvm13IRBuilderBase10getFloatTyEv'/>
+<fun r='_ZN4llvm13IRBuilderBase11getDoubleTyEv'/>
+<fun r='_ZN4llvm13IRBuilderBase9getVoidTyEv'/>
+<fun r='_ZN4llvm13IRBuilderBase12getInt8PtrTyEj'/>
+<fun r='_ZN4llvm13IRBuilderBase11getIntPtrTyERKNS_10DataLayoutEj'/>
+<fun r='_ZN4llvm13IRBuilderBase12CreateMemSetEPNS_5ValueES2_mjbPNS_6MDNodeES4_S4_'/>
+<fun r='_ZN4llvm13IRBuilderBase12CreateMemSetEPNS_5ValueES2_S2_jbPNS_6MDNodeES4_S4_'/>
+<fun r='_ZN4llvm13IRBuilderBase12CreateMemCpyEPNS_5ValueES2_mjbPNS_6MDNodeES4_S4_S4_'/>
+<fun r='_ZN4llvm13IRBuilderBase12CreateMemCpyEPNS_5ValueES2_S2_jbPNS_6MDNodeES4_S4_S4_'/>
+<fun r='_ZN4llvm13IRBuilderBase34CreateElementUnorderedAtomicMemCpyEPNS_5ValueEjS2_jmjPNS_6MDNodeES4_S4_S4_'/>
+<fun r='_ZN4llvm13IRBuilderBase34CreateElementUnorderedAtomicMemCpyEPNS_5ValueEjS2_jS2_jPNS_6MDNodeES4_S4_S4_'/>
+<fun r='_ZN4llvm13IRBuilderBase13CreateMemMoveEPNS_5ValueES2_mjbPNS_6MDNodeES4_S4_'/>
+<fun r='_ZN4llvm13IRBuilderBase13CreateMemMoveEPNS_5ValueES2_S2_jbPNS_6MDNodeES4_S4_'/>
+<fun r='_ZN4llvm13IRBuilderBase16CreateFAddReduceEPNS_5ValueES2_'/>
+<fun r='_ZN4llvm13IRBuilderBase16CreateFMulReduceEPNS_5ValueES2_'/>
+<fun r='_ZN4llvm13IRBuilderBase15CreateAddReduceEPNS_5ValueE'/>
+<fun r='_ZN4llvm13IRBuilderBase15CreateMulReduceEPNS_5ValueE'/>
+<fun r='_ZN4llvm13IRBuilderBase15CreateAndReduceEPNS_5ValueE'/>
+<fun r='_ZN4llvm13IRBuilderBase14CreateOrReduceEPNS_5ValueE'/>
+<fun r='_ZN4llvm13IRBuilderBase15CreateXorReduceEPNS_5ValueE'/>
+<fun r='_ZN4llvm13IRBuilderBase18CreateIntMaxReduceEPNS_5ValueEb'/>
+<fun r='_ZN4llvm13IRBuilderBase18CreateIntMinReduceEPNS_5ValueEb'/>
+<fun r='_ZN4llvm13IRBuilderBase17CreateFPMaxReduceEPNS_5ValueEb'/>
+<fun r='_ZN4llvm13IRBuilderBase17CreateFPMinReduceEPNS_5ValueEb'/>
+<fun r='_ZN4llvm13IRBuilderBase19CreateLifetimeStartEPNS_5ValueEPNS_11ConstantIntE'/>
+<fun r='_ZN4llvm13IRBuilderBase17CreateLifetimeEndEPNS_5ValueEPNS_11ConstantIntE'/>
+<fun r='_ZN4llvm13IRBuilderBase20CreateInvariantStartEPNS_5ValueEPNS_11ConstantIntE'/>
+<fun r='_ZN4llvm13IRBuilderBase16CreateMaskedLoadEPNS_5ValueEjS2_S2_RKNS_5TwineE'/>
+<fun r='_ZN4llvm13IRBuilderBase17CreateMaskedStoreEPNS_5ValueES2_jS2_'/>
+<fun r='_ZN4llvm13IRBuilderBase18CreateMaskedGatherEPNS_5ValueEjS2_S2_RKNS_5TwineE'/>
+<fun r='_ZN4llvm13IRBuilderBase19CreateMaskedScatterEPNS_5ValueES2_jS2_'/>
+<fun r='_ZN4llvm13IRBuilderBase16CreateAssumptionEPNS_5ValueE'/>
+<fun r='_ZN4llvm13IRBuilderBase22CreateGCStatepointCallEmjPNS_5ValueENS_8ArrayRefIS2_EES4_S4_RKNS_5TwineE'/>
+<fun r='_ZN4llvm13IRBuilderBase22CreateGCStatepointCallEmjPNS_5ValueEjNS_8ArrayRefINS_3UseEEES5_S5_NS3_IS2_EERKNS_5TwineE'/>
+<fun r='_ZN4llvm13IRBuilderBase22CreateGCStatepointCallEmjPNS_5ValueENS_8ArrayRefINS_3UseEEENS3_IS2_EES6_RKNS_5TwineE'/>
+<fun r='_ZN4llvm13IRBuilderBase24CreateGCStatepointInvokeEmjPNS_5ValueEPNS_10BasicBlockES4_NS_8ArrayRefIS2_EES6_S6_RKNS_5TwineE'/>
+<fun r='_ZN4llvm13IRBuilderBase24CreateGCStatepointInvokeEmjPNS_5ValueEPNS_10BasicBlockES4_jNS_8ArrayRefINS_3UseEEES7_S7_NS5_IS2_EERKNS_5TwineE'/>
+<fun r='_ZN4llvm13IRBuilderBase24CreateGCStatepointInvokeEmjPNS_5ValueEPNS_10BasicBlockES4_NS_8ArrayRefINS_3UseEEENS5_IS2_EES8_RKNS_5TwineE'/>
+<fun r='_ZN4llvm13IRBuilderBase14CreateGCResultEPNS_11InstructionEPNS_4TypeERKNS_5TwineE'/>
+<fun r='_ZN4llvm13IRBuilderBase16CreateGCRelocateEPNS_11InstructionEiiPNS_4TypeERKNS_5TwineE'/>
+<fun r='_ZN4llvm13IRBuilderBase21CreateBinaryIntrinsicENS_9Intrinsic2IDEPNS_5ValueES4_RKNS_5TwineE'/>
+<fun r='_ZN4llvm13IRBuilderBase12CreateMinNumEPNS_5ValueES2_RKNS_5TwineE'/>
+<fun r='_ZN4llvm13IRBuilderBase12CreateMaxNumEPNS_5ValueES2_RKNS_5TwineE'/>
+<fun r='_ZN4llvm13IRBuilderBase21CreateMaskedIntrinsicENS_9Intrinsic2IDENS_8ArrayRefIPNS_5ValueEEENS3_IPNS_4TypeEEERKNS_5TwineE'/>
+<fun r='_ZN4llvm13IRBuilderBase21getCastedInt8PtrValueEPNS_5ValueE'/>

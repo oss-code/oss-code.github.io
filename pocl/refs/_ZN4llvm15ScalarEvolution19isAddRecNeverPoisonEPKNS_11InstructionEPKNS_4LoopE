@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1717' type='bool llvm::ScalarEvolution::isAddRecNeverPoison(const llvm::Instruction * I, const llvm::Loop * L)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1713'>/// This is like \c isSCEVExprNeverPoison but it specifically works for
+  /// instructions that will get mapped to SCEV add recurrences.  Return true
+  /// if \p I will never generate poison under the assumption that \p I is an
+  /// add recurrence on the loop \p L.</doc>

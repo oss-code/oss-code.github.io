@@ -1,0 +1,71 @@
+<def f='include/llvm-6.0/llvm/Target/TargetMachine.h' l='59' ll='276'/>
+<ovr f='include/llvm-6.0/llvm/Target/TargetMachine.h' l='281' c='llvm::LLVMTargetMachine'/>
+<size>928</size>
+<doc f='include/llvm-6.0/llvm/Target/TargetMachine.h' l='53'>//===----------------------------------------------------------------------===//
+///
+/// Primary interface to the complete machine description for the target
+/// machine.  All target-specific information should be accessible through this
+/// interface.
+///</doc>
+<fun r='_ZN4llvm13TargetMachineC1ERKNS_6TargetENS_9StringRefERKNS_6TripleES4_S4_RKNS_13TargetOptionsE'/>
+<mbr r='llvm::TargetMachine::TheTarget' o='64' t='const llvm::Target &amp;'/>
+<mbr r='llvm::TargetMachine::DL' o='128' t='const llvm::DataLayout'/>
+<mbr r='llvm::TargetMachine::TargetTriple' o='3712' t='llvm::Triple'/>
+<mbr r='llvm::TargetMachine::TargetCPU' o='4160' t='std::string'/>
+<mbr r='llvm::TargetMachine::TargetFS' o='4416' t='std::string'/>
+<mbr r='llvm::TargetMachine::RM' o='4672' t='Reloc::Model'/>
+<mbr r='llvm::TargetMachine::CMModel' o='4704' t='CodeModel::Model'/>
+<mbr r='llvm::TargetMachine::OptLevel' o='4736' t='CodeGenOpt::Level'/>
+<mbr r='llvm::TargetMachine::AsmInfo' o='4800' t='const llvm::MCAsmInfo *'/>
+<mbr r='llvm::TargetMachine::MRI' o='4864' t='const llvm::MCRegisterInfo *'/>
+<mbr r='llvm::TargetMachine::MII' o='4928' t='const llvm::MCInstrInfo *'/>
+<mbr r='llvm::TargetMachine::STI' o='4992' t='const llvm::MCSubtargetInfo *'/>
+<mbr r='llvm::TargetMachine::RequireStructuredCFG' o='5056' t='unsigned int'/>
+<mbr r='llvm::TargetMachine::O0WantsFastISel' o='5057' t='unsigned int'/>
+<mbr r='llvm::TargetMachine::DefaultOptions' o='5120' t='const llvm::TargetOptions'/>
+<mbr r='llvm::TargetMachine::Options' o='6272' t='llvm::TargetOptions'/>
+<fun r='_ZN4llvm13TargetMachineC1ERKS0_'/>
+<fun r='_ZN4llvm13TargetMachineaSERKS0_'/>
+<fun r='_ZN4llvm13TargetMachineD1Ev'/>
+<fun r='_ZNK4llvm13TargetMachine9getTargetEv'/>
+<fun r='_ZNK4llvm13TargetMachine15getTargetTripleEv'/>
+<fun r='_ZNK4llvm13TargetMachine12getTargetCPUEv'/>
+<fun r='_ZNK4llvm13TargetMachine22getTargetFeatureStringEv'/>
+<fun r='_ZNK4llvm13TargetMachine16getSubtargetImplERKNS_8FunctionE'/>
+<fun r='_ZNK4llvm13TargetMachine18getObjFileLoweringEv'/>
+<fun r='_ZNK4llvm13TargetMachine12getSubtargetERKNS_8FunctionE'/>
+<fun r='_ZNK4llvm13TargetMachine16createDataLayoutEv'/>
+<fun r='_ZNK4llvm13TargetMachine22isCompatibleDataLayoutERKNS_10DataLayoutE'/>
+<fun r='_ZNK4llvm13TargetMachine14getPointerSizeEv'/>
+<fun r='_ZNK4llvm13TargetMachine18resetTargetOptionsERKNS_8FunctionE'/>
+<fun r='_ZNK4llvm13TargetMachine12getMCAsmInfoEv'/>
+<fun r='_ZNK4llvm13TargetMachine17getMCRegisterInfoEv'/>
+<fun r='_ZNK4llvm13TargetMachine14getMCInstrInfoEv'/>
+<fun r='_ZNK4llvm13TargetMachine18getMCSubtargetInfoEv'/>
+<fun r='_ZNK4llvm13TargetMachine16getIntrinsicInfoEv'/>
+<fun r='_ZNK4llvm13TargetMachine21requiresStructuredCFGEv'/>
+<fun r='_ZN4llvm13TargetMachine24setRequiresStructuredCFGEb'/>
+<fun r='_ZNK4llvm13TargetMachine18getRelocationModelEv'/>
+<fun r='_ZNK4llvm13TargetMachine12getCodeModelEv'/>
+<fun r='_ZNK4llvm13TargetMachine21isPositionIndependentEv'/>
+<fun r='_ZNK4llvm13TargetMachine20shouldAssumeDSOLocalERKNS_6ModuleEPKNS_11GlobalValueE'/>
+<fun r='_ZNK4llvm13TargetMachine11getTLSModelEPKNS_11GlobalValueE'/>
+<fun r='_ZNK4llvm13TargetMachine11getOptLevelEv'/>
+<fun r='_ZN4llvm13TargetMachine11setOptLevelENS_10CodeGenOpt5LevelE'/>
+<fun r='_ZN4llvm13TargetMachine11setFastISelEb'/>
+<fun r='_ZN4llvm13TargetMachine18getO0WantsFastISelEv'/>
+<fun r='_ZN4llvm13TargetMachine18setO0WantsFastISelEb'/>
+<fun r='_ZNK4llvm13TargetMachine22shouldPrintMachineCodeEv'/>
+<fun r='_ZNK4llvm13TargetMachine21getUniqueSectionNamesEv'/>
+<fun r='_ZNK4llvm13TargetMachine15getDataSectionsEv'/>
+<fun r='_ZNK4llvm13TargetMachine19getFunctionSectionsEv'/>
+<fun r='_ZN4llvm13TargetMachine19getTargetIRAnalysisEv'/>
+<fun r='_ZN4llvm13TargetMachine22getTargetTransformInfoERKNS_8FunctionE'/>
+<fun r='_ZN4llvm13TargetMachine17adjustPassManagerERNS_18PassManagerBuilderE'/>
+<fun r='_ZN4llvm13TargetMachine19addPassesToEmitFileERNS_6legacy15PassManagerBaseERNS_17raw_pwrite_streamENS0_15CodeGenFileTypeEbPNS_17MachineModuleInfoE'/>
+<fun r='_ZN4llvm13TargetMachine17addPassesToEmitMCERNS_6legacy15PassManagerBaseERPNS_9MCContextERNS_17raw_pwrite_streamEb'/>
+<fun r='_ZNK4llvm13TargetMachine31targetSchedulesPostRASchedulingEv'/>
+<fun r='_ZNK4llvm13TargetMachine17getNameWithPrefixERNS_15SmallVectorImplIcEEPKNS_11GlobalValueERNS_7ManglerEb'/>
+<fun r='_ZNK4llvm13TargetMachine9getSymbolEPKNS_11GlobalValueE'/>
+<fun r='_ZNK4llvm13TargetMachine18usesPhysRegsForPEIEv'/>
+<fun r='_ZNK4llvm13TargetMachine7useIPRAEv'/>

@@ -1,0 +1,15 @@
+<inh f='include/llvm-6.0/llvm/Support/Error.h' l='331' c='llvm::ErrorInfo'/>
+<def f='include/llvm-6.0/llvm/Support/Error.h' l='1034' ll='1050'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/Support/Error.h' l='1029'>/// This class wraps a std::error_code in a Error.
+///
+/// This is useful if you&apos;re writing an interface that returns a Error
+/// (or Expected) and you want to call code that still returns
+/// std::error_codes.</doc>
+<fun r='_ZN4llvm7ECError12setErrorCodeESt10error_code'/>
+<fun r='_ZNK4llvm7ECError18convertToErrorCodeEv'/>
+<fun r='_ZNK4llvm7ECError3logERNS_11raw_ostreamE'/>
+<smbr r='llvm::ECError::ID' t='char'/>
+<fun r='_ZN4llvm7ECErrorC1Ev'/>
+<fun r='_ZN4llvm7ECErrorC1ESt10error_code'/>
+<mbr r='llvm::ECError::EC' o='64' t='std::error_code'/>

@@ -1,0 +1,13 @@
+<def f='include/llvm-6.0/llvm/IR/PredIteratorCache.h' l='28' ll='77'/>
+<size>192</size>
+<doc f='include/llvm-6.0/llvm/IR/PredIteratorCache.h' l='25'>/// PredIteratorCache - This class is an extremely trivial cache for
+/// predecessor iterator queries.  This is useful for code that repeatedly
+/// wants the predecessor list for the same blocks.</doc>
+<mbr r='llvm::PredIteratorCache::BlockToPredsMap' o='0' t='DenseMap&lt;llvm::BasicBlock *, llvm::BasicBlock **&gt;'/>
+<mbr r='llvm::PredIteratorCache::BlockToPredCountMap' o='192' t='DenseMap&lt;llvm::BasicBlock *, unsigned int&gt;'/>
+<mbr r='llvm::PredIteratorCache::Memory' o='384' t='BumpPtrAllocator'/>
+<fun r='_ZN4llvm17PredIteratorCache8GetPredsEPNS_10BasicBlockE'/>
+<fun r='_ZNK4llvm17PredIteratorCache11GetNumPredsEPNS_10BasicBlockE'/>
+<fun r='_ZNK4llvm17PredIteratorCache4sizeEPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm17PredIteratorCache3getEPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm17PredIteratorCache5clearEv'/>

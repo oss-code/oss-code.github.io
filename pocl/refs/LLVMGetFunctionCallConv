@@ -1,0 +1,8 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='1961' type='unsigned int LLVMGetFunctionCallConv(LLVMValueRef Fn)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='1954'>/**
+ * Obtain the calling function of a function.
+ *
+ * The returned value corresponds to the LLVMCallConv enumeration.
+ *
+ * @see llvm::Function::getCallingConv()
+ */</doc>

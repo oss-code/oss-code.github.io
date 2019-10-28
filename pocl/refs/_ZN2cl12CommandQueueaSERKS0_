@@ -1,0 +1,5 @@
+<use f='pocl/include/CL/cl2.hpp' l='6924' u='c' c='_ZN2cl12CommandQueue19makeDefaultProvidedERKS0_'/>
+<def f='pocl/include/CL/cl2.hpp' l='7355' ll='7359' type='cl::CommandQueue &amp; cl::CommandQueue::operator=(const cl::CommandQueue &amp; queue)'/>
+<doc f='pocl/include/CL/cl2.hpp' l='7352'>/*! \brief Copy assignment to forward copy to the superclass correctly.
+     * Required for MSVC.
+     */</doc>

@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1631' type='llvm::Constant * llvm::ScalarEvolution::getConstantEvolutionLoopExitValue(llvm::PHINode * PN, const llvm::APInt &amp; BEs, const llvm::Loop * L)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1628'>/// If we know that the specified Phi is in the header of its containing
+  /// loop, we know the loop executes a constant number of times, and the PHI
+  /// node is just a recurrence involving constants, fold it.</doc>

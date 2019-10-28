@@ -1,0 +1,9 @@
+<def f='include/c++/7/bits/stl_vector.h' l='1451' ll='1473'/>
+<doc f='include/c++/7/bits/stl_vector.h' l='1449'>// A value_type object constructed with _Alloc_traits::construct()
+      // and destroyed with _Alloc_traits::destroy().</doc>
+<fun r='_ZNSt6vector16_Temporary_valueC1EPSt6vectorIT_T0_EDpOT_'/>
+<fun r='_ZNSt6vector16_Temporary_valueD1Ev'/>
+<fun r='_ZNSt6vector16_Temporary_value6_M_valEv'/>
+<fun r='_ZNSt6vector16_Temporary_value6_M_ptrEv'/>
+<mbr r='std::vector::_Temporary_value::_M_this' t='vector&lt;_Tp, _Alloc&gt; *'/>
+<mbr r='std::vector::_Temporary_value::__buf' t='typename aligned_storage&lt;sizeof(_Tp), alignof(_Tp)&gt;::type'/>

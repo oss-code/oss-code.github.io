@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Analysis/TargetLibraryInfo.h' l='152' ll='154' type='bool llvm::TargetLibraryInfoImpl::isFunctionVectorizable(llvm::StringRef F, unsigned int VF) const'/>
+<use f='include/llvm-6.0/llvm/Analysis/TargetLibraryInfo.h' l='251' u='c' c='_ZNK4llvm17TargetLibraryInfo22isFunctionVectorizableENS_9StringRefEj'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetLibraryInfo.h' l='150'>/// Return true if the function F has a vector equivalent with vectorization
+  /// factor VF.</doc>

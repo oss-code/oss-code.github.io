@@ -1,0 +1,4 @@
+<dec f='pocl/lib/CL/pocl_intfn.h' l='60' macro='1' type='void * POclEnqueueMapImage(cl_command_queue , cl_mem , cl_bool , cl_map_flags , const size_t * , const size_t * , size_t * , size_t * , cl_uint , const cl_event * , cl_event * , cl_int * )'/>
+<def f='pocl/lib/CL/clEnqueueMapImage.c' l='32' macro='1' type='void * POclEnqueueMapImage(cl_command_queue command_queue, cl_mem image, cl_bool blocking_map, cl_map_flags map_flags, const size_t * origin, const size_t * region, size_t * image_row_pitch, size_t * image_slice_pitch, cl_uint num_events_in_wait_list, const cl_event * event_wait_list, cl_event * event, cl_int * errcode_ret)'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='97' macro='1' u='a'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='97' macro='1' u='a'/>

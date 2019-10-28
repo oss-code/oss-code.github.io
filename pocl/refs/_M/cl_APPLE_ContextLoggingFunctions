@@ -1,0 +1,9 @@
+<dec f='pocl/include/CL/cl_ext.h' l='82'/>
+<doc f='pocl/include/CL/cl_ext.h' l='74'>/* Context Logging Functions
+ *
+ * The next three convenience functions are intended to be used as the pfn_notify parameter to clCreateContext().
+ * Please check for the &quot;cl_APPLE_ContextLoggingFunctions&quot; extension using clGetDeviceInfo(CL_DEVICE_EXTENSIONS)
+ * before using.
+ *
+ * clLogMessagesToSystemLog forwards on all log messages to the Apple System Logger
+ */</doc>

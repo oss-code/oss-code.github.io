@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Analysis/LoopPass.h' l='88' type='void llvm::LoopPass::deleteAnalysisLoop(llvm::Loop * L)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopPass.h' l='85'>/// Delete analysis info associated with Loop L.
+  /// Called to notify a Pass that a loop has been deleted and any
+  /// associated analysis values can be deleted.</doc>

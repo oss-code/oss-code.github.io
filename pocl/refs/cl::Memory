@@ -1,0 +1,23 @@
+<inh f='pocl/include/CL/cl2.hpp' l='1713' c='cl::detail::Wrapper'/>
+<def f='pocl/include/CL/cl2.hpp' l='3287' ll='3397'/>
+<ovr f='pocl/include/CL/cl2.hpp' l='3777' c='cl::Buffer'/>
+<ovr f='pocl/include/CL/cl2.hpp' l='4289' c='cl::Image'/>
+<size>8</size>
+<doc f='pocl/include/CL/cl2.hpp' l='3279'>/*! \brief Class interface for cl_mem.
+ *
+ *  \note Copies of these objects are shallow, meaning that the copy will refer
+ *        to the same underlying cl_mem as the original.  For details, see
+ *        clRetainMemObject() and clReleaseMemObject().
+ *
+ *  \see cl_mem
+ */</doc>
+<fun r='_ZN2cl6MemoryC1Ev'/>
+<fun r='_ZN2cl6MemoryC1ERKP7_cl_memb'/>
+<fun r='_ZN2cl6MemoryaSERKP7_cl_mem'/>
+<fun r='_ZN2cl6MemoryC1ERKS0_'/>
+<fun r='_ZN2cl6MemoryaSERKS0_'/>
+<fun r='_ZN2cl6MemoryC1EOS0_'/>
+<fun r='_ZN2cl6MemoryaSEOS0_'/>
+<fun r='_ZNK2cl6Memory7getInfoEjPT_'/>
+<fun r='_ZNK2cl6Memory7getInfoEPi'/>
+<fun r='_ZN2cl6Memory21setDestructorCallbackEPFvP7_cl_memPvES3_'/>

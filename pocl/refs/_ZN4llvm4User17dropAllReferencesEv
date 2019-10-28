@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/IR/User.h' l='279' ll='282' type='void llvm::User::dropAllReferences()'/>
+<doc f='include/llvm-6.0/llvm/IR/User.h' l='271'>/// \brief Drop all references to operands.
+  ///
+  /// This function is in charge of &quot;letting go&quot; of all objects that this User
+  /// refers to.  This allows one to &apos;delete&apos; a whole class at a time, even
+  /// though there may be circular references...  First all references are
+  /// dropped, and all use counts go to zero.  Then everything is deleted for
+  /// real.  Note that no operations are valid on an object that has &quot;dropped
+  /// all references&quot;, except operator delete.</doc>

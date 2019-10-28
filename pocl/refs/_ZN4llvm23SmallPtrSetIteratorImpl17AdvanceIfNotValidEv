@@ -1,0 +1,6 @@
+<use f='include/llvm-6.0/llvm/ADT/SmallPtrSet.h' l='234' u='c' c='_ZN4llvm23SmallPtrSetIteratorImplC1EPKPKvS4_'/>
+<def f='include/llvm-6.0/llvm/ADT/SmallPtrSet.h' l='248' ll='254' type='void llvm::SmallPtrSetIteratorImpl::AdvanceIfNotValid()'/>
+<use f='include/llvm-6.0/llvm/ADT/SmallPtrSet.h' l='302' u='c' c='_ZN4llvm19SmallPtrSetIteratorppEv'/>
+<doc f='include/llvm-6.0/llvm/ADT/SmallPtrSet.h' l='245'>/// AdvanceIfNotValid - If the current bucket isn&apos;t valid, advance to a bucket
+  /// that is.   This is guaranteed to stop because the end() bucket is marked
+  /// valid.</doc>

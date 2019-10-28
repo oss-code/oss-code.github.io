@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/ADT/SmallVector.h' l='143' type='pointer llvm::SmallVectorTemplateCommon::data()'/>
+<use f='include/llvm-6.0/llvm/ADT/Twine.h' l='457' u='c' c='_ZNK4llvm5Twine11toStringRefERNS_15SmallVectorImplIcEE'/>
+<use f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='514' u='c' c='_ZN4llvm19raw_svector_ostream3strEv'/>
+<doc f='include/llvm-6.0/llvm/ADT/SmallVector.h' l='142'>/// Return a pointer to the vector&apos;s buffer, even if empty().</doc>

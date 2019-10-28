@@ -1,0 +1,9 @@
+<dec f='include/hwloc.h' l='705' type='int hwloc_topology_ignore_type_keep_structure(hwloc_topology_t topology, hwloc_obj_type_t type)'/>
+<doc f='include/hwloc.h' l='697'>/** \brief Ignore an object type if it does not bring any structure.
+ *
+ * Ignore all objects from the given type as long as they do not bring any structure:
+ * Each ignored object should have a single children or be the only child of its parent.
+ * The bottom-level type ::HWLOC_OBJ_PU may not be ignored.
+ * I/O objects may not be ignored, topology flags should be used to configure
+ * their discovery instead.
+ */</doc>

@@ -1,0 +1,34 @@
+<inh f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='556' c='llvm::DIType'/>
+<def f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='712' ll='827'/>
+<size>64</size>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='706'>/// Derived types.
+///
+/// This includes qualified types, pointers, references, friends, typedefs, and
+/// class members.
+///
+/// TODO: Split out members (inheritance, fields, methods, etc.).</doc>
+<mbr r='llvm::DIDerivedType::DWARFAddressSpace' o='416' t='Optional&lt;unsigned int&gt;'/>
+<fun r='_ZN4llvm13DIDerivedTypeC1ERNS_11LLVMContextENS_8Metadata11StorageTypeEjjmjmNS_8OptionalIjEENS_6DINode7DIFlagsENS_8ArrayRefIPS3_EE'/>
+<fun r='_ZN4llvm13DIDerivedTypeD1Ev'/>
+<fun r='_ZN4llvm13DIDerivedType7getImplERNS_11LLVMContextEjNS_9StringRefEPNS_6DIFileEjNS_14TypedDINodeRefINS_7DIScopeEEENS6_INS_6DITypeEEEmjmNS_8OptionalIjEEN8702270'/>
+<fun r='_ZN4llvm13DIDerivedType7getImplERNS_11LLVMContextEjPNS_8MDStringEPNS_8MetadataEjS6_S6_mjmNS_8OptionalIjEENS_6DINode7DIFlagsES6_NS5_11StorageTypeEb'/>
+<fun r='_ZNK4llvm13DIDerivedType9cloneImplEv'/>
+<fun r='_ZN4llvm13DIDerivedType3getERNS_11LLVMContextEjPNS_8MDStringEPNS_8MetadataEjS6_S6_mjmNS_8OptionalIjEENS_6DINode7DIFlagsES6_'/>
+<fun r='_ZN4llvm13DIDerivedType11getIfExistsERNS_11LLVMContextEjPNS_8MDStringEPNS_8MetadataEjS6_S6_mjmNS_8OptionalIjEENS_6DINode7DIFlagsES6_'/>
+<fun r='_ZN4llvm13DIDerivedType11getDistinctERNS_11LLVMContextEjPNS_8MDStringEPNS_8MetadataEjS6_S6_mjmNS_8OptionalIjEENS_6DINode7DIFlagsES6_'/>
+<fun r='_ZN4llvm13DIDerivedType12getTemporaryERNS_11LLVMContextEjPNS_8MDStringEPNS_8MetadataEjS6_S6_mjmNS_8OptionalIjEENS_6DINode7DIFlagsES6_'/>
+<fun r='_ZN4llvm13DIDerivedType3getERNS_11LLVMContextEjNS_9StringRefEPNS_6DIFileEjNS_14TypedDINodeRefINS_7DIScopeEEENS6_INS_6DITypeEEEmjmNS_8OptionalIjEENS_6D10324467'/>
+<fun r='_ZN4llvm13DIDerivedType11getIfExistsERNS_11LLVMContextEjNS_9StringRefEPNS_6DIFileEjNS_14TypedDINodeRefINS_7DIScopeEEENS6_INS_6DITypeEEEmjmNS_8Optional15201726'/>
+<fun r='_ZN4llvm13DIDerivedType11getDistinctERNS_11LLVMContextEjNS_9StringRefEPNS_6DIFileEjNS_14TypedDINodeRefINS_7DIScopeEEENS6_INS_6DITypeEEEmjmNS_8Optional5791725'/>
+<fun r='_ZN4llvm13DIDerivedType12getTemporaryERNS_11LLVMContextEjNS_9StringRefEPNS_6DIFileEjNS_14TypedDINodeRefINS_7DIScopeEEENS6_INS_6DITypeEEEmjmNS_8Optiona10542366'/>
+<fun r='_ZNK4llvm13DIDerivedType5cloneEv'/>
+<fun r='_ZNK4llvm13DIDerivedType11getBaseTypeEv'/>
+<fun r='_ZNK4llvm13DIDerivedType14getRawBaseTypeEv'/>
+<fun r='_ZNK4llvm13DIDerivedType20getDWARFAddressSpaceEv'/>
+<fun r='_ZNK4llvm13DIDerivedType12getExtraDataEv'/>
+<fun r='_ZNK4llvm13DIDerivedType15getRawExtraDataEv'/>
+<fun r='_ZNK4llvm13DIDerivedType12getClassTypeEv'/>
+<fun r='_ZNK4llvm13DIDerivedType15getObjCPropertyEv'/>
+<fun r='_ZNK4llvm13DIDerivedType22getStorageOffsetInBitsEv'/>
+<fun r='_ZNK4llvm13DIDerivedType11getConstantEv'/>
+<fun r='_ZN4llvm13DIDerivedType7classofEPKNS_8MetadataE'/>

@@ -1,0 +1,15 @@
+<def f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='82' ll='107'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='78'>/// Option class for critical edge splitting.
+///
+/// This provides a builder interface for overriding the default options used
+/// during critical edge splitting.</doc>
+<mbr r='llvm::CriticalEdgeSplittingOptions::DT' o='0' t='llvm::DominatorTree *'/>
+<mbr r='llvm::CriticalEdgeSplittingOptions::LI' o='64' t='llvm::LoopInfo *'/>
+<mbr r='llvm::CriticalEdgeSplittingOptions::MergeIdenticalEdges' o='128' t='bool'/>
+<mbr r='llvm::CriticalEdgeSplittingOptions::DontDeleteUselessPHIs' o='136' t='bool'/>
+<mbr r='llvm::CriticalEdgeSplittingOptions::PreserveLCSSA' o='144' t='bool'/>
+<fun r='_ZN4llvm28CriticalEdgeSplittingOptionsC1EPNS_13DominatorTreeEPNS_8LoopInfoE'/>
+<fun r='_ZN4llvm28CriticalEdgeSplittingOptions22setMergeIdenticalEdgesEv'/>
+<fun r='_ZN4llvm28CriticalEdgeSplittingOptions24setDontDeleteUselessPHIsEv'/>
+<fun r='_ZN4llvm28CriticalEdgeSplittingOptions16setPreserveLCSSAEv'/>

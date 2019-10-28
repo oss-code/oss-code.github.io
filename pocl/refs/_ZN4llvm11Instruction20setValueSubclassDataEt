@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/Instruction.h' l='649' ll='651' type='void llvm::Instruction::setValueSubclassData(unsigned short D)'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.h' l='658' u='c' c='_ZN4llvm11Instruction23setHasMetadataHashEntryEb'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.h' l='671' u='c' c='_ZN4llvm11Instruction26setInstructionSubclassDataEt'/>
+<doc f='include/llvm-6.0/llvm/IR/Instruction.h' l='647'>// Shadow Value::setValueSubclassData with a private forwarding method so that
+  // subclasses cannot accidentally use it.</doc>

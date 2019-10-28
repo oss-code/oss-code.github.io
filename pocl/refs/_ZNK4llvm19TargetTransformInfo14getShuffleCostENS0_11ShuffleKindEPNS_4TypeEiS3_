@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='718' type='int llvm::TargetTransformInfo::getShuffleCost(llvm::TargetTransformInfo::ShuffleKind Kind, llvm::Type * Tp, int Index = 0, llvm::Type * SubTp = nullptr) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='715'>/// \return The cost of a shuffle instruction of kind Kind and of type Tp.
+  /// The index and subtype parameters are used by the subvector insertion and
+  /// extraction shuffle kinds.</doc>

@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Support/FileSystem.h' l='833' type='void llvm::sys::fs::mapped_file_region::mapped_file_region(int fd, llvm::sys::fs::mapped_file_region::mapmode mode, size_t length, uint64_t offset, std::error_code &amp; ec)'/>
+<doc f='include/llvm-6.0/llvm/Support/FileSystem.h' l='830'>/// \param fd An open file descriptor to map. mapped_file_region takes
+  ///   ownership if closefd is true. It must have been opended in the correct
+  ///   mode.</doc>

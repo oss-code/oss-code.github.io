@@ -1,0 +1,3 @@
+<dec f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='596' type='llvm::InvokeInst * llvm::IRBuilderBase::CreateGCStatepointInvoke(uint64_t ID, uint32_t NumPatchBytes, llvm::Value * ActualInvokee, llvm::BasicBlock * NormalDest, llvm::BasicBlock * UnwindDest, uint32_t Flags, ArrayRef&lt;llvm::Use&gt; InvokeArgs, ArrayRef&lt;llvm::Use&gt; TransitionArgs, ArrayRef&lt;llvm::Use&gt; DeoptArgs, ArrayRef&lt;llvm::Value *&gt; GCArgs, const llvm::Twine &amp; Name = &quot;&quot;)'/>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='594'>/// brief Create an invoke to the experimental.gc.statepoint intrinsic to
+  /// start a new statepoint sequence.</doc>

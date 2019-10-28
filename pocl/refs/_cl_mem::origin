@@ -1,0 +1,36 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='981' type='size_t'/>
+<offset>576</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='981'>/* for sub-buffers */</doc>
+<use f='pocl/lib/CL/clCreateBuffer.c' l='138' u='w' c='POclCreateBuffer'/>
+<use f='pocl/lib/CL/clCreateImage.c' l='184' u='w' c='POclCreateImage'/>
+<use f='pocl/lib/CL/clCreateSubBuffer.c' l='105' u='w' c='POclCreateSubBuffer'/>
+<use f='pocl/lib/CL/clEnqueueCopyBuffer.c' l='58' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueCopyBuffer.c' l='60' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueCopyBuffer.c' l='62' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueCopyBuffer.c' l='64' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueCopyBufferRect.c' l='64' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueCopyBufferRect.c' l='67' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueCopyBufferToImage.c' l='39' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueCopyBufferToImage.c' l='56' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueCopyImageToBuffer.c' l='38' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueCopyImageToBuffer.c' l='55' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueFillBuffer.c' l='78' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueFillBuffer.c' l='80' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueMapBuffer.c' l='55' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueMapBuffer.c' l='85' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='493' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='498' u='r' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/clEnqueueReadBuffer.c' l='49' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueReadBuffer.c' l='65' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueReadBufferRect.c' l='55' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueReadBufferRect.c' l='89' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueWriteBuffer.c' l='49' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueWriteBuffer.c' l='65' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueWriteBufferRect.c' l='53' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueWriteBufferRect.c' l='87' macro='1' u='r'/>
+<use f='pocl/lib/CL/clGetMemObjectInfo.c' l='48' u='r' c='POclGetMemObjectInfo'/>
+<use f='pocl/lib/CL/clGetMemObjectInfo.c' l='64' u='r' c='POclGetMemObjectInfo'/>
+<use f='pocl/lib/CL/pocl_img_buf_cpy.c' l='93' macro='1' u='r'/>
+<use f='pocl/lib/CL/pocl_img_buf_cpy.c' l='111' macro='1' u='r'/>
+<use f='pocl/lib/CL/pocl_util.c' l='744' u='r' c='pocl_buffers_overlap'/>
+<use f='pocl/lib/CL/pocl_util.c' l='745' u='r' c='pocl_buffers_overlap'/>

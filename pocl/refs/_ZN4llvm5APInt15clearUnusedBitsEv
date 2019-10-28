@@ -1,0 +1,16 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='141' ll='152' type='llvm::APInt &amp; llvm::APInt::clearUnusedBits()'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='276' u='c' c='_ZN4llvm5APIntC1Ejmb'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='733' u='c' c='_ZN4llvm5APIntaSERKS0_'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='766' u='c' c='_ZN4llvm5APIntaSEm'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='827' u='c' c='_ZN4llvm5APIntoREm'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='857' u='c' c='_ZN4llvm5APInteOEm'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='900' u='c' c='_ZN4llvm5APIntlSEj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='950' u='c' c='_ZN4llvm5APInt11ashrInPlaceEj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1376' u='c' c='_ZN4llvm5APInt10setAllBitsEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1459' u='c' c='_ZN4llvm5APInt11flipAllBitsEv'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='135'>/// \brief Clear unused high order bits
+  ///
+  /// This method is used internally to clear the top &quot;N&quot; bits in the high order
+  /// word that are not used by the APInt. This is needed after the most
+  /// significant word is assigned a value to ensure that those bits are
+  /// zero&apos;d out.</doc>

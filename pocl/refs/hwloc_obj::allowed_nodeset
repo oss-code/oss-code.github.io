@@ -1,0 +1,15 @@
+<dec f='include/hwloc.h' l='468' type='hwloc_nodeset_t'/>
+<use f='include/hwloc/helper.h' l='888' u='r' c='hwloc_topology_get_allowed_nodeset'/>
+<offset>1664</offset>
+<doc f='include/hwloc.h' l='468'>/**&lt; \brief The set of allowed NUMA memory nodes
+                                          *
+                                          * This includes the NUMA memory nodes contained in this object which are
+                                          * allowed for memory allocation, i.e. passing them to NUMA node-directed
+                                          * memory allocation should not return permission errors. This is usually
+                                          * restricted by administration rules.
+                                          *
+                                          * If there are no NUMA nodes in the machine, all the memory is close to this
+                                          * object, so \p allowed_nodeset is full.
+                                          *
+                                          * \note Its value must not be changed, hwloc_bitmap_dup() must be used instead.
+                                          */</doc>

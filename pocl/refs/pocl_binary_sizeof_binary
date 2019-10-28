@@ -1,0 +1,4 @@
+<dec f='pocl/lib/CL/pocl_binary.h' l='44' type='size_t pocl_binary_sizeof_binary(cl_program program, unsigned int device_i)'/>
+<doc f='pocl/lib/CL/pocl_binary.h' l='43'>/* returns the size of pocl_binaries[device_i] for allocation */</doc>
+<use f='pocl/lib/CL/clGetProgramInfo.c' l='46' u='c' c='get_binary_sizes'/>
+<def f='pocl/lib/CL/pocl_binary.c' l='681' ll='710' type='size_t pocl_binary_sizeof_binary(cl_program program, unsigned int device_i)'/>

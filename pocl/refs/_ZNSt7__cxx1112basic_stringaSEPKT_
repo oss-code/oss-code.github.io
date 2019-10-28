@@ -1,0 +1,12 @@
+<def f='include/c++/7/bits/basic_string.h' l='692' ll='694' type='basic_string&lt;_CharT, _Traits, _Alloc&gt; &amp; std::__cxx11::basic_string::operator=(const _CharT * __s)'/>
+<doc f='include/c++/7/bits/basic_string.h' l='688'>/**
+       *  @brief  Copy contents of @a s into this string.
+       *  @param  __s  Source null-terminated string.
+       */</doc>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='427' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='459' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='461' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='830' u='c' c='_ZL16getKernelLibraryP13_cl_device_id'/>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='302' u='c' c='_Z14InitializeLLVMv'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandlerChooser.cc' l='86' u='c' c='_ZN4pocl22WorkitemHandlerChooser13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandlerChooser.cc' l='94' u='c' c='_ZN4pocl22WorkitemHandlerChooser13runOnFunctionERN4llvm8FunctionE'/>

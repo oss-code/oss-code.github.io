@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>cl_egl.h source code [pocl/include/CL/cl_egl.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/include/CL/cl_egl.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>include</a>/<a href='./'>CL</a>/<a href='cl_egl.h.html'>cl_egl.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*******************************************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i> * Copyright (c) 2008-2019 The Khronos Group Inc.</i></td></tr>
+<tr><th id="3">3</th><td><i> *</i></td></tr>
+<tr><th id="4">4</th><td><i> * Permission is hereby granted, free of charge, to any person obtaining a</i></td></tr>
+<tr><th id="5">5</th><td><i> * copy of this software and/or associated documentation files (the</i></td></tr>
+<tr><th id="6">6</th><td><i> * "Materials"), to deal in the Materials without restriction, including</i></td></tr>
+<tr><th id="7">7</th><td><i> * without limitation the rights to use, copy, modify, merge, publish,</i></td></tr>
+<tr><th id="8">8</th><td><i> * distribute, sublicense, and/or sell copies of the Materials, and to</i></td></tr>
+<tr><th id="9">9</th><td><i> * permit persons to whom the Materials are furnished to do so, subject to</i></td></tr>
+<tr><th id="10">10</th><td><i> * the following conditions:</i></td></tr>
+<tr><th id="11">11</th><td><i> *</i></td></tr>
+<tr><th id="12">12</th><td><i> * The above copyright notice and this permission notice shall be included</i></td></tr>
+<tr><th id="13">13</th><td><i> * in all copies or substantial portions of the Materials.</i></td></tr>
+<tr><th id="14">14</th><td><i> *</i></td></tr>
+<tr><th id="15">15</th><td><i> * MODIFICATIONS TO THIS FILE MAY MEAN IT NO LONGER ACCURATELY REFLECTS</i></td></tr>
+<tr><th id="16">16</th><td><i> * KHRONOS STANDARDS. THE UNMODIFIED, NORMATIVE VERSIONS OF KHRONOS</i></td></tr>
+<tr><th id="17">17</th><td><i> * SPECIFICATIONS AND HEADER INFORMATION ARE LOCATED AT</i></td></tr>
+<tr><th id="18">18</th><td><i> *    <a href="https://www.khronos.org/registry/">https://www.khronos.org/registry/</a></i></td></tr>
+<tr><th id="19">19</th><td><i> *</i></td></tr>
+<tr><th id="20">20</th><td><i> * THE MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,</i></td></tr>
+<tr><th id="21">21</th><td><i> * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF</i></td></tr>
+<tr><th id="22">22</th><td><i> * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.</i></td></tr>
+<tr><th id="23">23</th><td><i> * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY</i></td></tr>
+<tr><th id="24">24</th><td><i> * CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,</i></td></tr>
+<tr><th id="25">25</th><td><i> * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE</i></td></tr>
+<tr><th id="26">26</th><td><i> * MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.</i></td></tr>
+<tr><th id="27">27</th><td><i> ******************************************************************************/</i></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><u>#<span data-ppcond="29">ifndef</span> <span class="macro" data-ref="_M/__OPENCL_CL_EGL_H">__OPENCL_CL_EGL_H</span></u></td></tr>
+<tr><th id="30">30</th><td><u>#define <dfn class="macro" id="_M/__OPENCL_CL_EGL_H" data-ref="_M/__OPENCL_CL_EGL_H">__OPENCL_CL_EGL_H</dfn></u></td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><u>#include <a href="cl.h.html">&lt;CL/cl.h&gt;</a></u></td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><u>#<span data-ppcond="34">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="35">35</th><td><b>extern</b> <q>"C"</q> {</td></tr>
+<tr><th id="36">36</th><td><u>#<span data-ppcond="34">endif</span></u></td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td><i>/* Command type for events created with clEnqueueAcquireEGLObjectsKHR */</i></td></tr>
+<tr><th id="40">40</th><td><u>#define <dfn class="macro" id="_M/CL_COMMAND_EGL_FENCE_SYNC_OBJECT_KHR" data-ref="_M/CL_COMMAND_EGL_FENCE_SYNC_OBJECT_KHR">CL_COMMAND_EGL_FENCE_SYNC_OBJECT_KHR</dfn>  0x202F</u></td></tr>
+<tr><th id="41">41</th><td><u>#define <dfn class="macro" id="_M/CL_COMMAND_ACQUIRE_EGL_OBJECTS_KHR" data-ref="_M/CL_COMMAND_ACQUIRE_EGL_OBJECTS_KHR">CL_COMMAND_ACQUIRE_EGL_OBJECTS_KHR</dfn>    0x202D</u></td></tr>
+<tr><th id="42">42</th><td><u>#define <dfn class="macro" id="_M/CL_COMMAND_RELEASE_EGL_OBJECTS_KHR" data-ref="_M/CL_COMMAND_RELEASE_EGL_OBJECTS_KHR">CL_COMMAND_RELEASE_EGL_OBJECTS_KHR</dfn>    0x202E</u></td></tr>
+<tr><th id="43">43</th><td></td></tr>
+<tr><th id="44">44</th><td><i>/* Error type for clCreateFromEGLImageKHR */</i></td></tr>
+<tr><th id="45">45</th><td><u>#define <dfn class="macro" id="_M/CL_INVALID_EGL_OBJECT_KHR" data-ref="_M/CL_INVALID_EGL_OBJECT_KHR">CL_INVALID_EGL_OBJECT_KHR</dfn>             -1093</u></td></tr>
+<tr><th id="46">46</th><td><u>#define <dfn class="macro" id="_M/CL_EGL_RESOURCE_NOT_ACQUIRED_KHR" data-ref="_M/CL_EGL_RESOURCE_NOT_ACQUIRED_KHR">CL_EGL_RESOURCE_NOT_ACQUIRED_KHR</dfn>      -1092</u></td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td><i>/* CLeglImageKHR is an opaque handle to an EGLImage */</i></td></tr>
+<tr><th id="49">49</th><td><b>typedef</b> <em>void</em>* <dfn class="typedef" id="CLeglImageKHR" title='CLeglImageKHR' data-type='void *' data-ref="CLeglImageKHR">CLeglImageKHR</dfn>;</td></tr>
+<tr><th id="50">50</th><td></td></tr>
+<tr><th id="51">51</th><td><i>/* CLeglDisplayKHR is an opaque handle to an EGLDisplay */</i></td></tr>
+<tr><th id="52">52</th><td><b>typedef</b> <em>void</em>* <dfn class="typedef" id="CLeglDisplayKHR" title='CLeglDisplayKHR' data-type='void *' data-ref="CLeglDisplayKHR">CLeglDisplayKHR</dfn>;</td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td><i>/* CLeglSyncKHR is an opaque handle to an EGLSync object */</i></td></tr>
+<tr><th id="55">55</th><td><b>typedef</b> <em>void</em>* <dfn class="typedef" id="CLeglSyncKHR" title='CLeglSyncKHR' data-type='void *' data-ref="CLeglSyncKHR">CLeglSyncKHR</dfn>;</td></tr>
+<tr><th id="56">56</th><td></td></tr>
+<tr><th id="57">57</th><td><i>/* properties passed to clCreateFromEGLImageKHR */</i></td></tr>
+<tr><th id="58">58</th><td><b>typedef</b> <a class="typedef" href="../../../include/stdint.h.html#intptr_t" title='intptr_t' data-type='long' data-ref="intptr_t">intptr_t</a> <dfn class="typedef" id="cl_egl_image_properties_khr" title='cl_egl_image_properties_khr' data-type='intptr_t' data-ref="cl_egl_image_properties_khr">cl_egl_image_properties_khr</dfn>;</td></tr>
+<tr><th id="59">59</th><td></td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td><u>#define <dfn class="macro" id="_M/cl_khr_egl_image" data-ref="_M/cl_khr_egl_image">cl_khr_egl_image</dfn> 1</u></td></tr>
+<tr><th id="62">62</th><td></td></tr>
+<tr><th id="63">63</th><td><b>extern</b> <a class="macro" href="cl_platform.h.html#43" title="" data-ref="_M/CL_API_ENTRY">CL_API_ENTRY</a> <a class="typedef" href="cl.h.html#cl_mem" title='cl_mem' data-type='struct _cl_mem *' data-ref="cl_mem">cl_mem</a> <a class="macro" href="cl_platform.h.html#44" title="" data-ref="_M/CL_API_CALL">CL_API_CALL</a></td></tr>
+<tr><th id="64">64</th><td><dfn class="decl" id="clCreateFromEGLImageKHR" title='clCreateFromEGLImageKHR' data-ref="clCreateFromEGLImageKHR">clCreateFromEGLImageKHR</dfn>(<a class="typedef" href="cl.h.html#cl_context" title='cl_context' data-type='struct _cl_context *' data-ref="cl_context">cl_context</a>                  <dfn class="local col0 decl" id="240context" title='context' data-type='cl_context' data-ref="240context">context</dfn>,</td></tr>
+<tr><th id="65">65</th><td>                        <a class="typedef" href="#CLeglDisplayKHR" title='CLeglDisplayKHR' data-type='void *' data-ref="CLeglDisplayKHR">CLeglDisplayKHR</a>             <dfn class="local col1 decl" id="241egldisplay" title='egldisplay' data-type='CLeglDisplayKHR' data-ref="241egldisplay">egldisplay</dfn>,</td></tr>
+<tr><th id="66">66</th><td>                        <a class="typedef" href="#CLeglImageKHR" title='CLeglImageKHR' data-type='void *' data-ref="CLeglImageKHR">CLeglImageKHR</a>               <dfn class="local col2 decl" id="242eglimage" title='eglimage' data-type='CLeglImageKHR' data-ref="242eglimage">eglimage</dfn>,</td></tr>
+<tr><th id="67">67</th><td>                        <a class="typedef" href="cl.h.html#cl_mem_flags" title='cl_mem_flags' data-type='cl_bitfield' data-ref="cl_mem_flags">cl_mem_flags</a>                <dfn class="local col3 decl" id="243flags" title='flags' data-type='cl_mem_flags' data-ref="243flags">flags</dfn>,</td></tr>
+<tr><th id="68">68</th><td>                        <em>const</em> <a class="typedef" href="#cl_egl_image_properties_khr" title='cl_egl_image_properties_khr' data-type='intptr_t' data-ref="cl_egl_image_properties_khr">cl_egl_image_properties_khr</a> * <dfn class="local col4 decl" id="244properties" title='properties' data-type='const cl_egl_image_properties_khr *' data-ref="244properties">properties</dfn>,</td></tr>
+<tr><th id="69">69</th><td>                        <a class="typedef" href="cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> *                    <dfn class="local col5 decl" id="245errcode_ret" title='errcode_ret' data-type='cl_int *' data-ref="245errcode_ret">errcode_ret</dfn>) <a class="macro" href="cl_platform.h.html#57" title="" data-ref="_M/CL_API_SUFFIX__VERSION_1_0">CL_API_SUFFIX__VERSION_1_0</a>;</td></tr>
+<tr><th id="70">70</th><td></td></tr>
+<tr><th id="71">71</th><td><b>typedef</b> <a class="macro" href="cl_platform.h.html#43" title="" data-ref="_M/CL_API_ENTRY">CL_API_ENTRY</a> <a class="typedef" href="cl.h.html#cl_mem" title='cl_mem' data-type='struct _cl_mem *' data-ref="cl_mem">cl_mem</a> (<a class="macro" href="cl_platform.h.html#44" title="" data-ref="_M/CL_API_CALL">CL_API_CALL</a> *<dfn class="typedef" id="clCreateFromEGLImageKHR_fn" title='clCreateFromEGLImageKHR_fn' data-type='cl_mem (*)(cl_context, CLeglDisplayKHR, CLeglImageKHR, cl_mem_flags, const cl_egl_image_properties_khr *, cl_int *)' data-ref="clCreateFromEGLImageKHR_fn">clCreateFromEGLImageKHR_fn</dfn>)(</td></tr>
+<tr><th id="72">72</th><td>    <a class="typedef" href="cl.h.html#cl_context" title='cl_context' data-type='struct _cl_context *' data-ref="cl_context">cl_context</a>                  <dfn class="local col6 decl" id="246context" title='context' data-type='cl_context' data-ref="246context">context</dfn>,</td></tr>
+<tr><th id="73">73</th><td>    <a class="typedef" href="#CLeglDisplayKHR" title='CLeglDisplayKHR' data-type='void *' data-ref="CLeglDisplayKHR">CLeglDisplayKHR</a>             <dfn class="local col7 decl" id="247egldisplay" title='egldisplay' data-type='CLeglDisplayKHR' data-ref="247egldisplay">egldisplay</dfn>,</td></tr>
+<tr><th id="74">74</th><td>    <a class="typedef" href="#CLeglImageKHR" title='CLeglImageKHR' data-type='void *' data-ref="CLeglImageKHR">CLeglImageKHR</a>               <dfn class="local col8 decl" id="248eglimage" title='eglimage' data-type='CLeglImageKHR' data-ref="248eglimage">eglimage</dfn>,</td></tr>
+<tr><th id="75">75</th><td>    <a class="typedef" href="cl.h.html#cl_mem_flags" title='cl_mem_flags' data-type='cl_bitfield' data-ref="cl_mem_flags">cl_mem_flags</a>                <dfn class="local col9 decl" id="249flags" title='flags' data-type='cl_mem_flags' data-ref="249flags">flags</dfn>,</td></tr>
+<tr><th id="76">76</th><td>    <em>const</em> <a class="typedef" href="#cl_egl_image_properties_khr" title='cl_egl_image_properties_khr' data-type='intptr_t' data-ref="cl_egl_image_properties_khr">cl_egl_image_properties_khr</a> * <dfn class="local col0 decl" id="250properties" title='properties' data-type='const cl_egl_image_properties_khr *' data-ref="250properties">properties</dfn>,</td></tr>
+<tr><th id="77">77</th><td>    <a class="typedef" href="cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> *                    <dfn class="local col1 decl" id="251errcode_ret" title='errcode_ret' data-type='cl_int *' data-ref="251errcode_ret">errcode_ret</dfn>);</td></tr>
+<tr><th id="78">78</th><td></td></tr>
+<tr><th id="79">79</th><td></td></tr>
+<tr><th id="80">80</th><td><b>extern</b> <a class="macro" href="cl_platform.h.html#43" title="" data-ref="_M/CL_API_ENTRY">CL_API_ENTRY</a> <a class="typedef" href="cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <a class="macro" href="cl_platform.h.html#44" title="" data-ref="_M/CL_API_CALL">CL_API_CALL</a></td></tr>
+<tr><th id="81">81</th><td><dfn class="decl" id="clEnqueueAcquireEGLObjectsKHR" title='clEnqueueAcquireEGLObjectsKHR' data-ref="clEnqueueAcquireEGLObjectsKHR">clEnqueueAcquireEGLObjectsKHR</dfn>(<a class="typedef" href="cl.h.html#cl_command_queue" title='cl_command_queue' data-type='struct _cl_command_queue *' data-ref="cl_command_queue">cl_command_queue</a> <dfn class="local col2 decl" id="252command_queue" title='command_queue' data-type='cl_command_queue' data-ref="252command_queue">command_queue</dfn>,</td></tr>
+<tr><th id="82">82</th><td>                              <a class="typedef" href="cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a>          <dfn class="local col3 decl" id="253num_objects" title='num_objects' data-type='cl_uint' data-ref="253num_objects">num_objects</dfn>,</td></tr>
+<tr><th id="83">83</th><td>                              <em>const</em> <a class="typedef" href="cl.h.html#cl_mem" title='cl_mem' data-type='struct _cl_mem *' data-ref="cl_mem">cl_mem</a> *   <dfn class="local col4 decl" id="254mem_objects" title='mem_objects' data-type='const cl_mem *' data-ref="254mem_objects">mem_objects</dfn>,</td></tr>
+<tr><th id="84">84</th><td>                              <a class="typedef" href="cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a>          <dfn class="local col5 decl" id="255num_events_in_wait_list" title='num_events_in_wait_list' data-type='cl_uint' data-ref="255num_events_in_wait_list">num_events_in_wait_list</dfn>,</td></tr>
+<tr><th id="85">85</th><td>                              <em>const</em> <a class="typedef" href="cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> * <dfn class="local col6 decl" id="256event_wait_list" title='event_wait_list' data-type='const cl_event *' data-ref="256event_wait_list">event_wait_list</dfn>,</td></tr>
+<tr><th id="86">86</th><td>                              <a class="typedef" href="cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> *       <dfn class="local col7 decl" id="257event" title='event' data-type='cl_event *' data-ref="257event">event</dfn>) <a class="macro" href="cl_platform.h.html#57" title="" data-ref="_M/CL_API_SUFFIX__VERSION_1_0">CL_API_SUFFIX__VERSION_1_0</a>;</td></tr>
+<tr><th id="87">87</th><td></td></tr>
+<tr><th id="88">88</th><td><b>typedef</b> <a class="macro" href="cl_platform.h.html#43" title="" data-ref="_M/CL_API_ENTRY">CL_API_ENTRY</a> <a class="typedef" href="cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> (<a class="macro" href="cl_platform.h.html#44" title="" data-ref="_M/CL_API_CALL">CL_API_CALL</a> *<dfn class="typedef" id="clEnqueueAcquireEGLObjectsKHR_fn" title='clEnqueueAcquireEGLObjectsKHR_fn' data-type='cl_int (*)(cl_command_queue, cl_uint, const cl_mem *, cl_uint, const cl_event *, cl_event *)' data-ref="clEnqueueAcquireEGLObjectsKHR_fn">clEnqueueAcquireEGLObjectsKHR_fn</dfn>)(</td></tr>
+<tr><th id="89">89</th><td>    <a class="typedef" href="cl.h.html#cl_command_queue" title='cl_command_queue' data-type='struct _cl_command_queue *' data-ref="cl_command_queue">cl_command_queue</a> <dfn class="local col8 decl" id="258command_queue" title='command_queue' data-type='cl_command_queue' data-ref="258command_queue">command_queue</dfn>,</td></tr>
+<tr><th id="90">90</th><td>    <a class="typedef" href="cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a>          <dfn class="local col9 decl" id="259num_objects" title='num_objects' data-type='cl_uint' data-ref="259num_objects">num_objects</dfn>,</td></tr>
+<tr><th id="91">91</th><td>    <em>const</em> <a class="typedef" href="cl.h.html#cl_mem" title='cl_mem' data-type='struct _cl_mem *' data-ref="cl_mem">cl_mem</a> *   <dfn class="local col0 decl" id="260mem_objects" title='mem_objects' data-type='const cl_mem *' data-ref="260mem_objects">mem_objects</dfn>,</td></tr>
+<tr><th id="92">92</th><td>    <a class="typedef" href="cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a>          <dfn class="local col1 decl" id="261num_events_in_wait_list" title='num_events_in_wait_list' data-type='cl_uint' data-ref="261num_events_in_wait_list">num_events_in_wait_list</dfn>,</td></tr>
+<tr><th id="93">93</th><td>    <em>const</em> <a class="typedef" href="cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> * <dfn class="local col2 decl" id="262event_wait_list" title='event_wait_list' data-type='const cl_event *' data-ref="262event_wait_list">event_wait_list</dfn>,</td></tr>
+<tr><th id="94">94</th><td>    <a class="typedef" href="cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> *       <dfn class="local col3 decl" id="263event" title='event' data-type='cl_event *' data-ref="263event">event</dfn>);</td></tr>
+<tr><th id="95">95</th><td></td></tr>
+<tr><th id="96">96</th><td></td></tr>
+<tr><th id="97">97</th><td><b>extern</b> <a class="macro" href="cl_platform.h.html#43" title="" data-ref="_M/CL_API_ENTRY">CL_API_ENTRY</a> <a class="typedef" href="cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <a class="macro" href="cl_platform.h.html#44" title="" data-ref="_M/CL_API_CALL">CL_API_CALL</a></td></tr>
+<tr><th id="98">98</th><td><dfn class="decl" id="clEnqueueReleaseEGLObjectsKHR" title='clEnqueueReleaseEGLObjectsKHR' data-ref="clEnqueueReleaseEGLObjectsKHR">clEnqueueReleaseEGLObjectsKHR</dfn>(<a class="typedef" href="cl.h.html#cl_command_queue" title='cl_command_queue' data-type='struct _cl_command_queue *' data-ref="cl_command_queue">cl_command_queue</a> <dfn class="local col4 decl" id="264command_queue" title='command_queue' data-type='cl_command_queue' data-ref="264command_queue">command_queue</dfn>,</td></tr>
+<tr><th id="99">99</th><td>                              <a class="typedef" href="cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a>          <dfn class="local col5 decl" id="265num_objects" title='num_objects' data-type='cl_uint' data-ref="265num_objects">num_objects</dfn>,</td></tr>
+<tr><th id="100">100</th><td>                              <em>const</em> <a class="typedef" href="cl.h.html#cl_mem" title='cl_mem' data-type='struct _cl_mem *' data-ref="cl_mem">cl_mem</a> *   <dfn class="local col6 decl" id="266mem_objects" title='mem_objects' data-type='const cl_mem *' data-ref="266mem_objects">mem_objects</dfn>,</td></tr>
+<tr><th id="101">101</th><td>                              <a class="typedef" href="cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a>          <dfn class="local col7 decl" id="267num_events_in_wait_list" title='num_events_in_wait_list' data-type='cl_uint' data-ref="267num_events_in_wait_list">num_events_in_wait_list</dfn>,</td></tr>
+<tr><th id="102">102</th><td>                              <em>const</em> <a class="typedef" href="cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> * <dfn class="local col8 decl" id="268event_wait_list" title='event_wait_list' data-type='const cl_event *' data-ref="268event_wait_list">event_wait_list</dfn>,</td></tr>
+<tr><th id="103">103</th><td>                              <a class="typedef" href="cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> *       <dfn class="local col9 decl" id="269event" title='event' data-type='cl_event *' data-ref="269event">event</dfn>) <a class="macro" href="cl_platform.h.html#57" title="" data-ref="_M/CL_API_SUFFIX__VERSION_1_0">CL_API_SUFFIX__VERSION_1_0</a>;</td></tr>
+<tr><th id="104">104</th><td></td></tr>
+<tr><th id="105">105</th><td><b>typedef</b> <a class="macro" href="cl_platform.h.html#43" title="" data-ref="_M/CL_API_ENTRY">CL_API_ENTRY</a> <a class="typedef" href="cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> (<a class="macro" href="cl_platform.h.html#44" title="" data-ref="_M/CL_API_CALL">CL_API_CALL</a> *<dfn class="typedef" id="clEnqueueReleaseEGLObjectsKHR_fn" title='clEnqueueReleaseEGLObjectsKHR_fn' data-type='cl_int (*)(cl_command_queue, cl_uint, const cl_mem *, cl_uint, const cl_event *, cl_event *)' data-ref="clEnqueueReleaseEGLObjectsKHR_fn">clEnqueueReleaseEGLObjectsKHR_fn</dfn>)(</td></tr>
+<tr><th id="106">106</th><td>    <a class="typedef" href="cl.h.html#cl_command_queue" title='cl_command_queue' data-type='struct _cl_command_queue *' data-ref="cl_command_queue">cl_command_queue</a> <dfn class="local col0 decl" id="270command_queue" title='command_queue' data-type='cl_command_queue' data-ref="270command_queue">command_queue</dfn>,</td></tr>
+<tr><th id="107">107</th><td>    <a class="typedef" href="cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a>          <dfn class="local col1 decl" id="271num_objects" title='num_objects' data-type='cl_uint' data-ref="271num_objects">num_objects</dfn>,</td></tr>
+<tr><th id="108">108</th><td>    <em>const</em> <a class="typedef" href="cl.h.html#cl_mem" title='cl_mem' data-type='struct _cl_mem *' data-ref="cl_mem">cl_mem</a> *   <dfn class="local col2 decl" id="272mem_objects" title='mem_objects' data-type='const cl_mem *' data-ref="272mem_objects">mem_objects</dfn>,</td></tr>
+<tr><th id="109">109</th><td>    <a class="typedef" href="cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a>          <dfn class="local col3 decl" id="273num_events_in_wait_list" title='num_events_in_wait_list' data-type='cl_uint' data-ref="273num_events_in_wait_list">num_events_in_wait_list</dfn>,</td></tr>
+<tr><th id="110">110</th><td>    <em>const</em> <a class="typedef" href="cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> * <dfn class="local col4 decl" id="274event_wait_list" title='event_wait_list' data-type='const cl_event *' data-ref="274event_wait_list">event_wait_list</dfn>,</td></tr>
+<tr><th id="111">111</th><td>    <a class="typedef" href="cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> *       <dfn class="local col5 decl" id="275event" title='event' data-type='cl_event *' data-ref="275event">event</dfn>);</td></tr>
+<tr><th id="112">112</th><td></td></tr>
+<tr><th id="113">113</th><td></td></tr>
+<tr><th id="114">114</th><td><u>#define <dfn class="macro" id="_M/cl_khr_egl_event" data-ref="_M/cl_khr_egl_event">cl_khr_egl_event</dfn> 1</u></td></tr>
+<tr><th id="115">115</th><td></td></tr>
+<tr><th id="116">116</th><td><b>extern</b> <a class="macro" href="cl_platform.h.html#43" title="" data-ref="_M/CL_API_ENTRY">CL_API_ENTRY</a> <a class="typedef" href="cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> <a class="macro" href="cl_platform.h.html#44" title="" data-ref="_M/CL_API_CALL">CL_API_CALL</a></td></tr>
+<tr><th id="117">117</th><td><dfn class="decl" id="clCreateEventFromEGLSyncKHR" title='clCreateEventFromEGLSyncKHR' data-ref="clCreateEventFromEGLSyncKHR">clCreateEventFromEGLSyncKHR</dfn>(<a class="typedef" href="cl.h.html#cl_context" title='cl_context' data-type='struct _cl_context *' data-ref="cl_context">cl_context</a>      <dfn class="local col6 decl" id="276context" title='context' data-type='cl_context' data-ref="276context">context</dfn>,</td></tr>
+<tr><th id="118">118</th><td>                            <a class="typedef" href="#CLeglSyncKHR" title='CLeglSyncKHR' data-type='void *' data-ref="CLeglSyncKHR">CLeglSyncKHR</a>    <dfn class="local col7 decl" id="277sync" title='sync' data-type='CLeglSyncKHR' data-ref="277sync">sync</dfn>,</td></tr>
+<tr><th id="119">119</th><td>                            <a class="typedef" href="#CLeglDisplayKHR" title='CLeglDisplayKHR' data-type='void *' data-ref="CLeglDisplayKHR">CLeglDisplayKHR</a> <dfn class="local col8 decl" id="278display" title='display' data-type='CLeglDisplayKHR' data-ref="278display">display</dfn>,</td></tr>
+<tr><th id="120">120</th><td>                            <a class="typedef" href="cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> *        <dfn class="local col9 decl" id="279errcode_ret" title='errcode_ret' data-type='cl_int *' data-ref="279errcode_ret">errcode_ret</dfn>) <a class="macro" href="cl_platform.h.html#57" title="" data-ref="_M/CL_API_SUFFIX__VERSION_1_0">CL_API_SUFFIX__VERSION_1_0</a>;</td></tr>
+<tr><th id="121">121</th><td></td></tr>
+<tr><th id="122">122</th><td><b>typedef</b> <a class="macro" href="cl_platform.h.html#43" title="" data-ref="_M/CL_API_ENTRY">CL_API_ENTRY</a> <a class="typedef" href="cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> (<a class="macro" href="cl_platform.h.html#44" title="" data-ref="_M/CL_API_CALL">CL_API_CALL</a> *<dfn class="typedef" id="clCreateEventFromEGLSyncKHR_fn" title='clCreateEventFromEGLSyncKHR_fn' data-type='cl_event (*)(cl_context, CLeglSyncKHR, CLeglDisplayKHR, cl_int *)' data-ref="clCreateEventFromEGLSyncKHR_fn">clCreateEventFromEGLSyncKHR_fn</dfn>)(</td></tr>
+<tr><th id="123">123</th><td>    <a class="typedef" href="cl.h.html#cl_context" title='cl_context' data-type='struct _cl_context *' data-ref="cl_context">cl_context</a>      <dfn class="local col0 decl" id="280context" title='context' data-type='cl_context' data-ref="280context">context</dfn>,</td></tr>
+<tr><th id="124">124</th><td>    <a class="typedef" href="#CLeglSyncKHR" title='CLeglSyncKHR' data-type='void *' data-ref="CLeglSyncKHR">CLeglSyncKHR</a>    <dfn class="local col1 decl" id="281sync" title='sync' data-type='CLeglSyncKHR' data-ref="281sync">sync</dfn>,</td></tr>
+<tr><th id="125">125</th><td>    <a class="typedef" href="#CLeglDisplayKHR" title='CLeglDisplayKHR' data-type='void *' data-ref="CLeglDisplayKHR">CLeglDisplayKHR</a> <dfn class="local col2 decl" id="282display" title='display' data-type='CLeglDisplayKHR' data-ref="282display">display</dfn>,</td></tr>
+<tr><th id="126">126</th><td>    <a class="typedef" href="cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> *        <dfn class="local col3 decl" id="283errcode_ret" title='errcode_ret' data-type='cl_int *' data-ref="283errcode_ret">errcode_ret</dfn>);</td></tr>
+<tr><th id="127">127</th><td></td></tr>
+<tr><th id="128">128</th><td><u>#<span data-ppcond="128">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="129">129</th><td>}</td></tr>
+<tr><th id="130">130</th><td><u>#<span data-ppcond="128">endif</span></u></td></tr>
+<tr><th id="131">131</th><td></td></tr>
+<tr><th id="132">132</th><td><u>#<span data-ppcond="29">endif</span> /* __OPENCL_CL_EGL_H */</u></td></tr>
+<tr><th id="133">133</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../lib/CL/clBuildProgram.c.html'>pocl/lib/CL/clBuildProgram.c</a><br/>Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

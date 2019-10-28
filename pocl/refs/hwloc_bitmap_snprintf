@@ -1,0 +1,11 @@
+<dec f='include/hwloc/bitmap.h' l='100' type='int hwloc_bitmap_snprintf(char *restrict buf, size_t buflen, hwloc_const_bitmap_t bitmap)'/>
+<use f='include/hwloc/cpuset.h' l='33' u='c' c='hwloc_cpuset_snprintf'/>
+<doc f='include/hwloc/bitmap.h' l='91'>/** \brief Stringify a bitmap.
+ *
+ * Up to \p buflen characters may be written in buffer \p buf.
+ *
+ * If \p buflen is 0, \p buf may safely be \c NULL.
+ *
+ * \return the number of character that were actually written if not truncating,
+ * or that would have been written (not including the ending \\0).
+ */</doc>

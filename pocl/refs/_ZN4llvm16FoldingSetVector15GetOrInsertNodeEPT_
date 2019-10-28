@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='589' ll='593' type='T * llvm::FoldingSetVector::GetOrInsertNode(T * N)'/>
+<doc f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='586'>/// GetOrInsertNode - If there is an existing simple Node exactly
+  /// equal to the specified node, return it.  Otherwise, insert &apos;N&apos; and
+  /// return it instead.</doc>

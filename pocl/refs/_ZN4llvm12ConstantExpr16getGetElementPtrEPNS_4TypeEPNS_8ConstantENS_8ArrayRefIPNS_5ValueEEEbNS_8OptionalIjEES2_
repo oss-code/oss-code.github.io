@@ -1,0 +1,5 @@
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='1120' u='c' c='_ZN4llvm12ConstantExpr16getGetElementPtrEPNS_4TypeEPNS_8ConstantENS_8ArrayRefIS4_EEbNS_8OptionalIjEES2_'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='1131' u='c' c='_ZN4llvm12ConstantExpr16getGetElementPtrEPNS_4TypeEPNS_8ConstantES4_bNS_8OptionalIjEES2_'/>
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='1134' type='static llvm::Constant * llvm::ConstantExpr::getGetElementPtr(llvm::Type * Ty, llvm::Constant * C, ArrayRef&lt;llvm::Value *&gt; IdxList, bool InBounds = false, Optional&lt;unsigned int&gt; InRangeIndex = None, llvm::Type * OnlyIfReducedTy = nullptr)'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='1155' u='c' c='_ZN4llvm12ConstantExpr24getInBoundsGetElementPtrEPNS_4TypeEPNS_8ConstantENS_8ArrayRefIPNS_5ValueEEE'/>
+<use f='include/llvm-6.0/llvm/IR/ConstantFolder.h' l='156' u='c' c='_ZNK4llvm14ConstantFolder19CreateGetElementPtrEPNS_4TypeEPNS_8ConstantENS_8ArrayRefIPNS_5ValueEEE'/>

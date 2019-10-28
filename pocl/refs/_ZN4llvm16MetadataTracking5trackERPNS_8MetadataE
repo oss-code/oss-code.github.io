@@ -1,0 +1,13 @@
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='219' ll='221' type='static bool llvm::MetadataTracking::track(llvm::Metadata *&amp; MD)'/>
+<use f='include/llvm-6.0/llvm/IR/Metadata.h' l='741' u='c' c='_ZN4llvm9MDOperand5trackEPNS_8MetadataE'/>
+<use f='include/llvm-6.0/llvm/IR/Metadata.h' l='1308' u='c' c='_ZN4llvm28DistinctMDOperandPlaceholder14replaceUseWithEPNS_8MetadataE'/>
+<use f='include/llvm-6.0/llvm/IR/TrackingMDRef.h' l='86' u='c' c='_ZN4llvm13TrackingMDRef5trackEv'/>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='210'>/// \brief Track the reference to metadata.
+  ///
+  /// Register \c MD with \c *MD, if the subclass supports tracking.  If \c *MD
+  /// gets RAUW&apos;ed, \c MD will be updated to the new address.  If \c *MD gets
+  /// deleted, \c MD will be set to \c nullptr.
+  ///
+  /// If tracking isn&apos;t supported, \c *MD will not change.
+  ///
+  /// \return true iff tracking is supported by \c MD.</doc>

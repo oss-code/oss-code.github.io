@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='482' type='bool llvm::TargetTransformInfo::isLegalMaskedScatter(llvm::Type * DataType) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='479'>/// \brief Return true if the target supports masked gather/scatter
+  /// AVX-512 fully supports gather and scatter for vectors with 32 and 64
+  /// bits scalar type.</doc>

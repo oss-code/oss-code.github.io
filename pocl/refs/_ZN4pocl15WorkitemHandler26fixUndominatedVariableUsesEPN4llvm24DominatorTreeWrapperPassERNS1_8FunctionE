@@ -1,0 +1,41 @@
+<dec f='pocl/lib/llvmopencl/WorkitemHandler.h' l='60' type='bool pocl::WorkitemHandler::fixUndominatedVariableUses(llvm::DominatorTreeWrapperPass * DT, llvm::Function &amp; F)'/>
+<def f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='157' ll='237' type='bool pocl::WorkitemHandler::fixUndominatedVariableUses(llvm::DominatorTreeWrapperPass * DT, llvm::Function &amp; F)'/>
+<doc f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='120'>/* Fixes the undominated variable uses.
+
+   These appear when a conditional barrier kernel is replicated to
+   form a copy of the *same basic block* in the alternative 
+   &quot;barrier path&quot;.
+
+   E.g., from
+
+   A -&gt; [exit], A -&gt; B -&gt; [exit]
+
+   a replicated CFG as follows, is created:
+
+   A1 -&gt; (T) A2 -&gt; [exit1],  A1 -&gt; (F) A2&apos; -&gt; B1, B2 -&gt; [exit2] 
+
+   The regions are correct because of the barrier semantics
+   of &quot;all or none&quot;. In case any barrier enters the [exit1]
+   from A1, all must (because there&apos;s a barrier in the else
+   branch).
+
+   Here at A2 and A2&apos; one creates the same variables. 
+   However, B2 does not know which copy
+   to refer to, the ones created in A2 or ones in A2&apos; (correct).
+   The mapping data contains only one possibility, the
+   one that was placed there last. Thus, the instructions in B2 
+   might end up referring to the variables defined in A2 
+   which do not nominate them.
+
+   The variable references are fixed by exploiting the knowledge
+   of the naming convention of the cloned variables. 
+
+   One potential alternative way would be to collect the refmaps per BB,
+   not globally. Then as a final phase traverse through the 
+   basic blocks starting from the beginning and propagating the
+   reference data downwards, the data from the new BB overwriting
+   the old one. This should ensure the reachability without 
+   the costly dominance analysis.
+*/</doc>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='123' u='c' c='_ZN4pocl13WorkitemLoops13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemReplication.cc' l='109' u='c' c='_ZN4pocl19WorkitemReplication13runOnFunctionERN4llvm8FunctionE'/>

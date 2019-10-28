@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='228' type='13'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='223'>/// The only memory references in this function (if it has any) are
+  /// non-volatile loads from objects pointed to by its pointer-typed
+  /// arguments, with arbitrary offsets.
+  ///
+  /// This property corresponds to the IntrReadArgMem LLVM intrinsic flag.</doc>

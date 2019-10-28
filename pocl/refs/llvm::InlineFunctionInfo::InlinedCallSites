@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Cloning.h' l='207' type='SmallVector&lt;llvm::CallSite, 8&gt;'/>
+<use f='include/llvm-6.0/llvm/Transforms/Utils/Cloning.h' l='212' u='m' c='_ZN4llvm18InlineFunctionInfo5resetEv'/>
+<offset>2496</offset>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Cloning.h' l='202'>/// All of the new call sites inlined into the caller.
+  ///
+  /// &apos;InlineFunction&apos; fills this in by scanning the inlined instructions, and
+  /// only if CG is null. If CG is non-null, instead the value handle
+  /// `InlinedCalls` above is used.</doc>

@@ -1,0 +1,9 @@
+<inh f='include/llvm-6.0/llvm/IR/PassManager.h' l='382' c='llvm::AnalysisInfoMixin'/>
+<def f='include/llvm-6.0/llvm/Analysis/AssumptionCache.h' l='151' ll='162'/>
+<size>1</size>
+<doc f='include/llvm-6.0/llvm/Analysis/AssumptionCache.h' l='147'>/// \brief A function analysis which provides an \c AssumptionCache.
+///
+/// This analysis is intended for use with the new pass manager and will vend
+/// assumption caches for a given function.</doc>
+<smbr r='llvm::AssumptionAnalysis::Key' t='llvm::AnalysisKey'/>
+<fun r='_ZN4llvm18AssumptionAnalysis3runERNS_8FunctionERNS_15AnalysisManagerIS1_JEEE'/>

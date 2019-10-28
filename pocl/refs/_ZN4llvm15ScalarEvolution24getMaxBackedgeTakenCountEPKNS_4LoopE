@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='751' type='const llvm::SCEV * llvm::ScalarEvolution::getMaxBackedgeTakenCount(const llvm::Loop * L)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='747'>/// When successful, this returns a SCEVConstant that is greater than or equal
+  /// to (i.e. a &quot;conservative over-approximation&quot;) of the value returend by
+  /// getBackedgeTakenCount.  If such a value cannot be computed, it returns the
+  /// SCEVCouldNotCompute object.</doc>

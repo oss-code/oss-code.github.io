@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/Operator.h' l='483' ll='491' type='bool llvm::GEPOperator::hasAllZeroIndices() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Operator.h' l='480'>/// Return true if all of the indices of this GEP are zeros.
+  /// If so, the result pointer and the first operand have the same
+  /// value, just potentially different types.</doc>

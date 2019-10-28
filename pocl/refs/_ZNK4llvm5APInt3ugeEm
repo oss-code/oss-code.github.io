@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='1280' type='bool llvm::APInt::uge(uint64_t RHS) const'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='243' u='c' c='_ZNK4llvm11ConstantInt3ugeEm'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='1274'>/// \brief Unsigned greater or equal comparison
+  ///
+  /// Regards both *this as an unsigned quantity and compares it with RHS for
+  /// the validity of the greater-or-equal relationship.
+  ///
+  /// \returns true if *this &gt;= RHS when considered unsigned.</doc>

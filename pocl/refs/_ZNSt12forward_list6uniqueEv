@@ -1,0 +1,11 @@
+<def f='include/c++/7/bits/forward_list.h' l='1164' ll='1166' type='void std::forward_list::unique()'/>
+<doc f='include/c++/7/bits/forward_list.h' l='1154'>/**
+       *  @brief  Remove consecutive duplicate elements.
+       *
+       *  For each consecutive set of elements with the same value,
+       *  remove all but the first one.  Remaining elements stay in
+       *  list order.  Note that this function only erases the
+       *  elements, and that if the elements themselves are pointers,
+       *  the pointed-to memory is not touched in any way.  Managing
+       *  the pointer is the user&apos;s responsibility.
+       */</doc>

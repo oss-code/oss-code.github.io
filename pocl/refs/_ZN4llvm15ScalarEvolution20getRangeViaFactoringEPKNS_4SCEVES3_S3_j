@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1365' type='llvm::ConstantRange llvm::ScalarEvolution::getRangeViaFactoring(const llvm::SCEV * Start, const llvm::SCEV * Stop, const llvm::SCEV * MaxBECount, unsigned int BitWidth)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1362'>/// Try to compute a range for the affine SCEVAddRecExpr {\p Start,+,\p
+  /// Stop} by &quot;factoring out&quot; a ternary expression from the add recurrence.
+  /// Helper called by \c getRange.</doc>

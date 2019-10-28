@@ -1,0 +1,16 @@
+<dec f='include/llvm-6.0/llvm/ADT/ArrayRef.h' l='61' type='void llvm::ArrayRef::ArrayRef&lt;T&gt;()'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.h' l='238' u='c' c='_ZN4llvm11Instruction12copyMetadataERKS0_NS_8ArrayRefIjEE'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='265' u='c' c='_ZN4llvm12AliasSummaryC1ENS_18GlobalValueSummary7GVFlagsE'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='410' u='c' c='_ZNK4llvm15FunctionSummary10type_testsEv'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='419' u='c' c='_ZNK4llvm15FunctionSummary23type_test_assume_vcallsEv'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='428' u='c' c='_ZNK4llvm15FunctionSummary24type_checked_load_vcallsEv'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='437' u='c' c='_ZNK4llvm15FunctionSummary29type_test_assume_const_vcallsEv'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='445' u='c' c='_ZNK4llvm15FunctionSummary30type_checked_load_const_vcallsEv'/>
+<doc f='include/llvm-6.0/llvm/ADT/ArrayRef.h' l='57'>/// @name Constructors
+    /// @{
+
+    /// Construct an empty ArrayRef.</doc>
+<doc f='include/llvm-6.0/llvm/ADT/ArrayRef.h' l='61'>/*implicit*/</doc>
+<use f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='713' u='c' c='_ZNK4llvm19TargetTransformInfo22getArithmeticInstrCostEjPNS_4TypeENS0_16OperandValueKindES3_NS0_22OperandValuePropertiesES4_NS_8ArrayRefIPKNS_5ValueEEE'/>
+<use f='include/llvm-6.0/llvm/IR/MDBuilder.h' l='182' u='c' c='_ZN4llvm9MDBuilder18createTBAATypeNodeEPNS_6MDNodeEmPNS_8MetadataENS_8ArrayRefINS0_15TBAAStructFieldEEE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='290' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>

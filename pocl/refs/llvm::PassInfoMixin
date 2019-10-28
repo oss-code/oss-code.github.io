@@ -1,0 +1,32 @@
+<def f='include/llvm-6.0/llvm/IR/PassManager.h' l='365' ll='375'/>
+<ovr f='include/llvm-6.0/llvm/IR/PassManager.h' l='503' c='llvm::PassManager'/>
+<ovr f='include/llvm-6.0/llvm/IR/PassManager.h' l='508' c='llvm::PassManager'/>
+<ovr f='include/llvm-6.0/llvm/IR/PassManager.h' l='1287' c='llvm::InvalidateAllAnalysesPass'/>
+<ovr f='include/llvm-6.0/llvm/IR/Verifier.h' l='137' c='llvm::VerifierPass'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/AssumptionCache.h' l='165' c='llvm::AssumptionPrinterPass'/>
+<doc f='include/llvm-6.0/llvm/IR/PassManager.h' l='361'>/// A CRTP mix-in to automatically provide informational APIs needed for
+/// passes.
+///
+/// This provides some boilerplate for types that are passes.</doc>
+<fun r='_ZN4llvm13PassInfoMixin4nameEv'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/AliasAnalysisEvaluator.h' l='34' c='llvm::AAEvaluator'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='308' c='llvm::CallGraphPrinterPass'/>
+<ovr f='include/llvm-6.0/llvm/IR/Dominators.h' l='251' c='llvm::DominatorTreePrinterPass'/>
+<ovr f='include/llvm-6.0/llvm/IR/Dominators.h' l='262' c='llvm::DominatorTreeVerifierPass'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/PostDominators.h' l='54' c='llvm::PostDominatorTreePrinterPass'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='983' c='llvm::RegionInfoPrinterPass'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='993' c='llvm::RegionInfoVerifierPass'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='944' c='llvm::LoopPrinterPass'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='953' c='llvm::LoopVerifierPass'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1805' c='llvm::ScalarEvolutionPrinterPass'/>
+<ovr f='include/llvm-6.0/llvm/Transforms/IPO/AlwaysInliner.h' l='30' c='llvm::AlwaysInlinerPass'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1263' c='llvm::LazyCallGraphPrinterPass'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1276' c='llvm::LazyCallGraphDOTPrinterPass'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='140' c='llvm::PassManager'/>
+<ovr f='include/llvm-6.0/llvm/Transforms/IPO/FunctionAttrs.h' l='50' c='llvm::PostOrderFunctionAttrsPass'/>
+<ovr f='include/llvm-6.0/llvm/Transforms/IPO/FunctionAttrs.h' l='69' c='llvm::ReversePostOrderFunctionAttrsPass'/>
+<ovr f='include/llvm-6.0/llvm/Transforms/Instrumentation/BoundsChecking.h' l='19' c='llvm::BoundsCheckingPass'/>
+<ovr f='include/llvm-6.0/llvm/Transforms/Scalar/GVN.h' l='68' c='llvm::GVN'/>
+<ovr f='include/llvm-6.0/llvm/Transforms/Scalar/GVN.h' l='296' c='llvm::GVNHoistPass'/>
+<ovr f='include/llvm-6.0/llvm/Transforms/Scalar/GVN.h' l='303' c='llvm::GVNSinkPass'/>
+<ovr f='include/llvm-6.0/llvm/Transforms/Utils/SymbolRewriter.h' l='121' c='llvm::RewriteSymbolPass'/>

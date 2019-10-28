@@ -1,0 +1,15 @@
+<def f='include/llvm-6.0/llvm/Support/CommandLine.h' l='154' ll='159'/>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='139'>// Formatting flags - This controls special features that the option might have
+// that cause it to be parsed differently...
+//
+// Prefix - This option allows arguments that are otherwise unrecognized to be
+// matched by options that are a prefix of the actual value.  This is useful for
+// cases like a linker, where options are typically of the form &apos;-lfoo&apos; or
+// &apos;-L../../include&apos; where -l or -L are the actual flags.  When prefix is
+// enabled, and used, the value for the flag comes from the suffix of the
+// argument.
+//
+// Grouping - With this option enabled, multiple letter options are allowed to
+// bunch together with only a single hyphen for the whole group.  This allows
+// emulation of the behavior that ls uses for example: ls -la === ls -l -a
+//</doc>

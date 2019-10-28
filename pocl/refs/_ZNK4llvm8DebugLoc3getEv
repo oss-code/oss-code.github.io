@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/IR/DebugLoc.h' l='55' type='llvm::DILocation * llvm::DebugLoc::get() const'/>
+<use f='include/llvm-6.0/llvm/IR/DebugLoc.h' l='56' u='c' c='_ZNK4llvm8DebugLoccvPNS_10DILocationEEv'/>
+<use f='include/llvm-6.0/llvm/IR/DebugLoc.h' l='57' u='c' c='_ZNK4llvm8DebugLocptEv'/>
+<use f='include/llvm-6.0/llvm/IR/DebugLoc.h' l='58' u='c' c='_ZNK4llvm8DebugLocdeEv'/>
+<doc f='include/llvm-6.0/llvm/IR/DebugLoc.h' l='51'>/// \brief Get the underlying \a DILocation.
+    ///
+    /// \pre !*this or \c isa&lt;DILocation&gt;(getAsMDNode()).
+    /// @{</doc>

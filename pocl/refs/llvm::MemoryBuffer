@@ -1,0 +1,39 @@
+<def f='include/llvm-6.0/llvm/Support/MemoryBuffer.h' l='41' ll='155'/>
+<ovr f='include/llvm-6.0/llvm/Support/MemoryBuffer.h' l='161' c='llvm::WritableMemoryBuffer'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/Support/MemoryBuffer.h' l='31'>/// This interface provides simple read-only access to a block of memory, and
+/// provides simple methods for reading files and standard input into a memory
+/// buffer.  In addition to basic access to the characters in the file, this
+/// interface guarantees you can read one character past the end of the file,
+/// and that this character will read as &apos;\0&apos;.
+///
+/// The &apos;\0&apos; guarantee is needed to support an optimization -- it&apos;s intended to
+/// be more efficient for clients which are reading all the data to stop
+/// reading when they encounter a &apos;\0&apos; than to continually check the file
+/// position to see if it has reached the end of the file.</doc>
+<mbr r='llvm::MemoryBuffer::BufferStart' o='64' t='const char *'/>
+<mbr r='llvm::MemoryBuffer::BufferEnd' o='128' t='const char *'/>
+<fun r='_ZN4llvm12MemoryBufferC1Ev'/>
+<fun r='_ZN4llvm12MemoryBuffer4initEPKcS2_b'/>
+<smbr r='llvm::MemoryBuffer::Writable' t='const bool'/>
+<fun r='_ZN4llvm12MemoryBufferC1ERKS0_'/>
+<fun r='_ZN4llvm12MemoryBufferaSERKS0_'/>
+<fun r='_ZN4llvm12MemoryBufferD1Ev'/>
+<fun r='_ZNK4llvm12MemoryBuffer14getBufferStartEv'/>
+<fun r='_ZNK4llvm12MemoryBuffer12getBufferEndEv'/>
+<fun r='_ZNK4llvm12MemoryBuffer13getBufferSizeEv'/>
+<fun r='_ZNK4llvm12MemoryBuffer9getBufferEv'/>
+<fun r='_ZNK4llvm12MemoryBuffer19getBufferIdentifierEv'/>
+<fun r='_ZN4llvm12MemoryBuffer7getFileERKNS_5TwineElbb'/>
+<fun r='_ZN4llvm12MemoryBuffer15getFileAsStreamERKNS_5TwineE'/>
+<fun r='_ZN4llvm12MemoryBuffer16getOpenFileSliceEiRKNS_5TwineEmlb'/>
+<fun r='_ZN4llvm12MemoryBuffer11getOpenFileEiRKNS_5TwineEmbb'/>
+<fun r='_ZN4llvm12MemoryBuffer12getMemBufferENS_9StringRefES1_b'/>
+<fun r='_ZN4llvm12MemoryBuffer12getMemBufferENS_15MemoryBufferRefEb'/>
+<fun r='_ZN4llvm12MemoryBuffer16getMemBufferCopyENS_9StringRefERKNS_5TwineE'/>
+<fun r='_ZN4llvm12MemoryBuffer15getNewMemBufferEmNS_9StringRefE'/>
+<fun r='_ZN4llvm12MemoryBuffer8getSTDINEv'/>
+<fun r='_ZN4llvm12MemoryBuffer14getFileOrSTDINERKNS_5TwineElb'/>
+<fun r='_ZN4llvm12MemoryBuffer12getFileSliceERKNS_5TwineEmmb'/>
+<fun r='_ZNK4llvm12MemoryBuffer13getBufferKindEv'/>
+<fun r='_ZNK4llvm12MemoryBuffer15getMemBufferRefEv'/>

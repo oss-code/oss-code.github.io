@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/Instruction.h' l='195' ll='198' type='llvm::MDNode * llvm::Instruction::getMetadata(unsigned int KindID) const'/>
+<doc f='include/llvm-6.0/llvm/IR/Instruction.h' l='193'>/// Get the metadata of given kind attached to this Instruction.
+  /// If the metadata is not found then return null.</doc>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1702' u='c' c='_ZN4llvm9IRBuilder12CreateSelectEPNS_5ValueES2_S2_RKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1703' u='c' c='_ZN4llvm9IRBuilder12CreateSelectEPNS_5ValueES2_S2_RKNS_5TwineEPNS_11InstructionE'/>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>OrderedBasicBlock.h source code [include/llvm-6.0/llvm/Analysis/OrderedBasicBlock.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="llvm::OrderedBasicBlock "/>
+<link rel="stylesheet" href="../../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'include/llvm-6.0/llvm/Analysis/OrderedBasicBlock.h'; var root_path = '../../../..'; var data_path = '../../../../../data';</script>
+<script src='../../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../../..'>include</a>/<a href='../..'>llvm-6.0</a>/<a href='..'>llvm</a>/<a href='./'>Analysis</a>/<a href='OrderedBasicBlock.h.html'>OrderedBasicBlock.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>//===- llvm/Analysis/OrderedBasicBlock.h --------------------- -*- C++ -*-===//</i></td></tr>
+<tr><th id="2">2</th><td><i>//</i></td></tr>
+<tr><th id="3">3</th><td><i>//                     The LLVM Compiler Infrastructure</i></td></tr>
+<tr><th id="4">4</th><td><i>//</i></td></tr>
+<tr><th id="5">5</th><td><i>// This file is distributed under the University of Illinois Open Source</i></td></tr>
+<tr><th id="6">6</th><td><i>// License. See LICENSE.TXT for details.</i></td></tr>
+<tr><th id="7">7</th><td><i>//</i></td></tr>
+<tr><th id="8">8</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="9">9</th><td><i>//</i></td></tr>
+<tr><th id="10">10</th><td><i>// This file defines the OrderedBasicBlock class. OrderedBasicBlock maintains</i></td></tr>
+<tr><th id="11">11</th><td><i>// an interface where clients can query if one instruction comes before another</i></td></tr>
+<tr><th id="12">12</th><td><i>// in a BasicBlock. Since BasicBlock currently lacks a reliable way to query</i></td></tr>
+<tr><th id="13">13</th><td><i>// relative position between instructions one can use OrderedBasicBlock to do</i></td></tr>
+<tr><th id="14">14</th><td><i>// such queries. OrderedBasicBlock is lazily built on a source BasicBlock and</i></td></tr>
+<tr><th id="15">15</th><td><i>// maintains an internal Instruction -&gt; Position map. A OrderedBasicBlock</i></td></tr>
+<tr><th id="16">16</th><td><i>// instance should be discarded whenever the source BasicBlock changes.</i></td></tr>
+<tr><th id="17">17</th><td><i>//</i></td></tr>
+<tr><th id="18">18</th><td><i>// It's currently used by the CaptureTracker in order to find relative</i></td></tr>
+<tr><th id="19">19</th><td><i>// positions of a pair of instructions inside a BasicBlock.</i></td></tr>
+<tr><th id="20">20</th><td><i>//</i></td></tr>
+<tr><th id="21">21</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><u>#<span data-ppcond="23">ifndef</span> <span class="macro" data-ref="_M/LLVM_ANALYSIS_ORDEREDBASICBLOCK_H">LLVM_ANALYSIS_ORDEREDBASICBLOCK_H</span></u></td></tr>
+<tr><th id="24">24</th><td><u>#define <dfn class="macro" id="_M/LLVM_ANALYSIS_ORDEREDBASICBLOCK_H" data-ref="_M/LLVM_ANALYSIS_ORDEREDBASICBLOCK_H">LLVM_ANALYSIS_ORDEREDBASICBLOCK_H</dfn></u></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><u>#include <a href="../ADT/DenseMap.h.html">"llvm/ADT/DenseMap.h"</a></u></td></tr>
+<tr><th id="27">27</th><td><u>#include <a href="../IR/BasicBlock.h.html">"llvm/IR/BasicBlock.h"</a></u></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><b>namespace</b> <span class="namespace">llvm</span> {</td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><b>class</b> <a class="type" href="../IR/Instruction.h.html#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction" id="llvm::Instruction">Instruction</a>;</td></tr>
+<tr><th id="32">32</th><td><b>class</b> <a class="type" href="../IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock" id="llvm::BasicBlock">BasicBlock</a>;</td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><b>class</b> <dfn class="type def" id="llvm::OrderedBasicBlock" title='llvm::OrderedBasicBlock' data-ref="llvm::OrderedBasicBlock">OrderedBasicBlock</dfn> {</td></tr>
+<tr><th id="35">35</th><td><b>private</b>:</td></tr>
+<tr><th id="36">36</th><td>  <i class="doc">/// <span class="command">\brief</span> Map a instruction to its position in a BasicBlock.</i></td></tr>
+<tr><th id="37">37</th><td>  <a class="type" href="../ADT/DenseMap.h.html#llvm::SmallDenseMap" title='llvm::SmallDenseMap' data-ref="llvm::SmallDenseMap">SmallDenseMap</a>&lt;<em>const</em> <a class="type" href="../IR/Instruction.h.html#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> *, <em>unsigned</em>, <var>32</var>&gt; <dfn class="decl" id="llvm::OrderedBasicBlock::NumberedInsts" title='llvm::OrderedBasicBlock::NumberedInsts' data-ref="llvm::OrderedBasicBlock::NumberedInsts">NumberedInsts</dfn>;</td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td>  <i class="doc">/// <span class="command">\brief</span> Keep track of last instruction inserted into<span class="command"> \p</span> <span class="arg">NumberedInsts.</span></i></td></tr>
+<tr><th id="40">40</th><td><i class="doc">  /// It speeds up queries for uncached instructions by providing a start point</i></td></tr>
+<tr><th id="41">41</th><td><i class="doc">  /// for new queries in OrderedBasicBlock::comesBefore.</i></td></tr>
+<tr><th id="42">42</th><td>  <a class="type" href="../IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a>::<a class="typedef" href="../IR/BasicBlock.h.html#llvm::BasicBlock::const_iterator" title='llvm::BasicBlock::const_iterator' data-type='InstListType::const_iterator' data-ref="llvm::BasicBlock::const_iterator">const_iterator</a> <dfn class="decl" id="llvm::OrderedBasicBlock::LastInstFound" title='llvm::OrderedBasicBlock::LastInstFound' data-ref="llvm::OrderedBasicBlock::LastInstFound">LastInstFound</dfn>;</td></tr>
+<tr><th id="43">43</th><td></td></tr>
+<tr><th id="44">44</th><td>  <i class="doc">/// <span class="command">\brief</span> The position/number to tag the next instruction to be found.</i></td></tr>
+<tr><th id="45">45</th><td>  <em>unsigned</em> <dfn class="decl" id="llvm::OrderedBasicBlock::NextInstPos" title='llvm::OrderedBasicBlock::NextInstPos' data-ref="llvm::OrderedBasicBlock::NextInstPos">NextInstPos</dfn>;</td></tr>
+<tr><th id="46">46</th><td></td></tr>
+<tr><th id="47">47</th><td>  <i class="doc">/// <span class="command">\brief</span> The source BasicBlock to map.</i></td></tr>
+<tr><th id="48">48</th><td>  <em>const</em> <a class="type" href="../IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a> *<dfn class="decl" id="llvm::OrderedBasicBlock::BB" title='llvm::OrderedBasicBlock::BB' data-ref="llvm::OrderedBasicBlock::BB">BB</dfn>;</td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td>  <i class="doc">/// <span class="command">\brief</span> Given no cached results, find if<span class="command"> \p</span> <span class="arg">A</span> comes before<span class="command"> \p</span> <span class="arg">B</span> in<span class="command"> \p</span> <span class="arg">BB.</span></i></td></tr>
+<tr><th id="51">51</th><td><i class="doc">  /// Cache and number out instruction while walking<span class="command"> \p</span> <span class="arg">BB.</span></i></td></tr>
+<tr><th id="52">52</th><td>  <em>bool</em> <dfn class="decl" id="_ZN4llvm17OrderedBasicBlock11comesBeforeEPKNS_11InstructionES3_" title='llvm::OrderedBasicBlock::comesBefore' data-ref="_ZN4llvm17OrderedBasicBlock11comesBeforeEPKNS_11InstructionES3_">comesBefore</dfn>(<em>const</em> <a class="type" href="../IR/Instruction.h.html#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> *<dfn class="local col7 decl" id="3987A" title='A' data-type='const llvm::Instruction *' data-ref="3987A">A</dfn>, <em>const</em> <a class="type" href="../IR/Instruction.h.html#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> *<dfn class="local col8 decl" id="3988B" title='B' data-type='const llvm::Instruction *' data-ref="3988B">B</dfn>);</td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td><b>public</b>:</td></tr>
+<tr><th id="55">55</th><td>  <dfn class="decl" id="_ZN4llvm17OrderedBasicBlockC1EPKNS_10BasicBlockE" title='llvm::OrderedBasicBlock::OrderedBasicBlock' data-ref="_ZN4llvm17OrderedBasicBlockC1EPKNS_10BasicBlockE">OrderedBasicBlock</dfn>(<em>const</em> <a class="type" href="../IR/BasicBlock.h.html#llvm::BasicBlock" title='llvm::BasicBlock' data-ref="llvm::BasicBlock">BasicBlock</a> *<dfn class="local col9 decl" id="3989BasicB" title='BasicB' data-type='const llvm::BasicBlock *' data-ref="3989BasicB">BasicB</dfn>);</td></tr>
+<tr><th id="56">56</th><td></td></tr>
+<tr><th id="57">57</th><td>  <i class="doc">/// <span class="command">\brief</span> Find out whether<span class="command"> \p</span> <span class="arg">A</span> dominates<span class="command"> \p</span> <span class="arg">B,</span> meaning whether<span class="command"> \p</span> <span class="arg">A</span></i></td></tr>
+<tr><th id="58">58</th><td><i class="doc">  /// comes before<span class="command"> \p</span> <span class="arg">B</span> in<span class="command"> \p</span> <span class="arg">BB.</span> This is a simplification that considers</i></td></tr>
+<tr><th id="59">59</th><td><i class="doc">  /// cached instruction positions and ignores other basic blocks, being</i></td></tr>
+<tr><th id="60">60</th><td><i class="doc">  /// only relevant to compare relative instructions positions inside<span class="command"> \p</span> <span class="arg">BB.</span></i></td></tr>
+<tr><th id="61">61</th><td><i class="doc">  /// Returns false for A == B.</i></td></tr>
+<tr><th id="62">62</th><td>  <em>bool</em> <dfn class="decl" id="_ZN4llvm17OrderedBasicBlock9dominatesEPKNS_11InstructionES3_" title='llvm::OrderedBasicBlock::dominates' data-ref="_ZN4llvm17OrderedBasicBlock9dominatesEPKNS_11InstructionES3_">dominates</dfn>(<em>const</em> <a class="type" href="../IR/Instruction.h.html#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> *<dfn class="local col0 decl" id="3990A" title='A' data-type='const llvm::Instruction *' data-ref="3990A">A</dfn>, <em>const</em> <a class="type" href="../IR/Instruction.h.html#llvm::Instruction" title='llvm::Instruction' data-ref="llvm::Instruction">Instruction</a> *<dfn class="local col1 decl" id="3991B" title='B' data-type='const llvm::Instruction *' data-ref="3991B">B</dfn>);</td></tr>
+<tr><th id="63">63</th><td>};</td></tr>
+<tr><th id="64">64</th><td></td></tr>
+<tr><th id="65">65</th><td>} <i>// End llvm namespace</i></td></tr>
+<tr><th id="66">66</th><td></td></tr>
+<tr><th id="67">67</th><td><u>#<span data-ppcond="23">endif</span></u></td></tr>
+<tr><th id="68">68</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../../../pocl/lib/CL/pocl_llvm_build.cc.html'>pocl/lib/CL/pocl_llvm_build.cc</a><br/>Generated on <em>2019-Oct-28</em> from project include<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

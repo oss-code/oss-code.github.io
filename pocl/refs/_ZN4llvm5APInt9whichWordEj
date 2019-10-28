@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='113' ll='115' type='static unsigned int llvm::APInt::whichWord(unsigned int bitPosition)'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='157' u='c' c='_ZNK4llvm5APInt7getWordEj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1388' u='c' c='_ZN4llvm5APInt6setBitEj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1447' u='c' c='_ZN4llvm5APInt8clearBitEj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1520' u='c' c='_ZNK4llvm5APInt14getActiveWordsEv'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='110'>/// \brief Determine which word a bit is in.
+  ///
+  /// \returns the word position for the specified bit position.</doc>

@@ -1,0 +1,4 @@
+<dec f='pocl/lib/CL/pocl_intfn.h' l='122' macro='1' type='cl_int POclEnqueueSVMFree(cl_command_queue , cl_uint , void ** , void (*)(cl_command_queue, cl_uint, void **, void *) , void * , cl_uint , const cl_event * , cl_event * )'/>
+<def f='pocl/lib/CL/clEnqueueSVMFree.c' l='28' macro='1' type='cl_int POclEnqueueSVMFree(cl_command_queue command_queue, cl_uint num_svm_pointers, void ** svm_pointers, void (*)(cl_command_queue, cl_uint, void **, void *) pfn_free_func, void * user_data, cl_uint num_events_in_wait_list, const cl_event * event_wait_list, cl_event * event)'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='169' macro='1' u='a'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='169' macro='1' u='a'/>

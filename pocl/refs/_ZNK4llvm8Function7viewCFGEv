@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/IR/Function.h' l='685' type='void llvm::Function::viewCFG() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Function.h' l='679'>/// viewCFG - This function is meant for use from the debugger.  You can just
+  /// say &apos;call F-&gt;viewCFG()&apos; and a ghostview window should pop up from the
+  /// program, displaying the CFG of the current function with the code for each
+  /// basic block inside.  This depends on there being a &apos;dot&apos; and &apos;gv&apos; program
+  /// in your path.
+  ///</doc>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='403' u='c' c='_ZN4pocl14ParallelRegion6VerifyEv'/>

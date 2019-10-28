@@ -1,0 +1,7 @@
+<def f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='592' ll='680' type='void convertPtrArgsToOffsets(llvm::Module * Module, const char * KernelName, unsigned int AddrSpace, llvm::GlobalVariable * Base)'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='704' u='c' c='_ZL18fixConstantMemArgsPN4llvm6ModuleEPKc'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='721' u='c' c='_ZL15fixLocalMemArgsPN4llvm6ModuleEPKc'/>
+<doc f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='588'>// This transformation replaces each pointer argument in the specific address
+// space with an integer offset, and then inserts the necessary GEP+BitCast
+// instructions to calculate the new pointers from the provided base global
+// variable.</doc>

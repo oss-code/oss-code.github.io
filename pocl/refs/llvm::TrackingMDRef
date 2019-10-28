@@ -1,0 +1,25 @@
+<def f='include/llvm-6.0/llvm/IR/TrackingMDRef.h' l='26' ll='101'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/IR/TrackingMDRef.h' l='23'>/// \brief Tracking metadata reference.
+///
+/// This class behaves like \a TrackingVH, but for metadata.</doc>
+<mbr r='llvm::TrackingMDRef::MD' o='0' t='llvm::Metadata *'/>
+<fun r='_ZN4llvm13TrackingMDRefC1Ev'/>
+<fun r='_ZN4llvm13TrackingMDRefC1EPNS_8MetadataE'/>
+<fun r='_ZN4llvm13TrackingMDRefC1EOS0_'/>
+<fun r='_ZN4llvm13TrackingMDRefC1ERKS0_'/>
+<fun r='_ZN4llvm13TrackingMDRefaSEOS0_'/>
+<fun r='_ZN4llvm13TrackingMDRefaSERKS0_'/>
+<fun r='_ZN4llvm13TrackingMDRefD1Ev'/>
+<fun r='_ZNK4llvm13TrackingMDRef3getEv'/>
+<fun r='_ZNK4llvm13TrackingMDRefcvPNS_8MetadataEEv'/>
+<fun r='_ZNK4llvm13TrackingMDRefptEv'/>
+<fun r='_ZNK4llvm13TrackingMDRefdeEv'/>
+<fun r='_ZN4llvm13TrackingMDRef5resetEv'/>
+<fun r='_ZN4llvm13TrackingMDRef5resetEPNS_8MetadataE'/>
+<fun r='_ZNK4llvm13TrackingMDRef20hasTrivialDestructorEv'/>
+<fun r='_ZNK4llvm13TrackingMDRefeqERKS0_'/>
+<fun r='_ZNK4llvm13TrackingMDRefneERKS0_'/>
+<fun r='_ZN4llvm13TrackingMDRef5trackEv'/>
+<fun r='_ZN4llvm13TrackingMDRef7untrackEv'/>
+<fun r='_ZN4llvm13TrackingMDRef7retrackERS0_'/>

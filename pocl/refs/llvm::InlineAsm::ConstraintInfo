@@ -1,0 +1,15 @@
+<def f='include/llvm-6.0/llvm/IR/InlineAsm.h' l='118' ll='172'/>
+<size>80</size>
+<mbr r='llvm::InlineAsm::ConstraintInfo::Type' o='0' t='llvm::InlineAsm::ConstraintPrefix'/>
+<mbr r='llvm::InlineAsm::ConstraintInfo::isEarlyClobber' o='32' t='bool'/>
+<mbr r='llvm::InlineAsm::ConstraintInfo::MatchingInput' o='64' t='int'/>
+<fun r='_ZNK4llvm9InlineAsm14ConstraintInfo16hasMatchingInputEv'/>
+<mbr r='llvm::InlineAsm::ConstraintInfo::isCommutative' o='96' t='bool'/>
+<mbr r='llvm::InlineAsm::ConstraintInfo::isIndirect' o='104' t='bool'/>
+<mbr r='llvm::InlineAsm::ConstraintInfo::Codes' o='128' t='ConstraintCodeVector'/>
+<mbr r='llvm::InlineAsm::ConstraintInfo::isMultipleAlternative' o='320' t='bool'/>
+<mbr r='llvm::InlineAsm::ConstraintInfo::multipleAlternatives' o='384' t='SubConstraintInfoVector'/>
+<mbr r='llvm::InlineAsm::ConstraintInfo::currentAlternativeIndex' o='576' t='unsigned int'/>
+<fun r='_ZN4llvm9InlineAsm14ConstraintInfoC1Ev'/>
+<fun r='_ZN4llvm9InlineAsm14ConstraintInfo5ParseENS_9StringRefERSt6vectorIS1_SaIS1_EE'/>
+<fun r='_ZN4llvm9InlineAsm14ConstraintInfo17selectAlternativeEj'/>

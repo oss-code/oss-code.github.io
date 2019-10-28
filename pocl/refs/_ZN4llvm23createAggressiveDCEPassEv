@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='90' type='llvm::FunctionPass * llvm::createAggressiveDCEPass()'/>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='66' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='84'>//===----------------------------------------------------------------------===//
+//
+// AggressiveDCE - This pass uses the SSA based Aggressive DCE algorithm.  This
+// algorithm assumes instructions are dead until proven otherwise, which makes
+// it more successful are removing non-obviously dead instructions.
+//</doc>

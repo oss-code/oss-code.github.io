@@ -1,0 +1,12 @@
+<def f='include/llvm-6.0/llvm/IR/DataLayout.h' l='403' ll='406' type='uint64_t llvm::DataLayout::getTypeAllocSize(llvm::Type * Ty) const'/>
+<use f='include/llvm-6.0/llvm/IR/DataLayout.h' l='414' u='c' c='_ZNK4llvm10DataLayout22getTypeAllocSizeInBitsEPNS_4TypeE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='690' u='c' c='_ZL18fixConstantMemArgsPN4llvm6ModuleEPKc'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='865' u='c' c='pocl_cuda_get_ptr_arg_alignment'/>
+<doc f='include/llvm-6.0/llvm/IR/DataLayout.h' l='398'>/// \brief Returns the offset in bytes between successive objects of the
+  /// specified type, including alignment padding.
+  ///
+  /// This is the amount that alloca reserves for this type. For example,
+  /// returns 12 or 16 for x86_fp80, depending on alignment.</doc>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='538' u='c' c='pocl_llvm_get_kernels_metadata'/>
+<use f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='274' u='c' c='_ZN4llvm13EmitGEPOffsetEPT_RKNS_10DataLayoutEPNS_4UserEb'/>
+<use f='pocl/lib/llvmopencl/WorkitemReplication.cc' l='181' u='c' c='_ZN4pocl19WorkitemReplication15ProcessFunctionERN4llvm8FunctionE'/>

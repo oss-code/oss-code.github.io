@@ -1,0 +1,8 @@
+<dec f='pocl/lib/llvmopencl/ParallelRegion.h' l='86' type='void pocl::ParallelRegion::InjectRegionPrintF()'/>
+<def f='pocl/lib/llvmopencl/ParallelRegion.cc' l='703' ll='728' type='void pocl::ParallelRegion::InjectRegionPrintF()'/>
+<doc f='pocl/lib/llvmopencl/ParallelRegion.cc' l='697'>/**
+ * Adds a printf to the end of the parallel region that prints the
+ * region ID and the work item ID. 
+ *
+ * Useful for debugging control flow bugs.
+ */</doc>

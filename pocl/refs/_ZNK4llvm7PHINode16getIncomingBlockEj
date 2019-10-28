@@ -1,0 +1,12 @@
+<def f='include/llvm-6.0/llvm/IR/Instructions.h' l='2698' ll='2700' type='llvm::BasicBlock * llvm::PHINode::getIncomingBlock(unsigned int i) const'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='2707' u='c' c='_ZNK4llvm7PHINode16getIncomingBlockERKNS_3UseE'/>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='2696'>/// Return incoming basic block number @p i.
+  ///</doc>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='248' u='c' c='_ZN4pocl22BarrierTailReplication11CleanupPHIsEPN4llvm10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='250' u='c' c='_ZN4pocl22BarrierTailReplication11CleanupPHIsEPN4llvm10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='303' u='c' c='_ZN17BreakConstantGEPs13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='307' u='c' c='_ZN17BreakConstantGEPs13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='307' u='c' c='_ZN17BreakConstantGEPs13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/PHIsToAllocas.cc' l='133' u='c' c='_ZN4pocl13PHIsToAllocas17BreakPHIToAllocasEPN4llvm7PHINodeE'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='116' u='c' c='_ZN4pocl15WorkitemHandler12dominatesUseEPN4llvm24DominatorTreeWrapperPassERNS1_11InstructionEj'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='1088' u='c' c='_ZN4pocl13WorkitemLoops21AddContextSaveRestoreEPN4llvm11InstructionE'/>

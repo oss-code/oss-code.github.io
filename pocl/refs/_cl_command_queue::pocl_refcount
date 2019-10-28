@@ -1,0 +1,21 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='201' type='volatile int'/>
+<offset>384</offset>
+<use f='pocl/lib/CL/clCreateCommandQueue.c' l='67' macro='1' u='w'/>
+<use f='pocl/lib/CL/clGetCommandQueueInfo.c' l='47' u='r' c='POclGetCommandQueueInfo'/>
+<use f='pocl/lib/CL/clReleaseCommandQueue.c' l='37' macro='1' u='r'/>
+<use f='pocl/lib/CL/clReleaseCommandQueue.c' l='37' macro='1' u='w'/>
+<use f='pocl/lib/CL/clReleaseCommandQueue.c' l='37' macro='1' u='r'/>
+<use f='pocl/lib/CL/clRetainCommandQueue.c' l='31' macro='1' u='r'/>
+<use f='pocl/lib/CL/clRetainCommandQueue.c' l='31' macro='1' u='w'/>
+<use f='pocl/lib/CL/clRetainCommandQueue.c' l='31' macro='1' u='r'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1467' macro='1' u='r'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1471' macro='1' u='r'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1475' macro='1' u='r'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='271' macro='1' u='r'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='277' macro='1' u='r'/>
+<use f='pocl/lib/CL/pocl_util.c' l='517' macro='1' u='r'/>
+<use f='pocl/lib/CL/pocl_util.c' l='523' macro='1' u='r'/>
+<use f='pocl/lib/CL/pocl_util.c' l='547' macro='1' u='r'/>
+<use f='pocl/lib/CL/pocl_util.c' l='570' macro='1' u='r'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1228' macro='1' u='r'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1262' macro='1' u='r'/>

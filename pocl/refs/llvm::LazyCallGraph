@@ -1,0 +1,85 @@
+<def f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='112' ll='1194'/>
+<size>832</size>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='66'>/// A lazily constructed view of the call graph of a module.
+///
+/// With the edges of this graph, the motivating constraint that we are
+/// attempting to maintain is that function-local optimization, CGSCC-local
+/// optimizations, and optimizations transforming a pair of functions connected
+/// by an edge in the graph, do not invalidate a bottom-up traversal of the SCC
+/// DAG. That is, no optimizations will delete, remove, or add an edge such
+/// that functions already visited in a bottom-up order of the SCC DAG are no
+/// longer valid to have visited, or such that functions not yet visited in
+/// a bottom-up order of the SCC DAG are not required to have already been
+/// visited.
+///
+/// Within this constraint, the desire is to minimize the merge points of the
+/// SCC DAG. The greater the fanout of the SCC DAG and the fewer merge points
+/// in the SCC DAG, the more independence there is in optimizing within it.
+/// There is a strong desire to enable parallelization of optimizations over
+/// the call graph, and both limited fanout and merge points will (artificially
+/// in some cases) limit the scaling of such an effort.
+///
+/// To this end, graph represents both direct and any potential resolution to
+/// an indirect call edge. Another way to think about it is that it represents
+/// both the direct call edges and any direct call edges that might be formed
+/// through static optimizations. Specifically, it considers taking the address
+/// of a function to be an edge in the call graph because this might be
+/// forwarded to become a direct call by some subsequent function-local
+/// optimization. The result is that the graph closely follows the use-def
+/// edges for functions. Walking &quot;up&quot; the graph can be done by looking at all
+/// of the uses of a function.
+///
+/// The roots of the call graph are the external functions and functions
+/// escaped into global variables. Those functions can be called from outside
+/// of the module or via unknowable means in the IR -- we may not be able to
+/// form even a potential call edge from a function body which may dynamically
+/// load the function and call it.
+///
+/// This analysis still requires updates to remain valid after optimizations
+/// which could potentially change the set of potential callees. The
+/// constraints it operates under only make the traversal order remain valid.
+///
+/// The entire analysis must be re-computed if full interprocedural
+/// optimizations run at any point. For example, globalopt completely
+/// invalidates the information in this analysis.
+///
+/// FIXME: This class is named LazyCallGraph in a lame attempt to distinguish
+/// it from the existing CallGraph. At some point, it is expected that this
+/// will be the only call graph and it will be renamed accordingly.</doc>
+<fun r='_ZN4llvm13LazyCallGraphC1ERNS_6ModuleERNS_17TargetLibraryInfoE'/>
+<fun r='_ZN4llvm13LazyCallGraphC1EOS0_'/>
+<fun r='_ZN4llvm13LazyCallGraphaSEOS0_'/>
+<fun r='_ZN4llvm13LazyCallGraph5beginEv'/>
+<fun r='_ZN4llvm13LazyCallGraph3endEv'/>
+<fun r='_ZN4llvm13LazyCallGraph12buildRefSCCsEv'/>
+<fun r='_ZN4llvm13LazyCallGraph23postorder_ref_scc_beginEv'/>
+<fun r='_ZN4llvm13LazyCallGraph21postorder_ref_scc_endEv'/>
+<fun r='_ZN4llvm13LazyCallGraph18postorder_ref_sccsEv'/>
+<fun r='_ZNK4llvm13LazyCallGraph6lookupERKNS_8FunctionE'/>
+<fun r='_ZNK4llvm13LazyCallGraph9lookupSCCERNS0_4NodeE'/>
+<fun r='_ZNK4llvm13LazyCallGraph12lookupRefSCCERNS0_4NodeE'/>
+<fun r='_ZN4llvm13LazyCallGraph3getERNS_8FunctionE'/>
+<fun r='_ZNK4llvm13LazyCallGraph15getLibFunctionsEv'/>
+<fun r='_ZNK4llvm13LazyCallGraph13isLibFunctionERNS_8FunctionE'/>
+<fun r='_ZN4llvm13LazyCallGraph10insertEdgeERNS0_4NodeES2_NS0_4Edge4KindE'/>
+<fun r='_ZN4llvm13LazyCallGraph10insertEdgeERNS_8FunctionES2_NS0_4Edge4KindE'/>
+<fun r='_ZN4llvm13LazyCallGraph10removeEdgeERNS0_4NodeES2_'/>
+<fun r='_ZN4llvm13LazyCallGraph10removeEdgeERNS_8FunctionES2_'/>
+<fun r='_ZN4llvm13LazyCallGraph18removeDeadFunctionERNS_8FunctionE'/>
+<fun r='_ZN4llvm13LazyCallGraph15visitReferencesERNS_15SmallVectorImplIPNS_8ConstantEEERNS_15SmallPtrSetImplIS3_EET_'/>
+<mbr r='llvm::LazyCallGraph::BPA' o='0' t='SpecificBumpPtrAllocator&lt;llvm::LazyCallGraph::Node&gt;'/>
+<mbr r='llvm::LazyCallGraph::NodeMap' o='1152' t='DenseMap&lt;const llvm::Function *, llvm::LazyCallGraph::Node *&gt;'/>
+<mbr r='llvm::LazyCallGraph::EntryEdges' o='1344' t='llvm::LazyCallGraph::EdgeSequence'/>
+<mbr r='llvm::LazyCallGraph::SCCBPA' o='1984' t='SpecificBumpPtrAllocator&lt;llvm::LazyCallGraph::SCC&gt;'/>
+<mbr r='llvm::LazyCallGraph::SCCMap' o='3136' t='DenseMap&lt;llvm::LazyCallGraph::Node *, llvm::LazyCallGraph::SCC *&gt;'/>
+<mbr r='llvm::LazyCallGraph::RefSCCBPA' o='3328' t='SpecificBumpPtrAllocator&lt;llvm::LazyCallGraph::RefSCC&gt;'/>
+<mbr r='llvm::LazyCallGraph::PostOrderRefSCCs' o='4480' t='SmallVector&lt;llvm::LazyCallGraph::RefSCC *, 16&gt;'/>
+<mbr r='llvm::LazyCallGraph::RefSCCIndices' o='5696' t='DenseMap&lt;llvm::LazyCallGraph::RefSCC *, int&gt;'/>
+<mbr r='llvm::LazyCallGraph::LibFunctions' o='5888' t='SmallSetVector&lt;llvm::Function *, 4&gt;'/>
+<fun r='_ZN4llvm13LazyCallGraph10insertIntoERNS_8FunctionERPNS0_4NodeE'/>
+<fun r='_ZN4llvm13LazyCallGraph15updateGraphPtrsEv'/>
+<fun r='_ZN4llvm13LazyCallGraph9createSCCEDpOT_'/>
+<fun r='_ZN4llvm13LazyCallGraph12createRefSCCEDpOT_'/>
+<fun r='_ZN4llvm13LazyCallGraph16buildGenericSCCsEOT_OT0_OT1_OT2_OT3_'/>
+<fun r='_ZN4llvm13LazyCallGraph9buildSCCsERNS0_6RefSCCENS_14iterator_rangeISt16reverse_iteratorIPPNS0_4NodeEEEE'/>
+<fun r='_ZN4llvm13LazyCallGraph14getRefSCCIndexERNS0_6RefSCCE'/>

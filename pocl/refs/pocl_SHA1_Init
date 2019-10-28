@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/pocl_hash.h' l='46' type='void pocl_SHA1_Init(SHA1_CTX * context)'/>
+<use f='pocl/lib/CL/devices/common.c' l='1324' u='c' c='pocl_calculate_kernel_hash'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='372' u='c' c='build_program_compute_hash'/>
+<def f='pocl/lib/CL/pocl_hash.c' l='163' ll='172' type='void pocl_SHA1_Init(SHA1_CTX * context)'/>
+<doc f='pocl/lib/CL/pocl_hash.c' l='162'>/* SHA1Init - Initialize new context */</doc>

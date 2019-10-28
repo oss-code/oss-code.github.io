@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/Constants.h' l='201' ll='203' type='bool llvm::ConstantInt::isOne() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='197'>/// This is just a convenience method to make client code smaller for a
+  /// common case. It also correctly performs the comparison without the
+  /// potential for an assertion from getZExtValue().
+  /// @brief Determine if the value is one.</doc>

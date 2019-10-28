@@ -1,0 +1,10 @@
+<dec f='pocl/include/CL/cl.h' l='1357' type='cl_int clGetEventProfilingInfo(cl_event event, cl_profiling_info param_name, size_t param_value_size, void * param_value, size_t * param_value_size_ret)'/>
+<doc f='pocl/include/CL/cl.h' l='1355'>/* Profiling APIs */</doc>
+<use f='pocl/examples/matrix1/matrix1.c' l='140' u='c' c='exec_matrix_kernel'/>
+<use f='pocl/examples/matrix1/matrix1.c' l='143' u='c' c='exec_matrix_kernel'/>
+<use f='pocl/lib/CL/pocl_intfn.h' l='84' c='POclGetEventProfilingInfo'/>
+<use f='pocl/include/CL/cl2.hpp' l='3160' u='a' c='_ZNK2cl5Event16getProfilingInfoEjPT_'/>
+<use f='pocl/tests/runtime/test_user_event.c' l='66' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_user_event.c' l='69' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_user_event.c' l='72' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_user_event.c' l='75' u='c' c='main'/>

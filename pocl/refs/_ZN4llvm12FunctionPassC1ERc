@@ -1,0 +1,20 @@
+<def f='include/llvm-6.0/llvm/Pass.h' l='287' type='void llvm::FunctionPass::FunctionPass(char &amp; pid)'/>
+<use f='include/llvm-6.0/llvm/Analysis/IntervalPartition.h' l='54' u='c' c='_ZN4llvm17IntervalPartitionC1Ev'/>
+<use f='include/llvm-6.0/llvm/IR/Dominators.h' l='273' u='c' c='_ZN4llvm24DominatorTreeWrapperPassC1Ev'/>
+<use f='include/llvm-6.0/llvm/Analysis/PostDominators.h' l='69' u='c' c='_ZN4llvm28PostDominatorTreeWrapperPassC1Ev'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='964' u='c' c='_ZN4llvm19LoopInfoWrapperPassC1Ev'/>
+<use f='include/llvm-6.0/llvm/Transforms/Utils/UnifyFunctionExitNodes.h' l='33' u='c' c='_ZN4llvm22UnifyFunctionExitNodesC1Ev'/>
+<use f='pocl/lib/llvmopencl/AllocasToEntry.cc' l='49' u='c' c='_ZN4pocl14AllocasToEntryC1Ev'/>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.h' l='46' u='c' c='_ZN4pocl22BarrierTailReplicationC1Ev'/>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.h' l='44' u='c' c='_ZN17BreakConstantGEPsC1Ev'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.h' l='39' u='c' c='_ZN4pocl20CanonicalizeBarriersC1Ev'/>
+<use f='pocl/lib/llvmopencl/HandleSamplerInitialization.cc' l='53' u='c' c='_ZN4pocl27HandleSamplerInitializationC1Ev'/>
+<use f='pocl/lib/llvmopencl/ImplicitConditionalBarriers.h' l='67' u='c' c='_ZN4pocl27ImplicitConditionalBarriersC1Ev'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopPass.h' l='166' u='c' c='_ZN4llvm21LCSSAVerificationPassC1Ev'/>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='48' u='c' c='_ZN4pocl25OptimizeWorkItemFuncCallsC1Ev'/>
+<use f='pocl/lib/llvmopencl/PHIsToAllocas.h' l='43' u='c' c='_ZN4pocl13PHIsToAllocasC1Ev'/>
+<use f='pocl/lib/llvmopencl/RemoveBarrierCalls.cc' l='48' u='c' c='_ZN4pocl18RemoveBarrierCallsC1Ev'/>
+<use f='pocl/lib/llvmopencl/RemoveOptnoneFromWIFunc.cc' l='46' u='c' c='_ZN4pocl23RemoveOptnoneFromWIFuncC1Ev'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='66' u='c' c='_ZN4pocl26VariableUniformityAnalysisC1Ev'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='101' u='c' c='_ZN21WorkItemAliasAnalysisC1Ev'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='71' u='c' c='_ZN4pocl15WorkitemHandlerC1ERc'/>

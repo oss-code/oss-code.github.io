@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='558' type='void llvm::Loop::getUniqueExitBlocks(SmallVectorImpl&lt;llvm::BasicBlock *&gt; &amp; ExitBlocks) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='554'>/// Return all unique successor blocks of this loop.
+  /// These are the blocks _outside of the current loop_ which are branched to.
+  /// This assumes that loop exits are in canonical form, i.e. all exits are
+  /// dedicated exits.</doc>

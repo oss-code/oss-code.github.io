@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Analysis/TargetLibraryInfo.h' l='359' ll='360' type='void llvm::TargetLibraryAnalysis::TargetLibraryAnalysis(llvm::TargetLibraryInfoImpl PresetInfoImpl)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetLibraryInfo.h' l='355'>/// Construct a library analysis with preset info.
+  ///
+  /// This will directly copy the preset info into the result without
+  /// consulting the module&apos;s triple.</doc>

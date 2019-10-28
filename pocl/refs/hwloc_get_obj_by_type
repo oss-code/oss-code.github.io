@@ -1,0 +1,9 @@
+<dec f='include/hwloc.h' l='1208' type='hwloc_obj_t hwloc_get_obj_by_type(hwloc_topology_t topology, hwloc_obj_type_t type, unsigned int idx)'/>
+<use f='include/hwloc/helper.h' l='622' u='c' c='hwloc_get_obj_below_by_type'/>
+<def f='include/hwloc/inlines.h' l='73' ll='82' type='hwloc_obj_t hwloc_get_obj_by_type(hwloc_topology_t topology, hwloc_obj_type_t type, unsigned int idx)'/>
+<doc f='include/hwloc.h' l='1201'>/** \brief Returns the topology object at logical index \p idx with type \p type
+ *
+ * If no object for that type exists, \c NULL is returned.
+ * If there are several levels with objects of that type, \c NULL is returned
+ * and ther caller may fallback to hwloc_get_obj_by_depth().
+ */</doc>

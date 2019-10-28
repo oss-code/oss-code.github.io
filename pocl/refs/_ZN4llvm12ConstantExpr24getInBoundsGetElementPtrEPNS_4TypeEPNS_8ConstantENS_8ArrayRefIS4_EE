@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/Constants.h' l='1142' ll='1145' type='static llvm::Constant * llvm::ConstantExpr::getInBoundsGetElementPtr(llvm::Type * Ty, llvm::Constant * C, ArrayRef&lt;llvm::Constant *&gt; IdxList)'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='1140'>/// Create an &quot;inbounds&quot; getelementptr. See the documentation for the
+  /// &quot;inbounds&quot; flag in LangRef.html for details.</doc>
+<use f='include/llvm-6.0/llvm/IR/ConstantFolder.h' l='161' u='c' c='_ZNK4llvm14ConstantFolder27CreateInBoundsGetElementPtrEPNS_4TypeEPNS_8ConstantENS_8ArrayRefIS4_EE'/>

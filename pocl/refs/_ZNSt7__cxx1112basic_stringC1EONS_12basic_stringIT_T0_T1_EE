@@ -1,0 +1,22 @@
+<def f='include/c++/7/bits/basic_string.h' l='531' ll='551' type='void std::__cxx11::basic_string::basic_string&lt;_CharT, _Traits, _Alloc&gt;(basic_string&lt;_CharT, _Traits, _Alloc&gt; &amp;&amp; __str)'/>
+<use f='include/llvm-6.0/llvm/Support/Error.h' l='1112' u='c' c='_ZN4llvm11ExitOnErrorC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1221' u='c' c='_ZN4llvm17OperandBundleDefTC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt6vectorIT_SaIS8_EE'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1223' u='c' c='_ZN4llvm17OperandBundleDefTC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEENS_8ArrayRefIT_EE'/>
+<use f='include/llvm-6.0/llvm/Support/FileSystem.h' l='869' u='c' c='_ZN4llvm3sys2fs15directory_entryC1ERKNS_5TwineEbNS1_17basic_file_statusE'/>
+<doc f='include/c++/7/bits/basic_string.h' l='524'>/**
+       *  @brief  Move construct string.
+       *  @param  __str  Source string.
+       *
+       *  The newly-created string contains the exact contents of @a __str.
+       *  @a __str is a valid, but unspecified string.
+       **/</doc>
+<use f='include/llvm-6.0/llvm/Support/SourceMgr.h' l='209' u='c' c='_ZN4llvm7SMFixItC1ENS_5SMLocERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/Support/SourceMgr.h' l='215' u='c' c='_ZN4llvm7SMFixItC1ENS_7SMRangeERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/Support/SourceMgr.h' l='249' u='c' c='_ZN4llvm12SMDiagnosticC1ENS_9StringRefENS_9SourceMgr8DiagKindES1_'/>
+<use f='include/llvm-6.0/llvm/Support/SourceMgr.h' l='249' u='c' c='_ZN4llvm12SMDiagnosticC1ENS_9StringRefENS_9SourceMgr8DiagKindES1_'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='331' u='c' c='pocl_llvm_build_program'/>
+<use f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='413' u='c' c='_ZN4llvm30DiagnosticInfoOptimizationBase8ArgumentC1ENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='423' u='c' c='_ZN4llvm30DiagnosticInfoOptimizationBase8ArgumentC1ENS_9StringRefEb'/>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='238' u='c' c='_Z13getDiagStringB5cxx11v'/>
+<use f='pocl/lib/llvmopencl/PHIsToAllocas.cc' l='119' u='c' c='_ZN4pocl13PHIsToAllocas17BreakPHIToAllocasEPN4llvm7PHINodeE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='856' u='c' c='_ZN4pocl13WorkitemLoops15GetContextArrayEPN4llvm11InstructionERb'/>

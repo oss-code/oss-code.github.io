@@ -1,0 +1,10 @@
+<inh f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='579' c='llvm::SCEVRewriteVisitor'/>
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='699' ll='725'/>
+<size>48</size>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='697'>/// The SCEVParameterRewriter takes a scalar evolution expression and updates
+  /// the SCEVUnknown components following the Map (Value -&gt; Value).</doc>
+<fun r='_ZN4llvm21SCEVParameterRewriter7rewriteEPKNS_4SCEVERNS_15ScalarEvolutionERNS_8DenseMapIPKNS_5ValueEPS7_NS_12DenseMapInfoIS9_EENS_6detail12DenseMapPairIS9_SA_EEEEb'/>
+<fun r='_ZN4llvm21SCEVParameterRewriterC1ERNS_15ScalarEvolutionERNS_8DenseMapIPKNS_5ValueEPS4_NS_12DenseMapInfoIS6_EENS_6detail12DenseMapPairIS6_S7_EEEEb'/>
+<fun r='_ZN4llvm21SCEVParameterRewriter12visitUnknownEPKNS_11SCEVUnknownE'/>
+<mbr r='llvm::SCEVParameterRewriter::Map' o='256' t='ValueToValueMap &amp;'/>
+<mbr r='llvm::SCEVParameterRewriter::InterpretConsts' o='320' t='bool'/>

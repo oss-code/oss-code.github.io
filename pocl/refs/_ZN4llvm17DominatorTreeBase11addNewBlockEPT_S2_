@@ -1,0 +1,11 @@
+<def f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='585' ll='592' type='DomTreeNodeBase&lt;NodeT&gt; * llvm::DominatorTreeBase::addNewBlock(NodeT * BB, NodeT * DomBB)'/>
+<use f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='815' u='c' c='_ZN4llvm17DominatorTreeBase5SplitENS_11GraphTraitsIT_E7NodeRefE'/>
+<doc f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='576'>/// Add a new node to the dominator tree information.
+  ///
+  /// This creates a new node as a child of DomBB dominator node, linking it
+  /// into the children list of the immediate dominator.
+  ///
+  /// \param BB New node in CFG.
+  /// \param DomBB CFG node that is dominator for BB.
+  /// \returns New dominator tree node that represents new CFG node.
+  ///</doc>

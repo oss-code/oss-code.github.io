@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>test_clSetEventCallback.c source code [pocl/tests/runtime/test_clSetEventCallback.c] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="main "/>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/tests/runtime/test_clSetEventCallback.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>tests</a>/<a href='./'>runtime</a>/<a href='test_clSetEventCallback.c.html'>test_clSetEventCallback.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Tests clSetEventCallback() </i></td></tr>
+<tr><th id="2">2</th><td><i></i></td></tr>
+<tr><th id="3">3</th><td><i>   Copyright (c) 2013 Ville Korhonen / Tampere University of Technology</i></td></tr>
+<tr><th id="4">4</th><td><i>   </i></td></tr>
+<tr><th id="5">5</th><td><i>   Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="6">6</th><td><i>   of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="7">7</th><td><i>   in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="8">8</th><td><i>   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="9">9</th><td><i>   copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="10">10</th><td><i>   furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="11">11</th><td><i>   </i></td></tr>
+<tr><th id="12">12</th><td><i>   The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="13">13</th><td><i>   all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="14">14</th><td><i>   </i></td></tr>
+<tr><th id="15">15</th><td><i>   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="16">16</th><td><i>   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="17">17</th><td><i>   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="18">18</th><td><i>   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="19">19</th><td><i>   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="20">20</th><td><i>   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="21">21</th><td><i>   THE SOFTWARE.</i></td></tr>
+<tr><th id="22">22</th><td><i>*/</i></td></tr>
+<tr><th id="23">23</th><td><u>#include <a href="../../include/CL/cl.h.html">&lt;CL/cl.h&gt;</a></u></td></tr>
+<tr><th id="24">24</th><td><u>#include <a href="../../../include/string.h.html">&lt;string.h&gt;</a></u></td></tr>
+<tr><th id="25">25</th><td><u>#include <a href="../../../include/stdio.h.html">&lt;stdio.h&gt;</a></u></td></tr>
+<tr><th id="26">26</th><td><u>#include <a href="../../../include/stdlib.h.html">&lt;stdlib.h&gt;</a></u></td></tr>
+<tr><th id="27">27</th><td><u>#include <a href="../../../include/unistd.h.html">&lt;unistd.h&gt;</a></u></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><u>#include <a href="../../../include/pthread.h.html">&lt;pthread.h&gt;</a></u></td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><u>#include <a href="../../include/poclu.h.html">"poclu.h"</a></u></td></tr>
+<tr><th id="32">32</th><td></td></tr>
+<tr><th id="33">33</th><td><em>int</em> <dfn class="decl def" id="submit" title='submit' data-ref="submit">submit</dfn> = <var>0</var>;</td></tr>
+<tr><th id="34">34</th><td><em>int</em> <dfn class="decl def" id="running" title='running' data-ref="running">running</dfn> = <var>0</var>;</td></tr>
+<tr><th id="35">35</th><td><em>int</em> <dfn class="decl def" id="complete" title='complete' data-ref="complete">complete</dfn> = <var>0</var>;</td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td><a class="typedef" href="../../../include/x86_64-linux-gnu/bits/pthreadtypes.h.html#pthread_mutex_t" title='pthread_mutex_t' data-type='union pthread_mutex_t' data-ref="pthread_mutex_t">pthread_mutex_t</a> <dfn class="decl def" id="mutex" title='mutex' data-ref="mutex">mutex</dfn> = <a class="macro" href="../../../include/pthread.h.html#86" title="{ { 0, 0, 0, 0, 0, 0, 0, { 0, 0 } } }" data-ref="_M/PTHREAD_MUTEX_INITIALIZER">PTHREAD_MUTEX_INITIALIZER</a>;</td></tr>
+<tr><th id="38">38</th><td><u>#define <dfn class="macro" id="_M/LOCK" data-ref="_M/LOCK">LOCK</dfn> <a class="ref" href="../../../include/pthread.h.html#pthread_mutex_lock" title='pthread_mutex_lock' data-ref="pthread_mutex_lock">pthread_mutex_lock</a>(&amp;<a class="ref" href="#mutex" title='mutex' data-ref="mutex">mutex</a>)</u></td></tr>
+<tr><th id="39">39</th><td><u>#define <dfn class="macro" id="_M/UNLOCK" data-ref="_M/UNLOCK">UNLOCK</dfn> <a class="ref" href="../../../include/pthread.h.html#pthread_mutex_unlock" title='pthread_mutex_unlock' data-ref="pthread_mutex_unlock">pthread_mutex_unlock</a>(&amp;<a class="ref" href="#mutex" title='mutex' data-ref="mutex">mutex</a>)</u></td></tr>
+<tr><th id="40">40</th><td></td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td><em>void</em> <dfn class="decl def" id="callback_function" title='callback_function' data-ref="callback_function">callback_function</dfn>(<a class="typedef" href="../../include/CL/cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> <dfn class="local col1 decl" id="1event" title='event' data-type='cl_event' data-ref="1event">event</dfn>, </td></tr>
+<tr><th id="43">43</th><td>                       <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a>   <dfn class="local col2 decl" id="2event_command_exec_status" title='event_command_exec_status' data-type='cl_int' data-ref="2event_command_exec_status">event_command_exec_status</dfn>, </td></tr>
+<tr><th id="44">44</th><td>                       <em>void</em>     *<dfn class="local col3 decl" id="3user_data" title='user_data' data-type='void *' data-ref="3user_data">user_data</dfn>)</td></tr>
+<tr><th id="45">45</th><td>{</td></tr>
+<tr><th id="46">46</th><td>  <a class="ref" href="../../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"%s "</q>, (<em>const</em> <em>char</em> *)<a class="local col3 ref" href="#3user_data" title='user_data' data-ref="3user_data">user_data</a>);</td></tr>
+<tr><th id="47">47</th><td>  <a class="macro" href="#38" title="pthread_mutex_lock(&amp;mutex)" data-ref="_M/LOCK">LOCK</a>;</td></tr>
+<tr><th id="48">48</th><td>  <b>if</b>(<a class="local col2 ref" href="#2event_command_exec_status" title='event_command_exec_status' data-ref="2event_command_exec_status">event_command_exec_status</a> == <a class="macro" href="../../include/CL/cl.h.html#830" title="0x2" data-ref="_M/CL_SUBMITTED">CL_SUBMITTED</a>)</td></tr>
+<tr><th id="49">49</th><td>    {</td></tr>
+<tr><th id="50">50</th><td>      <a class="ref" href="../../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"CL_SUBMITTED\n"</q>);</td></tr>
+<tr><th id="51">51</th><td>      <a class="ref" href="#submit" title='submit' data-ref="submit">submit</a> = <var>1</var>;</td></tr>
+<tr><th id="52">52</th><td>    }</td></tr>
+<tr><th id="53">53</th><td>  <b>if</b>(<a class="local col2 ref" href="#2event_command_exec_status" title='event_command_exec_status' data-ref="2event_command_exec_status">event_command_exec_status</a> == <a class="macro" href="../../include/CL/cl.h.html#829" title="0x1" data-ref="_M/CL_RUNNING">CL_RUNNING</a>)</td></tr>
+<tr><th id="54">54</th><td>    {</td></tr>
+<tr><th id="55">55</th><td>      <a class="ref" href="../../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"CL_RUNNING\n"</q>);</td></tr>
+<tr><th id="56">56</th><td>      <a class="ref" href="#running" title='running' data-ref="running">running</a> = <var>1</var>;</td></tr>
+<tr><th id="57">57</th><td>    }</td></tr>
+<tr><th id="58">58</th><td>  <b>if</b>(<a class="local col2 ref" href="#2event_command_exec_status" title='event_command_exec_status' data-ref="2event_command_exec_status">event_command_exec_status</a> == <a class="macro" href="../../include/CL/cl.h.html#828" title="0x0" data-ref="_M/CL_COMPLETE">CL_COMPLETE</a>)</td></tr>
+<tr><th id="59">59</th><td>    {</td></tr>
+<tr><th id="60">60</th><td>      <a class="ref" href="../../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"CL_COMPLETE\n"</q>);</td></tr>
+<tr><th id="61">61</th><td>      <a class="ref" href="#complete" title='complete' data-ref="complete">complete</a> = <var>1</var>;</td></tr>
+<tr><th id="62">62</th><td>    }</td></tr>
+<tr><th id="63">63</th><td>  <a class="macro" href="#39" title="pthread_mutex_unlock(&amp;mutex)" data-ref="_M/UNLOCK">UNLOCK</a>;</td></tr>
+<tr><th id="64">64</th><td>  <a class="ref" href="../../../include/stdio.h.html#fflush" title='fflush' data-ref="fflush">fflush</a>(<a class="macro" href="../../../include/stdio.h.html#173" title="stdout" data-ref="_M/stdout">stdout</a>);</td></tr>
+<tr><th id="65">65</th><td>  <b>return</b>;</td></tr>
+<tr><th id="66">66</th><td>}</td></tr>
+<tr><th id="67">67</th><td></td></tr>
+<tr><th id="68">68</th><td><i>/* TODO this test relied on output of printf() from kernel</i></td></tr>
+<tr><th id="69">69</th><td><i> * appearing in specific order WRT event state callbacks,</i></td></tr>
+<tr><th id="70">70</th><td><i> * which is likely UB. OpenCL states printf()</i></td></tr>
+<tr><th id="71">71</th><td><i> * should happen "at clFinish time" but AFAICT</i></td></tr>
+<tr><th id="72">72</th><td><i> * does not state, if it should happen before</i></td></tr>
+<tr><th id="73">73</th><td><i> * or after the event-completed callback call.</i></td></tr>
+<tr><th id="74">74</th><td><i> * -&gt; test disabled for now. */</i></td></tr>
+<tr><th id="75">75</th><td><em>char</em> <dfn class="decl def" id="kernelASourceCode" title='kernelASourceCode' data-ref="kernelASourceCode">kernelASourceCode</dfn>[] = </td></tr>
+<tr><th id="76">76</th><td><q>"kernel \n"</q></td></tr>
+<tr><th id="77">77</th><td><q>"void test_kernel(constant char* input) {\n"</q></td></tr>
+<tr><th id="78">78</th><td><q>"    if (input[0] == 'X') printf(\"match\");\n"</q></td></tr>
+<tr><th id="79">79</th><td><q>"}\n"</q>;</td></tr>
+<tr><th id="80">80</th><td></td></tr>
+<tr><th id="81">81</th><td><em>int</em> <dfn class="decl def" id="main" title='main' data-ref="main">main</dfn>()</td></tr>
+<tr><th id="82">82</th><td>{</td></tr>
+<tr><th id="83">83</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col4 decl" id="4global_work_size" title='global_work_size' data-type='size_t [1]' data-ref="4global_work_size">global_work_size</dfn>[<var>1</var>] = { <var>1</var> }, <dfn class="local col5 decl" id="5local_work_size" title='local_work_size' data-type='size_t [1]' data-ref="5local_work_size">local_work_size</dfn>[<var>1</var>]= { <var>1</var> };</td></tr>
+<tr><th id="84">84</th><td>  <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <dfn class="local col6 decl" id="6err" title='err' data-type='cl_int' data-ref="6err">err</dfn>;</td></tr>
+<tr><th id="85">85</th><td>  <a class="typedef" href="../../include/CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col7 decl" id="7program" title='program' data-type='cl_program' data-ref="7program">program</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="86">86</th><td>  <a class="typedef" href="../../include/CL/cl.h.html#cl_kernel" title='cl_kernel' data-type='struct _cl_kernel *' data-ref="cl_kernel">cl_kernel</a> <dfn class="local col8 decl" id="8kernel" title='kernel' data-type='cl_kernel' data-ref="8kernel">kernel</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="87">87</th><td>  <em>char</em> <dfn class="local col9 decl" id="9input" title='input' data-type='char [21]' data-ref="9input">input</dfn>[] = <q>"kernel in execution\n"</q>;</td></tr>
+<tr><th id="88">88</th><td>  <em>char</em> *<dfn class="local col0 decl" id="10user_data" title='user_data' data-type='char *' data-ref="10user_data">user_data</dfn> = <q>"Callback function: event status:"</q>;</td></tr>
+<tr><th id="89">89</th><td>  <a class="typedef" href="../../include/CL/cl.h.html#cl_mem" title='cl_mem' data-type='struct _cl_mem *' data-ref="cl_mem">cl_mem</a> <dfn class="local col1 decl" id="11inputBuffer" title='inputBuffer' data-type='cl_mem' data-ref="11inputBuffer">inputBuffer</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="90">90</th><td>  <i>/* events */</i></td></tr>
+<tr><th id="91">91</th><td>  <a class="typedef" href="../../include/CL/cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> <dfn class="local col2 decl" id="12an_event" title='an_event' data-type='cl_event' data-ref="12an_event">an_event</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="92">92</th><td>  <em>int</em> <dfn class="local col3 decl" id="13i" title='i' data-type='int' data-ref="13i">i</dfn>;</td></tr>
+<tr><th id="93">93</th><td></td></tr>
+<tr><th id="94">94</th><td>  <a class="typedef" href="../../include/CL/cl.h.html#cl_context" title='cl_context' data-type='struct _cl_context *' data-ref="cl_context">cl_context</a> <dfn class="local col4 decl" id="14context" title='context' data-type='cl_context' data-ref="14context">context</dfn>;</td></tr>
+<tr><th id="95">95</th><td>  <a class="typedef" href="../../include/CL/cl.h.html#cl_command_queue" title='cl_command_queue' data-type='struct _cl_command_queue *' data-ref="cl_command_queue">cl_command_queue</a> <dfn class="local col5 decl" id="15queue" title='queue' data-type='cl_command_queue' data-ref="15queue">queue</dfn>;</td></tr>
+<tr><th id="96">96</th><td>  <a class="typedef" href="../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="local col6 decl" id="16device" title='device' data-type='cl_device_id' data-ref="16device">device</dfn>;</td></tr>
+<tr><th id="97">97</th><td></td></tr>
+<tr><th id="98">98</th><td>  <a class="macro" href="../../include/poclu.h.html#142" title="do { if (check_cl_error (poclu_get_any_device(&amp;context, &amp;device, &amp;queue), 98, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a>(<a class="ref" href="../../include/poclu.h.html#poclu_get_any_device" title='poclu_get_any_device' data-ref="poclu_get_any_device">poclu_get_any_device</a>(&amp;<a class="local col4 ref" href="#14context" title='context' data-ref="14context">context</a>, &amp;<a class="local col6 ref" href="#16device" title='device' data-ref="16device">device</a>, &amp;<a class="local col5 ref" href="#15queue" title='queue' data-ref="15queue">queue</a>));</td></tr>
+<tr><th id="99">99</th><td>  <a class="macro" href="../../include/poclu.h.html#147" title="do { if (!(context)) { fprintf(stderr, &quot;Assertion: \n&quot; &quot;context&quot; &quot;\nfailed on %s:%i\n&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/tests/runtime/test_clSetEventCallback.c&quot;, 99); return 1; } } while (0)" data-ref="_M/TEST_ASSERT">TEST_ASSERT</a>( <a class="local col4 ref" href="#14context" title='context' data-ref="14context">context</a> );</td></tr>
+<tr><th id="100">100</th><td>  <a class="macro" href="../../include/poclu.h.html#147" title="do { if (!(device)) { fprintf(stderr, &quot;Assertion: \n&quot; &quot;device&quot; &quot;\nfailed on %s:%i\n&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/tests/runtime/test_clSetEventCallback.c&quot;, 100); return 1; } } while (0)" data-ref="_M/TEST_ASSERT">TEST_ASSERT</a>( <a class="local col6 ref" href="#16device" title='device' data-ref="16device">device</a> );</td></tr>
+<tr><th id="101">101</th><td>  <a class="macro" href="../../include/poclu.h.html#147" title="do { if (!(queue)) { fprintf(stderr, &quot;Assertion: \n&quot; &quot;queue&quot; &quot;\nfailed on %s:%i\n&quot;, &quot;/opt/src/oss-code.github.io/src/pocl/tests/runtime/test_clSetEventCallback.c&quot;, 101); return 1; } } while (0)" data-ref="_M/TEST_ASSERT">TEST_ASSERT</a>( <a class="local col5 ref" href="#15queue" title='queue' data-ref="15queue">queue</a> );</td></tr>
+<tr><th id="102">102</th><td></td></tr>
+<tr><th id="103">103</th><td>  <a class="macro" href="../../include/poclu.h.html#142" title="do { if (check_cl_error (clGetContextInfo(context, 0x1081, sizeof(cl_device_id), &amp;device, ((void*)0)), 104, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a>(<a class="ref" href="../../include/CL/cl.h.html#clGetContextInfo" title='clGetContextInfo' data-ref="clGetContextInfo">clGetContextInfo</a>(<a class="local col4 ref" href="#14context" title='context' data-ref="14context">context</a>, <a class="macro" href="../../include/CL/cl.h.html#426" title="0x1081" data-ref="_M/CL_CONTEXT_DEVICES">CL_CONTEXT_DEVICES</a>,</td></tr>
+<tr><th id="104">104</th><td>                         <b>sizeof</b>(<a class="typedef" href="../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a>), &amp;<a class="local col6 ref" href="#16device" title='device' data-ref="16device">device</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>));</td></tr>
+<tr><th id="105">105</th><td></td></tr>
+<tr><th id="106">106</th><td>  <a class="local col1 ref" href="#11inputBuffer" title='inputBuffer' data-ref="11inputBuffer">inputBuffer</a> = <a class="ref" href="../../include/CL/cl.h.html#clCreateBuffer" title='clCreateBuffer' data-ref="clCreateBuffer">clCreateBuffer</a>(<a class="local col4 ref" href="#14context" title='context' data-ref="14context">context</a>, </td></tr>
+<tr><th id="107">107</th><td>                               <a class="macro" href="../../include/CL/cl.h.html#485" title="(1 &lt;&lt; 2)" data-ref="_M/CL_MEM_READ_ONLY">CL_MEM_READ_ONLY</a> | <a class="macro" href="../../include/CL/cl.h.html#488" title="(1 &lt;&lt; 5)" data-ref="_M/CL_MEM_COPY_HOST_PTR">CL_MEM_COPY_HOST_PTR</a>, </td></tr>
+<tr><th id="108">108</th><td>                               <a class="ref" href="../../../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col9 ref" href="#9input" title='input' data-ref="9input">input</a>)+<var>1</var>, (<em>void</em> *) <a class="local col9 ref" href="#9input" title='input' data-ref="9input">input</a>, &amp;<a class="local col6 ref" href="#6err" title='err' data-ref="6err">err</a>);</td></tr>
+<tr><th id="109">109</th><td>  <a class="macro" href="../../include/poclu.h.html#144" title="do { if (check_cl_error (err, 109, &quot;clCreateBuffer&quot;)) return (1); } while (0)" data-ref="_M/CHECK_OPENCL_ERROR_IN">CHECK_OPENCL_ERROR_IN</a>(<q>"clCreateBuffer"</q>);</td></tr>
+<tr><th id="110">110</th><td></td></tr>
+<tr><th id="111">111</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col7 decl" id="17kernel_size" title='kernel_size' data-type='size_t' data-ref="17kernel_size">kernel_size</dfn> = <a class="ref" href="../../../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="ref" href="#kernelASourceCode" title='kernelASourceCode' data-ref="kernelASourceCode">kernelASourceCode</a>);</td></tr>
+<tr><th id="112">112</th><td>  <em>char</em>* <dfn class="local col8 decl" id="18kernel_buffer" title='kernel_buffer' data-type='char *' data-ref="18kernel_buffer">kernel_buffer</dfn> = <a class="ref" href="#kernelASourceCode" title='kernelASourceCode' data-ref="kernelASourceCode">kernelASourceCode</a>;</td></tr>
+<tr><th id="113">113</th><td>  </td></tr>
+<tr><th id="114">114</th><td>  <a class="local col7 ref" href="#7program" title='program' data-ref="7program">program</a> = <a class="ref" href="../../include/CL/cl.h.html#clCreateProgramWithSource" title='clCreateProgramWithSource' data-ref="clCreateProgramWithSource">clCreateProgramWithSource</a> (<a class="local col4 ref" href="#14context" title='context' data-ref="14context">context</a>, <var>1</var>, </td></tr>
+<tr><th id="115">115</th><td>                                       (<em>const</em> <em>char</em>**)&amp;<a class="local col8 ref" href="#18kernel_buffer" title='kernel_buffer' data-ref="18kernel_buffer">kernel_buffer</a>, </td></tr>
+<tr><th id="116">116</th><td>                                       &amp;<a class="local col7 ref" href="#17kernel_size" title='kernel_size' data-ref="17kernel_size">kernel_size</a>, &amp;<a class="local col6 ref" href="#6err" title='err' data-ref="6err">err</a>);</td></tr>
+<tr><th id="117">117</th><td>  <a class="macro" href="../../include/poclu.h.html#144" title="do { if (check_cl_error (err, 117, &quot;clCreateProgramWithSource&quot;)) return (1); } while (0)" data-ref="_M/CHECK_OPENCL_ERROR_IN">CHECK_OPENCL_ERROR_IN</a>(<q>"clCreateProgramWithSource"</q>);</td></tr>
+<tr><th id="118">118</th><td></td></tr>
+<tr><th id="119">119</th><td>  <a class="macro" href="../../include/poclu.h.html#142" title="do { if (check_cl_error (clBuildProgram (program, 1, &amp;device, ((void*)0), ((void*)0), ((void*)0)), 119, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a>(<a class="ref" href="../../include/CL/cl.h.html#clBuildProgram" title='clBuildProgram' data-ref="clBuildProgram">clBuildProgram</a> (<a class="local col7 ref" href="#7program" title='program' data-ref="7program">program</a>, <var>1</var>, &amp;<a class="local col6 ref" href="#16device" title='device' data-ref="16device">device</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>));</td></tr>
+<tr><th id="120">120</th><td></td></tr>
+<tr><th id="121">121</th><td>  <a class="local col8 ref" href="#8kernel" title='kernel' data-ref="8kernel">kernel</a> = <a class="ref" href="../../include/CL/cl.h.html#clCreateKernel" title='clCreateKernel' data-ref="clCreateKernel">clCreateKernel</a> (<a class="local col7 ref" href="#7program" title='program' data-ref="7program">program</a>, <q>"test_kernel"</q>, &amp;<a class="local col6 ref" href="#6err" title='err' data-ref="6err">err</a>);</td></tr>
+<tr><th id="122">122</th><td>  <a class="macro" href="../../include/poclu.h.html#144" title="do { if (check_cl_error (err, 122, &quot;clCreateKernel&quot;)) return (1); } while (0)" data-ref="_M/CHECK_OPENCL_ERROR_IN">CHECK_OPENCL_ERROR_IN</a>(<q>"clCreateKernel"</q>);</td></tr>
+<tr><th id="123">123</th><td>  </td></tr>
+<tr><th id="124">124</th><td>  <a class="macro" href="../../include/poclu.h.html#142" title="do { if (check_cl_error (clSetKernelArg (kernel, 0, sizeof (cl_mem), &amp;inputBuffer), 124, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a>(<a class="ref" href="../../include/CL/cl.h.html#clSetKernelArg" title='clSetKernelArg' data-ref="clSetKernelArg">clSetKernelArg</a> (<a class="local col8 ref" href="#8kernel" title='kernel' data-ref="8kernel">kernel</a>, <var>0</var>, <b>sizeof</b> (<a class="typedef" href="../../include/CL/cl.h.html#cl_mem" title='cl_mem' data-type='struct _cl_mem *' data-ref="cl_mem">cl_mem</a>), &amp;<a class="local col1 ref" href="#11inputBuffer" title='inputBuffer' data-ref="11inputBuffer">inputBuffer</a>));</td></tr>
+<tr><th id="125">125</th><td> </td></tr>
+<tr><th id="126">126</th><td>  <i>/* launch kernel*/</i></td></tr>
+<tr><th id="127">127</th><td>  <a class="macro" href="../../include/poclu.h.html#142" title="do { if (check_cl_error (clEnqueueNDRangeKernel (queue, kernel, 1, ((void*)0), global_work_size, local_work_size, 0, ((void*)0), &amp;an_event), 128, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a>(<a class="ref" href="../../include/CL/cl.h.html#clEnqueueNDRangeKernel" title='clEnqueueNDRangeKernel' data-ref="clEnqueueNDRangeKernel">clEnqueueNDRangeKernel</a> (<a class="local col5 ref" href="#15queue" title='queue' data-ref="15queue">queue</a>, <a class="local col8 ref" href="#8kernel" title='kernel' data-ref="8kernel">kernel</a>, <var>1</var>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <a class="local col4 ref" href="#4global_work_size" title='global_work_size' data-ref="4global_work_size">global_work_size</a>,</td></tr>
+<tr><th id="128">128</th><td>                                <a class="local col5 ref" href="#5local_work_size" title='local_work_size' data-ref="5local_work_size">local_work_size</a>, <var>0</var>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, &amp;<a class="local col2 ref" href="#12an_event" title='an_event' data-ref="12an_event">an_event</a>));</td></tr>
+<tr><th id="129">129</th><td></td></tr>
+<tr><th id="130">130</th><td>  <a class="macro" href="../../include/poclu.h.html#142" title="do { if (check_cl_error (clSetEventCallback(an_event, 0x2, callback_function, user_data), 130, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a>(<a class="ref" href="../../include/CL/cl.h.html#clSetEventCallback" title='clSetEventCallback' data-ref="clSetEventCallback">clSetEventCallback</a>(<a class="local col2 ref" href="#12an_event" title='an_event' data-ref="12an_event">an_event</a>, <a class="macro" href="../../include/CL/cl.h.html#830" title="0x2" data-ref="_M/CL_SUBMITTED">CL_SUBMITTED</a>, <a class="ref" href="#callback_function" title='callback_function' data-ref="callback_function">callback_function</a>, <a class="local col0 ref" href="#10user_data" title='user_data' data-ref="10user_data">user_data</a>));</td></tr>
+<tr><th id="131">131</th><td>  <a class="macro" href="../../include/poclu.h.html#142" title="do { if (check_cl_error (clSetEventCallback(an_event, 0x1, callback_function, user_data), 131, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a>(<a class="ref" href="../../include/CL/cl.h.html#clSetEventCallback" title='clSetEventCallback' data-ref="clSetEventCallback">clSetEventCallback</a>(<a class="local col2 ref" href="#12an_event" title='an_event' data-ref="12an_event">an_event</a>, <a class="macro" href="../../include/CL/cl.h.html#829" title="0x1" data-ref="_M/CL_RUNNING">CL_RUNNING</a>, <a class="ref" href="#callback_function" title='callback_function' data-ref="callback_function">callback_function</a>, <a class="local col0 ref" href="#10user_data" title='user_data' data-ref="10user_data">user_data</a>));</td></tr>
+<tr><th id="132">132</th><td>  <a class="macro" href="../../include/poclu.h.html#142" title="do { if (check_cl_error (clSetEventCallback(an_event, 0x0, callback_function, user_data), 132, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a>(<a class="ref" href="../../include/CL/cl.h.html#clSetEventCallback" title='clSetEventCallback' data-ref="clSetEventCallback">clSetEventCallback</a>(<a class="local col2 ref" href="#12an_event" title='an_event' data-ref="12an_event">an_event</a>, <a class="macro" href="../../include/CL/cl.h.html#828" title="0x0" data-ref="_M/CL_COMPLETE">CL_COMPLETE</a>, <a class="ref" href="#callback_function" title='callback_function' data-ref="callback_function">callback_function</a>, <a class="local col0 ref" href="#10user_data" title='user_data' data-ref="10user_data">user_data</a>));</td></tr>
+<tr><th id="133">133</th><td></td></tr>
+<tr><th id="134">134</th><td>  <a class="macro" href="../../include/poclu.h.html#142" title="do { if (check_cl_error (clFinish(queue), 134, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a>(<a class="ref" href="../../include/CL/cl.h.html#clFinish" title='clFinish' data-ref="clFinish">clFinish</a>(<a class="local col5 ref" href="#15queue" title='queue' data-ref="15queue">queue</a>));</td></tr>
+<tr><th id="135">135</th><td></td></tr>
+<tr><th id="136">136</th><td>  <a class="local col3 ref" href="#13i" title='i' data-ref="13i">i</a> = <var>0</var>;</td></tr>
+<tr><th id="137">137</th><td>  <a class="macro" href="#38" title="pthread_mutex_lock(&amp;mutex)" data-ref="_M/LOCK">LOCK</a>;</td></tr>
+<tr><th id="138">138</th><td>  <em>int</em> <dfn class="local col9 decl" id="19all_done" title='all_done' data-type='int' data-ref="19all_done">all_done</dfn> = <a class="ref" href="#submit" title='submit' data-ref="submit">submit</a> + <a class="ref" href="#running" title='running' data-ref="running">running</a> + <a class="ref" href="#complete" title='complete' data-ref="complete">complete</a>;</td></tr>
+<tr><th id="139">139</th><td>  <a class="macro" href="#39" title="pthread_mutex_unlock(&amp;mutex)" data-ref="_M/UNLOCK">UNLOCK</a>;</td></tr>
+<tr><th id="140">140</th><td>  <b>while</b> (<a class="local col9 ref" href="#19all_done" title='all_done' data-ref="19all_done">all_done</a> != <var>3</var>)</td></tr>
+<tr><th id="141">141</th><td>    {</td></tr>
+<tr><th id="142">142</th><td>      <a class="ref" href="../../../include/unistd.h.html#sleep" title='sleep' data-ref="sleep">sleep</a>(<var>1</var>);</td></tr>
+<tr><th id="143">143</th><td>      ++<a class="local col3 ref" href="#13i" title='i' data-ref="13i">i</a>;</td></tr>
+<tr><th id="144">144</th><td>      <b>if</b> (<a class="local col3 ref" href="#13i" title='i' data-ref="13i">i</a> &gt;= <var>10</var>)</td></tr>
+<tr><th id="145">145</th><td>        {</td></tr>
+<tr><th id="146">146</th><td>          <a class="ref" href="../../../include/stdio.h.html#puts" title='puts' data-ref="puts">puts</a>(<q>"Callback functions were not called in 10s -&gt; assume FAIL\n"</q>);</td></tr>
+<tr><th id="147">147</th><td>          <b>return</b> <a class="macro" href="../../../include/stdlib.h.html#133" title="1" data-ref="_M/EXIT_FAILURE">EXIT_FAILURE</a>;</td></tr>
+<tr><th id="148">148</th><td>        }</td></tr>
+<tr><th id="149">149</th><td>      <a class="macro" href="#38" title="pthread_mutex_lock(&amp;mutex)" data-ref="_M/LOCK">LOCK</a>;</td></tr>
+<tr><th id="150">150</th><td>      <a class="local col9 ref" href="#19all_done" title='all_done' data-ref="19all_done">all_done</a> = <a class="ref" href="#submit" title='submit' data-ref="submit">submit</a> + <a class="ref" href="#running" title='running' data-ref="running">running</a> + <a class="ref" href="#complete" title='complete' data-ref="complete">complete</a>;</td></tr>
+<tr><th id="151">151</th><td>      <a class="macro" href="#39" title="pthread_mutex_unlock(&amp;mutex)" data-ref="_M/UNLOCK">UNLOCK</a>;</td></tr>
+<tr><th id="152">152</th><td>    }</td></tr>
+<tr><th id="153">153</th><td></td></tr>
+<tr><th id="154">154</th><td>  <a class="macro" href="../../include/poclu.h.html#142" title="do { if (check_cl_error (clReleaseEvent (an_event), 154, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a> (<a class="ref" href="../../include/CL/cl.h.html#clReleaseEvent" title='clReleaseEvent' data-ref="clReleaseEvent">clReleaseEvent</a> (<a class="local col2 ref" href="#12an_event" title='an_event' data-ref="12an_event">an_event</a>));</td></tr>
+<tr><th id="155">155</th><td></td></tr>
+<tr><th id="156">156</th><td>  <a class="macro" href="../../include/poclu.h.html#142" title="do { if (check_cl_error (clReleaseCommandQueue (queue), 156, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a> (<a class="ref" href="../../include/CL/cl.h.html#clReleaseCommandQueue" title='clReleaseCommandQueue' data-ref="clReleaseCommandQueue">clReleaseCommandQueue</a> (<a class="local col5 ref" href="#15queue" title='queue' data-ref="15queue">queue</a>));</td></tr>
+<tr><th id="157">157</th><td>  <a class="macro" href="../../include/poclu.h.html#142" title="do { if (check_cl_error (clReleaseMemObject (inputBuffer), 157, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a> (<a class="ref" href="../../include/CL/cl.h.html#clReleaseMemObject" title='clReleaseMemObject' data-ref="clReleaseMemObject">clReleaseMemObject</a> (<a class="local col1 ref" href="#11inputBuffer" title='inputBuffer' data-ref="11inputBuffer">inputBuffer</a>));</td></tr>
+<tr><th id="158">158</th><td></td></tr>
+<tr><th id="159">159</th><td>  <a class="macro" href="../../include/poclu.h.html#142" title="do { if (check_cl_error (clReleaseKernel (kernel), 159, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a> (<a class="ref" href="../../include/CL/cl.h.html#clReleaseKernel" title='clReleaseKernel' data-ref="clReleaseKernel">clReleaseKernel</a> (<a class="local col8 ref" href="#8kernel" title='kernel' data-ref="8kernel">kernel</a>));</td></tr>
+<tr><th id="160">160</th><td>  <a class="macro" href="../../include/poclu.h.html#142" title="do { if (check_cl_error (clReleaseProgram (program), 160, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a> (<a class="ref" href="../../include/CL/cl.h.html#clReleaseProgram" title='clReleaseProgram' data-ref="clReleaseProgram">clReleaseProgram</a> (<a class="local col7 ref" href="#7program" title='program' data-ref="7program">program</a>));</td></tr>
+<tr><th id="161">161</th><td></td></tr>
+<tr><th id="162">162</th><td>  <a class="macro" href="../../include/poclu.h.html#142" title="do { if (check_cl_error (clReleaseContext (context), 162, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a> (<a class="ref" href="../../include/CL/cl.h.html#clReleaseContext" title='clReleaseContext' data-ref="clReleaseContext">clReleaseContext</a> (<a class="local col4 ref" href="#14context" title='context' data-ref="14context">context</a>));</td></tr>
+<tr><th id="163">163</th><td>  <a class="macro" href="../../include/poclu.h.html#142" title="do { if (check_cl_error (clUnloadCompiler (), 163, __PRETTY_FUNCTION__)) return (1); } while (0)" data-ref="_M/CHECK_CL_ERROR">CHECK_CL_ERROR</a> (<a class="ref" href="../../include/CL/cl.h.html#clUnloadCompiler" title='clUnloadCompiler' data-ref="clUnloadCompiler">clUnloadCompiler</a> ());</td></tr>
+<tr><th id="164">164</th><td></td></tr>
+<tr><th id="165">165</th><td>  <b>return</b> <a class="macro" href="../../../include/stdlib.h.html#134" title="0" data-ref="_M/EXIT_SUCCESS">EXIT_SUCCESS</a>;</td></tr>
+<tr><th id="166">166</th><td></td></tr>
+<tr><th id="167">167</th><td>}</td></tr>
+<tr><th id="168">168</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

@@ -1,0 +1,3 @@
+<def f='include/llvm-6.0/llvm/Support/Allocator.h' l='155' ll='164' type='void llvm::BumpPtrAllocatorImpl::BumpPtrAllocatorImpl&lt;AllocatorT, SlabSize, SizeThreshold&gt;(BumpPtrAllocatorImpl&lt;AllocatorT, SlabSize, SizeThreshold&gt; &amp;&amp; Old)'/>
+<doc f='include/llvm-6.0/llvm/Support/Allocator.h' l='153'>// Manually implement a move constructor as we must clear the old allocator&apos;s
+  // slabs as a matter of correctness.</doc>

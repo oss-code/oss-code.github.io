@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Support/Registry.h' l='99' type='static llvm::Registry::iterator llvm::Registry::begin()'/>
+<use f='include/llvm-6.0/llvm/Support/Registry.h' l='103' u='c' c='_ZN4llvm8Registry7entriesEv'/>
+<doc f='include/llvm-6.0/llvm/Support/Registry.h' l='97'>// begin is not defined here in order to avoid usage of an undefined static
+    // data member, instead it&apos;s instantiated by LLVM_INSTANTIATE_REGISTRY.</doc>

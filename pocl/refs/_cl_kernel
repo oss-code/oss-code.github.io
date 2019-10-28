@@ -1,0 +1,11 @@
+<def f='pocl/lib/CL/pocl_cl.h' l='1110' ll='1124'/>
+<size>104</size>
+<mbr r='_cl_kernel::dispatch' o='0' t='struct _cl_icd_dispatch *'/>
+<mbr r='_cl_kernel::pocl_lock' o='64' t='pocl_lock_t'/>
+<mbr r='_cl_kernel::pocl_refcount' o='384' t='volatile int'/>
+<mbr r='_cl_kernel::context' o='448' t='cl_context'/>
+<mbr r='_cl_kernel::program' o='512' t='cl_program'/>
+<mbr r='_cl_kernel::meta' o='576' t='pocl_kernel_metadata_t *'/>
+<mbr r='_cl_kernel::name' o='640' t='const char *'/>
+<mbr r='_cl_kernel::dyn_arguments' o='704' t='struct pocl_argument *'/>
+<mbr r='_cl_kernel::next' o='768' t='struct _cl_kernel *'/>

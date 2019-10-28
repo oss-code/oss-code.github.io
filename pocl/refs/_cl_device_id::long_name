@@ -1,0 +1,21 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='731' type='char *'/>
+<offset>4096</offset>
+<use f='pocl/lib/CL/clCreateContext.c' l='193' u='r' c='POclCreateContext'/>
+<use f='pocl/lib/CL/clCreateContext.c' l='198' u='r' c='POclCreateContext'/>
+<use f='pocl/lib/CL/clCreateProgramWithBinary.c' l='77' u='r' c='create_program_skeleton'/>
+<use f='pocl/lib/CL/clEnqueueFillImage.c' l='57' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='79' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='489' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueReadImage.c' l='68' macro='1' u='r'/>
+<use f='pocl/lib/CL/clEnqueueWriteImage.c' l='42' macro='1' u='r'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='199' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='199' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/devices/cpuinfo.c' l='297' u='w' c='pocl_cpuinfo_get_cpu_name_and_vendor'/>
+<use f='pocl/lib/CL/devices/cpuinfo.c' l='399' u='w' c='pocl_cpuinfo_get_cpu_name_and_vendor'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='202' u='w' c='pocl_cuda_init'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='205' u='r' c='pocl_cuda_init'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='207' u='r' c='pocl_cuda_init'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='446' u='r' c='pocl_cuda_uninit'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='446' u='w' c='pocl_cuda_uninit'/>
+<use f='pocl/lib/CL/pocl_img_buf_cpy.c' l='85' macro='1' u='r'/>
+<use f='pocl/lib/CL/pocl_img_buf_cpy.c' l='103' macro='1' u='r'/>

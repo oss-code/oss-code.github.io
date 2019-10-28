@@ -1,0 +1,22 @@
+<inh f='include/llvm-6.0/llvm/IR/PassManager.h' l='382' c='llvm::AnalysisInfoMixin'/>
+<def f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='1000' ll='1049'/>
+<size>56</size>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='988'>/// A manager for alias analyses.
+///
+/// This class can have analyses registered with it and when run, it will run
+/// all of them and aggregate their results into single AA results interface
+/// that dispatches across all of the alias analysis results available.
+///
+/// Note that the order in which analyses are registered is very significant.
+/// That is the order in which the results will be aggregated and queried.
+///
+/// This manager effectively wraps the AnalysisManager for registering alias
+/// analyses. When you register your alias analysis with this manager, it will
+/// ensure the analysis itself is registered with its AnalysisManager.</doc>
+<fun r='_ZN4llvm9AAManager24registerFunctionAnalysisEv'/>
+<fun r='_ZN4llvm9AAManager22registerModuleAnalysisEv'/>
+<fun r='_ZN4llvm9AAManager3runERNS_8FunctionERNS_15AnalysisManagerIS1_JEEE'/>
+<smbr r='llvm::AAManager::Key' t='llvm::AnalysisKey'/>
+<mbr r='llvm::AAManager::ResultGetters' o='0' t='SmallVector&lt;void (*)(llvm::Function &amp;, FunctionAnalysisManager &amp;, llvm::AAResults &amp;), 4&gt;'/>
+<fun r='_ZN4llvm9AAManager23getFunctionAAResultImplERNS_8FunctionERNS_15AnalysisManagerIS1_JEEERNS_9AAResultsE'/>
+<fun r='_ZN4llvm9AAManager21getModuleAAResultImplERNS_8FunctionERNS_15AnalysisManagerIS1_JEEERNS_9AAResultsE'/>

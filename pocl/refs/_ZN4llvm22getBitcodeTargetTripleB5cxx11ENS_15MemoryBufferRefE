@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Bitcode/BitcodeReader.h' l='154' type='Expected&lt;std::string&gt; llvm::getBitcodeTargetTriple(llvm::MemoryBufferRef Buffer)'/>
+<doc f='include/llvm-6.0/llvm/Bitcode/BitcodeReader.h' l='151'>/// Read the header of the specified bitcode buffer and extract just the
+  /// triple information. If successful, this returns a string. On error, this
+  /// returns &quot;&quot;.</doc>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='99' u='c' c='_Z15getModuleTriplePKcmRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>

@@ -1,0 +1,11 @@
+<def f='pocl/include/pocl_context.h' l='45' ll='53'/>
+<size>96</size>
+<doc f='pocl/include/pocl_context.h' l='43'>/* The default pocl_context is 64b. It should be copied to a 32b one
+   when launching a kernel for a 32b target. */</doc>
+<mbr r='pocl_context::num_groups' o='0' t='ulong [3]'/>
+<mbr r='pocl_context::global_offset' o='192' t='ulong [3]'/>
+<mbr r='pocl_context::local_size' o='384' t='ulong [3]'/>
+<mbr r='pocl_context::printf_buffer' o='576' t='uchar *'/>
+<mbr r='pocl_context::printf_buffer_position' o='640' t='uint *'/>
+<mbr r='pocl_context::printf_buffer_capacity' o='704' t='uint'/>
+<mbr r='pocl_context::work_dim' o='736' t='uint'/>

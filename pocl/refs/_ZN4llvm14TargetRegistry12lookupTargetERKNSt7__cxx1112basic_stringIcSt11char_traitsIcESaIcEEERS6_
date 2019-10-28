@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='620' type='static const llvm::Target * llvm::TargetRegistry::lookupTarget(const std::string &amp; Triple, std::string &amp; Error)'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='115' u='c' c='pocl_ptx_gen'/>
+<doc f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='615'>/// lookupTarget - Lookup a target based on a target triple.
+  ///
+  /// \param Triple - The triple to use for finding a target.
+  /// \param Error - On failure, an error string describing why no target was
+  /// found.</doc>

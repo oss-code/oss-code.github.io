@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='349' type='void llvm::BasicBlock::removePredecessor(llvm::BasicBlock * Pred, bool DontDeleteUselessPHIs = false)'/>
+<doc f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='343'>/// \brief Notify the BasicBlock that the predecessor \p Pred is no longer
+  /// able to reach it.
+  ///
+  /// This is actually not used to update the Predecessor list, but is actually
+  /// used to update the PHI nodes that reside in the block.  Note that this
+  /// should be called while the predecessor still refers to this block.</doc>

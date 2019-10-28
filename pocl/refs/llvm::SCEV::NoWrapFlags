@@ -1,0 +1,19 @@
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='111' ll='117'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='93'>/// NoWrapFlags are bitfield indices into SubclassData.
+  ///
+  /// Add and Mul expressions may have no-unsigned-wrap &lt;NUW&gt; or
+  /// no-signed-wrap &lt;NSW&gt; properties, which are derived from the IR
+  /// operator. NSW is a misnomer that we use to mean no signed overflow or
+  /// underflow.
+  ///
+  /// AddRec expressions may have a no-self-wraparound &lt;NW&gt; property if, in
+  /// the integer domain, abs(step) * max-iteration(loop) &lt;=
+  /// unsigned-max(bitwidth).  This means that the recurrence will never reach
+  /// its start value if the step is non-zero.  Computing the same value on
+  /// each iteration is not considered wrapping, and recurrences with step = 0
+  /// are trivially &lt;NW&gt;.  &lt;NW&gt; is independent of the sign of step and the
+  /// value the add recurrence starts with.
+  ///
+  /// Note that NUW and NSW are also valid properties of a recurrence, and
+  /// either implies NW. For convenience, NW will be set for a recurrence
+  /// whenever either NUW or NSW are set.</doc>

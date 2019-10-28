@@ -1,0 +1,100 @@
+<def f='include/llvm-6.0/llvm/ADT/StringRef.h' l='49' ll='848'/>
+<ovr f='include/llvm-6.0/llvm/ADT/StringRef.h' l='857' c='llvm::StringLiteral'/>
+<size>16</size>
+<doc f='include/llvm-6.0/llvm/ADT/StringRef.h' l='42'>/// StringRef - Represent a constant reference to a string, i.e. a character
+  /// array and a length, which need not be null terminated.
+  ///
+  /// This class does not own the string data, it is expected to be used in
+  /// situations where the character data resides in some other buffer, whose
+  /// lifetime extends past that of the StringRef. For this reason, it is not in
+  /// general safe to store a StringRef.</doc>
+<smbr r='llvm::StringRef::npos' t='const size_t'/>
+<mbr r='llvm::StringRef::Data' o='0' t='const char *'/>
+<mbr r='llvm::StringRef::Length' o='64' t='size_t'/>
+<fun r='_ZN4llvm9StringRef13compareMemoryEPKcS2_m'/>
+<fun r='_ZN4llvm9StringRefC1Ev'/>
+<fun r='_ZN4llvm9StringRefC1EDn'/>
+<fun r='_ZN4llvm9StringRefC1EPKc'/>
+<fun r='_ZN4llvm9StringRefC1EPKcm'/>
+<fun r='_ZN4llvm9StringRefC1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<fun r='_ZN4llvm9StringRef15withNullAsEmptyEPKc'/>
+<fun r='_ZNK4llvm9StringRef5beginEv'/>
+<fun r='_ZNK4llvm9StringRef3endEv'/>
+<fun r='_ZNK4llvm9StringRef11bytes_beginEv'/>
+<fun r='_ZNK4llvm9StringRef9bytes_endEv'/>
+<fun r='_ZNK4llvm9StringRef5bytesEv'/>
+<fun r='_ZNK4llvm9StringRef4dataEv'/>
+<fun r='_ZNK4llvm9StringRef5emptyEv'/>
+<fun r='_ZNK4llvm9StringRef4sizeEv'/>
+<fun r='_ZNK4llvm9StringRef5frontEv'/>
+<fun r='_ZNK4llvm9StringRef4backEv'/>
+<fun r='_ZNK4llvm9StringRef4copyERT_'/>
+<fun r='_ZNK4llvm9StringRef6equalsES0_'/>
+<fun r='_ZNK4llvm9StringRef12equals_lowerES0_'/>
+<fun r='_ZNK4llvm9StringRef7compareES0_'/>
+<fun r='_ZNK4llvm9StringRef13compare_lowerES0_'/>
+<fun r='_ZNK4llvm9StringRef15compare_numericES0_'/>
+<fun r='_ZNK4llvm9StringRef13edit_distanceES0_bj'/>
+<fun r='_ZNK4llvm9StringRef3strB5cxx11Ev'/>
+<fun r='_ZNK4llvm9StringRefixEm'/>
+<fun r='_ZN4llvm9StringRefaSB5cxx11EOT_'/>
+<fun r='_ZNK4llvm9StringRefcvNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEB5cxx11Ev'/>
+<fun r='_ZNK4llvm9StringRef10startswithES0_'/>
+<fun r='_ZNK4llvm9StringRef16startswith_lowerES0_'/>
+<fun r='_ZNK4llvm9StringRef8endswithES0_'/>
+<fun r='_ZNK4llvm9StringRef14endswith_lowerES0_'/>
+<fun r='_ZNK4llvm9StringRef4findEcm'/>
+<fun r='_ZNK4llvm9StringRef10find_lowerEcm'/>
+<fun r='_ZNK4llvm9StringRef7find_ifENS_12function_refIFbcEEEm'/>
+<fun r='_ZNK4llvm9StringRef11find_if_notENS_12function_refIFbcEEEm'/>
+<fun r='_ZNK4llvm9StringRef4findES0_m'/>
+<fun r='_ZNK4llvm9StringRef10find_lowerES0_m'/>
+<fun r='_ZNK4llvm9StringRef5rfindEcm'/>
+<fun r='_ZNK4llvm9StringRef11rfind_lowerEcm'/>
+<fun r='_ZNK4llvm9StringRef5rfindES0_'/>
+<fun r='_ZNK4llvm9StringRef11rfind_lowerES0_'/>
+<fun r='_ZNK4llvm9StringRef13find_first_ofEcm'/>
+<fun r='_ZNK4llvm9StringRef13find_first_ofES0_m'/>
+<fun r='_ZNK4llvm9StringRef17find_first_not_ofEcm'/>
+<fun r='_ZNK4llvm9StringRef17find_first_not_ofES0_m'/>
+<fun r='_ZNK4llvm9StringRef12find_last_ofEcm'/>
+<fun r='_ZNK4llvm9StringRef12find_last_ofES0_m'/>
+<fun r='_ZNK4llvm9StringRef16find_last_not_ofEcm'/>
+<fun r='_ZNK4llvm9StringRef16find_last_not_ofES0_m'/>
+<fun r='_ZNK4llvm9StringRef8containsES0_'/>
+<fun r='_ZNK4llvm9StringRef8containsEc'/>
+<fun r='_ZNK4llvm9StringRef14contains_lowerES0_'/>
+<fun r='_ZNK4llvm9StringRef14contains_lowerEc'/>
+<fun r='_ZNK4llvm9StringRef5countEc'/>
+<fun r='_ZNK4llvm9StringRef5countES0_'/>
+<fun r='_ZNK4llvm9StringRef12getAsIntegerEjRT_'/>
+<fun r='_ZNK4llvm9StringRef12getAsIntegerEjRT_'/>
+<fun r='_ZN4llvm9StringRef14consumeIntegerEjRT_'/>
+<fun r='_ZN4llvm9StringRef14consumeIntegerEjRT_'/>
+<fun r='_ZNK4llvm9StringRef12getAsIntegerEjRNS_5APIntE'/>
+<fun r='_ZNK4llvm9StringRef11getAsDoubleERdb'/>
+<fun r='_ZNK4llvm9StringRef5lowerB5cxx11Ev'/>
+<fun r='_ZNK4llvm9StringRef5upperB5cxx11Ev'/>
+<fun r='_ZNK4llvm9StringRef6substrEmm'/>
+<fun r='_ZNK4llvm9StringRef10take_frontEm'/>
+<fun r='_ZNK4llvm9StringRef9take_backEm'/>
+<fun r='_ZNK4llvm9StringRef10take_whileENS_12function_refIFbcEEE'/>
+<fun r='_ZNK4llvm9StringRef10take_untilENS_12function_refIFbcEEE'/>
+<fun r='_ZNK4llvm9StringRef10drop_frontEm'/>
+<fun r='_ZNK4llvm9StringRef9drop_backEm'/>
+<fun r='_ZNK4llvm9StringRef10drop_whileENS_12function_refIFbcEEE'/>
+<fun r='_ZNK4llvm9StringRef10drop_untilENS_12function_refIFbcEEE'/>
+<fun r='_ZN4llvm9StringRef13consume_frontES0_'/>
+<fun r='_ZN4llvm9StringRef12consume_backES0_'/>
+<fun r='_ZNK4llvm9StringRef5sliceEmm'/>
+<fun r='_ZNK4llvm9StringRef5splitEc'/>
+<fun r='_ZNK4llvm9StringRef5splitES0_'/>
+<fun r='_ZNK4llvm9StringRef5splitERNS_15SmallVectorImplIS0_EES0_ib'/>
+<fun r='_ZNK4llvm9StringRef5splitERNS_15SmallVectorImplIS0_EEcib'/>
+<fun r='_ZNK4llvm9StringRef6rsplitEc'/>
+<fun r='_ZNK4llvm9StringRef5ltrimEc'/>
+<fun r='_ZNK4llvm9StringRef5ltrimES0_'/>
+<fun r='_ZNK4llvm9StringRef5rtrimEc'/>
+<fun r='_ZNK4llvm9StringRef5rtrimES0_'/>
+<fun r='_ZNK4llvm9StringRef4trimEc'/>
+<fun r='_ZNK4llvm9StringRef4trimES0_'/>

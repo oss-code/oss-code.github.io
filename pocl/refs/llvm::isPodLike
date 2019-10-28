@@ -1,0 +1,22 @@
+<def f='include/llvm-6.0/llvm/Support/type_traits.h' l='31' ll='49'/>
+<def f='include/llvm-6.0/llvm/Support/type_traits.h' l='52' ll='55'/>
+<def f='include/llvm-6.0/llvm/ADT/Optional.h' l='171' ll='174'/>
+<def f='include/llvm-6.0/llvm/ADT/StringRef.h' l='911'/>
+<def f='include/llvm-6.0/llvm/ADT/ArrayRef.h' l='531' ll='533'/>
+<def f='include/llvm-6.0/llvm/ADT/PointerIntPair.h' l='178' ll='181'/>
+<def f='include/llvm-6.0/llvm/Bitcode/BitCodes.h' l='163'/>
+<def f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='312' ll='319'/>
+<def f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='552' ll='558'/>
+<size>1</size>
+<doc f='include/llvm-6.0/llvm/Support/type_traits.h' l='51'>// std::pair&apos;s are pod-like if their elements are.</doc>
+<smbr r='llvm::isPodLike::value' t='const bool'/>
+<smbr r='llvm::isPodLike{pair{type-parameter-0-0,type-parameter-0-1}}::value' t='const bool'/>
+<smbr r='llvm::isPodLike{Optional{type-parameter-0-0}}::value' t='const bool'/>
+<smbr r='llvm::isPodLike{llvm::StringRef}::value' t='const bool'/>
+<smbr r='llvm::isPodLike{ArrayRef{type-parameter-0-0}}::value' t='const bool'/>
+<smbr r='llvm::isPodLike{PointerIntPair{type-parameter-0-0,IntBits,type-parameter-0-2,PointerLikeTypeTraits{type-parameter-0-0},PointerIntPairInfo{type-paramet12816618' t='const bool'/>
+<smbr r='llvm::isPodLike{llvm::BitCodeAbbrevOp}::value' t='const bool'/>
+<smbr r='llvm::isPodLike{AssertingVH{type-parameter-0-0}}::value' t='const bool'/>
+<smbr r='llvm::isPodLike{PoisoningVH{type-parameter-0-0}}::value' t='const bool'/>
+<def f='include/llvm-6.0/llvm/IR/CFG.h' l='150' ll='153'/>
+<smbr r='llvm::isPodLike{SuccIterator{type-parameter-0-0,type-parameter-0-1}}::value' t='const bool'/>

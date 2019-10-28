@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1925' type='unsigned int'/>
+<offset>2560</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1921'>/// Marks the version of the SCEV predicate used. When rewriting a SCEV
+  /// expression we mark it with the version of the predicate. We use this to
+  /// figure out if the predicate has changed from the last rewrite of the
+  /// SCEV. If so, we need to perform a new rewrite.</doc>

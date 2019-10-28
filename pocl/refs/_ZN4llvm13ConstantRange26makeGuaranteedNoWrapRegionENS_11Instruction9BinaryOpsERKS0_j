@@ -1,0 +1,23 @@
+<dec f='include/llvm-6.0/llvm/IR/ConstantRange.h' l='116' type='static llvm::ConstantRange llvm::ConstantRange::makeGuaranteedNoWrapRegion(Instruction::BinaryOps BinOp, const llvm::ConstantRange &amp; Other, unsigned int NoWrapKind)'/>
+<doc f='include/llvm-6.0/llvm/IR/ConstantRange.h' l='94'>/// Return the largest range containing all X such that &quot;X BinOpC Y&quot; is
+  /// guaranteed not to wrap (overflow) for all Y in Other.
+  ///
+  /// NB! The returned set does *not* contain **all** possible values of X for
+  /// which &quot;X BinOpC Y&quot; does not wrap -- some viable values of X may be
+  /// missing, so you cannot use this to constrain X&apos;s range.  E.g. in the
+  /// fourth example, &quot;(-2) + 1&quot; is both nsw and nuw (so the &quot;X&quot; could be -2),
+  /// but (-2) is not in the set returned.
+  ///
+  /// Examples:
+  ///  typedef OverflowingBinaryOperator OBO;
+  ///  #define MGNR makeGuaranteedNoWrapRegion
+  ///  MGNR(Add, [i8 1, 2), OBO::NoSignedWrap) == [-128, 127)
+  ///  MGNR(Add, [i8 1, 2), OBO::NoUnsignedWrap) == [0, -1)
+  ///  MGNR(Add, [i8 0, 1), OBO::NoUnsignedWrap) == Full Set
+  ///  MGNR(Add, [i8 1, 2), OBO::NoUnsignedWrap | OBO::NoSignedWrap)
+  ///    == [0,INT_MAX)
+  ///  MGNR(Add, [i8 -1, 6), OBO::NoSignedWrap) == [INT_MIN+1, INT_MAX-4)
+  ///  MGNR(Sub, [i8 1, 2), OBO::NoSignedWrap) == [-127, 128)
+  ///  MGNR(Sub, [i8 1, 2), OBO::NoUnsignedWrap) == [1, 0)
+  ///  MGNR(Sub, [i8 1, 2), OBO::NoUnsignedWrap | OBO::NoSignedWrap)
+  ///    == [1,INT_MAX)</doc>

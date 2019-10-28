@@ -1,0 +1,6 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='542' type='void *(*)(void *, cl_sampler, cl_int *)'/>
+<offset>2688</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='541'>/* creates a device-specific hardware resource for sampler. May be NULL */</doc>
+<use f='pocl/lib/CL/clCreateSampler.c' l='72' u='r' c='POclCreateSampler'/>
+<use f='pocl/lib/CL/clCreateSampler.c' l='74' u='r' c='POclCreateSampler'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='150' u='w' c='pocl_basic_init_device_ops'/>

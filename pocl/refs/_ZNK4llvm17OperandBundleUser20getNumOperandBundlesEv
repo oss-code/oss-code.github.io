@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1293' ll='1295' type='unsigned int llvm::OperandBundleUser::getNumOperandBundles() const'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1298' u='c' c='_ZNK4llvm17OperandBundleUser17hasOperandBundlesEv'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1341' u='c' c='_ZNK4llvm17OperandBundleUser25countOperandBundlesOfTypeENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1352' u='c' c='_ZNK4llvm17OperandBundleUser25countOperandBundlesOfTypeEj'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1366' u='c' c='_ZNK4llvm17OperandBundleUser16getOperandBundleENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1382' u='c' c='_ZNK4llvm17OperandBundleUser16getOperandBundleEj'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1399' u='c' c='_ZNK4llvm17OperandBundleUser23getOperandBundlesAsDefsERNS_15SmallVectorImplINS_17OperandBundleDefTIPNS_5ValueEEEEE'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1449' u='c' c='_ZNK4llvm17OperandBundleUser31hasIdenticalOperandBundleSchemaERKNS_17OperandBundleUserIT_T0_EE'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1459' u='c' c='_ZNK4llvm17OperandBundleUser26hasOperandBundlesOtherThanENS_8ArrayRefIjEE'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1292'>/// \brief Return the number of operand bundles associated with this User.</doc>

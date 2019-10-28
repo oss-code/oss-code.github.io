@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/ADT/DenseMap.h' l='314' ll='316' type='bool llvm::DenseMapBase::isPointerIntoBucketsArray(const void * Ptr) const'/>
+<doc f='include/llvm-6.0/llvm/ADT/DenseMap.h' l='311'>/// isPointerIntoBucketsArray - Return true if the specified pointer points
+  /// somewhere into the DenseMap&apos;s array of buckets (i.e. either to a key or
+  /// value in the DenseMap).</doc>

@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='739' type='int llvm::TargetTransformInfo::getCmpSelInstrCost(unsigned int Opcode, llvm::Type * ValTy, llvm::Type * CondTy = nullptr, const llvm::Instruction * I = nullptr) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='736'>/// \returns The expected cost of compare and select instructions. If there
+  /// is an existing instruction that holds Opcode, it may be passed in the
+  /// &apos;I&apos; parameter.</doc>

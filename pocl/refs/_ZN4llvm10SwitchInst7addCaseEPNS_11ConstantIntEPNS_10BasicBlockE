@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/Instructions.h' l='3409' type='void llvm::SwitchInst::addCase(llvm::ConstantInt * OnVal, llvm::BasicBlock * Dest)'/>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='3405'>/// Add an entry to the switch instruction.
+  /// Note:
+  /// This action invalidates case_end(). Old case_end() iterator will
+  /// point to the added case.</doc>

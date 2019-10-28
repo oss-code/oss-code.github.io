@@ -1,0 +1,14 @@
+<dec f='include/string.h' l='171' type='char * strdup(const char * __s)'/>
+<doc f='include/string.h' l='170'>/* Duplicate S, returning an identical malloc&apos;d string.  */</doc>
+<use f='pocl/lib/CL/clCreateProgramWithBuiltInKernels.c' l='49' u='c' c='POclCreateProgramWithBuiltInKernels'/>
+<use f='pocl/lib/CL/clCreateProgramWithBuiltInKernels.c' l='74' u='c' c='POclCreateProgramWithBuiltInKernels'/>
+<use f='pocl/lib/CL/clCreateProgramWithBuiltInKernels.c' l='79' u='c' c='POclCreateProgramWithBuiltInKernels'/>
+<use f='pocl/lib/CL/devices/devices.c' l='129' u='c' c='pocl_device_get_env_count'/>
+<use f='pocl/lib/CL/devices/devices.c' l='535' u='c' c='pocl_init_devices'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='453' u='c' c='deserialize_file'/>
+<use f='pocl/lib/CL/pocl_debug.c' l='45' u='c' c='pocl_debug_messages_setup'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='146' u='c' c='_ZL23appendToProgramBuildLogP11_cl_programjRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='506' u='c' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/CL/pocl_runtime_config.c' l='62' u='c' c='find_env'/>
+<use f='pocl/lib/CL/pocl_runtime_config.c' l='63' u='c' c='find_env'/>
+<use f='pocl/lib/CL/pocl_tracing.c' l='90' u='c' c='pocl_parse_event_filter'/>

@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='595' type='static llvm::CastInst * llvm::CastInst::Create(Instruction::CastOps , llvm::Value * S, llvm::Type * Ty, const llvm::Twine &amp; Name, llvm::BasicBlock * InsertAtEnd)'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='589'>/// Provides a way to construct any of the CastInst subclasses using an
+  /// opcode instead of the subclass&apos;s constructor. The opcode must be in the
+  /// CastOps category. This constructor has insert-at-end-of-block semantics
+  /// to automatically insert the new CastInst at the end of InsertAtEnd (if
+  /// its non-null).
+  /// @brief Construct any of the CastInst subclasses</doc>

@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Pass.h' l='97' type='llvm::StringRef llvm::Pass::getPassName() const'/>
+<doc f='include/llvm-6.0/llvm/Pass.h' l='94'>/// getPassName - Return a nice clean name for a pass.  This usually
+  /// implemented in terms of the name that is registered by one of the
+  /// Registration templates, but can be overloaded directly.</doc>
+<ovr f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='489' c='_ZNK4llvm13FPPassManager11getPassNameEv'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/RegionPass.h' l='109' c='_ZNK4llvm13RGPassManager11getPassNameEv'/>
+<ovr f='pocl/lib/llvmopencl/BreakConstantGEPs.h' l='45' c='_ZNK17BreakConstantGEPs11getPassNameEv'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/LoopPass.h' l='110' c='_ZNK4llvm13LPPassManager11getPassNameEv'/>

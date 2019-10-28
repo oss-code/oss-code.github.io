@@ -1,0 +1,13 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='183' type='llvm::BasicBlock * llvm::SplitBlock(llvm::BasicBlock * Old, llvm::Instruction * SplitPt, llvm::DominatorTree * DT = nullptr, llvm::LoopInfo * LI = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='179'>/// Split the specified block at the specified instruction - everything before
+/// SplitPt stays in Old and everything starting with SplitPt moves to a new
+/// block. The two blocks are joined by an unconditional branch and the loop
+/// info is updated.</doc>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='69' u='c' c='_ZN4pocl20CanonicalizeBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='98' u='c' c='_ZN4pocl20CanonicalizeBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='100' u='c' c='_ZN4pocl20CanonicalizeBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='152' u='c' c='_ZN4pocl20CanonicalizeBarriers15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='177' u='c' c='_ZN4pocl20CanonicalizeBarriers15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/DebugHelpers.cc' l='214' u='c' c='_ZN4pocl7chopBBsERN4llvm8FunctionERNS0_4PassE'/>
+<use f='pocl/lib/llvmopencl/IsolateRegions.cc' l='146' u='c' c='_ZN4pocl14IsolateRegions13addDummyAfterEPN4llvm6RegionEPNS1_10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/LoopBarriers.cc' l='186' u='c' c='_ZN4pocl12LoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>

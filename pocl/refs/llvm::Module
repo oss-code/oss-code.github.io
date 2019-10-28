@@ -1,0 +1,176 @@
+<def f='include/llvm-6.0/llvm/IR/Module.h' l='63' ll='843'/>
+<size>728</size>
+<doc f='include/llvm-6.0/llvm/IR/Module.h' l='52'>/// A Module instance is used to store all the information related to an
+/// LLVM module. Modules are the top level container of all other LLVM
+/// Intermediate Representation (IR) objects. Each module directly contains a
+/// list of globals variables, a list of functions, a list of libraries (or
+/// other modules) this module depends on, a symbol table, and various data
+/// about the target&apos;s characteristics.
+///
+/// A module maintains a GlobalValRefMap object that is used to hold all
+/// constant references to global variables in the module.  When a global
+/// variable is destroyed, it should have no entries in the GlobalValueRefMap.
+/// @brief The main container class for the LLVM Intermediate Representation.</doc>
+<fun r='_ZN4llvm6Module22isValidModFlagBehaviorEPNS_8MetadataERNS0_15ModFlagBehaviorE'/>
+<mbr r='llvm::Module::Context' o='0' t='llvm::LLVMContext &amp;'/>
+<mbr r='llvm::Module::GlobalList' o='64' t='GlobalListType'/>
+<mbr r='llvm::Module::FunctionList' o='192' t='FunctionListType'/>
+<mbr r='llvm::Module::AliasList' o='320' t='AliasListType'/>
+<mbr r='llvm::Module::IFuncList' o='448' t='IFuncListType'/>
+<mbr r='llvm::Module::NamedMDList' o='576' t='NamedMDListType'/>
+<mbr r='llvm::Module::GlobalScopeAsm' o='704' t='std::string'/>
+<mbr r='llvm::Module::ValSymTab' o='960' t='llvm::ValueSymbolTable *'/>
+<mbr r='llvm::Module::ComdatSymTab' o='1024' t='ComdatSymTabType'/>
+<mbr r='llvm::Module::OwnedMemoryBuffer' o='1280' t='std::unique_ptr&lt;MemoryBuffer&gt;'/>
+<mbr r='llvm::Module::Materializer' o='1344' t='std::unique_ptr&lt;GVMaterializer&gt;'/>
+<mbr r='llvm::Module::ModuleID' o='1408' t='std::string'/>
+<mbr r='llvm::Module::SourceFileName' o='1664' t='std::string'/>
+<mbr r='llvm::Module::TargetTriple' o='1920' t='std::string'/>
+<mbr r='llvm::Module::NamedMDSymTab' o='2176' t='void *'/>
+<mbr r='llvm::Module::DL' o='2240' t='llvm::DataLayout'/>
+<fun r='_ZN4llvm6ModuleC1ENS_9StringRefERNS_11LLVMContextE'/>
+<fun r='_ZN4llvm6ModuleD1Ev'/>
+<fun r='_ZNK4llvm6Module19getModuleIdentifierB5cxx11Ev'/>
+<fun r='_ZNK4llvm6Module17getSourceFileNameB5cxx11Ev'/>
+<fun r='_ZNK4llvm6Module7getNameEv'/>
+<fun r='_ZNK4llvm6Module16getDataLayoutStrB5cxx11Ev'/>
+<fun r='_ZNK4llvm6Module13getDataLayoutEv'/>
+<fun r='_ZNK4llvm6Module15getTargetTripleB5cxx11Ev'/>
+<fun r='_ZNK4llvm6Module10getContextEv'/>
+<fun r='_ZNK4llvm6Module18getModuleInlineAsmB5cxx11Ev'/>
+<fun r='_ZNK4llvm6Module9createRNGEPKNS_4PassE'/>
+<fun r='_ZN4llvm6Module19setModuleIdentifierENS_9StringRefE'/>
+<fun r='_ZN4llvm6Module17setSourceFileNameENS_9StringRefE'/>
+<fun r='_ZN4llvm6Module13setDataLayoutENS_9StringRefE'/>
+<fun r='_ZN4llvm6Module13setDataLayoutERKNS_10DataLayoutE'/>
+<fun r='_ZN4llvm6Module15setTargetTripleENS_9StringRefE'/>
+<fun r='_ZN4llvm6Module18setModuleInlineAsmENS_9StringRefE'/>
+<fun r='_ZN4llvm6Module21appendModuleInlineAsmENS_9StringRefE'/>
+<fun r='_ZNK4llvm6Module13getNamedValueENS_9StringRefE'/>
+<fun r='_ZNK4llvm6Module11getMDKindIDENS_9StringRefE'/>
+<fun r='_ZNK4llvm6Module14getMDKindNamesERNS_15SmallVectorImplINS_9StringRefEEE'/>
+<fun r='_ZNK4llvm6Module20getOperandBundleTagsERNS_15SmallVectorImplINS_9StringRefEEE'/>
+<fun r='_ZNK4llvm6Module13getTypeByNameENS_9StringRefE'/>
+<fun r='_ZNK4llvm6Module24getIdentifiedStructTypesEv'/>
+<fun r='_ZN4llvm6Module19getOrInsertFunctionENS_9StringRefEPNS_12FunctionTypeENS_13AttributeListE'/>
+<fun r='_ZN4llvm6Module19getOrInsertFunctionENS_9StringRefEPNS_12FunctionTypeE'/>
+<fun r='_ZN4llvm6Module19getOrInsertFunctionENS_9StringRefENS_13AttributeListEPNS_4TypeEDpT_'/>
+<fun r='_ZN4llvm6Module19getOrInsertFunctionENS_9StringRefEPNS_4TypeEDpT_'/>
+<fun r='_ZNK4llvm6Module11getFunctionENS_9StringRefE'/>
+<fun r='_ZNK4llvm6Module17getGlobalVariableENS_9StringRefE'/>
+<fun r='_ZNK4llvm6Module17getGlobalVariableENS_9StringRefEb'/>
+<fun r='_ZN4llvm6Module17getGlobalVariableENS_9StringRefEb'/>
+<fun r='_ZNK4llvm6Module14getNamedGlobalENS_9StringRefE'/>
+<fun r='_ZN4llvm6Module14getNamedGlobalENS_9StringRefE'/>
+<fun r='_ZN4llvm6Module17getOrInsertGlobalENS_9StringRefEPNS_4TypeE'/>
+<fun r='_ZNK4llvm6Module13getNamedAliasENS_9StringRefE'/>
+<fun r='_ZNK4llvm6Module13getNamedIFuncENS_9StringRefE'/>
+<fun r='_ZNK4llvm6Module16getNamedMetadataERKNS_5TwineE'/>
+<fun r='_ZN4llvm6Module24getOrInsertNamedMetadataENS_9StringRefE'/>
+<fun r='_ZN4llvm6Module18eraseNamedMetadataEPNS_11NamedMDNodeE'/>
+<fun r='_ZN4llvm6Module17getOrInsertComdatENS_9StringRefE'/>
+<fun r='_ZNK4llvm6Module22getModuleFlagsMetadataERNS_15SmallVectorImplINS0_15ModuleFlagEntryEEE'/>
+<fun r='_ZNK4llvm6Module13getModuleFlagENS_9StringRefE'/>
+<fun r='_ZNK4llvm6Module22getModuleFlagsMetadataEv'/>
+<fun r='_ZN4llvm6Module30getOrInsertModuleFlagsMetadataEv'/>
+<fun r='_ZN4llvm6Module13addModuleFlagENS0_15ModFlagBehaviorENS_9StringRefEPNS_8MetadataE'/>
+<fun r='_ZN4llvm6Module13addModuleFlagENS0_15ModFlagBehaviorENS_9StringRefEPNS_8ConstantE'/>
+<fun r='_ZN4llvm6Module13addModuleFlagENS0_15ModFlagBehaviorENS_9StringRefEj'/>
+<fun r='_ZN4llvm6Module13addModuleFlagEPNS_6MDNodeE'/>
+<fun r='_ZN4llvm6Module15setMaterializerEPNS_14GVMaterializerE'/>
+<fun r='_ZNK4llvm6Module15getMaterializerEv'/>
+<fun r='_ZNK4llvm6Module14isMaterializedEv'/>
+<fun r='_ZN4llvm6Module11materializeEPNS_11GlobalValueE'/>
+<fun r='_ZN4llvm6Module14materializeAllEv'/>
+<fun r='_ZN4llvm6Module19materializeMetadataEv'/>
+<fun r='_ZNK4llvm6Module13getGlobalListEv'/>
+<fun r='_ZN4llvm6Module13getGlobalListEv'/>
+<fun r='_ZN4llvm6Module16getSublistAccessEPNS_14GlobalVariableE'/>
+<fun r='_ZNK4llvm6Module15getFunctionListEv'/>
+<fun r='_ZN4llvm6Module15getFunctionListEv'/>
+<fun r='_ZN4llvm6Module16getSublistAccessEPNS_8FunctionE'/>
+<fun r='_ZNK4llvm6Module12getAliasListEv'/>
+<fun r='_ZN4llvm6Module12getAliasListEv'/>
+<fun r='_ZN4llvm6Module16getSublistAccessEPNS_11GlobalAliasE'/>
+<fun r='_ZNK4llvm6Module12getIFuncListEv'/>
+<fun r='_ZN4llvm6Module12getIFuncListEv'/>
+<fun r='_ZN4llvm6Module16getSublistAccessEPNS_11GlobalIFuncE'/>
+<fun r='_ZNK4llvm6Module14getNamedMDListEv'/>
+<fun r='_ZN4llvm6Module14getNamedMDListEv'/>
+<fun r='_ZN4llvm6Module16getSublistAccessEPNS_11NamedMDNodeE'/>
+<fun r='_ZNK4llvm6Module19getValueSymbolTableEv'/>
+<fun r='_ZN4llvm6Module19getValueSymbolTableEv'/>
+<fun r='_ZNK4llvm6Module20getComdatSymbolTableEv'/>
+<fun r='_ZN4llvm6Module20getComdatSymbolTableEv'/>
+<fun r='_ZN4llvm6Module12global_beginEv'/>
+<fun r='_ZNK4llvm6Module12global_beginEv'/>
+<fun r='_ZN4llvm6Module10global_endEv'/>
+<fun r='_ZNK4llvm6Module10global_endEv'/>
+<fun r='_ZNK4llvm6Module12global_emptyEv'/>
+<fun r='_ZN4llvm6Module7globalsEv'/>
+<fun r='_ZNK4llvm6Module7globalsEv'/>
+<fun r='_ZN4llvm6Module5beginEv'/>
+<fun r='_ZNK4llvm6Module5beginEv'/>
+<fun r='_ZN4llvm6Module3endEv'/>
+<fun r='_ZNK4llvm6Module3endEv'/>
+<fun r='_ZN4llvm6Module6rbeginEv'/>
+<fun r='_ZNK4llvm6Module6rbeginEv'/>
+<fun r='_ZN4llvm6Module4rendEv'/>
+<fun r='_ZNK4llvm6Module4rendEv'/>
+<fun r='_ZNK4llvm6Module4sizeEv'/>
+<fun r='_ZNK4llvm6Module5emptyEv'/>
+<fun r='_ZN4llvm6Module9functionsEv'/>
+<fun r='_ZNK4llvm6Module9functionsEv'/>
+<fun r='_ZN4llvm6Module11alias_beginEv'/>
+<fun r='_ZNK4llvm6Module11alias_beginEv'/>
+<fun r='_ZN4llvm6Module9alias_endEv'/>
+<fun r='_ZNK4llvm6Module9alias_endEv'/>
+<fun r='_ZNK4llvm6Module10alias_sizeEv'/>
+<fun r='_ZNK4llvm6Module11alias_emptyEv'/>
+<fun r='_ZN4llvm6Module7aliasesEv'/>
+<fun r='_ZNK4llvm6Module7aliasesEv'/>
+<fun r='_ZN4llvm6Module11ifunc_beginEv'/>
+<fun r='_ZNK4llvm6Module11ifunc_beginEv'/>
+<fun r='_ZN4llvm6Module9ifunc_endEv'/>
+<fun r='_ZNK4llvm6Module9ifunc_endEv'/>
+<fun r='_ZNK4llvm6Module10ifunc_sizeEv'/>
+<fun r='_ZNK4llvm6Module11ifunc_emptyEv'/>
+<fun r='_ZN4llvm6Module6ifuncsEv'/>
+<fun r='_ZNK4llvm6Module6ifuncsEv'/>
+<fun r='_ZN4llvm6Module14global_objectsEv'/>
+<fun r='_ZNK4llvm6Module14global_objectsEv'/>
+<fun r='_ZN4llvm6Module19global_object_beginEv'/>
+<fun r='_ZN4llvm6Module17global_object_endEv'/>
+<fun r='_ZNK4llvm6Module19global_object_beginEv'/>
+<fun r='_ZNK4llvm6Module17global_object_endEv'/>
+<fun r='_ZN4llvm6Module13global_valuesEv'/>
+<fun r='_ZNK4llvm6Module13global_valuesEv'/>
+<fun r='_ZN4llvm6Module18global_value_beginEv'/>
+<fun r='_ZN4llvm6Module16global_value_endEv'/>
+<fun r='_ZNK4llvm6Module18global_value_beginEv'/>
+<fun r='_ZNK4llvm6Module16global_value_endEv'/>
+<fun r='_ZN4llvm6Module20named_metadata_beginEv'/>
+<fun r='_ZNK4llvm6Module20named_metadata_beginEv'/>
+<fun r='_ZN4llvm6Module18named_metadata_endEv'/>
+<fun r='_ZNK4llvm6Module18named_metadata_endEv'/>
+<fun r='_ZNK4llvm6Module19named_metadata_sizeEv'/>
+<fun r='_ZNK4llvm6Module20named_metadata_emptyEv'/>
+<fun r='_ZN4llvm6Module14named_metadataEv'/>
+<fun r='_ZNK4llvm6Module14named_metadataEv'/>
+<fun r='_ZNK4llvm6Module25debug_compile_units_beginEv'/>
+<fun r='_ZNK4llvm6Module23debug_compile_units_endEv'/>
+<fun r='_ZNK4llvm6Module19debug_compile_unitsEv'/>
+<fun r='_ZN4llvm6Module31dropTriviallyDeadConstantArraysEv'/>
+<fun r='_ZNK4llvm6Module5printERNS_11raw_ostreamEPNS_24AssemblyAnnotationWriterEbb'/>
+<fun r='_ZNK4llvm6Module4dumpEv'/>
+<fun r='_ZN4llvm6Module17dropAllReferencesEv'/>
+<fun r='_ZNK4llvm6Module27getNumberRegisterParametersEv'/>
+<fun r='_ZNK4llvm6Module15getDwarfVersionEv'/>
+<fun r='_ZNK4llvm6Module15getCodeViewFlagEv'/>
+<fun r='_ZNK4llvm6Module11getPICLevelEv'/>
+<fun r='_ZN4llvm6Module11setPICLevelENS_8PICLevel5LevelE'/>
+<fun r='_ZNK4llvm6Module11getPIELevelEv'/>
+<fun r='_ZN4llvm6Module11setPIELevelENS_8PIELevel5LevelE'/>
+<fun r='_ZN4llvm6Module17setProfileSummaryEPNS_8MetadataE'/>
+<fun r='_ZN4llvm6Module17getProfileSummaryEv'/>
+<fun r='_ZN4llvm6Module20setOwnedMemoryBufferESt10unique_ptrINS_12MemoryBufferESt14default_deleteIS2_EE'/>

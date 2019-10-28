@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='611' type='std::map&lt;std::string, TypeIdSummary&gt;'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='799' u='a' c='_ZNK4llvm18ModuleSummaryIndex7typeIdsB5cxx11Ev'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='805' u='m' c='_ZN4llvm18ModuleSummaryIndex24getOrInsertTypeIdSummaryENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='811' u='m' c='_ZNK4llvm18ModuleSummaryIndex16getTypeIdSummaryENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='812' u='m' c='_ZNK4llvm18ModuleSummaryIndex16getTypeIdSummaryENS_9StringRefE'/>
+<offset>640</offset>
+<doc f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='608'>/// Mapping from type identifiers to summary information for that type
+  /// identifier.
+  // FIXME: Add bitcode read/write support for this field.</doc>

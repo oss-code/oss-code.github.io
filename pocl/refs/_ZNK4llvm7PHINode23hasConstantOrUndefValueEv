@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Instructions.h' l='2772' type='bool llvm::PHINode::hasConstantOrUndefValue() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='2769'>/// Whether the specified PHI node always merges
+  /// together the same value, assuming undefs are equal to a unique
+  /// non-undef value.</doc>

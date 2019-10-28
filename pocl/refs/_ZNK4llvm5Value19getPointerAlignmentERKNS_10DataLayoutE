@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/Value.h' l='580' type='unsigned int llvm::Value::getPointerAlignment(const llvm::DataLayout &amp; DL) const'/>
+<doc f='include/llvm-6.0/llvm/IR/Value.h' l='576'>/// \brief Returns an alignment of the pointer value.
+  ///
+  /// Returns an alignment which is either specified explicitly, e.g. via
+  /// align attribute of a function argument, or guaranteed by DataLayout.</doc>

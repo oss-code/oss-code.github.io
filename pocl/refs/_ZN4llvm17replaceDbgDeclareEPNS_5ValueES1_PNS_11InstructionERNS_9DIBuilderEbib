@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='351' type='bool llvm::replaceDbgDeclare(llvm::Value * Address, llvm::Value * NewAddress, llvm::Instruction * InsertBefore, llvm::DIBuilder &amp; Builder, bool DerefBefore, int Offset, bool DerefAfter)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='346'>/// Replaces llvm.dbg.declare instruction when the address it
+/// describes is replaced with a new value. If Deref is true, an
+/// additional DW_OP_deref is prepended to the expression. If Offset
+/// is non-zero, a constant displacement is added to the expression
+/// (between the optional Deref operations). Offset can be negative.</doc>

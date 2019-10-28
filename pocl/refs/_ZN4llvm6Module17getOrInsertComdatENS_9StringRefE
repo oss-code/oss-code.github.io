@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/Module.h' l='439' type='llvm::Comdat * llvm::Module::getOrInsertComdat(llvm::StringRef Name)'/>
+<doc f='include/llvm-6.0/llvm/IR/Module.h' l='433'>/// @}
+/// @name Comdat Accessors
+/// @{
+
+  /// Return the Comdat in the module with the specified name. It is created
+  /// if it didn&apos;t already exist.</doc>

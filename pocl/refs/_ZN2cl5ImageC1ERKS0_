@@ -1,0 +1,11 @@
+<def f='pocl/include/CL/cl2.hpp' l='4318' type='void cl::Image::Image(const cl::Image &amp; img)'/>
+<use f='pocl/include/CL/cl2.hpp' l='4438' u='c' c='_ZN2cl7Image1DC1ERKS0_'/>
+<use f='pocl/include/CL/cl2.hpp' l='4522' u='c' c='_ZN2cl13Image1DBufferC1ERKS0_'/>
+<use f='pocl/include/CL/cl2.hpp' l='4611' u='c' c='_ZN2cl12Image1DArrayC1ERKS0_'/>
+<use f='pocl/include/CL/cl2.hpp' l='4853' u='c' c='_ZN2cl7Image2DC1ERKS0_'/>
+<use f='pocl/include/CL/cl2.hpp' l='5042' u='c' c='_ZN2cl12Image2DArrayC1ERKS0_'/>
+<use f='pocl/include/CL/cl2.hpp' l='5178' u='c' c='_ZN2cl7Image3DC1ERKS0_'/>
+<use f='pocl/include/CL/cl2.hpp' l='5351' u='c' c='_ZN2cl7ImageGLC1ERKS0_'/>
+<doc f='pocl/include/CL/cl2.hpp' l='4315'>/*! \brief Copy constructor to forward copy to the superclass correctly.
+     * Required for MSVC.
+     */</doc>

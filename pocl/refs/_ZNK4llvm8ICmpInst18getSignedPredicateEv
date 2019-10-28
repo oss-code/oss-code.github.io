@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/Instructions.h' l='1175' ll='1177' type='llvm::CmpInst::Predicate llvm::ICmpInst::getSignedPredicate() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='1171'>/// For example, EQ-&gt;EQ, SLE-&gt;SLE, UGT-&gt;SGT, etc.
+  /// @returns the predicate that would be the result if the operand were
+  /// regarded as signed.
+  /// Return the signed version of the predicate</doc>

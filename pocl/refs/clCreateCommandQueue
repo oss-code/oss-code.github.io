@@ -1,0 +1,33 @@
+<dec f='pocl/include/CL/cl.h' l='1781' type='cl_command_queue clCreateCommandQueue(cl_context context, cl_device_id device, cl_command_queue_properties properties, cl_int * errcode_ret)'/>
+<doc f='pocl/include/CL/cl.h' l='1779'>/* Deprecated OpenCL 2.0 APIs */</doc>
+<use f='pocl/examples/EinsteinToolkit/EinsteinToolkit.c' l='567' u='c' c='setup'/>
+<use f='pocl/examples/scalarwave/scalarwave.c' l='64' u='c' c='exec_scalarwave_kernel'/>
+<use f='pocl/examples/trig/trig_exec.c' l='41' u='c' c='exec_trig_kernel'/>
+<use f='pocl/lib/CL/pocl_intfn.h' l='35' c='POclCreateCommandQueue'/>
+<use f='pocl/lib/poclu/misc.c' l='88' u='c' c='poclu_get_any_device2'/>
+<use f='pocl/lib/poclu/misc.c' l='130' u='c' c='poclu_get_multiple_devices'/>
+<use f='pocl/tests/kernel/image_query_funcs.c' l='75' u='c' c='main'/>
+<use f='pocl/tests/kernel/kernel.c' l='62' u='c' c='call_test'/>
+<use f='pocl/tests/kernel/sampler_address_clamp.c' l='81' u='c' c='main'/>
+<use f='pocl/include/CL/cl2.hpp' l='6995' u='c' c='_ZN2cl12CommandQueueC1EmPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='7057' u='c' c='_ZN2cl12CommandQueueC1ENS_15QueuePropertiesEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='7126' u='c' c='_ZN2cl12CommandQueueC1ERKNS_7ContextEmPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='7188' u='c' c='_ZN2cl12CommandQueueC1ERKNS_7ContextENS_15QueuePropertiesEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='7239' u='c' c='_ZN2cl12CommandQueueC1ERKNS_7ContextERKNS_6DeviceEmPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='7290' u='c' c='_ZN2cl12CommandQueueC1ERKNS_7ContextERKNS_6DeviceENS_15QueuePropertiesEPi'/>
+<use f='pocl/tests/regression/test_program_from_binary_with_local_1_1_1.c' l='91' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_buffer-image-copy.c' l='78' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='204' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='234' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='263' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='334' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='363' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='392' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateSubDevices.c' l='73' u='c' c='test_context'/>
+<use f='pocl/tests/runtime/test_clFinish.c' l='85' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clFinish.c' l='89' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clFinish.c' l='93' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clGetEventInfo.c' l='34' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_event_cycle.c' l='70' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_read-copy-write-buffer.c' l='61' u='c' c='main'/>
+<use f='pocl/tests/workgroup/run_kernel.c' l='90' u='c' c='main'/>

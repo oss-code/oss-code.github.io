@@ -1,0 +1,87 @@
+<def f='include/llvm-6.0/llvm/Support/Error.h' l='156' ll='306'/>
+<ovr f='include/llvm-6.0/llvm/Support/Error.h' l='311' c='llvm::ErrorSuccess'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/Support/Error.h' l='91'>/// Lightweight error class with error context and mandatory checking.
+///
+/// Instances of this class wrap a ErrorInfoBase pointer. Failure states
+/// are represented by setting the pointer to a ErrorInfoBase subclass
+/// instance containing information describing the failure. Success is
+/// represented by a null pointer value.
+///
+/// Instances of Error also contains a &apos;Checked&apos; flag, which must be set
+/// before the destructor is called, otherwise the destructor will trigger a
+/// runtime error. This enforces at runtime the requirement that all Error
+/// instances be checked or returned to the caller.
+///
+/// There are two ways to set the checked flag, depending on what state the
+/// Error instance is in. For Error instances indicating success, it
+/// is sufficient to invoke the boolean conversion operator. E.g.:
+///
+///   @code{.cpp}
+///   Error foo(&lt;...&gt;);
+///
+///   if (auto E = foo(&lt;...&gt;))
+///     return E; // &lt;- Return E if it is in the error state.
+///   // We have verified that E was in the success state. It can now be safely
+///   // destroyed.
+///   @endcode
+///
+/// A success value *can not* be dropped. For example, just calling &apos;foo(&lt;...&gt;)&apos;
+/// without testing the return value will raise a runtime error, even if foo
+/// returns success.
+///
+/// For Error instances representing failure, you must use either the
+/// handleErrors or handleAllErrors function with a typed handler. E.g.:
+///
+///   @code{.cpp}
+///   class MyErrorInfo : public ErrorInfo&lt;MyErrorInfo&gt; {
+///     // Custom error info.
+///   };
+///
+///   Error foo(&lt;...&gt;) { return make_error&lt;MyErrorInfo&gt;(...); }
+///
+///   auto E = foo(&lt;...&gt;); // &lt;- foo returns failure with MyErrorInfo.
+///   auto NewE =
+///     handleErrors(E,
+///       [](const MyErrorInfo &amp;M) {
+///         // Deal with the error.
+///       },
+///       [](std::unique_ptr&lt;OtherError&gt; M) -&gt; Error {
+///         if (canHandle(*M)) {
+///           // handle error.
+///           return Error::success();
+///         }
+///         // Couldn&apos;t handle this error instance. Pass it up the stack.
+///         return Error(std::move(M));
+///       );
+///   // Note - we must check or return NewE in case any of the handlers
+///   // returned a new error.
+///   @endcode
+///
+/// The handleAllErrors function is identical to handleErrors, except
+/// that it has a void return type, and requires all errors to be handled and
+/// no new errors be returned. It prevents errors (assuming they can all be
+/// handled) from having to be bubbled all the way to the top-level.
+///
+/// *All* Error instances must be checked before destruction, even if
+/// they&apos;re moved-assigned or constructed from Success values that have already
+/// been checked. This enforces checking through all levels of the call stack.</doc>
+<fun r='_ZN4llvm5ErrorC1Ev'/>
+<fun r='_ZN4llvm5Error7successEv'/>
+<fun r='_ZN4llvm5ErrorC1ERKS0_'/>
+<fun r='_ZN4llvm5ErrorC1EOS0_'/>
+<fun r='_ZN4llvm5ErrorC1ESt10unique_ptrINS_13ErrorInfoBaseESt14default_deleteIS2_EE'/>
+<fun r='_ZN4llvm5ErroraSERKS0_'/>
+<fun r='_ZN4llvm5ErroraSEOS0_'/>
+<fun r='_ZN4llvm5ErrorD1Ev'/>
+<fun r='_ZN4llvm5ErrorcvbEv'/>
+<fun r='_ZNK4llvm5Error3isAEv'/>
+<fun r='_ZNK4llvm5Error14dynamicClassIDEv'/>
+<fun r='_ZN4llvm5Error15assertIsCheckedEv'/>
+<fun r='_ZNK4llvm5Error6getPtrEv'/>
+<fun r='_ZN4llvm5Error6setPtrEPNS_13ErrorInfoBaseE'/>
+<fun r='_ZNK4llvm5Error10getCheckedEv'/>
+<fun r='_ZN4llvm5Error10setCheckedEb'/>
+<fun r='_ZN4llvm5Error11takePayloadEv'/>
+<mbr r='llvm::Error::Payload' o='0' t='llvm::ErrorInfoBase *'/>
+<fun r='_ZN4llvm5Error7successEv'/>

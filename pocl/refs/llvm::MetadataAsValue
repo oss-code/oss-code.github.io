@@ -1,0 +1,21 @@
+<inh f='include/llvm-6.0/llvm/IR/Value.h' l='73' c='llvm::Value'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='172' ll='199'/>
+<size>32</size>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='165'>/// \brief Metadata wrapper in the Value hierarchy.
+///
+/// A member of the \a Value hierarchy to represent a reference to metadata.
+/// This allows, e.g., instrinsics to have metadata as operands.
+///
+/// Notably, this is the only thing in either hierarchy that is allowed to
+/// reference \a LocalAsMetadata.</doc>
+<mbr r='llvm::MetadataAsValue::MD' o='192' t='llvm::Metadata *'/>
+<fun r='_ZN4llvm15MetadataAsValueC1EPNS_4TypeEPNS_8MetadataE'/>
+<fun r='_ZN4llvm15MetadataAsValue7dropUseEv'/>
+<fun r='_ZN4llvm15MetadataAsValueD1Ev'/>
+<fun r='_ZN4llvm15MetadataAsValue3getERNS_11LLVMContextEPNS_8MetadataE'/>
+<fun r='_ZN4llvm15MetadataAsValue11getIfExistsERNS_11LLVMContextEPNS_8MetadataE'/>
+<fun r='_ZNK4llvm15MetadataAsValue11getMetadataEv'/>
+<fun r='_ZN4llvm15MetadataAsValue7classofEPKNS_5ValueE'/>
+<fun r='_ZN4llvm15MetadataAsValue21handleChangedMetadataEPNS_8MetadataE'/>
+<fun r='_ZN4llvm15MetadataAsValue5trackEv'/>
+<fun r='_ZN4llvm15MetadataAsValue7untrackEv'/>

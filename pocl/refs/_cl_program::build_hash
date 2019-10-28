@@ -1,0 +1,19 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1093' type='SHA1_digest_t *'/>
+<offset>1344</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='1092'>/* Per-device program hash after build */</doc>
+<use f='pocl/lib/CL/clCreateProgramWithBinary.c' l='118' u='w' c='create_program_skeleton'/>
+<use f='pocl/lib/CL/clCreateProgramWithSource.c' l='116' u='w' c='POclCreateProgramWithSource'/>
+<use f='pocl/lib/CL/clCreateProgramWithSource.c' l='131' u='r' c='POclCreateProgramWithSource'/>
+<use f='pocl/lib/CL/clCreateProgramWithSource.c' l='131' u='w' c='POclCreateProgramWithSource'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='108' u='r' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='108' u='w' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/devices/common.c' l='1327' u='r' c='pocl_calculate_kernel_hash'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='274' u='r' c='pocl_binary_set_program_buildhash'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='617' u='r' c='pocl_binary_serialize'/>
+<use f='pocl/lib/CL/pocl_build.c' l='454' u='r' c='clean_program_on_rebuild'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='66' u='r' c='buildhash_is_valid'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='93' u='r' c='program_device_dir'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='311' u='r' c='pocl_cache_read_buildlog'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='434' u='r' c='build_program_compute_hash'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='442' u='r' c='build_program_compute_hash'/>
+<use f='pocl/lib/CL/pocl_cache.c' l='603' u='r' c='pocl_cache_create_program_cachedir'/>

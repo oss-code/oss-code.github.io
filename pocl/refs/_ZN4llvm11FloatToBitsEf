@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Support/MathExtras.h' l='593' ll='598' type='uint32_t llvm::FloatToBits(float Float)'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1719' u='c' c='_ZN4llvm5APInt11floatToBitsEf'/>
+<doc f='include/llvm-6.0/llvm/Support/MathExtras.h' l='590'>/// This function takes a float and returns the bit equivalent 32-bit integer.
+/// Note that copying floats around changes the bits of NaNs on some hosts,
+/// notably x86, so this routine cannot be used if these bits are needed.</doc>

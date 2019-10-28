@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/IntervalPartition.h' l='106' type='void llvm::IntervalPartition::updatePredecessors(llvm::Interval * Int)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/IntervalPartition.h' l='102'>// updatePredecessors - Interval generation only sets the successor fields of
+  // the interval data structures.  After interval generation is complete,
+  // run through all of the intervals and propagate successor info as
+  // predecessor info.</doc>

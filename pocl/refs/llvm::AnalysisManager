@@ -1,0 +1,31 @@
+<def f='include/llvm-6.0/llvm/IR/PassManager.h' l='518' ll='917'/>
+<def f='include/llvm-6.0/llvm/IR/PassManager.h' l='919'/>
+<def f='include/llvm-6.0/llvm/IR/PassManager.h' l='924'/>
+<size>80</size>
+<doc f='include/llvm-6.0/llvm/IR/PassManager.h' l='513'>/// \brief A container for analyses that lazily runs them and caches their
+/// results.
+///
+/// This class can manage analyses for any IR unit where the address of the IR
+/// unit sufficies as its identity.</doc>
+<fun r='_ZN4llvm15AnalysisManagerC1Eb'/>
+<fun r='_ZN4llvm15AnalysisManagerC1EONS_15AnalysisManagerIT_JDpT0_EEE'/>
+<fun r='_ZN4llvm15AnalysisManageraSEONS_15AnalysisManagerIT_JDpT0_EEE'/>
+<fun r='_ZNK4llvm15AnalysisManager5emptyEv'/>
+<fun r='_ZN4llvm15AnalysisManager5clearERT_NS_9StringRefE'/>
+<fun r='_ZN4llvm15AnalysisManager5clearEv'/>
+<fun r='_ZN4llvm15AnalysisManager9getResultERT_DpT0_'/>
+<fun r='_ZNK4llvm15AnalysisManager15getCachedResultERT_'/>
+<fun r='_ZN4llvm15AnalysisManager12registerPassEOT_'/>
+<fun r='_ZN4llvm15AnalysisManager10invalidateERT_'/>
+<fun r='_ZN4llvm15AnalysisManager10invalidateERT_RKNS_17PreservedAnalysesE'/>
+<fun r='_ZN4llvm15AnalysisManager10lookUpPassEPNS_11AnalysisKeyE'/>
+<fun r='_ZNK4llvm15AnalysisManager10lookUpPassEPNS_11AnalysisKeyE'/>
+<fun r='_ZN4llvm15AnalysisManager13getResultImplEPNS_11AnalysisKeyERT_DpT0_'/>
+<fun r='_ZNK4llvm15AnalysisManager19getCachedResultImplEPNS_11AnalysisKeyERT_'/>
+<fun r='_ZN4llvm15AnalysisManager14invalidateImplEPNS_11AnalysisKeyERT_'/>
+<mbr r='llvm::AnalysisManager::AnalysisPasses' t='AnalysisPassMapT'/>
+<mbr r='llvm::AnalysisManager::AnalysisResultLists' t='AnalysisResultListMapT'/>
+<mbr r='llvm::AnalysisManager::AnalysisResults' t='AnalysisResultMapT'/>
+<mbr r='llvm::AnalysisManager::DebugLogging' t='bool'/>
+<def f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='120'/>
+<size>80</size>

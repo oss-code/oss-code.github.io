@@ -1,0 +1,14 @@
+<dec f='include/c++/7/bits/forward_list.h' l='1043' type='void std::forward_list::resize(size_type __sz, const value_type &amp; __val)'/>
+<def f='include/c++/7/bits/forward_list.tcc' l='202' ll='219' type='void std::forward_list::resize(size_type __sz, const value_type &amp; __val)'/>
+<doc f='include/c++/7/bits/forward_list.h' l='1030'>/**
+       *  @brief Resizes the %forward_list to the specified number of
+       *         elements.
+       *  @param __sz Number of elements the %forward_list should contain.
+       *  @param __val Data with which new elements should be populated.
+       *
+       *  This function will %resize the %forward_list to the specified
+       *  number of elements.  If the number is smaller than the
+       *  %forward_list&apos;s current number of elements the %forward_list
+       *  is truncated, otherwise the %forward_list is extended and new
+       *  elements are populated with given data.
+       */</doc>

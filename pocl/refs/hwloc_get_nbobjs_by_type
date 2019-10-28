@@ -1,0 +1,7 @@
+<dec f='include/hwloc.h' l='1188' type='int hwloc_get_nbobjs_by_type(hwloc_topology_t topology, hwloc_obj_type_t type)'/>
+<def f='include/hwloc/inlines.h' l='62' ll='71' type='int hwloc_get_nbobjs_by_type(hwloc_topology_t topology, hwloc_obj_type_t type)'/>
+<doc f='include/hwloc.h' l='1182'>/** \brief Returns the width of level type \p type
+ *
+ * If no object for that type exists, 0 is returned.
+ * If there are several levels with objects of that type, -1 is returned.
+ */</doc>

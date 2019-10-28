@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/PassManager.h' l='759' ll='763' type='void llvm::AnalysisManager::invalidate(IRUnitT &amp; IR)'/>
+<doc f='include/llvm-6.0/llvm/IR/PassManager.h' l='755'>/// \brief Invalidate a specific analysis pass for an IR module.
+  ///
+  /// Note that the analysis result can disregard invalidation, if it determines
+  /// it is in fact still valid.</doc>

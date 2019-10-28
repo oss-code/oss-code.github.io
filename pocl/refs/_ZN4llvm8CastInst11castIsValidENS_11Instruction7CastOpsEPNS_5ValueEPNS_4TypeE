@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='826' type='static bool llvm::CastInst::castIsValid(Instruction::CastOps op, llvm::Value * S, llvm::Type * DstTy)'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='822'>/// This method can be used to determine if a cast from S to DstTy using
+  /// Opcode op is valid or not.
+  /// @returns true iff the proposed cast is valid.
+  /// @brief Determine if a cast is valid without creating one.</doc>

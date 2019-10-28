@@ -1,0 +1,13 @@
+<dec f='include/hwloc.h' l='426' type='hwloc_cpuset_t'/>
+<use f='include/hwloc/helper.h' l='836' u='r' c='hwloc_topology_get_allowed_cpuset'/>
+<offset>1472</offset>
+<doc f='include/hwloc.h' l='426'>/**&lt; \brief The CPU set of allowed logical processors
+                                          *
+                                          * This includes the CPUs contained in this object which are allowed for
+                                          * binding, i.e. passing them to the hwloc binding functions should not return
+                                          * permission errors.  This is usually restricted by administration rules.
+                                          * Some of them may however be offline so binding to them may still not be
+                                          * possible, see online_cpuset.
+                                          *
+                                          * \note Its value must not be changed, hwloc_bitmap_dup() must be used instead.
+                                          */</doc>

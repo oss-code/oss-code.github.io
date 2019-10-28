@@ -1,0 +1,52 @@
+<def f='include/llvm-6.0/llvm/IR/PassManager.h' l='153' ll='356'/>
+<size>96</size>
+<doc f='include/llvm-6.0/llvm/IR/PassManager.h' l='122'>/// A set of analyses that are preserved following a run of a transformation
+/// pass.
+///
+/// Transformation passes build and return these objects to communicate which
+/// analyses are still valid after the transformation. For most passes this is
+/// fairly simple: if they don&apos;t change anything all analyses are preserved,
+/// otherwise only a short list of analyses that have been explicitly updated
+/// are preserved.
+///
+/// This class also lets transformation passes mark abstract *sets* of analyses
+/// as preserved. A transformation that (say) does not alter the CFG can
+/// indicate such by marking a particular AnalysisSetKey as preserved, and
+/// then analyses can query whether that AnalysisSetKey is preserved.
+///
+/// Finally, this class can represent an &quot;abandoned&quot; analysis, which is
+/// not preserved even if it would be covered by some abstract set of analyses.
+///
+/// Given a `PreservedAnalyses` object, an analysis will typically want to
+/// figure out whether it is preserved. In the example below, MyAnalysisType is
+/// preserved if it&apos;s not abandoned, and (a) it&apos;s explicitly marked as
+/// preserved, (b), the set AllAnalysesOn&lt;MyIRUnit&gt; is preserved, or (c) both
+/// AnalysisSetA and AnalysisSetB are preserved.
+///
+/// ```
+///   auto PAC = PA.getChecker&lt;MyAnalysisType&gt;();
+///   if (PAC.preserved() || PAC.preservedSet&lt;AllAnalysesOn&lt;MyIRUnit&gt;&gt;() ||
+///       (PAC.preservedSet&lt;AnalysisSetA&gt;() &amp;&amp;
+///        PAC.preservedSet&lt;AnalysisSetB&gt;())) {
+///     // The analysis has been successfully preserved ...
+///   }
+/// ```</doc>
+<fun r='_ZN4llvm17PreservedAnalyses4noneEv'/>
+<fun r='_ZN4llvm17PreservedAnalyses3allEv'/>
+<fun r='_ZN4llvm17PreservedAnalyses8allInSetEv'/>
+<fun r='_ZN4llvm17PreservedAnalyses8preserveEv'/>
+<fun r='_ZN4llvm17PreservedAnalyses8preserveEPNS_11AnalysisKeyE'/>
+<fun r='_ZN4llvm17PreservedAnalyses11preserveSetEv'/>
+<fun r='_ZN4llvm17PreservedAnalyses11preserveSetEPNS_14AnalysisSetKeyE'/>
+<fun r='_ZN4llvm17PreservedAnalyses7abandonEv'/>
+<fun r='_ZN4llvm17PreservedAnalyses7abandonEPNS_11AnalysisKeyE'/>
+<fun r='_ZN4llvm17PreservedAnalyses9intersectERKS0_'/>
+<fun r='_ZN4llvm17PreservedAnalyses9intersectEOS0_'/>
+<fun r='_ZNK4llvm17PreservedAnalyses10getCheckerEv'/>
+<fun r='_ZNK4llvm17PreservedAnalyses10getCheckerEPNS_11AnalysisKeyE'/>
+<fun r='_ZNK4llvm17PreservedAnalyses15areAllPreservedEv'/>
+<fun r='_ZNK4llvm17PreservedAnalyses25allAnalysesInSetPreservedEv'/>
+<fun r='_ZNK4llvm17PreservedAnalyses25allAnalysesInSetPreservedEPNS_14AnalysisSetKeyE'/>
+<smbr r='llvm::PreservedAnalyses::AllAnalysesKey' t='llvm::AnalysisSetKey'/>
+<mbr r='llvm::PreservedAnalyses::PreservedIDs' o='0' t='SmallPtrSet&lt;void *, 2&gt;'/>
+<mbr r='llvm::PreservedAnalyses::NotPreservedAnalysisIDs' o='384' t='SmallPtrSet&lt;llvm::AnalysisKey *, 2&gt;'/>

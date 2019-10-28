@@ -1,0 +1,20 @@
+<inh f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='124' c='llvm::GlobalValueSummary'/>
+<def f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='305' ll='455'/>
+<size>104</size>
+<doc f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='303'>/// \brief Function summary information to aid decisions and implementation of
+/// importing.</doc>
+<mbr r='llvm::FunctionSummary::InstCount' o='512' t='unsigned int'/>
+<mbr r='llvm::FunctionSummary::FunFlags' o='544' t='llvm::FunctionSummary::FFlags'/>
+<mbr r='llvm::FunctionSummary::CallGraphEdgeList' o='576' t='std::vector&lt;EdgeTy&gt;'/>
+<mbr r='llvm::FunctionSummary::TIdInfo' o='768' t='std::unique_ptr&lt;TypeIdInfo&gt;'/>
+<fun r='_ZN4llvm15FunctionSummaryC1ENS_18GlobalValueSummary7GVFlagsEjNS0_6FFlagsESt6vectorINS_9ValueInfoESaIS5_EES4_ISt4pairIS5_NS_10CalleeInfoEESaISA_EES4_Im13904289'/>
+<fun r='_ZN4llvm15FunctionSummary7classofEPKNS_18GlobalValueSummaryE'/>
+<fun r='_ZN4llvm15FunctionSummary6fflagsEv'/>
+<fun r='_ZNK4llvm15FunctionSummary9instCountEv'/>
+<fun r='_ZNK4llvm15FunctionSummary5callsEv'/>
+<fun r='_ZNK4llvm15FunctionSummary10type_testsEv'/>
+<fun r='_ZNK4llvm15FunctionSummary23type_test_assume_vcallsEv'/>
+<fun r='_ZNK4llvm15FunctionSummary24type_checked_load_vcallsEv'/>
+<fun r='_ZNK4llvm15FunctionSummary29type_test_assume_const_vcallsEv'/>
+<fun r='_ZNK4llvm15FunctionSummary30type_checked_load_const_vcallsEv'/>
+<fun r='_ZN4llvm15FunctionSummary11addTypeTestEm'/>

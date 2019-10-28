@@ -1,0 +1,6 @@
+<dec f='pocl/lib/CL/pocl_image_util.h' l='54' type='void pocl_write_pixel_zero(void * data, const void * color_ptr, int order, int elem_size, int channel_type)'/>
+<use f='pocl/lib/CL/clEnqueueFillImage.c' l='89' u='c' c='POclEnqueueFillImage'/>
+<def f='pocl/lib/CL/pocl_image_util.c' l='632' ll='661' type='void pocl_write_pixel_zero(void * data, const void * color_ptr, int order, int elem_size, int channel_type)'/>
+<doc f='pocl/lib/CL/pocl_image_util.c' l='629'>/* full write with channel map conversion etc
+ * Writes a four element pixel to an image pixel pointed by integer coords.
+ */</doc>

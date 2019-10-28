@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Support/SourceMgr.h' l='163' type='void llvm::SourceMgr::PrintMessage(llvm::raw_ostream &amp; OS, llvm::SMLoc Loc, llvm::SourceMgr::DiagKind Kind, const llvm::Twine &amp; Msg, ArrayRef&lt;llvm::SMRange&gt; Ranges = None, ArrayRef&lt;llvm::SMFixIt&gt; FixIts = None, bool ShowColors = true) const'/>
+<doc f='include/llvm-6.0/llvm/Support/SourceMgr.h' l='159'>/// Emit a message about the specified location with the specified string.
+  ///
+  /// \param ShowColors Display colored messages if output is a terminal and
+  /// the default error handler is used.</doc>

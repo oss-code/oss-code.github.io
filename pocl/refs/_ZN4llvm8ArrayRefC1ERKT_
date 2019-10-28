@@ -1,0 +1,15 @@
+<def f='include/llvm-6.0/llvm/ADT/ArrayRef.h' l='67' ll='68' type='void llvm::ArrayRef::ArrayRef&lt;T&gt;(const T &amp; OneElt)'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='1131' u='c' c='_ZN4llvm12ConstantExpr16getGetElementPtrEPNS_4TypeEPNS_8ConstantES4_bNS_8OptionalIjEES2_'/>
+<doc f='include/llvm-6.0/llvm/ADT/ArrayRef.h' l='66'>/// Construct an ArrayRef from a single element.</doc>
+<doc f='include/llvm-6.0/llvm/ADT/ArrayRef.h' l='67'>/*implicit*/</doc>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1269' u='c' c='_ZN4llvm9IRBuilder9CreateGEPEPNS_4TypeEPNS_5ValueES4_RKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1276' u='c' c='_ZN4llvm9IRBuilder17CreateInBoundsGEPEPNS_4TypeEPNS_5ValueES4_RKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1288' u='c' c='_ZN4llvm9IRBuilder18CreateConstGEP1_32EPNS_4TypeEPNS_5ValueEjRKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1297' u='c' c='_ZN4llvm9IRBuilder26CreateConstInBoundsGEP1_32EPNS_4TypeEPNS_5ValueEjRKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1329' u='c' c='_ZN4llvm9IRBuilder18CreateConstGEP1_64EPNS_5ValueEmRKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1338' u='c' c='_ZN4llvm9IRBuilder26CreateConstInBoundsGEP1_64EPNS_5ValueEmRKNS_5TwineE'/>
+<use f='pocl/lib/llvmopencl/LLVMUtils.cc' l='93' u='c' c='_ZN4pocl26regenerate_kernel_metadataERN4llvm6ModuleERSt3mapIPNS0_8FunctionES5_St4lessIS5_ESaISt4pairIKS5_S5_EEE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='478' u='c' c='_ZN4pocl14ParallelRegion23AddParallelLoopMetadataEPN4llvm6MDNodeE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='281' u='c' c='_ZN4pocl9Workgroup14addPlaceHolderERN4llvm9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEPNS1_5ValueENSt7__cxx1112basic_stringIcSt1115963950'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='286' u='c' c='_ZN4pocl9Workgroup14addPlaceHolderERN4llvm9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEPNS1_5ValueENSt7__cxx1112basic_stringIcSt1115963950'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='292' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>

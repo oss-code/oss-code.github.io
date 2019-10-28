@@ -1,0 +1,283 @@
+<def f='include/c++/7/bits/basic_string.h' l='509' ll='511' type='void std::__cxx11::basic_string::basic_string&lt;_CharT, _Traits, _Alloc&gt;(const _CharT * __s, const _Alloc &amp; __a = _Alloc())'/>
+<use f='include/llvm-6.0/llvm/Support/Error.h' l='1111' u='c' c='_ZN4llvm11ExitOnErrorC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi'/>
+<doc f='include/c++/7/bits/basic_string.h' l='504'>/**
+       *  @brief  Construct string as copy of a C string.
+       *  @param  __s  Source C string.
+       *  @param  __a  Allocator to use (default is default allocator).
+       */</doc>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='984' u='c' c='_ZN4llvm9printLoopERNS_4LoopERNS_11raw_ostreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='include/llvm-6.0/llvm/CodeGen/Passes.h' l='50' u='c' c='_ZN4llvm32createMachineFunctionPrinterPassERNS_11raw_ostreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='include/llvm-6.0/llvm/IR/IRPrintingPasses.h' l='38' u='c' c='_ZN4llvm21createPrintModulePassERNS_11raw_ostreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb'/>
+<use f='include/llvm-6.0/llvm/IR/IRPrintingPasses.h' l='44' u='c' c='_ZN4llvm23createPrintFunctionPassERNS_11raw_ostreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='include/llvm-6.0/llvm/IR/IRPrintingPasses.h' l='49' u='c' c='_ZN4llvm25createPrintBasicBlockPassERNS_11raw_ostreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='include/llvm-6.0/llvm/IR/IRPrintingPasses.h' l='68' u='c' c='_ZN4llvm15PrintModulePassC1ERNS_11raw_ostreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb'/>
+<use f='include/llvm-6.0/llvm/IR/IRPrintingPasses.h' l='86' u='c' c='_ZN4llvm17PrintFunctionPassC1ERNS_11raw_ostreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='160' u='c' c='_ZL13get_build_logP11_cl_programjRNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEEPN5clang20TextDiagnosticBufferEPKNS8_13SourceManagerE'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='167' u='c' c='_ZL13get_build_logP11_cl_programjRNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEEPN5clang20TextDiagnosticBufferEPKNS8_13SourceManagerE'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='182' u='c' c='_ZL21getPoclPrivateDataDirB5cxx11v'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='191' macro='1' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='208' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='223' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='229' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='568' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='699' u='c' c='pocl_llvm_link_program'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='191' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='192' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='193' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='194' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='195' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='196' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='197' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='198' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='201' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='202' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='203' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='204' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='205' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='206' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='207' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='208' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='211' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='212' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='213' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='214' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='215' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='216' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='217' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='218' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='221' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='222' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='223' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='224' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='225' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='226' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='227' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='228' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='231' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='232' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='233' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='234' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='235' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='236' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='237' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='238' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='240' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='241' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='242' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='243' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='244' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='245' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='246' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='247' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='249' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='250' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='251' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='253' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='254' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='255' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='257' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='258' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='259' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='261' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='262' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='263' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='265' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='266' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='267' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='269' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='270' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='271' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='191' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='192' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='193' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='194' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='195' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='196' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='197' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='198' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='201' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='202' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='203' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='204' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='205' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='206' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='207' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='208' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='211' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='212' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='213' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='214' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='215' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='216' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='217' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='218' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='221' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='222' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='223' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='224' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='225' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='226' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='227' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='228' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='231' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='232' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='233' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='234' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='235' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='236' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='237' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='238' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='240' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='241' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='242' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='243' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='244' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='245' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='246' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='247' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='249' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='250' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='251' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='253' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='254' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='255' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='257' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='258' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='259' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='261' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='262' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='263' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='265' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='266' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='267' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='269' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='270' u='c'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='271' u='c'/>
+<use f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='413' u='c' c='_ZN4llvm30DiagnosticInfoOptimizationBase8ArgumentC1ENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='423' u='c' c='_ZN4llvm30DiagnosticInfoOptimizationBase8ArgumentC1ENS_9StringRefEb'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='131' u='c' c='_ZL16GetTargetMachineP13_cl_device_idRN4llvm6TripleE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='133' u='c' c='_ZL16GetTargetMachineP13_cl_device_idRN4llvm6TripleE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='140' u='c' c='_ZL16GetTargetMachineP13_cl_device_idRN4llvm6TripleE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='220' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='221' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='222' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='223' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='224' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='225' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='227' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='230' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='231' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='233' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='234' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='235' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='236' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='244' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='247' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='248' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='249' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='250' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='251' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='252' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='253' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='254' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='255' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='256' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='257' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='258' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='259' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='261' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='264' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='274' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='275' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='280' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='285' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='292' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='297' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='299' u='c' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='153' u='c' c='_ZN12_GLOBAL__N_115AutomaticLocals22processAutomaticLocalsEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/DebugHelpers.h' l='40' u='c' c='_ZN4pocl7dumpCFGERN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPNS0_11SmallVectorIPNS_14ParallelRegionELj8EEEPSt3setIPNS0_10Bas7693485'/>
+<use f='pocl/lib/llvmopencl/DebugHelpers.h' l='40' u='c' c='_ZN4pocl7dumpCFGERN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPNS0_11SmallVectorIPNS_14ParallelRegionELj8EEEPSt3setIPNS0_10Bas7693485'/>
+<use f='pocl/lib/llvmopencl/DebugHelpers.cc' l='140' u='c' c='_ZN4pocl7dumpCFGERN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPNS0_11SmallVectorIPNS_14ParallelRegionELj8EEEPSt3setIPNS0_10Bas7693485'/>
+<use f='pocl/lib/llvmopencl/Flatten.cc' l='78' u='c' c='_ZN12_GLOBAL__N_17Flatten11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/Kernel.cc' l='207' u='c' c='_ZN4pocl6Kernel18getParallelRegionsEPN4llvm8LoopInfoE'/>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='71' u='c' c='_ZN4pocl25OptimizeWorkItemFuncCalls13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='72' u='c' c='_ZN4pocl25OptimizeWorkItemFuncCalls13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='73' u='c' c='_ZN4pocl25OptimizeWorkItemFuncCalls13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='74' u='c' c='_ZN4pocl25OptimizeWorkItemFuncCalls13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='75' u='c' c='_ZN4pocl25OptimizeWorkItemFuncCalls13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='76' u='c' c='_ZN4pocl25OptimizeWorkItemFuncCalls13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='77' u='c' c='_ZN4pocl25OptimizeWorkItemFuncCalls13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='78' u='c' c='_ZN4pocl25OptimizeWorkItemFuncCalls13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='81' u='c' c='_ZN4pocl14ParallelRegion17GenerateTempNamesEPN4llvm10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='726' u='c' c='_ZN4pocl14ParallelRegion18InjectRegionPrintFEv'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='754' u='c' c='_ZN4pocl14ParallelRegion23InjectVariablePrintoutsEv'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='276' u='c' c='_ZN4pocl9Workgroup14addPlaceHolderERN4llvm9IRBuilderINS1_14ConstantFolderENS1_24IRBuilderDefaultInserterEEEPNS1_5ValueENSt7__cxx1112basic_stringIcSt1115963950'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='635' u='c' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='893' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='893' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='893' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='898' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='898' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='898' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='904' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='904' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='904' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='907' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='907' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='907' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='912' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='913' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='916' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='916' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='916' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='918' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='918' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='918' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='924' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='929' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='934' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='948' u='c' c='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1274' u='c' c='_ZN4pocl9Workgroup18createGridLauncherEPN4llvm8FunctionES3_NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1354' u='c' c='_ZN4pocl9Workgroup27createFastWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='230' u='c' c='_ZN4pocl15WorkitemHandler26fixUndominatedVariableUsesEPN4llvm24DominatorTreeWrapperPassERNS1_8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandlerChooser.cc' l='83' u='c' c='_ZN4pocl22WorkitemHandlerChooser13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='197' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/tests/regression/test_alignment_with_dynamic_wg.cpp' l='60' u='c' c='_Z15test_invocationjjjRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES6_S6_RN2cl12CommandQueueERNS7_7ProgramE'/>
+<use f='pocl/tests/regression/test_alignment_with_dynamic_wg.cpp' l='83' u='c' c='_Z15test_invocationjjjRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES6_S6_RN2cl12CommandQueueERNS7_7ProgramE'/>
+<use f='pocl/tests/regression/test_alignment_with_dynamic_wg.cpp' l='110' u='c' c='main'/>
+<use f='pocl/tests/regression/test_alignment_with_dynamic_wg.cpp' l='117' u='c' c='main'/>
+<use f='pocl/tests/regression/test_alignment_with_dynamic_wg.cpp' l='118' u='c' c='main'/>
+<use f='pocl/tests/regression/test_alignment_with_dynamic_wg.cpp' l='119' u='c' c='main'/>
+<use f='pocl/tests/regression/test_alignment_with_dynamic_wg.cpp' l='121' u='c' c='main'/>
+<use f='pocl/tests/regression/test_alignment_with_dynamic_wg.cpp' l='122' u='c' c='main'/>
+<use f='pocl/tests/regression/test_alignment_with_dynamic_wg.cpp' l='123' u='c' c='main'/>
+<use f='pocl/tests/regression/test_alignment_with_dynamic_wg2.cpp' l='57' u='c' c='main'/>
+<use f='pocl/tests/regression/test_alignment_with_dynamic_wg2.cpp' l='73' u='c' c='main'/>
+<use f='pocl/tests/regression/test_alignment_with_dynamic_wg3.cpp' l='42' u='c' c='main'/>
+<use f='pocl/tests/regression/test_alignment_with_dynamic_wg3.cpp' l='50' u='c' c='main'/>
+<use f='pocl/tests/regression/test_autolocals_in_constexprs.cpp' l='70' u='c' c='main'/>
+<use f='pocl/tests/regression/test_barrier_before_return.cpp' l='83' u='c' c='main'/>
+<use f='pocl/tests/regression/test_barrier_between_for_loops.cpp' l='99' u='c' c='main'/>
+<use f='pocl/tests/regression/test_constant_array.cpp' l='87' u='c' c='main'/>
+<use f='pocl/tests/regression/test_early_return.cpp' l='78' u='c' c='main'/>
+<use f='pocl/tests/regression/test_flatten_barrier_subs.cpp' l='103' macro='1' u='c'/>
+<use f='pocl/tests/regression/test_for_with_var_iteration_count.cpp' l='86' u='c' c='main'/>
+<use f='pocl/tests/regression/test_fors_with_var_iteration_counts.cpp' l='90' u='c' c='main'/>
+<use f='pocl/tests/regression/test_id_dependent_computation.cpp' l='98' u='c' c='main'/>
+<use f='pocl/tests/regression/test_infinite_loop.cpp' l='82' u='c' c='main'/>
+<use f='pocl/tests/regression/test_issue_231.cpp' l='83' u='c' c='main'/>
+<use f='pocl/tests/regression/test_issue_231.cpp' l='90' u='c' c='main'/>
+<use f='pocl/tests/regression/test_issue_445.cpp' l='37' u='c' c='main'/>
+<use f='pocl/tests/regression/test_issue_445.cpp' l='40' u='c' c='main'/>
+<use f='pocl/tests/regression/test_issue_553.cpp' l='57' u='c' c='main'/>
+<use f='pocl/tests/regression/test_issue_553.cpp' l='64' u='c' c='main'/>
+<use f='pocl/tests/regression/test_issue_577.cpp' l='23' u='c' c='main'/>
+<use f='pocl/tests/regression/test_locals.cpp' l='80' u='c' c='main'/>
+<use f='pocl/tests/regression/test_loop_phi_replication.cpp' l='84' u='c' c='main'/>
+<use f='pocl/tests/regression/test_multi_level_loops_with_barriers.cpp' l='86' u='c' c='main'/>
+<use f='pocl/tests/regression/test_null_arg.cpp' l='75' u='c' c='main'/>
+<use f='pocl/tests/regression/test_setargs.cpp' l='66' u='c' c='main'/>
+<use f='pocl/tests/regression/test_simple_for_with_a_barrier.cpp' l='85' u='c' c='main'/>
+<use f='pocl/tests/regression/test_structs_as_args.cpp' l='150' u='c' c='main'/>
+<use f='pocl/tests/regression/test_undominated_variable.cpp' l='88' u='c' c='main'/>
+<use f='pocl/tests/regression/test_vectors_as_args.cpp' l='111' u='c' c='main'/>

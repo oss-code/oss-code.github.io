@@ -1,0 +1,9 @@
+<dec f='pocl/lib/CL/pocl_shared.h' l='57' type='cl_program create_program_skeleton(cl_context context, cl_uint num_devices, const cl_device_id * device_list, const size_t * lengths, const unsigned char ** binaries, cl_int * binary_status, cl_int * errcode_ret, int allow_empty_binaries)'/>
+<def f='pocl/lib/CL/clCreateProgramWithBinary.c' l='37' ll='210' type='cl_program create_program_skeleton(cl_context context, cl_uint num_devices, const cl_device_id * device_list, const size_t * lengths, const unsigned char ** binaries, cl_int * binary_status, cl_int * errcode_ret, int allow_empty_binaries)'/>
+<use f='pocl/lib/CL/clCreateProgramWithBinary.c' l='217' u='c' c='POclCreateProgramWithBinary'/>
+<doc f='pocl/lib/CL/clCreateProgramWithBinary.c' l='33'>/* creates either a program with binaries, or an empty program. The latter
+ * is useful for clLinkProgram() which needs an empty program to put the
+ * compiled results in.
+ */</doc>
+<use f='pocl/lib/CL/clCreateProgramWithBuiltInKernels.c' l='84' u='c' c='POclCreateProgramWithBuiltInKernels'/>
+<use f='pocl/lib/CL/clLinkProgram.c' l='84' u='c' c='POclLinkProgram'/>

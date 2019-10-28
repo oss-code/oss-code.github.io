@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='341' ll='343' type='bool llvm::AAResults::isNoAlias(const llvm::MemoryLocation &amp; LocA, const llvm::MemoryLocation &amp; LocB)'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='348' u='c' c='_ZN4llvm9AAResults9isNoAliasEPKNS_5ValueEmS3_m'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='353' u='c' c='_ZN4llvm9AAResults9isNoAliasEPKNS_5ValueES3_'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='339'>/// A trivial helper function to check to see if the specified pointers are
+  /// no-alias.</doc>

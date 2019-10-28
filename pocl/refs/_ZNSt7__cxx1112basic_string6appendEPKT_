@@ -1,0 +1,11 @@
+<def f='include/c++/7/bits/basic_string.h' l='1252' ll='1259' type='basic_string&lt;_CharT, _Traits, _Alloc&gt; &amp; std::__cxx11::basic_string::append(const _CharT * __s)'/>
+<doc f='include/c++/7/bits/basic_string.h' l='1247'>/**
+       *  @brief  Append a C string.
+       *  @param __s  The C string to append.
+       *  @return  Reference to this string.
+       */</doc>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='232' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='233' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='435' u='c' c='_Z4linkPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='437' u='c' c='_Z4linkPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/tests/kernel/test_shuffle.cc' l='91' u='c' c='_ZN11TestShuffle12testcase_srcERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>

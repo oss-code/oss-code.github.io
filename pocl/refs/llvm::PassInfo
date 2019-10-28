@@ -1,0 +1,34 @@
+<def f='include/llvm-6.0/llvm/PassInfo.h' l='31' ll='117'/>
+<ovr f='include/llvm-6.0/llvm/PassSupport.h' l='91' c='llvm::RegisterPass'/>
+<ovr f='include/llvm-6.0/llvm/PassSupport.h' l='120' c='llvm::RegisterAGBase'/>
+<size>80</size>
+<doc f='include/llvm-6.0/llvm/PassInfo.h' l='25'>//===---------------------------------------------------------------------------
+/// PassInfo class - An instance of this class exists for every pass known by
+/// the system, and can be obtained from a live Pass by calling its
+/// getPassInfo() method.  These objects are set up by the RegisterPass&lt;&gt;
+/// template.
+///</doc>
+<mbr r='llvm::PassInfo::PassName' o='0' t='llvm::StringRef'/>
+<mbr r='llvm::PassInfo::PassArgument' o='128' t='llvm::StringRef'/>
+<mbr r='llvm::PassInfo::PassID' o='256' t='const void *'/>
+<mbr r='llvm::PassInfo::IsCFGOnlyPass' o='320' t='const bool'/>
+<mbr r='llvm::PassInfo::IsAnalysis' o='328' t='const bool'/>
+<mbr r='llvm::PassInfo::IsAnalysisGroup' o='336' t='const bool'/>
+<mbr r='llvm::PassInfo::ItfImpl' o='384' t='std::vector&lt;const PassInfo *&gt;'/>
+<mbr r='llvm::PassInfo::NormalCtor' o='576' t='NormalCtor_t'/>
+<fun r='_ZN4llvm8PassInfoC1ENS_9StringRefES1_PKvPFPNS_4PassEvEbb'/>
+<fun r='_ZN4llvm8PassInfoC1ENS_9StringRefEPKv'/>
+<fun r='_ZN4llvm8PassInfoC1ERKS0_'/>
+<fun r='_ZN4llvm8PassInfoaSERKS0_'/>
+<fun r='_ZNK4llvm8PassInfo11getPassNameEv'/>
+<fun r='_ZNK4llvm8PassInfo15getPassArgumentEv'/>
+<fun r='_ZNK4llvm8PassInfo11getTypeInfoEv'/>
+<fun r='_ZNK4llvm8PassInfo8isPassIDEPKv'/>
+<fun r='_ZNK4llvm8PassInfo15isAnalysisGroupEv'/>
+<fun r='_ZNK4llvm8PassInfo10isAnalysisEv'/>
+<fun r='_ZNK4llvm8PassInfo13isCFGOnlyPassEv'/>
+<fun r='_ZNK4llvm8PassInfo13getNormalCtorEv'/>
+<fun r='_ZN4llvm8PassInfo13setNormalCtorEPFPNS_4PassEvE'/>
+<fun r='_ZNK4llvm8PassInfo10createPassEv'/>
+<fun r='_ZN4llvm8PassInfo23addInterfaceImplementedEPKS0_'/>
+<fun r='_ZNK4llvm8PassInfo24getInterfacesImplementedEv'/>

@@ -1,0 +1,20 @@
+<inh f='include/c++/7/bits/stl_iterator_base_types.h' l='118' c='std::iterator'/>
+<def f='include/llvm-6.0/llvm/IR/GetElementPtrTypeIterator.h' l='32' ll='124'/>
+<mbr r='llvm::generic_gep_type_iterator::OpIt' t='ItTy'/>
+<mbr r='llvm::generic_gep_type_iterator::CurTy' t='PointerUnion&lt;llvm::StructType *, llvm::Type *&gt;'/>
+<mbr r='llvm::generic_gep_type_iterator::NumElements' t='uint64_t'/>
+<fun r='_ZN4llvm25generic_gep_type_iteratorC1Ev'/>
+<fun r='_ZN4llvm25generic_gep_type_iterator5beginEPNS_4TypeET_'/>
+<fun r='_ZN4llvm25generic_gep_type_iterator3endET_'/>
+<fun r='_ZNK4llvm25generic_gep_type_iteratoreqERKNS_25generic_gep_type_iteratorIT_EE'/>
+<fun r='_ZNK4llvm25generic_gep_type_iteratorneERKNS_25generic_gep_type_iteratorIT_EE'/>
+<fun r='_ZNK4llvm25generic_gep_type_iterator14getIndexedTypeEv'/>
+<fun r='_ZNK4llvm25generic_gep_type_iterator10getOperandEv'/>
+<fun r='_ZN4llvm25generic_gep_type_iteratorppEv'/>
+<fun r='_ZN4llvm25generic_gep_type_iteratorppEi'/>
+<fun r='_ZNK4llvm25generic_gep_type_iterator8isStructEv'/>
+<fun r='_ZNK4llvm25generic_gep_type_iterator12isSequentialEv'/>
+<fun r='_ZNK4llvm25generic_gep_type_iterator13getStructTypeEv'/>
+<fun r='_ZNK4llvm25generic_gep_type_iterator19getStructTypeOrNullEv'/>
+<fun r='_ZNK4llvm25generic_gep_type_iterator19isBoundedSequentialEv'/>
+<fun r='_ZNK4llvm25generic_gep_type_iterator24getSequentialNumElementsEv'/>

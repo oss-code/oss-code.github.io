@@ -1,0 +1,6 @@
+<dec f='pocl/lib/CL/pocl_intfn.h' l='93' macro='1' type='cl_int POclGetPlatformInfo(cl_platform_id , cl_platform_info , size_t , void * , size_t * )'/>
+<use f='pocl/lib/CL/clGetExtensionFunctionAddress.c' l='18' macro='1' u='a'/>
+<use f='pocl/lib/CL/clGetExtensionFunctionAddressForPlatform.c' l='54' macro='1' u='a'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='41' macro='1' u='a'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='41' macro='1' u='a'/>
+<def f='pocl/lib/CL/clGetPlatformInfo.c' l='28' macro='1' type='cl_int POclGetPlatformInfo(cl_platform_id platform, cl_platform_info param_name, size_t param_value_size, void * param_value, size_t * param_value_size_ret)'/>

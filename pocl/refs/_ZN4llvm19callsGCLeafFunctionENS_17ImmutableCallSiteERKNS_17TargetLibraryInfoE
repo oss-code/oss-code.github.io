@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='439' type='bool llvm::callsGCLeafFunction(llvm::ImmutableCallSite CS, const llvm::TargetLibraryInfo &amp; TLI)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='431'>/// Return true if the CallSite CS calls a gc leaf function.
+///
+/// A leaf function is a function that does not safepoint the thread during its
+/// execution.  During a call or invoke to such a function, the callers stack
+/// does not have to be made parseable.
+///
+/// Most passes can and should ignore this information, and it is only used
+/// during lowering by the GC infrastructure.</doc>

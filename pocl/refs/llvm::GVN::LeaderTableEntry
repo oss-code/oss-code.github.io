@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/Transforms/Scalar/GVN.h' l='170' ll='174'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/Transforms/Scalar/GVN.h' l='168'>/// A mapping from value numbers to lists of Value*&apos;s that
+  /// have that value number.  Use findLeader to query it.</doc>
+<mbr r='llvm::GVN::LeaderTableEntry::Val' o='0' t='llvm::Value *'/>
+<mbr r='llvm::GVN::LeaderTableEntry::BB' o='64' t='const llvm::BasicBlock *'/>
+<mbr r='llvm::GVN::LeaderTableEntry::Next' o='128' t='llvm::GVN::LeaderTableEntry *'/>

@@ -1,0 +1,10 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2543' type='void LLVMSetInstructionCallConv(LLVMValueRef Instr, unsigned int CC)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2534'>/**
+ * Set the calling convention for a call instruction.
+ *
+ * This expects an LLVMValueRef that corresponds to a llvm::CallInst or
+ * llvm::InvokeInst.
+ *
+ * @see llvm::CallInst::setCallingConv()
+ * @see llvm::InvokeInst::setCallingConv()
+ */</doc>

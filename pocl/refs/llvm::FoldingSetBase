@@ -1,0 +1,32 @@
+<def f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='113' ll='215'/>
+<ovr f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='401' c='llvm::FoldingSetImpl'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='106'>//===----------------------------------------------------------------------===//
+/// FoldingSetBase - Implements the folding set functionality.  The main
+/// structure is an array of buckets.  Each bucket is indexed by the hash of
+/// the nodes it contains.  The bucket itself points to the nodes contained
+/// in the bucket via a singly linked list.  The last node in the list points
+/// back to the bucket to facilitate node removal.
+///</doc>
+<fun r='_ZN4llvm14FoldingSetBase6anchorEv'/>
+<mbr r='llvm::FoldingSetBase::Buckets' o='64' t='void **'/>
+<mbr r='llvm::FoldingSetBase::NumBuckets' o='128' t='unsigned int'/>
+<mbr r='llvm::FoldingSetBase::NumNodes' o='160' t='unsigned int'/>
+<fun r='_ZN4llvm14FoldingSetBaseC1Ej'/>
+<fun r='_ZN4llvm14FoldingSetBaseC1EOS0_'/>
+<fun r='_ZN4llvm14FoldingSetBaseaSEOS0_'/>
+<fun r='_ZN4llvm14FoldingSetBaseD1Ev'/>
+<fun r='_ZN4llvm14FoldingSetBase5clearEv'/>
+<fun r='_ZNK4llvm14FoldingSetBase4sizeEv'/>
+<fun r='_ZNK4llvm14FoldingSetBase5emptyEv'/>
+<fun r='_ZN4llvm14FoldingSetBase7reserveEj'/>
+<fun r='_ZN4llvm14FoldingSetBase8capacityEv'/>
+<fun r='_ZN4llvm14FoldingSetBase13GrowHashTableEv'/>
+<fun r='_ZN4llvm14FoldingSetBase15GrowBucketCountEj'/>
+<fun r='_ZNK4llvm14FoldingSetBase14GetNodeProfileEPNS0_4NodeERNS_16FoldingSetNodeIDE'/>
+<fun r='_ZNK4llvm14FoldingSetBase10NodeEqualsEPNS0_4NodeERKNS_16FoldingSetNodeIDEjRS3_'/>
+<fun r='_ZNK4llvm14FoldingSetBase15ComputeNodeHashEPNS0_4NodeERNS_16FoldingSetNodeIDE'/>
+<fun r='_ZN4llvm14FoldingSetBase10RemoveNodeEPNS0_4NodeE'/>
+<fun r='_ZN4llvm14FoldingSetBase15GetOrInsertNodeEPNS0_4NodeE'/>
+<fun r='_ZN4llvm14FoldingSetBase19FindNodeOrInsertPosERKNS_16FoldingSetNodeIDERPv'/>
+<fun r='_ZN4llvm14FoldingSetBase10InsertNodeEPNS0_4NodeEPv'/>

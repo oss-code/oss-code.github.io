@@ -1,0 +1,57 @@
+<inh f='include/llvm-6.0/llvm/IR/Instruction.h' l='44' c='llvm::Instruction'/>
+<def f='include/llvm-6.0/llvm/IR/Instructions.h' l='514' ll='660'/>
+<size>64</size>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='506'>//===----------------------------------------------------------------------===//
+//                                AtomicCmpXchgInst Class
+//===----------------------------------------------------------------------===//
+
+/// an instruction that atomically checks whether a
+/// specified value is in a memory location, and, if it is, stores a new value
+/// there.  Returns the value that was loaded.
+///</doc>
+<fun r='_ZN4llvm17AtomicCmpXchgInst4InitEPNS_5ValueES2_S2_NS_14AtomicOrderingES3_h'/>
+<fun r='_ZNK4llvm17AtomicCmpXchgInst9cloneImplEv'/>
+<fun r='_ZN4llvm17AtomicCmpXchgInstC1EPNS_5ValueES2_S2_NS_14AtomicOrderingES3_hPNS_11InstructionE'/>
+<fun r='_ZN4llvm17AtomicCmpXchgInstC1EPNS_5ValueES2_S2_NS_14AtomicOrderingES3_hPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm17AtomicCmpXchgInstnwEm'/>
+<fun r='_ZNK4llvm17AtomicCmpXchgInst10isVolatileEv'/>
+<fun r='_ZN4llvm17AtomicCmpXchgInst11setVolatileEb'/>
+<fun r='_ZNK4llvm17AtomicCmpXchgInst6isWeakEv'/>
+<fun r='_ZN4llvm17AtomicCmpXchgInst7setWeakEb'/>
+<fun r='_ZNK4llvm17AtomicCmpXchgInst10getOperandEj'/>
+<fun r='_ZN4llvm17AtomicCmpXchgInst10setOperandEjPNS_5ValueE'/>
+<fun r='_ZN4llvm17AtomicCmpXchgInst8op_beginEv'/>
+<fun r='_ZNK4llvm17AtomicCmpXchgInst8op_beginEv'/>
+<fun r='_ZN4llvm17AtomicCmpXchgInst6op_endEv'/>
+<fun r='_ZNK4llvm17AtomicCmpXchgInst6op_endEv'/>
+<fun r='_ZN4llvm17AtomicCmpXchgInst2OpEv'/>
+<fun r='_ZNK4llvm17AtomicCmpXchgInst2OpEv'/>
+<fun r='_ZNK4llvm17AtomicCmpXchgInst14getNumOperandsEv'/>
+<fun r='_ZNK4llvm17AtomicCmpXchgInst18getSuccessOrderingEv'/>
+<fun r='_ZN4llvm17AtomicCmpXchgInst18setSuccessOrderingENS_14AtomicOrderingE'/>
+<fun r='_ZNK4llvm17AtomicCmpXchgInst18getFailureOrderingEv'/>
+<fun r='_ZN4llvm17AtomicCmpXchgInst18setFailureOrderingENS_14AtomicOrderingE'/>
+<fun r='_ZNK4llvm17AtomicCmpXchgInst14getSyncScopeIDEv'/>
+<fun r='_ZN4llvm17AtomicCmpXchgInst14setSyncScopeIDEh'/>
+<fun r='_ZN4llvm17AtomicCmpXchgInst17getPointerOperandEv'/>
+<fun r='_ZNK4llvm17AtomicCmpXchgInst17getPointerOperandEv'/>
+<fun r='_ZN4llvm17AtomicCmpXchgInst22getPointerOperandIndexEv'/>
+<fun r='_ZN4llvm17AtomicCmpXchgInst17getCompareOperandEv'/>
+<fun r='_ZNK4llvm17AtomicCmpXchgInst17getCompareOperandEv'/>
+<fun r='_ZN4llvm17AtomicCmpXchgInst16getNewValOperandEv'/>
+<fun r='_ZNK4llvm17AtomicCmpXchgInst16getNewValOperandEv'/>
+<fun r='_ZNK4llvm17AtomicCmpXchgInst22getPointerAddressSpaceEv'/>
+<fun r='_ZN4llvm17AtomicCmpXchgInst27getStrongestFailureOrderingENS_14AtomicOrderingE'/>
+<fun r='_ZN4llvm17AtomicCmpXchgInst7classofEPKNS_11InstructionE'/>
+<fun r='_ZN4llvm17AtomicCmpXchgInst7classofEPKNS_5ValueE'/>
+<fun r='_ZN4llvm17AtomicCmpXchgInst26setInstructionSubclassDataEt'/>
+<mbr r='llvm::AtomicCmpXchgInst::SSID' o='448' t='SyncScope::ID'/>
+<fun r='_ZN4llvm17AtomicCmpXchgInst8op_beginEv'/>
+<fun r='_ZNK4llvm17AtomicCmpXchgInst8op_beginEv'/>
+<fun r='_ZN4llvm17AtomicCmpXchgInst6op_endEv'/>
+<fun r='_ZNK4llvm17AtomicCmpXchgInst6op_endEv'/>
+<fun r='_ZNK4llvm17AtomicCmpXchgInst10getOperandEj'/>
+<fun r='_ZN4llvm17AtomicCmpXchgInst10setOperandEjPNS_5ValueE'/>
+<fun r='_ZNK4llvm17AtomicCmpXchgInst14getNumOperandsEv'/>
+<fun r='_ZN4llvm17AtomicCmpXchgInst2OpEv'/>
+<fun r='_ZNK4llvm17AtomicCmpXchgInst2OpEv'/>

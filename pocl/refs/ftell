@@ -1,0 +1,11 @@
+<dec f='include/stdio.h' l='754' type='long ftell(FILE * __stream)'/>
+<doc f='include/stdio.h' l='750'>/* Return the current position of STREAM.
+
+   This function is a possible cancellation point and therefore not
+   marked with __THROW.  */</doc>
+<use f='pocl/examples/EinsteinToolkit/EinsteinToolkit.c' l='1421' u='c' c='main'/>
+<use f='pocl/examples/EinsteinToolkit/EinsteinToolkit.c' l='1431' u='c' c='main'/>
+<use f='pocl/examples/scalarwave/scalarwave.c' l='158' u='c' c='main'/>
+<use f='pocl/examples/trig/trig.c' l='53' u='c' c='main'/>
+<use f='pocl/lib/poclu/misc.c' l='152' u='c' c='poclu_read_binfile'/>
+<use f='pocl/tests/regression/test_flatten_barrier_subs.cpp' l='41' u='c' c='_Z14read_text_fileRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>

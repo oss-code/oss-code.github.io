@@ -1,0 +1,14 @@
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='445' u='c' c='_ZNK4llvm5APInt6isIntNEj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1123' u='c' c='_ZNK4llvm5APInteqEm'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1174' u='c' c='_ZNK4llvm5APInt3ultEm'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1244' u='c' c='_ZNK4llvm5APInt3ugtEm'/>
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='1512' type='unsigned int llvm::APInt::getActiveBits() const'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1519' u='c' c='_ZNK4llvm5APInt14getActiveWordsEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1534' u='c' c='_ZNK4llvm5APInt16getMinSignedBitsEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1727' u='c' c='_ZNK4llvm5APInt8logBase2Ev'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1733' u='c' c='_ZNK4llvm5APInt12ceilLogBase2Ev'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='1507'>/// \brief Compute the number of active bits in the value
+  ///
+  /// This function returns the number of active bits which is defined as the
+  /// bit width minus the number of leading zeros. This is used in several
+  /// computations to see how &quot;wide&quot; the value is.</doc>

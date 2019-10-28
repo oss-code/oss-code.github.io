@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/ADT/APInt.h' l='1362' type='llvm::APInt llvm::APInt::zextOrSelf(unsigned int width) const'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='1358'>/// \brief Zero extend or truncate to width
+  ///
+  /// Make this APInt have the bit width given by \p width. The value is zero
+  /// extended, or left alone to make it that width.</doc>

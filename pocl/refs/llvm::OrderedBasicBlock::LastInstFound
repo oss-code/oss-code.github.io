@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/OrderedBasicBlock.h' l='42' type='BasicBlock::const_iterator'/>
+<offset>4160</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/OrderedBasicBlock.h' l='39'>/// \brief Keep track of last instruction inserted into \p NumberedInsts.
+  /// It speeds up queries for uncached instructions by providing a start point
+  /// for new queries in OrderedBasicBlock::comesBefore.</doc>

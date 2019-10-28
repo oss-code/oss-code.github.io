@@ -1,0 +1,9 @@
+<dec f='include/hwloc/bitmap.h' l='257' type='int hwloc_bitmap_weight(hwloc_const_bitmap_t bitmap)'/>
+<use f='include/hwloc/cpuset.h' l='66' u='c' c='hwloc_cpuset_weight'/>
+<use f='include/hwloc/helper.h' l='721' u='c' c='hwloc_distrib'/>
+<use f='include/hwloc/helper.h' l='729' u='c' c='hwloc_distrib'/>
+<doc f='include/hwloc/bitmap.h' l='252'>/** \brief Compute the &quot;weight&quot; of bitmap \p bitmap (i.e., number of
+ * indexes that are in the bitmap).
+ *
+ * \return the number of indexes that are in the bitmap.
+ */</doc>

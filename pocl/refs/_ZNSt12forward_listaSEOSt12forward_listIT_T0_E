@@ -1,0 +1,13 @@
+<def f='include/c++/7/bits/forward_list.h' l='585' ll='594' type='forward_list&lt;_Tp, _Alloc&gt; &amp; std::forward_list::operator=(forward_list&lt;_Tp, _Alloc&gt; &amp;&amp; __list)'/>
+<doc f='include/c++/7/bits/forward_list.h' l='573'>/**
+       *  @brief  The %forward_list move assignment operator.
+       *  @param  __list  A %forward_list of identical element and allocator
+       *                types.
+       *
+       *  The contents of @a __list are moved into this %forward_list
+       *  (without copying, if the allocators permit it).
+       *
+       *  Afterwards @a __list is a valid, but unspecified %forward_list
+       *
+       *  Whether the allocator is moved depends on the allocator traits.
+       */</doc>

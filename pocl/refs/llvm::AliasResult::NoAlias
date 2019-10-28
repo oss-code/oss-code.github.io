@@ -1,0 +1,10 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='85' type='0'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='342' u='r' c='_ZN4llvm9AAResults9isNoAliasERKNS_14MemoryLocationES3_'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='80'>/// The two locations do not alias at all.
+  ///
+  /// This value is arranged to convert to false, while all other values
+  /// convert to true. This allows a boolean context to convert the result to
+  /// a binary flag indicating whether there is the possibility of aliasing.</doc>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='149' u='r' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='154' u='r' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='211' u='r' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>

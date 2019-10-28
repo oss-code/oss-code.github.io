@@ -1,0 +1,8 @@
+<dec f='pocl/lib/CL/devices/bufalloc.h' l='157' type='void free_chunk(chunk_info_t * chunk)'/>
+<def f='pocl/lib/CL/devices/bufalloc.c' l='376' ll='393' type='void free_chunk(chunk_info_t * chunk)'/>
+<doc f='pocl/lib/CL/devices/bufalloc.c' l='370'>/**
+ * Frees the given chunk.
+ *
+ * Successive unallocated chunks in the region, if found, are merged to
+ * form larger unallocated chunks.
+ */</doc>

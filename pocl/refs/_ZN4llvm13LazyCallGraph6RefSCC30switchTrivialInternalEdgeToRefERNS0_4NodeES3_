@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='706' type='void llvm::LazyCallGraph::RefSCC::switchTrivialInternalEdgeToRef(llvm::LazyCallGraph::Node &amp; SourceN, llvm::LazyCallGraph::Node &amp; TargetN)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='700'>/// Make an existing internal call edge between separate SCCs into a ref
+    /// edge.
+    ///
+    /// If SourceN and TargetN in separate SCCs within this RefSCC, changing
+    /// the call edge between them to a ref edge is a trivial operation that
+    /// does not require any structural changes to the call graph.</doc>

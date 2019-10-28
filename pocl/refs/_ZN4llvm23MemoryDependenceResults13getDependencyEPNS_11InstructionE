@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/MemoryDependenceAnalysis.h' l='380' type='llvm::MemDepResult llvm::MemoryDependenceResults::getDependency(llvm::Instruction * QueryInst)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/MemoryDependenceAnalysis.h' l='376'>/// Returns the instruction on which a memory operation depends.
+  ///
+  /// See the class comment for more details. It is illegal to call this on
+  /// non-memory instructions.</doc>

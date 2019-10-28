@@ -1,0 +1,13 @@
+<dec f='include/llvm-6.0/llvm/IR/Attributes.h' l='211' type='llvm::AttributeSetNode *'/>
+<use f='include/llvm-6.0/llvm/IR/Attributes.h' l='217' u='w' c='_ZN4llvm12AttributeSetC1EPNS_16AttributeSetNodeE'/>
+<use f='include/llvm-6.0/llvm/IR/Attributes.h' l='228' u='r' c='_ZNK4llvm12AttributeSeteqERKS0_'/>
+<use f='include/llvm-6.0/llvm/IR/Attributes.h' l='228' u='r' c='_ZNK4llvm12AttributeSeteqERKS0_'/>
+<use f='include/llvm-6.0/llvm/IR/Attributes.h' l='261' u='r' c='_ZNK4llvm12AttributeSet13hasAttributesEv'/>
+<use f='include/llvm-6.0/llvm/IR/Attributes.h' l='308' u='r' c='_ZN4llvm12DenseMapInfoINS_12AttributeSetEE12getHashValueES1_'/>
+<use f='include/llvm-6.0/llvm/IR/Attributes.h' l='309' u='r' c='_ZN4llvm12DenseMapInfoINS_12AttributeSetEE12getHashValueES1_'/>
+<offset>0</offset>
+<doc f='include/llvm-6.0/llvm/IR/Attributes.h' l='206'>// TODO: Extract AvailableAttrs from AttributeSetNode and store them here.
+  // This will allow an efficient implementation of addAttribute and
+  // removeAttribute for enum attrs.
+
+  /// Private implementation pointer.</doc>

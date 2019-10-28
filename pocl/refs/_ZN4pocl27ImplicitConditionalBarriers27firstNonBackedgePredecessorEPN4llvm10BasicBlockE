@@ -1,0 +1,9 @@
+<dec f='pocl/lib/llvmopencl/ImplicitConditionalBarriers.h' l='74' type='llvm::BasicBlock * pocl::ImplicitConditionalBarriers::firstNonBackedgePredecessor(llvm::BasicBlock * bb)'/>
+<def f='pocl/lib/llvmopencl/ImplicitConditionalBarriers.cc' l='74' ll='85' type='llvm::BasicBlock * pocl::ImplicitConditionalBarriers::firstNonBackedgePredecessor(llvm::BasicBlock * bb)'/>
+<use f='pocl/lib/llvmopencl/ImplicitConditionalBarriers.cc' l='133' u='c' c='_ZN4pocl27ImplicitConditionalBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/ImplicitConditionalBarriers.cc' l='143' u='c' c='_ZN4pocl27ImplicitConditionalBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<doc f='pocl/lib/llvmopencl/ImplicitConditionalBarriers.cc' l='69'>/**
+ * Finds a predecessor that does not come from a back edge.
+ *
+ * This is used to include loops in the conditional parallel region.
+ */</doc>

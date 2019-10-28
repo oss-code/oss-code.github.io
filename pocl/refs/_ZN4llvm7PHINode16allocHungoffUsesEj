@@ -1,0 +1,6 @@
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='2593' u='c' c='_ZN4llvm7PHINodeC1EPNS_4TypeEjRKNS_5TwineEPNS_11InstructionE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='2601' u='c' c='_ZN4llvm7PHINodeC1EPNS_4TypeEjRKNS_5TwineEPNS_10BasicBlockE'/>
+<def f='include/llvm-6.0/llvm/IR/Instructions.h' l='2613' ll='2615' type='void llvm::PHINode::allocHungoffUses(unsigned int N)'/>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='2610'>// allocHungoffUses - this is more complicated than the generic
+  // User::allocHungoffUses, because we have to allocate Uses for the incoming
+  // values and pointers to the incoming blocks, all in one allocation.</doc>

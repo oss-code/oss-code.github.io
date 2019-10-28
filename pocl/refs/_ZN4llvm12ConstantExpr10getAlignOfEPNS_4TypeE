@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='884' type='static llvm::Constant * llvm::ConstantExpr::getAlignOf(llvm::Type * Ty)'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='877'>// Static methods to construct a ConstantExpr of different kinds.  Note that
+  // these methods may return a object that is not an instance of the
+  // ConstantExpr class, because they will attempt to fold the constant
+  // expression into something simpler if possible.
+
+  /// getAlignOf constant expr - computes the alignment of a type in a target
+  /// independent way (Note: the return type is an i64).</doc>

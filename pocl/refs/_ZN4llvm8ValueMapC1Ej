@@ -1,0 +1,11 @@
+<def f='include/llvm-6.0/llvm/IR/ValueMap.h' l='105' ll='106' type='void llvm::ValueMap::ValueMap&lt;KeyT, ValueT, Config&gt;(unsigned int NumInitBuckets = 64)'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='426' u='c' c='_ZL16handleGetWorkDimPN4llvm6ModuleEPKc'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='605' u='c' c='_Z23convertPtrArgsToOffsetsPN4llvm6ModuleEPKcjPNS_14GlobalVariableE'/>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='178' u='c' c='_ZN12_GLOBAL__N_115AutomaticLocals22processAutomaticLocalsEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='297' u='c' c='_ZN4pocl22BarrierTailReplication17ReplicateSubgraphEPN4llvm10BasicBlockEPNS1_8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='444' u='c' c='_ZL27cloneFunctionWithPrintfArgsPN4llvm5ValueES1_S1_PNS_8FunctionEPNS_6ModuleE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='429' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemReplication.cc' l='191' u='c' c='_ZN4pocl19WorkitemReplication15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='108' u='c' c='_ZL24CloneFuncFixOpenCLImageTPN4llvm6ModuleEPNS_8FunctionE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='347' u='c' c='_Z4linkPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='452' u='c' c='_Z21copyKernelFromBitcodePKcPN4llvm6ModuleEPKS2_'/>

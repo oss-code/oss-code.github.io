@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='360' type='BlockT * llvm::RegionBase::getExit() const'/>
+<use f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='457' u='c' c='_ZNK4llvm10RegionBase8containsEPKNT_7RegionTE'/>
+<use f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='462' u='c' c='_ZNK4llvm10RegionBase8containsEPKNT_7RegionTE'/>
+<use f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='611' u='c' c='_ZN4llvm10RegionBase11block_beginEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='616' u='c' c='_ZNK4llvm10RegionBase11block_beginEv'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='357'>/// @brief Get the exit BasicBlock of the Region.
+  /// @return The exit BasicBlock of the Region, NULL if this is the TopLevel
+  ///         Region.</doc>
+<use f='pocl/lib/llvmopencl/IsolateRegions.cc' l='100' u='c' c='_ZN4pocl14IsolateRegions11runOnRegionEPN4llvm6RegionERNS1_13RGPassManagerE'/>

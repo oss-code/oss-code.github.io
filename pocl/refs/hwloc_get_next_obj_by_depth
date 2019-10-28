@@ -1,0 +1,11 @@
+<dec f='include/hwloc.h' l='1215' type='hwloc_obj_t hwloc_get_next_obj_by_depth(hwloc_topology_t topology, unsigned int depth, hwloc_obj_t prev)'/>
+<use f='include/hwloc/helper.h' l='91' u='c' c='hwloc_get_next_obj_inside_cpuset_by_depth'/>
+<use f='include/hwloc/helper.h' l='310' u='c' c='hwloc_get_next_obj_covering_cpuset_by_depth'/>
+<use f='include/hwloc/helper.h' l='987' u='c' c='hwloc_cpuset_from_nodeset'/>
+<use f='include/hwloc/helper.h' l='1010' u='c' c='hwloc_cpuset_from_nodeset_strict'/>
+<def f='include/hwloc/inlines.h' l='84' ll='92' type='hwloc_obj_t hwloc_get_next_obj_by_depth(hwloc_topology_t topology, unsigned int depth, hwloc_obj_t prev)'/>
+<use f='include/hwloc/inlines.h' l='101' u='c' c='hwloc_get_next_obj_by_type'/>
+<doc f='include/hwloc.h' l='1210'>/** \brief Returns the next object at depth \p depth.
+ *
+ * If \p prev is \c NULL, return the first object at depth \p depth.
+ */</doc>

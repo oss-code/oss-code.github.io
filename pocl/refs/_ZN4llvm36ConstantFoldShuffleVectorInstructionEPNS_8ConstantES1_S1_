@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='120' type='llvm::Constant * llvm::ConstantFoldShuffleVectorInstruction(llvm::Constant * V1, llvm::Constant * V2, llvm::Constant * Mask)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='117'>/// \brief Attempt to constant fold a shufflevector instruction with the
+/// specified operands and indices.  The constant result is returned if
+/// successful; if not, null is returned.</doc>

@@ -1,0 +1,14 @@
+<def f='include/c++/7/bits/stl_map.h' l='1125' ll='1127' type='void std::map::clear()'/>
+<doc f='include/c++/7/bits/stl_map.h' l='1119'>/**
+       *  Erases all elements in a %map.  Note that this function only
+       *  erases the elements, and that if the elements themselves are
+       *  pointers, the pointed-to memory is not touched in any way.
+       *  Managing the pointer is the user&apos;s responsibility.
+       */</doc>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='882' u='c' c='_Z18cleanKernelLibraryv'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='109' u='c' c='_Z19clearTargetMachinesv'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='119' u='c' c='_Z17clearKernelPassesv'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='115' u='c' c='_ZN4pocl26VariableUniformityAnalysis13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='467' u='c' c='_ZN4pocl26VariableUniformityAnalysis14doFinalizationERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='130' u='c' c='_ZN4pocl13WorkitemLoops13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='131' u='c' c='_ZN4pocl13WorkitemLoops13runOnFunctionERN4llvm8FunctionE'/>

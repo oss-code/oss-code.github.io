@@ -1,0 +1,8 @@
+<def f='pocl/include/CL/cl2.hpp' l='7322' ll='7327' type='static cl::CommandQueue cl::CommandQueue::setDefault(const cl::CommandQueue &amp; default_queue)'/>
+<doc f='pocl/include/CL/cl2.hpp' l='7315'>/**
+     * Modify the default command queue to be used by
+     * subsequent operations.
+     * Will only set the default if no default was previously created.
+     * @return updated default command queue.
+     *         Should be compared to the passed value to ensure that it was updated.
+     */</doc>

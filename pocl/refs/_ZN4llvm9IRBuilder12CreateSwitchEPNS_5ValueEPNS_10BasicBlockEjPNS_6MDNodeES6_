@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='802' ll='807' type='llvm::SwitchInst * llvm::IRBuilder::CreateSwitch(llvm::Value * V, llvm::BasicBlock * Dest, unsigned int NumCases = 10, llvm::MDNode * BranchWeights = nullptr, llvm::MDNode * Unpredictable = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='799'>/// \brief Create a switch instruction with the specified value, default dest,
+  /// and with a hint for the number of cases that will be added (for efficient
+  /// allocation).</doc>

@@ -1,0 +1,15 @@
+<dec f='include/hwloc.h' l='1759' type='int hwloc_set_membind(hwloc_topology_t topology, hwloc_const_cpuset_t cpuset, hwloc_membind_policy_t policy, int flags)'/>
+<use f='include/hwloc/inlines.h' l='140' u='c' c='hwloc_alloc_membind_policy'/>
+<doc f='include/hwloc.h' l='1746'>/** \brief Set the default memory binding policy of the current
+ * process or thread to prefer the NUMA node(s) near the specified physical \p
+ * cpuset
+ *
+ * If neither ::HWLOC_MEMBIND_PROCESS nor ::HWLOC_MEMBIND_THREAD is
+ * specified, the current process is assumed to be single-threaded.
+ * This is the most portable form as it permits hwloc to use either
+ * process-based OS functions or thread-based OS functions, depending
+ * on which are available.
+ *
+ * \return -1 with errno set to ENOSYS if the action is not supported
+ * \return -1 with errno set to EXDEV if the binding cannot be enforced
+ */</doc>

@@ -1,0 +1,10 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='898' type='volatile int'/>
+<offset>768</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='898'>/* counter for unfinished command enqueued */</doc>
+<use f='pocl/lib/CL/clCreateCommandQueue.c' l='74' u='w' c='POclCreateCommandQueue'/>
+<use f='pocl/lib/CL/clReleaseCommandQueue.c' l='42' u='r' c='POclReleaseCommandQueue'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='275' u='r' c='pocl_pthread_join'/>
+<use f='pocl/lib/CL/pocl_util.c' l='548' u='w' c='pocl_command_enqueue'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1248' u='w' c='pocl_update_event_finished_msg'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1249' u='r' c='pocl_update_event_finished_msg'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1256' u='r' c='pocl_update_event_finished_msg'/>

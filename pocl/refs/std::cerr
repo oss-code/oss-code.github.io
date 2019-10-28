@@ -1,0 +1,27 @@
+<dec f='include/c++/7/iostream' l='62' type='ostream'/>
+<doc f='include/c++/7/iostream' l='62'>/// Linked to standard error (unbuffered)</doc>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='332' u='a' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='389' u='a' c='_ZN4pocl14ParallelRegion6VerifyEv'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='390' u='a' c='_ZN4pocl14ParallelRegion6VerifyEv'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='229' u='a' c='_ZN4pocl15WorkitemHandler26fixUndominatedVariableUsesEPN4llvm24DominatorTreeWrapperPassERNS1_8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandlerChooser.cc' l='93' u='a' c='_ZN4pocl22WorkitemHandlerChooser13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/tests/regression/test_autolocals_in_constexprs.cpp' l='101' u='a' c='main'/>
+<use f='pocl/tests/regression/test_barrier_before_return.cpp' l='155' u='a' c='main'/>
+<use f='pocl/tests/regression/test_barrier_between_for_loops.cpp' l='194' u='a' c='main'/>
+<use f='pocl/tests/regression/test_constant_array.cpp' l='130' u='a' c='main'/>
+<use f='pocl/tests/regression/test_early_return.cpp' l='129' u='a' c='main'/>
+<use f='pocl/tests/regression/test_early_return.cpp' l='151' u='a' c='main'/>
+<use f='pocl/tests/regression/test_for_with_var_iteration_count.cpp' l='160' u='a' c='main'/>
+<use f='pocl/tests/regression/test_fors_with_var_iteration_counts.cpp' l='142' u='a' c='main'/>
+<use f='pocl/tests/regression/test_id_dependent_computation.cpp' l='175' u='a' c='main'/>
+<use f='pocl/tests/regression/test_infinite_loop.cpp' l='125' u='a' c='main'/>
+<use f='pocl/tests/regression/test_locals.cpp' l='146' u='a' c='main'/>
+<use f='pocl/tests/regression/test_loop_phi_replication.cpp' l='159' u='a' c='main'/>
+<use f='pocl/tests/regression/test_multi_level_loops_with_barriers.cpp' l='169' u='a' c='main'/>
+<use f='pocl/tests/regression/test_null_arg.cpp' l='145' u='a' c='main'/>
+<use f='pocl/tests/regression/test_setargs.cpp' l='120' u='m' c='main'/>
+<use f='pocl/tests/regression/test_setargs.cpp' l='125' u='a' c='main'/>
+<use f='pocl/tests/regression/test_simple_for_with_a_barrier.cpp' l='164' u='a' c='main'/>
+<use f='pocl/tests/regression/test_structs_as_args.cpp' l='286' u='a' c='main'/>
+<use f='pocl/tests/regression/test_undominated_variable.cpp' l='162' u='a' c='main'/>
+<use f='pocl/tests/regression/test_vectors_as_args.cpp' l='179' u='a' c='main'/>

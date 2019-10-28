@@ -1,0 +1,6 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='1620' type='LLVMValueRef LLVMConstStringInContext(LLVMContextRef C, const char * Str, unsigned int Length, LLVMBool DontNullTerminate)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='1615'>/**
+ * Create a ConstantDataSequential and initialize it with a string.
+ *
+ * @see llvm::ConstantDataArray::getString()
+ */</doc>

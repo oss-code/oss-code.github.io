@@ -1,0 +1,7 @@
+<dec f='pocl/include/CL/cl.h' l='1492' type='cl_int clEnqueueWriteImage(cl_command_queue command_queue, cl_mem image, cl_bool blocking_write, const size_t * origin, const size_t * region, size_t input_row_pitch, size_t input_slice_pitch, const void * ptr, cl_uint num_events_in_wait_list, const cl_event * event_wait_list, cl_event * event)'/>
+<use f='pocl/lib/CL/pocl_intfn.h' l='74' c='POclEnqueueWriteImage'/>
+<use f='pocl/include/CL/cl2.hpp' l='7674' u='c' c='_ZNK2cl12CommandQueue17enqueueWriteImageERKNS_5ImageEjRKSt5arrayImLm3EES7_mmPKvPKSt6vectorINS_5EventESaISB_EEPSB_'/>
+<use f='pocl/tests/runtime/test_event_free.c' l='144' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_event_free.c' l='148' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_event_free.c' l='177' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_event_free.c' l='182' u='c' c='main'/>

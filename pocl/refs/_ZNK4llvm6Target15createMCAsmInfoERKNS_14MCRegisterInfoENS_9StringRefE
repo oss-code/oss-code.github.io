@@ -1,0 +1,12 @@
+<def f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='316' ll='321' type='llvm::MCAsmInfo * llvm::Target::createMCAsmInfo(const llvm::MCRegisterInfo &amp; MRI, llvm::StringRef TheTriple) const'/>
+<doc f='include/llvm-6.0/llvm/Support/TargetRegistry.h' l='305'>/// @}
+  /// @name Feature Constructors
+  /// @{
+
+  /// createMCAsmInfo - Create a MCAsmInfo implementation for the specified
+  /// target triple.
+  ///
+  /// \param TheTriple This argument is used to determine the target machine
+  /// feature set; it should always be provided. Generally this should be
+  /// either the target triple from the module, or the target triple of the
+  /// host if that does not exist.</doc>

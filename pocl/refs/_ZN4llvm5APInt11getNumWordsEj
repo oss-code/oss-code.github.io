@@ -1,0 +1,8 @@
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1495' u='c' c='_ZNK4llvm5APInt11getNumWordsEv'/>
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='1503' ll='1505' type='static unsigned int llvm::APInt::getNumWords(unsigned int BitWidth)'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='1497'>/// \brief Get the number of words.
+  ///
+  /// *NOTE* Here one word&apos;s bitwidth equals to that of uint64_t.
+  ///
+  /// \returns the number of words to hold the integer value with a given bit
+  /// width.</doc>

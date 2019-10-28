@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='167' type='RegionT * llvm::RegionNodeBase::getParent() const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='159'>/// @brief Get the parent Region of this RegionNode.
+  ///
+  /// The parent Region is the Region this RegionNode belongs to. If for
+  /// example a BasicBlock is element of two Regions, there exist two
+  /// RegionNodes for this BasicBlock. Each with the getParent() function
+  /// pointing to the Region this RegionNode belongs to.
+  ///
+  /// @return Get the parent Region of this RegionNode.</doc>

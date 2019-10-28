@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='101' ll='103' type='void llvm::APInt::APInt(uint64_t * val, unsigned int bits)'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='97'>/// \brief Fast internal constructor
+  ///
+  /// This constructor is used only internally for speed of construction of
+  /// temporaries. It is unsafe for general use so it is not public.</doc>

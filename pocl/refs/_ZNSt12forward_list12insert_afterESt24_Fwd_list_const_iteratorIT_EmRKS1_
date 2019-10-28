@@ -1,0 +1,17 @@
+<dec f='include/c++/7/bits/forward_list.h' l='906' type='iterator std::forward_list::insert_after(const_iterator __pos, size_type __n, const _Tp &amp; __val)'/>
+<def f='include/c++/7/bits/forward_list.tcc' l='257' ll='269' type='typename forward_list&lt;_Tp, _Alloc&gt;::iterator std::forward_list::insert_after(const_iterator __pos, size_type __n, const _Tp &amp; __val)'/>
+<doc f='include/c++/7/bits/forward_list.h' l='890'>/**
+       *  @brief  Inserts a number of copies of given data into the
+       *          %forward_list.
+       *  @param  __pos  An iterator into the %forward_list.
+       *  @param  __n  Number of elements to be inserted.
+       *  @param  __val  Data to be inserted.
+       *  @return  An iterator pointing to the last inserted copy of
+       *           @a val or @a pos if @a n == 0.
+       *
+       *  This function will insert a specified number of copies of the
+       *  given data after the location specified by @a pos.
+       *
+       *  This operation is linear in the number of elements inserted and
+       *  does not invalidate iterators and references.
+       */</doc>

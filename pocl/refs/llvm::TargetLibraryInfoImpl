@@ -1,0 +1,42 @@
+<def f='include/llvm-6.0/llvm/Analysis/TargetLibraryInfo.h' l='47' ll='199'/>
+<size>184</size>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetLibraryInfo.h' l='41'>/// Implementation of the target library information.
+///
+/// This class constructs tables that hold the target library information and
+/// make it available. However, it is somewhat expensive to compute and only
+/// depends on the triple. So users typically interact with the \c
+/// TargetLibraryInfo wrapper below.</doc>
+<mbr r='llvm::TargetLibraryInfoImpl::AvailableArray' o='0' t='unsigned char [101]'/>
+<mbr r='llvm::TargetLibraryInfoImpl::CustomNames' o='832' t='llvm::DenseMap&lt;unsigned int, std::string&gt;'/>
+<smbr r='llvm::TargetLibraryInfoImpl::StandardNames' t='const llvm::StringRef [401]'/>
+<mbr r='llvm::TargetLibraryInfoImpl::ShouldExtI32Param' o='1024' t='bool'/>
+<mbr r='llvm::TargetLibraryInfoImpl::ShouldExtI32Return' o='1032' t='bool'/>
+<mbr r='llvm::TargetLibraryInfoImpl::ShouldSignExtI32Param' o='1040' t='bool'/>
+<fun r='_ZN4llvm21TargetLibraryInfoImpl8setStateENS_7LibFuncENS0_17AvailabilityStateE'/>
+<fun r='_ZNK4llvm21TargetLibraryInfoImpl8getStateENS_7LibFuncE'/>
+<mbr r='llvm::TargetLibraryInfoImpl::VectorDescs' o='1088' t='std::vector&lt;VecDesc&gt;'/>
+<mbr r='llvm::TargetLibraryInfoImpl::ScalarDescs' o='1280' t='std::vector&lt;VecDesc&gt;'/>
+<fun r='_ZNK4llvm21TargetLibraryInfoImpl22isValidProtoForLibFuncERKNS_12FunctionTypeENS_7LibFuncEPKNS_10DataLayoutE'/>
+<fun r='_ZN4llvm21TargetLibraryInfoImplC1Ev'/>
+<fun r='_ZN4llvm21TargetLibraryInfoImplC1ERKNS_6TripleE'/>
+<fun r='_ZN4llvm21TargetLibraryInfoImplC1ERKS0_'/>
+<fun r='_ZN4llvm21TargetLibraryInfoImplC1EOS0_'/>
+<fun r='_ZN4llvm21TargetLibraryInfoImplaSERKS0_'/>
+<fun r='_ZN4llvm21TargetLibraryInfoImplaSEOS0_'/>
+<fun r='_ZNK4llvm21TargetLibraryInfoImpl10getLibFuncENS_9StringRefERNS_7LibFuncE'/>
+<fun r='_ZNK4llvm21TargetLibraryInfoImpl10getLibFuncERKNS_8FunctionERNS_7LibFuncE'/>
+<fun r='_ZN4llvm21TargetLibraryInfoImpl14setUnavailableENS_7LibFuncE'/>
+<fun r='_ZN4llvm21TargetLibraryInfoImpl12setAvailableENS_7LibFuncE'/>
+<fun r='_ZN4llvm21TargetLibraryInfoImpl20setAvailableWithNameENS_7LibFuncENS_9StringRefE'/>
+<fun r='_ZN4llvm21TargetLibraryInfoImpl19disableAllFunctionsEv'/>
+<fun r='_ZN4llvm21TargetLibraryInfoImpl24addVectorizableFunctionsENS_8ArrayRefINS_7VecDescEEE'/>
+<fun r='_ZN4llvm21TargetLibraryInfoImpl34addVectorizableFunctionsFromVecLibENS0_13VectorLibraryE'/>
+<fun r='_ZNK4llvm21TargetLibraryInfoImpl22isFunctionVectorizableENS_9StringRefEj'/>
+<fun r='_ZNK4llvm21TargetLibraryInfoImpl22isFunctionVectorizableENS_9StringRefE'/>
+<fun r='_ZNK4llvm21TargetLibraryInfoImpl21getVectorizedFunctionENS_9StringRefEj'/>
+<fun r='_ZNK4llvm21TargetLibraryInfoImpl22isFunctionScalarizableENS_9StringRefERj'/>
+<fun r='_ZNK4llvm21TargetLibraryInfoImpl21getScalarizedFunctionENS_9StringRefERj'/>
+<fun r='_ZN4llvm21TargetLibraryInfoImpl20setShouldExtI32ParamEb'/>
+<fun r='_ZN4llvm21TargetLibraryInfoImpl21setShouldExtI32ReturnEb'/>
+<fun r='_ZN4llvm21TargetLibraryInfoImpl24setShouldSignExtI32ParamEb'/>
+<fun r='_ZNK4llvm21TargetLibraryInfoImpl12getWCharSizeERKNS_6ModuleE'/>

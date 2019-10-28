@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>common.h source code [pocl/lib/CL/devices/common.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/CL/devices/common.h'; var root_path = '../../../..'; var data_path = '../../../../../data';</script>
+<script src='../../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../../..'>pocl</a>/<a href='../..'>lib</a>/<a href='..'>CL</a>/<a href='./'>devices</a>/<a href='common.h.html'>common.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* common.h - common code that can be reused between device driver</i></td></tr>
+<tr><th id="2">2</th><td><i>              implementations</i></td></tr>
+<tr><th id="3">3</th><td><i></i></td></tr>
+<tr><th id="4">4</th><td><i>   Copyright (c) 2012-2019 Pekka Jääskeläinen</i></td></tr>
+<tr><th id="5">5</th><td><i></i></td></tr>
+<tr><th id="6">6</th><td><i>   Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="7">7</th><td><i>   of this software and associated documentation files (the "Software"), to</i></td></tr>
+<tr><th id="8">8</th><td><i>   deal in the Software without restriction, including without limitation the</i></td></tr>
+<tr><th id="9">9</th><td><i>   rights to use, copy, modify, merge, publish, distribute, sublicense, and/or</i></td></tr>
+<tr><th id="10">10</th><td><i>   sell copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="11">11</th><td><i>   furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="12">12</th><td><i></i></td></tr>
+<tr><th id="13">13</th><td><i>   The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="14">14</th><td><i>   all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="15">15</th><td><i></i></td></tr>
+<tr><th id="16">16</th><td><i>   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="17">17</th><td><i>   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="18">18</th><td><i>   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="19">19</th><td><i>   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="20">20</th><td><i>   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING</i></td></tr>
+<tr><th id="21">21</th><td><i>   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS</i></td></tr>
+<tr><th id="22">22</th><td><i>   IN THE SOFTWARE.</i></td></tr>
+<tr><th id="23">23</th><td><i>*/</i></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><u>#<span data-ppcond="25">ifndef</span> <span class="macro" data-ref="_M/POCL_COMMON_H">POCL_COMMON_H</span></u></td></tr>
+<tr><th id="26">26</th><td><u>#define <dfn class="macro" id="_M/POCL_COMMON_H" data-ref="_M/POCL_COMMON_H">POCL_COMMON_H</dfn></u></td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><u>#include <a href="../pocl_cl.h.html">"pocl_cl.h"</a></u></td></tr>
+<tr><th id="29">29</th><td><u>#include <a href="../../../include/utlist.h.html">"utlist.h"</a></u></td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><u>#define <dfn class="macro" id="_M/__CBUILD__" data-ref="_M/__CBUILD__">__CBUILD__</dfn></u></td></tr>
+<tr><th id="32">32</th><td><u>#include <a href="../../../include/pocl_image_types.h.html">"pocl_image_types.h"</a></u></td></tr>
+<tr><th id="33">33</th><td><u>#undef <a class="macro" href="#31" data-ref="_M/__CBUILD__">__CBUILD__</a></u></td></tr>
+<tr><th id="34">34</th><td></td></tr>
+<tr><th id="35">35</th><td><u>#define <dfn class="macro" id="_M/XSETUP_DEVICE_CL_VERSION" data-ref="_M/XSETUP_DEVICE_CL_VERSION">XSETUP_DEVICE_CL_VERSION</dfn>(A, B)             \</u></td></tr>
+<tr><th id="36">36</th><td><u>  dev-&gt;cl_version_int = (A * 100) + (B * 10);     \</u></td></tr>
+<tr><th id="37">37</th><td><u>  dev-&gt;cl_version_std = "CL" # A "." # B;         \</u></td></tr>
+<tr><th id="38">38</th><td><u>  dev-&gt;version = "OpenCL " # A "." # B " pocl";</u></td></tr>
+<tr><th id="39">39</th><td></td></tr>
+<tr><th id="40">40</th><td><u>#define <dfn class="macro" id="_M/SETUP_DEVICE_CL_VERSION" data-ref="_M/SETUP_DEVICE_CL_VERSION">SETUP_DEVICE_CL_VERSION</dfn>(a, b) XSETUP_DEVICE_CL_VERSION(a, b)</u></td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td><u>#define <dfn class="macro" id="_M/POCL_DEVICES_PREFERRED_VECTOR_WIDTH_CHAR" data-ref="_M/POCL_DEVICES_PREFERRED_VECTOR_WIDTH_CHAR">POCL_DEVICES_PREFERRED_VECTOR_WIDTH_CHAR</dfn>    1</u></td></tr>
+<tr><th id="43">43</th><td><u>#define <dfn class="macro" id="_M/POCL_DEVICES_PREFERRED_VECTOR_WIDTH_SHORT" data-ref="_M/POCL_DEVICES_PREFERRED_VECTOR_WIDTH_SHORT">POCL_DEVICES_PREFERRED_VECTOR_WIDTH_SHORT</dfn>   1</u></td></tr>
+<tr><th id="44">44</th><td><u>#define <dfn class="macro" id="_M/POCL_DEVICES_PREFERRED_VECTOR_WIDTH_INT" data-ref="_M/POCL_DEVICES_PREFERRED_VECTOR_WIDTH_INT">POCL_DEVICES_PREFERRED_VECTOR_WIDTH_INT</dfn>     1</u></td></tr>
+<tr><th id="45">45</th><td><u>#define <dfn class="macro" id="_M/POCL_DEVICES_PREFERRED_VECTOR_WIDTH_LONG" data-ref="_M/POCL_DEVICES_PREFERRED_VECTOR_WIDTH_LONG">POCL_DEVICES_PREFERRED_VECTOR_WIDTH_LONG</dfn>    1</u></td></tr>
+<tr><th id="46">46</th><td><u>#define <dfn class="macro" id="_M/POCL_DEVICES_PREFERRED_VECTOR_WIDTH_FLOAT" data-ref="_M/POCL_DEVICES_PREFERRED_VECTOR_WIDTH_FLOAT">POCL_DEVICES_PREFERRED_VECTOR_WIDTH_FLOAT</dfn>   1</u></td></tr>
+<tr><th id="47">47</th><td><u>#define <dfn class="macro" id="_M/POCL_DEVICES_PREFERRED_VECTOR_WIDTH_DOUBLE" data-ref="_M/POCL_DEVICES_PREFERRED_VECTOR_WIDTH_DOUBLE">POCL_DEVICES_PREFERRED_VECTOR_WIDTH_DOUBLE</dfn>  1</u></td></tr>
+<tr><th id="48">48</th><td><u>#define <dfn class="macro" id="_M/POCL_DEVICES_NATIVE_VECTOR_WIDTH_CHAR" data-ref="_M/POCL_DEVICES_NATIVE_VECTOR_WIDTH_CHAR">POCL_DEVICES_NATIVE_VECTOR_WIDTH_CHAR</dfn>       1</u></td></tr>
+<tr><th id="49">49</th><td><u>#define <dfn class="macro" id="_M/POCL_DEVICES_NATIVE_VECTOR_WIDTH_SHORT" data-ref="_M/POCL_DEVICES_NATIVE_VECTOR_WIDTH_SHORT">POCL_DEVICES_NATIVE_VECTOR_WIDTH_SHORT</dfn>      1</u></td></tr>
+<tr><th id="50">50</th><td><u>#define <dfn class="macro" id="_M/POCL_DEVICES_NATIVE_VECTOR_WIDTH_INT" data-ref="_M/POCL_DEVICES_NATIVE_VECTOR_WIDTH_INT">POCL_DEVICES_NATIVE_VECTOR_WIDTH_INT</dfn>        1</u></td></tr>
+<tr><th id="51">51</th><td><u>#define <dfn class="macro" id="_M/POCL_DEVICES_NATIVE_VECTOR_WIDTH_LONG" data-ref="_M/POCL_DEVICES_NATIVE_VECTOR_WIDTH_LONG">POCL_DEVICES_NATIVE_VECTOR_WIDTH_LONG</dfn>       1</u></td></tr>
+<tr><th id="52">52</th><td><u>#define <dfn class="macro" id="_M/POCL_DEVICES_NATIVE_VECTOR_WIDTH_FLOAT" data-ref="_M/POCL_DEVICES_NATIVE_VECTOR_WIDTH_FLOAT">POCL_DEVICES_NATIVE_VECTOR_WIDTH_FLOAT</dfn>      1</u></td></tr>
+<tr><th id="53">53</th><td><u>#define <dfn class="macro" id="_M/POCL_DEVICES_NATIVE_VECTOR_WIDTH_DOUBLE" data-ref="_M/POCL_DEVICES_NATIVE_VECTOR_WIDTH_DOUBLE">POCL_DEVICES_NATIVE_VECTOR_WIDTH_DOUBLE</dfn>     1</u></td></tr>
+<tr><th id="54">54</th><td></td></tr>
+<tr><th id="55">55</th><td><i>/* Half is internally represented as short */</i></td></tr>
+<tr><th id="56">56</th><td><u>#define <dfn class="macro" id="_M/POCL_DEVICES_PREFERRED_VECTOR_WIDTH_HALF" data-ref="_M/POCL_DEVICES_PREFERRED_VECTOR_WIDTH_HALF">POCL_DEVICES_PREFERRED_VECTOR_WIDTH_HALF</dfn> POCL_DEVICES_PREFERRED_VECTOR_WIDTH_SHORT</u></td></tr>
+<tr><th id="57">57</th><td><u>#define <dfn class="macro" id="_M/POCL_DEVICES_NATIVE_VECTOR_WIDTH_HALF" data-ref="_M/POCL_DEVICES_NATIVE_VECTOR_WIDTH_HALF">POCL_DEVICES_NATIVE_VECTOR_WIDTH_HALF</dfn> POCL_DEVICES_NATIVE_VECTOR_WIDTH_SHORT</u></td></tr>
+<tr><th id="58">58</th><td></td></tr>
+<tr><th id="59">59</th><td><u>#<span data-ppcond="59">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u>  </td></tr>
+<tr><th id="60">60</th><td><b>extern</b> <q>"C"</q> {</td></tr>
+<tr><th id="61">61</th><td><u>#<span data-ppcond="59">endif</span></u></td></tr>
+<tr><th id="62">62</th><td></td></tr>
+<tr><th id="63">63</th><td><u>#<span data-ppcond="63">ifdef</span> <span class="macro" data-ref="_M/__GNUC__">__GNUC__</span></u></td></tr>
+<tr><th id="64">64</th><td><u>#pragma GCC visibility push(hidden)</u></td></tr>
+<tr><th id="65">65</th><td><u>#<span data-ppcond="63">endif</span></u></td></tr>
+<tr><th id="66">66</th><td></td></tr>
+<tr><th id="67">67</th><td><em>void</em> <dfn class="decl" id="pocl_init_cpu_device_infos" title='pocl_init_cpu_device_infos' data-ref="pocl_init_cpu_device_infos">pocl_init_cpu_device_infos</dfn> (<a class="typedef" href="../../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="local col4 decl" id="334dev" title='dev' data-type='cl_device_id' data-ref="334dev">dev</dfn>);</td></tr>
+<tr><th id="68">68</th><td></td></tr>
+<tr><th id="69">69</th><td><em>int</em> <dfn class="decl" id="llvm_codegen" title='llvm_codegen' data-ref="llvm_codegen">llvm_codegen</dfn> (<em>char</em> *<dfn class="local col5 decl" id="335output" title='output' data-type='char *' data-ref="335output">output</dfn>, <em>unsigned</em> <dfn class="local col6 decl" id="336device_i" title='device_i' data-type='unsigned int' data-ref="336device_i">device_i</dfn>, <a class="typedef" href="../../../include/CL/cl.h.html#cl_kernel" title='cl_kernel' data-type='struct _cl_kernel *' data-ref="cl_kernel">cl_kernel</a> <dfn class="local col7 decl" id="337kernel" title='kernel' data-type='cl_kernel' data-ref="337kernel">kernel</dfn>,</td></tr>
+<tr><th id="70">70</th><td>                  <a class="typedef" href="../../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="local col8 decl" id="338device" title='device' data-type='cl_device_id' data-ref="338device">device</dfn>, <a class="typedef" href="../../../include/pocl.h.html#_cl_command_node" title='_cl_command_node' data-type='struct _cl_command_node' data-ref="_cl_command_node">_cl_command_node</a> *<dfn class="local col9 decl" id="339command" title='command' data-type='_cl_command_node *' data-ref="339command">command</dfn>,</td></tr>
+<tr><th id="71">71</th><td>                  <em>int</em> <dfn class="local col0 decl" id="340specialize" title='specialize' data-type='int' data-ref="340specialize">specialize</dfn>);</td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td><em>void</em> <dfn class="decl" id="fill_dev_image_t" title='fill_dev_image_t' data-ref="fill_dev_image_t">fill_dev_image_t</dfn> (<a class="typedef" href="../../../include/pocl_image_types.h.html#dev_image_t" title='dev_image_t' data-type='struct dev_image_t' data-ref="dev_image_t">dev_image_t</a> *<dfn class="local col1 decl" id="341di" title='di' data-type='dev_image_t *' data-ref="341di">di</dfn>, <b>struct</b> <a class="type" href="../pocl_cl.h.html#pocl_argument" title='pocl_argument' data-ref="pocl_argument">pocl_argument</a> *<dfn class="local col2 decl" id="342parg" title='parg' data-type='struct pocl_argument *' data-ref="342parg">parg</dfn>,</td></tr>
+<tr><th id="74">74</th><td>                       <a class="typedef" href="../../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="local col3 decl" id="343device" title='device' data-type='cl_device_id' data-ref="343device">device</dfn>);</td></tr>
+<tr><th id="75">75</th><td></td></tr>
+<tr><th id="76">76</th><td><em>void</em> <dfn class="decl" id="fill_dev_sampler_t" title='fill_dev_sampler_t' data-ref="fill_dev_sampler_t">fill_dev_sampler_t</dfn> (<a class="typedef" href="../../../include/pocl_image_types.h.html#dev_sampler_t" title='dev_sampler_t' data-type='uintptr_t' data-ref="dev_sampler_t">dev_sampler_t</a> *<dfn class="local col4 decl" id="344ds" title='ds' data-type='dev_sampler_t *' data-ref="344ds">ds</dfn>, <b>struct</b> <a class="type" href="../pocl_cl.h.html#pocl_argument" title='pocl_argument' data-ref="pocl_argument">pocl_argument</a> *<dfn class="local col5 decl" id="345parg" title='parg' data-type='struct pocl_argument *' data-ref="345parg">parg</dfn>);</td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td><em>void</em> <dfn class="decl" id="pocl_copy_mem_object" title='pocl_copy_mem_object' data-ref="pocl_copy_mem_object">pocl_copy_mem_object</dfn> (<a class="typedef" href="../../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="local col6 decl" id="346dest_dev" title='dest_dev' data-type='cl_device_id' data-ref="346dest_dev">dest_dev</dfn>, <a class="typedef" href="../../../include/CL/cl.h.html#cl_mem" title='cl_mem' data-type='struct _cl_mem *' data-ref="cl_mem">cl_mem</a> <dfn class="local col7 decl" id="347dest" title='dest' data-type='cl_mem' data-ref="347dest">dest</dfn>,</td></tr>
+<tr><th id="79">79</th><td>                           <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col8 decl" id="348dest_offset" title='dest_offset' data-type='size_t' data-ref="348dest_offset">dest_offset</dfn>,</td></tr>
+<tr><th id="80">80</th><td>                           <a class="typedef" href="../../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="local col9 decl" id="349source_dev" title='source_dev' data-type='cl_device_id' data-ref="349source_dev">source_dev</dfn>, <a class="typedef" href="../../../include/CL/cl.h.html#cl_mem" title='cl_mem' data-type='struct _cl_mem *' data-ref="cl_mem">cl_mem</a> <dfn class="local col0 decl" id="350source" title='source' data-type='cl_mem' data-ref="350source">source</dfn>,</td></tr>
+<tr><th id="81">81</th><td>                           <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col1 decl" id="351source_offset" title='source_offset' data-type='size_t' data-ref="351source_offset">source_offset</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col2 decl" id="352cb" title='cb' data-type='size_t' data-ref="352cb">cb</dfn>);</td></tr>
+<tr><th id="82">82</th><td></td></tr>
+<tr><th id="83">83</th><td><em>void</em> <dfn class="decl" id="pocl_migrate_mem_objects" title='pocl_migrate_mem_objects' data-ref="pocl_migrate_mem_objects">pocl_migrate_mem_objects</dfn> (<a class="typedef" href="../../../include/pocl.h.html#_cl_command_node" title='_cl_command_node' data-type='struct _cl_command_node' data-ref="_cl_command_node">_cl_command_node</a> *<dfn class="local col3 decl" id="353node" title='node' data-type='_cl_command_node *' data-ref="353node">node</dfn>);</td></tr>
+<tr><th id="84">84</th><td></td></tr>
+<tr><th id="85">85</th><td><em>void</em> <dfn class="decl" id="pocl_scheduler" title='pocl_scheduler' data-ref="pocl_scheduler">pocl_scheduler</dfn> (<a class="typedef" href="../../../include/pocl.h.html#_cl_command_node" title='_cl_command_node' data-type='struct _cl_command_node' data-ref="_cl_command_node">_cl_command_node</a> * <em>volatile</em> * <dfn class="local col4 decl" id="354ready_list" title='ready_list' data-type='_cl_command_node *volatile *' data-ref="354ready_list">ready_list</dfn>,</td></tr>
+<tr><th id="86">86</th><td>                     <a class="typedef" href="../../../../include/x86_64-linux-gnu/bits/pthreadtypes.h.html#pthread_mutex_t" title='pthread_mutex_t' data-type='union pthread_mutex_t' data-ref="pthread_mutex_t">pthread_mutex_t</a> *<dfn class="local col5 decl" id="355lock_ptr" title='lock_ptr' data-type='pthread_mutex_t *' data-ref="355lock_ptr">lock_ptr</dfn>);</td></tr>
+<tr><th id="87">87</th><td></td></tr>
+<tr><th id="88">88</th><td><em>void</em> <dfn class="decl" id="pocl_exec_command" title='pocl_exec_command' data-ref="pocl_exec_command">pocl_exec_command</dfn> (<a class="typedef" href="../../../include/pocl.h.html#_cl_command_node" title='_cl_command_node' data-type='struct _cl_command_node' data-ref="_cl_command_node">_cl_command_node</a> * <em>volatile</em> <dfn class="local col6 decl" id="356node" title='node' data-type='_cl_command_node *volatile' data-ref="356node">node</dfn>);</td></tr>
+<tr><th id="89">89</th><td></td></tr>
+<tr><th id="90">90</th><td><em>void</em> <dfn class="decl" id="pocl_ndrange_node_cleanup" title='pocl_ndrange_node_cleanup' data-ref="pocl_ndrange_node_cleanup">pocl_ndrange_node_cleanup</dfn>(<a class="typedef" href="../../../include/pocl.h.html#_cl_command_node" title='_cl_command_node' data-type='struct _cl_command_node' data-ref="_cl_command_node">_cl_command_node</a> *<dfn class="local col7 decl" id="357node" title='node' data-type='_cl_command_node *' data-ref="357node">node</dfn>);</td></tr>
+<tr><th id="91">91</th><td><em>void</em> <dfn class="decl" id="pocl_mem_objs_cleanup" title='pocl_mem_objs_cleanup' data-ref="pocl_mem_objs_cleanup">pocl_mem_objs_cleanup</dfn> (<a class="typedef" href="../../../include/CL/cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> <dfn class="local col8 decl" id="358event" title='event' data-type='cl_event' data-ref="358event">event</dfn>);</td></tr>
+<tr><th id="92">92</th><td></td></tr>
+<tr><th id="93">93</th><td><em>void</em> <dfn class="decl" id="pocl_broadcast" title='pocl_broadcast' data-ref="pocl_broadcast">pocl_broadcast</dfn> (<a class="typedef" href="../../../include/CL/cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> <dfn class="local col9 decl" id="359event" title='event' data-type='cl_event' data-ref="359event">event</dfn>);</td></tr>
+<tr><th id="94">94</th><td></td></tr>
+<tr><th id="95">95</th><td><em>void</em> <dfn class="decl" id="pocl_init_dlhandle_cache" title='pocl_init_dlhandle_cache' data-ref="pocl_init_dlhandle_cache">pocl_init_dlhandle_cache</dfn> ();</td></tr>
+<tr><th id="96">96</th><td></td></tr>
+<tr><th id="97">97</th><td><em>char</em> *<dfn class="decl" id="pocl_check_kernel_disk_cache" title='pocl_check_kernel_disk_cache' data-ref="pocl_check_kernel_disk_cache">pocl_check_kernel_disk_cache</dfn> (<a class="typedef" href="../../../include/pocl.h.html#_cl_command_node" title='_cl_command_node' data-type='struct _cl_command_node' data-ref="_cl_command_node">_cl_command_node</a> *<dfn class="local col0 decl" id="360cmd" title='cmd' data-type='_cl_command_node *' data-ref="360cmd">cmd</dfn>, <em>int</em> <dfn class="local col1 decl" id="361specialized" title='specialized' data-type='int' data-ref="361specialized">specialized</dfn>);</td></tr>
+<tr><th id="98">98</th><td></td></tr>
+<tr><th id="99">99</th><td><span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl" id="pocl_cmd_max_grid_dim_width" title='pocl_cmd_max_grid_dim_width' data-ref="pocl_cmd_max_grid_dim_width">pocl_cmd_max_grid_dim_width</dfn> (<a class="typedef" href="../../../include/pocl.h.html#_cl_command_run" title='_cl_command_run' data-type='struct _cl_command_run' data-ref="_cl_command_run">_cl_command_run</a> *<dfn class="local col2 decl" id="362cmd" title='cmd' data-type='_cl_command_run *' data-ref="362cmd">cmd</dfn>);</td></tr>
+<tr><th id="100">100</th><td></td></tr>
+<tr><th id="101">101</th><td><em>void</em> <dfn class="decl" id="pocl_check_kernel_dlhandle_cache" title='pocl_check_kernel_dlhandle_cache' data-ref="pocl_check_kernel_dlhandle_cache">pocl_check_kernel_dlhandle_cache</dfn> (<a class="typedef" href="../../../include/pocl.h.html#_cl_command_node" title='_cl_command_node' data-type='struct _cl_command_node' data-ref="_cl_command_node">_cl_command_node</a> *<dfn class="local col3 decl" id="363command" title='command' data-type='_cl_command_node *' data-ref="363command">command</dfn>,</td></tr>
+<tr><th id="102">102</th><td>                                       <em>unsigned</em> <dfn class="local col4 decl" id="364initial_refcount" title='initial_refcount' data-type='unsigned int' data-ref="364initial_refcount">initial_refcount</dfn>,</td></tr>
+<tr><th id="103">103</th><td>                                       <em>int</em> <dfn class="local col5 decl" id="365specialize" title='specialize' data-type='int' data-ref="365specialize">specialize</dfn>);</td></tr>
+<tr><th id="104">104</th><td></td></tr>
+<tr><th id="105">105</th><td><em>void</em> <dfn class="decl" id="pocl_release_dlhandle_cache" title='pocl_release_dlhandle_cache' data-ref="pocl_release_dlhandle_cache">pocl_release_dlhandle_cache</dfn> (<a class="typedef" href="../../../include/pocl.h.html#_cl_command_node" title='_cl_command_node' data-type='struct _cl_command_node' data-ref="_cl_command_node">_cl_command_node</a> *<dfn class="local col6 decl" id="366cmd" title='cmd' data-type='_cl_command_node *' data-ref="366cmd">cmd</dfn>);</td></tr>
+<tr><th id="106">106</th><td></td></tr>
+<tr><th id="107">107</th><td><em>void</em> <dfn class="decl" id="pocl_setup_device_for_system_memory" title='pocl_setup_device_for_system_memory' data-ref="pocl_setup_device_for_system_memory">pocl_setup_device_for_system_memory</dfn>(<a class="typedef" href="../../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="local col7 decl" id="367device" title='device' data-type='cl_device_id' data-ref="367device">device</dfn>);</td></tr>
+<tr><th id="108">108</th><td></td></tr>
+<tr><th id="109">109</th><td><em>void</em> <dfn class="decl" id="pocl_reinit_system_memory" title='pocl_reinit_system_memory' data-ref="pocl_reinit_system_memory">pocl_reinit_system_memory</dfn>();</td></tr>
+<tr><th id="110">110</th><td></td></tr>
+<tr><th id="111">111</th><td><em>void</em> <dfn class="decl" id="pocl_set_buffer_image_limits" title='pocl_set_buffer_image_limits' data-ref="pocl_set_buffer_image_limits">pocl_set_buffer_image_limits</dfn>(<a class="typedef" href="../../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="local col8 decl" id="368device" title='device' data-type='cl_device_id' data-ref="368device">device</dfn>);</td></tr>
+<tr><th id="112">112</th><td></td></tr>
+<tr><th id="113">113</th><td><em>void</em>* <dfn class="decl" id="pocl_aligned_malloc_global_mem" title='pocl_aligned_malloc_global_mem' data-ref="pocl_aligned_malloc_global_mem">pocl_aligned_malloc_global_mem</dfn>(<a class="typedef" href="../../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="local col9 decl" id="369device" title='device' data-type='cl_device_id' data-ref="369device">device</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col0 decl" id="370align" title='align' data-type='size_t' data-ref="370align">align</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col1 decl" id="371size" title='size' data-type='size_t' data-ref="371size">size</dfn>);</td></tr>
+<tr><th id="114">114</th><td></td></tr>
+<tr><th id="115">115</th><td><em>void</em> <dfn class="decl" id="pocl_free_global_mem" title='pocl_free_global_mem' data-ref="pocl_free_global_mem">pocl_free_global_mem</dfn>(<a class="typedef" href="../../../include/CL/cl.h.html#cl_device_id" title='cl_device_id' data-type='struct _cl_device_id *' data-ref="cl_device_id">cl_device_id</a> <dfn class="local col2 decl" id="372device" title='device' data-type='cl_device_id' data-ref="372device">device</dfn>, <em>void</em> *<dfn class="local col3 decl" id="373ptr" title='ptr' data-type='void *' data-ref="373ptr">ptr</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col4 decl" id="374size" title='size' data-type='size_t' data-ref="374size">size</dfn>);</td></tr>
+<tr><th id="116">116</th><td></td></tr>
+<tr><th id="117">117</th><td><em>void</em> <dfn class="decl" id="pocl_print_system_memory_stats" title='pocl_print_system_memory_stats' data-ref="pocl_print_system_memory_stats">pocl_print_system_memory_stats</dfn>();</td></tr>
+<tr><th id="118">118</th><td></td></tr>
+<tr><th id="119">119</th><td><em>void</em> <dfn class="decl" id="pocl_calculate_kernel_hash" title='pocl_calculate_kernel_hash' data-ref="pocl_calculate_kernel_hash">pocl_calculate_kernel_hash</dfn> (<a class="typedef" href="../../../include/CL/cl.h.html#cl_program" title='cl_program' data-type='struct _cl_program *' data-ref="cl_program">cl_program</a> <dfn class="local col5 decl" id="375program" title='program' data-type='cl_program' data-ref="375program">program</dfn>, <em>unsigned</em> <dfn class="local col6 decl" id="376kernel_i" title='kernel_i' data-type='unsigned int' data-ref="376kernel_i">kernel_i</dfn>,</td></tr>
+<tr><th id="120">120</th><td>                                 <em>unsigned</em> <dfn class="local col7 decl" id="377device_i" title='device_i' data-type='unsigned int' data-ref="377device_i">device_i</dfn>);</td></tr>
+<tr><th id="121">121</th><td></td></tr>
+<tr><th id="122">122</th><td><u>#<span data-ppcond="122">ifdef</span> <span class="macro" data-ref="_M/__GNUC__">__GNUC__</span></u></td></tr>
+<tr><th id="123">123</th><td><u>#pragma GCC visibility pop</u></td></tr>
+<tr><th id="124">124</th><td><u>#<span data-ppcond="122">endif</span></u></td></tr>
+<tr><th id="125">125</th><td></td></tr>
+<tr><th id="126">126</th><td><u>#<span data-ppcond="126">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="127">127</th><td>}</td></tr>
+<tr><th id="128">128</th><td><u>#<span data-ppcond="126">endif</span></u></td></tr>
+<tr><th id="129">129</th><td></td></tr>
+<tr><th id="130">130</th><td><u>#<span data-ppcond="25">endif</span></u></td></tr>
+<tr><th id="131">131</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../clBuildProgram.c.html'>pocl/lib/CL/clBuildProgram.c</a><br/>Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

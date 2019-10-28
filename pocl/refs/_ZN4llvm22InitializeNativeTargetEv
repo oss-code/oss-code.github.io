@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/Support/TargetSelect.h' l='116' ll='126' type='bool llvm::InitializeNativeTarget()'/>
+<doc f='include/llvm-6.0/llvm/Support/TargetSelect.h' l='111'>/// InitializeNativeTarget - The main program should call this function to
+  /// initialize the native target corresponding to the host.  This is useful
+  /// for JIT applications to ensure that the target gets linked in correctly.
+  ///
+  /// It is legal for a client to make multiple calls to this function.</doc>

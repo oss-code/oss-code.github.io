@@ -1,0 +1,12 @@
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1445' ll='1470'/>
+<size>424</size>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1442'>// Helper functions for computeExitLimitFromCond to avoid exponential time
+  // complexity.</doc>
+<mbr r='llvm::ScalarEvolution::ExitLimitCache::TripCountMap' o='0' t='SmallDenseMap&lt;PointerIntPair&lt;llvm::Value *, 1&gt;, llvm::ScalarEvolution::ExitLimit&gt;'/>
+<mbr r='llvm::ScalarEvolution::ExitLimitCache::L' o='3136' t='const llvm::Loop *'/>
+<mbr r='llvm::ScalarEvolution::ExitLimitCache::TBB' o='3200' t='llvm::BasicBlock *'/>
+<mbr r='llvm::ScalarEvolution::ExitLimitCache::FBB' o='3264' t='llvm::BasicBlock *'/>
+<mbr r='llvm::ScalarEvolution::ExitLimitCache::AllowPredicates' o='3328' t='bool'/>
+<fun r='_ZN4llvm15ScalarEvolution14ExitLimitCacheC1EPKNS_4LoopEPNS_10BasicBlockES6_b'/>
+<fun r='_ZN4llvm15ScalarEvolution14ExitLimitCache4findEPKNS_4LoopEPNS_5ValueEPNS_10BasicBlockES8_bb'/>
+<fun r='_ZN4llvm15ScalarEvolution14ExitLimitCache6insertEPKNS_4LoopEPNS_5ValueEPNS_10BasicBlockES8_bbRKNS0_9ExitLimitE'/>

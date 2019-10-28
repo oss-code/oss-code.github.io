@@ -1,0 +1,17 @@
+<inh f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='97' c='llvm::DiagnosticInfo'/>
+<def f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='174' ll='210'/>
+<ovr f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='212' c='llvm::DiagnosticInfoStackSize'/>
+<size>48</size>
+<doc f='include/llvm-6.0/llvm/IR/DiagnosticInfo.h' l='172'>/// Diagnostic information for stack size etc. reporting.
+/// This is basically a function and a size.</doc>
+<mbr r='llvm::DiagnosticInfoResourceLimit::Fn' o='128' t='const llvm::Function &amp;'/>
+<mbr r='llvm::DiagnosticInfoResourceLimit::ResourceName' o='192' t='const char *'/>
+<mbr r='llvm::DiagnosticInfoResourceLimit::ResourceSize' o='256' t='uint64_t'/>
+<mbr r='llvm::DiagnosticInfoResourceLimit::ResourceLimit' o='320' t='uint64_t'/>
+<fun r='_ZN4llvm27DiagnosticInfoResourceLimitC1ERKNS_8FunctionEPKcmNS_18DiagnosticSeverityENS_14DiagnosticKindEm'/>
+<fun r='_ZNK4llvm27DiagnosticInfoResourceLimit11getFunctionEv'/>
+<fun r='_ZNK4llvm27DiagnosticInfoResourceLimit15getResourceNameEv'/>
+<fun r='_ZNK4llvm27DiagnosticInfoResourceLimit15getResourceSizeEv'/>
+<fun r='_ZNK4llvm27DiagnosticInfoResourceLimit16getResourceLimitEv'/>
+<fun r='_ZNK4llvm27DiagnosticInfoResourceLimit5printERNS_17DiagnosticPrinterE'/>
+<fun r='_ZN4llvm27DiagnosticInfoResourceLimit7classofEPKNS_14DiagnosticInfoE'/>

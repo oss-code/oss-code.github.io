@@ -1,0 +1,9 @@
+<dec f='pocl/include/CL/cl.h' l='882' type='cl_int clCreateSubDevices(cl_device_id in_device, const cl_device_partition_property * properties, cl_uint num_devices, cl_device_id * out_devices, cl_uint * num_devices_ret)'/>
+<use f='pocl/examples/EinsteinToolkit/EinsteinToolkit.c' l='536' u='c' c='setup'/>
+<use f='pocl/lib/CL/pocl_intfn.h' l='50' c='POclCreateSubDevices'/>
+<use f='pocl/include/CL/cl2.hpp' l='2229' u='c' c='_ZN2cl6Device16createSubDevicesEPKlPSt6vectorIS0_SaIS0_EE'/>
+<use f='pocl/include/CL/cl2.hpp' l='2235' u='c' c='_ZN2cl6Device16createSubDevicesEPKlPSt6vectorIS0_SaIS0_EE'/>
+<use f='pocl/tests/runtime/test_clCreateSubDevices.c' l='200' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateSubDevices.c' l='204' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateSubDevices.c' l='282' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateSubDevices.c' l='286' u='c' c='main'/>

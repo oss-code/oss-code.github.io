@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='288' type='unsigned int llvm::FoldingSetNodeIDRef::ComputeHash() const'/>
+<doc f='include/llvm-6.0/llvm/ADT/FoldingSet.h' l='286'>/// ComputeHash - Compute a strong hash value for this FoldingSetNodeIDRef,
+  /// used to lookup the node in the FoldingSetBase.</doc>
+<use f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='160' u='c' c='_ZN4llvm15FoldingSetTraitINS_4SCEVEE11ComputeHashERKS1_RNS_16FoldingSetNodeIDE'/>
+<use f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='243' u='c' c='_ZN4llvm15FoldingSetTraitINS_13SCEVPredicateEE11ComputeHashERKS1_RNS_16FoldingSetNodeIDE'/>

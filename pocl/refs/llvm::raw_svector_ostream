@@ -1,0 +1,17 @@
+<inh f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='337' c='llvm::raw_pwrite_stream'/>
+<def f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='489' ll='515'/>
+<ovr f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='532' c='llvm::buffer_ostream'/>
+<size>48</size>
+<doc f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='484'>/// A raw_ostream that writes to an SmallVector or SmallString.  This is a
+/// simple adaptor class. This class does not encounter output errors.
+/// raw_svector_ostream operates without a buffer, delegating all memory
+/// management to the SmallString. Thus the SmallString is always up-to-date,
+/// may be used directly and there is no need to call flush().</doc>
+<mbr r='llvm::raw_svector_ostream::OS' o='320' t='SmallVectorImpl&lt;char&gt; &amp;'/>
+<fun r='_ZN4llvm19raw_svector_ostream10write_implEPKcm'/>
+<fun r='_ZN4llvm19raw_svector_ostream11pwrite_implEPKcmm'/>
+<fun r='_ZNK4llvm19raw_svector_ostream11current_posEv'/>
+<fun r='_ZN4llvm19raw_svector_ostreamC1ERNS_15SmallVectorImplIcEE'/>
+<fun r='_ZN4llvm19raw_svector_ostreamD1Ev'/>
+<fun r='_ZN4llvm19raw_svector_ostream5flushEv'/>
+<fun r='_ZN4llvm19raw_svector_ostream3strEv'/>

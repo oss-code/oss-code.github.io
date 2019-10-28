@@ -1,0 +1,12 @@
+<dec f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='401' type='static llvm::VectorType * llvm::VectorType::get(llvm::Type * ElementType, unsigned int NumElements)'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='410' u='c' c='_ZN4llvm10VectorType10getIntegerEPS0_'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='418' u='c' c='_ZN4llvm10VectorType28getExtendedElementVectorTypeEPS0_'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='428' u='c' c='_ZN4llvm10VectorType29getTruncatedElementVectorTypeEPS0_'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='437' u='c' c='_ZN4llvm10VectorType25getHalfElementsVectorTypeEPS0_'/>
+<use f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='444' u='c' c='_ZN4llvm10VectorType27getDoubleElementsVectorTypeEPS0_'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1069' u='c' c='_ZN4llvm7CmpInst17makeCmpResultTypeEPNS_4TypeE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1010' u='c' c='_ZN4llvm17GetElementPtrInst16getGEPReturnTypeEPNS_4TypeEPNS_5ValueENS_8ArrayRefIS4_EE'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1015' u='c' c='_ZN4llvm17GetElementPtrInst16getGEPReturnTypeEPNS_4TypeEPNS_5ValueENS_8ArrayRefIS4_EE'/>
+<doc f='include/llvm-6.0/llvm/IR/DerivedTypes.h' l='400'>/// This static method is the primary way to construct an VectorType.</doc>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1846' u='c' c='_ZN4llvm9IRBuilder17CreateVectorSplatEjPNS_5ValueERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1851' u='c' c='_ZN4llvm9IRBuilder17CreateVectorSplatEjPNS_5ValueERKNS_5TwineE'/>

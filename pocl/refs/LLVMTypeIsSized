@@ -1,0 +1,8 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='768' type='LLVMBool LLVMTypeIsSized(LLVMTypeRef Ty)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='761'>/**
+ * Whether the type has a known size.
+ *
+ * Things that don&apos;t have a size are abstract types, labels, and void.a
+ *
+ * @see llvm::Type::isSized()
+ */</doc>

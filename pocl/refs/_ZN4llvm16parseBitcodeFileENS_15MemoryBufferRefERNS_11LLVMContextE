@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Bitcode/BitcodeReader.h' l='166' type='Expected&lt;std::unique_ptr&lt;Module&gt; &gt; llvm::parseBitcodeFile(llvm::MemoryBufferRef Buffer, llvm::LLVMContext &amp; Context)'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='78' u='c' c='pocl_ptx_gen'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='544' u='c' c='_ZL13linkLibDevicePN4llvm6ModuleEPKcS3_'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='845' u='c' c='pocl_cuda_get_ptr_arg_alignment'/>
+<doc f='include/llvm-6.0/llvm/Bitcode/BitcodeReader.h' l='165'>/// Read the specified bitcode file, returning the module.</doc>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='87' u='c' c='_Z16parseModuleIRMemPKcm'/>

@@ -1,0 +1,19 @@
+<dec f='include/hwloc.h' l='1196' type='hwloc_obj_t hwloc_get_root_obj(hwloc_topology_t topology)'/>
+<use f='include/hwloc/helper.h' l='47' u='c' c='hwloc_get_first_largest_obj_inside_cpuset'/>
+<use f='include/hwloc/helper.h' l='285' u='c' c='hwloc_get_obj_covering_cpuset'/>
+<use f='include/hwloc/helper.h' l='651' u='c' c='hwloc_get_obj_below_array_by_type'/>
+<use f='include/hwloc/helper.h' l='784' u='c' c='hwloc_topology_get_complete_cpuset'/>
+<use f='include/hwloc/helper.h' l='802' u='c' c='hwloc_topology_get_topology_cpuset'/>
+<use f='include/hwloc/helper.h' l='819' u='c' c='hwloc_topology_get_online_cpuset'/>
+<use f='include/hwloc/helper.h' l='836' u='c' c='hwloc_topology_get_allowed_cpuset'/>
+<use f='include/hwloc/helper.h' l='853' u='c' c='hwloc_topology_get_complete_nodeset'/>
+<use f='include/hwloc/helper.h' l='871' u='c' c='hwloc_topology_get_topology_nodeset'/>
+<use f='include/hwloc/helper.h' l='888' u='c' c='hwloc_topology_get_allowed_nodeset'/>
+<use f='include/hwloc/helper.h' l='1046' u='c' c='hwloc_get_whole_distance_matrix_by_depth'/>
+<def f='include/hwloc/inlines.h' l='104' ll='108' type='hwloc_obj_t hwloc_get_root_obj(hwloc_topology_t topology)'/>
+<use f='pocl/lib/CL/devices/topology/pocl_topology.c' l='122' u='c' c='pocl_topology_detect_device_info'/>
+<doc f='include/hwloc.h' l='1190'>/** \brief Returns the top-object of the topology-tree.
+ *
+ * Its type is typically ::HWLOC_OBJ_MACHINE but it could be different
+ * for complex topologies.
+ */</doc>

@@ -1,0 +1,7 @@
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='997' u='m' c='_ZNK4llvm13LazyCallGraph15getLibFunctionsEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1006' u='m' c='_ZNK4llvm13LazyCallGraph13isLibFunctionERNS_8FunctionE'/>
+<dec f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1140' type='SmallSetVector&lt;llvm::Function *, 4&gt;'/>
+<offset>5888</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1137'>/// Defined functions that are also known library functions which the
+  /// optimizer can reason about and therefore might introduce calls to out of
+  /// thin air.</doc>

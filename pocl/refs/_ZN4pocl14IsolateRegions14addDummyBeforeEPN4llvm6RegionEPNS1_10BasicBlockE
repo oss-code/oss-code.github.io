@@ -1,0 +1,10 @@
+<dec f='pocl/lib/llvmopencl/IsolateRegions.h' l='39' type='void pocl::IsolateRegions::addDummyBefore(llvm::Region * R, llvm::BasicBlock * bb)'/>
+<use f='pocl/lib/llvmopencl/IsolateRegions.cc' l='114' u='c' c='_ZN4pocl14IsolateRegions11runOnRegionEPN4llvm6RegionERNS1_13RGPassManagerE'/>
+<def f='pocl/lib/llvmopencl/IsolateRegions.cc' l='159' ll='172' type='void pocl::IsolateRegions::addDummyBefore(llvm::Region * R, llvm::BasicBlock * bb)'/>
+<doc f='pocl/lib/llvmopencl/IsolateRegions.cc' l='152'>/**
+ * Adds a dummy node before the given basic block.
+ *
+ * The edges going in to the original BB are moved to go
+ * in to the dummy BB in case the source BB is inside the
+ * same region.
+ */</doc>

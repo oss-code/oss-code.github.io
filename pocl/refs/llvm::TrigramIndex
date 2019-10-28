@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/Support/TrigramIndex.h' l='40' ll='66'/>
+<size>88</size>
+<fun r='_ZN4llvm12TrigramIndex6insertENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<fun r='_ZNK4llvm12TrigramIndex15isDefinitelyOutENS_9StringRefE'/>
+<fun r='_ZN4llvm12TrigramIndex10isDefeatedEv'/>
+<mbr r='llvm::TrigramIndex::Defeated' o='0' t='bool'/>
+<mbr r='llvm::TrigramIndex::Counts' o='64' t='std::vector&lt;unsigned int&gt;'/>
+<mbr r='llvm::TrigramIndex::Index' o='256' t='std::unordered_map&lt;unsigned int, SmallVector&lt;size_t, 4&gt; &gt;'/>

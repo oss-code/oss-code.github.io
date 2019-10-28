@@ -1,0 +1,6 @@
+<def f='pocl/include/CL/cl2.hpp' l='3930' ll='3934' type='cl::Buffer &amp; cl::Buffer::operator=(const cl::Buffer &amp; buf)'/>
+<use f='pocl/include/CL/cl2.hpp' l='4157' u='c' c='_ZN2cl8BufferGLaSERKS0_'/>
+<use f='pocl/include/CL/cl2.hpp' l='4254' u='c' c='_ZN2cl14BufferRenderGLaSERKS0_'/>
+<doc f='pocl/include/CL/cl2.hpp' l='3927'>/*! \brief Copy assignment to forward copy to the superclass correctly.
+     * Required for MSVC.
+     */</doc>

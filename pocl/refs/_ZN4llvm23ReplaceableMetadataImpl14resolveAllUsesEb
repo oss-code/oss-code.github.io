@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/Metadata.h' l='307' type='void llvm::ReplaceableMetadataImpl::resolveAllUses(bool ResolveUsers = true)'/>
+<use f='include/llvm-6.0/llvm/IR/Metadata.h' l='345' u='c' c='_ZN4llvm15ValueAsMetadata9dropUsersEv'/>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='302'>/// \brief Resolve all uses of this.
+  ///
+  /// Resolve all uses of this, turning off RAUW permanently.  If \c
+  /// ResolveUsers, call \a MDNode::resolve() on any users whose last operand
+  /// is resolved.</doc>

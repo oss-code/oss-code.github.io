@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='1018' type='static llvm::Constant * llvm::ConstantExpr::getCast(unsigned int ops, llvm::Constant * C, llvm::Type * Ty, bool OnlyIfReduced = false)'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='1012'>/// \brief Convenience function for getting a Cast operation.
+  ///
+  /// \param ops The opcode for the conversion
+  /// \param C  The constant to be converted
+  /// \param Ty The type to which the constant is converted
+  /// \param OnlyIfReduced see \a getWithOperands() docs.</doc>
+<use f='include/llvm-6.0/llvm/IR/ConstantFolder.h' l='183' u='c' c='_ZNK4llvm14ConstantFolder10CreateCastENS_11Instruction7CastOpsEPNS_8ConstantEPNS_4TypeE'/>

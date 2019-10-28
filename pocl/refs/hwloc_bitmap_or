@@ -1,0 +1,9 @@
+<dec f='include/hwloc/bitmap.h' l='301' type='void hwloc_bitmap_or(hwloc_bitmap_t res, hwloc_const_bitmap_t bitmap1, hwloc_const_bitmap_t bitmap2)'/>
+<use f='include/hwloc/cpuset.h' l='55' u='c' c='hwloc_cpuset_or'/>
+<use f='include/hwloc/helper.h' l='749' u='c' c='hwloc_distrib'/>
+<use f='include/hwloc/helper.h' l='990' u='c' c='hwloc_cpuset_from_nodeset'/>
+<use f='include/hwloc/helper.h' l='1013' u='c' c='hwloc_cpuset_from_nodeset_strict'/>
+<doc f='include/hwloc/bitmap.h' l='297'>/** \brief Or bitmaps \p bitmap1 and \p bitmap2 and store the result in bitmap \p res
+ *
+ * \p res can be the same as \p bitmap1 or \p bitmap2
+ */</doc>

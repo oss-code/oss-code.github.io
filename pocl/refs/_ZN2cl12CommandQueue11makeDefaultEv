@@ -1,0 +1,7 @@
+<def f='pocl/include/CL/cl2.hpp' l='6891' ll='6916' type='static void cl::CommandQueue::makeDefault()'/>
+<use f='pocl/include/CL/cl2.hpp' l='7303' u='a' c='_ZN2cl12CommandQueue10getDefaultEPi'/>
+<doc f='pocl/include/CL/cl2.hpp' l='6886'>/*! \brief Create the default command queue returned by @ref getDefault.
+     *
+     * It sets default_error_ to indicate success or failure. It does not throw
+     * @c cl::Error.
+     */</doc>

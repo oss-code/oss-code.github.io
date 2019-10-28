@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1053' type='cl_bitfield'/>
+<offset>640</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='1051'>/* If this is a BI kernel descriptor, they are statically defined in
+     the custom device driver, thus should not be freed. */</doc>
+<use f='pocl/lib/CL/pocl_build.c' l='412' u='r' c='free_meta'/>

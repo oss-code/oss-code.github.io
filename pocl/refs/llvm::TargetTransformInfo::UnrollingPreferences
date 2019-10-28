@@ -1,0 +1,22 @@
+<def f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='348' ll='425'/>
+<size>52</size>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='347'>/// Parameters that control the generic loop unrolling transformation.</doc>
+<mbr r='llvm::TargetTransformInfo::UnrollingPreferences::Threshold' o='0' t='unsigned int'/>
+<mbr r='llvm::TargetTransformInfo::UnrollingPreferences::MaxPercentThresholdBoost' o='32' t='unsigned int'/>
+<mbr r='llvm::TargetTransformInfo::UnrollingPreferences::OptSizeThreshold' o='64' t='unsigned int'/>
+<mbr r='llvm::TargetTransformInfo::UnrollingPreferences::PartialThreshold' o='96' t='unsigned int'/>
+<mbr r='llvm::TargetTransformInfo::UnrollingPreferences::PartialOptSizeThreshold' o='128' t='unsigned int'/>
+<mbr r='llvm::TargetTransformInfo::UnrollingPreferences::Count' o='160' t='unsigned int'/>
+<mbr r='llvm::TargetTransformInfo::UnrollingPreferences::PeelCount' o='192' t='unsigned int'/>
+<mbr r='llvm::TargetTransformInfo::UnrollingPreferences::DefaultUnrollRuntimeCount' o='224' t='unsigned int'/>
+<mbr r='llvm::TargetTransformInfo::UnrollingPreferences::MaxCount' o='256' t='unsigned int'/>
+<mbr r='llvm::TargetTransformInfo::UnrollingPreferences::FullUnrollMaxCount' o='288' t='unsigned int'/>
+<mbr r='llvm::TargetTransformInfo::UnrollingPreferences::BEInsns' o='320' t='unsigned int'/>
+<mbr r='llvm::TargetTransformInfo::UnrollingPreferences::Partial' o='352' t='bool'/>
+<mbr r='llvm::TargetTransformInfo::UnrollingPreferences::Runtime' o='360' t='bool'/>
+<mbr r='llvm::TargetTransformInfo::UnrollingPreferences::AllowRemainder' o='368' t='bool'/>
+<mbr r='llvm::TargetTransformInfo::UnrollingPreferences::AllowExpensiveTripCount' o='376' t='bool'/>
+<mbr r='llvm::TargetTransformInfo::UnrollingPreferences::Force' o='384' t='bool'/>
+<mbr r='llvm::TargetTransformInfo::UnrollingPreferences::UpperBound' o='392' t='bool'/>
+<mbr r='llvm::TargetTransformInfo::UnrollingPreferences::AllowPeeling' o='400' t='bool'/>
+<mbr r='llvm::TargetTransformInfo::UnrollingPreferences::UnrollRemainder' o='408' t='bool'/>

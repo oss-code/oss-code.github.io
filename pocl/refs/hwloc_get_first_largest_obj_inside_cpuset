@@ -1,0 +1,12 @@
+<def f='include/hwloc/helper.h' l='44' ll='66' type='hwloc_obj_t hwloc_get_first_largest_obj_inside_cpuset(hwloc_topology_t topology, hwloc_const_cpuset_t set)'/>
+<doc f='include/hwloc/helper.h' l='33'>/** \brief Get the first largest object included in the given cpuset \p set.
+ *
+ * \return the first object that is included in \p set and whose parent is not.
+ *
+ * This is convenient for iterating over all largest objects within a CPU set
+ * by doing a loop getting the first largest object and clearing its CPU set
+ * from the remaining CPU set.
+ *
+ * \note This function cannot work if the root object does not have a CPU set,
+ * e.g. if the topology is made of different machines.
+ */</doc>

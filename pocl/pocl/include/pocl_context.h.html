@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>pocl_context.h source code [pocl/include/pocl_context.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="pocl_context,pocl_context32 "/>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/include/pocl_context.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>pocl</a>/<a href='./'>include</a>/<a href='pocl_context.h.html'>pocl_context.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* pocl_context.h - The 32b and 64b versions of the "context struct" that can be</i></td></tr>
+<tr><th id="2">2</th><td><i>   passed as a hidden kernel argument for kernels to fetch their WG/WI ID and</i></td></tr>
+<tr><th id="3">3</th><td><i>   dimension data.</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>   Copyright (c) 2018 Pekka Jääskeläinen / Tampere University of Technology</i></td></tr>
+<tr><th id="6">6</th><td><i></i></td></tr>
+<tr><th id="7">7</th><td><i>   Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="8">8</th><td><i>   of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="9">9</th><td><i>   in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="10">10</th><td><i>   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="11">11</th><td><i>   copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="12">12</th><td><i>   furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="13">13</th><td><i></i></td></tr>
+<tr><th id="14">14</th><td><i>   The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="15">15</th><td><i>   all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="16">16</th><td><i></i></td></tr>
+<tr><th id="17">17</th><td><i>   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="18">18</th><td><i>   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="19">19</th><td><i>   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="20">20</th><td><i>   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="21">21</th><td><i>   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="22">22</th><td><i>   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="23">23</th><td><i>   THE SOFTWARE.</i></td></tr>
+<tr><th id="24">24</th><td><i>*/</i></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><i>/* This header can be included both from device and host sources. */</i></td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><u>#<span data-ppcond="28">ifndef</span> <span class="macro" data-ref="_M/POCL_CONTEXT_H">POCL_CONTEXT_H</span></u></td></tr>
+<tr><th id="29">29</th><td><u>#define <dfn class="macro" id="_M/POCL_CONTEXT_H" data-ref="_M/POCL_CONTEXT_H">POCL_CONTEXT_H</dfn></u></td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><u>#include <a href="pocl_types.h.html">"pocl_types.h"</a></u></td></tr>
+<tr><th id="32">32</th><td></td></tr>
+<tr><th id="33">33</th><td><b>struct</b> <dfn class="type def" id="pocl_context32" title='pocl_context32' data-ref="pocl_context32">pocl_context32</dfn> {</td></tr>
+<tr><th id="34">34</th><td>  <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#uint" title='uint' data-type='unsigned int' data-ref="uint">uint</a> <dfn class="decl" id="pocl_context32::num_groups" title='pocl_context32::num_groups' data-ref="pocl_context32::num_groups">num_groups</dfn>[<var>3</var>];</td></tr>
+<tr><th id="35">35</th><td>  <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#uint" title='uint' data-type='unsigned int' data-ref="uint">uint</a> <dfn class="decl" id="pocl_context32::global_offset" title='pocl_context32::global_offset' data-ref="pocl_context32::global_offset">global_offset</dfn>[<var>3</var>];</td></tr>
+<tr><th id="36">36</th><td>  <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#uint" title='uint' data-type='unsigned int' data-ref="uint">uint</a> <dfn class="decl" id="pocl_context32::local_size" title='pocl_context32::local_size' data-ref="pocl_context32::local_size">local_size</dfn>[<var>3</var>];</td></tr>
+<tr><th id="37">37</th><td>  <em>unsigned</em> <em>char</em> *<dfn class="decl" id="pocl_context32::printf_buffer" title='pocl_context32::printf_buffer' data-ref="pocl_context32::printf_buffer">printf_buffer</dfn>;</td></tr>
+<tr><th id="38">38</th><td>  <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#uint" title='uint' data-type='unsigned int' data-ref="uint">uint</a> *<dfn class="decl" id="pocl_context32::printf_buffer_position" title='pocl_context32::printf_buffer_position' data-ref="pocl_context32::printf_buffer_position">printf_buffer_position</dfn>;</td></tr>
+<tr><th id="39">39</th><td>  <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#uint" title='uint' data-type='unsigned int' data-ref="uint">uint</a> <dfn class="decl" id="pocl_context32::printf_buffer_capacity" title='pocl_context32::printf_buffer_capacity' data-ref="pocl_context32::printf_buffer_capacity">printf_buffer_capacity</dfn>;</td></tr>
+<tr><th id="40">40</th><td>  <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#uint" title='uint' data-type='unsigned int' data-ref="uint">uint</a> <dfn class="decl" id="pocl_context32::work_dim" title='pocl_context32::work_dim' data-ref="pocl_context32::work_dim">work_dim</dfn>;</td></tr>
+<tr><th id="41">41</th><td>};</td></tr>
+<tr><th id="42">42</th><td></td></tr>
+<tr><th id="43">43</th><td><i>/* The default pocl_context is 64b. It should be copied to a 32b one</i></td></tr>
+<tr><th id="44">44</th><td><i>   when launching a kernel for a 32b target. */</i></td></tr>
+<tr><th id="45">45</th><td><b>struct</b> <dfn class="type def" id="pocl_context" title='pocl_context' data-ref="pocl_context">pocl_context</dfn> {</td></tr>
+<tr><th id="46">46</th><td>  <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#ulong" title='ulong' data-type='unsigned long' data-ref="ulong">ulong</a> <dfn class="decl" id="pocl_context::num_groups" title='pocl_context::num_groups' data-ref="pocl_context::num_groups">num_groups</dfn>[<var>3</var>];</td></tr>
+<tr><th id="47">47</th><td>  <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#ulong" title='ulong' data-type='unsigned long' data-ref="ulong">ulong</a> <dfn class="decl" id="pocl_context::global_offset" title='pocl_context::global_offset' data-ref="pocl_context::global_offset">global_offset</dfn>[<var>3</var>];</td></tr>
+<tr><th id="48">48</th><td>  <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#ulong" title='ulong' data-type='unsigned long' data-ref="ulong">ulong</a> <dfn class="decl" id="pocl_context::local_size" title='pocl_context::local_size' data-ref="pocl_context::local_size">local_size</dfn>[<var>3</var>];</td></tr>
+<tr><th id="49">49</th><td>  <a class="typedef" href="pocl_types.h.html#uchar" title='uchar' data-type='unsigned char' data-ref="uchar">uchar</a> *<dfn class="decl" id="pocl_context::printf_buffer" title='pocl_context::printf_buffer' data-ref="pocl_context::printf_buffer">printf_buffer</dfn>;</td></tr>
+<tr><th id="50">50</th><td>  <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#uint" title='uint' data-type='unsigned int' data-ref="uint">uint</a> *<dfn class="decl" id="pocl_context::printf_buffer_position" title='pocl_context::printf_buffer_position' data-ref="pocl_context::printf_buffer_position">printf_buffer_position</dfn>;</td></tr>
+<tr><th id="51">51</th><td>  <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#uint" title='uint' data-type='unsigned int' data-ref="uint">uint</a> <dfn class="decl" id="pocl_context::printf_buffer_capacity" title='pocl_context::printf_buffer_capacity' data-ref="pocl_context::printf_buffer_capacity">printf_buffer_capacity</dfn>;</td></tr>
+<tr><th id="52">52</th><td>  <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#uint" title='uint' data-type='unsigned int' data-ref="uint">uint</a> <dfn class="decl" id="pocl_context::work_dim" title='pocl_context::work_dim' data-ref="pocl_context::work_dim">work_dim</dfn>;</td></tr>
+<tr><th id="53">53</th><td>};</td></tr>
+<tr><th id="54">54</th><td></td></tr>
+<tr><th id="55">55</th><td><i>/* Copy a 64b context struct to a 32b one. */</i></td></tr>
+<tr><th id="56">56</th><td><u>#define <dfn class="macro" id="_M/POCL_CONTEXT_COPY64TO32" data-ref="_M/POCL_CONTEXT_COPY64TO32">POCL_CONTEXT_COPY64TO32</dfn>(__DST, __SRC)				\</u></td></tr>
+<tr><th id="57">57</th><td><u>  do {									\</u></td></tr>
+<tr><th id="58">58</th><td><u>    struct pocl_context *__src = (struct pocl_context *)__SRC;		\</u></td></tr>
+<tr><th id="59">59</th><td><u>    struct pocl_context32 *__dst = (struct pocl_context32 *)__DST;	\</u></td></tr>
+<tr><th id="60">60</th><td><u>    __dst-&gt;work_dim = __src-&gt;work_dim;					\</u></td></tr>
+<tr><th id="61">61</th><td><u>    __dst-&gt;num_groups[0] = __src-&gt;num_groups[0];			\</u></td></tr>
+<tr><th id="62">62</th><td><u>    __dst-&gt;num_groups[1] = __src-&gt;num_groups[1];			\</u></td></tr>
+<tr><th id="63">63</th><td><u>    __dst-&gt;num_groups[2] = __src-&gt;num_groups[2];			\</u></td></tr>
+<tr><th id="64">64</th><td><u>    __dst-&gt;global_offset[0] = __src-&gt;global_offset[0];			\</u></td></tr>
+<tr><th id="65">65</th><td><u>    __dst-&gt;global_offset[1] = __src-&gt;global_offset[1];			\</u></td></tr>
+<tr><th id="66">66</th><td><u>    __dst-&gt;global_offset[2] = __src-&gt;global_offset[2];			\</u></td></tr>
+<tr><th id="67">67</th><td><u>    __dst-&gt;local_size[0] = __src-&gt;local_size[0];			\</u></td></tr>
+<tr><th id="68">68</th><td><u>    __dst-&gt;local_size[1] = __src-&gt;local_size[1];			\</u></td></tr>
+<tr><th id="69">69</th><td><u>    __dst-&gt;local_size[2] = __src-&gt;local_size[2];			\</u></td></tr>
+<tr><th id="70">70</th><td><u>    __dst-&gt;printf_buffer = __src-&gt;printf_buffer;			\</u></td></tr>
+<tr><th id="71">71</th><td><u>    __dst-&gt;printf_buffer_position = __src-&gt;printf_buffer_position;	\</u></td></tr>
+<tr><th id="72">72</th><td><u>    __dst-&gt;printf_buffer_capacity = __src-&gt;printf_buffer_capacity;	\</u></td></tr>
+<tr><th id="73">73</th><td><u>  } while (0)</u></td></tr>
+<tr><th id="74">74</th><td></td></tr>
+<tr><th id="75">75</th><td><u>#define <dfn class="macro" id="_M/POCL_CONTEXT_SIZE" data-ref="_M/POCL_CONTEXT_SIZE">POCL_CONTEXT_SIZE</dfn>(__BITNESS)					\</u></td></tr>
+<tr><th id="76">76</th><td><u>  (__BITNESS == 64 ?							\</u></td></tr>
+<tr><th id="77">77</th><td><u>   sizeof (struct pocl_context) :					\</u></td></tr>
+<tr><th id="78">78</th><td><u>   sizeof (struct pocl_context32))</u></td></tr>
+<tr><th id="79">79</th><td></td></tr>
+<tr><th id="80">80</th><td><u>#<span data-ppcond="28">endif</span></u></td></tr>
+<tr><th id="81">81</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../lib/CL/clBuildProgram.c.html'>pocl/lib/CL/clBuildProgram.c</a><br/>Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

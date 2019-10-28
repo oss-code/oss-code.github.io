@@ -1,0 +1,21 @@
+<dec f='pocl/include/CL/cl.h' l='916' type='cl_context clCreateContext(const cl_context_properties * properties, cl_uint num_devices, const cl_device_id * devices, void (*)(const char *, const void *, size_t, void *) pfn_notify, void * user_data, cl_int * errcode_ret)'/>
+<use f='pocl/bin/poclcc.c' l='293' u='c' c='main'/>
+<use f='pocl/bin/poclcc.c' l='320' u='c' c='main'/>
+<doc f='pocl/include/CL/cl.h' l='914'>/* Context APIs */</doc>
+<use f='pocl/lib/CL/pocl_intfn.h' l='36' c='POclCreateContext'/>
+<use f='pocl/lib/poclu/misc.c' l='84' u='c' c='poclu_get_any_device2'/>
+<use f='pocl/lib/poclu/misc.c' l='124' u='c' c='poclu_get_multiple_devices'/>
+<use f='pocl/include/CL/cl2.hpp' l='2787' u='c' c='_ZN2cl7ContextC1ERKSt6vectorINS_6DeviceESaIS2_EEPlPFvPKcPKvmPvESC_Pi'/>
+<use f='pocl/include/CL/cl2.hpp' l='2813' u='c' c='_ZN2cl7ContextC1ERKNS_6DeviceEPlPFvPKcPKvmPvES9_Pi'/>
+<use f='pocl/tests/regression/test_program_from_binary_with_local_1_1_1.c' l='89' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_buffer-image-copy.c' l='76' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clBuildProgram.c' l='93' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateProgramWithBinary.c' l='39' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateSubDevices.c' l='387' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateSubDevices.c' l='391' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clFinish.c' l='77' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clGetEventInfo.c' l='33' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clGetSupportedImageFormats.c' l='28' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clSetMemObjectDestructorCallback.c' l='36' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_event_cycle.c' l='68' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_read-copy-write-buffer.c' l='59' u='c' c='main'/>

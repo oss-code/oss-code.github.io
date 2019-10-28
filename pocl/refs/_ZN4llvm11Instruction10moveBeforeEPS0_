@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/Instruction.h' l='110' type='void llvm::Instruction::moveBefore(llvm::Instruction * MovePos)'/>
+<doc f='include/llvm-6.0/llvm/IR/Instruction.h' l='108'>/// Unlink this instruction from its current basic block and insert it into
+  /// the basic block that MovePos lives in, right before MovePos.</doc>
+<use f='pocl/lib/llvmopencl/AllocasToEntry.cc' l='66' u='c' c='_ZN4pocl14AllocasToEntry13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='158' u='c' c='_ZN4pocl25OptimizeWorkItemFuncCalls13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='249' u='c' c='_ZN4pocl15WorkitemHandler12movePhiNodesEPN4llvm10BasicBlockES3_'/>

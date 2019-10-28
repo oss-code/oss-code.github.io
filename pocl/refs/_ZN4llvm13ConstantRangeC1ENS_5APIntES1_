@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/ConstantRange.h' l='60' type='void llvm::ConstantRange::ConstantRange(llvm::APInt Lower, llvm::APInt Upper)'/>
+<doc f='include/llvm-6.0/llvm/IR/ConstantRange.h' l='57'>/// @brief Initialize a range of values explicitly. This will assert out if
+  /// Lower==Upper and Lower != Min or Max value for its type. It will also
+  /// assert out if the two APInt&apos;s are not the same bit width.</doc>

@@ -1,0 +1,10 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='500' type='LoopT * llvm::RegionBase::outermostLoopInRegion(LoopInfoT * LI, BlockT * BB) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='491'>/// @brief Get the outermost loop in the region that contains a basic block.
+  ///
+  /// Find for a basic block BB the outermost loop L that contains BB and is
+  /// itself contained in the region.
+  ///
+  /// @param LI A pointer to a LoopInfo analysis.
+  /// @param BB The basic block surrounded by the loop.
+  /// @return The outermost loop in the region, NULL if such a loop does not
+  ///         exist or if the region describes the whole function.</doc>

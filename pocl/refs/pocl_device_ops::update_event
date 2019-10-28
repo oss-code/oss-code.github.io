@@ -1,0 +1,20 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='357' type='void (*)(cl_device_id, cl_event)'/>
+<offset>448</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='349'>/* update_event is an extra callback called during handling of event status
+   * changes, useful if something device specific needs to be done. May be
+   * NULL; no need to implement if not needed.
+   *
+   * Called via pocl_update_event_* functions in pocl_util.c
+   * All pocl_update_event_* (except COMPLETE) must be called (and return)
+   * with LOCKED event.
+   */</doc>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='147' u='w' c='pocl_cuda_init_device_ops'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='96' u='w' c='pocl_pthread_init_device_ops'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1170' u='r' c='pocl_update_event_queued'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1171' u='r' c='pocl_update_event_queued'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1188' u='r' c='pocl_update_event_submitted'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1189' u='r' c='pocl_update_event_submitted'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1205' u='r' c='pocl_update_event_running_unlocked'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1206' u='r' c='pocl_update_event_running_unlocked'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1236' u='r' c='pocl_update_event_finished_msg'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1237' u='r' c='pocl_update_event_finished_msg'/>

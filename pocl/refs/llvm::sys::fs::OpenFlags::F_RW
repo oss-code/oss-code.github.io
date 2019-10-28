@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Support/FileSystem.h' l='686' type='8'/>
+<use f='include/llvm-6.0/llvm/Support/FileSystem.h' l='716' c='_ZN4llvm3sys2fs16createUniqueFileERKNS_5TwineERiRNS_15SmallVectorImplIcEEjNS1_9OpenFlagsE'/>
+<use f='include/llvm-6.0/llvm/Support/FileSystem.h' l='771' c='_ZN4llvm3sys2fs19createTemporaryFileERKNS_5TwineENS_9StringRefERiRNS_15SmallVectorImplIcEENS1_9OpenFlagsE'/>
+<doc f='include/llvm-6.0/llvm/Support/FileSystem.h' l='685'>/// Open the file for read and write.</doc>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='82' u='r' c='pocl_write_file'/>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='415' u='r' c='pocl_write_module'/>

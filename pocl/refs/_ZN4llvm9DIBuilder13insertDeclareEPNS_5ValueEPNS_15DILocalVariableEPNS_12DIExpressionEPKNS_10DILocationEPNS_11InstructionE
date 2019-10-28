@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='732' type='llvm::Instruction * llvm::DIBuilder::insertDeclare(llvm::Value * Storage, llvm::DILocalVariable * VarInfo, llvm::DIExpression * Expr, const llvm::DILocation * DL, llvm::Instruction * InsertBefore)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='726'>/// Insert a new llvm.dbg.declare intrinsic call.
+    /// \param Storage      llvm::Value of the variable
+    /// \param VarInfo      Variable&apos;s debug info descriptor.
+    /// \param Expr         A complex location expression.
+    /// \param DL           Debug info location.
+    /// \param InsertBefore Location for the new intrinsic.</doc>

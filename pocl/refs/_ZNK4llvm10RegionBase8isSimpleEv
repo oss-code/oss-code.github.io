@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='420' type='bool llvm::RegionBase::isSimple() const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='415'>/// @brief Is this a simple region?
+  ///
+  /// A region is simple if it has exactly one exit and one entry edge.
+  ///
+  /// @return True if the Region is simple.</doc>

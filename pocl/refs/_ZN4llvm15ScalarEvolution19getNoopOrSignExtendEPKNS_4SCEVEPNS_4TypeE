@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='634' type='const llvm::SCEV * llvm::ScalarEvolution::getNoopOrSignExtend(const llvm::SCEV * V, llvm::Type * Ty)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='631'>/// Return a SCEV corresponding to a conversion of the input value to the
+  /// specified type.  If the type must be extended, it is sign extended.  The
+  /// conversion must not be narrowing.</doc>

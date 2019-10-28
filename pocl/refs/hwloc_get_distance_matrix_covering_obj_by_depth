@@ -1,0 +1,15 @@
+<def f='include/hwloc/helper.h' l='1095' ll='1112' type='const struct hwloc_distances_s * hwloc_get_distance_matrix_covering_obj_by_depth(hwloc_topology_t topology, hwloc_obj_t obj, unsigned int depth, unsigned int * firstp)'/>
+<use f='include/hwloc/helper.h' l='1140' u='c' c='hwloc_get_latency'/>
+<doc f='include/hwloc/helper.h' l='1082'>/** \brief Get distances for the given depth and covering some objects
+ *
+ * Return a distance matrix that describes depth \p depth and covers at
+ * least object \p obj and all its children.
+ *
+ * When looking for the distance between some objects, a common ancestor should
+ * be passed in \p obj.
+ *
+ * \p firstp is set to logical index of the first object described by the matrix.
+ *
+ * The returned structure belongs to the hwloc library. The caller should
+ * not modify or free it.
+ */</doc>

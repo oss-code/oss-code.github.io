@@ -1,0 +1,15 @@
+<dec f='include/hwloc.h' l='1224' type='hwloc_obj_t hwloc_get_next_obj_by_type(hwloc_topology_t topology, hwloc_obj_type_t type, hwloc_obj_t prev)'/>
+<use f='include/hwloc/helper.h' l='559' u='c' c='hwloc_get_pu_obj_by_os_index'/>
+<use f='include/hwloc/helper.h' l='580' u='c' c='hwloc_get_numanode_obj_by_os_index'/>
+<use f='include/hwloc/helper.h' l='1187' u='c' c='hwloc_get_next_pcidev'/>
+<use f='include/hwloc/helper.h' l='1233' u='c' c='hwloc_get_next_osdev'/>
+<use f='include/hwloc/helper.h' l='1243' u='c' c='hwloc_get_next_bridge'/>
+<def f='include/hwloc/inlines.h' l='94' ll='102' type='hwloc_obj_t hwloc_get_next_obj_by_type(hwloc_topology_t topology, hwloc_obj_type_t type, hwloc_obj_t prev)'/>
+<use f='pocl/lib/CL/devices/topology/pocl_topology.c' l='136' u='c' c='pocl_topology_detect_device_info'/>
+<use f='pocl/lib/CL/devices/topology/pocl_topology.c' l='151' u='c' c='pocl_topology_detect_device_info'/>
+<doc f='include/hwloc.h' l='1217'>/** \brief Returns the next object of type \p type.
+ *
+ * If \p prev is \c NULL, return the first object at type \p type.  If
+ * there are multiple or no depth for given type, return \c NULL and
+ * let the caller fallback to hwloc_get_next_obj_by_depth().
+ */</doc>

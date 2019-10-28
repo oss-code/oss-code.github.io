@@ -1,0 +1,5 @@
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='733' u='c' c='_ZNK4llvm18ModuleSummaryIndex21getGlobalValueSummaryERKNS_11GlobalValueEb'/>
+<dec f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='740' type='llvm::GlobalValueSummary * llvm::ModuleSummaryIndex::getGlobalValueSummary(GlobalValue::GUID ValueGUID, bool PerModuleIndex = true) const'/>
+<doc f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='737'>/// Returns the first GlobalValueSummary for \p ValueGUID, asserting that
+  /// there
+  /// is only one if \p PerModuleIndex.</doc>

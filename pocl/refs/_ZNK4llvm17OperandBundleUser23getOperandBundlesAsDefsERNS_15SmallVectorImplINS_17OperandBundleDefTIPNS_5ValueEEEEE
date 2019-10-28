@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1398' ll='1401' type='void llvm::OperandBundleUser::getOperandBundlesAsDefs(SmallVectorImpl&lt;OperandBundleDef&gt; &amp; Defs) const'/>
+<use f='include/llvm-6.0/llvm/IR/CallSite.h' l='587' u='c' c='_ZNK4llvm12CallSiteBase23getOperandBundlesAsDefsERNS_15SmallVectorImplINS_17OperandBundleDefTIPNS_5ValueEEEEE'/>
+<use f='include/llvm-6.0/llvm/IR/CallSite.h' l='589' u='c' c='_ZNK4llvm12CallSiteBase23getOperandBundlesAsDefsERNS_15SmallVectorImplINS_17OperandBundleDefTIPNS_5ValueEEEEE'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1391'>/// \brief Return the list of operand bundles attached to this instruction as
+  /// a vector of OperandBundleDefs.
+  ///
+  /// This function copies the OperandBundeUse instances associated with this
+  /// OperandBundleUser to a vector of OperandBundleDefs.  Note:
+  /// OperandBundeUses and OperandBundleDefs are non-trivially *different*
+  /// representations of operand bundles (see documentation above).</doc>

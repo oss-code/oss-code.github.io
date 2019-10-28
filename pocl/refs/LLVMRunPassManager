@@ -1,0 +1,5 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='3176' type='LLVMBool LLVMRunPassManager(LLVMPassManagerRef PM, LLVMModuleRef M)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='3172'>/** Initializes, executes on the provided module, and finalizes all of the
+    passes scheduled in the pass manager. Returns 1 if any of the passes
+    modified the module, 0 otherwise.
+    @see llvm::PassManager::run(Module&amp;) */</doc>

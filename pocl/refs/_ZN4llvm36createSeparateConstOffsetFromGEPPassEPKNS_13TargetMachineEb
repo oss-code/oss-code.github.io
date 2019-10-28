@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='488' type='llvm::FunctionPass * llvm::createSeparateConstOffsetFromGEPPass(const llvm::TargetMachine * TM = nullptr, bool LowerGEP = false)'/>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='204' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='483'>//===----------------------------------------------------------------------===//
+//
+// SeparateConstOffsetFromGEP - Split GEPs for better CSE
+//</doc>

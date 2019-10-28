@@ -1,0 +1,19 @@
+<dec f='include/hwloc.h' l='2284' type='void hwloc_topology_set_userdata_export_callback(hwloc_topology_t topology, void (*)(void *, hwloc_topology_t, hwloc_obj_t) export_cb)'/>
+<doc f='include/hwloc.h' l='2266'>/** \brief Set the application-specific callback for exporting object userdata
+ *
+ * The object userdata pointer is not exported to XML by default because hwloc
+ * does not know what it contains.
+ *
+ * This function lets applications set \p export_cb to a callback function
+ * that converts this opaque userdata into an exportable string.
+ *
+ * \p export_cb is invoked during XML export for each object whose
+ * \p userdata pointer is not \c NULL.
+ * The callback should use hwloc_export_obj_userdata() or
+ * hwloc_export_obj_userdata_base64() to actually export
+ * something to XML (possibly multiple times per object).
+ *
+ * \p export_cb may be set to \c NULL if userdata should not be exported to XML.
+ *
+ * \note The topology-specific userdata pointer is ignored when exporting to XML.
+ */</doc>

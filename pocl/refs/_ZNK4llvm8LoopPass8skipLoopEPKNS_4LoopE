@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/LoopPass.h' l='94' type='bool llvm::LoopPass::skipLoop(const llvm::Loop * L) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopPass.h' l='91'>/// Optional passes call this function to check whether the pass should be
+  /// skipped. This is the case when Attribute::OptimizeNone is set or when
+  /// optimization bisect is over the limit.</doc>

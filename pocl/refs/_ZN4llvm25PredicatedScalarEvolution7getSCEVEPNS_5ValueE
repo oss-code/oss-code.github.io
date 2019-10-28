@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1856' type='const llvm::SCEV * llvm::PredicatedScalarEvolution::getSCEV(llvm::Value * V)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1852'>/// Returns the SCEV expression of V, in the context of the current SCEV
+  /// predicate.  The order of transformations applied on the expression of V
+  /// returned by ScalarEvolution is guaranteed to be preserved, even when
+  /// adding new predicates.</doc>

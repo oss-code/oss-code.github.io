@@ -1,0 +1,22 @@
+<def f='include/llvm-6.0/llvm/Bitcode/BitCodes.h' l='94' ll='161'/>
+<size>16</size>
+<doc f='include/llvm-6.0/llvm/Bitcode/BitCodes.h' l='89'>/// BitCodeAbbrevOp - This describes one or more operands in an abbreviation.
+/// This is actually a union of two different things:
+///   1. It could be a literal integer value (&quot;the operand is always 17&quot;).
+///   2. It could be an encoding specification (&quot;this operand encoded like so&quot;).
+///</doc>
+<mbr r='llvm::BitCodeAbbrevOp::Val' o='0' t='uint64_t'/>
+<mbr r='llvm::BitCodeAbbrevOp::IsLiteral' o='64' t='bool'/>
+<mbr r='llvm::BitCodeAbbrevOp::Enc' o='65' t='unsigned int'/>
+<fun r='_ZN4llvm15BitCodeAbbrevOpC1Em'/>
+<fun r='_ZN4llvm15BitCodeAbbrevOpC1ENS0_8EncodingEm'/>
+<fun r='_ZNK4llvm15BitCodeAbbrevOp9isLiteralEv'/>
+<fun r='_ZNK4llvm15BitCodeAbbrevOp10isEncodingEv'/>
+<fun r='_ZNK4llvm15BitCodeAbbrevOp15getLiteralValueEv'/>
+<fun r='_ZNK4llvm15BitCodeAbbrevOp11getEncodingEv'/>
+<fun r='_ZNK4llvm15BitCodeAbbrevOp15getEncodingDataEv'/>
+<fun r='_ZNK4llvm15BitCodeAbbrevOp15hasEncodingDataEv'/>
+<fun r='_ZN4llvm15BitCodeAbbrevOp15hasEncodingDataENS0_8EncodingE'/>
+<fun r='_ZN4llvm15BitCodeAbbrevOp7isChar6Ec'/>
+<fun r='_ZN4llvm15BitCodeAbbrevOp11EncodeChar6Ec'/>
+<fun r='_ZN4llvm15BitCodeAbbrevOp11DecodeChar6Ej'/>

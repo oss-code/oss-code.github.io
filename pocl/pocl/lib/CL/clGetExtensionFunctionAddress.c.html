@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>clGetExtensionFunctionAddress.c source code [pocl/lib/CL/clGetExtensionFunctionAddress.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/CL/clGetExtensionFunctionAddress.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>CL</a>/<a href='clGetExtensionFunctionAddress.c.html'>clGetExtensionFunctionAddress.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><u>#include <a href="pocl_cl.h.html">"pocl_cl.h"</a></u></td></tr>
+<tr><th id="2">2</th><td></td></tr>
+<tr><th id="3">3</th><td><u>#include <a href="../../../include/string.h.html">&lt;string.h&gt;</a></u></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Note - this is deprecated in 1.1, but (some of) the ICD loaders are built</i></td></tr>
+<tr><th id="6">6</th><td><i> * against OCL 1.1, so we need it.</i></td></tr>
+<tr><th id="7">7</th><td><i> */</i> </td></tr>
+<tr><th id="8">8</th><td><a class="macro" href="../../include/CL/cl_platform.h.html#43" title="" data-ref="_M/CL_API_ENTRY">CL_API_ENTRY</a> <em>void</em> * <a class="macro" href="../../include/CL/cl_platform.h.html#44" title="" data-ref="_M/CL_API_CALL">CL_API_CALL</a> </td></tr>
+<tr><th id="9">9</th><td><a class="macro" href="pocl_cl.h.html#225" title="POclGetExtensionFunctionAddress" data-ref="_M/POname">POname</a>(clGetExtensionFunctionAddress)(<em>const</em> <em>char</em> * <dfn class="local col1 decl" id="1func_name" title='func_name' data-type='const char *' data-ref="1func_name">func_name</dfn> ) </td></tr>
+<tr><th id="10">10</th><td><a class="macro" href="../../include/CL/cl_platform.h.html#58" title="" data-ref="_M/CL_EXT_SUFFIX__VERSION_1_0">CL_EXT_SUFFIX__VERSION_1_0</a></td></tr>
+<tr><th id="11">11</th><td>{</td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td><u>#<span data-ppcond="13">ifdef</span> <a class="macro" href="../../config.h.html#11" data-ref="_M/BUILD_ICD">BUILD_ICD</a></u></td></tr>
+<tr><th id="14">14</th><td>  <b>if</b>( <a class="ref" href="../../../include/string.h.html#strcmp" title='strcmp' data-ref="strcmp">strcmp</a>(<a class="local col1 ref" href="#1func_name" title='func_name' data-ref="1func_name">func_name</a>, <q>"clIcdGetPlatformIDsKHR"</q>)==<var>0</var> )</td></tr>
+<tr><th id="15">15</th><td>    <b>return</b> (<em>void</em> *)&amp;<a class="macro" href="pocl_cl.h.html#225" title="POclIcdGetPlatformIDsKHR" data-ref="_M/POname">POname</a>(clIcdGetPlatformIDsKHR);</td></tr>
+<tr><th id="16">16</th><td><u>#<span data-ppcond="13">endif</span></u></td></tr>
+<tr><th id="17">17</th><td>  <b>if</b>( <a class="ref" href="../../../include/string.h.html#strcmp" title='strcmp' data-ref="strcmp">strcmp</a>(<a class="local col1 ref" href="#1func_name" title='func_name' data-ref="1func_name">func_name</a>, <q>"clGetPlatformInfo"</q>)==<var>0</var> )</td></tr>
+<tr><th id="18">18</th><td>    <b>return</b> (<em>void</em> *)&amp;<a class="macro" href="pocl_cl.h.html#225" title="POclGetPlatformInfo" data-ref="_M/POname">POname</a>(clGetPlatformInfo);</td></tr>
+<tr><th id="19">19</th><td>  </td></tr>
+<tr><th id="20">20</th><td>  <b>return</b> <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="21">21</th><td>}</td></tr>
+<tr><th id="22">22</th><td><a class="macro" href="pocl_cl.h.html#230" title="__typeof__(clGetExtensionFunctionAddress) clGetExtensionFunctionAddress __attribute__((alias (&quot;PO&quot; &quot;clGetExtensionFunctionAddress&quot;), visibility(&quot;default&quot;)));" data-ref="_M/POsymAlways">POsymAlways</a>(<dfn class="decl def" id="clGetExtensionFunctionAddress" title='clGetExtensionFunctionAddress' data-ref="clGetExtensionFunctionAddress"><a class="ref" href="../../include/CL/cl.h.html#clGetExtensionFunctionAddress" title='clGetExtensionFunctionAddress' data-ref="clGetExtensionFunctionAddress">clGetExtensionFunctionAddress</a></dfn>)</td></tr>
+<tr><th id="23">23</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

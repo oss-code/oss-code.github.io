@@ -1,0 +1,16 @@
+<def f='include/llvm-6.0/llvm/IR/Module.h' l='572' type='iterator llvm::Module::begin()'/>
+<use f='include/llvm-6.0/llvm/IR/Module.h' l='584' u='c' c='_ZN4llvm6Module9functionsEv'/>
+<doc f='include/llvm-6.0/llvm/IR/Module.h' l='568'>/// @}
+/// @name Function Iteration
+/// @{</doc>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='484' u='c' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='632' u='c' c='pocl_llvm_get_kernel_count'/>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='87' u='c' c='_ZN12_GLOBAL__N_115AutomaticLocals11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/Flatten.cc' l='82' u='c' c='_ZN12_GLOBAL__N_17Flatten11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/FlattenBarrierSubs.cc' l='111' u='c' c='_ZN12_GLOBAL__N_118FlattenBarrierSubs11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/FlattenGlobals.cc' l='128' u='c' c='_ZN12_GLOBAL__N_114FlattenGlobals11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='213' u='c' c='_ZN4pocl9Workgroup11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='231' u='c' c='_ZN4pocl9Workgroup11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='361' u='c' c='_Z4linkPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='367' u='c' c='_Z4linkPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='372' u='c' c='_Z4linkPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>

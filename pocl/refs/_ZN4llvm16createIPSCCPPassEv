@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Transforms/IPO.h' l='168' type='llvm::ModulePass * llvm::createIPSCCPPass()'/>
+<doc f='include/llvm-6.0/llvm/Transforms/IPO.h' l='163'>//===----------------------------------------------------------------------===//
+/// createIPSCCPPass - This pass propagates constants from call sites into the
+/// bodies of functions, and keeps track of whether basic blocks are executable
+/// in the process.
+///</doc>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='111' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>

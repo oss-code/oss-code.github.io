@@ -1,0 +1,25 @@
+<def f='pocl/include/CL/cl2.hpp' l='2590' ll='2619' type='static cl_int cl::Platform::get(vector&lt;cl::Platform&gt; * platforms)'/>
+<use f='pocl/include/CL/cl2.hpp' l='2847' u='c' c='_ZN2cl7ContextC1EmPlPFvPKcPKvmPvES6_Pi'/>
+<doc f='pocl/include/CL/cl2.hpp' l='2586'>/*! \brief Gets a list of available platforms.
+     *
+     *  Wraps clGetPlatformIDs().
+     */</doc>
+<use f='pocl/tests/regression/test_autolocals_in_constexprs.cpp' l='59' u='c' c='main'/>
+<use f='pocl/tests/regression/test_barrier_before_return.cpp' l='72' u='c' c='main'/>
+<use f='pocl/tests/regression/test_barrier_between_for_loops.cpp' l='88' u='c' c='main'/>
+<use f='pocl/tests/regression/test_constant_array.cpp' l='76' u='c' c='main'/>
+<use f='pocl/tests/regression/test_early_return.cpp' l='67' u='c' c='main'/>
+<use f='pocl/tests/regression/test_flatten_barrier_subs.cpp' l='60' u='c' c='_Z12get_platformj'/>
+<use f='pocl/tests/regression/test_for_with_var_iteration_count.cpp' l='75' u='c' c='main'/>
+<use f='pocl/tests/regression/test_fors_with_var_iteration_counts.cpp' l='79' u='c' c='main'/>
+<use f='pocl/tests/regression/test_id_dependent_computation.cpp' l='87' u='c' c='main'/>
+<use f='pocl/tests/regression/test_infinite_loop.cpp' l='71' u='c' c='main'/>
+<use f='pocl/tests/regression/test_locals.cpp' l='69' u='c' c='main'/>
+<use f='pocl/tests/regression/test_loop_phi_replication.cpp' l='73' u='c' c='main'/>
+<use f='pocl/tests/regression/test_multi_level_loops_with_barriers.cpp' l='75' u='c' c='main'/>
+<use f='pocl/tests/regression/test_null_arg.cpp' l='64' u='c' c='main'/>
+<use f='pocl/tests/regression/test_setargs.cpp' l='55' u='c' c='main'/>
+<use f='pocl/tests/regression/test_simple_for_with_a_barrier.cpp' l='74' u='c' c='main'/>
+<use f='pocl/tests/regression/test_structs_as_args.cpp' l='139' u='c' c='main'/>
+<use f='pocl/tests/regression/test_undominated_variable.cpp' l='77' u='c' c='main'/>
+<use f='pocl/tests/regression/test_vectors_as_args.cpp' l='100' u='c' c='main'/>

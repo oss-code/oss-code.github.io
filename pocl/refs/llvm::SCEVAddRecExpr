@@ -1,0 +1,23 @@
+<inh f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='136' c='llvm::SCEVNAryExpr'/>
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='290' ll='361'/>
+<size>56</size>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='282'>/// This node represents a polynomial recurrence on the trip count
+  /// of the specified loop.  This is the primary focus of the
+  /// ScalarEvolution framework; all the other SCEV subclasses are
+  /// mostly just supporting infrastructure to allow SCEVAddRecExpr
+  /// expressions to be created and analyzed.
+  ///
+  /// All operands of an AddRec are required to be loop invariant.
+  ///</doc>
+<mbr r='llvm::SCEVAddRecExpr::L' o='384' t='const llvm::Loop *'/>
+<fun r='_ZN4llvm14SCEVAddRecExprC1ENS_19FoldingSetNodeIDRefEPKPKNS_4SCEVEmPKNS_4LoopE'/>
+<fun r='_ZNK4llvm14SCEVAddRecExpr8getStartEv'/>
+<fun r='_ZNK4llvm14SCEVAddRecExpr7getLoopEv'/>
+<fun r='_ZNK4llvm14SCEVAddRecExpr17getStepRecurrenceERNS_15ScalarEvolutionE'/>
+<fun r='_ZNK4llvm14SCEVAddRecExpr8isAffineEv'/>
+<fun r='_ZNK4llvm14SCEVAddRecExpr11isQuadraticEv'/>
+<fun r='_ZN4llvm14SCEVAddRecExpr14setNoWrapFlagsENS_4SCEV11NoWrapFlagsE'/>
+<fun r='_ZNK4llvm14SCEVAddRecExpr19evaluateAtIterationEPKNS_4SCEVERNS_15ScalarEvolutionE'/>
+<fun r='_ZNK4llvm14SCEVAddRecExpr23getNumIterationsInRangeERKNS_13ConstantRangeERNS_15ScalarEvolutionE'/>
+<fun r='_ZNK4llvm14SCEVAddRecExpr14getPostIncExprERNS_15ScalarEvolutionE'/>
+<fun r='_ZN4llvm14SCEVAddRecExpr7classofEPKNS_4SCEVE'/>

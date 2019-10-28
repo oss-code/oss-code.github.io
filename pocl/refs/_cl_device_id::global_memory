@@ -1,0 +1,6 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='750' type='pocl_global_mem_t *'/>
+<offset>4864</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='749'>/* pointer to an accounting struct for global memory */</doc>
+<use f='pocl/lib/CL/devices/common.c' l='1193' u='w' c='pocl_setup_device_for_system_memory'/>
+<use f='pocl/lib/CL/devices/common.c' l='1267' u='r' c='pocl_aligned_malloc_global_mem'/>
+<use f='pocl/lib/CL/devices/common.c' l='1292' u='r' c='pocl_free_global_mem'/>

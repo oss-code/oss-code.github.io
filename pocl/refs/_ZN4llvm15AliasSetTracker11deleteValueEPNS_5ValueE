@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasSetTracker.h' l='408' type='void llvm::AliasSetTracker::deleteValue(llvm::Value * PtrVal)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasSetTracker.h' l='404'>/// This method is used to remove a pointer value from the AliasSetTracker
+  /// entirely. It should be used when an instruction is deleted from the
+  /// program to update the AST. If you don&apos;t use this, you would have dangling
+  /// pointers to deleted instructions.</doc>

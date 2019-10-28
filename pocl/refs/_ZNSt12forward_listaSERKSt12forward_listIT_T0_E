@@ -1,0 +1,11 @@
+<dec f='include/c++/7/bits/forward_list.h' l='571' type='forward_list&lt;_Tp, _Alloc&gt; &amp; std::forward_list::operator=(const forward_list&lt;_Tp, _Alloc&gt; &amp; __list)'/>
+<def f='include/c++/7/bits/forward_list.tcc' l='141' ll='163' type='forward_list&lt;_Tp, _Alloc&gt; &amp; std::forward_list::operator=(const forward_list&lt;_Tp, _Alloc&gt; &amp; __list)'/>
+<doc f='include/c++/7/bits/forward_list.h' l='561'>/**
+       *  @brief  The %forward_list assignment operator.
+       *  @param  __list  A %forward_list of identical element and allocator
+       *                types.
+       *
+       *  All the elements of @a __list are copied.
+       *
+       *  Whether the allocator is copied depends on the allocator traits.
+       */</doc>

@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Transforms/IPO.h' l='148' type='llvm::ModulePass * llvm::createDeadArgHackingPass()'/>
+<doc f='include/llvm-6.0/llvm/Transforms/IPO.h' l='145'>/// DeadArgHacking pass - Same as DAE, but delete arguments of external
+/// functions as well.  This is definitely not safe, and should only be used by
+/// bugpoint.</doc>

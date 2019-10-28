@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/ADT/PointerUnion.h' l='135' ll='138' type='T llvm::PointerUnion::get() const'/>
+<use f='include/llvm-6.0/llvm/IR/Metadata.h' l='796' u='c' c='_ZNK4llvm25ContextAndReplaceableUses10getContextEv'/>
+<use f='include/llvm-6.0/llvm/IR/Metadata.h' l='801' u='c' c='_ZNK4llvm25ContextAndReplaceableUses18getReplaceableUsesEv'/>
+<doc f='include/llvm-6.0/llvm/ADT/PointerUnion.h' l='132'>/// Returns the value of the specified pointer type.
+  ///
+  /// If the specified pointer type is incorrect, assert.</doc>

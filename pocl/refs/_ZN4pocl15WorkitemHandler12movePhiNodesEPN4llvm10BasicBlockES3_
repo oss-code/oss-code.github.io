@@ -1,0 +1,10 @@
+<dec f='pocl/lib/llvmopencl/WorkitemHandler.h' l='59' type='void pocl::WorkitemHandler::movePhiNodes(llvm::BasicBlock * src, llvm::BasicBlock * dst)'/>
+<def f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='246' ll='250' type='void pocl::WorkitemHandler::movePhiNodes(llvm::BasicBlock * src, llvm::BasicBlock * dst)'/>
+<doc f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='239'>/**
+ * Moves the phi nodes in the beginning of the src to the beginning of
+ * the dst. 
+ *
+ * MergeBlockIntoPredecessor function from llvm discards the phi nodes
+ * of the replicated BB because it has only one entry.
+ */</doc>
+<use f='pocl/lib/llvmopencl/WorkitemReplication.cc' l='281' u='c' c='_ZN4pocl19WorkitemReplication15ProcessFunctionERN4llvm8FunctionE'/>

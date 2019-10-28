@@ -1,0 +1,10 @@
+<dec f='include/pthread.h' l='968' type='int pthread_cond_init(pthread_cond_t *restrict __cond, const pthread_condattr_t *restrict __cond_attr)'/>
+<doc f='include/pthread.h' l='966'>/* Initialize condition variable COND using attributes ATTR, or use
+   the default values if later is NULL.  */</doc>
+<use f='pocl/lib/CL/clCreateUserEvent.c' l='25' u='c' c='POclCreateUserEvent'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='352' u='c' c='pocl_cuda_init_queue'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='353' u='c' c='pocl_cuda_init_queue'/>
+<use f='include/x86_64-linux-gnu/c++/7/bits/gthr-default.h' l='124' c='__gthrw_pthread_cond_init'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='347' u='c' c='pocl_pthread_update_event'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='378' u='c' c='pocl_pthread_init_queue'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='91' u='c' c='pthread_scheduler_init'/>

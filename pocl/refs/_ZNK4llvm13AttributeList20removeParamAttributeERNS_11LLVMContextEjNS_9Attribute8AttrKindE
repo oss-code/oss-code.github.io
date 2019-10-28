@@ -1,0 +1,3 @@
+<def f='include/llvm-6.0/llvm/IR/Attributes.h' l='444' ll='447' type='llvm::AttributeList llvm::AttributeList::removeParamAttribute(llvm::LLVMContext &amp; C, unsigned int ArgNo, Attribute::AttrKind Kind) const'/>
+<doc f='include/llvm-6.0/llvm/IR/Attributes.h' l='442'>/// \brief Remove the specified attribute at the specified arg index from this
+  /// attribute list. Returns a new list because attribute lists are immutable.</doc>

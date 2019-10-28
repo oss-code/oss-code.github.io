@@ -1,0 +1,12 @@
+<def f='pocl/include/CL/cl2.hpp' l='746' ll='747' type='void cl::Error::Error(cl_int err, const char * errStr = __null)'/>
+<use f='pocl/include/CL/cl2.hpp' l='785' u='c' c='_ZN2cl6detailL10errHandlerEiPKc'/>
+<use f='pocl/include/CL/cl2.hpp' l='1964' u='c' c='_ZN2cl10BuildErrorC1EiPKcRKSt6vectorISt4pairINS_6DeviceENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEESaISC_EE'/>
+<doc f='pocl/include/CL/cl2.hpp' l='737'>/*! \brief Create a new CL error exception for a given error code
+         *  and corresponding message.
+         *
+         *  \param err error code value.
+         *
+         *  \param errStr a descriptive string that must remain in scope until
+         *                handling of the exception has concluded.  If set, it
+         *                will be returned by what().
+         */</doc>

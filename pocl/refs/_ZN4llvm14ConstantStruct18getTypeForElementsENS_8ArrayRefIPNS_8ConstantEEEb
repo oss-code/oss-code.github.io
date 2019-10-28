@@ -1,0 +1,4 @@
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='461' u='c' c='_ZN4llvm14ConstantStruct7getAnonENS_8ArrayRefIPNS_8ConstantEEEb'/>
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='470' type='static llvm::StructType * llvm::ConstantStruct::getTypeForElements(ArrayRef&lt;llvm::Constant *&gt; V, bool Packed = false)'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='468'>/// Return an anonymous struct type to use for a constant with the specified
+  /// set of elements. The list must not be empty.</doc>

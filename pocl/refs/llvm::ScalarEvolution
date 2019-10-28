@@ -1,0 +1,217 @@
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='454' ll='1789'/>
+<size>720</size>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='451'>/// The main scalar evolution driver. Because client code (intentionally)
+/// can&apos;t do much with the SCEV objects directly, they must ask this class
+/// for services.</doc>
+<fun r='_ZN4llvm15ScalarEvolution9maskFlagsENS_4SCEV11NoWrapFlagsEi'/>
+<fun r='_ZN4llvm15ScalarEvolution8setFlagsENS_4SCEV11NoWrapFlagsES2_'/>
+<fun r='_ZN4llvm15ScalarEvolution10clearFlagsENS_4SCEV11NoWrapFlagsES2_'/>
+<fun r='_ZN4llvm15ScalarEvolutionC1ERNS_8FunctionERNS_17TargetLibraryInfoERNS_15AssumptionCacheERNS_13DominatorTreeERNS_8LoopInfoE'/>
+<fun r='_ZN4llvm15ScalarEvolutionC1EOS0_'/>
+<fun r='_ZN4llvm15ScalarEvolutionD1Ev'/>
+<fun r='_ZNK4llvm15ScalarEvolution10getContextEv'/>
+<fun r='_ZNK4llvm15ScalarEvolution10isSCEVableEPNS_4TypeE'/>
+<fun r='_ZNK4llvm15ScalarEvolution17getTypeSizeInBitsEPNS_4TypeE'/>
+<fun r='_ZNK4llvm15ScalarEvolution20getEffectiveSCEVTypeEPNS_4TypeE'/>
+<fun r='_ZNK4llvm15ScalarEvolution12getWiderTypeEPNS_4TypeES2_'/>
+<fun r='_ZN4llvm15ScalarEvolution21containsAddRecurrenceEPKNS_4SCEVE'/>
+<fun r='_ZN4llvm15ScalarEvolution17eraseValueFromMapEPNS_5ValueE'/>
+<fun r='_ZN4llvm15ScalarEvolution7getSCEVEPNS_5ValueE'/>
+<fun r='_ZN4llvm15ScalarEvolution11getConstantEPNS_11ConstantIntE'/>
+<fun r='_ZN4llvm15ScalarEvolution11getConstantERKNS_5APIntE'/>
+<fun r='_ZN4llvm15ScalarEvolution11getConstantEPNS_4TypeEmb'/>
+<fun r='_ZN4llvm15ScalarEvolution15getTruncateExprEPKNS_4SCEVEPNS_4TypeE'/>
+<fun r='_ZN4llvm15ScalarEvolution17getZeroExtendExprEPKNS_4SCEVEPNS_4TypeEj'/>
+<fun r='_ZN4llvm15ScalarEvolution17getSignExtendExprEPKNS_4SCEVEPNS_4TypeEj'/>
+<fun r='_ZN4llvm15ScalarEvolution16getAnyExtendExprEPKNS_4SCEVEPNS_4TypeE'/>
+<fun r='_ZN4llvm15ScalarEvolution10getAddExprERNS_15SmallVectorImplIPKNS_4SCEVEEENS2_11NoWrapFlagsEj'/>
+<fun r='_ZN4llvm15ScalarEvolution10getAddExprEPKNS_4SCEVES3_NS1_11NoWrapFlagsEj'/>
+<fun r='_ZN4llvm15ScalarEvolution10getAddExprEPKNS_4SCEVES3_S3_NS1_11NoWrapFlagsEj'/>
+<fun r='_ZN4llvm15ScalarEvolution10getMulExprERNS_15SmallVectorImplIPKNS_4SCEVEEENS2_11NoWrapFlagsEj'/>
+<fun r='_ZN4llvm15ScalarEvolution10getMulExprEPKNS_4SCEVES3_NS1_11NoWrapFlagsEj'/>
+<fun r='_ZN4llvm15ScalarEvolution10getMulExprEPKNS_4SCEVES3_S3_NS1_11NoWrapFlagsEj'/>
+<fun r='_ZN4llvm15ScalarEvolution11getUDivExprEPKNS_4SCEVES3_'/>
+<fun r='_ZN4llvm15ScalarEvolution16getUDivExactExprEPKNS_4SCEVES3_'/>
+<fun r='_ZN4llvm15ScalarEvolution11getURemExprEPKNS_4SCEVES3_'/>
+<fun r='_ZN4llvm15ScalarEvolution13getAddRecExprEPKNS_4SCEVES3_PKNS_4LoopENS1_11NoWrapFlagsE'/>
+<fun r='_ZN4llvm15ScalarEvolution13getAddRecExprERNS_15SmallVectorImplIPKNS_4SCEVEEEPKNS_4LoopENS2_11NoWrapFlagsE'/>
+<fun r='_ZN4llvm15ScalarEvolution13getAddRecExprERKNS_15SmallVectorImplIPKNS_4SCEVEEEPKNS_4LoopENS2_11NoWrapFlagsE'/>
+<fun r='_ZN4llvm15ScalarEvolution28createAddRecFromPHIWithCastsEPKNS_11SCEVUnknownE'/>
+<fun r='_ZN4llvm15ScalarEvolution10getGEPExprEPNS_11GEPOperatorERKNS_15SmallVectorImplIPKNS_4SCEVEEE'/>
+<fun r='_ZN4llvm15ScalarEvolution11getSMaxExprEPKNS_4SCEVES3_'/>
+<fun r='_ZN4llvm15ScalarEvolution11getSMaxExprERNS_15SmallVectorImplIPKNS_4SCEVEEE'/>
+<fun r='_ZN4llvm15ScalarEvolution11getUMaxExprEPKNS_4SCEVES3_'/>
+<fun r='_ZN4llvm15ScalarEvolution11getUMaxExprERNS_15SmallVectorImplIPKNS_4SCEVEEE'/>
+<fun r='_ZN4llvm15ScalarEvolution11getSMinExprEPKNS_4SCEVES3_'/>
+<fun r='_ZN4llvm15ScalarEvolution11getUMinExprEPKNS_4SCEVES3_'/>
+<fun r='_ZN4llvm15ScalarEvolution10getUnknownEPNS_5ValueE'/>
+<fun r='_ZN4llvm15ScalarEvolution18getCouldNotComputeEv'/>
+<fun r='_ZN4llvm15ScalarEvolution7getZeroEPNS_4TypeE'/>
+<fun r='_ZN4llvm15ScalarEvolution6getOneEPNS_4TypeE'/>
+<fun r='_ZN4llvm15ScalarEvolution13getSizeOfExprEPNS_4TypeES2_'/>
+<fun r='_ZN4llvm15ScalarEvolution15getOffsetOfExprEPNS_4TypeEPNS_10StructTypeEj'/>
+<fun r='_ZN4llvm15ScalarEvolution15getNegativeSCEVEPKNS_4SCEVENS1_11NoWrapFlagsE'/>
+<fun r='_ZN4llvm15ScalarEvolution10getNotSCEVEPKNS_4SCEVE'/>
+<fun r='_ZN4llvm15ScalarEvolution12getMinusSCEVEPKNS_4SCEVES3_NS1_11NoWrapFlagsEj'/>
+<fun r='_ZN4llvm15ScalarEvolution23getTruncateOrZeroExtendEPKNS_4SCEVEPNS_4TypeE'/>
+<fun r='_ZN4llvm15ScalarEvolution23getTruncateOrSignExtendEPKNS_4SCEVEPNS_4TypeE'/>
+<fun r='_ZN4llvm15ScalarEvolution19getNoopOrZeroExtendEPKNS_4SCEVEPNS_4TypeE'/>
+<fun r='_ZN4llvm15ScalarEvolution19getNoopOrSignExtendEPKNS_4SCEVEPNS_4TypeE'/>
+<fun r='_ZN4llvm15ScalarEvolution18getNoopOrAnyExtendEPKNS_4SCEVEPNS_4TypeE'/>
+<fun r='_ZN4llvm15ScalarEvolution17getTruncateOrNoopEPKNS_4SCEVEPNS_4TypeE'/>
+<fun r='_ZN4llvm15ScalarEvolution26getUMaxFromMismatchedTypesEPKNS_4SCEVES3_'/>
+<fun r='_ZN4llvm15ScalarEvolution26getUMinFromMismatchedTypesEPKNS_4SCEVES3_'/>
+<fun r='_ZN4llvm15ScalarEvolution14getPointerBaseEPKNS_4SCEVE'/>
+<fun r='_ZN4llvm15ScalarEvolution14getSCEVAtScopeEPKNS_4SCEVEPKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution14getSCEVAtScopeEPNS_5ValueEPKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution24isLoopEntryGuardedByCondEPKNS_4LoopENS_7CmpInst9PredicateEPKNS_4SCEVES8_'/>
+<fun r='_ZN4llvm15ScalarEvolution27isLoopBackedgeGuardedByCondEPKNS_4LoopENS_7CmpInst9PredicateEPKNS_4SCEVES8_'/>
+<fun r='_ZN4llvm15ScalarEvolution25getSmallConstantTripCountEPKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution25getSmallConstantTripCountEPKNS_4LoopEPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm15ScalarEvolution28getSmallConstantMaxTripCountEPKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution28getSmallConstantTripMultipleEPKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution28getSmallConstantTripMultipleEPKNS_4LoopEPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm15ScalarEvolution12getExitCountEPKNS_4LoopEPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm15ScalarEvolution21getBackedgeTakenCountEPKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution31getPredicatedBackedgeTakenCountEPKNS_4LoopERNS_18SCEVUnionPredicateE'/>
+<fun r='_ZN4llvm15ScalarEvolution24getMaxBackedgeTakenCountEPKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution29isBackedgeTakenCountMaxOrZeroEPKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution34hasLoopInvariantBackedgeTakenCountEPKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution10forgetLoopEPKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution11forgetValueEPNS_5ValueE'/>
+<fun r='_ZN4llvm15ScalarEvolution22forgetLoopDispositionsEPKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution19GetMinTrailingZerosEPKNS_4SCEVE'/>
+<fun r='_ZN4llvm15ScalarEvolution16getUnsignedRangeEPKNS_4SCEVE'/>
+<fun r='_ZN4llvm15ScalarEvolution19getUnsignedRangeMinEPKNS_4SCEVE'/>
+<fun r='_ZN4llvm15ScalarEvolution19getUnsignedRangeMaxEPKNS_4SCEVE'/>
+<fun r='_ZN4llvm15ScalarEvolution14getSignedRangeEPKNS_4SCEVE'/>
+<fun r='_ZN4llvm15ScalarEvolution17getSignedRangeMinEPKNS_4SCEVE'/>
+<fun r='_ZN4llvm15ScalarEvolution17getSignedRangeMaxEPKNS_4SCEVE'/>
+<fun r='_ZN4llvm15ScalarEvolution15isKnownNegativeEPKNS_4SCEVE'/>
+<fun r='_ZN4llvm15ScalarEvolution15isKnownPositiveEPKNS_4SCEVE'/>
+<fun r='_ZN4llvm15ScalarEvolution18isKnownNonNegativeEPKNS_4SCEVE'/>
+<fun r='_ZN4llvm15ScalarEvolution18isKnownNonPositiveEPKNS_4SCEVE'/>
+<fun r='_ZN4llvm15ScalarEvolution14isKnownNonZeroEPKNS_4SCEVE'/>
+<fun r='_ZN4llvm15ScalarEvolution16isKnownPredicateENS_7CmpInst9PredicateEPKNS_4SCEVES5_'/>
+<fun r='_ZN4llvm15ScalarEvolution20isMonotonicPredicateEPKNS_14SCEVAddRecExprENS_7CmpInst9PredicateERb'/>
+<fun r='_ZN4llvm15ScalarEvolution24isLoopInvariantPredicateENS_7CmpInst9PredicateEPKNS_4SCEVES5_PKNS_4LoopERS2_RS5_SA_'/>
+<fun r='_ZN4llvm15ScalarEvolution20SimplifyICmpOperandsERNS_7CmpInst9PredicateERPKNS_4SCEVES7_j'/>
+<fun r='_ZN4llvm15ScalarEvolution18getLoopDispositionEPKNS_4SCEVEPKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution15isLoopInvariantEPKNS_4SCEVEPKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution22isAvailableAtLoopEntryEPKNS_4SCEVEPKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution26hasComputableLoopEvolutionEPKNS_4SCEVEPKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution19getBlockDispositionEPKNS_4SCEVEPKNS_10BasicBlockE'/>
+<fun r='_ZN4llvm15ScalarEvolution9dominatesEPKNS_4SCEVEPKNS_10BasicBlockE'/>
+<fun r='_ZN4llvm15ScalarEvolution17properlyDominatesEPKNS_4SCEVEPKNS_10BasicBlockE'/>
+<fun r='_ZNK4llvm15ScalarEvolution10hasOperandEPKNS_4SCEVES3_'/>
+<fun r='_ZN4llvm15ScalarEvolution14getElementSizeEPNS_11InstructionE'/>
+<fun r='_ZN4llvm15ScalarEvolution19findArrayDimensionsERNS_15SmallVectorImplIPKNS_4SCEVEEES6_S4_'/>
+<fun r='_ZNK4llvm15ScalarEvolution5printERNS_11raw_ostreamE'/>
+<fun r='_ZNK4llvm15ScalarEvolution6verifyEv'/>
+<fun r='_ZN4llvm15ScalarEvolution10invalidateERNS_8FunctionERKNS_17PreservedAnalysesERNS_15AnalysisManagerIS1_JEE11InvalidatorE'/>
+<fun r='_ZN4llvm15ScalarEvolution22collectParametricTermsEPKNS_4SCEVERNS_15SmallVectorImplIS3_EE'/>
+<fun r='_ZN4llvm15ScalarEvolution22computeAccessFunctionsEPKNS_4SCEVERNS_15SmallVectorImplIS3_EES6_'/>
+<fun r='_ZN4llvm15ScalarEvolution11delinearizeEPKNS_4SCEVERNS_15SmallVectorImplIS3_EES6_S3_'/>
+<fun r='_ZNK4llvm15ScalarEvolution13getDataLayoutEv'/>
+<fun r='_ZN4llvm15ScalarEvolution17getEqualPredicateEPKNS_4SCEVES3_'/>
+<fun r='_ZN4llvm15ScalarEvolution16getWrapPredicateEPKNS_14SCEVAddRecExprENS_17SCEVWrapPredicate18IncrementWrapFlagsE'/>
+<fun r='_ZN4llvm15ScalarEvolution21rewriteUsingPredicateEPKNS_4SCEVEPKNS_4LoopERNS_18SCEVUnionPredicateE'/>
+<fun r='_ZN4llvm15ScalarEvolution33convertSCEVToAddRecWithPredicatesEPKNS_4SCEVEPKNS_4LoopERNS_15SmallPtrSetImplIPKNS_13SCEVPredicateEEE'/>
+<mbr r='llvm::ScalarEvolution::F' o='0' t='llvm::Function &amp;'/>
+<mbr r='llvm::ScalarEvolution::HasGuards' o='64' t='bool'/>
+<mbr r='llvm::ScalarEvolution::TLI' o='128' t='llvm::TargetLibraryInfo &amp;'/>
+<mbr r='llvm::ScalarEvolution::AC' o='192' t='llvm::AssumptionCache &amp;'/>
+<mbr r='llvm::ScalarEvolution::DT' o='256' t='llvm::DominatorTree &amp;'/>
+<mbr r='llvm::ScalarEvolution::LI' o='320' t='llvm::LoopInfo &amp;'/>
+<mbr r='llvm::ScalarEvolution::CouldNotCompute' o='384' t='std::unique_ptr&lt;SCEVCouldNotCompute&gt;'/>
+<mbr r='llvm::ScalarEvolution::HasRecMap' o='448' t='HasRecMapType'/>
+<mbr r='llvm::ScalarEvolution::ExprValueMap' o='640' t='ExprValueMapType'/>
+<mbr r='llvm::ScalarEvolution::ValueExprMap' o='832' t='ValueExprMapType'/>
+<mbr r='llvm::ScalarEvolution::PendingLoopPredicates' o='1024' t='SmallPtrSet&lt;llvm::Value *, 6&gt;'/>
+<mbr r='llvm::ScalarEvolution::WalkingBEDominatingConds' o='1792' t='bool'/>
+<mbr r='llvm::ScalarEvolution::ProvingSplitPredicate' o='1800' t='bool'/>
+<mbr r='llvm::ScalarEvolution::MinTrailingZerosCache' o='1856' t='DenseMap&lt;const llvm::SCEV *, uint32_t&gt;'/>
+<fun r='_ZN4llvm15ScalarEvolution13getSCEVValuesEPKNS_4SCEVE'/>
+<fun r='_ZN4llvm15ScalarEvolution23GetMinTrailingZerosImplEPKNS_4SCEVE'/>
+<mbr r='llvm::ScalarEvolution::BackedgeTakenCounts' o='2048' t='DenseMap&lt;const llvm::Loop *, llvm::ScalarEvolution::BackedgeTakenInfo&gt;'/>
+<mbr r='llvm::ScalarEvolution::PredicatedBackedgeTakenCounts' o='2240' t='DenseMap&lt;const llvm::Loop *, llvm::ScalarEvolution::BackedgeTakenInfo&gt;'/>
+<mbr r='llvm::ScalarEvolution::ConstantEvolutionLoopExitValue' o='2432' t='DenseMap&lt;llvm::PHINode *, llvm::Constant *&gt;'/>
+<mbr r='llvm::ScalarEvolution::ValuesAtScopes' o='2624' t='DenseMap&lt;const llvm::SCEV *, SmallVector&lt;std::pair&lt;const Loop *, const SCEV *&gt;, 2&gt; &gt;'/>
+<mbr r='llvm::ScalarEvolution::LoopDispositions' o='2816' t='DenseMap&lt;const llvm::SCEV *, SmallVector&lt;PointerIntPair&lt;const llvm::Loop *, 2, llvm::ScalarEvolution::LoopDisposition&gt;, 2&gt; &gt;'/>
+<mbr r='llvm::ScalarEvolution::LoopPropertiesCache' o='3008' t='DenseMap&lt;const llvm::Loop *, llvm::ScalarEvolution::LoopProperties&gt;'/>
+<fun r='_ZN4llvm15ScalarEvolution17getLoopPropertiesEPKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution20loopHasNoSideEffectsEPKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution22loopHasNoAbnormalExitsEPKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution22computeLoopDispositionEPKNS_4SCEVEPKNS_4LoopE'/>
+<mbr r='llvm::ScalarEvolution::BlockDispositions' o='3200' t='DenseMap&lt;const llvm::SCEV *, SmallVector&lt;PointerIntPair&lt;const llvm::BasicBlock *, 2, llvm::ScalarEvolution::BlockDisposition&gt;, 2&gt; &gt;'/>
+<fun r='_ZN4llvm15ScalarEvolution23computeBlockDispositionEPKNS_4SCEVEPKNS_10BasicBlockE'/>
+<mbr r='llvm::ScalarEvolution::UnsignedRanges' o='3392' t='DenseMap&lt;const llvm::SCEV *, llvm::ConstantRange&gt;'/>
+<mbr r='llvm::ScalarEvolution::SignedRanges' o='3584' t='DenseMap&lt;const llvm::SCEV *, llvm::ConstantRange&gt;'/>
+<fun r='_ZN4llvm15ScalarEvolution8setRangeEPKNS_4SCEVENS0_13RangeSignHintENS_13ConstantRangeE'/>
+<fun r='_ZN4llvm15ScalarEvolution11getRangeRefEPKNS_4SCEVENS0_13RangeSignHintE'/>
+<fun r='_ZN4llvm15ScalarEvolution19getRangeForAffineAREPKNS_4SCEVES3_S3_j'/>
+<fun r='_ZN4llvm15ScalarEvolution20getRangeViaFactoringEPKNS_4SCEVES3_S3_j'/>
+<fun r='_ZN4llvm15ScalarEvolution10createSCEVEPNS_5ValueE'/>
+<fun r='_ZN4llvm15ScalarEvolution16createNodeForPHIEPNS_7PHINodeE'/>
+<fun r='_ZN4llvm15ScalarEvolution19createAddRecFromPHIEPNS_7PHINodeE'/>
+<fun r='_ZN4llvm15ScalarEvolution24createSimpleAffineAddRecEPNS_7PHINodeEPNS_5ValueES4_'/>
+<fun r='_ZN4llvm15ScalarEvolution27createNodeFromSelectLikePHIEPNS_7PHINodeE'/>
+<fun r='_ZN4llvm15ScalarEvolution24createNodeForSelectOrPHIEPNS_11InstructionEPNS_5ValueES4_S4_'/>
+<fun r='_ZN4llvm15ScalarEvolution16createNodeForGEPEPNS_11GEPOperatorE'/>
+<fun r='_ZN4llvm15ScalarEvolution18computeSCEVAtScopeEPKNS_4SCEVEPKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution18forgetSymbolicNameEPNS_11InstructionEPKNS_4SCEVE'/>
+<fun r='_ZN4llvm15ScalarEvolution20getBackedgeTakenInfoEPKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution30getPredicatedBackedgeTakenInfoEPKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution25computeBackedgeTakenCountEPKNS_4LoopEb'/>
+<fun r='_ZN4llvm15ScalarEvolution16computeExitLimitEPKNS_4LoopEPNS_10BasicBlockEb'/>
+<fun r='_ZN4llvm15ScalarEvolution24computeExitLimitFromCondEPKNS_4LoopEPNS_5ValueEPNS_10BasicBlockES7_bb'/>
+<fun r='_ZN4llvm15ScalarEvolution30computeExitLimitFromCondCachedERNS0_14ExitLimitCacheEPKNS_4LoopEPNS_5ValueEPNS_10BasicBlockES9_bb'/>
+<fun r='_ZN4llvm15ScalarEvolution28computeExitLimitFromCondImplERNS0_14ExitLimitCacheEPKNS_4LoopEPNS_5ValueEPNS_10BasicBlockES9_bb'/>
+<fun r='_ZN4llvm15ScalarEvolution24computeExitLimitFromICmpEPKNS_4LoopEPNS_8ICmpInstEPNS_10BasicBlockES7_bb'/>
+<fun r='_ZN4llvm15ScalarEvolution36computeExitLimitFromSingleExitSwitchEPKNS_4LoopEPNS_10SwitchInstEPNS_10BasicBlockEb'/>
+<fun r='_ZN4llvm15ScalarEvolution35computeLoadConstantCompareExitLimitEPNS_8LoadInstEPNS_8ConstantEPKNS_4LoopENS_7CmpInst9PredicateE'/>
+<fun r='_ZN4llvm15ScalarEvolution28computeShiftCompareExitLimitEPNS_5ValueES2_PKNS_4LoopENS_7CmpInst9PredicateE'/>
+<fun r='_ZN4llvm15ScalarEvolution28computeExitCountExhaustivelyEPKNS_4LoopEPNS_5ValueEb'/>
+<fun r='_ZN4llvm15ScalarEvolution12howFarToZeroEPKNS_4SCEVEPKNS_4LoopEbb'/>
+<fun r='_ZN4llvm15ScalarEvolution15howFarToNonZeroEPKNS_4SCEVEPKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution16howManyLessThansEPKNS_4SCEVES3_PKNS_4LoopEbbb'/>
+<fun r='_ZN4llvm15ScalarEvolution19howManyGreaterThansEPKNS_4SCEVES3_PKNS_4LoopEbbb'/>
+<fun r='_ZN4llvm15ScalarEvolution38getPredecessorWithUniqueSuccessorForBBEPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm15ScalarEvolution13isImpliedCondENS_7CmpInst9PredicateEPKNS_4SCEVES5_PNS_5ValueEb'/>
+<fun r='_ZN4llvm15ScalarEvolution13isImpliedCondENS_7CmpInst9PredicateEPKNS_4SCEVES5_S2_S5_S5_'/>
+<fun r='_ZN4llvm15ScalarEvolution21isImpliedCondOperandsENS_7CmpInst9PredicateEPKNS_4SCEVES5_S5_S5_'/>
+<fun r='_ZN4llvm15ScalarEvolution22isImpliedViaOperationsENS_7CmpInst9PredicateEPKNS_4SCEVES5_S5_S5_j'/>
+<fun r='_ZN4llvm15ScalarEvolution25isKnownViaSimpleReasoningENS_7CmpInst9PredicateEPKNS_4SCEVES5_'/>
+<fun r='_ZN4llvm15ScalarEvolution27isImpliedCondOperandsHelperENS_7CmpInst9PredicateEPKNS_4SCEVES5_S5_S5_'/>
+<fun r='_ZN4llvm15ScalarEvolution30isImpliedCondOperandsViaRangesENS_7CmpInst9PredicateEPKNS_4SCEVES5_S5_S5_'/>
+<fun r='_ZN4llvm15ScalarEvolution17isImpliedViaGuardEPNS_10BasicBlockENS_7CmpInst9PredicateEPKNS_4SCEVES7_'/>
+<fun r='_ZN4llvm15ScalarEvolution34isImpliedCondOperandsViaNoOverflowENS_7CmpInst9PredicateEPKNS_4SCEVES5_S5_S5_'/>
+<fun r='_ZN4llvm15ScalarEvolution33getConstantEvolutionLoopExitValueEPNS_7PHINodeERKNS_5APIntEPKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution33isKnownPredicateViaConstantRangesENS_7CmpInst9PredicateEPKNS_4SCEVES5_'/>
+<fun r='_ZN4llvm15ScalarEvolution29isKnownPredicateViaNoOverflowENS_7CmpInst9PredicateEPKNS_4SCEVES5_'/>
+<fun r='_ZN4llvm15ScalarEvolution28isKnownPredicateViaSplittingENS_7CmpInst9PredicateEPKNS_4SCEVES5_'/>
+<fun r='_ZN4llvm15ScalarEvolution14splitBinaryAddEPKNS_4SCEVERS3_S4_RNS1_11NoWrapFlagsE'/>
+<fun r='_ZN4llvm15ScalarEvolution25computeConstantDifferenceEPKNS_4SCEVES3_'/>
+<fun r='_ZN4llvm15ScalarEvolution21forgetMemoizedResultsEPKNS_4SCEVE'/>
+<fun r='_ZN4llvm15ScalarEvolution15getExistingSCEVEPNS_5ValueE'/>
+<fun r='_ZNK4llvm15ScalarEvolution13checkValidityEPKNS_4SCEVE'/>
+<fun r='_ZN4llvm15ScalarEvolution25proveNoWrapByVaryingStartEPKNS_4SCEVES3_PKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution28proveNoWrapViaConstantRangesEPKNS_14SCEVAddRecExprE'/>
+<fun r='_ZN4llvm15ScalarEvolution24isMonotonicPredicateImplEPKNS_14SCEVAddRecExprENS_7CmpInst9PredicateERb'/>
+<fun r='_ZN4llvm15ScalarEvolution20getNoWrapFlagsFromUBEPKNS_5ValueE'/>
+<fun r='_ZN4llvm15ScalarEvolution21isSCEVExprNeverPoisonEPKNS_11InstructionE'/>
+<fun r='_ZN4llvm15ScalarEvolution19isAddRecNeverPoisonEPKNS_11InstructionEPKNS_4LoopE'/>
+<fun r='_ZN4llvm15ScalarEvolution32createAddRecFromPHIWithCastsImplEPKNS_11SCEVUnknownE'/>
+<fun r='_ZN4llvm15ScalarEvolution14computeBECountEPKNS_4SCEVES3_b'/>
+<fun r='_ZN4llvm15ScalarEvolution22computeMaxBECountForLTEPKNS_4SCEVES3_S3_jb'/>
+<fun r='_ZN4llvm15ScalarEvolution18doesIVOverflowOnLTEPKNS_4SCEVES3_bb'/>
+<fun r='_ZN4llvm15ScalarEvolution18doesIVOverflowOnGTEPKNS_4SCEVES3_bb'/>
+<fun r='_ZN4llvm15ScalarEvolution18getOrCreateAddExprERNS_15SmallVectorImplIPKNS_4SCEVEEENS2_11NoWrapFlagsE'/>
+<fun r='_ZN4llvm15ScalarEvolution18getOrCreateMulExprERNS_15SmallVectorImplIPKNS_4SCEVEEENS2_11NoWrapFlagsE'/>
+<fun r='_ZN4llvm15ScalarEvolution17addToLoopUseListsEPKNS_4SCEVE'/>
+<mbr r='llvm::ScalarEvolution::UniqueSCEVs' o='3776' t='FoldingSet&lt;llvm::SCEV&gt;'/>
+<mbr r='llvm::ScalarEvolution::UniquePreds' o='3968' t='FoldingSet&lt;llvm::SCEVPredicate&gt;'/>
+<mbr r='llvm::ScalarEvolution::SCEVAllocator' o='4160' t='BumpPtrAllocator'/>
+<mbr r='llvm::ScalarEvolution::LoopUsers' o='5312' t='DenseMap&lt;const llvm::Loop *, SmallVector&lt;const llvm::SCEV *, 4&gt; &gt;'/>
+<mbr r='llvm::ScalarEvolution::PredicatedSCEVRewrites' o='5504' t='DenseMap&lt;std::pair&lt;const SCEVUnknown *, const Loop *&gt;, std::pair&lt;const SCEV *, SmallVector&lt;const SCEVPredicate *, 3&gt; &gt; &gt;'/>
+<mbr r='llvm::ScalarEvolution::FirstUnknown' o='5696' t='llvm::SCEVUnknown *'/>

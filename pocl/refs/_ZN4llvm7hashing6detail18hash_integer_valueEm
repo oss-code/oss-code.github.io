@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/ADT/Hashing.h' l='618' ll='624' type='llvm::hash_code llvm::hashing::detail::hash_integer_value(uint64_t value)'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='634' u='c' c='_ZN4llvm10hash_valueET_'/>
+<use f='include/llvm-6.0/llvm/ADT/Hashing.h' l='641' u='c' c='_ZN4llvm10hash_valueEPKT_'/>
+<doc f='include/llvm-6.0/llvm/ADT/Hashing.h' l='613'>/// \brief Helper to hash the value of a single integer.
+///
+/// Overloads for smaller integer types are not provided to ensure consistent
+/// behavior in the presence of integral promotions. Essentially,
+/// &quot;hash_value(&apos;4&apos;)&quot; and &quot;hash_value(&apos;0&apos; + 4)&quot; should be the same.</doc>

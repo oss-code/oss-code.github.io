@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='883' type='bool llvm::ScalarEvolution::hasComputableLoopEvolution(const llvm::SCEV * S, const llvm::Loop * L)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='879'>/// Return true if the given SCEV changes value in a known way in the
+  /// specified loop.  This property being true implies that the value is
+  /// variant in the loop AND that we can emit an expression to compute the
+  /// value of the expression at any particular loop iteration.</doc>

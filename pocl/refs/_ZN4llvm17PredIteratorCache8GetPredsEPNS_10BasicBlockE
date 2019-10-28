@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/IR/PredIteratorCache.h' l='43' ll='56' type='llvm::BasicBlock ** llvm::PredIteratorCache::GetPreds(llvm::BasicBlock * BB)'/>
+<use f='include/llvm-6.0/llvm/IR/PredIteratorCache.h' l='68' u='c' c='_ZN4llvm17PredIteratorCache3getEPNS_10BasicBlockE'/>
+<doc f='include/llvm-6.0/llvm/IR/PredIteratorCache.h' l='37'>/// GetPreds - Get a cached list for the null-terminated predecessor list of
+  /// the specified block.  This can be used in a loop like this:
+  ///   for (BasicBlock **PI = PredCache-&gt;GetPreds(BB); *PI; ++PI)
+  ///      use(*PI);
+  /// instead of:
+  /// for (pred_iterator PI = pred_begin(BB), E = pred_end(BB); PI != E; ++PI)</doc>

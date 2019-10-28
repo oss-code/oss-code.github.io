@@ -1,0 +1,15 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='742' type='const char *'/>
+<offset>4672</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='742'>/* the llvm target triplet to use */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='363' u='w' c='pocl_init_cpu_device_infos'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='181' u='w' c='pocl_cuda_init'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='347' u='r' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='353' u='r' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='459' u='r' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='642' u='r' c='pocl_llvm_link_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='791' u='r' c='_ZL16getKernelLibraryP13_cl_device_id'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='837' u='r' c='_ZL16getKernelLibraryP13_cl_device_id'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='908' u='r' c='pocl_invoke_clang'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='181' u='r' c='_ZL22kernel_compiler_passesP13_cl_device_idPN4llvm6ModuleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='575' u='r' c='_ZL25initPassManagerForCodeGenRN4llvm6legacy11PassManagerEP13_cl_device_id'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='598' u='r' c='pocl_llvm_codegen'/>

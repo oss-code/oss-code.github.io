@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='607' type='llvm::InvokeInst * llvm::IRBuilderBase::CreateGCStatepointInvoke(uint64_t ID, uint32_t NumPatchBytes, llvm::Value * ActualInvokee, llvm::BasicBlock * NormalDest, llvm::BasicBlock * UnwindDest, ArrayRef&lt;llvm::Use&gt; InvokeArgs, ArrayRef&lt;llvm::Value *&gt; DeoptArgs, ArrayRef&lt;llvm::Value *&gt; GCArgs, const llvm::Twine &amp; Name = &quot;&quot;)'/>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='603'>// Conveninence function for the common case when CallArgs are filled in using
+  // makeArrayRef(CS.arg_begin(), CS.arg_end()); Use needs to be .get()&apos;ed to
+  // get the Value *.</doc>

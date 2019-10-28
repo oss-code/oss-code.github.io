@@ -1,0 +1,11 @@
+<use f='include/llvm-6.0/llvm/ADT/APFloat.h' l='334' u='r' c='_ZNK4llvm6detail9IEEEFloat6isZeroEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APFloat.h' l='341' u='r' c='_ZNK4llvm6detail9IEEEFloat10isInfinityEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APFloat.h' l='344' u='r' c='_ZNK4llvm6detail9IEEEFloat5isNaNEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APFloat.h' l='354' u='r' c='_ZNK4llvm6detail9IEEEFloat11getCategoryEv'/>
+<use f='include/llvm-6.0/llvm/ADT/APFloat.h' l='356' u='r' c='_ZNK4llvm6detail9IEEEFloat9isNonZeroEv'/>
+<dec f='include/llvm-6.0/llvm/ADT/APFloat.h' l='559' type='llvm::APFloatBase::fltCategory'/>
+<offset>144</offset>
+<doc f='include/llvm-6.0/llvm/ADT/APFloat.h' l='555'>/// What kind of floating point number this is.
+  ///
+  /// Only 2 bits are required, but VisualStudio incorrectly sign extends it.
+  /// Using the extra bit keeps it from failing under VisualStudio.</doc>

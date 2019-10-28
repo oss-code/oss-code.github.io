@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='550' type='llvm::ModRefInfo llvm::AAResults::getModRefInfo(const llvm::FenceInst * S, const llvm::MemoryLocation &amp; Loc)'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='554' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_9FenceInstEPKNS_5ValueEm'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='631' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_11InstructionERKNS_8OptionalINS_14MemoryLocationEEE'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='548'>/// getModRefInfo (for fences) - Return information about whether
+  /// a particular store modifies or reads the specified memory location.</doc>

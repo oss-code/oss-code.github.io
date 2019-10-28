@@ -1,0 +1,15 @@
+<dec f='pocl/include/pocl.h' l='361' type='cl_command_type'/>
+<offset>1216</offset>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='552' u='w' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='1133' u='r' c='pocl_basic_submit'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='1202' u='r' c='pocl_basic_compile_kernel'/>
+<use f='pocl/lib/CL/devices/common.c' l='387' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1107' u='r' c='pocl_cuda_submit_node'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1233' u='r' c='pocl_cuda_submit_node'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='469' u='r' c='pthread_scheduler_get_work'/>
+<use f='pocl/lib/CL/pocl_build.c' l='131' u='w' c='program_compile_dynamic_wg_binaries'/>
+<use f='pocl/lib/CL/pocl_util.c' l='481' u='w' c='pocl_create_command'/>
+<use f='pocl/lib/CL/pocl_util.c' l='549' u='r' c='pocl_command_enqueue'/>
+<use f='pocl/lib/CL/pocl_util.c' l='549' u='r' c='pocl_command_enqueue'/>
+<use f='pocl/lib/CL/pocl_util.c' l='557' u='r' c='pocl_command_enqueue'/>
+<use f='pocl/lib/CL/pocl_util.c' l='590' u='r' c='pocl_command_push'/>

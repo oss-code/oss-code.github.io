@@ -1,0 +1,6 @@
+<dec f='pocl/include/poclu.h' l='110' type='char * poclu_read_binfile(const char * filename, size_t * len)'/>
+<def f='pocl/lib/poclu/misc.c' l='141' ll='165' type='char * poclu_read_binfile(const char * filename, size_t * len)'/>
+<use f='pocl/lib/poclu/misc.c' l='171' u='c' c='poclu_read_file'/>
+<use f='pocl/lib/poclu/misc.c' l='396' u='c' c='poclu_load_program_multidev'/>
+<use f='pocl/lib/poclu/misc.c' l='410' u='c' c='poclu_load_program_multidev'/>
+<use f='pocl/tests/runtime/test_clGetKernelArgInfo.c' l='354' u='c' c='spir_program'/>

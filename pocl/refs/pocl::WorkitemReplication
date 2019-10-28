@@ -1,0 +1,11 @@
+<inh f='pocl/lib/llvmopencl/WorkitemHandler.h' l='47' c='pocl::WorkitemHandler'/>
+<def f='pocl/lib/llvmopencl/WorkitemReplication.h' l='42' ll='64'/>
+<size>96</size>
+<smbr r='pocl::WorkitemReplication::ID' t='char'/>
+<fun r='_ZN4pocl19WorkitemReplicationC1Ev'/>
+<fun r='_ZNK4pocl19WorkitemReplication16getAnalysisUsageERN4llvm13AnalysisUsageE'/>
+<fun r='_ZN4pocl19WorkitemReplication13runOnFunctionERN4llvm8FunctionE'/>
+<mbr r='pocl::WorkitemReplication::DT' o='576' t='llvm::DominatorTree *'/>
+<mbr r='pocl::WorkitemReplication::DTP' o='640' t='llvm::DominatorTreeWrapperPass *'/>
+<mbr r='pocl::WorkitemReplication::LI' o='704' t='llvm::LoopInfoWrapperPass *'/>
+<fun r='_ZN4pocl19WorkitemReplication15ProcessFunctionERN4llvm8FunctionE'/>

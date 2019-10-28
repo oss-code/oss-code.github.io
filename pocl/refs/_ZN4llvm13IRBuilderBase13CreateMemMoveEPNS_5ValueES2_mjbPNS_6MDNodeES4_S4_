@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='468' ll='474' type='llvm::CallInst * llvm::IRBuilderBase::CreateMemMove(llvm::Value * Dst, llvm::Value * Src, uint64_t Size, unsigned int Align, bool isVolatile = false, llvm::MDNode * TBAATag = nullptr, llvm::MDNode * ScopeTag = nullptr, llvm::MDNode * NoAliasTag = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='462'>/// \brief Create and insert a memmove between the specified
+  /// pointers.
+  ///
+  /// If the pointers aren&apos;t i8*, they will be converted.  If a TBAA tag is
+  /// specified, it will be added to the instruction. Likewise with alias.scope
+  /// and noalias tags.</doc>

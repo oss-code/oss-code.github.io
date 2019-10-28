@@ -1,0 +1,8 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='1073' type='unsigned int LLVMGetArrayLength(LLVMTypeRef ArrayTy)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='1066'>/**
+ * Obtain the length of an array type.
+ *
+ * This only works on types that represent arrays.
+ *
+ * @see llvm::ArrayType::getNumElements()
+ */</doc>

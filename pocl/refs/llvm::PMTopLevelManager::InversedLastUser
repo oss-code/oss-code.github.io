@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='245' type='DenseMap&lt;llvm::Pass *, SmallPtrSet&lt;llvm::Pass *, 8&gt; &gt;'/>
+<offset>1856</offset>
+<doc f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='242'>// Map to keep track of passes that are last used by a pass.
+  // This inverse map is initialized at PM-&gt;run() based on
+  // LastUser map.</doc>

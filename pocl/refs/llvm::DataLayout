@@ -1,0 +1,81 @@
+<def f='include/llvm-6.0/llvm/IR/DataLayout.h' l='109' ll='479'/>
+<size>448</size>
+<doc f='include/llvm-6.0/llvm/IR/DataLayout.h' l='103'>/// \brief A parsed version of the target data layout string in and methods for
+/// querying it.
+///
+/// The target data layout string is specified *by the target* - a frontend
+/// generating LLVM IR is required to generate the right target data for the
+/// target being codegen&apos;d to.</doc>
+<mbr r='llvm::DataLayout::BigEndian' o='0' t='bool'/>
+<mbr r='llvm::DataLayout::AllocaAddrSpace' o='32' t='unsigned int'/>
+<mbr r='llvm::DataLayout::StackNaturalAlign' o='64' t='unsigned int'/>
+<mbr r='llvm::DataLayout::ManglingMode' o='96' t='llvm::DataLayout::ManglingModeT'/>
+<mbr r='llvm::DataLayout::LegalIntWidths' o='128' t='SmallVector&lt;unsigned char, 8&gt;'/>
+<mbr r='llvm::DataLayout::Alignments' o='384' t='AlignmentsTy'/>
+<fun r='_ZNK4llvm10DataLayout23findAlignmentLowerBoundENS_13AlignTypeEnumEj'/>
+<fun r='_ZN4llvm10DataLayout23findAlignmentLowerBoundENS_13AlignTypeEnumEj'/>
+<mbr r='llvm::DataLayout::StringRepresentation' o='1600' t='std::string'/>
+<mbr r='llvm::DataLayout::Pointers' o='1856' t='PointersTy'/>
+<fun r='_ZNK4llvm10DataLayout21findPointerLowerBoundEj'/>
+<fun r='_ZN4llvm10DataLayout21findPointerLowerBoundEj'/>
+<mbr r='llvm::DataLayout::LayoutMap' o='3072' t='void *'/>
+<mbr r='llvm::DataLayout::NonIntegralAddressSpaces' o='3136' t='SmallVector&lt;unsigned int, 8&gt;'/>
+<fun r='_ZN4llvm10DataLayout12setAlignmentENS_13AlignTypeEnumEjjj'/>
+<fun r='_ZNK4llvm10DataLayout16getAlignmentInfoENS_13AlignTypeEnumEjbPNS_4TypeE'/>
+<fun r='_ZN4llvm10DataLayout19setPointerAlignmentEjjjj'/>
+<fun r='_ZNK4llvm10DataLayout12getAlignmentEPNS_4TypeEb'/>
+<fun r='_ZN4llvm10DataLayout14parseSpecifierENS_9StringRefE'/>
+<fun r='_ZN4llvm10DataLayout5clearEv'/>
+<fun r='_ZN4llvm10DataLayoutC1ENS_9StringRefE'/>
+<fun r='_ZN4llvm10DataLayoutC1EPKNS_6ModuleE'/>
+<fun r='_ZN4llvm10DataLayoutC1ERKS0_'/>
+<fun r='_ZN4llvm10DataLayoutD1Ev'/>
+<fun r='_ZN4llvm10DataLayoutaSERKS0_'/>
+<fun r='_ZNK4llvm10DataLayouteqERKS0_'/>
+<fun r='_ZNK4llvm10DataLayoutneERKS0_'/>
+<fun r='_ZN4llvm10DataLayout4initEPKNS_6ModuleE'/>
+<fun r='_ZN4llvm10DataLayout5resetENS_9StringRefE'/>
+<fun r='_ZNK4llvm10DataLayout14isLittleEndianEv'/>
+<fun r='_ZNK4llvm10DataLayout11isBigEndianEv'/>
+<fun r='_ZNK4llvm10DataLayout23getStringRepresentationB5cxx11Ev'/>
+<fun r='_ZNK4llvm10DataLayout9isDefaultEv'/>
+<fun r='_ZNK4llvm10DataLayout14isLegalIntegerEm'/>
+<fun r='_ZNK4llvm10DataLayout16isIllegalIntegerEm'/>
+<fun r='_ZNK4llvm10DataLayout28exceedsNaturalStackAlignmentEj'/>
+<fun r='_ZNK4llvm10DataLayout17getStackAlignmentEv'/>
+<fun r='_ZNK4llvm10DataLayout18getAllocaAddrSpaceEv'/>
+<fun r='_ZNK4llvm10DataLayout31hasMicrosoftFastStdCallManglingEv'/>
+<fun r='_ZNK4llvm10DataLayout28hasLinkerPrivateGlobalPrefixEv'/>
+<fun r='_ZNK4llvm10DataLayout28getLinkerPrivateGlobalPrefixEv'/>
+<fun r='_ZNK4llvm10DataLayout15getGlobalPrefixEv'/>
+<fun r='_ZNK4llvm10DataLayout22getPrivateGlobalPrefixEv'/>
+<fun r='_ZN4llvm10DataLayout20getManglingComponentERKNS_6TripleE'/>
+<fun r='_ZNK4llvm10DataLayout18fitsInLegalIntegerEj'/>
+<fun r='_ZNK4llvm10DataLayout22getPointerABIAlignmentEj'/>
+<fun r='_ZNK4llvm10DataLayout23getPointerPrefAlignmentEj'/>
+<fun r='_ZNK4llvm10DataLayout14getPointerSizeEj'/>
+<fun r='_ZNK4llvm10DataLayout27getNonIntegralAddressSpacesEv'/>
+<fun r='_ZNK4llvm10DataLayout24isNonIntegralPointerTypeEPNS_11PointerTypeE'/>
+<fun r='_ZNK4llvm10DataLayout24isNonIntegralPointerTypeEPNS_4TypeE'/>
+<fun r='_ZNK4llvm10DataLayout20getPointerSizeInBitsEj'/>
+<fun r='_ZNK4llvm10DataLayout24getPointerTypeSizeInBitsEPNS_4TypeE'/>
+<fun r='_ZNK4llvm10DataLayout18getPointerTypeSizeEPNS_4TypeE'/>
+<fun r='_ZNK4llvm10DataLayout17getTypeSizeInBitsEPNS_4TypeE'/>
+<fun r='_ZNK4llvm10DataLayout16getTypeStoreSizeEPNS_4TypeE'/>
+<fun r='_ZNK4llvm10DataLayout22getTypeStoreSizeInBitsEPNS_4TypeE'/>
+<fun r='_ZNK4llvm10DataLayout16getTypeAllocSizeEPNS_4TypeE'/>
+<fun r='_ZNK4llvm10DataLayout22getTypeAllocSizeInBitsEPNS_4TypeE'/>
+<fun r='_ZNK4llvm10DataLayout19getABITypeAlignmentEPNS_4TypeE'/>
+<fun r='_ZNK4llvm10DataLayout26getABIIntegerTypeAlignmentEj'/>
+<fun r='_ZNK4llvm10DataLayout20getPrefTypeAlignmentEPNS_4TypeE'/>
+<fun r='_ZNK4llvm10DataLayout30getPreferredTypeAlignmentShiftEPNS_4TypeE'/>
+<fun r='_ZNK4llvm10DataLayout13getIntPtrTypeERNS_11LLVMContextEj'/>
+<fun r='_ZNK4llvm10DataLayout13getIntPtrTypeEPNS_4TypeE'/>
+<fun r='_ZNK4llvm10DataLayout23getSmallestLegalIntTypeERNS_11LLVMContextEj'/>
+<fun r='_ZNK4llvm10DataLayout22getLargestLegalIntTypeERNS_11LLVMContextE'/>
+<fun r='_ZNK4llvm10DataLayout32getLargestLegalIntTypeSizeInBitsEv'/>
+<fun r='_ZNK4llvm10DataLayout22getIndexedOffsetInTypeEPNS_4TypeENS_8ArrayRefIPNS_5ValueEEE'/>
+<fun r='_ZNK4llvm10DataLayout15getStructLayoutEPNS_10StructTypeE'/>
+<fun r='_ZNK4llvm10DataLayout21getPreferredAlignmentEPKNS_14GlobalVariableE'/>
+<fun r='_ZNK4llvm10DataLayout24getPreferredAlignmentLogEPKNS_14GlobalVariableE'/>
+<fun r='_ZNK4llvm10DataLayout17getTypeSizeInBitsEPNS_4TypeE'/>

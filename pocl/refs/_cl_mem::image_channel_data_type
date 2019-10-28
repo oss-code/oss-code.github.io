@@ -1,0 +1,10 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1016' type='cl_channel_type'/>
+<offset>1344</offset>
+<use f='pocl/lib/CL/clCreateImage.c' l='243' u='w' c='POclCreateImage'/>
+<use f='pocl/lib/CL/clEnqueueFillImage.c' l='91' u='r' c='POclEnqueueFillImage'/>
+<use f='pocl/lib/CL/clGetImageInfo.c' l='16' u='r' c='POclGetImageInfo'/>
+<use f='pocl/lib/CL/clGetImageInfo.c' l='16' u='r' c='POclGetImageInfo'/>
+<use f='pocl/lib/CL/devices/common.c' l='273' u='r' c='fill_dev_image_t'/>
+<use f='pocl/lib/CL/devices/common.c' l='275' u='r' c='fill_dev_image_t'/>
+<use f='pocl/lib/CL/pocl_img_buf_cpy.c' l='121' u='r' c='pocl_rect_copy'/>
+<use f='pocl/lib/CL/pocl_img_buf_cpy.c' l='121' u='r' c='pocl_rect_copy'/>

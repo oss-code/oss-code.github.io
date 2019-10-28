@@ -1,0 +1,51 @@
+<inh f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='54' c='llvm::TerminatorInst'/>
+<def f='include/llvm-6.0/llvm/IR/Instructions.h' l='3452' ll='3535'/>
+<size>64</size>
+<doc f='include/llvm-6.0/llvm/IR/Instructions.h' l='3445'>//===----------------------------------------------------------------------===//
+//                             IndirectBrInst Class
+//===----------------------------------------------------------------------===//
+
+//===---------------------------------------------------------------------------
+/// Indirect Branch Instruction.
+///</doc>
+<mbr r='llvm::IndirectBrInst::ReservedSpace' o='448' t='unsigned int'/>
+<fun r='_ZN4llvm14IndirectBrInstC1ERKS0_'/>
+<fun r='_ZN4llvm14IndirectBrInstC1EPNS_5ValueEjPNS_11InstructionE'/>
+<fun r='_ZN4llvm14IndirectBrInstC1EPNS_5ValueEjPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm14IndirectBrInstnwEm'/>
+<fun r='_ZN4llvm14IndirectBrInst4initEPNS_5ValueEj'/>
+<fun r='_ZN4llvm14IndirectBrInst12growOperandsEv'/>
+<fun r='_ZNK4llvm14IndirectBrInst9cloneImplEv'/>
+<fun r='_ZN4llvm14IndirectBrInst6CreateEPNS_5ValueEjPNS_11InstructionE'/>
+<fun r='_ZN4llvm14IndirectBrInst6CreateEPNS_5ValueEjPNS_10BasicBlockE'/>
+<fun r='_ZNK4llvm14IndirectBrInst10getOperandEj'/>
+<fun r='_ZN4llvm14IndirectBrInst10setOperandEjPNS_5ValueE'/>
+<fun r='_ZN4llvm14IndirectBrInst8op_beginEv'/>
+<fun r='_ZNK4llvm14IndirectBrInst8op_beginEv'/>
+<fun r='_ZN4llvm14IndirectBrInst6op_endEv'/>
+<fun r='_ZNK4llvm14IndirectBrInst6op_endEv'/>
+<fun r='_ZN4llvm14IndirectBrInst2OpEv'/>
+<fun r='_ZNK4llvm14IndirectBrInst2OpEv'/>
+<fun r='_ZNK4llvm14IndirectBrInst14getNumOperandsEv'/>
+<fun r='_ZN4llvm14IndirectBrInst10getAddressEv'/>
+<fun r='_ZNK4llvm14IndirectBrInst10getAddressEv'/>
+<fun r='_ZN4llvm14IndirectBrInst10setAddressEPNS_5ValueE'/>
+<fun r='_ZNK4llvm14IndirectBrInst18getNumDestinationsEv'/>
+<fun r='_ZN4llvm14IndirectBrInst14getDestinationEj'/>
+<fun r='_ZNK4llvm14IndirectBrInst14getDestinationEj'/>
+<fun r='_ZN4llvm14IndirectBrInst14addDestinationEPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm14IndirectBrInst17removeDestinationEj'/>
+<fun r='_ZNK4llvm14IndirectBrInst16getNumSuccessorsEv'/>
+<fun r='_ZNK4llvm14IndirectBrInst12getSuccessorEj'/>
+<fun r='_ZN4llvm14IndirectBrInst12setSuccessorEjPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm14IndirectBrInst7classofEPKNS_11InstructionE'/>
+<fun r='_ZN4llvm14IndirectBrInst7classofEPKNS_5ValueE'/>
+<fun r='_ZN4llvm14IndirectBrInst8op_beginEv'/>
+<fun r='_ZNK4llvm14IndirectBrInst8op_beginEv'/>
+<fun r='_ZN4llvm14IndirectBrInst6op_endEv'/>
+<fun r='_ZNK4llvm14IndirectBrInst6op_endEv'/>
+<fun r='_ZNK4llvm14IndirectBrInst10getOperandEj'/>
+<fun r='_ZN4llvm14IndirectBrInst10setOperandEjPNS_5ValueE'/>
+<fun r='_ZNK4llvm14IndirectBrInst14getNumOperandsEv'/>
+<fun r='_ZN4llvm14IndirectBrInst2OpEv'/>
+<fun r='_ZNK4llvm14IndirectBrInst2OpEv'/>

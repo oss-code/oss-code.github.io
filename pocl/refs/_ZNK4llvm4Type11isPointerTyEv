@@ -1,0 +1,15 @@
+<def f='include/llvm-6.0/llvm/IR/Type.h' l='221' type='bool llvm::Type::isPointerTy() const'/>
+<use f='include/llvm-6.0/llvm/IR/Type.h' l='224' u='c' c='_ZNK4llvm4Type18isPtrOrPtrVectorTyEv'/>
+<use f='include/llvm-6.0/llvm/IR/Type.h' l='249' u='c' c='_ZNK4llvm4Type17isSingleValueTypeEv'/>
+<use f='pocl/lib/llvmopencl/LLVMUtils.h' l='68' u='c' c='_ZN4pocl13is_image_typeERKN4llvm4TypeE'/>
+<use f='pocl/lib/llvmopencl/LLVMUtils.h' l='80' u='c' c='_ZN4pocl15is_sampler_typeERKN4llvm4TypeE'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1174' u='c' c='_ZNK4llvm16OperandBundleUse14operandHasAttrEjNS_9Attribute8AttrKindE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='297' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='613' u='c' c='_Z23convertPtrArgsToOffsetsPN4llvm6ModuleEPKcjPNS_14GlobalVariableE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='861' u='c' c='pocl_cuda_get_ptr_arg_alignment'/>
+<doc f='include/llvm-6.0/llvm/IR/Type.h' l='220'>/// True if this is an instance of PointerType.</doc>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1043' u='c' c='_ZL18isByValPtrArgumentRN4llvm8ArgumentE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1048' u='c' c='_ZL15getArgumentSizeRN4llvm8ArgumentE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1385' u='c' c='_ZN4pocl9Workgroup27createFastWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='86' u='c' c='_ZL23fixOpenCLimageArgumentsPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='115' u='c' c='_ZL24CloneFuncFixOpenCLImageTPN4llvm6ModuleEPNS_8FunctionE'/>

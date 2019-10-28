@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='449' type='llvm::FunctionPass * llvm::createInferAddressSpacesPass()'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='443'>//===----------------------------------------------------------------------===//
+//
+// InferAddressSpaces - Modify users of addrspacecast instructions with values
+// in the source address space if using the destination address space is slower
+// on the target.
+//</doc>

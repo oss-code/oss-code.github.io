@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/IR/Constants.h' l='230' ll='235' type='bool llvm::ConstantInt::isMinValue(bool isSigned) const'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='225'>/// This function will return true iff this constant represents the smallest
+  /// value that may be represented by this constant&apos;s type.
+  /// @returns true if this is the smallest value that may be represented by
+  /// this type.
+  /// @brief Determine if the value is minimal.</doc>

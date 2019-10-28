@@ -1,0 +1,10 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='1092' type='unsigned int LLVMGetPointerAddressSpace(LLVMTypeRef PointerTy)'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1197' u='c' c='_ZN4pocl9Workgroup32createArgBufferWorkgroupLauncherEPN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1225' u='c' c='_ZN4pocl9Workgroup32createArgBufferWorkgroupLauncherEPN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='1085'>/**
+ * Obtain the address space of a pointer type.
+ *
+ * This only works on types that represent pointers.
+ *
+ * @see llvm::PointerType::getAddressSpace()
+ */</doc>

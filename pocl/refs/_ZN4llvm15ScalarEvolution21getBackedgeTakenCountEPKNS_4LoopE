@@ -1,0 +1,11 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='738' type='const llvm::SCEV * llvm::ScalarEvolution::getBackedgeTakenCount(const llvm::Loop * L)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='728'>/// If the specified loop has a predictable backedge-taken count, return it,
+  /// otherwise return a SCEVCouldNotCompute object. The backedge-taken count is
+  /// the number of times the loop header will be branched to from within the
+  /// loop, assuming there are no abnormal exists like exception throws. This is
+  /// one less than the trip count of the loop, since it doesn&apos;t count the first
+  /// iteration, when the header is branched to from outside the loop.
+  ///
+  /// Note that it is not valid to call this method on a loop without a
+  /// loop-invariant backedge-taken count (see
+  /// hasLoopInvariantBackedgeTakenCount).</doc>

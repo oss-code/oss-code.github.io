@@ -1,0 +1,4 @@
+<dec f='pocl/lib/CL/pocl_intfn.h' l='97' macro='1' type='cl_int POclGetSupportedImageFormats(cl_context , cl_mem_flags , cl_mem_object_type , cl_uint , cl_image_format * , cl_uint * )'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='59' macro='1' u='a'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='59' macro='1' u='a'/>
+<def f='pocl/lib/CL/clGetSupportedImageFormats.c' l='28' macro='1' type='cl_int POclGetSupportedImageFormats(cl_context context, cl_mem_flags flags, cl_mem_object_type image_type, cl_uint num_entries, cl_image_format * image_formats, cl_uint * num_image_formats)'/>

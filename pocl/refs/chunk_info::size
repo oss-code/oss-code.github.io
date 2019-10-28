@@ -1,0 +1,12 @@
+<dec f='pocl/lib/CL/devices/bufalloc.h' l='115' type='size_t'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='84' u='r' c='print_chunk'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='103' u='r' c='chunk_slack'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='157' u='w' c='append_new_chunk'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='161' u='a' c='append_new_chunk'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='163' u='r' c='append_new_chunk'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='281' u='w' c='create_sub_chunk'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='321' u='w' c='coalesce_chunks'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='321' u='r' c='coalesce_chunks'/>
+<use f='pocl/lib/CL/devices/bufalloc.c' l='415' u='w' c='init_mem_region'/>
+<offset>128</offset>
+<doc f='pocl/lib/CL/devices/bufalloc.h' l='115'>/* size in bytes */</doc>

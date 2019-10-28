@@ -1,0 +1,21 @@
+<inh f='pocl/include/CL/cl2.hpp' l='1713' c='cl::detail::Wrapper'/>
+<def f='pocl/include/CL/cl2.hpp' l='5528' ll='5649'/>
+<size>8</size>
+<doc f='pocl/include/CL/cl2.hpp' l='5520'>/*! \brief Class interface for cl_sampler.
+ *
+ *  \note Copies of these objects are shallow, meaning that the copy will refer
+ *        to the same underlying cl_sampler as the original.  For details, see
+ *        clRetainSampler() and clReleaseSampler().
+ *
+ *  \see cl_sampler
+ */</doc>
+<fun r='_ZN2cl7SamplerC1Ev'/>
+<fun r='_ZN2cl7SamplerC1ERKNS_7ContextEjjjPi'/>
+<fun r='_ZN2cl7SamplerC1ERKP11_cl_samplerb'/>
+<fun r='_ZN2cl7SampleraSERKP11_cl_sampler'/>
+<fun r='_ZN2cl7SamplerC1ERKS0_'/>
+<fun r='_ZN2cl7SampleraSERKS0_'/>
+<fun r='_ZN2cl7SamplerC1EOS0_'/>
+<fun r='_ZN2cl7SampleraSEOS0_'/>
+<fun r='_ZNK2cl7Sampler7getInfoEjPT_'/>
+<fun r='_ZNK2cl7Sampler7getInfoEPi'/>

@@ -1,0 +1,7 @@
+<dec f='include/hwloc/bitmap.h' l='227' type='int hwloc_bitmap_iszero(hwloc_const_bitmap_t bitmap)'/>
+<use f='include/hwloc/cpuset.h' l='50' u='c' c='hwloc_cpuset_iszero'/>
+<use f='include/hwloc/helper.h' l='262' u='c' c='hwloc_get_child_covering_cpuset'/>
+<use f='include/hwloc/helper.h' l='286' u='c' c='hwloc_get_obj_covering_cpuset'/>
+<use f='include/hwloc/helper.h' l='928' u='c' c='hwloc_cpuset_to_nodeset'/>
+<use f='include/hwloc/helper.h' l='977' u='c' c='hwloc_cpuset_from_nodeset'/>
+<doc f='include/hwloc/bitmap.h' l='226'>/** \brief Test whether bitmap \p bitmap is empty */</doc>

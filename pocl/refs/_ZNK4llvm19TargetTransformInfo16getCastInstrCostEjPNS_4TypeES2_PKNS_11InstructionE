@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='724' type='int llvm::TargetTransformInfo::getCastInstrCost(unsigned int Opcode, llvm::Type * Dst, llvm::Type * Src, const llvm::Instruction * I = nullptr) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='721'>/// \return The expected cost of cast instructions, such as bitcast, trunc,
+  /// zext, etc. If there is an existing instruction that holds Opcode, it
+  /// may be passed in the &apos;I&apos; parameter.</doc>

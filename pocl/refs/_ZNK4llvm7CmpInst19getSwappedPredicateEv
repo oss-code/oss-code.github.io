@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='967' ll='969' type='llvm::CmpInst::Predicate llvm::CmpInst::getSwappedPredicate() const'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1229' u='c' c='_ZN4llvm8ICmpInst12swapOperandsEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='1336' u='c' c='_ZN4llvm8FCmpInst12swapOperandsEv'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='961'>/// For example, EQ-&gt;EQ, SLE-&gt;SGE, ULT-&gt;UGT,
+  ///              OEQ-&gt;OEQ, ULE-&gt;UGE, OLT-&gt;OGT, etc.
+  /// @returns the predicate that would be the result of exchanging the two
+  /// operands of the CmpInst instruction without changing the result
+  /// produced.
+  /// @brief Return the predicate as if the operands were swapped</doc>

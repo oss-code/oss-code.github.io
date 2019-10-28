@@ -1,0 +1,29 @@
+<inh f='include/llvm-6.0/llvm/Pass.h' l='285' c='llvm::FunctionPass'/>
+<def f='pocl/lib/llvmopencl/BarrierTailReplication.h' l='41' ll='82'/>
+<size>56</size>
+<smbr r='pocl::BarrierTailReplication::ID' t='char'/>
+<fun r='_ZN4pocl22BarrierTailReplicationC1Ev'/>
+<fun r='_ZNK4pocl22BarrierTailReplication16getAnalysisUsageERN4llvm13AnalysisUsageE'/>
+<fun r='_ZN4pocl22BarrierTailReplication13runOnFunctionERN4llvm8FunctionE'/>
+<mbr r='pocl::BarrierTailReplication::DT' o='256' t='llvm::DominatorTree *'/>
+<mbr r='pocl::BarrierTailReplication::DTP' o='320' t='llvm::DominatorTreeWrapperPass *'/>
+<mbr r='pocl::BarrierTailReplication::LI' o='384' t='llvm::LoopInfoWrapperPass *'/>
+<fun r='_ZN4pocl22BarrierTailReplication15ProcessFunctionERN4llvm8FunctionE'/>
+<fun r='_ZN4pocl22BarrierTailReplication15FindBarriersDFSEPN4llvm10BasicBlockERSt3setIS3_St4lessIS3_ESaIS3_EE'/>
+<fun r='_ZN4pocl22BarrierTailReplication24ReplicateJoinedSubgraphsEPN4llvm10BasicBlockES3_RSt3setIS3_St4lessIS3_ESaIS3_EE'/>
+<fun r='_ZN4pocl22BarrierTailReplication17ReplicateSubgraphEPN4llvm10BasicBlockEPNS1_8FunctionE'/>
+<fun r='_ZN4pocl22BarrierTailReplication12FindSubgraphERSt6vectorIPN4llvm10BasicBlockESaIS4_EES4_'/>
+<fun r='_ZN4pocl22BarrierTailReplication20ReplicateBasicBlocksERSt6vectorIPN4llvm10BasicBlockESaIS4_EERNS2_8ValueMapIPKNS2_5ValueENS2_14WeakTrackingVHENS2_14V12045754'/>
+<fun r='_ZN4pocl22BarrierTailReplication16UpdateReferencesERKSt6vectorIPN4llvm10BasicBlockESaIS4_EERNS2_8ValueMapIPKNS2_5ValueENS2_14WeakTrackingVHENS2_14Valu1035321'/>
+<fun r='_ZN4pocl22BarrierTailReplication11CleanupPHIsEPN4llvm10BasicBlockE'/>
+<smbr r='pocl::BarrierTailReplication::ID' t='char'/>
+<fun r='_ZNK4pocl22BarrierTailReplication16getAnalysisUsageERN4llvm13AnalysisUsageE'/>
+<fun r='_ZN4pocl22BarrierTailReplication13runOnFunctionERN4llvm8FunctionE'/>
+<fun r='_ZN4pocl22BarrierTailReplication15ProcessFunctionERN4llvm8FunctionE'/>
+<fun r='_ZN4pocl22BarrierTailReplication15FindBarriersDFSEPN4llvm10BasicBlockERSt3setIS3_St4lessIS3_ESaIS3_EE'/>
+<fun r='_ZN4pocl22BarrierTailReplication24ReplicateJoinedSubgraphsEPN4llvm10BasicBlockES3_RSt3setIS3_St4lessIS3_ESaIS3_EE'/>
+<fun r='_ZN4pocl22BarrierTailReplication11CleanupPHIsEPN4llvm10BasicBlockE'/>
+<fun r='_ZN4pocl22BarrierTailReplication17ReplicateSubgraphEPN4llvm10BasicBlockEPNS1_8FunctionE'/>
+<fun r='_ZN4pocl22BarrierTailReplication12FindSubgraphERSt6vectorIPN4llvm10BasicBlockESaIS4_EES4_'/>
+<fun r='_ZN4pocl22BarrierTailReplication20ReplicateBasicBlocksERSt6vectorIPN4llvm10BasicBlockESaIS4_EERNS2_8ValueMapIPKNS2_5ValueENS2_14WeakTrackingVHENS2_14V12045754'/>
+<fun r='_ZN4pocl22BarrierTailReplication16UpdateReferencesERKSt6vectorIPN4llvm10BasicBlockESaIS4_EERNS2_8ValueMapIPKNS2_5ValueENS2_14WeakTrackingVHENS2_14Valu1035321'/>

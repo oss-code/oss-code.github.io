@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='257' type='void llvm::CallGraphNode::removeAnyCallEdgeTo(llvm::CallGraphNode * Callee)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='252'>/// \brief Removes all call edges from this node to the specified callee
+  /// function.
+  ///
+  /// This takes more time to execute than removeCallEdgeTo, so it should not
+  /// be used unless necessary.</doc>

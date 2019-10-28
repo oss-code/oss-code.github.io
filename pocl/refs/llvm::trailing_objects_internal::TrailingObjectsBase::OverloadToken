@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/Support/TrailingObjects.h' l='88'/>
+<doc f='include/llvm-6.0/llvm/Support/TrailingObjects.h' l='83'>/// OverloadToken&apos;s purpose is to allow specifying function overloads
+  /// for different types, without actually taking the types as
+  /// parameters. (Necessary because member function templates cannot
+  /// be specialized, so overloads must be used instead of
+  /// specialization.)</doc>

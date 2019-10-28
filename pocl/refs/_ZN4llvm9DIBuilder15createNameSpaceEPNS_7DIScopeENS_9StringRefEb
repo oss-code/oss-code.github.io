@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='646' type='llvm::DINamespace * llvm::DIBuilder::createNameSpace(llvm::DIScope * Scope, llvm::StringRef Name, bool ExportSymbols)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='641'>/// This creates new descriptor for a namespace with the specified
+    /// parent scope.
+    /// \param Scope       Namespace scope
+    /// \param Name        Name of this namespace
+    /// \param ExportSymbols True for C++ inline namespaces.</doc>

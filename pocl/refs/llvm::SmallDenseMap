@@ -1,0 +1,30 @@
+<def f='include/llvm-6.0/llvm/ADT/DenseMap.h' l='802' ll='1104'/>
+<mbr r='llvm::SmallDenseMap::Small' t='unsigned int'/>
+<mbr r='llvm::SmallDenseMap::NumEntries' t='unsigned int'/>
+<mbr r='llvm::SmallDenseMap::NumTombstones' t='unsigned int'/>
+<mbr r='llvm::SmallDenseMap::storage' t='AlignedCharArrayUnion&lt;BucketT [InlineBuckets], llvm::SmallDenseMap::LargeRep&gt;'/>
+<fun r='_ZN4llvm13SmallDenseMapC1Ej'/>
+<fun r='_ZN4llvm13SmallDenseMapC1ERKNS_13SmallDenseMapIT_T0_XT1_ET2_T3_EE'/>
+<fun r='_ZN4llvm13SmallDenseMapC1EONS_13SmallDenseMapIT_T0_XT1_ET2_T3_EE'/>
+<fun r='_ZN4llvm13SmallDenseMapC1ERKT_S3_'/>
+<fun r='_ZN4llvm13SmallDenseMapD1Ev'/>
+<fun r='_ZN4llvm13SmallDenseMap4swapERNS_13SmallDenseMapIT_T0_XT1_ET2_T3_EE'/>
+<fun r='_ZN4llvm13SmallDenseMapaSERKNS_13SmallDenseMapIT_T0_XT1_ET2_T3_EE'/>
+<fun r='_ZN4llvm13SmallDenseMapaSEONS_13SmallDenseMapIT_T0_XT1_ET2_T3_EE'/>
+<fun r='_ZN4llvm13SmallDenseMap8copyFromERKNS_13SmallDenseMapIT_T0_XT1_ET2_T3_EE'/>
+<fun r='_ZN4llvm13SmallDenseMap4initEj'/>
+<fun r='_ZN4llvm13SmallDenseMap4growEj'/>
+<fun r='_ZN4llvm13SmallDenseMap16shrink_and_clearEv'/>
+<fun r='_ZNK4llvm13SmallDenseMap13getNumEntriesEv'/>
+<fun r='_ZN4llvm13SmallDenseMap13setNumEntriesEj'/>
+<fun r='_ZNK4llvm13SmallDenseMap16getNumTombstonesEv'/>
+<fun r='_ZN4llvm13SmallDenseMap16setNumTombstonesEj'/>
+<fun r='_ZNK4llvm13SmallDenseMap16getInlineBucketsEv'/>
+<fun r='_ZN4llvm13SmallDenseMap16getInlineBucketsEv'/>
+<fun r='_ZNK4llvm13SmallDenseMap11getLargeRepEv'/>
+<fun r='_ZN4llvm13SmallDenseMap11getLargeRepEv'/>
+<fun r='_ZNK4llvm13SmallDenseMap10getBucketsEv'/>
+<fun r='_ZN4llvm13SmallDenseMap10getBucketsEv'/>
+<fun r='_ZNK4llvm13SmallDenseMap13getNumBucketsEv'/>
+<fun r='_ZN4llvm13SmallDenseMap17deallocateBucketsEv'/>
+<fun r='_ZN4llvm13SmallDenseMap15allocateBucketsEj'/>

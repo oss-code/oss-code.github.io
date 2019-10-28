@@ -1,0 +1,20 @@
+<def f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='144' ll='159'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='134'>//===----------------------------------------------------------------------===//
+// PMStack
+//
+/// PMStack - This class implements a stack data structure of PMDataManager
+/// pointers.
+///
+/// Top level pass managers (see PassManager.cpp) maintain active Pass Managers
+/// using PMStack. Each Pass implements assignPassManager() to connect itself
+/// with appropriate manager. assignPassManager() walks PMStack to find
+/// suitable manager.</doc>
+<fun r='_ZNK4llvm7PMStack5beginEv'/>
+<fun r='_ZNK4llvm7PMStack3endEv'/>
+<fun r='_ZN4llvm7PMStack3popEv'/>
+<fun r='_ZNK4llvm7PMStack3topEv'/>
+<fun r='_ZN4llvm7PMStack4pushEPNS_13PMDataManagerE'/>
+<fun r='_ZNK4llvm7PMStack5emptyEv'/>
+<fun r='_ZNK4llvm7PMStack4dumpEv'/>
+<mbr r='llvm::PMStack::S' o='0' t='std::vector&lt;PMDataManager *&gt;'/>

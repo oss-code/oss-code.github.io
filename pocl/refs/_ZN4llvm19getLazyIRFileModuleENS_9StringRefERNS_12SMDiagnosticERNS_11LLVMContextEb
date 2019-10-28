@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IRReader/IRReader.h' l='34' type='std::unique_ptr&lt;Module&gt; llvm::getLazyIRFileModule(llvm::StringRef Filename, llvm::SMDiagnostic &amp; Err, llvm::LLVMContext &amp; Context, bool ShouldLazyLoadMetadata = false)'/>
+<doc f='include/llvm-6.0/llvm/IRReader/IRReader.h' l='28'>/// If the given file holds a bitcode image, return a Module
+/// for it which does lazy deserialization of function bodies.  Otherwise,
+/// attempt to parse it as LLVM Assembly and return a fully populated
+/// Module. The ShouldLazyLoadMetadata flag is passed down to the bitcode
+/// reader to optionally enable lazy metadata loading.</doc>

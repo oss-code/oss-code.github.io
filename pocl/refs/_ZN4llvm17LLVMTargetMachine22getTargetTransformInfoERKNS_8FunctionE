@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Target/TargetMachine.h' l='295' type='llvm::TargetTransformInfo llvm::LLVMTargetMachine::getTargetTransformInfo(const llvm::Function &amp; F)'/>
+<doc f='include/llvm-6.0/llvm/Target/TargetMachine.h' l='291'>/// \brief Get a TargetTransformInfo implementation for the target.
+  ///
+  /// The TTI returned uses the common code generator to answer queries about
+  /// the IR.</doc>

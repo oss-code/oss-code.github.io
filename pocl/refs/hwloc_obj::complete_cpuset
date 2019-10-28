@@ -1,0 +1,14 @@
+<dec f='include/hwloc.h' l='407' type='hwloc_cpuset_t'/>
+<use f='include/hwloc/helper.h' l='784' u='r' c='hwloc_topology_get_complete_cpuset'/>
+<offset>1344</offset>
+<doc f='include/hwloc.h' l='407'>/**&lt; \brief The complete CPU set of logical processors of this object,
+                                          *
+                                          * This includes not only the same as the cpuset field, but also the CPUs for
+                                          * which topology information is unknown or incomplete, and the CPUs that are
+                                          * ignored when the ::HWLOC_TOPOLOGY_FLAG_WHOLE_SYSTEM flag is not set.
+                                          * Thus no corresponding PU object may be found in the topology, because the
+                                          * precise position is undefined. It is however known that it would be somewhere
+                                          * under this object.
+                                          *
+                                          * \note Its value must not be changed, hwloc_bitmap_dup() must be used instead.
+                                          */</doc>

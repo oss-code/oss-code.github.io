@@ -1,0 +1,7 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2324' type='LLVMBasicBlockRef LLVMAppendBasicBlock(LLVMValueRef Fn, const char * Name)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2318'>/**
+ * Append a basic block to the end of a function using the global
+ * context.
+ *
+ * @see llvm::BasicBlock::Create()
+ */</doc>

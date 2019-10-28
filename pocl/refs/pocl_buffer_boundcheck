@@ -1,0 +1,7 @@
+<dec f='pocl/lib/CL/pocl_util.h' l='117' type='int pocl_buffer_boundcheck(cl_mem buffer, size_t offset, size_t size)'/>
+<doc f='pocl/lib/CL/pocl_util.h' l='116'>/* does several sanity checks on buffer &amp; given memory region */</doc>
+<use f='pocl/lib/CL/clEnqueueFillBuffer.c' l='57' u='c' c='POclEnqueueFillBuffer'/>
+<use f='pocl/lib/CL/clEnqueueMapBuffer.c' l='70' u='c' c='POclEnqueueMapBuffer'/>
+<use f='pocl/lib/CL/clEnqueueReadBuffer.c' l='62' u='c' c='POclEnqueueReadBuffer'/>
+<use f='pocl/lib/CL/clEnqueueWriteBuffer.c' l='62' u='c' c='POclEnqueueWriteBuffer'/>
+<def f='pocl/lib/CL/pocl_util.c' l='642' ll='652' type='int pocl_buffer_boundcheck(cl_mem buffer, size_t offset, size_t size)'/>

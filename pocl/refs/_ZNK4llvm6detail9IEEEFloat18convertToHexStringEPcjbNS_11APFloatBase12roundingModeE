@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/ADT/APFloat.h' l='309' type='unsigned int llvm::detail::IEEEFloat::convertToHexString(char * dst, unsigned int hexDigits, bool upperCase, llvm::APFloatBase::roundingMode ) const'/>
+<use f='include/llvm-6.0/llvm/ADT/APFloat.h' l='1140' u='c' c='_ZNK4llvm7APFloat18convertToHexStringEPcjbNS_11APFloatBase12roundingModeE'/>
+<doc f='include/llvm-6.0/llvm/ADT/APFloat.h' l='306'>/// Write out a hexadecimal representation of the floating point value to DST,
+  /// which must be of sufficient size, in the C99 form [-]0xh.hhhhp[+-]d.
+  /// Return the number of characters written, excluding the terminating NUL.</doc>

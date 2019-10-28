@@ -1,0 +1,23 @@
+<def f='pocl/include/CL/cl2.hpp' l='3000' ll='3011' type='typename detail::param_traits&lt;detail::cl_context_info, name&gt;::param_type cl::Context::getInfo(cl_int * err = __null) const'/>
+<use f='pocl/include/CL/cl2.hpp' l='3081' u='c' c='_ZN2cl6Device11makeDefaultEv'/>
+<use f='pocl/include/CL/cl2.hpp' l='6960' u='c' c='_ZN2cl12CommandQueueC1EmPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='7026' u='c' c='_ZN2cl12CommandQueueC1ENS_15QueuePropertiesEPi'/>
+<doc f='pocl/include/CL/cl2.hpp' l='2999'>//! \brief Wrapper for clGetContextInfo() that returns by value.</doc>
+<use f='pocl/tests/regression/test_autolocals_in_constexprs.cpp' l='67' u='c' c='main'/>
+<use f='pocl/tests/regression/test_barrier_before_return.cpp' l='80' u='c' c='main'/>
+<use f='pocl/tests/regression/test_barrier_between_for_loops.cpp' l='96' u='c' c='main'/>
+<use f='pocl/tests/regression/test_constant_array.cpp' l='84' u='c' c='main'/>
+<use f='pocl/tests/regression/test_early_return.cpp' l='75' u='c' c='main'/>
+<use f='pocl/tests/regression/test_for_with_var_iteration_count.cpp' l='83' u='c' c='main'/>
+<use f='pocl/tests/regression/test_fors_with_var_iteration_counts.cpp' l='87' u='c' c='main'/>
+<use f='pocl/tests/regression/test_id_dependent_computation.cpp' l='95' u='c' c='main'/>
+<use f='pocl/tests/regression/test_infinite_loop.cpp' l='79' u='c' c='main'/>
+<use f='pocl/tests/regression/test_locals.cpp' l='77' u='c' c='main'/>
+<use f='pocl/tests/regression/test_loop_phi_replication.cpp' l='81' u='c' c='main'/>
+<use f='pocl/tests/regression/test_multi_level_loops_with_barriers.cpp' l='83' u='c' c='main'/>
+<use f='pocl/tests/regression/test_null_arg.cpp' l='72' u='c' c='main'/>
+<use f='pocl/tests/regression/test_setargs.cpp' l='63' u='c' c='main'/>
+<use f='pocl/tests/regression/test_simple_for_with_a_barrier.cpp' l='82' u='c' c='main'/>
+<use f='pocl/tests/regression/test_structs_as_args.cpp' l='147' u='c' c='main'/>
+<use f='pocl/tests/regression/test_undominated_variable.cpp' l='85' u='c' c='main'/>
+<use f='pocl/tests/regression/test_vectors_as_args.cpp' l='108' u='c' c='main'/>

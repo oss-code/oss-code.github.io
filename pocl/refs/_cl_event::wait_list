@@ -1,0 +1,15 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1165' type='event_node *volatile'/>
+<offset>896</offset>
+<use f='pocl/lib/CL/pocl_util.h' l='151' u='r' c='pocl_command_is_ready'/>
+<use f='pocl/lib/CL/devices/common.c' l='764' u='r' c='pocl_broadcast'/>
+<use f='pocl/lib/CL/devices/common.c' l='768' c='pocl_broadcast'/>
+<use f='pocl/lib/CL/devices/common.c' l='768' u='r' c='pocl_broadcast'/>
+<use f='pocl/lib/CL/devices/common.c' l='768' u='w' c='pocl_broadcast'/>
+<use f='pocl/lib/CL/devices/common.c' l='768' u='r' c='pocl_broadcast'/>
+<use f='pocl/lib/CL/devices/common.c' l='768' u='r' c='pocl_broadcast'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1038' u='r' c='pocl_cuda_submit_node'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1421' u='r' c='pocl_cuda_wait_event_recurse'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1422' u='r' c='pocl_cuda_wait_event_recurse'/>
+<use f='pocl/lib/CL/pocl_util.c' l='431' u='r' c='pocl_create_event_sync'/>
+<use f='pocl/lib/CL/pocl_util.c' l='447' u='r' c='pocl_create_event_sync'/>
+<use f='pocl/lib/CL/pocl_util.c' l='447' u='w' c='pocl_create_event_sync'/>

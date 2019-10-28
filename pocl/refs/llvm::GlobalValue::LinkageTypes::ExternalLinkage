@@ -1,0 +1,13 @@
+<dec f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='49' type='0'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='135' c='_ZNK4llvm11GlobalValue14mayBeDerefinedEv'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='283' u='r' c='_ZN4llvm11GlobalValue17isExternalLinkageENS0_12LinkageTypesE'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='341' c='_ZN4llvm11GlobalValue21isInterposableLinkageENS0_12LinkageTypesE'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='556' u='r' c='_ZN4llvm8Function10deleteBodyEv'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='717' u='r' c='_ZL15fixLocalMemArgsPN4llvm6ModuleEPKc'/>
+<doc f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='49'>///&lt; Externally visible function</doc>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='216' u='r' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>
+<use f='pocl/lib/llvmopencl/Flatten.cc' l='95' u='r' c='_ZN12_GLOBAL__N_17Flatten11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='654' u='r' c='_ZN4pocl14ParallelRegion12InjectPrintFEPN4llvm11InstructionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIPNS1_5ValueESaISC_EE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='641' u='r' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='643' u='r' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='393' u='r' c='_Z4linkPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>

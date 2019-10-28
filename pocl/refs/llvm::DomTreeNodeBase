@@ -1,0 +1,28 @@
+<def f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='54' ll='164'/>
+<def f='include/llvm-6.0/llvm/IR/Dominators.h' l='36'/>
+<size>56</size>
+<doc f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='53'>/// \brief Base class for the actual dominator tree node.</doc>
+<mbr r='llvm::DomTreeNodeBase::TheBB' t='NodeT *'/>
+<mbr r='llvm::DomTreeNodeBase::IDom' t='DomTreeNodeBase&lt;NodeT&gt; *'/>
+<mbr r='llvm::DomTreeNodeBase::Level' t='unsigned int'/>
+<mbr r='llvm::DomTreeNodeBase::Children' t='std::vector&lt;DomTreeNodeBase&lt;NodeT&gt; *&gt;'/>
+<mbr r='llvm::DomTreeNodeBase::DFSNumIn' t='unsigned int'/>
+<mbr r='llvm::DomTreeNodeBase::DFSNumOut' t='unsigned int'/>
+<fun r='_ZN4llvm15DomTreeNodeBaseC1EPT_PNS_15DomTreeNodeBaseIS1_EE'/>
+<fun r='_ZN4llvm15DomTreeNodeBase5beginEv'/>
+<fun r='_ZN4llvm15DomTreeNodeBase3endEv'/>
+<fun r='_ZNK4llvm15DomTreeNodeBase5beginEv'/>
+<fun r='_ZNK4llvm15DomTreeNodeBase3endEv'/>
+<fun r='_ZNK4llvm15DomTreeNodeBase8getBlockEv'/>
+<fun r='_ZNK4llvm15DomTreeNodeBase7getIDomEv'/>
+<fun r='_ZNK4llvm15DomTreeNodeBase8getLevelEv'/>
+<fun r='_ZNK4llvm15DomTreeNodeBase11getChildrenEv'/>
+<fun r='_ZN4llvm15DomTreeNodeBase8addChildESt10unique_ptrINS_15DomTreeNodeBaseIT_EESt14default_deleteIS5_EE'/>
+<fun r='_ZNK4llvm15DomTreeNodeBase14getNumChildrenEv'/>
+<fun r='_ZN4llvm15DomTreeNodeBase16clearAllChildrenEv'/>
+<fun r='_ZNK4llvm15DomTreeNodeBase7compareEPKNS_15DomTreeNodeBaseIT_EE'/>
+<fun r='_ZN4llvm15DomTreeNodeBase7setIDomEPNS_15DomTreeNodeBaseIT_EE'/>
+<fun r='_ZNK4llvm15DomTreeNodeBase11getDFSNumInEv'/>
+<fun r='_ZNK4llvm15DomTreeNodeBase12getDFSNumOutEv'/>
+<fun r='_ZNK4llvm15DomTreeNodeBase11DominatedByEPKNS_15DomTreeNodeBaseIT_EE'/>
+<fun r='_ZN4llvm15DomTreeNodeBase11UpdateLevelEv'/>

@@ -1,0 +1,16 @@
+<dec f='pocl/lib/llvmopencl/PHIsToAllocas.h' l='48' type='llvm::Instruction * pocl::PHIsToAllocas::BreakPHIToAllocas(llvm::PHINode * phi)'/>
+<use f='pocl/lib/llvmopencl/PHIsToAllocas.cc' l='89' u='c' c='_ZN4pocl13PHIsToAllocas13runOnFunctionERN4llvm8FunctionE'/>
+<def f='pocl/lib/llvmopencl/PHIsToAllocas.cc' l='108' ll='160' type='llvm::Instruction * pocl::PHIsToAllocas::BreakPHIToAllocas(llvm::PHINode * phi)'/>
+<doc f='pocl/lib/llvmopencl/PHIsToAllocas.cc' l='95'>/**
+ * Convert a PHI to a read from a stack value and all the sources to
+ * writes to the same stack value.
+ *
+ * Used to fix context save/restore issues with regions with PHI nodes in the
+ * entry node (usually due to the use of work group scope variables such as
+ * B-loop iteration variables). In case of PHI nodes at region entries, we cannot 
+ * just insert the context restore code because it is assumed there are no
+ * non-phi Instructions before PHIs which the context restore
+ * code constitutes to. Secondly, in case the PHINode is at a
+ * region entry (e.g. a B-Loop) adding new basic blocks before it would 
+ * break the assumption of single entry regions.
+ */</doc>

@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='782' type='llvm::ModRefInfo llvm::AAResults::Concept::getModRefInfo(llvm::ImmutableCallSite CS, const llvm::MemoryLocation &amp; Loc)'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='833' c='_ZN4llvm9AAResults5Model13getModRefInfoENS_17ImmutableCallSiteERKNS_14MemoryLocationE'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='780'>/// getModRefInfo (for call sites) - Return information about whether
+  /// a particular call site modifies or reads the specified memory location.</doc>

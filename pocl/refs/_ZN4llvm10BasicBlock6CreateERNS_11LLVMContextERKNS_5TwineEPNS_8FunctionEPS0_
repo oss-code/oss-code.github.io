@@ -1,0 +1,15 @@
+<def f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='101' ll='105' type='static llvm::BasicBlock * llvm::BasicBlock::Create(llvm::LLVMContext &amp; Context, const llvm::Twine &amp; Name = &quot;&quot;, llvm::Function * Parent = nullptr, llvm::BasicBlock * InsertBefore = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='96'>/// \brief Creates a new BasicBlock.
+  ///
+  /// If the Parent parameter is specified, the basic block is automatically
+  /// inserted at either the end of the function (if InsertBefore is 0), or
+  /// before the specified basic block.</doc>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='341' u='c' c='_ZN4pocl22BarrierTailReplication20ReplicateBasicBlocksERSt6vectorIPN4llvm10BasicBlockESaIS4_EERNS2_8ValueMapIPKNS2_5ValueENS2_14WeakTrackingVHENS2_14V12045754'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='263' u='c' c='_ZN4pocl14ParallelRegion5purgeEv'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='672' u='c' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='961' u='c' c='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1368' u='c' c='_ZN4pocl9Workgroup27createFastWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='204' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='207' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='210' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='1163' u='c' c='_ZN4pocl13WorkitemLoops14AppendIncBlockEPN4llvm10BasicBlockEPNS1_5ValueE'/>

@@ -1,0 +1,11 @@
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1533' u='c' c='_ZNK4llvm5APInt16getMinSignedBitsEv'/>
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='1591' ll='1595' type='unsigned int llvm::APInt::countLeadingOnes() const'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1600' u='c' c='_ZNK4llvm5APInt14getNumSignBitsEv'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='1583'>/// \brief Count the number of leading one bits.
+  ///
+  /// This function is an APInt version of the countLeadingOnes
+  /// functions in MathExtras.h. It counts the number of ones from the most
+  /// significant bit to the first zero bit.
+  ///
+  /// \returns 0 if the high order bit is not set, otherwise returns the number
+  /// of 1 bits from the most significant to the least</doc>

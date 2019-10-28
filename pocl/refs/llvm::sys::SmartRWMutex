@@ -1,0 +1,11 @@
+<def f='include/llvm-6.0/llvm/Support/RWMutex.h' l='88' ll='140'/>
+<mbr r='llvm::sys::SmartRWMutex::impl' t='llvm::sys::RWMutexImpl'/>
+<mbr r='llvm::sys::SmartRWMutex::readers' t='unsigned int'/>
+<mbr r='llvm::sys::SmartRWMutex::writers' t='unsigned int'/>
+<fun r='_ZN4llvm3sys12SmartRWMutexC1Ev'/>
+<fun r='_ZN4llvm3sys12SmartRWMutexC1ERKNS0_12SmartRWMutexIXT_EEE'/>
+<fun r='_ZN4llvm3sys12SmartRWMutexaSERKNS0_12SmartRWMutexIXT_EEE'/>
+<fun r='_ZN4llvm3sys12SmartRWMutex11lock_sharedEv'/>
+<fun r='_ZN4llvm3sys12SmartRWMutex13unlock_sharedEv'/>
+<fun r='_ZN4llvm3sys12SmartRWMutex4lockEv'/>
+<fun r='_ZN4llvm3sys12SmartRWMutex6unlockEv'/>

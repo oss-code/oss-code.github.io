@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/IR/Module.h' l='368' ll='370' type='llvm::GlobalVariable * llvm::Module::getGlobalVariable(llvm::StringRef Name) const'/>
+<doc f='include/llvm-6.0/llvm/IR/Module.h' l='360'>/// @}
+/// @name Global Variable Accessors
+/// @{
+
+  /// Look up the specified global variable in the module symbol table. If it
+  /// does not exist, return null. If AllowInternal is set to true, this
+  /// function will return types that have InternalLinkage. By default, these
+  /// types are not returned.</doc>

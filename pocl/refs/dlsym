@@ -1,0 +1,5 @@
+<dec f='include/dlfcn.h' l='64' type='void * dlsym(void *restrict __handle, const char *restrict __name)'/>
+<use f='pocl/lib/CL/devices/common.c' l='1095' u='c' c='pocl_check_kernel_dlhandle_cache'/>
+<use f='pocl/lib/CL/devices/common.c' l='1103' u='c' c='pocl_check_kernel_dlhandle_cache'/>
+<doc f='include/dlfcn.h' l='62'>/* Find the run-time address in the shared object HANDLE refers to
+   of the symbol called NAME.  */</doc>

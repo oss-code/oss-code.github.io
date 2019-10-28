@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/devices/common.h' l='67' type='void pocl_init_cpu_device_infos(cl_device_id dev)'/>
+<def f='pocl/lib/CL/devices/basic/basic.c' l='180' ll='376' type='void pocl_init_cpu_device_infos(cl_device_id dev)'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='413' u='c' c='pocl_basic_init'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='173' u='c' c='pocl_cuda_init'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='150' u='c' c='pocl_pthread_init'/>

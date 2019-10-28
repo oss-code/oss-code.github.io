@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Transforms/IPO/AlwaysInliner.h' l='36' type='llvm::Pass * llvm::createAlwaysInlinerLegacyPass(bool InsertLifetime = true)'/>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='105' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>
+<doc f='include/llvm-6.0/llvm/Transforms/IPO/AlwaysInliner.h' l='34'>/// Create a legacy pass manager instance of a pass to inline and remove
+/// functions marked as &quot;always_inline&quot;.</doc>

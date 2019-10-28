@@ -1,0 +1,20 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='641' type='cl_uint'/>
+<offset>544</offset>
+<use f='pocl/lib/CL/clCreateSubDevices.c' l='86' u='r' c='POclCreateSubDevices'/>
+<use f='pocl/lib/CL/clCreateSubDevices.c' l='91' u='r' c='POclCreateSubDevices'/>
+<use f='pocl/lib/CL/clCreateSubDevices.c' l='108' u='r' c='POclCreateSubDevices'/>
+<use f='pocl/lib/CL/clCreateSubDevices.c' l='146' u='w' c='POclCreateSubDevices'/>
+<use f='pocl/lib/CL/clCreateSubDevices.c' l='153' u='r' c='POclCreateSubDevices'/>
+<use f='pocl/lib/CL/clCreateSubDevices.c' l='167' u='r' c='POclCreateSubDevices'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='390' u='r' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/clGetDeviceInfo.c' l='73' u='r' c='POclGetDeviceInfo'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='448' u='w' c='pocl_basic_init'/>
+<use f='pocl/lib/CL/devices/cpuinfo.c' l='420' u='r' c='pocl_cpuinfo_detect_device_info'/>
+<use f='pocl/lib/CL/devices/cpuinfo.c' l='422' u='w' c='pocl_cpuinfo_detect_device_info'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='233' u='w' c='pocl_cuda_init'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='167' u='r' c='pocl_pthread_init'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='168' u='r' c='pocl_pthread_init'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='171' u='w' c='pocl_pthread_init'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='188' u='r' c='pocl_pthread_init'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='88' u='r' c='pthread_scheduler_init'/>
+<use f='pocl/lib/CL/devices/topology/pocl_topology.c' l='128' u='w' c='pocl_topology_detect_device_info'/>

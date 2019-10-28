@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='408' type='BlockT * llvm::RegionBase::getExitingBlock() const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='403'>/// @brief Return the first block of this region&apos;s single exit edge,
+  ///        if existing.
+  ///
+  /// @return The BasicBlock starting this region&apos;s single exit edge,
+  ///         else NULL.</doc>

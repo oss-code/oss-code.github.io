@@ -1,0 +1,9 @@
+<def f='include/c++/7/bits/forward_list.h' l='550' ll='553' type='void std::forward_list::forward_list&lt;_Tp, _Alloc&gt;(std::initializer_list&lt;_Tp&gt; __il, const _Alloc &amp; __al = _Alloc())'/>
+<doc f='include/c++/7/bits/forward_list.h' l='542'>/**
+       *  @brief  Builds a %forward_list from an initializer_list
+       *  @param  __il  An initializer_list of value_type.
+       *  @param  __al  An allocator object.
+       *
+       *  Create a %forward_list consisting of copies of the elements
+       *  in the initializer_list @a __il.  This is linear in __il.size().
+       */</doc>

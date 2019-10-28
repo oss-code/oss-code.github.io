@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='179' type='llvm::DIBasicType * llvm::DIBuilder::createBasicType(llvm::StringRef Name, uint64_t SizeInBits, unsigned int Encoding)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='174'>/// Create debugging information entry for a basic
+    /// type.
+    /// \param Name        Type name.
+    /// \param SizeInBits  Size of the type.
+    /// \param Encoding    DWARF encoding code, e.g. dwarf::DW_ATE_float.</doc>

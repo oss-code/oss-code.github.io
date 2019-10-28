@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='947' ll='951' type='void llvm::MDNode::replaceAllUsesWith(llvm::Metadata * MD)'/>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='944'>/// \brief RAUW a temporary.
+  ///
+  /// \pre \a isTemporary() must be \c true.</doc>
+<use f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='788' u='c' c='_ZN4llvm9DIBuilder16replaceTemporaryEOSt10unique_ptrINS_6MDNodeENS_17TempMDNodeDeleterEEPT_'/>

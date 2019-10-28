@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='329' ll='334'/>
+<size>4</size>
+<doc f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='327'>/// Function attribute flags. Used to track if a function accesses memory,
+  /// recurses or aliases.</doc>
+<mbr r='llvm::FunctionSummary::FFlags::ReadNone' o='0' t='unsigned int'/>
+<mbr r='llvm::FunctionSummary::FFlags::ReadOnly' o='1' t='unsigned int'/>
+<mbr r='llvm::FunctionSummary::FFlags::NoRecurse' o='2' t='unsigned int'/>
+<mbr r='llvm::FunctionSummary::FFlags::ReturnDoesNotAlias' o='3' t='unsigned int'/>

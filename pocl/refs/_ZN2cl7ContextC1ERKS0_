@@ -1,0 +1,6 @@
+<def f='pocl/include/CL/cl2.hpp' l='2914' type='void cl::Context::Context(const cl::Context &amp; ctx)'/>
+<use f='pocl/include/CL/cl2.hpp' l='2951' u='c' c='_ZN2cl7Context10getDefaultEPi'/>
+<use f='pocl/include/CL/cl2.hpp' l='2965' u='c' c='_ZN2cl7Context10setDefaultERKS0_'/>
+<doc f='pocl/include/CL/cl2.hpp' l='2911'>/*! \brief Copy constructor to forward copy to the superclass correctly.
+     * Required for MSVC.
+     */</doc>

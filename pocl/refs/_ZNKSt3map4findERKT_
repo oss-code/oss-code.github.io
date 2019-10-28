@@ -1,0 +1,16 @@
+<def f='include/c++/7/bits/stl_map.h' l='1186' ll='1188' type='const_iterator std::map::find(const key_type &amp; __x) const'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='654' u='c' c='_ZNK4llvm18ModuleSummaryIndex12getValueInfoEm'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='672' u='c' c='_ZNK4llvm18ModuleSummaryIndex21getGUIDFromOriginalIDEm'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='811' u='c' c='_ZNK4llvm18ModuleSummaryIndex16getTypeIdSummaryENS_9StringRefE'/>
+<doc f='include/c++/7/bits/stl_map.h' l='1174'>/**
+       *  @brief Tries to locate an element in a %map.
+       *  @param  __x  Key of (key, value) %pair to be located.
+       *  @return  Read-only (constant) iterator pointing to sought-after
+       *           element, or end() if not found.
+       *
+       *  This function takes a key and tries to locate the element with which
+       *  the key matches.  If successful the function returns a constant
+       *  iterator pointing to the sought after %pair. If unsuccessful it
+       *  returns the past-the-end ( @c end() ) iterator.
+       */</doc>
+<use f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='123' u='c' c='_ZNK4llvm9CallGraphixEPKNS_8FunctionE'/>

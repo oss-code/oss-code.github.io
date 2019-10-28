@@ -1,0 +1,20 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='125' type='llvm::BasicBlock * llvm::SplitCriticalEdge(llvm::TerminatorInst * TI, unsigned int SuccNum, const llvm::CriticalEdgeSplittingOptions &amp; Options = llvm::CriticalEdgeSplittingOptions())'/>
+<use f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='133' u='c' c='_ZN4llvm17SplitCriticalEdgeEPNS_10BasicBlockENS_14TerminatorInst12SuccIteratorIPS2_S0_EERKNS_28CriticalEdgeSplittingOptionsE'/>
+<use f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='148' u='c' c='_ZN4llvm17SplitCriticalEdgeEPNS_10BasicBlockENS_12PredIteratorIS0_NS_5Value18user_iterator_implINS_4UserEEEEERKNS_28CriticalEdgeSplittingOptionsE'/>
+<use f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='164' u='c' c='_ZN4llvm17SplitCriticalEdgeEPNS_10BasicBlockES1_RKNS_28CriticalEdgeSplittingOptionsE'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='109'>/// If this edge is a critical edge, insert a new node to split the critical
+/// edge. This will update the analyses passed in through the option struct.
+/// This returns the new block if the edge was split, null otherwise.
+///
+/// If MergeIdenticalEdges in the options struct is true (not the default),
+/// *all* edges from TI to the specified successor will be merged into the same
+/// critical edge block. This is most commonly interesting with switch
+/// instructions, which may have many edges to any one destination.  This
+/// ensures that all edges to that dest go to one block instead of each going
+/// to a different block, but isn&apos;t the standard definition of a &quot;critical
+/// edge&quot;.
+///
+/// It is invalid to call this function on a critical edge that starts at an
+/// IndirectBrInst.  Splitting these edges will almost always create an invalid
+/// program because the address of the new block won&apos;t be the one that is jumped
+/// to.</doc>

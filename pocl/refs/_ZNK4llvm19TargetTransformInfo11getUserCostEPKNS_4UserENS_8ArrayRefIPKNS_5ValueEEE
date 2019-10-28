@@ -1,0 +1,23 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='272' type='int llvm::TargetTransformInfo::getUserCost(const llvm::User * U, ArrayRef&lt;const llvm::Value *&gt; Operands) const'/>
+<use f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='279' u='c' c='_ZNK4llvm19TargetTransformInfo11getUserCostEPKNS_4UserE'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='251'>/// \brief Estimate the cost of a given IR user when lowered.
+  ///
+  /// This can estimate the cost of either a ConstantExpr or Instruction when
+  /// lowered. It has two primary advantages over the \c getOperationCost and
+  /// \c getGEPCost above, and one significant disadvantage: it can only be
+  /// used when the IR construct has already been formed.
+  ///
+  /// The advantages are that it can inspect the SSA use graph to reason more
+  /// accurately about the cost. For example, all-constant-GEPs can often be
+  /// folded into a load or other instruction, but if they are used in some
+  /// other context they may not be folded. This routine can distinguish such
+  /// cases.
+  ///
+  /// \p Operands is a list of operands which can be a result of transformations
+  /// of the current operands. The number of the operands on the list must equal
+  /// to the number of the current operands the IR user has. Their order on the
+  /// list must be the same as the order of the current operands the IR user
+  /// has.
+  ///
+  /// The returned cost is defined in terms of \c TargetCostConstants, see its
+  /// comments for a detailed explanation of the cost values.</doc>

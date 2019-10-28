@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='385' ll='392' type='bool llvm::DominatorTreeBase::properlyDominates(const DomTreeNodeBase&lt;NodeT&gt; * A, const DomTreeNodeBase&lt;NodeT&gt; * B) const'/>
+<doc f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='382'>/// properlyDominates - Returns true iff A dominates B and A != B.
+  /// Note that this is not a constant time operation!
+  ///</doc>

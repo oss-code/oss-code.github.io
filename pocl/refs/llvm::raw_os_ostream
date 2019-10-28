@@ -1,0 +1,11 @@
+<inh f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='44' c='llvm::raw_ostream'/>
+<def f='include/llvm-6.0/llvm/Support/raw_os_ostream.h' l='25' ll='38'/>
+<size>48</size>
+<doc f='include/llvm-6.0/llvm/Support/raw_os_ostream.h' l='22'>/// raw_os_ostream - A raw_ostream that writes to an std::ostream.  This is a
+/// simple adaptor class.  It does not check for output errors; clients should
+/// use the underlying stream to detect errors.</doc>
+<mbr r='llvm::raw_os_ostream::OS' o='320' t='std::ostream &amp;'/>
+<fun r='_ZN4llvm14raw_os_ostream10write_implEPKcm'/>
+<fun r='_ZNK4llvm14raw_os_ostream11current_posEv'/>
+<fun r='_ZN4llvm14raw_os_ostreamC1ERSo'/>
+<fun r='_ZN4llvm14raw_os_ostreamD1Ev'/>

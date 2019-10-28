@@ -1,0 +1,6 @@
+<dec f='include/pthread.h' l='242' type='void pthread_exit(void * __retval)'/>
+<doc f='include/pthread.h' l='238'>/* Terminate calling thread.
+
+   The registered cleanup handlers are called via exception handling
+   so we cannot mark this function with __THROW.*/</doc>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='531' u='c' c='pocl_pthread_driver_thread'/>

@@ -1,0 +1,9 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='556' type='const char * LLVMGetModuleIdentifier(LLVMModuleRef M, size_t * Len)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='548'>/**
+ * Obtain the identifier of a module.
+ *
+ * @param M Module to obtain identifier of
+ * @param Len Out parameter which holds the length of the returned string.
+ * @return The identifier of M.
+ * @see Module::getModuleIdentifier()
+ */</doc>

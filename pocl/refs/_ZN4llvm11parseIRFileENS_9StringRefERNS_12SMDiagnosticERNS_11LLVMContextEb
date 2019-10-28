@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/IRReader/IRReader.h' l='53' type='std::unique_ptr&lt;Module&gt; llvm::parseIRFile(llvm::StringRef Filename, llvm::SMDiagnostic &amp; Err, llvm::LLVMContext &amp; Context, bool UpgradeDebugInfo = true)'/>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='67' u='c' c='_Z13parseModuleIRPKc'/>
+<doc f='include/llvm-6.0/llvm/IRReader/IRReader.h' l='47'>/// If the given file holds a bitcode image, return a Module for it.
+/// Otherwise, attempt to parse it as LLVM Assembly and return a Module
+/// for it.
+/// \param UpgradeDebugInfo Run UpgradeDebugInfo, which runs the Verifier.
+///                         This option should only be set to false by llvm-as
+///                         for use inside the LLVM testuite!</doc>

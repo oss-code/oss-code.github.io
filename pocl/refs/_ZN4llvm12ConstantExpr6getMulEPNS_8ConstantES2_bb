@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='911' type='static llvm::Constant * llvm::ConstantExpr::getMul(llvm::Constant * C1, llvm::Constant * C2, bool HasNUW = false, bool HasNSW = false)'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='967' u='c' c='_ZN4llvm12ConstantExpr9getNSWMulEPNS_8ConstantES2_'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='971' u='c' c='_ZN4llvm12ConstantExpr9getNUWMulEPNS_8ConstantES2_'/>
+<use f='include/llvm-6.0/llvm/IR/ConstantFolder.h' l='56' u='c' c='_ZNK4llvm14ConstantFolder9CreateMulEPNS_8ConstantES2_bb'/>
+<use f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='295' u='c' c='_ZN4llvm13EmitGEPOffsetEPT_RKNS_10DataLayoutEPNS_4UserEb'/>

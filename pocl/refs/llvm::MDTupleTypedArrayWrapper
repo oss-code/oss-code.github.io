@@ -1,0 +1,20 @@
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='1220' ll='1258'/>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='1216'>/// \brief Typed, array-like tuple of metadata.
+///
+/// This is a wrapper for \a MDTuple that makes it act like an array holding a
+/// particular type of metadata.</doc>
+<mbr r='llvm::MDTupleTypedArrayWrapper::N' t='const llvm::MDTuple *'/>
+<fun r='_ZN4llvm24MDTupleTypedArrayWrapperC1Ev'/>
+<fun r='_ZN4llvm24MDTupleTypedArrayWrapperC1EPKNS_7MDTupleE'/>
+<fun r='_ZN4llvm24MDTupleTypedArrayWrapperC1ERKNS_24MDTupleTypedArrayWrapperIT_EEPNSt9enable_ifIXsr14is_convertibleIPS2_PT_EE5valueEvE4typeE'/>
+<fun r='_ZN4llvm24MDTupleTypedArrayWrapperC1ERKNS_24MDTupleTypedArrayWrapperIT_EEPNSt9enable_ifIXntsr3std14is_convertibleIPS2_PT_EE5valueEvE4typeE'/>
+<fun r='_ZNK4llvm24MDTupleTypedArrayWrappercvbEv'/>
+<fun r='_ZNK4llvm24MDTupleTypedArrayWrappercvPNS_7MDTupleEEv'/>
+<fun r='_ZNK4llvm24MDTupleTypedArrayWrapper3getEv'/>
+<fun r='_ZNK4llvm24MDTupleTypedArrayWrapperptEv'/>
+<fun r='_ZNK4llvm24MDTupleTypedArrayWrapperdeEv'/>
+<fun r='_ZNK4llvm24MDTupleTypedArrayWrapper4sizeEv'/>
+<fun r='_ZNK4llvm24MDTupleTypedArrayWrapper5emptyEv'/>
+<fun r='_ZNK4llvm24MDTupleTypedArrayWrapperixEj'/>
+<fun r='_ZNK4llvm24MDTupleTypedArrayWrapper5beginEv'/>
+<fun r='_ZNK4llvm24MDTupleTypedArrayWrapper3endEv'/>

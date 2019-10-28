@@ -1,0 +1,54 @@
+<def f='pocl/lib/CL/pocl_cl.h' l='305' ll='624'/>
+<size>416</size>
+<mbr r='pocl_device_ops::device_name' o='0' t='const char *'/>
+<mbr r='pocl_device_ops::submit' o='64' t='void (*)(_cl_command_node *, cl_command_queue)'/>
+<mbr r='pocl_device_ops::join' o='128' t='void (*)(cl_device_id, cl_command_queue)'/>
+<mbr r='pocl_device_ops::flush' o='192' t='void (*)(cl_device_id, cl_command_queue)'/>
+<mbr r='pocl_device_ops::notify' o='256' t='void (*)(cl_device_id, cl_event, cl_event)'/>
+<mbr r='pocl_device_ops::broadcast' o='320' t='void (*)(cl_event)'/>
+<mbr r='pocl_device_ops::wait_event' o='384' t='void (*)(cl_device_id, cl_event)'/>
+<mbr r='pocl_device_ops::update_event' o='448' t='void (*)(cl_device_id, cl_event)'/>
+<mbr r='pocl_device_ops::free_event_data' o='512' t='void (*)(cl_event)'/>
+<mbr r='pocl_device_ops::notify_cmdq_finished' o='576' t='void (*)(cl_command_queue)'/>
+<mbr r='pocl_device_ops::notify_event_finished' o='640' t='void (*)(cl_event)'/>
+<mbr r='pocl_device_ops::probe' o='704' t='unsigned int (*)(struct pocl_device_ops *)'/>
+<mbr r='pocl_device_ops::init' o='768' t='cl_int (*)(unsigned int, cl_device_id, const char *)'/>
+<mbr r='pocl_device_ops::uninit' o='832' t='cl_int (*)(unsigned int, cl_device_id)'/>
+<mbr r='pocl_device_ops::reinit' o='896' t='cl_int (*)(unsigned int, cl_device_id)'/>
+<mbr r='pocl_device_ops::init_queue' o='960' t='cl_int (*)(cl_command_queue)'/>
+<mbr r='pocl_device_ops::free_queue' o='1024' t='void (*)(cl_command_queue)'/>
+<mbr r='pocl_device_ops::alloc_mem_obj' o='1088' t='cl_int (*)(cl_device_id, cl_mem, void *)'/>
+<mbr r='pocl_device_ops::free' o='1152' t='void (*)(cl_device_id, cl_mem)'/>
+<mbr r='pocl_device_ops::svm_free' o='1216' t='void (*)(cl_device_id, void *)'/>
+<mbr r='pocl_device_ops::svm_alloc' o='1280' t='void *(*)(cl_device_id, cl_svm_mem_flags, size_t)'/>
+<mbr r='pocl_device_ops::svm_map' o='1344' t='void (*)(cl_device_id, void *)'/>
+<mbr r='pocl_device_ops::svm_unmap' o='1408' t='void (*)(cl_device_id, void *)'/>
+<mbr r='pocl_device_ops::svm_copy' o='1472' t='void (*)(cl_device_id, void *restrict, const void *restrict, size_t)'/>
+<mbr r='pocl_device_ops::svm_fill' o='1536' t='void (*)(cl_device_id, void *restrict, size_t, void *restrict, size_t)'/>
+<mbr r='pocl_device_ops::read' o='1600' t='void (*)(void *, void *restrict, pocl_mem_identifier *, cl_mem, size_t, size_t)'/>
+<mbr r='pocl_device_ops::read_rect' o='1664' t='void (*)(void *, void *restrict, pocl_mem_identifier *, cl_mem, const size_t *, const size_t *, const size_t *, size_t, size_t, size_t, size_t)'/>
+<mbr r='pocl_device_ops::write' o='1728' t='void (*)(void *, const void *restrict, pocl_mem_identifier *, cl_mem, size_t, size_t)'/>
+<mbr r='pocl_device_ops::write_rect' o='1792' t='void (*)(void *, const void *restrict, pocl_mem_identifier *, cl_mem, const size_t *, const size_t *, const size_t *, size_t, size_t, size_t, size_t)'/>
+<mbr r='pocl_device_ops::copy' o='1856' t='void (*)(void *, pocl_mem_identifier *, cl_mem, pocl_mem_identifier *, cl_mem, size_t, size_t, size_t)'/>
+<mbr r='pocl_device_ops::copy_rect' o='1920' t='void (*)(void *, pocl_mem_identifier *, cl_mem, pocl_mem_identifier *, cl_mem, const size_t *, const size_t *, const size_t *, size_t, size_t, size_t, size_t)'/>
+<mbr r='pocl_device_ops::memfill' o='1984' t='void (*)(void *, pocl_mem_identifier *, cl_mem, size_t, size_t, const void *restrict, size_t)'/>
+<mbr r='pocl_device_ops::map_mem' o='2048' t='cl_int (*)(void *, pocl_mem_identifier *, cl_mem, mem_mapping_t *)'/>
+<mbr r='pocl_device_ops::unmap_mem' o='2112' t='cl_int (*)(void *, pocl_mem_identifier *, cl_mem, mem_mapping_t *)'/>
+<mbr r='pocl_device_ops::compile_kernel' o='2176' t='void (*)(_cl_command_node *, cl_kernel, cl_device_id, int)'/>
+<mbr r='pocl_device_ops::run' o='2240' t='void (*)(void *, _cl_command_node *)'/>
+<mbr r='pocl_device_ops::run_native' o='2304' t='void (*)(void *, _cl_command_node *)'/>
+<mbr r='pocl_device_ops::init_build' o='2368' t='char *(*)(void *)'/>
+<mbr r='pocl_device_ops::init_target_machine' o='2432' t='void (*)(void *, void *)'/>
+<mbr r='pocl_device_ops::build_hash' o='2496' t='char *(*)(cl_device_id)'/>
+<mbr r='pocl_device_ops::create_image' o='2560' t='void *(*)(void *, const cl_image_format *, const cl_image_desc *, cl_mem, cl_int *)'/>
+<mbr r='pocl_device_ops::free_image' o='2624' t='cl_int (*)(void *, cl_mem, void *)'/>
+<mbr r='pocl_device_ops::create_sampler' o='2688' t='void *(*)(void *, cl_sampler, cl_int *)'/>
+<mbr r='pocl_device_ops::free_sampler' o='2752' t='cl_int (*)(void *, cl_sampler, void *)'/>
+<mbr r='pocl_device_ops::copy_image_rect' o='2816' t='cl_int (*)(void *, cl_mem, cl_mem, pocl_mem_identifier *, pocl_mem_identifier *, const size_t *, const size_t *, const size_t *)'/>
+<mbr r='pocl_device_ops::write_image_rect' o='2880' t='cl_int (*)(void *, cl_mem, pocl_mem_identifier *, const void *restrict, pocl_mem_identifier *, const size_t *, const size_t *, size_t, size_t, size_t)'/>
+<mbr r='pocl_device_ops::read_image_rect' o='2944' t='cl_int (*)(void *, cl_mem, pocl_mem_identifier *, void *restrict, pocl_mem_identifier *, const size_t *, const size_t *, size_t, size_t, size_t)'/>
+<mbr r='pocl_device_ops::map_image' o='3008' t='cl_int (*)(void *, pocl_mem_identifier *, cl_mem, mem_mapping_t *)'/>
+<mbr r='pocl_device_ops::unmap_image' o='3072' t='cl_int (*)(void *, pocl_mem_identifier *, cl_mem, mem_mapping_t *)'/>
+<mbr r='pocl_device_ops::fill_image' o='3136' t='cl_int (*)(void *, cl_mem, pocl_mem_identifier *, const size_t *, const size_t *, const void *restrict, size_t)'/>
+<mbr r='pocl_device_ops::supports_builtin_kernel' o='3200' t='cl_int (*)(void *, const char *)'/>
+<mbr r='pocl_device_ops::get_builtin_kernel_metadata' o='3264' t='cl_int (*)(void *, const char *, pocl_kernel_metadata_t *)'/>

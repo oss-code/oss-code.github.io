@@ -1,0 +1,20 @@
+<def f='include/llvm-6.0/llvm/IR/Function.h' l='269' ll='271' type='bool llvm::Function::hasFnAttribute(Attribute::AttrKind Kind) const'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='290' u='c' c='_ZNK4llvm8Function19getFnStackAlignmentEv'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='409' u='c' c='_ZNK4llvm8Function19doesNotAccessMemoryEv'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='417' u='c' c='_ZNK4llvm8Function15onlyReadsMemoryEv'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='425' u='c' c='_ZNK4llvm8Function17doesNotReadMemoryEv'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='434' u='c' c='_ZNK4llvm8Function21onlyAccessesArgMemoryEv'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='441' u='c' c='_ZNK4llvm8Function30onlyAccessesInaccessibleMemoryEv'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='450' u='c' c='_ZNK4llvm8Function35onlyAccessesInaccessibleMemOrArgMemEv'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='458' u='c' c='_ZNK4llvm8Function13doesNotReturnEv'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='466' u='c' c='_ZNK4llvm8Function12doesNotThrowEv'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='474' u='c' c='_ZNK4llvm8Function15cannotDuplicateEv'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='482' u='c' c='_ZNK4llvm8Function12isConvergentEv'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='493' u='c' c='_ZNK4llvm8Function14isSpeculatableEv'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='502' u='c' c='_ZNK4llvm8Function14doesNotRecurseEv'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='511' u='c' c='_ZNK4llvm8Function10hasUWTableEv'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='540' u='c' c='_ZNK4llvm8Function13optForMinSizeEv'/>
+<use f='include/llvm-6.0/llvm/IR/Function.h' l='544' u='c' c='_ZNK4llvm8Function10optForSizeEv'/>
+<doc f='include/llvm-6.0/llvm/IR/Function.h' l='268'>/// @brief Return true if the function has the attribute.</doc>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='57' u='c' c='_ZN4pocl25OptimizeWorkItemFuncCalls13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='62' u='c' c='_ZN4pocl25OptimizeWorkItemFuncCalls13runOnFunctionERN4llvm8FunctionE'/>

@@ -1,0 +1,79 @@
+<def f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1290' ll='1630'/>
+<ovr f='include/llvm-6.0/llvm/IR/Instructions.h' l='1355' c='llvm::CallInst'/>
+<ovr f='include/llvm-6.0/llvm/IR/Instructions.h' l='3550' c='llvm::InvokeInst'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1244'>/// \brief A mixin to add operand bundle functionality to llvm instruction
+/// classes.
+///
+/// OperandBundleUser uses the descriptor area co-allocated with the host User
+/// to store some meta information about which operands are &quot;normal&quot; operands,
+/// and which ones belong to some operand bundle.
+///
+/// The layout of an operand bundle user is
+///
+///          +-----------uint32_t End-------------------------------------+
+///          |                                                            |
+///          |  +--------uint32_t Begin--------------------+              |
+///          |  |                                          |              |
+///          ^  ^                                          v              v
+///  |------|------|----|----|----|----|----|---------|----|---------|----|-----
+///  | BOI0 | BOI1 | .. | DU | U0 | U1 | .. | BOI0_U0 | .. | BOI1_U0 | .. | Un
+///  |------|------|----|----|----|----|----|---------|----|---------|----|-----
+///   v  v                                  ^              ^
+///   |  |                                  |              |
+///   |  +--------uint32_t Begin------------+              |
+///   |                                                    |
+///   +-----------uint32_t End-----------------------------+
+///
+///
+/// BOI0, BOI1 ... are descriptions of operand bundles in this User&apos;s use list.
+/// These descriptions are installed and managed by this class, and they&apos;re all
+/// instances of OperandBundleUser&lt;T&gt;::BundleOpInfo.
+///
+/// DU is an additional descriptor installed by User&apos;s &apos;operator new&apos; to keep
+/// track of the &apos;BOI0 ... BOIN&apos; co-allocation.  OperandBundleUser does not
+/// access or modify DU in any way, it&apos;s an implementation detail private to
+/// User.
+///
+/// The regular Use&amp; vector for the User starts at U0.  The operand bundle uses
+/// are part of the Use&amp; vector, just like normal uses.  In the diagram above,
+/// the operand bundle uses start at BOI0_U0.  Each instance of BundleOpInfo has
+/// information about a contiguous set of uses constituting an operand bundle,
+/// and the total set of operand bundle uses themselves form a contiguous set of
+/// uses (i.e. there are no gaps between uses corresponding to individual
+/// operand bundles).
+///
+/// This class does not know the location of the set of operand bundle uses
+/// within the use list -- that is decided by the User using this class via the
+/// BeginIdx argument in populateBundleOperandInfos.
+///
+/// Currently operand bundle users with hung-off operands are not supported.</doc>
+<fun r='_ZNK4llvm17OperandBundleUser20getNumOperandBundlesEv'/>
+<fun r='_ZNK4llvm17OperandBundleUser17hasOperandBundlesEv'/>
+<fun r='_ZNK4llvm17OperandBundleUser27getBundleOperandsStartIndexEv'/>
+<fun r='_ZNK4llvm17OperandBundleUser25getBundleOperandsEndIndexEv'/>
+<fun r='_ZNK4llvm17OperandBundleUser15isBundleOperandEj'/>
+<fun r='_ZNK4llvm17OperandBundleUser25getNumTotalBundleOperandsEv'/>
+<fun r='_ZNK4llvm17OperandBundleUser18getOperandBundleAtEj'/>
+<fun r='_ZNK4llvm17OperandBundleUser25countOperandBundlesOfTypeENS_9StringRefE'/>
+<fun r='_ZNK4llvm17OperandBundleUser25countOperandBundlesOfTypeEj'/>
+<fun r='_ZNK4llvm17OperandBundleUser16getOperandBundleENS_9StringRefE'/>
+<fun r='_ZNK4llvm17OperandBundleUser16getOperandBundleEj'/>
+<fun r='_ZNK4llvm17OperandBundleUser23getOperandBundlesAsDefsERNS_15SmallVectorImplINS_17OperandBundleDefTIPNS_5ValueEEEEE'/>
+<fun r='_ZNK4llvm17OperandBundleUser26getOperandBundleForOperandEj'/>
+<fun r='_ZNK4llvm17OperandBundleUser24hasReadingOperandBundlesEv'/>
+<fun r='_ZNK4llvm17OperandBundleUser27hasClobberingOperandBundlesEv'/>
+<fun r='_ZNK4llvm17OperandBundleUser20bundleOperandHasAttrEjNS_9Attribute8AttrKindE'/>
+<fun r='_ZNK4llvm17OperandBundleUser31hasIdenticalOperandBundleSchemaERKNS_17OperandBundleUserIT_T0_EE'/>
+<fun r='_ZNK4llvm17OperandBundleUser26hasOperandBundlesOtherThanENS_8ArrayRefIjEE'/>
+<fun r='_ZNK4llvm17OperandBundleUser28isFnAttrDisallowedByOpBundleENS_9StringRefE'/>
+<fun r='_ZNK4llvm17OperandBundleUser28isFnAttrDisallowedByOpBundleENS_9Attribute8AttrKindE'/>
+<fun r='_ZNK4llvm17OperandBundleUser29operandBundleFromBundleOpInfoERKNS0_12BundleOpInfoE'/>
+<fun r='_ZN4llvm17OperandBundleUser20bundle_op_info_beginEv'/>
+<fun r='_ZNK4llvm17OperandBundleUser20bundle_op_info_beginEv'/>
+<fun r='_ZN4llvm17OperandBundleUser18bundle_op_info_endEv'/>
+<fun r='_ZNK4llvm17OperandBundleUser18bundle_op_info_endEv'/>
+<fun r='_ZN4llvm17OperandBundleUser15bundle_op_infosEv'/>
+<fun r='_ZNK4llvm17OperandBundleUser15bundle_op_infosEv'/>
+<fun r='_ZN4llvm17OperandBundleUser26populateBundleOperandInfosENS_8ArrayRefINS_17OperandBundleDefTIPNS_5ValueEEEEEj'/>
+<fun r='_ZNK4llvm17OperandBundleUser25getBundleOpInfoForOperandEj'/>
+<fun r='_ZN4llvm17OperandBundleUser17CountBundleInputsENS_8ArrayRefINS_17OperandBundleDefTIPNS_5ValueEEEEE'/>

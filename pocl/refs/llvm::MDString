@@ -1,0 +1,22 @@
+<inh f='include/llvm-6.0/llvm/IR/Metadata.h' l='58' c='llvm::Metadata'/>
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='602' ll='638'/>
+<size>16</size>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='597'>//===----------------------------------------------------------------------===//
+/// \brief A single uniqued string.
+///
+/// These are used to efficiently contain a byte sequence for metadata.
+/// MDString is always unnamed.</doc>
+<mbr r='llvm::MDString::Entry' o='64' t='StringMapEntry&lt;llvm::MDString&gt; *'/>
+<fun r='_ZN4llvm8MDStringC1Ev'/>
+<fun r='_ZN4llvm8MDStringC1ERKS0_'/>
+<fun r='_ZN4llvm8MDStringaSEOS0_'/>
+<fun r='_ZN4llvm8MDStringaSERKS0_'/>
+<fun r='_ZN4llvm8MDString3getERNS_11LLVMContextENS_9StringRefE'/>
+<fun r='_ZN4llvm8MDString3getERNS_11LLVMContextEPKc'/>
+<fun r='_ZNK4llvm8MDString9getStringEv'/>
+<fun r='_ZNK4llvm8MDString9getLengthEv'/>
+<fun r='_ZNK4llvm8MDString5beginEv'/>
+<fun r='_ZNK4llvm8MDString3endEv'/>
+<fun r='_ZNK4llvm8MDString11bytes_beginEv'/>
+<fun r='_ZNK4llvm8MDString9bytes_endEv'/>
+<fun r='_ZN4llvm8MDString7classofEPKNS_8MetadataE'/>

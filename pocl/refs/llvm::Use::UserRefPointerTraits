@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/IR/Use.h' l='66' ll='74'/>
+<size>1</size>
+<doc f='include/llvm-6.0/llvm/IR/Use.h' l='64'>/// Pointer traits for the UserRef PointerIntPair. This ensures we always
+  /// use the LSB regardless of pointer alignment on different targets.</doc>
+<fun r='_ZN4llvm3Use20UserRefPointerTraits16getAsVoidPointerEPNS_4UserE'/>
+<fun r='_ZN4llvm3Use20UserRefPointerTraits18getFromVoidPointerEPv'/>

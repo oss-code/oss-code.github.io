@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='552' type='void llvm::RegionBase::clearNodeCache()'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='547'>/// @brief Clear the cache for BB RegionNodes.
+  ///
+  /// After calling this function the BasicBlock RegionNodes will be stored at
+  /// different memory locations. RegionNodes obtained before this function is
+  /// called are therefore not comparable to RegionNodes abtained afterwords.</doc>

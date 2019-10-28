@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/Support/ErrorOr.h' l='165' ll='167' type='bool llvm::ErrorOr::operator bool() const'/>
+<use f='include/llvm-6.0/llvm/Support/FileSystem.h' l='1002' u='c' c='_ZN4llvm3sys2fs28recursive_directory_iterator9incrementERSt10error_code'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='70' u='c' c='pocl_ptx_gen'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='537' u='c' c='_ZL13linkLibDevicePN4llvm6ModuleEPKcS3_'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='837' u='c' c='pocl_cuda_get_ptr_arg_alignment'/>
+<doc f='include/llvm-6.0/llvm/Support/ErrorOr.h' l='164'>/// \brief Return false if there is an error.</doc>

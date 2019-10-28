@@ -1,0 +1,13 @@
+<dec f='include/llvm-6.0/llvm/Support/Host.h' l='82' type='bool llvm::sys::getHostCPUFeatures(StringMap&lt;bool&gt; &amp; Features)'/>
+<doc f='include/llvm-6.0/llvm/Support/Host.h' l='72'>/// getHostCPUFeatures - Get the LLVM names for the host CPU features.
+  /// The particular format of the names are target dependent, and suitable for
+  /// passing as -mattr to the target which matches the host.
+  ///
+  /// \param Features - A string mapping feature names to either
+  /// true (if enabled) or false (if disabled). This routine makes no guarantees
+  /// about exactly which features may appear in this map, except that they are
+  /// all valid LLVM feature names.
+  ///
+  /// \return - True on success.</doc>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='166' u='c' c='cpu_has_fma'/>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='176' u='c' c='cpu_setup_vector_widths'/>

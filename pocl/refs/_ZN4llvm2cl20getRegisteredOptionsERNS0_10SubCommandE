@@ -1,0 +1,33 @@
+<dec f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1800' type='StringMap&lt;llvm::cl::Option *&gt; &amp; llvm::cl::getRegisteredOptions(llvm::cl::SubCommand &amp; Sub = * TopLevelSubCommand)'/>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1769'>//===----------------------------------------------------------------------===//
+// Public interface for accessing registered options.
+//
+
+/// \brief Use this to get a StringMap to all registered named options
+/// (e.g. -help). Note \p Map Should be an empty StringMap.
+///
+/// \return A reference to the StringMap used by the cl APIs to parse options.
+///
+/// Access to unnamed arguments (i.e. positional) are not provided because
+/// it is expected that the client already has access to these.
+///
+/// Typical usage:
+/// \code
+/// main(int argc,char* argv[]) {
+/// StringMap&lt;llvm::cl::Option*&gt; &amp;opts = llvm::cl::getRegisteredOptions();
+/// assert(opts.count(&quot;help&quot;) == 1)
+/// opts[&quot;help&quot;]-&gt;setDescription(&quot;Show alphabetical help information&quot;)
+/// // More code
+/// llvm::cl::ParseCommandLineOptions(argc,argv);
+/// //More code
+/// }
+/// \endcode
+///
+/// This interface is useful for modifying options in libraries that are out of
+/// the control of the client. The options should be modified before calling
+/// llvm::cl::ParseCommandLineOptions().
+///
+/// Hopefully this API can be deprecated soon. Any situation where options need
+/// to be modified by tools or libraries should be handled by sane APIs rather
+/// than just handing around a global list.</doc>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='298' u='c' c='_Z14InitializeLLVMv'/>

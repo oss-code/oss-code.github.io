@@ -1,0 +1,8 @@
+<def f='pocl/include/CL/cl2.hpp' l='7765' ll='7790' type='cl_int cl::CommandQueue::enqueueFillImage(const cl::Image &amp; image, cl_int4 fillColor, const array&lt;size_type, 3&gt; &amp; origin, const array&lt;size_type, 3&gt; &amp; region, const vector&lt;cl::Event&gt; * events = __null, cl::Event * event = __null) const'/>
+<doc f='pocl/include/CL/cl2.hpp' l='7758'>/**
+     * Enqueue a command to fill an image object with a specified color.
+     * \param fillColor is the color to use to fill the image.
+     *     This is a four component RGBA signed integer color value if
+     *     the image channel data type is an unnormalized signed integer
+     *     type.
+     */</doc>

@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='169' type='const llvm::Instruction * llvm::BasicBlock::getFirstNonPHIOrDbgOrLifetime() const'/>
+<use f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='172' u='c' c='_ZN4llvm10BasicBlock29getFirstNonPHIOrDbgOrLifetimeEv'/>
+<doc f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='167'>/// \brief Returns a pointer to the first instruction in this block that is not
+  /// a PHINode, a debug intrinsic, or a lifetime intrinsic.</doc>

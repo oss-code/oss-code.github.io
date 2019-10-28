@@ -1,0 +1,4 @@
+<dec f='pocl/include/CL/cl.h' l='1787' type='cl_sampler clCreateSampler(cl_context context, cl_bool normalized_coords, cl_addressing_mode addressing_mode, cl_filter_mode filter_mode, cl_int * errcode_ret)'/>
+<use f='pocl/lib/CL/pocl_intfn.h' l='48' c='POclCreateSampler'/>
+<use f='pocl/tests/kernel/image_query_funcs.c' l='68' u='c' c='main'/>
+<use f='pocl/include/CL/cl2.hpp' l='5563' u='c' c='_ZN2cl7SamplerC1ERKNS_7ContextEjjjPi'/>

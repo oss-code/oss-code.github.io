@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Bitcode/BitcodeReader.h' l='204' ll='213' type='bool llvm::isRawBitcode(const unsigned char * BufPtr, const unsigned char * BufEnd)'/>
+<use f='include/llvm-6.0/llvm/Bitcode/BitcodeReader.h' l='220' u='c' c='_ZN4llvm9isBitcodeEPKhS1_'/>
+<doc f='include/llvm-6.0/llvm/Bitcode/BitcodeReader.h' l='202'>/// isRawBitcode - Return true if the given bytes are the magic bytes for
+  /// raw LLVM IR bitcode (without a wrapper).</doc>

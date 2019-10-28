@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/CallSite.h' l='134' ll='140' type='Intrinsic::ID llvm::CallSiteBase::getIntrinsicID() const'/>
+<doc f='include/llvm-6.0/llvm/IR/CallSite.h' l='131'>/// Return the intrinsic ID of the intrinsic called by this CallSite,
+  /// or Intrinsic::not_intrinsic if the called function is not an
+  /// intrinsic, or if this CallSite is an indirect call.</doc>

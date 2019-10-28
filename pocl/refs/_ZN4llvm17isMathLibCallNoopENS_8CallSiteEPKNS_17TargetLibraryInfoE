@@ -1,0 +1,3 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='152' type='bool llvm::isMathLibCallNoop(llvm::CallSite CS, const llvm::TargetLibraryInfo * TLI)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='150'>/// \brief Check whether the given call has no side-effects.
+/// Specifically checks for math routimes which sometimes set errno.</doc>

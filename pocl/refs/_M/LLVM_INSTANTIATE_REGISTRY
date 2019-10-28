@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/Support/Registry.h' l='138'/>
+<doc f='include/llvm-6.0/llvm/Support/Registry.h' l='130'>/// Instantiate a registry class.
+///
+/// This provides template definitions of add_node, begin, and the Head and Tail
+/// pointers, then explicitly instantiates them. We could explicitly specialize
+/// them, instead of the two-step process of define then instantiate, but
+/// strictly speaking that&apos;s not allowed by the C++ standard (we would need to
+/// have explicit specialization declarations in all translation units where the
+/// specialization is used) so we don&apos;t.</doc>

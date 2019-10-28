@@ -1,0 +1,8 @@
+<dec f='pocl/lib/llvmopencl/Workgroup.h' l='60' type='std::vector&lt;llvm::Value *&gt; pocl::Workgroup::globalHandlesToContextStructLoads(llvm::IRBuilder&lt;&gt; &amp; Builder, const std::vector&lt;std::string&gt; &amp;&amp; GlobalHandleNames, int StructFieldIndex)'/>
+<def f='pocl/lib/llvmopencl/Workgroup.cc' l='744' ll='760' type='std::vector&lt;llvm::Value *&gt; pocl::Workgroup::globalHandlesToContextStructLoads(IRBuilder&lt;&gt; &amp; Builder, const std::vector&lt;std::string&gt; &amp;&amp; GlobalHandleNames, int StructFieldIndex)'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='905' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='913' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='917' u='c' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<doc f='pocl/lib/llvmopencl/Workgroup.cc' l='741'>// Converts the given global context variable handles to loads from the
+// hidden context struct argument. If there is no reference to the global,
+// the corresponding entry in the returned vector will contain a nullptr.</doc>

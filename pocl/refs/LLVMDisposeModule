@@ -1,0 +1,7 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='546' type='void LLVMDisposeModule(LLVMModuleRef M)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='540'>/**
+ * Destroy a module instance.
+ *
+ * This must be called for every created module or memory will be
+ * leaked.
+ */</doc>

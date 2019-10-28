@@ -1,0 +1,16 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='743' type='const char *'/>
+<offset>4736</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='743'>/* the llvm CPU variant to use */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='367' u='w' c='pocl_init_cpu_device_infos'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='281' u='w' c='pocl_cuda_init'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='282' u='r' c='pocl_cuda_init'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='285' u='r' c='pocl_cuda_init'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='402' u='r' c='pocl_cuda_build_hash'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='808' u='r' c='load_or_generate_kernel'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='354' u='r' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='355' u='r' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='460' u='r' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='461' u='r' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='846' u='r' c='_ZL16getKernelLibraryP13_cl_device_id'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='131' u='r' c='_ZL16GetTargetMachineP13_cl_device_idRN4llvm6TripleE'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='131' u='r' c='_ZL16GetTargetMachineP13_cl_device_idRN4llvm6TripleE'/>

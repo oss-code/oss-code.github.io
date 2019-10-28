@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/LLVMContext.h' l='242' type='uint64_t llvm::LLVMContext::getDiagnosticsHotnessThreshold() const'/>
+<doc f='include/llvm-6.0/llvm/IR/LLVMContext.h' l='239'>/// \brief Return the minimum hotness value a diagnostic would need in order
+  /// to be included in optimization diagnostics. If there is no minimum, this
+  /// returns None.</doc>

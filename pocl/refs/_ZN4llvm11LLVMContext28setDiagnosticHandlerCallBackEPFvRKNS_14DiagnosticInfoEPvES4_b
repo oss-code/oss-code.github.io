@@ -1,0 +1,10 @@
+<dec f='include/llvm-6.0/llvm/IR/LLVMContext.h' l='203' type='void llvm::LLVMContext::setDiagnosticHandlerCallBack(DiagnosticHandler::DiagnosticHandlerTy DiagHandler, void * DiagContext = nullptr, bool RespectFilters = false)'/>
+<doc f='include/llvm-6.0/llvm/IR/LLVMContext.h' l='195'>/// setDiagnosticHandlerCallBack - This method sets a handler call back
+  /// that is invoked when the backend needs to report anything to the user.
+  /// The first argument is a function pointer and the second is a context pointer
+  /// that gets passed into the DiagHandler.  The third argument should be set to
+  /// true if the handler only expects enabled diagnostics.
+  ///
+  /// LLVMContext doesn&apos;t take ownership or interpret either of these
+  /// pointers.</doc>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='249' u='c' c='_Z13GlobalContextv'/>

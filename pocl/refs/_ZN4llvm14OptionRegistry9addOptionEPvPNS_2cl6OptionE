@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/Support/Options.h' l='76' type='void llvm::OptionRegistry::addOption(void * Key, cl::Option * O)'/>
+<use f='include/llvm-6.0/llvm/Support/Options.h' l='100' u='c' c='_ZN4llvm14OptionRegistry14registerOptionENS_9StringRefES1_RKT_'/>
+<doc f='include/llvm-6.0/llvm/Support/Options.h' l='69'>/// \brief Adds a cl::Option to the registry.
+  ///
+  /// \param Key unique key for option
+  /// \param O option to map to \p Key
+  ///
+  /// Allocated cl::Options are owned by the OptionRegistry and are deallocated
+  /// on destruction or removal</doc>

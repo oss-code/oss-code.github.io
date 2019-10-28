@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/Analysis/AssumptionCache.h' l='128' ll='132' type='MutableArrayRef&lt;llvm::WeakTrackingVH&gt; llvm::AssumptionCache::assumptions()'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AssumptionCache.h' l='120'>/// \brief Access the list of assumption handles currently tracked for this
+  /// function.
+  ///
+  /// Note that these produce weak handles that may be null. The caller must
+  /// handle that case.
+  /// FIXME: We should replace this with pointee_iterator&lt;filter_iterator&lt;...&gt;&gt;
+  /// when we can write that to filter out the null values. Then caller code
+  /// will become simpler.</doc>

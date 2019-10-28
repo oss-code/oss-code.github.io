@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='210' type='bool llvm::FoldBranchToCommonDest(llvm::BranchInst * BI, unsigned int BonusInstThreshold = 1)'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='207'>/// If this basic block is ONLY a setcc and a branch, and if a predecessor
+/// branches to us and one of our successors, fold the setcc into the
+/// predecessor and use logical operations to pick the right destination.</doc>

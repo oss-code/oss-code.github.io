@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/Value.h' l='251' type='bool llvm::Value::hasName() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Value.h' l='250'>// \brief All values can potentially be named.</doc>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='579' u='c' c='_ZNK4llvm4Loop7getNameEv'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='79' u='c' c='_ZN4pocl14ParallelRegion17GenerateTempNamesEPN4llvm10BasicBlockE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='748' u='c' c='_ZN4pocl14ParallelRegion23InjectVariablePrintoutsEv'/>

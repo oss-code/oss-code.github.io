@@ -1,0 +1,16 @@
+<dec f='pocl/lib/llvmopencl/ParallelRegion.h' l='60' type='void pocl::ParallelRegion::purge()'/>
+<def f='pocl/lib/llvmopencl/ParallelRegion.cc' l='232' ll='282' type='void pocl::ParallelRegion::purge()'/>
+<doc f='pocl/lib/llvmopencl/ParallelRegion.cc' l='220'>/**
+ * Removes known dead side exits from parallel regions.
+ *
+ * These occur with conditional barriers. The head of the path
+ * leading to the conditional barrier is shared by two PRs. The
+ * first work-item defines which path is taken (by definition the
+ * barrier is taken by all or none of the work-items). The blocks 
+ * in the branches are in different regions which can contain branches 
+ * to blocks that are in known non-taken path. This method replaces 
+ * the targets of such branches with undefined BBs so they will be cleaned 
+ * up by the optimizer.
+ */</doc>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='466' u='c' c='_ZN4pocl13WorkitemLoops15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemReplication.cc' l='251' u='c' c='_ZN4pocl19WorkitemReplication15ProcessFunctionERN4llvm8FunctionE'/>

@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/ADT/SmallString.h' l='213' ll='216' type='size_t llvm::SmallString::find_last_of(llvm::StringRef Chars, size_t From = StringRef::npos) const'/>
+<doc f='include/llvm-6.0/llvm/ADT/SmallString.h' l='209'>/// Find the last character in the string that is in \p C, or npos if not
+  /// found.
+  ///
+  /// Complexity: O(size() + Chars.size())</doc>

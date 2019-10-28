@@ -1,0 +1,5 @@
+<use f='include/llvm-6.0/llvm/IR/CallSite.h' l='68' u='c' c='_ZN4llvm12CallSiteBaseC1EPT1_'/>
+<def f='include/llvm-6.0/llvm/IR/CallSite.h' l='74' ll='82' type='static CallSiteBase&lt;FunTy, BBTy, ValTy, UserTy, UseTy, InstrTy, CallTy, InvokeTy, IterTy&gt; llvm::CallSiteBase::get(ValTy * V)'/>
+<doc f='include/llvm-6.0/llvm/IR/CallSite.h' l='71'>/// This static method is like a constructor. It will create an appropriate
+  /// call site for a Call or Invoke instruction, but it can also create a null
+  /// initialized CallSiteBase object for something which is NOT a call site.</doc>

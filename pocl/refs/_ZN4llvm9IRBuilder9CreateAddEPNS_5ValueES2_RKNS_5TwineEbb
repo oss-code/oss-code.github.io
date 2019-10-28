@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='893' ll='900' type='llvm::Value * llvm::IRBuilder::CreateAdd(llvm::Value * LHS, llvm::Value * RHS, const llvm::Twine &amp; Name = &quot;&quot;, bool HasNUW = false, bool HasNSW = false)'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='902' u='c' c='_ZN4llvm9IRBuilder12CreateNSWAddEPNS_5ValueES2_RKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='905' u='c' c='_ZN4llvm9IRBuilder12CreateNUWAddEPNS_5ValueES2_RKNS_5TwineE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='1171' u='c' c='_ZN4pocl13WorkitemLoops14AppendIncBlockEPN4llvm10BasicBlockEPNS1_5ValueE'/>

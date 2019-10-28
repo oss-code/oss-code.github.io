@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='551' type='LazyCallGraph::SCC &amp; llvm::updateCGAndAnalysisManagerForFunctionPass(llvm::LazyCallGraph &amp; G, LazyCallGraph::SCC &amp; C, LazyCallGraph::Node &amp; N, CGSCCAnalysisManager &amp; AM, llvm::CGSCCUpdateResult &amp; UR)'/>
+<use f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='630' u='c' c='_ZN4llvm26CGSCCToFunctionPassAdaptor3runERNS_13LazyCallGraph3SCCERNS_15AnalysisManagerIS2_JRS1_EEES5_RNS_17CGSCCUpdateResultE'/>
+<doc f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='545'>/// Helper to update the call graph after running a function pass.
+///
+/// Function passes can only mutate the call graph in specific ways. This
+/// routine provides a helper that updates the call graph in those ways
+/// including returning whether any changes were made and populating a CG
+/// update result struct for the overall CGSCC walk.</doc>

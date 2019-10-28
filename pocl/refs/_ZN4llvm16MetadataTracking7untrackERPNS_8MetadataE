@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='244' type='static void llvm::MetadataTracking::untrack(llvm::Metadata *&amp; MD)'/>
+<use f='include/llvm-6.0/llvm/IR/Metadata.h' l='748' u='c' c='_ZN4llvm9MDOperand7untrackEv'/>
+<use f='include/llvm-6.0/llvm/IR/Metadata.h' l='1311' u='c' c='_ZN4llvm28DistinctMDOperandPlaceholder14replaceUseWithEPNS_8MetadataE'/>
+<use f='include/llvm-6.0/llvm/IR/TrackingMDRef.h' l='91' u='c' c='_ZN4llvm13TrackingMDRef7untrackEv'/>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='241'>/// \brief Stop tracking a reference to metadata.
+  ///
+  /// Stops \c *MD from tracking \c MD.</doc>

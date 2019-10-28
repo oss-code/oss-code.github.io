@@ -1,0 +1,14 @@
+<def f='pocl/lib/CL/devices/bufalloc.h' l='126' ll='147'/>
+<size>65624</size>
+<doc f='pocl/lib/CL/devices/bufalloc.h' l='123'>/* Represents a single continuous region of memory from which smaller
+   &quot;chunks&quot; are allocated. Note: this doesn&apos;t include the memory space
+   itself. */</doc>
+<mbr r='memory_region::all_chunks' o='0' t='chunk_info_t [1024]'/>
+<mbr r='memory_region::chunks' o='524288' t='chunk_info_t *'/>
+<mbr r='memory_region::free_chunks' o='524352' t='chunk_info_t *'/>
+<mbr r='memory_region::last_chunk' o='524416' t='chunk_info_t *'/>
+<mbr r='memory_region::next' o='524480' t='memory_region_t *'/>
+<mbr r='memory_region::prev' o='524544' t='memory_region_t *'/>
+<mbr r='memory_region::strategy' o='524608' t='enum allocation_strategy'/>
+<mbr r='memory_region::alignment' o='524640' t='unsigned short'/>
+<mbr r='memory_region::lock' o='524672' t='ba_lock_t'/>

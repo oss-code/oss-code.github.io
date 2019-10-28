@@ -1,0 +1,4 @@
+<dec f='pocl/lib/CL/pocl_intfn.h' l='69' macro='1' type='cl_int POclEnqueueUnmapMemObject(cl_command_queue , cl_mem , void * , cl_uint , const cl_event * , cl_event * )'/>
+<def f='pocl/lib/CL/clEnqueueUnmapMemObject.c' l='30' macro='1' type='cl_int POclEnqueueUnmapMemObject(cl_command_queue command_queue, cl_mem memobj, void * mapped_ptr, cl_uint num_events_in_wait_list, const cl_event * event_wait_list, cl_event * event)'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='98' macro='1' u='a'/>
+<use f='pocl/lib/CL/clGetPlatformIDs.c' l='98' macro='1' u='a'/>

@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='316' ll='338' type='bool llvm::DominatorTreeBase::compare(const DominatorTreeBase&lt;NodeT, IsPostDom&gt; &amp; Other) const'/>
+<use f='include/llvm-6.0/llvm/IR/Dominators.h' l='157' u='c' c='_ZNK4llvm13DominatorTree7compareERKS0_'/>
+<doc f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='314'>/// compare - Return false if the other dominator tree base matches this
+  /// dominator tree base. Otherwise return true.</doc>

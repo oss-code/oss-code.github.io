@@ -1,0 +1,8 @@
+<dec f='pocl/lib/CL/devices/common.h' l='73' type='void fill_dev_image_t(dev_image_t * di, struct pocl_argument * parg, cl_device_id device)'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='624' u='c' c='pocl_basic_run'/>
+<def f='pocl/lib/CL/devices/common.c' l='261' ll='280' type='void fill_dev_image_t(dev_image_t * di, struct pocl_argument * parg, cl_device_id device)'/>
+<doc f='pocl/lib/CL/devices/common.c' l='257'>/**
+ * Populates the device specific image data structure used by kernel
+ * from given kernel image argument
+ */</doc>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='149' u='c' c='setup_kernel_arg_array'/>

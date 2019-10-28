@@ -1,0 +1,34 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='999' type='volatile cl_device_id'/>
+<offset>960</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='998'>/* device where this mem obj resides */</doc>
+<use f='pocl/lib/CL/clCreateBuffer.c' l='113' u='w' c='POclCreateBuffer'/>
+<use f='pocl/lib/CL/clEnqueueCopyBuffer.c' l='109' u='w' c='POclEnqueueCopyBuffer'/>
+<use f='pocl/lib/CL/clEnqueueCopyBuffer.c' l='111' u='w' c='POclEnqueueCopyBuffer'/>
+<use f='pocl/lib/CL/clEnqueueCopyBufferRect.c' l='92' u='w' c='POclEnqueueCopyBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueCopyBufferRect.c' l='94' u='w' c='POclEnqueueCopyBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueCopyBufferToImage.c' l='81' u='w' c='POclEnqueueCopyBufferToImage'/>
+<use f='pocl/lib/CL/clEnqueueCopyBufferToImage.c' l='83' u='w' c='POclEnqueueCopyBufferToImage'/>
+<use f='pocl/lib/CL/clEnqueueCopyImage.c' l='63' u='w' c='POclEnqueueCopyImage'/>
+<use f='pocl/lib/CL/clEnqueueCopyImage.c' l='65' u='w' c='POclEnqueueCopyImage'/>
+<use f='pocl/lib/CL/clEnqueueCopyImageToBuffer.c' l='79' u='w' c='POclEnqueueCopyImageToBuffer'/>
+<use f='pocl/lib/CL/clEnqueueCopyImageToBuffer.c' l='81' u='w' c='POclEnqueueCopyImageToBuffer'/>
+<use f='pocl/lib/CL/clEnqueueFillBuffer.c' l='102' u='w' c='POclEnqueueFillBuffer'/>
+<use f='pocl/lib/CL/clEnqueueFillImage.c' l='126' u='w' c='POclEnqueueFillImage'/>
+<use f='pocl/lib/CL/clEnqueueMapBuffer.c' l='141' u='w' c='POclEnqueueMapBuffer'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='185' u='w' c='POclEnqueueMapImage'/>
+<use f='pocl/lib/CL/clEnqueueMigrateMemObjects.c' l='94' u='r' c='POclEnqueueMigrateMemObjects'/>
+<use f='pocl/lib/CL/clEnqueueMigrateMemObjects.c' l='96' u='w' c='POclEnqueueMigrateMemObjects'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='514' u='r' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='515' u='w' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='519' u='r' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='520' u='r' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/clEnqueueNDRangeKernel.c' l='532' u='w' c='POclEnqueueNDRangeKernel'/>
+<use f='pocl/lib/CL/clEnqueueNativeKernel.c' l='93' u='w' c='POclEnqueueNativeKernel'/>
+<use f='pocl/lib/CL/clEnqueueReadBuffer.c' l='91' u='w' c='POclEnqueueReadBuffer'/>
+<use f='pocl/lib/CL/clEnqueueReadBufferRect.c' l='118' u='w' c='POclEnqueueReadBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueReadImage.c' l='122' u='w' c='POclEnqueueReadImage'/>
+<use f='pocl/lib/CL/clEnqueueUnmapMemObject.c' l='94' u='w' c='POclEnqueueUnmapMemObject'/>
+<use f='pocl/lib/CL/clEnqueueWriteBuffer.c' l='91' u='w' c='POclEnqueueWriteBuffer'/>
+<use f='pocl/lib/CL/clEnqueueWriteBufferRect.c' l='116' u='w' c='POclEnqueueWriteBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueWriteImage.c' l='94' u='w' c='POclEnqueueWriteImage'/>
+<use f='pocl/lib/CL/clSetKernelArgSVMPointer.c' l='48' u='w' c='POclSetKernelArgSVMPointer'/>

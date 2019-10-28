@@ -1,0 +1,9 @@
+<def f='include/c++/7/bits/stl_list.h' l='665' ll='666' type='void std::__cxx11::list::list&lt;_Tp, _Alloc&gt;(list&lt;_Tp, _Alloc&gt; &amp;&amp; __x)'/>
+<doc f='include/c++/7/bits/stl_list.h' l='658'>/**
+       *  @brief  %List move constructor.
+       *  @param  __x  A %list of identical element and allocator types.
+       *
+       *  The newly-created %list contains the exact contents of @a __x.
+       *  The contents of @a __x are a valid, but unspecified %list.
+       */</doc>
+<use f='include/llvm-6.0/llvm/Option/ArgList.h' l='397' u='c' c='_ZN4llvm3opt12InputArgListC1EOS1_'/>

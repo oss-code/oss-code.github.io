@@ -1,0 +1,13 @@
+<dec f='include/hwloc.h' l='2050' type='void * hwloc_alloc_membind(hwloc_topology_t topology, size_t len, hwloc_const_cpuset_t cpuset, hwloc_membind_policy_t policy, int flags)'/>
+<use f='include/hwloc/inlines.h' l='137' u='c' c='hwloc_alloc_membind_policy'/>
+<doc f='include/hwloc.h' l='2039'>/** \brief Allocate some memory on memory nodes near the given physical cpuset \p cpuset
+ *
+ * \return NULL with errno set to ENOSYS if the action is not supported
+ * and ::HWLOC_MEMBIND_STRICT is given
+ * \return NULL with errno set to EXDEV if the binding cannot be enforced
+ * and ::HWLOC_MEMBIND_STRICT is given
+ * \return NULL with errno set to ENOMEM if the memory allocation failed
+ * even before trying to bind.
+ *
+ * \note The allocated memory should be freed with hwloc_free().
+ */</doc>

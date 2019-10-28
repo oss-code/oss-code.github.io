@@ -1,0 +1,67 @@
+<inh f='include/llvm-6.0/llvm/IR/Instruction.h' l='44' c='llvm::Instruction'/>
+<def f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='843' ll='1081'/>
+<ovr f='include/llvm-6.0/llvm/IR/Instructions.h' l='1108' c='llvm::ICmpInst'/>
+<ovr f='include/llvm-6.0/llvm/IR/Instructions.h' l='1250' c='llvm::FCmpInst'/>
+<size>56</size>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='837'>//===----------------------------------------------------------------------===//
+//                               CmpInst Class
+//===----------------------------------------------------------------------===//
+
+/// This class is the base class for the comparison instructions.
+/// @brief Abstract base class of comparison instructions.</doc>
+<fun r='_ZN4llvm7CmpInstC1EPNS_4TypeENS_11Instruction8OtherOpsENS0_9PredicateEPNS_5ValueES7_RKNS_5TwineEPS3_'/>
+<fun r='_ZN4llvm7CmpInstC1EPNS_4TypeENS_11Instruction8OtherOpsENS0_9PredicateEPNS_5ValueES7_RKNS_5TwineEPNS_10BasicBlockE'/>
+<fun r='_ZN4llvm7CmpInstnwEm'/>
+<fun r='_ZN4llvm7CmpInst6CreateENS_11Instruction8OtherOpsENS0_9PredicateEPNS_5ValueES5_RKNS_5TwineEPS1_'/>
+<fun r='_ZN4llvm7CmpInst6CreateENS_11Instruction8OtherOpsENS0_9PredicateEPNS_5ValueES5_RKNS_5TwineEPNS_10BasicBlockE'/>
+<fun r='_ZNK4llvm7CmpInst9getOpcodeEv'/>
+<fun r='_ZNK4llvm7CmpInst12getPredicateEv'/>
+<fun r='_ZN4llvm7CmpInst12setPredicateENS0_9PredicateE'/>
+<fun r='_ZN4llvm7CmpInst13isFPPredicateENS0_9PredicateE'/>
+<fun r='_ZN4llvm7CmpInst14isIntPredicateENS0_9PredicateE'/>
+<fun r='_ZN4llvm7CmpInst16getPredicateNameENS0_9PredicateE'/>
+<fun r='_ZNK4llvm7CmpInst13isFPPredicateEv'/>
+<fun r='_ZNK4llvm7CmpInst14isIntPredicateEv'/>
+<fun r='_ZNK4llvm7CmpInst19getInversePredicateEv'/>
+<fun r='_ZN4llvm7CmpInst19getInversePredicateENS0_9PredicateE'/>
+<fun r='_ZNK4llvm7CmpInst19getSwappedPredicateEv'/>
+<fun r='_ZN4llvm7CmpInst19getSwappedPredicateENS0_9PredicateE'/>
+<fun r='_ZNK4llvm7CmpInst10getOperandEj'/>
+<fun r='_ZN4llvm7CmpInst10setOperandEjPNS_5ValueE'/>
+<fun r='_ZN4llvm7CmpInst8op_beginEv'/>
+<fun r='_ZNK4llvm7CmpInst8op_beginEv'/>
+<fun r='_ZN4llvm7CmpInst6op_endEv'/>
+<fun r='_ZNK4llvm7CmpInst6op_endEv'/>
+<fun r='_ZN4llvm7CmpInst2OpEv'/>
+<fun r='_ZNK4llvm7CmpInst2OpEv'/>
+<fun r='_ZNK4llvm7CmpInst14getNumOperandsEv'/>
+<fun r='_ZN4llvm7CmpInst12swapOperandsEv'/>
+<fun r='_ZNK4llvm7CmpInst13isCommutativeEv'/>
+<fun r='_ZNK4llvm7CmpInst10isEqualityEv'/>
+<fun r='_ZNK4llvm7CmpInst8isSignedEv'/>
+<fun r='_ZNK4llvm7CmpInst10isUnsignedEv'/>
+<fun r='_ZN4llvm7CmpInst18getSignedPredicateENS0_9PredicateE'/>
+<fun r='_ZN4llvm7CmpInst18getSignedPredicateEv'/>
+<fun r='_ZNK4llvm7CmpInst15isTrueWhenEqualEv'/>
+<fun r='_ZNK4llvm7CmpInst16isFalseWhenEqualEv'/>
+<fun r='_ZN4llvm7CmpInst10isUnsignedENS0_9PredicateE'/>
+<fun r='_ZN4llvm7CmpInst8isSignedENS0_9PredicateE'/>
+<fun r='_ZN4llvm7CmpInst9isOrderedENS0_9PredicateE'/>
+<fun r='_ZN4llvm7CmpInst11isUnorderedENS0_9PredicateE'/>
+<fun r='_ZN4llvm7CmpInst15isTrueWhenEqualENS0_9PredicateE'/>
+<fun r='_ZN4llvm7CmpInst16isFalseWhenEqualENS0_9PredicateE'/>
+<fun r='_ZN4llvm7CmpInst26isImpliedTrueByMatchingCmpENS0_9PredicateES1_'/>
+<fun r='_ZN4llvm7CmpInst27isImpliedFalseByMatchingCmpENS0_9PredicateES1_'/>
+<fun r='_ZN4llvm7CmpInst7classofEPKNS_11InstructionE'/>
+<fun r='_ZN4llvm7CmpInst7classofEPKNS_5ValueE'/>
+<fun r='_ZN4llvm7CmpInst17makeCmpResultTypeEPNS_4TypeE'/>
+<fun r='_ZN4llvm7CmpInst20setValueSubclassDataEt'/>
+<fun r='_ZN4llvm7CmpInst8op_beginEv'/>
+<fun r='_ZNK4llvm7CmpInst8op_beginEv'/>
+<fun r='_ZN4llvm7CmpInst6op_endEv'/>
+<fun r='_ZNK4llvm7CmpInst6op_endEv'/>
+<fun r='_ZNK4llvm7CmpInst10getOperandEj'/>
+<fun r='_ZN4llvm7CmpInst10setOperandEjPNS_5ValueE'/>
+<fun r='_ZNK4llvm7CmpInst14getNumOperandsEv'/>
+<fun r='_ZN4llvm7CmpInst2OpEv'/>
+<fun r='_ZNK4llvm7CmpInst2OpEv'/>

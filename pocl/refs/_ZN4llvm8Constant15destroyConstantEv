@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/IR/Constant.h' l='116' type='void llvm::Constant::destroyConstant()'/>
+<doc f='include/llvm-6.0/llvm/IR/Constant.h' l='109'>/// Called if some element of this constant is no longer valid.
+  /// At this point only other constants may be on the use_list for this
+  /// constant.  Any constants on our Use list must also be destroy&apos;d.  The
+  /// implementation must be sure to remove the constant from the list of
+  /// available cached constants.  Implementations should implement
+  /// destroyConstantImpl to remove constants from any pools/maps they are
+  /// contained it.</doc>
+<use f='pocl/lib/llvmopencl/AutomaticLocals.cc' l='134' u='c' c='_ZL24breakConstantExpressionsPN4llvm5ValueEPNS_8FunctionE'/>

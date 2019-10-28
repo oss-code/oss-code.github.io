@@ -1,0 +1,8 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='1398' type='LLVMValueRef LLVMGetUser(LLVMUseRef U)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='1391'>/**
+ * Obtain the user value for a user.
+ *
+ * The returned value corresponds to a llvm::User type.
+ *
+ * @see llvm::Use::getUser()
+ */</doc>

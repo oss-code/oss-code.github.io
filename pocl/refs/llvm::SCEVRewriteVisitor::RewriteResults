@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='587' type='DenseMap&lt;const llvm::SCEV *, const llvm::SCEV *&gt;'/>
+<use f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='593' u='c' c='_ZN4llvm18SCEVRewriteVisitor5visitEPKNS_4SCEVE'/>
+<use f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='594' u='c' c='_ZN4llvm18SCEVRewriteVisitor5visitEPKNS_4SCEVE'/>
+<use f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='597' u='c' c='_ZN4llvm18SCEVRewriteVisitor5visitEPKNS_4SCEVE'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='582'>// Memoize the result of each visit so that we only compute once for
+    // the same input SCEV. This is to avoid redundant computations when
+    // a SCEV is referenced by multiple SCEVs. Without memoization, this
+    // visit algorithm would have exponential time complexity in the worst
+    // case, causing the compiler to hang on certain tests.</doc>

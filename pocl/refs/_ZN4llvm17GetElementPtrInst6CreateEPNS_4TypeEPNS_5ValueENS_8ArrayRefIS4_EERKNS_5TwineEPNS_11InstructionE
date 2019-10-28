@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/IR/Instructions.h' l='863' ll='877' type='static llvm::GetElementPtrInst * llvm::GetElementPtrInst::Create(llvm::Type * PointeeType, llvm::Value * Ptr, ArrayRef&lt;llvm::Value *&gt; IdxList, const llvm::Twine &amp; NameStr = &quot;&quot;, llvm::Instruction * InsertBefore = nullptr)'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='909' u='c' c='_ZN4llvm17GetElementPtrInst14CreateInBoundsEPNS_4TypeEPNS_5ValueENS_8ArrayRefIS4_EERKNS_5TwineEPNS_11InstructionE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='244' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='309' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='627' u='c' c='_Z23convertPtrArgsToOffsetsPN4llvm6ModuleEPKcjPNS_14GlobalVariableE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1242' u='c' c='_ZN4llvm9IRBuilder9CreateGEPEPNS_4TypeEPNS_5ValueENS_8ArrayRefIS4_EERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1269' u='c' c='_ZN4llvm9IRBuilder9CreateGEPEPNS_4TypeEPNS_5ValueES4_RKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1288' u='c' c='_ZN4llvm9IRBuilder18CreateConstGEP1_32EPNS_4TypeEPNS_5ValueEjRKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1329' u='c' c='_ZN4llvm9IRBuilder18CreateConstGEP1_64EPNS_5ValueEmRKNS_5TwineE'/>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='124' u='c' c='_ZL10convertGEPPN4llvm12ConstantExprEPNS_11InstructionE'/>

@@ -1,0 +1,28 @@
+<inh f='include/llvm-6.0/llvm/IR/Operator.h' l='31' c='llvm::Operator'/>
+<def f='include/llvm-6.0/llvm/IR/Operator.h' l='229' ll='370'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/IR/Operator.h' l='227'>/// Utility class for floating point operations which can have
+/// information about relaxed accuracy requirements attached to them.</doc>
+<fun r='_ZN4llvm14FPMathOperator7setFastEb'/>
+<fun r='_ZN4llvm14FPMathOperator18setHasAllowReassocEb'/>
+<fun r='_ZN4llvm14FPMathOperator12setHasNoNaNsEb'/>
+<fun r='_ZN4llvm14FPMathOperator12setHasNoInfsEb'/>
+<fun r='_ZN4llvm14FPMathOperator19setHasNoSignedZerosEb'/>
+<fun r='_ZN4llvm14FPMathOperator21setHasAllowReciprocalEb'/>
+<fun r='_ZN4llvm14FPMathOperator19setHasAllowContractEb'/>
+<fun r='_ZN4llvm14FPMathOperator16setHasApproxFuncEb'/>
+<fun r='_ZN4llvm14FPMathOperator16setFastMathFlagsENS_13FastMathFlagsE'/>
+<fun r='_ZN4llvm14FPMathOperator17copyFastMathFlagsENS_13FastMathFlagsE'/>
+<fun r='_ZNK4llvm14FPMathOperator6isFastEv'/>
+<fun r='_ZNK4llvm14FPMathOperator15hasAllowReassocEv'/>
+<fun r='_ZNK4llvm14FPMathOperator9hasNoNaNsEv'/>
+<fun r='_ZNK4llvm14FPMathOperator9hasNoInfsEv'/>
+<fun r='_ZNK4llvm14FPMathOperator16hasNoSignedZerosEv'/>
+<fun r='_ZNK4llvm14FPMathOperator18hasAllowReciprocalEv'/>
+<fun r='_ZNK4llvm14FPMathOperator16hasAllowContractEv'/>
+<fun r='_ZNK4llvm14FPMathOperator13hasApproxFuncEv'/>
+<fun r='_ZNK4llvm14FPMathOperator16getFastMathFlagsEv'/>
+<fun r='_ZNK4llvm14FPMathOperator13getFPAccuracyEv'/>
+<fun r='_ZN4llvm14FPMathOperator7classofEPKNS_11InstructionE'/>
+<fun r='_ZN4llvm14FPMathOperator7classofEPKNS_12ConstantExprE'/>
+<fun r='_ZN4llvm14FPMathOperator7classofEPKNS_5ValueE'/>

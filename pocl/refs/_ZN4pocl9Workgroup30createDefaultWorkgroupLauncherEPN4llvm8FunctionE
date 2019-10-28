@@ -1,0 +1,6 @@
+<dec f='pocl/lib/llvmopencl/Workgroup.h' l='56' type='void pocl::Workgroup::createDefaultWorkgroupLauncher(llvm::Function * F)'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='250' u='c' c='_ZN4pocl9Workgroup11runOnModuleERN4llvm6ModuleE'/>
+<def f='pocl/lib/llvmopencl/Workgroup.cc' l='943' ll='1034' type='void pocl::Workgroup::createDefaultWorkgroupLauncher(llvm::Function * F)'/>
+<doc f='pocl/lib/llvmopencl/Workgroup.cc' l='940'>// Creates a work group launcher function (called KERNELNAME_workgroup)
+// that assumes kernel pointer arguments are stored as pointers to the
+// actual buffers and that scalar data is loaded from the default memory.</doc>

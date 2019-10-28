@@ -1,0 +1,11 @@
+<def f='include/llvm-6.0/llvm/Support/Error.h' l='230' ll='233' type='bool llvm::Error::operator bool()'/>
+<use f='include/llvm-6.0/llvm/Support/Error.h' l='377' u='c' c='_ZN4llvm9ErrorList4joinENS_5ErrorES1_'/>
+<use f='include/llvm-6.0/llvm/Support/Error.h' l='379' u='c' c='_ZN4llvm9ErrorList4joinENS_5ErrorES1_'/>
+<use f='include/llvm-6.0/llvm/Support/Error.h' l='689' u='c' c='_ZN4llvm8cantFailENS_5ErrorEPKc'/>
+<use f='include/llvm-6.0/llvm/Support/Error.h' l='867' u='c' c='_ZN4llvm12handleErrorsENS_5ErrorEDpOT_'/>
+<use f='include/llvm-6.0/llvm/Support/Error.h' l='995' u='c' c='_ZN4llvm19ErrorAsOutParameterC1EPNS_5ErrorE'/>
+<use f='include/llvm-6.0/llvm/Support/Error.h' l='1000' u='c' c='_ZN4llvm19ErrorAsOutParameterD1Ev'/>
+<use f='include/llvm-6.0/llvm/Support/Error.h' l='1142' u='c' c='_ZNK4llvm11ExitOnError10checkErrorENS_5ErrorE'/>
+<doc f='include/llvm-6.0/llvm/Support/Error.h' l='227'>/// Bool conversion. Returns true if this Error is in a failure state,
+  /// and false if it is in an accept state. If the error is in a Success state
+  /// it will be considered checked.</doc>

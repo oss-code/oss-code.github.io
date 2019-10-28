@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1190' ll='1192' type='uint32_t llvm::OperandBundleUse::getTagID() const'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1196' u='c' c='_ZNK4llvm16OperandBundleUse20isDeoptOperandBundleEv'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1201' u='c' c='_ZNK4llvm16OperandBundleUse22isFuncletOperandBundleEv'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1384' u='c' c='_ZNK4llvm17OperandBundleUser16getOperandBundleEj'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1185'>/// \brief Return the tag of this operand bundle as an integer.
+  ///
+  /// Operand bundle tags are interned by LLVMContextImpl::getOrInsertBundleTag,
+  /// and this function returns the unique integer getOrInsertBundleTag
+  /// associated the tag of this operand bundle to.</doc>

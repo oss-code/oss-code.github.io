@@ -1,0 +1,12 @@
+<dec f='include/hwloc.h' l='227' type='9'/>
+<use f='include/hwloc/helper.h' l='1243' u='r' c='hwloc_get_next_bridge'/>
+<use f='include/hwloc/helper.h' l='1252' u='r' c='hwloc_bridge_covers_pcibus'/>
+<use f='include/hwloc/helper.h' l='1273' u='r' c='hwloc_get_hostbridge_by_pcibus'/>
+<use f='pocl/lib/CL/devices/topology/pocl_topology.c' l='104' u='r' c='pocl_topology_detect_device_info'/>
+<doc f='include/hwloc.h' l='227'>/**&lt; \brief Bridge.
+			  * Any bridge that connects the host or an I/O bus,
+			  * to another I/O bus.
+			  * Bridge objects have neither CPU sets nor node sets.
+			  * They are not added to the topology unless I/O discovery
+			  * is enabled with hwloc_topology_set_flags().
+			  */</doc>

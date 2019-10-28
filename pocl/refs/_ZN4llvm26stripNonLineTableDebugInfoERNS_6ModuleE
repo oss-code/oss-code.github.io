@@ -1,0 +1,11 @@
+<dec f='include/llvm-6.0/llvm/IR/DebugInfo.h' l='52' type='bool llvm::stripNonLineTableDebugInfo(llvm::Module &amp; M)'/>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfo.h' l='42'>/// Downgrade the debug info in a module to contain only line table information.
+///
+/// In order to convert debug info to what -gline-tables-only would have
+/// created, this does the following:
+///   1) Delete all debug intrinsics.
+///   2) Delete all non-CU named metadata debug info nodes.
+///   3) Create new DebugLocs for each instruction.
+///   4) Create a new CU debug info, and similarly for every metadata node
+///      that&apos;s reachable from the CU debug info.
+///   All debug type metadata nodes are unreachable and garbage collected.</doc>

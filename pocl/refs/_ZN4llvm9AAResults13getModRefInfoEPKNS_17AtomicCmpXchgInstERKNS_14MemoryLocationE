@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='559' type='llvm::ModRefInfo llvm::AAResults::getModRefInfo(const llvm::AtomicCmpXchgInst * CX, const llvm::MemoryLocation &amp; Loc)'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='565' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_17AtomicCmpXchgInstEPKNS_5ValueEj'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='633' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_11InstructionERKNS_8OptionalINS_14MemoryLocationEEE'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='557'>/// getModRefInfo (for cmpxchges) - Return information about whether
+  /// a particular cmpxchg modifies or reads the specified memory location.</doc>

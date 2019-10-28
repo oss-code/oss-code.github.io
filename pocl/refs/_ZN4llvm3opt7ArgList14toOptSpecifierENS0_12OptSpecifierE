@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/Option/ArgList.h' l='178' type='static llvm::opt::OptSpecifier llvm::opt::ArgList::toOptSpecifier(llvm::opt::OptSpecifier S)'/>
+<use f='include/llvm-6.0/llvm/Option/ArgList.h' l='210' u='c' c='_ZNK4llvm3opt7ArgList8filteredEDpT_'/>
+<use f='include/llvm-6.0/llvm/Option/ArgList.h' l='214' u='c' c='_ZNK4llvm3opt7ArgList8filteredEDpT_'/>
+<use f='include/llvm-6.0/llvm/Option/ArgList.h' l='215' u='c' c='_ZNK4llvm3opt7ArgList8filteredEDpT_'/>
+<use f='include/llvm-6.0/llvm/Option/ArgList.h' l='221' u='c' c='_ZNK4llvm3opt7ArgList16filtered_reverseEDpT_'/>
+<use f='include/llvm-6.0/llvm/Option/ArgList.h' l='225' u='c' c='_ZNK4llvm3opt7ArgList16filtered_reverseEDpT_'/>
+<use f='include/llvm-6.0/llvm/Option/ArgList.h' l='226' u='c' c='_ZNK4llvm3opt7ArgList16filtered_reverseEDpT_'/>
+<doc f='include/llvm-6.0/llvm/Option/ArgList.h' l='176'>// Implicitly convert a value to an OptSpecifier. Used to work around a bug
+  // in MSVC&apos;s implementation of narrowing conversion checking.</doc>

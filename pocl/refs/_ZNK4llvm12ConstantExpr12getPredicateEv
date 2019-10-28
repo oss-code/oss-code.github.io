@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='1175' type='unsigned int llvm::ConstantExpr::getPredicate() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='1173'>/// Return the ICMP or FCMP predicate value. Assert if this is not an ICMP or
+  /// FCMP constant expression.</doc>
+<use f='pocl/lib/llvmopencl/BreakConstantGEPs.cpp' l='201' u='c' c='_ZL17convertExpressionPN4llvm12ConstantExprEPNS_11InstructionE'/>

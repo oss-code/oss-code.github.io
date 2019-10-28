@@ -1,0 +1,9 @@
+<dec f='pocl/lib/CL/devices/pthread/pocl-pthread_utils.h' l='41' type='cl_kernel'/>
+<offset>64</offset>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='241' u='r' c='work_group_scheduler'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='273' u='r' c='work_group_scheduler'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='355' u='w' c='pocl_pthread_prepare_kernel'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='107' u='r' c='setup_kernel_arg_array'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='180' u='r' c='setup_kernel_arg_array_with_locals'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='232' u='r' c='free_kernel_arg_array'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='267' u='r' c='free_kernel_arg_array_with_locals'/>

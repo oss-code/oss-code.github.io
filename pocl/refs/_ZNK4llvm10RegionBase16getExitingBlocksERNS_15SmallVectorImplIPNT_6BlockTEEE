@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='413' type='bool llvm::RegionBase::getExitingBlocks(SmallVectorImpl&lt;BlockT *&gt; &amp; Exitings) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='410'>/// @brief Collect all blocks of this region&apos;s single exit edge, if existing.
+  ///
+  /// @return True if this region contains all the predecessors of the exit.</doc>

@@ -1,0 +1,8 @@
+<dec f='include/llvm-c-6.0/llvm-c/Disassembler.h' l='209' type='LLVMDisasmContextRef LLVMCreateDisasmCPUFeatures(const char * Triple, const char * CPU, const char * Features, void * DisInfo, int TagType, LLVMOpInfoCallback GetOpInfo, LLVMSymbolLookupCallback SymbolLookUp)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Disassembler.h' l='201'>/**
+ * Create a disassembler for the TripleName, a specific CPU and specific feature
+ * string.  Symbolic disassembly is supported by passing a block of information
+ * in the DisInfo parameter and specifying the TagType and callback functions as
+ * described above.  These can all be passed * as NULL.  If successful, this
+ * returns a disassembler context.  If not, it returns NULL.
+ */</doc>

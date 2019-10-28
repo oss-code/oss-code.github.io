@@ -1,0 +1,13 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='300' type='llvm::FunctionPass * llvm::createBreakCriticalEdgesPass()'/>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='75' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='289'>//===----------------------------------------------------------------------===//
+//
+// BreakCriticalEdges - Break all of the critical edges in the CFG by inserting
+// a dummy basic block. This pass may be &quot;required&quot; by passes that cannot deal
+// with critical edges. For this usage, a pass must call:
+//
+//   AU.addRequiredID(BreakCriticalEdgesID);
+//
+// This pass obviously invalidates the CFG, but can update forward dominator
+// (set, immediate dominators, tree, and frontier) information.
+//</doc>

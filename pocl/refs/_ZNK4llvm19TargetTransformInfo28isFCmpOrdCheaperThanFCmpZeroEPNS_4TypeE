@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='593' type='bool llvm::TargetTransformInfo::isFCmpOrdCheaperThanFCmpZero(llvm::Type * Ty) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='589'>/// Return true if it is faster to check if a floating-point value is NaN
+  /// (or not-NaN) versus a comparison against a constant FP zero value.
+  /// Targets should override this if materializing a 0.0 for comparison is
+  /// generally as cheap as checking for ordered/unordered.</doc>

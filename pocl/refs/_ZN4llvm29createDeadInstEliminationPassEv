@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='58' type='llvm::Pass * llvm::createDeadInstEliminationPass()'/>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='89' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='52'>//===----------------------------------------------------------------------===//
+//
+// DeadInstElimination - This pass quickly removes trivially dead instructions
+// without modifying the CFG of the function.  It is a BasicBlockPass, so it
+// runs efficiently when queued next to other BasicBlockPass&apos;s.
+//</doc>

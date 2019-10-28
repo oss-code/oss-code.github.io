@@ -1,0 +1,17 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='1043' type='char *'/>
+<offset>192</offset>
+<use f='pocl/lib/CL/clGetKernelInfo.c' l='50' u='r' c='POclGetKernelInfo'/>
+<use f='pocl/lib/CL/clGetKernelInfo.c' l='51' u='r' c='POclGetKernelInfo'/>
+<use f='pocl/lib/CL/clGetKernelInfo.c' l='51' u='r' c='POclGetKernelInfo'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='89' u='r' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/clReleaseProgram.c' l='89' u='w' c='POclReleaseProgram'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='389' u='r' c='pocl_binary_serialize_kernel_to_buffer'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='389' u='r' c='pocl_binary_serialize_kernel_to_buffer'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='390' u='r' c='pocl_binary_serialize_kernel_to_buffer'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='758' u='w' c='pocl_binary_get_kernels_metadata'/>
+<use f='pocl/lib/CL/pocl_build.c' l='414' u='r' c='free_meta'/>
+<use f='pocl/lib/CL/pocl_build.c' l='414' u='w' c='free_meta'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='602' u='w' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='603' u='r' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='604' u='r' c='pocl_llvm_get_kernels_metadata'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='606' u='w' c='pocl_llvm_get_kernels_metadata'/>

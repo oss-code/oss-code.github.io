@@ -1,0 +1,7 @@
+<dec f='pocl/include/pocl.h' l='106' type='void *'/>
+<offset>64</offset>
+<doc f='pocl/include/pocl.h' l='106'>/* The work group function ptr. Device specific. */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='670' u='r' c='pocl_basic_run'/>
+<use f='pocl/lib/CL/devices/common.c' l='1031' u='w' c='fetch_dlhandle_cache_item'/>
+<use f='pocl/lib/CL/devices/common.c' l='1113' u='w' c='pocl_check_kernel_dlhandle_cache'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='364' u='r' c='pocl_pthread_prepare_kernel'/>

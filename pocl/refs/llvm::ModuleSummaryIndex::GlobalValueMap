@@ -1,0 +1,12 @@
+<dec f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='603' type='GlobalValueSummaryMapTy'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='630' u='m' c='_ZN4llvm18ModuleSummaryIndex19getOrInsertValuePtrEm'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='634' u='m' c='_ZN4llvm18ModuleSummaryIndex5beginEv'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='635' u='m' c='_ZNK4llvm18ModuleSummaryIndex5beginEv'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='636' u='m' c='_ZN4llvm18ModuleSummaryIndex3endEv'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='637' u='m' c='_ZNK4llvm18ModuleSummaryIndex3endEv'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='638' u='m' c='_ZNK4llvm18ModuleSummaryIndex4sizeEv'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='654' u='m' c='_ZNK4llvm18ModuleSummaryIndex12getValueInfoEm'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='655' u='m' c='_ZNK4llvm18ModuleSummaryIndex12getValueInfoEm'/>
+<offset>0</offset>
+<doc f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='601'>/// Map from value name to list of summary instances for values of that
+  /// name (may be duplicates in the COMDAT case, e.g.).</doc>

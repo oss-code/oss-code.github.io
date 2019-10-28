@@ -1,0 +1,14 @@
+<def f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='79' ll='92'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='66'>/// The possible results of an alias query.
+///
+/// These results are always computed between two MemoryLocation objects as
+/// a query to some alias analysis.
+///
+/// Note that these are unscoped enumerations because we would like to support
+/// implicitly testing a result for the existence of any possible aliasing with
+/// a conversion to bool, but an &quot;enum class&quot; doesn&apos;t support this. The
+/// canonical names from the literature are suffixed and unique anyways, and so
+/// they serve as global constants in LLVM for these results.
+///
+/// See docs/AliasAnalysis.html for more information on the specific meanings
+/// of these values.</doc>

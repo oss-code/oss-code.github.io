@@ -1,0 +1,65 @@
+<def f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='255' ll='663'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='893' c='llvm::Region'/>
+<inh f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='1027' c='llvm::RegionNodeBase'/>
+<def f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='1026'/>
+<size>112</size>
+<mbr r='llvm::RegionBase::RI' t='RegionInfoT *'/>
+<mbr r='llvm::RegionBase::DT' t='DomTreeT *'/>
+<mbr r='llvm::RegionBase::exit' t='BlockT *'/>
+<mbr r='llvm::RegionBase::children' t='RegionSet'/>
+<mbr r='llvm::RegionBase::BBNodeMap' t='BBNodeMapT'/>
+<fun r='_ZNK4llvm10RegionBase16verifyBBInRegionEPNT_6BlockTE'/>
+<fun r='_ZNK4llvm10RegionBase10verifyWalkEPNT_6BlockTEPSt3setIS3_St4lessIS3_ESaIS3_EE'/>
+<fun r='_ZNK4llvm10RegionBase16verifyRegionNestEv'/>
+<fun r='_ZN4llvm10RegionBaseC1EPNT_6BlockTES3_PNS1_11RegionInfoTEPNS1_8DomTreeTEPNS1_7RegionTE'/>
+<fun r='_ZN4llvm10RegionBaseC1ERKNS_10RegionBaseIT_EE'/>
+<fun r='_ZN4llvm10RegionBaseaSERKNS_10RegionBaseIT_EE'/>
+<fun r='_ZN4llvm10RegionBaseD1Ev'/>
+<fun r='_ZNK4llvm10RegionBase8getEntryEv'/>
+<fun r='_ZN4llvm10RegionBase12replaceEntryEPNT_6BlockTE'/>
+<fun r='_ZN4llvm10RegionBase11replaceExitEPNT_6BlockTE'/>
+<fun r='_ZN4llvm10RegionBase21replaceEntryRecursiveEPNT_6BlockTE'/>
+<fun r='_ZN4llvm10RegionBase20replaceExitRecursiveEPNT_6BlockTE'/>
+<fun r='_ZNK4llvm10RegionBase7getExitEv'/>
+<fun r='_ZNK4llvm10RegionBase9getParentEv'/>
+<fun r='_ZNK4llvm10RegionBase7getNodeEv'/>
+<fun r='_ZNK4llvm10RegionBase8getDepthEv'/>
+<fun r='_ZNK4llvm10RegionBase16isTopLevelRegionEv'/>
+<fun r='_ZNK4llvm10RegionBase17getExpandedRegionEv'/>
+<fun r='_ZNK4llvm10RegionBase16getEnteringBlockEv'/>
+<fun r='_ZNK4llvm10RegionBase15getExitingBlockEv'/>
+<fun r='_ZNK4llvm10RegionBase16getExitingBlocksERNS_15SmallVectorImplIPNT_6BlockTEEE'/>
+<fun r='_ZNK4llvm10RegionBase8isSimpleEv'/>
+<fun r='_ZNK4llvm10RegionBase10getNameStrB5cxx11Ev'/>
+<fun r='_ZNK4llvm10RegionBase13getRegionInfoEv'/>
+<fun r='_ZNK4llvm10RegionBase5printERNS_11raw_ostreamEbjNS0_10PrintStyleE'/>
+<fun r='_ZNK4llvm10RegionBase8containsEPKNT_6BlockTE'/>
+<fun r='_ZNK4llvm10RegionBase8containsEPKNT_7RegionTE'/>
+<fun r='_ZNK4llvm10RegionBase8containsEPKNT_5InstTE'/>
+<fun r='_ZNK4llvm10RegionBase8containsEPKNT_5LoopTE'/>
+<fun r='_ZNK4llvm10RegionBase21outermostLoopInRegionEPNT_5LoopTE'/>
+<fun r='_ZNK4llvm10RegionBase21outermostLoopInRegionEPNT_9LoopInfoTEPNS1_6BlockTE'/>
+<fun r='_ZNK4llvm10RegionBase16getSubRegionNodeEPNT_6BlockTE'/>
+<fun r='_ZNK4llvm10RegionBase7getNodeEPNT_6BlockTE'/>
+<fun r='_ZNK4llvm10RegionBase9getBBNodeEPNT_6BlockTE'/>
+<fun r='_ZN4llvm10RegionBase12addSubRegionEPNT_7RegionTEb'/>
+<fun r='_ZN4llvm10RegionBase15removeSubRegionEPNT_7RegionTE'/>
+<fun r='_ZN4llvm10RegionBase18transferChildrenToEPNT_7RegionTE'/>
+<fun r='_ZNK4llvm10RegionBase12verifyRegionEv'/>
+<fun r='_ZN4llvm10RegionBase14clearNodeCacheEv'/>
+<fun r='_ZN4llvm10RegionBase5beginEv'/>
+<fun r='_ZN4llvm10RegionBase3endEv'/>
+<fun r='_ZNK4llvm10RegionBase5beginEv'/>
+<fun r='_ZNK4llvm10RegionBase3endEv'/>
+<fun r='_ZN4llvm10RegionBase11block_beginEv'/>
+<fun r='_ZN4llvm10RegionBase9block_endEv'/>
+<fun r='_ZNK4llvm10RegionBase11block_beginEv'/>
+<fun r='_ZNK4llvm10RegionBase9block_endEv'/>
+<fun r='_ZN4llvm10RegionBase6blocksEv'/>
+<fun r='_ZNK4llvm10RegionBase6blocksEv'/>
+<fun r='_ZN4llvm10RegionBase13element_beginEv'/>
+<fun r='_ZN4llvm10RegionBase11element_endEv'/>
+<fun r='_ZN4llvm10RegionBase8elementsEv'/>
+<fun r='_ZNK4llvm10RegionBase13element_beginEv'/>
+<fun r='_ZNK4llvm10RegionBase11element_endEv'/>
+<fun r='_ZNK4llvm10RegionBase8elementsEv'/>

@@ -1,0 +1,45 @@
+<dec f='pocl/lib/CL/pocl_llvm_api.h' l='68' type='cl_device_id'/>
+<def f='pocl/lib/CL/pocl_llvm_build.cc' l='83' type='cl_device_id'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='565' u='w' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='617' u='w' c='pocl_llvm_link_program'/>
+<doc f='pocl/lib/CL/pocl_llvm_build.cc' l='82'>/* Global pocl device to be used by passes if needed */</doc>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='375' u='w' c='pocl_llvm_generate_workgroup_function_nowrite'/>
+<dec f='pocl/lib/llvmopencl/Flatten.cc' l='60' type='cl_device_id'/>
+<use f='pocl/lib/llvmopencl/Flatten.cc' l='75' u='r' c='_ZN12_GLOBAL__N_17Flatten11runOnModuleERN4llvm6ModuleE'/>
+<dec f='pocl/lib/llvmopencl/Kernel.cc' l='44' type='cl_device_id'/>
+<use f='pocl/lib/llvmopencl/Kernel.cc' l='285' u='r' c='_ZN4pocl6Kernel20addLocalSizeInitCodeEmmm'/>
+<dec f='pocl/lib/llvmopencl/ParallelRegion.cc' l='58' type='cl_device_id'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='293' u='r' c='_ZN4pocl14ParallelRegion17insertLocalIdInitEPN4llvm10BasicBlockEjjj'/>
+<dec f='pocl/lib/llvmopencl/Workgroup.cc' l='79' type='cl_device_id'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='172' u='r' c='_ZN4pocl9Workgroup11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='238' u='r' c='_ZN4pocl9Workgroup11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='245' u='r' c='_ZN4pocl9Workgroup11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='257' u='r' c='_ZN4pocl9Workgroup11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='257' u='r' c='_ZN4pocl9Workgroup11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='307' u='r' c='_ZL26addRangeMetadataForPCFieldPN4llvm11InstructionEii'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='349' u='r' c='_ZL26addRangeMetadataForPCFieldPN4llvm11InstructionEii'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='611' u='r' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='611' u='r' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='613' u='r' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='618' u='r' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='638' u='r' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='638' u='r' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='675' u='r' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='724' u='r' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='735' u='r' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='921' u='r' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='981' u='r' c='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1140' u='r' c='_ZN4pocl9Workgroup32createArgBufferWorkgroupLauncherEPN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1143' u='r' c='_ZN4pocl9Workgroup32createArgBufferWorkgroupLauncherEPN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1180' u='r' c='_ZN4pocl9Workgroup32createArgBufferWorkgroupLauncherEPN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1272' u='r' c='_ZN4pocl9Workgroup18createGridLauncherEPN4llvm8FunctionES3_NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1403' u='r' c='_ZN4pocl9Workgroup27createFastWorkgroupLauncherEPN4llvm8FunctionE'/>
+<dec f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='48' type='cl_device_id'/>
+<use f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='84' u='r' c='_ZN4pocl15WorkitemHandler10InitializeEPNS_6KernelE'/>
+<doc f='pocl/lib/llvmopencl/WorkitemHandler.cc' l='47'>//#define DEBUG_REFERENCE_FIXING</doc>
+<dec f='pocl/lib/llvmopencl/linker.cpp' l='55' type='cl_device_id'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='90' u='r' c='_ZL23fixOpenCLimageArgumentsPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='119' u='r' c='_ZL24CloneFuncFixOpenCLImageTPN4llvm6ModuleEPNS_8FunctionE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='120' u='r' c='_ZL24CloneFuncFixOpenCLImageTPN4llvm6ModuleEPNS_8FunctionE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='351' u='r' c='_Z4linkPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='472' u='r' c='_Z21copyKernelFromBitcodePKcPN4llvm6ModuleEPKS2_'/>

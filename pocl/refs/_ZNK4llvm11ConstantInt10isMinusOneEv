@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/IR/Constants.h' l='209' ll='211' type='bool llvm::ConstantInt::isMinusOne() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='205'>/// This function will return true iff every bit in this constant is set
+  /// to true.
+  /// @returns true iff this constant&apos;s bits are all set to true.
+  /// @brief Determine if the value is all ones.</doc>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1069' u='c' c='_ZN4llvm9IRBuilder9CreateAndEPNS_5ValueES2_RKNS_5TwineE'/>

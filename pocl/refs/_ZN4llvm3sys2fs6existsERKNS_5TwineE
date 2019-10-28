@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/Support/FileSystem.h' l='429' ll='431' type='bool llvm::sys::fs::exists(const llvm::Twine &amp; Path)'/>
+<doc f='include/llvm-6.0/llvm/Support/FileSystem.h' l='425'>/// @brief Does file exist?
+///
+/// @param Path Input path.
+/// @returns True if it exists, false otherwise.</doc>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='156' u='c' c='_Z12pocl_exists2RN4llvm5TwineE'/>

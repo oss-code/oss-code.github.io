@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/Instruction.h' l='232' type='void llvm::Instruction::setMetadata(llvm::StringRef Kind, llvm::MDNode * Node)'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='483' u='c' c='_ZN4pocl14ParallelRegion23AddParallelLoopMetadataEPN4llvm6MDNodeE'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='527' u='c' c='_ZN4pocl14ParallelRegion13AddIDMetadataERN4llvm11LLVMContextEmmm'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='528' u='c' c='_ZN4pocl14ParallelRegion13AddIDMetadataERN4llvm11LLVMContextEmmm'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='309' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>

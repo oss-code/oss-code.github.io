@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/IR/Value.h' l='588' type='const llvm::Value * llvm::Value::DoPHITranslation(const llvm::BasicBlock * CurBB, const llvm::BasicBlock * PredBB) const'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='592' u='c' c='_ZN4llvm5Value16DoPHITranslationEPKNS_10BasicBlockES3_'/>
+<doc f='include/llvm-6.0/llvm/IR/Value.h' l='582'>/// \brief Translate PHI node to its predecessor from the given basic block.
+  ///
+  /// If this value is a PHI node with CurBB as its parent, return the value in
+  /// the PHI node corresponding to PredBB.  If not, return ourself.  This is
+  /// useful if you want to know the value something has in a predecessor
+  /// block.</doc>

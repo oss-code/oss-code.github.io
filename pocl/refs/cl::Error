@@ -1,0 +1,14 @@
+<inh f='include/c++/7/bits/exception.h' l='60' c='std::exception'/>
+<def f='pocl/include/CL/cl2.hpp' l='731' ll='770'/>
+<ovr f='pocl/include/CL/cl2.hpp' l='1959' c='cl::BuildError'/>
+<size>24</size>
+<doc f='pocl/include/CL/cl2.hpp' l='727'>/*! \brief Exception class
+     *
+     *  This may be thrown by API functions when CL_HPP_ENABLE_EXCEPTIONS is defined.
+     */</doc>
+<mbr r='cl::Error::err_' o='64' t='cl_int'/>
+<mbr r='cl::Error::errStr_' o='128' t='const char *'/>
+<fun r='_ZN2cl5ErrorC1EiPKc'/>
+<fun r='_ZN2cl5ErrorD1Ev'/>
+<fun r='_ZNK2cl5Error4whatEv'/>
+<fun r='_ZNK2cl5Error3errEv'/>

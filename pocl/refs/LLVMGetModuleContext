@@ -1,0 +1,9 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='637' type='LLVMContextRef LLVMGetModuleContext(LLVMModuleRef M)'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1093' u='c' c='_ZL19createArgBufferLoadP17LLVMOpaqueBuilderP15LLVMOpaqueValuePmS2_j'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1133' u='c' c='_ZN4pocl9Workgroup32createArgBufferWorkgroupLauncherEPN4llvm8FunctionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1267' u='c' c='_ZN4pocl9Workgroup18createGridLauncherEPN4llvm8FunctionES3_NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='632'>/**
+ * Obtain the context to which this module is associated.
+ *
+ * @see Module::getContext()
+ */</doc>

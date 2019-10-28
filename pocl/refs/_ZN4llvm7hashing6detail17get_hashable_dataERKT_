@@ -1,0 +1,2 @@
+<def f='include/llvm-6.0/llvm/ADT/Hashing.h' l='365' ll='368' type='typename std::enable_if&lt;is_hashable_data&lt;T&gt;::value, T&gt;::type llvm::hashing::detail::get_hashable_data(const T &amp; value)'/>
+<def f='include/llvm-6.0/llvm/ADT/Hashing.h' l='373' ll='377' type='typename std::enable_if&lt;!is_hashable_data&lt;T&gt;::value, size_t&gt;::type llvm::hashing::detail::get_hashable_data(const T &amp; value)'/>

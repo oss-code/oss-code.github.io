@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='641' ll='645' type='static llvm::APInt llvm::APInt::getLowBitsSet(unsigned int numBits, unsigned int loBitsSet)'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='635'>/// \brief Get a value with low bits set
+  ///
+  /// Constructs an APInt value that has the bottom loBitsSet bits set.
+  ///
+  /// \param numBits the bitwidth of the result
+  /// \param loBitsSet the number of low-order bits set in the result.</doc>

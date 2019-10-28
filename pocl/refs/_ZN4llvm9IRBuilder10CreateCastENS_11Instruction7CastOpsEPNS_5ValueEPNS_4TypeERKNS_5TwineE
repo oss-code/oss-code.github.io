@@ -1,0 +1,14 @@
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1385' u='c' c='_ZN4llvm9IRBuilder11CreateTruncEPNS_5ValueEPNS_4TypeERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1388' u='c' c='_ZN4llvm9IRBuilder10CreateZExtEPNS_5ValueEPNS_4TypeERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1391' u='c' c='_ZN4llvm9IRBuilder10CreateSExtEPNS_5ValueEPNS_4TypeERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1422' u='c' c='_ZN4llvm9IRBuilder12CreateFPToUIEPNS_5ValueEPNS_4TypeERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1425' u='c' c='_ZN4llvm9IRBuilder12CreateFPToSIEPNS_5ValueEPNS_4TypeERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1428' u='c' c='_ZN4llvm9IRBuilder12CreateUIToFPEPNS_5ValueEPNS_4TypeERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1431' u='c' c='_ZN4llvm9IRBuilder12CreateSIToFPEPNS_5ValueEPNS_4TypeERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1435' u='c' c='_ZN4llvm9IRBuilder13CreateFPTruncEPNS_5ValueEPNS_4TypeERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1438' u='c' c='_ZN4llvm9IRBuilder11CreateFPExtEPNS_5ValueEPNS_4TypeERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1442' u='c' c='_ZN4llvm9IRBuilder14CreatePtrToIntEPNS_5ValueEPNS_4TypeERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1446' u='c' c='_ZN4llvm9IRBuilder14CreateIntToPtrEPNS_5ValueEPNS_4TypeERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1450' u='c' c='_ZN4llvm9IRBuilder13CreateBitCastEPNS_5ValueEPNS_4TypeERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1454' u='c' c='_ZN4llvm9IRBuilder19CreateAddrSpaceCastEPNS_5ValueEPNS_4TypeERKNS_5TwineE'/>
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1480' ll='1487' type='llvm::Value * llvm::IRBuilder::CreateCast(Instruction::CastOps Op, llvm::Value * V, llvm::Type * DestTy, const llvm::Twine &amp; Name = &quot;&quot;)'/>

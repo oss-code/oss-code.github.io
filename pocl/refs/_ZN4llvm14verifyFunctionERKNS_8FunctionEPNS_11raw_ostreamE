@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/Verifier.h' l='89' type='bool llvm::verifyFunction(const llvm::Function &amp; F, llvm::raw_ostream * OS = nullptr)'/>
+<doc f='include/llvm-6.0/llvm/IR/Verifier.h' l='83'>/// \brief Check a function for errors, useful for use when debugging a
+/// pass.
+///
+/// If there are no errors, the function returns false. If an error is found,
+/// a message describing the error is written to OS (if non-null) and true is
+/// returned.</doc>

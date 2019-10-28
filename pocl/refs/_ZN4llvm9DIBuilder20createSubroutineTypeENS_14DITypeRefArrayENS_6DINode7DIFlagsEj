@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='457' type='llvm::DISubroutineType * llvm::DIBuilder::createSubroutineType(llvm::DITypeRefArray ParameterTypes, DINode::DIFlags Flags = DINode::FlagZero, unsigned int CC = 0)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='450'>/// Create subroutine type.
+    /// \param ParameterTypes  An array of subroutine parameter types. This
+    ///                        includes return type at 0th index.
+    /// \param Flags           E.g.: LValueReference.
+    ///                        These flags are used to emit dwarf attributes.
+    /// \param CC              Calling convention, e.g. dwarf::DW_CC_normal</doc>

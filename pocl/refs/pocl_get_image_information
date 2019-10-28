@@ -1,0 +1,4 @@
+<dec f='pocl/lib/CL/pocl_image_util.h' l='43' type='void pocl_get_image_information(cl_channel_order ch_order, cl_channel_type ch_type, int * host_channels, int * host_elem_size)'/>
+<use f='pocl/lib/CL/clCreateImage.c' l='94' u='c' c='POclCreateImage'/>
+<use f='pocl/lib/CL/devices/common.c' l='274' u='c' c='fill_dev_image_t'/>
+<def f='pocl/lib/CL/pocl_image_util.c' l='213' ll='253' type='void pocl_get_image_information(cl_channel_order ch_order, cl_channel_type ch_type, int * channels_out, int * elem_size_out)'/>

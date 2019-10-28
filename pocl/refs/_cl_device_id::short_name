@@ -1,0 +1,15 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='730' type='char *'/>
+<offset>4032</offset>
+<use f='pocl/lib/CL/clCreateSubDevices.c' l='58' u='r' c='POclCreateSubDevices'/>
+<use f='pocl/lib/CL/clCreateSubDevices.c' l='64' u='r' c='POclCreateSubDevices'/>
+<use f='pocl/lib/CL/clCreateSubDevices.c' l='75' u='r' c='POclCreateSubDevices'/>
+<use f='pocl/lib/CL/devices/cpuinfo.c' l='297' u='r' c='pocl_cpuinfo_get_cpu_name_and_vendor'/>
+<use f='pocl/lib/CL/devices/cpuinfo.c' l='396' u='r' c='pocl_cpuinfo_get_cpu_name_and_vendor'/>
+<use f='pocl/lib/CL/devices/cpuinfo.c' l='398' u='r' c='pocl_cpuinfo_get_cpu_name_and_vendor'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='202' u='w' c='pocl_cuda_init'/>
+<use f='pocl/lib/CL/devices/devices.c' l='535' u='w' c='pocl_init_devices'/>
+<use f='pocl/lib/CL/pocl_build.c' l='619' u='r' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_build.c' l='675' u='r' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_build.c' l='761' u='r' c='compile_and_link_program'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1241' u='r' c='pocl_update_event_finished_msg'/>
+<use f='pocl/lib/CL/pocl_util.c' l='1244' u='r' c='pocl_update_event_finished_msg'/>

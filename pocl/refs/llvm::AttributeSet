@@ -1,0 +1,37 @@
+<def f='include/llvm-6.0/llvm/IR/Attributes.h' l='205' ll='289'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/IR/Attributes.h' l='199'>//===----------------------------------------------------------------------===//
+/// \class
+/// This class holds the attributes for a particular argument, parameter,
+/// function, or return value. It is an immutable value type that is cheap to
+/// copy. Adding and removing enum attributes is intended to be fast, but adding
+/// and removing string or integer attributes involves a FoldingSet lookup.</doc>
+<mbr r='llvm::AttributeSet::SetNode' o='0' t='llvm::AttributeSetNode *'/>
+<fun r='_ZN4llvm12AttributeSetC1EPNS_16AttributeSetNodeE'/>
+<fun r='_ZN4llvm12AttributeSetC1Ev'/>
+<fun r='_ZN4llvm12AttributeSetC1ERKS0_'/>
+<fun r='_ZN4llvm12AttributeSetD1Ev'/>
+<fun r='_ZN4llvm12AttributeSet3getERNS_11LLVMContextERKNS_11AttrBuilderE'/>
+<fun r='_ZN4llvm12AttributeSet3getERNS_11LLVMContextENS_8ArrayRefINS_9AttributeEEE'/>
+<fun r='_ZNK4llvm12AttributeSeteqERKS0_'/>
+<fun r='_ZNK4llvm12AttributeSetneERKS0_'/>
+<fun r='_ZNK4llvm12AttributeSet12addAttributeERNS_11LLVMContextENS_9Attribute8AttrKindE'/>
+<fun r='_ZNK4llvm12AttributeSet12addAttributeERNS_11LLVMContextENS_9StringRefES3_'/>
+<fun r='_ZNK4llvm12AttributeSet13addAttributesERNS_11LLVMContextES0_'/>
+<fun r='_ZNK4llvm12AttributeSet15removeAttributeERNS_11LLVMContextENS_9Attribute8AttrKindE'/>
+<fun r='_ZNK4llvm12AttributeSet15removeAttributeERNS_11LLVMContextENS_9StringRefE'/>
+<fun r='_ZNK4llvm12AttributeSet16removeAttributesERNS_11LLVMContextERKNS_11AttrBuilderE'/>
+<fun r='_ZNK4llvm12AttributeSet16getNumAttributesEv'/>
+<fun r='_ZNK4llvm12AttributeSet13hasAttributesEv'/>
+<fun r='_ZNK4llvm12AttributeSet12hasAttributeENS_9Attribute8AttrKindE'/>
+<fun r='_ZNK4llvm12AttributeSet12hasAttributeENS_9StringRefE'/>
+<fun r='_ZNK4llvm12AttributeSet12getAttributeENS_9Attribute8AttrKindE'/>
+<fun r='_ZNK4llvm12AttributeSet12getAttributeENS_9StringRefE'/>
+<fun r='_ZNK4llvm12AttributeSet12getAlignmentEv'/>
+<fun r='_ZNK4llvm12AttributeSet17getStackAlignmentEv'/>
+<fun r='_ZNK4llvm12AttributeSet23getDereferenceableBytesEv'/>
+<fun r='_ZNK4llvm12AttributeSet29getDereferenceableOrNullBytesEv'/>
+<fun r='_ZNK4llvm12AttributeSet16getAllocSizeArgsEv'/>
+<fun r='_ZNK4llvm12AttributeSet11getAsStringB5cxx11Eb'/>
+<fun r='_ZNK4llvm12AttributeSet5beginEv'/>
+<fun r='_ZNK4llvm12AttributeSet3endEv'/>

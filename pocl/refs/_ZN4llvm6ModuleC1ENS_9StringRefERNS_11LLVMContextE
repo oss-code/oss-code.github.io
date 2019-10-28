@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/Module.h' l='198' type='void llvm::Module::Module(llvm::StringRef ModuleID, llvm::LLVMContext &amp; C)'/>
+<doc f='include/llvm-6.0/llvm/IR/Module.h' l='196'>/// The Module constructor. Note that there is no default constructor. You
+  /// must provide a name for the module upon construction.</doc>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='663' u='c' c='pocl_llvm_link_program'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='388' u='c' c='pocl_llvm_generate_workgroup_function_nowrite'/>

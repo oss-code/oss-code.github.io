@@ -1,0 +1,4 @@
+<dec f='pocl/lib/CL/pocl_llvm.h' l='80' type='int pocl_llvm_generate_workgroup_function_nowrite(unsigned int DeviceI, cl_device_id Device, cl_kernel Kernel, _cl_command_node * Command, void ** output, int Specialize)'/>
+<use f='pocl/lib/CL/devices/common.c' l='122' u='c' c='llvm_codegen'/>
+<def f='pocl/lib/CL/pocl_llvm_wg.cc' l='368' ll='446' type='int pocl_llvm_generate_workgroup_function_nowrite(unsigned int DeviceI, cl_device_id Device, cl_kernel Kernel, _cl_command_node * Command, void ** Output, int Specialize)'/>
+<use f='pocl/lib/CL/pocl_llvm_wg.cc' l='469' u='c' c='pocl_llvm_generate_workgroup_function'/>

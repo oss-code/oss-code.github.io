@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/Instruction.h' l='591' type='bool llvm::Instruction::isUsedOutsideOfBlock(const llvm::BasicBlock * BB) const'/>
+<doc f='include/llvm-6.0/llvm/IR/Instruction.h' l='588'>/// Return true if there are any uses of this instruction in blocks other than
+  /// the specified block. Note that PHI nodes are considered to evaluate their
+  /// operands in the corresponding predecessor block.</doc>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='79' u='c' c='_ZN4pocl14ParallelRegion17GenerateTempNamesEPN4llvm10BasicBlockE'/>

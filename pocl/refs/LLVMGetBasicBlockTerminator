@@ -1,0 +1,11 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2255' type='LLVMValueRef LLVMGetBasicBlockTerminator(LLVMBasicBlockRef BB)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2245'>/**
+ * Obtain the terminator instruction for a basic block.
+ *
+ * If the basic block does not have a terminator (it is not well-formed
+ * if it doesn&apos;t), then NULL is returned.
+ *
+ * The returned LLVMValueRef corresponds to a llvm::TerminatorInst.
+ *
+ * @see llvm::BasicBlock::getTerminator()
+ */</doc>

@@ -1,0 +1,12 @@
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='642' ll='676'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='640'>/// \brief A collection of metadata nodes that might be associated with a
+/// memory access used by the alias-analysis infrastructure.</doc>
+<fun r='_ZN4llvm9AAMDNodesC1EPNS_6MDNodeES2_S2_'/>
+<fun r='_ZNK4llvm9AAMDNodeseqERKS0_'/>
+<fun r='_ZNK4llvm9AAMDNodesneERKS0_'/>
+<fun r='_ZNK4llvm9AAMDNodescvbEv'/>
+<mbr r='llvm::AAMDNodes::TBAA' o='0' t='llvm::MDNode *'/>
+<mbr r='llvm::AAMDNodes::Scope' o='64' t='llvm::MDNode *'/>
+<mbr r='llvm::AAMDNodes::NoAlias' o='128' t='llvm::MDNode *'/>
+<fun r='_ZN4llvm9AAMDNodes9intersectERKS0_'/>

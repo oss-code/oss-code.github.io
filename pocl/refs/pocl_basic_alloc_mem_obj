@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/devices/basic/basic.h' l='44' macro='1' type='cl_int pocl_basic_alloc_mem_obj(cl_device_id device, cl_mem mem_obj, void * host_ptr)'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='118' u='r' c='pocl_basic_init_device_ops'/>
+<def f='pocl/lib/CL/devices/basic/basic.c' l='453' ll='512' type='cl_int pocl_basic_alloc_mem_obj(cl_device_id device, cl_mem mem_obj, void * host_ptr)'/>
+<dec f='pocl/lib/CL/devices/pthread/pocl-pthread.h' l='35' macro='1' type='cl_int pocl_basic_alloc_mem_obj(cl_device_id device, cl_mem mem_obj, void * host_ptr)'/>
+<dec f='pocl/lib/CL/devices/hsa/pocl-hsa.h' l='32' macro='1' type='cl_int pocl_basic_alloc_mem_obj(cl_device_id device, cl_mem mem_obj, void * host_ptr)'/>

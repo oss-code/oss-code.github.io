@@ -1,0 +1,15 @@
+<def f='include/llvm-6.0/llvm/IR/Constants.h' l='138' ll='140' type='const llvm::APInt &amp; llvm::ConstantInt::getValue() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='135'>/// Return the constant as an APInt value reference. This allows clients to
+  /// obtain a full-precision copy of the value.
+  /// @brief Return the constant&apos;s value.</doc>
+<use f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='58' u='c' c='_ZNK4llvm12SCEVConstant8getAPIntEv'/>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='145' u='c' c='_ZN4pocl25OptimizeWorkItemFuncCalls13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='145' u='c' c='_ZN4pocl25OptimizeWorkItemFuncCalls13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='173' u='c' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='173' u='c' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='208' u='c' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='208' u='c' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='209' u='c' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='209' u='c' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='210' u='c' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>
+<use f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='210' u='c' c='_ZN16WorkItemAAResult5aliasERKN4llvm14MemoryLocationES3_'/>

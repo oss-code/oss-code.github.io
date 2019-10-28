@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='455' ll='463' type='bool llvm::RegionBase::contains(const RegionT * SubRegion) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='451'>/// @brief Check if the region contains another region.
+  ///
+  /// @param SubRegion The region that might be contained in this Region.
+  /// @return True if SubRegion is contained in the region otherwise false.</doc>

@@ -1,0 +1,4 @@
+<dec f='include/pthread.h' l='474' type='int pthread_setaffinity_np(pthread_t __th, size_t __cpusetsize, const cpu_set_t * __cpuset)'/>
+<doc f='include/pthread.h' l='472'>/* Limit specified thread TH to run only on the processors represented
+   in CPUSET.  */</doc>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='520' u='c' c='pocl_pthread_driver_thread'/>

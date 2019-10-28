@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Support/Error.h' l='537' ll='542' type='llvm::Error llvm::Expected::takeError()'/>
+<doc f='include/llvm-6.0/llvm/Support/Error.h' l='533'>/// \brief Take ownership of the stored error.
+  /// After calling this the Expected&lt;T&gt; is in an indeterminate state that can
+  /// only be safely destructed. No further calls (beside the destructor) should
+  /// be made on the Expected&lt;T&gt; vaule.</doc>

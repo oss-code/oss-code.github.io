@@ -1,0 +1,8 @@
+<dec f='include/hwloc.h' l='1650' type='3'/>
+<doc f='include/hwloc.h' l='1643'>/** \brief Allocate memory on the given nodes in an interleaved
+   * / round-robin manner.  The precise layout of the memory across
+   * multiple NUMA nodes is OS/system specific. Interleaving can be
+   * useful when threads distributed across the specified NUMA nodes
+   * will all be accessing the whole memory range concurrently, since
+   * the interleave will then balance the memory references.
+   * \hideinitializer */</doc>

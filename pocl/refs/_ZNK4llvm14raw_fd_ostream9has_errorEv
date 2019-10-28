@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='431' type='bool llvm::raw_fd_ostream::has_error() const'/>
+<doc f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='427'>/// Return the value of the flag in this raw_fd_ostream indicating whether an
+  /// output error has been encountered.
+  /// This doesn&apos;t implicitly flush any pending output.  Also, it doesn&apos;t
+  /// guarantee to detect all errors unless the stream has been closed.</doc>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='434' u='c' c='pocl_write_module'/>

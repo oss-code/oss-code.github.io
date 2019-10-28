@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='452' type='void llvm::GlobalValue::copyAttributesFrom(const llvm::GlobalValue * Src)'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalAlias.h' l='63' u='c' c='_ZN4llvm11GlobalAlias18copyAttributesFromEPKNS_11GlobalValueE'/>
+<use f='include/llvm-6.0/llvm/IR/GlobalIFunc.h' l='51' u='c' c='_ZN4llvm11GlobalIFunc18copyAttributesFromEPKS0_'/>
+<doc f='include/llvm-6.0/llvm/IR/GlobalValue.h' l='450'>/// Copy all additional attributes (those not needed to create a GlobalValue)
+  /// from the GlobalValue Src to this one.</doc>

@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='1253' type='bool llvm::APInt::sgt(const llvm::APInt &amp; RHS) const'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='2090' u='c' c='_ZN4llvm8APIntOps4smaxERKNS_5APIntES3_'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='1247'>/// \brief Signed greather than comparison
+  ///
+  /// Regards both *this and RHS as signed quantities and compares them for the
+  /// validity of the greater-than relationship.
+  ///
+  /// \returns true if *this &gt; RHS when both are considered signed.</doc>
+<use f='include/llvm-6.0/llvm/ADT/APSInt.h' l='141' u='c' c='_ZNK4llvm6APSIntgtERKS0_'/>

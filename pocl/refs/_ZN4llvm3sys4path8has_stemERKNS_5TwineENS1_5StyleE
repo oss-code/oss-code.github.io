@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Support/Path.h' l='433' type='bool llvm::sys::path::has_stem(const llvm::Twine &amp; path, llvm::sys::path::Style style = Style::native)'/>
+<doc f='include/llvm-6.0/llvm/Support/Path.h' l='427'>/// @brief Has stem?
+///
+/// stem != &quot;&quot;
+///
+/// @param path Input path.
+/// @result True if the path has a stem, false otherwise.</doc>

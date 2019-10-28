@@ -1,0 +1,7 @@
+<dec f='pocl/lib/CL/devices/common.h' l='93' type='void pocl_broadcast(cl_event event)'/>
+<use f='pocl/lib/CL/clSetUserEventStatus.c' l='29' u='c' c='POclSetUserEventStatus'/>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='134' u='r' c='pocl_basic_init_device_ops'/>
+<def f='pocl/lib/CL/devices/common.c' l='754' ll='785' type='void pocl_broadcast(cl_event brc_event)'/>
+<doc f='pocl/lib/CL/devices/common.c' l='753'>/* call with brc_event UNLOCKED. */</doc>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='145' u='r' c='pocl_cuda_init_device_ops'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='91' u='r' c='pocl_pthread_init_device_ops'/>

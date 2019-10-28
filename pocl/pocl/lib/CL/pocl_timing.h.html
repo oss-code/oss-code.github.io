@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>pocl_timing.h source code [pocl/lib/CL/pocl_timing.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/CL/pocl_timing.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>CL</a>/<a href='pocl_timing.h.html'>pocl_timing.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><u>#<span data-ppcond="1">ifndef</span> <span class="macro" data-ref="_M/POCL_TIMING_H">POCL_TIMING_H</span></u></td></tr>
+<tr><th id="2">2</th><td><u>#define <dfn class="macro" id="_M/POCL_TIMING_H" data-ref="_M/POCL_TIMING_H">POCL_TIMING_H</dfn></u></td></tr>
+<tr><th id="3">3</th><td></td></tr>
+<tr><th id="4">4</th><td><u>#<span data-ppcond="4">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="5">5</th><td><b>extern</b> <q>"C"</q> {</td></tr>
+<tr><th id="6">6</th><td><u>#<span data-ppcond="4">endif</span></u></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><u>#<span data-ppcond="8">ifdef</span> <span class="macro" data-ref="_M/__GNUC__">__GNUC__</span></u></td></tr>
+<tr><th id="9">9</th><td><u>#pragma GCC visibility push(hidden)</u></td></tr>
+<tr><th id="10">10</th><td><u>#<span data-ppcond="8">endif</span></u></td></tr>
+<tr><th id="11">11</th><td></td></tr>
+<tr><th id="12">12</th><td><b>extern</b> <em>const</em> <em>unsigned</em> <dfn class="decl" id="pocl_timer_resolution" title='pocl_timer_resolution' data-ref="pocl_timer_resolution">pocl_timer_resolution</dfn>;</td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td><a class="typedef" href="../../../include/stdint.h.html#uint64_t" title='uint64_t' data-type='unsigned long' data-ref="uint64_t">uint64_t</a> <dfn class="decl" id="pocl_gettimemono_ns" title='pocl_gettimemono_ns' data-ref="pocl_gettimemono_ns">pocl_gettimemono_ns</dfn>();</td></tr>
+<tr><th id="15">15</th><td></td></tr>
+<tr><th id="16">16</th><td><em>int</em> <dfn class="decl" id="pocl_gettimereal" title='pocl_gettimereal' data-ref="pocl_gettimereal">pocl_gettimereal</dfn>(<em>int</em> *<dfn class="local col1 decl" id="1year" title='year' data-type='int *' data-ref="1year">year</dfn>, <em>int</em> *<dfn class="local col2 decl" id="2mon" title='mon' data-type='int *' data-ref="2mon">mon</dfn>, <em>int</em> *<dfn class="local col3 decl" id="3day" title='day' data-type='int *' data-ref="3day">day</dfn>, <em>int</em> *<dfn class="local col4 decl" id="4hour" title='hour' data-type='int *' data-ref="4hour">hour</dfn>, <em>int</em> *<dfn class="local col5 decl" id="5min" title='min' data-type='int *' data-ref="5min">min</dfn>, <em>int</em> *<dfn class="local col6 decl" id="6sec" title='sec' data-type='int *' data-ref="6sec">sec</dfn>, <em>int</em>* <dfn class="local col7 decl" id="7nanosec" title='nanosec' data-type='int *' data-ref="7nanosec">nanosec</dfn>);</td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><u>#<span data-ppcond="18">ifdef</span> <span class="macro" data-ref="_M/__GNUC__">__GNUC__</span></u></td></tr>
+<tr><th id="19">19</th><td><u>#pragma GCC visibility pop</u></td></tr>
+<tr><th id="20">20</th><td><u>#<span data-ppcond="18">endif</span></u></td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><u>#<span data-ppcond="22">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="23">23</th><td>}</td></tr>
+<tr><th id="24">24</th><td><u>#<span data-ppcond="22">endif</span></u></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><u>#<span data-ppcond="1">endif</span></u></td></tr>
+<tr><th id="27">27</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='clCreateUserEvent.c.html'>pocl/lib/CL/clCreateUserEvent.c</a><br/>Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

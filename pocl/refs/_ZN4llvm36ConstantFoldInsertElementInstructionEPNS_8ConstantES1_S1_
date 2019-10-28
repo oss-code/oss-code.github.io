@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='108' type='llvm::Constant * llvm::ConstantFoldInsertElementInstruction(llvm::Constant * Val, llvm::Constant * Elt, llvm::Constant * Idx)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='105'>/// \brief Attempt to constant fold an insertelement instruction with the
+/// specified operands and indices.  The constant result is returned if
+/// successful; if not, null is returned.</doc>

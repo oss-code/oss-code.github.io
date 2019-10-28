@@ -1,0 +1,12 @@
+<inh f='include/llvm-6.0/llvm/Support/PrettyStackTrace.h' l='32' c='llvm::PrettyStackTraceEntry'/>
+<def f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='117' ll='132'/>
+<size>40</size>
+<doc f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='115'>/// PassManagerPrettyStackEntry - This is used to print informative information
+/// about what pass is running when/if a stack trace is generated.</doc>
+<mbr r='llvm::PassManagerPrettyStackEntry::P' o='128' t='llvm::Pass *'/>
+<mbr r='llvm::PassManagerPrettyStackEntry::V' o='192' t='llvm::Value *'/>
+<mbr r='llvm::PassManagerPrettyStackEntry::M' o='256' t='llvm::Module *'/>
+<fun r='_ZN4llvm27PassManagerPrettyStackEntryC1EPNS_4PassE'/>
+<fun r='_ZN4llvm27PassManagerPrettyStackEntryC1EPNS_4PassERNS_5ValueE'/>
+<fun r='_ZN4llvm27PassManagerPrettyStackEntryC1EPNS_4PassERNS_6ModuleE'/>
+<fun r='_ZNK4llvm27PassManagerPrettyStackEntry5printERNS_11raw_ostreamE'/>

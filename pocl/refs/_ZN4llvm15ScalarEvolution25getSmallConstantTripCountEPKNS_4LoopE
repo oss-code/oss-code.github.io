@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='690' type='unsigned int llvm::ScalarEvolution::getSmallConstantTripCount(const llvm::Loop * L)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='685'>/// Returns the maximum trip count of the loop if it is a single-exit
+  /// loop and we can compute a small maximum for that loop.
+  ///
+  /// Implemented in terms of the \c getSmallConstantTripCount overload with
+  /// the single exiting block passed to it. See that routine for details.</doc>

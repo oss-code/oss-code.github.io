@@ -1,0 +1,110 @@
+<inh f='include/llvm-6.0/llvm/Support/CommandLine.h' l='642' c='llvm::cl::generic_parser_base'/>
+<def f='include/llvm-6.0/llvm/Support/CommandLine.h' l='738' ll='800'/>
+<inh f='include/llvm-6.0/llvm/Support/CommandLine.h' l='882' c='llvm::cl::basic_parser'/>
+<def f='include/llvm-6.0/llvm/Support/CommandLine.h' l='859' ll='880'/>
+<inh f='include/llvm-6.0/llvm/Support/CommandLine.h' l='908' c='llvm::cl::basic_parser'/>
+<def f='include/llvm-6.0/llvm/Support/CommandLine.h' l='886' ll='906'/>
+<inh f='include/llvm-6.0/llvm/Support/CommandLine.h' l='930' c='llvm::cl::basic_parser'/>
+<def f='include/llvm-6.0/llvm/Support/CommandLine.h' l='913' ll='928'/>
+<inh f='include/llvm-6.0/llvm/Support/CommandLine.h' l='952' c='llvm::cl::basic_parser'/>
+<def f='include/llvm-6.0/llvm/Support/CommandLine.h' l='935' ll='950'/>
+<inh f='include/llvm-6.0/llvm/Support/CommandLine.h' l='977' c='llvm::cl::basic_parser'/>
+<def f='include/llvm-6.0/llvm/Support/CommandLine.h' l='957' ll='975'/>
+<inh f='include/llvm-6.0/llvm/Support/CommandLine.h' l='999' c='llvm::cl::basic_parser'/>
+<def f='include/llvm-6.0/llvm/Support/CommandLine.h' l='982' ll='997'/>
+<inh f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1021' c='llvm::cl::basic_parser'/>
+<def f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1004' ll='1019'/>
+<inh f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1046' c='llvm::cl::basic_parser'/>
+<def f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1026' ll='1044'/>
+<inh f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1071' c='llvm::cl::basic_parser'/>
+<def f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1051' ll='1069'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='732'>// Default parser implementation - This implementation depends on having a
+// mapping of recognized options to values of some sort.  In addition to this,
+// each entry in the mapping also tracks a help message that is printed with the
+// command line option for -help.  Because this is a simple mapping parser, the
+// data type can be any unsupported type.
+//</doc>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='856'>//--------------------------------------------------
+// parser&lt;bool&gt;
+//</doc>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='884'>//--------------------------------------------------
+// parser&lt;boolOrDefault&gt;</doc>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='910'>//--------------------------------------------------
+// parser&lt;int&gt;
+//</doc>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='932'>//--------------------------------------------------
+// parser&lt;unsigned&gt;
+//</doc>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='954'>//--------------------------------------------------
+// parser&lt;unsigned long long&gt;
+//</doc>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='979'>//--------------------------------------------------
+// parser&lt;double&gt;
+//</doc>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1001'>//--------------------------------------------------
+// parser&lt;float&gt;
+//</doc>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1023'>//--------------------------------------------------
+// parser&lt;std::string&gt;
+//</doc>
+<doc f='include/llvm-6.0/llvm/Support/CommandLine.h' l='1048'>//--------------------------------------------------
+// parser&lt;char&gt;
+//</doc>
+<mbr r='llvm::cl::parser::Values' t='SmallVector&lt;llvm::cl::parser::OptionInfo, 8&gt;'/>
+<fun r='_ZN4llvm2cl6parserC1ERNS0_6OptionE'/>
+<fun r='_ZNK4llvm2cl6parser13getNumOptionsEv'/>
+<fun r='_ZNK4llvm2cl6parser9getOptionEj'/>
+<fun r='_ZNK4llvm2cl6parser14getDescriptionEj'/>
+<fun r='_ZNK4llvm2cl6parser14getOptionValueEj'/>
+<fun r='_ZN4llvm2cl6parser5parseERNS0_6OptionENS_9StringRefES4_RT_'/>
+<fun r='_ZN4llvm2cl6parser16addLiteralOptionENS_9StringRefERKT_S2_'/>
+<fun r='_ZN4llvm2cl6parser19removeLiteralOptionENS_9StringRefE'/>
+<fun r='_ZN4llvm2cl6parserIbEC1ERNS0_6OptionE'/>
+<fun r='_ZN4llvm2cl6parserIbE5parseERNS0_6OptionENS_9StringRefES5_Rb'/>
+<fun r='_ZN4llvm2cl6parserIbE10initializeEv'/>
+<fun r='_ZNK4llvm2cl6parserIbE27getValueExpectedFlagDefaultEv'/>
+<fun r='_ZNK4llvm2cl6parserIbE12getValueNameEv'/>
+<fun r='_ZNK4llvm2cl6parserIbE15printOptionDiffERKNS0_6OptionEbNS0_11OptionValueIbEEm'/>
+<fun r='_ZN4llvm2cl6parserIbE6anchorEv'/>
+<fun r='_ZN4llvm2cl6parserINS0_13boolOrDefaultEEC1ERNS0_6OptionE'/>
+<fun r='_ZN4llvm2cl6parserINS0_13boolOrDefaultEE5parseERNS0_6OptionENS_9StringRefES6_RS2_'/>
+<fun r='_ZNK4llvm2cl6parserINS0_13boolOrDefaultEE27getValueExpectedFlagDefaultEv'/>
+<fun r='_ZNK4llvm2cl6parserINS0_13boolOrDefaultEE12getValueNameEv'/>
+<fun r='_ZNK4llvm2cl6parserINS0_13boolOrDefaultEE15printOptionDiffERKNS0_6OptionES2_NS0_11OptionValueIS2_EEm'/>
+<fun r='_ZN4llvm2cl6parserINS0_13boolOrDefaultEE6anchorEv'/>
+<fun r='_ZN4llvm2cl6parserIiEC1ERNS0_6OptionE'/>
+<fun r='_ZN4llvm2cl6parserIiE5parseERNS0_6OptionENS_9StringRefES5_Ri'/>
+<fun r='_ZNK4llvm2cl6parserIiE12getValueNameEv'/>
+<fun r='_ZNK4llvm2cl6parserIiE15printOptionDiffERKNS0_6OptionEiNS0_11OptionValueIiEEm'/>
+<fun r='_ZN4llvm2cl6parserIiE6anchorEv'/>
+<fun r='_ZN4llvm2cl6parserIjEC1ERNS0_6OptionE'/>
+<fun r='_ZN4llvm2cl6parserIjE5parseERNS0_6OptionENS_9StringRefES5_Rj'/>
+<fun r='_ZNK4llvm2cl6parserIjE12getValueNameEv'/>
+<fun r='_ZNK4llvm2cl6parserIjE15printOptionDiffERKNS0_6OptionEjNS0_11OptionValueIjEEm'/>
+<fun r='_ZN4llvm2cl6parserIjE6anchorEv'/>
+<fun r='_ZN4llvm2cl6parserIyEC1ERNS0_6OptionE'/>
+<fun r='_ZN4llvm2cl6parserIyE5parseERNS0_6OptionENS_9StringRefES5_Ry'/>
+<fun r='_ZNK4llvm2cl6parserIyE12getValueNameEv'/>
+<fun r='_ZNK4llvm2cl6parserIyE15printOptionDiffERKNS0_6OptionEyNS0_11OptionValueIyEEm'/>
+<fun r='_ZN4llvm2cl6parserIyE6anchorEv'/>
+<fun r='_ZN4llvm2cl6parserIdEC1ERNS0_6OptionE'/>
+<fun r='_ZN4llvm2cl6parserIdE5parseERNS0_6OptionENS_9StringRefES5_Rd'/>
+<fun r='_ZNK4llvm2cl6parserIdE12getValueNameEv'/>
+<fun r='_ZNK4llvm2cl6parserIdE15printOptionDiffERKNS0_6OptionEdNS0_11OptionValueIdEEm'/>
+<fun r='_ZN4llvm2cl6parserIdE6anchorEv'/>
+<fun r='_ZN4llvm2cl6parserIfEC1ERNS0_6OptionE'/>
+<fun r='_ZN4llvm2cl6parserIfE5parseERNS0_6OptionENS_9StringRefES5_Rf'/>
+<fun r='_ZNK4llvm2cl6parserIfE12getValueNameEv'/>
+<fun r='_ZNK4llvm2cl6parserIfE15printOptionDiffERKNS0_6OptionEfNS0_11OptionValueIfEEm'/>
+<fun r='_ZN4llvm2cl6parserIfE6anchorEv'/>
+<fun r='_ZN4llvm2cl6parserINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEC1ERNS0_6OptionE'/>
+<fun r='_ZN4llvm2cl6parserINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE5parseERNS0_6OptionENS_9StringRefESB_RS7_'/>
+<fun r='_ZNK4llvm2cl6parserINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE12getValueNameEv'/>
+<fun r='_ZNK4llvm2cl6parserINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE15printOptionDiffERKNS0_6OptionENS_9StringRefERKNS0_11OptionValueIS7_EEm'/>
+<fun r='_ZN4llvm2cl6parserINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE6anchorEv'/>
+<fun r='_ZN4llvm2cl6parserIcEC1ERNS0_6OptionE'/>
+<fun r='_ZN4llvm2cl6parserIcE5parseERNS0_6OptionENS_9StringRefES5_Rc'/>
+<fun r='_ZNK4llvm2cl6parserIcE12getValueNameEv'/>
+<fun r='_ZNK4llvm2cl6parserIcE15printOptionDiffERKNS0_6OptionEcNS0_11OptionValueIcEEm'/>
+<fun r='_ZN4llvm2cl6parserIcE6anchorEv'/>

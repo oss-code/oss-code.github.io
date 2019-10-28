@@ -1,0 +1,3 @@
+<def f='include/llvm-6.0/llvm/IR/Constants.h' l='719' ll='721' type='llvm::ArrayType * llvm::ConstantDataArray::getType() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='717'>/// Specialize the getType() method to always return an ArrayType,
+  /// which reduces the amount of casting needed in parts of the compiler.</doc>

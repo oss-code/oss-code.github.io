@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/devices/pthread/pocl-pthread_utils.h' l='85' type='void free_kernel_arg_array_with_locals(void ** arguments, void ** arguments2, kernel_run_command * k)'/>
+<use f='pocl/lib/CL/devices/pthread/pthread_scheduler.c' l='315' u='c' c='work_group_scheduler'/>
+<def f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='263' ll='284' type='void free_kernel_arg_array_with_locals(void ** arguments, void ** arguments2, kernel_run_command * k)'/>
+<doc f='pocl/lib/CL/devices/pthread/pthread_utils.c' l='261'>/* called from each driver thread.
+ * frees the local arguments. */</doc>

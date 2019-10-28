@@ -1,0 +1,9 @@
+<def f='include/hwloc/helper.h' l='970' ll='992' type='void hwloc_cpuset_from_nodeset(hwloc_topology_t topology, hwloc_cpuset_t _cpuset, hwloc_const_nodeset_t nodeset)'/>
+<doc f='include/hwloc/helper.h' l='962'>/** \brief Convert a NUMA node set into a CPU set and handle non-NUMA cases
+ *
+ * If the topology contains no NUMA nodes, the machine is considered
+ * as a single memory node, and the following behavior is used:
+ * If \p nodeset is empty, \p cpuset will be emptied as well.
+ * Otherwise \p cpuset will be entirely filled.
+ * This is useful for manipulating memory binding sets.
+ */</doc>

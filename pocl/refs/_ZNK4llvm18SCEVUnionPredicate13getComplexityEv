@@ -1,0 +1,4 @@
+<inh f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='205' c='_ZNK4llvm13SCEVPredicate13getComplexityEv'/>
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='414' type='unsigned int llvm::SCEVUnionPredicate::getComplexity() const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='412'>/// We estimate the complexity of a union predicate as the size number of
+  /// predicates in the union.</doc>

@@ -1,0 +1,3 @@
+<dec f='include/llvm-6.0/llvm/IR/Module.h' l='847' type='llvm::GlobalVariable * llvm::collectUsedGlobalVariables(const llvm::Module &amp; M, SmallPtrSetImpl&lt;llvm::GlobalValue *&gt; &amp; Set, bool CompilerUsed)'/>
+<doc f='include/llvm-6.0/llvm/IR/Module.h' l='845'>/// \brief Given &quot;llvm.used&quot; or &quot;llvm.compiler.used&quot; as a global name, collect
+/// the initializer elements of that global in Set and return the global itself.</doc>

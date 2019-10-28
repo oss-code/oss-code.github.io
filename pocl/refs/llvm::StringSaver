@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/Support/StringSaver.h' l='21' ll='30'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/Support/StringSaver.h' l='19'>/// \brief Saves strings in the inheritor&apos;s stable storage and returns a
+/// StringRef with a stable character pointer.</doc>
+<mbr r='llvm::StringSaver::Alloc' o='0' t='BumpPtrAllocator &amp;'/>
+<fun r='_ZN4llvm11StringSaverC1ERNS_20BumpPtrAllocatorImplINS_15MallocAllocatorELm4096ELm4096EEE'/>
+<fun r='_ZN4llvm11StringSaver4saveEPKc'/>
+<fun r='_ZN4llvm11StringSaver4saveENS_9StringRefE'/>
+<fun r='_ZN4llvm11StringSaver4saveERKNS_5TwineE'/>
+<fun r='_ZN4llvm11StringSaver4saveERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>

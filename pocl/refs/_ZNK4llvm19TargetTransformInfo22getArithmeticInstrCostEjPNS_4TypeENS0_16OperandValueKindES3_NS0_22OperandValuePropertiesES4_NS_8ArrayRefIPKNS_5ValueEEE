@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='708' type='int llvm::TargetTransformInfo::getArithmeticInstrCost(unsigned int Opcode, llvm::Type * Ty, llvm::TargetTransformInfo::OperandValueKind Opd1Info = OK_AnyValue, llvm::TargetTransformInfo::OperandValueKind Opd2Info = OK_AnyValue, llvm::TargetTransformInfo::OperandValueProperties Opd1PropInfo = OP_None, llvm::TargetTransformInfo::OperandValueProperties Opd2PropInfo = OP_None, ArrayRef&lt;const llvm::Value *&gt; Args = ArrayRef&lt;const llvm::Value *&gt;()) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='704'>/// \return The expected cost of arithmetic ops, such as mul, xor, fsub, etc.
+  /// \p Args is an optional argument which holds the instruction operands  
+  /// values so the TTI can analyize those values searching for special 
+  /// cases\optimizations based on those values.</doc>

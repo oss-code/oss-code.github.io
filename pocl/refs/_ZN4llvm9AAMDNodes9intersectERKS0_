@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/IR/Metadata.h' l='669' ll='675' type='llvm::AAMDNodes llvm::AAMDNodes::intersect(const llvm::AAMDNodes &amp; Other)'/>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='664'>/// \brief Given two sets of AAMDNodes that apply to the same pointer,
+  /// give the best AAMDNodes that are compatible with both (i.e. a set of
+  /// nodes whose allowable aliasing conclusions are a subset of those
+  /// allowable by both of the inputs). However, for efficiency
+  /// reasons, do not create any new MDNodes.</doc>
+<use f='include/llvm-6.0/llvm/Analysis/AliasSetTracker.h' l='83' u='c' c='_ZN4llvm8AliasSet10PointerRec19updateSizeAndAAInfoEmRKNS_9AAMDNodesE'/>

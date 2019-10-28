@@ -1,0 +1,21 @@
+<def f='include/llvm-6.0/llvm/Support/YAMLParser.h' l='515' ll='569'/>
+<size>208</size>
+<doc f='include/llvm-6.0/llvm/Support/YAMLParser.h' l='513'>/// \brief A YAML Stream is a sequence of Documents. A document contains a root
+///        node.</doc>
+<fun r='_ZN4llvm4yaml8DocumentC1ERNS0_6StreamE'/>
+<fun r='_ZN4llvm4yaml8Document14parseBlockNodeEv'/>
+<fun r='_ZN4llvm4yaml8Document4skipEv'/>
+<fun r='_ZN4llvm4yaml8Document7getRootEv'/>
+<fun r='_ZNK4llvm4yaml8Document9getTagMapEv'/>
+<mbr r='llvm::yaml::Document::stream' o='0' t='llvm::yaml::Stream &amp;'/>
+<mbr r='llvm::yaml::Document::NodeAllocator' o='64' t='BumpPtrAllocator'/>
+<mbr r='llvm::yaml::Document::Root' o='1216' t='llvm::yaml::Node *'/>
+<mbr r='llvm::yaml::Document::TagMap' o='1280' t='std::map&lt;StringRef, StringRef&gt;'/>
+<fun r='_ZN4llvm4yaml8Document8peekNextEv'/>
+<fun r='_ZN4llvm4yaml8Document7getNextEv'/>
+<fun r='_ZNK4llvm4yaml8Document8setErrorERKNS_5TwineERNS0_5TokenE'/>
+<fun r='_ZNK4llvm4yaml8Document6failedEv'/>
+<fun r='_ZN4llvm4yaml8Document15parseDirectivesEv'/>
+<fun r='_ZN4llvm4yaml8Document18parseYAMLDirectiveEv'/>
+<fun r='_ZN4llvm4yaml8Document17parseTAGDirectiveEv'/>
+<fun r='_ZN4llvm4yaml8Document11expectTokenEi'/>

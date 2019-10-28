@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='133' type='static llvm::Constant * llvm::ConstantInt::get(llvm::Type * Ty, const llvm::APInt &amp; V)'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='131'>/// If Ty is a vector type, return a Constant with a splat of the given
+  /// value. Otherwise return a ConstantInt for the given value.</doc>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1022' u='c' c='_ZN4llvm9IRBuilder9CreateShlEPNS_5ValueERKNS_5APIntERKNS_5TwineEbb'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1042' u='c' c='_ZN4llvm9IRBuilder10CreateLShrEPNS_5ValueERKNS_5APIntERKNS_5TwineEb'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1060' u='c' c='_ZN4llvm9IRBuilder10CreateAShrEPNS_5ValueERKNS_5APIntERKNS_5TwineEb'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1077' u='c' c='_ZN4llvm9IRBuilder9CreateAndEPNS_5ValueERKNS_5APIntERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1093' u='c' c='_ZN4llvm9IRBuilder8CreateOrEPNS_5ValueERKNS_5APIntERKNS_5TwineE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1106' u='c' c='_ZN4llvm9IRBuilder9CreateXorEPNS_5ValueERKNS_5APIntERKNS_5TwineE'/>

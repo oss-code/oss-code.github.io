@@ -1,0 +1,14 @@
+<inh f='include/llvm-6.0/llvm/Pass.h' l='285' c='llvm::FunctionPass'/>
+<def f='pocl/lib/llvmopencl/RemoveBarrierCalls.h' l='41' ll='51'/>
+<size>32</size>
+<doc f='pocl/lib/llvmopencl/RemoveBarrierCalls.h' l='38'>// Removes all (pseudo) barrier calls from the function. This should be called
+// for non-SPMD targets after the de-SPMD has been done and before passing the
+// program for the standard LLVM optimizations.</doc>
+<smbr r='pocl::RemoveBarrierCalls::ID' t='char'/>
+<fun r='_ZN4pocl18RemoveBarrierCallsC1Ev'/>
+<fun r='_ZNK4pocl18RemoveBarrierCalls16getAnalysisUsageERN4llvm13AnalysisUsageE'/>
+<fun r='_ZN4pocl18RemoveBarrierCalls13runOnFunctionERN4llvm8FunctionE'/>
+<smbr r='pocl::RemoveBarrierCalls::ID' t='char'/>
+<fun r='_ZN4pocl18RemoveBarrierCallsC1Ev'/>
+<fun r='_ZN4pocl18RemoveBarrierCalls13runOnFunctionERN4llvm8FunctionE'/>
+<fun r='_ZNK4pocl18RemoveBarrierCalls16getAnalysisUsageERN4llvm13AnalysisUsageE'/>

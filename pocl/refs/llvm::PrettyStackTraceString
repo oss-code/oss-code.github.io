@@ -1,0 +1,9 @@
+<inh f='include/llvm-6.0/llvm/Support/PrettyStackTrace.h' l='32' c='llvm::PrettyStackTraceEntry'/>
+<def f='include/llvm-6.0/llvm/Support/PrettyStackTrace.h' l='52' ll='57'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/Support/PrettyStackTrace.h' l='49'>/// PrettyStackTraceString - This object prints a specified string (which
+  /// should not contain newlines) to the stream as the stack trace when a crash
+  /// occurs.</doc>
+<mbr r='llvm::PrettyStackTraceString::Str' o='128' t='const char *'/>
+<fun r='_ZN4llvm22PrettyStackTraceStringC1EPKc'/>
+<fun r='_ZNK4llvm22PrettyStackTraceString5printERNS_11raw_ostreamE'/>

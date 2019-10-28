@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='772' type='void llvm::DIBuilder::replaceArrays(llvm::DICompositeType *&amp; T, DINodeArray Elements, DINodeArray TParams = DINodeArray())'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='767'>/// Replace arrays on a composite type.
+    ///
+    /// If \c T is resolved, but the arrays aren&apos;t -- which can happen if \c T
+    /// has a self-reference -- \a DIBuilder needs to track the array to
+    /// resolve cycles.</doc>

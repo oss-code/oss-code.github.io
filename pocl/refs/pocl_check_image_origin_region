@@ -1,0 +1,6 @@
+<dec f='pocl/lib/CL/pocl_image_util.h' l='38' type='cl_int pocl_check_image_origin_region(const cl_mem image, const size_t * origin, const size_t * region)'/>
+<use f='pocl/lib/CL/clEnqueueFillImage.c' l='64' u='c' c='POclEnqueueFillImage'/>
+<use f='pocl/lib/CL/clEnqueueMapImage.c' l='88' u='c' c='POclEnqueueMapImage'/>
+<use f='pocl/lib/CL/clEnqueueReadImage.c' l='92' u='c' c='POclEnqueueReadImage'/>
+<use f='pocl/lib/CL/clEnqueueWriteImage.c' l='63' u='c' c='POclEnqueueWriteImage'/>
+<def f='pocl/lib/CL/pocl_image_util.c' l='67' ll='120' type='cl_int pocl_check_image_origin_region(const cl_mem image, const size_t * origin, const size_t * region)'/>

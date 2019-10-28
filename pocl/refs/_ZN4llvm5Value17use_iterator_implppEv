@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/IR/Value.h' l='139' ll='143' type='use_iterator_impl&lt;UseT&gt; &amp; llvm::Value::use_iterator_impl::operator++()'/>
+<use f='include/llvm-6.0/llvm/IR/Value.h' l='421' u='c' c='_ZNK4llvm5Value9hasOneUseEv'/>
+<doc f='include/llvm-6.0/llvm/IR/Value.h' l='139'>// Preincrement</doc>
+<use f='pocl/lib/llvmopencl/Barrier.h' l='48' u='c' c='_ZN4pocl7Barrier11GetBarriersERN4llvm15SmallVectorImplIPS0_EERNS1_6ModuleE'/>
+<use f='pocl/lib/llvmopencl/FlattenGlobals.cc' l='101' u='c' c='_ZN12_GLOBAL__N_114FlattenGlobals11runOnModuleERN4llvm6ModuleE'/>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='331' u='c' c='_ZN4pocl26VariableUniformityAnalysis9isUniformEPN4llvm8FunctionEPNS1_5ValueE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='665' u='c' c='_ZN4pocl13WorkitemLoops23FixMultiRegionVariablesEPNS_14ParallelRegionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='1040' u='c' c='_ZN4pocl13WorkitemLoops21AddContextSaveRestoreEPN4llvm11InstructionE'/>
+<use f='pocl/lib/llvmopencl/WorkitemReplication.cc' l='173' u='c' c='_ZN4pocl19WorkitemReplication15ProcessFunctionERN4llvm8FunctionE'/>

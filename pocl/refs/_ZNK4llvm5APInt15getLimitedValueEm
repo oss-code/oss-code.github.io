@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='475' ll='477' type='uint64_t llvm::APInt::getLimitedValue(uint64_t Limit = (18446744073709551615UL)) const'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='252' u='c' c='_ZNK4llvm11ConstantInt15getLimitedValueEm'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='473'>/// If this value is smaller than the specified limit, return it, otherwise
+  /// return the limit value.  This causes the value to saturate to the limit.</doc>

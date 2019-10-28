@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/ADT/DenseMap.h' l='826' type='AlignedCharArrayUnion&lt;BucketT [InlineBuckets], llvm::SmallDenseMap::LargeRep&gt;'/>
+<use f='include/llvm-6.0/llvm/ADT/DenseMap.h' l='1057' u='r' c='_ZNK4llvm13SmallDenseMap16getInlineBucketsEv'/>
+<use f='include/llvm-6.0/llvm/ADT/DenseMap.h' l='1068' u='r' c='_ZNK4llvm13SmallDenseMap11getLargeRepEv'/>
+<doc f='include/llvm-6.0/llvm/ADT/DenseMap.h' l='824'>/// A &quot;union&quot; of an inline bucket array and the struct representing
+  /// a large bucket. This union will be discriminated by the &apos;Small&apos; bit.</doc>

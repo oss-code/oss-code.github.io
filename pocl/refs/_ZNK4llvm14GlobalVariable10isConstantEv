@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/IR/GlobalVariable.h' l='147' type='bool llvm::GlobalVariable::isConstant() const'/>
+<use f='pocl/lib/llvmopencl/LLVMUtils.h' l='62' u='c' c='_ZN4pocl16isAutomaticLocalERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERN4llvm14GlobalVariableE'/>
+<doc f='include/llvm-6.0/llvm/IR/GlobalVariable.h' l='143'>/// If the value is a global constant, its value is immutable throughout the
+  /// runtime execution of the program.  Assigning a value into the constant
+  /// leads to undefined behavior.
+  ///</doc>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='405' u='c' c='_Z4linkPN4llvm6ModuleEPKS0_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='462' u='c' c='_Z21copyKernelFromBitcodePKcPN4llvm6ModuleEPKS2_'/>

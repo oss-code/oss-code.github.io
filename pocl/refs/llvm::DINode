@@ -1,0 +1,27 @@
+<inh f='include/llvm-6.0/llvm/IR/Metadata.h' l='862' c='llvm::MDNode'/>
+<def f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='153' ll='239'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='259' c='llvm::GenericDINode'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='331' c='llvm::DISubrange'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='370' c='llvm::DIEnumerator'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='420' c='llvm::DIScope'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1973' c='llvm::DITemplateParameter'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2075' c='llvm::DIVariable'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2479' c='llvm::DIObjCProperty'/>
+<ovr f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2562' c='llvm::DIImportedEntity'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='148'>/// Tagged DWARF-like metadata node.
+///
+/// A metadata node with a DWARF tag (i.e., a constant named \c DW_TAG_*,
+/// defined in llvm/BinaryFormat/Dwarf.h).  Called \a DINode because it&apos;s
+/// potentially used for non-DWARF output.</doc>
+<fun r='_ZN4llvm6DINodeC1ERNS_11LLVMContextEjNS_8Metadata11StorageTypeEjNS_8ArrayRefIPS3_EES7_'/>
+<fun r='_ZN4llvm6DINodeD1Ev'/>
+<fun r='_ZNK4llvm6DINode12getOperandAsEj'/>
+<fun r='_ZNK4llvm6DINode16getStringOperandEj'/>
+<fun r='_ZN4llvm6DINode20getCanonicalMDStringERNS_11LLVMContextENS_9StringRefE'/>
+<fun r='_ZN4llvm6DINode6setTagEj'/>
+<fun r='_ZNK4llvm6DINode6getTagEv'/>
+<fun r='_ZN4llvm6DINode7getFlagENS_9StringRefE'/>
+<fun r='_ZN4llvm6DINode13getFlagStringENS0_7DIFlagsE'/>
+<fun r='_ZN4llvm6DINode10splitFlagsENS0_7DIFlagsERNS_15SmallVectorImplIS1_EE'/>
+<fun r='_ZN4llvm6DINode7classofEPKNS_8MetadataE'/>

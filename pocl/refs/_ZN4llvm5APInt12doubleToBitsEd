@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='1710' ll='1712' type='static llvm::APInt llvm::APInt::doubleToBits(double V)'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='1706'>/// \brief Converts a double to APInt bits.
+  ///
+  /// The conversion does not do a translation from double to integer, it just
+  /// re-interprets the bits of the double.</doc>

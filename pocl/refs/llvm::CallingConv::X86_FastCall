@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/CallingConv.h' l='92' type='65'/>
+<doc f='include/llvm-6.0/llvm/IR/CallingConv.h' l='89'>/// X86_FastCall - &apos;fast&apos; analog of X86_StdCall. Passes first two arguments
+    /// in ECX:EDX registers, others - via stack. Callee is responsible for
+    /// stack cleaning.</doc>

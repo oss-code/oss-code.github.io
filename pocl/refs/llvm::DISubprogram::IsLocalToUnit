@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1493' type='unsigned int'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1509' u='w' c='_ZN4llvm12DISubprogramC1ERNS_11LLVMContextENS_8Metadata11StorageTypeEjjjjiNS_6DINode7DIFlagsEbbbNS_8ArrayRefIPS3_EE'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1591' u='r' c='_ZNK4llvm12DISubprogram13isLocalToUnitEv'/>
+<offset>322</offset>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='1489'>// These are boolean flags so one bit is enough.
+  // MSVC starts a new container field every time the base
+  // type changes so we can&apos;t use &apos;bool&apos; to ensure these bits
+  // are packed.</doc>

@@ -1,0 +1,5 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='3101' type='LLVMModuleProviderRef LLVMCreateModuleProviderForExistingModule(LLVMModuleRef M)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='3096'>/**
+ * Changes the type of M so it can be passed to FunctionPassManagers and the
+ * JIT.  They take ModuleProviders for historical reasons.
+ */</doc>

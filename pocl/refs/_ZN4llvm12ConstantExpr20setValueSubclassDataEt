@@ -1,0 +1,4 @@
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='873' u='c' c='_ZN4llvm12ConstantExprC1EPNS_4TypeEjPNS_3UseEj'/>
+<def f='include/llvm-6.0/llvm/IR/Constants.h' l='1225' ll='1227' type='void llvm::ConstantExpr::setValueSubclassData(unsigned short D)'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='1223'>// Shadow Value::setValueSubclassData with a private forwarding method so that
+  // subclasses cannot accidentally use it.</doc>

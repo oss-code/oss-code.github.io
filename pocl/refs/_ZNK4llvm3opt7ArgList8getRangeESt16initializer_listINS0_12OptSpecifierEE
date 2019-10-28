@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Option/ArgList.h' l='146' type='OptRange llvm::opt::ArgList::getRange(std::initializer_list&lt;OptSpecifier&gt; Ids) const'/>
+<use f='include/llvm-6.0/llvm/Option/ArgList.h' l='210' u='c' c='_ZNK4llvm3opt7ArgList8filteredEDpT_'/>
+<use f='include/llvm-6.0/llvm/Option/ArgList.h' l='221' u='c' c='_ZNK4llvm3opt7ArgList16filtered_reverseEDpT_'/>
+<doc f='include/llvm-6.0/llvm/Option/ArgList.h' l='144'>/// Get the range of indexes in which options with the specified IDs might
+  /// reside, or (0, 0) if there are no such options.</doc>

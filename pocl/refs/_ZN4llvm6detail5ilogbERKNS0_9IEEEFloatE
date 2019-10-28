@@ -1,0 +1,12 @@
+<dec f='include/llvm-6.0/llvm/ADT/APFloat.h' l='430' type='int llvm::detail::ilogb(const llvm::detail::IEEEFloat &amp; Arg)'/>
+<dec f='include/llvm-6.0/llvm/ADT/APFloat.h' l='566' type='int llvm::detail::ilogb(const llvm::detail::IEEEFloat &amp; Arg)'/>
+<use f='include/llvm-6.0/llvm/ADT/APFloat.h' l='1181' u='c' c='_ZN4llvm5ilogbERKNS_7APFloatE'/>
+<doc f='include/llvm-6.0/llvm/ADT/APFloat.h' l='421'>/// Returns the exponent of the internal representation of the APFloat.
+  ///
+  /// Because the radix of APFloat is 2, this is equivalent to floor(log2(x)).
+  /// For special APFloat values, this returns special error codes:
+  ///
+  ///   NaN -&gt; \c IEK_NaN
+  ///   0   -&gt; \c IEK_Zero
+  ///   Inf -&gt; \c IEK_Inf
+  ///</doc>

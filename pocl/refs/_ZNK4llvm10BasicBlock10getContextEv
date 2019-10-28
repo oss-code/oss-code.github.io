@@ -1,0 +1,12 @@
+<dec f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='88' type='llvm::LLVMContext &amp; llvm::BasicBlock::getContext() const'/>
+<doc f='include/llvm-6.0/llvm/IR/BasicBlock.h' l='87'>/// \brief Get the context in which this basic block lives.</doc>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='684' u='c' c='_ZN4llvm9IRBuilderC1EPNS_10BasicBlockERKT_PNS_6MDNodeENS_8ArrayRefINS_17OperandBundleDefTIPNS_5ValueEEEEE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='690' u='c' c='_ZN4llvm9IRBuilderC1EPNS_10BasicBlockEPNS_6MDNodeENS_8ArrayRefINS_17OperandBundleDefTIPNS_5ValueEEEEE'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='703' u='c' c='_ZN4llvm9IRBuilderC1EPNS_10BasicBlockENS_14ilist_iteratorINS_12ilist_detail12node_optionsINS_11InstructionELb0ELb0EvEELb0ELb0EEERKT_PNS_6MDNodeENS_8Ar11599355'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='710' u='c' c='_ZN4llvm9IRBuilderC1EPNS_10BasicBlockENS_14ilist_iteratorINS_12ilist_detail12node_optionsINS_11InstructionELb0ELb0EvEELb0ELb0EEEPNS_6MDNodeENS_8ArrayR12331158'/>
+<use f='pocl/lib/llvmopencl/BarrierTailReplication.cc' l='341' u='c' c='_ZN4pocl22BarrierTailReplication20ReplicateBasicBlocksERSt6vectorIPN4llvm10BasicBlockESaIS4_EERNS2_8ValueMapIPKNS2_5ValueENS2_14WeakTrackingVHENS2_14V12045754'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='263' u='c' c='_ZN4pocl14ParallelRegion5purgeEv'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='266' u='c' c='_ZN4pocl14ParallelRegion5purgeEv'/>
+<use f='pocl/lib/llvmopencl/ParallelRegion.cc' l='478' u='c' c='_ZN4pocl14ParallelRegion23AddParallelLoopMetadataEPN4llvm6MDNodeE'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='195' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='1157' u='c' c='_ZN4pocl13WorkitemLoops14AppendIncBlockEPN4llvm10BasicBlockEPNS1_5ValueE'/>

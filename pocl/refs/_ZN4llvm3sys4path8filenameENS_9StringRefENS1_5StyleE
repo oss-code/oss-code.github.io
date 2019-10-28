@@ -1,0 +1,13 @@
+<dec f='include/llvm-6.0/llvm/Support/Path.h' l='299' type='llvm::StringRef llvm::sys::path::filename(llvm::StringRef path, llvm::sys::path::Style style = Style::native)'/>
+<doc f='include/llvm-6.0/llvm/Support/Path.h' l='287'>/// @brief Get filename.
+///
+/// @code
+///   /foo.txt    =&gt; foo.txt
+///   .          =&gt; .
+///   ..         =&gt; ..
+///   /          =&gt; /
+/// @endcode
+///
+/// @param path Input path.
+/// @result The filename part of \a path. This is defined as the last component
+///         of \a path.</doc>

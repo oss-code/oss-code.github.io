@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/Support/MathExtras.h' l='219' ll='221' type='T llvm::maskTrailingZeros(unsigned int N)'/>
+<doc f='include/llvm-6.0/llvm/Support/MathExtras.h' l='217'>/// \brief Create a bitmask with the N right-most bits set to 0, and all other
+/// bits set to 1.  Only unsigned types are allowed.</doc>
+<use f='include/llvm-6.0/llvm/ADT/BitVector.h' l='222' u='c' c='_ZNK4llvm9BitVector13find_first_inEjj'/>
+<use f='include/llvm-6.0/llvm/ADT/BitVector.h' l='256' u='c' c='_ZNK4llvm9BitVector12find_last_inEjj'/>
+<use f='include/llvm-6.0/llvm/ADT/BitVector.h' l='287' u='c' c='_ZNK4llvm9BitVector19find_first_unset_inEjj'/>
+<use f='include/llvm-6.0/llvm/ADT/BitVector.h' l='313' u='c' c='_ZNK4llvm9BitVector18find_last_unset_inEjj'/>

@@ -1,0 +1,9 @@
+<dec f='pocl/lib/CL/pocl_util.h' l='234'/>
+<doc f='pocl/lib/CL/pocl_util.h' l='228'>/* Common macro for cleaning up &quot;*GetInfo&quot; API call implementations.
+ * All the *GetInfo functions have been specified to look alike, 
+ * and have been implemented to use the same variable names, so this
+ * code can be shared.
+ */</doc>
+<use f='pocl/lib/CL/clGetProgramInfo.c' l='115' u='c'/>
+<use f='pocl/lib/CL/clGetProgramInfo.c' l='123' u='c'/>
+<use f='pocl/lib/CL/clGetProgramInfo.c' l='128' u='c'/>

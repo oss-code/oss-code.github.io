@@ -1,0 +1,12 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='662' type='void LLVMGetNamedMetadataOperands(LLVMModuleRef M, const char * Name, LLVMValueRef * Dest)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='651'>/**
+ * Obtain the named metadata operands for a module.
+ *
+ * The passed LLVMValueRef pointer should refer to an array of
+ * LLVMValueRef at least LLVMGetNamedMetadataNumOperands long. This
+ * array will be populated with the LLVMValueRef instances. Each
+ * instance corresponds to a llvm::MDNode.
+ *
+ * @see llvm::Module::getNamedMetadata()
+ * @see llvm::MDNode::getOperand()
+ */</doc>

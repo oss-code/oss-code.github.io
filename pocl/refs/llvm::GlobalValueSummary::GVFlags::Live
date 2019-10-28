@@ -1,0 +1,10 @@
+<dec f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='149' type='unsigned int'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='159' u='w' c='_ZN4llvm18GlobalValueSummary7GVFlagsC1ENS_11GlobalValue12LinkageTypesEbbb'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='188' u='r' c='_ZNK4llvm18GlobalValueSummary6isLiveEv'/>
+<use f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='234' u='w' c='_ZN4llvm18GlobalValueSummary7setLiveEb'/>
+<offset>5</offset>
+<doc f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='144'>/// In per-module summary, indicate that the global value must be considered
+    /// a live root for index-based liveness analysis. Used for special LLVM
+    /// values such as llvm.global_ctors that the linker does not know about.
+    ///
+    /// In combined summary, indicate that the global value is live.</doc>

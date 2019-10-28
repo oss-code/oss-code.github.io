@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='637' ll='664' type='void llvm::DominatorTreeBase::eraseNode(NodeT * BB)'/>
+<doc f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='634'>/// eraseNode - Removes a node from the dominator tree. Block must not
+  /// dominate any other blocks. Removes node from its immediate dominator&apos;s
+  /// children list. Deletes dominator node associated with basic block BB.</doc>

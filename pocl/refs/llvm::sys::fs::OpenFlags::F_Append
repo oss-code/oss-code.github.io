@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Support/FileSystem.h' l='679' type='2'/>
+<doc f='include/llvm-6.0/llvm/Support/FileSystem.h' l='676'>/// F_Append - When opening a file, if it already exists append to the
+  /// existing file instead of returning an error.  This may not be specified
+  /// with F_Excl.</doc>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='82' u='r' c='pocl_write_file'/>

@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='470' type='bool llvm::RegionBase::contains(const InstT * Inst) const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='465'>/// @brief Check if the region contains an Instruction.
+  ///
+  /// @param Inst The Instruction that might be contained in this region.
+  /// @return True if the Instruction is contained in the region otherwise
+  /// false.</doc>

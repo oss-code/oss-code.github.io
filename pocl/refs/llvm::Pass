@@ -1,0 +1,53 @@
+<def f='include/llvm-6.0/llvm/Pass.h' l='81' ll='218'/>
+<ovr f='include/llvm-6.0/llvm/Pass.h' l='225' c='llvm::ModulePass'/>
+<ovr f='include/llvm-6.0/llvm/Pass.h' l='285' c='llvm::FunctionPass'/>
+<ovr f='include/llvm-6.0/llvm/Pass.h' l='319' c='llvm::BasicBlockPass'/>
+<size>32</size>
+<doc f='include/llvm-6.0/llvm/Pass.h' l='76'>//===----------------------------------------------------------------------===//
+/// Pass interface - Implemented by all &apos;passes&apos;.  Subclass this if you are an
+/// interprocedural optimization or you do not fit into any of the more
+/// constrained passes described below.
+///</doc>
+<mbr r='llvm::Pass::Resolver' o='64' t='llvm::AnalysisResolver *'/>
+<mbr r='llvm::Pass::PassID' o='128' t='const void *'/>
+<mbr r='llvm::Pass::Kind' o='192' t='llvm::PassKind'/>
+<fun r='_ZN4llvm4PassC1ENS_8PassKindERc'/>
+<fun r='_ZN4llvm4PassC1ERKS0_'/>
+<fun r='_ZN4llvm4PassaSERKS0_'/>
+<fun r='_ZN4llvm4PassD1Ev'/>
+<fun r='_ZNK4llvm4Pass11getPassKindEv'/>
+<fun r='_ZNK4llvm4Pass11getPassNameEv'/>
+<fun r='_ZNK4llvm4Pass9getPassIDEv'/>
+<fun r='_ZN4llvm4Pass16doInitializationERNS_6ModuleE'/>
+<fun r='_ZN4llvm4Pass14doFinalizationERNS_6ModuleE'/>
+<fun r='_ZNK4llvm4Pass5printERNS_11raw_ostreamEPKNS_6ModuleE'/>
+<fun r='_ZNK4llvm4Pass4dumpEv'/>
+<fun r='_ZNK4llvm4Pass17createPrinterPassERNS_11raw_ostreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<fun r='_ZN4llvm4Pass17assignPassManagerERNS_7PMStackENS_15PassManagerTypeE'/>
+<fun r='_ZN4llvm4Pass18preparePassManagerERNS_7PMStackE'/>
+<fun r='_ZNK4llvm4Pass27getPotentialPassManagerTypeEv'/>
+<fun r='_ZN4llvm4Pass11setResolverEPNS_16AnalysisResolverE'/>
+<fun r='_ZNK4llvm4Pass11getResolverEv'/>
+<fun r='_ZNK4llvm4Pass16getAnalysisUsageERNS_13AnalysisUsageE'/>
+<fun r='_ZN4llvm4Pass13releaseMemoryEv'/>
+<fun r='_ZN4llvm4Pass26getAdjustedAnalysisPointerEPKv'/>
+<fun r='_ZN4llvm4Pass18getAsImmutablePassEv'/>
+<fun r='_ZN4llvm4Pass18getAsPMDataManagerEv'/>
+<fun r='_ZNK4llvm4Pass14verifyAnalysisEv'/>
+<fun r='_ZN4llvm4Pass17dumpPassStructureEj'/>
+<fun r='_ZN4llvm4Pass14lookupPassInfoEPKv'/>
+<fun r='_ZN4llvm4Pass14lookupPassInfoENS_9StringRefE'/>
+<fun r='_ZN4llvm4Pass10createPassEPKv'/>
+<fun r='_ZNK4llvm4Pass22getAnalysisIfAvailableEv'/>
+<fun r='_ZNK4llvm4Pass22mustPreserveAnalysisIDERc'/>
+<fun r='_ZNK4llvm4Pass11getAnalysisEv'/>
+<fun r='_ZN4llvm4Pass11getAnalysisERNS_8FunctionE'/>
+<fun r='_ZNK4llvm4Pass13getAnalysisIDEPKv'/>
+<fun r='_ZN4llvm4Pass13getAnalysisIDEPKvRNS_8FunctionE'/>
+<fun r='_ZNK4llvm4Pass22getAnalysisIfAvailableEv'/>
+<fun r='_ZNK4llvm4Pass11getAnalysisEv'/>
+<fun r='_ZNK4llvm4Pass13getAnalysisIDEPKv'/>
+<fun r='_ZN4llvm4Pass11getAnalysisERNS_8FunctionE'/>
+<fun r='_ZN4llvm4Pass13getAnalysisIDEPKvRNS_8FunctionE'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/RegionPass.h' l='34' c='llvm::RegionPass'/>
+<ovr f='include/llvm-6.0/llvm/Analysis/LoopPass.h' l='29' c='llvm::LoopPass'/>

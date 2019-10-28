@@ -1,0 +1,5 @@
+<def f='pocl/include/CL/cl2.hpp' l='5846' ll='5850' type='cl::Kernel &amp; cl::Kernel::operator=(cl::Kernel &amp;&amp; kernel)'/>
+<use f='pocl/include/CL/cl2.hpp' l='6725' u='c' c='_ZN2cl7Program13createKernelsEPSt6vectorINS_6KernelESaIS2_EE'/>
+<doc f='pocl/include/CL/cl2.hpp' l='5843'>/*! \brief Move assignment to forward move to the superclass correctly.
+     * Required for MSVC.
+     */</doc>

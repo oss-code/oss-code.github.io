@@ -1,0 +1,8 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2689' type='LLVMValueRef LLVMGetCondition(LLVMValueRef Branch)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2682'>/**
+ * Return the condition of a branch instruction.
+ *
+ * This only works on llvm::BranchInst instructions.
+ *
+ * @see llvm::BranchInst::getCondition
+ */</doc>

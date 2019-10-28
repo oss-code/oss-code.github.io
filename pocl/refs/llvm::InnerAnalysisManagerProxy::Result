@@ -1,0 +1,19 @@
+<def f='include/llvm-6.0/llvm/IR/PassManager.h' l='950' ll='999'/>
+<fun r='_ZN4llvm25InnerAnalysisManagerProxy6ResultC1ERT_'/>
+<fun r='_ZN4llvm25InnerAnalysisManagerProxy6ResultC1EOS1_'/>
+<fun r='_ZN4llvm25InnerAnalysisManagerProxy6ResultD1Ev'/>
+<fun r='_ZN4llvm25InnerAnalysisManagerProxy6ResultaSEOS1_'/>
+<fun r='_ZN4llvm25InnerAnalysisManagerProxy6Result10getManagerEv'/>
+<fun r='_ZN4llvm25InnerAnalysisManagerProxy6Result10invalidateERT0_RKNS_17PreservedAnalysesERNS_15AnalysisManagerIS2_JDpT1_EE11InvalidatorE'/>
+<mbr r='llvm::InnerAnalysisManagerProxy::Result::InnerAM' t='AnalysisManagerT *'/>
+<fun r='_ZN4llvm25InnerAnalysisManagerProxy6Result10invalidateERT0_RKNS_17PreservedAnalysesERNS_15AnalysisManagerIS2_JDpT1_EE11InvalidatorE'/>
+<def f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='173' ll='197'/>
+<size>16</size>
+<doc f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='170'>/// We need a specialized result for the \c CGSCCAnalysisManagerModuleProxy so
+/// it can have access to the call graph in order to walk all the SCCs when
+/// invalidating things.</doc>
+<fun r='_ZN4llvm25InnerAnalysisManagerProxyINS_15AnalysisManagerINS_13LazyCallGraph3SCCEJRS2_EEENS_6ModuleEJEE6ResultC1ERS5_S4_'/>
+<fun r='_ZN4llvm25InnerAnalysisManagerProxyINS_15AnalysisManagerINS_13LazyCallGraph3SCCEJRS2_EEENS_6ModuleEJEE6Result10getManagerEv'/>
+<fun r='_ZN4llvm25InnerAnalysisManagerProxyINS_15AnalysisManagerINS_13LazyCallGraph3SCCEJRS2_EEENS_6ModuleEJEE6Result10invalidateERS6_RKNS_17PreservedAnalyses7690279'/>
+<mbr r='llvm::InnerAnalysisManagerProxy::Result::InnerAM' o='0' t='CGSCCAnalysisManager *'/>
+<mbr r='llvm::InnerAnalysisManagerProxy::Result::G' o='64' t='llvm::LazyCallGraph *'/>

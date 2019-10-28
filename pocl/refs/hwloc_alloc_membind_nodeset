@@ -1,0 +1,13 @@
+<dec f='include/hwloc.h' l='2037' type='void * hwloc_alloc_membind_nodeset(hwloc_topology_t topology, size_t len, hwloc_const_nodeset_t nodeset, hwloc_membind_policy_t policy, int flags)'/>
+<use f='include/hwloc/inlines.h' l='123' u='c' c='hwloc_alloc_membind_policy_nodeset'/>
+<doc f='include/hwloc.h' l='2026'>/** \brief Allocate some memory on the given physical nodeset \p nodeset
+ *
+ * \return NULL with errno set to ENOSYS if the action is not supported
+ * and ::HWLOC_MEMBIND_STRICT is given
+ * \return NULL with errno set to EXDEV if the binding cannot be enforced
+ * and ::HWLOC_MEMBIND_STRICT is given
+ * \return NULL with errno set to ENOMEM if the memory allocation failed
+ * even before trying to bind.
+ *
+ * \note The allocated memory should be freed with hwloc_free().
+ */</doc>

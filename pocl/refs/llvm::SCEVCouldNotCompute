@@ -1,0 +1,9 @@
+<inh f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='77' c='llvm::SCEV'/>
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='173' ll='178'/>
+<size>32</size>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='169'>/// An object of this class is returned by queries that could not be answered.
+/// For example, if you ask for the number of iterations of a linked-list
+/// traversal loop, you will get one of these.  None of the standard SCEV
+/// operations are valid on this class, it is just a marker.</doc>
+<fun r='_ZN4llvm19SCEVCouldNotComputeC1Ev'/>
+<fun r='_ZN4llvm19SCEVCouldNotCompute7classofEPKNS_4SCEVE'/>

@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='131' ll='133' type='static uint64_t llvm::APInt::maskBit(unsigned int bitPosition)'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1098' u='c' c='_ZNK4llvm5APIntixEj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1384' u='c' c='_ZN4llvm5APInt6setBitEj'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1443' u='c' c='_ZN4llvm5APInt8clearBitEj'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='125'>/// \brief Get a single bit mask.
+  ///
+  /// \returns a uint64_t with only bit at &quot;whichBit(bitPosition)&quot; set
+  /// This method generates and returns a uint64_t (word) mask for a single
+  /// bit at a specific bit position. This is used to mask the bit in the
+  /// corresponding word.</doc>

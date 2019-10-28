@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='155' ll='167' type='llvm::BasicBlock * llvm::SplitCriticalEdge(llvm::BasicBlock * Src, llvm::BasicBlock * Dst, const llvm::CriticalEdgeSplittingOptions &amp; Options = llvm::CriticalEdgeSplittingOptions())'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Utils/BasicBlockUtils.h' l='152'>/// If an edge from Src to Dst is critical, split the edge and return true,
+/// otherwise return false. This method requires that there be an edge between
+/// the two blocks. It updates the analyses passed in the options struct</doc>

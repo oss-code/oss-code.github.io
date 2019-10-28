@@ -1,0 +1,5 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='405' type='void (*)(cl_device_id, void *)'/>
+<offset>1344</offset>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='143' u='w' c='pocl_basic_init_device_ops'/>
+<use f='pocl/lib/CL/devices/common.c' l='706' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='707' u='r' c='pocl_exec_command'/>

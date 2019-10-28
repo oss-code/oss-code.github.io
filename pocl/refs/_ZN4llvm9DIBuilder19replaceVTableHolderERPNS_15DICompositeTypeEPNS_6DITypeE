@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='764' type='void llvm::DIBuilder::replaceVTableHolder(llvm::DICompositeType *&amp; T, llvm::DIType * VTableHolder)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='760'>/// Replace the vtable holder in the given type.
+    ///
+    /// If this creates a self reference, it may orphan some unresolved cycles
+    /// in the operands of \c T, so \a DIBuilder needs to track that.</doc>

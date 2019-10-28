@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/IR/Use.h' l='82' ll='90'/>
+<size>1</size>
+<doc f='include/llvm-6.0/llvm/IR/Use.h' l='80'>/// Pointer traits for the Prev PointerIntPair. This ensures we always use
+  /// the two LSBs regardless of pointer alignment on different targets.</doc>
+<fun r='_ZN4llvm3Use17PrevPointerTraits16getAsVoidPointerEPPS0_'/>
+<fun r='_ZN4llvm3Use17PrevPointerTraits18getFromVoidPointerEPv'/>

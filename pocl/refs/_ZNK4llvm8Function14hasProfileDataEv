@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/Function.h' l='256' type='bool llvm::Function::hasProfileData() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Function.h' l='252'>/// Return true if the function is annotated with profile data.
+  ///
+  /// Presence of entry counts from a profile run implies the function has
+  /// profile annotations.</doc>

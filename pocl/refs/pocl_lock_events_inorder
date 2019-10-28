@@ -1,0 +1,7 @@
+<dec f='pocl/lib/CL/pocl_util.h' l='97' type='void pocl_lock_events_inorder(cl_event ev1, cl_event ev2)'/>
+<doc f='pocl/lib/CL/pocl_util.h' l='94'>/* locks / unlocks two events in order of their event-id.
+ * This avoids any potential deadlocks of threads should
+ * they try to lock events in opposite order. */</doc>
+<use f='pocl/lib/CL/devices/common.c' l='762' u='c' c='pocl_broadcast'/>
+<def f='pocl/lib/CL/pocl_util.c' l='340' ll='355' type='void pocl_lock_events_inorder(cl_event ev1, cl_event ev2)'/>
+<use f='pocl/lib/CL/pocl_util.c' l='426' u='c' c='pocl_create_event_sync'/>

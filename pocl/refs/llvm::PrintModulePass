@@ -1,0 +1,13 @@
+<def f='include/llvm-6.0/llvm/IR/IRPrintingPasses.h' l='61' ll='74'/>
+<size>48</size>
+<doc f='include/llvm-6.0/llvm/IR/IRPrintingPasses.h' l='57'>/// \brief Pass for printing a Module as LLVM&apos;s text IR assembly.
+///
+/// Note: This pass is for use with the new pass manager. Use the create...Pass
+/// functions above to create passes for use with the legacy pass manager.</doc>
+<mbr r='llvm::PrintModulePass::OS' o='0' t='llvm::raw_ostream &amp;'/>
+<mbr r='llvm::PrintModulePass::Banner' o='64' t='std::string'/>
+<mbr r='llvm::PrintModulePass::ShouldPreserveUseListOrder' o='320' t='bool'/>
+<fun r='_ZN4llvm15PrintModulePassC1Ev'/>
+<fun r='_ZN4llvm15PrintModulePassC1ERNS_11raw_ostreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb'/>
+<fun r='_ZN4llvm15PrintModulePass3runERNS_6ModuleERNS_15AnalysisManagerIS1_JEEE'/>
+<fun r='_ZN4llvm15PrintModulePass4nameEv'/>

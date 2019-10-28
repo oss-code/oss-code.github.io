@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Metadata.h' l='326' type='static bool llvm::ReplaceableMetadataImpl::isReplaceable(const llvm::Metadata &amp; MD)'/>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='323'>/// Check whether this node will support RAUW.
+  ///
+  /// Returns \c true unless getOrCreate() would return null.</doc>

@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='85' type='void llvm::TargetTransformInfo::TargetTransformInfo(T Impl)'/>
+<def f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='1489' ll='1490' type='void llvm::TargetTransformInfo::TargetTransformInfo(T Impl)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='80'>/// \brief Construct a TTI object using a type implementing the \c Concept
+  /// API below.
+  ///
+  /// This is used by targets to construct a TTI wrapping their target-specific
+  /// implementaion that encodes appropriate costs for their target.</doc>

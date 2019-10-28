@@ -1,0 +1,26 @@
+<dec f='include/llvm-6.0/llvm/ADT/StringMap.h' l='55' type='llvm::StringMapEntryBase **'/>
+<use f='include/llvm-6.0/llvm/ADT/StringMap.h' l='65' u='w' c='_ZN4llvm13StringMapImplC1EOS0_'/>
+<use f='include/llvm-6.0/llvm/ADT/StringMap.h' l='65' u='r' c='_ZN4llvm13StringMapImplC1EOS0_'/>
+<use f='include/llvm-6.0/llvm/ADT/StringMap.h' l='68' u='w' c='_ZN4llvm13StringMapImplC1EOS0_'/>
+<use f='include/llvm-6.0/llvm/ADT/StringMap.h' l='115' u='a' c='_ZN4llvm13StringMapImpl4swapERS0_'/>
+<use f='include/llvm-6.0/llvm/ADT/StringMap.h' l='115' u='a' c='_ZN4llvm13StringMapImpl4swapERS0_'/>
+<use f='include/llvm-6.0/llvm/ADT/StringMap.h' l='261' u='r' c='_ZN4llvm9StringMapC1ERKNS_9StringMapIT_T0_EE'/>
+<use f='include/llvm-6.0/llvm/ADT/StringMap.h' l='269' u='w' c='_ZN4llvm9StringMapC1ERKNS_9StringMapIT_T0_EE'/>
+<use f='include/llvm-6.0/llvm/ADT/StringMap.h' l='273' u='w' c='_ZN4llvm9StringMapC1ERKNS_9StringMapIT_T0_EE'/>
+<use f='include/llvm-6.0/llvm/ADT/StringMap.h' l='299' u='r' c='_ZN4llvm9StringMapD1Ev'/>
+<use f='include/llvm-6.0/llvm/ADT/StringMap.h' l='305' c='_ZN4llvm9StringMapD1Ev'/>
+<use f='include/llvm-6.0/llvm/ADT/StringMap.h' l='320' u='r' c='_ZN4llvm9StringMap5beginEv'/>
+<use f='include/llvm-6.0/llvm/ADT/StringMap.h' l='323' u='r' c='_ZN4llvm9StringMap3endEv'/>
+<use f='include/llvm-6.0/llvm/ADT/StringMap.h' l='326' u='r' c='_ZNK4llvm9StringMap5beginEv'/>
+<use f='include/llvm-6.0/llvm/ADT/StringMap.h' l='329' u='r' c='_ZNK4llvm9StringMap3endEv'/>
+<use f='include/llvm-6.0/llvm/ADT/StringMap.h' l='340' u='r' c='_ZN4llvm9StringMap4findENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/ADT/StringMap.h' l='346' u='r' c='_ZNK4llvm9StringMap4findENS_9StringRefE'/>
+<use f='include/llvm-6.0/llvm/ADT/StringMap.h' l='372' u='a' c='_ZN4llvm9StringMap6insertEPNS_14StringMapEntryIT_EE'/>
+<use f='include/llvm-6.0/llvm/ADT/StringMap.h' l='401' u='a' c='_ZN4llvm9StringMap11try_emplaceENS_9StringRefEDpOT_'/>
+<use f='include/llvm-6.0/llvm/ADT/StringMap.h' l='403' u='r' c='_ZN4llvm9StringMap11try_emplaceENS_9StringRefEDpOT_'/>
+<use f='include/llvm-6.0/llvm/ADT/StringMap.h' l='413' u='r' c='_ZN4llvm9StringMap11try_emplaceENS_9StringRefEDpOT_'/>
+<use f='include/llvm-6.0/llvm/ADT/StringMap.h' l='423' u='a' c='_ZN4llvm9StringMap5clearEv'/>
+<offset>0</offset>
+<doc f='include/llvm-6.0/llvm/ADT/StringMap.h' l='52'>// Array of NumBuckets pointers to entries, null pointers are holes.
+  // TheTable[NumBuckets] contains a sentinel value for easy iteration. Followed
+  // by an array of the actual hash values as unsigned integers.</doc>

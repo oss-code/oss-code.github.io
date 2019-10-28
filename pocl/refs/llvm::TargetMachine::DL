@@ -1,0 +1,11 @@
+<dec f='include/llvm-6.0/llvm/Target/TargetMachine.h' l='74' type='const llvm::DataLayout'/>
+<use f='include/llvm-6.0/llvm/Target/TargetMachine.h' l='127' u='r' c='_ZNK4llvm13TargetMachine16createDataLayoutEv'/>
+<use f='include/llvm-6.0/llvm/Target/TargetMachine.h' l='135' u='m' c='_ZNK4llvm13TargetMachine22isCompatibleDataLayoutERKNS_10DataLayoutE'/>
+<use f='include/llvm-6.0/llvm/Target/TargetMachine.h' l='141' u='m' c='_ZNK4llvm13TargetMachine14getPointerSizeEv'/>
+<offset>128</offset>
+<doc f='include/llvm-6.0/llvm/Target/TargetMachine.h' l='68'>/// DataLayout for the target: keep ABI type size and alignment.
+  ///
+  /// The DataLayout is created based on the string representation provided
+  /// during construction. It is kept here only to avoid reparsing the string
+  /// but should not really be used during compilation, because it has an
+  /// internal cache that is context specific.</doc>

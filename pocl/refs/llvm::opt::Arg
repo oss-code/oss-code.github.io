@@ -1,0 +1,38 @@
+<def f='include/llvm-6.0/llvm/Option/Arg.h' l='35' ll='126'/>
+<size>88</size>
+<doc f='include/llvm-6.0/llvm/Option/Arg.h' l='31'>/// \brief A concrete instance of a particular driver option.
+///
+/// The Arg class encodes just enough information to be able to
+/// derive the argument values efficiently.</doc>
+<mbr r='llvm::opt::Arg::Opt' o='0' t='const llvm::opt::Option'/>
+<mbr r='llvm::opt::Arg::BaseArg' o='128' t='const llvm::opt::Arg *'/>
+<mbr r='llvm::opt::Arg::Spelling' o='192' t='llvm::StringRef'/>
+<mbr r='llvm::opt::Arg::Index' o='320' t='unsigned int'/>
+<mbr r='llvm::opt::Arg::Claimed' o='352' t='unsigned int'/>
+<mbr r='llvm::opt::Arg::OwnsValues' o='353' t='unsigned int'/>
+<mbr r='llvm::opt::Arg::Values' o='384' t='SmallVector&lt;const char *, 2&gt;'/>
+<fun r='_ZN4llvm3opt3ArgC1ENS0_6OptionENS_9StringRefEjPKS1_'/>
+<fun r='_ZN4llvm3opt3ArgC1ENS0_6OptionENS_9StringRefEjPKcPKS1_'/>
+<fun r='_ZN4llvm3opt3ArgC1ENS0_6OptionENS_9StringRefEjPKcS5_PKS1_'/>
+<fun r='_ZN4llvm3opt3ArgC1ERKS1_'/>
+<fun r='_ZN4llvm3opt3ArgaSERKS1_'/>
+<fun r='_ZN4llvm3opt3ArgD1Ev'/>
+<fun r='_ZNK4llvm3opt3Arg9getOptionEv'/>
+<fun r='_ZNK4llvm3opt3Arg11getSpellingEv'/>
+<fun r='_ZNK4llvm3opt3Arg8getIndexEv'/>
+<fun r='_ZNK4llvm3opt3Arg10getBaseArgEv'/>
+<fun r='_ZN4llvm3opt3Arg10setBaseArgEPKS1_'/>
+<fun r='_ZNK4llvm3opt3Arg13getOwnsValuesEv'/>
+<fun r='_ZNK4llvm3opt3Arg13setOwnsValuesEb'/>
+<fun r='_ZNK4llvm3opt3Arg9isClaimedEv'/>
+<fun r='_ZNK4llvm3opt3Arg5claimEv'/>
+<fun r='_ZNK4llvm3opt3Arg12getNumValuesEv'/>
+<fun r='_ZNK4llvm3opt3Arg8getValueEj'/>
+<fun r='_ZN4llvm3opt3Arg9getValuesEv'/>
+<fun r='_ZNK4llvm3opt3Arg9getValuesEv'/>
+<fun r='_ZNK4llvm3opt3Arg13containsValueENS_9StringRefE'/>
+<fun r='_ZNK4llvm3opt3Arg6renderERKNS0_7ArgListERNS_11SmallVectorIPKcLj16EEE'/>
+<fun r='_ZNK4llvm3opt3Arg13renderAsInputERKNS0_7ArgListERNS_11SmallVectorIPKcLj16EEE'/>
+<fun r='_ZNK4llvm3opt3Arg5printERNS_11raw_ostreamE'/>
+<fun r='_ZNK4llvm3opt3Arg4dumpEv'/>
+<fun r='_ZNK4llvm3opt3Arg11getAsStringB5cxx11ERKNS0_7ArgListE'/>

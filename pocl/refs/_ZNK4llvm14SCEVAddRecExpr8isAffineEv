@@ -1,0 +1,4 @@
+<use f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='308' u='c' c='_ZNK4llvm14SCEVAddRecExpr17getStepRecurrenceERNS_15ScalarEvolutionE'/>
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='316' ll='320' type='bool llvm::SCEVAddRecExpr::isAffine() const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolutionExpressions.h' l='314'>/// Return true if this represents an expression A + B*x where A
+    /// and B are loop invariant values.</doc>

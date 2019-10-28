@@ -1,0 +1,11 @@
+<def f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2248' ll='2250' type='llvm::DIExpression::expr_op_iterator llvm::DIExpression::expr_op_begin() const'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2255' u='c' c='_ZNK4llvm12DIExpression8expr_opsEv'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2282' u='c' c='_ZNK4llvm12DIExpression15getFragmentInfoEv'/>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2240'>/// Visit the elements via ExprOperand wrappers.
+  ///
+  /// These range iterators visit elements through \a ExprOperand wrappers.
+  /// This is not guaranteed to be a valid range unless \a isValid() gives \c
+  /// true.
+  ///
+  /// \pre \a isValid() gives \c true.
+  /// @{</doc>

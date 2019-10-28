@@ -1,0 +1,3 @@
+<dec f='include/llvm-6.0/llvm/Support/Valgrind.h' l='28' type='void llvm::sys::ValgrindDiscardTranslations(const void * Addr, size_t Len)'/>
+<doc f='include/llvm-6.0/llvm/Support/Valgrind.h' l='26'>// Discard valgrind&apos;s translation of code in the range [Addr .. Addr + Len).
+  // Otherwise valgrind may continue to execute the old version of the code.</doc>

@@ -1,0 +1,15 @@
+<def f='include/c++/7/bits/unique_ptr.h' l='356' ll='362' type='pointer std::unique_ptr::release()'/>
+<use f='include/llvm-6.0/llvm/IR/Metadata.h' l='775' u='c' c='_ZN4llvm25ContextAndReplaceableUsesC1ESt10unique_ptrINS_23ReplaceableMetadataImplESt14default_deleteIS2_EE'/>
+<use f='include/llvm-6.0/llvm/IR/Metadata.h' l='822' u='c' c='_ZN4llvm25ContextAndReplaceableUses15makeReplaceableESt10unique_ptrINS_23ReplaceableMetadataImplESt14default_deleteIS2_EE'/>
+<use f='include/llvm-6.0/llvm/Support/Error.h' l='194' u='c' c='_ZN4llvm5ErrorC1ESt10unique_ptrINS_13ErrorInfoBaseESt14default_deleteIS2_EE'/>
+<use f='include/llvm-6.0/llvm/Support/Error.h' l='791' u='c' c='_ZN4llvm18ErrorHandlerTraitsIRFNS_5ErrorESt10unique_ptrIT_St14default_deleteIS3_EEEE5applyEOT_S2_INS_13ErrorInfoBaseES4_ISC_EE'/>
+<use f='include/llvm-6.0/llvm/Support/Error.h' l='807' u='c' c='_ZN4llvm18ErrorHandlerTraitsIRFvSt10unique_ptrIT_St14default_deleteIS2_EEEE5applyEOT_S1_INS_13ErrorInfoBaseES3_ISB_EE'/>
+<doc f='include/c++/7/bits/unique_ptr.h' l='353'>// Modifiers.
+
+      /// Release ownership of any stored pointer.</doc>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='549' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='685' u='c' c='pocl_llvm_link_program'/>
+<use f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='591' u='c' c='_ZNK4llvm6DIType5cloneEv'/>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='67' u='c' c='_Z13parseModuleIRPKc'/>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='90' u='c' c='_Z16parseModuleIRMemPKcm'/>
+<use f='pocl/lib/llvmopencl/WorkitemLoops.cc' l='290' u='c' c='_ZN4pocl13WorkitemLoops16CreateLoopAroundERNS_14ParallelRegionEPN4llvm10BasicBlockES5_bPNS3_5ValueEmbS7_'/>

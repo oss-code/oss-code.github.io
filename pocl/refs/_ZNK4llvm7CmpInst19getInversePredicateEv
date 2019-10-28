@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='951' ll='953' type='llvm::CmpInst::Predicate llvm::CmpInst::getInversePredicate() const'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='947'>/// For example, EQ -&gt; NE, UGT -&gt; ULE, SLT -&gt; SGE,
+  ///              OEQ -&gt; UNE, UGT -&gt; OLE, OLT -&gt; UGE, etc.
+  /// @returns the inverse predicate for the instruction&apos;s current predicate.
+  /// @brief Return the inverse of the instruction&apos;s predicate.</doc>

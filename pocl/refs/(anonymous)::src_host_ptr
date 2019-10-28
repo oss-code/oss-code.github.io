@@ -1,0 +1,14 @@
+<dec f='pocl/include/pocl.h' l='140' type='const void *restrict'/>
+<dec f='pocl/include/pocl.h' l='173' type='const void *restrict'/>
+<dec f='pocl/include/pocl.h' l='238' type='const void *restrict'/>
+<offset>64</offset>
+<use f='pocl/lib/CL/clEnqueueCopyBufferToImage.c' l='65' u='w' c='POclEnqueueCopyBufferToImage'/>
+<use f='pocl/lib/CL/clEnqueueWriteBuffer.c' l='85' u='w' c='POclEnqueueWriteBuffer'/>
+<use f='pocl/lib/CL/clEnqueueWriteBufferRect.c' l='98' u='w' c='POclEnqueueWriteBufferRect'/>
+<use f='pocl/lib/CL/clEnqueueWriteImage.c' l='79' u='w' c='POclEnqueueWriteImage'/>
+<use f='pocl/lib/CL/devices/common.c' l='407' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='487' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/common.c' l='577' u='r' c='pocl_exec_command'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1116' u='r' c='pocl_cuda_submit_node'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='1142' u='r' c='pocl_cuda_submit_node'/>
+<use f='pocl/lib/CL/pocl_tracing.c' l='211' u='r' c='text_tracer_event_updated'/>

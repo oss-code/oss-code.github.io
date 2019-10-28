@@ -1,0 +1,14 @@
+<dec f='include/llvm-6.0/llvm/IR/Module.h' l='328' type='llvm::Constant * llvm::Module::getOrInsertFunction(llvm::StringRef Name, llvm::FunctionType * T, llvm::AttributeList AttributeList)'/>
+<doc f='include/llvm-6.0/llvm/IR/Module.h' l='315'>/// @}
+/// @name Function Accessors
+/// @{
+
+  /// Look up the specified function in the module symbol table. Four
+  /// possibilities:
+  ///   1. If it does not exist, add a prototype for the function and return it.
+  ///   2. If it exists, and has a local linkage, the existing function is
+  ///      renamed and a new one is inserted.
+  ///   3. Otherwise, if the existing function has the correct prototype, return
+  ///      the existing function.
+  ///   4. Finally, the function exists but has the wrong prototype: return the
+  ///      function with a constantexpr cast to the right prototype.</doc>

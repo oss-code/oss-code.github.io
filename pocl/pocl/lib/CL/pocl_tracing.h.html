@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>pocl_tracing.h source code [pocl/lib/CL/pocl_tracing.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="pocl_event_tracer "/>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/CL/pocl_tracing.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>CL</a>/<a href='pocl_tracing.h.html'>pocl_tracing.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* pocl_tracing.h: interface for event update and tracing system</i></td></tr>
+<tr><th id="2">2</th><td><i></i></td></tr>
+<tr><th id="3">3</th><td><i>   Copyright (c) 2015 Clément Léger / Kalray</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>   Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="6">6</th><td><i>   of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="7">7</th><td><i>   in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="8">8</th><td><i>   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="9">9</th><td><i>   copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="10">10</th><td><i>   furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="11">11</th><td><i></i></td></tr>
+<tr><th id="12">12</th><td><i>   The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="13">13</th><td><i>   all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="14">14</th><td><i></i></td></tr>
+<tr><th id="15">15</th><td><i>   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="16">16</th><td><i>   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="17">17</th><td><i>   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="18">18</th><td><i>   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="19">19</th><td><i>   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="20">20</th><td><i>   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="21">21</th><td><i>   THE SOFTWARE.</i></td></tr>
+<tr><th id="22">22</th><td><i>*/</i></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><u>#<span data-ppcond="24">ifndef</span> <span class="macro" data-ref="_M/POCL_TRACING_H">POCL_TRACING_H</span></u></td></tr>
+<tr><th id="25">25</th><td><u>#define <dfn class="macro" id="_M/POCL_TRACING_H" data-ref="_M/POCL_TRACING_H">POCL_TRACING_H</dfn></u></td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><u>#include &lt;stdint.h&gt;</u></td></tr>
+<tr><th id="28">28</th><td><u>#include <a href="../../../include/stdlib.h.html">&lt;stdlib.h&gt;</a></u></td></tr>
+<tr><th id="29">29</th><td><u>#include <a href="../../../include/string.h.html">&lt;string.h&gt;</a></u></td></tr>
+<tr><th id="30">30</th><td><u>#include <a href="pocl_cl.h.html">"pocl_cl.h"</a></u></td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><u>#<span data-ppcond="32">ifdef</span> <span class="macro" data-ref="_M/__GNUC__">__GNUC__</span></u></td></tr>
+<tr><th id="33">33</th><td><u>#pragma GCC visibility push(hidden)</u></td></tr>
+<tr><th id="34">34</th><td><u>#<span data-ppcond="32">endif</span></u></td></tr>
+<tr><th id="35">35</th><td></td></tr>
+<tr><th id="36">36</th><td><u>#<span data-ppcond="36">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="37">37</th><td><b>extern</b> <q>"C"</q></td></tr>
+<tr><th id="38">38</th><td>{</td></tr>
+<tr><th id="39">39</th><td><u>#<span data-ppcond="36">endif</span></u></td></tr>
+<tr><th id="40">40</th><td></td></tr>
+<tr><th id="41">41</th><td><em>void</em> <dfn class="decl" id="pocl_event_updated" title='pocl_event_updated' data-ref="pocl_event_updated">pocl_event_updated</dfn> (<a class="typedef" href="../../include/CL/cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> <dfn class="local col9 decl" id="289event" title='event' data-type='cl_event' data-ref="289event">event</dfn>, <em>int</em> <dfn class="local col0 decl" id="290new_status" title='new_status' data-type='int' data-ref="290new_status">new_status</dfn>);</td></tr>
+<tr><th id="42">42</th><td></td></tr>
+<tr><th id="43">43</th><td><i>/* Initializes the event tracing system selected with POCL_TRACING. */</i></td></tr>
+<tr><th id="44">44</th><td><em>void</em> <dfn class="decl" id="pocl_tracing_init" title='pocl_tracing_init' data-ref="pocl_tracing_init">pocl_tracing_init</dfn> ();</td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td><i>/* Struct of trace handlers. */</i></td></tr>
+<tr><th id="47">47</th><td><b>struct</b> <dfn class="type def" id="pocl_event_tracer" title='pocl_event_tracer' data-ref="pocl_event_tracer">pocl_event_tracer</dfn></td></tr>
+<tr><th id="48">48</th><td>{</td></tr>
+<tr><th id="49">49</th><td>  <i>/* Tracer name used to match POCL_TRACING=xxx env var */</i></td></tr>
+<tr><th id="50">50</th><td>  <em>const</em> <em>char</em> *<dfn class="decl" id="pocl_event_tracer::name" title='pocl_event_tracer::name' data-ref="pocl_event_tracer::name">name</dfn>;</td></tr>
+<tr><th id="51">51</th><td>  <i>/* Init function called when the tracer is matched */</i></td></tr>
+<tr><th id="52">52</th><td>  <em>void</em> (*<dfn class="decl" id="pocl_event_tracer::init" title='pocl_event_tracer::init' data-ref="pocl_event_tracer::init">init</dfn>) ();</td></tr>
+<tr><th id="53">53</th><td>  <i>/* Callback called when an event has been updated */</i></td></tr>
+<tr><th id="54">54</th><td>  <em>void</em> (*<dfn class="decl" id="pocl_event_tracer::event_updated" title='pocl_event_tracer::event_updated' data-ref="pocl_event_tracer::event_updated">event_updated</dfn>) (<a class="typedef" href="../../include/CL/cl.h.html#cl_event" title='cl_event' data-type='struct _cl_event *' data-ref="cl_event">cl_event</a> <i>/* event */</i> , <em>int</em> <i>/* status */</i> );</td></tr>
+<tr><th id="55">55</th><td>};</td></tr>
+<tr><th id="56">56</th><td></td></tr>
+<tr><th id="57">57</th><td><u>#<span data-ppcond="57">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="58">58</th><td>}</td></tr>
+<tr><th id="59">59</th><td><u>#<span data-ppcond="57">endif</span></u></td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td><u>#<span data-ppcond="61">ifdef</span> <span class="macro" data-ref="_M/__GNUC__">__GNUC__</span></u></td></tr>
+<tr><th id="62">62</th><td><u>#pragma GCC visibility pop</u></td></tr>
+<tr><th id="63">63</th><td><u>#<span data-ppcond="61">endif</span></u></td></tr>
+<tr><th id="64">64</th><td></td></tr>
+<tr><th id="65">65</th><td><u>#<span data-ppcond="24">endif</span>				/* POCL_TRACING_H */</u></td></tr>
+<tr><th id="66">66</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='clBuildProgram.c.html'>pocl/lib/CL/clBuildProgram.c</a><br/>Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

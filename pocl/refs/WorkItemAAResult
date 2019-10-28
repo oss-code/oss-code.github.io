@@ -1,0 +1,9 @@
+<inh f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='857' c='llvm::AAResultBase'/>
+<def f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='61' ll='75'/>
+<size>8</size>
+<doc f='pocl/lib/llvmopencl/WorkItemAliasAnalysis.cc' l='54'>/// WorkItemAliasAnalysis - This is a simple alias analysis
+/// implementation that uses pocl metadata to make sure memory accesses from
+/// different work items are not aliasing.
+///
+
+// LLVM 3.8+</doc>

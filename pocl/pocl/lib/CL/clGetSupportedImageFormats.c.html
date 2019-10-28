@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>clGetSupportedImageFormats.c source code [pocl/lib/CL/clGetSupportedImageFormats.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/CL/clGetSupportedImageFormats.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>CL</a>/<a href='clGetSupportedImageFormats.c.html'>clGetSupportedImageFormats.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* OpenCL runtime library: clGetSupportedImageFormats()</i></td></tr>
+<tr><th id="2">2</th><td><i></i></td></tr>
+<tr><th id="3">3</th><td><i>   Copyright (c) 2013 Ville Korhonen / Tampere Univ. of Tech.</i></td></tr>
+<tr><th id="4">4</th><td><i>   </i></td></tr>
+<tr><th id="5">5</th><td><i>   Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="6">6</th><td><i>   of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="7">7</th><td><i>   in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="8">8</th><td><i>   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="9">9</th><td><i>   copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="10">10</th><td><i>   furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="11">11</th><td><i>   </i></td></tr>
+<tr><th id="12">12</th><td><i>   The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="13">13</th><td><i>   all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="14">14</th><td><i>   </i></td></tr>
+<tr><th id="15">15</th><td><i>   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="16">16</th><td><i>   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="17">17</th><td><i>   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="18">18</th><td><i>   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="19">19</th><td><i>   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="20">20</th><td><i>   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="21">21</th><td><i>   THE SOFTWARE.</i></td></tr>
+<tr><th id="22">22</th><td><i>*/</i></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><u>#include <a href="pocl_cl.h.html">"pocl_cl.h"</a></u></td></tr>
+<tr><th id="25">25</th><td><u>#include <a href="pocl_image_util.h.html">"pocl_image_util.h"</a></u></td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><b>extern</b> <a class="macro" href="../../include/CL/cl_platform.h.html#43" title="" data-ref="_M/CL_API_ENTRY">CL_API_ENTRY</a> <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <a class="macro" href="../../include/CL/cl_platform.h.html#44" title="" data-ref="_M/CL_API_CALL">CL_API_CALL</a></td></tr>
+<tr><th id="28">28</th><td><a class="macro" href="pocl_cl.h.html#225" title="POclGetSupportedImageFormats" data-ref="_M/POname">POname</a>(clGetSupportedImageFormats) (<a class="typedef" href="../../include/CL/cl.h.html#cl_context" title='cl_context' data-type='struct _cl_context *' data-ref="cl_context">cl_context</a>           <dfn class="local col1 decl" id="1context" title='context' data-type='cl_context' data-ref="1context">context</dfn>,</td></tr>
+<tr><th id="29">29</th><td>                                    <a class="typedef" href="../../include/CL/cl.h.html#cl_mem_flags" title='cl_mem_flags' data-type='cl_bitfield' data-ref="cl_mem_flags">cl_mem_flags</a>         <dfn class="local col2 decl" id="2flags" title='flags' data-type='cl_mem_flags' data-ref="2flags">flags</dfn>,</td></tr>
+<tr><th id="30">30</th><td>                                    <a class="typedef" href="../../include/CL/cl.h.html#cl_mem_object_type" title='cl_mem_object_type' data-type='cl_uint' data-ref="cl_mem_object_type">cl_mem_object_type</a>   <dfn class="local col3 decl" id="3image_type" title='image_type' data-type='cl_mem_object_type' data-ref="3image_type">image_type</dfn>,</td></tr>
+<tr><th id="31">31</th><td>                                    <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a>              <dfn class="local col4 decl" id="4num_entries" title='num_entries' data-type='cl_uint' data-ref="4num_entries">num_entries</dfn>,</td></tr>
+<tr><th id="32">32</th><td>                                    <a class="typedef" href="../../include/CL/cl.h.html#cl_image_format" title='cl_image_format' data-type='struct _cl_image_format' data-ref="cl_image_format">cl_image_format</a> *    <dfn class="local col5 decl" id="5image_formats" title='image_formats' data-type='cl_image_format *' data-ref="5image_formats">image_formats</dfn>,</td></tr>
+<tr><th id="33">33</th><td>                                    <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_uint" title='cl_uint' data-type='uint32_t' data-ref="cl_uint">cl_uint</a> *            <dfn class="local col6 decl" id="6num_image_formats" title='num_image_formats' data-type='cl_uint *' data-ref="6num_image_formats">num_image_formats</dfn>) </td></tr>
+<tr><th id="34">34</th><td><a class="macro" href="../../include/CL/cl_platform.h.html#57" title="" data-ref="_M/CL_API_SUFFIX__VERSION_1_0">CL_API_SUFFIX__VERSION_1_0</a></td></tr>
+<tr><th id="35">35</th><td>{</td></tr>
+<tr><th id="36">36</th><td>  <a class="macro" href="pocl_debug.h.html#277" title="do { if ((context == ((void*)0))) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 36, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_INVALID_CONTEXT&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_INVALID_CONTEXT&quot; &quot; &quot;); fprintf (stderr, &quot;%s\n&quot;, &quot;(context == NULL)&quot;); pocl_debug_output_unlock (); } } while (0); return -34; } } while (0)" data-ref="_M/POCL_RETURN_ERROR_COND">POCL_RETURN_ERROR_COND</a>((<a class="local col1 ref" href="#1context" title='context' data-ref="1context">context</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>), <a class="macro" href="../../include/CL/cl.h.html#203" title="-34" data-ref="_M/CL_INVALID_CONTEXT">CL_INVALID_CONTEXT</a>);</td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td>  <a class="macro" href="pocl_debug.h.html#277" title="do { if ((context-&gt;num_devices == 0)) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 38, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_INVALID_CONTEXT&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_INVALID_CONTEXT&quot; &quot; &quot;); fprintf (stderr, &quot;%s\n&quot;, &quot;(context-&gt;num_devices == 0)&quot;); pocl_debug_output_unlock (); } } while (0); return -34; } } while (0)" data-ref="_M/POCL_RETURN_ERROR_COND">POCL_RETURN_ERROR_COND</a>((<a class="local col1 ref" href="#1context" title='context' data-ref="1context">context</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_context::num_devices" title='_cl_context::num_devices' data-ref="_cl_context::num_devices">num_devices</a> == <var>0</var>), <a class="macro" href="../../include/CL/cl.h.html#203" title="-34" data-ref="_M/CL_INVALID_CONTEXT">CL_INVALID_CONTEXT</a>);</td></tr>
+<tr><th id="39">39</th><td>  </td></tr>
+<tr><th id="40">40</th><td>  <a class="macro" href="pocl_debug.h.html#277" title="do { if ((num_entries == 0 &amp;&amp; image_formats != ((void*)0))) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 40, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_INVALID_VALUE&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_INVALID_VALUE&quot; &quot; &quot;); fprintf (stderr, &quot;%s\n&quot;, &quot;(num_entries == 0 &amp;&amp; image_formats != NULL)&quot;); pocl_debug_output_unlock (); } } while (0); return -30; } } while (0)" data-ref="_M/POCL_RETURN_ERROR_COND">POCL_RETURN_ERROR_COND</a>((<a class="local col4 ref" href="#4num_entries" title='num_entries' data-ref="4num_entries">num_entries</a> == <var>0</var> &amp;&amp; <a class="local col5 ref" href="#5image_formats" title='image_formats' data-ref="5image_formats">image_formats</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>), <a class="macro" href="../../include/CL/cl.h.html#199" title="-30" data-ref="_M/CL_INVALID_VALUE">CL_INVALID_VALUE</a>);</td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td>  <a class="typedef" href="../../include/CL/cl_platform.h.html#cl_int" title='cl_int' data-type='int32_t' data-ref="cl_int">cl_int</a> <dfn class="local col7 decl" id="7idx" title='idx' data-type='cl_int' data-ref="7idx">idx</dfn> = <a class="ref" href="pocl_image_util.h.html#opencl_image_type_to_index" title='opencl_image_type_to_index' data-ref="opencl_image_type_to_index">opencl_image_type_to_index</a> (<a class="local col3 ref" href="#3image_type" title='image_type' data-ref="3image_type">image_type</a>);</td></tr>
+<tr><th id="43">43</th><td></td></tr>
+<tr><th id="44">44</th><td>  <a class="macro" href="pocl_debug.h.html#266" title="do { if ((idx &lt; 0)) { do { if (pocl_debug_messages_filter &amp; 0x1000) { pocl_debug_output_lock (); pocl_debug_print_header (__PRETTY_FUNCTION__, 45, &quot;ERROR&quot;, 3); if (stderr_is_a_tty) fprintf (stderr, &quot;%s&quot;, &quot;\033[1m\033[31m&quot; &quot;CL_INVALID_VALUE&quot; &quot; &quot; &quot;\033[0m&quot;); else fprintf (stderr, &quot;%s&quot;, &quot;CL_INVALID_VALUE&quot; &quot; &quot;); fprintf (stderr, &quot;invalid image type\n&quot;); pocl_debug_output_unlock (); } } while (0); return -30; } } while (0)" data-ref="_M/POCL_RETURN_ERROR_ON">POCL_RETURN_ERROR_ON</a> ((<a class="local col7 ref" href="#7idx" title='idx' data-ref="7idx">idx</a> &lt; <var>0</var>), <a class="macro" href="../../include/CL/cl.h.html#199" title="-30" data-ref="_M/CL_INVALID_VALUE">CL_INVALID_VALUE</a>,</td></tr>
+<tr><th id="45">45</th><td>                        <q>"invalid image type\n"</q>);</td></tr>
+<tr><th id="46">46</th><td></td></tr>
+<tr><th id="47">47</th><td>  <b>if</b> (<a class="local col5 ref" href="#5image_formats" title='image_formats' data-ref="5image_formats">image_formats</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="48">48</th><td>    {</td></tr>
+<tr><th id="49">49</th><td>      <b>if</b> (<a class="local col4 ref" href="#4num_entries" title='num_entries' data-ref="4num_entries">num_entries</a> &gt; <a class="local col1 ref" href="#1context" title='context' data-ref="1context">context</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_context::num_image_formats" title='_cl_context::num_image_formats' data-ref="_cl_context::num_image_formats">num_image_formats</a>[<a class="local col7 ref" href="#7idx" title='idx' data-ref="7idx">idx</a>])</td></tr>
+<tr><th id="50">50</th><td>          <a class="local col4 ref" href="#4num_entries" title='num_entries' data-ref="4num_entries">num_entries</a> = <a class="local col1 ref" href="#1context" title='context' data-ref="1context">context</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_context::num_image_formats" title='_cl_context::num_image_formats' data-ref="_cl_context::num_image_formats">num_image_formats</a>[<a class="local col7 ref" href="#7idx" title='idx' data-ref="7idx">idx</a>];</td></tr>
+<tr><th id="51">51</th><td>      <a class="ref" href="../../../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a> (<a class="local col5 ref" href="#5image_formats" title='image_formats' data-ref="5image_formats">image_formats</a>, <a class="local col1 ref" href="#1context" title='context' data-ref="1context">context</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_context::image_formats" title='_cl_context::image_formats' data-ref="_cl_context::image_formats">image_formats</a>[<a class="local col7 ref" href="#7idx" title='idx' data-ref="7idx">idx</a>],</td></tr>
+<tr><th id="52">52</th><td>              <b>sizeof</b> (<a class="typedef" href="../../include/CL/cl.h.html#cl_image_format" title='cl_image_format' data-type='struct _cl_image_format' data-ref="cl_image_format">cl_image_format</a>) * <a class="local col4 ref" href="#4num_entries" title='num_entries' data-ref="4num_entries">num_entries</a>);</td></tr>
+<tr><th id="53">53</th><td>    }</td></tr>
+<tr><th id="54">54</th><td></td></tr>
+<tr><th id="55">55</th><td>  <b>if</b> (<a class="local col6 ref" href="#6num_image_formats" title='num_image_formats' data-ref="6num_image_formats">num_image_formats</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="56">56</th><td>    {</td></tr>
+<tr><th id="57">57</th><td>      *<a class="local col6 ref" href="#6num_image_formats" title='num_image_formats' data-ref="6num_image_formats">num_image_formats</a> = <a class="local col1 ref" href="#1context" title='context' data-ref="1context">context</a>-&gt;<a class="ref" href="pocl_cl.h.html#_cl_context::num_image_formats" title='_cl_context::num_image_formats' data-ref="_cl_context::num_image_formats">num_image_formats</a>[<a class="local col7 ref" href="#7idx" title='idx' data-ref="7idx">idx</a>];</td></tr>
+<tr><th id="58">58</th><td>    }</td></tr>
+<tr><th id="59">59</th><td></td></tr>
+<tr><th id="60">60</th><td>  <b>return</b> <a class="macro" href="../../include/CL/cl.h.html#174" title="0" data-ref="_M/CL_SUCCESS">CL_SUCCESS</a>;</td></tr>
+<tr><th id="61">61</th><td>} </td></tr>
+<tr><th id="62">62</th><td><a class="macro" href="pocl_cl.h.html#234" title="" data-ref="_M/POsym">POsym</a>(clGetSupportedImageFormats)</td></tr>
+<tr><th id="63">63</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/IR/Instruction.h' l='52' type='32768'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.h' l='415' u='r' c='_ZNK4llvm11Instruction20hasMetadataHashEntryEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.h' l='658' u='r' c='_ZN4llvm11Instruction23setHasMetadataHashEntryEb'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.h' l='659' u='r' c='_ZN4llvm11Instruction23setHasMetadataHashEntryEb'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.h' l='671' u='r' c='_ZN4llvm11Instruction26setInstructionSubclassDataEt'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.h' l='675' u='r' c='_ZNK4llvm11Instruction30getSubclassDataFromInstructionEv'/>
+<doc f='include/llvm-6.0/llvm/IR/Instruction.h' l='50'>/// This is a bit stored in the SubClassData field which indicates whether
+    /// this instruction has metadata attached to it or not.</doc>

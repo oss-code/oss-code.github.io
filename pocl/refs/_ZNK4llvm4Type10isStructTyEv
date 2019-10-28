@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/IR/Type.h' l='215' type='bool llvm::Type::isStructTy() const'/>
+<use f='pocl/lib/llvmopencl/LLVMUtils.h' l='68' u='c' c='_ZN4pocl13is_image_typeERKN4llvm4TypeE'/>
+<use f='pocl/lib/llvmopencl/LLVMUtils.h' l='80' u='c' c='_ZN4pocl15is_sampler_typeERKN4llvm4TypeE'/>
+<doc f='include/llvm-6.0/llvm/IR/Type.h' l='214'>/// True if this is an instance of StructType.</doc>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='86' u='c' c='_ZL23fixOpenCLimageArgumentsPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/linker.cpp' l='115' u='c' c='_ZL24CloneFuncFixOpenCLImageTPN4llvm6ModuleEPNS_8FunctionE'/>

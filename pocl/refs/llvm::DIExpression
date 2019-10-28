@@ -1,0 +1,41 @@
+<inh f='include/llvm-6.0/llvm/IR/Metadata.h' l='862' c='llvm::MDNode'/>
+<def f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2129' ll='2317'/>
+<size>48</size>
+<doc f='include/llvm-6.0/llvm/IR/DebugInfoMetadata.h' l='2120'>/// DWARF expression.
+///
+/// This is (almost) a DWARF expression that modifies the location of a
+/// variable, or the location of a single piece of a variable, or (when using
+/// DW_OP_stack_value) is the constant variable value.
+///
+/// TODO: Co-allocate the expression elements.
+/// TODO: Separate from MDNode, or otherwise drop Distinct and Temporary
+/// storage types.</doc>
+<mbr r='llvm::DIExpression::Elements' o='192' t='std::vector&lt;uint64_t&gt;'/>
+<fun r='_ZN4llvm12DIExpressionC1ERNS_11LLVMContextENS_8Metadata11StorageTypeENS_8ArrayRefImEE'/>
+<fun r='_ZN4llvm12DIExpressionD1Ev'/>
+<fun r='_ZN4llvm12DIExpression7getImplERNS_11LLVMContextENS_8ArrayRefImEENS_8Metadata11StorageTypeEb'/>
+<fun r='_ZNK4llvm12DIExpression9cloneImplEv'/>
+<fun r='_ZN4llvm12DIExpression3getERNS_11LLVMContextENS_8ArrayRefImEE'/>
+<fun r='_ZN4llvm12DIExpression11getIfExistsERNS_11LLVMContextENS_8ArrayRefImEE'/>
+<fun r='_ZN4llvm12DIExpression11getDistinctERNS_11LLVMContextENS_8ArrayRefImEE'/>
+<fun r='_ZN4llvm12DIExpression12getTemporaryERNS_11LLVMContextENS_8ArrayRefImEE'/>
+<fun r='_ZNK4llvm12DIExpression5cloneEv'/>
+<fun r='_ZNK4llvm12DIExpression11getElementsEv'/>
+<fun r='_ZNK4llvm12DIExpression14getNumElementsEv'/>
+<fun r='_ZNK4llvm12DIExpression10getElementEj'/>
+<fun r='_ZNK4llvm12DIExpression10isConstantEv'/>
+<fun r='_ZNK4llvm12DIExpression14elements_beginEv'/>
+<fun r='_ZNK4llvm12DIExpression12elements_endEv'/>
+<fun r='_ZNK4llvm12DIExpression13expr_op_beginEv'/>
+<fun r='_ZNK4llvm12DIExpression11expr_op_endEv'/>
+<fun r='_ZNK4llvm12DIExpression8expr_opsEv'/>
+<fun r='_ZNK4llvm12DIExpression7isValidEv'/>
+<fun r='_ZN4llvm12DIExpression7classofEPKNS_8MetadataE'/>
+<fun r='_ZNK4llvm12DIExpression15startsWithDerefEv'/>
+<fun r='_ZN4llvm12DIExpression15getFragmentInfoENS0_16expr_op_iteratorES1_'/>
+<fun r='_ZNK4llvm12DIExpression15getFragmentInfoEv'/>
+<fun r='_ZNK4llvm12DIExpression10isFragmentEv'/>
+<fun r='_ZN4llvm12DIExpression12appendOffsetERNS_15SmallVectorImplImEEl'/>
+<fun r='_ZNK4llvm12DIExpression15extractIfOffsetERl'/>
+<fun r='_ZN4llvm12DIExpression7prependEPKS0_blbb'/>
+<fun r='_ZN4llvm12DIExpression24createFragmentExpressionEPKS0_jj'/>

@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/IR/Instruction.h' l='452' type='bool llvm::Instruction::isCommutative() const'/>
+<doc f='include/llvm-6.0/llvm/IR/Instruction.h' l='445'>/// Return true if the instruction is commutative:
+  ///
+  ///   Commutative operators satisfy: (x op y) === (y op x)
+  ///
+  /// In LLVM, these are the commutative operators, plus SetEQ and SetNE, when
+  /// applied to any type.
+  ///</doc>

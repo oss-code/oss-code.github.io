@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='107' ll='112' type='bool llvm::TargetTransformInfo::invalidate(llvm::Function &amp; , const llvm::PreservedAnalyses &amp; , FunctionAnalysisManager::Invalidator &amp; )'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='102'>/// \brief Handle the invalidation of this information.
+  ///
+  /// When used as a result of \c TargetIRAnalysis this method will be called
+  /// when the function this was computed for changes. When it returns false,
+  /// the information is preserved across those changes.</doc>

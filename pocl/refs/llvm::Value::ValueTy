@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/IR/Value.h' l='450' ll='457'/>
+<doc f='include/llvm-6.0/llvm/IR/Value.h' l='444'>/// \brief Concrete subclass of this.
+  ///
+  /// An enumeration for keeping track of the concrete subclass of Value that
+  /// is actually instantiated. Values of this enumeration are kept in the
+  /// Value classes SubclassID field. They are used for concrete type
+  /// identification.</doc>

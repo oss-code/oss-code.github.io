@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='93' type='void llvm::DIBuilder::DIBuilder(llvm::Module &amp; M, bool AllowUnresolved = true)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='89'>/// Construct a builder for a module.
+    ///
+    /// If \c AllowUnresolved, collect unresolved nodes attached to the module
+    /// in order to resolve cycles during \a finalize().</doc>

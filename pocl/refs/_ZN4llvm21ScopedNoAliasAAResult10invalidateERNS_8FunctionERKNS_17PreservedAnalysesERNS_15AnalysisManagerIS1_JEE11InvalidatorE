@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Analysis/ScopedNoAliasAA.h' l='38' ll='41' type='bool llvm::ScopedNoAliasAAResult::invalidate(llvm::Function &amp; , const llvm::PreservedAnalyses &amp; , FunctionAnalysisManager::Invalidator &amp; )'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScopedNoAliasAA.h' l='35'>/// Handle invalidation events from the new pass manager.
+  ///
+  /// By definition, this result is stateless and so remains valid.</doc>

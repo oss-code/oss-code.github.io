@@ -1,0 +1,7 @@
+<dec f='pocl/lib/CL/pocl_llvm.h' l='62' type='int pocl_llvm_get_kernels_metadata(cl_program program, unsigned int device_i)'/>
+<doc f='pocl/lib/CL/pocl_llvm.h' l='59'>/* Retrieve metadata of the given kernel in the program to populate the
+ * cl_kernel object.
+ */</doc>
+<use f='pocl/lib/CL/pocl_build.c' l='848' u='c' c='compile_and_link_program'/>
+<def f='pocl/lib/CL/pocl_llvm_metadata.cc' l='445' ll='613' type='int pocl_llvm_get_kernels_metadata(cl_program program, unsigned int device_i)'/>
+<doc f='pocl/lib/CL/pocl_llvm_metadata.cc' l='443'>/*****************************************************************************/</doc>

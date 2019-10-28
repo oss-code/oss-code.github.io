@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='224' type='llvm::DIDerivedType * llvm::DIBuilder::createTypedef(llvm::DIType * Ty, llvm::StringRef Name, llvm::DIFile * File, unsigned int LineNo, llvm::DIScope * Context)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='218'>/// Create debugging information entry for a typedef.
+    /// \param Ty          Original type.
+    /// \param Name        Typedef name.
+    /// \param File        File where this type is defined.
+    /// \param LineNo      Line number.
+    /// \param Context     The surrounding context for the typedef.</doc>

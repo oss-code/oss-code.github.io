@@ -1,0 +1,15 @@
+<inh f='include/llvm-6.0/llvm/IR/PassManager.h' l='382' c='llvm::AnalysisInfoMixin'/>
+<def f='include/llvm-6.0/llvm/Analysis/TargetLibraryInfo.h' l='345' ll='374'/>
+<size>224</size>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetLibraryInfo.h' l='341'>/// Analysis pass providing the \c TargetLibraryInfo.
+///
+/// Note that this pass&apos;s result cannot be invalidated, it is immutable for the
+/// life of the module.</doc>
+<fun r='_ZN4llvm21TargetLibraryAnalysisC1Ev'/>
+<fun r='_ZN4llvm21TargetLibraryAnalysisC1ENS_21TargetLibraryInfoImplE'/>
+<fun r='_ZN4llvm21TargetLibraryAnalysis3runERNS_6ModuleERNS_15AnalysisManagerIS1_JEEE'/>
+<fun r='_ZN4llvm21TargetLibraryAnalysis3runERNS_8FunctionERNS_15AnalysisManagerIS1_JEEE'/>
+<smbr r='llvm::TargetLibraryAnalysis::Key' t='llvm::AnalysisKey'/>
+<mbr r='llvm::TargetLibraryAnalysis::PresetInfoImpl' o='0' t='Optional&lt;llvm::TargetLibraryInfoImpl&gt;'/>
+<mbr r='llvm::TargetLibraryAnalysis::Impls' o='1536' t='StringMap&lt;std::unique_ptr&lt;TargetLibraryInfoImpl&gt; &gt;'/>
+<fun r='_ZN4llvm21TargetLibraryAnalysis14lookupInfoImplERKNS_6TripleE'/>

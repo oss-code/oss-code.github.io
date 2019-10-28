@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='287' type='bool llvm::TargetTransformInfo::hasBranchDivergence() const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='282'>/// \brief Return true if branch divergence exists.
+  ///
+  /// Branch divergence has a significantly negative impact on GPU performance
+  /// when threads in the same wavefront take different paths due to conditional
+  /// branches.</doc>

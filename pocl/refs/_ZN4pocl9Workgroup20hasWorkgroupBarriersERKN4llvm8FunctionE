@@ -1,0 +1,7 @@
+<dec f='pocl/lib/llvmopencl/Workgroup.h' l='44' type='static bool pocl::Workgroup::hasWorkgroupBarriers(const llvm::Function &amp; F)'/>
+<use f='pocl/lib/llvmopencl/ImplicitConditionalBarriers.cc' l='93' u='c' c='_ZN4pocl27ImplicitConditionalBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/ImplicitLoopBarriers.cc' l='69' u='c' c='_ZN4pocl20ImplicitLoopBarriers9runOnLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/LoopBarriers.cc' l='66' u='c' c='_ZN4pocl12LoopBarriers9runOnLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<def f='pocl/lib/llvmopencl/Workgroup.cc' l='1463' ll='1483' type='static bool pocl::Workgroup::hasWorkgroupBarriers(const llvm::Function &amp; F)'/>
+<doc f='pocl/lib/llvmopencl/Workgroup.cc' l='1461'>// Returns true in case the given function is a kernel with work-group
+// barriers inside it.</doc>

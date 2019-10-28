@@ -1,0 +1,6 @@
+<def f='pocl/include/CL/cl2.hpp' l='6614' ll='6619' type='cl_int cl::Program::getInfo(cl_program_info name, T * param) const'/>
+<def f='pocl/include/CL/cl2.hpp' l='6812' ll='6837' type='cl_int cl::Program::getInfo(cl_program_info name, vector&lt;vector&lt;unsigned char&gt; &gt; * param) const'/>
+<use f='pocl/include/CL/cl2.hpp' l='6844' u='c' c='_ZNK2cl7Program7getInfoEPi'/>
+<use f='pocl/tests/regression/test_alignment_with_dynamic_wg.cpp' l='80' u='c' c='_Z15test_invocationjjjRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES6_S6_RN2cl12CommandQueueERNS7_7ProgramE'/>
+<doc f='pocl/include/CL/cl2.hpp' l='6811'>// Template specialization for CL_PROGRAM_BINARIES</doc>
+<use f='pocl/tests/regression/test_alignment_with_dynamic_wg2.cpp' l='70' u='c' c='main'/>

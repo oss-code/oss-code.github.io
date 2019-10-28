@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1783' type='DenseMap&lt;std::pair&lt;const SCEVUnknown *, const Loop *&gt;, std::pair&lt;const SCEV *, SmallVector&lt;const SCEVPredicate *, 3&gt; &gt; &gt;'/>
+<offset>5504</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1779'>/// Cache tentative mappings from UnknownSCEVs in a Loop, to a SCEV expression
+  /// they can be rewritten into under certain predicates.</doc>

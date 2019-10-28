@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/IR/GetElementPtrTypeIterator.h' l='69' ll='73' type='llvm::Type * llvm::generic_gep_type_iterator::getIndexedType() const'/>
+<use f='include/llvm-6.0/llvm/IR/GetElementPtrTypeIterator.h' l='78' u='c' c='_ZN4llvm25generic_gep_type_iteratorppEv'/>
+<use f='include/llvm-6.0/llvm/Transforms/Utils/Local.h' l='274' u='c' c='_ZN4llvm13EmitGEPOffsetEPT_RKNS_10DataLayoutEPNS_4UserEb'/>
+<doc f='include/llvm-6.0/llvm/IR/GetElementPtrTypeIterator.h' l='65'>// FIXME: Make this the iterator&apos;s operator*() after the 4.0 release.
+    // operator*() had a different meaning in earlier releases, so we&apos;re
+    // temporarily not giving this iterator an operator*() to avoid a subtle
+    // semantics break.</doc>

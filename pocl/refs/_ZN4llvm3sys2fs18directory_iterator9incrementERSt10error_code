@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Support/FileSystem.h' l='941' ll='944' type='llvm::sys::fs::directory_iterator &amp; llvm::sys::fs::directory_iterator::increment(std::error_code &amp; ec)'/>
+<use f='include/llvm-6.0/llvm/Support/FileSystem.h' l='1015' u='c' c='_ZN4llvm3sys2fs28recursive_directory_iterator9incrementERSt10error_code'/>
+<use f='include/llvm-6.0/llvm/Support/FileSystem.h' l='1051' u='c' c='_ZN4llvm3sys2fs28recursive_directory_iterator3popEv'/>
+<doc f='include/llvm-6.0/llvm/Support/FileSystem.h' l='940'>// No operator++ because we need error_code.</doc>

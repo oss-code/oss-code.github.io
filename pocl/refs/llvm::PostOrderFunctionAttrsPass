@@ -1,0 +1,13 @@
+<inh f='include/llvm-6.0/llvm/IR/PassManager.h' l='365' c='llvm::PassInfoMixin'/>
+<def f='include/llvm-6.0/llvm/Transforms/IPO/FunctionAttrs.h' l='50' ll='53'/>
+<size>1</size>
+<doc f='include/llvm-6.0/llvm/Transforms/IPO/FunctionAttrs.h' l='41'>/// Computes function attributes in post-order over the call graph.
+///
+/// By operating in post-order, this pass computes precise attributes for
+/// called functions prior to processsing their callers. This &quot;bottom-up&quot;
+/// approach allows powerful interprocedural inference of function attributes
+/// like memory access patterns, etc. It can discover functions that do not
+/// access memory, or only read memory, and give them the readnone/readonly
+/// attribute. It also discovers function arguments that are not captured by
+/// the function and marks them with the nocapture attribute.</doc>
+<fun r='_ZN4llvm26PostOrderFunctionAttrsPass3runERNS_13LazyCallGraph3SCCERNS_15AnalysisManagerIS2_JRS1_EEES5_RNS_17CGSCCUpdateResultE'/>

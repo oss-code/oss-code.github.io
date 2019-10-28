@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>RemoveOptnoneFromWIFunc.cc source code [pocl/lib/llvmopencl/RemoveOptnoneFromWIFunc.cc] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'pocl/lib/llvmopencl/RemoveOptnoneFromWIFunc.cc'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>pocl</a>/<a href='..'>lib</a>/<a href='./'>llvmopencl</a>/<a href='RemoveOptnoneFromWIFunc.cc.html'>RemoveOptnoneFromWIFunc.cc</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>// Removes optnone keyword from get_global_id().</i></td></tr>
+<tr><th id="2">2</th><td><i>//</i></td></tr>
+<tr><th id="3">3</th><td><i>// Copyright (c) 2017 Michal Babej / TUT</i></td></tr>
+<tr><th id="4">4</th><td><i>//</i></td></tr>
+<tr><th id="5">5</th><td><i>// Permission is hereby granted, free of charge, to any person obtaining a copy</i></td></tr>
+<tr><th id="6">6</th><td><i>// of this software and associated documentation files (the "Software"), to deal</i></td></tr>
+<tr><th id="7">7</th><td><i>// in the Software without restriction, including without limitation the rights</i></td></tr>
+<tr><th id="8">8</th><td><i>// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</i></td></tr>
+<tr><th id="9">9</th><td><i>// copies of the Software, and to permit persons to whom the Software is</i></td></tr>
+<tr><th id="10">10</th><td><i>// furnished to do so, subject to the following conditions:</i></td></tr>
+<tr><th id="11">11</th><td><i>//</i></td></tr>
+<tr><th id="12">12</th><td><i>// The above copyright notice and this permission notice shall be included in</i></td></tr>
+<tr><th id="13">13</th><td><i>// all copies or substantial portions of the Software.</i></td></tr>
+<tr><th id="14">14</th><td><i>//</i></td></tr>
+<tr><th id="15">15</th><td><i>// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</i></td></tr>
+<tr><th id="16">16</th><td><i>// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</i></td></tr>
+<tr><th id="17">17</th><td><i>// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</i></td></tr>
+<tr><th id="18">18</th><td><i>// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</i></td></tr>
+<tr><th id="19">19</th><td><i>// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</i></td></tr>
+<tr><th id="20">20</th><td><i>// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</i></td></tr>
+<tr><th id="21">21</th><td><i>// THE SOFTWARE.</i></td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><u>#include <a href="../../config.h.html">"config.h"</a></u></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><u>#include <a href="RemoveOptnoneFromWIFunc.h.html">"RemoveOptnoneFromWIFunc.h"</a></u></td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><u>#include <a href="CompilerWarnings.h.html">"CompilerWarnings.h"</a></u></td></tr>
+<tr><th id="28">28</th><td><a class="macro" href="CompilerWarnings.h.html#29" title="" data-ref="_M/IGNORE_COMPILER_WARNING">IGNORE_COMPILER_WARNING</a>(<q>"-Wunused-parameter"</q>)</td></tr>
+<tr><th id="29">29</th><td></td></tr>
+<tr><th id="30">30</th><td><u>#include <a href="../../../include/llvm-6.0/llvm/IR/Constants.h.html">&lt;llvm/IR/Constants.h&gt;</a></u></td></tr>
+<tr><th id="31">31</th><td><u>#include <a href="../../../include/llvm-6.0/llvm/IR/Instructions.h.html">&lt;llvm/IR/Instructions.h&gt;</a></u></td></tr>
+<tr><th id="32">32</th><td></td></tr>
+<tr><th id="33">33</th><td><u>#include <a href="../../../include/c++/7/iostream.html">&lt;iostream&gt;</a></u></td></tr>
+<tr><th id="34">34</th><td></td></tr>
+<tr><th id="35">35</th><td><b>namespace</b> <span class="namespace">pocl</span> {</td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td><b>using</b> <b>namespace</b> <span class="namespace">llvm</span>;</td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td><b>namespace</b> {</td></tr>
+<tr><th id="40">40</th><td><em>static</em> <a class="type" href="../../../include/llvm-6.0/llvm/PassSupport.h.html#llvm::RegisterPass" title='llvm::RegisterPass' data-ref="llvm::RegisterPass">RegisterPass</a>&lt;<span class="namespace">pocl::</span><a class="type" href="RemoveOptnoneFromWIFunc.h.html#pocl::RemoveOptnoneFromWIFunc" title='pocl::RemoveOptnoneFromWIFunc' data-ref="pocl::RemoveOptnoneFromWIFunc">RemoveOptnoneFromWIFunc</a>&gt;</td></tr>
+<tr><th id="41">41</th><td>    <dfn class="tu decl def" id="pocl::(anonymousnamespace)::X" title='pocl::(anonymous namespace)::X' data-type='RegisterPass&lt;pocl::RemoveOptnoneFromWIFunc&gt;' data-ref="pocl::(anonymousnamespace)::X">X</dfn><a class="ref" href="../../../include/llvm-6.0/llvm/PassSupport.h.html#_ZN4llvm12RegisterPassC1ENS_9StringRefES1_bb" title='llvm::RegisterPass::RegisterPass&lt;passName&gt;' data-ref="_ZN4llvm12RegisterPassC1ENS_9StringRefES1_bb">(</a><a class="ref fake" href="../../../include/llvm-6.0/llvm/ADT/StringRef.h.html#_ZN4llvm9StringRefC1EPKc" title='llvm::StringRef::StringRef' data-ref="_ZN4llvm9StringRefC1EPKc"></a><q>"remove-optnone"</q>, <a class="ref fake" href="../../../include/llvm-6.0/llvm/ADT/StringRef.h.html#_ZN4llvm9StringRefC1EPKc" title='llvm::StringRef::StringRef' data-ref="_ZN4llvm9StringRefC1EPKc"></a><q>"Remove optnone keyword from workitem functions."</q>);</td></tr>
+<tr><th id="42">42</th><td>}</td></tr>
+<tr><th id="43">43</th><td></td></tr>
+<tr><th id="44">44</th><td><em>char</em> <a class="type" href="RemoveOptnoneFromWIFunc.h.html#pocl::RemoveOptnoneFromWIFunc" title='pocl::RemoveOptnoneFromWIFunc' data-ref="pocl::RemoveOptnoneFromWIFunc">RemoveOptnoneFromWIFunc</a>::<dfn class="decl def" id="pocl::RemoveOptnoneFromWIFunc::ID" title='pocl::RemoveOptnoneFromWIFunc::ID' data-ref="pocl::RemoveOptnoneFromWIFunc::ID">ID</dfn> = <var>0</var>;</td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td><a class="type" href="RemoveOptnoneFromWIFunc.h.html#pocl::RemoveOptnoneFromWIFunc" title='pocl::RemoveOptnoneFromWIFunc' data-ref="pocl::RemoveOptnoneFromWIFunc">RemoveOptnoneFromWIFunc</a>::<dfn class="decl def" id="_ZN4pocl23RemoveOptnoneFromWIFuncC1Ev" title='pocl::RemoveOptnoneFromWIFunc::RemoveOptnoneFromWIFunc' data-ref="_ZN4pocl23RemoveOptnoneFromWIFuncC1Ev">RemoveOptnoneFromWIFunc</dfn>() : <a class="type" href="../../../include/llvm-6.0/llvm/Pass.h.html#llvm::FunctionPass" title='llvm::FunctionPass' data-ref="llvm::FunctionPass">FunctionPass</a><a class="ref" href="../../../include/llvm-6.0/llvm/Pass.h.html#_ZN4llvm12FunctionPassC1ERc" title='llvm::FunctionPass::FunctionPass' data-ref="_ZN4llvm12FunctionPassC1ERc">(</a><a class="member" href="RemoveOptnoneFromWIFunc.h.html#pocl::RemoveOptnoneFromWIFunc::ID" title='pocl::RemoveOptnoneFromWIFunc::ID' data-ref="pocl::RemoveOptnoneFromWIFunc::ID">ID</a>) {}</td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td><em>bool</em> <a class="type" href="RemoveOptnoneFromWIFunc.h.html#pocl::RemoveOptnoneFromWIFunc" title='pocl::RemoveOptnoneFromWIFunc' data-ref="pocl::RemoveOptnoneFromWIFunc">RemoveOptnoneFromWIFunc</a>::<dfn class="virtual decl def" id="_ZN4pocl23RemoveOptnoneFromWIFunc13runOnFunctionERN4llvm8FunctionE" title='pocl::RemoveOptnoneFromWIFunc::runOnFunction' data-ref="_ZN4pocl23RemoveOptnoneFromWIFunc13runOnFunctionERN4llvm8FunctionE">runOnFunction</dfn>(<a class="type" href="../../../include/llvm-6.0/llvm/IR/Function.h.html#llvm::Function" title='llvm::Function' data-ref="llvm::Function">Function</a> &amp;<dfn class="local col3 decl" id="3F" title='F' data-type='llvm::Function &amp;' data-ref="3F">F</dfn>) {</td></tr>
+<tr><th id="49">49</th><td>  <i>/* Adding "optnone" to get_global_id() solves the problem</i></td></tr>
+<tr><th id="50">50</th><td><i>   * that some pass in opt introduces switch tables which the</i></td></tr>
+<tr><th id="51">51</th><td><i>   * variable uniformity analysis cannot analyze.</i></td></tr>
+<tr><th id="52">52</th><td><i>   *</i></td></tr>
+<tr><th id="53">53</th><td><i>   * However having optnone prevents some later optimizations</i></td></tr>
+<tr><th id="54">54</th><td><i>   * and creates problems in certain workitem tests.</i></td></tr>
+<tr><th id="55">55</th><td><i>   */</i></td></tr>
+<tr><th id="56">56</th><td>  <em>const</em> <em>char</em> *<dfn class="local col4 decl" id="4name" title='name' data-type='const char *' data-ref="4name">name</dfn> = <q>"_Z13get_global_idj"</q>;</td></tr>
+<tr><th id="57">57</th><td>  <a class="type" href="../../../include/llvm-6.0/llvm/ADT/StringRef.h.html#llvm::StringRef" title='llvm::StringRef' data-ref="llvm::StringRef">StringRef</a> <dfn class="local col5 decl" id="5nameref" title='nameref' data-type='llvm::StringRef' data-ref="5nameref">nameref</dfn><a class="ref" href="../../../include/llvm-6.0/llvm/ADT/StringRef.h.html#_ZN4llvm9StringRefC1EPKc" title='llvm::StringRef::StringRef' data-ref="_ZN4llvm9StringRefC1EPKc">(</a><a class="local col4 ref" href="#4name" title='name' data-ref="4name">name</a>);</td></tr>
+<tr><th id="58">58</th><td>  <em>bool</em> <dfn class="local col6 decl" id="6changed" title='changed' data-type='bool' data-ref="6changed">changed</dfn> = <b>false</b>;</td></tr>
+<tr><th id="59">59</th><td></td></tr>
+<tr><th id="60">60</th><td>  <b>if</b> (<a class="local col3 ref" href="#3F" title='F' data-ref="3F">F</a>.<a class="ref" href="../../../include/llvm-6.0/llvm/IR/Value.h.html#_ZNK4llvm5Value7getNameEv" title='llvm::Value::getName' data-ref="_ZNK4llvm5Value7getNameEv">getName</a>().<a class="ref" href="../../../include/llvm-6.0/llvm/ADT/StringRef.h.html#_ZNK4llvm9StringRef6equalsES0_" title='llvm::StringRef::equals' data-ref="_ZNK4llvm9StringRef6equalsES0_">equals</a>(<a class="ref fake" href="../../../include/llvm-6.0/llvm/ADT/StringRef.h.html#49" title='llvm::StringRef::StringRef' data-ref="_ZN4llvm9StringRefC1ERKS0_"></a><a class="local col5 ref" href="#5nameref" title='nameref' data-ref="5nameref">nameref</a>)) {</td></tr>
+<tr><th id="61">61</th><td>    <a class="local col3 ref" href="#3F" title='F' data-ref="3F">F</a>.<a class="ref" href="../../../include/llvm-6.0/llvm/IR/Function.h.html#_ZN4llvm8Function12removeFnAttrENS_9Attribute8AttrKindE" title='llvm::Function::removeFnAttr' data-ref="_ZN4llvm8Function12removeFnAttrENS_9Attribute8AttrKindE">removeFnAttr</a>(<a class="type" href="../../../include/llvm-6.0/llvm/IR/Attributes.h.html#llvm::Attribute" title='llvm::Attribute' data-ref="llvm::Attribute">Attribute</a>::<a class="type" href="../../../include/llvm-6.0/llvm/IR/Attributes.h.html#llvm::Attribute::AttrKind" title='llvm::Attribute::AttrKind' data-ref="llvm::Attribute::AttrKind">AttrKind</a>::<a class="enum" href="../../../include/llvm-6.0/llvm/IR/Attributes.gen.html#llvm::Attribute::AttrKind::OptimizeNone" title='llvm::Attribute::AttrKind::OptimizeNone' data-ref="llvm::Attribute::AttrKind::OptimizeNone">OptimizeNone</a>);</td></tr>
+<tr><th id="62">62</th><td>    <a class="local col6 ref" href="#6changed" title='changed' data-ref="6changed">changed</a> = <b>true</b>;</td></tr>
+<tr><th id="63">63</th><td>  }</td></tr>
+<tr><th id="64">64</th><td>  <b>return</b> <a class="local col6 ref" href="#6changed" title='changed' data-ref="6changed">changed</a>;</td></tr>
+<tr><th id="65">65</th><td>}</td></tr>
+<tr><th id="66">66</th><td>}</td></tr>
+<tr><th id="67">67</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2019-Oct-28</em> from project pocl revision <em>v1.4-RC2-44-gf1dee8d</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

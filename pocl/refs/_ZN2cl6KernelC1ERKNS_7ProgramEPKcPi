@@ -1,0 +1,26 @@
+<dec f='pocl/include/CL/cl2.hpp' l='5797' type='void cl::Kernel::Kernel(const cl::Program &amp; program, const char * name, cl_int * err = __null)'/>
+<def f='pocl/include/CL/cl2.hpp' l='6851' ll='6862' type='void cl::Kernel::Kernel(const cl::Program &amp; program, const char * name, cl_int * err = __null)'/>
+<use f='pocl/include/CL/cl2.hpp' l='9888' u='c' c='_ZN2cl13KernelFunctorC1ERKNS_7ProgramENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPi'/>
+<use f='pocl/tests/regression/test_autolocals_in_constexprs.cpp' l='86' u='c' c='main'/>
+<use f='pocl/tests/regression/test_barrier_before_return.cpp' l='104' u='c' c='main'/>
+<use f='pocl/tests/regression/test_barrier_between_for_loops.cpp' l='125' u='c' c='main'/>
+<use f='pocl/tests/regression/test_constant_array.cpp' l='107' u='c' c='main'/>
+<use f='pocl/tests/regression/test_early_return.cpp' l='99' u='c' c='main'/>
+<use f='pocl/tests/regression/test_flatten_barrier_subs.cpp' l='138' u='c' c='_Z17exclusive_scan_clRKSt6vectorIiSaIiEERS1_'/>
+<use f='pocl/tests/regression/test_flatten_barrier_subs.cpp' l='139' u='c' c='_Z17exclusive_scan_clRKSt6vectorIiSaIiEERS1_'/>
+<use f='pocl/tests/regression/test_flatten_barrier_subs.cpp' l='140' u='c' c='_Z17exclusive_scan_clRKSt6vectorIiSaIiEERS1_'/>
+<use f='pocl/tests/regression/test_for_with_var_iteration_count.cpp' l='107' u='c' c='main'/>
+<use f='pocl/tests/regression/test_fors_with_var_iteration_counts.cpp' l='111' u='c' c='main'/>
+<use f='pocl/tests/regression/test_id_dependent_computation.cpp' l='119' u='c' c='main'/>
+<use f='pocl/tests/regression/test_infinite_loop.cpp' l='102' u='c' c='main'/>
+<use f='pocl/tests/regression/test_locals.cpp' l='100' u='c' c='main'/>
+<use f='pocl/tests/regression/test_loop_phi_replication.cpp' l='105' u='c' c='main'/>
+<use f='pocl/tests/regression/test_multi_level_loops_with_barriers.cpp' l='107' u='c' c='main'/>
+<use f='pocl/tests/regression/test_null_arg.cpp' l='96' u='c' c='main'/>
+<use f='pocl/tests/regression/test_setargs.cpp' l='84' u='c' c='main'/>
+<use f='pocl/tests/regression/test_simple_for_with_a_barrier.cpp' l='106' u='c' c='main'/>
+<use f='pocl/tests/regression/test_structs_as_args.cpp' l='171' u='c' c='main'/>
+<use f='pocl/tests/regression/test_structs_as_args.cpp' l='208' u='c' c='main'/>
+<use f='pocl/tests/regression/test_structs_as_args.cpp' l='245' u='c' c='main'/>
+<use f='pocl/tests/regression/test_undominated_variable.cpp' l='109' u='c' c='main'/>
+<use f='pocl/tests/regression/test_vectors_as_args.cpp' l='135' u='c' c='main'/>

@@ -1,0 +1,15 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='844' type='cl_context_properties *'/>
+<offset>512</offset>
+<use f='pocl/lib/CL/clCreateContext.c' l='39' u='w' c='context_set_properties'/>
+<use f='pocl/lib/CL/clCreateContext.c' l='94' u='w' c='context_set_properties'/>
+<use f='pocl/lib/CL/clCreateContext.c' l='96' u='r' c='context_set_properties'/>
+<use f='pocl/lib/CL/clCreateContext.c' l='102' u='r' c='context_set_properties'/>
+<use f='pocl/lib/CL/clCreateContext.c' l='111' u='w' c='context_set_properties'/>
+<use f='pocl/lib/CL/clCreateContext.c' l='228' u='r' c='POclCreateContext'/>
+<use f='pocl/lib/CL/clCreateContext.c' l='228' u='w' c='POclCreateContext'/>
+<use f='pocl/lib/CL/clCreateContextFromType.c' l='128' u='r' c='POclCreateContextFromType'/>
+<use f='pocl/lib/CL/clCreateContextFromType.c' l='128' u='w' c='POclCreateContextFromType'/>
+<use f='pocl/lib/CL/clGetContextInfo.c' l='51' u='r' c='POclGetContextInfo'/>
+<use f='pocl/lib/CL/clGetContextInfo.c' l='54' u='r' c='POclGetContextInfo'/>
+<use f='pocl/lib/CL/clReleaseContext.c' l='60' u='r' c='POclReleaseContext'/>
+<use f='pocl/lib/CL/clReleaseContext.c' l='60' u='w' c='POclReleaseContext'/>

@@ -1,0 +1,9 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='1480' type='LLVMValueRef LLVMConstAllOnes(LLVMTypeRef Ty)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='1472'>/**
+ * Obtain a constant value referring to the instance of a type
+ * consisting of all ones.
+ *
+ * This is only valid for integer types.
+ *
+ * @see llvm::Constant::getAllOnesValue()
+ */</doc>

@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1407' type='const llvm::ScalarEvolution::BackedgeTakenInfo &amp; llvm::ScalarEvolution::getBackedgeTakenInfo(const llvm::Loop * L)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='1404'>/// Return the BackedgeTakenInfo for the given loop, lazily computing new
+  /// values if the loop hasn&apos;t been analyzed yet. The returned result is
+  /// guaranteed not to be predicated.</doc>

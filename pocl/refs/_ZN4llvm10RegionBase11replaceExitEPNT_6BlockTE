@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='337' type='void llvm::RegionBase::replaceExit(BlockT * BB)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='333'>/// @brief Replace the exit basic block of the region with the new basic
+  ///        block.
+  ///
+  /// @param BB  The new exit basic block of the region.</doc>
+<use f='pocl/lib/llvmopencl/IsolateRegions.cc' l='171' u='c' c='_ZN4pocl14IsolateRegions14addDummyBeforeEPN4llvm6RegionEPNS1_10BasicBlockE'/>

@@ -1,0 +1,6 @@
+<def f='pocl/include/CL/cl2.hpp' l='2984' ll='2988' type='cl::Context &amp; cl::Context::operator=(const cl_context &amp; rhs)'/>
+<doc f='pocl/include/CL/cl2.hpp' l='2979'>/*! \brief Assignment operator from cl_context - takes ownership.
+     *
+     *  This effectively transfers ownership of a refcount on the rhs and calls
+     *  clReleaseContext() on the value previously held by this instance.
+     */</doc>

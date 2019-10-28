@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='497' type='llvm::PHINode * llvm::Loop::getCanonicalInductionVariable() const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='490'>/// Check to see if the loop has a canonical induction variable: an integer
+  /// recurrence that starts at 0 and increments by one each time through the
+  /// loop. If so, return the phi node that corresponds to it.
+  ///
+  /// The IndVarSimplify pass transforms loops to have a canonical induction
+  /// variable.
+  ///</doc>
+<use f='pocl/lib/llvmopencl/VariableUniformityAnalysis.cc' l='89' u='c' c='_ZN4pocl26VariableUniformityAnalysis22markInductionVariablesERN4llvm8FunctionERNS1_4LoopE'/>

@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='934' type='void llvm::LazyCallGraph::LazyCallGraph(llvm::Module &amp; M, llvm::TargetLibraryInfo &amp; TLI)'/>
+<use f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='1256' u='c' c='_ZN4llvm21LazyCallGraphAnalysis3runERNS_6ModuleERNS_15AnalysisManagerIS1_JEEE'/>
+<doc f='include/llvm-6.0/llvm/Analysis/LazyCallGraph.h' l='929'>/// Construct a graph for the given module.
+  ///
+  /// This sets up the graph and computes all of the entry points of the graph.
+  /// No function definitions are scanned until their nodes in the graph are
+  /// requested during traversal.</doc>

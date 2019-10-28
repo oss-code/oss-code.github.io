@@ -1,0 +1,18 @@
+<dec f='pocl/include/CL/cl.h' l='1337' type='cl_int clReleaseEvent(cl_event event)'/>
+<use f='pocl/examples/matrix1/matrix1.c' l='158' u='c' c='exec_matrix_kernel'/>
+<use f='pocl/lib/CL/pocl_intfn.h' l='102' c='POclReleaseEvent'/>
+<use f='pocl/include/CL/cl2.hpp' l='1656' u='c' c='_ZN2cl6detail16ReferenceHandlerIP9_cl_eventE7releaseES3_'/>
+<use f='pocl/tests/runtime/test_clCreateSubDevices.c' l='99' u='c' c='test_context'/>
+<use f='pocl/tests/runtime/test_clFinish.c' l='182' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clFinish.c' l='183' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clFinish.c' l='184' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clFinish.c' l='185' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clGetEventInfo.c' l='58' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clSetEventCallback.c' l='154' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_event_cycle.c' l='129' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_event_cycle.c' l='130' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_event_cycle.c' l='131' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_read-copy-write-buffer.c' l='122' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_read-copy-write-buffer.c' l='123' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_read-copy-write-buffer.c' l='124' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_user_event.c' l='79' u='c' c='main'/>

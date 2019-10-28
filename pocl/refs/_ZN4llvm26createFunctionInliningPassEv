@@ -1,0 +1,11 @@
+<dec f='include/llvm-6.0/llvm/Transforms/IPO.h' l='109' type='llvm::Pass * llvm::createFunctionInliningPass()'/>
+<doc f='include/llvm-6.0/llvm/Transforms/IPO.h' l='100'>//===----------------------------------------------------------------------===//
+/// createFunctionInliningPass - Return a new pass object that uses a heuristic
+/// to inline direct function calls to small functions.
+///
+/// The Threshold can be passed directly, or asked to be computed from the
+/// given optimization and size optimization arguments.
+///
+/// The -inline-threshold command line option takes precedence over the
+/// threshold given here.</doc>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='104' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>

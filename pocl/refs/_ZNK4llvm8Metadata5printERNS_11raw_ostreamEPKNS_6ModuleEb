@@ -1,0 +1,11 @@
+<dec f='include/llvm-6.0/llvm/IR/Metadata.h' l='120' type='void llvm::Metadata::print(llvm::raw_ostream &amp; OS, const llvm::Module * M = nullptr, bool IsForDebug = false) const'/>
+<use f='include/llvm-6.0/llvm/IR/Metadata.h' l='161' u='c' c='_ZN4llvmlsERNS_11raw_ostreamERKNS_8MetadataE'/>
+<doc f='include/llvm-6.0/llvm/IR/Metadata.h' l='111'>/// @}
+
+  /// \brief Print.
+  ///
+  /// Prints definition of \c this.
+  ///
+  /// If \c M is provided, metadata nodes will be numbered canonically;
+  /// otherwise, pointer addresses are substituted.
+  /// @{</doc>

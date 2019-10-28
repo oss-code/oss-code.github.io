@@ -1,0 +1,11 @@
+<def f='include/llvm-6.0/llvm/Support/FileSystem.h' l='103' ll='106' type='llvm::sys::fs::perms llvm::sys::fs::operator|(llvm::sys::fs::perms l, llvm::sys::fs::perms r)'/>
+<use f='include/llvm-6.0/llvm/Support/FileSystem.h' l='112' u='c' c='_ZN4llvm3sys2fsoRERNS1_5permsES2_'/>
+<use f='include/llvm-6.0/llvm/Support/FileSystem.h' l='300' u='c' c='_ZN4llvm3sys2fs18create_directoriesERKNS_5TwineEbNS1_5permsE'/>
+<use f='include/llvm-6.0/llvm/Support/FileSystem.h' l='309' u='c' c='_ZN4llvm3sys2fs16create_directoryERKNS_5TwineEbNS1_5permsE'/>
+<use f='include/llvm-6.0/llvm/Support/FileSystem.h' l='715' u='c' c='_ZN4llvm3sys2fs16createUniqueFileERKNS_5TwineERiRNS_15SmallVectorImplIcEEjNS1_9OpenFlagsE'/>
+<use f='include/llvm-6.0/llvm/Support/FileSystem.h' l='737' u='c' c='_ZN4llvm3sys2fs8TempFile6createERKNS_5TwineEj'/>
+<doc f='include/llvm-6.0/llvm/Support/FileSystem.h' l='102'>// Helper functions so that you can use &amp; and | to manipulate perms bits:</doc>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='76' u='c' c='pocl_mk_tempname'/>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='76' u='c' c='pocl_write_file'/>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='76' u='c' c='pocl_write_tempfile'/>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='76' u='c' c='pocl_write_module'/>

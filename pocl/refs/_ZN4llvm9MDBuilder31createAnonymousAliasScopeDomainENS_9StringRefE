@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/MDBuilder.h' l='118' ll='120' type='llvm::MDNode * llvm::MDBuilder::createAnonymousAliasScopeDomain(llvm::StringRef Name = llvm::StringRef())'/>
+<doc f='include/llvm-6.0/llvm/IR/MDBuilder.h' l='115'>/// \brief Return metadata appropriate for an alias scope domain node.
+  /// Each returned node is distinct from all other metadata and will never
+  /// be identified (uniqued) with anything else.</doc>

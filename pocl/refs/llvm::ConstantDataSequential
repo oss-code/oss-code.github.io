@@ -1,0 +1,39 @@
+<inh f='include/llvm-6.0/llvm/IR/Constants.h' l='58' c='llvm::ConstantData'/>
+<def f='include/llvm-6.0/llvm/IR/Constants.h' l='565' ll='673'/>
+<ovr f='include/llvm-6.0/llvm/IR/Constants.h' l='681' c='llvm::ConstantDataArray'/>
+<ovr f='include/llvm-6.0/llvm/IR/Constants.h' l='735' c='llvm::ConstantDataVector'/>
+<size>40</size>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='556'>//===----------------------------------------------------------------------===//
+/// ConstantDataSequential - A vector or array constant whose element type is a
+/// simple 1/2/4/8-byte integer or float/double, and whose elements are just
+/// simple data values (i.e. ConstantInt/ConstantFP).  This Constant node has no
+/// operands because it stores all of the elements of the constant as densely
+/// packed data, instead of as Value*&apos;s.
+///
+/// This is the common base class of ConstantDataArray and ConstantDataVector.
+///</doc>
+<mbr r='llvm::ConstantDataSequential::DataElements' o='192' t='const char *'/>
+<mbr r='llvm::ConstantDataSequential::Next' o='256' t='llvm::ConstantDataSequential *'/>
+<fun r='_ZN4llvm22ConstantDataSequential19destroyConstantImplEv'/>
+<fun r='_ZN4llvm22ConstantDataSequentialC1EPNS_4TypeENS_5Value7ValueTyEPKc'/>
+<fun r='_ZN4llvm22ConstantDataSequentialD1Ev'/>
+<fun r='_ZN4llvm22ConstantDataSequential7getImplENS_9StringRefEPNS_4TypeE'/>
+<fun r='_ZN4llvm22ConstantDataSequentialC1ERKS0_'/>
+<fun r='_ZN4llvm22ConstantDataSequential23isElementTypeCompatibleEPNS_4TypeE'/>
+<fun r='_ZNK4llvm22ConstantDataSequential19getElementAsIntegerEj'/>
+<fun r='_ZNK4llvm22ConstantDataSequential17getElementAsAPIntEj'/>
+<fun r='_ZNK4llvm22ConstantDataSequential19getElementAsAPFloatEj'/>
+<fun r='_ZNK4llvm22ConstantDataSequential17getElementAsFloatEj'/>
+<fun r='_ZNK4llvm22ConstantDataSequential18getElementAsDoubleEj'/>
+<fun r='_ZNK4llvm22ConstantDataSequential20getElementAsConstantEj'/>
+<fun r='_ZNK4llvm22ConstantDataSequential7getTypeEv'/>
+<fun r='_ZNK4llvm22ConstantDataSequential14getElementTypeEv'/>
+<fun r='_ZNK4llvm22ConstantDataSequential14getNumElementsEv'/>
+<fun r='_ZNK4llvm22ConstantDataSequential18getElementByteSizeEv'/>
+<fun r='_ZNK4llvm22ConstantDataSequential8isStringEj'/>
+<fun r='_ZNK4llvm22ConstantDataSequential9isCStringEv'/>
+<fun r='_ZNK4llvm22ConstantDataSequential11getAsStringEv'/>
+<fun r='_ZNK4llvm22ConstantDataSequential12getAsCStringEv'/>
+<fun r='_ZNK4llvm22ConstantDataSequential16getRawDataValuesEv'/>
+<fun r='_ZN4llvm22ConstantDataSequential7classofEPKNS_5ValueE'/>
+<fun r='_ZNK4llvm22ConstantDataSequential17getElementPointerEj'/>

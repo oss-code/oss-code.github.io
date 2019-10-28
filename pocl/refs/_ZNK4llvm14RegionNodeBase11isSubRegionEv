@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='189' type='bool llvm::RegionNodeBase::isSubRegion() const'/>
+<doc f='include/llvm-6.0/llvm/Analysis/RegionInfo.h' l='185'>/// @brief Is this RegionNode a subregion?
+  ///
+  /// @return True if it contains a subregion. False if it contains a
+  ///         BasicBlock.</doc>

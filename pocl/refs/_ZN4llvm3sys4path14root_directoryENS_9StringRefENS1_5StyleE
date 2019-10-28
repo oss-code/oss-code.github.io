@@ -1,0 +1,12 @@
+<dec f='include/llvm-6.0/llvm/Support/Path.h' l='253' type='llvm::StringRef llvm::sys::path::root_directory(llvm::StringRef path, llvm::sys::path::Style style = Style::native)'/>
+<doc f='include/llvm-6.0/llvm/Support/Path.h' l='242'>/// @brief Get root directory.
+///
+/// @code
+///   /goo/hello =&gt; /
+///   c:/hello   =&gt; /
+///   d/file.txt =&gt; &lt;empty&gt;
+/// @endcode
+///
+/// @param path Input path.
+/// @result The root directory of \a path if it has one, otherwise
+///               &quot;&quot;.</doc>

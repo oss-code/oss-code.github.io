@@ -1,0 +1,33 @@
+<def f='include/llvm-6.0/llvm/Option/OptTable.h' l='39' ll='215'/>
+<size>104</size>
+<doc f='include/llvm-6.0/llvm/Option/OptTable.h' l='32'>/// \brief Provide access to the Option info table.
+///
+/// The OptTable class provides a layer of indirection which allows Option
+/// instance to be created lazily. In the common case, only a few options will
+/// be needed at runtime; the OptTable class maintains enough information to
+/// parse command lines without instantiating Options, while letting other
+/// parts of the driver still use Option instances where convenient.</doc>
+<mbr r='llvm::opt::OptTable::OptionInfos' o='0' t='std::vector&lt;Info&gt;'/>
+<mbr r='llvm::opt::OptTable::IgnoreCase' o='192' t='bool'/>
+<mbr r='llvm::opt::OptTable::TheInputOptionID' o='224' t='unsigned int'/>
+<mbr r='llvm::opt::OptTable::TheUnknownOptionID' o='256' t='unsigned int'/>
+<mbr r='llvm::opt::OptTable::FirstSearchableIndex' o='288' t='unsigned int'/>
+<mbr r='llvm::opt::OptTable::PrefixesUnion' o='320' t='StringSet&lt;&gt;'/>
+<mbr r='llvm::opt::OptTable::PrefixChars' o='576' t='std::string'/>
+<fun r='_ZNK4llvm3opt8OptTable7getInfoENS0_12OptSpecifierE'/>
+<fun r='_ZN4llvm3opt8OptTableC1ENS_8ArrayRefINS1_4InfoEEEb'/>
+<fun r='_ZN4llvm3opt8OptTableD1Ev'/>
+<fun r='_ZNK4llvm3opt8OptTable13getNumOptionsEv'/>
+<fun r='_ZNK4llvm3opt8OptTable9getOptionENS0_12OptSpecifierE'/>
+<fun r='_ZNK4llvm3opt8OptTable13getOptionNameENS0_12OptSpecifierE'/>
+<fun r='_ZNK4llvm3opt8OptTable13getOptionKindENS0_12OptSpecifierE'/>
+<fun r='_ZNK4llvm3opt8OptTable16getOptionGroupIDENS0_12OptSpecifierE'/>
+<fun r='_ZNK4llvm3opt8OptTable17getOptionHelpTextENS0_12OptSpecifierE'/>
+<fun r='_ZNK4llvm3opt8OptTable16getOptionMetaVarENS0_12OptSpecifierE'/>
+<fun r='_ZNK4llvm3opt8OptTable23suggestValueCompletionsB5cxx11ENS_9StringRefES2_'/>
+<fun r='_ZNK4llvm3opt8OptTable12findByPrefixB5cxx11ENS_9StringRefEt'/>
+<fun r='_ZN4llvm3opt8OptTable9addValuesEPKcS3_'/>
+<fun r='_ZNK4llvm3opt8OptTable11ParseOneArgERKNS0_7ArgListERjjj'/>
+<fun r='_ZNK4llvm3opt8OptTable9ParseArgsENS_8ArrayRefIPKcEERjS6_jj'/>
+<fun r='_ZNK4llvm3opt8OptTable9PrintHelpERNS_11raw_ostreamEPKcS5_jjb'/>
+<fun r='_ZNK4llvm3opt8OptTable9PrintHelpERNS_11raw_ostreamEPKcS5_bb'/>

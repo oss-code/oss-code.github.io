@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='102' type='llvm::Constant * llvm::ConstantFoldExtractValueInstruction(llvm::Constant * Agg, ArrayRef&lt;unsigned int&gt; Idxs)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ConstantFolding.h' l='99'>/// \brief Attempt to constant fold an extractvalue instruction with the
+/// specified operands and indices.  The constant result is returned if
+/// successful; if not, null is returned.</doc>

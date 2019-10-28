@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1422' ll='1434' type='bool llvm::OperandBundleUser::hasClobberingOperandBundles() const'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1496' u='c' c='_ZNK4llvm17OperandBundleUser28isFnAttrDisallowedByOpBundleENS_9Attribute8AttrKindE'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1420'>/// \brief Return true if this operand bundle user has operand bundles that
+  /// may write to the heap.</doc>

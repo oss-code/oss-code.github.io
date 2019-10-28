@@ -1,0 +1,26 @@
+<def f='include/llvm-6.0/llvm/Analysis/MemoryLocation.h' l='102' ll='105' type='void llvm::MemoryLocation::MemoryLocation(const llvm::Value * Ptr = nullptr, uint64_t Size = UnknownSize, const llvm::AAMDNodes &amp; AATags = llvm::AAMDNodes())'/>
+<use f='include/llvm-6.0/llvm/Analysis/MemoryLocation.h' l='133' u='c' c='_ZN4llvm12DenseMapInfoINS_14MemoryLocationEE11getEmptyKeyEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/MemoryLocation.h' l='136' u='c' c='_ZN4llvm12DenseMapInfoINS_14MemoryLocationEE15getTombstoneKeyEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='330' u='c' c='_ZN4llvm9AAResults5aliasEPKNS_5ValueEmS3_m'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='330' u='c' c='_ZN4llvm9AAResults5aliasEPKNS_5ValueEmS3_m'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='348' u='c' c='_ZN4llvm9AAResults9isNoAliasEPKNS_5ValueEmS3_m'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='348' u='c' c='_ZN4llvm9AAResults9isNoAliasEPKNS_5ValueEmS3_m'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='353' u='c' c='_ZN4llvm9AAResults9isNoAliasEPKNS_5ValueES3_'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='353' u='c' c='_ZN4llvm9AAResults9isNoAliasEPKNS_5ValueES3_'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='374' u='c' c='_ZN4llvm9AAResults22pointsToConstantMemoryEPKNS_5ValueEb'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='505' u='c' c='_ZN4llvm9AAResults13getModRefInfoENS_17ImmutableCallSiteEPKNS_5ValueEm'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='516' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_8CallInstEPKNS_5ValueEm'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='527' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_10InvokeInstEPKNS_5ValueEm'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='536' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_8LoadInstEPKNS_5ValueEm'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='545' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_9StoreInstEPKNS_5ValueEm'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='554' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_9FenceInstEPKNS_5ValueEm'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='565' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_17AtomicCmpXchgInstEPKNS_5ValueEj'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='575' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_13AtomicRMWInstEPKNS_5ValueEj'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='584' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_9VAArgInstEPKNS_5ValueEm'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='594' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_12CatchPadInstEPKNS_5ValueEm'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='604' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_15CatchReturnInstEPKNS_5ValueEm'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='625' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_11InstructionERKNS_8OptionalINS_14MemoryLocationEEE'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='650' u='c' c='_ZN4llvm9AAResults13getModRefInfoEPKNS_11InstructionEPKNS_5ValueEm'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='676' u='c' c='_ZN4llvm9AAResults18callCapturesBeforeEPKNS_11InstructionEPKNS_5ValueEmPNS_13DominatorTreeEPNS_17OrderedBasicBlockE'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='691' u='c' c='_ZN4llvm9AAResults19canBasicBlockModifyERKNS_10BasicBlockEPKNS_5ValueEm'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='707' u='c' c='_ZN4llvm9AAResults25canInstructionRangeModRefERKNS_11InstructionES3_PKNS_5ValueEmNS_10ModRefInfoE'/>

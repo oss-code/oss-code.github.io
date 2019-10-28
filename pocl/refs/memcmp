@@ -1,0 +1,17 @@
+<dec f='include/string.h' l='65' type='int memcmp(const void * __s1, const void * __s2, size_t __n)'/>
+<doc f='include/string.h' l='64'>/* Compare N bytes of S1 and S2.  */</doc>
+<use f='pocl/lib/CL/devices/common.c' l='904' u='c' c='pocl_release_dlhandle_cache'/>
+<use f='pocl/lib/CL/devices/common.c' l='1017' u='c' c='fetch_dlhandle_cache_item'/>
+<use f='include/llvm-6.0/llvm/ADT/StringRef.h' l='69' u='c' c='_ZN4llvm9StringRef13compareMemoryEPKcS2_m'/>
+<use f='include/llvm-6.0/llvm/ADT/StringSwitch.h' l='77' u='c' c='_ZN4llvm12StringSwitch4CaseERAT__KcRKT_'/>
+<use f='include/llvm-6.0/llvm/ADT/StringSwitch.h' l='88' u='c' c='_ZN4llvm12StringSwitch8EndsWithERAT__KcRKT_'/>
+<use f='include/llvm-6.0/llvm/ADT/StringSwitch.h' l='99' u='c' c='_ZN4llvm12StringSwitch10StartsWithERAT__KcRKT_'/>
+<use f='pocl/lib/CL/pocl_util.c' l='925' u='c' c='image_format_union'/>
+<use f='pocl/tests/runtime/test_buffer-image-copy.c' l='149' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_buffer-image-copy.c' l='161' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_buffer-image-copy.c' l='191' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateSubDevices.c' l='265' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_clCreateSubDevices.c' l='351' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_event_cycle.c' l='124' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_read-copy-write-buffer.c' l='98' u='c' c='main'/>
+<use f='pocl/tests/runtime/test_read-copy-write-buffer.c' l='126' u='c' c='main'/>

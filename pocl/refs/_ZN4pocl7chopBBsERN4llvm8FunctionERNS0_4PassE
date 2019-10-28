@@ -1,0 +1,6 @@
+<dec f='pocl/lib/llvmopencl/DebugHelpers.h' l='48' type='bool pocl::chopBBs(llvm::Function &amp; F, llvm::Pass &amp; P)'/>
+<def f='pocl/lib/llvmopencl/DebugHelpers.cc' l='197' ll='222' type='bool pocl::chopBBs(llvm::Function &amp; F, llvm::Pass &amp; )'/>
+<doc f='pocl/lib/llvmopencl/DebugHelpers.h' l='44'>// Split large basic blocks to smaller one so dot doesn&apos;t crash when
+  // calling viewCFG on it. This should be fixed in LLVM upstream.
+  //
+  // @return True in case the function was changed.</doc>

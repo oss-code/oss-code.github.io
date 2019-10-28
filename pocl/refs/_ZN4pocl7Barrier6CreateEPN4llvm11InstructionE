@@ -1,0 +1,17 @@
+<def f='pocl/lib/llvmopencl/Barrier.h' l='57' ll='77' type='static pocl::Barrier * pocl::Barrier::Create(llvm::Instruction * InsertBefore)'/>
+<doc f='pocl/lib/llvmopencl/Barrier.h' l='52'>/**
+     * Creates a new barrier before the given instruction.
+     *
+     * If there was already a barrier there, returns the old one.
+     */</doc>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='74' u='c' c='_ZN4pocl20CanonicalizeBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='102' u='c' c='_ZN4pocl20CanonicalizeBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/ImplicitConditionalBarriers.cc' l='157' u='c' c='_ZN4pocl27ImplicitConditionalBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/ImplicitLoopBarriers.cc' l='164' u='c' c='_ZN4pocl20ImplicitLoopBarriers19AddInnerLoopBarrierEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/ImplicitLoopBarriers.cc' l='165' u='c' c='_ZN4pocl20ImplicitLoopBarriers19AddInnerLoopBarrierEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/Kernel.cc' l='59' u='c' c='_ZN4pocl6Kernel13getExitBlocksERN4llvm15SmallVectorImplIPNS1_10BasicBlockEEE'/>
+<use f='pocl/lib/llvmopencl/LoopBarriers.cc' l='111' u='c' c='_ZN4pocl12LoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/LoopBarriers.cc' l='118' u='c' c='_ZN4pocl12LoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/LoopBarriers.cc' l='132' u='c' c='_ZN4pocl12LoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/LoopBarriers.cc' l='140' u='c' c='_ZN4pocl12LoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>
+<use f='pocl/lib/llvmopencl/LoopBarriers.cc' l='163' u='c' c='_ZN4pocl12LoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>

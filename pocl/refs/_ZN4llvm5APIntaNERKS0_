@@ -1,0 +1,10 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='780' ll='787' type='llvm::APInt &amp; llvm::APInt::operator&amp;=(const llvm::APInt &amp; RHS)'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1959' u='c' c='_ZN4llvmanENS_5APIntERKS0_'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1964' u='c' c='_ZN4llvmanERKNS_5APIntEOS0_'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='774'>/// \brief Bitwise AND assignment operator.
+  ///
+  /// Performs a bitwise AND operation on this APInt and RHS. The result is
+  /// assigned to *this.
+  ///
+  /// \returns *this after ANDing with RHS.</doc>
+<use f='include/llvm-6.0/llvm/ADT/APSInt.h' l='223' u='c' c='_ZN4llvm6APSIntaNERKS0_'/>

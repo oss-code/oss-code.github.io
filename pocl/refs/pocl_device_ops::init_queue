@@ -1,0 +1,7 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='393' type='cl_int (*)(cl_command_queue)'/>
+<offset>960</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='392'>/* if the driver needs to use hardware resources for command queues, use this */</doc>
+<use f='pocl/lib/CL/clCreateCommandQueue.c' l='82' u='r' c='POclCreateCommandQueue'/>
+<use f='pocl/lib/CL/clCreateCommandQueue.c' l='83' u='r' c='POclCreateCommandQueue'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='138' u='w' c='pocl_cuda_init_device_ops'/>
+<use f='pocl/lib/CL/devices/pthread/pthread.c' l='100' u='w' c='pocl_pthread_init_device_ops'/>

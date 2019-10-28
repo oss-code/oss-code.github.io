@@ -1,0 +1,13 @@
+<def f='include/llvm-6.0/llvm/IR/DebugLoc.h' l='67' type='bool llvm::DebugLoc::operator bool() const'/>
+<use f='include/llvm-6.0/llvm/IR/Instruction.h' l='185' u='c' c='_ZNK4llvm11Instruction11hasMetadataEv'/>
+<doc f='include/llvm-6.0/llvm/IR/DebugLoc.h' l='59'>/// @}
+
+    /// \brief Check for null.
+    ///
+    /// Check for null in a way that is safe with broken debug info.  Unlike
+    /// the conversion to \c DILocation, this doesn&apos;t require that \c Loc is of
+    /// the right type.  Important for cases like \a llvm::StripDebugInfo() and
+    /// \a Instruction::hasMetadata().</doc>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='457' u='c' c='_ZNK4llvm4Loop8LocRangecvbEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/LoopInfo.h' l='457' u='c' c='_ZNK4llvm4Loop8LocRangecvbEv'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='160' u='c' c='_ZNK4llvm13IRBuilderBase20SetInstDebugLocationEPNS_11InstructionE'/>

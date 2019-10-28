@@ -1,0 +1,17 @@
+<inh f='pocl/include/CL/cl2.hpp' l='4289' c='cl::Image'/>
+<def f='pocl/include/CL/cl2.hpp' l='5304' ll='5375'/>
+<size>8</size>
+<doc f='pocl/include/CL/cl2.hpp' l='5298'>/*! \class ImageGL
+ * \brief general image interface for GL interop.
+ * We abstract the 2D and 3D GL images into a single instance here
+ * that wraps all GL sourced images on the grounds that setup information
+ * was performed by OpenCL anyway.
+ */</doc>
+<fun r='_ZN2cl7ImageGLC1ERKNS_7ContextEmjijPi'/>
+<fun r='_ZN2cl7ImageGLC1Ev'/>
+<fun r='_ZN2cl7ImageGLC1ERKP7_cl_memb'/>
+<fun r='_ZN2cl7ImageGLaSERKP7_cl_mem'/>
+<fun r='_ZN2cl7ImageGLC1ERKS0_'/>
+<fun r='_ZN2cl7ImageGLaSERKS0_'/>
+<fun r='_ZN2cl7ImageGLC1EOS0_'/>
+<fun r='_ZN2cl7ImageGLaSEOS0_'/>

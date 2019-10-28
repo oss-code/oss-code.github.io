@@ -1,0 +1,35 @@
+<dec f='include/string.h' l='140' type='int strcmp(const char * __s1, const char * __s2)'/>
+<use f='pocl/bin/poclcc.c' l='135' u='c' c='process_opencl_device'/>
+<use f='pocl/bin/poclcc.c' l='137' u='c' c='process_opencl_device'/>
+<use f='pocl/bin/poclcc.c' l='139' u='c' c='process_opencl_device'/>
+<use f='pocl/bin/poclcc.c' l='141' u='c' c='process_opencl_device'/>
+<use f='pocl/bin/poclcc.c' l='143' u='c' c='process_opencl_device'/>
+<use f='pocl/bin/poclcc.c' l='221' u='c' c='search_process'/>
+<doc f='include/string.h' l='139'>/* Compare S1 and S2.  */</doc>
+<use f='pocl/lib/CL/clCreateKernel.c' l='75' u='c' c='POclCreateKernel'/>
+<use f='pocl/lib/CL/clGetExtensionFunctionAddress.c' l='14' u='c' c='POclGetExtensionFunctionAddress'/>
+<use f='pocl/lib/CL/clGetExtensionFunctionAddress.c' l='17' u='c' c='POclGetExtensionFunctionAddress'/>
+<use f='pocl/lib/CL/clGetExtensionFunctionAddressForPlatform.c' l='50' u='c' c='POclGetExtensionFunctionAddressForPlatform'/>
+<use f='pocl/lib/CL/clGetExtensionFunctionAddressForPlatform.c' l='53' u='c' c='POclGetExtensionFunctionAddressForPlatform'/>
+<use f='pocl/lib/CL/devices/devices.c' l='132' u='c' c='pocl_device_get_env_count'/>
+<use f='include/hwloc/inlines.h' l='115' u='c' c='hwloc_obj_get_info_by_name'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='327' u='c' c='recursively_serialize_path'/>
+<use f='pocl/lib/CL/pocl_binary.c' l='328' u='c' c='recursively_serialize_path'/>
+<use f='pocl/lib/CL/pocl_cq_profiling.c' l='76' u='c' c='pocl_atexit'/>
+<use f='pocl/lib/CL/pocl_runtime_config.c' l='53' u='c' c='find_env'/>
+<use f='pocl/lib/CL/pocl_tracing.c' l='100' u='c' c='pocl_parse_event_filter'/>
+<use f='pocl/lib/CL/pocl_tracing.c' l='102' u='c' c='pocl_parse_event_filter'/>
+<use f='pocl/lib/CL/pocl_tracing.c' l='104' u='c' c='pocl_parse_event_filter'/>
+<use f='pocl/lib/CL/pocl_tracing.c' l='106' u='c' c='pocl_parse_event_filter'/>
+<use f='pocl/lib/CL/pocl_tracing.c' l='132' u='c' c='pocl_tracing_init'/>
+<use f='pocl/tests/kernel/test_shuffle.cc' l='354' u='c' c='main'/>
+<use f='pocl/tests/kernel/test_shuffle.cc' l='358' u='c' c='main'/>
+<use f='pocl/tests/kernel/test_shuffle.cc' l='362' u='c' c='main'/>
+<use f='pocl/tests/kernel/test_shuffle.cc' l='366' u='c' c='main'/>
+<use f='pocl/tests/kernel/test_shuffle.cc' l='370' u='c' c='main'/>
+<use f='pocl/tests/kernel/test_shuffle.cc' l='374' u='c' c='main'/>
+<use f='pocl/tests/kernel/test_shuffle.cc' l='378' u='c' c='main'/>
+<use f='pocl/tests/kernel/test_shuffle.cc' l='382' u='c' c='main'/>
+<use f='pocl/tests/kernel/test_shuffle.cc' l='386' u='c' c='main'/>
+<use f='pocl/tests/kernel/test_shuffle.cc' l='390' u='c' c='main'/>
+<use f='pocl/tests/kernel/test_shuffle.cc' l='394' u='c' c='main'/>

@@ -1,0 +1,21 @@
+<def f='include/c++/7/bits/basic_string.h' l='2372' ll='2377' type='size_type std::__cxx11::basic_string::find(const _CharT * __s, size_type __pos = 0) const'/>
+<doc f='include/c++/7/bits/basic_string.h' l='2362'>/**
+       *  @brief  Find position of a C string.
+       *  @param __s  C string to locate.
+       *  @param __pos  Index of character to search from (default 0).
+       *  @return  Index of start of first occurrence.
+       *
+       *  Starting from @a __pos, searches forward for the value of @a
+       *  __s within this string.  If found, returns the index where
+       *  it begins.  If not found, returns npos.
+      */</doc>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='323' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='328' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_build.cc' l='332' u='c' c='pocl_llvm_build_program'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='168' u='c' c='_ZL35pocl_get_kernel_arg_module_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='170' u='c' c='_ZL35pocl_get_kernel_arg_module_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='172' u='c' c='_ZL35pocl_get_kernel_arg_module_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='406' u='c' c='_ZL37pocl_get_kernel_arg_function_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='408' u='c' c='_ZL37pocl_get_kernel_arg_function_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='410' u='c' c='_ZL37pocl_get_kernel_arg_function_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='131' u='c' c='bitcode_is_spir'/>

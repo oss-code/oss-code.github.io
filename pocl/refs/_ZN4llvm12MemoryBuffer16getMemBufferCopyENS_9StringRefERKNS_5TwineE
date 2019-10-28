@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Support/MemoryBuffer.h' l='118' type='static std::unique_ptr&lt;MemoryBuffer&gt; llvm::MemoryBuffer::getMemBufferCopy(llvm::StringRef InputData, const llvm::Twine &amp; BufferName = &quot;&quot;)'/>
+<doc f='include/llvm-6.0/llvm/Support/MemoryBuffer.h' l='115'>/// Open the specified memory range as a MemoryBuffer, copying the contents
+  /// and taking ownership of it. InputData does not have to be null terminated.</doc>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='84' u='c' c='_Z16parseModuleIRMemPKcm'/>
+<use f='pocl/lib/CL/pocl_llvm_utils.cc' l='97' u='c' c='_Z15getModuleTriplePKcmRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>

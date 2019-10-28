@@ -1,0 +1,12 @@
+<dec f='include/hwloc.h' l='348' type='unsigned int'/>
+<use f='include/hwloc/helper.h' l='560' u='r' c='hwloc_get_pu_obj_by_os_index'/>
+<use f='include/hwloc/helper.h' l='581' u='r' c='hwloc_get_numanode_obj_by_os_index'/>
+<use f='include/hwloc/helper.h' l='939' u='r' c='hwloc_cpuset_to_nodeset'/>
+<use f='include/hwloc/helper.h' l='959' u='r' c='hwloc_cpuset_to_nodeset_strict'/>
+<use f='include/hwloc/helper.h' l='988' u='r' c='hwloc_cpuset_from_nodeset'/>
+<use f='include/hwloc/helper.h' l='1011' u='r' c='hwloc_cpuset_from_nodeset_strict'/>
+<offset>32</offset>
+<doc f='include/hwloc.h' l='348'>/**&lt; \brief OS-provided physical index number.
+					 * It is not guaranteed unique across the entire machine,
+					 * except for PUs and NUMA nodes.
+					 */</doc>

@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/PassInfo.h' l='56' ll='57' type='void llvm::PassInfo::PassInfo(llvm::StringRef name, const void * pi)'/>
+<doc f='include/llvm-6.0/llvm/PassInfo.h' l='53'>/// PassInfo ctor - Do not call this directly, this should only be invoked
+  /// through RegisterPass. This version is for use by analysis groups; it
+  /// does not auto-register the pass.</doc>

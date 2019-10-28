@@ -1,0 +1,35 @@
+<def f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='30' ll='135'/>
+<ovr f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='141' c='llvm::WeakVH'/>
+<ovr f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='182' c='llvm::WeakTrackingVH'/>
+<ovr f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='389' c='llvm::CallbackVH'/>
+<size>24</size>
+<doc f='include/llvm-6.0/llvm/IR/ValueHandle.h' l='25'>/// \brief This is the common base class of value handles.
+///
+/// ValueHandle&apos;s are smart pointers to Value&apos;s that have special behavior when
+/// the value is deleted or ReplaceAllUsesWith&apos;d.  See the specific handles
+/// below for details.</doc>
+<fun r='_ZN4llvm15ValueHandleBaseC1ERKS0_'/>
+<fun r='_ZN4llvm15ValueHandleBaseC1ENS0_14HandleBaseKindERKS0_'/>
+<mbr r='llvm::ValueHandleBase::PrevPair' o='0' t='PointerIntPair&lt;llvm::ValueHandleBase **, 2, llvm::ValueHandleBase::HandleBaseKind&gt;'/>
+<mbr r='llvm::ValueHandleBase::Next' o='64' t='llvm::ValueHandleBase *'/>
+<mbr r='llvm::ValueHandleBase::Val' o='128' t='llvm::Value *'/>
+<fun r='_ZN4llvm15ValueHandleBase9setValPtrEPNS_5ValueE'/>
+<fun r='_ZN4llvm15ValueHandleBaseC1ENS0_14HandleBaseKindE'/>
+<fun r='_ZN4llvm15ValueHandleBaseC1ENS0_14HandleBaseKindEPNS_5ValueE'/>
+<fun r='_ZN4llvm15ValueHandleBaseD1Ev'/>
+<fun r='_ZN4llvm15ValueHandleBaseaSEPNS_5ValueE'/>
+<fun r='_ZN4llvm15ValueHandleBaseaSERKS0_'/>
+<fun r='_ZNK4llvm15ValueHandleBaseptEv'/>
+<fun r='_ZNK4llvm15ValueHandleBasedeEv'/>
+<fun r='_ZNK4llvm15ValueHandleBase9getValPtrEv'/>
+<fun r='_ZN4llvm15ValueHandleBase7isValidEPNS_5ValueE'/>
+<fun r='_ZN4llvm15ValueHandleBase17RemoveFromUseListEv'/>
+<fun r='_ZN4llvm15ValueHandleBase11clearValPtrEv'/>
+<fun r='_ZN4llvm15ValueHandleBase14ValueIsDeletedEPNS_5ValueE'/>
+<fun r='_ZN4llvm15ValueHandleBase12ValueIsRAUWdEPNS_5ValueES2_'/>
+<fun r='_ZNK4llvm15ValueHandleBase10getPrevPtrEv'/>
+<fun r='_ZNK4llvm15ValueHandleBase7getKindEv'/>
+<fun r='_ZN4llvm15ValueHandleBase10setPrevPtrEPPS0_'/>
+<fun r='_ZN4llvm15ValueHandleBase20AddToExistingUseListEPPS0_'/>
+<fun r='_ZN4llvm15ValueHandleBase25AddToExistingUseListAfterEPS0_'/>
+<fun r='_ZN4llvm15ValueHandleBase12AddToUseListEv'/>

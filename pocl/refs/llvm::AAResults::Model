@@ -1,0 +1,19 @@
+<inh f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='737' c='llvm::AAResults::Concept'/>
+<def f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='800' ll='842'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='794'>/// A private class template which derives from \c Concept and wraps some other
+/// type.
+///
+/// This models the concept by directly forwarding each interface point to the
+/// wrapped type which must implement a compatible interface. This provides
+/// a type erased binding.</doc>
+<mbr r='llvm::AAResults::Model::Result' t='AAResultT &amp;'/>
+<fun r='_ZN4llvm9AAResults5ModelC1ERT_RS0_'/>
+<fun r='_ZN4llvm9AAResults5ModelD1Ev'/>
+<fun r='_ZN4llvm9AAResults5Model12setAAResultsEPS0_'/>
+<fun r='_ZN4llvm9AAResults5Model5aliasERKNS_14MemoryLocationES4_'/>
+<fun r='_ZN4llvm9AAResults5Model22pointsToConstantMemoryERKNS_14MemoryLocationEb'/>
+<fun r='_ZN4llvm9AAResults5Model16getArgModRefInfoENS_17ImmutableCallSiteEj'/>
+<fun r='_ZN4llvm9AAResults5Model17getModRefBehaviorENS_17ImmutableCallSiteE'/>
+<fun r='_ZN4llvm9AAResults5Model17getModRefBehaviorEPKNS_8FunctionE'/>
+<fun r='_ZN4llvm9AAResults5Model13getModRefInfoENS_17ImmutableCallSiteERKNS_14MemoryLocationE'/>
+<fun r='_ZN4llvm9AAResults5Model13getModRefInfoENS_17ImmutableCallSiteES2_'/>

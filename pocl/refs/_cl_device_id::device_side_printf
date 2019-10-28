@@ -1,0 +1,12 @@
+<dec f='pocl/lib/CL/pocl_cl.h' l='654' type='int'/>
+<offset>736</offset>
+<doc f='pocl/lib/CL/pocl_cl.h' l='649'>/* when enabled, Workgroup LLVM pass will replace all printf() calls
+   * with calls to __pocl_printf and recursively change functions to
+   * add printf buffer arguments from pocl_context.
+   * Currently the pthread/basic devices require this; other devices
+   * implement printf their own way. */</doc>
+<use f='pocl/lib/CL/devices/basic/basic.c' l='327' u='w' c='pocl_init_cpu_device_infos'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-cuda.c' l='294' u='w' c='pocl_cuda_init'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='675' u='r' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='724' u='r' c='_ZN4pocl9Workgroup13createWrapperEPN4llvm8FunctionERSt3mapIS3_S3_St4lessIS3_ESaISt4pairIKS3_S3_EEE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='921' u='r' c='_ZN4pocl9Workgroup16privatizeContextEPN4llvm8FunctionE'/>

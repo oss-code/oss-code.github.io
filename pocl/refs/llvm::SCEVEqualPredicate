@@ -1,0 +1,15 @@
+<inh f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='182' c='llvm::SCEVPredicate'/>
+<def f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='249' ll='274'/>
+<size>56</size>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='247'>/// This class represents an assumption that two SCEV expressions are equal,
+/// and this can be checked at run-time.</doc>
+<mbr r='llvm::SCEVEqualPredicate::LHS' o='320' t='const llvm::SCEV *'/>
+<mbr r='llvm::SCEVEqualPredicate::RHS' o='384' t='const llvm::SCEV *'/>
+<fun r='_ZN4llvm18SCEVEqualPredicateC1ENS_19FoldingSetNodeIDRefEPKNS_4SCEVES4_'/>
+<fun r='_ZNK4llvm18SCEVEqualPredicate7impliesEPKNS_13SCEVPredicateE'/>
+<fun r='_ZNK4llvm18SCEVEqualPredicate5printERNS_11raw_ostreamEj'/>
+<fun r='_ZNK4llvm18SCEVEqualPredicate12isAlwaysTrueEv'/>
+<fun r='_ZNK4llvm18SCEVEqualPredicate7getExprEv'/>
+<fun r='_ZNK4llvm18SCEVEqualPredicate6getLHSEv'/>
+<fun r='_ZNK4llvm18SCEVEqualPredicate6getRHSEv'/>
+<fun r='_ZN4llvm18SCEVEqualPredicate7classofEPKNS_13SCEVPredicateE'/>

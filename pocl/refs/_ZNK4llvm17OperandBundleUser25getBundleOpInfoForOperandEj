@@ -1,0 +1,7 @@
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1408' u='c' c='_ZNK4llvm17OperandBundleUser26getOperandBundleForOperandEj'/>
+<use f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1439' u='c' c='_ZNK4llvm17OperandBundleUser20bundleOperandHasAttrEjNS_9Attribute8AttrKindE'/>
+<def f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1615' ll='1621' type='const llvm::OperandBundleUser::BundleOpInfo &amp; llvm::OperandBundleUser::getBundleOpInfoForOperand(unsigned int OpIdx) const'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='1611'>/// \brief Return the BundleOpInfo for the operand at index OpIdx.
+  ///
+  /// It is an error to call this with an OpIdx that does not correspond to an
+  /// bundle operand.</doc>

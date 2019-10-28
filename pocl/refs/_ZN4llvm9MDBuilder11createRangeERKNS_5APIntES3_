@@ -1,0 +1,7 @@
+<dec f='include/llvm-6.0/llvm/IR/MDBuilder.h' l='83' type='llvm::MDNode * llvm::MDBuilder::createRange(const llvm::APInt &amp; Lo, const llvm::APInt &amp; Hi)'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='294' u='c' c='_ZL16addRangeMetadataPN4llvm11InstructionEmm'/>
+<doc f='include/llvm-6.0/llvm/IR/MDBuilder.h' l='78'>//===------------------------------------------------------------------===//
+  // Range metadata.
+  //===------------------------------------------------------------------===//
+
+  /// \brief Return metadata describing the range [Lo, Hi).</doc>

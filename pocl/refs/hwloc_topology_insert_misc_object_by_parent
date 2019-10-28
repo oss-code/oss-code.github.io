@@ -1,0 +1,16 @@
+<dec f='include/hwloc.h' l='2112' type='hwloc_obj_t hwloc_topology_insert_misc_object_by_parent(hwloc_topology_t topology, hwloc_obj_t parent, const char * name)'/>
+<doc f='include/hwloc.h' l='2097'>/** \brief Add a MISC object as a leaf of the topology
+ *
+ * A new MISC object will be created and inserted into the topology at the
+ * position given by parent. It is appended to the list of existing children,
+ * without ever adding any intermediate hierarchy level. This is useful for
+ * annotating the topology without actually changing the hierarchy.
+ *
+ * \p name will be copied to the setup the new object attributes.
+ * However, the new leaf object will not have any \p cpuset.
+ *
+ * \return the newly-created object
+ *
+ * \note If \p name contains some non-printable characters, they will
+ * be dropped when exporting to XML, see hwloc_topology_export_xml().
+ */</doc>

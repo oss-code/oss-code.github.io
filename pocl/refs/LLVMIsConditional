@@ -1,0 +1,8 @@
+<dec f='include/llvm-c-6.0/llvm-c/Core.h' l='2680' type='LLVMBool LLVMIsConditional(LLVMValueRef Branch)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Core.h' l='2673'>/**
+ * Return if a branch is conditional.
+ *
+ * This only works on llvm::BranchInst instructions.
+ *
+ * @see llvm::BranchInst::isConditional
+ */</doc>

@@ -1,0 +1,16 @@
+<def f='include/llvm-6.0/llvm/Support/Casting.h' l='238' ll='244' type='typename std::enable_if&lt;!is_simple_type&lt;Y&gt;::value, typename cast_retty&lt;X, const Y&gt;::ret_type&gt;::type llvm::cast(const Y &amp; Val)'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='2863' u='c' c='_ZNK4llvm14LandingPadInst9getClauseEj'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='3997' u='c' c='_ZNK4llvm10InvokeInst13getNormalDestEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='4000' u='c' c='_ZNK4llvm10InvokeInst13getUnwindDestEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='4396' u='c' c='_ZNK4llvm12CatchPadInst14getCatchSwitchEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='4448' u='c' c='_ZNK4llvm15CatchReturnInst11getCatchPadEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='4454' u='c' c='_ZNK4llvm15CatchReturnInst12getSuccessorEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='4545' u='c' c='_ZNK4llvm17CleanupReturnInst13getCleanupPadEv'/>
+<use f='include/llvm-6.0/llvm/IR/Instructions.h' l='4555' u='c' c='_ZNK4llvm17CleanupReturnInst13getUnwindDestEv'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='89' u='c' c='_ZL35pocl_get_kernel_arg_module_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='98' u='c' c='_ZL35pocl_get_kernel_arg_module_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='138' u='c' c='_ZL35pocl_get_kernel_arg_module_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='351' u='c' c='_ZL37pocl_get_kernel_arg_function_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='378' u='c' c='_ZL37pocl_get_kernel_arg_function_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='399' u='c' c='_ZL37pocl_get_kernel_arg_function_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>
+<use f='pocl/lib/CL/pocl_llvm_metadata.cc' l='423' u='c' c='_ZL37pocl_get_kernel_arg_function_metadataPN4llvm8FunctionEPNS_6ModuleEP22pocl_kernel_metadata_s'/>

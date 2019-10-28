@@ -1,0 +1,8 @@
+<dec f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='99' type='llvm::FunctionPass * llvm::createGuardWideningPass()'/>
+<use f='include/llvm-6.0/llvm/LinkAllPasses.h' l='109' u='c' c='_ZN12_GLOBAL__N_116ForcePassLinkingC1Ev'/>
+<doc f='include/llvm-6.0/llvm/Transforms/Scalar.h' l='93'>//===----------------------------------------------------------------------===//
+//
+// GuardWidening - An optimization over the @llvm.experimental.guard intrinsic
+// that (optimistically) combines multiple guards into one to have fewer checks
+// at runtime.
+//</doc>

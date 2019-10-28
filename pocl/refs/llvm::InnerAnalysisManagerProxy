@@ -1,0 +1,17 @@
+<def f='include/llvm-6.0/llvm/IR/PassManager.h' l='946' ll='1021'/>
+<inh f='include/llvm-6.0/llvm/IR/PassManager.h' l='382' c='llvm::AnalysisInfoMixin'/>
+<def f='include/llvm-6.0/llvm/IR/PassManager.h' l='1040' ll='1041'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/IR/PassManager.h' l='1038'>// Ensure the \c FunctionAnalysisManagerModuleProxy is provided as an extern
+// template.</doc>
+<fun r='_ZN4llvm25InnerAnalysisManagerProxyC1ERT_'/>
+<fun r='_ZN4llvm25InnerAnalysisManagerProxy3runERT0_RNS_15AnalysisManagerIS1_JDpT1_EEES5_'/>
+<smbr r='llvm::InnerAnalysisManagerProxy::Key' t='llvm::AnalysisKey'/>
+<mbr r='llvm::InnerAnalysisManagerProxy::InnerAM' t='AnalysisManagerT *'/>
+<smbr r='llvm::InnerAnalysisManagerProxy::Key' t='llvm::AnalysisKey'/>
+<inh f='include/llvm-6.0/llvm/IR/PassManager.h' l='382' c='llvm::AnalysisInfoMixin'/>
+<def f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='207'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='205'>// Ensure the \c CGSCCAnalysisManagerModuleProxy is provided as an extern
+// template.</doc>
+<fun r='_ZN4llvm25InnerAnalysisManagerProxy3runERT0_RNS_15AnalysisManagerIS1_JDpT1_EEES5_'/>

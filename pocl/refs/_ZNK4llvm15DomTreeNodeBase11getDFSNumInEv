@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='137' type='unsigned int llvm::DomTreeNodeBase::getDFSNumIn() const'/>
+<doc f='include/llvm-6.0/llvm/Support/GenericDomTree.h' l='134'>/// getDFSNumIn/getDFSNumOut - These return the DFS visitation order for nodes
+  /// in the dominator tree. They are only guaranteed valid if
+  /// updateDFSNumbers() has been called.</doc>

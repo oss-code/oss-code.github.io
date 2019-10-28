@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='583' type='const llvm::SCEV * llvm::ScalarEvolution::getGEPExpr(llvm::GEPOperator * GEP, const SmallVectorImpl&lt;const llvm::SCEV *&gt; &amp; IndexExprs)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='578'>/// Returns an expression for a GEP
+  ///
+  /// \p GEP The GEP. The indices contained in the GEP itself are ignored,
+  /// instead we use IndexExprs.
+  /// \p IndexExprs The expressions for the indices.</doc>

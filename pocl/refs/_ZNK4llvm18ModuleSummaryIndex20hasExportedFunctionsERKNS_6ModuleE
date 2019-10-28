@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='794' ll='796' type='bool llvm::ModuleSummaryIndex::hasExportedFunctions(const llvm::Module &amp; M) const'/>
+<doc f='include/llvm-6.0/llvm/IR/ModuleSummaryIndex.h' l='791'>/// Check if the given Module has any functions available for exporting
+  /// in the index. We consider any module present in the ModulePathStringTable
+  /// to have exported functions.</doc>

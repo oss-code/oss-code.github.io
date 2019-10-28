@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='195' type='llvm::Pass * llvm::PMTopLevelManager::findAnalysisPass(AnalysisID AID)'/>
+<doc f='include/llvm-6.0/llvm/IR/LegacyPassManagers.h' l='192'>/// Find the pass that implements Analysis AID. Search immutable
+  /// passes and all pass managers. If desired pass is not found
+  /// then return NULL.</doc>

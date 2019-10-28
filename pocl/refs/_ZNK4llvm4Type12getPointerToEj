@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/IR/Type.h' l='431' type='llvm::PointerType * llvm::Type::getPointerTo(unsigned int AddrSpace = 0) const'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='299' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='315' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<use f='pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc' l='376' u='c' c='_ZL9fixPrintFPN4llvm6ModuleE'/>
+<doc f='include/llvm-6.0/llvm/IR/Type.h' l='429'>/// Return a pointer to the current type. This is equivalent to
+  /// PointerType::get(Foo, AddrSpace).</doc>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1014' u='c' c='_ZN4pocl9Workgroup30createDefaultWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1403' u='c' c='_ZN4pocl9Workgroup27createFastWorkgroupLauncherEPN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/Workgroup.cc' l='1405' u='c' c='_ZN4pocl9Workgroup27createFastWorkgroupLauncherEPN4llvm8FunctionE'/>

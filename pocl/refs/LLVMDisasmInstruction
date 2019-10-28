@@ -1,0 +1,11 @@
+<dec f='include/llvm-c-6.0/llvm-c/Disassembler.h' l='246' type='size_t LLVMDisasmInstruction(LLVMDisasmContextRef DC, uint8_t * Bytes, uint64_t BytesSize, uint64_t PC, char * OutString, size_t OutStringSize)'/>
+<doc f='include/llvm-c-6.0/llvm-c/Disassembler.h' l='236'>/**
+ * Disassemble a single instruction using the disassembler context specified in
+ * the parameter DC.  The bytes of the instruction are specified in the
+ * parameter Bytes, and contains at least BytesSize number of bytes.  The
+ * instruction is at the address specified by the PC parameter.  If a valid
+ * instruction can be disassembled, its string is returned indirectly in
+ * OutString whose size is specified in the parameter OutStringSize.  This
+ * function returns the number of bytes in the instruction or zero if there was
+ * no valid instruction.
+ */</doc>

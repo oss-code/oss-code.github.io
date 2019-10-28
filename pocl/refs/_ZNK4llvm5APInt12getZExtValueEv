@@ -1,0 +1,12 @@
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='476' u='c' c='_ZNK4llvm5APInt15getLimitedValueEm'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1123' u='c' c='_ZNK4llvm5APInteqEm'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1174' u='c' c='_ZNK4llvm5APInt3ultEm'/>
+<use f='include/llvm-6.0/llvm/ADT/APInt.h' l='1244' u='c' c='_ZNK4llvm5APInt3ugtEm'/>
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='1542' ll='1547' type='uint64_t llvm::APInt::getZExtValue() const'/>
+<use f='include/llvm-6.0/llvm/IR/Constants.h' l='150' u='c' c='_ZNK4llvm11ConstantInt12getZExtValueEv'/>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='1537'>/// \brief Get zero extended value
+  ///
+  /// This method attempts to return the value of this APInt as a zero extended
+  /// uint64_t. The bitwidth must be &lt;= 64 or the value must fit within a
+  /// uint64_t. Otherwise an assertion will result.</doc>
+<use f='include/llvm-6.0/llvm/ADT/APSInt.h' l='78' u='c' c='_ZNK4llvm6APSInt11getExtValueEv'/>

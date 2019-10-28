@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/ADT/SmallString.h' l='270' ll='274' type='const char * llvm::SmallString::c_str()'/>
+<doc f='include/llvm-6.0/llvm/ADT/SmallString.h' l='269'>// TODO: Make this const, if it&apos;s safe...</doc>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='205' u='c' c='pocl_mk_tempdir'/>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='230' u='c' c='pocl_mk_tempname'/>
+<use f='pocl/lib/llvmopencl/LLVMFileUtils.cc' l='385' u='c' c='pocl_write_tempfile'/>

@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>PassManagerBuilder.h source code [include/llvm-6.0/llvm/Transforms/IPO/PassManagerBuilder.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="llvm::PassManagerBuilder,llvm::RegisterStandardPasses "/>
+<link rel="stylesheet" href="../../../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'include/llvm-6.0/llvm/Transforms/IPO/PassManagerBuilder.h'; var root_path = '../../../../..'; var data_path = '../../../../../../data';</script>
+<script src='../../../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../../../..'>include</a>/<a href='../../..'>llvm-6.0</a>/<a href='../..'>llvm</a>/<a href='..'>Transforms</a>/<a href='./'>IPO</a>/<a href='PassManagerBuilder.h.html'>PassManagerBuilder.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>// llvm/Transforms/IPO/PassManagerBuilder.h - Build Standard Pass -*- C++ -*-=//</i></td></tr>
+<tr><th id="2">2</th><td><i>//</i></td></tr>
+<tr><th id="3">3</th><td><i>//                     The LLVM Compiler Infrastructure</i></td></tr>
+<tr><th id="4">4</th><td><i>//</i></td></tr>
+<tr><th id="5">5</th><td><i>// This file is distributed under the University of Illinois Open Source</i></td></tr>
+<tr><th id="6">6</th><td><i>// License. See LICENSE.TXT for details.</i></td></tr>
+<tr><th id="7">7</th><td><i>//</i></td></tr>
+<tr><th id="8">8</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="9">9</th><td><i>//</i></td></tr>
+<tr><th id="10">10</th><td><i>// This file defines the PassManagerBuilder class, which is used to set up a</i></td></tr>
+<tr><th id="11">11</th><td><i>// "standard" optimization sequence suitable for languages like C and C++.</i></td></tr>
+<tr><th id="12">12</th><td><i>//</i></td></tr>
+<tr><th id="13">13</th><td><i>//===----------------------------------------------------------------------===//</i></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td><u>#<span data-ppcond="15">ifndef</span> <span class="macro" data-ref="_M/LLVM_TRANSFORMS_IPO_PASSMANAGERBUILDER_H">LLVM_TRANSFORMS_IPO_PASSMANAGERBUILDER_H</span></u></td></tr>
+<tr><th id="16">16</th><td><u>#define <dfn class="macro" id="_M/LLVM_TRANSFORMS_IPO_PASSMANAGERBUILDER_H" data-ref="_M/LLVM_TRANSFORMS_IPO_PASSMANAGERBUILDER_H">LLVM_TRANSFORMS_IPO_PASSMANAGERBUILDER_H</dfn></u></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><u>#include <a href="../../../../c++/7/functional.html">&lt;functional&gt;</a></u></td></tr>
+<tr><th id="19">19</th><td><u>#include <a href="../../../../c++/7/memory.html">&lt;memory&gt;</a></u></td></tr>
+<tr><th id="20">20</th><td><u>#include <a href="../../../../c++/7/string.html">&lt;string&gt;</a></u></td></tr>
+<tr><th id="21">21</th><td><u>#include <a href="../../../../c++/7/vector.html">&lt;vector&gt;</a></u></td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><b>namespace</b> <span class="namespace">llvm</span> {</td></tr>
+<tr><th id="24">24</th><td><b>class</b> <a class="type" href="../../IR/ModuleSummaryIndex.h.html#llvm::ModuleSummaryIndex" title='llvm::ModuleSummaryIndex' data-ref="llvm::ModuleSummaryIndex" id="llvm::ModuleSummaryIndex">ModuleSummaryIndex</a>;</td></tr>
+<tr><th id="25">25</th><td><b>class</b> <a class="type" href="../../Pass.h.html#llvm::Pass" title='llvm::Pass' data-ref="llvm::Pass" id="llvm::Pass">Pass</a>;</td></tr>
+<tr><th id="26">26</th><td><b>class</b> <a class="type" href="../../Analysis/TargetLibraryInfo.h.html#llvm::TargetLibraryInfoImpl" title='llvm::TargetLibraryInfoImpl' data-ref="llvm::TargetLibraryInfoImpl" id="llvm::TargetLibraryInfoImpl">TargetLibraryInfoImpl</a>;</td></tr>
+<tr><th id="27">27</th><td><b>class</b> <a class="type" href="../../Target/TargetMachine.h.html#llvm::TargetMachine" title='llvm::TargetMachine' data-ref="llvm::TargetMachine" id="llvm::TargetMachine">TargetMachine</a>;</td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><i>// The old pass manager infrastructure is hidden in a legacy namespace now.</i></td></tr>
+<tr><th id="30">30</th><td><b>namespace</b> <span class="namespace">legacy</span> {</td></tr>
+<tr><th id="31">31</th><td><b>class</b> <a class="type" href="../../IR/LegacyPassManager.h.html#llvm::legacy::FunctionPassManager" title='llvm::legacy::FunctionPassManager' data-ref="llvm::legacy::FunctionPassManager" id="llvm::legacy::FunctionPassManager">FunctionPassManager</a>;</td></tr>
+<tr><th id="32">32</th><td><b>class</b> <a class="type" href="../../IR/LegacyPassManager.h.html#llvm::legacy::PassManagerBase" title='llvm::legacy::PassManagerBase' data-ref="llvm::legacy::PassManagerBase" id="llvm::legacy::PassManagerBase">PassManagerBase</a>;</td></tr>
+<tr><th id="33">33</th><td>}</td></tr>
+<tr><th id="34">34</th><td></td></tr>
+<tr><th id="35">35</th><td><i class="doc">/// PassManagerBuilder - This class is used to set up a standard optimization</i></td></tr>
+<tr><th id="36">36</th><td><i class="doc">/// sequence for languages like C and C++, allowing some APIs to customize the</i></td></tr>
+<tr><th id="37">37</th><td><i class="doc">/// pass sequence in various ways. A simple example of using it would be:</i></td></tr>
+<tr><th id="38">38</th><td><i class="doc">///</i></td></tr>
+<tr><th id="39">39</th><td><i class="doc">///  PassManagerBuilder Builder;</i></td></tr>
+<tr><th id="40">40</th><td><i class="doc">///  Builder.OptLevel = 2;</i></td></tr>
+<tr><th id="41">41</th><td><i class="doc">///  Builder.populateFunctionPassManager(FPM);</i></td></tr>
+<tr><th id="42">42</th><td><i class="doc">///  Builder.populateModulePassManager(MPM);</i></td></tr>
+<tr><th id="43">43</th><td><i class="doc">///</i></td></tr>
+<tr><th id="44">44</th><td><i class="doc">/// In addition to setting up the basic passes, PassManagerBuilder allows</i></td></tr>
+<tr><th id="45">45</th><td><i class="doc">/// frontends to vend a plugin API, where plugins are allowed to add extensions</i></td></tr>
+<tr><th id="46">46</th><td><i class="doc">/// to the default pass manager.  They do this by specifying where in the pass</i></td></tr>
+<tr><th id="47">47</th><td><i class="doc">/// pipeline they want to be added, along with a callback function that adds</i></td></tr>
+<tr><th id="48">48</th><td><i class="doc">/// the pass(es).  For example, a plugin that wanted to add a loop optimization</i></td></tr>
+<tr><th id="49">49</th><td><i class="doc">/// could do something like this:</i></td></tr>
+<tr><th id="50">50</th><td><i class="doc">///</i></td></tr>
+<tr><th id="51">51</th><td><i class="doc">/// static void addMyLoopPass(const PMBuilder &amp;Builder, PassManagerBase &amp;PM) {</i></td></tr>
+<tr><th id="52">52</th><td><i class="doc">///   if (Builder.getOptLevel() &gt; 2 &amp;&amp; Builder.getOptSizeLevel() == 0)</i></td></tr>
+<tr><th id="53">53</th><td><i class="doc">///     PM.add(createMyAwesomePass());</i></td></tr>
+<tr><th id="54">54</th><td><i class="doc">/// }</i></td></tr>
+<tr><th id="55">55</th><td><i class="doc">///   ...</i></td></tr>
+<tr><th id="56">56</th><td><i class="doc">///   Builder.addExtension(PassManagerBuilder::EP_LoopOptimizerEnd,</i></td></tr>
+<tr><th id="57">57</th><td><i class="doc">///                        addMyLoopPass);</i></td></tr>
+<tr><th id="58">58</th><td><i class="doc">///   ...</i></td></tr>
+<tr><th id="59">59</th><td><b>class</b> <dfn class="type def" id="llvm::PassManagerBuilder" title='llvm::PassManagerBuilder' data-ref="llvm::PassManagerBuilder">PassManagerBuilder</dfn> {</td></tr>
+<tr><th id="60">60</th><td><b>public</b>:</td></tr>
+<tr><th id="61">61</th><td>  <i class="doc">/// Extensions are passed the builder itself (so they can see how it is</i></td></tr>
+<tr><th id="62">62</th><td><i class="doc">  /// configured) as well as the pass manager to add stuff to.</i></td></tr>
+<tr><th id="63">63</th><td>  <b>typedef</b> <span class="namespace">std::</span><a class="type" href="../../../../c++/7/bits/std_function.h.html#std::function" title='std::function' data-ref="std::function">function</a>&lt;<em>void</em>(<em>const</em> <a class="type" href="#llvm::PassManagerBuilder" title='llvm::PassManagerBuilder' data-ref="llvm::PassManagerBuilder">PassManagerBuilder</a> &amp;<dfn class="local col7 decl" id="16927Builder" title='Builder' data-type='const llvm::PassManagerBuilder &amp;' data-ref="16927Builder">Builder</dfn>,</td></tr>
+<tr><th id="64">64</th><td>                             <span class="namespace">legacy::</span><a class="type" href="../../IR/LegacyPassManager.h.html#llvm::legacy::PassManagerBase" title='llvm::legacy::PassManagerBase' data-ref="llvm::legacy::PassManagerBase">PassManagerBase</a> &amp;<dfn class="local col8 decl" id="16928PM" title='PM' data-type='legacy::PassManagerBase &amp;' data-ref="16928PM">PM</dfn>)&gt;</td></tr>
+<tr><th id="65">65</th><td>      <dfn class="typedef" id="llvm::PassManagerBuilder::ExtensionFn" title='llvm::PassManagerBuilder::ExtensionFn' data-type='std::function&lt;void (const PassManagerBuilder &amp;, legacy::PassManagerBase &amp;)&gt;' data-ref="llvm::PassManagerBuilder::ExtensionFn">ExtensionFn</dfn>;</td></tr>
+<tr><th id="66">66</th><td>  <b>enum</b> <dfn class="type def" id="llvm::PassManagerBuilder::ExtensionPointTy" title='llvm::PassManagerBuilder::ExtensionPointTy' data-ref="llvm::PassManagerBuilder::ExtensionPointTy">ExtensionPointTy</dfn> {</td></tr>
+<tr><th id="67">67</th><td>    <i class="doc">/// EP_EarlyAsPossible - This extension point allows adding passes before</i></td></tr>
+<tr><th id="68">68</th><td><i class="doc">    /// any other transformations, allowing them to see the code as it is coming</i></td></tr>
+<tr><th id="69">69</th><td><i class="doc">    /// out of the frontend.</i></td></tr>
+<tr><th id="70">70</th><td>    <dfn class="enum" id="llvm::PassManagerBuilder::ExtensionPointTy::EP_EarlyAsPossible" title='llvm::PassManagerBuilder::ExtensionPointTy::EP_EarlyAsPossible' data-ref="llvm::PassManagerBuilder::ExtensionPointTy::EP_EarlyAsPossible">EP_EarlyAsPossible</dfn>,</td></tr>
+<tr><th id="71">71</th><td></td></tr>
+<tr><th id="72">72</th><td>    <i class="doc">/// EP_ModuleOptimizerEarly - This extension point allows adding passes</i></td></tr>
+<tr><th id="73">73</th><td><i class="doc">    /// just before the main module-level optimization passes.</i></td></tr>
+<tr><th id="74">74</th><td>    <dfn class="enum" id="llvm::PassManagerBuilder::ExtensionPointTy::EP_ModuleOptimizerEarly" title='llvm::PassManagerBuilder::ExtensionPointTy::EP_ModuleOptimizerEarly' data-ref="llvm::PassManagerBuilder::ExtensionPointTy::EP_ModuleOptimizerEarly">EP_ModuleOptimizerEarly</dfn>,</td></tr>
+<tr><th id="75">75</th><td></td></tr>
+<tr><th id="76">76</th><td>    <i class="doc">/// EP_LoopOptimizerEnd - This extension point allows adding loop passes to</i></td></tr>
+<tr><th id="77">77</th><td><i class="doc">    /// the end of the loop optimizer.</i></td></tr>
+<tr><th id="78">78</th><td>    <dfn class="enum" id="llvm::PassManagerBuilder::ExtensionPointTy::EP_LoopOptimizerEnd" title='llvm::PassManagerBuilder::ExtensionPointTy::EP_LoopOptimizerEnd' data-ref="llvm::PassManagerBuilder::ExtensionPointTy::EP_LoopOptimizerEnd">EP_LoopOptimizerEnd</dfn>,</td></tr>
+<tr><th id="79">79</th><td></td></tr>
+<tr><th id="80">80</th><td>    <i class="doc">/// EP_ScalarOptimizerLate - This extension point allows adding optimization</i></td></tr>
+<tr><th id="81">81</th><td><i class="doc">    /// passes after most of the main optimizations, but before the last</i></td></tr>
+<tr><th id="82">82</th><td><i class="doc">    /// cleanup-ish optimizations.</i></td></tr>
+<tr><th id="83">83</th><td>    <dfn class="enum" id="llvm::PassManagerBuilder::ExtensionPointTy::EP_ScalarOptimizerLate" title='llvm::PassManagerBuilder::ExtensionPointTy::EP_ScalarOptimizerLate' data-ref="llvm::PassManagerBuilder::ExtensionPointTy::EP_ScalarOptimizerLate">EP_ScalarOptimizerLate</dfn>,</td></tr>
+<tr><th id="84">84</th><td></td></tr>
+<tr><th id="85">85</th><td>    <i class="doc">/// EP_OptimizerLast -- This extension point allows adding passes that</i></td></tr>
+<tr><th id="86">86</th><td><i class="doc">    /// run after everything else.</i></td></tr>
+<tr><th id="87">87</th><td>    <dfn class="enum" id="llvm::PassManagerBuilder::ExtensionPointTy::EP_OptimizerLast" title='llvm::PassManagerBuilder::ExtensionPointTy::EP_OptimizerLast' data-ref="llvm::PassManagerBuilder::ExtensionPointTy::EP_OptimizerLast">EP_OptimizerLast</dfn>,</td></tr>
+<tr><th id="88">88</th><td></td></tr>
+<tr><th id="89">89</th><td>    <i class="doc">/// EP_VectorizerStart - This extension point allows adding optimization</i></td></tr>
+<tr><th id="90">90</th><td><i class="doc">    /// passes before the vectorizer and other highly target specific</i></td></tr>
+<tr><th id="91">91</th><td><i class="doc">    /// optimization passes are executed.</i></td></tr>
+<tr><th id="92">92</th><td>    <dfn class="enum" id="llvm::PassManagerBuilder::ExtensionPointTy::EP_VectorizerStart" title='llvm::PassManagerBuilder::ExtensionPointTy::EP_VectorizerStart' data-ref="llvm::PassManagerBuilder::ExtensionPointTy::EP_VectorizerStart">EP_VectorizerStart</dfn>,</td></tr>
+<tr><th id="93">93</th><td></td></tr>
+<tr><th id="94">94</th><td>    <i class="doc">/// EP_EnabledOnOptLevel0 - This extension point allows adding passes that</i></td></tr>
+<tr><th id="95">95</th><td><i class="doc">    /// should not be disabled by O0 optimization level. The passes will be</i></td></tr>
+<tr><th id="96">96</th><td><i class="doc">    /// inserted after the inlining pass.</i></td></tr>
+<tr><th id="97">97</th><td>    <dfn class="enum" id="llvm::PassManagerBuilder::ExtensionPointTy::EP_EnabledOnOptLevel0" title='llvm::PassManagerBuilder::ExtensionPointTy::EP_EnabledOnOptLevel0' data-ref="llvm::PassManagerBuilder::ExtensionPointTy::EP_EnabledOnOptLevel0">EP_EnabledOnOptLevel0</dfn>,</td></tr>
+<tr><th id="98">98</th><td></td></tr>
+<tr><th id="99">99</th><td>    <i class="doc">/// EP_Peephole - This extension point allows adding passes that perform</i></td></tr>
+<tr><th id="100">100</th><td><i class="doc">    /// peephole optimizations similar to the instruction combiner. These passes</i></td></tr>
+<tr><th id="101">101</th><td><i class="doc">    /// will be inserted after each instance of the instruction combiner pass.</i></td></tr>
+<tr><th id="102">102</th><td>    <dfn class="enum" id="llvm::PassManagerBuilder::ExtensionPointTy::EP_Peephole" title='llvm::PassManagerBuilder::ExtensionPointTy::EP_Peephole' data-ref="llvm::PassManagerBuilder::ExtensionPointTy::EP_Peephole">EP_Peephole</dfn>,</td></tr>
+<tr><th id="103">103</th><td></td></tr>
+<tr><th id="104">104</th><td>    <i class="doc">/// EP_LateLoopOptimizations - This extension point allows adding late loop</i></td></tr>
+<tr><th id="105">105</th><td><i class="doc">    /// canonicalization and simplification passes. This is the last point in</i></td></tr>
+<tr><th id="106">106</th><td><i class="doc">    /// the loop optimization pipeline before loop deletion. Each pass added</i></td></tr>
+<tr><th id="107">107</th><td><i class="doc">    /// here must be an instance of LoopPass.</i></td></tr>
+<tr><th id="108">108</th><td><i class="doc">    /// This is the place to add passes that can remove loops, such as target-</i></td></tr>
+<tr><th id="109">109</th><td><i class="doc">    /// specific loop idiom recognition.</i></td></tr>
+<tr><th id="110">110</th><td>    <dfn class="enum" id="llvm::PassManagerBuilder::ExtensionPointTy::EP_LateLoopOptimizations" title='llvm::PassManagerBuilder::ExtensionPointTy::EP_LateLoopOptimizations' data-ref="llvm::PassManagerBuilder::ExtensionPointTy::EP_LateLoopOptimizations">EP_LateLoopOptimizations</dfn>,</td></tr>
+<tr><th id="111">111</th><td></td></tr>
+<tr><th id="112">112</th><td>    <i class="doc">/// EP_CGSCCOptimizerLate - This extension point allows adding CallGraphSCC</i></td></tr>
+<tr><th id="113">113</th><td><i class="doc">    /// passes at the end of the main CallGraphSCC passes and before any</i></td></tr>
+<tr><th id="114">114</th><td><i class="doc">    /// function simplification passes run by CGPassManager.</i></td></tr>
+<tr><th id="115">115</th><td>    <dfn class="enum" id="llvm::PassManagerBuilder::ExtensionPointTy::EP_CGSCCOptimizerLate" title='llvm::PassManagerBuilder::ExtensionPointTy::EP_CGSCCOptimizerLate' data-ref="llvm::PassManagerBuilder::ExtensionPointTy::EP_CGSCCOptimizerLate">EP_CGSCCOptimizerLate</dfn>,</td></tr>
+<tr><th id="116">116</th><td>  };</td></tr>
+<tr><th id="117">117</th><td></td></tr>
+<tr><th id="118">118</th><td>  <i class="doc">/// The Optimization Level - Specify the basic optimization level.</i></td></tr>
+<tr><th id="119">119</th><td><i class="doc">  ///    0 = -O0, 1 = -O1, 2 = -O2, 3 = -O3</i></td></tr>
+<tr><th id="120">120</th><td>  <em>unsigned</em> <dfn class="decl" id="llvm::PassManagerBuilder::OptLevel" title='llvm::PassManagerBuilder::OptLevel' data-ref="llvm::PassManagerBuilder::OptLevel">OptLevel</dfn>;</td></tr>
+<tr><th id="121">121</th><td></td></tr>
+<tr><th id="122">122</th><td>  <i class="doc">/// SizeLevel - How much we're optimizing for size.</i></td></tr>
+<tr><th id="123">123</th><td><i class="doc">  ///    0 = none, 1 = -Os, 2 = -Oz</i></td></tr>
+<tr><th id="124">124</th><td>  <em>unsigned</em> <dfn class="decl" id="llvm::PassManagerBuilder::SizeLevel" title='llvm::PassManagerBuilder::SizeLevel' data-ref="llvm::PassManagerBuilder::SizeLevel">SizeLevel</dfn>;</td></tr>
+<tr><th id="125">125</th><td></td></tr>
+<tr><th id="126">126</th><td>  <i class="doc">/// LibraryInfo - Specifies information about the runtime library for the</i></td></tr>
+<tr><th id="127">127</th><td><i class="doc">  /// optimizer.  If this is non-null, it is added to both the function and</i></td></tr>
+<tr><th id="128">128</th><td><i class="doc">  /// per-module pass pipeline.</i></td></tr>
+<tr><th id="129">129</th><td>  <a class="type" href="../../Analysis/TargetLibraryInfo.h.html#llvm::TargetLibraryInfoImpl" title='llvm::TargetLibraryInfoImpl' data-ref="llvm::TargetLibraryInfoImpl">TargetLibraryInfoImpl</a> *<dfn class="decl" id="llvm::PassManagerBuilder::LibraryInfo" title='llvm::PassManagerBuilder::LibraryInfo' data-ref="llvm::PassManagerBuilder::LibraryInfo">LibraryInfo</dfn>;</td></tr>
+<tr><th id="130">130</th><td></td></tr>
+<tr><th id="131">131</th><td>  <i class="doc">/// Inliner - Specifies the inliner to use.  If this is non-null, it is</i></td></tr>
+<tr><th id="132">132</th><td><i class="doc">  /// added to the per-module passes.</i></td></tr>
+<tr><th id="133">133</th><td>  <a class="type" href="../../Pass.h.html#llvm::Pass" title='llvm::Pass' data-ref="llvm::Pass">Pass</a> *<dfn class="decl" id="llvm::PassManagerBuilder::Inliner" title='llvm::PassManagerBuilder::Inliner' data-ref="llvm::PassManagerBuilder::Inliner">Inliner</dfn>;</td></tr>
+<tr><th id="134">134</th><td></td></tr>
+<tr><th id="135">135</th><td>  <i class="doc">/// The module summary index to use for exporting information from the</i></td></tr>
+<tr><th id="136">136</th><td><i class="doc">  /// regular LTO phase, for example for the CFI and devirtualization type</i></td></tr>
+<tr><th id="137">137</th><td><i class="doc">  /// tests.</i></td></tr>
+<tr><th id="138">138</th><td>  <a class="type" href="../../IR/ModuleSummaryIndex.h.html#llvm::ModuleSummaryIndex" title='llvm::ModuleSummaryIndex' data-ref="llvm::ModuleSummaryIndex">ModuleSummaryIndex</a> *<dfn class="decl" id="llvm::PassManagerBuilder::ExportSummary" title='llvm::PassManagerBuilder::ExportSummary' data-ref="llvm::PassManagerBuilder::ExportSummary">ExportSummary</dfn> = <b>nullptr</b>;</td></tr>
+<tr><th id="139">139</th><td></td></tr>
+<tr><th id="140">140</th><td>  <i class="doc">/// The module summary index to use for importing information to the</i></td></tr>
+<tr><th id="141">141</th><td><i class="doc">  /// thin LTO backends, for example for the CFI and devirtualization type</i></td></tr>
+<tr><th id="142">142</th><td><i class="doc">  /// tests.</i></td></tr>
+<tr><th id="143">143</th><td>  <em>const</em> <a class="type" href="../../IR/ModuleSummaryIndex.h.html#llvm::ModuleSummaryIndex" title='llvm::ModuleSummaryIndex' data-ref="llvm::ModuleSummaryIndex">ModuleSummaryIndex</a> *<dfn class="decl" id="llvm::PassManagerBuilder::ImportSummary" title='llvm::PassManagerBuilder::ImportSummary' data-ref="llvm::PassManagerBuilder::ImportSummary">ImportSummary</dfn> = <b>nullptr</b>;</td></tr>
+<tr><th id="144">144</th><td></td></tr>
+<tr><th id="145">145</th><td>  <em>bool</em> <dfn class="decl" id="llvm::PassManagerBuilder::DisableTailCalls" title='llvm::PassManagerBuilder::DisableTailCalls' data-ref="llvm::PassManagerBuilder::DisableTailCalls">DisableTailCalls</dfn>;</td></tr>
+<tr><th id="146">146</th><td>  <em>bool</em> <dfn class="decl" id="llvm::PassManagerBuilder::DisableUnitAtATime" title='llvm::PassManagerBuilder::DisableUnitAtATime' data-ref="llvm::PassManagerBuilder::DisableUnitAtATime">DisableUnitAtATime</dfn>;</td></tr>
+<tr><th id="147">147</th><td>  <em>bool</em> <dfn class="decl" id="llvm::PassManagerBuilder::DisableUnrollLoops" title='llvm::PassManagerBuilder::DisableUnrollLoops' data-ref="llvm::PassManagerBuilder::DisableUnrollLoops">DisableUnrollLoops</dfn>;</td></tr>
+<tr><th id="148">148</th><td>  <em>bool</em> <dfn class="decl" id="llvm::PassManagerBuilder::SLPVectorize" title='llvm::PassManagerBuilder::SLPVectorize' data-ref="llvm::PassManagerBuilder::SLPVectorize">SLPVectorize</dfn>;</td></tr>
+<tr><th id="149">149</th><td>  <em>bool</em> <dfn class="decl" id="llvm::PassManagerBuilder::LoopVectorize" title='llvm::PassManagerBuilder::LoopVectorize' data-ref="llvm::PassManagerBuilder::LoopVectorize">LoopVectorize</dfn>;</td></tr>
+<tr><th id="150">150</th><td>  <em>bool</em> <dfn class="decl" id="llvm::PassManagerBuilder::RerollLoops" title='llvm::PassManagerBuilder::RerollLoops' data-ref="llvm::PassManagerBuilder::RerollLoops">RerollLoops</dfn>;</td></tr>
+<tr><th id="151">151</th><td>  <em>bool</em> <dfn class="decl" id="llvm::PassManagerBuilder::NewGVN" title='llvm::PassManagerBuilder::NewGVN' data-ref="llvm::PassManagerBuilder::NewGVN">NewGVN</dfn>;</td></tr>
+<tr><th id="152">152</th><td>  <em>bool</em> <dfn class="decl" id="llvm::PassManagerBuilder::DisableGVNLoadPRE" title='llvm::PassManagerBuilder::DisableGVNLoadPRE' data-ref="llvm::PassManagerBuilder::DisableGVNLoadPRE">DisableGVNLoadPRE</dfn>;</td></tr>
+<tr><th id="153">153</th><td>  <em>bool</em> <dfn class="decl" id="llvm::PassManagerBuilder::VerifyInput" title='llvm::PassManagerBuilder::VerifyInput' data-ref="llvm::PassManagerBuilder::VerifyInput">VerifyInput</dfn>;</td></tr>
+<tr><th id="154">154</th><td>  <em>bool</em> <dfn class="decl" id="llvm::PassManagerBuilder::VerifyOutput" title='llvm::PassManagerBuilder::VerifyOutput' data-ref="llvm::PassManagerBuilder::VerifyOutput">VerifyOutput</dfn>;</td></tr>
+<tr><th id="155">155</th><td>  <em>bool</em> <dfn class="decl" id="llvm::PassManagerBuilder::MergeFunctions" title='llvm::PassManagerBuilder::MergeFunctions' data-ref="llvm::PassManagerBuilder::MergeFunctions">MergeFunctions</dfn>;</td></tr>
+<tr><th id="156">156</th><td>  <em>bool</em> <dfn class="decl" id="llvm::PassManagerBuilder::PrepareForLTO" title='llvm::PassManagerBuilder::PrepareForLTO' data-ref="llvm::PassManagerBuilder::PrepareForLTO">PrepareForLTO</dfn>;</td></tr>
+<tr><th id="157">157</th><td>  <em>bool</em> <dfn class="decl" id="llvm::PassManagerBuilder::PrepareForThinLTO" title='llvm::PassManagerBuilder::PrepareForThinLTO' data-ref="llvm::PassManagerBuilder::PrepareForThinLTO">PrepareForThinLTO</dfn>;</td></tr>
+<tr><th id="158">158</th><td>  <em>bool</em> <dfn class="decl" id="llvm::PassManagerBuilder::PerformThinLTO" title='llvm::PassManagerBuilder::PerformThinLTO' data-ref="llvm::PassManagerBuilder::PerformThinLTO">PerformThinLTO</dfn>;</td></tr>
+<tr><th id="159">159</th><td>  <em>bool</em> <dfn class="decl" id="llvm::PassManagerBuilder::DivergentTarget" title='llvm::PassManagerBuilder::DivergentTarget' data-ref="llvm::PassManagerBuilder::DivergentTarget">DivergentTarget</dfn>;</td></tr>
+<tr><th id="160">160</th><td></td></tr>
+<tr><th id="161">161</th><td>  <i class="doc">/// Enable profile instrumentation pass.</i></td></tr>
+<tr><th id="162">162</th><td>  <em>bool</em> <dfn class="decl" id="llvm::PassManagerBuilder::EnablePGOInstrGen" title='llvm::PassManagerBuilder::EnablePGOInstrGen' data-ref="llvm::PassManagerBuilder::EnablePGOInstrGen">EnablePGOInstrGen</dfn>;</td></tr>
+<tr><th id="163">163</th><td>  <i class="doc">/// Profile data file name that the instrumentation will be written to.</i></td></tr>
+<tr><th id="164">164</th><td>  <span class="namespace">std::</span><a class="typedef" href="../../../../c++/7/bits/stringfwd.h.html#std::__cxx11::string" title='std::__cxx11::string' data-type='basic_string&lt;char&gt;' data-ref="std::__cxx11::string">string</a> <dfn class="decl" id="llvm::PassManagerBuilder::PGOInstrGen" title='llvm::PassManagerBuilder::PGOInstrGen' data-ref="llvm::PassManagerBuilder::PGOInstrGen">PGOInstrGen</dfn>;</td></tr>
+<tr><th id="165">165</th><td>  <i class="doc">/// Path of the profile data file.</i></td></tr>
+<tr><th id="166">166</th><td>  <span class="namespace">std::</span><a class="typedef" href="../../../../c++/7/bits/stringfwd.h.html#std::__cxx11::string" title='std::__cxx11::string' data-type='basic_string&lt;char&gt;' data-ref="std::__cxx11::string">string</a> <dfn class="decl" id="llvm::PassManagerBuilder::PGOInstrUse" title='llvm::PassManagerBuilder::PGOInstrUse' data-ref="llvm::PassManagerBuilder::PGOInstrUse">PGOInstrUse</dfn>;</td></tr>
+<tr><th id="167">167</th><td>  <i class="doc">/// Path of the sample Profile data file.</i></td></tr>
+<tr><th id="168">168</th><td>  <span class="namespace">std::</span><a class="typedef" href="../../../../c++/7/bits/stringfwd.h.html#std::__cxx11::string" title='std::__cxx11::string' data-type='basic_string&lt;char&gt;' data-ref="std::__cxx11::string">string</a> <dfn class="decl" id="llvm::PassManagerBuilder::PGOSampleUse" title='llvm::PassManagerBuilder::PGOSampleUse' data-ref="llvm::PassManagerBuilder::PGOSampleUse">PGOSampleUse</dfn>;</td></tr>
+<tr><th id="169">169</th><td></td></tr>
+<tr><th id="170">170</th><td><b>private</b>:</td></tr>
+<tr><th id="171">171</th><td>  <i class="doc">/// ExtensionList - This is list of all of the extensions that are registered.</i></td></tr>
+<tr><th id="172">172</th><td>  <span class="namespace">std::</span><a class="type" href="../../../../c++/7/bits/stl_vector.h.html#std::vector" title='std::vector' data-ref="std::vector">vector</a>&lt;<span class="namespace">std::</span><a class="type" href="../../../../c++/7/bits/stl_pair.h.html#std::pair" title='std::pair' data-ref="std::pair">pair</a>&lt;<a class="type" href="#llvm::PassManagerBuilder::ExtensionPointTy" title='llvm::PassManagerBuilder::ExtensionPointTy' data-ref="llvm::PassManagerBuilder::ExtensionPointTy">ExtensionPointTy</a>, <a class="typedef" href="#llvm::PassManagerBuilder::ExtensionFn" title='llvm::PassManagerBuilder::ExtensionFn' data-type='std::function&lt;void (const PassManagerBuilder &amp;, legacy::PassManagerBase &amp;)&gt;' data-ref="llvm::PassManagerBuilder::ExtensionFn">ExtensionFn</a>&gt;&gt; <dfn class="decl" id="llvm::PassManagerBuilder::Extensions" title='llvm::PassManagerBuilder::Extensions' data-ref="llvm::PassManagerBuilder::Extensions">Extensions</dfn>;</td></tr>
+<tr><th id="173">173</th><td></td></tr>
+<tr><th id="174">174</th><td><b>public</b>:</td></tr>
+<tr><th id="175">175</th><td>  <dfn class="decl" id="_ZN4llvm18PassManagerBuilderC1Ev" title='llvm::PassManagerBuilder::PassManagerBuilder' data-ref="_ZN4llvm18PassManagerBuilderC1Ev">PassManagerBuilder</dfn>();</td></tr>
+<tr><th id="176">176</th><td>  <dfn class="decl" id="_ZN4llvm18PassManagerBuilderD1Ev" title='llvm::PassManagerBuilder::~PassManagerBuilder' data-ref="_ZN4llvm18PassManagerBuilderD1Ev">~PassManagerBuilder</dfn>();</td></tr>
+<tr><th id="177">177</th><td>  <i class="doc">/// Adds an extension that will be used by all PassManagerBuilder instances.</i></td></tr>
+<tr><th id="178">178</th><td><i class="doc">  /// This is intended to be used by plugins, to register a set of</i></td></tr>
+<tr><th id="179">179</th><td><i class="doc">  /// optimisations to run automatically.</i></td></tr>
+<tr><th id="180">180</th><td>  <em>static</em> <em>void</em> <dfn class="decl" id="_ZN4llvm18PassManagerBuilder18addGlobalExtensionENS0_16ExtensionPointTyESt8functionIFvRKS0_RNS_6legacy15PassManagerBaseEEE" title='llvm::PassManagerBuilder::addGlobalExtension' data-ref="_ZN4llvm18PassManagerBuilder18addGlobalExtensionENS0_16ExtensionPointTyESt8functionIFvRKS0_RNS_6legacy15PassManagerBaseEEE">addGlobalExtension</dfn>(<a class="type" href="#llvm::PassManagerBuilder::ExtensionPointTy" title='llvm::PassManagerBuilder::ExtensionPointTy' data-ref="llvm::PassManagerBuilder::ExtensionPointTy">ExtensionPointTy</a> <dfn class="local col9 decl" id="16929Ty" title='Ty' data-type='llvm::PassManagerBuilder::ExtensionPointTy' data-ref="16929Ty">Ty</dfn>, <a class="typedef" href="#llvm::PassManagerBuilder::ExtensionFn" title='llvm::PassManagerBuilder::ExtensionFn' data-type='std::function&lt;void (const PassManagerBuilder &amp;, legacy::PassManagerBase &amp;)&gt;' data-ref="llvm::PassManagerBuilder::ExtensionFn">ExtensionFn</a> <dfn class="local col0 decl" id="16930Fn" title='Fn' data-type='ExtensionFn' data-ref="16930Fn">Fn</dfn>);</td></tr>
+<tr><th id="181">181</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm18PassManagerBuilder12addExtensionENS0_16ExtensionPointTyESt8functionIFvRKS0_RNS_6legacy15PassManagerBaseEEE" title='llvm::PassManagerBuilder::addExtension' data-ref="_ZN4llvm18PassManagerBuilder12addExtensionENS0_16ExtensionPointTyESt8functionIFvRKS0_RNS_6legacy15PassManagerBaseEEE">addExtension</dfn>(<a class="type" href="#llvm::PassManagerBuilder::ExtensionPointTy" title='llvm::PassManagerBuilder::ExtensionPointTy' data-ref="llvm::PassManagerBuilder::ExtensionPointTy">ExtensionPointTy</a> <dfn class="local col1 decl" id="16931Ty" title='Ty' data-type='llvm::PassManagerBuilder::ExtensionPointTy' data-ref="16931Ty">Ty</dfn>, <a class="typedef" href="#llvm::PassManagerBuilder::ExtensionFn" title='llvm::PassManagerBuilder::ExtensionFn' data-type='std::function&lt;void (const PassManagerBuilder &amp;, legacy::PassManagerBase &amp;)&gt;' data-ref="llvm::PassManagerBuilder::ExtensionFn">ExtensionFn</a> <dfn class="local col2 decl" id="16932Fn" title='Fn' data-type='ExtensionFn' data-ref="16932Fn">Fn</dfn>);</td></tr>
+<tr><th id="182">182</th><td></td></tr>
+<tr><th id="183">183</th><td><b>private</b>:</td></tr>
+<tr><th id="184">184</th><td>  <em>void</em> <dfn class="decl" id="_ZNK4llvm18PassManagerBuilder17addExtensionsToPMENS0_16ExtensionPointTyERNS_6legacy15PassManagerBaseE" title='llvm::PassManagerBuilder::addExtensionsToPM' data-ref="_ZNK4llvm18PassManagerBuilder17addExtensionsToPMENS0_16ExtensionPointTyERNS_6legacy15PassManagerBaseE">addExtensionsToPM</dfn>(<a class="type" href="#llvm::PassManagerBuilder::ExtensionPointTy" title='llvm::PassManagerBuilder::ExtensionPointTy' data-ref="llvm::PassManagerBuilder::ExtensionPointTy">ExtensionPointTy</a> <dfn class="local col3 decl" id="16933ETy" title='ETy' data-type='llvm::PassManagerBuilder::ExtensionPointTy' data-ref="16933ETy">ETy</dfn>,</td></tr>
+<tr><th id="185">185</th><td>                         <span class="namespace">legacy::</span><a class="type" href="../../IR/LegacyPassManager.h.html#llvm::legacy::PassManagerBase" title='llvm::legacy::PassManagerBase' data-ref="llvm::legacy::PassManagerBase">PassManagerBase</a> &amp;<dfn class="local col4 decl" id="16934PM" title='PM' data-type='legacy::PassManagerBase &amp;' data-ref="16934PM">PM</dfn>) <em>const</em>;</td></tr>
+<tr><th id="186">186</th><td>  <em>void</em> <dfn class="decl" id="_ZNK4llvm18PassManagerBuilder29addInitialAliasAnalysisPassesERNS_6legacy15PassManagerBaseE" title='llvm::PassManagerBuilder::addInitialAliasAnalysisPasses' data-ref="_ZNK4llvm18PassManagerBuilder29addInitialAliasAnalysisPassesERNS_6legacy15PassManagerBaseE">addInitialAliasAnalysisPasses</dfn>(<span class="namespace">legacy::</span><a class="type" href="../../IR/LegacyPassManager.h.html#llvm::legacy::PassManagerBase" title='llvm::legacy::PassManagerBase' data-ref="llvm::legacy::PassManagerBase">PassManagerBase</a> &amp;<dfn class="local col5 decl" id="16935PM" title='PM' data-type='legacy::PassManagerBase &amp;' data-ref="16935PM">PM</dfn>) <em>const</em>;</td></tr>
+<tr><th id="187">187</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm18PassManagerBuilder24addLTOOptimizationPassesERNS_6legacy15PassManagerBaseE" title='llvm::PassManagerBuilder::addLTOOptimizationPasses' data-ref="_ZN4llvm18PassManagerBuilder24addLTOOptimizationPassesERNS_6legacy15PassManagerBaseE">addLTOOptimizationPasses</dfn>(<span class="namespace">legacy::</span><a class="type" href="../../IR/LegacyPassManager.h.html#llvm::legacy::PassManagerBase" title='llvm::legacy::PassManagerBase' data-ref="llvm::legacy::PassManagerBase">PassManagerBase</a> &amp;<dfn class="local col6 decl" id="16936PM" title='PM' data-type='legacy::PassManagerBase &amp;' data-ref="16936PM">PM</dfn>);</td></tr>
+<tr><th id="188">188</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm18PassManagerBuilder28addLateLTOOptimizationPassesERNS_6legacy15PassManagerBaseE" title='llvm::PassManagerBuilder::addLateLTOOptimizationPasses' data-ref="_ZN4llvm18PassManagerBuilder28addLateLTOOptimizationPassesERNS_6legacy15PassManagerBaseE">addLateLTOOptimizationPasses</dfn>(<span class="namespace">legacy::</span><a class="type" href="../../IR/LegacyPassManager.h.html#llvm::legacy::PassManagerBase" title='llvm::legacy::PassManagerBase' data-ref="llvm::legacy::PassManagerBase">PassManagerBase</a> &amp;<dfn class="local col7 decl" id="16937PM" title='PM' data-type='legacy::PassManagerBase &amp;' data-ref="16937PM">PM</dfn>);</td></tr>
+<tr><th id="189">189</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm18PassManagerBuilder17addPGOInstrPassesERNS_6legacy15PassManagerBaseE" title='llvm::PassManagerBuilder::addPGOInstrPasses' data-ref="_ZN4llvm18PassManagerBuilder17addPGOInstrPassesERNS_6legacy15PassManagerBaseE">addPGOInstrPasses</dfn>(<span class="namespace">legacy::</span><a class="type" href="../../IR/LegacyPassManager.h.html#llvm::legacy::PassManagerBase" title='llvm::legacy::PassManagerBase' data-ref="llvm::legacy::PassManagerBase">PassManagerBase</a> &amp;<dfn class="local col8 decl" id="16938MPM" title='MPM' data-type='legacy::PassManagerBase &amp;' data-ref="16938MPM">MPM</dfn>);</td></tr>
+<tr><th id="190">190</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm18PassManagerBuilder31addFunctionSimplificationPassesERNS_6legacy15PassManagerBaseE" title='llvm::PassManagerBuilder::addFunctionSimplificationPasses' data-ref="_ZN4llvm18PassManagerBuilder31addFunctionSimplificationPassesERNS_6legacy15PassManagerBaseE">addFunctionSimplificationPasses</dfn>(<span class="namespace">legacy::</span><a class="type" href="../../IR/LegacyPassManager.h.html#llvm::legacy::PassManagerBase" title='llvm::legacy::PassManagerBase' data-ref="llvm::legacy::PassManagerBase">PassManagerBase</a> &amp;<dfn class="local col9 decl" id="16939MPM" title='MPM' data-type='legacy::PassManagerBase &amp;' data-ref="16939MPM">MPM</dfn>);</td></tr>
+<tr><th id="191">191</th><td>  <em>void</em> <dfn class="decl" id="_ZNK4llvm18PassManagerBuilder27addInstructionCombiningPassERNS_6legacy15PassManagerBaseE" title='llvm::PassManagerBuilder::addInstructionCombiningPass' data-ref="_ZNK4llvm18PassManagerBuilder27addInstructionCombiningPassERNS_6legacy15PassManagerBaseE">addInstructionCombiningPass</dfn>(<span class="namespace">legacy::</span><a class="type" href="../../IR/LegacyPassManager.h.html#llvm::legacy::PassManagerBase" title='llvm::legacy::PassManagerBase' data-ref="llvm::legacy::PassManagerBase">PassManagerBase</a> &amp;<dfn class="local col0 decl" id="16940MPM" title='MPM' data-type='legacy::PassManagerBase &amp;' data-ref="16940MPM">MPM</dfn>) <em>const</em>;</td></tr>
+<tr><th id="192">192</th><td></td></tr>
+<tr><th id="193">193</th><td><b>public</b>:</td></tr>
+<tr><th id="194">194</th><td>  <i class="doc">/// populateFunctionPassManager - This fills in the function pass manager,</i></td></tr>
+<tr><th id="195">195</th><td><i class="doc">  /// which is expected to be run on each function immediately as it is</i></td></tr>
+<tr><th id="196">196</th><td><i class="doc">  /// generated.  The idea is to reduce the size of the IR in memory.</i></td></tr>
+<tr><th id="197">197</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm18PassManagerBuilder27populateFunctionPassManagerERNS_6legacy19FunctionPassManagerE" title='llvm::PassManagerBuilder::populateFunctionPassManager' data-ref="_ZN4llvm18PassManagerBuilder27populateFunctionPassManagerERNS_6legacy19FunctionPassManagerE">populateFunctionPassManager</dfn>(<span class="namespace">legacy::</span><a class="type" href="../../IR/LegacyPassManager.h.html#llvm::legacy::FunctionPassManager" title='llvm::legacy::FunctionPassManager' data-ref="llvm::legacy::FunctionPassManager">FunctionPassManager</a> &amp;<dfn class="local col1 decl" id="16941FPM" title='FPM' data-type='legacy::FunctionPassManager &amp;' data-ref="16941FPM">FPM</dfn>);</td></tr>
+<tr><th id="198">198</th><td></td></tr>
+<tr><th id="199">199</th><td>  <i class="doc">/// populateModulePassManager - This sets up the primary pass manager.</i></td></tr>
+<tr><th id="200">200</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm18PassManagerBuilder25populateModulePassManagerERNS_6legacy15PassManagerBaseE" title='llvm::PassManagerBuilder::populateModulePassManager' data-ref="_ZN4llvm18PassManagerBuilder25populateModulePassManagerERNS_6legacy15PassManagerBaseE">populateModulePassManager</dfn>(<span class="namespace">legacy::</span><a class="type" href="../../IR/LegacyPassManager.h.html#llvm::legacy::PassManagerBase" title='llvm::legacy::PassManagerBase' data-ref="llvm::legacy::PassManagerBase">PassManagerBase</a> &amp;<dfn class="local col2 decl" id="16942MPM" title='MPM' data-type='legacy::PassManagerBase &amp;' data-ref="16942MPM">MPM</dfn>);</td></tr>
+<tr><th id="201">201</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm18PassManagerBuilder22populateLTOPassManagerERNS_6legacy15PassManagerBaseE" title='llvm::PassManagerBuilder::populateLTOPassManager' data-ref="_ZN4llvm18PassManagerBuilder22populateLTOPassManagerERNS_6legacy15PassManagerBaseE">populateLTOPassManager</dfn>(<span class="namespace">legacy::</span><a class="type" href="../../IR/LegacyPassManager.h.html#llvm::legacy::PassManagerBase" title='llvm::legacy::PassManagerBase' data-ref="llvm::legacy::PassManagerBase">PassManagerBase</a> &amp;<dfn class="local col3 decl" id="16943PM" title='PM' data-type='legacy::PassManagerBase &amp;' data-ref="16943PM">PM</dfn>);</td></tr>
+<tr><th id="202">202</th><td>  <em>void</em> <dfn class="decl" id="_ZN4llvm18PassManagerBuilder26populateThinLTOPassManagerERNS_6legacy15PassManagerBaseE" title='llvm::PassManagerBuilder::populateThinLTOPassManager' data-ref="_ZN4llvm18PassManagerBuilder26populateThinLTOPassManagerERNS_6legacy15PassManagerBaseE">populateThinLTOPassManager</dfn>(<span class="namespace">legacy::</span><a class="type" href="../../IR/LegacyPassManager.h.html#llvm::legacy::PassManagerBase" title='llvm::legacy::PassManagerBase' data-ref="llvm::legacy::PassManagerBase">PassManagerBase</a> &amp;<dfn class="local col4 decl" id="16944PM" title='PM' data-type='legacy::PassManagerBase &amp;' data-ref="16944PM">PM</dfn>);</td></tr>
+<tr><th id="203">203</th><td>};</td></tr>
+<tr><th id="204">204</th><td></td></tr>
+<tr><th id="205">205</th><td><i class="doc">/// Registers a function for adding a standard set of passes.  This should be</i></td></tr>
+<tr><th id="206">206</th><td><i class="doc">/// used by optimizer plugins to allow all front ends to transparently use</i></td></tr>
+<tr><th id="207">207</th><td><i class="doc">/// them.  Create a static instance of this class in your plugin, providing a</i></td></tr>
+<tr><th id="208">208</th><td><i class="doc">/// private function that the PassManagerBuilder can use to add your passes.</i></td></tr>
+<tr><th id="209">209</th><td><b>struct</b> <dfn class="type def" id="llvm::RegisterStandardPasses" title='llvm::RegisterStandardPasses' data-ref="llvm::RegisterStandardPasses">RegisterStandardPasses</dfn> {</td></tr>
+<tr><th id="210">210</th><td>  <dfn class="decl def" id="_ZN4llvm22RegisterStandardPassesC1ENS_18PassManagerBuilder16ExtensionPointTyESt8functionIFvRKS1_RNS_6legacy15PassManagerBaseEEE" title='llvm::RegisterStandardPasses::RegisterStandardPasses' data-ref="_ZN4llvm22RegisterStandardPassesC1ENS_18PassManagerBuilder16ExtensionPointTyESt8functionIFvRKS1_RNS_6legacy15PassManagerBaseEEE">RegisterStandardPasses</dfn>(<a class="type" href="#llvm::PassManagerBuilder" title='llvm::PassManagerBuilder' data-ref="llvm::PassManagerBuilder">PassManagerBuilder</a>::<a class="type" href="#llvm::PassManagerBuilder::ExtensionPointTy" title='llvm::PassManagerBuilder::ExtensionPointTy' data-ref="llvm::PassManagerBuilder::ExtensionPointTy">ExtensionPointTy</a> <dfn class="local col5 decl" id="16945Ty" title='Ty' data-type='PassManagerBuilder::ExtensionPointTy' data-ref="16945Ty">Ty</dfn>,</td></tr>
+<tr><th id="211">211</th><td>                         <a class="type" href="#llvm::PassManagerBuilder" title='llvm::PassManagerBuilder' data-ref="llvm::PassManagerBuilder">PassManagerBuilder</a>::<a class="typedef" href="#llvm::PassManagerBuilder::ExtensionFn" title='llvm::PassManagerBuilder::ExtensionFn' data-type='std::function&lt;void (const PassManagerBuilder &amp;, legacy::PassManagerBase &amp;)&gt;' data-ref="llvm::PassManagerBuilder::ExtensionFn">ExtensionFn</a> <dfn class="local col6 decl" id="16946Fn" title='Fn' data-type='PassManagerBuilder::ExtensionFn' data-ref="16946Fn">Fn</dfn>) {</td></tr>
+<tr><th id="212">212</th><td>    <a class="type" href="#llvm::PassManagerBuilder" title='llvm::PassManagerBuilder' data-ref="llvm::PassManagerBuilder">PassManagerBuilder</a>::<a class="ref" href="#_ZN4llvm18PassManagerBuilder18addGlobalExtensionENS0_16ExtensionPointTyESt8functionIFvRKS0_RNS_6legacy15PassManagerBaseEEE" title='llvm::PassManagerBuilder::addGlobalExtension' data-ref="_ZN4llvm18PassManagerBuilder18addGlobalExtensionENS0_16ExtensionPointTyESt8functionIFvRKS0_RNS_6legacy15PassManagerBaseEEE">addGlobalExtension</a>(<a class="local col5 ref" href="#16945Ty" title='Ty' data-ref="16945Ty">Ty</a>, <a class="ref fake" href="../../../../c++/7/bits/std_function.h.html#_ZNSt8functionIFT_DpT0_EEC1EOS_IS3_E" title='std::function&lt;type-parameter-0-0 (type-parameter-0-1...)&gt;::function&lt;type-parameter-0-0 (type-parameter-0-1...)&gt;' data-ref="_ZNSt8functionIFT_DpT0_EEC1EOS_IS3_E"></a><span class="namespace">std::</span><a class="ref" href="../../../../c++/7/bits/move.h.html#_ZSt4moveOT_" title='std::move' data-ref="_ZSt4moveOT_">move</a>(<span class='refarg'><a class="local col6 ref" href="#16946Fn" title='Fn' data-ref="16946Fn">Fn</a></span>));</td></tr>
+<tr><th id="213">213</th><td>  }</td></tr>
+<tr><th id="214">214</th><td>};</td></tr>
+<tr><th id="215">215</th><td></td></tr>
+<tr><th id="216">216</th><td>} <i>// end namespace llvm</i></td></tr>
+<tr><th id="217">217</th><td><u>#<span data-ppcond="15">endif</span></u></td></tr>
+<tr><th id="218">218</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../../../../pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc.html'>pocl/lib/CL/devices/cuda/pocl-ptx-gen.cc</a><br/>Generated on <em>2019-Oct-28</em> from project include<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

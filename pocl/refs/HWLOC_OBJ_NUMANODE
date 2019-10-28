@@ -1,0 +1,10 @@
+<dec f='include/hwloc.h' l='184' type='2'/>
+<use f='include/hwloc/helper.h' l='580' u='r' c='hwloc_get_numanode_obj_by_os_index'/>
+<use f='include/hwloc/helper.h' l='924' u='r' c='hwloc_cpuset_to_nodeset'/>
+<use f='include/hwloc/helper.h' l='952' u='r' c='hwloc_cpuset_to_nodeset_strict'/>
+<use f='include/hwloc/helper.h' l='973' u='r' c='hwloc_cpuset_from_nodeset'/>
+<use f='include/hwloc/helper.h' l='1004' u='r' c='hwloc_cpuset_from_nodeset_strict'/>
+<doc f='include/hwloc.h' l='184'>/**&lt; \brief NUMA node.
+			  * A set of processors around memory which the
+			  * processors can directly access.
+			  */</doc>

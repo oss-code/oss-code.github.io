@@ -1,0 +1,6 @@
+<def f='pocl/include/CL/cl2.hpp' l='3944' ll='3948' type='cl::Buffer &amp; cl::Buffer::operator=(cl::Buffer &amp;&amp; buf)'/>
+<use f='pocl/include/CL/cl2.hpp' l='4171' u='c' c='_ZN2cl8BufferGLaSEOS0_'/>
+<use f='pocl/include/CL/cl2.hpp' l='4268' u='c' c='_ZN2cl14BufferRenderGLaSEOS0_'/>
+<doc f='pocl/include/CL/cl2.hpp' l='3941'>/*! \brief Move assignment to forward move to the superclass correctly.
+     * Required for MSVC.
+     */</doc>

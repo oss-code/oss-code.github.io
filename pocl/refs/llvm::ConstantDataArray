@@ -1,0 +1,23 @@
+<inh f='include/llvm-6.0/llvm/IR/Constants.h' l='565' c='llvm::ConstantDataSequential'/>
+<def f='include/llvm-6.0/llvm/IR/Constants.h' l='681' ll='727'/>
+<size>40</size>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='675'>//===----------------------------------------------------------------------===//
+/// An array constant whose element type is a simple 1/2/4/8-byte integer or
+/// float/double, and whose elements are just simple data values
+/// (i.e. ConstantInt/ConstantFP). This Constant node has no operands because it
+/// stores all of the elements of the constant as densely packed data, instead
+/// of as Value*&apos;s.</doc>
+<fun r='_ZN4llvm17ConstantDataArrayC1EPNS_4TypeEPKc'/>
+<fun r='_ZN4llvm17ConstantDataArrayC1ERKS0_'/>
+<fun r='_ZN4llvm17ConstantDataArray3getERNS_11LLVMContextENS_8ArrayRefIhEE'/>
+<fun r='_ZN4llvm17ConstantDataArray3getERNS_11LLVMContextENS_8ArrayRefItEE'/>
+<fun r='_ZN4llvm17ConstantDataArray3getERNS_11LLVMContextENS_8ArrayRefIjEE'/>
+<fun r='_ZN4llvm17ConstantDataArray3getERNS_11LLVMContextENS_8ArrayRefImEE'/>
+<fun r='_ZN4llvm17ConstantDataArray3getERNS_11LLVMContextENS_8ArrayRefIfEE'/>
+<fun r='_ZN4llvm17ConstantDataArray3getERNS_11LLVMContextENS_8ArrayRefIdEE'/>
+<fun r='_ZN4llvm17ConstantDataArray5getFPERNS_11LLVMContextENS_8ArrayRefItEE'/>
+<fun r='_ZN4llvm17ConstantDataArray5getFPERNS_11LLVMContextENS_8ArrayRefIjEE'/>
+<fun r='_ZN4llvm17ConstantDataArray5getFPERNS_11LLVMContextENS_8ArrayRefImEE'/>
+<fun r='_ZN4llvm17ConstantDataArray9getStringERNS_11LLVMContextENS_9StringRefEb'/>
+<fun r='_ZNK4llvm17ConstantDataArray7getTypeEv'/>
+<fun r='_ZN4llvm17ConstantDataArray7classofEPKNS_5ValueE'/>

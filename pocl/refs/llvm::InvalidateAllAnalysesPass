@@ -1,0 +1,8 @@
+<inh f='include/llvm-6.0/llvm/IR/PassManager.h' l='365' c='llvm::PassInfoMixin'/>
+<def f='include/llvm-6.0/llvm/IR/PassManager.h' l='1287' ll='1293'/>
+<size>1</size>
+<doc f='include/llvm-6.0/llvm/IR/PassManager.h' l='1283'>/// \brief A utility pass that does nothing, but preserves no analyses.
+///
+/// Because this preserves no analyses, any analysis passes queried after this
+/// pass runs will recompute fresh results.</doc>
+<fun r='_ZN4llvm25InvalidateAllAnalysesPass3runERT_RT0_DpOT1_'/>

@@ -1,0 +1,15 @@
+<inh f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='44' c='llvm::raw_ostream'/>
+<def f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='462' ll='482'/>
+<size>48</size>
+<doc f='include/llvm-6.0/llvm/Support/raw_ostream.h' l='456'>//===----------------------------------------------------------------------===//
+// Output Stream Adaptors
+//===----------------------------------------------------------------------===//
+
+/// A raw_ostream that writes to an std::string.  This is a simple adaptor
+/// class. This class does not encounter output errors.</doc>
+<mbr r='llvm::raw_string_ostream::OS' o='320' t='std::string &amp;'/>
+<fun r='_ZN4llvm18raw_string_ostream10write_implEPKcm'/>
+<fun r='_ZNK4llvm18raw_string_ostream11current_posEv'/>
+<fun r='_ZN4llvm18raw_string_ostreamC1ERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE'/>
+<fun r='_ZN4llvm18raw_string_ostreamD1Ev'/>
+<fun r='_ZN4llvm18raw_string_ostream3strB5cxx11Ev'/>

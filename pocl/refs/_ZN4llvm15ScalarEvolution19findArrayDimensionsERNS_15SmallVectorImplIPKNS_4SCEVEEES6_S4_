@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='906' type='void llvm::ScalarEvolution::findArrayDimensions(SmallVectorImpl&lt;const llvm::SCEV *&gt; &amp; Terms, SmallVectorImpl&lt;const llvm::SCEV *&gt; &amp; Sizes, const llvm::SCEV * ElementSize)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/ScalarEvolution.h' l='903'>/// Compute the array dimensions Sizes from the set of Terms extracted from
+  /// the memory access function of this SCEVAddRecExpr (second step of
+  /// delinearization).</doc>

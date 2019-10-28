@@ -1,0 +1,8 @@
+<def f='include/llvm-6.0/llvm/IR/PassManager.h' l='70'/>
+<size>8</size>
+<doc f='include/llvm-6.0/llvm/IR/PassManager.h' l='64'>/// A special type used by analysis passes to provide an address that
+/// identifies that particular analysis pass type.
+///
+/// Analysis passes should have a static data member of this type and derive
+/// from the \c AnalysisInfoMixin to get a static ID method used to identify
+/// the analysis in the pass management infrastructure.</doc>

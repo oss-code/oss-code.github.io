@@ -1,0 +1,17 @@
+<inh f='include/llvm-6.0/llvm/Pass.h' l='285' c='llvm::FunctionPass'/>
+<def f='pocl/lib/llvmopencl/BreakConstantGEPs.h' l='36' ll='51'/>
+<size>32</size>
+<doc f='pocl/lib/llvmopencl/BreakConstantGEPs.h' l='29'>//
+// Pass: BreakConstantGEPs
+//
+// Description:
+//  This pass modifies a function so that it uses GEP instructions instead of
+//  GEP constant expressions.
+//</doc>
+<smbr r='BreakConstantGEPs::ID' t='char'/>
+<fun r='_ZN17BreakConstantGEPsC1Ev'/>
+<fun r='_ZNK17BreakConstantGEPs11getPassNameEv'/>
+<fun r='_ZN17BreakConstantGEPs13runOnFunctionERN4llvm8FunctionE'/>
+<fun r='_ZNK17BreakConstantGEPs16getAnalysisUsageERN4llvm13AnalysisUsageE'/>
+<smbr r='BreakConstantGEPs::ID' t='char'/>
+<fun r='_ZN17BreakConstantGEPs13runOnFunctionERN4llvm8FunctionE'/>

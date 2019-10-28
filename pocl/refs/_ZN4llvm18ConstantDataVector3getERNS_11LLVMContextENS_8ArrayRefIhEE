@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Constants.h' l='747' type='static llvm::Constant * llvm::ConstantDataVector::get(llvm::LLVMContext &amp; Context, ArrayRef&lt;uint8_t&gt; Elts)'/>
+<doc f='include/llvm-6.0/llvm/IR/Constants.h' l='744'>/// get() constructors - Return a constant with vector type with an element
+  /// count and element type matching the ArrayRef passed in.  Note that this
+  /// can return a ConstantAggregateZero object.</doc>

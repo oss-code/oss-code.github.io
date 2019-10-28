@@ -1,0 +1,3 @@
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1372' ll='1378' type='llvm::Value * llvm::IRBuilder::CreateGlobalStringPtr(llvm::StringRef Str, const llvm::Twine &amp; Name = &quot;&quot;, unsigned int AddressSpace = 0)'/>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1370'>/// \brief Same as CreateGlobalString, but return a pointer with &quot;i8*&quot; type
+  /// instead of a pointer to array of i8.</doc>

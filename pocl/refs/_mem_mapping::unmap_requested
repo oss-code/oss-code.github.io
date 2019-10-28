@@ -1,0 +1,11 @@
+<dec f='pocl/include/pocl.h' l='62' type='long'/>
+<offset>320</offset>
+<doc f='pocl/include/pocl.h' l='57'>/* This is required, because two clEnqueueMap() with the same buffer+size+offset,
+     will create two identical mappings in the buffer-&gt;mappings LL.
+     Without this flag, both corresponding clEnqUnmap()s will find
+     the same mapping (the first one in mappings LL), which will lead
+     to memory double-free corruption later. */</doc>
+<use f='pocl/lib/CL/clEnqueueUnmapMemObject.c' l='71' u='r' c='POclEnqueueUnmapMemObject'/>
+<use f='pocl/lib/CL/clEnqueueUnmapMemObject.c' l='73' u='r' c='POclEnqueueUnmapMemObject'/>
+<use f='pocl/lib/CL/clEnqueueUnmapMemObject.c' l='77' u='w' c='POclEnqueueUnmapMemObject'/>
+<use f='pocl/lib/CL/devices/common.c' l='650' u='r' c='pocl_exec_command'/>

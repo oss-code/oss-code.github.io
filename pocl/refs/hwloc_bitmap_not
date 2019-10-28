@@ -1,0 +1,6 @@
+<dec f='include/hwloc/bitmap.h' l='325' type='void hwloc_bitmap_not(hwloc_bitmap_t res, hwloc_const_bitmap_t bitmap)'/>
+<use f='include/hwloc/cpuset.h' l='59' u='c' c='hwloc_cpuset_not'/>
+<doc f='include/hwloc/bitmap.h' l='321'>/** \brief Negate bitmap \p bitmap and store the result in bitmap \p res
+ *
+ * \p res can be the same as \p bitmap
+ */</doc>

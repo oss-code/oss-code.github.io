@@ -1,0 +1,9 @@
+<dec f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='112' type='3'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='138' u='r' c='_ZN4llvm10isNoModRefENS_10ModRefInfoE'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='142' u='r' c='_ZN4llvm13isModOrRefSetENS_10ModRefInfoE'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='145' u='r' c='_ZN4llvm14isModAndRefSetENS_10ModRefInfoE'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='146' u='r' c='_ZN4llvm14isModAndRefSetENS_10ModRefInfoE'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='168' u='r' c='_ZN4llvm7setMustENS_10ModRefInfoE'/>
+<use f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='172' u='r' c='_ZN4llvm12setModAndRefENS_10ModRefInfoE'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='110'>/// The access may reference, modify or both the value stored in memory,
+  /// a mustAlias relation was found, and no mayAlias or partialAlias found.</doc>

@@ -1,0 +1,6 @@
+<def f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='137' type='llvm::CallGraphNode * llvm::CallGraph::getExternalCallingNode() const'/>
+<use f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='360' u='c' c='_ZNK4llvm20CallGraphWrapperPass22getExternalCallingNodeEv'/>
+<use f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='451' u='c' c='_ZN4llvm11GraphTraitsIPNS_9CallGraphEE12getEntryNodeES2_'/>
+<use f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='478' u='c' c='_ZN4llvm11GraphTraitsIPKNS_9CallGraphEE12getEntryNodeES3_'/>
+<doc f='include/llvm-6.0/llvm/Analysis/CallGraph.h' l='135'>/// \brief Returns the \c CallGraphNode which is used to represent
+  /// undetermined calls into the callgraph.</doc>

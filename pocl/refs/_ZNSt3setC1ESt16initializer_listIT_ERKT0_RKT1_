@@ -1,0 +1,12 @@
+<def f='include/c++/7/bits/stl_set.h' l='233' ll='237' type='void std::set::set&lt;_Key, _Compare, _Alloc&gt;(initializer_list&lt;value_type&gt; __l, const _Compare &amp; __comp = _Compare(), const allocator_type &amp; __a = allocator_type())'/>
+<doc f='include/c++/7/bits/stl_set.h' l='223'>/**
+       *  @brief  Builds a %set from an initializer_list.
+       *  @param  __l  An initializer_list.
+       *  @param  __comp  A comparison functor.
+       *  @param  __a  An allocator object.
+       *
+       *  Create a %set consisting of copies of the elements in the list.
+       *  This is linear in N if the list is already sorted, and NlogN
+       *  otherwise (where N is @a __l.size()).
+       */</doc>
+<use f='pocl/lib/llvmopencl/OptimizeWorkItemFuncCalls.cc' l='70' u='c' c='_ZN4pocl25OptimizeWorkItemFuncCalls13runOnFunctionERN4llvm8FunctionE'/>

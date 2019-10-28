@@ -1,0 +1,5 @@
+<dec f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='398' type='unsigned int'/>
+<offset>288</offset>
+<doc f='include/llvm-6.0/llvm/Analysis/TargetTransformInfo.h' l='395'>/// Set the maximum unrolling factor for full unrolling. Like MaxCount, but
+    /// applies even if full unrolling is selected. This allows a target to fall
+    /// back to Partial unrolling if full unrolling is above FullUnrollMaxCount.</doc>

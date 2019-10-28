@@ -1,0 +1,11 @@
+<inh f='include/llvm-6.0/llvm/Pass.h' l='256' c='llvm::ImmutablePass'/>
+<def f='include/llvm-6.0/llvm/Analysis/CFLSteensAliasAnalysis.h' l='122' ll='135'/>
+<size>40</size>
+<doc f='include/llvm-6.0/llvm/Analysis/CFLSteensAliasAnalysis.h' l='121'>/// Legacy wrapper pass to provide the CFLSteensAAResult object.</doc>
+<mbr r='llvm::CFLSteensAAWrapperPass::Result' o='256' t='std::unique_ptr&lt;CFLSteensAAResult&gt;'/>
+<smbr r='llvm::CFLSteensAAWrapperPass::ID' t='char'/>
+<fun r='_ZN4llvm22CFLSteensAAWrapperPassC1Ev'/>
+<fun r='_ZN4llvm22CFLSteensAAWrapperPass9getResultEv'/>
+<fun r='_ZNK4llvm22CFLSteensAAWrapperPass9getResultEv'/>
+<fun r='_ZN4llvm22CFLSteensAAWrapperPass14initializePassEv'/>
+<fun r='_ZNK4llvm22CFLSteensAAWrapperPass16getAnalysisUsageERNS_13AnalysisUsageE'/>

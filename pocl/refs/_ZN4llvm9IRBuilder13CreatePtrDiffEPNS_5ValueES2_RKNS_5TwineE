@@ -1,0 +1,7 @@
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1799' ll='1809' type='llvm::Value * llvm::IRBuilder::CreatePtrDiff(llvm::Value * LHS, llvm::Value * RHS, const llvm::Twine &amp; Name = &quot;&quot;)'/>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='1793'>/// \brief Return the i64 difference between two pointer values, dividing out
+  /// the size of the pointed-to objects.
+  ///
+  /// This is intended to implement C-style pointer subtraction. As such, the
+  /// pointers must be appropriately aligned for their element types and
+  /// pointing into the same object.</doc>

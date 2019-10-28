@@ -1,0 +1,9 @@
+<def f='include/llvm-6.0/llvm/ADT/ilist_node.h' l='275' ll='281' type='NodeTy * llvm::ilist_node_with_parent::getPrevNode()'/>
+<doc f='include/llvm-6.0/llvm/ADT/ilist_node.h' l='272'>/// @name Adjacent Node Accessors
+  /// @{
+  /// \brief Get the previous node, or \c nullptr for the list head.</doc>
+<use f='pocl/lib/llvmopencl/Barrier.h' l='61' u='c' c='_ZN4pocl7Barrier6CreateEPN4llvm11InstructionE'/>
+<use f='pocl/lib/llvmopencl/Barrier.h' l='62' u='c' c='_ZN4pocl7Barrier6CreateEPN4llvm11InstructionE'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='98' u='c' c='_ZN4pocl20CanonicalizeBarriers13runOnFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/CanonicalizeBarriers.cc' l='149' u='c' c='_ZN4pocl20CanonicalizeBarriers15ProcessFunctionERN4llvm8FunctionE'/>
+<use f='pocl/lib/llvmopencl/LoopBarriers.cc' l='184' u='c' c='_ZN4pocl12LoopBarriers11ProcessLoopEPN4llvm4LoopERNS1_13LPPassManagerE'/>

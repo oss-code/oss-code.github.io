@@ -1,0 +1,6 @@
+<dec f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='774' type='bool llvm::CastInst::isLosslessCast() const'/>
+<doc f='include/llvm-6.0/llvm/IR/InstrTypes.h' l='769'>/// A lossless cast is one that does not alter the basic value. It implies
+  /// a no-op cast but is more stringent, preventing things like int-&gt;float,
+  /// long-&gt;double, or int-&gt;ptr.
+  /// @returns true iff the cast is lossless.
+  /// @brief Determine if this is a lossless cast.</doc>

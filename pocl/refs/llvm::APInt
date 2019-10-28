@@ -1,0 +1,291 @@
+<def f='include/llvm-6.0/llvm/ADT/APInt.h' l='69' ll='1931'/>
+<size>16</size>
+<doc f='include/llvm-6.0/llvm/ADT/APInt.h' l='39'>//===----------------------------------------------------------------------===//
+//                              APInt Class
+//===----------------------------------------------------------------------===//
+
+/// \brief Class for arbitrary precision integers.
+///
+/// APInt is a functional replacement for common case unsigned integer type like
+/// &quot;unsigned&quot;, &quot;unsigned long&quot; or &quot;uint64_t&quot;, but also allows non-byte-width
+/// integer sizes and large integer value types such as 3-bits, 15-bits, or more
+/// than 64-bits of precision. APInt provides a variety of arithmetic operators
+/// and methods to manipulate integer values of any bit-width. It supports both
+/// the typical integer arithmetic and comparison operations as well as bitwise
+/// manipulation.
+///
+/// The class has several invariants worth noting:
+///   * All bit, byte, and word positions are zero-based.
+///   * Once the bit width is set, it doesn&apos;t change except by the Truncate,
+///     SignExtend, or ZeroExtend operations.
+///   * All binary operators must be on APInt instances of the same bit width.
+///     Attempting to use these operators on instances with different bit
+///     widths will yield an assertion.
+///   * The value is stored canonically as an unsigned value. For operations
+///     where it makes a difference, there are both signed and unsigned variants
+///     of the operation. For example, sdiv and udiv. However, because the bit
+///     widths must be the same, operations such as Mul and Add produce the same
+///     results regardless of whether the values are interpreted as signed or
+///     not.
+///   * In general, the class tries to follow the style of computation that LLVM
+///     uses in its IR. This simplifies its use for LLVM.
+///</doc>
+<smbr r='llvm::APInt::WORD_MAX' t='const WordType'/>
+<mbr r='llvm::APInt::U' o='0' t='union (anonymous union at /usr/lib/llvm-6.0/include/llvm/ADT/APInt.h:86:3)'/>
+<mbr r='llvm::APInt::BitWidth' o='64' t='unsigned int'/>
+<fun r='_ZN4llvm5APIntC1EPmj'/>
+<fun r='_ZNK4llvm5APInt12isSingleWordEv'/>
+<fun r='_ZN4llvm5APInt9whichWordEj'/>
+<fun r='_ZN4llvm5APInt8whichBitEj'/>
+<fun r='_ZN4llvm5APInt7maskBitEj'/>
+<fun r='_ZN4llvm5APInt15clearUnusedBitsEv'/>
+<fun r='_ZNK4llvm5APInt7getWordEj'/>
+<fun r='_ZN4llvm5APInt10reallocateEj'/>
+<fun r='_ZN4llvm5APInt10fromStringEjNS_9StringRefEh'/>
+<fun r='_ZN4llvm5APInt6divideEPKmjS2_jPmS3_'/>
+<fun r='_ZN4llvm5APInt12initSlowCaseEmb'/>
+<fun r='_ZN4llvm5APInt13initFromArrayENS_8ArrayRefImEE'/>
+<fun r='_ZN4llvm5APInt12initSlowCaseERKS0_'/>
+<fun r='_ZN4llvm5APInt11shlSlowCaseEj'/>
+<fun r='_ZN4llvm5APInt12lshrSlowCaseEj'/>
+<fun r='_ZN4llvm5APInt12ashrSlowCaseEj'/>
+<fun r='_ZN4llvm5APInt14AssignSlowCaseERKS0_'/>
+<fun r='_ZNK4llvm5APInt13EqualSlowCaseERKS0_'/>
+<fun r='_ZNK4llvm5APInt25countLeadingZerosSlowCaseEv'/>
+<fun r='_ZNK4llvm5APInt24countLeadingOnesSlowCaseEv'/>
+<fun r='_ZNK4llvm5APInt26countTrailingZerosSlowCaseEv'/>
+<fun r='_ZNK4llvm5APInt25countTrailingOnesSlowCaseEv'/>
+<fun r='_ZNK4llvm5APInt23countPopulationSlowCaseEv'/>
+<fun r='_ZNK4llvm5APInt18intersectsSlowCaseERKS0_'/>
+<fun r='_ZNK4llvm5APInt18isSubsetOfSlowCaseERKS0_'/>
+<fun r='_ZN4llvm5APInt15setBitsSlowCaseEjj'/>
+<fun r='_ZN4llvm5APInt19flipAllBitsSlowCaseEv'/>
+<fun r='_ZN4llvm5APInt17AndAssignSlowCaseERKS0_'/>
+<fun r='_ZN4llvm5APInt16OrAssignSlowCaseERKS0_'/>
+<fun r='_ZN4llvm5APInt17XorAssignSlowCaseERKS0_'/>
+<fun r='_ZNK4llvm5APInt7compareERKS0_'/>
+<fun r='_ZNK4llvm5APInt13compareSignedERKS0_'/>
+<fun r='_ZN4llvm5APIntC1Ejmb'/>
+<fun r='_ZN4llvm5APIntC1EjNS_8ArrayRefImEE'/>
+<fun r='_ZN4llvm5APIntC1EjjPKm'/>
+<fun r='_ZN4llvm5APIntC1EjNS_9StringRefEh'/>
+<fun r='_ZN4llvm5APIntC1ERKS0_'/>
+<fun r='_ZN4llvm5APIntC1EOS0_'/>
+<fun r='_ZN4llvm5APIntD1Ev'/>
+<fun r='_ZN4llvm5APIntC1Ev'/>
+<fun r='_ZNK4llvm5APInt12needsCleanupEv'/>
+<fun r='_ZNK4llvm5APInt7ProfileERNS_16FoldingSetNodeIDE'/>
+<fun r='_ZNK4llvm5APInt10isNegativeEv'/>
+<fun r='_ZNK4llvm5APInt13isNonNegativeEv'/>
+<fun r='_ZNK4llvm5APInt12isSignBitSetEv'/>
+<fun r='_ZNK4llvm5APInt14isSignBitClearEv'/>
+<fun r='_ZNK4llvm5APInt18isStrictlyPositiveEv'/>
+<fun r='_ZNK4llvm5APInt14isAllOnesValueEv'/>
+<fun r='_ZNK4llvm5APInt11isNullValueEv'/>
+<fun r='_ZNK4llvm5APInt10isOneValueEv'/>
+<fun r='_ZNK4llvm5APInt10isMaxValueEv'/>
+<fun r='_ZNK4llvm5APInt16isMaxSignedValueEv'/>
+<fun r='_ZNK4llvm5APInt10isMinValueEv'/>
+<fun r='_ZNK4llvm5APInt16isMinSignedValueEv'/>
+<fun r='_ZNK4llvm5APInt6isIntNEj'/>
+<fun r='_ZNK4llvm5APInt12isSignedIntNEj'/>
+<fun r='_ZNK4llvm5APInt10isPowerOf2Ev'/>
+<fun r='_ZNK4llvm5APInt10isSignMaskEv'/>
+<fun r='_ZNK4llvm5APInt12getBoolValueEv'/>
+<fun r='_ZNK4llvm5APInt15getLimitedValueEm'/>
+<fun r='_ZNK4llvm5APInt7isSplatEj'/>
+<fun r='_ZNK4llvm5APInt6isMaskEj'/>
+<fun r='_ZNK4llvm5APInt6isMaskEv'/>
+<fun r='_ZNK4llvm5APInt13isShiftedMaskEv'/>
+<fun r='_ZN4llvm5APInt11getMaxValueEj'/>
+<fun r='_ZN4llvm5APInt17getSignedMaxValueEj'/>
+<fun r='_ZN4llvm5APInt11getMinValueEj'/>
+<fun r='_ZN4llvm5APInt17getSignedMinValueEj'/>
+<fun r='_ZN4llvm5APInt11getSignMaskEj'/>
+<fun r='_ZN4llvm5APInt15getAllOnesValueEj'/>
+<fun r='_ZN4llvm5APInt12getNullValueEj'/>
+<fun r='_ZNK4llvm5APInt9getHiBitsEj'/>
+<fun r='_ZNK4llvm5APInt9getLoBitsEj'/>
+<fun r='_ZN4llvm5APInt12getOneBitSetEjj'/>
+<fun r='_ZN4llvm5APInt10getBitsSetEjjj'/>
+<fun r='_ZN4llvm5APInt14getBitsSetFromEjj'/>
+<fun r='_ZN4llvm5APInt14getHighBitsSetEjj'/>
+<fun r='_ZN4llvm5APInt13getLowBitsSetEjj'/>
+<fun r='_ZN4llvm5APInt8getSplatEjRKS0_'/>
+<fun r='_ZN4llvm5APInt11isSameValueERKS0_S2_'/>
+<fun r='_ZNK4llvm5APInt10getRawDataEv'/>
+<fun r='_ZN4llvm5APIntppEi'/>
+<fun r='_ZN4llvm5APIntppEv'/>
+<fun r='_ZN4llvm5APIntmmEi'/>
+<fun r='_ZN4llvm5APIntmmEv'/>
+<fun r='_ZNK4llvm5APIntntEv'/>
+<fun r='_ZN4llvm5APIntaSERKS0_'/>
+<fun r='_ZN4llvm5APIntaSEOS0_'/>
+<fun r='_ZN4llvm5APIntaSEm'/>
+<fun r='_ZN4llvm5APIntaNERKS0_'/>
+<fun r='_ZN4llvm5APIntaNEm'/>
+<fun r='_ZN4llvm5APIntoRERKS0_'/>
+<fun r='_ZN4llvm5APIntoREm'/>
+<fun r='_ZN4llvm5APInteOERKS0_'/>
+<fun r='_ZN4llvm5APInteOEm'/>
+<fun r='_ZN4llvm5APIntmLERKS0_'/>
+<fun r='_ZN4llvm5APIntmLEm'/>
+<fun r='_ZN4llvm5APIntpLERKS0_'/>
+<fun r='_ZN4llvm5APIntpLEm'/>
+<fun r='_ZN4llvm5APIntmIERKS0_'/>
+<fun r='_ZN4llvm5APIntmIEm'/>
+<fun r='_ZN4llvm5APIntlSEj'/>
+<fun r='_ZN4llvm5APIntlSERKS0_'/>
+<fun r='_ZNK4llvm5APIntmlERKS0_'/>
+<fun r='_ZNK4llvm5APIntlsEj'/>
+<fun r='_ZNK4llvm5APIntlsERKS0_'/>
+<fun r='_ZNK4llvm5APInt4ashrEj'/>
+<fun r='_ZN4llvm5APInt11ashrInPlaceEj'/>
+<fun r='_ZNK4llvm5APInt4lshrEj'/>
+<fun r='_ZN4llvm5APInt11lshrInPlaceEj'/>
+<fun r='_ZNK4llvm5APInt3shlEj'/>
+<fun r='_ZNK4llvm5APInt4rotlEj'/>
+<fun r='_ZNK4llvm5APInt4rotrEj'/>
+<fun r='_ZNK4llvm5APInt4ashrERKS0_'/>
+<fun r='_ZN4llvm5APInt11ashrInPlaceERKS0_'/>
+<fun r='_ZNK4llvm5APInt4lshrERKS0_'/>
+<fun r='_ZN4llvm5APInt11lshrInPlaceERKS0_'/>
+<fun r='_ZNK4llvm5APInt3shlERKS0_'/>
+<fun r='_ZNK4llvm5APInt4rotlERKS0_'/>
+<fun r='_ZNK4llvm5APInt4rotrERKS0_'/>
+<fun r='_ZNK4llvm5APInt4udivERKS0_'/>
+<fun r='_ZNK4llvm5APInt4udivEm'/>
+<fun r='_ZNK4llvm5APInt4sdivERKS0_'/>
+<fun r='_ZNK4llvm5APInt4sdivEl'/>
+<fun r='_ZNK4llvm5APInt4uremERKS0_'/>
+<fun r='_ZNK4llvm5APInt4uremEm'/>
+<fun r='_ZNK4llvm5APInt4sremERKS0_'/>
+<fun r='_ZNK4llvm5APInt4sremEl'/>
+<fun r='_ZN4llvm5APInt7udivremERKS0_S2_RS0_S3_'/>
+<fun r='_ZN4llvm5APInt7udivremERKS0_mRS0_Rm'/>
+<fun r='_ZN4llvm5APInt7sdivremERKS0_S2_RS0_S3_'/>
+<fun r='_ZN4llvm5APInt7sdivremERKS0_lRS0_Rl'/>
+<fun r='_ZNK4llvm5APInt7sadd_ovERKS0_Rb'/>
+<fun r='_ZNK4llvm5APInt7uadd_ovERKS0_Rb'/>
+<fun r='_ZNK4llvm5APInt7ssub_ovERKS0_Rb'/>
+<fun r='_ZNK4llvm5APInt7usub_ovERKS0_Rb'/>
+<fun r='_ZNK4llvm5APInt7sdiv_ovERKS0_Rb'/>
+<fun r='_ZNK4llvm5APInt7smul_ovERKS0_Rb'/>
+<fun r='_ZNK4llvm5APInt7umul_ovERKS0_Rb'/>
+<fun r='_ZNK4llvm5APInt7sshl_ovERKS0_Rb'/>
+<fun r='_ZNK4llvm5APInt7ushl_ovERKS0_Rb'/>
+<fun r='_ZNK4llvm5APIntixEj'/>
+<fun r='_ZNK4llvm5APInteqERKS0_'/>
+<fun r='_ZNK4llvm5APInteqEm'/>
+<fun r='_ZNK4llvm5APInt2eqERKS0_'/>
+<fun r='_ZNK4llvm5APIntneERKS0_'/>
+<fun r='_ZNK4llvm5APIntneEm'/>
+<fun r='_ZNK4llvm5APInt2neERKS0_'/>
+<fun r='_ZNK4llvm5APInt3ultERKS0_'/>
+<fun r='_ZNK4llvm5APInt3ultEm'/>
+<fun r='_ZNK4llvm5APInt3sltERKS0_'/>
+<fun r='_ZNK4llvm5APInt3sltEl'/>
+<fun r='_ZNK4llvm5APInt3uleERKS0_'/>
+<fun r='_ZNK4llvm5APInt3uleEm'/>
+<fun r='_ZNK4llvm5APInt3sleERKS0_'/>
+<fun r='_ZNK4llvm5APInt3sleEm'/>
+<fun r='_ZNK4llvm5APInt3ugtERKS0_'/>
+<fun r='_ZNK4llvm5APInt3ugtEm'/>
+<fun r='_ZNK4llvm5APInt3sgtERKS0_'/>
+<fun r='_ZNK4llvm5APInt3sgtEl'/>
+<fun r='_ZNK4llvm5APInt3ugeERKS0_'/>
+<fun r='_ZNK4llvm5APInt3ugeEm'/>
+<fun r='_ZNK4llvm5APInt3sgeERKS0_'/>
+<fun r='_ZNK4llvm5APInt3sgeEl'/>
+<fun r='_ZNK4llvm5APInt10intersectsERKS0_'/>
+<fun r='_ZNK4llvm5APInt10isSubsetOfERKS0_'/>
+<fun r='_ZNK4llvm5APInt5truncEj'/>
+<fun r='_ZNK4llvm5APInt4sextEj'/>
+<fun r='_ZNK4llvm5APInt4zextEj'/>
+<fun r='_ZNK4llvm5APInt11sextOrTruncEj'/>
+<fun r='_ZNK4llvm5APInt11zextOrTruncEj'/>
+<fun r='_ZNK4llvm5APInt10sextOrSelfEj'/>
+<fun r='_ZNK4llvm5APInt10zextOrSelfEj'/>
+<fun r='_ZN4llvm5APInt10setAllBitsEv'/>
+<fun r='_ZN4llvm5APInt6setBitEj'/>
+<fun r='_ZN4llvm5APInt10setSignBitEv'/>
+<fun r='_ZN4llvm5APInt7setBitsEjj'/>
+<fun r='_ZN4llvm5APInt11setBitsFromEj'/>
+<fun r='_ZN4llvm5APInt10setLowBitsEj'/>
+<fun r='_ZN4llvm5APInt11setHighBitsEj'/>
+<fun r='_ZN4llvm5APInt12clearAllBitsEv'/>
+<fun r='_ZN4llvm5APInt8clearBitEj'/>
+<fun r='_ZN4llvm5APInt12clearSignBitEv'/>
+<fun r='_ZN4llvm5APInt11flipAllBitsEv'/>
+<fun r='_ZN4llvm5APInt7flipBitEj'/>
+<fun r='_ZN4llvm5APInt6negateEv'/>
+<fun r='_ZN4llvm5APInt10insertBitsERKS0_j'/>
+<fun r='_ZNK4llvm5APInt11extractBitsEjj'/>
+<fun r='_ZNK4llvm5APInt11getBitWidthEv'/>
+<fun r='_ZNK4llvm5APInt11getNumWordsEv'/>
+<fun r='_ZN4llvm5APInt11getNumWordsEj'/>
+<fun r='_ZNK4llvm5APInt13getActiveBitsEv'/>
+<fun r='_ZNK4llvm5APInt14getActiveWordsEv'/>
+<fun r='_ZNK4llvm5APInt16getMinSignedBitsEv'/>
+<fun r='_ZNK4llvm5APInt12getZExtValueEv'/>
+<fun r='_ZNK4llvm5APInt12getSExtValueEv'/>
+<fun r='_ZN4llvm5APInt13getBitsNeededENS_9StringRefEh'/>
+<fun r='_ZNK4llvm5APInt17countLeadingZerosEv'/>
+<fun r='_ZNK4llvm5APInt16countLeadingOnesEv'/>
+<fun r='_ZNK4llvm5APInt14getNumSignBitsEv'/>
+<fun r='_ZNK4llvm5APInt18countTrailingZerosEv'/>
+<fun r='_ZNK4llvm5APInt17countTrailingOnesEv'/>
+<fun r='_ZNK4llvm5APInt15countPopulationEv'/>
+<fun r='_ZNK4llvm5APInt5printERNS_11raw_ostreamEb'/>
+<fun r='_ZNK4llvm5APInt8toStringERNS_15SmallVectorImplIcEEjbb'/>
+<fun r='_ZNK4llvm5APInt16toStringUnsignedERNS_15SmallVectorImplIcEEj'/>
+<fun r='_ZNK4llvm5APInt14toStringSignedERNS_15SmallVectorImplIcEEj'/>
+<fun r='_ZNK4llvm5APInt8toStringB5cxx11Ejb'/>
+<fun r='_ZNK4llvm5APInt8byteSwapEv'/>
+<fun r='_ZNK4llvm5APInt11reverseBitsEv'/>
+<fun r='_ZNK4llvm5APInt13roundToDoubleEb'/>
+<fun r='_ZNK4llvm5APInt13roundToDoubleEv'/>
+<fun r='_ZNK4llvm5APInt19signedRoundToDoubleEv'/>
+<fun r='_ZNK4llvm5APInt12bitsToDoubleEv'/>
+<fun r='_ZNK4llvm5APInt11bitsToFloatEv'/>
+<fun r='_ZN4llvm5APInt12doubleToBitsEd'/>
+<fun r='_ZN4llvm5APInt11floatToBitsEf'/>
+<fun r='_ZNK4llvm5APInt8logBase2Ev'/>
+<fun r='_ZNK4llvm5APInt12ceilLogBase2Ev'/>
+<fun r='_ZNK4llvm5APInt15nearestLogBase2Ev'/>
+<fun r='_ZNK4llvm5APInt13exactLogBase2Ev'/>
+<fun r='_ZNK4llvm5APInt4sqrtEv'/>
+<fun r='_ZNK4llvm5APInt3absEv'/>
+<fun r='_ZNK4llvm5APInt21multiplicativeInverseERKS0_'/>
+<fun r='_ZNK4llvm5APInt5magicEv'/>
+<fun r='_ZNK4llvm5APInt6magicuEj'/>
+<fun r='_ZN4llvm5APInt5tcSetEPmmj'/>
+<fun r='_ZN4llvm5APInt8tcAssignEPmPKmj'/>
+<fun r='_ZN4llvm5APInt8tcIsZeroEPKmj'/>
+<fun r='_ZN4llvm5APInt12tcExtractBitEPKmj'/>
+<fun r='_ZN4llvm5APInt9tcExtractEPmjPKmjj'/>
+<fun r='_ZN4llvm5APInt8tcSetBitEPmj'/>
+<fun r='_ZN4llvm5APInt10tcClearBitEPmj'/>
+<fun r='_ZN4llvm5APInt5tcLSBEPKmj'/>
+<fun r='_ZN4llvm5APInt5tcMSBEPKmj'/>
+<fun r='_ZN4llvm5APInt8tcNegateEPmj'/>
+<fun r='_ZN4llvm5APInt5tcAddEPmPKmmj'/>
+<fun r='_ZN4llvm5APInt9tcAddPartEPmmj'/>
+<fun r='_ZN4llvm5APInt10tcSubtractEPmPKmmj'/>
+<fun r='_ZN4llvm5APInt14tcSubtractPartEPmmj'/>
+<fun r='_ZN4llvm5APInt14tcMultiplyPartEPmPKmmmjjb'/>
+<fun r='_ZN4llvm5APInt10tcMultiplyEPmPKmS3_j'/>
+<fun r='_ZN4llvm5APInt14tcFullMultiplyEPmPKmS3_jj'/>
+<fun r='_ZN4llvm5APInt8tcDivideEPmPKmS1_S1_j'/>
+<fun r='_ZN4llvm5APInt11tcShiftLeftEPmjj'/>
+<fun r='_ZN4llvm5APInt12tcShiftRightEPmjj'/>
+<fun r='_ZN4llvm5APInt5tcAndEPmPKmj'/>
+<fun r='_ZN4llvm5APInt4tcOrEPmPKmj'/>
+<fun r='_ZN4llvm5APInt5tcXorEPmPKmj'/>
+<fun r='_ZN4llvm5APInt12tcComplementEPmj'/>
+<fun r='_ZN4llvm5APInt9tcCompareEPKmS2_j'/>
+<fun r='_ZN4llvm5APInt11tcIncrementEPmj'/>
+<fun r='_ZN4llvm5APInt11tcDecrementEPmj'/>
+<fun r='_ZN4llvm5APInt25tcSetLeastSignificantBitsEPmjj'/>
+<fun r='_ZNK4llvm5APInt4dumpEv'/>
+<ovr f='include/llvm-6.0/llvm/ADT/APSInt.h' l='22' c='llvm::APSInt'/>

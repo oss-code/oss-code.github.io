@@ -1,0 +1,4 @@
+<dec f='include/llvm-6.0/llvm/IR/Instruction.h' l='268' type='bool llvm::Instruction::extractProfMetadata(uint64_t &amp; TrueVal, uint64_t &amp; FalseVal) const'/>
+<doc f='include/llvm-6.0/llvm/IR/Instruction.h' l='265'>/// Retrieve the raw weight values of a conditional branch or select.
+  /// Returns true on success with profile weights filled in.
+  /// Returns false if no metadata or invalid metadata was found.</doc>

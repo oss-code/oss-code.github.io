@@ -1,0 +1,15 @@
+<dec f='include/llvm-6.0/llvm/Support/ErrorHandling.h' l='115' type='void llvm::report_bad_alloc_error(const char * Reason, bool GenCrashDiag = true)'/>
+<use f='include/llvm-6.0/llvm/ADT/SmallVector.h' l='243' u='c' c='_ZN4llvm23SmallVectorTemplateBase4growEm'/>
+<use f='include/llvm-6.0/llvm/ADT/StringMap.h' l='170' u='c' c='_ZN4llvm14StringMapEntry6CreateENS_9StringRefERT_DpOT0_'/>
+<doc f='include/llvm-6.0/llvm/Support/ErrorHandling.h' l='103'>/// Reports a bad alloc error, calling any user defined bad alloc
+/// error handler. In contrast to the generic &apos;report_fatal_error&apos;
+/// functions, this function is expected to return, e.g. the user
+/// defined error handler throws an exception.
+///
+/// Note: When throwing an exception in the bad alloc handler, make sure that
+/// the following unwind succeeds, e.g. do not trigger additional allocations
+/// in the unwind chain.
+///
+/// If no error handler is installed (default), then a bad_alloc exception
+/// is thrown if LLVM is compiled with exception support, otherwise an assertion
+/// is called.</doc>

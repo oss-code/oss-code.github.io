@@ -1,0 +1,5 @@
+<def f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='178' ll='179' type='void llvm::IRBuilderBase::InsertPoint::InsertPoint(llvm::BasicBlock * InsertBlock, BasicBlock::iterator InsertPoint)'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='190' u='c' c='_ZNK4llvm13IRBuilderBase6saveIPEv'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='195' u='c' c='_ZN4llvm13IRBuilderBase14saveAndClearIPEv'/>
+<use f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='244' u='c' c='_ZN4llvm13IRBuilderBase16InsertPointGuardD1Ev'/>
+<doc f='include/llvm-6.0/llvm/IR/IRBuilder.h' l='177'>/// \brief Creates a new insertion point at the given location.</doc>

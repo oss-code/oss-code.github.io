@@ -1,0 +1,4 @@
+<def f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='473' ll='476' type='static bool llvm::AAResults::doesAccessArgPointees(llvm::FunctionModRefBehavior MRB)'/>
+<doc f='include/llvm-6.0/llvm/Analysis/AliasAnalysis.h' l='470'>/// Checks if functions with the specified behavior are known to potentially
+  /// read or write from objects pointed to be their pointer-typed arguments
+  /// (with arbitrary offsets).</doc>

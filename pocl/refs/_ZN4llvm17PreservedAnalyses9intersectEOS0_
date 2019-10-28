@@ -1,0 +1,13 @@
+<def f='include/llvm-6.0/llvm/IR/PassManager.h' l='247' ll='263' type='void llvm::PreservedAnalyses::intersect(llvm::PreservedAnalyses &amp;&amp; Arg)'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='464' u='c' c='_ZN4llvm11PassManager3runERT_RT0_DpT1_'/>
+<use f='include/llvm-6.0/llvm/IR/PassManager.h' l='1209' u='c' c='_ZN4llvm27ModuleToFunctionPassAdaptor3runERNS_6ModuleERNS_15AnalysisManagerIS1_JEEE'/>
+<doc f='include/llvm-6.0/llvm/IR/PassManager.h' l='243'>/// \brief Intersect this set with a temporary other set in place.
+  ///
+  /// This is a mutating operation on this preserved set, removing all
+  /// preserved passes which are not also preserved in the argument.</doc>
+<use f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='455' u='c' c='_ZN4llvm33ModuleToPostOrderCGSCCPassAdaptor3runERNS_6ModuleERNS_15AnalysisManagerIS1_JEEE'/>
+<use f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='623' u='c' c='_ZN4llvm26CGSCCToFunctionPassAdaptor3runERNS_13LazyCallGraph3SCCERNS_15AnalysisManagerIS2_JRS1_EEES5_RNS_17CGSCCUpdateResultE'/>
+<use f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='737' u='c' c='_ZN4llvm21DevirtSCCRepeatedPass3runERNS_13LazyCallGraph3SCCERNS_15AnalysisManagerIS2_JRS1_EEES5_RNS_17CGSCCUpdateResultE'/>
+<use f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='790' u='c' c='_ZN4llvm21DevirtSCCRepeatedPass3runERNS_13LazyCallGraph3SCCERNS_15AnalysisManagerIS2_JRS1_EEES5_RNS_17CGSCCUpdateResultE'/>
+<use f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='799' u='c' c='_ZN4llvm21DevirtSCCRepeatedPass3runERNS_13LazyCallGraph3SCCERNS_15AnalysisManagerIS2_JRS1_EEES5_RNS_17CGSCCUpdateResultE'/>
+<use f='include/llvm-6.0/llvm/Analysis/CGSCCPassManager.h' l='813' u='c' c='_ZN4llvm21DevirtSCCRepeatedPass3runERNS_13LazyCallGraph3SCCERNS_15AnalysisManagerIS2_JRS1_EEES5_RNS_17CGSCCUpdateResultE'/>

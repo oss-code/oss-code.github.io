@@ -1,0 +1,16 @@
+<dec f='include/hwloc.h' l='564' type='float *'/>
+<use f='include/hwloc/helper.h' l='1141' u='r' c='hwloc_get_latency'/>
+<use f='include/hwloc/helper.h' l='1142' u='r' c='hwloc_get_latency'/>
+<offset>64</offset>
+<doc f='include/hwloc.h' l='564'>/**&lt; \brief Matrix of latencies between objects, stored as a one-dimension array.
+				 * May be \c NULL if the distances considered here are not latencies.
+				 *
+				 * Unless defined by the user, this currently contains latencies
+				 * between NUMA nodes (as reported in the System Locality Distance Information Table
+				 * (SLIT) in the ACPI specification), which may or may not be accurate.
+				 * It corresponds to the latency for accessing the memory of one node
+				 * from a core in another node.
+				 *
+				 * Values are normalized to get 1.0 as the minimal value in the matrix.
+				 * Latency from i-th to j-th object is stored in slot i*nbobjs+j.
+				 */</doc>

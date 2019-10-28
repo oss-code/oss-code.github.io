@@ -1,0 +1,12 @@
+<dec f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='445' type='llvm::DICompositeType * llvm::DIBuilder::createEnumerationType(llvm::DIScope * Scope, llvm::StringRef Name, llvm::DIFile * File, unsigned int LineNumber, uint64_t SizeInBits, uint32_t AlignInBits, DINodeArray Elements, llvm::DIType * UnderlyingType, llvm::StringRef UniqueIdentifier = &quot;&quot;)'/>
+<doc f='include/llvm-6.0/llvm/IR/DIBuilder.h' l='434'>/// Create debugging information entry for an
+    /// enumeration.
+    /// \param Scope          Scope in which this enumeration is defined.
+    /// \param Name           Union name.
+    /// \param File           File where this member is defined.
+    /// \param LineNumber     Line number.
+    /// \param SizeInBits     Member size.
+    /// \param AlignInBits    Member alignment.
+    /// \param Elements       Enumeration elements.
+    /// \param UnderlyingType Underlying type of a C++11/ObjC fixed enum.
+    /// \param UniqueIdentifier A unique identifier for the enum.</doc>
